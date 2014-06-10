@@ -16,7 +16,7 @@ after_success:
   - git config --global user.email "latest@fhir.me"
   - git config --global user.name "FHIR Build"
   - echo -e "Host github.com\n  IdentityFile ~/deploy_fhir_docs" > ~/.ssh/config
-  - echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCr9kPODf3QLptmJYwPgrSmJp8xbcaLFDBlCfiD9s/j3L9/kS59rL/K4OILHStR1AQg5ZPVFp4uSUyh/UIZPfCBqF/z3CdynywN7+E1v+dAtx0dHjqbd9u+BxlsI5Hr1DyrwCjVBU+A63rZBWd7qg4vvQ3wJUmNl2Nc7MjXEGf5EGzLGTrwlzX7EeIS8Ao6Qs0yNWxeDsLHXyGLj7aghznWOTKvnAt3LIm9L6d+b5c2uTZsIt3wmT0oJYzMbcLYa0ps4ae4d17rr3g/7ao/9pIm74lSC2DWQDlOwrLkTzYg6+ItYU7KzkuXnyvR8NYTgCLhvLeQI47M5oMfjenfqe9V" > ~/.ssh/known_hosts
+  - echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==" > ~/.ssh/known_hosts
   - mkdir hl7-fhir.github.io
   - cd hl7-fhir.github.io
   - git init
