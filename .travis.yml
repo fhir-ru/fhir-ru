@@ -19,9 +19,8 @@ after_success:
   - mkdir hl7-fhir.github.io
   - cd hl7-fhir.github.io
   - git init
-  - git remote add origin git@github.com:hl7-fhir/hl7-fhir.github.io.git
-#  - cp -r ../publish/* .
-  - echo $(date) > .test-travis
+  - git remote add origin git@github.com:fhir-ru/fhir-ru.github.io
+  - cp -r ../publish/* .
   - git add -A .
   - git commit -m "Travis docs build"
   - git push -f origin master
