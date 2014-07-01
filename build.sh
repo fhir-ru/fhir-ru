@@ -1,4 +1,4 @@
-NAME="Continuous Integration Build"
+NAME="Непрерывная интеграционная сборка"
 
 antBuild (){
   ./publish.sh -name \'$NAME\' -url http://hl7-fhir.github.io/
