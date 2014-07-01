@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DataElement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/dataelement.xsd">
-  <!-- No home for:
-         Data Element: Document Text, Used by Context, Origin, Workflow Status, Short Name
-         Data Element Concept: Anything other than Object Class & Property
-         Value Domain: Short Name, Conceptual Domain Short Name, Origin, Workflow Status
-         Reference Document: Alternate Question Text
-         Classifications: CS Definition, CSI Type -->
-  <extension url="http://hl7.org/fhir/Profile/element-constraints#minLength">
+  <extension url="http://hl7.org/fhir/Profile/element-extensions#minLength">
     <valueInteger value="1"/>
   </extension>
-  <extension url="http://hl7.org/fhir/Profile/element-constraints#maxLength">
+  <extension url="http://hl7.org/fhir/Profile/element-extensions#maxLength">
     <valueInteger value="13"/>
   </extension>
   <text>
@@ -117,7 +111,9 @@
       </element>
     </ConceptMap>
   </contained>
-  <identifier value="2179650"/>
+  <identifier>
+    <value value="2179650"/>
+  </identifier>
   <version value="1.0"/>
   <publisher value="DCP"/>
   <status value="active"/>

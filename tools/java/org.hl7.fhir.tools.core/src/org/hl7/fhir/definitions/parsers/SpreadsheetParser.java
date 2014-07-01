@@ -55,6 +55,7 @@ import org.hl7.fhir.definitions.model.RegisteredProfile.ProfileInputType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
+import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.formats.XmlParser;
@@ -99,7 +100,7 @@ public class SpreadsheetParser {
 	}
 
 
-	public ElementDefn parseCompositeType() throws Exception {
+	public TypeDefn parseCompositeType() throws Exception {
 		isProfile = false;
 		return parseCommonTypeColumns().getRoot();
 	}
@@ -239,8 +240,8 @@ public class SpreadsheetParser {
 				return ExampleType.Tool;
 			if ("xml".equals(s))
 				return ExampleType.XmlFile;
-			if ("csv".equals(s))
-				return ExampleType.CsvFile;
+      if ("csv".equals(s))
+        return ExampleType.CsvFile;
 			throw new Exception("Unknown Example Type '" + s + "': " + getLocation(row));
 		}
 
@@ -278,6 +279,8 @@ public class SpreadsheetParser {
   private ProfileInputType readProfileInputType(String column) throws Exception {
     if ("spreadsheet".equals(column)) 
       return ProfileInputType.Spreadsheet;
+    if ("profile".equals(column)) 
+      return ProfileInputType.Profile;
     throw new Exception("Unknown value for Profile Filename Type: "+column);
   }
 
@@ -514,6 +517,7 @@ public class SpreadsheetParser {
 	}
 
 	public ProfileDefn parseProfile(Definitions definitions) throws Exception {
+	  try {
 		isProfile = true;
 		ProfileDefn p = new ProfileDefn();
 
@@ -556,9 +560,9 @@ public class SpreadsheetParser {
     if (sheet != null) {
       for (int row = 0; row < sheet.rows.size(); row++) {
         if (!sheet.getColumn(row, "Code").startsWith("!"))
-          p.getExtensions().add(processExtension(null,
+          processExtension(null,
             sheet, row, definitions,
-            p.metadata("extension.uri")));
+            p.metadata("extension.uri"), p.getExtensions());
       }
     }
 
@@ -567,6 +571,9 @@ public class SpreadsheetParser {
       p.getBindings().addAll(readBindings(sheet).values());
       
 		return p;
+	  } catch (Exception e) {
+	    throw new Exception("exception parsing "+name, e);
+	  }
 	}
 
 
@@ -578,18 +585,18 @@ public class SpreadsheetParser {
       throw new Exception("The Profile referred to a tab by the name of '"+n+"', but no tab by the name could be found");
     for (int row = 0; row < sheet.rows.size(); row++) {
       ElementDefn e = processLine(resource, sheet, row, invariants);
-      if (e != null && e.getProfile() != null && e.typeCode().startsWith("Resource(") && e.getProfile().startsWith("#")) 
-        if (!namedSheets.contains(e.getProfile().substring(1)))
-          namedSheets.add(e.getProfile().substring(1));      
+      if (e != null && e.getStatedProfile() != null && e.typeCode().startsWith("Resource(") && e.getStatedProfile().startsWith("#")) 
+        if (!namedSheets.contains(e.getStatedProfile().substring(1)))
+          namedSheets.add(e.getStatedProfile().substring(1));      
     }
     sheet = loadSheet(n + "-Extensions");
     if (sheet != null) {
       for (int row = 0; row < sheet.rows.size(); row++) {
         if (!sheet.getColumn(row, "Code").startsWith("!"))
-          p.getExtensions().add(processExtension(
+          processExtension(
             resource.getRoot().getElementByName("extensions"),
             sheet, row, definitions,
-            p.metadata("extension.uri")));
+            p.metadata("extension.uri"), p.getExtensions());
       }
     }
     resource.getRoot().setProfileName(n);
@@ -607,7 +614,7 @@ public class SpreadsheetParser {
 						throw new Exception("Example " + name + " has no description parsing " + this.name);
 					File file = new CSFile(folder + sheet.getColumn(row, "Filename"));
 					String type = sheet.getColumn(row, "Type");
-					if (!file.exists() && !"tool".equals(type))
+					if (!file.exists() && !("tool".equals(type) || isSpecialType(type)))
 						throw new Exception("Example " + name + " file '" + file.getAbsolutePath() + "' not found parsing " + this.name);
 					defn.getExamples().add(new Example(name, id, desc, file, 
 							parseExampleType(type, row),
@@ -629,7 +636,12 @@ public class SpreadsheetParser {
 	
 	
 	
-	private void readEvents(Sheet sheet) throws Exception {
+	private boolean isSpecialType(String type) {
+    return false;
+  }
+
+
+  private void readEvents(Sheet sheet) throws Exception {
 		if (sheet != null) {
 			for (int row = 0; row < sheet.rows.size(); row++) {
 				String code = sheet.getColumn(row, "Event Code");
@@ -704,7 +716,9 @@ public class SpreadsheetParser {
 
     String profileName = isProfile ? sheet.getColumn(row, "Profile Name") : "";
     String discriminator = isProfile ? sheet.getColumn(row, "Discriminator") : "";
-		
+		if (!Utilities.noString(profileName) && Utilities.noString(discriminator) && (path.endsWith(".extension") || path.endsWith(".modifierExtension")))
+		  discriminator = "url";
+		  
 		boolean isRoot = !path.contains(".");
 		
 		if (isRoot) {
@@ -712,13 +726,19 @@ public class SpreadsheetParser {
 				throw new Exception("Definitions in " + getLocation(row)+ " contain two roots: " + path + " in "+ root.getName());
 
 			root.setName(path);
-			e = new ElementDefn();
+			e = new TypeDefn();
 			e.setName(path);
-			root.setRoot(e);
+			root.setRoot((TypeDefn) e);
 		} else {
 			e = makeFromPath(root.getRoot(), path, row, profileName, true);
 		}
 
+		String tasks = sheet.getColumn(row, "gForge");
+		if (!Utilities.noString(tasks)) {
+		  for (String t : tasks.split(","))
+		    e.getTasks().add(t);
+		}
+		
 		if (e.getName().startsWith("@")) {
 		  e.setName(e.getName().substring(1));
 		  e.setXmlAttribute(true);
@@ -787,7 +807,7 @@ public class SpreadsheetParser {
 		TypeParser tp = new TypeParser();
 		e.getTypes().addAll(tp.parse(t));
 		
-		e.setProfile(sheet.getColumn(row, "Profile"));
+		e.setStatedProfile(sheet.getColumn(row, "Profile"));
 		if (sheet.hasColumn(row, "Concept Domain"))
 			throw new Exception("Column 'Concept Domain' has been retired in "
 					+ path);
@@ -811,17 +831,9 @@ public class SpreadsheetParser {
 		
 		e.setRequirements(Utilities.appendPeriod(sheet.getColumn(row, "Requirements")));
 		e.setComments(Utilities.appendPeriod(sheet.getColumn(row, "Comments")));
-    e.addMapping(ElementDefn.RIM_MAPPING, sheet.getColumn(row, "RIM Mapping"));
-    e.addMapping(ElementDefn.CDA_MAPPING, sheet.getColumn(row, "CDA Mapping"));
-		e.addMapping(ElementDefn.v2_MAPPING, sheet.getColumn(row, "v2 Mapping"));
-		e.addMapping(ElementDefn.DICOM_MAPPING, sheet.getColumn(row, "DICOM Mapping"));
-    e.addMapping(ElementDefn.vCard_MAPPING, sheet.getColumn(row, "vCard Mapping"));
-    e.addMapping(ElementDefn.XDS_MAPPING, sheet.getColumn(row, "XDS Mapping"));
-    e.addMapping(ElementDefn.PROV_MAPPING, sheet.getColumn(row, "Prov Mapping"));
-    e.addMapping(ElementDefn.LOINC_MAPPING, sheet.getColumn(row, "LOINC"));
-    e.addMapping(ElementDefn.SNOMED_MAPPING, sheet.getColumn(row, "SNOMED"));
-    e.addMapping(ElementDefn.iCAL_MAPPING, sheet.getColumn(row, "iCal Mapping"));
-    e.addMapping(ElementDefn.ServD_MAPPING, sheet.getColumn(row, "ServD Mapping"));
+    for (String n : definitions.getMapTypes().keySet()) {
+      e.addMapping(n, sheet.getColumn(row, definitions.getMapTypes().get(n).getColumnName()));
+    }
 		e.setTodo(Utilities.appendPeriod(sheet.getColumn(row, "To Do")));
 		e.setExample(sheet.getColumn(row, "Example"));
 		e.setCommitteeNotes(Utilities.appendPeriod(sheet.getColumn(row, "Committee Notes")));
@@ -836,14 +848,23 @@ public class SpreadsheetParser {
 
 
 
-  private ExtensionDefn processExtension(ElementDefn extensions, Sheet sheet, int row,	Definitions definitions, String uri) throws Exception {
+  private void processExtension(ElementDefn extensions, Sheet sheet, int row,	Definitions definitions, String uri, List<ExtensionDefn> extensionList) throws Exception {
 	  // first, we build the extension definition
 	  org.hl7.fhir.definitions.model.ExtensionDefn ex = new org.hl7.fhir.definitions.model.ExtensionDefn();
-	  ex.setCode(sheet.getColumn(row, "Code"));
-    ex.setType(readContextType(sheet.getColumn(row, "Context Type"), row));
-    ex.setContext(sheet.getColumn(row, "Context"));
-    if (ex.getType() == ContextType.Extension && ex.getContext().startsWith("#"))
-      ex.setContext(uri+ex.getContext());
+	  String name = sheet.getColumn(row, "Code");
+	  String context = null;
+	  if (Utilities.noString(name))
+	    throw new Exception("No code found on Extension");
+	  
+	  if (name.contains(".")) {
+	    context = name.substring(0, name.lastIndexOf("."));
+	    name = name.substring(name.lastIndexOf(".")+1);
+	  }
+	  ex.setCode(name);
+	  if (context == null) {
+      ex.setType(readContextType(sheet.getColumn(row, "Context Type"), row));
+      ex.setContext(sheet.getColumn(row, "Context"));
+	  }
 	  ElementDefn exe = new ElementDefn();
 	  exe.setName(sheet.getColumn(row, "Code"));
 	  ex.setDefinition(exe);
@@ -865,15 +886,9 @@ public class SpreadsheetParser {
     exe.setDefinition(Utilities.appendPeriod(sheet.getColumn(row, "Definition")));
     exe.setRequirements(Utilities.appendPeriod(sheet.getColumn(row, "Requirements")));
     exe.setComments(Utilities.appendPeriod(sheet.getColumn(row, "Comments")));
-    exe.addMapping(ElementDefn.RIM_MAPPING, sheet.getColumn(row, "RIM Mapping"));
-    exe.addMapping(ElementDefn.CDA_MAPPING, sheet.getColumn(row, "CDA Mapping"));
-    exe.addMapping(ElementDefn.v2_MAPPING, sheet.getColumn(row, "v2 Mapping"));
-    exe.addMapping(ElementDefn.DICOM_MAPPING, sheet.getColumn(row, "DICOM Mapping"));
-    exe.addMapping(ElementDefn.vCard_MAPPING, sheet.getColumn(row, "vCard Mapping"));
-    exe.addMapping(ElementDefn.iCAL_MAPPING, sheet.getColumn(row, "iCal Mapping"));
-    exe.addMapping(ElementDefn.XDS_MAPPING, sheet.getColumn(row, "XDS Mapping"));
-    exe.addMapping(ElementDefn.PROV_MAPPING, sheet.getColumn(row, "Prov Mapping"));
-    exe.addMapping(ElementDefn.ServD_MAPPING, sheet.getColumn(row, "ServD Mapping"));
+    for (String n : definitions.getMapTypes().keySet()) {
+      exe.addMapping(n, sheet.getColumn(row, definitions.getMapTypes().get(n).getColumnName()));
+    }
     exe.setTodo(Utilities.appendPeriod(sheet.getColumn(row, "To Do")));
     exe.setExample(sheet.getColumn(row, "Example"));
     exe.setCommitteeNotes(Utilities.appendPeriod(sheet.getColumn(row, "Committee Notes")));
@@ -932,8 +947,29 @@ public class SpreadsheetParser {
 	    }
 	    e.getElements().remove(e.getElementByName("extension"));
 	  }
-	  return ex;
+    if (context != null) {
+      ExtensionDefn pex = findExtension(extensionList, context.split("\\."), 0);
+      if (pex == null)
+        throw new Exception("unable to find extension "+context);
+      pex.getChildren().add(ex);      
+      ex.setContext(uri+ex.getContext());
+      ex.setType(ContextType.Extension);
+    } else
+	    extensionList.add(ex);
 	}
+
+
+  private ExtensionDefn findExtension(List<ExtensionDefn> extensionList, String[] names, int cursor) {
+    for (ExtensionDefn ppex : extensionList) {
+      if (ppex.getCode().equals(names[cursor])) {
+        if (cursor == names.length - 1)
+          return ppex;
+        else 
+          return findExtension(ppex.getChildren(), names, cursor+1);
+      }
+    }
+    return null;
+  }
 
 	private ExtensionDefn.ContextType readContextType(String value, int row) throws Exception {
     if (value.equals("Resource"))

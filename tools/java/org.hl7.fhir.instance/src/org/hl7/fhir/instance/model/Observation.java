@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, May 10, 2014 00:15+1000 for FHIR v0.2.1
+// Generated on Mon, Jun 30, 2014 21:30+1000 for FHIR v0.2.1
 
 import java.util.*;
 
@@ -371,7 +371,7 @@ public class Observation extends Resource {
           childrenList.add(new Property("age", "Range", "The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so.", 0, java.lang.Integer.MAX_VALUE, age));
         }
 
-      public ObservationReferenceRangeComponent copy(Observation e) {
+      public ObservationReferenceRangeComponent copy() {
         ObservationReferenceRangeComponent dst = new ObservationReferenceRangeComponent();
         dst.low = low == null ? null : low.copy();
         dst.high = high == null ? null : high.copy();
@@ -481,7 +481,7 @@ public class Observation extends Resource {
           childrenList.add(new Property("target", "Resource(Observation)", "A reference to the observation that is related to this observation.", 0, java.lang.Integer.MAX_VALUE, target));
         }
 
-      public ObservationRelatedComponent copy(Observation e) {
+      public ObservationRelatedComponent copy() {
         ObservationRelatedComponent dst = new ObservationRelatedComponent();
         dst.type = type == null ? null : type.copy();
         dst.target = target == null ? null : target.copy();
@@ -972,7 +972,7 @@ public class Observation extends Resource {
         childrenList.add(new Property("identifier", "Identifier", "A unique identifier for the simple observation.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("subject", "Resource(Patient|Group|Device|Location)", "The thing the observation is being made about.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("specimen", "Resource(Specimen)", "The specimen that was used when this observation was made.", 0, java.lang.Integer.MAX_VALUE, specimen));
-        childrenList.add(new Property("performer", "Resource(Practitioner|Device|Organization)", "Who was responsible for asserting the observed value as 'true'.", 0, java.lang.Integer.MAX_VALUE, performer));
+        childrenList.add(new Property("performer", "Resource(Practitioner|Device|Organization|Patient)", "Who was responsible for asserting the observed value as 'true'.", 0, java.lang.Integer.MAX_VALUE, performer));
         childrenList.add(new Property("referenceRange", "", "Guidance on how to interpret the value by comparison to a normal or recommended range.", 0, java.lang.Integer.MAX_VALUE, referenceRange));
         childrenList.add(new Property("related", "", "Related observations - either components, or previous observations, or statements of derivation.", 0, java.lang.Integer.MAX_VALUE, related));
       }
@@ -997,10 +997,10 @@ public class Observation extends Resource {
           dst.performer.add(i.copy());
         dst.referenceRange = new ArrayList<ObservationReferenceRangeComponent>();
         for (ObservationReferenceRangeComponent i : referenceRange)
-          dst.referenceRange.add(i.copy(dst));
+          dst.referenceRange.add(i.copy());
         dst.related = new ArrayList<ObservationRelatedComponent>();
         for (ObservationRelatedComponent i : related)
-          dst.related.add(i.copy(dst));
+          dst.related.add(i.copy());
         return dst;
       }
 

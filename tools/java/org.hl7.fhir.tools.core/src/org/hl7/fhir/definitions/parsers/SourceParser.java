@@ -39,12 +39,16 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
+import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Compartment;
@@ -54,9 +58,12 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.Invariant;
+import org.hl7.fhir.definitions.model.MappingSpace;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
+import org.hl7.fhir.definitions.model.RegisteredProfile.ProfileInputType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.parsers.converters.BindingConverter;
@@ -77,6 +84,10 @@ import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
+import org.hl7.fhir.utilities.xml.XMLUtil;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.Parser;
 
 /**
  * This class parses the master source for FHIR into a single definitions object
@@ -160,21 +171,16 @@ public class SourceParser {
 		return sorted;
 	}
 	
-	public void parse(Calendar genDate, String version)
-			throws Exception {
+	public void parse(Calendar genDate, String version) throws Exception {
 		logger.log("Loading", LogMessageType.Process);
 
 		eCoreParseResults = DefinitionsImpl.build(genDate.getTime(), version);
-
+		loadMappingSpaces();
 		loadGlobalConceptDomains();
-		eCoreParseResults.getBinding().addAll(
-				sortBindings(BindingConverter.buildBindingsFromFhirModel(definitions
-						.getBindings().values(), null)));
+		eCoreParseResults.getBinding().addAll(sortBindings(BindingConverter.buildBindingsFromFhirModel(definitions.getBindings().values(), null)));
 
 		loadPrimitives();
-			
-		eCoreParseResults.getPrimitive().addAll(PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions
-				.getPrimitives().values()));
+		eCoreParseResults.getPrimitive().addAll(PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions.getPrimitives().values()));
 		
 		for (String n : ini.getPropertyNames("removed-resources"))
 		  definitions.getDeletedResources().add(n);
@@ -191,27 +197,18 @@ public class SourceParser {
 		
 		for (String n : ini.getPropertyNames("infrastructure"))
 			loadCompositeType(n, definitions.getInfrastructure());
-		
-		List<TypeDefn> allFhirComposites = new ArrayList<TypeDefn>();
-		
-		allFhirComposites.add( CompositeTypeConverter.buildElementBaseType());
-		
-		allFhirComposites.addAll( PrimitiveConverter.buildCompositeTypesForPrimitives( eCoreParseResults.getPrimitive() ) );
-		
-		allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getTypes().values(), null ));
-		
-		allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getStructures().values(), null ));
 
-		List<CompositeTypeDefn> infra = CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-				.getInfrastructure().values(), null ); 
-		for( CompositeTypeDefn composite : infra ) composite.setInfrastructure(true);
+		List<TypeDefn> allFhirComposites = new ArrayList<TypeDefn>();
+		allFhirComposites.add( CompositeTypeConverter.buildElementBaseType());
+		allFhirComposites.addAll( PrimitiveConverter.buildCompositeTypesForPrimitives( eCoreParseResults.getPrimitive() ) );
+		allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions.getTypes().values(), null ));
+		allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions.getStructures().values(), null ));
+
+		List<CompositeTypeDefn> infra = CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions.getInfrastructure().values(), null ); 
+		for (CompositeTypeDefn composite : infra) 
+		  composite.setInfrastructure(true);
 		allFhirComposites.addAll( infra );
-		
-		allFhirComposites.addAll( ConstrainedTypeConverter.buildConstrainedTypesFromFhirModel(
-						definitions.getConstraints().values(),
-						definitions.getConstraintInvariants()) );
+		allFhirComposites.addAll( ConstrainedTypeConverter.buildConstrainedTypesFromFhirModel(definitions.getConstraints().values()));
 		
 		eCoreParseResults.getType().addAll( sortTypes(allFhirComposites) );
 		
@@ -225,23 +222,17 @@ public class SourceParser {
 		loadCompartments();
 		loadStatusCodes();
 		
-		org.hl7.fhir.definitions.ecore.fhir.ResourceDefn eCoreBaseResource =
-				CompositeTypeConverter.buildResourceFromFhirModel(baseResource, null);
+		org.hl7.fhir.definitions.ecore.fhir.ResourceDefn eCoreBaseResource = CompositeTypeConverter.buildResourceFromFhirModel(baseResource, null);
 		eCoreBaseResource.getElement().add(CompositeTypeConverter.buildInternalIdElement());		
 		eCoreParseResults.getType().add( eCoreBaseResource );
-			
-		eCoreParseResults.getType().addAll(
-				sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions
-						.getResources().values() )));
-
+		eCoreParseResults.getType().addAll(sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions.getResources().values() )));
 		eCoreParseResults.getType().add(CompositeTypeConverter.buildBinaryResourceDefn());
 		
 		for (String n : ini.getPropertyNames("svg"))
 		  definitions.getDiagrams().put(n, ini.getStringProperty("svg", n));
 		
 		if (ini.getPropertyNames("future-resources") != null)
-		  for (String n : ini.getPropertyNames("future-resources")) 
-		  {
+		  for (String n : ini.getPropertyNames("future-resources")) {
 		    DefinedCode cd = new DefinedCode(ini.getStringProperty(
 		        "future-resources", n), "Yet to be defined", n);
 		    definitions.getKnownResources().put(n, cd);
@@ -254,16 +245,11 @@ public class SourceParser {
 		    definitions.getFutureResources().put(cd.getCode(), futureResource);
 		  }
 
-		eCoreParseResults.getType().addAll(
-				CompositeTypeConverter.buildResourcesFromFhirModel(definitions
-						.getFutureResources().values() ));
-
-		eCoreParseResults.getEvent().addAll(
-				EventConverter.buildEventsFromFhirModel(definitions.getEvents().values()));
+		eCoreParseResults.getType().addAll(CompositeTypeConverter.buildResourcesFromFhirModel(definitions.getFutureResources().values() ));
+		eCoreParseResults.getEvent().addAll(EventConverter.buildEventsFromFhirModel(definitions.getEvents().values()));
 	
 		// As a second pass, resolve typerefs to the types
-		fixTypeRefs( eCoreParseResults );
-	
+		fixTypeRefs(eCoreParseResults);
 		eCoreParseResults.getBinding().add(BindingConverter.buildResourceTypeBinding(eCoreParseResults));
 		
 		for (String n : ini.getPropertyNames("special-resources"))
@@ -280,14 +266,45 @@ public class SourceParser {
 		
 		for (ResourceDefn r : definitions.getResources().values()) {
 		  for (RegisteredProfile p : r.getProfiles()) {
-		    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(p.getFilepath()), p.getName(), definitions, srcDir, logger, registry);
-		    sparser.setFolder(Utilities.getDirectoryForFile(p.getFilepath()));
-		    p.setProfile(sparser.parseProfile(definitions));
+		    if (p.getType() == ProfileInputType.Spreadsheet) {
+  		    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(p.getFilepath()), p.getName(), definitions, srcDir, logger, registry);
+	  	    sparser.setFolder(Utilities.getDirectoryForFile(p.getFilepath()));
+		      p.setProfile(sparser.parseProfile(definitions));
+		    } else if (p.getType() == ProfileInputType.Profile) {
+		      XmlParser prsr = new XmlParser();
+		      Profile profile = (Profile) prsr.parse(new CSFileInputStream(p.getFilepath()));
+		      p.setProfile(ProfileGenerator.wrapProfile(profile));
+		    } else
+		      throw new Exception("Unimplemented profile parser type "+p.getType());
+		    p.getProfile().forceMetadata("id", p.getDestFilenameNoExt());
 		  }
 		}
 	}
 
 	
+  private void loadMappingSpaces() throws Exception {
+    try {
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      factory.setNamespaceAware(true);
+      DocumentBuilder builder = factory.newDocumentBuilder();
+      Document doc = builder.parse(new FileInputStream(Utilities.path(srcDir, "mappingSpaces.xml")));
+      Element e = XMLUtil.getFirstChild(doc.getDocumentElement());
+      while (e != null) {
+        MappingSpace m = new MappingSpace(XMLUtil.getNamedChild(e, "columnName").getTextContent(), XMLUtil.getNamedChild(e, "title").getTextContent(), 
+             XMLUtil.getNamedChild(e, "id").getTextContent(), Integer.parseInt(XMLUtil.getNamedChild(e, "sort").getTextContent()));
+        definitions.getMapTypes().put(XMLUtil.getNamedChild(e, "url").getTextContent(), m);
+        Element p = XMLUtil.getNamedChild(e, "preamble");
+        if (p != null)
+          m.setPreamble(XMLUtil.elementToString(XMLUtil.getFirstChild(p)));
+        e = XMLUtil.getNextSibling(e);
+      }
+    } catch (Exception e) {
+      throw new Exception("Error processing mappingSpaces.xml: "+e.getMessage(), e);
+    }
+    
+  }
+
+
   private void loadStatusCodes() throws FileNotFoundException, Exception {
     XLSXmlParser xml = new XLSXmlParser(new CSFileInputStream(srcDir+"status-codes.xml"), "compartments.xml");
     Sheet sheet = xml.getSheets().get("Status Codes");
@@ -367,6 +384,7 @@ public class SourceParser {
 	    ProfileDefn profile = new ProfileDefn();
       try {
   	    profile.setSource((Profile) new XmlParser().parse(new FileInputStream(spreadsheet)));
+  	    profile.addMetadata("id", n);
         definitions.getProfiles().put(n, profile);
       } catch (Exception e) {
         throw new Exception("Error Parsing Profile: '"+n+"': "+e.getMessage(), e);
@@ -458,7 +476,7 @@ public class SourceParser {
 		definitions.getPrimitives().put(prim.getCode(), prim);
 	}
 
-	private String loadCompositeType(String n, Map<String, ElementDefn> map) throws Exception {
+	private String loadCompositeType(String n, Map<String, org.hl7.fhir.definitions.model.TypeDefn> map) throws Exception {
 		TypeParser tp = new TypeParser();
 		List<TypeRef> ts = tp.parse(n);
 		definitions.getKnownTypes().addAll(ts);
@@ -468,7 +486,7 @@ public class SourceParser {
 		  File csv = new CSFile(dtDir + t.getName().toLowerCase() + ".xml");
 		  if (csv.exists()) {
 		    SpreadsheetParser p = new SpreadsheetParser(new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, registry);
-		    ElementDefn el = p.parseCompositeType();
+		    org.hl7.fhir.definitions.model.TypeDefn el = p.parseCompositeType();
 		    map.put(t.getName(), el);
 		    el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
 		    return el.getName();
@@ -489,9 +507,13 @@ public class SourceParser {
 		        inv.setEnglish(sheet.getColumn(i,"Rules"));
 		        inv.setOcl(sheet.getColumn(i, "OCL"));
 		        inv.setXpath(sheet.getColumn(i, "XPath"));
-		        definitions.getConstraints().put(n,
-		            new DefinedCode(n, sheet.getColumn(i, "Rules"), p));
-		        definitions.getConstraintInvariants().put(n,inv);
+		        ProfiledType pt = new ProfiledType();
+		        pt.setDefinition(sheet.getColumn(i, "Definition"));
+		        pt.setDescription(sheet.getColumn(i, "Rules"));
+		        pt.setName(n);
+		        pt.setBaseType(p);
+		        pt.setInvariant(inv);
+		        definitions.getConstraints().put(n, pt);
 		      }
 		    }
 		    if (!found)

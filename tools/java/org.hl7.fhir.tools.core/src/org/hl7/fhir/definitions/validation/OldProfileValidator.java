@@ -63,7 +63,7 @@ import org.hl7.fhir.utilities.Utilities;
  * @author Grahame
  *
  */
-public class ProfileValidator extends BaseValidator {
+public class OldProfileValidator extends BaseValidator {
 
   public class TypeState {
     private String prefix;
@@ -81,7 +81,7 @@ public class ProfileValidator extends BaseValidator {
     }
   }
 
-  public ProfileValidator() {
+  public OldProfileValidator() {
     super();
     source = Source.ProfileValidator;
   }
@@ -93,7 +93,7 @@ public class ProfileValidator extends BaseValidator {
   private AtomFeed types;
   private ArrayList<String> errors;
 
-  private Stack<TypeState> typePoints = new Stack<ProfileValidator.TypeState>();
+  private Stack<TypeState> typePoints = new Stack<OldProfileValidator.TypeState>();
 
   public void setCandidate(ResourceDefn candidate) {
     this.candidate = candidate; 
@@ -177,7 +177,7 @@ public class ProfileValidator extends BaseValidator {
 
   private List<ElementComponent> collectChildren(String path) {
     List<ElementComponent> results = new ArrayList<ElementComponent>();
-    for (ElementComponent r : profile.getStructure().get(0).getElement())
+    for (ElementComponent r : profile.getStructure().get(0).getDifferential().getElement())
       if (r.getPath().getValue().startsWith(path+".") && !r.getPath().getValue().substring(path.length()+1).contains(".")) 
         results.add(r);
     return results;
@@ -293,7 +293,7 @@ public class ProfileValidator extends BaseValidator {
 
   private ElementComponent getConstraintByPath(String path) {
     if (typePoints.empty()) {
-      for (ElementComponent e : profile.getStructure().get(0).getElement()) {
+      for (ElementComponent e : profile.getStructure().get(0).getDifferential().getElement()) {
         String p = e.getPath().getValue();
         if (!Utilities.noString(e.getDefinition().getNameReferenceSimple()) && path.startsWith(p))
           if (path.length() > p.length())
@@ -305,7 +305,7 @@ public class ProfileValidator extends BaseValidator {
           return e;
       }
     } else {
-      for (ElementComponent e : typePoints.peek().getType().getElement()) {
+      for (ElementComponent e : typePoints.peek().getType().getDifferential().getElement()) {
         if (e.getPath().getValue().contains(".")) { // skip the first one
           String p = typePoints.peek().getPrefix()+"."+e.getPath().getValue().substring(e.getPath().getValue().indexOf(".")+1);
           if (p.equals(path) || (p.endsWith("[x]") && path.length() > p.length() && p.substring(0, p.length()-3).equals(path.substring(0, p.length()-3)) && isType(path.substring(p.length()-3))))
@@ -325,5 +325,6 @@ public class ProfileValidator extends BaseValidator {
       return true;
     return false;
   }
+
 
 }

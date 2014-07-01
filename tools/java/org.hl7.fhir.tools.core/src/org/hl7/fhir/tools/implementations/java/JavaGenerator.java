@@ -56,6 +56,7 @@ import javax.tools.ToolProvider;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.model.Constants;
@@ -79,7 +80,6 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   private String javaDir;
   private String javaParserDir;
   private Definitions definitions;
-  private Logger logger;
   private Map<String, String> hashes = new HashMap<String, String>();
   
   public JavaGenerator(String rootDir) {
@@ -103,7 +103,6 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     javaDir       =  implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl;
     javaParserDir =  implDir+"org.hl7.fhir.instance"+sl+"src"+sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl;
     this.definitions = definitions;
-    this.logger = logger;
 
     for (String n : definitions.getDeletedResources()) {
       File f = new File(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl+n+".java");
@@ -158,13 +157,13 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       } else
         jFactoryGen.registerType(n,  root.getName());
     }
-    for (DefinedCode cd : definitions.getConstraints().values()) {
-      ElementDefn root = definitions.getTypes().get(cd.getComment()); 
-      JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+javaClassName(cd.getCode())+".java"), definitions);
-      jgen.setInheritedHash(hashes.get(cd.getComment()));
-      jgen.generate(root, javaClassName(cd.getCode()), definitions.getBindings(), JavaGenClass.Constraint, cd, genDate, version);
-      jFactoryGen.registerType(cd.getCode(), cd.getCode()); 
-      hashes.put(cd.getCode(), Long.toString(jgen.getHashSum()));
+    for (ProfiledType cd : definitions.getConstraints().values()) {
+      ElementDefn root = definitions.getTypes().get(cd.getBaseType()); 
+      JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+javaClassName(cd.getName())+".java"), definitions);
+      jgen.setInheritedHash(hashes.get(cd.getBaseType()));
+      jgen.generate(root, javaClassName(cd.getName()), definitions.getBindings(), JavaGenClass.Constraint, cd, genDate, version);
+      jFactoryGen.registerType(cd.getName(), cd.getName()); 
+      hashes.put(cd.getName(), Long.toString(jgen.getHashSum()));
       jgen.close();
     }
     
@@ -185,7 +184,8 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     JavaComposerJsonGenerator jjComposerGen = new JavaComposerJsonGenerator(new FileOutputStream(javaParserDir+"JsonComposer.java"));
     jjComposerGen.generate(definitions, version, genDate);    
     jFactoryGen.generate(version, genDate);
-    TextFile.stringToFileNoPrefix(makeConstantsClass(version, svnRevision, genDate), implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl+"Constants.java"); 
+    TextFile.stringToFileNoPrefix(makeConstantsClass(version, svnRevision, genDate), implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl+"Constants.java");
+    
     ZipGenerator zip = new ZipGenerator(destDir+getReference(version));
     zip.addFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl, "org/hl7/fhir/instance/model/", ".java", null);
     zip.addFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl, "org/hl7/fhir/instance/formats/", ".java", null);
@@ -343,6 +343,7 @@ public boolean compile(String rootDir, List<String> errors, Logger logger) throw
     AddJarToJar(jar, importsDir+sl+"xpp3-1.1.3.4.O.jar", names);
     AddJarToJar(jar, importsDir+sl+"gson-2.2.4.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-codec-1.3.jar", names);
+    AddJarToJar(jar, importsDir+sl+"Saxon-HE-9.4.jar", names);
     
     // by adding source first, we add all the newly built classes, and these are not updated when the older stuff is included
     AddToJar(jar, new File(rootDir+"implementations"+sl+"java"+sl+"org.hl7.fhir.instance"+sl+"src"), (rootDir+"implementations"+sl+"java"+sl+"org.hl7.fhir.instance"+sl+"src"+sl).length(), names);

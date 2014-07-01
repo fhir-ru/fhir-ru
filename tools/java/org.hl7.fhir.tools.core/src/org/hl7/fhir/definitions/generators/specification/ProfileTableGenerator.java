@@ -12,6 +12,8 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength;
+import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.Profile.ProfileStructureComponent;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator.Cell;
@@ -20,54 +22,66 @@ import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator.Row;
 import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator.TableModel;
 import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
+import org.hl7.fhir.utilities.xhtml.genImage;
 
 public class ProfileTableGenerator extends TableGenerator {
-  public ProfileTableGenerator(String dest, PageProcessor page) {
-    super(dest, page);
+  public ProfileTableGenerator(String dest, PageProcessor page, String pageName, boolean inlineGraphics) throws Exception {
+    super(dest, page, pageName, inlineGraphics);
   }
 
-  public XhtmlNode generate(ProfileDefn p) throws Exception {
-    HeirarchicalTableGenerator gen = new HeirarchicalTableGenerator(dest);
-    TableModel model = gen.new TableModel();
+  
+  @Override
+  protected boolean dictLinks() {
+    return false;
+  }
+
+
+  public XhtmlNode generate(ProfileDefn p, String root, boolean extensionsOnly) throws Exception {
+    HeirarchicalTableGenerator gen = new HeirarchicalTableGenerator(dest, inlineGraphics);
+    TableModel model = gen.initNormalTable();
     
-    model.getTitles().add(gen.new Title(null, null, "Name", null, null, 0));
-    model.getTitles().add(gen.new Title(null, null, "Card.", null, null, 0));
-    model.getTitles().add(gen.new Title(null, null, "Type", null, null, 100));
-    model.getTitles().add(gen.new Title(null, null, "Description", null, null, 0));
-    model.getTitles().add(gen.new Title(null, null, "Constraints", null, null, 0));
-    
-    genProfile(gen, model.getRows(), p);
+    genProfile(gen, model.getRows(), p, root, extensionsOnly);
     
     return gen.generate(model);
   }
 
-  private void genProfile(HeirarchicalTableGenerator gen, List<Row> rows, ProfileDefn p) throws Exception {
-    Row r = gen.new Row();
-    rows.add(r);
-    r.setIcon("icon_profile.png");
-    r.getCells().add(gen.new Cell(null, null, p.metadata("name"), null, null));
-    r.getCells().add(gen.new Cell());
-    r.getCells().add(gen.new Cell(null, null, "Profile", null, null));
-    r.getCells().add(gen.new Cell(null, null, p.metadata("description"), null, null));
-    r.getCells().add(gen.new Cell());
+  private void genProfile(HeirarchicalTableGenerator gen, List<Row> rows, ProfileDefn p, String root, boolean extensionsOnly) throws Exception {
+    Profile profile = p.getSource();
+    
+    if (!extensionsOnly) {
+      Row r = gen.new Row();
+      rows.add(r);
+      r.setIcon("icon_profile.png");
+      r.getCells().add(gen.new Cell(null, null, profile.getNameSimple(), null, null));
+      r.getCells().add(gen.new Cell());
+      r.getCells().add(gen.new Cell(null, null, "Profile", null, null));
+      r.getCells().add(gen.new Cell(null, null, profile.getDescriptionSimple(), null, null));
 
-    if (!p.getExtensions().isEmpty()) {
-      Row re = gen.new Row();
-      r.getSubRows().add(re);
-      re.setIcon("icon_extension.png");
-      re.getCells().add(gen.new Cell(null, null, "Extensions", null, null));
-      re.getCells().add(gen.new Cell());
-      re.getCells().add(gen.new Cell());
-      re.getCells().add(gen.new Cell(null, null, "Extensions defined by this profile", null, null));
-      re.getCells().add(gen.new Cell(null, null, "Namespace: "+p.metadata("extension.uri"), null, null));
-      for (ExtensionDefn ext : p.getExtensions()) {
-        genExtension(gen, re.getSubRows(), ext);
+      for (ProfileStructureComponent s : profile.getStructure()) {
+        Row re = gen.new Row();
+        r.getSubRows().add(re);
+        re.setIcon("icon_resource.png");
+        re.getCells().add(gen.new Cell(null, null, s.getNameSimple(), null, null));
+        re.getCells().add(gen.new Cell(null, null, "", null, null));
+        re.getCells().add(gen.new Cell(null, null, s.getTypeSimple(), null, null));
+        re.getCells().add(gen.new Cell(null, null, s.getBaseSimple(), null, null));
       }
     }
     
-    for (ResourceDefn res : p.getResources()) {
-      genResourceProfile(gen, r.getSubRows(), res);
+    if (!p.getExtensions().isEmpty() || extensionsOnly) {
+      Row re = gen.new Row();
+      rows.add(re);
+      re.setIcon("icon_profile.png");
+      re.getCells().add(gen.new Cell(null, null, "Extensions", null, null));
+      re.getCells().add(gen.new Cell());
+      re.getCells().add(gen.new Cell());
+      re.getCells().add(gen.new Cell(null, null, "Extensions defined by the URL \""+profile.getUrlSimple()+"\"", null, null));
+
+      for (ExtensionDefn ext : p.getExtensions()) {
+        genExtension(gen, re.getSubRows(), ext, true);
+      }
     }
+    
   }
 
   private void genResourceProfile(HeirarchicalTableGenerator gen, List<Row> rows, ResourceDefn res) throws Exception {
@@ -78,21 +92,34 @@ public class ProfileTableGenerator extends TableGenerator {
     r.getCells().add(gen.new Cell());
     r.getCells().add(gen.new Cell(null, null, res.getRoot().getName(), null, null));
     r.getCells().add(gen.new Cell(null, null, res.getDefinition(), null, null));
-    r.getCells().add(gen.new Cell());
+//    r.getCells().add(gen.new Cell());
     
     for (ElementDefn c : res.getRoot().getElements())
-      r.getSubRows().add(genElement(c, gen, false));
+      r.getSubRows().add(genElement(c, gen, false, res.getRoot().getProfileName(), true));
   }
 
-  private void genExtension(HeirarchicalTableGenerator gen, List<Row> rows, ExtensionDefn ext) {
+  private void genExtension(HeirarchicalTableGenerator gen, List<Row> rows, ExtensionDefn ext, boolean root) {
     Row r = gen.new Row();
     rows.add(r);
+    if (ext.getChildren().isEmpty())
+      r.setIcon("icon_extension_simple.png");
+    else
+      r.setIcon("icon_extension_complex.png");
     r.getCells().add(gen.new Cell(null, null, ext.getCode(), null, null));
     r.getCells().add(gen.new Cell(null, null, ext.getDefinition().describeCardinality(), null, null));
     r.getCells().add(gen.new Cell(null, null, ext.getDefinition().typeCode(), null, null));
-    r.getCells().add(gen.new Cell(null, null, ext.getDefinition().getShortDefn(), null, null));
-    r.getCells().add(gen.new Cell(null, null, describeExtensionContext(ext), null, null));
-    
+//    r.getCells().add(gen.new Cell(null, null, ext.getDefinition().getShortDefn(), null, null));
+//    if (root)
+//      r.getCells().add(gen.new Cell(null, null, describeExtensionContext(ext), null, null));
+//    else
+//      r.getCells().add(gen.new Cell());
+    if (root)
+      r.getCells().add(gen.new Cell(null, null, ext.getDefinition().getShortDefn(), null, null).addPiece(gen.new Piece("br")).addPiece(gen.new Piece(null, describeExtensionContext(ext), null)));
+    else
+      r.getCells().add(gen.new Cell(null, null, ext.getDefinition().getShortDefn(), null, null));
+    for (ExtensionDefn child : ext.getChildren()) {
+      genExtension(gen, r.getSubRows(), child, false);
+    }
   }
 
   private String describeExtensionContext(ExtensionDefn ext) {

@@ -37,18 +37,7 @@ import org.hl7.fhir.instance.model.Profile.ElementComponent;
 import org.hl7.fhir.utilities.Utilities;
 
 public class ElementDefn {
-	
-  public static final String RIM_MAPPING = "http://hl7.org/v3";
-  public static final String CDA_MAPPING = "http://hl7.org/v3/cda";
-	public static final String v2_MAPPING = "http://hl7.org/v2";
-	public static final String DICOM_MAPPING = "http://nema.org/dicom";
-  public static final String vCard_MAPPING = "http://w3.org/vcard";
-  public static final String XDS_MAPPING = "http://ihe.net/xds";
-  public static final String LOINC_MAPPING = "http://loinc.org";
-  public static final String SNOMED_MAPPING = "http://snomed.info";
-  public static final String PROV_MAPPING = "http://www.w3.org/ns/prov";
-  public static final String iCAL_MAPPING = "http://www.ietf.org/rfc/rfc2445.txt";
-  public static final String ServD_MAPPING = "http://www.omg.org/spec/ServD/1.0/";
+
   public static final int MAX_NEG = -1000000;
 	
 	private List<TypeRef> types = new ArrayList<TypeRef>();
@@ -81,9 +70,11 @@ public class ElementDefn {
 	private String committeeNotes;
 	private String condition;
 	private String example;
+	private List<String> tasks = new ArrayList<String>();
+	
 	private String profileName; // only in a profile, for slicing
 	private String discriminator; // when slicing
-	private String profile; // means some profile is applicable to this data type or resource reference
+	private String statedProfile; // means some profile is applicable to this data type or resource reference
 	private String value; // only in a profile
 	private String aggregation; // only in a profile
 	private ElementComponent derivation;
@@ -648,12 +639,12 @@ public class ElementDefn {
       return aliases;
     }
 
-    public String getProfile() {
-      return profile;
+    public String getStatedProfile() {
+      return statedProfile;
     }
 
-    public void setProfile(String profile) {
-      this.profile = profile;
+    public void setStatedProfile(String profile) {
+      this.statedProfile = profile;
     }
 
 	public void addMapping(String name, String value) {
@@ -746,22 +737,6 @@ public class ElementDefn {
     return svgWidth;
   }
 
-  public static List<String> getAllMappingUris() {
-    List<String> results = new ArrayList<String>();
-    results.add(RIM_MAPPING);
-    results.add(CDA_MAPPING);
-    results.add(v2_MAPPING);
-    results.add(DICOM_MAPPING);
-    results.add(vCard_MAPPING);
-    results.add(iCAL_MAPPING);
-    results.add(XDS_MAPPING);
-    results.add(LOINC_MAPPING);
-    results.add(SNOMED_MAPPING);
-    results.add(PROV_MAPPING);
-    results.add(ServD_MAPPING);
-    return results;
-  }
-
   public boolean usesType(String name) {
     for (TypeRef t : getTypes()) {
       if (t.summary().equals(name))
@@ -788,6 +763,14 @@ public class ElementDefn {
 
   public void setDisplayHint(String displayHint) {
     this.displayHint = displayHint;
+  }
+
+  public List<String> getTasks() {
+    return tasks;
+  }
+
+  public boolean hasStatedProfile() {
+    return !Utilities.noString(statedProfile);
   }
 	
 	

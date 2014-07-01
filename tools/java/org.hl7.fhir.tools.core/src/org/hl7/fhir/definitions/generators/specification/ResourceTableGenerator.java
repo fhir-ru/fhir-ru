@@ -10,21 +10,17 @@ import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
 public class ResourceTableGenerator extends TableGenerator {
-  public ResourceTableGenerator(String dest, PageProcessor page) {
-    super(dest, page);
+  
+  public ResourceTableGenerator(String dest, PageProcessor page, String pageName, boolean inlineGraphics) throws Exception {
+    super(dest, page, pageName == null ? null : pageName.toLowerCase(), inlineGraphics);
   }
 
   public XhtmlNode generate(ElementDefn e) throws Exception {
-    HeirarchicalTableGenerator gen = new HeirarchicalTableGenerator(dest);
-    TableModel model = gen.new TableModel();
+    HeirarchicalTableGenerator gen = new HeirarchicalTableGenerator(dest, inlineGraphics);
+    TableModel model = gen.initNormalTable();
+
     
-    model.getTitles().add(gen.new Title(null, null, "Name", null, null, 0));
-    model.getTitles().add(gen.new Title(null, null, "Card.", null, null, 0));
-    model.getTitles().add(gen.new Title(null, null, "Type", null, null, 100));
-    model.getTitles().add(gen.new Title(null, null, "Description", null, null, 0));
-    model.getTitles().add(gen.new Title(null, null, "Constraints", null, null, 0));
-    
-    model.getRows().add(genElement(e, gen, true));
+    model.getRows().add(genElement(e, gen, true, e.getName(), false));
     
     return gen.generate(model);
   }

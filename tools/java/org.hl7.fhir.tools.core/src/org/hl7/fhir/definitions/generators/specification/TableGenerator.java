@@ -8,25 +8,35 @@ import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator;
 import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator.Cell;
 import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator.Piece;
 import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator.Row;
+import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator;
+import org.hl7.fhir.utilities.xhtml.genImage;
 
 public class TableGenerator extends BaseGenerator {
   protected String dest; 
+  protected String pageName;
+  protected boolean inlineGraphics;
   
-  public TableGenerator(String dest, PageProcessor page) {
+  public TableGenerator(String dest, PageProcessor page, String pageName, boolean inlineGraphics) throws Exception {
     super();
     this.dest = dest;
     this.definitions = page.getDefinitions();
     this.page = page;
+    this.pageName = pageName;
+    this.inlineGraphics = inlineGraphics;
   }
 
-  protected Row genElement(ElementDefn e, HeirarchicalTableGenerator gen, boolean resource) throws Exception {
+  protected boolean dictLinks() {
+    return false;
+  }
+  protected Row genElement(ElementDefn e, HeirarchicalTableGenerator gen, boolean resource, String path, boolean isProfile) throws Exception {
     Row row = gen.new Row();
-  
-    row.getCells().add(gen.new Cell(null, null, e.getName(), e.getDefinition(), null));
+
+    row.setAnchor(path);
+    boolean isProfiledExtension = isProfile && (e.getName().equals("extension") || e.getName().equals("modifierExtension"));
+    row.getCells().add(gen.new Cell(null, dictLinks() ? pageName+"#"+path : null, e.getName(), e.getDefinition(), null));
   
     if (resource) {
       row.getCells().add(gen.new Cell()); 
@@ -37,16 +47,16 @@ public class TableGenerator extends BaseGenerator {
     } else {
       
       if (!e.getElements().isEmpty()) {
-        row.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null)); // todo: invariants
+        row.getCells().add(gen.new Cell()); 
         row.setIcon("icon_element.gif");
-        row.getCells().add(gen.new Cell()); // todo: extensions?  
+        row.getCells().add(gen.new Cell(null, null, "Element", null, null));   
       } else if (e.getTypes().size() == 1) {
         row.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null)); // todo: invariants
         String t = e.getTypes().get(0).getName();
         Cell c;
         if (t.startsWith("@")) {
           row.setIcon("icon_reuse.png");
-          c = gen.new Cell("see ", "test", t.substring(t.lastIndexOf(".")+1), t.substring(1), null);
+          c = gen.new Cell("see ", "#"+t.substring(1), t.substring(t.lastIndexOf(".")+1), t.substring(1), null);
         } else if (t.equals("Resource")) {
           row.setIcon("icon_reference.png");
           c = gen.new Cell();
@@ -54,15 +64,21 @@ public class TableGenerator extends BaseGenerator {
           for (String rt : e.getTypes().get(0).getParams()) {
             if (!first)
               c.getPieces().add(gen.new Piece(null, " | ", null));
-            c.getPieces().add(gen.new Piece(rt+".html", rt, null));
+            if (first && isProfile && e.hasStatedProfile())
+              c.getPieces().add(gen.new Piece(null, e.getStatedProfile(), null));
+            else
+              c.getPieces().add(gen.new Piece(findPage(rt)+".html", rt, null));
             first = false;
           }
         } else if (definitions.getPrimitives().containsKey(t)) {
           row.setIcon("icon_primitive.png");
           c = gen.new Cell(null, "datatypes.html#"+t, t, null, null);
         } else {
-          row.setIcon("icon_datatype.gif");
-          c = gen.new Cell(null, "datatypes.html#"+t, t, null, null);
+          if (t.equals("Extension"))
+            row.setIcon("icon_extension_simple.png");
+          else
+            row.setIcon("icon_datatype.gif");
+          c = gen.new Cell(null, GeneratorUtils.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null);
         }
         row.getCells().add(c);
       } else {
@@ -71,13 +87,18 @@ public class TableGenerator extends BaseGenerator {
         row.getCells().add(gen.new Cell(null, null, "", null, null));   
       }
     }
-    row.getCells().add(gen.new Cell(null, null, e.getShortDefn(), null, null));
+    Cell cc = gen.new Cell(null, null, e.getShortDefn(), null, null);
+    row.getCells().add(cc);
     
     // constraints
-    Cell cc = gen.new Cell();
-    row.getCells().add(cc);
-  
+    if (isProfiledExtension) {
+      cc.addPiece(gen.new Piece("br"));
+      cc.getPieces().add(gen.new Piece(null, e.getStatedProfile(), null));
+    }
+    
     if (e.hasBinding() && definitions.getBindingByName(e.getBindingName()) != null && definitions.getBindingByName(e.getBindingName()).getBinding() != Binding.Unbound) {
+      if (cc.getPieces().size() == 1)
+        cc.addPiece(gen.new Piece("br"));
       cc.getPieces().add(gen.new Piece(getBindingLink(e), e.getBindingName(), definitions.getBindingByName(e.getBindingName()).getDefinition()));
       cc.getPieces().add(gen.new Piece(null, " (", null));
       BindingSpecification b = definitions.getBindingByName(e.getBindingName());
@@ -94,8 +115,8 @@ public class TableGenerator extends BaseGenerator {
     }
     for (String name : e.getInvariants().keySet()) {
       Invariant inv = e.getInvariants().get(name);
-      if (!cc.getPieces().isEmpty())
-        cc.getPieces().add(gen.new Piece("br"));
+      if (cc.getPieces().size() == 1)
+        cc.addPiece(gen.new Piece("br"));
       cc.getPieces().add(gen.new Piece(null, inv.getEnglish(), inv.getId()));
     }
     
@@ -114,7 +135,7 @@ public class TableGenerator extends BaseGenerator {
           for (String rt : tr.getParams()) {
             if (!first)
               c.getPieces().add(gen.new Piece(null, " | ", null));
-            c.getPieces().add(gen.new Piece(rt+".html", rt, null));
+            c.getPieces().add(gen.new Piece(findPage(rt)+".html", rt, null));
             first = false;
           }
         } else if (definitions.getPrimitives().containsKey(t)) {
@@ -126,16 +147,24 @@ public class TableGenerator extends BaseGenerator {
           choicerow.getCells().add(gen.new Cell(null, null, e.getName().replace("[x]",  Utilities.capitalize(t)), definitions.getTypes().containsKey(t) ? definitions.getTypes().get(t).getDefinition() : null, null));
           choicerow.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null));
           choicerow.setIcon("icon_datatype.gif");
-          choicerow.getCells().add(gen.new Cell(null, "datatypes.html#"+t, t, null, null));
+          choicerow.getCells().add(gen.new Cell(null, GeneratorUtils.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null));
         }
       
         choicerow.getCells().add(gen.new Cell());
-        choicerow.getCells().add(gen.new Cell());
+//        choicerow.getCells().add(gen.new Cell());
         row.getSubRows().add(choicerow);
       }
     } else
       for (ElementDefn c : e.getElements())
-        row.getSubRows().add(genElement(c, gen, false));
+        row.getSubRows().add(genElement(c, gen, false, path+'.'+c.getName(), isProfile));
     return row;
+  }
+
+  private String findPage(String rt) {
+    if (rt.equalsIgnoreCase("any"))
+      return "resourcelist";
+    if (rt.equalsIgnoreCase("binary"))
+      return "http";
+    return rt.toLowerCase();
   }
 }

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, May 10, 2014 00:15+1000 for FHIR v0.2.1
+// Generated on Mon, Jun 30, 2014 21:30+1000 for FHIR v0.2.1
 
 import java.util.*;
 
@@ -634,7 +634,7 @@ public class Profile extends Resource {
           childrenList.add(new Property("comments", "string", "Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage.", 0, java.lang.Integer.MAX_VALUE, comments));
         }
 
-      public ProfileMappingComponent copy(Profile e) {
+      public ProfileMappingComponent copy() {
         ProfileMappingComponent dst = new ProfileMappingComponent();
         dst.identity = identity == null ? null : identity.copy();
         dst.uri = uri == null ? null : uri.copy();
@@ -652,7 +652,12 @@ public class Profile extends Resource {
         protected Code type;
 
         /**
-         * The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.element.definition.type.profile).
+         * The structure that is the base on which this set of constraints is derived from.
+         */
+        protected Uri base;
+
+        /**
+         * The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.snapshot.element.definition.type.profile).
          */
         protected String_ name;
 
@@ -667,16 +672,21 @@ public class Profile extends Resource {
         protected String_ purpose;
 
         /**
-         * Captures constraints on each element within the resource.
+         * A snapshot view is expressed in a stand alone form that can be used and interpreted without considering the base profile.
          */
-        protected List<ElementComponent> element = new ArrayList<ElementComponent>();
+        protected ConstraintComponent snapshot;
+
+        /**
+         * A differential view is expressed relative to the base profile - a statement of differences that it applies.
+         */
+        protected ConstraintComponent differential;
 
         /**
          * Additional search parameters for implementations to support and/or make use of.
          */
         protected List<ProfileStructureSearchParamComponent> searchParam = new ArrayList<ProfileStructureSearchParamComponent>();
 
-        private static final long serialVersionUID = -1252612554L;
+        private static final long serialVersionUID = -911790602L;
 
       public ProfileStructureComponent() {
         super();
@@ -720,14 +730,50 @@ public class Profile extends Resource {
         }
 
         /**
-         * @return {@link #name} (The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.element.definition.type.profile).)
+         * @return {@link #base} (The structure that is the base on which this set of constraints is derived from.)
+         */
+        public Uri getBase() { 
+          return this.base;
+        }
+
+        /**
+         * @param value {@link #base} (The structure that is the base on which this set of constraints is derived from.)
+         */
+        public ProfileStructureComponent setBase(Uri value) { 
+          this.base = value;
+          return this;
+        }
+
+        /**
+         * @return The structure that is the base on which this set of constraints is derived from.
+         */
+        public String getBaseSimple() { 
+          return this.base == null ? null : this.base.getValue();
+        }
+
+        /**
+         * @param value The structure that is the base on which this set of constraints is derived from.
+         */
+        public ProfileStructureComponent setBaseSimple(String value) { 
+          if (value == null)
+            this.base = null;
+          else {
+            if (this.base == null)
+              this.base = new Uri();
+            this.base.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #name} (The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.snapshot.element.definition.type.profile).)
          */
         public String_ getName() { 
           return this.name;
         }
 
         /**
-         * @param value {@link #name} (The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.element.definition.type.profile).)
+         * @param value {@link #name} (The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.snapshot.element.definition.type.profile).)
          */
         public ProfileStructureComponent setName(String_ value) { 
           this.name = value;
@@ -735,14 +781,14 @@ public class Profile extends Resource {
         }
 
         /**
-         * @return The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.element.definition.type.profile).
+         * @return The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.snapshot.element.definition.type.profile).
          */
         public String getNameSimple() { 
           return this.name == null ? null : this.name.getValue();
         }
 
         /**
-         * @param value The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.element.definition.type.profile).
+         * @param value The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.snapshot.element.definition.type.profile).
          */
         public ProfileStructureComponent setNameSimple(String value) { 
           if (value == null)
@@ -828,20 +874,33 @@ public class Profile extends Resource {
         }
 
         /**
-         * @return {@link #element} (Captures constraints on each element within the resource.)
+         * @return {@link #snapshot} (A snapshot view is expressed in a stand alone form that can be used and interpreted without considering the base profile.)
          */
-        public List<ElementComponent> getElement() { 
-          return this.element;
+        public ConstraintComponent getSnapshot() { 
+          return this.snapshot;
         }
 
-    // syntactic sugar
         /**
-         * @return {@link #element} (Captures constraints on each element within the resource.)
+         * @param value {@link #snapshot} (A snapshot view is expressed in a stand alone form that can be used and interpreted without considering the base profile.)
          */
-        public ElementComponent addElement() { 
-          ElementComponent t = new ElementComponent();
-          this.element.add(t);
-          return t;
+        public ProfileStructureComponent setSnapshot(ConstraintComponent value) { 
+          this.snapshot = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #differential} (A differential view is expressed relative to the base profile - a statement of differences that it applies.)
+         */
+        public ConstraintComponent getDifferential() { 
+          return this.differential;
+        }
+
+        /**
+         * @param value {@link #differential} (A differential view is expressed relative to the base profile - a statement of differences that it applies.)
+         */
+        public ProfileStructureComponent setDifferential(ConstraintComponent value) { 
+          this.differential = value;
+          return this;
         }
 
         /**
@@ -864,25 +923,71 @@ public class Profile extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("type", "code", "The Resource or Data type being described.", 0, java.lang.Integer.MAX_VALUE, type));
-          childrenList.add(new Property("name", "string", "The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.element.definition.type.profile).", 0, java.lang.Integer.MAX_VALUE, name));
+          childrenList.add(new Property("base", "uri", "The structure that is the base on which this set of constraints is derived from.", 0, java.lang.Integer.MAX_VALUE, base));
+          childrenList.add(new Property("name", "id", "The name of this resource constraint statement (to refer to it from other resource constraints - from Profile.structure.snapshot.element.definition.type.profile).", 0, java.lang.Integer.MAX_VALUE, name));
           childrenList.add(new Property("publish", "boolean", "This definition of a profile on a structure is published as a formal statement. Some structural definitions might be defined purely for internal use within the profile, and not intended to be used outside that context.", 0, java.lang.Integer.MAX_VALUE, publish));
           childrenList.add(new Property("purpose", "string", "Human summary: why describe this resource?.", 0, java.lang.Integer.MAX_VALUE, purpose));
-          childrenList.add(new Property("element", "", "Captures constraints on each element within the resource.", 0, java.lang.Integer.MAX_VALUE, element));
+          childrenList.add(new Property("snapshot", "", "A snapshot view is expressed in a stand alone form that can be used and interpreted without considering the base profile.", 0, java.lang.Integer.MAX_VALUE, snapshot));
+          childrenList.add(new Property("differential", "@Profile.structure.snapshot", "A differential view is expressed relative to the base profile - a statement of differences that it applies.", 0, java.lang.Integer.MAX_VALUE, differential));
           childrenList.add(new Property("searchParam", "", "Additional search parameters for implementations to support and/or make use of.", 0, java.lang.Integer.MAX_VALUE, searchParam));
         }
 
-      public ProfileStructureComponent copy(Profile e) {
+      public ProfileStructureComponent copy() {
         ProfileStructureComponent dst = new ProfileStructureComponent();
         dst.type = type == null ? null : type.copy();
+        dst.base = base == null ? null : base.copy();
         dst.name = name == null ? null : name.copy();
         dst.publish = publish == null ? null : publish.copy();
         dst.purpose = purpose == null ? null : purpose.copy();
-        dst.element = new ArrayList<ElementComponent>();
-        for (ElementComponent i : element)
-          dst.element.add(i.copy(e));
+        dst.snapshot = snapshot == null ? null : snapshot.copy();
+        dst.differential = differential == null ? null : differential.copy();
         dst.searchParam = new ArrayList<ProfileStructureSearchParamComponent>();
         for (ProfileStructureSearchParamComponent i : searchParam)
-          dst.searchParam.add(i.copy(e));
+          dst.searchParam.add(i.copy());
+        return dst;
+      }
+
+  }
+
+    public static class ConstraintComponent extends BackboneElement {
+        /**
+         * Captures constraints on each element within the resource.
+         */
+        protected List<ElementComponent> element = new ArrayList<ElementComponent>();
+
+        private static final long serialVersionUID = -413892939L;
+
+      public ConstraintComponent() {
+        super();
+      }
+
+        /**
+         * @return {@link #element} (Captures constraints on each element within the resource.)
+         */
+        public List<ElementComponent> getElement() { 
+          return this.element;
+        }
+
+    // syntactic sugar
+        /**
+         * @return {@link #element} (Captures constraints on each element within the resource.)
+         */
+        public ElementComponent addElement() { 
+          ElementComponent t = new ElementComponent();
+          this.element.add(t);
+          return t;
+        }
+
+        protected void listChildren(List<Property> childrenList) {
+          super.listChildren(childrenList);
+          childrenList.add(new Property("element", "", "Captures constraints on each element within the resource.", 0, java.lang.Integer.MAX_VALUE, element));
+        }
+
+      public ConstraintComponent copy() {
+        ConstraintComponent dst = new ConstraintComponent();
+        dst.element = new ArrayList<ElementComponent>();
+        for (ElementComponent i : element)
+          dst.element.add(i.copy());
         return dst;
       }
 
@@ -900,7 +1005,7 @@ public class Profile extends Resource {
         protected List<Enumeration<PropertyRepresentation>> representation = new ArrayList<Enumeration<PropertyRepresentation>>();
 
         /**
-         * The name of this element definition (to refer to it from other element definitions using Profile.structure.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.
+         * The name of this element definition (to refer to it from other element definitions using Profile.structure.snapshot.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.
          */
         protected String_ name;
 
@@ -985,14 +1090,24 @@ public class Profile extends Resource {
         }
 
         /**
-         * @return {@link #name} (The name of this element definition (to refer to it from other element definitions using Profile.structure.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.)
+         * @param value {@link #representation} (Codes that define how this element is represented in instances, when the deviation varies from the normal case.)
+         */
+        public boolean hasRepresentationSimple(PropertyRepresentation value) { 
+          for (Enumeration<PropertyRepresentation> v : this.representation)
+            if (v.getValue().equals(value))
+              return true;
+          return false;
+        }
+
+        /**
+         * @return {@link #name} (The name of this element definition (to refer to it from other element definitions using Profile.structure.snapshot.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.)
          */
         public String_ getName() { 
           return this.name;
         }
 
         /**
-         * @param value {@link #name} (The name of this element definition (to refer to it from other element definitions using Profile.structure.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.)
+         * @param value {@link #name} (The name of this element definition (to refer to it from other element definitions using Profile.structure.snapshot.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.)
          */
         public ElementComponent setName(String_ value) { 
           this.name = value;
@@ -1000,14 +1115,14 @@ public class Profile extends Resource {
         }
 
         /**
-         * @return The name of this element definition (to refer to it from other element definitions using Profile.structure.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.
+         * @return The name of this element definition (to refer to it from other element definitions using Profile.structure.snapshot.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.
          */
         public String getNameSimple() { 
           return this.name == null ? null : this.name.getValue();
         }
 
         /**
-         * @param value The name of this element definition (to refer to it from other element definitions using Profile.structure.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.
+         * @param value The name of this element definition (to refer to it from other element definitions using Profile.structure.snapshot.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.
          */
         public ElementComponent setNameSimple(String value) { 
           if (value == null)
@@ -1054,20 +1169,20 @@ public class Profile extends Resource {
           super.listChildren(childrenList);
           childrenList.add(new Property("path", "string", "The path identifies the element and is expressed as a '.'-separated list of ancestor elements, beginning with the name of the resource.", 0, java.lang.Integer.MAX_VALUE, path));
           childrenList.add(new Property("representation", "code", "Codes that define how this element is represented in instances, when the deviation varies from the normal case.", 0, java.lang.Integer.MAX_VALUE, representation));
-          childrenList.add(new Property("name", "string", "The name of this element definition (to refer to it from other element definitions using Profile.structure.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.", 0, java.lang.Integer.MAX_VALUE, name));
+          childrenList.add(new Property("name", "string", "The name of this element definition (to refer to it from other element definitions using Profile.structure.snapshot.element.definition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.", 0, java.lang.Integer.MAX_VALUE, name));
           childrenList.add(new Property("slicing", "", "Indicates that the element is sliced into a set of alternative definitions (there are multiple definitions on a single element in the base resource). The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).", 0, java.lang.Integer.MAX_VALUE, slicing));
           childrenList.add(new Property("definition", "", "Definition of the content of the element to provide a more specific definition than that contained for the element in the base resource.", 0, java.lang.Integer.MAX_VALUE, definition));
         }
 
-      public ElementComponent copy(Profile e) {
+      public ElementComponent copy() {
         ElementComponent dst = new ElementComponent();
         dst.path = path == null ? null : path.copy();
         dst.representation = new ArrayList<Enumeration<PropertyRepresentation>>();
         for (Enumeration<PropertyRepresentation> i : representation)
           dst.representation.add(i.copy());
         dst.name = name == null ? null : name.copy();
-        dst.slicing = slicing == null ? null : slicing.copy(e);
-        dst.definition = definition == null ? null : definition.copy(e);
+        dst.slicing = slicing == null ? null : slicing.copy();
+        dst.definition = definition == null ? null : definition.copy();
         return dst;
       }
 
@@ -1095,10 +1210,8 @@ public class Profile extends Resource {
         super();
       }
 
-      public ElementSlicingComponent(Id discriminator, Boolean ordered, Enumeration<ResourceSlicingRules> rules) {
+      public ElementSlicingComponent(Enumeration<ResourceSlicingRules> rules) {
         super();
-        this.discriminator = discriminator;
-        this.ordered = ordered;
         this.rules = rules;
       }
 
@@ -1128,9 +1241,13 @@ public class Profile extends Resource {
          * @param value Designates which child element is used to discriminate between the slices when processing an instance. The value of the child element in the instance SHALL completely distinguish which slice the element in the resource matches based on the allowed values for that element in each of the slices.
          */
         public ElementSlicingComponent setDiscriminatorSimple(String value) { 
+          if (value == null)
+            this.discriminator = null;
+          else {
             if (this.discriminator == null)
               this.discriminator = new Id();
             this.discriminator.setValue(value);
+          }
           return this;
         }
 
@@ -1160,9 +1277,13 @@ public class Profile extends Resource {
          * @param value If the matching elements have to occur in the same order as defined in the profile.
          */
         public ElementSlicingComponent setOrderedSimple(boolean value) { 
+          if (value == false)
+            this.ordered = null;
+          else {
             if (this.ordered == null)
               this.ordered = new Boolean();
             this.ordered.setValue(value);
+          }
           return this;
         }
 
@@ -1205,7 +1326,7 @@ public class Profile extends Resource {
           childrenList.add(new Property("rules", "code", "Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.", 0, java.lang.Integer.MAX_VALUE, rules));
         }
 
-      public ElementSlicingComponent copy(Profile e) {
+      public ElementSlicingComponent copy() {
         ElementSlicingComponent dst = new ElementSlicingComponent();
         dst.discriminator = discriminator == null ? null : discriminator.copy();
         dst.ordered = ordered == null ? null : ordered.copy();
@@ -1312,15 +1433,6 @@ public class Profile extends Resource {
         super();
       }
 
-      public ElementDefinitionComponent(String_ short_, String_ formal, Integer min, String_ max, Boolean isModifier) {
-        super();
-        this.short_ = short_;
-        this.formal = formal;
-        this.min = min;
-        this.max = max;
-        this.isModifier = isModifier;
-      }
-
         /**
          * @return {@link #short_} (A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification).)
          */
@@ -1347,9 +1459,13 @@ public class Profile extends Resource {
          * @param value A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification).
          */
         public ElementDefinitionComponent setShortSimple(String value) { 
+          if (value == null)
+            this.short_ = null;
+          else {
             if (this.short_ == null)
               this.short_ = new String_();
             this.short_.setValue(value);
+          }
           return this;
         }
 
@@ -1379,9 +1495,13 @@ public class Profile extends Resource {
          * @param value The definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.
          */
         public ElementDefinitionComponent setFormalSimple(String value) { 
+          if (value == null)
+            this.formal = null;
+          else {
             if (this.formal == null)
               this.formal = new String_();
             this.formal.setValue(value);
+          }
           return this;
         }
 
@@ -1485,6 +1605,16 @@ public class Profile extends Resource {
         }
 
         /**
+         * @param value {@link #synonym} (Identifies additional names by which this element might also be known.)
+         */
+        public boolean hasSynonymSimple(String value) { 
+          for (String_ v : this.synonym)
+            if (v.getValue().equals(value))
+              return true;
+          return false;
+        }
+
+        /**
          * @return {@link #min} (The minimum number of times this element SHALL appear in the instance.)
          */
         public Integer getMin() { 
@@ -1510,9 +1640,13 @@ public class Profile extends Resource {
          * @param value The minimum number of times this element SHALL appear in the instance.
          */
         public ElementDefinitionComponent setMinSimple(int value) { 
+          if (value == -1)
+            this.min = null;
+          else {
             if (this.min == null)
               this.min = new Integer();
             this.min.setValue(value);
+          }
           return this;
         }
 
@@ -1542,9 +1676,13 @@ public class Profile extends Resource {
          * @param value The maximum number of times this element is permitted to appear in the instance.
          */
         public ElementDefinitionComponent setMaxSimple(String value) { 
+          if (value == null)
+            this.max = null;
+          else {
             if (this.max == null)
               this.max = new String_();
             this.max.setValue(value);
+          }
           return this;
         }
 
@@ -1695,6 +1833,16 @@ public class Profile extends Resource {
         }
 
         /**
+         * @param value {@link #condition} (A reference to an invariant that may make additional statements about the cardinality or value in the instance.)
+         */
+        public boolean hasConditionSimple(String value) { 
+          for (Id v : this.condition)
+            if (v.getValue().equals(value))
+              return true;
+          return false;
+        }
+
+        /**
          * @return {@link #constraint} (Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.)
          */
         public List<ElementDefinitionConstraintComponent> getConstraint() { 
@@ -1773,9 +1921,13 @@ public class Profile extends Resource {
          * @param value If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.
          */
         public ElementDefinitionComponent setIsModifierSimple(boolean value) { 
+          if (value == false)
+            this.isModifier = null;
+          else {
             if (this.isModifier == null)
               this.isModifier = new Boolean();
             this.isModifier.setValue(value);
+          }
           return this;
         }
 
@@ -1833,7 +1985,7 @@ public class Profile extends Resource {
           childrenList.add(new Property("mapping", "", "Identifies a concept from an external specification that roughly corresponds to this element.", 0, java.lang.Integer.MAX_VALUE, mapping));
         }
 
-      public ElementDefinitionComponent copy(Profile e) {
+      public ElementDefinitionComponent copy() {
         ElementDefinitionComponent dst = new ElementDefinitionComponent();
         dst.short_ = short_ == null ? null : short_.copy();
         dst.formal = formal == null ? null : formal.copy();
@@ -1846,7 +1998,7 @@ public class Profile extends Resource {
         dst.max = max == null ? null : max.copy();
         dst.type = new ArrayList<TypeRefComponent>();
         for (TypeRefComponent i : type)
-          dst.type.add(i.copy(e));
+          dst.type.add(i.copy());
         dst.nameReference = nameReference == null ? null : nameReference.copy();
         dst.value = value == null ? null : value.copy();
         dst.example = example == null ? null : example.copy();
@@ -1856,13 +2008,13 @@ public class Profile extends Resource {
           dst.condition.add(i.copy());
         dst.constraint = new ArrayList<ElementDefinitionConstraintComponent>();
         for (ElementDefinitionConstraintComponent i : constraint)
-          dst.constraint.add(i.copy(e));
+          dst.constraint.add(i.copy());
         dst.mustSupport = mustSupport == null ? null : mustSupport.copy();
         dst.isModifier = isModifier == null ? null : isModifier.copy();
-        dst.binding = binding == null ? null : binding.copy(e);
+        dst.binding = binding == null ? null : binding.copy();
         dst.mapping = new ArrayList<ElementDefinitionMappingComponent>();
         for (ElementDefinitionMappingComponent i : mapping)
-          dst.mapping.add(i.copy(e));
+          dst.mapping.add(i.copy());
         return dst;
       }
 
@@ -1990,6 +2142,16 @@ public class Profile extends Resource {
           return t;
         }
 
+        /**
+         * @param value {@link #aggregation} (If the type is a reference to another resource, how the resource is or can be aggreated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.)
+         */
+        public boolean hasAggregationSimple(ResourceAggregationMode value) { 
+          for (Enumeration<ResourceAggregationMode> v : this.aggregation)
+            if (v.getValue().equals(value))
+              return true;
+          return false;
+        }
+
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("code", "code", "Name of Data type or Resource.", 0, java.lang.Integer.MAX_VALUE, code));
@@ -1997,7 +2159,7 @@ public class Profile extends Resource {
           childrenList.add(new Property("aggregation", "code", "If the type is a reference to another resource, how the resource is or can be aggreated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.", 0, java.lang.Integer.MAX_VALUE, aggregation));
         }
 
-      public TypeRefComponent copy(Profile e) {
+      public TypeRefComponent copy() {
         TypeRefComponent dst = new TypeRefComponent();
         dst.code = code == null ? null : code.copy();
         dst.profile = profile == null ? null : profile.copy();
@@ -2222,7 +2384,7 @@ public class Profile extends Resource {
           childrenList.add(new Property("xpath", "string", "XPath expression of constraint.", 0, java.lang.Integer.MAX_VALUE, xpath));
         }
 
-      public ElementDefinitionConstraintComponent copy(Profile e) {
+      public ElementDefinitionConstraintComponent copy() {
         ElementDefinitionConstraintComponent dst = new ElementDefinitionConstraintComponent();
         dst.key = key == null ? null : key.copy();
         dst.name = name == null ? null : name.copy();
@@ -2432,7 +2594,7 @@ public class Profile extends Resource {
           childrenList.add(new Property("reference[x]", "uri|Resource(ValueSet)", "Points to the value set or external definition that identifies the set of codes to be used.", 0, java.lang.Integer.MAX_VALUE, reference));
         }
 
-      public ElementDefinitionBindingComponent copy(Profile e) {
+      public ElementDefinitionBindingComponent copy() {
         ElementDefinitionBindingComponent dst = new ElementDefinitionBindingComponent();
         dst.name = name == null ? null : name.copy();
         dst.isExtensible = isExtensible == null ? null : isExtensible.copy();
@@ -2537,7 +2699,7 @@ public class Profile extends Resource {
           childrenList.add(new Property("map", "string", "Expresses what part of the target specification corresponds to this element.", 0, java.lang.Integer.MAX_VALUE, map));
         }
 
-      public ElementDefinitionMappingComponent copy(Profile e) {
+      public ElementDefinitionMappingComponent copy() {
         ElementDefinitionMappingComponent dst = new ElementDefinitionMappingComponent();
         dst.identity = identity == null ? null : identity.copy();
         dst.map = map == null ? null : map.copy();
@@ -2744,6 +2906,16 @@ public class Profile extends Resource {
           return t;
         }
 
+        /**
+         * @param value {@link #target} (Types of resource (if a resource is referenced).)
+         */
+        public boolean hasTargetSimple(String value) { 
+          for (Code v : this.target)
+            if (v.getValue().equals(value))
+              return true;
+          return false;
+        }
+
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("name", "string", "The name of the standard or custom search parameter.", 0, java.lang.Integer.MAX_VALUE, name));
@@ -2753,7 +2925,7 @@ public class Profile extends Resource {
           childrenList.add(new Property("target", "code", "Types of resource (if a resource is referenced).", 0, java.lang.Integer.MAX_VALUE, target));
         }
 
-      public ProfileStructureSearchParamComponent copy(Profile e) {
+      public ProfileStructureSearchParamComponent copy() {
         ProfileStructureSearchParamComponent dst = new ProfileStructureSearchParamComponent();
         dst.name = name == null ? null : name.copy();
         dst.type = type == null ? null : type.copy();
@@ -2791,19 +2963,18 @@ public class Profile extends Resource {
         /**
          * Definition of the extension and its content.
          */
-        protected ElementDefinitionComponent definition;
+        protected List<ElementComponent> element = new ArrayList<ElementComponent>();
 
-        private static final long serialVersionUID = -2113262685L;
+        private static final long serialVersionUID = -1308658505L;
 
       public ProfileExtensionDefnComponent() {
         super();
       }
 
-      public ProfileExtensionDefnComponent(Code code, Enumeration<ExtensionContext> contextType, ElementDefinitionComponent definition) {
+      public ProfileExtensionDefnComponent(Code code, Enumeration<ExtensionContext> contextType) {
         super();
         this.code = code;
         this.contextType = contextType;
-        this.definition = definition;
       }
 
         /**
@@ -2934,18 +3105,30 @@ public class Profile extends Resource {
         }
 
         /**
-         * @return {@link #definition} (Definition of the extension and its content.)
+         * @param value {@link #context} (Identifies the types of resource or data type elements to which the extension can be applied.)
          */
-        public ElementDefinitionComponent getDefinition() { 
-          return this.definition;
+        public boolean hasContextSimple(String value) { 
+          for (String_ v : this.context)
+            if (v.getValue().equals(value))
+              return true;
+          return false;
         }
 
         /**
-         * @param value {@link #definition} (Definition of the extension and its content.)
+         * @return {@link #element} (Definition of the extension and its content.)
          */
-        public ProfileExtensionDefnComponent setDefinition(ElementDefinitionComponent value) { 
-          this.definition = value;
-          return this;
+        public List<ElementComponent> getElement() { 
+          return this.element;
+        }
+
+    // syntactic sugar
+        /**
+         * @return {@link #element} (Definition of the extension and its content.)
+         */
+        public ElementComponent addElement() { 
+          ElementComponent t = new ElementComponent();
+          this.element.add(t);
+          return t;
         }
 
         protected void listChildren(List<Property> childrenList) {
@@ -2954,10 +3137,10 @@ public class Profile extends Resource {
           childrenList.add(new Property("display", "string", "Defined so that applications can use this name when displaying the value of the extension to the user.", 0, java.lang.Integer.MAX_VALUE, display));
           childrenList.add(new Property("contextType", "code", "Identifies the type of context to which the extension applies.", 0, java.lang.Integer.MAX_VALUE, contextType));
           childrenList.add(new Property("context", "string", "Identifies the types of resource or data type elements to which the extension can be applied.", 0, java.lang.Integer.MAX_VALUE, context));
-          childrenList.add(new Property("definition", "@Profile.structure.element.definition", "Definition of the extension and its content.", 0, java.lang.Integer.MAX_VALUE, definition));
+          childrenList.add(new Property("element", "@Profile.structure.snapshot.element", "Definition of the extension and its content.", 0, java.lang.Integer.MAX_VALUE, element));
         }
 
-      public ProfileExtensionDefnComponent copy(Profile e) {
+      public ProfileExtensionDefnComponent copy() {
         ProfileExtensionDefnComponent dst = new ProfileExtensionDefnComponent();
         dst.code = code == null ? null : code.copy();
         dst.display = display == null ? null : display.copy();
@@ -2965,7 +3148,9 @@ public class Profile extends Resource {
         dst.context = new ArrayList<String_>();
         for (String_ i : context)
           dst.context.add(i.copy());
-        dst.definition = definition == null ? null : definition.copy(e);
+        dst.element = new ArrayList<ElementComponent>();
+        for (ElementComponent i : element)
+          dst.element.add(i.copy());
         return dst;
       }
 
@@ -3087,22 +3272,27 @@ public class Profile extends Resource {
           childrenList.add(new Property("parameter", "@Profile.structure.searchParam", "A parameter of a named query.", 0, java.lang.Integer.MAX_VALUE, parameter));
         }
 
-      public ProfileQueryComponent copy(Profile e) {
+      public ProfileQueryComponent copy() {
         ProfileQueryComponent dst = new ProfileQueryComponent();
         dst.name = name == null ? null : name.copy();
         dst.documentation = documentation == null ? null : documentation.copy();
         dst.parameter = new ArrayList<ProfileStructureSearchParamComponent>();
         for (ProfileStructureSearchParamComponent i : parameter)
-          dst.parameter.add(i.copy(e));
+          dst.parameter.add(i.copy());
         return dst;
       }
 
   }
 
     /**
-     * The identifier that is used to identify this profile when it is referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI).
+     * The URL at which this profile is (or will be) published, and which is used to reference this profile in extension urls and tag values in operational FHIR systems.
      */
-    protected String_ identifier;
+    protected Uri url;
+
+    /**
+     * Formal identifier that is used to identify this profile when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI).
+     */
+    protected List<Identifier> identifier = new ArrayList<Identifier>();
 
     /**
      * The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
@@ -3179,52 +3369,66 @@ public class Profile extends Resource {
      */
     protected List<ProfileQueryComponent> query = new ArrayList<ProfileQueryComponent>();
 
-    private static final long serialVersionUID = -778681152L;
+    private static final long serialVersionUID = 1629111250L;
 
     public Profile() {
       super();
     }
 
-    public Profile(String_ name, Enumeration<ResourceProfileStatus> status) {
+    public Profile(Uri url, String_ name, Enumeration<ResourceProfileStatus> status) {
       super();
+      this.url = url;
       this.name = name;
       this.status = status;
     }
 
     /**
-     * @return {@link #identifier} (The identifier that is used to identify this profile when it is referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI).)
+     * @return {@link #url} (The URL at which this profile is (or will be) published, and which is used to reference this profile in extension urls and tag values in operational FHIR systems.)
      */
-    public String_ getIdentifier() { 
+    public Uri getUrl() { 
+      return this.url;
+    }
+
+    /**
+     * @param value {@link #url} (The URL at which this profile is (or will be) published, and which is used to reference this profile in extension urls and tag values in operational FHIR systems.)
+     */
+    public Profile setUrl(Uri value) { 
+      this.url = value;
+      return this;
+    }
+
+    /**
+     * @return The URL at which this profile is (or will be) published, and which is used to reference this profile in extension urls and tag values in operational FHIR systems.
+     */
+    public String getUrlSimple() { 
+      return this.url == null ? null : this.url.getValue();
+    }
+
+    /**
+     * @param value The URL at which this profile is (or will be) published, and which is used to reference this profile in extension urls and tag values in operational FHIR systems.
+     */
+    public Profile setUrlSimple(String value) { 
+        if (this.url == null)
+          this.url = new Uri();
+        this.url.setValue(value);
+      return this;
+    }
+
+    /**
+     * @return {@link #identifier} (Formal identifier that is used to identify this profile when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI).)
+     */
+    public List<Identifier> getIdentifier() { 
       return this.identifier;
     }
 
+    // syntactic sugar
     /**
-     * @param value {@link #identifier} (The identifier that is used to identify this profile when it is referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI).)
+     * @return {@link #identifier} (Formal identifier that is used to identify this profile when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI).)
      */
-    public Profile setIdentifier(String_ value) { 
-      this.identifier = value;
-      return this;
-    }
-
-    /**
-     * @return The identifier that is used to identify this profile when it is referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI).
-     */
-    public String getIdentifierSimple() { 
-      return this.identifier == null ? null : this.identifier.getValue();
-    }
-
-    /**
-     * @param value The identifier that is used to identify this profile when it is referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI).
-     */
-    public Profile setIdentifierSimple(String value) { 
-      if (value == null)
-        this.identifier = null;
-      else {
-        if (this.identifier == null)
-          this.identifier = new String_();
-        this.identifier.setValue(value);
-      }
-      return this;
+    public Identifier addIdentifier() { 
+      Identifier t = new Identifier();
+      this.identifier.add(t);
+      return t;
     }
 
     /**
@@ -3647,7 +3851,8 @@ public class Profile extends Resource {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("identifier", "string", "The identifier that is used to identify this profile when it is referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI).", 0, java.lang.Integer.MAX_VALUE, identifier));
+        childrenList.add(new Property("url", "uri", "The URL at which this profile is (or will be) published, and which is used to reference this profile in extension urls and tag values in operational FHIR systems.", 0, java.lang.Integer.MAX_VALUE, url));
+        childrenList.add(new Property("identifier", "Identifier", "Formal identifier that is used to identify this profile when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI).", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("version", "string", "The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.", 0, java.lang.Integer.MAX_VALUE, version));
         childrenList.add(new Property("name", "string", "A free text natural language name identifying the Profile.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("publisher", "string", "Details of the individual or organization who accepts responsibility for publishing the profile.", 0, java.lang.Integer.MAX_VALUE, publisher));
@@ -3667,7 +3872,10 @@ public class Profile extends Resource {
 
       public Profile copy() {
         Profile dst = new Profile();
-        dst.identifier = identifier == null ? null : identifier.copy();
+        dst.url = url == null ? null : url.copy();
+        dst.identifier = new ArrayList<Identifier>();
+        for (Identifier i : identifier)
+          dst.identifier.add(i.copy());
         dst.version = version == null ? null : version.copy();
         dst.name = name == null ? null : name.copy();
         dst.publisher = publisher == null ? null : publisher.copy();
@@ -3685,16 +3893,16 @@ public class Profile extends Resource {
         dst.fhirVersion = fhirVersion == null ? null : fhirVersion.copy();
         dst.mapping = new ArrayList<ProfileMappingComponent>();
         for (ProfileMappingComponent i : mapping)
-          dst.mapping.add(i.copy(dst));
+          dst.mapping.add(i.copy());
         dst.structure = new ArrayList<ProfileStructureComponent>();
         for (ProfileStructureComponent i : structure)
-          dst.structure.add(i.copy(dst));
+          dst.structure.add(i.copy());
         dst.extensionDefn = new ArrayList<ProfileExtensionDefnComponent>();
         for (ProfileExtensionDefnComponent i : extensionDefn)
-          dst.extensionDefn.add(i.copy(dst));
+          dst.extensionDefn.add(i.copy());
         dst.query = new ArrayList<ProfileQueryComponent>();
         for (ProfileQueryComponent i : query)
-          dst.query.add(i.copy(dst));
+          dst.query.add(i.copy());
         return dst;
       }
 

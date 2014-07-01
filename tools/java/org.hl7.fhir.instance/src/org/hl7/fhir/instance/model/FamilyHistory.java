@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, May 10, 2014 00:15+1000 for FHIR v0.2.1
+// Generated on Mon, Jun 30, 2014 21:30+1000 for FHIR v0.2.1
 
 import java.util.*;
 
@@ -224,7 +224,7 @@ public class FamilyHistory extends Resource {
           childrenList.add(new Property("condition", "", "The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.", 0, java.lang.Integer.MAX_VALUE, condition));
         }
 
-      public FamilyHistoryRelationComponent copy(FamilyHistory e) {
+      public FamilyHistoryRelationComponent copy() {
         FamilyHistoryRelationComponent dst = new FamilyHistoryRelationComponent();
         dst.name = name == null ? null : name.copy();
         dst.relationship = relationship == null ? null : relationship.copy();
@@ -233,7 +233,7 @@ public class FamilyHistory extends Resource {
         dst.note = note == null ? null : note.copy();
         dst.condition = new ArrayList<FamilyHistoryRelationConditionComponent>();
         for (FamilyHistoryRelationConditionComponent i : condition)
-          dst.condition.add(i.copy(e));
+          dst.condition.add(i.copy());
         return dst;
       }
 
@@ -360,7 +360,7 @@ public class FamilyHistory extends Resource {
           childrenList.add(new Property("note", "string", "An area where general notes can be placed about this specific condition.", 0, java.lang.Integer.MAX_VALUE, note));
         }
 
-      public FamilyHistoryRelationConditionComponent copy(FamilyHistory e) {
+      public FamilyHistoryRelationConditionComponent copy() {
         FamilyHistoryRelationConditionComponent dst = new FamilyHistoryRelationConditionComponent();
         dst.type = type == null ? null : type.copy();
         dst.outcome = outcome == null ? null : outcome.copy();
@@ -387,6 +387,11 @@ public class FamilyHistory extends Resource {
     protected Patient subjectTarget;
 
     /**
+     * The date (and possibly time) when the family history was taken.
+     */
+    protected DateTime date;
+
+    /**
      * Conveys information about family history not specific to individual relations.
      */
     protected String_ note;
@@ -396,7 +401,7 @@ public class FamilyHistory extends Resource {
      */
     protected List<FamilyHistoryRelationComponent> relation = new ArrayList<FamilyHistoryRelationComponent>();
 
-    private static final long serialVersionUID = -1296086010L;
+    private static final long serialVersionUID = -851296977L;
 
     public FamilyHistory() {
       super();
@@ -451,6 +456,42 @@ public class FamilyHistory extends Resource {
      */
     public FamilyHistory setSubjectTarget(Patient value) { 
       this.subjectTarget = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #date} (The date (and possibly time) when the family history was taken.)
+     */
+    public DateTime getDate() { 
+      return this.date;
+    }
+
+    /**
+     * @param value {@link #date} (The date (and possibly time) when the family history was taken.)
+     */
+    public FamilyHistory setDate(DateTime value) { 
+      this.date = value;
+      return this;
+    }
+
+    /**
+     * @return The date (and possibly time) when the family history was taken.
+     */
+    public DateAndTime getDateSimple() { 
+      return this.date == null ? null : this.date.getValue();
+    }
+
+    /**
+     * @param value The date (and possibly time) when the family history was taken.
+     */
+    public FamilyHistory setDateSimple(DateAndTime value) { 
+      if (value == null)
+        this.date = null;
+      else {
+        if (this.date == null)
+          this.date = new DateTime();
+        this.date.setValue(value);
+      }
       return this;
     }
 
@@ -511,6 +552,7 @@ public class FamilyHistory extends Resource {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "This records identifiers associated with this family history record that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("subject", "Resource(Patient)", "The person who this history concerns.", 0, java.lang.Integer.MAX_VALUE, subject));
+        childrenList.add(new Property("date", "dateTime", "The date (and possibly time) when the family history was taken.", 0, java.lang.Integer.MAX_VALUE, date));
         childrenList.add(new Property("note", "string", "Conveys information about family history not specific to individual relations.", 0, java.lang.Integer.MAX_VALUE, note));
         childrenList.add(new Property("relation", "", "The related person. Each FamilyHistory resource contains the entire family history for a single person.", 0, java.lang.Integer.MAX_VALUE, relation));
       }
@@ -521,10 +563,11 @@ public class FamilyHistory extends Resource {
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());
         dst.subject = subject == null ? null : subject.copy();
+        dst.date = date == null ? null : date.copy();
         dst.note = note == null ? null : note.copy();
         dst.relation = new ArrayList<FamilyHistoryRelationComponent>();
         for (FamilyHistoryRelationComponent i : relation)
-          dst.relation.add(i.copy(dst));
+          dst.relation.add(i.copy());
         return dst;
       }
 

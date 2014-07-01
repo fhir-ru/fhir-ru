@@ -35,6 +35,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.instance.model.ConceptMap;
+import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.Profile.ProfileStructureComponent;
 import org.hl7.fhir.instance.model.ValueSet;
 
 /**
@@ -50,16 +52,31 @@ import org.hl7.fhir.instance.model.ValueSet;
  */
 public class Definitions {
 
+  public static final String RIM_MAPPING = "http://hl7.org/v3";
+  public static final String v2_MAPPING = "http://hl7.org/v2";
+  public static final String LOINC_MAPPING = "http://loinc.org";
+  public static final String SNOMED_MAPPING = "http://snomed.info";
+  
+//  public static final String CDA_MAPPING = "";
+//  public static final String v2_MAPPING = "";
+//  public static final String DICOM_MAPPING = "";
+//  public static final String vCard_MAPPING = "";
+//  public static final String XDS_MAPPING = "";
+//  public static final String PROV_MAPPING = "";
+//  public static final String iCAL_MAPPING = "";
+//  public static final String ServD_MAPPING = "";
+
+    
   private Map<String, BindingSpecification> bindings = new HashMap<String, BindingSpecification>();
   private List<BindingSpecification> commonBindings = new ArrayList<BindingSpecification>();
 	private Map<String, DefinedCode> knownResources = new HashMap<String, DefinedCode>();
 	private List<TypeRef> knownTypes = new ArrayList<TypeRef>();
-	private Map<String, DefinedCode> constraints = new HashMap<String, DefinedCode>();
+	private Map<String, ProfiledType> constraints = new HashMap<String, ProfiledType>();
 
 	private Map<String, DefinedCode> primitives = new HashMap<String, DefinedCode>();
-	private Map<String, ElementDefn> types = new HashMap<String, ElementDefn>();
-	private Map<String, ElementDefn> structures = new HashMap<String, ElementDefn>();
-	private Map<String, ElementDefn> infrastructure = new HashMap<String, ElementDefn>();
+	private Map<String, TypeDefn> types = new HashMap<String, TypeDefn>();
+	private Map<String, TypeDefn> structures = new HashMap<String, TypeDefn>();
+	private Map<String, TypeDefn> infrastructure = new HashMap<String, TypeDefn>();
 	private List<String> shared = new ArrayList<String>(); 
 	private Map<String, ResourceDefn> resources = new HashMap<String, ResourceDefn>();
 	private Map<String, ResourceDefn> futureResources = new HashMap<String, ResourceDefn>();
@@ -76,14 +93,16 @@ public class Definitions {
   private Map<String, ValueSet> codeSystems = new HashMap<String, ValueSet>();
   private Map<String, ValueSet> extraValuesets = new HashMap<String, ValueSet>();
   private Map<String, ArrayList<String>> statusCodes = new HashMap<String, ArrayList<String>>();
+  private Map<String, MappingSpace> mapTypes = new HashMap<String, MappingSpace>();
 
   private List<Compartment> compartments = new ArrayList<Compartment>();
   private List<String> pastVersions = new ArrayList<String>();
+
   
-	// Returns the root ElementDefn of a CompositeType or Resource,
+  // Returns the root TypeDefn of a CompositeType or Resource,
 	// excluding future Resources (as they don't have definitions yet).
-	public ElementDefn getElementDefn(String name) throws Exception {
-		ElementDefn root = null;
+	public TypeDefn getElementDefn(String name) throws Exception {
+		TypeDefn root = null;
 		if (types.containsKey(name))
 			root = types.get(name);
 		if (structures.containsKey(name))
@@ -136,35 +155,25 @@ public class Definitions {
 	// These ConstrainedTypes are found in the fhir.ini
 	// as <constrained>=<base> and the constraints are found
 	// on the "Restrictions" tab of the <base>.
-	public Map<String, DefinedCode> getConstraints() {
+	public Map<String, ProfiledType> getConstraints() {
 		return constraints;
 	}
 
-	
-	private Map<String, Invariant> constraintInvariants = new HashMap<String, Invariant>();
-	
-	// Actually, DefinedCode is not enough to specify constraint
-	// details, this list will hold the invariants.
-	public Map<String, Invariant> getConstraintInvariants() {
-		return constraintInvariants;
-	}
-	
-	
 	// List the CompositeTypes as found under [types] that aren't
 	// ConstrainedTypes.
-	public Map<String, ElementDefn> getTypes() {
+	public Map<String, TypeDefn> getTypes() {
 		return types;
 	}
 
 	// List the CompositeTypes as found under [structures] that aren't
 	// ConstrainedTypes.
-	public Map<String, ElementDefn> getStructures() {
+	public Map<String, TypeDefn> getStructures() {
 		return structures;
 	}
 
 	// List the CompositeTypes as found under [infrastructure] that aren't
 	// ConstrainedTypes.
-	public Map<String, ElementDefn> getInfrastructure() {
+	public Map<String, TypeDefn> getInfrastructure() {
 		return infrastructure;
 	}
 
@@ -312,13 +321,45 @@ public class Definitions {
   public boolean hasPrimitiveType(String name) {
     return primitives.containsKey(name);
   }
-
+  
   public Map<String, ArrayList<String>> getStatusCodes() {
     return statusCodes;
   }
 
   public List<String> getPastVersions() {
     return pastVersions;
+  }
+
+  public Map<String, MappingSpace> getMapTypes() {
+    return mapTypes;
+  }
+
+  public ProfileStructureComponent getSnapShotForType(String type) throws Exception {
+    ResourceDefn r = getResourceByName(type);
+    if (r == null)
+      throw new Exception("unable to find base definition for "+type);
+    for (ProfileStructureComponent s : r.getProfile().getStructure())
+      if (s.getSnapshot() != null)
+        return s;
+    throw new Exception("unable to find snapshot for "+type);
+  }
+
+  public String getSourceFile(String type) {
+    return null;
+  }
+
+  public Profile getProfileByURL(String url) {
+    for (ProfileDefn p : profiles.values())
+      if (p.getSource().getUrlSimple().equals(url))
+        return p.getSource();
+    for (ResourceDefn rd : resources.values()) {
+      for (RegisteredProfile p : rd.getProfiles()) {
+        if (p.getProfile().getSource().getUrlSimple().equals(url)) {
+          return p.getProfile().getSource();
+        }
+      }
+    }
+    return null;
   }
 
   

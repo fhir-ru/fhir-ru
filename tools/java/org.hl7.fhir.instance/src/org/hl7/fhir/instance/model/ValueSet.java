@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, May 10, 2014 00:15+1000 for FHIR v0.2.1
+// Generated on Mon, Jun 30, 2014 21:30+1000 for FHIR v0.2.1
 
 import java.util.*;
 
@@ -323,14 +323,14 @@ public class ValueSet extends Resource {
           childrenList.add(new Property("concept", "", "Concepts in the code system.", 0, java.lang.Integer.MAX_VALUE, concept));
         }
 
-      public ValueSetDefineComponent copy(ValueSet e) {
+      public ValueSetDefineComponent copy() {
         ValueSetDefineComponent dst = new ValueSetDefineComponent();
         dst.system = system == null ? null : system.copy();
         dst.version = version == null ? null : version.copy();
         dst.caseSensitive = caseSensitive == null ? null : caseSensitive.copy();
         dst.concept = new ArrayList<ValueSetDefineConceptComponent>();
         for (ValueSetDefineConceptComponent i : concept)
-          dst.concept.add(i.copy(e));
+          dst.concept.add(i.copy());
         return dst;
       }
 
@@ -539,7 +539,7 @@ public class ValueSet extends Resource {
           childrenList.add(new Property("concept", "@ValueSet.define.concept", "Child Concepts (is-a / contains).", 0, java.lang.Integer.MAX_VALUE, concept));
         }
 
-      public ValueSetDefineConceptComponent copy(ValueSet e) {
+      public ValueSetDefineConceptComponent copy() {
         ValueSetDefineConceptComponent dst = new ValueSetDefineConceptComponent();
         dst.code = code == null ? null : code.copy();
         dst.abstract_ = abstract_ == null ? null : abstract_.copy();
@@ -547,7 +547,7 @@ public class ValueSet extends Resource {
         dst.definition = definition == null ? null : definition.copy();
         dst.concept = new ArrayList<ValueSetDefineConceptComponent>();
         for (ValueSetDefineConceptComponent i : concept)
-          dst.concept.add(i.copy(e));
+          dst.concept.add(i.copy());
         return dst;
       }
 
@@ -603,6 +603,16 @@ public class ValueSet extends Resource {
         }
 
         /**
+         * @param value {@link #import_} (Includes the contents of the referenced value set as a part of the contents of this value set.)
+         */
+        public boolean hasImportSimple(String value) { 
+          for (Uri v : this.import_)
+            if (v.getValue().equals(value))
+              return true;
+          return false;
+        }
+
+        /**
          * @return {@link #include} (Include one or more codes from a code system.)
          */
         public List<ConceptSetComponent> getInclude() { 
@@ -643,17 +653,17 @@ public class ValueSet extends Resource {
           childrenList.add(new Property("exclude", "@ValueSet.compose.include", "Exclude one or more codes from the value set.", 0, java.lang.Integer.MAX_VALUE, exclude));
         }
 
-      public ValueSetComposeComponent copy(ValueSet e) {
+      public ValueSetComposeComponent copy() {
         ValueSetComposeComponent dst = new ValueSetComposeComponent();
         dst.import_ = new ArrayList<Uri>();
         for (Uri i : import_)
           dst.import_.add(i.copy());
         dst.include = new ArrayList<ConceptSetComponent>();
         for (ConceptSetComponent i : include)
-          dst.include.add(i.copy(e));
+          dst.include.add(i.copy());
         dst.exclude = new ArrayList<ConceptSetComponent>();
         for (ConceptSetComponent i : exclude)
-          dst.exclude.add(i.copy(e));
+          dst.exclude.add(i.copy());
         return dst;
       }
 
@@ -787,6 +797,16 @@ public class ValueSet extends Resource {
         }
 
         /**
+         * @param value {@link #code} (Specifies a code or concept to be included or excluded. The list of codes is considered ordered, though the order may not have any particular significance.)
+         */
+        public boolean hasCodeSimple(String value) { 
+          for (Code v : this.code)
+            if (v.getValue().equals(value))
+              return true;
+          return false;
+        }
+
+        /**
          * @return {@link #filter} (Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.)
          */
         public List<ConceptSetFilterComponent> getFilter() { 
@@ -811,7 +831,7 @@ public class ValueSet extends Resource {
           childrenList.add(new Property("filter", "", "Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.", 0, java.lang.Integer.MAX_VALUE, filter));
         }
 
-      public ConceptSetComponent copy(ValueSet e) {
+      public ConceptSetComponent copy() {
         ConceptSetComponent dst = new ConceptSetComponent();
         dst.system = system == null ? null : system.copy();
         dst.version = version == null ? null : version.copy();
@@ -820,7 +840,7 @@ public class ValueSet extends Resource {
           dst.code.add(i.copy());
         dst.filter = new ArrayList<ConceptSetFilterComponent>();
         for (ConceptSetFilterComponent i : filter)
-          dst.filter.add(i.copy(e));
+          dst.filter.add(i.copy());
         return dst;
       }
 
@@ -958,7 +978,7 @@ public class ValueSet extends Resource {
           childrenList.add(new Property("value", "code", "The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value.", 0, java.lang.Integer.MAX_VALUE, value));
         }
 
-      public ConceptSetFilterComponent copy(ValueSet e) {
+      public ConceptSetFilterComponent copy() {
         ConceptSetFilterComponent dst = new ConceptSetFilterComponent();
         dst.property = property == null ? null : property.copy();
         dst.op = op == null ? null : op.copy();
@@ -1066,13 +1086,13 @@ public class ValueSet extends Resource {
           childrenList.add(new Property("contains", "", "Codes in the value set.", 0, java.lang.Integer.MAX_VALUE, contains));
         }
 
-      public ValueSetExpansionComponent copy(ValueSet e) {
+      public ValueSetExpansionComponent copy() {
         ValueSetExpansionComponent dst = new ValueSetExpansionComponent();
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.timestamp = timestamp == null ? null : timestamp.copy();
         dst.contains = new ArrayList<ValueSetExpansionContainsComponent>();
         for (ValueSetExpansionContainsComponent i : contains)
-          dst.contains.add(i.copy(e));
+          dst.contains.add(i.copy());
         return dst;
       }
 
@@ -1238,14 +1258,14 @@ public class ValueSet extends Resource {
           childrenList.add(new Property("contains", "@ValueSet.expansion.contains", "Codes contained in this concept.", 0, java.lang.Integer.MAX_VALUE, contains));
         }
 
-      public ValueSetExpansionContainsComponent copy(ValueSet e) {
+      public ValueSetExpansionContainsComponent copy() {
         ValueSetExpansionContainsComponent dst = new ValueSetExpansionContainsComponent();
         dst.system = system == null ? null : system.copy();
         dst.code = code == null ? null : code.copy();
         dst.display = display == null ? null : display.copy();
         dst.contains = new ArrayList<ValueSetExpansionContainsComponent>();
         for (ValueSetExpansionContainsComponent i : contains)
-          dst.contains.add(i.copy(e));
+          dst.contains.add(i.copy());
         return dst;
       }
 
@@ -1267,12 +1287,12 @@ public class ValueSet extends Resource {
     protected String_ name;
 
     /**
-     * This should describe “the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
+     * This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
      */
     protected String_ purpose;
 
     /**
-     * If this is set to ‘true’, then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
+     * If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
      */
     protected Boolean immutable;
 
@@ -1454,14 +1474,14 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #purpose} (This should describe “the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.)
+     * @return {@link #purpose} (This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.)
      */
     public String_ getPurpose() { 
       return this.purpose;
     }
 
     /**
-     * @param value {@link #purpose} (This should describe “the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.)
+     * @param value {@link #purpose} (This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.)
      */
     public ValueSet setPurpose(String_ value) { 
       this.purpose = value;
@@ -1469,14 +1489,14 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return This should describe “the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
+     * @return This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
      */
     public String getPurposeSimple() { 
       return this.purpose == null ? null : this.purpose.getValue();
     }
 
     /**
-     * @param value This should describe “the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
+     * @param value This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
      */
     public ValueSet setPurposeSimple(String value) { 
       if (value == null)
@@ -1490,14 +1510,14 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #immutable} (If this is set to ‘true’, then no new versions of the content logical definition can be created.  Note: Other metadata might still change.)
+     * @return {@link #immutable} (If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.)
      */
     public Boolean getImmutable() { 
       return this.immutable;
     }
 
     /**
-     * @param value {@link #immutable} (If this is set to ‘true’, then no new versions of the content logical definition can be created.  Note: Other metadata might still change.)
+     * @param value {@link #immutable} (If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.)
      */
     public ValueSet setImmutable(Boolean value) { 
       this.immutable = value;
@@ -1505,14 +1525,14 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return If this is set to ‘true’, then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
+     * @return If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
      */
     public boolean getImmutableSimple() { 
       return this.immutable == null ? false : this.immutable.getValue();
     }
 
     /**
-     * @param value If this is set to ‘true’, then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
+     * @param value If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
      */
     public ValueSet setImmutableSimple(boolean value) { 
       if (value == false)
@@ -1872,8 +1892,8 @@ public class ValueSet extends Resource {
         childrenList.add(new Property("identifier", "string", "The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("version", "string", "The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.", 0, java.lang.Integer.MAX_VALUE, version));
         childrenList.add(new Property("name", "string", "A free text natural language name describing the value set.", 0, java.lang.Integer.MAX_VALUE, name));
-        childrenList.add(new Property("purpose", "string", "This should describe “the semantic space' to be included in the value set. This can also describe the approach taken to build the value set.", 0, java.lang.Integer.MAX_VALUE, purpose));
-        childrenList.add(new Property("immutable", "boolean", "If this is set to ‘true’, then no new versions of the content logical definition can be created.  Note: Other metadata might still change.", 0, java.lang.Integer.MAX_VALUE, immutable));
+        childrenList.add(new Property("purpose", "string", "This should describe 'the semantic space' to be included in the value set. This can also describe the approach taken to build the value set.", 0, java.lang.Integer.MAX_VALUE, purpose));
+        childrenList.add(new Property("immutable", "boolean", "If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.", 0, java.lang.Integer.MAX_VALUE, immutable));
         childrenList.add(new Property("publisher", "string", "The name of the individual or organization that published the value set.", 0, java.lang.Integer.MAX_VALUE, publisher));
         childrenList.add(new Property("telecom", "Contact", "Contacts of the publisher to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, telecom));
         childrenList.add(new Property("description", "string", "A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of.", 0, java.lang.Integer.MAX_VALUE, description));
@@ -1906,9 +1926,9 @@ public class ValueSet extends Resource {
         dst.extensible = extensible == null ? null : extensible.copy();
         dst.date = date == null ? null : date.copy();
         dst.stableDate = stableDate == null ? null : stableDate.copy();
-        dst.define = define == null ? null : define.copy(dst);
-        dst.compose = compose == null ? null : compose.copy(dst);
-        dst.expansion = expansion == null ? null : expansion.copy(dst);
+        dst.define = define == null ? null : define.copy();
+        dst.compose = compose == null ? null : compose.copy();
+        dst.expansion = expansion == null ? null : expansion.copy();
         return dst;
       }
 

@@ -20,7 +20,6 @@
   <WindowWidth>14880</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>210</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -157,8 +156,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">extension.uri</Data></Cell>
-    <Cell ss:StyleID="s68" ss:HRef="http://hl7.org/fhir/Profile/element-constraints"><Data
-      ss:Type="String">http://hl7.org/fhir/Profile/element-constraints</Data></Cell>
+    <Cell ss:StyleID="s68" ss:HRef="http://hl7.org/fhir/Profile/element-extensions"><Data
+      ss:Type="String">http://hl7.org/fhir/Profile/element-extensions</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">introduction</Data></Cell>
@@ -176,10 +175,13 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
+   <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>16</ActiveRow>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -221,7 +223,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">minLength</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CommonDataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">integer</Data></Cell>
     <Cell ss:StyleID="s73"/>
@@ -234,7 +236,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">maxLength</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CommonDataElement;Questionnaire.group.question</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DataElement;Questionnaire.group.question</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">integer</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">No more than this many characters</Data></Cell>
@@ -246,7 +248,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">regex</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CommonDataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Regular expression pattern</Data></Cell>
@@ -257,7 +259,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">entryFormat</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CommonDataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">User prompt for format</Data></Cell>
@@ -269,7 +271,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">minValue</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CommonDataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">date|dateTime|decimal|integer</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Must be &gt;= this value</Data></Cell>
@@ -281,7 +283,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">maxValue</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CommonDataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">date|dateTime|decimal|integer</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Must be &lt;= this value</Data></Cell>
@@ -293,7 +295,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">maxDecimalPlaces</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CommonDataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DataElement;Questionnaire.group.question;Profile.structure.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">integer</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Maximum digits after decimal</Data></Cell>
@@ -316,7 +318,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -336,7 +337,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>7</ActiveRow>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

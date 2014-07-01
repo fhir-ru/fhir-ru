@@ -76,7 +76,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	}
 
 	private void writeEntry(String path, String cardinality, String type, String conceptDomain, ElementDefn e) throws Exception {
-		write("  <tr><td colspan=\"2\" class=\"structure\"><b>"+path+"</b><a name=\""+path.replace("[", "_").replace("]", "_")+"\"> </a></td></tr>\r\n");
+		write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+path.replace("[", "_").replace("]", "_")+"\"> </a><b>"+path+"</b></td></tr>\r\n");
 		tableRow("Definition", null, e.getDefinition());
 		tableRow("Control", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
 		tableRowNE("Binding", "terminologies.html", describeBinding(e));
@@ -91,12 +91,31 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
       tableRow("Summary", "search.html#summary", Boolean.toString(e.isSummaryItem()));
     tableRow("Comments", null, e.getComments());
     tableRowNE("Invariants", null, invariants(e.getInvariants(), e.getStatedInvariants()));
-    tableRow("LOINC Code", null, e.getMapping(ElementDefn.LOINC_MAPPING));
-    tableRow("SNOMED-CT Code", null, e.getMapping(ElementDefn.SNOMED_MAPPING));
+    tableRow("LOINC Code", null, e.getMapping(Definitions.LOINC_MAPPING));
+    tableRow("SNOMED-CT Code", null, e.getMapping(Definitions.SNOMED_MAPPING));
 		tableRow("To Do", null, e.getTodo());
-		
+		if (e.getTasks().size() > 0) {
+	    tableRowNE("gForge Tasks", null, tasks(e.getTasks()));
+		}
 	}
 	
+  private String tasks(List<String> tasks) {
+    StringBuilder b = new StringBuilder();
+    boolean first = true;
+    for (String t : tasks) {
+      if (first)
+        first = false;
+      else
+        b.append(", ");
+      b.append("<a href=\"http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=");
+      b.append(t);
+      b.append("\">");
+      b.append(t);
+      b.append("</a>");
+    }
+    return b.toString();
+  }
+
   private String describeBinding(ElementDefn e) throws Exception {
 
 	  if (!e.hasBinding())
