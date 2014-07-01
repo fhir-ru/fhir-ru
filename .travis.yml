@@ -3,8 +3,8 @@
 langauge: java
 jdk:
   - oraclejdk7
-script: ./build.sh
-after_success: 
+script: ./travis-build.sh
+after_success:
   - echo -e "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\n4XO7v6i53jYb9juY1C1K2g==\n"|openssl aes-256-cbc -k "$password" -d -a -out ~/deploy_fhir_docs
   - chmod 600 ~/deploy_fhir_docs
   - git config --global user.email "latest@fhir.me"
@@ -28,5 +28,5 @@ env:
 
 # To recreate the payload + "secure" var above:
 # password=`openssl rand -hex 32`
-# cat ~/.ssh/deploy_fhir_docs | openssl aes-256-cbc -k "$password" -a 
+# cat ~/.ssh/deploy_fhir_docs | openssl aes-256-cbc -k "$password" -a
 # travis encrypt password=$password -r hl7-fhir/fhir-svn
