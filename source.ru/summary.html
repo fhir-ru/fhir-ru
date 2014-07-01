@@ -2,7 +2,7 @@
 
 
       
-[%settitle Summary (Glossy)%]
+[%settitle Краткое описание%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -14,85 +14,69 @@
 
 <a name="glossy"> </a>
 
-<h1>Introducing HL7 FHIR</h1>
-<p><a href="fhir-summary.pdf">Get this as a PDF</a></p>
+<h1>Представляем HL7 FHIR</h1>
+<p><a href="fhir-summary.pdf">Скачать страницу как PDF</a></p>
 <p>
-FHIR® – Fast Healthcare Interoperable Resources (hl7.org/fhir) – is a next generation 
-standards framework created by HL7. FHIR combines the best features of HL7’s 
-Version 2, Version 3 and CDA® product lines while leveraging the latest web standards 
-and applying a tight focus on implementability.
+FHIR&reg; – Фиксированные совместимые ресурсы здравоохранения (Fast Healthcare Interoperable Resources) (hl7.org/fhir) – это структура стандартов следующего поколения, созданная  HL7. FHIR объединяет в себе  всё лучшее из HL7 версий 2 и 3 и линии продуктов CDA&reg;, эффективно используя при этом последние веб-стандарты и плотно фокусируясь на реализуемость. 
 </p>
 <p>
-FHIR solutions are built from a set of modular components called “Resources”. These 
-resources can easily be assembled into working systems that solve real world clinical 
-and administrative problems at a fraction of the price of existing alternatives. 
-FHIR is suitable for use in a wide variety of contexts – mobile phone apps, 
-cloud communications, EHR-based data sharing, server communication 
-in large institutional healthcare providers, and much more.
+Решения FHIR строятся из набора модульных компонентов под названием "Ресурсы". Эти ресурсы могут быть легко монтированы в работающие системы, что решает клинические и административные проблемы реального мира за долю от цены существующих альтернатив.
+FHIR подходит для использования в самых разнообразных контекстах: приложения для мобильных телефонов, облачные коммуникации, обмен данными на основе электронных медицинских карт, серверные коммуникации в больших институциональных медицинских учреждениях и многое другое.
 </p>
 
-<h2>Why FHIR is better</h2>
+<h2>Чем FHIR лучше</h2>
 <p>
-FHIR offers many improvements over existing standards:
+FHIR предлагает множество улучшений по сравнению с существующими стандартами:
 </p>
 <ul>
-<li>A strong focus on implementation – fast and easy to implement (multiple developers 
-have had simple interfaces working in a single day)</li>
-<li>Multiple implementation libraries, many examples available to kick-start development</li>
-<li>Specification is free for use with no restrictions</li>
-<li>Interoperability out-of-the-box– base resources can be used as is, but can also be 
-adapted for local requirements</li>
-<li>Evolutionary development path from HL7 Version 2 and CDA – standards can co-exist and 
-leverage each other</li>
-<li>Strong foundation in Web standards– XML, JSON, HTTP, Atom, OAuth, etc.</li>
-<li>Support for RESTful architectures and also seamless exchange of information using 
-messages or documents</li>
-<li>Concise and easily understood specifications</li>
-<li>A Human-readable wire format for ease of use by developers</li>
-<li>Solid ontology-based analysis with a rigorous formal mapping for correctness</li>
+<li>Уделение особого внимания реализации – просто и быстро реализовать (многие разработчики получили простые работающие интерфейсы в течение одного дня)</li>
+<li>Множество библиотек реализации, много доступных примеров для быстрого старта разработки</li>
+<li>Спецификация бесплатна для использования без ограничений</li>
+<li>Совместимость прямо из коробки – базовые ресурсы могут быть использованы как есть, но при этом могут быть адаптированы с учетом местных требований
+</li>
+<li>Эволюционный путь развития от HL7 версии 2 и CDA – стандарты могут сосуществовать и эффективно использовать друг друга
+</li>
+<li>Прочный фундамент веб-стандартов – XML, JSON, HTTP, Atom, OAuth и т.д.</li>
+<li>Поддержка RESTful архитектуры, а также бесшовный обмен информацией с помощью сообщений или документов
+</li>
+<li>Краткие и понятные спецификации</li>
+<li>Удобочитаемый формат для простоты использования разработчиками
+</li>
+<li>Основательный онтологический анализ со строгим формальным отображением для правильности
+</li>
 </ul>
 
-<h2>Flexibility</h2>
+<h2>Гибкость</h2>
 <p>
-A central challenge for healthcare standards is how to handle variability caused by diverse 
-healthcare processes. Over time, more fields and optionality are added to the specification,
-gradually adding cost and complexity to the resulting implementations. The alternative is relying 
-on custom extensions, but these create many implementation problems too. 
+Одна из главных задач стандартов здравоохранения – как справиться с изменчивостью, вызванной разнообразными процессами здравоохранения. Со временем всё больше полей и опциональности добавляется в спецификацию, постепенно увеличивая стоимость и сложность получаемых реализаций. Альтернатива этому – полагаться на пользовательские расширения, но они тоже создают много проблем при реализации.
 </p>
 <p>
-FHIR solves this challenge by defining a simple framework for extending and adapting the existing
-resources. All systems, no matter how they are developed, can easily read these extensions and 
-extension definitions can be retrieved using the same framework as retrieving other resources.
+FHIR решает эту задачу определением простой структуры для расширения и адаптации существующих ресурсов. Все системы, независимо от того как они разрабатываются, могут легко читать эти расширения, и определения расширений могут быть получены с помощью этой же  структуры как чтение других ресурсов.
 </p>
 <p>
-In addition, each resource carries a human-readable text representation using html as a fallback 
-display option for clinical safety. This is particularly important for complex clinical information 
-where many systems take a simple textual/document based approach.
+Кроме того, каждый ресурс содержит удобочитаемое текстовое представление, используя HTML в качестве резервного варианта отображения в целях клинической безопасности. Это особенно важно для комплексной клинической информации, где многие системы используют простой текстовый/документный подход.
 </p>
  
-<h2>Example Resource: Patient</h2>
+<h2>Пример ресурса: Patient</h2>
 <p>
-This simple example shows the important parts of a resource: a local extension, the human 
-readable HTML presentation, and the standard defined data content.
+Этот простой пример демонстрирует важные составляющие ресурса: локальное расширение, удобочитаемое HTML-представление, и данные, определяемые стандартом.
 </p>
 <img src="shot.png"/>
 
 <p>
-FHIR has resources for administrative concepts such as patient, provider, organization 
-and device as well as a wide variety of clinical concepts covering problems, medications, 
-diagnostics, care plans, financial concerns and more.
+FHIR содержит ресурсы для таких административных понятий, как пациент, провайдер, организация, устройство, так же как и широкий набор клинических концепций, охватывающих проблемы, лекарства, диагностику, план лечения, финансовые проблемы и другое.
 </p>
 
-<h2>The FHIR development process</h2>
+<h2>Процесс разработки FHIR</h2>
 <p>
-FHIR is published as a Draft Standard for Trial Use. During the Trial Use phase, HL7 actively monitors implementations in order to continue to improve the specification, and is able to be responsive to their needs. 
-Due to the many advantages FHIR offers, trial use is already beginning right now. 
+FHIR публикуется как проект стандарта для пробного использования. Во время фазы пробного использования HL7 активно следит за реализациями в целях дальнейшего улучшения спецификации и в состоянии оперативно реагировать на потребности разработчиков. 
+Благодаря тем преимуществам, которые предлагает FHIR, пробный период его использования начинается уже прямо сейчас.
 </p>
 <p>
-Following this, HL7 will develop FHIR as a full normative specification, most likely through 2015.
+После этого HL7 будет развивать FHIR в качестве полноправной нормативной спецификации, скорее всего, до 2015 года.
 </p>
 <p>
-<a href="http://www.hl7.org/fhir">http://www.hl7.org/fhir</a>. Follow us on Twitter using <a href="https://twitter.com/search?q=%23FHIR">#FHIR</a>
+<a href="http://www.hl7.org/fhir">http://www.hl7.org/fhir</a>. Следите за нами на Twitter по тегу <a href="https://twitter.com/search?q=%23FHIR">#FHIR</a>
 </p>
 
 </div>
