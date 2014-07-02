@@ -13,50 +13,49 @@
 
 <h2>RESTful API</h2>
 <p>
-Each resource type has the same set of interactions defined that can be used to manage the resources 
-in a highly granular fashion. Applications claiming conformance to this framework
-claim to be conformant to "RESTful FHIR".
+В FHIR описан определенный набор взаимодействий, с использованием которого можно  достаточно тонко 
+управлять разними типами ресурсов.
+Приложения, которые заявляют поддержку FHIR  должны реализовать "RESTful API" спецификацию.
 </p>
 <p>
-Note that in this RESTful framework, transactions are performed directly on the server resource using an 
-HTTP request/response. The API does not directly address authentication, authorization, and audit
-collection - for further information, see the <a href="security.html">Security Page</a>.
+В рамках RESTful взаимодействий, транзакции происходят на сервере с помощью HTTP запросов и ответов.
+Спецификация не описывает детали аутентификации, авторизации и аудита 
+(для более детальной информации смотри - <a href="security.html">Security Page</a>)
 </p>
 <p>
-The API describes the FHIR resources as a set of operations (known as "interactions") on resources where individual
-resource instances are managed in collections by their type. Servers can choose which of 
-these interactions are made available and which resource types they support. Servers SHALL
-provide a <a href="conformance.html">conformance statement</a> that specifies what interactions and 
-resources are supported.
-</p>
+API состоит из набора операций (взаимодействий) над ресурсами, которые сгруппированы по типам в коллекции.
+Сервера могут выбрать какие операции и типов ресурсов они поддерживают, эта информация ДОЛЖНА быть включена
+в <a href="conformance.html">conformance statement</a>.
+
 <p>
-The following logical interactions are defined:
+Определен следующий набор логических операций:
 </p>
 <a name="interactions"> </a>
 <a name="operations"> </a>
 <table class="list"> 
-  <tr><td><b>Instance Level Interactions</b></td><td></td></tr>
-  <tr><td><a href="#read">read</a></td><td>Read the current state of the resource</td></tr>
-  <tr><td><a href="#vread">vread</a></td><td>Read the state of a specific version of the resource</td></tr>
-  <tr><td><a href="#update">update</a></td><td>Update an existing resource by its id (or create it if it is new)</td></tr>
-  <tr><td><a href="#delete">delete</a></td><td>Delete a resource</td></tr>
-  <tr><td><a href="#history">history</a></td><td>Retrieve the update history for a particular resource</td></tr>
-  <tr><td colspan="2"><b>Type Level Interactions</b></td></tr>
-  <tr><td><a href="#create">create</a></td><td>Create a new resource with a server assigned id</td></tr>
-  <tr><td><a href="#search">search</a></td><td>Search the resource type based on some filter criteria</td></tr>
-  <tr><td><a href="#history">history</a></td><td>Retrieve the update history for a particular resource type</td></tr>
-  <tr><td><a href="#validate">validate</a></td><td>Check that the content would be acceptable as an update</td></tr>
-  <tr><td colspan="2"><b>Whole System Interactions</b></td></tr>
-  <tr><td><a href="#conformance">conformance</a></td><td>Get a conformance statement for the system</td></tr>
-  <tr><td><a href="#transaction">transaction</a></td><td>Update, create or delete a set of resources as a single transaction</td></tr>
-  <tr><td><a href="#history">history</a></td><td>Retrieve the update history for all resources</td></tr>
-  <tr><td><a href="#search">search</a></td><td>Search across all resource types based on some filter criteria</td></tr>
+  <tr><td><b>Уровень ресурсов</b></td><td></td></tr>
+  <tr><td><a href="#read">read</a></td><td>Получение текущего состояния ресурса</td></tr>
+  <tr><td><a href="#vread">vread</a></td><td>Получение конкретной версии ресурса</td></tr>
+  <tr><td><a href="#update">update</a></td><td>Обновление ресурса по идентификатору id (или создание если его еще нет)</td></tr>
+  <tr><td><a href="#delete">delete</a></td><td>Удаление ресурса</td></tr>
+  <tr><td><a href="#history">history</a></td><td>Получение истории изменений ресурса</td></tr>
+  <tr><td colspan="2"><b>Уровень типов ресурсов</b></td></tr>
+  <tr><td><a href="#create">create</a></td><td>Создание нового ресурса (сервер назначает id)</td></tr>
+  <tr><td><a href="#search">search</a></td><td>Поиск среди ресурсов одного типа по разным критериям</td></tr>
+  <tr><td><a href="#history">history</a></td><td>Получение полной истории для определенного типа ресурсов</td></tr>
+  <tr><td><a href="#validate">validate</a></td><td>Проверка того, что данные можно сохранить на сервер (без непосредственного сохранения)</td></tr>
+  <tr><td colspan="2"><b>Общесистемный уровень</b></td></tr>
+  <tr><td><a href="#conformance">conformance</a></td><td>Получение "Информации о соответствии" (conformance statement) для системы</td></tr>
+  <tr><td><a href="#transaction">transaction</a></td><td>Обновление, создание или удаление нескольких ресурсов в рамках одной транзакции</td></tr>
+  <tr><td><a href="#history">history</a></td><td>Получении истории изменений всех ресурсов</td></tr>
+  <tr><td><a href="#search">search</a></td><td>Поиск среди всех ресурсов по некоторым критериям</td></tr>
 </table>
-<p>In addition to these operations, there is a <a href="messaging.html#mailbox">Mailbox</a> and <a href="documents.html#bundle">Document</a> endpoint.</p>
+<p>В дополнение к этим операциям, есть <a href="messaging.html#mailbox">Почтовый ящик (Mailbox)</a> 
+и <a href="documents.html#bundle">Документная</a> точка взамиодействий (endpoint).</p>
 
-<p><b>Style Guide</b></p>
+<p><b>Оформление</b></p>
 <p>
-URL operations on this pages are defined like this:
+URL операция записываются в формате:
 </p>
 
 <pre>
