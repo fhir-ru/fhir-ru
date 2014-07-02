@@ -15,31 +15,30 @@
 <a name="root"> </a>
 <h2>Обзор FHIR</h2>
 <p>
-Приветствуем на сайте спецификации FHIR (Фиксированные совместимые ресурсы здравоохранения), которая является стандартом обмена электронной медицинской информации.
-Эта страница содержит обзор стандарта и служит в качестве дорожной карты для читающих спецификацию первый раз, чтобы помочь быстро сориентироваться в FHIR.
+Приветствуем на сайте FHIR (Ресурсы для обмена медицинской информацией) − стандарта обмена электронной медицинской информацией.
+Эта страница содержит обзор стандарта и ссылки, которые помогут быстрее сориентироваться в FHIR.
 </p>
 
 <h3>Предпосылки</h3>
 <p>
-Медицинские карты всё чаще оцифровываются. По мере перемещения пациентов по здравоохранительной экосистеме, их электронные медицинские карты должны быть доступны, обнаружимы и понятны. Кроме того, для поддержки автоматизированной поддержки принятия клинических решений и другой машинной обработки данных, эти данные должны быть структурированы и стандартизованы. (См. <a href="change.html">Грядущие цифровые проблемы в здравоохранении</a>)
+Медицинские карты всё чаще оцифровываются. По мере перемещения пациентов по здравоохранительной экосистеме, их электронные медицинские карты должны быть доступны, обнаружимы и понятны. Кроме того, для автоматизированной поддержки принятия клинических решений и другой машинной обработки, эти данные должны быть структурированы и стандартизованы. (См. <a href="change.html">Грядущие цифровые проблемы в здравоохранении</a>)
 </p>
 <p>
-<a href="http://hl7.org">HL7</a> решает эти задачи путём создания стандартов обмена медицинскими данными и моделирования информации на протяжении более 20 лет. FHIR – это новая спецификация на основе развивающихся подходов промышленности, но обобщающая годы истории требований, успехов и проблем, накопленных в ходе определения и реализации HL7 v2, v3, RIM и CDA. 
+<a href="http://hl7.org">HL7</a> решает эти задачи путём создания стандартов обмена медицинскими данными и моделирования информации на протяжении более 20 лет. FHIR – это новый стандарт на основе развивающихся подходов промышленности, обобщающий годы истории требований, успехов и проблем, накопленных в ходе определения и реализации HL7 v2, v3, RIM и CDA. 
 FHIR может быть использован в качестве автономного стандарта обмена данными, но может и будет также использоваться совместно с существующими широко используемыми стандартами. (См. <a href="comparison.html">Сравнение FHIR с другими HL7 стандартами</a>)
 </p>
 <p>
 FHIR призван упростить реализацию без ущерба для целостности информации. Он использует существующие логические и теоретические модели для обеспечения согласованного, просто реализуемого и строгого механизма для обмена данными между медицинскими приложениями.
-FHIR имеет встроенные механизмы для отслеживания в HL7 RIM и других важных моделях содержимого.
-Это гарантирует равнение на ранее определенные шаблоны и практический опыт HL7, не требуя от реализации глубоких знаний RIM или любых других производных HL7 
-v3. (См.  <a href="comparison.html">Сравнение FHIR с другими HL7 стандартами</a>)
+FHIR имеет встроенные механизмы для отслеживания следования HL7 RIM и другим важным моделям содержимого.
+Это гарантирует равнение на ранее определенные шаблоны и практический опыт HL7, не требуя от реализации глубоких знаний RIM или любых других производных HL7 v3. (См.  <a href="comparison.html">Сравнение FHIR с другими HL7 стандартами</a>)
 </p>
 
 <h3>Компоненты</h3>
 <p>
-Основным строительным блоком в FHIR является <a href="resources.html">ресурс</a>. Весь обмениваемый контент определяется в качестве ресурса. Все ресурсы  разделяют следующий набор характеристик:
+Основным строительным блоком в FHIR является <a href="resources.html">ресурс</a>. Весь обмениваемый контент определяется в качестве ресурса. Все ресурсы разделяют следующий набор характеристик:
 </p>
 <ul>
- <li>Распространенный способ <a href="resources.html">определения</a> и <a href="formats.html">представления</a> их, выстраивая их из  <a href="datatypes.html">типов данных</a>, которые определяют общие многоразовые шаблоны элементов</li>
+ <li>Распространенный способ <a href="resources.html">определения</a> и <a href="formats.html">представления</a> их, выстраивая их из <a href="datatypes.html">типов данных</a>, которые определяют общие многоразовые шаблоны элементов</li>
  <li>Общий набор <a href="resources.html#metadata">метаданных</a></li>
  <li><a href="narrative.html">Удобочитаемая</a> часть</li>
 </ul>
@@ -52,7 +51,7 @@ v3. (См.  <a href="comparison.html">Сравнение FHIR с другими 
 <a href="extensibility.html">встроенный механизм расширения</a> для покрытия оставшегося контента по мере необходимости.
 </p>
 <p>
-При моделировании FHIR  используется композиционный подход. Для сравнения, HL7 v3 основывается на &quot;модели ограничений&quot; (см. <a href="comparison.html">Сравнение FHIR с другими HL7 стандартами</a>).
+При моделировании FHIR используется композиционный подход. Для сравнения, HL7 v3 основывается на &quot;модели ограничений&quot; (см. <a href="comparison.html">Сравнение FHIR с другими HL7 стандартами</a>).
 В FHIR конкретные варианты использования обычно реализуются путем объединения ресурсов через использование <a href="references.html">ссылок на ресурсы</a>. 
 Хотя отдельный ресурс может быть полезен сам по себе для данного варианта использования, чаще встречается, что ресурсы объединяются и адаптируются для удовлетворения специфических требований. Два специальных вида ресурсов используются для описания того, каким образом ресурсы объединяются и используются:
 </p>
@@ -67,7 +66,7 @@ v3. (См.  <a href="comparison.html">Сравнение FHIR с другими 
 </p>
 <ul>
  <li>Общая <a href="documentation.html">документация</a>, которая описывает, как <a href="resources.html">ресурсы будут определены</a>, 
-   и содержит справочный материал, включая определения <a href="datatypes.html">типов данных</a>, <a href="terminologies.html">кодов</a>, а также <a href="xml.html">XML</a> и <a href="json.html">JSON </a>форматы</li>
+  и содержит справочный материал, включая определения <a href="datatypes.html">типов данных</a>, <a href="terminologies.html">кодов</a>, а также <a href="xml.html">XML</a> и <a href="json.html">JSON </a>форматы</li>
  <li><a href="implementation.html">Реализация</a> – как использовать ресурсы с помощью <a href="http.html">REST</a>, <a href="messaging.html">Messaging</a>, как <a href="documents.html">клинические документы</a> или с помощью <a href="services.html">серверной архитектуры</a></li>
  <li><a href="resourcelist.html">Список ресурсов</a> – список всех ресурсов, определенных FHIR. Также имеются отдельные списки для <a href="clinical.html">клинических</a>, <a href="administration.html">административных</a> и <a href="infrastructure.html">инфраструктурных</a> ресурсов</li>
 </ul>
@@ -78,27 +77,27 @@ v3. (См.  <a href="comparison.html">Сравнение FHIR с другими 
 
 <h3>С чего начать</h3>
 <p>
-The best place to start is to quickly read the <a href="resourcelist.html">Resources</a> list to get a sense of what resources exist and then look at 
-the <a href="patient.html">Patient resource</a> definition to see what resource definitions look like, and then read these background pages:
+Лучше всего начать с просмотра <a href="resourcelist.html">списка ресурсов</a>, чтобы получить представление, какие ресурсы имеются, затем посмотреть определение ресурса <a href="patient.html">Patient</a>, чтобы понять как выглядят определения, затем прочитайте эти ключевые страницы:
 </p>
 <ul>
-  <li><a href="resources.html">Resource Definitions</a> - basic background to how resources are defined</li>
-  <li>About Resources: the <a href="narrative.html">Narrative</a> they all contain, and how <a href="references.html">Resources refer to each other</a></li>
-  <li><a href="formats.html">Formats</a>: <a href="xml.html">XML</a> and <a href="json.html">JSON</a></li>
-  <li>About <a href="extensibility.html">Extensibility</a>: a key way that the specification is kept simple</li>
-  <li>If you are coming to FHIR with a background in another HL7 standard (v2, v3 or CDA), <a href="comparison.html">The Relationship between FHIR and other HL7 Standards</a> may also be useful</li>
+  <li><a href="resources.html">Определения ресурсов</a> − основа того, как ресурсы определяются
+</li>
+  <li>О ресурсах: <a href="narrative.html">Описательная</a> часть, которую они все содержат, и как <a href="references.html">ресурсы ссылаются друг на друга</a></li>
+  <li><a href="formats.html">Форматы</a>: <a href="xml.html">XML</a> и <a href="json.html">JSON</a></li>
+  <li>О <a href="extensibility.html">расширяемости</a>: ключевой способ поддерживать простоту спецификации </li>
+  <li>Если вы пришли в FHIR с опытом работы в с другим стандартом HL7 (v2, v3 or CDA), то страница <a href="comparison.html">Связь между FHIR и другими стандартами HL7</a> может оказаться полезной</li>
 </ul>
 
-<h4>Header Tabs</h4>
+<h4>Заголовки-вкладки</h4>
 <p>
-These header tabs found through-out the specification are important, and many readers miss them: 
+Эти заголовки-вкладки, расположенные на всех страницах спецификации, содержат важную информацию, но многие читатели пропускают их:
 </p>
 <p>
 <img src="header-tabs.png"/>
 <br/>
 </p>
 <p>
-Resources and the <a href="datatypes.html">data types</a> that they use are presented in an concise easy to read XML-like format,
+Ресурсы и <a href="datatypes.html">типы данных</a>, которые они используют, представлены в кратком и удобной для чтения XML-подобном формате, но они также имеют и формальные определения, которые описывают их содержание более подробно. Кроме того, большинство ресурсов связаны 
 but they also have formal definitions that describe their contents in considerable detail. In addition, most resources are mapped to several
 different formats, including HL7 v2, the HL7 v3 RIM, CDA, DICOM, and others. Also, all resources come with at least one example (sometimes 
 many more) and, where appropriate, with profiles that describe their use in specific circumstances. Finally, some resources include 
@@ -114,11 +113,11 @@ This document uses some simple style conventions:
 
 <h3>Finding Additional Information and Providing Feedback</h3>
 <p>While intended to be consumable by a variety of audiences, the FHIR specification is targeted to the implementation community - those who will actually
-write the software that uses the specification.  To help meet the needs of the implementation community, the editors have strived to keep the specification
-concise to reduce the amount of reading that must be done before writing useful code.  (The specification isn't nearly as brief as we'd like - sometimes
-the complexity of healthcare and the real world get in the way.)  For this reason, information that is not essential to the implementation process, such
-as rationale, considered alternatives, points of contention, future plans, etc. have been excluded from this specification.  As well, it is likely that
-from time-to-time, implementers will encounter situations where the specification is unclear or incomplete.  Finally, there will be circumstances where
+write the software that uses the specification. To help meet the needs of the implementation community, the editors have strived to keep the specification
+concise to reduce the amount of reading that must be done before writing useful code. (The specification isn't nearly as brief as we'd like - sometimes
+the complexity of healthcare and the real world get in the way.) For this reason, information that is not essential to the implementation process, such
+as rationale, considered alternatives, points of contention, future plans, etc. have been excluded from this specification. As well, it is likely that
+from time-to-time, implementers will encounter situations where the specification is unclear or incomplete. Finally, there will be circumstances where
 the specification may be broken or where a change could allow it to better meet implementer needs.
 </p>
 <p>
@@ -137,28 +136,28 @@ spawned an initial comment.
 <h4>The FHIR Wiki</h4>
 <p>
 The FHIR project team also maintains a <a href="http://wiki.hl7.org/index.php?title=FHIR">wiki</a> where 
-development processes, methodology and design decisions are documented.  Implementers and others can also contribute to the wiki to provide additional guidance
-and supplemental information not found in the specification.  Note that wiki content is not authoritative and is not relevant for determining conformance to
-the FHIR specification.  As well, some wiki content may not be up to date with the most recent version of the FHIR specification.
+development processes, methodology and design decisions are documented. Implementers and others can also contribute to the wiki to provide additional guidance
+and supplemental information not found in the specification. Note that wiki content is not authoritative and is not relevant for determining conformance to
+the FHIR specification. As well, some wiki content may not be up to date with the most recent version of the FHIR specification.
 </p>
 <p>
-A wiki page exists for each page in the FHIR specification.  These pages will generally be used to capture background rationale, decision points and other
-information not relevent to implementers.  Additional pages defined include <a href="http://wiki.hl7.org/index.php?title=FHIR_Development_Process">FHIR methodology</a>, 
-use of the <a href="http://wiki.hl7.org/index.php?title=FHIR_Guide_to_Authoring_Resources">FHIR design tools</a>, etc.  To
+A wiki page exists for each page in the FHIR specification. These pages will generally be used to capture background rationale, decision points and other
+information not relevent to implementers. Additional pages defined include <a href="http://wiki.hl7.org/index.php?title=FHIR_Development_Process">FHIR methodology</a>, 
+use of the <a href="http://wiki.hl7.org/index.php?title=FHIR_Guide_to_Authoring_Resources">FHIR design tools</a>, etc. To
 explore the FHIR wiki, you can start at the <a href="http://wiki.hl7.org/index.php?title=FHIR">root page</a>
 </p>
 
 <h4>Formal Change requests</h4>
 <p>
-Formal requests for change can be submitted <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemAdd&amp;tracker_id=677">here</a>.  
-(There's a link at the bottom of each page as well.)  These will be reviewed by the appropriate work group and a decision made on their incorporation into the
+Formal requests for change can be submitted <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemAdd&amp;tracker_id=677">here</a>. 
+(There's a link at the bottom of each page as well.) These will be reviewed by the appropriate work group and a decision made on their incorporation into the
 specification, including which release (if any) they will be part of.
 </p>
 
 <h4>Additional Information sources/Engagement Mechanisms</h4>
 <p>
 In addition to the above mechanisms, HL7 provides a Stack Overflow tag, list servers and mass Skype chats to provide various levels of implementer support
-and engagement.  Instructions for accessing these other mechanisms (and instructions for how best to make use of them) can be found 
+and engagement. Instructions for accessing these other mechanisms (and instructions for how best to make use of them) can be found 
 <a href="http://wiki.hl7.org/index.php?title=FHIR#More_help_and_Asking_Questions">here</a>.
 </p>
 

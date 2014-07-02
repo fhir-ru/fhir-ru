@@ -12,7 +12,7 @@ todo: compartments
     <page title="История версий" filename="history.html"/>
     <page title="DSTU Considerations" filename="dstu.html"/>
     <page title="Нерешенные вопросы" filename="todo.html"/>
-    <page title="Краткое изложение" filename="summary.html"/>
+    <page title="Краткое описание" filename="summary.html"/>
     <page title="Введение" filename="overview.html"/>
     <page title="Сравнение" filename="comparison.html">
       <page title="v2 Messaging" filename="comparison-v2.html"/>
