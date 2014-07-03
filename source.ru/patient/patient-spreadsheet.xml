@@ -202,7 +202,7 @@
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Information about a person or animal receiving health care services</Data></Cell>
-    <Cell><Data ss:Type="String">Demographics and other administrative information about a person or animal receiving care or other health-related services</Data></Cell>
+    <Cell><Data ss:Type="String">Демографическая и другая административная информация о человеке или животном, получающем медицинскую помощь или услуги, связанные со здоровьем</Data></Cell>
     <Cell><Data ss:Type="String">Tracking patient is the center of the healthcare process</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">SubjectOfCare</Data></Cell>
     <Cell><Data ss:Type="String">Patient[classCode=PAT]</Data></Cell>
