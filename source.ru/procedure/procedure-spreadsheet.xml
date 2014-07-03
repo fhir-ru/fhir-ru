@@ -158,7 +158,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">An action that is performed on a patient</Data></Cell>
-    <Cell><Data ss:Type="String">An action that is performed on a patient. This can be a physical 'thing' like an operation, or less invasive like counseling or hypnotherapy</Data></Cell>
+    <Cell><Data ss:Type="String">Действие, совершенное по отношению к пациенту. Это может быть как физическое воздействие, например операция, так и менее инвазивное, например консультация или гипнотерапия.</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="Default"/>
     <Cell ss:Index="14"><Data ss:Type="String">Procedure[moodCode=EVN]</Data></Cell>
     <Cell ss:StyleID="Default"/>

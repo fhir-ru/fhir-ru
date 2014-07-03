@@ -169,7 +169,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A request for a diagnostic service</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A request for a diagnostic investigation service to be performed</Data><NamedCell
+    <Cell><Data ss:Type="String">Запрос на проведение диагностического исследования</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Report, Test, Result, Results, Labs, Laboratory</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

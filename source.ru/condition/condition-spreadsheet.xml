@@ -161,7 +161,8 @@
     <Cell ss:StyleID="s66"><Data ss:Type="String">200;0</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String"> Detailed information about conditions, problems or diagnoses</Data></Cell>
-    <Cell><Data ss:Type="String">Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a Diagnosis during an Encounter; populating a problem List or a Summary Statement, such as a Discharge Summary</Data></Cell>
+    <Cell><Data ss:Type="String">Используется для записи подробной информации о состоянии, проблемах или диагнозах, поставленных врачом. Имеет множество применений, включая: запись диагноза во время визита; заполнение списка проблем или итогового заключения, например выписного эпикриза.
+	</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Observation[classCode=OBS, moodCode=EVN, code=ASSERTION, value&lt;Diagnosis]</Data></Cell>
     <Cell><Data ss:Type="String">PPR message</Data></Cell>
     <Cell><Data ss:Type="String">* Age is questionable, you might well need a range of Age or even (in practice)&#10;&#10;a text like &quot;in their teens&quot;. =&gt; new ballot comment.&#10;&#10;* Todo: discuss the applicability of assessing stages&#10;&#10;* Change the description: it is circular</Data></Cell>

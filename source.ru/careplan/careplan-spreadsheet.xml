@@ -179,7 +179,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">Healthcare plan for patient</Data></Cell>
-    <Cell><Data ss:Type="String">Describes the intention of how one or more practitioners intend to deliver care for a particular patient for a period of time, possibly limited to care for a specific condition or set of conditions.</Data></Cell>
+    <Cell><Data ss:Type="String">Описывает намерение одного или нескольких исполнителей ухаживать за конкретным пациентом в течение некоторого периода времени, возможно ограниченное уходом только при одном или нескольких определенных состояниях.</Data></Cell>
     <Cell><Data ss:Type="String">Care Team</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:Index="13" ss:StyleID="s68"><Data ss:Type="String">Act[classCode=PCPR, moodCode=INT]</Data></Cell>

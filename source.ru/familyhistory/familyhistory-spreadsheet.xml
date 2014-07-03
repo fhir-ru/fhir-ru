@@ -203,7 +203,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell><Data ss:Type="String">Information about patient's relatives, relevant for patient</Data></Cell>
-    <Cell><Data ss:Type="String">Significant health events and conditions for people related to the subject relevant in the context of care for the subject</Data></Cell>
+    <Cell><Data ss:Type="String">Существенные изменения в здоровье и состоянии родственников пациента в контексте ухода за ним.</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s69"/>
     <Cell ss:Index="14" ss:StyleID="s69"><Data ss:Type="String">Observation[classCode=OBS, moodCode=EVN]</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Not in scope for v2</Data></Cell>

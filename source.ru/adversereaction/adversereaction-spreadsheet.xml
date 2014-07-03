@@ -174,8 +174,8 @@
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Specific reactions to a substance</Data></Cell>
-    <Cell><Data ss:Type="String">Records an unexpected reaction suspected to be related to the exposure of the reaction subject to a substance</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Побочные реакции на вещества</Data></Cell>
+    <Cell><Data ss:Type="String">Записывает побочную реакцию, предположительно связанную с воздействием вещества</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="s69"><Data ss:Type="String">Used to track reactions when it is unknown the exact cause but there's a desire to flag/track potential causes.  Also used to capture reactions that are significant for inclusion in the health record or as evidence for an allergy or intolerance.</Data></Cell>
     <Cell ss:Index="14" ss:StyleID="s69"><Data ss:Type="String">Observation[classCode=OBS, moodCode=EVN]</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">IAM-11-Onset Date (Does not allow for IAM-12-Onset Date Text)</Data></Cell>
