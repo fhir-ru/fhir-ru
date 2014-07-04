@@ -164,7 +164,9 @@
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s67"/>
-    <Cell><Data ss:Type="String">(informative) A response to a scheduled appointment for a patient and/or practitioner(s)</Data></Cell>
+    <Cell><Data ss:Type="String">
+    (Статус ресурса: informative) Ответ на информацию о запланировованной встрече пациента 
+    и/или медицинского специалиста(-ов).</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s68"/>
     <Cell ss:Index="13" ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
