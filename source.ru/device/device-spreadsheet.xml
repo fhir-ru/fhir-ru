@@ -125,8 +125,13 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">An instance of a manufactured thing that is used in the provision of healthcare</Data></Cell>
-    <Cell><Data ss:Type="String">This resource identifies an instance of a manufactured thing that is used in the provision of healthcare without being substantially changed through that activity. The device may be a machine, an insert, a computer, an application, etc. This includes durable (reusable) medical equipment as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health.</Data></Cell>
-    <Cell><Data ss:Type="String">Allows institutions to track their devices. </Data></Cell>
+    <Cell><Data ss:Type="String">Данный ресурс определяет некую сущность, произведенную (созданную) с целью предоставления
+    медицинских услуг. Принимая участие в процессе лечения, сущность не изменяемт своего состояния в значительной 
+    степени. Сущность может представлять собой некое устройство, компьютер, приложение и т.д., может использоваться
+    повторно (предмет многоразового использования) или единоразово, в том числе в качестве одноразового 
+    инструмента, используемого для диагностики, лечения и выполнения научных исследований в клинической области 
+    и здравоохранении в целом.</Data></Cell>
+        <Cell><Data ss:Type="String">Allows institutions to track their devices. </Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Device</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
