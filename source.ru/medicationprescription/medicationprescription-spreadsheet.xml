@@ -258,7 +258,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Prescription of medication to for patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">An order for both supply of the medication and the instructions for administration of the medicine to a patient.</Data><NamedCell
+    <Cell><Data ss:Type="String">Заказ как на поставку лекарственного средства, так и на его применение.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">CombinedMedicationRequest</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
