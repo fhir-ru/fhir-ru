@@ -201,7 +201,9 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">An interaction during which services are provided to the patient</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">
+    Взаимодействие между пациентом и поставщиком(-ми) медицинских услуг в целях лечения или диагностики состояния
+    здоровья пациента.</Data></Cell>
     <Cell><Data ss:Type="String">Visit</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="s68"/>
     <Cell ss:Index="14" ss:StyleID="s68"><Data ss:Type="String">Encounter[moodCode=EVN]</Data></Cell>
