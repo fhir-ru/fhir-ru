@@ -157,7 +157,7 @@
     <Cell><Data ss:Type="String">
     Данная сущность представляет собой совокупность других сущностей, рассматриваемых или выступающих в единстве,
     но способных на индивидуальные действия и не являющихся официальным или юридическим объединением. (Например, 
-    объединения, не являющиеся организациями).</Data></Cell>
+    объединения, не являющиеся организациями)</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="s67"/>
     <Cell ss:Index="14" ss:StyleID="s67"><Data ss:Type="String">Entity[determinerCode=&quot;GRP&quot; or determinerCode=&quot;GRP_KIND&quot;]</Data></Cell>
     <Cell ss:StyleID="s67"/>
