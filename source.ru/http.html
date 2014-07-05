@@ -62,90 +62,72 @@ URL операция записываются в формате:
   OPERATION [base]/[type]/[id] {?_format=[mime-type]}
 </pre>
 <ul>
- <li>The first word is the HTTP verb used for the operation</li>
- <li>Content surrounded by [] is mandatory, and will be replaced the string literal identified. Possible insertion values:
+ <li>Вначале идет HTTP verb</li>
+ <li>Внутри [] находятся обязательные составляющии, ктоторые заменяются строчными литералами следующих идентификаторов:
    <ul>
-     <li><b>base</b>: The <a href="#root">Service Root URL</a></li>
+     <li><b>base</b>: The <a href="#root">Базовый URL сервиса</a></li>
      <li><b>mime-type</b>: The <a href="#mime-type">Mime Type</a></li>
-     <li><b>type</b>: The name of a resource type (e.g. "Patient")</li>
-     <li><b>id</b>: The <a href="resources.html#metadata">Logical Id</a> of a resource</li>
-     <li><b>vid</b>: The <a href="resources.html#metadata">Version Id</a> of a resource</li>
-     <li><b>compartment</b>: The name of a <a href="extras.html#compartment">compartment</a></li>
-     <li><b>parameters</b>: URL parameters as defined for the particular operation</li>
+     <li><b>type</b>: Имя типа ресурса (например "Patient")</li>
+     <li><b>id</b>: The <a href="resources.html#metadata">Логический Id</a> ресурса</li>
+     <li><b>vid</b>: <a href="resources.html#metadata">Идентификатор версии</a> ресурса</li>
+     <li><b>compartment</b>: Имя  <a href="extras.html#compartment">компартмента</a></li>
+     <li><b>parameters</b>: URL параметры запроса, определенные для каждой операции</li>
    </ul>
  </li>
- <li>Content surrounded by {} is optional</li>
+ <li>Содержимое внутри фигурных скобок {} не обязательно (опционально) </li>
 </ul>
 <a name="root"> </a>
 <a name="general"> </a>
-<h3>Service Root URL</h3>
+<h3>Базовый URL сервиса</h3>
 <p>
-The Service Root URL is the address where all of the 
-resources defined by this interface are found. The Service 
-Root URL takes the form of 
+Базовый URL сервиса это адрес по которому можно обратащаться
+к (определенным интерфейсом) ресурсам. Он имеет следующий формат
 </p>
 <pre>
 http(s)://server{/path}
 </pre>
 <p>
-The path portion is optional, and does not include a trailing slash. Each 
-resource type defined in this specification has a manager (or "entity set")
-that lives at the address "/[type]" where the
-"type" is the name of the resource type. 
-For instance, the resource manager for the type 
-"Patient" will live at:
+Часть {/path} не обязательна. URL не должен содержать / (слэш) в конце.
+Каждый тип ресурсов имеет свою коллекцию (manager or "entity set"), доступную по адресу "/[type]", где type это имя типа ресурса. Например коллекция "Patient" (Пациент) будет иметь следующий адрес:
 </p>
 <pre>
 https://server/path/Patient
 </pre>
 <p>
-All the logical interactions are defined relative to the service root
-URL. This means that if the address of any one FHIR resource on a system 
-is known, the address of other resources may be determined. 
+Все логические операции определены относительно базового URL. Т.е. если известен адрес одного ресурса всегда можно вычислить адрес другого.
 </p>
 <p>
-Note: All URLs (and ids that form part of the URL) defined by this specification are case sensitive.</p>
+Замечание: Все URLы и идентификаторы чувствительны к регистру.</p>
 <p>
-Note that a server may use a path of the form "http://server/...[xx]..." where the [xx] is some variable 
-portion that identifies a particular instantiation of the FHIR API. Typically, the variable id 
-identifies a patient or a user, and the underlying information is completely compartmented 
-by the logical identity associated with [xx]. In this case, the FHIR API presents a 
-patient or user centric view of a record, where authentication/authorization is 
-explicitly granted to the URL, on the grounds that some identifiable user is associated
-with the logical identity. It is not necessary to explicitly embed the patient id in the 
-URL - see <a href="extras.html#compartments">Compartments</a> for an alternative approach.
+Сервер может использовать пути типа "http://server/...[xx]...", где [xx] это некоторая переменная. Обычно это идентификатор пациента или пользователя и его присутствие означает, что вся информация относиться к данному пациенту/пользователю либо персонализорованна для него.  
+Так в случае пользователя это означает, что именно ему предоставлен явный доступ к операции. Не обязательно всегда  включать идентификатор пациента - смотри главу <a href="extras.html#compartments">Compartments </a>  про альтернативный подход.
 </p>
 
-<h3>Resource Metadata and Versioning</h3>
+<h3>Метаданные Ресурсов и Версионирование</h3>
 <p>
-Each resource has an associated set of <a href="resources.html#metadata">resource metadata elements</a>. These map to the http request and response using the following fields:
+Каждый ресурс имеет связанный с ним набор метаданных<a href="resources.html#metadata">метаданных</a>.  Которые передаются в запросах и ответах в следующих полях:
 </p>
 <table class="grid">
-  <tr><th>Metadata Item</th><th>Where found in HTTP</th></tr>
-  <tr><td><a href="resources.html#metadata">Logical Id</a></td><td>The Id is represented explicitly in the URL</td></tr>
-  <tr><td><a href="resources.html#metadata">Version Id</a></td><td>The Version Id is represented by the full canonical URL in the content-location header (see <a href="#vread">vread</a> below). 
-     The Version Id may also be represented in the http ETag, but the use of ETag is not needed by this specification</td></tr>
-  <tr><td>Last Modified Date</td><td>HTTP Last-Modified header</td></tr>
+  <tr><th>Элемент Метазанных</th><th> В какой части HTTP</th></tr>
+  <tr><td><a href="resources.html#metadata">Логический Id (Logical Id)</a></td><td>Id всегда явно представлен в URL</td></tr>
+  <tr><td><a href="resources.html#metadata">Id Версии (Version Id)</a></td><td>Идентификатор версии представлен в виде абсолютного канонического URL в заголовке запроса под именем "content-location"  (смотри ниже <a href="#vread">vread</a> ). Идентификатор версии также может быть представлен как  Etag, но это не обязательное требование
+</td></tr>
+  <tr><td>Дата последней модификации (Last Modified Date)</td><td>HTTP  заголовок - "Last-Modified"</td></tr>
 </table>
 <p></p>
 
-<h3>Security</h3>
+<h3>Безопасность</h3>
 <p>
-Using HTTPS is optional, but all production exchange of healthcare data SHOULD use SSL and additional security as appropriate. See <a href="security.html#http">HTTP Security</a> for further information.
+Использование HTTPS опционально, но для передачи любых реальных данных ДОЛЖЕН быть использован SSL и другие дополнительные предосторожности. Смотри <a href="security.html#http">Безопасность HTTP </a> для более детальной информации.
 </p>
 <p>
-Note: to support browser-based client applications, recommend that servers SHOULD implement <a href="http://enable-cors.org/">cross-origin resource sharing</a> for the operations documented here.  
+Замечание: для поддержки браузерных клиентских приложений сервер ДОЛЖЕН реализовывать <a href="http://enable-cors.org/">Кросс-доменный доступ к ресурсам</a>.  
 </p>
 
-<h3>HTTP Status Codes</h3>
+<h3>HTTP коды состояния (Status Codes)</h3>
 <p>
-This specification makes rules about the use of specific HTTP status codes 
-in particular circumstances where the status codes SHALL map to particular 
-states correctly, and only where the correct status code is not obvious. 
-Other HTTP status codes may be used for other states as appropriate, and this particularly
-includes various authentication related status codes and redirects. 
-Authentication redirects should not be interpreted to change the location 
-of the resource itself (a common web programming error). 
+Данная спецификация описывает использование определенных кодов состояния (status codes). Другие коды (не описанные в спецификации) могут быть использованы когда код не ясен или его использование подходит по семантике HTTP (обычно это коды связанные с аутентификацией, авторизацией и перенаправлениями (redirect).
+Перенаправление для аутентификации не должно быть интерпретировано как изменение адреса ресурса (часто встречающаяся ошибка). 
 </p>
 <p>
 FHIR defines an <a href="operationoutcome.html">OperationOutcome resource</a> that can be used to convey specific detailed
