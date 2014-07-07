@@ -163,8 +163,10 @@
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference</Data></Cell>
+    <Cell><Data ss:Type="String">Фото-, видео- или аудиоконтент, полученный или используемый в медициинских целях.
+    Ресурс может включать в себя медиаконтент или указывать прямую ссылку на его размещение</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Фото-, видео- или аудиоконтент, полученный или используемый в медициинских целях.
+    Ресурс может включать в себя медиаконтент или указывать прямую ссылку на его размещение</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:Index="15" ss:StyleID="Default"><Data ss:Type="String">Act[classCode=&quot;DGIMG&quot;, moodCode=&quot;EVN&quot;]</Data></Cell>
