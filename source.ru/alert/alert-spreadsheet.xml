@@ -135,7 +135,7 @@
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Key information to flag to healthcare providers</Data></Cell>
     <Cell><Data ss:Type="String">
-    Оповещение о возможных (потенциальных) проблемах при оказании медицинской помощи пациенту.</Data></Cell>
+    Оповещение о возможных (потенциальных) проблемах при оказании медицинской помощи пациенту</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s67"/>
     <Cell ss:Index="13" ss:StyleID="s67"><Data ss:Type="String">Observation[classCode=ISSUE, moodCode=EVN]</Data></Cell>
     <Cell ss:StyleID="s67"/>

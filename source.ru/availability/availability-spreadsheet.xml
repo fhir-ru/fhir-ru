@@ -165,9 +165,7 @@
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s68"/>
-    <Cell><Data ss:Type="String">
-    (Статус ресурса: informative) (Объект-)контейнер для заполнения свободных тайм-слотов (интервалов времени). 
-    Используется для планирования медицинских консультаций.</Data></Cell>
+    <Cell><Data ss:Type="String">(Статус ресурса: informative) (Объект-)контейнер для заполнения свободных тайм-слотов (интервалов времени). Используется для планирования медицинских консультаций</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s69"/>
     <Cell ss:Index="13" ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"><Data ss:Type="String">BEGIN:VFREEBUSY  …  END:VFREEBUSY&#10;(If your fhir server provides this information via calDAV, then you may want to include addressing information in a URL section, and with the search, a DTSTART and DTEND component can be included to indicate the range of time that has been covered in the collection of slots, where these overlap the resources period values. For all slots that reference this resource, include a FREEBUSY row for each slot)</Data></Cell>

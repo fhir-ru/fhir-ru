@@ -116,7 +116,7 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s83"/>
-    <Cell><Data ss:Type="String">A description of a query with a set of parameters</Data></Cell>
+    <Cell><Data ss:Type="String">Описание запроса с набором параметров</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s83"/>
     <Cell ss:Index="13" ss:StyleID="s83"><Data ss:Type="String">QuerySpec</Data></Cell>
     <Cell ss:StyleID="s83"/>

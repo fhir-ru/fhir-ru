@@ -206,7 +206,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A structured set of questions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Структурированный набор вопросов, предназначенный для сбора ответов. Вопросы упорядочены и сгруппированы в соответствующие подгруппы согласно структуре и правилам группировки лежащих в основе вопросов.</Data><NamedCell
+    <Cell><Data ss:Type="String">Структурированный набор вопросов, предназначенный для сбора ответов. Вопросы упорядочены и сгруппированы в соответствующие подгруппы согласно структуре и правилам группировки лежащих в основе вопросов</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Form, CRF, Survey</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

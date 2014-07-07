@@ -206,7 +206,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">A grouping of people or organizations with a common purpose</Data></Cell>
     <Cell><Data ss:Type="String">Формальное или неформальное объединение отдельных лиц или организаций, имеющее своей целью
     выполнение некоторых коллективных действий. К объединениям относятся компании, учреждения, корпорации, общественные
-    объединения, профессиональные сообщества и объединения и т.д.</Data></Cell>
+    объединения, профессиональные сообщества и объединения и тд</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Organization(classCode=ORG, determinerCode=INST)</Data></Cell>
     <Cell><Data ss:Type="String">(also see master files messages)</Data></Cell>
     <Cell><Data ss:Type="String">Organization</Data></Cell>

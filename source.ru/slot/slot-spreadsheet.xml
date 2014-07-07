@@ -182,7 +182,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">(Статус ресурса: informative) 
-    Свободный временной интервал в расписании медицинских консультаций и процедур.</Data></Cell>
+    Свободный временной интервал в расписании медицинских консультаций и процедур</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s68"/>
     <Cell ss:Index="13" ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">(refer to the Availability resource for the header mapping details)</Data></Cell>
