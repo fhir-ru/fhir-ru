@@ -148,9 +148,8 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A resource that describes a message that is exchanged between systems</Data></Cell>
     <Cell><Data ss:Type="String">Данный ресурс представляет собой заголовок и используется при обмене сообщениями, 
-    запрашивающими выполнение некоторых действий или отвечающими на некоторый запрос. Ресурс(ы), вызывающие некоторое
-    действие, также как и другая родственная информация обычно передается в комплекте (in a bundle), причем ресурс 
-    "MessageHeader" является первым в комплекте</Data></Cell>
+    запрашивающими выполнение некоторых действий или отвечающими на некоторый запрос. Вызывающие действие ресурс(ы), а также 
+    другая родственная информация, обычно передается в комплекте (in a bundle), причем ресурс "MessageHeader" является первым в таком комплекте</Data></Cell>
     <Cell><Data ss:Type="String">Many implementations are not prepared to use REST and need a messaging based infrastructure</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Message</Data></Cell>
     <Cell><Data ss:Type="String">MSH / MSA / ERR</Data></Cell>

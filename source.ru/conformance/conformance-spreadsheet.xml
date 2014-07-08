@@ -239,8 +239,8 @@
     <Cell ss:Index="5"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">230;160</Data></Cell>
     <Cell><Data ss:Type="String">A conformance statement</Data></Cell>
-    <Cell><Data ss:Type="String">Заявление о соответствии есть набор требований к реализации или описание способов выполнени
-    поставленных требований в конкретной реализации</Data></Cell>
+    <Cell><Data ss:Type="String">Заявление о соответствии (Conformance Statement) - есть набор требований к реализации или 
+    описание способов выполнения требований, предъявляемых к конкретной реализации</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Conformance.identifier</Data></Cell>
