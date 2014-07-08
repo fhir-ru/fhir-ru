@@ -7,29 +7,29 @@ todo: compartments
 <page title="Главная" note="(map + search) - focus on useful links" filename="index.html">
   <page title="Документация" filename="documentation.html">
     <page title="Содержание" filename="toc.html"/>
-    <page title="Лицензия и юридическая информация" filename="license.html"/>
-    <page title="Community and Credits" filename="credits.html"/>
+    <page title="Лицензирование и условия использования" filename="license.html"/>
+    <page title="Наше сообщество и благодарности" filename="credits.html"/>
     <page title="История версий" filename="history.html"/>
-    <page title="DSTU Considerations" filename="dstu.html"/>
+    <page title="Соображения, касающиеся DSTU" filename="dstu.html"/>
     <page title="Нерешенные вопросы" filename="todo.html"/>
-    <page title="Краткое описание" filename="summary.html"/>
-    <page title="Введение" filename="overview.html"/>
-    <page title="Сравнение" filename="comparison.html">
+    <page title="Краткий обзор" filename="summary.html"/>
+    <page title="Обзор стандарта и план развития" filename="overview.html"/>
+    <page title="Сравнение с другими стандартами" filename="comparison.html">
       <page title="v2 Messaging" filename="comparison-v2.html"/>
       <page title="v3 Messaging" filename="comparison-v3.html"/>
       <page title="CDA" filename="comparison-cda.html"/>
-      <page title="Другие спецификации" filename="comparison-other.html"/>
+      <page title="Другие стандарты" filename="comparison-other.html"/>
     </page>
     <page title="Предстоящие задачи" filename="change.html"/>
     <page title="EHR FM map" filename="ehr-fm.html"/>
     <page title="Определения ресурсов" filename="resources.html">
-      <page title="Правила соответствия" filename="conformance-rules.html"/>
-      <page title="Tags, Bundles, Compartments" filename="extras.html">
-        <page title="Compartments" filename="compartment-patient.html"/>
+      <page title="Правила обеспечения соответствия" filename="conformance-rules.html"/>
+      <page title="Тэги, комплекты ресурсов, логические модули" filename="extras.html">
+        <page title="Логические модули (Compartments)" filename="compartment-patient.html"/>
       </page>
       <page title="Ссылки на упоминания" filename="references.html"/>
-      <page title="Narrative" filename="narrative.html">
-        <page title="Narrative Example" filename="narrative-example.html"/>
+      <page title="Описания" filename="narrative.html">
+        <page title="Пример описания" filename="narrative-example.html"/>
       </page>
       <page title="Форматы" filename="formats.html">
         <page title="XML" filename="xml.html"/>
@@ -45,8 +45,8 @@ todo: compartments
       <page title="Формальные определения" filename="datatypes-definitions.html"/>
       <page title="Mappings" filename="datatypes-mappings.html"/>
     </page>
-    <page title="Использование кодов" filename="terminologies.html">
-      <page title="Терминологические системы" filename="terminologies-systems.html"/>
+    <page title="Использование кодовых значений" filename="terminologies.html">
+      <page title="Перечень кодовых систем" filename="terminologies-systems.html"/>
       <page title="Value Sets" filename="terminologies-valuesets.html">
         <pages type="valueset" filename="template-valueset.html"/>
         <pages type="codesystem" filename="template-codesystem.html"/>
@@ -59,7 +59,7 @@ todo: compartments
       </page>
       <page title="Концептуальные карты" filename="terminologies-conceptmaps.html"/>
     </page>
-    <page title="Ballot Intro" filename="ballot-intro.html"/>
+    <page title="Голосование" filename="ballot-intro.html"/>
   </page>
   
   <page title="Реализация" filename="implementation.html">
@@ -69,14 +69,14 @@ todo: compartments
     <page title="Документы" filename="documents.html"/>
     <page title="Загрузки" filename="downloads.html"/>
     <page title="Использование ресурсов" filename="use.html"/>
-    <page title="Техподдержка" filename="support.html"/>
+    <page title="Поддержка реализации" filename="support.html"/>
     <page title="Managing Resource Identity" filename="managing.html"/>
     <page title="Services / SOA" filename="services.html"/>
     <page title="Interaction Patterns" filename="pushpull.html"/>
-    <page title="Распространённые случаи использования" filename="usecases.html"/>
+    <page title="Распространенные случаи использования" filename="usecases.html"/>
     <page title="Список профилей" filename="profilelist.html"/>
     <page title="Безопасность" filename="security.html">
-      <page title="Security Labels" filename="security-labels.html"/>
+      <page title="Метки безопасности" filename="security-labels.html"/>
     </page>
     <page title="Интегрированные примеры" filename="integrated-examples.html"/>
   </page>
