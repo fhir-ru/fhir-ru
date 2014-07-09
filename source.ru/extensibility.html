@@ -15,34 +15,32 @@
 
 
 <a name="root"> </a>
-<h1>Extensibility</h1>
+<h1>Расширяемость</h1>
 <p>
-See also Extensibility <a href="extensibility-examples.html">Examples</a> as well.
+См. также <a href="extensibility-examples.html">Примеры расширяемости</a>.
 </p>
 <p>
-This exchange specification is based on generally agreed common
-requirements across healthcare - covering many jurisdictions, domains, and
-different functional approaches. As such, it is common for
-specific implementations to have valid requirements that will not
-be directly included in this specification. Incorporating all of these requirements
-would make this specification very cumbersome and difficult to
-implement. Instead, this specification expects that these additional
-distinct requirements will be implemented as extensions.
+Данная спецификация информационного обмена основывается на общих согласованных
+требованиях здравоохранения, учитывает различные функциональные
+подходы, соответствует предметным областям и реалиям стран и территорий мира. 
+Вследствие универсальности FHIR, конкретные требования отдельных субьектов здравоохранения
+к стандарту информационного обмена могут оставаться неучтенными.
+Стремление учесть все возможные требования в рамках одной спецификации,
+сделало бы ее слишком объемной и труднореализуемой. Поэтому, ожидается, что
+все специфические требования будут реализованы в расширениях.
 </p>
 <p>
-As such, extensibility is a fundamental part of the design of this
-specification. Every element in a resource may have extension child elements 
-to represent additional information that is not part of the basic definition 
-of the resource. Applications should not reject resources merely because
-they contain extensions, though they may need to reject resources 
-because of the specific contents of the extensions.
+Поэтому, расширяемость - это одна из главных частей в структуре спецификации. 
+Каждый элемент ресурса может иметь элемент-потомок, являющийся его расширением (extension),
+для представления дополнительной информации, которая не входит в базовое опоисание ресурса
+(basic definition of the resource). Приложения не должны отказывать в обработке ресурса только
+из-за наличия расширений, однако, могут отказать в обработке ресурса из-за содержимого расширения.
 </p>
 <p>
-Note that, unlike in many other specifications, there can be no stigma
-associated with the use of extensions by any application, project, or
-standard - regardless of the institution or jurisdiction that uses or defines the
-extensions.  The use of extensions is what allows the FHIR specification to retain a core
-simplicity for everyone.
+Обратите внимание, что в отличие от других стандартов, FHIR не имеет ниаких предрассудков в отношении
+использования расширений каким-либо программным обеспечением, проектом или стандартом - вне зависимости
+от учреждения или страны или территории, определяющей раширение. Использование расширений позволяет
+спецификации FHIR сохранить свою простоту для каждого.
 </p>
 <p>
 In order to make the use of extensions safe and manageable, there is a
