@@ -172,7 +172,21 @@ public abstract class XmlComposerBase extends ComposerBase  {
   
 	}
 	
-	private <T extends Resource>void composeEntry(AtomEntry<T> entry) throws Exception {
+  /**
+   * Compose a type to a stream (used in the spec, for example, but not normally in production)
+   */
+  public void compose(OutputStream stream, Type type) throws Exception {
+    xml = new XMLWriter(stream, "UTF-8");
+    xml.setPretty(true);
+    xml.start();
+    xml.setDefaultNamespace(FHIR_NS);
+    composeType("", type);
+    xml.close();
+  }
+
+	protected abstract void composeType(String preix, Type type) throws Exception;
+
+  private <T extends Resource>void composeEntry(AtomEntry<T> entry) throws Exception {
 		AtomEntry<T> e = entry;
 	  if (entry.isDeleted()) {
 	    xml.setDefaultNamespace("http://purl.org/atompub/tombstones/1.0");
@@ -283,7 +297,9 @@ public abstract class XmlComposerBase extends ComposerBase  {
 	protected abstract void composeResource(Resource resource) throws Exception;
 
 	protected void composeElementAttributes(Element element) throws Exception {
-		if (element.getXmlId() != null) 
+    for (String comment : element.getXmlComments())
+      xml.comment(comment, false);
+	  if (element.getXmlId() != null) 
 			xml.attribute("id", element.getXmlId());
 	}
 

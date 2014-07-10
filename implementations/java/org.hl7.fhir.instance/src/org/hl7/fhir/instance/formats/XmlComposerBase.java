@@ -173,6 +173,20 @@ public abstract class XmlComposerBase extends ComposerBase  {
   
 	}
 	
+  /**
+   * Compose a type to a stream (used in the spec, for example, but not normally in production)
+   */
+  public void compose(OutputStream stream, Type type) throws Exception {
+    xml = new XMLWriter(stream, "UTF-8");
+    xml.setPretty(true);
+    xml.start();
+    xml.setDefaultNamespace(FHIR_NS);
+    composeType("", type);
+    xml.close();
+  }
+
+	protected abstract void composeType(String preix, Type type) throws Exception;
+
 	private <T extends Resource>void composeEntry(AtomEntry<T> entry) throws Exception {
 		AtomEntry<T> e = entry;
 	  if (entry.isDeleted()) {
@@ -284,6 +298,8 @@ public abstract class XmlComposerBase extends ComposerBase  {
 	protected abstract void composeResource(Resource resource) throws Exception;
 
 	protected void composeElementAttributes(Element element) throws Exception {
+    for (String comment : element.getXmlComments())
+      xml.comment(comment, false);
 		if (element.getXmlId() != null) 
 			xml.attribute("id", element.getXmlId());
 	}
