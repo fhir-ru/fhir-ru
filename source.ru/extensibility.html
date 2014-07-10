@@ -107,7 +107,7 @@
 </p>
 <div class="example">
 <p>
-Here is an example of a name with a simple extension for a tribal name:
+Приведем пример имени с простым расширением - "племенным именем" (tribal name):
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
@@ -118,7 +118,7 @@ Here is an example of a name with a simple extension for a tribal name:
 &lt;/name&gt;
 </pre>
 <p>
-or in JSON:
+или в JSON:
 </p>
 <pre class="json">
 "name" : {
@@ -131,11 +131,12 @@ or in JSON:
 }
 </pre>
 <p>
-The proper use of the URL value is discussed below.
+Обсудим корректное использование атрибута "URL".
 </p>
 <p>
-Extending a patient with an opt-in status for a clinical trial, with 
-3 fields: status, date of recording, and person who recorded:
+Рассмотрим расширение ресурса "Patient" путем добавления статуса "согласие на участие"
+с тремя полями: статус (status), дата записи статуса (date of recording), лицо, зафиксировавшее статус 
+(person who recorded):
 </p>
 <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
@@ -156,7 +157,7 @@ Extending a patient with an opt-in status for a clinical trial, with
 &lt;/Patient&gt;
 </pre>
 <p>
-or in JSON:
+или в JSON:
 </p>
 <pre class="json">
 {
@@ -191,8 +192,10 @@ or in JSON:
 <a name="mustUnderstand"> </a>
 <a name="isModifier"> </a>
 <a name="modifierExtension"> </a>
-<h2>Modifier Extensions</h2>
+<h2>Модификаторы / элементы смены значения (Modifier Extensions)</h2>
 <p>
+
+
 There are some cases where the information provided in extensions modifies the meaning 
 of the element that contains it. Typically, this means information that qualifies or 
 negates the primary meaning of the element that contains it. Some examples:
