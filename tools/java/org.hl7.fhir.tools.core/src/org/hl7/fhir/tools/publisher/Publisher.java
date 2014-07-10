@@ -133,6 +133,7 @@ import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.ProfileStructureComponent;
+import org.hl7.fhir.instance.model.Questionnaire;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetFilterComponent;
@@ -144,6 +145,7 @@ import org.hl7.fhir.instance.model.ValueSet.ValuesetStatus;
 import org.hl7.fhir.instance.utils.LoincToDEConvertor;
 import org.hl7.fhir.instance.utils.NarrativeGenerator;
 import org.hl7.fhir.instance.utils.ProfileUtilities;
+import org.hl7.fhir.instance.utils.QuestionnaireBuilder;
 import org.hl7.fhir.instance.utils.ToolingExtensions;
 import org.hl7.fhir.instance.validation.InstanceValidator;
 import org.hl7.fhir.instance.validation.ProfileValidator;
@@ -464,11 +466,12 @@ public class Publisher {
     
     // we have profiles scoped by resources, and stand alone profiles
     for (ProfileDefn p : page.getDefinitions().getProfiles().values())
-      processProfile(p);
+      processProfile(p, p.metadata("id"));
     for (ResourceDefn r : page.getDefinitions().getResources().values())       
       for (RegisteredProfile p : r.getProfiles())      
-        processProfile(p.getProfile());
-    
+        processProfile(p.getProfile(), p.getDestFilenameNoExt());
+                                       
+                                       
     // now, validate the profiles
     for (ProfileDefn p : page.getDefinitions().getProfiles().values())
       validateProfile(p);
@@ -504,7 +507,7 @@ public class Publisher {
     t.getProfile().getText().getDiv().getChildNodes().add(dtg.generate(t));
   }
 
-  private void processProfile(ProfileDefn profile) throws Exception {
+  private void processProfile(ProfileDefn profile, String filename) throws Exception {
     // they've either been loaded from spreadsheets, or from profile declarations
     // what we're going to do:
     //  create Profile structures if needed (create differential definitions from spreadsheets)
@@ -519,11 +522,13 @@ public class Publisher {
       for (ProfileStructureComponent c : profile.getSource().getStructure()) {
         if (c.getBase() != null && !hasSnapshot(profile.getSource(), c)) {
           // cause it probably doesn't, coming from the profile directly
-          ProfileStructureComponent base = page.getDefinitions().getSnapShotForType(c.getTypeSimple());
-          new ProfileUtilities().generateSnapshot(base, c);
+          ProfileStructureComponent base = page.getDefinitions().getSnapShotForProfile(c.getBaseSimple());
+          new ProfileUtilities().generateSnapshot(base, c, c.getBaseSimple().split("#")[0]);
         }
+        page.getProfiles().put(profile.getSource().getUrlSimple(), profile.getSource());
       }
     }
+    profile.getSource().setTag("filename", filename);
   }
 
   private boolean hasSnapshot(Profile source, ProfileStructureComponent c) {
@@ -2385,7 +2390,16 @@ public class Publisher {
     tmp.delete();
     // because we'll pick up a little more information as we process the
     // resource
-    generateProfile(resource, n, xml);
+    Profile p = generateProfile(resource, n, xml);
+    generateQuestionnaire(n, p);
+  }
+
+  private void generateQuestionnaire(String n, Profile p) throws Exception {
+    QuestionnaireBuilder b = new QuestionnaireBuilder();
+    Questionnaire q = b.buildQuestionnaire(p);
+    
+    new XmlComposer().compose(new FileOutputStream(page.getFolders().dstDir + n + ".questionnaire.xml"), q, true, false);
+    new JsonComposer().compose(new FileOutputStream(page.getFolders().dstDir + n + ".questionnaire.json"), q, true);
 
   }
 
@@ -2597,19 +2611,7 @@ public class Publisher {
     return "Loinc Narrative";
   }
 
-  private void generateProfile(ResourceDefn root, String n, String xmlSpec) throws Exception, FileNotFoundException {
-//    ProfileDefn p = new ProfileDefn();
-//    p.putMetadata("id", root.getName().toLowerCase());
-//    p.putMetadata("name", n);
-//    p.putMetadata("author.name", "FHIR Project");
-//    p.putMetadata("author.ref", "http://hl7.org/fhir");
-//    p.putMetadata("description", "Basic Profile. " + root.getRoot().getDefinition());
-//    p.putMetadata("status", "draft");
-//    p.putMetadata("date", new SimpleDateFormat("yyyy-MM-dd", new Locale("en", "US")).format(new Date()));
-//    p.getResources().add(root);
-//    p.putMetadata("requirements", root.getRequirements());
-//    ProfileGenerator pgen = new ProfileGenerator(page.getDefinitions());
-//    Profile rp = pgen.generate(p, n, xmlSpec);
+  private Profile generateProfile(ResourceDefn root, String n, String xmlSpec) throws Exception, FileNotFoundException {
     Profile rp = root.getProfile();
     page.getProfiles().put(root.getName(), rp);
     new XmlComposer().compose(new FileOutputStream(page.getFolders().dstDir + n + ".profile.xml"), rp, true, false);
@@ -2622,6 +2624,7 @@ public class Publisher {
     saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir + "html" + File.separator + n + ".html"));
     cloneToXhtml(n + ".profile", "Profile for " + n, true, "profile-instance:resource:" + root.getName());
     jsonToXhtml(n + ".profile", "Profile for " + n, resource2Json(rp), "profile-instance:resource:" + root.getName());
+    return rp;
   }
 
   private void saveAsPureHtml(Profile resource, FileOutputStream stream) throws Exception {
@@ -2824,18 +2827,28 @@ public class Publisher {
     // File umlf = new CSFile(page.getFolders().imgDir+n+".png");
     //
     String src = TextFile.fileToString(page.getFolders().srcDir + "template-profile.html");
-    src = page.processProfileIncludes(filename, profile, xml, tx, src, exXml, intro, notes, master, title + ".html", null);
-    page.getEpub().registerFile(title + ".html", "Profile " + exampleName, EPubManager.XHTML_TYPE);
+    src = page.processProfileIncludes(filename, profile, xml, tx, src, exXml, intro, notes, master, title + ".html", null, filename);
+    page.getEpub().registerFile(title + ".html", "Profile " + profile.getSource().getNameSimple(), EPubManager.XHTML_TYPE);
     TextFile.stringToFile(src, page.getFolders().dstDir + title + ".html");
     
     // now, generate a page for each structure definition
     for (ProfileStructureComponent s : profile.getSource().getStructure()) {
       String fn = Utilities.changeFileExt(filename, "."+Utilities.getFileNameForName(s.getNameSimple()))+".html";
       src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-constraint.html");
-      src = page.processProfileIncludes(fn, profile, "", tx, src, exXml, intro, notes, master, title + ".html", s);
+      src = page.processProfileIncludes(fn, profile, "", tx, src, exXml, intro, notes, master, title + ".html", s, filename);
       page.getEpub().registerFile(fn, "Profile " + profile.getSource().getNameSimple()+ " structure " +s.getNameSimple(), EPubManager.XHTML_TYPE);
       TextFile.stringToFile(src, page.getFolders().dstDir + fn);
     }
+    
+    src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-mappings.html");
+    src = page.processProfileIncludes(filename, profile, xml, tx, src, exXml, intro, notes, master, title + ".html", null, filename);
+    page.getEpub().registerFile(title + ".html", "Mappings for Profile " + profile.getSource().getNameSimple(), EPubManager.XHTML_TYPE);
+    TextFile.stringToFile(src, page.getFolders().dstDir + title + "-mappings.html");
+    
+    src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-definitions.html");
+    src = page.processProfileIncludes(filename, profile, xml, tx, src, exXml, intro, notes, master, title + ".html", null, filename);
+    page.getEpub().registerFile(title + ".html", "Definitions for Profile " + profile.getSource().getNameSimple(), EPubManager.XHTML_TYPE);
+    TextFile.stringToFile(src, page.getFolders().dstDir + title + "-definitions.html");
     
     //
     // src = Utilities.fileToString(page.getFolders().srcDir +
@@ -2868,12 +2881,19 @@ public class Publisher {
     XhtmlGenerator xhtml = new XhtmlGenerator(new ExampleAdorner(page.getDefinitions()));
     ByteArrayOutputStream b = new ByteArrayOutputStream();
     xhtml.generate(xdoc, b, "Profile", profile.metadata("name"), 0, true, title + ".profile.xml.html");
-    String html = TextFile.fileToString(page.getFolders().srcDir + "template-example-xml.html").replace("<%example%>", b.toString());
-    html = page.processPageIncludes(title + ".profile.xml.html", html, master == null ? "profile-instance" : "profile-instance:res:" + master, null);
+    String html = TextFile.fileToString(page.getFolders().srcDir + "template-profile-example-xml.html").replace("<%example%>", b.toString());
+    html = page.processProfileIncludes(title + ".profile.xml.html", profile, "", "", html, "", "", "", master, title + ".html", null, filename);
     TextFile.stringToFile(html, page.getFolders().dstDir + title + ".profile.xml.html");
 
     page.getEpub().registerFile(title + ".profile.xml.html", "Profile", EPubManager.XHTML_TYPE);
-    jsonToXhtml(title + ".profile", "Profile for " + profile.metadata("description"), resource2Json(p), master == null ? "profile-instance" : "profile-instance:res:" + master);
+    String n = title + ".profile";
+    String json = resource2Json(p);
+    json = "<div class=\"example\">\r\n<p>" + Utilities.escapeXml("Profile for " + profile.metadata("description")) + "</p>\r\n<pre class=\"json\">\r\n" + Utilities.escapeXml(json)+ "\r\n</pre>\r\n</div>\r\n";
+    html = TextFile.fileToString(page.getFolders().srcDir + "template-profile-example-json.html").replace("<%example%>", json);
+    html = page.processProfileIncludes(title + ".profile.json.html", profile, "", "", html, "", "", "", master, title + ".html", null, filename);
+    TextFile.stringToFile(html, page.getFolders().dstDir + title + ".profile.json.html");
+    //    page.getEpub().registerFile(n + ".json.html", description, EPubManager.XHTML_TYPE);
+    page.getEpub().registerExternal(n + ".json.html");
     tmp.delete();
     return p;
   }
