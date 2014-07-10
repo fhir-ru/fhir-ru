@@ -202,7 +202,7 @@
     <Cell><Data ss:Type="String">10;10</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A set of codes drawn from one or more code systems</Data></Cell>
-    <Cell><Data ss:Type="String">A value set specifies a set of codes drawn from one or more code systems</Data></Cell>
+    <Cell><Data ss:Type="String">Ресурс "ValueSet" задает набор кодов, заимствованных из одной или нескольких систем кодирования</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
