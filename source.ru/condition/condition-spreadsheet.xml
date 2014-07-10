@@ -161,7 +161,7 @@
     <Cell ss:StyleID="s66"><Data ss:Type="String">200;0</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String"> Detailed information about conditions, problems or diagnoses</Data></Cell>
-    <Cell><Data ss:Type="String">Используется для записи подробной информации о состоянии, проблемах или диагнозах, поставленных врачом. Имеет множество применений, включая: запись диагноза во время визита; заполнение списка проблем или итогового заключения, например выписного эпикриза.
+    <Cell><Data ss:Type="String">Используется для записи подробной информации о клиническом состоянии, проблемах со здоровьем или диагнозах, поставленных врачом. Имеет множество применений, включая: запись диагноза во время визита; заполнение списка проблем (problem List) или итогового заключения (Summary Statement), например выписного эпикриза (Discharge Summary).
 	</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Observation[classCode=OBS, moodCode=EVN, code=ASSERTION, value&lt;Diagnosis]</Data></Cell>
     <Cell><Data ss:Type="String">PPR message</Data></Cell>
