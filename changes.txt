@@ -1,0 +1,121 @@
+commit 9a149e77846359a168c879a5ffb851f2d4b3fb58
+Merge: 6926cc7 6541b19
+Author: niquola <niquola@gmail.com>
+Date:   Thu Jul 10 13:15:31 2014 +0400
+
+    Merge branch 'master' of https://github.com/hl7-fhir/fhir-svn
+
+commit 6541b194e303ab7ccbde49d756eaa4d43c9e27a7
+Author: lloyd_mckenzie <lloyd_mckenzie@2f0db536-2c49-4257-a3fa-e771ed206c19>
+Date:   Tue Jul 8 03:02:02 2014 +0000
+
+    Fixed links
+    
+    git-svn-id: http://gforge.hl7.org/svn/fhir/trunk/build@2618 2f0db536-2c49-4257-a3fa-e771ed206c19
+
+ source/sdc.html | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit 4dd11120e76894cee76e62c9f22c6f62da110715
+Author: lloyd_mckenzie <lloyd_mckenzie@2f0db536-2c49-4257-a3fa-e771ed206c19>
+Date:   Tue Jul 8 00:58:59 2014 +0000
+
+    Revamped SDC implementation guide
+    
+    git-svn-id: http://gforge.hl7.org/svn/fhir/trunk/build@2617 2f0db536-2c49-4257-a3fa-e771ed206c19
+
+ source/conformance/conformance-sdc-de-manager.xml  |  236 +++++
+ .../conformance/conformance-sdc-form-designer.xml  |  143 +++
+ source/conformance/conformance-sdc-form-filler.xml |  120 +++
+ .../conformance/conformance-sdc-form-manager.xml   |  211 ++++
+ .../conformance/conformance-sdc-form-receiver.xml  |   90 ++
+ source/conformance/conformance-spreadsheet.xml     |   64 +-
+ .../dataelement-11179-profile-spreadsheet.xml      |  107 +-
+ .../dataelement-sdc-profile-spreadsheet.xml        | 1022 +++++++++++---------
+ source/dataelement/dataelement-spreadsheet.xml     |   13 +-
+ .../questionnaire-extensions-spreadsheet.xml       |   59 +-
+ .../questionnaire-sdc-profile-spreadsheet.xml      |  220 +++--
+ .../valueset-questionnaire-text-type.xml           |    4 +-
+ .../questionnaireanswers-spreadsheet.xml           |  167 ++--
+ source/sdc-intro.html                              |  103 +-
+ source/sdc-security.html                           |   49 +
+ source/sdc-usecase.html                            |   25 -
+ source/sdc.html                                    |   27 +-
+ .../valueset/valueset-extensions-spreadsheet.xml   |   83 +-
+ 18 files changed, 2030 insertions(+), 713 deletions(-)
+
+commit 726766ced8c782ec32bb7556f4120d389bb048fd
+Author: grahameg <grahameg@2f0db536-2c49-4257-a3fa-e771ed206c19>
+Date:   Mon Jul 7 04:08:46 2014 +0000
+
+    update Profile UML diagram, generate questionnaires, and add another IHC profile
+    
+    git-svn-id: http://gforge.hl7.org/svn/fhir/trunk/build@2612 2f0db536-2c49-4257-a3fa-e771ed206c19
+
+ source/observation/observation-spreadsheet.xml | 18 ++++++++----
+ source/profile/profile-spreadsheet.xml         | 40 +++++++++++++-------------
+ 2 files changed, 33 insertions(+), 25 deletions(-)
+
+commit 84aca690575595f3c271bcff996987dc5f26d863
+Author: grahameg <grahameg@2f0db536-2c49-4257-a3fa-e771ed206c19>
+Date:   Sun Jul 6 17:43:05 2014 +0000
+
+    Further improvements to profile rendering
+    
+    git-svn-id: http://gforge.hl7.org/svn/fhir/trunk/build@2611 2f0db536-2c49-4257-a3fa-e771ed206c19
+
+ source/index.html                         |  2 +-
+ source/template-profile-definitions.html  | 36 ++++++-------------------------
+ source/template-profile-example-json.html | 25 +++++++++++++++++++++
+ source/template-profile-example-xml.html  | 24 +++++++++++++++++++++
+ source/template-profile-mappings.html     | 36 ++++++-------------------------
+ 5 files changed, 62 insertions(+), 61 deletions(-)
+
+commit fbc144b2d623362481a1d264acf2d43099a1fcc7
+Author: emhaas <emhaas@2f0db536-2c49-4257-a3fa-e771ed206c19>
+Date:   Sun Jul 6 01:29:27 2014 +0000
+
+    UCUM code typo g/dl to g/dL and change LOINC code from mass/vol to mol/vol to match units of results
+    
+    git-svn-id: http://gforge.hl7.org/svn/fhir/trunk/build@2610 2f0db536-2c49-4257-a3fa-e771ed206c19
+
+ source/observation/observation-example-f001-glucose.xml | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit b4ed882874d521f524d7f074378a6d312e47aaeb
+Author: emhaas <emhaas@2f0db536-2c49-4257-a3fa-e771ed206c19>
+Date:   Sun Jul 6 01:28:05 2014 +0000
+
+    UCUM code typo g/dl to g/dL
+    
+    git-svn-id: http://gforge.hl7.org/svn/fhir/trunk/build@2609 2f0db536-2c49-4257-a3fa-e771ed206c19
+
+ source/observation/observation-example-f002-excess.xml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 1bdb3499c97f149af4df9600163985316a39c271
+Author: emhaas <emhaas@2f0db536-2c49-4257-a3fa-e771ed206c19>
+Date:   Sun Jul 6 01:27:16 2014 +0000
+
+    UCUM code typo  g/dl to g/dL
+    
+    git-svn-id: http://gforge.hl7.org/svn/fhir/trunk/build@2608 2f0db536-2c49-4257-a3fa-e771ed206c19
+
+ source/observation/observation-example-f005-hemoglobin.xml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 9467e69886d5145328a155a54414392501a66912
+Author: grahameg <grahameg@2f0db536-2c49-4257-a3fa-e771ed206c19>
+Date:   Wed Jul 2 09:04:52 2014 +0000
+
+    improve profile display & snapshot generation
+    
+    git-svn-id: http://gforge.hl7.org/svn/fhir/trunk/build@2607 2f0db536-2c49-4257-a3fa-e771ed206c19
+
+ ...c-PotassiumSCncPtSerPlasBldQnLabObs-profile.xml |  99 ++++
+ source/observation/ihc-standardlabobs-profile.xml  | 608 +++++++++++++++++++++
+ .../ihc-standardlabobsquantitative-profile.xml     | 156 ++++++
+ source/observation/observation-spreadsheet.xml     |  29 +-
+ source/profile/profile-spreadsheet.xml             |  18 +-
+ source/template-profile-constraint.html            |   3 +
+ 6 files changed, 897 insertions(+), 16 deletions(-)
