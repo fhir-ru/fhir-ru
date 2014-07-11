@@ -27,50 +27,52 @@
 к стандарту информационного обмена могут оставаться неучтенными.
 Стремление учесть все возможные требования в рамках одной спецификации,
 сделало бы ее слишком объемной и труднореализуемой. Поэтому, ожидается, что
-все специфические требования будут реализованы в расширениях
+все специфические требования будут реализованы в расширениях ресурсов
 </p>
 <p>
-Поэтому, расширяемость - это одна из главных частей в структуре спецификации. 
-Каждый элемент ресурса может иметь элемент-потомок, являющийся его расширением (extension),
-для представления дополнительной информации, которая не входит в базовое опоисание ресурса
-(basic definition of the resource). Приложения не должны отказывать в обработке ресурса только
-из-за наличия расширений, однако, могут отказать в обработке ресурса из-за содержимого расширения
+Расширения - это одна из главных частей стандарта FHIR. Каждый элемент ресурса может иметь элемент-потомок, 
+являющийся его расширением (extension), для представления дополнительной информации, 
+которая не входит в базовое определение ресурса (basic definition of the resource). 
+Приложения не должны отказывать в обработке ресурса только
+из-за наличия расширений, однако, причиной отказа может служить содержимое расширения
 </p>
 <p>
-Обратите внимание, что в отличие от других стандартов, FHIR не имеет ниаких предрассудков в отношении
+Обратите внимание, что в отличие от других стандартов, FHIR не имеет "предрассудков" в отношении
 использования расширений каким-либо программным обеспечением, проектом или стандартом - вне зависимости
 от учреждения или страны или территории, определяющей раширение. Использование расширений позволяет
 спецификации FHIR сохранить свою простоту для каждого
 </p>
 <p>
-Для того, чтобы сделать использование расширений безопасным и управляемым,
-существуют строгие правила их определения и использования. Хотя, разработчики
-могут самостоятельно определять и использовать расширения, существует набор требований, 
+Для того, чтобы сделать применений расширений безопасным и контролируемым,
+были приняты строгие правила их определения и использования. Хотя, разработчики
+могут самостоятельно давать определение и использовать расширения, существует набор требований, 
 соблюдение которых обязательно
 </p>
 <a name="Extension"></a>
 <a name="extension"></a>
-<h2>Extension Element</h2>
+<h2>Элемент Extension</h2>
 <p>
-Every element in a resource or data type includes an optional "extension" child element that may 
-be present any number of times. The extension elements appear as 
-the first set of children, prior to any other defined child elements. 
-This is the content model of the extension as it appears in each resource:
+Все элементы ресурса или типа данных могут иметь неограниченное число необязательных 
+элементов-потомков "extension". Элементы "extension" являются первоочередными элементами-потомками
+и разменщаются в коде ресурса раньше других элементов-потомков. Ниже представлена модель содержимого ресурса,
+применимая ко всем ресурсам:
 </p>
 <%dt Extension%>
 <p>
-Notes:
+Замечаемя:
 </p>
 <ul>
- <li>The <i>url</i> is a mandatory attribute / property and identifies an extension definition in a <a href="profile.html">resource profile</a> that defines the content and meaning of the extension.</li>
- <li>The actual content of the extension consists of either a single value in the <i>value[x]</i> element, or it can contain additional extensions, each with their own defining url and content</li>
- <li>An extension SHALL have either a value (i.e. a value[x] element) or child extensions. The value[x] element SHALL have content and/or an id attribute that is the target of a reference from the Narrative</li>
- <li>When an extension is the target of an internal reference, the reference is always to the value of the extension. An extension is only allowed to be the target of a reference when it has no value[x]</li>
- <li>For most extensions, it must be safe for an application processing the content of the resource to ignore an extension. Specifically, this should be understood to mean that the content of the extension does not alter the meaning 
- of the element that contains it. See below for further discussion</li>
+ <li><i>url</i> - это обязательный атрибут / свойство и указывает на определение расширения в <a href="profile.html">профиль ресурса (resource profile)</a>, который определяет содержимое и смысл расширения</li>
+ <li>Фактическим содержимым 'расширения' (элемента "extension") может быть некоторое (единственное) значение, заключенное в элементе <i>value[x]</i> или дополнительные элементы "extension", с обязательными определяющими атрибутами "url" и собственным содержимым</li>
+ <li>Элемент "extension" ДОЛЖЕН содержать какое-либо значение (напр., в элементе "value[x]") или элементы-потомки. Элемент "value[x]" ДОЛЖЕН содержать некоторое значение и/или id-атрибут, на который ссылается некоторый элемент из описательной части ресурса (Narrative)</li>
+ <li>Когда на элемент "extension" ссылается некоторая внутренняя ссылка, она всегда ссылается на содержащееся в нем значение. 
+ Ссылаться на расширение можно лишь в том случае,если оно не содержит элемента "value[x]"</li>
+ <li>Для большей части расширений вполне допустима обработка содержимого ресурса без учета содержимого расширений. В частности, это следует понимать следующим образом - содержимое расширения не изменяет значения содержащего его элемента 
+ Более подробное описание находится далее</li>
 </ul>
 <p>
-The <i>value[x]</i> element has the [x] replaced with the title-cased name of one of the defined types and the contents as defined for that type. The value type may be one of the following:
+В элементе <i>value[x]</i>, [x] заменяется на имя одного из заданных типов данных (имя должно начинаться с заглавной буквы)
+и содержимое, соответствующее заданному типу. Возможны следующие типы данных:
 </p>
 <ul class="dense">
  <li><a href="datatypes.html#integer">integer</a></li>
@@ -81,7 +83,7 @@ The <i>value[x]</i> element has the [x] replaced with the title-cased name of on
  <li><a href="datatypes.html#string">string</a></li>
  <li><a href="datatypes.html#uri">uri</a></li>
  <li><a href="datatypes.html#boolean">boolean</a></li>
- <li><a href="datatypes.html#code">code</a> (only if the extension definition provides a <a href="terminologies.html#code">fixed</a> binding to a suitable set of codes)</li>
+ <li><a href="datatypes.html#code">code</a> (только если расширение предоставляет <a href="terminologies.html#code">фиксированную</a> привязку к допустимому набору кодов)</li>
  <li><a href="datatypes.html#base64Binary">base64Binary</a></li>
  <li><a href="datatypes.html#Coding">Coding</a></li>
  <li><a href="datatypes.html#CodeableConcept">CodeableConcept</a></li>
@@ -95,17 +97,17 @@ The <i>value[x]</i> element has the [x] replaced with the title-cased name of on
  <li><a href="datatypes.html#Address">Address</a></li>
  <li><a href="datatypes.html#Contact">Contact</a></li>
  <li><a href="datatypes.html#Schedule">Schedule</a></li>
- <li><a href="references.html#ResourceReference">Resource</a> - a reference to another resource</li>
+ <li><a href="references.html#ResourceReference">Resource</a> - ссылка на другой ресурс</li>
 </ul>
 
 <p>
-An extension would contain other extensions instead of a value where the original definition of the extension defines 
-complex content (i.e. the extension has multiple parts rather than a simple data type). If the value of the extension itself 
-needs extending, those extensions go in the content of the value[x] element.
+В элемент "extension" могут входить другие расширения (вместо какого-либо значения), когда в исходном определении расширения
+дается описание комплексного содержимого (напр., расширение состоит из нескольких частей с неодинаковыми типами данных). 
+Если значение расширения само по себе нуждается в "расширении", такие расширения задаются в элементе value[x]
 </p>
 <div class="example">
 <p>
-Here is an example of a name with a simple extension for a tribal name:
+Приведем пример имени с простым расширением - "племенным именем" (tribal name):
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
@@ -116,7 +118,7 @@ Here is an example of a name with a simple extension for a tribal name:
 &lt;/name&gt;
 </pre>
 <p>
-or in JSON:
+или в JSON:
 </p>
 <pre class="json">
 "name" : {
@@ -129,11 +131,12 @@ or in JSON:
 }
 </pre>
 <p>
-The proper use of the URL value is discussed below.
+Обсудим корректное использование атрибута "URL".
 </p>
 <p>
-Extending a patient with an opt-in status for a clinical trial, with 
-3 fields: status, date of recording, and person who recorded:
+Рассмотрим расширение ресурса "Patient" путем добавления статуса "согласие на участие"
+с тремя полями: статус (status), дата записи статуса (date of recording), лицо, зафиксировавшее статус 
+(person who recorded):
 </p>
 <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
@@ -154,7 +157,7 @@ Extending a patient with an opt-in status for a clinical trial, with
 &lt;/Patient&gt;
 </pre>
 <p>
-or in JSON:
+или в JSON:
 </p>
 <pre class="json">
 {
@@ -189,8 +192,10 @@ or in JSON:
 <a name="mustUnderstand"> </a>
 <a name="isModifier"> </a>
 <a name="modifierExtension"> </a>
-<h2>Modifier Extensions</h2>
+<h2>Модификаторы / элементы смены значения (Modifier Extensions)</h2>
 <p>
+
+
 There are some cases where the information provided in extensions modifies the meaning 
 of the element that contains it. Typically, this means information that qualifies or 
 negates the primary meaning of the element that contains it. Some examples:

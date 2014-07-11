@@ -183,7 +183,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell><Data ss:Type="String">Drug, food, environmental and others</Data></Cell>
-    <Cell><Data ss:Type="String">Указывает, что у пациента имеется предрасположенность к побочным реакциям при воздействии определенного вещества</Data></Cell>
+    <Cell><Data ss:Type="String">Указывает, что у пациента имеется предрасположенность к нежелательным побочным реакциям при воздействии определенного вещества</Data></Cell>
     <Cell><Data ss:Type="String">Adverse Sensitivity</Data></Cell>
     <Cell ss:StyleID="s70"/>
     <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="String">Observation[moodCode=EVN, code&lt;AllergyIntolerance]</Data></Cell>
