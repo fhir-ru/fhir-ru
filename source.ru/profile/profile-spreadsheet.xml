@@ -223,7 +223,8 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Resource Profile</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A Resource Profile - a statement of use of one or more FHIR Resources.  It may include constraints on Resources and Data Types, Terminology Binding Statements and Extension Definitions</Data><NamedCell
+    <Cell><Data ss:Type="String">Профиль ресурса − это спецификация использования одного или нескольких ресурсов FHIR.
+    Профиль может налагать ограничения на использование ресурса и типов данных, справочников и расширений</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Template</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
