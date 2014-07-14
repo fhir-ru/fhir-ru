@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Eric Haas</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2014-06-26T19:14:20Z</LastSaved>
+  <LastSaved>2014-07-10T20:21:32Z</LastSaved>
   <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,8 +20,7 @@
   <WindowWidth>10005</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>90</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
-  <RefModeR1C1/>
+  <ActiveSheet>7</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -216,6 +215,9 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s99">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="41" ss:ExpandedRowCount="26" x:FullColumns="1"
@@ -288,7 +290,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s70"/>
     <Cell><Data ss:Type="String">Measurements and simple assertions</Data></Cell>
-    <Cell><Data ss:Type="String">Измерения и простые утверждения о пациенте, устройстве или другом объекте.</Data></Cell>
+    <Cell><Data ss:Type="String">Measurements and simple assertions made about a patient, device or other subject</Data></Cell>
     <Cell><Data ss:Type="String">Vital Signs, Measurement, Results, Tests</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Observations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms.</Data></Cell>
     <Cell><Data ss:Type="String">Used for simple observations such as device measurements, laboratory atomic results, vital signs, height, weight, smoking status, comments, etc.  Other resources are used to provide context for observations such as Lab reports, etc</Data></Cell>
@@ -1080,7 +1082,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>21</TopRowBottomPane>
+   <TopRowBottomPane>16</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1093,12 +1095,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>21</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>22</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1154,7 +1156,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1289,11 +1290,11 @@
     <Cell><Data ss:Type="String">Observation.value[x]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">name-value-[x]</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Both name and one of the value parameters</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">composite</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">name &amp; value-[x]</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">[#3045]</Data></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">name-value-[x]</Data></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Both name and one of the value parameters</Data></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">composite</Data></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">name &amp; value-[x]</Data></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">[#3045]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">date</Data></Cell>
@@ -1458,8 +1459,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1652,11 +1653,11 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Profiles">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="1" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="108"/>
+   <Column ss:AutoFitWidth="0" ss:Width="170.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="237"/>
-   <Column ss:AutoFitWidth="0" ss:Width="179.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="246"/>
    <Column ss:AutoFitWidth="0" ss:Width="99"/>
    <Column ss:AutoFitWidth="0" ss:Width="258.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -1665,6 +1666,28 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">Filename</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Example</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Context</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ihcStandardLabObs</Data></Cell>
+    <Cell><Data ss:Type="String">Intermountain Healthcare Standard Lab Observation</Data></Cell>
+    <Cell><Data ss:Type="String">ihc-standardlabobs-profile.xml</Data></Cell>
+    <Cell><Data ss:Type="String">profile</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">ihc</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ihcStandardLabObsQuantitative</Data></Cell>
+    <Cell><Data ss:Type="String">Intermountain Healthcare Standard Lab Observation Quantitative</Data></Cell>
+    <Cell><Data ss:Type="String">ihc-standardlabobsquantitative-profile.xml</Data></Cell>
+    <Cell><Data ss:Type="String">profile</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">ihc</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ihcPotassiumSCncPtSerPlasBldQnLabObs-profile</Data></Cell>
+    <Cell><Data ss:Type="String">Intermountain Healthcare Serum/Plasma Potassium</Data></Cell>
+    <Cell><Data ss:Type="String">ihc-PotassiumSCncPtSerPlasBldQnLabObs-profile.xml</Data></Cell>
+    <Cell><Data ss:Type="String">profile</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">ihc</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1677,7 +1700,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>4</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1726,8 +1749,8 @@
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Excess</Data></Cell>
-    <Cell><Data ss:Type="String">Real-world patient - excess</Data></Cell>
+    <Cell><Data ss:Type="String">Base Excess</Data></Cell>
+    <Cell><Data ss:Type="String">Real-world patient -base excess</Data></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">f002</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">observation-example-f002-excess.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
@@ -1740,8 +1763,8 @@
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Erytrocyte Hemoglobin </Data></Cell>
-    <Cell><Data ss:Type="String">Real-world patient - erytrocyte</Data></Cell>
+    <Cell><Data ss:Type="String">Erythrocyte Hemoglobin </Data></Cell>
+    <Cell><Data ss:Type="String">Real-world patient - erythrocyte</Data></Cell>
     <Cell><Data ss:Type="String">f004</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">observation-example-f004-erythrocyte.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
@@ -1782,8 +1805,8 @@
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">eGFR</Data></Cell>
-    <Cell><Data ss:Type="String">Real-world patient - egfr</Data></Cell>
+    <Cell><Data ss:Type="String">Estimated GFR</Data></Cell>
+    <Cell><Data ss:Type="String">Real-world patient - estimated gfr</Data></Cell>
     <Cell><Data ss:Type="String">f205</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">observation-example-f205-egfr.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
@@ -1803,13 +1826,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>1</ActiveCol>
-    </Pane>
-   </Panes>
+   <Selected/>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>

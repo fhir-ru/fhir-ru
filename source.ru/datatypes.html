@@ -102,49 +102,37 @@
  <tr>
    <th>Имя в FHIR</th><th>Базовый FHIR-тип</th><th>Описание</th>
  </tr>
- <tr><td>code</td><td>string</td><td>Indicates that the value is taken from a set of controlled strings defined elsewhere (см. <a href="terminologies.html">Использование кодов</a> для дальнейшего обсуждения). Technically, a code is restricted to string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
- <tr><td>oid</td><td>uri</td><td>An OID represented as a URI (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>): urn:oid:1.2.3.4.5</td></tr>
- <tr><td>uuid</td><td>uri</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11. Note the RFC comments about case: UUID values SHALL be represented in lower case, but systems SHOULD interpret them case insensitively</td></tr>
- <tr><td>id</td><td>string</td><td>A whole number in the range 0 to 2^64-1 (optionally represented in hex), a uuid, an oid, or any other combination of lowercase letters, numerals, "-" and ".", with a length limit of 36 characters <br/>regex: [a-z0-9\-\.]{1,36}</td></tr>
+ <tr><td>code</td><td>string</td><td>Указывает, что значение взято из набора регулируемых строк, определенных в другом месте (см. <a href="terminologies.html">Использование кодов</a> для дальнейшего обсуждения). Техническое ограничение: код должен быть строкой, содержащей хотя бы один символ и не имеющей пробела в начале и в конце, внутри которой есть только одиночные пробелы. <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
+ <tr><td>oid</td><td>uri</td><td>OID (идентификатор объекта), представленный в виде URI (унифицированный идентификатор ресурса) (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>): urn:oid:1.2.3.4.5</td></tr>
+ <tr><td>uuid</td><td>uri</td><td>UUID (Universally Unique Identifier), представленный в виде URI (унифицированный идентификатор ресурса) (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11. Обратите внимание на комментарий в RFC о регистре: значения UUID ДОЛЖНЫ быть в нижнем регистре, но системам СЛЕДУЕТ интерпретировать их регистронезависимо. </td></tr>
+ <tr><td>id</td><td>string</td><td>Целое число в диапазоне от 0 до 2^64-1 (опционально представленное в шестнадцатиричном виде), uuid, oid или любая другая комбинация букв в нижнем регистре, цифр, знаков "-" и "." длиной до 36 символов <br/>regex: [a-z0-9\-\.]{1,36}</td></tr>
 </table>
 <p>
-In addition to having a value as described above, these primitive data types can also have an identity (e.g. xml:id), 
-and they may have <a href="extensibility.html">extensions</a> like any other element in a resource. Note that the 
-value option is optional and might not be present, following the <a href="formats.html#element-rules">standard rules for all elements</a>.
-For instance, a primitive element might have no value, and include a <a href="general-extensions.html#data-absent-reason">data-absent-reason extension</a> instead.
+Эти примитивные типы данных кроме значения как описано выше могут также иметь сущность (например xml:id), и они могут иметь <a href="extensibility.html">расширения</a>, как и любые другие элементы в ресурсе. Обратите внимание, что значение является необязательным и может отсутствовать в соответствии со <a href="formats.html#element-rules">стандартными правилами для всех элементов</a>. К примеру, элемент примитивного типа может не иметь значения, а вместо этого включать в себя <a href="general-extensions.html#data-absent-reason">расширение data-absent-reason</a>.
 </p>
 <p>
-In XML, these types are represented as XML Elements with the value of the type in the value attribute. 
-The name of the element is defined where the type is used. The XML elements may have an <a href="references.html#idref">id attribute</a>, and child elements named "extension". 
-According to XML schema, leading and trailing whitespace in the value attribute is ignored for the types 
-boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid, and uri. Note that this means that the 
-schema aware XML libraries give different attribute values to non schema aware libraries when reading the 
-XML instances. For this reason, the value attribute for these types SHOULD not have leading and trailing spaces.
-String values should only have leading and trailing spaces if they are part of the content of the value. 
+В XML эти типы представлены как XML Elements со значением этого типа в атрибуте value. Имя этого элемента определяется там, где этот тип используется. Эти XML-элементы могут иметь <a href="references.html#idref">идентификатор атрибута (id attribute)</a> и дочерние элементы, называемые расширением (extension).
+В соответствии с XML-схемой пробелы в начале и в конце значения атрибута (value attribute) игнорируются для типов boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid и uri. Обратите внимание, из этого следует, что библиотеки XML, следующие схеме, дают разные значения атрибута по сравнению с библиотекам, не соответствующим схеме, во время чтения экземпляров XML. По этой причине атрибут значения для этих типов НЕ ДОЛЖЕН иметь пробелы в начале и в конце. Строковые значения могут иметь пробелы в начале и в конце, только если они являются частью содержимого значения. 
 </p>
 <p>
-In JSON, these types are represented as simple properties of the object that contains them. The name of the property is defined where the type is used.
-The types still have an id property, and extensions. How these are represented is described in the <a href="json.html">JSON format</a>. Whitespace
-is always significant in JSON. Primitive types other than string SHALL NOT have leading or trailing whitespace.
+В JSON эти типы представлены в виде простых свойств объекта, содержащего их. Имя свойства определяется там, где этот тип используется.
+Типы также имеют идентификатор свойства (id property) и расширения. Как они представляются, описано в <a href="json.html">формате JSON</a>. Пробелы всегда имеют значение в JSON. Все примитивные типы кроме строки (string) НЕ ДОЛЖНЫ иметь пробелы в начале и в конце.
 </p>
 
 
 <hr/>
 <a name="Types"/>
-<h2>Complex Types</h2>
+<h2>Сложные типы</h2>
 
 <p>
-These types are represented as XML Elements with child elements with the name of the defined elements of the type. The name of the element is defined where the type is used. 
-Any of the XML elements may have an <a href="references.html#idref">id attribute</a>. In JSON, the data type is represented by an object with properties named the same as the
-XML elements. The JSON representation is almost exactly the same, so only the first <a href="datatypes-examples.html#Attachment">example</a> has an additional JSON representation.
+Эти типы представлены в виде XML-элементов с дочерними элементами с именем определенных элементов этого типа. Это имя элемента определяется там, где этот тип используется. 
+Любой XML-элемент может иметь <a href="references.html#idref">идентификатор атрибута (id attribute)</a>. В JSON этот тип данных представлен объектом со свойствами с именами, соответствующими XML-элементам. JSON-представление почти такое же, поэтому только первый из <a href="datatypes-examples.html#Attachment">примеров</a> содержит дополнительное JSON-представление.
 </p>
 <p>
-Complex data types may be "profiled". A <a href="profile.html">profile</a> makes 
-a set of rules about which elements SHALL have values, and what the possible 
-values are.
+Сложные типы данных могут быть "профилированными". В <a href="profile.html">профиле</a> задается набор правил о том, какие элементы ДОЛЖНЫ иметь значения, и приводятся возможные значения.  
 </p>
 
-<p><b>UML Diagrams of the Data types</b></p>
+<p><b>UML-диаграммы этих типов данных</b></p>
 
 [%diagram datatypes/types.diagram%]
 
@@ -153,21 +141,21 @@ values are.
 <a name="Attachment"></a>
 <a name="attachment"></a>
 <h2 style="margin-bottom: 1px">
-Attachment
+Вложение (Attachment)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes-examples.html#Attachment">Examples</a>, <a href="datatypes-definitions.html#Attachment">Formal Definitions</a> and <a href="datatypes-mappings.html#Attachment">Mappings</a>.
+См. также <a href="datatypes-examples.html#Attachment">Примеры</a>, <a href="datatypes-definitions.html#Attachment">Формальные определения</a> и <a href="datatypes-mappings.html#Attachment">Мэппинги</a>.
 </p>
 
 <p>
-This type is for containing or referencing attachments - additional data content defined in other 
-formats. The most common use of this type is to include images or reports in 
-some report format such as PDF. However it can be used for any 
-data that has a mime type. 
+Это тип для содержания или ссылки на вложение - дополнительное содержание данных в других форматах. Наиболее частое использование этого типа - это включение изображений или отчетов  в некотором формате отчетов, например PDF. Однако он может использоваться для любых данных одного из MIME-типов.
 </p>
 [%dt Attachment%]
 <p>
-The <i>contentType</i> element SHALL always be populated. It can include charset information 
+Элемент <i>contentType</i> ДОЛЖЕН всегда иметь значение. Он может включать информацию о наборе символов (charset) и другие расширения MIME-типов по мере необходимости. Если в элементе <i>contentType</i> нет указания набора символов, тогда правильный курс действий не определен, хотя некоторые медиа-типы могут определять набор символов по умолчанию и/или правильные набор символов может определяться проверкой контента. 
+
+
+   element SHALL always be populated. It can include charset information 
 and other mime type extensions as appropriate. If there is no character set in the <i>contentType</i>
 then the correct course of action is undefined, though some media types may define a default
 character set and/or the correct character set may be able to be determined by inspection of the content.

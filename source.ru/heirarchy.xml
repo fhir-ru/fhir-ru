@@ -27,15 +27,15 @@ todo: compartments
       <page title="Тэги, комплекты ресурсов, логические модули" filename="extras.html">
         <page title="Логические модули (Compartments)" filename="compartment-patient.html"/>
       </page>
-      <page title="Ссылки на упоминания" filename="references.html"/>
-      <page title="Описания" filename="narrative.html">
-        <page title="Пример описания" filename="narrative-example.html"/>
+      <page title="Ссылки (References)" filename="references.html"/>
+      <page title="Описание (Narrative)" filename="narrative.html">
+        <page title="Пример описания (Narrative Example)" filename="narrative-example.html"/>
       </page>
       <page title="Форматы" filename="formats.html">
         <page title="XML" filename="xml.html"/>
         <page title="JSON" filename="json.html"/>
       </page>
-      <page title="Расширяемость" filename="extensibility.html">
+      <page title="Расширяемость (Extensibility)" filename="extensibility.html">
         <page title="Примеры" filename="extensibility-examples.html"/>
       </page>
       <page title="Формальные определения" filename="base-definitions.html"/>
@@ -43,10 +43,12 @@ todo: compartments
     <page title="Типы данных" filename="datatypes.html">
       <page title="Примеры" filename="datatypes-examples.html"/>
       <page title="Формальные определения" filename="datatypes-definitions.html"/>
-      <page title="Mappings" filename="datatypes-mappings.html"/>
+      <page title="Мэппинги (Mappings)" filename="datatypes-mappings.html"/>
     </page>
     <page title="Использование кодовых значений" filename="terminologies.html">
-      <page title="Перечень кодовых систем" filename="terminologies-systems.html"/>
+      <page title="Перечень кодовых систем" filename="terminologies-systems.html">
+        <page title="LOINC" filename="loinc.html"/>
+      </page>
       <page title="Value Sets" filename="terminologies-valuesets.html">
         <pages type="valueset" filename="template-valueset.html"/>
         <pages type="codesystem" filename="template-codesystem.html"/>
@@ -74,9 +76,9 @@ todo: compartments
     <page title="Services / SOA" filename="services.html"/>
     <page title="Interaction Patterns" filename="pushpull.html"/>
     <page title="Распространенные случаи использования" filename="usecases.html"/>
-    <page title="Список профилей" filename="profilelist.html"/>
+    <page title="Список профилей (Profile List)" filename="profilelist.html"/>
     <page title="Безопасность" filename="security.html">
-      <page title="Метки безопасности" filename="security-labels.html"/>
+      <page title="Метки безопасности (Security Labels)" filename="security-labels.html"/>
     </page>
     <page title="Интегрированные примеры" filename="integrated-examples.html"/>
   </page>
