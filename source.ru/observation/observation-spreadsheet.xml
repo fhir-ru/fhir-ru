@@ -290,7 +290,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s70"/>
     <Cell><Data ss:Type="String">Measurements and simple assertions</Data></Cell>
-    <Cell><Data ss:Type="String">Measurements and simple assertions made about a patient, device or other subject</Data></Cell>
+    <Cell><Data ss:Type="String">Показатели измерений и данные наблюдений о пациенте, медицинском изделии или другом объекте</Data></Cell>
     <Cell><Data ss:Type="String">Vital Signs, Measurement, Results, Tests</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Observations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms.</Data></Cell>
     <Cell><Data ss:Type="String">Used for simple observations such as device measurements, laboratory atomic results, vital signs, height, weight, smoking status, comments, etc.  Other resources are used to provide context for observations such as Lab reports, etc</Data></Cell>
