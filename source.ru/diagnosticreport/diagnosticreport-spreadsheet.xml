@@ -190,7 +190,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A Diagnostic report - a combination of request information, atomic results, images, interpretation, as well as formatted reports</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Результаты и интерпретация диагностических тестов, проведенных на пациентах, группах пациентов, устройствах и местах, и/или образцах, полученных у них. Этот отчет включает в себя клинический контекст, например информацию о запросе и провайдере, и сочетание атомарных результатов, изображений, текстовой и кодированной интерпретации и отформатированного представления диагностических отчетов.</Data><NamedCell
+    <Cell><Data ss:Type="String">Результаты и интерпретации диагностических тестов, проведенных на пациентах, группах пациентов, устройствах и местах, и/или образцах, полученных у них. Отчет содержит медицинский контекст, например информацию о поставщике услуг и направляющей медицинской организации, и совокупность частных показателей, изображений, интерпретаций в текстовом и кодированном выражениях, а также форматированное представление отчетов о диагностическом обследовании</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Report, Test, Result, Results, Labs, Laboratory</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
