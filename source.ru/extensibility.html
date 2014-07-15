@@ -194,33 +194,32 @@
 <a name="modifierExtension"> </a>
 <h2>Модификаторы / элементы смены значения (Modifier Extensions)</h2>
 <p>
-
-
-There are some cases where the information provided in extensions modifies the meaning 
-of the element that contains it. Typically, this means information that qualifies or 
-negates the primary meaning of the element that contains it. Some examples:
+В некоторых случаях, содержащаяся в расширениях информация изменяет значение родительского элемента. 
+Обычно, это означает, что элемент "extension" выполняет логическую функцию отрицания (negation) или уточняет (qualifier)
+значение родительского элемента. Рассмотрим некоторые примеры:
 </p>
 <ul>
- <li>Adding a certainty extension to an <a href="adversereaction.html">Adverse Reaction</a> that includes a value "highly doubtful"</li>
- <li>Asserting an additional subsumption relationship on a concept in a <a href="valueset.html">value set</a></li>
- <li>An anti-prescription: recording an instruction <b>not</b> to take a medication</li>
- <li>Using the <a href="condition.html">Condition</a> resource to record an assertion that a patient <b>doesn't</b> have a particular diagnosis</li>
- <li>Asserting that a performer was <b>not</b> actually involved in a <a href="procedure.html">Procedure</a></li>
- <li>Recording that a <a href="supply.html">Supply</a> was <b>not</b> provided (i.e. refusal to fill)</li>
+ <li>Расширение, характеризующее вероятность <a href="adversereaction.html">нежелательной реакции (Adverse Reaction)</a> может иметь значение "highly doubtful" (маловероятно)</li>
+ <li>Позволяет вводить дополнительную категоризацию концепта, входящего в<a href="valueset.html"> набор значений (value set)</a></li>
+ <li>С помощью элемента "extension" можно выразить <b>запрет</b> на прием лекарственного средства</li>
+ <li>Элемент "extension" ресурса <a href="condition.html">Condition (Клиническое состояние)</a> позволяет сформировать запись, в которой говориться о том, что пациент <b>не</b> имеет конкретного диагноза</li>
+ <li>Элемент "extension" информирует о том, что исполнитель (performer) <b>не</b> принимал участие в выполнении<a href="procedure.html">процедуры (Procedure)</a></li>
+ <li>Элемент "extension" информирует о том, что <a href="supply.html">акт снабжения (Supply)</a> <b>не</b> состоялся (напр., отказано в выдаче)</li>
 </ul>
 <p>
-Implementers should avoid the use of modifier extensions where possible.  Any use should be 
-carefully considered against its possible downstream consequences. However, implementers
-are often forced into these situations by the business arrangements around
-the use of resources, so this specification creates a framework for handling these.
+В ходе реализации стандарта старайтесь избегать использования элементов смены значения (модификаторов). Случаи
+их использования должны быть хорошо продуманы, рассмотрены возможные негативные последствия.
+Часто использование уточняющих элементов обусловлено бизнес-требованиями и договоренностями
+о использовании ресурсов. Стандарт FHIR предлагает методологию для разрешения спорных ситуаций, требующих
+использование модификаторов.
 </p>
 <p>
-If modifier extensions are present, an application cannot safely process the resource unless it knows
-what the extension means for its own use of the data. This specification allows for 
-such modifier elements to be included at the base of a resource or in any elements
-that do not have a data type (e.g. the elements that correspond to classes in the resource UML
-diagrams), using an element named "modifierExtension", which has same content as the 
-<i>extension</i> element documented above. 
+Когда в ресурсе присутствует элемент смены значения (Modifier Extension), нельзя быть уверенным в 
+его корректной обработке приложением, если мы не знаем, что приложение понимает семантику расширения.
+Стандарт FHIR позволяет выносить элементы-модификаторы (Modifier Extensions) в базовую структуру ресурса (at the base of the resource) или
+в структуру любого другого элемента, которому не соответствует какой-либо тип данных (например, элементы, которые соответсвуют
+классам в диаграммах ресурсов UML), с помощью элемента "modifierExtension", содержимое которого совпадает с 
+элементами типа <i>extension</i>. 
 </p>
 <p>
 Implementations processing the data in resources SHALL understand the impact 
