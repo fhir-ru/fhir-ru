@@ -211,7 +211,7 @@
 их использования должны быть хорошо продуманы, рассмотрены возможные негативные последствия.
 Часто использование уточняющих элементов обусловлено бизнес-требованиями и договоренностями
 о использовании ресурсов. Стандарт FHIR предлагает методологию для разрешения спорных ситуаций, требующих
-использование модификаторов.
+использование модификаторов
 </p>
 <p>
 Когда в ресурсе присутствует элемент смены значения (Modifier Extension), нельзя быть уверенным в 
@@ -219,31 +219,28 @@
 Стандарт FHIR позволяет выносить элементы-модификаторы (Modifier Extensions) в базовую структуру ресурса (at the base of the resource) или
 в структуру любого другого элемента, которому не соответствует какой-либо тип данных (например, элементы, которые соответсвуют
 классам в диаграммах ресурсов UML), с помощью элемента "modifierExtension", содержимое которого совпадает с 
-элементами типа <i>extension</i>. 
+элементами типа <i>extension</i>
 </p>
 <p>
-Implementations processing the data in resources SHALL understand the impact 
-of the extension when using the data. If an application processing the content 
-of a resource does not recognize a modifierExtension and the data from the 
-element it extends is processed by the application, the application SHALL 
-either refuse to process the data or carry a warning concerning the data 
-along with any action or output that results from processing the data to 
-inform users that it has not fully understood the source information.
+Разработчики реализаций стандарта, обеспечивающих обработку клинических данных, ДОЛЖНЫ учитывать влияние, 
+которое оказывает использование элементов "extension" на смысл содержащейся в ресурсе информации. 
+Если приложение, обрабатывающее содержимое ресурса, не может определить значение элемента "modifierExtension" и 
+данных, на которые он ссылается, оно ДОЛЖНО отказаться от обработки (данного элемента) и предупредить пользователя о 
+неполном понимании ресурса. 
 </p>
 <p>
-Implementations are not required to "support" the extension in any meaningful way - they 
-may achieve this understanding by rejecting instances that contain this extension. Alternatively,
-implementations may be able to be sure, due to their implementation environment, that such extensions
-will never occur. However applications SHOULD always check for extensions irrespective of this.
+Реализации стандарта, к которым не предъявляется требований по семантической обработке расширений (meaningful use),
+могут игнорировать все экземпляры ресурсов, которые расширения содержат. Альтернативным решением станет отказ 
+от использования расширений, утвержденный на уровне конкретной среды, в которой используется реализация стандарта FHIR.
+Однако, даже при наличии договоренностей об отказе от использования расширений, приложения ДОЛЖНЫ всегда проверять
+ресурсы на их наличие
 </p>
 <p>
-Note that processing the data of a resource typically means
-copying or filtering data out of a resource for use in another 
-context (display to a human, decision support, exchange in another 
-format where not all information is included, or storing it for this kind of use).
-Servers and background processes that simply move whole resources around unchanged 
-are not "processing the data of the resource", and therefore these applications 
-are not required to check for unknown extensions. 
+Обратите внимание на то, что обработка данных ресурса, обычно представляет собой копирование или фильтрацию данных
+(data filtering) ресурса для последующего их использования в ином контексте (т.е. для представления пользователю, 
+в целях поддержки принятия решения, для частичного обмена данных в ином формате или хранения). Серверы и 
+технологические процессы (backgroud processes), которые обеспечивают простое перемещение данных без каких либо
+изменений, не выполняют обработку данных, а значит могут не выполнять проверку наличия расширений.
 </p>
 
 <h3>Summary: Conformance Rules for Modifier Extensions</h3>
