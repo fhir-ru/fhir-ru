@@ -194,74 +194,72 @@
 <a name="modifierExtension"> </a>
 <h2>Модификаторы / элементы смены значения (Modifier Extensions)</h2>
 <p>
-
-
-There are some cases where the information provided in extensions modifies the meaning 
-of the element that contains it. Typically, this means information that qualifies or 
-negates the primary meaning of the element that contains it. Some examples:
+В некоторых случаях, содержащаяся в расширениях информация изменяет значение родительского элемента. 
+Обычно, это означает, что элемент "extension" выполняет логическую функцию отрицания (negation) или уточняет (qualifier)
+значение родительского элемента. Рассмотрим некоторые примеры:
 </p>
 <ul>
- <li>Adding a certainty extension to an <a href="adversereaction.html">Adverse Reaction</a> that includes a value "highly doubtful"</li>
- <li>Asserting an additional subsumption relationship on a concept in a <a href="valueset.html">value set</a></li>
- <li>An anti-prescription: recording an instruction <b>not</b> to take a medication</li>
- <li>Using the <a href="condition.html">Condition</a> resource to record an assertion that a patient <b>doesn't</b> have a particular diagnosis</li>
- <li>Asserting that a performer was <b>not</b> actually involved in a <a href="procedure.html">Procedure</a></li>
- <li>Recording that a <a href="supply.html">Supply</a> was <b>not</b> provided (i.e. refusal to fill)</li>
+ <li>Расширение, характеризующее вероятность <a href="adversereaction.html">нежелательной реакции (Adverse Reaction)</a> может иметь значение "highly doubtful" (маловероятно)</li>
+ <li>Позволяет вводить дополнительную категоризацию концепта, входящего в<a href="valueset.html"> набор значений (value set)</a></li>
+ <li>С помощью элемента "extension" можно выразить <b>запрет</b> на прием лекарственного средства</li>
+ <li>Элемент "extension" ресурса <a href="condition.html">Condition (Клиническое состояние)</a> позволяет сформировать запись, в которой говориться о том, что пациент <b>не</b> имеет конкретного диагноза</li>
+ <li>Элемент "extension" информирует о том, что исполнитель (performer) <b>не</b> принимал участие в выполнении<a href="procedure.html">процедуры (Procedure)</a></li>
+ <li>Элемент "extension" информирует о том, что <a href="supply.html">акт снабжения (Supply)</a> <b>не</b> состоялся (напр., отказано в выдаче)</li>
 </ul>
 <p>
-Implementers should avoid the use of modifier extensions where possible.  Any use should be 
-carefully considered against its possible downstream consequences. However, implementers
-are often forced into these situations by the business arrangements around
-the use of resources, so this specification creates a framework for handling these.
+В ходе реализации стандарта старайтесь избегать использования элементов смены значения (модификаторов). Случаи
+их использования должны быть хорошо продуманы, рассмотрены возможные негативные последствия.
+Часто использование уточняющих элементов обусловлено бизнес-требованиями и договоренностями
+о использовании ресурсов. Стандарт FHIR предлагает методологию для разрешения спорных ситуаций, требующих
+использование модификаторов
 </p>
 <p>
-If modifier extensions are present, an application cannot safely process the resource unless it knows
-what the extension means for its own use of the data. This specification allows for 
-such modifier elements to be included at the base of a resource or in any elements
-that do not have a data type (e.g. the elements that correspond to classes in the resource UML
-diagrams), using an element named "modifierExtension", which has same content as the 
-<i>extension</i> element documented above. 
+Когда в ресурсе присутствует элемент смены значения (Modifier Extension), нельзя быть уверенным в 
+его корректной обработке приложением, если мы не знаем, что приложение понимает семантику расширения.
+Стандарт FHIR позволяет выносить элементы-модификаторы (Modifier Extensions) в базовую структуру ресурса (at the base of the resource) или
+в структуру любого другого элемента, которому не соответствует какой-либо тип данных (например, элементы, которые соответсвуют
+классам в диаграммах ресурсов UML), с помощью элемента "modifierExtension", содержимое которого совпадает с 
+элементами типа <i>extension</i>
 </p>
 <p>
-Implementations processing the data in resources SHALL understand the impact 
-of the extension when using the data. If an application processing the content 
-of a resource does not recognize a modifierExtension and the data from the 
-element it extends is processed by the application, the application SHALL 
-either refuse to process the data or carry a warning concerning the data 
-along with any action or output that results from processing the data to 
-inform users that it has not fully understood the source information.
+Разработчики реализаций стандарта, обеспечивающих обработку клинических данных, ДОЛЖНЫ учитывать влияние, 
+которое оказывает использование элементов "extension" на смысл содержащейся в ресурсе информации. 
+Если приложение, обрабатывающее содержимое ресурса, не может определить значение элемента "modifierExtension" и 
+данных, на которые он ссылается, оно ДОЛЖНО отказаться от обработки (данного элемента) и предупредить пользователя о 
+неполном понимании ресурса 
 </p>
 <p>
-Implementations are not required to "support" the extension in any meaningful way - they 
-may achieve this understanding by rejecting instances that contain this extension. Alternatively,
-implementations may be able to be sure, due to their implementation environment, that such extensions
-will never occur. However applications SHOULD always check for extensions irrespective of this.
+Реализации стандарта, к которым не предъявляется требований по семантической обработке данных расширений (meaningful use),
+могут игнорировать все экземпляры ресурсов, которые их содержат. Альтернативным решением станет отказ 
+от использования расширений, утвержденный на уровне конкретной (информационно-технологической) среды, в которой используется реализация стандарта FHIR.
+Однако, даже при наличии договоренностей об отказе от использования расширений, приложения ДОЛЖНЫ всегда проверять
+ресурсы на их наличие
 </p>
 <p>
-Note that processing the data of a resource typically means
-copying or filtering data out of a resource for use in another 
-context (display to a human, decision support, exchange in another 
-format where not all information is included, or storing it for this kind of use).
-Servers and background processes that simply move whole resources around unchanged 
-are not "processing the data of the resource", and therefore these applications 
-are not required to check for unknown extensions. 
+Обратите внимание на то, что обработка данных ресурса, обычно представляет собой копирование или фильтрацию данных
+(data filtering) ресурса для последующего их использования в ином контексте (т.е. для представления пользователю, 
+в целях поддержки принятия решения, для частичного обмена данных в ином формате или хранения). Серверы и 
+технологические процессы (backgroud processes), которые обеспечивают простое перемещение данных без каких либо
+изменений, не выполняют обработку данных, а значит могут не выполнять проверку наличия расширений
 </p>
 
-<h3>Summary: Conformance Rules for Modifier Extensions</h3>
+<h3>Обзорная информация: Правила соответствия (Conformance Rules) для элементов смены значения (Modifier Extensions)</h3>
 <ul>
- <li>A modifierExtension SHALL only modify the element which it contains and/or its children</li>
+ <li>Элемент "modifierExtension" может изменять значение ТОЛЬКО элементов-потомков</li>
  <li>It SHALL always be safe to show the narrative to humans; any modifier extension SHALL be represented in the narrative.</li>
- <li>Applications SHALL always check for modifierExtensions when processing the data from any element that may carry one. 
- If a modifierExtension they do not understand is found, the application SHALL either refuse to process the resource or affected element, or provide an appropriate warning to its users</li>
+ <li>Приложения всегда ДОЛЖНЫ проверять ресурс на наличие "modifierExtension" при обработке элементов, которые могут
+ содержать элементы смены значения. Если приложение не в состоянии интерпретировать данные из "modifierExtension", то
+ оно должно отказаться от обработки ресурса (его содержащего) или предоставить пользователю соответствующее оповещение</li>
 </ul>
 
-<h3>Example</h3>
+<h3>Пример</h3>
  
 <div class="example">
 <p>
-Example: Because of a lack of clinical consensus, there's no element on <a href="procedure.html">Procedure</a> 
-for any expression of certainty around the expression of the Allergy/Intolerance. Some systems mark their entries 
-as "unlikely" or "probable". Applications are allowed to extend a resource with data like this: 
+Пример: Из-за отсутствия договоренности (между медицинскими специалистами) не существует элемента ресурса <a href="procedure.html">Procedure (процедура)</a>, 
+для отражения достоверности проявления аллергической реакции или непереносимости (Allergy/Intolerance). 
+Некоторые системы используют [уточняющие] записи "unlikely" (маловероятно) или "probable" (вероятно, возможно). 
+Приложениям разрешается расширять содержимое ресурса подобными записями:
 </p>
 <pre class="xml">
 &lt;AllergyIntolerance&gt;
@@ -278,17 +276,16 @@ as "unlikely" or "probable". Applications are allowed to extend a resource with 
 </pre>
 </div>
 <p>
-When an application understands this extension, it means that some developer
-has provided appropriate instructions for what to do with the data contained 
-in it. Note that there is no obligation that the application do anything at
-all with the data - it can ignore it if that is safe in its own context,
-though this would not usually be the case.
+(revision needed) Если приложение понимает семантику расширения, это является результатом того, что разработчик
+подготовил соответствующие инструкции по интерпретации содержимого расширений. 
+Обратите внимание - н существует требования обязательной обработки данных приложением. Оно может
+проигнорировать расширение, если это гарантирует безопасность с точки зрения оказания медицинской помощи.
 </p>
 <p>
-When an application that doesn't understand this extension tries
-to process this resource, it is required to either refuse to process 
-the resource (or containing element), or provide an appropriate warning to its users. Either
-of these courses of action is potentially difficult. One option is to 
+При попытке обработки ресурса приложением, неспособным корректно его интерпретировать, необходимо отказаться от 
+обработки ресурса (или содержащихся в нем элементов) или уведомить пользователя о возникших проблемах. 
+
+Either of these courses of action is potentially difficult. One option is to 
 download the profile that defines the extension (from the given URL), 
 find the name of the extension, and then use the name to display
 the extension to the user. An error message could look something like
@@ -303,8 +300,7 @@ offer the user the choice to see the original narrative.
 </p>
 <div class="example">
 <p>
-Here is an example showing a statement that a particular surgeon did
-not perform an operation:
+Приведем пример записи (statement) о том, что конкретный врач-хирург не выполнил операцию:
 </p>
 <pre class="xml">
 &lt;Procedure xmlns=&quot;http://hl7.org/fhir&quot;&gt;
@@ -328,18 +324,23 @@ not perform an operation:
 </pre>
 </div>
 <p>
-In this case, if an application is not reading the performers of the operation at all,
-the fact that one of the performers has a modifierExtension is irrelevant and the 
-application is free to ignore it. 
+Если приложение не распознает исполнителя действия (performer) (описанного в примере), факт того, 
+что происходит уточнение элемента "performer" (т.е. исполнитель) с помощью "modifierExtension" неважен - 
+разрешается игнорирование расширения. 
 </p>
 
-<h3>Special Case: Missing data</h3>
+<h3>Особые случаи: отсутствуют данные</h3>
 <p>
-In some cases, implementers may find that they do not have appropriate data for an
+В некоторых случаях разработчики могут обнаружить отсутствие необходимых данных для элемента с минимальным числом
+объектов равных одному ([1...n]). В таком случае, необходимо указывать элемент, но, пока ресурс или соответствующий ему 
+интеграционный профиль не требует реального значения, соответствующего простым типам данным обязательным,
+возможно размещение расширения, объясняющего, почему значение ... 
+
+<!--In some cases, implementers may find that they do not have appropriate data for an
 element with minimum cardinality = 1. In this case, the element must be present, but 
 unless the resource or a profile on it has made the actual value of the primitive 
 data type mandatory, it is possible to provide an extension that explains why the 
-primitive value is not present:
+primitive value is not present: -->
 </p>
 <pre class="xml">
 &lt;uri&gt;
@@ -349,12 +350,16 @@ primitive value is not present:
 &lt;/uri&gt;
 </pre>
 <p>
-In this example, instead of a value, a <a href="general-extensions.html">data missing code</a> is provided. Note that 
-it is not required that this particular extension be used. This extension 
-is <b>not</b> a modifier extension, because the primitive data type has no
-value. 
+В данном примере, вместо значения (value) указывается <a href="general-extensions.html">код отсутствия данных (data missing code)</a>. 
+Обратите внимание, что использоваине расширения такого типа необязательно. Данное раширение <b>нельзя</b> считать элементом
+смены значения (modifier extension), из-за отсутствия какого-либо значения элемента с простым типом данных. 
 </p>
 <p>
+Неправильно создавать формальное наполнение элемента (fictional piece of data) простого типа данных, а затем 
+добавлять расширение, определяющее то, что данные были добавлены для обеспечения соответствия. Данное решение
+неправильное еще и потому, что недопустимо использовать элемент "modifierExtension" для уточнения типов данных
+
+
 It is not valid to create a fictional piece of data for the primitive value,
 and then to add an extension indicating that the data has been constructed
 to meet the data rules. This would be both a bad idea, and also a modifier
