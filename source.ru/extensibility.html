@@ -409,11 +409,15 @@ resolve them. -->
  <li>Systems that do not accept unknown extensions SHALL declare so in their Conformance resource instances</li>
 </ul>
 <p>
-The degree to which a system can retain unknown extensions is a function of the type of system
+То, в какой степени приложения должны сохранять неизвестные элементы-расширения зависит от функциий, которые они 
+выполняют: FHIR-сервер общего назначения или промежуточная платформа (middleware engine) сохраняют все расширения, в то 
+время, как приложения, используемые для ввода данных пациентов при регистрации сохраняют тоьлко те, из неизветсных 
+расширений, которые входят в набор информации, непосредственно редактируемый пользователем.
+<!--The degree to which a system can retain unknown extensions is a function of the type of system
 it is: a general purpose FHIR server, or a middleware engine would be expected to retain 
 all extensions, while an application that manages patient registration through a user 
 interface can only retain extensions to the degree that the information in them is part of the
-set managed by the user. Other applications will fall somewhere between these two extremes.
+set managed by the user. Other applications will fall somewhere between these two extremes. -->
 </p>
 
 <h3>Summary: Handling extensions</h3>
@@ -421,23 +425,33 @@ set managed by the user. Other applications will fall somewhere between these tw
 Use the following rules as a guideline for handling resources:
 </p>
 <ul>
- <li>When writing extensions, make sure they are defined and published</li>
+ <li>При написании расширений, убедитель что они имеют [формализованное] описание и находятся в открытом доступе
+ <!-- When writing extensions, make sure they are defined and published --> </li>
  <li>When reading, navigating through or searching on elements that can have modifier extensions, check whether there are any</li>
- <li>When reading elements, ignore other extensions, unless you want to read a particular extension</li>
- <li>Retain extensions whenever you can</li>
+ <li>При чтении элементов, игнорируйте другие элементы-расширения, только если не хотите прочитать конкретное расширение
+ <!--Вы When reading elements, ignore other extensions, unless you want to read a particular extension--></li>
+ <li>Старайтесь сохранять расширения, если это возможно<!--Retain extensions whenever you can--></li>
 </ul> 
  
 <a name="define"></a>
-<h2>Defining Extensions</h2>
+<h2>Определение элементов-расширений (Defining Extensions)</h2>
 
 <p>
-Extensions may be defined by any project or jurisdiction, up to and including international standards organizations such as HL7 itself.  Extensions are defined and published
-as part of a <a href="profile.html">Resource Profile</a>. Extensions are always defined against some particular context - the type of element 
-that they may be used to extend. The following are possible contexts for an extension:
+Определение расширений может выполняться в рамках любого проекта, любой страной или территорией и, в том числе, 
+международными организациями по разработке стандартов (включая HL7).
+<!--Extensions may be defined by any project or jurisdiction, 
+up to and including international standards organizations such as HL7 itself. -->  
+Расширения определяются и публикуются в составе <a href="profile.html">профиля ресурса (Resource Profile)</a>. 
+<!--Extensions are defined and published as part of a <a href="profile.html">Resource Profile</a>.-->
+Определение элементов-расширений всегда происходит в соответствии с конкретным контекстом - т.е. типом элемента,
+значение которого уточняется. <!--Extensions are always defined against some particular context - the type of element 
+hat they may be used to extend. -->
+Ниже представлены возможные контексты для расширения:
+The following are possible contexts for an extension:
 </p>
 <table class="codes">
- <tr><th>Context type</th><th>Context format</th><th>Examples</th></tr>
- <tr><td>A particular element (including the root) in a single resource</td><td>The element path for that element</td><td>Profile.resource.element; Person</td></tr>
+ <tr><th>Тип контекста (Context type)</th><th>Формат контектса (Context format)</th><th>Примеры (Examples)</th></tr>
+ <tr><td>Конкретный элемент (включая корневой) ресурса <!--A particular element (including the root) in a single resource --></td><td>Путь конкретного элемента <!--The element path for that element --></td><td>Profile.resource.element; Person</td></tr>
  <tr><td>A particular element (including the root) in a particular data type</td><td>The data type name for primitive types or the element path for complex data types</td><td>Address.part.value; string</td></tr>
  <tr><td>A particular context in one of the mapped reference models</td><td>The name of the reference model followed by the mapping path</td><td>RIM: Act[moodCode="EVN"]</td></tr>
  <tr><td>Another extension</td><td>The profile uri of the extension followed by the extension code</td><td>http://myextensions.org#someExtension</td></tr>
