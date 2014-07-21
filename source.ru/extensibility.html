@@ -540,38 +540,66 @@ and have formal standing. The other registry is provided as a service to the com
 and anyone can register an extension on it. -->
 </p>
 <table class="codes">
- <tr><th>Registry</th><th>Search</th><th>Submit</th></tr>
- <tr><td>HL7 Approved</td><td>[TBD]</td><td>[TBD]</td></tr>
+ <tr><th>Реестр (Registry)</th><th>Поиск (Search)</th><th>Загрузка расширения (Submit)</th></tr>
+ <tr><td>Одобренный HL7 (HL7 Approved)</td><td>[TBD]</td><td>[TBD]</td></tr>
  <tr><td>Community</td><td>[TBD]</td><td>[TBD]</td></tr>
  <tr><td>Interim</td><td><a href="http://hl7connect.healthintersections.com.au/svc/fhir/profile/search">http://hl7connect.healthintersections.com.au/svc/fhir/profile/search</a></td>
  <td><a href="http://hl7connect.healthintersections.com.au/svc/fhir/profile/upload">http://hl7connect.healthintersections.com.au/svc/fhir/profile/upload</a></td></tr>
 </table>
 <p>
-HL7 profiles defining extensions may be balloted alongside resource content as part of the FHIR specification or may
-be published as part of separate specifications.
-When HL7  publishes extensions as part of the FHIR specification, these extensions SHALL
-be used for this data whenever the data is represented in instances. Applications SHOULD use other
-HL7-defined extensions published to represent equivalent data in the interest of maximum interoperability.
-If referencing a profile that defines extensions, implementations declaring conformance with the profile SHALL
-use the profile-defined and imported extensions when conveying equivalent data elements.
+Профили от HL7, определяющие расширения, приобретают статус официальных профилей голосованием членов сообщества HL7, 
+также как и содержимое ресурса в составе спецификации FHIR или могут быть опубликованы в составе других спецификаций. 
+<!-- HL7 profiles defining extensions may be balloted alongside resource content as part of the FHIR specification or may
+be published as part of separate specifications. -->
+Когда организация HL7 International публикует расширения в составе спецификации FHIR, 
+такие расширения ДОЛЖНЫ использоваться всегда, когда данные, уточняемые этим расширением, встречаются в экземплярах 
+ресурсов и элементов. <!--When HL7  publishes extensions as part of the FHIR specification, these extensions SHALL
+be used for this data whenever the data is represented in instances. -->
+Приложения ДОЛЖНЫ использовать другие элементы-расширения, определенные организацией HL7 International, для представления
+эквивалентных данных в целях обеспечения интероперабельности.
+<!--Applications SHOULD use other HL7-defined extensions published to represent equivalent data in the interest of maximum 
+interoperability. -->
+Если при указании ссылки на профиль, определяющий расширение, конкретная реализация FHIR заявляет о соответствии с
+профилем, то она ДОЛЖНА использовать заимствованные и определенные профилем элементы-расширения, передающие аналогичные
+элементы данных.
+<!-- If referencing a profile that defines extensions, implementations declaring conformance with the profile SHALL
+use the profile-defined and imported extensions when conveying equivalent data elements. --> 
 </p>
 <p>
-To minimize complexity for implementers, HL7 will not elevate content defined in an HL7-approved extension to
-be content defined in a core resource in future versions of the resource once that resource is normative.
+Для минимизации сложности реализации, организация HL7 International не будет включать содержимое, определенное в
+одобренных ею расширениях, в базовую структуру ресурса (в будущих версиях стандарта FHIR), если ресурс уже получил
+статус нормативного (normative).
+<!-- To minimize complexity for implementers, HL7 will not elevate content defined in an HL7-approved extension to
+be content defined in a core resource in future versions of the resource once that resource is normative. -->
 </p>
 <p>
-In some cases, an HL7 work group or other body may publish a profile whose sole
-purpose is to define extensions expected to be needed by implementers in a particular context.  E.g. extensions needed
-to map a particular set of v2 segments or a v3 model.
+В некоторых случаях, рабочая группа HL7 или любой другой орган имеет право опубликовать профиль, основной целью которого 
+является определение расширений, которые, как ожидается, понадобятся разработчикам в определенных обстоятельствах (in a
+particular context). Например, расширения, необходимые для привязки (mapping) конкретного набора сегметов HL7 v2 или
+модели HL7 v3. <!-- In some cases, an HL7 work group or other body may publish a profile whose sole purpose 
+is to define extensions expected to be needed by implementers in a particular context.  E.g. extensions needed to 
+map a particular set of v2 segments or a v3 model. -->
 </p>
 <p>
-Implementations are encouraged to share their extensions with HL7 and register them with the HL7 extension registry. The domain committees will work
-to elevate the extensions into HL7 published extensions or, if adopted by a broad enough portion of the implementer community, the into the base resource structure itself.
+Разработчики поощряются делиться расширениями с организацией HL7 и регистрировать их в реестре HL7.
+Комитеты организации, ответственные за отдельные домены здравоохранения проведут работу по публикации предложенных 
+расширений или, если предложенные расширения будут приняты к использованию существенной частью сообщества разработчиков,
+они могут быть внесены в базовую структуру ресурса.
+<!-- Implementations are encouraged to share their extensions with HL7 and register them with the HL7 extension registry. 
+The domain committees will work to elevate the extensions into HL7 published extensions or, if adopted by a broad 
+enough portion of the implementer community, the into the base resource structure itself. -->
 </p>
 <!-- Todo: point to actual registry once it's up and running -->
-<p>To avoid interoperability issues, extensions SHALL NOT change their definition once published.  (Small clarifications to descriptions
-that do not affect interoperability are permitted.)  Rather than modifying an existing extension, a new extension should be introduced.
-Revisions to an extension may extend the set of contexts in which the extension apply but may not remove or constrain any context previously listed</p>
+<p>Для того, чтобы избежать проблем с интероперабельностью, определение расширений НЕ ДОЛЖНО меняться после того, как
+оно было опубликовано. (Разрешается вносить уточнения в описание, если они не влияют на интероперабельность.) Вместо того,
+чтобы изменять существующее расширение, необходимо использовать новый элемент-расширение. В ходе пересмотра расширений, 
+набор контекстов их использования может быть расширен, однако, предыдущие контексты использования расширений не могут
+быть исключены или ограничены.
+<!--To avoid interoperability issues, extensions SHALL NOT change their definition once published.  
+(Small clarifications to descriptions that do not affect interoperability are permitted.)  
+Rather than modifying an existing extension, a new extension should be introduced.
+Revisions to an extension may extend the set of contexts in which the extension apply but may not remove or constrain 
+any context previously listed --> </p>
 <!-- Todo: Figure out how to manage "deprecating" extensions and pointing at their new versions -->
 
 </div>
