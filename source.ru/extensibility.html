@@ -447,13 +447,13 @@ up to and including international standards organizations such as HL7 itself. --
 значение которого уточняется. <!--Extensions are always defined against some particular context - the type of element 
 hat they may be used to extend. -->
 Ниже представлены возможные контексты для расширения:
-The following are possible contexts for an extension:
+<!-- The following are possible contexts for an extension: -->
 </p>
 <table class="codes">
  <tr><th>Тип контекста (Context type)</th><th>Формат контектса (Context format)</th><th>Примеры (Examples)</th></tr>
  <tr><td>Конкретный элемент (включая корневой) ресурса <!--A particular element (including the root) in a single resource --></td><td>Путь конкретного элемента <!--The element path for that element --></td><td>Profile.resource.element; Person</td></tr>
- <tr><td>A particular element (including the root) in a particular data type</td><td>The data type name for primitive types or the element path for complex data types</td><td>Address.part.value; string</td></tr>
- <tr><td>A particular context in one of the mapped reference models</td><td>The name of the reference model followed by the mapping path</td><td>RIM: Act[moodCode="EVN"]</td></tr>
+ <tr><td>Конкретный элемент (включая корневой) в конкретном типе данных <!--A particular element (including the root) in a particular data type --></td><td>Имя примитивного типа данных или путь элемента для комплексного типа данных <!--The data type name for primitive types or the element path for complex data types --></td><td>Address.part.value; string</td></tr>
+ <tr><td>Конкретный контекст A particular context in one of the mapped reference models</td><td>The name of the reference model followed by the mapping path</td><td>RIM: Act[moodCode="EVN"]</td></tr>
  <tr><td>Another extension</td><td>The profile uri of the extension followed by the extension code</td><td>http://myextensions.org#someExtension</td></tr>
  <tr><td>A set of some combination of the above</td><td>As above, separated by ';'</td><td>Address; Contact</td></tr>
 </table>
@@ -495,29 +495,49 @@ supporting the Resources Profile, or a logical reference (e.g. using a urn:) - f
 standard.
 </p>
 <a name="definition"> </a>
-<h2>Control of extensions</h2>
+<h2>Управление расширениями (Control of extensions)</h2>
 <p>
-As well as defining the base element structure for resources, HL7 also publishes extensions. HL7 publishes data definitions
+Помимо определения базовой структуры элементов ресурса, организация HL7 International также публикует расширения.
+HL7 International публикует определения данных (data definition) как расширения, а не как часть базовой структуры ресурса
+для того, чтобы сохранить базовую структуру ресурса простой и компактной, а также освободить разработчиков от излишней
+функциональности. Обратите внимание, что HL7 не дает определение элементам-расширениям, уточняющим значение родительского 
+ресурса (modifier extension) - если организация HL7 International публикует элемент, который изменяет значение
+(modifies the meaning) других элементов, он будет включен в содержимое ресурса, т.к. понимание семантики такого 
+расширения - обязательное требование для всех.
+<!-- As well as defining the base element structure for resources, HL7 also publishes extensions. 
+HL7 publishes data definitions
 as extensions rather than as part of the base resource structure in order to keep the base
 resource structure simple and concise, and to allow implementers not to engage with an entire world's
 worth of functionality up front. Note that HL7 does not define "modifier" extensions - if
 HL7 publishes an element that modifies the meaning of other elements, it will be part of the resource
-content itself, since everyone has to understand the extension anyway.
+content itself, since everyone has to understand the extension anyway. -->
 </p>
 <p>
-Before extensions can be used in instances, they SHALL be published. HL7 maintains two
+Перед тем, как расширения можно будет использовать в экземплярах элементов и ресурсов, они ДОЛЖНЫ быть опубликованы.
+Организация HL7 International обеспечивает поддержку двух реестров расширений (extension registry); пользователи 
+поощряются регистрировать свои расширения в этих реестрах. Однако, это не совсем не обязательно. 
+Все, что требуется - опубликовать расширение в контексте (context), доступном для других пользователей расширения.
+Например, если конкретное расширение используется в рамках одного медучреждения, определение расширения (extension
+definition) может быть размещено в интрасети этого учреждения. Но, учитывая то, что обмен ресурсами достаточно
+распространен (из-за самой природы ресурсов), советуется использовать реестры организации HL7 International или любой 
+другой общедоступный реестр элементов-расширений.
+<!-- Before extensions can be used in instances, they SHALL be published. HL7 maintains two
 extension registries and users are encouraged to register their extensions there. But
 this is not required. All that is required is that the extension is published in a
 context that is available for users of the extension. So, for example, if a particular
 extension is used within a single institution, the definition of the extension
 can be placed on the institution's intranet. However since, by their nature, resources
-tend to travel well, it's always better to use the HL7 or other publicly accessible extension registries.
+tend to travel well, it's always better to use the HL7 or other publicly accessible extension registries. -->
 </p>
 <p>
-HL7 provides two extension registries. The first is for HL7 approved extensions. These
+Организация HL7 International предлагает два реестра элементов-расширений, первый из которых предназначен для
+расширений, одобренных HL7. Данный репозиторий одобрен соответствующей частью сообщества HL7 International по итогам 
+процесса рассмотрения (пересмотра) и может считаться официальным репозиторием расширений. Второй реестр является
+служебным репозиторием сообществом HL7 - каждый желающий может зарегистрировать там свой элемент-расширение.
+<!-- HL7 provides two extension registries. The first is for HL7 approved extensions. These
 have been approved by an appropriate part of the HL7 community following a review process,
 and have formal standing. The other registry is provided as a service to the community,
-and anyone can register an extension on it.
+and anyone can register an extension on it. -->
 </p>
 <table class="codes">
  <tr><th>Registry</th><th>Search</th><th>Submit</th></tr>
