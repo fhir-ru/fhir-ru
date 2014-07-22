@@ -12,20 +12,33 @@
 
 <div class="col-9">
 
-<h1>FHIR Security</h1>
+<h1>Вопросы безопасности FHIR</h1>
 
 <p>
-Fast Healthcare Interoperability Resources (FHIR) is not a security protocol, nor does it define any security
+FHIR - не является безопасным протоколом обмена данными и не имеет какой-либо функицональности, 
+имеющей отношение к обеспечению защищенности информационного обмена. Однако, он определяет 
+жесткие правила обмена и модели содержимого, которые необходимо использовать с протоколами безопасной
+пересылки данных, определенные в других источниках. Дадим краткие определения основным понятиям:
+<!-- Fast Healthcare Interoperability Resources (FHIR) is not a security protocol, nor does it define any security
 related functionality. However FHIR does define exchange protocols and content models that need to be used
 with various security protocols defined elsewhere. This section gathers all information about security
-in one section. A summary:
+in one section. A summary: -->
 </p>
 <ul class="dense">
- <li>Communications Security - all exchange of production data should be secured using TLS/SSL (e.g. https)</li>
- <li>Authentication - Users/Clients may be authenticated in any way desired. For web-centric use, OAuth is recommended</li>
- <li>Authorization/Access Control - FHIR defines a Security Label infrastructure to support access control management. FHIR may also define a set of resources to administer access control management, but does not define any at present</li>
- <li>Audit - FHIR defines <a href="provenance.html">provenance</a> and <a href="securityevent.html">security event</a> resources suitable for tracking the origins, authorship, history, status and access of resources</li>
- <li>Digital Signatures - FHIR includes several specifically reserved locations for digital signatures</li>
+ <li>Защита коммуникации (Communications Security) - обмен рабочей информацией должен быть защищен с помощью протоколов TLS/SSL (напр., https)</li>
+ <li>Аутентификация (Authentication) - возможна любая форма аутентификации пользователей / клиентов. Для решений, основанных на веб, рекомендуется использовать OAuth</li>
+ <li>Контроль авторизации / доступа (Authorization/Access Control) - стандарт FHIR определяет инфраструктуру для различных 
+ уровней безопасности (Security Label infrastructure) в целях обеспечения контроля доступа. FHIR также может определять
+ набор ресурсов для управления доступом к информации, однако, на настоящий момент такие ресурсы не были определены.
+  <!-- FHIR defines a Security Label infrastructure to support access control management. 
+ FHIR may also define a set of resources to administer access control management, but does not define any at present --></li>
+ <li>Аудит (Audit) - стандарт FHIR определяет ресурсы, отвечающие за отслеживание <a href="provenance.html">происхождения (provenance)</a> 
+ и выражение <a href="securityevent.html">событий, имеющих отношение к обеспечению безопасности (security event)</a>, 
+ используемых для отслеживания происхождения, авторства, истории, статуса и получения доступа к ресурсам.
+  <!--resources suitable for tracking the origins, authorship, history, status and access of resources --></li>
+ <li>Цифровые подписи (Digital Signatures) - FHIR предусматривает несколько специально зарезервированных
+ 
+ includes several specifically reserved locations for digital signatures</li>
  <li>Attachments - FHIR allows for binary resources and attachments. These have their own concerns</li>
  <li><a href="security-labels.html">Labels</a> - FHIR allows for set of security related tags that affect that way resources are handled</li>
  <li>Data Management Policies - FHIR defines a set of capabilities to support data exchange.
