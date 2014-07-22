@@ -529,46 +529,57 @@ hat they may be used to extend. -->
  <tr><th>Тип контекста (Context type)</th><th>Формат контектса (Context format)</th><th>Примеры (Examples)</th></tr>
  <tr><td>Конкретный элемент (включая корневой) ресурса <!--A particular element (including the root) in a single resource --></td><td>Путь конкретного элемента <!--The element path for that element --></td><td>Profile.resource.element; Person</td></tr>
  <tr><td>Конкретный элемент (включая корневой) в конкретном типе данных <!--A particular element (including the root) in a particular data type --></td><td>Имя примитивного типа данных или путь элемента для комплексного типа данных <!--The data type name for primitive types or the element path for complex data types --></td><td>Address.part.value; string</td></tr>
- <tr><td>Конкретный контекст A particular context in one of the mapped reference models</td><td>The name of the reference model followed by the mapping path</td><td>RIM: Act[moodCode="EVN"]</td></tr>
- <tr><td>Another extension</td><td>The profile uri of the extension followed by the extension code</td><td>http://myextensions.org#someExtension</td></tr>
- <tr><td>A set of some combination of the above</td><td>As above, separated by ';'</td><td>Address; Contact</td></tr>
+ <tr><td>Конкретный контекст в одной из "привязанной" эталонных моделей<!--A particular context in one of the mapped reference models --></td><td> Имя эталонной модели и путь мэппинга (mapping path)<!-- The name of the reference model followed by the mapping path --></td><td>RIM: Act[moodCode="EVN"]</td></tr>
+ <tr><td>Другое расширение (Another extension)</td><td>URI профиля, применяемого к расширению, и кодовое обозначение расширения (extension code)</td><td>http://myextensions.org#someExtension</td></tr>
+ <tr><td>Комбинации вышеуказанных контектсов</td><td>Как в вышеуказанном примере, разделяется с помощью ';'</td><td>Address; Contact</td></tr>
 </table>
 <p>
-In addition, an extension definition might apply additional constraints with
+Кроме того, на определение расширения могут накладываться дополнительные ограничения в соответствии с конкретными
+значениями элементов уточняемого родительского элементов. Дополнительные ограничения обеспечивают корректность 
+опредления. Расширения ДОЛЖНЫ применяться только к тем элементам, для которых они определены.
+<!-- In addition, an extension definition might apply additional constraints with
 regards to particular element values of the target that make its use appropriate.
-Extensions SHALL only be used on a target for which they are defined.
+Extensions SHALL only be used on a target for which they are defined. -->
 </p>
 <p>
-Each extension is defined using the following fields:
+Определение расширений происходит с помощью следующих полей:
+<!-- Each extension is defined using the following fields: -->
 </p>
 <table class="codes">
- <tr><td>Field</td><td>Required?</td><td>Path in Profile (from Profile.extensionDefn)</td><td>Description</td></tr>
- <tr><td>Code</td><td>Required</td><td>.code</td><td>The name that is used as a code in a resource to identify this extension - unique in the context of the defining profile</td></tr>
- <tr><td>Context</td><td>Required</td><td>.contextType and .context</td><td>The context of this extension. See above. The context has two parts: a type, and a path which supplies the details</td></tr>
- <tr><td>Short Definition</td><td>Required</td><td>.definition.short</td><td>A brief description of the extension used in the XML descriptions when the extension is referenced in a profile</td></tr>
- <tr><td>Definition</td><td>Required</td><td>.definition.formal</td><td>A formal statement of the meaning of the content of the field</td></tr>
- <tr><td>Requirements</td><td>Optional</td><td>.definition.requirements</td><td>Identifies the reason the extension is needed</td></tr>
- <tr><td>Comments</td><td>Optional</td><td>.definition.comments</td><td>Additional other information about the extension, including information such as use notes</td></tr>
- <tr><td>Cardinality</td><td>Required</td><td>.definition.min / .definition.max</td><td>The cardinality of this extension.<br/> Specifying a minimum cardinality of 1 means that if the source system declares that it conforms to an extension that declares a type including this extension, this extension must be included in the resource.  Cardinality can be constrained but not loosened in profiles that reference this extension</td></tr>
- <tr><td>Type</td><td>Required</td><td>.definition.type</td><td>The type(s) of the extension. This SHALL be a valid FHIR data type as described above, or empty, if the extension will contain other extensions</td></tr>
- <tr><td>XPaths</td><td>Optional</td><td>.definition.constraint</td><td>One or more XPath statements that SHALL evaluate to true when the extension is used</td></tr>
- <tr><td>Is Modifier</td><td>Required</td><td>.definition.isModifier</td><td>Whether the extension changes the meaning or interpretation of the element containing the extension (or any descendant of that element). Extensions defined as IsModifier=true are always represented in <i>modifierExtension</i> elements, and extensions defined as IsModifier=false are always represented in <i>Extension</i> elements</td></tr>
- <tr><td>RIM Mapping</td><td>Conditional</td><td>.definition.mapping...</td><td>The formal mapping from this extension to the RIM. Required for HL7-defined extensions that apply to resources with RIM mappings, but optional in other contexts</td></tr>
- <tr><td>v2 Mapping</td><td>Optional</td><td>.definition.mapping...</td><td>Mapping to a v2 segment/field/etc., if desired and appropriate. </td></tr>
- <tr><td>Binding</td><td>Conditional</td><td>.definition.binding</td><td>For the types CodeableConcept and Coding. See <a href="terminologies.html">Terminologies</a></td></tr>
+ <tr><td>Поле</td><td>Обязательный</td><td>Путь в профиле (Path in Profile) (в Profile.extensionDefn)</td><td>Описание</td></tr>
+ <tr><td>Код (Code)</td><td>Да</td><td>.code</td><td> Имя, используемое как идентификатор расширения в ресурсе - уникальное в контексте определяющего профиля <!--The name that is used as a code in a resource to identify this extension - unique in the context of the defining profile --></td></tr>
+ <tr><td>Контекст (Context)</td><td>Да</td><td>.contextType и .context</td><td> Контекст расширения. См. выше. Контекст имеет две составляющих - тип (type) и путь (path), по которому можно получить подробные данные <!-- The context of this extension. See above. The context has two parts:  a type, and a path which supplies the details --></td></tr>
+ <tr><td>Краткое определение (Short Definition)</td><td>Да</td><td>.definition.short</td><td> Краткое описание расширения, используемое в XML-описаниях, когда на расширение указывается ссылка в профиле <!--A brief description of the extension used in the XML descriptions when the extension is referenced in a profile --></td></tr>
+ <tr><td>Определение (Definition)</td><td>Да</td><td>.definition.formal</td><td>Формальное заявление о значении содержимого поля <!-- A formal statement of the meaning of the content of the field --></td></tr>
+ <tr><td>Требования (Requirements)</td><td>Нет</td><td>.definition.requirements</td><td>Определяет причину, по которой требуется использование расширения <!-- Identifies the reason the extension is needed --></td></tr>
+ <tr><td>Комментарии (Comments)</td><td>Нет</td><td>.definition.comments</td><td> Другая дополнительная информация о элементе-расширении (включая заметки по использованию расширения) <!--Additional other information about the extension, including information such as use notes --></td></tr>
+ <tr><td>Мощность множества объектов (Cardinality)</td><td>Да</td><td>.definition.min / .definition.max</td><td>Мощность множества объектов расширения. <!-- The cardinality of this extension. --><br/> Specifying a minimum cardinality of 1 means that if the source system declares that it conforms to an extension that declares a type including this extension, this extension must be included in the resource.  Cardinality can be constrained but not loosened in profiles that reference this extension</td></tr>
+ <tr><td>Тип (Type)</td><td>Да</td><td>.definition.type</td><td>Тип(ы) расширения. Должен соответствовать корректному типу данных FHIR, как описано выше, или отсутствовать (empty), если элемент-расширение содержит в себе другие расширения. <!--The type(s) of the extension. This SHALL be a valid FHIR data type as described above, or empty, if the extension will contain other extensions --></td></tr>
+ <tr><td>XPaths</td><td>Нет</td><td>.definition.constraint</td><td>Одно или несколько заявлений XPath должно являться истинным (evaluate to true), если используется расширение <!--One or more XPath statements that SHALL evaluate to true when the extension is used --></td></tr>
+ <tr><td>Модификатор IS (Is Modifier)</td><td>Да</td><td>.definition.isModifier</td><td>  Если расширение меняет значение или интерпретацию элемента, содержащего расширение (или любого потомка такого элемента). Расширение, определяемые "IsModifier=true" всегда представляются элементами <i>modifierExtension</i>, а расширения, определяемые "IsModifier=false" всегда представлены элементами <i>Extension</i> <!-- Whether the extension changes the meaning or interpretation of the element containing the extension (or any descendant  of that element). Extensions defined as IsModifier=true are always represented in <i>modifierExtension</i> elements,  and extensions defined as IsModifier=false are always represented in <i>Extension</i> elements --></td></tr>
+ <tr><td>Мэппинг RIM (RIM Mapping)</td><td>Может быть обязательным</td><td>.definition.mapping...</td><td>Формальная привязка (mapping) расширения к Эталонной информационной модели (RIM). Необходимо для HL7-определенных расширений, которые применяются к ресурсам, привязанным к RIM, но необязательным в иных контектсах <!--The formal mapping from this extension to the RIM. Required for HL7-defined extensions that apply to resources with RIM mappings, but optional in other contexts --></td></tr>
+ <tr><td>Мэппинг v2</td><td>Нет</td><td>.definition.mapping...</td><td> Мэппинг с сегментом / полем / и т.д. HL7 v2. Необязательно, но может указываться <!--Mapping to a v2 segment/field/etc., if desired and appropriate. --></td></tr>
+ <tr><td>Привязка (Binding)</td><td>Может быть обязательным</td><td>.definition.binding</td><td>Используется для типов CodeableConcept и Coding См. <a href="terminologies.html">Справочники</a> <!--For the types CodeableConcept and Coding. See <a href="terminologies.html">Terminologies --></a></td></tr>
 </table>
 <p>
-Notes:
+Замечания:
 </p>
 <ul>
- <li>Mappings are not required to be computable (i.e. executable logic). Mappings to other specifications can also be provided.</li>
+ <li>Мэппинги не обязательно должны быть машиннообрабатываемыми (т.е. с исполняемой логикой). <!-- Mappings are not required to be computable (i.e. executable logic). -->
+ Могут указываться привязки к другим спецификациям <!--Mappings to other specifications can also be provided. --></li>
 </ul>
 <p>
-Whenever resources containing extensions are exchanged, the definitions of the extensions SHALL be available to all the parties that share the resources.
-Each extension contains a URI that references the source of the definitions as a Resource Profile. The source SHOULD be a literal reference, such as an
-http: url that refers to an end-point that responds with the contents of the definitions - preferably a <a href="http.html">FHIR RESTful server</a>
+При обмене содержащими расширения ресурсами, определения расширений ДОЛЖНЫ быть доступны для всех сторон, 
+участвующих в совместном использовании ресурсов. Всем расширениям присвоен URI, который ссылается на источник
+формализованного описания - профиль ресурса. Источник (определения) ДОЛЖЕН представлять собой буквальную ссылку (напр., http:url),
+которая ссылается на конечную точку, содержащую определения, желательно, <a href="http.html">FHIR RESTful сервер</a>,
+поддерживающий профиль ресурса или логическую ссылку (с помошью urn:) - например, на опубликованный национальный стандарт.
+<!-- Whenever resources containing extensions are exchanged, the definitions of the extensions SHALL be available to all the 
+parties that share the resources. Each extension contains a URI that references the source of the definitions as a 
+Resource Profile. The source SHOULD be a literal reference, such as an http: url that refers to an end-point that 
+responds with the contents of the definitions - preferably a <a href="http.html">FHIR RESTful server</a>
 supporting the Resources Profile, or a logical reference (e.g. using a urn:) - for instance, to a national published
-standard.
+standard. -->
 </p>
 <a name="definition"> </a>
 <h2>Управление расширениями (Control of extensions)</h2>
