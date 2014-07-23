@@ -104,15 +104,19 @@ system exists, and that it may be deployed in front of or behind the FHIR API. -
 </ul>
 
 <p>
-
-
-Because there are a plethora of standards relating to 
+Учитывая все множество стандартов администрирования и функционирования систем безопасности,
+FHIR не предлагает специальных административных ресурсов. Вместо этого, на ресурсы FHIR распространяются 
+политики, определенные сторонними подходами (стандартами). В то же время, FHIR предполагает назначение 
+<a href="security-labels.html"> ресурсам уровней конфиденциальности (security labels)</a> для того, чтобы системы безопасности
+могли определить допустимость выполнения FHIR-операции конкретным пользователем (также, такое решение 
+может приниматься с учетом содержимого ресурса).
+<!-- Because there are a plethora of standards relating to 
 the administration and functionality of the security system, FHIR does not provide user,
 profile, or other such administration resources. Instead, the FHIR resources are the targets
 of the policies expressed in these other approaches. What FHIR does specify is a way to apply
-<a href="security-labels.html">security labels</a> to resources so that a security system may use these (along with the contents
-of the resources if appropriate) to determine whether a user is authorized to perform a 
-particular FHIR operation or not.
+<a href="security-labels.html">security labels</a> to resources so that a security system may use these 
+(along with the contents of the resources if appropriate) to determine whether a user is authorized to perform a 
+particular FHIR operation or not. -->
 </p>
 
 
@@ -134,63 +138,87 @@ some other kind of profiled REST interface.
 
 <a name="http"> </a>
 <h2>
-Communications
+Обмен информацией (Communications)
 </h2>
 <p>
-For the <a href="http.html">RESTful API</a>, normal HTTP security rules apply. 
-The <a href="http.html#root">Service Root URL</a> will specify whether SSL is required. 
-Client authentication may be required by the server, possibly including the requirement for 
-client certificates.
+Правила безопасности HTTP распространяются на <a href="http.html">RESTful API</a>. 
+<a href="http.html#root">Service Root URL</a> определяет необходимость использования SSL. 
+Сервер может затребовать аутентификацию клиента и, возможно, сертификат клиента (client certificate).
 </p>
 <p>
-SSL SHOULD be used for all production data exchange.
+Использовать SSL при обмене медицинской информацией строго ОБЯЗАТЕЛЬНО. 
+<!--SSL SHOULD be used for all production data exchange. -->
 </p>
 <p>
-To support browser-based client applications, recommend that servers SHOULD implement <a href="http://enable-cors.org/">cross-origin resource sharing</a> for the <a href="http.html">REST operations</a>.  
+Для поддержки браузерных клиентских приложений, рекомендуется чтобы на сервере была реализована 
+технология <a href="http://enable-cors.org/">CORS</a> (cross-origin resource sharing) для 
+<a href="http.html">REST-операций</a>.
+<!--To support browser-based client applications, recommend that servers SHOULD implement 
+<a href="http://enable-cors.org/">cross-origin resource sharing</a> for the <a href="http.html">REST operations</a>.  -->
 </p>
 
 <a name="authentication"> </a>
-<h2>Authentication</h2>
+<h2>Аутентификация (Authentication)</h2>
 <p>
-Other than testing systems, FHIR servers should authenticate the clients. 
+FHIR-серверы, не являющиеся тестовыми, должны проводить аутентификацию клиентов (clients). Сервер может проводить
+аутентификацию отдельной клиентской системы и внести ее в список доверенных, либо аутентифицировать каждого пользователя
+в отдельности в соответствии с целым рядом различных способов. Для решений, основанных на веб, рекомендуется использовать 
+<a href="http://oauth.net/">OAuth</a> для аутентификации и авторизации полоьзователей.
+<!-- Other than testing systems, FHIR servers should authenticate the clients. 
 The server may choose to authenticate the client system and trust it, or to authenticate
 the individual user by a variety of techniques. For web-centric use, 
 <a href="http://oauth.net/">OAuth</a> may be used to authenticate and/or authorize 
-the users. 
+the users. -->
 </p>
 
 <!-- note about using OAuth and delegating user authority -->
 
 <a name="binding"> </a>
 <h2>
-Authorization/Access Control
+Контроль авторизации / доступа (Authorization/Access Control)
 </h2>
-
-
 <p>
-Correctly identifying people, devices, locations and organizations is one of the foundations that any security system is built on. 
-Most applications of security protocols, whether authentication, access control, digital signatures, etc. rely on the correct mapping between
-the relevant resources and the underlying systems. Note that this isn't necessary: there is nothing in FHIR that requires or relies 
-on any security being in place, or any particular implementation. But real world usage will generally require this. 
+Корректная идентификация людей, устройств (медицинских изделий), территориальных объектов и организаций - одна из основ,
+на которой строятся системы обеспечения безопасности (security system). Большая часть реализаций протоколов защиты
+(security protocols), будь то аутентификации, контроля доступа, цифровых подписей и т.д. основываются на корректном
+связывании (mapping) ресурсов и систем, которые эти ресурсы предоставляют. Обратите внимание: нет прямой необходимости 
+обеспечения защиты: сам по себе стандарт FHIR не требует и не основывается на системах защиты или какой-либо другой
+реализации такой системы. Однако, практическое применение FHIR потребует наличие контроля за безопасностью клинической
+информации.
+<!-- Correctly identifying people, devices, locations and organizations is one of the foundations that any security system is 
+built on. Most applications of security protocols, whether authentication, access control, digital signatures, etc. 
+rely on the correct mapping between the relevant resources and the underlying systems. Note that this isn't necessary: 
+there is nothing in FHIR that requires or relies on any security being in place, or any particular implementation. But 
+real world usage will generally require this. -->
 </p>
 <p>
-A holder of data should not allow the data to be communicated unless there is assurances that the 
+Система / приложение, имеющее в своем распоряжении данные, не должна осуществлять обмен этими данными до тех пор,
+пока не получит подтверждение, что принимающая сторона имеет разрешение на их получение. Данное применяет, когда
+клиент создает ресурсы с помощью команд PUT/POST, а сервер возвращает ресурсы по команде GET. Обязательным условием
+является корректная авторизация, удовлетворяющая требованиям держателя информации, без которой обмен данными не состоится.
+<!-- A holder of data should not allow the data to be communicated unless there is assurances that the 
 other party is authorized to receive it. This is true for a Client creating a resource through a PUT/POST, 
 as much as it is true for a Server returning resources on a GET. The presumption is that without 
-proper authorization, to the satisfaction of the data holder, the data does not get communicated.
+proper authorization, to the satisfaction of the data holder, the data does not get communicated. -->
 </p>
 <p>
-The rules behind the Access Control decision are often very complex, and potentially depends on information sourced from:
+Правила, на которых основываются решения по предоставлению доступа часто очень сложны, и могут зависеть от информации,
+источником которой является:
 </p>
 <ul>
- <li>Client, such as User Identity, User Role, Location, level of assurance</li>
- <li>Resource, such as confidentiality, sensitivity, type of data, date ranges covered by the data, author of the data</li>
- <li>Patient, such as the patient identity, patient relationship to the user, patient consent policies</li>
- <li>Context of the transaction, system identity, time-of-day, purpose of use, workflow state, and transport security</li>
+ <li>Клиент (Client) - например, идентификационная информация пользователя (User Identity), роль пользователя (User Role), 
+ местоположение (Location), уровень гарантий (level of assurance)</li>
+ <li>Ресурс (Resource) - например, конфиденциальность (confidentiality), степень "чувствительности" данных (sensitivity), 
+ тип данных (type of data), покрываемый диапазон данных (date ranges), авторство данных (author of the data)</li>
+ <li>Пациент (Patient) - например, идентификационные данные пациента (patient identity), связь между пользователем и 
+ пациентом (patient relationship to the user), политики согласия пациента (patient consent policies)</li>
+ <li>Контекст транзакции (context of the transaction), идентификационные данные системы (system identity), 
+ время суток (time-of-day), цель использования (purpose of use), статус процесса (workflow state) и
+ безопасность передачи (transport security)</li>
 </ul>
 <!-- HL7 has papers on this topic. -->
-<p>For one source of further information, see the 
-<a href="http://www.ihe.net/Technical_Framework/upload/IHE_ITI_TF_WhitePaper_AccessControl_2009-09-28.pdf">IHE Access Control white paper</a>
+<p>Для получения дополнительной информации, смотрите  
+<a href="http://www.ihe.net/Technical_Framework/upload/IHE_ITI_TF_WhitePaper_AccessControl_2009-09-28.pdf">официальный документ IHE Access Control</a>
 </p>
 
 <a name="audit"> </a>
