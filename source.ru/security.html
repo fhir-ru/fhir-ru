@@ -70,32 +70,42 @@ deployment architecture is a matter for system design: -->
 <td valign="center" style="border-left: 1px solid grey">
 <table class="dense">
  <tr><td><img height="32" width="32" src="security-icon-user.png"/></td><td> Пользователь (consumer) системы,  имеющий отношению к процессе оказания медицинских услуг <!--The consumer that is using a healthcare related system --></td></tr>
- <tr><td><img height="32" width="32" src="security-icon-app.png"/></td><td>The client application the user is using (application, mobile app, website, etc.)</td></tr>
- <tr><td><img height="32" width="32" src="security-icon-sec.png"/></td><td>The security system (authentication and access control)</td></tr>
- <tr><td><img height="32" width="32" src="security-icon-fhir.png"/></td><td>The clinical/healthcare repository</td></tr>
+ <tr><td><img height="32" width="32" src="security-icon-app.png"/></td><td> Клинетское приложение пользователя (приложение, мобильное приложение, веб-сайт и т.д.) <!--The client application the user is using (application, mobile app, website, etc.) --></td></tr>
+ <tr><td><img height="32" width="32" src="security-icon-sec.png"/></td><td> Система безопасности (контроль аутентификации и доступа) <!--The security system (authentication and access control) --></td></tr>
+ <tr><td><img height="32" width="32" src="security-icon-fhir.png"/></td><td> Репозиторий клинических данных / данных здравоохранения <!-- The clinical/healthcare repository --></td></tr>
 </table>
 </td></tr></table>
 
 <p>
-In this diagram, the red lines represent FHIR interfaces. From the perspective of the FHIR API, 
+На данном рисунке красные линии представляют FHIR-интерфейсы. С точки зрения FHIR API,
+клиент (пользователь сервисов FHIR) может взаимодействовать с системой безопасности, которая представляется как
+FHIR-сервер и находится в зависимости от следующего за ней FHIR-интерфейса, непосредственно обеспечивающего 
+хранение. Также возможно независимое взаимодействие клиента / сервера с системой безопасности.
+<!-- In this diagram, the red lines represent FHIR interfaces. From the perspective of the FHIR API, 
 the client (consumer of FHIR services) may either interact with a security system that manifests
 as a FHIR server, and which depends on a subsequent FHIR interface to provide the actual storage,
-or either the client or server interacts with the security system independently. In each of these
-3 scenarios, the different components may be assembled into applications or network components
+or either the client or server interacts with the security system independently. -->
+В каждом из трех представленных сценариев, возможны различные варианты сборки компонентов в приложения или компоненты сети,
+однако, несмотря на это, сохраняется логическая схема расположения компонентов. Спецификация FHIR предполагает наличие
+системы безопасности, которая может быть реализована как перед, так и после FHIR API.
+<!-- In each of these 3 scenarios, the different components may be assembled into applications or network components
 differently, but the same logical layout applies. The FHIR specification assumes that a security 
-system exists, and that it may be deployed in front of or behind the FHIR API. 
+system exists, and that it may be deployed in front of or behind the FHIR API. -->
 </p>
 <a name="access-control"> </a>
 <p>
-The security system includes the following subsystems:
+Система безопасности может содержать следующие подсистемы:
+<!--The security system includes the following subsystems: -->
 </p>
 <ul>
- <li>Authentication: Identifies and Authenticates the user</li>
- <li>Access Control decision engine: decides whether FHIR operations are allowed</li>
- <li>Audit Log: records actions to allow for subsequent review and detection of intrusion or inappropriate usage</li>
+ <li>Аутентификация (Authentication): Идентифицирует и аутентифицирует пользователя <!--Identifies and Authenticates the user --></li>
+ <li>Механизм контроля доступа (Access Control decision engine): принимает решение о разрешении / запрете доступа <!--Access Control decision engine: decides whether FHIR operations are allowed --></li>
+ <li>Журнал аудита (Audit Log): фиксирует выполняемые действия и позволяет обнаруживать неправомерные действия и попытки вторжения <!--records actions to allow for subsequent review and detection of intrusion or inappropriate usage --></li>
 </ul>
 
 <p>
+
+
 Because there are a plethora of standards relating to 
 the administration and functionality of the security system, FHIR does not provide user,
 profile, or other such administration resources. Instead, the FHIR resources are the targets
