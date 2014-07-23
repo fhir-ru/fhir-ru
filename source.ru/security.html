@@ -27,40 +27,39 @@ in one section. A summary: -->
 <ul class="dense">
  <li>Защита коммуникации (Communications Security) - обмен рабочей информацией должен быть защищен с помощью протоколов TLS/SSL (напр., https)</li>
  <li>Аутентификация (Authentication) - возможна любая форма аутентификации пользователей / клиентов. Для решений, основанных на веб, рекомендуется использовать OAuth</li>
- <li>Контроль авторизации / доступа (Authorization/Access Control) - стандарт FHIR определяет инфраструктуру для различных 
- уровней безопасности (Security Label infrastructure) в целях обеспечения контроля доступа. FHIR также может определять
- набор ресурсов для управления доступом к информации, однако, на настоящий момент такие ресурсы не были определены.
-  <!-- FHIR defines a Security Label infrastructure to support access control management. 
- FHIR may also define a set of resources to administer access control management, but does not define any at present --></li>
- <li>Аудит (Audit) - стандарт FHIR определяет ресурсы, отвечающие за отслеживание <a href="provenance.html">происхождения (provenance)</a> 
- и выражение <a href="securityevent.html">событий, имеющих отношение к обеспечению безопасности (security event)</a>, 
- используемых для отслеживания происхождения, авторства, истории, статуса и получения доступа к ресурсам.
-  <!--resources suitable for tracking the origins, authorship, history, status and access of resources --></li>
- <li>Цифровые подписи (Digital Signatures) - FHIR предусматривает несколько специально зарезервированных
- 
- includes several specifically reserved locations for digital signatures</li>
- <li>Attachments - FHIR allows for binary resources and attachments. These have their own concerns</li>
- <li><a href="security-labels.html">Labels</a> - FHIR allows for set of security related tags that affect that way resources are handled</li>
- <li>Data Management Policies - FHIR defines a set of capabilities to support data exchange.
-     Not all the capabilities that FHIR enables may be appropriate or legal for use in some combinations of context and jurisdiction (e.g. HIPAA for exchange between institutions). 
-     It is the responsibility of implementers to ensure that relevant regulations and other requirements are met</li>
- <li>Narrative - Care must be taken when displaying the narrative from FHIR resources</li>
+ <li>Контроль авторизации / доступа (Authorization/Access Control) - стандарт FHIR определяет инфраструктуру для различных уровней безопасности (Security Label infrastructure) в целях обеспечения контроля доступа. FHIR также может определять набор ресурсов для управления доступом к информации, однако, на настоящий момент такие ресурсы не были определены. <!-- FHIR defines a Security Label infrastructure to support access control management.  FHIR may also define a set of resources to administer access control management, but does not define any at present --> </li>
+ <li>Аудит (Audit) - стандарт FHIR определяет ресурсы, отвечающие за установление <a href="provenance.html">происхождения (provenance) ресурсов</a> и формализованное представление <a href="securityevent.html">событий, имеющих отношение к обеспечению безопасности (security event)</a>, используемых для отслеживания происхождения, авторства, истории, статуса и получения доступа к ресурсам.   <!--resources suitable for tracking the origins, authorship, history, status and access of resources --></li>
+ <li>Цифровые подписи (Digital Signatures) - FHIR предусматривает специально зарезервированные сегменты для цифровых подписей</li>
+ <li>Вложения (Attachments) - стандарт FHIR предусматривает возможность двоичного представления ресурсов и использование вложений.  Использование вложений имеет свои особенности <!--FHIR allows for binary resources and attachments. These have their own concerns --></li>
+ <li><a href="security-labels.html"> Метки (Labels)</a> - стандарт FHIR предусматривает несколько уровней безопасности, в соответствии с которыми осуществляется обработка ресурса <!--FHIR allows for set of security related tags that affect that way resources are handled --></li>
+ <li>Политики управления данными (Data Management Policies) - стандарт FHIR определяет набор средст поддержки обмена данными. <!-- FHIR defines a set of capabilities to support data exchange. -->
+ Не все предлагаемые средства соответствуют лоальным требованиям (в том числе законодательным) и могут быть не преминимыми в некоторых контекстах здравоохранения, странах и территориях (напр., обмен данными между медицинскими учреждениями в соответствии с правилами HIPAA <!--Not all the capabilities that FHIR enables may be appropriate or legal for use in some combinations of context and jurisdiction (e.g. HIPAA for exchange between institutions).--> 
+ Выполнение локально-установленных законодательных и других требований является ответственностью разработчика <!--It is the responsibility of implementers to ensure that relevant regulations and other requirements are met --></li>
+ <li>Описание (Narrative) - Лечение / уход должен проходить только, если описательная часть ресурса (narrative) доступна для отображения <!--Care must be taken when displaying the narrative from FHIR resources --></li>
 </ul>
 <p>
-Time critical concerns regarding security flaws in the FHIR specification should be addressed to 
+Информацию о дефектах безопасности FHIR, требующих срочного разрешения, необходимо сообщать в 
+<a href="http://wiki.hl7.org/index.php?title=FHIR_email_list_subscription_instructions">списках рассылки FHIR</a>
+для наиболее быстрого их исправления. Данные вопросы также можно поднимать на рассмотрения с помощью существующего механизма 
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Security_Page">использования ресурсов сообщества</a>.
+<!-- Time critical concerns regarding security flaws in the FHIR specification should be addressed to 
 the <a href="http://wiki.hl7.org/index.php?title=FHIR_email_list_subscription_instructions">FHIR email 
 list</a> for prompt consideration. Alternatively, issues can be raised through the 
-<a href="http://wiki.hl7.org/index.php?title=FHIR_Security_Page">community input</a> mechanism.
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Security_Page">community input</a> mechanism. -->
 </p>
 
 <p>
-Implementers should track the developing IHE IUA Profile for additional security considerations.
+Разработчикам следует следить за развитием профиля IHE IUA в целях обеcпечения безопасности.
+<!-- Implementers should track the developing IHE IUA Profile for additional security considerations. -->
 </p>
 
 <p>
-A production FHIR system will need some kind of security sub-system that administers 
+Системе, построенной на стандарте FHIR, потребуется подсистема контроля безопасности и пользовательского доступа, 
+обеспечивающая аутентификацию и авторизацию пользователей. Вопрос соответствия системы архитектуре развертывания
+имеет непосредственное отношение к проектированию системы:
+<!-- A production FHIR system will need some kind of security sub-system that administers 
 users, user authentication and user-authorization. Where this sub-system fits into the 
-deployment architecture is a matter for system design:
+deployment architecture is a matter for system design: -->
 </p>
 <table class="dense">
  <tr>
@@ -70,7 +69,7 @@ deployment architecture is a matter for system design:
 <td>&nbsp;&nbsp;&nbsp;</td>
 <td valign="center" style="border-left: 1px solid grey">
 <table class="dense">
- <tr><td><img height="32" width="32" src="security-icon-user.png"/></td><td>The consumer that is using a healthcare related system</td></tr>
+ <tr><td><img height="32" width="32" src="security-icon-user.png"/></td><td> Пользователь (consumer) системы,  имеющий отношению к процессе оказания медицинских услуг <!--The consumer that is using a healthcare related system --></td></tr>
  <tr><td><img height="32" width="32" src="security-icon-app.png"/></td><td>The client application the user is using (application, mobile app, website, etc.)</td></tr>
  <tr><td><img height="32" width="32" src="security-icon-sec.png"/></td><td>The security system (authentication and access control)</td></tr>
  <tr><td><img height="32" width="32" src="security-icon-fhir.png"/></td><td>The clinical/healthcare repository</td></tr>
