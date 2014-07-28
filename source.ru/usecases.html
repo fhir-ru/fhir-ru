@@ -12,69 +12,113 @@
 <div class="col-9">
   
 <a name="root"> </a>
-<h1>Common Scenarios in FHIR</h1>
+<h1>Типовые клинические сценарии в FHIR <!--Common Scenarios in FHIR--></h1>
 
 <p>
-FHIR is a framework standard that defines a common way to solve healthcare problems 
+FHIR представляет собой стандартизованную методологию, определяющую единый способ решения проблем в здравоохранении и
+предоставляющую набор ресурсов, которые могут использоваться различными способами. На данной странице дается описание
+решений типовых клинических сценариев с помощью возможностей стандарта FHIR. Приведенные клинические сценарии - 
+примеры возможного практического применения FHIR (ни в коем случае не являются исчерпывающими). FHIR может использоваться
+в широком множестве клинических сценариев.
+<!--FHIR is a framework standard that defines a common way to solve healthcare problems 
 and provides a set of resources that can be used in many different ways. 
 This page describes how certain common usage scenarios are implemented using the capabilities that 
 FHIR defines.  The provided scenarios are examples of usage and are not in any way exhaustive.  FHIR
-can and will be used in a wide variety of circumstances.
+can and will be used in a wide variety of circumstances. -->
 </p>
 
 <a name="phr"></a>
-<h2>Personal Health Record (PHR)</h2>
+<h2>Персональные медицинские записи (Personal Health Record - PHR)</h2>
 <p>
-In the PHR scenario, an Electronic Medical Record system (EMR, though many other names and acronyms 
+В сценарии, при котором происходит работа с персональными медицинскими записями, ЭМК-система предоставляет
+RESTful API, который позволяет пациентам получать доступ к собственным медицинским записям через общественный
+веб-портал или модильное приложение, обычно поставляемое третьими лицами. В данном сценарии, поставщик персональных
+медицинских записей:
+<!--In the PHR scenario, an Electronic Medical Record system (EMR, though many other names and acronyms 
 are also used) provides a RESTful API that allows patients to access their own medical
 record via a common web portal or mobile application, usually provided by a third party. 
-In this scenario, the PHR provider:
+In this scenario, the PHR provider: -->
 </p> 
 
 <ul>
- <li>Provides the patient with a login that identifies them (or links the patient record to an external identity provided by OpenID, Facebook, Google, etc.)</li>
- <li>Authenticates the client using an appropriate OAuth server for the login (possibly their own) and restricts the client to viewing records associated with the specific patient (or patients, where appropriate access has been arranged)</li>
+ <li>Предоставляет пациенту логин для идентификации (или "привязывает" запись пациента к стороннему идентификатору от
+ OpenID, Facebook, Google, и т.д.) <!--Provides the patient with a login that identifies them (or links the patient record to an external identity provided 
+ by OpenID, Facebook, Google, etc.) --></li>
+ <li>Проводит аутентификацию клиента с помощью OAuth сервера для управления логинами (сервер может принадлежать 
+ поставщику PHR) и ограничивает клиента просмотром медицинских записей только конкретного пациента (или нескольких
+ пациентов, в зависимости от настроек доступа)
+  <!--Authenticates the client using an appropriate OAuth server for the login (possibly their own) and restricts the 
+ client to viewing records associated with the specific patient (or patients, where appropriate access has been arranged) --></li>
 </ul>
 
 <p>
-The EMR exposes a FHIR server that supports the <a href="http.html#search">search</a> and <a href="http.html#read">read</a> operations on the following resources: 
+ЭМК-система предоставляет доступ к FHIR-серверу, который поддерживает команды 
+<a href="http.html#search">поиска (search)</a> и <a href="http.html#read">чтения (read)</a> 
+по отношению к следующим ресурсам: 
 </p>
 <ol>
- <li>the <a href="patient.html">patient</a> resource in order to provide demographics to the client. When a client searches patients with no search criteria, they get a list of all patients they have access to</li>
- <li><a href="http.html#search">search</a> and <a href="http.html#read">read</a> on the <a href="documentreference.html">Document Reference</a> resource to provide access to general patient documents in the form of PDFs etc. (PDFs are preferred)</li>
- <li><a href="http.html#search">search</a> and <a href="http.html#read">read</a> on a set of <a href="clinical.html">clinical resources</a></li> 
+ <li><a href="patient.html">patient</a> - для просмотра демографической информации о пациенте. 
+ Когда с клиентской стороны отправляется запрос без каких-либо критериев поиска, сервер предоставляет перечень всех
+ пациентов, информация о которых доступна конкретному пользователю.
+ <!--When a client searches patients with no search criteria, they get a list of all patients they have access to --></li>
+ <li><!-- <a href="http.html#search">search</a> and <a href="http.html#read">read</a> on the -->
+ <a href="documentreference.html"> Document Reference (ссылка на документ)</a> - для предоставления доступа к 
+ неспециализированным медицинским документам в формате pdf или др. (pdf предпочтительный)
+ <!--resource to provide access to general patient documents in the form of PDFs etc. (PDFs are preferred) --></li>
+ <li><!--<a href="http.html#search">search</a> and <a href="http.html#read">read</a> on a set of --> 
+ <a href="clinical.html">другим клиническим ресурсам (clinical resources)</a></li> 
 </ol>
 <p>
-Here is the conformance Statement for this scenario:
- <a href="conformance-phr-example.xml.html">XML</a> or 
+
+Просмотрите Заявление о соответствии (Conformance Statement) для данного сценария:
+<!-- is the conformance Statement for this scenario -->
+ <a href="conformance-phr-example.xml.html">XML</a> или 
  <a href="conformance-phr-example.json.html">JSON</a>.
 </p>
 
 <p>
-The EMR may also choose to provide additional functionality, such as shared access to patient 
+ЭМК-система может иметь дополнительные функциональные возможности: предоставлять общий доступ к записям
+пациентов для родственников и врачей соответствующих профилей, позволять пациентам загружать собственные документы, 
+записи о лекарственных средствах (medication statement), наблюдения (напр., из медицинских изделий, обеспечивающих
+мониторинг состояния организма человека) и / или записываться на получение медицинской консультации. Дополнительные
+фукнции потребуют реализации и открытия дополнительных возможностей API. ЭМК-сервер может разрешать использование 
+операций <a href="http.html#search">search</a>, <a href="http.html#read">read</a> и <a href="http.html#history">history</a>
+по отношению к ресурсу Security Event, входящего в состав записей о пациентах для просмотра пациентом журнала получения
+доступа к его данным. Обратите внимание, все факты использования RESTful API должны быть отражены в логах ресурса SecurityEvent.
+<!--The EMR may also choose to provide additional functionality, such as shared access to patient 
 records by relatives/carers, to allow the patient to upload their own documents, medication statements, observations
 (e.g. from patient monitoring devices) and/or to allow the patient to make appointments. This 
 additional functionality will involve additional API capabilities to be implemented and 
-exposed. The EMR server may also choose to expose the <a href="http.html#search">search</a>, <a href="http.html#read">read</a> and <a href="http.html#history">history</a> operation on 
+exposed. The EMR server may also choose to expose the <a href="http.html#search">search</a>, 
+<a href="http.html#read">read</a> and <a href="http.html#history">history</a> operation on 
 the Security Event resource for the patient-specific records to allow patient review of record access. Note that all 
-usage of the RESTful API should be logged in SecurityEvent resources.
+usage of the RESTful API should be logged in SecurityEvent resources. -->
 </p>
 
 <a name="xds"></a>
-<h2>Document Sharing (XDS)</h2>
+<h2>Обмен документами (Document Sharing - XDS)</h2>
 
 <p>
-One common way to integrate healthcare information from a variety of sources is to build a 
+Распространеным способом интеграции информации, имеющей отношение к здравоохранению, хранящейся в множестве источников - 
+построение репозитория документов на основании записей пациентов (build a repository of documents around a patient 
+record). Создание репозитория документов позволяет смягчить необходимость объединения политик, существующих процедур
+и стандартов документооборота и информационных стандартов. 
+<!-- One common way to integrate healthcare information from a variety of sources is to build a 
 repository of documents around a patient record. Building a repository of documents 
 allows for less stringent alignment around policy, procedures and record-keeping/informatics
-standards.
+standards. -->
 </p>
 <p>
-The most widely adopted framework for sharing documents within institutions, regions, states
+Наиболе часто используемая методология обмена документами между учреждениями, регионами и странами - IHE 
+Cross-Enterprise Document Sharing (XDS). XDS обеспечивает возможность создания интегрированной системы репозиториев
+и реестра документов для координированного доступа к клиническим документам.
+<!-- The most widely adopted framework for sharing documents within institutions, regions, states
 or countries is IHE Cross-Enterprise Document Sharing (XDS). XDS allows for a federated 
-system of repositories with a registry to provide coordinated access to the documents. 
+system of repositories with a registry to provide coordinated access to the documents. -->
 </p>
 <p>
+Стандарт FHIR обладает функциональностью, экввалентной XDS, которая может быть использована для реализации
+XDS на сущесвующем интерфейса XDS.b 
 FHIR provides equivalent functionality to XDS that can be used to implement XDS behind
 the existing XDS.b interface, to provide a simpler mobile-friendly interface to an 
 existing XDS ecosystem, or to link document sharing into other functionality provided
@@ -96,29 +140,40 @@ At present, IHE is working with the FHIR project team to use FHIR for Mobile Hea
 
 
 <a name="decision"></a>
-<h2>Decision Support</h2>
+<h2>Поддержка принятия решений (Decision Support)</h2>
 
 <p>
-One common use of healthcare information systems is to integrate some form of decision support software into clinical systems.
-Common uses of clinical decision support are:
+Распространенный способом использования медицинских информационных систем - интеграция программного обеспечения 
+для поддержки принятия решений  и медицинской системы. Распространенные способы применения поддержки 
+принятия решений:
+<!--One common use of healthcare information systems is to integrate some form of decision support software into 
+clinical systems. Common uses of clinical decision support are: -->
 </p>
 <ul>
- <li>Drug-drug interaction checking, and more generally, prescription safety checks</li>
- <li>Suggesting commonly missed Diagnostic Data interpretations (including delta checking)</li>
- <li>Patient surveillance for early warning of deteriorating patient health (both acute and ambulatory care)</li>
- <li>Identifying candidates for alternative treatment plans for improved efficacy</li>
+ <li>Проверка взаимодействия лекарственных средств и, в более общем смысле, проверка безопасности лекарственных назначений (prescription safety checks) <!-- Drug-drug interaction checking, and more generally, prescription safety checks --></li>
+ <li>Предложение обычно опускаемой интерпретации диагностических данных (including delta checking) <!--Suggesting commonly missed Diagnostic Data interpretations (including delta checking) --></li>
+ <li>Контроль за состоянием пациентя для раннего обнаружения ухудшений в состоянии здоровья (как при интенсивной терапии, так и при амбулаторном лечении) <!--Patient surveillance for early warning of deteriorating patient health (both acute and ambulatory care) --></li>
+ <li>Определение пациентов-кандидатов на переход к альтернативным планам лечения для повышения эффективности лечения <!--Identifying candidates for alternative treatment plans for improved efficacy --></li>
 </ul>
 <p>
-Note that in addition to clinical decision support, there are also infrastructural uses, such as 
-managing access control.
+Обратите внимание, в дополнение к поддержке принятия решений по лечению, возможно также инфраструктурное использование,
+например, управление контролем доступа.
+<!-- Note that in addition to clinical decision support, there are also infrastructural uses, such as 
+managing access control. -->
 </p>
 <p>
-The various forms of decision support each involve different interaction patterns, so there is no single 
-decision support implementation in the FHIR specification. Generally, the patterns fall into several classes:
+Различные формы поддержки принятия решений включают в себя различные шаблоны взаимодействий (interaqction patterns), 
+поэтому нет единой реализации поддержки принятия решений в спецификации FHIR. Обычно, шаблоны взаимодействия можно 
+разделить на несколько классов:
+<!--The various forms of decision support each involve different interaction patterns, so there is no single 
+decision support implementation in the FHIR specification. Generally, the patterns fall into several classes: -->
 </p>
 <ol>
- <li>The decision comes from an engine entirely hidden behind a system interface and has no direct impact on the data exchange</li>
- <li>The decision support engine uses existing data and generates alarm messages concerning patient state that are visible on the FHIR interface</li>
+ <li>Решение генерируется подсистемой (engine) полностью скрытой зя интерфейсом системы и не имеющей прямого влияния на обмен данными
+ <!--The decision comes from an engine entirely hidden behind a system interface and has no direct impact on the data exchange --></li>
+ <li>Подсистема принятия решений использует имеющиеся данные и генерирует оповещения (alarm messages) в соответствии с
+ состоянием пациента, информация о котором доступна для FHIR-интерфейса <!--The decision support engine uses existing data and generates alarm messages concerning patient state that are visible 
+ on the FHIR interface --></li>
  <li>The decision support engine is consulted through a described interface; it accepts a request for a decision and returns a decision</li>
 </ol>
 <p>
