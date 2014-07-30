@@ -11,51 +11,61 @@
 
 <div class="col-9">
 
-<h2>Profiles defined as part of FHIR</h2>
+<h2>Профили, определенные стандартом FHIR<!--Profiles defined as part of FHIR --></h2>
 
 <p>
-A <a href="profile.html">Profile</a> is a special resource that provides additional rules
+<a href="profile.html">Профиль (Profile)</a> - это специализированный ресурс, описывающий дополнительные правила 
+использования ресусов конкретных типов в заданном контексте или клиническом сценарии.
+<!-- Profile is a special resource that provides additional rules
 about how a type of resource is utilized in a particular context of use, or for a particular use
-case.
+case. -->
 </p>
 <p>
-Some particular use cases are common or important enough to be described as a part of the
-specification itself:
+Некоторые клинические сценарии (use cases) достаточно распространены или важны, чтобы являться частью стандарта:
+<!--Some particular use cases are common or important enough to be described as a part of the
+specification itself: -->
 </p>
 <table class="grid">
  <tr>
-  <td><b>Name</b></td>
-  <td><b>Usage</b></td>
+  <td><b>Имя (Name)</b></td>
+  <td><b>Применение (Usage)</b></td>
  </tr>
- <tr>
+<!-- <tr>
   <td><b>General</b></td>
+ </tr> --> 
+ <tr>
+  <td><a href="general-extensions.html">General Extensions (Элементы-расширения общего типа)</a></td>
+  <td>Подмножество элементов-расширений общего типа, определенных для удобства разработчиков, пользующихся ресурсами FHIR.
+  <!--A set of general extensions defined for the convenience of implementers that use FHIR resources --></td>
  </tr>
  <tr>
-  <td><a href="general-extensions.html">General Extensions</a></td>
-  <td>A set of general extensions defined for the convenience of implementers that use FHIR resources</td>
- </tr>
- <tr>
-  <td><a href="element-extensions.html">Element Extensions</a></td>
+  <!--<td><a href="element-extensions.html">Element Extensions</a></td>
   <td>A set of extensions that constrain data elements, whether used in <a href="dataelement.html">DataElement</a>,
-  <a href="profile.html">Profiles</a> or <a href="questionnaire.html">Questionnaires</a></td>
+  <a href="profile.html">Profiles</a> or <a href="questionnaire.html">Questionnaires</a></td> -->
  </tr>
  <tr>
-  <td><a href="us-core.html">US Profile</a></td>
-  <td>Contains constraints and extensions to the FHIR specification specific to the US realm</td>
+  <td><a href="us-core.html">US Profile (Профили, используемые в США)</a></td>
+  <td>Содержат ограничения и расширения спецификации FHIR, применимые в системе здравоохранения США
+  <!--Contains constraints and extensions to the FHIR specification specific to the US realm --></td>
  </tr>
  <tr>
   <td><a href="iso-21090.html">ISO 21090</a></td>
-  <td>Extra ISO 21090 features not included in data types because of core design policy</td>
- </tr>
- <tr>
+  <td>Дополнительные возможности ISO 21090, отсутствующие в типах данных FHIR из-за базовой политики в отношении к 
+  проектированию стандарта FHIR
+  <!--Extra ISO 21090 features not included in data types because of core design policy --></td>
+</tr>
+<!--  <tr>
   <td><a href="rendering-extensions.html">Rendering Extensions</a></td>
   <td>Extensions that govern the appearance of data elements when rendered for human display or printing</td>
- </tr>
+ </tr>-->
  <tr>
-  <td><a href="tools-extensions.html">Tools Extensions</a></td>
-  <td>Extensions defined by the build tools. These extensions are candidates for being elevated into the core in a subsequent version</td>
+  <td><a href="tools-extensions.html">Tools Extensions (Расширения инструментов)</a></td>
+  <td>Расширения, определяемые инструментами для сборки (build tools). Возможно, данные расширения войдут в спецификацию в последующих 
+  ее версиях
+    <!--Extensions defined by the build tools. These extensions are candidates for being elevated into the core 
+  in a subsequent version --></td>
  </tr>
- <tr>
+ <!--<tr>
   <td><b><a href="dataelement.html">DataElement</a></b></td>
  </tr>
  <tr>
@@ -66,25 +76,26 @@ specification itself:
   <td><a href="dataelement-sdc.html">Structured Data Capture Data Element</a></td>
   <td>Sets expectations for data elements registered or used as part of the structured data capture project</td>
  </tr>
- <tr>
+ <tr> 
   <td><b><a href="questionnaire.html">Questionnaire</a>/<a href="questionnaireanswers.html">QuestionnaireAnswers</a></b></td>
- </tr>
+ </tr> -->
  <tr>
-  <td><a href="questionnaire-extensions.html">Questionnaire</a></td>
-  <td>Core extensions for Questionnaire</td>
+  <td><a href="questionnaire-extensions.html">Questionnaire (Вопросники)</a></td>
+  <td>Базовые расширения для вопросников (questionnaire) <!--Core extensions for Questionnaire --></td>
  </tr>
- <tr>
+ <!--<tr>
   <td><a href="questionnaire-sdc.html">Structured Data Capture (SDC) Form Design</a></td>
   <td>Contains constraints and extensions to the <a href="questionnaire.html">Questionnaire</a> resource for form designs compliant with the SDC implementation guide</td>
  </tr>
  <tr>
   <td><a href="questionnaireanswers-sdc.html">Structured Data Capture (SDC) Data Capture</a></td>
   <td>Contains constraints and extensions to the <a href="questionnaireanswers.html">QuestionnaireAnswers</a> resource for questionnaire data capture compliant with the SDC implementation guide</td>
- </tr>
+ </tr> -->
 </table>
 
 <p>
-Other profiles may be found in the general profile repository (reference to be provided).
+В общем репозитории профилей также размещены другие профили (ссылки будут предоставлены позднее).
+<!--Other profiles may be found in the general profile repository (reference to be provided).-->
 </p>
 
 </div>
