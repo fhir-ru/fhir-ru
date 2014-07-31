@@ -214,7 +214,7 @@
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">SHALL have a system </Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
-    <Cell><Data ss:Type="String">If a code for the units is present, the system SHALL also be present</Data></Cell>
+    <Cell><Data ss:Type="String">Если указан код единицы измерения, то и система также ДОЛЖНА быть указана</Data></Cell>
     <Cell><Data ss:Type="String">code.oclIsDefined implies system.oclIsDefined</Data></Cell>
     <Cell><Data ss:Type="String">not(exists(f:code)) or exists(f:system)</Data></Cell>
    </Row>
