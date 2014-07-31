@@ -130,10 +130,10 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 			return;
 		
 		Collections.sort(cds, new MyCompare());
-		write("<h3>\r\nTerminology Bindings\r\n</h3>\r\n");
+		write("<h3>\r\nТерминологические привязки\r\n</h3>\r\n");
 		// 1. new form
     write("<table class=\"grid\">\r\n");
-    write(" <tr><th>Path</th><th>Definition</th><th>Type</th><th>Reference</th></tr>\r\n");
+    write(" <tr><th>Путь</th><th>Описание</th><th>Тип</th><th>Ссылка</th></tr>\r\n");
     for (BindingSpecification cd : cds) {
       String path;
       List<CDUsage> list = txusages.get(cd);

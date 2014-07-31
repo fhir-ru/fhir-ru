@@ -162,10 +162,10 @@ public class HeirarchicalTableGenerator  {
   public TableModel initNormalTable() {
     TableModel model = new TableModel();
     
-    model.getTitles().add(new Title(null, null, "Name", null, null, 0));
-    model.getTitles().add(new Title(null, null, "Card.", null, null, 0));
-    model.getTitles().add(new Title(null, null, "Type", null, null, 100));
-    model.getTitles().add(new Title(null, null, "Description & Constraints", null, null, 0));
+    model.getTitles().add(new Title(null, null, "Имя", null, null, 0));
+    model.getTitles().add(new Title(null, null, "Число", null, null, 0));
+    model.getTitles().add(new Title(null, null, "Тип", null, null, 100));
+    model.getTitles().add(new Title(null, null, "Описание и ограничения", null, null, 0));
     return model;
   }
 

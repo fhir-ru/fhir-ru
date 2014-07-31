@@ -642,7 +642,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String profileRef(String name) {
-    return "Alternate definitions: Resource Profile (<a href=\""+name+".profile.xml.html\">XML</a>, <a href=\""+name+".profile.json.html\">JSON</a>)";
+    return "Альтернативные определения: Профиль ресурса (<a href=\""+name+".profile.xml.html\">XML</a>, <a href=\""+name+".profile.json.html\">JSON</a>)";
   }
 
   private String reflink(String name) {
