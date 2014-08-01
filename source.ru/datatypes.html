@@ -22,7 +22,7 @@
 
 <p>
 В спецификации FHIR описаны типы данных, которые используются в элементах ресурсов. 
-Типы данных делятся на две категории: простые / примитивные типы, заимствованные из XML-схемы, и сложные типы, являющиеся повторно используемыми кластерами элементов. На этой странице приведены описания этих типов данных. Также см. страницы <a href="datatypes-examples.html">Примеры</a>, <a href="datatypes-definitions.html">Формальные определения</a> и 
+Типы данных делятся на две категории: простые / примитивные типы, заимствованные из XML-схемы, и сложные типы, являющиеся повторно используемыми кластерами элементов. На этой странице приведены описания этих типов данных. Также см. страницы <a href="datatypes-examples.html">Примеры</a>, <a href="datatypes-definitions.html">Формализованное описание</a> и 
 <a href="datatypes-mappings.html">Мэппинги</a>.
 </p>
 
@@ -144,7 +144,7 @@
 Вложение (Attachment)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Attachment">Примеры</a>, <a href="datatypes-definitions.html#Attachment">Формальные определения</a> и <a href="datatypes-mappings.html#Attachment">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Attachment">Примеры</a>, <a href="datatypes-definitions.html#Attachment">Формализованное описание</a> и <a href="datatypes-mappings.html#Attachment">Мэппинги</a>.
 </p>
 
 <p>
@@ -182,7 +182,7 @@
 <a name="codesystem"> </a>
 <h2 style="margin-bottom: 1px">Coding</h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Coding">Примеры</a>, <a href="datatypes-definitions.html#Coding">Формальные определения</a> и <a href="datatypes-mappings.html#Coding">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Coding">Примеры</a>, <a href="datatypes-definitions.html#Coding">Формализованное описание</a> и <a href="datatypes-mappings.html#Coding">Мэппинги</a>.
 </p>
 <p>
 Coding - это представление определенного концепта с помощью символа из определенной "кодовой системы" - см. 
@@ -319,7 +319,7 @@ Coding используется в следующих местах: [%dtusage Co
 CodeableConcept
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#CodeableConcept">Примеры</a>, <a href="datatypes-definitions.html#CodeableConcept">Формальные определения</a> и <a href="datatypes-mappings.html#CodeableConcept">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#CodeableConcept">Примеры</a>, <a href="datatypes-definitions.html#CodeableConcept">Формализованное описание</a> и <a href="datatypes-mappings.html#CodeableConcept">Мэппинги</a>.
 </p>
 <p>
 CodeableConcept представляет собой значение, которое обычно сопровождается ссылкой на один или несколько справочников или онтологий, но может также определяться предоставлением текста. Это распространенный шаблон представления медицинских данных.
@@ -350,7 +350,7 @@ CodeableConcept используется в следующих местах: [%d
 Quantity (Количество)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Quantity">Примеры</a>, <a href="datatypes-definitions.html#Quantity">Формальные определения</a> и <a href="datatypes-mappings.html#Quantity">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Quantity">Примеры</a>, <a href="datatypes-definitions.html#Quantity">Формализованное описание</a> и <a href="datatypes-mappings.html#Quantity">Мэппинги</a>.
 </p>
 <p>
 Измеренная величина (или величина, которая потенциально может быть измерена).
@@ -395,7 +395,7 @@ Coding используется в следующих местах: [%dtusage Qu
 Range (Дипазон)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Range">Примеры</a>, <a href="datatypes-definitions.html#Range">Формальные определения</a> и <a href="datatypes-mappings.html#Range">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Range">Примеры</a>, <a href="datatypes-definitions.html#Range">Формализованное описание</a> и <a href="datatypes-mappings.html#Range">Мэппинги</a>.
 </p>
 <p>
 Множество упорядоченных значений величины (Quantity), заданное указанием верхнего и нижнего пределов.
@@ -427,14 +427,14 @@ Range используется в следующих местах: [%dtusage Ran
 Ratio (Соотношение)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Ratio">Примеры</a>, <a href="datatypes-definitions.html#Ratio">Формальные определения</a> и <a href="datatypes-mappings.html#Ratio">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Ratio">Примеры</a>, <a href="datatypes-definitions.html#Ratio">Формализованное описание</a> и <a href="datatypes-mappings.html#Ratio">Мэппинги</a>.
 </p>
 <p>
 Отношение между двумя значениями количества, выраженное в виде числителя и знаменателя.
 </p>
 [%dt Ratio%]
 <p>
-Общие делители в числителе и знаменателе не сокращаются автоматически. Тип данных Ratio используется для титров (например "1:128") и других величин, полученных лабораториями, которые действительно представляют собой соотношения. Ratio - это не просто "структурированные числа" - измерения артериального давления (к примеру, "120/60") не являются соотношениями. Также соотношения используются, когда не следует сокращать числитель и знаменатель. Наиболее распространенным примером этого является соотношение, которое представляет собой стоимость единицы, а числителем является валюта (например 50/$10). 
+Общие делители в числителе и знаменателе не сокращаются автоматически. Тип данных Ratio используется для титров (например "1:128") и других величин, полученных лабораториями, которые действительно представляют собой соотношения. Ratio - это не просто "структурированные числа" - измерения артериального давления (к примеру, "120/60") не являются соотношениями. Также соотношения используются, когда не следует сокращать числитель и знаменатель. Наиболее распространенным примером этого является соотношение, которое представляет собой стоимость единицы, а числителем является валюта (например 50$/10). 
 </p>
 <p>
 Правильное соотношение имеет и числитель, и знаменатель; однако это не является обязательным, чтобы можно было использовать недопустимые соотношения с указанием дополнительной информации в расширении.
@@ -459,7 +459,7 @@ Ratio используется в следующих местах: [%dtusage Rat
 Period (Период)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Period">Примеры</a>, <a href="datatypes-definitions.html#Period">Формальные определения</a> и <a href="datatypes-mappings.html#Period">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Period">Примеры</a>, <a href="datatypes-definitions.html#Period">Формализованное описание</a> и <a href="datatypes-mappings.html#Period">Мэппинги</a>.
 </p>
 <p>
 Период времени, определенный датой/временем начала и окончания.
@@ -490,7 +490,7 @@ Period используется в следующих местах: [%dtusage Pe
 SampledData (Дискретные данные)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#SampledData">Примеры</a>, <a href="datatypes-definitions.html#SampledData">Формальные определения</a> и <a href="datatypes-mappings.html#SampledData">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#SampledData">Примеры</a>, <a href="datatypes-definitions.html#SampledData">Формализованное описание</a> и <a href="datatypes-mappings.html#SampledData">Мэппинги</a>.
 </p>
 <p>
 Данные серии измерений с помощью изделий, имеющие верхний и нижний пределы. В данных может содержаться более одного измерения. 
@@ -514,7 +514,7 @@ SampledData используется в следующих местах: [%dtusa
 Identifier (Идентификатор)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Identifier">Примеры</a>, <a href="datatypes-definitions.html#Identifier">Формальные определения</a> и <a href="datatypes-mappings.html#Identifier">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Identifier">Примеры</a>, <a href="datatypes-definitions.html#Identifier">Формализованное описание</a> и <a href="datatypes-mappings.html#Identifier">Мэппинги</a>.
 </p>
 <p>
 Числовая или буквенно-числовая строка, ассоциированная с отдельным объектом или сущностью внутри данной системы. Обычно идентификаторы используются, чтобы связать содержимое ресурсов и внешнее содержимое, доступное в других фреймворках или протоколах. Идентификаторы ассоциируются с объектами и могут быть изменены или изъяты из обращения вследствие развития систем, из-за ошибок или с течением времени.
@@ -545,7 +545,7 @@ Identifier используется в следующих местах: [%dtusag
 HumanName (Имя человека)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#HumanName">Примеры</a>, <a href="datatypes-definitions.html#HumanName">Формальные определения</a> и <a href="datatypes-mappings.html#HumanName">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#HumanName">Примеры</a>, <a href="datatypes-definitions.html#HumanName">Формализованное описание</a> и <a href="datatypes-mappings.html#HumanName">Мэппинги</a>.
 </p>
 <p>
 Имя человека с указанием текстового представления, частей имени и информации об использовании.
@@ -579,7 +579,7 @@ HumanName используется в следующих местах: [%dtusage
 Address (Адрес)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Address">Примеры</a>, <a href="datatypes-definitions.html#Address">Формальные определения</a> и <a href="datatypes-mappings.html#Address">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Address">Примеры</a>, <a href="datatypes-definitions.html#Address">Формализованное описание</a> и <a href="datatypes-mappings.html#Address">Мэппинги</a>.
 </p>
 <p>
 Почтовый адрес. В мире существует большое многообразие форматов почтовых адресов. Почтовые адреса часто используются для записи местоположения, которое можно посетить, чтобы найти пациента или человека.
@@ -607,7 +607,7 @@ Address используется в следующих местах: [%dtusage A
 Contact (Контактные данные)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Contact">Примеры</a>, <a href="datatypes-definitions.html#Contact">Формальные определения</a> и <a href="datatypes-mappings.html#Contact">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Contact">Примеры</a>, <a href="datatypes-definitions.html#Contact">Формализованное описание</a> и <a href="datatypes-mappings.html#Contact">Мэппинги</a>.
 </p>
 <p>
 Контактные данные человека или организации любого вида технологий опосредованной коммуникации, включая телефон, электронную почту и др.
@@ -633,7 +633,7 @@ Contact используется в следующих местах: [%dtusage C
 Schedule (Расписание)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Schedule">Примеры</a>, <a href="datatypes-definitions.html#Schedule">Формальные определения</a> и <a href="datatypes-mappings.html#Schedule">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Schedule">Примеры</a>, <a href="datatypes-definitions.html#Schedule">Формализованное описание</a> и <a href="datatypes-mappings.html#Schedule">Мэппинги</a>.
 </p>
 <p>
 Определяет событие, которое может произойти несколько раз. Расписания используются для записи не уже произошедших событий, а для ожидаемых или тех событий, на которые есть запрос. Расписание может представлять собой либо список событий - периодов, в которые событие наступает, либо отдельное событие с критерием его повторения, либо только критерий повторения без самого события.
