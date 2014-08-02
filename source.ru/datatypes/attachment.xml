@@ -122,7 +122,7 @@
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Content in a format defined elsewhere</Data></Cell>
     <Cell><Data ss:Type="String">Для отсылки на данные в других форматах.</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Многим моделям требуется включать в себя данные, определенные в других спецификациях, что является сложным и непрозрачным для модели здравоохранения. Эти данные могут включать в себя документы, медиа-записи, структурированные данные и т.д.</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Многим моделям требуется включать в себя данные, определенные другими спецификациями, что является сложным и непрозрачным для модели здравоохранения. Эти данные могут включать в себя документы, медиа-записи, структурированные данные и т.д.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">ED</Data></Cell>
     <Cell><Data ss:Type="String">ED/RP</Data></Cell>
    </Row>
@@ -132,9 +132,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">MimeType</Data></Cell>
     <Cell><Data ss:Type="String">Mime type of the content, with charset etc.</Data></Cell>
-    <Cell><Data ss:Type="String">Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate</Data></Cell>
+    <Cell><Data ss:Type="String">Идентифицирует тип данных во вложении и позволяет выбрать метод интерпретирования или рендеринга данных. Включает в себя такие параметры MIME-типа, как кодировка, когда это уместно</Data></Cell>
     <Cell><Data ss:Type="String">text/plain; charset=UTF-8, image/png</Data></Cell>
-    <Cell><Data ss:Type="String">Processors of the data need to be able to know how to interpret the data</Data></Cell>
+    <Cell><Data ss:Type="String">Программам обработки данных нужна возможность узнать, как интерпретировать эти данные</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./mediaType, ./charset</Data></Cell>
     <Cell><Data ss:Type="String">ED.2+ED.3/RP.2+RP.3. Note conversion may be needed if old style values are being used</Data></Cell>
    </Row>
@@ -143,10 +143,10 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">Language</Data></Cell>
-    <Cell><Data ss:Type="String">Human language of the content (BCP-47)</Data></Cell>
-    <Cell><Data ss:Type="String">The human language of the content. The value can be any valid value according to BCP 47</Data></Cell>
+    <Cell><Data ss:Type="String">Естественный язык содержимого (BCP-47)</Data></Cell>
+    <Cell><Data ss:Type="String">Естественный язык содержимого. Значением может быть любое допустимое значение в соответствии с BCP 47</Data></Cell>
     <Cell><Data ss:Type="String">en-AU</Data></Cell>
-    <Cell><Data ss:Type="String">Users need to be able to choose between the languages in a set of attachments</Data></Cell>
+    <Cell><Data ss:Type="String">У пользователей должна быть возможность выбрать язык в наборе вложений</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./language</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="44.25">
@@ -154,9 +154,9 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">base64Binary</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Data inline, base64ed</Data></Cell>
-    <Cell><Data ss:Type="String">The actual data of the attachment - a sequence of bytes. In XML, represented using base64</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">The data needs to able to be transmitted inline</Data></Cell>
-    <Cell><Data ss:Type="String">The base64-encoded data SHALL be expressed in the same character set as the base resource XML or JSON</Data></Cell>
+    <Cell><Data ss:Type="String">Непосредственно данные вложения - последовательность байтов. В XML представляется в кодировке base64</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Должна быть возможность передавать данные внутри ресурса</Data></Cell>
+    <Cell><Data ss:Type="String">Закодированные в base64 данные ДОЛЖНЫ быть в той же кодировке (character set ), что и XML или JSON код самого ресурса</Data></Cell>
     <Cell><Data ss:Type="String">./data</Data></Cell>
     <Cell><Data ss:Type="String">ED.5</Data></Cell>
    </Row>
@@ -164,11 +164,12 @@
     <Cell><Data ss:Type="String">Attachment.url</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Uri where the data can be found</Data></Cell>
-    <Cell><Data ss:Type="String">An alternative location where the data can be accessed</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">URI, по которому можно найти эти данные</Data></Cell>
+    <Cell><Data ss:Type="String">Альтернативный адрес доступа к этим данным</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">http://www.acme.com/logo-small.png</Data></Cell>
-    <Cell><Data ss:Type="String">The data needs to be transmitted by reference</Data></Cell>
-    <Cell><Data ss:Type="String">If both data and url are provided, the url SHALL point to the same content as the data contains. Urls may be relative references or may reference transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures. Relative URLs are interpreted relative to the service url, like a resource reference, rather than relative to the resource itself. If a URL is provided, it SHALL resolve to actual data. </Data></Cell>
+    <Cell><Data ss:Type="String">Требуется возможность передавать данные по ссылке</Data></Cell>
+    <Cell><Data ss:Type="String">Если заполнены оба элемента data и url, то url ДОЛЖЕН указывать на то же самое содержимое, что и в элементе data. Ссылки могут быть относительными или указывать на временный адрес, например 
+	If both data and url are provided, the url SHALL point to the same content as the data contains. Urls may be relative references or may reference transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures. Relative URLs are interpreted relative to the service url, like a resource reference, rather than relative to the resource itself. If a URL is provided, it SHALL resolve to actual data. </Data></Cell>
     <Cell><Data ss:Type="String">./reference/literal</Data></Cell>
     <Cell><Data ss:Type="String">RP.1+RP.2 - if they refer to a URL (see v2.6)</Data></Cell>
    </Row>
