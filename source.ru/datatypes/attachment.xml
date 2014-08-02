@@ -98,19 +98,19 @@
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Column ss:Index="15" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="81"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
-    <Cell><Data ss:Type="String">Element</Data></Cell>
-    <Cell><Data ss:Type="String">Card.</Data></Cell>
-    <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">Элемент</Data></Cell>
+    <Cell><Data ss:Type="String">Кол-во.</Data></Cell>
+    <Cell><Data ss:Type="String">Инв.</Data></Cell>
     <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
-    <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Binding</Data></Cell>
-    <Cell><Data ss:Type="String">Short Name</Data></Cell>
-    <Cell><Data ss:Type="String">Definition</Data></Cell>
-    <Cell><Data ss:Type="String">Example</Data></Cell>
-    <Cell><Data ss:Type="String">Requirements</Data></Cell>
-    <Cell><Data ss:Type="String">Comments</Data></Cell>
-    <Cell><Data ss:Type="String">RIM Mapping</Data></Cell>
-    <Cell><Data ss:Type="String">v2 Mapping</Data></Cell>
+    <Cell><Data ss:Type="String">Тип</Data></Cell>
+    <Cell><Data ss:Type="String">Привязка</Data></Cell>
+    <Cell><Data ss:Type="String">Короткое имя</Data></Cell>
+    <Cell><Data ss:Type="String">Определение</Data></Cell>
+    <Cell><Data ss:Type="String">Пример</Data></Cell>
+    <Cell><Data ss:Type="String">Требования</Data></Cell>
+    <Cell><Data ss:Type="String">Комментарии</Data></Cell>
+    <Cell><Data ss:Type="String">RIM мэппинг</Data></Cell>
+    <Cell><Data ss:Type="String">v2 мэппинг</Data></Cell>
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
@@ -121,8 +121,8 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Content in a format defined elsewhere</Data></Cell>
-    <Cell><Data ss:Type="String">For referring to data content defined in other formats.</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Many models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc.</Data></Cell>
+    <Cell><Data ss:Type="String">Для отсылки на данные в других форматах.</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Многим моделям требуется включать в себя данные, определенные в других спецификациях, что является сложным и непрозрачным для модели здравоохранения. Эти данные могут включать в себя документы, медиа-записи, структурированные данные и т.д.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">ED</Data></Cell>
     <Cell><Data ss:Type="String">ED/RP</Data></Cell>
    </Row>
