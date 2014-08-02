@@ -110,24 +110,24 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
     
   private void generateElementInner(Profile profile, ElementDefinitionComponent d) throws Exception {
-    tableRow("Definition", null, d.getFormalSimple());
-    tableRow("Control", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
-    tableRowNE("Binding", "terminologies.html", describeBinding(d));
+    tableRow("Определение", null, d.getFormalSimple());
+    tableRow("Контроль", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
+    tableRowNE("Привязка", "terminologies.html", describeBinding(d));
     if (d.getNameReference() != null)
-      tableRow("Type", null, "See "+d.getNameReferenceSimple());
+      tableRow("Тип", null, "См. "+d.getNameReferenceSimple());
     else
-      tableRowNE("Type", "datatypes.html", describeTypes(d.getType()));
-    tableRow("Is Modifier", "conformance-rules.html#ismodifier", displayBoolean(d.getIsModifierSimple()));
-    tableRow("Must Support", "conformance-rules.html#mustsupport", displayBoolean(d.getMustSupportSimple()));
-    tableRow("Requirements", null, d.getRequirementsSimple());
-    tableRow("Aliases", null, describeAliases(d.getSynonym()));
-    tableRow("Comments", null, d.getCommentsSimple());
-    tableRow("Max Length", null, d.getMaxLength() == null ? null : Integer.toString(d.getMaxLengthSimple()));
-    tableRow("Fixed Value", null, encodeValue(d.getValue()));
-    tableRow("Example", null, encodeValue(d.getExample()));
-    tableRowNE("Invariants", null, invariants(d.getConstraint()));
-    tableRow("LOINC Code", null, getMapping(profile, d, Definitions.LOINC_MAPPING));
-    tableRow("SNOMED-CT Code", null, getMapping(profile, d, Definitions.SNOMED_MAPPING));
+      tableRowNE("Тип", "datatypes.html", describeTypes(d.getType()));
+    tableRow("Является модификатором", "conformance-rules.html#ismodifier", displayBoolean(d.getIsModifierSimple()));
+    tableRow("Должен поддерживать", "conformance-rules.html#mustsupport", displayBoolean(d.getMustSupportSimple()));
+    tableRow("Требования", null, d.getRequirementsSimple());
+    tableRow("Альтернативные имена", null, describeAliases(d.getSynonym()));
+    tableRow("Комментарии", null, d.getCommentsSimple());
+    tableRow("Макс. длина", null, d.getMaxLength() == null ? null : Integer.toString(d.getMaxLengthSimple()));
+    tableRow("Фиксированное значение", null, encodeValue(d.getValue()));
+    tableRow("Пример", null, encodeValue(d.getExample()));
+    tableRowNE("Инварианты", null, invariants(d.getConstraint()));
+    tableRow("Код LOINC", null, getMapping(profile, d, Definitions.LOINC_MAPPING));
+    tableRow("Код SNOMED-CT", null, getMapping(profile, d, Definitions.SNOMED_MAPPING));
   }
 
   private String encodeValue(Type value) throws Exception {
@@ -257,23 +257,23 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
 	private void writeEntry(String path, String cardinality, String type, String conceptDomain, ElementDefn e) throws Exception {
 		write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+path.replace("[", "_").replace("]", "_")+"\"> </a><b>"+path+"</b></td></tr>\r\n");
-		tableRow("Definition", null, e.getDefinition());
-		tableRow("Control", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
-		tableRowNE("Binding", "terminologies.html", describeBinding(e));
+		tableRow("Определение", null, e.getDefinition());
+		tableRow("Контроль", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
+		tableRowNE("Привязка", "terminologies.html", describeBinding(e));
 		if (!Utilities.noString(type) && type.startsWith("@"))
-		  tableRowNE("Type", null, "<a href=\"#"+type.substring(1)+"\">See "+type.substring(1)+"</a>");
+		  tableRowNE("Тип", null, "<a href=\"#"+type.substring(1)+"\">See "+type.substring(1)+"</a>");
 		else
-		  tableRowNE("Type", "datatypes.html", type);
-		tableRow("Is Modifier", "conformance-rules.html#ismodifier", displayBoolean(e.isModifier()));
-		tableRow("Requirements", null, e.getRequirements());
-    tableRow("Aliases", null, toSeperatedString(e.getAliases()));
+		  tableRowNE("Тип", "datatypes.html", type);
+		tableRow("Является модификатором", "conformance-rules.html#ismodifier", displayBoolean(e.isModifier()));
+		tableRow("Требования", null, e.getRequirements());
+    tableRow("Альтернативные имена", null, toSeperatedString(e.getAliases()));
     if (e.isSummaryItem())
       tableRow("Summary", "search.html#summary", Boolean.toString(e.isSummaryItem()));
-    tableRow("Comments", null, e.getComments());
-    tableRowNE("Invariants", null, invariants(e.getInvariants(), e.getStatedInvariants()));
-    tableRow("LOINC Code", null, e.getMapping(Definitions.LOINC_MAPPING));
-    tableRow("SNOMED-CT Code", null, e.getMapping(Definitions.SNOMED_MAPPING));
-		tableRow("To Do", null, e.getTodo());
+    tableRow("Комментарии", null, e.getComments());
+    tableRowNE("Инварианты", null, invariants(e.getInvariants(), e.getStatedInvariants()));
+    tableRow("Код LOINC", null, e.getMapping(Definitions.LOINC_MAPPING));
+    tableRow("Код SNOMED-CT", null, e.getMapping(Definitions.SNOMED_MAPPING));
+		tableRow("Предстоит сделать", null, e.getTodo());
 		if (e.getTasks().size() > 0) {
 	    tableRowNE("gForge Tasks", null, tasks(e.getTasks()));
 		}
