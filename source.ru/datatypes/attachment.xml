@@ -98,19 +98,19 @@
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Column ss:Index="15" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="81"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
-    <Cell><Data ss:Type="String">Элемент</Data></Cell>
-    <Cell><Data ss:Type="String">Кол-во.</Data></Cell>
-    <Cell><Data ss:Type="String">Инв.</Data></Cell>
+    <Cell><Data ss:Type="String">Element</Data></Cell>
+    <Cell><Data ss:Type="String">Card.</Data></Cell>
+    <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">Is Modifier</Data></Cell>
-    <Cell><Data ss:Type="String">Тип</Data></Cell>
-    <Cell><Data ss:Type="String">Привязка</Data></Cell>
-    <Cell><Data ss:Type="String">Короткое имя</Data></Cell>
-    <Cell><Data ss:Type="String">Определение</Data></Cell>
-    <Cell><Data ss:Type="String">Пример</Data></Cell>
-    <Cell><Data ss:Type="String">Требования</Data></Cell>
-    <Cell><Data ss:Type="String">Комментарии</Data></Cell>
-    <Cell><Data ss:Type="String">RIM мэппинг</Data></Cell>
-    <Cell><Data ss:Type="String">v2 мэппинг</Data></Cell>
+    <Cell><Data ss:Type="String">Type</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
+    <Cell><Data ss:Type="String">Short Name</Data></Cell>
+    <Cell><Data ss:Type="String">Definition</Data></Cell>
+    <Cell><Data ss:Type="String">Example</Data></Cell>
+    <Cell><Data ss:Type="String">Requirements</Data></Cell>
+    <Cell><Data ss:Type="String">Comments</Data></Cell>
+    <Cell><Data ss:Type="String">RIM Mapping</Data></Cell>
+    <Cell><Data ss:Type="String">v2 Mapping</Data></Cell>
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
