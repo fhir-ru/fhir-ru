@@ -111,7 +111,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     
   private void generateElementInner(Profile profile, ElementDefinitionComponent d) throws Exception {
     tableRow("Определение", null, d.getFormalSimple());
-    tableRow("Контроль", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
+    tableRow("Количество", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
     tableRowNE("Привязка", "terminologies.html", describeBinding(d));
     if (d.getNameReference() != null)
       tableRow("Тип", null, "См. "+d.getNameReferenceSimple());
@@ -258,7 +258,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	private void writeEntry(String path, String cardinality, String type, String conceptDomain, ElementDefn e) throws Exception {
 		write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+path.replace("[", "_").replace("]", "_")+"\"> </a><b>"+path+"</b></td></tr>\r\n");
 		tableRow("Определение", null, e.getDefinition());
-		tableRow("Контроль", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
+		tableRow("Количество", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
 		tableRowNE("Привязка", "terminologies.html", describeBinding(e));
 		if (!Utilities.noString(type) && type.startsWith("@"))
 		  tableRowNE("Тип", null, "<a href=\"#"+type.substring(1)+"\">See "+type.substring(1)+"</a>");
