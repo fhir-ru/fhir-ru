@@ -190,7 +190,7 @@
     <Cell ss:Index="5"><Data ss:Type="String">base64Binary</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Hash of the data (sha-1, base64ed )</Data></Cell>
     <Cell><Data ss:Type="String">Хеш-сумма данных по алгоритму SHA-1 в кодировке base64</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Элемент включен для того, чтобы приложения могли удостовериться, что содержимое по ссылке не было изменено, и чтобы электронная подпись содержимого могла безоговорочно подписывать содержимое изображения без необходимости включать его данные в экземпляр или ссылаться на URL в подписи</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Элемент добавлен для того, чтобы приложения могли удостовериться, что содержимое по ссылке не было изменено, и чтобы электронная подпись содержимого могла безоговорочно подписывать содержимое изображения без необходимости включать его данные в экземпляр или ссылаться на URL в подписи</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.integrityCheck[parent::ED/integrityCheckAlgorithm=&quot;SHA-1&quot;]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -209,10 +209,10 @@
     <Cell><Data ss:Type="String">Attachment.title</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Label to display in place of the data</Data></Cell>
-    <Cell><Data ss:Type="String">Ярлык или набор текста для отображения вместо данных</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Заголовок для отображения вместо данных</Data></Cell>
+    <Cell><Data ss:Type="String">Заголовок или текст для отображения вместо данных</Data></Cell>
     <Cell><Data ss:Type="String">&quot;Official Corporate Logo&quot;</Data></Cell>
-    <Cell><Data ss:Type="String">Приложениям нужен ярлык, чтобы показывать пользователю вместо фактических данных, когда они не могут быть визуализированы или восприняты программой просмотра. </Data></Cell>
+    <Cell><Data ss:Type="String">Приложениям нужен заголовок, чтобы показывать пользователю вместо фактических данных, когда они не могут быть визуализированы или отображены программой просмотра. </Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./title/data</Data></Cell>
    </Row>
   </Table>
