@@ -195,12 +195,12 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Representation defined by the system</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Представление, определенное системой</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A representation of the meaning of the code in the system, following the rules of the system. </Data><NamedCell
+    <Cell><Data ss:Type="String">Представление о смысле кода в системе в соответствии с правилами системы. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Need to be able to carry a human-readable meaning of the code for readers that do not know  the system</Data><NamedCell
+    <Cell><Data ss:Type="String">Должно передавать человекочитаемое значение кода программам чтения, которые не знают систему</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">CV.displayName</Data><NamedCell
@@ -215,13 +215,13 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">boolean</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">If this code was chosen directly by the user</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Если этот код был выбран непосредственно пользователем </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays)</Data><NamedCell
+    <Cell><Data ss:Type="String">Указывает, что этот код был выбран пользователем непосредственно - т.е. из списка выбора доступных пунктов (кодов или отображений)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">This has been identified as a clinical safety criterium - that this exact code was chosen explicitly, rather than inferred by the system based on some rules or language processing</Data><NamedCell
+    <Cell ss:Index="10"><Data ss:Type="String">Идентифицируется как критерий клинической безопасности - что строго этот самый код был выбран явно, а не выведен системой на основе некоторых правил или обработки языка </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations</Data><NamedCell
+    <Cell><Data ss:Type="String">Среди множества альтернатив непосредственно выбранный код является наиболее подходящей отправной точкой для новых переводов</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">CD.codingRationale</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -233,8 +233,8 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Resource(ValueSet)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Set this coding was chosen from</Data></Cell>
-    <Cell><Data ss:Type="String">The set of possible coded values this coding was chosen from or constrained by</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">The value set may influence the codes that the user can select. Also, referencing the value set directly makes it easier to share ad-hoc code systems used across healthcare</Data></Cell>
+    <Cell><Data ss:Type="String">Набор возможных кодированных значений, откуда этот кодинг был выбран или которым он ограничен</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Набор значений может влиять на коды, которые может выбрать пользователь. Также прямая ссылка на набор значений упрощает совместное использование узкоспециализированных кодовых систем, используемых в здравоохранении</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">CD.valueSet / CD.valueSetVersion</Data></Cell>
     <Cell><Data ss:Type="String">C*E.16 - .19</Data></Cell>
    </Row>
