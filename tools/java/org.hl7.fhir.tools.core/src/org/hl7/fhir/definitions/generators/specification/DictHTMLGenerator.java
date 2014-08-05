@@ -173,7 +173,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
       return null;
     StringBuilder s = new StringBuilder();
     if (constraints.size() > 0) {
-      s.append("<b>Defined on this element</b><br/>\r\n");
+      s.append("<b>Определено на этом элементе</b><br/>\r\n");
       List<String> ids = new ArrayList<String>();
       for (ElementDefinitionConstraintComponent id : constraints)
         ids.add(id.getKeySimple());
@@ -185,7 +185,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
           s.append("<br/>");
         else
           b = true;
-        s.append("<b title=\"Formal Invariant Identifier\">Inv-"+id+"</b>: "+Utilities.escapeXml(inv.getHumanSimple())+" (xpath: "+Utilities.escapeXml(inv.getXpathSimple())+")");
+        s.append("<b title=\"Formal Invariant Identifier\">Инв-"+id+"</b>: "+Utilities.escapeXml(inv.getHumanSimple())+" (xpath: "+Utilities.escapeXml(inv.getXpathSimple())+")");
       }
     }
     
@@ -324,7 +324,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   private String invariants(Map<String, Invariant> invariants, List<Invariant> stated) {
 	  StringBuilder s = new StringBuilder();
 	  if (invariants.size() > 0) {
-	    s.append("<b>Defined on this element</b><br/>\r\n");
+	    s.append("<b>Определено на этом элементе</b><br/>\r\n");
 	    List<Integer> ids = new ArrayList<Integer>();
 	    for (String id : invariants.keySet())
 	      ids.add(Integer.parseInt(id));
@@ -334,19 +334,19 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	      Invariant inv = invariants.get(i.toString());
 	      if (b)
 	        s.append("<br/>");
-	      s.append("<b title=\"Formal Invariant Identifier\">Inv-"+i.toString()+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
+	      s.append("<b title=\"Formal Invariant Identifier\">Инв-"+i.toString()+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
 	      b = true;
 	    }
 	  }
     if (stated.size() > 0) {
       if (s.length() > 0)
         s.append("<br/>");
-      s.append("<b>Affect this element</b><br/>\r\n");
+      s.append("<b>Влияет на этот элемент</b><br/>\r\n");
       boolean b = false;
       for (Invariant id : stated) {
         if (b)
           s.append("<br/>");
-        s.append("<b>Inv-"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
+        s.append("<b>Инв-"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
         b = true;
       }
     }

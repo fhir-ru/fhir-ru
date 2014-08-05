@@ -178,7 +178,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Symbol in syntax defined by the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Символ в синтаксисе, определенном системой. Символ может быть предопределенным кодом или выражением в синтаксисе, определенном кодовой системой (например post-coordination)</Data><NamedCell
+    <Cell><Data ss:Type="String">Символ в синтаксисе, определенном системой. Символ может быть предопределенным кодом или выражением в синтаксисе, определенном кодовой системой (например посткоординацией)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Должен относиться к конкретному коду в системе</Data><NamedCell
