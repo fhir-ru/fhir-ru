@@ -106,9 +106,9 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Set of values bounded by low and high</Data></Cell>
-    <Cell><Data ss:Type="String">A set of ordered Quantities defined by a low and high limit. </Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to specify ranges of values</Data></Cell>
-    <Cell><Data ss:Type="String">The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -&gt; 3</Data></Cell>
+    <Cell><Data ss:Type="String">Множество упорядоченных величин, заданных нижним и верхним пределом. </Data></Cell>
+    <Cell><Data ss:Type="String">Необходима возможность указывать диапазоны значений</Data></Cell>
+    <Cell><Data ss:Type="String">Предполагается, что установленные нижнее и верхнее значения имеют произвольно высокую точность, когда доходит до определения, какие значения входят в диапазон, т.е. 1.99 не входит в диапазон 2 -&gt; 3</Data></Cell>
     <Cell><Data ss:Type="String">IVL&lt;QTY[not(type=&quot;TS&quot;)]&gt; [lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]or URG&lt;QTY[not(type=&quot;TS&quot;)]&gt;</Data></Cell>
     <Cell><Data ss:Type="String">NR and also possibly SN (but see also quantity)</Data></Cell>
    </Row>
@@ -118,8 +118,8 @@
     <Cell><Data ss:Type="String">2,3</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Low limit </Data></Cell>
-    <Cell><Data ss:Type="String">The low limit. The boundary is inclusive.</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">If the low element is missing, the low boundary is not known.</Data></Cell>
+    <Cell><Data ss:Type="String">Нижний предел. Значение предела входит в диапазон.</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Если элемент low отсутствует, нижняя граница не известна.</Data></Cell>
     <Cell><Data ss:Type="String">./low</Data></Cell>
     <Cell><Data ss:Type="String">NR.1</Data></Cell>
    </Row>
@@ -129,8 +129,8 @@
     <Cell><Data ss:Type="String">2,3</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">High limit </Data></Cell>
-    <Cell><Data ss:Type="String">The high limit. The boundary is inclusive. </Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">If the high element is missing, the high boundary is not known. </Data></Cell>
+    <Cell><Data ss:Type="String">Верхний предел. Значение предела входит в диапазон.</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Если элемент high отсутствует, верхняя граница не известна. </Data></Cell>
     <Cell><Data ss:Type="String">./high</Data></Cell>
     <Cell><Data ss:Type="String">NR.2</Data></Cell>
    </Row>
