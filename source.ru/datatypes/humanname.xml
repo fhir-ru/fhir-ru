@@ -253,7 +253,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Период времени, в который имя было/есть в употреблении</Data></Cell>
-    <Cell><Data ss:Type="String">Указыает период времени, в который это имя было действительно для человека.</Data></Cell>
+    <Cell><Data ss:Type="String">Указывает период времени, в который это имя было действительно для человека.</Data></Cell>
     <Cell ss:Index="10" ss:StyleID="s69"><Data ss:Type="String">Позволяет размещать имена в историческом контексте</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="Default"/>
     <Cell ss:StyleID="s69"><Data ss:Type="String">./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
@@ -347,7 +347,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s71"><Data ss:Type="String">NameUse</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">The use of a human name</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Использование человеческих имен</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">#name-use</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s72"><Data ss:Type="String">http://hl7.org/fhir/v2/vs/0200</Data></Cell>

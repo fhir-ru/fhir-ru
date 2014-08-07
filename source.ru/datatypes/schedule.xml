@@ -316,7 +316,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s71"><Data ss:Type="String">EventTiming</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Real world event that the schedule relates to</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Событие реального мира, к которому привязано расписание</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">#event-timing</Data></Cell>
    </Row>

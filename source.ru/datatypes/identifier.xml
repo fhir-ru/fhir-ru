@@ -334,7 +334,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s70"><Data ss:Type="String">IdentifierUse</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">Identifies the purpose for this identifier, if known&#10;</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Указывает назначение этого идентификатора, если известно&#10;</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">#identifier-use</Data></Cell>
    </Row>

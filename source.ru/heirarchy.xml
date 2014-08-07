@@ -38,11 +38,11 @@ todo: compartments
       <page title="Расширяемость (Extensibility)" filename="extensibility.html">
         <page title="Примеры" filename="extensibility-examples.html"/>
       </page>
-      <page title="Формальные определения" filename="base-definitions.html"/>
+      <page title="Базовые определения" filename="base-definitions.html"/>
     </page>
     <page title="Типы данных" filename="datatypes.html">
       <page title="Примеры" filename="datatypes-examples.html"/>
-      <page title="Формальные определения" filename="datatypes-definitions.html"/>
+      <page title="Формализованное описание" filename="datatypes-definitions.html"/>
       <page title="Мэппинги (Mappings)" filename="datatypes-mappings.html"/>
     </page>
     <page title="Использование кодовых значений" filename="terminologies.html">

@@ -309,14 +309,14 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s71"><Data ss:Type="String">MimeType</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">The mime type of an attachment</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">MIME-тип вложения</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">http://www.rfc-editor.org/bcp/bcp13.txt</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s72"><Data ss:Type="String">Language</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">A human language</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Естественный язык</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">http://tools.ietf.org/html/bcp47</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">IETF language tag</Data></Cell>

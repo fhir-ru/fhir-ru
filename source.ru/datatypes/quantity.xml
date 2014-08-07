@@ -340,7 +340,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s63"><Data ss:Type="String">QuantityCompararator</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">How the Quantity should be understood and represented</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Каким образом следует понимать и отображать величину (Quantity)</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">#quantity-comparator</Data></Cell>
    </Row>
