@@ -129,7 +129,7 @@
     <Cell><Data ss:Type="String">Коды могут быть определены весьма небрежно в перечислениях или перечнях кодов, до очень формализованных определений, таких как SNOMED CT - см. V3 Core Principles для более подробной информации</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">CV</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">CE/CNE/CWE subset one of the sets of component 1-3 or 4-6</Data><NamedCell
+    <Cell><Data ss:Type="String">Подмножество одного из наборов компонентов (1-3 либо 4-6) типов данных CE/CNE/CWE</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="133.5">
@@ -205,7 +205,7 @@
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">CV.displayName</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">C*E.2 - but note this is not well followed</Data><NamedCell
+    <Cell ss:StyleID="s67"><Data ss:Type="String">C*E.2 - но обратите внимание, что этого не всегда придерживаются</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="15" ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
@@ -225,7 +225,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">CD.codingRationale</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Sometimes implied by being first</Data><NamedCell
+    <Cell><Data ss:Type="String">Иногда подразумевается путем указания первым</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">

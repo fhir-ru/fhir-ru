@@ -78,7 +78,7 @@ public class MappingsGenerator {
       StringBuilder s = new StringBuilder();
       for (ProfileMappingComponent map : profile.getMapping()) {
 
-        s.append("<a name=\""+map.getIdentitySimple() +"\"> </a><h3>Mappings for "+map.getNameSimple()+" ("+map.getUriSimple()+")</h3>");
+        s.append("<a name=\""+map.getIdentitySimple() +"\"> </a><h3>Соответствие с "+map.getNameSimple()+" ("+map.getUriSimple()+")</h3>");
         if (map.getComments() != null)
           s.append("<p>"+Utilities.escapeXml(map.getCommentsSimple())+"</p>");
         else if (definitions.getMapTypes().containsKey(map.getUriSimple()))   
@@ -161,7 +161,7 @@ public class MappingsGenerator {
 		for (String m : maps) {
 			list.append("|"+definitions.getMapTypes().get(m).getTitle() + "#"+definitions.getMapTypes().get(m).getId());
 
-			s.append("<a name=\""+m+"\"> </a><a name=\""+definitions.getMapTypes().get(m).getId()+"\"> </a><h3>Mappings for "+definitions.getMapTypes().get(m).getTitle()+" ("+m+")</h3>");
+			s.append("<a name=\""+m+"\"> </a><a name=\""+definitions.getMapTypes().get(m).getId()+"\"> </a><h3>Соответствие с "+definitions.getMapTypes().get(m).getTitle()+" ("+m+")</h3>");
 			s.append(definitions.getMapTypes().get(m).getPreamble());
 			s.append("<table class=\"grid\">\r\n");
 			genElement(s, 0, resource.getRoot(), m, true);
@@ -185,7 +185,7 @@ public class MappingsGenerator {
 			list.append("|"+definitions.getMapTypes().get(m).getTitle() + "#"+m);
       s.append("<a name=\""+m+"\"> </a>\r\n");
       s.append("<a name=\""+definitions.getMapTypes().get(m).getId()+"\"> </a>\r\n");
-			s.append("<h3>Mappings for "+definitions.getMapTypes().get(m).getTitle()+" ("+m+")</h3>\r\n");
+			s.append("<h3>Соответствие с "+definitions.getMapTypes().get(m).getTitle()+" ("+m+")</h3>\r\n");
 			s.append("<table class=\"grid\">\r\n");
 			for (ElementDefn e : elements) 
 				if (elementHasMapping(e, m)) {

@@ -160,7 +160,7 @@
     <Cell><Data ss:Type="String">Необходимо поддерживать устаревшие номера, заданные не в жестком формате </Data></Cell>
     <Cell><Data ss:Type="String">Значение иногда содержит такие дополнительные данные, как расширения, или примечания к использованию контактных данных</Data></Cell>
     <Cell><Data ss:Type="String">./url</Data></Cell>
-    <Cell><Data ss:Type="String">XTN.1 (or XTN.12)</Data></Cell>
+    <Cell><Data ss:Type="String">XTN.1 (или XTN.12)</Data></Cell>
     <Cell><Data ss:Type="String">./Value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -174,7 +174,7 @@
     <Cell><Data ss:Type="String">Необходимо отслеживать способ, которым человек пользуется этими контактными данными, чтобы пользователи могли выбрать наиболее подходящий для их целей</Data></Cell>
     <Cell><Data ss:Type="String">Является модификатором, так как приложения не должны ошибочно принять временные или старые контактные данные за текущие/постоянные. Приложения могут принимать контактные данные за текущие, если только явно не указано, что они временные или старые</Data></Cell>
     <Cell><Data ss:Type="String">unique(./use)</Data></Cell>
-    <Cell><Data ss:Type="String">XTN.2 - but often indicated by field</Data></Cell>
+    <Cell><Data ss:Type="String">XTN.2 - но часто обозначается полем (but often indicated by field)</Data></Cell>
     <Cell><Data ss:Type="String">./ContactPointPurpose</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -185,7 +185,7 @@
     <Cell><Data ss:Type="String">Период времени, в который контактные данные были/являются актуальными</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">./useablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell><Data ss:Type="String">./StartDate and ./EndDate</Data></Cell>
+    <Cell><Data ss:Type="String">./StartDate и ./EndDate</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

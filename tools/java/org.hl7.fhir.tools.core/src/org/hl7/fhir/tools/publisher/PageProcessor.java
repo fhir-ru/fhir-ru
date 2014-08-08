@@ -3183,7 +3183,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     if (source.getMapping().size() < 2)
       return "";
     StringBuilder b = new StringBuilder();
-    b.append("<div class=\"itoc\">\r\n<p>Mappings:</p>\r\n");
+    b.append("<div class=\"itoc\">\r\n<p>Соответствия:</p>\r\n");
     for (ProfileMappingComponent map : source.getMapping()) {
       b.append("<p class=\"link\"><a href=\"#"+map.getIdentitySimple()+"\">"+map.getNameSimple()+"</a></p>");
     }

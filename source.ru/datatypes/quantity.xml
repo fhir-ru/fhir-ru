@@ -126,7 +126,7 @@
     <Cell><Data ss:Type="String">Значение измеренной величины. Значение включает в себя неявное указание точности</Data></Cell>
     <Cell><Data ss:Type="String">Точность регулируется неявным образом почти во всех случаях измерений</Data></Cell>
     <Cell><Data ss:Type="String">Подразумеваемая точность значения всегда должна соблюдаться. У денежных значений есть свои собственные правила контроля точности (обратитесь к стандартным учебникам по бухгалтерскому делу)</Data></Cell>
-    <Cell><Data ss:Type="String">PQ.value, CO.value, MO.value, IVL.high or IVL.low depending on the value</Data></Cell>
+    <Cell><Data ss:Type="String">PQ.value, CO.value, MO.value, IVL.high либо IVL.low, в зависимости от значения</Data></Cell>
     <Cell><Data ss:Type="String">SN.2  / CQ - N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">

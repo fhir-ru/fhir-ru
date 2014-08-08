@@ -110,7 +110,7 @@
     <Cell><Data ss:Type="String">Необходима возможность указывать диапазоны значений</Data></Cell>
     <Cell><Data ss:Type="String">Предполагается, что установленные нижнее и верхнее значения имеют произвольно высокую точность, когда доходит до определения, какие значения входят в диапазон, т.е. 1.99 не входит в диапазон 2 -&gt; 3</Data></Cell>
     <Cell><Data ss:Type="String">IVL&lt;QTY[not(type=&quot;TS&quot;)]&gt; [lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]or URG&lt;QTY[not(type=&quot;TS&quot;)]&gt;</Data></Cell>
-    <Cell><Data ss:Type="String">NR and also possibly SN (but see also quantity)</Data></Cell>
+    <Cell><Data ss:Type="String">NR, а также, возможно, SN (но см. также quantity)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Range.low</Data></Cell>

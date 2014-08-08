@@ -126,7 +126,7 @@
     <Cell ss:Index="10"><Data ss:Type="String">Коды из справочников не всегда передают правильный смысл со всеми его нюансами, которые вкладывает человек при использовании, или иногда подходящий код вообще не существует. В этих случаях для передачи полного значения источника используется текст</Data></Cell>
     <Cell><Data ss:Type="String">Очень часто текст совпадает со значением элемента displayName одного из кодингов</Data></Cell>
     <Cell><Data ss:Type="String">./originalText[mediaType/code=&quot;text/plain&quot;]/data</Data></Cell>
-    <Cell><Data ss:Type="String">C*E.9. But note many systems use C*E.2 for this</Data></Cell>
+    <Cell><Data ss:Type="String">C*E.9. Однако обратите внимание, что многие системы используют для этого C*E.2 </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90"/>
   </Table>

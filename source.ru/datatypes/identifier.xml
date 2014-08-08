@@ -140,7 +140,7 @@
     <Cell><Data ss:Type="String">Технический идентификатор - определяет некоторую сущность однозначно и недвусмысленно</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Должен идентифицировать вещи с уверенностью и давать гарантию, что идентификация не подвержена ошибочному истолкованию.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">II - см. шаблоны идентификаторов на странице http://wiki.hl7.org/index.php?title=Common_Design_Patterns#Identifier_Pattern для соответствующего обсуждения. Класс Identifier немного менее определенный, чем v3 type II, т.к. разрешает использовать URIs наряду с зарегистрированными OIDs или GUIDs</Data></Cell>
-    <Cell><Data ss:Type="String">CX / EI (occasionally, more often EI maps to a resource id or a URL)</Data></Cell>
+    <Cell><Data ss:Type="String">CX / EI (изредка, в основном EI устанавливает соответствие с id ресурса или с URL)</Data></Cell>
     <Cell><Data ss:Type="String">Identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -218,7 +218,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">N/A - это иногда подразумевается из контекста</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">CX.7 + CX.8</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">./StartDate and ./EndDate</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">./StartDate и ./EndDate</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
@@ -234,7 +234,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Ссылка может быть просто текстовым описанием того, кто назначил идентификатор</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">II.assigningAuthorityName but note that this is an improper use by the definition of the field</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">II.assigningAuthorityName, однако обратите внимание, что это неподходящее использование поля по определению</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">CX.4 / (CX.4,CX.9,CX.10)</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">./IdentifierIssuingAuthority</Data></Cell>
     <Cell ss:StyleID="Default"/>

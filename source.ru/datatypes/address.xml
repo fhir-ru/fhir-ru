@@ -212,7 +212,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">AD.part[parttype = AL]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.1 + XAD.2 (обратите внимание: XAD.1 и XAD.2 имеют различное значение для юридического (company address) и физического адреса (person address))&#10;</Data></Cell>
     <Cell><Data ss:Type="String">street address</Data></Cell>
-    <Cell><Data ss:Type="String">./StreetAddress (newline delimitted)</Data></Cell>
+    <Cell><Data ss:Type="String">./StreetAddress (разграниченный символами новой строки)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Address.city</Data></Cell>
@@ -272,7 +272,7 @@
     <Cell><Data ss:Type="String">Позволяет размещать адреса в историческом контексте</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.12 / XAD.13 + XAD.14&#10;</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">./StartDate and ./EndDate</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">./StartDate и ./EndDate</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
