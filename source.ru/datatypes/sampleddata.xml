@@ -142,7 +142,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">decimal</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Верхний предел обнаружения</Data></Cell>
-    <Cell><Data ss:Type="String">Верхний предел обнаружения точек измерения. Требуется, если хоть оидн из результатов выборки имеет значение &quot;U&quot; (выше предела обнаружения)</Data></Cell>
+    <Cell><Data ss:Type="String">Верхний предел обнаружения точек измерения. Требуется, если хоть один из результатов выборки имеет значение &quot;U&quot; (выше предела обнаружения)</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A (используйте SLIST.digits.nullFlavor)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">

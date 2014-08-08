@@ -277,7 +277,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">ContactUse</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Размещение, тип или статус адреса телекоммуникации, указывающий его назначение</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Размещение, тип или статус адреса телекоммуникации, определяющий его назначение</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">#contact-use</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">http://hl7.org/fhir/v2/vs/0201</Data></Cell>

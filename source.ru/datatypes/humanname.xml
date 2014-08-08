@@ -202,7 +202,7 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Родовое имя (часто называемое фамилией)</Data></Cell>
-    <Cell><Data ss:Type="String">Часть имени, связанная с родословной. В некоторых культурах (например Эритрея) родовое имя сына является первым именем его отца.</Data></Cell>
+    <Cell><Data ss:Type="String">Часть имени, связанная с родословной. В некоторых культурах (например Эритрее) родовое имя сына является первым именем его отца.</Data></Cell>
     <Cell><Data ss:Type="String">surname</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell><Data ss:Type="String">Для родового имени имена, написанные через дефис, такие как &quot;Smith-Jones&quot;, считаются одним именем, однако имена с пробелами внутри, такие как &quot;Smith Jones&quot;, разбиваются на несколько частей</Data></Cell>
