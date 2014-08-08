@@ -198,7 +198,7 @@
     <Cell><Data ss:Type="String">Полное текстовое представление адреса</Data></Cell>
     <Cell><Data ss:Type="String">137 Nowhere Street, Erewhon 9132</Data></Cell>
     <Cell><Data ss:Type="String">Визуализируемая незакодированная форма</Data></Cell>
-    <Cell><Data ss:Type="String">Может содержать и текстовое представление, и структурированные части.</Data></Cell>
+    <Cell><Data ss:Type="String">Может содержать и текстовое представление, и структурированные части</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">./formatted</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.1 + XAD.2 + XAD.3 + XAD.4 + XAD.5 + XAD.6</Data></Cell>
    </Row>
@@ -218,8 +218,8 @@
     <Cell><Data ss:Type="String">Address.city</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Название города, поселка и т.п.</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Название города, поселка, села или другого населенного пункта.</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Название города, поселка и т.п</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Название города, поселка, села или другого населенного пункта</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Город или любой населенный пункт, имеющий муниципалитет</Data></Cell>
     <Cell><Data ss:Type="String">AD.part[parttype = CTY]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.3</Data></Cell>
@@ -231,7 +231,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Sub-unit of country (abreviations ok)</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Часть страны с ограниченным суверенитетом в федеративном государстве. Можно использовать коды, если они общеупотребительные (например 2-буквенные коды штатов Америки).</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Часть страны с ограниченным суверенитетом в федеративном государстве. Можно использовать коды, если они общеупотребительные (например 2-буквенные коды штатов Америки)</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Провинция; административная территория</Data></Cell>
     <Cell><Data ss:Type="String">AD.part[parttype = STA]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.4</Data></Cell>
@@ -243,7 +243,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Postal code for area</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Почтовый индекс, обозначающий область, определенную почтовой службой.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Почтовый индекс, обозначающий область, определенную почтовой службой</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Почтовый индекс</Data></Cell>
     <Cell><Data ss:Type="String">AD.part[parttype = ZIP]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.5</Data></Cell>
@@ -256,7 +256,7 @@
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Country (может быть 3-буквенным кодом из ISO 3166)</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">Страна - нация в общепринятом смысле</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">3-буквенные коды из ISO 3166 могут использоваться вместо полного названия страны.</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">3-буквенные коды из ISO 3166 могут использоваться вместо полного названия страны</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">AD.part[parttype = CNT]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.6</Data></Cell>
     <Cell><Data ss:Type="String">country name</Data></Cell>
