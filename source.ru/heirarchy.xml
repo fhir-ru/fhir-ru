@@ -38,7 +38,7 @@ todo: compartments
       <page title="Расширяемость" filename="extensibility.html">
         <page title="Примеры" filename="extensibility-examples.html"/>
       </page>
-      <page title="Базовые определения" filename="base-definitions.html"/>
+      <page title="Формализованные определения" filename="base-definitions.html"/>
     </page>
     <page title="Типы данных" filename="datatypes.html">
       <page title="Примеры" filename="datatypes-examples.html"/>
