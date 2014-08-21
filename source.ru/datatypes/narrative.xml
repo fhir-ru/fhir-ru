@@ -254,7 +254,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">NarrativeStatus</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">The status of a resource narrative</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Статус описательной части ресурса</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">#narrative-status</Data></Cell>
    </Row>

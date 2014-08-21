@@ -1266,7 +1266,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     if (b.length() == 0)
       return "<p>\r\nThese codes are not currently used\r\n</p>\r\n";
     else
-      return "<p>\r\nThese codes are used in the following places:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
+      return "<p>\r\nЭти коды встречаются в следующих местах:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
   }
 
   private void scanForProfileUsage(StringBuilder b, BindingSpecification cd, ResourceDefn r) {
@@ -2231,12 +2231,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     List<String> vslist = cd.getVSSources();
     StringBuilder b = new StringBuilder();
     if (vslist.contains("")) {
-      b.append("This value set defines its own codes");
+      b.append("Данный набор значений определяет свои собственные коды:");
       vslist.remove(0);
       if (vslist.size() > 0)
-        b.append(" and includes codes taken from");
+        b.append(" и включает в себя коды, взятые из ");
     } else 
-      b.append("This is a value set with codes taken from ");
+      b.append("Это набор знчений с кодами, взятыми из ");
     int i = 0;
     for (String n : cd.getVSSources()) {
       i++;
