@@ -137,10 +137,10 @@
     <Cell><Data ss:Type="String">Extension</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Additional Content defined by implementations</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Может использоваться для представления дополнительной информации, которая не является частью базового определения ресурса. Чтобы сделать использование расширений безопасным и легко управляемым, применяется строгий порядок определения и использования расширений. Хотя любой реализатор имеет право определить расширение, есть набор требований, которые ДОЛЖНЫ быть выполнены в рамках определения расширения</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">extensions, user content</Data></Cell>
     <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">there can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core simplicity for everyone</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Нет ничего зазорного в использовании расширений любым приложением, проектом или стандартом вне зависимости от учреждения или юрисдикции, которая использует или определяет расширения. Использование расширений – это то, что позволяет спецификации FHIR сохранять внутреннюю простоту для всех</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="210">
@@ -152,10 +152,10 @@
     <Cell><Data ss:Type="String">Extension</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Extensions that cannot be ignored</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Может использоваться для представления дополнительной информации, которая не является частью базового определения ресурса и которая модифицирует понимание элемента, который ее содержит. Обычно элементы-модификаторы привносят отрицание или уточнение. Для того чтобы сделать использование расширений безопасным и легко управляемым, применяется строгий порядок определения и использования расширений. Хотя любой реализатор имеет право определить расширение, есть набор требований, которые ДОЛЖНЫ быть выполнены в рамках определения расширения. Приложения, обрабатывающие ресурс, обязаны проверять наличие расширений-модификаторов</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">extensions, user content</Data></Cell>
     <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">there can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core simplicity for everyone</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Нет ничего зазорного в использовании расширений любым приложением, проектом или стандартом вне зависимости от учреждения или юрисдикции, которая использует или определяет расширения. Использование расширений – это то, что позволяет спецификации FHIR сохранять внутреннюю простоту для всех</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="210">
@@ -167,9 +167,9 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Language of the resource content</Data></Cell>
-    <Cell><Data ss:Type="String">The base language in which the resource is written</Data></Cell>
+    <Cell><Data ss:Type="String">Основной язык, на котором написан ресурс</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource&#10;&#10;Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)</Data></Cell>
+    <Cell><Data ss:Type="String">Элемент language обеспечивает поддержку индексирования и доступности для понимания (обычно тег language используют такие службы, как преобразование "текст – речь"). HTML-тег language в описательной части применяется к тексту описания. Тег language у ресурса может использоваться для указания языка других представлений данных ресурса&#10;&#10;Не всё содержимое должно быть на основном языке ресурса. Не следует предполагать, что Resource.language автоматически относится к описательной части. Если язык указан, он также должен быть указан у элемента div в HTML (см. правила в HTML5 для получения информации о взаимосвязи между xml:lang и HTML-атрибутом lang)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -183,10 +183,10 @@
     <Cell><Data ss:Type="String">Narrative</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Text summary of the resource, for human interpretation</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Человекочитаемое описание, содержащее краткое изложение содержимого ресурса, может использоваться для представления содержимого ресурса человеку. Описание не должно охватывать все структурированные данные, но обязано содержать достаточно подробностей, чтобы сделать его &quot;клинически безопасным&quot; для человека, прочитавшего только это описание. Определения ресурса могут устанавливать, какое содержимое должно быть представлено в описательной части для гарантии клинической безопасности</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">narrative, html, xhtml, display</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Вложенные ресурсы не имеют описательной части. Ресурсы, не являющиеся вложенными, ДОЛЖНЫ иметь описательную часть</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Act.text?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
@@ -194,9 +194,9 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Contained, inline Resources</Data></Cell>
-    <Cell><Data ss:Type="String">These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope</Data></Cell>
+    <Cell><Data ss:Type="String">Эти ресурсы не имеют независимого существования отдельно от ресурса, который включает их в себя. Они не могут быть идентифицированы независимо и не могут иметь собственной независимой области транзакций</Data></Cell>
     <Cell><Data ss:Type="String">inline resources, anonymous resources, contained resources</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Крайне не рекомендуется делать это, если содержимое может быть должным образом идентифицировано, поскольку однажды потеряв возможность его идентифицировать, будет чрезвычайно сложно (и контекстно-зависимо) снова восстановить ее</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
   </Table>
@@ -260,7 +260,7 @@
     <Cell ss:StyleID="Default"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">No narrative in contained resources</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">If the resource is contained in another resource, it SHALL not contain any narrative</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Если ресурс вложен в другой ресурс, он НЕ ДОЛЖЕН содержать никакого текстового описания</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">not(parent::f:contained and f:text)</Data></Cell>
    </Row>
@@ -268,7 +268,7 @@
     <Cell ss:StyleID="Default"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">No nested contained resources</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">If the resource is contained in another resource, it SHALL not contain nested Resources</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Если ресурс вложен в другой ресурс, он НЕ ДОЛЖЕН содержать вложенных ресурсов</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">not(parent::f:contained and f:contained)</Data></Cell>
    </Row>
@@ -276,7 +276,7 @@
     <Cell ss:StyleID="Default"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">No contained resources that are not referenced from elsewhere</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Если ресурс вложен в другой ресурс,  на него должна быть ссылка где-то в другом месте того ресурса</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">exists(for $id in f:contained/*/@id return $id[not(descendant::f:reference/@value=concat('#', $id))])</Data></Cell>
    </Row>
