@@ -401,7 +401,7 @@ primitive value is not present: -->
 <p>
 В данном примере, вместо значения (value) указывается <a href="general-extensions.html">код отсутствия данных (data missing code)</a>. 
 Обратите внимание, что использование расширения такого типа необязательно. Данный элемент-расширение <b>нельзя</b> считать модификатором
-(modifier extension), т.к. ему не присваиваются значения, соответствующие примитивным типам данных. 
+(modifier extension), т. к. ему не присваиваются значения, соответствующие примитивным типам данных. 
 <!--In this example, instead of a value, a data missing code is provided. Note that it is not required that this particular 
 extension be used. This extension is not a modifier extension, because the primitive data type has no value.-->  
 </p>
@@ -558,7 +558,7 @@ Extensions SHALL only be used on a target for which they are defined. -->
  <tr><td>XPaths</td><td>Нет</td><td>.definition.constraint</td><td>Одно или несколько заявлений XPath должно являться истинным (evaluate to true), если используется расширение <!--One or more XPath statements that SHALL evaluate to true when the extension is used --></td></tr>
  <tr><td>Модификатор IS (Is Modifier)</td><td>Да</td><td>.definition.isModifier</td><td>  Если расширение меняет значение или интерпретацию элемента, содержащего расширение (или любого потомка такого элемента). Расширение, определяемые "IsModifier=true" всегда представляются элементами <i>modifierExtension</i>, а расширения, определяемые "IsModifier=false" всегда представлены элементами <i>Extension</i> <!-- Whether the extension changes the meaning or interpretation of the element containing the extension (or any descendant  of that element). Extensions defined as IsModifier=true are always represented in <i>modifierExtension</i> elements,  and extensions defined as IsModifier=false are always represented in <i>Extension</i> elements --></td></tr>
  <tr><td>Мэппинг RIM (RIM Mapping)</td><td>Может быть обязательным</td><td>.definition.mapping...</td><td>Формальная привязка (mapping) расширения к Эталонной информационной модели (RIM). Необходимо для HL7-определенных расширений, которые применяются к ресурсам, привязанным к RIM, но необязательным в иных контектсах <!--The formal mapping from this extension to the RIM. Required for HL7-defined extensions that apply to resources with RIM mappings, but optional in other contexts --></td></tr>
- <tr><td>Мэппинг v2</td><td>Нет</td><td>.definition.mapping...</td><td> Мэппинг с сегментом / полем / и т.д. HL7 v2. Необязательно, но может указываться <!--Mapping to a v2 segment/field/etc., if desired and appropriate. --></td></tr>
+ <tr><td>Мэппинг v2</td><td>Нет</td><td>.definition.mapping...</td><td> Мэппинг с сегментом / полем / и т. д. HL7 v2. Необязательно, но может указываться <!--Mapping to a v2 segment/field/etc., if desired and appropriate. --></td></tr>
  <tr><td>Привязка (Binding)</td><td>Может быть обязательным</td><td>.definition.binding</td><td>Используется для типов CodeableConcept и Coding См. <a href="terminologies.html">Справочники</a> <!--For the types CodeableConcept and Coding. See <a href="terminologies.html">Terminologies --></td></tr>
 </table>
 <p>
@@ -589,7 +589,7 @@ HL7 International публикует определения данных (data d
 для того, чтобы сохранить базовую структуру ресурса простой и компактной, а также освободить разработчиков от излишней
 функциональности. Обратите внимание, что HL7 не дает определение элементам-расширениям, уточняющим значение родительского 
 ресурса (modifier extension) - если организация HL7 International публикует элемент, который изменяет значение
-(modifies the meaning) других элементов, он будет включен в содержимое ресурса, т.к. понимание семантики такого 
+(modifies the meaning) других элементов, он будет включен в содержимое ресурса, т. к. понимание семантики такого 
 расширения - обязательное требование для всех.
 <!-- As well as defining the base element structure for resources, HL7 also publishes extensions. 
 HL7 publishes data definitions

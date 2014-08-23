@@ -122,7 +122,7 @@
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Content in a format defined elsewhere</Data></Cell>
     <Cell><Data ss:Type="String">Для ссылки на данные в других форматах.</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Многим моделям требуется включать в себя данные, определенные другими спецификациями, что является сложным и непрозрачным для модели здравоохранения. Эти данные могут включать в себя документы, медиа-записи, структурированные данные и т.д.</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Многим моделям требуется включать в себя данные, определенные другими спецификациями, что является сложным и непрозрачным для модели здравоохранения. Эти данные могут включать в себя документы, медиа-записи, структурированные данные и т. д.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">ED</Data></Cell>
     <Cell><Data ss:Type="String">ED/RP</Data></Cell>
    </Row>

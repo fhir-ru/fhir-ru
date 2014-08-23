@@ -139,7 +139,7 @@
     <Cell ss:Index="7"><Data ss:Type="String">An identifier intended for computation</Data></Cell>
     <Cell><Data ss:Type="String">Технический идентификатор - определяет некоторую сущность однозначно и недвусмысленно</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Должен идентифицировать вещи с уверенностью и давать гарантию, что идентификация не подвержена ошибочному истолкованию.</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">II - см. шаблоны идентификаторов на странице http://wiki.hl7.org/index.php?title=Common_Design_Patterns#Identifier_Pattern для соответствующего обсуждения. Класс Identifier немного менее определенный, чем v3 type II, т.к. разрешает использовать URIs наряду с зарегистрированными OIDs или GUIDs</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">II - см. шаблоны идентификаторов на странице http://wiki.hl7.org/index.php?title=Common_Design_Patterns#Identifier_Pattern для соответствующего обсуждения. Класс Identifier немного менее определенный, чем v3 type II, т. к. разрешает использовать URIs наряду с зарегистрированными OIDs или GUIDs</Data></Cell>
     <Cell><Data ss:Type="String">CX / EI (изредка, в основном EI устанавливает соответствие с id ресурса или с URL)</Data></Cell>
     <Cell><Data ss:Type="String">Identifier</Data></Cell>
    </Row>

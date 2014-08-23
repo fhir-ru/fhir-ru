@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Common Scenarios%]
+[%settitle Типовые сценарии%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -40,7 +40,7 @@ In this scenario, the PHR provider: -->
 
 <ul>
  <li>Предоставляет пациенту логин для идентификации (или "привязывает" запись пациента к стороннему идентификатору от
- OpenID, Facebook, Google, и т.д.) <!--Provides the patient with a login that identifies them (or links the patient record to an external identity provided 
+ OpenID, Facebook, Google, и т. д.) <!--Provides the patient with a login that identifies them (or links the patient record to an external identity provided 
  by OpenID, Facebook, Google, etc.) --></li>
  <li>Проводит аутентификацию клиента с помощью OAuth-сервера, управляющего авторизацией (сервер может принадлежать 
  поставщику PHR) и ограничивает клиента просмотром медицинских записей только конкретного пациента (или нескольких
@@ -79,7 +79,7 @@ In this scenario, the PHR provider: -->
 пациентов для родственников и опекунов, позволять пациентам загружать собственные документы, 
 записи о приеме лекарственных средств (medication statement), наблюдения (напр., из электронных медицинских изделий, 
 обеспечивающих мониторинг состояния организма человека) и / или записываться на получение медицинской консультации. 
-Дополнительные фукнции потребуют реализации и открытия дополнительных возможностей API. ЭМК-сервер может разрешать 
+Дополнительные функции потребуют реализации и открытия дополнительных возможностей API. ЭМК-сервер может разрешать 
 использование 
 операций <a href="http.html#search">search</a>, <a href="http.html#read">read</a> и <a href="http.html#history">history</a>
 по отношению к ресурсу Security Event, входящего в состав записей о пациентах для просмотра пациентом журнала (логов) 
@@ -99,7 +99,7 @@ usage of the RESTful API should be logged in SecurityEvent resources. -->
 <h2>Обмен документами (Document Sharing - XDS)</h2>
 
 <p>
-Распространеным способом интеграции информации о здоровье, хранящейся во множестве источников, является
+Распространенным способом интеграции информации о здоровье, хранящейся во множестве источников, является
 построение репозитория документов на основании медицинской карты пациента (build a repository of documents around a patient 
 record). Создание репозитория документов позволяет "смягчить" требования к объединению политик, существующих процедур,
 стандартов документооборота и информационных стандартов. 
@@ -109,7 +109,7 @@ allows for less stringent alignment around policy, procedures and record-keeping
 standards. -->
 </p>
 <p>
-Наиболе часто используемая методология обмена документами между учреждениями, регионами и странами - IHE 
+Наиболее часто используемая методология обмена документами между учреждениями, регионами и странами - IHE 
 Cross-Enterprise Document Sharing (XDS). XDS обеспечивает возможность создания системы способных к интеграции репозиториев
 и реестра документов для координированного доступа к клиническим документам.
 <!-- The most widely adopted framework for sharing documents within institutions, regions, states
@@ -129,7 +129,7 @@ through a FHIR interface.
 <!-- The following FHIR Resources are involved in the XDS functionality: -->
 </p>
 <ul>
- <li>Ресурс <a href="documentreference.html">DocumentReference</a> дает описание документа, размещененного в стороннем хранилище.
+ <li>Ресурс <a href="documentreference.html">DocumentReference</a> дает описание документа, размещенного в стороннем хранилище.
  Реестр документов (document registry) - это система, которая отвечает за администрирование набора ссылок на документы
  (Document References) <!--resource describes a document that is located elsewhere. A document registry is a system that 
  maintains a set of  Document References --></li>
@@ -156,7 +156,7 @@ Mobile Health Documents (MHD)
 <h2>Поддержка принятия решений (Decision Support)</h2>
 
 <p>
-Медицинские информационные системы широко применяются для интерграции систем поддержки принятия решений (СППР) и медицинских
+Медицинские информационные системы широко применяются для интеграции систем поддержки принятия решений (СППР) и медицинских
 систем. Распространенные способы применения СППР:
 <!--One common use of healthcare information systems is to integrate some form of decision support software into 
 clinical systems. Common uses of clinical decision support are: -->
@@ -165,7 +165,7 @@ clinical systems. Common uses of clinical decision support are: -->
  <li>Проверка взаимодействия лекарственных средств и, в более общем смысле, проверка "безопасности" лекарственных назначений (prescription safety checks) <!-- Drug-drug interaction checking, and more generally, prescription safety checks --></li>
  <li>Предложение (обычно опускаемой) интерпретации данных диагностики (including delta checking) 
  <!--Suggesting commonly missed Diagnostic Data interpretations (including delta checking) --></li>
- <li>Контроль за состоянием пациента для раннего обнаружения ухудшений в состоянии здоровья (как при интенсивной терапии, так и при амбулаторном лечении) <!--Patient surveillance for early warning of deteriorating patient health (both acute and ambulatory care) --></li>
+ <li>Контроль за состоянием пациента для раннего обнаружения ухудшения в состоянии здоровья (как при интенсивной терапии, так и при амбулаторном лечении) <!--Patient surveillance for early warning of deteriorating patient health (both acute and ambulatory care) --></li>
  <li>Определение пациентов-кандидатов на переход к альтернативным планам лечения для повышения эффективности лечения <!--Identifying candidates for alternative treatment plans for improved efficacy --></li>
 </ul>
 <p>
@@ -182,7 +182,7 @@ managing access control. -->
 decision support implementation in the FHIR specification. Generally, the patterns fall into several classes: -->
 </p>
 <ol>
- <li>Решение генерируется подсистемой (engine) полностью скрытой зя интерфейсом системы и не имеющей прямого влияния на обмен данными
+ <li>Решение генерируется подсистемой (engine), полностью скрытой за интерфейсом системы и не имеющей прямого влияния на обмен данными
  <!--The decision comes from an engine entirely hidden behind a system interface and has no direct impact on the data exchange --></li>
  <li>Подсистема принятия решений использует имеющиеся данные и генерирует оповещения (alarm messages) в соответствии с
  состоянием пациента, информация о котором доступна в FHIR-интерфейсе 
@@ -194,7 +194,7 @@ decision support implementation in the FHIR specification. Generally, the patter
  decision and returns a decision --></li>
 </ol>
 <p>
-Любая СППР может быть классифицирована в соответствии с несколькими представленными выше категорями, в зависимости от 
+Любая СППР может быть классифицирована в соответствии с несколькими представленными выше категориями, в зависимости от 
 аспекта применения конкретной СППР.
 <!--Any decision support may fall into multiple categories at once, depending on the perspective of a particular system.-->
 </p>
@@ -242,11 +242,11 @@ decision support implementation in the FHIR specification. Generally, the patter
   since this provides a ready made way to record and manage the requests themselves. !!!</li>
   <li>В некоторых шаблонах отправки запросов, (query interaction patterns) ресурсы, идентифицируемые значением параметров,
   могут отправляться вместе с запросом (can be bundled up with the request). В других шаблонах взаимодействий, 
-  запос снабжается только ссылками на ресурсы.
+  запрос снабжается только ссылками на ресурсы.
   <!-- Some of the query interaction patterns, the resources identified in the parameter 
   value can be bundled up with the request. In others, only the references can be passed --></li>
   <li>Какой из шаблонов взаимодействия является наиболее подходящим зависит от сложности входных параметров, а также от
-  времени, выделяемого на нахождение решения. При увеличении ожидаемогго времени нахождения решения и повышении
+  времени, выделяемого на нахождение решения. При увеличении ожидаемого времени нахождения решения и повышении
   сложности входных параметров, применяются более сложные шаблоны запросов
   (more complex query patterns become more appropriate).
     <!--Which of the query patterns is most appropriate depends on the complexity of the decision support input, 
@@ -264,7 +264,7 @@ decision support implementation in the FHIR specification. Generally, the patter
  информации, как описано в ресурсе или применяемых интеграционных профилях
   <!--Otherwise it returns a resource that represents the decision, along with other resources as supporting information, 
  as described by the resource, or applicable profiles --></li>
- <li>В принципе, поставщик решения может предоставлять (или не предоставлять) копию ворзвращаемого реcурса с решением 
+ <li>В принципе, поставщик решения может предоставлять (или не предоставлять) копию возвращаемого ресурса с решением 
  через обычный RESTful-интерфейс. Это зависит от ограничений, накладываемых применимыми в данном случае профилями, политиками и
  от самой сущности запроса
   <!-- In principle, the decision provider can choose to make a copy of the returned decision resource available through 
@@ -279,7 +279,7 @@ decision support implementation in the FHIR specification. Generally, the patter
 
 <p>
 Отсюда следует, что решения, которые могут быть запрошены, требуют объявления ресурса-ответа (response resource defined)
-и, возможно, ресурса-запроса (request resource). В данной таблице дается обобщеное представление известных решений, для
+и, возможно, ресурса-запроса (request resource). В данной таблице дается обобщенное представление известных решений, для
 которых были определены ресурсы.
 <!--It follows from this then, that decisions that may be requested need at least a response resource defined, 
 and possibly a request resource. This table summarizes known decisions for which resources have been defined. -->
@@ -294,7 +294,7 @@ and possibly a request resource. This table summarizes known decisions for which
 нет никаких гарантий, что ресурсы "подойдут" для решения поставленных задач. Улучшенная поддержка содействия 
 принятию решений станет одной из основных задач развития стандарта на этапе его пробного использования. 
 
-<!--в целях получения незадокументированных здесь решений, однако,
+<!--в целях получения не задокументированных здесь решений, однако,
 нет никаких гарантий, что ресурсы "подойдут" для решения поставленных задач. Улучшенная поддержка содействия 
 принятию решений станет одной из основных задач развития стандарта на этапе его пробного использования. 
 Implementers are allowed to use existing resources for decisions not documented here, 
