@@ -19,41 +19,56 @@
 
 <a name="todo"> </a>
 
-<h2>Open Issues</h2>
+<h2>Неразрешенные вопросы (Open Issues)</h2>
 
 <p>
-There are a number of issues in which input based on implementation experience is specifically
-sought during the trial use phase:
+Для решения ряда вопросов особенно необходимо получить опыт реализации на этапе пробного использования стандартов:
+<!-- There are a number of issues in which input based on implementation experience is specifically
+sought during the trial use phase: -->
 </p>
 <ul>
- <li><a href="conformance.html#dstu">Conformance</a>: How system profiles are used</li>
- <li><a href="order.html#dstu">Order</a>: The need for additional kinds of order to be defined</li>
- <li><a href="managing.html#dstu">Resource Identification</a>: Managing resource identification in distributed systems</li>
- <li><a href="search.html#dstu">Query / Search</a>: How should text search be standardized?</li>
- <li><a href="search.html#dstu-2">Query / Search</a>: How much should _include be standardized?</li>
- <li><a href="security-labels.html#dstu">Security Labels</a>: How much policy can be standardized, and how does this impact on this specification?</li>
- <li><a href="security.html#dstu">Security</a>: What use cases are there for digital signatures?</li>
- <li><a href="messaging.html#dstu">Messaging</a>: Messaging has not yet been well-exercised at connectathon, so feedback based on implementation is welcome</li>
+ <li><a href="conformance.html#dstu">Conformance (Соответствие)</a>: как используют системные профили <!--How system profiles are used --></li>
+ <li><a href="order.html#dstu">Order (Заказы)</a>: Необходимо определить дополнительные типы заказов <!-- The need for additional kinds of order to be defined --></li>
+ <li><a href="managing.html#dstu">Resource Identification (Идентификация ресурсов)</a>: Управление идентификацией ресурсов в распределенных системах <!-- Managing resource identification in distributed systems--></li>
+ <li><a href="search.html#dstu">Query / Search (Запросы / Поиск)</a>: Вопрос стандартизации текстового поиска <!-- How should text search be standardized? --></li>
+ <li><a href="search.html#dstu-2">Query / Search (Запросы / Поиска)</a>: Насколько необходимо стандартизирвоать "_include" <!-- How much should _include be standardized? --></li>
+ <li><a href="security-labels.html#dstu">Security Labels (Метки уровня безопасности)</a>: 
+ Насколько политика защиты персональных данных может быть "заложена" в стандарте, какое влияние это окажет на 
+ саму спецификацию FHIR <!-- How much policy can be standardized, and how does this impact on this specification? --></li>
+ <li><a href="security.html#dstu">Security (Безопасность)</a>: В каких клинических сценариях подразумевается использование цифровой подписи <!-- What use cases are there for digital signatures? --></li>
+ <li><a href="messaging.html#dstu">Messaging (Обмен сообщениями)</a>: Обмен сообщениями еще не был проверен на практике
+ в ходе Коннектатонов, поэтому приветствуется любой опыт практической реализации 
+ <!-- Messaging has not yet been well-exercised at connectathon, so feedback based on implementation is welcome --></li>
 </ul>
 <p>
-In addition, there are future proposed resources:
+В дополнение к базовому набору, в будущем планируется ввести следующие типы ресурсов:
+<!-- In addition, there are future proposed resources: -->
 </p>
 <ul>
- <li>A notification resource for creating and recording notifications between parties</li>
- <li>An alarm resource to represent current issues with the patient</li>
- <li>A person resource to support person registries</li>
- <li>An appointment resource for making and tracking arrangements around the future of care</li>
- <li>Payment related resources, and specifically, an Account resource for payment tracking</li>
- <li>Possibly a way to define particular queries (finer detail than Profile provides)</li>
- <li>One or more resources for Advance Care Directive / Power of Attorney</li>
+ <li>Ресурс-уведомление (notification resource) для создания и фиксирования уведомлений в процессе взаимодействия сторон 
+ <!-- A notification resource for creating and recording notifications between parties --></li>
+ <li>Ресурс-предупреждение (alarm resource) для представления текущих проблем / вопросов, связанных с пациентом
+ <!-- alarm resource to represent current issues with the patient --></li>
+ <li>Ресурс "человек" для ведения реестров населения <!-- A person resource to support person registries --></li>
+ <li>Ресурс "запланированная консультация / мед. процедура" (appointment resource) для планирования и управления
+ запланированными в будущем медицинскими консультациями / процедурами. <!-- appointment resource for making and tracking arrangements around the future of care --></li>
+ <li>Ресурсы, имеющие отношение к оплате (payment related resources) и в частности ресурс "Счет" (Account) для 
+ отслеживания платежей <!-- Payment related resources, and specifically, an Account resource for payment tracking --></li>
+ <li>Возможно, ресурсы для определения конкретных типов запросов (более точное определение, чем то, которое предлагает
+ используемый сейчас профиль) <!-- Possibly a way to define particular queries (finer detail than Profile provides) --></li>
+ <li>Один или несколько ресурсов для Advance Care Directive / Power of Attorney</li>
 </ul>
 <p>
-Note that other resources beyond these may be anticipated.
+Внимание: помимо указанных типов ресурсов могут вводиться и другие.
+<!-- Note that other resources beyond these may be anticipated. -->
 </p>
 <p>
-In addition to these, further work is planned around tracking and 
+В дополнение к введению данных ресурсов планируется провести дополнительную работу по отслеживанию 
+и формированию / отправке отчетов о клинических наблюдениях / жизненно-важных показателях здоовья и
+обеспечению возможности проведения удаленных консультаций / внедрения телемедицинских технологий.
+<!-- In addition to these, further work is planned around tracking and 
 reporting clinical observations / vital signs, and supporting 
-remote consultations / telehealth. 
+remote consultations / telehealth. -->
 </p>
 
 
