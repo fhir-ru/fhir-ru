@@ -87,6 +87,7 @@ import org.hl7.fhir.instance.model.ResourceType;
 import org.hl7.fhir.instance.model.Substance;
 import org.hl7.fhir.instance.model.Encounter;
 import org.hl7.fhir.instance.utils.NarrativeGenerator;
+import org.hl7.fhir.instance.utils.WorkerContext;
 import org.hl7.fhir.utilities.ucum.UcumService;
 import org.w3c.dom.Element;
 
@@ -191,13 +192,14 @@ public class CCDAConverter {
 	private Composition composition;
 	private Map<String, Practitioner> practitionerCache = new HashMap<String, Practitioner>();
 	private Integer refCounter = 0;
-  private Map<String, Profile> profiles = new HashMap<String, Profile>(); // for the generator
   private UcumService ucumSvc;
+  private WorkerContext context;
 	
   
-	public CCDAConverter(UcumService ucumSvc) {
+	public CCDAConverter(UcumService ucumSvc, WorkerContext context) {
 	  super();
 	  this.ucumSvc = ucumSvc;
+	  this.context = context;
   }
 
 
@@ -241,7 +243,7 @@ public class CCDAConverter {
 			r.setText(new Narrative());
 		if (r.getText().getDiv() == null) {
 			r.getText().setStatusSimple(NarrativeStatus.generated);
-			new NarrativeGenerator("", null, null, null, null, profiles, null).generate(r);
+			new NarrativeGenerator("", context).generate(r);
 		}
 		AtomEntry<Resource> e = new AtomEntry<Resource>();
 		e.setUpdated(DateAndTime.now());
@@ -368,7 +370,7 @@ public class CCDAConverter {
 			pr.getIdentifier().add(convert.makeIdentifierFromII(e));
 		for (Element e : cda.getChildren(aa, "addr"))
 			if (pr.getAddress() == null)
-				pr.setAddress(convert.makeAddressFromAD(e));
+				pr.getAddress().add(convert.makeAddressFromAD(e));
 		for (Element e : cda.getChildren(aa, "telecom"))
 			pr.getTelecom().add(convert.makeContactFromTEL(e));
 		for (Element e : cda.getChildren(ap, "name"))
@@ -391,7 +393,7 @@ public class CCDAConverter {
 			pr.getIdentifier().add(convert.makeIdentifierFromII(e));
 		for (Element e : cda.getChildren(ass, "addr"))
 			if (pr.getAddress() == null) // just take the first
-				pr.setAddress(convert.makeAddressFromAD(e));
+				pr.getAddress().add(convert.makeAddressFromAD(e));
 		for (Element e : cda.getChildren(ass, "telecom"))
 			pr.getTelecom().add(convert.makeContactFromTEL(e));
 		Element ap = cda.getChild(ass, "assignedPerson");
@@ -570,7 +572,7 @@ public class CCDAConverter {
 	  l.setType(convert.makeCodeableConceptFromCD(cda.getChild(participantRole, "code")));
 	  for (Element id : cda.getChildren(participantRole, "id")) {
 	  	if (l.getIdentifier() == null) 
-	  	  l.setIdentifier(convert.makeIdentifierFromII(id));
+	  	  l.getIdentifier().add(convert.makeIdentifierFromII(id));
 	  }
 	  for (Element addr : cda.getChildren(participantRole, "addr")) {
 	  	if (l.getAddress() == null) 
@@ -655,7 +657,7 @@ public class CCDAConverter {
 		  addToIdList(p.getIdentifier(), convert.makeIdentifierFromII(e));
 		for (Element e : cda.getChildren(assignedEntity, "addr")) 
 		  if (p.getAddress() == null) 
-		    p.setAddress(convert.makeAddressFromAD(e));
+		    p.getAddress().add(convert.makeAddressFromAD(e));
 		for (Element e : cda.getChildren(assignedEntity, "telecom")) 
 		  addToContactList(p.getTelecom(), convert.makeContactFromTEL(e));
 		for (Element e : cda.getChildren(cda.getChild(assignedEntity, "assignedPerson"), "name")) 
@@ -1055,17 +1057,6 @@ public class CCDAConverter {
 	  return null;
   }
 
-
-	public void initialize(String srcPath) throws FileNotFoundException, Exception {
-		AtomFeed feed = new XmlParser().parseGeneral(new FileInputStream(srcPath+"profiles-resources.xml")).getFeed();
-		for (AtomEntry<? extends Resource> ae : feed.getEntryList()) {
-			if (ae.getResource().getResourceType() == ResourceType.Profile) {
-				Profile p = (Profile) ae.getResource();
-				profiles.put(p.getStructure().get(0).getTypeSimple(), p);
-			}
-	  }
-	  
-  }
 
 	private SectionComponent processVitalSignsSection(Element section) throws Exception {
 		List_ list = new List_();

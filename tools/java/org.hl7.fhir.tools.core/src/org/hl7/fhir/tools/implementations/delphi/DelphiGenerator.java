@@ -30,6 +30,7 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -112,6 +113,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private StringBuilder srlsdefJ = new StringBuilder();
   private StringBuilder prsrFragJ = new StringBuilder();
   private StringBuilder prsrFragX = new StringBuilder();
+  private StringBuilder prsrDTX = new StringBuilder();
+  private StringBuilder prsrDTJ = new StringBuilder();
   private Map<String, String> simpleTypes = new HashMap<String, String>();
 
   private List<String> types = new ArrayList<String>();
@@ -145,10 +148,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     parserGap();
 
     for (ElementDefn n : definitions.getInfrastructure().values()) {
-      if (n.getName().equals("Extension"))
-        generate(n, "TFHIRElement", true, false, ClassCategory.Type);
-      else
-        generate(n, "TFhirElement", true, false, ClassCategory.Type);
+      generate(n, "TFHIRType", true, false, ClassCategory.Type);
     }
     for (ElementDefn n : definitions.getTypes().values()) {
       generate(n, "TFhirType", false, false, ClassCategory.Type);
@@ -465,6 +465,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     srlsdefJ.append("    procedure Compose"+root.getName()+"(json : TJSONWriter; name : string; elem : TFhir"+root.getName()+");\r\n");
     prsrFragJ.append("  else if (type_ = '"+tn+"') then\r\n    result := parse"+root.getName()+"(jsn)\r\n");
     prsrFragX.append("  else if SameText(element.NodeName, '"+tn+"') then\r\n    result := parse"+root.getName()+"(element, element.nodeName)\r\n");
+    prsrDTJ.append("  else if (type_ = "+tn+") then\r\n    result := parse"+root.getName()+"(jsn)\r\n");
+    prsrDTX.append("  else if (type_ = "+tn+") then\r\n    result := parse"+root.getName()+"(element, name)\r\n");
     workingParserX = new StringBuilder();
     workingParserXA = new StringBuilder();
     workingComposerX = new StringBuilder();
@@ -1357,10 +1359,13 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         create.append("  F"+getTitle(s)+" := TFHIREnumList.Create;\r\n");
         destroy.append("  F"+getTitle(s)+".Free;\r\n");
         assign.append("  F"+getTitle(s)+".Assign("+cn+"(oSource).F"+getTitle(s)+");\r\n");
-        getkids.append("  if (child_name = '"+getElementName(e.getName())+"') Then\r\n     list.addAll(F"+getTitle(s)+");\r\n");
+        if (e.getName().endsWith("[x]") || e.getName().equals("[type]"))
+          getkids.append("  if StringStartsWith(child_name, '"+getElementName(e.getName())+"') Then\r\n     list.addAll(F"+getTitle(s)+");\r\n");
+        else
+          getkids.append("  if (child_name = '"+getElementName(e.getName())+"') Then\r\n     list.addAll(F"+getTitle(s)+");\r\n");
         getprops.append("  oList.add(TFHIRProperty.create(self, '"+e.getName()+"', '"+breakConstant(e.typeCode())+"', F"+getTitle(s)+".Link)){3};\r\n");
         if (enumSizes.get(tn) < 32) {
-          impl.append("Function "+cn+".Get"+getTitle(s)+"ST : "+tn+"List;\r\n  var i : integer;\r\nbegin\r\n  result := [];\r\n  for i := 0 to "+s+".count - 1 do\r\n    result := result + ["+tn+"(StringArrayIndexOf(CODES_"+tn+", "+s+"[i].value))];\r\nend;\r\n\r\n");
+          impl.append("Function "+cn+".Get"+getTitle(s)+"ST : "+tn+"List;\r\n  var i : integer;\r\nbegin\r\n  result := [];\r\n  for i := 0 to "+s+".count - 1 do\r\n    result := result + ["+tn+"(StringArrayIndexOfSensitive(CODES_"+tn+", "+s+"[i].value))];\r\nend;\r\n\r\n");
           impl.append("Procedure "+cn+".Set"+getTitle(s)+"ST(value : "+tn+"List);\r\nvar a : "+tn+";\r\nbegin\r\n  "+s+".clear;\r\n  for a := low("+tn+") to high("+tn+") do\r\n    if a in value then\r\n      "+s+".add(TFhirEnum.create(CODES_"+tn+"[a]));\r\nend;\r\n\r\n");
         }
 
@@ -1536,7 +1541,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       if (typeIsSimple(tn) && !tn.equals("TFhirXHtmlNode")) {
         if (enumNames.contains(tn)) {         
           impl.append("Procedure "+cn+".Set"+getTitle(s)+"(value : TFhirEnum);\r\nbegin\r\n  F"+getTitle(s)+".free;\r\n  F"+getTitle(s)+" := value;\r\nend;\r\n\r\n");
-          impl.append("Function "+cn+".Get"+getTitle(s)+"ST : "+tn+";\r\nbegin\r\n  if F"+getTitle(s)+" = nil then\r\n    result := "+tn+"(0)\r\n  else\r\n    result := "+tn+"(StringArrayIndexOf(CODES_"+tn+", "+getTitle(s)+".value));\r\nend;\r\n\r\n");
+          impl.append("Function "+cn+".Get"+getTitle(s)+"ST : "+tn+";\r\nbegin\r\n  if F"+getTitle(s)+" = nil then\r\n    result := "+tn+"(0)\r\n  else\r\n    result := "+tn+"(StringArrayIndexOfSensitive(CODES_"+tn+", "+getTitle(s)+".value));\r\nend;\r\n\r\n");
           impl.append("Procedure "+cn+".Set"+getTitle(s)+"ST(value : "+tn+");\r\nbegin\r\n  if ord(value) = 0 then\r\n    "+getTitle(s)+" := nil\r\n  else\r\n    "+getTitle(s)+" := TFhirEnum.create(CODES_"+tn+"[value]);\r\nend;\r\n\r\n");
         } else {
           impl.append("Procedure "+cn+".Set"+getTitle(s)+"(value : TFhirEnum);\r\nbegin\r\n  F"+getTitle(s)+".free;\r\n  F"+getTitle(s)+" := value;\r\nend;\r\n\r\n");
@@ -1703,7 +1708,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
   private boolean typeIsPrimitive(String tn) {
     return tn.equalsIgnoreCase("uri") || tn.equalsIgnoreCase("datetime") || tn.equalsIgnoreCase("code") || tn.equalsIgnoreCase("boolean")
-        || tn.equalsIgnoreCase("integer") || tn.equalsIgnoreCase("idref") || tn.equalsIgnoreCase("instant") 
+        || tn.equalsIgnoreCase("integer") || tn.equalsIgnoreCase("idref") || tn.equalsIgnoreCase("instant") || tn.equalsIgnoreCase("time")
         || tn.equalsIgnoreCase("datetime") || tn.equalsIgnoreCase("date") || tn.equalsIgnoreCase("id") || tn.equalsIgnoreCase("oid")
         || tn.equalsIgnoreCase("decimal") || tn.equalsIgnoreCase("string") || tn.equalsIgnoreCase("base64Binary");
   }
@@ -2142,7 +2147,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       prsrImpl.append("  try\r\n");
       prsrImpl.append("    ParseElementAttributes(result, path, element);\r\n");
       prsrImpl.append("    result.value := GetAttribute(element, 'value');\r\n");
-      prsrImpl.append("    if StringArrayIndexOf(aNames, result.value) < 0 then\r\n");
+      prsrImpl.append("    if StringArrayIndexOfSensitive(aNames, result.value) < 0 then\r\n");
       prsrImpl.append("      raise Exception.create('unknown code: '+result.value+' from a set of choices of '+StringArrayToCommaString(aNames)+' for \"'+path+'\"');\r\n");
       prsrImpl.append("    child := FirstChild(element);\r\n");
       prsrImpl.append("    while (child <> nil) do\r\n");
@@ -2166,7 +2171,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       prsrdefJ.append("    function ParseEnum(value : string; jsn : TJsonObject; Const aNames : Array Of String) : TFHIREnum; overload;\r\n");
       prsrImpl.append("function TFHIRJsonParser.ParseEnum(value : string; jsn : TJsonObject; Const aNames : Array Of String) : TFHIREnum;\r\n");
       prsrImpl.append("begin\r\n");
-      prsrImpl.append("  if StringArrayIndexOf(aNames, value) < 0 then\r\n");
+      prsrImpl.append("  if StringArrayIndexOfSensitive(aNames, value) < 0 then\r\n");
       prsrImpl.append("    raise Exception.create('unknown code: '+value+' from a set of choices of '+StringArrayToCommaString(aNames)+' for \"'+jsn.path+'\"');\r\n");
       prsrImpl.append("  result := TFHIREnum.create;\r\n");
       prsrImpl.append("  try\r\n");
@@ -2403,6 +2408,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("    Function Clone : TFhirType; Overload;\r\n");
     def.append("    {!script show}\r\n");
     def.append("  End;\r\n");   
+    def.append("  TFHIRTypeClass = class of TFhirType;\r\n");
     def.append("  \r\n");
 
     StringBuilder impl2 = new StringBuilder();
@@ -2568,7 +2574,9 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     prsrImpl.append("begin\r\n");
     prsrImpl.append("  parseComments(element, jsn);\r\n\r\n");
     prsrImpl.append("  if jsn.has('id') then\r\n");
-    prsrImpl.append("    element.xmlId:= jsn['id'];\r\n");
+    prsrImpl.append("    element.xmlId:= jsn['id']\r\n");
+    prsrImpl.append("  else if jsn.has('_id') then\r\n");
+    prsrImpl.append("    element.xmlId:= jsn['_id'];\r\n");
     prsrImpl.append("  if jsn.has('extension') then\r\n");
     prsrImpl.append("    iterateArray(jsn.vArr['extension'], element.extensionList, parseExtension)\r\n");
     prsrImpl.append("end;\r\n\r\n");
@@ -2984,6 +2992,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     prsrCode.uses.add("MsXmlParser");
     prsrCode.uses.add("XmlBuilder");
     prsrCode.uses.add("JSON");
+    prsrCode.uses.add("FHIRAtomFeed");
     prsrCode.comments.add("FHIR v"+version+" generated "+Config.DATE_FORMAT().format(genDate));
 
     prsrImpl.append(
@@ -3009,7 +3018,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         );
 
     prsrImpl.append(
-        "procedure TFHIRXmlComposer.ComposeResource(xml : TXmlBuilder; id, ver : String; resource: TFhirResource);\r\n"+
+        "procedure TFHIRXmlComposer.ComposeResource(xml : TXmlBuilder; statedType, id, ver : String; resource: TFhirResource; links : TFHIRAtomLinkList);\r\n"+
             "begin\r\n"+
             "  if (resource = nil) Then\r\n"+
             "    Raise Exception.Create('error - resource is nil');\r\n"+
@@ -3059,7 +3068,27 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         );
 
     prsrImpl.append(
-        "procedure TFHIRJsonComposer.ComposeResource(json : TJSONWriter; id, ver : String; resource: TFhirResource);\r\n"+
+        "function TFHIRJsonParser.ParseDataType(jsn : TJsonObject; name : String; type_ : TFHIRTypeClass) : TFHIRType;\r\n"+
+            "begin\r\n  "+
+            prsrDTJ.toString().substring(6)+
+            "  else\r\n"+
+            "    raise Exception.create('Unknown Type');\r\n" +
+            "end;\r\n\r\n"
+        );
+
+    prsrImpl.append(
+        "function TFHIRXmlParser.ParseDataType(element : IXMLDOMElement; name : String; type_ : TFHIRTypeClass) : TFhirType;\r\n"+
+            "begin\r\n  "+
+            "  if (name <> '') and (name <> element.baseName) then\r\n"+
+            "    raise Exception.Create('Expected Name mismatch : expected \"'+name+'\"+, but found \"'+element.baseName+'\"');\r\n"+
+            prsrDTX.toString().substring(6)+
+            "  else\r\n"+
+            "    raise Exception.create('Unknown Type');\r\n" +
+            "end;\r\n\r\n"
+        );
+
+    prsrImpl.append(
+        "procedure TFHIRJsonComposer.ComposeResource(json : TJSONWriter; statedType, id, ver : String; resource: TFhirResource; links : TFHIRAtomLinkList);\r\n"+
             "begin\r\n"+
             "  if (resource = nil) Then\r\n"+
             "    Raise Exception.Create('error - resource is nil');\r\n"+
@@ -3078,25 +3107,27 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         "  protected\r\n"+
         prsrdefX.toString()+
         "    function ParseResource(element : IxmlDomElement; path : String) : TFhirResource; override;\r\n"+
+        "    function ParseDataType(element : IXmlDomElement; name : String; type_ : TFHIRTypeClass) : TFHIRType; override;\r\n"+
         "  public\r\n"+
         "    function ParseFragment(element : IxmlDomElement) : TFhirElement; overload;\r\n"+
         "  end;\r\n\r\n"+
         "  TFHIRXmlComposer = class (TFHIRXmlComposerBase)\r\n"+
         "  protected\r\n"+
         srlsdefX.toString()+
-        "    procedure ComposeResource(xml : TXmlBuilder; id, ver : String; resource : TFhirResource); override;\r\n"+
+        "    procedure ComposeResource(xml : TXmlBuilder; statedType, id, ver : String; resource : TFhirResource; links : TFHIRAtomLinkList); override;\r\n"+
         "  end;\r\n\r\n"+
         "  TFHIRJsonParser = class (TFHIRJsonParserBase)\r\n"+
         "  protected\r\n"+
         prsrdefJ.toString()+
         "    function ParseResource(jsn : TJsonObject) : TFhirResource; override;\r\n"+
+        "    function ParseDataType(jsn : TJsonObject; name : String; type_ : TFHIRTypeClass) : TFHIRType; override;\r\n"+
         "  public\r\n"+
         "    function ParseFragment(jsn : TJsonObject; type_ : String) : TFhirElement;  overload;\r\n"+
         "  end;\r\n\r\n"+
         "  TFHIRJsonComposer = class (TFHIRJsonComposerBase)\r\n"+
         "  protected\r\n"+
         srlsdefJ.toString()+
-        "    procedure ComposeResource(json : TJSONWriter; id, ver : String; resource : TFhirResource); override;\r\n"+
+        "    procedure ComposeResource(json : TJSONWriter; statedType, id, ver : String; resource : TFhirResource; links : TFHIRAtomLinkList); override;\r\n"+
         "  end;\r\n\r\n";
   }
 
@@ -3116,9 +3147,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   }
 
   @Override
-  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
-      String implDir, Logger logger, String svnRevision) throws Exception {
-
+  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger, String svnRevision) throws Exception {
     throw new UnsupportedOperationException("Pascal generator uses ElementDefn-style definitions.");
   }
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -41,20 +41,20 @@ public class Extension extends Element {
     /**
      * Source of the definition for the extension code - a logical name or a URL.
      */
-    protected Uri url;
+    protected UriType url;
 
     /**
      * Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).
      */
     protected org.hl7.fhir.instance.model.Type value;
 
-    private static final long serialVersionUID = -730688340L;
+    private static final long serialVersionUID = 86382982L;
 
     public Extension() {
       super();
     }
 
-    public Extension(Uri url) {
+    public Extension(UriType url) {
       super();
       this.url = url;
     }
@@ -62,14 +62,14 @@ public class Extension extends Element {
     /**
      * @return {@link #url} (Source of the definition for the extension code - a logical name or a URL.)
      */
-    public Uri getUrl() { 
+    public UriType getUrl() { 
       return this.url;
     }
 
     /**
      * @param value {@link #url} (Source of the definition for the extension code - a logical name or a URL.)
      */
-    public Extension setUrl(Uri value) { 
+    public Extension setUrl(UriType value) { 
       this.url = value;
       return this;
     }
@@ -86,7 +86,7 @@ public class Extension extends Element {
      */
     public Extension setUrlSimple(String value) { 
         if (this.url == null)
-          this.url = new Uri();
+          this.url = new UriType();
         this.url.setValue(value);
       return this;
     }

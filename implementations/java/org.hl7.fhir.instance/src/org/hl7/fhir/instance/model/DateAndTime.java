@@ -205,7 +205,7 @@ public class DateAndTime {
 		return cal;
 	}
 
-	public Date toDate() {
+	public DateType toDate() {
 		return null;
 	}
 
@@ -332,6 +332,12 @@ public class DateAndTime {
     dt.setTzHour(offset / (60 * 60 * 1000));
 		return dt;
 	}
+
+  public static DateAndTime today() {
+    DateAndTime dt = new DateAndTime(Calendar.getInstance());
+    dt.setTime(false);
+    return dt;
+  }
 
 	public static DateAndTime parseV3(String xDate) throws ParseException {
 

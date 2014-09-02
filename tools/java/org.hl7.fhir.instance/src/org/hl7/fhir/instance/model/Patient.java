@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -37,6 +37,64 @@ import java.util.*;
  * Demographics and other administrative information about a person or animal receiving care or other health-related services.
  */
 public class Patient extends Resource {
+
+    public enum AdministrativeGender {
+        M, // Male
+        F, // Female
+        O, // Other
+        U, // Unknown
+        Null; // added to help the parsers
+        public static AdministrativeGender fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("M".equals(codeString))
+          return M;
+        if ("F".equals(codeString))
+          return F;
+        if ("O".equals(codeString))
+          return O;
+        if ("U".equals(codeString))
+          return U;
+        throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case M: return "M";
+            case F: return "F";
+            case O: return "O";
+            case U: return "U";
+            default: return "?";
+          }
+        }
+    }
+
+  public static class AdministrativeGenderEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("M".equals(codeString))
+          return AdministrativeGender.M;
+        if ("F".equals(codeString))
+          return AdministrativeGender.F;
+        if ("O".equals(codeString))
+          return AdministrativeGender.O;
+        if ("U".equals(codeString))
+          return AdministrativeGender.U;
+        throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == AdministrativeGender.M)
+        return "M";
+      if (code == AdministrativeGender.F)
+        return "F";
+      if (code == AdministrativeGender.O)
+        return "O";
+      if (code == AdministrativeGender.U)
+        return "U";
+      return "?";
+      }
+    }
 
     public enum LinkType {
         replace, // The patient resource containing this link must no longer be used. The link points forward to another patient resource that must be used in lieu of the patient resource that contains the link.
@@ -112,7 +170,7 @@ public class Patient extends Resource {
         /**
          * Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
          */
-        protected CodeableConcept gender;
+        protected Enumeration<AdministrativeGender> gender;
 
         /**
          * Organization on behalf of which the contact is acting or for which the contact is working.
@@ -124,7 +182,7 @@ public class Patient extends Resource {
          */
         protected Organization organizationTarget;
 
-        private static final long serialVersionUID = -384461371L;
+        private static final long serialVersionUID = -753423156L;
 
       public ContactComponent() {
         super();
@@ -197,15 +255,36 @@ public class Patient extends Resource {
         /**
          * @return {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.)
          */
-        public CodeableConcept getGender() { 
+        public Enumeration<AdministrativeGender> getGender() { 
           return this.gender;
         }
 
         /**
          * @param value {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.)
          */
-        public ContactComponent setGender(CodeableConcept value) { 
+        public ContactComponent setGender(Enumeration<AdministrativeGender> value) { 
           this.gender = value;
+          return this;
+        }
+
+        /**
+         * @return Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
+         */
+        public AdministrativeGender getGenderSimple() { 
+          return this.gender == null ? null : this.gender.getValue();
+        }
+
+        /**
+         * @param value Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
+         */
+        public ContactComponent setGenderSimple(AdministrativeGender value) { 
+          if (value == null)
+            this.gender = null;
+          else {
+            if (this.gender == null)
+              this.gender = new Enumeration<AdministrativeGender>();
+            this.gender.setValue(value);
+          }
           return this;
         }
 
@@ -245,7 +324,7 @@ public class Patient extends Resource {
           childrenList.add(new Property("name", "HumanName", "A name associated with the person.", 0, java.lang.Integer.MAX_VALUE, name));
           childrenList.add(new Property("telecom", "Contact", "A contact detail for the person, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom));
           childrenList.add(new Property("address", "Address", "Address for the contact person.", 0, java.lang.Integer.MAX_VALUE, address));
-          childrenList.add(new Property("gender", "CodeableConcept", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
+          childrenList.add(new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
           childrenList.add(new Property("organization", "Resource(Organization)", "Organization on behalf of which the contact is acting or for which the contact is working.", 0, java.lang.Integer.MAX_VALUE, organization));
         }
 
@@ -478,12 +557,12 @@ public class Patient extends Resource {
     /**
      * Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
      */
-    protected CodeableConcept gender;
+    protected Enumeration<AdministrativeGender> gender;
 
     /**
      * The date and time of birth for the individual.
      */
-    protected DateTime birthDate;
+    protected DateTimeType birthDate;
 
     /**
      * Indicates if the individual is deceased or not.
@@ -553,9 +632,9 @@ public class Patient extends Resource {
     /**
      * Whether this patient record is in active use.
      */
-    protected Boolean active;
+    protected BooleanType active;
 
-    private static final long serialVersionUID = 1622992530L;
+    private static final long serialVersionUID = 1658723801L;
 
     public Patient() {
       super();
@@ -615,29 +694,50 @@ public class Patient extends Resource {
     /**
      * @return {@link #gender} (Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.)
      */
-    public CodeableConcept getGender() { 
+    public Enumeration<AdministrativeGender> getGender() { 
       return this.gender;
     }
 
     /**
      * @param value {@link #gender} (Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.)
      */
-    public Patient setGender(CodeableConcept value) { 
+    public Patient setGender(Enumeration<AdministrativeGender> value) { 
       this.gender = value;
+      return this;
+    }
+
+    /**
+     * @return Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
+     */
+    public AdministrativeGender getGenderSimple() { 
+      return this.gender == null ? null : this.gender.getValue();
+    }
+
+    /**
+     * @param value Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
+     */
+    public Patient setGenderSimple(AdministrativeGender value) { 
+      if (value == null)
+        this.gender = null;
+      else {
+        if (this.gender == null)
+          this.gender = new Enumeration<AdministrativeGender>();
+        this.gender.setValue(value);
+      }
       return this;
     }
 
     /**
      * @return {@link #birthDate} (The date and time of birth for the individual.)
      */
-    public DateTime getBirthDate() { 
+    public DateTimeType getBirthDate() { 
       return this.birthDate;
     }
 
     /**
      * @param value {@link #birthDate} (The date and time of birth for the individual.)
      */
-    public Patient setBirthDate(DateTime value) { 
+    public Patient setBirthDate(DateTimeType value) { 
       this.birthDate = value;
       return this;
     }
@@ -657,7 +757,7 @@ public class Patient extends Resource {
         this.birthDate = null;
       else {
         if (this.birthDate == null)
-          this.birthDate = new DateTime();
+          this.birthDate = new DateTimeType();
         this.birthDate.setValue(value);
       }
       return this;
@@ -865,14 +965,14 @@ public class Patient extends Resource {
     /**
      * @return {@link #active} (Whether this patient record is in active use.)
      */
-    public Boolean getActive() { 
+    public BooleanType getActive() { 
       return this.active;
     }
 
     /**
      * @param value {@link #active} (Whether this patient record is in active use.)
      */
-    public Patient setActive(Boolean value) { 
+    public Patient setActive(BooleanType value) { 
       this.active = value;
       return this;
     }
@@ -892,7 +992,7 @@ public class Patient extends Resource {
         this.active = null;
       else {
         if (this.active == null)
-          this.active = new Boolean();
+          this.active = new BooleanType();
         this.active.setValue(value);
       }
       return this;
@@ -903,7 +1003,7 @@ public class Patient extends Resource {
         childrenList.add(new Property("identifier", "Identifier", "An identifier that applies to this person as a patient.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("name", "HumanName", "A name associated with the individual.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("telecom", "Contact", "A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.", 0, java.lang.Integer.MAX_VALUE, telecom));
-        childrenList.add(new Property("gender", "CodeableConcept", "Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
+        childrenList.add(new Property("gender", "code", "Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
         childrenList.add(new Property("birthDate", "dateTime", "The date and time of birth for the individual.", 0, java.lang.Integer.MAX_VALUE, birthDate));
         childrenList.add(new Property("deceased[x]", "boolean|dateTime", "Indicates if the individual is deceased or not.", 0, java.lang.Integer.MAX_VALUE, deceased));
         childrenList.add(new Property("address", "Address", "Addresses for the individual.", 0, java.lang.Integer.MAX_VALUE, address));

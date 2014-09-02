@@ -78,6 +78,11 @@ public class SearchParameter {
     this.type = type;
   }
   
+  public SearchParameter addPath(String value) {
+    paths.add(value);
+    return this;
+  }
+  
   public List<String> getPaths() {
     return paths;
   }
@@ -133,6 +138,17 @@ public class SearchParameter {
 
   public Set<String> getTargets() {
     return targets;
+  }
+
+  public static boolean isType(String type) {
+    if ("composite".equals(type)) return true;
+    if ("number".equals(type)) return true; 
+    if ("string".equals(type)) return true;
+    if ("date".equals(type)) return true;
+    if ("quantity".equals(type)) return true;
+    if ("reference".equals(type)) return true;
+    if ("token".equals(type)) return true;
+    return false;
   }
   
   

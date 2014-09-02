@@ -1,10 +1,9 @@
 package org.hl7.fhir.instance.utils;
 
 import java.util.List;
-import java.util.Map;
 
-import org.hl7.fhir.instance.model.Code;
-import org.hl7.fhir.instance.model.Uri;
+import org.hl7.fhir.instance.model.CodeType;
+import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetFilterComponent;
@@ -15,17 +14,13 @@ import org.hl7.fhir.instance.utils.ValueSetExpander.ValueSetExpansionOutcome;
 public class ValueSetCheckerSimple implements ValueSetChecker {
 
   private ValueSet valueset;
-  private TerminologyServices locator;
   private ValueSetExpanderFactory factory;
-  private Map<String, ValueSet> valuesets;
-  private Map<String, ValueSet> codesystems;
+  private WorkerContext context;
 
-  public ValueSetCheckerSimple(ValueSet source, TerminologyServices locator, ValueSetExpanderFactory factory, Map<String, ValueSet> codesystems, Map<String, ValueSet> valuesets) {
+  public ValueSetCheckerSimple(ValueSet source, ValueSetExpanderFactory factory, WorkerContext context) {
     this.valueset = source;
-    this.locator = locator;
     this.factory = factory;
-    this.codesystems = codesystems;
-    this.valuesets = valuesets;
+    this.context = context;
   }
 
   @Override
@@ -35,7 +30,7 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
 
     if (valueset.getCompose() != null) {
       boolean ok = false;
-      for (Uri uri : valueset.getCompose().getImport()) {
+      for (UriType uri : valueset.getCompose().getImport()) {
         ok = ok || inImport(uri.getValue(), system, code);
       }
       for (ConceptSetComponent vsi : valueset.getCompose().getInclude()) {
@@ -50,7 +45,7 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
   }
 
   private boolean inImport(String uri, String system, String code) {
-    ValueSet vs = valuesets.get(uri);
+    ValueSet vs = context.getValueSets().get(uri).getResource();
     if (vs == null) 
       return false ; // we can't tell
     return codeInExpansion(factory.getExpander().expand(vs), system, code);
@@ -85,16 +80,16 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
     if (!vsi.getSystemSimple().equals(system))
       return false; 
     // whether we know the system or not, we'll accept the stated codes at face value
-    for (Code cc : vsi.getCode())
+    for (CodeType cc : vsi.getCode())
       if (cc.getValue().equals(code)) {
         return false;
       }
       
-    if (codesystems.containsKey(system)) {
-      ValueSet def = codesystems.get(system);
+    if (context.getCodeSystems().containsKey(system)) {
+      ValueSet def = context.getCodeSystems().get(system).getResource();
       if (!def.getDefine().getCaseSensitiveSimple()) {
         // well, ok, it's not case sensitive - we'll check that too now
-        for (Code cc : vsi.getCode())
+        for (CodeType cc : vsi.getCode())
           if (cc.getValue().equalsIgnoreCase(code)) {
             return false;
           }
@@ -106,8 +101,8 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
         throw new Error("not done yet: "+f.getValueSimple());
 
       return false;
-    } else if (locator.supportsSystem(system)) {
-      return locator.checkVS(vsi, system, code);
+    } else if (context.getTerminologyServices().supportsSystem(system)) {
+      return context.getTerminologyServices().checkVS(vsi, system, code);
     } else
       // we don't know this system, and can't resolve it
       return false;

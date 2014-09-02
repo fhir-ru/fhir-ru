@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -41,14 +41,14 @@ public class Period extends Type {
     /**
      * The start of the period. The boundary is inclusive.
      */
-    protected DateTime start;
+    protected DateTimeType start;
 
     /**
      * The end of the period. If the end of the period is missing, it means that the period is ongoing.
      */
-    protected DateTime end;
+    protected DateTimeType end;
 
-    private static final long serialVersionUID = -1935473081L;
+    private static final long serialVersionUID = 649791751L;
 
     public Period() {
       super();
@@ -57,14 +57,14 @@ public class Period extends Type {
     /**
      * @return {@link #start} (The start of the period. The boundary is inclusive.)
      */
-    public DateTime getStart() { 
+    public DateTimeType getStart() { 
       return this.start;
     }
 
     /**
      * @param value {@link #start} (The start of the period. The boundary is inclusive.)
      */
-    public Period setStart(DateTime value) { 
+    public Period setStart(DateTimeType value) { 
       this.start = value;
       return this;
     }
@@ -84,7 +84,7 @@ public class Period extends Type {
         this.start = null;
       else {
         if (this.start == null)
-          this.start = new DateTime();
+          this.start = new DateTimeType();
         this.start.setValue(value);
       }
       return this;
@@ -93,14 +93,14 @@ public class Period extends Type {
     /**
      * @return {@link #end} (The end of the period. If the end of the period is missing, it means that the period is ongoing.)
      */
-    public DateTime getEnd() { 
+    public DateTimeType getEnd() { 
       return this.end;
     }
 
     /**
      * @param value {@link #end} (The end of the period. If the end of the period is missing, it means that the period is ongoing.)
      */
-    public Period setEnd(DateTime value) { 
+    public Period setEnd(DateTimeType value) { 
       this.end = value;
       return this;
     }
@@ -120,7 +120,7 @@ public class Period extends Type {
         this.end = null;
       else {
         if (this.end == null)
-          this.end = new DateTime();
+          this.end = new DateTimeType();
         this.end.setValue(value);
       }
       return this;

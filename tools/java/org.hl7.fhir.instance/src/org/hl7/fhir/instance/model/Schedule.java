@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -231,7 +231,7 @@ public class Schedule extends Type {
         /**
          * Indicates how often the event should occur.
          */
-        protected Integer frequency;
+        protected IntegerType frequency;
 
         /**
          * Identifies the occurrence of daily life that determines timing.
@@ -241,7 +241,7 @@ public class Schedule extends Type {
         /**
          * How long each repetition should last.
          */
-        protected Decimal duration;
+        protected DecimalType duration;
 
         /**
          * The units of time for the duration.
@@ -251,20 +251,20 @@ public class Schedule extends Type {
         /**
          * A total count of the desired number of repetitions.
          */
-        protected Integer count;
+        protected IntegerType count;
 
         /**
          * When to stop repeating the schedule.
          */
-        protected DateTime end;
+        protected DateTimeType end;
 
-        private static final long serialVersionUID = -1589503088L;
+        private static final long serialVersionUID = -615844988L;
 
       public ScheduleRepeatComponent() {
         super();
       }
 
-      public ScheduleRepeatComponent(Decimal duration, Enumeration<UnitsOfTime> units) {
+      public ScheduleRepeatComponent(DecimalType duration, Enumeration<UnitsOfTime> units) {
         super();
         this.duration = duration;
         this.units = units;
@@ -273,14 +273,14 @@ public class Schedule extends Type {
         /**
          * @return {@link #frequency} (Indicates how often the event should occur.)
          */
-        public Integer getFrequency() { 
+        public IntegerType getFrequency() { 
           return this.frequency;
         }
 
         /**
          * @param value {@link #frequency} (Indicates how often the event should occur.)
          */
-        public ScheduleRepeatComponent setFrequency(Integer value) { 
+        public ScheduleRepeatComponent setFrequency(IntegerType value) { 
           this.frequency = value;
           return this;
         }
@@ -300,7 +300,7 @@ public class Schedule extends Type {
             this.frequency = null;
           else {
             if (this.frequency == null)
-              this.frequency = new Integer();
+              this.frequency = new IntegerType();
             this.frequency.setValue(value);
           }
           return this;
@@ -345,14 +345,14 @@ public class Schedule extends Type {
         /**
          * @return {@link #duration} (How long each repetition should last.)
          */
-        public Decimal getDuration() { 
+        public DecimalType getDuration() { 
           return this.duration;
         }
 
         /**
          * @param value {@link #duration} (How long each repetition should last.)
          */
-        public ScheduleRepeatComponent setDuration(Decimal value) { 
+        public ScheduleRepeatComponent setDuration(DecimalType value) { 
           this.duration = value;
           return this;
         }
@@ -369,7 +369,7 @@ public class Schedule extends Type {
          */
         public ScheduleRepeatComponent setDurationSimple(BigDecimal value) { 
             if (this.duration == null)
-              this.duration = new Decimal();
+              this.duration = new DecimalType();
             this.duration.setValue(value);
           return this;
         }
@@ -409,14 +409,14 @@ public class Schedule extends Type {
         /**
          * @return {@link #count} (A total count of the desired number of repetitions.)
          */
-        public Integer getCount() { 
+        public IntegerType getCount() { 
           return this.count;
         }
 
         /**
          * @param value {@link #count} (A total count of the desired number of repetitions.)
          */
-        public ScheduleRepeatComponent setCount(Integer value) { 
+        public ScheduleRepeatComponent setCount(IntegerType value) { 
           this.count = value;
           return this;
         }
@@ -436,7 +436,7 @@ public class Schedule extends Type {
             this.count = null;
           else {
             if (this.count == null)
-              this.count = new Integer();
+              this.count = new IntegerType();
             this.count.setValue(value);
           }
           return this;
@@ -445,14 +445,14 @@ public class Schedule extends Type {
         /**
          * @return {@link #end} (When to stop repeating the schedule.)
          */
-        public DateTime getEnd() { 
+        public DateTimeType getEnd() { 
           return this.end;
         }
 
         /**
          * @param value {@link #end} (When to stop repeating the schedule.)
          */
-        public ScheduleRepeatComponent setEnd(DateTime value) { 
+        public ScheduleRepeatComponent setEnd(DateTimeType value) { 
           this.end = value;
           return this;
         }
@@ -472,7 +472,7 @@ public class Schedule extends Type {
             this.end = null;
           else {
             if (this.end == null)
-              this.end = new DateTime();
+              this.end = new DateTimeType();
             this.end.setValue(value);
           }
           return this;

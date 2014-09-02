@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -89,54 +89,70 @@ public class Questionnaire extends Resource {
     }
 
     public enum AnswerFormat {
+        boolean_, // Answer is a yes/no answer.
         decimal, // Answer is a floating point number.
         integer, // Answer is an integer.
-        boolean_, // Answer is a yes/no answer.
         date, // Answer is a date.
-        string, // Answer is a short (few words to short sentence) free-text entry.
-        text, // Answer is a long (potentially multi-paragram) free-text entry.
         dateTime, // Answer is a date and time.
         instant, // Answer is a system timestamp.
+        time, // Answer is a time independent of date.
+        string, // Answer is a short (few words to short sentence) free-text entry.
+        text, // Answer is a long (potentially multi-paragram) free-text entry.
         choice, // Answer is a choice from a list of options.
         openchoice, // Answer is a choice from a list of options or a free-text entry.
+        attachment, // Answer is binary content such as a image, PDF, etc.
+        reference, // Answer is a reference to another resource (practitioner, organization, etc.).
+        quantity, // Answer is a combination of a numeric value and unit.
         Null; // added to help the parsers
         public static AnswerFormat fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
+        if ("boolean".equals(codeString))
+          return boolean_;
         if ("decimal".equals(codeString))
           return decimal;
         if ("integer".equals(codeString))
           return integer;
-        if ("boolean".equals(codeString))
-          return boolean_;
         if ("date".equals(codeString))
           return date;
-        if ("string".equals(codeString))
-          return string;
-        if ("text".equals(codeString))
-          return text;
         if ("dateTime".equals(codeString))
           return dateTime;
         if ("instant".equals(codeString))
           return instant;
+        if ("time".equals(codeString))
+          return time;
+        if ("string".equals(codeString))
+          return string;
+        if ("text".equals(codeString))
+          return text;
         if ("choice".equals(codeString))
           return choice;
         if ("open-choice".equals(codeString))
           return openchoice;
+        if ("attachment".equals(codeString))
+          return attachment;
+        if ("reference".equals(codeString))
+          return reference;
+        if ("quantity".equals(codeString))
+          return quantity;
         throw new Exception("Unknown AnswerFormat code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
+            case boolean_: return "boolean";
             case decimal: return "decimal";
             case integer: return "integer";
-            case boolean_: return "boolean";
             case date: return "date";
-            case string: return "string";
-            case text: return "text";
             case dateTime: return "dateTime";
             case instant: return "instant";
+            case time: return "time";
+            case string: return "string";
+            case text: return "text";
             case choice: return "choice";
             case openchoice: return "open-choice";
+            case attachment: return "attachment";
+            case reference: return "reference";
+            case quantity: return "quantity";
             default: return "?";
           }
         }
@@ -147,63 +163,79 @@ public class Questionnaire extends Resource {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
+        if ("boolean".equals(codeString))
+          return AnswerFormat.boolean_;
         if ("decimal".equals(codeString))
           return AnswerFormat.decimal;
         if ("integer".equals(codeString))
           return AnswerFormat.integer;
-        if ("boolean".equals(codeString))
-          return AnswerFormat.boolean_;
         if ("date".equals(codeString))
           return AnswerFormat.date;
-        if ("string".equals(codeString))
-          return AnswerFormat.string;
-        if ("text".equals(codeString))
-          return AnswerFormat.text;
         if ("dateTime".equals(codeString))
           return AnswerFormat.dateTime;
         if ("instant".equals(codeString))
           return AnswerFormat.instant;
+        if ("time".equals(codeString))
+          return AnswerFormat.time;
+        if ("string".equals(codeString))
+          return AnswerFormat.string;
+        if ("text".equals(codeString))
+          return AnswerFormat.text;
         if ("choice".equals(codeString))
           return AnswerFormat.choice;
         if ("open-choice".equals(codeString))
           return AnswerFormat.openchoice;
+        if ("attachment".equals(codeString))
+          return AnswerFormat.attachment;
+        if ("reference".equals(codeString))
+          return AnswerFormat.reference;
+        if ("quantity".equals(codeString))
+          return AnswerFormat.quantity;
         throw new Exception("Unknown AnswerFormat code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
+      if (code == AnswerFormat.boolean_)
+        return "boolean";
       if (code == AnswerFormat.decimal)
         return "decimal";
       if (code == AnswerFormat.integer)
         return "integer";
-      if (code == AnswerFormat.boolean_)
-        return "boolean";
       if (code == AnswerFormat.date)
         return "date";
-      if (code == AnswerFormat.string)
-        return "string";
-      if (code == AnswerFormat.text)
-        return "text";
       if (code == AnswerFormat.dateTime)
         return "dateTime";
       if (code == AnswerFormat.instant)
         return "instant";
+      if (code == AnswerFormat.time)
+        return "time";
+      if (code == AnswerFormat.string)
+        return "string";
+      if (code == AnswerFormat.text)
+        return "text";
       if (code == AnswerFormat.choice)
         return "choice";
       if (code == AnswerFormat.openchoice)
         return "open-choice";
+      if (code == AnswerFormat.attachment)
+        return "attachment";
+      if (code == AnswerFormat.reference)
+        return "reference";
+      if (code == AnswerFormat.quantity)
+        return "quantity";
       return "?";
       }
     }
 
     public static class GroupComponent extends BackboneElement {
         /**
-         * A unique identifier within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.
+         * A identifier that is unique within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.
          */
-        protected String_ linkId;
+        protected StringType linkId;
 
         /**
          * The human-readable name for this section of the questionnaire.
          */
-        protected String_ title;
+        protected StringType title;
 
         /**
          * Identifies a how this group of questions is known in a particular terminology such as LOINC.
@@ -213,17 +245,17 @@ public class Questionnaire extends Resource {
         /**
          * Additional text for the group, used for display purposes.
          */
-        protected String_ text;
+        protected StringType text;
 
         /**
          * If true, indicates that the group must be present and have required questions within it answered.  If false, the group may be skipped when answering the questionnaire.
          */
-        protected Boolean required;
+        protected BooleanType required;
 
         /**
          * Whether the group may occur multiple times in the instance, containing multiple sets of answers.
          */
-        protected Boolean repeats;
+        protected BooleanType repeats;
 
         /**
          * A sub-group within a group. The ordering of groups within this group is relevant.
@@ -235,43 +267,43 @@ public class Questionnaire extends Resource {
          */
         protected List<QuestionComponent> question = new ArrayList<QuestionComponent>();
 
-        private static final long serialVersionUID = -2075705443L;
+        private static final long serialVersionUID = 427521870L;
 
       public GroupComponent() {
         super();
       }
 
         /**
-         * @return {@link #linkId} (A unique identifier within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.)
+         * @return {@link #linkId} (A identifier that is unique within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.)
          */
-        public String_ getLinkId() { 
+        public StringType getLinkId() { 
           return this.linkId;
         }
 
         /**
-         * @param value {@link #linkId} (A unique identifier within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.)
+         * @param value {@link #linkId} (A identifier that is unique within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.)
          */
-        public GroupComponent setLinkId(String_ value) { 
+        public GroupComponent setLinkId(StringType value) { 
           this.linkId = value;
           return this;
         }
 
         /**
-         * @return A unique identifier within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.
+         * @return A identifier that is unique within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.
          */
         public String getLinkIdSimple() { 
           return this.linkId == null ? null : this.linkId.getValue();
         }
 
         /**
-         * @param value A unique identifier within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.
+         * @param value A identifier that is unique within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.
          */
         public GroupComponent setLinkIdSimple(String value) { 
           if (value == null)
             this.linkId = null;
           else {
             if (this.linkId == null)
-              this.linkId = new String_();
+              this.linkId = new StringType();
             this.linkId.setValue(value);
           }
           return this;
@@ -280,14 +312,14 @@ public class Questionnaire extends Resource {
         /**
          * @return {@link #title} (The human-readable name for this section of the questionnaire.)
          */
-        public String_ getTitle() { 
+        public StringType getTitle() { 
           return this.title;
         }
 
         /**
          * @param value {@link #title} (The human-readable name for this section of the questionnaire.)
          */
-        public GroupComponent setTitle(String_ value) { 
+        public GroupComponent setTitle(StringType value) { 
           this.title = value;
           return this;
         }
@@ -307,7 +339,7 @@ public class Questionnaire extends Resource {
             this.title = null;
           else {
             if (this.title == null)
-              this.title = new String_();
+              this.title = new StringType();
             this.title.setValue(value);
           }
           return this;
@@ -333,14 +365,14 @@ public class Questionnaire extends Resource {
         /**
          * @return {@link #text} (Additional text for the group, used for display purposes.)
          */
-        public String_ getText() { 
+        public StringType getText() { 
           return this.text;
         }
 
         /**
          * @param value {@link #text} (Additional text for the group, used for display purposes.)
          */
-        public GroupComponent setText(String_ value) { 
+        public GroupComponent setText(StringType value) { 
           this.text = value;
           return this;
         }
@@ -360,7 +392,7 @@ public class Questionnaire extends Resource {
             this.text = null;
           else {
             if (this.text == null)
-              this.text = new String_();
+              this.text = new StringType();
             this.text.setValue(value);
           }
           return this;
@@ -369,14 +401,14 @@ public class Questionnaire extends Resource {
         /**
          * @return {@link #required} (If true, indicates that the group must be present and have required questions within it answered.  If false, the group may be skipped when answering the questionnaire.)
          */
-        public Boolean getRequired() { 
+        public BooleanType getRequired() { 
           return this.required;
         }
 
         /**
          * @param value {@link #required} (If true, indicates that the group must be present and have required questions within it answered.  If false, the group may be skipped when answering the questionnaire.)
          */
-        public GroupComponent setRequired(Boolean value) { 
+        public GroupComponent setRequired(BooleanType value) { 
           this.required = value;
           return this;
         }
@@ -396,7 +428,7 @@ public class Questionnaire extends Resource {
             this.required = null;
           else {
             if (this.required == null)
-              this.required = new Boolean();
+              this.required = new BooleanType();
             this.required.setValue(value);
           }
           return this;
@@ -405,14 +437,14 @@ public class Questionnaire extends Resource {
         /**
          * @return {@link #repeats} (Whether the group may occur multiple times in the instance, containing multiple sets of answers.)
          */
-        public Boolean getRepeats() { 
+        public BooleanType getRepeats() { 
           return this.repeats;
         }
 
         /**
          * @param value {@link #repeats} (Whether the group may occur multiple times in the instance, containing multiple sets of answers.)
          */
-        public GroupComponent setRepeats(Boolean value) { 
+        public GroupComponent setRepeats(BooleanType value) { 
           this.repeats = value;
           return this;
         }
@@ -432,7 +464,7 @@ public class Questionnaire extends Resource {
             this.repeats = null;
           else {
             if (this.repeats == null)
-              this.repeats = new Boolean();
+              this.repeats = new BooleanType();
             this.repeats.setValue(value);
           }
           return this;
@@ -474,7 +506,7 @@ public class Questionnaire extends Resource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("linkId", "string", "A unique identifier within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.", 0, java.lang.Integer.MAX_VALUE, linkId));
+          childrenList.add(new Property("linkId", "string", "A identifier that is unique within the questionnaire allowing linkage to the equivalent group in a QuestionnaireAnswers resource.", 0, java.lang.Integer.MAX_VALUE, linkId));
           childrenList.add(new Property("title", "string", "The human-readable name for this section of the questionnaire.", 0, java.lang.Integer.MAX_VALUE, title));
           childrenList.add(new Property("concept", "Coding", "Identifies a how this group of questions is known in a particular terminology such as LOINC.", 0, java.lang.Integer.MAX_VALUE, concept));
           childrenList.add(new Property("text", "string", "Additional text for the group, used for display purposes.", 0, java.lang.Integer.MAX_VALUE, text));
@@ -507,9 +539,9 @@ public class Questionnaire extends Resource {
 
     public static class QuestionComponent extends BackboneElement {
         /**
-         * A unique identifiers within the questionnaire allowing linkage to the equivalent group in a QuestionnaireData resource.
+         * An identifier that is unique within the questionnaire allowing linkage to the equivalent group in a [[[QuestionnaireAnswers]]] resource.
          */
-        protected String_ linkId;
+        protected StringType linkId;
 
         /**
          * Identifies a how this group of questions is known in a particular terminology such as LOINC.
@@ -519,22 +551,22 @@ public class Questionnaire extends Resource {
         /**
          * Text of the question as it is shown to the user.
          */
-        protected String_ text;
+        protected StringType text;
 
         /**
-         * The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple)choice is expected.
+         * The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple) choice is expected.
          */
         protected Enumeration<AnswerFormat> type;
 
         /**
          * If true, indicates that the group must be present and have required questions within it answered.  If false, the group may be skipped when answering the questionnaire.
          */
-        protected Boolean required;
+        protected BooleanType required;
 
         /**
          * Whether the group may occur multiple times in the instance, containing multiple sets of answers.
          */
-        protected Boolean repeats;
+        protected BooleanType repeats;
 
         /**
          * Reference to a valueset containing the possible options.
@@ -551,43 +583,43 @@ public class Questionnaire extends Resource {
          */
         protected List<GroupComponent> group = new ArrayList<GroupComponent>();
 
-        private static final long serialVersionUID = -1373335559L;
+        private static final long serialVersionUID = -883055791L;
 
       public QuestionComponent() {
         super();
       }
 
         /**
-         * @return {@link #linkId} (A unique identifiers within the questionnaire allowing linkage to the equivalent group in a QuestionnaireData resource.)
+         * @return {@link #linkId} (An identifier that is unique within the questionnaire allowing linkage to the equivalent group in a [[[QuestionnaireAnswers]]] resource.)
          */
-        public String_ getLinkId() { 
+        public StringType getLinkId() { 
           return this.linkId;
         }
 
         /**
-         * @param value {@link #linkId} (A unique identifiers within the questionnaire allowing linkage to the equivalent group in a QuestionnaireData resource.)
+         * @param value {@link #linkId} (An identifier that is unique within the questionnaire allowing linkage to the equivalent group in a [[[QuestionnaireAnswers]]] resource.)
          */
-        public QuestionComponent setLinkId(String_ value) { 
+        public QuestionComponent setLinkId(StringType value) { 
           this.linkId = value;
           return this;
         }
 
         /**
-         * @return A unique identifiers within the questionnaire allowing linkage to the equivalent group in a QuestionnaireData resource.
+         * @return An identifier that is unique within the questionnaire allowing linkage to the equivalent group in a [[[QuestionnaireAnswers]]] resource.
          */
         public String getLinkIdSimple() { 
           return this.linkId == null ? null : this.linkId.getValue();
         }
 
         /**
-         * @param value A unique identifiers within the questionnaire allowing linkage to the equivalent group in a QuestionnaireData resource.
+         * @param value An identifier that is unique within the questionnaire allowing linkage to the equivalent group in a [[[QuestionnaireAnswers]]] resource.
          */
         public QuestionComponent setLinkIdSimple(String value) { 
           if (value == null)
             this.linkId = null;
           else {
             if (this.linkId == null)
-              this.linkId = new String_();
+              this.linkId = new StringType();
             this.linkId.setValue(value);
           }
           return this;
@@ -613,14 +645,14 @@ public class Questionnaire extends Resource {
         /**
          * @return {@link #text} (Text of the question as it is shown to the user.)
          */
-        public String_ getText() { 
+        public StringType getText() { 
           return this.text;
         }
 
         /**
          * @param value {@link #text} (Text of the question as it is shown to the user.)
          */
-        public QuestionComponent setText(String_ value) { 
+        public QuestionComponent setText(StringType value) { 
           this.text = value;
           return this;
         }
@@ -640,21 +672,21 @@ public class Questionnaire extends Resource {
             this.text = null;
           else {
             if (this.text == null)
-              this.text = new String_();
+              this.text = new StringType();
             this.text.setValue(value);
           }
           return this;
         }
 
         /**
-         * @return {@link #type} (The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple)choice is expected.)
+         * @return {@link #type} (The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple) choice is expected.)
          */
         public Enumeration<AnswerFormat> getType() { 
           return this.type;
         }
 
         /**
-         * @param value {@link #type} (The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple)choice is expected.)
+         * @param value {@link #type} (The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple) choice is expected.)
          */
         public QuestionComponent setType(Enumeration<AnswerFormat> value) { 
           this.type = value;
@@ -662,14 +694,14 @@ public class Questionnaire extends Resource {
         }
 
         /**
-         * @return The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple)choice is expected.
+         * @return The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple) choice is expected.
          */
         public AnswerFormat getTypeSimple() { 
           return this.type == null ? null : this.type.getValue();
         }
 
         /**
-         * @param value The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple)choice is expected.
+         * @param value The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple) choice is expected.
          */
         public QuestionComponent setTypeSimple(AnswerFormat value) { 
           if (value == null)
@@ -685,14 +717,14 @@ public class Questionnaire extends Resource {
         /**
          * @return {@link #required} (If true, indicates that the group must be present and have required questions within it answered.  If false, the group may be skipped when answering the questionnaire.)
          */
-        public Boolean getRequired() { 
+        public BooleanType getRequired() { 
           return this.required;
         }
 
         /**
          * @param value {@link #required} (If true, indicates that the group must be present and have required questions within it answered.  If false, the group may be skipped when answering the questionnaire.)
          */
-        public QuestionComponent setRequired(Boolean value) { 
+        public QuestionComponent setRequired(BooleanType value) { 
           this.required = value;
           return this;
         }
@@ -712,7 +744,7 @@ public class Questionnaire extends Resource {
             this.required = null;
           else {
             if (this.required == null)
-              this.required = new Boolean();
+              this.required = new BooleanType();
             this.required.setValue(value);
           }
           return this;
@@ -721,14 +753,14 @@ public class Questionnaire extends Resource {
         /**
          * @return {@link #repeats} (Whether the group may occur multiple times in the instance, containing multiple sets of answers.)
          */
-        public Boolean getRepeats() { 
+        public BooleanType getRepeats() { 
           return this.repeats;
         }
 
         /**
          * @param value {@link #repeats} (Whether the group may occur multiple times in the instance, containing multiple sets of answers.)
          */
-        public QuestionComponent setRepeats(Boolean value) { 
+        public QuestionComponent setRepeats(BooleanType value) { 
           this.repeats = value;
           return this;
         }
@@ -748,7 +780,7 @@ public class Questionnaire extends Resource {
             this.repeats = null;
           else {
             if (this.repeats == null)
-              this.repeats = new Boolean();
+              this.repeats = new BooleanType();
             this.repeats.setValue(value);
           }
           return this;
@@ -803,10 +835,10 @@ public class Questionnaire extends Resource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("linkId", "string", "A unique identifiers within the questionnaire allowing linkage to the equivalent group in a QuestionnaireData resource.", 0, java.lang.Integer.MAX_VALUE, linkId));
+          childrenList.add(new Property("linkId", "string", "An identifier that is unique within the questionnaire allowing linkage to the equivalent group in a [[[QuestionnaireAnswers]]] resource.", 0, java.lang.Integer.MAX_VALUE, linkId));
           childrenList.add(new Property("concept", "Coding", "Identifies a how this group of questions is known in a particular terminology such as LOINC.", 0, java.lang.Integer.MAX_VALUE, concept));
           childrenList.add(new Property("text", "string", "Text of the question as it is shown to the user.", 0, java.lang.Integer.MAX_VALUE, text));
-          childrenList.add(new Property("type", "code", "The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple)choice is expected.", 0, java.lang.Integer.MAX_VALUE, type));
+          childrenList.add(new Property("type", "code", "The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple) choice is expected.", 0, java.lang.Integer.MAX_VALUE, type));
           childrenList.add(new Property("required", "boolean", "If true, indicates that the group must be present and have required questions within it answered.  If false, the group may be skipped when answering the questionnaire.", 0, java.lang.Integer.MAX_VALUE, required));
           childrenList.add(new Property("repeats", "boolean", "Whether the group may occur multiple times in the instance, containing multiple sets of answers.", 0, java.lang.Integer.MAX_VALUE, repeats));
           childrenList.add(new Property("options", "Resource(ValueSet)", "Reference to a valueset containing the possible options.", 0, java.lang.Integer.MAX_VALUE, options));
@@ -840,7 +872,7 @@ public class Questionnaire extends Resource {
     /**
      * The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated.
      */
-    protected String_ version;
+    protected StringType version;
 
     /**
      * The lifecycle status of the questionnaire as a whole.
@@ -850,19 +882,19 @@ public class Questionnaire extends Resource {
     /**
      * The date that this version of the questionnaire was authored.
      */
-    protected Date date;
+    protected DateTimeType date;
 
     /**
      * Organization responsible for developing and maintaining the questionnaire.
      */
-    protected String_ publisher;
+    protected StringType publisher;
 
     /**
      * A collection of related questions (or further groupings of questions).
      */
     protected GroupComponent group;
 
-    private static final long serialVersionUID = 1188451963L;
+    private static final long serialVersionUID = -891710678L;
 
     public Questionnaire() {
       super();
@@ -894,14 +926,14 @@ public class Questionnaire extends Resource {
     /**
      * @return {@link #version} (The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated.)
      */
-    public String_ getVersion() { 
+    public StringType getVersion() { 
       return this.version;
     }
 
     /**
      * @param value {@link #version} (The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated.)
      */
-    public Questionnaire setVersion(String_ value) { 
+    public Questionnaire setVersion(StringType value) { 
       this.version = value;
       return this;
     }
@@ -921,7 +953,7 @@ public class Questionnaire extends Resource {
         this.version = null;
       else {
         if (this.version == null)
-          this.version = new String_();
+          this.version = new StringType();
         this.version.setValue(value);
       }
       return this;
@@ -962,14 +994,14 @@ public class Questionnaire extends Resource {
     /**
      * @return {@link #date} (The date that this version of the questionnaire was authored.)
      */
-    public Date getDate() { 
+    public DateTimeType getDate() { 
       return this.date;
     }
 
     /**
      * @param value {@link #date} (The date that this version of the questionnaire was authored.)
      */
-    public Questionnaire setDate(Date value) { 
+    public Questionnaire setDate(DateTimeType value) { 
       this.date = value;
       return this;
     }
@@ -989,7 +1021,7 @@ public class Questionnaire extends Resource {
         this.date = null;
       else {
         if (this.date == null)
-          this.date = new Date();
+          this.date = new DateTimeType();
         this.date.setValue(value);
       }
       return this;
@@ -998,14 +1030,14 @@ public class Questionnaire extends Resource {
     /**
      * @return {@link #publisher} (Organization responsible for developing and maintaining the questionnaire.)
      */
-    public String_ getPublisher() { 
+    public StringType getPublisher() { 
       return this.publisher;
     }
 
     /**
      * @param value {@link #publisher} (Organization responsible for developing and maintaining the questionnaire.)
      */
-    public Questionnaire setPublisher(String_ value) { 
+    public Questionnaire setPublisher(StringType value) { 
       this.publisher = value;
       return this;
     }
@@ -1025,7 +1057,7 @@ public class Questionnaire extends Resource {
         this.publisher = null;
       else {
         if (this.publisher == null)
-          this.publisher = new String_();
+          this.publisher = new StringType();
         this.publisher.setValue(value);
       }
       return this;
@@ -1051,7 +1083,7 @@ public class Questionnaire extends Resource {
         childrenList.add(new Property("identifier", "Identifier", "This records identifiers associated with this question set that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("version", "string", "The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated.", 0, java.lang.Integer.MAX_VALUE, version));
         childrenList.add(new Property("status", "code", "The lifecycle status of the questionnaire as a whole.", 0, java.lang.Integer.MAX_VALUE, status));
-        childrenList.add(new Property("date", "date", "The date that this version of the questionnaire was authored.", 0, java.lang.Integer.MAX_VALUE, date));
+        childrenList.add(new Property("date", "dateTime", "The date that this version of the questionnaire was authored.", 0, java.lang.Integer.MAX_VALUE, date));
         childrenList.add(new Property("publisher", "string", "Organization responsible for developing and maintaining the questionnaire.", 0, java.lang.Integer.MAX_VALUE, publisher));
         childrenList.add(new Property("group", "", "A collection of related questions (or further groupings of questions).", 0, java.lang.Integer.MAX_VALUE, group));
       }

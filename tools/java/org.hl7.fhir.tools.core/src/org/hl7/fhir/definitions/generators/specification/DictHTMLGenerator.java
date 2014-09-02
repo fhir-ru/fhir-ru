@@ -43,7 +43,8 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.XmlComposer;
-import org.hl7.fhir.instance.model.Id;
+import org.hl7.fhir.instance.model.AtomEntry;
+import org.hl7.fhir.instance.model.IdType;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.ElementComponent;
 import org.hl7.fhir.instance.model.Profile.ElementDefinitionComponent;
@@ -53,11 +54,13 @@ import org.hl7.fhir.instance.model.Profile.ProfileExtensionDefnComponent;
 import org.hl7.fhir.instance.model.Profile.ProfileMappingComponent;
 import org.hl7.fhir.instance.model.Profile.ProfileStructureComponent;
 import org.hl7.fhir.instance.model.Profile.TypeRefComponent;
-import org.hl7.fhir.instance.model.String_;
+import org.hl7.fhir.instance.model.StringType;
 import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
+
+import com.github.rjeschke.txtmark.Processor;
 
 public class DictHTMLGenerator  extends OutputStreamWriter {
 
@@ -87,14 +90,54 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
       write("<table class=\"dict\">\r\n");
       
       for (ElementComponent ec : s.getSnapshot().getElement()) {
-        write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+s.getNameSimple()+"."+ec.getPathSimple()+"\"> </a><b>"+ec.getPathSimple()+"</b></td></tr>\r\n");
-        generateElementInner(profile, ec.getDefinition());
+        if (isProfiledExtension(ec)) {
+          String name = s.getNameSimple()+"."+ makePathLink(ec);
+          String title = ec.getPathSimple() + " ("+(ec.getDefinition().getType().get(0).getProfileSimple().startsWith("#") ? profile.getUrlSimple() : "")+ec.getDefinition().getType().get(0).getProfileSimple()+")";
+          write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a><b>"+title+"</b></td></tr>\r\n");
+          ElementDefinitionComponent extDefn = getExtensionDefinition(profile, ec.getDefinition().getType().get(0).getProfileSimple(), ec.getDefinition());
+          generateElementInner(profile, extDefn);
+        } else {
+          String name = s.getNameSimple()+"."+ makePathLink(ec);
+          String title = ec.getPathSimple() + (ec.getNameSimple() == null ? "" : "(" +ec.getNameSimple() +")");
+          write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a><b>"+title+"</b></td></tr>\r\n");
+          generateElementInner(profile, ec.getDefinition());
+        }
       }
       write("</table>\r\n");
       i++;      
     }
     flush();
     close();
+  }
+
+  private String makePathLink(ElementComponent element) {
+    if (element.getName() == null)
+      return element.getPathSimple();
+    if (!element.getPathSimple().contains("."))
+      return element.getNameSimple();
+    return element.getPathSimple().substring(0, element.getPathSimple().lastIndexOf("."))+"."+element.getNameSimple();
+  }
+  
+  private ElementDefinitionComponent getExtensionDefinition(Profile context, String url, ElementDefinitionComponent defaultDefn) {
+    String code;
+    if (url.startsWith("#")) {
+      code = url.substring(1);
+    } else {
+      String[] parts = url.split("\\#");
+      code = parts[1];
+      context = definitions.getProfileByURL(parts[0]);
+    }
+    
+    for (ProfileExtensionDefnComponent ext : context.getExtensionDefn()) {
+      if (ext.getCodeSimple().equals(code))
+        return ext.getElement().get(0).getDefinition();
+    }
+
+    return defaultDefn;
+  }
+
+  private boolean isProfiledExtension(ElementComponent ec) {
+    return ec.getDefinition().getType().size() == 1 && ec.getDefinition().getType().get(0).getCodeSimple().equals("Extension") && ec.getDefinition().getType().get(0).getProfile() != null;
   }
 
   private void generateExtension(Profile profile, ProfileExtensionDefnComponent e) throws Exception {
@@ -110,24 +153,24 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
     
   private void generateElementInner(Profile profile, ElementDefinitionComponent d) throws Exception {
-    tableRow("Определение", null, d.getFormalSimple());
-    tableRow("Количество", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
-    tableRowNE("Привязка", "terminologies.html", describeBinding(d));
+    tableRowMarkdown("Definition", d.getFormalSimple());
+    tableRow("Control", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
+    tableRowNE("Binding", "terminologies.html", describeBinding(d));
     if (d.getNameReference() != null)
-      tableRow("Тип", null, "См. "+d.getNameReferenceSimple());
+      tableRow("Type", null, "See "+d.getNameReferenceSimple());
     else
-      tableRowNE("Тип", "datatypes.html", describeTypes(d.getType()));
-    tableRow("Является модификатором", "conformance-rules.html#ismodifier", displayBoolean(d.getIsModifierSimple()));
-    tableRow("Должен поддерживать", "conformance-rules.html#mustsupport", displayBoolean(d.getMustSupportSimple()));
-    tableRow("Требования", null, d.getRequirementsSimple());
-    tableRow("Альтернативные имена", null, describeAliases(d.getSynonym()));
-    tableRow("Комментарии", null, d.getCommentsSimple());
-    tableRow("Макс. длина", null, d.getMaxLength() == null ? null : Integer.toString(d.getMaxLengthSimple()));
-    tableRow("Фиксированное значение", null, encodeValue(d.getValue()));
-    tableRow("Пример", null, encodeValue(d.getExample()));
-    tableRowNE("Инварианты", null, invariants(d.getConstraint()));
-    tableRow("Код LOINC", null, getMapping(profile, d, Definitions.LOINC_MAPPING));
-    tableRow("Код SNOMED-CT", null, getMapping(profile, d, Definitions.SNOMED_MAPPING));
+      tableRowNE("Type", "datatypes.html", describeTypes(d.getType()));
+    tableRow("Is Modifier", "conformance-rules.html#ismodifier", displayBoolean(d.getIsModifierSimple()));
+    tableRow("Must Support", "conformance-rules.html#mustSupport", displayBoolean(d.getMustSupportSimple()));
+    tableRowMarkdown("Requirements", d.getRequirementsSimple());
+    tableRow("Aliases", null, describeAliases(d.getSynonym()));
+    tableRowMarkdown("Comments", d.getCommentsSimple());
+    tableRow("Max Length", null, d.getMaxLength() == null ? null : Integer.toString(d.getMaxLengthSimple()));
+    tableRow("Fixed Value", null, encodeValue(d.getValue()));
+    tableRow("Example", null, encodeValue(d.getExample()));
+    tableRowNE("Invariants", null, invariants(d.getConstraint()));
+    tableRow("LOINC Code", null, getMapping(profile, d, Definitions.LOINC_MAPPING));
+    tableRow("SNOMED-CT Code", null, getMapping(profile, d, Definitions.SNOMED_MAPPING));
   }
 
   private String encodeValue(Type value) throws Exception {
@@ -160,12 +203,22 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
   private void describeType(StringBuilder b, TypeRefComponent t) throws Exception {
     b.append("<a href=\"");
-    b.append(GeneratorUtils.getSrcFile(t.getCodeSimple()));
+    b.append(GeneratorUtils.getSrcFile(t.getCodeSimple(), false));
     b.append(".html#");
-    b.append(t.getCodeSimple());
+    String type = t.getCodeSimple();
+    if (type.equals("*"))
+      b.append("open");
+    else 
+      b.append(t.getCodeSimple());
     b.append("\">");
     b.append(t.getCodeSimple());
     b.append("</a>");
+    if (t.getProfileSimple() != null) {
+      b.append("<a href=\"todo.html\">");
+      b.append("(Profile = "+t.getProfileSimple()+")");
+      b.append("</a>");
+      
+    }
   }
 
   private String invariants(List<ElementDefinitionConstraintComponent> constraints) {
@@ -173,7 +226,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
       return null;
     StringBuilder s = new StringBuilder();
     if (constraints.size() > 0) {
-      s.append("<b>Определено на этом элементе</b><br/>\r\n");
+      s.append("<b>Defined on this element</b><br/>\r\n");
       List<String> ids = new ArrayList<String>();
       for (ElementDefinitionConstraintComponent id : constraints)
         ids.add(id.getKeySimple());
@@ -185,7 +238,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
           s.append("<br/>");
         else
           b = true;
-        s.append("<b title=\"Formal Invariant Identifier\">Инв-"+id+"</b>: "+Utilities.escapeXml(inv.getHumanSimple())+" (xpath: "+Utilities.escapeXml(inv.getXpathSimple())+")");
+        s.append("<b title=\"Formal Invariant Identifier\">Inv-"+id+"</b>: "+Utilities.escapeXml(inv.getHumanSimple())+" (xpath: "+Utilities.escapeXml(inv.getXpathSimple())+")");
       }
     }
     
@@ -199,9 +252,9 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     return null;
   }
 
-  private String describeAliases(List<String_> synonym) {
+  private String describeAliases(List<StringType> synonym) {
     CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
-    for (String_ s : synonym) 
+    for (StringType s : synonym) 
       b.append(s.getValue());
     return b.toString();
   }
@@ -221,7 +274,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     return null;
   }
 
-  private String summariseConditions(List<Id> conditions) {
+  private String summariseConditions(List<IdType> conditions) {
     if (conditions.isEmpty())
       return "";
     else
@@ -257,23 +310,23 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
 	private void writeEntry(String path, String cardinality, String type, String conceptDomain, ElementDefn e) throws Exception {
 		write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+path.replace("[", "_").replace("]", "_")+"\"> </a><b>"+path+"</b></td></tr>\r\n");
-		tableRow("Определение", null, e.getDefinition());
-		tableRow("Количество", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
-		tableRowNE("Привязка", "terminologies.html", describeBinding(e));
+		tableRow("Definition", null, e.getDefinition());
+		tableRow("Control", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
+		tableRowNE("Binding", "terminologies.html", describeBinding(e));
 		if (!Utilities.noString(type) && type.startsWith("@"))
-		  tableRowNE("Тип", null, "<a href=\"#"+type.substring(1)+"\">See "+type.substring(1)+"</a>");
+		  tableRowNE("Type", null, "<a href=\"#"+type.substring(1)+"\">See "+type.substring(1)+"</a>");
 		else
-		  tableRowNE("Тип", "datatypes.html", type);
-		tableRow("Является модификатором", "conformance-rules.html#ismodifier", displayBoolean(e.isModifier()));
-		tableRow("Требования", null, e.getRequirements());
-    tableRow("Альтернативные имена", null, toSeperatedString(e.getAliases()));
+		  tableRowNE("Type", "datatypes.html", type);
+		tableRow("Is Modifier", "conformance-rules.html#ismodifier", displayBoolean(e.isModifier()));
+		tableRowNE("Requirements", null, page.processMarkdown(e.getRequirements()));
+    tableRow("Aliases", null, toSeperatedString(e.getAliases()));
     if (e.isSummaryItem())
       tableRow("Summary", "search.html#summary", Boolean.toString(e.isSummaryItem()));
-    tableRow("Комментарии", null, e.getComments());
-    tableRowNE("Инварианты", null, invariants(e.getInvariants(), e.getStatedInvariants()));
-    tableRow("Код LOINC", null, e.getMapping(Definitions.LOINC_MAPPING));
-    tableRow("Код SNOMED-CT", null, e.getMapping(Definitions.SNOMED_MAPPING));
-		tableRow("Предстоит сделать", null, e.getTodo());
+    tableRow("Comments", null, e.getComments());
+    tableRowNE("Invariants", null, invariants(e.getInvariants(), e.getStatedInvariants()));
+    tableRow("LOINC Code", null, e.getMapping(Definitions.LOINC_MAPPING));
+    tableRow("SNOMED-CT Code", null, e.getMapping(Definitions.SNOMED_MAPPING));
+		tableRow("To Do", null, e.getTodo());
 		if (e.getTasks().size() > 0) {
 	    tableRowNE("gForge Tasks", null, tasks(e.getTasks()));
 		}
@@ -324,7 +377,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   private String invariants(Map<String, Invariant> invariants, List<Invariant> stated) {
 	  StringBuilder s = new StringBuilder();
 	  if (invariants.size() > 0) {
-	    s.append("<b>Определено на этом элементе</b><br/>\r\n");
+	    s.append("<b>Defined on this element</b><br/>\r\n");
 	    List<Integer> ids = new ArrayList<Integer>();
 	    for (String id : invariants.keySet())
 	      ids.add(Integer.parseInt(id));
@@ -334,19 +387,19 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	      Invariant inv = invariants.get(i.toString());
 	      if (b)
 	        s.append("<br/>");
-	      s.append("<b title=\"Formal Invariant Identifier\">Инв-"+i.toString()+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
+	      s.append("<b title=\"Formal Invariant Identifier\">Inv-"+i.toString()+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
 	      b = true;
 	    }
 	  }
     if (stated.size() > 0) {
       if (s.length() > 0)
         s.append("<br/>");
-      s.append("<b>Влияет на этот элемент</b><br/>\r\n");
+      s.append("<b>Affect this element</b><br/>\r\n");
       boolean b = false;
       for (Invariant id : stated) {
         if (b)
           s.append("<br/>");
-        s.append("<b>Инв-"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
+        s.append("<b>Inv-"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
         b = true;
       }
     }
@@ -378,6 +431,36 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 			return null;
 	}
 
+  private void tableRowMarkdown(String name, String value) throws Exception {
+    String text;
+    if (value == null)
+      text = "";
+    else {
+      text = value.replace("||", "\r\n\r\n");
+      while (text.contains("[[[")) {
+        String left = text.substring(0, text.indexOf("[[["));
+        String linkText = text.substring(text.indexOf("[[[")+3, text.indexOf("]]]"));
+        String right = text.substring(text.indexOf("]]]")+3);
+        String url = "";
+        String[] parts = linkText.split("\\#");
+        Profile p = definitions.getProfileByURL(parts[0]);
+        if (p != null)
+          url = p.getTag("filename")+".html";
+        else if (definitions.hasResource(linkText)) {
+          url = linkText.toLowerCase()+".html#";
+        } else if (definitions.hasElementDefn(linkText)) {
+          url = GeneratorUtils.getSrcFile(linkText, false)+".html#"+linkText;
+        } else if (definitions.hasPrimitiveType(linkText)) {
+          url = "datatypes.html#"+linkText;
+        } else {
+          System.out.println("Error: Unresolved logical URL "+linkText);
+          //        throw new Exception("Unresolved logical URL "+url);
+        }
+        text = left+"["+linkText+"]("+url+")"+right;
+      }
+    }
+    write("  <tr><td>"+name+"</td><td>"+Processor.process(Utilities.escapeXml(text))+"</td></tr>\r\n");
+  }
 	private void tableRow(String name, String defRef, String value) throws IOException {
 		if (value != null && !"".equals(value)) {
 		  if (defRef != null) 
@@ -431,7 +514,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	}
 
   private String typeLink(String name) throws Exception {
-    String srcFile = GeneratorUtils.getSrcFile(name);
+    String srcFile = GeneratorUtils.getSrcFile(name, false);
     if (srcFile.equalsIgnoreCase(name))
       return srcFile+ ".html";
     else

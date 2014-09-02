@@ -22,18 +22,19 @@ import org.hl7.fhir.instance.model.AdverseReaction;
 import org.hl7.fhir.instance.model.AtomCategory;
 import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
-import org.hl7.fhir.instance.model.Code;
+import org.hl7.fhir.instance.model.CodeType;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Condition.ConditionStatus;
 import org.hl7.fhir.instance.model.Conformance;
 import org.hl7.fhir.instance.model.DateAndTime;
-import org.hl7.fhir.instance.model.DateTime;
+import org.hl7.fhir.instance.model.DateTimeType;
 import org.hl7.fhir.instance.model.HumanName;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.OperationOutcome.OperationOutcomeIssueComponent;
 import org.hl7.fhir.instance.model.Patient;
+import org.hl7.fhir.instance.model.Patient.AdministrativeGender;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ResourceReference;
 import org.junit.After;
@@ -206,7 +207,7 @@ public class FHIRSimpleClientTest {
 			loadPatientResource();
 			AtomEntry<Patient> originalPatientEntry = testClient.read(Patient.class, testPatientId);
 			String originalEntryVersion = getEntryVersion(originalPatientEntry);
-			DateTime modifiedBirthday = new DateTime();
+			DateTimeType modifiedBirthday = new DateTimeType();
 			modifiedBirthday.setValue(new DateAndTime("2002-09-09"));
 			originalPatientEntry.getResource().setBirthDate(modifiedBirthday);
 			AtomEntry<Patient> updatedResult = testClient.update(Patient.class, originalPatientEntry.getResource(), testPatientId);
@@ -256,7 +257,7 @@ public class FHIRSimpleClientTest {
 		try {
 			loadPatientResource();
 			Patient patient = testClient.read(Patient.class, testPatientId).getResource();
-			DateTime modifiedBirthday = new DateTime();
+			DateTimeType modifiedBirthday = new DateTimeType();
 			modifiedBirthday.setValue(new DateAndTime("2009-08-08"));
 			patient.setBirthDate(modifiedBirthday);
 			AtomEntry<OperationOutcome> validate = testClient.validate(Patient.class, patient, testPatientId);
@@ -342,7 +343,7 @@ public class FHIRSimpleClientTest {
 	public void testSearchForSingleResource() {
 		Map<String, String> parameters = new HashMap<String, String>();
 		parameters.put("_count", "50");
-		parameters.put("gender", "F");
+		parameters.put("gender", "female");
 		parameters.put("birthdate", "2008-08-08");
 		AtomFeed feed = testClient.search(Patient.class, parameters);
 		assertTrue(feed != null);
@@ -696,17 +697,10 @@ public class FHIRSimpleClientTest {
 			name.setTextSimple(fullName);
 			name.addGivenSimple(givenName);
 			name.addFamilySimple(familyName);
-			DateTime birthday = new DateTime();
+			DateTimeType birthday = new DateTimeType();
 			birthday.setValue(new DateAndTime("2008-08-08"));
 			patient.setBirthDate(birthday);
-			Code genderCode = new Code();
-			genderCode.setValue("F");
-			Coding genderCoding = new Coding();
-			genderCoding.setCode(genderCode);
-			genderCoding.setSystemSimple("http://hl7.org/fhir/v3/AdministrativeGender");
-			CodeableConcept female = new CodeableConcept();
-			female.getCoding().add(genderCoding);
-			patient.setGender(female);
+			patient.setGenderSimple(AdministrativeGender.female); // This is now a Simple code value
 		} catch (ParseException e) {
 			e.printStackTrace();
 			fail();

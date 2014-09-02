@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -222,7 +222,7 @@ public class AllergyIntolerance extends Resource {
     /**
      * Date when the sensitivity was recorded.
      */
-    protected DateTime recordedDate;
+    protected DateTimeType recordedDate;
 
     /**
      * Status of the sensitivity.
@@ -279,7 +279,7 @@ public class AllergyIntolerance extends Resource {
     protected List<Observation> sensitivityTestTarget = new ArrayList<Observation>();
 
 
-    private static final long serialVersionUID = 943626914L;
+    private static final long serialVersionUID = -449872376L;
 
     public AllergyIntolerance() {
       super();
@@ -381,14 +381,14 @@ public class AllergyIntolerance extends Resource {
     /**
      * @return {@link #recordedDate} (Date when the sensitivity was recorded.)
      */
-    public DateTime getRecordedDate() { 
+    public DateTimeType getRecordedDate() { 
       return this.recordedDate;
     }
 
     /**
      * @param value {@link #recordedDate} (Date when the sensitivity was recorded.)
      */
-    public AllergyIntolerance setRecordedDate(DateTime value) { 
+    public AllergyIntolerance setRecordedDate(DateTimeType value) { 
       this.recordedDate = value;
       return this;
     }
@@ -408,7 +408,7 @@ public class AllergyIntolerance extends Resource {
         this.recordedDate = null;
       else {
         if (this.recordedDate == null)
-          this.recordedDate = new DateTime();
+          this.recordedDate = new DateTimeType();
         this.recordedDate.setValue(value);
       }
       return this;

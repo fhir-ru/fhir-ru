@@ -295,7 +295,7 @@ public class GeneratorUtils {
 		else if (name.equals("string"))
 			return "string";
 		else if (name.equals("uri"))
-			return "System.Uri";
+			return "string";
 		else if (name.equals("code"))
 			return "string";
 		else if (name.equals("oid"))
@@ -310,8 +310,10 @@ public class GeneratorUtils {
 			return "string";
 		else if (name.equals("date"))
 			return "string";
-		else if (name.equals("dateTime"))
-			return "string";
+    else if (name.equals("dateTime"))
+      return "string";
+    else if (name.equals("time"))
+      return "string";
 		else if (name.equals("idref"))
 			return "string";
 		else
@@ -348,8 +350,10 @@ public class GeneratorUtils {
 			return "XHtml";
 		else if (name.equals("xml:lang"))
 			return "FhirString";
-		else if (name.equals("date"))
-			return "Date";
+    else if (name.equals("date"))
+      return "Date";
+    else if (name.equals("time"))
+      return "Time";
 		else if (name.equals("dateTime"))
 			return "FhirDateTime";
 		else if (name.equals("idref"))

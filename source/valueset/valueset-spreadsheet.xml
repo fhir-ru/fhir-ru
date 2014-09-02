@@ -7,19 +7,21 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Lloyd</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2014-05-06T14:07:52Z</LastSaved>
+  <LastSaved>2014-08-06T21:37:15Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9585</WindowHeight>
+  <WindowHeight>9525</WindowHeight>
   <WindowWidth>18435</WindowWidth>
-  <WindowTopX>120</WindowTopX>
-  <WindowTopY>8610</WindowTopY>
+  <WindowTopX>405</WindowTopX>
+  <WindowTopY>855</WindowTopY>
+  <ActiveSheet>8</ActiveSheet>
+  <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -158,6 +160,12 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
+  <Style ss:ID="s88">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="47" x:FullColumns="1"
@@ -250,7 +258,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Indicates whether or not any change to the content logical definition may occur</Data></Cell>
     <Cell><Data ss:Type="String">If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Normally immutability is set to 'false', which is the default assumption if it is not populated.  Note that the implication is that if this is set to ‘true’, there may be only one Value Set Version for this Definition. Immutability tends to be set to ‘true’ in one of two cases:&#10;- Where the value set, by the nature of its usage, cannot change.  For example &quot;All specializations of ACT in ActClassCode&quot;&#10;- Where there's no safe way to express the &quot;Purpose&quot; such that someone else could safely make changes to the value set definition&#10;Source workflow control must guarantee that the same URI always yields the same definition&#10;</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Normally immutability is set to 'false', which is the default assumption if it is not populated.  Note that the implication is that if this is set to 'true', there may be only one Value Set Version for this Definition. Immutability tends to be set to 'true' in one of two cases:&#10;- Where the value set, by the nature of its usage, cannot change.  For example &quot;All specializations of ACT in ActClassCode&quot;&#10;- Where there's no safe way to express the &quot;Purpose&quot; such that someone else could safely make changes to the value set definition&#10;Source workflow control must guarantee that the same URI always yields the same definition&#10;</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">ValueSet.publisher</Data></Cell>
@@ -477,7 +485,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">The system the codes come from</Data></Cell>
     <Cell><Data ss:Type="String">The code system from which the selected codes come from</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">See [[Coding.system]] for further documentation</Data></Cell>
+    <Cell><Data ss:Type="String">See *Coding.system* for further documentation</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
     <Cell ss:Index="16" ss:StyleID="s75" ss:HRef="mailto:ODM/Study/MetaDataVersion/CodeList/ExternalCodeList/Href"><Data
       ss:Type="String">ODM/Study/MetaDataVersion/CodeList/ExternalCodeList/Href</Data></Cell>
@@ -636,13 +644,12 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>26</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>8</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -650,12 +657,16 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>31</ActiveRow>
+     <ActiveCol>12</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1081,14 +1092,14 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Profiles">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="108"/>
-   <Column ss:AutoFitWidth="0" ss:Width="237" ss:Span="1"/>
-   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="179.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="99"/>
-   <Column ss:AutoFitWidth="0" ss:Width="258.75"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s79" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s79" ss:AutoFitWidth="0" ss:Width="108"/>
+   <Column ss:StyleID="s79" ss:AutoFitWidth="0" ss:Width="237" ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s79" ss:AutoFitWidth="0" ss:Width="179.25"/>
+   <Column ss:StyleID="s79" ss:AutoFitWidth="0" ss:Width="99"/>
+   <Column ss:StyleID="s79" ss:AutoFitWidth="0" ss:Width="258.75"/>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Description</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Source</Data></Cell>
@@ -1103,11 +1114,157 @@
     <Cell><Data ss:Type="String">valueset-extensions.xml</Data></Cell>
     <Cell><Data ss:Type="String">spreadsheet</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Shareable Value Set</Data></Cell>
     <Cell><Data ss:Type="String">Expresses the basic rules for a value set to be published through the HL7 context</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">valueset-shareable-spreadsheet.xml</Data></Cell>
+    <Cell><Data ss:Type="String">valueset-shareable-spreadsheet.xml</Data></Cell>
+    <Cell><Data ss:Type="String">valueset-shareable.xml</Data></Cell>
     <Cell><Data ss:Type="String">spreadsheet</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">SDC Value Set</Data></Cell>
+    <Cell><Data ss:Type="String">Extensions and constraints on ValueSet for use with the Structured Data Capture (SDC) implementation guide</Data></Cell>
+    <Cell><Data ss:Type="String">valueset-sdc-profile-spreadsheet.xml</Data></Cell>
+    <Cell><Data ss:Type="String">valueset-sdc.xml</Data></Cell>
+    <Cell><Data ss:Type="String">spreadsheet</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>1</TopRowBottomPane>
+   <SplitVertical>1</SplitVertical>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <ActivePane>0</ActivePane>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+    </Pane>
+    <Pane>
+     <Number>1</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+    </Pane>
+    <Pane>
+     <Number>0</Number>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>0</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Examples">
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Width="66.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:Width="166.5"/>
+   <Column ss:Width="183"/>
+   <Column ss:Index="6" ss:Width="70.5"/>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Identity</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Filename</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Profile</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">In Book</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s79"><Data ss:Type="String">General</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">General ValueSet Example</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="Number">101</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-example.xml</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s79"><Data ss:Type="String">y</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s79"><Data ss:Type="String">DICOM DICM</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Codes defined by DICOM</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-dicom-dcim</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-dicom-dcim.xml</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s79"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Systems</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">A list of all the URIs defined in the FHIR spec</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-systems</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-systems.xml</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s79"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="s79"><Data ss:Type="String">sdc</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-example-sdc.xml</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s79"><Data ss:Type="String">SDC Value Set</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Events">
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="132" ss:Span="1"/>
+   <Column ss:Index="3" ss:Width="537"/>
+   <Column ss:AutoFitWidth="0" ss:Width="138"/>
+   <Column ss:AutoFitWidth="0" ss:Width="102"/>
+   <Column ss:AutoFitWidth="0" ss:Width="101.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="69.75"/>
+   <Row ss:AutoFitHeight="0" ss:Height="21" ss:StyleID="s66">
+    <Cell><Data ss:Type="String">Event Code</Data></Cell>
+    <Cell><Data ss:Type="String">Category</Data></Cell>
+    <Cell><Data ss:Type="String">Description</Data></Cell>
+    <Cell><Data ss:Type="String">Notes</Data></Cell>
+    <Cell><Data ss:Type="String">Request Resources</Data></Cell>
+    <Cell><Data ss:Type="String">Response Resources</Data></Cell>
+    <Cell><Data ss:Type="String">Follow Ups</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">valueset-expand</Data></Cell>
+    <Cell><Data ss:Type="String">currency</Data></Cell>
+    <Cell><Data ss:Type="String">The definition of a value set is used to create a simple collection of codes suitable for use for data entry or validation. An expanded value set will be returned, or an error message</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">ValueSet</Data></Cell>
+    <Cell><Data ss:Type="String">ValueSet</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">valueset-validate</Data></Cell>
+    <Cell><Data ss:Type="String">currency</Data></Cell>
+    <Cell><Data ss:Type="String">Validate that a coded value is in the set of codes allowed by a value set. The coded value is carried as an extension in the message header. The outcome is an OperationOutcome with hints, warnings, or errors. </Data></Cell>
+    <Cell><Data ss:Type="String">The coded value to validate is carried using the extension [[[http://hl7.org/fhir/Profile/general-extensions#codedSource]]]</Data></Cell>
+    <Cell><Data ss:Type="String">ValueSet</Data></Cell>
+    <Cell><Data ss:Type="String">OperationOutcome</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s79"/>
+    <Cell ss:StyleID="s79"/>
+    <Cell ss:StyleID="s79"/>
+    <Cell ss:StyleID="s79"/>
+    <Cell ss:StyleID="s79"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1128,41 +1285,138 @@
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+ <Worksheet ss:Name="Operations">
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="16" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Width="66.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:Width="166.5"/>
-   <Column ss:Width="183"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Description</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identity</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Filename</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">In Book</Data></Cell>
+   <Column ss:AutoFitWidth="0" ss:Width="92.25" ss:Span="1"/>
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="30"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="72.75" ss:Span="1"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s88">
+    <Cell><Data ss:Type="String">Name</Data></Cell>
+    <Cell><Data ss:Type="String">Use</Data></Cell>
+    <Cell><Data ss:Type="String">Min</Data></Cell>
+    <Cell><Data ss:Type="String">Max</Data></Cell>
+    <Cell><Data ss:Type="String">Type</Data></Cell>
+    <Cell><Data ss:Type="String">Title</Data></Cell>
+    <Cell><Data ss:Type="String">Documentation</Data></Cell>
+    <Cell><Data ss:Type="String">Footer</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">General</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">General ValueSet Example</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="Number">101</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-example.xml</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s79"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="String">expand</Data></Cell>
+    <Cell><Data ss:Type="String">Resource | Instance</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Value Set Expansion</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">The definition of a value set is used to create a simple collection of codes suitable for use for data entry or validation. &#10;&#10;If the operation is not called at the instance level, one of the in parameters identifier or valueset must be provided.&#10;&#10;An expanded value set will be returned, or an OperationOutcome with an error message</Data></Cell>
+    <Cell><Data ss:Type="String">The value set expansion returned by this query should be treated as a transient result that will change over time (whether it does or not depends on how the value set is specified), so applications should repeat the operation each time the value set is used.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">DICOM DICM</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Codes defined by DICOM</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-dicom-dcim</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-dicom-dcim.xml</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s79"/>
+    <Cell><Data ss:Type="String">expand.identifier</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A logical value set identifier (i.e. ValueSet.identifier). The server must know the value set (e.g. it is defined explicitly in the server's valuesets, or it is defined implicitly by some code system known to the server</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Systems</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">A list of all the URIs defined in the FHIR spec</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-systems</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">valueset-systems.xml</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s79"/>
+    <Cell><Data ss:Type="String">expand.valueSet</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">ValueSet</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The value set is provided directly as part of the request. Servers may choose not to accept value sets in this fashion</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">expand.filter</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A text filter that is applied to restrict the codes that are returned (this is useful in a UI context)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">expand.expansion</Data></Cell>
+    <Cell><Data ss:Type="String">out</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">ValueSet</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The result of the expansion</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">validate</Data></Cell>
+    <Cell><Data ss:Type="String">Resource | Instance</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Value Set based Validation</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Validate that a coded value is in the set of codes allowed by a value set.&#10;&#10;If the operation is not called at the instance level, one of the in parameters identifier or valueset must be provided.&#10;&#10;One (and only one) of the in parameters (code, coding, codeableConcept) must be provided. || The outcome is an OperationOutcome with hints, warnings, or errors. </Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">validate.identifier</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A logical value set identifier (i.e. ValueSet.identifier). The server must know the value set (e.g. it is defined explicitly in the server's valuesets, or it is defined implicitly by some code system known to the server</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">validate.valueSet</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">ValueSet</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The value set is provided directly as part of the request. Servers may choose not to accept value sets in this fashion</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">validate.code</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The code that is to be validated. If a code is provided, a system must be provided</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">validate.system</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The system for the code that is to be validated</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">validate.version</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The version of the system, if one was provided in the source data</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">validate.display</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The display associated with the code, if provided. If a display is provided a code must be provided. If no display is provided, the server cannot validate the display value, but may choose to return athe recommended display name in an extension in the outcome</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">validate.coding</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A coding to validate</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">validate.codeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A full codeableConcept to validate. The server returns true if one of the coding values is in the value set, and may also validate that the codings are not in conflict with each other</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">validate.outcome</Data></Cell>
+    <Cell><Data ss:Type="String">out</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">OperationOutcome</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The result of the validation. If there is no errors, the code is deemed to be validated ok</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1175,8 +1429,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

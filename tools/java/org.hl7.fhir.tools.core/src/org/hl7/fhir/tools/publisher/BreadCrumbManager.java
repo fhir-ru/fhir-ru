@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.hl7.fhir.instance.utils.Translations;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.Utilities;
@@ -17,6 +18,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class BreadCrumbManager {
+
+  
+  private Translations translations;
+
+  public BreadCrumbManager(Translations translations) {
+    super();
+    this.translations = translations;
+  }
 
   public class Node {
     
@@ -208,7 +217,7 @@ public class BreadCrumbManager {
 
   public String navlist(String name, String prefix) {
     StringBuilder b = new StringBuilder();
-    b.append("              <li><a href=\""+prefix+"index.html\">Home</a></li>\r\n");
+    b.append("              <li><a href=\""+prefix+"index.html\">"+translations.getMessage("HOME", "Home")+"</a></li>\r\n");
     for (Node n : home.getChildren()) {
       b.append("              <li><a href=\""+prefix+((Page) n).getFilename()+"\">"+((Page) n).getTitle()+"</a></li>\r\n");
     }
@@ -220,7 +229,7 @@ public class BreadCrumbManager {
     if (name.equals("index")) {
       b.append("        <li><b>Home</b></li>\r\n");      
     } else {
-      b.append("        <li><a href=\""+prefix+"index.html\">Home</a></li>\r\n");
+      b.append("        <li><a href=\""+prefix+"index.html\">"+translations.getMessage("HOME", "Home")+"</a></li>\r\n");
       name = name + ".html";
       if (map.containsKey(name)) {
         String[] path = map.get(name).split("\\.");
@@ -264,6 +273,17 @@ public class BreadCrumbManager {
           b.append("        <li><b>Example Instance</b></li>");
         else
           b.append("        <li><b>Profile Instance</b></li>");
+      } else if (type.startsWith("resource-questionnaire") && type.contains(":")) {
+        String[] path = map.get(type.substring(type.indexOf(":")+1).toLowerCase()).split("\\.");
+        Page focus = home;
+        for (int i = 0; i < path.length; i++) {
+          focus = getChild(focus, path[i]);
+          if (focus.type == PageType.resource)
+            b.append("        <li><a href=\""+prefix+focus.getResource().toLowerCase()+".html\">"+focus.getResource()+"</a></li>");
+          else
+            b.append("        <li><a href=\""+prefix+focus.getFilename()+"\">"+focus.getTitle()+"</a></li>");
+        }
+        b.append("        <li><b>Generated Questionnaire</b></li>");
       } else if (type.equals("valueset-instance") && name.contains(".")) {
         String[] path = map.get("terminologies-valuesets.html").split("\\.");
         Page focus = home;

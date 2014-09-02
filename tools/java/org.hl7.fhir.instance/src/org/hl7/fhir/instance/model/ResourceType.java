@@ -11,6 +11,7 @@ public enum ResourceType {
     MedicationDispense,
     MedicationPrescription,
     Slot,
+    Contraindication,
     AppointmentResponse,
     MedicationStatement,
     Composition,
@@ -45,7 +46,10 @@ public enum ResourceType {
     Encounter,
     SecurityEvent,
     List,
+    OperationDefinition,
     DeviceObservationReport,
+    ReferralRequest,
+    RiskAssessment,
     FamilyHistory,
     Location,
     AllergyIntolerance,
@@ -81,6 +85,8 @@ public enum ResourceType {
       return "medicationprescription";
     case Slot:
       return "slot";
+    case Contraindication:
+      return "contraindication";
     case AppointmentResponse:
       return "appointmentresponse";
     case MedicationStatement:
@@ -149,8 +155,14 @@ public enum ResourceType {
       return "securityevent";
     case List:
       return "list";
+    case OperationDefinition:
+      return "operationdefinition";
     case DeviceObservationReport:
       return "deviceobservationreport";
+    case ReferralRequest:
+      return "referralrequest";
+    case RiskAssessment:
+      return "riskassessment";
     case FamilyHistory:
       return "familyhistory";
     case Location:

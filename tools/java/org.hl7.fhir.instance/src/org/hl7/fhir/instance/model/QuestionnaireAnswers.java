@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -92,17 +92,17 @@ public class QuestionnaireAnswers extends Resource {
         /**
          * Identifies the group from the Questionnaire that corresponds to this group in the QuestionnaireAnswers resource.
          */
-        protected String_ linkId;
+        protected StringType linkId;
 
         /**
          * Text that is displayed above the contents of the group.
          */
-        protected String_ title;
+        protected StringType title;
 
         /**
          * Additional text for the group, used for display purposes.
          */
-        protected String_ text;
+        protected StringType text;
 
         /**
          * More specific subject this section's answers are about, details the subject given in QuestionnaireAnswers.
@@ -124,7 +124,7 @@ public class QuestionnaireAnswers extends Resource {
          */
         protected List<QuestionComponent> question = new ArrayList<QuestionComponent>();
 
-        private static final long serialVersionUID = -716843023L;
+        private static final long serialVersionUID = -885347240L;
 
       public GroupComponent() {
         super();
@@ -133,14 +133,14 @@ public class QuestionnaireAnswers extends Resource {
         /**
          * @return {@link #linkId} (Identifies the group from the Questionnaire that corresponds to this group in the QuestionnaireAnswers resource.)
          */
-        public String_ getLinkId() { 
+        public StringType getLinkId() { 
           return this.linkId;
         }
 
         /**
          * @param value {@link #linkId} (Identifies the group from the Questionnaire that corresponds to this group in the QuestionnaireAnswers resource.)
          */
-        public GroupComponent setLinkId(String_ value) { 
+        public GroupComponent setLinkId(StringType value) { 
           this.linkId = value;
           return this;
         }
@@ -160,7 +160,7 @@ public class QuestionnaireAnswers extends Resource {
             this.linkId = null;
           else {
             if (this.linkId == null)
-              this.linkId = new String_();
+              this.linkId = new StringType();
             this.linkId.setValue(value);
           }
           return this;
@@ -169,14 +169,14 @@ public class QuestionnaireAnswers extends Resource {
         /**
          * @return {@link #title} (Text that is displayed above the contents of the group.)
          */
-        public String_ getTitle() { 
+        public StringType getTitle() { 
           return this.title;
         }
 
         /**
          * @param value {@link #title} (Text that is displayed above the contents of the group.)
          */
-        public GroupComponent setTitle(String_ value) { 
+        public GroupComponent setTitle(StringType value) { 
           this.title = value;
           return this;
         }
@@ -196,7 +196,7 @@ public class QuestionnaireAnswers extends Resource {
             this.title = null;
           else {
             if (this.title == null)
-              this.title = new String_();
+              this.title = new StringType();
             this.title.setValue(value);
           }
           return this;
@@ -205,14 +205,14 @@ public class QuestionnaireAnswers extends Resource {
         /**
          * @return {@link #text} (Additional text for the group, used for display purposes.)
          */
-        public String_ getText() { 
+        public StringType getText() { 
           return this.text;
         }
 
         /**
          * @param value {@link #text} (Additional text for the group, used for display purposes.)
          */
-        public GroupComponent setText(String_ value) { 
+        public GroupComponent setText(StringType value) { 
           this.text = value;
           return this;
         }
@@ -232,7 +232,7 @@ public class QuestionnaireAnswers extends Resource {
             this.text = null;
           else {
             if (this.text == null)
-              this.text = new String_();
+              this.text = new StringType();
             this.text.setValue(value);
           }
           return this;
@@ -333,15 +333,15 @@ public class QuestionnaireAnswers extends Resource {
         /**
          * Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireAnswers resource.
          */
-        protected String_ linkId;
+        protected StringType linkId;
 
         /**
          * Text of the question as it is shown to the user.
          */
-        protected String_ text;
+        protected StringType text;
 
         /**
-         * The respondant's answer(s) to the question.
+         * The respondent's answer(s) to the question.
          */
         protected List<QuestionAnswerComponent> answer = new ArrayList<QuestionAnswerComponent>();
 
@@ -350,7 +350,7 @@ public class QuestionnaireAnswers extends Resource {
          */
         protected List<GroupComponent> group = new ArrayList<GroupComponent>();
 
-        private static final long serialVersionUID = -831149171L;
+        private static final long serialVersionUID = -296697363L;
 
       public QuestionComponent() {
         super();
@@ -359,14 +359,14 @@ public class QuestionnaireAnswers extends Resource {
         /**
          * @return {@link #linkId} (Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireAnswers resource.)
          */
-        public String_ getLinkId() { 
+        public StringType getLinkId() { 
           return this.linkId;
         }
 
         /**
          * @param value {@link #linkId} (Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireAnswers resource.)
          */
-        public QuestionComponent setLinkId(String_ value) { 
+        public QuestionComponent setLinkId(StringType value) { 
           this.linkId = value;
           return this;
         }
@@ -386,7 +386,7 @@ public class QuestionnaireAnswers extends Resource {
             this.linkId = null;
           else {
             if (this.linkId == null)
-              this.linkId = new String_();
+              this.linkId = new StringType();
             this.linkId.setValue(value);
           }
           return this;
@@ -395,14 +395,14 @@ public class QuestionnaireAnswers extends Resource {
         /**
          * @return {@link #text} (Text of the question as it is shown to the user.)
          */
-        public String_ getText() { 
+        public StringType getText() { 
           return this.text;
         }
 
         /**
          * @param value {@link #text} (Text of the question as it is shown to the user.)
          */
-        public QuestionComponent setText(String_ value) { 
+        public QuestionComponent setText(StringType value) { 
           this.text = value;
           return this;
         }
@@ -422,14 +422,14 @@ public class QuestionnaireAnswers extends Resource {
             this.text = null;
           else {
             if (this.text == null)
-              this.text = new String_();
+              this.text = new StringType();
             this.text.setValue(value);
           }
           return this;
         }
 
         /**
-         * @return {@link #answer} (The respondant's answer(s) to the question.)
+         * @return {@link #answer} (The respondent's answer(s) to the question.)
          */
         public List<QuestionAnswerComponent> getAnswer() { 
           return this.answer;
@@ -437,7 +437,7 @@ public class QuestionnaireAnswers extends Resource {
 
     // syntactic sugar
         /**
-         * @return {@link #answer} (The respondant's answer(s) to the question.)
+         * @return {@link #answer} (The respondent's answer(s) to the question.)
          */
         public QuestionAnswerComponent addAnswer() { 
           QuestionAnswerComponent t = new QuestionAnswerComponent();
@@ -466,7 +466,7 @@ public class QuestionnaireAnswers extends Resource {
           super.listChildren(childrenList);
           childrenList.add(new Property("linkId", "string", "Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireAnswers resource.", 0, java.lang.Integer.MAX_VALUE, linkId));
           childrenList.add(new Property("text", "string", "Text of the question as it is shown to the user.", 0, java.lang.Integer.MAX_VALUE, text));
-          childrenList.add(new Property("answer", "", "The respondant's answer(s) to the question.", 0, java.lang.Integer.MAX_VALUE, answer));
+          childrenList.add(new Property("answer", "", "The respondent's answer(s) to the question.", 0, java.lang.Integer.MAX_VALUE, answer));
           childrenList.add(new Property("group", "@QuestionnaireAnswers.group", "Nested group, containing nested question for this question. The order of groups within the question is relevant.", 0, java.lang.Integer.MAX_VALUE, group));
         }
 
@@ -489,9 +489,9 @@ public class QuestionnaireAnswers extends Resource {
         /**
          * Single-valued answer to the question.
          */
-        protected org.hl7.fhir.instance.model.Type value;
+        protected Type value;
 
-        private static final long serialVersionUID = -1848069669L;
+        private static final long serialVersionUID = -732981989L;
 
       public QuestionAnswerComponent() {
         super();
@@ -500,21 +500,21 @@ public class QuestionnaireAnswers extends Resource {
         /**
          * @return {@link #value} (Single-valued answer to the question.)
          */
-        public org.hl7.fhir.instance.model.Type getValue() { 
+        public Type getValue() { 
           return this.value;
         }
 
         /**
          * @param value {@link #value} (Single-valued answer to the question.)
          */
-        public QuestionAnswerComponent setValue(org.hl7.fhir.instance.model.Type value) { 
+        public QuestionAnswerComponent setValue(Type value) { 
           this.value = value;
           return this;
         }
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("value[x]", "*", "Single-valued answer to the question.", 0, java.lang.Integer.MAX_VALUE, value));
+          childrenList.add(new Property("value[x]", "boolean|decimal|integer|date|dateTime|instant|time|string|Attachment|Coding|Quantity", "Single-valued answer to the question.", 0, java.lang.Integer.MAX_VALUE, value));
         }
 
       public QuestionAnswerComponent copy() {
@@ -524,6 +524,11 @@ public class QuestionnaireAnswers extends Resource {
       }
 
   }
+
+    /**
+     * A business identifier assigned to a particular completed (or partially completed) questionnaire.
+     */
+    protected Identifier identifier;
 
     /**
      * Indicates the Questionnaire resource that defines the form for which answers are being provided.
@@ -563,7 +568,7 @@ public class QuestionnaireAnswers extends Resource {
     /**
      * The date and/or time that this version of the questionnaire answers was authored.
      */
-    protected DateTime authored;
+    protected DateTimeType authored;
 
     /**
      * The person who answered the questions about the subject. Only used when this is not the subject him/herself.
@@ -590,16 +595,31 @@ public class QuestionnaireAnswers extends Resource {
      */
     protected GroupComponent group;
 
-    private static final long serialVersionUID = 1853002169L;
+    private static final long serialVersionUID = 1656433257L;
 
     public QuestionnaireAnswers() {
       super();
     }
 
-    public QuestionnaireAnswers(Enumeration<QuestionnaireAnswersStatus> status, DateTime authored) {
+    public QuestionnaireAnswers(Enumeration<QuestionnaireAnswersStatus> status, DateTimeType authored) {
       super();
       this.status = status;
       this.authored = authored;
+    }
+
+    /**
+     * @return {@link #identifier} (A business identifier assigned to a particular completed (or partially completed) questionnaire.)
+     */
+    public Identifier getIdentifier() { 
+      return this.identifier;
+    }
+
+    /**
+     * @param value {@link #identifier} (A business identifier assigned to a particular completed (or partially completed) questionnaire.)
+     */
+    public QuestionnaireAnswers setIdentifier(Identifier value) { 
+      this.identifier = value;
+      return this;
     }
 
     /**
@@ -727,14 +747,14 @@ public class QuestionnaireAnswers extends Resource {
     /**
      * @return {@link #authored} (The date and/or time that this version of the questionnaire answers was authored.)
      */
-    public DateTime getAuthored() { 
+    public DateTimeType getAuthored() { 
       return this.authored;
     }
 
     /**
      * @param value {@link #authored} (The date and/or time that this version of the questionnaire answers was authored.)
      */
-    public QuestionnaireAnswers setAuthored(DateTime value) { 
+    public QuestionnaireAnswers setAuthored(DateTimeType value) { 
       this.authored = value;
       return this;
     }
@@ -751,7 +771,7 @@ public class QuestionnaireAnswers extends Resource {
      */
     public QuestionnaireAnswers setAuthoredSimple(DateAndTime value) { 
         if (this.authored == null)
-          this.authored = new DateTime();
+          this.authored = new DateTimeType();
         this.authored.setValue(value);
       return this;
     }
@@ -833,6 +853,7 @@ public class QuestionnaireAnswers extends Resource {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
+        childrenList.add(new Property("identifier", "Identifier", "A business identifier assigned to a particular completed (or partially completed) questionnaire.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("questionnaire", "Resource(Questionnaire)", "Indicates the Questionnaire resource that defines the form for which answers are being provided.", 0, java.lang.Integer.MAX_VALUE, questionnaire));
         childrenList.add(new Property("status", "code", "The lifecycle status of the questionnaire answers as a whole.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("subject", "Resource(Any)", "The subject of the questionnaire answers.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information.", 0, java.lang.Integer.MAX_VALUE, subject));
@@ -845,6 +866,7 @@ public class QuestionnaireAnswers extends Resource {
 
       public QuestionnaireAnswers copy() {
         QuestionnaireAnswers dst = new QuestionnaireAnswers();
+        dst.identifier = identifier == null ? null : identifier.copy();
         dst.questionnaire = questionnaire == null ? null : questionnaire.copy();
         dst.status = status == null ? null : status.copy();
         dst.subject = subject == null ? null : subject.copy();

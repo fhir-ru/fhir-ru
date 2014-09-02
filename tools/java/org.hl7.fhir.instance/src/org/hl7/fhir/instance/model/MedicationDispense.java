@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -138,12 +138,12 @@ public class MedicationDispense extends Resource {
         /**
          * The time when the dispensed product was packaged and reviewed.
          */
-        protected DateTime whenPrepared;
+        protected DateTimeType whenPrepared;
 
         /**
          * The time the dispensed product was provided to the patient or their representative.
          */
-        protected DateTime whenHandedOver;
+        protected DateTimeType whenHandedOver;
 
         /**
          * Identification of the facility/location where the medication was shipped to, as part of the dispense event.
@@ -170,7 +170,7 @@ public class MedicationDispense extends Resource {
          */
         protected List<MedicationDispenseDispenseDosageComponent> dosage = new ArrayList<MedicationDispenseDispenseDosageComponent>();
 
-        private static final long serialVersionUID = 1523629260L;
+        private static final long serialVersionUID = -557541864L;
 
       public MedicationDispenseDispenseComponent() {
         super();
@@ -290,14 +290,14 @@ public class MedicationDispense extends Resource {
         /**
          * @return {@link #whenPrepared} (The time when the dispensed product was packaged and reviewed.)
          */
-        public DateTime getWhenPrepared() { 
+        public DateTimeType getWhenPrepared() { 
           return this.whenPrepared;
         }
 
         /**
          * @param value {@link #whenPrepared} (The time when the dispensed product was packaged and reviewed.)
          */
-        public MedicationDispenseDispenseComponent setWhenPrepared(DateTime value) { 
+        public MedicationDispenseDispenseComponent setWhenPrepared(DateTimeType value) { 
           this.whenPrepared = value;
           return this;
         }
@@ -317,7 +317,7 @@ public class MedicationDispense extends Resource {
             this.whenPrepared = null;
           else {
             if (this.whenPrepared == null)
-              this.whenPrepared = new DateTime();
+              this.whenPrepared = new DateTimeType();
             this.whenPrepared.setValue(value);
           }
           return this;
@@ -326,14 +326,14 @@ public class MedicationDispense extends Resource {
         /**
          * @return {@link #whenHandedOver} (The time the dispensed product was provided to the patient or their representative.)
          */
-        public DateTime getWhenHandedOver() { 
+        public DateTimeType getWhenHandedOver() { 
           return this.whenHandedOver;
         }
 
         /**
          * @param value {@link #whenHandedOver} (The time the dispensed product was provided to the patient or their representative.)
          */
-        public MedicationDispenseDispenseComponent setWhenHandedOver(DateTime value) { 
+        public MedicationDispenseDispenseComponent setWhenHandedOver(DateTimeType value) { 
           this.whenHandedOver = value;
           return this;
         }
@@ -353,7 +353,7 @@ public class MedicationDispense extends Resource {
             this.whenHandedOver = null;
           else {
             if (this.whenHandedOver == null)
-              this.whenHandedOver = new DateTime();
+              this.whenHandedOver = new DateTimeType();
             this.whenHandedOver.setValue(value);
           }
           return this;

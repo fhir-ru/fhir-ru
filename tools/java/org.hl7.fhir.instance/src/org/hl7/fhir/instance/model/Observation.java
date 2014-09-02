@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -300,9 +300,9 @@ public class Observation extends Resource {
         /**
          * Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of "Negative" or a list or table of 'normals'.
          */
-        protected String_ text;
+        protected StringType text;
 
-        private static final long serialVersionUID = 801418099L;
+        private static final long serialVersionUID = 230621180L;
 
       public ObservationReferenceRangeComponent() {
         super();
@@ -371,14 +371,14 @@ public class Observation extends Resource {
         /**
          * @return {@link #text} (Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of "Negative" or a list or table of 'normals'.)
          */
-        public String_ getText() { 
+        public StringType getText() { 
           return this.text;
         }
 
         /**
          * @param value {@link #text} (Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of "Negative" or a list or table of 'normals'.)
          */
-        public ObservationReferenceRangeComponent setText(String_ value) { 
+        public ObservationReferenceRangeComponent setText(StringType value) { 
           this.text = value;
           return this;
         }
@@ -398,7 +398,7 @@ public class Observation extends Resource {
             this.text = null;
           else {
             if (this.text == null)
-              this.text = new String_();
+              this.text = new StringType();
             this.text.setValue(value);
           }
           return this;
@@ -551,7 +551,7 @@ public class Observation extends Resource {
     /**
      * May include statements about significant, unexpected or unreliable values, or information about the source of the value where this may be relevant to the interpretation of the result.
      */
-    protected String_ comments;
+    protected StringType comments;
 
     /**
      * The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.
@@ -561,7 +561,7 @@ public class Observation extends Resource {
     /**
      * Date/Time this was made available.
      */
-    protected Instant issued;
+    protected InstantType issued;
 
     /**
      * The status of the result value.
@@ -619,6 +619,16 @@ public class Observation extends Resource {
 
 
     /**
+     * The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.
+     */
+    protected ResourceReference encounter;
+
+    /**
+     * The actual object that is the target of the reference (The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.)
+     */
+    protected Encounter encounterTarget;
+
+    /**
      * Guidance on how to interpret the value by comparison to a normal or recommended range.
      */
     protected List<ObservationReferenceRangeComponent> referenceRange = new ArrayList<ObservationReferenceRangeComponent>();
@@ -628,7 +638,7 @@ public class Observation extends Resource {
      */
     protected List<ObservationRelatedComponent> related = new ArrayList<ObservationRelatedComponent>();
 
-    private static final long serialVersionUID = -757546248L;
+    private static final long serialVersionUID = -1164054480L;
 
     public Observation() {
       super();
@@ -689,14 +699,14 @@ public class Observation extends Resource {
     /**
      * @return {@link #comments} (May include statements about significant, unexpected or unreliable values, or information about the source of the value where this may be relevant to the interpretation of the result.)
      */
-    public String_ getComments() { 
+    public StringType getComments() { 
       return this.comments;
     }
 
     /**
      * @param value {@link #comments} (May include statements about significant, unexpected or unreliable values, or information about the source of the value where this may be relevant to the interpretation of the result.)
      */
-    public Observation setComments(String_ value) { 
+    public Observation setComments(StringType value) { 
       this.comments = value;
       return this;
     }
@@ -716,7 +726,7 @@ public class Observation extends Resource {
         this.comments = null;
       else {
         if (this.comments == null)
-          this.comments = new String_();
+          this.comments = new StringType();
         this.comments.setValue(value);
       }
       return this;
@@ -740,14 +750,14 @@ public class Observation extends Resource {
     /**
      * @return {@link #issued} (Date/Time this was made available.)
      */
-    public Instant getIssued() { 
+    public InstantType getIssued() { 
       return this.issued;
     }
 
     /**
      * @param value {@link #issued} (Date/Time this was made available.)
      */
-    public Observation setIssued(Instant value) { 
+    public Observation setIssued(InstantType value) { 
       this.issued = value;
       return this;
     }
@@ -767,7 +777,7 @@ public class Observation extends Resource {
         this.issued = null;
       else {
         if (this.issued == null)
-          this.issued = new Instant();
+          this.issued = new InstantType();
         this.issued.setValue(value);
       }
       return this;
@@ -967,6 +977,36 @@ public class Observation extends Resource {
     }
 
     /**
+     * @return {@link #encounter} (The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.)
+     */
+    public ResourceReference getEncounter() { 
+      return this.encounter;
+    }
+
+    /**
+     * @param value {@link #encounter} (The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.)
+     */
+    public Observation setEncounter(ResourceReference value) { 
+      this.encounter = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #encounter} (The actual object that is the target of the reference. The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.)
+     */
+    public Encounter getEncounterTarget() { 
+      return this.encounterTarget;
+    }
+
+    /**
+     * @param value {@link #encounter} (The actual object that is the target of the reference. The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.)
+     */
+    public Observation setEncounterTarget(Encounter value) { 
+      this.encounterTarget = value;
+      return this;
+    }
+
+    /**
      * @return {@link #referenceRange} (Guidance on how to interpret the value by comparison to a normal or recommended range.)
      */
     public List<ObservationReferenceRangeComponent> getReferenceRange() { 
@@ -1003,7 +1043,7 @@ public class Observation extends Resource {
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("name", "CodeableConcept", "Describes what was observed. Sometimes this is called the observation 'code'.", 0, java.lang.Integer.MAX_VALUE, name));
-        childrenList.add(new Property("value[x]", "Quantity|CodeableConcept|Attachment|Ratio|dateTime|Period|SampledData|string", "The information determined as a result of making the observation, if the information has a simple value.", 0, java.lang.Integer.MAX_VALUE, value));
+        childrenList.add(new Property("value[x]", "Quantity|CodeableConcept|Attachment|Ratio|dateTime|Period|SampledData|string|time", "The information determined as a result of making the observation, if the information has a simple value.", 0, java.lang.Integer.MAX_VALUE, value));
         childrenList.add(new Property("interpretation", "CodeableConcept", "The assessment made based on the result of the observation.", 0, java.lang.Integer.MAX_VALUE, interpretation));
         childrenList.add(new Property("comments", "string", "May include statements about significant, unexpected or unreliable values, or information about the source of the value where this may be relevant to the interpretation of the result.", 0, java.lang.Integer.MAX_VALUE, comments));
         childrenList.add(new Property("applies[x]", "dateTime|Period", "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the 'physiologically relevant time'. This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.", 0, java.lang.Integer.MAX_VALUE, applies));
@@ -1016,6 +1056,7 @@ public class Observation extends Resource {
         childrenList.add(new Property("subject", "Resource(Patient|Group|Device|Location)", "The thing the observation is being made about.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("specimen", "Resource(Specimen)", "The specimen that was used when this observation was made.", 0, java.lang.Integer.MAX_VALUE, specimen));
         childrenList.add(new Property("performer", "Resource(Practitioner|Device|Organization|Patient)", "Who was responsible for asserting the observed value as 'true'.", 0, java.lang.Integer.MAX_VALUE, performer));
+        childrenList.add(new Property("encounter", "Resource(Encounter)", "The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.", 0, java.lang.Integer.MAX_VALUE, encounter));
         childrenList.add(new Property("referenceRange", "", "Guidance on how to interpret the value by comparison to a normal or recommended range.", 0, java.lang.Integer.MAX_VALUE, referenceRange));
         childrenList.add(new Property("related", "", "Related observations - either components, or previous observations, or statements of derivation.", 0, java.lang.Integer.MAX_VALUE, related));
       }
@@ -1038,6 +1079,7 @@ public class Observation extends Resource {
         dst.performer = new ArrayList<ResourceReference>();
         for (ResourceReference i : performer)
           dst.performer.add(i.copy());
+        dst.encounter = encounter == null ? null : encounter.copy();
         dst.referenceRange = new ArrayList<ObservationReferenceRangeComponent>();
         for (ObservationReferenceRangeComponent i : referenceRange)
           dst.referenceRange.add(i.copy());

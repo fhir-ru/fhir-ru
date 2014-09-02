@@ -7,19 +7,20 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Ewout Kramer</LastAuthor>
+  <LastAuthor>Brian Postlethwaite</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
-  <LastSaved>2013-10-21T14:42:26Z</LastSaved>
-  <Version>14.00</Version>
+  <LastSaved>2014-08-26T20:49:42Z</LastSaved>
+  <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>2055</WindowHeight>
-  <WindowWidth>10935</WindowWidth>
-  <WindowTopX>8265</WindowTopX>
-  <WindowTopY>6420</WindowTopY>
+  <WindowHeight>7590</WindowHeight>
+  <WindowWidth>16155</WindowWidth>
+  <WindowTopX>1140</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ActiveSheet>7</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -154,9 +155,15 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
+  <Style ss:ID="s88">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#FFFF00" ss:Pattern="Solid"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="35" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="36" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s64" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="215.25"/>
@@ -259,9 +266,9 @@
     <Cell ss:StyleID="s72"/>
     <Cell ss:StyleID="s71"/>
     <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">AdministrativeGender</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Gender for administrative purposes</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">male | female | other | unknown</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes. </Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Needed for identification of the individual, in combination with (at least) name and birth date. Gender of individual drives many clinical processes.</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
@@ -477,9 +484,9 @@
     <Cell ss:StyleID="s72"/>
     <Cell ss:StyleID="s72"/>
     <Cell ss:StyleID="s72"/>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">AdministrativeGender</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Gender for administrative purposes</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">male | female | other | unknown</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes. </Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">Needed to address the person correctly</Data></Cell>
     <Cell ss:StyleID="s72"/>
@@ -505,6 +512,22 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s72"><Data ss:Type="String">scoper</Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="String">NK1-13, NK1-30, NK1-31, NK1-32, NK1-41</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s88"><Data ss:Type="String">!Patient.contact.period</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String" x:Ticked="1">period</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">date range that this contact is </Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s76"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -791,13 +814,12 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>9</LeftColumnRightPane>
+   <LeftColumnRightPane>6</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -812,8 +834,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>17</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -862,7 +884,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1097,7 +1119,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s82" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s82" ss:AutoFitWidth="0" ss:Width="114.75"/>
@@ -1156,14 +1178,6 @@
     <Cell ss:StyleID="s81"/>
     <Cell ss:StyleID="s81"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:Index="6" ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s81"/>
-    <Cell ss:StyleID="s81"/>
-    <Cell ss:StyleID="s81"/>
-    <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s85"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s81"/>
@@ -1195,7 +1209,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>5</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1204,7 +1218,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="15" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="16" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:AutoFitWidth="0" ss:Width="248.25"/>
@@ -1317,6 +1331,13 @@
     <Cell><Data ss:Type="String">patient-glossy-example.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Proband</Data></Cell>
+    <Cell><Data ss:Type="String">Genetic Risk Assessment Person</Data></Cell>
+    <Cell><Data ss:Type="String">proband</Data></Cell>
+    <Cell><Data ss:Type="String">patient-example-proband.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -1334,8 +1355,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>14</ActiveRow>
-     <RangeSelection>R15C1:R15C6</RangeSelection>
+     <ActiveRow>16</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1344,19 +1364,27 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Profiles">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="1" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Width="81"/>
-   <Column ss:AutoFitWidth="0" ss:Width="198"/>
-   <Column ss:Width="212.25"/>
+   <Column ss:Width="238.5" ss:Span="1"/>
+   <Column ss:Index="4" ss:Width="212.25"/>
    <Column ss:Width="63"/>
    <Column ss:Width="194.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s87"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Source</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Filename</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Example</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">daf-patient</Data></Cell>
+    <Cell><Data ss:Type="String">U.S. Data Access Framework (DAF) patient profile</Data></Cell>
+    <Cell><Data ss:Type="String">patient-daf-profile-spreadsheet.xml</Data></Cell>
+    <Cell><Data ss:Type="String">patient-daf.xml</Data></Cell>
+    <Cell><Data ss:Type="String">spreadsheet</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1366,11 +1394,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2</RangeSelection>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

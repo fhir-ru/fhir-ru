@@ -7,10 +7,10 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:17:14Z</Created>
-  <LastSaved>2014-06-23T08:21:34Z</LastSaved>
-  <Version>14.00</Version>
+  <LastSaved>2014-07-20T00:04:15Z</LastSaved>
+  <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -20,7 +20,6 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>6225</WindowTopX>
   <WindowTopY>1485</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -241,10 +240,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>9</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -893,7 +893,6 @@
     <HorizontalResolution>-3</HorizontalResolution>
     <VerticalResolution>-3</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1097,7 +1096,6 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

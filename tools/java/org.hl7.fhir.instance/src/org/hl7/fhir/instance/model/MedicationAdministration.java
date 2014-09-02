@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -359,7 +359,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * Set this to true if the record is saying that the medication was NOT administered.
      */
-    protected Boolean wasNotGiven;
+    protected BooleanType wasNotGiven;
 
     /**
      * A code indicating why the administration was not performed.
@@ -396,7 +396,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
      */
     protected List<MedicationAdministrationDosageComponent> dosage = new ArrayList<MedicationAdministrationDosageComponent>();
 
-    private static final long serialVersionUID = 2062088320L;
+    private static final long serialVersionUID = -1505926298L;
 
     public MedicationAdministration() {
       super();
@@ -583,14 +583,14 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #wasNotGiven} (Set this to true if the record is saying that the medication was NOT administered.)
      */
-    public Boolean getWasNotGiven() { 
+    public BooleanType getWasNotGiven() { 
       return this.wasNotGiven;
     }
 
     /**
      * @param value {@link #wasNotGiven} (Set this to true if the record is saying that the medication was NOT administered.)
      */
-    public MedicationAdministration setWasNotGiven(Boolean value) { 
+    public MedicationAdministration setWasNotGiven(BooleanType value) { 
       this.wasNotGiven = value;
       return this;
     }
@@ -610,7 +610,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
         this.wasNotGiven = null;
       else {
         if (this.wasNotGiven == null)
-          this.wasNotGiven = new Boolean();
+          this.wasNotGiven = new BooleanType();
         this.wasNotGiven.setValue(value);
       }
       return this;

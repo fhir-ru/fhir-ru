@@ -18,7 +18,7 @@
 <h3>Summary</h3>
 
 <table class="grid">
- <tr><td>Source</td><td>LOINC is made available at <a href="http://loinc.org">http://loinc.org</a></td></tr>
+ <tr><td>Source</td><td>LOINC is made available by the <a href="https://www.regenstrief.org/">Regenstrief Institute</a> at <a href="http://loinc.org">http://loinc.org</a></td></tr>
  <tr><td>System</td><td>The URI <a href="http://loinc.org">http://loinc.org</a> identifies LOINC codes</td></tr>
  <tr><td>Version</td><td>Where a version is used, it should be the standard LOINC version e.g. 2.48</td></tr>
  <tr><td>Code</td><td>The LOINC Code Identifier e.g. 21176-3. LOINC codes are not case sensitive</td></tr>
@@ -63,11 +63,16 @@ Part codes are the same LOINC URI (http://loinc.org), and SHALL be represented i
 
 <h3>LOINC Filter Properties</h3>
 
+<p>
+This section documents the property filters that can be used with the LOINC 
+code system in value set composition statements.
+</p>
+
 <h4>LOINC Property filter</h4>
 
 <table class="grid">
  <tr><td>Description</td><td>Allows the selection of a set of LOINC codes with a common property value</td></tr>
- <tr><td>Property Name</td><td>The names listed in the "Field Name" column in LOINC Database Structure (Appendix A of the LOINC manual)</td></tr>
+ <tr><td>Property Name</td><td>One of the names listed in the "Field Name" column in LOINC Database Structure (Appendix A of the LOINC manual)</td></tr>
  <tr><td>Operations Allowed</td><td>= / regex</td></tr>
  <tr><td>Values Allowed</td><td>[string value]</td></tr>
  <tr><td>Comments</td><td>The 6 properties COMPONENT, PROPERTY, TIME_ASPCT, SYSTEM, SCALE_TYP, and METHOD_TYP are most likely to be useful.</td></tr>
@@ -80,13 +85,13 @@ Part codes are the same LOINC URI (http://loinc.org), and SHALL be represented i
  <tr><td>Property Name</td><td>copyright</td></tr>
  <tr><td>Operations Allowed</td><td>=</td></tr>
  <tr><td>Values Allowed</td><td>LOINC | 3rdParty | All</td></tr>
- <tr><td>Comments</td><td>LOINC = only codes copyrighted by LOINC. 3rdParty = only codes copyrighted by 3rd parties</td></tr>
+ <tr><td>Comments</td><td>LOINC = only codes with a sole copyright by Regenstrief. 3rdParty = only codes with a 3rd party copyright in addition to the one from Regenstrief.</td></tr>
 </table>
 
-<h4>Multi-Axial Heirarchy</h4>
+<h4>Multi-Axial Hierarchy</h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows for the selection of a set of codes base on their appearance in the LOINC multi-axial heirarchy </td></tr>
+ <tr><td>Description</td><td>Allows for the selection of a set of codes base on their appearance in the LOINC multi-axial hierarchy </td></tr>
  <tr><td>Property Name</td><td>parent | ancestor</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>Part Code (or, for "in", multiple part codes separated by commas)</td></tr>
@@ -98,6 +103,58 @@ Part codes are the same LOINC URI (http://loinc.org), and SHALL be represented i
 Document.Kind, Document.TypeOfService, Document.Setting, Document.Role, and Document.SubjectMatterDomain
 -->
 
+<h3>Implicit Value Sets</h3>
+
+<p>
+Implicit value sets are those whose specification can predicted based on the grammar of the 
+underlying code system, and the known structure of the URL that refers to them. LOINC
+defines one sets of implicit value sets: By Multi-Axial Hierarchy Entry.
+</p>
+<p>
+If any value set resources exist with an identifier that conforms to the URL patterns specified below,
+the content of the resource must conform to the template provided. Profiles and other value set
+references are allowed to reference these value sets directly. <i>todo: can LOINC actually host a service that returns these?</i>
+</p>
+
+<p>
+The value set identifier http://loinc.org/vs is a value set that contains all LOINC codes.
+</p>
+
+<h4>Multi-Axial Hierarchy Entry</h4>
+
+<p>
+A value set with an identifier of "http://loinc.org/vs/[partcode]" must 
+conform to this template, where [partcode] is a part code from the 
+multi-axial hierarchy:
+</p>
+<pre>
+&lt;ValueSet xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+  &lt;text&gt;
+    &lt;status value=&quot;generated&quot;/&gt;
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+      [some html that identifies that this value set 
+      includes all LOINC codes subsumed by the identified 
+      Multi-Axial Heirarchy Part Code]
+    &lt;/div&gt;
+  &lt;/text&gt;
+  &lt;identifier value=&quot;http://loinc.org/vs/[partcode]&quot;/&gt;
+  &lt;version value=&quot;[optional - but strongly recommended - LOINC version]&quot;/&gt;
+  &lt;name value=&quot;LOINC Value Set from Multi-Axial Heirarchy code [partcode]&quot;/&gt;
+  &lt;description value=&quot;All LOINC codes for [partcode or name]&quot;/&gt;
+  &lt;status value=&quot;active&quot;/&gt;
+  &lt;date value=&quot;[optional date of LOINC release]&quot;/&gt;
+  &lt;compose&gt;
+    &lt;include&gt;
+      &lt;system value=&quot;http://loinc.org&quot;/&gt;
+      &lt;filter&gt;
+        &lt;property value=&quot;ancestor&quot;/&gt;
+        &lt;op value=&quot;=&quot;/&gt;
+        &lt;value value=&quot;[partcode]&quot;/&gt;
+      &lt;/filter&gt;
+    &lt;/include&gt;
+  &lt;/compose&gt;
+&lt;/ValueSet&gt;
+</pre>
 
 
 </div>

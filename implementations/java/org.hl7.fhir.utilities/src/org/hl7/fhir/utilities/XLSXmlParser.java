@@ -37,6 +37,7 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -73,6 +74,12 @@ public class XLSXmlParser {
       else
         return rows.get(row).get(c).trim();
     }
+
+    public List<Row> getRows() {
+      return rows;
+    }
+    
+    
   }
   
   private Map<String, Sheet> sheets;
@@ -160,11 +167,12 @@ public class XLSXmlParser {
   }
 
   private String readData(Element cell, int col, String s) throws Exception {
-    NodeList data = cell.getElementsByTagNameNS(XLS_NS, "Data");
-    if (data.getLength() == 0)
+    List<Element> data = new ArrayList<Element>(); 
+    XMLUtil.getNamedChildren(cell, "Data", data); // cell.getElementsByTagNameNS(XLS_NS, "Data");
+    if (data.size() == 0)
       return "";
-    check(data.getLength() == 1, "Multiple Data encountered ("+Integer.toString(data.getLength())+" @ col "+Integer.toString(col)+" - "+cell.getTextContent()+" ("+s+"))");
-    Element d = (Element) data.item(0);
+    check(data.size() == 1, "Multiple Data encountered ("+Integer.toString(data.size())+" @ col "+Integer.toString(col)+" - "+cell.getTextContent()+" ("+s+"))");
+    Element d = data.get(0);
     String type = d.getAttributeNS(XLS_NS, "Type");
     if ("Boolean".equals(type)) {
       if (d.getTextContent().equals("1"))
@@ -177,6 +185,8 @@ public class XLSXmlParser {
       return d.getTextContent();
     } else if ("DateTime".equals(type)) {
       return d.getTextContent();
+    } else if ("Error".equals(type)) {
+      return null;
     } else 
       throw new Exception("Cell Type is not known ("+d.getAttributeNodeNS(XLS_NS, "Type")+") in "+getLocation());
   }

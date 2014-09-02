@@ -44,9 +44,9 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 /**
  * General parser for JSON content. You instantiate an JsonParser of these, but you 
  * actually use parse or parseGeneral defined on this class
@@ -72,9 +72,9 @@ public abstract class JsonParserBase extends ParserBase implements Parser {
     
     String rt = json.get("resourceType").getAsString();
 		if ("Bundle".equals(rt))
-      r.feed = parseAtom(json);
+      r.setFeed(parseAtom(json));
     else  
-      r.resource = parseResource(json);
+      r.setResource(parseResource(json));
     return r;    
   }
 
@@ -96,8 +96,8 @@ public abstract class JsonParserBase extends ParserBase implements Parser {
   }
 
   protected void parseElementProperties(JsonObject json, Element e) throws Exception {
-    if (json != null && json.has("_id"))
-      e.setXmlId(json.get("_id").getAsString());
+    if (json != null && json.has("id"))
+      e.setXmlId(json.get("id").getAsString());
     if (!Utilities.noString(e.getXmlId()))
       idMap.put(e.getXmlId(), e);
   }

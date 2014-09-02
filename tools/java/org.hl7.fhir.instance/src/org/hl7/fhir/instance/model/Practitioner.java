@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -38,7 +38,70 @@ import java.util.*;
  */
 public class Practitioner extends Resource {
 
+    public enum AdministrativeGender {
+        M, // Male
+        F, // Female
+        O, // Other
+        U, // Unknown
+        Null; // added to help the parsers
+        public static AdministrativeGender fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("M".equals(codeString))
+          return M;
+        if ("F".equals(codeString))
+          return F;
+        if ("O".equals(codeString))
+          return O;
+        if ("U".equals(codeString))
+          return U;
+        throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case M: return "M";
+            case F: return "F";
+            case O: return "O";
+            case U: return "U";
+            default: return "?";
+          }
+        }
+    }
+
+  public static class AdministrativeGenderEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("M".equals(codeString))
+          return AdministrativeGender.M;
+        if ("F".equals(codeString))
+          return AdministrativeGender.F;
+        if ("O".equals(codeString))
+          return AdministrativeGender.O;
+        if ("U".equals(codeString))
+          return AdministrativeGender.U;
+        throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == AdministrativeGender.M)
+        return "M";
+      if (code == AdministrativeGender.F)
+        return "F";
+      if (code == AdministrativeGender.O)
+        return "O";
+      if (code == AdministrativeGender.U)
+        return "U";
+      return "?";
+      }
+    }
+
     public static class PractitionerQualificationComponent extends BackboneElement {
+        /**
+         * An identifier that applies to this person's qualification in this role.
+         */
+        protected List<Identifier> identifier = new ArrayList<Identifier>();
+
         /**
          * Coded representation of the qualification.
          */
@@ -59,7 +122,7 @@ public class Practitioner extends Resource {
          */
         protected Organization issuerTarget;
 
-        private static final long serialVersionUID = -878582183L;
+        private static final long serialVersionUID = 1498294019L;
 
       public PractitionerQualificationComponent() {
         super();
@@ -69,6 +132,23 @@ public class Practitioner extends Resource {
         super();
         this.code = code;
       }
+
+        /**
+         * @return {@link #identifier} (An identifier that applies to this person's qualification in this role.)
+         */
+        public List<Identifier> getIdentifier() { 
+          return this.identifier;
+        }
+
+    // syntactic sugar
+        /**
+         * @return {@link #identifier} (An identifier that applies to this person's qualification in this role.)
+         */
+        public Identifier addIdentifier() { 
+          Identifier t = new Identifier();
+          this.identifier.add(t);
+          return t;
+        }
 
         /**
          * @return {@link #code} (Coded representation of the qualification.)
@@ -132,6 +212,7 @@ public class Practitioner extends Resource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
+          childrenList.add(new Property("identifier", "Identifier", "An identifier that applies to this person's qualification in this role.", 0, java.lang.Integer.MAX_VALUE, identifier));
           childrenList.add(new Property("code", "CodeableConcept", "Coded representation of the qualification.", 0, java.lang.Integer.MAX_VALUE, code));
           childrenList.add(new Property("period", "Period", "Period during which the qualification is valid.", 0, java.lang.Integer.MAX_VALUE, period));
           childrenList.add(new Property("issuer", "Resource(Organization)", "Organization that regulates and issues the qualification.", 0, java.lang.Integer.MAX_VALUE, issuer));
@@ -139,6 +220,9 @@ public class Practitioner extends Resource {
 
       public PractitionerQualificationComponent copy() {
         PractitionerQualificationComponent dst = new PractitionerQualificationComponent();
+        dst.identifier = new ArrayList<Identifier>();
+        for (Identifier i : identifier)
+          dst.identifier.add(i.copy());
         dst.code = code == null ? null : code.copy();
         dst.period = period == null ? null : period.copy();
         dst.issuer = issuer == null ? null : issuer.copy();
@@ -165,17 +249,17 @@ public class Practitioner extends Resource {
     /**
      * The postal address where the practitioner can be found or visited or to which mail can be delivered.
      */
-    protected Address address;
+    protected List<Address> address = new ArrayList<Address>();
 
     /**
      * Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
      */
-    protected CodeableConcept gender;
+    protected Enumeration<AdministrativeGender> gender;
 
     /**
      * The date and time of birth for the practitioner.
      */
-    protected DateTime birthDate;
+    protected DateTimeType birthDate;
 
     /**
      * Image of the person.
@@ -227,7 +311,7 @@ public class Practitioner extends Resource {
      */
     protected List<CodeableConcept> communication = new ArrayList<CodeableConcept>();
 
-    private static final long serialVersionUID = -1959079809L;
+    private static final long serialVersionUID = 26275543L;
 
     public Practitioner() {
       super();
@@ -285,44 +369,67 @@ public class Practitioner extends Resource {
     /**
      * @return {@link #address} (The postal address where the practitioner can be found or visited or to which mail can be delivered.)
      */
-    public Address getAddress() { 
+    public List<Address> getAddress() { 
       return this.address;
     }
 
+    // syntactic sugar
     /**
-     * @param value {@link #address} (The postal address where the practitioner can be found or visited or to which mail can be delivered.)
+     * @return {@link #address} (The postal address where the practitioner can be found or visited or to which mail can be delivered.)
      */
-    public Practitioner setAddress(Address value) { 
-      this.address = value;
-      return this;
+    public Address addAddress() { 
+      Address t = new Address();
+      this.address.add(t);
+      return t;
     }
 
     /**
      * @return {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.)
      */
-    public CodeableConcept getGender() { 
+    public Enumeration<AdministrativeGender> getGender() { 
       return this.gender;
     }
 
     /**
      * @param value {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.)
      */
-    public Practitioner setGender(CodeableConcept value) { 
+    public Practitioner setGender(Enumeration<AdministrativeGender> value) { 
       this.gender = value;
+      return this;
+    }
+
+    /**
+     * @return Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
+     */
+    public AdministrativeGender getGenderSimple() { 
+      return this.gender == null ? null : this.gender.getValue();
+    }
+
+    /**
+     * @param value Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
+     */
+    public Practitioner setGenderSimple(AdministrativeGender value) { 
+      if (value == null)
+        this.gender = null;
+      else {
+        if (this.gender == null)
+          this.gender = new Enumeration<AdministrativeGender>();
+        this.gender.setValue(value);
+      }
       return this;
     }
 
     /**
      * @return {@link #birthDate} (The date and time of birth for the practitioner.)
      */
-    public DateTime getBirthDate() { 
+    public DateTimeType getBirthDate() { 
       return this.birthDate;
     }
 
     /**
      * @param value {@link #birthDate} (The date and time of birth for the practitioner.)
      */
-    public Practitioner setBirthDate(DateTime value) { 
+    public Practitioner setBirthDate(DateTimeType value) { 
       this.birthDate = value;
       return this;
     }
@@ -342,7 +449,7 @@ public class Practitioner extends Resource {
         this.birthDate = null;
       else {
         if (this.birthDate == null)
-          this.birthDate = new DateTime();
+          this.birthDate = new DateTimeType();
         this.birthDate.setValue(value);
       }
       return this;
@@ -518,7 +625,7 @@ public class Practitioner extends Resource {
         childrenList.add(new Property("name", "HumanName", "A name associated with the person.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("telecom", "Contact", "A contact detail for the practitioner, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom));
         childrenList.add(new Property("address", "Address", "The postal address where the practitioner can be found or visited or to which mail can be delivered.", 0, java.lang.Integer.MAX_VALUE, address));
-        childrenList.add(new Property("gender", "CodeableConcept", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
+        childrenList.add(new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
         childrenList.add(new Property("birthDate", "dateTime", "The date and time of birth for the practitioner.", 0, java.lang.Integer.MAX_VALUE, birthDate));
         childrenList.add(new Property("photo", "Attachment", "Image of the person.", 0, java.lang.Integer.MAX_VALUE, photo));
         childrenList.add(new Property("organization", "Resource(Organization)", "The organization that the practitioner represents.", 0, java.lang.Integer.MAX_VALUE, organization));
@@ -539,7 +646,9 @@ public class Practitioner extends Resource {
         dst.telecom = new ArrayList<Contact>();
         for (Contact i : telecom)
           dst.telecom.add(i.copy());
-        dst.address = address == null ? null : address.copy();
+        dst.address = new ArrayList<Address>();
+        for (Address i : address)
+          dst.address.add(i.copy());
         dst.gender = gender == null ? null : gender.copy();
         dst.birthDate = birthDate == null ? null : birthDate.copy();
         dst.photo = new ArrayList<Attachment>();

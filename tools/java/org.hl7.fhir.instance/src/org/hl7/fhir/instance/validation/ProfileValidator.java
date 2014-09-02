@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.ElementComponent;
 import org.hl7.fhir.instance.model.Profile.ProfileExtensionDefnComponent;
@@ -12,9 +13,9 @@ import org.hl7.fhir.utilities.Utilities;
 
 public class ProfileValidator {
 
-  private Map<String, Profile> profiles;
+  private Map<String, AtomEntry<Profile>> profiles;
 
-  public void setProfiles(Map<String, Profile> profiles) {
+  public void setProfiles(Map<String, AtomEntry<Profile>> profiles) {
     this.profiles = profiles;    
   }
 
@@ -25,7 +26,9 @@ public class ProfileValidator {
       for (ElementComponent ec : sc.getDifferential().getElement()) {
         checkExtensions(profile, errors, sc, "differential", ec);
       }
-      for (ElementComponent ec : sc.getSnapshot().getElement()) {
+      if (sc.getSnapshot() == null)
+        errors.add("missing Snapshot at "+profile.getNameSimple()+"."+sc.getNameSimple());
+      else for (ElementComponent ec : sc.getSnapshot().getElement()) {
         checkExtensions(profile, errors, sc, "snapshot", ec);
       }
     }
@@ -47,12 +50,18 @@ public class ProfileValidator {
     String parts[] = url.split("#");
     if (parts.length != 2)
       return null;
-    Profile p = Utilities.noString(parts[0]) ? self : profiles.get(parts[0]);
+    Profile p = Utilities.noString(parts[0]) ? self : profiles.get(parts[0]).getResource();
     if (p == null)
       return null;
     for (ProfileExtensionDefnComponent defn : p.getExtensionDefn()) {
       if (defn.getCodeSimple().equals(parts[1]))
         return defn;
+      if (parts[1].contains(".") && parts[1].startsWith(defn.getCodeSimple()+".")) {
+        for (ElementComponent ec : defn.getElement()) {
+          if (ec.getPathSimple().equals(parts[1]))
+            return defn;
+        }
+      }
     }
     return null;
   }

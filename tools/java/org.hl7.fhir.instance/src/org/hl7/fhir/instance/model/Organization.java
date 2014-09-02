@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -37,6 +37,64 @@ import java.util.*;
  * A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc.
  */
 public class Organization extends Resource {
+
+    public enum AdministrativeGender {
+        M, // Male
+        F, // Female
+        O, // Other
+        U, // Unknown
+        Null; // added to help the parsers
+        public static AdministrativeGender fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("M".equals(codeString))
+          return M;
+        if ("F".equals(codeString))
+          return F;
+        if ("O".equals(codeString))
+          return O;
+        if ("U".equals(codeString))
+          return U;
+        throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case M: return "M";
+            case F: return "F";
+            case O: return "O";
+            case U: return "U";
+            default: return "?";
+          }
+        }
+    }
+
+  public static class AdministrativeGenderEnumFactory implements EnumFactory {
+    public Enum<?> fromCode(String codeString) throws Exception {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("M".equals(codeString))
+          return AdministrativeGender.M;
+        if ("F".equals(codeString))
+          return AdministrativeGender.F;
+        if ("O".equals(codeString))
+          return AdministrativeGender.O;
+        if ("U".equals(codeString))
+          return AdministrativeGender.U;
+        throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
+        }
+    public String toCode(Enum<?> code) throws Exception {
+      if (code == AdministrativeGender.M)
+        return "M";
+      if (code == AdministrativeGender.F)
+        return "F";
+      if (code == AdministrativeGender.O)
+        return "O";
+      if (code == AdministrativeGender.U)
+        return "U";
+      return "?";
+      }
+    }
 
     public static class OrganizationContactComponent extends BackboneElement {
         /**
@@ -62,9 +120,9 @@ public class Organization extends Resource {
         /**
          * Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
          */
-        protected CodeableConcept gender;
+        protected Enumeration<AdministrativeGender> gender;
 
-        private static final long serialVersionUID = 2147286938L;
+        private static final long serialVersionUID = 104441075L;
 
       public OrganizationContactComponent() {
         super();
@@ -135,15 +193,36 @@ public class Organization extends Resource {
         /**
          * @return {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.)
          */
-        public CodeableConcept getGender() { 
+        public Enumeration<AdministrativeGender> getGender() { 
           return this.gender;
         }
 
         /**
          * @param value {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.)
          */
-        public OrganizationContactComponent setGender(CodeableConcept value) { 
+        public OrganizationContactComponent setGender(Enumeration<AdministrativeGender> value) { 
           this.gender = value;
+          return this;
+        }
+
+        /**
+         * @return Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
+         */
+        public AdministrativeGender getGenderSimple() { 
+          return this.gender == null ? null : this.gender.getValue();
+        }
+
+        /**
+         * @param value Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
+         */
+        public OrganizationContactComponent setGenderSimple(AdministrativeGender value) { 
+          if (value == null)
+            this.gender = null;
+          else {
+            if (this.gender == null)
+              this.gender = new Enumeration<AdministrativeGender>();
+            this.gender.setValue(value);
+          }
           return this;
         }
 
@@ -153,7 +232,7 @@ public class Organization extends Resource {
           childrenList.add(new Property("name", "HumanName", "A name associated with the contact.", 0, java.lang.Integer.MAX_VALUE, name));
           childrenList.add(new Property("telecom", "Contact", "A contact detail (e.g. a telephone number or an email address) by which the party may be contacted.", 0, java.lang.Integer.MAX_VALUE, telecom));
           childrenList.add(new Property("address", "Address", "Visiting or postal addresses for the contact.", 0, java.lang.Integer.MAX_VALUE, address));
-          childrenList.add(new Property("gender", "CodeableConcept", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
+          childrenList.add(new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
         }
 
       public OrganizationContactComponent copy() {
@@ -178,7 +257,7 @@ public class Organization extends Resource {
     /**
      * A name associated with the organization.
      */
-    protected String_ name;
+    protected StringType name;
 
     /**
      * The kind of organization that this is.
@@ -223,9 +302,9 @@ public class Organization extends Resource {
     /**
      * Whether the organization's record is still in active use.
      */
-    protected Boolean active;
+    protected BooleanType active;
 
-    private static final long serialVersionUID = -789178682L;
+    private static final long serialVersionUID = -603382635L;
 
     public Organization() {
       super();
@@ -251,14 +330,14 @@ public class Organization extends Resource {
     /**
      * @return {@link #name} (A name associated with the organization.)
      */
-    public String_ getName() { 
+    public StringType getName() { 
       return this.name;
     }
 
     /**
      * @param value {@link #name} (A name associated with the organization.)
      */
-    public Organization setName(String_ value) { 
+    public Organization setName(StringType value) { 
       this.name = value;
       return this;
     }
@@ -278,7 +357,7 @@ public class Organization extends Resource {
         this.name = null;
       else {
         if (this.name == null)
-          this.name = new String_();
+          this.name = new StringType();
         this.name.setValue(value);
       }
       return this;
@@ -417,14 +496,14 @@ public class Organization extends Resource {
     /**
      * @return {@link #active} (Whether the organization's record is still in active use.)
      */
-    public Boolean getActive() { 
+    public BooleanType getActive() { 
       return this.active;
     }
 
     /**
      * @param value {@link #active} (Whether the organization's record is still in active use.)
      */
-    public Organization setActive(Boolean value) { 
+    public Organization setActive(BooleanType value) { 
       this.active = value;
       return this;
     }
@@ -444,7 +523,7 @@ public class Organization extends Resource {
         this.active = null;
       else {
         if (this.active == null)
-          this.active = new Boolean();
+          this.active = new BooleanType();
         this.active.setValue(value);
       }
       return this;

@@ -29,14 +29,14 @@ public class TableGenerator extends BaseGenerator {
   }
 
   protected boolean dictLinks() {
-    return false;
+    return pageName != null;
   }
   protected Row genElement(ElementDefn e, HeirarchicalTableGenerator gen, boolean resource, String path, boolean isProfile) throws Exception {
     Row row = gen.new Row();
 
     row.setAnchor(path);
     boolean isProfiledExtension = isProfile && (e.getName().equals("extension") || e.getName().equals("modifierExtension"));
-    row.getCells().add(gen.new Cell(null, dictLinks() ? pageName+"#"+path : null, e.getName(), e.getDefinition(), null));
+    row.getCells().add(gen.new Cell(null, dictLinks() ? pageName+"#"+path.replace("[", "_").replace("]", "_") : null, e.getName(), e.getDefinition(), null));
   
     if (resource) {
       row.getCells().add(gen.new Cell()); 
@@ -47,11 +47,11 @@ public class TableGenerator extends BaseGenerator {
     } else {
       
       if (!e.getElements().isEmpty()) {
-        row.getCells().add(gen.new Cell()); 
+        row.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null)); 
         row.setIcon("icon_element.gif");
         row.getCells().add(gen.new Cell(null, null, "Element", null, null));   
       } else if (e.getTypes().size() == 1) {
-        row.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null)); // todo: invariants
+        row.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null)); 
         String t = e.getTypes().get(0).getName();
         Cell c;
         if (t.startsWith("@")) {
@@ -78,7 +78,7 @@ public class TableGenerator extends BaseGenerator {
             row.setIcon("icon_extension_simple.png");
           else
             row.setIcon("icon_datatype.gif");
-          c = gen.new Cell(null, GeneratorUtils.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null);
+          c = gen.new Cell(null, GeneratorUtils.getSrcFile(t, false)+".html#"+t.replace("*", "open"), t, null, null);
         }
         row.getCells().add(c);
       } else {
@@ -147,7 +147,7 @@ public class TableGenerator extends BaseGenerator {
           choicerow.getCells().add(gen.new Cell(null, null, e.getName().replace("[x]",  Utilities.capitalize(t)), definitions.getTypes().containsKey(t) ? definitions.getTypes().get(t).getDefinition() : null, null));
           choicerow.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null));
           choicerow.setIcon("icon_datatype.gif");
-          choicerow.getCells().add(gen.new Cell(null, GeneratorUtils.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null));
+          choicerow.getCells().add(gen.new Cell(null, GeneratorUtils.getSrcFile(t, false)+".html#"+t.replace("*", "open"), t, null, null));
         }
       
         choicerow.getCells().add(gen.new Cell());

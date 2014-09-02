@@ -239,6 +239,14 @@ public class Definitions {
 		return profiles;
 	}
 
+  public BindingSpecification getBindingByReference(String ref, BindingSpecification other) {
+    for (BindingSpecification b : bindings.values()) {
+      if (ref.equals(b.getReference()) && other != b)
+        return b;
+    }
+    return null;
+  }
+  
   public BindingSpecification getBindingByReference(String ref) {
     for (BindingSpecification b : bindings.values()) {
       if (ref.equals(b.getReference()))
@@ -352,7 +360,7 @@ public class Definitions {
     if (url.contains("#"))
       url = url.substring(0, url.indexOf('#'));
     for (ProfileDefn p : profiles.values())
-      if (p.getSource().getUrlSimple().equals(url))
+      if (p.getSource() != null && p.getSource().getUrlSimple().equals(url))
         return p.getSource();
     for (ResourceDefn rd : resources.values()) {
       for (RegisteredProfile p : rd.getProfiles()) {
@@ -387,5 +395,4 @@ public class Definitions {
     throw new Exception("Unable to find snapshot for "+base);
   }
 
-  
 }

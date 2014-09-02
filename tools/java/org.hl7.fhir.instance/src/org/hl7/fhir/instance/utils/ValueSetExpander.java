@@ -12,23 +12,35 @@ public interface ValueSetExpander {
 	 public class ValueSetExpansionOutcome {
 	   private ValueSet valueset;
 	   private ValueSetChecker service;
-	   public ValueSetExpansionOutcome(ValueSet valueset) {
+	   private String error;
+	   public ValueSetExpansionOutcome(ValueSet valueset, String error) {
 	     super();
 	     this.valueset = valueset;
 	     this.service = null;
+	     this.error = error;
 	   }
-	   public ValueSetExpansionOutcome(ValueSetChecker service) {
+	   public ValueSetExpansionOutcome(ValueSetChecker service, String error) {
 	     super();
 	     this.valueset = null;
 	     this.service = service;
+       this.error = error;
 	   }
-	   public ValueSet getValueset() {
+	   public ValueSetExpansionOutcome(String error) {
+       this.valueset = null;
+       this.service = null;
+       this.error = error;
+    }
+    public ValueSet getValueset() {
 	     return valueset;
 	   }
 	   public ValueSetChecker getService() {
 	     return service;
 	   }
+    public String getError() {
+      return error;
+    }
 
+	   
   }
 
   public ValueSetExpansionOutcome expand(ValueSet source);

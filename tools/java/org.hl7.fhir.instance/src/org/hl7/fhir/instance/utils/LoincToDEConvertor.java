@@ -1,9 +1,7 @@
 package org.hl7.fhir.instance.utils;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -11,21 +9,19 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
-import org.hl7.fhir.instance.model.Code;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
-import org.hl7.fhir.instance.model.DataElement;
-import org.hl7.fhir.instance.model.DataElement.ResourceObservationDefStatus;
-import org.hl7.fhir.instance.model.Identifier;
-import org.hl7.fhir.instance.model.String_;
 import org.hl7.fhir.instance.model.Contact;
 import org.hl7.fhir.instance.model.Contact.ContactSystem;
+import org.hl7.fhir.instance.model.DataElement;
+import org.hl7.fhir.instance.model.DataElement.ResourceObservationDefStatus;
 import org.hl7.fhir.instance.model.DateAndTime;
+import org.hl7.fhir.instance.model.Identifier;
+import org.hl7.fhir.instance.model.StringType;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
 
 /**
  * This class converts the LOINC XML representation that the FHIR build tool uses internally to a set of DataElements in an atom feed
@@ -37,7 +33,6 @@ public class LoincToDEConvertor {
 
 	// C:\temp\LOINC.xml
 	public static void main(String[] args) throws Exception {
-		String output = null;
 		if (args.length == 0) {
 			System.out.println("FHIR LOINC to CDE convertor. ");
 			System.out.println("");
@@ -78,17 +73,33 @@ public class LoincToDEConvertor {
 	private AtomFeed feed;
 	private DateAndTime now;
 
+  public AtomFeed process(String sourceFile) throws Exception {
+    this.definitions = sourceFile;
+    log("Begin. Produce Loinc CDEs in "+dest+" from "+definitions);
+    loadLoinc();
+    log("LOINC loaded");
+
+    now = DateAndTime.today();
+
+    feed = new AtomFeed();
+    feed.setId("http://hl7.org/fhir/commondataelement/loinc");
+    feed.setUpdated(now);
+    feed.setAuthorName("FHIR Core Team, in association with Regenstrief");
+
+    processLoincCodes();
+    return feed;
+  }
 	public void process() throws Exception {
 		log("Begin. Produce Loinc CDEs in "+dest+" from "+definitions);
 		loadLoinc();
 		log("LOINC loaded");
 
-		now = DateAndTime.now();
+		now = DateAndTime.today();
 
 		feed = new AtomFeed();
 		feed.setId("http://hl7.org/fhir/commondataelement/loinc");
 		feed.setUpdated(now);
-		feed.setAuthorName("FHIR Core Team");
+    feed.setAuthorName("FHIR Core Team, in association with Regenstrief");
 
 		processLoincCodes();
 		if (dest != null) {
@@ -148,13 +159,13 @@ public class LoincToDEConvertor {
 				id.setSystemSimple("http://hl7.org/fhir/commondataelement/loinc");
 				id.setValueSimple(code);
 				cde.setIdentifier(id);
-				cde.setPublisherSimple("HL7 FHIR Project Team / LOINC");
-				cde.getTelecom().add(new Contact().setSystemSimple(ContactSystem.url).setValueSimple("http://hl7.org/fhir"));
-				cde.getTelecom().add(new Contact().setSystemSimple(ContactSystem.url).setValueSimple("http://loinc.org"));
+				cde.setPublisherSimple("Regenstrief + FHIR Project Team");
+//				cde.getTelecom().add(new Contact().setSystemSimple(ContactSystem.url).setValueSimple("http://hl7.org/fhir"));
+//				cde.getTelecom().add(new Contact().setSystemSimple(ContactSystem.url).setValueSimple("http://loinc.org"));
 				if (!col(row, "STATUS").equals("ACTIVE"))
 	 				cde.setStatusSimple(ResourceObservationDefStatus.draft); // till we get good at this
 				else
-					cde.setStatusSimple(ResourceObservationDefStatus.retired); // till we get good at this
+					cde.setStatusSimple(ResourceObservationDefStatus.retired);
 				cde.setDateSimple(now);
 				cde.setNameSimple(comp);
 				ae.setResource(cde);
@@ -170,7 +181,7 @@ public class LoincToDEConvertor {
 				// CHNG_TYPE	
 				cde.setCommentsSimple(col(row , "COMMENTS"));
 				if (hasCol(row, "CONSUMER_NAME"))
-					cde.getSynonym().add(new String_().setValue(col(row, "CONSUMER_NAME")));	
+					cde.getSynonym().add(new StringType().setValue(col(row, "CONSUMER_NAME")));	
 				// MOLAR_MASS	
 				// CLASSTYPE	
 				// FORMULA	
@@ -184,12 +195,12 @@ public class LoincToDEConvertor {
 				// SURVEY_QUEST_SRC	
 				if (hasCol(row, "RELATEDNAMES2")) {
 	        String n = col(row, "RELATEDNAMES2");
-	        for (String s : n.split(";")) {
+	        for (String s : n.split("\\;")) {
 						if (!Utilities.noString(s))
-							cde.getSynonym().add(new String_().setValue(s));	
+							cde.getSynonym().add(new StringType().setValue(s));	
 					}
         }
-				cde.getSynonym().add(new String_().setValue(col(row, "SHORTNAME")));	
+				cde.getSynonym().add(new StringType().setValue(col(row, "SHORTNAME")));	
 				// ORDER_OBS	
 				// CDISC Code	
 				// HL7_FIELD_SUBFIELD_ID	

@@ -36,63 +36,62 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.instance.client.FHIRClient;
 import org.hl7.fhir.instance.model.Address;
 import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.Attachment;
-import org.hl7.fhir.instance.model.Boolean;
-import org.hl7.fhir.instance.model.Code;
+import org.hl7.fhir.instance.model.BooleanType;
+import org.hl7.fhir.instance.model.CodeType;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Composition;
 import org.hl7.fhir.instance.model.Composition.SectionComponent;
 import org.hl7.fhir.instance.model.ConceptMap;
-import org.hl7.fhir.instance.model.ConceptMap.ConceptMapElementMapComponent;
-import org.hl7.fhir.instance.model.ConceptMap.OtherElementComponent;
-import org.hl7.fhir.instance.model.Duration;
-import org.hl7.fhir.instance.model.Enumeration;
-import org.hl7.fhir.instance.model.HumanName;
-import org.hl7.fhir.instance.model.HumanName.NameUse;
-import org.hl7.fhir.instance.model.Id;
-import org.hl7.fhir.instance.model.Identifier;
-import org.hl7.fhir.instance.model.Instant;
-import org.hl7.fhir.instance.model.Period;
-import org.hl7.fhir.instance.model.PrimitiveType;
-import org.hl7.fhir.instance.model.Quantity;
-import org.hl7.fhir.instance.model.Ratio;
-import org.hl7.fhir.instance.model.ResourceReference;
 import org.hl7.fhir.instance.model.ConceptMap.ConceptMapElementComponent;
 import org.hl7.fhir.instance.model.ConceptMap.ConceptMapElementMapComponent;
 import org.hl7.fhir.instance.model.ConceptMap.OtherElementComponent;
 import org.hl7.fhir.instance.model.Conformance;
 import org.hl7.fhir.instance.model.Conformance.ConformanceRestComponent;
-import org.hl7.fhir.instance.model.Conformance.ConformanceRestOperationComponent;
 import org.hl7.fhir.instance.model.Conformance.ConformanceRestResourceComponent;
-import org.hl7.fhir.instance.model.Conformance.ConformanceRestResourceOperationComponent;
-import org.hl7.fhir.instance.model.Conformance.SystemRestfulOperation;
-import org.hl7.fhir.instance.model.Conformance.TypeRestfulOperation;
+import org.hl7.fhir.instance.model.Conformance.ResourceInteractionComponent;
+import org.hl7.fhir.instance.model.Conformance.SystemInteractionComponent;
+import org.hl7.fhir.instance.model.Conformance.SystemRestfulInteraction;
+import org.hl7.fhir.instance.model.Conformance.TypeRestfulInteraction;
 import org.hl7.fhir.instance.model.Contact;
 import org.hl7.fhir.instance.model.Contact.ContactSystem;
-import org.hl7.fhir.instance.model.DateTime;
+import org.hl7.fhir.instance.model.DateTimeType;
+import org.hl7.fhir.instance.model.Duration;
 import org.hl7.fhir.instance.model.Element;
+import org.hl7.fhir.instance.model.Enumeration;
 import org.hl7.fhir.instance.model.Extension;
+import org.hl7.fhir.instance.model.HumanName;
+import org.hl7.fhir.instance.model.HumanName.NameUse;
+import org.hl7.fhir.instance.model.IdType;
+import org.hl7.fhir.instance.model.Identifier;
+import org.hl7.fhir.instance.model.InstantType;
 import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
+import org.hl7.fhir.instance.model.OperationDefinition;
+import org.hl7.fhir.instance.model.OperationDefinition.OperationDefinitionParameterComponent;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.instance.model.OperationOutcome.OperationOutcomeIssueComponent;
+import org.hl7.fhir.instance.model.Period;
+import org.hl7.fhir.instance.model.PrimitiveType;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.ElementComponent;
 import org.hl7.fhir.instance.model.Profile.ProfileStructureComponent;
 import org.hl7.fhir.instance.model.Property;
+import org.hl7.fhir.instance.model.Quantity;
+import org.hl7.fhir.instance.model.Ratio;
 import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.instance.model.ResourceReference;
 import org.hl7.fhir.instance.model.Schedule;
 import org.hl7.fhir.instance.model.Schedule.EventTiming;
 import org.hl7.fhir.instance.model.Schedule.ScheduleRepeatComponent;
 import org.hl7.fhir.instance.model.Schedule.UnitsOfTime;
-import org.hl7.fhir.instance.model.String_;
-import org.hl7.fhir.instance.model.Uri;
+import org.hl7.fhir.instance.model.StringType;
+import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetFilterComponent;
@@ -103,6 +102,9 @@ import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
+import org.hl7.fhir.utilities.xhtml.XhtmlParser;
+
+import com.github.rjeschke.txtmark.Processor;
 
 public class NarrativeGenerator {
 
@@ -123,26 +125,16 @@ public class NarrativeGenerator {
     public Resource getResource() {
       return resource;
     }
-
   }
 
   private String prefix;
-  private TerminologyServices conceptLocator;
-  private Map<String, AtomEntry<ValueSet>> codeSystems;
-  private Map<String, AtomEntry<ValueSet>> valueSets;
-  private Map<String, AtomEntry<ConceptMap>> maps;
-  private FHIRClient client;
-  private Map<String, Profile> profiles;
+  private WorkerContext context;
   
-  public NarrativeGenerator(String prefix, TerminologyServices conceptLocator, Map<String, AtomEntry<ValueSet>> codeSystems, Map<String, AtomEntry<ValueSet>> valueSets, Map<String, AtomEntry<ConceptMap>> maps, Map<String, Profile> profiles, FHIRClient client) {
+  
+  public NarrativeGenerator(String prefix, WorkerContext context) {
     super();
     this.prefix = prefix;
-    this.conceptLocator = conceptLocator;
-    this.codeSystems = codeSystems;
-    this.valueSets = valueSets;
-    this.maps = maps;
-    this.profiles = profiles;
-    this.client = client;
+    this.context = context;
   }
 
   public void generate(Resource r) throws Exception {
@@ -154,10 +146,12 @@ public class NarrativeGenerator {
       generate((OperationOutcome) r); // Maintainer = Grahame
     } else if (r instanceof Conformance) {
       generate((Conformance) r);   // Maintainer = Grahame
-    } else if (profiles.containsKey(r.getResourceType().toString())) {
-      generateByProfile(r, profiles.get(r.getResourceType().toString()), true); // todo: make this manageable externally 
-    } else if (profiles.containsKey("http://hl7.org/fhir/profile/"+r.getResourceType().toString().toLowerCase())) {
-      generateByProfile(r, profiles.get("http://hl7.org/fhir/profile/"+r.getResourceType().toString().toLowerCase()), true); // todo: make this manageable externally 
+    } else if (r instanceof OperationDefinition) {
+      generate((OperationDefinition) r);   // Maintainer = Grahame
+    } else if (context.getProfiles().containsKey(r.getResourceType().toString())) {
+      generateByProfile(r, context.getProfiles().get(r.getResourceType().toString()).getResource(), true); // todo: make this manageable externally 
+    } else if (context.getProfiles().containsKey("http://hl7.org/fhir/profile/"+r.getResourceType().toString().toLowerCase())) {
+      generateByProfile(r, context.getProfiles().get("http://hl7.org/fhir/profile/"+r.getResourceType().toString().toLowerCase()).getResource(), true); // todo: make this manageable externally 
     }
   }
   
@@ -211,7 +205,7 @@ public class NarrativeGenerator {
                     }
                   }
                 }
-              } else if (canDoTable(grandChildren)) {
+              } else if (canDoTable(path, p, grandChildren)) {
                 x.addTag("h3").addText(Utilities.capitalize(Utilities.camelCase(Utilities.pluralizeMe(p.getName()))));
                 XhtmlNode tbl = x.addTag("table").setAttribute("class", "grid");
                 addColumnHeadings(tbl.addTag("tr"), grandChildren);
@@ -290,13 +284,29 @@ public class NarrativeGenerator {
     return path.substring(path.lastIndexOf(".")+1);
   }
 
-  private boolean canDoTable(List<ElementComponent> grandChildren) {
-    boolean result = true;
+  private boolean canDoTable(String path, Property p, List<ElementComponent> grandChildren) {
     for (ElementComponent e : grandChildren) {
-      if (!isPrimitive(e))
+      List<Property> values = getValues(path, p, e);
+      if (values.size() > 1 || !isPrimitive(e) || !canCollapse(e))
         return false;
     }
-    return result;
+    return true;
+  }
+
+  private List<Property> getValues(String path, Property p, ElementComponent e) {
+    List<Property> res = new ArrayList<Property>();
+    for (Element v : p.values) {
+      for (Property g : v.children()) {
+        if ((path+"."+p.getName()+"."+g.getName()).equals(e.getPathSimple()))
+          res.add(p);
+      }
+    }
+    return res;
+  }
+
+  private boolean canCollapse(ElementComponent e) {
+    // we can collapse any data type
+    return !e.getDefinition().getType().isEmpty();
   }
 
   private boolean isPrimitive(ElementComponent e) {
@@ -315,42 +325,42 @@ public class NarrativeGenerator {
     if (e == null)
       return;
    
-    if (e instanceof String_)
-      x.addText(((String_) e).getValue());
-    else if (e instanceof Code)
-      x.addText(((Code) e).getValue());
-    else if (e instanceof Id)
-      x.addText(((Id) e).getValue());
+    if (e instanceof StringType)
+      x.addText(((StringType) e).getValue());
+    else if (e instanceof CodeType)
+      x.addText(((CodeType) e).getValue());
+    else if (e instanceof IdType)
+      x.addText(((IdType) e).getValue());
     else if (e instanceof Extension)
       x.addText("Extensions: Todo");
-    else if (e instanceof Instant)
-      x.addText(((Instant) e).getValue().toHumanDisplay());
-    else if (e instanceof DateTime)
-      x.addText(((DateTime) e).getValue().toHumanDisplay());
-    else if (e instanceof org.hl7.fhir.instance.model.Date)
-      x.addText(((org.hl7.fhir.instance.model.Date) e).getValue().toHumanDisplay());
+    else if (e instanceof InstantType)
+      x.addText(((InstantType) e).getValue().toHumanDisplay());
+    else if (e instanceof DateTimeType)
+      x.addText(((DateTimeType) e).getValue().toHumanDisplay());
+    else if (e instanceof org.hl7.fhir.instance.model.DateType)
+      x.addText(((org.hl7.fhir.instance.model.DateType) e).getValue().toHumanDisplay());
     else if (e instanceof Enumeration)
       x.addText(((Enumeration<?>) e).getValue().toString()); // todo: look up a display name if there is one
-    else if (e instanceof Boolean)
-      x.addText(((Boolean) e).getValue().toString());
+    else if (e instanceof BooleanType)
+      x.addText(((BooleanType) e).getValue().toString());
     else if (e instanceof CodeableConcept) {
       renderCodeableConcept((CodeableConcept) e, x, showCodeDetails); 
     } else if (e instanceof Coding) {
       renderCoding((Coding) e, x, showCodeDetails);
     } else if (e instanceof Identifier) {
       renderIdentifier((Identifier) e, x);
-    } else if (e instanceof org.hl7.fhir.instance.model.Integer) {
-      x.addText(Integer.toString(((org.hl7.fhir.instance.model.Integer) e).getValue()));
-    } else if (e instanceof org.hl7.fhir.instance.model.Decimal) {
-      x.addText(((org.hl7.fhir.instance.model.Decimal) e).getValue().toString());
+    } else if (e instanceof org.hl7.fhir.instance.model.IntegerType) {
+      x.addText(Integer.toString(((org.hl7.fhir.instance.model.IntegerType) e).getValue()));
+    } else if (e instanceof org.hl7.fhir.instance.model.DecimalType) {
+      x.addText(((org.hl7.fhir.instance.model.DecimalType) e).getValue().toString());
     } else if (e instanceof HumanName) {
       renderHumanName((HumanName) e, x);
     } else if (e instanceof Address) {
       renderAddress((Address) e, x);
     } else if (e instanceof Contact) {
       renderContact((Contact) e, x);
-    } else if (e instanceof Uri) {
-      renderUri((Uri) e, x);
+    } else if (e instanceof UriType) {
+      renderUri((UriType) e, x);
     } else if (e instanceof Schedule) {
       renderSchedule((Schedule) e, x);
     } else if (e instanceof Quantity || e instanceof Duration) {
@@ -404,32 +414,32 @@ public class NarrativeGenerator {
     if (!showCodeDetails && e instanceof PrimitiveType && isDefault(displayHints, ((PrimitiveType) e)))
         return false;
     
-    if (e instanceof String_) {
-      x.addText(name+": "+((String_) e).getValue());
+    if (e instanceof StringType) {
+      x.addText(name+": "+((StringType) e).getValue());
       return true;
-    } else if (e instanceof Code) {
-      x.addText(name+": "+((Code) e).getValue());
+    } else if (e instanceof CodeType) {
+      x.addText(name+": "+((CodeType) e).getValue());
       return true;
-    } else if (e instanceof Id) {
-      x.addText(name+": "+((Id) e).getValue());
+    } else if (e instanceof IdType) {
+      x.addText(name+": "+((IdType) e).getValue());
       return true;
-    } else if (e instanceof DateTime) {
-      x.addText(name+": "+((DateTime) e).getValue().toHumanDisplay());
+    } else if (e instanceof DateTimeType) {
+      x.addText(name+": "+((DateTimeType) e).getValue().toHumanDisplay());
       return true;
-    } else if (e instanceof Instant) {
-      x.addText(name+": "+((Instant) e).getValue().toHumanDisplay());
+    } else if (e instanceof InstantType) {
+      x.addText(name+": "+((InstantType) e).getValue().toHumanDisplay());
       return true;
     } else if (e instanceof Extension) {
       x.addText("Extensions: todo");
       return true;
-    } else if (e instanceof org.hl7.fhir.instance.model.Date) {
-      x.addText(name+": "+((org.hl7.fhir.instance.model.Date) e).getValue().toHumanDisplay());
+    } else if (e instanceof org.hl7.fhir.instance.model.DateType) {
+      x.addText(name+": "+((org.hl7.fhir.instance.model.DateType) e).getValue().toHumanDisplay());
       return true;
     } else if (e instanceof Enumeration) {
       x.addText(((Enumeration<?>) e).getValue().toString()); // todo: look up a display name if there is one
       return true;
-    } else if (e instanceof Boolean) {
-      if (((Boolean) e).getValue()) {
+    } else if (e instanceof BooleanType) {
+      if (((BooleanType) e).getValue()) {
         x.addText(name);
           return true;
       }
@@ -439,11 +449,11 @@ public class NarrativeGenerator {
     } else if (e instanceof Coding) {
       renderCoding((Coding) e, x, showCodeDetails);
       return true;
-    } else if (e instanceof org.hl7.fhir.instance.model.Integer) {
-      x.addText(Integer.toString(((org.hl7.fhir.instance.model.Integer) e).getValue()));
+    } else if (e instanceof org.hl7.fhir.instance.model.IntegerType) {
+      x.addText(Integer.toString(((org.hl7.fhir.instance.model.IntegerType) e).getValue()));
       return true;
-    } else if (e instanceof org.hl7.fhir.instance.model.Decimal) {
-      x.addText(((org.hl7.fhir.instance.model.Decimal) e).getValue().toString());
+    } else if (e instanceof org.hl7.fhir.instance.model.DecimalType) {
+      x.addText(((org.hl7.fhir.instance.model.DecimalType) e).getValue().toString());
       return true;
     } else if (e instanceof Identifier) {
       renderIdentifier((Identifier) e, x);
@@ -524,7 +534,7 @@ public class NarrativeGenerator {
       x.addText("Generated Summary: ");
     }
     String path = res.getResourceType().toString();
-    Profile profile = profiles.get(path);
+    Profile profile = context.getProfiles().get(path).getResource();
     if (profile == null)
       x.addText("unknown resource " +path);
     else {
@@ -577,10 +587,10 @@ public class NarrativeGenerator {
       }
       return null;
     }
-    if (client == null)
+    if (!context.hasClient())
       return null;
     
-    AtomEntry<?> ae = client.read(null, url);
+    AtomEntry<?> ae = context.getClient().read(null, url);
     if (ae == null)
       return null;
     else
@@ -671,12 +681,12 @@ public class NarrativeGenerator {
 
   private String lookupCode(String system, String code) {
     ValueSetDefineConceptComponent t;
-    if (codeSystems == null && conceptLocator == null)
+    if (context.getCodeSystems() == null && context.getTerminologyServices() == null)
     	return code;
-    else if (codeSystems != null && codeSystems.containsKey(system)) 
-      t = findCode(code, codeSystems.get(system).getResource().getDefine().getConcept());
+    else if (context.getCodeSystems() != null && context.getCodeSystems().containsKey(system)) 
+      t = findCode(code, context.getCodeSystems().get(system).getResource().getDefine().getConcept());
     else 
-      t = conceptLocator.getCodeDefinition(system, code);
+      t = context.getTerminologyServices().getCodeDefinition(system, code);
       
     if (t != null && t.getDisplay() != null)
         return t.getDisplaySimple();
@@ -761,7 +771,7 @@ public class NarrativeGenerator {
     x.addText(displayContact(contact));
   }
   
-  private void renderUri(Uri uri, XhtmlNode x) {
+  private void renderUri(UriType uri, XhtmlNode x) {
     x.addTag("a").setAttribute("href", uri.getValue()).addText(uri.getValue());
   }
   
@@ -832,11 +842,11 @@ public class NarrativeGenerator {
     if (name.getText() != null)
       s.append(name.getTextSimple());
     else {
-      for (String_ p : name.getGiven()) { 
+      for (StringType p : name.getGiven()) { 
         s.append(p.getValue());
         s.append(" ");
       }
-      for (String_ p : name.getFamily()) { 
+      for (StringType p : name.getFamily()) { 
         s.append(p.getValue());
         s.append(" ");
       }
@@ -851,7 +861,7 @@ public class NarrativeGenerator {
     if (address.getText() != null)
       s.append(address.getTextSimple());
     else {
-      for (String_ p : address.getLine()) { 
+      for (StringType p : address.getLine()) { 
         s.append(p.getValue());
         s.append(" ");
       }
@@ -913,11 +923,22 @@ public class NarrativeGenerator {
     return s;
   }
 
-  private List<ElementComponent> getChildrenForPath(List<ElementComponent> elements, String path) {
+  private List<ElementComponent> getChildrenForPath(List<ElementComponent> elements, String path) throws Exception {
     // do we need to do a name reference substitution?
     for (ElementComponent e : elements) {
-      if (e.getPathSimple().equals(path) && e.getDefinition().getNameReference() != null)
-        path = e.getDefinition().getNameReferenceSimple();
+      if (e.getPathSimple().equals(path) && e.getDefinition().getNameReference() != null) {
+      	String name = e.getDefinition().getNameReferenceSimple();
+      	ElementComponent t = null;
+      	// now, resolve the name
+        for (ElementComponent e1 : elements) {
+        	if (name.equals(e1.getNameSimple()))
+        		t = e1;
+        }
+        if (t == null)
+        	throw new Exception("Unable to resolve name reference "+name+" trying to resolve "+path);
+        path = t.getPathSimple();
+        break;
+      }
     }
     
     List<ElementComponent> results = new ArrayList<Profile.ElementComponent>();
@@ -1146,11 +1167,11 @@ public class NarrativeGenerator {
   private String getDisplayForConcept(String system, String code) {
     if (code == null)
       return null;
-    if (codeSystems.containsKey(system)) {
-      ValueSet vs = codeSystems.get(system).getResource();
+    if (context.getCodeSystems().containsKey(system)) {
+      ValueSet vs = context.getCodeSystems().get(system).getResource();
       return getDisplayForConcept(code, vs.getDefine().getConcept(), vs.getDefine().getCaseSensitiveSimple());
-    } else if (conceptLocator != null) {
-      ValueSetDefineConceptComponent cl = conceptLocator.getCodeDefinition(system, code);
+    } else if (context.getTerminologyServices() != null) {
+      ValueSetDefineConceptComponent cl = context.getTerminologyServices().getCodeDefinition(system, code);
       return cl == null ? null : cl.getDisplaySimple();
     } else
       return null;
@@ -1227,11 +1248,11 @@ public class NarrativeGenerator {
   private boolean generateExpansion(XhtmlNode x, ValueSet vs) {
     boolean hasExtensions = false;
     Map<ConceptMap, String> mymaps = new HashMap<ConceptMap, String>();
-    for (AtomEntry<ConceptMap> a : maps.values()) {
+    for (AtomEntry<ConceptMap> a : context.getMaps().values()) {
       if (((ResourceReference) a.getResource().getSource()).getReferenceSimple().equals(vs.getIdentifierSimple())) {
         String url = "";
-        if (valueSets.containsKey(((ResourceReference) a.getResource().getTarget()).getReferenceSimple()))
-            url = valueSets.get(((ResourceReference) a.getResource().getTarget()).getReferenceSimple()).getLinks().get("path");
+        if (context.getValueSets().containsKey(((ResourceReference) a.getResource().getTarget()).getReferenceSimple()))
+            url = context.getValueSets().get(((ResourceReference) a.getResource().getTarget()).getReferenceSimple()).getLinks().get("path");
         mymaps.put(a.getResource(), url);
       }
     }
@@ -1257,11 +1278,11 @@ public class NarrativeGenerator {
   private boolean generateDefinition(XhtmlNode x, ValueSet vs) {
     boolean hasExtensions = false;
     Map<ConceptMap, String> mymaps = new HashMap<ConceptMap, String>();
-    for (AtomEntry<ConceptMap> a : maps.values()) {
+    for (AtomEntry<ConceptMap> a : context.getMaps().values()) {
       if (((ResourceReference) a.getResource().getSource()).getReferenceSimple().equals(vs.getIdentifierSimple())) {
         String url = "";
-        if (valueSets.containsKey(((ResourceReference) a.getResource().getTarget()).getReferenceSimple()))
-            url = valueSets.get(((ResourceReference) a.getResource().getTarget()).getReferenceSimple()).getLinks().get("path");
+        if (context.getValueSets().containsKey(((ResourceReference) a.getResource().getTarget()).getReferenceSimple()))
+            url = context.getValueSets().get(((ResourceReference) a.getResource().getTarget()).getReferenceSimple()).getLinks().get("path");
         mymaps.put(a.getResource(), url);
       }
     }
@@ -1299,6 +1320,9 @@ public class NarrativeGenerator {
   }
 
 	private void smartAddText(XhtmlNode p, String text) {
+	  if (text == null)
+	    return;
+	  
     String[] lines = text.split("\\r\\n");
     for (int i = 0; i < lines.length; i++) {
       if (i > 0)
@@ -1359,7 +1383,7 @@ public class NarrativeGenerator {
     
     String s = Utilities.padLeft("", '.', i*2);
     td.addText(s);
-    AtomEntry<? extends Resource> e = codeSystems.get(c.getSystemSimple());
+    AtomEntry<? extends Resource> e = context.getCodeSystems().get(c.getSystemSimple());
     if (e == null)
       td.addText(c.getCodeSimple());
     else {
@@ -1448,7 +1472,7 @@ public class NarrativeGenerator {
           td.addTag("i").addText("("+mapping.getCommentsSimple()+")");
       }
     }
-    for (Code e : ToolingExtensions.getSubsumes(c)) {
+    for (CodeType e : ToolingExtensions.getSubsumes(c)) {
       hasExtensions = true;
       tr = t.addTag("tr");
       td = tr.addTag("td");
@@ -1506,7 +1530,7 @@ public class NarrativeGenerator {
     }
     XhtmlNode ul = x.addTag("ul");
     XhtmlNode li;
-    for (Uri imp : vs.getCompose().getImport()) {
+    for (UriType imp : vs.getCompose().getImport()) {
       li = ul.addTag("li");
       li.addText("Import all the codes that are part of ");
       AddVsRef(imp.getValue(), li);
@@ -1522,9 +1546,9 @@ public class NarrativeGenerator {
 
   private void AddVsRef(String value, XhtmlNode li) {
 
-    AtomEntry<? extends Resource> vs = valueSets.get(value);
+    AtomEntry<? extends Resource> vs = context.getValueSets().get(value);
     if (vs == null) 
-      vs = codeSystems.get(value); 
+      vs = context.getCodeSystems().get(value); 
     if (vs != null) {
       String ref= vs.getLinks().get("path");
       XhtmlNode a = li.addTag("a");
@@ -1543,7 +1567,7 @@ public class NarrativeGenerator {
     boolean hasExtensions = false;
     XhtmlNode li;
     li = ul.addTag("li");
-    AtomEntry<? extends Resource> e = codeSystems.get(inc.getSystemSimple());
+    AtomEntry<? extends Resource> e = context.getCodeSystems().get(inc.getSystemSimple());
     
     if (inc.getCode().size() == 0 && inc.getFilter().size() == 0) { 
       li.addText(type+" all codes defined in ");
@@ -1555,13 +1579,13 @@ public class NarrativeGenerator {
       
         XhtmlNode t = li.addTag("table");
         boolean hasComments = false;
-        for (Code c : inc.getCode()) {
+        for (CodeType c : inc.getCode()) {
           hasComments = hasComments || c.hasExtension(ToolingExtensions.EXT_COMMENT);
         }
         if (hasComments)
           hasExtensions = true;
         addTableHeaderRowStandard(t, hasComments, false);
-        for (Code c : inc.getCode()) {
+        for (CodeType c : inc.getCode()) {
           XhtmlNode tr = t.addTag("tr");
           tr.addTag("td").addText(c.getValue());
           ValueSetDefineConceptComponent cc = getConceptForCode(e, c.getValue(), inc.getSystemSimple());
@@ -1613,8 +1637,8 @@ public class NarrativeGenerator {
 
   private <T extends Resource> ValueSetDefineConceptComponent getConceptForCode(AtomEntry<T> e, String code, String system) {
     if (e == null) {
-      if (conceptLocator != null)
-        return conceptLocator.getCodeDefinition(system, code);
+      if (context.getTerminologyServices() != null)
+        return context.getTerminologyServices().getCodeDefinition(system, code);
       else
         return null;
     }
@@ -1721,7 +1745,7 @@ public class NarrativeGenerator {
     			tr.addTag("td").addText(i.getSeverity().toString());
     			XhtmlNode td = tr.addTag("td");
     			boolean d = false;
-    			for (String_ s : i.getLocation()) {
+    			for (StringType s : i.getLocation()) {
     				if (d)
     					td.addText(", ");
     				else
@@ -1740,8 +1764,8 @@ public class NarrativeGenerator {
 
 
 	private String gen(Extension extension) throws Exception {
-		if (extension.getValue() instanceof Code)
-			return ((Code) extension.getValue()).getValue();
+		if (extension.getValue() instanceof CodeType)
+			return ((CodeType) extension.getValue()).getValue();
 		if (extension.getValue() instanceof Coding)
 			return gen((Coding) extension.getValue());
 
@@ -1758,6 +1782,64 @@ public class NarrativeGenerator {
 	  return null;
   }
 
+	public void generate(OperationDefinition opd) throws Exception {
+    XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
+    x.addTag("h2").addText(opd.getTitleSimple());
+    x.addTag("p").addText(Utilities.capitalize(opd.getKindSimple().toString())+": "+opd.getNameSimple());
+    addMarkdown(x, opd.getDescriptionSimple());
+    
+    if (opd.getSystemSimple())
+      x.addTag("p").addText("URL: [base]/$"+opd.getNameSimple());
+    for (CodeType c : opd.getType()) {
+      x.addTag("p").addText("URL: [base]/"+c.getValue()+"/$"+opd.getNameSimple());
+      if (opd.getInstanceSimple())
+        x.addTag("p").addText("URL: [base]/"+c.getValue()+"/[id]/$"+opd.getNameSimple());
+    }
+    
+    x.addTag("p").addText("Parameters");
+    XhtmlNode tbl = x.addTag("table").setAttribute("class", "grid");
+    XhtmlNode tr = tbl.addTag("tr");
+    tr.addTag("td").addTag("b").addText("Name");
+    tr.addTag("td").addTag("b").addText("Use");
+    tr.addTag("td").addTag("b").addText("Cardinality");
+    tr.addTag("td").addTag("b").addText("Type");
+    tr.addTag("td").addTag("b").addText("Documentation");
+    for (OperationDefinitionParameterComponent p : opd.getParameter()) {
+      tr = tbl.addTag("tr");
+      tr.addTag("td").addText(p.getNameSimple());
+      tr.addTag("td").addText(p.getUseSimple().toString());
+      tr.addTag("td").addText(Integer.toString(p.getMinSimple())+".."+p.getMaxSimple());
+      tr.addTag("td").addText(p.getType().getCodeSimple());
+      addMarkdown(tr.addTag("td"), p.getDocumentationSimple());
+    }
+    addMarkdown(x, opd.getNotesSimple());
+    inject(opd, x, NarrativeStatus.generated);
+	}
+	
+	private void addMarkdown(XhtmlNode x, String text) throws Exception {
+    // 1. custom FHIR extensions
+    while (text.contains("[[[")) {
+      String left = text.substring(0, text.indexOf("[[["));
+      String url = text.substring(text.indexOf("[[[")+3, text.indexOf("]]]"));
+      String right = text.substring(text.indexOf("]]]")+3);
+      String actual = url;
+//      String[] parts = url.split("\\#");
+//      Profile p = parts[0]; // todo: definitions.getProfileByURL(parts[0]);
+//      if (p != null)
+//        actual = p.getTag("filename")+".html";
+//      else {
+//        throw new Exception("Unresolved logical URL "+url);
+//      }
+      text = left+"["+url+"]("+actual+")"+right;
+    }
+    
+    // 2. markdown
+    String s = Processor.process(Utilities.escapeXml(text));
+    XhtmlParser p = new XhtmlParser();
+    XhtmlNode m = p.parse("<div>"+s+"</div>", "div");
+    x.getChildNodes().addAll(m.getChildNodes());   
+  }
+
   public void generate(Conformance conf) {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
     x.addTag("h2").addText(conf.getNameSimple());
@@ -1767,9 +1849,9 @@ public class NarrativeGenerator {
     addTableRow(t, "Mode", rest.getModeSimple().toString());
     addTableRow(t, "Description", rest.getDocumentationSimple());
     
-    addTableRow(t, "Transaction", showOp(rest, SystemRestfulOperation.transaction));
-    addTableRow(t, "System History", showOp(rest, SystemRestfulOperation.historysystem));
-    addTableRow(t, "System Search", showOp(rest, SystemRestfulOperation.searchsystem));
+    addTableRow(t, "Transaction", showOp(rest, SystemRestfulInteraction.transaction));
+    addTableRow(t, "System History", showOp(rest, SystemRestfulInteraction.historysystem));
+    addTableRow(t, "System Search", showOp(rest, SystemRestfulInteraction.searchsystem));
     
     t = x.addTag("table");
     XhtmlNode tr = t.addTag("tr");
@@ -1792,29 +1874,29 @@ public class NarrativeGenerator {
       	a.addText(r.getProfile().getReferenceSimple());
       	a.setAttribute("href", prefix+r.getProfile().getReferenceSimple());
       }
-      tr.addTag("td").addText(showOp(r, TypeRestfulOperation.read));
-      tr.addTag("td").addText(showOp(r, TypeRestfulOperation.vread));
-      tr.addTag("td").addText(showOp(r, TypeRestfulOperation.searchtype));
-      tr.addTag("td").addText(showOp(r, TypeRestfulOperation.update));
-      tr.addTag("td").addText(showOp(r, TypeRestfulOperation.historyinstance));
-      tr.addTag("td").addText(showOp(r, TypeRestfulOperation.create));
-      tr.addTag("td").addText(showOp(r, TypeRestfulOperation.delete));
-      tr.addTag("td").addText(showOp(r, TypeRestfulOperation.historytype));
+      tr.addTag("td").addText(showOp(r, TypeRestfulInteraction.read));
+      tr.addTag("td").addText(showOp(r, TypeRestfulInteraction.vread));
+      tr.addTag("td").addText(showOp(r, TypeRestfulInteraction.searchtype));
+      tr.addTag("td").addText(showOp(r, TypeRestfulInteraction.update));
+      tr.addTag("td").addText(showOp(r, TypeRestfulInteraction.historyinstance));
+      tr.addTag("td").addText(showOp(r, TypeRestfulInteraction.create));
+      tr.addTag("td").addText(showOp(r, TypeRestfulInteraction.delete));
+      tr.addTag("td").addText(showOp(r, TypeRestfulInteraction.historytype));
     }
     
     inject(conf, x, NarrativeStatus.generated);
   }
 
-  private String showOp(ConformanceRestResourceComponent r, TypeRestfulOperation on) {
-    for (ConformanceRestResourceOperationComponent op : r.getOperation()) {
+  private String showOp(ConformanceRestResourceComponent r, TypeRestfulInteraction on) {
+    for (ResourceInteractionComponent op : r.getInteraction()) {
       if (op.getCodeSimple() == on)
         return "y";
     }
     return "";
   }
 
-  private String showOp(ConformanceRestComponent r, SystemRestfulOperation on) {
-    for (ConformanceRestOperationComponent op : r.getOperation()) {
+  private String showOp(ConformanceRestComponent r, SystemRestfulInteraction on) {
+    for (SystemInteractionComponent op : r.getInteraction()) {
       if (op.getCodeSimple() == on)
         return "y";
     }	

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 7, 2014 07:04+1000 for FHIR v0.2.1
+// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
 
 public class ResourceFactory extends Factory {
 
@@ -54,6 +54,8 @@ public class ResourceFactory extends Factory {
             return new MedicationPrescription();
         if ("Slot".equals(name))
             return new Slot();
+        if ("Contraindication".equals(name))
+            return new Contraindication();
         if ("AppointmentResponse".equals(name))
             return new AppointmentResponse();
         if ("MedicationStatement".equals(name))
@@ -122,16 +124,22 @@ public class ResourceFactory extends Factory {
             return new SecurityEvent();
         if ("List".equals(name))
             return new List_();
+        if ("OperationDefinition".equals(name))
+            return new OperationDefinition();
         if ("DeviceObservationReport".equals(name))
             return new DeviceObservationReport();
+        if ("ReferralRequest".equals(name))
+            return new ReferralRequest();
+        if ("RiskAssessment".equals(name))
+            return new RiskAssessment();
         if ("FamilyHistory".equals(name))
             return new FamilyHistory();
         if ("Location".equals(name))
             return new Location();
-        if ("AllergyIntolerance".equals(name))
-            return new AllergyIntolerance();
         if ("Observation".equals(name))
             return new Observation();
+        if ("AllergyIntolerance".equals(name))
+            return new AllergyIntolerance();
         if ("RelatedPerson".equals(name))
             return new RelatedPerson();
         if ("Specimen".equals(name))

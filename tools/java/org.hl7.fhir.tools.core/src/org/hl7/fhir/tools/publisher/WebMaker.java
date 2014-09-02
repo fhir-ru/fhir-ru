@@ -41,6 +41,7 @@ import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Definitions;
+import org.hl7.fhir.definitions.model.Operation;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -102,8 +103,10 @@ public class WebMaker {
           src = src.replace(SEARCH_FORM_HOLDER, googleSearch());
         if (src.contains(SEARCH_LINK)) 
           src = src.replace(SEARCH_LINK, googleSearchLink(0));
-        if (src.contains(DISQUS_COMMMENT)) 
-          src = src.replace(DISQUS_COMMMENT, disqusScript());
+        // not for the DSTU
+//        if (src.contains(DISQUS_COMMMENT)) 
+//          src = src.replace(DISQUS_COMMMENT, disqusScript());
+        // done
         int i = src.indexOf("</body>");
         if (i > 0)
           src = src.substring(0, i) + google()+src.substring(i);
@@ -116,9 +119,10 @@ public class WebMaker {
           TextFile.stringToFile(src, "c:\\temp\\test.html");
           throw new Exception("exception processing: "+src+": "+e.getMessage());
         }
-      } else if (f.endsWith(".chm") || f.endsWith(".eap") || f.endsWith(".zip")) 
-        Utilities.copyFile(new CSFile(folders.dstDir+f), new CSFile(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator+f));
-      else if (!f.matches(Config.VERSION_REGEX) && !f.equals("html") && !f.equals("examples") ) {
+      } else if (f.endsWith(".chm") || f.endsWith(".eap") || f.endsWith(".zip")) {
+         if (!f.equals("fhir-spec.zip"))
+          Utilities.copyFile(new CSFile(folders.dstDir+f), new CSFile(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator+f));
+      } else if (!f.matches(Config.VERSION_REGEX) && !f.equals("html") && !f.equals("examples") ) {
         if (new CSFile(folders.dstDir+f).isDirectory()) {
           Utilities.copyDirectory(folders.dstDir+f, folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f, null);
         } else
@@ -165,8 +169,10 @@ public class WebMaker {
       for (RegisteredProfile p : r.getProfiles()) {
         buildRedirect(n, p.getDestFilenameNoExt()+".html", folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"Profile"+File.separator+p.getDestFilenameNoExt());
       }
+      for (Operation op : r.getOperations().values()) {
+        buildRedirect(n, "operation-"+r.getName().toLowerCase()+"-"+op.getName()+".html", folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"OperationDefinition"+File.separator+r.getName()+"-"+op.getName());
+      }
     }
-    
     for (String n : ini.getPropertyNames("redirects")) {
       String dn = folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+n;
       buildRedirect(n, ini.getStringProperty("redirects", n), dn);
@@ -282,7 +288,9 @@ public class WebMaker {
       if ("a".equals(node.getName()) && node.getAttributes().containsKey("href")) {
         String s = node.getAttributes().get("href");
         String sl = s.toLowerCase();
-        if (sl.endsWith(".chm") || sl.endsWith(".eap") || sl.endsWith(".zip")) 
+        if (sl.equals("fhir-spec.zip")) 
+          node.getAttributes().put("href", "http://hl7.org/documentcenter/public/standards/FHIR"+DSTU_PATH_PORTION+"/fhir-spec.zip");
+        else if (sl.endsWith(".chm") || sl.endsWith(".eap") || sl.endsWith(".zip")) 
           node.getAttributes().put("href", "/documentcenter/public/standards/FHIR"+DSTU_PATH_PORTION+"/"+s);
       }
       for (XhtmlNode child : node.getChildNodes()) 

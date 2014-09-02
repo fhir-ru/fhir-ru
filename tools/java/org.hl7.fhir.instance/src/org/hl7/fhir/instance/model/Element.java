@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 /*
 Copyright (c) 2011-2014, HL7, Inc
 All rights reserved.
@@ -32,7 +33,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
-import java.util.Map;
 
 /**
  * The base element as defined in FHIR: an id attribute or property, and extensions. 
@@ -116,6 +116,13 @@ public abstract class Element implements Serializable {
     return null;
   }
   
+  public void setStringExtension(String uri, String value) {
+    Extension ext = getExtension(uri);
+    if (ext != null)
+      ext.setValue(new StringType(value));
+    else
+      extensions.add(new Extension(new UriType(uri)).setValue(new StringType(value)));
+  }
   /**
    * Supports iterating the children elements in some generic processor or browser
    * All defined children will be listed, even if they have no value on this instance
@@ -147,14 +154,14 @@ public abstract class Element implements Serializable {
       if (c.getName().equals(name))
         return c;
     return null;
-  }
-
+  }  
+  
   public List<String> getXmlComments() {
     if (xmlComments == null)
       xmlComments = new ArrayList<String>();
     return xmlComments;
   }  
-  
+
   public String getTag(String name) {
     if (tags == null)
       return null;
