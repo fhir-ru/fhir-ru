@@ -146,7 +146,8 @@ public class Utilities {
    String[] files = src.list();
    for (String f : files) {
      if (new CSFile(sourceFolder+File.separator+f).isDirectory()) {
-       copyDirectory(sourceFolder+File.separator+f, destFolder+File.separator+f, notifier);
+       if (!f.startsWith(".")) // ignore .svn...
+         copyDirectory(sourceFolder+File.separator+f, destFolder+File.separator+f, notifier);
      } else {
        if (notifier != null)
          notifier.copyFile(sourceFolder+File.separator+f, destFolder+File.separator+f);
@@ -271,6 +272,7 @@ public class Utilities {
 
   public static byte[] transform(Map<String, byte[]> files, byte[] source, byte[] xslt) throws Exception {
     TransformerFactory f = TransformerFactory.newInstance();
+    f.setAttribute("http://saxon.sf.net/feature/version-warning", Boolean.FALSE);
     StreamSource xsrc = new StreamSource(new ByteArrayInputStream(xslt));
     f.setURIResolver(new ZipURIResolver(files));
     Transformer t = f.newTransformer(xsrc);
