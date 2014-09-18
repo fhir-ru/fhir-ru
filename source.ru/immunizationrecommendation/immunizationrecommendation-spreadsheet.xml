@@ -166,7 +166,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s70"/>
     <Cell><Data ss:Type="String">Immunization profile</Data></Cell>
-    <Cell><Data ss:Type="String">Состояние иммунизации пациента в определенный момент времени и рекомендации с опциональным указанием их обоснованности.</Data></Cell>
+    <Cell><Data ss:Type="String">A patient's point-of-time immunization status and recommendation with optional supporting justification</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s70"/>
     <Cell ss:Index="13" ss:StyleID="s70"><Data ss:Type="String">SubstanceAdministration[moodCode=RMD]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">VXU_V04</Data></Cell>

@@ -121,8 +121,8 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Content in a format defined elsewhere</Data></Cell>
-    <Cell><Data ss:Type="String">Для ссылки на данные в других форматах.</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Многим моделям требуется включать в себя данные, определенные другими спецификациями, что является сложным и непрозрачным для модели здравоохранения. Эти данные могут включать в себя документы, медиа-записи, структурированные данные и т. д.</Data></Cell>
+    <Cell><Data ss:Type="String">For referring to data content defined in other formats.</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Many models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">ED</Data></Cell>
     <Cell><Data ss:Type="String">ED/RP</Data></Cell>
    </Row>
@@ -132,21 +132,21 @@
     <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">MimeType</Data></Cell>
     <Cell><Data ss:Type="String">Mime type of the content, with charset etc.</Data></Cell>
-    <Cell><Data ss:Type="String">Идентифицирует тип данных во вложении и позволяет выбрать метод интерпретирования или рендеринга данных. Включает в себя такие параметры MIME-типа, как кодировка, когда это уместно</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate</Data></Cell>
     <Cell><Data ss:Type="String">text/plain; charset=UTF-8, image/png</Data></Cell>
-    <Cell><Data ss:Type="String">Программам обработки данных нужна возможность узнать, как интерпретировать эти данные</Data></Cell>
+    <Cell><Data ss:Type="String">Processors of the data need to be able to know how to interpret the data</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./mediaType, ./charset</Data></Cell>
-    <Cell><Data ss:Type="String">ED.2+ED.3/RP.2+RP.3. Обратите внимание: может понадобиться конвертация, если используются значения старого типа</Data></Cell>
+    <Cell><Data ss:Type="String">ED.2+ED.3/RP.2+RP.3. Note conversion may be needed if old style values are being used</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Attachment.language</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">Language</Data></Cell>
-    <Cell><Data ss:Type="String">Естественный язык содержимого (BCP-47)</Data></Cell>
-    <Cell><Data ss:Type="String">Естественный язык содержимого. Значением может быть любое допустимое значение в соответствии с BCP 47</Data></Cell>
+    <Cell><Data ss:Type="String">Human language of the content (BCP-47)</Data></Cell>
+    <Cell><Data ss:Type="String">The human language of the content. The value can be any valid value according to BCP 47</Data></Cell>
     <Cell><Data ss:Type="String">en-AU</Data></Cell>
-    <Cell><Data ss:Type="String">У пользователей должна быть возможность выбрать язык в наборе вложений</Data></Cell>
+    <Cell><Data ss:Type="String">Users need to be able to choose between the languages in a set of attachments</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./language</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="44.25">
@@ -154,9 +154,9 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">base64Binary</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Data inline, base64ed</Data></Cell>
-    <Cell><Data ss:Type="String">Непосредственно сами данные вложения - последовательность байтов. В XML представляется в кодировке base64</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Должна быть возможность передавать данные внутри ресурса</Data></Cell>
-    <Cell><Data ss:Type="String">Закодированные в base64 данные ДОЛЖНЫ быть в той же кодировке (character set ), что и XML или JSON код самого ресурса</Data></Cell>
+    <Cell><Data ss:Type="String">The actual data of the attachment - a sequence of bytes. In XML, represented using base64</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">The data needs to able to be transmitted inline</Data></Cell>
+    <Cell><Data ss:Type="String">The base64-encoded data SHALL be expressed in the same character set as the base resource XML or JSON</Data></Cell>
     <Cell><Data ss:Type="String">./data</Data></Cell>
     <Cell><Data ss:Type="String">ED.5</Data></Cell>
    </Row>
@@ -164,33 +164,32 @@
     <Cell><Data ss:Type="String">Attachment.url</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">URI, по которому можно найти эти данные</Data></Cell>
-    <Cell><Data ss:Type="String">Альтернативный адрес доступа к этим данным</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Uri where the data can be found</Data></Cell>
+    <Cell><Data ss:Type="String">An alternative location where the data can be accessed</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">http://www.acme.com/logo-small.png</Data></Cell>
-    <Cell><Data ss:Type="String">Требуется возможность передавать данные по ссылке</Data></Cell>
-    <Cell><Data ss:Type="String">Если заполнены оба элемента data и url, то url ДОЛЖЕН указывать на то же самое содержимое, что и в элементе data. Ссылки могут быть относительными или указывать на временный адрес, например обертку cid:, хотя это может иметь сложные последствия для подписей. Относительные URLs интерпретируются относительно служебного URL, как ссылка на ресурс, а не относительно самого ресурса. Если URL задан,он ДОЛЖЕН вести на фактические данные.
-	</Data></Cell>
+    <Cell><Data ss:Type="String">The data needs to be transmitted by reference</Data></Cell>
+    <Cell><Data ss:Type="String">If both data and url are provided, the url SHALL point to the same content as the data contains. Urls may be relative references or may reference transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures. Relative URLs are interpreted relative to the service url, like a resource reference, rather than relative to the resource itself. If a URL is provided, it SHALL resolve to actual data. </Data></Cell>
     <Cell><Data ss:Type="String">./reference/literal</Data></Cell>
-    <Cell><Data ss:Type="String">RP.1+RP.2 - если они относятся к URL (см. v2.6)</Data></Cell>
+    <Cell><Data ss:Type="String">RP.1+RP.2 - if they refer to a URL (see v2.6)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell><Data ss:Type="String">Attachment.size</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">integer</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Number of bytes of content (if url provided)</Data></Cell>
-    <Cell><Data ss:Type="String">Количество байтов данных, составляющих вложение</Data></Cell>
+    <Cell><Data ss:Type="String">The number of bytes of data that make up this attachment.</Data></Cell>
     <Cell ss:StyleID="s66"/>
-    <Cell><Data ss:Type="String">Указание размера позволяет приложениям определять, следует ли им заранее закачать содержимое или вообще отказаться его скачивать</Data></Cell>
-    <Cell><Data ss:Type="String">Количество байтов является избыточной информацией, если данные в формате base64binary, но полезно, если данные представлены в виде ссылки url</Data></Cell>
-    <Cell><Data ss:Type="String">N/A (необходимо предложение типа данных от R3)</Data></Cell>
+    <Cell><Data ss:Type="String">Representing the size allows applications to determine whether they should fetch the content automatically in advance, or refuse to fetch it at all</Data></Cell>
+    <Cell><Data ss:Type="String">The number of bytes is redundant if the data is provided as a base64binary, but is useful if the data is provided as a url reference</Data></Cell>
+    <Cell><Data ss:Type="String">N/A (needs data type R3 proposal)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="109.5">
     <Cell><Data ss:Type="String">Attachment.hash</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">base64Binary</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Hash of the data (sha-1, base64ed )</Data></Cell>
-    <Cell><Data ss:Type="String">Хеш-сумма данных по алгоритму SHA-1 в кодировке base64</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Элемент добавлен для того, чтобы приложения могли удостовериться, что содержимое по ссылке не было изменено, и чтобы электронная подпись содержимого могла безоговорочно подписывать содержимое изображения без необходимости включать его данные в экземпляр или ссылаться на URL в подписи</Data></Cell>
+    <Cell><Data ss:Type="String">The calculated hash of the data using SHA-1. Represented using base64</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Included so that applications can verify that the contents of a location have not changed and so that a signature of the content can implicitly sign the content of an image without having to include the data in the instance or reference the url in the signature</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.integrityCheck[parent::ED/integrityCheckAlgorithm=&quot;SHA-1&quot;]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -209,10 +208,10 @@
     <Cell><Data ss:Type="String">Attachment.title</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Заголовок для отображения вместо данных</Data></Cell>
-    <Cell><Data ss:Type="String">Заголовок или текст для отображения вместо данных</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Label to display in place of the data</Data></Cell>
+    <Cell><Data ss:Type="String">A label or set of text to display in place of the data</Data></Cell>
     <Cell><Data ss:Type="String">&quot;Official Corporate Logo&quot;</Data></Cell>
-    <Cell><Data ss:Type="String">Приложениям нужен заголовок, чтобы показывать пользователю вместо фактических данных, когда они не могут быть визуализированы или отображены программой просмотра. </Data></Cell>
+    <Cell><Data ss:Type="String">Applications need a label to display to a human user in place of the actual data if the data cannot be rendered or perceived by the viewer.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./title/data</Data></Cell>
    </Row>
   </Table>
@@ -309,14 +308,14 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s71"><Data ss:Type="String">MimeType</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">MIME-тип вложения</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">The mime type of an attachment</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">http://www.rfc-editor.org/bcp/bcp13.txt</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s72"><Data ss:Type="String">Language</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Естественный язык</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">A human language</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">http://tools.ietf.org/html/bcp47</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">IETF language tag</Data></Cell>

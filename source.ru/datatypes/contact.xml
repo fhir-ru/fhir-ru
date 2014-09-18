@@ -133,8 +133,8 @@
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Structure</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Technology mediated contact details (phone, fax, email, etc)</Data></Cell>
-    <Cell><Data ss:Type="String">Все виды технологически опосредованных контактных данных частного лица или организации, в том числе телефон, электронная почта и пр.</Data></Cell>
-    <Cell><Data ss:Type="String">Нужна возможность отслеживать номера телефона, факса, мобильного, смс, потовые адреса, теги твиттера и пр. </Data></Cell>
+    <Cell><Data ss:Type="String">All kinds of technology mediated contact details for a person or organization, including telephone, email, etc.</Data></Cell>
+    <Cell><Data ss:Type="String">Need to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">TEL</Data></Cell>
     <Cell><Data ss:Type="String">XTN</Data></Cell>
     <Cell><Data ss:Type="String">ContactPoint</Data></Cell>
@@ -146,7 +146,7 @@
     <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">ContactSystem</Data></Cell>
     <Cell><Data ss:Type="String">phone | fax | email | url</Data></Cell>
-    <Cell><Data ss:Type="String">Телекоммуникационная форма контакта - какая именно телекоммуникационная система требуется для использования контактных данных</Data></Cell>
+    <Cell><Data ss:Type="String">Telecommunications form for contact - what communications system is required to make use of the contact</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">./scheme</Data></Cell>
     <Cell><Data ss:Type="String">XTN.3</Data></Cell>
     <Cell><Data ss:Type="String">./ContactPointType</Data></Cell>
@@ -155,12 +155,12 @@
     <Cell><Data ss:Type="String">Contact.value</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Фактические контактные данные</Data></Cell>
-    <Cell><Data ss:Type="String">Фактические контактные данные в той форме, которая имеет смысл в названной системе связи (т.е. телефонный номер или адрес электронной почты).</Data></Cell>
-    <Cell><Data ss:Type="String">Необходимо поддерживать устаревшие номера, заданные не в жестком формате </Data></Cell>
-    <Cell><Data ss:Type="String">Значение иногда содержит такие дополнительные данные, как расширения, или примечания к использованию контактных данных</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The actual contact details</Data></Cell>
+    <Cell><Data ss:Type="String">The actual contact details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).</Data></Cell>
+    <Cell><Data ss:Type="String">Need to support legacy numbers that are not in a tightly controlled format </Data></Cell>
+    <Cell><Data ss:Type="String">Additional out of band data such as extensions, or notes about use of the contact are sometimes included in the value</Data></Cell>
     <Cell><Data ss:Type="String">./url</Data></Cell>
-    <Cell><Data ss:Type="String">XTN.1 (или XTN.12)</Data></Cell>
+    <Cell><Data ss:Type="String">XTN.1 (or XTN.12)</Data></Cell>
     <Cell><Data ss:Type="String">./Value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -169,23 +169,23 @@
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">ContactUse</Data></Cell>
-    <Cell><Data ss:Type="String">home | work | temp | old | mobile - назначение этого адреса</Data></Cell>
-    <Cell><Data ss:Type="String">Устанавливает назначение адреса</Data></Cell>
-    <Cell><Data ss:Type="String">Необходимо отслеживать способ, которым человек пользуется этими контактными данными, чтобы пользователи могли выбрать наиболее подходящий для их целей</Data></Cell>
-    <Cell><Data ss:Type="String">Является модификатором, так как приложения не должны ошибочно принять временные или старые контактные данные за текущие/постоянные. Приложения могут принимать контактные данные за текущие, если только явно не указано, что они временные или старые</Data></Cell>
+    <Cell><Data ss:Type="String">home | work | temp | old | mobile - purpose of this address</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the purpose for the address</Data></Cell>
+    <Cell><Data ss:Type="String">Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose</Data></Cell>
+    <Cell><Data ss:Type="String">This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old</Data></Cell>
     <Cell><Data ss:Type="String">unique(./use)</Data></Cell>
-    <Cell><Data ss:Type="String">XTN.2 - но часто обозначается полем (but often indicated by field)</Data></Cell>
+    <Cell><Data ss:Type="String">XTN.2 - but often indicated by field</Data></Cell>
     <Cell><Data ss:Type="String">./ContactPointPurpose</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Contact.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Период времени, в который контактные данные были/являются актуальными</Data></Cell>
-    <Cell><Data ss:Type="String">Период времени, в который контактные данные были/являются актуальными</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Time period when the contact was/is in use</Data></Cell>
+    <Cell><Data ss:Type="String">Time period when the contact was/is in use</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">./useablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell><Data ss:Type="String">./StartDate и ./EndDate</Data></Cell>
+    <Cell><Data ss:Type="String">./StartDate and ./EndDate</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -226,9 +226,9 @@
     <Cell><Data ss:Type="String">System is required</Data></Cell>
     <Cell><Data ss:Type="String">Contact</Data></Cell>
     <Cell ss:StyleID="s68"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Элемент </Font><I><Font
-        html:Color="#000000">system</Font></I><Font html:Color="#000000"> является обязательным, если указан элемент </Font><I><Font
-        html:Color="#000000">value</Font></I><Font html:Color="#000000">.</Font></ss:Data></Cell>
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">A </Font><I><Font
+        html:Color="#000000">system</Font></I><Font html:Color="#000000"> is required if a </Font><I><Font
+        html:Color="#000000">value</Font></I><Font html:Color="#000000"> is provided.</Font></ss:Data></Cell>
     <Cell><Data ss:Type="String">value.oclIsDefined implies system.oclIsDefined</Data></Cell>
     <Cell><Data ss:Type="String">not(exists(f:value)) or exists(f:system)</Data></Cell>
    </Row>
@@ -270,14 +270,14 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">ContactSystem</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Телекоммуникационная форма контакта</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Telecommunications form for contact</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">#contact-system</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">http://hl7.org/fhir/v2/vs/0202</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">ContactUse</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Размещение, тип или статус адреса телекоммуникации, определяющий его назначение</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Location, type or status of telecommunications address indicating use</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">#contact-use</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">http://hl7.org/fhir/v2/vs/0201</Data></Cell>

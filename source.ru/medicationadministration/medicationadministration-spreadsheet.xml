@@ -221,7 +221,7 @@
     <Cell ss:StyleID="s70"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Administration of medication to a patient</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Описывает событие введения пациенту дозы лекарственного средства. Это может быть как просто глотание таблетки, так и продолжительное вливание.&#10;&#10;Другие ресурсы из этой группы привязывают это событие к соответствующему предписанию (authorizing prescription) этого лекарственного средства и к конкретному взаимодействию пациента и медицинского работника (health care practitioner)</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Describes the event of a patient being given a dose of a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.&#10;&#10;Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner</Data></Cell>
     <Cell ss:StyleID="s72"/>
     <Cell ss:Index="12" ss:StyleID="s72"><Data ss:Type="String">SubstanceAdministration</Data></Cell>
     <Cell ss:StyleID="s72"/>

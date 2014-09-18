@@ -7,20 +7,20 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Lloyd</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2014-07-02T08:10:09Z</LastSaved>
-  <Version>14.00</Version>
+  <LastSaved>2014-08-07T01:11:13Z</LastSaved>
+  <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>2205</WindowHeight>
+  <WindowHeight>2145</WindowHeight>
   <WindowWidth>9450</WindowWidth>
   <WindowTopX>-120</WindowTopX>
-  <WindowTopY>780</WindowTopY>
-  <RefModeR1C1/>
+  <WindowTopY>840</WindowTopY>
+  <ActiveSheet>9</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -159,6 +159,13 @@
     ss:Bold="1"/>
    <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
   </Style>
+  <Style ss:ID="s89">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Names>
@@ -185,7 +192,10 @@
    <Column ss:StyleID="s63" ss:Width="131.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">ISO 11179 Mapping</Data><NamedCell
+    <Cell><Data ss:Type="String">ISO 11179 Mapping</Data><Comment
+      ss:Author="Grahame"><ss:Data xmlns="http://www.w3.org/TR/REC-html40"><B><Font
+         html:Face="Tahoma" x:Family="Swiss" html:Size="9" html:Color="#000000">Grahame:</Font></B><Font
+        html:Face="Tahoma" x:Family="Swiss" html:Size="9" html:Color="#000000">&#10;test</Font></ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Card.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Inv.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -223,8 +233,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Resource Profile</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Профиль ресурса − это спецификация использования одного или нескольких ресурсов FHIR.
-    Профиль может налагать ограничения на использование ресурса и типов данных, справочников и расширений</Data><NamedCell
+    <Cell><Data ss:Type="String">A Resource Profile - a statement of use of one or more FHIR Resources.  It may include constraints on Resources and Data Types, Terminology Binding Statements and Extension Definitions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Template</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -466,7 +475,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">0..*</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">0;0</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">100;0</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">External specification that the content is mapped to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -544,7 +553,7 @@
     <Cell ss:Index="3"><Data ss:Type="String">0..*</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">8</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">530;240</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">530;150</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">A constraint on a resource or a data type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -663,7 +672,7 @@
     <Cell><Data ss:Type="String" x:Ticked="1">=Constraint</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">450;380</Data><NamedCell
+    <Cell ss:StyleID="s69"><Data ss:Type="String">550;320</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Snapshot view of the structure</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -686,7 +695,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String" x:Ticked="1">=Element</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">210;250</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">220;250</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Definition of elements in the resource (if no profile)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Captures constraints on each element within the resource</Data><NamedCell
@@ -1039,7 +1048,7 @@
     <Cell ss:Index="5" ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String" x:Ticked="1">=TypeRef</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">0;450</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">0;490</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Data type and Profile for this element</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1375,7 +1384,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">12</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">460;470</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">480;390</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">ValueSet details if this is coded</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1464,7 +1473,7 @@
     <Cell ss:Index="5" ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">110;540</Data><NamedCell
+    <Cell ss:StyleID="s69"><Data ss:Type="String">480;540</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Map element to another set of definitions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1543,7 +1552,7 @@
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">530;90</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">530;0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Search params defined</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Additional search parameters for implementations to support and/or make use of</Data><NamedCell
@@ -1793,7 +1802,7 @@
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Profile.query</Data><NamedCell
+    <Cell><Data ss:Type="String">!Profile.query</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1816,7 +1825,7 @@
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
-    <Cell><Data ss:Type="String">Profile.query.name</Data><NamedCell
+    <Cell><Data ss:Type="String">!Profile.query.name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1838,7 +1847,7 @@
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Profile.query.documentation</Data><NamedCell
+    <Cell><Data ss:Type="String">!Profile.query.documentation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1860,7 +1869,7 @@
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Profile.query.parameter</Data><NamedCell
+    <Cell><Data ss:Type="String">!Profile.query.parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1896,11 +1905,10 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>36</TopRowBottomPane>
+   <TopRowBottomPane>58</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1917,8 +1925,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>44</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>63</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1929,7 +1937,7 @@
   </AutoFilter>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="28" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="28" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s79" ss:DefaultRowHeight="15">
    <Column ss:Index="3" ss:StyleID="s79" ss:AutoFitWidth="0" ss:Width="265.5"/>
    <Column ss:StyleID="s79" ss:AutoFitWidth="0" ss:Width="309.75"/>
@@ -1988,7 +1996,8 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.structure.snapshot.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">Value may only be specified if the type consists of a single repetition that has a type corresponding to one of the primitive data types.</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:*[starts-with(local-name(.), 'value')])) or (count(f:type)=0) or (count(f:type)=1 and f:type/f:code[substring(@value,1,1)=lower-case(substring(@value,1,1))])</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:*[starts-with(local-name(.), 'value')])) or (count(f:type)=0) or (count(f:type)=1 )</Data></Cell>
+    <Cell><Data ss:Type="String">and f:type/f:code[substring(@value,1,1)=lower-case(substring(@value,1,1))]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">12</Data></Cell>
@@ -2141,8 +2150,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -2630,6 +2639,93 @@
      <Number>3</Number>
      <ActiveRow>4</ActiveRow>
      <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Operations">
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s77" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="127.5"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="92.25"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="30"/>
+   <Column ss:Index="5" ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="72.75"
+    ss:Span="1"/>
+   <Column ss:Index="7" ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="354.75"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="312"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s89">
+    <Cell><Data ss:Type="String">Name</Data></Cell>
+    <Cell><Data ss:Type="String">Use</Data></Cell>
+    <Cell><Data ss:Type="String">Min</Data></Cell>
+    <Cell><Data ss:Type="String">Max</Data></Cell>
+    <Cell><Data ss:Type="String">Type</Data></Cell>
+    <Cell><Data ss:Type="String">Title</Data></Cell>
+    <Cell><Data ss:Type="String">Documentation</Data></Cell>
+    <Cell><Data ss:Type="String">Footer</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="330">
+    <Cell><Data ss:Type="String">questionnaire</Data></Cell>
+    <Cell><Data ss:Type="String">Resource | Instance</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Populate Questionnaire</Data></Cell>
+    <Cell><Data ss:Type="String">Generates a [[[Questionnaire]]] instance  based on a specified [[[Profile]]], creating questions for each core or extension element found in the profile.  &#10;&#10;If the operation is not called at the instance level, one of the *identifier*, *profile* or *url* 'in' parameters must be provided.  (If called at the instance level, these parameters will be ignored.  If more than one is specified, servers may raise an error or may resolve with the parameter of their choice.)&#10;&#10;The response will contain a [[[Questionnaire]]] instance based on the specified [[[Profile]]] and/or an [[[OperationOutcome]]] resource with errors or warnings.&#10;&#10;Nested groups are used to handle complex structures and data types.  If the 'supportedOnly' parameter is set to true, only those elements marked as &quot;must support&quot; will be included.&#10;&#10;This operation is intended to enable auto-generation of simple interfaces for arbitrary profiles.  The 'questionnaire' approach to data entry has limitations that will make it less optimal than custom-defined interfaces.  However, this function may be useful for simple applications or for systems that wish to support &quot;non-core&quot; resources with minimal development effort.</Data></Cell>
+    <Cell><Data ss:Type="String">**Open Issue**: Ideally, extensions should be populated in the generated [[[Questionnaire]]] that will support taking [[[QuestionnaireAnswers]]] resources generated from the Questionnaire and turning them back into the appropriate resources.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">questionnaire.identifier</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A logical profile identifier (i.e. 'Profile.identifier''). The server must know the profile or be able to retrieve it from other known repositories.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">questionnaire.profile</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">token</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The [[[Profile]]] is provided directly as part of the request. Servers may choose not to accept profiles in this fashion</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">questionnaire.url</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The profile's official url (i.e. 'Profile.url'). The server must know the profile or be able to retrieve it from other known repositories.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">questionnaire.supportedOnly</Data></Cell>
+    <Cell><Data ss:Type="String">in</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">boolean</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">If true, the questionnaire will only include those elements marked as &quot;mustSupport='true'&quot; in the profile.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">questionnaire.answers</Data></Cell>
+    <Cell><Data ss:Type="String">out</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">Questionnaire</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The questionnaire form generated based on the profile.</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

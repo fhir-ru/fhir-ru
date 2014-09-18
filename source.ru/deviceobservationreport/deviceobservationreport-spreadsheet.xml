@@ -152,7 +152,7 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Describes the data produced by a device at a point in time</Data></Cell>
-    <Cell><Data ss:Type="String">Описывает данные, полученные с помощью устройства в определенный момент времени.</Data></Cell>
+    <Cell><Data ss:Type="String">Describes the data produced by a device at a point in time</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Observation[classCode=OBS, moodCode=EVN, code &lt; DeviceObservation]</Data></Cell>
    </Row>
    <Row ss:Height="30">

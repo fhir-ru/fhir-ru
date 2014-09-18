@@ -237,7 +237,7 @@
     <Cell><Data ss:Type="String">A set of images produced in single study (one or more series of references images)</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Reference IHE radiology TF vol 2 table 4.14.1</Data></Cell>
     <Cell><Data ss:Type="String">Manifest,XDS-I summary, Key Images</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Перечень изображений, полученных во время исследования. Перечень может быть полным и включать в себя все полученные изображения, либо неполным и включать в себя только их часть, например список ключевых изображений. </Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Manifest of a set of images produced in study. The set of images may include every image in the study, or it may be an incomplete sample, such as a list of key images</Data></Cell>
     <Cell ss:StyleID="s106"/>
     <Cell ss:Index="15" ss:StyleID="s106"><Data ss:Type="String">Act[classCode=COMPOSITION, moodCode=EVN]</Data></Cell>
     <Cell ss:StyleID="s106"/>

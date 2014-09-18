@@ -127,7 +127,7 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s66"/>
-    <Cell><Data ss:Type="String">Запрос на выполнение действия</Data></Cell>
+    <Cell><Data ss:Type="String">A request to perform an action</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Request</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:Index="13" ss:StyleID="s66"><Data ss:Type="String">ControlAct[classCode=ACTN, moodCode=RQO]</Data></Cell>

@@ -98,8 +98,8 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">A ratio of two Quantity values - a numerator and a denominator</Data></Cell>
-    <Cell><Data ss:Type="String">Отношение двух значений типа Quantity, выраженное в виде числителя и знаменателя. </Data></Cell>
-    <Cell><Data ss:Type="String">Должно фиксировать пропорции для некоторых измерений (титры) и некоторых показателей (стоимости)</Data></Cell>
+    <Cell><Data ss:Type="String">A relationship of two Quantity values - expressed as a numerator and a denominator. </Data></Cell>
+    <Cell><Data ss:Type="String">Need to able to capture ratios for some measurements (titers) and some rates (costs)</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">RTO</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
@@ -108,7 +108,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Numerator value</Data></Cell>
-    <Cell><Data ss:Type="String">Значение числителя</Data></Cell>
+    <Cell><Data ss:Type="String">The value of the numerator</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">.numerator</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
@@ -116,7 +116,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Denominator value</Data></Cell>
-    <Cell><Data ss:Type="String">Значение знаменателя</Data></Cell>
+    <Cell><Data ss:Type="String">The value of the denominator</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">.denominator</Data></Cell>
    </Row>
   </Table>
@@ -160,7 +160,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">both numerator and denominator</Data></Cell>
     <Cell><Data ss:Type="String">Ratio</Data></Cell>
-    <Cell><Data ss:Type="String">Числитель и знаменатель ДОЛЖНЫ либо оба присутствовать, либо оба отсутствовать</Data></Cell>
+    <Cell><Data ss:Type="String">numerator and denominator SHALL both be present, or both be absent</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">count(f:numerator) = count(f:denominator)</Data></Cell>
    </Row>
   </Table>

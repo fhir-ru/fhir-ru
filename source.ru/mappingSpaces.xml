@@ -124,5 +124,26 @@
     <id>dex</id>
     <sort>14</sort>
   </space>
+  <space>
+    <url>http://openehr.org</url>
+    <columnName>OpenEHR mapping</columnName>
+    <title>Open EHR</title>
+    <id>openehr</id>
+    <sort>15</sort>
+  </space>
+  <space>
+    <url>http://wiki.siframework.org/IHE+SDC+Profile</url>
+    <columnName>IHE SDC mapping</columnName>
+    <title>IHE Structured Data Capture</title>
+    <id>ihesdc</id>
+    <sort>16</sort>
+  </space>
+  <space>
+    <url>http://wiki.siframework.org/CQF</url>
+    <columnName>QUICK mapping</columnName>
+    <title>Quality Improvement and Clinical Knowledge (QUICK)</title>
+    <id>quick</id>
+    <sort>17</sort>
+  </space>
   
 </mappingSpaces>

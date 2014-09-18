@@ -120,16 +120,16 @@
     <Cell ss:StyleID="s65"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Type</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Ссылка на код, определенный терминологической системой </Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">A reference to a code defined by a terminology system </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Ссылка на код, определенный терминологической системой </Data><NamedCell
+    <Cell><Data ss:Type="String">A reference to a code defined by a terminology system </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Ссылки на коды являются распространенной практикой в моделях здравоохранения</Data><NamedCell
+    <Cell ss:Index="10"><Data ss:Type="String">References to codes are very common in healthcare models</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Коды могут быть определены весьма небрежно в перечислениях или перечнях кодов, до очень формализованных определений, таких как SNOMED CT - см. V3 Core Principles для более подробной информации</Data><NamedCell
+    <Cell><Data ss:Type="String">Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the V3 Core Principles for more information</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">CV</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Подмножество одного из наборов компонентов (1-3 либо 4-6) типов данных CE/CNE/CWE</Data><NamedCell
+    <Cell><Data ss:Type="String">CE/CNE/CWE subset one of the sets of component 1-3 or 4-6</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="133.5">
@@ -140,12 +140,12 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Identity of the terminology system </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Идентификация кодовой системы, которая определяет смысл символа в коде</Data><NamedCell
+    <Cell><Data ss:Type="String">The identification of the code system that defines the meaning of the symbol in the code. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Должно предельно однозначно указывать на источник определения символа</Data><NamedCell
+    <Cell><Data ss:Type="String">Need to be unambiguous about the source of the definition of the symbol</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">URI может быть OID (urn:oid:...) либо UUID (urn:uuid:...). OIDs и UUIDs ДОЛЖНЫ ссылаться на реестр HL7 OID. В ином случае URI должен браться из HL7-перечня определенных в FHIR специальных URIs либо должен разыменовывать ссылку (de-reference) на некоторое определение, задающее систему четко и однозначно</Data><NamedCell
+    <Cell><Data ss:Type="String">The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">./codeSystem</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -161,7 +161,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Version of the system - if relevant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Версия кодовой системы, которая использовалась при выборе этого кода. Обратите внимание, что хорошо поддерживаемая кодовая система не нуждается в указании версии, поскольку смысл кодов в разных версиях остается сообразным. Однако это не может быть единообразно обеспечено и когда нет гарантии, что смысл остается согласующимся, версия ДОЛЖНА указываться</Data><NamedCell
+    <Cell><Data ss:Type="String">The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and When the meaning is not guaranteed to be consistent, the version SHOULD be exchanged</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./codeSystemVersion</Data><NamedCell
@@ -178,10 +178,10 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Symbol in syntax defined by the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Символ в синтаксисе, определенном системой. Символ может быть предопределенным кодом или выражением в синтаксисе, определенном кодовой системой (например посткоординацией)</Data><NamedCell
+    <Cell><Data ss:Type="String">A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Должен относиться к конкретному коду в системе</Data><NamedCell
+    <Cell><Data ss:Type="String">Need to refer to a particular code in the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -195,17 +195,17 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Представление, определенное системой</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">Representation defined by the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Представление о смысле кода в системе в соответствии с правилами системы. </Data><NamedCell
+    <Cell><Data ss:Type="String">A representation of the meaning of the code in the system, following the rules of the system. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Должно передавать человекочитаемое значение кода программам чтения, которые не знают систему</Data><NamedCell
+    <Cell><Data ss:Type="String">Need to be able to carry a human-readable meaning of the code for readers that do not know  the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">CV.displayName</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">C*E.2 - но обратите внимание, что этого не всегда придерживаются</Data><NamedCell
+    <Cell ss:StyleID="s67"><Data ss:Type="String">C*E.2 - but note this is not well followed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="15" ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
@@ -215,17 +215,17 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">boolean</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Если этот код был выбран непосредственно пользователем </Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">If this code was chosen directly by the user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Указывает, что этот код был выбран пользователем непосредственно - т.е. из списка выбора доступных пунктов (кодов или отображений)</Data><NamedCell
+    <Cell><Data ss:Type="String">Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Идентифицируется как критерий клинической безопасности - что строго этот самый код был выбран явно, а не выведен системой на основе некоторых правил или обработки языка </Data><NamedCell
+    <Cell ss:Index="10"><Data ss:Type="String">This has been identified as a clinical safety criterium - that this exact code was chosen explicitly, rather than inferred by the system based on some rules or language processing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Среди множества альтернатив непосредственно выбранный код является наиболее подходящей отправной точкой для новых переводов</Data><NamedCell
+    <Cell><Data ss:Type="String">Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">CD.codingRationale</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Иногда подразумевается путем указания первым</Data><NamedCell
+    <Cell><Data ss:Type="String">Sometimes implied by being first</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -233,8 +233,8 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Resource(ValueSet)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Set this coding was chosen from</Data></Cell>
-    <Cell><Data ss:Type="String">Набор возможных кодированных значений, откуда этот кодинг был выбран или которым он ограничен</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Набор значений может влиять на коды, которые может выбрать пользователь. Также прямая ссылка на набор значений упрощает совместное использование узкоспециализированных кодовых систем, используемых в здравоохранении</Data></Cell>
+    <Cell><Data ss:Type="String">The set of possible coded values this coding was chosen from or constrained by</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">The value set may influence the codes that the user can select. Also, referencing the value set directly makes it easier to share ad-hoc code systems used across healthcare</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">CD.valueSet / CD.valueSetVersion</Data></Cell>
     <Cell><Data ss:Type="String">C*E.16 - .19</Data></Cell>
    </Row>
@@ -277,7 +277,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Coding</Data></Cell>
     <Cell><Data ss:Type="String">Value set doesn't substitute for system</Data></Cell>
-    <Cell><Data ss:Type="String">Если задан valueSet, то указание URI системы является обязательным</Data></Cell>
+    <Cell><Data ss:Type="String">If a valueSet is provided, a system URI Is required</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">not (exists(f:valueSet) and exists(f:code)) or exists(f:system)</Data></Cell>
    </Row>
   </Table>

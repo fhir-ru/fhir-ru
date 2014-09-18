@@ -161,12 +161,12 @@
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Structure</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Имя человека - его компоненты и применение</Data></Cell>
-    <Cell><Data ss:Type="String">Имя человека с возможностью указать его части и условия использования</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Необходима возможность записывать имена наряду с примечаниями об их использовании</Data></Cell>
-    <Cell><Data ss:Type="String">Имена могут меняться, от них могут отрекаться, люди могут иметь различные имена в разных контекстах.  Имена могут быть разбиты на части разного типа, имеющие переменное значение в зависимости от контекста, хотя деление на части не всегда существенно. NВ личных именах различные части могут быть пронизаны некоторым неявным смыслом; различные культуры придают различную важность частями имени, и степень, с которой система должна заботиться о частях имени, по всему миру широко варьируется.</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Name of a human - parts and usage</Data></Cell>
+    <Cell><Data ss:Type="String">A human's name with the ability to identify parts and usage</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Need to be able to record names, along with notes about their use</Data></Cell>
+    <Cell><Data ss:Type="String">Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts may or may not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely.</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">EN (фактически, PN)</Data></Cell>
+    <Cell><Data ss:Type="String">EN (actually, PN)</Data></Cell>
     <Cell><Data ss:Type="String">XPN</Data></Cell>
     <Cell><Data ss:Type="String">ProviderName</Data></Cell>
    </Row>
@@ -177,22 +177,22 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">NameUse</Data></Cell>
     <Cell><Data ss:Type="String">usual | official | temp | nickname | anonymous | old | maiden</Data></Cell>
-    <Cell><Data ss:Type="String">Указывает назначение имени</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Позволяет выбрать из ряда имен подходящее для конкретного контекста использования </Data></Cell>
-    <Cell><Data ss:Type="String">Является модификатором, поскольку приложения не должны ошибочно принять временное или старое имя за текущее/постоянное. Приложения могут считать имя текущим, если только явно не указано, что оно временное или старое</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the purpose for this name</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Allows the appropriate name for a particular context of use to be selected from among a set of names</Data></Cell>
+    <Cell><Data ss:Type="String">This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old name etc for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">unique(./use)</Data></Cell>
-    <Cell><Data ss:Type="String">XPN.7, но часто определяется полем, которое содержит это имя</Data></Cell>
+    <Cell><Data ss:Type="String">XPN.7, but often indicated by which field contains the name</Data></Cell>
     <Cell><Data ss:Type="String">./NamePurpose</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">HumanName.text</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Текстовое представление полного имени</Data></Cell>
-    <Cell><Data ss:Type="String">Полное текстовое представление имени</Data></Cell>
-    <Cell ss:Index="10" ss:StyleID="s69"><Data ss:Type="String">Визуализируемая незакодированная форма</Data></Cell>
-    <Cell><Data ss:Type="String">Может содержать и текстовое представление, и структурированные части.&#10;</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Text representation of the full name</Data></Cell>
+    <Cell><Data ss:Type="String">A full text representation of the name</Data></Cell>
+    <Cell ss:Index="10" ss:StyleID="s69"><Data ss:Type="String">A renderable, unencoded form</Data></Cell>
+    <Cell><Data ss:Type="String">Can provide both a text representation and structured parts. &#10;</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">./formatted</Data></Cell>
     <Cell><Data ss:Type="String">implied by XPN.11</Data></Cell>
@@ -201,11 +201,11 @@
     <Cell><Data ss:Type="String">HumanName.family</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Родовое имя (часто называемое фамилией)</Data></Cell>
-    <Cell><Data ss:Type="String">Часть имени, связанная с родословной. В некоторых культурах (например Эритрее) родовое имя сына является первым именем его отца.</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Family name (often called 'Surname')</Data></Cell>
+    <Cell><Data ss:Type="String">The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.</Data></Cell>
     <Cell><Data ss:Type="String">surname</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell><Data ss:Type="String">Для родового имени имена, написанные через дефис, такие как &quot;Smith-Jones&quot;, считаются одним именем, однако имена с пробелами внутри, такие как &quot;Smith Jones&quot;, разбиваются на несколько частей</Data></Cell>
+    <Cell><Data ss:Type="String">For family name, hyphenated names such as &quot;Smith-Jones&quot; are a single name, but names with spaces such as &quot;Smith Jones&quot; are broken into multiple parts</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">./part[partType = FAM]</Data></Cell>
     <Cell><Data ss:Type="String">XPN.1</Data></Cell>
@@ -215,11 +215,11 @@
     <Cell><Data ss:Type="String">HumanName.given</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Имена (не обязательно 'первое'). Включает второе имя (middle names)</Data></Cell>
-    <Cell><Data ss:Type="String">Имя </Data></Cell>
-    <Cell><Data ss:Type="String">первое имя; второе имя</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Given names (not always 'first'). Includes middle names</Data></Cell>
+    <Cell><Data ss:Type="String">Given name</Data></Cell>
+    <Cell><Data ss:Type="String">first name; middle name</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell><Data ss:Type="String">Если были записаны только инициалы, они могут использоваться вместо полного имени. Не названо &quot;первым именем&quot;, так как имя не всегда идет первым.</Data></Cell>
+    <Cell><Data ss:Type="String">If only initials are recorded, they may be used in place of the full name.  Not called &quot;first name&quot; since given names do not always come first.</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">./part[partType = GIV]</Data></Cell>
     <Cell><Data ss:Type="String">XPN.2 + XPN.3</Data></Cell>
@@ -229,8 +229,8 @@
     <Cell><Data ss:Type="String">HumanName.prefix</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Части имени, идущие перед ним</Data></Cell>
-    <Cell><Data ss:Type="String">Компонент, отражающий академические, правовые, профессиональные или дворянские звания и идущий в начале имени</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Parts that come before the name</Data></Cell>
+    <Cell><Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name</Data></Cell>
     <Cell ss:Index="10" ss:StyleID="s69"/>
     <Cell ss:Index="12" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">./part[partType = PFX]</Data></Cell>
@@ -241,8 +241,8 @@
     <Cell><Data ss:Type="String">HumanName.suffix</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Компоненты, идущие после имени</Data></Cell>
-    <Cell><Data ss:Type="String">Компонент, отражающий академические, правовые, профессиональные или дворянские звания и идущий в конце имени</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Parts that come after the name</Data></Cell>
+    <Cell><Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name</Data></Cell>
     <Cell ss:Index="10" ss:StyleID="s69"/>
     <Cell ss:Index="12" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">./part[partType = SFX]</Data></Cell>
@@ -252,9 +252,9 @@
     <Cell><Data ss:Type="String">HumanName.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Период времени, в который имя было/есть в употреблении</Data></Cell>
-    <Cell><Data ss:Type="String">Указывает период времени, в который это имя было действительно для человека.</Data></Cell>
-    <Cell ss:Index="10" ss:StyleID="s69"><Data ss:Type="String">Позволяет размещать имена в историческом контексте</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Time period when name was/is in use</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates the period of time when this name was valid for the named person.</Data></Cell>
+    <Cell ss:Index="10" ss:StyleID="s69"><Data ss:Type="String">Allows names to be placed in historical context</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="Default"/>
     <Cell ss:StyleID="s69"><Data ss:Type="String">./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
     <Cell><Data ss:Type="String">XPN.13 + XPN.14</Data></Cell>
@@ -347,7 +347,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s71"><Data ss:Type="String">NameUse</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Использование человеческих имен</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">The use of a human name</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">#name-use</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s72"><Data ss:Type="String">http://hl7.org/fhir/v2/vs/0200</Data></Cell>

@@ -182,7 +182,7 @@
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A set of resources composed into a single coherent clinical statement with clinical attestation</Data></Cell>
-    <Cell><Data ss:Type="String"> Набор информации, имеющей отношение к охране здоровья, представляемый в виде единого логического документа, связанного с точки зрения смысла, обладающего клиническим контекстом и удостоверением авторства (т.е. лица, от имени которого делается заявление)&#10;</Data></Cell>
+    <Cell><Data ss:Type="String">A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. &#10;</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">To support documents, and also to capture the EN13606 notion of an attested commit to the patient EHR, and to allow a set of disparate resources at the information/engineering level to be gathered into a clinical statement</Data></Cell>
     <Cell><Data ss:Type="String">While the focus of this specification is on patient-specific clinical statements, this resource can also apply to other healthcare-related statements such as study protocol designs, healthcare invoices and other activities that are not necessarily patient-specific or clinical</Data></Cell>
     <Cell><Data ss:Type="String">Document[classCode=&quot;DOC&quot; and moodCode=&quot;EVN&quot; and isNormalAct()]</Data></Cell>

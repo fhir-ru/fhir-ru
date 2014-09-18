@@ -178,7 +178,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A manifest that defines a set of documents</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Манифест, определяющий набор документов</Data><NamedCell
+    <Cell><Data ss:Type="String">A manifest that defines a set of documents</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Act[classCode=FOLDER, moodCode=EVN]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
