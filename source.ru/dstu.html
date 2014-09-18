@@ -11,88 +11,159 @@
 
 <div class="col-9">
 
-<h2>DSTU Considerations</h2>
+<h2>Особенности Стандартов для пробного использования (DSTU)</h2>
 
 <p>
-Note that this specification includes many examples. While every effort has been made to ensure that the examples
+Обратите внимание, что данная спецификация включает в себя множество примеров. Несмотря на все усилия, прилагаемые для о
+беспечения полного соответствия примеров и спецификации, в случае несоответствий следует ориентироваться на спецификацию,
+а не на конкретный пример. То же самое правило распространяется и на эталонные реализаций стандарта.
+<!-- Note that this specification includes many examples. While every effort has been made to ensure that the examples
 are fully conformant to the specification, if the examples disagree with the specification, the specification 
-is considered correct and normative, and not the examples. This same rule applies to the reference implementations.
+is considered correct and normative, and not the examples. This same rule applies to the reference implementations. -->
 </p>
 
 <p>
-<b>Attention Implementers, Regulators, standards development organizations and other users (and potential users) of this specification</b>
+<b>Вниманию разработчиков, контролирующих органов, организаций, разрабатывающих стандарты и других пользователей (в том числе потенциальных) данной спецификации:
+<!-- Attention Implementers, Regulators, standards development organizations and other users (and potential users) of this specification --> </b>
 </p>
 <p>
-FHIR is being published as a Draft Standard for Trial Use (DSTU).  The DSTU label has been used with prior HL7 specifications with varying intentions.
+Спецификация FHIR распространяется как проект стандарта для пробного использования (DSTU). Статус DSTU ранее применялся 
+по отношению и к другим спецификациям от HL7 по различным причинам. Пользователи спецификации FHIR могут быть незнакомы 
+с <a href="http://www.hl7.org/documentcenter/public/membership/HL7_Governance_and_Operations_Manual.pdf">процедурой подготовки стандарта</a>, принятой в организации HL7 International. По этой причине, Координационная группа 
+проекта FHIR (FHIR Management Group) подготовила следующую информацию для пользователей спецификации FHIR, чтобы 
+раскрыть цели и намерения организации HL7 Internationals.
+<!-- FHIR is being published as a Draft Standard for Trial Use (DSTU).  The DSTU label has been used with prior HL7 specifications with varying intentions.
 As well, those making use of FHIR may not be familiar with <a href="http://www.hl7.org/documentcenter/public/membership/HL7_Governance_and_Operations_Manual.pdf">HL7 standards processes</a>.  For this reason, the FHIR Management Group is providing the following 
-guidance for the users of the FHIR specification to make clear HL7's intentions.
+guidance for the users of the FHIR specification to make clear HL7's intentions. -->
 </p>
 <p>
-The FHIR specification is "draft".  It has been subject to significant review through ballot and other HL7 processes and many aspects of it have been 
+Спецификация FHIR является "проектом стандарта" ("draft"). В соответствии с существующей процедурой, спецификация FHIR 
+подлежит значительному пересмотру и утверждению изменений в ходе голосования членов HL7. Многие функции были 
+реализованы и протестированы на возможность обеспечения интероперабельности в ходе специальных конференций (Connectathon) и 
+ранних внедрений. Однако, "масштабы" тестирования сильно различались. Часть ресурсов была испытана в различных 
+условиях и средах. Другая часть в меньшей степени участвовала в испытаниях в реальных условиях. Следует понимать, 
+что инфраструктура FHIR в целом более стабильна, чем отдельные ее ресурсы. Для решения некоторых вопросов (особенно
+в период DSTU) требуется личное участие сообщества пользователей FHIR (см. <a href="todo.html">Список нерешенных вопросов</a> 
+(Outstanding Issue List), подробнее o <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse&amp;tracker_id=677">FHIR Change Request</a>). 
+Практический опыт, полученный в в ходе ранних реализаций стандарта, используеся для решения вопросов такого рода.
+<!-- The FHIR specification is "draft".  It has been subject to significant review through ballot and other HL7 processes and many aspects of it have been 
 implemented and subjected to interoperability testing through Connectathons and early adoption.  However, the degree of testing has varied.  Some resources 
 have been well tested in a variety of environments.  Others have received relatively little real-world exercise.  In general, the infrastructure should be 
 considered to be more stable than the resources themselves.  In some cases, there are issues on which input is specifically requested during the DSTU period
 (see the <a href="todo.html">Outstanding Issue List</a>, and known issues will arise after publication (refer to the 
 <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse&amp;tracker_id=677">FHIR Change Request</a> tracker for details.)
-Guidance from early implementation will help address these areas.
+Guidance from early implementation will help address these areas. -->
 </p>
 <p>
-Regardless of the degree of prior implementation, all aspects of the FHIR specification are potentially subject to change.  These changes may be minor 
+Вне зависимости от числа ранних внедрений стандарта, все аспекты спецификации FHIR являются предметом изменения. Это 
+могут быть небольшие (разъяснение определений и т.д.) или значительные изменения (рефакторинг ресурсов, изменения в 
+правилах сериализации, исключения или добавления типов данных и т.д.). В процессе работы над DSTU-стандартом, 
+предпочтение не отдается ни обратной, ни прямой совместимости. Изменения не будут вноситься без существенной причины, 
+однако, вопрос обеспечения интероперабельности в долгосрочной перспективе, как правило, будет вынесен на первый план по 
+отношению к обеспечению совместимости с ранними реализациями.
+<!-- Regardless of the degree of prior implementation, all aspects of the FHIR specification are potentially subject to change.  These changes may be minor 
 (clarifications of definitions, etc.) or major (refactoring of resources, changes to serialization rules, eliminating or adding data types, etc.)  There is no 
 commitment to backward or forward compatibility during the DSTU process.  Changes will not be made without cause, however the interests of long-term 
-implementability will generally trump the impact on early adopters when determining what changes should be made.
+implementability will generally trump the impact on early adopters when determining what changes should be made. -->
 </p>
 <p>
-This specification has been promoted to DSTU because it is felt that the specification, as is, is implementable and that more value can be gleaned from 
+Данная спецификация получила статус DSTU по причине практической возможности ее реализации и необходимости внесения 
+изменений на основании "обратной связи от внедренцев", а не на основании решения соответствующих органов организации 
+HL7 International. Внедренцы, готовые взять на себя риски последующих изменений спецификации, (возможно, из-за желания 
+быть "первопроходцем", сделать личный вклад в развитие стандарта, использовать непосредственные преимущества, 
+которые предлагает стандарт FHIR) поощряются использовать FHIR в реальных клинических условиях. Тем не менее, 
+внедренцы должны осознавать возможную необходимость в локальной адаптации стандарта для обеспечения соответствия 
+реалиям конкретного региона / страны. Рекомендуется разрабатывать решения на базе FHIR таким образом, чтобы изменения 
+в спецификации могли быть "безболезненно" отражены в ПО. Рекомендуется использовать некоторый механизм управления 
+совместимостью (interoperability management) с системами, построенными на различных версиях спецификациями или ее 
+локальных расширениях.
+<!-- This specification has been promoted to DSTU because it is felt that the specification, as is, is implementable and that more value can be gleaned from 
 implementer experience than from subsequent review as part of the ballot process.  Implementers who are willing to accept the risk of change (perhaps 
 for the benefit of early implementation experience, first mover advantage and the ability to leverage FHIR's intrinsic benefits) are encouraged to implement 
 FHIR in real-world systems.  However, those implementers should be aware that local adaptations may be necessary to meet real-world requirements.  Furthermore, 
 such implementers should architect their solutions to be tolerant of changes to the specification and, where necessary, to manage interoperability with systems 
-that may be using different versions of the specification or different local adaptations.
+that may be using different versions of the specification or different local adaptations. -->
 </p>
 <p>
-It is the HL7's expectation that at least two DSTU releases (roughly a year apart) will be published prior to balloting the specification as a 
+Ожидается, что в течение последующих двух лет организация HL7 International опубликует, как минимум, два DSTU-релиза 
+стандарта перед выходом непосредственно нормативной (normative) версии FHIR. После того, как спецификация получит 
+статус нормативной, вступят в силу обязательства по обеспечению обратной совместимости. Нормативная спецификация будет 
+включать в себя все компоненты инфраструктуры FHIR, а также ресурсы, реализованные в достаточном количестве в различных 
+средах / системах. Некоторые ресурсы могут остаться в статусе "информативных" (informative) в рамках нормативной 
+версии стандарта, до тех пор, пока не будет накоплен достаточный опыт их практического применения. Требование 
+обратной совместимости на данные ресурсы распространяться не будет.
+<!-- It is the HL7's expectation that at least two DSTU releases (roughly a year apart) will be published prior to balloting the specification as a 
 Normative specification.  Once the specification becomes Normative, all stated commitments to backwards compatibility will come into play.  The normative 
 specification will include all infrastructure components of FHIR as well as those resources that have been implemented in a sufficient number of diverse 
 environments.  Some resources may be left as "informative" within the normative release until such time as sufficient implementation experience has been gained.  
-Backwards compatibility rules will not be binding on these informative resources.
+Backwards compatibility rules will not be binding on these informative resources. -->
 </p>
 <p>
-During the DSTU period, requests for change may be submitted using the HL7 gForge tracker which can be found  
+В период пробного использования стандарта (DSTU) запросы на внесение изменений (requests for change) в спецификацию 
+могут направляться организации HL7 International с помощью трекера <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse&amp;tracker_id=677">gForge</a>. По возможности, обновление спецификации 
+"стандарта, находящегося в развитии", будет осуществляться своевременно. Список предлагаемых изменений будет 
+регулярно публиковаться в качестве обновляемого приложения к официальному DSTU-дистрибутиву спецификации FHIR. 
+Внедренцы и разработчики должны знать, что изменения спецификации не будут рассматриваться как "официальные" до тех 
+пор, пока не пройдет их утверждение (голосованием) в качестве неотъемлемой части нормативной или DSTU-спецификации. 
+Запросы изменения спецификации могут быть исправлениями, направленными на облегчение внедрения, уточнениями и 
+улучшениями стандарта. Кроме того, организация HL7 будет создавать и предлагать к применению дополнительные 
+ресурсы и профили, являющиеся частью спецификации FHIR.
+<!-- During the DSTU period, requests for change may be submitted using the HL7 gForge tracker which can be found  
 <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse&amp;tracker_id=677">here</a>.  Where possible, updates to the 
 "development" version of the specification will be made in a timely fashion.  A list of these proposed changes will be published 
 as a continuously updated supplement to the official DSTU publication.  Implementers should be aware that the changes are not considered "official" until such 
 time as they are balloted and approved as part of a subsequent DSTU or Normative publication.  Change requests might be fixes to allow implementation, 
-clarifications or enhancements.  In addition, HL7 will be developing and introducing additional resources and profiles as part of the FHIR specification.
+clarifications or enhancements.  In addition, HL7 will be developing and introducing additional resources and profiles as part of the FHIR specification. -->
 </p>
 <p>
-SDOs and regulatory bodies that are interested in making use of the FHIR specification should feel free to do so, but should consider and plan for the possibility 
-that the specification will evolve and change prior to becoming normative. 
+Организации, разрабатывающие стандарты, заинтересованные в применении спецификации FHIR, могут пользоваться ею 
+без каких-либо ограничений, однако, должны учитывать возможности дальнейшего развития и изменения FHIR (до принятия 
+нормативной версии).
+<!-- SDOs and regulatory bodies that are interested in making use of the FHIR specification should feel free to do so, but should consider and plan for the possibility 
+that the specification will evolve and change prior to becoming normative.-->
 </p>
 <p>
-A key objective of the DSTU process is gaining feedback from implementers making use of the specification.  As well, the HL7 has a need to
+Главной задачей процесса пробного применения стандарта (DSTU) является получение практического опыта от внедренцев и 
+разработчиков. Также, организация HL7 International заинтересована в получении информации о том, какие конкретно части 
+спецификации FHIR получают наиболее применение и в каким условиях. Это необходимо для определения готовности 
+спецификации к получению нормативного статуса. По этой причине, мы просим всех внедренцев FHIR заполнить небольшую 
+анкету, которую можно найти <a href="https://www.surveymonkey.com/s/PXZTY7Z">здесь</a>.
+<!--A key objective of the DSTU process is gaining feedback from implementers making use of the specification.  As well, the HL7 has a need to
 monitor which portions of FHIR are being implemented in what sorts of environments so as to make an informed decision on when the specification is ready to
 proceed to Normative status.  For this reason, all FHIR implementers are asked to complete a short survey which can be found 
-<a href="https://www.surveymonkey.com/s/PXZTY7Z">here</a>.
+<a href="https://www.surveymonkey.com/s/PXZTY7Z">here</a>. -->
 </p>
 <p>
-This survey will capture contact and other information that will allow the FMG to perform appropriate monitoring of FHIR DSTU usage.  Survey information will
+Данная анкета будет содержать контактную и другую информацию, которая позволит Координационной группе проекта FHIR (FGM)
+проводить соответствующий мониторинг. Полученная информация не подлежит разглашению до тех пор, пока ее источник не 
+даст официального разрешения на упоминание / описание его проекта в wiki-разделе для первых разработчиков и внедренцев. 
+Информация, считающаяся конфиденциальной, будет представлена только в обобщенном виде.
+<!-- This survey will capture contact and other information that will allow the FMG to perform appropriate monitoring of FHIR DSTU usage.  Survey information will
 be kept confidential unless the participant authorizes inclusion of their project in an HL7-maintained wiki page of early implementers.  Confidential submissions
-will be reported in aggregate only.
+will be reported in aggregate only. -->
 </p>
 <p>
-While implementation of the first DSTU release is occurring, development will be progressing on the next DSTU release.  This second release will include 
+На этапе внедрения решений на основе первой DSTU-версии FHIR, будет проходить подготовка второй DSTU-версии. Во второй релиз
+войдут дополнительные ресурсы и профили; он "будет лучшего качества" по сравнению с текущей версией.
+Также, второй DSTU-релиз будет содержать исправления некоторых проблем, обозначенных в <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse&amp;tracker_id=677">запросах изменения
+спецификации</a>. Для внедренцев DSTU-версии стандарта может быть полезно просматривать предварительные релизы,
+для того, чтобы понимать, какие изменения будут введены в ближайшем будущем, а также получения более надежных
+определений и руководства, чем в предыдущих версиях. Предварительный релиз FHIR находится по адресу
+<a href="http://hl7.org/fhir-develop">hl7.org/fhir-develop</a>.
+<!--While implementation of the first DSTU release is occurring, development will be progressing on the next DSTU release.  This second release will include 
 additional resources, profiles and quality enhancements over the current release.  It will also incorporate fixes for issues raised with the 
 <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse&amp;tracker_id=677">FHIR change tracker</a>.  It may be useful for implementers
 of the DSTU to browse the development release to get a sense of what changes are likely coming and perhaps to find more robust definitions and guidance than
-are available in the first release.  The FHIR development release can be found at <a href="http://hl7.org/fhir-develop">hl7.org/fhir-develop</a>.
+are available in the first release.  The FHIR development release can be found at <a href="http://hl7.org/fhir-develop">hl7.org/fhir-develop</a>.-->
 </p>
 <p>
-Thank you for participating with us in this process.  We look forward to your feedback and hope you enjoy making use of the specification.
+Благодарим Вас за участие в процессе развития стандарта FHIR! С нетерпением ждем ваших отзывов и надеемся, что Вы уже сейчас с удовольствием пользуетесь нашей спецификацией.
+<!-- Thank you for participating with us in this process.  We look forward to your feedback and hope you enjoy making use of the specification. -->
 </p>
 <p/>
 <p>
-The FHIR Management Group (FMG), on behalf of HL7
+Координационная группа проекта FHIR (FMG), от имени HL7 International
+<!--The FHIR Management Group (FMG), on behalf of HL7 -->
 </p>
 
 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
   
-[%settitle Resource Definitions%]
+[%settitle Определения ресурса%]
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -14,54 +14,50 @@
 
 
 <a name="root"> </a>
-<h1>Resource Definitions</h1>
+<h1>Определения ресурса</h1>
 
 <p>
-This specification defines a series of different types of resource that can be used to exchange and/or store data 
-in order to solve a wide range of healthcare related problems, both clinical and administrative. In addition,
-this specification defines several different ways of exchanging the resources.
+Данная спецификация определяет ряд различных типов ресурсов, которые могут быть использованы для обмена и/или хранения данных с целью решения широкого диапазона проблем, связанных со здравоохранением, как медицинских, так и административных. Кроме того спецификация описывает несколько различных способов обмена ресурсами.
 </p>
 <p>
-A resource is an entity that:
+Ресурс - это сущность, которая:
 </p>
 <ul>
- <li>has a known identity (a url) by which it can be addressed</li>
- <li>identifies itself as one of the types of resource defined in this specification</li>
- <li>contains a set of structured data items as described by the definition of the resource type</li>
- <li>contains a human-readable XHTML representation of the content of the resource</li>
- <li>has an identified version that changes if the contents of the resource change</li>
+ <li>имеет известное обозначение (url), по которому к ней можно обращаться</li>
+ <li>отождествляет себя с одним из типов ресурса, определенных в этой спецификации</li>
+ <li>содержит набор элементов структурированных данных, которые описаны в определении типа ресурса</li>
+ <li>содержит человекочитаемое представление содержимого ресурса в формате XHTML</li>
+ <li>имеет установленную версию, которая меняется, если содержимое ресурса изменилось</li>
 </ul>
 <p>
-Resources have multiple representations. A resource is valid if it meets the above rules, and is represented in 
-either <a href="xml.html">XML</a> or <a href="json.html">JSON</a> according to the rules defined in this specification. 
-Other representations are allowed, but are not described by this specification.
+Ресурсы имеют разнообразные представления. Ресурс является допустимым, если он подходит под описанные выше критерии и представлен либо в <a href="xml.html">XML</a>, либо в <a href="json.html">JSON</a> формате в соответствии с правилами, описанными в данной спецификации. Другие представления допустимы, но не описываются этой спецификацией.
 </p>
 
-<h3>Definitions</h3>
+<h3>Определения</h3>
 <p>
-Basic definitions for this page:
+Базовые определения для этой страницы:
 </p>
 <table class="grid">
- <tr> <td>Resource</td> <td>An instance of data that is stored or exchanged</td> </tr>
- <tr> <td>Resource Definition</td> <td>Defines the data elements that are part of the resource</td> </tr>
- <tr> <td>Profile</td> <td>Additional rules about the data elements for a particular context of use. There's a specific type of resource - the <a href="profile.html">Profile Resource</a> that is used to represent a profile</td> </tr>
+ <tr> <td>Ресурс</td> <td>Экземпляр данных, который хранится или которым обмениваются</td> </tr>
+ <tr> <td>Определение ресурса</td> <td>Устанавливает, какие элементы данных являются частью ресурса</td> </tr>
+ <tr> <td>Профиль</td> <td>Вводит дополнительные ограничения на элементы данных в определенном контексте использования. Имеется специальный тип ресурса - <a href="profile.html">Profile Resource</a>, который используется для представления профиля</td> </tr>
 </table>
 
 <a name="content"> </a>
-<h2>Contents of a Resource</h2>
+<h2>Содержимое ресурса</h2>
 <p>
-All types of resources have the following optional or mandatory elements and properties:
+Все типы ресурсов имеют следующие необязательные или обязательные элементы и свойства:
 </p>
 <ul>
- <li>A base set of defined data elements specific to the type</li>
- <li><a href="extensibility.html">Extensions</a> - additional data elements added by implementations</li>
- <li>A <a href="narrative.html#Narrative">human-readable narrative</a> description of the contents of the resource</li>
- <li><a href="references.html#contained">Contained resources</a> - additional resources that are part of the identification and transaction space of this resource</li>
- <li><a href="#metadata">Metadata</a> - important information about the resource that is not part of the content model of the resource</li>
- <li><a href="extras.html#tags">Tags</a> - labels affixed to the resources that may be used to define additional operational behavior such as security, workflow, etc.</li>
+ <li>Основной набор определенных элементов данных, характерных для этого типа </li>
+ <li><a href="extensibility.html">Расширения</a> - вспомогательные элементы данных, добавленные в реализациях</li>
+ <li><a href="narrative.html#Narrative">Человекочитаемое описание</a> содержимого ресурса</li>
+ <li><a href="references.html#contained">Входящие в состав ресурсы</a> - вспомогательные ресурсы, являющиеся частью идентификационного и транзакционного пространства ресурса</li>
+ <li><a href="#metadata">Метаданные</a> - важная информация о ресурсе, не являющаяся частью модели содержимого ресурса</li>
+ <li><a href="extras.html#tags">Теги</a> - ярлыки, прикрепляемые к ресурсам, которые можно использовать для определения дополнительных рабочих характеристик, таких как безопасность, последовательность выполняемых действий и т. п. </li>
 </ul>
 <p>
-Every resource starts with a common set of elements (for documentation of this format, see <a href="formats.html">Resource Definition Format</a>):
+Каждый ресурс содержит общий набор элементов (документацию по этому формату см. на странице  <a href="formats.html">Resource Definition Format</a>):
 </p>
 <pre class="spec">
 &lt;<a href="#content" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://hl7.org/fhir"&gt;  <span style="float: right"><a title="Documentation for this format" href="formats.html"><img src="help.png" alt="doco"/></a></span>
@@ -74,130 +70,94 @@ Every resource starts with a common set of elements (for documentation of this f
 &lt;/[Name]&gt;
 </pre>
 <p>
-These elements SHALL always appear in this order. These basic elements shared by all resources come first
-in order to support consistent definitions for schema and UML derived code. 
+Эти элементы всегда ДОЛЖНЫ идти в этом порядке. Базовые элементы, являющиеся общими для всех ресурсов, идут первыми для поддержки совместимости определений для схемы и полученного из UML кода. 
 </p>
 <p>
-The optional language element specifies the base language of the resource using the <a href="http://tools.ietf.org/html/bcp47">codes defined in BCP 47</a>.
-Note that not all the content of the resource has to be in the language. 
-If a language is specified, it should also be specified on the <a href="narrative.html#Narrative">Narrative Text</a>. 
-There is no default language, though one may be inferred from the context of use.
+Необязательный элемент language устанавливает основной язык ресурса, применяются <a href="http://tools.ietf.org/html/bcp47">коды, определенные в BCP 47</a>.
+Обратите внимание, что не всё содержимое ресурса должно быть на этом языке. Если язык указан, то он также должен быть указан и для <a href="narrative.html#Narrative">текста описательной части (Narrative Text)</a>. У языка нет значения по умолчанию, однако оно может вытекать из контекста использования.
 </p>
 <p>
-The language element is provided to support indexing and accessibility (e.g. text-to-speech use the language tag). 
-The html language tag in the narrative is used when processing the narrative. The language tag on the resource is provided 
-for use to specify the language of alternate presentations generated from the data in the resource
+Элемент language обеспечивает поддержку индексирования и доступности (например преобразование "текст - речь" использует тег языка). HTML-тег language в описательной части используется во время ее обработки. Тег ресурса language используется для указания языка альтернативных представлений данных ресурса.
 </p>
 
 <a name="metadata"> </a>
-<h2>Resource Metadata</h2>
+<h2>Метаданные ресурса</h2>
 <p>
-The metadata properties are key aspects of a resource and how it behaves. For implementation reasons, these are represented outside the resource:
+Свойства метаданных являются ключевыми аспектами ресурса и его поведения. По соображениям реализации они представлены вне ресурса:
 </p>
 
 <table class="grid">
-  <tr><th>Metadata Item</th><th>Type</th><th>Usage</th></tr>
+  <tr><th>Элемент метаданных</th><th>Тип</th><th>Использование</th></tr>
   
-  <tr><td>Logical Id</td> <td><a href="datatypes.html#id">id</a></td> <td>A simple string that provides the logical identity of the resource. It is unique within the space of all resources of the same type on the same server. 
-     It is constant for the entire lifetime of the resource on the server. </td></tr>
+  <tr><td>Logical Id</td> <td><a href="datatypes.html#id">id</a></td> <td>Простая строка, обеспечивающая логическую идентичность ресурса. Уникальна в пространстве всех ресурсов того же типа на том же сервере. Постоянна на протяжении всей жизни ресурса на сервере. </td></tr>
 	
-  <tr><td>Version Id</td><td><a href="datatypes.html#id">id</a></td><td>Changes each time the content of the resource changes. 
-    Can be referenced in a <a href="references.html#Resource">resource reference</a>. Can be used to ensure that updates are based on the latest version of the resource. 
-  <br/>The version can be globally unique, or scoped by the Logical Id. Version identifiers are generally either a serially incrementing id 
-     scoped by the logical id, or a uuid, though neither of these approaches is required</td></tr>
+  <tr><td>Version Id</td><td><a href="datatypes.html#id">id</a></td><td>Изменяется при каждом изменении содержимого ресурса. На него можно ссылаться в <a href="references.html#Resource">ссылке на ресурс</a>. Может использоваться для гарантии, что обновления основаны на последней версии ресурса.
+  <br/>Версия может быть уникальной глобально либо в области действия Logical Id. Идентификаторы версии, как правило, являются либо последовательно увеличивающимися идентификаторами, ограниченными logical id, либо UUID, хотя ни один из этих вариантов не является обязательным. </td></tr>
 	 
-  <tr><td>Last Modified Date</td><td><a href="datatypes.html#instant">instant</a></td><td>Changes each time the content of the resource 
-    changes. Can be used by a system or a human to judge the currency of the resource content.   </td></tr>
+  <tr><td>Last Modified Date</td><td><a href="datatypes.html#instant">instant</a></td><td>Изменяется при каждом изменении содержимого ресурса. Может использоваться системой или человеком для суждения о сроке действия содержимого ресурса.</td></tr>
 	
 </table>
 <p>
-Logical and Version ids are case sensitive. Ids are always opaque, and systems need not and should not attempt to determine their internal structure. 
-An id SHALL always be represented in the same way in resource references and URLs. Ids can be up to 36 characters 
-long, and contain any combination of lowercase ASCII letters, numerals, "-" and ".".
+Logical и Version идентификаторы чувствительны к регистру. Идентификаторы всегда непрозрачны, и системам нет необходимости и не следует пытаться определить их внутреннюю структуру. Идентификатор ДОЛЖЕН всегда быть представлен одинаковым образом в ссылках на ресурсы и в URLs. Идентификаторы могут быть до 36 символов длиной и содержать любую комбинацию строчных букв в коде ASCII (Американский стандартный код обмена информацией), цифр, знаков "-" и ".".
 </p>
 <p>
-Note: these data elements are represented outside the resource because:
+Примечание: эти элементы данных представлены вне ресурса, потому что:
 </p>
 <ul>
- <li>They are almost always explicit in the envelope that carries the exchange content, and in particular they are in the http and atom headers</li>
- <li>They will change as resources are managed, moved, or replicated, even when the content itself does not (though changing the logical id of a resource may require changing the content of other resources that reference it)</li>
+ <li>Они почти всегда явно заданы в оболочке данных, в частности, они содержатся в заголовках HTTP и atom.</li>
+ <li>Они будут изменяться в процессе  управления, перемещения и копирования ресурсов, даже когда само содержимое не меняется (хотя изменение logical id ресурса может потребовать изменения содержимого других ресурсов, которые ссылаются на него)</li>
 </ul>
 <p>
-The full identity of a resource is an absolute URL constructed from the server address at which it is found, the resource type, and the Logical Id, such
-as http://test.fhir.org/rest/Patient/123 (where 123 is the Logical Id). Note that implementations SHOULD NOT assume that the identity of a resource 
-is always resolvable to a literal server - it may be temporarily unavailable, or not available by policy (e.g. firewalls) or in some 
-cases, it may not actually exist (e.g. use of resource outside a RESTful environment). Resources reference each other by their identity. 
-These references are allowed to be absolute or relative (see <a href="references.html">Resource References</a> for further discussion).
-Copying or moving resources from one server to another means that resources acquire a new identity. For further details, 
-see <a href="managing.html">Managing Resource Identity</a>
+Полное наименование ресурса представляет собой абсолютный URL, построенный из адреса сервера, на котором он находится, типа ресурса и Logical Id, например http://test.fhir.org/rest/Patient/123 (где 123 - это Logical Id). Обратите внимание, что реализации НЕ ДОЛЖНЫ полагаться на то, что наименование ресурса всегда разрешается сервером в буквальном смысле - он может быть временно не доступен, либо не доступен из-за политики безопасности (например брандмауэры), либо, в некоторых случаях, он может не существовать в действительности (например использование ресурса вне среды RESTful). Ресурсы ссылаются друг на друга по своим наименованиям. Такие ссылки могут быть абсолютными и относительными (см. <a href="references.html">Ссылки на ресурсы</a> для дальнейшего обсуждения). Копирование и перемещение ресурсов с одного сервера на другой означает, что ресурсы приобретают новое наименование. Для получения дополнительной информации см. <a href="managing.html">Управление наименованиями ресурсов</a>
 </p>
 
 <p>
-Both the Version Id and the Last Modified Date change any time the resource changes. The Version Id is more useful for managing
-concurrency issues and version specific references because of the inherent uncertainties and precision limits associated with date/times. 
-The Last Modified Date is useful for a human to ascertain the logical currency of the information in the resource.
+И Version Id, и Last Modified Date меняются при каждом изменении ресурса. Version Id больше полезен при администрировании вопросов параллелизма и ссылок, зависящих от версии из-за неотъемлемой неопределенности и пределах точности, связанных с датами/временем.
+Last Modified Date используется человеком для установления логической последовательности информации в ресурсе. 
 </p>
 <p>
-In any environment where the resources are used, the technical details of how these metadata elements 
-are represented during exchange will need to be resolved. For further details, see <a href="services.html">Using Resources with Services</a>.
+Технические подробности того, как представлять эти элементы метаданных во время обмена в любой среде, где используются ресурсы, будет необходимо решить голосованием. Для получения дополнительной информации см. <a href="services.html">Использование ресурсов с помощью сервисов</a>.
 </p>
 
 
 <a name="version"> </a>
-<h2>Inter-version Compatibility</h2>
+<h2>Межверсионная совместимость</h2>
 <blockquote>
 <p>
-The following rules will apply once the specification becomes a full normative 
-specification. These rules ensure that implementations may process the content 
-of the resources safely while exchanging data between applications using different
-versions of FHIR. However during the period of trial use of the specification, HL7
-may make changes outside the limitations described here in response to discovered 
-issues in the specification. Applications may wish to use <a href="extras.html#tags">resource tags</a> to help
-manage this during the period of trial use.
+Следующие правила будут применяться после того, как спецификация станет полностью нормативным стандартом. Эти правила гарантируют, что реализации смогут обрабатывать содержимое ресурсов безопасно во время обмена данными между приложениями, использующими различные версии FHIR. Однако в период пробного использования спецификации HL7 может вносить изменения помимо описанных здесь ограничений в ответ на обнаруженные в спецификации проблемы. Приложения могут при желании использовать <a href="extras.html#tags">теги ресурсов</a>, чтобы помочь в этом в период пробного использования. 
 </p>
 </blockquote>
 <p>
-There is no explicit version marker in the resource content. Once normative, subsequent versions of 
-this specification may introduce new elements and/or content at any point in the 
-resource contents, but the path and meaning of existing data elements will not be changed. Any value
-set or code list may be revised to include additional codes.
+У содержимого ресурса нет явного признака версии. Став нормативным документом, последующие версии данной спецификации могут внести новые элементы и/или содержимое в любое место содержимого ресурса, однако путь и значение существующих элементов данных не изменится. Любой набор значений или перечень кодов может быть переработан с целью включения дополнительных кодов.
 </p>
 <p>
-Each binding to a value set or code system indicates whether the value list automatically 
-grows as new codes are defined, whether the list may be extended
-in future versions of the specification, or whether the list cannot be changed at all in future versions.
+Каждая привязка к набору значений или кодовой системе указывает, будет ли перечень значений расти автоматически с определением новых кодов, может ли перечень быть расширен в будущих версиях спецификации или же перечень не может быть изменен в будущих версиях вообще.  
 </p>
 <p>
-The conformance layer (<a href="conformance.html">Conformance</a> and <a href="profile.html">Profile</a>)
-has mandatory properties declaring the FHIR specification version, and these may be used to determine
-which version of FHIR an implementation is using. 
+Слой обеспечения соответствия (<a href="conformance.html">Обеспечение соответствия</a> и <a href="profile.html">Профиль</a>) имеет обязательные свойства, описывающие версию спецификации FHIR, и их можно использовать для определения, какую версию FHIR применяет реализация.
 </p>
 <p>
-In a typical scenario, mixed versions may need to exist, so applications SHOULD ignore elements 
-that they do not recognize unless they are modifierExtensions.
-However, in a healthcare context, many application vendors are unwilling to 
-consider this approach because of concerns about clinical risk or 
-technical limitations in their software (i.e. schema based processing). 
-Applications are not required to ignore unknown elements, but SHALL
-declare whether they will do so in their <a href="conformance.html">conformance statements</a>.
+В типичном сценарии может потребоваться использование разных версий одновременно, поэтому приложениям СЛЕДУЕТ игнорировать элементы, которые они не распознают, если только это не modifierExtensions.
+Тем не менее, в контексте здравоохранения многие поставщики приложений не склонны рассматривать этот подход из-за опасений по поводу клинического риска или технических ограничений в их программном обеспечении (например обработка на основе схемы).
+Приложения не обязаны игнорировать неизвестные элементы, однако ОБЯЗАНЫ объявить, будут ли они это делать, в своем <a href="conformance.html">заявлении о соответствии</a>.
 </p>
 <p>
-Additional discussion on inter-versioning issues can be found here: 
+Дополнительное обсуждение по межверсионным вопросам можно найти здесь:
 <a href="http://wiki.hl7.org/index.php?title=FHIR_interversion_compatibility">http://wiki.hl7.org/index.php?title=FHIR_interversion_compatibility</a>.
 </p>
-<h3>Further Information</h3>
+<h3>Дополнительные сведения </h3>
 <p>
-Additional documentation.
+Дополнительная документация.
 </p>
 <ul>
-  <li><a href="conformance-rules.html">Conformance Rules</a></li>
-  <li><a href="resources.html">Resource Definitions</a></li>
-  <li><a href="extras.html">Tags, Bundles, Compartments</a></li>
-  <li><a href="references.html">References between Resources</a></li>
-  <li><a href="narrative.html">Narratives</a></li>
-  <li><a href="formats.html">Formats:</a> <a href="xml.html">XML</a>, <a href="json.html">JSON</a> </li>
-  <li><a href="extensibility.html">Extensibility</a> (<a href="extensibility-examples.html">Examples</a>)</li>
-  <li><a href="base-definitions.html">Formal Definitions</a></li>
+  <li><a href="conformance-rules.html">Правила обеспечения соответствия</a></li>
+  <li><a href="resources.html">Определения ресурса</a></li>
+  <li><a href="extras.html">Теги, комплекты ресурсов, логические модули</a></li>
+  <li><a href="references.html">Ссылки между ресурсами</a></li>
+  <li><a href="narrative.html">Описательная часть</a></li>
+  <li><a href="formats.html">Форматы:</a> <a href="xml.html">XML</a>, <a href="json.html">JSON</a> </li>
+  <li><a href="extensibility.html">Расширяемость</a> (<a href="extensibility-examples.html">Примеры</a>)</li>
+  <li><a href="base-definitions.html">Формализованные определения</a></li>
 </ul>
 
 </div>

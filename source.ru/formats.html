@@ -2,7 +2,7 @@
 
 
       
-[%settitle Formats%]
+[%settitle Форматы%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,24 +13,19 @@
 <div class="col-9">
 
 <a name="root"> </a>
-<h1>Resource Formats</h1>
+<h1>Форматы представления ресурсов</h1>
 <p>
-This page documents how the content of the resources are described. 
-In actual exchange, resources can be represented in the following
-formats: <a href="xml.html">XML</a> and <a href="json.html">JSON</a>. 
+На этой странице задокументировано, каким образом описываются ресурсы. В реальности ресурсы могут быть представлены в следующих форматах: <a href="xml.html">XML</a> и <a href="json.html">JSON</a>. 
 </p>
 
-<h2>Resource Definition</h2>
+<h2>Описание ресурсов</h2>
 <p>
-The resources are described in two different ways: a UML diagram that summarizes the content, and 
-a pseudo-XML syntax that provides a visual sense of what the end resource instances will look like in XML. 
-Note that although the description of the resources is based on their XML representation, other representations
-such as JSON are equally valid.
+Ресурсы описываются двумя способами: с помощью UML-диаграммы, содержащей краткое изложение, и с помощью XML-псевдосинтаксиса, дающего визуальное представление о том, как конечные экземпляры ресурса будут выглядеть в формате XML. Обратите внимание, что, хотя описание ресурсов основывается на XML-представлении, другие форматы, например JSON, также допустимы.
 </p>
 <a name="syntax"> </a>
 <h3>XML</h3>
 <p>
-The XML syntax uses the following notation:
+Синтаксис XML использует следующую систему обозначений:
 </p>
 <pre class="spec">
  &lt;<b>Name</b> xmlns="http://hl7.org/fhir" (attrA="value")&gt; 
@@ -42,17 +37,16 @@ The XML syntax uses the following notation:
  &lt;name&gt;
 </pre>
 <p>
-Notes:
+Примечания:
 </p>
 <ul>
- <li>Resource and Element names are case-sensitive (though duplicates that differ only in case are never defined)</li>
- <li>Any elements that have a <a href="datatypes.html#primitive">primitive type</a> will have a value attribute to contain the actual value of the element</li>
- <li>Elements are assigned a cardinality that specifies how many times the element may or must appear. If the cardinality is shown in 
-    <font color="deeppink">Pink</font> then there is an additional condition that impacts on the allowed cardinality. This is available as a mouse-over text, or in the formal definitions</li>
- <li>Unless elements have children defined directly (as nameC does above) they are assigned one or more types. All of the types are defined in <a href="datatypes.html">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked</li>
- <li>Some data types that have children have the same set of children as some other element defined in the resource. In that case, the type of that element has a reference to [path] where [path] is the element that has the defined children</li>
- <li>When a logical element can have more than one type, its name takes the form nnn[x]. The "nnn" part of the name is constant, and 
-   the [x] is replaced with the title-cased name of the type that is actually used. In XML, for example this would like:
+ <li>Имена ресурсов и элементов чувствительны к регистру (хотя дубликаты, различающиеся только регистром, ни разу не вводились).</li>
+ <li>Любые элементы, имеющие <a href="datatypes.html#primitive">примитивный тип</a>, будут иметь атрибут value, содержащий фактическое значение элемента.</li>
+ <li>У элементов есть показатель множества (cardinality), указывающий, сколько раз этот элемент может или должен появиться. Если множество выделено 
+    <font color="deeppink">розовым</font> , значит есть дополнительное условие, влияющее на допустимое множество. Оно доступно в виде всплывающей подсказки при наведении указателя мыши на текст, либо в формальных определениях.</li>
+ <li>Если только у элементов нет непосредственно заданных потомков (как у nameC выше), им назначается один или несколько типов. Все эти типы приведены в <a href="datatypes.html">типах данных</a>, за исключением типов "Resource" и "Narrative", которые задокументированы ниже. Имена типов имеют вид гиперссылок.</li>
+ <li>Некоторые типы данных, имеющие потомков, могут содержать такой же набор потомков, как и некоторый другой элемент, определенный в этом ресурсе. В этом случае тип элемента содержит ссылку на [path], где [path] - элемент с этим элементом-потомком.</li>
+ <li>Когда логический элемент может иметь более одного типа, его имя принимает форму nnn[x]. Часть имени вида "nnn" является постоянной, а [x] заменяется именем его типа с большой буквы, который фактически используется. В XML это будет выглядеть так:
    
    <div class="example">
 <pre class="xml">
@@ -63,37 +57,29 @@ Notes:
   &lt;/name&gt;
 </pre>
    </div>
-   The types that are allowed on this element are listed with a "|" used to separate them. When one of the types is Resource([X]), the type name in the element name is simply "Resource". 
+Разрешенные типы элемента перечислены через разделитель "|". Когда одним из типов является Resource([X]), имя этого типа в имени элемента указывается просто как "Resource".
    </li>
- <li>Each element name in the pseudo-syntax is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. </li>
- <li>If the element name is underlined, then applications are required to <a href="conformance-rules.html#mustSupport">support</a> and/or <a href="conformance-rules.html#ismodifier">understand</a> it</li>
- <li>Any of the elements may have an id attribute to serve as <a href="references.html#idref">the target of an internal reference</a>. The id attribute is not shown in this format</li>
+ <li>Имя каждого элемента в псевдосинтаксисе также является гиперссылкой на формальное определение этого элемента в словаре данных, лежащем в основе форматов обмена. </li>
+ <li>Если имя элемента подчеркнуто, то от приложений требуется <a href="conformance-rules.html#mustSupport">поддерживать</a> и/или <a href="conformance-rules.html#ismodifier">понимать</a> его.</li>
+ <li>Любые из этих элементов могут иметь атрибут id, служащий  <a href="references.html#idref">целью внутренней ссылки</a>. В этом формате атрибут id не показывается.</li>
  <a name="element-rules"> </a>
- <li>FHIR elements are never empty. If an element is present in the resource, it SHALL have either a value attribute, child elements as defined for its type, or 1 or more <a href="extensibility.html">extensions</a></li>
- <li>Attributes can never be empty. Either they are absent, or they are present with at least one character of non-whitespace content</li>
- <li>In addition to this descriptive syntax, other definitional forms are available, including W3C schema and Schematron</li>
+ <li>FHIR-элементы не могут быть пустыми. Если элемент присутствует в ресурсе, он ДОЛЖЕН иметь либо атрибут value, либо элементы-потомки, как определено для его типа, либо 1 или более <a href="extensibility.html">расширений</a>.</li>
+ <li>Атрибуты не могут быть пустыми. Либо они отсутствуют, либо содержат как минимум 1 символ, не являющийся пробельным.</li>
+ <li>В дополнение к этому наглядному синтаксису доступны и другие формы определений, включая W3C-схему и Schematron.</li>
 </ul>
 
 <h3>UML</h3>
 <p>
-The UML diagrams represent the same content as a series of classes that represent
-the elements of a resource. 
+На UML-диаграммах изображена та же самая информация в виде последовательности классов, представляющих элементы ресурса.
 </p>
 <p style="text-alignment: left">
 <%svg uml-example%>
 </p>
 <p>
-Where an element can have a choice of data types, these are represented in the 
-choice using the same syntax as the xml syntax described above. Due to way UML works, the actual 
-order of the elements cannot be determined from the diagram, nor is it visible 
-whether a property is an element or an attribute. The elements and types are
-links to the formal definitions of the parts. The UML diagrams also show the 
-bindings, and these are hyperlinks to the details of the binding.
+Там, где у элемента можно выбрать тип данных, это обозначено с помощью вышеописанного XML-синтаксиса. Из-за специфики работы UML, фактический порядок элементов не может быть определен из диаграммы, также не видно, является ли свойство элементом или атрибутом. Элементы и типы являются ссылками на их формализованные определения. На UML-диаграммах также показаны связи, они являются гиперссылками на свое описание.
 </p>
 <p>
-These UML diagrams are intended to communicate the contents of the resource
-to a human, and are not suitable for code generation using standard UML code 
-generation tools. 
+Назначение этих UML-диаграмм - донести содержимое ресурса человеку, они не подходят для генерации кода из UML с помощью стандартных инструментов.
 </p>
 
 

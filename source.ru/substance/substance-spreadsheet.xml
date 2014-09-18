@@ -137,7 +137,7 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s66"/>
-    <Cell><Data ss:Type="String">A homogeneous material with a definite composition </Data></Cell>
+    <Cell><Data ss:Type="String">Однородная материя с известным (химическим) составом</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s66"/>
     <Cell ss:Index="13" ss:StyleID="s66"><Data ss:Type="String">Material</Data></Cell>
     <Cell ss:StyleID="s66"/>
