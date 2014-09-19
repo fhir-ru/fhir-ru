@@ -13,7 +13,7 @@ todo: compartments
     <page title="Соображения, касающиеся DSTU" filename="dstu.html"/>
     <page title="Нерешенные вопросы" filename="todo.html"/>
     <page title="Краткий обзор" filename="summary.html"/>
-    <page title="Обзор стандарта и план развития" filename="overview.html"/>
+    <page title="Обзор стандарта и план развития" filename="overview.html">
       <page title="Developer Introduction" filename="overview-dev.html"/>
     </page>
     <page title="Сравнение с другими стандартами" filename="comparison.html">
