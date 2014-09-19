@@ -4,51 +4,51 @@
 todo: compartments
 -->
 <fhir>
-<page title="Ãëàâíàÿ" note="(map + search) - focus on useful links" filename="index.html">
-  <page title="Äîêóìåíòàöèÿ" filename="documentation.html">
-    <page title="Ñîäåðæàíèå" filename="toc.html"/>
-    <page title="Ëèöåíçèðîâàíèå è óñëîâèÿ èñïîëüçîâàíèÿ" filename="license.html"/>
-    <page title="Íàøå ñîîáùåñòâî è áëàãîäàðíîñòè" filename="credits.html"/>
-    <page title="Èñòîðèÿ âåðñèé" filename="history.html"/>
-    <page title="Ñîîáðàæåíèÿ, êàñàþùèåñÿ DSTU" filename="dstu.html"/>
-    <page title="Íåðåøåííûå âîïðîñû" filename="todo.html"/>
-    <page title="Êðàòêèé îáçîð" filename="summary.html"/>
-    <page title="Îáçîð ñòàíäàðòà è ïëàí ðàçâèòèÿ" filename="overview.html"/>
+<page title="Ð“Ð»Ð°Ð²Ð½Ð°Ñ" note="(map + search) - focus on useful links" filename="index.html">
+  <page title="Ð”Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸Ñ" filename="documentation.html">
+    <page title="Ð¡Ð¾Ð´ÐµÑ€Ð¶Ð°Ð½Ð¸Ðµ" filename="toc.html"/>
+    <page title="Ð›Ð¸Ñ†ÐµÐ½Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¸ ÑƒÑÐ»Ð¾Ð²Ð¸Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ" filename="license.html"/>
+    <page title="ÐÐ°ÑˆÐµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÑÑ‚Ð²Ð¾ Ð¸ Ð±Ð»Ð°Ð³Ð¾Ð´Ð°Ñ€Ð½Ð¾ÑÑ‚Ð¸" filename="credits.html"/>
+    <page title="Ð˜ÑÑ‚Ð¾Ñ€Ð¸Ñ Ð²ÐµÑ€ÑÐ¸Ð¹" filename="history.html"/>
+    <page title="Ð¡Ð¾Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ, ÐºÐ°ÑÐ°ÑŽÑ‰Ð¸ÐµÑÑ DSTU" filename="dstu.html"/>
+    <page title="ÐÐµÑ€ÐµÑˆÐµÐ½Ð½Ñ‹Ðµ Ð²Ð¾Ð¿Ñ€Ð¾ÑÑ‹" filename="todo.html"/>
+    <page title="ÐšÑ€Ð°Ñ‚ÐºÐ¸Ð¹ Ð¾Ð±Ð·Ð¾Ñ€" filename="summary.html"/>
+    <page title="ÐžÐ±Ð·Ð¾Ñ€ ÑÑ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð° Ð¸ Ð¿Ð»Ð°Ð½ Ñ€Ð°Ð·Ð²Ð¸Ñ‚Ð¸Ñ" filename="overview.html"/>
       <page title="Developer Introduction" filename="overview-dev.html"/>
     </page>
-    <page title="Ñðàâíåíèå ñ äðóãèìè ñòàíäàðòàìè" filename="comparison.html">
+    <page title="Ð¡Ñ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ Ñ Ð´Ñ€ÑƒÐ³Ð¸Ð¼Ð¸ ÑÑ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð°Ð¼Ð¸" filename="comparison.html">
       <page title="v2 Messaging" filename="comparison-v2.html"/>
       <page title="v3 Messaging" filename="comparison-v3.html"/>
       <page title="CDA" filename="comparison-cda.html"/>
-      <page title="Äðóãèå ñòàíäàðòû" filename="comparison-other.html"/>
+      <page title="Ð”Ñ€ÑƒÐ³Ð¸Ðµ ÑÑ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ñ‹" filename="comparison-other.html"/>
     </page>
-    <page title="Ïðåäñòîÿùèå çàäà÷è" filename="change.html"/>
+    <page title="ÐŸÑ€ÐµÐ´ÑÑ‚Ð¾ÑÑ‰Ð¸Ðµ Ð·Ð°Ð´Ð°Ñ‡Ð¸" filename="change.html"/>
     <page title="EHR FM map" filename="ehr-fm.html"/>
-    <page title="Îïðåäåëåíèÿ ðåñóðñà" filename="resources.html">
-      <page title="Ïðàâèëà îáåñïå÷åíèÿ ñîîòâåòñòâèÿ" filename="conformance-rules.html"/>
-      <page title="Òåãè, êîìïëåêòû ðåñóðñîâ, ëîãè÷åñêèå ìîäóëè" filename="extras.html">
-        <page title="Ëîãè÷åñêèå ìîäóëè (Compartments)" filename="compartment-patient.html"/>
+    <page title="ÐžÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ñ Ñ€ÐµÑÑƒÑ€ÑÐ°" filename="resources.html">
+      <page title="ÐŸÑ€Ð°Ð²Ð¸Ð»Ð° Ð¾Ð±ÐµÑÐ¿ÐµÑ‡ÐµÐ½Ð¸Ñ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð¸Ñ" filename="conformance-rules.html"/>
+      <page title="Ð¢ÐµÐ³Ð¸, ÐºÐ¾Ð¼Ð¿Ð»ÐµÐºÑ‚Ñ‹ Ñ€ÐµÑÑƒÑ€ÑÐ¾Ð², Ð»Ð¾Ð³Ð¸Ñ‡ÐµÑÐºÐ¸Ðµ Ð¼Ð¾Ð´ÑƒÐ»Ð¸" filename="extras.html">
+        <page title="Ð›Ð¾Ð³Ð¸Ñ‡ÐµÑÐºÐ¸Ðµ Ð¼Ð¾Ð´ÑƒÐ»Ð¸ (Compartments)" filename="compartment-patient.html"/>
       </page>
-      <page title="Ññûëêè (References)" filename="references.html"/>
-      <page title="Îïèñàòåëüíàÿ ÷àñòü" filename="narrative.html">
-        <page title="Ïðèìåð îïèñàòåëüíîé ÷àñòè" filename="narrative-example.html"/>
+      <page title="Ð¡ÑÑ‹Ð»ÐºÐ¸ (References)" filename="references.html"/>
+      <page title="ÐžÐ¿Ð¸ÑÐ°Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ñ‡Ð°ÑÑ‚ÑŒ" filename="narrative.html">
+        <page title="ÐŸÑ€Ð¸Ð¼ÐµÑ€ Ð¾Ð¿Ð¸ÑÐ°Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ð¹ Ñ‡Ð°ÑÑ‚Ð¸" filename="narrative-example.html"/>
       </page>
-      <page title="Ôîðìàòû" filename="formats.html">
+      <page title="Ð¤Ð¾Ñ€Ð¼Ð°Ñ‚Ñ‹" filename="formats.html">
         <page title="XML" filename="xml.html"/>
         <page title="JSON" filename="json.html"/>
       </page>
-      <page title="Ðàñøèðÿåìîñòü" filename="extensibility.html">
-        <page title="Ïðèìåðû" filename="extensibility-examples.html"/>
+      <page title="Ð Ð°ÑÑˆÐ¸Ñ€ÑÐµÐ¼Ð¾ÑÑ‚ÑŒ" filename="extensibility.html">
+        <page title="ÐŸÑ€Ð¸Ð¼ÐµÑ€Ñ‹" filename="extensibility-examples.html"/>
       </page>
-      <page title="Ôîðìàëèçîâàííûå îïðåäåëåíèÿ" filename="base-definitions.html"/>
+      <page title="Ð¤Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ñ" filename="base-definitions.html"/>
     </page>
-    <page title="Òèïû äàííûõ" filename="datatypes.html">
-      <page title="Ïðèìåðû" filename="datatypes-examples.html"/>
-      <page title="Ôîðìàëèçîâàííûå îïðåäåëåíèÿ" filename="datatypes-definitions.html"/>
-      <page title="Ìýïïèíãè (Mappings)" filename="datatypes-mappings.html"/>
+    <page title="Ð¢Ð¸Ð¿Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ñ…" filename="datatypes.html">
+      <page title="ÐŸÑ€Ð¸Ð¼ÐµÑ€Ñ‹" filename="datatypes-examples.html"/>
+      <page title="Ð¤Ð¾Ñ€Ð¼Ð°Ð»Ð¸Ð·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ñ" filename="datatypes-definitions.html"/>
+      <page title="ÐœÑÐ¿Ð¿Ð¸Ð½Ð³Ð¸ (Mappings)" filename="datatypes-mappings.html"/>
     </page>
-    <page title="Èñïîëüçîâàíèå êîäîâûõ çíà÷åíèé" filename="terminologies.html">
-      <page title="Ïåðå÷åíü êîäîâûõ ñèñòåì" filename="terminologies-systems.html">
+    <page title="Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð´Ð¾Ð²Ñ‹Ñ… Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹" filename="terminologies.html">
+      <page title="ÐŸÐµÑ€ÐµÑ‡ÐµÐ½ÑŒ ÐºÐ¾Ð´Ð¾Ð²Ñ‹Ñ… ÑÐ¸ÑÑ‚ÐµÐ¼" filename="terminologies-systems.html">
         <page title="LOINC" filename="loinc.html"/>
         <page title="SNOMED CT" filename="snomedct.html"/>
         <page title="RxNorm" filename="rxnorm.html"/>
@@ -64,29 +64,29 @@ todo: compartments
       <page title="V3 Namespaces" filename="terminologies-v3.html" source="v3/template.html">
         <pages type="v3-vocab" filename="template-v3.html"/>
       </page>
-      <page title="Êîíöåïòóàëüíûå êàðòû" filename="terminologies-conceptmaps.html"/>
+      <page title="ÐšÐ¾Ð½Ñ†ÐµÐ¿Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ðµ ÐºÐ°Ñ€Ñ‚Ñ‹" filename="terminologies-conceptmaps.html"/>
     </page>
-    <page title="Ãîëîñîâàíèå" filename="ballot-intro.html"/>
+    <page title="Ð“Ð¾Ð»Ð¾ÑÐ¾Ð²Ð°Ð½Ð¸Ðµ" filename="ballot-intro.html"/>
   </page>
   
-  <page title="Ðåàëèçàöèÿ" filename="implementation.html">
+  <page title="Ð ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ" filename="implementation.html">
     <page title="RESTful API" filename="http.html"/>
-    <page title="Ïîèñê" filename="search.html"/>
+    <page title="ÐŸÐ¾Ð¸ÑÐº" filename="search.html"/>
     <page title="Operations" filename="operations.html">
       <page title="Example" filename="op-example-request.html"/>
     </page>
     <page title="Messaging" filename="messaging.html"/>
-    <page title="Äîêóìåíòû" filename="documents.html"/>
-    <page title="Çàãðóçêè" filename="downloads.html"/>
-    <page title="Èñïîëüçîâàíèå ðåñóðñîâ" filename="use.html"/>
-    <page title="Ïîääåðæêà ðåàëèçàöèè" filename="support.html"/>
+    <page title="Ð”Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ñ‹" filename="documents.html"/>
+    <page title="Ð—Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸" filename="downloads.html"/>
+    <page title="Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ñ€ÐµÑÑƒÑ€ÑÐ¾Ð²" filename="use.html"/>
+    <page title="ÐŸÐ¾Ð´Ð´ÐµÑ€Ð¶ÐºÐ° Ñ€ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¸" filename="support.html"/>
     <page title="Managing Resource Identity" filename="managing.html"/>
     <page title="Services / SOA" filename="services.html"/>
     <page title="Interaction Patterns" filename="pushpull.html"/>
-    <page title="Ðàñïðîñòðàíåííûå ñëó÷àè èñïîëüçîâàíèÿ" filename="usecases.html"/>
-    <page title="Ñïèñîê ïðîôèëåé (Profile List)" filename="profilelist.html"/>
-    <page title="Áåçîïàñíîñòü" filename="security.html">
-      <page title="Ìåòêè áåçîïàñíîñòè" filename="security-labels.html"/>
+    <page title="Ð Ð°ÑÐ¿Ñ€Ð¾ÑÑ‚Ñ€Ð°Ð½ÐµÐ½Ð½Ñ‹Ðµ ÑÐ»ÑƒÑ‡Ð°Ð¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ" filename="usecases.html"/>
+    <page title="Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð¿Ñ€Ð¾Ñ„Ð¸Ð»ÐµÐ¹ (Profile List)" filename="profilelist.html"/>
+    <page title="Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑ‚ÑŒ" filename="security.html">
+      <page title="ÐœÐµÑ‚ÐºÐ¸ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ÑÑ‚Ð¸" filename="security-labels.html"/>
     </page>
     <page title="Integrated Examples" filename="integrated-examples.html"/>
     <page title="Implementation Guides" filename="iglist.html">
@@ -97,7 +97,7 @@ todo: compartments
     </page>
   </page>
 
-  <page title="Ðåñóðñû" filename="resourcelist.html"/>
+  <page title="Ð ÐµÑÑƒÑ€ÑÑ‹" filename="resourcelist.html"/>
 <!--    Every Resource below has structure:
       resource
       definitions
@@ -106,7 +106,7 @@ todo: compartments
        [- example]
       mappings
       -->
-  <page title="Êëèíè÷åñêèå" filename="clinical.html">
+  <page title="ÐšÐ»Ð¸Ð½Ð¸Ñ‡ÐµÑÐºÐ¸Ðµ" filename="clinical.html">
     <page type="resource" resource="AdverseReaction"/>
     <page type="resource" resource="AllergyIntolerance"/>
     <page type="resource" resource="Condition"/>
@@ -135,7 +135,7 @@ todo: compartments
     <page type="resource" resource="QuestionnaireAnswers"/>
     <page type="resource" resource="FamilyHistory"/>
   </page>
-  <page title="Àäìèíèñòðàòèâíûå" filename="administration.html">
+  <page title="ÐÐ´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¸Ð²Ð½Ñ‹Ðµ" filename="administration.html">
     <page type="resource" resource="Patient"/>
     <page type="resource" resource="RelatedPerson"/>
     <page type="resource" resource="Practitioner"/>
@@ -157,7 +157,7 @@ todo: compartments
     <page type="resource" resource="Availability"/>
     <page type="resource" resource="Slot"/>
   </page>
-  <page title="Èíôðàñòðóêòóðíûå" filename="infrastructure.html">
+  <page title="Ð˜Ð½Ñ„Ñ€Ð°ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð½Ñ‹Ðµ" filename="infrastructure.html">
     <page type="resource" resource="List"/>
     <page type="resource" resource="Media"/>
     <page type="resource" resource="Other"/>
