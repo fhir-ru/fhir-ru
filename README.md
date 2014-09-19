@@ -39,5 +39,15 @@ changes back to source when done. this is a hack)
 
 
 ---
+### To run Docker
+
+```
+sudo docker.io build -t fhir-svn .
+sudo docker.io run --name=fhir-svn -d -p 11155:80 -t -i fhir-svn
+```
+
+Look at http://localhost:11155
+
+---
 ##### Copyright HL7, Inc.
 Open-source under BSD3 (License)[./LICENSE]
