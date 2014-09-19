@@ -27,6 +27,8 @@ RUN ./build.sh
 
 COPY nginx.conf /etc/nginx/sites-available/default
 
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+
 EXPOSE 80
 
 CMD sudo service nginx restart
