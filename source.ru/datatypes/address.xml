@@ -167,9 +167,9 @@
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Structure</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">A postal address</Data></Cell>
-    <Cell><Data ss:Type="String">There is a variety of postal address formats defined around the world. This format defines a superset that is the basis for all addresses around the world </Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Need to be able to record postal addresses, along with notes about their use</Data></Cell>
-    <Cell><Data ss:Type="String">Note: address is for postal addresses, not physical locations</Data></Cell>
+    <Cell><Data ss:Type="String">В мире существует большое многообразие форматов почтовых адресов. Данный формат определяет расширенный набор, который является основой всех адресов в мире </Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Нужна возможность записывать почтовые адреса наряду с примечаниями об их применении</Data></Cell>
+    <Cell><Data ss:Type="String">Примечание: адреса почтовые, а не физическое местоположение</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">AD</Data></Cell>
     <Cell><Data ss:Type="String">XAD</Data></Cell>
     <Cell ss:Index="16"><Data ss:Type="String">Address</Data></Cell>
@@ -180,11 +180,11 @@
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">AddressUse</Data></Cell>
-    <Cell><Data ss:Type="String">home | work | temp | old - purpose of this address</Data></Cell>
-    <Cell><Data ss:Type="String">The purpose of this address</Data></Cell>
+    <Cell><Data ss:Type="String">home | work | temp | old - назначение этого адреса</Data></Cell>
+    <Cell><Data ss:Type="String">Назначение этого адреса</Data></Cell>
     <Cell><Data ss:Type="String">Home, Work</Data></Cell>
-    <Cell><Data ss:Type="String">Allows an appropriate address to be chosen from a list of many</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old address etc for a current/permanent one. Applications can assume that an address is current unless it explicitly says that it is temporary or old</Data></Cell>
+    <Cell><Data ss:Type="String">Позволяет выбрать подходящий из списка адресов</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Является модификатором, потому что приложения не должны ошибочно принимать временный или старый адрес за действующий/постоянный. Приложения могут считать адрес действующим, если только в нем не указано явно, что он временный или старый</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">unique(./use)</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.7</Data></Cell>
     <Cell ss:Index="16"><Data ss:Type="String">./AddressPurpose</Data></Cell>
@@ -194,11 +194,11 @@
     <Cell><Data ss:Type="String">Address.text</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Text representation of the address</Data></Cell>
-    <Cell><Data ss:Type="String">A full text representation of the address</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Текстовое представление адреса</Data></Cell>
+    <Cell><Data ss:Type="String">Полное текстовое представление адреса</Data></Cell>
     <Cell><Data ss:Type="String">137 Nowhere Street, Erewhon 9132</Data></Cell>
-    <Cell><Data ss:Type="String">A renderable, unencoded form</Data></Cell>
-    <Cell><Data ss:Type="String">Can provide both a text representation and parts</Data></Cell>
+    <Cell><Data ss:Type="String">Визуализируемая незакодированная форма</Data></Cell>
+    <Cell><Data ss:Type="String">Может содержать и текстовое представление, и структурированные части</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">./formatted</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.1 + XAD.2 + XAD.3 + XAD.4 + XAD.5 + XAD.6</Data></Cell>
    </Row>
@@ -206,21 +206,21 @@
     <Cell><Data ss:Type="String">Address.line</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Street name, number, direction &amp; P.O. Box etc </Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">This component contains the house number, apartment number, street name, street direction, &#10;P.O. Box number, delivery hints, and similar address information</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">home | work | temp | old - purpose of this address</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Название улицы, номер, направление, номер почтового ящика и т.п</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Этот компонент содержит номер дома, номер квартиры, название улицы, направление улицы, номер почтового ящика, подсказки для доставки и другая подобная информация об адресе </Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">home | work | temp | old - назначение этого адреса</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">AD.part[parttype = AL]</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.1 + XAD.2 (note: XAD.1 and XAD.2 have different meanings for a company address than for a person address)&#10;</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.1 + XAD.2 (обратите внимание: XAD.1 и XAD.2 имеют различное значение для юридического (company address) и физического адреса (person address))&#10;</Data></Cell>
     <Cell><Data ss:Type="String">street address</Data></Cell>
-    <Cell><Data ss:Type="String">./StreetAddress (newline delimitted)</Data></Cell>
+    <Cell><Data ss:Type="String">./StreetAddress (разграниченный символами новой строки)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Address.city</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Name of city, town etc.</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The name of the city, town, village or other community or delivery center.</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Muncipality</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Название города, поселка и т.п</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Название города, поселка, села или другого населенного пункта</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Город или любой населенный пункт, имеющий муниципалитет</Data></Cell>
     <Cell><Data ss:Type="String">AD.part[parttype = CTY]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.3</Data></Cell>
     <Cell><Data ss:Type="String">locality</Data></Cell>
@@ -231,8 +231,8 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Sub-unit of country (abreviations ok)</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Province, Territory</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Часть страны с ограниченным суверенитетом в федеративном государстве. Можно использовать коды, если они общеупотребительные (например 2-буквенные коды штатов Америки)</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Провинция; административная территория</Data></Cell>
     <Cell><Data ss:Type="String">AD.part[parttype = STA]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.4</Data></Cell>
     <Cell><Data ss:Type="String">region</Data></Cell>
@@ -243,8 +243,8 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Postal code for area</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">A postal code designating a region defined by the postal service.</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">PostCode</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Почтовый индекс, обозначающий область, определенную почтовой службой</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Почтовый индекс</Data></Cell>
     <Cell><Data ss:Type="String">AD.part[parttype = ZIP]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.5</Data></Cell>
     <Cell><Data ss:Type="String">postal code</Data></Cell>
@@ -254,9 +254,9 @@
     <Cell><Data ss:Type="String">Address.country</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Country (can be ISO 3166 3 letter code)</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Country - a nation as commonly understood or generally accepted</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">ISO 3166 3 letter codes can be used in place of a full country name.</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Country (может быть 3-буквенным кодом из ISO 3166)</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Страна - нация в общепринятом смысле</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">3-буквенные коды из ISO 3166 могут использоваться вместо полного названия страны</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">AD.part[parttype = CNT]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.6</Data></Cell>
     <Cell><Data ss:Type="String">country name</Data></Cell>
@@ -266,13 +266,13 @@
     <Cell><Data ss:Type="String">Address.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Time period when address was/is in use</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Период времени, в течение которого адрес был/находится в использовании</Data></Cell>
     <Cell><Data ss:Type="String">Time period when address was/is in use</Data></Cell>
     <Cell><Data ss:Type="String">23-Mar 2010 -&gt; 1-Jul 2010</Data></Cell>
-    <Cell><Data ss:Type="String">Allows addresses to be placed in historical context</Data></Cell>
+    <Cell><Data ss:Type="String">Позволяет размещать адреса в историческом контексте</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">XAD.12 / XAD.13 + XAD.14&#10;</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">./StartDate and ./EndDate</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">./StartDate и ./EndDate</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -385,7 +385,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s77"><Data ss:Type="String">AddressUse</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">The use of an address</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Назначение адреса</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">#address-use</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s78"><Data ss:Type="String">http://hl7.org/fhir/v3/vs/AddressUse</Data></Cell>

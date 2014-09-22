@@ -126,8 +126,8 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">A human-readable formatted text, including images</Data></Cell>
-    <Cell><Data ss:Type="String">A human-readable formatted text, including images</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Человекочитаемый отформатированный текст, включая изображения</Data></Cell>
+    <Cell><Data ss:Type="String">Человекочитаемый отформатированный текст, включая изображения</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
@@ -136,16 +136,16 @@
     <Cell ss:Index="4"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">NarrativeStatus</Data></Cell>
     <Cell><Data ss:Type="String">generated | extensions | additional</Data></Cell>
-    <Cell><Data ss:Type="String">The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data</Data></Cell>
+    <Cell><Data ss:Type="String">Статус описания говорит о том, является ли оно полностью сгенерированным только из имеющихся данных или расширений тоже), или же его автором является человек, и он может содержать дополнительные данные</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Narrative.div</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">xhtml</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Limited xhtml content</Data></Cell>
-    <Cell><Data ss:Type="String">The actual narrative content, a stripped down version of XHTML</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href), images and internally contained stylesheets. The XHTML content may not contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects. </Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Ограниченное XHTML-содержимое </Data></Cell>
+    <Cell><Data ss:Type="String">Фактическое содержимое описательной части, урезанная версия XHTML</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Содержимое HTML-элемента – это фрагмент XHTML, содержащий только базовые HTML-элементы форматирования, описанные в главах 7-11 и 15 стандарта HTML 4.0, элементы &lt;a&gt; (либо name, либо href), изображения и внутренние стили. XHTML-содержимое не может включать в себя элементы head, body, ссылки на внешние таблицы стилей, скрипты, формы, base/link/xlink, фреймы, iframes и объекты. </Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
   </Table>
@@ -202,19 +202,19 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Narrative.div</Data></Cell>
-    <Cell><Data ss:Type="String">The narrative SHALL contain only the basic html formatting elements described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href), images and internally contained style attributes</Data></Cell>
+    <Cell><Data ss:Type="String">Описание ДОЛЖНО содержать только базовые HTML-атрибуты форматирования, описанные в главах 7-11 (кроме раздела 4 главы 9) и 15 стандарта HTML 4.0 , элементы &lt;a&gt; (name либо href), изображения и внутренние атрибуты стилей</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">not(descendant-or-self::*[not(local-name(.)=('a', 'abbr', 'acronym', 'b', 'big', 'blockquote', 'br', 'caption', 'cite', 'code', 'colgroup', 'dd', 'dfn', 'div', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'li', 'ol', 'p', 'pre', 'q', 'samp', 'small', 'span', 'strong', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'tt', 'ul', 'var'))])</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Narrative.div</Data></Cell>
-    <Cell><Data ss:Type="String">The narrative SHALL have some non-whitespace content</Data></Cell>
+    <Cell><Data ss:Type="String">Описание ДОЛЖНО иметь некоторое не пробельное содержимое</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">descendant::text()[normalize-space(.)!=''] or descendant::html:img[@src]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Narrative.div</Data></Cell>
-    <Cell><Data ss:Type="String">The narrative SHALL contain only the basic html formatting attributes described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href), images and internally contained style attributes</Data></Cell>
+    <Cell><Data ss:Type="String">Описание ДОЛЖНО содержать только базовые HTML-атрибуты форматирования, описанные в главах 7-11 (кроме раздела 4 главы 9) и 15 стандарта HTML 4.0 , элементы &lt;a&gt; (name либо href), изображения и внутренние атрибуты стилей</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">not(descendant-or-self::*/@*[not(name(.)=('abbr', 'accesskey', 'align', 'alt', 'axis', 'bgcolor', 'border', 'cellhalign', 'cellpadding', 'cellspacing', 'cellvalign', 'char', 'charoff', 'charset', 'cite', 'class', 'colspan', 'compact', 'coords', 'dir', 'frame', 'headers', 'height', 'href', 'hreflang', 'hspace', 'id', 'lang', 'longdesc', 'name', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'scope', 'shape', 'span', 'src', 'start', 'style', 'summary', 'tabindex', 'title', 'type', 'valign', 'value', 'vspace', 'width'))])  </Data></Cell>
    </Row>
   </Table>
@@ -254,7 +254,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">NarrativeStatus</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">The status of a resource narrative</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Статус описательной части ресурса</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">#narrative-status</Data></Cell>
    </Row>
@@ -294,22 +294,22 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">generated</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The contents of the narrative are entirely generated from the structured data in the resource.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Содержимое описательной части полностью сгенерировано из структурированных данных ресурса.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">extensions</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Содержимое описательной части полностью сгенерировано из структурированных данных ресурса и некоторое содержимое сгенерировано из расширений</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">additional</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The contents of the narrative contain additional information not found in the structured data</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Содержимое описательной части включает в себя дополнительную информацию, отсутствующую в структурированных данных</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">empty</Data></Cell>
-    <Cell><Data ss:Type="String">the contents of the narrative are some equivalent of &quot;No human-readable text provided for this resource&quot;</Data></Cell>
+    <Cell><Data ss:Type="String">Содержимым описательной части является некоторый эквивалент фразы &quot;Для этого ресурса не приведен человекочитаемый текст&quot;</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

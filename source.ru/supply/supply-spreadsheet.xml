@@ -201,7 +201,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">A supply -  request and provision</Data></Cell>
-    <Cell><Data ss:Type="String">A supply - a  request for something, and provision of what is supplied</Data></Cell>
+    <Cell><Data ss:Type="String">Снабжение (supply) - запрос на получение чего-либо и предоставление требуемого</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s68"/>
     <Cell ss:Index="13" ss:StyleID="s68"><Data ss:Type="String">Supply[moodCode=RQO]</Data></Cell>
     <Cell ss:StyleID="s68"/>

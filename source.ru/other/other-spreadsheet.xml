@@ -162,7 +162,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Resource for non-supported content</Data></Cell>
-    <Cell><Data ss:Type="String">Other is a conformant for handling resource concepts not yet defined for FHIR or outside HL7's scope of interest</Data></Cell>
+    <Cell><Data ss:Type="String">Ресурсы типа 'Other' позволяют работать с типами ресурсов, не определенными стандартом FHIR или не входящими в области интереса организации HL7</Data></Cell>
     <Cell><Data ss:Type="String">Z-resource, Extension-resource, Custom-resource</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Need some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources.</Data></Cell>
     <Cell ss:Index="13" ss:StyleID="s67"><Data ss:Type="String">Act, Entity or Role</Data></Cell>

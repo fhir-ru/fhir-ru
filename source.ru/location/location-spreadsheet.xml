@@ -209,7 +209,9 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Details and position information for a physical place</Data></Cell>
-    <Cell><Data ss:Type="String">Details and position information for a physical place where services are provided  and resources and participants may be stored, found, contained or accommodated </Data></Cell>
+    <Cell><Data ss:Type="String">Подробная информация о местоположении предоставляющей услуги организации, в которой
+    могут находиться участники процесса лечения, а также размещаться, храниться и использоваться ресурсы
+    </Data></Cell>
     <Cell ss:Index="11" ss:StyleID="Default"/>
     <Cell ss:Index="13" ss:StyleID="Default"><Data ss:Type="String">Role[classCode=SDLC].</Data></Cell>
     <Cell ss:StyleID="Default"/>

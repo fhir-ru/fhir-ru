@@ -166,7 +166,7 @@
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A person with a  formal responsibility in the provisioning of healthcare or related services</Data></Cell>
-    <Cell><Data ss:Type="String">A person who is directly or indirectly involved in the provisioning of healthcare</Data></Cell>
+    <Cell><Data ss:Type="String">Лицо, прямо или косвенно участвующее в предоставлении медицинских услуг</Data></Cell>
     <Cell><Data ss:Type="String">Need to track doctors, staff, locums etc. for both healthcare practitioners, funders, etc.</Data></Cell>
     <Cell><Data ss:Type="String">Note that a cab driver no longer fits the bill. You probably would be interested in the organization rather than the individual?</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">Role</Data></Cell>

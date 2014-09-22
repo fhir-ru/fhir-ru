@@ -156,7 +156,8 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">An person that is related to a patient, but who is not a direct target of care</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Информация о лице, участвующем в уходе за пациентом, но
+    не являющимся получателем медицинских услуг и свободным от врачебной ответственности</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Need to track persons related to the patient or the healthcare process.</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>

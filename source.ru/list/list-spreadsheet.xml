@@ -167,7 +167,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Information summarized from a list of other resources</Data></Cell>
-    <Cell><Data ss:Type="String">A set of information summarized from a list of other resources</Data></Cell>
+    <Cell><Data ss:Type="String">Обобщенный набор информации, полученной из перечня сторонних источников</Data></Cell>
     <Cell><Data ss:Type="String">Collection; WorkingList; Organizer</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:Index="13" ss:StyleID="s66"><Data ss:Type="String">Act[classCode&lt;ORG,moodCode=EVN]</Data></Cell>
