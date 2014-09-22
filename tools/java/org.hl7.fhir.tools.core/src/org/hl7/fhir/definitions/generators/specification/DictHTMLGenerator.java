@@ -153,24 +153,24 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
     
   private void generateElementInner(Profile profile, ElementDefinitionComponent d) throws Exception {
-    tableRowMarkdown("Definition", d.getFormalSimple());
-    tableRow("Control", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
-    tableRowNE("Binding", "terminologies.html", describeBinding(d));
+    tableRowMarkdown("Определение", d.getFormalSimple());
+    tableRow("Множество", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
+    tableRowNE("Привязка", "terminologies.html", describeBinding(d));
     if (d.getNameReference() != null)
-      tableRow("Type", null, "See "+d.getNameReferenceSimple());
+      tableRow("Тип", null, "See "+d.getNameReferenceSimple());
     else
-      tableRowNE("Type", "datatypes.html", describeTypes(d.getType()));
-    tableRow("Is Modifier", "conformance-rules.html#ismodifier", displayBoolean(d.getIsModifierSimple()));
-    tableRow("Must Support", "conformance-rules.html#mustSupport", displayBoolean(d.getMustSupportSimple()));
-    tableRowMarkdown("Requirements", d.getRequirementsSimple());
-    tableRow("Aliases", null, describeAliases(d.getSynonym()));
-    tableRowMarkdown("Comments", d.getCommentsSimple());
-    tableRow("Max Length", null, d.getMaxLength() == null ? null : Integer.toString(d.getMaxLengthSimple()));
-    tableRow("Fixed Value", null, encodeValue(d.getValue()));
-    tableRow("Example", null, encodeValue(d.getExample()));
-    tableRowNE("Invariants", null, invariants(d.getConstraint()));
-    tableRow("LOINC Code", null, getMapping(profile, d, Definitions.LOINC_MAPPING));
-    tableRow("SNOMED-CT Code", null, getMapping(profile, d, Definitions.SNOMED_MAPPING));
+      tableRowNE("Тип", "datatypes.html", describeTypes(d.getType()));
+    tableRow("Это модификатор?", "conformance-rules.html#ismodifier", displayBoolean(d.getIsModifierSimple()));
+    tableRow("Должен поддерживать", "conformance-rules.html#mustSupport", displayBoolean(d.getMustSupportSimple()));
+    tableRowMarkdown("Требования", d.getRequirementsSimple());
+    tableRow("Альтернативные имена", null, describeAliases(d.getSynonym()));
+    tableRowMarkdown("Комментарии", d.getCommentsSimple());
+    tableRow("Макс длина", null, d.getMaxLength() == null ? null : Integer.toString(d.getMaxLengthSimple()));
+    tableRow("Фиксированное значение", null, encodeValue(d.getValue()));
+    tableRow("Пример", null, encodeValue(d.getExample()));
+    tableRowNE("Инварианты", null, invariants(d.getConstraint()));
+    tableRow("LOINC-код", null, getMapping(profile, d, Definitions.LOINC_MAPPING));
+    tableRow("SNOMED-CT-код", null, getMapping(profile, d, Definitions.SNOMED_MAPPING));
   }
 
   private String encodeValue(Type value) throws Exception {
@@ -226,7 +226,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
       return null;
     StringBuilder s = new StringBuilder();
     if (constraints.size() > 0) {
-      s.append("<b>Defined on this element</b><br/>\r\n");
+      s.append("<b>Определено на этом элементе</b><br/>\r\n");
       List<String> ids = new ArrayList<String>();
       for (ElementDefinitionConstraintComponent id : constraints)
         ids.add(id.getKeySimple());
@@ -377,7 +377,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   private String invariants(Map<String, Invariant> invariants, List<Invariant> stated) {
 	  StringBuilder s = new StringBuilder();
 	  if (invariants.size() > 0) {
-	    s.append("<b>Defined on this element</b><br/>\r\n");
+	    s.append("<b>Определено на этом элементе</b><br/>\r\n");
 	    List<Integer> ids = new ArrayList<Integer>();
 	    for (String id : invariants.keySet())
 	      ids.add(Integer.parseInt(id));
@@ -394,12 +394,12 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     if (stated.size() > 0) {
       if (s.length() > 0)
         s.append("<br/>");
-      s.append("<b>Affect this element</b><br/>\r\n");
+      s.append("<b>Влияет на этот элемент</b><br/>\r\n");
       boolean b = false;
       for (Invariant id : stated) {
         if (b)
           s.append("<br/>");
-        s.append("<b>Inv-"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
+        s.append("<b>Инв-"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
         b = true;
       }
     }
