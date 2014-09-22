@@ -164,7 +164,7 @@
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s67"/>
-    <Cell><Data ss:Type="String">(informative) A container for slot(s) of time that may be available for booking appointments</Data></Cell>
+    <Cell><Data ss:Type="String">(informative) A container for slot(s) of time that may be available for booking appointments (Статус ресурса: informative) (Объект-)контейнер для заполнения свободных тайм-слотов (интервалов времени). Используется для планирования медицинских консультаций</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Schedule</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:Index="13" ss:StyleID="s68"/>

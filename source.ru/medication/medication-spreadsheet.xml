@@ -189,7 +189,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Definition of a Medication</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Primarily used for identification and definition of Medication, but also covers ingredients and packaging</Data><NamedCell
+    <Cell><Data ss:Type="String">В основном используется для идентификации и определения лекарственных средств, но также охватывает ингредиенты и упаковки</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">ManufacturedProduct[classCode=ADMM]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

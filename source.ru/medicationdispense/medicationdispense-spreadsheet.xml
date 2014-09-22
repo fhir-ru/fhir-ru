@@ -302,7 +302,8 @@
     <Cell ss:StyleID="s68"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Dispensing a medication to a named patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Dispensing a medication to a named patient.  This includes a description of the supply provided and the instructions for administering the medication.</Data><NamedCell
+    <Cell><Data ss:Type="String">Выдача лекарственного средства  конкретному пациенту, которая подразумевает также предоставление описания этого препарата и инструкции по 
+его применению</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="11" ss:StyleID="s68"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="13" ss:StyleID="s68"><NamedCell ss:Name="_FilterDatabase"/></Cell>

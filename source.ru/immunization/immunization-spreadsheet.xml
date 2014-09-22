@@ -224,7 +224,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s71"/>
     <Cell><Data ss:Type="String">Immunization event information</Data></Cell>
-    <Cell><Data ss:Type="String">Immunization event information</Data></Cell>
+    <Cell><Data ss:Type="String">Информация об иммунизации</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s71"/>
     <Cell ss:Index="13" ss:StyleID="s72"><Data ss:Type="String">SubstanceAdministration</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">VXU_V04</Data></Cell>
