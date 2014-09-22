@@ -310,22 +310,22 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
 	private void writeEntry(String path, String cardinality, String type, String conceptDomain, ElementDefn e) throws Exception {
 		write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+path.replace("[", "_").replace("]", "_")+"\"> </a><b>"+path+"</b></td></tr>\r\n");
-		tableRow("Definition", null, e.getDefinition());
-		tableRow("Control", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
-		tableRowNE("Binding", "terminologies.html", describeBinding(e));
+		tableRow("Определение", null, e.getDefinition());
+		tableRow("Множество", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
+		tableRowNE("Привязка", "terminologies.html", describeBinding(e));
 		if (!Utilities.noString(type) && type.startsWith("@"))
-		  tableRowNE("Type", null, "<a href=\"#"+type.substring(1)+"\">See "+type.substring(1)+"</a>");
+		  tableRowNE("Тип", null, "<a href=\"#"+type.substring(1)+"\">См. "+type.substring(1)+"</a>");
 		else
-		  tableRowNE("Type", "datatypes.html", type);
-		tableRow("Is Modifier", "conformance-rules.html#ismodifier", displayBoolean(e.isModifier()));
-		tableRowNE("Requirements", null, page.processMarkdown(e.getRequirements()));
-    tableRow("Aliases", null, toSeperatedString(e.getAliases()));
+		  tableRowNE("Тип", "datatypes.html", type);
+		tableRow("Это модификатор?", "conformance-rules.html#ismodifier", displayBoolean(e.isModifier()));
+		tableRowNE("Требования", null, page.processMarkdown(e.getRequirements()));
+    tableRow("Альтернативные имена", null, toSeperatedString(e.getAliases()));
     if (e.isSummaryItem())
-      tableRow("Summary", "search.html#summary", Boolean.toString(e.isSummaryItem()));
-    tableRow("Comments", null, e.getComments());
-    tableRowNE("Invariants", null, invariants(e.getInvariants(), e.getStatedInvariants()));
-    tableRow("LOINC Code", null, e.getMapping(Definitions.LOINC_MAPPING));
-    tableRow("SNOMED-CT Code", null, e.getMapping(Definitions.SNOMED_MAPPING));
+      tableRow("Сводка", "search.html#summary", Boolean.toString(e.isSummaryItem()));
+    tableRow("Комментарии", null, e.getComments());
+    tableRowNE("Инварианты", null, invariants(e.getInvariants(), e.getStatedInvariants()));
+    tableRow("LOINC код", null, e.getMapping(Definitions.LOINC_MAPPING));
+    tableRow("SNOMED-CT код", null, e.getMapping(Definitions.SNOMED_MAPPING));
 		tableRow("To Do", null, e.getTodo());
 		if (e.getTasks().size() > 0) {
 	    tableRowNE("gForge Tasks", null, tasks(e.getTasks()));
