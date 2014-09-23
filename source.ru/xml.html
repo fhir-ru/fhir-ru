@@ -2,7 +2,7 @@
 
 
       
-[%settitle XML Format%]
+[%settitle Формат XML%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -17,7 +17,7 @@
 <h2>XML</h2>
 
 <p>
-The XML syntax is closely based on the <a href="formats.html">XML notation</a>:
+XML-синтаксис основан непосредственно на <a href="formats.html">XML-нотации</a>:
 </p>
 <pre class="spec">
  &lt;<b>name</b> xmlns="http://hl7.org/fhir" (attrA="value")&gt;   <span style="float: right"><a title="Documentation for this format" href="formats.html"><img src="help.png" alt="doco"/></a></span>
@@ -29,35 +29,30 @@ The XML syntax is closely based on the <a href="formats.html">XML notation</a>:
  &lt;name&gt;
 </pre>
 <p>
-Notes:
+Примечания:
 </p>
 <ul>
- <li>To build a valid XML instance of a resource, simply replace the contents of the elements and attributes with valid content as described by the cardinality, type rules and content description found in the comment in each element</li>
- <li>Resource and Element names are case-sensitive (though duplicates that differ only in case are never defined)</li>
- <li>Note that the only properties that are represented as attributes are those defined in underlying specifications such as <a href="#atom">Atom (see below)</a>, which is used as the XML representation for bundles, and attributes are also used for primitive values</li>
- <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  This is usually specified as the default namespace on the root element. 
-   The only other namespaces that occur in FHIR resources are where some external content model is explicitly introduced into the resource content model. For example, <a href="narrative.html">XHTML is found in every resource</a></li>
- <li>Any of the XML elements may have an id attribute to serve as <a href="references.html#idref">the target of an internal reference</a>. The id attribute is not shown in this format</li>
- <li>FHIR elements are never empty. If an element is present in the resource, it SHALL have either a value attribute, child elements as defined for its type, an id attribute that is the <a href="references.html#idref">link target</a> of <a href="narrative.html#narrative">narrative</a>, or 1 or more <a href="extensibility.html">extensions</a></li>
- <li>Attributes can never be empty. Either they are absent, or they are present with at least one character of non-whitespace content</li>
-  <li>XML comments, processing instructions and formatting are not part of the contents of a resource.</li>
-  <li>Specifying the character encoding using a &lt;?xml encoding="" ?&gt; processing instruction is optional but recommended. Other processing Instructions 
-  SHOULD not be included, except and SHALL not be required in order to properly understand and/or present the data or narrative of the resource. 
-  Applications MAY preserve these when handling resources, but are not required to do so. 
-  Note that digital signatures may depend on them (depending on the canonicalization method used)</li>
+ <li>Для создания допустимого XML-экземпляра ресурса, просто замените содержимое элементов и атрибутов допустимыми значениями, как описано в количестве элементов, типовых правилах и содержимом описания, найденного в комментариях к каждому элементу</li>
+ <li>Имена ресурсов и элементов являются регистрозависимыми (хотя дубликаты, различающиеся только регистром, никогда не вводились)</li>
+ <li>Обратите внимание, что только те свойства, которые представлены как атрибуты, это те, определенные в базовый, лежащий в основе спецификациях, таких как <a href="#atom">Atom (см. ниже)</a>, которая используется в качестве XML-представления  для комплектов, и атрибуты также используются для примитивных значений</li>
+ <li>FHIR-элементы всегда находятся в пространстве имен <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  Обычно это указывается как пространство имен по умолчанию на корневом элементе. Другие пространства имен, которые встречаются в FHIR-ресурсах, это те, где некоторых внешняя модель содержимого явно введена в модель содержимого ресурса. Например <a href="narrative.html">XHTML встречается в каждом ресурсе</a></li>
+ <li>Любой из XML-элементов может иметь атрибут id, служащий в качестве <a href="references.html#idref">цели внутренней ссылки</a>. Атрибут id не показывается в этом формате</li>
+ <li>FHIR-элементы никогда не пустые. Если элемент присутствует в ресурсе, он ОБЯЗАН иметь либо атрибут value, элементы-потоки, как определено для его типа, атрибут id, который является <a href="references.html#idref">целевой ссылкой</a> <a href="narrative.html#narrative">описательной части</a>, либо 1 или больше <a href="extensibility.html">расширений</a></li>
+ <li>Атрибуты никогда не могут быть пустыми. Либо они отсутствуют, либо присутствуют с по крайней мере одним символом не пробельного содержимого</li>
+  <li>XML-комментарии, команды обработки и форматирования не являются частью содержимого ресурса.</li>
+  <li>Определение кодировки символов с помощью команды обработки &lt;?xml encoding="" ?&gt; является необязательным, однако рекомендуемым. Другие команды обработки НЕ ДОЛЖНЫ быть включены, за исключением и НЕ ДОЛЖНЫ требоваться в целях правильного понимания и/или настоящего данных или описательной части ресурса.
+Приложения МОГУТ сохранять их во время оперирования ресурсами, однако не являются обязательным так делать. Обратите внимание, что цифровые подписи могут зависеть от них (в зависимости от используемого метода каноникализации (canonicalization).</li>
 </ul>
 <p>
-When represented as XML, resources may be validated by schema and schematron (see below), but 
-operational systems are not required to do so (though the XML SHALL always be 
-valid against this specification and the schema and Schematron).
+Когда представлен в XML, ресурсы могут быть проверены на правильность схемой и Schematron (см. ниже), однако от операционных систем не требуется это делать (хотя XML ДОЛЖЕН всегда быть правильным по отношению к данной спецификации и схеме и Schematron).
 </p>
 
 
 <a name="bundle"> </a>
 <a name="atom"> </a>
-<h3>Atom Bundle Representation</h3>
+<h3>Atom-представление комплекта</h3>
 <p>
-In XML <a href="extras.html#bundle">bundles</a> are represented using an Atom format (<a href="http://tools.ietf.org/html/rfc4287" target="_blank">http://tools.ietf.org/html/rfc4287</a>), following this template:
+В XML <a href="extras.html#bundle">комплекты</a> представляются с помощью формата Atom (<a href="http://tools.ietf.org/html/rfc4287" target="_blank">http://tools.ietf.org/html/rfc4287</a>), следуя этому шаблону:
 </p>
 <pre class="spec">
 &lt;feed xmlns="http://www.w3.org/2005/Atom">  <span style="float: right"><a title="Documentation for this format" href="formats.html"><img src="help.png" alt="doco"/></a></span>
@@ -104,33 +99,31 @@ In XML <a href="extras.html#bundle">bundles</a> are represented using an Atom fo
 &lt;/feed&gt;
 </pre>
 <a name="atom-notes"> </a>
-<h4>Notes</h4>
+<h4>Примечания</h4>
 <ul>
- <li>Logically, a bundle is a set of resources that are prepared to be sent somewhere for consumption - a "feed"</li>
- <li>The order of elements does not matter in an atom feed (but not entries: the order of the entries is important and may have some meaning associated with it). The order of elements in the atom namespace as documented above does not need to be followed, though it is followed by the FHIR reference platforms</li>
- <li>The title for the feed and the entry are arbitrary human-readable content. The title of the entry SHOULD be derived from information present in the resource itself.  
-   Systems may ignore content present in the title</li> 
- <li>Every bundle SHALL have a unique id and that id SHALL be a valid absolute <a href="datatypes.html#uri">uri</a>. UUIDs are recommended (urn:uuid:...)</li>
- <li>The entry element carries the <a href="resources.html#metadata">three pieces of resource metadata</a>: Id (.id), Version Id (.link), Last Updated (.updated)</li>
- <li>Each entry also carries all the Tags affixed to the resource in the category element. The category element can be used in other ways too</li>
- <li>The entry.id SHALL be an absolute URL, the tail element of which is the logical id of the resource. The id is a version independent reference</li>
- <li>The entry.link to self is a version specific reference to the resource.</li>
- <li>When used in a <a href="http.html">RESTful implementation</a>, the entry.link and entry.id are the URLs of the resource on the system; the version specific link can be used as the basis synchronizing pub/sub systems using the atom bundle with the <a href="http.html#history">updates operation</a>. In other contexts, the values should be literal references to a server if one is available</li>
- <li>Note that the atom specification requires a known author for every entry. If an author is provided in the base feed element, a specific author is not needed on each entry</li>
- <li>The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author or a device. The uri is a link to the author (possibly a Practitioner resource)</li> 
- <li>xml:base elements SHOULD NOT be used and implementations do not need to support it</li>
- <li>The entry.content is optional, but SHALL always be present except in the special case of a transaction response</li>
- <li>The entire bundle can be signed with a single Enveloped Digital Signature as described in the Atom specification (section 5.1)</li>
- <li>The feed.link element with relationship "self" is assigned no particular meaning the FHIR specification, except in the case of a search operation, but may be used to provide a reference to the source of the feed</li>
- <li>The feed.link elements with relationship "first", "last", "previous" and "next" are used to implement paging in the RESTful interface and allow a client to browse through a multi-page result. See <a href="search.html">search/query</a></li>
- <li>The feed.link element "fhir-base" is used to resolve relative urls in a bundle, see <a href="references.html#atom-rel">relative references</a></li>
+ <li>Логически рассуждая, комплект – это набор ресурсов, которые приготовлены для отсылки куда-то для дальнейшего потребления – "фид" (feed)</li>
+ <li>Порядок следования элементов в atom feed не имеет значения (но не entries (элемент, запись, содержимое; введенные данные; входное сообщение, вхождение): порядок entries является важным и может иметь некоторое значение, ассоциированное с ним). Порядок элементов в пространстве имен атома, как задокументировано выше, не требует соблюдения, хотя его придерживаются FHIR reference platforms платформы</li>
+ <li>Заглавие для feed и entry является свободным человекочитаемым содержимым. Заглавие entry ДОЛЖНО выводиться из информации, присутствующей в самом ресурсе. Системы могут игнорировать содержимое в заглавии</li> 
+ <li>Каждый комплект ДОЛЖЕН иметь уникальный id и этот id ДОЛЖЕН быть допустимым абсолютным <a href="datatypes.html#uri">URI</a>. UUID рекомендуются (urn:uuid:...).</li>
+ <li>Элемент entry служит носителем <a href="resources.html#metadata">трех компонентов метаданных ресурса</a>: Id (.id), Version Id (.link), Last Updated (.updated)</li>
+ <li>Каждый entry также служит носителем всех Тегов, приписанных ресурсы в элементе category. Элемент category может использоваться другими способами тоже</li>
+ <li>entry.id ДОЛЖНО быть абсолютным URL, заключительный элемент которого – логический id ресурса. id  – это версионно-независимая ссылка</li>
+ <li>entry.link на себя (The entry.link to self) – это версионно-зависимая ссылка на ресурс.</li>
+ <li>Когда используется в <a href="http.html">RESTful реализации</a>, entry.link и entry.id являются URLs ресурса на систему; ссылка на конкретную версию может использоваться как базовые синхронизирующий pub/sub системы, использующие комплект atom c <a href="http.html#history">updates operation</a>. В других ситуациях значение должно быть буквальными (постоянными) ссылками на сервер, если он доступен. </li>
+ <li>Обратите внимание, что спецификация atom требует знания автора каждого entry. Если автор сказан в базовом элементе feed , конкретный автор не требуется для каждого entry.</li>
+ <li>Автор ресурса не является явным в модели FHIR ресурса; вместо этого он делегируется к инфраструктуре. Имя – это имя человека-автора или устройства. uri – ссылка на автора (возможно ресурс Practitioner). </li> 
+ <li>Элементы xml:base НЕ ДОЛЖНЫ использоваться и реализаторам не требуется поддерживать их.</li>
+ <li>entry.content является необязательным, но ДОЛЖЕН всегда присутствовать, за исключением особого случая отклика на транзакцию (transaction response). </li>
+ <li>Весь комплект может быть подписан одной Enveloped Digital Signature, как описано в спецификации Atom (раздел 5.1).</li>
+ <li>Элемент feed.link с relationship "self" не назначено конкретного значения в FHIR спецификации, за исключением случая операции поиска, однако может использоваться для предоставления ссылка на источник feed</li>
+ <li>Элементы feed.link с типом связи relationship "first", "last", "previous" и "next" используются для реализации пейджинга в интерфейсе RESTful и позволяют клиенту рассматривать читать многостраничный результат. См. <a href="search.html">search/query</a></li>
+ <li>Элемент feed.link "fhir-base" используется для разрешения относительных ссылок в комплекте, см. <a href="references.html#atom-rel">относительные ссылки</a></li>
 </ul>
 
 <a name="atom-deleted"> </a>
-<h4>Bundling versions - deletion</h4>
+<h4>Версии комплектации – удаление</h4>
 <p>
-When returning a set of resources or versions of a resource, an entry might indicate that the entry has been <i>deleted</i>. Deleted resources are represented
-in an atom feed as defined by <a href="http://www.rfc-editor.org/rfc/rfc6721.txt">rfc6721.txt</a>: 
+При возвращении набора ресурсов или версий ресурса, entry может указывать, что запись была <i>удалена</i>. Удаленные ресурсы представляются в atom feed по правилам, определенным в <a href="http://www.rfc-editor.org/rfc/rfc6721.txt">rfc6721.txt</a>: 
 </p>
 <pre class="spec">
 &lt;feed xmlns="http://www.w3.org/2005/Atom">  <span style="float: right"><a title="Documentation for this format" href="formats.html"><img src="help.png" alt="doco"/></a></span>
@@ -142,34 +135,26 @@ in an atom feed as defined by <a href="http://www.rfc-editor.org/rfc/rfc6721.txt
   <span style="color:Gray;">... other entries ...</span>
 </pre>
 <p>
-A deleted resource returns a 410 Gone error if it is accessed through the RESTful interface. 
+Удаленный ресурс возвращает ошибку 410 Gone, если обратиться к нему через интерфейс RESTful.
 </p>
 
 <a name="atom-impl"> </a>
-<h3>Implementation Notes</h3>
+<h3>Примечания к реализации</h3>
 <a name="digsig"> </a>
 <ul>
-<li>Atom Feeds may be signed following the rules described in the Atom specification. One consequence of 
-signing the document is that URLs, identifiers and internal references are frozen and cannot be changed.
-This might be a desired feature, but it may also cripple interoperability between closed ecosystems where
-<a href="use.html#identity">re-identification</a> frequently occurs. For this reason, it is recommended that only Document Bundles
-are signed and then only when all the related resources are found in the bundle.</li>
+<li>Atom Feeds могут быть подписаны по правилам, описанным в спецификации к Atom. Одним из последствий подписания документа является то, что URL-адреса, идентификаторы и внутренние ссылки замораживаются и не могут быть изменены. Это может быть желаемым свойством, но может также лишить закрытые экосистемы, где часто происходит <a href="use.html#identity">повторное определение (re-identification)</a>, способности к взаимодействию. По этой причине рекомендуется подписывать только Комплекты документов (Document Bundles) и только после того, как все связанные ресурсы находятся в комплекте. </li>
 <li>
 <a name="Ids"></a>
-FHIR resources make use of id attributes as targets for <a href="references.html#idref">internal references with resources</a>. 
-These id attributes are unique and resolved within the context of a single resource. When resources are 
-combined into a bundle, different resources may contain duplicate id attributes. Thus it is important to limit
-the scope of resolution of an id attribute to the resource in which the <i>id</i> attribute is declared.
+Ресурсы FHIR пользуются id-атрибутами в качестве целей <a href="references.html#idref">внутренних ссылок с ресурсами</a>. 
+Эти id-атрибуты являются уникальными и разрешаются в пределах контекста одного ресурса. Когда ресурсы комбинируются в комплект, могут возникнуть дубликаты: различные ресурсы могут содержать одинаковые id-атрибуты. Поэтому важно ограничить область разрешения id-атрибута ресурсом, в котором этот <i>id</i>-атрибут  объявлен.
 </li>
 </ul>
 
 
 <a name="binary"> </a>
-<h4>Binary Resources</h4>
+<h4>Бинарные ресурсы</h4>
 <p>
-When a <a href="extras.html#binary">binary resource</a> is represented as XML in an atom feed, 
-it is represented as base64 encoded content along with a content-type, which is the mime-type 
-as it would be specified in HTTP:
+Когда <a href="extras.html#binary">бинарный ресурс</a> описывается в виде XML в ATOM feed, он представляется base64-закодированным содержимым наряду с указанием типа содержимого, который является MIME-типом, как это обычно указывается в HTTP:
 </p>
 <pre class="spec">
  &lt;Binary xmlns="http://hl7.org/fhir" contentType="<span style="color:navy;">[mime type]</span>"&gt;  <span style="float: right"><a title="Documentation for this format" href="formats.html"><img src="help.png" alt="doco"/></a></span>
@@ -177,35 +162,25 @@ as it would be specified in HTTP:
  &lt;/Binary&gt;
 </pre>
 <p>
-Binary resources can also be embedded as <a href="references.html#contained">contained resources</a>.  
-If there is a desire to capture metadata about a binary object, an appropriate resource type must be used such as
-<a href="documentreference.html">DocumentReference</a> or <a href="media.html">Media</a>.
+Бинарные ресурсы также могут быть встроены как <a href="references.html#contained">вложенные ресурсы</a>.  
+Если есть желание сохранить метаданные о бинарном объекте, то необходимо использовать подходящий тип ресурса, например
+<a href="documentreference.html">DocumentReference</a> или <a href="media.html">Media</a>.
 </p>
 
 
 
 <a name="schema"> </a>
-<h3>XML Schema and Schematron</h3>
+<h3>XML-схема и Schematron</h3>
 <p>
-This specification provides schema definitions for all of the content models described here. 
-The base schema is called "<a href="fhir-base.xsd">fhir-base.xsd</a>" and defines all of the 
-datatypes and also the base infrastructure types described on this page. In addition, there 
-is a schema for each resource and a common schema <a href="fhir-all.xsd">fhir-all.xsd</a> 
-that includes all the resource schemas.  A customized atom schema <a href="fhir-atom.xsd">fhir-atom.xsd</a>
-is provided for validating <a href="#atom">bundles</a>.
+Данная спецификация предоставляет определения схемы для всех моделей содержимого, описанных здесь. Базовая схема называется "<a href="fhir-base.xsd">fhir-base.xsd</a>" и определяет все типы данных, а также базовые инфраструктурные типы, описанные на этой странице. В дополнение имеется схема для каждого ресурса и общая схема <a href="fhir-all.xsd">fhir-all.xsd</a>, которая включает все схемы ресурса. Модифицированная ATOM-схема <a href="fhir-atom.xsd">fhir-atom.xsd</a>
+приводится для проверки правильности <a href="#atom">комплектов</a>.
 </p>
 <p>
-In addition to the w3c schema files, this specification also provides Schematron files that
-enforce the various constraints defined for the datatypes and resources.  These are packaged
-as files for each resource as well as a combined fhir-atom.sch file
-that incorporates the rules for all resources.
+В дополнение к файлам w3c-схемы, данная спецификация также приводит Schematron-файлы, которые 
+вводят в действие различные ограничения, определенные для типов данных и ресурсов. Они укомплектованы в виде файлов для каждого ресурса вместе с совместным файлом fhir-atom.sch, содержащим в себе правила для всех ресурсов.
 </p>
 <p>
-XML that is exchanged SHALL be valid against the w3c schema and Schematron, though being 
-valid against the schema and Schematron is not sufficient to be a conformant instance: 
-this specification makes several rules that cannot be checked by either mechanism. 
-Exchanged content SHALL not specify the schema or even the schema instance namespace in 
-the resource itself. 
+Обмениваемый XML ДОЛЖЕН быть проверен на соответствие схеме w3c и Schematron, хотя соответствие схеме и Schematron не является достаточным, чтобы быть совместимым экземпляром: данная спецификация вводит несколько правил, которые не могут быть проверены никакими механизмами. Обмениваемое содержимое не должно задавать схему или даже пространство имен экземпляра схемы в самом ресурсе.
 </p>
 
 <!-- Todo: Relax NG, RDF, eCore -->
