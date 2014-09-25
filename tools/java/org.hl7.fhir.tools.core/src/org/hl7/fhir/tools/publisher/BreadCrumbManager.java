@@ -227,7 +227,7 @@ public class BreadCrumbManager {
   public String makelist(String name, String type, String prefix) {
     StringBuilder b = new StringBuilder();
     if (name.equals("index")) {
-      b.append("        <li><b>Home</b></li>\r\n");      
+      b.append("        <li><b>Главная</b></li>\r\n");      
     } else {
       b.append("        <li><a href=\""+prefix+"index.html\">"+translations.getMessage("HOME", "Home")+"</a></li>\r\n");
       name = name + ".html";
