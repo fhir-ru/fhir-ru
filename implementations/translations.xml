@@ -1499,6 +1499,7 @@ NOTE: while translations on Resources are possible they should be used for rende
     </item>
     <item id="HOME">
         <translation lang="en">Home</translation>
+		 <translation lang="ru">Главная</translation>
     </item>
     <item id="SERVER_HOME">
         <translation lang="en">Server Home</translation>
