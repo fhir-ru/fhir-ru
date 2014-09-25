@@ -501,7 +501,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="pl">Powrót do strony głównej</translation>
         <translation lang="es">Volver al inicio</translation>
         <translation lang="fr">Retour à l'accueil</translation>
-        <translation lang="ru">В начало</translation>
+        <translation lang="ru">На главную</translation>
     </item>
     <item id="MSG_BAD_FORMAT">
         <translation lang="en">Bad Syntax: "%s" must be a %s'</translation>
@@ -511,7 +511,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="pl">Błąd składni: "%s" powinno być %s'</translation>
         <translation lang="es">Sintaxis Incorrecta: "%s" debe de ser un %s'</translation>
         <translation lang="fr">Erreur de Syntaxe : "%s" doit être un %s</translation>
-        <translation lang="ru">Неверный синтакс: "%s" должен быть %s</translation>
+        <translation lang="ru">Неверный синтаксис: "%s" должен быть %s</translation>
     </item>
     <item id="MSG_BAD_SYNTAX">
         <translation lang="en">Bad Syntax in %s</translation>
@@ -521,7 +521,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="pl">Błąd składni w %s</translation>
         <translation lang="es">Sintaxis Incorrecta en %s</translation>
         <translation lang="fr">Erreur de Syntaxe dans %s</translation>
-        <translation lang="ru">Неверный синтакс: %s</translation>
+        <translation lang="ru">Неверный синтаксис: %s</translation>
     </item>
     <item id="MSG_CANT_PARSE_CONTENT">
         <translation lang="en">Unable to parse feed (entry content type = "%s")</translation>
@@ -550,7 +550,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="pl">Zawartością może być zasób, treść w formacie atom (atom feed) lub plik zip zasobów i treści w formacie atom (xml lub json)</translation>
         <translation lang="es">El contenido puede ser un recurso, una fuente web (feed) o una colección de recursos y feeds (xml o json)</translation>
         <translation lang="fr">Le contenu peut être une ressource, un flux atom, ou une archive zip d'un ensemble de ressources et de flux atom (xml ou json)</translation>
-        <translation lang="ru">Контент может быть ресурсом, веб-каналом Atom или zip архивом ресурсов или атомов (xml или json)</translation>
+        <translation lang="ru">Контент может быть ресурсом, веб-каналом Atom или zip-архивом ресурсов или атомов (xml или json)</translation>
     </item>
     <item id="MSG_CONTENT_PASTE">
         <translation lang="en">or just paste your xml or json here</translation>
@@ -1498,7 +1498,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="ru">Сервер FHIR RESTful - Загрузка для %s завершена</translation>
     </item>
     <item id="HOME">
-        <translation lang="en">Home</translation>
+        <translation lang="en">Главная</translation>
 		 <translation lang="ru">Главная</translation>
     </item>
     <item id="SERVER_HOME">
