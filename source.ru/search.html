@@ -12,46 +12,30 @@
 <div class="col-9">
 
 <a name="base"> </a>
-<h2>Search / Query</h2>
+<h2>Механизм поиска / запросов</h2>
 
 <p>
-One aspect that is fundamental to the way FHIR works is to search (or query).
-Search/Query operations search through an existing set of resources by a set 
-of search criteria supplied as parameters to the search. This page documents 
-the FHIR search framework, starting with the simple cases, and working through 
-to the full complexity. Implementations need only implement the amount of 
-complexity that they require.
+Один аспект, который является основополагающим в методе работы FHIR - это механизм поиска (или запросов). Операции поиска/запроса ищут в существующем наборе ресурсов в соответствии с критериями поиска, переданными в качестве параметров механизму поиска. На этой странице задокументирована система поиска FHIR, начиная с простых примеров и прорабатывая до самых сложных случаев. Реализациям требуется внедрить только ту степень сложности, которая им необходима.
 </p>
 <p>
-In the simplest case, a search is executed by performing a GET operation
-in the RESTful framework:
+В простейшем случае поиск выполняется совершением операции GET в RESTful-системе:
 </p>
 <pre>
  GET [base-url]/[resourcetype](?parameters)
 </pre>
 <p>
-For this RESTful search, the parameters are a series 
-of name=[value] pairs encoded in the URL or as an 
-application/x-www-form-urlencoded submission for a POST.  
-The server returns the results in the HTTP response as a bundle (in XML, an atom feed) 
-which includes the resources that are the results of the query. The server can also
-include additional resources in the result set, such as <a href="operationoutcome.html">OperationOutcome</a> 
-resources. Clients should ignore resources that don't have the expected type. 
-A HTTP status code of 403 signifies that the server refused to perform the query, 
-while some other 4xx or 5xx code signifies that some error occurred. 
+Для этого RESTful-поиска параметры представляют собой последовательность пар вида имя=[значение] (name=[value]), кодированных в URL [процентная кодировка] или в формате application/x-www-form-urlencoded для [запроса] POST. Сервер возвращает результаты в HTTP-ответе в виде комплекта (в XML-формате это Atom-фид), который включает в себя ресурсы, являющиеся результатами этого запроса. Сервер также может включить в набор результатов дополнительные ресурсы, например <a href="operationoutcome.html">OperationOutcome</a>. Клиентам следует игнорировать ресурсы, не соответствующие ожидаемому типу. Код HTTP-статуса 403 означает отказ сервера выполнять запрос, тогда как некоторые другие коды вида 4xx или 5xx сигнализируют о том, что произошла какая-то ошибка. 
 </p>
 <p>
-Search operations are executed in one of 3 defined contexts that control which set of resources are being searched:
+Операции поиска исполняются в одном из 3 заданных контекстов, определяющих, в каком наборе ресурсов будет осуществляться поиск:
 </p>
 <ul>
- <li>A specified resource type</li>
- <li>A specified <a href="extras.html#compartments">compartment</a>, perhaps with a specified resource type in that compartment</li>
- <li>All resources</li>
+ <li>Определенный тип ресурса</li>
+ <li>Определенный <a href="extras.html#compartments">модуль</a> с возможным указанием типа ресурса в этом модуле</li>
+ <li>Все ресурсы</li>
 </ul>
 <p>
-Search/Query operations can also be initiated by other more complex and flexible
-methods described below, which change both the way the search/query is initiated, and 
-the results that are returned. 
+Операции поиска/запроса также могут инициироваться другими, более сложными и гибкими методами, описанными ниже, которые модифицируют и способ запуска поиска/запроса, и возвращаемые результаты. 
 </p>
 <a name="standard"> </a>
 <h2>Standard Parameters</h2>
