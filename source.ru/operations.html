@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Extended Operations on the RESTful API%]
+[%settitle Расширенные операции RESTful API%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -12,146 +12,117 @@
 <div class="col-9">
 
 <a name="base"> </a>
-<h2>Extended Operations on the RESTful API</h2>
+<h2>Расширенные операции RESTful API</h2>
 
 <p>
-The <a href="http.html">RESTful API</a> defines a set of common interactions performed on 
-a repository of typed resources (read, update, search, etc). These interactions follow 
-the RESTful paradigm of managing state by Create/Read/Update/Delete actions on a set of identified 
-resources. While this approach solves many use cases, there is some specific 
-functionality that can be met more efficiently using an RPC-like paradigm,
-where named operations are performed with inputs and outputs. This specification 
-describes a light operation framework that seamlessly extends the RESTful API. 
+<a href="http.html">RESTful API</a> задает набор простых взаимодействий, совершаемых над репозиторием типизированных ресурсов (read, update, search и проч.). Эти взаимодействия следуют парадигме RESTful об управлении состоянием с помощью действий Create/Read/Update/Delete над набором идентифицированных ресурсов. Хотя этот подход покрывает большинство случаев использования, имеется некоторая специфичная функциональность, которую можно ююю более эффективно с помощью RPC-подобной парадигмы, где именованные операции выполняются над входными и выходными данными. Данная спецификация описывает простую структуру операций, которая легко расширяет RESTful API.
 </p>
 <p>
-Operations have the following general properties:
+Операции обладают следующими общими свойствами:
 </p>
 <ul>
- <li>Each operation has a name</li>
- <li>Each operation has a list of 'in' and 'out' parameters</li>
- <li>The parameters are either resources, data types or search parameters</li>
- <li>The operations are subject to the same security arrangements as the RESTful API</li>
- <li>The URIs for the operation end points are based on the existing RESTful API address scheme</li>
- <li>The operations may make use of the existing repository of resources in their definitions</li>
+ <li>У каждой операции имеется имя</li>
+ <li>У каждой операции имеется перечень входных и выходных параметров</li>
+ <li>Этими параметрами являются либо ресурсы, либо типы данных, либо параметры поиска</li>
+ <li>Операции подлежат тем же мерам безопасности, что и RESTful API</li>
+ <li>URI точек взаимодействия операций основываются на существующей схеме адресов RESTful API</li>
+ <li>Операции могут воспользоваться существующим репозиторием ресурсов в своих определениях</li>
 </ul>
 
 <p>
-Note: the definition of these services does not prevent the use of other 
-kinds of services not dependent on or integrated with the RESTful API.
+Примечание: определение этих сервисов не исключает использование других видов сервисов, не зависящих от или интегрированных с RESTful API.
 </p>
 
 <a name="defined"> </a>
-<h3>FHIR defined Operations</h3>
+<h3>Операции, определенные FHIR</h3>
 <p>
-This specification defines several operations:
+Данная спецификация дает определение нескольких операций:
 </p>
 <%operationslist%>
 <p>
-Implementations are able to define their own operations in addition to
-those defined here. Name clashes between operations defined 
-by different implementers can be resolved by use of the 
-<a href="conformance.html">conformance statement</a>.
+Реализации имеют возможность определять свои собственные операции в дополнение к тем, что заданы здесь. Конфликт имен между операциями, определенными различными исполнителями, может решаться использованием 
+<a href="conformance.html">заявления о соответствии</a>.
 </p>
 
 <a name="defining"> </a>
-<h3>Defining an Operation</h3>
+<h3>Определение операции</h3>
 
 <p>
-Each Operation is defined by:
+Любая операция задается следующими данными:
 </p>
 <ul>
- <li>A context for the operation - system, resource type, or resource instance</li>
- <li>A name for the operation</li>
- <li>A list of parameters, with their definitions</li>
+ <li>Контекст операции - система, тип ресурса или экземпляр ресурса</li>
+ <li>Имя операции</li>
+ <li>Перечень параметров с их определениями</li>
 </ul>
 
 <p>
-For each parameter, the following information is needed:
+Для каждого параметра необходима следующая информация:
 </p>
 <ul>
- <li>Name - the name of the operation. For implementer convenience, the name should be a valid token (see below)</li>
- <li>Use - In | Out | Both</li>
- <li>Type - a data type, a search parameter type, a resource type, or "Document". Out parameters must have a type which is a resource</li>
- <li>Documentation - describes its use</li>
+ <li>Имя - имя операции. Для удобства разработчиков, имя должно быть допустимым токеном (см. ниже)</li>
+ <li>Использование - In | Out | Both</li>
+ <li>Тип - тип данных, тип параметра поиска, тип ресурса или "Document". Выходные параметры должны иметь тип ресурса</li>
+ <li>Документация - описание его использования</li>
 </ul>
 
 <p>
-Note that search parameter types are allowed for use where the parameter is used as a search parameter
-i.e. to link between the context of operations, and a set of existing resources that the operation refers
-to, where as data types and resources are used to provide information directly to the operation. The
-definition of a parameter should make it's use clear.
+Отметьте, что типы параметров поиска разрешается использовать, если параметр используется в качестве параметра поиска, т. е. чтобы связать между собой контекст операций и набор существующих ресурсов, на которые направлена операция, где для предоставления информации непосредственно операции в равной степени используются типы данных и ресурсы. Определение параметра должно делать его использование понятным.
 </p>
 
 <a name="executing"> </a>
 
-<h3>Executing an Operation</h3>
+<h3>Исполнение операции</h3>
 
 <p>
-The URL for an operation end-point depends on its context:
+URL точки взаимодействия операции зависит от ее контекста:
 </p>
 <ul>
- <li>system: the url is [base]/$[name]</li>
- <li>resource type: the url is [base]/[type]/$[name]</li>
- <li>resource instance: the url is [base]/[type]/[id]/$[name]</li>
+ <li>система: URL - [base]/$[name]</li>
+ <li>тип ресурса: URL - [base]/[type]/$[name]</li>
+ <li>экземпляр ресурса: URL - [base]/[type]/[id]/$[name]</li>
 </ul>
 
 <a name="request"> </a>
-<h4>Operation Request</h4>
+<h4>Запрос на операцию</h4>
 
 <p>
-In the general case, an operation is invoked by performing an HTTP POST to the operation end-point.
-The content of the body is a <a href="http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.2">multipart/form-data</a> that 
-contains the parameters for the operation. Where the parameter type is a data type or resources, the content
-may be represented as either json or xml; for a datatype, the root name of the object is the 
-name of the parameter. 
+В общем случае операция вызывается выполнением HTTP POST-запроса к точке взаимодействия операции. Содержимым тела [запроса] является <a href="http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.2">multipart/form-data</a>, которые содержат параметры операции. Там, где типом параметра является тип данных или ресурсы, содержимое может быть представлено либо в JSON, либо в XML; для типа данных корневым именем объекта является имя параметра.
 </p>
 <p>
-Some notes about this format:
+Некоторые пояснения к этому формату:
 </p>
 <ul>
- <li>For resources and data types, a Content-Type header SHOULD be provided, but may not be if the content is submitted by an HTML form</li>
- <li>For an example of an operation, see <a href="op-example-request.html">the value set expansion request example</a></li>
+ <li>Для ресурсов и типов данных ДОЛЖЕН быть указан заголовок Content-Type, однако он может не указываться, если содержимое передается в HTML-форме</li>
+ <li>В качестве примера операции см. <a href="op-example-request.html">пример запроса на расширение набора значений</a></li>
 </ul>
 
 <p>
-If there is only one complex parameter (e.g. a parameter where the representation is XML or JSON, not a search parameter),
-then the operation can be performed by an HTTP POST with the complex parameter as the body of the post, and the 
-other parameters appended to the URL in the search portion of the URL (e.g. after the "?").
+Если имеется только один комплексный параметр (например параметр, где представлением является XML или JSON, а не параметр поиска), тогда операция может быть совершена HTTP POST-запросом с комплексным параметром в качестве тела сообщения и другими параметрами, добавленными к URL в поисковой части URL (например после символа "?").
 </p>
 <p>
-If there are no complex parameters to the operation, the operation may be invoked by performing an HTTP GET
-operation where all the parameters are appended to the URL in the search portion of the URL (e.g. after the "?").
+Если у операции нет комплексных параметров, операция может быть вызвана выполнением операции HTTP GET, где все параметры добавляются к URL в поисковой части URL (например после символа "?").
 </p>
 
 
 <a name="response"> </a>
 
-<h4>Operation Response</h4>
+<h4>Ответ на операцию</h4>
 
 <p>
-If the operation succeeds, the HTTP Status code is 200 OK. An
-HTTP status code if 4xx or 5xx indicates an error. User agents should 
-note that servers may issue redirects etc to authenticate the client 
-in response to an operation request.
+Если операция выполняется успешно, HTTP-статус возвращает код 200 ОК. Код HTTP-статуса вида 4xx или 5xx говорит об ошибке. Пользовательским агентам следует отметить, что серверы могут переадресовывать клиента для аутентификации в ответ на запрос операции.
 </p>
 
 <p>
-The result of the operation is a <a href="extras.html#bundle">bundle</a> containing 
-zero or more resources. Note that the same arrangement as the RESTful interface applies
-in regard to <a href="http.html#mime-type">content types</a>.
+Результатом операции является <a href="extras.html#bundle">комплект</a> , содержащий ноль или больше ресурсов. Обратите внимание, что  в отношении <a href="http.html#mime-type">content types</a> применяется то же самое соглашение, что и к RESTful-интерфейсу. 
 </p>
 <p>
-Identifying out parameters by name....
+Идентификация параметров по имени....
 
 </p>
 <p>
-The resources that are returned by the operation may be 
-retained and made available in the resource repository 
-on the operation server. In that case, the server will 
-provide the identity of the resource in the bundle ientry identifiers. When
-resources that are not persisted are returned in an atom feed,
-they should be assigned a cid: identifier that will never 
-be re-used.
+Ресурсы, возвращаемые в результате операции, могут быть сохранены и доступны в репозитории ресурсов на 
+сервере операции. В этом случае сервер будет обеспечивать идентичность ресурса в идентификаторах записи комплекта. Когда ресурсы, которые не сохраняются, возвращаются в Atom-фиде, им должен быть присвоен идентификатор cid, который не используется повторно.
 </p>
 
 </div>
