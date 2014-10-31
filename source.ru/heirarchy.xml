@@ -86,7 +86,7 @@ todo: compartments
     <page title="Распространенные случаи использования" filename="usecases.html"/>
     <page title="Список профилей" filename="profilelist.html"/>
     <page title="Безопасность" filename="security.html">
-      <page title="Метки безопасности" filename="security-labels.html"/>
+      <page title="Метки уровня безопасности" filename="security-labels.html"/>
     </page>
     <page title="Комплексные примеры" filename="integrated-examples.html"/>
     <page title="Инструкции по реализации" filename="iglist.html">
