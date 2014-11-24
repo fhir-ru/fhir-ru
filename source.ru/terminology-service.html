@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+[%settitle Terminology Service%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+<div class="col-9">
+
+<%txheader service%>
+
+<h2>Terminology Service</h2>
+
+<p>
+This specification includes support for the provision of a consumer level terminology service - that is, a 
+service that lets healthcare applications make use of codes and value sets without having to become 
+experts in the fine details of the value set resource, and the underlying code systems. 
+A server that supports all the functionality described here can be described as a "FHIR Terminology Service", 
+and SHALL conform to this conformance statement: [link to be provided].
+</p>
+
+<h3>Notes from Michael Lawley's talk at HL7 Australia - issues to be addressed</h3>
+<ul>
+  <li> value sets identified by URIs or URLs?</li>
+  <li> mention difference between namespace in snomed and this description?</li>
+  <li> make rules about repeating codes more obvious (Michael didn't see them)</li>
+  <li> make it more obvious when you'd use define. </li>
+  <li> also make it more obvious how to publish the list of supported code systems</li>
+  <li> improve the definitions of mapping equivalence, and change "inexact" map to "overlap"</li>
+  <li> explain date of expansion better</li>
+  <li> Do we need paging on expansion if the value set is too long?</li>
+  <li> make explanation of what are display names clear on snomed page</li>
+  <li> clarifications on subsumption testing</li>
+  <li> get better snomed CT value set uri from Michael </li>
+  <li> allow conceptmap to be specified for a translation? </li>
+  <li> talk to Michael L about closure tables</li>
+</ul>
+
+<h3>Security</h3>
+<p>
+For the operational services, OAuth is generally not an appropriate form of security 
+for an infrastructural service like a terminology server. A terminology server may 
+choose not to authenticate the clients in any fashion, but can do so in order to limit 
+or account for usage.  Since terminology servers do not directly handle patient 
+information, it is not necessary to protect the communications with SSL, but hackers 
+may be able to infer information about patients to observing the kind of codes that 
+are retrieved, so encryption, possibly with client verification of credentials, is 
+still recommended. 
+For a value set maintenance server that allows terminologies to be edited, 
+some form of <a href="security.html">authorization and/or authentication would be appropriate</a>.
+</p>
+
+<h3>Terminology Maintenance</h3>
+<p>
+The FHIR specification is based two key concepts:
+</p>
+<ul>
+<li> <b>code system</b> - defines a set of codes with meanings (also known as enumeration, terminology, classification, and/or ontology)</li>
+<li> <b>value set</b> - selects a set of codes from those defined by one or more code systems</li>
+</ul>
+<p>Note: Proper differentiation between a code system and a value set is important. For instance, it's not unusual 
+to see a mixed list of codes containing a set of LOINC codes with some additional in-house codes, with no explicit 
+differentiation between them; only the fact that code happens to look like a LOINC code betrays it's origin. 
+In FHIR, on the other hand, each code system that defines codes has a URL, and the codes they define are a pair 
+("Code Pair") - a name with a namespace. So in this example, there is two code systems: <a href="loinc.html">LOINC</a>
+and a local one (e.g. http://example.com/codesystems/additional-test-codes). 
+Then there's a value set which says that it includes some codes from each of those two namespaces - a set of 
+Code Pairs. The value set itself gets a URL as an identifier (e.g. http://example.com/fhir/ValueSet/test-codes) 
+- this identifies the set of Code Pairs, but is never used as the namespace in a actual code pair. 
+In FHIR, Code Pairs are always represented as "code" and "system", except for the simple type "code" 
+data type where the namespace (e.g. the system element/property) is fixed in the schema and not 
+represented explicitly. The URL in a system element is always a reference to a code system, 
+not to the value set. 
+</p>
+<p>Users wishing for more information about the underlying principles may wish to consult the Core Principles (link)
+</p>
+
+<p>
+The basic administrative unit that underlies the terminology service is the <a href="valueset.html">ValueSet</a> and <a href="conceptmap.html">ConceptMap</a> resources.
+A terminology service is a simply a set of functions built on the definitions provided by a set of value set and concept map resources.
+</p>
+<p>
+In addition to value sets, the other resource that contributes to the terminology service is a <a href="conceptmap.html">concept map</a>. 
+The server can use the concept maps to augment the information provided through the value sets and the inherently known terminologies. 
+</p>
+
+<h4>External Code Systems</h4>
+<p>
+In order to be used with a value set, a code must be defined somewhere. They can be defined as part of 
+an <a href="valueset.html#define">inline code system definition</a>, or they can be defined elsewhere, 
+and then used in a value set by quoting the correct namespace. The FHIR specification defines a <a href="terminology-systems.html">set of 
+namespaces</a> for commonly encountered code systems, and defines how some work with FHIR (e.g. 
+<a href="snomed.html">SNOMED-CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorml.html">RxNorm</a>). 
+These code systems are often large, and have many internally defined properties that are part of their 
+formal definitions. Inline code systems are not appropriate for these code systems; FHIR does not provide 
+an formal representation at all. Instead, it is assumed that these are externally known to the 
+terminology server.
+</p>
+<p>
+Most useful terminology servers will make one or more of these external code systems available for use 
+within the value sets that they manage. The list of additional terminologies that a terminology supports 
+beyond those defined in it's value sets is published to clients by (still to figure out how this works). 
+</p>
+
+<h4>Implementation Note</h4>
+<p>When a terminology server exposes an external code system, it makes a set of services available 
+internally that serve the operational interfaces below. The internal server depends on the following 
+logical information for a terminology:
+</p>
+<ul>
+  <li> it's URL (namespace, and how versioning works)</li>
+  <li> what codes are valid  </li>
+  <li> what properties can be used to select codes </li>
+  <li> what implicit value sets exist </li>
+</ul>
+<p>
+The FHIR specification itself defines these things for common terminologies (including 
+<a href="snomed.html">SNOMED-CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorml.html">RxNorm</a>). 
+</p>
+<p>
+Note: A terminology service may choose to expose additional external code system specific 
+related functionality such as exploration, or structured search, but these services are 
+outside the scope of the FHIR terminology service.
+</p>
+
+<h4>Terminology Maintenance</h4>
+<p>
+The terminology service uses the value set resources defined on the system - both 
+the implicit ones associated with the external code systems and those explicitly 
+available at the /ValueSet endpoint - to serve the operational interface defined below. 
+As value sets are created, updated or deleted, the outcomes of the operational services 
+change. A terminology server should validate incoming resources, and ensure integrity 
+of the terminology services. Typically, servers would provide a test and production 
+environment, but there is no explicit notion of this in the interface itself. 
+</p>
+
+
+<h3>Value Set Expansion</h3>
+<p>
+A value set describes a set of rules for what codes or concepts are considered to be in the value set. 
+These rules might be simple (e.g. a direct list of codes from a specified version of a code system), or 
+they might be quite complex (e.g. all codes with a particular property from an unspecified version of 
+a code system). 
+</p>
+<p>
+A FHIR enabled application can simply ask the server to figure out all the details, and give it a list 
+of the current codes in the value set. This is known as "expanding" the valueset, which is <a href="valueset-operations.html#expand">a formally
+defined operation</a>. As a summary, the client passes the server the following information:
+</p>
+<ul> 
+ <li> the value set (either by it's URL on the RESTful interface, by it's logical identifier <a href="valueset-definition.html#ValueSet.url">(ValueSet.url)</a>, or directly as a parameter to the call)</li>
+ <li> A text filter to use to restrict the codes that are returned (e.g. user input text)</li>
+ <li> (Optionally) A date at which the expansion should be evaluated (usually, this is the current date/time, but there are circumstances where that is not appropriate)</li>
+</ul>
+
+<p>
+The server returns a value set that contains the current list of codes (or an 
+<a href="operationoutcome.html">OperationOutcome</a> with an error if the expansion fails). 
+Note that some value sets expand to many thousands of codes, or even an infinite number, 
+and for these, the server SHOULD return an <a href="issue-type.html#too-costly">error code 
+<i>too-costly</i></a>. In these cases the client can try again with a more specific text filter
+to reduce the number of codes returned.
+</p>
+
+<p>Some example uses for the expansion operation:
+</p>
+<ul>
+ <li> get a list of codes to display in a User interface (e.g. a drop down interface)</li>
+ <li> a variation on this is to offer the user a text box to type in. As they type, call the expand operation to provide the user with a list of matching codes/concepts (like a browser search) </li> 
+ <li> fetch a list of codes to use when generating software code</li>
+ <li> get a list of codes so that software can check whether a code is valid or not in a particular context</li>
+</ul>
+
+
+<h3>Value Set Validation</h3>
+<p>
+As described above, one of the ways to determine whether a code is in a value set is to expand 
+the value set, and see if the code is in the expansion. However this is not an efficient way to 
+test whether a code is valid, and for some value sets (e.g. with infinite number of members), 
+it cannot work. Instead, a FHIR terminology server provides a "validate" operation. 
+The client passes the server the following information:
+</p>
+<ul>
+ <li> the value set (either by it's URL on the RESTful interface, by it's logical identifier <a href="valueset-definition.html#ValueSet.url">(ValueSet.url)</a>, or directly as a parameter to the call)</li>
+ <li> the code value (either a code+system, a Coding data type, or a CodeableConcept</li>
+ <li> A date at which the expansion should be evaluated (usually, this is the current date/time, but there are circumstances where that is not appropriate)</li>
+</ul>
+<p>
+The server returns a true/false indicating whether the code/concept is valid, and a list 
+of errors and warnings associated with it. The server should also return all the display 
+names that are associated with the code as part of this operation.
+</p>
+<p>
+Note that if the server is passed a CodeableConcept, the server is able to check 
+whether any of the codes are valid against the value set, and also check whether 
+multiple codings are allowed and/or consistent with each other. 
+</p>
+
+<h3>Subsumption testing</h3>
+<p>
+The Expand and Validate operations can be used to perform subsumption testing. To test whether 
+<i>code A</i> subsumes <i>code B</i>, perform a validate specifying a value set built of all the 
+codes that are subsumed by <i>code A</i>, and test whether <i>code B</i> is subsumed by it. 
+Note that a server is allowed (and should, but it not required to) consider concept maps when 
+doing subsumption testing. E.g. if A is a LOINC code, and it has a precise mapping to a 
+SNOMED CT code that subsumes B, then the server can indicate that this is valid. 
+</p>
+<p>
+In order to make it convenient to perform this subsumption testing, code systems that define
+subsumption heirarchies should define simple URLs to express a value set that includes all the 
+codes subsumed by a code. For instance, for SNOMED CT, the 
+URL http://snomed.info/sct?fhir_vs=isa/[sctid] means all the codes subsumed by [sctid]. 
+</p>
+
+<h3>Translations</h3>
+<p>
+A client can ask a server to translate a concept from one value set to another. Typically, this 
+is used to translate between code systems (e.g. from LOINC to SNOMED CT, or from a CDA code to 
+a v2 code). The client calls the translate operation and passes 3 parameters:
+</p>
+<ul>
+  <li> a code+system, Coding, or CodeableConcept</li>
+  <li> the value set for the context of the source </li>
+  <li> the value set for the destination</li>
+</ul>
+<p>
+If there is no particular context, the appropriate value sets would be the value sets for the 
+entire coding system at question (e.g. from http://snomed.info/sct to http://loinc.org/vs).
+</p>
+
+<h3>Maintaining a Closure Table</h3>
+
+<p>
+The 3 operations Expand, Validate, and Translate account for most operational requirements 
+associated with terminology use. However there is one difficult but important use case that 
+they do not address, which is integrating a terminology logic into application search. 
+</p>
+<p>
+A typical example of this is a user that wants to find any observations for male patients over 
+the age of 50 who attended a particular clinic within a particular 2 week period, with a 
+diagnosis of gout, and who had an elevated serum creatinine. 
+</p>
+<p>
+In this case, both "diagnosis of gout" and "serum creatinine" involve subsumption queries 
+(e.g. against SNOMED CT and LOINC respectively). This search has to be executed by some 
+logical processing engine that knows how to find this data in a given persistence store. 
+Often, this is some kind of SQL query, though many other technological choices are available. 
+However this is done, the challenge with an operation like this is to integrate the 
+terminological knowledge with search execution. Using the expand operation above, the 
+system executing the search could generate expansions, and then search for these expansions. 
+This has a couple of problems:
+</p>
+<ul>
+  <li> the list of subsumed codes could be very long, and the search operation becomes correspondingly inefficient</li>
+  <li> the expansion of the subsumption might not be closed, and so the search operation can't be correct </li>
+</ul>
+<p>
+An alternative approach is to generate a subsumption <a href="http://karwin.blogspot.com.au/2010/03/rendering-trees-with-closure-tables.html">closure table</a>, 
+which lists all the possible relationships, and allows for rapid execution of these kind of queries. However this has other problems:
+</p>
+<ul>
+  <li> the subsumption table can be very large (&gt;500000 records for SNOMED CT), even though very few of the codes are used</li>
+  <li> subsumption tables are generally built up front, and don't deal with new codes very well</li>
+  <li> they still don't offer a solution for non-closed expansions</li>
+</ul>
+<p>
+This is the reason why most systems don't support post-coordination or other forms 
+of coded expressions. 
+</p>
+<p>
+In FHIR, this problem is solved by building a closure table on the fly, as new codes are seen. 
+This technique leaves the FHIR terminology server responsible for the terminological reasoning, 
+and the client responsible for the closure table maintenance. To the client, it doesn't matter 
+whether the concept is post-coordinated or not. Here's a description of how the process works:
+</p>
+<ol>
+ <li> The client defines a name associated with a particular context in which it wishes to maintain a subsumption based closure table.</li>
+ <li> The client registers this name with the FHIR Terminology server using the $closure operation (described below), with only one parameter, the name of the context</li>
+ <li> any time the client system encounters a new Coding that isn't entered in the closure table, it calls the $closure operation with the context name, and the Coding value it has encountered</li>
+ <li> the server returns a ConceptMap resource with a list of new entries (code&nbsp;: system -&gt; code&nbsp;: system) that the client should add to it's closure table 
+   <ul>
+    <li> the server can indicate that entries should be removed from the table by providing a (code&nbsp;: system -&gt; code&nbsp;: system) with equivalence "unmatched" (though it's not known why that would be needed)</li>
+   </ul>
+ </li>
+ <li> The client makes these entries into it's closure table </li>
+ <li> to facilitate the initialization process, a server can call $closure with multiple Coding values</li>
+</ol>
+<p>
+The $closure operation takes 2 parameters:
+</p>
+<ul>
+ <li> Closure table context name</li>
+ <li> Coding to enter into the table (0 or more - 0 codings is a request to initialise the table)</li>
+</ul>
+<p>
+The operation returns a concept map which has a list of mappings that represent new entries to make in the closure table. 
+</p>
+<p>
+The closure table can be resynchronized by passing an additional version parameter, which is a value taken from the 
+version in one of the delta responses. This is a request to replay all the mapping changes since that delta was sent.
+</p>
+
+
+<h3> Functional Operations </h3>
+
+<p>
+In order to support terminology operations in FHIR a minimal set of terminology operations would be necessary.  These operations are a sub set of the available terminology service operations defined in the [http://www.omg.org/spec/CTS2/1.0/ Common Terminology Services - Release 2 (CTS2) specification] and can be categorized as:
+</p>
+<ul>
+ <li> Administrative Operations</li>
+ <li> Search/Query Operations</li>
+ <li> Authoring/Maintenance Operations</li>
+</ul>
+<p>
+Functional operations within these categories support the access and management of terminology objects such as Code Systems, Concepts, Value Sets and Concept Mappings. The functional operations necessary to support a FHIR terminology service are outlined here.  
+</p>
+
+<h4> Administrative Operations </h4>
+<ul>
+ <li> Be able to load a standard or local code system</li>
+</ul>
+
+<h4> Search/Query Operations </h4>
+
+<p> Concepts </p>
+<ul>
+ <li> Retrieve the concept details (display name, qualifiers, associations, etc.) for a given code/code system</li>
+ <li> Return possible concept matches  based on search criteria </li>
+ <li> Validate whether a code is valid within a given code system (content)</li>
+ <li> Retrieve a list of codes (for example, to populate a user interface)</li>
+ <li> Return the decedents of a given concept</li>
+</ul>
+
+<p> Code System </p>
+<ul>
+ <li> Retrieve the metadata for a code system</li>
+</ul>
+
+<p> Value Set </p>
+<ul>
+ <li> Retrieve the metadata for a value set</li>
+ <li> Return a value set based on search criteria</li>
+ <li> Determine if a code is valid in a value set</li>
+ <li> Generate the Value set Expansion from the Value Set Definition.</li>
+</ul>
+
+<p> Mapping </p>
+<ul>
+ <li> Retrieve the metadata for map set</li>
+ <li> Retrieve a translation (mapping) of concept(s) from a given source code system to target concept(s) from a target code system</li>
+</ul>
+
+<h4> Authoring/Maintenance Operations </h4>
+<p>Concepts</p>
+<ul>
+ <li> Maintain a closure table</li>
+</ul>
+
+<p> Value Set </p>
+<ul>
+ <li> Create/editing a value set</li>
+</ul>
+
+<p> Mapping </p>
+<ul>
+ <li> Translate (map) from a source code system to a target code system</li>
+</ul>
+
+
+</div>
+
+[%file newfooter%]
+    
+    
+</body>
+</html>
