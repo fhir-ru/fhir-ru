@@ -1,7 +1,7 @@
 package org.hl7.fhir.definitions.model;
 
 /*
- Copyright (c) 2011-2014, HL7, Inc
+ Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -37,7 +37,7 @@ import java.util.List;
  * Syntax for type declarations
  * 
  * typeSpec = '@' elementreference | '[param]' | 'xhtml' | 'xml:ID' | 'xml:lang'
- * 'Interval(' orderedType ')' | 'Resource(' resourceParams ')' | Resource | type
+ * 'Interval(' orderedType ')' | 'Reference(' resourceParams ')' | Resource | type
  * ('|' type)* | '*'
  * 
  * resourceParams = resourceType ('|' resourceType)* | Any 
@@ -47,7 +47,9 @@ import java.util.List;
 
 public class TypeRef {
 	private String name;
+	private String profile;
 	private List<String> params = new ArrayList<String>();
+	private List<String> aggregations = new ArrayList<String>();
 
 	public TypeRef()
 	{
@@ -74,6 +76,14 @@ public class TypeRef {
 		return params.size() > 0;
 	}
 
+	public List<String> getAggregations() {
+		return aggregations;
+	}
+
+	public boolean hasAggregations() {
+		return aggregations.size() > 0;
+	}
+
 	
 	private String resolvedTypeName;
 	
@@ -87,12 +97,17 @@ public class TypeRef {
 		resolvedTypeName = value;
 	}
 	
-	public boolean isUnboundGenericParam() {
-		return name.equals("[param]");
-	}
+	
+	public String getProfile() {
+    return profile;
+  }
 
-	public boolean isIdRef() {
-		return name.equalsIgnoreCase("idref");
+  public void setProfile(String profile) {
+    this.profile = profile;
+  }
+
+  public boolean isUnboundGenericParam() {
+		return name.equals("[param]");
 	}
 
 	public boolean isXhtml() {
@@ -110,14 +125,14 @@ public class TypeRef {
 	
 	public boolean isResourceReference()
 	{
-		// When the type is Resource(X), this is a resource reference
-		return name.equals("Resource") && !params.isEmpty();
+		// When the type is Reference(X), this is a resource reference
+		return name.equals("Reference") && !params.isEmpty();
 	}
 	
-	public boolean isContainedResource()
+	public boolean isContainedReference()
 	{
 		// When the type is Resource, it's a contained resource
-		return name.equals("Resource") && params.isEmpty();
+		return name.equals("Reference") && params.isEmpty();
 	}
 	
 
@@ -131,7 +146,7 @@ public class TypeRef {
 		return params.size() > 0;
 	}
 	
-	public boolean isAnyResource()
+	public boolean isAnyReference()
 	{
 		return  isResourceReference() && 
 				hasParams() && 
@@ -148,10 +163,10 @@ public class TypeRef {
 	public final static String ANY_RESOURCE_GENERIC_ARG = "Any";
 	
 	public boolean isSpecialType() {
-		return isIdRef() || isXhtml() || isUnboundGenericParam() || isXmlLang() 
-				|| isWildcardType() || name.equals("Type") || name.equals("Narrative")
+		return isXhtml() || isUnboundGenericParam() || isXmlLang() 
+				|| isWildcardType() || name.equals("Type") || name.equals("Narrative") || name.equals("Resource") || name.equals("ResourceBase")
 				|| name.equals("SharedDefinition") || isResourceReference() || name.equals("Structure") ||
-				isContainedResource() || isExtension();
+				isContainedReference() || isExtension();
 	}
 
   public String summary() {

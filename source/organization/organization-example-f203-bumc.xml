@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://hl7.org/fhir ../../schema/organization.xsd">
+  <id value="f203"/>
    <identifier>
       <!--Identifier for the BMC-->
       <use value="official"/>
@@ -31,7 +32,7 @@
     <use value="work"/>
     <line value="apenrots 230"/>    
     <city value="Blijdorp"/>
-    <zip value="3056BE"/>
+    <postalCode value="3056BE"/>
     <country value="NLD"/><!--ISO 3166 3 letter code-->
  </address>
 <!--   <accreditation>

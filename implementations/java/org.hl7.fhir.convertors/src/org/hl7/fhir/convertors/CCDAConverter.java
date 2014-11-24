@@ -2,7 +2,7 @@ package org.hl7.fhir.convertors;
 
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -31,62 +31,58 @@ package org.hl7.fhir.convertors;
 */
 
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.model.AdverseReaction;
-import org.hl7.fhir.instance.model.AdverseReaction.AdverseReactionSymptomComponent;
-import org.hl7.fhir.instance.model.AdverseReaction.ReactionSeverity;
-import org.hl7.fhir.instance.model.AllergyIntolerance.Criticality;
-import org.hl7.fhir.instance.model.AllergyIntolerance.Sensitivitystatus;
-import org.hl7.fhir.instance.model.AllergyIntolerance.Sensitivitytype;
-import org.hl7.fhir.instance.model.AtomCategory;
-import org.hl7.fhir.instance.model.AtomEntry;
-import org.hl7.fhir.instance.model.AtomFeed;
+import org.hl7.fhir.instance.model.AllergyIntolerance;
+import org.hl7.fhir.instance.model.AllergyIntolerance.AllergyIntoleranceEventComponent;
+import org.hl7.fhir.instance.model.AllergyIntolerance.AllergyIntoleranceCriticality;
+import org.hl7.fhir.instance.model.AllergyIntolerance.ReactionEventSeverity;
+import org.hl7.fhir.instance.model.AllergyIntolerance.AllergyIntoleranceStatus;
+import org.hl7.fhir.instance.model.AllergyIntolerance.AllergyIntoleranceType;
+import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Comparison;
 import org.hl7.fhir.instance.model.Composition;
+import org.hl7.fhir.instance.model.Composition.CompositionAttestationMode;
+import org.hl7.fhir.instance.model.Composition.CompositionAttesterComponent;
+import org.hl7.fhir.instance.model.Composition.SectionComponent;
+import org.hl7.fhir.instance.model.ContactPoint;
+import org.hl7.fhir.instance.model.DateAndTime;
+import org.hl7.fhir.instance.model.Device;
+import org.hl7.fhir.instance.model.DomainResource;
+import org.hl7.fhir.instance.model.Encounter;
 import org.hl7.fhir.instance.model.Extension;
+import org.hl7.fhir.instance.model.Factory;
+import org.hl7.fhir.instance.model.Identifier;
+import org.hl7.fhir.instance.model.List_;
+import org.hl7.fhir.instance.model.List_.ListEntryComponent;
+import org.hl7.fhir.instance.model.Location;
+import org.hl7.fhir.instance.model.Narrative;
+import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Observation;
 import org.hl7.fhir.instance.model.Observation.ObservationRelatedComponent;
 import org.hl7.fhir.instance.model.Observation.ObservationRelationshiptypes;
 import org.hl7.fhir.instance.model.Observation.ObservationReliability;
 import org.hl7.fhir.instance.model.Observation.ObservationStatus;
-import org.hl7.fhir.instance.model.Period;
-import org.hl7.fhir.instance.model.Profile;
-import org.hl7.fhir.instance.model.Composition.CompositionAttestationMode;
-import org.hl7.fhir.instance.model.Composition.CompositionAttesterComponent;
-import org.hl7.fhir.instance.model.Composition.SectionComponent;
-import org.hl7.fhir.instance.model.AllergyIntolerance;
-import org.hl7.fhir.instance.model.Contact;
-import org.hl7.fhir.instance.model.Device;
-import org.hl7.fhir.instance.model.Factory;
-import org.hl7.fhir.instance.model.Identifier;
-import org.hl7.fhir.instance.model.List_;
-import org.hl7.fhir.instance.model.List_.ListEntryComponent;
-import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
-import org.hl7.fhir.instance.model.DateAndTime;
-import org.hl7.fhir.instance.model.Location;
-import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Organization;
 import org.hl7.fhir.instance.model.Patient;
+import org.hl7.fhir.instance.model.Period;
 import org.hl7.fhir.instance.model.Practitioner;
 import org.hl7.fhir.instance.model.Procedure;
 import org.hl7.fhir.instance.model.Procedure.ProcedurePerformerComponent;
+import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.instance.model.Resource.ResourceMetaComponent;
 import org.hl7.fhir.instance.model.ResourceFactory;
-import org.hl7.fhir.instance.model.ResourceReference;
-import org.hl7.fhir.instance.model.ResourceType;
 import org.hl7.fhir.instance.model.Substance;
-import org.hl7.fhir.instance.model.Encounter;
 import org.hl7.fhir.instance.utils.NarrativeGenerator;
+import org.hl7.fhir.instance.utils.ToolingExtensions;
 import org.hl7.fhir.instance.utils.WorkerContext;
 import org.hl7.fhir.utilities.ucum.UcumService;
 import org.w3c.dom.Element;
@@ -188,7 +184,7 @@ public class CCDAConverter {
 	private CDAUtilities cda;
 	private Element doc; 
 	private Convert convert;
-	private AtomFeed feed;
+	private Bundle feed;
 	private Composition composition;
 	private Map<String, Practitioner> practitionerCache = new HashMap<String, Practitioner>();
 	private Integer refCounter = 0;
@@ -203,7 +199,7 @@ public class CCDAConverter {
   }
 
 
-	public AtomFeed convert(InputStream stream) throws Exception {
+	public Bundle convert(InputStream stream) throws Exception {
 
 		cda = new CDAUtilities(stream);
 		doc = cda.getElement();
@@ -211,24 +207,24 @@ public class CCDAConverter {
 		convert = new Convert(cda, ucumSvc);
 
 		// check it's a CDA/CCD
-		feed = new AtomFeed();
-		feed.setUpdated(DateAndTime.now());
+		feed = new Bundle();
+		feed.setMeta(new ResourceMetaComponent().setLastUpdated(DateAndTime.now()));
 		feed.setId(makeUUIDReference());
-		feed.getTags().add(new AtomCategory("http://hl7.org/fhir/tag", "http://hl7.org/fhir/tag/document", "Document"));
+		feed.getMeta().getTag().add(new Coding()); // todo-bundle  ("http://hl7.org/fhir/tag", "http://hl7.org/fhir/tag/document", "Document"));
 		
 		// process the header
 		makeDocument();
-		composition.setSubject(Factory.makeResourceReference(makeSubject()));
+		composition.setSubject(Factory.makeReference(makeSubject()));
 		for (Element e : cda.getChildren(doc, "author"))
-			composition.getAuthor().add(Factory.makeResourceReference(makeAuthor(e)));
+			composition.getAuthor().add(Factory.makeReference(makeAuthor(e)));
 		// todo: data enterer & informant goes in provenance
-		composition.setCustodian(Factory.makeResourceReference(makeOrganization(
+		composition.setCustodian(Factory.makeReference(makeOrganization(
 				 cda.getDescendent(doc, "custodian/assignedCustodian/representedCustodianOrganization"), "Custodian")));
 		// todo: informationRecipient		
 		for (Element e : cda.getChildren(doc, "legalAuthenticator"))
-			composition.getAttester().add(makeAttester(e, CompositionAttestationMode.legal, "Legal Authenticator"));
+			composition.getAttester().add(makeAttester(e, CompositionAttestationMode.LEGAL, "Legal Authenticator"));
 		for (Element e : cda.getChildren(doc, "authenticator"))
-			composition.getAttester().add(makeAttester(e, CompositionAttestationMode.professional, "Authenticator"));
+			composition.getAttester().add(makeAttester(e, CompositionAttestationMode.PROFESSIONAL, "Authenticator"));
 		
 		// process the contents
 		// we do this by section - keep the original section order
@@ -238,44 +234,37 @@ public class CCDAConverter {
 	}
 
 	
-	private String addResource(Resource r, String title, String id) throws Exception {
+	private String addReference(DomainResource r, String title, String id) throws Exception {
 		if (r.getText() == null)
 			r.setText(new Narrative());
 		if (r.getText().getDiv() == null) {
-			r.getText().setStatusSimple(NarrativeStatus.generated);
+			r.getText().setStatus(NarrativeStatus.GENERATED);
 			new NarrativeGenerator("", context).generate(r);
 		}
-		AtomEntry<Resource> e = new AtomEntry<Resource>();
-		e.setUpdated(DateAndTime.now());
-		e.setResource(r);
-		e.setTitle(title);
-		e.setId(id);
-		feed.getEntryList().add(e);
+		r.setMeta(new ResourceMetaComponent().setLastUpdated(DateAndTime.now()));
+		r.setId(id);
+		feed.getEntry().add(new BundleEntryComponent().setResource(r));
 		return id;
 	}
 
 	private void makeDocument() throws Exception {
-		composition = (Composition) ResourceFactory.createResource("Composition");
-    addResource(composition, "Composition", makeUUIDReference());
+		composition = (Composition) ResourceFactory.createReference("Composition");
+    addReference(composition, "Composition", makeUUIDReference());
 
 		Element title = cda.getChild(doc, "title");
-		if (title == null) {
-			feed.setTitle("Clinical Composition (generated from CCDA Composition)");
-		} else {
-			feed.setTitle(title.getTextContent());
-			composition.setTitleSimple(title.getTextContent());			
-		}
+		composition.setTitle(title.getTextContent());			
+
 		if (cda.getChild(doc, "setId") != null) {
  			feed.setId(convert.makeURIfromII(cda.getChild(doc, "id")));
 			composition.setIdentifier(convert.makeIdentifierFromII(cda.getChild(doc, "setId")));
 		} else
 			composition.setIdentifier(convert.makeIdentifierFromII(cda.getChild(doc, "id"))); // well, we fall back to id
 			
-		composition.setDate(convert.makeDateTimeFromTS(cda.getChild(doc, "effectiveTime")));
+		composition.setDateElement(convert.makeDateTimeFromTS(cda.getChild(doc, "effectiveTime")));
 		composition.setType(convert.makeCodeableConceptFromCD(cda.getChild(doc, "code")));
 		composition.setConfidentiality(convert.makeCodingFromCV(cda.getChild(doc, "confidentialityCode")));
 		if (cda.getChild(doc, "confidentialityCode") != null)
-			composition.setLanguageSimple(cda.getChild(doc, "confidentialityCode").getAttribute("value")); // todo - fix streaming for this
+			composition.setLanguage(cda.getChild(doc, "confidentialityCode").getAttribute("value")); // todo - fix streaming for this
 		
 		Element ee = cda.getChild(doc, "componentOf");
 		if (ee != null)
@@ -286,10 +275,10 @@ public class CCDAConverter {
 				visit.getIdentifier().add(convert.makeIdentifierFromII(e));
 			visit.setHospitalization(new Encounter.EncounterHospitalizationComponent());
 			visit.getHospitalization().setPeriod(convert.makePeriodFromIVL(cda.getChild(ee, "effectiveTime")));
-			composition.setEvent(new Composition.CompositionEventComponent());
-			composition.getEvent().getCode().add(convert.makeCodeableConceptFromCD(cda.getChild(ee, "code")));
-			composition.getEvent().setPeriod(visit.getHospitalization().getPeriod());
-			composition.getEvent().getDetail().add(Factory.makeResourceReference(addResource(visit, "Encounter", makeUUIDReference())));			
+			composition.getEvent().add(new Composition.CompositionEventComponent());
+			composition.getEvent().get(0).getCode().add(convert.makeCodeableConceptFromCD(cda.getChild(ee, "code")));
+			composition.getEvent().get(0).setPeriod(visit.getHospitalization().getPeriod());
+			composition.getEvent().get(0).getDetail().add(Factory.makeReference(addReference(visit, "Encounter", makeUUIDReference())));			
 		}
 		
 		// main todo: fill out the narrative, but before we can do that, we have to convert everything else
@@ -300,7 +289,7 @@ public class CCDAConverter {
 		Element pr = cda.getChild(rt, "patientRole");
 		Element p = cda.getChild(pr, "patient");
 		
-		Patient pat = (Patient) ResourceFactory.createResource("Patient");
+		Patient pat = (Patient) ResourceFactory.createReference("Patient");
 		for (Element e : cda.getChildren(pr, "id"))
 			pat.getIdentifier().add(convert.makeIdentifierFromII(e));
 
@@ -310,13 +299,13 @@ public class CCDAConverter {
 			pat.getTelecom().add(convert.makeContactFromTEL(e));
 		for (Element e : cda.getChildren(p, "name"))
 			pat.getName().add(convert.makeNameFromEN(e));
-		pat.setGender(convert.makeCodeableConceptFromCD(cda.getChild(p, "administrativeGenderCode")));
-		pat.setBirthDate(convert.makeDateTimeFromTS(cda.getChild(p, "birthTime")));
+		pat.setGender(convert.makeGenderFromCD(cda.getChild(p, "administrativeGenderCode")));
+		pat.setBirthDateElement(convert.makeDateTimeFromTS(cda.getChild(p, "birthTime")));
 		pat.setMaritalStatus(convert.makeCodeableConceptFromCD(cda.getChild(p, "maritalStatusCode")));
-		pat.getExtensions().add(Factory.newExtension(CcdaExtensions.NAME_RELIGION, convert.makeCodeableConceptFromCD(cda.getChild(p, "religiousAffiliationCode")), false));
-		pat.getExtensions().add(Factory.newExtension(CcdaExtensions.NAME_RACE, convert.makeCodeableConceptFromCD(cda.getChild(p, "raceCode")), false));
-		pat.getExtensions().add(Factory.newExtension(CcdaExtensions.NAME_ETHNICITY, convert.makeCodeableConceptFromCD(cda.getChild(p, "ethnicGroupCode")), false));
-		pat.getExtensions().add(Factory.newExtension(CcdaExtensions.NAME_BIRTHPLACE, convert.makeAddressFromAD(cda.getChild(p, new String[] {"birthplace", "place", "addr"})), false));
+		pat.getExtension().add(Factory.newExtension(CcdaExtensions.NAME_RELIGION, convert.makeCodeableConceptFromCD(cda.getChild(p, "religiousAffiliationCode")), false));
+		pat.getExtension().add(Factory.newExtension(CcdaExtensions.NAME_RACE, convert.makeCodeableConceptFromCD(cda.getChild(p, "raceCode")), false));
+		pat.getExtension().add(Factory.newExtension(CcdaExtensions.NAME_ETHNICITY, convert.makeCodeableConceptFromCD(cda.getChild(p, "ethnicGroupCode")), false));
+		pat.getExtension().add(Factory.newExtension(CcdaExtensions.NAME_BIRTHPLACE, convert.makeAddressFromAD(cda.getChild(p, new String[] {"birthplace", "place", "addr"})), false));
 		
 		Patient.ContactComponent guardian = new Patient.ContactComponent();
 		pat.getContact().add(guardian);
@@ -335,15 +324,15 @@ public class CCDAConverter {
 	  Element l = cda.getChild(p, "languageCommunication");
 	  CodeableConcept cc = new CodeableConcept();
 	  Coding c = new Coding();
-	  c.setCodeSimple(cda.getChild(l, "languageCode").getAttribute("code"));
+	  c.setCode(cda.getChild(l, "languageCode").getAttribute("code"));
 	  cc.getCoding().add(c);
 		pat.getCommunication().add(cc); 
 
 		// todo: this got broken.... lang.setMode(convert.makeCodeableConceptFromCD(cda.getChild(l, "modeCode")));
-		cc.getExtensions().add(Factory.newExtension(CcdaExtensions.NAME_LANG_PROF, convert.makeCodeableConceptFromCD(cda.getChild(l, "modeCode")), false));
-		pat.getExtensions().add(Factory.newExtension(CcdaExtensions.NAME_RELIGION, convert.makeCodeableConceptFromCD(cda.getChild(p, "religiousAffiliationCode")), false));
-		pat.setManagingOrganization(Factory.makeResourceReference(makeOrganization(cda.getChild(pr, "providerOrganization"), "Provider")));
-		return addResource(pat, "Subject", makeUUIDReference());
+		cc.getExtension().add(Factory.newExtension(CcdaExtensions.NAME_LANG_PROF, convert.makeCodeableConceptFromCD(cda.getChild(l, "modeCode")), false));
+		pat.getExtension().add(Factory.newExtension(CcdaExtensions.NAME_RELIGION, convert.makeCodeableConceptFromCD(cda.getChild(p, "religiousAffiliationCode")), false));
+		pat.setManagingOrganization(Factory.makeReference(makeOrganization(cda.getChild(pr, "providerOrganization"), "Provider")));
+		return addReference(pat, "Subject", makeUUIDReference());
 	}
 
 
@@ -352,20 +341,20 @@ public class CCDAConverter {
 		for (Element e : cda.getChildren(org, "id"))
 			o.getIdentifier().add(convert.makeIdentifierFromII(e));
 		for (Element e : cda.getChildren(org, "name"))
-			o.setNameSimple(e.getTextContent());
+			o.setName(e.getTextContent());
 		for (Element e : cda.getChildren(org, "addr"))
 			o.getAddress().add(convert.makeAddressFromAD(e));
 		for (Element e : cda.getChildren(org, "telecom"))
 			o.getTelecom().add(convert.makeContactFromTEL(e));
 
-	  return addResource(o, name, makeUUIDReference());
+	  return addReference(o, name, makeUUIDReference());
   }
 
 	private String makeAuthor(Element auth) throws Exception {
 		Element aa = cda.getChild(auth, "assignedAuthor");
 		Element ap = cda.getChild(aa, "assignedPerson");
 		
-		Practitioner  pr = (Practitioner) ResourceFactory.createResource("Practitioner");
+		Practitioner  pr = (Practitioner) ResourceFactory.createReference("Practitioner");
 		for (Element e : cda.getChildren(aa, "id"))
 			pr.getIdentifier().add(convert.makeIdentifierFromII(e));
 		for (Element e : cda.getChildren(aa, "addr"))
@@ -377,7 +366,7 @@ public class CCDAConverter {
 			if (pr.getName() != null)
 				pr.setName(convert.makeNameFromEN(e));
 
-	  return addResource(pr, "Author", makeUUIDReference());
+	  return addReference(pr, "Author", makeUUIDReference());
 	}
 
 
@@ -387,7 +376,7 @@ public class CCDAConverter {
 
 
 	private CompositionAttesterComponent makeAttester(Element a1, CompositionAttestationMode mode, String title) throws Exception {
-		Practitioner  pr = (Practitioner) ResourceFactory.createResource("Practitioner");
+		Practitioner  pr = (Practitioner) ResourceFactory.createReference("Practitioner");
 		Element ass = cda.getChild(a1, "assignedEntity");
 		for (Element e : cda.getChildren(ass, "id"))
 			pr.getIdentifier().add(convert.makeIdentifierFromII(e));
@@ -403,9 +392,9 @@ public class CCDAConverter {
 		
 
 		CompositionAttesterComponent att = new CompositionAttesterComponent();
-		att.addModeSimple(mode);
-		att.setTime(convert.makeDateTimeFromTS(cda.getChild(a1,"time")));
-	  att.setParty(Factory.makeResourceReference(addResource(pr, title, makeUUIDReference())));
+		att.addMode(mode);
+		att.setTimeElement(convert.makeDateTimeFromTS(cda.getChild(a1,"time")));
+	  att.setParty(Factory.makeReference(addReference(pr, title, makeUUIDReference())));
 	  return att;
   }
 
@@ -462,7 +451,7 @@ public class CCDAConverter {
 		SectionComponent s = new Composition.SectionComponent();
 		s.setCode(convert.makeCodeableConceptFromCD(cda.getChild(section,  "code")));
 		// todo: check subject
-		s.setContent(Factory.makeResourceReference(addResource(list, "Procedures", makeUUIDReference())));
+		s.setContent(Factory.makeReference(addReference(list, "Procedures", makeUUIDReference())));
 		return s;
 		
 	}
@@ -488,7 +477,7 @@ public class CCDAConverter {
 		
 		// moodCode is either INT or EVN. INT is not handled yet. INT is deprecated anyway
    if (procedure.getAttribute("moodCode").equals("INT"))
-  		p.getModifierExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-planned", Factory.newBoolean(true), false));
+  		p.getModifierExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-planned", Factory.newBoolean(true), false));
 		
 		// SHALL contain at least one [1..*] id (CONF:7655).
 		for (Element e : cda.getChildren(procedure, "id")) 
@@ -500,16 +489,16 @@ public class CCDAConverter {
 		
 		// SHALL contain exactly one [1..1] statusCode/@code, which SHALL be selected from ValueSet 2.16.840.1.113883.11.20.9.22 ProcedureAct
 		// completed | active | aborted | cancelled - not in FHIR
-		p.getModifierExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-status", Factory.newCode(cda.getStatus(procedure)), false));
+		p.getModifierExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-status", Factory.newCode(cda.getStatus(procedure)), false));
 		
 		// SHOULD contain zero or one [0..1] effectiveTime (CONF:7662).
 		p.setDate(convert.makePeriodFromIVL(cda.getChild(procedure, "effectiveTime")));
 		
 		// MAY contain zero or one [0..1] priorityCode/@code, which SHALL be selected from ValueSet 2.16.840.1.113883.1.11.16866 ActPriority DYNAMIC (CONF:7668)
-		p.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-priority", convert.makeCodeableConceptFromCD(cda.getChild(procedure, "priorityCode")), false));
+		p.getExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-priority", convert.makeCodeableConceptFromCD(cda.getChild(procedure, "priorityCode")), false));
 		
 		// MAY contain zero or one [0..1] methodCode (CONF:7670).
-		p.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-method", convert.makeCodeableConceptFromCD(cda.getChild(procedure, "methodCode")), false));
+		p.getExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-method", convert.makeCodeableConceptFromCD(cda.getChild(procedure, "methodCode")), false));
 
 		if (type == ProcedureType.Observation) {
 			// for Procedure-Observation:
@@ -537,10 +526,10 @@ public class CCDAConverter {
 			if (type == ProcedureType.Procedure && cda.hasTemplateId(participantRole, "2.16.840.1.113883.10.20.22.4.37")) {
 		  	//   MAY contain zero or more [0..*] participant (CONF:7751) such that it  SHALL contain exactly one [1..1] @typeCode="DEV" Device
 			  // implanted devices
-				p.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/implanted-devices", Factory.makeResourceReference(processDevice(participantRole, p)), false));
+				p.getExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/implanted-devices", Factory.makeReference(processDevice(participantRole, p)), false));
 			} else if (cda.hasTemplateId(participantRole, "2.16.840.1.113883.10.20.22.4.32")) {
 			// MAY contain zero or more [0..*] participant (CONF:7765) such that it SHALL contain exactly one [1..1] Service Delivery Location (templateId:2.16.840.1.113883.10.20.22.4.32) (CONF:7767)
-				p.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/location", Factory.makeResourceReference(processSDLocation(participantRole, p)), false));
+				p.getExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/location", Factory.makeReference(processSDLocation(participantRole, p)), false));
 			}
 		}
 		
@@ -553,9 +542,9 @@ public class CCDAConverter {
     		//  MAY contain zero or one [0..1] entryRelationship (CONF:7775) such that it SHALL contain exactly one [1..1] Instructions (templateId:2.16.840.1.113883.10.20.22.4.20) (CONF:7778).
     		// had code for type, plus text for instructions
       	Extension n = Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-instructions", null, true);
-      	n.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-instructions-type", convert.makeCodeableConceptFromCD(cda.getChild(a, "code")), false));
-      	n.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-instructions-text", convert.makeStringFromED(cda.getChild(a, "text")), false));
-				p.getExtensions().add(n);
+      	n.getExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-instructions-type", convert.makeCodeableConceptFromCD(cda.getChild(a, "code")), false));
+      	n.getExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/procedure-instructions-text", convert.makeStringFromED(cda.getChild(a, "text")), false));
+				p.getExtension().add(n);
       } else if (cda.hasTemplateId(a, "2.16.840.1.113883.10.20.22.4.19")) {
     		// MAY contain zero or more [0..*] entryRelationship (CONF:7779) such that it SHALL contain exactly one [1..1] Indication (templateId:2.16.840.1.113883.10.20.22.4.19) (CONF:7781).
       	processIndication(p.getIndication(), a);
@@ -567,7 +556,7 @@ public class CCDAConverter {
 	}
 
 
-	private String processSDLocation(Element participantRole, Resource r) throws Exception {
+	private String processSDLocation(Element participantRole, DomainResource r) throws Exception {
 	  Location l = new Location();
 	  l.setType(convert.makeCodeableConceptFromCD(cda.getChild(participantRole, "code")));
 	  for (Element id : cda.getChildren(participantRole, "id")) {
@@ -586,16 +575,16 @@ public class CCDAConverter {
 	  
 		Element place = cda.getChild(participantRole, "playingDevice");
 		if (cda.getChild(place, "name") != null)
-    	l.setNameSimple(cda.getChild(place, "name").getTextContent());
+    	l.setName(cda.getChild(place, "name").getTextContent());
 
   	String id = nextRef();
-  	l.setXmlId(id);
+  	l.setId(id);
   	r.getContained().add(l);
 	  return "#"+id;
   }
 
 
-	private String processDevice(Element participantRole, Resource r) throws Exception {
+	private String processDevice(Element participantRole, DomainResource r) throws Exception {
 	  Device d = new Device();
 	  for (Element id : cda.getChildren(participantRole, "id")) {
 	  	// todo: check for UDIs, how? 
@@ -607,10 +596,10 @@ public class CCDAConverter {
 
   	// CCDA has an id - this is manufacturer? We just call it the name, but what to do about this?
 		Element org = cda.getChild(participantRole, "scopingEntity");
-  	d.setManufacturerSimple(convert.makeURIfromII(cda.getChild(org, "id")));
+  	d.setManufacturer(convert.makeURIfromII(cda.getChild(org, "id")));
   	
   	String id = nextRef();
-  	d.setXmlId(id);
+  	d.setId(id);
   	r.getContained().add(d);
 	  return "#"+id;
   }
@@ -628,14 +617,14 @@ public class CCDAConverter {
 	  	l.add(convert.makeCodeableConceptFromCD(v));
   }
 	
-	private ResourceReference makeReferenceToPractitionerForAssignedEntity(Element assignedEntity, Resource r) throws Exception {
+	private Reference makeReferenceToPractitionerForAssignedEntity(Element assignedEntity, DomainResource r) throws Exception {
 		
-		ResourceReference ref = null;
+		Reference ref = null;
 		// do we have this by id? 
 		String uri = getIdForEntity(assignedEntity);
 		Practitioner p = null;
 		if (uri != null) {
-			ref = Factory.makeResourceReference(uri);
+			ref = Factory.makeReference(uri);
 			p = practitionerCache.get(uri);
 		}
 		if (p == null) {
@@ -643,12 +632,12 @@ public class CCDAConverter {
 			if (uri == null) {
 				// make a contained practitioner
 				String n = nextRef();
-				p.setXmlId(n);
+				p.setId(n);
 				r.getContained().add(p);
-				ref = Factory.makeResourceReference("#"+n);
+				ref = Factory.makeReference("#"+n);
 			} else {
 				// add this to feed
-				ref = Factory.makeResourceReference(addResource(p, "Practitioner", uri));
+				ref = Factory.makeReference(addReference(p, "Practitioner", uri));
 			}
 		}
 		// ref and p are both sorted. now we fill out p as much as we can (remembering it might already be populated)
@@ -669,8 +658,8 @@ public class CCDAConverter {
   }
 
 
-	private void addToContactList(List<Contact> list, Contact c) throws Exception {
-		for (Contact item : list) {
+	private void addToContactList(List<ContactPoint> list, ContactPoint c) throws Exception {
+		for (ContactPoint item : list) {
 			if (Comparison.matches(item, c, null)) 
 				Comparison.merge(item, c);
 		}
@@ -725,7 +714,7 @@ public class CCDAConverter {
 		SectionComponent s = new Composition.SectionComponent();
 		s.setCode(convert.makeCodeableConceptFromCD(cda.getChild(section,  "code")));
 		// todo: check subject
-		s.setContent(Factory.makeResourceReference(addResource(list, "Allergies, Adverse Reactions, Alerts", makeUUIDReference())));
+		s.setContent(Factory.makeReference(addReference(list, "Allergies, Adverse Reactions, Alerts", makeUUIDReference())));
 		return s;
   }
 
@@ -750,7 +739,7 @@ public class CCDAConverter {
 			// this first section comes from the concern, and is processed once for each observation in the concern group
   		// SHALL contain at least one [1..*] id (CONF:7472).
 			for (Element e : cda.getChildren(concern, "id")) 
-				item.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/list-id", convert.makeIdentifierFromII(e), false));
+				ai.getIdentifier().add(convert.makeIdentifierFromII(e));
 
       // SHALL contain exactly one [1..1] statusCode, which SHALL be selected from ValueSet 2.16.840.1.113883.3.88.12.80.68 HITSPProblemStatus DYNAMIC (CONF:7485)
 		  // the status code is about the concern (e.g. the entry in the list)
@@ -758,16 +747,16 @@ public class CCDAConverter {
 			String s = cda.getStatus(concern);
 			item.getFlag().add(Factory.newCodeableConcept(s, "http://hl7.org/fhir/v3/ActStatus", s));
 			if (s.equals("aborted")) // only on this condition?
-				item.setDeletedSimple(true);
+				item.setDeleted(true);
 			
 			// SHALL contain exactly one [1..1] effectiveTime (CONF:7498)
 			Period p = convert.makePeriodFromIVL(cda.getChild(concern, "effectiveTime"));
-			item.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/list-period", p,  false));
+			item.getExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/list-period", p,  false));
 			if (p.getEnd() != null)
 				item.setDate(p.getEnd());
 			else
 				item.setDate(p.getStart());
-						
+
 			//ok, now process the actual observation
 			// SHALL contain at least one [1..*] id (CONF:7382)
 			for (Element e : cda.getChildren(obs, "id"))
@@ -775,28 +764,21 @@ public class CCDAConverter {
 			
 			
 			// SHALL contain exactly one [1..1] effectiveTime (CONF:7387)
-			ai.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/allergyintolerance-period", convert.makePeriodFromIVL(cda.getChild(obs, "effectiveTime")),  false));
+			ai.getExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/allergyintolerance-period", convert.makePeriodFromIVL(cda.getChild(obs, "effectiveTime")),  false));
 			
 			// SHALL contain exactly one [1..1] value with @xsi:type="CD" (CONF:7390)
 			CodeableConcept type = convert.makeCodeableConceptFromCD(cda.getChild(obs, "value"));
 			// This value SHALL contain @code, which SHALL be selected from ValueSet 2.16.840.1.113883.3.88.12.3221.6.2 Allergy/Adverse Event Type
-			String ss = type.getCoding().get(0).getCode().getValue();
+			String ss = type.getCoding().get(0).getCode();
 			if (ss.equals("416098002") || ss.equals("414285001"))
-				ai.setSensitivityTypeSimple(Sensitivitytype.allergy);
+				ai.setType(AllergyIntoleranceType.IMMUNE);
 			else if (ss.equals("59037007") || ss.equals("235719002"))
-				ai.setSensitivityTypeSimple(Sensitivitytype.intolerance);
-			else
-				ai.setSensitivityTypeSimple(Sensitivitytype.unknown);
-			ai.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/allergy-category", type, false));
+				ai.setType(AllergyIntoleranceType.NONIMMUNE);
+			ai.getExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/allergy-category", type, false));
 			
 			// SHOULD contain zero or one [0..1] participant (CONF:7402) such that it
-			Substance subst = new Substance();
-			String n = nextRef();
-			subst.setXmlId(n);
-		  ai.getContained().add(subst);
-			ai.setSubstance(Factory.makeResourceReference("#"+n));
 			// ......This playingEntity SHALL contain exactly one [1..1] code			
-			subst.setType(convert.makeCodeableConceptFromCD(cda.getDescendent(obs, "participant/participantRole/playingEntity/code"))); 
+			ai.setSubstance(convert.makeCodeableConceptFromCD(cda.getDescendent(obs, "participant/participantRole/playingEntity/code"))); 
 
 			//  MAY contain zero or one [0..1] entryRelationship (CONF:7440) such that it SHALL contain exactly one [1..1]  Alert Status Observation
 			//  SHOULD contain zero or more [0..*] entryRelationship (CONF:7447) such that it SHALL contain exactly one [1..1] Reaction Observation (templateId:2.16.840.1.113883.10.20.22.4.9) (CONF:7450).
@@ -809,35 +791,31 @@ public class CCDAConverter {
 		  		// 413322009  SNOMED CT  Resolved
 		  		String sc = cda.getChild(child, "value").getAttribute("code");
 		  		if (sc.equals("55561003"))
-		  			ai.setStatusSimple(Sensitivitystatus.confirmed);
+		  			ai.setStatus(AllergyIntoleranceStatus.CONFIRMED);
 		  		else
-		  			ai.setStatusSimple(Sensitivitystatus.resolved);
+		  			ai.setStatus(AllergyIntoleranceStatus.RESOLVED);
 		  	} else if (cda.hasTemplateId(child, "2.16.840.1.113883.10.20.22.4.9")) {
-		  		AdverseReaction reaction = processAdverseReactionObservation(child);
-		  		n = nextRef();
-					reaction.setXmlId(n);
-				  ai.getContained().add(subst);
-					ai.setSubstance(Factory.makeResourceReference("#"+n));
+		  		ai.getEvent().add(processAdverseReactionObservation(child));
 		  	}
 		  }
 			
 			//  SHOULD contain zero or one [0..1] entryRelationship (CONF:9961) such that it SHALL contain exactly one [1..1] Severity Observation (templateId:2.16.840.1.113883.10.20.22.4.8) (CONF:9963).
-			ai.setCriticalitySimple(readCriticality(cda.getSeverity(obs)));
+			ai.setCriticality(readCriticality(cda.getSeverity(obs)));
 		}
   }
 
 
 	// this is going to be a contained resource, so we aren't going to generate any narrative
-	private AdverseReaction processAdverseReactionObservation(Element reaction) throws Exception {
+	private AllergyIntoleranceEventComponent processAdverseReactionObservation(Element reaction) throws Exception {
 		checkNoNegationOrNullFlavor(reaction, "Adverse Reaction Observation");
 		checkNoSubject(reaction, "Adverse Reaction Observation");
 		
 		// This clinical statement represents an undesired symptom, finding, etc., due to an administered or exposed substance. A reaction can be defined with respect to its	severity, and can have been treated by one or more interventions.
-		AdverseReaction ar = new AdverseReaction();
+		AllergyIntoleranceEventComponent ar = new AllergyIntoleranceEventComponent();
 		
 		// SHALL contain exactly one [1..1] id (CONF:7329).
-		for (Element e : cda.getChildren(reaction, "id")) 
-			ar.getIdentifier().add(convert.makeIdentifierFromII(e));
+		for (Element e : cda.getChildren(reaction, "id"))
+			ToolingExtensions.addIdentifier(ar, convert.makeIdentifierFromII(e));
 
 		// SHALL contain exactly one [1..1] code (CONF:7327). The value set for this code element has not been specified.
 		// todo: what the heck is this? 
@@ -849,15 +827,13 @@ public class CCDAConverter {
 		//  	a.  This effectiveTime SHOULD contain zero or one [0..1] low (CONF:7333). 
 		//  	b.  This effectiveTime SHOULD contain zero or one [0..1] high (CONF:7334).
 		// !this is a problem because FHIR just has a date, not a period.
-		ar.setDate(convert.makeDateTimeFromIVL(cda.getChild(reaction, "effectiveTime")));
+		ar.setOnsetElement(convert.makeDateTimeFromIVL(cda.getChild(reaction, "effectiveTime")));
 
 		// SHALL contain exactly one [1..1] value with @xsi:type="CD", where the @code SHALL be selected from ValueSet 2.16.840.1.113883.3.88.12.3221.7.4 Problem	DYNAMIC (CONF:7335).
-		AdverseReactionSymptomComponent symptom = new AdverseReactionSymptomComponent();
-		ar.getSymptom().add(symptom);
-		symptom.setCode(convert.makeCodeableConceptFromCD(cda.getChild(reaction, "value")));
+		ar.getManifestation().add(convert.makeCodeableConceptFromCD(cda.getChild(reaction, "value")));
 		
 	  // SHOULD contain zero or one [0..1] entryRelationship (CONF:7580) such that it SHALL contain exactly one [1..1] Severity Observation  (templateId:2.16.840.1.113883.10.20.22.4.8) (CONF:7582).
-		symptom.setSeveritySimple(readSeverity(cda.getSeverity(reaction)));
+		ar.setSeverity(readSeverity(cda.getSeverity(reaction)));
 
 		// MAY contain zero or more [0..*] entryRelationship (CONF:7337) such that it SHALL contain exactly one [1..1] Procedure Activity Procedure (templateId:2.16.840.1.113883.10.20.22.4.14) (CONF:7339). 
 		// i.  This procedure activity is intended to contain information about procedures that were performed in response to an allergy reaction
@@ -892,7 +868,7 @@ public class CCDAConverter {
 		SectionComponent s = new Composition.SectionComponent();
 		s.setCode(convert.makeCodeableConceptFromCD(cda.getChild(section,  "code")));
 		// todo: check subject
-		s.setContent(Factory.makeResourceReference(addResource(list, "Procedures", makeUUIDReference())));
+		s.setContent(Factory.makeReference(addReference(list, "Procedures", makeUUIDReference())));
 		return s;
 		
 	}
@@ -930,12 +906,12 @@ public class CCDAConverter {
 			if (obs.getIdentifier() == null) // only one in FHIR
 			  obs.setIdentifier(convert.makeIdentifierFromII(e));
 			else 
-			  obs.getExtensions().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/additional-id", convert.makeIdentifierFromII(e), false));
+			  obs.getExtension().add(Factory.newExtension("http://www.healthintersections.com.au/fhir/extensions/additional-id", convert.makeIdentifierFromII(e), false));
 
 		
 		// SHALL contain exactly one [1..1] statusCode (CONF:8553/455/14809).
 		// a.	This statusCode SHALL contain exactly one [1..1] @code="completed" Completed (CodeSystem: ActStatus 2.16.840.1.113883.5.14 STATIC) (CONF:19117).
-		obs.setStatusSimple(ObservationStatus.final_);
+		obs.setStatus(ObservationStatus.FINAL);
 
 		// SHOULD contain zero or one [0..1] effectiveTime (CONF:2018/14814).
 		// for smoking status/tobacco: low only. in R2, this is just value. So we treat low only as just a value
@@ -977,19 +953,19 @@ public class CCDAConverter {
 				//   	SHALL contain exactly one [1..1] Estimated Date of Delivery (templateId:2.16.840.1.113883.10.20.15.3.1) (CONF:15584).
 				Observation co = new Observation();
 				String id = nextRef();
-				co.setXmlId(id);
+				co.setId(id);
 				obs.getContained().add(co);
 				ObservationRelatedComponent or = new ObservationRelatedComponent();
 				obs.getRelated().add(or);
-				or.setTypeSimple(ObservationRelationshiptypes.hascomponent);
-				or.setTarget(Factory.makeResourceReference("#"+id));
+				or.setType(ObservationRelationshiptypes.HASCOMPONENT);
+				or.setTarget(Factory.makeReference("#"+id));
 				co.setName(Factory.newCodeableConcept("11778-8", "http://loinc.org", "Delivery date Estimated"));
 				co.setValue(convert.makeDateTimeFromTS(cda.getChild(dd, "value"))); // not legal, see gForge http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&tracker_item_id=3125&start=0 
 			}
 		}
 		
 		// lastly, we assume that these are to be marked as reliable observations:
-		obs.setReliabilitySimple(ObservationReliability.ok);
+		obs.setReliability(ObservationReliability.OK);
   }
 
 
@@ -1006,14 +982,14 @@ public class CCDAConverter {
   }
 
 
-	private ListEntryComponent addItemToList(List_ list, Resource ai)
+	private ListEntryComponent addItemToList(List_ list, DomainResource ai)
       throws Exception {
 	  list.getContained().add(ai);
 	  String n = nextRef();
-	  ai.setXmlId(n);
+	  ai.setId(n);
 	  ListEntryComponent item = new List_.ListEntryComponent();
 	  list.getEntry().add(item);
-	  item.setItem(Factory.makeResourceReference("#"+n));
+	  item.setItem(Factory.makeReference("#"+n));
 	  return item;
   }
 
@@ -1024,36 +1000,36 @@ public class CCDAConverter {
 	  return n;
   }
 
-	private Criticality readCriticality(String severity) {
+	private AllergyIntoleranceCriticality readCriticality(String severity) {
 		if ("255604002".equals(severity)) // Mild 
-			return Criticality.low; 
+			return AllergyIntoleranceCriticality.LOW; 
 		if ("371923003".equals(severity)) //  Mild to moderate 
-			return Criticality.low; 
+			return AllergyIntoleranceCriticality.LOW; 
 		if ("6736007".equals(severity)) // Moderate
-			return Criticality.medium; 
+			return AllergyIntoleranceCriticality.LOW; 
 		if ("371924009".equals(severity)) // Moderate to severe
-			return Criticality.medium; 
+			return AllergyIntoleranceCriticality.HIGH; 
 		if ("24484000".equals(severity)) // Severe
-			return Criticality.high; 
+			return AllergyIntoleranceCriticality.HIGH; 
 		if ("399166001".equals(severity)) // Fatal
-			return Criticality.fatal; 
+			return AllergyIntoleranceCriticality.HIGH; 
 	  return null;
   }
 
 
-	private ReactionSeverity readSeverity(String severity) {
+	private ReactionEventSeverity readSeverity(String severity) {
 		if ("255604002".equals(severity)) // Mild 
-			return ReactionSeverity.minor; 
+			return ReactionEventSeverity.MILD; 
 		if ("371923003".equals(severity)) //  Mild to moderate 
-			return ReactionSeverity.moderate; 
+			return ReactionEventSeverity.MODERATE; 
 		if ("6736007".equals(severity)) // Moderate
-			return ReactionSeverity.moderate; 
+			return ReactionEventSeverity.MODERATE; 
 		if ("371924009".equals(severity)) // Moderate to severe
-			return ReactionSeverity.serious; 
+			return ReactionEventSeverity.SEVERE; 
 		if ("24484000".equals(severity)) // Severe
-			return ReactionSeverity.severe; 
+			return ReactionEventSeverity.SEVERE; 
 		if ("399166001".equals(severity)) // Fatal
-			return ReactionSeverity.severe; 
+			return ReactionEventSeverity.SEVERE; 
 	  return null;
   }
 
@@ -1073,7 +1049,7 @@ public class CCDAConverter {
 		SectionComponent s = new Composition.SectionComponent();
 		s.setCode(convert.makeCodeableConceptFromCD(cda.getChild(section,  "code")));
 		// todo: check subject
-		s.setContent(Factory.makeResourceReference(addResource(list, "Vital Signs", makeUUIDReference())));
+		s.setContent(Factory.makeReference(addReference(list, "Vital Signs", makeUUIDReference())));
 		return s;
 		
 	}
@@ -1104,8 +1080,8 @@ public class CCDAConverter {
 		// SHALL contain exactly one [1..1] Vital Sign Observation (templateId:2.16.840.1.113883.10.20.22.4.27) (CONF:15946).
 		for (Element e : cda.getChildren(organizer, "component")){
 			ObservationRelatedComponent ro = new ObservationRelatedComponent();
-			ro.setTypeSimple(ObservationRelationshiptypes.hascomponent);
-			ro.setTarget(Factory.makeResourceReference("#"+processVitalSignsObservation(e, list)));
+			ro.setType(ObservationRelationshiptypes.HASCOMPONENT);
+			ro.setTarget(Factory.makeReference("#"+processVitalSignsObservation(e, list)));
 		}
 	}
 
@@ -1153,11 +1129,11 @@ public class CCDAConverter {
 		
 		// MAY contain zero or one [0..1] author (CONF:7310).
 		if (cda.getChild(observation, "author") != null)
-			obs.getPerformer().add(makeReferenceToPractitionerForAssignedEntity(cda.getChild(observation, "author"), list));
+			obs.getPerformer().add(makeReferenceToPractitionerForAssignedEntity(cda.getChild(observation, "author"), composition));
 
 		// make a contained practitioner
 		String n = nextRef();
-		obs.setXmlId(n);
+		obs.setId(n);
 		list.getContained().add(obs);
 		return n;
   }

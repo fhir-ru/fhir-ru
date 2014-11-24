@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,36 +29,53 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A set of information summarized from a list of other resources.
  */
-public class List_ extends Resource {
+public class List_ extends DomainResource {
 
     public enum ListMode {
-        working, // This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes.
-        snapshot, // This list was prepared as a snapshot. It should not be assumed to be current.
-        changes, // The list is prepared as a statement of changes that have been made or recommended.
-        Null; // added to help the parsers
+        WORKING, // This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes.
+        SNAPSHOT, // This list was prepared as a snapshot. It should not be assumed to be current.
+        CHANGES, // The list is prepared as a statement of changes that have been made or recommended.
+        NULL; // added to help the parsers
         public static ListMode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("working".equals(codeString))
-          return working;
+          return WORKING;
         if ("snapshot".equals(codeString))
-          return snapshot;
+          return SNAPSHOT;
         if ("changes".equals(codeString))
-          return changes;
+          return CHANGES;
         throw new Exception("Unknown ListMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case working: return "working";
-            case snapshot: return "snapshot";
-            case changes: return "changes";
+            case WORKING: return "working";
+            case SNAPSHOT: return "snapshot";
+            case CHANGES: return "changes";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case WORKING: return "This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes.";
+            case SNAPSHOT: return "This list was prepared as a snapshot. It should not be assumed to be current.";
+            case CHANGES: return "The list is prepared as a statement of changes that have been made or recommended.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case WORKING: return "working";
+            case SNAPSHOT: return "snapshot";
+            case CHANGES: return "changes";
             default: return "?";
           }
         }
@@ -70,19 +87,19 @@ public class List_ extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("working".equals(codeString))
-          return ListMode.working;
+          return ListMode.WORKING;
         if ("snapshot".equals(codeString))
-          return ListMode.snapshot;
+          return ListMode.SNAPSHOT;
         if ("changes".equals(codeString))
-          return ListMode.changes;
+          return ListMode.CHANGES;
         throw new Exception("Unknown ListMode code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == ListMode.working)
+      if (code == ListMode.WORKING)
         return "working";
-      if (code == ListMode.snapshot)
+      if (code == ListMode.SNAPSHOT)
         return "snapshot";
-      if (code == ListMode.changes)
+      if (code == ListMode.CHANGES)
         return "changes";
       return "?";
       }
@@ -107,20 +124,20 @@ public class List_ extends Resource {
         /**
          * A reference to the actual resource from which data was derived.
          */
-        protected ResourceReference item;
+        protected Reference item;
 
         /**
          * The actual object that is the target of the reference (A reference to the actual resource from which data was derived.)
          */
         protected Resource itemTarget;
 
-        private static final long serialVersionUID = -1728647377L;
+        private static final long serialVersionUID = 1219106973L;
 
       public ListEntryComponent() {
         super();
       }
 
-      public ListEntryComponent(ResourceReference item) {
+      public ListEntryComponent(Reference item) {
         super();
         this.item = item;
       }
@@ -132,27 +149,27 @@ public class List_ extends Resource {
           return this.flag;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #flag} (The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list.)
          */
-        public CodeableConcept addFlag() { 
+    // syntactic sugar
+        public CodeableConcept addFlag() { //3
           CodeableConcept t = new CodeableConcept();
           this.flag.add(t);
           return t;
         }
 
         /**
-         * @return {@link #deleted} (True if this item is marked as deleted in the list.)
+         * @return {@link #deleted} (True if this item is marked as deleted in the list.). This is the underlying object with id, value and extensions. The accessor "getDeleted" gives direct access to the value
          */
-        public BooleanType getDeleted() { 
+        public BooleanType getDeletedElement() { 
           return this.deleted;
         }
 
         /**
-         * @param value {@link #deleted} (True if this item is marked as deleted in the list.)
+         * @param value {@link #deleted} (True if this item is marked as deleted in the list.). This is the underlying object with id, value and extensions. The accessor "getDeleted" gives direct access to the value
          */
-        public ListEntryComponent setDeleted(BooleanType value) { 
+        public ListEntryComponent setDeletedElement(BooleanType value) { 
           this.deleted = value;
           return this;
         }
@@ -160,14 +177,14 @@ public class List_ extends Resource {
         /**
          * @return True if this item is marked as deleted in the list.
          */
-        public boolean getDeletedSimple() { 
+        public boolean getDeleted() { 
           return this.deleted == null ? false : this.deleted.getValue();
         }
 
         /**
          * @param value True if this item is marked as deleted in the list.
          */
-        public ListEntryComponent setDeletedSimple(boolean value) { 
+        public ListEntryComponent setDeleted(boolean value) { 
           if (value == false)
             this.deleted = null;
           else {
@@ -179,16 +196,16 @@ public class List_ extends Resource {
         }
 
         /**
-         * @return {@link #date} (When this item was added to the list.)
+         * @return {@link #date} (When this item was added to the list.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
          */
-        public DateTimeType getDate() { 
+        public DateTimeType getDateElement() { 
           return this.date;
         }
 
         /**
-         * @param value {@link #date} (When this item was added to the list.)
+         * @param value {@link #date} (When this item was added to the list.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
          */
-        public ListEntryComponent setDate(DateTimeType value) { 
+        public ListEntryComponent setDateElement(DateTimeType value) { 
           this.date = value;
           return this;
         }
@@ -196,14 +213,14 @@ public class List_ extends Resource {
         /**
          * @return When this item was added to the list.
          */
-        public DateAndTime getDateSimple() { 
+        public DateAndTime getDate() { 
           return this.date == null ? null : this.date.getValue();
         }
 
         /**
          * @param value When this item was added to the list.
          */
-        public ListEntryComponent setDateSimple(DateAndTime value) { 
+        public ListEntryComponent setDate(DateAndTime value) { 
           if (value == null)
             this.date = null;
           else {
@@ -217,27 +234,27 @@ public class List_ extends Resource {
         /**
          * @return {@link #item} (A reference to the actual resource from which data was derived.)
          */
-        public ResourceReference getItem() { 
+        public Reference getItem() { 
           return this.item;
         }
 
         /**
          * @param value {@link #item} (A reference to the actual resource from which data was derived.)
          */
-        public ListEntryComponent setItem(ResourceReference value) { 
+        public ListEntryComponent setItem(Reference value) { 
           this.item = value;
           return this;
         }
 
         /**
-         * @return {@link #item} (The actual object that is the target of the reference. A reference to the actual resource from which data was derived.)
+         * @return {@link #item} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A reference to the actual resource from which data was derived.)
          */
         public Resource getItemTarget() { 
           return this.itemTarget;
         }
 
         /**
-         * @param value {@link #item} (The actual object that is the target of the reference. A reference to the actual resource from which data was derived.)
+         * @param value {@link #item} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A reference to the actual resource from which data was derived.)
          */
         public ListEntryComponent setItemTarget(Resource value) { 
           this.itemTarget = value;
@@ -249,11 +266,12 @@ public class List_ extends Resource {
           childrenList.add(new Property("flag", "CodeableConcept", "The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list.", 0, java.lang.Integer.MAX_VALUE, flag));
           childrenList.add(new Property("deleted", "boolean", "True if this item is marked as deleted in the list.", 0, java.lang.Integer.MAX_VALUE, deleted));
           childrenList.add(new Property("date", "dateTime", "When this item was added to the list.", 0, java.lang.Integer.MAX_VALUE, date));
-          childrenList.add(new Property("item", "Resource(Any)", "A reference to the actual resource from which data was derived.", 0, java.lang.Integer.MAX_VALUE, item));
+          childrenList.add(new Property("item", "Reference(Any)", "A reference to the actual resource from which data was derived.", 0, java.lang.Integer.MAX_VALUE, item));
         }
 
       public ListEntryComponent copy() {
         ListEntryComponent dst = new ListEntryComponent();
+        copyValues(dst);
         dst.flag = new ArrayList<CodeableConcept>();
         for (CodeableConcept i : flag)
           dst.flag.add(i.copy());
@@ -278,7 +296,7 @@ public class List_ extends Resource {
     /**
      * The common subject (or patient) of the resources that are in the list, if there is one.
      */
-    protected ResourceReference subject;
+    protected Reference subject;
 
     /**
      * The actual object that is the target of the reference (The common subject (or patient) of the resources that are in the list, if there is one.)
@@ -288,7 +306,7 @@ public class List_ extends Resource {
     /**
      * The entity responsible for deciding what the contents of the list were.
      */
-    protected ResourceReference source;
+    protected Reference source;
 
     /**
      * The actual object that is the target of the reference (The entity responsible for deciding what the contents of the list were.)
@@ -320,7 +338,7 @@ public class List_ extends Resource {
      */
     protected CodeableConcept emptyReason;
 
-    private static final long serialVersionUID = -1401650190L;
+    private static final long serialVersionUID = -918829646L;
 
     public List_() {
       super();
@@ -338,11 +356,11 @@ public class List_ extends Resource {
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (Identifier for the List assigned for business purposes outside the context of FHIR.)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
@@ -366,27 +384,27 @@ public class List_ extends Resource {
     /**
      * @return {@link #subject} (The common subject (or patient) of the resources that are in the list, if there is one.)
      */
-    public ResourceReference getSubject() { 
+    public Reference getSubject() { 
       return this.subject;
     }
 
     /**
      * @param value {@link #subject} (The common subject (or patient) of the resources that are in the list, if there is one.)
      */
-    public List_ setSubject(ResourceReference value) { 
+    public List_ setSubject(Reference value) { 
       this.subject = value;
       return this;
     }
 
     /**
-     * @return {@link #subject} (The actual object that is the target of the reference. The common subject (or patient) of the resources that are in the list, if there is one.)
+     * @return {@link #subject} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The common subject (or patient) of the resources that are in the list, if there is one.)
      */
     public Resource getSubjectTarget() { 
       return this.subjectTarget;
     }
 
     /**
-     * @param value {@link #subject} (The actual object that is the target of the reference. The common subject (or patient) of the resources that are in the list, if there is one.)
+     * @param value {@link #subject} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The common subject (or patient) of the resources that are in the list, if there is one.)
      */
     public List_ setSubjectTarget(Resource value) { 
       this.subjectTarget = value;
@@ -396,27 +414,27 @@ public class List_ extends Resource {
     /**
      * @return {@link #source} (The entity responsible for deciding what the contents of the list were.)
      */
-    public ResourceReference getSource() { 
+    public Reference getSource() { 
       return this.source;
     }
 
     /**
      * @param value {@link #source} (The entity responsible for deciding what the contents of the list were.)
      */
-    public List_ setSource(ResourceReference value) { 
+    public List_ setSource(Reference value) { 
       this.source = value;
       return this;
     }
 
     /**
-     * @return {@link #source} (The actual object that is the target of the reference. The entity responsible for deciding what the contents of the list were.)
+     * @return {@link #source} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The entity responsible for deciding what the contents of the list were.)
      */
     public Resource getSourceTarget() { 
       return this.sourceTarget;
     }
 
     /**
-     * @param value {@link #source} (The actual object that is the target of the reference. The entity responsible for deciding what the contents of the list were.)
+     * @param value {@link #source} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The entity responsible for deciding what the contents of the list were.)
      */
     public List_ setSourceTarget(Resource value) { 
       this.sourceTarget = value;
@@ -424,16 +442,16 @@ public class List_ extends Resource {
     }
 
     /**
-     * @return {@link #date} (The date that the list was prepared.)
+     * @return {@link #date} (The date that the list was prepared.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public DateTimeType getDate() { 
+    public DateTimeType getDateElement() { 
       return this.date;
     }
 
     /**
-     * @param value {@link #date} (The date that the list was prepared.)
+     * @param value {@link #date} (The date that the list was prepared.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public List_ setDate(DateTimeType value) { 
+    public List_ setDateElement(DateTimeType value) { 
       this.date = value;
       return this;
     }
@@ -441,14 +459,14 @@ public class List_ extends Resource {
     /**
      * @return The date that the list was prepared.
      */
-    public DateAndTime getDateSimple() { 
+    public DateAndTime getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
      * @param value The date that the list was prepared.
      */
-    public List_ setDateSimple(DateAndTime value) { 
+    public List_ setDate(DateAndTime value) { 
       if (value == null)
         this.date = null;
       else {
@@ -460,16 +478,16 @@ public class List_ extends Resource {
     }
 
     /**
-     * @return {@link #ordered} (Whether items in the list have a meaningful order.)
+     * @return {@link #ordered} (Whether items in the list have a meaningful order.). This is the underlying object with id, value and extensions. The accessor "getOrdered" gives direct access to the value
      */
-    public BooleanType getOrdered() { 
+    public BooleanType getOrderedElement() { 
       return this.ordered;
     }
 
     /**
-     * @param value {@link #ordered} (Whether items in the list have a meaningful order.)
+     * @param value {@link #ordered} (Whether items in the list have a meaningful order.). This is the underlying object with id, value and extensions. The accessor "getOrdered" gives direct access to the value
      */
-    public List_ setOrdered(BooleanType value) { 
+    public List_ setOrderedElement(BooleanType value) { 
       this.ordered = value;
       return this;
     }
@@ -477,14 +495,14 @@ public class List_ extends Resource {
     /**
      * @return Whether items in the list have a meaningful order.
      */
-    public boolean getOrderedSimple() { 
+    public boolean getOrdered() { 
       return this.ordered == null ? false : this.ordered.getValue();
     }
 
     /**
      * @param value Whether items in the list have a meaningful order.
      */
-    public List_ setOrderedSimple(boolean value) { 
+    public List_ setOrdered(boolean value) { 
       if (value == false)
         this.ordered = null;
       else {
@@ -496,16 +514,16 @@ public class List_ extends Resource {
     }
 
     /**
-     * @return {@link #mode} (How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.)
+     * @return {@link #mode} (How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.). This is the underlying object with id, value and extensions. The accessor "getMode" gives direct access to the value
      */
-    public Enumeration<ListMode> getMode() { 
+    public Enumeration<ListMode> getModeElement() { 
       return this.mode;
     }
 
     /**
-     * @param value {@link #mode} (How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.)
+     * @param value {@link #mode} (How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.). This is the underlying object with id, value and extensions. The accessor "getMode" gives direct access to the value
      */
-    public List_ setMode(Enumeration<ListMode> value) { 
+    public List_ setModeElement(Enumeration<ListMode> value) { 
       this.mode = value;
       return this;
     }
@@ -513,14 +531,14 @@ public class List_ extends Resource {
     /**
      * @return How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.
      */
-    public ListMode getModeSimple() { 
+    public ListMode getMode() { 
       return this.mode == null ? null : this.mode.getValue();
     }
 
     /**
      * @param value How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.
      */
-    public List_ setModeSimple(ListMode value) { 
+    public List_ setMode(ListMode value) { 
         if (this.mode == null)
           this.mode = new Enumeration<ListMode>();
         this.mode.setValue(value);
@@ -534,11 +552,11 @@ public class List_ extends Resource {
       return this.entry;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #entry} (Entries in this list.)
      */
-    public ListEntryComponent addEntry() { 
+    // syntactic sugar
+    public ListEntryComponent addEntry() { //3
       ListEntryComponent t = new ListEntryComponent();
       this.entry.add(t);
       return t;
@@ -563,8 +581,8 @@ public class List_ extends Resource {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "Identifier for the List assigned for business purposes outside the context of FHIR.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("code", "CodeableConcept", "This code defines the purpose of the list - why it was created.", 0, java.lang.Integer.MAX_VALUE, code));
-        childrenList.add(new Property("subject", "Resource(Patient|Group|Device|Location)", "The common subject (or patient) of the resources that are in the list, if there is one.", 0, java.lang.Integer.MAX_VALUE, subject));
-        childrenList.add(new Property("source", "Resource(Practitioner|Patient|Device)", "The entity responsible for deciding what the contents of the list were.", 0, java.lang.Integer.MAX_VALUE, source));
+        childrenList.add(new Property("subject", "Reference(Patient|Group|Device|Location)", "The common subject (or patient) of the resources that are in the list, if there is one.", 0, java.lang.Integer.MAX_VALUE, subject));
+        childrenList.add(new Property("source", "Reference(Practitioner|Patient|Device)", "The entity responsible for deciding what the contents of the list were.", 0, java.lang.Integer.MAX_VALUE, source));
         childrenList.add(new Property("date", "dateTime", "The date that the list was prepared.", 0, java.lang.Integer.MAX_VALUE, date));
         childrenList.add(new Property("ordered", "boolean", "Whether items in the list have a meaningful order.", 0, java.lang.Integer.MAX_VALUE, ordered));
         childrenList.add(new Property("mode", "code", "How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.", 0, java.lang.Integer.MAX_VALUE, mode));
@@ -574,6 +592,7 @@ public class List_ extends Resource {
 
       public List_ copy() {
         List_ dst = new List_();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());

@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,21 +29,29 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 public class ResourceFactory extends Factory {
 
-    public static Resource createResource(String name) throws Exception {
+    public static Resource createReference(String name) throws Exception {
         if ("Condition".equals(name))
             return new Condition();
         if ("Supply".equals(name))
             return new Supply();
+        if ("ProcedureRequest".equals(name))
+            return new ProcedureRequest();
+        if ("DeviceComponent".equals(name))
+            return new DeviceComponent();
         if ("Organization".equals(name))
             return new Organization();
         if ("Group".equals(name))
             return new Group();
+        if ("OralHealthClaim".equals(name))
+            return new OralHealthClaim();
         if ("ValueSet".equals(name))
             return new ValueSet();
+        if ("Coverage".equals(name))
+            return new Coverage();
         if ("ImmunizationRecommendation".equals(name))
             return new ImmunizationRecommendation();
         if ("Appointment".equals(name))
@@ -56,10 +64,10 @@ public class ResourceFactory extends Factory {
             return new Slot();
         if ("Contraindication".equals(name))
             return new Contraindication();
-        if ("AppointmentResponse".equals(name))
-            return new AppointmentResponse();
         if ("MedicationStatement".equals(name))
             return new MedicationStatement();
+        if ("AppointmentResponse".equals(name))
+            return new AppointmentResponse();
         if ("Questionnaire".equals(name))
             return new Questionnaire();
         if ("Composition".equals(name))
@@ -68,20 +76,32 @@ public class ResourceFactory extends Factory {
             return new OperationOutcome();
         if ("Conformance".equals(name))
             return new Conformance();
+        if ("NamingSystem".equals(name))
+            return new NamingSystem();
         if ("Media".equals(name))
             return new Media();
+        if ("Binary".equals(name))
+            return new Binary();
         if ("Other".equals(name))
             return new Other();
+        if ("HealthcareService".equals(name))
+            return new HealthcareService();
         if ("Profile".equals(name))
             return new Profile();
         if ("DocumentReference".equals(name))
             return new DocumentReference();
+        if ("Eligibility".equals(name))
+            return new Eligibility();
         if ("Immunization".equals(name))
             return new Immunization();
-        if ("OrderResponse".equals(name))
-            return new OrderResponse();
+        if ("Bundle".equals(name))
+            return new Bundle();
+        if ("ExtensionDefinition".equals(name))
+            return new ExtensionDefinition();
         if ("Subscription".equals(name))
             return new Subscription();
+        if ("OrderResponse".equals(name))
+            return new OrderResponse();
         if ("ConceptMap".equals(name))
             return new ConceptMap();
         if ("ImagingStudy".equals(name))
@@ -102,34 +122,42 @@ public class ResourceFactory extends Factory {
             return new Procedure();
         if ("Substance".equals(name))
             return new Substance();
+        if ("DeviceUseRequest".equals(name))
+            return new DeviceUseRequest();
         if ("DiagnosticReport".equals(name))
             return new DiagnosticReport();
         if ("Medication".equals(name))
             return new Medication();
         if ("MessageHeader".equals(name))
             return new MessageHeader();
-        if ("DocumentManifest".equals(name))
-            return new DocumentManifest();
         if ("DataElement".equals(name))
             return new DataElement();
+        if ("DocumentManifest".equals(name))
+            return new DocumentManifest();
         if ("Availability".equals(name))
             return new Availability();
-        if ("MedicationAdministration".equals(name))
-            return new MedicationAdministration();
         if ("QuestionnaireAnswers".equals(name))
             return new QuestionnaireAnswers();
+        if ("MedicationAdministration".equals(name))
+            return new MedicationAdministration();
         if ("Encounter".equals(name))
             return new Encounter();
         if ("SecurityEvent".equals(name))
             return new SecurityEvent();
         if ("List".equals(name))
             return new List_();
+        if ("DeviceUseStatement".equals(name))
+            return new DeviceUseStatement();
         if ("OperationDefinition".equals(name))
             return new OperationDefinition();
-        if ("DeviceObservationReport".equals(name))
-            return new DeviceObservationReport();
+        if ("NutritionOrder".equals(name))
+            return new NutritionOrder();
+        if ("ClaimResponse".equals(name))
+            return new ClaimResponse();
         if ("ReferralRequest".equals(name))
             return new ReferralRequest();
+        if ("CommunicationRequest".equals(name))
+            return new CommunicationRequest();
         if ("RiskAssessment".equals(name))
             return new RiskAssessment();
         if ("FamilyHistory".equals(name))
@@ -140,18 +168,22 @@ public class ResourceFactory extends Factory {
             return new Observation();
         if ("AllergyIntolerance".equals(name))
             return new AllergyIntolerance();
+        if ("ExplanationOfBenefit".equals(name))
+            return new ExplanationOfBenefit();
+        if ("Contract".equals(name))
+            return new Contract();
+        if ("SupportingDocumentation".equals(name))
+            return new SupportingDocumentation();
         if ("RelatedPerson".equals(name))
             return new RelatedPerson();
+        if ("Basic".equals(name))
+            return new Basic();
         if ("Specimen".equals(name))
             return new Specimen();
         if ("Alert".equals(name))
             return new Alert();
         if ("Patient".equals(name))
             return new Patient();
-        if ("Namespace".equals(name))
-            return new Namespace();
-        if ("AdverseReaction".equals(name))
-            return new AdverseReaction();
         if ("DiagnosticOrder".equals(name))
             return new DiagnosticOrder();
         else
@@ -159,6 +191,8 @@ public class ResourceFactory extends Factory {
     }
 
     public static Element createType(String name) throws Exception {
+        if ("Timing".equals(name))
+            return new Timing();
         if ("Period".equals(name))
             return new Period();
         if ("Coding".equals(name))
@@ -177,12 +211,12 @@ public class ResourceFactory extends Factory {
             return new Money();
         if ("Distance".equals(name))
             return new Distance();
-        if ("Contact".equals(name))
-            return new Contact();
+        if ("ContactPoint".equals(name))
+            return new ContactPoint();
+        if ("ElementDefinition".equals(name))
+            return new ElementDefinition();
         if ("Extension".equals(name))
             return new Extension();
-        if ("Schedule".equals(name))
-            return new Schedule();
         if ("HumanName".equals(name))
             return new HumanName();
         if ("Address".equals(name))
@@ -193,8 +227,8 @@ public class ResourceFactory extends Factory {
             return new Ratio();
         if ("SampledData".equals(name))
             return new SampledData();
-        if ("ResourceReference".equals(name))
-            return new ResourceReference();
+        if ("Reference".equals(name))
+            return new Reference();
         if ("CodeableConcept".equals(name))
             return new CodeableConcept();
         if ("Identifier".equals(name))

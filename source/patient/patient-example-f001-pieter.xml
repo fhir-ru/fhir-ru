@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://hl7.org/fhir ../../schema/patient.xsd">
+  <id value="f001"/>
   <identifier>
     <use value="usual"/>
     <system value="urn:oid:2.16.840.1.113883.2.4.6.3"/>
@@ -35,7 +36,7 @@
       <use value="home"/>
       <line value="Van Egmondkade 23"/>
       <city value="Amsterdam"/>
-      <zip value="1024 RJ"/>
+      <postalCode value="1024 RJ"/>
       <country value="NLD"/> <!-- ISO 3166 Codes (Countries) -->
     </address>
   <maritalStatus>

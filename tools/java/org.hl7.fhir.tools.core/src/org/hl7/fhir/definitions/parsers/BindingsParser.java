@@ -1,6 +1,6 @@
 package org.hl7.fhir.definitions.parsers;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -35,6 +35,8 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.definitions.model.DefinedCode;
+import org.hl7.fhir.instance.model.ConceptMap;
+import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -83,8 +85,11 @@ public class BindingsParser {
 	    cd.setId(registry.idForName(cd.getName()));
 	    cd.setSource(filename);
 	    cd.setUri(sheet.getColumn(row, "Uri"));
-	    cd.setOid(sheet.getColumn(row, "Oid"));
+	    String oid = sheet.getColumn(row, "Oid");
+	    if (!Utilities.noString(oid))
+	      cd.setVsOid(oid); // no cs oid in this case
 	    cd.setWebSite(sheet.getColumn(row, "Website"));
+      cd.setStatus(ValueSet.ValuesetStatus.fromCode(sheet.getColumn(row, "Status")));
 	    cd.setEmail(sheet.getColumn(row, "Email"));
 	    cd.setV2Map(sheet.getColumn(row, "v2"));
 	    cd.setV3Map(sheet.getColumn(row, "v3"));
@@ -146,9 +151,11 @@ public class BindingsParser {
       c.setComment(sheet.getColumn(row, "Comment"));
       c.setV2Map(sheet.getColumn(row, "v2"));
       c.setV3Map(sheet.getColumn(row, "v3"));
+      for (String ct : sheet.columns) 
+        if (ct.startsWith("Display:") && !Utilities.noString(sheet.getColumn(row, ct)))
+          c.getLangs().put(ct.substring(8), sheet.getColumn(row, ct));
       cd.getCodes().add(c);
     }
     return true;
-    
   }
 }

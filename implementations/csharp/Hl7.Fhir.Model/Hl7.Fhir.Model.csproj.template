@@ -58,16 +58,26 @@
 		@@@MODELFILES@@@
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base64Binary.cs" />
+    <Compile Include="Bundle.cs" />
+    <Compile Include="BundleExtensions.cs" />
+    <Compile Include="FhirBoolean.cs" />
+    <Compile Include="FhirDecimal.cs" />
+    <Compile Include="FhirString.cs" />
+    <Compile Include="Id.cs" />
+    <Compile Include="IDeepComparable.cs" />
+    <Compile Include="Integer.cs" />
     <Compile Include="Introspection\ReferencesAttribute.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="Binary.cs" />
-    <Compile Include="Bundle.cs" />
-    <Compile Include="BundleEntry.cs" />
     <Compile Include="Code.cs" />
     <Compile Include="IDeepCopyable.cs" />
+    <Compile Include="Oid.cs" />
+    <Compile Include="DomainResource.cs" />
+    <Compile Include="OperationOutcomeExtensions.cs" />
     <Compile Include="Query.cs" />
     <Compile Include="Date.cs" />
-    <Compile Include="DeletedEntry.cs" />
+    <Compile Include="DeletedResource.cs" />
     <Compile Include="Element.cs" />
     <Compile Include="FhirDateTime.cs" />
     <Compile Include="FhirUri.cs" />
@@ -78,10 +88,14 @@
     <Compile Include="ModelInfo.cs" />
     <Compile Include="OperationOutcome.cs" />
     <Compile Include="Resource.cs" />
-    <Compile Include="ResourceEntry.cs" />
     <Compile Include="ResourceReference.cs" />
-    <Compile Include="TagList.cs" />
-    <Compile Include="UriLinkList.cs" />
+    <Compile Include="Support\Logging.cs" />
+    <Compile Include="Support\ReflectionHelper.cs" />
+    <Compile Include="Support\StringExtensions.cs" />
+    <Compile Include="Support\XmlNs.cs" />
+    <Compile Include="Uuid.cs" />
+    <Compile Include="Validation\DotNetAttributeValidation.cs" />
+    <Compile Include="ValueSet.cs" />
     <Compile Include="XHtml.cs" />
     <Compile Include="Introspection\NotMappedAttribute.cs" />
     <Compile Include="Introspection\FhirEnumerationAttribute.cs" />
@@ -99,10 +113,8 @@
     <Compile Include="Validation\InstantPatternAttribute.cs" />
     <Compile Include="Validation\InvokeIValidatableObjectAttribute.cs" />
     <Compile Include="Validation\IValidatableObject.cs" />
-    <Compile Include="Validation\FhirValidator.cs" />
     <Compile Include="Validation\NarrativeXhtmlPatternAttribute.cs" />
     <Compile Include="Validation\OidPatternAttribute.cs" />
-    <Compile Include="Validation\SchemaCollection.cs" />
     <Compile Include="Validation\UriPatternAttribute.cs" />
     <Compile Include="Validation\UuidPatternAttribute.cs" />
     <Compile Include="Validation\ValidationContextExtensions.cs" />

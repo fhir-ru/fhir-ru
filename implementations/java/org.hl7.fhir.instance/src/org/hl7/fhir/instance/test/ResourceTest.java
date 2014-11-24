@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -35,9 +35,9 @@ import java.io.FileOutputStream;
 import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.formats.Parser;
-import org.hl7.fhir.instance.formats.ResourceOrFeed;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
+import org.hl7.fhir.instance.model.Resource;
 
 public class ResourceTest {
 
@@ -59,26 +59,18 @@ public class ResourceTest {
       p = new JsonParser();
     else
       p = new XmlParser(false);
-    ResourceOrFeed rf = p.parseGeneral(new FileInputStream(source));
+    Resource rf = p.parse(new FileInputStream(source));
 
     FileOutputStream out = new FileOutputStream(source.getAbsoluteFile()+".out.json");
     JsonComposer json1 = new JsonComposer();
-    if (rf.getFeed() != null) 
-      json1.compose(out, rf.getFeed(), true);
-    else
-      json1.compose(out, rf.getResource(), true);
+    json1.compose(out, rf, true);
 
     JsonParser json = new JsonParser();
-    rf = json.parseGeneral(new FileInputStream(source.getAbsoluteFile()+".out.json"));
+    rf = json.parse(new FileInputStream(source.getAbsoluteFile()+".out.json"));
     
     out = new FileOutputStream(source.getAbsoluteFile()+".out.xml");
-    if (rf.getFeed() != null) {
-    	XmlComposer atom = new XmlComposer(); 
-      atom.compose(out, rf.getFeed(), true);
-    } else {
-      XmlComposer xml1 = new XmlComposer();
-      xml1.compose(out, rf.getResource(), true);
-    }
+    XmlComposer atom = new XmlComposer(); 
+    atom.compose(out, rf, true);
     
   }
 

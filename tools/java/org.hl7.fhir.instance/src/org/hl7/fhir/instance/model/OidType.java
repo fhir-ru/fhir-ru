@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -35,7 +35,14 @@ public class OidType extends UriType {
 
   private static final long serialVersionUID = -6684415951360862202L;
 
-	@Override
+	public OidType(String value) {
+    this.value = value;  
+  }
+
+  public OidType() {
+  }
+
+  @Override
   protected Type typedCopy() {
 		return copy();
 	}

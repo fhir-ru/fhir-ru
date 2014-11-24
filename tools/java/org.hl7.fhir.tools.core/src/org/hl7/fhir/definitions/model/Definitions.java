@@ -1,7 +1,7 @@
 package org.hl7.fhir.definitions.model;
 
 /*
- Copyright (c) 2011-2014, HL7, Inc
+ Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -36,7 +36,6 @@ import java.util.Map;
 
 import org.hl7.fhir.instance.model.ConceptMap;
 import org.hl7.fhir.instance.model.Profile;
-import org.hl7.fhir.instance.model.Profile.ProfileStructureComponent;
 import org.hl7.fhir.instance.model.ValueSet;
 
 /**
@@ -57,51 +56,50 @@ public class Definitions {
   public static final String LOINC_MAPPING = "http://loinc.org";
   public static final String SNOMED_MAPPING = "http://snomed.info";
   
-//  public static final String CDA_MAPPING = "";
-//  public static final String v2_MAPPING = "";
-//  public static final String DICOM_MAPPING = "";
-//  public static final String vCard_MAPPING = "";
-//  public static final String XDS_MAPPING = "";
-//  public static final String PROV_MAPPING = "";
-//  public static final String iCAL_MAPPING = "";
-//  public static final String ServD_MAPPING = "";
-
-    
+  // todo: these binding registries that create global name uniqueness requirement need to be removed?
+  // but global name uniqueness is still required? 
   private Map<String, BindingSpecification> bindings = new HashMap<String, BindingSpecification>();
   private List<BindingSpecification> commonBindings = new ArrayList<BindingSpecification>();
-	private Map<String, DefinedCode> knownResources = new HashMap<String, DefinedCode>();
-	private List<TypeRef> knownTypes = new ArrayList<TypeRef>();
-	private Map<String, ProfiledType> constraints = new HashMap<String, ProfiledType>();
 
-	private Map<String, DefinedCode> primitives = new HashMap<String, DefinedCode>();
+  // base definitions - types and resources of various kinds
+  private Map<String, DefinedCode> primitives = new HashMap<String, DefinedCode>();
+	private Map<String, ProfiledType> constraints = new HashMap<String, ProfiledType>();
 	private Map<String, TypeDefn> types = new HashMap<String, TypeDefn>();
 	private Map<String, TypeDefn> structures = new HashMap<String, TypeDefn>();
 	private Map<String, TypeDefn> infrastructure = new HashMap<String, TypeDefn>();
-	private List<String> shared = new ArrayList<String>(); 
+  private Map<String, ResourceDefn> baseResources = new HashMap<String, ResourceDefn>();
 	private Map<String, ResourceDefn> resources = new HashMap<String, ResourceDefn>();
-	private Map<String, ResourceDefn> futureResources = new HashMap<String, ResourceDefn>();
-	private List<String> deletedResources = new ArrayList<String>();
-	private ResourceDefn baseResource;
-  private List<String> aggregationEndpoints = new ArrayList<String>();
 
-	private Map<String, EventDefn> events = new HashMap<String, EventDefn>();
-	private Map<String, ProfileDefn> profiles = new HashMap<String, ProfileDefn>();
-  private Map<String, String> diagrams = new HashMap<String, String>();
+	// conformance packages not owned by a particular resource
+  private Map<String, ConformancePackage> packs = new HashMap<String, ConformancePackage>();
+
+  // indexes of above
+  private Map<String, DefinedCode> knownResources = new HashMap<String, DefinedCode>();
+  private List<TypeRef> knownTypes = new ArrayList<TypeRef>();
+  private Map<String, ArrayList<String>> statusCodes = new HashMap<String, ArrayList<String>>();
+
+  // access to raw resources - to be removed and replaced by worker context at some stage
   private Map<String, ValueSet> valuesets = new HashMap<String, ValueSet>();
   private Map<String, ConceptMap> conceptMaps = new HashMap<String, ConceptMap>();
-  
   private Map<String, ValueSet> codeSystems = new HashMap<String, ValueSet>();
   private Map<String, ValueSet> extraValuesets = new HashMap<String, ValueSet>();
-  private Map<String, ArrayList<String>> statusCodes = new HashMap<String, ArrayList<String>>();
-  private Map<String, MappingSpace> mapTypes = new HashMap<String, MappingSpace>();
 
+  // other miscellaineous lists
+  private List<String> deletedResources = new ArrayList<String>();
+  private List<String> shared = new ArrayList<String>(); 
+  private List<String> aggregationEndpoints = new ArrayList<String>();
+  private Map<String, EventDefn> events = new HashMap<String, EventDefn>();
+  private Map<String, String> diagrams = new HashMap<String, String>();
+  private Map<String, MappingSpace> mapTypes = new HashMap<String, MappingSpace>();
   private List<Compartment> compartments = new ArrayList<Compartment>();
   private List<String> pastVersions = new ArrayList<String>();
+
 
   
   // Returns the root TypeDefn of a CompositeType or Resource,
 	// excluding future Resources (as they don't have definitions yet).
 	public TypeDefn getElementDefn(String name) throws Exception {
+    
 		TypeDefn root = null;
 		if (types.containsKey(name))
 			root = types.get(name);
@@ -109,11 +107,12 @@ public class Definitions {
 			root = structures.get(name);
 		if (infrastructure.containsKey(name))
 			root = infrastructure.get(name);
+    if (baseResources.containsKey(name))
+      return baseResources.get(name).getRoot();
 		if (resources.containsKey(name))
 			root = resources.get(name).getRoot();
 		if (root == null)
-			throw new Exception("unable to find resource or composite type "
-					+ name);
+			throw new Exception("unable to find resource or composite type " + name);
 		return root;
 	}
 
@@ -187,16 +186,13 @@ public class Definitions {
 		return resources;
 	}
 	
-	// Returns the list of names (as codes) of all Resources under the
-	// [future-resources] section of the fhir.ini
-	public Map<String, ResourceDefn> getFutureResources() {
-		return futureResources;
-	}
-	
+
 	public ResourceDefn getResourceByName(String name) throws Exception {
 		ResourceDefn root = null;
 		if (resources.containsKey(name))
 			root = resources.get(name);
+    if (root == null)
+      root = baseResources.get(name);
 		if (root == null)
 			throw new Exception("unable to find resource '" + name+"'");
 		return root;
@@ -235,8 +231,8 @@ public class Definitions {
 
 	// Returns all defined Profiles, which are the profiles found
 	// under [profiles] in fhir.ini
-	public Map<String, ProfileDefn> getProfiles() {
-		return profiles;
+	public Map<String, ConformancePackage> getConformancePackages() {
+		return packs;
 	}
 
   public BindingSpecification getBindingByReference(String ref, BindingSpecification other) {
@@ -271,13 +267,9 @@ public class Definitions {
   public Map<String, String> getDiagrams() {
     return diagrams;
   }
-
-  public ResourceDefn getBaseResource() {
-    return baseResource;
-  }
-
-  public void setBaseResource(ResourceDefn baseResource) {
-    this.baseResource = baseResource;
+  
+  public Map<String, ResourceDefn> getBaseResources() {
+    return baseResources;
   }
 
   public List<BindingSpecification> getCommonBindings() {
@@ -342,13 +334,12 @@ public class Definitions {
     return mapTypes;
   }
 
-  public ProfileStructureComponent getSnapShotForType(String type) throws Exception {
+  public Profile getSnapShotForType(String type) throws Exception {
     ResourceDefn r = getResourceByName(type);
     if (r == null)
       throw new Exception("unable to find base definition for "+type);
-    for (ProfileStructureComponent s : r.getProfile().getStructure())
-      if (s.getSnapshot() != null)
-        return s;
+    if (r.getProfile().getSnapshot() != null)
+      return r.getProfile();
     throw new Exception("unable to find snapshot for "+type);
   }
 
@@ -356,43 +347,33 @@ public class Definitions {
     return null;
   }
 
-  public Profile getProfileByURL(String url) {
-    if (url.contains("#"))
-      url = url.substring(0, url.indexOf('#'));
-    for (ProfileDefn p : profiles.values())
-      if (p.getSource() != null && p.getSource().getUrlSimple().equals(url))
-        return p.getSource();
-    for (ResourceDefn rd : resources.values()) {
-      for (RegisteredProfile p : rd.getProfiles()) {
-        if (p.getProfile().getSource().getUrlSimple().equals(url)) {
-          return p.getProfile().getSource();
-        }
-      }
-    }
-    return null;
-  }
-
-  public ProfileStructureComponent getSnapShotForProfile(String base) throws Exception {
-    String[] parts = base.split("#");
-    if (parts[0].startsWith("http://hl7.org/fhir/Profile/") && parts.length == 1) {
-      String name = base.substring(28);
-      if (hasType(name) || hasResource(name)) 
-        return getSnapShotForType(name);
-    }
-    Profile p = getProfileByURL(parts[0]);
-    if (p == null)
-      throw new Exception("unable to find base definition for "+base);
-    if (parts.length == 1) {
-      if (p.getStructure().size() != 1)
-        throw new Exception("Profile "+base+" has multiple structures");
-      if (p.getStructure().get(0).getSnapshot() == null)
-        throw new Exception("Profile "+base+" has no snapshot"); // or else we could fill it in? 
-      return p.getStructure().get(0);
-    }
-    for (ProfileStructureComponent s : p.getStructure())
-      if (s.getSnapshot() != null && p.getNameSimple().equals(parts[1]))
-        return s;
-    throw new Exception("Unable to find snapshot for "+base);
-  }
-
+//  public Profile getProfileByURL(String url) {
+//    if (url.contains("#"))
+//      url = url.substring(0, url.indexOf('#'));
+//    for (ProfileDefn p : profiles.values())
+//      if (p.getSource() != null && p.getSource().getUrl().equals(url))
+//        return p.getSource();
+//    for (ResourceDefn rd : resources.values()) {
+//      for (RegisteredProfile p : rd.getProfiles()) {
+//        if (p.getProfile().getSource().getUrl().equals(url)) {
+//          return p.getProfile().getSource();
+//        }
+//      }
+//    }
+//    return null;
+//  }
+//
+//  public Profile getSnapShotForProfile(String base) throws Exception {
+//    String[] parts = base.split("#");
+//    if (parts[0].startsWith("http://hl7.org/fhir/Profile/") && parts.length == 1) {
+//      String name = base.substring(28);
+//      if (hasType(name) || hasResource(name)) 
+//        return getSnapShotForType(name);
+//    }
+//    Profile p = getProfileByURL(parts[0]);
+//    if (p == null)
+//      throw new Exception("unable to find base definition for "+base);
+//    return p;
+//  }
+//
 }

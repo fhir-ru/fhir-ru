@@ -44,5 +44,11 @@ namespace Hl7.Fhir.Model
         {
             return new Date(DateTime.Now.ToString("yyyy-MM-dd"));
         }
+
+        public static bool IsValidValue(string value)
+        {
+            return Regex.IsMatch(value, "^" + Date.PATTERN + "$", RegexOptions.Singleline);
+        }
+
     }
 }

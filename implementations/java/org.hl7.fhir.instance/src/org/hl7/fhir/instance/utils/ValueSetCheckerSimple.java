@@ -2,13 +2,14 @@ package org.hl7.fhir.instance.utils;
 
 import java.util.List;
 
-import org.hl7.fhir.instance.model.CodeType;
 import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.ValueSet;
+import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
+import org.hl7.fhir.instance.model.ValueSet.ConceptReferenceComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetFilterComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineConceptComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionContainsComponent;
+import org.hl7.fhir.instance.utils.ValueSetExpander.ETooCostly;
 import org.hl7.fhir.instance.utils.ValueSetExpander.ValueSetExpansionOutcome;
 
 public class ValueSetCheckerSimple implements ValueSetChecker {
@@ -24,8 +25,8 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
   }
 
   @Override
-  public boolean codeInValueSet(String system, String code) {
-    if (valueset.getDefine() != null && system.equals(valueset.getDefine().getSystemSimple()) && codeInDefine(valueset.getDefine().getConcept(), code, valueset.getDefine().getCaseSensitiveSimple()))
+  public boolean codeInValueSet(String system, String code) throws ETooCostly {
+    if (valueset.getDefine() != null && system.equals(valueset.getDefine().getSystem()) && codeInDefine(valueset.getDefine().getConcept(), code, valueset.getDefine().getCaseSensitive()))
      return true;
 
     if (valueset.getCompose() != null) {
@@ -44,19 +45,19 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
     return false;
   }
 
-  private boolean inImport(String uri, String system, String code) {
-    ValueSet vs = context.getValueSets().get(uri).getResource();
+  private boolean inImport(String uri, String system, String code) throws ETooCostly {
+    ValueSet vs = context.getValueSets().get(uri);
     if (vs == null) 
       return false ; // we can't tell
     return codeInExpansion(factory.getExpander().expand(vs), system, code);
   }
 
-  private boolean codeInExpansion(ValueSetExpansionOutcome vso, String system, String code) {
+  private boolean codeInExpansion(ValueSetExpansionOutcome vso, String system, String code) throws ETooCostly {
     if (vso.getService() != null) {
       return vso.getService().codeInValueSet(system, code);
     } else {
       for (ValueSetExpansionContainsComponent c : vso.getValueset().getExpansion().getContains()) {
-        if (code.equals(c.getCodeSimple()) && (system == null || system.equals(c.getSystemSimple())))
+        if (code.equals(c.getCode()) && (system == null || system.equals(c.getSystem())))
           return true;
         if (codeinExpansion(c, system, code)) 
           return true;
@@ -67,7 +68,7 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
 
   private boolean codeinExpansion(ValueSetExpansionContainsComponent cnt, String system, String code) {
     for (ValueSetExpansionContainsComponent c : cnt.getContains()) {
-      if (code.equals(c.getCodeSimple()) && system.equals(c.getSystemSimple().toString()))
+      if (code.equals(c.getCode()) && system.equals(c.getSystem().toString()))
         return true;
       if (codeinExpansion(c, system, code)) 
         return true;
@@ -77,28 +78,28 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
 
 
   private boolean inComponent(ConceptSetComponent vsi, String system, String code) {
-    if (!vsi.getSystemSimple().equals(system))
+    if (!vsi.getSystem().equals(system))
       return false; 
     // whether we know the system or not, we'll accept the stated codes at face value
-    for (CodeType cc : vsi.getCode())
-      if (cc.getValue().equals(code)) {
-        return false;
+    for (ConceptReferenceComponent cc : vsi.getConcept())
+      if (cc.getCode().equals(code)) {
+        return true;
       }
       
     if (context.getCodeSystems().containsKey(system)) {
-      ValueSet def = context.getCodeSystems().get(system).getResource();
-      if (!def.getDefine().getCaseSensitiveSimple()) {
+      ValueSet def = context.getCodeSystems().get(system);
+      if (!def.getDefine().getCaseSensitive()) {
         // well, ok, it's not case sensitive - we'll check that too now
-        for (CodeType cc : vsi.getCode())
-          if (cc.getValue().equalsIgnoreCase(code)) {
+        for (ConceptReferenceComponent cc : vsi.getConcept())
+          if (cc.getCode().equalsIgnoreCase(code)) {
             return false;
           }
       }
-      if (vsi.getCode().isEmpty() && vsi.getFilter().isEmpty()) {
-        return codeInDefine(def.getDefine().getConcept(), code, def.getDefine().getCaseSensitiveSimple());
+      if (vsi.getConcept().isEmpty() && vsi.getFilter().isEmpty()) {
+        return codeInDefine(def.getDefine().getConcept(), code, def.getDefine().getCaseSensitive());
       }
       for (ConceptSetFilterComponent f: vsi.getFilter())
-        throw new Error("not done yet: "+f.getValueSimple());
+        throw new Error("not done yet: "+f.getValue());
 
       return false;
     } else if (context.getTerminologyServices().supportsSystem(system)) {
@@ -108,11 +109,11 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
       return false;
   }
 
-  private boolean codeInDefine(List<ValueSetDefineConceptComponent> concepts, String code, boolean caseSensitive) {
-    for (ValueSetDefineConceptComponent c : concepts) {
-      if (caseSensitive && code.equals(c.getCodeSimple()))
+  private boolean codeInDefine(List<ConceptDefinitionComponent> concepts, String code, boolean caseSensitive) {
+    for (ConceptDefinitionComponent c : concepts) {
+      if (caseSensitive && code.equals(c.getCode()))
         return true;
-      if (!caseSensitive && code.equalsIgnoreCase(c.getCodeSimple()))
+      if (!caseSensitive && code.equalsIgnoreCase(c.getCode()))
         return true;
       if (codeInDefine(c.getConcept(), code, caseSensitive))
         return true;

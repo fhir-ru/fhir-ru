@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,36 +29,53 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * Describes the intention of how one or more practitioners intend to deliver care for a particular patient for a period of time, possibly limited to care for a specific condition or set of conditions.
  */
-public class CarePlan extends Resource {
+public class CarePlan extends DomainResource {
 
     public enum CarePlanStatus {
-        planned, // The plan is in development or awaiting use but is not yet intended to be acted upon.
-        active, // The plan is intended to be followed and used as part of patient care.
-        completed, // The plan is no longer in use and is not expected to be followed or used in patient care.
-        Null; // added to help the parsers
+        PLANNED, // The plan is in development or awaiting use but is not yet intended to be acted upon.
+        ACTIVE, // The plan is intended to be followed and used as part of patient care.
+        COMPLETED, // The plan is no longer in use and is not expected to be followed or used in patient care.
+        NULL; // added to help the parsers
         public static CarePlanStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("planned".equals(codeString))
-          return planned;
+          return PLANNED;
         if ("active".equals(codeString))
-          return active;
+          return ACTIVE;
         if ("completed".equals(codeString))
-          return completed;
+          return COMPLETED;
         throw new Exception("Unknown CarePlanStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case planned: return "planned";
-            case active: return "active";
-            case completed: return "completed";
+            case PLANNED: return "planned";
+            case ACTIVE: return "active";
+            case COMPLETED: return "completed";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case PLANNED: return "The plan is in development or awaiting use but is not yet intended to be acted upon.";
+            case ACTIVE: return "The plan is intended to be followed and used as part of patient care.";
+            case COMPLETED: return "The plan is no longer in use and is not expected to be followed or used in patient care.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case PLANNED: return "planned";
+            case ACTIVE: return "active";
+            case COMPLETED: return "completed";
             default: return "?";
           }
         }
@@ -70,49 +87,67 @@ public class CarePlan extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("planned".equals(codeString))
-          return CarePlanStatus.planned;
+          return CarePlanStatus.PLANNED;
         if ("active".equals(codeString))
-          return CarePlanStatus.active;
+          return CarePlanStatus.ACTIVE;
         if ("completed".equals(codeString))
-          return CarePlanStatus.completed;
+          return CarePlanStatus.COMPLETED;
         throw new Exception("Unknown CarePlanStatus code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == CarePlanStatus.planned)
+      if (code == CarePlanStatus.PLANNED)
         return "planned";
-      if (code == CarePlanStatus.active)
+      if (code == CarePlanStatus.ACTIVE)
         return "active";
-      if (code == CarePlanStatus.completed)
+      if (code == CarePlanStatus.COMPLETED)
         return "completed";
       return "?";
       }
     }
 
     public enum CarePlanGoalStatus {
-        inProgress, // The goal is being sought but has not yet been reached.  (Also applies if goal was reached in the past but there has been regression and goal is being sought again).
-        achieved, // The goal has been met and no further action is needed.
-        sustaining, // The goal has been met, but ongoing activity is needed to sustain the goal objective.
-        cancelled, // The goal is no longer being sought.
-        Null; // added to help the parsers
+        INPROGRESS, // The goal is being sought but has not yet been reached.  (Also applies if goal was reached in the past but there has been regression and goal is being sought again).
+        ACHIEVED, // The goal has been met and no further action is needed.
+        SUSTAINING, // The goal has been met, but ongoing activity is needed to sustain the goal objective.
+        CANCELLED, // The goal is no longer being sought.
+        NULL; // added to help the parsers
         public static CarePlanGoalStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("in progress".equals(codeString))
-          return inProgress;
+          return INPROGRESS;
         if ("achieved".equals(codeString))
-          return achieved;
+          return ACHIEVED;
         if ("sustaining".equals(codeString))
-          return sustaining;
+          return SUSTAINING;
         if ("cancelled".equals(codeString))
-          return cancelled;
+          return CANCELLED;
         throw new Exception("Unknown CarePlanGoalStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case inProgress: return "in progress";
-            case achieved: return "achieved";
-            case sustaining: return "sustaining";
-            case cancelled: return "cancelled";
+            case INPROGRESS: return "in progress";
+            case ACHIEVED: return "achieved";
+            case SUSTAINING: return "sustaining";
+            case CANCELLED: return "cancelled";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case INPROGRESS: return "The goal is being sought but has not yet been reached.  (Also applies if goal was reached in the past but there has been regression and goal is being sought again).";
+            case ACHIEVED: return "The goal has been met and no further action is needed.";
+            case SUSTAINING: return "The goal has been met, but ongoing activity is needed to sustain the goal objective.";
+            case CANCELLED: return "The goal is no longer being sought.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case INPROGRESS: return "in progress";
+            case ACHIEVED: return "achieved";
+            case SUSTAINING: return "sustaining";
+            case CANCELLED: return "cancelled";
             default: return "?";
           }
         }
@@ -124,61 +159,83 @@ public class CarePlan extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("in progress".equals(codeString))
-          return CarePlanGoalStatus.inProgress;
+          return CarePlanGoalStatus.INPROGRESS;
         if ("achieved".equals(codeString))
-          return CarePlanGoalStatus.achieved;
+          return CarePlanGoalStatus.ACHIEVED;
         if ("sustaining".equals(codeString))
-          return CarePlanGoalStatus.sustaining;
+          return CarePlanGoalStatus.SUSTAINING;
         if ("cancelled".equals(codeString))
-          return CarePlanGoalStatus.cancelled;
+          return CarePlanGoalStatus.CANCELLED;
         throw new Exception("Unknown CarePlanGoalStatus code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == CarePlanGoalStatus.inProgress)
+      if (code == CarePlanGoalStatus.INPROGRESS)
         return "in progress";
-      if (code == CarePlanGoalStatus.achieved)
+      if (code == CarePlanGoalStatus.ACHIEVED)
         return "achieved";
-      if (code == CarePlanGoalStatus.sustaining)
+      if (code == CarePlanGoalStatus.SUSTAINING)
         return "sustaining";
-      if (code == CarePlanGoalStatus.cancelled)
+      if (code == CarePlanGoalStatus.CANCELLED)
         return "cancelled";
       return "?";
       }
     }
 
     public enum CarePlanActivityStatus {
-        notStarted, // Activity is planned but no action has yet been taken.
-        scheduled, // Appointment or other booking has occurred but activity has not yet begun.
-        inProgress, // Activity has been started but is not yet complete.
-        onHold, // Activity was started but has temporarily ceased with an expectation of resumption at a future time.
-        completed, // The activities have been completed (more or less) as planned.
-        cancelled, // The activities have been ended prior to completion (perhaps even before they were started).
-        Null; // added to help the parsers
+        NOTSTARTED, // Activity is planned but no action has yet been taken.
+        SCHEDULED, // Appointment or other booking has occurred but activity has not yet begun.
+        INPROGRESS, // Activity has been started but is not yet complete.
+        ONHOLD, // Activity was started but has temporarily ceased with an expectation of resumption at a future time.
+        COMPLETED, // The activities have been completed (more or less) as planned.
+        CANCELLED, // The activities have been ended prior to completion (perhaps even before they were started).
+        NULL; // added to help the parsers
         public static CarePlanActivityStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("not started".equals(codeString))
-          return notStarted;
+          return NOTSTARTED;
         if ("scheduled".equals(codeString))
-          return scheduled;
+          return SCHEDULED;
         if ("in progress".equals(codeString))
-          return inProgress;
+          return INPROGRESS;
         if ("on hold".equals(codeString))
-          return onHold;
+          return ONHOLD;
         if ("completed".equals(codeString))
-          return completed;
+          return COMPLETED;
         if ("cancelled".equals(codeString))
-          return cancelled;
+          return CANCELLED;
         throw new Exception("Unknown CarePlanActivityStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case notStarted: return "not started";
-            case scheduled: return "scheduled";
-            case inProgress: return "in progress";
-            case onHold: return "on hold";
-            case completed: return "completed";
-            case cancelled: return "cancelled";
+            case NOTSTARTED: return "not started";
+            case SCHEDULED: return "scheduled";
+            case INPROGRESS: return "in progress";
+            case ONHOLD: return "on hold";
+            case COMPLETED: return "completed";
+            case CANCELLED: return "cancelled";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case NOTSTARTED: return "Activity is planned but no action has yet been taken.";
+            case SCHEDULED: return "Appointment or other booking has occurred but activity has not yet begun.";
+            case INPROGRESS: return "Activity has been started but is not yet complete.";
+            case ONHOLD: return "Activity was started but has temporarily ceased with an expectation of resumption at a future time.";
+            case COMPLETED: return "The activities have been completed (more or less) as planned.";
+            case CANCELLED: return "The activities have been ended prior to completion (perhaps even before they were started).";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case NOTSTARTED: return "not started";
+            case SCHEDULED: return "scheduled";
+            case INPROGRESS: return "in progress";
+            case ONHOLD: return "on hold";
+            case COMPLETED: return "completed";
+            case CANCELLED: return "cancelled";
             default: return "?";
           }
         }
@@ -190,73 +247,97 @@ public class CarePlan extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("not started".equals(codeString))
-          return CarePlanActivityStatus.notStarted;
+          return CarePlanActivityStatus.NOTSTARTED;
         if ("scheduled".equals(codeString))
-          return CarePlanActivityStatus.scheduled;
+          return CarePlanActivityStatus.SCHEDULED;
         if ("in progress".equals(codeString))
-          return CarePlanActivityStatus.inProgress;
+          return CarePlanActivityStatus.INPROGRESS;
         if ("on hold".equals(codeString))
-          return CarePlanActivityStatus.onHold;
+          return CarePlanActivityStatus.ONHOLD;
         if ("completed".equals(codeString))
-          return CarePlanActivityStatus.completed;
+          return CarePlanActivityStatus.COMPLETED;
         if ("cancelled".equals(codeString))
-          return CarePlanActivityStatus.cancelled;
+          return CarePlanActivityStatus.CANCELLED;
         throw new Exception("Unknown CarePlanActivityStatus code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == CarePlanActivityStatus.notStarted)
+      if (code == CarePlanActivityStatus.NOTSTARTED)
         return "not started";
-      if (code == CarePlanActivityStatus.scheduled)
+      if (code == CarePlanActivityStatus.SCHEDULED)
         return "scheduled";
-      if (code == CarePlanActivityStatus.inProgress)
+      if (code == CarePlanActivityStatus.INPROGRESS)
         return "in progress";
-      if (code == CarePlanActivityStatus.onHold)
+      if (code == CarePlanActivityStatus.ONHOLD)
         return "on hold";
-      if (code == CarePlanActivityStatus.completed)
+      if (code == CarePlanActivityStatus.COMPLETED)
         return "completed";
-      if (code == CarePlanActivityStatus.cancelled)
+      if (code == CarePlanActivityStatus.CANCELLED)
         return "cancelled";
       return "?";
       }
     }
 
     public enum CarePlanActivityCategory {
-        diet, // Plan for the patient to consume food of a specified nature.
-        drug, // Plan for the patient to consume/receive a drug, vaccine or other product.
-        encounter, // Plan to meet or communicate with the patient (in-patient, out-patient, phone call, etc.).
-        observation, // Plan to capture information about a patient (vitals, labs, diagnostic images, etc.).
-        procedure, // Plan to modify the patient in some way (surgery, physiotherapy, education, counseling, etc.).
-        supply, // Plan to provide something to the patient (medication, medical supply, etc.).
-        other, // Some other form of action.
-        Null; // added to help the parsers
+        DIET, // Plan for the patient to consume food of a specified nature.
+        DRUG, // Plan for the patient to consume/receive a drug, vaccine or other product.
+        ENCOUNTER, // Plan to meet or communicate with the patient (in-patient, out-patient, phone call, etc.).
+        OBSERVATION, // Plan to capture information about a patient (vitals, labs, diagnostic images, etc.).
+        PROCEDURE, // Plan to modify the patient in some way (surgery, physiotherapy, education, counseling, etc.).
+        SUPPLY, // Plan to provide something to the patient (medication, medical supply, etc.).
+        OTHER, // Some other form of action.
+        NULL; // added to help the parsers
         public static CarePlanActivityCategory fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("diet".equals(codeString))
-          return diet;
+          return DIET;
         if ("drug".equals(codeString))
-          return drug;
+          return DRUG;
         if ("encounter".equals(codeString))
-          return encounter;
+          return ENCOUNTER;
         if ("observation".equals(codeString))
-          return observation;
+          return OBSERVATION;
         if ("procedure".equals(codeString))
-          return procedure;
+          return PROCEDURE;
         if ("supply".equals(codeString))
-          return supply;
+          return SUPPLY;
         if ("other".equals(codeString))
-          return other;
+          return OTHER;
         throw new Exception("Unknown CarePlanActivityCategory code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case diet: return "diet";
-            case drug: return "drug";
-            case encounter: return "encounter";
-            case observation: return "observation";
-            case procedure: return "procedure";
-            case supply: return "supply";
-            case other: return "other";
+            case DIET: return "diet";
+            case DRUG: return "drug";
+            case ENCOUNTER: return "encounter";
+            case OBSERVATION: return "observation";
+            case PROCEDURE: return "procedure";
+            case SUPPLY: return "supply";
+            case OTHER: return "other";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case DIET: return "Plan for the patient to consume food of a specified nature.";
+            case DRUG: return "Plan for the patient to consume/receive a drug, vaccine or other product.";
+            case ENCOUNTER: return "Plan to meet or communicate with the patient (in-patient, out-patient, phone call, etc.).";
+            case OBSERVATION: return "Plan to capture information about a patient (vitals, labs, diagnostic images, etc.).";
+            case PROCEDURE: return "Plan to modify the patient in some way (surgery, physiotherapy, education, counseling, etc.).";
+            case SUPPLY: return "Plan to provide something to the patient (medication, medical supply, etc.).";
+            case OTHER: return "Some other form of action.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case DIET: return "diet";
+            case DRUG: return "drug";
+            case ENCOUNTER: return "encounter";
+            case OBSERVATION: return "observation";
+            case PROCEDURE: return "procedure";
+            case SUPPLY: return "supply";
+            case OTHER: return "other";
             default: return "?";
           }
         }
@@ -268,35 +349,35 @@ public class CarePlan extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("diet".equals(codeString))
-          return CarePlanActivityCategory.diet;
+          return CarePlanActivityCategory.DIET;
         if ("drug".equals(codeString))
-          return CarePlanActivityCategory.drug;
+          return CarePlanActivityCategory.DRUG;
         if ("encounter".equals(codeString))
-          return CarePlanActivityCategory.encounter;
+          return CarePlanActivityCategory.ENCOUNTER;
         if ("observation".equals(codeString))
-          return CarePlanActivityCategory.observation;
+          return CarePlanActivityCategory.OBSERVATION;
         if ("procedure".equals(codeString))
-          return CarePlanActivityCategory.procedure;
+          return CarePlanActivityCategory.PROCEDURE;
         if ("supply".equals(codeString))
-          return CarePlanActivityCategory.supply;
+          return CarePlanActivityCategory.SUPPLY;
         if ("other".equals(codeString))
-          return CarePlanActivityCategory.other;
+          return CarePlanActivityCategory.OTHER;
         throw new Exception("Unknown CarePlanActivityCategory code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == CarePlanActivityCategory.diet)
+      if (code == CarePlanActivityCategory.DIET)
         return "diet";
-      if (code == CarePlanActivityCategory.drug)
+      if (code == CarePlanActivityCategory.DRUG)
         return "drug";
-      if (code == CarePlanActivityCategory.encounter)
+      if (code == CarePlanActivityCategory.ENCOUNTER)
         return "encounter";
-      if (code == CarePlanActivityCategory.observation)
+      if (code == CarePlanActivityCategory.OBSERVATION)
         return "observation";
-      if (code == CarePlanActivityCategory.procedure)
+      if (code == CarePlanActivityCategory.PROCEDURE)
         return "procedure";
-      if (code == CarePlanActivityCategory.supply)
+      if (code == CarePlanActivityCategory.SUPPLY)
         return "supply";
-      if (code == CarePlanActivityCategory.other)
+      if (code == CarePlanActivityCategory.OTHER)
         return "other";
       return "?";
       }
@@ -311,20 +392,20 @@ public class CarePlan extends Resource {
         /**
          * The specific person or organization who is participating/expected to participate in the care plan.
          */
-        protected ResourceReference member;
+        protected Reference member;
 
         /**
          * The actual object that is the target of the reference (The specific person or organization who is participating/expected to participate in the care plan.)
          */
         protected Resource memberTarget;
 
-        private static final long serialVersionUID = -1745583963L;
+        private static final long serialVersionUID = -466811117L;
 
       public CarePlanParticipantComponent() {
         super();
       }
 
-      public CarePlanParticipantComponent(ResourceReference member) {
+      public CarePlanParticipantComponent(Reference member) {
         super();
         this.member = member;
       }
@@ -347,27 +428,27 @@ public class CarePlan extends Resource {
         /**
          * @return {@link #member} (The specific person or organization who is participating/expected to participate in the care plan.)
          */
-        public ResourceReference getMember() { 
+        public Reference getMember() { 
           return this.member;
         }
 
         /**
          * @param value {@link #member} (The specific person or organization who is participating/expected to participate in the care plan.)
          */
-        public CarePlanParticipantComponent setMember(ResourceReference value) { 
+        public CarePlanParticipantComponent setMember(Reference value) { 
           this.member = value;
           return this;
         }
 
         /**
-         * @return {@link #member} (The actual object that is the target of the reference. The specific person or organization who is participating/expected to participate in the care plan.)
+         * @return {@link #member} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The specific person or organization who is participating/expected to participate in the care plan.)
          */
         public Resource getMemberTarget() { 
           return this.memberTarget;
         }
 
         /**
-         * @param value {@link #member} (The actual object that is the target of the reference. The specific person or organization who is participating/expected to participate in the care plan.)
+         * @param value {@link #member} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The specific person or organization who is participating/expected to participate in the care plan.)
          */
         public CarePlanParticipantComponent setMemberTarget(Resource value) { 
           this.memberTarget = value;
@@ -377,11 +458,12 @@ public class CarePlan extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("role", "CodeableConcept", "Indicates specific responsibility of an individual within the care plan.  E.g. 'Primary physician', 'Team coordinator', 'Caregiver', etc.", 0, java.lang.Integer.MAX_VALUE, role));
-          childrenList.add(new Property("member", "Resource(Practitioner|RelatedPerson|Patient|Organization)", "The specific person or organization who is participating/expected to participate in the care plan.", 0, java.lang.Integer.MAX_VALUE, member));
+          childrenList.add(new Property("member", "Reference(Practitioner|RelatedPerson|Patient|Organization)", "The specific person or organization who is participating/expected to participate in the care plan.", 0, java.lang.Integer.MAX_VALUE, member));
         }
 
       public CarePlanParticipantComponent copy() {
         CarePlanParticipantComponent dst = new CarePlanParticipantComponent();
+        copyValues(dst);
         dst.role = role == null ? null : role.copy();
         dst.member = member == null ? null : member.copy();
         return dst;
@@ -408,14 +490,14 @@ public class CarePlan extends Resource {
         /**
          * The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.
          */
-        protected List<ResourceReference> concern = new ArrayList<ResourceReference>();
+        protected List<Reference> concern = new ArrayList<Reference>();
         /**
          * The actual objects that are the target of the reference (The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.)
          */
         protected List<Condition> concernTarget = new ArrayList<Condition>();
 
 
-        private static final long serialVersionUID = -483526324L;
+        private static final long serialVersionUID = 1077443852L;
 
       public CarePlanGoalComponent() {
         super();
@@ -427,16 +509,16 @@ public class CarePlan extends Resource {
       }
 
         /**
-         * @return {@link #description} (Human-readable description of a specific desired objective of the care plan.)
+         * @return {@link #description} (Human-readable description of a specific desired objective of the care plan.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
          */
-        public StringType getDescription() { 
+        public StringType getDescriptionElement() { 
           return this.description;
         }
 
         /**
-         * @param value {@link #description} (Human-readable description of a specific desired objective of the care plan.)
+         * @param value {@link #description} (Human-readable description of a specific desired objective of the care plan.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
          */
-        public CarePlanGoalComponent setDescription(StringType value) { 
+        public CarePlanGoalComponent setDescriptionElement(StringType value) { 
           this.description = value;
           return this;
         }
@@ -444,14 +526,14 @@ public class CarePlan extends Resource {
         /**
          * @return Human-readable description of a specific desired objective of the care plan.
          */
-        public String getDescriptionSimple() { 
+        public String getDescription() { 
           return this.description == null ? null : this.description.getValue();
         }
 
         /**
          * @param value Human-readable description of a specific desired objective of the care plan.
          */
-        public CarePlanGoalComponent setDescriptionSimple(String value) { 
+        public CarePlanGoalComponent setDescription(String value) { 
             if (this.description == null)
               this.description = new StringType();
             this.description.setValue(value);
@@ -459,16 +541,16 @@ public class CarePlan extends Resource {
         }
 
         /**
-         * @return {@link #status} (Indicates whether the goal has been reached and is still considered relevant.)
+         * @return {@link #status} (Indicates whether the goal has been reached and is still considered relevant.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
          */
-        public Enumeration<CarePlanGoalStatus> getStatus() { 
+        public Enumeration<CarePlanGoalStatus> getStatusElement() { 
           return this.status;
         }
 
         /**
-         * @param value {@link #status} (Indicates whether the goal has been reached and is still considered relevant.)
+         * @param value {@link #status} (Indicates whether the goal has been reached and is still considered relevant.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
          */
-        public CarePlanGoalComponent setStatus(Enumeration<CarePlanGoalStatus> value) { 
+        public CarePlanGoalComponent setStatusElement(Enumeration<CarePlanGoalStatus> value) { 
           this.status = value;
           return this;
         }
@@ -476,14 +558,14 @@ public class CarePlan extends Resource {
         /**
          * @return Indicates whether the goal has been reached and is still considered relevant.
          */
-        public CarePlanGoalStatus getStatusSimple() { 
+        public CarePlanGoalStatus getStatus() { 
           return this.status == null ? null : this.status.getValue();
         }
 
         /**
          * @param value Indicates whether the goal has been reached and is still considered relevant.
          */
-        public CarePlanGoalComponent setStatusSimple(CarePlanGoalStatus value) { 
+        public CarePlanGoalComponent setStatus(CarePlanGoalStatus value) { 
           if (value == null)
             this.status = null;
           else {
@@ -495,16 +577,16 @@ public class CarePlan extends Resource {
         }
 
         /**
-         * @return {@link #notes} (Any comments related to the goal.)
+         * @return {@link #notes} (Any comments related to the goal.). This is the underlying object with id, value and extensions. The accessor "getNotes" gives direct access to the value
          */
-        public StringType getNotes() { 
+        public StringType getNotesElement() { 
           return this.notes;
         }
 
         /**
-         * @param value {@link #notes} (Any comments related to the goal.)
+         * @param value {@link #notes} (Any comments related to the goal.). This is the underlying object with id, value and extensions. The accessor "getNotes" gives direct access to the value
          */
-        public CarePlanGoalComponent setNotes(StringType value) { 
+        public CarePlanGoalComponent setNotesElement(StringType value) { 
           this.notes = value;
           return this;
         }
@@ -512,15 +594,15 @@ public class CarePlan extends Resource {
         /**
          * @return Any comments related to the goal.
          */
-        public String getNotesSimple() { 
+        public String getNotes() { 
           return this.notes == null ? null : this.notes.getValue();
         }
 
         /**
          * @param value Any comments related to the goal.
          */
-        public CarePlanGoalComponent setNotesSimple(String value) { 
-          if (value == null)
+        public CarePlanGoalComponent setNotes(String value) { 
+          if (Utilities.noString(value))
             this.notes = null;
           else {
             if (this.notes == null)
@@ -533,22 +615,22 @@ public class CarePlan extends Resource {
         /**
          * @return {@link #concern} (The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.)
          */
-        public List<ResourceReference> getConcern() { 
+        public List<Reference> getConcern() { 
           return this.concern;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #concern} (The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.)
          */
-        public ResourceReference addConcern() { 
-          ResourceReference t = new ResourceReference();
+    // syntactic sugar
+        public Reference addConcern() { //3
+          Reference t = new Reference();
           this.concern.add(t);
           return t;
         }
 
         /**
-         * @return {@link #concern} (The actual objects that are the target of the reference. The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.)
+         * @return {@link #concern} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.)
          */
         public List<Condition> getConcernTarget() { 
           return this.concernTarget;
@@ -556,7 +638,7 @@ public class CarePlan extends Resource {
 
     // syntactic sugar
         /**
-         * @return {@link #concern} (Add an actual object that is the target of the reference. The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.)
+         * @return {@link #concern} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.)
          */
         public Condition addConcernTarget() { 
           Condition r = new Condition();
@@ -569,16 +651,17 @@ public class CarePlan extends Resource {
           childrenList.add(new Property("description", "string", "Human-readable description of a specific desired objective of the care plan.", 0, java.lang.Integer.MAX_VALUE, description));
           childrenList.add(new Property("status", "code", "Indicates whether the goal has been reached and is still considered relevant.", 0, java.lang.Integer.MAX_VALUE, status));
           childrenList.add(new Property("notes", "string", "Any comments related to the goal.", 0, java.lang.Integer.MAX_VALUE, notes));
-          childrenList.add(new Property("concern", "Resource(Condition)", "The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.", 0, java.lang.Integer.MAX_VALUE, concern));
+          childrenList.add(new Property("concern", "Reference(Condition)", "The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.", 0, java.lang.Integer.MAX_VALUE, concern));
         }
 
       public CarePlanGoalComponent copy() {
         CarePlanGoalComponent dst = new CarePlanGoalComponent();
+        copyValues(dst);
         dst.description = description == null ? null : description.copy();
         dst.status = status == null ? null : status.copy();
         dst.notes = notes == null ? null : notes.copy();
-        dst.concern = new ArrayList<ResourceReference>();
-        for (ResourceReference i : concern)
+        dst.concern = new ArrayList<Reference>();
+        for (Reference i : concern)
           dst.concern.add(i.copy());
         return dst;
       }
@@ -589,7 +672,7 @@ public class CarePlan extends Resource {
         /**
          * Internal reference that identifies the goals that this activity is intended to contribute towards meeting.
          */
-        protected List<StringType> goal = new ArrayList<StringType>();
+        protected List<UriType> goal = new ArrayList<UriType>();
 
         /**
          * Identifies what progress is being made for the specific activity.
@@ -604,7 +687,7 @@ public class CarePlan extends Resource {
         /**
          * Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.
          */
-        protected List<ResourceReference> actionResulting = new ArrayList<ResourceReference>();
+        protected List<Reference> actionResulting = new ArrayList<Reference>();
         /**
          * The actual objects that are the target of the reference (Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.)
          */
@@ -619,7 +702,7 @@ public class CarePlan extends Resource {
         /**
          * The details of the proposed activity represented in a specific resource.
          */
-        protected ResourceReference detail;
+        protected Reference detail;
 
         /**
          * The actual object that is the target of the reference (The details of the proposed activity represented in a specific resource.)
@@ -631,7 +714,7 @@ public class CarePlan extends Resource {
          */
         protected CarePlanActivitySimpleComponent simple;
 
-        private static final long serialVersionUID = -2114558145L;
+        private static final long serialVersionUID = -912713941L;
 
       public CarePlanActivityComponent() {
         super();
@@ -645,16 +728,16 @@ public class CarePlan extends Resource {
         /**
          * @return {@link #goal} (Internal reference that identifies the goals that this activity is intended to contribute towards meeting.)
          */
-        public List<StringType> getGoal() { 
+        public List<UriType> getGoal() { 
           return this.goal;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #goal} (Internal reference that identifies the goals that this activity is intended to contribute towards meeting.)
          */
-        public StringType addGoal() { 
-          StringType t = new StringType();
+    // syntactic sugar
+        public UriType addGoalElement() {//2 
+          UriType t = new UriType();
           this.goal.add(t);
           return t;
         }
@@ -662,34 +745,34 @@ public class CarePlan extends Resource {
         /**
          * @param value {@link #goal} (Internal reference that identifies the goals that this activity is intended to contribute towards meeting.)
          */
-        public StringType addGoalSimple(String value) { 
-          StringType t = new StringType();
+        public CarePlanActivityComponent addGoal(String value) { //1
+          UriType t = new UriType();
           t.setValue(value);
           this.goal.add(t);
-          return t;
+          return this;
         }
 
         /**
          * @param value {@link #goal} (Internal reference that identifies the goals that this activity is intended to contribute towards meeting.)
          */
-        public boolean hasGoalSimple(String value) { 
-          for (StringType v : this.goal)
-            if (v.getValue().equals(value))
+        public boolean hasGoal(String value) { 
+          for (UriType v : this.goal)
+            if (v.equals(value)) // uri
               return true;
           return false;
         }
 
         /**
-         * @return {@link #status} (Identifies what progress is being made for the specific activity.)
+         * @return {@link #status} (Identifies what progress is being made for the specific activity.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
          */
-        public Enumeration<CarePlanActivityStatus> getStatus() { 
+        public Enumeration<CarePlanActivityStatus> getStatusElement() { 
           return this.status;
         }
 
         /**
-         * @param value {@link #status} (Identifies what progress is being made for the specific activity.)
+         * @param value {@link #status} (Identifies what progress is being made for the specific activity.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
          */
-        public CarePlanActivityComponent setStatus(Enumeration<CarePlanActivityStatus> value) { 
+        public CarePlanActivityComponent setStatusElement(Enumeration<CarePlanActivityStatus> value) { 
           this.status = value;
           return this;
         }
@@ -697,14 +780,14 @@ public class CarePlan extends Resource {
         /**
          * @return Identifies what progress is being made for the specific activity.
          */
-        public CarePlanActivityStatus getStatusSimple() { 
+        public CarePlanActivityStatus getStatus() { 
           return this.status == null ? null : this.status.getValue();
         }
 
         /**
          * @param value Identifies what progress is being made for the specific activity.
          */
-        public CarePlanActivityComponent setStatusSimple(CarePlanActivityStatus value) { 
+        public CarePlanActivityComponent setStatus(CarePlanActivityStatus value) { 
           if (value == null)
             this.status = null;
           else {
@@ -716,16 +799,16 @@ public class CarePlan extends Resource {
         }
 
         /**
-         * @return {@link #prohibited} (If true, indicates that the described activity is one that must NOT be engaged in when following the plan.)
+         * @return {@link #prohibited} (If true, indicates that the described activity is one that must NOT be engaged in when following the plan.). This is the underlying object with id, value and extensions. The accessor "getProhibited" gives direct access to the value
          */
-        public BooleanType getProhibited() { 
+        public BooleanType getProhibitedElement() { 
           return this.prohibited;
         }
 
         /**
-         * @param value {@link #prohibited} (If true, indicates that the described activity is one that must NOT be engaged in when following the plan.)
+         * @param value {@link #prohibited} (If true, indicates that the described activity is one that must NOT be engaged in when following the plan.). This is the underlying object with id, value and extensions. The accessor "getProhibited" gives direct access to the value
          */
-        public CarePlanActivityComponent setProhibited(BooleanType value) { 
+        public CarePlanActivityComponent setProhibitedElement(BooleanType value) { 
           this.prohibited = value;
           return this;
         }
@@ -733,14 +816,14 @@ public class CarePlan extends Resource {
         /**
          * @return If true, indicates that the described activity is one that must NOT be engaged in when following the plan.
          */
-        public boolean getProhibitedSimple() { 
+        public boolean getProhibited() { 
           return this.prohibited == null ? false : this.prohibited.getValue();
         }
 
         /**
          * @param value If true, indicates that the described activity is one that must NOT be engaged in when following the plan.
          */
-        public CarePlanActivityComponent setProhibitedSimple(boolean value) { 
+        public CarePlanActivityComponent setProhibited(boolean value) { 
             if (this.prohibited == null)
               this.prohibited = new BooleanType();
             this.prohibited.setValue(value);
@@ -750,38 +833,38 @@ public class CarePlan extends Resource {
         /**
          * @return {@link #actionResulting} (Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.)
          */
-        public List<ResourceReference> getActionResulting() { 
+        public List<Reference> getActionResulting() { 
           return this.actionResulting;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #actionResulting} (Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.)
          */
-        public ResourceReference addActionResulting() { 
-          ResourceReference t = new ResourceReference();
+    // syntactic sugar
+        public Reference addActionResulting() { //3
+          Reference t = new Reference();
           this.actionResulting.add(t);
           return t;
         }
 
         /**
-         * @return {@link #actionResulting} (The actual objects that are the target of the reference. Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.)
+         * @return {@link #actionResulting} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.)
          */
         public List<Resource> getActionResultingTarget() { 
           return this.actionResultingTarget;
         }
 
         /**
-         * @return {@link #notes} (Notes about the execution of the activity.)
+         * @return {@link #notes} (Notes about the execution of the activity.). This is the underlying object with id, value and extensions. The accessor "getNotes" gives direct access to the value
          */
-        public StringType getNotes() { 
+        public StringType getNotesElement() { 
           return this.notes;
         }
 
         /**
-         * @param value {@link #notes} (Notes about the execution of the activity.)
+         * @param value {@link #notes} (Notes about the execution of the activity.). This is the underlying object with id, value and extensions. The accessor "getNotes" gives direct access to the value
          */
-        public CarePlanActivityComponent setNotes(StringType value) { 
+        public CarePlanActivityComponent setNotesElement(StringType value) { 
           this.notes = value;
           return this;
         }
@@ -789,15 +872,15 @@ public class CarePlan extends Resource {
         /**
          * @return Notes about the execution of the activity.
          */
-        public String getNotesSimple() { 
+        public String getNotes() { 
           return this.notes == null ? null : this.notes.getValue();
         }
 
         /**
          * @param value Notes about the execution of the activity.
          */
-        public CarePlanActivityComponent setNotesSimple(String value) { 
-          if (value == null)
+        public CarePlanActivityComponent setNotes(String value) { 
+          if (Utilities.noString(value))
             this.notes = null;
           else {
             if (this.notes == null)
@@ -810,27 +893,27 @@ public class CarePlan extends Resource {
         /**
          * @return {@link #detail} (The details of the proposed activity represented in a specific resource.)
          */
-        public ResourceReference getDetail() { 
+        public Reference getDetail() { 
           return this.detail;
         }
 
         /**
          * @param value {@link #detail} (The details of the proposed activity represented in a specific resource.)
          */
-        public CarePlanActivityComponent setDetail(ResourceReference value) { 
+        public CarePlanActivityComponent setDetail(Reference value) { 
           this.detail = value;
           return this;
         }
 
         /**
-         * @return {@link #detail} (The actual object that is the target of the reference. The details of the proposed activity represented in a specific resource.)
+         * @return {@link #detail} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The details of the proposed activity represented in a specific resource.)
          */
         public Resource getDetailTarget() { 
           return this.detailTarget;
         }
 
         /**
-         * @param value {@link #detail} (The actual object that is the target of the reference. The details of the proposed activity represented in a specific resource.)
+         * @param value {@link #detail} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The details of the proposed activity represented in a specific resource.)
          */
         public CarePlanActivityComponent setDetailTarget(Resource value) { 
           this.detailTarget = value;
@@ -854,24 +937,25 @@ public class CarePlan extends Resource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("goal", "idref", "Internal reference that identifies the goals that this activity is intended to contribute towards meeting.", 0, java.lang.Integer.MAX_VALUE, goal));
+          childrenList.add(new Property("goal", "uri", "Internal reference that identifies the goals that this activity is intended to contribute towards meeting.", 0, java.lang.Integer.MAX_VALUE, goal));
           childrenList.add(new Property("status", "code", "Identifies what progress is being made for the specific activity.", 0, java.lang.Integer.MAX_VALUE, status));
           childrenList.add(new Property("prohibited", "boolean", "If true, indicates that the described activity is one that must NOT be engaged in when following the plan.", 0, java.lang.Integer.MAX_VALUE, prohibited));
-          childrenList.add(new Property("actionResulting", "Resource(Any)", "Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.", 0, java.lang.Integer.MAX_VALUE, actionResulting));
+          childrenList.add(new Property("actionResulting", "Reference(Any)", "Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.", 0, java.lang.Integer.MAX_VALUE, actionResulting));
           childrenList.add(new Property("notes", "string", "Notes about the execution of the activity.", 0, java.lang.Integer.MAX_VALUE, notes));
-          childrenList.add(new Property("detail", "Resource(Procedure|MedicationPrescription|DiagnosticOrder|Encounter|Supply)", "The details of the proposed activity represented in a specific resource.", 0, java.lang.Integer.MAX_VALUE, detail));
+          childrenList.add(new Property("detail", "Reference(Procedure|MedicationPrescription|DiagnosticOrder|Encounter|Supply)", "The details of the proposed activity represented in a specific resource.", 0, java.lang.Integer.MAX_VALUE, detail));
           childrenList.add(new Property("simple", "", "A simple summary of details suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc.", 0, java.lang.Integer.MAX_VALUE, simple));
         }
 
       public CarePlanActivityComponent copy() {
         CarePlanActivityComponent dst = new CarePlanActivityComponent();
-        dst.goal = new ArrayList<StringType>();
-        for (StringType i : goal)
+        copyValues(dst);
+        dst.goal = new ArrayList<UriType>();
+        for (UriType i : goal)
           dst.goal.add(i.copy());
         dst.status = status == null ? null : status.copy();
         dst.prohibited = prohibited == null ? null : prohibited.copy();
-        dst.actionResulting = new ArrayList<ResourceReference>();
-        for (ResourceReference i : actionResulting)
+        dst.actionResulting = new ArrayList<Reference>();
+        for (Reference i : actionResulting)
           dst.actionResulting.add(i.copy());
         dst.notes = notes == null ? null : notes.copy();
         dst.detail = detail == null ? null : detail.copy();
@@ -895,12 +979,12 @@ public class CarePlan extends Resource {
         /**
          * The period, timing or frequency upon which the described activity is to occur.
          */
-        protected Type timing;
+        protected Type scheduled;
 
         /**
          * Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.
          */
-        protected ResourceReference location;
+        protected Reference location;
 
         /**
          * The actual object that is the target of the reference (Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.)
@@ -910,7 +994,7 @@ public class CarePlan extends Resource {
         /**
          * Identifies who's expected to be involved in the activity.
          */
-        protected List<ResourceReference> performer = new ArrayList<ResourceReference>();
+        protected List<Reference> performer = new ArrayList<Reference>();
         /**
          * The actual objects that are the target of the reference (Identifies who's expected to be involved in the activity.)
          */
@@ -920,7 +1004,7 @@ public class CarePlan extends Resource {
         /**
          * Identifies the food, drug or other product being consumed or supplied in the activity.
          */
-        protected ResourceReference product;
+        protected Reference product;
 
         /**
          * The actual object that is the target of the reference (Identifies the food, drug or other product being consumed or supplied in the activity.)
@@ -942,7 +1026,7 @@ public class CarePlan extends Resource {
          */
         protected StringType details;
 
-        private static final long serialVersionUID = -403342401L;
+        private static final long serialVersionUID = 1333738820L;
 
       public CarePlanActivitySimpleComponent() {
         super();
@@ -954,16 +1038,16 @@ public class CarePlan extends Resource {
       }
 
         /**
-         * @return {@link #category} (High-level categorization of the type of activity in a care plan.)
+         * @return {@link #category} (High-level categorization of the type of activity in a care plan.). This is the underlying object with id, value and extensions. The accessor "getCategory" gives direct access to the value
          */
-        public Enumeration<CarePlanActivityCategory> getCategory() { 
+        public Enumeration<CarePlanActivityCategory> getCategoryElement() { 
           return this.category;
         }
 
         /**
-         * @param value {@link #category} (High-level categorization of the type of activity in a care plan.)
+         * @param value {@link #category} (High-level categorization of the type of activity in a care plan.). This is the underlying object with id, value and extensions. The accessor "getCategory" gives direct access to the value
          */
-        public CarePlanActivitySimpleComponent setCategory(Enumeration<CarePlanActivityCategory> value) { 
+        public CarePlanActivitySimpleComponent setCategoryElement(Enumeration<CarePlanActivityCategory> value) { 
           this.category = value;
           return this;
         }
@@ -971,14 +1055,14 @@ public class CarePlan extends Resource {
         /**
          * @return High-level categorization of the type of activity in a care plan.
          */
-        public CarePlanActivityCategory getCategorySimple() { 
+        public CarePlanActivityCategory getCategory() { 
           return this.category == null ? null : this.category.getValue();
         }
 
         /**
          * @param value High-level categorization of the type of activity in a care plan.
          */
-        public CarePlanActivitySimpleComponent setCategorySimple(CarePlanActivityCategory value) { 
+        public CarePlanActivitySimpleComponent setCategory(CarePlanActivityCategory value) { 
             if (this.category == null)
               this.category = new Enumeration<CarePlanActivityCategory>();
             this.category.setValue(value);
@@ -1001,44 +1085,44 @@ public class CarePlan extends Resource {
         }
 
         /**
-         * @return {@link #timing} (The period, timing or frequency upon which the described activity is to occur.)
+         * @return {@link #scheduled} (The period, timing or frequency upon which the described activity is to occur.)
          */
-        public Type getTiming() { 
-          return this.timing;
+        public Type getScheduled() { 
+          return this.scheduled;
         }
 
         /**
-         * @param value {@link #timing} (The period, timing or frequency upon which the described activity is to occur.)
+         * @param value {@link #scheduled} (The period, timing or frequency upon which the described activity is to occur.)
          */
-        public CarePlanActivitySimpleComponent setTiming(Type value) { 
-          this.timing = value;
+        public CarePlanActivitySimpleComponent setScheduled(Type value) { 
+          this.scheduled = value;
           return this;
         }
 
         /**
          * @return {@link #location} (Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.)
          */
-        public ResourceReference getLocation() { 
+        public Reference getLocation() { 
           return this.location;
         }
 
         /**
          * @param value {@link #location} (Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.)
          */
-        public CarePlanActivitySimpleComponent setLocation(ResourceReference value) { 
+        public CarePlanActivitySimpleComponent setLocation(Reference value) { 
           this.location = value;
           return this;
         }
 
         /**
-         * @return {@link #location} (The actual object that is the target of the reference. Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.)
+         * @return {@link #location} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.)
          */
         public Location getLocationTarget() { 
           return this.locationTarget;
         }
 
         /**
-         * @param value {@link #location} (The actual object that is the target of the reference. Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.)
+         * @param value {@link #location} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.)
          */
         public CarePlanActivitySimpleComponent setLocationTarget(Location value) { 
           this.locationTarget = value;
@@ -1048,22 +1132,22 @@ public class CarePlan extends Resource {
         /**
          * @return {@link #performer} (Identifies who's expected to be involved in the activity.)
          */
-        public List<ResourceReference> getPerformer() { 
+        public List<Reference> getPerformer() { 
           return this.performer;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #performer} (Identifies who's expected to be involved in the activity.)
          */
-        public ResourceReference addPerformer() { 
-          ResourceReference t = new ResourceReference();
+    // syntactic sugar
+        public Reference addPerformer() { //3
+          Reference t = new Reference();
           this.performer.add(t);
           return t;
         }
 
         /**
-         * @return {@link #performer} (The actual objects that are the target of the reference. Identifies who's expected to be involved in the activity.)
+         * @return {@link #performer} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Identifies who's expected to be involved in the activity.)
          */
         public List<Resource> getPerformerTarget() { 
           return this.performerTarget;
@@ -1072,27 +1156,27 @@ public class CarePlan extends Resource {
         /**
          * @return {@link #product} (Identifies the food, drug or other product being consumed or supplied in the activity.)
          */
-        public ResourceReference getProduct() { 
+        public Reference getProduct() { 
           return this.product;
         }
 
         /**
          * @param value {@link #product} (Identifies the food, drug or other product being consumed or supplied in the activity.)
          */
-        public CarePlanActivitySimpleComponent setProduct(ResourceReference value) { 
+        public CarePlanActivitySimpleComponent setProduct(Reference value) { 
           this.product = value;
           return this;
         }
 
         /**
-         * @return {@link #product} (The actual object that is the target of the reference. Identifies the food, drug or other product being consumed or supplied in the activity.)
+         * @return {@link #product} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies the food, drug or other product being consumed or supplied in the activity.)
          */
         public Resource getProductTarget() { 
           return this.productTarget;
         }
 
         /**
-         * @param value {@link #product} (The actual object that is the target of the reference. Identifies the food, drug or other product being consumed or supplied in the activity.)
+         * @param value {@link #product} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies the food, drug or other product being consumed or supplied in the activity.)
          */
         public CarePlanActivitySimpleComponent setProductTarget(Resource value) { 
           this.productTarget = value;
@@ -1130,16 +1214,16 @@ public class CarePlan extends Resource {
         }
 
         /**
-         * @return {@link #details} (This provides a textual description of constraints on the activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc.)
+         * @return {@link #details} (This provides a textual description of constraints on the activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc.). This is the underlying object with id, value and extensions. The accessor "getDetails" gives direct access to the value
          */
-        public StringType getDetails() { 
+        public StringType getDetailsElement() { 
           return this.details;
         }
 
         /**
-         * @param value {@link #details} (This provides a textual description of constraints on the activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc.)
+         * @param value {@link #details} (This provides a textual description of constraints on the activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc.). This is the underlying object with id, value and extensions. The accessor "getDetails" gives direct access to the value
          */
-        public CarePlanActivitySimpleComponent setDetails(StringType value) { 
+        public CarePlanActivitySimpleComponent setDetailsElement(StringType value) { 
           this.details = value;
           return this;
         }
@@ -1147,15 +1231,15 @@ public class CarePlan extends Resource {
         /**
          * @return This provides a textual description of constraints on the activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc.
          */
-        public String getDetailsSimple() { 
+        public String getDetails() { 
           return this.details == null ? null : this.details.getValue();
         }
 
         /**
          * @param value This provides a textual description of constraints on the activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc.
          */
-        public CarePlanActivitySimpleComponent setDetailsSimple(String value) { 
-          if (value == null)
+        public CarePlanActivitySimpleComponent setDetails(String value) { 
+          if (Utilities.noString(value))
             this.details = null;
           else {
             if (this.details == null)
@@ -1169,10 +1253,10 @@ public class CarePlan extends Resource {
           super.listChildren(childrenList);
           childrenList.add(new Property("category", "code", "High-level categorization of the type of activity in a care plan.", 0, java.lang.Integer.MAX_VALUE, category));
           childrenList.add(new Property("code", "CodeableConcept", "Detailed description of the type of activity.  E.g. What lab test, what procedure, what kind of encounter.", 0, java.lang.Integer.MAX_VALUE, code));
-          childrenList.add(new Property("timing[x]", "Schedule|Period|string", "The period, timing or frequency upon which the described activity is to occur.", 0, java.lang.Integer.MAX_VALUE, timing));
-          childrenList.add(new Property("location", "Resource(Location)", "Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.", 0, java.lang.Integer.MAX_VALUE, location));
-          childrenList.add(new Property("performer", "Resource(Practitioner|Organization|RelatedPerson|Patient)", "Identifies who's expected to be involved in the activity.", 0, java.lang.Integer.MAX_VALUE, performer));
-          childrenList.add(new Property("product", "Resource(Medication|Substance)", "Identifies the food, drug or other product being consumed or supplied in the activity.", 0, java.lang.Integer.MAX_VALUE, product));
+          childrenList.add(new Property("scheduled[x]", "Timing|Period|string", "The period, timing or frequency upon which the described activity is to occur.", 0, java.lang.Integer.MAX_VALUE, scheduled));
+          childrenList.add(new Property("location", "Reference(Location)", "Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.", 0, java.lang.Integer.MAX_VALUE, location));
+          childrenList.add(new Property("performer", "Reference(Practitioner|Organization|RelatedPerson|Patient)", "Identifies who's expected to be involved in the activity.", 0, java.lang.Integer.MAX_VALUE, performer));
+          childrenList.add(new Property("product", "Reference(Medication|Substance)", "Identifies the food, drug or other product being consumed or supplied in the activity.", 0, java.lang.Integer.MAX_VALUE, product));
           childrenList.add(new Property("dailyAmount", "Quantity", "Identifies the quantity expected to be consumed in a given day.", 0, java.lang.Integer.MAX_VALUE, dailyAmount));
           childrenList.add(new Property("quantity", "Quantity", "Identifies the quantity expected to be supplied.", 0, java.lang.Integer.MAX_VALUE, quantity));
           childrenList.add(new Property("details", "string", "This provides a textual description of constraints on the activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc.", 0, java.lang.Integer.MAX_VALUE, details));
@@ -1180,12 +1264,13 @@ public class CarePlan extends Resource {
 
       public CarePlanActivitySimpleComponent copy() {
         CarePlanActivitySimpleComponent dst = new CarePlanActivitySimpleComponent();
+        copyValues(dst);
         dst.category = category == null ? null : category.copy();
         dst.code = code == null ? null : code.copy();
-        dst.timing = timing == null ? null : timing.copy();
+        dst.scheduled = scheduled == null ? null : scheduled.copy();
         dst.location = location == null ? null : location.copy();
-        dst.performer = new ArrayList<ResourceReference>();
-        for (ResourceReference i : performer)
+        dst.performer = new ArrayList<Reference>();
+        for (Reference i : performer)
           dst.performer.add(i.copy());
         dst.product = product == null ? null : product.copy();
         dst.dailyAmount = dailyAmount == null ? null : dailyAmount.copy();
@@ -1204,7 +1289,7 @@ public class CarePlan extends Resource {
     /**
      * Identifies the patient/subject whose intended care is described by the plan.
      */
-    protected ResourceReference patient;
+    protected Reference patient;
 
     /**
      * The actual object that is the target of the reference (Identifies the patient/subject whose intended care is described by the plan.)
@@ -1229,7 +1314,7 @@ public class CarePlan extends Resource {
     /**
      * Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.
      */
-    protected List<ResourceReference> concern = new ArrayList<ResourceReference>();
+    protected List<Reference> concern = new ArrayList<Reference>();
     /**
      * The actual objects that are the target of the reference (Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.)
      */
@@ -1256,7 +1341,7 @@ public class CarePlan extends Resource {
      */
     protected StringType notes;
 
-    private static final long serialVersionUID = 1455393599L;
+    private static final long serialVersionUID = -1021852819L;
 
     public CarePlan() {
       super();
@@ -1274,11 +1359,11 @@ public class CarePlan extends Resource {
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (This records identifiers associated with this care plan that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
@@ -1287,27 +1372,27 @@ public class CarePlan extends Resource {
     /**
      * @return {@link #patient} (Identifies the patient/subject whose intended care is described by the plan.)
      */
-    public ResourceReference getPatient() { 
+    public Reference getPatient() { 
       return this.patient;
     }
 
     /**
      * @param value {@link #patient} (Identifies the patient/subject whose intended care is described by the plan.)
      */
-    public CarePlan setPatient(ResourceReference value) { 
+    public CarePlan setPatient(Reference value) { 
       this.patient = value;
       return this;
     }
 
     /**
-     * @return {@link #patient} (The actual object that is the target of the reference. Identifies the patient/subject whose intended care is described by the plan.)
+     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies the patient/subject whose intended care is described by the plan.)
      */
     public Patient getPatientTarget() { 
       return this.patientTarget;
     }
 
     /**
-     * @param value {@link #patient} (The actual object that is the target of the reference. Identifies the patient/subject whose intended care is described by the plan.)
+     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies the patient/subject whose intended care is described by the plan.)
      */
     public CarePlan setPatientTarget(Patient value) { 
       this.patientTarget = value;
@@ -1315,16 +1400,16 @@ public class CarePlan extends Resource {
     }
 
     /**
-     * @return {@link #status} (Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.)
+     * @return {@link #status} (Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<CarePlanStatus> getStatus() { 
+    public Enumeration<CarePlanStatus> getStatusElement() { 
       return this.status;
     }
 
     /**
-     * @param value {@link #status} (Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.)
+     * @param value {@link #status} (Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public CarePlan setStatus(Enumeration<CarePlanStatus> value) { 
+    public CarePlan setStatusElement(Enumeration<CarePlanStatus> value) { 
       this.status = value;
       return this;
     }
@@ -1332,14 +1417,14 @@ public class CarePlan extends Resource {
     /**
      * @return Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.
      */
-    public CarePlanStatus getStatusSimple() { 
+    public CarePlanStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.
      */
-    public CarePlan setStatusSimple(CarePlanStatus value) { 
+    public CarePlan setStatus(CarePlanStatus value) { 
         if (this.status == null)
           this.status = new Enumeration<CarePlanStatus>();
         this.status.setValue(value);
@@ -1362,16 +1447,16 @@ public class CarePlan extends Resource {
     }
 
     /**
-     * @return {@link #modified} (Identifies the most recent date on which the plan has been revised.)
+     * @return {@link #modified} (Identifies the most recent date on which the plan has been revised.). This is the underlying object with id, value and extensions. The accessor "getModified" gives direct access to the value
      */
-    public DateTimeType getModified() { 
+    public DateTimeType getModifiedElement() { 
       return this.modified;
     }
 
     /**
-     * @param value {@link #modified} (Identifies the most recent date on which the plan has been revised.)
+     * @param value {@link #modified} (Identifies the most recent date on which the plan has been revised.). This is the underlying object with id, value and extensions. The accessor "getModified" gives direct access to the value
      */
-    public CarePlan setModified(DateTimeType value) { 
+    public CarePlan setModifiedElement(DateTimeType value) { 
       this.modified = value;
       return this;
     }
@@ -1379,14 +1464,14 @@ public class CarePlan extends Resource {
     /**
      * @return Identifies the most recent date on which the plan has been revised.
      */
-    public DateAndTime getModifiedSimple() { 
+    public DateAndTime getModified() { 
       return this.modified == null ? null : this.modified.getValue();
     }
 
     /**
      * @param value Identifies the most recent date on which the plan has been revised.
      */
-    public CarePlan setModifiedSimple(DateAndTime value) { 
+    public CarePlan setModified(DateAndTime value) { 
       if (value == null)
         this.modified = null;
       else {
@@ -1400,22 +1485,22 @@ public class CarePlan extends Resource {
     /**
      * @return {@link #concern} (Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.)
      */
-    public List<ResourceReference> getConcern() { 
+    public List<Reference> getConcern() { 
       return this.concern;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #concern} (Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.)
      */
-    public ResourceReference addConcern() { 
-      ResourceReference t = new ResourceReference();
+    // syntactic sugar
+    public Reference addConcern() { //3
+      Reference t = new Reference();
       this.concern.add(t);
       return t;
     }
 
     /**
-     * @return {@link #concern} (The actual objects that are the target of the reference. Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.)
+     * @return {@link #concern} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.)
      */
     public List<Condition> getConcernTarget() { 
       return this.concernTarget;
@@ -1423,7 +1508,7 @@ public class CarePlan extends Resource {
 
     // syntactic sugar
     /**
-     * @return {@link #concern} (Add an actual object that is the target of the reference. Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.)
+     * @return {@link #concern} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.)
      */
     public Condition addConcernTarget() { 
       Condition r = new Condition();
@@ -1438,11 +1523,11 @@ public class CarePlan extends Resource {
       return this.participant;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #participant} (Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.)
      */
-    public CarePlanParticipantComponent addParticipant() { 
+    // syntactic sugar
+    public CarePlanParticipantComponent addParticipant() { //3
       CarePlanParticipantComponent t = new CarePlanParticipantComponent();
       this.participant.add(t);
       return t;
@@ -1455,11 +1540,11 @@ public class CarePlan extends Resource {
       return this.goal;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #goal} (Describes the intended objective(s) of carrying out the Care Plan.)
      */
-    public CarePlanGoalComponent addGoal() { 
+    // syntactic sugar
+    public CarePlanGoalComponent addGoal() { //3
       CarePlanGoalComponent t = new CarePlanGoalComponent();
       this.goal.add(t);
       return t;
@@ -1472,27 +1557,27 @@ public class CarePlan extends Resource {
       return this.activity;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #activity} (Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.)
      */
-    public CarePlanActivityComponent addActivity() { 
+    // syntactic sugar
+    public CarePlanActivityComponent addActivity() { //3
       CarePlanActivityComponent t = new CarePlanActivityComponent();
       this.activity.add(t);
       return t;
     }
 
     /**
-     * @return {@link #notes} (General notes about the care plan not covered elsewhere.)
+     * @return {@link #notes} (General notes about the care plan not covered elsewhere.). This is the underlying object with id, value and extensions. The accessor "getNotes" gives direct access to the value
      */
-    public StringType getNotes() { 
+    public StringType getNotesElement() { 
       return this.notes;
     }
 
     /**
-     * @param value {@link #notes} (General notes about the care plan not covered elsewhere.)
+     * @param value {@link #notes} (General notes about the care plan not covered elsewhere.). This is the underlying object with id, value and extensions. The accessor "getNotes" gives direct access to the value
      */
-    public CarePlan setNotes(StringType value) { 
+    public CarePlan setNotesElement(StringType value) { 
       this.notes = value;
       return this;
     }
@@ -1500,15 +1585,15 @@ public class CarePlan extends Resource {
     /**
      * @return General notes about the care plan not covered elsewhere.
      */
-    public String getNotesSimple() { 
+    public String getNotes() { 
       return this.notes == null ? null : this.notes.getValue();
     }
 
     /**
      * @param value General notes about the care plan not covered elsewhere.
      */
-    public CarePlan setNotesSimple(String value) { 
-      if (value == null)
+    public CarePlan setNotes(String value) { 
+      if (Utilities.noString(value))
         this.notes = null;
       else {
         if (this.notes == null)
@@ -1521,11 +1606,11 @@ public class CarePlan extends Resource {
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "This records identifiers associated with this care plan that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("patient", "Resource(Patient)", "Identifies the patient/subject whose intended care is described by the plan.", 0, java.lang.Integer.MAX_VALUE, patient));
+        childrenList.add(new Property("patient", "Reference(Patient)", "Identifies the patient/subject whose intended care is described by the plan.", 0, java.lang.Integer.MAX_VALUE, patient));
         childrenList.add(new Property("status", "code", "Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("period", "Period", "Indicates when the plan did (or is intended to) come into effect and end.", 0, java.lang.Integer.MAX_VALUE, period));
         childrenList.add(new Property("modified", "dateTime", "Identifies the most recent date on which the plan has been revised.", 0, java.lang.Integer.MAX_VALUE, modified));
-        childrenList.add(new Property("concern", "Resource(Condition)", "Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.", 0, java.lang.Integer.MAX_VALUE, concern));
+        childrenList.add(new Property("concern", "Reference(Condition)", "Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.", 0, java.lang.Integer.MAX_VALUE, concern));
         childrenList.add(new Property("participant", "", "Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.", 0, java.lang.Integer.MAX_VALUE, participant));
         childrenList.add(new Property("goal", "", "Describes the intended objective(s) of carrying out the Care Plan.", 0, java.lang.Integer.MAX_VALUE, goal));
         childrenList.add(new Property("activity", "", "Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.", 0, java.lang.Integer.MAX_VALUE, activity));
@@ -1534,6 +1619,7 @@ public class CarePlan extends Resource {
 
       public CarePlan copy() {
         CarePlan dst = new CarePlan();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());
@@ -1541,8 +1627,8 @@ public class CarePlan extends Resource {
         dst.status = status == null ? null : status.copy();
         dst.period = period == null ? null : period.copy();
         dst.modified = modified == null ? null : modified.copy();
-        dst.concern = new ArrayList<ResourceReference>();
-        for (ResourceReference i : concern)
+        dst.concern = new ArrayList<Reference>();
+        for (Reference i : concern)
           dst.concern.add(i.copy());
         dst.participant = new ArrayList<CarePlanParticipantComponent>();
         for (CarePlanParticipantComponent i : participant)

@@ -2,7 +2,7 @@ package org.hl7.fhir.instance.client;
 
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -71,18 +71,16 @@ import org.hl7.fhir.instance.formats.Composer;
 import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.formats.Parser;
-import org.hl7.fhir.instance.formats.ResourceOrFeed;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.model.AtomCategory;
-import org.hl7.fhir.instance.model.AtomEntry;
-import org.hl7.fhir.instance.model.AtomFeed;
+import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.instance.model.OperationOutcome.OperationOutcomeIssueComponent;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ResourceType;
-import org.hl7.fhir.instance.model.ResourceUtilities;
+import org.hl7.fhir.instance.utils.ResourceUtilities;
 
 /**
  * Helper class handling lower level HTTP transport concerns.
@@ -119,29 +117,19 @@ public class ClientUtils {
 		return issueResourceRequest(resourceFormat, httpPost, payload, headers, proxy);
 	}
 	
-	public static TagListRequest issueGetRequestForTagList(URI resourceUri, String resourceFormat, List<Header> headers, HttpHost proxy) {
-		HttpGet httpget = new HttpGet(resourceUri);
-		configureFhirRequest(httpget, resourceFormat);
-		return issueTagListRequest(resourceFormat, httpget, null, headers, proxy);
-	}
-	
-	public static TagListRequest issuePostRequestForTagList(URI resourceUri, byte[] payload, String resourceFormat, List<Header> headers, HttpHost proxy) {
-		HttpPost httpPost = new HttpPost(resourceUri);
-		return issueTagListRequest(resourceFormat, httpPost, payload, headers, proxy);
-	}
 	
 	public static <T extends Resource> ResourceRequest<T> issuePostRequest(URI resourceUri, byte[] payload, String resourceFormat, HttpHost proxy) {
 		return issuePostRequest(resourceUri, payload, resourceFormat, null, proxy);
 	}
 	
-	public static AtomFeed issueGetFeedRequest(URI resourceUri, String feedFormat, HttpHost proxy) {
+	public static Bundle issueGetFeedRequest(URI resourceUri, String feedFormat, HttpHost proxy) {
 		HttpGet httpget = new HttpGet(resourceUri);
 		configureFhirRequest(httpget, feedFormat);
 		HttpResponse response = sendRequest(httpget, proxy);
 		return unmarshalFeed(response, feedFormat);
 	}
 	
-	public static AtomFeed postBatchRequest(URI resourceUri, byte[] payload, String feedFormat, HttpHost proxy) {
+	public static Bundle postBatchRequest(URI resourceUri, byte[] payload, String feedFormat, HttpHost proxy) {
 		HttpPost httpPost = new HttpPost(resourceUri);
 		configureFhirRequest(httpPost, feedFormat);
 		HttpResponse response = sendPayload(httpPost, payload, proxy);
@@ -191,30 +179,12 @@ public class ClientUtils {
 		} else {
 			response = sendRequest(request, proxy);
 		}
-		T resource = unmarshalResource(response, resourceFormat);
-		AtomEntry<T> atomEntry = buildAtomEntry(response, resource);
+		T resource = unmarshalReference(response, resourceFormat);
+		T atomEntry = buildAtomEntry(response, resource);
 		return new ResourceRequest<T>(atomEntry, response.getStatusLine().getStatusCode());
 	}
 	
-	/**
-	 * @param resourceFormat
-	 * @param options
-	 * @return
-	 */
-	protected static TagListRequest issueTagListRequest(String resourceFormat, HttpUriRequest request, byte[] payload, List<Header> headers, HttpHost proxy) {
-		configureFhirRequest(request, resourceFormat, headers);
-		HttpResponse response = null;
-		if(request instanceof HttpEntityEnclosingRequest && payload != null) {
-			response = sendPayload((HttpEntityEnclosingRequestBase)request, payload, proxy);
-		} else if (request instanceof HttpEntityEnclosingRequest && payload == null){
-			throw new EFhirClientException("PUT and POST requests require a non-null payload");
-		} else {
-			response = sendRequest(request, proxy);
-		}
-		List<AtomCategory> result = unmarshalTagList(response, resourceFormat);
-		return new TagListRequest(result, response.getStatusLine().getStatusCode());
-	}
-	
+		
 	/**
 	 * Method adds required request headers.
 	 * TODO handle JSON request as well.
@@ -295,7 +265,7 @@ public class ClientUtils {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	protected static <T extends Resource> T unmarshalResource(HttpResponse response, String format) {
+	protected static <T extends Resource> T unmarshalReference(HttpResponse response, String format) {
 		T resource = null;
 		OperationOutcome error = null;
 		InputStream instream = null;
@@ -323,51 +293,13 @@ public class ClientUtils {
 	}
 	
 	/**
-	 * Unmarshals a resource from the response stream.
+	 * Unmarshals Bundle from response stream.
 	 * 
 	 * @param response
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
-	protected static List<AtomCategory> unmarshalTagList(HttpResponse response, String format) {
-		InputStream instream = null;
-		OperationOutcome error = null;
-		ResourceOrFeed rf = null;
-		HttpEntity entity = response.getEntity();
-		if (entity != null && entity.getContentLength() > 0) {
-			try {
-			    instream = entity.getContent();
-//			    System.out.println(writeInputStreamAsString(instream));
-			    rf = getParser(format).parseGeneral(instream);
-			    if (rf.getResource() != null) {
-		    		if (rf.getResource() instanceof OperationOutcome && hasError((OperationOutcome) rf.getResource())) {
-		    			error = (OperationOutcome) rf.getResource();
-		    		} else {
-		    			throw new EFhirClientException("Error unmarshalling tag list from Http Response: a resource was returned instead");
-		    		}
-		    	}
-			} catch(IOException ioe) {
-				throw new EFhirClientException("Error unmarshalling entity from Http Response", ioe);
-			} catch(Exception e) {
-				throw new EFhirClientException("Error parsing response message", e);
-			} finally {
-				try{instream.close();}catch(IOException ioe){/* TODO log error */}
-			}
-		}
-		if(error != null) {
-			throw new EFhirClientException("Error unmarshalling taglists: "+ResourceUtilities.getErrorDescription(error), error);
-		}
-		return rf.getTaglist();
-	}
-	
-	/**
-	 * Unmarshals AtomFeed from response stream.
-	 * 
-	 * @param response
-	 * @return
-	 */
-	protected static AtomFeed unmarshalFeed(HttpResponse response, String format) {
-		AtomFeed feed = null;
+	protected static Bundle unmarshalFeed(HttpResponse response, String format) {
+		Bundle feed = null;
 		InputStream instream = null;
 		HttpEntity entity = response.getEntity();
 		String contentType = response.getHeaders("Content-Type")[0].getValue();
@@ -377,17 +309,13 @@ public class ClientUtils {
 			    instream = entity.getContent();
 //			    String myString = IOUtils.toString(instream, "UTF-8");
 			    if(contentType.contains(ResourceFormat.RESOURCE_XML.getHeader()) || contentType.contains("text/xml+fhir")) {
-			    	error = (OperationOutcome)getParser(ResourceFormat.RESOURCE_XML.getHeader()).parseGeneral(instream).getResource();
+			    	error = (OperationOutcome)getParser(ResourceFormat.RESOURCE_XML.getHeader()).parse(instream);
 			    } else {
-			    	ResourceOrFeed rf = getParser(format).parseGeneral(instream);
-			    	if (rf.getResource() != null) {
-			    		if (rf.getResource() instanceof OperationOutcome && hasError((OperationOutcome) rf.getResource())) {
-			    			error = (OperationOutcome) rf.getResource();
-			    		} else {
-			    			throw new EFhirClientException("Error unmarshalling feed from Http Response: a resource was returned instead");
-			    		}
+			    	Resource rf = getParser(format).parse(instream);
+			    	if (rf instanceof OperationOutcome && hasError((OperationOutcome) rf)) {
+			    		error = (OperationOutcome) rf;
 			    	} else {
-			    		feed = rf.getFeed();
+			    		throw new EFhirClientException("Error unmarshalling feed from Http Response: a resource was returned instead");
 			    	}
 			    }
 			    instream.close();
@@ -407,48 +335,23 @@ public class ClientUtils {
 	
 	private static boolean hasError(OperationOutcome oo) {
 		for (OperationOutcomeIssueComponent t : oo.getIssue())
-			if (t.getSeveritySimple() == IssueSeverity.error || t.getSeveritySimple() == IssueSeverity.fatal)
+			if (t.getSeverity() == IssueSeverity.ERROR || t.getSeverity() == IssueSeverity.FATAL)
 				return true;
 	  return false;
   }
 
-	protected static <T extends Resource> AtomEntry<T> buildAtomEntry(HttpResponse response, T resource) {
-		AtomEntry<T> entry = new AtomEntry<T>();
+	protected static <T extends Resource> T buildAtomEntry(HttpResponse response, T resource) {
 		String location = null;
 		if(response.getHeaders("location").length > 0) {//TODO Distinguish between both cases if necessary
     		location = response.getHeaders("location")[0].getValue();
     	} else if(response.getHeaders("content-location").length > 0) {
     		location = response.getHeaders("content-location")[0].getValue();
     	}
-		if(location != null) {
-			entry.getLinks().put("self", location);//TODO Make sure this is right.
-		}
-		List<AtomCategory> tags = parseTags(response);
-		entry.getTags().addAll(tags);
 		//entry.setCategory(resource.getClass().getSimpleName());
-		entry.setResource(resource);
-		return entry;
+		return resource;
 	}
 	
-	/**
-	 * Naive Category Header Parser. May be replaces by core code.
-	 * 
-	 * @param response
-	 * @return
-	 */
-	protected static List<AtomCategory> parseTags(HttpResponse response) {
-		List<AtomCategory> tags = new ArrayList<AtomCategory>();
-		Header[] categoryHeaders = response.getHeaders("Category");
-		for(Header categoryHeader : categoryHeaders) {
-			if(categoryHeader == null || categoryHeader.getValue().trim().isEmpty()) {
-				continue;
-			}
-			List<AtomCategory> categories = new TagParser().parse(categoryHeader.getValue());
-			tags.addAll(categories);
-		}
-		return tags;
-	}
-	
+
 	/*****************************************************************
 	 * Client connection methods
 	 * ***************************************************************/
@@ -472,31 +375,7 @@ public class ClientUtils {
 	 * Other general helper methods
 	 * ****************************************************************/
 	 
-	public  static <T extends Resource>  byte[] getTagListAsByteArray(List<AtomCategory> tags, boolean pretty, boolean isJson) {
-		ByteArrayOutputStream baos = null;
-		byte[] byteArray = null;
-		try {
-			baos = new ByteArrayOutputStream();
-			Composer composer = null;
-			if(isJson) {
-				composer = new JsonComposer();
-			} else {
-				composer = new XmlComposer();
-			}
-			composer.compose(baos, tags, pretty);
-			byteArray =  baos.toByteArray();
-			baos.close();
-		} catch (Exception e) {
-			try{
-				baos.close();
-			}catch(Exception ex) {
-				throw new EFhirClientException("Error closing output stream", ex);
-			}
-			throw new EFhirClientException("Error converting output stream to byte array", e);
-		}
-		return byteArray;
-	}
-	
+
 	public  static <T extends Resource>  byte[] getResourceAsByteArray(T resource, boolean pretty, boolean isJson) {
 		ByteArrayOutputStream baos = null;
 		byte[] byteArray = null;
@@ -522,7 +401,7 @@ public class ClientUtils {
 		return byteArray;
 	}
 	
-	public  static byte[] getFeedAsByteArray(AtomFeed feed, boolean pretty, boolean isJson) {
+	public  static byte[] getFeedAsByteArray(Bundle feed, boolean pretty, boolean isJson) {
 		ByteArrayOutputStream baos = null;
 		byte[] byteArray = null;
 		try {
@@ -592,7 +471,7 @@ public class ClientUtils {
 		return value;
 	}
 	
-  public static AtomFeed issuePostFeedRequest(URI resourceUri, Map<String, String> parameters, String resourceName, Resource resource, String feedFormat) throws Exception {
+  public static Bundle issuePostFeedRequest(URI resourceUri, Map<String, String> parameters, String resourceName, Resource resource, String feedFormat) throws Exception {
     HttpPost httppost = new HttpPost(resourceUri);
     String boundary = "----WebKitFormBoundarykbMUo6H8QaUnYtRy";
     httppost.addHeader("Content-Type", "multipart/form-data; boundary="+boundary);

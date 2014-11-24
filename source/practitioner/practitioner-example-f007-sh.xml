@@ -2,6 +2,7 @@
 <Practitioner xmlns="http://hl7.org/fhir"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://hl7.org/fhir file:/C:/svn/fhir/build/schema/practitioner.xsd">
+  <id value="f007"/>
     <identifier>
         <use value="official"/>
         <system value="urn:oid:2.16.528.1.1007.3.1"/>
@@ -39,7 +40,7 @@
         <use value="work"/>
         <line value="Galapagosweg 91"/>
         <city value="Den Burg"/>
-        <zip value="9105 PZ"/>
+        <postalCode value="9105 PZ"/>
         <country value="NLD"/> <!-- ISO 3166 Codes (Countries) -->
     </address>
     

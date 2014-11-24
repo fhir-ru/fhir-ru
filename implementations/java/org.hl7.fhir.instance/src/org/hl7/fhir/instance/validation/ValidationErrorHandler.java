@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.validation;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -27,7 +27,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
-
 import java.util.List;
 
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
@@ -48,7 +47,7 @@ public class ValidationErrorHandler implements ErrorHandler {
 public void error(SAXParseException arg0) throws SAXException {
     ValidationMessage o = new ValidationMessage();
     o.setType("invalid");
-    o.setLevel(IssueSeverity.error);
+    o.setLevel(IssueSeverity.ERROR);
     o.setLocation("line "+Integer.toString(arg0.getLineNumber())+", column "+Integer.toString(arg0.getColumnNumber()));
     o.setMessage(arg0.getMessage());
     o.setSource(Source.Schema);
@@ -59,7 +58,7 @@ public void error(SAXParseException arg0) throws SAXException {
 public void fatalError(SAXParseException arg0) throws SAXException {
     ValidationMessage o = new ValidationMessage();
     o.setType("invalid");
-    o.setLevel(IssueSeverity.fatal);
+    o.setLevel(IssueSeverity.FATAL);
     o.setLocation("line "+Integer.toString(arg0.getLineNumber())+", column "+Integer.toString(arg0.getColumnNumber()));
     o.setMessage(arg0.getMessage());
     o.setSource(Source.Schema);
@@ -70,7 +69,7 @@ public void fatalError(SAXParseException arg0) throws SAXException {
 public void warning(SAXParseException arg0) throws SAXException {
     ValidationMessage o = new ValidationMessage();
     o.setType("invalid");
-    o.setLevel(IssueSeverity.warning);
+    o.setLevel(IssueSeverity.WARNING);
     o.setLocation("line "+Integer.toString(arg0.getLineNumber())+", column "+Integer.toString(arg0.getColumnNumber()));
     o.setMessage(arg0.getMessage());
     o.setSource(Source.Schema);

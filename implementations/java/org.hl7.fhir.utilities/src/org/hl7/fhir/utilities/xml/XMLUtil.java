@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -36,6 +36,7 @@ import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.hl7.fhir.utilities.Utilities;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

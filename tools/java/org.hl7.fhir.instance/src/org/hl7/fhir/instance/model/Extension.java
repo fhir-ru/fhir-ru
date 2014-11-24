@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,10 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * Optional Extensions Element - found in all resources.
  */
@@ -60,16 +61,16 @@ public class Extension extends Element {
     }
 
     /**
-     * @return {@link #url} (Source of the definition for the extension code - a logical name or a URL.)
+     * @return {@link #url} (Source of the definition for the extension code - a logical name or a URL.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
-    public UriType getUrl() { 
+    public UriType getUrlElement() { 
       return this.url;
     }
 
     /**
-     * @param value {@link #url} (Source of the definition for the extension code - a logical name or a URL.)
+     * @param value {@link #url} (Source of the definition for the extension code - a logical name or a URL.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
-    public Extension setUrl(UriType value) { 
+    public Extension setUrlElement(UriType value) { 
       this.url = value;
       return this;
     }
@@ -77,14 +78,14 @@ public class Extension extends Element {
     /**
      * @return Source of the definition for the extension code - a logical name or a URL.
      */
-    public String getUrlSimple() { 
+    public String getUrl() { 
       return this.url == null ? null : this.url.getValue();
     }
 
     /**
      * @param value Source of the definition for the extension code - a logical name or a URL.
      */
-    public Extension setUrlSimple(String value) { 
+    public Extension setUrl(String value) { 
         if (this.url == null)
           this.url = new UriType();
         this.url.setValue(value);
@@ -114,6 +115,7 @@ public class Extension extends Element {
 
       public Extension copy() {
         Extension dst = new Extension();
+        copyValues(dst);
         dst.url = url == null ? null : url.copy();
         dst.value = value == null ? null : value.copy();
         return dst;

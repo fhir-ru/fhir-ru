@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,40 +29,59 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A collection of error, warning or information messages that result from a system action.
  */
-public class OperationOutcome extends Resource {
+public class OperationOutcome extends DomainResource {
 
     public enum IssueSeverity {
-        fatal, // The issue caused the action to fail, and no further checking could be performed.
-        error, // The issue is sufficiently important to cause the action to fail.
-        warning, // The issue is not important enough to cause the action to fail, but may cause it to be performed suboptimally or in a way that is not as desired.
-        information, // The issue has no relation to the degree of success of the action.
-        Null; // added to help the parsers
+        FATAL, // The issue caused the action to fail, and no further checking could be performed.
+        ERROR, // The issue is sufficiently important to cause the action to fail.
+        WARNING, // The issue is not important enough to cause the action to fail, but may cause it to be performed suboptimally or in a way that is not as desired.
+        INFORMATION, // The issue has no relation to the degree of success of the action.
+        NULL; // added to help the parsers
         public static IssueSeverity fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("fatal".equals(codeString))
-          return fatal;
+          return FATAL;
         if ("error".equals(codeString))
-          return error;
+          return ERROR;
         if ("warning".equals(codeString))
-          return warning;
+          return WARNING;
         if ("information".equals(codeString))
-          return information;
+          return INFORMATION;
         throw new Exception("Unknown IssueSeverity code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case fatal: return "fatal";
-            case error: return "error";
-            case warning: return "warning";
-            case information: return "information";
+            case FATAL: return "fatal";
+            case ERROR: return "error";
+            case WARNING: return "warning";
+            case INFORMATION: return "information";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case FATAL: return "The issue caused the action to fail, and no further checking could be performed.";
+            case ERROR: return "The issue is sufficiently important to cause the action to fail.";
+            case WARNING: return "The issue is not important enough to cause the action to fail, but may cause it to be performed suboptimally or in a way that is not as desired.";
+            case INFORMATION: return "The issue has no relation to the degree of success of the action.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case FATAL: return "fatal";
+            case ERROR: return "error";
+            case WARNING: return "warning";
+            case INFORMATION: return "information";
             default: return "?";
           }
         }
@@ -74,23 +93,23 @@ public class OperationOutcome extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("fatal".equals(codeString))
-          return IssueSeverity.fatal;
+          return IssueSeverity.FATAL;
         if ("error".equals(codeString))
-          return IssueSeverity.error;
+          return IssueSeverity.ERROR;
         if ("warning".equals(codeString))
-          return IssueSeverity.warning;
+          return IssueSeverity.WARNING;
         if ("information".equals(codeString))
-          return IssueSeverity.information;
+          return IssueSeverity.INFORMATION;
         throw new Exception("Unknown IssueSeverity code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == IssueSeverity.fatal)
+      if (code == IssueSeverity.FATAL)
         return "fatal";
-      if (code == IssueSeverity.error)
+      if (code == IssueSeverity.ERROR)
         return "error";
-      if (code == IssueSeverity.warning)
+      if (code == IssueSeverity.WARNING)
         return "warning";
-      if (code == IssueSeverity.information)
+      if (code == IssueSeverity.INFORMATION)
         return "information";
       return "?";
       }
@@ -129,16 +148,16 @@ public class OperationOutcome extends Resource {
       }
 
         /**
-         * @return {@link #severity} (Indicates whether the issue indicates a variation from successful processing.)
+         * @return {@link #severity} (Indicates whether the issue indicates a variation from successful processing.). This is the underlying object with id, value and extensions. The accessor "getSeverity" gives direct access to the value
          */
-        public Enumeration<IssueSeverity> getSeverity() { 
+        public Enumeration<IssueSeverity> getSeverityElement() { 
           return this.severity;
         }
 
         /**
-         * @param value {@link #severity} (Indicates whether the issue indicates a variation from successful processing.)
+         * @param value {@link #severity} (Indicates whether the issue indicates a variation from successful processing.). This is the underlying object with id, value and extensions. The accessor "getSeverity" gives direct access to the value
          */
-        public OperationOutcomeIssueComponent setSeverity(Enumeration<IssueSeverity> value) { 
+        public OperationOutcomeIssueComponent setSeverityElement(Enumeration<IssueSeverity> value) { 
           this.severity = value;
           return this;
         }
@@ -146,14 +165,14 @@ public class OperationOutcome extends Resource {
         /**
          * @return Indicates whether the issue indicates a variation from successful processing.
          */
-        public IssueSeverity getSeveritySimple() { 
+        public IssueSeverity getSeverity() { 
           return this.severity == null ? null : this.severity.getValue();
         }
 
         /**
          * @param value Indicates whether the issue indicates a variation from successful processing.
          */
-        public OperationOutcomeIssueComponent setSeveritySimple(IssueSeverity value) { 
+        public OperationOutcomeIssueComponent setSeverity(IssueSeverity value) { 
             if (this.severity == null)
               this.severity = new Enumeration<IssueSeverity>();
             this.severity.setValue(value);
@@ -176,16 +195,16 @@ public class OperationOutcome extends Resource {
         }
 
         /**
-         * @return {@link #details} (Additional description of the issue.)
+         * @return {@link #details} (Additional description of the issue.). This is the underlying object with id, value and extensions. The accessor "getDetails" gives direct access to the value
          */
-        public StringType getDetails() { 
+        public StringType getDetailsElement() { 
           return this.details;
         }
 
         /**
-         * @param value {@link #details} (Additional description of the issue.)
+         * @param value {@link #details} (Additional description of the issue.). This is the underlying object with id, value and extensions. The accessor "getDetails" gives direct access to the value
          */
-        public OperationOutcomeIssueComponent setDetails(StringType value) { 
+        public OperationOutcomeIssueComponent setDetailsElement(StringType value) { 
           this.details = value;
           return this;
         }
@@ -193,15 +212,15 @@ public class OperationOutcome extends Resource {
         /**
          * @return Additional description of the issue.
          */
-        public String getDetailsSimple() { 
+        public String getDetails() { 
           return this.details == null ? null : this.details.getValue();
         }
 
         /**
          * @param value Additional description of the issue.
          */
-        public OperationOutcomeIssueComponent setDetailsSimple(String value) { 
-          if (value == null)
+        public OperationOutcomeIssueComponent setDetails(String value) { 
+          if (Utilities.noString(value))
             this.details = null;
           else {
             if (this.details == null)
@@ -218,11 +237,11 @@ public class OperationOutcome extends Resource {
           return this.location;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #location} (A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised.)
          */
-        public StringType addLocation() { 
+    // syntactic sugar
+        public StringType addLocationElement() {//2 
           StringType t = new StringType();
           this.location.add(t);
           return t;
@@ -231,19 +250,19 @@ public class OperationOutcome extends Resource {
         /**
          * @param value {@link #location} (A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised.)
          */
-        public StringType addLocationSimple(String value) { 
+        public OperationOutcomeIssueComponent addLocation(String value) { //1
           StringType t = new StringType();
           t.setValue(value);
           this.location.add(t);
-          return t;
+          return this;
         }
 
         /**
          * @param value {@link #location} (A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised.)
          */
-        public boolean hasLocationSimple(String value) { 
+        public boolean hasLocation(String value) { 
           for (StringType v : this.location)
-            if (v.getValue().equals(value))
+            if (v.equals(value)) // string
               return true;
           return false;
         }
@@ -258,6 +277,7 @@ public class OperationOutcome extends Resource {
 
       public OperationOutcomeIssueComponent copy() {
         OperationOutcomeIssueComponent dst = new OperationOutcomeIssueComponent();
+        copyValues(dst);
         dst.severity = severity == null ? null : severity.copy();
         dst.type = type == null ? null : type.copy();
         dst.details = details == null ? null : details.copy();
@@ -287,11 +307,11 @@ public class OperationOutcome extends Resource {
       return this.issue;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #issue} (An error, warning or information message that results from a system action.)
      */
-    public OperationOutcomeIssueComponent addIssue() { 
+    // syntactic sugar
+    public OperationOutcomeIssueComponent addIssue() { //3
       OperationOutcomeIssueComponent t = new OperationOutcomeIssueComponent();
       this.issue.add(t);
       return t;
@@ -304,6 +324,7 @@ public class OperationOutcome extends Resource {
 
       public OperationOutcome copy() {
         OperationOutcome dst = new OperationOutcome();
+        copyValues(dst);
         dst.issue = new ArrayList<OperationOutcomeIssueComponent>();
         for (OperationOutcomeIssueComponent i : issue)
           dst.issue.add(i.copy());

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Practitioner xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/practitioner.xsd">
+  <id value="f203"/>
  <identifier><!--The identifier for the person as this practitioner (fictive)-->
     <use value="official"/>
         <label value="UZI-nummer"/>
@@ -25,14 +26,14 @@
         <use value="work"/>
         <line value="Walvisbaai 3"/>    
         <city value="Den helder"/>
-        <zip value="2333ZA"/>
+        <postalCode value="2333ZA"/>
         <country value="NLD"/><!--ISO 3166 3 letter code-->
     </address>   
     
     <gender value="male" /><!--The practitioner's administrative gender-->
     <birthDate value="1983-04-20"/>
 <!--    <photo>    
-        <reference value="picture/@JvG-203.bmp"/>
+        <reference value="Media/@JvG-203.bmp"/>
         <display value="Picture_Juri_van_Gelder"/>
     </photo>-->
   <organization>

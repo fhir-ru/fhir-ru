@@ -1,6 +1,6 @@
 package org.hl7.fhir.definitions.generators.xsd;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -75,15 +75,15 @@ public class XSDGenerator  {
 		enumDefs.clear();
 
 		if (outer) {
-		write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-		write("<!-- \r\n");
-		write(Config.FULL_LICENSE_CODE);
-		write("\r\n");
-		write("  Generated on "+genDate+" for FHIR v"+version+" \r\n");
-		write("-->\r\n");
-		write("<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://hl7.org/fhir\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" "+
-				"targetNamespace=\"http://hl7.org/fhir\" elementFormDefault=\"qualified\" version=\""+version+"\">\r\n");
-		write("  <xs:include schemaLocation=\"fhir-base.xsd\"/>\r\n");
+		  write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+		  write("<!-- \r\n");
+		  write(Config.FULL_LICENSE_CODE);
+		  write("\r\n");
+		  write("  Generated on "+genDate+" for FHIR v"+version+" \r\n");
+		  write("-->\r\n");
+		  write("<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://hl7.org/fhir\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" "+
+		      "targetNamespace=\"http://hl7.org/fhir\" elementFormDefault=\"qualified\" version=\""+version+"\">\r\n");
+		  write("  <xs:include schemaLocation=\"fhir-base.xsd\"/>\r\n");
 		}
 		write("  <xs:element name=\""+root.getName()+"\" type=\""+root.getName()+"\">\r\n");
 		write("    <xs:annotation>\r\n");
@@ -143,7 +143,7 @@ public class XSDGenerator  {
 		write("    </xs:annotation>\r\n");
 		write("    <xs:complexContent>\r\n");
 		if (isResource)
-			write("      <xs:extension base=\"Resource\">\r\n");
+			write("      <xs:extension base=\""+root.typeCode()+"\">\r\n");
 		else
 			write("      <xs:extension base=\"BackboneElement\">\r\n");
 		write("        <xs:sequence>\r\n");
@@ -169,7 +169,7 @@ public class XSDGenerator  {
 		}
 		for (TypeRef t : datatypes) {
 			if (t.isResourceReference())
-				write("           <xs:element name=\"Resource\" type=\"ResourceReference\"/>\r\n");				
+				write("           <xs:element name=\"Resource\" type=\"Reference\"/>\r\n");				
 			else if (t.hasParams()) {
 				for (String p : t.getParams()) {
 					write("           <xs:element name=\""+t.getName()+"_"+upFirst(p)+"\" type=\""+t.getName()+"_"+upFirst(p)+"\"/>\r\n");				
@@ -188,10 +188,7 @@ public class XSDGenerator  {
 			if (!definitions.getInfrastructure().containsKey(t.getName()) && !definitions.getConstraints().containsKey(t.getName())) {
 			  String en = prefix != null ? prefix + upFirst(t.getName()) : t.getName();
 			  //write("       <xs:element name=\""+t.getName()+"\" type=\""+t.getName()+"\"/>\r\n");        
-			  if (t.getName().equals("ResourceReference"))
-			    write("            <xs:element name=\"" + prefix + "Resource\" type=\"" + t.getName()+ "\"/>\r\n");
-			  else
-			    write("            <xs:element name=\""+en+"\" type=\""+t.getName()+"\"/>\r\n");
+  	    write("            <xs:element name=\""+en+"\" type=\""+t.getName()+"\"/>\r\n");
 			}
 		}
 	}
@@ -214,8 +211,8 @@ public class XSDGenerator  {
 				for (TypeRef t : e.getTypes()) {
 					String tn = encodeType(e, t, true);
 					String n = e.getName().replace("[x]", tn.toUpperCase().substring(0, 1) + tn.substring(1));
-					if (t.getName().equals("Resource"))
- 	          n = e.getName().replace("[x]", "Resource");
+					if (t.getName().equals("Reference"))
+ 	          n = e.getName().replace("[x]", "Reference");
   			  write("            <xs:element name=\""+n+"\" type=\""+encodeType(e, t, true)+"\"/>\r\n");
 				}
 			write("          </xs:choice>\r\n");
@@ -232,14 +229,10 @@ public class XSDGenerator  {
 			} else if (e.getTypes().size() == 0 && e.getElements().size() > 0){
 				write("<xs:element name=\""+e.getName()+"\" type=\""+types.get(e)+"\" ");
 			}	else if (e.getTypes().size() == 1) {
-        if (e.getTypes().get(0).getName().equals("idref")) 
-          write("<xs:element name=\"" + e.getName() + "\" type=\"xmlIdRef\" ");        
-        else {
-          write("<xs:element name=\""+e.getName()+"\" ");
-          tn = encodeType(e, e.getTypes().get(0), true);
-          if (tn.equals("Narrative") && e.getName().equals("text") && root.getElements().contains(e)) 
-            write("type=\""+tn+"\" ");
-        }
+			  write("<xs:element name=\""+e.getName()+"\" ");
+			  tn = encodeType(e, e.getTypes().get(0), true);
+			  if (tn.equals("Narrative") && e.getName().equals("text") && root.getElements().contains(e)) 
+			    write("type=\""+tn+"\" ");
 			} else
 				throw new Exception("how do we get here? "+e.getName()+" in "+root.getName()+" "+Integer.toString(e.getTypes().size()));
 
@@ -285,7 +278,7 @@ public class XSDGenerator  {
 
 	private String encodeType(ElementDefn e, TypeRef type, boolean params) throws Exception {
 		if (type.isResourceReference())
-			return "ResourceReference";
+			return "Reference";
 		else if (type.getName().equals("code")) {
 			String en = null;
 			if (e.hasBinding()) {
@@ -301,11 +294,14 @@ public class XSDGenerator  {
 			}
 			return "code";
 
-		} else if (!type.hasParams() || !params)
-			return type.getName();
-		else if (type.getParams().size() > 1)
+		} else if (!type.hasParams() || !params) {
+			if (type.getName().equals("Resource"))
+			  return "ResourceContainer";
+			else
+			  return type.getName();
+		} else if (type.getParams().size() > 1)
 			throw new Exception("multiple type parameters are only supported on resource");
-		else
+		else  
 			return type.getName()+"_"+upFirst(type.getParams().get(0));
 	}
 

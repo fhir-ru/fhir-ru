@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,46 +29,67 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * Describes the event of a patient being given a dose of a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.
 
 Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner.
  */
-public class MedicationAdministration extends Resource {
+public class MedicationAdministration extends DomainResource {
 
     public enum MedicationAdminStatus {
-        inProgress, // The administration has started but has not yet completed.
-        onHold, // Actions implied by the administration have been temporarily halted, but are expected to continue later. May also be called "suspended".
-        completed, // All actions that are implied by the administration have occurred.
-        enteredInError, // The administration was entered in error and therefore nullified.
-        stopped, // Actions implied by the administration have been permanently halted, before all of them occurred.
-        Null; // added to help the parsers
+        INPROGRESS, // The administration has started but has not yet completed.
+        ONHOLD, // Actions implied by the administration have been temporarily halted, but are expected to continue later. May also be called "suspended".
+        COMPLETED, // All actions that are implied by the administration have occurred.
+        ENTEREDINERROR, // The administration was entered in error and therefore nullified.
+        STOPPED, // Actions implied by the administration have been permanently halted, before all of them occurred.
+        NULL; // added to help the parsers
         public static MedicationAdminStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("in progress".equals(codeString))
-          return inProgress;
+          return INPROGRESS;
         if ("on hold".equals(codeString))
-          return onHold;
+          return ONHOLD;
         if ("completed".equals(codeString))
-          return completed;
+          return COMPLETED;
         if ("entered in error".equals(codeString))
-          return enteredInError;
+          return ENTEREDINERROR;
         if ("stopped".equals(codeString))
-          return stopped;
+          return STOPPED;
         throw new Exception("Unknown MedicationAdminStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case inProgress: return "in progress";
-            case onHold: return "on hold";
-            case completed: return "completed";
-            case enteredInError: return "entered in error";
-            case stopped: return "stopped";
+            case INPROGRESS: return "in progress";
+            case ONHOLD: return "on hold";
+            case COMPLETED: return "completed";
+            case ENTEREDINERROR: return "entered in error";
+            case STOPPED: return "stopped";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case INPROGRESS: return "The administration has started but has not yet completed.";
+            case ONHOLD: return "Actions implied by the administration have been temporarily halted, but are expected to continue later. May also be called 'suspended'.";
+            case COMPLETED: return "All actions that are implied by the administration have occurred.";
+            case ENTEREDINERROR: return "The administration was entered in error and therefore nullified.";
+            case STOPPED: return "Actions implied by the administration have been permanently halted, before all of them occurred.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case INPROGRESS: return "in progress";
+            case ONHOLD: return "on hold";
+            case COMPLETED: return "completed";
+            case ENTEREDINERROR: return "entered in error";
+            case STOPPED: return "stopped";
             default: return "?";
           }
         }
@@ -80,27 +101,27 @@ public class MedicationAdministration extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("in progress".equals(codeString))
-          return MedicationAdminStatus.inProgress;
+          return MedicationAdminStatus.INPROGRESS;
         if ("on hold".equals(codeString))
-          return MedicationAdminStatus.onHold;
+          return MedicationAdminStatus.ONHOLD;
         if ("completed".equals(codeString))
-          return MedicationAdminStatus.completed;
+          return MedicationAdminStatus.COMPLETED;
         if ("entered in error".equals(codeString))
-          return MedicationAdminStatus.enteredInError;
+          return MedicationAdminStatus.ENTEREDINERROR;
         if ("stopped".equals(codeString))
-          return MedicationAdminStatus.stopped;
+          return MedicationAdminStatus.STOPPED;
         throw new Exception("Unknown MedicationAdminStatus code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == MedicationAdminStatus.inProgress)
+      if (code == MedicationAdminStatus.INPROGRESS)
         return "in progress";
-      if (code == MedicationAdminStatus.onHold)
+      if (code == MedicationAdminStatus.ONHOLD)
         return "on hold";
-      if (code == MedicationAdminStatus.completed)
+      if (code == MedicationAdminStatus.COMPLETED)
         return "completed";
-      if (code == MedicationAdminStatus.enteredInError)
+      if (code == MedicationAdminStatus.ENTEREDINERROR)
         return "entered in error";
-      if (code == MedicationAdminStatus.stopped)
+      if (code == MedicationAdminStatus.STOPPED)
         return "stopped";
       return "?";
       }
@@ -293,6 +314,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
 
       public MedicationAdministrationDosageComponent copy() {
         MedicationAdministrationDosageComponent dst = new MedicationAdministrationDosageComponent();
+        copyValues(dst);
         dst.timing = timing == null ? null : timing.copy();
         dst.asNeeded = asNeeded == null ? null : asNeeded.copy();
         dst.site = site == null ? null : site.copy();
@@ -319,7 +341,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * The person or animal to whom the medication was given.
      */
-    protected ResourceReference patient;
+    protected Reference patient;
 
     /**
      * The actual object that is the target of the reference (The person or animal to whom the medication was given.)
@@ -329,7 +351,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * The individual who was responsible for giving the medication to the patient.
      */
-    protected ResourceReference practitioner;
+    protected Reference practitioner;
 
     /**
      * The actual object that is the target of the reference (The individual who was responsible for giving the medication to the patient.)
@@ -339,7 +361,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.
      */
-    protected ResourceReference encounter;
+    protected Reference encounter;
 
     /**
      * The actual object that is the target of the reference (The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.)
@@ -349,7 +371,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * The original request, instruction or authority to perform the administration.
      */
-    protected ResourceReference prescription;
+    protected Reference prescription;
 
     /**
      * The actual object that is the target of the reference (The original request, instruction or authority to perform the administration.)
@@ -369,12 +391,12 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * An interval of time during which the administration took place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.
      */
-    protected Period whenGiven;
+    protected Type effectiveTime;
 
     /**
      * Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
      */
-    protected ResourceReference medication;
+    protected Reference medication;
 
     /**
      * The actual object that is the target of the reference (Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
@@ -384,7 +406,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * The device used in administering the medication to the patient.  E.g. a particular infusion pump.
      */
-    protected List<ResourceReference> device = new ArrayList<ResourceReference>();
+    protected List<Reference> device = new ArrayList<Reference>();
     /**
      * The actual objects that are the target of the reference (The device used in administering the medication to the patient.  E.g. a particular infusion pump.)
      */
@@ -396,19 +418,19 @@ Terminologies used often pre-coordinate this term with the route and or form of 
      */
     protected List<MedicationAdministrationDosageComponent> dosage = new ArrayList<MedicationAdministrationDosageComponent>();
 
-    private static final long serialVersionUID = -1505926298L;
+    private static final long serialVersionUID = -1037637350L;
 
     public MedicationAdministration() {
       super();
     }
 
-    public MedicationAdministration(Enumeration<MedicationAdminStatus> status, ResourceReference patient, ResourceReference practitioner, ResourceReference prescription, Period whenGiven) {
+    public MedicationAdministration(Enumeration<MedicationAdminStatus> status, Reference patient, Reference practitioner, Reference prescription, Type effectiveTime) {
       super();
       this.status = status;
       this.patient = patient;
       this.practitioner = practitioner;
       this.prescription = prescription;
-      this.whenGiven = whenGiven;
+      this.effectiveTime = effectiveTime;
     }
 
     /**
@@ -418,27 +440,27 @@ Terminologies used often pre-coordinate this term with the route and or form of 
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
     }
 
     /**
-     * @return {@link #status} (Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.)
+     * @return {@link #status} (Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<MedicationAdminStatus> getStatus() { 
+    public Enumeration<MedicationAdminStatus> getStatusElement() { 
       return this.status;
     }
 
     /**
-     * @param value {@link #status} (Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.)
+     * @param value {@link #status} (Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public MedicationAdministration setStatus(Enumeration<MedicationAdminStatus> value) { 
+    public MedicationAdministration setStatusElement(Enumeration<MedicationAdminStatus> value) { 
       this.status = value;
       return this;
     }
@@ -446,14 +468,14 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.
      */
-    public MedicationAdminStatus getStatusSimple() { 
+    public MedicationAdminStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.
      */
-    public MedicationAdministration setStatusSimple(MedicationAdminStatus value) { 
+    public MedicationAdministration setStatus(MedicationAdminStatus value) { 
         if (this.status == null)
           this.status = new Enumeration<MedicationAdminStatus>();
         this.status.setValue(value);
@@ -463,27 +485,27 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #patient} (The person or animal to whom the medication was given.)
      */
-    public ResourceReference getPatient() { 
+    public Reference getPatient() { 
       return this.patient;
     }
 
     /**
      * @param value {@link #patient} (The person or animal to whom the medication was given.)
      */
-    public MedicationAdministration setPatient(ResourceReference value) { 
+    public MedicationAdministration setPatient(Reference value) { 
       this.patient = value;
       return this;
     }
 
     /**
-     * @return {@link #patient} (The actual object that is the target of the reference. The person or animal to whom the medication was given.)
+     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The person or animal to whom the medication was given.)
      */
     public Patient getPatientTarget() { 
       return this.patientTarget;
     }
 
     /**
-     * @param value {@link #patient} (The actual object that is the target of the reference. The person or animal to whom the medication was given.)
+     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The person or animal to whom the medication was given.)
      */
     public MedicationAdministration setPatientTarget(Patient value) { 
       this.patientTarget = value;
@@ -493,27 +515,27 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #practitioner} (The individual who was responsible for giving the medication to the patient.)
      */
-    public ResourceReference getPractitioner() { 
+    public Reference getPractitioner() { 
       return this.practitioner;
     }
 
     /**
      * @param value {@link #practitioner} (The individual who was responsible for giving the medication to the patient.)
      */
-    public MedicationAdministration setPractitioner(ResourceReference value) { 
+    public MedicationAdministration setPractitioner(Reference value) { 
       this.practitioner = value;
       return this;
     }
 
     /**
-     * @return {@link #practitioner} (The actual object that is the target of the reference. The individual who was responsible for giving the medication to the patient.)
+     * @return {@link #practitioner} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The individual who was responsible for giving the medication to the patient.)
      */
     public Practitioner getPractitionerTarget() { 
       return this.practitionerTarget;
     }
 
     /**
-     * @param value {@link #practitioner} (The actual object that is the target of the reference. The individual who was responsible for giving the medication to the patient.)
+     * @param value {@link #practitioner} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The individual who was responsible for giving the medication to the patient.)
      */
     public MedicationAdministration setPractitionerTarget(Practitioner value) { 
       this.practitionerTarget = value;
@@ -523,27 +545,27 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #encounter} (The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.)
      */
-    public ResourceReference getEncounter() { 
+    public Reference getEncounter() { 
       return this.encounter;
     }
 
     /**
      * @param value {@link #encounter} (The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.)
      */
-    public MedicationAdministration setEncounter(ResourceReference value) { 
+    public MedicationAdministration setEncounter(Reference value) { 
       this.encounter = value;
       return this;
     }
 
     /**
-     * @return {@link #encounter} (The actual object that is the target of the reference. The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.)
+     * @return {@link #encounter} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.)
      */
     public Encounter getEncounterTarget() { 
       return this.encounterTarget;
     }
 
     /**
-     * @param value {@link #encounter} (The actual object that is the target of the reference. The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.)
+     * @param value {@link #encounter} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.)
      */
     public MedicationAdministration setEncounterTarget(Encounter value) { 
       this.encounterTarget = value;
@@ -553,27 +575,27 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #prescription} (The original request, instruction or authority to perform the administration.)
      */
-    public ResourceReference getPrescription() { 
+    public Reference getPrescription() { 
       return this.prescription;
     }
 
     /**
      * @param value {@link #prescription} (The original request, instruction or authority to perform the administration.)
      */
-    public MedicationAdministration setPrescription(ResourceReference value) { 
+    public MedicationAdministration setPrescription(Reference value) { 
       this.prescription = value;
       return this;
     }
 
     /**
-     * @return {@link #prescription} (The actual object that is the target of the reference. The original request, instruction or authority to perform the administration.)
+     * @return {@link #prescription} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The original request, instruction or authority to perform the administration.)
      */
     public MedicationPrescription getPrescriptionTarget() { 
       return this.prescriptionTarget;
     }
 
     /**
-     * @param value {@link #prescription} (The actual object that is the target of the reference. The original request, instruction or authority to perform the administration.)
+     * @param value {@link #prescription} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The original request, instruction or authority to perform the administration.)
      */
     public MedicationAdministration setPrescriptionTarget(MedicationPrescription value) { 
       this.prescriptionTarget = value;
@@ -581,16 +603,16 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     }
 
     /**
-     * @return {@link #wasNotGiven} (Set this to true if the record is saying that the medication was NOT administered.)
+     * @return {@link #wasNotGiven} (Set this to true if the record is saying that the medication was NOT administered.). This is the underlying object with id, value and extensions. The accessor "getWasNotGiven" gives direct access to the value
      */
-    public BooleanType getWasNotGiven() { 
+    public BooleanType getWasNotGivenElement() { 
       return this.wasNotGiven;
     }
 
     /**
-     * @param value {@link #wasNotGiven} (Set this to true if the record is saying that the medication was NOT administered.)
+     * @param value {@link #wasNotGiven} (Set this to true if the record is saying that the medication was NOT administered.). This is the underlying object with id, value and extensions. The accessor "getWasNotGiven" gives direct access to the value
      */
-    public MedicationAdministration setWasNotGiven(BooleanType value) { 
+    public MedicationAdministration setWasNotGivenElement(BooleanType value) { 
       this.wasNotGiven = value;
       return this;
     }
@@ -598,14 +620,14 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return Set this to true if the record is saying that the medication was NOT administered.
      */
-    public boolean getWasNotGivenSimple() { 
+    public boolean getWasNotGiven() { 
       return this.wasNotGiven == null ? false : this.wasNotGiven.getValue();
     }
 
     /**
      * @param value Set this to true if the record is saying that the medication was NOT administered.
      */
-    public MedicationAdministration setWasNotGivenSimple(boolean value) { 
+    public MedicationAdministration setWasNotGiven(boolean value) { 
       if (value == false)
         this.wasNotGiven = null;
       else {
@@ -623,55 +645,55 @@ Terminologies used often pre-coordinate this term with the route and or form of 
       return this.reasonNotGiven;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #reasonNotGiven} (A code indicating why the administration was not performed.)
      */
-    public CodeableConcept addReasonNotGiven() { 
+    // syntactic sugar
+    public CodeableConcept addReasonNotGiven() { //3
       CodeableConcept t = new CodeableConcept();
       this.reasonNotGiven.add(t);
       return t;
     }
 
     /**
-     * @return {@link #whenGiven} (An interval of time during which the administration took place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.)
+     * @return {@link #effectiveTime} (An interval of time during which the administration took place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.)
      */
-    public Period getWhenGiven() { 
-      return this.whenGiven;
+    public Type getEffectiveTime() { 
+      return this.effectiveTime;
     }
 
     /**
-     * @param value {@link #whenGiven} (An interval of time during which the administration took place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.)
+     * @param value {@link #effectiveTime} (An interval of time during which the administration took place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.)
      */
-    public MedicationAdministration setWhenGiven(Period value) { 
-      this.whenGiven = value;
+    public MedicationAdministration setEffectiveTime(Type value) { 
+      this.effectiveTime = value;
       return this;
     }
 
     /**
      * @return {@link #medication} (Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
      */
-    public ResourceReference getMedication() { 
+    public Reference getMedication() { 
       return this.medication;
     }
 
     /**
      * @param value {@link #medication} (Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
      */
-    public MedicationAdministration setMedication(ResourceReference value) { 
+    public MedicationAdministration setMedication(Reference value) { 
       this.medication = value;
       return this;
     }
 
     /**
-     * @return {@link #medication} (The actual object that is the target of the reference. Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
+     * @return {@link #medication} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
      */
     public Medication getMedicationTarget() { 
       return this.medicationTarget;
     }
 
     /**
-     * @param value {@link #medication} (The actual object that is the target of the reference. Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
+     * @param value {@link #medication} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
      */
     public MedicationAdministration setMedicationTarget(Medication value) { 
       this.medicationTarget = value;
@@ -681,22 +703,22 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #device} (The device used in administering the medication to the patient.  E.g. a particular infusion pump.)
      */
-    public List<ResourceReference> getDevice() { 
+    public List<Reference> getDevice() { 
       return this.device;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #device} (The device used in administering the medication to the patient.  E.g. a particular infusion pump.)
      */
-    public ResourceReference addDevice() { 
-      ResourceReference t = new ResourceReference();
+    // syntactic sugar
+    public Reference addDevice() { //3
+      Reference t = new Reference();
       this.device.add(t);
       return t;
     }
 
     /**
-     * @return {@link #device} (The actual objects that are the target of the reference. The device used in administering the medication to the patient.  E.g. a particular infusion pump.)
+     * @return {@link #device} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The device used in administering the medication to the patient.  E.g. a particular infusion pump.)
      */
     public List<Device> getDeviceTarget() { 
       return this.deviceTarget;
@@ -704,7 +726,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
 
     // syntactic sugar
     /**
-     * @return {@link #device} (Add an actual object that is the target of the reference. The device used in administering the medication to the patient.  E.g. a particular infusion pump.)
+     * @return {@link #device} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. The device used in administering the medication to the patient.  E.g. a particular infusion pump.)
      */
     public Device addDeviceTarget() { 
       Device r = new Device();
@@ -719,11 +741,11 @@ Terminologies used often pre-coordinate this term with the route and or form of 
       return this.dosage;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #dosage} (Provides details of how much of the medication was administered.)
      */
-    public MedicationAdministrationDosageComponent addDosage() { 
+    // syntactic sugar
+    public MedicationAdministrationDosageComponent addDosage() { //3
       MedicationAdministrationDosageComponent t = new MedicationAdministrationDosageComponent();
       this.dosage.add(t);
       return t;
@@ -733,20 +755,21 @@ Terminologies used often pre-coordinate this term with the route and or form of 
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("status", "code", "Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.", 0, java.lang.Integer.MAX_VALUE, status));
-        childrenList.add(new Property("patient", "Resource(Patient)", "The person or animal to whom the medication was given.", 0, java.lang.Integer.MAX_VALUE, patient));
-        childrenList.add(new Property("practitioner", "Resource(Practitioner)", "The individual who was responsible for giving the medication to the patient.", 0, java.lang.Integer.MAX_VALUE, practitioner));
-        childrenList.add(new Property("encounter", "Resource(Encounter)", "The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.", 0, java.lang.Integer.MAX_VALUE, encounter));
-        childrenList.add(new Property("prescription", "Resource(MedicationPrescription)", "The original request, instruction or authority to perform the administration.", 0, java.lang.Integer.MAX_VALUE, prescription));
+        childrenList.add(new Property("patient", "Reference(Patient)", "The person or animal to whom the medication was given.", 0, java.lang.Integer.MAX_VALUE, patient));
+        childrenList.add(new Property("practitioner", "Reference(Practitioner)", "The individual who was responsible for giving the medication to the patient.", 0, java.lang.Integer.MAX_VALUE, practitioner));
+        childrenList.add(new Property("encounter", "Reference(Encounter)", "The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.", 0, java.lang.Integer.MAX_VALUE, encounter));
+        childrenList.add(new Property("prescription", "Reference(MedicationPrescription)", "The original request, instruction or authority to perform the administration.", 0, java.lang.Integer.MAX_VALUE, prescription));
         childrenList.add(new Property("wasNotGiven", "boolean", "Set this to true if the record is saying that the medication was NOT administered.", 0, java.lang.Integer.MAX_VALUE, wasNotGiven));
         childrenList.add(new Property("reasonNotGiven", "CodeableConcept", "A code indicating why the administration was not performed.", 0, java.lang.Integer.MAX_VALUE, reasonNotGiven));
-        childrenList.add(new Property("whenGiven", "Period", "An interval of time during which the administration took place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.", 0, java.lang.Integer.MAX_VALUE, whenGiven));
-        childrenList.add(new Property("medication", "Resource(Medication)", "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.", 0, java.lang.Integer.MAX_VALUE, medication));
-        childrenList.add(new Property("device", "Resource(Device)", "The device used in administering the medication to the patient.  E.g. a particular infusion pump.", 0, java.lang.Integer.MAX_VALUE, device));
+        childrenList.add(new Property("effectiveTime[x]", "dateTime|Period", "An interval of time during which the administration took place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.", 0, java.lang.Integer.MAX_VALUE, effectiveTime));
+        childrenList.add(new Property("medication", "Reference(Medication)", "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.", 0, java.lang.Integer.MAX_VALUE, medication));
+        childrenList.add(new Property("device", "Reference(Device)", "The device used in administering the medication to the patient.  E.g. a particular infusion pump.", 0, java.lang.Integer.MAX_VALUE, device));
         childrenList.add(new Property("dosage", "", "Provides details of how much of the medication was administered.", 0, java.lang.Integer.MAX_VALUE, dosage));
       }
 
       public MedicationAdministration copy() {
         MedicationAdministration dst = new MedicationAdministration();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());
@@ -759,10 +782,10 @@ Terminologies used often pre-coordinate this term with the route and or form of 
         dst.reasonNotGiven = new ArrayList<CodeableConcept>();
         for (CodeableConcept i : reasonNotGiven)
           dst.reasonNotGiven.add(i.copy());
-        dst.whenGiven = whenGiven == null ? null : whenGiven.copy();
+        dst.effectiveTime = effectiveTime == null ? null : effectiveTime.copy();
         dst.medication = medication == null ? null : medication.copy();
-        dst.device = new ArrayList<ResourceReference>();
-        for (ResourceReference i : device)
+        dst.device = new ArrayList<Reference>();
+        for (Reference i : device)
           dst.device.add(i.copy());
         dst.dosage = new ArrayList<MedicationAdministrationDosageComponent>();
         for (MedicationAdministrationDosageComponent i : dosage)

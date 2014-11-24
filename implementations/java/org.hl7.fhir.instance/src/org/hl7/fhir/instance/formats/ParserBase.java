@@ -2,7 +2,7 @@ package org.hl7.fhir.instance.formats;
 
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -31,22 +31,34 @@ package org.hl7.fhir.instance.formats;
 */
 
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.codec.binary.Base64;
-import org.hl7.fhir.instance.model.AtomCategory;
-import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.DateAndTime;
 import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.instance.model.Resource.ResourceMetaComponent;
 import org.hl7.fhir.utilities.Utilities;
 
-public abstract class ParserBase extends FormatUtilities {
+public abstract class ParserBase extends FormatUtilities implements Parser {
 
+  public Resource parse(String input) throws Exception {
+  	return parse(input.getBytes("UTF-8"));
+  }
+  public Resource parse(byte[] bytes) throws Exception {
+  	ByteArrayInputStream bi = new ByteArrayInputStream(bytes);
+  	return parse(bi);
+  }
 
+	@Override
+  public ResourceMetaComponent parseMeta(InputStream input) throws Exception {
+		throw new Error("Not done yet");
+  }
+  
   protected Map<String, Object> idMap = new HashMap<String, Object>();
 
 //protected Element resolveElement(String id) {

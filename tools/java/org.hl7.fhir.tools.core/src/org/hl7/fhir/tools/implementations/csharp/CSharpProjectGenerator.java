@@ -1,6 +1,6 @@
 package org.hl7.fhir.tools.implementations.csharp;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -47,15 +47,15 @@ public class CSharpProjectGenerator
 		List<String> outputLines = replaceTemplateVar( templateContents, "@@@MODELFILES@@@", itemGroup);
 		TextFile.writeAllLines(destDir + "Hl7.Fhir.Model.csproj", outputLines);
 		
-		// Generate "up-to-date" .NET 4.5 project
-		templateContents = TextFile.readAllLines(destDir + "Hl7.Fhir.Model.Net45.csproj.template"); 	
-		outputLines = replaceTemplateVar( templateContents, "@@@MODELFILES@@@", itemGroup);
-		TextFile.writeAllLines(destDir + "Hl7.Fhir.Model.Net45.csproj", outputLines);
-		
-		// Generate Portable45 project (profile 259)
-		templateContents = TextFile.readAllLines(destDir + "Hl7.Fhir.Model.Portable45.csproj.template"); 	
-		outputLines = replaceTemplateVar( templateContents, "@@@MODELFILES@@@", itemGroup);
-		TextFile.writeAllLines(destDir + "Hl7.Fhir.Model.Portable45.csproj", outputLines);
+//		// Generate "up-to-date" .NET 4.5 project
+//		templateContents = TextFile.readAllLines(destDir + "Hl7.Fhir.Model.Net45.csproj.template"); 	
+//		outputLines = replaceTemplateVar( templateContents, "@@@MODELFILES@@@", itemGroup);
+//		TextFile.writeAllLines(destDir + "Hl7.Fhir.Model.Net45.csproj", outputLines);
+//		
+//		// Generate Portable45 project (profile 259)
+//		templateContents = TextFile.readAllLines(destDir + "Hl7.Fhir.Model.Portable45.csproj.template"); 	
+//		outputLines = replaceTemplateVar( templateContents, "@@@MODELFILES@@@", itemGroup);
+//		TextFile.writeAllLines(destDir + "Hl7.Fhir.Model.Portable45.csproj", outputLines);
 	}
 	
 	

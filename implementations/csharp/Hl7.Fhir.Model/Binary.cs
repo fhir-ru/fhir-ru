@@ -40,7 +40,7 @@ namespace Hl7.Fhir.Model
     /// <summary>
     /// Resource for capturing binary data
     /// </summary>
-    public partial class Binary : Hl7.Fhir.Model.Resource, Hl7.Fhir.Validation.IValidatableObject
+    public partial class Binary
     {
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
@@ -48,10 +48,10 @@ namespace Hl7.Fhir.Model
             result.AddRange(base.Validate(validationContext));
 
             if (Content == null)
-                result.Add(FhirValidator.BuildResult(validationContext,"Entry must contain (possibly 0-length) data in Content element"));
+                result.Add(DotNetAttributeValidation.BuildResult(validationContext,"Entry must contain (possibly 0-length) data in Content element"));
 
             if (ContentType == null)
-                result.Add(FhirValidator.BuildResult(validationContext, "Entry must contain a ContentType"));
+                result.Add(DotNetAttributeValidation.BuildResult(validationContext, "Entry must contain a ContentType"));
 
             return result;
         }

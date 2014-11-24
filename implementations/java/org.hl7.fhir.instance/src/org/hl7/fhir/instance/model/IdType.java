@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -35,10 +35,19 @@ public class IdType extends PrimitiveType {
 
   private static final long serialVersionUID = 8363122970864385593L;
   
+  public static final int MAX_LENGTH = 64;
+  
 	/**
 	 * The value of the id
 	 */
 	protected String value;
+
+	public IdType(String value) {
+    this.value = value;  
+  }
+
+  public IdType() {
+  }
 
 	/**
 	 * @return the id

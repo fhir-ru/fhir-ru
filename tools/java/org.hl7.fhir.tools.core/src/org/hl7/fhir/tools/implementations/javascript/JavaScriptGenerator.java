@@ -3,7 +3,7 @@ package org.hl7.fhir.tools.implementations.javascript;
 /*
 Contributed by Mitre Corporation
 
-Copyright (c) 2011-2014, HL7, Inc & The MITRE Corporation
+Copyright (c) 2011+, HL7, Inc & The MITRE Corporation
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -64,7 +64,7 @@ public class JavaScriptGenerator extends BaseGenerator implements PlatformGenera
   }
 
   @Override
-  public String getDescription() {
+  public String getDescription(String version, String svnRevision) {
     return "Generates Mongoose models for FHIR resources";
   }
 
@@ -144,7 +144,7 @@ public class JavaScriptGenerator extends BaseGenerator implements PlatformGenera
   }
 
   @Override
-  public String checkFragments(String rootDir, String fragmentsXml, boolean inProcess) throws Exception {
+  public String checkFragments(String rootDir, String fragmentsXml) throws Exception {
     return null;
   }
 

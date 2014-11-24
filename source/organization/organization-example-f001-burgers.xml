@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/organization.xsd">
+  <id value="f001"/>
     <identifier>
         <use value="official"/>
         <system value="urn:oid:2.16.528.1"/>
@@ -34,14 +35,14 @@
         <use value="work"/>
         <line value="Galapagosweg 91"/>
         <city value="Den Burg"/>
-        <zip value="9105 PZ"/>
+        <postalCode value="9105 PZ"/>
         <country value="NLD"/>
     </address>
     <address>
         <use value="work"/>
         <line value="PO Box 2311"/>
         <city value="Den Burg"/>
-        <zip value="9100 AA"/>
+        <postalCode value="9100 AA"/>
         <country value="NLD"/>
     </address>
     <contact>

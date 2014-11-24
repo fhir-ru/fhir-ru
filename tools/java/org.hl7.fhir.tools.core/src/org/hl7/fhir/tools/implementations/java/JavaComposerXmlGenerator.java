@@ -1,6 +1,6 @@
 package org.hl7.fhir.tools.implementations.java;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -46,9 +46,8 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 
 public class JavaComposerXmlGenerator extends JavaBaseGenerator {
-  public enum JavaGenClass { Structure, Type, Resource, Constraint, Backbone }
+  public enum JavaGenClass { Structure, Type, Resource, AbstractResource, Constraint, Backbone }
 
-  private Definitions definitions;
   private Map<ElementDefn, String> typeNames = new HashMap<ElementDefn, String>();
   private List<String> typeNameStrings = new ArrayList<String>();
   private List<ElementDefn> enums = new ArrayList<ElementDefn>();
@@ -59,6 +58,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
   private String context;
 
   private StringBuilder reg = new StringBuilder();
+  private StringBuilder regn = new StringBuilder();
   private StringBuilder regtn = new StringBuilder();
   private StringBuilder regtp = new StringBuilder();
 //  private StringBuilder regn = new StringBuilder();
@@ -82,31 +82,16 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     
     for (ElementDefn n : definitions.getInfrastructure().values()) {
       generate(n, JavaGenClass.Structure);
-//      String t = upFirst(n.getName());
-//      regt.append("    else if (type instanceof "+t+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+t+") type);\r\n");
     }
     
     for (ElementDefn n : definitions.getTypes().values()) {
       if (n.getTypes().size() > 0 && n.getTypes().get(0).getName().equals("GenericType")) {
 
         throw new Error("not supported anymore");
-//        for (TypeRef td : definitions.getKnownTypes()) {
-//          if (td.getName().equals(n.getName()) && td.hasParams()) {
-//            for (String pt : td.getParams()) {
-//              genGeneric(n, n.getName()+"<"+upFirst(pt)+">", pt, false);
-//              regt.append("    else if (type instanceof "+n.getName()+" && (("+n.getName()+"<Ordered>) type).getType().equals(\""+upFirst(pt)+"\"))\r\n");
-//              regt.append("      compose"+n.getName()+"_"+upFirst(pt)+"(prefix+\""+n.getName()+"_"+upFirst(pt)+"\", ("+n.getName()+"<"+upFirst(pt)+">) type);\r\n");
-////              regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"_"+upFirst(pt)+"\"))\r\n      return true;\r\n");
-//            }
-//          }
-//        }
       } else {
         generate(n, JavaGenClass.Type);
         String nn = javaClassName(n.getName());
-        if (nn.equals("ResourceReference"))
-          regtn.append("    else if (type instanceof "+nn+")\r\n       compose"+nn+"(prefix+\"Resource\", ("+nn+") type);\r\n");
-        else
-          regtn.append("    else if (type instanceof "+nn+")\r\n       compose"+nn+"(prefix+\""+n.getName()+"\", ("+nn+") type);\r\n");
+        regtn.append("    else if (type instanceof "+nn+")\r\n       compose"+nn+"(prefix+\""+n.getName()+"\", ("+nn+") type);\r\n");
 //        regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
       }
     }
@@ -121,14 +106,18 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
       regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
-    
-    genResource();
 
+    for (String s : definitions.getBaseResources().keySet()) {
+      ResourceDefn n = definitions.getBaseResources().get(s);
+      generate(n.getRoot(), JavaGenClass.AbstractResource);
+    }
+    
     for (String s : definitions.sortedResourceNames()) {
       ResourceDefn n = definitions.getResources().get(s);
       generate(n.getRoot(), JavaGenClass.Resource);
       String nn = javaClassName(n.getName());
       reg.append("    else if (resource instanceof "+nn+")\r\n      compose"+nn+"(\""+n.getName()+"\", ("+nn+")resource);\r\n");
+      regn.append("    else if (resource instanceof "+nn+")\r\n      compose"+nn+"(name, ("+nn+")resource);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
@@ -147,35 +136,15 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
 
   private void genElement() throws Exception {
     write("  private void composeElementElements(Element element) throws Exception {\r\n");
-    write("    for (Extension e : element.getExtensions()) {\r\n");
+    write("    for (Extension e : element.getExtension()) {\r\n");
     write("      composeExtension(\"extension\", e);\r\n");
     write("    }\r\n");
     write("  }\r\n");
     write("\r\n");
     write("  private void composeBackboneElements(BackboneElement element) throws Exception {\r\n");
     write("    composeElementElements(element);\r\n");    
-    write("    for (Extension e : element.getModifierExtensions()) {\r\n");
+    write("    for (Extension e : element.getModifierExtension()) {\r\n");
     write("      composeExtension(\"modifierExtension\", e);\r\n");
-    write("    }\r\n");
-    write("  }\r\n");
-    write("\r\n");
-  }
-
-  private void genResource() throws Exception {
-    write("  private void composeResourceAttributes(Resource element) throws Exception {\r\n");
-    write("    composeElementAttributes(element);\r\n");
-    write("  }\r\n\r\n");
-
-    write("  private void composeResourceElements(Resource element) throws Exception {\r\n");
-    write("    composeBackboneElements(element);\r\n");
-    write("    composeCode(\"language\", element.getLanguage());\r\n");
-    write("    composeNarrative(\"text\", element.getText());\r\n");
-    write("    for (Resource r : element.getContained()) {\r\n");
-    write("      if (r.getXmlId() == null)\r\n");
-    write("        throw new Exception(\"Contained Resource has no id - one must be assigned\"); // we can't assign one here - what points to it?\r\n");
-    write("      xml.open(FHIR_NS, \"contained\");\r\n");
-    write("      composeResource(r);\r\n");
-    write("      xml.close(FHIR_NS, \"contained\");\r\n");
     write("    }\r\n");
     write("  }\r\n");
     write("\r\n");
@@ -280,10 +249,13 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     }
     context = nn;
 
-    genInner(n, type);
+    if (type == JavaGenClass.AbstractResource)
+      genInnerAbstract(n);
+    else
+      genInner(n, type);
     
     for (ElementDefn e : strucs) {
-      genInner(e, type == JavaGenClass.Resource ?  JavaGenClass.Backbone : JavaGenClass.Structure);
+      genInner(e, (type == JavaGenClass.Resource || type == JavaGenClass.AbstractResource) ?  JavaGenClass.Backbone : JavaGenClass.Structure);
     }
 
   }
@@ -324,7 +296,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     write("  private void compose"+upFirst(tn).replace(".", "").replace("<", "_").replace(">", "")+"(String name, "+tn+" element) throws Exception {\r\n");
     write("    if (element != null) {\r\n");
     if (type == JavaGenClass.Resource) 
-      write("      composeResourceAttributes(element);\r\n");
+      write("      compose"+n.typeCode()+"Attributes(element);\r\n");
     else if ((type == JavaGenClass.Type || type == JavaGenClass.Constraint) && !tn.contains("."))
       write("      composeTypeAttributes(element);\r\n");
     else
@@ -336,13 +308,13 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
         write("      if (element.get"+upFirst(getElementName(e.getName(), true))+"() != null)\r\n");
         write("        xml.attribute(\"xml:lang\", element.get"+upFirst(getElementName(e.getName(), true))+"().toString());\r\n");
       } else if (e.isXmlAttribute()) {
-        write("      if (element.get"+upFirst(getElementName(e.getName(), true))+"() != null)\r\n");
-        write("        xml.attribute(\""+e.getName()+"\", element.get"+upFirst(getElementName(e.getName(), true))+"().getValue());\r\n");
+        write("      if (element.get"+upFirst(getElementName(e.getName(), true))+"Element() != null)\r\n");
+        write("        xml.attribute(\""+e.getName()+"\", element.get"+upFirst(getElementName(e.getName(), true))+"Element().getValue());\r\n");
       }
     }
     write("      xml.open(FHIR_NS, name);\r\n");
     if (type == JavaGenClass.Resource) 
-      write("      composeResourceElements(element);\r\n");
+      write("      compose"+n.typeCode()+"Elements(element);\r\n");
     else if (type == JavaGenClass.Backbone) 
       write("      composeBackboneElements(element);\r\n");
     else
@@ -363,6 +335,32 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
 
   private String pathNode(String tn) {
     return tn.substring(tn.indexOf('.')+1);
+  }
+
+  private void genInnerAbstract(ElementDefn n) throws IOException, Exception {
+    String tn = typeNames.containsKey(n) ? typeNames.get(n) : javaClassName(n.getName());
+    
+    write("  private void compose"+upFirst(tn).replace(".", "")+"Attributes("+tn+" element) throws Exception {\r\n");
+    if (!n.typeCode().equals("Any"))
+      write("    compose"+n.typeCode()+"Attributes(element);\r\n");
+      
+    for (ElementDefn e : n.getElements()) { 
+      if (e.isXmlAttribute()) {
+        write("  if (element.get"+upFirst(getElementName(e.getName(), true))+"Element() != null)\r\n");
+        write("    xml.attribute(\""+e.getName()+"\", element.get"+upFirst(getElementName(e.getName(), true))+"Element().getValue());\r\n");
+      }
+    }
+    write("  }\r\n\r\n");
+    
+    write("  private void compose"+upFirst(tn).replace(".", "")+"Elements("+tn+" element) throws Exception {\r\n");
+    if (!n.typeCode().equals("Any"))
+    write("    compose"+n.typeCode()+"Elements(element);\r\n");
+    
+    for (ElementDefn e : n.getElements()) {
+      if (!e.typeCode().equals("xml:lang") && !e.isXmlAttribute()) 
+        genElement(n, e, JavaGenClass.AbstractResource);
+    }
+    write("  }\r\n\r\n");    
   }
 
   private void genElement(ElementDefn root, ElementDefn e, JavaGenClass type) throws Exception {
@@ -391,9 +389,9 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
           comp = "composeCode";
         } else if (tn.equals("instant"))
           tn = "Instant";
-        if (tn.contains("Resource(")) {
-          comp = "composeResourceReference";
-          tn = "ResourceReference";
+        if (tn.contains("Reference(")) {
+          comp = "composeReference";
+          tn = "Reference";
         } else if (tn.contains("("))
           comp = "compose"+PrepGenericName(tn);
         else if (tn.startsWith(context) && !tn.equals(context)) {
@@ -403,14 +401,13 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
       }
       
       if (name.equals("extension")) {
-        String s = type == JavaGenClass.Structure ? "Extension" : "Extensions"; 
-        write("      for (Extension e : element.get"+s+"()) \r\n");
+        write("      for (Extension e : element.getExtension()) \r\n");
         write("        composeExtension(\"extension\", e);\r\n");
       } else if (e.unbounded()) {
         tn = typeName(root, e, type, true);
-        if (tn.contains("Resource(")) {
-          comp = "composeResourceReference";
-          tn = "ResourceReference";
+        if (tn.contains("Reference(")) {
+          comp = "composeReference";
+          tn = "Reference";
         };
   	    if (en == null) {
           if (tn.equalsIgnoreCase("string"))
@@ -419,21 +416,42 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
             tn = upFirst(tn)+"Type";
 
           write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
-          write("        "+comp+"(\""+name+"\", e);\r\n");
+          if (e.typeCode().equals("Resource")) { 
+            write("      {\r\n");
+            write("        xml.open(FHIR_NS, \""+name+"\");\r\n");
+            write("        "+comp+"(e);\r\n");
+            write("        xml.close(FHIR_NS, \""+name+"\");\r\n");
+            write("      }\r\n");            
+          } else {
+            write("        "+comp+"(\""+name+"\", e);\r\n");
+          }
   	    } else {
             write("        for (Enumeration<"+prepEnumName(en)+"> e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
             write("          composeEnumeration(\""+name+"\", e, new "+context+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory());\r\n");
   	    
   	    }
       } else if (en != null) {
-        write("      if (element.get"+upFirst(getElementName(name, false))+"() != null)\r\n");
-        write("        composeEnumeration(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"(), new "+mainName+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory());\r\n");
+        write("      if (element.get"+upFirst(getElementName(name, false))+"Element() != null)\r\n");
+        write("        composeEnumeration(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new "+mainName+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory());\r\n");
 //        write("        composeString(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"().toCode());\r\n");        
+      } else if (isJavaPrimitive(e)) {
+        write("      "+comp+"(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element());\r\n");
+      } else if (e.typeCode().equals("Resource")) {
+        write("      if (element.get"+upFirst(getElementName(name, false))+"() != null) {\r\n");
+        write("        xml.open(FHIR_NS, \""+name+"\");\r\n");
+        write("        "+comp+"(element.get"+upFirst(getElementName(name, false))+"());\r\n");
+        write("        xml.close(FHIR_NS, \""+name+"\");\r\n");
+        write("      }\r\n");
       } else {
         write("      "+comp+"(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"());\r\n");
       }
     }
   }
+
+  private boolean isPrimitive(ElementDefn e) {
+    return definitions.hasPrimitiveType(e.typeCode());
+  }
+
 
   private String prepEnumName(String en) {
 	String[] parts = en.split("\\.");
@@ -475,11 +493,9 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
 //        return "Uri";
 //      else 
 //        return "String";
-      if (t.equals("idref"))
-        return "StringType";
 //      else if (t.equals("string"))
 //        return "StringType";
-      else
+//      else
         return upFirst(t);
     } else if (elem.usesCompositeType()) { 
       if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
@@ -500,6 +516,13 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     write("    "+reg.toString().substring(9));
     write("    else if (resource instanceof Binary)\r\n");
     write("      composeBinary(\"Binary\", (Binary)resource);\r\n");
+    write("    else\r\n");
+    write("      throw new Exception(\"Unhanded resource type \"+resource.getClass().getName());\r\n");
+    write("  }\r\n\r\n");
+    write("  protected void composeResource(String name, Resource resource) throws Exception {\r\n");
+    write("    "+regn.toString().substring(9));
+    write("    else if (resource instanceof Binary)\r\n");
+    write("      composeBinary(name, (Binary)resource);\r\n");
     write("    else\r\n");
     write("      throw new Exception(\"Unhanded resource type \"+resource.getClass().getName());\r\n");
     write("  }\r\n\r\n");
@@ -562,8 +585,6 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
         
         if (tr.isUnboundGenericParam())
           tn = genparam;
-        else if (tr.isIdRef())
-          tn ="String";
         else if (tr.isXhtml()) 
           tn = "char[]";
         else if (tr.isWildcardType())

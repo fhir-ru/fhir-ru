@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,14 +29,15 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * Significant health events and conditions for people related to the subject relevant in the context of care for the subject.
  */
-public class FamilyHistory extends Resource {
+public class FamilyHistory extends DomainResource {
 
     public static class FamilyHistoryRelationComponent extends BackboneElement {
         /**
@@ -86,16 +87,16 @@ public class FamilyHistory extends Resource {
       }
 
         /**
-         * @return {@link #name} (This will either be a name or a description.  E.g. "Aunt Susan", "my cousin with the red hair".)
+         * @return {@link #name} (This will either be a name or a description.  E.g. "Aunt Susan", "my cousin with the red hair".). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
          */
-        public StringType getName() { 
+        public StringType getNameElement() { 
           return this.name;
         }
 
         /**
-         * @param value {@link #name} (This will either be a name or a description.  E.g. "Aunt Susan", "my cousin with the red hair".)
+         * @param value {@link #name} (This will either be a name or a description.  E.g. "Aunt Susan", "my cousin with the red hair".). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
          */
-        public FamilyHistoryRelationComponent setName(StringType value) { 
+        public FamilyHistoryRelationComponent setNameElement(StringType value) { 
           this.name = value;
           return this;
         }
@@ -103,15 +104,15 @@ public class FamilyHistory extends Resource {
         /**
          * @return This will either be a name or a description.  E.g. "Aunt Susan", "my cousin with the red hair".
          */
-        public String getNameSimple() { 
+        public String getName() { 
           return this.name == null ? null : this.name.getValue();
         }
 
         /**
          * @param value This will either be a name or a description.  E.g. "Aunt Susan", "my cousin with the red hair".
          */
-        public FamilyHistoryRelationComponent setNameSimple(String value) { 
-          if (value == null)
+        public FamilyHistoryRelationComponent setName(String value) { 
+          if (Utilities.noString(value))
             this.name = null;
           else {
             if (this.name == null)
@@ -182,16 +183,16 @@ public class FamilyHistory extends Resource {
         }
 
         /**
-         * @return {@link #note} (This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.)
+         * @return {@link #note} (This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.). This is the underlying object with id, value and extensions. The accessor "getNote" gives direct access to the value
          */
-        public StringType getNote() { 
+        public StringType getNoteElement() { 
           return this.note;
         }
 
         /**
-         * @param value {@link #note} (This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.)
+         * @param value {@link #note} (This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.). This is the underlying object with id, value and extensions. The accessor "getNote" gives direct access to the value
          */
-        public FamilyHistoryRelationComponent setNote(StringType value) { 
+        public FamilyHistoryRelationComponent setNoteElement(StringType value) { 
           this.note = value;
           return this;
         }
@@ -199,15 +200,15 @@ public class FamilyHistory extends Resource {
         /**
          * @return This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.
          */
-        public String getNoteSimple() { 
+        public String getNote() { 
           return this.note == null ? null : this.note.getValue();
         }
 
         /**
          * @param value This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.
          */
-        public FamilyHistoryRelationComponent setNoteSimple(String value) { 
-          if (value == null)
+        public FamilyHistoryRelationComponent setNote(String value) { 
+          if (Utilities.noString(value))
             this.note = null;
           else {
             if (this.note == null)
@@ -224,11 +225,11 @@ public class FamilyHistory extends Resource {
           return this.condition;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #condition} (The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.)
          */
-        public FamilyHistoryRelationConditionComponent addCondition() { 
+    // syntactic sugar
+        public FamilyHistoryRelationConditionComponent addCondition() { //3
           FamilyHistoryRelationConditionComponent t = new FamilyHistoryRelationConditionComponent();
           this.condition.add(t);
           return t;
@@ -247,6 +248,7 @@ public class FamilyHistory extends Resource {
 
       public FamilyHistoryRelationComponent copy() {
         FamilyHistoryRelationComponent dst = new FamilyHistoryRelationComponent();
+        copyValues(dst);
         dst.name = name == null ? null : name.copy();
         dst.relationship = relationship == null ? null : relationship.copy();
         dst.born = born == null ? null : born.copy();
@@ -339,16 +341,16 @@ public class FamilyHistory extends Resource {
         }
 
         /**
-         * @return {@link #note} (An area where general notes can be placed about this specific condition.)
+         * @return {@link #note} (An area where general notes can be placed about this specific condition.). This is the underlying object with id, value and extensions. The accessor "getNote" gives direct access to the value
          */
-        public StringType getNote() { 
+        public StringType getNoteElement() { 
           return this.note;
         }
 
         /**
-         * @param value {@link #note} (An area where general notes can be placed about this specific condition.)
+         * @param value {@link #note} (An area where general notes can be placed about this specific condition.). This is the underlying object with id, value and extensions. The accessor "getNote" gives direct access to the value
          */
-        public FamilyHistoryRelationConditionComponent setNote(StringType value) { 
+        public FamilyHistoryRelationConditionComponent setNoteElement(StringType value) { 
           this.note = value;
           return this;
         }
@@ -356,15 +358,15 @@ public class FamilyHistory extends Resource {
         /**
          * @return An area where general notes can be placed about this specific condition.
          */
-        public String getNoteSimple() { 
+        public String getNote() { 
           return this.note == null ? null : this.note.getValue();
         }
 
         /**
          * @param value An area where general notes can be placed about this specific condition.
          */
-        public FamilyHistoryRelationConditionComponent setNoteSimple(String value) { 
-          if (value == null)
+        public FamilyHistoryRelationConditionComponent setNote(String value) { 
+          if (Utilities.noString(value))
             this.note = null;
           else {
             if (this.note == null)
@@ -384,6 +386,7 @@ public class FamilyHistory extends Resource {
 
       public FamilyHistoryRelationConditionComponent copy() {
         FamilyHistoryRelationConditionComponent dst = new FamilyHistoryRelationConditionComponent();
+        copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.outcome = outcome == null ? null : outcome.copy();
         dst.onset = onset == null ? null : onset.copy();
@@ -401,12 +404,12 @@ public class FamilyHistory extends Resource {
     /**
      * The person who this history concerns.
      */
-    protected ResourceReference subject;
+    protected Reference patient;
 
     /**
      * The actual object that is the target of the reference (The person who this history concerns.)
      */
-    protected Patient subjectTarget;
+    protected Patient patientTarget;
 
     /**
      * The date (and possibly time) when the family history was taken.
@@ -423,15 +426,15 @@ public class FamilyHistory extends Resource {
      */
     protected List<FamilyHistoryRelationComponent> relation = new ArrayList<FamilyHistoryRelationComponent>();
 
-    private static final long serialVersionUID = -1348395138L;
+    private static final long serialVersionUID = -586509986L;
 
     public FamilyHistory() {
       super();
     }
 
-    public FamilyHistory(ResourceReference subject) {
+    public FamilyHistory(Reference patient) {
       super();
-      this.subject = subject;
+      this.patient = patient;
     }
 
     /**
@@ -441,57 +444,57 @@ public class FamilyHistory extends Resource {
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (This records identifiers associated with this family history record that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
     }
 
     /**
-     * @return {@link #subject} (The person who this history concerns.)
+     * @return {@link #patient} (The person who this history concerns.)
      */
-    public ResourceReference getSubject() { 
-      return this.subject;
+    public Reference getPatient() { 
+      return this.patient;
     }
 
     /**
-     * @param value {@link #subject} (The person who this history concerns.)
+     * @param value {@link #patient} (The person who this history concerns.)
      */
-    public FamilyHistory setSubject(ResourceReference value) { 
-      this.subject = value;
+    public FamilyHistory setPatient(Reference value) { 
+      this.patient = value;
       return this;
     }
 
     /**
-     * @return {@link #subject} (The actual object that is the target of the reference. The person who this history concerns.)
+     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The person who this history concerns.)
      */
-    public Patient getSubjectTarget() { 
-      return this.subjectTarget;
+    public Patient getPatientTarget() { 
+      return this.patientTarget;
     }
 
     /**
-     * @param value {@link #subject} (The actual object that is the target of the reference. The person who this history concerns.)
+     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The person who this history concerns.)
      */
-    public FamilyHistory setSubjectTarget(Patient value) { 
-      this.subjectTarget = value;
+    public FamilyHistory setPatientTarget(Patient value) { 
+      this.patientTarget = value;
       return this;
     }
 
     /**
-     * @return {@link #date} (The date (and possibly time) when the family history was taken.)
+     * @return {@link #date} (The date (and possibly time) when the family history was taken.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public DateTimeType getDate() { 
+    public DateTimeType getDateElement() { 
       return this.date;
     }
 
     /**
-     * @param value {@link #date} (The date (and possibly time) when the family history was taken.)
+     * @param value {@link #date} (The date (and possibly time) when the family history was taken.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public FamilyHistory setDate(DateTimeType value) { 
+    public FamilyHistory setDateElement(DateTimeType value) { 
       this.date = value;
       return this;
     }
@@ -499,14 +502,14 @@ public class FamilyHistory extends Resource {
     /**
      * @return The date (and possibly time) when the family history was taken.
      */
-    public DateAndTime getDateSimple() { 
+    public DateAndTime getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
      * @param value The date (and possibly time) when the family history was taken.
      */
-    public FamilyHistory setDateSimple(DateAndTime value) { 
+    public FamilyHistory setDate(DateAndTime value) { 
       if (value == null)
         this.date = null;
       else {
@@ -518,16 +521,16 @@ public class FamilyHistory extends Resource {
     }
 
     /**
-     * @return {@link #note} (Conveys information about family history not specific to individual relations.)
+     * @return {@link #note} (Conveys information about family history not specific to individual relations.). This is the underlying object with id, value and extensions. The accessor "getNote" gives direct access to the value
      */
-    public StringType getNote() { 
+    public StringType getNoteElement() { 
       return this.note;
     }
 
     /**
-     * @param value {@link #note} (Conveys information about family history not specific to individual relations.)
+     * @param value {@link #note} (Conveys information about family history not specific to individual relations.). This is the underlying object with id, value and extensions. The accessor "getNote" gives direct access to the value
      */
-    public FamilyHistory setNote(StringType value) { 
+    public FamilyHistory setNoteElement(StringType value) { 
       this.note = value;
       return this;
     }
@@ -535,15 +538,15 @@ public class FamilyHistory extends Resource {
     /**
      * @return Conveys information about family history not specific to individual relations.
      */
-    public String getNoteSimple() { 
+    public String getNote() { 
       return this.note == null ? null : this.note.getValue();
     }
 
     /**
      * @param value Conveys information about family history not specific to individual relations.
      */
-    public FamilyHistory setNoteSimple(String value) { 
-      if (value == null)
+    public FamilyHistory setNote(String value) { 
+      if (Utilities.noString(value))
         this.note = null;
       else {
         if (this.note == null)
@@ -560,11 +563,11 @@ public class FamilyHistory extends Resource {
       return this.relation;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #relation} (The related person. Each FamilyHistory resource contains the entire family history for a single person.)
      */
-    public FamilyHistoryRelationComponent addRelation() { 
+    // syntactic sugar
+    public FamilyHistoryRelationComponent addRelation() { //3
       FamilyHistoryRelationComponent t = new FamilyHistoryRelationComponent();
       this.relation.add(t);
       return t;
@@ -573,7 +576,7 @@ public class FamilyHistory extends Resource {
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "This records identifiers associated with this family history record that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("subject", "Resource(Patient)", "The person who this history concerns.", 0, java.lang.Integer.MAX_VALUE, subject));
+        childrenList.add(new Property("patient", "Reference(Patient)", "The person who this history concerns.", 0, java.lang.Integer.MAX_VALUE, patient));
         childrenList.add(new Property("date", "dateTime", "The date (and possibly time) when the family history was taken.", 0, java.lang.Integer.MAX_VALUE, date));
         childrenList.add(new Property("note", "string", "Conveys information about family history not specific to individual relations.", 0, java.lang.Integer.MAX_VALUE, note));
         childrenList.add(new Property("relation", "", "The related person. Each FamilyHistory resource contains the entire family history for a single person.", 0, java.lang.Integer.MAX_VALUE, relation));
@@ -581,10 +584,11 @@ public class FamilyHistory extends Resource {
 
       public FamilyHistory copy() {
         FamilyHistory dst = new FamilyHistory();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());
-        dst.subject = subject == null ? null : subject.copy();
+        dst.patient = patient == null ? null : patient.copy();
         dst.date = date == null ? null : date.copy();
         dst.note = note == null ? null : note.copy();
         dst.relation = new ArrayList<FamilyHistoryRelationComponent>();

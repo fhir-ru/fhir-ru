@@ -1,6 +1,6 @@
 package org.hl7.fhir.tools.publisher;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -40,8 +40,8 @@ import java.util.Set;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Logger.LogMessageType;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlDocument;
@@ -180,9 +180,6 @@ public class BookMaker {
             } 
           }
         }
-      }
-      else if (page.getDefinitions().getFutureResources().containsKey(a.allText())) {
-        a.addText(" (Broken Link: not done yet)");
       } else {
        // page.log("unable to resolve reference to "+a.getAttributes().get("href").substring(1)+" on \""+a.allText()+"\"");
         a.addText(" (Known Broken Link - needs to be resolved)");

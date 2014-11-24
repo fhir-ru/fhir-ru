@@ -52,7 +52,7 @@ Type
   private
     FPath: String;
   protected
-    function nodeType : String;
+    function nodeType : String; virtual;
   public
     constructor create(path : String); overload;
     Function Link : TJsonNode; Overload;
@@ -80,6 +80,8 @@ Type
     procedure SetItem(i: integer; const Value: TJsonNode);
     procedure SetObj(i: integer; const Value: TJsonObject);
     procedure SetValue(i: integer; const Value: String);
+  protected
+    function nodeType : String; override;
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -100,6 +102,8 @@ Type
   TJsonBoolean = class (TJsonNode)
   private
     FValue: boolean;
+  protected
+    function nodeType : String; override;
   public
     Constructor Create(path : String; value : boolean); overload;
     Function Link : TJsonBoolean; Overload;
@@ -109,6 +113,8 @@ Type
   TJsonValue = class (TJsonNode)
   private
     FValue: String;
+  protected
+    function nodeType : String; override;
   public
     Constructor Create(path : String; value : string); overload;
     Function Link : TJsonValue; Overload;
@@ -129,6 +135,8 @@ Type
     procedure SetArray(name: String; const Value: TJsonArray);
     procedure SetObject(name: String; const Value: TJsonObject);
     function GetForcedArray(name: String): TJsonArray;
+  protected
+    function nodeType : String; override;
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -173,6 +181,7 @@ Type
     Procedure Finish;
 
     Procedure Value(Const name : String; Const avalue : String); overload;
+    Procedure ValueNumber(Const name : String; Const avalue : String); overload;
     Procedure Value(Const name : String; avalue : Boolean); overload;
     Procedure Value(Const name : String; avalue : Integer); overload;
     Procedure Value(Const name : String; avalue : Int64); overload;
@@ -188,6 +197,7 @@ Type
     Procedure FinishArray;
 
     Procedure ValueInArray(Const value : String); overload;
+    Procedure ValueNumberInArray(Const value : String); overload;
     Procedure ValueInArray(value : Boolean); overload;
     Procedure ValueInArray(value : Integer); overload;
     Procedure ValueInArray(value : Int64); overload;
@@ -195,14 +205,14 @@ Type
     Procedure ValueDateInArray(aValue : TDateTime); overload;
     Procedure ValueNullInArray;
 
-    Procedure WriteObject(name : String; obj : TJsonObject);
+    Procedure WriteObject(name : String; obj : TJsonObject); overload;
     Procedure WriteObjectInner(obj : TJsonObject);
     Procedure WriteArray(name : String; arr : TJsonArray);
 
-    class Function write(obj : TJsonObject; pretty : boolean = false) : TBytes; overload;
-    class Function writeStr(obj : TJsonObject; pretty : boolean = false) : String; overload;
-    class Procedure write(stream : TStream; obj : TJsonObject; pretty : boolean = false); overload;
-    class Procedure write(stream : TAdvStream; obj : TJsonObject; pretty : boolean = false); overload;
+    class Function writeObject(obj : TJsonObject; pretty : boolean = false) : TBytes; overload;
+    class Function writeObjectStr(obj : TJsonObject; pretty : boolean = false) : String; overload;
+    class Procedure writeObject(stream : TStream; obj : TJsonObject; pretty : boolean = false); overload;
+    class Procedure writeObject(stream : TAdvStream; obj : TJsonObject; pretty : boolean = false); overload;
   End;
 
 
@@ -268,7 +278,7 @@ Const
   Codes_TJSONLexType : Array[TJSONLexType] of String = ('Open', 'Close', 'String', 'Number', 'Colon', 'Comma', 'OpenArray', 'CloseArray', 'Eof', 'Null', 'Boolean');
 
 function JsonBoolToString(b : boolean) : String;
-function JsonStringToBool(s : String) : boolean;
+function JsonStringToBool(s : String; def : boolean = false) : boolean;
 
 Implementation
 
@@ -442,7 +452,7 @@ begin
   LevelDown;
 end;
 
-class procedure TJSONWriter.write(stream: TAdvStream; obj: TJsonObject; pretty : boolean = false);
+class procedure TJSONWriter.writeObject(stream: TAdvStream; obj: TJsonObject; pretty : boolean = false);
 var
   this : TJSONWriter;
 begin
@@ -505,7 +515,7 @@ begin
       else if v is  TJsonObject then
         WriteObject(n, v as TJsonObject)
       else
-        raise Exception.Create('Unexpected object type '+v.ClassName);
+        raise Exception.Create('Unexpected object type '+v.nodeType);
     end;
   finally
     names.free;
@@ -519,18 +529,18 @@ begin
   FinishObject;
 end;
 
-class function TJSONWriter.writeStr(obj: TJsonObject; pretty: boolean): String;
+class function TJSONWriter.writeObjectStr(obj: TJsonObject; pretty: boolean): String;
 begin
-  result := TEncoding.UTF8.GetString(write(obj, pretty));
+  result := TEncoding.UTF8.GetString(writeObject(obj, pretty));
 end;
 
-class function TJSONWriter.write(obj: TJsonObject; pretty: boolean): TBytes;
+class function TJSONWriter.writeObject(obj: TJsonObject; pretty: boolean): TBytes;
 var
   mem : TBytesStream;
 begin
   mem := TBytesStream.Create;
   try
-    write(mem, obj, pretty);
+    writeObject(mem, obj, pretty);
     result := mem.Bytes;
     SetLength(result, mem.size);
   finally
@@ -538,14 +548,14 @@ begin
   end;
 end;
 
-class procedure TJSONWriter.write(stream: TStream; obj: TJsonObject; pretty: boolean);
+class procedure TJSONWriter.writeObject(stream: TStream; obj: TJsonObject; pretty: boolean);
 var
   s : TAdvVCLStream;
 begin
   s := TAdvVCLStream.Create;
   try
     s.Stream := stream;
-    write(s, obj, pretty);
+    writeObject(s, obj, pretty);
   finally
     s.Free;
   end;
@@ -691,7 +701,7 @@ begin
     '0'..'9' :
       Begin
       FLexType := jltNumber;
-      FValue := ch;
+      FValue := '';
       while More and CharInSet(ch, ['0'..'9', '.']) do
       Begin
         FValue := FValue + ch;
@@ -1068,6 +1078,16 @@ begin
     FCache := JSONString(value);
 end;
 
+procedure TJSONWriter.ValueNumberInArray(const value: String);
+begin
+  if FCache <> '' Then
+    ProduceLine(UseCache+',');
+  if value = '' then
+    ValueNullInArray
+  Else
+    FCache := value;
+end;
+
 procedure TJSONWriter.ValueInArray(value: Boolean);
 begin
   if FCache <> '' Then
@@ -1083,6 +1103,19 @@ begin
   if FCache <> '' Then
     ProduceLine(UseCache+',');
   FCache := 'null';
+end;
+
+procedure TJSONWriter.ValueNumber(const name, avalue: String);
+begin
+  if name = '' then
+    valueNumberInArray(avalue)
+  else if avalue = '' then
+    ValueNull(name)
+  Else
+  Begin
+    DoName(Name);
+    FCache := UseName + avalue;
+  End;
 end;
 
 procedure TJSONWriter.ValueInArray(value: Int64);
@@ -1224,7 +1257,7 @@ begin
   else if FItems[i] is TJsonNull then
     result := nil
   else
-    raise Exception.Create('Found a '+TJsonNode(FItems[i]).nodeType+' expecting an object at '+path+'['+inttostr(i)+']');
+    raise Exception.Create('Found a property of type '+TJsonNode(FItems[i]).nodeType+' looking for an object at '+path+'['+inttostr(i)+']');
 end;
 
 function TJsonArray.GetValue(i: integer): String;
@@ -1242,6 +1275,11 @@ end;
 function TJsonArray.Link: TJsonArray;
 begin
   result := TJsonArray(Inherited Link);
+end;
+
+function TJsonArray.nodeType: String;
+begin
+  result := 'array';
 end;
 
 procedure TJsonArray.SetItem(i: integer; const Value: TJsonNode);
@@ -1270,6 +1308,11 @@ end;
 function TJsonValue.Link: TJsonValue;
 begin
   result := TJsonValue(Inherited Link);
+end;
+
+function TJsonValue.nodeType: String;
+begin
+  result := 'string/number';
 end;
 
 { TJsonObject }
@@ -1307,7 +1350,7 @@ begin
     else if node is TJsonNull then
       result := nil
     else
-      raise Exception.Create('Found a '+nodeType+' looking for an array at '+path+'.'+name);
+      raise Exception.Create('Found a property of '+node.nodeType+' looking for an array at '+path+'.'+name);
   end
   else
     result := nil;
@@ -1325,7 +1368,7 @@ begin
     else if node is TJsonBoolean then
       result := (node as TJsonBoolean).FValue
     else
-      raise Exception.Create('Found a '+node.ClassName+' looking for a boolean');
+      raise Exception.Create('Found a property of type '+node.nodeType+' looking for a boolean at '+path+'.'+name);
   end
   else
     result := false;
@@ -1357,7 +1400,7 @@ begin
     else if node is TJsonNull then
       result := nil
     else
-      raise Exception.Create('Found a '+node.ClassName+' looking for an object');
+      raise Exception.Create('Found a property of type '+node.nodeType+' looking for an object at '+FPath+'.'+name);
   end
   else
     result := nil;
@@ -1384,7 +1427,7 @@ begin
         else
           result := 'false'
       else
-        raise Exception.Create('Found a '+node.ClassName+' looking for a string');
+        raise Exception.Create('Found a property of type '+node.nodeType+' looking for a string at '+FPath+'.'+name);
     end
     else
       result := '';
@@ -1404,6 +1447,11 @@ end;
 function TJsonObject.Link: TJsonObject;
 begin
   result := TJsonObject(Inherited Link);
+end;
+
+function TJsonObject.nodeType: String;
+begin
+  result := 'object';
 end;
 
 procedure TJsonObject.SetArray(name: String; const Value: TJsonArray);
@@ -1453,6 +1501,11 @@ begin
   result := TJsonBoolean(inherited Link);
 end;
 
+function TJsonBoolean.nodeType: String;
+begin
+  result := 'boolean';
+end;
+
 function JsonBoolToString(b : boolean) : String;
 begin
   if b then
@@ -1462,7 +1515,7 @@ begin
 
 end;
 
-function JsonStringToBool(s : String) : boolean;
+function JsonStringToBool(s : String; def : boolean = false) : boolean;
 begin
   if SameText(s, 'true') then
     result := true
@@ -1475,7 +1528,7 @@ begin
   else if SameText(s, '') then
     result := false
   else
-    result := true;
+    result := def;
 end;
 
 End.

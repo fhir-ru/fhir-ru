@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/valueset.xsd">
+ <id value="101"/>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -8,7 +9,7 @@
         Developed by: FHIR project team (example)</p>
       <p>Published for testing on 13-June 2012</p>
       <p>This is a restriction on
-<a href="http://hl7.org/svc/fhir/ValueSet/03acace4-5206-4c8f-a8b4-df27a4c18b09?format=text/html">
+<a href="http://test.fhir.org/open/ValueSet/03acace4-5206-4c8f-a8b4-df27a4c18b09?format=text/html">
         the value set "all serum test codes"</a>, and contains the following LOINC codes:</p>
       <ul>
         <li>14647-2</li>
@@ -33,6 +34,7 @@
     <value value="http://hl7.org/fhir"/>
   </telecom>
   <description value="This is an example value set that includes &#xA;      all the LOINC codes for serum cholesterol from v2.36"/>
+  <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
   <status value="draft"/>
   <experimental value="true"/>
   <date value="2012-06-13"/>
@@ -45,11 +47,11 @@
     tests, and that this value set is therefor a constraint on that one 
 
      Currently this is not included in the resource pending further investigation
-    <restricts value="http://hl7.org/svc/fhir/ValueSet/03acace4-5206-4c8f-a8b4-df27a4c18b09"/> -->
+    <restricts value="http://test.fhir.org/open/ValueSet/03acace4-5206-4c8f-a8b4-df27a4c18b09"/> -->
     <!-- given that this value set is small, it doesn't make 
    sense to import another one - what would it say? But if that made sense, 
    we'd do it like this: 
-  <import>http://hl7.org/svc/fhir/ValueSet/f0f65621-ae8c-4c57-9f96-5326c2acefe3</import> -->
+  <import>http://test.fhir.org/open/ValueSet/f0f65621-ae8c-4c57-9f96-5326c2acefe3</import> -->
     <!-- you could have multiple includes, if you wanted to include codes from more than
      one code system, or include codes with different modes. we don't, in this case -->
     <include>
@@ -57,10 +59,18 @@
       <version value="2.36"/>
       <!-- for LOINC, we simply include the listed codes - no subsumption in LOINC -->
       <!-- these were selected by hand -->
-      <code value="14647-2"/>
-      <code value="2093-3"/>
-      <code value="35200-5"/>
-      <code value="9342-7"/>
+      <concept>
+        <code value="14647-2"/>
+      </concept>
+      <concept>
+        <code value="2093-3"/>
+      </concept>
+      <concept>
+        <code value="35200-5"/>
+      </concept>
+      <concept>
+        <code value="9342-7"/>
+      </concept>
     </include>
   </compose>
 </ValueSet>

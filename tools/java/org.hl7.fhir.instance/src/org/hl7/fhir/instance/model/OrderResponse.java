@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,60 +29,89 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A response to an order.
  */
-public class OrderResponse extends Resource {
+public class OrderResponse extends DomainResource {
 
     public enum OrderOutcomeCode {
-        pending, // The order is known, but no processing has occurred at this time.
-        review, // The order is undergoing initial processing to determine whether it will be accepted (usually this involves human review).
-        rejected, // The order was rejected because of a workflow/business logic reason.
-        error, // The order was unable to be processed because of a technical error (i.e. unexpected error).
-        accepted, // The order has been accepted, and work is in progress.
-        cancelled, // Processing the order was halted at the initiators request.
-        replaced, // The order has been cancelled and replaced by another.
-        aborted, // Processing the order was stopped because of some workflow/business logic reason.
-        complete, // The order has been completed.
-        Null; // added to help the parsers
+        PENDING, // The order is known, but no processing has occurred at this time.
+        REVIEW, // The order is undergoing initial processing to determine whether it will be accepted (usually this involves human review).
+        REJECTED, // The order was rejected because of a workflow/business logic reason.
+        ERROR, // The order was unable to be processed because of a technical error (i.e. unexpected error).
+        ACCEPTED, // The order has been accepted, and work is in progress.
+        CANCELLED, // Processing the order was halted at the initiators request.
+        REPLACED, // The order has been cancelled and replaced by another.
+        ABORTED, // Processing the order was stopped because of some workflow/business logic reason.
+        COMPLETE, // The order has been completed.
+        NULL; // added to help the parsers
         public static OrderOutcomeCode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("pending".equals(codeString))
-          return pending;
+          return PENDING;
         if ("review".equals(codeString))
-          return review;
+          return REVIEW;
         if ("rejected".equals(codeString))
-          return rejected;
+          return REJECTED;
         if ("error".equals(codeString))
-          return error;
+          return ERROR;
         if ("accepted".equals(codeString))
-          return accepted;
+          return ACCEPTED;
         if ("cancelled".equals(codeString))
-          return cancelled;
+          return CANCELLED;
         if ("replaced".equals(codeString))
-          return replaced;
+          return REPLACED;
         if ("aborted".equals(codeString))
-          return aborted;
+          return ABORTED;
         if ("complete".equals(codeString))
-          return complete;
+          return COMPLETE;
         throw new Exception("Unknown OrderOutcomeCode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case pending: return "pending";
-            case review: return "review";
-            case rejected: return "rejected";
-            case error: return "error";
-            case accepted: return "accepted";
-            case cancelled: return "cancelled";
-            case replaced: return "replaced";
-            case aborted: return "aborted";
-            case complete: return "complete";
+            case PENDING: return "pending";
+            case REVIEW: return "review";
+            case REJECTED: return "rejected";
+            case ERROR: return "error";
+            case ACCEPTED: return "accepted";
+            case CANCELLED: return "cancelled";
+            case REPLACED: return "replaced";
+            case ABORTED: return "aborted";
+            case COMPLETE: return "complete";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case PENDING: return "The order is known, but no processing has occurred at this time.";
+            case REVIEW: return "The order is undergoing initial processing to determine whether it will be accepted (usually this involves human review).";
+            case REJECTED: return "The order was rejected because of a workflow/business logic reason.";
+            case ERROR: return "The order was unable to be processed because of a technical error (i.e. unexpected error).";
+            case ACCEPTED: return "The order has been accepted, and work is in progress.";
+            case CANCELLED: return "Processing the order was halted at the initiators request.";
+            case REPLACED: return "The order has been cancelled and replaced by another.";
+            case ABORTED: return "Processing the order was stopped because of some workflow/business logic reason.";
+            case COMPLETE: return "The order has been completed.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case PENDING: return "pending";
+            case REVIEW: return "review";
+            case REJECTED: return "rejected";
+            case ERROR: return "error";
+            case ACCEPTED: return "accepted";
+            case CANCELLED: return "cancelled";
+            case REPLACED: return "replaced";
+            case ABORTED: return "aborted";
+            case COMPLETE: return "complete";
             default: return "?";
           }
         }
@@ -94,43 +123,43 @@ public class OrderResponse extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("pending".equals(codeString))
-          return OrderOutcomeCode.pending;
+          return OrderOutcomeCode.PENDING;
         if ("review".equals(codeString))
-          return OrderOutcomeCode.review;
+          return OrderOutcomeCode.REVIEW;
         if ("rejected".equals(codeString))
-          return OrderOutcomeCode.rejected;
+          return OrderOutcomeCode.REJECTED;
         if ("error".equals(codeString))
-          return OrderOutcomeCode.error;
+          return OrderOutcomeCode.ERROR;
         if ("accepted".equals(codeString))
-          return OrderOutcomeCode.accepted;
+          return OrderOutcomeCode.ACCEPTED;
         if ("cancelled".equals(codeString))
-          return OrderOutcomeCode.cancelled;
+          return OrderOutcomeCode.CANCELLED;
         if ("replaced".equals(codeString))
-          return OrderOutcomeCode.replaced;
+          return OrderOutcomeCode.REPLACED;
         if ("aborted".equals(codeString))
-          return OrderOutcomeCode.aborted;
+          return OrderOutcomeCode.ABORTED;
         if ("complete".equals(codeString))
-          return OrderOutcomeCode.complete;
+          return OrderOutcomeCode.COMPLETE;
         throw new Exception("Unknown OrderOutcomeCode code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == OrderOutcomeCode.pending)
+      if (code == OrderOutcomeCode.PENDING)
         return "pending";
-      if (code == OrderOutcomeCode.review)
+      if (code == OrderOutcomeCode.REVIEW)
         return "review";
-      if (code == OrderOutcomeCode.rejected)
+      if (code == OrderOutcomeCode.REJECTED)
         return "rejected";
-      if (code == OrderOutcomeCode.error)
+      if (code == OrderOutcomeCode.ERROR)
         return "error";
-      if (code == OrderOutcomeCode.accepted)
+      if (code == OrderOutcomeCode.ACCEPTED)
         return "accepted";
-      if (code == OrderOutcomeCode.cancelled)
+      if (code == OrderOutcomeCode.CANCELLED)
         return "cancelled";
-      if (code == OrderOutcomeCode.replaced)
+      if (code == OrderOutcomeCode.REPLACED)
         return "replaced";
-      if (code == OrderOutcomeCode.aborted)
+      if (code == OrderOutcomeCode.ABORTED)
         return "aborted";
-      if (code == OrderOutcomeCode.complete)
+      if (code == OrderOutcomeCode.COMPLETE)
         return "complete";
       return "?";
       }
@@ -144,7 +173,7 @@ public class OrderResponse extends Resource {
     /**
      * A reference to the order that this is in response to.
      */
-    protected ResourceReference request;
+    protected Reference request;
 
     /**
      * The actual object that is the target of the reference (A reference to the order that this is in response to.)
@@ -159,7 +188,7 @@ public class OrderResponse extends Resource {
     /**
      * The person, organization, or device credited with making the response.
      */
-    protected ResourceReference who;
+    protected Reference who;
 
     /**
      * The actual object that is the target of the reference (The person, organization, or device credited with making the response.)
@@ -184,20 +213,20 @@ public class OrderResponse extends Resource {
     /**
      * Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.
      */
-    protected List<ResourceReference> fulfillment = new ArrayList<ResourceReference>();
+    protected List<Reference> fulfillment = new ArrayList<Reference>();
     /**
      * The actual objects that are the target of the reference (Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.)
      */
     protected List<Resource> fulfillmentTarget = new ArrayList<Resource>();
 
 
-    private static final long serialVersionUID = 1422952117L;
+    private static final long serialVersionUID = 499827481L;
 
     public OrderResponse() {
       super();
     }
 
-    public OrderResponse(ResourceReference request, Enumeration<OrderOutcomeCode> code) {
+    public OrderResponse(Reference request, Enumeration<OrderOutcomeCode> code) {
       super();
       this.request = request;
       this.code = code;
@@ -210,11 +239,11 @@ public class OrderResponse extends Resource {
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (Identifiers assigned to this order. The identifiers are usually assigned by the system responding to the order, but they may be provided or added to by other systems.)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
@@ -223,27 +252,27 @@ public class OrderResponse extends Resource {
     /**
      * @return {@link #request} (A reference to the order that this is in response to.)
      */
-    public ResourceReference getRequest() { 
+    public Reference getRequest() { 
       return this.request;
     }
 
     /**
      * @param value {@link #request} (A reference to the order that this is in response to.)
      */
-    public OrderResponse setRequest(ResourceReference value) { 
+    public OrderResponse setRequest(Reference value) { 
       this.request = value;
       return this;
     }
 
     /**
-     * @return {@link #request} (The actual object that is the target of the reference. A reference to the order that this is in response to.)
+     * @return {@link #request} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A reference to the order that this is in response to.)
      */
     public Order getRequestTarget() { 
       return this.requestTarget;
     }
 
     /**
-     * @param value {@link #request} (The actual object that is the target of the reference. A reference to the order that this is in response to.)
+     * @param value {@link #request} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A reference to the order that this is in response to.)
      */
     public OrderResponse setRequestTarget(Order value) { 
       this.requestTarget = value;
@@ -251,16 +280,16 @@ public class OrderResponse extends Resource {
     }
 
     /**
-     * @return {@link #date} (The date and time at which this order response was made (created/posted).)
+     * @return {@link #date} (The date and time at which this order response was made (created/posted).). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public DateTimeType getDate() { 
+    public DateTimeType getDateElement() { 
       return this.date;
     }
 
     /**
-     * @param value {@link #date} (The date and time at which this order response was made (created/posted).)
+     * @param value {@link #date} (The date and time at which this order response was made (created/posted).). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public OrderResponse setDate(DateTimeType value) { 
+    public OrderResponse setDateElement(DateTimeType value) { 
       this.date = value;
       return this;
     }
@@ -268,14 +297,14 @@ public class OrderResponse extends Resource {
     /**
      * @return The date and time at which this order response was made (created/posted).
      */
-    public DateAndTime getDateSimple() { 
+    public DateAndTime getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
      * @param value The date and time at which this order response was made (created/posted).
      */
-    public OrderResponse setDateSimple(DateAndTime value) { 
+    public OrderResponse setDate(DateAndTime value) { 
       if (value == null)
         this.date = null;
       else {
@@ -289,27 +318,27 @@ public class OrderResponse extends Resource {
     /**
      * @return {@link #who} (The person, organization, or device credited with making the response.)
      */
-    public ResourceReference getWho() { 
+    public Reference getWho() { 
       return this.who;
     }
 
     /**
      * @param value {@link #who} (The person, organization, or device credited with making the response.)
      */
-    public OrderResponse setWho(ResourceReference value) { 
+    public OrderResponse setWho(Reference value) { 
       this.who = value;
       return this;
     }
 
     /**
-     * @return {@link #who} (The actual object that is the target of the reference. The person, organization, or device credited with making the response.)
+     * @return {@link #who} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The person, organization, or device credited with making the response.)
      */
     public Resource getWhoTarget() { 
       return this.whoTarget;
     }
 
     /**
-     * @param value {@link #who} (The actual object that is the target of the reference. The person, organization, or device credited with making the response.)
+     * @param value {@link #who} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The person, organization, or device credited with making the response.)
      */
     public OrderResponse setWhoTarget(Resource value) { 
       this.whoTarget = value;
@@ -332,16 +361,16 @@ public class OrderResponse extends Resource {
     }
 
     /**
-     * @return {@link #code} (What this response says about the status of the original order.)
+     * @return {@link #code} (What this response says about the status of the original order.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
      */
-    public Enumeration<OrderOutcomeCode> getCode() { 
+    public Enumeration<OrderOutcomeCode> getCodeElement() { 
       return this.code;
     }
 
     /**
-     * @param value {@link #code} (What this response says about the status of the original order.)
+     * @param value {@link #code} (What this response says about the status of the original order.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
      */
-    public OrderResponse setCode(Enumeration<OrderOutcomeCode> value) { 
+    public OrderResponse setCodeElement(Enumeration<OrderOutcomeCode> value) { 
       this.code = value;
       return this;
     }
@@ -349,14 +378,14 @@ public class OrderResponse extends Resource {
     /**
      * @return What this response says about the status of the original order.
      */
-    public OrderOutcomeCode getCodeSimple() { 
+    public OrderOutcomeCode getCode() { 
       return this.code == null ? null : this.code.getValue();
     }
 
     /**
      * @param value What this response says about the status of the original order.
      */
-    public OrderResponse setCodeSimple(OrderOutcomeCode value) { 
+    public OrderResponse setCode(OrderOutcomeCode value) { 
         if (this.code == null)
           this.code = new Enumeration<OrderOutcomeCode>();
         this.code.setValue(value);
@@ -364,16 +393,16 @@ public class OrderResponse extends Resource {
     }
 
     /**
-     * @return {@link #description} (Additional description about the response - e.g. a text description provided by a human user when making decisions about the order.)
+     * @return {@link #description} (Additional description about the response - e.g. a text description provided by a human user when making decisions about the order.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
-    public StringType getDescription() { 
+    public StringType getDescriptionElement() { 
       return this.description;
     }
 
     /**
-     * @param value {@link #description} (Additional description about the response - e.g. a text description provided by a human user when making decisions about the order.)
+     * @param value {@link #description} (Additional description about the response - e.g. a text description provided by a human user when making decisions about the order.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
-    public OrderResponse setDescription(StringType value) { 
+    public OrderResponse setDescriptionElement(StringType value) { 
       this.description = value;
       return this;
     }
@@ -381,15 +410,15 @@ public class OrderResponse extends Resource {
     /**
      * @return Additional description about the response - e.g. a text description provided by a human user when making decisions about the order.
      */
-    public String getDescriptionSimple() { 
+    public String getDescription() { 
       return this.description == null ? null : this.description.getValue();
     }
 
     /**
      * @param value Additional description about the response - e.g. a text description provided by a human user when making decisions about the order.
      */
-    public OrderResponse setDescriptionSimple(String value) { 
-      if (value == null)
+    public OrderResponse setDescription(String value) { 
+      if (Utilities.noString(value))
         this.description = null;
       else {
         if (this.description == null)
@@ -402,22 +431,22 @@ public class OrderResponse extends Resource {
     /**
      * @return {@link #fulfillment} (Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.)
      */
-    public List<ResourceReference> getFulfillment() { 
+    public List<Reference> getFulfillment() { 
       return this.fulfillment;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #fulfillment} (Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.)
      */
-    public ResourceReference addFulfillment() { 
-      ResourceReference t = new ResourceReference();
+    // syntactic sugar
+    public Reference addFulfillment() { //3
+      Reference t = new Reference();
       this.fulfillment.add(t);
       return t;
     }
 
     /**
-     * @return {@link #fulfillment} (The actual objects that are the target of the reference. Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.)
+     * @return {@link #fulfillment} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.)
      */
     public List<Resource> getFulfillmentTarget() { 
       return this.fulfillmentTarget;
@@ -426,17 +455,18 @@ public class OrderResponse extends Resource {
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "Identifiers assigned to this order. The identifiers are usually assigned by the system responding to the order, but they may be provided or added to by other systems.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("request", "Resource(Order)", "A reference to the order that this is in response to.", 0, java.lang.Integer.MAX_VALUE, request));
+        childrenList.add(new Property("request", "Reference(Order)", "A reference to the order that this is in response to.", 0, java.lang.Integer.MAX_VALUE, request));
         childrenList.add(new Property("date", "dateTime", "The date and time at which this order response was made (created/posted).", 0, java.lang.Integer.MAX_VALUE, date));
-        childrenList.add(new Property("who", "Resource(Practitioner|Organization|Device)", "The person, organization, or device credited with making the response.", 0, java.lang.Integer.MAX_VALUE, who));
-        childrenList.add(new Property("authority[x]", "CodeableConcept|Resource(Any)", "A reference to an authority policy that is the reason for the response. Usually this is used when the order is rejected, to provide a reason for rejection.", 0, java.lang.Integer.MAX_VALUE, authority));
+        childrenList.add(new Property("who", "Reference(Practitioner|Organization|Device)", "The person, organization, or device credited with making the response.", 0, java.lang.Integer.MAX_VALUE, who));
+        childrenList.add(new Property("authority[x]", "CodeableConcept|Reference(Any)", "A reference to an authority policy that is the reason for the response. Usually this is used when the order is rejected, to provide a reason for rejection.", 0, java.lang.Integer.MAX_VALUE, authority));
         childrenList.add(new Property("code", "code", "What this response says about the status of the original order.", 0, java.lang.Integer.MAX_VALUE, code));
         childrenList.add(new Property("description", "string", "Additional description about the response - e.g. a text description provided by a human user when making decisions about the order.", 0, java.lang.Integer.MAX_VALUE, description));
-        childrenList.add(new Property("fulfillment", "Resource(Any)", "Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.", 0, java.lang.Integer.MAX_VALUE, fulfillment));
+        childrenList.add(new Property("fulfillment", "Reference(Any)", "Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.", 0, java.lang.Integer.MAX_VALUE, fulfillment));
       }
 
       public OrderResponse copy() {
         OrderResponse dst = new OrderResponse();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());
@@ -446,8 +476,8 @@ public class OrderResponse extends Resource {
         dst.authority = authority == null ? null : authority.copy();
         dst.code = code == null ? null : code.copy();
         dst.description = description == null ? null : description.copy();
-        dst.fulfillment = new ArrayList<ResourceReference>();
-        for (ResourceReference i : fulfillment)
+        dst.fulfillment = new ArrayList<Reference>();
+        for (Reference i : fulfillment)
           dst.fulfillment.add(i.copy());
         return dst;
       }

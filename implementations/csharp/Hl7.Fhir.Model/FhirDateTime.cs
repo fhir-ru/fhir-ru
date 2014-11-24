@@ -35,6 +35,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace Hl7.Fhir.Model
 {
@@ -78,5 +79,13 @@ namespace Hl7.Fhir.Model
         {
             return new FhirDateTime(DateTimeOffset.Now.ToString(FMT_FULL));
         }
+
+        public static bool IsValidValue(string value)
+        {
+            return Regex.IsMatch(value as string, "^" + FhirDateTime.PATTERN + "$", RegexOptions.Singleline);
+
+            //TODO: Additional checks not implementable by the regex
+        }
+
     }
 }

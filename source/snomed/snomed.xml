@@ -1649,6 +1649,15 @@
     <display value="Tenderness"/>
     <display value="Tenderness (finding)"/>
   </concept>
+  <concept id="247472004" display="Weal (disorder)">
+    <display value="Wheal"/>
+    <display value="Welt"/>
+    <display value="Weal"/>
+    <display value="Nettle rash"/>
+    <display value="Urticarial rash"/>
+    <display value="Hives"/>
+    <display value="Weal (disorder)"/>
+  </concept>
   <concept id="248005005" display="Fighting (finding)">
     <display value="Physical altercation"/>
     <display value="Fighting"/>
@@ -2598,9 +2607,25 @@
     <display value="Paroxysmal"/>
     <display value="Paroxysmal (qualifier value)"/>
   </concept>
+  <concept id="266919005" display="Never smoked tobacco (finding)">
+    <display value="Never smoked tobacco (finding)"/>
+    <display value="Never smoked"/>
+    <display value="Never smoked tobacco"/>
+    <display value="Never smoked tobacco (life style)"/>
+  </concept>
+  <concept id="266927001" display="Tobacco smoking consumption unknown (finding)">
+    <display value="Tobacco smoking consumption unknown"/>
+    <display value="Tobacco smoking consumption unknown (finding)"/>
+  </concept>
   <concept id="267065001" display="Urine appearance (observable entity)">
     <display value="Urine appearance"/>
     <display value="Urine appearance (observable entity)"/>
+  </concept>
+  <concept id="26895000" display="Laboratory test order cancelation (procedure)">
+    <display value="Laboratory test order cancelation (procedure)"/>
+    <display value="Laboratory test order cancelation"/>
+    <display value="Laboratory test order cancellation"/>
+    <display value="Laboratory test order cancellation (procedure)"/>
   </concept>
   <concept id="270427003" display="Patient-initiated encounter">
     <display value="Patient-initiated encounter"/>
@@ -3832,6 +3857,10 @@
     <display value="General medicine (qualifier value)"/>
     <display value="General medicine"/>
   </concept>
+  <concept id="394838008" display="Test request (procedure)">
+    <display value="Test request (procedure)"/>
+    <display value="Test request"/>
+  </concept>
   <concept id="394848005" display="Normal priority">
     <display value="Normal priority (qualifier value)"/>
     <display value="Normal priority"/>
@@ -3851,6 +3880,16 @@
     <display value="Radiology - speciality"/>
     <display value="Radiology - specialty"/>
     <display value="Radiology"/>
+  </concept>
+  <concept id="39579001" display="Anaphylactic reaction">
+    <display value="Generalized anaphylaxis"/>
+    <display value="Generalised anaphylaxis"/>
+    <display value="Anaphylactic shock"/>
+    <display value="Allergic shock"/>
+    <display value="Systemic anaphylaxis"/>
+    <display value="Anaphylaxis"/>
+    <display value="Anaphylactic reaction"/>
+    <display value="Anaphylaxis (disorder)"/>
   </concept>
   <concept id="39607008" display="Lung">
     <display value="Lung structure"/>
@@ -4662,6 +4701,10 @@
     <display value="Graft sample"/>
     <display value="Graft specimen from patient"/>
   </concept>
+  <concept id="440622005" display="Specimen received (situation)">
+    <display value="Specimen received (situation)"/>
+    <display value="Specimen received"/>
+  </concept>
   <concept id="440674008" display="Specimen obtained by lavage (specimen)">
     <display value="Specimen obtained by lavage (specimen)"/>
     <display value="Wash out specimen"/>
@@ -4778,6 +4821,10 @@
   <concept id="449859004" display="Nontunneled central venous catheter (physical object)">
     <display value="Nontunneled central venous catheter (physical object)"/>
     <display value="Nontunneled central venous catheter"/>
+  </concept>
+  <concept id="449868002" display="Smokes tobacco daily (finding)">
+    <display value="Smokes tobacco daily"/>
+    <display value="Smokes tobacco daily (finding)"/>
   </concept>
   <concept id="45033006" display="Skiing">
     <display value="Engaged in skiing, function (observable entity)"/>
@@ -5252,6 +5299,14 @@
     <display value="Inferior vena cava structure"/>
     <display value="Inferior vena cava structure (body structure)"/>
   </concept>
+  <concept id="64305001" display="Hive">
+    <display value="Urticaria"/>
+    <display value="Wheal"/>
+    <display value="Welt"/>
+    <display value="Hive"/>
+    <display value="Nettle rash"/>
+    <display value="Urticaria (morphologic abnormality)"/>
+  </concept>
   <concept id="64915003" display="Operation on heart">
     <display value="Operative procedure on heart"/>
     <display value="Operative procedure on heart, NOS"/>
@@ -5499,6 +5554,13 @@
     <display value="Cholesterol measurement"/>
     <display value="Cholesterol measurement (procedure)"/>
   </concept>
+  <concept id="77176002" display="Smoker (finding)">
+    <display value="Smoker"/>
+    <display value="Smoker, NOS"/>
+    <display value="Smoker (finding)"/>
+    <display value="Current smoker"/>
+    <display value="Smoker (life style)"/>
+  </concept>
   <concept id="77386006" display="Pregnant">
     <display value="Pregnancy confirmed"/>
     <display value="Pregnancy"/>
@@ -5646,6 +5708,13 @@
     <display value="SE"/>
     <display value="Secondary diagnosis (contextual qualifier)"/>
     <display value="Secondary diagnosis (contextual qualifier) (qualifier value)"/>
+  </concept>
+  <concept id="8517006" display="Ex-smoker (finding)">
+    <display value="Ex-smoker (finding)"/>
+    <display value="Former smoker"/>
+    <display value="Ex-smoker"/>
+    <display value="Cessation of smoking"/>
+    <display value="Ex-smoker (life style)"/>
   </concept>
   <concept id="85988008" display="Blood group antibody Jk^a^ (substance)">
     <display value="Anti Jka"/>

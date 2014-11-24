@@ -3,7 +3,7 @@ package org.hl7.fhir.tools.implementations;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -40,6 +40,22 @@ public abstract class BaseGenerator implements PlatformGenerator {
   @Override
   public boolean wantListAsDownload() {
     return true;
+  }
+
+  @Override
+  public boolean canSign() {
+    return false;
+  }
+
+  @Override
+  public void sign(String filename, boolean atom, String type) throws Exception {
+    throw new Exception("this should not be called");
+    
+  }
+
+  @Override
+  public void verify(String filename) throws Exception {
+    throw new Exception("this should not be called");
   }
 
  

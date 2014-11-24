@@ -1,7 +1,7 @@
 package org.hl7.fhir.definitions.validation;
 
 /*
- Copyright (c) 2011-2014, HL7, Inc
+ Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -48,16 +48,13 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.instance.model.AtomEntry;
-import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.utils.Translations;
 import org.hl7.fhir.instance.validation.BaseValidator;
 import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.instance.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.xml.XMLUtil;
-import org.w3c.dom.Element;
 
 
 /** todo
@@ -78,12 +75,12 @@ public class ResourceValidator extends BaseValidator {
   private Definitions definitions;
 	private Map<String, Usage> usages = new HashMap<String, Usage>();
   private Translations translations;
-  private Map<String, AtomEntry<ValueSet>> codeSystems = new HashMap<String, AtomEntry<ValueSet>>();
+  private Map<String, ValueSet> codeSystems = new HashMap<String, ValueSet>();
 //  private Map<String, Integer> typeCounter = new HashMap<String, Integer>();
   
   
 
-	public ResourceValidator(Definitions definitions, Translations translations, Map<String, AtomEntry<ValueSet>> map) {
+	public ResourceValidator(Definitions definitions, Translations translations, Map<String, ValueSet> map) {
 		super();
     source = Source.ResourceValidator;
 		this.definitions = definitions;
@@ -95,7 +92,7 @@ public class ResourceValidator extends BaseValidator {
 	// this.conceptDomains = conceptDomains;
 	// }
 	//
-	// public void defineResource(String name) {
+	// public void defineReference(String name) {
 	// this.resources.add(name);
 	// }
 	//
@@ -144,9 +141,9 @@ public class ResourceValidator extends BaseValidator {
     }
     rule(errors, "structure", parent.getName(), parent.getRoot().getElementByName("text") == null, "Element named \"text\" not allowed");
     rule(errors, "structure", parent.getName(), parent.getRoot().getElementByName("contained") == null, "Element named \"contained\" not allowed");
-    if (parent.getRoot().getElementByName("subject") != null && parent.getRoot().getElementByName("subject").typeCode().startsWith("Resource"))
+    if (parent.getRoot().getElementByName("subject") != null && parent.getRoot().getElementByName("subject").typeCode().startsWith("Reference"))
       rule(errors, "structure", parent.getName(), parent.getSearchParams().containsKey("subject"), "A resource that contains a subject reference must have a search parameter 'subject'");
-    if (parent.getRoot().getElementByName("patient") != null && parent.getRoot().getElementByName("patient").typeCode().startsWith("Resource"))
+    if (parent.getRoot().getElementByName("patient") != null && parent.getRoot().getElementByName("patient").typeCode().startsWith("Reference"))
       rule(errors, "structure", parent.getName(), parent.getSearchParams().containsKey("patient"), "A resource that contains a patient reference must have a search parameter 'patient'");
     for (org.hl7.fhir.definitions.model.SearchParameter p : parent.getSearchParams().values()) {
       if (!usages.containsKey(p.getCode()))
@@ -161,9 +158,9 @@ public class ResourceValidator extends BaseValidator {
         if (p.getType() == SearchType.reference) {
           for (String path : p.getPaths()) {
             ElementDefn e;
-            e = parent.getRoot().getElementForPath(path, definitions, "Resolving Search Parameter Path");
+            e = parent.getRoot().getElementForPath(path, definitions, "Resolving Search Parameter Path", true);
             for (TypeRef t : e.getTypes()) {
-              if (t.getName().equals("Resource")) {
+              if (t.getName().equals("Reference")) {
                 for (String pn : t.getParams()) {
                   p.getTargets().add(pn);
                 }
@@ -175,8 +172,20 @@ public class ResourceValidator extends BaseValidator {
         rule(errors, "structure", parent.getName(), false, e1.getMessage());
       }
     }
-    for (Compartment c : definitions.getCompartments()) 
-      rule(errors, "structure", parent.getName(), c.getResources().containsKey(parent), "Resource not entered in resource map for compartment '"+c.getTitle()+"' (compartments.xml)");
+    for (Compartment c : definitions.getCompartments()) {
+      if (rule(errors, "structure", parent.getName(), c.getResources().containsKey(parent), "Resource not entered in resource map for compartment '"+c.getTitle()+"' (compartments.xml)")) {
+        String param = c.getResources().get(parent);
+        if (!Utilities.noString(param)) {
+          rule(errors, "structure", parent.getName(), param.equals("{def}") || parent.getSearchParams().containsKey(c.getName()), "Resource "+parent.getName()+" in compartment " +c.getName()+" must have a search parameter named "+c.getName()+")");
+          for (String p : param.split("\\|")) {
+            String pn = p.trim();
+            if (pn.contains("."))
+              pn = pn.substring(0, pn.indexOf("."));
+            rule(errors, "structure", parent.getName(), Utilities.noString(pn) || pn.equals("{def}") || parent.getSearchParams().containsKey(pn), "Resource "+parent.getName()+" in compartment " +c.getName()+": parameter "+param+" was not found ("+pn+")");
+          }
+        }
+      }
+    }
 	}
 
   private boolean resourceIsTechnical(String name) {
@@ -214,7 +223,7 @@ public class ResourceValidator extends BaseValidator {
 		hint(errors, "structure", path, !nameOverlaps(e.getName(), parentName), "Name of child ("+e.getName()+") overlaps with name of parent ("+parentName+")");
     checkDefinitions(errors, path, e);
     warning(errors, "structure", path, !Utilities.isPlural(e.getName()) || !e.unbounded(), "Element names should be singular");
-    rule(errors, "structure", path, !e.getName().equals("id"), "Element named \"id\" not allowed");
+    rule(errors, "structure", path, !e.getName().equals("id") || !parentName.equals("Bundle"), "Element named \"id\" not allowed");
     rule(errors, "structure", path, !e.getName().equals("extension"), "Element named \"extension\" not allowed");
     rule(errors, "structure", path, !e.getName().equals("entries"), "Element named \"entries\" not allowed");
     rule(errors, "structure", path, (parentName == null) || e.getName().charAt(0) == e.getName().toLowerCase().charAt(0), "Element Names must not start with an uppercase character");
@@ -231,7 +240,7 @@ public class ResourceValidator extends BaseValidator {
     String sd = e.getShortDefn();
     if( sd.length() > 0)
 		{
-			rule(errors, "structure", path, sd.contains("|") || Character.isUpperCase(sd.charAt(0)) || !Character.isLetter(sd.charAt(0)), "Short Description must start with an uppercase character ('"+sd+"')");
+			rule(errors, "structure", path, sd.contains("|") || Character.isUpperCase(sd.charAt(0)) || !Character.isLetter(sd.charAt(0)) || Utilities.isURL(sd), "Short Description must start with an uppercase character ('"+sd+"')");
 		    rule(errors, "structure", path, !sd.endsWith(".") || sd.endsWith("etc."), "Short Description must not end with a period ('"+sd+"')");
 		    rule(errors, "structure", path, e.getDefinition().contains("|") || Character.isUpperCase(e.getDefinition().charAt(0)) || !Character.isLetter(e.getDefinition().charAt(0)), "Long Description must start with an uppercase character ('"+e.getDefinition()+"')");
 		}
@@ -282,6 +291,10 @@ public class ResourceValidator extends BaseValidator {
 			      rule(errors, "structure", path, cd.getCodes().size() > 20 || cd.getCodes().size() == 1 || !hasGoodCode(cd.getCodes()), "The short description of an element with a code list should have the format code | code | etc");
 			  }
 			  boolean isComplex = !e.typeCode().equals("code");
+//      quality scan for heather:			  
+//			  if (isComplex && cd.getReferredValueSet() != null && cd.getReferredValueSet().getDefine() != null && !cd.isExample() &&
+//			      !cd.getReferredValueSet().getIdentifierSimple().contains("/v2/") && !cd.getReferredValueSet().getIdentifierSimple().contains("/v3/"))
+//			    System.out.println("Complex value set defines codes @ "+path+": "+cd.getReferredValueSet().getIdentifierSimple());
 			  if (cd.getElementType() == ElementType.Unknown) {
 			    if (isComplex)
 			      cd.setElementType(ElementType.Complex);
@@ -305,6 +318,7 @@ public class ResourceValidator extends BaseValidator {
 		}
 
 	}
+
 
   private boolean hasGoodCode(List<DefinedCode> codes) {
     for (DefinedCode d : codes) 
@@ -442,7 +456,7 @@ public class ResourceValidator extends BaseValidator {
 	}
 
 	private boolean typeExists(String name, ResourceDefn parent) {
-		return definitions.hasType(name) ||
+		return definitions.hasType(name) || definitions.getBaseResources().containsKey(name) ||
 				(parent != null && parent.getRoot().hasNestedType(name));
 	}
 
@@ -517,7 +531,7 @@ public class ResourceValidator extends BaseValidator {
     Set<String> names = new HashSet<String>();
     for (BindingSpecification b : bindings.values()) {
       if (names.contains(b.getName())) 
-        errors.add(new ValidationMessage(source, "structure", "binding "+b.getName(), "Duplicate Binding Name "+b.getName(), IssueSeverity.error));        
+        errors.add(new ValidationMessage(source, "structure", "binding "+b.getName(), "Duplicate Binding Name "+b.getName(), IssueSeverity.ERROR));        
       else
         names.add(b.getName());
     }

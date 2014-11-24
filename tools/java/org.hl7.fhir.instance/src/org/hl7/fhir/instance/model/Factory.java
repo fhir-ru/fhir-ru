@@ -3,13 +3,13 @@ package org.hl7.fhir.instance.model;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 
-import org.hl7.fhir.instance.model.Contact.ContactSystem;
+import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -109,10 +109,10 @@ public class Factory {
     return res;
   }
   
-  public static Contact newContact(ContactSystem system, String value) {
-	Contact res = new Contact();
-	res.setSystemSimple(system);
-	res.setValue(newString_(value));
+  public static ContactPoint newContactPoint(ContactPointSystem system, String value) {
+  	ContactPoint res = new ContactPoint();
+	res.setSystem(system);
+	res.setValue(value);
 	return res;
   }
 
@@ -120,7 +120,7 @@ public class Factory {
 		if (!evenIfNull && value == null)
 			return null;
 		Extension e = new Extension();
-		e.setUrlSimple(uri);
+		e.setUrl(uri);
 		e.setValue(value);
 	  return e;
   }
@@ -128,16 +128,16 @@ public class Factory {
 	public static CodeableConcept newCodeableConcept(String code, String system, String display) throws Exception {
 		CodeableConcept cc = new CodeableConcept();
 		Coding c = new Coding();
-		c.setCodeSimple(code);
-		c.setSystemSimple(system);
-		c.setDisplaySimple(display);
+		c.setCode(code);
+		c.setSystem(system);
+		c.setDisplay(display);
 		cc.getCoding().add(c);
 	  return cc;
   }
 
-	public static ResourceReference makeResourceReference(String url) throws Exception {
-	  ResourceReference rr = new ResourceReference();
-	  rr.setReferenceSimple(url);
+	public static Reference makeReference(String url) throws Exception {
+	  Reference rr = new Reference();
+	  rr.setReference(url);
 	  return rr;
   }
   
@@ -149,7 +149,7 @@ public class Factory {
 
  public static Narrative newNarrative(NarrativeStatus status, String html) throws Exception {
     Narrative n = new Narrative();
-    n.setStatusSimple(status);
+    n.setStatus(status);
     n.setDiv(new XhtmlParser().parseFragment("<div>"+Utilities.escapeXml(html)+"</div>"));
     return n;
  }
@@ -159,5 +159,20 @@ public class Factory {
 	 instant.setValue(DateAndTime.now());
 	 return instant;
  }
+
+public static Coding makeCoding(String code) throws Exception {
+  String[] parts = code.split("\\|");
+  Coding c = new Coding();
+  if (parts.length == 2) {
+    c.setSystem(parts[0]);
+    c.setCode(parts[1]);
+  } else if (parts.length == 3) {
+    c.setSystem(parts[0]);
+    c.setCode(parts[1]);
+    c.setDisplay(parts[2]);
+  } else 
+    throw new Exception("Unable to understand the code '"+code+"'. Use the format system|code(|display)");
+  return c;
+}
  
 }

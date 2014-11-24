@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,14 +29,15 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * This resource identifies an instance of a manufactured thing that is used in the provision of healthcare without being substantially changed through that activity. The device may be a machine, an insert, a computer, an application, etc. This includes durable (reusable) medical equipment as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health.
  */
-public class Device extends Resource {
+public class Device extends DomainResource {
 
     /**
      * Identifiers assigned to this device by various organizations. The most likely organizations to assign identifiers are the manufacturer and the owner, though regulatory agencies may also assign an identifier. The identifiers identify the particular device, not the kind of device.
@@ -81,7 +82,7 @@ public class Device extends Resource {
     /**
      * An organization that is responsible for the provision and ongoing maintenance of the device.
      */
-    protected ResourceReference owner;
+    protected Reference owner;
 
     /**
      * The actual object that is the target of the reference (An organization that is responsible for the provision and ongoing maintenance of the device.)
@@ -91,7 +92,7 @@ public class Device extends Resource {
     /**
      * The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. "in/with the patient"), or a coded location.
      */
-    protected ResourceReference location;
+    protected Reference location;
 
     /**
      * The actual object that is the target of the reference (The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. "in/with the patient"), or a coded location.)
@@ -101,7 +102,7 @@ public class Device extends Resource {
     /**
      * Patient information, if the resource is affixed to a person.
      */
-    protected ResourceReference patient;
+    protected Reference patient;
 
     /**
      * The actual object that is the target of the reference (Patient information, if the resource is affixed to a person.)
@@ -111,14 +112,14 @@ public class Device extends Resource {
     /**
      * Contact details for an organization or a particular human that is responsible for the device.
      */
-    protected List<Contact> contact = new ArrayList<Contact>();
+    protected List<ContactPoint> contact = new ArrayList<ContactPoint>();
 
     /**
      * A network address on which the device may be contacted directly.
      */
     protected UriType url;
 
-    private static final long serialVersionUID = 1596756464L;
+    private static final long serialVersionUID = 1707185618L;
 
     public Device() {
       super();
@@ -136,11 +137,11 @@ public class Device extends Resource {
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (Identifiers assigned to this device by various organizations. The most likely organizations to assign identifiers are the manufacturer and the owner, though regulatory agencies may also assign an identifier. The identifiers identify the particular device, not the kind of device.)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
@@ -162,16 +163,16 @@ public class Device extends Resource {
     }
 
     /**
-     * @return {@link #manufacturer} (A name of the manufacturer.)
+     * @return {@link #manufacturer} (A name of the manufacturer.). This is the underlying object with id, value and extensions. The accessor "getManufacturer" gives direct access to the value
      */
-    public StringType getManufacturer() { 
+    public StringType getManufacturerElement() { 
       return this.manufacturer;
     }
 
     /**
-     * @param value {@link #manufacturer} (A name of the manufacturer.)
+     * @param value {@link #manufacturer} (A name of the manufacturer.). This is the underlying object with id, value and extensions. The accessor "getManufacturer" gives direct access to the value
      */
-    public Device setManufacturer(StringType value) { 
+    public Device setManufacturerElement(StringType value) { 
       this.manufacturer = value;
       return this;
     }
@@ -179,15 +180,15 @@ public class Device extends Resource {
     /**
      * @return A name of the manufacturer.
      */
-    public String getManufacturerSimple() { 
+    public String getManufacturer() { 
       return this.manufacturer == null ? null : this.manufacturer.getValue();
     }
 
     /**
      * @param value A name of the manufacturer.
      */
-    public Device setManufacturerSimple(String value) { 
-      if (value == null)
+    public Device setManufacturer(String value) { 
+      if (Utilities.noString(value))
         this.manufacturer = null;
       else {
         if (this.manufacturer == null)
@@ -198,16 +199,16 @@ public class Device extends Resource {
     }
 
     /**
-     * @return {@link #model} (The "model" - an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type.)
+     * @return {@link #model} (The "model" - an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type.). This is the underlying object with id, value and extensions. The accessor "getModel" gives direct access to the value
      */
-    public StringType getModel() { 
+    public StringType getModelElement() { 
       return this.model;
     }
 
     /**
-     * @param value {@link #model} (The "model" - an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type.)
+     * @param value {@link #model} (The "model" - an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type.). This is the underlying object with id, value and extensions. The accessor "getModel" gives direct access to the value
      */
-    public Device setModel(StringType value) { 
+    public Device setModelElement(StringType value) { 
       this.model = value;
       return this;
     }
@@ -215,15 +216,15 @@ public class Device extends Resource {
     /**
      * @return The "model" - an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type.
      */
-    public String getModelSimple() { 
+    public String getModel() { 
       return this.model == null ? null : this.model.getValue();
     }
 
     /**
      * @param value The "model" - an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type.
      */
-    public Device setModelSimple(String value) { 
-      if (value == null)
+    public Device setModel(String value) { 
+      if (Utilities.noString(value))
         this.model = null;
       else {
         if (this.model == null)
@@ -234,16 +235,16 @@ public class Device extends Resource {
     }
 
     /**
-     * @return {@link #version} (The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware.)
+     * @return {@link #version} (The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
      */
-    public StringType getVersion() { 
+    public StringType getVersionElement() { 
       return this.version;
     }
 
     /**
-     * @param value {@link #version} (The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware.)
+     * @param value {@link #version} (The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
      */
-    public Device setVersion(StringType value) { 
+    public Device setVersionElement(StringType value) { 
       this.version = value;
       return this;
     }
@@ -251,15 +252,15 @@ public class Device extends Resource {
     /**
      * @return The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware.
      */
-    public String getVersionSimple() { 
+    public String getVersion() { 
       return this.version == null ? null : this.version.getValue();
     }
 
     /**
      * @param value The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware.
      */
-    public Device setVersionSimple(String value) { 
-      if (value == null)
+    public Device setVersion(String value) { 
+      if (Utilities.noString(value))
         this.version = null;
       else {
         if (this.version == null)
@@ -270,16 +271,16 @@ public class Device extends Resource {
     }
 
     /**
-     * @return {@link #expiry} (Date of expiry of this device (if applicable).)
+     * @return {@link #expiry} (Date of expiry of this device (if applicable).). This is the underlying object with id, value and extensions. The accessor "getExpiry" gives direct access to the value
      */
-    public DateType getExpiry() { 
+    public DateType getExpiryElement() { 
       return this.expiry;
     }
 
     /**
-     * @param value {@link #expiry} (Date of expiry of this device (if applicable).)
+     * @param value {@link #expiry} (Date of expiry of this device (if applicable).). This is the underlying object with id, value and extensions. The accessor "getExpiry" gives direct access to the value
      */
-    public Device setExpiry(DateType value) { 
+    public Device setExpiryElement(DateType value) { 
       this.expiry = value;
       return this;
     }
@@ -287,14 +288,14 @@ public class Device extends Resource {
     /**
      * @return Date of expiry of this device (if applicable).
      */
-    public DateAndTime getExpirySimple() { 
+    public DateAndTime getExpiry() { 
       return this.expiry == null ? null : this.expiry.getValue();
     }
 
     /**
      * @param value Date of expiry of this device (if applicable).
      */
-    public Device setExpirySimple(DateAndTime value) { 
+    public Device setExpiry(DateAndTime value) { 
       if (value == null)
         this.expiry = null;
       else {
@@ -306,16 +307,16 @@ public class Device extends Resource {
     }
 
     /**
-     * @return {@link #udi} (FDA Mandated Unique Device Identifier. Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.)
+     * @return {@link #udi} (FDA Mandated Unique Device Identifier. Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.). This is the underlying object with id, value and extensions. The accessor "getUdi" gives direct access to the value
      */
-    public StringType getUdi() { 
+    public StringType getUdiElement() { 
       return this.udi;
     }
 
     /**
-     * @param value {@link #udi} (FDA Mandated Unique Device Identifier. Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.)
+     * @param value {@link #udi} (FDA Mandated Unique Device Identifier. Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.). This is the underlying object with id, value and extensions. The accessor "getUdi" gives direct access to the value
      */
-    public Device setUdi(StringType value) { 
+    public Device setUdiElement(StringType value) { 
       this.udi = value;
       return this;
     }
@@ -323,15 +324,15 @@ public class Device extends Resource {
     /**
      * @return FDA Mandated Unique Device Identifier. Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.
      */
-    public String getUdiSimple() { 
+    public String getUdi() { 
       return this.udi == null ? null : this.udi.getValue();
     }
 
     /**
      * @param value FDA Mandated Unique Device Identifier. Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.
      */
-    public Device setUdiSimple(String value) { 
-      if (value == null)
+    public Device setUdi(String value) { 
+      if (Utilities.noString(value))
         this.udi = null;
       else {
         if (this.udi == null)
@@ -342,16 +343,16 @@ public class Device extends Resource {
     }
 
     /**
-     * @return {@link #lotNumber} (Lot number assigned by the manufacturer.)
+     * @return {@link #lotNumber} (Lot number assigned by the manufacturer.). This is the underlying object with id, value and extensions. The accessor "getLotNumber" gives direct access to the value
      */
-    public StringType getLotNumber() { 
+    public StringType getLotNumberElement() { 
       return this.lotNumber;
     }
 
     /**
-     * @param value {@link #lotNumber} (Lot number assigned by the manufacturer.)
+     * @param value {@link #lotNumber} (Lot number assigned by the manufacturer.). This is the underlying object with id, value and extensions. The accessor "getLotNumber" gives direct access to the value
      */
-    public Device setLotNumber(StringType value) { 
+    public Device setLotNumberElement(StringType value) { 
       this.lotNumber = value;
       return this;
     }
@@ -359,15 +360,15 @@ public class Device extends Resource {
     /**
      * @return Lot number assigned by the manufacturer.
      */
-    public String getLotNumberSimple() { 
+    public String getLotNumber() { 
       return this.lotNumber == null ? null : this.lotNumber.getValue();
     }
 
     /**
      * @param value Lot number assigned by the manufacturer.
      */
-    public Device setLotNumberSimple(String value) { 
-      if (value == null)
+    public Device setLotNumber(String value) { 
+      if (Utilities.noString(value))
         this.lotNumber = null;
       else {
         if (this.lotNumber == null)
@@ -380,27 +381,27 @@ public class Device extends Resource {
     /**
      * @return {@link #owner} (An organization that is responsible for the provision and ongoing maintenance of the device.)
      */
-    public ResourceReference getOwner() { 
+    public Reference getOwner() { 
       return this.owner;
     }
 
     /**
      * @param value {@link #owner} (An organization that is responsible for the provision and ongoing maintenance of the device.)
      */
-    public Device setOwner(ResourceReference value) { 
+    public Device setOwner(Reference value) { 
       this.owner = value;
       return this;
     }
 
     /**
-     * @return {@link #owner} (The actual object that is the target of the reference. An organization that is responsible for the provision and ongoing maintenance of the device.)
+     * @return {@link #owner} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (An organization that is responsible for the provision and ongoing maintenance of the device.)
      */
     public Organization getOwnerTarget() { 
       return this.ownerTarget;
     }
 
     /**
-     * @param value {@link #owner} (The actual object that is the target of the reference. An organization that is responsible for the provision and ongoing maintenance of the device.)
+     * @param value {@link #owner} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (An organization that is responsible for the provision and ongoing maintenance of the device.)
      */
     public Device setOwnerTarget(Organization value) { 
       this.ownerTarget = value;
@@ -410,27 +411,27 @@ public class Device extends Resource {
     /**
      * @return {@link #location} (The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. "in/with the patient"), or a coded location.)
      */
-    public ResourceReference getLocation() { 
+    public Reference getLocation() { 
       return this.location;
     }
 
     /**
      * @param value {@link #location} (The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. "in/with the patient"), or a coded location.)
      */
-    public Device setLocation(ResourceReference value) { 
+    public Device setLocation(Reference value) { 
       this.location = value;
       return this;
     }
 
     /**
-     * @return {@link #location} (The actual object that is the target of the reference. The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. "in/with the patient"), or a coded location.)
+     * @return {@link #location} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. "in/with the patient"), or a coded location.)
      */
     public Location getLocationTarget() { 
       return this.locationTarget;
     }
 
     /**
-     * @param value {@link #location} (The actual object that is the target of the reference. The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. "in/with the patient"), or a coded location.)
+     * @param value {@link #location} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. "in/with the patient"), or a coded location.)
      */
     public Device setLocationTarget(Location value) { 
       this.locationTarget = value;
@@ -440,27 +441,27 @@ public class Device extends Resource {
     /**
      * @return {@link #patient} (Patient information, if the resource is affixed to a person.)
      */
-    public ResourceReference getPatient() { 
+    public Reference getPatient() { 
       return this.patient;
     }
 
     /**
      * @param value {@link #patient} (Patient information, if the resource is affixed to a person.)
      */
-    public Device setPatient(ResourceReference value) { 
+    public Device setPatient(Reference value) { 
       this.patient = value;
       return this;
     }
 
     /**
-     * @return {@link #patient} (The actual object that is the target of the reference. Patient information, if the resource is affixed to a person.)
+     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Patient information, if the resource is affixed to a person.)
      */
     public Patient getPatientTarget() { 
       return this.patientTarget;
     }
 
     /**
-     * @param value {@link #patient} (The actual object that is the target of the reference. Patient information, if the resource is affixed to a person.)
+     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Patient information, if the resource is affixed to a person.)
      */
     public Device setPatientTarget(Patient value) { 
       this.patientTarget = value;
@@ -470,31 +471,31 @@ public class Device extends Resource {
     /**
      * @return {@link #contact} (Contact details for an organization or a particular human that is responsible for the device.)
      */
-    public List<Contact> getContact() { 
+    public List<ContactPoint> getContact() { 
       return this.contact;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #contact} (Contact details for an organization or a particular human that is responsible for the device.)
      */
-    public Contact addContact() { 
-      Contact t = new Contact();
+    // syntactic sugar
+    public ContactPoint addContact() { //3
+      ContactPoint t = new ContactPoint();
       this.contact.add(t);
       return t;
     }
 
     /**
-     * @return {@link #url} (A network address on which the device may be contacted directly.)
+     * @return {@link #url} (A network address on which the device may be contacted directly.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
-    public UriType getUrl() { 
+    public UriType getUrlElement() { 
       return this.url;
     }
 
     /**
-     * @param value {@link #url} (A network address on which the device may be contacted directly.)
+     * @param value {@link #url} (A network address on which the device may be contacted directly.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
-    public Device setUrl(UriType value) { 
+    public Device setUrlElement(UriType value) { 
       this.url = value;
       return this;
     }
@@ -502,15 +503,15 @@ public class Device extends Resource {
     /**
      * @return A network address on which the device may be contacted directly.
      */
-    public String getUrlSimple() { 
+    public String getUrl() { 
       return this.url == null ? null : this.url.getValue();
     }
 
     /**
      * @param value A network address on which the device may be contacted directly.
      */
-    public Device setUrlSimple(String value) { 
-      if (value == null)
+    public Device setUrl(String value) { 
+      if (Utilities.noString(value))
         this.url = null;
       else {
         if (this.url == null)
@@ -530,15 +531,16 @@ public class Device extends Resource {
         childrenList.add(new Property("expiry", "date", "Date of expiry of this device (if applicable).", 0, java.lang.Integer.MAX_VALUE, expiry));
         childrenList.add(new Property("udi", "string", "FDA Mandated Unique Device Identifier. Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.", 0, java.lang.Integer.MAX_VALUE, udi));
         childrenList.add(new Property("lotNumber", "string", "Lot number assigned by the manufacturer.", 0, java.lang.Integer.MAX_VALUE, lotNumber));
-        childrenList.add(new Property("owner", "Resource(Organization)", "An organization that is responsible for the provision and ongoing maintenance of the device.", 0, java.lang.Integer.MAX_VALUE, owner));
-        childrenList.add(new Property("location", "Resource(Location)", "The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. 'in/with the patient'), or a coded location.", 0, java.lang.Integer.MAX_VALUE, location));
-        childrenList.add(new Property("patient", "Resource(Patient)", "Patient information, if the resource is affixed to a person.", 0, java.lang.Integer.MAX_VALUE, patient));
-        childrenList.add(new Property("contact", "Contact", "Contact details for an organization or a particular human that is responsible for the device.", 0, java.lang.Integer.MAX_VALUE, contact));
+        childrenList.add(new Property("owner", "Reference(Organization)", "An organization that is responsible for the provision and ongoing maintenance of the device.", 0, java.lang.Integer.MAX_VALUE, owner));
+        childrenList.add(new Property("location", "Reference(Location)", "The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. 'in/with the patient'), or a coded location.", 0, java.lang.Integer.MAX_VALUE, location));
+        childrenList.add(new Property("patient", "Reference(Patient)", "Patient information, if the resource is affixed to a person.", 0, java.lang.Integer.MAX_VALUE, patient));
+        childrenList.add(new Property("contact", "ContactPoint", "Contact details for an organization or a particular human that is responsible for the device.", 0, java.lang.Integer.MAX_VALUE, contact));
         childrenList.add(new Property("url", "uri", "A network address on which the device may be contacted directly.", 0, java.lang.Integer.MAX_VALUE, url));
       }
 
       public Device copy() {
         Device dst = new Device();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());
@@ -552,8 +554,8 @@ public class Device extends Resource {
         dst.owner = owner == null ? null : owner.copy();
         dst.location = location == null ? null : location.copy();
         dst.patient = patient == null ? null : patient.copy();
-        dst.contact = new ArrayList<Contact>();
-        for (Contact i : contact)
+        dst.contact = new ArrayList<ContactPoint>();
+        for (ContactPoint i : contact)
           dst.contact.add(i.copy());
         dst.url = url == null ? null : url.copy();
         return dst;

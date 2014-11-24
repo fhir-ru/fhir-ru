@@ -1,12 +1,15 @@
 package org.hl7.fhir.definitions.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.utilities.Utilities;
 
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -45,6 +48,8 @@ public class DefinedCode {
 	private List<DefinedCode> childCodes;
   private String v2Map;
   private String v3Map;
+	private Map<String, String> langs = new HashMap<String, String>();
+  private Profile profile;
 	
 	public DefinedCode(String code, String definition, String comment) {
 		super();
@@ -144,7 +149,19 @@ public class DefinedCode {
     this.v3Map = v3Map;
   }
 
+  public Map<String, String> getLangs() {
+    return langs;
+  }
 
+
+  public Profile getProfile() {
+    return profile;
+  }
+
+  public void setProfile(Profile profile) {
+    this.profile = profile;
+  }
+  
   
   
 }

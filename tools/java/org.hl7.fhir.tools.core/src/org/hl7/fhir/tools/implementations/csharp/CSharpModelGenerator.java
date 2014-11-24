@@ -1,7 +1,7 @@
 package org.hl7.fhir.tools.implementations.csharp;
 
 /*
- Copyright (c) 2011-2014, HL7, Inc
+ Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -219,6 +219,8 @@ public class CSharpModelGenerator extends GenBlock
         ln();
 			}
 		
+			generateCompare(composite,false);
+			generateCompare(composite,true);
 			// Generate Validate() routine			
 			//generateValidationMethod(composite);
 
@@ -321,6 +323,38 @@ public class CSharpModelGenerator extends GenBlock
     ln();
   }
 
+  
+  private void generateCompare(CompositeTypeDefn composite, boolean genExactly) throws Exception
+  {
+    String className = GeneratorUtils.generateCSharpTypeName(composite.getName());
+    Boolean isBase = className.equals("Resource") || className.equals("Element");
+    String override = isBase ? "virtual" : "override";
+    String method = genExactly ? "IsExactly" : "Matches";
+        
+    ln("public " + override + " bool " + method + "(IDeepComparable other)");
+    bs("{");
+      ln("var otherT = other as " + className + ";");
+      ln("if(otherT == null) return false;");
+      ln();
+      
+      if(!isBase) ln("if(!base." + method + "(otherT)) return false;");
+          
+      for( ElementDefn member : composite.getElement() )
+      {
+        String memberName = member.getGeneratorAnnotations().get(CLASSGEN_MEMBER_NAME);
+        String memberType = member.getGeneratorAnnotations().get(CLASSGEN_MEMBER_CSTYPE);
+  
+        if(member.isPrimitiveContents())
+          ln("if( " + memberName + " != otherT." + memberName + " ) return false;");            
+        else
+          ln("if( !DeepComparable." + method + "(" + memberName + ", otherT." + memberName + ")) return false;");
+      }
+      ln();
+      ln("return true;");
+    es("}");
+    ln();    
+  }
+  
 	private boolean hasPrimitiveValueElement( CompositeTypeDefn composite )
 	{
 	  for( ElementDefn element : composite.getElement() )
@@ -391,7 +425,7 @@ public class CSharpModelGenerator extends GenBlock
       nl(")]");
     }
     
-    if(!member.isPolymorph() && member.getType().get(0).getName().equals("ResourceReference"))
+    if(!member.isPolymorph() && member.getType().get(0).getName().equals("Reference"))
     {
       ln("[References(");
       boolean isNext = false;
@@ -579,7 +613,7 @@ public class CSharpModelGenerator extends GenBlock
 		{
 		    ln("[FhirType(\"" + composite.getName() + "\")]" );
 		}
-		else if( composite.isResource() && !composite.isAbstract() )
+		else if( composite.isReference() && !composite.isAbstract() )
 		{
 			ln("[FhirType(\"" + composite.getName() + "\", IsResource=true)]" );
 		}

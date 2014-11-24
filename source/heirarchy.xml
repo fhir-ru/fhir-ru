@@ -24,14 +24,26 @@ todo: compartments
     </page>
     <page title="Coming Challenges" filename="change.html"/>
     <page title="EHR FM map" filename="ehr-fm.html"/>
-    <page title="Resource Definitions" filename="resources.html">
+    <page type="resource" resource="Encounter">
+<!--    <page title="Resource Definitions" filename="resource.html"> -->
+      <page title="Definitions" filename="resource-definitions.html"/>
+      <page title="Element Definition" filename="elementdefinition.html">
+        <page title="Element Definition Examples" filename="elementdefinition-examples.html"/>
+        <page title="Element Definition Formal Definitions" filename="elementdefinition-definitions.html"/>
+        <page title="Element Definition Mappings" filename="elementdefinition-mappings.html"/>
+      </page>
       <page title="Conformance" filename="conformance-rules.html"/>
       <page title="Tags, Bundles, Compartments" filename="extras.html">
-        <page title="Compartments" filename="compartment-patient.html"/>
+        <page title="Examples" filename="extras-examples.html"/>
+        <page title="Definitions" filename="extras-definitions.html"/>
+        <page title="Patient Compartment" filename="compartment-patient.html"/>
       </page>
-      <page title="References" filename="references.html"/>
+      <page title="References" filename="references.html">
+        <page title="Definitions" filename="references-definitions.html"/>
+      </page>
       <page title="Narrative" filename="narrative.html">
         <page title="Narrative Example" filename="narrative-example.html"/>
+        <page title="Definitions" filename="narrative-definitions.html"/>
       </page>
       <page title="Formats" filename="formats.html">
         <page title="XML" filename="xml.html"/>
@@ -39,8 +51,8 @@ todo: compartments
       </page>
       <page title="Extensibility" filename="extensibility.html">
         <page title="Examples" filename="extensibility-examples.html"/>
+        <page title="Definitions" filename="extensibility-definitions.html"/>
       </page>
-      <page title="Formal Definitions" filename="base-definitions.html"/>
     </page>
     <page title="Data Types" filename="datatypes.html">
       <page title="Examples" filename="datatypes-examples.html"/>
@@ -65,13 +77,16 @@ todo: compartments
         <pages type="v3-vocab" filename="template-v3.html"/>
       </page>
       <page title="Concept Maps" filename="terminologies-conceptmaps.html"/>
+      <page title="Service" filename="terminology-service.html"/>
     </page>
     <page title="Ballot Intro" filename="ballot-intro.html"/>
   </page>
   
   <page title="Implementation" filename="implementation.html">
-    <page title="RESTful API" filename="http.html"/>
-    <page title="Search" filename="search.html"/>
+    <page title="RESTful API" filename="http.html">
+      <page title="Search" filename="search.html"/>
+      <page title="_filter Parameter" filename="search_filter.html"/>
+    </page>  
     <page title="Operations" filename="operations.html">
       <page title="Example" filename="op-example-request.html"/>
     </page>
@@ -83,8 +98,11 @@ todo: compartments
     <page title="Managing Resource Identity" filename="managing.html"/>
     <page title="Services / SOA" filename="services.html"/>
     <page title="Interaction Patterns" filename="pushpull.html"/>
-    <page title="Common Usages" filename="usecases.html"/>
-    <page title="Profile List" filename="profilelist.html"/>
+    <page title="Profiling FHIR" filename="profiling.html">
+      <page title="Examples" filename="profiling-examples.html"/>
+      <page title="Profile List" filename="profilelist.html"/>
+      <page title="Common Usages" filename="usecases.html"/>
+    </page>
     <page title="Security" filename="security.html">
       <page title="Security Labels" filename="security-labels.html"/>
     </page>
@@ -93,6 +111,13 @@ todo: compartments
       <page title="Structured Data Capture" filename="sdc.html">
         <page title="SDC Introduction" filename="sdc-intro.html"/>
         <page title="SDC Security" filename="sdc-security.html"/>
+         <page title="US Laboratory Order" filename="uslaborder.html"/>
+        <page title="US Laboratory Order - Content" filename="uslaborder-guide.html"/>
+        <!--page title="US Laboratory Order - Vocabulary"="uslaborder-vocab.html"/-->
+      </page>
+      <page title="Data Access Framework (DAF)" filename="daf.html">
+        <page title="DAF Introduction" filename="daf-intro.html"/>
+        <page title="DAF Security" filename="daf-security.html"/>
       </page>
     </page>
   </page>
@@ -107,12 +132,12 @@ todo: compartments
       mappings
       -->
   <page title="Clinical" filename="clinical.html">
-    <page type="resource" resource="AdverseReaction"/>
     <page type="resource" resource="AllergyIntolerance"/>
     <page type="resource" resource="Condition"/>
     <page type="resource" resource="CarePlan"/>
     <page type="resource" resource="ReferralRequest"/>
     <page type="resource" resource="Procedure"/>
+    <page type="resource" resource="ProcedureRequest"/>
     <page type="resource" resource="Contraindication"/>
     <page type="resource" resource="RiskAssessment"/>
 
@@ -121,6 +146,7 @@ todo: compartments
     <page type="resource" resource="MedicationAdministration"/>
     <page type="resource" resource="MedicationDispense"/>
     <page type="resource" resource="MedicationStatement"/>
+    <page type="resource" resource="NutritionOrder"/>
     <page type="resource" resource="Immunization"/>
     <page type="resource" resource="ImmunizationRecommendation"/>
 
@@ -129,7 +155,7 @@ todo: compartments
     <page type="resource" resource="DiagnosticOrder"/>
     <page type="resource" resource="ImagingStudy"/>
     <page type="resource" resource="Specimen"/>
-    <page type="resource" resource="DeviceObservationReport"/>
+    <!--<page type="resource" resource="DeviceObservationReport"/>-->
 
     <page type="resource" resource="Questionnaire"/>
     <page type="resource" resource="QuestionnaireAnswers"/>
@@ -140,14 +166,20 @@ todo: compartments
     <page type="resource" resource="RelatedPerson"/>
     <page type="resource" resource="Practitioner"/>
     <page type="resource" resource="Organization"/>
+    <page type="resource" resource="HealthcareService"/>
 
+    <page type="resource" resource="Contract"/>
     <page type="resource" resource="Device"/>
+	<page type="resource" resource="DeviceComponent"/>
+    <page type="resource" resource="DeviceUseRequest"/>
+    <page type="resource" resource="DeviceUseStatement"/>
     <page type="resource" resource="Location"/>
     <page type="resource" resource="Substance"/>
     <page type="resource" resource="Group"/>
 
     <page type="resource" resource="Encounter"/>
     <page type="resource" resource="Alert"/>
+    <page type="resource" resource="CommunicationRequest"/>
     <page type="resource" resource="Supply"/>
     <page type="resource" resource="Order"/>
     <page type="resource" resource="OrderResponse"/>
@@ -160,9 +192,12 @@ todo: compartments
   <page title="Infrastructure" filename="infrastructure.html">
     <page type="resource" resource="List"/>
     <page type="resource" resource="Media"/>
+    <page type="resource" resource="Basic"/>
     <page type="resource" resource="Other"/>
     <page type="resource" resource="Provenance"/>
     <page type="resource" resource="SecurityEvent"/>
+    <page type="resource" resource="Binary"/>
+    <page type="resource" resource="Bundle"/>
 
     <page type="resource" resource="Composition"/>
     <page type="resource" resource="DocumentReference"/>
@@ -180,10 +215,19 @@ todo: compartments
     <page type="resource" resource="Conformance"/>
     <page type="resource" resource="Profile"/>
     <page type="resource" resource="OperationDefinition"/>
+    <page type="resource" resource="ExtensionDefinition"/>
     <page type="resource" resource="DataElement"/>
     <page type="resource" resource="ValueSet"/>
-    <page type="resource" resource="Namespace"/>
+    <page type="resource" resource="NamingSystem"/>
     <page type="resource" resource="ConceptMap"/>
+  </page>
+  <page title="Financial" filename="financial.html">
+    <page type="resource" resource="ClaimResponse"/> 
+    <page type="resource" resource="Coverage"/>
+    <page type="resource" resource="Eligibility"/>
+    <page type="resource" resource="ExplanationOfBenefit"/>
+    <page type="resource" resource="OralHealthClaim"/>
+    <page type="resource" resource="SupportingDocumentation"/>
   </page>
 </page>
 </fhir>

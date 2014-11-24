@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.client;
 
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -34,43 +34,16 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.instance.model.AtomCategory;
-import org.hl7.fhir.instance.model.AtomEntry;
-import org.hl7.fhir.instance.model.AtomFeed;
+import org.hl7.fhir.instance.model.Coding;
+import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Conformance;
 import org.hl7.fhir.instance.model.DateAndTime;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ValueSet;
 
-/*
-Copyright (c) 2011-2014, HL7, Inc
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, 
-are permitted provided that the following conditions are met:
-
- * Redistributions of source code must retain the above copyright notice, this 
-   list of conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, 
-   this list of conditions and the following disclaimer in the documentation 
-   and/or other materials provided with the distribution.
- * Neither the name of HL7 nor the names of its contributors may be used to 
-   endorse or promote products derived from this software without specific 
-   prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-POSSIBILITY OF SUCH DAMAGE.
-
-*/
 
 /**
  * FHIR RESTful Client Interface.
@@ -193,7 +166,7 @@ public interface FHIRClient {
 	 * @param id
 	 * @return
 	 */
-	public <T extends Resource> AtomEntry<T> read(Class<T> resource, String id);
+	public <T extends Resource> T read(Class<T> resource, String id);
 
 	/**
 	 * Read the state of a specific version of the resource
@@ -203,7 +176,7 @@ public interface FHIRClient {
 	 * @param versionid
 	 * @return
 	 */
-	public <T extends Resource> AtomEntry<T> vread(Class<T> resource, String id, String versionid);
+	public <T extends Resource> T vread(Class<T> resource, String id, String versionid);
 	
 	/**
 	 * Update an existing resource by its id or create it if it is a new resource, not present on the server
@@ -213,17 +186,7 @@ public interface FHIRClient {
 	 * @param id
 	 * @return
 	 */
-	public <T extends Resource> AtomEntry<T> update(Class<T> resourceClass, T resource, String id);
-	
-	/**
-	 * Update an existing resource by its id or create it if it is a new resource, not present on the server
-	 * 
-	 * @param resourceClass
-	 * @param resource
-	 * @param id
-	 * @return
-	 */
-	public <T extends Resource> AtomEntry<T> update(Class<T> resourceClass, T resource, String id, List<AtomCategory> tags);
+	public <T extends Resource> T update(Class<T> resourceClass, T resource, String id);
 	
 	/**
 	 * Delete the resource with the given ID.
@@ -242,17 +205,7 @@ public interface FHIRClient {
 	 * @param resource
 	 * @return
 	 */
-	public <T extends Resource> AtomEntry<OperationOutcome> create(Class<T> resourceClass, T resource);
-	
-	/**
-	 * Create a new resource with a server assigned id. Return the newly created
-	 * resource with the id the server assigned. Associates tags with newly created resource.
-	 * 
-	 * @param resourceClass
-	 * @param resource
-	 * @return
-	 */
-	public <T extends Resource> AtomEntry<OperationOutcome> create(Class<T> resourceClass, T resource, List<AtomCategory> tags);
+	public <T extends Resource> OperationOutcome create(Class<T> resourceClass, T resource);
 	
 	/**
 	 * Retrieve the update history for a resource with given id since last update time. 
@@ -263,8 +216,8 @@ public interface FHIRClient {
 	 * @param id
 	 * @return
 	 */
-	public <T extends Resource> AtomFeed history(Calendar lastUpdate, Class<T> resourceClass, String id);
-	public <T extends Resource> AtomFeed history(DateAndTime lastUpdate, Class<T> resourceClass, String id);
+	public <T extends Resource> Bundle history(Calendar lastUpdate, Class<T> resourceClass, String id);
+	public <T extends Resource> Bundle history(DateAndTime lastUpdate, Class<T> resourceClass, String id);
 	
 	/**
 	 * Retrieve the entire update history for a resource with the given id.
@@ -275,7 +228,7 @@ public interface FHIRClient {
 	 * @param id
 	 * @return
 	 */
-	public <T extends Resource> AtomFeed history(Class<T> resource, String id);
+	public <T extends Resource> Bundle history(Class<T> resource, String id);
 	
 	/**
 	 * Retrieve the update history for a resource type since the specified calendar date.
@@ -286,9 +239,9 @@ public interface FHIRClient {
 	 * @param id
 	 * @return
 	 */
-	public <T extends Resource> AtomFeed history(Calendar lastUpdate, Class<T> resourceClass);
-	public <T extends Resource> AtomFeed history(DateAndTime lastUpdate, Class<T> resourceClass);
-	public <T extends Resource> AtomFeed history(Class<T> resourceClass);
+	public <T extends Resource> Bundle history(Calendar lastUpdate, Class<T> resourceClass);
+	public <T extends Resource> Bundle history(DateAndTime lastUpdate, Class<T> resourceClass);
+	public <T extends Resource> Bundle history(Class<T> resourceClass);
 	
 	/**
 	 * Retrieve the update history for all resource types since the specified calendar date.
@@ -301,8 +254,8 @@ public interface FHIRClient {
 	 * @param id
 	 * @return
 	 */
-	public <T extends Resource> AtomFeed history(Calendar lastUpdate);
-	public <T extends Resource> AtomFeed history(DateAndTime lastUpdate);
+	public <T extends Resource> Bundle history(Calendar lastUpdate);
+	public <T extends Resource> Bundle history(DateAndTime lastUpdate);
 	
 	/**
 	 * Retrieve the update history for all resource types since the start of server records.
@@ -314,7 +267,7 @@ public interface FHIRClient {
 	 * @param id
 	 * @return
 	 */
-	public <T extends Resource> AtomFeed history();
+	public <T extends Resource> Bundle history();
 
 	/**
 	 * Validate resource payload.
@@ -324,7 +277,7 @@ public interface FHIRClient {
 	 * @param id
 	 * @return
 	 */
-	public <T extends Resource> AtomEntry<OperationOutcome> validate(Class<T> resourceClass, T resource, String id);
+	public <T extends Resource> OperationOutcome validate(Class<T> resourceClass, T resource, String id);
 	
 	/**
 	 * Return all results matching search query parameters for the given resource class.
@@ -333,7 +286,7 @@ public interface FHIRClient {
 	 * @param params
 	 * @return
 	 */
-	public <T extends Resource> AtomFeed search(Class<T> resourceClass, Map<String, String> params);
+	public <T extends Resource> Bundle search(Class<T> resourceClass, Map<String, String> params);
 	
   /**
    * Return all results matching search query parameters for the given resource class.
@@ -343,7 +296,7 @@ public interface FHIRClient {
    * @param params
    * @return
    */
-  public <T extends Resource> AtomFeed searchPost(Class<T> resourceClass, T resource, Map<String, String> params);
+  public <T extends Resource> Bundle searchPost(Class<T> resourceClass, T resource, Map<String, String> params);
 	
 	/**
 	 * Update or create a set of resources
@@ -351,74 +304,75 @@ public interface FHIRClient {
 	 * @param batch
 	 * @return
 	 */
-	public AtomFeed transaction(AtomFeed batch);
+	public Bundle transaction(Bundle batch);
 	
-	/**
-	 * Get a list of all tags on server 
-	 * 
-	 * GET [base]/_tags
-	 */
-	public List<AtomCategory> getAllTags();
 	
-	/**
-	 * Get a list of all tags used for the nominated resource type 
-	 * 
-	 * GET [base]/[type]/_tags
-	 */
-	public <T extends Resource> List<AtomCategory> getAllTagsForResourceType(Class<T> resourceClass);
-	
-	/**
-	 * Get a list of all tags affixed to the nominated resource. This duplicates the HTTP header entries 
-	 * 
-	 * GET [base]/[type]/[id]/_tags
-	 */
-	public <T extends Resource> List<AtomCategory> getTagsForResource(Class<T> resource, String id);
-	
-	/**
-	 * Get a list of all tags affixed to the nominated version of the resource. This duplicates the HTTP header entries
-	 * 
-	 * GET [base]/[type]/[id]/_history/[vid]/_tags
-	 */
-	public <T extends Resource> List<AtomCategory> getTagsForResourceVersion(Class<T> resource, String id, String versionId);
-	
-	/**
-	 * Remove all tags in the provided list from the list of tags for the nominated resource
-	 * 
-	 * DELETE [base]/[type]/[id]/_tags
-	 */
-	//public <T extends Resource> boolean deleteTagsForResource(Class<T> resourceClass, String id);
-	
-	/**
-	 * Remove tags in the provided list from the list of tags for the nominated version of the resource
-	 * 
-	 * DELETE [base]/[type]/[id]/_history/[vid]/_tags
-	 */
-	public <T extends Resource> List<AtomCategory> deleteTags(List<AtomCategory> tags, Class<T> resourceClass, String id, String version);
-	
-	/**
-	 * Affix tags in the list to the nominated resource
-	 * 
-	 * POST [base]/[type]/[id]/_tags
-	 * @return
-	 */
-	public <T extends Resource> List<AtomCategory> createTags(List<AtomCategory> tags, Class<T> resourceClass, String id);
-	
-	/**
-	 * Affix tags in the list to the nominated version of the resource
-	 * 
-	 * POST [base]/[type]/[id]/_history/[vid]/_tags
-	 * 
-	 * @return
-	 */
-	public <T extends Resource> List<AtomCategory> createTags(List<AtomCategory> tags, Class<T> resourceClass, String id, String version);
-
+//	/**
+//	 * Get a list of all tags on server 
+//	 * 
+//	 * GET [base]/_tags
+//	 */
+//	public List<Coding> getAllTags();
+//	
+//	/**
+//	 * Get a list of all tags used for the nominated resource type 
+//	 * 
+//	 * GET [base]/[type]/_tags
+//	 */
+//	public <T extends Resource> List<Coding> getAllTagsForResourceType(Class<T> resourceClass);
+//	
+//	/**
+//	 * Get a list of all tags affixed to the nominated resource. This duplicates the HTTP header entries 
+//	 * 
+//	 * GET [base]/[type]/[id]/_tags
+//	 */
+//	public <T extends Resource> List<Coding> getTagsForReference(Class<T> resource, String id);
+//	
+//	/**
+//	 * Get a list of all tags affixed to the nominated version of the resource. This duplicates the HTTP header entries
+//	 * 
+//	 * GET [base]/[type]/[id]/_history/[vid]/_tags
+//	 */
+//	public <T extends Resource> List<Coding> getTagsForResourceVersion(Class<T> resource, String id, String versionId);
+//	
+//	/**
+//	 * Remove all tags in the provided list from the list of tags for the nominated resource
+//	 * 
+//	 * DELETE [base]/[type]/[id]/_tags
+//	 */
+//	//public <T extends Resource> boolean deleteTagsForReference(Class<T> resourceClass, String id);
+//	
+//	/**
+//	 * Remove tags in the provided list from the list of tags for the nominated version of the resource
+//	 * 
+//	 * DELETE [base]/[type]/[id]/_history/[vid]/_tags
+//	 */
+//	public <T extends Resource> List<Coding> deleteTags(List<Coding> tags, Class<T> resourceClass, String id, String version);
+//	
+//	/**
+//	 * Affix tags in the list to the nominated resource
+//	 * 
+//	 * POST [base]/[type]/[id]/_tags
+//	 * @return
+//	 */
+//	public <T extends Resource> List<Coding> createTags(List<Coding> tags, Class<T> resourceClass, String id);
+//	
+//	/**
+//	 * Affix tags in the list to the nominated version of the resource
+//	 * 
+//	 * POST [base]/[type]/[id]/_history/[vid]/_tags
+//	 * 
+//	 * @return
+//	 */
+//	public <T extends Resource> List<Coding> createTags(List<Coding> tags, Class<T> resourceClass, String id, String version);
+//
 	/**
 	 * Use this to follow a link found in a feed (e.g. paging in a search)
 	 * 
 	 * @param link - the URL provided by the server
 	 * @return the feed the server returns
 	 */
-	public AtomFeed fetchFeed(String url);
+	public Bundle fetchFeed(String url);
 
 
 	/**

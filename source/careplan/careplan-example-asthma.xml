@@ -2,6 +2,7 @@
 <CarePlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../schema/careplan.xsd"
  xmlns="http://hl7.org/fhir" id="cp1">
+  <id value="asthma"/>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -16,7 +17,8 @@
   
   <!-- The provenance resource. Identifies the author and date created-->
   <contained>
-    <Provenance id='prov1'>
+    <Provenance>
+      <id value='prov1'/>
       <target>
         <reference value="#cp1"/>
         <display value="This Careplan"/>
@@ -52,7 +54,8 @@
   
   <!-- The Condition that this careplan refers to. It is referenced from the concern. -->
   <contained>
-    <Condition id="p1">
+    <Condition>
+      <id value="p1"/>
       <subject>
         <reference value="Patient/1"/>
         <display value="Eve Everywoman"/>
@@ -71,7 +74,8 @@
   
   <!-- The medication that the prescription refers to -->
   <contained>
-    <Medication id="med1">
+    <Medication>
+      <id value="med1"/>
       <name value="Prednisone 5mg tablet"/>
       <code>
         <coding>
@@ -85,7 +89,8 @@
   </contained>
   <!-- The sliding scale of steroids -->
   <contained>
-    <MedicationPrescription id="rx1">
+    <MedicationPrescription>
+      <id value="rx1"/>
       <text>
         <status value="generated"/>
         <div xmlns="http://www.w3.org/1999/xhtml">
@@ -101,82 +106,82 @@
         <display value="Prednisone 5mg tablet"/>
       </medication>
       <dosageInstruction>
-        <dosageInstructionsText value="Take 6 tablets once a day for 2 days"/>
-        <timingSchedule>
+        <text value="Take 6 tablets once a day for 2 days"/>
+        <scheduledTiming>
           <repeat>
             <frequency value="1" />
             <duration value="1" />
             <units value="d" />
             <count value="2"/>
           </repeat>
-        </timingSchedule>
+        </scheduledTiming>
       </dosageInstruction>
       <dosageInstruction>
-        <dosageInstructionsText value="Take 5 tablets once a day for 2 days"/>
-        <timingSchedule>
+        <text value="Take 5 tablets once a day for 2 days"/>
+        <scheduledTiming>
           <repeat>
             <frequency value="1" />
             <duration value="1" />
             <units value="d" />
             <count value="2"/>
           </repeat>
-        </timingSchedule>
+        </scheduledTiming>
         <doseQuantity>
           <value value="5"/>          
         </doseQuantity>
       </dosageInstruction>
       <dosageInstruction>
-        <dosageInstructionsText value="Take 4 tablets once a day for 2 days"/>
-        <timingSchedule>
+        <text value="Take 4 tablets once a day for 2 days"/>
+        <scheduledTiming>
           <repeat>
             <frequency value="1" />
             <duration value="1" />
             <units value="d" />
             <count value="2"/>
           </repeat>
-        </timingSchedule>
+        </scheduledTiming>
         <doseQuantity>
           <value value="4"/>          
         </doseQuantity>
       </dosageInstruction>
       <dosageInstruction>
-        <dosageInstructionsText value="Take 3 tablets once a day for 2 days"/>
-        <timingSchedule>
+        <text value="Take 3 tablets once a day for 2 days"/>
+        <scheduledTiming>
           <repeat>
             <frequency value="1" />
             <duration value="1" />
             <units value="d" />
             <count value="2"/>
           </repeat>
-        </timingSchedule>
+        </scheduledTiming>
         <doseQuantity>
           <value value="3"/>          
         </doseQuantity>
       </dosageInstruction>
       <dosageInstruction>
-        <dosageInstructionsText value="Take 2 tablets once a day for 2 days"/>
-        <timingSchedule>
+        <text value="Take 2 tablets once a day for 2 days"/>
+        <scheduledTiming>
           <repeat>
             <frequency value="1" />
             <duration value="1" />
             <units value="d" />
             <count value="2"/>
           </repeat>
-        </timingSchedule>
+        </scheduledTiming>
         <doseQuantity>
           <value value="2"/>          
         </doseQuantity>
       </dosageInstruction>
       <dosageInstruction>
-        <dosageInstructionsText value="Take 1 tablet once a day for 2 days"/>
-        <timingSchedule>
+        <text value="Take 1 tablet once a day for 2 days"/>
+        <scheduledTiming>
           <repeat>
             <frequency value="1" />
             <duration value="1" />
             <units value="d" />
             <count value="2"/>
           </repeat>
-        </timingSchedule>
+        </scheduledTiming>
         <doseQuantity>
           <value value="1"/>          
         </doseQuantity>
@@ -222,13 +227,13 @@
        </coding>
       <text value="Peak Flow"></text>
      </code>
-     <timingSchedule>
+     <scheduledTiming>
        <repeat>
          <frequency value="1" />
          <duration value="1" />
          <units value="d" />
        </repeat>
-     </timingSchedule>
+     </scheduledTiming>
      <performer>
        <reference value="Patient/1"/>
        <display value="Eve Everywoman"/>

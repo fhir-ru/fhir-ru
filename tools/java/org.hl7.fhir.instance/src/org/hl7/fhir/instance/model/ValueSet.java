@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,36 +29,53 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A value set specifies a set of codes drawn from one or more code systems.
  */
-public class ValueSet extends Resource {
+public class ValueSet extends DomainResource {
 
     public enum ValuesetStatus {
-        draft, // This valueset is still under development.
-        active, // This valueset is ready for normal use.
-        retired, // This valueset has been withdrawn or superceded and should no longer be used.
-        Null; // added to help the parsers
+        DRAFT, // This valueset is still under development.
+        ACTIVE, // This valueset is ready for normal use.
+        RETIRED, // This valueset has been withdrawn or superceded and should no longer be used.
+        NULL; // added to help the parsers
         public static ValuesetStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("draft".equals(codeString))
-          return draft;
+          return DRAFT;
         if ("active".equals(codeString))
-          return active;
+          return ACTIVE;
         if ("retired".equals(codeString))
-          return retired;
+          return RETIRED;
         throw new Exception("Unknown ValuesetStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case draft: return "draft";
-            case active: return "active";
-            case retired: return "retired";
+            case DRAFT: return "draft";
+            case ACTIVE: return "active";
+            case RETIRED: return "retired";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case DRAFT: return "This valueset is still under development.";
+            case ACTIVE: return "This valueset is ready for normal use.";
+            case RETIRED: return "This valueset has been withdrawn or superceded and should no longer be used.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case DRAFT: return "Draft";
+            case ACTIVE: return "Active";
+            case RETIRED: return "Retired";
             default: return "?";
           }
         }
@@ -70,57 +87,79 @@ public class ValueSet extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("draft".equals(codeString))
-          return ValuesetStatus.draft;
+          return ValuesetStatus.DRAFT;
         if ("active".equals(codeString))
-          return ValuesetStatus.active;
+          return ValuesetStatus.ACTIVE;
         if ("retired".equals(codeString))
-          return ValuesetStatus.retired;
+          return ValuesetStatus.RETIRED;
         throw new Exception("Unknown ValuesetStatus code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == ValuesetStatus.draft)
+      if (code == ValuesetStatus.DRAFT)
         return "draft";
-      if (code == ValuesetStatus.active)
+      if (code == ValuesetStatus.ACTIVE)
         return "active";
-      if (code == ValuesetStatus.retired)
+      if (code == ValuesetStatus.RETIRED)
         return "retired";
       return "?";
       }
     }
 
     public enum FilterOperator {
-        equal, // The property value has the concept specified by the value.
-        isa, // The property value has a concept that has an is-a relationship with the value.
-        isnota, // The property value has a concept that does not have an is-a relationship with the value.
-        regex, // The property value representation matches the regex specified in the value.
-        in, // The property value is in the set of codes or concepts identified by the value.
-        notIn, // The property value is not in the set of codes or concepts identified by the value.
-        Null; // added to help the parsers
+        EQUAL, // The specified property of the code equals the provided value.
+        ISA, // The specified property of the code has an is-a relationship with the provided value.
+        ISNOTA, // The specified property of the code does not have an is-a relationship with the provided value.
+        REGEX, // The specified property of the code  matches the regex specified in the provided value.
+        IN, // The specified property of the code is in the set of codes or concepts specified in the provided value (comma separated list).
+        NOTIN, // The specified property of the code is not in the set of codes or concepts specified in the provided value (comma separated list).
+        NULL; // added to help the parsers
         public static FilterOperator fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("=".equals(codeString))
-          return equal;
+          return EQUAL;
         if ("is-a".equals(codeString))
-          return isa;
+          return ISA;
         if ("is-not-a".equals(codeString))
-          return isnota;
+          return ISNOTA;
         if ("regex".equals(codeString))
-          return regex;
+          return REGEX;
         if ("in".equals(codeString))
-          return in;
+          return IN;
         if ("not in".equals(codeString))
-          return notIn;
+          return NOTIN;
         throw new Exception("Unknown FilterOperator code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case equal: return "=";
-            case isa: return "is-a";
-            case isnota: return "is-not-a";
-            case regex: return "regex";
-            case in: return "in";
-            case notIn: return "not in";
+            case EQUAL: return "=";
+            case ISA: return "is-a";
+            case ISNOTA: return "is-not-a";
+            case REGEX: return "regex";
+            case IN: return "in";
+            case NOTIN: return "not in";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case EQUAL: return "The specified property of the code equals the provided value.";
+            case ISA: return "The specified property of the code has an is-a relationship with the provided value.";
+            case ISNOTA: return "The specified property of the code does not have an is-a relationship with the provided value.";
+            case REGEX: return "The specified property of the code  matches the regex specified in the provided value.";
+            case IN: return "The specified property of the code is in the set of codes or concepts specified in the provided value (comma separated list).";
+            case NOTIN: return "The specified property of the code is not in the set of codes or concepts specified in the provided value (comma separated list).";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case EQUAL: return "=";
+            case ISA: return "is-a";
+            case ISNOTA: return "is-not-a";
+            case REGEX: return "regex";
+            case IN: return "in";
+            case NOTIN: return "not in";
             default: return "?";
           }
         }
@@ -132,31 +171,31 @@ public class ValueSet extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("=".equals(codeString))
-          return FilterOperator.equal;
+          return FilterOperator.EQUAL;
         if ("is-a".equals(codeString))
-          return FilterOperator.isa;
+          return FilterOperator.ISA;
         if ("is-not-a".equals(codeString))
-          return FilterOperator.isnota;
+          return FilterOperator.ISNOTA;
         if ("regex".equals(codeString))
-          return FilterOperator.regex;
+          return FilterOperator.REGEX;
         if ("in".equals(codeString))
-          return FilterOperator.in;
+          return FilterOperator.IN;
         if ("not in".equals(codeString))
-          return FilterOperator.notIn;
+          return FilterOperator.NOTIN;
         throw new Exception("Unknown FilterOperator code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == FilterOperator.equal)
+      if (code == FilterOperator.EQUAL)
         return "=";
-      if (code == FilterOperator.isa)
+      if (code == FilterOperator.ISA)
         return "is-a";
-      if (code == FilterOperator.isnota)
+      if (code == FilterOperator.ISNOTA)
         return "is-not-a";
-      if (code == FilterOperator.regex)
+      if (code == FilterOperator.REGEX)
         return "regex";
-      if (code == FilterOperator.in)
+      if (code == FilterOperator.IN)
         return "in";
-      if (code == FilterOperator.notIn)
+      if (code == FilterOperator.NOTIN)
         return "not in";
       return "?";
       }
@@ -181,9 +220,9 @@ public class ValueSet extends Resource {
         /**
          * Concepts in the code system.
          */
-        protected List<ValueSetDefineConceptComponent> concept = new ArrayList<ValueSetDefineConceptComponent>();
+        protected List<ConceptDefinitionComponent> concept = new ArrayList<ConceptDefinitionComponent>();
 
-        private static final long serialVersionUID = 819436673L;
+        private static final long serialVersionUID = 1963348227L;
 
       public ValueSetDefineComponent() {
         super();
@@ -195,16 +234,16 @@ public class ValueSet extends Resource {
       }
 
         /**
-         * @return {@link #system} (URI to identify the code system.)
+         * @return {@link #system} (URI to identify the code system.). This is the underlying object with id, value and extensions. The accessor "getSystem" gives direct access to the value
          */
-        public UriType getSystem() { 
+        public UriType getSystemElement() { 
           return this.system;
         }
 
         /**
-         * @param value {@link #system} (URI to identify the code system.)
+         * @param value {@link #system} (URI to identify the code system.). This is the underlying object with id, value and extensions. The accessor "getSystem" gives direct access to the value
          */
-        public ValueSetDefineComponent setSystem(UriType value) { 
+        public ValueSetDefineComponent setSystemElement(UriType value) { 
           this.system = value;
           return this;
         }
@@ -212,14 +251,14 @@ public class ValueSet extends Resource {
         /**
          * @return URI to identify the code system.
          */
-        public String getSystemSimple() { 
+        public String getSystem() { 
           return this.system == null ? null : this.system.getValue();
         }
 
         /**
          * @param value URI to identify the code system.
          */
-        public ValueSetDefineComponent setSystemSimple(String value) { 
+        public ValueSetDefineComponent setSystem(String value) { 
             if (this.system == null)
               this.system = new UriType();
             this.system.setValue(value);
@@ -227,16 +266,16 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #version} (The version of this code system that defines the codes. Note that the version is optional because a well maintained code system does not suffer from versioning, and therefore the version does not need to be maintained. However many code systems are not well maintained, and the version needs to be defined and tracked.)
+         * @return {@link #version} (The version of this code system that defines the codes. Note that the version is optional because a well maintained code system does not suffer from versioning, and therefore the version does not need to be maintained. However many code systems are not well maintained, and the version needs to be defined and tracked.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
          */
-        public StringType getVersion() { 
+        public StringType getVersionElement() { 
           return this.version;
         }
 
         /**
-         * @param value {@link #version} (The version of this code system that defines the codes. Note that the version is optional because a well maintained code system does not suffer from versioning, and therefore the version does not need to be maintained. However many code systems are not well maintained, and the version needs to be defined and tracked.)
+         * @param value {@link #version} (The version of this code system that defines the codes. Note that the version is optional because a well maintained code system does not suffer from versioning, and therefore the version does not need to be maintained. However many code systems are not well maintained, and the version needs to be defined and tracked.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
          */
-        public ValueSetDefineComponent setVersion(StringType value) { 
+        public ValueSetDefineComponent setVersionElement(StringType value) { 
           this.version = value;
           return this;
         }
@@ -244,15 +283,15 @@ public class ValueSet extends Resource {
         /**
          * @return The version of this code system that defines the codes. Note that the version is optional because a well maintained code system does not suffer from versioning, and therefore the version does not need to be maintained. However many code systems are not well maintained, and the version needs to be defined and tracked.
          */
-        public String getVersionSimple() { 
+        public String getVersion() { 
           return this.version == null ? null : this.version.getValue();
         }
 
         /**
          * @param value The version of this code system that defines the codes. Note that the version is optional because a well maintained code system does not suffer from versioning, and therefore the version does not need to be maintained. However many code systems are not well maintained, and the version needs to be defined and tracked.
          */
-        public ValueSetDefineComponent setVersionSimple(String value) { 
-          if (value == null)
+        public ValueSetDefineComponent setVersion(String value) { 
+          if (Utilities.noString(value))
             this.version = null;
           else {
             if (this.version == null)
@@ -263,16 +302,16 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #caseSensitive} (If code comparison is case sensitive when codes within this system are compared to each other.)
+         * @return {@link #caseSensitive} (If code comparison is case sensitive when codes within this system are compared to each other.). This is the underlying object with id, value and extensions. The accessor "getCaseSensitive" gives direct access to the value
          */
-        public BooleanType getCaseSensitive() { 
+        public BooleanType getCaseSensitiveElement() { 
           return this.caseSensitive;
         }
 
         /**
-         * @param value {@link #caseSensitive} (If code comparison is case sensitive when codes within this system are compared to each other.)
+         * @param value {@link #caseSensitive} (If code comparison is case sensitive when codes within this system are compared to each other.). This is the underlying object with id, value and extensions. The accessor "getCaseSensitive" gives direct access to the value
          */
-        public ValueSetDefineComponent setCaseSensitive(BooleanType value) { 
+        public ValueSetDefineComponent setCaseSensitiveElement(BooleanType value) { 
           this.caseSensitive = value;
           return this;
         }
@@ -280,14 +319,14 @@ public class ValueSet extends Resource {
         /**
          * @return If code comparison is case sensitive when codes within this system are compared to each other.
          */
-        public boolean getCaseSensitiveSimple() { 
+        public boolean getCaseSensitive() { 
           return this.caseSensitive == null ? false : this.caseSensitive.getValue();
         }
 
         /**
          * @param value If code comparison is case sensitive when codes within this system are compared to each other.
          */
-        public ValueSetDefineComponent setCaseSensitiveSimple(boolean value) { 
+        public ValueSetDefineComponent setCaseSensitive(boolean value) { 
           if (value == false)
             this.caseSensitive = null;
           else {
@@ -301,16 +340,16 @@ public class ValueSet extends Resource {
         /**
          * @return {@link #concept} (Concepts in the code system.)
          */
-        public List<ValueSetDefineConceptComponent> getConcept() { 
+        public List<ConceptDefinitionComponent> getConcept() { 
           return this.concept;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #concept} (Concepts in the code system.)
          */
-        public ValueSetDefineConceptComponent addConcept() { 
-          ValueSetDefineConceptComponent t = new ValueSetDefineConceptComponent();
+    // syntactic sugar
+        public ConceptDefinitionComponent addConcept() { //3
+          ConceptDefinitionComponent t = new ConceptDefinitionComponent();
           this.concept.add(t);
           return t;
         }
@@ -325,18 +364,19 @@ public class ValueSet extends Resource {
 
       public ValueSetDefineComponent copy() {
         ValueSetDefineComponent dst = new ValueSetDefineComponent();
+        copyValues(dst);
         dst.system = system == null ? null : system.copy();
         dst.version = version == null ? null : version.copy();
         dst.caseSensitive = caseSensitive == null ? null : caseSensitive.copy();
-        dst.concept = new ArrayList<ValueSetDefineConceptComponent>();
-        for (ValueSetDefineConceptComponent i : concept)
+        dst.concept = new ArrayList<ConceptDefinitionComponent>();
+        for (ConceptDefinitionComponent i : concept)
           dst.concept.add(i.copy());
         return dst;
       }
 
   }
 
-    public static class ValueSetDefineConceptComponent extends BackboneElement {
+    public static class ConceptDefinitionComponent extends BackboneElement {
         /**
          * Code that identifies concept.
          */
@@ -358,32 +398,37 @@ public class ValueSet extends Resource {
         protected StringType definition;
 
         /**
+         * Additional representations for the concept - other languages, aliases, specialised purposes, used for particular purposes, etc.
+         */
+        protected List<ConceptDefinitionDesignationComponent> designation = new ArrayList<ConceptDefinitionDesignationComponent>();
+
+        /**
          * Child Concepts (is-a / contains).
          */
-        protected List<ValueSetDefineConceptComponent> concept = new ArrayList<ValueSetDefineConceptComponent>();
+        protected List<ConceptDefinitionComponent> concept = new ArrayList<ConceptDefinitionComponent>();
 
-        private static final long serialVersionUID = -1870725379L;
+        private static final long serialVersionUID = 1252361765L;
 
-      public ValueSetDefineConceptComponent() {
+      public ConceptDefinitionComponent() {
         super();
       }
 
-      public ValueSetDefineConceptComponent(CodeType code) {
+      public ConceptDefinitionComponent(CodeType code) {
         super();
         this.code = code;
       }
 
         /**
-         * @return {@link #code} (Code that identifies concept.)
+         * @return {@link #code} (Code that identifies concept.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public CodeType getCode() { 
+        public CodeType getCodeElement() { 
           return this.code;
         }
 
         /**
-         * @param value {@link #code} (Code that identifies concept.)
+         * @param value {@link #code} (Code that identifies concept.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public ValueSetDefineConceptComponent setCode(CodeType value) { 
+        public ConceptDefinitionComponent setCodeElement(CodeType value) { 
           this.code = value;
           return this;
         }
@@ -391,14 +436,14 @@ public class ValueSet extends Resource {
         /**
          * @return Code that identifies concept.
          */
-        public String getCodeSimple() { 
+        public String getCode() { 
           return this.code == null ? null : this.code.getValue();
         }
 
         /**
          * @param value Code that identifies concept.
          */
-        public ValueSetDefineConceptComponent setCodeSimple(String value) { 
+        public ConceptDefinitionComponent setCode(String value) { 
             if (this.code == null)
               this.code = new CodeType();
             this.code.setValue(value);
@@ -406,16 +451,16 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #abstract_} (If this code is not for use as a real concept.)
+         * @return {@link #abstract_} (If this code is not for use as a real concept.). This is the underlying object with id, value and extensions. The accessor "getAbstract" gives direct access to the value
          */
-        public BooleanType getAbstract() { 
+        public BooleanType getAbstractElement() { 
           return this.abstract_;
         }
 
         /**
-         * @param value {@link #abstract_} (If this code is not for use as a real concept.)
+         * @param value {@link #abstract_} (If this code is not for use as a real concept.). This is the underlying object with id, value and extensions. The accessor "getAbstract" gives direct access to the value
          */
-        public ValueSetDefineConceptComponent setAbstract(BooleanType value) { 
+        public ConceptDefinitionComponent setAbstractElement(BooleanType value) { 
           this.abstract_ = value;
           return this;
         }
@@ -423,14 +468,14 @@ public class ValueSet extends Resource {
         /**
          * @return If this code is not for use as a real concept.
          */
-        public boolean getAbstractSimple() { 
+        public boolean getAbstract() { 
           return this.abstract_ == null ? false : this.abstract_.getValue();
         }
 
         /**
          * @param value If this code is not for use as a real concept.
          */
-        public ValueSetDefineConceptComponent setAbstractSimple(boolean value) { 
+        public ConceptDefinitionComponent setAbstract(boolean value) { 
           if (value == false)
             this.abstract_ = null;
           else {
@@ -442,16 +487,16 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #display} (Text to Display to the user.)
+         * @return {@link #display} (Text to Display to the user.). This is the underlying object with id, value and extensions. The accessor "getDisplay" gives direct access to the value
          */
-        public StringType getDisplay() { 
+        public StringType getDisplayElement() { 
           return this.display;
         }
 
         /**
-         * @param value {@link #display} (Text to Display to the user.)
+         * @param value {@link #display} (Text to Display to the user.). This is the underlying object with id, value and extensions. The accessor "getDisplay" gives direct access to the value
          */
-        public ValueSetDefineConceptComponent setDisplay(StringType value) { 
+        public ConceptDefinitionComponent setDisplayElement(StringType value) { 
           this.display = value;
           return this;
         }
@@ -459,15 +504,15 @@ public class ValueSet extends Resource {
         /**
          * @return Text to Display to the user.
          */
-        public String getDisplaySimple() { 
+        public String getDisplay() { 
           return this.display == null ? null : this.display.getValue();
         }
 
         /**
          * @param value Text to Display to the user.
          */
-        public ValueSetDefineConceptComponent setDisplaySimple(String value) { 
-          if (value == null)
+        public ConceptDefinitionComponent setDisplay(String value) { 
+          if (Utilities.noString(value))
             this.display = null;
           else {
             if (this.display == null)
@@ -478,16 +523,16 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #definition} (The formal definition of the concept. Formal definitions are not required, because of the prevalence of legacy systems without them, but they are highly recommended, as without them there is no formal meaning associated with the concept.)
+         * @return {@link #definition} (The formal definition of the concept. Formal definitions are not required, because of the prevalence of legacy systems without them, but they are highly recommended, as without them there is no formal meaning associated with the concept.). This is the underlying object with id, value and extensions. The accessor "getDefinition" gives direct access to the value
          */
-        public StringType getDefinition() { 
+        public StringType getDefinitionElement() { 
           return this.definition;
         }
 
         /**
-         * @param value {@link #definition} (The formal definition of the concept. Formal definitions are not required, because of the prevalence of legacy systems without them, but they are highly recommended, as without them there is no formal meaning associated with the concept.)
+         * @param value {@link #definition} (The formal definition of the concept. Formal definitions are not required, because of the prevalence of legacy systems without them, but they are highly recommended, as without them there is no formal meaning associated with the concept.). This is the underlying object with id, value and extensions. The accessor "getDefinition" gives direct access to the value
          */
-        public ValueSetDefineConceptComponent setDefinition(StringType value) { 
+        public ConceptDefinitionComponent setDefinitionElement(StringType value) { 
           this.definition = value;
           return this;
         }
@@ -495,15 +540,15 @@ public class ValueSet extends Resource {
         /**
          * @return The formal definition of the concept. Formal definitions are not required, because of the prevalence of legacy systems without them, but they are highly recommended, as without them there is no formal meaning associated with the concept.
          */
-        public String getDefinitionSimple() { 
+        public String getDefinition() { 
           return this.definition == null ? null : this.definition.getValue();
         }
 
         /**
          * @param value The formal definition of the concept. Formal definitions are not required, because of the prevalence of legacy systems without them, but they are highly recommended, as without them there is no formal meaning associated with the concept.
          */
-        public ValueSetDefineConceptComponent setDefinitionSimple(String value) { 
-          if (value == null)
+        public ConceptDefinitionComponent setDefinition(String value) { 
+          if (Utilities.noString(value))
             this.definition = null;
           else {
             if (this.definition == null)
@@ -514,18 +559,35 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #concept} (Child Concepts (is-a / contains).)
+         * @return {@link #designation} (Additional representations for the concept - other languages, aliases, specialised purposes, used for particular purposes, etc.)
          */
-        public List<ValueSetDefineConceptComponent> getConcept() { 
-          return this.concept;
+        public List<ConceptDefinitionDesignationComponent> getDesignation() { 
+          return this.designation;
         }
 
+        /**
+         * @return {@link #designation} (Additional representations for the concept - other languages, aliases, specialised purposes, used for particular purposes, etc.)
+         */
     // syntactic sugar
+        public ConceptDefinitionDesignationComponent addDesignation() { //3
+          ConceptDefinitionDesignationComponent t = new ConceptDefinitionDesignationComponent();
+          this.designation.add(t);
+          return t;
+        }
+
         /**
          * @return {@link #concept} (Child Concepts (is-a / contains).)
          */
-        public ValueSetDefineConceptComponent addConcept() { 
-          ValueSetDefineConceptComponent t = new ValueSetDefineConceptComponent();
+        public List<ConceptDefinitionComponent> getConcept() { 
+          return this.concept;
+        }
+
+        /**
+         * @return {@link #concept} (Child Concepts (is-a / contains).)
+         */
+    // syntactic sugar
+        public ConceptDefinitionComponent addConcept() { //3
+          ConceptDefinitionComponent t = new ConceptDefinitionComponent();
           this.concept.add(t);
           return t;
         }
@@ -536,18 +598,151 @@ public class ValueSet extends Resource {
           childrenList.add(new Property("abstract", "boolean", "If this code is not for use as a real concept.", 0, java.lang.Integer.MAX_VALUE, abstract_));
           childrenList.add(new Property("display", "string", "Text to Display to the user.", 0, java.lang.Integer.MAX_VALUE, display));
           childrenList.add(new Property("definition", "string", "The formal definition of the concept. Formal definitions are not required, because of the prevalence of legacy systems without them, but they are highly recommended, as without them there is no formal meaning associated with the concept.", 0, java.lang.Integer.MAX_VALUE, definition));
+          childrenList.add(new Property("designation", "", "Additional representations for the concept - other languages, aliases, specialised purposes, used for particular purposes, etc.", 0, java.lang.Integer.MAX_VALUE, designation));
           childrenList.add(new Property("concept", "@ValueSet.define.concept", "Child Concepts (is-a / contains).", 0, java.lang.Integer.MAX_VALUE, concept));
         }
 
-      public ValueSetDefineConceptComponent copy() {
-        ValueSetDefineConceptComponent dst = new ValueSetDefineConceptComponent();
+      public ConceptDefinitionComponent copy() {
+        ConceptDefinitionComponent dst = new ConceptDefinitionComponent();
+        copyValues(dst);
         dst.code = code == null ? null : code.copy();
         dst.abstract_ = abstract_ == null ? null : abstract_.copy();
         dst.display = display == null ? null : display.copy();
         dst.definition = definition == null ? null : definition.copy();
-        dst.concept = new ArrayList<ValueSetDefineConceptComponent>();
-        for (ValueSetDefineConceptComponent i : concept)
+        dst.designation = new ArrayList<ConceptDefinitionDesignationComponent>();
+        for (ConceptDefinitionDesignationComponent i : designation)
+          dst.designation.add(i.copy());
+        dst.concept = new ArrayList<ConceptDefinitionComponent>();
+        for (ConceptDefinitionComponent i : concept)
           dst.concept.add(i.copy());
+        return dst;
+      }
+
+  }
+
+    public static class ConceptDefinitionDesignationComponent extends BackboneElement {
+        /**
+         * The language this designation is defined for.
+         */
+        protected CodeType language;
+
+        /**
+         * A code that details how this designation would be used.
+         */
+        protected Coding use;
+
+        /**
+         * The text value for this designation.
+         */
+        protected StringType value;
+
+        private static final long serialVersionUID = 1515662414L;
+
+      public ConceptDefinitionDesignationComponent() {
+        super();
+      }
+
+      public ConceptDefinitionDesignationComponent(StringType value) {
+        super();
+        this.value = value;
+      }
+
+        /**
+         * @return {@link #language} (The language this designation is defined for.). This is the underlying object with id, value and extensions. The accessor "getLanguage" gives direct access to the value
+         */
+        public CodeType getLanguageElement() { 
+          return this.language;
+        }
+
+        /**
+         * @param value {@link #language} (The language this designation is defined for.). This is the underlying object with id, value and extensions. The accessor "getLanguage" gives direct access to the value
+         */
+        public ConceptDefinitionDesignationComponent setLanguageElement(CodeType value) { 
+          this.language = value;
+          return this;
+        }
+
+        /**
+         * @return The language this designation is defined for.
+         */
+        public String getLanguage() { 
+          return this.language == null ? null : this.language.getValue();
+        }
+
+        /**
+         * @param value The language this designation is defined for.
+         */
+        public ConceptDefinitionDesignationComponent setLanguage(String value) { 
+          if (Utilities.noString(value))
+            this.language = null;
+          else {
+            if (this.language == null)
+              this.language = new CodeType();
+            this.language.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #use} (A code that details how this designation would be used.)
+         */
+        public Coding getUse() { 
+          return this.use;
+        }
+
+        /**
+         * @param value {@link #use} (A code that details how this designation would be used.)
+         */
+        public ConceptDefinitionDesignationComponent setUse(Coding value) { 
+          this.use = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #value} (The text value for this designation.). This is the underlying object with id, value and extensions. The accessor "getValue" gives direct access to the value
+         */
+        public StringType getValueElement() { 
+          return this.value;
+        }
+
+        /**
+         * @param value {@link #value} (The text value for this designation.). This is the underlying object with id, value and extensions. The accessor "getValue" gives direct access to the value
+         */
+        public ConceptDefinitionDesignationComponent setValueElement(StringType value) { 
+          this.value = value;
+          return this;
+        }
+
+        /**
+         * @return The text value for this designation.
+         */
+        public String getValue() { 
+          return this.value == null ? null : this.value.getValue();
+        }
+
+        /**
+         * @param value The text value for this designation.
+         */
+        public ConceptDefinitionDesignationComponent setValue(String value) { 
+            if (this.value == null)
+              this.value = new StringType();
+            this.value.setValue(value);
+          return this;
+        }
+
+        protected void listChildren(List<Property> childrenList) {
+          super.listChildren(childrenList);
+          childrenList.add(new Property("language", "code", "The language this designation is defined for.", 0, java.lang.Integer.MAX_VALUE, language));
+          childrenList.add(new Property("use", "Coding", "A code that details how this designation would be used.", 0, java.lang.Integer.MAX_VALUE, use));
+          childrenList.add(new Property("value", "string", "The text value for this designation.", 0, java.lang.Integer.MAX_VALUE, value));
+        }
+
+      public ConceptDefinitionDesignationComponent copy() {
+        ConceptDefinitionDesignationComponent dst = new ConceptDefinitionDesignationComponent();
+        copyValues(dst);
+        dst.language = language == null ? null : language.copy();
+        dst.use = use == null ? null : use.copy();
+        dst.value = value == null ? null : value.copy();
         return dst;
       }
 
@@ -582,11 +777,11 @@ public class ValueSet extends Resource {
           return this.import_;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #import_} (Includes the contents of the referenced value set as a part of the contents of this value set.)
          */
-        public UriType addImport() { 
+    // syntactic sugar
+        public UriType addImportElement() {//2 
           UriType t = new UriType();
           this.import_.add(t);
           return t;
@@ -595,19 +790,19 @@ public class ValueSet extends Resource {
         /**
          * @param value {@link #import_} (Includes the contents of the referenced value set as a part of the contents of this value set.)
          */
-        public UriType addImportSimple(String value) { 
+        public ValueSetComposeComponent addImport(String value) { //1
           UriType t = new UriType();
           t.setValue(value);
           this.import_.add(t);
-          return t;
+          return this;
         }
 
         /**
          * @param value {@link #import_} (Includes the contents of the referenced value set as a part of the contents of this value set.)
          */
-        public boolean hasImportSimple(String value) { 
+        public boolean hasImport(String value) { 
           for (UriType v : this.import_)
-            if (v.getValue().equals(value))
+            if (v.equals(value)) // uri
               return true;
           return false;
         }
@@ -619,11 +814,11 @@ public class ValueSet extends Resource {
           return this.include;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #include} (Include one or more codes from a code system.)
          */
-        public ConceptSetComponent addInclude() { 
+    // syntactic sugar
+        public ConceptSetComponent addInclude() { //3
           ConceptSetComponent t = new ConceptSetComponent();
           this.include.add(t);
           return t;
@@ -636,11 +831,11 @@ public class ValueSet extends Resource {
           return this.exclude;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #exclude} (Exclude one or more codes from the value set.)
          */
-        public ConceptSetComponent addExclude() { 
+    // syntactic sugar
+        public ConceptSetComponent addExclude() { //3
           ConceptSetComponent t = new ConceptSetComponent();
           this.exclude.add(t);
           return t;
@@ -655,6 +850,7 @@ public class ValueSet extends Resource {
 
       public ValueSetComposeComponent copy() {
         ValueSetComposeComponent dst = new ValueSetComposeComponent();
+        copyValues(dst);
         dst.import_ = new ArrayList<UriType>();
         for (UriType i : import_)
           dst.import_.add(i.copy());
@@ -681,16 +877,16 @@ public class ValueSet extends Resource {
         protected StringType version;
 
         /**
-         * Specifies a code or concept to be included or excluded. The list of codes is considered ordered, though the order may not have any particular significance.
+         * Specifies a concept to be included or excluded.
          */
-        protected List<CodeType> code = new ArrayList<CodeType>();
+        protected List<ConceptReferenceComponent> concept = new ArrayList<ConceptReferenceComponent>();
 
         /**
          * Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.
          */
         protected List<ConceptSetFilterComponent> filter = new ArrayList<ConceptSetFilterComponent>();
 
-        private static final long serialVersionUID = -1360238143L;
+        private static final long serialVersionUID = -950487150L;
 
       public ConceptSetComponent() {
         super();
@@ -702,16 +898,16 @@ public class ValueSet extends Resource {
       }
 
         /**
-         * @return {@link #system} (The code system from which the selected codes come from.)
+         * @return {@link #system} (The code system from which the selected codes come from.). This is the underlying object with id, value and extensions. The accessor "getSystem" gives direct access to the value
          */
-        public UriType getSystem() { 
+        public UriType getSystemElement() { 
           return this.system;
         }
 
         /**
-         * @param value {@link #system} (The code system from which the selected codes come from.)
+         * @param value {@link #system} (The code system from which the selected codes come from.). This is the underlying object with id, value and extensions. The accessor "getSystem" gives direct access to the value
          */
-        public ConceptSetComponent setSystem(UriType value) { 
+        public ConceptSetComponent setSystemElement(UriType value) { 
           this.system = value;
           return this;
         }
@@ -719,14 +915,14 @@ public class ValueSet extends Resource {
         /**
          * @return The code system from which the selected codes come from.
          */
-        public String getSystemSimple() { 
+        public String getSystem() { 
           return this.system == null ? null : this.system.getValue();
         }
 
         /**
          * @param value The code system from which the selected codes come from.
          */
-        public ConceptSetComponent setSystemSimple(String value) { 
+        public ConceptSetComponent setSystem(String value) { 
             if (this.system == null)
               this.system = new UriType();
             this.system.setValue(value);
@@ -734,16 +930,16 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #version} (The version of the code system that the codes are selected from.)
+         * @return {@link #version} (The version of the code system that the codes are selected from.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
          */
-        public StringType getVersion() { 
+        public StringType getVersionElement() { 
           return this.version;
         }
 
         /**
-         * @param value {@link #version} (The version of the code system that the codes are selected from.)
+         * @param value {@link #version} (The version of the code system that the codes are selected from.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
          */
-        public ConceptSetComponent setVersion(StringType value) { 
+        public ConceptSetComponent setVersionElement(StringType value) { 
           this.version = value;
           return this;
         }
@@ -751,15 +947,15 @@ public class ValueSet extends Resource {
         /**
          * @return The version of the code system that the codes are selected from.
          */
-        public String getVersionSimple() { 
+        public String getVersion() { 
           return this.version == null ? null : this.version.getValue();
         }
 
         /**
          * @param value The version of the code system that the codes are selected from.
          */
-        public ConceptSetComponent setVersionSimple(String value) { 
-          if (value == null)
+        public ConceptSetComponent setVersion(String value) { 
+          if (Utilities.noString(value))
             this.version = null;
           else {
             if (this.version == null)
@@ -770,40 +966,20 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #code} (Specifies a code or concept to be included or excluded. The list of codes is considered ordered, though the order may not have any particular significance.)
+         * @return {@link #concept} (Specifies a concept to be included or excluded.)
          */
-        public List<CodeType> getCode() { 
-          return this.code;
+        public List<ConceptReferenceComponent> getConcept() { 
+          return this.concept;
         }
 
+        /**
+         * @return {@link #concept} (Specifies a concept to be included or excluded.)
+         */
     // syntactic sugar
-        /**
-         * @return {@link #code} (Specifies a code or concept to be included or excluded. The list of codes is considered ordered, though the order may not have any particular significance.)
-         */
-        public CodeType addCode() { 
-          CodeType t = new CodeType();
-          this.code.add(t);
+        public ConceptReferenceComponent addConcept() { //3
+          ConceptReferenceComponent t = new ConceptReferenceComponent();
+          this.concept.add(t);
           return t;
-        }
-
-        /**
-         * @param value {@link #code} (Specifies a code or concept to be included or excluded. The list of codes is considered ordered, though the order may not have any particular significance.)
-         */
-        public CodeType addCodeSimple(String value) { 
-          CodeType t = new CodeType();
-          t.setValue(value);
-          this.code.add(t);
-          return t;
-        }
-
-        /**
-         * @param value {@link #code} (Specifies a code or concept to be included or excluded. The list of codes is considered ordered, though the order may not have any particular significance.)
-         */
-        public boolean hasCodeSimple(String value) { 
-          for (CodeType v : this.code)
-            if (v.getValue().equals(value))
-              return true;
-          return false;
         }
 
         /**
@@ -813,11 +989,11 @@ public class ValueSet extends Resource {
           return this.filter;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #filter} (Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.)
          */
-        public ConceptSetFilterComponent addFilter() { 
+    // syntactic sugar
+        public ConceptSetFilterComponent addFilter() { //3
           ConceptSetFilterComponent t = new ConceptSetFilterComponent();
           this.filter.add(t);
           return t;
@@ -827,20 +1003,153 @@ public class ValueSet extends Resource {
           super.listChildren(childrenList);
           childrenList.add(new Property("system", "uri", "The code system from which the selected codes come from.", 0, java.lang.Integer.MAX_VALUE, system));
           childrenList.add(new Property("version", "string", "The version of the code system that the codes are selected from.", 0, java.lang.Integer.MAX_VALUE, version));
-          childrenList.add(new Property("code", "code", "Specifies a code or concept to be included or excluded. The list of codes is considered ordered, though the order may not have any particular significance.", 0, java.lang.Integer.MAX_VALUE, code));
+          childrenList.add(new Property("concept", "", "Specifies a concept to be included or excluded.", 0, java.lang.Integer.MAX_VALUE, concept));
           childrenList.add(new Property("filter", "", "Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.", 0, java.lang.Integer.MAX_VALUE, filter));
         }
 
       public ConceptSetComponent copy() {
         ConceptSetComponent dst = new ConceptSetComponent();
+        copyValues(dst);
         dst.system = system == null ? null : system.copy();
         dst.version = version == null ? null : version.copy();
-        dst.code = new ArrayList<CodeType>();
-        for (CodeType i : code)
-          dst.code.add(i.copy());
+        dst.concept = new ArrayList<ConceptReferenceComponent>();
+        for (ConceptReferenceComponent i : concept)
+          dst.concept.add(i.copy());
         dst.filter = new ArrayList<ConceptSetFilterComponent>();
         for (ConceptSetFilterComponent i : filter)
           dst.filter.add(i.copy());
+        return dst;
+      }
+
+  }
+
+    public static class ConceptReferenceComponent extends BackboneElement {
+        /**
+         * Specifies a code for the concept to be included or excluded.
+         */
+        protected CodeType code;
+
+        /**
+         * The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.
+         */
+        protected StringType display;
+
+        /**
+         * Additional representations for this concept when used in this value set - other languages, aliases, specialised purposes, used for particular purposes, etc.
+         */
+        protected List<ConceptDefinitionDesignationComponent> designation = new ArrayList<ConceptDefinitionDesignationComponent>();
+
+        private static final long serialVersionUID = -955988739L;
+
+      public ConceptReferenceComponent() {
+        super();
+      }
+
+      public ConceptReferenceComponent(CodeType code) {
+        super();
+        this.code = code;
+      }
+
+        /**
+         * @return {@link #code} (Specifies a code for the concept to be included or excluded.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
+         */
+        public CodeType getCodeElement() { 
+          return this.code;
+        }
+
+        /**
+         * @param value {@link #code} (Specifies a code for the concept to be included or excluded.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
+         */
+        public ConceptReferenceComponent setCodeElement(CodeType value) { 
+          this.code = value;
+          return this;
+        }
+
+        /**
+         * @return Specifies a code for the concept to be included or excluded.
+         */
+        public String getCode() { 
+          return this.code == null ? null : this.code.getValue();
+        }
+
+        /**
+         * @param value Specifies a code for the concept to be included or excluded.
+         */
+        public ConceptReferenceComponent setCode(String value) { 
+            if (this.code == null)
+              this.code = new CodeType();
+            this.code.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #display} (The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.). This is the underlying object with id, value and extensions. The accessor "getDisplay" gives direct access to the value
+         */
+        public StringType getDisplayElement() { 
+          return this.display;
+        }
+
+        /**
+         * @param value {@link #display} (The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.). This is the underlying object with id, value and extensions. The accessor "getDisplay" gives direct access to the value
+         */
+        public ConceptReferenceComponent setDisplayElement(StringType value) { 
+          this.display = value;
+          return this;
+        }
+
+        /**
+         * @return The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.
+         */
+        public String getDisplay() { 
+          return this.display == null ? null : this.display.getValue();
+        }
+
+        /**
+         * @param value The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.
+         */
+        public ConceptReferenceComponent setDisplay(String value) { 
+          if (Utilities.noString(value))
+            this.display = null;
+          else {
+            if (this.display == null)
+              this.display = new StringType();
+            this.display.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #designation} (Additional representations for this concept when used in this value set - other languages, aliases, specialised purposes, used for particular purposes, etc.)
+         */
+        public List<ConceptDefinitionDesignationComponent> getDesignation() { 
+          return this.designation;
+        }
+
+        /**
+         * @return {@link #designation} (Additional representations for this concept when used in this value set - other languages, aliases, specialised purposes, used for particular purposes, etc.)
+         */
+    // syntactic sugar
+        public ConceptDefinitionDesignationComponent addDesignation() { //3
+          ConceptDefinitionDesignationComponent t = new ConceptDefinitionDesignationComponent();
+          this.designation.add(t);
+          return t;
+        }
+
+        protected void listChildren(List<Property> childrenList) {
+          super.listChildren(childrenList);
+          childrenList.add(new Property("code", "code", "Specifies a code for the concept to be included or excluded.", 0, java.lang.Integer.MAX_VALUE, code));
+          childrenList.add(new Property("display", "string", "The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.", 0, java.lang.Integer.MAX_VALUE, display));
+          childrenList.add(new Property("designation", "@ValueSet.define.concept.designation", "Additional representations for this concept when used in this value set - other languages, aliases, specialised purposes, used for particular purposes, etc.", 0, java.lang.Integer.MAX_VALUE, designation));
+        }
+
+      public ConceptReferenceComponent copy() {
+        ConceptReferenceComponent dst = new ConceptReferenceComponent();
+        copyValues(dst);
+        dst.code = code == null ? null : code.copy();
+        dst.display = display == null ? null : display.copy();
+        dst.designation = new ArrayList<ConceptDefinitionDesignationComponent>();
+        for (ConceptDefinitionDesignationComponent i : designation)
+          dst.designation.add(i.copy());
         return dst;
       }
 
@@ -876,16 +1185,16 @@ public class ValueSet extends Resource {
       }
 
         /**
-         * @return {@link #property} (A code that identifies a property defined in the code system.)
+         * @return {@link #property} (A code that identifies a property defined in the code system.). This is the underlying object with id, value and extensions. The accessor "getProperty" gives direct access to the value
          */
-        public CodeType getProperty() { 
+        public CodeType getPropertyElement() { 
           return this.property;
         }
 
         /**
-         * @param value {@link #property} (A code that identifies a property defined in the code system.)
+         * @param value {@link #property} (A code that identifies a property defined in the code system.). This is the underlying object with id, value and extensions. The accessor "getProperty" gives direct access to the value
          */
-        public ConceptSetFilterComponent setProperty(CodeType value) { 
+        public ConceptSetFilterComponent setPropertyElement(CodeType value) { 
           this.property = value;
           return this;
         }
@@ -893,14 +1202,14 @@ public class ValueSet extends Resource {
         /**
          * @return A code that identifies a property defined in the code system.
          */
-        public String getPropertySimple() { 
+        public String getProperty() { 
           return this.property == null ? null : this.property.getValue();
         }
 
         /**
          * @param value A code that identifies a property defined in the code system.
          */
-        public ConceptSetFilterComponent setPropertySimple(String value) { 
+        public ConceptSetFilterComponent setProperty(String value) { 
             if (this.property == null)
               this.property = new CodeType();
             this.property.setValue(value);
@@ -908,16 +1217,16 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #op} (The kind of operation to perform as a part of the filter criteria.)
+         * @return {@link #op} (The kind of operation to perform as a part of the filter criteria.). This is the underlying object with id, value and extensions. The accessor "getOp" gives direct access to the value
          */
-        public Enumeration<FilterOperator> getOp() { 
+        public Enumeration<FilterOperator> getOpElement() { 
           return this.op;
         }
 
         /**
-         * @param value {@link #op} (The kind of operation to perform as a part of the filter criteria.)
+         * @param value {@link #op} (The kind of operation to perform as a part of the filter criteria.). This is the underlying object with id, value and extensions. The accessor "getOp" gives direct access to the value
          */
-        public ConceptSetFilterComponent setOp(Enumeration<FilterOperator> value) { 
+        public ConceptSetFilterComponent setOpElement(Enumeration<FilterOperator> value) { 
           this.op = value;
           return this;
         }
@@ -925,14 +1234,14 @@ public class ValueSet extends Resource {
         /**
          * @return The kind of operation to perform as a part of the filter criteria.
          */
-        public FilterOperator getOpSimple() { 
+        public FilterOperator getOp() { 
           return this.op == null ? null : this.op.getValue();
         }
 
         /**
          * @param value The kind of operation to perform as a part of the filter criteria.
          */
-        public ConceptSetFilterComponent setOpSimple(FilterOperator value) { 
+        public ConceptSetFilterComponent setOp(FilterOperator value) { 
             if (this.op == null)
               this.op = new Enumeration<FilterOperator>();
             this.op.setValue(value);
@@ -940,16 +1249,16 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #value} (The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value.)
+         * @return {@link #value} (The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value.). This is the underlying object with id, value and extensions. The accessor "getValue" gives direct access to the value
          */
-        public CodeType getValue() { 
+        public CodeType getValueElement() { 
           return this.value;
         }
 
         /**
-         * @param value {@link #value} (The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value.)
+         * @param value {@link #value} (The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value.). This is the underlying object with id, value and extensions. The accessor "getValue" gives direct access to the value
          */
-        public ConceptSetFilterComponent setValue(CodeType value) { 
+        public ConceptSetFilterComponent setValueElement(CodeType value) { 
           this.value = value;
           return this;
         }
@@ -957,14 +1266,14 @@ public class ValueSet extends Resource {
         /**
          * @return The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value.
          */
-        public String getValueSimple() { 
+        public String getValue() { 
           return this.value == null ? null : this.value.getValue();
         }
 
         /**
          * @param value The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value.
          */
-        public ConceptSetFilterComponent setValueSimple(String value) { 
+        public ConceptSetFilterComponent setValue(String value) { 
             if (this.value == null)
               this.value = new CodeType();
             this.value.setValue(value);
@@ -980,6 +1289,7 @@ public class ValueSet extends Resource {
 
       public ConceptSetFilterComponent copy() {
         ConceptSetFilterComponent dst = new ConceptSetFilterComponent();
+        copyValues(dst);
         dst.property = property == null ? null : property.copy();
         dst.op = op == null ? null : op.copy();
         dst.value = value == null ? null : value.copy();
@@ -995,22 +1305,22 @@ public class ValueSet extends Resource {
         protected Identifier identifier;
 
         /**
-         * Time valueset expansion happened.
+         * The time at which the expansion was produced by the expanding system.
          */
-        protected InstantType timestamp;
+        protected DateTimeType timestamp;
 
         /**
-         * Codes in the value set.
+         * The codes that are contained in the value set expansion.
          */
         protected List<ValueSetExpansionContainsComponent> contains = new ArrayList<ValueSetExpansionContainsComponent>();
 
-        private static final long serialVersionUID = 1886819543L;
+        private static final long serialVersionUID = 631584613L;
 
       public ValueSetExpansionComponent() {
         super();
       }
 
-      public ValueSetExpansionComponent(InstantType timestamp) {
+      public ValueSetExpansionComponent(DateTimeType timestamp) {
         super();
         this.timestamp = timestamp;
       }
@@ -1031,49 +1341,49 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #timestamp} (Time valueset expansion happened.)
+         * @return {@link #timestamp} (The time at which the expansion was produced by the expanding system.). This is the underlying object with id, value and extensions. The accessor "getTimestamp" gives direct access to the value
          */
-        public InstantType getTimestamp() { 
+        public DateTimeType getTimestampElement() { 
           return this.timestamp;
         }
 
         /**
-         * @param value {@link #timestamp} (Time valueset expansion happened.)
+         * @param value {@link #timestamp} (The time at which the expansion was produced by the expanding system.). This is the underlying object with id, value and extensions. The accessor "getTimestamp" gives direct access to the value
          */
-        public ValueSetExpansionComponent setTimestamp(InstantType value) { 
+        public ValueSetExpansionComponent setTimestampElement(DateTimeType value) { 
           this.timestamp = value;
           return this;
         }
 
         /**
-         * @return Time valueset expansion happened.
+         * @return The time at which the expansion was produced by the expanding system.
          */
-        public DateAndTime getTimestampSimple() { 
+        public DateAndTime getTimestamp() { 
           return this.timestamp == null ? null : this.timestamp.getValue();
         }
 
         /**
-         * @param value Time valueset expansion happened.
+         * @param value The time at which the expansion was produced by the expanding system.
          */
-        public ValueSetExpansionComponent setTimestampSimple(DateAndTime value) { 
+        public ValueSetExpansionComponent setTimestamp(DateAndTime value) { 
             if (this.timestamp == null)
-              this.timestamp = new InstantType();
+              this.timestamp = new DateTimeType();
             this.timestamp.setValue(value);
           return this;
         }
 
         /**
-         * @return {@link #contains} (Codes in the value set.)
+         * @return {@link #contains} (The codes that are contained in the value set expansion.)
          */
         public List<ValueSetExpansionContainsComponent> getContains() { 
           return this.contains;
         }
 
-    // syntactic sugar
         /**
-         * @return {@link #contains} (Codes in the value set.)
+         * @return {@link #contains} (The codes that are contained in the value set expansion.)
          */
-        public ValueSetExpansionContainsComponent addContains() { 
+    // syntactic sugar
+        public ValueSetExpansionContainsComponent addContains() { //3
           ValueSetExpansionContainsComponent t = new ValueSetExpansionContainsComponent();
           this.contains.add(t);
           return t;
@@ -1082,12 +1392,13 @@ public class ValueSet extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("identifier", "Identifier", "An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so.", 0, java.lang.Integer.MAX_VALUE, identifier));
-          childrenList.add(new Property("timestamp", "instant", "Time valueset expansion happened.", 0, java.lang.Integer.MAX_VALUE, timestamp));
-          childrenList.add(new Property("contains", "", "Codes in the value set.", 0, java.lang.Integer.MAX_VALUE, contains));
+          childrenList.add(new Property("timestamp", "dateTime", "The time at which the expansion was produced by the expanding system.", 0, java.lang.Integer.MAX_VALUE, timestamp));
+          childrenList.add(new Property("contains", "", "The codes that are contained in the value set expansion.", 0, java.lang.Integer.MAX_VALUE, contains));
         }
 
       public ValueSetExpansionComponent copy() {
         ValueSetExpansionComponent dst = new ValueSetExpansionComponent();
+        copyValues(dst);
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.timestamp = timestamp == null ? null : timestamp.copy();
         dst.contains = new ArrayList<ValueSetExpansionContainsComponent>();
@@ -1100,9 +1411,19 @@ public class ValueSet extends Resource {
 
     public static class ValueSetExpansionContainsComponent extends BackboneElement {
         /**
-         * System value for the code.
+         * The system in which the code for this item in the expansion is defined.
          */
         protected UriType system;
+
+        /**
+         * If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.
+         */
+        protected BooleanType abstract_;
+
+        /**
+         * The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.
+         */
+        protected StringType version;
 
         /**
          * Code - if blank, this is not a choosable code.
@@ -1119,39 +1440,39 @@ public class ValueSet extends Resource {
          */
         protected List<ValueSetExpansionContainsComponent> contains = new ArrayList<ValueSetExpansionContainsComponent>();
 
-        private static final long serialVersionUID = 1346310636L;
+        private static final long serialVersionUID = -965807666L;
 
       public ValueSetExpansionContainsComponent() {
         super();
       }
 
         /**
-         * @return {@link #system} (System value for the code.)
+         * @return {@link #system} (The system in which the code for this item in the expansion is defined.). This is the underlying object with id, value and extensions. The accessor "getSystem" gives direct access to the value
          */
-        public UriType getSystem() { 
+        public UriType getSystemElement() { 
           return this.system;
         }
 
         /**
-         * @param value {@link #system} (System value for the code.)
+         * @param value {@link #system} (The system in which the code for this item in the expansion is defined.). This is the underlying object with id, value and extensions. The accessor "getSystem" gives direct access to the value
          */
-        public ValueSetExpansionContainsComponent setSystem(UriType value) { 
+        public ValueSetExpansionContainsComponent setSystemElement(UriType value) { 
           this.system = value;
           return this;
         }
 
         /**
-         * @return System value for the code.
+         * @return The system in which the code for this item in the expansion is defined.
          */
-        public String getSystemSimple() { 
+        public String getSystem() { 
           return this.system == null ? null : this.system.getValue();
         }
 
         /**
-         * @param value System value for the code.
+         * @param value The system in which the code for this item in the expansion is defined.
          */
-        public ValueSetExpansionContainsComponent setSystemSimple(String value) { 
-          if (value == null)
+        public ValueSetExpansionContainsComponent setSystem(String value) { 
+          if (Utilities.noString(value))
             this.system = null;
           else {
             if (this.system == null)
@@ -1162,16 +1483,88 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #code} (Code - if blank, this is not a choosable code.)
+         * @return {@link #abstract_} (If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.). This is the underlying object with id, value and extensions. The accessor "getAbstract" gives direct access to the value
          */
-        public CodeType getCode() { 
+        public BooleanType getAbstractElement() { 
+          return this.abstract_;
+        }
+
+        /**
+         * @param value {@link #abstract_} (If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.). This is the underlying object with id, value and extensions. The accessor "getAbstract" gives direct access to the value
+         */
+        public ValueSetExpansionContainsComponent setAbstractElement(BooleanType value) { 
+          this.abstract_ = value;
+          return this;
+        }
+
+        /**
+         * @return If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.
+         */
+        public boolean getAbstract() { 
+          return this.abstract_ == null ? false : this.abstract_.getValue();
+        }
+
+        /**
+         * @param value If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.
+         */
+        public ValueSetExpansionContainsComponent setAbstract(boolean value) { 
+          if (value == false)
+            this.abstract_ = null;
+          else {
+            if (this.abstract_ == null)
+              this.abstract_ = new BooleanType();
+            this.abstract_.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #version} (The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
+         */
+        public StringType getVersionElement() { 
+          return this.version;
+        }
+
+        /**
+         * @param value {@link #version} (The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
+         */
+        public ValueSetExpansionContainsComponent setVersionElement(StringType value) { 
+          this.version = value;
+          return this;
+        }
+
+        /**
+         * @return The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.
+         */
+        public String getVersion() { 
+          return this.version == null ? null : this.version.getValue();
+        }
+
+        /**
+         * @param value The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.
+         */
+        public ValueSetExpansionContainsComponent setVersion(String value) { 
+          if (Utilities.noString(value))
+            this.version = null;
+          else {
+            if (this.version == null)
+              this.version = new StringType();
+            this.version.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #code} (Code - if blank, this is not a choosable code.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
+         */
+        public CodeType getCodeElement() { 
           return this.code;
         }
 
         /**
-         * @param value {@link #code} (Code - if blank, this is not a choosable code.)
+         * @param value {@link #code} (Code - if blank, this is not a choosable code.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public ValueSetExpansionContainsComponent setCode(CodeType value) { 
+        public ValueSetExpansionContainsComponent setCodeElement(CodeType value) { 
           this.code = value;
           return this;
         }
@@ -1179,15 +1572,15 @@ public class ValueSet extends Resource {
         /**
          * @return Code - if blank, this is not a choosable code.
          */
-        public String getCodeSimple() { 
+        public String getCode() { 
           return this.code == null ? null : this.code.getValue();
         }
 
         /**
          * @param value Code - if blank, this is not a choosable code.
          */
-        public ValueSetExpansionContainsComponent setCodeSimple(String value) { 
-          if (value == null)
+        public ValueSetExpansionContainsComponent setCode(String value) { 
+          if (Utilities.noString(value))
             this.code = null;
           else {
             if (this.code == null)
@@ -1198,16 +1591,16 @@ public class ValueSet extends Resource {
         }
 
         /**
-         * @return {@link #display} (User display for the concept.)
+         * @return {@link #display} (User display for the concept.). This is the underlying object with id, value and extensions. The accessor "getDisplay" gives direct access to the value
          */
-        public StringType getDisplay() { 
+        public StringType getDisplayElement() { 
           return this.display;
         }
 
         /**
-         * @param value {@link #display} (User display for the concept.)
+         * @param value {@link #display} (User display for the concept.). This is the underlying object with id, value and extensions. The accessor "getDisplay" gives direct access to the value
          */
-        public ValueSetExpansionContainsComponent setDisplay(StringType value) { 
+        public ValueSetExpansionContainsComponent setDisplayElement(StringType value) { 
           this.display = value;
           return this;
         }
@@ -1215,15 +1608,15 @@ public class ValueSet extends Resource {
         /**
          * @return User display for the concept.
          */
-        public String getDisplaySimple() { 
+        public String getDisplay() { 
           return this.display == null ? null : this.display.getValue();
         }
 
         /**
          * @param value User display for the concept.
          */
-        public ValueSetExpansionContainsComponent setDisplaySimple(String value) { 
-          if (value == null)
+        public ValueSetExpansionContainsComponent setDisplay(String value) { 
+          if (Utilities.noString(value))
             this.display = null;
           else {
             if (this.display == null)
@@ -1240,11 +1633,11 @@ public class ValueSet extends Resource {
           return this.contains;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #contains} (Codes contained in this concept.)
          */
-        public ValueSetExpansionContainsComponent addContains() { 
+    // syntactic sugar
+        public ValueSetExpansionContainsComponent addContains() { //3
           ValueSetExpansionContainsComponent t = new ValueSetExpansionContainsComponent();
           this.contains.add(t);
           return t;
@@ -1252,7 +1645,9 @@ public class ValueSet extends Resource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("system", "uri", "System value for the code.", 0, java.lang.Integer.MAX_VALUE, system));
+          childrenList.add(new Property("system", "uri", "The system in which the code for this item in the expansion is defined.", 0, java.lang.Integer.MAX_VALUE, system));
+          childrenList.add(new Property("abstract", "boolean", "If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.", 0, java.lang.Integer.MAX_VALUE, abstract_));
+          childrenList.add(new Property("version", "string", "The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.", 0, java.lang.Integer.MAX_VALUE, version));
           childrenList.add(new Property("code", "code", "Code - if blank, this is not a choosable code.", 0, java.lang.Integer.MAX_VALUE, code));
           childrenList.add(new Property("display", "string", "User display for the concept.", 0, java.lang.Integer.MAX_VALUE, display));
           childrenList.add(new Property("contains", "@ValueSet.expansion.contains", "Codes contained in this concept.", 0, java.lang.Integer.MAX_VALUE, contains));
@@ -1260,7 +1655,10 @@ public class ValueSet extends Resource {
 
       public ValueSetExpansionContainsComponent copy() {
         ValueSetExpansionContainsComponent dst = new ValueSetExpansionContainsComponent();
+        copyValues(dst);
         dst.system = system == null ? null : system.copy();
+        dst.abstract_ = abstract_ == null ? null : abstract_.copy();
+        dst.version = version == null ? null : version.copy();
         dst.code = code == null ? null : code.copy();
         dst.display = display == null ? null : display.copy();
         dst.contains = new ArrayList<ValueSetExpansionContainsComponent>();
@@ -1274,7 +1672,7 @@ public class ValueSet extends Resource {
     /**
      * The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).
      */
-    protected StringType identifier;
+    protected UriType identifier;
 
     /**
      * The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
@@ -1304,10 +1702,10 @@ public class ValueSet extends Resource {
     /**
      * Contacts of the publisher to assist a user in finding and communicating with the publisher.
      */
-    protected List<Contact> telecom = new ArrayList<Contact>();
+    protected List<ContactPoint> telecom = new ArrayList<ContactPoint>();
 
     /**
-     * A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of.
+     * A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.
      */
     protected StringType description;
 
@@ -1352,34 +1750,32 @@ public class ValueSet extends Resource {
     protected ValueSetComposeComponent compose;
 
     /**
-     * When value set is an expansion.
+     * A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.
      */
     protected ValueSetExpansionComponent expansion;
 
-    private static final long serialVersionUID = -1172765595L;
+    private static final long serialVersionUID = -1400499134L;
 
     public ValueSet() {
       super();
     }
 
-    public ValueSet(StringType name, StringType description, Enumeration<ValuesetStatus> status) {
+    public ValueSet(Enumeration<ValuesetStatus> status) {
       super();
-      this.name = name;
-      this.description = description;
       this.status = status;
     }
 
     /**
-     * @return {@link #identifier} (The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).)
+     * @return {@link #identifier} (The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).). This is the underlying object with id, value and extensions. The accessor "getIdentifier" gives direct access to the value
      */
-    public StringType getIdentifier() { 
+    public UriType getIdentifierElement() { 
       return this.identifier;
     }
 
     /**
-     * @param value {@link #identifier} (The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).)
+     * @param value {@link #identifier} (The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).). This is the underlying object with id, value and extensions. The accessor "getIdentifier" gives direct access to the value
      */
-    public ValueSet setIdentifier(StringType value) { 
+    public ValueSet setIdentifierElement(UriType value) { 
       this.identifier = value;
       return this;
     }
@@ -1387,35 +1783,35 @@ public class ValueSet extends Resource {
     /**
      * @return The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).
      */
-    public String getIdentifierSimple() { 
+    public String getIdentifier() { 
       return this.identifier == null ? null : this.identifier.getValue();
     }
 
     /**
      * @param value The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).
      */
-    public ValueSet setIdentifierSimple(String value) { 
-      if (value == null)
+    public ValueSet setIdentifier(String value) { 
+      if (Utilities.noString(value))
         this.identifier = null;
       else {
         if (this.identifier == null)
-          this.identifier = new StringType();
+          this.identifier = new UriType();
         this.identifier.setValue(value);
       }
       return this;
     }
 
     /**
-     * @return {@link #version} (The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.)
+     * @return {@link #version} (The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
      */
-    public StringType getVersion() { 
+    public StringType getVersionElement() { 
       return this.version;
     }
 
     /**
-     * @param value {@link #version} (The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.)
+     * @param value {@link #version} (The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
      */
-    public ValueSet setVersion(StringType value) { 
+    public ValueSet setVersionElement(StringType value) { 
       this.version = value;
       return this;
     }
@@ -1423,15 +1819,15 @@ public class ValueSet extends Resource {
     /**
      * @return The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
      */
-    public String getVersionSimple() { 
+    public String getVersion() { 
       return this.version == null ? null : this.version.getValue();
     }
 
     /**
      * @param value The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
      */
-    public ValueSet setVersionSimple(String value) { 
-      if (value == null)
+    public ValueSet setVersion(String value) { 
+      if (Utilities.noString(value))
         this.version = null;
       else {
         if (this.version == null)
@@ -1442,16 +1838,16 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #name} (A free text natural language name describing the value set.)
+     * @return {@link #name} (A free text natural language name describing the value set.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
      */
-    public StringType getName() { 
+    public StringType getNameElement() { 
       return this.name;
     }
 
     /**
-     * @param value {@link #name} (A free text natural language name describing the value set.)
+     * @param value {@link #name} (A free text natural language name describing the value set.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
      */
-    public ValueSet setName(StringType value) { 
+    public ValueSet setNameElement(StringType value) { 
       this.name = value;
       return this;
     }
@@ -1459,31 +1855,35 @@ public class ValueSet extends Resource {
     /**
      * @return A free text natural language name describing the value set.
      */
-    public String getNameSimple() { 
+    public String getName() { 
       return this.name == null ? null : this.name.getValue();
     }
 
     /**
      * @param value A free text natural language name describing the value set.
      */
-    public ValueSet setNameSimple(String value) { 
+    public ValueSet setName(String value) { 
+      if (Utilities.noString(value))
+        this.name = null;
+      else {
         if (this.name == null)
           this.name = new StringType();
         this.name.setValue(value);
+      }
       return this;
     }
 
     /**
-     * @return {@link #purpose} (This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.)
+     * @return {@link #purpose} (This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
      */
-    public StringType getPurpose() { 
+    public StringType getPurposeElement() { 
       return this.purpose;
     }
 
     /**
-     * @param value {@link #purpose} (This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.)
+     * @param value {@link #purpose} (This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
      */
-    public ValueSet setPurpose(StringType value) { 
+    public ValueSet setPurposeElement(StringType value) { 
       this.purpose = value;
       return this;
     }
@@ -1491,15 +1891,15 @@ public class ValueSet extends Resource {
     /**
      * @return This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
      */
-    public String getPurposeSimple() { 
+    public String getPurpose() { 
       return this.purpose == null ? null : this.purpose.getValue();
     }
 
     /**
      * @param value This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
      */
-    public ValueSet setPurposeSimple(String value) { 
-      if (value == null)
+    public ValueSet setPurpose(String value) { 
+      if (Utilities.noString(value))
         this.purpose = null;
       else {
         if (this.purpose == null)
@@ -1510,16 +1910,16 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #immutable} (If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.)
+     * @return {@link #immutable} (If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.). This is the underlying object with id, value and extensions. The accessor "getImmutable" gives direct access to the value
      */
-    public BooleanType getImmutable() { 
+    public BooleanType getImmutableElement() { 
       return this.immutable;
     }
 
     /**
-     * @param value {@link #immutable} (If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.)
+     * @param value {@link #immutable} (If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.). This is the underlying object with id, value and extensions. The accessor "getImmutable" gives direct access to the value
      */
-    public ValueSet setImmutable(BooleanType value) { 
+    public ValueSet setImmutableElement(BooleanType value) { 
       this.immutable = value;
       return this;
     }
@@ -1527,14 +1927,14 @@ public class ValueSet extends Resource {
     /**
      * @return If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
      */
-    public boolean getImmutableSimple() { 
+    public boolean getImmutable() { 
       return this.immutable == null ? false : this.immutable.getValue();
     }
 
     /**
      * @param value If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
      */
-    public ValueSet setImmutableSimple(boolean value) { 
+    public ValueSet setImmutable(boolean value) { 
       if (value == false)
         this.immutable = null;
       else {
@@ -1546,16 +1946,16 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #publisher} (The name of the individual or organization that published the value set.)
+     * @return {@link #publisher} (The name of the individual or organization that published the value set.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
      */
-    public StringType getPublisher() { 
+    public StringType getPublisherElement() { 
       return this.publisher;
     }
 
     /**
-     * @param value {@link #publisher} (The name of the individual or organization that published the value set.)
+     * @param value {@link #publisher} (The name of the individual or organization that published the value set.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
      */
-    public ValueSet setPublisher(StringType value) { 
+    public ValueSet setPublisherElement(StringType value) { 
       this.publisher = value;
       return this;
     }
@@ -1563,15 +1963,15 @@ public class ValueSet extends Resource {
     /**
      * @return The name of the individual or organization that published the value set.
      */
-    public String getPublisherSimple() { 
+    public String getPublisher() { 
       return this.publisher == null ? null : this.publisher.getValue();
     }
 
     /**
      * @param value The name of the individual or organization that published the value set.
      */
-    public ValueSet setPublisherSimple(String value) { 
-      if (value == null)
+    public ValueSet setPublisher(String value) { 
+      if (Utilities.noString(value))
         this.publisher = null;
       else {
         if (this.publisher == null)
@@ -1584,63 +1984,67 @@ public class ValueSet extends Resource {
     /**
      * @return {@link #telecom} (Contacts of the publisher to assist a user in finding and communicating with the publisher.)
      */
-    public List<Contact> getTelecom() { 
+    public List<ContactPoint> getTelecom() { 
       return this.telecom;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #telecom} (Contacts of the publisher to assist a user in finding and communicating with the publisher.)
      */
-    public Contact addTelecom() { 
-      Contact t = new Contact();
+    // syntactic sugar
+    public ContactPoint addTelecom() { //3
+      ContactPoint t = new ContactPoint();
       this.telecom.add(t);
       return t;
     }
 
     /**
-     * @return {@link #description} (A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of.)
+     * @return {@link #description} (A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
-    public StringType getDescription() { 
+    public StringType getDescriptionElement() { 
       return this.description;
     }
 
     /**
-     * @param value {@link #description} (A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of.)
+     * @param value {@link #description} (A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
-    public ValueSet setDescription(StringType value) { 
+    public ValueSet setDescriptionElement(StringType value) { 
       this.description = value;
       return this;
     }
 
     /**
-     * @return A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of.
+     * @return A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.
      */
-    public String getDescriptionSimple() { 
+    public String getDescription() { 
       return this.description == null ? null : this.description.getValue();
     }
 
     /**
-     * @param value A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of.
+     * @param value A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.
      */
-    public ValueSet setDescriptionSimple(String value) { 
+    public ValueSet setDescription(String value) { 
+      if (Utilities.noString(value))
+        this.description = null;
+      else {
         if (this.description == null)
           this.description = new StringType();
         this.description.setValue(value);
+      }
       return this;
     }
 
     /**
-     * @return {@link #copyright} (A copyright statement relating to the value set and/or its contents. These are generally legal restrictions on the use and publishing of the value set.)
+     * @return {@link #copyright} (A copyright statement relating to the value set and/or its contents. These are generally legal restrictions on the use and publishing of the value set.). This is the underlying object with id, value and extensions. The accessor "getCopyright" gives direct access to the value
      */
-    public StringType getCopyright() { 
+    public StringType getCopyrightElement() { 
       return this.copyright;
     }
 
     /**
-     * @param value {@link #copyright} (A copyright statement relating to the value set and/or its contents. These are generally legal restrictions on the use and publishing of the value set.)
+     * @param value {@link #copyright} (A copyright statement relating to the value set and/or its contents. These are generally legal restrictions on the use and publishing of the value set.). This is the underlying object with id, value and extensions. The accessor "getCopyright" gives direct access to the value
      */
-    public ValueSet setCopyright(StringType value) { 
+    public ValueSet setCopyrightElement(StringType value) { 
       this.copyright = value;
       return this;
     }
@@ -1648,15 +2052,15 @@ public class ValueSet extends Resource {
     /**
      * @return A copyright statement relating to the value set and/or its contents. These are generally legal restrictions on the use and publishing of the value set.
      */
-    public String getCopyrightSimple() { 
+    public String getCopyright() { 
       return this.copyright == null ? null : this.copyright.getValue();
     }
 
     /**
      * @param value A copyright statement relating to the value set and/or its contents. These are generally legal restrictions on the use and publishing of the value set.
      */
-    public ValueSet setCopyrightSimple(String value) { 
-      if (value == null)
+    public ValueSet setCopyright(String value) { 
+      if (Utilities.noString(value))
         this.copyright = null;
       else {
         if (this.copyright == null)
@@ -1667,16 +2071,16 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #status} (The status of the value set.)
+     * @return {@link #status} (The status of the value set.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<ValuesetStatus> getStatus() { 
+    public Enumeration<ValuesetStatus> getStatusElement() { 
       return this.status;
     }
 
     /**
-     * @param value {@link #status} (The status of the value set.)
+     * @param value {@link #status} (The status of the value set.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public ValueSet setStatus(Enumeration<ValuesetStatus> value) { 
+    public ValueSet setStatusElement(Enumeration<ValuesetStatus> value) { 
       this.status = value;
       return this;
     }
@@ -1684,14 +2088,14 @@ public class ValueSet extends Resource {
     /**
      * @return The status of the value set.
      */
-    public ValuesetStatus getStatusSimple() { 
+    public ValuesetStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value The status of the value set.
      */
-    public ValueSet setStatusSimple(ValuesetStatus value) { 
+    public ValueSet setStatus(ValuesetStatus value) { 
         if (this.status == null)
           this.status = new Enumeration<ValuesetStatus>();
         this.status.setValue(value);
@@ -1699,16 +2103,16 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #experimental} (This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.)
+     * @return {@link #experimental} (This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
      */
-    public BooleanType getExperimental() { 
+    public BooleanType getExperimentalElement() { 
       return this.experimental;
     }
 
     /**
-     * @param value {@link #experimental} (This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.)
+     * @param value {@link #experimental} (This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
      */
-    public ValueSet setExperimental(BooleanType value) { 
+    public ValueSet setExperimentalElement(BooleanType value) { 
       this.experimental = value;
       return this;
     }
@@ -1716,14 +2120,14 @@ public class ValueSet extends Resource {
     /**
      * @return This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    public boolean getExperimentalSimple() { 
+    public boolean getExperimental() { 
       return this.experimental == null ? false : this.experimental.getValue();
     }
 
     /**
      * @param value This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    public ValueSet setExperimentalSimple(boolean value) { 
+    public ValueSet setExperimental(boolean value) { 
       if (value == false)
         this.experimental = null;
       else {
@@ -1735,16 +2139,16 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #extensible} (Whether this is intended to be used with an extensible binding or not.)
+     * @return {@link #extensible} (Whether this is intended to be used with an extensible binding or not.). This is the underlying object with id, value and extensions. The accessor "getExtensible" gives direct access to the value
      */
-    public BooleanType getExtensible() { 
+    public BooleanType getExtensibleElement() { 
       return this.extensible;
     }
 
     /**
-     * @param value {@link #extensible} (Whether this is intended to be used with an extensible binding or not.)
+     * @param value {@link #extensible} (Whether this is intended to be used with an extensible binding or not.). This is the underlying object with id, value and extensions. The accessor "getExtensible" gives direct access to the value
      */
-    public ValueSet setExtensible(BooleanType value) { 
+    public ValueSet setExtensibleElement(BooleanType value) { 
       this.extensible = value;
       return this;
     }
@@ -1752,14 +2156,14 @@ public class ValueSet extends Resource {
     /**
      * @return Whether this is intended to be used with an extensible binding or not.
      */
-    public boolean getExtensibleSimple() { 
+    public boolean getExtensible() { 
       return this.extensible == null ? false : this.extensible.getValue();
     }
 
     /**
      * @param value Whether this is intended to be used with an extensible binding or not.
      */
-    public ValueSet setExtensibleSimple(boolean value) { 
+    public ValueSet setExtensible(boolean value) { 
       if (value == false)
         this.extensible = null;
       else {
@@ -1771,16 +2175,16 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #date} (The date that the value set status was last changed.)
+     * @return {@link #date} (The date that the value set status was last changed.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public DateTimeType getDate() { 
+    public DateTimeType getDateElement() { 
       return this.date;
     }
 
     /**
-     * @param value {@link #date} (The date that the value set status was last changed.)
+     * @param value {@link #date} (The date that the value set status was last changed.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public ValueSet setDate(DateTimeType value) { 
+    public ValueSet setDateElement(DateTimeType value) { 
       this.date = value;
       return this;
     }
@@ -1788,14 +2192,14 @@ public class ValueSet extends Resource {
     /**
      * @return The date that the value set status was last changed.
      */
-    public DateAndTime getDateSimple() { 
+    public DateAndTime getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
      * @param value The date that the value set status was last changed.
      */
-    public ValueSet setDateSimple(DateAndTime value) { 
+    public ValueSet setDate(DateAndTime value) { 
       if (value == null)
         this.date = null;
       else {
@@ -1807,16 +2211,16 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #stableDate} (If a Stability Date is expanded by evaluating the Content Logical Definition using the current version of all referenced code system(s) and value sets as of the Stability Date.)
+     * @return {@link #stableDate} (If a Stability Date is expanded by evaluating the Content Logical Definition using the current version of all referenced code system(s) and value sets as of the Stability Date.). This is the underlying object with id, value and extensions. The accessor "getStableDate" gives direct access to the value
      */
-    public DateType getStableDate() { 
+    public DateType getStableDateElement() { 
       return this.stableDate;
     }
 
     /**
-     * @param value {@link #stableDate} (If a Stability Date is expanded by evaluating the Content Logical Definition using the current version of all referenced code system(s) and value sets as of the Stability Date.)
+     * @param value {@link #stableDate} (If a Stability Date is expanded by evaluating the Content Logical Definition using the current version of all referenced code system(s) and value sets as of the Stability Date.). This is the underlying object with id, value and extensions. The accessor "getStableDate" gives direct access to the value
      */
-    public ValueSet setStableDate(DateType value) { 
+    public ValueSet setStableDateElement(DateType value) { 
       this.stableDate = value;
       return this;
     }
@@ -1824,14 +2228,14 @@ public class ValueSet extends Resource {
     /**
      * @return If a Stability Date is expanded by evaluating the Content Logical Definition using the current version of all referenced code system(s) and value sets as of the Stability Date.
      */
-    public DateAndTime getStableDateSimple() { 
+    public DateAndTime getStableDate() { 
       return this.stableDate == null ? null : this.stableDate.getValue();
     }
 
     /**
      * @param value If a Stability Date is expanded by evaluating the Content Logical Definition using the current version of all referenced code system(s) and value sets as of the Stability Date.
      */
-    public ValueSet setStableDateSimple(DateAndTime value) { 
+    public ValueSet setStableDate(DateAndTime value) { 
       if (value == null)
         this.stableDate = null;
       else {
@@ -1873,14 +2277,14 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * @return {@link #expansion} (When value set is an expansion.)
+     * @return {@link #expansion} (A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.)
      */
     public ValueSetExpansionComponent getExpansion() { 
       return this.expansion;
     }
 
     /**
-     * @param value {@link #expansion} (When value set is an expansion.)
+     * @param value {@link #expansion} (A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.)
      */
     public ValueSet setExpansion(ValueSetExpansionComponent value) { 
       this.expansion = value;
@@ -1889,14 +2293,14 @@ public class ValueSet extends Resource {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("identifier", "string", "The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).", 0, java.lang.Integer.MAX_VALUE, identifier));
+        childrenList.add(new Property("identifier", "uri", "The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("version", "string", "The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.", 0, java.lang.Integer.MAX_VALUE, version));
         childrenList.add(new Property("name", "string", "A free text natural language name describing the value set.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("purpose", "string", "This should describe 'the semantic space' to be included in the value set. This can also describe the approach taken to build the value set.", 0, java.lang.Integer.MAX_VALUE, purpose));
         childrenList.add(new Property("immutable", "boolean", "If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.", 0, java.lang.Integer.MAX_VALUE, immutable));
         childrenList.add(new Property("publisher", "string", "The name of the individual or organization that published the value set.", 0, java.lang.Integer.MAX_VALUE, publisher));
-        childrenList.add(new Property("telecom", "Contact", "Contacts of the publisher to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, telecom));
-        childrenList.add(new Property("description", "string", "A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of.", 0, java.lang.Integer.MAX_VALUE, description));
+        childrenList.add(new Property("telecom", "ContactPoint", "Contacts of the publisher to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, telecom));
+        childrenList.add(new Property("description", "string", "A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.", 0, java.lang.Integer.MAX_VALUE, description));
         childrenList.add(new Property("copyright", "string", "A copyright statement relating to the value set and/or its contents. These are generally legal restrictions on the use and publishing of the value set.", 0, java.lang.Integer.MAX_VALUE, copyright));
         childrenList.add(new Property("status", "code", "The status of the value set.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("experimental", "boolean", "This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.", 0, java.lang.Integer.MAX_VALUE, experimental));
@@ -1905,19 +2309,20 @@ public class ValueSet extends Resource {
         childrenList.add(new Property("stableDate", "date", "If a Stability Date is expanded by evaluating the Content Logical Definition using the current version of all referenced code system(s) and value sets as of the Stability Date.", 0, java.lang.Integer.MAX_VALUE, stableDate));
         childrenList.add(new Property("define", "", "When value set defines its own codes.", 0, java.lang.Integer.MAX_VALUE, define));
         childrenList.add(new Property("compose", "", "When value set includes codes from elsewhere.", 0, java.lang.Integer.MAX_VALUE, compose));
-        childrenList.add(new Property("expansion", "", "When value set is an expansion.", 0, java.lang.Integer.MAX_VALUE, expansion));
+        childrenList.add(new Property("expansion", "", "A value set can also be 'expanded', where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.", 0, java.lang.Integer.MAX_VALUE, expansion));
       }
 
       public ValueSet copy() {
         ValueSet dst = new ValueSet();
+        copyValues(dst);
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.version = version == null ? null : version.copy();
         dst.name = name == null ? null : name.copy();
         dst.purpose = purpose == null ? null : purpose.copy();
         dst.immutable = immutable == null ? null : immutable.copy();
         dst.publisher = publisher == null ? null : publisher.copy();
-        dst.telecom = new ArrayList<Contact>();
-        for (Contact i : telecom)
+        dst.telecom = new ArrayList<ContactPoint>();
+        for (ContactPoint i : telecom)
           dst.telecom.add(i.copy());
         dst.description = description == null ? null : description.copy();
         dst.copyright = copyright == null ? null : copyright.copy();

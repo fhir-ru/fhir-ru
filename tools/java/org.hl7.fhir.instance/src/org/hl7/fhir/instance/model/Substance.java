@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,14 +29,15 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A homogeneous material with a definite composition.
  */
-public class Substance extends Resource {
+public class Substance extends DomainResource {
 
     public static class SubstanceInstanceComponent extends BackboneElement {
         /**
@@ -76,16 +77,16 @@ public class Substance extends Resource {
         }
 
         /**
-         * @return {@link #expiry} (When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.)
+         * @return {@link #expiry} (When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.). This is the underlying object with id, value and extensions. The accessor "getExpiry" gives direct access to the value
          */
-        public DateTimeType getExpiry() { 
+        public DateTimeType getExpiryElement() { 
           return this.expiry;
         }
 
         /**
-         * @param value {@link #expiry} (When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.)
+         * @param value {@link #expiry} (When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.). This is the underlying object with id, value and extensions. The accessor "getExpiry" gives direct access to the value
          */
-        public SubstanceInstanceComponent setExpiry(DateTimeType value) { 
+        public SubstanceInstanceComponent setExpiryElement(DateTimeType value) { 
           this.expiry = value;
           return this;
         }
@@ -93,14 +94,14 @@ public class Substance extends Resource {
         /**
          * @return When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.
          */
-        public DateAndTime getExpirySimple() { 
+        public DateAndTime getExpiry() { 
           return this.expiry == null ? null : this.expiry.getValue();
         }
 
         /**
          * @param value When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.
          */
-        public SubstanceInstanceComponent setExpirySimple(DateAndTime value) { 
+        public SubstanceInstanceComponent setExpiry(DateAndTime value) { 
           if (value == null)
             this.expiry = null;
           else {
@@ -135,6 +136,7 @@ public class Substance extends Resource {
 
       public SubstanceInstanceComponent copy() {
         SubstanceInstanceComponent dst = new SubstanceInstanceComponent();
+        copyValues(dst);
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.expiry = expiry == null ? null : expiry.copy();
         dst.quantity = quantity == null ? null : quantity.copy();
@@ -152,20 +154,20 @@ public class Substance extends Resource {
         /**
          * Another substance that is a component of this substance.
          */
-        protected ResourceReference substance;
+        protected Reference substance;
 
         /**
          * The actual object that is the target of the reference (Another substance that is a component of this substance.)
          */
         protected Substance substanceTarget;
 
-        private static final long serialVersionUID = 1192860668L;
+        private static final long serialVersionUID = -1783242034L;
 
       public SubstanceIngredientComponent() {
         super();
       }
 
-      public SubstanceIngredientComponent(ResourceReference substance) {
+      public SubstanceIngredientComponent(Reference substance) {
         super();
         this.substance = substance;
       }
@@ -188,27 +190,27 @@ public class Substance extends Resource {
         /**
          * @return {@link #substance} (Another substance that is a component of this substance.)
          */
-        public ResourceReference getSubstance() { 
+        public Reference getSubstance() { 
           return this.substance;
         }
 
         /**
          * @param value {@link #substance} (Another substance that is a component of this substance.)
          */
-        public SubstanceIngredientComponent setSubstance(ResourceReference value) { 
+        public SubstanceIngredientComponent setSubstance(Reference value) { 
           this.substance = value;
           return this;
         }
 
         /**
-         * @return {@link #substance} (The actual object that is the target of the reference. Another substance that is a component of this substance.)
+         * @return {@link #substance} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Another substance that is a component of this substance.)
          */
         public Substance getSubstanceTarget() { 
           return this.substanceTarget;
         }
 
         /**
-         * @param value {@link #substance} (The actual object that is the target of the reference. Another substance that is a component of this substance.)
+         * @param value {@link #substance} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Another substance that is a component of this substance.)
          */
         public SubstanceIngredientComponent setSubstanceTarget(Substance value) { 
           this.substanceTarget = value;
@@ -218,11 +220,12 @@ public class Substance extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("quantity", "Ratio", "The amount of the ingredient in the substance - a concentration ratio.", 0, java.lang.Integer.MAX_VALUE, quantity));
-          childrenList.add(new Property("substance", "Resource(Substance)", "Another substance that is a component of this substance.", 0, java.lang.Integer.MAX_VALUE, substance));
+          childrenList.add(new Property("substance", "Reference(Substance)", "Another substance that is a component of this substance.", 0, java.lang.Integer.MAX_VALUE, substance));
         }
 
       public SubstanceIngredientComponent copy() {
         SubstanceIngredientComponent dst = new SubstanceIngredientComponent();
+        copyValues(dst);
         dst.quantity = quantity == null ? null : quantity.copy();
         dst.substance = substance == null ? null : substance.copy();
         return dst;
@@ -277,16 +280,16 @@ public class Substance extends Resource {
     }
 
     /**
-     * @return {@link #description} (A description of the substance - its appearance, handling requirements, and other usage notes.)
+     * @return {@link #description} (A description of the substance - its appearance, handling requirements, and other usage notes.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
-    public StringType getDescription() { 
+    public StringType getDescriptionElement() { 
       return this.description;
     }
 
     /**
-     * @param value {@link #description} (A description of the substance - its appearance, handling requirements, and other usage notes.)
+     * @param value {@link #description} (A description of the substance - its appearance, handling requirements, and other usage notes.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
-    public Substance setDescription(StringType value) { 
+    public Substance setDescriptionElement(StringType value) { 
       this.description = value;
       return this;
     }
@@ -294,15 +297,15 @@ public class Substance extends Resource {
     /**
      * @return A description of the substance - its appearance, handling requirements, and other usage notes.
      */
-    public String getDescriptionSimple() { 
+    public String getDescription() { 
       return this.description == null ? null : this.description.getValue();
     }
 
     /**
      * @param value A description of the substance - its appearance, handling requirements, and other usage notes.
      */
-    public Substance setDescriptionSimple(String value) { 
-      if (value == null)
+    public Substance setDescription(String value) { 
+      if (Utilities.noString(value))
         this.description = null;
       else {
         if (this.description == null)
@@ -334,11 +337,11 @@ public class Substance extends Resource {
       return this.ingredient;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #ingredient} (A substance can be composed of other substances.)
      */
-    public SubstanceIngredientComponent addIngredient() { 
+    // syntactic sugar
+    public SubstanceIngredientComponent addIngredient() { //3
       SubstanceIngredientComponent t = new SubstanceIngredientComponent();
       this.ingredient.add(t);
       return t;
@@ -354,6 +357,7 @@ public class Substance extends Resource {
 
       public Substance copy() {
         Substance dst = new Substance();
+        copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.description = description == null ? null : description.copy();
         dst.instance = instance == null ? null : instance.copy();

@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,41 +29,60 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A human-readable formatted text, including images.
  */
 public class Narrative extends Element {
 
     public enum NarrativeStatus {
-        generated, // The contents of the narrative are entirely generated from the structured data in the resource.
-        extensions, // The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions.
-        additional, // The contents of the narrative contain additional information not found in the structured data.
-        empty, // the contents of the narrative are some equivalent of "No human-readable text provided for this resource".
-        Null; // added to help the parsers
+        GENERATED, // The contents of the narrative are entirely generated from the structured data in the resource.
+        EXTENSIONS, // The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions.
+        ADDITIONAL, // The contents of the narrative contain additional information not found in the structured data.
+        EMPTY, // the contents of the narrative are some equivalent of "No human-readable text provided for this resource".
+        NULL; // added to help the parsers
         public static NarrativeStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("generated".equals(codeString))
-          return generated;
+          return GENERATED;
         if ("extensions".equals(codeString))
-          return extensions;
+          return EXTENSIONS;
         if ("additional".equals(codeString))
-          return additional;
+          return ADDITIONAL;
         if ("empty".equals(codeString))
-          return empty;
+          return EMPTY;
         throw new Exception("Unknown NarrativeStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case generated: return "generated";
-            case extensions: return "extensions";
-            case additional: return "additional";
-            case empty: return "empty";
+            case GENERATED: return "generated";
+            case EXTENSIONS: return "extensions";
+            case ADDITIONAL: return "additional";
+            case EMPTY: return "empty";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case GENERATED: return "The contents of the narrative are entirely generated from the structured data in the resource.";
+            case EXTENSIONS: return "The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions.";
+            case ADDITIONAL: return "The contents of the narrative contain additional information not found in the structured data.";
+            case EMPTY: return "the contents of the narrative are some equivalent of 'No human-readable text provided for this resource'.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case GENERATED: return "generated";
+            case EXTENSIONS: return "extensions";
+            case ADDITIONAL: return "additional";
+            case EMPTY: return "empty";
             default: return "?";
           }
         }
@@ -75,23 +94,23 @@ public class Narrative extends Element {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("generated".equals(codeString))
-          return NarrativeStatus.generated;
+          return NarrativeStatus.GENERATED;
         if ("extensions".equals(codeString))
-          return NarrativeStatus.extensions;
+          return NarrativeStatus.EXTENSIONS;
         if ("additional".equals(codeString))
-          return NarrativeStatus.additional;
+          return NarrativeStatus.ADDITIONAL;
         if ("empty".equals(codeString))
-          return NarrativeStatus.empty;
+          return NarrativeStatus.EMPTY;
         throw new Exception("Unknown NarrativeStatus code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == NarrativeStatus.generated)
+      if (code == NarrativeStatus.GENERATED)
         return "generated";
-      if (code == NarrativeStatus.extensions)
+      if (code == NarrativeStatus.EXTENSIONS)
         return "extensions";
-      if (code == NarrativeStatus.additional)
+      if (code == NarrativeStatus.ADDITIONAL)
         return "additional";
-      if (code == NarrativeStatus.empty)
+      if (code == NarrativeStatus.EMPTY)
         return "empty";
       return "?";
       }
@@ -120,16 +139,16 @@ public class Narrative extends Element {
     }
 
     /**
-     * @return {@link #status} (The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.)
+     * @return {@link #status} (The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<NarrativeStatus> getStatus() { 
+    public Enumeration<NarrativeStatus> getStatusElement() { 
       return this.status;
     }
 
     /**
-     * @param value {@link #status} (The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.)
+     * @param value {@link #status} (The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Narrative setStatus(Enumeration<NarrativeStatus> value) { 
+    public Narrative setStatusElement(Enumeration<NarrativeStatus> value) { 
       this.status = value;
       return this;
     }
@@ -137,14 +156,14 @@ public class Narrative extends Element {
     /**
      * @return The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.
      */
-    public NarrativeStatus getStatusSimple() { 
+    public NarrativeStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.
      */
-    public Narrative setStatusSimple(NarrativeStatus value) { 
+    public Narrative setStatus(NarrativeStatus value) { 
         if (this.status == null)
           this.status = new Enumeration<NarrativeStatus>();
         this.status.setValue(value);
@@ -173,6 +192,7 @@ public class Narrative extends Element {
 
       public Narrative copy() {
         Narrative dst = new Narrative();
+        copyValues(dst);
         dst.status = status == null ? null : status.copy();
         dst.div = div == null ? null : div.copy();
         return dst;

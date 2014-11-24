@@ -19,6 +19,7 @@ Range Basis
     <value value="http://hl7.org/fhir"/>
   </telecom>
   <description value="This value set defines a set of codes that can be used to indicate the meaning/use of a reference range"/>
+  <copyright value="This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement"/>  
   <status value="draft"/>
   <define>
     <system value="http://hl7.org/fhir/referencerange-meaning"/>
@@ -93,9 +94,15 @@ Range Basis
     <import value="http://hl7.org/fhir/v3/vs/Race"/>
     <include>
       <system value="http://snomed.info/sct"/>
-      <code value="248153007"/> <!-- Male (finding) -->
-      <code value="248152002"/> <!-- Female (finding) -->
-      <code value="77386006"/> <!-- Patient currently pregnant (finding) -->
+      <concept>
+        <code value="248153007"/> <!-- Male (finding) -->
+      </concept>
+      <concept>
+        <code value="248152002"/> <!-- Female (finding) -->
+      </concept>
+      <concept>
+        <code value="77386006"/> <!-- Patient currently pregnant (finding) -->
+      </concept>
     </include>
   </compose>
 </ValueSet>

@@ -1,6 +1,6 @@
 package org.hl7.fhir.tools.implementations.java;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -32,6 +32,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -46,9 +47,10 @@ import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
+import org.hl7.fhir.tools.implementations.java.JavaParserJsonGenerator.JavaGenClass;
 
 public class JavaComposerJsonGenerator extends OutputStreamWriter {
-  public enum JavaGenClass { Structure, Type, Resource, Constraint, Backbone }
+  public enum JavaGenClass { Structure, Type, Resource, AbstractResource, Constraint, Backbone }
 
   private Definitions definitions;
   private Map<ElementDefn, String> typeNames = new HashMap<ElementDefn, String>();
@@ -64,6 +66,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
   private StringBuilder regn = new StringBuilder();
   private StringBuilder regtn = new StringBuilder();
   private StringBuilder regtp = new StringBuilder();
+  private StringBuilder regti = new StringBuilder();
 //  private StringBuilder regn = new StringBuilder();
   private String genparam;
 
@@ -91,23 +94,26 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     
     for (ElementDefn n : definitions.getTypes().values()) {
       generate(n, JavaGenClass.Type);
-      if (n.getName().equals("ResourceReference"))
-        regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\"Resource\", ("+n.getName()+") type);\r\n");
-      else
-        regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+      regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+      regti.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"Inner(("+n.getName()+") type);\r\n");
     }
 
     for (ProfiledType n : definitions.getConstraints().values()) {
       generateConstraint(n);
       regtp.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+      regti.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"Inner(("+n.getName()+") type);\r\n");
     }
     for (ElementDefn n : definitions.getStructures().values()) {
       generate(n, JavaGenClass.Structure);
       regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+      regti.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"Inner(("+n.getName()+") type);\r\n");
     }
     
-    genResource();
-
+    for (String s : definitions.getBaseResources().keySet()) {
+      ResourceDefn n = definitions.getBaseResources().get(s);
+      generate(n.getRoot(), JavaGenClass.AbstractResource);
+    }
+    
     for (String s : definitions.sortedResourceNames()) {
       ResourceDefn n = definitions.getResources().get(s);
       generate(n.getRoot(), JavaGenClass.Resource);
@@ -133,44 +139,26 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     write("  private void composeElement(Element element) throws Exception {\r\n");
     write("    if (element.getXmlId() != null)\r\n");
     write("      prop(\"id\", element.getXmlId());\r\n");
-    write("    if (element.getExtensions().size() > 0) {\r\n");
-    write("      openArray(\"extension\");\r\n");
-    write("      for (Extension ex : element.getExtensions())\r\n");
-    write("        composeExtension(null, ex);\r\n");
-    write("      closeArray();\r\n");
+    write("      if (!element.getXmlComments().isEmpty() && !canonical) {\r\n");
+    write("        openArray(\"fhir_comments\");\r\n");
+    write("        for (String s : element.getXmlComments())\r\n");
+    write("          prop(null,  s);\r\n");
+    write("         closeArray();\r\n");
+    write("      }\r\n");
+    write("    if (element.getExtension().size() > 0) {\r\n");
+    write("      composeExtensions(element.getExtension());\r\n");
     write("    }\r\n");
     write("  }\r\n");
     write("\r\n");
     write("  private void composeBackbone(BackboneElement element) throws Exception {\r\n");
     write("    composeElement(element);\r\n");
-    write("    if (element.getModifierExtensions().size() > 0) {\r\n");
-    write("      openArray(\"modifierExtension\");\r\n");
-    write("      for (Extension ex : element.getModifierExtensions())\r\n");
-    write("        composeExtension(null, ex);\r\n");
-    write("      closeArray();\r\n");
+    write("    if (element.getModifierExtension().size() > 0) {\r\n");
+    write("      openObject(\"modifier\");\r\n");
+    write("      composeExtensions(element.getModifierExtension());\r\n");
+    write("      close();\r\n");
     write("    }\r\n");
     write("  }\r\n");
     write("\r\n");
-  }
-
-  private void genResource() throws Exception {    
-    write("  private void composeResourceElements(Resource element) throws Exception {\r\n");
-    write("    composeBackbone(element);\r\n");
-    write("    if (element.getText() != null)\r\n");
-    write("      composeNarrative(\"text\", element.getText());\r\n");
-    write("    if (element.getContained().size() > 0) {\r\n");
-    write("      openArray(\"contained\");\r\n");
-    write("      for (Resource r : element.getContained()) {\r\n");
-    write("        if (r.getXmlId() == null)\r\n");
-    write("          throw new Exception(\"Contained Resource has no id - one must be assigned\"); // we can't assign one here - what points to it?\r\n");
-    write("        open(null);\r\n");
-    write("        composeResource(r);\r\n");
-    write("        close();\r\n");
-    write("      }\r\n");
-    write("      closeArray();\r\n");
-    write("    }\r\n");
-    write("  }\r\n");
-    write("\r\n");		
   }
 
   private String javaClassName(String name) {
@@ -208,7 +196,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     write("  }    \r\n");
     write("\r\n");
     write("  private <E extends Enum<E>> void composeEnumerationExtras(String name, Enumeration<E> value, EnumFactory e, boolean inArray) throws Exception {\r\n");
-    write("    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions())) {\r\n");
+    write("    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || makeComments(value))) {\r\n");
     write("      open(inArray ? null : \"_\"+name);\r\n");
     write("      composeElement(value);\r\n");
     write("      close();\r\n");
@@ -252,7 +240,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     write("\r\n");
     
     write("  private void compose"+upFirst(dc.getCode())+"Extras(String name, "+tn+" value, boolean inArray) throws Exception {\r\n");
-    write("    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions())) {\r\n");
+    write("    if (value != null && (!Utilities.noString(value.getXmlId()) || value.hasExtensions() || makeComments(value))) {\r\n");
     write("      open(inArray ? null : \"_\"+name);\r\n");
     write("      composeElement(value);\r\n");
     write("      close();\r\n");
@@ -276,10 +264,13 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     }
     context = nn;
 
-    genInner(n, clss);
+    if (clss == JavaGenClass.AbstractResource)
+      genInnerAbstract(n);
+    else
+      genInner(n, clss);
     
     for (ElementDefn e : strucs) {
-      genInner(e, clss == JavaGenClass.Resource ? JavaGenClass.Backbone : JavaGenClass.Structure);
+      genInner(e, (clss == JavaGenClass.Resource || clss == JavaGenClass.AbstractResource) ? JavaGenClass.Backbone : JavaGenClass.Structure);
     }
 
   }
@@ -309,23 +300,37 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
   private void genInner(ElementDefn n, JavaGenClass clss) throws IOException, Exception {
     String tn = typeNames.containsKey(n) ? typeNames.get(n) : javaClassName(n.getName());
     
-    write("  private void compose"+upFirst(tn).replace(".", "").replace("<", "_").replace(">", "")+"(String name, "+tn+" element) throws Exception {\r\n");
+    write("  private void compose"+upFirst(tn).replace(".", "")+"(String name, "+tn+" element) throws Exception {\r\n");
     write("    if (element != null) {\r\n");
     if (clss == JavaGenClass.Resource) 
       write("      prop(\"resourceType\", name);\r\n");
     else
       write("      open(name);\r\n");
+    write("      compose"+upFirst(tn).replace(".", "")+"Inner(element);\r\n");
+    if (clss != JavaGenClass.Resource)  
+      write("      close();\r\n");
+    write("    }\r\n");    
+    write("  }\r\n\r\n");    
+    write("  private void compose"+upFirst(tn).replace(".", "")+"Inner("+tn+" element) throws Exception {\r\n");
     if (clss == JavaGenClass.Resource) 
-      write("      composeResourceElements(element);\r\n");
+      write("      compose"+n.typeCode()+"Elements(element);\r\n");
     else if (clss == JavaGenClass.Backbone) 
       write("      composeBackbone(element);\r\n");
     else
       write("      composeElement(element);\r\n");
     for (ElementDefn e : n.getElements()) 
       genElement(n, e, clss);
-    if (clss != JavaGenClass.Resource) 
-    write("      close();\r\n");
-    write("    }\r\n");    
+    write("  }\r\n\r\n");    
+  }
+
+  private void genInnerAbstract(ElementDefn n) throws IOException, Exception {
+    String tn = typeNames.containsKey(n) ? typeNames.get(n) : javaClassName(n.getName());
+    
+    write("  private void compose"+upFirst(tn).replace(".", "")+"Elements("+tn+" element) throws Exception {\r\n");
+    if (!n.typeCode().equals("Any")) 
+      write("      compose"+n.typeCode()+"Elements(element);\r\n");
+    for (ElementDefn e : n.getElements()) 
+      genElement(n, e, JavaGenClass.Backbone);
     write("  }\r\n\r\n");    
   }
 
@@ -343,6 +348,17 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
       String en = name.endsWith("[x]") & !name.equals("[x]") ? name.replace("[x]", "") : "value";
       String pfx = name.endsWith("[x]") ? name.replace("[x]", "") : "";
       write("      composeType(\""+pfx+"\", element.get"+upFirst(en)+"());\r\n");
+    } else if (name.equals("extension")) {
+    // special case handling for extensions in json
+      write("      if (element.getExtension().size() > 0) {\r\n");
+      write("        composeExtensions(element.getExtension());\r\n");
+      write("      };\r\n");
+    } else if (name.equals("modifierExtension")) {
+      write("      if (element.getModifierExtension().size() > 0) {\r\n");
+      write("        openObject(\"modifier\");\r\n");
+      write("        composeExtensions(element.getModifierExtension());\r\n");
+      write("        close();\r\n");
+      write("      };\r\n");      
     } else {
       String comp = null;
       String en = null;
@@ -363,9 +379,9 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
           comp = "composeCode";
         } else if (tn.equals("instant"))
           tn = "Instant";
-        if (tn.contains("Resource(")) {
-          comp = "composeResourceReference";
-          tn = "ResourceReference";
+        if (tn.contains("Reference(")) {
+          comp = "composeReference";
+          tn = "Reference";
         } else if (tn.contains("("))
           comp = "compose"+PrepGenericName(tn);
         else if (tn.startsWith(context) && !tn.equals(context)) {
@@ -386,9 +402,9 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
         write("      };\r\n");
       } else if (e.unbounded()) {
         tn = typeName(root, e, true);
-        if (tn.contains("Resource(")) {
-          comp = "composeResourceReference";
-          tn = "ResourceReference";
+        if (tn.contains("Reference(")) {
+          comp = "composeReference";
+          tn = "Reference";
         }
         write("      if (element.get"+upFirst(name)+"().size() > 0) {\r\n");
   	    if (en == null) {
@@ -397,7 +413,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
           if (definitions.hasPrimitiveType(tn))
             tn = upFirst(tn)+"Type";
 
-          if (isPrimitive(e) || "idref".equals(e.typeCode())) {
+          if (isPrimitive(e)) {
             write("        openArray(\""+name+"\");\r\n");
             write("        for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
             write("          "+comp+"Core(null, e, true);\r\n");
@@ -408,6 +424,15 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
             write("            "+comp+"Extras(null, e, true);\r\n");
             write("          closeArray();\r\n");
             write("        }\r\n");
+          } else if (e.typeCode().equals("Resource")){
+            write("        openArray(\""+name+"\");\r\n");
+            write("        for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) {\r\n");
+            write("          open(null);\r\n");
+            write("          "+comp+"(e);\r\n");
+            write("          close();\r\n");
+            write("        }\r\n");
+            write("        closeArray();\r\n");
+            
           } else {
             write("        openArray(\""+name+"\");\r\n");
             write("        for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
@@ -428,21 +453,27 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
   	    }
         write("      };\r\n");
       } else if (en != null) {
-        write("      if (element.get"+upFirst(name)+"() != null) {\r\n");
-        write("        composeEnumerationCore(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"(), new "+context+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory(), false);\r\n");
-        write("        composeEnumerationExtras(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"(), new "+context+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory(), false);\r\n");
+        write("      if (element.get"+upFirst(getElementName(name, false))+"Element() != null) {\r\n");
+        write("        composeEnumerationCore(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new "+context+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory(), false);\r\n");
+        write("        composeEnumerationExtras(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new "+context+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory(), false);\r\n");
         write("      }\r\n");
         //write("        composeString(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"().toCode());\r\n");        
+      } else if (e.typeCode().equals("Resource")){
+        write("        if (element.get"+upFirst(getElementName(name, false))+"() != null) {\r\n");
+        write("          open(\""+name+"\");\r\n");
+        write("          "+comp+"(element.get"+upFirst(getElementName(name, false))+"());\r\n");
+        write("          close();\r\n");
+        write("        }\r\n");
       } else if (isPrimitive(e)) {
-        write("      "+comp+"Core(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"(), false);\r\n");
-        write("      "+comp+"Extras(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"(), false);\r\n");
+        write("      "+comp+"Core(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), false);\r\n");
+        write("      "+comp+"Extras(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), false);\r\n");
       } else  
         write("      "+comp+"(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"());\r\n");
       }
     }
 
   private boolean isPrimitive(ElementDefn e) {
-    return definitions.hasPrimitiveType(e.typeCode()) || e.typeCode().equals("idref");
+    return definitions.hasPrimitiveType(e.typeCode());
   }
 
 
@@ -494,11 +525,6 @@ private String leaf(String tn) {
 //        return "Date";
 //      else 
 //        return "String";
-////      if (t.equals("idref"))
-////        return "String";
-////      else if (t.equals("string"))
-////        return "StringType";
-////      else
 ////        return upFirst(t);
 //    }  else if (t.equals("xml:lang"))
 //        return formal ? "string" : "Code";
@@ -525,7 +551,7 @@ private String leaf(String tn) {
     write("    else\r\n");
     write("      throw new Exception(\"Unhanded resource type \"+resource.getClass().getName());\r\n");
     write("  }\r\n\r\n");
-    write("  protected void composeNamedResource(String name, Resource resource) throws Exception {\r\n");
+    write("  protected void composeNamedReference(String name, Resource resource) throws Exception {\r\n");
     write("    "+regn.toString().substring(9));
     write("    else if (resource instanceof Binary)\r\n");
     write("      composeBinary(name, (Binary)resource);\r\n");
@@ -537,6 +563,13 @@ private String leaf(String tn) {
     write("      ;\r\n");
     write(regtp.toString());
     write(regtn.toString());
+    write("    else\r\n");
+    write("      throw new Exception(\"Unhanded type\");\r\n");
+    write("  }\r\n\r\n");
+    write("  protected void composeTypeInner(Type type) throws Exception {\r\n");
+    write("    if (type == null)\r\n");
+    write("      ;\r\n");
+    write(regti.toString());
     write("    else\r\n");
     write("      throw new Exception(\"Unhanded type\");\r\n");
     write("  }\r\n\r\n");
@@ -591,8 +624,6 @@ private String leaf(String tn) {
         
         if (tr.isUnboundGenericParam())
           tn = genparam;
-        else if (tr.isIdRef())
-          tn ="String";
         else if (tr.isXhtml()) 
           tn = "char[]";
         else if (tr.isWildcardType())
@@ -662,6 +693,5 @@ private String leaf(String tn) {
     else
       return name.replace("[x]", "");
   }
-
   
 }

@@ -2,7 +2,6 @@ package org.hl7.fhir.definitions.generators.specification;
 
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,14 +14,11 @@ import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
-import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.instance.model.AtomEntry;
-import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Utilities;
@@ -702,7 +698,7 @@ public class SvgGenerator extends BaseGenerator {
       xml.attribute("class", "diagram-class-title");
     if (link) {
       xml.open("text");
-      if (tn.equals("Extension") || tn.equals("ResourceReference") || tn.equals("Narrative"))
+      if (tn.equals("Extension") || tn.equals("Reference") || tn.equals("Narrative"))
         xml.attribute("xlink:href", GeneratorUtils.getSrcFile(tn, false) + ".html#"+tn.toLowerCase());
       else
         xml.attribute("xlink:href", "#"+tn.toLowerCase());
@@ -713,14 +709,18 @@ public class SvgGenerator extends BaseGenerator {
     } else if (isRoot) {
       xml.open("text");
       xml.text(tn);
-      xml.attribute("class", "diagram-class-title-link");
-      xml.open("tspan");
-      xml.text(" (");
-      xml.attribute("xlink:href", "resources.html");
-      xml.attribute("class", "diagram-class-reference");
-      xml.element("a", "Resource");
-      xml.text(")");
-      xml.close("tspan");
+      if (e.typeCode().equals("Any")) {
+        xml.text(" «Resource»");
+      } else {
+        xml.attribute("class", "diagram-class-title-link");
+        xml.open("tspan");
+        xml.text(" (");
+        xml.attribute("xlink:href", e.typeCode().toLowerCase()+".html");
+        xml.attribute("class", "diagram-class-reference");
+        xml.element("a", e.typeCode());
+        xml.text(")");
+        xml.close("tspan");
+      }
       xml.close("text");
     } else if (e.hasStatedType()) {
       xml.element("text", e.getStatedType());      
@@ -769,19 +769,21 @@ public class SvgGenerator extends BaseGenerator {
     if (definitions.hasResource(root))
       return root.toLowerCase()+"-definitions.html#";
     else if ("Narrative".equals(root))
-      return "base-definitions.html#";
-    else if ("ResourceReference".equals(root))
+      return "narrative-definitions.html#";
+    else if ("Reference".equals(root))
       return "base-definitions.html#";
     else if ("Extension".equals(root))
-      return "base-definitions.html#";
+      return "extensibility-definitions.html#";
     else if (definitions.hasType(root))
       return "datatypes-definitions.html#";
+    if (definitions.getBaseResources().containsKey(root))
+      return root.toLowerCase()+"-definitions.html#";
     else
       throw new Exception(root+" not handled yet");
   }
 
   private ClassItem getItemForPath(ResourceDefn resource, String path) throws Exception {
-    ElementDefn e = resource.getRoot().getElementForPath(path, definitions, "SVG diagram");
+    ElementDefn e = resource.getRoot().getElementForPath(path, definitions, "SVG diagram", false);
     return classes.get(e);
   }
 
@@ -1036,10 +1038,7 @@ public class SvgGenerator extends BaseGenerator {
           if (!firstP)
             if (prog.breaktext(xml, "|", t))
               return;
-          if (definitions.getFutureResources().containsKey(t))
-            prog.attribute(xml, "title", "This resource is not been defined yet");
-          else
-            prog.attribute(xml, "xlink:href", GeneratorUtils.getSrcFile(t, false) + ".html#" + t);
+          prog.attribute(xml, "xlink:href", GeneratorUtils.getSrcFile(t, false) + ".html#" + t);
           prog.element(xml, "a", t);
           firstP = false;
         }

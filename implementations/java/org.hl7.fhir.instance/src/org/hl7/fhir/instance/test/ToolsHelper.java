@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -35,13 +35,24 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
+import org.apache.commons.io.IOUtils;
+import org.hl7.fhir.instance.client.FHIRClient;
+import org.hl7.fhir.instance.client.FHIRSimpleClient;
 import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.formats.ResourceOrFeed;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Constants;
+import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.instance.utils.ProfileUtilities;
+import org.hl7.fhir.instance.utils.WorkerContext;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.TextFile;
@@ -54,25 +65,120 @@ public class ToolsHelper {
   public static void main(String[] args) {   
     try {
       ToolsHelper self = new ToolsHelper();
+      if (args.length == 0) 
+        throw new Exception("Missing Command Parameter. Valid Commands: round, json, version, fragments, snapshot-maker");
       if (args[0].equals("round")) 
         self.executeRoundTrip(args);
       else if (args[0].equals("json")) 
         self.executeJson(args);
+      else if (args[0].equals("cxml")) 
+        self.executeCanonicalXml(args);
       else if (args[0].equals("version")) 
         self.executeVersion(args);
       else if (args[0].equals("fragments")) 
           self.executeFragments(args);
+      else if (args[0].equals("snapshot-maker")) 
+        self.generateSnapshots(args);
       else 
-        throw new Exception("Unknown command '"+args[0]+"'");
+        throw new Exception("Unknown command '"+args[0]+"'. Valid Commands: round, json, version, fragments, snapshot-maker");
     } catch (Throwable e) {
       try {
         e.printStackTrace();
-        TextFile.stringToFile(e.toString(), args[1]+".err");
+        TextFile.stringToFile(e.toString(), (args.length == 0 ? "tools" : args[0])+".err");
       } catch (Exception e1) {
         e1.printStackTrace();
       }
     }
   }
+
+	private void generateSnapshots(String[] args) throws Exception {
+		if (args.length == 1) {
+			System.out.println("tools.jar snapshot-maker [source] -defn [definitions]");
+			System.out.println("");
+			System.out.println("Generates a snapshot from a differential. The nominated profile must have a single struture that has a differential");
+			System.out.println("");
+			System.out.println("source - the profile to generate the snapshot for. Maybe a file name, or a URL reference to a server running FHIR RESTful API");
+			System.out.println("definitions - filename for local copy of the validation.zip file");			
+		}
+	  String address = args[1];
+	  String definitions = args[3];
+	  
+    WorkerContext context = WorkerContext.fromDefinitions(getDefinitions(definitions));
+
+    if (address.startsWith("http:") || address.startsWith("http:")) {
+    	// this is on a restful interface
+    	String[] parts = address.split("\\/Profile\\/");
+    	if (parts.length != 2)
+    		throw new Exception("Unable to understand address of profile");
+    	FHIRClient client = new FHIRSimpleClient();
+    	client.initialize(parts[0]);
+    	Profile profile = client.read(Profile.class, parts[1]);
+			ProfileUtilities utils = new ProfileUtilities(context);
+    	Profile base = utils.getProfile(profile, profile.getBase());
+			if (base == null)
+				throw new Exception("Unable to resolve profile "+profile.getBase());
+			utils.generateSnapshot(base, profile, address, profile.getName());
+			client.update(Profile.class, profile, parts[1]);
+    } else {
+    	throw new Exception("not done yet (address = "+address+")");
+    }
+    
+	}
+
+  private Map<String, byte[]> getDefinitions(String definitions) throws Exception {
+  	Map<String, byte[]> results = new HashMap<String, byte[]>();
+  	readDefinitions(results, loadDefinitions(definitions));
+	  return results;
+  }
+
+	private void readDefinitions(Map<String, byte[]> map, byte[] defn) throws Exception {
+    ZipInputStream zip = new ZipInputStream(new ByteArrayInputStream(defn));
+    ZipEntry ze;
+    while ((ze = zip.getNextEntry()) != null) {
+      if (!ze.getName().endsWith(".zip") && !ze.getName().endsWith(".jar") ) { // skip saxon .zip
+        String name = ze.getName();
+        InputStream in = zip;
+        ByteArrayOutputStream b = new ByteArrayOutputStream();
+        int n;
+        byte[] buf = new byte[1024];
+        while ((n = in.read(buf, 0, 1024)) > -1) {
+          b.write(buf, 0, n);
+        }        
+        map.put(name, b.toByteArray());
+      }
+      zip.closeEntry();
+    }
+    zip.close();    
+  }
+
+  private byte[] loadDefinitions(String definitions) throws Exception {
+    byte[] defn;
+//    if (Utilities.noString(definitions)) {
+//      defn = loadFromUrl(MASTER_SOURCE);
+//    } else 
+    if (definitions.startsWith("https:") || definitions.startsWith("http:")) {
+      defn = loadFromUrl(definitions);
+    } else if (new File(definitions).exists()) {
+      defn = loadFromFile(definitions);      
+    } else
+      throw new Exception("Unable to find FHIR validation Pack (source = "+definitions+")");
+    return defn;
+  }
+
+  private byte[] loadFromUrl(String src) throws Exception {
+  	URL url = new URL(src);
+    byte[] str = IOUtils.toByteArray(url.openStream());
+    return str;
+  }
+
+  private byte[] loadFromFile(String src) throws Exception {
+    FileInputStream in = new FileInputStream(src);
+    byte[] b = new byte[in.available()];
+    in.read(b);
+    in.close();
+    return b;
+  }
+
 
 	protected XmlPullParser loadXml(InputStream stream) throws Exception {
 	BufferedInputStream input = new BufferedInputStream(stream);
@@ -144,47 +250,58 @@ public class ToolsHelper {
 	FileInputStream in;
 	File source = new CSFile(args[1]);
     File dest = new CSFile(args[2]);
+    if (args.length >= 4) {
+    	Utilities.copyFile(args[1], args[3]);
+    }
 
     if (!source.exists())        
       throw new Exception("Source File \""+source.getAbsolutePath()+"\" not found");
     in = new CSFileInputStream(source);
     XmlParser p = new XmlParser();
     JsonParser pj = new JsonParser();
-    ResourceOrFeed rf = p.parseGeneral(in);
+    Resource rf = p.parse(in);
     ByteArrayOutputStream json = new ByteArrayOutputStream();
-    if (rf.getFeed() != null) {
-      new JsonComposer().compose(json, rf.getFeed(), true);
-      rf = pj.parseGeneral(new ByteArrayInputStream(json.toByteArray()));
-      new XmlComposer().compose(new FileOutputStream(dest), rf.getFeed(), true);
-    } else {
-      new JsonComposer().compose(json, rf.getResource(), true);
-      rf = pj.parseGeneral(new ByteArrayInputStream(json.toByteArray()));
-      new XmlComposer().compose(new FileOutputStream(dest), rf.getResource(), true);
-    }
+    new JsonComposer().compose(json, rf, true);
+    TextFile.stringToFile(new String(json.toByteArray()), Utilities.changeFileExt(dest.getAbsolutePath(), ".json"));
+    rf = pj.parse(new ByteArrayInputStream(json.toByteArray()));
+    new XmlComposer().compose(new FileOutputStream(dest), rf, true);
   }
 
   public String executeJson(String[] args) throws Exception {
     FileInputStream in;
     File source = new CSFile(args[1]);
     File dest = new CSFile(args[2]);
+    File destc = new CSFile(Utilities.changeFileExt(args[2], ".canonical.json"));
     File destt = new CSFile(args[2]+".tmp");
 
     if (!source.exists())        
       throw new Exception("Source File \""+source.getAbsolutePath()+"\" not found");
     in = new CSFileInputStream(source);
     XmlParser p = new XmlParser();
-    ResourceOrFeed rf = p.parseGeneral(in);
+    Resource rf = p.parse(in);
     JsonComposer json = new JsonComposer();
-		if (rf.getFeed() != null) {
-      json.compose(new FileOutputStream(dest), rf.getFeed(), false);
-      json.setSuppressXhtml("Snipped for Brevity");
-      json.compose(new FileOutputStream(destt), rf.getFeed(), true);
-    } else {
-      json.compose(new FileOutputStream(dest), rf.getResource(), false);
-      json.setSuppressXhtml("Snipped for Brevity");
-      json.compose(new FileOutputStream(destt), rf.getResource(), true);
-    }
+    json.compose(new FileOutputStream(dest), rf, true);
+    json.setCanonical(true);
+    json.compose(new FileOutputStream(destc), rf, false);
+    json.setSuppressXhtml("Snipped for Brevity");
+    json.setCanonical(false);
+    json.compose(new FileOutputStream(destt), rf, true);
     return TextFile.fileToString(destt.getAbsolutePath());
+  }
+
+  public void executeCanonicalXml(String[] args) throws Exception {
+    FileInputStream in;
+    File source = new CSFile(args[1]);
+    File dest = new CSFile(args[2]);
+
+    if (!source.exists())        
+      throw new Exception("Source File \""+source.getAbsolutePath()+"\" not found");
+    in = new CSFileInputStream(source);
+    XmlParser p = new XmlParser();
+    Resource rf = p.parse(in);
+    XmlComposer cxml = new XmlComposer();
+    cxml.setCanonical(true);
+    cxml.compose(new FileOutputStream(dest), rf, false);
   }
 
   private void executeVersion(String[] args) throws Exception {

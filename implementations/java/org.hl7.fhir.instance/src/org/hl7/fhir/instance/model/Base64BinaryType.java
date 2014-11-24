@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -40,6 +40,13 @@ public class Base64BinaryType extends PrimitiveType {
 	 * The byte content in the base64Binary
 	 */
 	private byte[] value;
+
+	public Base64BinaryType(byte[] value) {
+    this.value = value;  
+  }
+
+  public Base64BinaryType() {
+  }
 
 	/**
 	 * @return The byte content in the base64Binary

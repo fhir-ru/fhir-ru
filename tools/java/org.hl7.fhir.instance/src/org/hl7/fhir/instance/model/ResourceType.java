@@ -1,11 +1,17 @@
 package org.hl7.fhir.instance.model;
 
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
+
 public enum ResourceType {
     Condition,
     Supply,
+    ProcedureRequest,
+    DeviceComponent,
     Organization,
     Group,
+    OralHealthClaim,
     ValueSet,
+    Coverage,
     ImmunizationRecommendation,
     Appointment,
     MedicationDispense,
@@ -18,11 +24,17 @@ public enum ResourceType {
     Questionnaire,
     OperationOutcome,
     Conformance,
+    NamingSystem,
     Media,
+    Binary,
     Other,
+    HealthcareService,
     Profile,
     DocumentReference,
+    Eligibility,
     Immunization,
+    Bundle,
+    ExtensionDefinition,
     Subscription,
     OrderResponse,
     ConceptMap,
@@ -35,6 +47,7 @@ public enum ResourceType {
     Order,
     Procedure,
     Substance,
+    DeviceUseRequest,
     DiagnosticReport,
     Medication,
     MessageHeader,
@@ -46,22 +59,27 @@ public enum ResourceType {
     Encounter,
     SecurityEvent,
     List,
+    DeviceUseStatement,
     OperationDefinition,
-    DeviceObservationReport,
+    NutritionOrder,
+    ClaimResponse,
     ReferralRequest,
+    CommunicationRequest,
     RiskAssessment,
     FamilyHistory,
     Location,
+    ExplanationOfBenefit,
     AllergyIntolerance,
     Observation,
+    Contract,
+    SupportingDocumentation,
     RelatedPerson,
+    Basic,
     Specimen,
     Alert,
-    Namespace,
     Patient,
-    AdverseReaction,
-    DiagnosticOrder,
-    Binary;
+    DiagnosticOrder;
+
 
     public String getPath() {;
       switch (this) {
@@ -69,12 +87,20 @@ public enum ResourceType {
       return "condition";
     case Supply:
       return "supply";
+    case ProcedureRequest:
+      return "procedurerequest";
+    case DeviceComponent:
+      return "devicecomponent";
     case Organization:
       return "organization";
     case Group:
       return "group";
+    case OralHealthClaim:
+      return "oralhealthclaim";
     case ValueSet:
       return "valueset";
+    case Coverage:
+      return "coverage";
     case ImmunizationRecommendation:
       return "immunizationrecommendation";
     case Appointment:
@@ -99,16 +125,28 @@ public enum ResourceType {
       return "operationoutcome";
     case Conformance:
       return "conformance";
+    case NamingSystem:
+      return "namingsystem";
     case Media:
       return "media";
+    case Binary:
+      return "binary";
     case Other:
       return "other";
+    case HealthcareService:
+      return "healthcareservice";
     case Profile:
       return "profile";
     case DocumentReference:
       return "documentreference";
+    case Eligibility:
+      return "eligibility";
     case Immunization:
       return "immunization";
+    case Bundle:
+      return "bundle";
+    case ExtensionDefinition:
+      return "extensiondefinition";
     case Subscription:
       return "subscription";
     case OrderResponse:
@@ -133,6 +171,8 @@ public enum ResourceType {
       return "procedure";
     case Substance:
       return "substance";
+    case DeviceUseRequest:
+      return "deviceuserequest";
     case DiagnosticReport:
       return "diagnosticreport";
     case Medication:
@@ -155,38 +195,46 @@ public enum ResourceType {
       return "securityevent";
     case List:
       return "list";
+    case DeviceUseStatement:
+      return "deviceusestatement";
     case OperationDefinition:
       return "operationdefinition";
-    case DeviceObservationReport:
-      return "deviceobservationreport";
+    case NutritionOrder:
+      return "nutritionorder";
+    case ClaimResponse:
+      return "claimresponse";
     case ReferralRequest:
       return "referralrequest";
+    case CommunicationRequest:
+      return "communicationrequest";
     case RiskAssessment:
       return "riskassessment";
     case FamilyHistory:
       return "familyhistory";
     case Location:
       return "location";
+    case ExplanationOfBenefit:
+      return "explanationofbenefit";
     case AllergyIntolerance:
       return "allergyintolerance";
     case Observation:
       return "observation";
+    case Contract:
+      return "contract";
+    case SupportingDocumentation:
+      return "supportingdocumentation";
     case RelatedPerson:
       return "relatedperson";
+    case Basic:
+      return "basic";
     case Specimen:
       return "specimen";
     case Alert:
       return "alert";
-    case Namespace:
-      return "namespace";
     case Patient:
       return "patient";
-    case AdverseReaction:
-      return "adversereaction";
     case DiagnosticOrder:
       return "diagnosticorder";
-    case Binary:
-      return "binary";
     }
       return null;
   }

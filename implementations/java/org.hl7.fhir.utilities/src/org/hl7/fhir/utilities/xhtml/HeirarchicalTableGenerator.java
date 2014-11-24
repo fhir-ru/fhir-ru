@@ -1,5 +1,34 @@
 package org.hl7.fhir.utilities.xhtml;
 
+/*
+Copyright (c) 2011+, HL7, Inc
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+ * Redistributions of source code must retain the above copyright notice, this 
+   list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, 
+   this list of conditions and the following disclaimer in the documentation 
+   and/or other materials provided with the distribution.
+ * Neither the name of HL7 nor the names of its contributors may be used to 
+   endorse or promote products derived from this software without specific 
+   prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGE.
+
+*/
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -9,15 +38,30 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.imageio.ImageIO;
-import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator.Piece;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
+import org.hl7.fhir.utilities.Utilities;
 
 
 public class HeirarchicalTableGenerator  {
+  public static final String TEXT_ICON_REFERENCE = "Reference to another Resource";
+  public static final String TEXT_ICON_PRIMITIVE = "Primitive Data Type";
+  public static final String TEXT_ICON_DATATYPE = "Data Type";
+  public static final String TEXT_ICON_RESOURCE = "Resource";
+  public static final String TEXT_ICON_ELEMENT = "Element";
+  public static final String TEXT_ICON_REUSE = "Reference to another Element";
+  public static final String TEXT_ICON_EXTENSION = "Extension";
+  public static final String TEXT_ICON_CHOICE = "Choice of Types";
+  public static final String TEXT_ICON_SLICE = "Slice Definition";
+  public static final String TEXT_ICON_EXTENSION_SIMPLE = "Simple Extension";
+  public static final String TEXT_ICON_PROFILE = "Profile";
+  public static final String TEXT_ICON_EXTENSION_COMPLEX = "Complex Extension";
 
   public class Piece {
     private String tag;
@@ -25,6 +69,7 @@ public class HeirarchicalTableGenerator  {
     private String text;
     private String hint;
     private String style;
+    private Map<String, String> attributes;
     
     public Piece(String tag) {
       super();
@@ -58,6 +103,18 @@ public class HeirarchicalTableGenerator  {
       return style;
     }
 
+    public void setTag(String tag) {
+      this.tag = tag;
+    }
+
+    public void setText(String text) {
+      this.text = text;
+    }
+
+    public void setHint(String hint) {
+      this.hint = hint;
+    }
+
     public Piece setStyle(String style) {
       this.style = style;
       return this;
@@ -65,12 +122,18 @@ public class HeirarchicalTableGenerator  {
 
     public Piece addStyle(String style) {
       if (this.style != null)
-        this.style = this.style+": "+style;
+        this.style = this.style+"; "+style;
       else
         this.style = style;
       return this;
     }
 
+    public void addToHint(String text) {
+      if (this.hint == null)
+        this.hint = text;
+      else
+        this.hint += (this.hint.endsWith(".") ? " " : ". ")+text;
+    }
   }
   
   public class Cell {
@@ -94,6 +157,31 @@ public class HeirarchicalTableGenerator  {
       pieces.add(piece);
       return this;
     }
+    public void addStyle(String style) {
+      for (Piece p : pieces)
+        p.addStyle(style);      
+    }
+    public void addToHint(String text) {
+      for (Piece p : pieces)
+        p.addToHint(text);            
+    }
+    public void addImage(String src, String hint, String alt) {
+      if (pieces.size() > 0 && pieces.get(0).tag == null)
+        pieces.get(0).text += " ";
+//      Piece img = new Piece("img");
+      Piece img = new Piece(null, alt, hint);
+//      img.attributes = new HashMap<String, String>();
+//      img.attributes.put("src", src);
+//      img.attributes.put("alt", alt);
+//      img.hint = hint;
+      pieces.add(img);
+    }
+    public String text() {
+      StringBuilder b = new StringBuilder();
+      for (Piece p : pieces)
+        b.append(p.text);
+      return b.toString();
+    }
   }
 
   public class Title extends Cell {
@@ -110,6 +198,7 @@ public class HeirarchicalTableGenerator  {
     private List<Cell> cells = new ArrayList<HeirarchicalTableGenerator.Cell>();
     private String icon;
     private String anchor;
+    private String hint;
     
     public List<Row> getSubRows() {
       return subRows;
@@ -120,14 +209,18 @@ public class HeirarchicalTableGenerator  {
     public String getIcon() {
       return icon;
     }
-    public void setIcon(String icon) {
+    public void setIcon(String icon, String hint) {
       this.icon = icon;
+      this.hint = hint;
     }
     public String getAnchor() {
       return anchor;
     }
     public void setAnchor(String anchor) {
       this.anchor = anchor;
+    }
+    public String getHint() {
+      return hint;
     }
     
     
@@ -136,12 +229,27 @@ public class HeirarchicalTableGenerator  {
   public class TableModel {
     private List<Title> titles = new ArrayList<HeirarchicalTableGenerator.Title>();
     private List<Row> rows = new ArrayList<HeirarchicalTableGenerator.Row>();
+    private String docoRef;
+    private String docoImg;
     public List<Title> getTitles() {
       return titles;
     }
     public List<Row> getRows() {
       return rows;
     }
+    public String getDocoRef() {
+      return docoRef;
+    }
+    public String getDocoImg() {
+      return docoImg;
+    }
+    public void setDocoRef(String docoRef) {
+      this.docoRef = docoRef;
+    }
+    public void setDocoImg(String docoImg) {
+      this.docoImg = docoImg;
+    }
+    
   }
 
 
@@ -165,10 +273,13 @@ public class HeirarchicalTableGenerator  {
   public TableModel initNormalTable() {
     TableModel model = new TableModel();
     
-    model.getTitles().add(new Title(null, null, "Имя", null, null, 0));
-    model.getTitles().add(new Title(null, null, "Число", null, null, 0));
-    model.getTitles().add(new Title(null, null, "Тип", null, null, 100));
-    model.getTitles().add(new Title(null, null, "Описание и ограничения", null, null, 0));
+    model.getTitles().add(new Title(null, null, "Name", null, null, 0));
+    model.getTitles().add(new Title(null, null, "Flags", null, null, 0));
+    model.getTitles().add(new Title(null, null, "Card.", null, null, 0));
+    model.getTitles().add(new Title(null, null, "Type", null, null, 100));
+    model.getTitles().add(new Title(null, null, "Description & Constraints", null, null, 0));
+    model.setDocoImg("help16.png");
+    model.setDocoRef("formats.html#table");
     return model;
   }
 
@@ -178,11 +289,15 @@ public class HeirarchicalTableGenerator  {
     table.setAttribute("style", "border: 0px; font-size: 11px; font-family: verdana; vertical-align: top;");
     XhtmlNode tr = table.addTag("tr");
     tr.setAttribute("style", "border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;");
+    XhtmlNode tc = null;
     for (Title t : model.getTitles()) {
-      XhtmlNode tc = renderCell(tr, t, "th", null, null, false, null);
+      tc = renderCell(tr, t, "th", null, null, null, false, null);
       if (t.width != 0)
         tc.setAttribute("style", "width: "+Integer.toString(t.width)+"px");
     }
+    if (tc != null)
+      tc.addTag("span").setAttribute("style", "float: right").addTag("a").setAttribute("title", "Legend for this format").setAttribute("href", model.getDocoRef()).addTag("img").setAttribute("alt", "doco").setAttribute("src", model.getDocoImg());
+      
     for (Row r : model.getRows()) {
       renderRow(table, r, 0, new ArrayList<Boolean>());
     }
@@ -195,7 +310,7 @@ public class HeirarchicalTableGenerator  {
     tr.setAttribute("style", "border: 0px; padding:0px; vertical-align: top; background-color: white;");
     boolean first = true;
     for (Cell t : r.getCells()) {
-      renderCell(tr, t, "td", first ? r.getIcon() : null, first ? indents : null, !r.getSubRows().isEmpty(), first ? r.getAnchor() : null);
+      renderCell(tr, t, "td", first ? r.getIcon() : null, first ? r.getHint() : null, first ? indents : null, !r.getSubRows().isEmpty(), first ? r.getAnchor() : null);
       first = false;
     }
     table.addText("\r\n");
@@ -213,7 +328,7 @@ public class HeirarchicalTableGenerator  {
   }
 
 
-  private XhtmlNode renderCell(XhtmlNode tr, Cell c, String name, String icon, List<Boolean> indents, boolean hasChildren, String anchor) throws Exception {
+  private XhtmlNode renderCell(XhtmlNode tr, Cell c, String name, String icon, String hint, List<Boolean> indents, boolean hasChildren, String anchor) throws Exception {
     XhtmlNode tc = tr.addTag(name);
     tc.setAttribute("class", "heirarchy");
     if (indents != null) {
@@ -234,12 +349,20 @@ public class HeirarchicalTableGenerator  {
     else
       tc.setAttribute("style", "vertical-align: top; text-align : left; padding:0px 4px 0px 4px");
     if (!Utilities.noString(icon)) {
-      tc.addTag("img").setAttribute("src", srcFor(icon)).setAttribute("class", "heirarchy").setAttribute("style", "background-color: white;").setAttribute("alt", ".");
+      XhtmlNode img = tc.addTag("img").setAttribute("src", srcFor(icon)).setAttribute("class", "heirarchy").setAttribute("style", "background-color: white;").setAttribute("alt", ".");
+      if (hint != null)
+        img.setAttribute("title", hint);
       tc.addText(" ");
     }
     for (Piece p : c.pieces) {
       if (!Utilities.noString(p.getTag())) {
-        addStyle(tc.addTag(p.getTag()), p);
+        XhtmlNode tag = tc.addTag(p.getTag());
+        if (p.attributes != null)
+          for (String n : p.attributes.keySet())
+            tag.setAttribute(n, p.attributes.get(n));
+        if (p.getHint() != null)
+          tag.setAttribute("title", p.getHint());
+        addStyle(tag, p);
       } else if (!Utilities.noString(p.getReference())) {
         XhtmlNode a = addStyle(tc.addTag("a"), p);
         a.setAttribute("href", p.getReference());
@@ -292,8 +415,11 @@ public class HeirarchicalTableGenerator  {
     check(!model.getTitles().isEmpty(), "Must have titles");
     for (Cell c : model.getTitles())
       check(c);
-    for (Row r : model.getRows()) 
-      check(r, "rows", model.getTitles().size());    
+    int i = 0;
+    for (Row r : model.getRows()) { 
+      check(r, "rows", model.getTitles().size(), Integer.toString(i));
+      i++;
+    }
   }
 
 
@@ -306,10 +432,13 @@ public class HeirarchicalTableGenerator  {
   }
 
 
-  private void check(Row r, String string, int size) throws Exception {
-    check(r.getCells().size() == size, "All rows must have the same number of columns as the titles");
-    for (Row c : r.getSubRows()) 
-      check(c, "rows", size);    
+  private void check(Row r, String string, int size, String path) throws Exception {    
+    check(r.getCells().size() == size, "All rows must have the same number of columns ("+Integer.toString(size)+") as the titles but row "+path+" doesn't ("+r.getCells().get(0).text()+")");
+    int i = 0;
+    for (Row c : r.getSubRows()) {
+      check(c, "rows", size, path+"."+Integer.toString(i));
+      i++;
+    }
   }
 
 

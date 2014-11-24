@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,10 +29,11 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.
  */
@@ -61,27 +62,27 @@ public class CodeableConcept extends Type {
       return this.coding;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #coding} (A reference to a code defined by a terminology system.)
      */
-    public Coding addCoding() { 
+    // syntactic sugar
+    public Coding addCoding() { //3
       Coding t = new Coding();
       this.coding.add(t);
       return t;
     }
 
     /**
-     * @return {@link #text} (A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.)
+     * @return {@link #text} (A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.). This is the underlying object with id, value and extensions. The accessor "getText" gives direct access to the value
      */
-    public StringType getText() { 
+    public StringType getTextElement() { 
       return this.text;
     }
 
     /**
-     * @param value {@link #text} (A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.)
+     * @param value {@link #text} (A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.). This is the underlying object with id, value and extensions. The accessor "getText" gives direct access to the value
      */
-    public CodeableConcept setText(StringType value) { 
+    public CodeableConcept setTextElement(StringType value) { 
       this.text = value;
       return this;
     }
@@ -89,15 +90,15 @@ public class CodeableConcept extends Type {
     /**
      * @return A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.
      */
-    public String getTextSimple() { 
+    public String getText() { 
       return this.text == null ? null : this.text.getValue();
     }
 
     /**
      * @param value A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.
      */
-    public CodeableConcept setTextSimple(String value) { 
-      if (value == null)
+    public CodeableConcept setText(String value) { 
+      if (Utilities.noString(value))
         this.text = null;
       else {
         if (this.text == null)
@@ -115,6 +116,7 @@ public class CodeableConcept extends Type {
 
       public CodeableConcept copy() {
         CodeableConcept dst = new CodeableConcept();
+        copyValues(dst);
         dst.coding = new ArrayList<Coding>();
         for (Coding i : coding)
           dst.coding.add(i.copy());

@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -40,6 +40,13 @@ public class TimeType extends PrimitiveType {
 	 * The value of the dateTime
 	 */
 	private String value;
+
+	public TimeType(String value) {
+    this.value = value;  
+  }
+
+  public TimeType() {
+  }
 
 	/**
 	 * @return The value of the dateTime

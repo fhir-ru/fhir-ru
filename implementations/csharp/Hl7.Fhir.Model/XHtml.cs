@@ -30,16 +30,34 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Schema;
+
 
 namespace Hl7.Fhir.Model
 {
     public partial class XHtml
     {
-        public const string XHTML = "http://www.w3.org/1999/xhtml";
-        public static readonly XNamespace XHTMLNS = (XNamespace)XHtml.XHTML;
+        public static bool IsValidValue(string value)
+        {
+            try
+            {
+                // There is currently no validation in the portable .net
+                // for the XDocument validation, would need to scan for
+                // another implementation to cover this
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
   
 }

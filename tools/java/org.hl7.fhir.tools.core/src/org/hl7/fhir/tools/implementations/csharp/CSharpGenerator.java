@@ -1,6 +1,6 @@
 package org.hl7.fhir.tools.implementations.csharp;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -65,9 +65,9 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 
 	  
 	@Override
-	public String getDescription() {
+	public String getDescription(String version, String svnRevision) {
 		return "Object models, Parsers/Serialisers, Validators, and a Client. The source code for that compiled .NET library can be found on GitHub at " +
-				"[[http://github.com/ewoutkramer/fhir-net-api]]";
+				"[http://github.com/ewoutkramer/fhir-net-api](http://github.com/ewoutkramer/fhir-net-api)";
 	}
 
 	@Override
@@ -183,14 +183,14 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		// Add cross-project files
     zip.addFiles(implDir, "", ".sln", null);
     zip.addFiles(implDir, "", "README.txt", null);
-    zip.addFiles(implDir + "packages" + sl, "packages" + sl, "repositories.config", null);
+   // zip.addFiles(implDir + "packages" + sl, "packages" + sl, "repositories.config", null);
 		
 		zip.close();		
 	}
 
   @Override
 public boolean doesCompile() {
-    return true;
+    return false;
   }
 
   
@@ -263,7 +263,7 @@ public void loadAndSave(String rootDir, String sourceFile, String destFile) {
   }
 
   @Override
-public String checkFragments(String rootDir, String fragments, boolean inProcess) throws Exception {
+public String checkFragments(String rootDir, String fragments) throws Exception {
     return "Not supported by C# implementation";
   }
 }

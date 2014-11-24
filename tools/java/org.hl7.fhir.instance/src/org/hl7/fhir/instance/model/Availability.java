@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,14 +29,15 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * (informative) A container for slot(s) of time that may be available for booking appointments.
  */
-public class Availability extends Resource {
+public class Availability extends DomainResource {
 
     /**
      * External Ids for this item.
@@ -51,7 +52,7 @@ public class Availability extends Resource {
     /**
      * The resource this availability resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.
      */
-    protected ResourceReference actor;
+    protected Reference actor;
 
     /**
      * The actual object that is the target of the reference (The resource this availability resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.)
@@ -73,13 +74,13 @@ public class Availability extends Resource {
      */
     protected DateTimeType lastModified;
 
-    private static final long serialVersionUID = 901197698L;
+    private static final long serialVersionUID = -2050467472L;
 
     public Availability() {
       super();
     }
 
-    public Availability(ResourceReference actor) {
+    public Availability(Reference actor) {
       super();
       this.actor = actor;
     }
@@ -91,11 +92,11 @@ public class Availability extends Resource {
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (External Ids for this item.)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
@@ -108,11 +109,11 @@ public class Availability extends Resource {
       return this.type;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #type} (The schedule type can be used for the categorization of healthcare services or other appointment types.)
      */
-    public CodeableConcept addType() { 
+    // syntactic sugar
+    public CodeableConcept addType() { //3
       CodeableConcept t = new CodeableConcept();
       this.type.add(t);
       return t;
@@ -121,27 +122,27 @@ public class Availability extends Resource {
     /**
      * @return {@link #actor} (The resource this availability resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.)
      */
-    public ResourceReference getActor() { 
+    public Reference getActor() { 
       return this.actor;
     }
 
     /**
      * @param value {@link #actor} (The resource this availability resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.)
      */
-    public Availability setActor(ResourceReference value) { 
+    public Availability setActor(Reference value) { 
       this.actor = value;
       return this;
     }
 
     /**
-     * @return {@link #actor} (The actual object that is the target of the reference. The resource this availability resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.)
+     * @return {@link #actor} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The resource this availability resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.)
      */
     public Resource getActorTarget() { 
       return this.actorTarget;
     }
 
     /**
-     * @param value {@link #actor} (The actual object that is the target of the reference. The resource this availability resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.)
+     * @param value {@link #actor} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The resource this availability resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.)
      */
     public Availability setActorTarget(Resource value) { 
       this.actorTarget = value;
@@ -164,16 +165,16 @@ public class Availability extends Resource {
     }
 
     /**
-     * @return {@link #comment} (Comments on the availability to describe any extended information. Such as custom constraints on the slot(s) that may be associated.)
+     * @return {@link #comment} (Comments on the availability to describe any extended information. Such as custom constraints on the slot(s) that may be associated.). This is the underlying object with id, value and extensions. The accessor "getComment" gives direct access to the value
      */
-    public StringType getComment() { 
+    public StringType getCommentElement() { 
       return this.comment;
     }
 
     /**
-     * @param value {@link #comment} (Comments on the availability to describe any extended information. Such as custom constraints on the slot(s) that may be associated.)
+     * @param value {@link #comment} (Comments on the availability to describe any extended information. Such as custom constraints on the slot(s) that may be associated.). This is the underlying object with id, value and extensions. The accessor "getComment" gives direct access to the value
      */
-    public Availability setComment(StringType value) { 
+    public Availability setCommentElement(StringType value) { 
       this.comment = value;
       return this;
     }
@@ -181,15 +182,15 @@ public class Availability extends Resource {
     /**
      * @return Comments on the availability to describe any extended information. Such as custom constraints on the slot(s) that may be associated.
      */
-    public String getCommentSimple() { 
+    public String getComment() { 
       return this.comment == null ? null : this.comment.getValue();
     }
 
     /**
      * @param value Comments on the availability to describe any extended information. Such as custom constraints on the slot(s) that may be associated.
      */
-    public Availability setCommentSimple(String value) { 
-      if (value == null)
+    public Availability setComment(String value) { 
+      if (Utilities.noString(value))
         this.comment = null;
       else {
         if (this.comment == null)
@@ -200,16 +201,16 @@ public class Availability extends Resource {
     }
 
     /**
-     * @return {@link #lastModified} (When this availability was created, or last revised.)
+     * @return {@link #lastModified} (When this availability was created, or last revised.). This is the underlying object with id, value and extensions. The accessor "getLastModified" gives direct access to the value
      */
-    public DateTimeType getLastModified() { 
+    public DateTimeType getLastModifiedElement() { 
       return this.lastModified;
     }
 
     /**
-     * @param value {@link #lastModified} (When this availability was created, or last revised.)
+     * @param value {@link #lastModified} (When this availability was created, or last revised.). This is the underlying object with id, value and extensions. The accessor "getLastModified" gives direct access to the value
      */
-    public Availability setLastModified(DateTimeType value) { 
+    public Availability setLastModifiedElement(DateTimeType value) { 
       this.lastModified = value;
       return this;
     }
@@ -217,14 +218,14 @@ public class Availability extends Resource {
     /**
      * @return When this availability was created, or last revised.
      */
-    public DateAndTime getLastModifiedSimple() { 
+    public DateAndTime getLastModified() { 
       return this.lastModified == null ? null : this.lastModified.getValue();
     }
 
     /**
      * @param value When this availability was created, or last revised.
      */
-    public Availability setLastModifiedSimple(DateAndTime value) { 
+    public Availability setLastModified(DateAndTime value) { 
       if (value == null)
         this.lastModified = null;
       else {
@@ -239,7 +240,7 @@ public class Availability extends Resource {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "External Ids for this item.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("type", "CodeableConcept", "The schedule type can be used for the categorization of healthcare services or other appointment types.", 0, java.lang.Integer.MAX_VALUE, type));
-        childrenList.add(new Property("actor", "Resource(Any)", "The resource this availability resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.", 0, java.lang.Integer.MAX_VALUE, actor));
+        childrenList.add(new Property("actor", "Reference(Any)", "The resource this availability resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.", 0, java.lang.Integer.MAX_VALUE, actor));
         childrenList.add(new Property("planningHorizon", "Period", "The period of time that the slots that are attached to this availability resource cover (even if none exist). These  cover the amount of time that an organization's planning horizon; the interval for which they are currently accepting appointments. This does not define a 'template' for planning outside these dates.", 0, java.lang.Integer.MAX_VALUE, planningHorizon));
         childrenList.add(new Property("comment", "string", "Comments on the availability to describe any extended information. Such as custom constraints on the slot(s) that may be associated.", 0, java.lang.Integer.MAX_VALUE, comment));
         childrenList.add(new Property("lastModified", "dateTime", "When this availability was created, or last revised.", 0, java.lang.Integer.MAX_VALUE, lastModified));
@@ -247,6 +248,7 @@ public class Availability extends Resource {
 
       public Availability copy() {
         Availability dst = new Availability();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());

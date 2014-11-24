@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Copyright (c) 2011-2012, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -30,5 +30,4 @@ Copyright (c) 2011-2012, HL7, Inc
 -->
 <xs:schema xmlns="http://hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="<%version%>">
 <!--%resources%-->
-  <xs:include schemaLocation="binary.xsd"/>
 </xs:schema>

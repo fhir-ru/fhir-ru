@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -35,14 +35,13 @@ import java.util.List;
 
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.ExtensionDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.instance.model.ElementDefinition;
+import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionMappingComponent;
+import org.hl7.fhir.instance.model.ExtensionDefinition;
+import org.hl7.fhir.instance.model.ExtensionDefinition.ExtensionDefinitionMappingComponent;
 import org.hl7.fhir.instance.model.Profile;
-import org.hl7.fhir.instance.model.Profile.ElementComponent;
-import org.hl7.fhir.instance.model.Profile.ElementDefinitionMappingComponent;
-import org.hl7.fhir.instance.model.Profile.ProfileExtensionDefnComponent;
 import org.hl7.fhir.instance.model.Profile.ProfileMappingComponent;
-import org.hl7.fhir.instance.model.Profile.ProfileStructureComponent;
 import org.hl7.fhir.utilities.Utilities;
 
 public class MappingsGenerator {
@@ -78,31 +77,55 @@ public class MappingsGenerator {
       StringBuilder s = new StringBuilder();
       for (ProfileMappingComponent map : profile.getMapping()) {
 
-        s.append("<a name=\""+map.getIdentitySimple() +"\"> </a><h3>Соответствие с "+map.getNameSimple()+" ("+map.getUriSimple()+")</h3>");
+        s.append("<a name=\""+map.getIdentity() +"\"> </a><h3>Mappings for "+map.getName()+" ("+map.getUri()+")</h3>");
         if (map.getComments() != null)
-          s.append("<p>"+Utilities.escapeXml(map.getCommentsSimple())+"</p>");
-        else if (definitions.getMapTypes().containsKey(map.getUriSimple()))   
-          s.append(definitions.getMapTypes().get(map.getUriSimple()).getPreamble());
+          s.append("<p>"+Utilities.escapeXml(map.getComments())+"</p>");
+        else if (definitions.getMapTypes().containsKey(map.getUri()))   
+          s.append(definitions.getMapTypes().get(map.getUri()).getPreamble());
 
         s.append("<table class=\"grid\">\r\n");
         
-        for (ProfileExtensionDefnComponent ext : profile.getExtensionDefn()) {
-          s.append(" <tr><td colspan=\"3\"><b>Extension "+Utilities.escapeXml(ext.getCodeSimple())+"</b></td></tr>\r\n");
-          for (ElementComponent e : ext.getElement()) {
-            genElement(s, e, map.getIdentitySimple());
-          }          
+        s.append(" <tr><td colspan=\"3\"><b>"+Utilities.escapeXml(profile.getName())+"</b></td></tr>\r\n");
+        String path = null;
+        for (ElementDefinition e : profile.getSnapshot().getElement()) {
+          if (path == null || !e.getPath().startsWith(path)) {
+            path = null;
+            if (e.getMax() != null && e.getMax().equals("0")) {
+              path = e.getPath()+".";
+            } else
+              genElement(s, e, map.getIdentity());
+          }
         }
-        for (ProfileStructureComponent ps : profile.getStructure()) {
-          s.append(" <tr><td colspan=\"3\"><b>"+Utilities.escapeXml(ps.getNameSimple())+"</b></td></tr>\r\n");
-          String path = null;
-          for (ElementComponent e : ps.getSnapshot().getElement()) {
-            if (path == null || !e.getPathSimple().startsWith(path)) {
-              path = null;
-              if (e.getDefinition() != null && e.getDefinition().getMax().equals("0")) {
-                path = e.getPathSimple()+".";
-              } else
-                genElement(s, e, map.getIdentitySimple());
-            }
+        s.append("</table>\r\n");
+      }
+      mappings = s.toString();
+    }
+  }
+  
+  public void generate(ExtensionDefinition ed) {
+    if (ed.getMapping().isEmpty())
+      mappings = "<p>No Mappings</p>";
+    else {
+      StringBuilder s = new StringBuilder();
+      for (ExtensionDefinitionMappingComponent map : ed.getMapping()) {
+
+        s.append("<a name=\""+map.getIdentity() +"\"> </a><h3>Mappings for "+map.getName()+" ("+map.getUri()+")</h3>");
+        if (map.getComments() != null)
+          s.append("<p>"+Utilities.escapeXml(map.getComments())+"</p>");
+        else if (definitions.getMapTypes().containsKey(map.getUri()))   
+          s.append(definitions.getMapTypes().get(map.getUri()).getPreamble());
+
+        s.append("<table class=\"grid\">\r\n");
+
+        s.append(" <tr><td colspan=\"3\"><b>"+Utilities.escapeXml(ed.getName())+"</b></td></tr>\r\n");
+        String path = null;
+        for (ElementDefinition e : ed.getElement()) {
+          if (path == null || !e.getPath().startsWith(path)) {
+            path = null;
+            if (e.getMax() != null && e.getMax().equals("0")) {
+              path = e.getPath()+".";
+            } else
+              genElement(s, e, map.getIdentity());
           }
         }
         s.append("</table>\r\n");
@@ -112,10 +135,10 @@ public class MappingsGenerator {
   }
   
   
-  private void genElement(StringBuilder s, ElementComponent e, String id) {
+  private void genElement(StringBuilder s, ElementDefinition e, String id) {
       s.append(" <tr><td>");
       boolean root = true;
-      for (char c : e.getPathSimple().toCharArray()) 
+      for (char c : e.getPath().toCharArray()) 
         if (c == '.') {
           s.append("&nbsp;");
           s.append("&nbsp;");
@@ -123,24 +146,22 @@ public class MappingsGenerator {
           root = false;
         }
       if (root)
-        s.append(e.getPathSimple());
+        s.append(e.getPath());
       else
-        s.append(tail(e.getPathSimple()));
-      s.append("</td><td>"+Utilities.escapeXml(e.getNameSimple())+"</td>");
+        s.append(tail(e.getPath()));
+      s.append("</td><td>"+Utilities.escapeXml(e.getName())+"</td>");
       ElementDefinitionMappingComponent m = getMap(e, id);
       if (m == null)
         s.append("<td></td>");
       else
-        s.append("<td>"+Utilities.escapeXml(m.getMapSimple())+"</td>");
+        s.append("<td>"+Utilities.escapeXml(m.getMap())+"</td>");
       s.append(" </tr>\r\n");
   }
 
 
-  private ElementDefinitionMappingComponent getMap(ElementComponent e, String id) {
-    if (e.getDefinition() == null)
-      return null;
-    for (ElementDefinitionMappingComponent m : e.getDefinition().getMapping()) {
-      if (m.getIdentitySimple().equals(id))
+  private ElementDefinitionMappingComponent getMap(ElementDefinition e, String id) {
+    for (ElementDefinitionMappingComponent m : e.getMapping()) {
+      if (m.getIdentity().equals(id))
         return m;
     }
     return null;
@@ -161,7 +182,7 @@ public class MappingsGenerator {
 		for (String m : maps) {
 			list.append("|"+definitions.getMapTypes().get(m).getTitle() + "#"+definitions.getMapTypes().get(m).getId());
 
-			s.append("<a name=\""+m+"\"> </a><a name=\""+definitions.getMapTypes().get(m).getId()+"\"> </a><h3>Соответствие с "+definitions.getMapTypes().get(m).getTitle()+" ("+m+")</h3>");
+			s.append("<a name=\""+m+"\"> </a><a name=\""+definitions.getMapTypes().get(m).getId()+"\"> </a><h3>Mappings for "+definitions.getMapTypes().get(m).getTitle()+" ("+m+")</h3>");
 			s.append(definitions.getMapTypes().get(m).getPreamble());
 			s.append("<table class=\"grid\">\r\n");
 			genElement(s, 0, resource.getRoot(), m, true);
@@ -185,7 +206,7 @@ public class MappingsGenerator {
 			list.append("|"+definitions.getMapTypes().get(m).getTitle() + "#"+m);
       s.append("<a name=\""+m+"\"> </a>\r\n");
       s.append("<a name=\""+definitions.getMapTypes().get(m).getId()+"\"> </a>\r\n");
-			s.append("<h3>Соответствие с "+definitions.getMapTypes().get(m).getTitle()+" ("+m+")</h3>\r\n");
+			s.append("<h3>Mappings for "+definitions.getMapTypes().get(m).getTitle()+" ("+m+")</h3>\r\n");
 			s.append("<table class=\"grid\">\r\n");
 			for (ElementDefn e : elements) 
 				if (elementHasMapping(e, m)) {
@@ -242,8 +263,8 @@ public class MappingsGenerator {
 
   private void listKnownMappings(Profile profile, List<String> maps) {
     for (ProfileMappingComponent map : profile.getMapping())
-      if (!maps.contains(map.getIdentitySimple()))
-        maps.add(map.getIdentitySimple());
+      if (!maps.contains(map.getIdentity()))
+        maps.add(map.getIdentity());
   }
 
 	public String getMappings() {

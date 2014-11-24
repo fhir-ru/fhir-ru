@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
@@ -55,16 +55,16 @@ public class Period extends Type {
     }
 
     /**
-     * @return {@link #start} (The start of the period. The boundary is inclusive.)
+     * @return {@link #start} (The start of the period. The boundary is inclusive.). This is the underlying object with id, value and extensions. The accessor "getStart" gives direct access to the value
      */
-    public DateTimeType getStart() { 
+    public DateTimeType getStartElement() { 
       return this.start;
     }
 
     /**
-     * @param value {@link #start} (The start of the period. The boundary is inclusive.)
+     * @param value {@link #start} (The start of the period. The boundary is inclusive.). This is the underlying object with id, value and extensions. The accessor "getStart" gives direct access to the value
      */
-    public Period setStart(DateTimeType value) { 
+    public Period setStartElement(DateTimeType value) { 
       this.start = value;
       return this;
     }
@@ -72,14 +72,14 @@ public class Period extends Type {
     /**
      * @return The start of the period. The boundary is inclusive.
      */
-    public DateAndTime getStartSimple() { 
+    public DateAndTime getStart() { 
       return this.start == null ? null : this.start.getValue();
     }
 
     /**
      * @param value The start of the period. The boundary is inclusive.
      */
-    public Period setStartSimple(DateAndTime value) { 
+    public Period setStart(DateAndTime value) { 
       if (value == null)
         this.start = null;
       else {
@@ -91,16 +91,16 @@ public class Period extends Type {
     }
 
     /**
-     * @return {@link #end} (The end of the period. If the end of the period is missing, it means that the period is ongoing.)
+     * @return {@link #end} (The end of the period. If the end of the period is missing, it means that the period is ongoing.). This is the underlying object with id, value and extensions. The accessor "getEnd" gives direct access to the value
      */
-    public DateTimeType getEnd() { 
+    public DateTimeType getEndElement() { 
       return this.end;
     }
 
     /**
-     * @param value {@link #end} (The end of the period. If the end of the period is missing, it means that the period is ongoing.)
+     * @param value {@link #end} (The end of the period. If the end of the period is missing, it means that the period is ongoing.). This is the underlying object with id, value and extensions. The accessor "getEnd" gives direct access to the value
      */
-    public Period setEnd(DateTimeType value) { 
+    public Period setEndElement(DateTimeType value) { 
       this.end = value;
       return this;
     }
@@ -108,14 +108,14 @@ public class Period extends Type {
     /**
      * @return The end of the period. If the end of the period is missing, it means that the period is ongoing.
      */
-    public DateAndTime getEndSimple() { 
+    public DateAndTime getEnd() { 
       return this.end == null ? null : this.end.getValue();
     }
 
     /**
      * @param value The end of the period. If the end of the period is missing, it means that the period is ongoing.
      */
-    public Period setEndSimple(DateAndTime value) { 
+    public Period setEnd(DateAndTime value) { 
       if (value == null)
         this.end = null;
       else {
@@ -134,6 +134,7 @@ public class Period extends Type {
 
       public Period copy() {
         Period dst = new Period();
+        copyValues(dst);
         dst.start = start == null ? null : start.copy();
         dst.end = end == null ? null : end.copy();
         return dst;

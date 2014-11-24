@@ -66,11 +66,17 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Disponibilidad</translation>
         <translation lang="fr">Disponibilité</translation>
     </item>
+    <item id="Basic">
+      <translation lang="en">Basic</translation>
+    </item>
     <item id="Binary">
         <translation lang="en">Binary</translation>
         <translation lang="zh">二进制</translation>
         <translation lang="es">Binario</translation>
         <translation lang="fr">Binaire</translation>
+    </item>
+    <item id="NewBundle">
+      <translation lang="en">NewBundle</translation>
     </item>
     <item id="CarePlan">
         <translation lang="en">CarePlan</translation>
@@ -83,6 +89,12 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="zh">声称</translation>
         <translation lang="es">Reclamación</translation>
         <translation lang="fr">Réclamation</translation>
+    </item>
+    <item id="ClaimResponse">
+        <translation lang="en">ClaimResponse</translation>
+    </item>
+    <item id="CommunicationRequest">
+        <translation lang="en">CommunicationRequest</translation>
     </item>
     <item id="Composition">
         <translation lang="en">Composition</translation>
@@ -101,6 +113,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="zh">条件</translation>
         <translation lang="es">Condición</translation>
         <translation lang="fr">Condition</translation>
+    </item>
+    <item id="Contract">
+        <translation lang="en">Contract</translation>
     </item>
     <item id="Conformance">
         <translation lang="en">Conformance</translation>
@@ -129,11 +144,23 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Dispositivo</translation>
         <translation lang="fr">Dispositif</translation>
     </item>
-    <item id="DeviceObservationReport">
+    <item id="DeviceUseRequest">
+        <translation lang="en">DeviceUseRequest</translation>
+    </item>
+    <item id="DeviceUseStatement">
+        <translation lang="en">DeviceUseStatement</translation>
+    </item>
+    <!--<item id="DeviceObservationReport">
         <translation lang="en">DeviceObservationReport</translation>
         <translation lang="zh">设备观测报告</translation>
         <translation lang="es">InformeObservaciónDispositivo</translation>
         <translation lang="fr">DispositifRapportObservation</translation>
+    </item>-->
+	<item id="DeviceComponent">
+        <translation lang="en">DeviceComponent</translation>
+        <translation lang="zh">设备组件</translation>
+        <translation lang="es">ComponenteDeDispositivo</translation>
+        <translation lang="fr">ComposanteDeL'appareil</translation>
     </item>
     <item id="DiagnosticOrder">
         <translation lang="en">DiagnosticOrder</translation>
@@ -159,11 +186,20 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">ReferenciaDocumento</translation>
         <translation lang="fr">RéférenceDocument</translation>
     </item>
+    <item id="Eligibility">
+        <translation lang="en">Eligibility</translation>
+    </item>
     <item id="Encounter">
         <translation lang="en">Encounter</translation>
         <translation lang="zh">就诊</translation>
         <translation lang="es">Encuentro</translation>
         <translation lang="fr">Venue</translation>
+    </item>
+    <item id="ExplanationOfBenefit">
+        <translation lang="en">ExplanationOfBenefit</translation>
+    </item>
+     <item id="ExtensionDefinition">
+        <translation lang="en">ExtensionDefinition</translation>
     </item>
     <item id="FamilyHistory">
         <translation lang="en">FamilyHistory</translation>
@@ -206,6 +242,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="zh">GVF变体</translation>
         <translation lang="es">GVFVariante</translation>
         <translation lang="fr">GVFVariante</translation>
+    </item>
+    <item id="HealthcareService">
+      <translation lang="en">HealthcareService</translation>
     </item>
     <item id="ImagingStudy">
         <translation lang="en">ImagingStudy</translation>
@@ -284,11 +323,14 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Microarray</translation>
         <translation lang="fr">Microarray</translation>
     </item>
-    <item id="Namespace">
-        <translation lang="en">Namespace</translation>
-        <translation lang="zh">命名空间</translation>
-        <translation lang="es">Namespace</translation>
-        <translation lang="fr">EspaceDeNoms</translation>
+    <item id="NamingSystem">
+        <translation lang="en">NamingSystem</translation>
+    </item>
+    <item id="NutritionOrder">
+        <translation lang="en">NutritionOrder</translation>
+        <translation lang="zh">为了营养</translation>
+        <translation lang="es">OrdenNutrición</translation>
+        <translation lang="fr">OrdreNutrition</translation>
     </item>
     <item id="Observation">
         <translation lang="en">Observation</translation>
@@ -304,6 +346,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="zh">手术成果</translation>
         <translation lang="es">ResultadoOperación</translation>
         <translation lang="fr">RésultatOpération</translation>
+    </item>
+    <item id="OralHealthClaim">
+        <translation lang="en">OralHealthClaim</translation>
     </item>
     <item id="Order">
         <translation lang="en">Order</translation>
@@ -352,6 +397,10 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="zh">步骤</translation>
         <translation lang="es">Procedimiento</translation>
         <translation lang="fr">Procédure</translation>
+    </item>
+    <item id="ProcedureRequest">
+        <translation lang="en">ProcedureRequest</translation>
+        <translation lang="fr">ProcédureDemande</translation>
     </item>
     <item id="Profile">
         <translation lang="en">Profile</translation>
@@ -405,6 +454,9 @@ NOTE: while translations on Resources are possible they should be used for rende
     </item>
     <item id="RiskAssessment">
         <translation lang="en">RiskAssessment</translation>
+    </item>
+    <item id="AdverseReactionRisk">
+        <translation lang="en">AdverseReactionRisk</translation>
     </item>
     <item id="SecurityEvent">
         <translation lang="en">SecurityEvent</translation>
@@ -460,6 +512,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Suministro</translation>
         <translation lang="fr">Approvisionnement</translation>
     </item>
+    <item id="SupportingDocumentation">
+        <translation lang="en">SupportingDocumentation</translation>
+    </item>
     <item id="User">
         <translation lang="en">User</translation>
         <translation lang="zh">用户</translation>
@@ -474,12 +529,14 @@ NOTE: while translations on Resources are possible they should be used for rende
     </item>
     <item id="VCFMeta">
         <translation lang="en">VCFMeta</translation>
+        <translation lang="nl">VCFMeta</translation>
         <translation lang="zh">VCF元</translation>
         <translation lang="es">VCFMeta</translation>
         <translation lang="fr">VCFMeta</translation>
     </item>
     <item id="VCFVariant">
         <translation lang="en">VCFVariant</translation>
+        <translation lang="nl">VCFMeta</translation>
         <translation lang="zh">VCF变体</translation>
         <translation lang="es">VCFVariante</translation>
         <translation lang="fr">VCFVariante</translation>
@@ -501,7 +558,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="pl">Powrót do strony głównej</translation>
         <translation lang="es">Volver al inicio</translation>
         <translation lang="fr">Retour à l'accueil</translation>
-        <translation lang="ru">На главную</translation>
+        <translation lang="ru">В начало</translation>
     </item>
     <item id="MSG_BAD_FORMAT">
         <translation lang="en">Bad Syntax: "%s" must be a %s'</translation>
@@ -511,7 +568,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="pl">Błąd składni: "%s" powinno być %s'</translation>
         <translation lang="es">Sintaxis Incorrecta: "%s" debe de ser un %s'</translation>
         <translation lang="fr">Erreur de Syntaxe : "%s" doit être un %s</translation>
-        <translation lang="ru">Неверный синтаксис: "%s" должен быть %s</translation>
+        <translation lang="ru">Неверный синтакс: "%s" должен быть %s</translation>
     </item>
     <item id="MSG_BAD_SYNTAX">
         <translation lang="en">Bad Syntax in %s</translation>
@@ -521,7 +578,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="pl">Błąd składni w %s</translation>
         <translation lang="es">Sintaxis Incorrecta en %s</translation>
         <translation lang="fr">Erreur de Syntaxe dans %s</translation>
-        <translation lang="ru">Неверный синтаксис: %s</translation>
+        <translation lang="ru">Неверный синтакс: %s</translation>
     </item>
     <item id="MSG_CANT_PARSE_CONTENT">
         <translation lang="en">Unable to parse feed (entry content type = "%s")</translation>
@@ -550,7 +607,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="pl">Zawartością może być zasób, treść w formacie atom (atom feed) lub plik zip zasobów i treści w formacie atom (xml lub json)</translation>
         <translation lang="es">El contenido puede ser un recurso, una fuente web (feed) o una colección de recursos y feeds (xml o json)</translation>
         <translation lang="fr">Le contenu peut être une ressource, un flux atom, ou une archive zip d'un ensemble de ressources et de flux atom (xml ou json)</translation>
-        <translation lang="ru">Контент может быть ресурсом, веб-каналом Atom или zip-архивом ресурсов или атомов (xml или json)</translation>
+        <translation lang="ru">Контент может быть ресурсом, веб-каналом Atom или zip архивом ресурсов или атомов (xml или json)</translation>
     </item>
     <item id="MSG_CONTENT_PASTE">
         <translation lang="en">or just paste your xml or json here</translation>
@@ -1324,6 +1381,7 @@ NOTE: while translations on Resources are possible they should be used for rende
     </item>
     <item id="NO_TAGS">
         <translation lang="en">(No tags defined)</translation>
+        <translation lang="nl">(Geen labels gedefinieerd)</translation>
     </item>
     <item id="RESOURCE_TAGS">
         <translation lang="en">Tags defined on this System for the resource type %s ID %s</translation>
@@ -1498,29 +1556,35 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="ru">Сервер FHIR RESTful - Загрузка для %s завершена</translation>
     </item>
     <item id="HOME">
-        <translation lang="en">Главная</translation>
-		 <translation lang="ru">Главная</translation>
+        <translation lang="en">Home</translation>
+        <translation lang="nl">Start</translation>
     </item>
     <item id="SERVER_HOME">
         <translation lang="en">Server Home</translation>
+        <translation lang="nl">Server start</translation>
     </item>
     <item id="TERMINOLOGY">
         <!-- as in, this is a 'terminology' server -->
         <translation lang="en">Terminology</translation>
+        <translation lang="nl">Terminologie</translation>
     </item>
     <item id="WELCOME">
         <!-- as in, 'welcome' to the FHIR server -->
         <translation lang="en">Welcome</translation>
+        <translation lang="nl">Welkom</translation>
     </item>
     <item id="FOUND">
         <!-- as in, # Patients 'found' -->
         <translation lang="en">found</translation>
+        <translation lang="nl">gevonden</translation>
     </item>
     <item id="SYSTEM_OPERATIONS">
         <translation lang="en">System Operations</translation>
+        <translation lang="nl">Systeembewerkingen</translation>
     </item>
     <item id="CONF_PROFILE">
         <translation lang="en">Conformance Profile</translation>
+        <translation lang="nl">Conformanceprofiel</translation>
     </item>
     <item id="OR">
         <!-- as in, XML 'or' JSON -->
@@ -1535,8 +1599,13 @@ NOTE: while translations on Resources are possible they should be used for rende
     </item>
     <item id="GENERAL_SEARCH">
         <translation lang="en">General Search</translation>
+        <translation lang="nl">Algemene zoekopdracht</translation>
     </item>
     <item id="THIS_RESOURCE">
         <translation lang="en">This Resource</translation>
+        <translation lang="nl">Deze resource</translation>
+    </item>
+    <item id="Bundle">
+        <translation lang="en">Bundle</translation>
     </item>
 </translations>

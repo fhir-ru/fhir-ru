@@ -1,6 +1,6 @@
 package org.hl7.fhir.tools.implementations.java;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -45,7 +45,7 @@ public class JavaParserFactoryGenerator extends OutputStreamWriter {
 		super(out, "UTF-8");
 	}
 
-	public void registerResource(String name, String classname) {
+	public void registerReference(String name, String classname) {
 		resources.put(name,  classname);
 	}
 	

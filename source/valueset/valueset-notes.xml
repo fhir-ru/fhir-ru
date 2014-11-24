@@ -54,6 +54,10 @@ There is no particular format requirement for the version identifier, though HL7
 When the value set definition of a code system includes a version identifier, the version identifier SHOULD be 
 used in <a href="datatypes.html#coding">Coding</a> instances that refer to the code system. 
 </p>
+<p>
+Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.
+</p>
+
 
 
 <h2>Value Sets that include codes defined elsewhere</h2>
@@ -86,8 +90,33 @@ to compute the relationship, which might not be possible for a profile tool</li>
   appropriate properties. Note that in some cases, the underlying code system defines the 
   logical concepts but not the syntax for exercising them. In such cases, the literal 
   definitions may be provided by a third party. See below for notes about its use against common code systems</li>
+ <li>Value sets may include abstract codes - that is, codes designated by the underlying code system as 
+   not for use as a real concept. These abstract codes are typically used as a grouping/searching mechanism,
+   and can be included either by enumerating them, or by using a filter</li>
 </ul>
-
+<p>
+When a value set enumerates codes, it is also able to define an alternative display for 
+the code that is to be used where ever the value set is expanded and used in a UI. This 
+facility is provided to cover the following circumstances:
+</p>
+<ul>
+ <li>The system that defines the code or expression doesn't provide a display for this code (or any codes)</li>
+ <li>The system that defines the code or expression defines multiple choices for display</li>
+ <li>The system provides a very long display name that is unnecssary or innappropriate in the context of this value set (e.g. a display name of "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" for LOINC code 48991-4, when the value set only includes Glucose mass/vol in serum/plasma codes). As the display names get longer, this becomes more important</li>
+</ul>
+<p>
+Note that care must be taken in order to avoid "changing the meaning" of the concept by
+implying that it means something other than the explicit definition of the concept in the
+underlying system (e.g. in the case above, using a display "Glucose Concentration at 10pm"). 
+For this reason, some contexts of use do not allow a display to be associated with a specific code.
+</p>
+<p>
+The display name for the code in the value set is only used in the UI. The display in a 
+a <a href="datatypes.html#Coding">Coding</a> must be taken from the underlying system, 
+even if a value set is referenced explicitly in the Coding. The alternative display 
+specified in the value set would go in <a href="datatypes.html#CodeableConcept">CodeableConcept</a>.text.
+</p>
+ 
 <h3>Code systems Note</h3>
 <p>
 How filters are used with various code systems:
@@ -159,9 +188,15 @@ expanding a value set:
 </ul>
 <p>
 The "result set" is then represented in <i>expansion</i>. Note that the expansion structure is inherently ordered, and 
-also provides support for a hierarchical tree of codes. This specification does not fix the meaning of use of either
+also provides support for a hierarchical tree of items. This specification does not fix the meaning of use of either
 of these, and the conceptual approach described should not be understood to prohibit any implementation approach in
 these regards. There is a <a href="valueset-operations.html">defined operation</a> to ask a server to perform this expansion.
+</p>
+<p>
+An expansion may include entries in the expansion that only serve an arbitrary grouping purpose, to make it easier
+for a human to use the list. These entries have no system or code, and must be marked as abstract. Note that the 
+value set define and compose offer no support for defining these, but this does not exclude servers from using
+extensions or other knowledge to introduce such groups as an implementation feature. 
 </p>
 
 

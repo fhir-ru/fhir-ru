@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,32 +29,47 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * Primarily used for identification and definition of Medication, but also covers ingredients and packaging.
  */
-public class Medication extends Resource {
+public class Medication extends DomainResource {
 
     public enum MedicationKind {
-        product, // The medication is a product.
-        package_, // The medication is a package - a contained group of one of more products.
-        Null; // added to help the parsers
+        PRODUCT, // The medication is a product.
+        PACKAGE, // The medication is a package - a contained group of one of more products.
+        NULL; // added to help the parsers
         public static MedicationKind fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("product".equals(codeString))
-          return product;
+          return PRODUCT;
         if ("package".equals(codeString))
-          return package_;
+          return PACKAGE;
         throw new Exception("Unknown MedicationKind code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case product: return "product";
-            case package_: return "package";
+            case PRODUCT: return "product";
+            case PACKAGE: return "package";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case PRODUCT: return "The medication is a product.";
+            case PACKAGE: return "The medication is a package - a contained group of one of more products.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case PRODUCT: return "product";
+            case PACKAGE: return "package";
             default: return "?";
           }
         }
@@ -66,15 +81,15 @@ public class Medication extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("product".equals(codeString))
-          return MedicationKind.product;
+          return MedicationKind.PRODUCT;
         if ("package".equals(codeString))
-          return MedicationKind.package_;
+          return MedicationKind.PACKAGE;
         throw new Exception("Unknown MedicationKind code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == MedicationKind.product)
+      if (code == MedicationKind.PRODUCT)
         return "product";
-      if (code == MedicationKind.package_)
+      if (code == MedicationKind.PACKAGE)
         return "package";
       return "?";
       }
@@ -119,11 +134,11 @@ public class Medication extends Resource {
           return this.ingredient;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #ingredient} (Identifies a particular constituent of interest in the product.)
          */
-        public MedicationProductIngredientComponent addIngredient() { 
+    // syntactic sugar
+        public MedicationProductIngredientComponent addIngredient() { //3
           MedicationProductIngredientComponent t = new MedicationProductIngredientComponent();
           this.ingredient.add(t);
           return t;
@@ -137,6 +152,7 @@ public class Medication extends Resource {
 
       public MedicationProductComponent copy() {
         MedicationProductComponent dst = new MedicationProductComponent();
+        copyValues(dst);
         dst.form = form == null ? null : form.copy();
         dst.ingredient = new ArrayList<MedicationProductIngredientComponent>();
         for (MedicationProductIngredientComponent i : ingredient)
@@ -150,7 +166,7 @@ public class Medication extends Resource {
         /**
          * The actual ingredient - either a substance (simple ingredient) or another medication.
          */
-        protected ResourceReference item;
+        protected Reference item;
 
         /**
          * The actual object that is the target of the reference (The actual ingredient - either a substance (simple ingredient) or another medication.)
@@ -162,13 +178,13 @@ public class Medication extends Resource {
          */
         protected Ratio amount;
 
-        private static final long serialVersionUID = 928082101L;
+        private static final long serialVersionUID = -1217232889L;
 
       public MedicationProductIngredientComponent() {
         super();
       }
 
-      public MedicationProductIngredientComponent(ResourceReference item) {
+      public MedicationProductIngredientComponent(Reference item) {
         super();
         this.item = item;
       }
@@ -176,27 +192,27 @@ public class Medication extends Resource {
         /**
          * @return {@link #item} (The actual ingredient - either a substance (simple ingredient) or another medication.)
          */
-        public ResourceReference getItem() { 
+        public Reference getItem() { 
           return this.item;
         }
 
         /**
          * @param value {@link #item} (The actual ingredient - either a substance (simple ingredient) or another medication.)
          */
-        public MedicationProductIngredientComponent setItem(ResourceReference value) { 
+        public MedicationProductIngredientComponent setItem(Reference value) { 
           this.item = value;
           return this;
         }
 
         /**
-         * @return {@link #item} (The actual object that is the target of the reference. The actual ingredient - either a substance (simple ingredient) or another medication.)
+         * @return {@link #item} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The actual ingredient - either a substance (simple ingredient) or another medication.)
          */
         public Resource getItemTarget() { 
           return this.itemTarget;
         }
 
         /**
-         * @param value {@link #item} (The actual object that is the target of the reference. The actual ingredient - either a substance (simple ingredient) or another medication.)
+         * @param value {@link #item} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The actual ingredient - either a substance (simple ingredient) or another medication.)
          */
         public MedicationProductIngredientComponent setItemTarget(Resource value) { 
           this.itemTarget = value;
@@ -220,12 +236,13 @@ public class Medication extends Resource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("item", "Resource(Substance|Medication)", "The actual ingredient - either a substance (simple ingredient) or another medication.", 0, java.lang.Integer.MAX_VALUE, item));
+          childrenList.add(new Property("item", "Reference(Substance|Medication)", "The actual ingredient - either a substance (simple ingredient) or another medication.", 0, java.lang.Integer.MAX_VALUE, item));
           childrenList.add(new Property("amount", "Ratio", "Specifies how many (or how much) of the items there are in this Medication.  E.g. 250 mg per tablet.", 0, java.lang.Integer.MAX_VALUE, amount));
         }
 
       public MedicationProductIngredientComponent copy() {
         MedicationProductIngredientComponent dst = new MedicationProductIngredientComponent();
+        copyValues(dst);
         dst.item = item == null ? null : item.copy();
         dst.amount = amount == null ? null : amount.copy();
         return dst;
@@ -272,11 +289,11 @@ public class Medication extends Resource {
           return this.content;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #content} (A set of components that go to make up the described item.)
          */
-        public MedicationPackageContentComponent addContent() { 
+    // syntactic sugar
+        public MedicationPackageContentComponent addContent() { //3
           MedicationPackageContentComponent t = new MedicationPackageContentComponent();
           this.content.add(t);
           return t;
@@ -290,6 +307,7 @@ public class Medication extends Resource {
 
       public MedicationPackageComponent copy() {
         MedicationPackageComponent dst = new MedicationPackageComponent();
+        copyValues(dst);
         dst.container = container == null ? null : container.copy();
         dst.content = new ArrayList<MedicationPackageContentComponent>();
         for (MedicationPackageContentComponent i : content)
@@ -303,7 +321,7 @@ public class Medication extends Resource {
         /**
          * Identifies one of the items in the package.
          */
-        protected ResourceReference item;
+        protected Reference item;
 
         /**
          * The actual object that is the target of the reference (Identifies one of the items in the package.)
@@ -315,13 +333,13 @@ public class Medication extends Resource {
          */
         protected Quantity amount;
 
-        private static final long serialVersionUID = 1971935074L;
+        private static final long serialVersionUID = -1385430192L;
 
       public MedicationPackageContentComponent() {
         super();
       }
 
-      public MedicationPackageContentComponent(ResourceReference item) {
+      public MedicationPackageContentComponent(Reference item) {
         super();
         this.item = item;
       }
@@ -329,27 +347,27 @@ public class Medication extends Resource {
         /**
          * @return {@link #item} (Identifies one of the items in the package.)
          */
-        public ResourceReference getItem() { 
+        public Reference getItem() { 
           return this.item;
         }
 
         /**
          * @param value {@link #item} (Identifies one of the items in the package.)
          */
-        public MedicationPackageContentComponent setItem(ResourceReference value) { 
+        public MedicationPackageContentComponent setItem(Reference value) { 
           this.item = value;
           return this;
         }
 
         /**
-         * @return {@link #item} (The actual object that is the target of the reference. Identifies one of the items in the package.)
+         * @return {@link #item} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies one of the items in the package.)
          */
         public Medication getItemTarget() { 
           return this.itemTarget;
         }
 
         /**
-         * @param value {@link #item} (The actual object that is the target of the reference. Identifies one of the items in the package.)
+         * @param value {@link #item} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies one of the items in the package.)
          */
         public MedicationPackageContentComponent setItemTarget(Medication value) { 
           this.itemTarget = value;
@@ -373,12 +391,13 @@ public class Medication extends Resource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("item", "Resource(Medication)", "Identifies one of the items in the package.", 0, java.lang.Integer.MAX_VALUE, item));
+          childrenList.add(new Property("item", "Reference(Medication)", "Identifies one of the items in the package.", 0, java.lang.Integer.MAX_VALUE, item));
           childrenList.add(new Property("amount", "Quantity", "The amount of the product that is in the package.", 0, java.lang.Integer.MAX_VALUE, amount));
         }
 
       public MedicationPackageContentComponent copy() {
         MedicationPackageContentComponent dst = new MedicationPackageContentComponent();
+        copyValues(dst);
         dst.item = item == null ? null : item.copy();
         dst.amount = amount == null ? null : amount.copy();
         return dst;
@@ -404,7 +423,7 @@ public class Medication extends Resource {
     /**
      * Describes the details of the manufacturer.
      */
-    protected ResourceReference manufacturer;
+    protected Reference manufacturer;
 
     /**
      * The actual object that is the target of the reference (Describes the details of the manufacturer.)
@@ -426,23 +445,23 @@ public class Medication extends Resource {
      */
     protected MedicationPackageComponent package_;
 
-    private static final long serialVersionUID = -1406021045L;
+    private static final long serialVersionUID = 385691577L;
 
     public Medication() {
       super();
     }
 
     /**
-     * @return {@link #name} (The common/commercial name of the medication absent information such as strength, form, etc.  E.g. Acetaminophen, Tylenol 3, etc.  The fully coordinated name is communicated as the display of Medication.code.)
+     * @return {@link #name} (The common/commercial name of the medication absent information such as strength, form, etc.  E.g. Acetaminophen, Tylenol 3, etc.  The fully coordinated name is communicated as the display of Medication.code.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
      */
-    public StringType getName() { 
+    public StringType getNameElement() { 
       return this.name;
     }
 
     /**
-     * @param value {@link #name} (The common/commercial name of the medication absent information such as strength, form, etc.  E.g. Acetaminophen, Tylenol 3, etc.  The fully coordinated name is communicated as the display of Medication.code.)
+     * @param value {@link #name} (The common/commercial name of the medication absent information such as strength, form, etc.  E.g. Acetaminophen, Tylenol 3, etc.  The fully coordinated name is communicated as the display of Medication.code.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
      */
-    public Medication setName(StringType value) { 
+    public Medication setNameElement(StringType value) { 
       this.name = value;
       return this;
     }
@@ -450,15 +469,15 @@ public class Medication extends Resource {
     /**
      * @return The common/commercial name of the medication absent information such as strength, form, etc.  E.g. Acetaminophen, Tylenol 3, etc.  The fully coordinated name is communicated as the display of Medication.code.
      */
-    public String getNameSimple() { 
+    public String getName() { 
       return this.name == null ? null : this.name.getValue();
     }
 
     /**
      * @param value The common/commercial name of the medication absent information such as strength, form, etc.  E.g. Acetaminophen, Tylenol 3, etc.  The fully coordinated name is communicated as the display of Medication.code.
      */
-    public Medication setNameSimple(String value) { 
-      if (value == null)
+    public Medication setName(String value) { 
+      if (Utilities.noString(value))
         this.name = null;
       else {
         if (this.name == null)
@@ -484,16 +503,16 @@ public class Medication extends Resource {
     }
 
     /**
-     * @return {@link #isBrand} (Set to true if the item is attributable to a specific manufacturer (even if we don't know who that is).)
+     * @return {@link #isBrand} (Set to true if the item is attributable to a specific manufacturer (even if we don't know who that is).). This is the underlying object with id, value and extensions. The accessor "getIsBrand" gives direct access to the value
      */
-    public BooleanType getIsBrand() { 
+    public BooleanType getIsBrandElement() { 
       return this.isBrand;
     }
 
     /**
-     * @param value {@link #isBrand} (Set to true if the item is attributable to a specific manufacturer (even if we don't know who that is).)
+     * @param value {@link #isBrand} (Set to true if the item is attributable to a specific manufacturer (even if we don't know who that is).). This is the underlying object with id, value and extensions. The accessor "getIsBrand" gives direct access to the value
      */
-    public Medication setIsBrand(BooleanType value) { 
+    public Medication setIsBrandElement(BooleanType value) { 
       this.isBrand = value;
       return this;
     }
@@ -501,14 +520,14 @@ public class Medication extends Resource {
     /**
      * @return Set to true if the item is attributable to a specific manufacturer (even if we don't know who that is).
      */
-    public boolean getIsBrandSimple() { 
+    public boolean getIsBrand() { 
       return this.isBrand == null ? false : this.isBrand.getValue();
     }
 
     /**
      * @param value Set to true if the item is attributable to a specific manufacturer (even if we don't know who that is).
      */
-    public Medication setIsBrandSimple(boolean value) { 
+    public Medication setIsBrand(boolean value) { 
       if (value == false)
         this.isBrand = null;
       else {
@@ -522,27 +541,27 @@ public class Medication extends Resource {
     /**
      * @return {@link #manufacturer} (Describes the details of the manufacturer.)
      */
-    public ResourceReference getManufacturer() { 
+    public Reference getManufacturer() { 
       return this.manufacturer;
     }
 
     /**
      * @param value {@link #manufacturer} (Describes the details of the manufacturer.)
      */
-    public Medication setManufacturer(ResourceReference value) { 
+    public Medication setManufacturer(Reference value) { 
       this.manufacturer = value;
       return this;
     }
 
     /**
-     * @return {@link #manufacturer} (The actual object that is the target of the reference. Describes the details of the manufacturer.)
+     * @return {@link #manufacturer} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Describes the details of the manufacturer.)
      */
     public Organization getManufacturerTarget() { 
       return this.manufacturerTarget;
     }
 
     /**
-     * @param value {@link #manufacturer} (The actual object that is the target of the reference. Describes the details of the manufacturer.)
+     * @param value {@link #manufacturer} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Describes the details of the manufacturer.)
      */
     public Medication setManufacturerTarget(Organization value) { 
       this.manufacturerTarget = value;
@@ -550,16 +569,16 @@ public class Medication extends Resource {
     }
 
     /**
-     * @return {@link #kind} (Medications are either a single administrable product or a package that contains one or more products.)
+     * @return {@link #kind} (Medications are either a single administrable product or a package that contains one or more products.). This is the underlying object with id, value and extensions. The accessor "getKind" gives direct access to the value
      */
-    public Enumeration<MedicationKind> getKind() { 
+    public Enumeration<MedicationKind> getKindElement() { 
       return this.kind;
     }
 
     /**
-     * @param value {@link #kind} (Medications are either a single administrable product or a package that contains one or more products.)
+     * @param value {@link #kind} (Medications are either a single administrable product or a package that contains one or more products.). This is the underlying object with id, value and extensions. The accessor "getKind" gives direct access to the value
      */
-    public Medication setKind(Enumeration<MedicationKind> value) { 
+    public Medication setKindElement(Enumeration<MedicationKind> value) { 
       this.kind = value;
       return this;
     }
@@ -567,14 +586,14 @@ public class Medication extends Resource {
     /**
      * @return Medications are either a single administrable product or a package that contains one or more products.
      */
-    public MedicationKind getKindSimple() { 
+    public MedicationKind getKind() { 
       return this.kind == null ? null : this.kind.getValue();
     }
 
     /**
      * @param value Medications are either a single administrable product or a package that contains one or more products.
      */
-    public Medication setKindSimple(MedicationKind value) { 
+    public Medication setKind(MedicationKind value) { 
       if (value == null)
         this.kind = null;
       else {
@@ -620,7 +639,7 @@ public class Medication extends Resource {
         childrenList.add(new Property("name", "string", "The common/commercial name of the medication absent information such as strength, form, etc.  E.g. Acetaminophen, Tylenol 3, etc.  The fully coordinated name is communicated as the display of Medication.code.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("code", "CodeableConcept", "A code (or set of codes) that identify this medication.   Usage note: This could be a standard drug code such as a drug regulator code, RxNorm code, SNOMED CT code, etc. It could also be a local formulary code, optionally with translations to the standard drug codes.", 0, java.lang.Integer.MAX_VALUE, code));
         childrenList.add(new Property("isBrand", "boolean", "Set to true if the item is attributable to a specific manufacturer (even if we don't know who that is).", 0, java.lang.Integer.MAX_VALUE, isBrand));
-        childrenList.add(new Property("manufacturer", "Resource(Organization)", "Describes the details of the manufacturer.", 0, java.lang.Integer.MAX_VALUE, manufacturer));
+        childrenList.add(new Property("manufacturer", "Reference(Organization)", "Describes the details of the manufacturer.", 0, java.lang.Integer.MAX_VALUE, manufacturer));
         childrenList.add(new Property("kind", "code", "Medications are either a single administrable product or a package that contains one or more products.", 0, java.lang.Integer.MAX_VALUE, kind));
         childrenList.add(new Property("product", "", "Information that only applies to products (not packages).", 0, java.lang.Integer.MAX_VALUE, product));
         childrenList.add(new Property("package", "", "Information that only applies to packages (not products).", 0, java.lang.Integer.MAX_VALUE, package_));
@@ -628,6 +647,7 @@ public class Medication extends Resource {
 
       public Medication copy() {
         Medication dst = new Medication();
+        copyValues(dst);
         dst.name = name == null ? null : name.copy();
         dst.code = code == null ? null : code.copy();
         dst.isBrand = isBrand == null ? null : isBrand.copy();

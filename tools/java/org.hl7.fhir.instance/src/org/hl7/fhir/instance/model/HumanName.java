@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,52 +29,77 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A human's name with the ability to identify parts and usage.
  */
 public class HumanName extends Type {
 
     public enum NameUse {
-        usual, // Known as/conventional/the one you normally use.
-        official, // The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
-        temp, // A temporary name. Name.period can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations.
-        nickname, // A name that is used to address the person in an informal manner, but is not part of their formal or usual name.
-        anonymous, // Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
-        old, // This name is no longer in use (or was never correct, but retained for records).
-        maiden, // A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store "maiden" names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person's name, nor should the maiden name be determined algorithmically.
-        Null; // added to help the parsers
+        USUAL, // Known as/conventional/the one you normally use.
+        OFFICIAL, // The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called "legal name".
+        TEMP, // A temporary name. Name.period can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations.
+        NICKNAME, // A name that is used to address the person in an informal manner, but is not part of their formal or usual name.
+        ANONYMOUS, // Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
+        OLD, // This name is no longer in use (or was never correct, but retained for records).
+        MAIDEN, // A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store "maiden" names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person's name, nor should the maiden name be determined algorithmically.
+        NULL; // added to help the parsers
         public static NameUse fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("usual".equals(codeString))
-          return usual;
+          return USUAL;
         if ("official".equals(codeString))
-          return official;
+          return OFFICIAL;
         if ("temp".equals(codeString))
-          return temp;
+          return TEMP;
         if ("nickname".equals(codeString))
-          return nickname;
+          return NICKNAME;
         if ("anonymous".equals(codeString))
-          return anonymous;
+          return ANONYMOUS;
         if ("old".equals(codeString))
-          return old;
+          return OLD;
         if ("maiden".equals(codeString))
-          return maiden;
+          return MAIDEN;
         throw new Exception("Unknown NameUse code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case usual: return "usual";
-            case official: return "official";
-            case temp: return "temp";
-            case nickname: return "nickname";
-            case anonymous: return "anonymous";
-            case old: return "old";
-            case maiden: return "maiden";
+            case USUAL: return "usual";
+            case OFFICIAL: return "official";
+            case TEMP: return "temp";
+            case NICKNAME: return "nickname";
+            case ANONYMOUS: return "anonymous";
+            case OLD: return "old";
+            case MAIDEN: return "maiden";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case USUAL: return "Known as/conventional/the one you normally use.";
+            case OFFICIAL: return "The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called 'legal name'.";
+            case TEMP: return "A temporary name. Name.period can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations.";
+            case NICKNAME: return "A name that is used to address the person in an informal manner, but is not part of their formal or usual name.";
+            case ANONYMOUS: return "Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).";
+            case OLD: return "This name is no longer in use (or was never correct, but retained for records).";
+            case MAIDEN: return "A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store 'maiden' names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person's name, nor should the maiden name be determined algorithmically.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case USUAL: return "usual";
+            case OFFICIAL: return "official";
+            case TEMP: return "temp";
+            case NICKNAME: return "nickname";
+            case ANONYMOUS: return "anonymous";
+            case OLD: return "old";
+            case MAIDEN: return "maiden";
             default: return "?";
           }
         }
@@ -86,35 +111,35 @@ public class HumanName extends Type {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("usual".equals(codeString))
-          return NameUse.usual;
+          return NameUse.USUAL;
         if ("official".equals(codeString))
-          return NameUse.official;
+          return NameUse.OFFICIAL;
         if ("temp".equals(codeString))
-          return NameUse.temp;
+          return NameUse.TEMP;
         if ("nickname".equals(codeString))
-          return NameUse.nickname;
+          return NameUse.NICKNAME;
         if ("anonymous".equals(codeString))
-          return NameUse.anonymous;
+          return NameUse.ANONYMOUS;
         if ("old".equals(codeString))
-          return NameUse.old;
+          return NameUse.OLD;
         if ("maiden".equals(codeString))
-          return NameUse.maiden;
+          return NameUse.MAIDEN;
         throw new Exception("Unknown NameUse code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == NameUse.usual)
+      if (code == NameUse.USUAL)
         return "usual";
-      if (code == NameUse.official)
+      if (code == NameUse.OFFICIAL)
         return "official";
-      if (code == NameUse.temp)
+      if (code == NameUse.TEMP)
         return "temp";
-      if (code == NameUse.nickname)
+      if (code == NameUse.NICKNAME)
         return "nickname";
-      if (code == NameUse.anonymous)
+      if (code == NameUse.ANONYMOUS)
         return "anonymous";
-      if (code == NameUse.old)
+      if (code == NameUse.OLD)
         return "old";
-      if (code == NameUse.maiden)
+      if (code == NameUse.MAIDEN)
         return "maiden";
       return "?";
       }
@@ -162,16 +187,16 @@ public class HumanName extends Type {
     }
 
     /**
-     * @return {@link #use} (Identifies the purpose for this name.)
+     * @return {@link #use} (Identifies the purpose for this name.). This is the underlying object with id, value and extensions. The accessor "getUse" gives direct access to the value
      */
-    public Enumeration<NameUse> getUse() { 
+    public Enumeration<NameUse> getUseElement() { 
       return this.use;
     }
 
     /**
-     * @param value {@link #use} (Identifies the purpose for this name.)
+     * @param value {@link #use} (Identifies the purpose for this name.). This is the underlying object with id, value and extensions. The accessor "getUse" gives direct access to the value
      */
-    public HumanName setUse(Enumeration<NameUse> value) { 
+    public HumanName setUseElement(Enumeration<NameUse> value) { 
       this.use = value;
       return this;
     }
@@ -179,14 +204,14 @@ public class HumanName extends Type {
     /**
      * @return Identifies the purpose for this name.
      */
-    public NameUse getUseSimple() { 
+    public NameUse getUse() { 
       return this.use == null ? null : this.use.getValue();
     }
 
     /**
      * @param value Identifies the purpose for this name.
      */
-    public HumanName setUseSimple(NameUse value) { 
+    public HumanName setUse(NameUse value) { 
       if (value == null)
         this.use = null;
       else {
@@ -198,16 +223,16 @@ public class HumanName extends Type {
     }
 
     /**
-     * @return {@link #text} (A full text representation of the name.)
+     * @return {@link #text} (A full text representation of the name.). This is the underlying object with id, value and extensions. The accessor "getText" gives direct access to the value
      */
-    public StringType getText() { 
+    public StringType getTextElement() { 
       return this.text;
     }
 
     /**
-     * @param value {@link #text} (A full text representation of the name.)
+     * @param value {@link #text} (A full text representation of the name.). This is the underlying object with id, value and extensions. The accessor "getText" gives direct access to the value
      */
-    public HumanName setText(StringType value) { 
+    public HumanName setTextElement(StringType value) { 
       this.text = value;
       return this;
     }
@@ -215,15 +240,15 @@ public class HumanName extends Type {
     /**
      * @return A full text representation of the name.
      */
-    public String getTextSimple() { 
+    public String getText() { 
       return this.text == null ? null : this.text.getValue();
     }
 
     /**
      * @param value A full text representation of the name.
      */
-    public HumanName setTextSimple(String value) { 
-      if (value == null)
+    public HumanName setText(String value) { 
+      if (Utilities.noString(value))
         this.text = null;
       else {
         if (this.text == null)
@@ -240,11 +265,11 @@ public class HumanName extends Type {
       return this.family;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #family} (The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.)
      */
-    public StringType addFamily() { 
+    // syntactic sugar
+    public StringType addFamilyElement() {//2 
       StringType t = new StringType();
       this.family.add(t);
       return t;
@@ -253,19 +278,19 @@ public class HumanName extends Type {
     /**
      * @param value {@link #family} (The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.)
      */
-    public StringType addFamilySimple(String value) { 
+    public HumanName addFamily(String value) { //1
       StringType t = new StringType();
       t.setValue(value);
       this.family.add(t);
-      return t;
+      return this;
     }
 
     /**
      * @param value {@link #family} (The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.)
      */
-    public boolean hasFamilySimple(String value) { 
+    public boolean hasFamily(String value) { 
       for (StringType v : this.family)
-        if (v.getValue().equals(value))
+        if (v.equals(value)) // string
           return true;
       return false;
     }
@@ -277,11 +302,11 @@ public class HumanName extends Type {
       return this.given;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #given} (Given name.)
      */
-    public StringType addGiven() { 
+    // syntactic sugar
+    public StringType addGivenElement() {//2 
       StringType t = new StringType();
       this.given.add(t);
       return t;
@@ -290,19 +315,19 @@ public class HumanName extends Type {
     /**
      * @param value {@link #given} (Given name.)
      */
-    public StringType addGivenSimple(String value) { 
+    public HumanName addGiven(String value) { //1
       StringType t = new StringType();
       t.setValue(value);
       this.given.add(t);
-      return t;
+      return this;
     }
 
     /**
      * @param value {@link #given} (Given name.)
      */
-    public boolean hasGivenSimple(String value) { 
+    public boolean hasGiven(String value) { 
       for (StringType v : this.given)
-        if (v.getValue().equals(value))
+        if (v.equals(value)) // string
           return true;
       return false;
     }
@@ -314,11 +339,11 @@ public class HumanName extends Type {
       return this.prefix;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #prefix} (Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.)
      */
-    public StringType addPrefix() { 
+    // syntactic sugar
+    public StringType addPrefixElement() {//2 
       StringType t = new StringType();
       this.prefix.add(t);
       return t;
@@ -327,19 +352,19 @@ public class HumanName extends Type {
     /**
      * @param value {@link #prefix} (Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.)
      */
-    public StringType addPrefixSimple(String value) { 
+    public HumanName addPrefix(String value) { //1
       StringType t = new StringType();
       t.setValue(value);
       this.prefix.add(t);
-      return t;
+      return this;
     }
 
     /**
      * @param value {@link #prefix} (Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.)
      */
-    public boolean hasPrefixSimple(String value) { 
+    public boolean hasPrefix(String value) { 
       for (StringType v : this.prefix)
-        if (v.getValue().equals(value))
+        if (v.equals(value)) // string
           return true;
       return false;
     }
@@ -351,11 +376,11 @@ public class HumanName extends Type {
       return this.suffix;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #suffix} (Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.)
      */
-    public StringType addSuffix() { 
+    // syntactic sugar
+    public StringType addSuffixElement() {//2 
       StringType t = new StringType();
       this.suffix.add(t);
       return t;
@@ -364,19 +389,19 @@ public class HumanName extends Type {
     /**
      * @param value {@link #suffix} (Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.)
      */
-    public StringType addSuffixSimple(String value) { 
+    public HumanName addSuffix(String value) { //1
       StringType t = new StringType();
       t.setValue(value);
       this.suffix.add(t);
-      return t;
+      return this;
     }
 
     /**
      * @param value {@link #suffix} (Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.)
      */
-    public boolean hasSuffixSimple(String value) { 
+    public boolean hasSuffix(String value) { 
       for (StringType v : this.suffix)
-        if (v.getValue().equals(value))
+        if (v.equals(value)) // string
           return true;
       return false;
     }
@@ -409,6 +434,7 @@ public class HumanName extends Type {
 
       public HumanName copy() {
         HumanName dst = new HumanName();
+        copyValues(dst);
         dst.use = use == null ? null : use.copy();
         dst.text = text == null ? null : text.copy();
         dst.family = new ArrayList<StringType>();

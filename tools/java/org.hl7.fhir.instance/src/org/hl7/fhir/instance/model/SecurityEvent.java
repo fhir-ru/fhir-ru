@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,14 +29,15 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
  */
-public class SecurityEvent extends Resource {
+public class SecurityEvent extends DomainResource {
 
     public enum SecurityEventAction {
         C, // Create a new database object, such as Placing an Order.
@@ -44,7 +45,7 @@ public class SecurityEvent extends Resource {
         U, // Update data, such as Revise Patient Information.
         D, // Delete items, such as a doctor master file record.
         E, // Perform a system or application function such as log-on, program execution or use of an object's method, or perform a query/search operation.
-        Null; // added to help the parsers
+        NULL; // added to help the parsers
         public static SecurityEventAction fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -67,6 +68,26 @@ public class SecurityEvent extends Resource {
             case U: return "U";
             case D: return "D";
             case E: return "E";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case C: return "Create a new database object, such as Placing an Order.";
+            case R: return "Display or print data, such as a Doctor Census.";
+            case U: return "Update data, such as Revise Patient Information.";
+            case D: return "Delete items, such as a doctor master file record.";
+            case E: return "Perform a system or application function such as log-on, program execution or use of an object's method, or perform a query/search operation.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case C: return "Create";
+            case R: return "Read/View/Print";
+            case U: return "Update";
+            case D: return "Delete";
+            case E: return "Execute";
             default: return "?";
           }
         }
@@ -109,7 +130,7 @@ public class SecurityEvent extends Resource {
         _4, // The action was not successful due to some kind of catered for error (often equivalent to an HTTP 400 response).
         _8, // The action was not successful due to some kind of unexpected error (often equivalent to an HTTP 500 response).
         _12, // An error of such magnitude occurred that the system is not longer available for use (i.e. the system died).
-        Null; // added to help the parsers
+        NULL; // added to help the parsers
         public static SecurityEventOutcome fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -129,6 +150,24 @@ public class SecurityEvent extends Resource {
             case _4: return "4";
             case _8: return "8";
             case _12: return "12";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case _0: return "The operation completed successfully (whether with warnings or not).";
+            case _4: return "The action was not successful due to some kind of catered for error (often equivalent to an HTTP 400 response).";
+            case _8: return "The action was not successful due to some kind of unexpected error (often equivalent to an HTTP 500 response).";
+            case _12: return "An error of such magnitude occurred that the system is not longer available for use (i.e. the system died).";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case _0: return "Success";
+            case _4: return "Minor failure";
+            case _8: return "Serious failure";
+            case _12: return "Major failure";
             default: return "?";
           }
         }
@@ -168,7 +207,7 @@ public class SecurityEvent extends Resource {
         _3, // Telephone Number.
         _4, // Email address.
         _5, // URI (User directory, HTTP-PUT, ftp, etc.).
-        Null; // added to help the parsers
+        NULL; // added to help the parsers
         public static NetworkType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -185,6 +224,26 @@ public class SecurityEvent extends Resource {
         throw new Exception("Unknown NetworkType code '"+codeString+"'");
         }
         public String toCode() {
+          switch (this) {
+            case _1: return "1";
+            case _2: return "2";
+            case _3: return "3";
+            case _4: return "4";
+            case _5: return "5";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case _1: return "Machine Name, including DNS name.";
+            case _2: return "IP Address.";
+            case _3: return "Telephone Number.";
+            case _4: return "Email address.";
+            case _5: return "URI (User directory, HTTP-PUT, ftp, etc.).";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
           switch (this) {
             case _1: return "1";
             case _2: return "2";
@@ -233,7 +292,7 @@ public class SecurityEvent extends Resource {
         _2, // System Object.
         _3, // Organization.
         _4, // Other.
-        Null; // added to help the parsers
+        NULL; // added to help the parsers
         public static ObjectType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -248,6 +307,24 @@ public class SecurityEvent extends Resource {
         throw new Exception("Unknown ObjectType code '"+codeString+"'");
         }
         public String toCode() {
+          switch (this) {
+            case _1: return "1";
+            case _2: return "2";
+            case _3: return "3";
+            case _4: return "4";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case _1: return "Person.";
+            case _2: return "System Object.";
+            case _3: return "Organization.";
+            case _4: return "Other.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
           switch (this) {
             case _1: return "1";
             case _2: return "2";
@@ -311,7 +388,7 @@ public class SecurityEvent extends Resource {
         _22, // (Deprecated).
         _23, // An object that specifies or controls the routing or delivery of items.  For example, a distribution list is the routing criteria for mail.  The items delivered may be documents, jobs, or other objects.
         _24, // The contents of a query.  This is used to capture the contents of any kind of query.  For security surveillance purposes knowing the queries being made is very important.
-        Null; // added to help the parsers
+        NULL; // added to help the parsers
         public static ObjectRole fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -391,6 +468,64 @@ public class SecurityEvent extends Resource {
             case _22: return "22";
             case _23: return "23";
             case _24: return "24";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case _1: return "This object is the patient that is the subject of care related to this event.  It is identifiable by patient ID or equivalent.  The patient may be either human or animal.";
+            case _2: return "This is a location identified as related to the event.  This is usually the location where the event took place.  Note that for shipping, the usual events are arrival at a location or departure from a location.";
+            case _3: return "This object is any kind of persistent document created as a result of the event.  This could be a paper report, film, electronic report, DICOM Study, etc.  Issues related to medical records life cycle management are conveyed elsewhere.";
+            case _4: return "A logical object related to the event.  (Deprecated).";
+            case _5: return "This is any configurable file used to control creation of documents.  Examples include the objects maintained by the HL7 Master File transactions, Value Sets, etc.";
+            case _6: return "A human participant not otherwise identified by some other category.";
+            case _7: return "(deprecated).";
+            case _8: return "Typically a licensed person who is providing or performing care related to the event, generally a physician.   The key distinction between doctor and practitioner is with regards to their role, not the licensing.  The doctor is the human who actually performed the work.  The practitioner is the human or organization that is responsible for the work.";
+            case _9: return "A person or system that is being notified as part of the event.  This is relevant in situations where automated systems provide notifications to other parties when an event took place.";
+            case _10: return "Insurance company, or any other organization who accepts responsibility for paying for the healthcare event.";
+            case _11: return "A person or active system object involved in the event with a security role.";
+            case _12: return "A person or system object involved in the event with the authority to modify security roles of other objects.";
+            case _13: return "A passive object, such as a role table, that is relevant to the event.";
+            case _14: return "(deprecated)  Relevant to certain RBAC security methodologies.";
+            case _15: return "Any person or organization responsible for providing care.  This encompasses all forms of care, licensed or otherwise, and all sorts of teams and care groups. Note, the distinction between practitioners and the doctor that actually provided the care to the patient.";
+            case _16: return "The source or destination for data transfer, when it does not match some other role.";
+            case _17: return "A source or destination for data transfer, that acts as an archive, database, or similar role.";
+            case _18: return "An object that holds schedule information.  This could be an appointment book, availability information, etc.";
+            case _19: return "An organization or person that is the recipient of services.  This could be an organization that is buying services for a patient, or a person that is buying services for an animal.";
+            case _20: return "An order, task, work item, procedure step, or other description of work to be performed.  E.g., a particular instance of an MPPS.";
+            case _21: return "A list of jobs or a system that provides lists of jobs.  E.g., an MWL SCP.";
+            case _22: return "(Deprecated).";
+            case _23: return "An object that specifies or controls the routing or delivery of items.  For example, a distribution list is the routing criteria for mail.  The items delivered may be documents, jobs, or other objects.";
+            case _24: return "The contents of a query.  This is used to capture the contents of any kind of query.  For security surveillance purposes knowing the queries being made is very important.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case _1: return "Patient";
+            case _2: return "Location";
+            case _3: return "Report";
+            case _4: return "DomainResource";
+            case _5: return "Master file";
+            case _6: return "User";
+            case _7: return "List";
+            case _8: return "Doctor";
+            case _9: return "Subscriber";
+            case _10: return "Guarantor";
+            case _11: return "Security User Entity";
+            case _12: return "Security User Group";
+            case _13: return "Security Resource";
+            case _14: return "Security Granularity Definition";
+            case _15: return "Practitioner";
+            case _16: return "Data Destination";
+            case _17: return "Data Repository";
+            case _18: return "Schedule";
+            case _19: return "Customer";
+            case _20: return "Job";
+            case _21: return "Job Stream";
+            case _22: return "Table";
+            case _23: return "Routing Criteria";
+            case _24: return "Query";
             default: return "?";
           }
         }
@@ -520,7 +655,7 @@ public class SecurityEvent extends Resource {
         _13, // Archiving.
         _14, // Logical deletion.
         _15, // Permanent erasure / Physical destruction.
-        Null; // added to help the parsers
+        NULL; // added to help the parsers
         public static ObjectLifecycle fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -557,6 +692,46 @@ public class SecurityEvent extends Resource {
         throw new Exception("Unknown ObjectLifecycle code '"+codeString+"'");
         }
         public String toCode() {
+          switch (this) {
+            case _1: return "1";
+            case _2: return "2";
+            case _3: return "3";
+            case _4: return "4";
+            case _5: return "5";
+            case _6: return "6";
+            case _7: return "7";
+            case _8: return "8";
+            case _9: return "9";
+            case _10: return "10";
+            case _11: return "11";
+            case _12: return "12";
+            case _13: return "13";
+            case _14: return "14";
+            case _15: return "15";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case _1: return "Origination / Creation.";
+            case _2: return "Import / Copy from original.";
+            case _3: return "Amendment.";
+            case _4: return "Verification.";
+            case _5: return "Translation.";
+            case _6: return "Access / Use.";
+            case _7: return "De-identification.";
+            case _8: return "Aggregation, summarization, derivation.";
+            case _9: return "Report.";
+            case _10: return "Export / Copy to target.";
+            case _11: return "Disclosure.";
+            case _12: return "Receipt of disclosure.";
+            case _13: return "Archiving.";
+            case _14: return "Logical deletion.";
+            case _15: return "Permanent erasure / Physical destruction.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
           switch (this) {
             case _1: return "1";
             case _2: return "2";
@@ -715,27 +890,27 @@ public class SecurityEvent extends Resource {
           return this.subtype;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #subtype} (Identifier for the category of event.)
          */
-        public CodeableConcept addSubtype() { 
+    // syntactic sugar
+        public CodeableConcept addSubtype() { //3
           CodeableConcept t = new CodeableConcept();
           this.subtype.add(t);
           return t;
         }
 
         /**
-         * @return {@link #action} (Indicator for type of action performed during the event that generated the audit.)
+         * @return {@link #action} (Indicator for type of action performed during the event that generated the audit.). This is the underlying object with id, value and extensions. The accessor "getAction" gives direct access to the value
          */
-        public Enumeration<SecurityEventAction> getAction() { 
+        public Enumeration<SecurityEventAction> getActionElement() { 
           return this.action;
         }
 
         /**
-         * @param value {@link #action} (Indicator for type of action performed during the event that generated the audit.)
+         * @param value {@link #action} (Indicator for type of action performed during the event that generated the audit.). This is the underlying object with id, value and extensions. The accessor "getAction" gives direct access to the value
          */
-        public SecurityEventEventComponent setAction(Enumeration<SecurityEventAction> value) { 
+        public SecurityEventEventComponent setActionElement(Enumeration<SecurityEventAction> value) { 
           this.action = value;
           return this;
         }
@@ -743,14 +918,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return Indicator for type of action performed during the event that generated the audit.
          */
-        public SecurityEventAction getActionSimple() { 
+        public SecurityEventAction getAction() { 
           return this.action == null ? null : this.action.getValue();
         }
 
         /**
          * @param value Indicator for type of action performed during the event that generated the audit.
          */
-        public SecurityEventEventComponent setActionSimple(SecurityEventAction value) { 
+        public SecurityEventEventComponent setAction(SecurityEventAction value) { 
           if (value == null)
             this.action = null;
           else {
@@ -762,16 +937,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #dateTime} (The time when the event occurred on the source.)
+         * @return {@link #dateTime} (The time when the event occurred on the source.). This is the underlying object with id, value and extensions. The accessor "getDateTime" gives direct access to the value
          */
-        public InstantType getDateTime() { 
+        public InstantType getDateTimeElement() { 
           return this.dateTime;
         }
 
         /**
-         * @param value {@link #dateTime} (The time when the event occurred on the source.)
+         * @param value {@link #dateTime} (The time when the event occurred on the source.). This is the underlying object with id, value and extensions. The accessor "getDateTime" gives direct access to the value
          */
-        public SecurityEventEventComponent setDateTime(InstantType value) { 
+        public SecurityEventEventComponent setDateTimeElement(InstantType value) { 
           this.dateTime = value;
           return this;
         }
@@ -779,14 +954,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return The time when the event occurred on the source.
          */
-        public DateAndTime getDateTimeSimple() { 
+        public DateAndTime getDateTime() { 
           return this.dateTime == null ? null : this.dateTime.getValue();
         }
 
         /**
          * @param value The time when the event occurred on the source.
          */
-        public SecurityEventEventComponent setDateTimeSimple(DateAndTime value) { 
+        public SecurityEventEventComponent setDateTime(DateAndTime value) { 
             if (this.dateTime == null)
               this.dateTime = new InstantType();
             this.dateTime.setValue(value);
@@ -794,16 +969,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #outcome} (Indicates whether the event succeeded or failed.)
+         * @return {@link #outcome} (Indicates whether the event succeeded or failed.). This is the underlying object with id, value and extensions. The accessor "getOutcome" gives direct access to the value
          */
-        public Enumeration<SecurityEventOutcome> getOutcome() { 
+        public Enumeration<SecurityEventOutcome> getOutcomeElement() { 
           return this.outcome;
         }
 
         /**
-         * @param value {@link #outcome} (Indicates whether the event succeeded or failed.)
+         * @param value {@link #outcome} (Indicates whether the event succeeded or failed.). This is the underlying object with id, value and extensions. The accessor "getOutcome" gives direct access to the value
          */
-        public SecurityEventEventComponent setOutcome(Enumeration<SecurityEventOutcome> value) { 
+        public SecurityEventEventComponent setOutcomeElement(Enumeration<SecurityEventOutcome> value) { 
           this.outcome = value;
           return this;
         }
@@ -811,14 +986,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return Indicates whether the event succeeded or failed.
          */
-        public SecurityEventOutcome getOutcomeSimple() { 
+        public SecurityEventOutcome getOutcome() { 
           return this.outcome == null ? null : this.outcome.getValue();
         }
 
         /**
          * @param value Indicates whether the event succeeded or failed.
          */
-        public SecurityEventEventComponent setOutcomeSimple(SecurityEventOutcome value) { 
+        public SecurityEventEventComponent setOutcome(SecurityEventOutcome value) { 
           if (value == null)
             this.outcome = null;
           else {
@@ -830,16 +1005,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #outcomeDesc} (A free text description of the outcome of the event.)
+         * @return {@link #outcomeDesc} (A free text description of the outcome of the event.). This is the underlying object with id, value and extensions. The accessor "getOutcomeDesc" gives direct access to the value
          */
-        public StringType getOutcomeDesc() { 
+        public StringType getOutcomeDescElement() { 
           return this.outcomeDesc;
         }
 
         /**
-         * @param value {@link #outcomeDesc} (A free text description of the outcome of the event.)
+         * @param value {@link #outcomeDesc} (A free text description of the outcome of the event.). This is the underlying object with id, value and extensions. The accessor "getOutcomeDesc" gives direct access to the value
          */
-        public SecurityEventEventComponent setOutcomeDesc(StringType value) { 
+        public SecurityEventEventComponent setOutcomeDescElement(StringType value) { 
           this.outcomeDesc = value;
           return this;
         }
@@ -847,15 +1022,15 @@ public class SecurityEvent extends Resource {
         /**
          * @return A free text description of the outcome of the event.
          */
-        public String getOutcomeDescSimple() { 
+        public String getOutcomeDesc() { 
           return this.outcomeDesc == null ? null : this.outcomeDesc.getValue();
         }
 
         /**
          * @param value A free text description of the outcome of the event.
          */
-        public SecurityEventEventComponent setOutcomeDescSimple(String value) { 
-          if (value == null)
+        public SecurityEventEventComponent setOutcomeDesc(String value) { 
+          if (Utilities.noString(value))
             this.outcomeDesc = null;
           else {
             if (this.outcomeDesc == null)
@@ -877,6 +1052,7 @@ public class SecurityEvent extends Resource {
 
       public SecurityEventEventComponent copy() {
         SecurityEventEventComponent dst = new SecurityEventEventComponent();
+        copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.subtype = new ArrayList<CodeableConcept>();
         for (CodeableConcept i : subtype)
@@ -899,7 +1075,7 @@ public class SecurityEvent extends Resource {
         /**
          * Direct reference to a resource that identifies the participant.
          */
-        protected ResourceReference reference;
+        protected Reference reference;
 
         /**
          * The actual object that is the target of the reference (Direct reference to a resource that identifies the participant.)
@@ -936,7 +1112,7 @@ public class SecurityEvent extends Resource {
          */
         protected SecurityEventParticipantNetworkComponent network;
 
-        private static final long serialVersionUID = 410004357L;
+        private static final long serialVersionUID = 867092439L;
 
       public SecurityEventParticipantComponent() {
         super();
@@ -954,11 +1130,11 @@ public class SecurityEvent extends Resource {
           return this.role;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #role} (Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the role-based access control security system used in the local context.)
          */
-        public CodeableConcept addRole() { 
+    // syntactic sugar
+        public CodeableConcept addRole() { //3
           CodeableConcept t = new CodeableConcept();
           this.role.add(t);
           return t;
@@ -967,27 +1143,27 @@ public class SecurityEvent extends Resource {
         /**
          * @return {@link #reference} (Direct reference to a resource that identifies the participant.)
          */
-        public ResourceReference getReference() { 
+        public Reference getReference() { 
           return this.reference;
         }
 
         /**
          * @param value {@link #reference} (Direct reference to a resource that identifies the participant.)
          */
-        public SecurityEventParticipantComponent setReference(ResourceReference value) { 
+        public SecurityEventParticipantComponent setReference(Reference value) { 
           this.reference = value;
           return this;
         }
 
         /**
-         * @return {@link #reference} (The actual object that is the target of the reference. Direct reference to a resource that identifies the participant.)
+         * @return {@link #reference} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Direct reference to a resource that identifies the participant.)
          */
         public Resource getReferenceTarget() { 
           return this.referenceTarget;
         }
 
         /**
-         * @param value {@link #reference} (The actual object that is the target of the reference. Direct reference to a resource that identifies the participant.)
+         * @param value {@link #reference} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Direct reference to a resource that identifies the participant.)
          */
         public SecurityEventParticipantComponent setReferenceTarget(Resource value) { 
           this.referenceTarget = value;
@@ -995,16 +1171,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #userId} (Unique identifier for the user actively participating in the event.)
+         * @return {@link #userId} (Unique identifier for the user actively participating in the event.). This is the underlying object with id, value and extensions. The accessor "getUserId" gives direct access to the value
          */
-        public StringType getUserId() { 
+        public StringType getUserIdElement() { 
           return this.userId;
         }
 
         /**
-         * @param value {@link #userId} (Unique identifier for the user actively participating in the event.)
+         * @param value {@link #userId} (Unique identifier for the user actively participating in the event.). This is the underlying object with id, value and extensions. The accessor "getUserId" gives direct access to the value
          */
-        public SecurityEventParticipantComponent setUserId(StringType value) { 
+        public SecurityEventParticipantComponent setUserIdElement(StringType value) { 
           this.userId = value;
           return this;
         }
@@ -1012,15 +1188,15 @@ public class SecurityEvent extends Resource {
         /**
          * @return Unique identifier for the user actively participating in the event.
          */
-        public String getUserIdSimple() { 
+        public String getUserId() { 
           return this.userId == null ? null : this.userId.getValue();
         }
 
         /**
          * @param value Unique identifier for the user actively participating in the event.
          */
-        public SecurityEventParticipantComponent setUserIdSimple(String value) { 
-          if (value == null)
+        public SecurityEventParticipantComponent setUserId(String value) { 
+          if (Utilities.noString(value))
             this.userId = null;
           else {
             if (this.userId == null)
@@ -1031,16 +1207,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #altId} (Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.)
+         * @return {@link #altId} (Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.). This is the underlying object with id, value and extensions. The accessor "getAltId" gives direct access to the value
          */
-        public StringType getAltId() { 
+        public StringType getAltIdElement() { 
           return this.altId;
         }
 
         /**
-         * @param value {@link #altId} (Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.)
+         * @param value {@link #altId} (Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.). This is the underlying object with id, value and extensions. The accessor "getAltId" gives direct access to the value
          */
-        public SecurityEventParticipantComponent setAltId(StringType value) { 
+        public SecurityEventParticipantComponent setAltIdElement(StringType value) { 
           this.altId = value;
           return this;
         }
@@ -1048,15 +1224,15 @@ public class SecurityEvent extends Resource {
         /**
          * @return Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.
          */
-        public String getAltIdSimple() { 
+        public String getAltId() { 
           return this.altId == null ? null : this.altId.getValue();
         }
 
         /**
          * @param value Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.
          */
-        public SecurityEventParticipantComponent setAltIdSimple(String value) { 
-          if (value == null)
+        public SecurityEventParticipantComponent setAltId(String value) { 
+          if (Utilities.noString(value))
             this.altId = null;
           else {
             if (this.altId == null)
@@ -1067,16 +1243,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #name} (Human-meaningful name for the user.)
+         * @return {@link #name} (Human-meaningful name for the user.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
          */
-        public StringType getName() { 
+        public StringType getNameElement() { 
           return this.name;
         }
 
         /**
-         * @param value {@link #name} (Human-meaningful name for the user.)
+         * @param value {@link #name} (Human-meaningful name for the user.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
          */
-        public SecurityEventParticipantComponent setName(StringType value) { 
+        public SecurityEventParticipantComponent setNameElement(StringType value) { 
           this.name = value;
           return this;
         }
@@ -1084,15 +1260,15 @@ public class SecurityEvent extends Resource {
         /**
          * @return Human-meaningful name for the user.
          */
-        public String getNameSimple() { 
+        public String getName() { 
           return this.name == null ? null : this.name.getValue();
         }
 
         /**
          * @param value Human-meaningful name for the user.
          */
-        public SecurityEventParticipantComponent setNameSimple(String value) { 
-          if (value == null)
+        public SecurityEventParticipantComponent setName(String value) { 
+          if (Utilities.noString(value))
             this.name = null;
           else {
             if (this.name == null)
@@ -1103,16 +1279,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #requestor} (Indicator that the user is or is not the requestor, or initiator, for the event being audited.)
+         * @return {@link #requestor} (Indicator that the user is or is not the requestor, or initiator, for the event being audited.). This is the underlying object with id, value and extensions. The accessor "getRequestor" gives direct access to the value
          */
-        public BooleanType getRequestor() { 
+        public BooleanType getRequestorElement() { 
           return this.requestor;
         }
 
         /**
-         * @param value {@link #requestor} (Indicator that the user is or is not the requestor, or initiator, for the event being audited.)
+         * @param value {@link #requestor} (Indicator that the user is or is not the requestor, or initiator, for the event being audited.). This is the underlying object with id, value and extensions. The accessor "getRequestor" gives direct access to the value
          */
-        public SecurityEventParticipantComponent setRequestor(BooleanType value) { 
+        public SecurityEventParticipantComponent setRequestorElement(BooleanType value) { 
           this.requestor = value;
           return this;
         }
@@ -1120,14 +1296,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return Indicator that the user is or is not the requestor, or initiator, for the event being audited.
          */
-        public boolean getRequestorSimple() { 
+        public boolean getRequestor() { 
           return this.requestor == null ? false : this.requestor.getValue();
         }
 
         /**
          * @param value Indicator that the user is or is not the requestor, or initiator, for the event being audited.
          */
-        public SecurityEventParticipantComponent setRequestorSimple(boolean value) { 
+        public SecurityEventParticipantComponent setRequestor(boolean value) { 
             if (this.requestor == null)
               this.requestor = new BooleanType();
             this.requestor.setValue(value);
@@ -1167,7 +1343,7 @@ public class SecurityEvent extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("role", "CodeableConcept", "Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the role-based access control security system used in the local context.", 0, java.lang.Integer.MAX_VALUE, role));
-          childrenList.add(new Property("reference", "Resource(Practitioner|Patient|Device)", "Direct reference to a resource that identifies the participant.", 0, java.lang.Integer.MAX_VALUE, reference));
+          childrenList.add(new Property("reference", "Reference(Practitioner|Patient|Device)", "Direct reference to a resource that identifies the participant.", 0, java.lang.Integer.MAX_VALUE, reference));
           childrenList.add(new Property("userId", "string", "Unique identifier for the user actively participating in the event.", 0, java.lang.Integer.MAX_VALUE, userId));
           childrenList.add(new Property("altId", "string", "Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.", 0, java.lang.Integer.MAX_VALUE, altId));
           childrenList.add(new Property("name", "string", "Human-meaningful name for the user.", 0, java.lang.Integer.MAX_VALUE, name));
@@ -1178,6 +1354,7 @@ public class SecurityEvent extends Resource {
 
       public SecurityEventParticipantComponent copy() {
         SecurityEventParticipantComponent dst = new SecurityEventParticipantComponent();
+        copyValues(dst);
         dst.role = new ArrayList<CodeableConcept>();
         for (CodeableConcept i : role)
           dst.role.add(i.copy());
@@ -1211,16 +1388,16 @@ public class SecurityEvent extends Resource {
       }
 
         /**
-         * @return {@link #identifier} (An identifier for the network access point of the user device for the audit event.)
+         * @return {@link #identifier} (An identifier for the network access point of the user device for the audit event.). This is the underlying object with id, value and extensions. The accessor "getIdentifier" gives direct access to the value
          */
-        public StringType getIdentifier() { 
+        public StringType getIdentifierElement() { 
           return this.identifier;
         }
 
         /**
-         * @param value {@link #identifier} (An identifier for the network access point of the user device for the audit event.)
+         * @param value {@link #identifier} (An identifier for the network access point of the user device for the audit event.). This is the underlying object with id, value and extensions. The accessor "getIdentifier" gives direct access to the value
          */
-        public SecurityEventParticipantNetworkComponent setIdentifier(StringType value) { 
+        public SecurityEventParticipantNetworkComponent setIdentifierElement(StringType value) { 
           this.identifier = value;
           return this;
         }
@@ -1228,15 +1405,15 @@ public class SecurityEvent extends Resource {
         /**
          * @return An identifier for the network access point of the user device for the audit event.
          */
-        public String getIdentifierSimple() { 
+        public String getIdentifier() { 
           return this.identifier == null ? null : this.identifier.getValue();
         }
 
         /**
          * @param value An identifier for the network access point of the user device for the audit event.
          */
-        public SecurityEventParticipantNetworkComponent setIdentifierSimple(String value) { 
-          if (value == null)
+        public SecurityEventParticipantNetworkComponent setIdentifier(String value) { 
+          if (Utilities.noString(value))
             this.identifier = null;
           else {
             if (this.identifier == null)
@@ -1247,16 +1424,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #type} (An identifier for the type of network access point that originated the audit event.)
+         * @return {@link #type} (An identifier for the type of network access point that originated the audit event.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public Enumeration<NetworkType> getType() { 
+        public Enumeration<NetworkType> getTypeElement() { 
           return this.type;
         }
 
         /**
-         * @param value {@link #type} (An identifier for the type of network access point that originated the audit event.)
+         * @param value {@link #type} (An identifier for the type of network access point that originated the audit event.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public SecurityEventParticipantNetworkComponent setType(Enumeration<NetworkType> value) { 
+        public SecurityEventParticipantNetworkComponent setTypeElement(Enumeration<NetworkType> value) { 
           this.type = value;
           return this;
         }
@@ -1264,14 +1441,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return An identifier for the type of network access point that originated the audit event.
          */
-        public NetworkType getTypeSimple() { 
+        public NetworkType getType() { 
           return this.type == null ? null : this.type.getValue();
         }
 
         /**
          * @param value An identifier for the type of network access point that originated the audit event.
          */
-        public SecurityEventParticipantNetworkComponent setTypeSimple(NetworkType value) { 
+        public SecurityEventParticipantNetworkComponent setType(NetworkType value) { 
           if (value == null)
             this.type = null;
           else {
@@ -1290,6 +1467,7 @@ public class SecurityEvent extends Resource {
 
       public SecurityEventParticipantNetworkComponent copy() {
         SecurityEventParticipantNetworkComponent dst = new SecurityEventParticipantNetworkComponent();
+        copyValues(dst);
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.type = type == null ? null : type.copy();
         return dst;
@@ -1325,16 +1503,16 @@ public class SecurityEvent extends Resource {
       }
 
         /**
-         * @return {@link #site} (Logical source location within the healthcare enterprise network.)
+         * @return {@link #site} (Logical source location within the healthcare enterprise network.). This is the underlying object with id, value and extensions. The accessor "getSite" gives direct access to the value
          */
-        public StringType getSite() { 
+        public StringType getSiteElement() { 
           return this.site;
         }
 
         /**
-         * @param value {@link #site} (Logical source location within the healthcare enterprise network.)
+         * @param value {@link #site} (Logical source location within the healthcare enterprise network.). This is the underlying object with id, value and extensions. The accessor "getSite" gives direct access to the value
          */
-        public SecurityEventSourceComponent setSite(StringType value) { 
+        public SecurityEventSourceComponent setSiteElement(StringType value) { 
           this.site = value;
           return this;
         }
@@ -1342,15 +1520,15 @@ public class SecurityEvent extends Resource {
         /**
          * @return Logical source location within the healthcare enterprise network.
          */
-        public String getSiteSimple() { 
+        public String getSite() { 
           return this.site == null ? null : this.site.getValue();
         }
 
         /**
          * @param value Logical source location within the healthcare enterprise network.
          */
-        public SecurityEventSourceComponent setSiteSimple(String value) { 
-          if (value == null)
+        public SecurityEventSourceComponent setSite(String value) { 
+          if (Utilities.noString(value))
             this.site = null;
           else {
             if (this.site == null)
@@ -1361,16 +1539,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #identifier} (Identifier of the source where the event originated.)
+         * @return {@link #identifier} (Identifier of the source where the event originated.). This is the underlying object with id, value and extensions. The accessor "getIdentifier" gives direct access to the value
          */
-        public StringType getIdentifier() { 
+        public StringType getIdentifierElement() { 
           return this.identifier;
         }
 
         /**
-         * @param value {@link #identifier} (Identifier of the source where the event originated.)
+         * @param value {@link #identifier} (Identifier of the source where the event originated.). This is the underlying object with id, value and extensions. The accessor "getIdentifier" gives direct access to the value
          */
-        public SecurityEventSourceComponent setIdentifier(StringType value) { 
+        public SecurityEventSourceComponent setIdentifierElement(StringType value) { 
           this.identifier = value;
           return this;
         }
@@ -1378,14 +1556,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return Identifier of the source where the event originated.
          */
-        public String getIdentifierSimple() { 
+        public String getIdentifier() { 
           return this.identifier == null ? null : this.identifier.getValue();
         }
 
         /**
          * @param value Identifier of the source where the event originated.
          */
-        public SecurityEventSourceComponent setIdentifierSimple(String value) { 
+        public SecurityEventSourceComponent setIdentifier(String value) { 
             if (this.identifier == null)
               this.identifier = new StringType();
             this.identifier.setValue(value);
@@ -1399,11 +1577,11 @@ public class SecurityEvent extends Resource {
           return this.type;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #type} (Code specifying the type of source where event originated.)
          */
-        public Coding addType() { 
+    // syntactic sugar
+        public Coding addType() { //3
           Coding t = new Coding();
           this.type.add(t);
           return t;
@@ -1418,6 +1596,7 @@ public class SecurityEvent extends Resource {
 
       public SecurityEventSourceComponent copy() {
         SecurityEventSourceComponent dst = new SecurityEventSourceComponent();
+        copyValues(dst);
         dst.site = site == null ? null : site.copy();
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.type = new ArrayList<Coding>();
@@ -1437,7 +1616,7 @@ public class SecurityEvent extends Resource {
         /**
          * Identifies a specific instance of the participant object. The reference should always be version specific.
          */
-        protected ResourceReference reference;
+        protected Reference reference;
 
         /**
          * The actual object that is the target of the reference (Identifies a specific instance of the participant object. The reference should always be version specific.)
@@ -1484,7 +1663,7 @@ public class SecurityEvent extends Resource {
          */
         protected List<SecurityEventObjectDetailComponent> detail = new ArrayList<SecurityEventObjectDetailComponent>();
 
-        private static final long serialVersionUID = -876364505L;
+        private static final long serialVersionUID = 1508980729L;
 
       public SecurityEventObjectComponent() {
         super();
@@ -1508,27 +1687,27 @@ public class SecurityEvent extends Resource {
         /**
          * @return {@link #reference} (Identifies a specific instance of the participant object. The reference should always be version specific.)
          */
-        public ResourceReference getReference() { 
+        public Reference getReference() { 
           return this.reference;
         }
 
         /**
          * @param value {@link #reference} (Identifies a specific instance of the participant object. The reference should always be version specific.)
          */
-        public SecurityEventObjectComponent setReference(ResourceReference value) { 
+        public SecurityEventObjectComponent setReference(Reference value) { 
           this.reference = value;
           return this;
         }
 
         /**
-         * @return {@link #reference} (The actual object that is the target of the reference. Identifies a specific instance of the participant object. The reference should always be version specific.)
+         * @return {@link #reference} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies a specific instance of the participant object. The reference should always be version specific.)
          */
         public Resource getReferenceTarget() { 
           return this.referenceTarget;
         }
 
         /**
-         * @param value {@link #reference} (The actual object that is the target of the reference. Identifies a specific instance of the participant object. The reference should always be version specific.)
+         * @param value {@link #reference} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies a specific instance of the participant object. The reference should always be version specific.)
          */
         public SecurityEventObjectComponent setReferenceTarget(Resource value) { 
           this.referenceTarget = value;
@@ -1536,16 +1715,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #type} (Object type being audited.)
+         * @return {@link #type} (Object type being audited.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public Enumeration<ObjectType> getType() { 
+        public Enumeration<ObjectType> getTypeElement() { 
           return this.type;
         }
 
         /**
-         * @param value {@link #type} (Object type being audited.)
+         * @param value {@link #type} (Object type being audited.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public SecurityEventObjectComponent setType(Enumeration<ObjectType> value) { 
+        public SecurityEventObjectComponent setTypeElement(Enumeration<ObjectType> value) { 
           this.type = value;
           return this;
         }
@@ -1553,14 +1732,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return Object type being audited.
          */
-        public ObjectType getTypeSimple() { 
+        public ObjectType getType() { 
           return this.type == null ? null : this.type.getValue();
         }
 
         /**
          * @param value Object type being audited.
          */
-        public SecurityEventObjectComponent setTypeSimple(ObjectType value) { 
+        public SecurityEventObjectComponent setType(ObjectType value) { 
           if (value == null)
             this.type = null;
           else {
@@ -1572,16 +1751,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #role} (Code representing the functional application role of Participant Object being audited.)
+         * @return {@link #role} (Code representing the functional application role of Participant Object being audited.). This is the underlying object with id, value and extensions. The accessor "getRole" gives direct access to the value
          */
-        public Enumeration<ObjectRole> getRole() { 
+        public Enumeration<ObjectRole> getRoleElement() { 
           return this.role;
         }
 
         /**
-         * @param value {@link #role} (Code representing the functional application role of Participant Object being audited.)
+         * @param value {@link #role} (Code representing the functional application role of Participant Object being audited.). This is the underlying object with id, value and extensions. The accessor "getRole" gives direct access to the value
          */
-        public SecurityEventObjectComponent setRole(Enumeration<ObjectRole> value) { 
+        public SecurityEventObjectComponent setRoleElement(Enumeration<ObjectRole> value) { 
           this.role = value;
           return this;
         }
@@ -1589,14 +1768,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return Code representing the functional application role of Participant Object being audited.
          */
-        public ObjectRole getRoleSimple() { 
+        public ObjectRole getRole() { 
           return this.role == null ? null : this.role.getValue();
         }
 
         /**
          * @param value Code representing the functional application role of Participant Object being audited.
          */
-        public SecurityEventObjectComponent setRoleSimple(ObjectRole value) { 
+        public SecurityEventObjectComponent setRole(ObjectRole value) { 
           if (value == null)
             this.role = null;
           else {
@@ -1608,16 +1787,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #lifecycle} (Identifier for the data life-cycle stage for the participant object.)
+         * @return {@link #lifecycle} (Identifier for the data life-cycle stage for the participant object.). This is the underlying object with id, value and extensions. The accessor "getLifecycle" gives direct access to the value
          */
-        public Enumeration<ObjectLifecycle> getLifecycle() { 
+        public Enumeration<ObjectLifecycle> getLifecycleElement() { 
           return this.lifecycle;
         }
 
         /**
-         * @param value {@link #lifecycle} (Identifier for the data life-cycle stage for the participant object.)
+         * @param value {@link #lifecycle} (Identifier for the data life-cycle stage for the participant object.). This is the underlying object with id, value and extensions. The accessor "getLifecycle" gives direct access to the value
          */
-        public SecurityEventObjectComponent setLifecycle(Enumeration<ObjectLifecycle> value) { 
+        public SecurityEventObjectComponent setLifecycleElement(Enumeration<ObjectLifecycle> value) { 
           this.lifecycle = value;
           return this;
         }
@@ -1625,14 +1804,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return Identifier for the data life-cycle stage for the participant object.
          */
-        public ObjectLifecycle getLifecycleSimple() { 
+        public ObjectLifecycle getLifecycle() { 
           return this.lifecycle == null ? null : this.lifecycle.getValue();
         }
 
         /**
          * @param value Identifier for the data life-cycle stage for the participant object.
          */
-        public SecurityEventObjectComponent setLifecycleSimple(ObjectLifecycle value) { 
+        public SecurityEventObjectComponent setLifecycle(ObjectLifecycle value) { 
           if (value == null)
             this.lifecycle = null;
           else {
@@ -1659,16 +1838,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #name} (An instance-specific descriptor of the Participant Object ID audited, such as a person's name.)
+         * @return {@link #name} (An instance-specific descriptor of the Participant Object ID audited, such as a person's name.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
          */
-        public StringType getName() { 
+        public StringType getNameElement() { 
           return this.name;
         }
 
         /**
-         * @param value {@link #name} (An instance-specific descriptor of the Participant Object ID audited, such as a person's name.)
+         * @param value {@link #name} (An instance-specific descriptor of the Participant Object ID audited, such as a person's name.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
          */
-        public SecurityEventObjectComponent setName(StringType value) { 
+        public SecurityEventObjectComponent setNameElement(StringType value) { 
           this.name = value;
           return this;
         }
@@ -1676,15 +1855,15 @@ public class SecurityEvent extends Resource {
         /**
          * @return An instance-specific descriptor of the Participant Object ID audited, such as a person's name.
          */
-        public String getNameSimple() { 
+        public String getName() { 
           return this.name == null ? null : this.name.getValue();
         }
 
         /**
          * @param value An instance-specific descriptor of the Participant Object ID audited, such as a person's name.
          */
-        public SecurityEventObjectComponent setNameSimple(String value) { 
-          if (value == null)
+        public SecurityEventObjectComponent setName(String value) { 
+          if (Utilities.noString(value))
             this.name = null;
           else {
             if (this.name == null)
@@ -1695,16 +1874,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #description} (Text that describes the object in more detail.)
+         * @return {@link #description} (Text that describes the object in more detail.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
          */
-        public StringType getDescription() { 
+        public StringType getDescriptionElement() { 
           return this.description;
         }
 
         /**
-         * @param value {@link #description} (Text that describes the object in more detail.)
+         * @param value {@link #description} (Text that describes the object in more detail.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
          */
-        public SecurityEventObjectComponent setDescription(StringType value) { 
+        public SecurityEventObjectComponent setDescriptionElement(StringType value) { 
           this.description = value;
           return this;
         }
@@ -1712,15 +1891,15 @@ public class SecurityEvent extends Resource {
         /**
          * @return Text that describes the object in more detail.
          */
-        public String getDescriptionSimple() { 
+        public String getDescription() { 
           return this.description == null ? null : this.description.getValue();
         }
 
         /**
          * @param value Text that describes the object in more detail.
          */
-        public SecurityEventObjectComponent setDescriptionSimple(String value) { 
-          if (value == null)
+        public SecurityEventObjectComponent setDescription(String value) { 
+          if (Utilities.noString(value))
             this.description = null;
           else {
             if (this.description == null)
@@ -1731,16 +1910,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #query} (The actual query for a query-type participant object.)
+         * @return {@link #query} (The actual query for a query-type participant object.). This is the underlying object with id, value and extensions. The accessor "getQuery" gives direct access to the value
          */
-        public Base64BinaryType getQuery() { 
+        public Base64BinaryType getQueryElement() { 
           return this.query;
         }
 
         /**
-         * @param value {@link #query} (The actual query for a query-type participant object.)
+         * @param value {@link #query} (The actual query for a query-type participant object.). This is the underlying object with id, value and extensions. The accessor "getQuery" gives direct access to the value
          */
-        public SecurityEventObjectComponent setQuery(Base64BinaryType value) { 
+        public SecurityEventObjectComponent setQueryElement(Base64BinaryType value) { 
           this.query = value;
           return this;
         }
@@ -1748,14 +1927,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return The actual query for a query-type participant object.
          */
-        public byte[] getQuerySimple() { 
+        public byte[] getQuery() { 
           return this.query == null ? null : this.query.getValue();
         }
 
         /**
          * @param value The actual query for a query-type participant object.
          */
-        public SecurityEventObjectComponent setQuerySimple(byte[] value) { 
+        public SecurityEventObjectComponent setQuery(byte[] value) { 
           if (value == null)
             this.query = null;
           else {
@@ -1773,11 +1952,11 @@ public class SecurityEvent extends Resource {
           return this.detail;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #detail} (Additional Information about the Object.)
          */
-        public SecurityEventObjectDetailComponent addDetail() { 
+    // syntactic sugar
+        public SecurityEventObjectDetailComponent addDetail() { //3
           SecurityEventObjectDetailComponent t = new SecurityEventObjectDetailComponent();
           this.detail.add(t);
           return t;
@@ -1786,7 +1965,7 @@ public class SecurityEvent extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("identifier", "Identifier", "Identifies a specific instance of the participant object. The reference should always be version specific.", 0, java.lang.Integer.MAX_VALUE, identifier));
-          childrenList.add(new Property("reference", "Resource(Any)", "Identifies a specific instance of the participant object. The reference should always be version specific.", 0, java.lang.Integer.MAX_VALUE, reference));
+          childrenList.add(new Property("reference", "Reference(Any)", "Identifies a specific instance of the participant object. The reference should always be version specific.", 0, java.lang.Integer.MAX_VALUE, reference));
           childrenList.add(new Property("type", "code", "Object type being audited.", 0, java.lang.Integer.MAX_VALUE, type));
           childrenList.add(new Property("role", "code", "Code representing the functional application role of Participant Object being audited.", 0, java.lang.Integer.MAX_VALUE, role));
           childrenList.add(new Property("lifecycle", "code", "Identifier for the data life-cycle stage for the participant object.", 0, java.lang.Integer.MAX_VALUE, lifecycle));
@@ -1799,6 +1978,7 @@ public class SecurityEvent extends Resource {
 
       public SecurityEventObjectComponent copy() {
         SecurityEventObjectComponent dst = new SecurityEventObjectComponent();
+        copyValues(dst);
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.reference = reference == null ? null : reference.copy();
         dst.type = type == null ? null : type.copy();
@@ -1840,16 +2020,16 @@ public class SecurityEvent extends Resource {
       }
 
         /**
-         * @return {@link #type} (Name of the property.)
+         * @return {@link #type} (Name of the property.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public StringType getType() { 
+        public StringType getTypeElement() { 
           return this.type;
         }
 
         /**
-         * @param value {@link #type} (Name of the property.)
+         * @param value {@link #type} (Name of the property.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public SecurityEventObjectDetailComponent setType(StringType value) { 
+        public SecurityEventObjectDetailComponent setTypeElement(StringType value) { 
           this.type = value;
           return this;
         }
@@ -1857,14 +2037,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return Name of the property.
          */
-        public String getTypeSimple() { 
+        public String getType() { 
           return this.type == null ? null : this.type.getValue();
         }
 
         /**
          * @param value Name of the property.
          */
-        public SecurityEventObjectDetailComponent setTypeSimple(String value) { 
+        public SecurityEventObjectDetailComponent setType(String value) { 
             if (this.type == null)
               this.type = new StringType();
             this.type.setValue(value);
@@ -1872,16 +2052,16 @@ public class SecurityEvent extends Resource {
         }
 
         /**
-         * @return {@link #value} (Property value.)
+         * @return {@link #value} (Property value.). This is the underlying object with id, value and extensions. The accessor "getValue" gives direct access to the value
          */
-        public Base64BinaryType getValue() { 
+        public Base64BinaryType getValueElement() { 
           return this.value;
         }
 
         /**
-         * @param value {@link #value} (Property value.)
+         * @param value {@link #value} (Property value.). This is the underlying object with id, value and extensions. The accessor "getValue" gives direct access to the value
          */
-        public SecurityEventObjectDetailComponent setValue(Base64BinaryType value) { 
+        public SecurityEventObjectDetailComponent setValueElement(Base64BinaryType value) { 
           this.value = value;
           return this;
         }
@@ -1889,14 +2069,14 @@ public class SecurityEvent extends Resource {
         /**
          * @return Property value.
          */
-        public byte[] getValueSimple() { 
+        public byte[] getValue() { 
           return this.value == null ? null : this.value.getValue();
         }
 
         /**
          * @param value Property value.
          */
-        public SecurityEventObjectDetailComponent setValueSimple(byte[] value) { 
+        public SecurityEventObjectDetailComponent setValue(byte[] value) { 
             if (this.value == null)
               this.value = new Base64BinaryType();
             this.value.setValue(value);
@@ -1911,6 +2091,7 @@ public class SecurityEvent extends Resource {
 
       public SecurityEventObjectDetailComponent copy() {
         SecurityEventObjectDetailComponent dst = new SecurityEventObjectDetailComponent();
+        copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.value = value == null ? null : value.copy();
         return dst;
@@ -1972,11 +2153,11 @@ public class SecurityEvent extends Resource {
       return this.participant;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #participant} (A person, a hardware device or software process.)
      */
-    public SecurityEventParticipantComponent addParticipant() { 
+    // syntactic sugar
+    public SecurityEventParticipantComponent addParticipant() { //3
       SecurityEventParticipantComponent t = new SecurityEventParticipantComponent();
       this.participant.add(t);
       return t;
@@ -2004,11 +2185,11 @@ public class SecurityEvent extends Resource {
       return this.object;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #object} (Specific instances of data or objects that have been accessed.)
      */
-    public SecurityEventObjectComponent addObject() { 
+    // syntactic sugar
+    public SecurityEventObjectComponent addObject() { //3
       SecurityEventObjectComponent t = new SecurityEventObjectComponent();
       this.object.add(t);
       return t;
@@ -2024,6 +2205,7 @@ public class SecurityEvent extends Resource {
 
       public SecurityEvent copy() {
         SecurityEvent dst = new SecurityEvent();
+        copyValues(dst);
         dst.event = event == null ? null : event.copy();
         dst.participant = new ArrayList<SecurityEventParticipantComponent>();
         for (SecurityEventParticipantComponent i : participant)

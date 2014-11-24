@@ -2,7 +2,7 @@ package org.hl7.fhir.convertors;
 
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -34,22 +34,22 @@ package org.hl7.fhir.convertors;
 import java.math.BigDecimal;
 
 import org.hl7.fhir.instance.model.Address;
+import org.hl7.fhir.instance.model.Address.AddressUse;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
-import org.hl7.fhir.instance.model.Contact;
+import org.hl7.fhir.instance.model.ContactPoint;
+import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
+import org.hl7.fhir.instance.model.ContactPoint.ContactPointUse;
 import org.hl7.fhir.instance.model.DateAndTime;
-import org.hl7.fhir.instance.model.Factory;
-import org.hl7.fhir.instance.model.Quantity;
-import org.hl7.fhir.instance.model.Contact.ContactSystem;
-import org.hl7.fhir.instance.model.Contact.ContactUse;
 import org.hl7.fhir.instance.model.DateTimeType;
-import org.hl7.fhir.instance.model.HumanName.NameUse;
-import org.hl7.fhir.instance.model.Enumeration;
+import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.HumanName;
+import org.hl7.fhir.instance.model.HumanName.NameUse;
 import org.hl7.fhir.instance.model.Identifier;
 import org.hl7.fhir.instance.model.InstantType;
-import org.hl7.fhir.instance.model.Address.AddressUse;
+import org.hl7.fhir.instance.model.Patient.AdministrativeGender;
 import org.hl7.fhir.instance.model.Period;
+import org.hl7.fhir.instance.model.Quantity;
 import org.hl7.fhir.instance.model.StringType;
 import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.utilities.Utilities;
@@ -72,21 +72,21 @@ public class Convert {
 		Identifier id = new Identifier();
 		String r = e.getAttribute("root");
 		if (Utilities.noString(e.getAttribute("extension"))) {
-			id.setSystemSimple("urn:ietf:rfc:3986");
+			id.setSystem("urn:ietf:rfc:3986");
 			if (isGuid(r)) 
-				id.setValueSimple("urn:uuid:"+r);
+				id.setValue("urn:uuid:"+r);
 			else if (UriForOid(r) != null)
-				id.setValueSimple(UriForOid(r));
+				id.setValue(UriForOid(r));
 			else 
-				id.setValueSimple(UriForOid(r));
+				id.setValue(UriForOid(r));
 		} else {
 			if (isGuid(r)) 
-				id.setSystemSimple("urn:uuid:"+r);
+				id.setSystem("urn:uuid:"+r);
 			else if (UriForOid(r) != null)
-				id.setSystemSimple(UriForOid(r));
+				id.setSystem(UriForOid(r));
 			else 
-				id.setSystemSimple("urn:oid:"+r);
-			id.setValueSimple(e.getAttribute("extension"));
+				id.setSystem("urn:oid:"+r);
+			id.setValue(e.getAttribute("extension"));
 		}
 		return id;
 	}
@@ -155,12 +155,12 @@ public class Convert {
 				if (cda.getChild(ote, "reference").getAttribute("value").startsWith("#")) {
 					Element t = cda.getByXmlId(cda.getChild(ote, "reference").getAttribute("value").substring(1));
 					String ot = t.getTextContent().trim();
-					cc.setTextSimple(Utilities.noString(ot) ? null : ot);
+					cc.setText(Utilities.noString(ot) ? null : ot);
 				} else
 					throw new Exception("external references not handled yet "+cda.getChild(ote, "reference").getAttribute("value"));
 			} else {	  		
 				String ot = ote.getTextContent().trim();
-				cc.setTextSimple(Utilities.noString(ot) ? null : ot);
+				cc.setText(Utilities.noString(ot) ? null : ot);
 	  	}  
 	  }
 	  return cc;
@@ -170,18 +170,18 @@ public class Convert {
 		if (cd == null)
 			return null;
 	  Coding c = new Coding();
-	  c.setCodeSimple(cd.getAttribute("code"));
-	  c.setDisplaySimple(cd.getAttribute("displayName"));
+	  c.setCode(cd.getAttribute("code"));
+	  c.setDisplay(cd.getAttribute("displayName"));
 	  String r = cd.getAttribute("codeSystem");
 	  String uri = getUriForOID(r);
 	  if (uri != null)
-	  	c.setSystemSimple(uri);
+	  	c.setSystem(uri);
 	  else if (isGuid(r)) 
-			c.setSystemSimple("urn:uuid:"+r);
+			c.setSystem("urn:uuid:"+r);
 		else if (UriForOid(r) != null)
-			c.setSystemSimple(UriForOid(r));
+			c.setSystem(UriForOid(r));
 		else 
-			c.setSystemSimple("urn:oid:"+r);
+			c.setSystem("urn:oid:"+r);
 	  return c;
   }
 
@@ -200,13 +200,13 @@ public class Convert {
   	String use = e.getAttribute("use");
 	  if (use != null) {
 	  	if (use.equals("H") || use.equals("HP") || use.equals("HV"))
-	  		a.setUse(new Enumeration<AddressUse>(AddressUse.home));
+	  		a.setUse(AddressUse.HOME);
 	  	else if (use.equals("WP") || use.equals("DIR") || use.equals("PUB"))
-	  		a.setUse(new Enumeration<AddressUse>(AddressUse.work));
+	  		a.setUse(AddressUse.WORK);
 	  	else if (use.equals("TMP"))
-	  		a.setUse(new Enumeration<AddressUse>(AddressUse.temp));
+	  		a.setUse(AddressUse.TEMP);
 	  	else if (use.equals("BAD"))
-	  		a.setUse(new Enumeration<AddressUse>(AddressUse.old));
+	  		a.setUse(AddressUse.OLD);
 	  }
 	  Node n = e.getFirstChild();
 	  while (n != null) {
@@ -238,16 +238,16 @@ public class Convert {
 		  			a.getLine().add(makeString(v));
 //	  			else if (e.getLocalName().equals("censusTract"))
 	  			else if (n.getLocalName().equals("country"))
-		  			a.setCountrySimple(v);
+		  			a.setCountry(v);
 	  			//else if (e.getLocalName().equals("county"))
 	  			else if (n.getLocalName().equals("city"))
-		  			a.setCitySimple(v);
+		  			a.setCity(v);
 //	  			else if (e.getLocalName().equals("delimiter"))
 //	  			else if (e.getLocalName().equals("precinct"))
 	  			else if (n.getLocalName().equals("state"))
-		  			a.setStateSimple(v);
+		  			a.setState(v);
 	  			else if (n.getLocalName().equals("postalCode"))
-		  			a.setZipSimple(v);
+		  			a.setPostalCode(v);
 	  	}  		
 	  	n = n.getNextSibling();
 	  }
@@ -260,33 +260,33 @@ public class Convert {
 	  return s;
   }
 
-	public Contact makeContactFromTEL(Element e) throws Exception {
+	public ContactPoint makeContactFromTEL(Element e) throws Exception {
 		if (e == null)
 			return null;
 		if (e.hasAttribute("nullFlavor"))
 			return null;
-	  Contact c = new Contact();
+	  ContactPoint c = new ContactPoint();
   	String use = e.getAttribute("use");
 	  if (use != null) {
 	  	if (use.equals("H") || use.equals("HP") || use.equals("HV"))
-	  		c.setUse(new Enumeration<ContactUse>(ContactUse.home));
+	  		c.setUse(ContactPointUse.HOME);
 	  	else if (use.equals("WP") || use.equals("DIR") || use.equals("PUB"))
-	  		c.setUse(new Enumeration<ContactUse>(ContactUse.work));
+	  		c.setUse(ContactPointUse.WORK);
 	  	else if (use.equals("TMP"))
-	  		c.setUse(new Enumeration<ContactUse>(ContactUse.temp));
+	  		c.setUse(ContactPointUse.TEMP);
 	  	else if (use.equals("BAD"))
-	  		c.setUse(new Enumeration<ContactUse>(ContactUse.old));
+	  		c.setUse(ContactPointUse.OLD);
 	  }
 	  if (e.getAttribute("value") != null) {
 	  	String[] url = e.getAttribute("value").split(":");
 	  	if (url.length == 1)
-	  		c.setValueSimple(url[0].trim());
+	  		c.setValue(url[0].trim());
 	  	else {
 	  		if (url[0].equals("tel"))
-	  			c.setSystem(new Enumeration<ContactSystem>(ContactSystem.phone));
+	  			c.setSystem(ContactPointSystem.PHONE);
 	  		else if (url[0].equals("mailto"))
-	  			c.setSystem(new Enumeration<ContactSystem>(ContactSystem.email));
-	  		c.setValueSimple(url[1].trim());
+	  			c.setSystem(ContactPointSystem.EMAIL);
+	  		c.setValue(url[1].trim());
 	  	}
 	  }
 	  return c;
@@ -300,15 +300,15 @@ public class Convert {
   	String use = e.getAttribute("use");
 	  if (use != null) {
 	  	if (use.equals("L"))
-	  		hn.setUse(new Enumeration<NameUse>(NameUse.usual));
+	  		hn.setUse(NameUse.USUAL);
 	  	else if (use.equals("C"))
-	  		hn.setUse(new Enumeration<NameUse>(NameUse.official));
+	  		hn.setUse(NameUse.OFFICIAL);
 	  	else if (use.equals("P") || use.equals("A"))
-	  		hn.setUse(new Enumeration<NameUse>(NameUse.anonymous));
+	  		hn.setUse(NameUse.ANONYMOUS);
 	  	else if (use.equals("TMP"))
-	  		hn.setUse(new Enumeration<NameUse>(NameUse.temp));
+	  		hn.setUse(NameUse.TEMP);
 	  	else if (use.equals("BAD"))
-	  		hn.setUse(new Enumeration<NameUse>(NameUse.old));
+	  		hn.setUse(NameUse.OLD);
 	  }
 	   
 	  Node n = e.getFirstChild();
@@ -345,12 +345,12 @@ public class Convert {
 	  Period p = new Period();
 	  Element low = cda.getChild(ivl, "low");
 		if (low != null)
-	  	p.setStart(makeDateTimeFromTS(low));
+	  	p.setStartElement(makeDateTimeFromTS(low));
 	  Element high = cda.getChild(ivl, "high");
 		if (high != null)
-	  	p.setEnd(makeDateTimeFromTS(high));
+	  	p.setEndElement(makeDateTimeFromTS(high));
 	  
-		if (p.getStart() != null || p.getEnd() != null)
+		if (p.getStartElement() != null || p.getEndElement() != null)
 	    return p;
 		else
 			return null;
@@ -437,14 +437,26 @@ public class Convert {
 		if (pq == null)
 	    return null;
 		Quantity qty = new Quantity();
-		qty.setValueSimple(new BigDecimal(pq.getAttribute("value")));
-		qty.setSystemSimple("http://unitsofmeasure.org");
-		qty.setCodeSimple(pq.getAttribute("unit"));
+		qty.setValue(new BigDecimal(pq.getAttribute("value")));
+		qty.setSystem("http://unitsofmeasure.org");
+		qty.setCode(pq.getAttribute("unit"));
 		if (ucumSvc != null)
-			qty.setUnitsSimple(ucumSvc.getCommonDisplay(qty.getCodeSimple()));
+			qty.setUnits(ucumSvc.getCommonDisplay(qty.getCode()));
 		else 
-			qty.setUnitsSimple(qty.getCodeSimple());
+			qty.setUnits(qty.getCode());
 		return qty;		
+  }
+
+	public AdministrativeGender makeGenderFromCD(Element cd) throws Exception {
+	  String code = cd.getAttribute("code");
+	  String system = cd.getAttribute("codeSystem");
+	  if ("2.16.840.1.113883.5.1".equals(system)) {
+	  	if ("F".equals(code))
+	  		return AdministrativeGender.FEMALE;
+	  	if ("M".equals(code))
+	  		return AdministrativeGender.MALE;
+	  }
+	  throw new Exception("Unable to read Gender "+system+"::"+code);
   }
 
 }

@@ -1,6 +1,6 @@
 package org.hl7.fhir.tools.publisher;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -49,7 +49,7 @@ public interface PlatformGenerator {
   /**
    * @return a string description of what the reference implementation produces for an implementer, along with an estimate of status, and dependencies
    */
-  public String getDescription();
+  public String getDescription(String version, String svnRevision);
 
   /**
    * @return the URL for the download. In principle, the URL should be a link to a generated file with the format fhir-[version]-[title]-[reference impl version]
@@ -136,11 +136,38 @@ public interface PlatformGenerator {
    * incomplete, and we mainly want to know whether they include things that are not known
    *  
    */
-  public String checkFragments(String rootDir, String fragmentsXml, boolean inProcess) throws Exception;
+  public String checkFragments(String rootDir, String fragmentsXml) throws Exception;
 
   /**
    * Whether to list this in the downloads page
    * @return
    */
   public boolean wantListAsDownload();
+  
+  /** 
+   * find out whether the reference implementation supports the sign and verify
+   *  
+   * @return
+   */
+  public boolean canSign();
+
+  /**
+   * Sign a provenance resource or an atom feed
+   * 
+   * @param filename - the file name to sign
+   * @param atom - whether this is an atome feed or a provenance resource
+   * @param type - which type of certificate to use (rsa, dsa, or ecdsa)
+   * 
+   * @throws Exception
+   */
+  public void sign(String filename, boolean atom, String type) throws Exception;
+  
+  /**
+   * Verify that the provenance resource or an atom feed has a valid signature
+   * 
+   * @param filename - name of the file or bundle (xml or json)
+   * @throws Exception 
+   */
+  public void verify(String filename) throws Exception;
+  
 }

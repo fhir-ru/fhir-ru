@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,14 +29,15 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * Immunization event information.
  */
-public class Immunization extends Resource {
+public class Immunization extends DomainResource {
 
     public static class ImmunizationExplanationComponent extends BackboneElement {
         /**
@@ -62,11 +63,11 @@ public class Immunization extends Resource {
           return this.reason;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #reason} (Reasons why a vaccine was administered.)
          */
-        public CodeableConcept addReason() { 
+    // syntactic sugar
+        public CodeableConcept addReason() { //3
           CodeableConcept t = new CodeableConcept();
           this.reason.add(t);
           return t;
@@ -79,11 +80,11 @@ public class Immunization extends Resource {
           return this.refusalReason;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #refusalReason} (Refusal or exemption reasons.)
          */
-        public CodeableConcept addRefusalReason() { 
+    // syntactic sugar
+        public CodeableConcept addRefusalReason() { //3
           CodeableConcept t = new CodeableConcept();
           this.refusalReason.add(t);
           return t;
@@ -97,6 +98,7 @@ public class Immunization extends Resource {
 
       public ImmunizationExplanationComponent copy() {
         ImmunizationExplanationComponent dst = new ImmunizationExplanationComponent();
+        copyValues(dst);
         dst.reason = new ArrayList<CodeableConcept>();
         for (CodeableConcept i : reason)
           dst.reason.add(i.copy());
@@ -117,35 +119,35 @@ public class Immunization extends Resource {
         /**
          * Details of the reaction.
          */
-        protected ResourceReference detail;
+        protected Reference detail;
 
         /**
          * The actual object that is the target of the reference (Details of the reaction.)
          */
-        protected Resource detailTarget;
+        protected Observation detailTarget;
 
         /**
          * Self-reported indicator.
          */
         protected BooleanType reported;
 
-        private static final long serialVersionUID = -1842660322L;
+        private static final long serialVersionUID = -1297668556L;
 
       public ImmunizationReactionComponent() {
         super();
       }
 
         /**
-         * @return {@link #date} (Date of reaction to the immunization.)
+         * @return {@link #date} (Date of reaction to the immunization.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
          */
-        public DateTimeType getDate() { 
+        public DateTimeType getDateElement() { 
           return this.date;
         }
 
         /**
-         * @param value {@link #date} (Date of reaction to the immunization.)
+         * @param value {@link #date} (Date of reaction to the immunization.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
          */
-        public ImmunizationReactionComponent setDate(DateTimeType value) { 
+        public ImmunizationReactionComponent setDateElement(DateTimeType value) { 
           this.date = value;
           return this;
         }
@@ -153,14 +155,14 @@ public class Immunization extends Resource {
         /**
          * @return Date of reaction to the immunization.
          */
-        public DateAndTime getDateSimple() { 
+        public DateAndTime getDate() { 
           return this.date == null ? null : this.date.getValue();
         }
 
         /**
          * @param value Date of reaction to the immunization.
          */
-        public ImmunizationReactionComponent setDateSimple(DateAndTime value) { 
+        public ImmunizationReactionComponent setDate(DateAndTime value) { 
           if (value == null)
             this.date = null;
           else {
@@ -174,44 +176,44 @@ public class Immunization extends Resource {
         /**
          * @return {@link #detail} (Details of the reaction.)
          */
-        public ResourceReference getDetail() { 
+        public Reference getDetail() { 
           return this.detail;
         }
 
         /**
          * @param value {@link #detail} (Details of the reaction.)
          */
-        public ImmunizationReactionComponent setDetail(ResourceReference value) { 
+        public ImmunizationReactionComponent setDetail(Reference value) { 
           this.detail = value;
           return this;
         }
 
         /**
-         * @return {@link #detail} (The actual object that is the target of the reference. Details of the reaction.)
+         * @return {@link #detail} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Details of the reaction.)
          */
-        public Resource getDetailTarget() { 
+        public Observation getDetailTarget() { 
           return this.detailTarget;
         }
 
         /**
-         * @param value {@link #detail} (The actual object that is the target of the reference. Details of the reaction.)
+         * @param value {@link #detail} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Details of the reaction.)
          */
-        public ImmunizationReactionComponent setDetailTarget(Resource value) { 
+        public ImmunizationReactionComponent setDetailTarget(Observation value) { 
           this.detailTarget = value;
           return this;
         }
 
         /**
-         * @return {@link #reported} (Self-reported indicator.)
+         * @return {@link #reported} (Self-reported indicator.). This is the underlying object with id, value and extensions. The accessor "getReported" gives direct access to the value
          */
-        public BooleanType getReported() { 
+        public BooleanType getReportedElement() { 
           return this.reported;
         }
 
         /**
-         * @param value {@link #reported} (Self-reported indicator.)
+         * @param value {@link #reported} (Self-reported indicator.). This is the underlying object with id, value and extensions. The accessor "getReported" gives direct access to the value
          */
-        public ImmunizationReactionComponent setReported(BooleanType value) { 
+        public ImmunizationReactionComponent setReportedElement(BooleanType value) { 
           this.reported = value;
           return this;
         }
@@ -219,14 +221,14 @@ public class Immunization extends Resource {
         /**
          * @return Self-reported indicator.
          */
-        public boolean getReportedSimple() { 
+        public boolean getReported() { 
           return this.reported == null ? false : this.reported.getValue();
         }
 
         /**
          * @param value Self-reported indicator.
          */
-        public ImmunizationReactionComponent setReportedSimple(boolean value) { 
+        public ImmunizationReactionComponent setReported(boolean value) { 
           if (value == false)
             this.reported = null;
           else {
@@ -240,12 +242,13 @@ public class Immunization extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("date", "dateTime", "Date of reaction to the immunization.", 0, java.lang.Integer.MAX_VALUE, date));
-          childrenList.add(new Property("detail", "Resource(AdverseReaction|Observation)", "Details of the reaction.", 0, java.lang.Integer.MAX_VALUE, detail));
+          childrenList.add(new Property("detail", "Reference(Observation)", "Details of the reaction.", 0, java.lang.Integer.MAX_VALUE, detail));
           childrenList.add(new Property("reported", "boolean", "Self-reported indicator.", 0, java.lang.Integer.MAX_VALUE, reported));
         }
 
       public ImmunizationReactionComponent copy() {
         ImmunizationReactionComponent dst = new ImmunizationReactionComponent();
+        copyValues(dst);
         dst.date = date == null ? null : date.copy();
         dst.detail = detail == null ? null : detail.copy();
         dst.reported = reported == null ? null : reported.copy();
@@ -268,7 +271,7 @@ public class Immunization extends Resource {
         /**
          * Indicates the authority who published the protocol?  E.g. ACIP.
          */
-        protected ResourceReference authority;
+        protected Reference authority;
 
         /**
          * The actual object that is the target of the reference (Indicates the authority who published the protocol?  E.g. ACIP.)
@@ -300,7 +303,7 @@ public class Immunization extends Resource {
          */
         protected CodeableConcept doseStatusReason;
 
-        private static final long serialVersionUID = -619399794L;
+        private static final long serialVersionUID = 747305824L;
 
       public ImmunizationVaccinationProtocolComponent() {
         super();
@@ -314,16 +317,16 @@ public class Immunization extends Resource {
       }
 
         /**
-         * @return {@link #doseSequence} (Nominal position in a series.)
+         * @return {@link #doseSequence} (Nominal position in a series.). This is the underlying object with id, value and extensions. The accessor "getDoseSequence" gives direct access to the value
          */
-        public IntegerType getDoseSequence() { 
+        public IntegerType getDoseSequenceElement() { 
           return this.doseSequence;
         }
 
         /**
-         * @param value {@link #doseSequence} (Nominal position in a series.)
+         * @param value {@link #doseSequence} (Nominal position in a series.). This is the underlying object with id, value and extensions. The accessor "getDoseSequence" gives direct access to the value
          */
-        public ImmunizationVaccinationProtocolComponent setDoseSequence(IntegerType value) { 
+        public ImmunizationVaccinationProtocolComponent setDoseSequenceElement(IntegerType value) { 
           this.doseSequence = value;
           return this;
         }
@@ -331,14 +334,14 @@ public class Immunization extends Resource {
         /**
          * @return Nominal position in a series.
          */
-        public int getDoseSequenceSimple() { 
+        public int getDoseSequence() { 
           return this.doseSequence == null ? null : this.doseSequence.getValue();
         }
 
         /**
          * @param value Nominal position in a series.
          */
-        public ImmunizationVaccinationProtocolComponent setDoseSequenceSimple(int value) { 
+        public ImmunizationVaccinationProtocolComponent setDoseSequence(int value) { 
             if (this.doseSequence == null)
               this.doseSequence = new IntegerType();
             this.doseSequence.setValue(value);
@@ -346,16 +349,16 @@ public class Immunization extends Resource {
         }
 
         /**
-         * @return {@link #description} (Contains the description about the protocol under which the vaccine was administered.)
+         * @return {@link #description} (Contains the description about the protocol under which the vaccine was administered.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
          */
-        public StringType getDescription() { 
+        public StringType getDescriptionElement() { 
           return this.description;
         }
 
         /**
-         * @param value {@link #description} (Contains the description about the protocol under which the vaccine was administered.)
+         * @param value {@link #description} (Contains the description about the protocol under which the vaccine was administered.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
          */
-        public ImmunizationVaccinationProtocolComponent setDescription(StringType value) { 
+        public ImmunizationVaccinationProtocolComponent setDescriptionElement(StringType value) { 
           this.description = value;
           return this;
         }
@@ -363,15 +366,15 @@ public class Immunization extends Resource {
         /**
          * @return Contains the description about the protocol under which the vaccine was administered.
          */
-        public String getDescriptionSimple() { 
+        public String getDescription() { 
           return this.description == null ? null : this.description.getValue();
         }
 
         /**
          * @param value Contains the description about the protocol under which the vaccine was administered.
          */
-        public ImmunizationVaccinationProtocolComponent setDescriptionSimple(String value) { 
-          if (value == null)
+        public ImmunizationVaccinationProtocolComponent setDescription(String value) { 
+          if (Utilities.noString(value))
             this.description = null;
           else {
             if (this.description == null)
@@ -384,27 +387,27 @@ public class Immunization extends Resource {
         /**
          * @return {@link #authority} (Indicates the authority who published the protocol?  E.g. ACIP.)
          */
-        public ResourceReference getAuthority() { 
+        public Reference getAuthority() { 
           return this.authority;
         }
 
         /**
          * @param value {@link #authority} (Indicates the authority who published the protocol?  E.g. ACIP.)
          */
-        public ImmunizationVaccinationProtocolComponent setAuthority(ResourceReference value) { 
+        public ImmunizationVaccinationProtocolComponent setAuthority(Reference value) { 
           this.authority = value;
           return this;
         }
 
         /**
-         * @return {@link #authority} (The actual object that is the target of the reference. Indicates the authority who published the protocol?  E.g. ACIP.)
+         * @return {@link #authority} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Indicates the authority who published the protocol?  E.g. ACIP.)
          */
         public Organization getAuthorityTarget() { 
           return this.authorityTarget;
         }
 
         /**
-         * @param value {@link #authority} (The actual object that is the target of the reference. Indicates the authority who published the protocol?  E.g. ACIP.)
+         * @param value {@link #authority} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Indicates the authority who published the protocol?  E.g. ACIP.)
          */
         public ImmunizationVaccinationProtocolComponent setAuthorityTarget(Organization value) { 
           this.authorityTarget = value;
@@ -412,16 +415,16 @@ public class Immunization extends Resource {
         }
 
         /**
-         * @return {@link #series} (One possible path to achieve presumed immunity against a disease - within the context of an authority.)
+         * @return {@link #series} (One possible path to achieve presumed immunity against a disease - within the context of an authority.). This is the underlying object with id, value and extensions. The accessor "getSeries" gives direct access to the value
          */
-        public StringType getSeries() { 
+        public StringType getSeriesElement() { 
           return this.series;
         }
 
         /**
-         * @param value {@link #series} (One possible path to achieve presumed immunity against a disease - within the context of an authority.)
+         * @param value {@link #series} (One possible path to achieve presumed immunity against a disease - within the context of an authority.). This is the underlying object with id, value and extensions. The accessor "getSeries" gives direct access to the value
          */
-        public ImmunizationVaccinationProtocolComponent setSeries(StringType value) { 
+        public ImmunizationVaccinationProtocolComponent setSeriesElement(StringType value) { 
           this.series = value;
           return this;
         }
@@ -429,15 +432,15 @@ public class Immunization extends Resource {
         /**
          * @return One possible path to achieve presumed immunity against a disease - within the context of an authority.
          */
-        public String getSeriesSimple() { 
+        public String getSeries() { 
           return this.series == null ? null : this.series.getValue();
         }
 
         /**
          * @param value One possible path to achieve presumed immunity against a disease - within the context of an authority.
          */
-        public ImmunizationVaccinationProtocolComponent setSeriesSimple(String value) { 
-          if (value == null)
+        public ImmunizationVaccinationProtocolComponent setSeries(String value) { 
+          if (Utilities.noString(value))
             this.series = null;
           else {
             if (this.series == null)
@@ -448,16 +451,16 @@ public class Immunization extends Resource {
         }
 
         /**
-         * @return {@link #seriesDoses} (The recommended number of doses to achieve immunity.)
+         * @return {@link #seriesDoses} (The recommended number of doses to achieve immunity.). This is the underlying object with id, value and extensions. The accessor "getSeriesDoses" gives direct access to the value
          */
-        public IntegerType getSeriesDoses() { 
+        public IntegerType getSeriesDosesElement() { 
           return this.seriesDoses;
         }
 
         /**
-         * @param value {@link #seriesDoses} (The recommended number of doses to achieve immunity.)
+         * @param value {@link #seriesDoses} (The recommended number of doses to achieve immunity.). This is the underlying object with id, value and extensions. The accessor "getSeriesDoses" gives direct access to the value
          */
-        public ImmunizationVaccinationProtocolComponent setSeriesDoses(IntegerType value) { 
+        public ImmunizationVaccinationProtocolComponent setSeriesDosesElement(IntegerType value) { 
           this.seriesDoses = value;
           return this;
         }
@@ -465,14 +468,14 @@ public class Immunization extends Resource {
         /**
          * @return The recommended number of doses to achieve immunity.
          */
-        public int getSeriesDosesSimple() { 
+        public int getSeriesDoses() { 
           return this.seriesDoses == null ? null : this.seriesDoses.getValue();
         }
 
         /**
          * @param value The recommended number of doses to achieve immunity.
          */
-        public ImmunizationVaccinationProtocolComponent setSeriesDosesSimple(int value) { 
+        public ImmunizationVaccinationProtocolComponent setSeriesDoses(int value) { 
           if (value == -1)
             this.seriesDoses = null;
           else {
@@ -532,7 +535,7 @@ public class Immunization extends Resource {
           super.listChildren(childrenList);
           childrenList.add(new Property("doseSequence", "integer", "Nominal position in a series.", 0, java.lang.Integer.MAX_VALUE, doseSequence));
           childrenList.add(new Property("description", "string", "Contains the description about the protocol under which the vaccine was administered.", 0, java.lang.Integer.MAX_VALUE, description));
-          childrenList.add(new Property("authority", "Resource(Organization)", "Indicates the authority who published the protocol?  E.g. ACIP.", 0, java.lang.Integer.MAX_VALUE, authority));
+          childrenList.add(new Property("authority", "Reference(Organization)", "Indicates the authority who published the protocol?  E.g. ACIP.", 0, java.lang.Integer.MAX_VALUE, authority));
           childrenList.add(new Property("series", "string", "One possible path to achieve presumed immunity against a disease - within the context of an authority.", 0, java.lang.Integer.MAX_VALUE, series));
           childrenList.add(new Property("seriesDoses", "integer", "The recommended number of doses to achieve immunity.", 0, java.lang.Integer.MAX_VALUE, seriesDoses));
           childrenList.add(new Property("doseTarget", "CodeableConcept", "The targeted disease.", 0, java.lang.Integer.MAX_VALUE, doseTarget));
@@ -542,6 +545,7 @@ public class Immunization extends Resource {
 
       public ImmunizationVaccinationProtocolComponent copy() {
         ImmunizationVaccinationProtocolComponent dst = new ImmunizationVaccinationProtocolComponent();
+        copyValues(dst);
         dst.doseSequence = doseSequence == null ? null : doseSequence.copy();
         dst.description = description == null ? null : description.copy();
         dst.authority = authority == null ? null : authority.copy();
@@ -573,7 +577,7 @@ public class Immunization extends Resource {
     /**
      * The patient to whom the vaccine was to be administered.
      */
-    protected ResourceReference subject;
+    protected Reference subject;
 
     /**
      * The actual object that is the target of the reference (The patient to whom the vaccine was to be administered.)
@@ -593,7 +597,7 @@ public class Immunization extends Resource {
     /**
      * Clinician who administered the vaccine.
      */
-    protected ResourceReference performer;
+    protected Reference performer;
 
     /**
      * The actual object that is the target of the reference (Clinician who administered the vaccine.)
@@ -603,7 +607,7 @@ public class Immunization extends Resource {
     /**
      * Clinician who ordered the vaccination.
      */
-    protected ResourceReference requester;
+    protected Reference requester;
 
     /**
      * The actual object that is the target of the reference (Clinician who ordered the vaccination.)
@@ -613,7 +617,7 @@ public class Immunization extends Resource {
     /**
      * Name of vaccine manufacturer.
      */
-    protected ResourceReference manufacturer;
+    protected Reference manufacturer;
 
     /**
      * The actual object that is the target of the reference (Name of vaccine manufacturer.)
@@ -623,7 +627,7 @@ public class Immunization extends Resource {
     /**
      * The service delivery location where the vaccine administration occurred.
      */
-    protected ResourceReference location;
+    protected Reference location;
 
     /**
      * The actual object that is the target of the reference (The service delivery location where the vaccine administration occurred.)
@@ -670,13 +674,13 @@ public class Immunization extends Resource {
      */
     protected List<ImmunizationVaccinationProtocolComponent> vaccinationProtocol = new ArrayList<ImmunizationVaccinationProtocolComponent>();
 
-    private static final long serialVersionUID = 927863190L;
+    private static final long serialVersionUID = -2037290648L;
 
     public Immunization() {
       super();
     }
 
-    public Immunization(DateTimeType date, CodeableConcept vaccineType, ResourceReference subject, BooleanType refusedIndicator, BooleanType reported) {
+    public Immunization(DateTimeType date, CodeableConcept vaccineType, Reference subject, BooleanType refusedIndicator, BooleanType reported) {
       super();
       this.date = date;
       this.vaccineType = vaccineType;
@@ -692,27 +696,27 @@ public class Immunization extends Resource {
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (A unique identifier assigned to this adverse reaction record.)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
     }
 
     /**
-     * @return {@link #date} (Date vaccine administered or was to be administered.)
+     * @return {@link #date} (Date vaccine administered or was to be administered.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public DateTimeType getDate() { 
+    public DateTimeType getDateElement() { 
       return this.date;
     }
 
     /**
-     * @param value {@link #date} (Date vaccine administered or was to be administered.)
+     * @param value {@link #date} (Date vaccine administered or was to be administered.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public Immunization setDate(DateTimeType value) { 
+    public Immunization setDateElement(DateTimeType value) { 
       this.date = value;
       return this;
     }
@@ -720,14 +724,14 @@ public class Immunization extends Resource {
     /**
      * @return Date vaccine administered or was to be administered.
      */
-    public DateAndTime getDateSimple() { 
+    public DateAndTime getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
      * @param value Date vaccine administered or was to be administered.
      */
-    public Immunization setDateSimple(DateAndTime value) { 
+    public Immunization setDate(DateAndTime value) { 
         if (this.date == null)
           this.date = new DateTimeType();
         this.date.setValue(value);
@@ -752,27 +756,27 @@ public class Immunization extends Resource {
     /**
      * @return {@link #subject} (The patient to whom the vaccine was to be administered.)
      */
-    public ResourceReference getSubject() { 
+    public Reference getSubject() { 
       return this.subject;
     }
 
     /**
      * @param value {@link #subject} (The patient to whom the vaccine was to be administered.)
      */
-    public Immunization setSubject(ResourceReference value) { 
+    public Immunization setSubject(Reference value) { 
       this.subject = value;
       return this;
     }
 
     /**
-     * @return {@link #subject} (The actual object that is the target of the reference. The patient to whom the vaccine was to be administered.)
+     * @return {@link #subject} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The patient to whom the vaccine was to be administered.)
      */
     public Patient getSubjectTarget() { 
       return this.subjectTarget;
     }
 
     /**
-     * @param value {@link #subject} (The actual object that is the target of the reference. The patient to whom the vaccine was to be administered.)
+     * @param value {@link #subject} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The patient to whom the vaccine was to be administered.)
      */
     public Immunization setSubjectTarget(Patient value) { 
       this.subjectTarget = value;
@@ -780,16 +784,16 @@ public class Immunization extends Resource {
     }
 
     /**
-     * @return {@link #refusedIndicator} (Indicates if the vaccination was refused.)
+     * @return {@link #refusedIndicator} (Indicates if the vaccination was refused.). This is the underlying object with id, value and extensions. The accessor "getRefusedIndicator" gives direct access to the value
      */
-    public BooleanType getRefusedIndicator() { 
+    public BooleanType getRefusedIndicatorElement() { 
       return this.refusedIndicator;
     }
 
     /**
-     * @param value {@link #refusedIndicator} (Indicates if the vaccination was refused.)
+     * @param value {@link #refusedIndicator} (Indicates if the vaccination was refused.). This is the underlying object with id, value and extensions. The accessor "getRefusedIndicator" gives direct access to the value
      */
-    public Immunization setRefusedIndicator(BooleanType value) { 
+    public Immunization setRefusedIndicatorElement(BooleanType value) { 
       this.refusedIndicator = value;
       return this;
     }
@@ -797,14 +801,14 @@ public class Immunization extends Resource {
     /**
      * @return Indicates if the vaccination was refused.
      */
-    public boolean getRefusedIndicatorSimple() { 
+    public boolean getRefusedIndicator() { 
       return this.refusedIndicator == null ? false : this.refusedIndicator.getValue();
     }
 
     /**
      * @param value Indicates if the vaccination was refused.
      */
-    public Immunization setRefusedIndicatorSimple(boolean value) { 
+    public Immunization setRefusedIndicator(boolean value) { 
         if (this.refusedIndicator == null)
           this.refusedIndicator = new BooleanType();
         this.refusedIndicator.setValue(value);
@@ -812,16 +816,16 @@ public class Immunization extends Resource {
     }
 
     /**
-     * @return {@link #reported} (True if this administration was reported rather than directly administered.)
+     * @return {@link #reported} (True if this administration was reported rather than directly administered.). This is the underlying object with id, value and extensions. The accessor "getReported" gives direct access to the value
      */
-    public BooleanType getReported() { 
+    public BooleanType getReportedElement() { 
       return this.reported;
     }
 
     /**
-     * @param value {@link #reported} (True if this administration was reported rather than directly administered.)
+     * @param value {@link #reported} (True if this administration was reported rather than directly administered.). This is the underlying object with id, value and extensions. The accessor "getReported" gives direct access to the value
      */
-    public Immunization setReported(BooleanType value) { 
+    public Immunization setReportedElement(BooleanType value) { 
       this.reported = value;
       return this;
     }
@@ -829,14 +833,14 @@ public class Immunization extends Resource {
     /**
      * @return True if this administration was reported rather than directly administered.
      */
-    public boolean getReportedSimple() { 
+    public boolean getReported() { 
       return this.reported == null ? false : this.reported.getValue();
     }
 
     /**
      * @param value True if this administration was reported rather than directly administered.
      */
-    public Immunization setReportedSimple(boolean value) { 
+    public Immunization setReported(boolean value) { 
         if (this.reported == null)
           this.reported = new BooleanType();
         this.reported.setValue(value);
@@ -846,27 +850,27 @@ public class Immunization extends Resource {
     /**
      * @return {@link #performer} (Clinician who administered the vaccine.)
      */
-    public ResourceReference getPerformer() { 
+    public Reference getPerformer() { 
       return this.performer;
     }
 
     /**
      * @param value {@link #performer} (Clinician who administered the vaccine.)
      */
-    public Immunization setPerformer(ResourceReference value) { 
+    public Immunization setPerformer(Reference value) { 
       this.performer = value;
       return this;
     }
 
     /**
-     * @return {@link #performer} (The actual object that is the target of the reference. Clinician who administered the vaccine.)
+     * @return {@link #performer} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Clinician who administered the vaccine.)
      */
     public Practitioner getPerformerTarget() { 
       return this.performerTarget;
     }
 
     /**
-     * @param value {@link #performer} (The actual object that is the target of the reference. Clinician who administered the vaccine.)
+     * @param value {@link #performer} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Clinician who administered the vaccine.)
      */
     public Immunization setPerformerTarget(Practitioner value) { 
       this.performerTarget = value;
@@ -876,27 +880,27 @@ public class Immunization extends Resource {
     /**
      * @return {@link #requester} (Clinician who ordered the vaccination.)
      */
-    public ResourceReference getRequester() { 
+    public Reference getRequester() { 
       return this.requester;
     }
 
     /**
      * @param value {@link #requester} (Clinician who ordered the vaccination.)
      */
-    public Immunization setRequester(ResourceReference value) { 
+    public Immunization setRequester(Reference value) { 
       this.requester = value;
       return this;
     }
 
     /**
-     * @return {@link #requester} (The actual object that is the target of the reference. Clinician who ordered the vaccination.)
+     * @return {@link #requester} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Clinician who ordered the vaccination.)
      */
     public Practitioner getRequesterTarget() { 
       return this.requesterTarget;
     }
 
     /**
-     * @param value {@link #requester} (The actual object that is the target of the reference. Clinician who ordered the vaccination.)
+     * @param value {@link #requester} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Clinician who ordered the vaccination.)
      */
     public Immunization setRequesterTarget(Practitioner value) { 
       this.requesterTarget = value;
@@ -906,27 +910,27 @@ public class Immunization extends Resource {
     /**
      * @return {@link #manufacturer} (Name of vaccine manufacturer.)
      */
-    public ResourceReference getManufacturer() { 
+    public Reference getManufacturer() { 
       return this.manufacturer;
     }
 
     /**
      * @param value {@link #manufacturer} (Name of vaccine manufacturer.)
      */
-    public Immunization setManufacturer(ResourceReference value) { 
+    public Immunization setManufacturer(Reference value) { 
       this.manufacturer = value;
       return this;
     }
 
     /**
-     * @return {@link #manufacturer} (The actual object that is the target of the reference. Name of vaccine manufacturer.)
+     * @return {@link #manufacturer} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Name of vaccine manufacturer.)
      */
     public Organization getManufacturerTarget() { 
       return this.manufacturerTarget;
     }
 
     /**
-     * @param value {@link #manufacturer} (The actual object that is the target of the reference. Name of vaccine manufacturer.)
+     * @param value {@link #manufacturer} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Name of vaccine manufacturer.)
      */
     public Immunization setManufacturerTarget(Organization value) { 
       this.manufacturerTarget = value;
@@ -936,27 +940,27 @@ public class Immunization extends Resource {
     /**
      * @return {@link #location} (The service delivery location where the vaccine administration occurred.)
      */
-    public ResourceReference getLocation() { 
+    public Reference getLocation() { 
       return this.location;
     }
 
     /**
      * @param value {@link #location} (The service delivery location where the vaccine administration occurred.)
      */
-    public Immunization setLocation(ResourceReference value) { 
+    public Immunization setLocation(Reference value) { 
       this.location = value;
       return this;
     }
 
     /**
-     * @return {@link #location} (The actual object that is the target of the reference. The service delivery location where the vaccine administration occurred.)
+     * @return {@link #location} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The service delivery location where the vaccine administration occurred.)
      */
     public Location getLocationTarget() { 
       return this.locationTarget;
     }
 
     /**
-     * @param value {@link #location} (The actual object that is the target of the reference. The service delivery location where the vaccine administration occurred.)
+     * @param value {@link #location} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The service delivery location where the vaccine administration occurred.)
      */
     public Immunization setLocationTarget(Location value) { 
       this.locationTarget = value;
@@ -964,16 +968,16 @@ public class Immunization extends Resource {
     }
 
     /**
-     * @return {@link #lotNumber} (Lot number of the  vaccine product.)
+     * @return {@link #lotNumber} (Lot number of the  vaccine product.). This is the underlying object with id, value and extensions. The accessor "getLotNumber" gives direct access to the value
      */
-    public StringType getLotNumber() { 
+    public StringType getLotNumberElement() { 
       return this.lotNumber;
     }
 
     /**
-     * @param value {@link #lotNumber} (Lot number of the  vaccine product.)
+     * @param value {@link #lotNumber} (Lot number of the  vaccine product.). This is the underlying object with id, value and extensions. The accessor "getLotNumber" gives direct access to the value
      */
-    public Immunization setLotNumber(StringType value) { 
+    public Immunization setLotNumberElement(StringType value) { 
       this.lotNumber = value;
       return this;
     }
@@ -981,15 +985,15 @@ public class Immunization extends Resource {
     /**
      * @return Lot number of the  vaccine product.
      */
-    public String getLotNumberSimple() { 
+    public String getLotNumber() { 
       return this.lotNumber == null ? null : this.lotNumber.getValue();
     }
 
     /**
      * @param value Lot number of the  vaccine product.
      */
-    public Immunization setLotNumberSimple(String value) { 
-      if (value == null)
+    public Immunization setLotNumber(String value) { 
+      if (Utilities.noString(value))
         this.lotNumber = null;
       else {
         if (this.lotNumber == null)
@@ -1000,16 +1004,16 @@ public class Immunization extends Resource {
     }
 
     /**
-     * @return {@link #expirationDate} (Date vaccine batch expires.)
+     * @return {@link #expirationDate} (Date vaccine batch expires.). This is the underlying object with id, value and extensions. The accessor "getExpirationDate" gives direct access to the value
      */
-    public DateType getExpirationDate() { 
+    public DateType getExpirationDateElement() { 
       return this.expirationDate;
     }
 
     /**
-     * @param value {@link #expirationDate} (Date vaccine batch expires.)
+     * @param value {@link #expirationDate} (Date vaccine batch expires.). This is the underlying object with id, value and extensions. The accessor "getExpirationDate" gives direct access to the value
      */
-    public Immunization setExpirationDate(DateType value) { 
+    public Immunization setExpirationDateElement(DateType value) { 
       this.expirationDate = value;
       return this;
     }
@@ -1017,14 +1021,14 @@ public class Immunization extends Resource {
     /**
      * @return Date vaccine batch expires.
      */
-    public DateAndTime getExpirationDateSimple() { 
+    public DateAndTime getExpirationDate() { 
       return this.expirationDate == null ? null : this.expirationDate.getValue();
     }
 
     /**
      * @param value Date vaccine batch expires.
      */
-    public Immunization setExpirationDateSimple(DateAndTime value) { 
+    public Immunization setExpirationDate(DateAndTime value) { 
       if (value == null)
         this.expirationDate = null;
       else {
@@ -1102,11 +1106,11 @@ public class Immunization extends Resource {
       return this.reaction;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #reaction} (Categorical data indicating that an adverse event is associated in time to an immunization.)
      */
-    public ImmunizationReactionComponent addReaction() { 
+    // syntactic sugar
+    public ImmunizationReactionComponent addReaction() { //3
       ImmunizationReactionComponent t = new ImmunizationReactionComponent();
       this.reaction.add(t);
       return t;
@@ -1119,11 +1123,11 @@ public class Immunization extends Resource {
       return this.vaccinationProtocol;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #vaccinationProtocol} (Contains information about the protocol(s) under which the vaccine was administered.)
      */
-    public ImmunizationVaccinationProtocolComponent addVaccinationProtocol() { 
+    // syntactic sugar
+    public ImmunizationVaccinationProtocolComponent addVaccinationProtocol() { //3
       ImmunizationVaccinationProtocolComponent t = new ImmunizationVaccinationProtocolComponent();
       this.vaccinationProtocol.add(t);
       return t;
@@ -1134,13 +1138,13 @@ public class Immunization extends Resource {
         childrenList.add(new Property("identifier", "Identifier", "A unique identifier assigned to this adverse reaction record.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("date", "dateTime", "Date vaccine administered or was to be administered.", 0, java.lang.Integer.MAX_VALUE, date));
         childrenList.add(new Property("vaccineType", "CodeableConcept", "Vaccine that was administered or was to be administered.", 0, java.lang.Integer.MAX_VALUE, vaccineType));
-        childrenList.add(new Property("subject", "Resource(Patient)", "The patient to whom the vaccine was to be administered.", 0, java.lang.Integer.MAX_VALUE, subject));
+        childrenList.add(new Property("subject", "Reference(Patient)", "The patient to whom the vaccine was to be administered.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("refusedIndicator", "boolean", "Indicates if the vaccination was refused.", 0, java.lang.Integer.MAX_VALUE, refusedIndicator));
         childrenList.add(new Property("reported", "boolean", "True if this administration was reported rather than directly administered.", 0, java.lang.Integer.MAX_VALUE, reported));
-        childrenList.add(new Property("performer", "Resource(Practitioner)", "Clinician who administered the vaccine.", 0, java.lang.Integer.MAX_VALUE, performer));
-        childrenList.add(new Property("requester", "Resource(Practitioner)", "Clinician who ordered the vaccination.", 0, java.lang.Integer.MAX_VALUE, requester));
-        childrenList.add(new Property("manufacturer", "Resource(Organization)", "Name of vaccine manufacturer.", 0, java.lang.Integer.MAX_VALUE, manufacturer));
-        childrenList.add(new Property("location", "Resource(Location)", "The service delivery location where the vaccine administration occurred.", 0, java.lang.Integer.MAX_VALUE, location));
+        childrenList.add(new Property("performer", "Reference(Practitioner)", "Clinician who administered the vaccine.", 0, java.lang.Integer.MAX_VALUE, performer));
+        childrenList.add(new Property("requester", "Reference(Practitioner)", "Clinician who ordered the vaccination.", 0, java.lang.Integer.MAX_VALUE, requester));
+        childrenList.add(new Property("manufacturer", "Reference(Organization)", "Name of vaccine manufacturer.", 0, java.lang.Integer.MAX_VALUE, manufacturer));
+        childrenList.add(new Property("location", "Reference(Location)", "The service delivery location where the vaccine administration occurred.", 0, java.lang.Integer.MAX_VALUE, location));
         childrenList.add(new Property("lotNumber", "string", "Lot number of the  vaccine product.", 0, java.lang.Integer.MAX_VALUE, lotNumber));
         childrenList.add(new Property("expirationDate", "date", "Date vaccine batch expires.", 0, java.lang.Integer.MAX_VALUE, expirationDate));
         childrenList.add(new Property("site", "CodeableConcept", "Body site where vaccine was administered.", 0, java.lang.Integer.MAX_VALUE, site));
@@ -1153,6 +1157,7 @@ public class Immunization extends Resource {
 
       public Immunization copy() {
         Immunization dst = new Immunization();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());

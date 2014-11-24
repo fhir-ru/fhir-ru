@@ -1,7 +1,7 @@
 package org.hl7.fhir.tools.implementations.objectivec;
 
 /*
- Copyright (c) 2011-2014, HL7, Inc
+ Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -343,8 +343,8 @@ public class ObjectiveCModelGenerator extends GenBlock {
     ln(" *");
     if (composite.isComposite())
       ln(" * [FhirComposite(");
-    else if (composite.isResource())
-      ln(" * [FhirResource(");
+    else if (composite.isReference())
+      ln(" * [FhirReference(");
     nl("\"" + composite.getName() + "\"");
     nl(")]");
     ln(" * [Serializable]");

@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,44 +29,65 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * Dispensing a medication to a named patient.  This includes a description of the supply provided and the instructions for administering the medication.
  */
-public class MedicationDispense extends Resource {
+public class MedicationDispense extends DomainResource {
 
     public enum MedicationDispenseStatus {
-        inProgress, // The dispense has started but has not yet completed.
-        onHold, // Actions implied by the administration have been temporarily halted, but are expected to continue later. May also be called "suspended".
-        completed, // All actions that are implied by the dispense have occurred.
-        enteredInError, // The dispense was entered in error and therefore nullified.
-        stopped, // Actions implied by the dispense have been permanently halted, before all of them occurred.
-        Null; // added to help the parsers
+        INPROGRESS, // The dispense has started but has not yet completed.
+        ONHOLD, // Actions implied by the administration have been temporarily halted, but are expected to continue later. May also be called "suspended".
+        COMPLETED, // All actions that are implied by the dispense have occurred.
+        ENTEREDINERROR, // The dispense was entered in error and therefore nullified.
+        STOPPED, // Actions implied by the dispense have been permanently halted, before all of them occurred.
+        NULL; // added to help the parsers
         public static MedicationDispenseStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("in progress".equals(codeString))
-          return inProgress;
+          return INPROGRESS;
         if ("on hold".equals(codeString))
-          return onHold;
+          return ONHOLD;
         if ("completed".equals(codeString))
-          return completed;
+          return COMPLETED;
         if ("entered in error".equals(codeString))
-          return enteredInError;
+          return ENTEREDINERROR;
         if ("stopped".equals(codeString))
-          return stopped;
+          return STOPPED;
         throw new Exception("Unknown MedicationDispenseStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case inProgress: return "in progress";
-            case onHold: return "on hold";
-            case completed: return "completed";
-            case enteredInError: return "entered in error";
-            case stopped: return "stopped";
+            case INPROGRESS: return "in progress";
+            case ONHOLD: return "on hold";
+            case COMPLETED: return "completed";
+            case ENTEREDINERROR: return "entered in error";
+            case STOPPED: return "stopped";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case INPROGRESS: return "The dispense has started but has not yet completed.";
+            case ONHOLD: return "Actions implied by the administration have been temporarily halted, but are expected to continue later. May also be called 'suspended'.";
+            case COMPLETED: return "All actions that are implied by the dispense have occurred.";
+            case ENTEREDINERROR: return "The dispense was entered in error and therefore nullified.";
+            case STOPPED: return "Actions implied by the dispense have been permanently halted, before all of them occurred.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case INPROGRESS: return "in progress";
+            case ONHOLD: return "on hold";
+            case COMPLETED: return "completed";
+            case ENTEREDINERROR: return "entered in error";
+            case STOPPED: return "stopped";
             default: return "?";
           }
         }
@@ -78,27 +99,27 @@ public class MedicationDispense extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("in progress".equals(codeString))
-          return MedicationDispenseStatus.inProgress;
+          return MedicationDispenseStatus.INPROGRESS;
         if ("on hold".equals(codeString))
-          return MedicationDispenseStatus.onHold;
+          return MedicationDispenseStatus.ONHOLD;
         if ("completed".equals(codeString))
-          return MedicationDispenseStatus.completed;
+          return MedicationDispenseStatus.COMPLETED;
         if ("entered in error".equals(codeString))
-          return MedicationDispenseStatus.enteredInError;
+          return MedicationDispenseStatus.ENTEREDINERROR;
         if ("stopped".equals(codeString))
-          return MedicationDispenseStatus.stopped;
+          return MedicationDispenseStatus.STOPPED;
         throw new Exception("Unknown MedicationDispenseStatus code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == MedicationDispenseStatus.inProgress)
+      if (code == MedicationDispenseStatus.INPROGRESS)
         return "in progress";
-      if (code == MedicationDispenseStatus.onHold)
+      if (code == MedicationDispenseStatus.ONHOLD)
         return "on hold";
-      if (code == MedicationDispenseStatus.completed)
+      if (code == MedicationDispenseStatus.COMPLETED)
         return "completed";
-      if (code == MedicationDispenseStatus.enteredInError)
+      if (code == MedicationDispenseStatus.ENTEREDINERROR)
         return "entered in error";
-      if (code == MedicationDispenseStatus.stopped)
+      if (code == MedicationDispenseStatus.STOPPED)
         return "stopped";
       return "?";
       }
@@ -128,7 +149,7 @@ public class MedicationDispense extends Resource {
         /**
          * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
          */
-        protected ResourceReference medication;
+        protected Reference medication;
 
         /**
          * The actual object that is the target of the reference (Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
@@ -148,7 +169,7 @@ public class MedicationDispense extends Resource {
         /**
          * Identification of the facility/location where the medication was shipped to, as part of the dispense event.
          */
-        protected ResourceReference destination;
+        protected Reference destination;
 
         /**
          * The actual object that is the target of the reference (Identification of the facility/location where the medication was shipped to, as part of the dispense event.)
@@ -158,7 +179,7 @@ public class MedicationDispense extends Resource {
         /**
          * Identifies the person who picked up the medication.  This will usually be a patient or their carer, but some cases exist where it can be a healthcare professional.
          */
-        protected List<ResourceReference> receiver = new ArrayList<ResourceReference>();
+        protected List<Reference> receiver = new ArrayList<Reference>();
         /**
          * The actual objects that are the target of the reference (Identifies the person who picked up the medication.  This will usually be a patient or their carer, but some cases exist where it can be a healthcare professional.)
          */
@@ -170,7 +191,7 @@ public class MedicationDispense extends Resource {
          */
         protected List<MedicationDispenseDispenseDosageComponent> dosage = new ArrayList<MedicationDispenseDispenseDosageComponent>();
 
-        private static final long serialVersionUID = -557541864L;
+        private static final long serialVersionUID = -319013324L;
 
       public MedicationDispenseDispenseComponent() {
         super();
@@ -192,16 +213,16 @@ public class MedicationDispense extends Resource {
         }
 
         /**
-         * @return {@link #status} (A code specifying the state of the dispense event.)
+         * @return {@link #status} (A code specifying the state of the dispense event.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
          */
-        public Enumeration<MedicationDispenseStatus> getStatus() { 
+        public Enumeration<MedicationDispenseStatus> getStatusElement() { 
           return this.status;
         }
 
         /**
-         * @param value {@link #status} (A code specifying the state of the dispense event.)
+         * @param value {@link #status} (A code specifying the state of the dispense event.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
          */
-        public MedicationDispenseDispenseComponent setStatus(Enumeration<MedicationDispenseStatus> value) { 
+        public MedicationDispenseDispenseComponent setStatusElement(Enumeration<MedicationDispenseStatus> value) { 
           this.status = value;
           return this;
         }
@@ -209,14 +230,14 @@ public class MedicationDispense extends Resource {
         /**
          * @return A code specifying the state of the dispense event.
          */
-        public MedicationDispenseStatus getStatusSimple() { 
+        public MedicationDispenseStatus getStatus() { 
           return this.status == null ? null : this.status.getValue();
         }
 
         /**
          * @param value A code specifying the state of the dispense event.
          */
-        public MedicationDispenseDispenseComponent setStatusSimple(MedicationDispenseStatus value) { 
+        public MedicationDispenseDispenseComponent setStatus(MedicationDispenseStatus value) { 
           if (value == null)
             this.status = null;
           else {
@@ -260,27 +281,27 @@ public class MedicationDispense extends Resource {
         /**
          * @return {@link #medication} (Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
          */
-        public ResourceReference getMedication() { 
+        public Reference getMedication() { 
           return this.medication;
         }
 
         /**
          * @param value {@link #medication} (Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
          */
-        public MedicationDispenseDispenseComponent setMedication(ResourceReference value) { 
+        public MedicationDispenseDispenseComponent setMedication(Reference value) { 
           this.medication = value;
           return this;
         }
 
         /**
-         * @return {@link #medication} (The actual object that is the target of the reference. Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
+         * @return {@link #medication} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
          */
         public Medication getMedicationTarget() { 
           return this.medicationTarget;
         }
 
         /**
-         * @param value {@link #medication} (The actual object that is the target of the reference. Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
+         * @param value {@link #medication} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
          */
         public MedicationDispenseDispenseComponent setMedicationTarget(Medication value) { 
           this.medicationTarget = value;
@@ -288,16 +309,16 @@ public class MedicationDispense extends Resource {
         }
 
         /**
-         * @return {@link #whenPrepared} (The time when the dispensed product was packaged and reviewed.)
+         * @return {@link #whenPrepared} (The time when the dispensed product was packaged and reviewed.). This is the underlying object with id, value and extensions. The accessor "getWhenPrepared" gives direct access to the value
          */
-        public DateTimeType getWhenPrepared() { 
+        public DateTimeType getWhenPreparedElement() { 
           return this.whenPrepared;
         }
 
         /**
-         * @param value {@link #whenPrepared} (The time when the dispensed product was packaged and reviewed.)
+         * @param value {@link #whenPrepared} (The time when the dispensed product was packaged and reviewed.). This is the underlying object with id, value and extensions. The accessor "getWhenPrepared" gives direct access to the value
          */
-        public MedicationDispenseDispenseComponent setWhenPrepared(DateTimeType value) { 
+        public MedicationDispenseDispenseComponent setWhenPreparedElement(DateTimeType value) { 
           this.whenPrepared = value;
           return this;
         }
@@ -305,14 +326,14 @@ public class MedicationDispense extends Resource {
         /**
          * @return The time when the dispensed product was packaged and reviewed.
          */
-        public DateAndTime getWhenPreparedSimple() { 
+        public DateAndTime getWhenPrepared() { 
           return this.whenPrepared == null ? null : this.whenPrepared.getValue();
         }
 
         /**
          * @param value The time when the dispensed product was packaged and reviewed.
          */
-        public MedicationDispenseDispenseComponent setWhenPreparedSimple(DateAndTime value) { 
+        public MedicationDispenseDispenseComponent setWhenPrepared(DateAndTime value) { 
           if (value == null)
             this.whenPrepared = null;
           else {
@@ -324,16 +345,16 @@ public class MedicationDispense extends Resource {
         }
 
         /**
-         * @return {@link #whenHandedOver} (The time the dispensed product was provided to the patient or their representative.)
+         * @return {@link #whenHandedOver} (The time the dispensed product was provided to the patient or their representative.). This is the underlying object with id, value and extensions. The accessor "getWhenHandedOver" gives direct access to the value
          */
-        public DateTimeType getWhenHandedOver() { 
+        public DateTimeType getWhenHandedOverElement() { 
           return this.whenHandedOver;
         }
 
         /**
-         * @param value {@link #whenHandedOver} (The time the dispensed product was provided to the patient or their representative.)
+         * @param value {@link #whenHandedOver} (The time the dispensed product was provided to the patient or their representative.). This is the underlying object with id, value and extensions. The accessor "getWhenHandedOver" gives direct access to the value
          */
-        public MedicationDispenseDispenseComponent setWhenHandedOver(DateTimeType value) { 
+        public MedicationDispenseDispenseComponent setWhenHandedOverElement(DateTimeType value) { 
           this.whenHandedOver = value;
           return this;
         }
@@ -341,14 +362,14 @@ public class MedicationDispense extends Resource {
         /**
          * @return The time the dispensed product was provided to the patient or their representative.
          */
-        public DateAndTime getWhenHandedOverSimple() { 
+        public DateAndTime getWhenHandedOver() { 
           return this.whenHandedOver == null ? null : this.whenHandedOver.getValue();
         }
 
         /**
          * @param value The time the dispensed product was provided to the patient or their representative.
          */
-        public MedicationDispenseDispenseComponent setWhenHandedOverSimple(DateAndTime value) { 
+        public MedicationDispenseDispenseComponent setWhenHandedOver(DateAndTime value) { 
           if (value == null)
             this.whenHandedOver = null;
           else {
@@ -362,27 +383,27 @@ public class MedicationDispense extends Resource {
         /**
          * @return {@link #destination} (Identification of the facility/location where the medication was shipped to, as part of the dispense event.)
          */
-        public ResourceReference getDestination() { 
+        public Reference getDestination() { 
           return this.destination;
         }
 
         /**
          * @param value {@link #destination} (Identification of the facility/location where the medication was shipped to, as part of the dispense event.)
          */
-        public MedicationDispenseDispenseComponent setDestination(ResourceReference value) { 
+        public MedicationDispenseDispenseComponent setDestination(Reference value) { 
           this.destination = value;
           return this;
         }
 
         /**
-         * @return {@link #destination} (The actual object that is the target of the reference. Identification of the facility/location where the medication was shipped to, as part of the dispense event.)
+         * @return {@link #destination} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identification of the facility/location where the medication was shipped to, as part of the dispense event.)
          */
         public Location getDestinationTarget() { 
           return this.destinationTarget;
         }
 
         /**
-         * @param value {@link #destination} (The actual object that is the target of the reference. Identification of the facility/location where the medication was shipped to, as part of the dispense event.)
+         * @param value {@link #destination} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identification of the facility/location where the medication was shipped to, as part of the dispense event.)
          */
         public MedicationDispenseDispenseComponent setDestinationTarget(Location value) { 
           this.destinationTarget = value;
@@ -392,22 +413,22 @@ public class MedicationDispense extends Resource {
         /**
          * @return {@link #receiver} (Identifies the person who picked up the medication.  This will usually be a patient or their carer, but some cases exist where it can be a healthcare professional.)
          */
-        public List<ResourceReference> getReceiver() { 
+        public List<Reference> getReceiver() { 
           return this.receiver;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #receiver} (Identifies the person who picked up the medication.  This will usually be a patient or their carer, but some cases exist where it can be a healthcare professional.)
          */
-        public ResourceReference addReceiver() { 
-          ResourceReference t = new ResourceReference();
+    // syntactic sugar
+        public Reference addReceiver() { //3
+          Reference t = new Reference();
           this.receiver.add(t);
           return t;
         }
 
         /**
-         * @return {@link #receiver} (The actual objects that are the target of the reference. Identifies the person who picked up the medication.  This will usually be a patient or their carer, but some cases exist where it can be a healthcare professional.)
+         * @return {@link #receiver} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Identifies the person who picked up the medication.  This will usually be a patient or their carer, but some cases exist where it can be a healthcare professional.)
          */
         public List<Resource> getReceiverTarget() { 
           return this.receiverTarget;
@@ -420,11 +441,11 @@ public class MedicationDispense extends Resource {
           return this.dosage;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #dosage} (Indicates how the medication is to be used by the patient.)
          */
-        public MedicationDispenseDispenseDosageComponent addDosage() { 
+    // syntactic sugar
+        public MedicationDispenseDispenseDosageComponent addDosage() { //3
           MedicationDispenseDispenseDosageComponent t = new MedicationDispenseDispenseDosageComponent();
           this.dosage.add(t);
           return t;
@@ -436,16 +457,17 @@ public class MedicationDispense extends Resource {
           childrenList.add(new Property("status", "code", "A code specifying the state of the dispense event.", 0, java.lang.Integer.MAX_VALUE, status));
           childrenList.add(new Property("type", "CodeableConcept", "Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.", 0, java.lang.Integer.MAX_VALUE, type));
           childrenList.add(new Property("quantity", "Quantity", "The amount of medication that has been dispensed. Includes unit of measure.", 0, java.lang.Integer.MAX_VALUE, quantity));
-          childrenList.add(new Property("medication", "Resource(Medication)", "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.", 0, java.lang.Integer.MAX_VALUE, medication));
+          childrenList.add(new Property("medication", "Reference(Medication)", "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.", 0, java.lang.Integer.MAX_VALUE, medication));
           childrenList.add(new Property("whenPrepared", "dateTime", "The time when the dispensed product was packaged and reviewed.", 0, java.lang.Integer.MAX_VALUE, whenPrepared));
           childrenList.add(new Property("whenHandedOver", "dateTime", "The time the dispensed product was provided to the patient or their representative.", 0, java.lang.Integer.MAX_VALUE, whenHandedOver));
-          childrenList.add(new Property("destination", "Resource(Location)", "Identification of the facility/location where the medication was shipped to, as part of the dispense event.", 0, java.lang.Integer.MAX_VALUE, destination));
-          childrenList.add(new Property("receiver", "Resource(Patient|Practitioner)", "Identifies the person who picked up the medication.  This will usually be a patient or their carer, but some cases exist where it can be a healthcare professional.", 0, java.lang.Integer.MAX_VALUE, receiver));
+          childrenList.add(new Property("destination", "Reference(Location)", "Identification of the facility/location where the medication was shipped to, as part of the dispense event.", 0, java.lang.Integer.MAX_VALUE, destination));
+          childrenList.add(new Property("receiver", "Reference(Patient|Practitioner)", "Identifies the person who picked up the medication.  This will usually be a patient or their carer, but some cases exist where it can be a healthcare professional.", 0, java.lang.Integer.MAX_VALUE, receiver));
           childrenList.add(new Property("dosage", "", "Indicates how the medication is to be used by the patient.", 0, java.lang.Integer.MAX_VALUE, dosage));
         }
 
       public MedicationDispenseDispenseComponent copy() {
         MedicationDispenseDispenseComponent dst = new MedicationDispenseDispenseComponent();
+        copyValues(dst);
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.status = status == null ? null : status.copy();
         dst.type = type == null ? null : type.copy();
@@ -454,8 +476,8 @@ public class MedicationDispense extends Resource {
         dst.whenPrepared = whenPrepared == null ? null : whenPrepared.copy();
         dst.whenHandedOver = whenHandedOver == null ? null : whenHandedOver.copy();
         dst.destination = destination == null ? null : destination.copy();
-        dst.receiver = new ArrayList<ResourceReference>();
-        for (ResourceReference i : receiver)
+        dst.receiver = new ArrayList<Reference>();
+        for (Reference i : receiver)
           dst.receiver.add(i.copy());
         dst.dosage = new ArrayList<MedicationDispenseDispenseDosageComponent>();
         for (MedicationDispenseDispenseDosageComponent i : dosage)
@@ -474,7 +496,7 @@ public class MedicationDispense extends Resource {
         /**
          * The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
          */
-        protected Type timing;
+        protected Type schedule;
 
         /**
          * If set to true or if specified as a CodeableConcept, indicates that the medication is only taken when needed within the specified schedule rather than at every scheduled dose.  If a CodeableConcept is present, it indicates the pre-condition for taking the Medication.
@@ -513,7 +535,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
          */
         protected Ratio maxDosePerPeriod;
 
-        private static final long serialVersionUID = 498364389L;
+        private static final long serialVersionUID = -677555528L;
 
       public MedicationDispenseDispenseDosageComponent() {
         super();
@@ -535,17 +557,17 @@ Terminologies used often pre-coordinate this term with the route and or form of 
         }
 
         /**
-         * @return {@link #timing} (The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
+         * @return {@link #schedule} (The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
          */
-        public Type getTiming() { 
-          return this.timing;
+        public Type getSchedule() { 
+          return this.schedule;
         }
 
         /**
-         * @param value {@link #timing} (The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
+         * @param value {@link #schedule} (The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
          */
-        public MedicationDispenseDispenseDosageComponent setTiming(Type value) { 
-          this.timing = value;
+        public MedicationDispenseDispenseDosageComponent setSchedule(Type value) { 
+          this.schedule = value;
           return this;
         }
 
@@ -661,7 +683,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("additionalInstructions", "CodeableConcept", "Additional instructions such as 'Swallow with plenty of water' which may or may not be coded.", 0, java.lang.Integer.MAX_VALUE, additionalInstructions));
-          childrenList.add(new Property("timing[x]", "dateTime|Period|Schedule", "The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  'Every  8 hours'; 'Three times a day'; '1/2 an hour before breakfast for 10 days from 23-Dec 2011:';  '15 Oct 2013, 17 Oct 2013 and 1 Nov 2013'.", 0, java.lang.Integer.MAX_VALUE, timing));
+          childrenList.add(new Property("schedule[x]", "dateTime|Period|Timing", "The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  'Every  8 hours'; 'Three times a day'; '1/2 an hour before breakfast for 10 days from 23-Dec 2011:';  '15 Oct 2013, 17 Oct 2013 and 1 Nov 2013'.", 0, java.lang.Integer.MAX_VALUE, schedule));
           childrenList.add(new Property("asNeeded[x]", "boolean|CodeableConcept", "If set to true or if specified as a CodeableConcept, indicates that the medication is only taken when needed within the specified schedule rather than at every scheduled dose.  If a CodeableConcept is present, it indicates the pre-condition for taking the Medication.", 0, java.lang.Integer.MAX_VALUE, asNeeded));
           childrenList.add(new Property("site", "CodeableConcept", "A coded specification of the anatomic site where the medication first enters the body.", 0, java.lang.Integer.MAX_VALUE, site));
           childrenList.add(new Property("route", "CodeableConcept", "A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject.", 0, java.lang.Integer.MAX_VALUE, route));
@@ -673,8 +695,9 @@ Terminologies used often pre-coordinate this term with the route and or form of 
 
       public MedicationDispenseDispenseDosageComponent copy() {
         MedicationDispenseDispenseDosageComponent dst = new MedicationDispenseDispenseDosageComponent();
+        copyValues(dst);
         dst.additionalInstructions = additionalInstructions == null ? null : additionalInstructions.copy();
-        dst.timing = timing == null ? null : timing.copy();
+        dst.schedule = schedule == null ? null : schedule.copy();
         dst.asNeeded = asNeeded == null ? null : asNeeded.copy();
         dst.site = site == null ? null : site.copy();
         dst.route = route == null ? null : route.copy();
@@ -701,14 +724,14 @@ Terminologies used often pre-coordinate this term with the route and or form of 
         /**
          * The person or organization that has primary responsibility for the substitution.
          */
-        protected List<ResourceReference> responsibleParty = new ArrayList<ResourceReference>();
+        protected List<Reference> responsibleParty = new ArrayList<Reference>();
         /**
          * The actual objects that are the target of the reference (The person or organization that has primary responsibility for the substitution.)
          */
         protected List<Practitioner> responsiblePartyTarget = new ArrayList<Practitioner>();
 
 
-        private static final long serialVersionUID = -1275850915L;
+        private static final long serialVersionUID = 2006573113L;
 
       public MedicationDispenseSubstitutionComponent() {
         super();
@@ -741,11 +764,11 @@ Terminologies used often pre-coordinate this term with the route and or form of 
           return this.reason;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #reason} (Indicates the reason for the substitution of (or lack of substitution) from what was prescribed.)
          */
-        public CodeableConcept addReason() { 
+    // syntactic sugar
+        public CodeableConcept addReason() { //3
           CodeableConcept t = new CodeableConcept();
           this.reason.add(t);
           return t;
@@ -754,22 +777,22 @@ Terminologies used often pre-coordinate this term with the route and or form of 
         /**
          * @return {@link #responsibleParty} (The person or organization that has primary responsibility for the substitution.)
          */
-        public List<ResourceReference> getResponsibleParty() { 
+        public List<Reference> getResponsibleParty() { 
           return this.responsibleParty;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #responsibleParty} (The person or organization that has primary responsibility for the substitution.)
          */
-        public ResourceReference addResponsibleParty() { 
-          ResourceReference t = new ResourceReference();
+    // syntactic sugar
+        public Reference addResponsibleParty() { //3
+          Reference t = new Reference();
           this.responsibleParty.add(t);
           return t;
         }
 
         /**
-         * @return {@link #responsibleParty} (The actual objects that are the target of the reference. The person or organization that has primary responsibility for the substitution.)
+         * @return {@link #responsibleParty} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The person or organization that has primary responsibility for the substitution.)
          */
         public List<Practitioner> getResponsiblePartyTarget() { 
           return this.responsiblePartyTarget;
@@ -777,7 +800,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
 
     // syntactic sugar
         /**
-         * @return {@link #responsibleParty} (Add an actual object that is the target of the reference. The person or organization that has primary responsibility for the substitution.)
+         * @return {@link #responsibleParty} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. The person or organization that has primary responsibility for the substitution.)
          */
         public Practitioner addResponsiblePartyTarget() { 
           Practitioner r = new Practitioner();
@@ -789,17 +812,18 @@ Terminologies used often pre-coordinate this term with the route and or form of 
           super.listChildren(childrenList);
           childrenList.add(new Property("type", "CodeableConcept", "A code signifying whether a different drug was dispensed from what was prescribed.", 0, java.lang.Integer.MAX_VALUE, type));
           childrenList.add(new Property("reason", "CodeableConcept", "Indicates the reason for the substitution of (or lack of substitution) from what was prescribed.", 0, java.lang.Integer.MAX_VALUE, reason));
-          childrenList.add(new Property("responsibleParty", "Resource(Practitioner)", "The person or organization that has primary responsibility for the substitution.", 0, java.lang.Integer.MAX_VALUE, responsibleParty));
+          childrenList.add(new Property("responsibleParty", "Reference(Practitioner)", "The person or organization that has primary responsibility for the substitution.", 0, java.lang.Integer.MAX_VALUE, responsibleParty));
         }
 
       public MedicationDispenseSubstitutionComponent copy() {
         MedicationDispenseSubstitutionComponent dst = new MedicationDispenseSubstitutionComponent();
+        copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.reason = new ArrayList<CodeableConcept>();
         for (CodeableConcept i : reason)
           dst.reason.add(i.copy());
-        dst.responsibleParty = new ArrayList<ResourceReference>();
-        for (ResourceReference i : responsibleParty)
+        dst.responsibleParty = new ArrayList<Reference>();
+        for (Reference i : responsibleParty)
           dst.responsibleParty.add(i.copy());
         return dst;
       }
@@ -819,7 +843,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * A link to a resource representing the person to whom the medication will be given.
      */
-    protected ResourceReference patient;
+    protected Reference patient;
 
     /**
      * The actual object that is the target of the reference (A link to a resource representing the person to whom the medication will be given.)
@@ -829,7 +853,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * The individual responsible for dispensing the medication.
      */
-    protected ResourceReference dispenser;
+    protected Reference dispenser;
 
     /**
      * The actual object that is the target of the reference (The individual responsible for dispensing the medication.)
@@ -839,7 +863,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * Indicates the medication order that is being dispensed against.
      */
-    protected List<ResourceReference> authorizingPrescription = new ArrayList<ResourceReference>();
+    protected List<Reference> authorizingPrescription = new ArrayList<Reference>();
     /**
      * The actual objects that are the target of the reference (Indicates the medication order that is being dispensed against.)
      */
@@ -856,7 +880,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
      */
     protected MedicationDispenseSubstitutionComponent substitution;
 
-    private static final long serialVersionUID = 1726669338L;
+    private static final long serialVersionUID = 889557246L;
 
     public MedicationDispense() {
       super();
@@ -878,16 +902,16 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     }
 
     /**
-     * @return {@link #status} (A code specifying the state of the set of dispense events.)
+     * @return {@link #status} (A code specifying the state of the set of dispense events.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<MedicationDispenseStatus> getStatus() { 
+    public Enumeration<MedicationDispenseStatus> getStatusElement() { 
       return this.status;
     }
 
     /**
-     * @param value {@link #status} (A code specifying the state of the set of dispense events.)
+     * @param value {@link #status} (A code specifying the state of the set of dispense events.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public MedicationDispense setStatus(Enumeration<MedicationDispenseStatus> value) { 
+    public MedicationDispense setStatusElement(Enumeration<MedicationDispenseStatus> value) { 
       this.status = value;
       return this;
     }
@@ -895,14 +919,14 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return A code specifying the state of the set of dispense events.
      */
-    public MedicationDispenseStatus getStatusSimple() { 
+    public MedicationDispenseStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value A code specifying the state of the set of dispense events.
      */
-    public MedicationDispense setStatusSimple(MedicationDispenseStatus value) { 
+    public MedicationDispense setStatus(MedicationDispenseStatus value) { 
       if (value == null)
         this.status = null;
       else {
@@ -916,27 +940,27 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #patient} (A link to a resource representing the person to whom the medication will be given.)
      */
-    public ResourceReference getPatient() { 
+    public Reference getPatient() { 
       return this.patient;
     }
 
     /**
      * @param value {@link #patient} (A link to a resource representing the person to whom the medication will be given.)
      */
-    public MedicationDispense setPatient(ResourceReference value) { 
+    public MedicationDispense setPatient(Reference value) { 
       this.patient = value;
       return this;
     }
 
     /**
-     * @return {@link #patient} (The actual object that is the target of the reference. A link to a resource representing the person to whom the medication will be given.)
+     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A link to a resource representing the person to whom the medication will be given.)
      */
     public Patient getPatientTarget() { 
       return this.patientTarget;
     }
 
     /**
-     * @param value {@link #patient} (The actual object that is the target of the reference. A link to a resource representing the person to whom the medication will be given.)
+     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A link to a resource representing the person to whom the medication will be given.)
      */
     public MedicationDispense setPatientTarget(Patient value) { 
       this.patientTarget = value;
@@ -946,27 +970,27 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #dispenser} (The individual responsible for dispensing the medication.)
      */
-    public ResourceReference getDispenser() { 
+    public Reference getDispenser() { 
       return this.dispenser;
     }
 
     /**
      * @param value {@link #dispenser} (The individual responsible for dispensing the medication.)
      */
-    public MedicationDispense setDispenser(ResourceReference value) { 
+    public MedicationDispense setDispenser(Reference value) { 
       this.dispenser = value;
       return this;
     }
 
     /**
-     * @return {@link #dispenser} (The actual object that is the target of the reference. The individual responsible for dispensing the medication.)
+     * @return {@link #dispenser} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The individual responsible for dispensing the medication.)
      */
     public Practitioner getDispenserTarget() { 
       return this.dispenserTarget;
     }
 
     /**
-     * @param value {@link #dispenser} (The actual object that is the target of the reference. The individual responsible for dispensing the medication.)
+     * @param value {@link #dispenser} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The individual responsible for dispensing the medication.)
      */
     public MedicationDispense setDispenserTarget(Practitioner value) { 
       this.dispenserTarget = value;
@@ -976,22 +1000,22 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #authorizingPrescription} (Indicates the medication order that is being dispensed against.)
      */
-    public List<ResourceReference> getAuthorizingPrescription() { 
+    public List<Reference> getAuthorizingPrescription() { 
       return this.authorizingPrescription;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #authorizingPrescription} (Indicates the medication order that is being dispensed against.)
      */
-    public ResourceReference addAuthorizingPrescription() { 
-      ResourceReference t = new ResourceReference();
+    // syntactic sugar
+    public Reference addAuthorizingPrescription() { //3
+      Reference t = new Reference();
       this.authorizingPrescription.add(t);
       return t;
     }
 
     /**
-     * @return {@link #authorizingPrescription} (The actual objects that are the target of the reference. Indicates the medication order that is being dispensed against.)
+     * @return {@link #authorizingPrescription} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Indicates the medication order that is being dispensed against.)
      */
     public List<MedicationPrescription> getAuthorizingPrescriptionTarget() { 
       return this.authorizingPrescriptionTarget;
@@ -999,7 +1023,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
 
     // syntactic sugar
     /**
-     * @return {@link #authorizingPrescription} (Add an actual object that is the target of the reference. Indicates the medication order that is being dispensed against.)
+     * @return {@link #authorizingPrescription} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. Indicates the medication order that is being dispensed against.)
      */
     public MedicationPrescription addAuthorizingPrescriptionTarget() { 
       MedicationPrescription r = new MedicationPrescription();
@@ -1014,11 +1038,11 @@ Terminologies used often pre-coordinate this term with the route and or form of 
       return this.dispense;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #dispense} (Indicates the details of the dispense event such as the days supply and quantity of medication dispensed.)
      */
-    public MedicationDispenseDispenseComponent addDispense() { 
+    // syntactic sugar
+    public MedicationDispenseDispenseComponent addDispense() { //3
       MedicationDispenseDispenseComponent t = new MedicationDispenseDispenseComponent();
       this.dispense.add(t);
       return t;
@@ -1043,21 +1067,22 @@ Terminologies used often pre-coordinate this term with the route and or form of 
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "Identifier assigned by the dispensing facility - this is an identifier assigned outside FHIR.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("status", "code", "A code specifying the state of the set of dispense events.", 0, java.lang.Integer.MAX_VALUE, status));
-        childrenList.add(new Property("patient", "Resource(Patient)", "A link to a resource representing the person to whom the medication will be given.", 0, java.lang.Integer.MAX_VALUE, patient));
-        childrenList.add(new Property("dispenser", "Resource(Practitioner)", "The individual responsible for dispensing the medication.", 0, java.lang.Integer.MAX_VALUE, dispenser));
-        childrenList.add(new Property("authorizingPrescription", "Resource(MedicationPrescription)", "Indicates the medication order that is being dispensed against.", 0, java.lang.Integer.MAX_VALUE, authorizingPrescription));
+        childrenList.add(new Property("patient", "Reference(Patient)", "A link to a resource representing the person to whom the medication will be given.", 0, java.lang.Integer.MAX_VALUE, patient));
+        childrenList.add(new Property("dispenser", "Reference(Practitioner)", "The individual responsible for dispensing the medication.", 0, java.lang.Integer.MAX_VALUE, dispenser));
+        childrenList.add(new Property("authorizingPrescription", "Reference(MedicationPrescription)", "Indicates the medication order that is being dispensed against.", 0, java.lang.Integer.MAX_VALUE, authorizingPrescription));
         childrenList.add(new Property("dispense", "", "Indicates the details of the dispense event such as the days supply and quantity of medication dispensed.", 0, java.lang.Integer.MAX_VALUE, dispense));
         childrenList.add(new Property("substitution", "", "Indicates whether or not substitution was made as part of the dispense.  In some cases substitution will be expected but doesn't happen, in other cases substitution is not expected but does happen.  This block explains what substitition did or did not happen and why.", 0, java.lang.Integer.MAX_VALUE, substitution));
       }
 
       public MedicationDispense copy() {
         MedicationDispense dst = new MedicationDispense();
+        copyValues(dst);
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.status = status == null ? null : status.copy();
         dst.patient = patient == null ? null : patient.copy();
         dst.dispenser = dispenser == null ? null : dispenser.copy();
-        dst.authorizingPrescription = new ArrayList<ResourceReference>();
-        for (ResourceReference i : authorizingPrescription)
+        dst.authorizingPrescription = new ArrayList<Reference>();
+        for (Reference i : authorizingPrescription)
           dst.authorizingPrescription.add(i.copy());
         dst.dispense = new ArrayList<MedicationDispenseDispenseComponent>();
         for (MedicationDispenseDispenseComponent i : dispense)

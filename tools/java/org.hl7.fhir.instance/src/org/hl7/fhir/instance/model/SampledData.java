@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,11 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
 import java.math.*;
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.
  */
@@ -104,16 +105,16 @@ public class SampledData extends Type {
     }
 
     /**
-     * @return {@link #period} (The length of time between sampling times, measured in milliseconds.)
+     * @return {@link #period} (The length of time between sampling times, measured in milliseconds.). This is the underlying object with id, value and extensions. The accessor "getPeriod" gives direct access to the value
      */
-    public DecimalType getPeriod() { 
+    public DecimalType getPeriodElement() { 
       return this.period;
     }
 
     /**
-     * @param value {@link #period} (The length of time between sampling times, measured in milliseconds.)
+     * @param value {@link #period} (The length of time between sampling times, measured in milliseconds.). This is the underlying object with id, value and extensions. The accessor "getPeriod" gives direct access to the value
      */
-    public SampledData setPeriod(DecimalType value) { 
+    public SampledData setPeriodElement(DecimalType value) { 
       this.period = value;
       return this;
     }
@@ -121,14 +122,14 @@ public class SampledData extends Type {
     /**
      * @return The length of time between sampling times, measured in milliseconds.
      */
-    public BigDecimal getPeriodSimple() { 
+    public BigDecimal getPeriod() { 
       return this.period == null ? null : this.period.getValue();
     }
 
     /**
      * @param value The length of time between sampling times, measured in milliseconds.
      */
-    public SampledData setPeriodSimple(BigDecimal value) { 
+    public SampledData setPeriod(BigDecimal value) { 
         if (this.period == null)
           this.period = new DecimalType();
         this.period.setValue(value);
@@ -136,16 +137,16 @@ public class SampledData extends Type {
     }
 
     /**
-     * @return {@link #factor} (A correction factor that is applied to the sampled data points before they are added to the origin.)
+     * @return {@link #factor} (A correction factor that is applied to the sampled data points before they are added to the origin.). This is the underlying object with id, value and extensions. The accessor "getFactor" gives direct access to the value
      */
-    public DecimalType getFactor() { 
+    public DecimalType getFactorElement() { 
       return this.factor;
     }
 
     /**
-     * @param value {@link #factor} (A correction factor that is applied to the sampled data points before they are added to the origin.)
+     * @param value {@link #factor} (A correction factor that is applied to the sampled data points before they are added to the origin.). This is the underlying object with id, value and extensions. The accessor "getFactor" gives direct access to the value
      */
-    public SampledData setFactor(DecimalType value) { 
+    public SampledData setFactorElement(DecimalType value) { 
       this.factor = value;
       return this;
     }
@@ -153,14 +154,14 @@ public class SampledData extends Type {
     /**
      * @return A correction factor that is applied to the sampled data points before they are added to the origin.
      */
-    public BigDecimal getFactorSimple() { 
+    public BigDecimal getFactor() { 
       return this.factor == null ? null : this.factor.getValue();
     }
 
     /**
      * @param value A correction factor that is applied to the sampled data points before they are added to the origin.
      */
-    public SampledData setFactorSimple(BigDecimal value) { 
+    public SampledData setFactor(BigDecimal value) { 
       if (value == null)
         this.factor = null;
       else {
@@ -172,16 +173,16 @@ public class SampledData extends Type {
     }
 
     /**
-     * @return {@link #lowerLimit} (The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).)
+     * @return {@link #lowerLimit} (The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).). This is the underlying object with id, value and extensions. The accessor "getLowerLimit" gives direct access to the value
      */
-    public DecimalType getLowerLimit() { 
+    public DecimalType getLowerLimitElement() { 
       return this.lowerLimit;
     }
 
     /**
-     * @param value {@link #lowerLimit} (The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).)
+     * @param value {@link #lowerLimit} (The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).). This is the underlying object with id, value and extensions. The accessor "getLowerLimit" gives direct access to the value
      */
-    public SampledData setLowerLimit(DecimalType value) { 
+    public SampledData setLowerLimitElement(DecimalType value) { 
       this.lowerLimit = value;
       return this;
     }
@@ -189,14 +190,14 @@ public class SampledData extends Type {
     /**
      * @return The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).
      */
-    public BigDecimal getLowerLimitSimple() { 
+    public BigDecimal getLowerLimit() { 
       return this.lowerLimit == null ? null : this.lowerLimit.getValue();
     }
 
     /**
      * @param value The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).
      */
-    public SampledData setLowerLimitSimple(BigDecimal value) { 
+    public SampledData setLowerLimit(BigDecimal value) { 
       if (value == null)
         this.lowerLimit = null;
       else {
@@ -208,16 +209,16 @@ public class SampledData extends Type {
     }
 
     /**
-     * @return {@link #upperLimit} (The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).)
+     * @return {@link #upperLimit} (The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).). This is the underlying object with id, value and extensions. The accessor "getUpperLimit" gives direct access to the value
      */
-    public DecimalType getUpperLimit() { 
+    public DecimalType getUpperLimitElement() { 
       return this.upperLimit;
     }
 
     /**
-     * @param value {@link #upperLimit} (The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).)
+     * @param value {@link #upperLimit} (The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).). This is the underlying object with id, value and extensions. The accessor "getUpperLimit" gives direct access to the value
      */
-    public SampledData setUpperLimit(DecimalType value) { 
+    public SampledData setUpperLimitElement(DecimalType value) { 
       this.upperLimit = value;
       return this;
     }
@@ -225,14 +226,14 @@ public class SampledData extends Type {
     /**
      * @return The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).
      */
-    public BigDecimal getUpperLimitSimple() { 
+    public BigDecimal getUpperLimit() { 
       return this.upperLimit == null ? null : this.upperLimit.getValue();
     }
 
     /**
      * @param value The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).
      */
-    public SampledData setUpperLimitSimple(BigDecimal value) { 
+    public SampledData setUpperLimit(BigDecimal value) { 
       if (value == null)
         this.upperLimit = null;
       else {
@@ -244,16 +245,16 @@ public class SampledData extends Type {
     }
 
     /**
-     * @return {@link #dimensions} (The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.)
+     * @return {@link #dimensions} (The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.). This is the underlying object with id, value and extensions. The accessor "getDimensions" gives direct access to the value
      */
-    public IntegerType getDimensions() { 
+    public IntegerType getDimensionsElement() { 
       return this.dimensions;
     }
 
     /**
-     * @param value {@link #dimensions} (The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.)
+     * @param value {@link #dimensions} (The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.). This is the underlying object with id, value and extensions. The accessor "getDimensions" gives direct access to the value
      */
-    public SampledData setDimensions(IntegerType value) { 
+    public SampledData setDimensionsElement(IntegerType value) { 
       this.dimensions = value;
       return this;
     }
@@ -261,14 +262,14 @@ public class SampledData extends Type {
     /**
      * @return The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.
      */
-    public int getDimensionsSimple() { 
+    public int getDimensions() { 
       return this.dimensions == null ? null : this.dimensions.getValue();
     }
 
     /**
      * @param value The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.
      */
-    public SampledData setDimensionsSimple(int value) { 
+    public SampledData setDimensions(int value) { 
         if (this.dimensions == null)
           this.dimensions = new IntegerType();
         this.dimensions.setValue(value);
@@ -276,16 +277,16 @@ public class SampledData extends Type {
     }
 
     /**
-     * @return {@link #data} (A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.)
+     * @return {@link #data} (A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.). This is the underlying object with id, value and extensions. The accessor "getData" gives direct access to the value
      */
-    public StringType getData() { 
+    public StringType getDataElement() { 
       return this.data;
     }
 
     /**
-     * @param value {@link #data} (A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.)
+     * @param value {@link #data} (A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.). This is the underlying object with id, value and extensions. The accessor "getData" gives direct access to the value
      */
-    public SampledData setData(StringType value) { 
+    public SampledData setDataElement(StringType value) { 
       this.data = value;
       return this;
     }
@@ -293,14 +294,14 @@ public class SampledData extends Type {
     /**
      * @return A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.
      */
-    public String getDataSimple() { 
+    public String getData() { 
       return this.data == null ? null : this.data.getValue();
     }
 
     /**
      * @param value A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.
      */
-    public SampledData setDataSimple(String value) { 
+    public SampledData setData(String value) { 
         if (this.data == null)
           this.data = new StringType();
         this.data.setValue(value);
@@ -320,6 +321,7 @@ public class SampledData extends Type {
 
       public SampledData copy() {
         SampledData dst = new SampledData();
+        copyValues(dst);
         dst.origin = origin == null ? null : origin.copy();
         dst.period = period == null ? null : period.copy();
         dst.factor = factor == null ? null : factor.copy();

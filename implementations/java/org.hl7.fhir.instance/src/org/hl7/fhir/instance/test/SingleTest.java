@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -38,7 +38,8 @@ public class SingleTest {
   public static void main(String[] args) {
     try {
       ResourceTest r = new ResourceTest();
-      r.setSource(new File("C:\\work\\org.hl7.fhir\\build\\publish\\document-example-dischargesummary.xml"));
+//      r.setSource(new File("C:\\work\\org.hl7.fhir\\build\\publish\\document-example-dischargesummary.xml"));
+      r.setSource(new File("c:\\work\\org.hl7.fhir\\build\\publish\\careplan-example.xml"));
       r.test();
       System.out.println("Completed OK");
     } catch (Exception e) {

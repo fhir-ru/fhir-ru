@@ -2,7 +2,7 @@ package org.hl7.fhir.instance.client;
 
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -33,8 +33,8 @@ package org.hl7.fhir.instance.client;
 import java.net.URI;
 import java.util.HashMap;
 
+import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.ResourceReference;
 
 /**
  * TODO Modify FHIR client to incorporate this class
@@ -51,17 +51,17 @@ public class FHIRClientManager {
 		servers.put(baseUrl, server);
 	}
 	
-	public FHIRClient resolveServer(ResourceReference ref) {
+	public FHIRClient resolveServer(Reference ref) {
 		return null;
 		// todo
 	}
 	
-	public Resource getResource(ResourceReference ref) {
+	public Resource getReference(Reference ref) {
 		return null;
 		// todo		
 	}
 
-	public Resource getResource(URI ref) {
+	public Resource getReference(URI ref) {
 		return null;
 		// todo		
 	}

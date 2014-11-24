@@ -3,8 +3,9 @@ package org.hl7.fhir.definitions.model;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -31,7 +32,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
-import java.util.Set;
 
 public class SearchParameter {
   public enum SearchType {
@@ -50,6 +50,7 @@ public class SearchParameter {
   private List<String> paths = new ArrayList<String>();
   private List<String> composites = new ArrayList<String>();
   private Set<String> targets = new HashSet<String>();
+  private Set<String> manualTargets = new HashSet<String>();
   
   // operational tracking
   private String xPath;
@@ -118,7 +119,8 @@ public class SearchParameter {
   public String getTargetTypesAsText() {
     StringBuilder b = new StringBuilder();
     boolean first = true;
-    for (String rn : targets) {
+    Set<String> t = getWorkingTargets();
+    for (String rn : t) {
       if (first) {
         first = false;
         b.append("<br/>(");
@@ -136,6 +138,10 @@ public class SearchParameter {
     return b.toString();
   }
 
+  public Set<String> getWorkingTargets() {
+    return manualTargets.size() > 0 ? manualTargets : targets;
+  }
+
   public Set<String> getTargets() {
     return targets;
   }
@@ -149,6 +155,11 @@ public class SearchParameter {
     if ("reference".equals(type)) return true;
     if ("token".equals(type)) return true;
     return false;
+  }
+
+  public void setManualTypes(String[] list) {
+    for (String s : list)
+      manualTargets.add(s.trim());
   }
   
   

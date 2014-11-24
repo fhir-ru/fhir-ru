@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,48 +29,71 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized.  I.e. A collection of entities that isn't an Organization.
  */
-public class Group extends Resource {
+public class Group extends DomainResource {
 
     public enum GroupType {
-        person, // Group contains "person" Patient resources.
-        animal, // Group contains "animal" Patient resources.
-        practitioner, // Group contains healthcare practitioner resources.
-        device, // Group contains Device resources.
-        medication, // Group contains Medication resources.
-        substance, // Group contains Substance resources.
-        Null; // added to help the parsers
+        PERSON, // Group contains "person" Patient resources.
+        ANIMAL, // Group contains "animal" Patient resources.
+        PRACTITIONER, // Group contains healthcare practitioner resources.
+        DEVICE, // Group contains Device resources.
+        MEDICATION, // Group contains Medication resources.
+        SUBSTANCE, // Group contains Substance resources.
+        NULL; // added to help the parsers
         public static GroupType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("person".equals(codeString))
-          return person;
+          return PERSON;
         if ("animal".equals(codeString))
-          return animal;
+          return ANIMAL;
         if ("practitioner".equals(codeString))
-          return practitioner;
+          return PRACTITIONER;
         if ("device".equals(codeString))
-          return device;
+          return DEVICE;
         if ("medication".equals(codeString))
-          return medication;
+          return MEDICATION;
         if ("substance".equals(codeString))
-          return substance;
+          return SUBSTANCE;
         throw new Exception("Unknown GroupType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case person: return "person";
-            case animal: return "animal";
-            case practitioner: return "practitioner";
-            case device: return "device";
-            case medication: return "medication";
-            case substance: return "substance";
+            case PERSON: return "person";
+            case ANIMAL: return "animal";
+            case PRACTITIONER: return "practitioner";
+            case DEVICE: return "device";
+            case MEDICATION: return "medication";
+            case SUBSTANCE: return "substance";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case PERSON: return "Group contains 'person' Patient resources.";
+            case ANIMAL: return "Group contains 'animal' Patient resources.";
+            case PRACTITIONER: return "Group contains healthcare practitioner resources.";
+            case DEVICE: return "Group contains Device resources.";
+            case MEDICATION: return "Group contains Medication resources.";
+            case SUBSTANCE: return "Group contains Substance resources.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case PERSON: return "person";
+            case ANIMAL: return "animal";
+            case PRACTITIONER: return "practitioner";
+            case DEVICE: return "device";
+            case MEDICATION: return "medication";
+            case SUBSTANCE: return "substance";
             default: return "?";
           }
         }
@@ -82,31 +105,31 @@ public class Group extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("person".equals(codeString))
-          return GroupType.person;
+          return GroupType.PERSON;
         if ("animal".equals(codeString))
-          return GroupType.animal;
+          return GroupType.ANIMAL;
         if ("practitioner".equals(codeString))
-          return GroupType.practitioner;
+          return GroupType.PRACTITIONER;
         if ("device".equals(codeString))
-          return GroupType.device;
+          return GroupType.DEVICE;
         if ("medication".equals(codeString))
-          return GroupType.medication;
+          return GroupType.MEDICATION;
         if ("substance".equals(codeString))
-          return GroupType.substance;
+          return GroupType.SUBSTANCE;
         throw new Exception("Unknown GroupType code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == GroupType.person)
+      if (code == GroupType.PERSON)
         return "person";
-      if (code == GroupType.animal)
+      if (code == GroupType.ANIMAL)
         return "animal";
-      if (code == GroupType.practitioner)
+      if (code == GroupType.PRACTITIONER)
         return "practitioner";
-      if (code == GroupType.device)
+      if (code == GroupType.DEVICE)
         return "device";
-      if (code == GroupType.medication)
+      if (code == GroupType.MEDICATION)
         return "medication";
-      if (code == GroupType.substance)
+      if (code == GroupType.SUBSTANCE)
         return "substance";
       return "?";
       }
@@ -172,16 +195,16 @@ public class Group extends Resource {
         }
 
         /**
-         * @return {@link #exclude} (If true, indicates the characteristic is one that is NOT held by members of the group.)
+         * @return {@link #exclude} (If true, indicates the characteristic is one that is NOT held by members of the group.). This is the underlying object with id, value and extensions. The accessor "getExclude" gives direct access to the value
          */
-        public BooleanType getExclude() { 
+        public BooleanType getExcludeElement() { 
           return this.exclude;
         }
 
         /**
-         * @param value {@link #exclude} (If true, indicates the characteristic is one that is NOT held by members of the group.)
+         * @param value {@link #exclude} (If true, indicates the characteristic is one that is NOT held by members of the group.). This is the underlying object with id, value and extensions. The accessor "getExclude" gives direct access to the value
          */
-        public GroupCharacteristicComponent setExclude(BooleanType value) { 
+        public GroupCharacteristicComponent setExcludeElement(BooleanType value) { 
           this.exclude = value;
           return this;
         }
@@ -189,14 +212,14 @@ public class Group extends Resource {
         /**
          * @return If true, indicates the characteristic is one that is NOT held by members of the group.
          */
-        public boolean getExcludeSimple() { 
+        public boolean getExclude() { 
           return this.exclude == null ? false : this.exclude.getValue();
         }
 
         /**
          * @param value If true, indicates the characteristic is one that is NOT held by members of the group.
          */
-        public GroupCharacteristicComponent setExcludeSimple(boolean value) { 
+        public GroupCharacteristicComponent setExclude(boolean value) { 
             if (this.exclude == null)
               this.exclude = new BooleanType();
             this.exclude.setValue(value);
@@ -212,6 +235,7 @@ public class Group extends Resource {
 
       public GroupCharacteristicComponent copy() {
         GroupCharacteristicComponent dst = new GroupCharacteristicComponent();
+        copyValues(dst);
         dst.code = code == null ? null : code.copy();
         dst.value = value == null ? null : value.copy();
         dst.exclude = exclude == null ? null : exclude.copy();
@@ -258,14 +282,14 @@ public class Group extends Resource {
     /**
      * Identifies the resource instances that are members of the group.
      */
-    protected List<ResourceReference> member = new ArrayList<ResourceReference>();
+    protected List<Reference> member = new ArrayList<Reference>();
     /**
      * The actual objects that are the target of the reference (Identifies the resource instances that are members of the group.)
      */
     protected List<Resource> memberTarget = new ArrayList<Resource>();
 
 
-    private static final long serialVersionUID = -1925725072L;
+    private static final long serialVersionUID = 1477460940L;
 
     public Group() {
       super();
@@ -293,16 +317,16 @@ public class Group extends Resource {
     }
 
     /**
-     * @return {@link #type} (Identifies the broad classification of the kind of resources the group includes.)
+     * @return {@link #type} (Identifies the broad classification of the kind of resources the group includes.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
      */
-    public Enumeration<GroupType> getType() { 
+    public Enumeration<GroupType> getTypeElement() { 
       return this.type;
     }
 
     /**
-     * @param value {@link #type} (Identifies the broad classification of the kind of resources the group includes.)
+     * @param value {@link #type} (Identifies the broad classification of the kind of resources the group includes.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
      */
-    public Group setType(Enumeration<GroupType> value) { 
+    public Group setTypeElement(Enumeration<GroupType> value) { 
       this.type = value;
       return this;
     }
@@ -310,14 +334,14 @@ public class Group extends Resource {
     /**
      * @return Identifies the broad classification of the kind of resources the group includes.
      */
-    public GroupType getTypeSimple() { 
+    public GroupType getType() { 
       return this.type == null ? null : this.type.getValue();
     }
 
     /**
      * @param value Identifies the broad classification of the kind of resources the group includes.
      */
-    public Group setTypeSimple(GroupType value) { 
+    public Group setType(GroupType value) { 
         if (this.type == null)
           this.type = new Enumeration<GroupType>();
         this.type.setValue(value);
@@ -325,16 +349,16 @@ public class Group extends Resource {
     }
 
     /**
-     * @return {@link #actual} (If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.)
+     * @return {@link #actual} (If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.). This is the underlying object with id, value and extensions. The accessor "getActual" gives direct access to the value
      */
-    public BooleanType getActual() { 
+    public BooleanType getActualElement() { 
       return this.actual;
     }
 
     /**
-     * @param value {@link #actual} (If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.)
+     * @param value {@link #actual} (If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.). This is the underlying object with id, value and extensions. The accessor "getActual" gives direct access to the value
      */
-    public Group setActual(BooleanType value) { 
+    public Group setActualElement(BooleanType value) { 
       this.actual = value;
       return this;
     }
@@ -342,14 +366,14 @@ public class Group extends Resource {
     /**
      * @return If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.
      */
-    public boolean getActualSimple() { 
+    public boolean getActual() { 
       return this.actual == null ? false : this.actual.getValue();
     }
 
     /**
      * @param value If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.
      */
-    public Group setActualSimple(boolean value) { 
+    public Group setActual(boolean value) { 
         if (this.actual == null)
           this.actual = new BooleanType();
         this.actual.setValue(value);
@@ -372,16 +396,16 @@ public class Group extends Resource {
     }
 
     /**
-     * @return {@link #name} (A label assigned to the group for human identification and communication.)
+     * @return {@link #name} (A label assigned to the group for human identification and communication.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
      */
-    public StringType getName() { 
+    public StringType getNameElement() { 
       return this.name;
     }
 
     /**
-     * @param value {@link #name} (A label assigned to the group for human identification and communication.)
+     * @param value {@link #name} (A label assigned to the group for human identification and communication.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
      */
-    public Group setName(StringType value) { 
+    public Group setNameElement(StringType value) { 
       this.name = value;
       return this;
     }
@@ -389,15 +413,15 @@ public class Group extends Resource {
     /**
      * @return A label assigned to the group for human identification and communication.
      */
-    public String getNameSimple() { 
+    public String getName() { 
       return this.name == null ? null : this.name.getValue();
     }
 
     /**
      * @param value A label assigned to the group for human identification and communication.
      */
-    public Group setNameSimple(String value) { 
-      if (value == null)
+    public Group setName(String value) { 
+      if (Utilities.noString(value))
         this.name = null;
       else {
         if (this.name == null)
@@ -408,16 +432,16 @@ public class Group extends Resource {
     }
 
     /**
-     * @return {@link #quantity} (A count of the number of resource instances that are part of the group.)
+     * @return {@link #quantity} (A count of the number of resource instances that are part of the group.). This is the underlying object with id, value and extensions. The accessor "getQuantity" gives direct access to the value
      */
-    public IntegerType getQuantity() { 
+    public IntegerType getQuantityElement() { 
       return this.quantity;
     }
 
     /**
-     * @param value {@link #quantity} (A count of the number of resource instances that are part of the group.)
+     * @param value {@link #quantity} (A count of the number of resource instances that are part of the group.). This is the underlying object with id, value and extensions. The accessor "getQuantity" gives direct access to the value
      */
-    public Group setQuantity(IntegerType value) { 
+    public Group setQuantityElement(IntegerType value) { 
       this.quantity = value;
       return this;
     }
@@ -425,14 +449,14 @@ public class Group extends Resource {
     /**
      * @return A count of the number of resource instances that are part of the group.
      */
-    public int getQuantitySimple() { 
+    public int getQuantity() { 
       return this.quantity == null ? null : this.quantity.getValue();
     }
 
     /**
      * @param value A count of the number of resource instances that are part of the group.
      */
-    public Group setQuantitySimple(int value) { 
+    public Group setQuantity(int value) { 
       if (value == -1)
         this.quantity = null;
       else {
@@ -450,11 +474,11 @@ public class Group extends Resource {
       return this.characteristic;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #characteristic} (Identifies the traits shared by members of the group.)
      */
-    public GroupCharacteristicComponent addCharacteristic() { 
+    // syntactic sugar
+    public GroupCharacteristicComponent addCharacteristic() { //3
       GroupCharacteristicComponent t = new GroupCharacteristicComponent();
       this.characteristic.add(t);
       return t;
@@ -463,22 +487,22 @@ public class Group extends Resource {
     /**
      * @return {@link #member} (Identifies the resource instances that are members of the group.)
      */
-    public List<ResourceReference> getMember() { 
+    public List<Reference> getMember() { 
       return this.member;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #member} (Identifies the resource instances that are members of the group.)
      */
-    public ResourceReference addMember() { 
-      ResourceReference t = new ResourceReference();
+    // syntactic sugar
+    public Reference addMember() { //3
+      Reference t = new Reference();
       this.member.add(t);
       return t;
     }
 
     /**
-     * @return {@link #member} (The actual objects that are the target of the reference. Identifies the resource instances that are members of the group.)
+     * @return {@link #member} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Identifies the resource instances that are members of the group.)
      */
     public List<Resource> getMemberTarget() { 
       return this.memberTarget;
@@ -493,11 +517,12 @@ public class Group extends Resource {
         childrenList.add(new Property("name", "string", "A label assigned to the group for human identification and communication.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("quantity", "integer", "A count of the number of resource instances that are part of the group.", 0, java.lang.Integer.MAX_VALUE, quantity));
         childrenList.add(new Property("characteristic", "", "Identifies the traits shared by members of the group.", 0, java.lang.Integer.MAX_VALUE, characteristic));
-        childrenList.add(new Property("member", "Resource(Patient|Practitioner|Device|Medication|Substance)", "Identifies the resource instances that are members of the group.", 0, java.lang.Integer.MAX_VALUE, member));
+        childrenList.add(new Property("member", "Reference(Patient|Practitioner|Device|Medication|Substance)", "Identifies the resource instances that are members of the group.", 0, java.lang.Integer.MAX_VALUE, member));
       }
 
       public Group copy() {
         Group dst = new Group();
+        copyValues(dst);
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.type = type == null ? null : type.copy();
         dst.actual = actual == null ? null : actual.copy();
@@ -507,8 +532,8 @@ public class Group extends Resource {
         dst.characteristic = new ArrayList<GroupCharacteristicComponent>();
         for (GroupCharacteristicComponent i : characteristic)
           dst.characteristic.add(i.copy());
-        dst.member = new ArrayList<ResourceReference>();
-        for (ResourceReference i : member)
+        dst.member = new ArrayList<Reference>();
+        for (Reference i : member)
           dst.member.add(i.copy());
         return dst;
       }

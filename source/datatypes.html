@@ -121,7 +121,7 @@ though in most cases, this specification makes additional constraints marked in 
  <tr><td>code</td><td>string</td><td>Indicates that the value is taken from a set of controlled strings defined elsewhere (see <a href="terminologies.html">Using codes</a> for further discussion). Technically, a code is restricted to string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
  <tr><td>oid</td><td>uri</td><td>An OID represented as a URI (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>): urn:oid:1.2.3.4.5</td></tr>
  <tr><td>uuid</td><td>uri</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11. Note the RFC comments about case: UUID values SHALL be represented in lower case, but systems SHOULD interpret them case insensitively</td></tr>
- <tr><td>id</td><td>string</td><td>A whole number in the range 0 to 2^64-1 (optionally represented in hex), a uuid, an oid, or any other combination of lowercase letters, numerals, "-" and ".", with a length limit of 36 characters <br/>regex: [a-z0-9\-\.]{1,36}</td></tr>
+ <tr><td>id</td><td>string</td><td>Any combination of lowercase letters, numerals, "-" and ".", with a length limit of 36 characters.  (This might be an integer, an unprefixed OID, UUID or any other identifier pattern that meets these constraints.)  Systems SHALL send ids as lower-case but SHOULD interpret them case-insensitively. <br/>regex: [%id_regex%]</td></tr>
 </table>
 <p>
 In addition to having a value as described above, these primitive data types can also have an identity (e.g. xml:id), 
@@ -131,7 +131,7 @@ For instance, a primitive element might have no value, and include a <a href="ge
 </p>
 <p>
 In XML, these types are represented as XML Elements with the value of the type in the value attribute. 
-The name of the element is defined where the type is used. The XML elements may have an <a href="references.html#idref">id attribute</a>, and child elements named "extension". 
+The name of the element is defined where the type is used. The XML elements may have an <a href="references.html#id">id attribute</a>, and child elements named "extension". 
 According to XML schema, leading and trailing whitespace in the value attribute is ignored for the types 
 boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid, and uri. Note that this means that the 
 schema aware XML libraries give different attribute values to non schema aware libraries when reading the 
@@ -151,7 +151,7 @@ is always significant in JSON. Primitive types other than string SHALL NOT have 
 
 <p>
 These types are represented as XML Elements with child elements with the name of the defined elements of the type. The name of the element is defined where the type is used. 
-Any of the XML elements may have an <a href="references.html#idref">id attribute</a>. In JSON, the data type is represented by an object with properties named the same as the
+Any of the XML elements may have an <a href="references.html#id">id attribute</a>. In JSON, the data type is represented by an object with properties named the same as the
 XML elements. The JSON representation is almost exactly the same, so only the first <a href="datatypes-examples.html#Attachment">example</a> has an additional JSON representation.
 </p>
 <p>
@@ -697,23 +697,41 @@ world varies widely.
 </p>
 [%dt HumanName%]
 <p>
-The parts of a name SHOULD NOT contain whitespace. For family name, hyphenated 
-names such as "Smith-Jones" are a single name, but names with spaces such as 
-"Smith Jones" are broken into multiple parts. For given names, initials may 
-be used in place of the full name if that is all that is recorded. 
+This table summarises where common parts of a person's name are found. 
 </p>
+<table class="lines">
+ <tr><td><b>Name</b></td><td><b>Example</b></td><td><b>Destination / Comments</b></td></tr>
+ <tr><td>Surname</td><td>Smith</td><td>Family Name</td></tr>
+ <tr><td>First name</td><td>John</td><td>Given Name</td></tr>
+ <tr><td>Title</td><td>Mr</td><td>Prefix</td></tr>
+ <tr><td>Middle Name</td><td>Samuel</td><td>Subsequent Given Names</td></tr>
+ <tr><td>Patronymic</td><td>bin Osman</td><td>Family Name</td></tr>
+ <tr><td>Multiple family names</td><td>Carreño Quiñones</td><td>Family Name. See note below about repeats</td></tr>
+ <tr><td>Initials</td><td>Q.</td><td>Given Name as initial ("." recommended)</td></tr>
+ <tr><td>Nick Name</td><td>Jock</td><td>Given name, with Use = common</td></tr>
+ <tr><td>Qualifications</td><td>PhD</td><td>Suffix</td></tr>
+ <tr><td>Honorifics</td><td>Senior</td><td>Suffix</td></tr>
+</table>
 <p>
+For further information, including all <a href="http://www.w3.org/International/questions/qa-personal-names">W3C International Examples</a>, 
+consult the <a href="datatypes-examples.html#HumanName">examples</a>.
+</p>
+<p> 
 The <i>text</i> element specifies the entire name as it should be represented. This
-may be provided instead of or as well as specific parts. Applications updating a name
-SHALL ensure either that the text and the parts are in agreement, or that only one
-of the two is present. Systems that do not support as many name parts as are 
-provided in an instance may wish to append some of the parts together 
-using spaces
+may be provided instead of or as well as specific parts. The parts of a name SHOULD NOT 
+contain whitespace. For family name, hyphenated  names such as "Smith-Jones" are a 
+single name, but names with spaces such as "Smith Jones" are broken into multiple parts. 
+For given names, initials may be used in place of the full name if that is all that is recorded. 
+The order of the  parts within a given part type has 
+significance and SHALL be observed. The appropriate order between 
+family name and given names depends on culture and context of use. Systems that operate across
+cultures should generally rely on the text form for presentation, and use the parts for index/search functionality. 
 </p>
 <p>
-Note that the order of the  parts within a given part type has 
-significance and SHALL be observed. The appropriate order between 
-family name and given names depends on culture and context of use.  
+Applications updating a name SHALL ensure either that the text and the parts 
+are in agreement, or that only one of the two is present. Systems that do not 
+support as many name parts as are provided in an instance may wish to append 
+some of the parts together using spaces
 </p>
 <p>
 HumanName is used in the following places: [%dtusage HumanName%]
@@ -758,43 +776,43 @@ Address is used in the following places: [%dtusage Address%]
 </p>
 
 
-<a name="Contact"></a>
-<a name="contact"></a>
+<a name="ContactPoint"></a>
+<a name="contactpoint"></a>
 <h2 style="margin-bottom: 1px">
-Contact
+ContactPoint
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes-examples.html#Contact">Examples</a>, <a href="datatypes-definitions.html#Contact">Formal Definitions</a> and <a href="datatypes-mappings.html#Contact">Mappings</a>.
+See also <a href="datatypes-examples.html#ContactPoint">Examples</a>, <a href="datatypes-definitions.html#ContactPoint">Formal Definitions</a> and <a href="datatypes-mappings.html#ContactPoint">Mappings</a>.
 </p>
 <p>
-All kinds of technology-mediated contact details for a person or organization, including telephone, email, etc.
+Details for all kinds of technology-mediated contact points for a person or organization, including telephone, email, etc.
 </p>
-[%dt Contact%]
+[%dt ContactPoint%]
 <p>
-If capturing a phone, fax or similar contact, the value should be a properly formatted telephone number according to 
+If capturing a phone, fax or similar contact point, the value should be a properly formatted telephone number according to 
 <a href="http://www.itu.int/rec/T-REC-E.123-200102-I/e">ITU-T E.123</a>. 
 However, this is frequently not possible due to legacy data and/or recording methods.
 </p>
 <div class="use">
 <p><b>Constraints</b></p>
-[%dt.constraints Contact%]
+[%dt.constraints ContactPoint%]
 </div>
 
 <p>
-Contact is used in the following places: [%dtusage Contact%]
+ContactPoint is used in the following places: [%dtusage ContactPoint%]
 </p>
 
-<a name="Schedule"></a>
-<a name="schedule"></a>
+<a name="Timing"></a>
+<a name="timing"></a>
 <h2 style="margin-bottom: 1px">
-Schedule
+Timing
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes-examples.html#Schedule">Examples</a>, <a href="datatypes-definitions.html#Schedule">Formal Definitions</a> and <a href="datatypes-mappings.html#Schedule">Mappings</a>.
+See also <a href="datatypes-examples.html#Timing">Examples</a>, <a href="datatypes-definitions.html#Timing">Formal Definitions</a> and <a href="datatypes-mappings.html#Timing">Mappings</a>.
 </p>
 <p>
-Specifies an event that may occur multiple times. Schedules are not used for recording when things did happen, but when they are expected or requested to occur.
-A schedule can be either a list of events - periods on which the event occurs, 
+Specifies an event that may occur multiple times. Timing schedules are not used for recording when things did happen, but when they are expected or requested to occur.
+A Timing schedule can be either a list of events - periods on which the event occurs, 
 or a single event with repeating criteria, or just repeating criteria with no actual event. 
 </p>
 <!--
@@ -802,27 +820,27 @@ or a single event with repeating criteria, or just repeating criteria with no ac
 Note: a possible enhancement to this is to have the repeat content repeat with each event. This is richer and more complex - is the added functionality useful?
 </p>
 -->
-[%dt Schedule%]
+[%dt Timing%]
 <p>
 If events are specified, at least <i>event.start</i> SHALL be specified for each event. If no <i>event.end</i> is 
 specified, the event is assumed to last a limited but unknown time as clinically relevant.
 </p>
 <p>
-If the schedule has repeating criteria, the repeat can occur a given number of times per 
+If the timing schedule has repeating criteria, the repeat can occur a given number of times per 
 the specified duration or in relation to some real world event. Also, if the event repeats,
-a time to end the schedule can be specified, either with a count of the number of times 
+a time to end the timing can be specified, either with a count of the number of times 
 it can occur or a date/time at which to end the schedule. If no end condition is specified, 
 the Schedule will terminate on some criteria that are expressed elsewhere. 
 </p>
 
 <div class="use">
 <p><b>Constraints</b></p>
-[%dt.constraints Schedule%]
+[%dt.constraints Timing%]
 
 </div>
 
 <p>
-Schedule is used in the following places: [%dtusage Schedule%]
+Timing is used in the following places: [%dtusage Timing%]
 </p>
 
 <a name="open"> </a>
@@ -852,9 +870,9 @@ Some elements do not have a specified type. The type is represented by the wildc
  <li><a href="datatypes.html#Ratio">Ratio</a></li>
  <li><a href="datatypes.html#HumanName">HumanName</a></li>
  <li><a href="datatypes.html#Address">Address</a></li>
- <li><a href="datatypes.html#Contact">Contact</a></li>
- <li><a href="datatypes.html#Schedule">Schedule</a></li>
- <li><a href="references.html#ResourceReference">Resource</a> - a reference to another resource</li>
+ <li><a href="datatypes.html#ContactPoint">ContactPoint</a></li>
+ <li><a href="datatypes.html#Timing">Timing</a></li>
+ <li><a href="references.html#Reference">Reference</a> - a reference to another resource</li>
 </ul>
 <p>
 The element name ends with "[x]", and this is replaced with the Title cased name of the data type.
@@ -873,7 +891,7 @@ The following types are defined as part of the data types, but are documented el
 
 <ul>
  <li><b><a href="resources.html#metadata">Resource</a></b> - the conceptual base class for all resources</li>
- <li><b><a href="references.html#Resource">ResourceReference</a></b> - for references from one resource to another</li>
+ <li><b><a href="references.html#Reference">Reference</a></b> - for references from one resource to another</li>
  <li><b><a href="extensibility.html">Extension</a></b> - used to convey additional data in a resource</li>
  <li><b><a href="narrative.html#Narrative">Narrative</a></b> - conveys a human-readable representation of the content of a resource</li>
 </ul>
@@ -882,6 +900,57 @@ The following types are defined as part of the data types, but are documented el
 [%onthispage Primitive Types#primitive|Data Types#Types|Other Types#other%]
 
 [%file newfooter%]
+
+  <script src="external/jquery/jquery.js"> </script>
+<script src="jquery-ui.min.js"> </script>
+<script>
+ try {
+   var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
+ } catch(exception){ 
+  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
+    alert(exception);
+ }
+ if (!currentTabIndex)
+   currentTabIndex = '0';
+
+$( '#tabs-Attachment' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Coding' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-CodeableConcept' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Quantity' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Range' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Ratio' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Period' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-SampledData' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Identifier' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-HumanName' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Address' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-ContactPoint' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Timing' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+     
+     
+function store(currentTab) {
+  try {
+    sessionStorage.setItem('fhir-resource-tab-index', currentTab);
+  } catch(exception){ 
+  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
+    alert(exception);
+  }
+  $( '#tabs-Attachment' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Coding' ).tabs('option', 'active', currentTab);
+  $( '#tabs-CodeableConcept' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Quantity' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Range' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Ratio' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Period' ).tabs('option', 'active', currentTab);
+  $( '#tabs-SampledData' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Identifier' ).tabs('option', 'active', currentTab);
+  $( '#tabs-HumanName' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Address' ).tabs('option', 'active', currentTab);
+  $( '#tabs-ContactPoint' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Timing' ).tabs('option', 'active', currentTab);
+}     
+</script>
+
   
 </body>
 </html>

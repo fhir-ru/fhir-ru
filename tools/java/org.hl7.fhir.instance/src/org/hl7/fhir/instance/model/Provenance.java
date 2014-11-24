@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,40 +29,59 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * Provenance information that describes the activity that led to the creation of a set of resources. This information can be used to help determine their reliability or trace where the information in them came from. The focus of the provenance resource is record keeping, audit and traceability, and not explicit statements of clinical significance.
  */
-public class Provenance extends Resource {
+public class Provenance extends DomainResource {
 
     public enum ProvenanceEntityRole {
-        derivation, // A transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a preexisting entity.
-        revision, // A derivation for which the resulting entity is a revised version of some original.
-        quotation, // The repeat of (some or all of) an entity, such as text or image, by someone who may or may not be its original author.
-        source, // A primary source for a topic refers to something produced by some agent with direct experience and knowledge about the topic, at the time of the topic's study, without benefit from hindsight.
-        Null; // added to help the parsers
+        DERIVATION, // A transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a preexisting entity.
+        REVISION, // A derivation for which the resulting entity is a revised version of some original.
+        QUOTATION, // The repeat of (some or all of) an entity, such as text or image, by someone who may or may not be its original author.
+        SOURCE, // A primary source for a topic refers to something produced by some agent with direct experience and knowledge about the topic, at the time of the topic's study, without benefit from hindsight.
+        NULL; // added to help the parsers
         public static ProvenanceEntityRole fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("derivation".equals(codeString))
-          return derivation;
+          return DERIVATION;
         if ("revision".equals(codeString))
-          return revision;
+          return REVISION;
         if ("quotation".equals(codeString))
-          return quotation;
+          return QUOTATION;
         if ("source".equals(codeString))
-          return source;
+          return SOURCE;
         throw new Exception("Unknown ProvenanceEntityRole code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case derivation: return "derivation";
-            case revision: return "revision";
-            case quotation: return "quotation";
-            case source: return "source";
+            case DERIVATION: return "derivation";
+            case REVISION: return "revision";
+            case QUOTATION: return "quotation";
+            case SOURCE: return "source";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case DERIVATION: return "A transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a preexisting entity.";
+            case REVISION: return "A derivation for which the resulting entity is a revised version of some original.";
+            case QUOTATION: return "The repeat of (some or all of) an entity, such as text or image, by someone who may or may not be its original author.";
+            case SOURCE: return "A primary source for a topic refers to something produced by some agent with direct experience and knowledge about the topic, at the time of the topic's study, without benefit from hindsight.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case DERIVATION: return "derivation";
+            case REVISION: return "revision";
+            case QUOTATION: return "quotation";
+            case SOURCE: return "source";
             default: return "?";
           }
         }
@@ -74,23 +93,23 @@ public class Provenance extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("derivation".equals(codeString))
-          return ProvenanceEntityRole.derivation;
+          return ProvenanceEntityRole.DERIVATION;
         if ("revision".equals(codeString))
-          return ProvenanceEntityRole.revision;
+          return ProvenanceEntityRole.REVISION;
         if ("quotation".equals(codeString))
-          return ProvenanceEntityRole.quotation;
+          return ProvenanceEntityRole.QUOTATION;
         if ("source".equals(codeString))
-          return ProvenanceEntityRole.source;
+          return ProvenanceEntityRole.SOURCE;
         throw new Exception("Unknown ProvenanceEntityRole code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == ProvenanceEntityRole.derivation)
+      if (code == ProvenanceEntityRole.DERIVATION)
         return "derivation";
-      if (code == ProvenanceEntityRole.revision)
+      if (code == ProvenanceEntityRole.REVISION)
         return "revision";
-      if (code == ProvenanceEntityRole.quotation)
+      if (code == ProvenanceEntityRole.QUOTATION)
         return "quotation";
-      if (code == ProvenanceEntityRole.source)
+      if (code == ProvenanceEntityRole.SOURCE)
         return "source";
       return "?";
       }
@@ -161,16 +180,16 @@ public class Provenance extends Resource {
         }
 
         /**
-         * @return {@link #reference} (Identity of participant. May be a logical or physical uri and maybe absolute or relative.)
+         * @return {@link #reference} (Identity of participant. May be a logical or physical uri and maybe absolute or relative.). This is the underlying object with id, value and extensions. The accessor "getReference" gives direct access to the value
          */
-        public UriType getReference() { 
+        public UriType getReferenceElement() { 
           return this.reference;
         }
 
         /**
-         * @param value {@link #reference} (Identity of participant. May be a logical or physical uri and maybe absolute or relative.)
+         * @param value {@link #reference} (Identity of participant. May be a logical or physical uri and maybe absolute or relative.). This is the underlying object with id, value and extensions. The accessor "getReference" gives direct access to the value
          */
-        public ProvenanceAgentComponent setReference(UriType value) { 
+        public ProvenanceAgentComponent setReferenceElement(UriType value) { 
           this.reference = value;
           return this;
         }
@@ -178,14 +197,14 @@ public class Provenance extends Resource {
         /**
          * @return Identity of participant. May be a logical or physical uri and maybe absolute or relative.
          */
-        public String getReferenceSimple() { 
+        public String getReference() { 
           return this.reference == null ? null : this.reference.getValue();
         }
 
         /**
          * @param value Identity of participant. May be a logical or physical uri and maybe absolute or relative.
          */
-        public ProvenanceAgentComponent setReferenceSimple(String value) { 
+        public ProvenanceAgentComponent setReference(String value) { 
             if (this.reference == null)
               this.reference = new UriType();
             this.reference.setValue(value);
@@ -193,16 +212,16 @@ public class Provenance extends Resource {
         }
 
         /**
-         * @return {@link #display} (Human-readable description of the participant.)
+         * @return {@link #display} (Human-readable description of the participant.). This is the underlying object with id, value and extensions. The accessor "getDisplay" gives direct access to the value
          */
-        public StringType getDisplay() { 
+        public StringType getDisplayElement() { 
           return this.display;
         }
 
         /**
-         * @param value {@link #display} (Human-readable description of the participant.)
+         * @param value {@link #display} (Human-readable description of the participant.). This is the underlying object with id, value and extensions. The accessor "getDisplay" gives direct access to the value
          */
-        public ProvenanceAgentComponent setDisplay(StringType value) { 
+        public ProvenanceAgentComponent setDisplayElement(StringType value) { 
           this.display = value;
           return this;
         }
@@ -210,15 +229,15 @@ public class Provenance extends Resource {
         /**
          * @return Human-readable description of the participant.
          */
-        public String getDisplaySimple() { 
+        public String getDisplay() { 
           return this.display == null ? null : this.display.getValue();
         }
 
         /**
          * @param value Human-readable description of the participant.
          */
-        public ProvenanceAgentComponent setDisplaySimple(String value) { 
-          if (value == null)
+        public ProvenanceAgentComponent setDisplay(String value) { 
+          if (Utilities.noString(value))
             this.display = null;
           else {
             if (this.display == null)
@@ -238,6 +257,7 @@ public class Provenance extends Resource {
 
       public ProvenanceAgentComponent copy() {
         ProvenanceAgentComponent dst = new ProvenanceAgentComponent();
+        copyValues(dst);
         dst.role = role == null ? null : role.copy();
         dst.type = type == null ? null : type.copy();
         dst.reference = reference == null ? null : reference.copy();
@@ -287,16 +307,16 @@ public class Provenance extends Resource {
       }
 
         /**
-         * @return {@link #role} (How the entity was used during the activity.)
+         * @return {@link #role} (How the entity was used during the activity.). This is the underlying object with id, value and extensions. The accessor "getRole" gives direct access to the value
          */
-        public Enumeration<ProvenanceEntityRole> getRole() { 
+        public Enumeration<ProvenanceEntityRole> getRoleElement() { 
           return this.role;
         }
 
         /**
-         * @param value {@link #role} (How the entity was used during the activity.)
+         * @param value {@link #role} (How the entity was used during the activity.). This is the underlying object with id, value and extensions. The accessor "getRole" gives direct access to the value
          */
-        public ProvenanceEntityComponent setRole(Enumeration<ProvenanceEntityRole> value) { 
+        public ProvenanceEntityComponent setRoleElement(Enumeration<ProvenanceEntityRole> value) { 
           this.role = value;
           return this;
         }
@@ -304,14 +324,14 @@ public class Provenance extends Resource {
         /**
          * @return How the entity was used during the activity.
          */
-        public ProvenanceEntityRole getRoleSimple() { 
+        public ProvenanceEntityRole getRole() { 
           return this.role == null ? null : this.role.getValue();
         }
 
         /**
          * @param value How the entity was used during the activity.
          */
-        public ProvenanceEntityComponent setRoleSimple(ProvenanceEntityRole value) { 
+        public ProvenanceEntityComponent setRole(ProvenanceEntityRole value) { 
             if (this.role == null)
               this.role = new Enumeration<ProvenanceEntityRole>();
             this.role.setValue(value);
@@ -334,16 +354,16 @@ public class Provenance extends Resource {
         }
 
         /**
-         * @return {@link #reference} (Identity of participant. May be a logical or physical uri and maybe absolute or relative.)
+         * @return {@link #reference} (Identity of participant. May be a logical or physical uri and maybe absolute or relative.). This is the underlying object with id, value and extensions. The accessor "getReference" gives direct access to the value
          */
-        public UriType getReference() { 
+        public UriType getReferenceElement() { 
           return this.reference;
         }
 
         /**
-         * @param value {@link #reference} (Identity of participant. May be a logical or physical uri and maybe absolute or relative.)
+         * @param value {@link #reference} (Identity of participant. May be a logical or physical uri and maybe absolute or relative.). This is the underlying object with id, value and extensions. The accessor "getReference" gives direct access to the value
          */
-        public ProvenanceEntityComponent setReference(UriType value) { 
+        public ProvenanceEntityComponent setReferenceElement(UriType value) { 
           this.reference = value;
           return this;
         }
@@ -351,14 +371,14 @@ public class Provenance extends Resource {
         /**
          * @return Identity of participant. May be a logical or physical uri and maybe absolute or relative.
          */
-        public String getReferenceSimple() { 
+        public String getReference() { 
           return this.reference == null ? null : this.reference.getValue();
         }
 
         /**
          * @param value Identity of participant. May be a logical or physical uri and maybe absolute or relative.
          */
-        public ProvenanceEntityComponent setReferenceSimple(String value) { 
+        public ProvenanceEntityComponent setReference(String value) { 
             if (this.reference == null)
               this.reference = new UriType();
             this.reference.setValue(value);
@@ -366,16 +386,16 @@ public class Provenance extends Resource {
         }
 
         /**
-         * @return {@link #display} (Human-readable description of the entity.)
+         * @return {@link #display} (Human-readable description of the entity.). This is the underlying object with id, value and extensions. The accessor "getDisplay" gives direct access to the value
          */
-        public StringType getDisplay() { 
+        public StringType getDisplayElement() { 
           return this.display;
         }
 
         /**
-         * @param value {@link #display} (Human-readable description of the entity.)
+         * @param value {@link #display} (Human-readable description of the entity.). This is the underlying object with id, value and extensions. The accessor "getDisplay" gives direct access to the value
          */
-        public ProvenanceEntityComponent setDisplay(StringType value) { 
+        public ProvenanceEntityComponent setDisplayElement(StringType value) { 
           this.display = value;
           return this;
         }
@@ -383,15 +403,15 @@ public class Provenance extends Resource {
         /**
          * @return Human-readable description of the entity.
          */
-        public String getDisplaySimple() { 
+        public String getDisplay() { 
           return this.display == null ? null : this.display.getValue();
         }
 
         /**
          * @param value Human-readable description of the entity.
          */
-        public ProvenanceEntityComponent setDisplaySimple(String value) { 
-          if (value == null)
+        public ProvenanceEntityComponent setDisplay(String value) { 
+          if (Utilities.noString(value))
             this.display = null;
           else {
             if (this.display == null)
@@ -427,6 +447,7 @@ public class Provenance extends Resource {
 
       public ProvenanceEntityComponent copy() {
         ProvenanceEntityComponent dst = new ProvenanceEntityComponent();
+        copyValues(dst);
         dst.role = role == null ? null : role.copy();
         dst.type = type == null ? null : type.copy();
         dst.reference = reference == null ? null : reference.copy();
@@ -438,11 +459,11 @@ public class Provenance extends Resource {
   }
 
     /**
-     * The resource(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.
+     * The Reference(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.
      */
-    protected List<ResourceReference> target = new ArrayList<ResourceReference>();
+    protected List<Reference> target = new ArrayList<Reference>();
     /**
-     * The actual objects that are the target of the reference (The resource(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.)
+     * The actual objects that are the target of the reference (The Reference(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.)
      */
     protected List<Resource> targetTarget = new ArrayList<Resource>();
 
@@ -465,7 +486,7 @@ public class Provenance extends Resource {
     /**
      * Where the activity occurred, if relevant.
      */
-    protected ResourceReference location;
+    protected Reference location;
 
     /**
      * The actual object that is the target of the reference (Where the activity occurred, if relevant.)
@@ -488,11 +509,11 @@ public class Provenance extends Resource {
     protected List<ProvenanceEntityComponent> entity = new ArrayList<ProvenanceEntityComponent>();
 
     /**
-     * A digital signature on the target resource(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.
+     * A digital signature on the target Reference(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.
      */
     protected StringType integritySignature;
 
-    private static final long serialVersionUID = -5531531L;
+    private static final long serialVersionUID = 289748387L;
 
     public Provenance() {
       super();
@@ -504,24 +525,24 @@ public class Provenance extends Resource {
     }
 
     /**
-     * @return {@link #target} (The resource(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.)
+     * @return {@link #target} (The Reference(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.)
      */
-    public List<ResourceReference> getTarget() { 
+    public List<Reference> getTarget() { 
       return this.target;
     }
 
-    // syntactic sugar
     /**
-     * @return {@link #target} (The resource(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.)
+     * @return {@link #target} (The Reference(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.)
      */
-    public ResourceReference addTarget() { 
-      ResourceReference t = new ResourceReference();
+    // syntactic sugar
+    public Reference addTarget() { //3
+      Reference t = new Reference();
       this.target.add(t);
       return t;
     }
 
     /**
-     * @return {@link #target} (The actual objects that are the target of the reference. The resource(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.)
+     * @return {@link #target} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The Reference(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.)
      */
     public List<Resource> getTargetTarget() { 
       return this.targetTarget;
@@ -543,16 +564,16 @@ public class Provenance extends Resource {
     }
 
     /**
-     * @return {@link #recorded} (The instant of time at which the activity was recorded.)
+     * @return {@link #recorded} (The instant of time at which the activity was recorded.). This is the underlying object with id, value and extensions. The accessor "getRecorded" gives direct access to the value
      */
-    public InstantType getRecorded() { 
+    public InstantType getRecordedElement() { 
       return this.recorded;
     }
 
     /**
-     * @param value {@link #recorded} (The instant of time at which the activity was recorded.)
+     * @param value {@link #recorded} (The instant of time at which the activity was recorded.). This is the underlying object with id, value and extensions. The accessor "getRecorded" gives direct access to the value
      */
-    public Provenance setRecorded(InstantType value) { 
+    public Provenance setRecordedElement(InstantType value) { 
       this.recorded = value;
       return this;
     }
@@ -560,14 +581,14 @@ public class Provenance extends Resource {
     /**
      * @return The instant of time at which the activity was recorded.
      */
-    public DateAndTime getRecordedSimple() { 
+    public DateAndTime getRecorded() { 
       return this.recorded == null ? null : this.recorded.getValue();
     }
 
     /**
      * @param value The instant of time at which the activity was recorded.
      */
-    public Provenance setRecordedSimple(DateAndTime value) { 
+    public Provenance setRecorded(DateAndTime value) { 
         if (this.recorded == null)
           this.recorded = new InstantType();
         this.recorded.setValue(value);
@@ -592,27 +613,27 @@ public class Provenance extends Resource {
     /**
      * @return {@link #location} (Where the activity occurred, if relevant.)
      */
-    public ResourceReference getLocation() { 
+    public Reference getLocation() { 
       return this.location;
     }
 
     /**
      * @param value {@link #location} (Where the activity occurred, if relevant.)
      */
-    public Provenance setLocation(ResourceReference value) { 
+    public Provenance setLocation(Reference value) { 
       this.location = value;
       return this;
     }
 
     /**
-     * @return {@link #location} (The actual object that is the target of the reference. Where the activity occurred, if relevant.)
+     * @return {@link #location} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Where the activity occurred, if relevant.)
      */
     public Location getLocationTarget() { 
       return this.locationTarget;
     }
 
     /**
-     * @param value {@link #location} (The actual object that is the target of the reference. Where the activity occurred, if relevant.)
+     * @param value {@link #location} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Where the activity occurred, if relevant.)
      */
     public Provenance setLocationTarget(Location value) { 
       this.locationTarget = value;
@@ -626,11 +647,11 @@ public class Provenance extends Resource {
       return this.policy;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #policy} (Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.)
      */
-    public UriType addPolicy() { 
+    // syntactic sugar
+    public UriType addPolicyElement() {//2 
       UriType t = new UriType();
       this.policy.add(t);
       return t;
@@ -639,19 +660,19 @@ public class Provenance extends Resource {
     /**
      * @param value {@link #policy} (Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.)
      */
-    public UriType addPolicySimple(String value) { 
+    public Provenance addPolicy(String value) { //1
       UriType t = new UriType();
       t.setValue(value);
       this.policy.add(t);
-      return t;
+      return this;
     }
 
     /**
      * @param value {@link #policy} (Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.)
      */
-    public boolean hasPolicySimple(String value) { 
+    public boolean hasPolicy(String value) { 
       for (UriType v : this.policy)
-        if (v.getValue().equals(value))
+        if (v.equals(value)) // uri
           return true;
       return false;
     }
@@ -663,11 +684,11 @@ public class Provenance extends Resource {
       return this.agent;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #agent} (An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, a piece of software, an inanimate object, an organization, or other entities that may be ascribed responsibility.)
      */
-    public ProvenanceAgentComponent addAgent() { 
+    // syntactic sugar
+    public ProvenanceAgentComponent addAgent() { //3
       ProvenanceAgentComponent t = new ProvenanceAgentComponent();
       this.agent.add(t);
       return t;
@@ -680,43 +701,43 @@ public class Provenance extends Resource {
       return this.entity;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #entity} (An entity used in this activity.)
      */
-    public ProvenanceEntityComponent addEntity() { 
+    // syntactic sugar
+    public ProvenanceEntityComponent addEntity() { //3
       ProvenanceEntityComponent t = new ProvenanceEntityComponent();
       this.entity.add(t);
       return t;
     }
 
     /**
-     * @return {@link #integritySignature} (A digital signature on the target resource(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.)
+     * @return {@link #integritySignature} (A digital signature on the target Reference(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.). This is the underlying object with id, value and extensions. The accessor "getIntegritySignature" gives direct access to the value
      */
-    public StringType getIntegritySignature() { 
+    public StringType getIntegritySignatureElement() { 
       return this.integritySignature;
     }
 
     /**
-     * @param value {@link #integritySignature} (A digital signature on the target resource(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.)
+     * @param value {@link #integritySignature} (A digital signature on the target Reference(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.). This is the underlying object with id, value and extensions. The accessor "getIntegritySignature" gives direct access to the value
      */
-    public Provenance setIntegritySignature(StringType value) { 
+    public Provenance setIntegritySignatureElement(StringType value) { 
       this.integritySignature = value;
       return this;
     }
 
     /**
-     * @return A digital signature on the target resource(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.
+     * @return A digital signature on the target Reference(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.
      */
-    public String getIntegritySignatureSimple() { 
+    public String getIntegritySignature() { 
       return this.integritySignature == null ? null : this.integritySignature.getValue();
     }
 
     /**
-     * @param value A digital signature on the target resource(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.
+     * @param value A digital signature on the target Reference(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.
      */
-    public Provenance setIntegritySignatureSimple(String value) { 
-      if (value == null)
+    public Provenance setIntegritySignature(String value) { 
+      if (Utilities.noString(value))
         this.integritySignature = null;
       else {
         if (this.integritySignature == null)
@@ -728,21 +749,22 @@ public class Provenance extends Resource {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("target", "Resource(Any)", "The resource(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.", 0, java.lang.Integer.MAX_VALUE, target));
+        childrenList.add(new Property("target", "Reference(Any)", "The Reference(s) that were generated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.", 0, java.lang.Integer.MAX_VALUE, target));
         childrenList.add(new Property("period", "Period", "The period during which the activity occurred.", 0, java.lang.Integer.MAX_VALUE, period));
         childrenList.add(new Property("recorded", "instant", "The instant of time at which the activity was recorded.", 0, java.lang.Integer.MAX_VALUE, recorded));
         childrenList.add(new Property("reason", "CodeableConcept", "The reason that the activity was taking place.", 0, java.lang.Integer.MAX_VALUE, reason));
-        childrenList.add(new Property("location", "Resource(Location)", "Where the activity occurred, if relevant.", 0, java.lang.Integer.MAX_VALUE, location));
+        childrenList.add(new Property("location", "Reference(Location)", "Where the activity occurred, if relevant.", 0, java.lang.Integer.MAX_VALUE, location));
         childrenList.add(new Property("policy", "uri", "Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.", 0, java.lang.Integer.MAX_VALUE, policy));
         childrenList.add(new Property("agent", "", "An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, a piece of software, an inanimate object, an organization, or other entities that may be ascribed responsibility.", 0, java.lang.Integer.MAX_VALUE, agent));
         childrenList.add(new Property("entity", "", "An entity used in this activity.", 0, java.lang.Integer.MAX_VALUE, entity));
-        childrenList.add(new Property("integritySignature", "string", "A digital signature on the target resource(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.", 0, java.lang.Integer.MAX_VALUE, integritySignature));
+        childrenList.add(new Property("integritySignature", "string", "A digital signature on the target Reference(s). The signature should match a Provenance.agent.reference in the provenance resource. The signature is only added to support checking cryptographic integrity of the resource, and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.", 0, java.lang.Integer.MAX_VALUE, integritySignature));
       }
 
       public Provenance copy() {
         Provenance dst = new Provenance();
-        dst.target = new ArrayList<ResourceReference>();
-        for (ResourceReference i : target)
+        copyValues(dst);
+        dst.target = new ArrayList<Reference>();
+        for (Reference i : target)
           dst.target.add(i.copy());
         dst.period = period == null ? null : period.copy();
         dst.recorded = recorded == null ? null : recorded.copy();

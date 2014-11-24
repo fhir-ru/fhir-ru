@@ -1,7 +1,7 @@
 package org.hl7.fhir.tools.implementations;
 
 /*
- Copyright (c) 2011-2013, HL7, Inc
+ Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -28,17 +28,10 @@ package org.hl7.fhir.tools.implementations;
  POSSIBILITY OF SUCH DAMAGE.
 
  */
-import java.io.File;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.tools.implementations.BaseGenerator;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -63,7 +56,7 @@ public class XMLToolsGenerator extends BaseGenerator implements PlatformGenerato
   }
 
   @Override
-  public String getDescription() {
+  public String getDescription(String version, String svnRevision) {
     return "Document Rendering Stylesheet, supplementary implementation schemas";
   }
 
@@ -105,7 +98,7 @@ public class XMLToolsGenerator extends BaseGenerator implements PlatformGenerato
   }
 
   @Override
-  public String checkFragments(String rootDir, String fragments, boolean inProcess) throws Exception {
+  public String checkFragments(String rootDir, String fragments) throws Exception {
     throw new UnsupportedOperationException("not supported");   
   }
 

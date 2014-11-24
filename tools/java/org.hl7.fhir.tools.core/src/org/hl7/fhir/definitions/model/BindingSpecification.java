@@ -1,6 +1,6 @@
 package org.hl7.fhir.definitions.model;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -31,7 +31,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.instance.model.ElementDefinition.BindingConformance;
 import org.hl7.fhir.instance.model.ValueSet;
+import org.hl7.fhir.instance.model.ValueSet.ValuesetStatus;
 import org.hl7.fhir.utilities.Utilities;
 
 /**
@@ -44,6 +46,9 @@ import org.hl7.fhir.utilities.Utilities;
  *
  */
 public class BindingSpecification {
+  
+  public static final String DEFAULT_OID_CS = "2.16.840.1.113883.4.642.1.";
+  public static final String DEFAULT_OID_VS = "2.16.840.1.113883.4.642.2.";
   
   public enum Binding {
     Unbound,
@@ -79,14 +84,19 @@ public class BindingSpecification {
   private String reference;
   private String description;
   private boolean example;
+
+  // for profiles:
+  private BindingConformance conformance;
+  private Boolean extensible;
   
   // allow ability to override metadata defaults
   private String uri; // used as the official value set identifier if provided, else one will be synthesized. For when code list is actually a value set defined elsewhere
-  private String oid; // oid of the value set if you don't want a generated one
   private String webSite;
   private String email;
   private String copyright;
   private List<DefinedCode> codes = new ArrayList<DefinedCode>();
+  private String csOid;
+  private String vsOid;
 	
 	// these are implied by the use of the binding at the specification level
   private BindingStrength bindingStrength;
@@ -101,6 +111,7 @@ public class BindingSpecification {
 
   private String v2Map;
   private String v3Map;
+  private ValuesetStatus status;
   
   public String getId() {
     return id;
@@ -174,7 +185,24 @@ public class BindingSpecification {
     this.source = source;
   }
 
+
   
+  public BindingConformance getConformance() {
+    return conformance;
+  }
+
+  public void setConformance(BindingConformance conformance) {
+    this.conformance = conformance;
+  }
+
+  public Boolean getExtensible() {
+    return extensible;
+  }
+
+  public void setExtensible(Boolean extensible) {
+    this.extensible = extensible;
+  }
+
   public static BindingSpecification getBindingFromList(
 			Map<String, BindingSpecification> conceptDomains,
 			String conceptDomain)
@@ -318,14 +346,6 @@ public class BindingSpecification {
     this.email = email;
   }
 
-  public String getOid() {
-    return oid;
-  }
-
-  public void setOid(String oid) {
-    this.oid = oid;
-  }
-
   public String getCopyright() {
     return copyright;
   }
@@ -350,5 +370,28 @@ public class BindingSpecification {
     this.v3Map = v3Map;
   }
 
+  public String getCsOid() {
+    return csOid;
+  }
+
+  public void setCsOid(String csOid) {
+    this.csOid = csOid;
+  }
+
+  public String getVsOid() {
+    return vsOid;
+  }
+
+  public void setVsOid(String vsOid) {
+    this.vsOid = vsOid;
+  }
+
+  public ValuesetStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(ValuesetStatus status) {
+    this.status = status;
+  }
   
 }

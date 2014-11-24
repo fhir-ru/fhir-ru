@@ -103,7 +103,7 @@ namespace Hl7.Fhir.Introspection
 
         private static void validateElement(object value, ValidationContext validationContext, List<ValidationResult> result)
         {
-            FhirValidator.TryValidate(value, result, validationContext.ValidateRecursively());
+            DotNetAttributeValidation.TryValidate(value, result, validationContext.ValidateRecursively());
         }
     }
 }

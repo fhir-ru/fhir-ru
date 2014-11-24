@@ -1,7 +1,7 @@
 package org.hl7.fhir.tools.implementations.objectivec;
 
 /*
- Copyright (c) 2011-2014, HL7, Inc
+ Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -63,7 +63,7 @@ public class ObjectiveCGenerator extends BaseGenerator implements PlatformGenera
   }
 
   @Override
-  public String getDescription() {
+  public String getDescription(String version, String svnRevision) {
     return "Resource definitions, Preliminary XML & Json parsers";
   }
 
@@ -254,7 +254,7 @@ public class ObjectiveCGenerator extends BaseGenerator implements PlatformGenera
   }
 
   @Override
-  public String checkFragments(String rootDir, String fragments, boolean inProcess) throws Exception {
+  public String checkFragments(String rootDir, String fragments) throws Exception {
     return "Not supported by Objective-C implementation";
   }
 

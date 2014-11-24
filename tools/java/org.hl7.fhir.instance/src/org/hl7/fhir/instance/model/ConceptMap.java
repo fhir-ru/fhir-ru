@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,36 +29,53 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.
  */
-public class ConceptMap extends Resource {
+public class ConceptMap extends DomainResource {
 
     public enum ValuesetStatus {
-        draft, // This valueset is still under development.
-        active, // This valueset is ready for normal use.
-        retired, // This valueset has been withdrawn or superceded and should no longer be used.
-        Null; // added to help the parsers
+        DRAFT, // This valueset is still under development.
+        ACTIVE, // This valueset is ready for normal use.
+        RETIRED, // This valueset has been withdrawn or superceded and should no longer be used.
+        NULL; // added to help the parsers
         public static ValuesetStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("draft".equals(codeString))
-          return draft;
+          return DRAFT;
         if ("active".equals(codeString))
-          return active;
+          return ACTIVE;
         if ("retired".equals(codeString))
-          return retired;
+          return RETIRED;
         throw new Exception("Unknown ValuesetStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case draft: return "draft";
-            case active: return "active";
-            case retired: return "retired";
+            case DRAFT: return "draft";
+            case ACTIVE: return "active";
+            case RETIRED: return "retired";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case DRAFT: return "This valueset is still under development.";
+            case ACTIVE: return "This valueset is ready for normal use.";
+            case RETIRED: return "This valueset has been withdrawn or superceded and should no longer be used.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case DRAFT: return "Draft";
+            case ACTIVE: return "Active";
+            case RETIRED: return "Retired";
             default: return "?";
           }
         }
@@ -70,69 +87,97 @@ public class ConceptMap extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("draft".equals(codeString))
-          return ValuesetStatus.draft;
+          return ValuesetStatus.DRAFT;
         if ("active".equals(codeString))
-          return ValuesetStatus.active;
+          return ValuesetStatus.ACTIVE;
         if ("retired".equals(codeString))
-          return ValuesetStatus.retired;
+          return ValuesetStatus.RETIRED;
         throw new Exception("Unknown ValuesetStatus code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == ValuesetStatus.draft)
+      if (code == ValuesetStatus.DRAFT)
         return "draft";
-      if (code == ValuesetStatus.active)
+      if (code == ValuesetStatus.ACTIVE)
         return "active";
-      if (code == ValuesetStatus.retired)
+      if (code == ValuesetStatus.RETIRED)
         return "retired";
       return "?";
       }
     }
 
     public enum ConceptEquivalence {
-        equal, // The definitions of the concepts are exactly the same (i.e. only grammatical differences) and structural implications of meaning are identifical or irrelevant (i.e. intensionally identical).
-        equivalent, // The definitions of the concepts mean the same thing (including when structural implications of meaning are considered) (i.e. extensionally identical).
-        wider, // The target mapping is wider in meaning than the source concept.
-        subsumes, // The target mapping subsumes the meaning of the source concept (e.g. the source is-a target).
-        narrower, // The target mapping is narrower in meaning that the source concept. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.
-        specialises, // The target mapping specialises the meaning of the source concept (e.g. the target is-a source).
-        inexact, // The target mapping overlaps with the source concept, but both source and target cover additional meaning. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.
-        unmatched, // There is no match for this concept in the destination concept system.
-        disjoint, // This is an explicit assertion that there is no mapping between the source and target concept.
-        Null; // added to help the parsers
+        EQUAL, // The definitions of the concepts are exactly the same (i.e. only grammatical differences) and structural implications of meaning are identifical or irrelevant (i.e. intensionally identical).
+        EQUIVALENT, // The definitions of the concepts mean the same thing (including when structural implications of meaning are considered) (i.e. extensionally identical).
+        WIDER, // The target mapping is wider in meaning than the source concept.
+        SUBSUMES, // The target mapping subsumes the meaning of the source concept (e.g. the source is-a target).
+        NARROWER, // The target mapping is narrower in meaning that the source concept. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.
+        SPECIALISES, // The target mapping specialises the meaning of the source concept (e.g. the target is-a source).
+        INEXACT, // The target mapping overlaps with the source concept, but both source and target cover additional meaning. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.
+        UNMATCHED, // There is no match for this concept in the destination concept system.
+        DISJOINT, // This is an explicit assertion that there is no mapping between the source and target concept.
+        NULL; // added to help the parsers
         public static ConceptEquivalence fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("equal".equals(codeString))
-          return equal;
+          return EQUAL;
         if ("equivalent".equals(codeString))
-          return equivalent;
+          return EQUIVALENT;
         if ("wider".equals(codeString))
-          return wider;
+          return WIDER;
         if ("subsumes".equals(codeString))
-          return subsumes;
+          return SUBSUMES;
         if ("narrower".equals(codeString))
-          return narrower;
+          return NARROWER;
         if ("specialises".equals(codeString))
-          return specialises;
+          return SPECIALISES;
         if ("inexact".equals(codeString))
-          return inexact;
+          return INEXACT;
         if ("unmatched".equals(codeString))
-          return unmatched;
+          return UNMATCHED;
         if ("disjoint".equals(codeString))
-          return disjoint;
+          return DISJOINT;
         throw new Exception("Unknown ConceptEquivalence code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case equal: return "equal";
-            case equivalent: return "equivalent";
-            case wider: return "wider";
-            case subsumes: return "subsumes";
-            case narrower: return "narrower";
-            case specialises: return "specialises";
-            case inexact: return "inexact";
-            case unmatched: return "unmatched";
-            case disjoint: return "disjoint";
+            case EQUAL: return "equal";
+            case EQUIVALENT: return "equivalent";
+            case WIDER: return "wider";
+            case SUBSUMES: return "subsumes";
+            case NARROWER: return "narrower";
+            case SPECIALISES: return "specialises";
+            case INEXACT: return "inexact";
+            case UNMATCHED: return "unmatched";
+            case DISJOINT: return "disjoint";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case EQUAL: return "The definitions of the concepts are exactly the same (i.e. only grammatical differences) and structural implications of meaning are identifical or irrelevant (i.e. intensionally identical).";
+            case EQUIVALENT: return "The definitions of the concepts mean the same thing (including when structural implications of meaning are considered) (i.e. extensionally identical).";
+            case WIDER: return "The target mapping is wider in meaning than the source concept.";
+            case SUBSUMES: return "The target mapping subsumes the meaning of the source concept (e.g. the source is-a target).";
+            case NARROWER: return "The target mapping is narrower in meaning that the source concept. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.";
+            case SPECIALISES: return "The target mapping specialises the meaning of the source concept (e.g. the target is-a source).";
+            case INEXACT: return "The target mapping overlaps with the source concept, but both source and target cover additional meaning. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.";
+            case UNMATCHED: return "There is no match for this concept in the destination concept system.";
+            case DISJOINT: return "This is an explicit assertion that there is no mapping between the source and target concept.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case EQUAL: return "equal";
+            case EQUIVALENT: return "equivalent";
+            case WIDER: return "wider";
+            case SUBSUMES: return "subsumes";
+            case NARROWER: return "narrower";
+            case SPECIALISES: return "specialises";
+            case INEXACT: return "inexact";
+            case UNMATCHED: return "unmatched";
+            case DISJOINT: return "disjoint";
             default: return "?";
           }
         }
@@ -144,43 +189,43 @@ public class ConceptMap extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("equal".equals(codeString))
-          return ConceptEquivalence.equal;
+          return ConceptEquivalence.EQUAL;
         if ("equivalent".equals(codeString))
-          return ConceptEquivalence.equivalent;
+          return ConceptEquivalence.EQUIVALENT;
         if ("wider".equals(codeString))
-          return ConceptEquivalence.wider;
+          return ConceptEquivalence.WIDER;
         if ("subsumes".equals(codeString))
-          return ConceptEquivalence.subsumes;
+          return ConceptEquivalence.SUBSUMES;
         if ("narrower".equals(codeString))
-          return ConceptEquivalence.narrower;
+          return ConceptEquivalence.NARROWER;
         if ("specialises".equals(codeString))
-          return ConceptEquivalence.specialises;
+          return ConceptEquivalence.SPECIALISES;
         if ("inexact".equals(codeString))
-          return ConceptEquivalence.inexact;
+          return ConceptEquivalence.INEXACT;
         if ("unmatched".equals(codeString))
-          return ConceptEquivalence.unmatched;
+          return ConceptEquivalence.UNMATCHED;
         if ("disjoint".equals(codeString))
-          return ConceptEquivalence.disjoint;
+          return ConceptEquivalence.DISJOINT;
         throw new Exception("Unknown ConceptEquivalence code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == ConceptEquivalence.equal)
+      if (code == ConceptEquivalence.EQUAL)
         return "equal";
-      if (code == ConceptEquivalence.equivalent)
+      if (code == ConceptEquivalence.EQUIVALENT)
         return "equivalent";
-      if (code == ConceptEquivalence.wider)
+      if (code == ConceptEquivalence.WIDER)
         return "wider";
-      if (code == ConceptEquivalence.subsumes)
+      if (code == ConceptEquivalence.SUBSUMES)
         return "subsumes";
-      if (code == ConceptEquivalence.narrower)
+      if (code == ConceptEquivalence.NARROWER)
         return "narrower";
-      if (code == ConceptEquivalence.specialises)
+      if (code == ConceptEquivalence.SPECIALISES)
         return "specialises";
-      if (code == ConceptEquivalence.inexact)
+      if (code == ConceptEquivalence.INEXACT)
         return "inexact";
-      if (code == ConceptEquivalence.unmatched)
+      if (code == ConceptEquivalence.UNMATCHED)
         return "unmatched";
-      if (code == ConceptEquivalence.disjoint)
+      if (code == ConceptEquivalence.DISJOINT)
         return "disjoint";
       return "?";
       }
@@ -188,12 +233,12 @@ public class ConceptMap extends Resource {
 
     public static class ConceptMapElementComponent extends BackboneElement {
         /**
-         * Code System (if value set crosses code systems).
+         * Code System (if the source is a value value set that crosses more than one code system).
          */
         protected UriType codeSystem;
 
         /**
-         * Identifies element being mapped.
+         * Identity (code or path) or the element/item being mapped.
          */
         protected CodeType code;
 
@@ -213,70 +258,69 @@ public class ConceptMap extends Resource {
         super();
       }
 
-      public ConceptMapElementComponent(UriType codeSystem) {
-        super();
-        this.codeSystem = codeSystem;
-      }
-
         /**
-         * @return {@link #codeSystem} (Code System (if value set crosses code systems).)
+         * @return {@link #codeSystem} (Code System (if the source is a value value set that crosses more than one code system).). This is the underlying object with id, value and extensions. The accessor "getCodeSystem" gives direct access to the value
          */
-        public UriType getCodeSystem() { 
+        public UriType getCodeSystemElement() { 
           return this.codeSystem;
         }
 
         /**
-         * @param value {@link #codeSystem} (Code System (if value set crosses code systems).)
+         * @param value {@link #codeSystem} (Code System (if the source is a value value set that crosses more than one code system).). This is the underlying object with id, value and extensions. The accessor "getCodeSystem" gives direct access to the value
          */
-        public ConceptMapElementComponent setCodeSystem(UriType value) { 
+        public ConceptMapElementComponent setCodeSystemElement(UriType value) { 
           this.codeSystem = value;
           return this;
         }
 
         /**
-         * @return Code System (if value set crosses code systems).
+         * @return Code System (if the source is a value value set that crosses more than one code system).
          */
-        public String getCodeSystemSimple() { 
+        public String getCodeSystem() { 
           return this.codeSystem == null ? null : this.codeSystem.getValue();
         }
 
         /**
-         * @param value Code System (if value set crosses code systems).
+         * @param value Code System (if the source is a value value set that crosses more than one code system).
          */
-        public ConceptMapElementComponent setCodeSystemSimple(String value) { 
+        public ConceptMapElementComponent setCodeSystem(String value) { 
+          if (Utilities.noString(value))
+            this.codeSystem = null;
+          else {
             if (this.codeSystem == null)
               this.codeSystem = new UriType();
             this.codeSystem.setValue(value);
+          }
           return this;
         }
 
         /**
-         * @return {@link #code} (Identifies element being mapped.)
+         * @return {@link #code} (Identity (code or path) or the element/item being mapped.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public CodeType getCode() { 
+        public CodeType getCodeElement() { 
           return this.code;
         }
 
         /**
-         * @param value {@link #code} (Identifies element being mapped.)
+         * @param value {@link #code} (Identity (code or path) or the element/item being mapped.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public ConceptMapElementComponent setCode(CodeType value) { 
+        public ConceptMapElementComponent setCodeElement(CodeType value) { 
           this.code = value;
           return this;
         }
 
         /**
-         * @return Identifies element being mapped.
+         * @return Identity (code or path) or the element/item being mapped.
          */
-        public String getCodeSimple() { 
+        public String getCode() { 
           return this.code == null ? null : this.code.getValue();
         }
 
         /**
-         * @param value Identifies element being mapped.
+         * @param value Identity (code or path) or the element/item being mapped.
          */
-        public ConceptMapElementComponent setCodeSimple(String value) { 
-          if (value == null)
+        public ConceptMapElementComponent setCode(String value) { 
+          if (Utilities.noString(value))
             this.code = null;
           else {
             if (this.code == null)
@@ -293,11 +337,11 @@ public class ConceptMap extends Resource {
           return this.dependsOn;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #dependsOn} (A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.)
          */
-        public OtherElementComponent addDependsOn() { 
+    // syntactic sugar
+        public OtherElementComponent addDependsOn() { //3
           OtherElementComponent t = new OtherElementComponent();
           this.dependsOn.add(t);
           return t;
@@ -310,11 +354,11 @@ public class ConceptMap extends Resource {
           return this.map;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #map} (A concept from the target value set that this concept maps to.)
          */
-        public ConceptMapElementMapComponent addMap() { 
+    // syntactic sugar
+        public ConceptMapElementMapComponent addMap() { //3
           ConceptMapElementMapComponent t = new ConceptMapElementMapComponent();
           this.map.add(t);
           return t;
@@ -322,14 +366,15 @@ public class ConceptMap extends Resource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("codeSystem", "uri", "Code System (if value set crosses code systems).", 0, java.lang.Integer.MAX_VALUE, codeSystem));
-          childrenList.add(new Property("code", "code", "Identifies element being mapped.", 0, java.lang.Integer.MAX_VALUE, code));
+          childrenList.add(new Property("codeSystem", "uri", "Code System (if the source is a value value set that crosses more than one code system).", 0, java.lang.Integer.MAX_VALUE, codeSystem));
+          childrenList.add(new Property("code", "code", "Identity (code or path) or the element/item being mapped.", 0, java.lang.Integer.MAX_VALUE, code));
           childrenList.add(new Property("dependsOn", "", "A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value.", 0, java.lang.Integer.MAX_VALUE, dependsOn));
           childrenList.add(new Property("map", "", "A concept from the target value set that this concept maps to.", 0, java.lang.Integer.MAX_VALUE, map));
         }
 
       public ConceptMapElementComponent copy() {
         ConceptMapElementComponent dst = new ConceptMapElementComponent();
+        copyValues(dst);
         dst.codeSystem = codeSystem == null ? null : codeSystem.copy();
         dst.code = code == null ? null : code.copy();
         dst.dependsOn = new ArrayList<OtherElementComponent>();
@@ -350,12 +395,12 @@ public class ConceptMap extends Resource {
         protected UriType element;
 
         /**
-         * Code System (if necessary).
+         * The code system of the dependency code (if the source/dependency is a value set that cross code systems).
          */
         protected UriType codeSystem;
 
         /**
-         * Value of the referenced element.
+         * Identity (code or path) or the element/item that the map depends on / refers to.
          */
         protected StringType code;
 
@@ -373,16 +418,16 @@ public class ConceptMap extends Resource {
       }
 
         /**
-         * @return {@link #element} (A reference to a specific concept that holds a coded value. This can be an element in a FHIR resource, or a specific reference to a data element in a different specification (e.g. v2) or a general reference to a kind of data field, or a reference to a value set with an appropriately narrow definition.)
+         * @return {@link #element} (A reference to a specific concept that holds a coded value. This can be an element in a FHIR resource, or a specific reference to a data element in a different specification (e.g. v2) or a general reference to a kind of data field, or a reference to a value set with an appropriately narrow definition.). This is the underlying object with id, value and extensions. The accessor "getElement" gives direct access to the value
          */
-        public UriType getElement() { 
+        public UriType getElementElement() { 
           return this.element;
         }
 
         /**
-         * @param value {@link #element} (A reference to a specific concept that holds a coded value. This can be an element in a FHIR resource, or a specific reference to a data element in a different specification (e.g. v2) or a general reference to a kind of data field, or a reference to a value set with an appropriately narrow definition.)
+         * @param value {@link #element} (A reference to a specific concept that holds a coded value. This can be an element in a FHIR resource, or a specific reference to a data element in a different specification (e.g. v2) or a general reference to a kind of data field, or a reference to a value set with an appropriately narrow definition.). This is the underlying object with id, value and extensions. The accessor "getElement" gives direct access to the value
          */
-        public OtherElementComponent setElement(UriType value) { 
+        public OtherElementComponent setElementElement(UriType value) { 
           this.element = value;
           return this;
         }
@@ -390,14 +435,14 @@ public class ConceptMap extends Resource {
         /**
          * @return A reference to a specific concept that holds a coded value. This can be an element in a FHIR resource, or a specific reference to a data element in a different specification (e.g. v2) or a general reference to a kind of data field, or a reference to a value set with an appropriately narrow definition.
          */
-        public String getElementSimple() { 
+        public String getElement() { 
           return this.element == null ? null : this.element.getValue();
         }
 
         /**
          * @param value A reference to a specific concept that holds a coded value. This can be an element in a FHIR resource, or a specific reference to a data element in a different specification (e.g. v2) or a general reference to a kind of data field, or a reference to a value set with an appropriately narrow definition.
          */
-        public OtherElementComponent setElementSimple(String value) { 
+        public OtherElementComponent setElement(String value) { 
             if (this.element == null)
               this.element = new UriType();
             this.element.setValue(value);
@@ -405,31 +450,31 @@ public class ConceptMap extends Resource {
         }
 
         /**
-         * @return {@link #codeSystem} (Code System (if necessary).)
+         * @return {@link #codeSystem} (The code system of the dependency code (if the source/dependency is a value set that cross code systems).). This is the underlying object with id, value and extensions. The accessor "getCodeSystem" gives direct access to the value
          */
-        public UriType getCodeSystem() { 
+        public UriType getCodeSystemElement() { 
           return this.codeSystem;
         }
 
         /**
-         * @param value {@link #codeSystem} (Code System (if necessary).)
+         * @param value {@link #codeSystem} (The code system of the dependency code (if the source/dependency is a value set that cross code systems).). This is the underlying object with id, value and extensions. The accessor "getCodeSystem" gives direct access to the value
          */
-        public OtherElementComponent setCodeSystem(UriType value) { 
+        public OtherElementComponent setCodeSystemElement(UriType value) { 
           this.codeSystem = value;
           return this;
         }
 
         /**
-         * @return Code System (if necessary).
+         * @return The code system of the dependency code (if the source/dependency is a value set that cross code systems).
          */
-        public String getCodeSystemSimple() { 
+        public String getCodeSystem() { 
           return this.codeSystem == null ? null : this.codeSystem.getValue();
         }
 
         /**
-         * @param value Code System (if necessary).
+         * @param value The code system of the dependency code (if the source/dependency is a value set that cross code systems).
          */
-        public OtherElementComponent setCodeSystemSimple(String value) { 
+        public OtherElementComponent setCodeSystem(String value) { 
             if (this.codeSystem == null)
               this.codeSystem = new UriType();
             this.codeSystem.setValue(value);
@@ -437,31 +482,31 @@ public class ConceptMap extends Resource {
         }
 
         /**
-         * @return {@link #code} (Value of the referenced element.)
+         * @return {@link #code} (Identity (code or path) or the element/item that the map depends on / refers to.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public StringType getCode() { 
+        public StringType getCodeElement() { 
           return this.code;
         }
 
         /**
-         * @param value {@link #code} (Value of the referenced element.)
+         * @param value {@link #code} (Identity (code or path) or the element/item that the map depends on / refers to.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public OtherElementComponent setCode(StringType value) { 
+        public OtherElementComponent setCodeElement(StringType value) { 
           this.code = value;
           return this;
         }
 
         /**
-         * @return Value of the referenced element.
+         * @return Identity (code or path) or the element/item that the map depends on / refers to.
          */
-        public String getCodeSimple() { 
+        public String getCode() { 
           return this.code == null ? null : this.code.getValue();
         }
 
         /**
-         * @param value Value of the referenced element.
+         * @param value Identity (code or path) or the element/item that the map depends on / refers to.
          */
-        public OtherElementComponent setCodeSimple(String value) { 
+        public OtherElementComponent setCode(String value) { 
             if (this.code == null)
               this.code = new StringType();
             this.code.setValue(value);
@@ -471,12 +516,13 @@ public class ConceptMap extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("element", "uri", "A reference to a specific concept that holds a coded value. This can be an element in a FHIR resource, or a specific reference to a data element in a different specification (e.g. v2) or a general reference to a kind of data field, or a reference to a value set with an appropriately narrow definition.", 0, java.lang.Integer.MAX_VALUE, element));
-          childrenList.add(new Property("codeSystem", "uri", "Code System (if necessary).", 0, java.lang.Integer.MAX_VALUE, codeSystem));
-          childrenList.add(new Property("code", "string", "Value of the referenced element.", 0, java.lang.Integer.MAX_VALUE, code));
+          childrenList.add(new Property("codeSystem", "uri", "The code system of the dependency code (if the source/dependency is a value set that cross code systems).", 0, java.lang.Integer.MAX_VALUE, codeSystem));
+          childrenList.add(new Property("code", "string", "Identity (code or path) or the element/item that the map depends on / refers to.", 0, java.lang.Integer.MAX_VALUE, code));
         }
 
       public OtherElementComponent copy() {
         OtherElementComponent dst = new OtherElementComponent();
+        copyValues(dst);
         dst.element = element == null ? null : element.copy();
         dst.codeSystem = codeSystem == null ? null : codeSystem.copy();
         dst.code = code == null ? null : code.copy();
@@ -487,22 +533,22 @@ public class ConceptMap extends Resource {
 
     public static class ConceptMapElementMapComponent extends BackboneElement {
         /**
-         * System of the target (if necessary).
+         * The code system of the target code (if the target is a value set that cross code systems).
          */
         protected UriType codeSystem;
 
         /**
-         * Code that identifies the target element.
+         * Identity (code or path) or the element/item that the map refers to.
          */
         protected CodeType code;
 
         /**
-         * equal | equivalent | wider | subsumes | narrower | specialises | inexact | unmatched | disjoint.
+         * The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from source to target (e.g. the source is 'wider' than the target.
          */
         protected Enumeration<ConceptEquivalence> equivalence;
 
         /**
-         * Description of status/issues in mapping.
+         * A description of status/issues in mapping that conveys additional information not represented in  the structured data.
          */
         protected StringType comments;
 
@@ -523,32 +569,32 @@ public class ConceptMap extends Resource {
       }
 
         /**
-         * @return {@link #codeSystem} (System of the target (if necessary).)
+         * @return {@link #codeSystem} (The code system of the target code (if the target is a value set that cross code systems).). This is the underlying object with id, value and extensions. The accessor "getCodeSystem" gives direct access to the value
          */
-        public UriType getCodeSystem() { 
+        public UriType getCodeSystemElement() { 
           return this.codeSystem;
         }
 
         /**
-         * @param value {@link #codeSystem} (System of the target (if necessary).)
+         * @param value {@link #codeSystem} (The code system of the target code (if the target is a value set that cross code systems).). This is the underlying object with id, value and extensions. The accessor "getCodeSystem" gives direct access to the value
          */
-        public ConceptMapElementMapComponent setCodeSystem(UriType value) { 
+        public ConceptMapElementMapComponent setCodeSystemElement(UriType value) { 
           this.codeSystem = value;
           return this;
         }
 
         /**
-         * @return System of the target (if necessary).
+         * @return The code system of the target code (if the target is a value set that cross code systems).
          */
-        public String getCodeSystemSimple() { 
+        public String getCodeSystem() { 
           return this.codeSystem == null ? null : this.codeSystem.getValue();
         }
 
         /**
-         * @param value System of the target (if necessary).
+         * @param value The code system of the target code (if the target is a value set that cross code systems).
          */
-        public ConceptMapElementMapComponent setCodeSystemSimple(String value) { 
-          if (value == null)
+        public ConceptMapElementMapComponent setCodeSystem(String value) { 
+          if (Utilities.noString(value))
             this.codeSystem = null;
           else {
             if (this.codeSystem == null)
@@ -559,32 +605,32 @@ public class ConceptMap extends Resource {
         }
 
         /**
-         * @return {@link #code} (Code that identifies the target element.)
+         * @return {@link #code} (Identity (code or path) or the element/item that the map refers to.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public CodeType getCode() { 
+        public CodeType getCodeElement() { 
           return this.code;
         }
 
         /**
-         * @param value {@link #code} (Code that identifies the target element.)
+         * @param value {@link #code} (Identity (code or path) or the element/item that the map refers to.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public ConceptMapElementMapComponent setCode(CodeType value) { 
+        public ConceptMapElementMapComponent setCodeElement(CodeType value) { 
           this.code = value;
           return this;
         }
 
         /**
-         * @return Code that identifies the target element.
+         * @return Identity (code or path) or the element/item that the map refers to.
          */
-        public String getCodeSimple() { 
+        public String getCode() { 
           return this.code == null ? null : this.code.getValue();
         }
 
         /**
-         * @param value Code that identifies the target element.
+         * @param value Identity (code or path) or the element/item that the map refers to.
          */
-        public ConceptMapElementMapComponent setCodeSimple(String value) { 
-          if (value == null)
+        public ConceptMapElementMapComponent setCode(String value) { 
+          if (Utilities.noString(value))
             this.code = null;
           else {
             if (this.code == null)
@@ -595,31 +641,31 @@ public class ConceptMap extends Resource {
         }
 
         /**
-         * @return {@link #equivalence} (equal | equivalent | wider | subsumes | narrower | specialises | inexact | unmatched | disjoint.)
+         * @return {@link #equivalence} (The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from source to target (e.g. the source is 'wider' than the target.). This is the underlying object with id, value and extensions. The accessor "getEquivalence" gives direct access to the value
          */
-        public Enumeration<ConceptEquivalence> getEquivalence() { 
+        public Enumeration<ConceptEquivalence> getEquivalenceElement() { 
           return this.equivalence;
         }
 
         /**
-         * @param value {@link #equivalence} (equal | equivalent | wider | subsumes | narrower | specialises | inexact | unmatched | disjoint.)
+         * @param value {@link #equivalence} (The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from source to target (e.g. the source is 'wider' than the target.). This is the underlying object with id, value and extensions. The accessor "getEquivalence" gives direct access to the value
          */
-        public ConceptMapElementMapComponent setEquivalence(Enumeration<ConceptEquivalence> value) { 
+        public ConceptMapElementMapComponent setEquivalenceElement(Enumeration<ConceptEquivalence> value) { 
           this.equivalence = value;
           return this;
         }
 
         /**
-         * @return equal | equivalent | wider | subsumes | narrower | specialises | inexact | unmatched | disjoint.
+         * @return The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from source to target (e.g. the source is 'wider' than the target.
          */
-        public ConceptEquivalence getEquivalenceSimple() { 
+        public ConceptEquivalence getEquivalence() { 
           return this.equivalence == null ? null : this.equivalence.getValue();
         }
 
         /**
-         * @param value equal | equivalent | wider | subsumes | narrower | specialises | inexact | unmatched | disjoint.
+         * @param value The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from source to target (e.g. the source is 'wider' than the target.
          */
-        public ConceptMapElementMapComponent setEquivalenceSimple(ConceptEquivalence value) { 
+        public ConceptMapElementMapComponent setEquivalence(ConceptEquivalence value) { 
             if (this.equivalence == null)
               this.equivalence = new Enumeration<ConceptEquivalence>();
             this.equivalence.setValue(value);
@@ -627,32 +673,32 @@ public class ConceptMap extends Resource {
         }
 
         /**
-         * @return {@link #comments} (Description of status/issues in mapping.)
+         * @return {@link #comments} (A description of status/issues in mapping that conveys additional information not represented in  the structured data.). This is the underlying object with id, value and extensions. The accessor "getComments" gives direct access to the value
          */
-        public StringType getComments() { 
+        public StringType getCommentsElement() { 
           return this.comments;
         }
 
         /**
-         * @param value {@link #comments} (Description of status/issues in mapping.)
+         * @param value {@link #comments} (A description of status/issues in mapping that conveys additional information not represented in  the structured data.). This is the underlying object with id, value and extensions. The accessor "getComments" gives direct access to the value
          */
-        public ConceptMapElementMapComponent setComments(StringType value) { 
+        public ConceptMapElementMapComponent setCommentsElement(StringType value) { 
           this.comments = value;
           return this;
         }
 
         /**
-         * @return Description of status/issues in mapping.
+         * @return A description of status/issues in mapping that conveys additional information not represented in  the structured data.
          */
-        public String getCommentsSimple() { 
+        public String getComments() { 
           return this.comments == null ? null : this.comments.getValue();
         }
 
         /**
-         * @param value Description of status/issues in mapping.
+         * @param value A description of status/issues in mapping that conveys additional information not represented in  the structured data.
          */
-        public ConceptMapElementMapComponent setCommentsSimple(String value) { 
-          if (value == null)
+        public ConceptMapElementMapComponent setComments(String value) { 
+          if (Utilities.noString(value))
             this.comments = null;
           else {
             if (this.comments == null)
@@ -669,11 +715,11 @@ public class ConceptMap extends Resource {
           return this.product;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #product} (A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the equivalence cannot be relied on.)
          */
-        public OtherElementComponent addProduct() { 
+    // syntactic sugar
+        public OtherElementComponent addProduct() { //3
           OtherElementComponent t = new OtherElementComponent();
           this.product.add(t);
           return t;
@@ -681,15 +727,16 @@ public class ConceptMap extends Resource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("codeSystem", "uri", "System of the target (if necessary).", 0, java.lang.Integer.MAX_VALUE, codeSystem));
-          childrenList.add(new Property("code", "code", "Code that identifies the target element.", 0, java.lang.Integer.MAX_VALUE, code));
-          childrenList.add(new Property("equivalence", "code", "equal | equivalent | wider | subsumes | narrower | specialises | inexact | unmatched | disjoint.", 0, java.lang.Integer.MAX_VALUE, equivalence));
-          childrenList.add(new Property("comments", "string", "Description of status/issues in mapping.", 0, java.lang.Integer.MAX_VALUE, comments));
+          childrenList.add(new Property("codeSystem", "uri", "The code system of the target code (if the target is a value set that cross code systems).", 0, java.lang.Integer.MAX_VALUE, codeSystem));
+          childrenList.add(new Property("code", "code", "Identity (code or path) or the element/item that the map refers to.", 0, java.lang.Integer.MAX_VALUE, code));
+          childrenList.add(new Property("equivalence", "code", "The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from source to target (e.g. the source is 'wider' than the target.", 0, java.lang.Integer.MAX_VALUE, equivalence));
+          childrenList.add(new Property("comments", "string", "A description of status/issues in mapping that conveys additional information not represented in  the structured data.", 0, java.lang.Integer.MAX_VALUE, comments));
           childrenList.add(new Property("product", "@ConceptMap.element.dependsOn", "A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the equivalence cannot be relied on.", 0, java.lang.Integer.MAX_VALUE, product));
         }
 
       public ConceptMapElementMapComponent copy() {
         ConceptMapElementMapComponent dst = new ConceptMapElementMapComponent();
+        copyValues(dst);
         dst.codeSystem = codeSystem == null ? null : codeSystem.copy();
         dst.code = code == null ? null : code.copy();
         dst.equivalence = equivalence == null ? null : equivalence.copy();
@@ -725,7 +772,7 @@ public class ConceptMap extends Resource {
     /**
      * Contacts of the publisher to assist a user in finding and communicating with the publisher.
      */
-    protected List<Contact> telecom = new ArrayList<Contact>();
+    protected List<ContactPoint> telecom = new ArrayList<ContactPoint>();
 
     /**
      * A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.
@@ -763,35 +810,34 @@ public class ConceptMap extends Resource {
     protected Type target;
 
     /**
-     * Mappings for a concept from the source set.
+     * Mappings for an individual concept in the source to one or more concepts in the target.
      */
     protected List<ConceptMapElementComponent> element = new ArrayList<ConceptMapElementComponent>();
 
-    private static final long serialVersionUID = -1887054207L;
+    private static final long serialVersionUID = -1624315749L;
 
     public ConceptMap() {
       super();
     }
 
-    public ConceptMap(StringType name, Enumeration<ValuesetStatus> status, Type source, Type target) {
+    public ConceptMap(Enumeration<ValuesetStatus> status, Type source, Type target) {
       super();
-      this.name = name;
       this.status = status;
       this.source = source;
       this.target = target;
     }
 
     /**
-     * @return {@link #identifier} (The identifier that is used to identify this concept map when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).)
+     * @return {@link #identifier} (The identifier that is used to identify this concept map when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).). This is the underlying object with id, value and extensions. The accessor "getIdentifier" gives direct access to the value
      */
-    public StringType getIdentifier() { 
+    public StringType getIdentifierElement() { 
       return this.identifier;
     }
 
     /**
-     * @param value {@link #identifier} (The identifier that is used to identify this concept map when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).)
+     * @param value {@link #identifier} (The identifier that is used to identify this concept map when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).). This is the underlying object with id, value and extensions. The accessor "getIdentifier" gives direct access to the value
      */
-    public ConceptMap setIdentifier(StringType value) { 
+    public ConceptMap setIdentifierElement(StringType value) { 
       this.identifier = value;
       return this;
     }
@@ -799,15 +845,15 @@ public class ConceptMap extends Resource {
     /**
      * @return The identifier that is used to identify this concept map when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).
      */
-    public String getIdentifierSimple() { 
+    public String getIdentifier() { 
       return this.identifier == null ? null : this.identifier.getValue();
     }
 
     /**
      * @param value The identifier that is used to identify this concept map when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).
      */
-    public ConceptMap setIdentifierSimple(String value) { 
-      if (value == null)
+    public ConceptMap setIdentifier(String value) { 
+      if (Utilities.noString(value))
         this.identifier = null;
       else {
         if (this.identifier == null)
@@ -818,16 +864,16 @@ public class ConceptMap extends Resource {
     }
 
     /**
-     * @return {@link #version} (The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.)
+     * @return {@link #version} (The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
      */
-    public StringType getVersion() { 
+    public StringType getVersionElement() { 
       return this.version;
     }
 
     /**
-     * @param value {@link #version} (The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.)
+     * @param value {@link #version} (The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
      */
-    public ConceptMap setVersion(StringType value) { 
+    public ConceptMap setVersionElement(StringType value) { 
       this.version = value;
       return this;
     }
@@ -835,15 +881,15 @@ public class ConceptMap extends Resource {
     /**
      * @return The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
      */
-    public String getVersionSimple() { 
+    public String getVersion() { 
       return this.version == null ? null : this.version.getValue();
     }
 
     /**
      * @param value The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
      */
-    public ConceptMap setVersionSimple(String value) { 
-      if (value == null)
+    public ConceptMap setVersion(String value) { 
+      if (Utilities.noString(value))
         this.version = null;
       else {
         if (this.version == null)
@@ -854,16 +900,16 @@ public class ConceptMap extends Resource {
     }
 
     /**
-     * @return {@link #name} (A free text natural language name describing the concept map.)
+     * @return {@link #name} (A free text natural language name describing the concept map.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
      */
-    public StringType getName() { 
+    public StringType getNameElement() { 
       return this.name;
     }
 
     /**
-     * @param value {@link #name} (A free text natural language name describing the concept map.)
+     * @param value {@link #name} (A free text natural language name describing the concept map.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
      */
-    public ConceptMap setName(StringType value) { 
+    public ConceptMap setNameElement(StringType value) { 
       this.name = value;
       return this;
     }
@@ -871,31 +917,35 @@ public class ConceptMap extends Resource {
     /**
      * @return A free text natural language name describing the concept map.
      */
-    public String getNameSimple() { 
+    public String getName() { 
       return this.name == null ? null : this.name.getValue();
     }
 
     /**
      * @param value A free text natural language name describing the concept map.
      */
-    public ConceptMap setNameSimple(String value) { 
+    public ConceptMap setName(String value) { 
+      if (Utilities.noString(value))
+        this.name = null;
+      else {
         if (this.name == null)
           this.name = new StringType();
         this.name.setValue(value);
+      }
       return this;
     }
 
     /**
-     * @return {@link #publisher} (The name of the individual or organization that published the concept map.)
+     * @return {@link #publisher} (The name of the individual or organization that published the concept map.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
      */
-    public StringType getPublisher() { 
+    public StringType getPublisherElement() { 
       return this.publisher;
     }
 
     /**
-     * @param value {@link #publisher} (The name of the individual or organization that published the concept map.)
+     * @param value {@link #publisher} (The name of the individual or organization that published the concept map.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
      */
-    public ConceptMap setPublisher(StringType value) { 
+    public ConceptMap setPublisherElement(StringType value) { 
       this.publisher = value;
       return this;
     }
@@ -903,15 +953,15 @@ public class ConceptMap extends Resource {
     /**
      * @return The name of the individual or organization that published the concept map.
      */
-    public String getPublisherSimple() { 
+    public String getPublisher() { 
       return this.publisher == null ? null : this.publisher.getValue();
     }
 
     /**
      * @param value The name of the individual or organization that published the concept map.
      */
-    public ConceptMap setPublisherSimple(String value) { 
-      if (value == null)
+    public ConceptMap setPublisher(String value) { 
+      if (Utilities.noString(value))
         this.publisher = null;
       else {
         if (this.publisher == null)
@@ -924,31 +974,31 @@ public class ConceptMap extends Resource {
     /**
      * @return {@link #telecom} (Contacts of the publisher to assist a user in finding and communicating with the publisher.)
      */
-    public List<Contact> getTelecom() { 
+    public List<ContactPoint> getTelecom() { 
       return this.telecom;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #telecom} (Contacts of the publisher to assist a user in finding and communicating with the publisher.)
      */
-    public Contact addTelecom() { 
-      Contact t = new Contact();
+    // syntactic sugar
+    public ContactPoint addTelecom() { //3
+      ContactPoint t = new ContactPoint();
       this.telecom.add(t);
       return t;
     }
 
     /**
-     * @return {@link #description} (A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.)
+     * @return {@link #description} (A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
-    public StringType getDescription() { 
+    public StringType getDescriptionElement() { 
       return this.description;
     }
 
     /**
-     * @param value {@link #description} (A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.)
+     * @param value {@link #description} (A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
-    public ConceptMap setDescription(StringType value) { 
+    public ConceptMap setDescriptionElement(StringType value) { 
       this.description = value;
       return this;
     }
@@ -956,15 +1006,15 @@ public class ConceptMap extends Resource {
     /**
      * @return A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.
      */
-    public String getDescriptionSimple() { 
+    public String getDescription() { 
       return this.description == null ? null : this.description.getValue();
     }
 
     /**
      * @param value A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.
      */
-    public ConceptMap setDescriptionSimple(String value) { 
-      if (value == null)
+    public ConceptMap setDescription(String value) { 
+      if (Utilities.noString(value))
         this.description = null;
       else {
         if (this.description == null)
@@ -975,16 +1025,16 @@ public class ConceptMap extends Resource {
     }
 
     /**
-     * @return {@link #copyright} (A copyright statement relating to the concept map and/or its contents.)
+     * @return {@link #copyright} (A copyright statement relating to the concept map and/or its contents.). This is the underlying object with id, value and extensions. The accessor "getCopyright" gives direct access to the value
      */
-    public StringType getCopyright() { 
+    public StringType getCopyrightElement() { 
       return this.copyright;
     }
 
     /**
-     * @param value {@link #copyright} (A copyright statement relating to the concept map and/or its contents.)
+     * @param value {@link #copyright} (A copyright statement relating to the concept map and/or its contents.). This is the underlying object with id, value and extensions. The accessor "getCopyright" gives direct access to the value
      */
-    public ConceptMap setCopyright(StringType value) { 
+    public ConceptMap setCopyrightElement(StringType value) { 
       this.copyright = value;
       return this;
     }
@@ -992,15 +1042,15 @@ public class ConceptMap extends Resource {
     /**
      * @return A copyright statement relating to the concept map and/or its contents.
      */
-    public String getCopyrightSimple() { 
+    public String getCopyright() { 
       return this.copyright == null ? null : this.copyright.getValue();
     }
 
     /**
      * @param value A copyright statement relating to the concept map and/or its contents.
      */
-    public ConceptMap setCopyrightSimple(String value) { 
-      if (value == null)
+    public ConceptMap setCopyright(String value) { 
+      if (Utilities.noString(value))
         this.copyright = null;
       else {
         if (this.copyright == null)
@@ -1011,16 +1061,16 @@ public class ConceptMap extends Resource {
     }
 
     /**
-     * @return {@link #status} (The status of the concept map.)
+     * @return {@link #status} (The status of the concept map.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<ValuesetStatus> getStatus() { 
+    public Enumeration<ValuesetStatus> getStatusElement() { 
       return this.status;
     }
 
     /**
-     * @param value {@link #status} (The status of the concept map.)
+     * @param value {@link #status} (The status of the concept map.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public ConceptMap setStatus(Enumeration<ValuesetStatus> value) { 
+    public ConceptMap setStatusElement(Enumeration<ValuesetStatus> value) { 
       this.status = value;
       return this;
     }
@@ -1028,14 +1078,14 @@ public class ConceptMap extends Resource {
     /**
      * @return The status of the concept map.
      */
-    public ValuesetStatus getStatusSimple() { 
+    public ValuesetStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value The status of the concept map.
      */
-    public ConceptMap setStatusSimple(ValuesetStatus value) { 
+    public ConceptMap setStatus(ValuesetStatus value) { 
         if (this.status == null)
           this.status = new Enumeration<ValuesetStatus>();
         this.status.setValue(value);
@@ -1043,16 +1093,16 @@ public class ConceptMap extends Resource {
     }
 
     /**
-     * @return {@link #experimental} (This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.)
+     * @return {@link #experimental} (This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
      */
-    public BooleanType getExperimental() { 
+    public BooleanType getExperimentalElement() { 
       return this.experimental;
     }
 
     /**
-     * @param value {@link #experimental} (This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.)
+     * @param value {@link #experimental} (This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
      */
-    public ConceptMap setExperimental(BooleanType value) { 
+    public ConceptMap setExperimentalElement(BooleanType value) { 
       this.experimental = value;
       return this;
     }
@@ -1060,14 +1110,14 @@ public class ConceptMap extends Resource {
     /**
      * @return This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    public boolean getExperimentalSimple() { 
+    public boolean getExperimental() { 
       return this.experimental == null ? false : this.experimental.getValue();
     }
 
     /**
      * @param value This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    public ConceptMap setExperimentalSimple(boolean value) { 
+    public ConceptMap setExperimental(boolean value) { 
       if (value == false)
         this.experimental = null;
       else {
@@ -1079,16 +1129,16 @@ public class ConceptMap extends Resource {
     }
 
     /**
-     * @return {@link #date} (The date that the concept map status was last changed.)
+     * @return {@link #date} (The date that the concept map status was last changed.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public DateTimeType getDate() { 
+    public DateTimeType getDateElement() { 
       return this.date;
     }
 
     /**
-     * @param value {@link #date} (The date that the concept map status was last changed.)
+     * @param value {@link #date} (The date that the concept map status was last changed.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
-    public ConceptMap setDate(DateTimeType value) { 
+    public ConceptMap setDateElement(DateTimeType value) { 
       this.date = value;
       return this;
     }
@@ -1096,14 +1146,14 @@ public class ConceptMap extends Resource {
     /**
      * @return The date that the concept map status was last changed.
      */
-    public DateAndTime getDateSimple() { 
+    public DateAndTime getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
      * @param value The date that the concept map status was last changed.
      */
-    public ConceptMap setDateSimple(DateAndTime value) { 
+    public ConceptMap setDate(DateAndTime value) { 
       if (value == null)
         this.date = null;
       else {
@@ -1145,17 +1195,17 @@ public class ConceptMap extends Resource {
     }
 
     /**
-     * @return {@link #element} (Mappings for a concept from the source set.)
+     * @return {@link #element} (Mappings for an individual concept in the source to one or more concepts in the target.)
      */
     public List<ConceptMapElementComponent> getElement() { 
       return this.element;
     }
 
-    // syntactic sugar
     /**
-     * @return {@link #element} (Mappings for a concept from the source set.)
+     * @return {@link #element} (Mappings for an individual concept in the source to one or more concepts in the target.)
      */
-    public ConceptMapElementComponent addElement() { 
+    // syntactic sugar
+    public ConceptMapElementComponent addElement() { //3
       ConceptMapElementComponent t = new ConceptMapElementComponent();
       this.element.add(t);
       return t;
@@ -1167,25 +1217,26 @@ public class ConceptMap extends Resource {
         childrenList.add(new Property("version", "string", "The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.", 0, java.lang.Integer.MAX_VALUE, version));
         childrenList.add(new Property("name", "string", "A free text natural language name describing the concept map.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("publisher", "string", "The name of the individual or organization that published the concept map.", 0, java.lang.Integer.MAX_VALUE, publisher));
-        childrenList.add(new Property("telecom", "Contact", "Contacts of the publisher to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, telecom));
+        childrenList.add(new Property("telecom", "ContactPoint", "Contacts of the publisher to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, telecom));
         childrenList.add(new Property("description", "string", "A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.", 0, java.lang.Integer.MAX_VALUE, description));
         childrenList.add(new Property("copyright", "string", "A copyright statement relating to the concept map and/or its contents.", 0, java.lang.Integer.MAX_VALUE, copyright));
         childrenList.add(new Property("status", "code", "The status of the concept map.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("experimental", "boolean", "This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.", 0, java.lang.Integer.MAX_VALUE, experimental));
         childrenList.add(new Property("date", "dateTime", "The date that the concept map status was last changed.", 0, java.lang.Integer.MAX_VALUE, date));
-        childrenList.add(new Property("source[x]", "uri|Resource(ValueSet|Profile)", "The source value set that specifies the concepts that are being mapped.", 0, java.lang.Integer.MAX_VALUE, source));
-        childrenList.add(new Property("target[x]", "uri|Resource(ValueSet|Profile)", "The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.", 0, java.lang.Integer.MAX_VALUE, target));
-        childrenList.add(new Property("element", "", "Mappings for a concept from the source set.", 0, java.lang.Integer.MAX_VALUE, element));
+        childrenList.add(new Property("source[x]", "uri|Reference(ValueSet|Profile)", "The source value set that specifies the concepts that are being mapped.", 0, java.lang.Integer.MAX_VALUE, source));
+        childrenList.add(new Property("target[x]", "uri|Reference(ValueSet|Profile)", "The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.", 0, java.lang.Integer.MAX_VALUE, target));
+        childrenList.add(new Property("element", "", "Mappings for an individual concept in the source to one or more concepts in the target.", 0, java.lang.Integer.MAX_VALUE, element));
       }
 
       public ConceptMap copy() {
         ConceptMap dst = new ConceptMap();
+        copyValues(dst);
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.version = version == null ? null : version.copy();
         dst.name = name == null ? null : name.copy();
         dst.publisher = publisher == null ? null : publisher.copy();
-        dst.telecom = new ArrayList<Contact>();
-        for (Contact i : telecom)
+        dst.telecom = new ArrayList<ContactPoint>();
+        for (ContactPoint i : telecom)
           dst.telecom.add(i.copy());
         dst.description = description == null ? null : description.copy();
         dst.copyright = copyright == null ? null : copyright.copy();

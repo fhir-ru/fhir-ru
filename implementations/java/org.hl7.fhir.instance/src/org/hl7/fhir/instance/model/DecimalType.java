@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -49,6 +49,16 @@ public class DecimalType extends Type {
    * The exact way to represent this on the wire. In the absent of a specified representation, the natural representation of the BigDecimal value will be used.
    */
   private String original;
+
+  public DecimalType(BigDecimal value) {
+    this.value = value;  
+    if (value != null)
+      original = value.toString();
+  }
+
+  public DecimalType() {
+    // TODO Auto-generated constructor stub
+  }
 
   /**
    * @return the value of the decimal

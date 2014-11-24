@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -29,6 +29,13 @@ POSSIBILITY OF SUCH DAMAGE.
 package org.hl7.fhir.instance.model;
 
 public class UuidType extends UriType {
+
+  public UuidType(String value) {
+    this.value = value;
+  }
+
+  public UuidType() {
+  }
 
   private static final long serialVersionUID = -2355185818258961443L;
 

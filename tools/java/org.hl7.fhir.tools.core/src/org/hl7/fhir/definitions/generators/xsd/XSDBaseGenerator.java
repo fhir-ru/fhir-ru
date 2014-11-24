@@ -1,7 +1,7 @@
 package org.hl7.fhir.definitions.generators.xsd;
 
 /*
- Copyright (c) 2011-2014, HL7, Inc
+ Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -45,6 +45,7 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfiledType;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -90,14 +91,13 @@ public class XSDBaseGenerator {
     if (outer)
       write("  <xs:include schemaLocation=\"fhir-all.xsd\"/>\r\n");
 
-    genXmlIdRef();
     genElementRoot();
     write("\r\n");
     genPrimitives();
     write("\r\n");
     genResourceReference();
-    genResource();
-
+    genResourceContainer();
+    
     for (ElementDefn e : definitions.getInfrastructure().values())
       genInfrastructure(e);
     for (ElementDefn e : definitions.getTypes().values())
@@ -106,13 +106,27 @@ public class XSDBaseGenerator {
       genConstraint(cd);
     for (ElementDefn e : definitions.getStructures().values())
       genStructure(e);
+    for (String n : definitions.getBaseResources().keySet()) {
+      ResourceDefn r = definitions.getBaseResources().get(n);
+      genResource(n, r);
+    }
     for (BindingSpecification b : definitions.getBindings().values())
-      if (b.getUseContexts().size() > 1 && b.getBinding() == Binding.CodeList)
+      if ((b.getUseContexts().size() > 1 && b.getBinding() == Binding.CodeList) || definitions.getCommonBindings().contains(b))
         generateEnum(b.getName());
     if (outer) { 
       write("</xs:schema>\r\n");
       writer.flush();
     }
+  }
+
+  private void genResourceContainer() throws IOException {
+        write("  <xs:complexType name=\"ResourceContainer\">\r\n");
+        write("    <xs:choice>\r\n");
+        for (String n : definitions.sortedResourceNames())
+          write("      <xs:element ref=\""+n+"\"/>\r\n");
+        write("    </xs:choice>\r\n");
+        write("  </xs:complexType>\r\n");
+    
   }
 
   private void genElementRoot() throws Exception  {
@@ -149,53 +163,6 @@ public class XSDBaseGenerator {
     write("\r\n");    
   }
 
-  private void genResource() throws Exception {
-    write("  <xs:complexType name=\"Resource.Inline\">\r\n");
-    write("    <xs:choice minOccurs=\"1\" maxOccurs=\"1\">\r\n");
-    write("      <xs:element ref=\"Binary\"/>\r\n");
-    for (String r : definitions.getResources().keySet()) 
-      write("      <xs:element ref=\""+r+"\"/>\r\n");
-    write("    </xs:choice>\r\n");
-    write("  </xs:complexType>\r\n");
-    write("  <xs:complexType name=\"Resource\">\r\n");
-    write("    <xs:annotation>\r\n");
-    write("      <xs:documentation>The base resource declaration used for all FHIR resource types - adds Narrative and xml:lang</xs:documentation>\r\n");
-    write("    </xs:annotation>\r\n");
-    write("    <xs:complexContent>\r\n");
-    write("      <xs:extension base=\"BackboneElement\">\r\n");
-    write("        <xs:sequence>\r\n");
-    write("          <xs:element name=\"language\" type=\"code\" minOccurs=\"0\" maxOccurs=\"1\">\r\n");
-    write("            <xs:annotation>\r\n");
-    write("              <xs:documentation>The human language of the content. The value can be any valid value according to BCP-47</xs:documentation>\r\n");
-    write("            </xs:annotation>\r\n");
-    write("          </xs:element>\r\n");
-    write("          <xs:element name=\"text\" type=\"Narrative\" minOccurs=\"0\" maxOccurs=\"1\">\r\n");
-    write("            <xs:annotation>\r\n");
-    write("              <xs:documentation>Text summary of resource content (for human interpretation)</xs:documentation>\r\n");
-    write("            </xs:annotation>\r\n");
-    write("          </xs:element>\r\n");
-    write("          <xs:element name=\"contained\" type=\"Resource.Inline\" minOccurs=\"0\" maxOccurs=\"unbounded\">\r\n");
-    write("            <xs:annotation>\r\n");
-    write("              <xs:documentation>Contained, inline Resources. These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope</xs:documentation>\r\n");
-    write("            </xs:annotation>\r\n");
-    write("          </xs:element>\r\n");
-    write("        </xs:sequence>\r\n");
-    write("      </xs:extension>\r\n");
-    write("    </xs:complexContent>\r\n");
-    write("  </xs:complexType>\r\n");
-    write("\r\n");
-  }
-
-  private void genXmlIdRef() throws Exception {
-    write("  <!-- change this to xs:IDREF and all id attributes to type xs:ID to enforce internal references by schema,\r\n");
-    write("       but note that this can't work in bundles (see comments in Resource Format section) -->\r\n");
-    write("  <xs:simpleType name=\"xmlIdRef\">\r\n");
-    write("    <xs:restriction base=\"id-primitive\">\r\n");
-    write("      <xs:pattern value=\"[a-z0-9\\-\\.]{1,36}\"/>\r\n"); 
-    write("    </xs:restriction>\r\n");
-    write("  </xs:simpleType>\r\n");
-  }
-
   //  private void genExtensionsElement() throws Exception {
   //    write("  <xs:complexType name=\"Extensions\">\r\n");
   //    write("    <xs:sequence>\r\n");
@@ -209,19 +176,19 @@ public class XSDBaseGenerator {
   //  }
 
   private void genResourceReference() throws Exception {
-    write("  <xs:simpleType name=\"ResourceType\">\r\n");
-    write("    <xs:restriction base=\"xs:string\">\r\n");
-    for (DefinedCode c : definitions.getKnownResources().values()) {
-      write("      <xs:enumeration value=\"" + c.getCode() + "\">\r\n");
-      write("        <xs:annotation>\r\n");
-      write("          <xs:documentation>"
-          + Utilities.escapeXml(c.getDefinition())
-          + "</xs:documentation>\r\n");
-      write("        </xs:annotation>\r\n");
-      write("      </xs:enumeration>\r\n");
-    }
-    write("    </xs:restriction>\r\n");
-    write("  </xs:simpleType>\r\n");
+//    write("  <xs:simpleType name=\"ResourceType\">\r\n");
+//    write("    <xs:restriction base=\"xs:string\">\r\n");
+//    for (DefinedCode c : definitions.getKnownResources().values()) {
+//      write("      <xs:enumeration value=\"" + c.getCode() + "\">\r\n");
+//      write("        <xs:annotation>\r\n");
+//      write("          <xs:documentation>"
+//          + Utilities.escapeXml(c.getDefinition())
+//          + "</xs:documentation>\r\n");
+//      write("        </xs:annotation>\r\n");
+//      write("      </xs:enumeration>\r\n");
+//    }
+//    write("    </xs:restriction>\r\n");
+//    write("  </xs:simpleType>\r\n");
   }
 
   private void genConstraint(ProfiledType cd) throws Exception {
@@ -455,6 +422,45 @@ public class XSDBaseGenerator {
 
   }
 
+  private void genResource(String name, ResourceDefn res) throws Exception {
+    enums.clear();
+    enumDefs.clear();
+    boolean isBase = res.getRoot().typeCode().equals("Any");
+    write("  <xs:complexType name=\"" + name + "\">\r\n");
+    write("    <xs:annotation>\r\n");
+    write("      <xs:documentation>"+Utilities.escapeXml(res.getDefinition())+"</xs:documentation>\r\n");
+    write("    </xs:annotation>\r\n");
+    if (!isBase) {
+      write("    <xs:complexContent>\r\n");
+      write("      <xs:extension base=\""+res.getRoot().typeCode()+"\">\r\n");
+    }
+    write("        <xs:sequence>\r\n");
+
+    for (ElementDefn e : res.getRoot().getElements()) {
+        generateElement(res.getRoot(), e, null);
+    }
+    write("        </xs:sequence>\r\n");
+    if (!isBase) {
+      write("      </xs:extension>\r\n");
+      write("    </xs:complexContent>\r\n");
+    }
+    write("  </xs:complexType>\r\n");
+    genRegex();
+
+    while (!structures.isEmpty()) {
+      String s = structures.keySet().iterator().next();
+      generateType(res.getRoot(), s, structures.get(s));
+      structures.remove(s);
+    }
+
+    for (String en : enums) {
+      generateEnum(en);
+    }
+
+    genRegex();
+    
+  }
+  
   private void genStructure(ElementDefn elem) throws Exception {
     enums.clear();
     enumDefs.clear();
@@ -572,10 +578,7 @@ public class XSDBaseGenerator {
                 + upFirst(p) + "\" type=\""+ t.getName() + "_" + upFirst(p) + "\"/>\r\n");
           }
         } else if (!definitions.getShared().contains(t.getName()) && !t.getName().equals("oid") && !t.getName().equals("uuid") && !t.getName().equals("id") ) {
-          if (t.getName().equals("ResourceReference"))
-            write("           <xs:element name=\"" + prefix + "Resource\" type=\"" + t.getName()+ "\"/>\r\n");
-          else
-            write("           <xs:element name=\"" + en + "\" type=\"" + t.getName()+ "\"/>\r\n");
+          write("           <xs:element name=\"" + en + "\" type=\"" + t.getName()+ "\"/>\r\n");
         }
       }
     }
@@ -636,9 +639,7 @@ public class XSDBaseGenerator {
       } else if (types.size() == 1) {
         if (types.get(0).isUnboundGenericParam() && paramType != null)
           write("<xs:element name=\"" + e.getName() + "\" type=\"" + paramType + "\" ");
-        else if (types.get(0).getName().equals("idref")) {
-          write("<xs:element name=\"" + e.getName() + "\" type=\"xmlIdRef\" ");        
-        } else if (!Utilities.noString(e.getRegex())) {
+        else if (!Utilities.noString(e.getRegex())) {
           String tn = root.getName()+Utilities.capitalize(e.getName())+"Type";
           regexQueue.put(tn, e.getRegex());
           write("<xs:element name=\"" + e.getName() + "\" type=\"" + tn + "\" ");
@@ -672,9 +673,7 @@ public class XSDBaseGenerator {
   private String encodeType(ElementDefn e, TypeRef type, boolean params)
       throws Exception {
     if (type.isResourceReference())
-      return "ResourceReference";
-    else if (type.isIdRef())
-      return "id-primitive";
+      return "Reference";
     //    else if (params
     //        && definitions.getPrimitives().containsKey(type.getName())
     //        && definitions.getPrimitives().get(type.getName()) instanceof PrimitiveType)
@@ -699,7 +698,10 @@ public class XSDBaseGenerator {
       //          && !e.unbounded())
       //        return type.getName() + "-primitive";
       //      else
-      return type.getName();
+      if (type.getName().equals("Resource"))
+        return "ResourceContainer";
+      else
+        return type.getName();
     } else if (type.getParams().size() > 1)
       throw new Exception(
           "multiple type parameters are only supported on resource ("

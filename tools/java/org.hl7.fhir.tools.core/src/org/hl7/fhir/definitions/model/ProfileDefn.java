@@ -1,6 +1,6 @@
 package org.hl7.fhir.definitions.model;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -27,107 +27,77 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.hl7.fhir.instance.model.Profile;
 
+// publishing details about a profile + the profile
 public class ProfileDefn {
 
-  // for use within the tool
-  private Profile source;
-
-  // transient loading details, if loaded from a spreadsheet
-  private List<ResourceDefn> resources = new ArrayList<ResourceDefn>();
-  private Map<String, ArrayList<String>> metadata = new HashMap<String, ArrayList<String>>();
-  private List<ExtensionDefn> extensions = new ArrayList<ExtensionDefn>();
-  private List<BindingSpecification> bindings = new ArrayList<BindingSpecification>();
-  
- 
-  
-  
-  public Map<String, ArrayList<String>> getMetadata() {
-    return metadata;
+  private String title; // human readable name
+  private String id; // id in the resource, which is also the file name root
+  private String introduction;
+  private String notes;
+  private Profile resource;
+  private ResourceDefn defn; // temporary, until we get around to building the resource 
+    
+  public ProfileDefn(Profile resource) {
+    this.id = resource.getId();
+    this.title = resource.getName();
+    this.resource = resource;
   }
 
-  public List<ResourceDefn> getResources() {
-    return resources;
+  public ProfileDefn(String id, String title, ResourceDefn defn) {
+    this.id = id;
+    this.title = title;
+    this.defn = defn;
   }
 
-  
-  public String metadata(String name) {
-    if (source != null) {
-      if ("description".equals(name))
-        return source.getDescriptionSimple();
-      if ("name".equals(name))
-        return source.getNameSimple();
-      if ("date".equals(name))
-        return source.getDateSimple().toString();
-      if ("status".equals(name))
-        return source.getStatusSimple().toCode();
-      if ("author.name".equals(name))
-        return source.getPublisherSimple();
-      if ("url".equals(name))
-        return source.getUrlSimple();
-//      throw new Error("metadata request for "+name);
-    }
-    if (!metadata.containsKey(name))
-      return "";
-    ArrayList<String> a = metadata.get(name);
-    if (a.size() == 1) 
-      return a.get(0);
-    else
-      return "";
+  public String getTitle() {
+    return title;
   }
 
-  public boolean hasMetadata(String name) {
-    String s = metadata(name);
-    return (s != null && !s.equals(""));
+  public void setTitle(String title) {
+    this.title = title;
   }
 
-  public void putMetadata(String name, String value) {
-    ArrayList<String> a;
-    if (metadata.containsKey(name))
-      a = metadata.get(name);
-    else {
-      a = new ArrayList<String>();
-      metadata.put(name, a);
-    }
-    a.add(value);
+  public String getId() {
+    return id;
   }
 
-  public void forceMetadata(String name, String value) {
-    if (metadata.containsKey(name))
-      metadata.remove(name);
-    ArrayList<String> a = new ArrayList<String>();
-    metadata.put(name, a);
-    a.add(value);
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public List<ExtensionDefn> getExtensions() {
-    return extensions;
+  public String getIntroduction() {
+    return introduction;
   }
 
-  public List<BindingSpecification> getBindings() {
-    return bindings;
+  public void setIntroduction(String introduction) {
+    this.introduction = introduction;
   }
 
-  public Profile getSource() {
-    return source;
+  public String getNotes() {
+    return notes;
   }
 
-  public void setSource(Profile source) {
-    this.source = source;
+  public void setNotes(String notes) {
+    this.notes = notes;
   }
 
-  public void addMetadata(String name, String value) {
-    ArrayList<String> values = new ArrayList<String>();
-    values.add(value);
-    metadata.put(name, values);
+  public Profile getResource() {
+    return resource;
   }
 
+  public void setResource(Profile resource) {
+    this.resource = resource;
+  }
+
+  public ResourceDefn getDefn() {
+    return defn;
+  }
+
+  public void setDefn(ResourceDefn defn) {
+    this.defn = defn;
+  }
 
   
   

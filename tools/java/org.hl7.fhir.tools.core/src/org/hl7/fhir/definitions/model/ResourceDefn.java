@@ -1,6 +1,6 @@
 package org.hl7.fhir.definitions.model;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -37,10 +37,9 @@ import org.hl7.fhir.instance.model.Profile;
 public class ResourceDefn  {
    private List<Example> examples = new ArrayList<Example>();
    private Map<String, SearchParameter> searchParams = new HashMap<String, SearchParameter>();
-   private List<RegisteredProfile> profiles = new ArrayList<RegisteredProfile>();
    private Map<String, Operation> operations = new HashMap<String, Operation>();
+   private List<ConformancePackage> conformancePackages = new ArrayList<ConformancePackage>();
       
-   private boolean sandbox;
    private String status;
      
    private String name = null;
@@ -97,21 +96,10 @@ public class ResourceDefn  {
 	   this.root = root;
    }
 
-   
-   private boolean abstract_ = false;
-   
-   public boolean isAbstract()
-   {
-	   return abstract_;
-   }
-   
-   public void setAbstract(boolean value)
-   {
-	   abstract_ = value;
-   }
-   
+     
    private boolean forFutureUse = false;
   private String requirements;
+  private boolean publishedInProfile;
    
    public boolean isForFutureUse()
    {
@@ -127,14 +115,6 @@ public class ResourceDefn  {
     return examples;
   }
 
-  public boolean isSandbox() {
-    return sandbox;
-  }
-
-  public void setSandbox(boolean sandbox) {
-    this.sandbox = sandbox;
-  }
-
   public Map<String, SearchParameter> getSearchParams() {
     return searchParams;
   }
@@ -146,10 +126,6 @@ public class ResourceDefn  {
   public void setStatus(String status) {
     this.status = status;
   } 
-
-  public List<RegisteredProfile> getProfiles() {
-    return profiles;
-  }
 
   public void setRequirements(String text) {
     this.requirements = text;
@@ -170,6 +146,19 @@ public class ResourceDefn  {
 
   public Map<String, Operation> getOperations() {
     return operations;
+  }
+
+  
+  public boolean isPublishedInProfile() {
+    return publishedInProfile;
+  }
+
+  public void setPublishedInProfile(boolean value) {
+    publishedInProfile = value;
+  }
+
+  public List<ConformancePackage> getConformancePackages() {
+    return conformancePackages;
   }
 
 

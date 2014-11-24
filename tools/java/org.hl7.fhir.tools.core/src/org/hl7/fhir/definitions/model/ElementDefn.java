@@ -1,7 +1,7 @@
 package org.hl7.fhir.definitions.model;
 
 /*
- Copyright (c) 2011-2014, HL7, Inc
+ Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -33,7 +33,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.instance.model.Profile.ElementComponent;
+import org.hl7.fhir.instance.model.ElementDefinition;
+import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.utilities.Utilities;
 
 public class ElementDefn {
@@ -42,7 +43,7 @@ public class ElementDefn {
 	
 	private List<TypeRef> types = new ArrayList<TypeRef>();
 	private List<ElementDefn> elements = new ArrayList<ElementDefn>();
-
+ 
 	private Integer minCardinality;
 	private Integer maxCardinality;
 	private List<Invariant> statedInvariants = new ArrayList<Invariant>(); // a reference to an invariant defined on another element, but which constrains this one
@@ -69,15 +70,15 @@ public class ElementDefn {
 	private List<String> aliases = new ArrayList<String>();
 	private String committeeNotes;
 	private String condition;
-	private String example;
+	private String maxLength;
 	private List<String> tasks = new ArrayList<String>();
 	
 	private String profileName; // only in a profile, for slicing
-	private String discriminator; // when slicing
-	private String statedProfile; // means some profile is applicable to this data type or resource reference
-	private String value; // only in a profile
-	private String aggregation; // only in a profile
-	private ElementComponent derivation;
+	private List<String> discriminator = new ArrayList<String>(); // when slicing
+  private Type example;
+  private Type fixed; // only in a profile
+  private Type pattern; // only in a profile
+	private ElementDefinition derivation;
 	private boolean inherited; // in a profile, was this element add from the
 								// base definition (true) or was it specifically
 								// constrained in the profile (false)
@@ -116,7 +117,7 @@ public class ElementDefn {
 		condition = pattern.condition;
 		example = pattern.example;
 		profileName = pattern.profileName;
-		value = pattern.value;
+		fixed = pattern.fixed;
 		inherited = pattern.inherited;
 
 	}
@@ -235,7 +236,16 @@ public class ElementDefn {
 		return shortDefn != null && !"".equals(shortDefn);
 	}
 
-	public ElementDefn getElementByName(String name, boolean throughChoice) {
+	
+	public String getMaxLength() {
+    return maxLength;
+  }
+
+  public void setMaxLength(String maxLength) {
+    this.maxLength = maxLength;
+  }
+
+  public ElementDefn getElementByName(String name, boolean throughChoice) {
     String n = name.contains(".") ? name.substring(0, name.indexOf(".")) : name;
     String t = name.contains(".") ? name.substring(name.indexOf(".") + 1) : null;
     if (n.equals(this.name) && t != null)
@@ -433,11 +443,11 @@ public class ElementDefn {
 		return this.typeCode().startsWith("@");
 	}
 	
-	public String getExample() {
+	public Type getExample() {
 		return example;
 	}
 
-	public void setExample(String example) {
+	public void setExample(Type example) {
 		this.example = example;
 	}
 
@@ -449,28 +459,16 @@ public class ElementDefn {
 		this.profileName = profileName;
 	}
 
-	public String getValue() {
-		return value;
+	public Type getFixed() {
+		return fixed;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void setFixed(Type value) {
+		this.fixed = value;
 	}
 
-	public String getAggregation() {
-		return aggregation;
-	}
-
-	public void setAggregation(String aggregation) {
-		this.aggregation = aggregation;
-	}
-
-	public boolean hasAggregation() {
-		return aggregation != null && !aggregation.equals("");
-	}
-
-	public boolean hasValue() {
-		return value != null && !value.equals("");
+	public boolean hasFixed() {
+		return fixed != null && !fixed.equals("");
 	}
 
 	public void ban() {
@@ -478,7 +476,7 @@ public class ElementDefn {
 		maxCardinality = 0;
 	}
 
-	public void setDerivation(ElementComponent derivation) {
+	public void setDerivation(ElementDefinition derivation) {
 		this.derivation = derivation;
 	}
 
@@ -490,7 +488,7 @@ public class ElementDefn {
 		this.inherited = inherited;
 	}
 
-	public ElementComponent getDerivation() {
+	public ElementDefinition getDerivation() {
 		return derivation;
 	}
 
@@ -529,7 +527,7 @@ public class ElementDefn {
 	}
 
 	
-	public ElementDefn getElementForPath(String pathname, Definitions definitions, String purpose) throws Exception {
+	public ElementDefn getElementForPath(String pathname, Definitions definitions, String purpose, boolean throughChoice) throws Exception {
 		String[] path = pathname.split("\\.");
 
 		if (!path[0].equals(getName()))
@@ -540,18 +538,20 @@ public class ElementDefn {
 
 		for (int i = 1; i < path.length; i++) {
 			String en = path[i];
+			if (en.startsWith("extension("))
+			  return null; // don't resolve these here
 			if (en.length() == 0)
 				throw new Exception("Improper path " + pathname);
 			ElementDefn t = null;
 
 			if (res.typeCode().startsWith("@")) {
-			  res = this.getElementForPath(res.typeCode().substring(1), definitions, purpose);
+			  res = this.getElementForPath(res.typeCode().substring(1), definitions, purpose, throughChoice);
 			} else if (definitions.dataTypeIsSharedInfo(res.typeCode())) {
 				res = definitions.getElementDefn(res.typeCode());
 			} else if (definitions.hasType(res.typeCode())) {
 				res = definitions.getElementDefn(res.typeCode());
 			}
-			t = res.getElementByName(en);
+			t = res.getElementByName(en, throughChoice);
 			if (t == null) {
 				throw new Exception("unable to resolve " + pathname);
 			}
@@ -606,14 +606,12 @@ public class ElementDefn {
 	   
 	   private List<String> acceptableGenericTypes = new ArrayList<String>();
 
+    private String sliceDescription;
+
 	   public List<String> getAcceptableGenericTypes()
 	   {
 		   return acceptableGenericTypes;
 	   }
-
-    public boolean isXmlIDRef() {
-      return typeCode().equals("idref");
-    }
 
     public boolean hasComments() {
       return comments != null && !"".equals(comments);
@@ -637,14 +635,6 @@ public class ElementDefn {
 
     public List<String> getAliases() {
       return aliases;
-    }
-
-    public String getStatedProfile() {
-      return statedProfile;
-    }
-
-    public void setStatedProfile(String profile) {
-      this.statedProfile = profile;
     }
 
 	public void addMapping(String name, String value) {
@@ -701,12 +691,8 @@ public class ElementDefn {
     this.umlBreak = umlBreak;
   }
 
-  public String getDiscriminator() {
+  public List<String> getDiscriminator() {
     return discriminator;
-  }
-
-  public void setDiscriminator(String discriminator) {
-    this.discriminator = discriminator;
   }
 
   public boolean hasSvg() {
@@ -770,9 +756,30 @@ public class ElementDefn {
   }
 
   public boolean hasStatedProfile() {
-    return !Utilities.noString(statedProfile);
+    if (types.isEmpty())
+      return false;
+    else for (TypeRef t : types)
+      if (t.getProfile() != null)
+        return true;
+    return false;
   }
+
+  public Type getPattern() {
+    return pattern;
+  }
+
+  public void setPattern(Type pattern) {
+    this.pattern = pattern;
+  }
+
+  public String getSliceDescription() {
+    return sliceDescription;
+  }
+
+  public void setSliceDescription(String sliceDescription) {
+    this.sliceDescription = sliceDescription;
+  }	
 	
-	
+  
 }
 

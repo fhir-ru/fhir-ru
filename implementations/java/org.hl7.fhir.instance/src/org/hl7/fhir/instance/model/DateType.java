@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -39,6 +39,13 @@ public class DateType extends PrimitiveType {
 	 * The value of the date
 	 */
 	private DateAndTime value;
+
+	public DateType(DateAndTime value) {
+    this.value = value;  
+  }
+
+  public DateType() {
+  }
 
 	/**
 	 * @return The value of the date

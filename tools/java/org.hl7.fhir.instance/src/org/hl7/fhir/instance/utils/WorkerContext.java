@@ -14,18 +14,21 @@ import org.hl7.fhir.instance.client.FHIRClient;
 import org.hl7.fhir.instance.client.FeedFormat;
 import org.hl7.fhir.instance.client.ResourceFormat;
 import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.model.AtomCategory;
-import org.hl7.fhir.instance.model.AtomEntry;
-import org.hl7.fhir.instance.model.AtomFeed;
+
+import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.ConceptMap;
 import org.hl7.fhir.instance.model.Conformance;
 import org.hl7.fhir.instance.model.DateAndTime;
+import org.hl7.fhir.instance.model.ElementDefinition;
+import org.hl7.fhir.instance.model.ExtensionDefinition;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ValueSet;
+import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineConceptComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.instance.validation.ExtensionLocatorService;
 import org.hl7.fhir.utilities.CSFileInputStream;
@@ -33,10 +36,10 @@ import org.hl7.fhir.utilities.CSFileInputStream;
 /*
  *  private static Map<String, Profile> loadProfiles() throws Exception {
     HashMap<String, Profile> result = new HashMap<String, Profile>();
-    AtomFeed feed = new XmlParser().parseGeneral(new FileInputStream(PROFILES)).getFeed();
+    Bundle feed = new XmlParser().parseGeneral(new FileInputStream(PROFILES)).getFeed();
     for (AtomEntry<? extends Resource> e : feed.getEntryList()) {
-      if (e.getResource() instanceof Profile) {
-        result.put(e.getId(), (Profile) e.getResource());
+      if (e.getReference() instanceof Profile) {
+        result.put(e.getId(), (Profile) e.getReference());
       }
     }
     return result;
@@ -48,21 +51,42 @@ import org.hl7.fhir.utilities.CSFileInputStream;
  */
 public class WorkerContext {
 
-	private TerminologyServices terminologyServices = new NullTerminologyServices();
+	public static class ExtensionDefinitionResult {
+	  private ExtensionDefinition ex;
+    private ElementDefinition ed;
+
+    public ExtensionDefinitionResult(ExtensionDefinition ex, ElementDefinition ed) {
+	    super();
+	    this.ex = ex;
+	    this.ed = ed;
+	  }
+
+    public ExtensionDefinition getExtensionDefinition() {
+      return ex;
+    }
+
+    public ElementDefinition getElementDefinition() {
+      return ed;
+    }
+
+  }
+
+  private TerminologyServices terminologyServices = new NullTerminologyServices();
   private ExtensionLocatorService extensionLocator = new NullExtensionResolver();
   private FHIRClient client = new NullClient();
-  private Map<String, AtomEntry<ValueSet>> codeSystems = new HashMap<String, AtomEntry<ValueSet>>();
-  private Map<String, AtomEntry<ValueSet>> valueSets = new HashMap<String, AtomEntry<ValueSet>>();
-  private Map<String, AtomEntry<ConceptMap>> maps = new HashMap<String, AtomEntry<ConceptMap>>();
-  private Map<String, AtomEntry<Profile>> profiles = new HashMap<String, AtomEntry<Profile>>();
+  private Map<String, ValueSet> codeSystems = new HashMap<String, ValueSet>();
+  private Map<String, ValueSet> valueSets = new HashMap<String, ValueSet>();
+  private Map<String, ConceptMap> maps = new HashMap<String, ConceptMap>();
+  private Map<String, Profile> profiles = new HashMap<String, Profile>();
+  private Map<String, ExtensionDefinition> extensionDefinitions = new HashMap<String, ExtensionDefinition>();
 
 
   public WorkerContext() {
     super();
   }
 
-  public WorkerContext(TerminologyServices conceptLocator, ExtensionLocatorService extensionLocator, FHIRClient client, Map<String, AtomEntry<ValueSet>> codeSystems,
-      Map<String, AtomEntry<ValueSet>> valueSets, Map<String, AtomEntry<ConceptMap>> maps, Map<String, AtomEntry<Profile>> profiles) {
+  public WorkerContext(TerminologyServices conceptLocator, ExtensionLocatorService extensionLocator, FHIRClient client, Map<String, ValueSet> codeSystems,
+      Map<String, ValueSet> valueSets, Map<String, ConceptMap> maps, Map<String, Profile> profiles) {
     super();
     if (conceptLocator != null)
       this.terminologyServices = conceptLocator;
@@ -95,26 +119,29 @@ public class WorkerContext {
     return client;
   }
 
-  public Map<String, AtomEntry<ValueSet>> getCodeSystems() {
+  public Map<String, ValueSet> getCodeSystems() {
     return codeSystems;
   }
 
-  public Map<String, AtomEntry<ValueSet>> getValueSets() {
+  public Map<String, ValueSet> getValueSets() {
     return valueSets;
   }
 
-  public Map<String, AtomEntry<ConceptMap>> getMaps() {
+  public Map<String, ConceptMap> getMaps() {
     return maps;
   }
 
-  public Map<String, AtomEntry<Profile>> getProfiles() {
+  public Map<String, Profile> getProfiles() {
     return profiles;
+  }
+
+  public Map<String, ExtensionDefinition> getExtensionDefinitions() {
+    return extensionDefinitions;
   }
 
   public void setTerminologyServices(TerminologyServices terminologyServices) {
     this.terminologyServices = terminologyServices;    
   }
-
 
   public WorkerContext clone(FHIRClient altClient) {
     WorkerContext res = new WorkerContext(terminologyServices, extensionLocator, null, codeSystems, valueSets, maps, profiles);
@@ -144,7 +171,7 @@ public class WorkerContext {
         res.loadFromFile(new ByteArrayInputStream(source.get(name)), name);        
       }
     }
-    return null;
+    return res;
   }
 
   private void loadFromPack(String path) throws Exception {
@@ -163,36 +190,37 @@ public class WorkerContext {
   @SuppressWarnings("unchecked")
   private void loadFromFile(InputStream stream, String name) throws Exception {
     XmlParser xml = new XmlParser();
-    AtomFeed f = xml.parseGeneral(stream).getFeed();
-    for (AtomEntry<?> e : f.getEntryList()) {
-      if (e.getId() == null) {
-        System.out.println("unidentified resource "+e.getLinks().get("self")+" in "+name);
+    Bundle f = (Bundle) xml.parse(stream);
+    for (BundleEntryComponent e : f.getEntry()) {
+      if (e.getResource().getId() == null) {
+        System.out.println("unidentified resource in "+name);
       }
-      Resource r = e.getResource();
-      if (r instanceof Profile)
-        seeProfile((AtomEntry<Profile>) e);
-      else if (r instanceof ValueSet)
-        seeValueSet((AtomEntry<ValueSet>) e);
-      else if (r instanceof ConceptMap)
-        maps.put(((ConceptMap) r).getIdentifierSimple(), (AtomEntry<ConceptMap>) e);
+      if (e.getResource() instanceof Profile)
+        seeProfile((Profile) e.getResource());
+      else if (e.getResource() instanceof ValueSet)
+        seeValueSet((ValueSet) e.getResource());
+      else if (e.getResource() instanceof ExtensionDefinition)
+        seeExtensionDefinition((ExtensionDefinition) e.getResource());
+      else if (e.getResource() instanceof ConceptMap)
+        maps.put(((ConceptMap) e.getResource()).getIdentifier(), (ConceptMap) e.getResource());
     }
       }
 
-  public void seeValueSet(AtomEntry<ValueSet> e) {
-	  ValueSet vs = (ValueSet) e.getResource();
-	  valueSets.put(vs.getIdentifierSimple(), e);
+  public void seeExtensionDefinition(ExtensionDefinition ed) throws Exception {
+    if (extensionDefinitions.get(ed.getUrl()) != null)
+      throw new Exception("duplicate extension definition: "+ed.getUrl());
+    extensionDefinitions.put(ed.getUrl(), ed);
+  }
+
+  public void seeValueSet(ValueSet vs) {
+	  valueSets.put(vs.getIdentifier(), vs);
         if (vs.getDefine() != null) {
-	    codeSystems.put(vs.getDefine().getSystemSimple().toString(), e);
+	    codeSystems.put(vs.getDefine().getSystem().toString(), vs);
         }
       }
 
-  public void seeProfile(AtomEntry<Profile> e) {
-	  Profile p = (Profile) e.getResource();
-	  if (p.getStructure().get(0).getName() != null)
-	    profiles.put(p.getStructure().get(0).getNameSimple(), e);
-	  else 
-	    profiles.put(p.getStructure().get(0).getTypeSimple(), e);
-	  profiles.put(e.getId(), e);
+  public void seeProfile(Profile p) {
+	  profiles.put(p.getId(), p);
   }
 
   public class NullExtensionResolver implements ExtensionLocatorService {
@@ -210,7 +238,7 @@ public class WorkerContext {
     }
 
     @Override
-    public ValueSetDefineConceptComponent getCodeDefinition(String system, String code) {
+    public ConceptDefinitionComponent getCodeDefinition(String system, String code) {
       throw new Error("call to NullTerminologyServices");
     }
 
@@ -294,22 +322,17 @@ public class WorkerContext {
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomEntry<T> read(Class<T> resource, String id) {
+	  public <T extends Resource> T read(Class<T> resource, String id) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomEntry<T> vread(Class<T> resource, String id, String versionid) {
+	  public <T extends Resource> T vread(Class<T> resource, String id, String versionid) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomEntry<T> update(Class<T> resourceClass, T resource, String id) {
-      throw new Error("call to NullClient");
-	  }
-
-	  @Override
-	  public <T extends Resource> AtomEntry<T> update(Class<T> resourceClass, T resource, String id, List<AtomCategory> tags) {
+	  public <T extends Resource> T update(Class<T> resourceClass, T resource, String id) {
       throw new Error("call to NullClient");
 	  }
 
@@ -319,117 +342,77 @@ public class WorkerContext {
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomEntry<OperationOutcome> create(Class<T> resourceClass, T resource) {
+	  public <T extends Resource> OperationOutcome create(Class<T> resourceClass, T resource) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomEntry<OperationOutcome> create(Class<T> resourceClass, T resource, List<AtomCategory> tags) {
+	  public <T extends Resource> Bundle history(Calendar lastUpdate, Class<T> resourceClass, String id) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed history(Calendar lastUpdate, Class<T> resourceClass, String id) {
+	  public <T extends Resource> Bundle history(DateAndTime lastUpdate, Class<T> resourceClass, String id) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed history(DateAndTime lastUpdate, Class<T> resourceClass, String id) {
+	  public <T extends Resource> Bundle history(Class<T> resource, String id) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed history(Class<T> resource, String id) {
+	  public <T extends Resource> Bundle history(Calendar lastUpdate, Class<T> resourceClass) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed history(Calendar lastUpdate, Class<T> resourceClass) {
+	  public <T extends Resource> Bundle history(DateAndTime lastUpdate, Class<T> resourceClass) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed history(DateAndTime lastUpdate, Class<T> resourceClass) {
+	  public <T extends Resource> Bundle history(Class<T> resourceClass) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed history(Class<T> resourceClass) {
+	  public <T extends Resource> Bundle history(Calendar lastUpdate) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed history(Calendar lastUpdate) {
+	  public <T extends Resource> Bundle history(DateAndTime lastUpdate) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed history(DateAndTime lastUpdate) {
+	  public <T extends Resource> Bundle history() {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed history() {
+	  public <T extends Resource> OperationOutcome validate(Class<T> resourceClass, T resource, String id) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomEntry<OperationOutcome> validate(Class<T> resourceClass, T resource, String id) {
+	  public <T extends Resource> Bundle search(Class<T> resourceClass, Map<String, String> params) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed search(Class<T> resourceClass, Map<String, String> params) {
+	  public <T extends Resource> Bundle searchPost(Class<T> resourceClass, T resource, Map<String, String> params) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public <T extends Resource> AtomFeed searchPost(Class<T> resourceClass, T resource, Map<String, String> params) {
+	  public Bundle transaction(Bundle batch) {
       throw new Error("call to NullClient");
 	  }
 
 	  @Override
-	  public AtomFeed transaction(AtomFeed batch) {
-      throw new Error("call to NullClient");
-	  }
-
-	  @Override
-	  public List<AtomCategory> getAllTags() {
-      throw new Error("call to NullClient");
-	  }
-
-	  @Override
-	  public <T extends Resource> List<AtomCategory> getAllTagsForResourceType(Class<T> resourceClass) {
-      throw new Error("call to NullClient");
-	  }
-
-	  @Override
-	  public <T extends Resource> List<AtomCategory> getTagsForResource(Class<T> resource, String id) {
-      throw new Error("call to NullClient");
-	  }
-
-	  @Override
-	  public <T extends Resource> List<AtomCategory> getTagsForResourceVersion(Class<T> resource, String id, String versionId) {
-      throw new Error("call to NullClient");
-	  }
-
-	  @Override
-	  public <T extends Resource> List<AtomCategory> deleteTags(List<AtomCategory> tags, Class<T> resourceClass, String id, String version) {
-      throw new Error("call to NullClient");
-	  }
-
-	  @Override
-	  public <T extends Resource> List<AtomCategory> createTags(List<AtomCategory> tags, Class<T> resourceClass, String id) {
-      throw new Error("call to NullClient");
-	  }
-
-	  @Override
-	  public <T extends Resource> List<AtomCategory> createTags(List<AtomCategory> tags, Class<T> resourceClass, String id, String version) {
-      throw new Error("call to NullClient");
-	  }
-
-	  @Override
-	  public AtomFeed fetchFeed(String url) {
+	  public Bundle fetchFeed(String url) {
       throw new Error("call to NullClient");
     }
 
@@ -438,6 +421,27 @@ public class WorkerContext {
       throw new Error("call to NullClient");
     }
 
+  }
+
+	public ExtensionDefinitionResult getExtensionDefinition(ExtensionDefinitionResult context, String url) throws Exception {
+	  if (context != null && (!url.startsWith("http:") || !url.startsWith("https:"))) {
+	    throw new Exception("not supported yet");
+	  } else if (url.contains("#")) {
+      String[] parts = url.split("\\#");	      
+      ExtensionDefinition res = extensionDefinitions.get(parts[0]);
+      return res == null ? null : new ExtensionDefinitionResult(res, getElement(url, res.getElement(), parts[1]));      
+	  } else {
+	  ExtensionDefinition res = extensionDefinitions.get(url);
+	    return res == null ? null : new ExtensionDefinitionResult(res, res.getElement().get(0));
+	  }
+  }
+
+  private ElementDefinition getElement(String context, List<ElementDefinition> elements, String path) throws Exception {
+    for (ElementDefinition element : elements) {
+      if (element.getPath().equals("Extension."+path))
+        return element;
+    }
+    throw new Exception("Unable to find extension path "+context);
   }
 
 }

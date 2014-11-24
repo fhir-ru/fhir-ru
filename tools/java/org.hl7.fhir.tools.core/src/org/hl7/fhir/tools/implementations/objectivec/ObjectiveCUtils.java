@@ -1,6 +1,6 @@
 package org.hl7.fhir.tools.implementations.objectivec;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -88,8 +88,6 @@ public class ObjectiveCUtils {
     else if (name.equals("time"))
       return "NSString";
     else if (name.equals("dateTime"))
-      return "NSString";
-    else if (name.equals("idref"))
       return "NSString";
     else
       throw new Exception("Unrecognized primitive " + name);

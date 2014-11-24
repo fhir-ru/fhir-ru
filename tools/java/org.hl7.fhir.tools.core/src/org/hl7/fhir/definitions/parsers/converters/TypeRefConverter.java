@@ -1,7 +1,7 @@
 package org.hl7.fhir.definitions.parsers.converters;
 
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -44,7 +44,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * "Old" Syntax for type declarations in Fhir
  * 
  * typeSpec = '@' elementreference | '[param]' | 'xhtml' | 'xml:ID' |
- * 			'Interval(' orderedType ')' | 'Resource(' resourceParams ')' | 
+ * 			'Interval(' orderedType ')' | 'Reference(' resourceParams ')' | 
  * 			type('|' type)* | '*'
  * 
  * resourceParams = resourceType ('|' resourceType)* | Any 
@@ -77,8 +77,6 @@ public class TypeRefConverter
 		
 		if( ref.isElementReference() )
 			convertedType.setName( ref.getResolvedTypeName() );
-		else if( ref.isIdRef() )
-			convertedType.setName( TypeRef.IDREF_PSEUDOTYPE_NAME );
 		else if( ref.isXmlLang() )
 		{
 			// The special type "xml:lang" is not a FHIR basetype, but indicates
@@ -101,7 +99,7 @@ public class TypeRefConverter
 			{
 				convertedType.setName(TypeRef.RESOURCEREF_TYPE_NAME);
 				
-				if( !ref.isAnyResource() )					
+				if( !ref.isAnyReference() )					
 					convertedType.getResourceParams().addAll(ref.getParams());					
 			}
 			else

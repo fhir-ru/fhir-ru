@@ -527,9 +527,9 @@ This same pattern is often encountered with immigrants, who retain their real na
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use value="official" /&gt;
+  &lt;family value="Sczypinski" /&gt;
   &lt;given value="Piotr" /&gt;
   &lt;given value="Andre" /&gt;
-  &lt;family value="Sczypinski" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;use value="usual" /&gt;
@@ -547,7 +547,7 @@ Karen van Hentenryck is of Dutch origin, and the "van" is a voorvoegsel.
 &lt;name&gt;
   &lt;use value=&quot;official&quot; /&gt;  
   &lt;family value=&quot;van&quot;&gt;
-    &lt;extension url=&quot;http://hl7.org/fhir/Profile/iso-21090#name-qualifier&quot; &gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/ExtensionDefinition/iso21090-EN-qualifier&quot; &gt;
 	   &lt;valueCode value=&quot;VV&quot; /&gt;
     &lt;/extension&gt;
   &lt;/family&gt;
@@ -576,12 +576,12 @@ multiple given names, prefixes, suffixes, for academic degrees, nobility titles,
   &lt;given value=&quot;Johanna&quot; /&gt;
   &lt;given value=&quot;Maria&quot; /&gt;
   &lt;prefix value=&quot;Gräfin&quot;&gt;
-    &lt;extension url=&quot;http://hl7.org/fhir/Profile/iso-21090#name-qualifier&quot; &gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/ExtensionDefinition/iso21090-EN-qualifier&quot; &gt;
       &lt;valueCode value=&quot;NB&quot; /&gt;
     &lt;/extension&gt;
   &lt;/prefix&gt;
   &lt;prefix value=&quot;Dr. phil.&quot;&gt;
-    &lt;extension url=&quot;http://hl7.org/fhir/Profile/iso-21090#name-qualifier&quot; &gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/ExtensionDefinition/iso21090-EN-qualifier&quot; &gt;
       &lt;valueCode value=&quot;AC&quot; /&gt;
     &lt;/extension&gt;
   &lt;/prefix&gt;
@@ -734,6 +734,175 @@ her mother, her father or other family names as specified by naming laws of the 
 </pre>
 </div>
 
+<h4>W3C International Examples</h4>
+<p>
+These examples are taken from the <a href="http://www.w3.org/International/questions/qa-personal-names">W3C International Examples</a>, 
+which should be consulted for further information. 
+</p>
+
+<p>
+A patronymic is "The part of a name that links to the genealogy":
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;text value=&quot;Björk Guðmundsdóttir&quot;/&gt;
+  &lt;family value=&quot;Guðmundsdóttir&quot;/&gt;
+  &lt;given value=&quot;Björk&quot;/&gt;
+&lt;/name&gt;
+</pre>  
+
+<p>
+A patronymic with a "son/daughter of" appellation:
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;text value=&quot;Isa bin Osman&quot;/&gt;
+  &lt;family value=&quot;bin Osman&quot;/&gt;
+  &lt;given value=&quot;Isa&quot;/&gt;
+&lt;/name&gt;
+</pre>  
+<p>
+Note: The family name may also be given as two different family names. 
+</p>
+
+<p>
+A chinese name with a generational name:
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;text value=&quot;毛泽东&quot;/&gt; &lt;!-- left to right --&gt;
+  &lt;family value=&quot;毛&quot;/&gt;
+  &lt;given value=&quot;泽&quot;/&gt;
+  &lt;given value=&quot;东&quot;/&gt;
+&lt;/name&gt;
+&lt;name&gt;
+  &lt;text value=&quot;Mao Ze Dong&quot;/&gt; &lt;!-- left to right --&gt;
+  &lt;family value=&quot;Mao&quot;/&gt;
+  &lt;given value=&quot;Ze&quot;/&gt;
+  &lt;given value=&quot;Dong&quot;/&gt;
+&lt;/name&gt;
+</pre>  
+<p>
+<i>Todo: is there a need to identify the given name that is the generational name</i>.
+</p>
+
+<p>
+Additional Western name (see also example above):
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;use value="official" /&gt;
+  &lt;family value="Yao" /&gt;
+  &lt;given value="Ming" /&gt;
+&lt;/name&gt;
+&lt;name&gt;
+  &lt;use value="usual" /&gt;
+  &lt;given value="Fred" /&gt;
+&lt;/name&gt;
+</pre>
+
+<p>
+Multiple Family names:
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;family value="Carreño" /&gt;
+  &lt;family value="Quiñones" /&gt;
+  &lt;given value="María-Jose" /&gt;
+&lt;/name&gt;
+</pre>
+
+<p>
+Brazillian Example:
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;family value="Eduardo" /&gt;
+  &lt;family value="Santos" /&gt;
+  &lt;family value="Tavares" /&gt;
+  &lt;family value="Melo" /&gt;
+  &lt;family value="Silva" /&gt;
+  &lt;given value="José" /&gt;
+&lt;/name&gt;
+</pre>
+
+<p>
+Russian Examples (using Cyrillic):
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;family value="Николаевич" /&gt;
+  &lt;family value="Ельцин" /&gt;
+  &lt;given value="Борис" /&gt;
+&lt;/name&gt;
+&lt;name&gt;
+  &lt;family value="Иосифовна" /&gt;
+  &lt;family value="Ельцина" /&gt;
+  &lt;given value="Наина" /&gt;
+&lt;/name&gt;
+</pre>
+
+<p>
+Example with Initial:
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;family value="Public" /&gt;
+  &lt;given value="John" /&gt;
+  &lt;given value="Q." /&gt;
+&lt;/name&gt;
+</pre>
+
+<p>
+Other Examples:
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;text value="Velikkakathu Sankaran Achuthanandan"/&gt;
+  &lt;family value="Velikkakathu" /&gt;
+  &lt;given value="Sankaran" /&gt;
+  &lt;given value="Achuthanandan" /&gt;
+&lt;/name&gt;
+&lt;name&gt;
+  &lt;text value="Kogaddu Birappa Timappa Nair"/&gt;
+  &lt;family value="Nair" /&gt;
+  &lt;given value="Birappa" /&gt;
+  &lt;given value="Timappa" /&gt;
+  &lt;prefix value="Kogaddu" /&gt;
+&lt;/name&gt;
+&lt;name&gt;
+  &lt;text value="Aditya Pratap Singh Chauhan"/&gt;
+  &lt;family value="Singh" /&gt;
+  &lt;given value="Aditya" /&gt;
+  &lt;given value="Pratap" /&gt;
+  &lt;suffix value="Chauhan" /&gt;
+&lt;/name&gt;
+&lt;name&gt;
+  &lt;text value="Madurai Mani Iyer"/&gt;
+  &lt;given value="Mani" /&gt;
+  &lt;prefix value="Madurai" /&gt;
+  &lt;suffix value="Iyer" /&gt;
+&lt;/name&gt;
+&lt;name&gt;
+  &lt;text value="Abu Karim Muhammad al-Jamil ibn Nidal ibn Abdulaziz al-Filistini"/&gt;
+  &lt;family value="ibn Nidal" /&gt;
+  &lt;family value="ibn Abdulaziz" /&gt;
+  &lt;given value="Muhammad" /&gt;
+  &lt;given value="al-Jamil" /&gt;
+  &lt;prefix value="Abu Karim" /&gt;
+  &lt;suffix value="al-Filistini" /&gt;
+&lt;/name&gt;
+</pre>
+<p>
+<i>Todo: need to discuss this with Indian / Arabic implementers</i>.
+Note that collecting and storing the <i>text</i> element makes the 
+primary purpose of the structured parts for index/searching, and 
+fidelity of the name parts is not critical.
+</p>
+
+
+
+
 <a name="Address"></a>
 <a name="address"></a>
 <h3 style="margin-bottom: 1px">
@@ -755,53 +924,53 @@ See also <a href="datatypes.html#Address">Base Definition</a>, <a href="datatype
    &lt;line value="RG 5th floor" /&gt;
    &lt;city value="Indianapolis" /&gt;
    &lt;state value="IN" /&gt;
-   &lt;zip value="46240" /&gt;
+   &lt;postalCode value="46240" /&gt;
   &lt;/address&gt;
 </pre>
 <p>A UK example address.</p>
 <pre class="xml" fragment="Address">
   &lt;address&gt;
-    &lt;extension url=&quot;http://hl7.org/fhir/Profile/iso-21090#address-part-county&quot; &gt; &lt;!-- todo: review this --&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/ExtensionDefinition/iso21090-ADXP-county&quot; &gt; &lt;!-- todo: review this --&gt;
       &lt;valueString value=&quot;HUDDERSFIELD&quot;/&gt;
     &lt;/extension&gt;
     &lt;text value=&quot;1 Back Lane&amp;#13;&amp;#10;Holmfirth&amp;#13;&amp;#10;HUDDERSFIELD&amp;#13;&amp;#10;HD7 1HQ&quot;/&gt;
     &lt;line value=&quot;1 Back Lane&quot;/&gt;
     &lt;city value=&quot;Holmfirth&quot;/&gt;
-    &lt;zip value=&quot;HD7 1HQ&quot;/&gt;
+    &lt;postalCode value=&quot;HD7 1HQ&quot;/&gt;
   &lt;/address&gt;
 </pre>
 
 <p>A Postal address - i.e. an address that it doesn't make sense to try and visit.</p>
 <pre class="xml" fragment="Address">
   &lt;address&gt;
-    &lt;extension url=&quot;http://hl7.org/fhir/Profile/iso-21090#address-use&quot;&gt; &lt;!-- todo: review this --&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/ExtensionDefinition/iso21090-AD-use&quot;&gt; &lt;!-- todo: review this --&gt;
       &lt;valueCode value=&quot;PST&quot;/&gt;
     &lt;/extension&gt;
     &lt;line value=&quot;PO Box 31445&quot;/&gt;
     &lt;city value=&quot;Erewhon&quot;/&gt;
-    &lt;zip value=&quot;0001&quot;/&gt;
+    &lt;postalCode value=&quot;0001&quot;/&gt;
   &lt;/address&gt;
 </pre>
 </div>
 
-Holmfirth
 
 
 
 
-<a name="Contact"></a>
-<a name="contact"></a>
+
+<a name="ContactPoint"></a>
+<a name="contactpoint"></a>
 <h3 style="margin-bottom: 1px">
-Contact
+ContactPoint
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Contact">Base Definition</a>, <a href="datatypes-definitions.html#Contact">Formal Definitions</a> and <a href="datatypes-mappings.html#Contact">Mappings</a>.
+See also <a href="datatypes.html#ContactPoint">Base Definition</a>, <a href="datatypes-definitions.html#ContactPoint">Formal Definitions</a> and <a href="datatypes-mappings.html#ContactPoint">Mappings</a>.
 </p>
 
 <div class="example">
 <p><b>Example</b></p>
 <p>Home phone number:</p>
-<pre class="xml" fragment="Contact">
+<pre class="xml" fragment="ContactPoint">
   &lt;telecom&gt;
    &lt;system value="phone" /&gt;
    &lt;value value="+15556755745" /&gt;
@@ -811,19 +980,19 @@ See also <a href="datatypes.html#Contact">Base Definition</a>, <a href="datatype
 </div>
 
 
-<a name="Schedule"></a>
-<a name="schedule"></a>
+<a name="Timing"></a>
+<a name="timing"></a>
 <h3>
-Schedule
+Timing
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Schedule">Base Definition</a>, <a href="datatypes-definitions.html#Schedule">Formal Definitions</a> and <a href="datatypes-mappings.html#Schedule">Mappings</a>.
+See also <a href="datatypes.html#Timing">Base Definition</a>, <a href="datatypes-definitions.html#Timing">Formal Definitions</a> and <a href="datatypes-mappings.html#Timing">Mappings</a>.
 </p>
 
 <div class="example">
 <p><b>Example</b></p>
 <p>A series of appointments for radiotherapy:</p>
-<pre class="xml" fragment="Schedule">
+<pre class="xml" fragment="Timing">
   &lt;schedule&gt;
     &lt;event&gt;
       &lt;start value="2012-01-07T09:00" /&gt;
@@ -840,7 +1009,7 @@ See also <a href="datatypes.html#Schedule">Base Definition</a>, <a href="datatyp
   &lt;/schedule&gt;
 </pre>
 <p>BID (twice a day) (no start or end specified):</p>
-<pre class="xml" fragment="Schedule">
+<pre class="xml" fragment="Timing">
   &lt;schedule&gt;
    &lt;repeat&gt;
      &lt;frequency value="2" /&gt;
@@ -850,7 +1019,7 @@ See also <a href="datatypes.html#Schedule">Base Definition</a>, <a href="datatyp
   &lt;/schedule&gt;
 </pre>
 <p>1/2 an hour before breakfast for 10 days from 23-Dec 2011:</p>
-<pre class="xml" fragment="Schedule">
+<pre class="xml" fragment="Timing">
   &lt;schedule&gt;
     &lt;event&gt;
       &lt;start value="2011-12-23" /&gt;

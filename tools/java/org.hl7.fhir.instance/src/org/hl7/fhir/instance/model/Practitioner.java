@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,40 +29,59 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * A person who is directly or indirectly involved in the provisioning of healthcare.
  */
-public class Practitioner extends Resource {
+public class Practitioner extends DomainResource {
 
     public enum AdministrativeGender {
-        M, // Male
-        F, // Female
-        O, // Other
-        U, // Unknown
-        Null; // added to help the parsers
+        MALE, // Male
+        FEMALE, // Female
+        OTHER, // Other
+        UNKNOWN, // Unknown
+        NULL; // added to help the parsers
         public static AdministrativeGender fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("M".equals(codeString))
-          return M;
-        if ("F".equals(codeString))
-          return F;
-        if ("O".equals(codeString))
-          return O;
-        if ("U".equals(codeString))
-          return U;
+        if ("male".equals(codeString))
+          return MALE;
+        if ("female".equals(codeString))
+          return FEMALE;
+        if ("other".equals(codeString))
+          return OTHER;
+        if ("unknown".equals(codeString))
+          return UNKNOWN;
         throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case M: return "M";
-            case F: return "F";
-            case O: return "O";
-            case U: return "U";
+            case MALE: return "male";
+            case FEMALE: return "female";
+            case OTHER: return "other";
+            case UNKNOWN: return "unknown";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case MALE: return "Male";
+            case FEMALE: return "Female";
+            case OTHER: return "Other";
+            case UNKNOWN: return "Unknown";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case MALE: return "male";
+            case FEMALE: return "female";
+            case OTHER: return "other";
+            case UNKNOWN: return "unknown";
             default: return "?";
           }
         }
@@ -73,25 +92,25 @@ public class Practitioner extends Resource {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("M".equals(codeString))
-          return AdministrativeGender.M;
-        if ("F".equals(codeString))
-          return AdministrativeGender.F;
-        if ("O".equals(codeString))
-          return AdministrativeGender.O;
-        if ("U".equals(codeString))
-          return AdministrativeGender.U;
+        if ("male".equals(codeString))
+          return AdministrativeGender.MALE;
+        if ("female".equals(codeString))
+          return AdministrativeGender.FEMALE;
+        if ("other".equals(codeString))
+          return AdministrativeGender.OTHER;
+        if ("unknown".equals(codeString))
+          return AdministrativeGender.UNKNOWN;
         throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == AdministrativeGender.M)
-        return "M";
-      if (code == AdministrativeGender.F)
-        return "F";
-      if (code == AdministrativeGender.O)
-        return "O";
-      if (code == AdministrativeGender.U)
-        return "U";
+      if (code == AdministrativeGender.MALE)
+        return "male";
+      if (code == AdministrativeGender.FEMALE)
+        return "female";
+      if (code == AdministrativeGender.OTHER)
+        return "other";
+      if (code == AdministrativeGender.UNKNOWN)
+        return "unknown";
       return "?";
       }
     }
@@ -115,14 +134,14 @@ public class Practitioner extends Resource {
         /**
          * Organization that regulates and issues the qualification.
          */
-        protected ResourceReference issuer;
+        protected Reference issuer;
 
         /**
          * The actual object that is the target of the reference (Organization that regulates and issues the qualification.)
          */
         protected Organization issuerTarget;
 
-        private static final long serialVersionUID = 1498294019L;
+        private static final long serialVersionUID = -1873253007L;
 
       public PractitionerQualificationComponent() {
         super();
@@ -140,11 +159,11 @@ public class Practitioner extends Resource {
           return this.identifier;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #identifier} (An identifier that applies to this person's qualification in this role.)
          */
-        public Identifier addIdentifier() { 
+    // syntactic sugar
+        public Identifier addIdentifier() { //3
           Identifier t = new Identifier();
           this.identifier.add(t);
           return t;
@@ -183,27 +202,27 @@ public class Practitioner extends Resource {
         /**
          * @return {@link #issuer} (Organization that regulates and issues the qualification.)
          */
-        public ResourceReference getIssuer() { 
+        public Reference getIssuer() { 
           return this.issuer;
         }
 
         /**
          * @param value {@link #issuer} (Organization that regulates and issues the qualification.)
          */
-        public PractitionerQualificationComponent setIssuer(ResourceReference value) { 
+        public PractitionerQualificationComponent setIssuer(Reference value) { 
           this.issuer = value;
           return this;
         }
 
         /**
-         * @return {@link #issuer} (The actual object that is the target of the reference. Organization that regulates and issues the qualification.)
+         * @return {@link #issuer} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Organization that regulates and issues the qualification.)
          */
         public Organization getIssuerTarget() { 
           return this.issuerTarget;
         }
 
         /**
-         * @param value {@link #issuer} (The actual object that is the target of the reference. Organization that regulates and issues the qualification.)
+         * @param value {@link #issuer} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Organization that regulates and issues the qualification.)
          */
         public PractitionerQualificationComponent setIssuerTarget(Organization value) { 
           this.issuerTarget = value;
@@ -215,11 +234,12 @@ public class Practitioner extends Resource {
           childrenList.add(new Property("identifier", "Identifier", "An identifier that applies to this person's qualification in this role.", 0, java.lang.Integer.MAX_VALUE, identifier));
           childrenList.add(new Property("code", "CodeableConcept", "Coded representation of the qualification.", 0, java.lang.Integer.MAX_VALUE, code));
           childrenList.add(new Property("period", "Period", "Period during which the qualification is valid.", 0, java.lang.Integer.MAX_VALUE, period));
-          childrenList.add(new Property("issuer", "Resource(Organization)", "Organization that regulates and issues the qualification.", 0, java.lang.Integer.MAX_VALUE, issuer));
+          childrenList.add(new Property("issuer", "Reference(Organization)", "Organization that regulates and issues the qualification.", 0, java.lang.Integer.MAX_VALUE, issuer));
         }
 
       public PractitionerQualificationComponent copy() {
         PractitionerQualificationComponent dst = new PractitionerQualificationComponent();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());
@@ -244,7 +264,7 @@ public class Practitioner extends Resource {
     /**
      * A contact detail for the practitioner, e.g. a telephone number or an email address.
      */
-    protected List<Contact> telecom = new ArrayList<Contact>();
+    protected List<ContactPoint> telecom = new ArrayList<ContactPoint>();
 
     /**
      * The postal address where the practitioner can be found or visited or to which mail can be delivered.
@@ -269,7 +289,7 @@ public class Practitioner extends Resource {
     /**
      * The organization that the practitioner represents.
      */
-    protected ResourceReference organization;
+    protected Reference organization;
 
     /**
      * The actual object that is the target of the reference (The organization that the practitioner represents.)
@@ -294,7 +314,7 @@ public class Practitioner extends Resource {
     /**
      * The location(s) at which this practitioner provides care.
      */
-    protected List<ResourceReference> location = new ArrayList<ResourceReference>();
+    protected List<Reference> location = new ArrayList<Reference>();
     /**
      * The actual objects that are the target of the reference (The location(s) at which this practitioner provides care.)
      */
@@ -311,7 +331,7 @@ public class Practitioner extends Resource {
      */
     protected List<CodeableConcept> communication = new ArrayList<CodeableConcept>();
 
-    private static final long serialVersionUID = 26275543L;
+    private static final long serialVersionUID = 211133931L;
 
     public Practitioner() {
       super();
@@ -324,11 +344,11 @@ public class Practitioner extends Resource {
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (An identifier that applies to this person in this role.)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
@@ -352,16 +372,16 @@ public class Practitioner extends Resource {
     /**
      * @return {@link #telecom} (A contact detail for the practitioner, e.g. a telephone number or an email address.)
      */
-    public List<Contact> getTelecom() { 
+    public List<ContactPoint> getTelecom() { 
       return this.telecom;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #telecom} (A contact detail for the practitioner, e.g. a telephone number or an email address.)
      */
-    public Contact addTelecom() { 
-      Contact t = new Contact();
+    // syntactic sugar
+    public ContactPoint addTelecom() { //3
+      ContactPoint t = new ContactPoint();
       this.telecom.add(t);
       return t;
     }
@@ -373,27 +393,27 @@ public class Practitioner extends Resource {
       return this.address;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #address} (The postal address where the practitioner can be found or visited or to which mail can be delivered.)
      */
-    public Address addAddress() { 
+    // syntactic sugar
+    public Address addAddress() { //3
       Address t = new Address();
       this.address.add(t);
       return t;
     }
 
     /**
-     * @return {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.)
+     * @return {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.). This is the underlying object with id, value and extensions. The accessor "getGender" gives direct access to the value
      */
-    public Enumeration<AdministrativeGender> getGender() { 
+    public Enumeration<AdministrativeGender> getGenderElement() { 
       return this.gender;
     }
 
     /**
-     * @param value {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.)
+     * @param value {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.). This is the underlying object with id, value and extensions. The accessor "getGender" gives direct access to the value
      */
-    public Practitioner setGender(Enumeration<AdministrativeGender> value) { 
+    public Practitioner setGenderElement(Enumeration<AdministrativeGender> value) { 
       this.gender = value;
       return this;
     }
@@ -401,14 +421,14 @@ public class Practitioner extends Resource {
     /**
      * @return Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
      */
-    public AdministrativeGender getGenderSimple() { 
+    public AdministrativeGender getGender() { 
       return this.gender == null ? null : this.gender.getValue();
     }
 
     /**
      * @param value Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
      */
-    public Practitioner setGenderSimple(AdministrativeGender value) { 
+    public Practitioner setGender(AdministrativeGender value) { 
       if (value == null)
         this.gender = null;
       else {
@@ -420,16 +440,16 @@ public class Practitioner extends Resource {
     }
 
     /**
-     * @return {@link #birthDate} (The date and time of birth for the practitioner.)
+     * @return {@link #birthDate} (The date and time of birth for the practitioner.). This is the underlying object with id, value and extensions. The accessor "getBirthDate" gives direct access to the value
      */
-    public DateTimeType getBirthDate() { 
+    public DateTimeType getBirthDateElement() { 
       return this.birthDate;
     }
 
     /**
-     * @param value {@link #birthDate} (The date and time of birth for the practitioner.)
+     * @param value {@link #birthDate} (The date and time of birth for the practitioner.). This is the underlying object with id, value and extensions. The accessor "getBirthDate" gives direct access to the value
      */
-    public Practitioner setBirthDate(DateTimeType value) { 
+    public Practitioner setBirthDateElement(DateTimeType value) { 
       this.birthDate = value;
       return this;
     }
@@ -437,14 +457,14 @@ public class Practitioner extends Resource {
     /**
      * @return The date and time of birth for the practitioner.
      */
-    public DateAndTime getBirthDateSimple() { 
+    public DateAndTime getBirthDate() { 
       return this.birthDate == null ? null : this.birthDate.getValue();
     }
 
     /**
      * @param value The date and time of birth for the practitioner.
      */
-    public Practitioner setBirthDateSimple(DateAndTime value) { 
+    public Practitioner setBirthDate(DateAndTime value) { 
       if (value == null)
         this.birthDate = null;
       else {
@@ -462,11 +482,11 @@ public class Practitioner extends Resource {
       return this.photo;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #photo} (Image of the person.)
      */
-    public Attachment addPhoto() { 
+    // syntactic sugar
+    public Attachment addPhoto() { //3
       Attachment t = new Attachment();
       this.photo.add(t);
       return t;
@@ -475,27 +495,27 @@ public class Practitioner extends Resource {
     /**
      * @return {@link #organization} (The organization that the practitioner represents.)
      */
-    public ResourceReference getOrganization() { 
+    public Reference getOrganization() { 
       return this.organization;
     }
 
     /**
      * @param value {@link #organization} (The organization that the practitioner represents.)
      */
-    public Practitioner setOrganization(ResourceReference value) { 
+    public Practitioner setOrganization(Reference value) { 
       this.organization = value;
       return this;
     }
 
     /**
-     * @return {@link #organization} (The actual object that is the target of the reference. The organization that the practitioner represents.)
+     * @return {@link #organization} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The organization that the practitioner represents.)
      */
     public Organization getOrganizationTarget() { 
       return this.organizationTarget;
     }
 
     /**
-     * @param value {@link #organization} (The actual object that is the target of the reference. The organization that the practitioner represents.)
+     * @param value {@link #organization} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The organization that the practitioner represents.)
      */
     public Practitioner setOrganizationTarget(Organization value) { 
       this.organizationTarget = value;
@@ -509,11 +529,11 @@ public class Practitioner extends Resource {
       return this.role;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #role} (Roles which this practitioner is authorized to perform for the organization.)
      */
-    public CodeableConcept addRole() { 
+    // syntactic sugar
+    public CodeableConcept addRole() { //3
       CodeableConcept t = new CodeableConcept();
       this.role.add(t);
       return t;
@@ -526,11 +546,11 @@ public class Practitioner extends Resource {
       return this.specialty;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #specialty} (Specific specialty of the practitioner.)
      */
-    public CodeableConcept addSpecialty() { 
+    // syntactic sugar
+    public CodeableConcept addSpecialty() { //3
       CodeableConcept t = new CodeableConcept();
       this.specialty.add(t);
       return t;
@@ -554,22 +574,22 @@ public class Practitioner extends Resource {
     /**
      * @return {@link #location} (The location(s) at which this practitioner provides care.)
      */
-    public List<ResourceReference> getLocation() { 
+    public List<Reference> getLocation() { 
       return this.location;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #location} (The location(s) at which this practitioner provides care.)
      */
-    public ResourceReference addLocation() { 
-      ResourceReference t = new ResourceReference();
+    // syntactic sugar
+    public Reference addLocation() { //3
+      Reference t = new Reference();
       this.location.add(t);
       return t;
     }
 
     /**
-     * @return {@link #location} (The actual objects that are the target of the reference. The location(s) at which this practitioner provides care.)
+     * @return {@link #location} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The location(s) at which this practitioner provides care.)
      */
     public List<Location> getLocationTarget() { 
       return this.locationTarget;
@@ -577,7 +597,7 @@ public class Practitioner extends Resource {
 
     // syntactic sugar
     /**
-     * @return {@link #location} (Add an actual object that is the target of the reference. The location(s) at which this practitioner provides care.)
+     * @return {@link #location} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. The location(s) at which this practitioner provides care.)
      */
     public Location addLocationTarget() { 
       Location r = new Location();
@@ -592,11 +612,11 @@ public class Practitioner extends Resource {
       return this.qualification;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #qualification} (Qualifications obtained by training and certification.)
      */
-    public PractitionerQualificationComponent addQualification() { 
+    // syntactic sugar
+    public PractitionerQualificationComponent addQualification() { //3
       PractitionerQualificationComponent t = new PractitionerQualificationComponent();
       this.qualification.add(t);
       return t;
@@ -609,11 +629,11 @@ public class Practitioner extends Resource {
       return this.communication;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #communication} (A language the practitioner is able to use in patient communication.)
      */
-    public CodeableConcept addCommunication() { 
+    // syntactic sugar
+    public CodeableConcept addCommunication() { //3
       CodeableConcept t = new CodeableConcept();
       this.communication.add(t);
       return t;
@@ -623,28 +643,29 @@ public class Practitioner extends Resource {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "An identifier that applies to this person in this role.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("name", "HumanName", "A name associated with the person.", 0, java.lang.Integer.MAX_VALUE, name));
-        childrenList.add(new Property("telecom", "Contact", "A contact detail for the practitioner, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom));
+        childrenList.add(new Property("telecom", "ContactPoint", "A contact detail for the practitioner, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom));
         childrenList.add(new Property("address", "Address", "The postal address where the practitioner can be found or visited or to which mail can be delivered.", 0, java.lang.Integer.MAX_VALUE, address));
         childrenList.add(new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
         childrenList.add(new Property("birthDate", "dateTime", "The date and time of birth for the practitioner.", 0, java.lang.Integer.MAX_VALUE, birthDate));
         childrenList.add(new Property("photo", "Attachment", "Image of the person.", 0, java.lang.Integer.MAX_VALUE, photo));
-        childrenList.add(new Property("organization", "Resource(Organization)", "The organization that the practitioner represents.", 0, java.lang.Integer.MAX_VALUE, organization));
+        childrenList.add(new Property("organization", "Reference(Organization)", "The organization that the practitioner represents.", 0, java.lang.Integer.MAX_VALUE, organization));
         childrenList.add(new Property("role", "CodeableConcept", "Roles which this practitioner is authorized to perform for the organization.", 0, java.lang.Integer.MAX_VALUE, role));
         childrenList.add(new Property("specialty", "CodeableConcept", "Specific specialty of the practitioner.", 0, java.lang.Integer.MAX_VALUE, specialty));
         childrenList.add(new Property("period", "Period", "The period during which the person is authorized to act as a practitioner in these role(s) for the organization.", 0, java.lang.Integer.MAX_VALUE, period));
-        childrenList.add(new Property("location", "Resource(Location)", "The location(s) at which this practitioner provides care.", 0, java.lang.Integer.MAX_VALUE, location));
+        childrenList.add(new Property("location", "Reference(Location)", "The location(s) at which this practitioner provides care.", 0, java.lang.Integer.MAX_VALUE, location));
         childrenList.add(new Property("qualification", "", "Qualifications obtained by training and certification.", 0, java.lang.Integer.MAX_VALUE, qualification));
         childrenList.add(new Property("communication", "CodeableConcept", "A language the practitioner is able to use in patient communication.", 0, java.lang.Integer.MAX_VALUE, communication));
       }
 
       public Practitioner copy() {
         Practitioner dst = new Practitioner();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());
         dst.name = name == null ? null : name.copy();
-        dst.telecom = new ArrayList<Contact>();
-        for (Contact i : telecom)
+        dst.telecom = new ArrayList<ContactPoint>();
+        for (ContactPoint i : telecom)
           dst.telecom.add(i.copy());
         dst.address = new ArrayList<Address>();
         for (Address i : address)
@@ -662,8 +683,8 @@ public class Practitioner extends Resource {
         for (CodeableConcept i : specialty)
           dst.specialty.add(i.copy());
         dst.period = period == null ? null : period.copy();
-        dst.location = new ArrayList<ResourceReference>();
-        for (ResourceReference i : location)
+        dst.location = new ArrayList<Reference>();
+        for (Reference i : location)
           dst.location.add(i.copy());
         dst.qualification = new ArrayList<PractitionerQualificationComponent>();
         for (PractitionerQualificationComponent i : qualification)

@@ -11,13 +11,13 @@ public class GeneratorUtils {
   		return "datatypes";
   	if (name.equals("Period"))
   		return "datatypes";
-  	if (name.equals("Schedule"))
+  	if (name.equals("Timing"))
   		return "datatypes";
   	if (name.equals("Range"))
   		return "datatypes";
   	if (name.equals("HumanId"))
   		return "datatypes";
-  	if (name.equals("Contact"))
+  	if (name.equals("ContactPoint"))
   		return "datatypes";
     if (name.equals("CodeableConcept"))
       return "datatypes";
@@ -63,8 +63,6 @@ public class GeneratorUtils {
   		return "datatypes";
   	if (name.equals("id"))
   		return "datatypes";
-  	if (name.equals("idref"))
-  		return "references";
   	if (name.equals("Duration"))
   		return "datatypes";
   	if (name.equals("date"))
@@ -77,19 +75,15 @@ public class GeneratorUtils {
       return "narrative";
     if (name.equalsIgnoreCase("xhtml"))
       return "narrative";
-    if (name.equals("Narrative") && definitions)
-      return "base";
   	if (name.equals("Narrative"))
   		return "narrative";
-    if (name.equals("Extension") && definitions)
-      return "base";
     if (name.equals("Extension"))
       return "extensibility";
     if (name.equals("Resource"))
       return "references";
-    if (name.equals("ResourceReference") && definitions)
+    if (name.equals("Reference") && definitions)
       return "base";
-    if (name.equals("ResourceReference"))
+    if (name.equals("Reference"))
       return "references";
     if (name.equals("Binary"))
       return "extras";

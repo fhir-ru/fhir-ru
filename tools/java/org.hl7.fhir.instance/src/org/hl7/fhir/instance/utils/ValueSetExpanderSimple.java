@@ -1,21 +1,50 @@
 package org.hl7.fhir.instance.utils;
 
+/*
+Copyright (c) 2011+, HL7, Inc
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+ * Redistributions of source code must retain the above copyright notice, this 
+   list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, 
+   this list of conditions and the following disclaimer in the documentation 
+   and/or other materials provided with the distribution.
+ * Neither the name of HL7 nor the names of its contributors may be used to 
+   endorse or promote products derived from this software without specific 
+   prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGE.
+
+*/
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.instance.model.AtomEntry;
-import org.hl7.fhir.instance.model.CodeType;
 import org.hl7.fhir.instance.model.DateAndTime;
 import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.ValueSet;
+import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
+import org.hl7.fhir.instance.model.ValueSet.ConceptReferenceComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetFilterComponent;
 import org.hl7.fhir.instance.model.ValueSet.FilterOperator;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetComposeComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineConceptComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionContainsComponent;
+import org.hl7.fhir.utilities.Utilities;
 
 public class ValueSetExpanderSimple implements ValueSetExpander {
 
@@ -38,7 +67,7 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
     try {
       focus = source.copy();
       focus.setExpansion(new ValueSet.ValueSetExpansionComponent());
-      focus.getExpansion().setTimestampSimple(DateAndTime.now());
+      focus.getExpansion().setTimestamp(DateAndTime.now());
 
 
       handleDefine(source);
@@ -71,47 +100,46 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
 	private void importValueSet(String value) throws Exception {
 	  if (value == null)
 	  	throw new Exception("unable to find value set with no identity");
-	  ValueSet vs = context.getValueSets().get(value).getResource();
+	  ValueSet vs = context.getValueSets().get(value);
 	  if (vs == null)
 			throw new Exception("Unable to find imported value set "+value);
 	  ValueSetExpansionOutcome vso = factory.getExpander().expand(vs);
 	  if (vso.getService() != null)
       throw new Exception("Unable to expand imported value set "+value);
 	  for (ValueSetExpansionContainsComponent c : vso.getValueset().getExpansion().getContains()) {
-	  	addCode(c.getSystemSimple(), c.getCodeSimple(), c.getDisplaySimple());
+	  	addCode(c.getSystem(), c.getCode(), c.getDisplay());
 	  }	  
   }
 
 	private void includeCodes(ConceptSetComponent inc) throws Exception {
-	  if (context.getTerminologyServices() != null && context.getTerminologyServices().supportsSystem(inc.getSystemSimple())) {
+	  if (context.getTerminologyServices() != null && context.getTerminologyServices().supportsSystem(inc.getSystem())) {
         addCodes(context.getTerminologyServices().expandVS(inc));
       return;
 	  }
 	    
-	  AtomEntry<ValueSet> ae = context.getCodeSystems().get(inc.getSystemSimple());
-	  if (ae == null)
-      throw new Exception("unable to find code system "+inc.getSystemSimple().toString());
-    ValueSet cs = ae.getResource();
-	  if (inc.getCode().size() == 0 && inc.getFilter().size() == 0) {
+	  ValueSet cs = context.getCodeSystems().get(inc.getSystem());
+	  if (cs == null)
+	  	throw new Exception("unable to find code system "+inc.getSystem().toString());
+	  if (inc.getConcept().size() == 0 && inc.getFilter().size() == 0) {
 	    // special case - add all the code system
-	    for (ValueSetDefineConceptComponent def : cs.getDefine().getConcept()) {
-        addCodeAndDescendents(inc.getSystemSimple(), def);
+	    for (ConceptDefinitionComponent def : cs.getDefine().getConcept()) {
+        addCodeAndDescendents(inc.getSystem(), def);
 	    }
 	  }
 	    
-	  for (CodeType c : inc.getCode()) {
-	  	addCode(inc.getSystemSimple(), c.getValue(), getCodeDisplay(cs, c.getValue()));
+	  for (ConceptReferenceComponent c : inc.getConcept()) {
+	  	addCode(inc.getSystem(), c.getCode(), Utilities.noString(c.getDisplay()) ? getCodeDisplay(cs, c.getCode()) : c.getDisplay());
 	  }
 	  if (inc.getFilter().size() > 1)
 	    throw new Exception("Multiple filters not handled yet"); // need to and them, and this isn't done yet. But this shouldn't arise in non loinc and snomed value sets
     if (inc.getFilter().size() == 1) {
 	    ConceptSetFilterComponent fc = inc.getFilter().get(0);
-	  	if ("concept".equals(fc.getPropertySimple()) && fc.getOpSimple() == FilterOperator.isa) {
+	  	if ("concept".equals(fc.getProperty()) && fc.getOp() == FilterOperator.ISA) {
 	  		// special: all non-abstract codes in the target code system under the value
-	  		ValueSetDefineConceptComponent def = getConceptForCode(cs.getDefine().getConcept(), fc.getValueSimple());
+	  		ConceptDefinitionComponent def = getConceptForCode(cs.getDefine().getConcept(), fc.getValue());
 	  		if (def == null)
-	  			throw new Exception("Code '"+fc.getValueSimple()+"' not found in system '"+inc.getSystemSimple()+"'");
-	  		addCodeAndDescendents(inc.getSystemSimple(), def);
+	  			throw new Exception("Code '"+fc.getValue()+"' not found in system '"+inc.getSystem()+"'");
+	  		addCodeAndDescendents(inc.getSystem(), def);
 	  	} else
 	  		throw new Exception("not done yet");
 	  }
@@ -119,36 +147,36 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
 
 	private void addCodes(List<ValueSetExpansionContainsComponent> expand) throws Exception {
 	  if (expand.size() > 500) 
-	    throw new Exception("Too many codes to display (>"+Integer.toString(expand.size())+")");
+	    throw new ETooCostly("Too many codes to display (>"+Integer.toString(expand.size())+")");
     for (ValueSetExpansionContainsComponent c : expand) {
-      addCode(c.getSystemSimple(), c.getCodeSimple(), c.getDisplaySimple());
+      addCode(c.getSystem(), c.getCode(), c.getDisplay());
     }   
   }
 
-	private void addCodeAndDescendents(String system, ValueSetDefineConceptComponent def) {
+	private void addCodeAndDescendents(String system, ConceptDefinitionComponent def) {
 		if (!ToolingExtensions.hasDeprecated(def)) {  
-			if (def.getAbstract() == null || !def.getAbstractSimple())
-				addCode(system, def.getCodeSimple(), def.getDisplaySimple());
-			for (ValueSetDefineConceptComponent c : def.getConcept()) 
+			if (def.getAbstractElement() == null || !def.getAbstract())
+				addCode(system, def.getCode(), def.getDisplay());
+			for (ConceptDefinitionComponent c : def.getConcept()) 
 				addCodeAndDescendents(system, c);
 		}
   }
 
 	private void excludeCodes(ConceptSetComponent inc) throws Exception {
-	  ValueSet cs = context.getCodeSystems().get(inc.getSystemSimple().toString()).getResource();
+	  ValueSet cs = context.getCodeSystems().get(inc.getSystem().toString());
 	  if (cs == null)
-	  	throw new Exception("unable to find value set "+inc.getSystemSimple().toString());
-    if (inc.getCode().size() == 0 && inc.getFilter().size() == 0) {
+	  	throw new Exception("unable to find value set "+inc.getSystem().toString());
+    if (inc.getConcept().size() == 0 && inc.getFilter().size() == 0) {
       // special case - add all the code system
-//      for (ValueSetDefineConceptComponent def : cs.getDefine().getConcept()) {
-//!!!!        addCodeAndDescendents(inc.getSystemSimple(), def);
+//      for (ConceptDefinitionComponent def : cs.getDefine().getConcept()) {
+//!!!!        addCodeAndDescendents(inc.getSystem(), def);
 //      }
     }
       
 
-	  for (CodeType c : inc.getCode()) {
+	  for (ConceptReferenceComponent c : inc.getConcept()) {
 	  	// we don't need to check whether the codes are valid here- they can't have gotten into this list if they aren't valid
-	  	map.remove(key(inc.getSystemSimple(), c.getValue()));
+	  	map.remove(key(inc.getSystem(), c.getCode()));
 	  }
 	  if (inc.getFilter().size() > 0)
 	  	throw new Exception("not done yet");
@@ -156,17 +184,17 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
 
 	
 	private String getCodeDisplay(ValueSet cs, String code) throws Exception {
-		ValueSetDefineConceptComponent def = getConceptForCode(cs.getDefine().getConcept(), code);
+		ConceptDefinitionComponent def = getConceptForCode(cs.getDefine().getConcept(), code);
 		if (def == null)
-			throw new Exception("Unable to find code '"+code+"' in code system "+cs.getDefine().getSystemSimple());
-		return def.getDisplaySimple();
+			throw new Exception("Unable to find code '"+code+"' in code system "+cs.getDefine().getSystem());
+		return def.getDisplay();
   }
 
-	private ValueSetDefineConceptComponent getConceptForCode(List<ValueSetDefineConceptComponent> clist, String code) {
-		for (ValueSetDefineConceptComponent c : clist) {
-			if (code.equals(c.getCodeSimple()))
+	private ConceptDefinitionComponent getConceptForCode(List<ConceptDefinitionComponent> clist, String code) {
+		for (ConceptDefinitionComponent c : clist) {
+			if (code.equals(c.getCode()))
 			  return c;
-			ValueSetDefineConceptComponent v = getConceptForCode(c.getConcept(), code);   
+			ConceptDefinitionComponent v = getConceptForCode(c.getConcept(), code);   
 			if (v != null)
 			  return v;
 		}
@@ -176,35 +204,35 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
 	private void handleDefine(ValueSet vs) {
 	  if (vs.getDefine() != null) {
       // simple case: just generate the return
-    	for (ValueSetDefineConceptComponent c : vs.getDefine().getConcept()) 
-    		addDefinedCode(vs, vs.getDefine().getSystemSimple(), c);
+    	for (ConceptDefinitionComponent c : vs.getDefine().getConcept()) 
+    		addDefinedCode(vs, vs.getDefine().getSystem(), c);
    	}
   }
 
 	private String key(ValueSetExpansionContainsComponent c) {
-		return key(c.getSystemSimple(), c.getCodeSimple());
+		return key(c.getSystem(), c.getCode());
 	}
 
 	private String key(String uri, String code) {
 		return "{"+uri+"}"+code;
 	}
 
-	private void addDefinedCode(ValueSet vs, String system, ValueSetDefineConceptComponent c) {
+	private void addDefinedCode(ValueSet vs, String system, ConceptDefinitionComponent c) {
 		if (!ToolingExtensions.hasDeprecated(c)) { 
 
-			if (c.getAbstract() == null || !c.getAbstractSimple()) {
-				addCode(system, c.getCodeSimple(), c.getDisplaySimple());
+			if (c.getAbstractElement() == null || !c.getAbstract()) {
+				addCode(system, c.getCode(), c.getDisplay());
 			}
-			for (ValueSetDefineConceptComponent g : c.getConcept()) 
-				addDefinedCode(vs, vs.getDefine().getSystemSimple(), g);
+			for (ConceptDefinitionComponent g : c.getConcept()) 
+				addDefinedCode(vs, vs.getDefine().getSystem(), g);
 		}
   }
 
 	private void addCode(String system, String code, String display) {
 		ValueSetExpansionContainsComponent n = new ValueSet.ValueSetExpansionContainsComponent();
-		n.setSystemSimple(system);
-	  n.setCodeSimple(code);
-	  n.setDisplaySimple(display);
+		n.setSystem(system);
+	  n.setCode(code);
+	  n.setDisplay(display);
 	  String s = key(n);
 	  if (!map.containsKey(s)) { 
 	  	codes.add(n);

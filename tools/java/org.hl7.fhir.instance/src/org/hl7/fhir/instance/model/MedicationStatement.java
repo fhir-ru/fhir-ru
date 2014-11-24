@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,20 +29,20 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
 /**
  * A record of medication being taken by a patient, or that the medication has been given to a patient where the record is the result of a report from the patient or another clinician.
  */
-public class MedicationStatement extends Resource {
+public class MedicationStatement extends DomainResource {
 
     public static class MedicationStatementDosageComponent extends BackboneElement {
         /**
          * The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
          */
-        protected Schedule timing;
+        protected Timing schedule;
 
         /**
          * If set to true or if specified as a CodeableConcept, indicates that the medication is only taken when needed within the specified schedule rather than at every scheduled dose.  If a CodeableConcept is present, it indicates the pre-condition for taking the Medication.
@@ -81,24 +81,24 @@ Terminologies used often pre-coordinate this term with the route and or form of 
          */
         protected Ratio maxDosePerPeriod;
 
-        private static final long serialVersionUID = -2103892057L;
+        private static final long serialVersionUID = -176713299L;
 
       public MedicationStatementDosageComponent() {
         super();
       }
 
         /**
-         * @return {@link #timing} (The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
+         * @return {@link #schedule} (The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
          */
-        public Schedule getTiming() { 
-          return this.timing;
+        public Timing getSchedule() { 
+          return this.schedule;
         }
 
         /**
-         * @param value {@link #timing} (The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
+         * @param value {@link #schedule} (The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
          */
-        public MedicationStatementDosageComponent setTiming(Schedule value) { 
-          this.timing = value;
+        public MedicationStatementDosageComponent setSchedule(Timing value) { 
+          this.schedule = value;
           return this;
         }
 
@@ -213,7 +213,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("timing", "Schedule", "The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  'Every  8 hours'; 'Three times a day'; '1/2 an hour before breakfast for 10 days from 23-Dec 2011:';  '15 Oct 2013, 17 Oct 2013 and 1 Nov 2013'.", 0, java.lang.Integer.MAX_VALUE, timing));
+          childrenList.add(new Property("schedule", "Timing", "The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  'Every  8 hours'; 'Three times a day'; '1/2 an hour before breakfast for 10 days from 23-Dec 2011:';  '15 Oct 2013, 17 Oct 2013 and 1 Nov 2013'.", 0, java.lang.Integer.MAX_VALUE, schedule));
           childrenList.add(new Property("asNeeded[x]", "boolean|CodeableConcept", "If set to true or if specified as a CodeableConcept, indicates that the medication is only taken when needed within the specified schedule rather than at every scheduled dose.  If a CodeableConcept is present, it indicates the pre-condition for taking the Medication.", 0, java.lang.Integer.MAX_VALUE, asNeeded));
           childrenList.add(new Property("site", "CodeableConcept", "A coded specification of the anatomic site where the medication first enters the body.", 0, java.lang.Integer.MAX_VALUE, site));
           childrenList.add(new Property("route", "CodeableConcept", "A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject.", 0, java.lang.Integer.MAX_VALUE, route));
@@ -225,7 +225,8 @@ Terminologies used often pre-coordinate this term with the route and or form of 
 
       public MedicationStatementDosageComponent copy() {
         MedicationStatementDosageComponent dst = new MedicationStatementDosageComponent();
-        dst.timing = timing == null ? null : timing.copy();
+        copyValues(dst);
+        dst.schedule = schedule == null ? null : schedule.copy();
         dst.asNeeded = asNeeded == null ? null : asNeeded.copy();
         dst.site = site == null ? null : site.copy();
         dst.route = route == null ? null : route.copy();
@@ -246,7 +247,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * The person or animal who is /was taking the medication.
      */
-    protected ResourceReference patient;
+    protected Reference patient;
 
     /**
      * The actual object that is the target of the reference (The person or animal who is /was taking the medication.)
@@ -271,7 +272,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
      */
-    protected ResourceReference medication;
+    protected Reference medication;
 
     /**
      * The actual object that is the target of the reference (Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
@@ -281,7 +282,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * An identifier or a link to a resource that identifies a device used in administering the medication to the patient.
      */
-    protected List<ResourceReference> device = new ArrayList<ResourceReference>();
+    protected List<Reference> device = new ArrayList<Reference>();
     /**
      * The actual objects that are the target of the reference (An identifier or a link to a resource that identifies a device used in administering the medication to the patient.)
      */
@@ -293,7 +294,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
      */
     protected List<MedicationStatementDosageComponent> dosage = new ArrayList<MedicationStatementDosageComponent>();
 
-    private static final long serialVersionUID = 874621239L;
+    private static final long serialVersionUID = 1585730643L;
 
     public MedicationStatement() {
       super();
@@ -306,11 +307,11 @@ Terminologies used often pre-coordinate this term with the route and or form of 
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
@@ -319,27 +320,27 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #patient} (The person or animal who is /was taking the medication.)
      */
-    public ResourceReference getPatient() { 
+    public Reference getPatient() { 
       return this.patient;
     }
 
     /**
      * @param value {@link #patient} (The person or animal who is /was taking the medication.)
      */
-    public MedicationStatement setPatient(ResourceReference value) { 
+    public MedicationStatement setPatient(Reference value) { 
       this.patient = value;
       return this;
     }
 
     /**
-     * @return {@link #patient} (The actual object that is the target of the reference. The person or animal who is /was taking the medication.)
+     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The person or animal who is /was taking the medication.)
      */
     public Patient getPatientTarget() { 
       return this.patientTarget;
     }
 
     /**
-     * @param value {@link #patient} (The actual object that is the target of the reference. The person or animal who is /was taking the medication.)
+     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The person or animal who is /was taking the medication.)
      */
     public MedicationStatement setPatientTarget(Patient value) { 
       this.patientTarget = value;
@@ -347,16 +348,16 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     }
 
     /**
-     * @return {@link #wasNotGiven} (Set this to true if the record is saying that the medication was NOT taken.)
+     * @return {@link #wasNotGiven} (Set this to true if the record is saying that the medication was NOT taken.). This is the underlying object with id, value and extensions. The accessor "getWasNotGiven" gives direct access to the value
      */
-    public BooleanType getWasNotGiven() { 
+    public BooleanType getWasNotGivenElement() { 
       return this.wasNotGiven;
     }
 
     /**
-     * @param value {@link #wasNotGiven} (Set this to true if the record is saying that the medication was NOT taken.)
+     * @param value {@link #wasNotGiven} (Set this to true if the record is saying that the medication was NOT taken.). This is the underlying object with id, value and extensions. The accessor "getWasNotGiven" gives direct access to the value
      */
-    public MedicationStatement setWasNotGiven(BooleanType value) { 
+    public MedicationStatement setWasNotGivenElement(BooleanType value) { 
       this.wasNotGiven = value;
       return this;
     }
@@ -364,14 +365,14 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return Set this to true if the record is saying that the medication was NOT taken.
      */
-    public boolean getWasNotGivenSimple() { 
+    public boolean getWasNotGiven() { 
       return this.wasNotGiven == null ? false : this.wasNotGiven.getValue();
     }
 
     /**
      * @param value Set this to true if the record is saying that the medication was NOT taken.
      */
-    public MedicationStatement setWasNotGivenSimple(boolean value) { 
+    public MedicationStatement setWasNotGiven(boolean value) { 
       if (value == false)
         this.wasNotGiven = null;
       else {
@@ -389,11 +390,11 @@ Terminologies used often pre-coordinate this term with the route and or form of 
       return this.reasonNotGiven;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #reasonNotGiven} (A code indicating why the medication was not taken.)
      */
-    public CodeableConcept addReasonNotGiven() { 
+    // syntactic sugar
+    public CodeableConcept addReasonNotGiven() { //3
       CodeableConcept t = new CodeableConcept();
       this.reasonNotGiven.add(t);
       return t;
@@ -417,27 +418,27 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #medication} (Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
      */
-    public ResourceReference getMedication() { 
+    public Reference getMedication() { 
       return this.medication;
     }
 
     /**
      * @param value {@link #medication} (Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
      */
-    public MedicationStatement setMedication(ResourceReference value) { 
+    public MedicationStatement setMedication(Reference value) { 
       this.medication = value;
       return this;
     }
 
     /**
-     * @return {@link #medication} (The actual object that is the target of the reference. Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
+     * @return {@link #medication} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
      */
     public Medication getMedicationTarget() { 
       return this.medicationTarget;
     }
 
     /**
-     * @param value {@link #medication} (The actual object that is the target of the reference. Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
+     * @param value {@link #medication} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.)
      */
     public MedicationStatement setMedicationTarget(Medication value) { 
       this.medicationTarget = value;
@@ -447,22 +448,22 @@ Terminologies used often pre-coordinate this term with the route and or form of 
     /**
      * @return {@link #device} (An identifier or a link to a resource that identifies a device used in administering the medication to the patient.)
      */
-    public List<ResourceReference> getDevice() { 
+    public List<Reference> getDevice() { 
       return this.device;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #device} (An identifier or a link to a resource that identifies a device used in administering the medication to the patient.)
      */
-    public ResourceReference addDevice() { 
-      ResourceReference t = new ResourceReference();
+    // syntactic sugar
+    public Reference addDevice() { //3
+      Reference t = new Reference();
       this.device.add(t);
       return t;
     }
 
     /**
-     * @return {@link #device} (The actual objects that are the target of the reference. An identifier or a link to a resource that identifies a device used in administering the medication to the patient.)
+     * @return {@link #device} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. An identifier or a link to a resource that identifies a device used in administering the medication to the patient.)
      */
     public List<Device> getDeviceTarget() { 
       return this.deviceTarget;
@@ -470,7 +471,7 @@ Terminologies used often pre-coordinate this term with the route and or form of 
 
     // syntactic sugar
     /**
-     * @return {@link #device} (Add an actual object that is the target of the reference. An identifier or a link to a resource that identifies a device used in administering the medication to the patient.)
+     * @return {@link #device} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. An identifier or a link to a resource that identifies a device used in administering the medication to the patient.)
      */
     public Device addDeviceTarget() { 
       Device r = new Device();
@@ -485,11 +486,11 @@ Terminologies used often pre-coordinate this term with the route and or form of 
       return this.dosage;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #dosage} (Indicates how the medication is/was used by the patient.)
      */
-    public MedicationStatementDosageComponent addDosage() { 
+    // syntactic sugar
+    public MedicationStatementDosageComponent addDosage() { //3
       MedicationStatementDosageComponent t = new MedicationStatementDosageComponent();
       this.dosage.add(t);
       return t;
@@ -498,17 +499,18 @@ Terminologies used often pre-coordinate this term with the route and or form of 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("patient", "Resource(Patient)", "The person or animal who is /was taking the medication.", 0, java.lang.Integer.MAX_VALUE, patient));
+        childrenList.add(new Property("patient", "Reference(Patient)", "The person or animal who is /was taking the medication.", 0, java.lang.Integer.MAX_VALUE, patient));
         childrenList.add(new Property("wasNotGiven", "boolean", "Set this to true if the record is saying that the medication was NOT taken.", 0, java.lang.Integer.MAX_VALUE, wasNotGiven));
         childrenList.add(new Property("reasonNotGiven", "CodeableConcept", "A code indicating why the medication was not taken.", 0, java.lang.Integer.MAX_VALUE, reasonNotGiven));
         childrenList.add(new Property("whenGiven", "Period", "The interval of time during which it is being asserted that the patient was taking the medication.", 0, java.lang.Integer.MAX_VALUE, whenGiven));
-        childrenList.add(new Property("medication", "Resource(Medication)", "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.", 0, java.lang.Integer.MAX_VALUE, medication));
-        childrenList.add(new Property("device", "Resource(Device)", "An identifier or a link to a resource that identifies a device used in administering the medication to the patient.", 0, java.lang.Integer.MAX_VALUE, device));
+        childrenList.add(new Property("medication", "Reference(Medication)", "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.", 0, java.lang.Integer.MAX_VALUE, medication));
+        childrenList.add(new Property("device", "Reference(Device)", "An identifier or a link to a resource that identifies a device used in administering the medication to the patient.", 0, java.lang.Integer.MAX_VALUE, device));
         childrenList.add(new Property("dosage", "", "Indicates how the medication is/was used by the patient.", 0, java.lang.Integer.MAX_VALUE, dosage));
       }
 
       public MedicationStatement copy() {
         MedicationStatement dst = new MedicationStatement();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());
@@ -519,8 +521,8 @@ Terminologies used often pre-coordinate this term with the route and or form of 
           dst.reasonNotGiven.add(i.copy());
         dst.whenGiven = whenGiven == null ? null : whenGiven.copy();
         dst.medication = medication == null ? null : medication.copy();
-        dst.device = new ArrayList<ResourceReference>();
-        for (ResourceReference i : device)
+        dst.device = new ArrayList<Reference>();
+        for (Reference i : device)
           dst.device.add(i.copy());
         dst.dosage = new ArrayList<MedicationStatementDosageComponent>();
         for (MedicationStatementDosageComponent i : dosage)

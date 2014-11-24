@@ -1,6 +1,6 @@
 package org.hl7.fhir.tools.implementations.java;
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -45,7 +45,15 @@ public class JavaBaseGenerator extends OutputStreamWriter {
 		super(out, "UTF-8");
 	}
 
-	
+  protected boolean isJavaPrimitive(ElementDefn e) {
+    return e.getTypes().size() == 1 && (isPrimitive(e.typeCode()) || e.typeCode().equals("xml:lang"));
+  }
+
+  protected boolean isPrimitive(String name) {
+    return definitions.hasPrimitiveType(name) || (name.endsWith("Type") && definitions.getPrimitives().containsKey(name.substring(0, name.length()-4)));
+  }
+
+
 	protected String getElementName(String name, boolean alone) {
 	  if (name.equals("[type]"))
 	    return "value";
@@ -70,14 +78,14 @@ public class JavaBaseGenerator extends OutputStreamWriter {
 	protected String getTypename(TypeRef type) throws Exception {
 		if (type.getParams().size() == 1) {			
 			if (type.isResourceReference())
-				return "ResourceReference";
+				return "Reference";
 			else if (type.getName().equals("Interval"))
 				return "Interval<"+getTypeName(type.getParams().get(0))+">";
 			else
 				throw new Exception("not supported");
 		} else if (type.getParams().size() > 1) {
 			if (type.isResourceReference())
-				return "ResourceReference";
+				return "Reference";
 			else
 				throw new Exception("not supported");
 		} else {
@@ -89,7 +97,7 @@ public class JavaBaseGenerator extends OutputStreamWriter {
 		if (tn.equals("string")) {
 			return "StringType";
 		} else if (tn.equals("Any")) {
-			return "Resource";
+			return "Reference";
     } else if (definitions.hasPrimitiveType(tn)) {
       return getTitle(tn)+"Type";
 		} else {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationPrescription xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationprescription.xsd">
+  <id value="f001"/>
     <identifier>
         <use value="official"/>
         <system value="http://www.bmc/portal/prescriptions"/>
@@ -36,7 +37,7 @@
         <additionalInstructions>
           <text value="for use during pregnancy, contact physician"/>
         </additionalInstructions>
-        <timingSchedule>
+        <scheduledTiming>
             <event>
                 <start value="2013-08-04"/>
                 <end value="2013-11-05"/>
@@ -46,7 +47,7 @@
                 <duration value="1"/>
                 <units value="d"/>
             </repeat>
-        </timingSchedule>
+        </scheduledTiming>
         <site>
             <coding>
                 <system value="http://snomed.info/sct"/>

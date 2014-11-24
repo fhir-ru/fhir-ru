@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -42,7 +42,14 @@ public class BooleanType extends PrimitiveType {
 	 */
 	private java.lang.Boolean value;
 	
-	/**
+	public BooleanType(Boolean value) {
+    this.value = value;  
+  }
+
+  public BooleanType() {
+  }
+
+  /**
 	 * @return The value of the boolean
 	 */
 	public java.lang.Boolean getValue() {

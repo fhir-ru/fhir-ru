@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2011-2014, HL7, Inc
+Copyright (c) 2011+, HL7, Inc
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -49,6 +49,16 @@ public class IntegerType extends PrimitiveType {
 	 */
 	private String original;
 	
+	public IntegerType(Integer value) {
+    if (value != null) {
+      this.value = value;
+      original = value.toString();
+    }
+  }
+
+  public IntegerType() {
+  }
+
 	/**
 	 * @return the integer value
 	 */

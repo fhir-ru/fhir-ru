@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.model;
 
 /*
-  Copyright (c) 2011-2014, HL7, Inc.
+  Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,40 +29,59 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Aug 26, 2014 16:54+1000 for FHIR v0.3.0
+// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
 
 import java.util.*;
 
+import org.hl7.fhir.utilities.Utilities;
 /**
  * Demographics and other administrative information about a person or animal receiving care or other health-related services.
  */
-public class Patient extends Resource {
+public class Patient extends DomainResource {
 
     public enum AdministrativeGender {
-        M, // Male
-        F, // Female
-        O, // Other
-        U, // Unknown
-        Null; // added to help the parsers
+        MALE, // Male
+        FEMALE, // Female
+        OTHER, // Other
+        UNKNOWN, // Unknown
+        NULL; // added to help the parsers
         public static AdministrativeGender fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("M".equals(codeString))
-          return M;
-        if ("F".equals(codeString))
-          return F;
-        if ("O".equals(codeString))
-          return O;
-        if ("U".equals(codeString))
-          return U;
+        if ("male".equals(codeString))
+          return MALE;
+        if ("female".equals(codeString))
+          return FEMALE;
+        if ("other".equals(codeString))
+          return OTHER;
+        if ("unknown".equals(codeString))
+          return UNKNOWN;
         throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case M: return "M";
-            case F: return "F";
-            case O: return "O";
-            case U: return "U";
+            case MALE: return "male";
+            case FEMALE: return "female";
+            case OTHER: return "other";
+            case UNKNOWN: return "unknown";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case MALE: return "Male";
+            case FEMALE: return "Female";
+            case OTHER: return "Other";
+            case UNKNOWN: return "Unknown";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case MALE: return "male";
+            case FEMALE: return "female";
+            case OTHER: return "other";
+            case UNKNOWN: return "unknown";
             default: return "?";
           }
         }
@@ -73,50 +92,66 @@ public class Patient extends Resource {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("M".equals(codeString))
-          return AdministrativeGender.M;
-        if ("F".equals(codeString))
-          return AdministrativeGender.F;
-        if ("O".equals(codeString))
-          return AdministrativeGender.O;
-        if ("U".equals(codeString))
-          return AdministrativeGender.U;
+        if ("male".equals(codeString))
+          return AdministrativeGender.MALE;
+        if ("female".equals(codeString))
+          return AdministrativeGender.FEMALE;
+        if ("other".equals(codeString))
+          return AdministrativeGender.OTHER;
+        if ("unknown".equals(codeString))
+          return AdministrativeGender.UNKNOWN;
         throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == AdministrativeGender.M)
-        return "M";
-      if (code == AdministrativeGender.F)
-        return "F";
-      if (code == AdministrativeGender.O)
-        return "O";
-      if (code == AdministrativeGender.U)
-        return "U";
+      if (code == AdministrativeGender.MALE)
+        return "male";
+      if (code == AdministrativeGender.FEMALE)
+        return "female";
+      if (code == AdministrativeGender.OTHER)
+        return "other";
+      if (code == AdministrativeGender.UNKNOWN)
+        return "unknown";
       return "?";
       }
     }
 
     public enum LinkType {
-        replace, // The patient resource containing this link must no longer be used. The link points forward to another patient resource that must be used in lieu of the patient resource that contains the link.
-        refer, // The patient resource containing this link is in use and valid but not considered the main source of information about a patient. The link points forward to another patient resource that should be consulted to retrieve additional patient information.
-        seealso, // The patient resource containing this link is in use and valid, but points to another patient resource that is known to contain data about the same person. Data in this resource might overlap or contradict information found in the other patient resource. This link does not indicate any relative importance of the resources concerned, and both should be regarded as equally valid.
-        Null; // added to help the parsers
+        REPLACE, // The patient resource containing this link must no longer be used. The link points forward to another patient resource that must be used in lieu of the patient resource that contains the link.
+        REFER, // The patient resource containing this link is in use and valid but not considered the main source of information about a patient. The link points forward to another patient resource that should be consulted to retrieve additional patient information.
+        SEEALSO, // The patient resource containing this link is in use and valid, but points to another patient resource that is known to contain data about the same person. Data in this resource might overlap or contradict information found in the other patient resource. This link does not indicate any relative importance of the resources concerned, and both should be regarded as equally valid.
+        NULL; // added to help the parsers
         public static LinkType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("replace".equals(codeString))
-          return replace;
+          return REPLACE;
         if ("refer".equals(codeString))
-          return refer;
+          return REFER;
         if ("seealso".equals(codeString))
-          return seealso;
+          return SEEALSO;
         throw new Exception("Unknown LinkType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case replace: return "replace";
-            case refer: return "refer";
-            case seealso: return "seealso";
+            case REPLACE: return "replace";
+            case REFER: return "refer";
+            case SEEALSO: return "seealso";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case REPLACE: return "The patient resource containing this link must no longer be used. The link points forward to another patient resource that must be used in lieu of the patient resource that contains the link.";
+            case REFER: return "The patient resource containing this link is in use and valid but not considered the main source of information about a patient. The link points forward to another patient resource that should be consulted to retrieve additional patient information.";
+            case SEEALSO: return "The patient resource containing this link is in use and valid, but points to another patient resource that is known to contain data about the same person. Data in this resource might overlap or contradict information found in the other patient resource. This link does not indicate any relative importance of the resources concerned, and both should be regarded as equally valid.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case REPLACE: return "replace";
+            case REFER: return "refer";
+            case SEEALSO: return "see also";
             default: return "?";
           }
         }
@@ -128,19 +163,19 @@ public class Patient extends Resource {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("replace".equals(codeString))
-          return LinkType.replace;
+          return LinkType.REPLACE;
         if ("refer".equals(codeString))
-          return LinkType.refer;
+          return LinkType.REFER;
         if ("seealso".equals(codeString))
-          return LinkType.seealso;
+          return LinkType.SEEALSO;
         throw new Exception("Unknown LinkType code '"+codeString+"'");
         }
     public String toCode(Enum<?> code) throws Exception {
-      if (code == LinkType.replace)
+      if (code == LinkType.REPLACE)
         return "replace";
-      if (code == LinkType.refer)
+      if (code == LinkType.REFER)
         return "refer";
-      if (code == LinkType.seealso)
+      if (code == LinkType.SEEALSO)
         return "seealso";
       return "?";
       }
@@ -160,7 +195,7 @@ public class Patient extends Resource {
         /**
          * A contact detail for the person, e.g. a telephone number or an email address.
          */
-        protected List<Contact> telecom = new ArrayList<Contact>();
+        protected List<ContactPoint> telecom = new ArrayList<ContactPoint>();
 
         /**
          * Address for the contact person.
@@ -175,14 +210,19 @@ public class Patient extends Resource {
         /**
          * Organization on behalf of which the contact is acting or for which the contact is working.
          */
-        protected ResourceReference organization;
+        protected Reference organization;
 
         /**
          * The actual object that is the target of the reference (Organization on behalf of which the contact is acting or for which the contact is working.)
          */
         protected Organization organizationTarget;
 
-        private static final long serialVersionUID = -753423156L;
+        /**
+         * The period during which this person or organisation is valid to be contacted relating to this patient.
+         */
+        protected Period period;
+
+        private static final long serialVersionUID = -455382710L;
 
       public ContactComponent() {
         super();
@@ -195,11 +235,11 @@ public class Patient extends Resource {
           return this.relationship;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #relationship} (The nature of the relationship between the patient and the contact person.)
          */
-        public CodeableConcept addRelationship() { 
+    // syntactic sugar
+        public CodeableConcept addRelationship() { //3
           CodeableConcept t = new CodeableConcept();
           this.relationship.add(t);
           return t;
@@ -223,16 +263,16 @@ public class Patient extends Resource {
         /**
          * @return {@link #telecom} (A contact detail for the person, e.g. a telephone number or an email address.)
          */
-        public List<Contact> getTelecom() { 
+        public List<ContactPoint> getTelecom() { 
           return this.telecom;
         }
 
-    // syntactic sugar
         /**
          * @return {@link #telecom} (A contact detail for the person, e.g. a telephone number or an email address.)
          */
-        public Contact addTelecom() { 
-          Contact t = new Contact();
+    // syntactic sugar
+        public ContactPoint addTelecom() { //3
+          ContactPoint t = new ContactPoint();
           this.telecom.add(t);
           return t;
         }
@@ -253,16 +293,16 @@ public class Patient extends Resource {
         }
 
         /**
-         * @return {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.)
+         * @return {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.). This is the underlying object with id, value and extensions. The accessor "getGender" gives direct access to the value
          */
-        public Enumeration<AdministrativeGender> getGender() { 
+        public Enumeration<AdministrativeGender> getGenderElement() { 
           return this.gender;
         }
 
         /**
-         * @param value {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.)
+         * @param value {@link #gender} (Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.). This is the underlying object with id, value and extensions. The accessor "getGender" gives direct access to the value
          */
-        public ContactComponent setGender(Enumeration<AdministrativeGender> value) { 
+        public ContactComponent setGenderElement(Enumeration<AdministrativeGender> value) { 
           this.gender = value;
           return this;
         }
@@ -270,14 +310,14 @@ public class Patient extends Resource {
         /**
          * @return Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
          */
-        public AdministrativeGender getGenderSimple() { 
+        public AdministrativeGender getGender() { 
           return this.gender == null ? null : this.gender.getValue();
         }
 
         /**
          * @param value Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
          */
-        public ContactComponent setGenderSimple(AdministrativeGender value) { 
+        public ContactComponent setGender(AdministrativeGender value) { 
           if (value == null)
             this.gender = null;
           else {
@@ -291,30 +331,45 @@ public class Patient extends Resource {
         /**
          * @return {@link #organization} (Organization on behalf of which the contact is acting or for which the contact is working.)
          */
-        public ResourceReference getOrganization() { 
+        public Reference getOrganization() { 
           return this.organization;
         }
 
         /**
          * @param value {@link #organization} (Organization on behalf of which the contact is acting or for which the contact is working.)
          */
-        public ContactComponent setOrganization(ResourceReference value) { 
+        public ContactComponent setOrganization(Reference value) { 
           this.organization = value;
           return this;
         }
 
         /**
-         * @return {@link #organization} (The actual object that is the target of the reference. Organization on behalf of which the contact is acting or for which the contact is working.)
+         * @return {@link #organization} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Organization on behalf of which the contact is acting or for which the contact is working.)
          */
         public Organization getOrganizationTarget() { 
           return this.organizationTarget;
         }
 
         /**
-         * @param value {@link #organization} (The actual object that is the target of the reference. Organization on behalf of which the contact is acting or for which the contact is working.)
+         * @param value {@link #organization} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Organization on behalf of which the contact is acting or for which the contact is working.)
          */
         public ContactComponent setOrganizationTarget(Organization value) { 
           this.organizationTarget = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #period} (The period during which this person or organisation is valid to be contacted relating to this patient.)
+         */
+        public Period getPeriod() { 
+          return this.period;
+        }
+
+        /**
+         * @param value {@link #period} (The period during which this person or organisation is valid to be contacted relating to this patient.)
+         */
+        public ContactComponent setPeriod(Period value) { 
+          this.period = value;
           return this;
         }
 
@@ -322,24 +377,27 @@ public class Patient extends Resource {
           super.listChildren(childrenList);
           childrenList.add(new Property("relationship", "CodeableConcept", "The nature of the relationship between the patient and the contact person.", 0, java.lang.Integer.MAX_VALUE, relationship));
           childrenList.add(new Property("name", "HumanName", "A name associated with the person.", 0, java.lang.Integer.MAX_VALUE, name));
-          childrenList.add(new Property("telecom", "Contact", "A contact detail for the person, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom));
+          childrenList.add(new Property("telecom", "ContactPoint", "A contact detail for the person, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom));
           childrenList.add(new Property("address", "Address", "Address for the contact person.", 0, java.lang.Integer.MAX_VALUE, address));
           childrenList.add(new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
-          childrenList.add(new Property("organization", "Resource(Organization)", "Organization on behalf of which the contact is acting or for which the contact is working.", 0, java.lang.Integer.MAX_VALUE, organization));
+          childrenList.add(new Property("organization", "Reference(Organization)", "Organization on behalf of which the contact is acting or for which the contact is working.", 0, java.lang.Integer.MAX_VALUE, organization));
+          childrenList.add(new Property("period", "Period", "The period during which this person or organisation is valid to be contacted relating to this patient.", 0, java.lang.Integer.MAX_VALUE, period));
         }
 
       public ContactComponent copy() {
         ContactComponent dst = new ContactComponent();
+        copyValues(dst);
         dst.relationship = new ArrayList<CodeableConcept>();
         for (CodeableConcept i : relationship)
           dst.relationship.add(i.copy());
         dst.name = name == null ? null : name.copy();
-        dst.telecom = new ArrayList<Contact>();
-        for (Contact i : telecom)
+        dst.telecom = new ArrayList<ContactPoint>();
+        for (ContactPoint i : telecom)
           dst.telecom.add(i.copy());
         dst.address = address == null ? null : address.copy();
         dst.gender = gender == null ? null : gender.copy();
         dst.organization = organization == null ? null : organization.copy();
+        dst.period = period == null ? null : period.copy();
         return dst;
       }
 
@@ -426,6 +484,7 @@ public class Patient extends Resource {
 
       public AnimalComponent copy() {
         AnimalComponent dst = new AnimalComponent();
+        copyValues(dst);
         dst.species = species == null ? null : species.copy();
         dst.breed = breed == null ? null : breed.copy();
         dst.genderStatus = genderStatus == null ? null : genderStatus.copy();
@@ -438,7 +497,7 @@ public class Patient extends Resource {
         /**
          * The other patient resource that the link refers to.
          */
-        protected ResourceReference other;
+        protected Reference other;
 
         /**
          * The actual object that is the target of the reference (The other patient resource that the link refers to.)
@@ -450,13 +509,13 @@ public class Patient extends Resource {
          */
         protected Enumeration<LinkType> type;
 
-        private static final long serialVersionUID = 383172000L;
+        private static final long serialVersionUID = -1942104050L;
 
       public PatientLinkComponent() {
         super();
       }
 
-      public PatientLinkComponent(ResourceReference other, Enumeration<LinkType> type) {
+      public PatientLinkComponent(Reference other, Enumeration<LinkType> type) {
         super();
         this.other = other;
         this.type = type;
@@ -465,27 +524,27 @@ public class Patient extends Resource {
         /**
          * @return {@link #other} (The other patient resource that the link refers to.)
          */
-        public ResourceReference getOther() { 
+        public Reference getOther() { 
           return this.other;
         }
 
         /**
          * @param value {@link #other} (The other patient resource that the link refers to.)
          */
-        public PatientLinkComponent setOther(ResourceReference value) { 
+        public PatientLinkComponent setOther(Reference value) { 
           this.other = value;
           return this;
         }
 
         /**
-         * @return {@link #other} (The actual object that is the target of the reference. The other patient resource that the link refers to.)
+         * @return {@link #other} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The other patient resource that the link refers to.)
          */
         public Patient getOtherTarget() { 
           return this.otherTarget;
         }
 
         /**
-         * @param value {@link #other} (The actual object that is the target of the reference. The other patient resource that the link refers to.)
+         * @param value {@link #other} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The other patient resource that the link refers to.)
          */
         public PatientLinkComponent setOtherTarget(Patient value) { 
           this.otherTarget = value;
@@ -493,16 +552,16 @@ public class Patient extends Resource {
         }
 
         /**
-         * @return {@link #type} (The type of link between this patient resource and another patient resource.)
+         * @return {@link #type} (The type of link between this patient resource and another patient resource.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public Enumeration<LinkType> getType() { 
+        public Enumeration<LinkType> getTypeElement() { 
           return this.type;
         }
 
         /**
-         * @param value {@link #type} (The type of link between this patient resource and another patient resource.)
+         * @param value {@link #type} (The type of link between this patient resource and another patient resource.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public PatientLinkComponent setType(Enumeration<LinkType> value) { 
+        public PatientLinkComponent setTypeElement(Enumeration<LinkType> value) { 
           this.type = value;
           return this;
         }
@@ -510,14 +569,14 @@ public class Patient extends Resource {
         /**
          * @return The type of link between this patient resource and another patient resource.
          */
-        public LinkType getTypeSimple() { 
+        public LinkType getType() { 
           return this.type == null ? null : this.type.getValue();
         }
 
         /**
          * @param value The type of link between this patient resource and another patient resource.
          */
-        public PatientLinkComponent setTypeSimple(LinkType value) { 
+        public PatientLinkComponent setType(LinkType value) { 
             if (this.type == null)
               this.type = new Enumeration<LinkType>();
             this.type.setValue(value);
@@ -526,12 +585,13 @@ public class Patient extends Resource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("other", "Resource(Patient)", "The other patient resource that the link refers to.", 0, java.lang.Integer.MAX_VALUE, other));
+          childrenList.add(new Property("other", "Reference(Patient)", "The other patient resource that the link refers to.", 0, java.lang.Integer.MAX_VALUE, other));
           childrenList.add(new Property("type", "code", "The type of link between this patient resource and another patient resource.", 0, java.lang.Integer.MAX_VALUE, type));
         }
 
       public PatientLinkComponent copy() {
         PatientLinkComponent dst = new PatientLinkComponent();
+        copyValues(dst);
         dst.other = other == null ? null : other.copy();
         dst.type = type == null ? null : type.copy();
         return dst;
@@ -552,7 +612,7 @@ public class Patient extends Resource {
     /**
      * A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.
      */
-    protected List<Contact> telecom = new ArrayList<Contact>();
+    protected List<ContactPoint> telecom = new ArrayList<ContactPoint>();
 
     /**
      * Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
@@ -607,7 +667,7 @@ public class Patient extends Resource {
     /**
      * Patient's nominated care provider.
      */
-    protected List<ResourceReference> careProvider = new ArrayList<ResourceReference>();
+    protected List<Reference> careProvider = new ArrayList<Reference>();
     /**
      * The actual objects that are the target of the reference (Patient's nominated care provider.)
      */
@@ -617,7 +677,7 @@ public class Patient extends Resource {
     /**
      * Organization that is the custodian of the patient record.
      */
-    protected ResourceReference managingOrganization;
+    protected Reference managingOrganization;
 
     /**
      * The actual object that is the target of the reference (Organization that is the custodian of the patient record.)
@@ -634,7 +694,7 @@ public class Patient extends Resource {
      */
     protected BooleanType active;
 
-    private static final long serialVersionUID = 1658723801L;
+    private static final long serialVersionUID = -340628307L;
 
     public Patient() {
       super();
@@ -647,11 +707,11 @@ public class Patient extends Resource {
       return this.identifier;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #identifier} (An identifier that applies to this person as a patient.)
      */
-    public Identifier addIdentifier() { 
+    // syntactic sugar
+    public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       this.identifier.add(t);
       return t;
@@ -664,11 +724,11 @@ public class Patient extends Resource {
       return this.name;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #name} (A name associated with the individual.)
      */
-    public HumanName addName() { 
+    // syntactic sugar
+    public HumanName addName() { //3
       HumanName t = new HumanName();
       this.name.add(t);
       return t;
@@ -677,31 +737,31 @@ public class Patient extends Resource {
     /**
      * @return {@link #telecom} (A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.)
      */
-    public List<Contact> getTelecom() { 
+    public List<ContactPoint> getTelecom() { 
       return this.telecom;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #telecom} (A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.)
      */
-    public Contact addTelecom() { 
-      Contact t = new Contact();
+    // syntactic sugar
+    public ContactPoint addTelecom() { //3
+      ContactPoint t = new ContactPoint();
       this.telecom.add(t);
       return t;
     }
 
     /**
-     * @return {@link #gender} (Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.)
+     * @return {@link #gender} (Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.). This is the underlying object with id, value and extensions. The accessor "getGender" gives direct access to the value
      */
-    public Enumeration<AdministrativeGender> getGender() { 
+    public Enumeration<AdministrativeGender> getGenderElement() { 
       return this.gender;
     }
 
     /**
-     * @param value {@link #gender} (Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.)
+     * @param value {@link #gender} (Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.). This is the underlying object with id, value and extensions. The accessor "getGender" gives direct access to the value
      */
-    public Patient setGender(Enumeration<AdministrativeGender> value) { 
+    public Patient setGenderElement(Enumeration<AdministrativeGender> value) { 
       this.gender = value;
       return this;
     }
@@ -709,14 +769,14 @@ public class Patient extends Resource {
     /**
      * @return Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
      */
-    public AdministrativeGender getGenderSimple() { 
+    public AdministrativeGender getGender() { 
       return this.gender == null ? null : this.gender.getValue();
     }
 
     /**
      * @param value Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
      */
-    public Patient setGenderSimple(AdministrativeGender value) { 
+    public Patient setGender(AdministrativeGender value) { 
       if (value == null)
         this.gender = null;
       else {
@@ -728,16 +788,16 @@ public class Patient extends Resource {
     }
 
     /**
-     * @return {@link #birthDate} (The date and time of birth for the individual.)
+     * @return {@link #birthDate} (The date and time of birth for the individual.). This is the underlying object with id, value and extensions. The accessor "getBirthDate" gives direct access to the value
      */
-    public DateTimeType getBirthDate() { 
+    public DateTimeType getBirthDateElement() { 
       return this.birthDate;
     }
 
     /**
-     * @param value {@link #birthDate} (The date and time of birth for the individual.)
+     * @param value {@link #birthDate} (The date and time of birth for the individual.). This is the underlying object with id, value and extensions. The accessor "getBirthDate" gives direct access to the value
      */
-    public Patient setBirthDate(DateTimeType value) { 
+    public Patient setBirthDateElement(DateTimeType value) { 
       this.birthDate = value;
       return this;
     }
@@ -745,14 +805,14 @@ public class Patient extends Resource {
     /**
      * @return The date and time of birth for the individual.
      */
-    public DateAndTime getBirthDateSimple() { 
+    public DateAndTime getBirthDate() { 
       return this.birthDate == null ? null : this.birthDate.getValue();
     }
 
     /**
      * @param value The date and time of birth for the individual.
      */
-    public Patient setBirthDateSimple(DateAndTime value) { 
+    public Patient setBirthDate(DateAndTime value) { 
       if (value == null)
         this.birthDate = null;
       else {
@@ -785,11 +845,11 @@ public class Patient extends Resource {
       return this.address;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #address} (Addresses for the individual.)
      */
-    public Address addAddress() { 
+    // syntactic sugar
+    public Address addAddress() { //3
       Address t = new Address();
       this.address.add(t);
       return t;
@@ -832,11 +892,11 @@ public class Patient extends Resource {
       return this.photo;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #photo} (Image of the person.)
      */
-    public Attachment addPhoto() { 
+    // syntactic sugar
+    public Attachment addPhoto() { //3
       Attachment t = new Attachment();
       this.photo.add(t);
       return t;
@@ -849,11 +909,11 @@ public class Patient extends Resource {
       return this.contact;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #contact} (A contact party (e.g. guardian, partner, friend) for the patient.)
      */
-    public ContactComponent addContact() { 
+    // syntactic sugar
+    public ContactComponent addContact() { //3
       ContactComponent t = new ContactComponent();
       this.contact.add(t);
       return t;
@@ -881,11 +941,11 @@ public class Patient extends Resource {
       return this.communication;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #communication} (Languages which may be used to communicate with the patient about his or her health.)
      */
-    public CodeableConcept addCommunication() { 
+    // syntactic sugar
+    public CodeableConcept addCommunication() { //3
       CodeableConcept t = new CodeableConcept();
       this.communication.add(t);
       return t;
@@ -894,22 +954,22 @@ public class Patient extends Resource {
     /**
      * @return {@link #careProvider} (Patient's nominated care provider.)
      */
-    public List<ResourceReference> getCareProvider() { 
+    public List<Reference> getCareProvider() { 
       return this.careProvider;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #careProvider} (Patient's nominated care provider.)
      */
-    public ResourceReference addCareProvider() { 
-      ResourceReference t = new ResourceReference();
+    // syntactic sugar
+    public Reference addCareProvider() { //3
+      Reference t = new Reference();
       this.careProvider.add(t);
       return t;
     }
 
     /**
-     * @return {@link #careProvider} (The actual objects that are the target of the reference. Patient's nominated care provider.)
+     * @return {@link #careProvider} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Patient's nominated care provider.)
      */
     public List<Resource> getCareProviderTarget() { 
       return this.careProviderTarget;
@@ -918,27 +978,27 @@ public class Patient extends Resource {
     /**
      * @return {@link #managingOrganization} (Organization that is the custodian of the patient record.)
      */
-    public ResourceReference getManagingOrganization() { 
+    public Reference getManagingOrganization() { 
       return this.managingOrganization;
     }
 
     /**
      * @param value {@link #managingOrganization} (Organization that is the custodian of the patient record.)
      */
-    public Patient setManagingOrganization(ResourceReference value) { 
+    public Patient setManagingOrganization(Reference value) { 
       this.managingOrganization = value;
       return this;
     }
 
     /**
-     * @return {@link #managingOrganization} (The actual object that is the target of the reference. Organization that is the custodian of the patient record.)
+     * @return {@link #managingOrganization} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Organization that is the custodian of the patient record.)
      */
     public Organization getManagingOrganizationTarget() { 
       return this.managingOrganizationTarget;
     }
 
     /**
-     * @param value {@link #managingOrganization} (The actual object that is the target of the reference. Organization that is the custodian of the patient record.)
+     * @param value {@link #managingOrganization} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Organization that is the custodian of the patient record.)
      */
     public Patient setManagingOrganizationTarget(Organization value) { 
       this.managingOrganizationTarget = value;
@@ -952,27 +1012,27 @@ public class Patient extends Resource {
       return this.link;
     }
 
-    // syntactic sugar
     /**
      * @return {@link #link} (Link to another patient resource that concerns the same actual person.)
      */
-    public PatientLinkComponent addLink() { 
+    // syntactic sugar
+    public PatientLinkComponent addLink() { //3
       PatientLinkComponent t = new PatientLinkComponent();
       this.link.add(t);
       return t;
     }
 
     /**
-     * @return {@link #active} (Whether this patient record is in active use.)
+     * @return {@link #active} (Whether this patient record is in active use.). This is the underlying object with id, value and extensions. The accessor "getActive" gives direct access to the value
      */
-    public BooleanType getActive() { 
+    public BooleanType getActiveElement() { 
       return this.active;
     }
 
     /**
-     * @param value {@link #active} (Whether this patient record is in active use.)
+     * @param value {@link #active} (Whether this patient record is in active use.). This is the underlying object with id, value and extensions. The accessor "getActive" gives direct access to the value
      */
-    public Patient setActive(BooleanType value) { 
+    public Patient setActiveElement(BooleanType value) { 
       this.active = value;
       return this;
     }
@@ -980,14 +1040,14 @@ public class Patient extends Resource {
     /**
      * @return Whether this patient record is in active use.
      */
-    public boolean getActiveSimple() { 
+    public boolean getActive() { 
       return this.active == null ? false : this.active.getValue();
     }
 
     /**
      * @param value Whether this patient record is in active use.
      */
-    public Patient setActiveSimple(boolean value) { 
+    public Patient setActive(boolean value) { 
       if (value == false)
         this.active = null;
       else {
@@ -1002,7 +1062,7 @@ public class Patient extends Resource {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "An identifier that applies to this person as a patient.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("name", "HumanName", "A name associated with the individual.", 0, java.lang.Integer.MAX_VALUE, name));
-        childrenList.add(new Property("telecom", "Contact", "A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.", 0, java.lang.Integer.MAX_VALUE, telecom));
+        childrenList.add(new Property("telecom", "ContactPoint", "A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.", 0, java.lang.Integer.MAX_VALUE, telecom));
         childrenList.add(new Property("gender", "code", "Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
         childrenList.add(new Property("birthDate", "dateTime", "The date and time of birth for the individual.", 0, java.lang.Integer.MAX_VALUE, birthDate));
         childrenList.add(new Property("deceased[x]", "boolean|dateTime", "Indicates if the individual is deceased or not.", 0, java.lang.Integer.MAX_VALUE, deceased));
@@ -1013,22 +1073,23 @@ public class Patient extends Resource {
         childrenList.add(new Property("contact", "", "A contact party (e.g. guardian, partner, friend) for the patient.", 0, java.lang.Integer.MAX_VALUE, contact));
         childrenList.add(new Property("animal", "", "This element has a value if the patient is an animal.", 0, java.lang.Integer.MAX_VALUE, animal));
         childrenList.add(new Property("communication", "CodeableConcept", "Languages which may be used to communicate with the patient about his or her health.", 0, java.lang.Integer.MAX_VALUE, communication));
-        childrenList.add(new Property("careProvider", "Resource(Organization|Practitioner)", "Patient's nominated care provider.", 0, java.lang.Integer.MAX_VALUE, careProvider));
-        childrenList.add(new Property("managingOrganization", "Resource(Organization)", "Organization that is the custodian of the patient record.", 0, java.lang.Integer.MAX_VALUE, managingOrganization));
+        childrenList.add(new Property("careProvider", "Reference(Organization|Practitioner)", "Patient's nominated care provider.", 0, java.lang.Integer.MAX_VALUE, careProvider));
+        childrenList.add(new Property("managingOrganization", "Reference(Organization)", "Organization that is the custodian of the patient record.", 0, java.lang.Integer.MAX_VALUE, managingOrganization));
         childrenList.add(new Property("link", "", "Link to another patient resource that concerns the same actual person.", 0, java.lang.Integer.MAX_VALUE, link));
         childrenList.add(new Property("active", "boolean", "Whether this patient record is in active use.", 0, java.lang.Integer.MAX_VALUE, active));
       }
 
       public Patient copy() {
         Patient dst = new Patient();
+        copyValues(dst);
         dst.identifier = new ArrayList<Identifier>();
         for (Identifier i : identifier)
           dst.identifier.add(i.copy());
         dst.name = new ArrayList<HumanName>();
         for (HumanName i : name)
           dst.name.add(i.copy());
-        dst.telecom = new ArrayList<Contact>();
-        for (Contact i : telecom)
+        dst.telecom = new ArrayList<ContactPoint>();
+        for (ContactPoint i : telecom)
           dst.telecom.add(i.copy());
         dst.gender = gender == null ? null : gender.copy();
         dst.birthDate = birthDate == null ? null : birthDate.copy();
@@ -1048,8 +1109,8 @@ public class Patient extends Resource {
         dst.communication = new ArrayList<CodeableConcept>();
         for (CodeableConcept i : communication)
           dst.communication.add(i.copy());
-        dst.careProvider = new ArrayList<ResourceReference>();
-        for (ResourceReference i : careProvider)
+        dst.careProvider = new ArrayList<Reference>();
+        for (Reference i : careProvider)
           dst.careProvider.add(i.copy());
         dst.managingOrganization = managingOrganization == null ? null : managingOrganization.copy();
         dst.link = new ArrayList<PatientLinkComponent>();

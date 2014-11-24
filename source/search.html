@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle RESTful API%]
+[%settitle Search / Query (RESTful API) %]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -27,10 +27,10 @@ In the simplest case, a search is executed by performing a GET operation
 in the RESTful framework:
 </p>
 <pre>
- GET [base-url]/[resourcetype](?parameters)
+ GET [base]/[resourcetype]?name=value&amp;...
 </pre>
-<p>
-For this RESTful search, the parameters are a series 
+<p> 
+For this RESTful search (see <a href="http.html#search">definition in RESTful API</a>), the parameters are a series 
 of name=[value] pairs encoded in the URL or as an 
 application/x-www-form-urlencoded submission for a POST.  
 The server returns the results in the HTTP response as a bundle (in XML, an atom feed) 
@@ -41,12 +41,12 @@ A HTTP status code of 403 signifies that the server refused to perform the query
 while some other 4xx or 5xx code signifies that some error occurred. 
 </p>
 <p>
-Search operations are executed in one of 3 defined contexts that control which set of resources are being searched:
+<a href="http.html#search">Search operations</a> are executed in one of 3 defined contexts that control which set of resources are being searched:
 </p>
 <ul>
- <li>A specified resource type</li>
- <li>A specified <a href="extras.html#compartments">compartment</a>, perhaps with a specified resource type in that compartment</li>
- <li>All resources</li>
+ <li>A specified resource type: GET [base]/[resourcetype]?parameter(s)</li>
+ <li>A specified <a href="extras.html#compartments">compartment</a>, perhaps with a specified resource type in that compartment: GET [base]/patient/[id]/[resourcetype]?parameter(s)</li>
+ <li>All resources: GET [base]/_search?parameter(s)</li>
 </ul>
 <p>
 Search/Query operations can also be initiated by other more complex and flexible
@@ -54,12 +54,18 @@ methods described below, which change both the way the search/query is initiated
 the results that are returned. 
 </p>
 <a name="standard"> </a>
-<h2>Standard Parameters</h2>
+<h3>Standard Parameters</h3>
+
+<a name="all"> </a>
+<h4>Parameters for all resources</h4>
+<p>
+These parameters are <a href="resource.html#search">defined that apply to all resources</a>: [%allparams%].
+</p>
 <p>
 The search parameter _id refers to the logical id of the resource, and can be used when the search context specifies a resource type:
 </p>
 <pre>
- GET [base-url]/patient?_id=23
+ GET [base]/Patient?_id=23
 </pre>
 <p>
 This search finds the patient resource with the given id (there can only be one 
@@ -67,14 +73,75 @@ resource for a given id). Functionally, this is equivalent to a <a href="http.ht
 read operation</a>:
 </p>
 <pre>
- GET [base-url]/Patient/23
+ GET [base]/Patient/23
 </pre>
 <p>
 except that it returns a bundle with the requested resource, rather than the 
-resource itself. However additional parameters can be added which may provide
+resource itself. Additional parameters can be added which may provide
 additional functionality on top of this base read equivalence.
 </p>
-<h3>Parameters for each resource</h3>
+<p>
+The search parameter _language refers to the base language of the resource:
+</p>
+<pre>
+ GET [base]/Composition?_language=fr
+</pre>
+<p>
+This search finds any compositions with a designated language of French.
+Note that this is the claimed language of the resource, not the actual
+language of the content.
+</p>
+<p>
+The search parameter _lastUpdated can be used to select resources based
+on the last time they were changed:
+</p>
+<pre>
+ GET [base]/Observations?_lastUpdated=>2010-10-01
+</pre>
+<p>
+This search finds any observations changed since 1-Oct 2010. When
+this search parameter is used, applications should consider 
+synchronization approaches (<a href="http.html#history">RESTful history</a>
+or the <a href="subscription.html">Subscription resource</a>.
+</p>
+<a name="tag" />
+<a name="tags" />
+<a name="profile" />
+
+<p>
+The search parameters _tag, _profile and _security parameters search
+on the equivalent elements in the <a href="resource.html#meta">meta element</a>.
+For example
+</p>
+<pre>
+ GET [base]/Condition?_tag=http://acme.org/codes|needs-review
+</pre>
+<p>
+searches for all Condition resources with the tag:
+</p>
+<pre class="json">
+{
+  "system" : "http://acme.org/codes", 
+  "code" : "needs-review"
+}
+</pre>
+<p>
+In the same manner:
+</p>
+<pre>
+ GET [base]/DiagnosticReport?_profile=http://hl7.org/fhir/Profile/lipid
+ GET [base]/DiagnosticReport?_profile=Profile/lipid
+</pre>
+<p>
+restricts the search to only DiagnosticReport resources that are tagged that they conform to a particular profile.
+The second reference is relative, and refers a local profile on the same server.
+</p>
+<p>
+_tag, _profile and _security parameters are all token types (see <a href="#token">below</a>).
+</p>
+
+
+<h4>Parameters for each resource</h4>
 <p>
 In addition to the _id parameter which exists for all resources, each 
 FHIR resource type defines its own set of search parameters with 
@@ -103,7 +170,7 @@ additional parameters if they wish.
 </p>
 
 <a name="ptypes" />
-<h3>Search Parameter Types</h3>
+<h4>Search Parameter Types</h4>
 <p>Each search parameter is defined with a type that defines how the search parameter
 behaves. These are the defined parameter types:
 </p>
@@ -124,7 +191,7 @@ separated from the parameter name by a colon. Modifiers are:</p>
   equates to not having the relevant element in the resource). Searching for "gender:missing=false"
   will return all the resources that have a value for the "gender" parameter. </li>
  <li>For string: ":exact" (the match needs to be exact, no partial matches, case sensitive and accent-sensitive), instead of the default behavior, which is that the search does partial matches. It is at the discretion of the server whether to do a left-partial search</li>
- <li>For token: ":text" (the match does a partial searches on the text portion of a CodeableConcept or the display portion of a Coding), instead of the default search which uses codes</li>
+ <li>For token: ":text" (the match does a partial searches on the text portion of a CodeableConcept or the display portion of a Coding), instead of the default search which uses codes. Other define modifiers are ";in", ":below", ":above", ":in" and ":not-in" which are described below</li>
  <li>For reference: ":[type]" where [type] is the name of a type of resource</li>
 </ul>
 
@@ -132,8 +199,8 @@ separated from the parameter name by a colon. Modifiers are:</p>
 <h4>number</h4>
 <p>
 The prefixes &gt;, &gt;=, &lt;=, and &lt; may be used on the parameter value, 
-and have the usual meaning. Note that "=" must be escaped in the 
-value in a URL. Examples:
+and have the usual meaning (note that "=" must be <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoded</a> in the 
+value in a URL). Examples:
 </p>
 <table class="grid">
  <tr><td>[parameter]=100</td><td>Values that equal 100, to 2 significant figures precision, so range [99.5 ... 100.5)</td></tr>
@@ -142,6 +209,7 @@ value in a URL. Examples:
  <tr><td>[parameter]=&lt;=100</td><td>Values that are less or equal to 100</td></tr>
  <tr><td>[parameter]=&gt;100</td><td>Values that are greater than 100</td></tr>
  <tr><td>[parameter]=&gt;=100</td><td>Values that are greater or equal to 100</td></tr>
+ <tr><td>[parameter]=!=100</td><td>Values that are not equal to 100. Precision works as for equals (this operation is the logical converse of equals)</td></tr>
 </table>
 <p>
 For comparisons involving &lt; or &gt;, uncertainty does not factor, and the precision of the numbers is considered arbitrarily high.
@@ -179,6 +247,7 @@ concepts are relatively straight-forward, there are a number of subtleties invol
  <li>Date parameter searches are always matched based on the behavior of intervals, as follows:
    <ul>
      <li>For [parameter]=[date], the requirement is that the search interval fully contains the time of the target. i.e. [parameter]=2013-01-14 includes 2013-01-14T00:00 (obviously) and also 2013-01-14T10:00 but not 2013-01-15T00:00</li>
+     <li>For [parameter]=!=[date], the requirement is that the search interval does not fully contain the time of the target. i.e. [parameter]=!=2013-01-14 includes 2013-01-15T00:00 but not 2013-01-14T00:00 or 2013-01-14T10:00</li>
 	 <li>For "[parameter]=&lt;[date]", the requirement is that the interval of the time before [date] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
 	    For instance, the resource time 2013-01-14 is included in the set of values that come before 2013-01-14T10:00, because it includes the part of 14-Jan 2013 before 10am </li>
 	 <li>For "[parameter]=&gt;[date]", the requirement is that the interval of the time after [date] intersects (i.e. overlaps) with the interval of time in the relevant resource element. 
@@ -207,7 +276,7 @@ concepts are relatively straight-forward, there are a number of subtleties invol
 As an example, the following query searches for all the procedures in a patient compartment that occurred over a 2 year period:
 </p>
 <pre>
- GET [base-url]/Patient/23/procedure?date=&gt;2010-01-01&amp;date=&lt;2011-12-31
+ GET [base]/Patient/23/Procedure?date=&gt;2010-01-01&amp;date=&lt;2011-12-31
 </pre>
 
 
@@ -221,8 +290,8 @@ server whether to do a left-partial search. The modifier :exact can be used to i
 that the match needs to be exact (the whole string, including casing and accents). For example:
 </p>
 <pre>
- GET [base-url]/Patient?name=eve
- GET [base-url]/Patient?name:exact=Eve
+ GET [base]/Patient?name=eve
+ GET [base]/Patient?name:exact=Eve
 </pre>
 <p>
 The first is a request to find any patients with "eve" in any part of the name. This would 
@@ -256,27 +325,37 @@ the URI/value from a Coding or an Identifier. The syntax for the
 value is one of the following:
 </p>
 <ul>
- <li><b>[parameter]=[code]</b> matches a code/value irrespective of it's system namespace</li>
- <li><b>[parameter]=[namespace]|[code]</b> matches a code/value in the given system namespace </li>
- <li><b>[parameter]=|[code]</b> matches a code/value that has no system namespace</li>
+ <li><b>[parameter]=[code]</b>: the value of [code] matches a Coding.code or Identifier.value irrespective of the value of the system property</li>
+ <li><b>[parameter]=[system]|[code]</b>: the value of [code] matches a Coding.code or Identifier.value, and the value of [system] matches the system property of the Identifier or Coding</li>
+ <li><b>[parameter]=|[code]</b>: the value of [code] matches a Coding.code or Identifier.value, and the Coding/Identifier has no system property</li>
 </ul>
 <p>
-Note that the namespace URI and code both must be <a href="#escaping">escaped</a>.
+Note that the namespace URI and code both must be <a href="#escaping">escaped</a>. 
 </p>
+<p><b>Modifiers:</b></p>
+<table class="lines">
+ <tr> <td><b>Modifier</b></td> <td><b>Use</b></td> </tr>
+ <tr> <td>:text</td> <td>the search parameter is processed as a string that searches text associated with the code/value - either <i>CodeableConcept.text</i>, <i>Coding.display</i>, or <i>Identifier.label</i></td> </tr>
+ <tr> <td>:not</td> <td>reverse the code matching described in the paragraph above</td> </tr>
+ <tr> <td>:above</td> <td>the search parameter is a concept with the form [system]|[code], and the search parameter tests whether the coding in a resource subsumes the specified search code (e.g. the search concept has an is-a relationship with the coding in the resource)</td> </tr>
+ <tr> <td>:below</td> <td>the search parameter is a concept with the form [system]|[code], and the search parameter tests whether the coding in a resource is subsumed by the specified search code (e.g. the coding in the resource has an is-a relationship with the search concept)</td> </tr>
+ <tr> <td>:in</td> <td>the search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is in the specified <a href="valueset.html">value set</a>. The reference may be literal (to an address where the value set can be found) or logical (a referecnce to ValueSet.identifier)</td> </tr>
+ <tr> <td>:not-in</td> <td>the search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is not in the specified value set</td> </tr>
+</table>
 <p>
-If the modifier ":text", is used, the search parameter is processed as a 
-string that searches text associated with the code/value - either <i>CodeableConcept.text</i>,
-<i>Coding.display</i>, or <i>Identifier.label</i>.
+Most servers will only process value sets that are already known/registered/supported internally, but serers can elect to accept any valid reference to a value set.
+Servers may elect to consider concept mappings when testing for subsumption relationships. 
 </p>
+
 <p>
 Here are some example searches:
 </p>
 <table>
  <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>
- <tr><td><pre> GET [base-url]/Patient?identifier=http://acme.org/patient|2345</pre></td><td>Search for all the patients with an identifier with key = "2345" in the system "http://acme.org/patient"</td></tr>
- <tr><td><pre> GET [base-url]/Patient?gender=male</pre></td><td>Search for any patient with a gender that has a code "male", irrespective of the system. Note that this usually isn't very useful - systems generally define symbols where overlap is coincidental and not informative</td></tr>
- <tr><td><pre> GET [base-url]/Patient?gender=http://hl7.org/fhir/v2/0001|M</pre></td><td>Search for any patient with a gender which is coded as "M" in the HL7 Administrative Gender table</td></tr>
- <tr><td><pre> GET [base-url]/Patient?gender:text=male</pre></td><td>Search for any patient with a gender that has a text "male" associated with it (note: this will include "female")</td></tr>
+ <tr><td><pre> GET [base]/Patient?identifier=http://acme.org/patient|2345</pre></td><td>Search for all the patients with an identifier with key = "2345" in the system "http://acme.org/patient"</td></tr>
+ <tr><td><pre> GET [base]/Patient?gender=male</pre></td><td>Search for any patient with a gender that has a code "male", irrespective of the system. Note that this usually isn't very useful - systems generally define symbols where overlap is coincidental and not informative</td></tr>
+ <tr><td><pre> GET [base]/Patient?gender=http://hl7.org/fhir/v2/0001|M</pre></td><td>Search for any patient with a gender which is coded as "M" in the HL7 Administrative Gender table</td></tr>
+ <tr><td><pre> GET [base]/Patient?gender:text=male</pre></td><td>Search for any patient with a gender that has a text "male" associated with it (note: this will include "female")</td></tr>
 </table>
 
 <a name="quantity" />
@@ -286,7 +365,7 @@ A quantity parameter searches on the <a href="datatypes.html#Quantity">Quantity<
 The syntax for the value follows the form:
 </p>
 <ul>
- <li><b>[parameter]=[comparator][number]|[namespace]|[code]</b> matches a quantity with the given unit</li>
+ <li><b>[parameter]=[comparator][number]|[system]|[code]</b> matches a quantity with the given unit</li>
 </ul>
 <p>
 The comparator is optional; if it is not present, the default comparator is "=". A special value "~" can be used for approximation.  Example searches:
@@ -294,10 +373,10 @@ The comparator is optional; if it is not present, the default comparator is "=".
 
 <table>
  <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>
- <tr><td><pre> GET [base-url]/Observation?value=5.4|http://unitsofmeasure.org|mg</pre></td><td>Search for all the observations with a value of 5.4 mg where mg is understood as a UCUM unit (system/code)</td></tr>
- <tr><td><pre> GET [base-url]/Observation?value=5.4||mg</pre></td><td>Search for all the observations with a value of 5.4 mg where the units - either the code  or the stated human units (units) are "mg"</td></tr>
- <tr><td><pre> GET [base-url]/Observation?value=&lt;5.4|http://unitsofmeasure.org|mg</pre></td><td>Search for all the observations where the value of is less than 5.4 mg where mg is understood as a UCUM unit</td></tr>
- <tr><td><pre> GET [base-url]/Observation?value=~5.4|http://unitsofmeasure.org|mg</pre></td><td>Search for all the observations where the value of is about 5.4 mg where mg is understood as a UCUM unit. 
+ <tr><td><pre> GET [base]/Observation?value=5.4|http://unitsofmeasure.org|mg</pre></td><td>Search for all the observations with a value of 5.4 mg where mg is understood as a UCUM unit (system/code)</td></tr>
+ <tr><td><pre> GET [base]/Observation?value=5.4||mg</pre></td><td>Search for all the observations with a value of 5.4 mg where the units - either the code  or the stated human units (units) are "mg"</td></tr>
+ <tr><td><pre> GET [base]/Observation?value=&lt;5.4|http://unitsofmeasure.org|mg</pre></td><td>Search for all the observations where the value of is less than 5.4 mg where mg is understood as a UCUM unit</td></tr>
+ <tr><td><pre> GET [base]/Observation?value=~5.4|http://unitsofmeasure.org|mg</pre></td><td>Search for all the observations where the value of is about 5.4 mg where mg is understood as a UCUM unit. 
    The recommended value for the approximation is 10% of the stated value, but systems may choose other values where appropriate</td></tr>
 </table>
 
@@ -316,18 +395,18 @@ The interpretation of a <i>reference</i> parameter is either:
 </p>
 <ul>
  <li><b>[parameter]=[id]</b> the logical [id] of a resource using a local reference (i.e. a relative reference)</li>
- <li><b>[parameter]=[url]</b> where the [url] is an absolute URL - a reference to a resource by it's absolute location</li>
+ <li><b>[parameter]=[url]</b> where the [url] is an absolute URL - a reference to a resource by its absolute location</li>
 </ul>
 <p>
 Note that if a relative reference resolves to the same value as a specified absolute URL, or vice versa, this is a match too.
 </p>
 <p>
-Some references are allowed to point to more than one type of resource. e.g. subject : Resource(Patient|Group|Device|..).
+Some references are allowed to point to more than one type of resource. e.g. subject : Reference(Patient|Group|Device|..).
 In these cases, multiple different resources may have the same logical identifier. In this case, the client can specify 
 a type modifier after the name of the parameter to be explicit about the intended type:
 </p>
 <pre>
- GET [base-url]/condition?subject:Patient=23
+ GET [base]/Condition?subject:Patient=23
 </pre>
 <p>
 This searches for any conditions where the subject refers to the patient resource with the 
@@ -353,7 +432,7 @@ the Patient resource includes a parameter <i>name</i> which
 searches on patient name, then the search
 </p>
 <pre>
- GET [base-url]/DiagnosticReport?subject.name=peter
+ GET [base]/DiagnosticReport?subject.name=peter
 </pre>
 <p>
 is a request to return all the lab reports that have a subject whose name includes "peter". Because 
@@ -361,7 +440,7 @@ the Diagnostic Report subject can be one of a set of different resources, it's p
 the search to a particular type:
 </p>
 <pre>
- GET [base-url]/DiagnosticReport?subject:Patient.name=peter
+ GET [base]/DiagnosticReport?subject:Patient.name=peter
 </pre>
 <p>
 Which is a request to return all the lab reports that have a subject which is a patient, whose name includes "peter". 
@@ -381,12 +460,23 @@ the type explicitly using the syntax in the second example above).
 
 <a name="composite" />
 <a name="combining" />
-<h3>Composite Search Parameters</h3>
+<h4>Composite Search Parameters</h4>
 <p>
 The result of the search operation is the intersection of the resources that match the criteria specified by each 
 individual search parameter. If a parameter repeats, such as /patient?language=FR&amp;language=NL, then 
-this matches a patient who speaks both languages. If, instead, the search is to find patients that speak either 
-language, then this is a single parameter with multiple values, separated by a ',': "/patient?language=FR,NL". 
+this matches a patient who speaks both languages. This is known as an AND query parameter, since the 
+server is expected to respond only with results which match both values.
+</p>
+<p>
+If, instead, the search is to find patients that speak either 
+language, then this is a single parameter with multiple values, separated by a ','. 
+For example: "/patient?language=FR,NL". This is known as an OR query parameter, 
+since the server is expected to respond with results which match either value.
+</p>
+<p>
+AND parameters and OR parameters may also be combined, for example: 
+"/patient?language=FR,NL&amp;language=EN" would refer to any patient who speaks 
+English as well as either French or Dutch.
 </p>
 <p>
 This allows for simple combinations of and/or values, but doesn't allow a search based on 
@@ -416,7 +506,7 @@ Other modifier is :text on token - use "~"? or ""?
 </p>
 
 <a name="escaping" />
-<h3>Escaping Search Parameters</h3>
+<h4>Escaping Search Parameters</h4>
 <p>
 In the rules above, special rules are defined for the characters "$", ",", and "|". 
 As a consequence, if these characters appear in an actual parameter value,
@@ -430,7 +520,7 @@ and the parameter value "param=xx\\xx" means a literal value of 'xx\xx'.
 
 
 <a name="text" />
-<h3>Text Search Parameters</h3>
+<h4>Text Search Parameters</h4>
 <p>
 There are two special text search parameters, _text and _content, which search 
 on the narrative of the resource, and the entire content of the resource respectively. 
@@ -441,7 +531,7 @@ multiple words with thesaurus and proximity considerations, and logical operatio
 such as AND, OR etc. For example:
 </p>
 <pre>
- GET [base-url]/Condition?_text=(bone OR liver) and metastases
+ GET [base]/Condition?_text=(bone OR liver) and metastases
 </pre>
 <p>
 This searches for all Condition resources with the word "metastases" and either 
@@ -460,61 +550,57 @@ is welcome.
 </p>
 </blockquote>
 
-<a name="tag" />
-<a name="tags" />
-<a name="profile" />
-<h3>Selecting resources by tag, profile or security label</h3>
+<a name="filter"> </a>
+<a name="_filter"> </a>
+<h4>Advanced filtering</h4>
 
 <p>
-Resources may have <a href="extras.html#tag">tags</a> affixed to them: either general tags, profile tags or
-security labels. Search supports the _tag, _profile and _security parameters to search for any tagged resource
-by the term (URI) within the specific tag scheme. For example:
+While the search mechanism dscribed above is flexible, and easy to implement
+for simple cases, but is limited in it's ability to express combination 
+queries. To complement this mechanism, a specific search expression 
+parameter can also be used, named "_filter". 
+</p>
+<p>
+For example, this is a moderately simple search: find all the 
+observations for patient with a name including "peter" that have a LOINC code 1234-5:
 </p>
 <pre>
- GET [base-url]/Condition?_tag=http://acme.org/fhir/tags/needs-review
+GET [base]/Observation?name=http://loinc.org|1234-5&amp;subject.name=peter
 </pre>
 <p>
-This searches for all Condition resources with a tag "http://acme.org/fhir/tags/needs-review" in the
-general tag scheme "http://hl7.org/fhir/tag". In the same manner:</p>
+Using the _filter parameter, the search would be expressed like this:
+</p>
 <pre>
- GET [base-url]/DiagnosticReport?_profile=http://hl7.org/fhir/profile/lipid
- GET [base-url]/DiagnosticReport?_profile=http://localhost/profile/lipid
+GET [base]/Observation?filter=name eq http://loinc.org|1234-5 and subject.name co "peter"
 </pre>
 <p>
-restricts the search to only DiagnosticReport resources that are tagged that they conform to a particular profile.
-The reference to localhost refers to a local profile with the given logical id ("lipid") in this case.
-</p>
-<p>All three tag search parameter may have the modifiers ":partial" and ":text", which mean 
-to only match on the left side of the target tag term, or to search the label part of the tag respectively.
-</p>
-<p>
-Note that when a resource is submitted to a server as a create or an update, the server is 
-free to determine which profiles a resource conforms to, and add additional profile tags 
-as appropriate so that resources can be found by this operation.
+The _filter parameter is described in detail on the <a href="search_filter.html">"_Filter Parameter" page</a>.
 </p>
 
 <a name="return"> </a>
-<h2>Managing Returned Resources</h2>
+<h3>Managing Returned Resources</h3>
 
-<h3>Relevance</h3>
+<h4>Relevance</h4>
 <p>
 Where a search specifies a non-deterministic sort, the search algorithm
 may generate some kind of ranking score to indicate which resources meet
 the specified criteria better than others. The server can return this 
-score using the OpenSearch Relevance extension:
+score in <a href="bundle-extensions.html#Bundle.entry.score">entry.score</a>:
 </p>
-<pre class="spec">  <span style="float: right"><a title="Documentation for this format" href="formats.html"><img src="help.png" alt="doco"/></a></span>
-  &lt;entry&gt;<span style="color:Gray;">&lt;!-- Zero+ --&gt;</span>
-    &lt;os:score xmlns:os="http://a9.com/-/opensearch/extensions/relevance/1.0/"&gt;[score]&lt;/os:score&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>0..1</b></span><span style="color: Gray"> --&gt;</span>
-    &lt;content type="text/xml"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span><span style="color: Gray"> --&gt;</span>
+<pre class="xml">
+  &lt;entry&gt;
+    &lt;score value=&quot;.45&quot;/&gt;
+    &lt;Patient&gt;
+      ... patient data ...
+    &lt;/Patient&gt;
   &lt;/entry&gt;
 </pre>
 <p>
-[score] is a decimal number with a value between (and including) 0 and 1. 
+The score is a decimal number with a value between (and including) 0 and 1. 
 </p>
 
 <a name="sort" />
-<h3>Sorting</h3>
+<h4>Sorting</h4>
 <p>
 The client can indicate which order to return the results in 
 using the parameter "_sort", which can have a value of one of the search parameters. 
@@ -541,7 +627,7 @@ when ordering the returned resources. </li>
 </ul>
 
 
-<h3>Page Count</h3>
+<h4>Page Count</h4>
 
 <p>
 In order to keep the load on clients, servers and the network 
@@ -570,7 +656,7 @@ is proceeding.
 </p>
 
 <a name="include" />
-<h3>Including other resources in result (_include)</h3>
+<h4>Including other resources in result (_include)</h4>
 <p>
 Clients may request that the engine return additional resources related to 
 the search results, in order to reduce the overall network query time. 
@@ -585,28 +671,31 @@ _include parameters.
 Each _include parameter specifies a path to a url (usually a resource reference):
 </p>
 <pre>
- GET [base-url]/MedicationDispense?_include=MedicationDispense.authorizingPrescription
+ GET [base]/MedicationDispense?_include=MedicationDispense.authorizingPrescription
     &amp;_include=MedicationPrescription.prescriber&amp;criteria...
 </pre>
 <p>
 For each returned resource, the server collects the elements described by the path, 
-and any resources they point to that the server also holds are added to the results.
-This search returns all the <a href="medicationprescription.html">Medication 
+and any resources they point to that the server also holds are added to the results,
+with the <a href="bundle-definitions.html#Bundle.entry.status">entry.status</a>
+set to "include" (in some searches, it is not obvious which resources are 
+matches, and which are includes). 
+This example search returns all the <a href="medicationprescription.html">Medication 
 Prescription</a> resources and their <a href="practitioner.html">prescribing Practitioner</a> Resources
 for the matching <a href="medicationdispense.html">Medication Dispense</a> resources.
 </p>
 <h4>Include Paths</h4>
 <p>
 An include path begins at the root of a FHIR resource and must include exactly one property of 
-type <a href="references.html#Identification">ResourceReference</a> or <a href="datatypes.html#uri">uri</a>, 
+type <a href="references.html#Identification">Reference</a> or <a href="datatypes.html#uri">uri</a>, 
 which must appear in the terminal position. That means that an 
 include path cannot "cross the boundary" from one resource to another.  So for example, 
 `CarePlan.activity.simple.performer` is a valid include path, because it begins at the 
 root of the CarePlan resource and ends with a reference to another resource 
 (Practitioner|Organization|RelatedPerson|Patient). On the other hand, 
 `CarePlan.patient.managingOrganization` is an invalid include path, because it 
-includes two ResourceReferences (patient and managingOrganization), and `CarePlan.goal` 
-is an invalid include path because it does not end with a ResourceReference or a URI.
+includes two References (patient and managingOrganization), and `CarePlan.goal` 
+is an invalid include path because it does not end with a Reference or a URI.
 </p>
 <p>
 When looking for the references indicated by an include path, all occurrences of 
@@ -638,7 +727,7 @@ _include parameter
 <h4>External References</h4>
 <p>
 If the _include path selects a reference that refers to a resource on another server,
-the server can element to include that resource in the search results for the convenience
+the server can elect to include that resource in the search results for the convenience
 of the client. 
 </p>
 <p>
@@ -675,13 +764,13 @@ pages.  This allows both sender and receiver to avoid caching results of other p
 </p>
 
 <a name="summary"> </a>
-<h3>Summary</h3>
+<h4>Summary</h4>
 <p>
 The client can request the server to return a summary portion of the resources
 only using the parameter "_summary":
 </p>
 <pre>
-   GET [base-url]/ValueSet?_summary=true
+   GET [base]/ValueSet?_summary=true
 </pre>
 <p>
 The <i>_summary</i> parameter requests the server to return only the elements marked 
@@ -698,7 +787,7 @@ advance.
 </p>
 
 <a name="conformance" />
-<h2>Server Conformance</h2>
+<h3>Server Conformance</h3>
 <p>
 In order to allow the client to be confident about what search parameters 
 were used as a criteria by the server, the server SHALL return the parameters 
@@ -713,7 +802,10 @@ In the case of a RESTful search, these parameters are encoded in the
 self link in the atom feed that is returned:
 </p>
 <pre class="xml">
-  &lt;link rel="self" href="http://example.org/Patient?name=peter"/&gt;
+  &lt;link&gt;
+    &lt;relation value="self"/&gt; 
+    &lt;url value="http://example.org/Patient?name=peter"/&gt;
+  &lt;/link&gt;
 </pre>
 <p>
 In other respects, servers have considerable discretion with regards 
@@ -731,7 +823,7 @@ to supporting search:
 
 <hr/>
 <a name="advanced"> </a>
-<h2>Advanced Search/Query</h2>
+<h3>Advanced Search/Query</h3>
 <p>
 The search framework described above is a useful framework 
 for providing a simple search based on indexed criteria, 
@@ -744,7 +836,7 @@ More advanced search/query operations are specified by the
 _query parameter:
 </p>
 <pre>
-   GET [base-url]/Patient?_query=name&amp;parameters...
+   GET [base]/Patient?_query=name&amp;parameters...
 </pre>
 <p>
 The _query parameter names a custom search profile that
@@ -760,7 +852,7 @@ refuse to process a search request if they do not recognize
 the _query parameter value.
 </p>
 
-<h2>Executing Search / Query</h2>
+<h3>Executing Search / Query</h3>
 <p>
 FHIR defines 3 different ways in which a search through a repository of 
 resources can be initiated:
@@ -779,7 +871,7 @@ implemented using the <i>Query</i> Resource.
 </p>
 
 <a name="currency"> </a>
-<h2>Search/Query Result Currency</h2>
+<h3>Search/Query Result Currency</h3>
 
 <p>
 The results of a search/query operation are only guaranteed to be current

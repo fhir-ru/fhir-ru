@@ -1,7 +1,7 @@
 package org.hl7.fhir.definitions.parsers;
 
 /*
- Copyright (c) 2011-2014, HL7, Inc
+ Copyright (c) 2011+, HL7, Inc
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, 
@@ -39,6 +39,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import javax.print.Doc;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -49,6 +50,8 @@ import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
+import org.hl7.fhir.definitions.model.ConformancePackage;
+import org.hl7.fhir.definitions.model.ConformancePackage.ConformancePackageSourceType;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Compartment;
@@ -63,7 +66,6 @@ import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
-import org.hl7.fhir.definitions.model.RegisteredProfile.ProfileInputType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.parsers.converters.BindingConverter;
@@ -71,10 +73,20 @@ import org.hl7.fhir.definitions.parsers.converters.CompositeTypeConverter;
 import org.hl7.fhir.definitions.parsers.converters.ConstrainedTypeConverter;
 import org.hl7.fhir.definitions.parsers.converters.EventConverter;
 import org.hl7.fhir.definitions.parsers.converters.PrimitiveConverter;
+import org.hl7.fhir.instance.formats.FormatUtilities;
 import org.hl7.fhir.instance.formats.JsonParser;
+import org.hl7.fhir.instance.formats.ResourceOrFeed;
 import org.hl7.fhir.instance.formats.XmlParser;
+import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.instance.model.Bundle.BundleType;
+import org.hl7.fhir.instance.model.Composition;
+import org.hl7.fhir.instance.model.DomainResource;
+import org.hl7.fhir.instance.model.ExtensionDefinition;
 import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ValueSet;
+import org.hl7.fhir.instance.utils.WorkerContext;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.IniFile;
@@ -87,7 +99,6 @@ import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.xml.sax.Parser;
 
 /**
  * This class parses the master source for FHIR into a single definitions object
@@ -110,11 +121,17 @@ public class SourceParser {
 	public String dtDir;
 	private String rootDir;
 	private BindingNameRegistry registry;
+	private String version;
+	private WorkerContext context; 
+	private Calendar genDate;
 
-	public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication) {
+	public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication, String version, WorkerContext context, Calendar genDate) {
 		this.logger = logger;
 		this.registry = new BindingNameRegistry(root, forPublication);
 		this.definitions = definitions;
+		this.version = version;
+		this.context = context;
+		this.genDate = genDate;
 
 		char sl = File.separatorChar;
 		srcDir = root + sl + "source" + sl;
@@ -171,7 +188,7 @@ public class SourceParser {
 		return sorted;
 	}
 	
-	public void parse(Calendar genDate, String version) throws Exception {
+	public void parse(Calendar genDate) throws Exception {
 		logger.log("Loading", LogMessageType.Process);
 
 		eCoreParseResults = DefinitionsImpl.build(genDate.getTime(), version);
@@ -212,40 +229,26 @@ public class SourceParser {
 		
 		eCoreParseResults.getType().addAll( sortTypes(allFhirComposites) );
 		
+		// basic infrastructure
+    for (String n : ini.getPropertyNames("resource-infrastructure"))
+      definitions.getBaseResources().put(ini.getStringProperty("resource-infrastructure", n), loadResource(n, null, true));
+		
+    logger.log("Load Resources", LogMessageType.Process);
 		for (String n : ini.getPropertyNames("resources"))
 			loadResource(n, definitions.getResources(), false);
-		
-		ResourceDefn baseResource = loadResource("resource", null, false);
-		baseResource.setAbstract(true);
-		definitions.setBaseResource(baseResource);
 		
 		loadCompartments();
 		loadStatusCodes();
 		
-		org.hl7.fhir.definitions.ecore.fhir.ResourceDefn eCoreBaseResource = CompositeTypeConverter.buildResourceFromFhirModel(baseResource, null);
-		eCoreBaseResource.getElement().add(CompositeTypeConverter.buildInternalIdElement());		
-		eCoreParseResults.getType().add( eCoreBaseResource );
+		//eCoreBaseResource.getElement().add(CompositeTypeConverter.buildInternalIdElement());		
+		eCoreParseResults.getType().addAll(sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions.getBaseResources().values() )));
 		eCoreParseResults.getType().addAll(sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions.getResources().values() )));
-		eCoreParseResults.getType().add(CompositeTypeConverter.buildBinaryResourceDefn());
+		
+	//	eCoreParseResults.getType().add(CompositeTypeConverter.buildBinaryResourceDefn());
 		
 		for (String n : ini.getPropertyNames("svg"))
 		  definitions.getDiagrams().put(n, ini.getStringProperty("svg", n));
 		
-		if (ini.getPropertyNames("future-resources") != null)
-		  for (String n : ini.getPropertyNames("future-resources")) {
-		    DefinedCode cd = new DefinedCode(ini.getStringProperty(
-		        "future-resources", n), "Yet to be defined", n);
-		    definitions.getKnownResources().put(n, cd);
-
-		    ResourceDefn futureResource = new ResourceDefn();
-		    futureResource.setName(cd.getCode());
-		    futureResource.setDefinition("Future resource " + cd.getCode()
-		        + ". As yet undefined.");
-		    futureResource.setForFutureUse(true);
-		    definitions.getFutureResources().put(cd.getCode(), futureResource);
-		  }
-
-		eCoreParseResults.getType().addAll(CompositeTypeConverter.buildResourcesFromFhirModel(definitions.getFutureResources().values() ));
 		eCoreParseResults.getEvent().addAll(EventConverter.buildEventsFromFhirModel(definitions.getEvents().values()));
 	
 		// As a second pass, resolve typerefs to the types
@@ -260,28 +263,17 @@ public class SourceParser {
 		  for (String n : pn) {
 		    loadValueSet(n);
 		  }
-		for (String n : ini.getPropertyNames("profiles")) {
-			loadProfile(n, definitions.getProfiles());
+		for (String n : ini.getPropertyNames("profiles")) { // todo-profile: rename this
+			loadConformancePackages(n, definitions.getConformancePackages());
 		}
 		
 		for (ResourceDefn r : definitions.getResources().values()) {
-		  for (RegisteredProfile p : r.getProfiles()) {
-		    if (p.getType() == ProfileInputType.Spreadsheet) {
-  		    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(p.getFilepath()), p.getName(), definitions, srcDir, logger, registry);
-	  	    sparser.setFolder(Utilities.getDirectoryForFile(p.getFilepath()));
-		      p.setProfile(sparser.parseProfile(definitions));
-		    } else if (p.getType() == ProfileInputType.Profile) {
-		      XmlParser prsr = new XmlParser();
-		      Profile profile = (Profile) prsr.parse(new CSFileInputStream(p.getFilepath()));
-		      p.setProfile(ProfileGenerator.wrapProfile(profile));
-		    } else
-		      throw new Exception("Unimplemented profile parser type "+p.getType());
-		    p.getProfile().forceMetadata("id", p.getDestFilenameNoExt());
-		  }
+		  for (ConformancePackage p : r.getConformancePackages()) 
+		    loadConformancePackage(p);
 		}
 	}
 
-	
+
   private void loadMappingSpaces() throws Exception {
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -301,12 +293,11 @@ public class SourceParser {
     } catch (Exception e) {
       throw new Exception("Error processing mappingSpaces.xml: "+e.getMessage(), e);
     }
-    
   }
 
 
   private void loadStatusCodes() throws FileNotFoundException, Exception {
-    XLSXmlParser xml = new XLSXmlParser(new CSFileInputStream(srcDir+"status-codes.xml"), "compartments.xml");
+    XLSXmlParser xml = new XLSXmlParser(new CSFileInputStream(srcDir+"status-codes.xml"), "Status Codes");
     Sheet sheet = xml.getSheets().get("Status Codes");
     for (int row = 0; row < sheet.rows.size(); row++) {
       String path = sheet.getColumn(row, "Path");
@@ -351,7 +342,8 @@ public class SourceParser {
   private void loadValueSet(String n) throws FileNotFoundException, Exception {
     XmlParser xml = new XmlParser();
     ValueSet vs = (ValueSet) xml.parse(new CSFileInputStream(srcDir+ini.getStringProperty("valuesets", n).replace('\\', File.separatorChar)));
-    vs.setIdentifierSimple("http://hl7.org/fhir/vs/"+n);
+    vs.setIdentifier("http://hl7.org/fhir/vs/"+n);
+    vs.setId(FormatUtilities.makeId(n));
     definitions.getExtraValuesets().put(n, vs);
   }
 
@@ -369,30 +361,64 @@ public class SourceParser {
 	}
 	
 	
-	private void loadProfile(String n, Map<String, ProfileDefn> profiles)
-			throws Exception {
+	private void loadConformancePackages(String n, Map<String, ConformancePackage> packs) throws Exception {
 	  File spreadsheet = new CSFile(rootDir+ ini.getStringProperty("profiles", n));
 	  if (TextFile.fileToString(spreadsheet.getAbsolutePath()).contains("urn:schemas-microsoft-com:office:spreadsheet")) {
-	    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry);
+	    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, false);
 	    try {
-	      ProfileDefn profile = sparser.parseProfile(definitions);
-	      definitions.getProfiles().put(n, profile);
+	      ConformancePackage pack = new ConformancePackage();
+	      pack.setName(n);
+	      pack.setTitle(n);
+	      pack.setSource(spreadsheet.getAbsolutePath());
+	      pack.setSourceType(ConformancePackageSourceType.Spreadsheet);
+        packs.put(n, pack);
+	      sparser.parseConformancePackage(pack, definitions);
 	    } catch (Exception e) {
 	      throw new Exception("Error Parsing Profile: '"+n+"': "+e.getMessage(), e);
 	    }
 	  } else {
-	    ProfileDefn profile = new ProfileDefn();
-      try {
-  	    profile.setSource((Profile) new XmlParser().parse(new FileInputStream(spreadsheet)));
-  	    profile.addMetadata("id", n);
-        definitions.getProfiles().put(n, profile);
-      } catch (Exception e) {
-        throw new Exception("Error Parsing Profile: '"+n+"': "+e.getMessage(), e);
-      }
+	    ConformancePackage pack = new ConformancePackage();
+	    pack.setName(n);
+	    parseConformanceDocument(pack, n, spreadsheet);
+      packs.put(n, pack);
 	  }
-	    
 	}
 
+
+  private void parseConformanceDocument(ConformancePackage pack, String n, File file) throws Exception {
+    try {
+      Resource rf = new XmlParser().parse(new CSFileInputStream(file));
+      if (!(rf instanceof Bundle))
+        throw new Exception("Error parsing Conformance package: neither a spreadsheet nor a bundle");
+      Bundle b = (Bundle) rf;
+      if (b.getType() != BundleType.DOCUMENT)
+        throw new Exception("Error parsing Conformance package: neither a spreadsheet nor a bundle that is a document");
+      for (BundleEntryComponent ae : ((Bundle) rf).getEntry()) {
+        if (ae.getResource() instanceof Composition)
+          pack.loadFromComposition((Composition) ae.getResource(), file.getAbsolutePath());
+        else if (ae.getResource() instanceof Profile)
+          pack.getProfiles().add(new ProfileDefn((Profile) ae.getResource()));
+        else if (ae.getResource() instanceof ExtensionDefinition) {
+          ExtensionDefinition ed = (ExtensionDefinition) ae.getResource();
+          context.seeExtensionDefinition(ed);
+          pack.getExtensions().add(ed);
+        }
+      }
+    } catch (Exception e) {
+      throw new Exception("Error Parsing Conformance Package: '"+n+"': "+e.getMessage(), e);
+    }
+  }
+
+
+  private void loadConformancePackage(ConformancePackage ap) throws FileNotFoundException, IOException, Exception {
+    if (ap.getSourceType() == ConformancePackageSourceType.Spreadsheet) {
+      SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(ap.getSource()), ap.getName(), definitions, srcDir, logger, registry, version, context, genDate, false);
+      sparser.setFolder(Utilities.getDirectoryForFile(ap.getSource()));
+      sparser.parseConformancePackage(ap, definitions);
+    } else // if (ap.getSourceType() == ConformancePackageSourceType.Bundle) {
+      parseConformanceDocument(ap, ap.getName(), new File(ap.getSource()));
+  }
+	
 	private void loadGlobalConceptDomains() throws Exception {
 		logger.log("Load Concept Domains", LogMessageType.Process);
 
@@ -432,6 +458,8 @@ public class SourceParser {
 		      cd.setReferredValueSet((ValueSet) p.parse(input));
 		    } else
 		      throw new Exception("Unable to find source for "+cd.getReference()+" ("+Utilities.appendSlash(termDir)+cd.getReference()+".xml/json)");
+		    if (cd.getReferredValueSet().getId() == null)
+		      cd.getReferredValueSet().setId(FormatUtilities.makeId(cd.getBinding().name())); 
 		  }
 		}
 	}
@@ -480,14 +508,14 @@ public class SourceParser {
 
 	private String loadCompositeType(String n, Map<String, org.hl7.fhir.definitions.model.TypeDefn> map) throws Exception {
 		TypeParser tp = new TypeParser();
-		List<TypeRef> ts = tp.parse(n);
+		List<TypeRef> ts = tp.parse(n, false, null);
 		definitions.getKnownTypes().addAll(ts);
 
 		try {
 		  TypeRef t = ts.get(0);
 		  File csv = new CSFile(dtDir + t.getName().toLowerCase() + ".xml");
 		  if (csv.exists()) {
-		    SpreadsheetParser p = new SpreadsheetParser(new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, registry);
+		    SpreadsheetParser p = new SpreadsheetParser(new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, registry, version, context, genDate, false);
 		    org.hl7.fhir.definitions.model.TypeDefn el = p.parseCompositeType();
 		    map.put(t.getName(), el);
 		    el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
@@ -527,14 +555,12 @@ public class SourceParser {
 		}
 	}
 
-	private ResourceDefn loadResource(String n, Map<String, ResourceDefn> map, boolean sandbox) throws Exception {
-		String src = sandbox ? sndBoxDir : srcDir;
-		File spreadsheet = new CSFile((sandbox ? sndBoxDir : srcDir) + n + File.separatorChar + n + "-spreadsheet.xml");
-		if (!spreadsheet.exists())
-			spreadsheet = new CSFile((sandbox ? sndBoxDir : srcDir) + n + File.separatorChar + n + "-def.xml");
+	private ResourceDefn loadResource(String n, Map<String, ResourceDefn> map, boolean isAbstract) throws Exception {
+    String folder = n;
+		File spreadsheet = new CSFile((srcDir) + folder + File.separatorChar + n + "-spreadsheet.xml");
 
 		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(
-				spreadsheet), spreadsheet.getName(), definitions, src, logger, registry);
+				spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, isAbstract);
 		ResourceDefn root;
 		try {
 		  root = sparser.parseResource();
@@ -542,12 +568,11 @@ public class SourceParser {
 		  throw new Exception("Error Parsing Resource "+n+": "+e.getMessage(), e);
 		}
 
-		root.setSandbox(sandbox);
 		for (EventDefn e : sparser.getEvents())
 			processEvent(e, root.getRoot());
 
 		// EK: Commented this out, seems double with next statement, since
-		// loadResource()
+		// loadReference()
 		// is always called with definitions.getResources in its map argument.
 		// definitions.getResources().put(root.getName(), root);
 		if (map != null) {
@@ -601,7 +626,7 @@ public class SourceParser {
 
 		for (String n : ini.getPropertyNames("types"))
 			if (ini.getStringProperty("types", n).equals("")) {
-				TypeRef t = new TypeParser().parse(n).get(0);
+				TypeRef t = new TypeParser().parse(n, false, null).get(0);
 				checkFile("type definition", dtDir, t.getName().toLowerCase() + ".xml", errors, "all");
 			}
     for (String n : ini.getPropertyNames("structures"))
