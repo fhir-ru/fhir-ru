@@ -43,15 +43,15 @@ documentreference/documentreference-spreadsheet.xml
 + documents.html
 + downloads.html
 - dstu.html
-ehr-fm.html
++ ehr-fm.html
 encounter/encounter-spreadsheet.xml
-extensibility-examples.html
++ extensibility-examples.html
 extensibility.html
 familyhistory/familyhistory-spreadsheet.xml
-footer.html
-footer1.html
-footer2.html
-footer3.html
++ footer.html
++ footer1.html
++ footer2.html
++ footer3.html
 formats.html
 group/group-spreadsheet.xml
 header.html
