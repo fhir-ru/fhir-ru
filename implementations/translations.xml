@@ -189,11 +189,20 @@ NOTE: while translations on Resources are possible they should be used for rende
     <item id="Eligibility">
         <translation lang="en">Eligibility</translation>
     </item>
+    <item id="EligibilityResponse">
+        <translation lang="en">EligibilityResponse</translation>
+    </item>
     <item id="Encounter">
         <translation lang="en">Encounter</translation>
         <translation lang="zh">就诊</translation>
         <translation lang="es">Encuentro</translation>
         <translation lang="fr">Venue</translation>
+    </item>
+    <item id="Enrollment">
+        <translation lang="en">Enrollment</translation>
+    </item>
+    <item id="EnrollmentResponse">
+        <translation lang="en">EnrollmentResponse</translation>
     </item>
     <item id="ExplanationOfBenefit">
         <translation lang="en">ExplanationOfBenefit</translation>
@@ -380,6 +389,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Paciente</translation>
         <translation lang="fr">Patient</translation>
     </item>
+     <item id="PendedRequest">
+        <translation lang="en">PendedRequest</translation>
+    </item>
     <item id="Picture">
         <translation lang="en">Picture</translation>
         <translation lang="zh">图片</translation>
@@ -452,11 +464,17 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Remesa</translation>
         <translation lang="fr">Remise</translation>
     </item>
+    <item id="Reversal">
+        <translation lang="en">Reversal</translation>
+    </item>
     <item id="RiskAssessment">
         <translation lang="en">RiskAssessment</translation>
     </item>
     <item id="AdverseReactionRisk">
         <translation lang="en">AdverseReactionRisk</translation>
+    </item>
+    <item id="SearchParameter">
+        <translation lang="en">SearchParameter</translation>
     </item>
     <item id="SecurityEvent">
         <translation lang="en">SecurityEvent</translation>
@@ -494,6 +512,12 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Especimen</translation>
         <translation lang="fr">Spécimen</translation>
     </item>
+    <item id="StatusRequest">
+        <translation lang="en">StatusRequest</translation>
+    </item>
+    <item id="StatusResponse">
+        <translation lang="en">StatusResponse</translation>
+    </item>
     <item id="Study">
         <translation lang="en">Study</translation>
         <translation lang="zh">检查</translation>
@@ -519,7 +543,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="en">User</translation>
         <translation lang="zh">用户</translation>
         <translation lang="es">Usuario</translation>
-        <translation lang="fr">Utilsateur</translation>
+        <translation lang="fr">Utilisateur</translation>
     </item>
     <item id="ValueSet">
         <translation lang="en">ValueSet</translation>

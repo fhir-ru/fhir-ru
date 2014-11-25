@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Generated on Tue, Nov 18, 2014 14:45+1100 for FHIR v0.3.0
+// Generated on Fri, Nov 21, 2014 17:07+1100 for FHIR v0.3.0
 
 public enum ResourceType {
     Condition,
@@ -61,6 +61,7 @@ public enum ResourceType {
     List,
     DeviceUseStatement,
     OperationDefinition,
+    SearchParameter,
     NutritionOrder,
     ClaimResponse,
     ReferralRequest,
@@ -78,7 +79,8 @@ public enum ResourceType {
     Specimen,
     Alert,
     Patient,
-    DiagnosticOrder;
+    DiagnosticOrder,
+    Parameters;
 
 
     public String getPath() {;
@@ -199,6 +201,8 @@ public enum ResourceType {
       return "deviceusestatement";
     case OperationDefinition:
       return "operationdefinition";
+    case SearchParameter:
+      return "searchparameter";
     case NutritionOrder:
       return "nutritionorder";
     case ClaimResponse:
@@ -235,6 +239,8 @@ public enum ResourceType {
       return "patient";
     case DiagnosticOrder:
       return "diagnosticorder";
+    case Parameters:
+      return "parameters";
     }
       return null;
   }

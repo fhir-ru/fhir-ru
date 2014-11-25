@@ -87,6 +87,7 @@ import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
 import org.hl7.fhir.definitions.model.ConformancePackage;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
+import org.hl7.fhir.definitions.model.ConformancePackage.ConformancePackageSourceType;
 import org.hl7.fhir.definitions.model.Compartment;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
@@ -102,8 +103,8 @@ import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.SearchParameter;
-import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
+import org.hl7.fhir.definitions.model.SearchParameterDefn;
+import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.parsers.SourceParser;
@@ -591,7 +592,8 @@ public class Publisher implements URIResolver {
 
     page.log(" ...process profiles (resources)", LogMessageType.Process);
     for (ResourceDefn r : page.getDefinitions().getResources().values()) { 
-      r.setProfile(new ProfileGenerator(page.getDefinitions(), page.getWorkerContext()).generate(r, page.getGenDate()));
+      r.setConformancePack(makeConformancePack(r));
+      r.setProfile(new ProfileGenerator(page.getDefinitions(), page.getWorkerContext()).generate(r.getConformancePack(), r, page.getGenDate()));
       ResourceTableGenerator rtg = new ResourceTableGenerator(page.getFolders().dstDir, page, null, true);
       r.getProfile().getText().setDiv(new XhtmlNode(NodeType.Element, "div"));
       r.getProfile().getText().getDiv().getChildNodes().add(rtg.generate(r.getRoot()));
@@ -616,11 +618,11 @@ public class Publisher implements URIResolver {
     // we have profiles scoped by resources, and stand alone profiles
     for (ConformancePackage ap : page.getDefinitions().getConformancePackages().values())
       for (ProfileDefn p : ap.getProfiles())
-        processProfile(ap, p, ap.getName());
+        processProfile(ap, p, ap.getId());
     for (ResourceDefn r : page.getDefinitions().getResources().values())       
       for (ConformancePackage ap : r.getConformancePackages())      
         for (ProfileDefn p : ap.getProfiles())
-          processProfile(ap, p, ap.getName());
+          processProfile(ap, p, ap.getId());
 
     // now, validate the profiles
     for (ConformancePackage ap : page.getDefinitions().getConformancePackages().values())
@@ -636,6 +638,12 @@ public class Publisher implements URIResolver {
           validateProfile((Profile) rd);
         }
       } 
+  }
+
+  private ConformancePackage makeConformancePack(ResourceDefn r) {
+    ConformancePackage result = new ConformancePackage();
+    result.setTitle("Base Conformance Package for "+r.getName());
+    return result;
   }
 
   private void validateProfile(Profile rd) throws Exception {
@@ -719,7 +727,7 @@ public class Publisher implements URIResolver {
         page.getProfiles().put(profile.getResource().getUrl(), profile.getResource());
       }
     if (!Utilities.noString(filename))
-      profile.getResource().setTag("filename", filename);
+      profile.getResource().setTag("filename", filename+".html");
   }
 
   public Profile getSnapShotForProfile(String base) throws Exception {
@@ -949,7 +957,7 @@ public class Publisher implements URIResolver {
         genConfOp(conf, res, TypeRestfulInteraction.CREATE);
         genConfOp(conf, res, TypeRestfulInteraction.SEARCHTYPE);
 
-        for (SearchParameter i : rd.getSearchParams().values()) {
+        for (SearchParameterDefn i : rd.getSearchParams().values()) {
           res.getSearchParam().add(makeSearchParam(conf, rn, i));
         }
       }
@@ -976,7 +984,7 @@ public class Publisher implements URIResolver {
     }
   }
 
-  private ConformanceRestResourceSearchParamComponent makeSearchParam(Conformance p, String rn, SearchParameter i) {
+  private ConformanceRestResourceSearchParamComponent makeSearchParam(Conformance p, String rn, SearchParameterDefn i) {
     ConformanceRestResourceSearchParamComponent result = new Conformance.ConformanceRestResourceSearchParamComponent();
     result.setName(i.getCode());
     result.setDefinition("http://hl7.org/fhir/Profile/" + rn+"#"+rn+"."+i.getCode());
@@ -2843,11 +2851,11 @@ public class Publisher implements URIResolver {
           insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList, "res-Design Notes", n + "-explanations.html"), st, n
               + "-explanations.html"), page.getFolders().dstDir + n + "-explanations.html");
       page.getEpub().registerFile(n + "-explanations.html", "Design Notes for " + resource.getName(), EPubManager.XHTML_TYPE);
-      src = TextFile.fileToString(page.getFolders().srcDir + "template-profiles.html");
+      src = TextFile.fileToString(page.getFolders().srcDir + "template-packages.html");
       TextFile.stringToFile(
-          insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList, "res-Profiles", n + "-profiles.html"), st, n + "-profiles.html"),
-          page.getFolders().dstDir + n + "-profiles.html");
-      page.getEpub().registerFile(n + "-profiles.html", "Profiles for " + resource.getName(), EPubManager.XHTML_TYPE);
+          insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src, mappings, mappingsList, "res-Profiles", n + "-packages.html"), st, n + "-packages.html"),
+          page.getFolders().dstDir + n + "-packages.html");
+      page.getEpub().registerFile(n + "-packages.html", "Profiles for " + resource.getName(), EPubManager.XHTML_TYPE);
     }
     if (!resource.getOperations().isEmpty()) {
       src = TextFile.fileToString(page.getFolders().srcDir + "template-operations.html");
@@ -3358,9 +3366,12 @@ public class Publisher implements URIResolver {
     for (ProfileDefn profile : pack.getProfiles())
       produceProfile(resourceName, pack, profile);
 
+    String intro = pack.getIntroduction() != null ? page.loadXmlNotesFromFile(pack.getIntroduction(), false, null, null) : null;
+    String notes = pack.getNotes() != null ? page.loadXmlNotesFromFile(pack.getNotes(), false, null, null) : null;
+
     String src = TextFile.fileToString(page.getFolders().srcDir + "template-conformance-pack.html");
-    src = page.processConformancePackageIncludes(pack, src);
-    page.getEpub().registerFile(pack.getId() + ".html", "Conformance Package " + pack.getName(), EPubManager.XHTML_TYPE);
+    src = page.processConformancePackageIncludes(pack, src, intro, notes);
+    page.getEpub().registerFile(pack.getId().toLowerCase() + ".html", "Conformance Package " + pack.getId(), EPubManager.XHTML_TYPE);
     TextFile.stringToFile(src, page.getFolders().dstDir + pack.getId() + ".html");
 
     for (Example ex : pack.getExamples()) {
@@ -3396,16 +3407,13 @@ public class Publisher implements URIResolver {
     tgen.close();
     String tx = TextFile.fileToString(tmp.getAbsolutePath());
 
-    String intro = profile.getIntroduction() != null ? page.loadXmlNotesFromFile(profile.getIntroduction(), false, null, null) : null;
-    String notes = profile.getNotes() != null ? page.loadXmlNotesFromFile(profile.getNotes(), false, null, null) : null;
-
     String src = TextFile.fileToString(page.getFolders().srcDir + "template-profile.html");
-    src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, tx, src, intro, notes, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
+    src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, tx, src, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
     page.getEpub().registerFile(title + ".html", "Profile " + profile.getResource().getName(), EPubManager.XHTML_TYPE);
     TextFile.stringToFile(src, page.getFolders().dstDir + title + ".html");
 
     src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-mappings.html");
-    src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, tx, src, intro, notes, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
+    src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, tx, src, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
     page.getEpub().registerFile(title + "-mappings.html", "Mappings for Profile " + profile.getResource().getName(), EPubManager.XHTML_TYPE);
     TextFile.stringToFile(src, page.getFolders().dstDir + title + "-mappings.html");
 
@@ -3415,7 +3423,7 @@ public class Publisher implements URIResolver {
 //    TextFile.stringToFile(src, page.getFolders().dstDir + title + "-examples.html");
 
     src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-definitions.html");
-    src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, tx, src, intro, notes, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
+    src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, tx, src, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
     page.getEpub().registerFile(title + "-definitions.html", "Definitions for Profile " + profile.getResource().getName(), EPubManager.XHTML_TYPE);
     TextFile.stringToFile(src, page.getFolders().dstDir + title + "-definitions.html");
 
@@ -3453,7 +3461,7 @@ public class Publisher implements URIResolver {
     ByteArrayOutputStream b = new ByteArrayOutputStream();
     xhtml.generate(xdoc, b, "Profile", profile.getTitle(), 0, true, title + ".profile.xml.html");
     String html = TextFile.fileToString(page.getFolders().srcDir + "template-profile-example-xml.html").replace("<%example%>", b.toString());
-    html = page.processProfileIncludes(title + ".profile.xml.html", profile.getId(), pack, profile, "", "", html, "", "", title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
+    html = page.processProfileIncludes(title + ".profile.xml.html", profile.getId(), pack, profile, "", "", html, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
     TextFile.stringToFile(html, page.getFolders().dstDir + title + ".profile.xml.html");
 
     page.getEpub().registerFile(title + ".profile.xml.html", "Profile", EPubManager.XHTML_TYPE);
@@ -3461,7 +3469,7 @@ public class Publisher implements URIResolver {
     String json = resource2Json(profile.getResource());
     json = "<div class=\"example\">\r\n<p>" + Utilities.escapeXml("Profile for " + profile.getResource().getDescription()) + "</p>\r\n<pre class=\"json\">\r\n" + Utilities.escapeXml(json)+ "\r\n</pre>\r\n</div>\r\n";
     html = TextFile.fileToString(page.getFolders().srcDir + "template-profile-example-json.html").replace("<%example%>", json);
-    html = page.processProfileIncludes(title + ".profile.json.html", profile.getId(), pack, profile, "", "", html, "", "", title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
+    html = page.processProfileIncludes(title + ".profile.json.html", profile.getId(), pack, profile, "", "", html, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
     TextFile.stringToFile(html, page.getFolders().dstDir + title + ".profile.json.html");
     //    page.getEpub().registerFile(n + ".json.html", description, EPubManager.XHTML_TYPE);
     page.getEpub().registerExternal(n + ".json.html");
@@ -3834,7 +3842,7 @@ public class Publisher implements URIResolver {
     }
     for (String rn : page.getDefinitions().sortedResourceNames()) {
       ResourceDefn r = page.getDefinitions().getResourceByName(rn);
-      for (SearchParameter sp : r.getSearchParams().values()) {
+      for (SearchParameterDefn sp : r.getSearchParams().values()) {
         if (!sp.isWorks() && !sp.getCode().equals("_id")) {
           //          page.log(
           //              "Search Parameter '" + rn + "." + sp.getCode() + "' had no found values in any example. Consider reviewing the path (" + sp.getXPath() + ")",
@@ -3979,7 +3987,7 @@ public class Publisher implements URIResolver {
 
   private void testSearchParameters(Element e) throws Exception {
     ResourceDefn r = page.getDefinitions().getResourceByName(e.getNodeName());
-    for (SearchParameter sp : r.getSearchParams().values()) {
+    for (SearchParameterDefn sp : r.getSearchParams().values()) {
 
       if (sp.getXPath() != null) {
         try {

@@ -60,8 +60,8 @@ import org.hl7.fhir.definitions.model.OperationParameter;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.SearchParameter;
-import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
+import org.hl7.fhir.definitions.model.SearchParameterDefn;
+import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.FormatUtilities;
@@ -346,9 +346,7 @@ public class SpreadsheetParser {
         if (name != null && !name.equals("") && !name.startsWith("!")) {
           ConformancePackage pack = new ConformancePackage();
           pack.setTitle(name);
-          pack.setDescription(sheet.getColumn(row, "Description"));
-          pack.setName(sheet.getColumn(row, "Filename"));
-          pack.setSource(checkFile(sheet, row, "Source", false, pack.getName())); // todo-profile
+          pack.setSource(checkFile(sheet, row, "Source", false, sheet.getColumn(row, "Filename"))); // todo-profile
           String type = sheet.getColumn(row, "Type");
           if ("bundle".equalsIgnoreCase(type))
             pack.setSourceType(ConformancePackageSourceType.Bundle);
@@ -358,7 +356,7 @@ public class SpreadsheetParser {
             throw new Exception("Unknown source type: "+type+" at "+getLocation(row));
           String example = checkFile(sheet, row, "Example", true, null); // todo-profile
           if (example != null)
-            pack.getExamples().add(new Example(example, Utilities.fileTitle(example), "General Example for "+pack.getName(), new File(example), ExampleType.XmlFile, false));
+            pack.getExamples().add(new Example(example, Utilities.fileTitle(example), "General Example for "+pack.getSource(), new File(example), ExampleType.XmlFile, false, isAbstract));
           defn.getConformancePackages().add(pack);
         }
       }
@@ -431,7 +429,7 @@ public class SpreadsheetParser {
           String d = sheet.getColumn(row, "Description");
           SearchType t = readSearchType(sheet.getColumn(row, "Type"), row);
           List<String> pn = new ArrayList<String>(); 
-          SearchParameter sp = null;
+          SearchParameterDefn sp = null;
           if (t == SearchType.composite) {
             String[] pl = sheet.getColumn(row, "Path").split("\\&");
             if (Utilities.noString(d)) 
@@ -449,7 +447,7 @@ public class SpreadsheetParser {
                   throw new Exception("Composite Search Param "+root2.getName()+"/"+n+"  refers to an unknown component "+p+" at "+ getLocation(row));
               }
               pn.add(p);
-              sp = new SearchParameter(n, d, t);
+              sp = new SearchParameterDefn(n, d, t);
               sp.getComposites().addAll(pn);
             }
           } else {
@@ -477,7 +475,7 @@ public class SpreadsheetParser {
             if (!forProfile && t == SearchType.reference && pn.size() == 0 && !sheet.hasColumn(row, "Target Types"))
               throw new Exception("Search Param "+root2.getName()+"/"+n+" of type reference has no path(s) "+ getLocation(row));
 
-            sp = new SearchParameter(n, d, t);
+            sp = new SearchParameterDefn(n, d, t);
             sp.getPaths().addAll(pn);
             if (!Utilities.noString(sheet.getColumn(row, "Target Types"))) {
               sp.setManualTypes(sheet.getColumn(row, "Target Types").split("\\,"));
@@ -675,6 +673,11 @@ public class SpreadsheetParser {
         ap.setTitle(ap.metadata("name"));
       if (!ap.hasMetadata("id"))
         throw new Exception("Error parsing "+ap.getId()+"/"+ap.getTitle()+" no 'id' found in metadata");
+      if (!ap.metadata("id").matches(FormatUtilities.ID_REGEX))
+        throw new Exception("Error parsing "+ap.getId()+"/"+ap.getTitle()+" 'id' is not a valid id");
+
+      if (!ap.metadata("id").equals(ap.metadata("id").toLowerCase()))
+        throw new Exception("Error parsing "+ap.getId()+"/"+ap.getTitle()+" 'id' must be all lowercase");
       
 	    this.profileExtensionBase = ap.metadata("extension.uri");
 
@@ -705,7 +708,7 @@ public class SpreadsheetParser {
 	    }
 
 	  } catch (Exception e) {
-	    throw new Exception("exception parsing pack "+ap.getName()+": "+e.getMessage(), e);
+	    throw new Exception("exception parsing pack "+ap.getSource()+": "+e.getMessage(), e);
 	  }
 	}
 
@@ -771,7 +774,7 @@ public class SpreadsheetParser {
 		}
 
     resource.getRoot().setProfileName(n);
-		ProfileDefn p = new ProfileDefn(ap.getName()+'-'+n, resource.getName(), resource);
+		ProfileDefn p = new ProfileDefn(ap.getId().toLowerCase()+'-'+n.toLowerCase(), resource.getRoot().getProfileName(), resource);
     return p;
   }
 
@@ -793,7 +796,7 @@ public class SpreadsheetParser {
 					if (Utilities.noString(pn)) {
 					  defn.getExamples().add(new Example(name, id, desc, file, 
 					      parseExampleType(type, row),
-					      parseBoolean(sheet.getColumn(row, "In Book"), row, false)));
+					      parseBoolean(sheet.getColumn(row, "In Book"), row, false), isAbstract));
 					} else {
 					  ConformancePackage ap = null;
 					  for (ConformancePackage r : defn.getConformancePackages()) {
@@ -802,7 +805,7 @@ public class SpreadsheetParser {
 					  }
 					  if (ap == null)
 					    throw new Exception("Example " + name + " profile '" + pn + "' not found parsing " + this.name);
-					  ap.getExamples().add(new Example(filename, id, desc, file, parseExampleType(type, row), parseBoolean(sheet.getColumn(row, "In Book"), row, false)));
+					  ap.getExamples().add(new Example(filename, id, desc, file, parseExampleType(type, row), parseBoolean(sheet.getColumn(row, "In Book"), row, false), isAbstract));
 					}
 				}
 			}
@@ -813,7 +816,7 @@ public class SpreadsheetParser {
 				throw new Exception("Example (file '" + file.getAbsolutePath()
 						+ "') not found parsing " + this.name);
 			defn.getExamples().add(
-					new Example("General", "example", "Example of " + title, file, ExampleType.XmlFile, true));
+					new Example("General", "example", "Example of " + title, file, ExampleType.XmlFile, true, isAbstract));
 		}		
 	}
 
@@ -1025,6 +1028,9 @@ public class SpreadsheetParser {
 		if (isProfile) {
       e.setFixed(processValue(sheet, row, "Value", e));
       e.setPattern(processValue(sheet, row, "Pattern", e));
+		} else {
+      e.setDefaultValue(processValue(sheet, row, "Default Value", e));
+      e.setMeaningWhenMissing(sheet.getColumn(row, "Missing Meaning"));
 		}
 		return e;
 	}

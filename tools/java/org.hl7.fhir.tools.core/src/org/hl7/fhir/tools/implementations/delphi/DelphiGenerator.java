@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -50,7 +51,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.SearchParameter;
+import org.hl7.fhir.definitions.model.SearchParameterDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.implementations.BaseGenerator;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
@@ -155,10 +156,20 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
     parserGap();
 
-    for (String s : definitions.getBaseResources().keySet()) {
-      ResourceDefn n = definitions.getBaseResources().get(s);
-      generate(n.getRoot(), n.getRoot().typeCode().equals("Any") ? "TFHIRBase" : "TFhir"+n.getRoot().typeCode(), true, ClassCategory.AbstractResource);
-//      genResource(n, "TFhir"+n.getName(), "TFhirResource", ClassCategory.AbstractResource);
+    Set<String> done = new HashSet<String>();
+    boolean alldone = false;
+    while (!alldone) {
+      alldone = true;
+      for (String s : definitions.getBaseResources().keySet()) {
+        ResourceDefn n = definitions.getBaseResources().get(s);
+        if (!done.contains(n.getName())) {
+          if (Utilities.noString(n.getRoot().typeCode()) || done.contains(n.getRoot().typeCode())) { 
+            generate(n.getRoot(), Utilities.noString(n.getRoot().typeCode()) ? "TFHIRBase" : "TFhir"+n.getRoot().typeCode(), true, ClassCategory.AbstractResource);
+            done.add(n.getName());
+          } else
+            alldone = false;
+        }
+      }
     }
 
     parserGap();
@@ -515,8 +526,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   }
 
   private void genTypeAbstract(ElementDefn root, String tn, String superClass, ClassCategory category) throws Exception {
-    boolean isBase = root.typeCode().equals("Any");
-    if (isBase)
+    boolean isBase = Utilities.noString(root.typeCode());
+    if (root.getName().equals("Resource"))
       generateResource();
 
     StringBuilder def = new StringBuilder();
@@ -579,9 +590,9 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append(defPub.toString());
     def.append("  end;\r\n");
     def.append("\r\n");
-    if (isBase) {
+    if (root.getName().equals("Resource"))
       def.append("  TFhirResourceClass = class of TFhirResource;\r\n");
-    }
+
     StringBuilder impl2 = new StringBuilder();
     impl2.append("{ "+tn+" }\r\n\r\n");
     impl2.append("constructor "+tn+".Create;\r\n");
@@ -868,7 +879,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       con7.append("  TARGETS_"+tn+" : Array["+tn+"] of TFhirResourceTypeSet = (");
 
       List<String> names = new ArrayList<String>();
-      Map<String, SearchParameter> params = new HashMap<String, SearchParameter>();
+      Map<String, SearchParameterDefn> params = new HashMap<String, SearchParameterDefn>();
       names.addAll(r.getSearchParams().keySet());
       params.putAll(r.getSearchParams());
       String pn = r.getRoot().typeCode();
@@ -883,7 +894,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       int l = names.size();
       int i = 0;
       for (String name : names) {
-        SearchParameter p = params.get(name);
+        SearchParameterDefn p = params.get(name);
         i++;
         String n = p.getCode().replace("$", "_");
         String d = Utilities.normaliseEolns(p.getDescription());
