@@ -115,6 +115,11 @@
     <columnName>11179 Mapping</columnName>
     <title>ISO 11179</title>
     <id>iso11179</id>
+    <preamble>
+     <p>
+      These mappings are included to indicate where properties of the data elements defined by the FHIR specification relate to similar fields in the ISO 11179 specification.
+     </p>
+    </preamble>
     <sort>13</sort>
   </space>
   <space>
@@ -144,6 +149,34 @@
     <title>Quality Improvement and Clinical Knowledge (QUICK)</title>
     <id>quick</id>
     <sort>17</sort>
+  </space>
+  <space>
+    <url>http://www.cdisc.org/define-xml</url>
+    <columnName>CDISC Define.xml 2.0 Mapping</columnName>
+    <title>CDISC Define XML 2.0 metadata standard</title>
+    <id>define.xml2.0</id>
+    <sort>18</sort>
+  </space>
+  <space>
+    <url>http://www.cdisc.org/define-xml</url>
+    <columnName>CDISC Define.xml 2.0 Mapping</columnName>
+    <title>CDISC Define XML 2.0 metadata standard</title>
+    <id>define.xml2.0</id>
+    <sort>18</sort>
+  </space>
+  <space>
+    <url>http://www.cda-adc.ca/en/services/cdanet/</url>
+    <columnName>CDAnet v4 Mapping</columnName>
+    <title>Canadian Dental Association eclaims standard</title>
+    <id>cdanetv4</id>
+    <sort>19</sort>
+  </space>
+  <space>
+    <url>http://www.pharmacists.ca/</url>
+    <columnName>CPhA3 (Pharmacy) Mapping</columnName>
+    <title>Canadian Pharmacy Associaiton eclaims standard</title>
+    <id>cpha3pharm</id>
+    <sort>20</sort>
   </space>
   
 </mappingSpaces>

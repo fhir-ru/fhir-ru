@@ -12,8 +12,10 @@
 <div class="col-9">
 
 <%resheader%>
-<h1>Ресурс <%title%> - Содержимое</h1>
+<h1>Resource <%title%> - Content</h1>
 <!-- <p class="status">Status: <%status%></p> -->
+
+<%wg%>
 
 <p> 
 <%definition%> 
@@ -25,40 +27,102 @@
 
 <a name="resource"></a>
 <h2>
-Содержимое ресурса
+Resource Content
 </h2>
 <a name="def"> </a>
 <a name="<%name%>"> </a>
 <a name="<%title%>"> </a>
 
-<div id="uml">
-<a name="uml"> </a>
-<p><b>UML-диаграмма</b></p>
- <div id="uml-inner">
- <%svg%>
- </div>
-</div>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-struc">Structure</a></li>
+    <li><a href="#tabs-uml">UML</a></li>
+    <li><a href="#tabs-xml">XML</a></li>
+    <li><a href="#tabs-json">JSON</a></li>
+    <li><a href="#tabs-all">All</a></li>
+  </ul>
+  <div id="tabs-struc">
 
 <div id="tbl">
-<a name="tbl"> </a>
-<p><b>Структура</b></p>
+<p><b>Structure</b></p>
  <div id="tbl-inner">
   <%resource-table%>
  </div>
 </div>
 
+  </div>
+  <div id="tabs-uml">
+  
+<div id="uml">
+<p><b>UML Diagram</b></p>
+ <div id="uml-inner">
+ <%svg%>
+ </div>
+</div>
+
+  </div>
+  <div id="tabs-xml">
+
 <div id="xml">
-<a name="xml"> </a>
-<p><b>XML-шаблон</b></p>
+<p><b>XML Template</b></p>
  <div id="xml-inner">
   <%xml%>
  </div>
 </div>
 
+  </div>
+  <div id="tabs-json">
 
-<p>Альтернативные определения: <a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a>, 
-Профиль ресурса (<a href="<%name%>.profile.xml.html">XML</a>, <a href="<%name%>.profile.json.html">JSON</a>), 
-<a href="<%name%>.questionnaire.html">Вопросник</a></p>
+<div id="json">
+<p><b>JSON Template</b></p>
+ <div id="xml-inner">
+  <p>todo</p>
+ </div>
+</div>
+
+  </div>
+  <div id="tabs-all">
+
+<div id="tbl">
+<a name="tbl"> </a>
+<p><b>Structure</b></p>
+ <div id="tbl-inner">
+  <%resource-table%>
+ </div>
+</div>
+
+ 
+<div id="uml">
+<a name="uml"> </a>
+<p><b>UML Diagram</b></p>
+ <div id="uml-inner">
+ <%svg%>
+ </div>
+</div>
+
+<div id="xml">
+<a name="xml"> </a>
+<p><b>XML Template</b></p>
+ <div id="xml-inner">
+  <%xml%>
+ </div>
+</div>
+
+<div id="json">
+<a name="json"> </a>
+<p><b>JSON Template</b></p>
+ <div id="xml-inner">
+  <p>to do</p>
+ </div>
+</div>
+  
+  </div>
+</div>
+  
+<p>&nbsp;</p>  
+<p>Alternate definitions: <a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a>, 
+Resource Profile (<a href="<%name%>.profile.xml.html">XML</a>, <a href="<%name%>.profile.json.html">JSON</a>), 
+<a href="<%name%>.questionnaire.html">Questionnaire</a></p>
 
 
 <a name="tx"> </a>
@@ -75,6 +139,38 @@
 </div>
 
 <%file newfooter%>
+
+
+
+<script src="external/jquery/jquery.js"> </script>
+<script src="jquery-ui.min.js"> </script>
+<script>
+try {
+  var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
+}
+catch(exception){ 
+  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
+    alert(exception);
+}
+
+if (!currentTabIndex)
+  currentTabIndex = '0';
+
+$( '#tabs' ).tabs({
+         active: currentTabIndex,
+         activate: function( event, ui ) {
+             var active = $('.selector').tabs('option', 'active');
+             currentTabIndex = ui.newTab.index();
+             try {
+               sessionStorage.setItem('fhir-resource-tab-index', currentTabIndex);
+             }
+             catch(exception){ 
+              if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
+                alert(exception);
+             }
+         }
+     });
+</script>
     
 </body>
 </html>

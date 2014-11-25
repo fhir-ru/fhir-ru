@@ -7,6 +7,7 @@
     <value value="http://ihe.net"/>
   </telecom>
   <description value="Example Connectathon Codes from http://ihexds.nist.gov:12080/xdsref/codes/codes.xml"/>
+  <copyright value="This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement"/>  
   <status value="draft"/>
   <define>
     <system value="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead"/>
@@ -194,22 +195,18 @@
   <compose>
     <include>
       <system value="http://snomed.info/sct"/>
-      <code value="394802001">
-        <!-- just to hook in the SNOMED CT display name, until build issues with SNOMED CT are resolved -->
-        <extension url="http://hl7.org/fhir/Profile/tools-extensions#display">
-          <valueString value="General Medicine"/>
-        </extension>
-      </code>
-      <code value="408478003">
-        <extension url="http://hl7.org/fhir/Profile/tools-extensions#display">
-          <valueString value="Critical Care Medicine"/>
-        </extension>
-      </code>
-      <code value="410001006">
-        <extension url="http://hl7.org/fhir/Profile/tools-extensions#display">
-          <valueString value="Military Medicine"/>
-        </extension>
-      </code>
+      <concept>
+        <code value="394802001"/>
+        <display value="General Medicine"/>
+      </concept>
+      <concept>
+        <code value="408478003"/>
+        <display value="Critical Care Medicine"/>
+      </concept>
+      <concept>
+        <code value="410001006"/>
+        <display value="Military Medicine"/>
+      </concept>
     </include>
   </compose>  
 </ValueSet>

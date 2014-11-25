@@ -20,14 +20,23 @@
     <value value="http://hl7.org/fhir"/>
   </telecom>
   <description value="Example value set for Condition/Diagnosis severity grading"/>
+  <copyright value="This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement"/>  
   <status value="draft"/>
   <compose>
     <include>
       <system value="http://snomed.info/sct"/>
-      <code value="399166001"/>
-      <code value="24484000"/>
-      <code value="6736007"/>
-      <code value="255604002"/>
+      <concept>
+        <code value="399166001"/>
+      </concept>
+      <concept>
+        <code value="24484000"/>
+      </concept>
+      <concept>
+        <code value="6736007"/>
+      </concept>
+      <concept>
+        <code value="255604002"/>
+      </concept>
     </include>
   </compose>
 </ValueSet>

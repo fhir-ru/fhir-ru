@@ -16,25 +16,25 @@
 <h2>Conformance</h2>
 
 <p>
-The contents of the resource and the formats used to represent it SHALL
+The contents of a resource and the formats used to represent it SHALL
 conform to the rules described in this specification, as defined in the 
 narrative of the specification, and as controlled by the conformance 
 properties defined below.
 </p>
 <p>
-Note: This spec uses the conformance verbs SHALL, SHOULD, and MAY as defined in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>.
+Note: This specification uses the conformance verbs SHALL, SHOULD, and MAY as defined in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>.
 </p>
 <p>
 Because of its general nature and wide applicability, the rules made in this specification are generally fairly loose.
 As a consequence (unlike RFC 2119), this specification allows that different applications may not be able to be interoperate 
 because of how they use optional features. To allow applications to manage this, FHIR provides 
-a conformance layer that implementers and  national/regional programs can use to provide a computable statement about 
+a <a href="profiling.html">conformance layer</a> that implementers and  national/regional programs can use to provide a computable statement about 
 how the resources and their exchange paradigms are used to solve particular use cases. 
 The conformance layer itself is implemented using the following resources:
 </p>
 <table class="grid">
  <tr> <td><a href="valueset.html">Value Set</a></td> <td>Defines a set of coded values (see "<a href="terminologies.html">Using Codes</a>" for more details)</td>  </tr>
- <tr> <td><a href="profile.html">Profile</a></td> <td>Makes rules about how a resource and it's data elements are used in a particular context. A profile references value sets for the coded elements in a resource</td>  </tr>
+ <tr> <td><a href="profile.html">Profile</a></td> <td>Makes rules about how a resource and its data elements are used in a particular context. A profile references value sets for the coded elements in a resource</td>  </tr>
  <tr> <td><a href="conformance.html">Conformance</a></td> <td>A statement of the kinds of resources and operations provided and/or consumed by an application. The conformance resource references profiles to describe specific use of resources by the application</td>  </tr>
 </table>
 <p>
@@ -58,12 +58,12 @@ These interact to place conformance requirements on implementations.
 <a name="cardinality"> </a>
 <h3>Cardinality</h3>
 <p>
-All elements defined in FHIR have a cardinality as part of their definition - a minimum number 
-of required appearances, and a maximum number. This number specifies the number of times
-the element may appear in any instance of the resource type. This specification
+All attributes defined in FHIR have a cardinality as part of their definition - a minimum number 
+of required appearances, and a maximum number. These numbers specify the number of times
+the attribute may appear in any instance of the resource type. This specification
 only defines the following cardinalities: 0..1, 0..*, 1..1, and 1..*. Profiles 
 that describe specific use cases may use other values for cardinality within the limits 
-of the cardinality defined by the resource. 
+of the cardinality defined by the base resource. 
 </p>
 <p>
 Note that when present, elements cannot be empty - they SHALL have either a value attribute, 
@@ -74,13 +74,13 @@ to ensure that the required data will be present.
 <p>
 In this specification, very few elements have a minimum cardinality of 1. 
 Resources are used in many contexts, often quite removed from their primary
-use case, and sometimes even basic information is sometimes very incomplete. For this reason,
+use case, and sometimes even basic information is quite incomplete. For this reason,
 the only elements that have a minimum cardinality of 1 are those where they
-are necessary to any understanding of the element that contains them. 
+are necessary to any understanding of the resource or element that contains them. 
 The minimum cardinalities should not be taken as a guide to what elements
 are expected to be present in any particular use of the resource, including their normal/primary usage purpose.
-This specification may publish additional profiles that define which elements are required in 
-which situation, or alternatively, such profiles might be published by jurisdictions, vendors, or projects.
+In some cases, this specification publish additional profiles that define which elements are required in 
+particular situations. Similar profiles are published by jurisdictions, vendors, or projects.
 </p>
 <p>
 For elements that have cardinality &gt; 1, the order in which they appear may have meaning.
@@ -100,7 +100,7 @@ rules about this selection process.
 <h3>Is-modifier</h3>
 <p>
 Is-Modifier is a boolean property that is assigned when an element is defined, either as part of 
-the base resource contents in this specification, or when profiles declare extensions. 
+the base resource contents in this specification, or when <a href="extensiondefinition.html">extensions are defined</a>. 
 An element is labeled "Is-Modifier = true" if the value it contains may change the 
 interpretation of the element that contains it (including if the element is the resource as a whole). Typical examples of 
 elements that are labeled "Is-Modifier" are elements such as "status", "active", "refuted", or "certainty". 
@@ -113,13 +113,13 @@ it is a modifier.
 A typical example of a modifier element is one that negates the element that contains it. For 
 instance, in the following element definition:
 </p>
-<pre class="spec">&lt;<a ok="true" title="Specific reactions to a substance." class="dict" ><b>AdverseReaction</b></a> xmlns="http://hl7.org/fhir"&gt;
+<pre class="spec">&lt;<a ok="true" title="Specific reactions to a substance." class="dict" ><b>AdverseEvent</b></a> xmlns="http://hl7.org/fhir"&gt;
  &lt;!-- Other information --&gt;
  &lt;<a ok="true" title="When the exposure occurred." class="dict" ><b>exposureDate</b></a> value="[<span style="color: darkgreen"><a ok="true" >dateTime</a></span>]"/&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: navy">When the exposure occurred</span><span style="color: Gray"> --&gt;</span>
  &lt;<a ok="true" title="Substance(s) that is presumed to have caused the adverse reaction." class="dict" ><b>substance</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a ok="true" >Resource</a>(<a ok="true" >Substance</a>)</span> <span style="color: navy">Presumed to have caused the reaction</span><span style="color: Gray"> --&gt;</span>&lt;/substance&gt;
  &lt;<a ok="true" title="To say that a reaction to substance did not occur (this element modifies the meaning of other elements)" class="dict" ><span style="text-decoration: underline"><b>didNotOccurFlag</b></span></a> value="[<span style="color: darkgreen"><a ok="true" >boolean</a></span>]"/&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: navy">To say that a reaction to substance did not occur</span><span style="color: Gray"> --&gt;</span>
  &lt;!-- Other information --&gt;
-&lt;/AdverseReaction&gt;
+&lt;/AdverseEvent&gt;
 </pre>
 <p>
 The element "didNotOccurFlag" affects the entire meaning of the resource - if it is set to true, the whole resource must be understood differently, and so it is not safe for implementations to ignore it. 
@@ -127,7 +127,7 @@ The element "didNotOccurFlag" affects the entire meaning of the resource - if it
 <p>
 Generally, elements labeled "Is-Modifier = true" also have a minimum cardinality of 1, to introduce
 certainty in their handling. If the value of such an element is not explicit in the instance, or known 
-by the context, the resource cannot be safely understood. Irrespective of the minimum cardinality, 
+by the context, the resource may not be able to be safely understood. Irrespective of the minimum cardinality, 
 implementations producing resources SHALL ensure that appropriate values for isModifier 
 elements are provided. Is-Modifier elements SHALL be represented in the narrative summary 
 of the resource.
@@ -148,6 +148,14 @@ format where not all information is included, or storing it for this kind of use
 Servers and background processes that simply move whole resources around unchanged 
 are not "processing the data of the resource", and therefore these applications 
 are not required to check Is-Modifier elements. 
+</p>
+<p>
+Every element in the base resource has a value of "true" or "false" for the Is-Modifier flag. 
+The value of the flag cannot be changed by profiles on the resource, in either direction. 
+When a profile defines an extension, it labels the extension with the Is-Modifier flag,
+and this cannot be changed in other profiles. Note that extensions that have is-Modifier = true
+are represented differently in resource instances ("modifierExtension" instead of "extension"), 
+and there are <a href="extensibility.html#modifierExtension">additional rules about how they are handled</a>.
 </p>
 
 <a name="mustSupport"> </a>
@@ -170,6 +178,12 @@ the important elements to make use of the resource), nor is it automatically mus
 of these things are more likely to be true for IsModifier elements than for other elements.
 </p>
 
+<h3>Examples and Reference Implementations</h3>
+<p>
+This specification includes many examples. While every effort has been made to ensure that the examples
+are fully conformant to the specification, if the examples disagree with the specification, the specification 
+is considered correct and normative, not the examples. This same rule applies to the reference implementations.
+</p>
 
 </div>
 

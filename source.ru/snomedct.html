@@ -27,7 +27,11 @@
    <a href="http://www.snomed.org/gl?t=glsct_se_Expression">Expressions</a> and
    <a href="http://www.snomed.org/tig?t=tsg2_metadata_refset_legacy">SNOMED Legacy codes</a>.<br/><br/>
      Description Ids are not valid, nor are other concepts associated with SNOMED CT Concepts using the RF2 identifier infrastructure. Expressions SHOULD NOT contain terms, only concept IDs </td></tr>
- <tr><td>Display</td><td>The correct display for a concept identifier, or a legacy code is the preferred term for the concept. There is no defined name for a SNOMED CT expression, though the full expression syntax with preferred terms embedded may be used</td></tr>
+ <tr><td>Display</td><td>The correct display for a SNOMED CT concept is one of the preferred terms for the concept. The Fully Specified Name is not an appropriate choice. 
+    The source of preferred name comes form a Language Reference Sets.
+    
+    SNOMED CT does not defined displays for expressions; if no display has been associated with the expression
+    through a value set or other mechanism, the full expression syntax with preferred terms embedded may be used</td></tr>
  <tr><td>Filter Properties</td><td>Several properties are defined as described below</td></tr>
 </table>
 
@@ -78,7 +82,7 @@ code system in value set composition statements.
 </p>
 <p>
 For implementer convenience, some of the property filters are documented in terms
-of the <a href="http://www.ihtsdo.org/fileadmin/user_upload/Docs_01/News/SNOMED_CT_Query_Specification_-__v0.08_-_20121213.doc">SNOMED CT Query Language</a>, but this does not imply that it's use is required.
+of the <a href="http://www.ihtsdo.org/fileadmin/user_upload/Docs_01/News/SNOMED_CT_Query_Specification_-__v0.08_-_20121213.doc">SNOMED CT Query Language</a>, but this does not imply that its use is required.
 <i>To Do: what's the correct link for this></i>
 </p>
 

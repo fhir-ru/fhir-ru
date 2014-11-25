@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationAdministration xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\medicationAdministration.xsd"> 
+  <id value="example"/>
 <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -19,10 +20,10 @@
   <prescription>
     <reference value="MedicationPrescription/example"/>
   </prescription>
-  <whenGiven>
+  <effectiveTimePeriod>
   <start value="2012-06-01T14:30:00"/>
   <end value="2012-06-01T14:30:00"/>
-</whenGiven>
+</effectiveTimePeriod>
   <medication>
     <reference value="Medication/example"/> 
   </medication>

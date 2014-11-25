@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RelatedPerson xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://hl7.org/fhir ../../schema/relatedperson.xsd">
+ <id value="peter"/>
   <text>
 
     <status value="generated"/>
@@ -54,11 +55,11 @@
     <line value="534 Erewhon St"/>
     <city value="PleasantVille"/>
     <state value="Vic"/>
-    <zip value="3999"/>
+    <postalCode value="3999"/>
   </address>
 
   <photo>
     <contentType value="image/jpeg"/>
-    <url value="binary/@f012"/>
+    <url value="Binary/f012"/>
   </photo>
 </RelatedPerson>

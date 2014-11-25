@@ -2,7 +2,7 @@
 
 
       
-[%settitle Краткий обзор%]
+[%settitle Summary (Glossy)%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -14,67 +14,85 @@
 
 <a name="glossy"> </a>
 
-<h1>Краткий обзор HL7 FHIR</h1>
-<p><a href="fhir-summary.pdf">Скачать страницу как PDF</a></p>
+<h1>Introducing HL7 FHIR</h1>
+<p><a href="fhir-summary.pdf">Get this as a PDF</a></p>
 <p>
-FHIR&reg; – Fast Healthcare Interoperable Resources (Ресурсы для обмена медицинской информацией) (hl7.org/fhir) – это стандарт нового поколения от международной организации HL7. 
-FHIR совмещает в себе лучшие свойства стандартов и спецификаций второго (HL7 v2) и третьего (HL7 v3) поколения, Архитектуры клинического документа (CDA&reg;) и производных продуктов, задействует наиболее актуальные веб-технологии и направлен на практическую реализацию.
+FHIR® – Fast Healthcare Interoperability Resources (hl7.org/fhir) – is a next generation 
+standards framework created by HL7. FHIR combines the best features of HL7’s 
+Version 2, Version 3 and CDA® product lines while leveraging the latest web standards 
+and applying a tight focus on implementability.
 </p>
 <p>
-Реализации FHIR строятся на основе набора модульных компонентов, называемых "ресурсы" (resources). 
-Ресурсы FHIR могут быть с легкостью собраны в функционирующие системы, способные решать реальные медицинские и 
-административные задачи при расходах в несколько раз меньших, чем при использовании альтернативных технологий. 
-Стандарт FHIR может использоваться в широком спектре технологических сред: в мобильных приложениях, облачных коммуникациях, обмене данными в контексте EHR-систем, серверных коммуникациях крупных поставщиков медицинских услуги т. д.
+FHIR solutions are built from a set of modular components called “Resources”. These 
+resources can easily be assembled into working systems that solve real world clinical 
+and administrative problems at a fraction of the price of existing alternatives. 
+FHIR is suitable for use in a wide variety of contexts – mobile phone apps, 
+cloud communications, EHR-based data sharing, server communication 
+in large institutional healthcare providers, and much more.
 </p>
 
-<h2>Чем FHIR лучше</h2>
+<h2>Why FHIR is better</h2>
 <p>
-Стандарт FHIR содержит в себе множество улучшений по отношению к существующим стандартам:
+FHIR offers many improvements over existing standards:
 </p>
 <ul>
-<li>Большое внимание уделяется реализации – FHIR гарантирует простую и быструю реализацию (многие разработчики успевали "поднять" простой интерфейс на базе FHIR всего за один день!)</li>
-<li>Доступны библиотеки, облегчающих процесс реализации, существует множество примеров для немедленного перехода к процессу разработки</li>
-<li>Использование спецификации бесплатное и неограниченное</li>
-<li>Интероперабельность "из коробки" – базовые ресурсы могут быть использованы "как есть" или адаптированы с учетом местных требований</li>
-<li>Переход от использования HL7 второй версии и CDA эволюционным путем – стандарты могут сосуществовать и использоваться совместно</li>
-<li>Основа FHIR – самые современные веб-стандарты и технологии: XML, JSON, HTTP, Atom, OAuth и т. д.</li>
-<li>Поддержка RESTful-архитектуры, беспрепятственного обмена информацией с помощью сообщений или документов</li>
-<li>Краткие и понятные спецификации</li>
-<li>"Человекочитаемый" формат передачи данных для простоты использования разработчиками</li>
-<li>Основательный онтологический анализ и строгий формализованный мэппинг для обеспечения корректности</li>
+<li>A strong focus on implementation – fast and easy to implement (multiple developers 
+have had simple interfaces working in a single day)</li>
+<li>Multiple implementation libraries, many examples available to kick-start development</li>
+<li>Specification is free for use with no restrictions</li>
+<li>Interoperability out-of-the-box– base resources can be used as is, but can also be 
+adapted for local requirements</li>
+<li>Evolutionary development path from HL7 Version 2 and CDA – standards can co-exist and 
+leverage each other</li>
+<li>Strong foundation in Web standards– XML, JSON, HTTP, Atom, OAuth, etc.</li>
+<li>Support for RESTful architectures and also seamless exchange of information using 
+messages or documents</li>
+<li>Concise and easily understood specifications</li>
+<li>A Human-readable wire format for ease of use by developers</li>
+<li>Solid ontology-based analysis with a rigorous formal mapping for correctness</li>
 </ul>
 
-<h2>Гибкость</h2>
+<h2>Flexibility</h2>
 <p>
-Главная задача стандартов области здравоохранения заключается в нахождении способов решения проблемы изменяемости, вызванной разнообразием процессов в здравоохранении. Со временем, спецификация стандарта обрастает новыми возможностями и сегментами, постепенно повышая стоимость и сложность ее реализации. Альтернативное решение в данной ситуации – использование специфических расширений стандарта, однако, и это также вызывает дополнительные сложности по реализации.
+A central challenge for healthcare standards is how to handle variability caused by diverse 
+healthcare processes. Over time, more fields and optionality are added to the specification,
+gradually adding cost and complexity to the resulting implementations. The alternative is relying 
+on custom extensions, but these create many implementation problems too. 
 </p>
 <p>
-Стандарт FHIR решает эту проблему определяя простую методологию расширения и адаптации существующих ресурсов. Все системы, вне зависимости от их построения, могут беспрепятственно читать расширения [extensions] и получать определения расширений [extension definitions] в соответствии с той же методологией, которая используется для получения других ресурсов.
+FHIR solves this challenge by defining a simple framework for extending and adapting the existing
+resources. All systems, no matter how they are developed, can easily read these extensions and 
+extension definitions can be retrieved using the same framework as retrieving other resources.
 </p>
 <p>
-Кроме того, каждый ресурс содержит в себе текстовое человеко-читаемое представление [передаваемой информации] в формате html в качестве запасного варианта ее отображения (в целях клинической безопасности). Это особенно важно, когда речь идет о комплексной медицинской информации, поскольку многие системы используют простой текстовый и документо-ориентированный подход.
+In addition, each resource carries a human-readable text representation using html as a fallback 
+display option for clinical safety. This is particularly important for complex clinical information 
+where many systems take a simple textual/document based approach.
 </p>
  
-<h2>Пример ресурса: Patient</h2>
+<h2>Example Resource: Patient</h2>
 <p>
-Этот простой пример показывает важные составные блоки ресурса: локальные расширения, человекочитаемое представление в формате HTML и содержимое, определяемое стандартом.
+This simple example shows the important parts of a resource: a local extension, the human 
+readable HTML presentation, and the standard defined data content.
 </p>
 <img src="shot.png"/>
 
 <p>
-В стандарте FHIR предусмотрены ресурсы для [выражения] административных концептов (пациентов, поставщиков, организаций, медицинских устройств) и целого спектра клинических концептов (медицинских проблем, лекарственных средств, диагностики, планов ухода (лечения), финансовых вопросов и т. д).
+FHIR has resources for administrative concepts such as patient, provider, organization 
+and device as well as a wide variety of clinical concepts covering problems, medications, 
+diagnostics, care plans, financial concerns and more.
 </p>
 
-<h2>Процесс разработки FHIR</h2>
+<h2>The FHIR development process</h2>
 <p>
-Стандарт FHIR распространяется как проект стандарта для пробного использования (DSTU). На данном этапе организация HL7 проводит мониторинг всех реализаций стандарта для внесения в спецификацию последующих улучшений и готова отвечать на возникающие потребности пользователей FHIR. 
-Благодаря тем преимуществам, которые предлагает FHIR, пробный период его использования начинается уже прямо сейчас.
+FHIR is published as a Draft Standard for Trial Use. During the Trial Use phase, HL7 actively monitors implementations in order to continue to improve the specification, and is able to be responsive to their needs. 
+Due to the many advantages FHIR offers, trial use is already beginning right now. 
 </p>
 <p>
-Впоследствии организация HL7 International приступит к подготовке полноправной нормативной спецификации FHIR (вероятнее всего, в течение 2015 года).
+Following this, HL7 will develop FHIR as a full normative specification, most likely through 2015.
 </p>
 <p>
-<a href="http://www.hl7.org/fhir">http://www.hl7.org/fhir</a>. Следите за нами на Twitter по тегу <a href="https://twitter.com/search?q=%23FHIR">#FHIR</a>
+<a href="http://www.hl7.org/fhir">http://www.hl7.org/fhir</a>. Follow us on Twitter using <a href="https://twitter.com/search?q=%23FHIR">#FHIR</a>
 </p>
 
 </div>

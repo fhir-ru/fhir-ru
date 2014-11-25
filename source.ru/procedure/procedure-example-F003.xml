@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir  ../../schema/procedure.xsd">
-    <subject>
+  <id value="f003"/>
+    <patient>
         <reference value="Patient/F001"/>
         <display value="P. van de Heuvel"/>
-    </subject>
+    </patient>
     <type>
         <coding>
             <system value="http://snomed.info/sct"/>
@@ -44,7 +45,7 @@
     </encounter>
     <outcome value="removal of the retropharyngeal abscess"/>
     <report>
-        <reference value="DiagnosticReport/@F004"/>
+        <reference value="DiagnosticReport/F004"/>
         <display value="???????????"/>
     </report>
     <followUp value="described in care plan"/>

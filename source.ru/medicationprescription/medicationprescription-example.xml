@@ -2,7 +2,7 @@
 <MedicationPrescription xmlns="http://hl7.org/fhir"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\medicationprescription.xsd">
-  <!-- insert contents here -->
+  <id value="example"/>
 
   <text>
     <status value="generated"/>
@@ -27,13 +27,13 @@
   </medication>
 
   <dosageInstruction>
-    <timingSchedule>
+    <scheduledTiming>
       <repeat>
         <frequency value="3"/>
         <duration value="1"/>
         <units value="d"/>
       </repeat>
-    </timingSchedule>
+    </scheduledTiming>
     <route>
       <coding>
         <system value="http://snomed.info/sct"/>

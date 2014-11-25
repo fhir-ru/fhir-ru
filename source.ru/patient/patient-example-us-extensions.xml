@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://hl7.org/fhir ../../schema/patient.xsd">
+  <id value="us01"/>
   <extension url="http://hl7.org/fhir/Profile/us-core#race">
     <valueCodeableConcept>
       <coding>
@@ -9,7 +10,7 @@
       </coding>
     </valueCodeableConcept>    
   </extension>
-  <extension url="http://hl7.org/fhir/Profile/us-core#ethnicity">
+  <extension url="http://hl7.org/fhir/ExtensionDefinition/us-core-ethnicity">
     <valueCodeableConcept>
       <coding>
         <system value="http://hl7.org/fhir/v3/Ethnicity" />
@@ -52,15 +53,29 @@
   </name>
   
   <address>
-    <extension url="http://hl7.org/fhir/Profile/us-core#county">
+    <extension url="http://hl7.org/fhir/ExtensionDefinition/us-core-county">
       <valueString value="Orange County" />
     </extension>
     <use value="home"/>
     <line value="534 Erewhon St"/>
     <city value="PleasantVille"/>
     <state value="Vic"/>
-    <zip value="3999"/>
+    <postalCode value="3999"/>
   </address>
+  
+  <telecom>
+    <system value="phone"/>
+    <value value="(03) 5555 6473"/>
+    <use value="work"/>
+  </telecom>
+  <telecom>
+    <extension url="http://hl7.org/fhir/ExtensionDefinition/us-core-direct">
+      <valueBoolean value="true"/>
+    </extension>
+    <system value="email"/>
+    <value value="person@example.org"/>
+    <use value="work"/>
+  </telecom>
   
   <active value="true"/>
   

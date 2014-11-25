@@ -2,7 +2,7 @@
 
 
       
-[%settitle Форматы%]
+[%settitle Formats%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -12,78 +12,190 @@
 
 <div class="col-9">
 
+<%fmtheader base%>
+
 <a name="root"> </a>
-<h1>Форматы представления ресурсов</h1>
+<h1>Resource Formats</h1>
 <p>
-На этой странице задокументировано, каким образом описываются ресурсы. В реальности ресурсы могут быть представлены в следующих форматах: <a href="xml.html">XML</a> и <a href="json.html">JSON</a>. 
+This page documents how the content of the resources are described. 
+In actual exchange, resources can be represented in the following
+formats: <a href="xml.html">XML</a> and <a href="json.html">JSON</a>. 
 </p>
 
-<h2>Описание ресурсов</h2>
+<h2>Resource Definition</h2>
 <p>
-Ресурсы описываются двумя способами: с помощью UML-диаграммы, содержащей краткое изложение, и с помощью XML-псевдосинтаксиса, дающего визуальное представление о том, как конечные экземпляры ресурса будут выглядеть в формате XML. Обратите внимание, что, хотя описание ресурсов основывается на XML-представлении, другие форматы, например JSON, также допустимы.
-</p>
-<a name="syntax"> </a>
-<h3>XML</h3>
-<p>
-Синтаксис XML использует следующую систему обозначений:
-</p>
-<pre class="spec">
- &lt;<b>Name</b> xmlns="http://hl7.org/fhir" (attrA="value")&gt; 
-   &lt;<u><b title="Formal Definition (SHALL be supported or understood)">nameA</b></u>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
-   &lt;<b title="Formal Definition">nameB[x]</b>&gt;<font color="Gray">&lt;!-- </font><font color="deeppink" title="Condition">0..1</font> <font color="darkgreen">type1</font>|<font color="darkgreen">type2</font> <font color="Navy">description</font> <font color="Gray"> --&gt;</font>&lt;/nameB&gt;
-   &lt;<b>nameC</b>&gt; <font color="Brown"><font color="Gray">&lt;!-- </font> <b>1..*</b> --&gt;</font>
-     &lt;<b>nameD</b>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="darkgreen">type</font>&gt;<font color="navy">Relevant records</font> <font color="Gray"> --&gt;</font>&lt;/nameD&gt;
-   &lt;/nameC&gt;
- &lt;name&gt;
-</pre>
-<p>
-Примечания:
+The resources are described in several different ways:
 </p>
 <ul>
- <li>Имена ресурсов и элементов чувствительны к регистру (хотя дубликаты, различающиеся только регистром, ни разу не вводились).</li>
- <li>Любые элементы, имеющие <a href="datatypes.html#primitive">примитивный тип</a>, будут иметь атрибут value, содержащий фактическое значение элемента.</li>
- <li>У элементов есть показатель множества (cardinality), указывающий, сколько раз этот элемент может или должен появиться. Если множество выделено 
-    <font color="deeppink">розовым</font> , значит есть дополнительное условие, влияющее на допустимое множество. Оно доступно в виде всплывающей подсказки при наведении указателя мыши на текст, либо в формальных определениях.</li>
- <li>Если только у элементов нет непосредственно заданных потомков (как у nameC выше), им назначается один или несколько типов. Все эти типы приведены в <a href="datatypes.html">типах данных</a>, за исключением типов "Resource" и "Narrative", которые задокументированы ниже. Имена типов имеют вид гиперссылок.</li>
- <li>Некоторые типы данных, имеющие потомков, могут содержать такой же набор потомков, как и некоторый другой элемент, определенный в этом ресурсе. В этом случае тип элемента содержит ссылку на [path], где [path] - элемент с этим элементом-потомком.</li>
- <li>Когда логический элемент может иметь более одного типа, его имя принимает форму nnn[x]. Часть имени вида "nnn" является постоянной, а [x] заменяется именем его типа с большой буквы, который фактически используется. В XML это будет выглядеть так:
-   
-   <div class="example">
-<pre class="xml">
-  &lt;name&gt;
-    &lt;nameBType1&gt;
-     ... contents for type1 ...
-    &lt;/nameBType1&gt;
-  &lt;/name&gt;
-</pre>
-   </div>
-Разрешенные типы элемента перечислены через разделитель "|". Когда одним из типов является Resource([X]), имя этого типа в имени элемента указывается просто как "Resource".
-   </li>
- <li>Имя каждого элемента в псевдосинтаксисе также является гиперссылкой на формальное определение этого элемента в словаре данных, лежащем в основе форматов обмена. </li>
- <li>Если имя элемента подчеркнуто, то от приложений требуется <a href="conformance-rules.html#mustSupport">поддерживать</a> и/или <a href="conformance-rules.html#ismodifier">понимать</a> его.</li>
- <li>Любые из этих элементов могут иметь атрибут id, служащий  <a href="references.html#idref">целью внутренней ссылки</a>. В этом формате атрибут id не показывается.</li>
- <a name="element-rules"> </a>
- <li>FHIR-элементы не могут быть пустыми. Если элемент присутствует в ресурсе, он ДОЛЖЕН иметь либо атрибут value, либо элементы-потомки, как определено для его типа, либо 1 или более <a href="extensibility.html">расширений</a>.</li>
- <li>Атрибуты не могут быть пустыми. Либо они отсутствуют, либо содержат как минимум 1 символ, не являющийся пробельным.</li>
- <li>В дополнение к этому наглядному синтаксису доступны и другие формы определений, включая W3C-схему и Schematron.</li>
-</ul>
+ <li>a hierarchical table that presents a logical view of the content</li>
+ <li>a UML diagram that summarizes the content graphically</li>
+ <li>a pseudo-XML syntax that provides a visual sense of what the end resource instances will look like in XML</li>
+ <li>a pseudo-JSON syntax that provides a visual sense of what the end resource instances will look like in JSON</li>
+</ul> 
+<p>
+In addition to this descriptive syntax, other definitional forms are available, including W3C schema and Schematron, and the <a href="profile.html">Profile</a> syntax defined internally.
+</p>
 
+<a name="table"> </a>
+<h3>Logical table</h3>
+<p>
+The Logical View shows the resources as a tree structure with the following columns:
+</p>
+<table class="lines">
+ <tr> <td><b>Column</b></td> <td><b>Content</b></td> </tr>
+ <tr> <td>Name</td> <td>The name of the element in the resource (manifests as XML element name, or JSON property name. Some names finish with "[x]" - the meaning of this is discussed below. In addition, this column contains an icon that denotes the underlying type of the content. The icons are described below</td> </tr>
+ <tr> <td>Flags</td> <td>A set of information about the element that impacts how implementers handle them. The flags are described below</td> </tr>
+ <tr> <td>Card.</td> <td>The lower and upper bounds on how many times this element is allowed to appear in the resource</td> </tr>
+ <tr> <td>Type</td> <td>The type of the element (hyperlinked to the definition of the type)</td> </tr>
+ <tr> <td>Description &amp; Constraints</td> <td>A description of the element, and details about constraints that are applied to it. Particularly, for coded elements, information about which codes can be used</td> </tr>
+</table>
+<p>
+Here's an example:
+</p>
+<table style="border: 0px; font-size: 11px; font-family: verdana; vertical-align: top;" cellpadding="0" border="0" cellspacing="0"><tbody>
+<tr style="border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;">
+  <th style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">Name</th>
+  <th style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">Flags</th>
+  <th style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">Card.</th>
+  <th style="width: 100px" class="heirarchy">Type</th>
+  <th style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">Description &amp; Constraints</th>
+</tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
+  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)" class="heirarchy"><img alt="." class="heirarchy" src="tbl_spacer.png"/><img title="Resource" style="background-color: white;" alt="." class="heirarchy" src="icon_resource.png"/> <a title="Definition" href="#">Resource Name</a></td>
+  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
+  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
+  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><a href="resources.html">Base Type</a></td>
+  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">Definition</td>
+</tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="heirarchy"><img alt="." class="heirarchy" src="tbl_spacer.png"/><img alt="." class="heirarchy" src="tbl_vjoin.png"/><img title="Data Type" style="background-color: white;" alt="." class="heirarchy" src="icon_datatype.gif"/> <a title="Definition" href="#">nameA</a></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><span title="This element is included in summaries">Σ</span></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">1..1</td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><a href="#">type</a></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">description of content</td>
+</tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck11.png)" class="heirarchy"><img alt="." class="heirarchy" src="tbl_spacer.png"/><img alt="." class="heirarchy" src="tbl_vjoin.png"/><img title="Choice of Types" style="background-color: white;" alt="." class="heirarchy" src="icon_choice.gif"/> <a title="Description" href="#">nameB[x]</a></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><span title="This element is a modifier element">M </span><span title="This element is included in summaries">Σ</span></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">0..1</td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">description<br/><span title="1">SHALL at least have a value</span></td>
+</tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck110.png)" class="heirarchy"><img alt="." class="heirarchy" src="tbl_spacer.png"/><img alt="." class="heirarchy" src="tbl_vline.png"/><img alt="." class="heirarchy" src="tbl_vjoin.png"/><img title="Primitive Data Type" style="background-color: white;" alt="." class="heirarchy" src="icon_primitive.png"/> <span title="Value of &quot;true&quot; or &quot;false&quot;">nameBType1</span></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">0..1</td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><a href="#">type1</a></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
+</tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck110.png)" class="heirarchy"><img alt="." class="heirarchy" src="tbl_spacer.png"/><img alt="." class="heirarchy" src="tbl_vline.png"/><img alt="." class="heirarchy" src="tbl_vjoin_end.png"/><img title="Primitive Data Type" style="background-color: white;" alt="." class="heirarchy" src="icon_primitive.png"/> <span title="Value of &quot;true&quot; or &quot;false&quot;">nameBType2</span></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><span title="This element has or is affected by some invariants">I</span></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">0..1</td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><a href="#">type2</a></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
+</tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck11.png)" class="heirarchy"><img alt="." class="heirarchy" src="tbl_spacer.png"/><img alt="." class="heirarchy" src="tbl_vjoin_end.png"/><img title="Element" style="background-color: white;" alt="." class="heirarchy" src="icon_element.gif"/> <a title="Definition" href="#">nameC</a></td>
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">1..*</td>
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">Element</td>
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">Definition</td>
+</tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck110.png)" class="heirarchy"><img alt="." class="heirarchy" src="tbl_spacer.png"/><img alt="." class="heirarchy" src="tbl_blank.png"/><img alt="." class="heirarchy" src="tbl_vjoin_end.png"/><img title="Data Type" style="background-color: white;" alt="." class="heirarchy" src="icon_datatype.gif"/> <a title="Definition" href="#">nameD</a></td>
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">1..1</td>
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><a href="#">type</a></td>
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">Relevant Records</td>
+</tr>
+</tbody>
+</table>
+
+<a name="legend"> </a>
+<p>Key to Type Icons and Flags</p>
+<ul>
+ <li><img title="Resource" style="background-color: white;" alt="." class="heirarchy" src="icon_resource.png"/>: The base element for a resource (see <a href="resources.html">Resources</a>)</li>
+ <li><img title="Bundle" style="background-color: white;" alt="." class="heirarchy" src="icon_bundle.png"/>: The base element for a Bundle (see <a href="extras.html#bundles">Bundles</a>)</li>
+ <li><img title="Element" style="background-color: white;" alt="." class="heirarchy" src="icon_element.gif"/>: An element that is part of the resource and has elements within it defined in the same resource or profile</li>
+ <li><img title="Choice of Types" style="background-color: white;" alt="." class="heirarchy" src="icon_choice.gif"/>: An element which can have one of a several different types (see below)</li>
+ <li><img title="Primitive Data Type" style="background-color: white;" alt="." class="heirarchy" src="icon_primitive.png"/>: A data type which describes an element that has a value attribute/property</li>
+ <li><img title="Data Type" style="background-color: white;" alt="." class="heirarchy" src="icon_datatype.gif"/>: A data type which describes an element that has other elements</li>
+ <li><img title="Reference to another Resource" style="background-color: white;" alt="." class="heirarchy" src="icon_reference.png"/>: A element that contains a reference to another resource (see <a href="references.html">references</a>)</li>
+ <li><img title="Reference to another Element" style="background-color: white;" alt="." class="heirarchy" src="icon_reuse.png"/>: This element has the same content as another element defined within this resource or profile</li>
+ <li><img title="Slice Definition" style="background-color: white;" alt="." class="heirarchy" src="icon_slice.png"/>: Introduction of a set of slices (see <a href="profiling.html#slicing">Slicing</a>)</li>
+ <li><img title="Extension" style="background-color: white;" alt="." class="heirarchy" src="icon_extension.png"/>: An extension (see <a href="extensibility.html">Extensibility</a>)</li>
+ <li><img title="Complex Extension" style="background-color: white;" alt="." class="heirarchy" src="icon_extension_complex.png"/>: A complex extension - one with nested extensions (see <a href="extensibility.html#complex">Extensibility</a>)</li>
+ <li><img title="Simple Extension" style="background-color: white;" alt="." class="heirarchy" src="icon_extension_simple.png"/>: An extension that has a value and no nested extensions (see <a href="extensibility.html">Extensibility</a>)</li>
+ <li><img title="Profile" style="background-color: white;" alt="." class="heirarchy" src="icon_profile.png"/>: The root of a logical profile</li>
+<!-- dont think this is used <li><img title="Text" style="background-color: white;" alt="." class="heirarchy" src="icon_text.png"/>: Plain text content</li> -->
+ <li>M: This element is a modifying element - see <a href="conformance.html#isModifier">Modifier Elements</a></li>
+ <li>S: This element is an element that must be supported - see <a href="conformance.html#mustSupport">Must-Support Elements</a></li>
+ <li>Σ: This element is an element that is part of the summary set - see <a href="search.html#mustSupport">Summary Searches</a></li>
+ <li>I: This element defines or as affected by invariants - see <a href="conformance.html#invariants">Invariants</a></li>
+ <li>NE: This element cannot have extensions (some infrastructural elements only)</li>
+</ul>
+<p>
+Notes:
+</p>
+<ul>
+ <li>Resource and Element names are case-sensitive (though duplicates that differ only in case are never defined)</li>
+ <li>Any elements that have a <a href="datatypes.html#primitive">primitive type</a> will have a "value" attribute/property to contain the actual value of the element</li>
+ <li>This "value" attribute/property can never be empty. Either it is absent, or it is present with at least one character of non-whitespace content</li>
+ <li>Elements are assigned a cardinality that specifies how many times the element may or must appear. </li>
+ <li>Unless elements have children defined directly (as nameC does above) they are assigned one or more types. Most of the types are defined in <a href="datatypes.html">the data types</a>. All the type names are hyperlinked to the source definition</li>
+ <li>Element reuse: Some data types that have children have the same set of children as some other element defined in the resource. In that case, the type of that element has a "see [name]" where [name] is the name of the element that has the defined children</li>
+ <li>When a logical element can have more than one type, its name takes the form nnn[x]. The "nnn" part of the name is constant, and 
+   the [x] is replaced with the title-cased name of the type that is actually used. The table shows each of these names explicitly.</li>
+ <li>Each element name is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. </li>
+ <li>Any of the elements may have an id attribute to serve as <a href="references.html#id">the target of an internal reference</a>. The id attribute is not shown in this format. Extensions are not always shown, but may appear except where the flag "NE" appears</li>
+ <a name="element-rules"> </a>
+ <li>FHIR elements can never be empty. If an element is present in the resource, it SHALL have either a value, child elements as defined for its type, or 1 or more <a href="extensibility.html">extensions</a></li>
+ <li>Infrastructural elements that are common to all resources are not shown in the logical representation. These are described in the common base classes <a href="resource.html">Resource</a>, and <a href="domainresource.html">DomainResource</a></li>
+</ul>
+    
+<a name="uml"> </a>
 <h3>UML</h3>
 <p>
-На UML-диаграммах изображена та же самая информация в виде последовательности классов, представляющих элементы ресурса.
+The UML diagrams represent the same content as a series of classes that represent
+the elements of a resource. 
 </p>
 <p style="text-alignment: left">
 <%svg uml-example%>
 </p>
 <p>
-Там, где у элемента можно выбрать тип данных, это обозначено с помощью вышеописанного XML-синтаксиса. Из-за специфики работы UML, фактический порядок элементов не может быть определен из диаграммы, также не видно, является ли свойство элементом или атрибутом. Элементы и типы являются ссылками на их формализованные определения. На UML-диаграммах также показаны связи, они являются гиперссылками на свое описание.
+Where an element can have a choice of data types, these are represented by listing the type names separated by the "|" character. 
+The elements and types are links to the formal definitions of the parts. The UML diagrams also show the 
+bindings, and these are hyperlinks to the value set details.
 </p>
 <p>
-Назначение этих UML-диаграмм - донести содержимое ресурса человеку, они не подходят для генерации кода из UML с помощью стандартных инструментов.
+These UML diagrams are intended to communicate the contents of the resource
+to a human, and are not suitable for code generation using standard UML code 
+generation tools (see the <a href="downloads.html">eCore reference implementation</a> for UML related code generation). 
+</p>
+<p>
+The actual order of the elements in XML cannot be determined from the diagram, nor whether a UML property becomes an element or an attribute. 
 </p>
 
+<a name="wire"> </a>
+<h3>Wire Format Representations</h3>
 
+<p>
+This specification defines these ways to represent resources when they are exchanged:
+</p>
+<ul>
+ <li><a href="xml.html">XML</a></li>
+ <li><a href="json.html">JSON</a></li>
+ <li>RDF <i>(Under development)</i></li>
+</ul>
 
+<p>
+Clients and servers can choose whether to implement in XML or JSON. In 
+the interests of interoperability, Servers SHOULD support both formats.
+Systems SHALL declare which format(s) they support in their <a href="conformance.html">Conformance Statement</a>. 
+If a server receives a request for it's conformance statement in
+a format it does not otherwise support, it SHALL return a 415 Unsupported Media Type.
+</p>
 
 </div>
 

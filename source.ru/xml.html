@@ -1,8 +1,12 @@
 <!DOCTYPE HTML>
 
 
+<!--
+These elements SHALL always appear in this order. These basic elements shared by all resources come first
+in order to support consistent definitions for schema and UML derived code. 
+-->
       
-[%settitle Формат XML%]
+[%settitle XML Format%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -12,175 +16,90 @@
 
 <div class="col-9">
 
+<%fmtheader xml%>
 
 <a name="root"> </a>
-<h2>XML</h2>
+<h2>XML Representation of Resources</h2>
 
 <p>
-XML-синтаксис основан непосредственно на <a href="formats.html">XML-нотации</a>:
+The XML representation for a resource is described using this format: 
 </p>
 <pre class="spec">
- &lt;<b>name</b> xmlns="http://hl7.org/fhir" (attrA="value")&gt;   <span style="float: right"><a title="Documentation for this format" href="formats.html"><img src="help.png" alt="doco"/></a></span>
-   &lt;<u><b title="Formal Definition (must be supported or understood)">nameA</b></u>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
-   &lt;<b title="Formal Definition">nameB[x]</b>&gt;<font color="Gray">&lt;!-- </font><font color="deeppink" title="Condition">0..1</font> <font color="darkgreen">type1</font>|<font color="darkgreen">type1</font> <font color="Navy">description</font> <font color="Gray"> --&gt;</font>&lt;/nameB&gt;
+ &lt;<b>name</b> xmlns="http://hl7.org/fhir" (attrA="value")&gt;   <span style="float: right"><a title="Documentation for this format" href="xml.html"><img src="help.png" alt="doco"/></a></span>
+   &lt;<u><b title="Formal Definition (must be supported or understood)">nameA</b></u>&gt;<font color="Gray">&lt;!-- </font><span title="Inv-5: Some rule apples to this element" style="color: brown"><b><img alt="??" src="lock.png"/> 1..1</b></span> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
+   &lt;<b title="Formal Definition">nameB[x]</b>&gt;<font color="Gray">&lt;!-- </font><font color="brown">0..1</font> <font color="darkgreen">type1</font>|<font color="darkgreen">type1</font> <font color="Navy">description</font> <font color="Gray"> --&gt;</font>&lt;/nameB&gt;
    &lt;<b>nameC</b>&gt; <font color="Brown"><font color="Gray">&lt;!-- </font> <b>1..*</b> --&gt;</font>
-     &lt;<b>nameD</b>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="darkgreen">type</font>&gt;<font color="navy">Relevant records</font> <font color="Gray"> --&gt;</font>&lt;/nameD&gt;
+     &lt;<b>nameD</b>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="darkgreen">type</font>&gt;<font color="navy">Relevant elements</font> <font color="Gray"> --&gt;</font>&lt;/nameD&gt;
    &lt;/nameC&gt;
  &lt;name&gt;
 </pre>
 <p>
-Примечания:
+Using this format:
 </p>
 <ul>
- <li>Для создания допустимого XML-экземпляра ресурса просто замените содержимое элементов и атрибутов допустимыми значениями в соответствии с кардинальным множеством, типовыми правилами и комментариями к каждому элементу.</li>
- <li>Имена ресурсов и элементов являются регистрозависимыми (тем не менее дубликаты, различающиеся только регистром, никогда не вводились).</li>
- <li>Следует отметить, что как атрибуты представлены только те свойства, которые определены в лежащих в основе спецификациях, таких как <a href="#atom">Atom (см. ниже)</a>, которая используется в качестве XML-представления  комплектов, и атрибуты также используются для примитивных значений.</li>
- <li>FHIR-элементы всегда принадлежат пространству имен <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  Обычно оно указывается на корневом элементе в качестве пространства имен по умолчанию. Другие пространства имен, которые могут встретиться в FHIR-ресурсах, это только те, где некоторая внешняя модель содержимого явно вводится в модель содержимого ресурса. Например <a href="narrative.html">XHTML встречается в каждом ресурсе.</a></li>
- <li>Любой XML-элемент может иметь атрибут id, служащий в качестве <a href="references.html#idref">цели внутренней ссылки</a>. Атрибут id не отображается в этом формате.</li>
- <li>FHIR-элементы не бывают пустыми. Если элемент присутствует в ресурсе, он ОБЯЗАН иметь либо атрибут value, либо элементы-потомки, определенные для его типа, либо атрибут id, являющийся <a href="references.html#idref">целевой ссылкой</a> <a href="narrative.html#narrative">описательной части</a>, либо 1 или больше <a href="extensibility.html">расширений</a>.</li>
- <li>Атрибуты не могут быть пустыми. Либо они отсутствуют, либо присутствуют с по крайней мере одним символом не пробельного содержимого.</li>
-  <li>XML-комментарии, команды обработки и форматирования не являются частью содержимого ресурса.</li>
-  <li>Указание кодировки символов с помощью команды обработки &lt;?xml encoding="" ?&gt; является необязательным, однако рекомендуется. Другие команды обработки НЕ ДОЛЖНЫ быть включены и НЕ ДОЛЖНЫ требоваться в целях правильного понимания и/или представления данных ресурса или его описательной части. Приложения МОГУТ сохранять их во время оперирования ресурсами, но это не является обязательным. Обратите внимание, что электронные цифровые подписи могут зависеть от них (в зависимости от используемого метода каноникализации [canonicalization]).</li>
+ <li>To build a valid XML instance of a resource, simply replace the contents of the elements and attributes with valid content 
+   as described by the cardinality, type rules and content description found in the comment in each element</li>
+ <li>Resource and Element names are case-sensitive (though duplicates that differ only in case are never defined)</li>
+ <li>Elements must always appear in the order documented</li>
+ <li>A few properties are represented as attributes: primitive values in the "value" attribute, extension URLs in the "url" attribute on an extension, and the "id" property</li>
+ <li>Any of the XML elements may have an id attribute to serve as <a href="references.html#id">the target of an internal reference</a>. The id attribute is not shown in this format</li>
+ <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  This is usually specified as the default namespace on the root element. 
+   The only other namespace that occurs in FHIR resources is the XHTML namespace (<a href="narrative.html">XHTML is found in most resources)</a></li>
+ <li>Infrastructural elements that are common to all resources are not shown in the xml representation. These must appear prior to any other defined child elements in the following order:
+	<ul>
+		<li>First, the elements from the <a href="resource.html">base resource</a>, in order</li>
+		<li>Second, the elements from the <a href="domainresource.html">domain resource</a>, in order</li>
+	</ul>
+ </li>
+ <li>FHIR elements are never empty. If an element is present in the resource, it SHALL have either a value attribute, child elements as defined for its type, or 1 or more <a href="extensibility.html">extensions</a></li>
+ <li>Attributes can never be empty. Either they are absent, or they are present with at least one character of non-whitespace content</li>
+ <li>The lock icon (<img alt="??" src="lock.png"/>) denotes that an element defines or is affected by <a href="conformance.html#invariants">additional rules</a> that control its presence and/or content</li>
+ <li>XML comments, processing instructions and formatting are not part of the contents of a resource</li>
+ <li>XML resources SHALL be exchanged using UTF-8 encoding. Specifying the character encoding using a &lt;?xml encoding="UTF-8" ?&gt; processing instruction is optional but recommended</li>
+ <li>Other processing Instructions SHOULD not be included, except and SHALL not be required in order to properly understand and/or present the data or narrative of the resource. 
+  Applications MAY preserve these when handling resources, but are not required to do so</li>
+ <li>The MIME-type for this format is application/xml+fhir.</li>
 </ul>
-<p>
-Представленные в XML ресурсы могут быть проверены на правильность схемой и Schematron (см. ниже), однако от операционных систем это не требуется (хотя XML ДОЛЖЕН всегда быть правильным по отношению к данной спецификации, схеме и Schematron).
-</p>
-
-
-<a name="bundle"> </a>
-<a name="atom"> </a>
-<h3>Atom-представление комплекта</h3>
-<p>
-В XML-виде <a href="extras.html#bundle">комплекты</a> представляются с помощью формата Atom (<a href="http://tools.ietf.org/html/rfc4287" target="_blank">http://tools.ietf.org/html/rfc4287</a>), следуя этому шаблону:
-</p>
-<pre class="spec">
-&lt;feed xmlns="http://www.w3.org/2005/Atom">  <span style="float: right"><a title="Documentation for this format" href="formats.html"><img src="help.png" alt="doco"/></a></span>
-  &lt;title&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.html#string">string</a></span> <span style="color:navy;">Text statement of purpose</span><span style="color: Gray"> --&gt;</span>&lt;/title&gt;
-  &lt;id&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.html#uri">uri</a></span> <span style="color:navy;">Unique URI for this bundle</span><span style="color: Gray"> --&gt;</span>&lt;/id&gt;
-  &lt;link rel="self" href="<span style="color:navy;">[building application url (Service base on REST)]</span>"/&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
-  &lt;link rel="first" href="<span style="color:navy;">[paging: url for first page of result]</span>"/&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
-  &lt;link rel="previous" href="<span style="color:navy;">[paging: url for previous page of result]</span>"/&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
-  &lt;link rel="next" href="<span style="color:navy;">[paging: url for next page of result]</span>"/&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
-  &lt;link rel="last" href="<span style="color:navy;">[paging: url for last page of result]</span>"/&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
-  &lt;link rel="fhir-base" href="<span style="color:navy;">[base path to resolve local urls in this bundle]</span>"/&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
-  &lt;os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>0..1</b></span> <span style="color:darkgreen;"><a href="datatypes.html#primitive">integer</a></span> <span style="color:navy;">
-              Paging: the total number of results</span><span style="color: Gray"> --&gt;</span>&lt;/os:totalResults&gt;
-  &lt;updated&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.html#instant">instant</a></span> <span style="color:navy;">When the bundle was built</span><span style="color: Gray"> --&gt;</span>&lt;/updated&gt;
-  &lt;author&gt;<span style="color:Gray;">&lt;!-- 0..1 Who created resource? --&gt;</span>
-      &lt;name&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.html#string">string</a></span> <span style="color:navy;">Name of Human or Device that authored the resource</span><span style="color: Gray"> --&gt;</span>&lt;/name&gt;
-      &lt;uri&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span> <span style="color:darkgreen;"><a href="datatypes.html#uri">uri</a></span> <span style="color:navy;">Link to the resource for the author</span><span style="color: Gray"> --&gt;</span>&lt;/uri&gt;
-  &lt;/author>
- <a name="tags"> </a>&lt;category term="<span style="color:navy;">[Tag Term]</span>" label="<span style="color:navy;">[Tag Label]</span>" scheme="<span style="color:navy;">[Tag Scheme]</span>"/&gt; <span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..*</span><span style="color: Gray"> --&gt;</span>
-  &lt;entry&gt;<span style="color:Gray;">&lt;!-- Zero+ --&gt;</span>
-    &lt;title&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.html#string">string</a></span> <span style="color:navy;">Text summary of resource content</span><span style="color: Gray"> --&gt;</span>&lt;/title&gt;
-    &lt;id&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.html#uri">uri</a></span> <span style="color:navy;">Logical Id (URI) for this resource</span><span style="color: Gray"> --&gt;</span>&lt;/id&gt;
-    &lt;link rel="self" href="<span style="color:navy;">Version Specific reference to Resource</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>&lt;/link&gt;
-    &lt;updated&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.html#instant">instant</a></span> <span style="color:navy;">Last Updated for resource</span><span style="color: Gray"> --&gt;</span>&lt;/updated&gt;
-    &lt;published&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span> <span style="color:darkgreen;"><a href="datatypes.html#instant">instant</a></span> <span style="color:navy;">Time resource copied into the feed</span><span style="color: Gray"> --&gt;</span>&lt;/published&gt;
-    &lt;author&gt;<span style="color:Gray;">&lt;!-- 0..1 Who created resource? --&gt;</span>
-      &lt;name&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span> <span style="color:darkgreen;"><a href="datatypes.html#string">string</a></span> <span style="color:navy;">Name of Human or Device that authored the resource</span><span style="color: Gray"> --&gt;</span>&lt;/name&gt;
-      &lt;uri&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span> <span style="color:darkgreen;"><a href="datatypes.html#uri">uri</a></span> <span style="color:navy;">Link to the resource for the author</span><span style="color: Gray"> --&gt;</span>&lt;/uri&gt;
-    &lt;/author>  <!--    &lt;category term="<span style="color:navy;">[Resource Type]</span>" scheme="http://hl7.org/fhir/resource-types"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>1..1</b></span><span style="color: Gray"> --&gt;</span>&lt;/category&gt;   -->
-    <span style="color:Gray;">&lt;!-- </span><span style="color:navy;">Tags affixed to the resource (<span style="color: brown;"><b>0..*</b></span>): </span> <span style="color: Gray"> --&gt; </span>
-	&lt;category term="<span style="color:navy;">[Tag Term]</span>" label="<span style="color:navy;">[Tag Label]</span>" scheme="<span style="color:navy;">[Tag Scheme]</span>"/&gt; <span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..*</span><span style="color: Gray"> --&gt;</span>
-    &lt;content type="text/xml"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;"><b>0..1</b></span><span style="color: Gray"> --&gt;</span>
-      &lt;<span style="color:navy;">[ResourceName]</span> xmlns="http://hl7.org/fhir">
-        <span style="color: Gray">&lt;!-- </span><span style="color: navy">Content for the resource</span><span style="color: Gray"> --&gt;</span>
-      &lt;/<span style="color:navy;">[ResourceName]</span>>
-    &lt;/content>
-    &lt;summary type="xhtml"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color: Gray"> --&gt;</span>
-      &lt;div xmlns="http://www.w3.org/1999/xhtml"><span style="color:Gray;">&lt;!-- </span><span style="color:navy;">Narrative from resource</span><span style="color:Gray;"> --&gt;</span>&lt;/div>
-    &lt;/summary>
-  &lt;/entry&gt;
-  &lt;Signature xmlns="http://www.w3.org/2000/09/xmldsig#"&gt;
-    <span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span> <span style="color:navy;">Enveloped Digital Signature (see Atom section 5.1)</span><span style="color:Gray;"> --&gt;</span>
-  &lt;/Signature&gt;
-&lt;/feed&gt;
-</pre>
-<a name="atom-notes"> </a>
-<h4>Примечания</h4>
-<ul>
- <li>Логически рассуждая, комплект – это набор ресурсов, которые приготовлены для отсылки куда-то для дальнейшего потребления – "фид" (feed).</li>
- <li>Порядок следования элементов в Atom-фиде не имеет значения (но не записей [entries]: порядок записей важен и может иметь некоторое значение, ассоциированное с ним). Порядок элементов в пространстве имен Atom, как задокументировано выше, не требует соблюдения, хотя его придерживаются FHIR-эталонные платформы [FHIR reference platforms].</li>
- <li>Заголовки [title] элементов feed и entry содержат произвольный человекочитаемый текст. Заголовок элемента entry ДОЛЖЕН выводиться из информации, присутствующей в самом ресурсе. Системы могут игнорировать содержимое этого заголовка.</li> 
- <li>Каждый комплект ДОЛЖЕН иметь уникальный id, и этот id ДОЛЖЕН быть допустимым абсолютным <a href="datatypes.html#uri">URI</a>. UUID рекомендуются (urn:uuid:...).</li>
- <li>Элемент entry содержит <a href="resources.html#metadata">три компонента метаданных ресурса</a>: Id (.id), Version Id (.link), Last Updated (.updated).</li>
- <li>Каждый элемент entry также содержит все Теги, назначенные ресурсу в элементе category. Элемент category может использоваться и другими способами тоже.</li>
- <li>Элемент entry.id ДОЛЖЕН быть абсолютным URL, заключительный элемент которого – логический id ресурса. Элемент id  – это версионно-независимая ссылка.</li>
- <li>Элемент entry.link с типом self – это версионно-зависимая ссылка на ресурс.</li>
- <li>При использовании в <a href="http.html">RESTful реализации</a>, элементы entry.link и entry.id являются URL-ссылками ресурса на систему; ссылка на конкретную версию может использоваться, если базовые синхронизирующие pub/sub системы используют Atom-комплект c <a href="http.html#history">операцией update</a>. В других ситуациях значения должны быть постоянными ссылками на сервер, если он доступен. </li>
- <li>Обратите внимание, что спецификация Atom требует указания информации об авторе для каждого entry. Если автор указан в базовом feed-элементе, указание автора для каждого entry не требуется.</li>
- <li>Указание автора ресурса не является явным в FHIR-модели ресурса; это делегируется инфраструктуре. Элемент name – это имя человека-автора или устройства. Элемент uri – ссылка на автора (возможно, на ресурс Practitioner). </li> 
- <li>Элементы xml:base НЕ ДОЛЖНЫ использоваться, и реализаторам не требуется их поддерживать.</li>
- <li>Элемент entry.content является необязательным, но ДОЛЖЕН всегда присутствовать, за исключением особого случая отклика на транзакцию (transaction response). </li>
- <li>Весь комплект может быть подписан одной электронной цифровой подписью-оберткой [Enveloped Digital Signature], как описано в спецификации Atom (раздел 5.1).</li>
- <li>Элемент feed.link с типом взаимосвязи "self" не имеет конкретного назначения в FHIR-спецификации, за исключением случая операции поиска, однако он может использоваться для предоставления ссылки на источник фида.</li>
- <li>Элементы feed.link с типом взаимосвязи "first", "last", "previous" и "next" используются для реализации пейджинга в RESTful-интерфейсе и позволяют клиенту просматривать многостраничный результат. См. <a href="search.html">search/query</a>.</li>
- <li>Элемент feed.link с типом "fhir-base" используется для разрешения относительных ссылок в комплекте, см. <a href="references.html#atom-rel">относительные ссылки</a>.</li>
-</ul>
-
-<a name="atom-deleted"> </a>
-<h4>Версии комплектации – удаление</h4>
-<p>
-При возвращении набора ресурсов или версий ресурса, entry может указывать, что запись была <i>удалена</i>. Удаленные ресурсы представляются в Atom-фиде по правилам, определенным в <a href="http://www.rfc-editor.org/rfc/rfc6721.txt">rfc6721.txt</a>: 
-</p>
-<pre class="spec">
-&lt;feed xmlns="http://www.w3.org/2005/Atom">  <span style="float: right"><a title="Documentation for this format" href="formats.html"><img src="help.png" alt="doco"/></a></span>
-  <span style="color:Gray;">... feed elements and other entries ...</span>
-  &lt;at:deleted-entry xmlns:at="http://purl.org/atompub/tombstones/1.0"
-      ref="<span style="color:navy;">[Logical Id for deleted resource]</span>" when="<span style="color:navy;"><span style="color:darkgreen;"><a href="datatypes.html#instant">instant</a></span> [when deleted]</span>"&gt;
-    &lt;link rel="self" href="<span style="color:navy;">[Version Specific reference to Resource]</span>"&gt;<span style="color:Gray;">&lt;!-- </span><span style="color: brown;">0..1</span><span style="color:Gray;"> --&gt;</span>&lt;/link&gt;
-  &lt;/at:deleted-entry>
-  <span style="color:Gray;">... other entries ...</span>
-</pre>
-<p>
-Удаленный ресурс возвратит ошибку 410 Gone, если обратиться к нему через интерфейс RESTful.
-</p>
-
-<a name="atom-impl"> </a>
-<h3>Примечания к реализации</h3>
-<a name="digsig"> </a>
-<ul>
-<li>Atom-фиды могут быть подписаны по правилам, описанным в спецификации к Atom. Одним из последствий подписания документа является то, что URL-адреса, идентификаторы и внутренние ссылки замораживаются и не могут быть изменены. Это может быть желаемым свойством, но может также лишить способности к взаимодействию закрытые экосистемы, где часто происходит <a href="use.html#identity">повторное определение (re-identification)</a>. По этой причине рекомендуется подписывать только Комплекты документов (Document Bundles) и только после того, как все связанные ресурсы находятся в комплекте. </li>
-<li>
-<a name="Ids"></a>
-Ресурсы FHIR пользуются id-атрибутами в качестве целей <a href="references.html#idref">внутренних ссылок с ресурсами</a>. 
-Эти id-атрибуты являются уникальными и разрешаются в пределах контекста одного ресурса. Когда ресурсы комбинируются в комплект, могут возникнуть дубликаты: различные ресурсы могут содержать одинаковые id-атрибуты. Поэтому важно ограничить область разрешения id-атрибута ресурсом, в котором этот <i>id</i>-атрибут  объявлен.
-</li>
-</ul>
-
-
-<a name="binary"> </a>
-<h4>Бинарные ресурсы</h4>
-<p>
-Когда <a href="extras.html#binary">бинарный ресурс</a> описывается в XML-виде в Atom-фиде, он представляется base64-закодированным содержимым наряду с указанием типа содержимого, который является MIME-типом, как это обычно указывается в HTTP:
-</p>
-<pre class="spec">
- &lt;Binary xmlns="http://hl7.org/fhir" contentType="<span style="color:navy;">[mime type]</span>"&gt;  <span style="float: right"><a title="Documentation for this format" href="formats.html"><img src="help.png" alt="doco"/></a></span>
-   <span style="color:navy;">[Base64 Content]</span>
- &lt;/Binary&gt;
-</pre>
-<p>
-Бинарные ресурсы также могут быть встроены как <a href="references.html#contained">вложенные ресурсы</a>.  
-Если есть желание сохранить метаданные о бинарном объекте, то необходимо использовать подходящий тип ресурса, например
-<a href="documentreference.html">DocumentReference</a> или <a href="media.html">Media</a>.
-</p>
-
-
 
 <a name="schema"> </a>
-<h3>XML-схема и Schematron</h3>
+<h3>XML Schema and Schematron</h3>
 <p>
-Данная спецификация предоставляет определения схемы для всех моделей содержимого, описанных здесь. Базовая схема называется "<a href="fhir-base.xsd">fhir-base.xsd</a>" и определяет все типы данных, а также базовые инфраструктурные типы, описанные на этой странице. В дополнение имеется схема для каждого ресурса и общая схема <a href="fhir-all.xsd">fhir-all.xsd</a>, которая включает все схемы ресурса. Модифицированная Atom-схема <a href="fhir-atom.xsd">fhir-atom.xsd</a>
-приводится для проверки правильности <a href="#atom">комплектов</a>.
+This specification provides schema definitions for all of the content models it describes. 
 </p>
 <p>
-В дополнение к файлам w3c-схемы, данная спецификация также приводит Schematron-файлы, которые 
-вводят в действие различные ограничения, определенные для типов данных и ресурсов. Они укомплектованы в виде файлов для каждого ресурса вместе с совместным файлом fhir-atom.sch, содержащим в себе правила для всех ресурсов.
+The base schema is called "<a href="fhir-base.xsd">fhir-base.xsd</a>" and defines all of the 
+datatypes and base infrastructure types. In addition, there 
+is a schema for each resource and a common schema <a href="fhir-all.xsd">fhir-all.xsd</a> 
+that includes all the resource schemas. For schema processors that do not like circular
+includes, there is <a href="fhir-single.xsd">a single schema</a> that contains everything.
 </p>
 <p>
-Обмениваемый XML ДОЛЖЕН быть проверен на соответствие схеме w3c и Schematron, хотя соответствие схеме и Schematron не является достаточным, чтобы быть совместимым экземпляром: данная спецификация вводит несколько правил, которые не могут быть проверены никакими механизмами. Обмениваемое содержимое не должно задавать схему или даже пространство имен экземпляра схемы в самом ресурсе.
+In addition to the w3c schema files, this specification also provides Schematron files that
+enforce the various constraints defined for the datatypes and resources.  These are packaged
+as files for each resource.
 </p>
+<p>
+XML that is exchanged SHALL be valid against the w3c schema and Schematron, though being 
+valid against the schema and Schematron is not sufficient to be a conformant instance: 
+this specification makes several rules that cannot be checked by either mechanism. 
+Operational systems may choose to use schema tools to check validation, but are not 
+required to do so. Exchanged content SHALL not specify the schema or even contain the schema 
+instance namespace in the resource itself. 
+</p>
+
+<h3>Digital Signatures</h3>
+<a name="digsig"> </a>
+<p>Resources and/or Bundles may be digitally signed (ref to be provided). One consequence of 
+signing the document is that URLs, identifiers and internal references are frozen and cannot be changed.
+This might be a desired feature, but it may also cripple interoperability between closed ecosystems where
+<a href="use.html#identity">re-identification</a> frequently occurs. For this reason, it is recommended 
+that only Document Bundles are signed and then only when all the related resources are found in the bundle.</p>
+
+<p>
+todo: canonical XML
+</p>
+
+
 
 <!-- Todo: Relax NG, RDF, eCore -->
 

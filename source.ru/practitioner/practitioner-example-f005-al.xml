@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Practitioner xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://hl7.org/fhir ../../schema/practitioner.xsd">
+  <id value="f005"/>
     <identifier>
         <use value="official"/>
         <system value="urn:oid:2.16.528.1.1007.3.1"/>
@@ -38,7 +39,7 @@
             <use value="work"/>
             <line value="Galapagosweg 9"/>
             <city value="Amsterdam"/>
-            <zip value="1105 AZ"/>
+            <postalCode value="1105 AZ"/>
             <country value="NLD"/> <!-- ISO 3166 Codes (Countries) -->
         </address>
     
