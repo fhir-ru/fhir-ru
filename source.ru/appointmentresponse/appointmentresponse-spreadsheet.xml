@@ -978,7 +978,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ответ на информацию о запланировованной встрече пациента и/или медицинского специалиста(-ов), например подтверждение или отказ</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
