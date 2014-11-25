@@ -970,7 +970,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Healthcare plan for patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the intention of how one or more practitioners intend to deliver care for a particular patient for a period of time, possibly limited to care for a specific condition or set of conditions.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает намерение одного или нескольких медицинских специалистов (practitioners) ухаживать (deliver care) за конкретным пациентом в течение некоторого периода времени, возможно ограниченное уходом только при одном или нескольких определенных состояниях.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>

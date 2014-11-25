@@ -6,7 +6,7 @@
 + appointmentresponse/appointmentresponse-spreadsheet.xml
 + availability/availability-spreadsheet.xml
 - base-definitions.html
-careplan/careplan-spreadsheet.xml
++ careplan/careplan-spreadsheet.xml
 + clinical.html
 + comparison.html
 composition/composition-spreadsheet.xml
