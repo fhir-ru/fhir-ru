@@ -41,7 +41,7 @@ diagnosticreport/diagnosticreport-spreadsheet.xml
 documentmanifest/documentmanifest-spreadsheet.xml
 documentreference/documentreference-spreadsheet.xml
 + documents.html
-downloads.html
++ downloads.html
 - dstu.html
 ehr-fm.html
 encounter/encounter-spreadsheet.xml
