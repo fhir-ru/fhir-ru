@@ -11,7 +11,7 @@
 + comparison.html
 + composition/composition-spreadsheet.xml
 + conceptmap/conceptmap-spreadsheet.xml
-condition/condition-spreadsheet.xml
++ condition/condition-spreadsheet.xml
 conformance/conformance-spreadsheet.xml
 + datatypes-definitions.html
 + datatypes-examples.html

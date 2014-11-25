@@ -1002,7 +1002,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String"> Detailed information about conditions, problems or diagnoses</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a Diagnosis during an Encounter; populating a problem List or a Summary Statement, such as a Discharge Summary</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Используется для записи подробной информации о клиническом состоянии, проблемах со здоровьем или диагнозах, поставленных врачом. Имеет множество применений, включая: запись диагноза во время визита; заполнение списка проблем (problem List) или итогового заключения (Summary Statement), например выписного эпикриза (Discharge Summary)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
