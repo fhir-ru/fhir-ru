@@ -7,13 +7,13 @@ appointmentresponse/appointmentresponse-spreadsheet.xml
 availability/availability-spreadsheet.xml
 - base-definitions.html
 careplan/careplan-spreadsheet.xml
-clinical.html
-comparison.html
++ clinical.html
++ comparison.html
 composition/composition-spreadsheet.xml
 conceptmap/conceptmap-spreadsheet.xml
 condition/condition-spreadsheet.xml
 conformance/conformance-spreadsheet.xml
-datatypes-definitions.html
++ datatypes-definitions.html
 datatypes-examples.html
 datatypes-mappings.html
 datatypes.html
