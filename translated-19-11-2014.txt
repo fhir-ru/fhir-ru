@@ -40,7 +40,7 @@ diagnosticreport/diagnosticreport-spreadsheet.xml
 + documentation.html
 documentmanifest/documentmanifest-spreadsheet.xml
 documentreference/documentreference-spreadsheet.xml
-documents.html
++ documents.html
 downloads.html
 - dstu.html
 ehr-fm.html
