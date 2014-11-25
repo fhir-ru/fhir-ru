@@ -979,7 +979,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">(informative) A container for slot(s) of time that may be available for booking appointments</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">(informative) A container for slot(s) of time that may be available for booking appointments (Статус ресурса: informative) (Объект-)контейнер для заполнения свободных тайм-слотов (интервалов времени). Используется для планирования медицинских консультаций</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>

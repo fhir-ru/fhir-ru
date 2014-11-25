@@ -4,7 +4,7 @@
 + allergyintolerance/allergyintolerance-spreadsheet.xml
 + appointment/appointment-spreadsheet.xml
 + appointmentresponse/appointmentresponse-spreadsheet.xml
-availability/availability-spreadsheet.xml
++ availability/availability-spreadsheet.xml
 - base-definitions.html
 careplan/careplan-spreadsheet.xml
 + clinical.html
