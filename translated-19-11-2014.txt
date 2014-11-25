@@ -14,9 +14,9 @@ conceptmap/conceptmap-spreadsheet.xml
 condition/condition-spreadsheet.xml
 conformance/conformance-spreadsheet.xml
 + datatypes-definitions.html
-datatypes-examples.html
-datatypes-mappings.html
-datatypes.html
++ datatypes-examples.html
++ datatypes-mappings.html
++ datatypes.html
 datatypes/address.xml
 datatypes/attachment.xml
 datatypes/codeableconcept.xml
@@ -37,7 +37,7 @@ device/device-spreadsheet.xml
 deviceobservationreport/deviceobservationreport-spreadsheet.xml
 diagnosticorder/diagnosticorder-spreadsheet.xml
 diagnosticreport/diagnosticreport-spreadsheet.xml
-documentation.html
++ documentation.html
 documentmanifest/documentmanifest-spreadsheet.xml
 documentreference/documentreference-spreadsheet.xml
 documents.html
