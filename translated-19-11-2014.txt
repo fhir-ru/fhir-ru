@@ -46,7 +46,7 @@ documentreference/documentreference-spreadsheet.xml
 + ehr-fm.html
 encounter/encounter-spreadsheet.xml
 + extensibility-examples.html
-extensibility.html
++ extensibility.html
 familyhistory/familyhistory-spreadsheet.xml
 + footer.html
 + footer1.html

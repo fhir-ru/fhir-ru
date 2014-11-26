@@ -16,54 +16,43 @@
 <%extheader base%>
 
 <a name="root"> </a>
-<h1>Extensibility</h1>
+<h1>Расширяемость</h1>
 <p>
-This exchange specification is based on generally agreed common
-requirements across healthcare - covering many jurisdictions, domains, and
-different functional approaches. It is common for
-specific implementations to have valid requirements that are not
-part of these agreed common requirements. Incorporating all of these requirements
-would make this specification very cumbersome and difficult to
-implement. Instead, this specification expects that these additional
-distinct requirements will be implemented as extensions.
+Данный стандарт обмена данными основывается на универсальных и общепринятых клинических требованиях, учитывает 
+различные функциональные подходы, соответствует предметным областям здравоохранения и реалиям стран и территорий мира. Для конкретных реализаций характерно иметь действующие требования, которые не являются частью этих согласованных общепринятых требований. Стремление учесть все возможные требования в рамках одной спецификации сделало бы её слишком объёмной и труднореализуемой. Поэтому ожидается, что все специфические требования будут реализованы в элементах, являющихся расширениями ресурсов (extensions).
 </p>
 <p>
-As such, extensibility is a fundamental part of the design of this
-specification. Every element in a resource may have extension child elements 
-to represent additional information that is not part of the basic definition 
-of the resource. Applications should not reject resources merely because
-they contain extensions, though they may need to reject resources 
-because of the specific contents of the extensions.
+По существу, расширения - это фундаментальная часть проекта этой спецификации. Любой элемент ресурса может иметь элемент-потомок, 
+являющийся его расширением (extension), для представления дополнительной информации, которая не входит в базовое 
+определение ресурса (basic definition of the resource). Приложения не должны отказываться от обработки ресурса только
+из-за наличия расширений, однако причиной отказа может служить содержимое расширения.
 </p>
 <p>
-Note that, unlike in many other specifications, there can be no stigma
-associated with the use of extensions by any application, project, or
-standard - regardless of the institution or jurisdiction that uses or defines the
-extensions.  The use of extensions is what allows the FHIR specification to retain a core
-simplicity for everyone.
+Обратите внимание, что, в отличие от других стандартов, FHIR не имеет "предрассудков" в отношении использования 
+расширений каким-либо программным обеспечением, проектом или стандартом вне зависимости от учреждения или страны или 
+территории, определяющей раcширение. Использование расширений позволяет спецификации FHIR сохранить свою простоту для 
+каждого.
 </p>
 <p>
-In order to make the use of extensions safe and manageable, there is a
-strict governance applied to the definition and use of extensions. Though
-any implementer is allowed to define and use extensions, there is a set of requirements
-that must be met as part of their use and definition.
+Для того чтобы сделать применение расширений безопасным и контролируемым, были приняты строгие правила их определения и 
+использования. Хотя разработчики могут самостоятельно давать определения и использовать расширения, существует набор 
+требований, соблюдение которых обязательно.
 </p>
 <a name="Extension"></a>
 <a name="extension"></a>
-<h2>Extension Element</h2>
+<h2>Элемент "extension"</h2>
 <p>
-Every element in a resource or data type includes an optional "extension" child element that may 
-be present any number of times. This is the content model of the extension as it appears in each resource:
+Все элементы в ресурсе или типы данных могут иметь неограниченное число необязательных элементов-потомков "extension". Ниже представлена модель содержимого расширения, применимая ко всем ресурсам:
 </p>
 <%dt Extension%>
 <p>
-Notes:
+Примечания:
 </p>
 <ul>
- <li>The <i>url</i> is a mandatory attribute / property and identifies a retrievable <a href="extensiondefinition.html">extension definition</a> that defines the content and meaning of the extension.</li>
- <li>An extension SHALL have either a value (i.e. a [x] element) or sub-extensions. If present, the [x] element SHALL have content (value attribute or other elements)</li>
- <li>If it is not safe for an application processing the content of the resource to ignore the extension it must be represented diffferent (see <a href="#modifier">below</a>)</li>
- <li>The <i>value[x]</i> element has an actual name of "value" and then the TitleCased name of one of these defined types, and it's contents are those as defined for that type:
+ <li><i>url</i> - это обязательный атрибут / свойство, который используется как идентификатор извлекаемого <a href="extensiondefinition.html">описания элемента расширения</a>, применяемого по отношению к данному ресурсу и определяющего содержимое и семантику элемента расширения.</li>
+ <li>Расширение ДОЛЖНО иметь либо значение (т. е. [x]-элемент), либо вложенные расширения. Если присутствует, [x]-элемент ДОЛЖЕН иметь содерижмое (атрибует value или другие элементы)</li>
+ <li>Если для приложения, обрабатывающего содержимое ресурса, не безопасно игнорировать расширение, это должно быть представлено по-другому (см. <a href="#modifier">ниже</a>)</li>
+ <li>Фактическим именем элемента <i>value[x]</i> является слово "value", к которому добавляется с большой буквы имя одного из следующих определенных типов, а его содержимым будет то, которое определено для этого типа:
   <ul class="dense">
    <li><a href="datatypes.html#integer">Integer</a></li>
    <li><a href="datatypes.html#decimal">Decimal</a></li>
@@ -73,7 +62,7 @@ Notes:
    <li><a href="datatypes.html#string">String</a></li>
    <li><a href="datatypes.html#uri">Uri</a></li>
    <li><a href="datatypes.html#boolean">Boolean</a></li>
-   <li><a href="datatypes.html#code">Code</a> (only if the extension definition provides a <a href="terminologies.html#code">fixed</a> binding to a suitable set of codes)</li>
+   <li><a href="datatypes.html#code">Code</a> (только если расширение предоставляет <a href="terminologies.html#code">фиксированную</a> привязку к допустимому набору кодов)</li>
    <li><a href="datatypes.html#base64Binary">Base64Binary</a></li>
    <li><a href="datatypes.html#Coding">Coding</a></li>
    <li><a href="datatypes.html#CodeableConcept">CodeableConcept</a></li>
@@ -87,13 +76,13 @@ Notes:
    <li><a href="datatypes.html#Address">Address</a></li>
    <li><a href="datatypes.html#Contact">Contact</a></li>
    <li><a href="datatypes.html#Schedule">Schedule</a></li>
-   <li><a href="references.html#Reference">Reference</a> - a reference to another resource</li>
+   <li><a href="references.html#Reference">Reference</a> - ссылка на другой ресурс</li>
   </ul>
  </li> 
 </ul>
 <div class="example">
 <p>
-Here is an example of an extension in XML:
+Вот пример расширения в XML-формате:
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
@@ -104,7 +93,7 @@ Here is an example of an extension in XML:
 &lt;/name&gt;
 </pre>
 <p>
-In JSON, extensions are represented differently:
+В JSON-формате расширения описываются по-другому:
 </p>
 <pre class="json" fragment="HumanName">
   "name" : {
@@ -116,29 +105,20 @@ In JSON, extensions are represented differently:
 </pre>
 </div>
 <p>
-Making the types explicit in the representation means that all systems can read and write 
-(and therefore store and/or exchange) extensions correctly without needing to access the
-definition of the extension.
+Явное указание типов в представлении означает, что все системы могут читать и писать (и, следовательно, хранить и/или обмениваться) расширениями корректно без необходимости доступа к определению расширения.
 </p>
 <p>
-Note: in JSON, extensions are always arrays, since they can have multiple values, 
-though whether a particular extension is allowed to have multiple values
-depends on it's definition.
+Примечание: в JSON-формате расширения всегда представлены массивами, так как они могут иметь несколько значений, однако позволено ли определенному расширению иметь несколько значений, зависит от его определения.
 </p>
 <p>
-Extensions can also contain extensions, either because the extension 
-definition itself defines complex content, or because the extension 
-is extended with an additional extension defined separately. 
+Расширения также могут содержать расширения, либо потому что определение расширения само описывает составное содержимое, либо потому что расширение расширяется дополнительным расширением, определенным отдельно. 
 </p>
 <p>
-In the first case, the identity of the parts of the extension are local/relative to the reference
-to the extension definition.
+В первом случае идентификаторы частей расширения являются локальными/относительными по отношению к определению расширения.
 </p>
 <div class="example">
 <p>
-As an example, consider extending a patient with an 
-opt-in status for a clinical trial, with 3 fields: status, date of recording, and 
-the person who enrolled them (see <a href="??">definition</a>). In XML:
+В качестве примера давайте рассмотрим расширение ресурса "пациент" статусом принятия участия в клиническом исследовании тремя полями: статус, дата записи и человек, который зарегистрировал их (см. <a href="??">definition</a>). В XML:
 </p>
 <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
@@ -159,7 +139,7 @@ the person who enrolled them (see <a href="??">definition</a>). In XML:
 &lt;/Patient&gt;
 </pre>
 <p>
-Or in JSON:
+Или в JSON:
 </p>
 <pre class="json" fragment="Patient">
 {
@@ -172,22 +152,19 @@ Or in JSON:
       }
     }]
   }
-  ... other data for patient ...
+  ... другие данные пациента ...
 }
 </pre>
 </div>
 <p>
-The JSON representation is more concise, since it is not constrained by 
-the limitations of schema, though the type of the value must still be 
-explicit.
+JSON-представление более лаконичное, так как оно не ограничено схемой, хотя тип значения всё же должен явно указываться.
 </p>
 <p>
-In the second case, the contained extension is defined separately.
+Во втором случае вложенное расширение определяется отдельно.
 </p>
 <div class="example">
 <p>
-The registrar was defined as a separate extension (e.g. to 
-allow wider use). The url of the extension is different:
+Регистратор был определен как отдельное расширение (например для более широкого использования). URL расширения другой:
 </p>
 <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
@@ -208,7 +185,7 @@ allow wider use). The url of the extension is different:
 &lt;/Patient&gt;
 </pre>
 <p>
-or in JSON:
+или в JSON:
 </p>
 <pre class="json" fragment="Patient">
 {
@@ -221,7 +198,7 @@ or in JSON:
       }
     }]
   }
-  ... other data for patient ...
+  ... другие данные пациента ...
 }
 </pre>
 </div>
@@ -229,45 +206,39 @@ or in JSON:
 <a name="mustUnderstand"> </a>
 <a name="isModifier"> </a>
 <a name="modifierExtension"> </a>
-<h2>Modifier Extensions</h2>
+<h2>Элементы-расширения, изменяющие значения ресурса (Modifier Extensions)</h2>
 <p>
-There are some cases where the information provided in extensions modifies the meaning 
-of the element that contains it. Typically, this means information that qualifies or 
-negates the primary meaning of the element that contains it. Some examples:
+В некоторых случаях содержащаяся в расширениях информация изменяет значение родительского элемента. 
+Обычно это означает, что элемент "extension" выполняет логическую функцию отрицания (negation) или уточняет (qualifier) 
+значение родительского элемента. Рассмотрим некоторые примеры:
 </p>
 <ul>
- <li>Adding a certainty extension to an <a href="allergyintolerance.html">Allergy/Intolerance</a> that includes a value "highly doubtful"</li>
- <li>Asserting an additional subsumption relationship on a concept in a <a href="valueset.html">value set</a></li>
- <li>An anti-prescription: recording an instruction <b>not</b> to take a medication</li>
- <li>Using the <a href="condition.html">Condition</a> resource to record an assertion that a patient <b>doesn't</b> have a particular diagnosis</li>
- <li>Asserting that a performer was <b>not</b> actually involved in a <a href="procedure.html">Procedure</a></li>
- <li>Recording that a <a href="supply.html">Supply</a> was <b>not</b> provided (i.e. refusal to fill)</li>
+ <li>Расширение, характеризующее вероятность <a href="allergyintolerance.html">аллергии/непереносимости (Allergy/Intolerance)</a> может иметь значение "highly doubtful" (маловероятно)</li>
+ <li>Позволяет вводить дополнительную категоризацию концепта, входящего в<a href="valueset.html"> набор значений (value set)</a></li>
+ <li>С помощью элемента "extension" можно выразить <b>запрет</b> на прием лекарственного средства</li>
+ <li>Элемент "extension" ресурса <a href="condition.html">Condition (Клиническое состояние)</a> позволяет сформировать запись, в которой говориться о том, что пациент <b>не</b> имеет конкретного диагноза</li>
+ <li>Элемент "extension" информирует о том, что исполнитель (performer) <b>не</b> принимал участие в выполнении<a href="procedure.html">процедуры (Procedure)</a></li>
+ <li>Элемент "extension" информирует о том, что <a href="supply.html">акт снабжения (Supply)</a> <b>не</b> состоялся (напр., отказано в выдаче)</li>
 </ul>
 <p>
-Implementers should avoid the use of modifier extensions where possible.  Any use should be 
-carefully considered against its possible downstream consequences. However, implementers
-are often forced into these situations by the business arrangements around
-the use of resources, so this specification creates a framework for handling these cases.
+В ходе реализации стандарта старайтесь избегать использования расширений-модификаторов. Случаи их 
+использования должны быть продуманы, рассмотрены возможные негативные последствия. Часто использование уточняющих 
+элементов обусловлено бизнес-требованиями и договоренностями об использовании ресурсов. Стандарт FHIR предлагает 
+методологию для разрешения таких случаев.
 </p>
 <p>
-If modifier extensions are present, an application cannot safely process the resource unless it knows
-what the extension means for its own use of the data. This specification allows for 
-such modifier elements to be included at the base of a resource or in any elements
-that do not have a data type (e.g. the elements that correspond to classes in the resource UML
-diagrams).
+Когда в ресурсе присутствует расширение-модификатор (Modifier Extension), 
+нельзя быть уверенным в его корректной обработке приложением (если оно не содержит инструкций по его обработке). 
+Стандарт FHIR разрешает выносить расширения-модификаторы (Modifier Extensions) в базовую структуру ресурса (at the base of 
+the resource) или в структуру любого другого элемента, которому не соответствует какой-либо тип данных (например, 
+элементы, которые соответсвуют классам в UML-диаграммах ресурсов)
 </p>
 <p>
-In XML, these modifier elements are represented using an element named "modifierExtension", which has same content as the 
-<i>extension</i> element documented above: 
+В XML эти элементы-модификаторы представлены с помощью элемента "modifierExtension", который имеет такое же содержимое, как и элемент <i>extension</i>, описанный выше:
 </p>
 <div class="example">
 <p>
-Example: There's no element on <a href="procedure.html">Procedure</a> 
-so it can be used to say "this procedure did not occur"; however, a source system does 
-have this flag on it's procedure records. It could choose not to share those
-procedures (e.g. consider them as logically deleted). However, it may be that
-it is required to share procedures marked as "did not occur" with it's trading
-partners. Hence, applications are allowed to extend a resource with data like this: 
+Пример: у ресурса <a href="procedure.html">Procedure</a> нет элемента, который можно было бы использовать для сообщения "this procedure did not occur"; однако система-источник содержит такой флаг в своих записях об этой процедуре. Можно было бы принять решение не share эти процедуры (например рассматривать их как логически удаленные). Однако может случиться, что потребуется share процедуры, помеченные как "did not occur" с их торговыми партнерами. Поэтому приложениям разрешается расширить ресурс такими данными, как:
 </p>
 <pre class="xml">
 &lt;Procedure&gt;
@@ -278,7 +249,7 @@ partners. Hence, applications are allowed to extend a resource with data like th
 &lt;/Procedure&gt;
 </pre>
 <p>
-Or in JSON:
+Или в JSON:
 </p>
 <pre class="json">
 {
@@ -294,63 +265,39 @@ Or in JSON:
 </div>
 
 <p>
-Implementations processing the data in resources SHALL 
-check for modifiers anywhere they may appear, and if 
-a modifier extension is present, SHALL do one of these
-things:
+Реализации стандарта, обеспечивающие обработку данных в ресурсах, ДОЛЖНЫ проверять наличие модификаторов везде, где они могут появиться, и если расширение-модификатор присутствует, ДОЛЖНЫ выполнить одно из следующих действий: 
+
 </p>
 <ol>
- <li>understand the impact of the extension when using the data</li>
- <li>refuse to process the data</li>
- <li>carry a warning concerning the data along with any action or output that results from processing the data to inform users that it has not fully understood the source information</li>
+ <li>понять влияние расширения на использование данных</li>
+ <li>отказаться обрабатывать эти данные</li>
+ <li>выдать предупреждение относительно данных и любых действий или выходных данных, которые возникают в результате их обработки, чтобы проинформировать пользователей о неполном понимании информации источника</li>
 </ol>
 <p>
-Processing the data of a resource typically means
-copying or filtering data out of a resource for use in another 
-context (display to a human, decision support, exchange in another 
-format where not all information is included, or storing it for this kind of use).
-Servers and background processes that simply move whole resources around unchanged 
-are not "processing the data of the resource", and therefore these applications 
-are not required to check for unknown modifier extensions. 
+обработка данных ресурса обычно представляет собой копирование или фильтрацию данных ресурса для последующего их использования в ином контексте (для представления пользователю, 
+в целях поддержки принятия решения, для частичного обмена данных в ином формате или их сохранения для этого вида использования). Серверы и фоновые 
+процессы, которые обеспечивают простое перемещение данных без каких-либо изменений, не выполняют "обработку данных ресурса", а значит этим приложениям не требуется выполнять проверку наличия неизвестных расширений-модификаторов. 
 </p>
 <p>
-<b>#1</b>: When an application understands this extension, it means that some developer
-has provided appropriate instructions for what to do with the data contained 
-in it because of the existence of the modifier extension. 
+<b>#1</b>: Если приложение понимает семантику расширения, это является результатом того, что разработчик подготовил соответствующие
+инструкции по интерпретации содержимого с учетом существования расширения-модификатора.
 </p>
-<p><b>#2</b>: 
-This means that implementations are not inherently required to "support" 
-a modifier extension in any meaningful way - they may achieve this 
-understanding by rejecting instances that contain this extension.
-Applications may also be able to ignore a modifier extension if that 
-can know that this is safe to do in its own context, though this would not usually be the case.
+<p><b>#2</b>: Это значит, что от конкретных реализаций, по сути, не требуется "поддерживать" расширение-модификатор любым существенным способом - они могут достигнуть этого понимания отклонением экземпляров, которые содержат это расширение. Приложения могут также игнорировать расширение-модификатор, если знают, что это безопасно делать в своем собственном контексте, хотя это не будет, как правило, иметь место.
 </p>
 <p> 
-Note that implementations may be able to be sure, due to their 
-implementation environment (e.g. specific trading partner agreement), 
-that modifier extensions will never occur, and can therefore meet
-the requirement to check for modifiers at the design stage. 
-However, since integration and deployment options often change
-subsequently, applications SHOULD always check for modifier extensions when 
-processing resources anyway.
+Обратите внимание, что конкретные реализации могут иметь возможность быть уверенными благодаря их среде реализации (например особое соглашение торговых партнеров), что расширения-модификаторы никогда не будут использоваться, и, следовательно, выполнить требование проверки наличия модификаторов уже на стадии проектирования. Тем не менее, так как условия интеграции и внедрения часто изменяются впоследствии, приложениям всё равно СЛЕДУЕТ всегда проверять наличие расширений-модификаторов при обработке ресурсов.
 </p>
 
 <p><b>#3</b>: 
-One way to warn the user is to download the extension definition
-from the given URL, and then use the defined display name to present
-the extension to the user. An error message could look something like
-this:
+Один из способов предупредить пользователя - это загрузить определение расширения по имеющемуся URL и затем использовать заданный элемент display name для представления расширения пользователю. Сообщение об ошибке может выглядеть так:
 </p>
 <img src="modifier-extension-warning.png"/>
 <p>
-Note that the narrative of the resource SHALL contain this qualifying 
-information, so it is safe to show this to the user as an expression 
-of the resource's content. A warning dialog box could be extended to
-offer the user the choice to see the original narrative. 
+Обратите внимание: описательная (человекочитаемая) часть ресурса (narrative) ДОЛЖНА содержать эту уточняющую информацию, чтобы её можно было безопасно показать пользователю в качестве выражения содержимого ресурса.  Диалоговое окно с предупреждением можно расширить и предложить пользователю просмотреть оригинальный текст описательной части ресурса.  
 </p>
 <div class="example">
 <p>
-Here is the procedure example from above with narrative:
+Вот пример процедуры, приведенной выше, с описательной частью:
 </p>
 <pre class="xml">
 &lt;Procedure xmlns=&quot;http://hl7.org/fhir&quot;&gt;
@@ -373,28 +320,20 @@ Here is the procedure example from above with narrative:
 </pre>
 </div>
 <p>
-In this case, if an application is not reading the performers of the operation at all,
-the fact that one of the performers has a modifierExtension is irrelevant and the 
-application is free to ignore it. If it does process the performers, and it sees the
-modifier extension, it can warn the user that there is data it does not understand,
-and present the narrative to the user.
+В случае, если приложение вообще не распознает исполнителей действия (performer), факт того, что один из исполнителей имеет "modifierExtension", не важен, и приложение может игнорировать его. Если оно все же совершает обработку исполнителей и видит расширение-модификатор, оно может предупредить пользователя, что имеются данные, которые оно не может распознать, и вывести пользователю текстовое описание (narrative). 
 </p>
 
-<h3>Summary: Conformance Rules for Modifier Extensions</h3>
+<h3>Резюме: Правила обеспечения соответствия для Modifier Extensions</h3>
 <ul>
- <li>Modifier Extensions SHALL only modify the element which contains it and/or that element's children</li>
- <li>It SHALL always be safe to show the narrative to humans; any modifier extension SHALL be represented in the narrative</li>
- <li>Applications SHALL always check for modifier extensions when processing the data from any element that may carry one</li>
- <li>If a modifier Extension they do not understand is present, the application SHALL either refuse to process the resource or affected element, or provide an appropriate warning to its users</li>
+ <li>Расширения-модификаторы ДОЛЖНЫ влиять только на тот элемент и/или потомки этого элемента, который их содержит</li>
+ <li>Всегда ДОЛЖНО быть безопасно показать описательную часть людям; все расширения-модификаторы дОЛЖНЫ быть представлены в этой описательной части</li>
+ <li>Приложения всегда ДОЛЖНЫ проверять наличие расширений-модификаторов при обработке данных из любого элемента, который может их содержать</li>
+ <li>Если присутствует расширение-модификатор, который они не понимают, приложение ДОЛЖНО либо отказаться обрабатывать такой ресурс или затронутый элемент, либо выдать соответствующее предупреждение своим пользователям</li>
 </ul>
 
-<h3>Special Case: Missing data</h3>
+<h3>Особый случай: Отсутствие данных</h3>
 <p>
-In some cases, implementers may find that they do not have appropriate data for an
-element with minimum cardinality = 1. In this case, the element must be present, but 
-unless the resource or a profile on it has made the actual value of the primitive 
-data type mandatory, it is possible to provide an extension that explains why the 
-primitive value is not present:
+В некоторых случаях разработчики могут обнаружить, что у них нет данных для элемента с минимальным кардинальным числом = 1. В таком случае элемент обязательно должен присутствовать, но пока ресурс или соответствующий ему интеграционный профиль не потребует наличия реального значения (соответствующего простым типам данных), такой элемент может иметь расширение, объясняющее, почему значение примитивного типа отсутствует. 
 </p>
 <pre class="xml">
 &lt;uri&gt;
@@ -404,76 +343,65 @@ primitive value is not present:
 &lt;/uri&gt;
 </pre>
 <p>
-In this example, instead of a value, a <a href="general-extensions.html">data missing code</a> is provided. Note that 
-it is not required that this particular extension be used. This extension 
-is <b>not</b> a modifier extension, because the primitive data type has no
-value. 
+В данном примере вместо значения (value) указывается <a href="general-extensions.html">код отсутствия данных (data missing code)</a>. 
+Обратите внимание, что использование расширения такого типа необязательно. Данный элемент-расширение <b>нельзя</b> считать модификатором
+(modifier extension), т. к. ему не присваиваются значения, соответствующие примитивным типам данных. 
 </p>
 <p>
-It is not valid to create a fictional piece of data for the primitive value,
-and then to add an extension indicating that the data has been constructed
-to meet the data rules. This would be both a bad idea, and also a modifier
-extension, which is not allowed on data types. 
+Неправильно создавать формальное наполнение элемента (fictional piece of data) с содержимым, соответствующим примитивным типам данных, а затем включать в элемент расширение, определяющее добавление данных в целях обеспечения соответствия. Данное решение было бы неправильным еще и потому, что недопустимо использовать элемент "modifierExtension" для уточнения типов данных.
 </p>
 
 <a name="exchange"> </a>
-<h2>Exchanging Extensions</h2>
+<h2>Обмен расширениями</h2>
 
-<p>
-Extensions are a way of allowing local requirements to be reflected in a resource using
-a common information based approach so that all systems can confidently process them 
-using the same tools. However, when it comes to processing the information, applications
-will be constrained in their ability to handle extensions by the degree to which they 
-are informed about them. 
+<p>Элементы-расширения позволяют отражать локальные потребности здравоохранения с помощью подхода, основанного на универсальной [модели] информации. Это необходимо, чтобы медицинские системы могли работать с ресурсами с помощью одинаковых средств и инструментов. Однако, когда речь идет об обработке информации (содержищейся в ресурсах и уточненной расширениями), приложения будут ограничены в обработке расширений в той степени, в которой они располагают данными о них.
 </p>
 <p>
-While the structured definition of an extension should always be available (see below for 
-details), the mere availability of a definition does not automatically mean that applications
-know how to handle them correctly - generally, human decisions are required to made around
-how the data extensions contain should be handled, along with the implicit obligations 
-that around the information. 
+Несмотря на то, что каждое выражение (expression) должно сопровождаться описанием его структуры (structure definition) (см. далее подробности), само по себе наличие описания не означает, что приложение понимает, как правильно обрабатывать расширение. В целом, всегда требуется решение человека, который определит, каким образом будут использоваться данные, содержащиеся в элементах-расширениях, и какие обязательства в отношении данной информации должны выполняться.
 </p>
 <p>
-For this reason, local requirements that manifest as extensions are an obstacle to 
-integration. The more the requirements are shared (i.e. regional or national scale),
-the less impact they will have. The consistent representation, definition and registration of 
-extensions that this specification defines cannot resolve that problem - it only provides a framework 
-within which such local variations can be handled more easily. 
+По этой причине локальные потребности, которые находят отражение в форме расширений, препятствуют интеграции.
+Чем больше требований являются универсальными (например на региональном или общегосударственном уровне), тем меньшее
+влияние они оказывают на процессы интеграции. Согласованное представление, определение и регистрация расширений, 
+описанных в данной спецификации, не поможет решить существующую проблему. Необходима методология, которая упростит работу с локальными вариантами ресурсов. 
 </p>
 <p>
-When it comes to deploying applications that support local requirements, situations
-will very likely arise where different applications
-exchanging information with each other are supporting different sets of extensions.
-This specification makes some basic rules that are intended to make management
-of these situations easier, but they cannot resolve them.
+Внедрение медицинских приложений, обеспечивающих поддержку локальных потребностей, часто сопровождается ситуацией,
+при которой обменивающиеся информацией приложения поддерживают разные наборы расширений. Спецификация FHIR
+устанавливает ряд простых правил, направленных на управления такими ситуациями, однако не способна предложить решения
+для такого рода несоответствий.
 </p>
 <ul>
- <li>When exchanging resources, systems SHOULD retain unknown extensions when they are capable of doing so (just as they SHOULD retain core elements when they are capable of doing so)</li>
- <li>If a system modifies a resource it SHOULD remove any extensions that it does not understand from the 
-modified element and its descendants, because it cannot know whether the modifications it has made 
-might invalidate the value of the unknown extension</li>
- <li>Systems that drop existing elements are considered to be "processing the resource"</li>
- <li>A system SHALL not modify a resource or element that contains "modifier" extensions it doesn't understand</li>
- <li>Applications SHOULD ignore extensions that they do not recognize if they are not "modifier" extensions</li>
- <li>Systems that do not accept unknown extensions SHALL declare so in their Conformance resource instances</li>
+ <li>При обмене ресурсами системы МОГУТ, по возможности, сохранять неизвестные расширения (так же как и базовые элементы ресурса)</li>
+ <li>Если система изменяет ресурс, она МОЖЕТ удалить любые расширения, семантика которых для нее непонятна. Необходимо
+ удалять элемент-модификатор и все его элементы-потомки, потому что изменения, вносимые в ресурс, могут сделать
+ элемент-расширение некорректным</li>
+ <li>Системы, удаляющие (drop) существующие элементы, занимаются "обрабаткой ресурса" ("processing the resource")</li>
+ <li>Система НЕ ДОЛЖНА изменять ресурсы или элементы, которые содержат элементы-модификаторы с неясной семантикой  
+ </li>
+ <li>Приложения МОГУТ игнорировать расширения с неясной семантикой, если эти расширения не изменяют значение родительского элемента
+ </li>
+ <li>Системы, которые не принимают (к обработке) неизвестные расширения, ДОЛЖНЫ указывать это в экземплярах ресурсов, обеспечивающих соответствие (Conformance resource instance)
+ </li>
 </ul>
 <p>
-The degree to which a system can retain unknown extensions is a function of the type of system
-it is: a general purpose FHIR server, or a middleware engine would be expected to retain 
-all extensions, while an application that manages patient registration through a user 
-interface can only retain extensions to the degree that the information in them is part of the
-set managed by the user. Other applications will fall somewhere between these two extremes.
+То, в какой степени приложения должны сохранять неизвестные элементы-расширения зависит от функциий, которые они 
+выполняют: FHIR-сервер общего назначения или промежуточная платформа (middleware engine) сохраняют все расширения, в то 
+время, как приложения, используемые для управления данными пациентов (последством пользовательского интерфейса) 
+при регистрации, сохраняют только те, из неизвестных расширений, которые входят в набор информации, 
+непосредственно обрабатываемой пользователем.
 </p>
 
 <h3>Summary: Handling extensions</h3>
 <p>
-Use the following rules as a guideline for handling resources:
+Используйте следующие правила в качестве руководства для обработки ресурсов:
 </p>
 <ul>
- <li>When writing extensions, make sure they are defined and published</li>
- <li>When reading, navigating through or searching on elements that can have modifier extensions, check whether there are any</li>
- <li>When reading elements, ignore other extensions, unless you want to read a particular extension</li>
- <li>Retain extensions whenever you can</li>
+ <li>При написании расширений убедитесь, что они имеют [формализованное] описание и находятся в открытом доступе</li>
+ <li>При чтении, навигации или поиску по элементам, которые могут иметь расширения-модификаторы, проверяйте, имеются ли они</li>
+ <li>При чтении элементов игнорируйте другие расширения, если только вы не хотите прочитать конкретное расширение
+ </li>
+ <li>Фиксируйте расширения, где это возможно</li>
 </ul> 
  
 </div>
