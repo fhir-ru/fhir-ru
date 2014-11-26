@@ -61,7 +61,7 @@ imagingstudy/imagingstudy-spreadsheet.xml
 immunization/immunization-spreadsheet.xml
 immunizationrecommendation/immunizationrecommendation-spreadsheet.xml
 implementation.html
-index.html
++ index.html
 infrastructure.html
 json.html
 license.html
@@ -79,8 +79,8 @@ medicationstatement/medicationstatement-introduction.xml
 medicationstatement/medicationstatement-spreadsheet.xml
 messageheader/messageheader-spreadsheet.xml
 narrative.html
-newfooter.html
-newheader.html
++ newfooter.html
++ newheader.html
 observation/observation-spreadsheet.xml
 operationoutcome/operationoutcome-spreadsheet.xml
 operations.html
@@ -88,12 +88,12 @@ order/order-spreadsheet.xml
 orderresponse/orderresponse-spreadsheet.xml
 organization/organization-spreadsheet.xml
 other/other-spreadsheet.xml
-overview.html
++ overview.html
 patient/patient-spreadsheet.xml
 practitioner/practitioner-spreadsheet.xml
 procedure/procedure-spreadsheet.xml
 profile/profile-spreadsheet.xml
-profilelist.html
++ profilelist.html
 provenance/provenance-spreadsheet.xml
 pushpull.html
 query/query-spreadsheet.xml
