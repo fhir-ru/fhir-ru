@@ -95,7 +95,7 @@ procedure/procedure-spreadsheet.xml
 profile/profile-spreadsheet.xml
 + profilelist.html
 provenance/provenance-spreadsheet.xml
-pushpull.html
++ pushpull.html
 query/query-spreadsheet.xml
 questionnaire/questionnaire-spreadsheet.xml
 references.html
