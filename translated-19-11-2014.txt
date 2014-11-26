@@ -20,7 +20,7 @@
 + datatypes/address.xml
 + datatypes/attachment.xml
 + datatypes/codeableconcept.xml
-datatypes/coding.xml
++ datatypes/coding.xml
 - datatypes/contact.xml
 datatypes/extension.xml
 datatypes/humanname.xml
