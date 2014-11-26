@@ -102,30 +102,30 @@ references.html
 relatedperson/relatedperson-spreadsheet.xml
 resource/resource-spreadsheet.xml
 resourcelist.html
-resources.html
++ resources.html
 search.html
-security.html
++ security.html
 securityevent/securityevent-spreadsheet.xml
 slot/slot-spreadsheet.xml
 specimen/specimen-spreadsheet.xml
 substance/substance-spreadsheet.xml
-summary.html
++ summary.html
 supply/supply-spreadsheet.xml
-support.html
-template-book.html
-template-definitions.html
-template-example.html
-template-print.html
-template-profile-definitions.html
-template-profile-mappings.html
-template-tx-book.html
-template-tx.html
++ support.html
++ template-book.html
++ template-definitions.html
++ template-example.html
++ template-print.html
++ template-profile-definitions.html
++ template-profile-mappings.html
++ template-tx-book.html
++ template-tx.html
 template.html
-terminologies-bindings.html
-terminologies-systems.html
-terminologies.html
-toc.html
-todo.html
-usecases.html
++ terminologies-bindings.html
++ terminologies-systems.html
++ terminologies.html
++ toc.html
++ todo.html
++ usecases.html
 valueset/valueset-spreadsheet.xml
 xml.html
