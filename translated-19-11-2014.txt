@@ -17,7 +17,7 @@
 + datatypes-examples.html
 + datatypes-mappings.html
 + datatypes.html
-datatypes/address.xml
++ datatypes/address.xml
 datatypes/attachment.xml
 datatypes/codeableconcept.xml
 datatypes/coding.xml
