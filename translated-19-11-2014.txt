@@ -18,8 +18,8 @@
 + datatypes-mappings.html
 + datatypes.html
 + datatypes/address.xml
-datatypes/attachment.xml
-datatypes/codeableconcept.xml
++ datatypes/attachment.xml
++ datatypes/codeableconcept.xml
 datatypes/coding.xml
 - datatypes/contact.xml
 datatypes/extension.xml
