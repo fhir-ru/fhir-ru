@@ -969,9 +969,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Content in a format defined elsewhere</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">For referring to data content defined in other formats.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Для ссылки на данные в других форматах.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Many models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Многим моделям требуется включать в себя данные, определенные другими спецификациями, что является сложным и непрозрачным для модели здравоохранения. Эти данные могут включать в себя документы, медиа-записи, структурированные данные и т. д.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1002,15 +1002,15 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Mime type of the content, with charset etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует тип данных во вложении и позволяет выбрать метод интерпретирования или рендеринга данных. Включает в себя такие параметры MIME-типа, как кодировка, когда это уместно</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Processors of the data need to be able to know how to interpret the data</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Программам обработки данных нужна возможность узнать, как интерпретировать эти данные</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./mediaType, ./charset</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">ED.2+ED.3/RP.2+RP.3. Note conversion may be needed if old style values are being used</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">ED.2+ED.3/RP.2+RP.3. Обратите внимание: может понадобиться конвертация, если используются значения старого типа</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1033,11 +1033,11 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">en-AU</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Human language of the content (BCP-47)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Естественный язык содержимого (BCP-47)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The human language of the content. The value can be any valid value according to BCP 47</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Естественный язык содержимого. Значением может быть любое допустимое значение в соответствии с BCP 47</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Users need to be able to choose between the languages in a set of attachments</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">У пользователей должна быть возможность выбрать язык в наборе вложений</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1065,11 +1065,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Data inline, base64ed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual data of the attachment - a sequence of bytes. In XML, represented using base64</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Непосредственно сами данные вложения - последовательность байтов. В XML представляется в кодировке base64</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The data needs to able to be transmitted inline</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Должна быть возможность передавать данные внутри ресурса</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The base64-encoded data SHALL be expressed in the same character set as the base resource XML or JSON</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированные в base64 данные ДОЛЖНЫ быть в той же кодировке (character set ), что и XML или JSON код самого ресурса</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./data</Data><NamedCell
@@ -1096,18 +1096,18 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">http://www.acme.com/logo-small.png</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Uri where the data can be found</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">URI, по которому можно найти эти данные</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An alternative location where the data can be accessed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Альтернативный адрес доступа к этим данным</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The data needs to be transmitted by reference</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется возможность передавать данные по ссылке</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">If both data and url are provided, the url SHALL point to the same content as the data contains. Urls may be relative references or may reference transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures. Relative URLs are interpreted relative to the service url, like a resource reference, rather than relative to the resource itself. If a URL is provided, it SHALL resolve to actual data. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./reference/literal</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">RP.1+RP.2 - if they refer to a URL (see v2.6)</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">RP.1+RP.2 - если они относятся к URL (см. v2.6)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1130,14 +1130,14 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Number of bytes of content (if url provided)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The number of bytes of data that make up this attachment.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество байтов данных, составляющих вложение</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Representing the size allows applications to determine whether they should fetch the content automatically in advance, or refuse to fetch it at all</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Указание размера позволяет приложениям определять, следует ли им заранее закачать содержимое или вообще отказаться его скачивать</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The number of bytes is redundant if the data is provided as a base64binary, but is useful if the data is provided as a url reference</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество байтов является избыточной информацией, если данные в формате base64binary, но полезно, если данные представлены в виде ссылки url</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">N/A (needs data type R3 proposal)</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">N/A (необходимо предложение типа данных от R3)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1159,11 +1159,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Hash of the data (sha-1, base64ed )</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Хеш-сумма данных по алгоритму SHA-1 в кодировке base64</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The calculated hash of the data using SHA-1. Represented using base64</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Included so that applications can verify that the contents of a location have not changed and so that a signature of the content can implicitly sign the content of an image without having to include the data in the instance or reference the url in the signature</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Элемент добавлен для того, чтобы приложения могли удостовериться, что содержимое по ссылке не было изменено, и чтобы электронная подпись содержимого могла безоговорочно подписывать содержимое изображения без необходимости включать его данные в экземпляр или ссылаться на URL в подписи</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1223,11 +1223,11 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;Official Corporate Logo&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Label to display in place of the data</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Заголовок для отображения вместо данных</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A label or set of text to display in place of the data</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Заголовок или текст для отображения вместо данных</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Applications need a label to display to a human user in place of the actual data if the data cannot be rendered or perceived by the viewer.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Приложениям нужен заголовок, чтобы показывать пользователю вместо фактических данных, когда они не могут быть визуализированы или отображены программой просмотра.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6329,7 +6329,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">MimeType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The mime type of an attachment</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">MIME-тип вложения</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">http://www.rfc-editor.org/bcp/bcp13.txt</Data></Cell>
@@ -6344,7 +6344,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">Language</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A human language</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Естественный язык</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">http://tools.ietf.org/html/bcp47</Data></Cell>
