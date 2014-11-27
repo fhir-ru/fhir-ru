@@ -4,26 +4,26 @@
 todo: compartments
 -->
 <fhir>
-	<page title="Home" note="(map + search) - focus on useful links" filename="index.html">
-		<page title="Documentation" filename="documentation.html">
-			<page title="Table of Contents" filename="toc.html"/>
-			<page title="License and Legal Terms" filename="license.html"/>
-			<page title="Community and Credits" filename="credits.html"/>
-			<page title="Version History" filename="history.html"/>
-			<page title="DSTU Considerations" filename="dstu.html"/>
-			<page title="Outstanding Issues" filename="todo.html"/>
-			<page title="Summary" filename="summary.html"/>
-			<page title="Introduction" filename="overview.html">
-				<page title="Developer Introduction" filename="overview-dev.html"/>
-			</page>
-			<page title="Comparison" filename="comparison.html">
-				<page title="v2 Messaging" filename="comparison-v2.html"/>
-				<page title="v3 Messaging" filename="comparison-v3.html"/>
+<page title="Главная" note="(map + search) - focus on useful links" filename="index.html">
+  <page title="Документация" filename="documentation.html">
+    <page title="Содержание" filename="toc.html"/>
+    <page title="Лицензирование и условия использования" filename="license.html"/>
+    <page title="Наше сообщество и благодарности" filename="credits.html"/>
+    <page title="Журнал версий" filename="history.html"/>
+    <page title="Соображения, касающиеся DSTU" filename="dstu.html"/>
+    <page title="Нерешенные вопросы" filename="todo.html"/>
+    <page title="Краткий обзор" filename="summary.html"/>
+    <page title="Обзор стандарта и план развития" filename="overview.html">
+      <page title="Введение для разработчика" filename="overview-dev.html"/>
+    </page>
+    <page title="Сравнение с другими стандартами" filename="comparison.html">
+      <page title="Обмен сообщениями v2" filename="comparison-v2.html"/>
+      <page title="Обмен сообщениями v3 " filename="comparison-v3.html"/>
 				<page title="CDA" filename="comparison-cda.html"/>
-				<page title="Other Specifications" filename="comparison-other.html"/>
+      <page title="Другие стандарты" filename="comparison-other.html"/>
 			</page>
-			<page title="Coming Challenges" filename="change.html"/>
-			<page title="EHR FM map" filename="ehr-fm.html"/>
+			<page title="Предстоящие задачи" filename="change.html"/>
+			<page title="Соответствие ФМ ЭПМЗ и FHIR" filename="ehr-fm.html"/>
 			<page type="resource" resource="Encounter">
 				<!--    <page title="Resource Definitions" filename="resource.html"> -->
 				<page title="Definitions" filename="resource-definitions.html"/>
@@ -32,35 +32,35 @@ todo: compartments
 					<page title="Element Definition Formal Definitions" filename="elementdefinition-definitions.html"/>
 					<page title="Element Definition Mappings" filename="elementdefinition-mappings.html"/>
 				</page>
-				<page title="Conformance" filename="conformance-rules.html"/>
-				<page title="Tags, Bundles, Compartments" filename="extras.html">
-					<page title="Examples" filename="extras-examples.html"/>
-					<page title="Definitions" filename="extras-definitions.html"/>
-					<page title="Patient Compartment" filename="compartment-patient.html"/>
+				<page title="Правила обеспечения соответствия" filename="conformance-rules.html"/>
+				<page title="Теги, комплекты ресурсов, логические модули" filename="extras.html">
+					<page title="Примеры" filename="extras-examples.html"/>
+					<page title="Определения" filename="extras-definitions.html"/>
+					<page title="Логический модуль Patient" filename="compartment-patient.html"/>
 				</page>
-				<page title="References" filename="references.html">
-					<page title="Definitions" filename="references-definitions.html"/>
+				<page title="Ссылки (References)" filename="references.html">
+					<page title="Определения" filename="references-definitions.html"/>
 				</page>
-				<page title="Narrative" filename="narrative.html">
-					<page title="Narrative Example" filename="narrative-example.html"/>
-					<page title="Definitions" filename="narrative-definitions.html"/>
+				<page title="Описательная часть (Narrative)" filename="narrative.html">
+					<page title="Пример описательной части" filename="narrative-example.html"/>
+					<page title="Определения" filename="narrative-definitions.html"/>
 				</page>
-				<page title="Formats" filename="formats.html">
+      <page title="Форматы" filename="formats.html">
 					<page title="XML" filename="xml.html"/>
 					<page title="JSON" filename="json.html"/>
 				</page>
-				<page title="Extensibility" filename="extensibility.html">
-					<page title="Examples" filename="extensibility-examples.html"/>
-					<page title="Definitions" filename="extensibility-definitions.html"/>
+				<page title="Расширяемость" filename="extensibility.html">
+					<page title="Примеры" filename="extensibility-examples.html"/>
+					<page title="Определения" filename="extensibility-definitions.html"/>
 				</page>
 			</page>
-			<page title="Data Types" filename="datatypes.html">
-				<page title="Examples" filename="datatypes-examples.html"/>
-				<page title="Formal Definitions" filename="datatypes-definitions.html"/>
-				<page title="Mappings" filename="datatypes-mappings.html"/>
+    <page title="Типы данных" filename="datatypes.html">
+      <page title="Примеры" filename="datatypes-examples.html"/>
+      <page title="Формализованные определения" filename="datatypes-definitions.html"/>
+      <page title="Мэппинги (Mappings)" filename="datatypes-mappings.html"/>
 			</page>
-			<page title="Using Codes" filename="terminologies.html">
-				<page title="Systems" filename="terminologies-systems.html">
+    <page title="Использование кодовых значений" filename="terminologies.html">
+      <page title="Перечень кодовых систем" filename="terminologies-systems.html">
 					<page title="LOINC" filename="loinc.html"/>
 					<page title="SNOMED CT" filename="snomedct.html"/>
 					<page title="RxNorm" filename="rxnorm.html"/>
@@ -70,46 +70,46 @@ todo: compartments
 					<pages type="valueset" filename="template-valueset.html"/>
 					<pages type="codesystem" filename="template-codesystem.html"/>
 				</page>
-				<page title="V2 Tables" filename="terminologies-v2.html" source="v2/template.html">
+      <page title="Таблицы V2" filename="terminologies-v2.html" source="v2/template.html">
 					<pages type="v2-table" filename="template-v2.html"/>
 				</page>
-				<page title="V3 Namespaces" filename="terminologies-v3.html" source="v3/template.html">
+      <page title="Пространства имен V3" filename="terminologies-v3.html" source="v3/template.html">
 					<pages type="v3-vocab" filename="template-v3.html"/>
 				</page>
-				<page title="Concept Maps" filename="terminologies-conceptmaps.html"/>
+      <page title="Концептуальные карты" filename="terminologies-conceptmaps.html"/>
 				<page title="Service" filename="terminology-service.html"/>
 			</page>
-			<page title="Ballot Intro" filename="ballot-intro.html"/>
+    <page title="Голосование" filename="ballot-intro.html"/>
 		</page>
-		<page title="Implementation" filename="implementation.html">
+		<page title="Реализация" filename="implementation.html">
 			<page title="RESTful API" filename="http.html">
-				<page title="Search" filename="search.html"/>
-				<page title="_filter Parameter" filename="search_filter.html"/>
+				<page title="Поиск" filename="search.html"/>
+				<page title="Параметр _filter" filename="search_filter.html"/>
 			</page>
-			<page title="Operations" filename="operations.html">
-				<page title="Example" filename="op-example-request.html"/>
+			<page title="Операции" filename="operations.html">
+				<page title="Пример" filename="op-example-request.html"/>
 			</page>
-			<page title="Messaging" filename="messaging.html"/>
-			<page title="Documents" filename="documents.html"/>
-			<page title="Downloads" filename="downloads.html"/>
-			<page title="Using Resources" filename="use.html"/>
-			<page title="Support" filename="support.html"/>
+    <page title="Обмен сообщениями" filename="messaging.html"/>
+    <page title="Документы" filename="documents.html"/>
+    <page title="Загрузки" filename="downloads.html"/>
+    <page title="Использование ресурсов" filename="use.html"/>
+    <page title="Поддержка реализации" filename="support.html"/>
 			<page title="Managing Resource Identity" filename="managing.html"/>
 			<page title="Services / SOA" filename="services.html"/>
-			<page title="Interaction Patterns" filename="pushpull.html"/>
-			<page title="Profiling FHIR" filename="profiling.html">
-				<page title="Examples" filename="profiling-examples.html"/>
-				<page title="Profile List" filename="profilelist.html"/>
-				<page title="Common Usages" filename="usecases.html"/>
+			<page title="Шаблоны взаимодействия" filename="pushpull.html"/>
+			<page title="Профилирование FHIR" filename="profiling.html">
+				<page title="Примеры" filename="profiling-examples.html"/>
+				<page title="Перечень профилей" filename="profilelist.html"/>
+				<page title="Распространенные случаи использования" filename="usecases.html"/>
 			</page>
-			<page title="Security" filename="security.html">
-				<page title="Security Labels" filename="security-labels.html"/>
+			<page title="Безопасность" filename="security.html">
+				<page title="Метки уровня безопасности" filename="security-labels.html"/>
 			</page>
-			<page title="Integrated Examples" filename="integrated-examples.html"/>
-			<page title="Implementation Guides" filename="iglist.html">
-				<page title="Structured Data Capture" filename="sdc.html">
-					<page title="SDC Introduction" filename="sdc-intro.html"/>
-					<page title="SDC Security" filename="sdc-security.html"/>
+			<page title="Комплексные примеры" filename="integrated-examples.html"/>
+    <page title="Инструкции по реализации" filename="iglist.html">
+      <page title="Сбор структурированных данных" filename="sdc.html">
+        <page title="Введение в SDC" filename="sdc-intro.html"/>
+        <page title="Безопасность в SDC" filename="sdc-security.html"/>
 				</page>
 				<page title="Data Access Framework (DAF)" filename="daf.html">
 					<page title="DAF Introduction" filename="daf-intro.html"/>
@@ -122,7 +122,7 @@ todo: compartments
 				</page>
 			</page>
 		</page>
-		<page title="Resources" filename="resourcelist.html"/>
+		<page title="Ресурсы" filename="resourcelist.html"/>
 		<!--    Every Resource below has structure:
       resource
       definitions
@@ -131,7 +131,7 @@ todo: compartments
        [- example]
       mappings
       -->
-		<page title="Clinical" filename="clinical.html">
+  <page title="Клинические" filename="clinical.html">
 			<page type="resource" resource="AllergyIntolerance"/>
 			<page type="resource" resource="Condition"/>
 			<page type="resource" resource="CarePlan"/>
@@ -158,7 +158,7 @@ todo: compartments
 			<page type="resource" resource="QuestionnaireAnswers"/>
 			<page type="resource" resource="FamilyHistory"/>
 		</page>
-		<page title="Administrative" filename="administration.html">
+  <page title="Административные" filename="administration.html">
 			<page type="resource" resource="Patient"/>
 			<page type="resource" resource="RelatedPerson"/>
 			<page type="resource" resource="Practitioner"/>
@@ -183,7 +183,7 @@ todo: compartments
 			<page type="resource" resource="Availability"/>
 			<page type="resource" resource="Slot"/>
 		</page>
-		<page title="Infrastructure" filename="infrastructure.html">
+  <page title="Инфраструктурные" filename="infrastructure.html">
 			<page type="resource" resource="List"/>
 			<page type="resource" resource="Media"/>
 			<page type="resource" resource="Basic"/>
