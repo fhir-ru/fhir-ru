@@ -27,7 +27,7 @@
 + datatypes/identifier.xml
 + datatypes/narrative.xml
 + datatypes/period.xml
-datatypes/quantity.xml
++ datatypes/quantity.xml
 datatypes/range.xml
 datatypes/ratio.xml
 - datatypes/resourcereference.xml
