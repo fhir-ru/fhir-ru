@@ -975,15 +975,15 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">An identifier intended for computation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A technical identifier - identifies some entity uniquely and unambiguously</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Технический идентификатор - определяет некоторую сущность однозначно и недвусмысленно</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Должен идентифицировать вещи с уверенностью и давать гарантию, что идентификация не подвержена ошибочному истолкованию.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">II - see see identifier pattern at http://wiki.hl7.org/index.php?title=Common_Design_Patterns#Identifier_Pattern for relevant discussion. The Identifier class is a little looser than the v3 type II because it allows URIs as well as registered OIDs or GUIDs.  Also maps to Role[classCode=IDENT]</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">II - см. шаблоны идентификаторов на странице http://wiki.hl7.org/index.php?title=Common_Design_Patterns#Identifier_Pattern для соответствующего обсуждения. Класс Identifier немного менее определенный, чем v3 type II, т. к. разрешает использовать URIs наряду с зарегистрированными OIDs или GUIDs</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">CX / EI (occasionally, more often EI maps to a resource id or a URL)</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">CX / EI (изредка, в основном EI устанавливает соответствие с id ресурса или с URL)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1012,9 +1012,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The purpose of this identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет выбрать подходящий идентификатор для определенного контекста использования среди набора идентификаторов</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Является модификатором, поскольку приложения не должны по ошибке принять временный id за постоянный. Приложения могут принимать идентификатор за постоянный, если только явно не оговорено, что он временный</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Role.code or implied by context</Data><NamedCell
@@ -1043,9 +1043,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Description of identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A text string for the identifier that can be displayed to a human so they can recognize the identifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текстовая строка, которую можно отобразить человеку для распознавания идентификатора</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows humans to make use of identifiers when the identifier system is not known</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет людям пользоваться идентификаторами, когда система распознавания не известна</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1074,11 +1074,11 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the id itself is a full uri</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The namespace for the identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пространство имён идентификатора</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Establishes the namespace in which set of possible id values is unique.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Устанавливает пространство имён, в котором набор возможных значений id является уникальным</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Существует много последовательностей идентификаторов. Чтобы найти соответствие, нам необходимо знать, с какой последовательностью мы имеем дело. Система идентифицирует конкретную последовательность или набор уникальных идентификаторов</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1108,15 +1108,15 @@
     <Cell ss:StyleID="s87"><Data ss:Type="Number">123456</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The value that is unique</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение, являющееся уникальным</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The portion of the identifier typically displayed to the user and which is unique within the context of the system.</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Часть идентификатора, обычно отображаемая пользователю, которая является уникальной в контексте системы.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если значением является полный URI, тогда система ДОЛЖНА быть urn:ietf:rfc:3986</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">II.extension или II.root, если система содержит OID или GUID</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">CX.1 / EI.1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1141,9 +1141,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time period when id is/was valid for use</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Временной период, когда id является/являлся допустимым к использованию</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Time period during which identifier is/was valid for use</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Временной период, в течение которого идентификатор является/являлся допустимым к использованию</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1152,7 +1152,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">CX.7 + CX.8</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">./StartDate and ./EndDate</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">./StartDate и ./EndDate</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1175,13 +1175,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Organization that issued id (may be just text)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Organization that issued/manages the identifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, присвоившая/управляющая идентификатором</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The reference may be just a text description of the assigner</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка может быть просто текстовым описанием того, кто назначил идентификатор</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">II.assigningAuthorityName, однако обратите внимание, что это неподходящее использование поля по определению.  Also Role.scoper</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">CX.4 / (CX.4,CX.9,CX.10)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6414,7 +6414,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">IdentifierUse</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Identifies the purpose for this identifier, if known&#10;</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Указывает назначение этого идентификатора, если известно&#10;</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#identifier-use</Data></Cell>
