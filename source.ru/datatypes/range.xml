@@ -969,16 +969,16 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Set of values bounded by low and high</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A set of ordered Quantities defined by a low and high limit. </Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Множество упорядоченных величин, заданных нижним и верхним пределом. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to be able to specify ranges of values</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Необходима возможность указывать диапазоны значений</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -&gt; 3</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Предполагается, что установленные нижнее и верхнее значения имеют произвольно высокую точность, когда доходит до определения, какие значения входят в диапазон, т.е. 1.99 не входит в диапазон 2 -&gt; 3</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">IVL&lt;QTY[not(type=&quot;TS&quot;)]&gt; [lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]or URG&lt;QTY[not(type=&quot;TS&quot;)]&gt;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">NR and also possibly SN (but see also quantity)</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">NR, а также, возможно, SN (но см. также quantity)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1002,10 +1002,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Low limit </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The low limit. The boundary is inclusive.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Нижний предел. Значение предела входит в диапазон.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the low element is missing, the low boundary is not known.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если элемент low отсутствует, нижняя граница не известна.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./low</Data><NamedCell
@@ -1034,10 +1034,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">High limit </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The high limit. The boundary is inclusive. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Верхний предел. Значение предела входит в диапазон. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the high element is missing, the high boundary is not known. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если элемент high отсутствует, верхняя граница не известна. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./high</Data><NamedCell
@@ -3496,7 +3496,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Range</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">If present, low SHALL have a lower value than high</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Если присутствует, то low ДОЛЖЕН иметь значение меньше, чем high</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))</Data><NamedCell
@@ -3507,7 +3507,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">No Range flag on Quantity</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Range</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Quantity values cannot have a comparator when used in a Range</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Значения типа Quantity не могут иметь компаратор, когда используются в типе данных Range</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">lowcomparator.oclIsUndefined and high.comparator.oclIsUndefined)</Data></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:low/f:comparator) or exists(f:high/f:comparator))</Data></Cell>
    </Row>
