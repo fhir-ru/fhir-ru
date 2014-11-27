@@ -34,7 +34,7 @@
 + datatypes/sampleddata.xml
 - datatypes/schedule.xml
 + device/device-spreadsheet.xml
-deviceobservationreport/deviceobservationreport-spreadsheet.xml
++ deviceobservationreport/deviceobservationreport-spreadsheet.xml
 diagnosticorder/diagnosticorder-spreadsheet.xml
 diagnosticreport/diagnosticreport-spreadsheet.xml
 + documentation.html

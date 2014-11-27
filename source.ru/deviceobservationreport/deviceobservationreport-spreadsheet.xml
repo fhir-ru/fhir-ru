@@ -974,9 +974,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Describes the data produced by a device at a point in time</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Описывает данные, полученные с помощью устройства в определенный момент времени.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the data produced by a device at a point in time</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает данные, полученные с помощью устройства в определенный момент времени.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
