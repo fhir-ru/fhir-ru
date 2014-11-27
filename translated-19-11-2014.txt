@@ -28,10 +28,10 @@
 + datatypes/narrative.xml
 + datatypes/period.xml
 + datatypes/quantity.xml
-datatypes/range.xml
-datatypes/ratio.xml
++ datatypes/range.xml
++ datatypes/ratio.xml
 - datatypes/resourcereference.xml
-datatypes/sampleddata.xml
++ datatypes/sampleddata.xml
 - datatypes/schedule.xml
 device/device-spreadsheet.xml
 deviceobservationreport/deviceobservationreport-spreadsheet.xml
