@@ -39,7 +39,7 @@
 + diagnosticreport/diagnosticreport-spreadsheet.xml
 + documentation.html
 + documentmanifest/documentmanifest-spreadsheet.xml
-documentreference/documentreference-spreadsheet.xml
++ documentreference/documentreference-spreadsheet.xml
 + documents.html
 + downloads.html
 - dstu.html
