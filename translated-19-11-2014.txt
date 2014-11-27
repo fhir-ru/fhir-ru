@@ -105,12 +105,12 @@ resource/resource-spreadsheet.xml
 + resources.html
 + search.html
 + security.html
-securityevent/securityevent-spreadsheet.xml
-slot/slot-spreadsheet.xml
-specimen/specimen-spreadsheet.xml
-substance/substance-spreadsheet.xml
++ securityevent/securityevent-spreadsheet.xml
++ slot/slot-spreadsheet.xml
++ specimen/specimen-spreadsheet.xml
++ substance/substance-spreadsheet.xml
 + summary.html
-supply/supply-spreadsheet.xml
++ supply/supply-spreadsheet.xml
 + support.html
 + template-book.html
 + template-definitions.html
@@ -127,7 +127,7 @@ supply/supply-spreadsheet.xml
 + toc.html
 + todo.html
 + usecases.html
-valueset/valueset-spreadsheet.xml
++ valueset/valueset-spreadsheet.xml
 + xml.html
 implementations/java/org.hl7.fhir.utilities/src/org/hl7/fhir/utilities/xhtml/HeirarchicalTableGenerator.java
 tools/java/org.hl7.fhir.instance/src/org/hl7/fhir/instance/utils/NarrativeGenerator.java tools/java/org.hl7.fhir.tools.core/src/org/hl7/fhir/definitions/generators/specification/DictHTMLGenerator.java tools/java/org.hl7.fhir.tools.core/src/org/hl7/fhir/definitions/generators/specification/MappingsGenerator.java tools/java/org.hl7.fhir.tools.core/src/org/hl7/fhir/tools/publisher/BreadCrumbManager.java
