@@ -38,7 +38,7 @@
 + diagnosticorder/diagnosticorder-spreadsheet.xml
 + diagnosticreport/diagnosticreport-spreadsheet.xml
 + documentation.html
-documentmanifest/documentmanifest-spreadsheet.xml
++ documentmanifest/documentmanifest-spreadsheet.xml
 documentreference/documentreference-spreadsheet.xml
 + documents.html
 + downloads.html
