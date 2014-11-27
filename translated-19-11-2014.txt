@@ -23,7 +23,7 @@
 + datatypes/coding.xml
 - datatypes/contact.xml
 - datatypes/extension.xml
-datatypes/humanname.xml
++ datatypes/humanname.xml
 datatypes/identifier.xml
 datatypes/narrative.xml
 datatypes/period.xml
