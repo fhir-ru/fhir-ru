@@ -103,7 +103,7 @@ relatedperson/relatedperson-spreadsheet.xml
 resource/resource-spreadsheet.xml
 resourcelist.html
 + resources.html
-search.html
++ search.html
 + security.html
 securityevent/securityevent-spreadsheet.xml
 slot/slot-spreadsheet.xml
@@ -120,7 +120,7 @@ supply/supply-spreadsheet.xml
 + template-profile-mappings.html
 + template-tx-book.html
 + template-tx.html
-template.html
++ template.html
 + terminologies-bindings.html
 + terminologies-systems.html
 + terminologies.html
@@ -128,4 +128,7 @@ template.html
 + todo.html
 + usecases.html
 valueset/valueset-spreadsheet.xml
-xml.html
++ xml.html
+implementations/java/org.hl7.fhir.utilities/src/org/hl7/fhir/utilities/xhtml/HeirarchicalTableGenerator.java 
+tools/java/org.hl7.fhir.instance/src/org/hl7/fhir/instance/utils/NarrativeGenerator.java tools/java/org.hl7.fhir.tools.core/src/org/hl7/fhir/definitions/generators/specification/DictHTMLGenerator.java tools/java/org.hl7.fhir.tools.core/src/org/hl7/fhir/definitions/generators/specification/MappingsGenerator.java tools/java/org.hl7.fhir.tools.core/src/org/hl7/fhir/tools/publisher/BreadCrumbManager.java 
+tools/java/org.hl7.fhir.tools.core/src/org/hl7/fhir/tools/publisher/PageProcessor.java
