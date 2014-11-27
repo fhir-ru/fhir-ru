@@ -58,7 +58,7 @@ familyhistory/familyhistory-spreadsheet.xml
 + heirarchy.xml
 + http.html
 imagingstudy/imagingstudy-spreadsheet.xml
-immunization/immunization-spreadsheet.xml
++ immunization/immunization-spreadsheet.xml
 immunizationrecommendation/immunizationrecommendation-spreadsheet.xml
 + implementation.html
 + index.html
