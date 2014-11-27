@@ -213,7 +213,7 @@ todo: compartments
 			<page type="resource" resource="NamingSystem"/>
 			<page type="resource" resource="ConceptMap"/>
 		</page>
-		<page title="Financial" filename="financial.html">
+		<page title="Финансовые" filename="financial.html">
 			<page type="resource" resource="ClaimResponse"/>
 			<page type="resource" resource="Coverage"/>
 			<page type="resource" resource="Eligibility"/>
