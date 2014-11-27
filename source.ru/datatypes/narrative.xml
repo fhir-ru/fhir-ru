@@ -967,9 +967,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A human-readable formatted text, including images</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Человекочитаемый отформатированный текст, включая изображения</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A human-readable formatted text, including images</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Человекочитаемый отформатированный текст, включая изображения</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -999,7 +999,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">generated | extensions | additional</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус описания говорит о том, является ли оно полностью сгенерированным только из имеющихся данных или расширений тоже), или же его автором является человек, и он может содержать дополнительные данные</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1026,12 +1026,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Limited xhtml content</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ограниченное XHTML-содержимое</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual narrative content, a stripped down version of XHTML</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Фактическое содержимое описательной части, урезанная версия XHTML</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href), images and internally contained stylesheets. The XHTML content may not contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержимое HTML-элемента – это фрагмент XHTML, содержащий только базовые HTML-элементы форматирования, описанные в главах 7-11 и 15 стандарта HTML 4.0, элементы &lt;a&gt; (либо name, либо href), изображения и внутренние стили. XHTML-содержимое не может включать в себя элементы head, body, ссылки на внешние таблицы стилей, скрипты, формы, base/link/xlink, фреймы, iframes и объекты.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">N/A</Data><NamedCell
@@ -3488,7 +3488,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Narrative.div</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">The narrative SHALL contain only the basic html formatting elements described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href), images and internally contained style attributes</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Описание ДОЛЖНО содержать только базовые HTML-атрибуты форматирования, описанные в главах 7-11 (кроме раздела 4 главы 9) и 15 стандарта HTML 4.0 , элементы &lt;a&gt; (name либо href), изображения и внутренние атрибуты стилей</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(descendant-or-self::*[not(local-name(.)=('a', 'abbr', 'acronym', 'b', 'big', 'blockquote', 'br', 'caption', 'cite', 'code', 'colgroup', 'dd', 'dfn', 'div', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'img', 'li', 'ol', 'p', 'pre', 'q', 'samp', 'small', 'span', 'strong', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'tt', 'ul', 'var'))])</Data><NamedCell
@@ -3499,7 +3499,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Narrative.div</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The narrative SHALL have some non-whitespace content</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Описание ДОЛЖНО иметь некоторое не пробельное содержимое</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">descendant::text()[normalize-space(.)!=''] or descendant::h:img[@src]</Data></Cell>
    </Row>
@@ -3508,7 +3508,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Narrative.div</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The narrative SHALL contain only the basic html formatting attributes described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href), images and internally contained style attributes</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Описание ДОЛЖНО содержать только базовые HTML-атрибуты форматирования, описанные в главах 7-11 (кроме раздела 4 главы 9) и 15 стандарта HTML 4.0 , элементы &lt;a&gt; (name либо href), изображения и внутренние атрибуты стилей</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(descendant-or-self::*/@*[not(name(.)=('abbr', 'accesskey', 'align', 'alt', 'axis', 'bgcolor', 'border', 'cellhalign', 'cellpadding', 'cellspacing', 'cellvalign', 'char', 'charoff', 'charset', 'cite', 'class', 'colspan', 'compact', 'coords', 'dir', 'frame', 'headers', 'height', 'href', 'hreflang', 'hspace', 'id', 'lang', 'longdesc', 'name', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'scope', 'shape', 'span', 'src', 'start', 'style', 'summary', 'tabindex', 'title', 'type', 'valign', 'value', 'vspace', 'width'))])  </Data></Cell>
    </Row>
@@ -6268,7 +6268,7 @@
    </Row>
    <Row>
     <Cell ss:StyleID="s145"><Data ss:Type="String">NarrativeStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of a resource narrative</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус описательной части ресурса</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#narrative-status</Data></Cell>
@@ -6862,7 +6862,7 @@
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"/>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The contents of the narrative are entirely generated from the structured data in the resource.</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Содержимое описательной части полностью сгенерировано из структурированных данных ресурса.</Data></Cell>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
@@ -6873,7 +6873,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s150"/>
     <Cell ss:StyleID="s150"/>
-    <Cell ss:StyleID="s150"><Data ss:Type="String">The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions</Data></Cell>
+    <Cell ss:StyleID="s150"><Data ss:Type="String">Содержимое описательной части полностью сгенерировано из структурированных данных ресурса и некоторое содержимое сгенерировано из расширений</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -6884,7 +6884,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s150"/>
     <Cell ss:StyleID="s150"/>
-    <Cell ss:StyleID="s150"><Data ss:Type="String">The contents of the narrative contain additional information not found in the structured data</Data></Cell>
+    <Cell ss:StyleID="s150"><Data ss:Type="String">Содержимое описательной части включает в себя дополнительную информацию, отсутствующую в структурированных данных</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -6895,7 +6895,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s150"/>
     <Cell ss:StyleID="s150"/>
-    <Cell ss:StyleID="s150"><Data ss:Type="String">the contents of the narrative are some equivalent of &quot;No human-readable text provided for this resource&quot;</Data></Cell>
+    <Cell ss:StyleID="s150"><Data ss:Type="String">Содержимым описательной части является некоторый эквивалент фразы &quot;Для этого ресурса не приведен человекочитаемый текст&quot;</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
