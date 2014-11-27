@@ -988,7 +988,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Immunization profile</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A patient's point-of-time immunization status and recommendation with optional supporting justification</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Состояние иммунизации пациента в определенный момент времени и рекомендации с опциональным указанием их обоснованности.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
