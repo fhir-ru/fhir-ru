@@ -2,7 +2,7 @@
 
 
       
-[%settitle Implementation%]
+[%settitle Реализация%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,65 +13,66 @@
 <div class="col-9">
 
 
-<h2>Implementation</h2>
+<h2>Реализация стандарта FHIR</h2>
 <table width="100%">
  <tr>
  <td>
-<p><b>Exchange Frameworks</b></p>
-<p>Define how Resources are exchanged.</p>
+<p><b>Инфраструктуры обмена ресурсами</b></p>
+<p>Методы обмена ресурсами:</p>
 <ul>
-  <li><a href="http.html"><b>RESTful API (HTTP)</b></a></li>
-  <li><a href="search.html">Search / Query</a></li>
-  <li><a href="operations.html">Operations</a></li>
-  <li><a href="documents.html">Documents</a></li>
-  <li><a href="messaging.html">Messaging</a></li>
-  <li><a href="services.html">Services (SOA)</a></li>
+  <li><a href="http.html"><b>REST-интерфейс (HTTP)</b></a></li>
+  <li><a href="search.html">Механизм поиска/запросов</a></li>
+  <li><a href="operations.html">Операции</a></li>
+  <li><a href="documents.html">Клинические документы</a></li>
+  <li><a href="messaging.html">Обмен сообщениями</a></li>
+  <li><a href="services.html">Сервисы (SOA)</a></li>
 </ul>
 </td><td style="border-left: 1px solid #eeeeee">
-<p><b>Support</b></p>
-<p>Implementation Support.</p>
+<p><b>Поддержка</b></p>
+<p>Поддержка реализации</p>
 <ul>
-  <li><a href="downloads.html">Downloads - Schemas, Code, Tools</a></li>
-  <li><a href="iglist.html">Implementation Guides</a></li>
-  <li><a href="managing.html">Managing Resource Identity</a></li>
-  <li><a href="pushpull.html">Push vs Pull</a></li>
-  <li><a href="support.html">Support Links</a></li>
+  <li><a href="downloads.html">Скачать - Схемы, исходный код, инструменты</a></li>
+  <li><a href="iglist.html">Инструкции по реализации</a></li>
+  <li><a href="managing.html">Управление идентификацией ресурса</a></li>
+  <li><a href="pushpull.html">Методы обмена данными: Push и Pull</a></li>
+  <li><a href="support.html">Ссылки на дополнительные материалы </a></li>
 </ul>
 </td><td style="border-left: 1px solid #eeeeee">
-<p><b>Using FHIR</b></p>
-<p>Making use of FHIR.</p>
+<p><b>Применение стандарта FHIR</b></p>
+<p>Практическое использование FHIR</p>
 <ul>
-  <li><a href="profiling.html">Profiling FHIR</a></li>
-  <li><a href="profilelist.html">Profiles Defined as part of FHIR</a></li>
-  <li><a href="usecases.html">Common Use Cases</a></li>
-  <li><a href="security.html">Security</a> &amp;  <a href="security-labels.html">Security Labels</a></li>
-  <li><a href="integrated-examples.html">Integrated Examples</a></li>
+  <li><a href="profiling.html">Профилирование FHIR</a></li>
+  <li><a href="profilelist.html">Профили, поддерживаемые стандартом FHIR</a></li>
+  <li><a href="usecases.html">Типовые сценарии использования</a></li>
+  <li><a href="security.html">Безопасность</a> и <a href="security-labels.html">уровни безопасности</a></li>
+  <li><a href="integrated-examples.html">Примеры использования ресурсов</a></li>
 </ul>
 </td></tr></table>
 
-<h3>Implementers Safety Check List</h3>
+<h3>Вопросник для проектировании безопасных медицинских информационных систем</h3>
 <p>
-FHIR is as simple to implement as we know how to make it. However, due to the nature of 
-healthcare, and healthcare processes, and cultural concerns, there are a number of features in
-FHIR that implementers are obliged to consider in order to implement safe systems.
+Стандарт FHIR очень прост в реализации. Однако, из-за характера отрасли здравоохранения, клинических 
+процессов и культурных традиций, имеющих отношение к оказанию медицинских услуг, при проектирования безопасных систем
+разработчикам решений на базе FHIR необходимо уделить внимание некоторым особенностям стандарта.
 </p>
 <p>
-This section is a check list to help implementers be sure that they've considered all the parts
-of FHIR that impact on their system design with regard to safety. 
+Представляем опросник, с помощью которого вы сможете убедиться, что уделили достаточное
+внимание обеспечению безопасности при проектировании медицинских информационных систем.
+
 </p>
 <ol>
- <li><input type="checkbox"/> Production exchange of patient or other sensitive data will always use some form of <a href="security.html#http">encryption on the wire</a></li>
- <li><input type="checkbox"/> For each resource that my system handles, I've reviewed the <a href="conformance-rules.html#isModifier">Modifier elements</a></li>
- <li><input type="checkbox"/> My system checks for <a href="extensibility.html#modifierExtension">modifierExtension</a> elements</li>
- <li><input type="checkbox"/> My system supports <a href="conformance-rules.html#mustSupport">elements labelled as "must-support"</a> in the <a href="profile.html">Profiles</a> that apply to my system</li>
- <li><input type="checkbox"/> My system can <a href="narrative.html#css">render narratives properly</a> (if/when they are used)</li>
- <li><input type="checkbox"/> My system has documented how <a href="managing.html#distributed">distributed resource identification</a> works in its relevant contexts of use</li>
- <li><input type="checkbox"/> My system uses the right <a href="security-labels.html#core">security labels</a> where appropriate</li>
- <li><input type="checkbox"/> When other systems <a href="http.html#summary">return http errors from the RESTful API</a> or from the <a href="messaging.html#mailbox">Mailbox</a> (perhaps using <a href="operationoutcome.html">Operation Outcome</a>), my system checks for them and handles them appropriately</li>
- <li><input type="checkbox"/> My system publishes a <a href="conformance.html">conformance statement</a> so other implementers know what it does</li>
+ <li><input type="checkbox"/> Обмен данными о пациенте или любыми другими конфиденциальными данными будет во всех случаях происходить с использованием <a href="security.html#http">шифрования</a></li>
+ <li><input type="checkbox"/> Я проверил <a href="conformance-rules.html#isModifier">элементы перемены значения (Modificators)</a> всех ресурсов, используемых в моей системе</li>
+ <li><input type="checkbox"/> Моя система выполняет проверку на наличие элементов <a href="extensibility.html#modifierExtension">modifierExtension</a></li>
+ <li><input type="checkbox"/> Моя система поддерживает <a href="conformance-rules.html#mustSupport">обязательные элементы, указанные</a> в поддерживаемых <a href="profile.html">Интеграционных профилях</a></li>
+ <li><input type="checkbox"/> Моя система в состоянии корректно <a href="narrative.html#css">отображать элементы описания (narratives)</a> (если/когда они используются)</li>
+ <li><input type="checkbox"/> Существует документированное представление о принятых в системе подходах к <a href="managing.html#distributed"> идентификации распределенных ресурсов</a> в соответствии с контекстом их использования</li>
+ <li><input type="checkbox"/> Моя система использует корректные <a href="security-labels.html#core">метки уровня безопасности</a> там, где это необходимо</li>
+ <li><input type="checkbox"/> Когда взаимодействующая система<a href="http.html#summary">возвращает ошибку http с помощью RESTful-интерфейса</a> или сервиса <a href="messaging.html#mailbox">Mailbox</a> (возможно, в содержании ресурса <a href="operationoutcome.html">Operation Outcome</a>), моя система способна идентифицировать ошибку и выполнить необходимое действие</li>
+ <li><input type="checkbox"/> Моя система распространяется вместе с <a href="conformance.html">Заявлением о соответствии (Conformance statement)</a>, поэтому другие разработчики знают о поддерживаемой ею функциональности</li>
 </ol> 
 <p>
-Obviously this list is only a small part of the overall safety check list for an application, which will have checks regarding jurisdictionally mandated policies, internal integrity, etc.
+Очевидно, что это лишь малая часть вопросов, которые должны включаться в вопросник для обеспечения безопасности приложения, при проверке уровня его защиты в соответствии с законодательно установленными правилами, принципами целостности внутренней структуры и т. д.
 </p>
 
 </div>

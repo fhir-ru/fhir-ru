@@ -60,11 +60,11 @@ group/group-spreadsheet.xml
 imagingstudy/imagingstudy-spreadsheet.xml
 immunization/immunization-spreadsheet.xml
 immunizationrecommendation/immunizationrecommendation-spreadsheet.xml
-implementation.html
++ implementation.html
 + index.html
-infrastructure.html
-json.html
-license.html
++ infrastructure.html
++ json.html
++ license.html
 list/list-spreadsheet.xml
 location/location-spreadsheet.xml
 media/media-spreadsheet.xml
@@ -78,12 +78,12 @@ medicationprescription/medicationprescription-spreadsheet.xml
 medicationstatement/medicationstatement-introduction.xml
 medicationstatement/medicationstatement-spreadsheet.xml
 messageheader/messageheader-spreadsheet.xml
-narrative.html
++ narrative.html
 + newfooter.html
 + newheader.html
 observation/observation-spreadsheet.xml
 operationoutcome/operationoutcome-spreadsheet.xml
-operations.html
++ operations.html
 order/order-spreadsheet.xml
 orderresponse/orderresponse-spreadsheet.xml
 organization/organization-spreadsheet.xml
@@ -98,10 +98,10 @@ provenance/provenance-spreadsheet.xml
 + pushpull.html
 query/query-spreadsheet.xml
 questionnaire/questionnaire-spreadsheet.xml
-references.html
++ references.html
 relatedperson/relatedperson-spreadsheet.xml
 resource/resource-spreadsheet.xml
-resourcelist.html
++ resourcelist.html
 + resources.html
 + search.html
 + security.html
