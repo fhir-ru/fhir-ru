@@ -53,7 +53,7 @@ familyhistory/familyhistory-spreadsheet.xml
 + footer2.html
 + footer3.html
 + formats.html
-group/group-spreadsheet.xml
++ group/group-spreadsheet.xml
 + header.html
 + heirarchy.xml
 + http.html
