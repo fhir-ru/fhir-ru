@@ -44,7 +44,7 @@
 + downloads.html
 - dstu.html
 + ehr-fm.html
-encounter/encounter-spreadsheet.xml
++ encounter/encounter-spreadsheet.xml
 + extensibility-examples.html
 + extensibility.html
 familyhistory/familyhistory-spreadsheet.xml
