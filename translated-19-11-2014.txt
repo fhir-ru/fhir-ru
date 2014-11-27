@@ -24,7 +24,7 @@
 - datatypes/contact.xml
 - datatypes/extension.xml
 + datatypes/humanname.xml
-datatypes/identifier.xml
++ datatypes/identifier.xml
 datatypes/narrative.xml
 datatypes/period.xml
 datatypes/quantity.xml
