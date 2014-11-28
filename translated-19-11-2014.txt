@@ -66,7 +66,7 @@ imagingstudy/imagingstudy-spreadsheet.xml
 + json.html
 + license.html
 + list/list-spreadsheet.xml
-location/location-spreadsheet.xml
++ location/location-spreadsheet.xml
 media/media-spreadsheet.xml
 medication/medication-spreadsheet.xml
 medicationadministration/medicationadministration-introduction.xml
