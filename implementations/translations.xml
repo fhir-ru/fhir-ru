@@ -36,17 +36,20 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="zh">不良反应</translation>
         <translation lang="es">ReacciónAdversa</translation>
         <translation lang="fr">RéactionAdverse</translation>
+		<translation lang="ru">Нежелательная побочная реакция</translation>
     </item>
     <item id="Alert">
         <translation lang="en">Alert</translation>
         <translation lang="zh">警报</translation>
         <translation lang="es">Alerta</translation>
         <translation lang="fr">Alerte</translation>
+		<translation lang="ru">Оповещение</translation>
     </item>
     <item id="AllergyIntolerance">
         <translation lang="en">AllergyIntolerance</translation>
         <translation lang="es">AllergiaIntolerancia</translation>
         <translation lang="fr">IntoléranceAllergique</translation>
+		<translation lang="ru">Аллергия/Непереносимость</translation>
     </item>
     <item id="Appointment">
         <translation lang="en">Appointment</translation>
@@ -573,6 +576,7 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="pl">Wymagana autentykacja przed użyciem tego serwisu</translation>
         <translation lang="es">Debe autenticarse antes de poder usar este servicio</translation>
         <translation lang="fr">Vous devez être authentifié avant de pouvoir utiliser ce service</translation>
+		<translation lang="ru">Вам необходимо авторизоваться, чтобы воспользоваться этим сервисом</translation>
     </item>
     <item id="MSG_BACK_HOME">
         <translation lang="en">Back to Home</translation>
@@ -1582,33 +1586,40 @@ NOTE: while translations on Resources are possible they should be used for rende
     <item id="HOME">
         <translation lang="en">Home</translation>
         <translation lang="nl">Start</translation>
+		<translation lang="ru">Главная</translation>
     </item>
     <item id="SERVER_HOME">
         <translation lang="en">Server Home</translation>
         <translation lang="nl">Server start</translation>
+		<translation lang="ru">Сервер Главная</translation>
     </item>
     <item id="TERMINOLOGY">
         <!-- as in, this is a 'terminology' server -->
         <translation lang="en">Terminology</translation>
         <translation lang="nl">Terminologie</translation>
+		<translation lang="ru">Терминологический</translation>
     </item>
     <item id="WELCOME">
         <!-- as in, 'welcome' to the FHIR server -->
         <translation lang="en">Welcome</translation>
         <translation lang="nl">Welkom</translation>
+		<translation lang="ru">Добро пожаловать</translation>
     </item>
     <item id="FOUND">
         <!-- as in, # Patients 'found' -->
         <translation lang="en">found</translation>
         <translation lang="nl">gevonden</translation>
+		<translation lang="ru">найден</translation>
     </item>
     <item id="SYSTEM_OPERATIONS">
         <translation lang="en">System Operations</translation>
         <translation lang="nl">Systeembewerkingen</translation>
+		<translation lang="ru">Системные операции</translation>
     </item>
     <item id="CONF_PROFILE">
         <translation lang="en">Conformance Profile</translation>
         <translation lang="nl">Conformanceprofiel</translation>
+		<translation lang="ru">Профиль Conformance</translation>
     </item>
     <item id="OR">
         <!-- as in, XML 'or' JSON -->
@@ -1624,12 +1635,15 @@ NOTE: while translations on Resources are possible they should be used for rende
     <item id="GENERAL_SEARCH">
         <translation lang="en">General Search</translation>
         <translation lang="nl">Algemene zoekopdracht</translation>
+		<translation lang="ru">Общий поиск</translation>
     </item>
     <item id="THIS_RESOURCE">
         <translation lang="en">This Resource</translation>
         <translation lang="nl">Deze resource</translation>
+		<translation lang="ru">Этот ресурс</translation>
     </item>
     <item id="Bundle">
         <translation lang="en">Bundle</translation>
+		<translation lang="ru">Комплект</translation>
     </item>
 </translations>

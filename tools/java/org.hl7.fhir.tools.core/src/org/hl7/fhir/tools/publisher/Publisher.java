@@ -1172,7 +1172,7 @@ public class Publisher implements URIResolver {
       // schema check
       checkBySchema(page.getFolders().rootDir + "implementations" + File.separator + "translations.xml", new String[] {page.getFolders().rootDir + "implementations" + File.separator + "translations.xsd"});
       Utilities.copyFile(page.getFolders().rootDir + "implementations" + File.separator + "translations.xml", page.getFolders().dstDir + "translations.xml");
-      page.getTranslations().setLang("en");
+      page.getTranslations().setLang("ru");
       page.getTranslations().load(page.getFolders().rootDir + "implementations" + File.separator + "translations.xml");
     }
 
