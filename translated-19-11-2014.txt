@@ -67,7 +67,7 @@ imagingstudy/imagingstudy-spreadsheet.xml
 + license.html
 + list/list-spreadsheet.xml
 + location/location-spreadsheet.xml
-media/media-spreadsheet.xml
++ media/media-spreadsheet.xml
 medication/medication-spreadsheet.xml
 medicationadministration/medicationadministration-introduction.xml
 medicationadministration/medicationadministration-spreadsheet.xml
