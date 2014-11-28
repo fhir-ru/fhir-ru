@@ -76,28 +76,28 @@ medicationdispense/medicationdispense-spreadsheet.xml
 medicationprescription/medicationprescription-introduction.xml
 medicationprescription/medicationprescription-spreadsheet.xml
 medicationstatement/medicationstatement-introduction.xml
-medicationstatement/medicationstatement-spreadsheet.xml
-messageheader/messageheader-spreadsheet.xml
++ medicationstatement/medicationstatement-spreadsheet.xml
++ messageheader/messageheader-spreadsheet.xml
 + narrative.html
 + newfooter.html
 + newheader.html
-observation/observation-spreadsheet.xml
-operationoutcome/operationoutcome-spreadsheet.xml
++ observation/observation-spreadsheet.xml
++ operationoutcome/operationoutcome-spreadsheet.xml
 + operations.html
-order/order-spreadsheet.xml
-orderresponse/orderresponse-spreadsheet.xml
-organization/organization-spreadsheet.xml
-other/other-spreadsheet.xml
++ order/order-spreadsheet.xml
++ orderresponse/orderresponse-spreadsheet.xml
++ organization/organization-spreadsheet.xml
++ other/other-spreadsheet.xml
 + overview.html
-patient/patient-spreadsheet.xml
-practitioner/practitioner-spreadsheet.xml
-procedure/procedure-spreadsheet.xml
-profile/profile-spreadsheet.xml
++ patient/patient-spreadsheet.xml
++ practitioner/practitioner-spreadsheet.xml
++ procedure/procedure-spreadsheet.xml
++ profile/profile-spreadsheet.xml
 + profilelist.html
-provenance/provenance-spreadsheet.xml
++ provenance/provenance-spreadsheet.xml
 + pushpull.html
-query/query-spreadsheet.xml
-questionnaire/questionnaire-spreadsheet.xml
++ query/query-spreadsheet.xml
++ questionnaire/questionnaire-spreadsheet.xml
 + references.html
 + relatedperson/relatedperson-spreadsheet.xml
 + resource/resource-spreadsheet.xml

@@ -986,7 +986,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">A person with a  formal responsibility in the provisioning of healthcare or related services</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A person who is directly or indirectly involved in the provisioning of healthcare</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Лицо, прямо или косвенно участвующее в предоставлении медицинских услуг A person who is directly or indirectly involved in the provisioning of healthcare</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Need to track doctors, staff, locums etc. for both healthcare practitioners, funders, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

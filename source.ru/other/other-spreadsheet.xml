@@ -977,7 +977,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Resource for non-supported content</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Other is a conformant for handling resource concepts not yet defined for FHIR or outside HL7's scope of interest</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ресурсы типа 'Other' позволяют работать с типами ресурсов, не определенными стандартом FHIR или не входящими в области интереса организации HL7 Other is a conformant for handling resource concepts not yet defined for FHIR or outside HL7's scope of interest</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Need some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

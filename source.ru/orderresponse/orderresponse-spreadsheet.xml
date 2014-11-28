@@ -974,9 +974,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A response to an order</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ответ на заказ (order) A response to an order</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A response to an order</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ответ на заказ (order) A response to an order</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">There might be more than one response to an order</Data><NamedCell
