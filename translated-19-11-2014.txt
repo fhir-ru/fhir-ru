@@ -99,8 +99,8 @@ provenance/provenance-spreadsheet.xml
 query/query-spreadsheet.xml
 questionnaire/questionnaire-spreadsheet.xml
 + references.html
-relatedperson/relatedperson-spreadsheet.xml
-resource/resource-spreadsheet.xml
++ relatedperson/relatedperson-spreadsheet.xml
++ resource/resource-spreadsheet.xml
 + resourcelist.html
 + resources.html
 + search.html
