@@ -977,7 +977,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Definition of a Medication</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Primarily used for identification and definition of Medication, but also covers ingredients and packaging</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">В основном используется для идентификации и определения лекарственных средств, но также охватывает ингредиенты и упаковки</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
