@@ -982,7 +982,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Details and position information for a physical place</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Details and position information for a physical place where services are provided  and resources and participants may be stored, found, contained or accommodated </Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Подробная информация о местоположении предоставляющей услуги организации, в которой могут находиться участники процесса лечения, а также размещаться, храниться и использоваться ресурсы</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>

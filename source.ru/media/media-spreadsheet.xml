@@ -980,9 +980,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Фото, видео, или аудиоконтент, полученный или используемый в медицинских целях. Ресурс может включать в себя медиаконтент или предоставлять прямую ссылку на его размещение</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Фото, видео, или аудиоконтент, полученный или используемый в медицинских целях. Ресурс может включать в себя медиаконтент или предоставлять прямую ссылку на его размещение</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
