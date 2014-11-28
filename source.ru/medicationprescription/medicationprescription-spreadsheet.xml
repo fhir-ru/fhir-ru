@@ -982,7 +982,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Prescription of medication to for patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">An order for both supply of the medication and the instructions for administration of the medicine to a patient.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Заказ как на поставку лекарственного средства, так и на его применение. An order for both supply of the medication and the instructions for administration of the medicine to a patient.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
