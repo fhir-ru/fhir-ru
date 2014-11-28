@@ -69,7 +69,7 @@ imagingstudy/imagingstudy-spreadsheet.xml
 + location/location-spreadsheet.xml
 + media/media-spreadsheet.xml
 + medication/medication-spreadsheet.xml
-medicationadministration/medicationadministration-introduction.xml
++ medicationadministration/medicationadministration-introduction.xml
 medicationadministration/medicationadministration-spreadsheet.xml
 medicationdispense/medicationdispense-introduction.xml
 medicationdispense/medicationdispense-spreadsheet.xml
