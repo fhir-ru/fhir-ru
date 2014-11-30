@@ -71,7 +71,7 @@ imagingstudy/imagingstudy-spreadsheet.xml
 + medication/medication-spreadsheet.xml
 + medicationadministration/medicationadministration-introduction.xml
 + medicationadministration/medicationadministration-spreadsheet.xml
-medicationdispense/medicationdispense-introduction.xml
++ medicationdispense/medicationdispense-introduction.xml
 medicationdispense/medicationdispense-spreadsheet.xml
 medicationprescription/medicationprescription-introduction.xml
 + medicationprescription/medicationprescription-spreadsheet.xml
