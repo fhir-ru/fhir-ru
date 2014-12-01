@@ -70,10 +70,10 @@ imagingstudy/imagingstudy-spreadsheet.xml
 + media/media-spreadsheet.xml
 + medication/medication-spreadsheet.xml
 + medicationadministration/medicationadministration-introduction.xml
-medicationadministration/medicationadministration-spreadsheet.xml
-medicationdispense/medicationdispense-introduction.xml
-medicationdispense/medicationdispense-spreadsheet.xml
-medicationprescription/medicationprescription-introduction.xml
++ medicationadministration/medicationadministration-spreadsheet.xml
++ medicationdispense/medicationdispense-introduction.xml
++ medicationdispense/medicationdispense-spreadsheet.xml
++ medicationprescription/medicationprescription-introduction.xml
 + medicationprescription/medicationprescription-spreadsheet.xml
 + medicationstatement/medicationstatement-introduction.xml
 + medicationstatement/medicationstatement-spreadsheet.xml
