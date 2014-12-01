@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
       
-[%settitle FHIR Overview - Developers%]
+[%settitle Обзор FHIR  - разработчикам%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -22,41 +22,36 @@ code { counter-increment: listing; }
 <h2>FHIR Overview - Developers</h2>
 
 <p>
-FHIR (Fast Health Interoperability Resources) is designed to 
-enable the information exchange that supports the provision
-of healthcare in a wide variety of processes. The specification
-builds on and adapts standard industry RESTful practices
-to enable the provision of integrated healthcare across a 
-wide range of teams.
+FHIR (Fast Health Interoperability Resources) предназначен для информационного обмена, который поддерживает предоставление медицинской помощи в самых разнообразных процессах. Спецификация базируется на и адаптирует стандартные отраслевые RESTful-методы для предоставления комплексной медицинской помощи в широком диапазоне команд.
 </p>
 
 <p>
-The intended scope of FHIR is broad, covering human and veterinary,
+Планируемая область применения FHIR обширна и покрывает человеческие и ветеринарные аспекты, медицинское обслуживание, публичную медицину, клинические исследования, административный и финансовый аспекты. Стандарт предназначен для глобального использования в широком разнообразии архитектур и сценариев.
+<!-- The intended scope of FHIR is broad, covering human and veterinary,
 clinical care, public health, clinical trials, administration and
 financial aspects.  The standard is intended for global use in a wide
-variety of architectures and scenarios.
+variety of architectures and scenarios. -->
 </p>
 
 <h3>Framework</h3>
 <p>
-FHIR is based on "Resources" which are the common building block
-for all exchanges.  Each resource has the following <a href="resources.html">common features</a>:
+В основе FHIR лежат "ресурсы" -  общие строительные блоки для любого обмена данными. Каждый ресурс имеет следующие <a href="resources.html">общие характеристики</a>:
 </p>
 <ul>
- <li>A URL that identifies it</li>
- <li>Common metadata</li>
- <li>A <a href="narrative.html">human-readable XHTML summary</a></li>
- <li>A set of defined common data elements</li>
- <li>An <a href="extensibility.html">extensibility framework</a> to support variation in healthcare</li>
+ <li>URL, который его идентифицирует</li>
+ <li>Общие метаданные</li>
+ <li><a href="narrative.html">Человекочитаемое резюме (summary) в формате XHTML</a></li>
+ <li>Набор установленных общих элементов данных</li>
+ <li><a href="extensibility.html">Система расширений (extensibility framework)</a> для поддержки изменений в здравоохранении</li>
 </ul>
 <p>
-Resources are represented as either <a href="xml.html">XML</a> or <a href="json.html">JSON</a>. There are currently <%resourcecount%> 
-different <a href="resourcelist.html">resource types defined</a> in the FHIR specification. 
+Ресурсы представляются либо в <a href="xml.html">XML</a>, либо в <a href="json.html">JSON</a>-формате. В спецификации FHIR определено <%resourcecount%> 
+различных <a href="resourcelist.html">типов ресурсов</a>.
 </p>
 
 <h3>Example Patient</h3>
 <p>
-This is an example of how a <a href="patient.html">patient</a> is represented as a FHIR object in JSON. XML encoding is also defined in the specification.
+Это пример представления <a href="patient.html">пациента</a> в виде FHIR-объекта в формате JSON. Кодировка XML (XML encoding) также определена в спецификации.
 </p>
 
 <div class="example">
@@ -109,24 +104,24 @@ This is an example of how a <a href="patient.html">patient</a> is represented as
 </div>
 
 <p>
-Each resource consists of:  
+Каждый ресурс состоит из:  
 </p>
 <ul>
-  <li><b>resourceType</b> (line 2) - Required: FHIR defines many different types of resources. See <a href="resourcelist.html">the full index</a></li>
-  <li><b>id</b> (line 3) - The id of the resource. Always present when a resource is exchanged, except during the create operation (below)</li>
-  <li><b>meta</b> (lines 4 - 7) - Usually Present: <a href="resources.html#meta">Common use/context data to all resources</a> and managed by the infrasturcture. Missing if there is no metadata</li>
-  <li><b>text</b> (lines 12 - 17) - Recommended: XHTML that provides a <a href="narrative.html">human readable representation</a> for the resource</li>
-  <li><b>extension</b> (lines 12 - 17) - Optional: <a href="extensbility.html">Extensions</a> defined by the extensbility framework</li>
-  <li><b>data</b> (lines 18 - 43) - Optional: data elements defined for each type of resource</li>
+  <li><b>resourceType</b> (строка 2) - Обязательный: FHIR определяет много различных типов ресурсов. См. <a href="resourcelist.html">полный индекс</a></li>
+  <li><b>id</b> (строка 3) - Идентификатор ресурса. Всегда присутствует при обмене ресурсом, за исключением момента выполнения операции создания (ниже)</li>
+  <li><b>meta</b> (строки 4 - 7) - Обычно присутствует: <a href="resources.html#meta">Common use/context data to all resources</a> и контролируется инфраструктурой. Отсутствует, если нет метаданных</li>
+  <li><b>text</b> (строки 12 - 17) - Рекомендуется: XHTML, описывающий <a href="narrative.html">человекочитаемое представление</a> ресурса</li>
+  <li><b>extension</b> (строки 12 - 17) - Необязательный: <a href="extensbility.html">Расширения</a> задаются с помощью системы расширений</li>
+  <li><b>data</b> (строки 18 - 43) - Необязательный: элементы данных, определенные для каждого типа ресурса</li>
 </ul>
 <p>
-Note that though this specification always shows the JSON properties in the order they are defined, many JSON libraries order properties by other criteria.
+Обратите внимание: хотя в данной спецификации JSON-свойства всегда идут в том порядке, в котором они были определены, большинство JSON-библиотек располагают свойства по другим критериям.
+<!-- Note that though this specification always shows the JSON properties in the order they are defined, many JSON libraries order properties by other criteria. -->
 </p>
 
 <h3>Interactions</h3>
 <p>
-For manipulation of resources, FHIR provides a <a href="http.html">REST API</a> with a
-rich but simple set of interactions:
+Для оперирования ресурсами FHIR  предоставляет <a href="http.html">REST API</a> с богатым, но простым набором взаимодействий:
 </p>
 <ul>
 <li><a href="http.html#create">Create</a> = POST https://example.com/path/{resourceType}</li>
@@ -139,24 +134,19 @@ rich but simple set of interactions:
 <li><a href="operations.html">Operation</a> = GET https://example.com/path/{resourceType}/{id}/${opname}</li>
 </ul>
 <p>
-The FHIR specification describes other kinds of exchanges beyond this simple RESTful API, 
-including exchange of groups of resources as <a href="documents.html">Documents</a>, 
-<a href="messaging.html">Messages</a>, and by using other kinds of <a href="services.html">services</a>. 
+FHIR-спецификация описывает и другие виды обмена, лежащими за пределами этого простого  RESTful API, 
+включая обмен группами ресурсов в виде <a href="documents.html">документов (Documents)</a>, 
+<a href="messaging.html">сообщений (Messages)</a> и с использованием других видов <a href="services.html">сервисов</a>. 
 </p>
 
 <h3>Managing Variability</h3>
 <p>
-One feature of the healthcare industry is that there is a wide variation
-between different jurisdictions and sections of the industry, and no 
-central authority to impose common business practices. Because of this, 
-the FHIR specification defines a <a href="extensibility.html">common extension framework</a>, and defines
-<a href="profiling.html">a framework for managing variability</a>.
+Одной из особенностей медицинской отрасли является существование большой разницы между различными юрисдикциями и секциями промышленности, и отсутствие центральной власти для навязывания общих бизнес-практик. Поэтому спецификация FHIR вводит <a href="extensibility.html">общую систему расширений</a> и выделяет <a href="profiling.html">фреймворк для управления этой вариабельностью</a>.
 </p>
 
-<h3>Creating a resource</h3>
+<h3>Создание ресурса</h3>
 <p>
-To <a href="http.html#create">create a resource</a>, send an HTTP POST request to the resource's respective end
-point. In the example below we see the creation of a Patient.
+Для <a href="http.html#create">создания ресурса</a>отправьте HTTP POST-запрос в соответствующей точке взаимодействия ресурса. В примере ниже мы видим создание ресурса "пациент".
 </p>
 
 <div class="example">
@@ -178,21 +168,17 @@ point. In the example below we see the creation of a Patient.
 Submit a new patient to the server, and ask it to store the patient with an id of its own choice. Notes:
 </p>
 <ul>
-  <li><b>/Patient</b> (line 1) - the manager for all patients - use the name of the type of resource</li>
-  <li><b>Authorization</b> (line 2) - see <a href="security.html">Security for FHIR</a></li>
-  <li><b>Accept, Content-Type</b> (lines 3-4) - the content type for all FHIR resources as represented in JSON (or application/xml+fhir for the XML version). FHIR resources are always represented in UTF-8</li>
-  <li><b>id</b> (line 9) - No id for a resource that is being created - the server will assign one</li>
-  <li>Resource Content, lines 8+ - There's no meta property at this point. The rest of the resource is the same content as above</li>
+  <li><b>/Patient</b> (строка 1) - управление всеми пациентами - используйте имя типа ресурса</li>
+  <li><b>Authorization</b> (строка 2) - см. <a href="security.html">Security for FHIR</a></li>
+  <li><b>Accept, Content-Type</b> (строки 3-4) - тип содержимого для всех FHIR-ресурсов, который описан в JSON (либо application/xml+fhir для XML-версии). FHIR-ресурсы всегда используют кодировку UTF-8</li>
+  <li><b>id</b> (строка 9) - У ресурса, который создается, еще пока нет идентификатора - его ему назначит сервер</li>
+  <li>Resource Content, строки 8+ - На этом этапе свойство meta отсутствует. Остальное содержимое ресурса совпадает с указанным выше</li>
 </ul>
 
 
 <h3>Create Response</h3>
 <p>
-A response contains an HTTP code 201 to indicate that the
-Resource has been created successfully. A location header 
-indicates where the resource can be fetched in subsequent requests.
-The server may choose to return an <a href="operationoutcome.html">OperationOutcome</a> resource, but is not required to
-do so. 
+Ответ содержит HTTP-код 201, указывающий, что ресурс был создан успешно. Заголовок location указывает, где ресурс может быть получен в последующих запросах. Сервер может вернуть ресурс <a href="operationoutcome.html">OperationOutcome</a>, но не обязан этого делать.
 </p>
 
 <div class="example">
@@ -215,13 +201,13 @@ do so.
 </div>
 
 <p>
-Notes:
+Примечания:
 </p>
 <ul>
-  <li><b>HTTP/1.1 201</b> (line 1) - the operation was successful. Note that HTTP/1.1 is strongly recommended but not required</li>
-  <li><b>ETag</b> (line 5) - used in the <a href="http.html#update">version aware update</a> pattern</li>
-  <li><b>Location</b> (line 6) - the id the server assigned to the resource. The id in the url must match the id in the resource when it is subsequently returned</li>
-  <li><b>operationOutcome</b> (line 9) - OperationOutcome resources in this context have no id or meta element (they have no managed identity)</li>
+  <li><b>HTTP/1.1 201</b> (строка 1) - the operation was successful. Note that HTTP/1.1 is strongly recommended but not required</li>
+  <li><b>ETag</b> (строка 5) - used in the <a href="http.html#update">version aware update</a> pattern</li>
+  <li><b>Location</b> (строка 6) - the id the server assigned to the resource. The id in the url must match the id in the resource when it is subsequently returned</li>
+  <li><b>operationOutcome</b> (строка 9) - OperationOutcome resources in this context have no id or meta element (they have no managed identity)</li>
 </ul>
 
 <h4>Error response</h4>
