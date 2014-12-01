@@ -885,7 +885,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String profileRef(String name) {
-    return "Alternate definitions: Resource Profile (<a href=\""+name+".profile.xml.html\">XML</a>, <a href=\""+name+".profile.json.html\">JSON</a>)";
+    return "Альтернативные определения: Профиль ресурса (<a href=\""+name+".profile.xml.html\">XML</a>, <a href=\""+name+".profile.json.html\">JSON</a>)";
   }
 
   private String reflink(String name) {
@@ -1536,9 +1536,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }
     if (b.length() == 0)
-      return "<p>\r\nThis value set is not currently used\r\n</p>\r\n";
+      return "<p>\r\nЭтот набор значений в настоящее время не используется\r\n</p>\r\n";
     else
-      return "<p>\r\nThis value set is used in the following places:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
+      return "<p>\r\nЭтот набор значений используется в следующих местах:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
   }
 
   private void scanForProfileUsage(StringBuilder b, BindingSpecification cd, ResourceDefn r) {
@@ -2747,12 +2747,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     List<String> vslist = cd.getVSSources();
     StringBuilder b = new StringBuilder();
     if (vslist.contains("")) {
-      b.append("This value set defines its own codes");
+      b.append("Данный набор значений определяет свои собственные коды");
       vslist.remove(0);
       if (vslist.size() > 0)
-        b.append(" and includes codes taken from");
+        b.append(" и включает в себя коды, взятые из");
     } else 
-      b.append("This is a value set with codes taken from ");
+      b.append("Это набор знчений с кодами, взятыми из ");
     int i = 0;
     for (String n : cd.getVSSources()) {
       i++;
@@ -4362,7 +4362,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     if (source.getMapping().size() < 2)
       return "";
     StringBuilder b = new StringBuilder();
-    b.append("<div class=\"itoc\">\r\n<p>Mappings:</p>\r\n");
+    b.append("<div class=\"itoc\">\r\n<p>Таблица соответствий:</p>\r\n");
     for (ProfileMappingComponent map : source.getMapping()) {
       b.append("<p class=\"link\"><a href=\"#"+map.getIdentity()+"\">"+map.getName()+"</a></p>");
     }
