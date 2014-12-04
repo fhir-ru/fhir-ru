@@ -9,6 +9,7 @@ todo: compartments
       <page title="Содержание" filename="toc.html"/>
       <page title="Лицензирование и условия использования" filename="license.html"/>
       <page title="Наше сообщество и благодарности" filename="credits.html"/>
+      <page title="FHIR Timelines" filename="timelines.html"/>
       <page title="Журнал версий" filename="history.html"/>
       <page title="Соображения, касающиеся DSTU" filename="dstu.html"/>
       <page title="Нерешенные вопросы" filename="todo.html"/>
@@ -29,7 +30,7 @@ todo: compartments
         <page title="Definitions" filename="resource-definitions.html"/>
         <page title="Element Definition" filename="elementdefinition.html">
           <page title="Element Definition Examples" filename="elementdefinition-examples.html"/>
-          <page title="Element Definition Formal Definitions" filename="elementdefinition-definitions.html"/>
+                    <page title="Element Definition Detailed Descriptions" filename="elementdefinition-definitions.html"/>
           <page title="Element Definition Mappings" filename="elementdefinition-mappings.html"/>
         </page>
         <page title="Правила обеспечения соответствия" filename="conformance-rules.html"/>
@@ -115,9 +116,13 @@ todo: compartments
           <page title="DAF Introduction" filename="daf-intro.html"/>
           <page title="DAF Security" filename="daf-security.html"/>
         </page>
-        <page title="US Laboratory Implementation" filename="uslab.html">
+                <page title="US Laboratory Order Implementation" filename="uslaborder.html">
           <page title="USLabOrder Documentation" filename="uslaborder-guide.html"/>
+                </page>
+                 <page title="US Laboratory Result Implementation" filename="uslabresult.html">
           <page title="USLabResult Documentation" filename="uslabresult-guide.html"/>
+                </page>
+                <page title="US Laboratory Report to Public Health Implementation" filename="uslabphresult.html">
           <page title="USLabPHResult Documentation" filename="uslabphresult-guide.html"/>
         </page>
       </page>
@@ -152,6 +157,7 @@ todo: compartments
       <page type="resource" resource="DiagnosticReport"/>
       <page type="resource" resource="DiagnosticOrder"/>
       <page type="resource" resource="ImagingStudy"/>
+            <page type="resource" resource="ImagingObjectSelection"/>
       <page type="resource" resource="Specimen"/>
       <!--<page type="resource" resource="DeviceObservationReport"/>-->
       <page type="resource" resource="Questionnaire"/>
@@ -216,13 +222,16 @@ todo: compartments
     <page title="Финансовые" filename="financial.html">
       <page type="resource" resource="ClaimResponse"/>
       <page type="resource" resource="Coverage"/>
-      <page type="resource" resource="Eligibility"/>
+            <page type="resource" resource="EligibilityRequest"/>
       <page type="resource" resource="EligibilityResponse"/>
       <page type="resource" resource="ExplanationOfBenefit"/>
-      <page type="resource" resource="Enrollment"/>
+            <page type="resource" resource="EnrollmentRequest"/>
       <page type="resource" resource="EnrollmentResponse"/>
       <page type="resource" resource="OralHealthClaim"/>
+            <page type="resource" resource="PaymentNotice"/>
+            <page type="resource" resource="PaymentReconciliation"/>
       <page type="resource" resource="PendedRequest"/>
+            <page type="resource" resource="Readjudicate"/>
       <page type="resource" resource="Reversal"/>
       <page type="resource" resource="StatusRequest"/>
       <page type="resource" resource="StatusResponse"/>
