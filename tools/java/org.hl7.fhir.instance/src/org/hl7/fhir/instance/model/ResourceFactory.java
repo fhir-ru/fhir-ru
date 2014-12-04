@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Nov 21, 2014 17:07+1100 for FHIR v0.3.0
+// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
 
 public class ResourceFactory extends Factory {
 
@@ -46,6 +46,8 @@ public class ResourceFactory extends Factory {
             return new DeviceComponent();
         if ("Organization".equals(name))
             return new Organization();
+        if ("Readjudicate".equals(name))
+            return new Readjudicate();
         if ("Group".equals(name))
             return new Group();
         if ("OralHealthClaim".equals(name))
@@ -66,6 +68,8 @@ public class ResourceFactory extends Factory {
             return new Slot();
         if ("Contraindication".equals(name))
             return new Contraindication();
+        if ("PaymentNotice".equals(name))
+            return new PaymentNotice();
         if ("MedicationStatement".equals(name))
             return new MedicationStatement();
         if ("AppointmentResponse".equals(name))
@@ -104,8 +108,12 @@ public class ResourceFactory extends Factory {
             return new Subscription();
         if ("OrderResponse".equals(name))
             return new OrderResponse();
+        if ("StatusResponse".equals(name))
+            return new StatusResponse();
         if ("ConceptMap".equals(name))
             return new ConceptMap();
+        if ("Reversal".equals(name))
+            return new Reversal();
         if ("ImagingStudy".equals(name))
             return new ImagingStudy();
         if ("Practitioner".equals(name))
@@ -138,18 +146,26 @@ public class ResourceFactory extends Factory {
             return new DocumentManifest();
         if ("Availability".equals(name))
             return new Availability();
-        if ("QuestionnaireAnswers".equals(name))
-            return new QuestionnaireAnswers();
         if ("MedicationAdministration".equals(name))
             return new MedicationAdministration();
+        if ("QuestionnaireAnswers".equals(name))
+            return new QuestionnaireAnswers();
         if ("Encounter".equals(name))
             return new Encounter();
+        if ("Enrollment".equals(name))
+            return new Enrollment();
         if ("SecurityEvent".equals(name))
             return new SecurityEvent();
+        if ("PaymentReconciliation".equals(name))
+            return new PaymentReconciliation();
+        if ("PendedRequest".equals(name))
+            return new PendedRequest();
         if ("List".equals(name))
             return new List_();
         if ("DeviceUseStatement".equals(name))
             return new DeviceUseStatement();
+        if ("ImagingObjectSelection".equals(name))
+            return new ImagingObjectSelection();
         if ("OperationDefinition".equals(name))
             return new OperationDefinition();
         if ("NutritionOrder".equals(name))
@@ -186,8 +202,14 @@ public class ResourceFactory extends Factory {
             return new Specimen();
         if ("Alert".equals(name))
             return new Alert();
+        if ("EnrollmentResponse".equals(name))
+            return new EnrollmentResponse();
         if ("Patient".equals(name))
             return new Patient();
+        if ("EligibilityResponse".equals(name))
+            return new EligibilityResponse();
+        if ("StatusRequest".equals(name))
+            return new StatusRequest();
         if ("DiagnosticOrder".equals(name))
             return new DiagnosticOrder();
         else

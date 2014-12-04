@@ -1,4 +1,4 @@
-<translations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="translations.xsd">
+﻿<translations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="translations.xsd">
     <!--
  This file is for the convenience of implementers, to enable sharing of language translations.
  There is no obligation for any implementer to use the messages contained in this file, but
@@ -189,11 +189,11 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">ReferenciaDocumento</translation>
         <translation lang="fr">RéférenceDocument</translation>
     </item>
-    <item id="Eligibility">
-        <translation lang="en">Eligibility</translation>
-    </item>
     <item id="EligibilityResponse">
         <translation lang="en">EligibilityResponse</translation>
+    </item>
+    <item id="EligibilityRequest">
+        <translation lang="en">EligibilityRequest</translation>
     </item>
     <item id="Encounter">
         <translation lang="en">Encounter</translation>
@@ -201,8 +201,8 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Encuentro</translation>
         <translation lang="fr">Venue</translation>
     </item>
-    <item id="Enrollment">
-        <translation lang="en">Enrollment</translation>
+    <item id="EnrollmentRequest">
+        <translation lang="en">EnrollmentRequest</translation>
     </item>
     <item id="EnrollmentResponse">
         <translation lang="en">EnrollmentResponse</translation>
@@ -263,6 +263,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="zh">影像检查</translation>
         <translation lang="es">EstudioImagen</translation>
         <translation lang="fr">EtudeImagerie</translation>
+    </item>
+    <item id="ImagingObjectSelection">
+        <translation lang="en">ImagingObjectSelection</translation>
     </item>
     <item id="Immunization">
         <translation lang="en">Immunization</translation>
@@ -392,6 +395,12 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Paciente</translation>
         <translation lang="fr">Patient</translation>
     </item>
+     <item id="PaymentNotice">
+        <translation lang="en">PaymentNotice</translation>
+    </item>
+     <item id="PaymentReconciliation">
+        <translation lang="en">PaymentReconciliation</translation>
+    </item>
      <item id="PendedRequest">
         <translation lang="en">PendedRequest</translation>
     </item>
@@ -451,9 +460,11 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="en">QuestionnaireAnswers</translation>
         <translation lang="fr">RéponseQuestionnaire</translation>
     </item>
+    <item id="Readjudicate">
+        <translation lang="en">Readjudicate</translation>
+    </item>
     <item id="ReferralRequest">
         <translation lang="en">ReferralRequest</translation>
-
     </item>
     <item id="RelatedPerson">
         <translation lang="en">RelatedPerson</translation>

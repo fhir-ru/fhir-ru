@@ -39,11 +39,8 @@ using Hl7.Fhir.Support;
 
 namespace Hl7.Fhir.Model
 {
-    // Resource is not a subclass of Composite, since it
-    // cannot be used in places where you can use composites.
     [InvokeIValidatableObject]
-    public abstract partial class Resource : Hl7.Fhir.Validation.IValidatableObject, 
-                IDeepCopyable, IDeepComparable
+    public abstract partial class Resource 
     {
         public static string GetResourceTypeName(Resource resource)
         {
@@ -58,11 +55,9 @@ namespace Hl7.Fhir.Model
         }
 
 
-        public string ResourceName { get { return GetResourceTypeName(this); } }
+       // public string ResourceName { get { return GetResourceTypeName(this); } }
 
-        public abstract IDeepCopyable DeepCopy();
-
-        public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();
 

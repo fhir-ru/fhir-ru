@@ -218,7 +218,7 @@ public class SourceParser {
 			loadCompositeType(n, definitions.getInfrastructure());
 
 		List<TypeDefn> allFhirComposites = new ArrayList<TypeDefn>();
-		allFhirComposites.add( CompositeTypeConverter.buildElementBaseType());
+	//	allFhirComposites.add( CompositeTypeConverter.buildElementBaseType());
 		allFhirComposites.addAll( PrimitiveConverter.buildCompositeTypesForPrimitives( eCoreParseResults.getPrimitive() ) );
 		allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions.getTypes().values(), null ));
 		allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions.getStructures().values(), null ));
@@ -390,7 +390,7 @@ public class SourceParser {
 	      pack.setSource(spreadsheet.getAbsolutePath());
 	      pack.setSourceType(ConformancePackageSourceType.Spreadsheet);
         packs.put(n, pack);
-	      sparser.parseConformancePackage(pack, definitions);
+	      sparser.parseConformancePackage(pack, definitions, Utilities.getDirectoryForFile(spreadsheet.getAbsolutePath()));
 	    } catch (Exception e) {
 	      throw new Exception("Error Parsing Profile: '"+n+"': "+e.getMessage(), e);
 	    }
@@ -411,13 +411,14 @@ public class SourceParser {
       if (b.getType() != BundleType.DOCUMENT)
         throw new Exception("Error parsing Conformance package: neither a spreadsheet nor a bundle that is a document");
       for (BundleEntryComponent ae : ((Bundle) rf).getEntry()) {
+        String base = ae.hasBase() ? ae.getBase() : b.getBase();
         if (ae.getResource() instanceof Composition)
           pack.loadFromComposition((Composition) ae.getResource(), file.getAbsolutePath());
         else if (ae.getResource() instanceof Profile)
           pack.getProfiles().add(new ProfileDefn((Profile) ae.getResource()));
         else if (ae.getResource() instanceof ExtensionDefinition) {
           ExtensionDefinition ed = (ExtensionDefinition) ae.getResource();
-          context.seeExtensionDefinition(ed);
+          context.seeExtensionDefinition(base, ed);
           pack.getExtensions().add(ed);
         }
       }
@@ -431,7 +432,7 @@ public class SourceParser {
     if (ap.getSourceType() == ConformancePackageSourceType.Spreadsheet) {
       SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(ap.getSource()), ap.getId(), definitions, srcDir, logger, registry, version, context, genDate, false);
       sparser.setFolder(Utilities.getDirectoryForFile(ap.getSource()));
-      sparser.parseConformancePackage(ap, definitions);
+      sparser.parseConformancePackage(ap, definitions, Utilities.getDirectoryForFile(ap.getSource()));
     } else // if (ap.getSourceType() == ConformancePackageSourceType.Bundle) {
       parseConformanceDocument(ap, ap.getId(), new File(ap.getSource()));
   }
@@ -589,10 +590,6 @@ public class SourceParser {
 		for (EventDefn e : sparser.getEvents())
 			processEvent(e, root.getRoot());
 
-		// EK: Commented this out, seems double with next statement, since
-		// loadReference()
-		// is always called with definitions.getResources in its map argument.
-		// definitions.getResources().put(root.getName(), root);
 		if (map != null) {
 		  map.put(root.getName(), root);
 		  definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));

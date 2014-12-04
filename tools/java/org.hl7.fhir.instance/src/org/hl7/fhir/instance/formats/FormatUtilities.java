@@ -31,6 +31,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 import java.math.BigDecimal;
 import java.net.URI;
+
 import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.DateAndTime;
 
@@ -76,7 +77,7 @@ public abstract class FormatUtilities {
   public static String makeId(String candidate) {
     StringBuilder b = new StringBuilder();
     for (char c : candidate.toCharArray())
-      if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '.' || c == '-')
+      if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '.' || c == '-')
         b.append(c);
     return b.toString();
   }

@@ -32,7 +32,7 @@ package org.hl7.fhir.instance.formats;
 
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.HashMap;
@@ -42,28 +42,125 @@ import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.DateAndTime;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.Resource.ResourceMetaComponent;
+import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.utilities.Utilities;
 
-public abstract class ParserBase extends FormatUtilities implements Parser {
+public abstract class ParserBase extends FormatUtilities implements IParser {
 
+  // -- implementation of variant type methods from the interface --------------------------------
+  
   public Resource parse(String input) throws Exception {
   	return parse(input.getBytes("UTF-8"));
   }
+  
   public Resource parse(byte[] bytes) throws Exception {
   	ByteArrayInputStream bi = new ByteArrayInputStream(bytes);
   	return parse(bi);
   }
 
-	@Override
-  public ResourceMetaComponent parseMeta(InputStream input) throws Exception {
-		throw new Error("Not done yet");
+  public ResourceMetaComponent parseMeta(String input) throws Exception {
+    return parseMeta(input.getBytes("UTF-8"));
+  }
+
+  public ResourceMetaComponent parseMeta(byte[] bytes) throws Exception {
+    ByteArrayInputStream bi = new ByteArrayInputStream(bytes);
+    return parseMeta(bi);
+  }
+
+  public Type parseType(String input, String typeName) throws Exception {
+    return parseType(input.getBytes("UTF-8"), typeName);
   }
   
-  protected Map<String, Object> idMap = new HashMap<String, Object>();
+  public Type parseType(byte[] bytes, String typeName) throws Exception {
+    ByteArrayInputStream bi = new ByteArrayInputStream(bytes);
+    return parseType(bi, typeName);
+  }
 
-//protected Element resolveElement(String id) {
-//  return idMap.get(id);
-//}
+  public String composeString(Resource resource) throws Exception {
+    return new String(composeBytes(resource));
+  }
+
+  public byte[] composeBytes(Resource resource) throws Exception {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    compose(bytes, resource);
+    return bytes.toByteArray();
+  }
+
+  public String composeString(ResourceMetaComponent meta) throws Exception {
+    return new String(composeBytes(meta));
+  }
+
+  public byte[] composeBytes(ResourceMetaComponent meta) throws Exception {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    compose(bytes, meta);
+    return bytes.toByteArray();
+  }
+  
+  public String composeString(Type type, String typeName) throws Exception {
+    return new String(composeBytes(type, typeName));
+  }
+
+  public byte[] composeBytes(Type type, String typeName) throws Exception {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    compose(bytes, type, typeName);
+    return bytes.toByteArray();
+  }
+
+  // -- Parser Configuration --------------------------------
+
+  protected String xhtmlMessage;
+  
+	@Override
+  public IParser setSuppressXhtml(String message) {
+    xhtmlMessage = message;
+    return this;
+  }
+  
+  protected boolean handleComments = true;
+  
+  public boolean getHandleComments() {
+    return handleComments;
+  }
+
+  public IParser setHandleComments(boolean value) {
+    this.handleComments = value;
+    return this;
+  }
+  
+  /**
+   * Whether to throw an exception if unknown content is found (or just skip it)
+   */
+  protected boolean allowUnknownContent;
+  
+  /**
+   * @return Whether to throw an exception if unknown content is found (or just skip it) 
+   */
+  public boolean isAllowUnknownContent() {
+    return allowUnknownContent;
+  }
+  /**
+   * @param allowUnknownContent Whether to throw an exception if unknown content is found (or just skip it)
+   */
+  public IParser setAllowUnknownContent(boolean allowUnknownContent) {
+    this.allowUnknownContent = allowUnknownContent;
+    return this;
+  }
+    
+  protected OutputStyle style = OutputStyle.NORMAL;
+  
+  public OutputStyle getOutputStyle() {
+    return style;
+  }
+
+  public IParser setOutputStyle(OutputStyle style) {
+    this.style = style;
+    return this;
+  }
+  
+  // -- Parser Utilities --------------------------------
+ 	
+
+  protected Map<String, Object> idMap = new HashMap<String, Object>();
 
 
   protected int parseIntegerPrimitive(String value) {
@@ -140,5 +237,6 @@ public abstract class ParserBase extends FormatUtilities implements Parser {
   protected String parseUuidPrimitive(String value) {
     return value;
   }
+
 
 }

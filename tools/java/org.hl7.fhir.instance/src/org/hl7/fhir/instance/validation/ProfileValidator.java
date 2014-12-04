@@ -2,8 +2,8 @@ package org.hl7.fhir.instance.validation;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hl7.fhir.instance.model.ElementDefinition;
-import org.hl7.fhir.instance.model.ExtensionDefinition;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.utils.WorkerContext;
 import org.hl7.fhir.instance.utils.WorkerContext.ExtensionDefinitionResult;
@@ -23,7 +23,7 @@ public class ProfileValidator {
     for (ElementDefinition ec : profile.getDifferential().getElement()) {
       checkExtensions(profile, errors, "differential", ec);
     }
-    if (profile.getSnapshot() == null)
+    if (!profile.hasSnapshot())
       errors.add("missing Snapshot at "+profile.getName()+"."+profile.getName());
     else for (ElementDefinition ec : profile.getSnapshot().getElement()) {
       checkExtensions(profile, errors, "snapshot", ec);

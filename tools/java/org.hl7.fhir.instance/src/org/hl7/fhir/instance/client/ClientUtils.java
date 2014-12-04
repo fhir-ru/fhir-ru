@@ -41,7 +41,6 @@ import java.net.URI;
 import java.net.URLConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -67,14 +66,11 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.params.ConnRoutePNames;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.hl7.fhir.instance.formats.Composer;
-import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.formats.Parser;
-import org.hl7.fhir.instance.formats.XmlComposer;
+import org.hl7.fhir.instance.formats.IParser;
+import org.hl7.fhir.instance.formats.IParser.OutputStyle;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Bundle;
-import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.instance.model.OperationOutcome.OperationOutcomeIssueComponent;
@@ -381,13 +377,14 @@ public class ClientUtils {
 		byte[] byteArray = null;
 		try {
 			baos = new ByteArrayOutputStream();
-			Composer composer = null;
+			IParser parser = null;
 			if(isJson) {
-				composer = new JsonComposer();
+				parser = new JsonParser();
 			} else {
-				composer = new XmlComposer();
+				parser = new XmlParser();
 			}
-			composer.compose(baos, resource, pretty);
+      parser.setOutputStyle(pretty ? OutputStyle.PRETTY : OutputStyle.NORMAL);
+			parser.compose(baos, resource);
 			byteArray =  baos.toByteArray();
 			baos.close();
 		} catch (Exception e) {
@@ -406,13 +403,14 @@ public class ClientUtils {
 		byte[] byteArray = null;
 		try {
 			baos = new ByteArrayOutputStream();
-			Composer composer = null;
+			IParser parser = null;
 			if(isJson) {
-				composer = new JsonComposer();
+				parser = new JsonParser();
 			} else {
-				composer = new XmlComposer();
+				parser = new XmlParser();
 			}
-			composer.compose(baos, feed, pretty);
+      parser.setOutputStyle(pretty ? OutputStyle.PRETTY : OutputStyle.NORMAL);
+			parser.compose(baos, feed);
 			byteArray =  baos.toByteArray();
 			baos.close();
 		} catch (Exception e) {
@@ -440,7 +438,7 @@ public class ClientUtils {
 		}
 	}
 	
-	protected static Parser getParser(String format) {
+	protected static IParser getParser(String format) {
 		if(StringUtils.isBlank(format)) {
 			format = ResourceFormat.RESOURCE_XML.getHeader();
 		}
@@ -494,7 +492,9 @@ public class ClientUtils {
     w.write(boundary);
     w.write("\r\nContent-Disposition: form-data; name=\""+resourceName+"\"\r\n\r\n");
     w.close(); 
-    new JsonComposer().compose(b, resource, false);
+    JsonParser json = new JsonParser();
+    json.setOutputStyle(OutputStyle.NORMAL);
+    json.compose(b, resource);
     w = new OutputStreamWriter(b, "UTF-8");  
     w.write("\r\n--");
     w.write(boundary);

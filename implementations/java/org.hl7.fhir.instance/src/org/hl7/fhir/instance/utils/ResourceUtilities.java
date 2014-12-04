@@ -3,7 +3,6 @@ package org.hl7.fhir.instance.utils;
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.instance.model.Bundle.BundleLinkComponent;
-import org.hl7.fhir.instance.model.Conformance.ConformanceRestComponent;
 import org.hl7.fhir.instance.model.DomainResource;
 import org.hl7.fhir.instance.model.Extension;
 import org.hl7.fhir.instance.model.OperationOutcome;
@@ -31,7 +30,7 @@ public class ResourceUtilities {
 	}
 	
 	public static String getErrorDescription(OperationOutcome error) {  
-		if (error.getText() != null && error.getText().getDiv() != null)
+		if (error.hasText() && error.getText().hasDiv())
 			return new XhtmlComposer().setXmlOnly(true).composePlainText(error.getText().getDiv());
 		
 		StringBuilder b = new StringBuilder();
@@ -81,7 +80,7 @@ public class ResourceUtilities {
     return null;  }
 
   public static ResourceMetaComponent meta(Resource resource) {
-    if (resource.getMeta() == null)
+    if (!resource.hasMeta())
       resource.setMeta(new ResourceMetaComponent());
     return resource.getMeta();
   }

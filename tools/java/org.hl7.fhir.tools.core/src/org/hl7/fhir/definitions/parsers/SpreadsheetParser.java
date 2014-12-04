@@ -57,6 +57,7 @@ import org.hl7.fhir.definitions.model.ConformancePackage;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.Operation;
 import org.hl7.fhir.definitions.model.OperationParameter;
+import org.hl7.fhir.definitions.model.OperationTuplePart;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -284,41 +285,74 @@ public class SpreadsheetParser {
 	}
 
 	private void readOperations(ResourceDefn root, Sheet sheet) throws Exception {
+	  Map<String, Operation> ops = new HashMap<String, Operation>();
+    Map<String, OperationParameter> params = new HashMap<String, OperationParameter>();
+	  
 	  if (sheet != null) {
       for (int row = 0; row < sheet.rows.size(); row++) {
         String name = sheet.getColumn(row, "Name");
         String use = sheet.getColumn(row, "Use"); 
         String doco = sheet.getColumn(row, "Documentation");
+        String type = sheet.getColumn(row, "Type");
 				
 				if (name != null && !name.equals("") && !name.startsWith("!")) {
 	        if (!name.contains(".")) {
+	          if (!type.equals("operation"))
+              throw new Exception("Invalid type on operation "+type+" at " +getLocation(row));
+	          params.clear();
+	          
 	          boolean system = false;
-	          boolean type = false;
+	          boolean istype = false;
 	          boolean instance = false;
 	          for (String c : use.split("\\|")) {
 	            c = c.trim();
 	            if ("system".equalsIgnoreCase(c))
 	              system = true;
 	            else if ("resource".equalsIgnoreCase(c))
-	              type = true;
+	              istype = true;
 	            else if ("instance".equalsIgnoreCase(c))
 	              instance = true;
 	            else 
-	              throw new Exception("unknown operation use code "+c);
+	              throw new Exception("unknown operation use code "+c+" at "+getLocation(row));
 	          }
-	          root.getOperations().put(name, new Operation(name, system, type, instance, sheet.getColumn(row, "Type"), sheet.getColumn(row, "Title"), doco, sheet.getColumn(row, "Footer")));
+	          Operation op = new Operation(name, system, istype, instance, sheet.getColumn(row, "Type"), sheet.getColumn(row, "Title"), doco, sheet.getColumn(row, "Footer"));
+            root.getOperations().add(op);
+            ops.put(name, op);
 	        } else {
 	          String[] parts = name.split("\\.");
-	          if (!use.equals("in") && !use.equals("out"))
-	            throw new Exception("Only allowed types are 'in' or 'out' at "+getLocation(row));
-	          Operation operation = root.getOperations().get(parts[0]);
-	          if (operation == null)
-	            throw new Exception("Unknown Operation '"+parts[0]+"' at "+getLocation(row));
-	          String type = sheet.getColumn(row, "Type");
-	          String profile = sheet.getColumn(row, "Profile");
-	          String min = sheet.getColumn(row, "Min");
-	          String max = sheet.getColumn(row, "Max");
-	          operation.getParameters().add(new OperationParameter(parts[1], use, doco, Integer.parseInt(min), max, type, profile));
+	          if (parts.length == 3) {
+              // inside of a tuple
+              if (!Utilities.noString(use))
+                throw new Exception("Tuple parameters: use must be blank at "+getLocation(row));
+              Operation operation = ops.get(parts[0]);
+              if (operation == null)
+                throw new Exception("Unknown Operation '"+parts[0]+"' at "+getLocation(row));
+              OperationParameter param = params.get(parts[1]);
+              if (param == null)
+                throw new Exception("Tuple parameter '"+parts[0]+"."+parts[1]+"' not found at "+getLocation(row));
+              if (param == null)
+                throw new Exception("Tuple parameter '"+parts[0]+"."+parts[1]+"' not found at "+getLocation(row));
+              if (!param.getType().equals("Tuple"))
+                throw new Exception("Tuple parameter '"+parts[0]+"."+parts[1]+"' type must be Tuple at "+getLocation(row));
+              String profile = sheet.getColumn(row, "Profile");
+              String min = sheet.getColumn(row, "Min");
+              String max = sheet.getColumn(row, "Max");
+              param.getParts().add(new OperationTuplePart(parts[2], doco, Integer.parseInt(min), max, type, profile));
+	          } else {
+              if (parts.length != 2)
+                throw new Exception("Parameters: only one '.' in a parameter name at "+getLocation(row));
+	            if (!use.equals("in") && !use.equals("out"))
+	              throw new Exception("Only allowed use is 'in' or 'out' at "+getLocation(row));
+	            Operation operation = ops.get(parts[0]);
+	            if (operation == null)
+	              throw new Exception("Unknown Operation '"+parts[0]+"' at "+getLocation(row));
+	            String profile = sheet.getColumn(row, "Profile");
+	            String min = sheet.getColumn(row, "Min");
+	            String max = sheet.getColumn(row, "Max");
+	            OperationParameter p = new OperationParameter(parts[1], use, doco, Integer.parseInt(min), max, type, profile);
+              operation.getParameters().add(p);
+              params.put(parts[1], p);
+	          }
 	        }
 	      }
       }
@@ -586,8 +620,10 @@ public class SpreadsheetParser {
           cd.setReferredValueSet((ValueSet) p.parse(input));
 			  } else
 			    throw new Exception("Unable to find source for "+cd.getReference()+" ("+Utilities.appendSlash(folder)+cd.getReference()+".xml/json)");
-			  if (cd.getReferredValueSet() != null)
+			  if (cd.getReferredValueSet() != null) {
 			    cd.getReferredValueSet().setId(FormatUtilities.makeId(cd.getReference()));
+			    cd.getReferredValueSet().setUserData("filename", cd.getReference()+".html");
+			  }
 			}
 			if (definitions.getBindingByName(cd.getName()) != null) {
 				throw new Exception("Definition of binding '"
@@ -648,7 +684,7 @@ public class SpreadsheetParser {
   }
 
 
-	public void parseConformancePackage(ConformancePackage ap, Definitions definitions) throws Exception {
+	public void parseConformancePackage(ConformancePackage ap, Definitions definitions, String folder) throws Exception {
 	  try {
 	    isProfile = true;
 	    Sheet sheet = loadSheet("Bindings");
@@ -671,6 +707,10 @@ public class SpreadsheetParser {
 	    }
       if (ap.hasMetadata("name"))
         ap.setTitle(ap.metadata("name"));
+      if (ap.hasMetadata("introduction"))
+        ap.setIntroduction(Utilities.path(folder, ap.metadata("introduction")));
+      if (ap.hasMetadata("notes"))
+        ap.setNotes(Utilities.path(folder, ap.metadata("notes")));
       if (!ap.hasMetadata("id"))
         throw new Exception("Error parsing "+ap.getId()+"/"+ap.getTitle()+" no 'id' found in metadata");
       if (!ap.metadata("id").matches(FormatUtilities.ID_REGEX))
@@ -1190,7 +1230,7 @@ public class SpreadsheetParser {
 	    e.getElements().remove(e.getElementByName("extension"));
 	  }
     new ProfileGenerator(definitions, null).convertElements(exe, ex, null);
-	  this.context.seeExtensionDefinition(ex);
+	  this.context.seeExtensionDefinition("http://hl7.org/fhir", ex);
 	  return row;
 	}
 

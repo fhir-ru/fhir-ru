@@ -1,5 +1,8 @@
 package org.hl7.fhir.definitions.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OperationParameter {
 
   private String name;
@@ -9,6 +12,7 @@ public class OperationParameter {
   private String max;
   private String type;
   private String profile;
+  private List<OperationTuplePart> parts;
 
   public OperationParameter(String name, String use, String doco, int min, String max, String type, String profile) {
     this.name = name; 
@@ -18,6 +22,8 @@ public class OperationParameter {
     this.max = max; 
     this.type = type;
     this.profile = profile;
+    if (type.equals("Tuple"))
+      parts = new ArrayList<OperationTuplePart>();
   }
 
   public String getName() {
@@ -78,6 +84,10 @@ public class OperationParameter {
 
   public String describeCardinality() {
     return Integer.toString(min)+".."+max;
+  }
+
+  public List<OperationTuplePart> getParts() {
+    return parts;
   }
 
 }

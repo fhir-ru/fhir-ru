@@ -157,7 +157,7 @@ public class WebMaker {
         String dn = folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"vs"+File.separator+ref;
         buildRedirect(n, bs.getReference()+".html", dn);
         ValueSet vs = bs.getReferredValueSet();
-        if (vs != null && vs.getDefine() != null && vs.getDefine().getSystem().startsWith("http://hl7.org/fhir")) {
+        if (vs != null && vs.hasDefine() && vs.getDefine().getSystem().startsWith("http://hl7.org/fhir")) {
           dn = folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+vs.getDefine().getSystem().substring(20).replace("/", "\\");
           buildRedirect(n, bs.getReference()+".html", dn);          
         }
@@ -171,7 +171,7 @@ public class WebMaker {
 //      for (RegisteredProfile p : r.getProfiles()) {
 //        buildRedirect(n, p.getDestFilenameNoExt()+".html", folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"Profile"+File.separator+p.getDestFilenameNoExt());
 //      }
-      for (Operation op : r.getOperations().values()) {
+      for (Operation op : r.getOperations()) {
         buildRedirect(n, "operation-"+r.getName().toLowerCase()+"-"+op.getName()+".html", folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"OperationDefinition"+File.separator+r.getName()+"-"+op.getName());
       }
     }

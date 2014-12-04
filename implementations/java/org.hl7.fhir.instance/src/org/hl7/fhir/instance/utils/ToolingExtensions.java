@@ -37,6 +37,7 @@ import org.hl7.fhir.instance.model.CodeType;
 import org.hl7.fhir.instance.model.DomainResource;
 import org.hl7.fhir.instance.model.Element;
 import org.hl7.fhir.instance.model.Extension;
+import org.hl7.fhir.instance.model.ExtensionHelper;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Identifier;
 import org.hl7.fhir.instance.model.Questionnaire.GroupComponent;
@@ -49,7 +50,6 @@ import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineComponent;
 import org.hl7.fhir.instance.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.Utilities;
-
 
 public class ToolingExtensions {
 
@@ -64,6 +64,7 @@ public class ToolingExtensions {
 
   // unregistered?
   public static final String EXT_FLYOVER = "http://hl7.org/fhir/Profile/questionnaire-extensions#flyover";
+  private static final String EXT_TRANSLATION = "http://www.healthintersections.com.au/fhir/ExtensionDefinition/translation";
   private static final String EXT_QTYPE = "http://www.healthintersections.com.au/fhir/Profile/metadata#type";
   private static final String EXT_EXPANSION_CLOSED = "http://hl7.org/fhir/Profile/questionnaire-extensions#closed";
   private static final String EXT_QREF = "http://www.healthintersections.com.au/fhir/Profile/metadata#reference";
@@ -72,6 +73,9 @@ public class ToolingExtensions {
   private static final String EXT_REFERENCE = "http://www.healthintersections.com.au/fhir/Profile/metadata#reference";
   private static final String EXT_OID = "http://www.healthintersections.com.au/fhir/ExtensionDefinition/oid";
 
+  
+  // specific extension helpers
+  
   public static Extension makeIssueSource(Source source) {
     Extension ex = new Extension();
     // todo: write this up and get it published with the pack (and handle the redirect?)
@@ -110,7 +114,7 @@ public class ToolingExtensions {
   }
 
   public static String readStringExtension(Element c, String uri) {
-    Extension ex = c.getExtension(uri);
+    Extension ex = ExtensionHelper.getExtension(c, uri);
     if (ex == null)
       return null;
     if (!(ex.getValue() instanceof StringType))
@@ -130,7 +134,7 @@ public class ToolingExtensions {
   }
 
   public static boolean findStringExtension(Element c, String uri) {
-    Extension ex = c.getExtension(uri);
+    Extension ex = ExtensionHelper.getExtension(c, uri);
     if (ex == null)
       return false;
     if (!(ex.getValue() instanceof StringType))
@@ -139,7 +143,7 @@ public class ToolingExtensions {
   }
 
   public static String readBooleanExtension(Element c, String uri) {
-    Extension ex = c.getExtension(uri);
+    Extension ex = ExtensionHelper.getExtension(c, uri);
     if (ex == null)
       return null;
     if (!(ex.getValue() instanceof BooleanType))
@@ -148,7 +152,7 @@ public class ToolingExtensions {
   }
 
   public static boolean findBooleanExtension(Element c, String uri) {
-    Extension ex = c.getExtension(uri);
+    Extension ex = ExtensionHelper.getExtension(c, uri);
     if (ex == null)
       return false;
     if (!(ex.getValue() instanceof BooleanType))
@@ -249,9 +253,28 @@ public class ToolingExtensions {
   }
 
   public static void setOID(ValueSetDefineComponent define, String oid) throws Exception {
-    define.getExtension().add(Factory.newExtension(EXT_IDENTIFIER, Factory.newUri(oid), false));       
+    define.getExtension().add(Factory.newExtension(EXT_OID, Factory.newUri(oid), false));       
   }
   public static void setOID(ValueSet vs, String oid) throws Exception {
-    vs.getExtension().add(Factory.newExtension(EXT_IDENTIFIER, Factory.newUri(oid), false));       
+    vs.getExtension().add(Factory.newExtension(EXT_OID, Factory.newUri(oid), false));       
+  }
+
+  public static boolean hasLanguageTranslation(Element element, String lang) {
+    for (Extension e : element.getExtension()) {
+      if (e.getUrl().equals(EXT_TRANSLATION)) {
+        Extension e1 = ExtensionHelper.getExtension(e, "lang");
+
+        if (e1 != null && e1.getValue() instanceof StringType && ((StringType) e.getValue()).getValue().equals(lang))
+          return true;
+      }
+    }
+    return false;
+  }
+
+  public static void addLanguageTranslation(Element element, String lang, String value) {
+    Extension extension = new Extension().setUrl(EXT_TRANSLATION);
+    extension.addExtension().setUrl("lang").setValue(new StringType(lang));
+    extension.addExtension().setUrl("value").setValue(new StringType(value));
+    element.getExtension().add(extension);
   }
 }

@@ -14,10 +14,8 @@ import org.hl7.fhir.instance.client.FHIRClient;
 import org.hl7.fhir.instance.client.FeedFormat;
 import org.hl7.fhir.instance.client.ResourceFormat;
 import org.hl7.fhir.instance.formats.XmlParser;
-
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
-import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.ConceptMap;
 import org.hl7.fhir.instance.model.Conformance;
 import org.hl7.fhir.instance.model.DateAndTime;
@@ -163,6 +161,13 @@ public class WorkerContext {
     return res;
   }
 
+  public static WorkerContext fromClassPath() throws Exception {
+    WorkerContext res = new WorkerContext();
+    res.loadFromStream(WorkerContext.class.getResourceAsStream("validation.zip"));
+    return res;
+  }
+
+
 
   public static WorkerContext fromDefinitions(Map<String, byte[]> source) throws Exception {
     WorkerContext res = new WorkerContext();
@@ -175,7 +180,11 @@ public class WorkerContext {
   }
 
   private void loadFromPack(String path) throws Exception {
-    ZipInputStream zip = new ZipInputStream(new CSFileInputStream(path));
+    loadFromStream(new CSFileInputStream(path));
+  }
+  
+  private void loadFromStream(InputStream stream) throws Exception {
+    ZipInputStream zip = new ZipInputStream(stream);
     ZipEntry ze;
     while ((ze = zip.getNextEntry()) != null) {
       if (ze.getName().endsWith(".xml")) { 
@@ -192,35 +201,43 @@ public class WorkerContext {
     XmlParser xml = new XmlParser();
     Bundle f = (Bundle) xml.parse(stream);
     for (BundleEntryComponent e : f.getEntry()) {
+    	String base = e.hasBase() ? e.getBase() : f.getBase();
+    	
       if (e.getResource().getId() == null) {
         System.out.println("unidentified resource in "+name);
       }
       if (e.getResource() instanceof Profile)
-        seeProfile((Profile) e.getResource());
+        seeProfile(base, (Profile) e.getResource());
       else if (e.getResource() instanceof ValueSet)
-        seeValueSet((ValueSet) e.getResource());
+        seeValueSet(base, (ValueSet) e.getResource());
       else if (e.getResource() instanceof ExtensionDefinition)
-        seeExtensionDefinition((ExtensionDefinition) e.getResource());
+        seeExtensionDefinition(base, (ExtensionDefinition) e.getResource());
       else if (e.getResource() instanceof ConceptMap)
         maps.put(((ConceptMap) e.getResource()).getIdentifier(), (ConceptMap) e.getResource());
     }
       }
 
-  public void seeExtensionDefinition(ExtensionDefinition ed) throws Exception {
+  public void seeExtensionDefinition(String base, ExtensionDefinition ed) throws Exception {
     if (extensionDefinitions.get(ed.getUrl()) != null)
       throw new Exception("duplicate extension definition: "+ed.getUrl());
+    extensionDefinitions.put(ed.getId(), ed);
+  	extensionDefinitions.put(base+"/ExtensionDefinition/"+ed.getId(), ed);
     extensionDefinitions.put(ed.getUrl(), ed);
   }
 
-  public void seeValueSet(ValueSet vs) {
+  public void seeValueSet(String base, ValueSet vs) {
+  	valueSets.put(vs.getId(), vs);
+  	valueSets.put(base+"/ValueSet/"+vs.getId(), vs);
 	  valueSets.put(vs.getIdentifier(), vs);
-        if (vs.getDefine() != null) {
+	  if (vs.hasDefine()) {
 	    codeSystems.put(vs.getDefine().getSystem().toString(), vs);
         }
       }
 
-  public void seeProfile(Profile p) {
+  public void seeProfile(String base, Profile p) {
 	  profiles.put(p.getId(), p);
+	  profiles.put(base+"/Profile/"+p.getId(), p);
+	  profiles.put(p.getUrl(), p);
   }
 
   public class NullExtensionResolver implements ExtensionLocatorService {

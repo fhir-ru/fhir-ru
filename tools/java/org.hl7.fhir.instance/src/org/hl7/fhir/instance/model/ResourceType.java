@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Generated on Fri, Nov 21, 2014 17:07+1100 for FHIR v0.3.0
+// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
 
 public enum ResourceType {
     Condition,
@@ -8,6 +8,7 @@ public enum ResourceType {
     ProcedureRequest,
     DeviceComponent,
     Organization,
+    Readjudicate,
     Group,
     OralHealthClaim,
     ValueSet,
@@ -17,6 +18,7 @@ public enum ResourceType {
     MedicationDispense,
     MedicationPrescription,
     Slot,
+    PaymentNotice,
     Contraindication,
     AppointmentResponse,
     MedicationStatement,
@@ -37,7 +39,9 @@ public enum ResourceType {
     ExtensionDefinition,
     Subscription,
     OrderResponse,
+    StatusResponse,
     ConceptMap,
+    Reversal,
     ImagingStudy,
     Practitioner,
     CarePlan,
@@ -54,13 +58,17 @@ public enum ResourceType {
     DocumentManifest,
     DataElement,
     Availability,
-    MedicationAdministration,
     QuestionnaireAnswers,
+    MedicationAdministration,
     Encounter,
+    Enrollment,
+    PaymentReconciliation,
     SecurityEvent,
+    PendedRequest,
     List,
     DeviceUseStatement,
     OperationDefinition,
+    ImagingObjectSelection,
     SearchParameter,
     NutritionOrder,
     ClaimResponse,
@@ -78,7 +86,10 @@ public enum ResourceType {
     Basic,
     Specimen,
     Alert,
+    EnrollmentResponse,
     Patient,
+    EligibilityResponse,
+    StatusRequest,
     DiagnosticOrder,
     Parameters;
 
@@ -95,6 +106,8 @@ public enum ResourceType {
       return "devicecomponent";
     case Organization:
       return "organization";
+    case Readjudicate:
+      return "readjudicate";
     case Group:
       return "group";
     case OralHealthClaim:
@@ -113,6 +126,8 @@ public enum ResourceType {
       return "medicationprescription";
     case Slot:
       return "slot";
+    case PaymentNotice:
+      return "paymentnotice";
     case Contraindication:
       return "contraindication";
     case AppointmentResponse:
@@ -153,8 +168,12 @@ public enum ResourceType {
       return "subscription";
     case OrderResponse:
       return "orderresponse";
+    case StatusResponse:
+      return "statusresponse";
     case ConceptMap:
       return "conceptmap";
+    case Reversal:
+      return "reversal";
     case ImagingStudy:
       return "imagingstudy";
     case Practitioner:
@@ -187,20 +206,28 @@ public enum ResourceType {
       return "dataelement";
     case Availability:
       return "availability";
-    case MedicationAdministration:
-      return "medicationadministration";
     case QuestionnaireAnswers:
       return "questionnaireanswers";
+    case MedicationAdministration:
+      return "medicationadministration";
     case Encounter:
       return "encounter";
+    case Enrollment:
+      return "enrollment";
+    case PaymentReconciliation:
+      return "paymentreconciliation";
     case SecurityEvent:
       return "securityevent";
+    case PendedRequest:
+      return "pendedrequest";
     case List:
       return "list";
     case DeviceUseStatement:
       return "deviceusestatement";
     case OperationDefinition:
       return "operationdefinition";
+    case ImagingObjectSelection:
+      return "imagingobjectselection";
     case SearchParameter:
       return "searchparameter";
     case NutritionOrder:
@@ -235,8 +262,14 @@ public enum ResourceType {
       return "specimen";
     case Alert:
       return "alert";
+    case EnrollmentResponse:
+      return "enrollmentresponse";
     case Patient:
       return "patient";
+    case EligibilityResponse:
+      return "eligibilityresponse";
+    case StatusRequest:
+      return "statusrequest";
     case DiagnosticOrder:
       return "diagnosticorder";
     case Parameters:
