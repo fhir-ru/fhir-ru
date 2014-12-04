@@ -17,7 +17,7 @@ for use in prescribing particular diets, or for ordering non-medication-related 
 <table border="1" cellpadding="1" cellspacing="2" frame="box">
     <tr>
         <td>MedicationPrescription</td>
-        <td>Заказ как на поставку лекарственного средства, так и на его применение.</td>
+        <td>An order for both supply of the medication and the instructions for administration of the medicine to a patient.</td>
     </tr>
     <tr>
         <td><a href="medicationdispense.html">MedicationDispense</a></td>

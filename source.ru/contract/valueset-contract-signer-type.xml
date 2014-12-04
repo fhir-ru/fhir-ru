@@ -19,7 +19,7 @@
     <define>
 	<system value="http://www.hl7.org/fhir/contractsignertypecodes"/>
 	<concept>
-      <code value="gaurantor"/>
+      <code value="guarantor"/>
     </concept>
 	<concept>
       <code value="notary"/>
