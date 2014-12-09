@@ -107,14 +107,14 @@ todo: compartments
         <page title="Метки уровня безопасности" filename="security-labels.html"/>
       </page>
       <page title="Комплексные примеры" filename="integrated-examples.html"/>
-      <page title="Инструкции по реализации" filename="iglist.html">
-        <page title="Сбор структурированных данных" filename="sdc.html">
+      <page title="Руководства по реализации" filename="iglist.html">
+        <page title="Сбор структурированных данных (SDC)" filename="sdc.html">
           <page title="Введение в SDC" filename="sdc-intro.html"/>
           <page title="Безопасность в SDC" filename="sdc-security.html"/>
         </page>
-        <page title="Data Access Framework (DAF)" filename="daf.html">
-          <page title="DAF Introduction" filename="daf-intro.html"/>
-          <page title="DAF Security" filename="daf-security.html"/>
+        <page title="Фреймворк доступа к данным (DAF)" filename="daf.html">
+          <page title="Введение в DAF" filename="daf-intro.html"/>
+          <page title="Безопасность в DAF" filename="daf-security.html"/>
         </page>
                 <page title="US Laboratory Order Implementation" filename="uslaborder.html">
           <page title="USLabOrder Documentation" filename="uslaborder-guide.html"/>

@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
       
-[%settitle Integrated Examples%]
+[%settitle Комплексные примеры%]
 <head>
 [%file newheader%]
 </head>
@@ -13,70 +13,60 @@
 <div class="col-9">
 
 
-<h2>Integrated Examples</h2>
+<h2>Комплексные примеры</h2>
 
 <p>
-These integrated examples are the result of choosing several real world 
-healthcare records from a Dutch healthcare institution and representing
-them using FHIR resources. They are made published here for several
-reasons:
+Следующие комплексные примеры являются результатом выбора нескольких реальных медицинских записей из Голландского института здравоохранения и представления их с помощью FHIR-ресурсов. Они опубликованы здесь по нескольким причинам:
 </p>
 <ul>
- <li>To test that the resources are fit for purpose using real cases</li>
- <li>So that the available resource examples include real cases</li>
- <li>So that applications have real world clinical cases to use in development and prototyping</li>
+ <li>Проверить с помощью реальных случаев, что ресурсы подходят по назначению</li>
+ <li>Для того чтобы доступные примеры ресурсов включали реальные случаи</li>
+ <li>Для того чтобы у приложений были реальные примеры для использования при разработке и прототипировании</li>
 </ul>
 
 
-<h3>Patient case 1</h3>
+<h3>Пациент №1</h3>
 
 <p>
-The 69 year old Pieter van den Heuvel is charged with some serious diseases over the last few years. In the spring and summer of 2011, Pieter had complains of fatigue, dyspnea 
-and even fainting. After visiting his physician, Pieter was referred to the cardiologist for further examination. At the hospital a malfunction of the heart valve was diagnosed
-and eventually replaced. Pieter recovered well in the next 2 months, but probably needs a life time prescription on blood pressure reducing medication.
-In the summer of 2012, Pieter again visited his physician for a chest injury after he fell from the stairs. By coincidence, the doctor noticed a suspicious stain on the X-thorax
-and performed some additional tests on Pieter. After the results, Pieter was diagnosed with early stage non-small cell lung cancer. Fortunately, the tumor didn't spread to other
-parts of the body. Tumor type and location made it possible to perform a partial lobectomy in the right lung. After his recovery, Pieter was submitted to a high risk control 
-group for yearly screening.
+69-летний Питер фон ден Хёфел перенес несколько серьезных заболеваний за последние несколько лет. Весной и летом 2011 года у Питера были жалобы на утомление, одышку и даже обморок.
+После посещения врача Питер был направлен к кардиологу на обследование. В госпитале ему диагностировали неисправность сердечного клапана, который в конечном итоге был заменен. Питер хорошо восстановился за последующие 2 месяца, но, вероятно, ему придется всю жизнь принимать лекарственные средства по снижению кровяного давления.
+Летом 2012 года Питер снова посетил врача с травмой грудной клетки после того как он упал с лестницы. По случайному стечению обстоятельств врач заметил подозрительное пятно на рентгеновском снимке грудной клетки, и Питеру провели несколько дополнительных исследований. По результатам Питеру диагностировали раннюю стадию немелкоклеточного рака легкого. К счастью, опухоль не распространилась на другие части тела. Тип и расположение опухоли дали возможность выполнить частичную лобэктомию в правом легком. После выздоровления Питера добавили в контрольную группу высокого риска для ежегодной проверки.
 </p>
 <p>
-In 2013, Pieter was charged with an increasing neck swelling, a stiff neck and difficulty swallowing. Because of breathing problems, Pieter was urgently admitted 
-to the hospital. An upper respiratory infection caused a retropharyngeal abscess in the back of the throat. Surgery was needed to remove the abscess. The surgeons 
-recommended a tracheotomy during the surgery, so there was less change of complications during the abscess removal. A tracheotomy was intubated before the surgery.
-After the removal of the retropharyngeal abscess, the tracheotomy was extubated as the swelling was reduced and normal breathing became reinstated.
+В 2013 году Питер страдал увеличивающейся припухлостью шеи, ригидностью затылочных мышц и затрудненным глотанием. Из-за проблем с дыханием Питер был срочно госпитализирован. Инфекция верхних дыхательных путей вызвала ретрофарингеальный абсцесс в задней части горла. Для удаления абсцесса была необходима операция. Хирурги рекомендовали трахеотомию на время операции, чтобы было меньше осложнений во время удаления абсцесса. Трахеотомию провели перед операцией. После удаления ретрофарингеального абсцесса, когда опухоль спала, трахеотомическая трубка была извлечена и нормальное дыхание восстановилось.
 </p>
 
-<h4>Patient demographic information</h4>
+<h4>Демографические данные пациента</h4>
 
 <pre>
-Patient name: <a href="patient-example-f001-pieter.html">Pieter van den Heuvel</a>
-Patient number: 0108173
-Date of birth: 17-11-1944
-Gender: Male
+Имя пациента: <a href="patient-example-f001-pieter.html">Питер фон ден Хёфел</a>
+Номер пациента: 0108173
+Дата рождения: 17-11-1944
+Пол: мужской
 </pre>
 
-<h4>Patient contact information</h4>
+<h4>Контактные данные пациента</h4>
 <pre>
-Address: van Egmondkade 23
-Zip code: 1024 RJ
-City: Amsterdam
-Phone: +31648352638
-email: p.heuvel@gmail.com
+Адрес: van Egmondkade 23
+Индекс: 1024 RJ
+Город: Амстердам
+Телефон: +31648352638
+Email: p.heuvel@gmail.com
 </pre>
 <p>
 <table border="1">
-<caption>Intakes</caption>
+<caption>Приём внутрь (Intakes)</caption>
 <tr>
-  <th>intake date</th>
-  <th>surgery date</th>
-  <th>practitioner</th>
-  <th>specialism</th>
-  <th>diagnose</th>
-  <th>procedure</th>
-  <th>care plan</th>
-  <th>surgery code</th>
-  <th>SNOMED CT code</th>
-  <th>related encounter</th>
+  <th>дата приёма</th>
+  <th>дата операции</th>
+  <th>врач</th>
+  <th>специализация</th>
+  <th>диагноз</th>
+  <th>процедура</th>
+  <th>план ухода</th>
+  <th>код операции</th>
+  <th>SNOMED CT-код</th>
+  <th>связанный визит</th>
 </tr>
 <tr>
   <td>26-6-2011</td>
@@ -142,20 +132,20 @@ email: p.heuvel@gmail.com
 </p>
 <p>
 <table border="1">
-<caption>Active medication</caption>
+<caption>Список текущих медикаментов (Active medication)</caption>
 <tr>
-  <th>medication</th>
-  <th>hopital/home</th>
+  <th>медикамент</th>
+  <th>hospital/home</th>
   <th>dose</th>
   <th>admission route</th>
   <th>start date</th>
-  <th>presciber</th>
+  <th>prescriber</th>
   <th>SNOMED CT code</th> 
   <th>prescription nu</th>
 </tr>
 <tr>
   <td><a href="medication-example-f001-combivent.html">Salbutamol+ipratropium bromide</a></td>
-  <td>hopital</td>
+  <td>hospital</td>
   <td>3/4 times daily 1 flacon</td>
   <td>inhaler</td>
   <td>8-4-2013</td>
@@ -207,7 +197,7 @@ email: p.heuvel@gmail.com
 </p>
 <p>
 <table border="1">
-<caption>Device</caption>
+<caption>Медицинское изделие (Device)</caption>
 <tr>
   <th>device</th>
   <th>hopital/home</th>
@@ -218,8 +208,8 @@ email: p.heuvel@gmail.com
   <th>SNOMED CT code</th>
 </tr>
 <tr>
-  <td><a href="device-example-f001-feedingtube.html">Feeding tube</a></td>
-  <td>hopital</td>
+  <td><a href="device-example-f001-feedingtube.html">Питательная трубка</a></td>
+  <td>hospital</td>
   <td>N.A.</td>
   <td>tube</td>
   <td>10-4-2013</td>
@@ -229,7 +219,7 @@ email: p.heuvel@gmail.com
 </table>
 </p>
 <table border="1">
-<caption>Lab results</caption>
+<caption>Результаты лабораторных исследований (Lab results)</caption>
 <td><a href="diagnosticreport-example-f001-bloodexam.html">diagnostic blood report</a></td>
 <tr>
   <th>date</th>
@@ -269,59 +259,56 @@ email: p.heuvel@gmail.com
 </tr>
 </table>
 
-<h4>Anamnese</h4>
+<h4>Анамнез</h4>
 <i><b>date: 8-6-2012</b></i>
-Bronchoscopy; several biopsy specimen were taken from pathological mucosa, right main bronchus specimen send for pathologic analysis.
-Bronchoscopy because of atelectasis right.
+Бронхоскопия; несколько образцов биопсии были взяты из патологической слизистой оболочки, образец основной части правого бронха отправлен на гистологический анализ.
+Бронхоскопия проведена по причине спадения правого легкого.
 
-X-thorax; increase in atelectasis and pleural liquid.  
+Рентгенография органов грудной клетки; рост спадения легкого и плевральной жидкости.
 
-
-Bronchoscopy;
-<br/>-fluids drained from right main bronchus
-<br/>-pathalogic mucous membrane right bronchus, easily bleeding
-<br/>-left bronchial system open
-
-
-<i><b>date: 18-3-2013</b></i>
-Antiobiotic policy with retropharyngeal abscess with prolapse to the mediatinum. No surgical possibility to fully drain the mediatinum.
-
-<h4>Physical investigation</h4>
+Бронхоскопия:
+<br/>-жидкости, взятые из основной части правого бронха
+<br/>-патологическая слизистая оболочка правого бронха с легким кровотечением
+<br/>-левая бронхиальная система открыта
+<br/>
 
 <i><b>date: 18-3-2013</b></i>
-Neck; swelling and redness pretracheal extending to chest. No fluctation, however induration is present.
-Swelling back pharynx, also present in postcricoid area. Light stridor sound when breathing. Overall
-condition is good. Scoop; little supraglottic swelling, vocal chords not judgable.
+Курс антибиотиков при ретрофарингеальном абсцессе с выпадением в средостение. Без возможности хирургическим путем полностью дренировать средостение.
 
-<h4>Additional research</h4>
-CT thorax: no mediastinal/retropharyngal collering of the fluid collections. Diffuse edema retro/parapharyngeal and mediastinitis.
-Preoperative culture shows; S pyogenes, sensitivity for peneciline and E. cloacae, sensitivity for Salbutamol.
+<h4>Физический осмотр (Physical investigation)</h4>
 
+<i><b>date: 18-3-2013</b></i>
+Шея: припухлость и предтрахеальное покраснение, распространяющееся на грудь. Без флуктуации, однако присутствует уплотнение.
+Отек задней части глотки, также присутствует в заперстневидной области. Слабый свистящий звук при дыхании. В целом состояние хорошее. Ложка: маленький надгортанный отек, голосовые связки не подлежат суждению.
 
-<h4>Policy</h4>
+<h4>Дополнительные исследования (Additional research)</h4>
+КТ грудной клетки: нет медиастинального/ретрофарингеального collering скопления жидкостей. Диффузный ретро/парафарингеальный отек и медиастинит.
+Предоперационная проба культур показывает: пиогенный стрептококк с чувствительностью к пенициллину и Enterobacter cloacae с чувствительностью к сальбутамолу.
+
+<h4>Курс лечения (Policy)</h4>
+Прекратить предписание сальбутамола. Продолжить давать пенициллин и начать добавку сальбутамола. Общее время лечения - приблизительно 6 недель.
 Stop Salbutamol prescription. Continue penicilin and start salbutamol supplementation. Total treatment time is approximatly 6 weeks.
-In consultation with the IC/anesthesia; intubation. Analyse lower respiratory tract.
+По согласованию с IC/anesthesia: интубация. Анализ нижних дыхательных путей. 
 
-<h4>Conclusion</h4>
-Extubation on OR. Normal voice, no stridor. However, hypoxic at low respiratory tract obstruction with 84% O2 and rapid breathing.
+<h4>Заключение (Conclusion)</h4>
+Экстубация в операционной. Голос нормальный, нет свястящего дыхания. Однако гипоксичен при непроходимости нижних дыхательных путей с 84% O2 и учащенное дыхание.
 
-
-<h3>Patient case 2</h3>
+<h3>Пациент №2</h3>
 
 
 <pre>
-Patient name: <a href="patient-example-f201-roel.html">Roel Bor</a>
-Patient number: 123456789
-Date of birth: 1960-03-13
-Gender: Male
+Имя пациента: <a href="patient-example-f201-roel.html">Roel Bor</a>
+Номер пациента: 123456789
+Дата рождения: 1960-03-13
+Пол: мужской
 </pre>
 
-<h4>Patient contact information</h4>
+<h4>Контактные данные пациента</h4>
 <pre>
-Address: Bos en Lommerplein 280
-Zip code: 1055 RW
-City: Amsterdam
-Phone: +31612345678
+Адрес: Bos en Lommerplein 280
+Индекс: 1055 RW
+Город: Амстердам
+Телефон: +31612345678
 </pre>
 Roel Bor is in his mid-fifties, works for an IT-company and has two healthy children and a wife. His uncle unfortunately was less healthy and died of cancer. 
 At the end of 2012, Roel was also diagnosed with a tumor in the Erasmus Medical Center. His tumor is located in the head-neck area. The standard treatment 
