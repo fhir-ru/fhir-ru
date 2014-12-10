@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Alexandra Pavlyshina</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2014-12-10T08:52:39Z</LastSaved>
+  <LastSaved>2014-12-10T20:47:15Z</LastSaved>
   <Version>15.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -26,7 +26,7 @@
   <WindowTopY>0</WindowTopY>
   <TabRatio>893</TabRatio>
   <ActiveSheet>11</ActiveSheet>
-  <FirstVisibleSheet>1</FirstVisibleSheet>
+  <FirstVisibleSheet>2</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -7768,7 +7768,7 @@
    <NamedRange ss:Name="_FilterDatabase"
     ss:RefersTo="='code-selection-mode'!R1C1:R1C9" ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s137" ss:DefaultColumnWidth="51.263999999999996"
    ss:DefaultRowHeight="14.975999999999999">
    <Column ss:StyleID="s137" ss:Width="80.064000000000007"/>
@@ -7819,6 +7819,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s139"><Data ss:Type="String">code</Data></Cell>
@@ -7830,6 +7831,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s140"/>
+    <Cell><Data ss:Type="String">код</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="29.951999999999998">
     <Cell ss:StyleID="s141"><Data ss:Type="String">children</Data></Cell>
@@ -7841,6 +7843,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s142"/>
+    <Cell><Data ss:Type="String">непосредственные потомки</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="29.951999999999998">
     <Cell ss:StyleID="s141"><Data ss:Type="String">descendants</Data></Cell>
@@ -7852,6 +7855,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s142"/>
+    <Cell><Data ss:Type="String">потомки</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s141"><Data ss:Type="String">all</Data></Cell>
@@ -7863,6 +7867,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s142"/>
+    <Cell><Data ss:Type="String">все</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s141"><Data ss:Type="String">system</Data></Cell>
@@ -7874,6 +7879,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s142"/>
+    <Cell><Data ss:Type="String">система</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s141"/>
@@ -8373,7 +8379,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>4</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -8381,13 +8387,15 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -8443,7 +8451,7 @@
    <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='filter-operator'!R1C1:R1C9"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s137" ss:DefaultColumnWidth="51.263999999999996"
    ss:DefaultRowHeight="14.975999999999999">
    <Column ss:StyleID="s137" ss:Width="80.064000000000007"/>
@@ -8494,6 +8502,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="29.951999999999998">
     <Cell ss:StyleID="s139"><Data ss:Type="String">=</Data></Cell>
@@ -8505,6 +8514,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s140"/>
+    <Cell><Data ss:Type="String">=</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75.024000000000001">
     <Cell ss:StyleID="s141"><Data ss:Type="String">is-a</Data></Cell>
@@ -8516,6 +8526,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s142"><Data ss:Type="String">The definition of is-a is that all the properties of the value are true for the specified property of the code, and so that a code has an is-a relationship with itself. To exclude the root code, add it explicitly to as an exclude</Data></Cell>
+    <Cell><Data ss:Type="String">является</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="29.951999999999998">
     <Cell ss:StyleID="s141"><Data ss:Type="String">is-not-a</Data></Cell>
@@ -8527,6 +8538,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s142"/>
+    <Cell><Data ss:Type="String">не является</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="29.951999999999998">
     <Cell ss:StyleID="s141"><Data ss:Type="String">regex</Data></Cell>
@@ -8538,6 +8550,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s142"/>
+    <Cell><Data ss:Type="String">регулярное выражение</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45.072000000000003">
     <Cell ss:StyleID="s141"><Data ss:Type="String">in</Data></Cell>
@@ -8549,6 +8562,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s142"/>
+    <Cell><Data ss:Type="String">входит в</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45.072000000000003">
     <Cell ss:StyleID="s141"><Data ss:Type="String">not in</Data></Cell>
@@ -8560,6 +8574,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s142"/>
+    <Cell><Data ss:Type="String">не входит в</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s141"/>
@@ -9048,7 +9063,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>4</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -9056,13 +9071,15 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -9749,7 +9766,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>5</ActiveRow>
      <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
