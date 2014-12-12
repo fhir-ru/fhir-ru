@@ -20,12 +20,24 @@
 	<system value="http://www.hl7.org/fhir/processoutcomecodes"/>
 	<concept>
       <code value="complete"/>
+	  <designation>
+		<language value="ru"/>
+		<value value="Выполнено"/>
+	  </designation>
     </concept>
 	<concept>
       <code value="pended"/>
+	  <designation>
+		<language value="ru"/>
+		<value value="Отложено"/>
+	  </designation>
     </concept>
 	<concept>
       <code value="error"/>
+	  <designation>
+		<language value="ru"/>
+		<value value="Ошибка"/>
+	  </designation>
     </concept>
 	</define>
 </ValueSet>

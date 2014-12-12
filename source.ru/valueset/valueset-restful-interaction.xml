@@ -16,24 +16,40 @@
       <code value="read"/>
       <display value="read"/>
       <definition value="Read the current state of the resource"/>
+	  <designation>
+		  <language value="ru"/>
+		  <value value="чтение"/>
+	  </designation>	
     </concept>  
 	
     <concept>
       <code value="vread"/>
       <display value="vread"/>
       <definition value="Read the state of a specific version of the resource"/>
+	  <designation>
+		  <language value="ru"/>
+		  <value value="чтение версии"/>
+	  </designation>	
     </concept>  
 	
     <concept>
       <code value="update"/>
       <display value="update"/>
       <definition value="Update an existing resource by its id (or create it if it is new)"/>
+	  <designation>
+		  <language value="ru"/>
+		  <value value="обновление"/>
+	  </designation>	
     </concept>  
 	
     <concept>
       <code value="delete"/>
       <display value="delete"/>
       <definition value="Delete a resource"/>
+	  <designation>
+		  <language value="ru"/>
+		  <value value="удаление"/>
+	  </designation>	
     </concept>  
 	
     <concept>
@@ -41,20 +57,36 @@
       <abstract value="false"/>
       <display value="history"/>
       <definition value="Retrieve the update history for a particular resource, type of resource, or the entire system"/>
+	  <designation>
+		  <language value="ru"/>
+		  <value value="история"/>
+	  </designation>	
       <concept>
         <code value="history-instance"/>
         <display value="history-instance"/>
         <definition value="Retrieve the update history for a particular resource"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="история ресурса"/>
+	  </designation>	
       </concept>  
       <concept>
         <code value="history-type"/>
         <display value="history-type"/>
         <definition value="Retrieve the update history for a all resources of a particular type"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="история по типу"/>
+	  </designation>	
       </concept>  
       <concept>
         <code value="history-system"/>
         <display value="history-system"/>
         <definition value="Retrieve the update history for all resources on a system"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="история по системе"/>
+	  </designation>	
       </concept>  
     </concept>  
 	
@@ -62,6 +94,10 @@
       <code value="create"/>
       <display value="create"/>
       <definition value="Create a new resource with a server assigned id"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="создание"/>
+	  </designation>	
     </concept>  
     
     <concept>
@@ -69,15 +105,27 @@
       <abstract value="false"/>
       <display value="search"/>
       <definition value="Search a resource type or all resources based on some filter criteria"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="поиск"/>
+	  </designation>	
       <concept>
         <code value="search-type"/>
         <display value="search-type"/>
         <definition value="Search all resources of the specified type based on some filter criteria"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="поиск по типу"/>
+	  </designation>	
       </concept>  
       <concept>
         <code value="search-system"/>
         <display value="search-system"/>
         <definition value="Search all resources based on some filter criteria"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="поиск по системе"/>
+	  </designation>	
       </concept>  
     </concept>  
 	
@@ -85,24 +133,40 @@
       <code value="validate"/>
       <display value="validate"/>
       <definition value="Check that the content would be acceptable as an update"/>
+	  <designation>
+		  <language value="ru"/>
+		  <value value="валидация"/>
+	  </designation>	
     </concept>  
 	
     <concept>
       <code value="conformance"/>
       <display value="conformance"/>
       <definition value="Get a conformance statement for the system"/>
+	  <designation>
+		  <language value="ru"/>
+		  <value value="заявление о соответствии"/>
+	  </designation>	
     </concept>  
 	
     <concept>
       <code value="transaction"/>
       <display value="transaction"/>
       <definition value="Update, create or delete a set of resources as a single transaction"/>
+	  <designation>
+		  <language value="ru"/>
+		  <value value="транзакция"/>
+	  </designation>	
     </concept>  
     
     <concept>
       <code value="operation"/>
       <display value="operation"/>
       <definition value="Perform an operation as defined by an OperationDefinition"/>
+	  <designation>
+		  <language value="ru"/>
+		  <value value="операция"/>
+	  </designation>	
     </concept>  
     
   </define>

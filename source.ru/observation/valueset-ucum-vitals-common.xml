@@ -80,34 +80,66 @@
       <concept>
         <code value="%"/>
         <display value="percent"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="процент"/>
+		</designation>
       </concept>
       <concept>
         <code value="cm"/>
         <display value="centimeter"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="сантиметр"/>
+		</designation>
       </concept>
       <concept>
         <code value="kg"/>
         <display value="kilogram"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="килограмм"/>
+		</designation>
       </concept>
       <concept>
         <code value="Cel"/>
         <display value="degree Celsius"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="градусов Цельсия"/>
+		</designation>
       </concept>
       <concept>
         <code value="mm[Hg]"/>
         <display value="millimeter of mercury"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="миллиметров ртутного столба"/>
+		</designation>
       </concept>
       <concept>
         <code value="/min"/>
         <display value="per minute"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="в минуту"/>
+		</designation>
       </concept>
       <concept>
         <code value="kg/m2"/>
         <display value="kilogram / (meter ^ 2)"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="килограмм / (метр ^ 2)"/>
+		</designation>
       </concept>
       <concept>
         <code value="m2"/>
         <display value="square meter"/>
+		<designation>
+		  <language value="ru"/>
+		  <value value="квадратный метр"/>
+		</designation>
       </concept>    
     </include>
   </compose>

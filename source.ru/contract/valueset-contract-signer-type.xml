@@ -20,9 +20,17 @@
 	<system value="http://www.hl7.org/fhir/contractsignertypecodes"/>
 	<concept>
       <code value="guarantor"/>
+	  <designation>
+		<language value="ru"/>
+		<value value="Поручитель"/>
+	  </designation>
     </concept>
 	<concept>
       <code value="notary"/>
+	  <designation>
+		<language value="ru"/>
+		<value value="Нотариус"/>
+	  </designation>
     </concept>
 	</define>
 </ValueSet>

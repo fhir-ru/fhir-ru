@@ -14,21 +14,37 @@
 			<code value="new-request"/>
 			<display value="new request"/>
 			<definition value="a Provider (.orderer) orders one or more new laboratory tests or scheduled laboratory tests (including future tests) to be performed by a laboratory. "/>
+		    <designation>
+			  <language value="ru"/>
+			  <value value="Оплачено"/>
+		    </designation>
 		</concept>
 		<concept>
 			<code value="add-on-request"/>
 			<display value="add-on request"/>
 			<definition value="a Provider (.orderer) adds one or more additional tests to a previously transmitted test requisition."/>
+		    <designation>
+			  <language value="ru"/>
+			  <value value="дополнительный запрос"/>
+		    </designation>
 		</concept>
 		<concept>
 			<code value="orderer-cancel"/>
 			<display value="orderer cancel"/>
 			<definition value="The Provider (.orderer)  requests cancelation of previously ordered test"/>
+		    <designation>
+			  <language value="ru"/>
+			  <value value="отменено заказавшим"/>
+		    </designation>
 		</concept>
 		<concept>
 			<code value="lab-cancel"/>
 			<display value="laboratory cancel"/>
 			<definition value="The laboratory cancels a previously ordered test"/>
+		    <designation>
+			  <language value="ru"/>
+			  <value value="отменено лабораторией"/>
+		    </designation>
 		</concept>
 	</define>
 </ValueSet>
