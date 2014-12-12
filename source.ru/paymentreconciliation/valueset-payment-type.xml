@@ -20,12 +20,24 @@
 	<system value="http://www.hl7.org/fhir/contracttypecodes"/>
 	<concept>
       <code value="payment"/>
+	  <designation>
+		<language value="ru"/>
+		<value value="Платёж"/>
+	  </designation>
     </concept>
 	<concept>
       <code value="adjustment"/>
+	  <designation>
+		<language value="ru"/>
+		<value value="Корректировка"/>
+	  </designation>
     </concept>
 	<concept>
       <code value="advance"/>
+	  <designation>
+		<language value="ru"/>
+		<value value="Аванс"/>
+	  </designation>
     </concept>
 	</define>
 </ValueSet>

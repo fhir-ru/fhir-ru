@@ -1308,7 +1308,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     if (vs.hasCopyright())
       generateCopyright(x, vs);
     p = x.addTag("p");
-    p.addText("Данный набор значений определяет свои собственные термины в системе "+vs.getDefine().getSystem());
+    p.addText("Этот набор значений определяет свои собственные термины в системе "+vs.getDefine().getSystem());
     XhtmlNode t = x.addTag("table").setAttribute("class", "codes");
     boolean commentS = false;
     boolean deprecated = false;

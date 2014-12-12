@@ -2755,7 +2755,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     List<String> vslist = cd.getVSSources();
     StringBuilder b = new StringBuilder();
     if (vslist.contains("")) {
-      b.append("Данный набор значений определяет свои собственные коды");
+      b.append("Этот набор значений определяет свои собственные коды");
       vslist.remove(0);
       if (vslist.size() > 0)
         b.append(" и включает в себя коды, взятые из");
