@@ -2,26 +2,23 @@
 
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область видимости и использование (Scope and Usage)</h2>
 <p>
-This specification defines a series of different types of resource that can be used to exchange and/or store data 
-in order to solve a wide range of healthcare related problems, both clinical and administrative. In addition,
-this specification defines several different ways of exchanging the resources.
+Данная спецификация определяет серию различных типов ресурсов, которые могут использоваться для обмена и/или хранения данных для решения широкого спектра связанных со здравоохранением задач, как клинических, так и административных. Кроме того, спецификация описывает несколько различных способов обмена ресурсами.
 </p>
 <p>
-A resource is an entity that:
+Ресурс - это сущность, которая:
 </p>
 <ul>
- <li>has a known identity (a url) by which it can be addressed</li>
- <li>identifies itself as one of the types of resource defined in this specification</li>
- <li>contains a set of structured data items as described by the definition of the resource type</li>
- <li>contains a human-readable XHTML representation of the content of the resource</li>
- <li>has an identified version that changes if the contents of the resource change</li>
+ <li>имеет известный идентификатор (URL), по которому к нему можно обратиться</li>
+ <li>идентифицирует себя с одним из типов ресурсов, определенных в данной спецификации</li>
+ <li>содержит набор структурированных данных, который описан в определении типа ресурса</li>
+ <li>содержит человекочитаемое XHTML-представление содержимого ресурса</li>
+ <li>имеет определенную версию, которая изменяется, если меняется содержимое ресурса</li>
 </ul>
 <p>
-Resources have multiple representations. A resource is valid if it meets the above rules, and is represented in 
-either <a href="xml.html">XML</a> or <a href="json.html">JSON</a> according to the rules defined in this specification. 
-Other representations are allowed, but are not described by this specification.
+У ресурсов есть множество представлений. Ресурс является допустимым, если он соответствует описанным выше правилам и представлен либо в <a href="xml.html">XML</a>, либо <a href="json.html">JSON</a> в соответствии с правилами, определенным данной спецификацией.
+Другие представления разрешены, но не описываются данной спецификацией.
 </p>
 <!--
 <p>
@@ -37,23 +34,22 @@ Basic definitions:
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи (Boundaries and Relationships)</h2>
 
 <p>
-All resources have the following optional or mandatory elements and properties:
+У всех ресурсов есть следующие обязательные или необязательные элементы и свойства:
 </p>
 <ul>
- <li>An identity</li>
- <li>Meta data</li>
- <li>A base language</li>
- <li>A reference to "Implicit Rules"</li>
+ <li>Идентификатор</li>
+ <li>Метаданные</li>
+ <li>Базовый язык</li>
+ <li>Ссылка на "Implicit Rules"</li>
 </ul>
 <p>
-Most resources are derived from <a href="domainresource.html">Domain Resources</a> - they also contain text, contained resources, and extensions,
-and data elements specific to the particular domain of the resource. There is a special type of resource called <a href="bundle.html">Bundle</a> for groups/lists of resources. 
+Большинство ресурсов являются производными от <a href="domainresource.html">Domain Resources</a> - также они содержат текст, вложенные ресурсы, расширения и элементы данных, специфичные для определенного домена ресурса. Имеется особый тип ресурса под названием <a href="bundle.html">Bundle</a> для создания групп/списков ресурсов. 
 </p>
 <p>
-Note: there is documentation for the <a href="formats.html">Struture</a>, <a href="formats.html#uml">UML</a>, <a href="xml.html">XML</a>, and <a href="json.html">JSON</a> representations. 
+Примечание: имеется документация для следующих представлений: <a href="formats.html">Struture</a>, <a href="formats.html#uml">UML</a>, <a href="xml.html">XML</a> и <a href="json.html">JSON</a>. 
 </p>
 
 </div>
