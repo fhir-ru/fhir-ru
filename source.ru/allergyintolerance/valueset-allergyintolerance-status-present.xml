@@ -22,12 +22,24 @@
 		<system value="http://hl7.org/fhir/allergy-intolerance-status"/>
         <concept>
             <code value="unconfirmed"/>
+			<designation>
+			  <language value="ru"/>
+			  <value value="Неподтвержденная"/>
+			</designation>
         </concept>
         <concept>
             <code value="confirmed"/>
+			<designation>
+			  <language value="ru"/>
+			  <value value="Подтвержденная"/>
+			</designation>
         </concept>
         <concept>
             <code value="resolved"/>
+			<designation>
+			  <language value="ru"/>
+			  <value value="Прошедшая"/>
+			</designation>
         </concept>
 	</include>
   </compose>

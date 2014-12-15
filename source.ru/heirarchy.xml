@@ -9,7 +9,7 @@ todo: compartments
       <page title="Содержание" filename="toc.html"/>
       <page title="Лицензирование и условия использования" filename="license.html"/>
       <page title="Наше сообщество и благодарности" filename="credits.html"/>
-      <page title="FHIR Timelines" filename="timelines.html"/>
+      <page title="Хронология FHIR" filename="timelines.html"/>
       <page title="Журнал версий" filename="history.html"/>
       <page title="Соображения, касающиеся DSTU" filename="dstu.html"/>
       <page title="Нерешенные вопросы" filename="todo.html"/>
@@ -27,9 +27,9 @@ todo: compartments
       <page title="Соответствие ФМ ЭПМЗ и FHIR" filename="ehr-fm.html"/>
       <page type="resource" resource="Encounter">
         <!--    <page title="Resource Definitions" filename="resource.html"> -->
-        <page title="Definitions" filename="resource-definitions.html"/>
-        <page title="Element Definition" filename="elementdefinition.html">
-          <page title="Element Definition Examples" filename="elementdefinition-examples.html"/>
+        <page title="Определения" filename="resource-definitions.html"/>
+        <page title="Определение элемента" filename="elementdefinition.html">
+          <page title="Примеры определений элементов" filename="elementdefinition-examples.html"/>
                     <page title="Element Definition Detailed Descriptions" filename="elementdefinition-definitions.html"/>
           <page title="Element Definition Mappings" filename="elementdefinition-mappings.html"/>
         </page>
