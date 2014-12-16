@@ -993,7 +993,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">A set of codes drawn from one or more code systems</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A value set specifies a set of codes drawn from one or more code systems</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Набор значений устанавливает набор кодов, взятых из одной или нескольких кодовых систем <!-- A value set specifies a set of codes drawn from one or more code systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>

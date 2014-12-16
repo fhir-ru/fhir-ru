@@ -3241,7 +3241,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("profiles")) 
         src = s1+produceProfiles(resource)+s3;
       else if (com[0].equals("wg")) 
-        src = s1+(resource.getWg() == null ? "" : "<p>Этот ресурс разработан <a _target=\"blank\" href=\""+resource.getWg().getUrl()+"\">"+resource.getWg().getName()+"</a> Рабочей группой</p>\r\n")+s3;
+        src = s1+(resource.getWg() == null ? "" : "<p>Этот ресурс разработан рабочей группой <a _target=\"blank\" href=\""+resource.getWg().getUrl()+"\">"+resource.getWg().getName()+"</a></p>\r\n")+s3;
       else if (com[0].equals("example-list")) 
         src = s1+produceExampleList(resource)+s3;
       else if (com[0].equals("examples-book")) 

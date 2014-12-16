@@ -1,40 +1,35 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
-The FHIR terminology specification is based two key concepts, originally defined in <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a>:
+Терминология спецификации FHIR основывается на двух ключевых понятиях, первоначально введенных в <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a>:
 </p>
 <ul>
-<li> <b>code system</b> - defines a set of codes with meanings (also known as enumeration, terminology, classification, and/or ontology)</li>
-<li> <b>value set</b> - selects a set of codes from those defined by one or more code systems</li>
+<li> <b>кодовая система (code system)</b> - определяет набор кодов со значениями (также известна как перечисление, терминология, классификация и/или онтология)</li>
+<li> <b>набор значений (value set)</b> - выборка кодов из тех, что определены в одной или нескольких кодовых системах</li>
 </ul>
 <p>
-Code systems define which codes (symbols and/or expressions) exist, and how they are understood. Value Sets specify 
-which codes can be used in a particular context.
+Кодовые системы определяют, какие коды (символы и/или выражения) существуют и как их следует понимать. Набор значений устанавливает, какие коды могут быть использованы в конкретном контексте.
 </p>
 <p>
-Value sets may be constructed in one of two ways:
+Наборы значений создаются одним из двух способов:
 </p>
 <ul>
- <li>A value set can <i>define</i> its own codes (e.g. an in-line simple code system definition), and/or</li>
- <li>A value set can be <i>composed</i> of codes defined in other code systems, either by listing the codes or by providing a set of selection criteria</li>
+ <li>Набор значений может <i>ввести</i> свои собственные коды (например встроенное определение простой кодовой системы), и/или</li>
+ <li>Набор значений может быть <i>составлен</i> из кодов, определенных в других кодовых системах либо перечислением этих кодов, либо предоставлением критериев их отбора</li>
 </ul>
 <p>
-A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes.
-This operation is performed to produce a collection of codes that are ready to use for data entry or 
-validation. An expanded value set may also contain the original definition as well. 
+Также набор значений может быть "расширен", если он превращен в простую коллекцию пронумерованных кодов.
+Эта операция выполняется для создании коллекции кодов, готовых к использованию при вводе данных или валидации. Кроме того, расширенный набор значений может также содержать и первоначальное определение.
 </p>
 <p>
 Value sets that define their own codes are effectlvely providing inline code system definitions.
-These are intended for small, simple code systems that are found throughout the implementation
-context (e.g. lists of wards, status codes, enumerations). The inline code system definition is 
-not intended to represent large publically defined terminologies such as LOINC etc - these have
-their own distributions formats .
+These are intended for small, simple code systems that are found throughout the implementation context (e.g. lists of wards, status codes, enumerations). The inline code system definition is not intended to represent large publically defined terminologies such as LOINC etc - these have their own distributions formats.
 </p>
 </div>
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и отношения</h2>
 <ul>
  <li>Value sets are used in <a href="profile.html">Profiles</a>, and <a href="questionnaire.html">Questionnaires</a> to specify the allowable contents for coded elements</li>
  <li>In addition, a specific <a href="datatypes.html#Coding">Coding</a> can reference the value set it was picked from</li>
@@ -45,7 +40,7 @@ resources can be converted to CTS2 value set and code system resources</li>
 </div>
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст</h2>
 
 <p>
 When using value sets, proper differentiation between a code system and a value set is important. 
@@ -53,8 +48,7 @@ This is one very common area where significant clinical safety risks occur in pr
 should be familiar with the content in <a href="terminologies.html">Using Codes in resources</a>.
 </p>
 <p>
-Each value set has 2 different URLs that can be used to reference it, it's logical identifier, and 
-it's location. 
+Каждый набор значений имеет 2 разных URL-адреса, которые могут использоваться как ссылки на него, это его логический идентификатор и адрес.
 </p>
 <p>
 The location of the value set is a URL by which it may be retrieved, usually from a FHIR 
@@ -74,8 +68,7 @@ value sets that are published in the drafts will not be found in the current FHI
 specification. 
 </p>
 <p>
-Because it is common practice to copy (cache) value sets locally, most 
-references to value sets can either be logical or literal URL. 
+Поскольку копирование (кеширование) наборов значений локально является обычной практикой, большинство ссылок на наборы значений могут были либо логическими, либо буквальными URL-адресами.
 </p>
 
 </blockquote>
