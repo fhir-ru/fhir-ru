@@ -15,21 +15,37 @@
       <code value="complaint"/>
       <display value="Complaint"/>
       <definition value="The patient considers the condition an issue to be addressed"/>
+	  <designation>
+	    <language value="ru"/>
+	    <value value="Жалоба"/>
+	  </designation>
     </concept>
     <concept>
       <code value="symptom"/>
       <display value="Symptom"/>
       <definition value="A symptom of a condition (as might be mentioned in a review of systems)"/>
+	  <designation>
+	    <language value="ru"/>
+	    <value value="Симптом"/>
+	  </designation>
     </concept>
     <concept>
       <code value="finding"/>
       <display value="Finding"/>
       <definition value="An observation made by a healthcare provider"/>
+	  <designation>
+	    <language value="ru"/>
+	    <value value="Обследование"/>
+	  </designation>
     </concept>
     <concept>
       <code value="diagnosis"/>
       <display value="Diagnosis"/>
       <definition value="This is a judgment made by a healthcare provider that the patient has a particular disease or condition"/>
+	  <designation>
+	    <language value="ru"/>
+	    <value value="Диагноз"/>
+	  </designation>
     </concept>
   </define>
 </ValueSet>
