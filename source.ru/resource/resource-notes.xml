@@ -1,217 +1,166 @@
 ﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <a name="id"> </a>
-<h3>Resource Identity</h3>
+<h3>Идентификатор ресурса</h3>
 
 <p>
-Each resource has an "id" element which contains the logical identity of the resource 
-assigned by the server responsible for storing it. Resources always have a known identity
-except for the special case when a new resources is being sent to a server to assign
-an identity (<a href="http.html#create">create interaction</a>). 
+У каждого ресурса есть элемент "id", который содержит логический идентификатор ресурса, присвоенный ему сервером, ответственным за его хранение. Ресурсы всегда имеют известный идентификатор, за исключением особого случая, когда новый ресурс отправляется на сервер для назначения ему идентификатора (<a href="http.html#create">интеракция создания</a>). 
+Этот логический идентификатор является уникальным в пространстве всех ресурсов того же типа на том же сервере. Назначенный единожды, этот идентификатор никогда не меняется, хотя копии одного и того же ресурса, сделанные где-то ещё, могут не сохранить тот же идентификатор. <!-- 
 The logical identity is unique within the space of all resources of the same type on 
 the same server. Once assigned, the identity is never changed, though copies of the 
-same resource made elsewhere may not retain the same identity.
+same resource made elsewhere may not retain the same identity. -->
 </p>
 
 <p>
-The full identity of a resource is an absolute URL constructed from the server base address at 
-which it is found, the resource type, and the Logical Id, such as http://test.fhir.org/rest/Patient/123 
-(where 123 is the Logical Id). Note that implementations SHOULD NOT assume that the identity of a resource 
-is always resolvable to a literal server - it may be temporarily unavailable, or not available by policy (e.g. firewalls) or in some 
-cases, it may not actually exist (e.g. use of resource outside a RESTful environment). Resources reference each other by their identity. 
-These references are allowed to be absolute or relative (see <a href="references.html">Resource References</a> for further discussion).
-Copying or moving resources from one server to another means that resources acquire a new identity. For further details, 
-see <a href="managing.html">Managing Resource Identity</a>.
+Полный идентификатор ресурса является абсолютным URL, составленным из базового адреса сервера, на котором он находится, типа ресурса и логического идентификатора, например http://test.fhir.org/rest/Patient/123 (где 123 - это логический Id). Обратите внимание, что реализациям НЕ СЛЕДУЕТ предполагать, что идентификатор ресурса всегда разрешается на сервере буквально - он может быть временно не доступен или не доступен из-за политики безопасности (например брандмауэров) или, в некоторых случаях, он может не существовать на самом деле (например использование ресурса вне RESTful-среды). Ресурсы ссылаются друг на друга по своим идентификаторам.
+Эти ссылки могут быть абсолютными и относительными (см. <a href="references.html">Ссылки в ресурсах</a> для дальнейшего обсуждения).
+Копирование или перемещение ресурсов с одного сервера на другой означает, что ресурсам потребуются новые идентификаторы. Для получения более подробной информации см. <a href="managing.html">Управление идентификацией ресурсов</a>.
 </p>
 
 <p>
-Logical ids are case sensitive. Ids are always opaque, and external systems need not and should not 
-attempt to determine their internal structure. An id SHALL always be represented in the same way in 
-resource references and URLs. Ids can be up to 36 characters long, and contain any combination of 
-upper and lowercase ASCII letters, numerals, "-" and ".". 
+Логические ID чувствительны к регистру. Структура идентификаторов всегда непрозрачна, и внешним системам нет необходимости и не следует пытаться определить их внутреннюю структуру. Идентификатор ДОЛЖЕН быть всегда представлен одним и тем же способом в ссылках на ресурсы и URL-адресах. Идентификаторы могут быть до 36 символов длиной и содержать любые комбинации ASCII-символов в верхнем и нижнем регистре, цифр, символов "-" и ".".
 </p>
 
 <a name="metadata"> </a>
 <a name="meta"> </a>
 
-<h3>Resource Metadata</h3>
+<h3>Метаданные ресурса</h3>
 <p>
-Each resource contains a set of meta data that provide technical and workflow 
-context to the resource. The metadata items are all optional, though some of all
-of them may be required in particular implementations.
+Каждый ресурс содержит набор метаданных, которые обеспечивают ресурсу технический и рабочий контекст. Все элементы метаданных являются необязательными, хотя некоторые из них могут требоваться в определенных реализациях.
 </p>
 
 <table class="grid">
   <tr>
-    <th>Metadata Item</th>
-    <th>Type</th>
-    <th>Usage</th>
+    <th>Элемент метаданных</th>
+    <th>Тип</th>
+    <th>Использование</th>
   </tr>
   <tr>
     <td>versionId (0..1)</td>
     <td><a href="datatypes.html#id">id</a></td>
-    <td>Changes each time the content of the resource changes. Can be referenced in a <a href="references.html#Resource">resource reference</a>. 
-      Can be used to ensure that updates are based on the latest version of the resource. 
-    <br/>The version can be globally unique, or scoped by the Logical Id of the resource. 
-     Version identifiers are generally either a serially incrementing id scoped by the logical id, or a uuid, though neither of these approaches 
-     is required. Note that servers SHOULD support versions, but some are unable to</td>
+    <td>Изменяется каждый раз, как меняется содержимое ресурса. Может использоваться в <a href="references.html#Resource">ссылках на ресурсы</a>. 
+      Может использоваться для гарантии того, что обновления работают с последней версией ресурса.
+    <br/>Версия может быть уникальной глобально или в области действия логического идентификатора ресурса.
+	Идентификаторы версий - это обычно либо последовательно увеличивающийся идентификатор, находящийся в области действия логического идентификатора, либо UUID, хотя ни один из этих вариантов не является обязательным. Обратите внимание, что серверам СЛЕДУЕТ поддерживать версии, но у некоторых нет такой возможности</td>
   </tr>
 	 
   <tr>
    <td>lastUpdated (0..1)</td>
    <td><a href="datatypes.html#instant">instant</a></td>
-   <td>If populated, this value changes each time the content of the resource 
-    changes. it can be used by a system or a human to judge the currency of the resource content. 
-    Note that <a href="http.html#update">version aware updates</a> do not use this element</td>
+   <td>Если заполнено, это значение изменяется каждый раз, когда меняется содержимое ресурса. Может использоваться системой или человеком для принятия решения об актуальности содержимого ресурса.
+    Обратите внимание, что <a href="http.html#update">версионные обновления</a> не используют этот элемент</td>
   </tr>
 	
   <tr>
    <td>profile (0..*)</td>
    <td><a href="datatypes.html#uri">uri</a></td>
-   <td>An assertion that the content conforms to a profile. See <a href="profiling.html#resources">Extending and Restricting Resources</a> for further discussion. 
-    Can be changed as profiles and value sets change or the system rechecks conformance</td>
+   <td>Утверждение о том, что содержимое соответствует профилю. См. <a href="profiling.html#resources">Расширение и ограничение ресурсов</a> для дальнейшего обсуждения. Может меняться при изменении профилей или наборов значений или системной перепроверке на соответствие</td>
   </tr>
 	
   <tr>
    <td>security (0..*)</td>
    <td><a href="datatypes.html#Coding">Coding</a></td>
-   <td><a href="security-labels.html">Security labels</a> applied to this resource. These tags connect resources in specific ways to 
-    the overall security policy and infrastructure. Security tags can be updated when the resource changes, or whenever the security sub-system chooses to</td>
+   <td><a href="security-labels.html">Метки уровня безопасности</a>, подходящие этому ресурсу. Эти теги связывают ресурсы определенными способами с общей политикой безопасности и ее инфраструктурой. Метки безопасности могут обновляться при изменении ресурса или по команде подсистемы безопасности</td>
   </tr>
 	
   <tr>
    <td>tag (0..*)</td>
    <td><a href="datatypes.html#Coding">Coding</a></td>
-   <td><a href="extras.html">Tags</a> applied to this resource. Tags are used to relate resources to process and workflow. Applications are not required to consider 
-    the tags when interpreting the meaning of a resource.</td>
+   <td><a href="extras.html">Теги</a>, присвоенные этому ресурсу. Теги используются для  связи ресурсов с процессами и операциями. Приложения не обязаны принимать во внимание теги при интерпретации значения ресурса.</td>
   </tr>
 		
 </table>
 
 <p>
-The profile, security, and tag elements can be changed by <a href="http.html#meta">a meta interaction</a> without changing the resource version.
+Элементы профиля, безопасности и тегов можно изменять с помощью <a href="http.html#meta">метаинтеракции</a> без изменения версии ресурса.
 </p>
   
   
 <a name="implicitRules"> </a>
   
-<h3>Implicit Rules</h3>
+<h3>Неявные правила</h3>
 <p>
-A reference to a <a href="profiling.html#agreement">custom agreement</a> about how the resources are used 
-that was followed when the resource was constructed, and which must be understood when processing the content.
+Ссылка на <a href="profiling.html#agreement">пользовательское соглашение</a> о том, как используются ресурсы, которому следовали при создании ресурса и которое необходимо учитывать при обработке содержимого.
 </p>
 <p>
-Asserting this rule set restricts the content to be only understood by a limited set of 
-trading partners. This inherently limits the usefulness of the data in the long term,
-and should be avoided where possible. However the existing health 
-eco-system is highly fractured, and not yet ready to define, collect, and exchange 
-data in a generally exchangeable sense. 
+Установка такого набора правил ограничивает понимание содержимого до лимитированного количества торговых партнеров. Это, по сути, ограничивает полезность данных в долгосрочном плане, и его следует избегать по возможности. Тем не менее, существующая экосистема здравоохранения сильно расколота и пока что не готова определять, собирать и обмениваться данными в контексте повсеместной возможности обмена.
 </p>
 <p>
-Note that reosurces are almost always constructed following some custom agreement.
-Best practice is that such agreements make all knowledge about the content 
-of the resouce explicit; if custom agreements do this, and declare their extensions
-as required, then it is not necessary to understand the agrement when processing the 
-resource content.
+Следует отметить, что ресурсы почти всегда создаются при следовании некоторому пользовательскому соглашению.
+Наилучшей практикой являются такие соглашения, которые делают все знания о содержимом ресурса явными; если пользовательские соглашения выполняют это и декларируют свои расширения как положено, тогда отпадает необходимость в понимании такого соглашения при обработке содержимого ресурса.
 </p>
 
 <a name="lang"> </a>
 <a name="language"> </a>
-<h3>Language</h3>
+<h3>Язык</h3>
 
 <p>
-Each resource may have a language element that specifies the base language of the content using a <a href="http://tools.ietf.org/html/bcp47">code defined in BCP 47</a>.
-The language element is provided to support indexing and accessibility (e.g. text-to-speech use the language tag). 
+Каждый ресурс может иметь элемент language, в котором указывается базовый язык содержимого с помощью <a href="http://tools.ietf.org/html/bcp47">кодов, определенных в BCP 47</a>.
+Элемент language предназначен для поддержки предварительной обработки текстов и доступности для понимания (например при преобразовании текста в речь используются языковые теги).
 </p>
 <p>
-There is no default language, though one may be inferred from the context of use.
-Not all of the content of the resource has to be in the specified language. 
+Языка, используемого по умолчанию, нет, хотя он может подразумеваться из контекста использования.
+ Не все содержание ресурса должно быть на указанном языке. 
 </p>
 <p>
-If a language is specified, it should also be specified on the <a href="narrative.html#Narrative">Narrative Text</a>. 
-The html language tag in the narrative is used when processing the narrative. The language tag on the resource is provided 
-for use to specify the language of alternate presentations generated from the data in the resource
+Если язык указан, его следует также указать в <a href="narrative.html#Narrative">описательной части</a>. 
+HTML-тег language в описательной части используется при её обработке. Языковой тег ресурса предназначен для указания языков альтернативных представлений, генерируемых из данных ресурса
 </p>
 
 <a name="tags"> </a>
 <a name="tag"> </a>
-<h3>Tags, Profiles, and Security Labels</h3>
+<h3>Теги, профили и метки уровня безопасности</h3>
 <p>
-These 3 metadata attributes are part of the resource, but are never used to keep information 
-that needs to be understood when interpreting the content of a resource; their 
-function is limited to finding and controlling access to the resource, and connecting 
-resources to technical or clinical workflow.
+Эти 3 атрибута метаданных являются частью ресурса, но никогда не используются для хранения информации, которую необходимо понять при обработке содержания ресурса; их функция ограничена поиском и контролем доступа к ресурсу, а также связыванием ресурсов с техническими или клиническими рабочими процессами.
 </p>
 
-<h4>Tags</h4>
+<h4>Теги</h4>
 <p>
-Tags are used to associate additional operational information with the Resources, including
-such as workflow management. A typical use of tagging would be to maintain an informal list
-of resources that need review.
+Теги используются для ассоциирования дополнительной рабочей информации с ресурсами, включая такие, как управление рабочим процессом. Типичным использованием тегов будет поддерживание неофициального перечня ресурсов, требующих проверки.
 </p>
 <p>
-In a general tag, the <a href="datatypes.html#coding">concept</a> may be a reference to a 
-healthcare vocabulary, including ones defined in this specification, or vocabularies such 
-as those defined by HL7 for other purposes (e.g. v2 and v3/CDA), LOINC, or SNOMED CT. 
-Alternatively, the concept may be one defined by the implementation in the local context. 
+В теге общего вида <a href="datatypes.html#coding">концептом</a> может быть ссылка на медицинский словарь, включая те словари, что определены в данной спецификации, и словари, созданные HL7 в других целях (например v2 и v3/CDA), LOINC или SNOMED CT. В качестве альтернативы, концепт может быть определен реализацией в локальном контексте. 
 </p>
 
 <a name="profile-tags"> </a>
-<h4>Profile Tags</h4>
+<h4>Профильные теги</h4>
 <p>
-A profile assertion represents a claim that the resource conforms to <a href="profile.html">the identified profile</a>,
-which makes sets of rules about what 
-content is allowed to be in a resource. In a profile tag, the term
-is a URL that references a profile resource.
+Профильное утверждение представляет собой заявление того, что ресурс соответствует <a href="profile.html">конкретному профилю</a>, что добавляет набор правил о том, какое содержимое разрешено в ресурсе. В профильном теге указывается URL-ссылка на профиль ресурса.
 </p>
 <p>
-It's always possible to determine whether a resource conforms to a 
-profile simply by testing it against the profile (the <a href="downloads.html">validation tools</a>
-provide the functionality to perform this test in a variety of contexts). 
-However there are several circumstances where simply examining whether 
-a resource conforms to a particular profile as needed is impractical:
+Всегда можно определить, соответствует ли ресурс профилю, просто выполнив проверку (<a href="downloads.html">инструменты валидации</a> обеспечивают функциональность для выполнения такого теста в разнообразных контекстах).
+Однако имеется несколько обстоятельств, в которых простая проверка соответствия ресурса конкретному профилю по мере надобности будет непрактичной:
 </p>
 <ul>
- <li>A server searching a set of resources for ones that conform to a particular profile</li>
- <li>A receiver that has many profiles to choose when validating resource</li>
+ <li>Сервер выполняет поиск набора ресурсов, которые соответствуют конкретному профилю</li>
+ <li>Получатель, у которого есть много профилей на выбор при валидации ресурса</li>
 </ul>
 <p>
-Profile Tags serve these use cases - a client/creator of a resource can tag the 
-resource with an assertion that the resource conforms to a profile. The server/receiver
-of the resource can choose to take this assertion at face value, or to assist in locating
-the profile against which to validate the resource. 
+Профильные теги служат для этих целей - клиент/создатель ресурса может пометить его тегом соответствия профилю. Сервер/получатель ресурса может выбрать, принять это утверждение на веру или оказать содействие в нахождении профиля и проверке ресурса на соответствие ему.
 </p>
 <p>
-Note: resources can conform to multiple profiles at once. A resource can conform to 
-a profile without ever being labelled that it does, or a resource may falsely claim to conform 
-to a profile. For this reason, applications processing resources SHOULD always 
-depend on the contents of the resource when processing them, and/or check resources
-against profiles directly rather than relying the existence of profile tags.
-Many trading partner agreements will make rules about what claims can be made 
-and when they must be tested, which will make the profile assertion more reliable. 
+Примечание: ресурсы могут соответствовать нескольким профилям одновременно. Ресурс может соответствовать профилю, даже если он не помечен соответствующим профильным тегом, также он может ошибочно заявлять о соответствии профилю. По этой причине приложениям, обрабатывающим ресурсы, СЛЕДУЕТ всегда полагаться только на содержимое ресурса во время его обработки и/или непосредственно проверять ресурсы на соответствие профилям, а не полагаться только на наличие профильных тегов.
+Многие соглашения торговых партнеров будут вводить правила о том, какие заявления можно делать и когда они должны быть проверены, что сделает профильные теги более надежными.
 </p>
 <p>
-Profile Tags are provided as a method of finding resources that conform to 
-a particular profile, not statements of meaning about the resource.
+Профильные теги предоставлены в качестве метода нахождения ресурсов, которые соответствуют определенному профилю, а не в качестве утверждений о значении ресурса.
 </p>
 
-<h4>Security Labels</h4>
+<h4>Метки уровня безопасности</h4>
 <p>
-A security label is attached to a resource to provide specific security metadata 
-about the information in the resource. For further information, see 
-<a href="security-labels.html">Security Labels</a>.
+Метка уровня безопасности назначается ресурсу для добавления ему особых метаданных безопасности об информации в ресурсе. Дополнительную информацию см. на странице <a href="security-labels.html">Метки уровня безопасности</a>.
 </p>
 
-<h3>Further Information</h3>
+<h3>Дополнительная информация</h3>
 <ul>
-  <li><a href="conformance-rules.html">Conformance Rules</a></li>
-  <li><a href="resources.html">Resource Definitions</a></li>
-  <li><a href="references.html">References between Resources</a></li>
-  <li><a href="narrative.html">Narratives</a></li>
-  <li><a href="formats.html">Formats:</a> <a href="xml.html">XML</a>, <a href="json.html">JSON</a> </li>
-  <li><a href="extensibility.html">Extensibility</a> (<a href="extensibility-examples.html">Examples</a>)</li>
-  <li><a href="resource-definitions.html">Detailed Descriptions</a></li>
-  <li><a href="compatibility.html">Inter-version Compatibility</a></li>
+  <li><a href="conformance-rules.html">Правила обеспечения соответствия</a></li>
+  <li><a href="resources.html">Определения ресурса</a></li>
+  <li><a href="references.html">Ссылки между ресурсами</a></li>
+  <li><a href="narrative.html">Человекочитаемое описание</a></li>
+  <li><a href="formats.html">Форматы:</a> <a href="xml.html">XML</a>, <a href="json.html">JSON</a> </li>
+  <li><a href="extensibility.html">Расширяемость</a> (<a href="extensibility-examples.html">Примеры</a>)</li>
+  <li><a href="resource-definitions.html">Подробное описание</a></li>
+  <li><a href="compatibility.html">Межверсионная совместимость</a></li>
 </ul>
 
 </div>
