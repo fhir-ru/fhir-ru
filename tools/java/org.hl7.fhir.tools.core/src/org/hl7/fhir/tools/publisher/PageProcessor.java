@@ -3322,9 +3322,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   private String abstractResourceTitle(ResourceDefn resource) {
     if (resource.getName().equals("Resource"))
-      return "Base Resource Definitions";
+      return "Основные понятия ресурса";
     else 
-      return resource.getName() + " Resource";
+      return  "Ресурс " + resource.getName();
   }
 
   private String genOpCount(ResourceDefn resource) {

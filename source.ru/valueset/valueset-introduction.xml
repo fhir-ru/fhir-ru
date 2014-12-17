@@ -29,7 +29,7 @@ These are intended for small, simple code systems that are found throughout the 
 </p>
 </div>
 <div>
-<h2>Границы и отношения</h2>
+<h2>Границы и связи</h2>
 <ul>
  <li>Value sets are used in <a href="profile.html">Profiles</a>, and <a href="questionnaire.html">Questionnaires</a> to specify the allowable contents for coded elements</li>
  <li>In addition, a specific <a href="datatypes.html#Coding">Coding</a> can reference the value set it was picked from</li>

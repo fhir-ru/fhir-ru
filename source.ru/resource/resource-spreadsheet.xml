@@ -966,9 +966,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Base Resource</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Базовый ресурс<!-- Base Resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Base Resource for everything</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Базовый ресурс для всего<!-- Base Resource for everything --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -998,12 +998,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Logical id of this artefact</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Логический идентификатор этого артефакта<!-- Logical id of this artefact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The logical id of the resource, as used in the url for the resoure. Once assigned, this value never changes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Логический идентификатор ресурса, который используется в URL-адресе ресурса. Однажды присвоенное, это значение никогда больше не меняется<!-- The logical id of the resource, as used in the url for the resoure. Once assigned, this value never changes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурс не имеет идентификатора только в тот момент, когда он отправляется на сервер с помощью операции создания. У комплетов всегда имеется идентификатор, хотя обычно это сгенерированный UUID<!-- The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1030,9 +1030,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Metadata about the resource</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Метаданные ресурса<!-- Metadata about the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Метаданные ресурса. Это такая информация, которая поддерживается инфраструктурой. Изменения этой информации не всегда можно ассоциировать с версионными изменениями ресурса<!-- The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1062,12 +1062,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Version specific identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор версии<!-- Version specific identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор версии, который появляется в той части URL-адреса, где выводится версия. Это значение меняется, когда ресурс создается, обновляется или удаляется<!-- The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The server assigns this value, and ignores what the client specifies, except in the case that the server is imposing version integrity on updates/deletes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сервер присваивает это значение и игнорирует то, что указывает клиент, за исключением случая, когда сервер навязывает целостность версии обновлениям/удалениям<!-- The server assigns this value, and ignores what the client specifies, except in the case that the server is imposing version integrity on updates/deletes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1094,12 +1094,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the resource version last changed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда версия ресурса менялась последний раз<!-- When the resource version last changed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">When the resource last changed - e.g. when the version changed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда ресурс менялся последний раз - например когда изменилась версия<!-- When the resource last changed - e.g. when the version changed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This value is always populated except when the resource is first being created. The server / resource manager sets this value; what a client provides is irrelevant</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это значение всегда заполняется, за исключением случая, когда ресурс создается впервые. Менеджер сервера / ресурса устанавливает это значение; что указывает клиент при этом - несущественно<!-- This value is always populated except when the resource is first being created. The server / resource manager sets this value; what a client provides is irrelevant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1126,12 +1126,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Profiles this resource claims to conform to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Профили, соответствие которым заявляется в этом ресурсе<!-- Profiles this resource claims to conform to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of profiles that this resource claims to conform to. The URL is a reference to Profile.url</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Список профилей, соответствие которым заявляется в этом ресурсе. URL в данном случае является ссылкой на Profile.url<!-- A list of profiles that this resource claims to conform to. The URL is a reference to Profile.url --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">It is up to the server and/or other infrastruture of policy to determine whether/how these claims are verified and/or updated over tiem</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">На усмотрение сервера и/или другой инфраструктуры или политики определять, верифицируются ли и/или обновляются ли со временем эти заявления и каким образом<!-- It is up to the server and/or other infrastruture of policy to determine whether/how these claims are verified and/or updated over tiem --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1158,12 +1158,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Security Labels applied to this resource</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Метки уровня безопасности, присвоенные этому ресурсу<!-- Security Labels applied to this resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Метки уровня безопасности, присвоенные этому ресурсу. Эти теги связывают конкретные ресурсы с общей политикой и инфраструктурой безопасности<!-- Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The security labels can be updated without changing the stated version of the resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Метки уровня безопасности могут обновляться без изменения установленной версии ресурса<!-- The security labels can be updated without changing the stated version of the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1190,12 +1190,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Tags applied </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Присвоенные теги<!-- Tags applied --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Tags applied to this resource. Tags are intended to to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Теги, присвоенные этому ресурсу. Использование тегов направлено на идентификацию и связывание ресурсов с обработкой и рабочим процессом, при этом приложения не обязаны учитывать теги при интерпретации значения ресурса<!-- Tags applied to this resource. Tags are intended to to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The tags can be updated without changing the stated version of the resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Теги могут обновляться без изменения установленной версии ресурса<!-- The tags can be updated without changing the stated version of the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1223,12 +1223,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A set of rules under which this content was created</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Свод правил, в соответствии с которыми создавалось это содержимое<!-- A set of rules under which this content was created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на свод правил, которым следовали при создании этого ресурса и которые необходимо понимать при обработке этого содержимого.<!-- A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Установка такого свода правил ограничивает понимание содержимого до лимитированного количества торговых партнеров. Это, по сути, ограничивает полезность данных в долгосрочном плане. Тем не менее, существующая экосистема здравоохранения сильно раздроблена и пока что не готова определять, собирать и обмениваться данными в полностью вычислительном контексте. Реализаторам и/или авторам спецификации следует избегать использования этого элемента, насколько это возможно<!-- Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1256,12 +1256,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Language of the resource content</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Язык содержимого ресурса<!-- Language of the resource content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The base language in which the resource is written</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Основной язык, на котором написан ресурс<!-- The base language in which the resource is written --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource&#10;&#10;Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык указывается для поддержки предварительной обработки текстов и доступности для понимания (например при преобразовании текста в речь используется языковой тег). HTML-тег language в описательной части применяется к этой описательной части. Языковой тег ресурса может использоваться для указания языков других представлений, генерируемых из данных ресурса&#10;&#10;Не все содержание ресурса должно быть на указанном основном языке. Resource.language нельзя автоматически принимать за язык описательной части. Если язык указан, его также следует указать в элементе div в HTML (информацию о связи между xml:lang и HTML-атрибутом lang см. в правилах HTML5)<!-- Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource&#10;&#10;Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
