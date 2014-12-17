@@ -3344,20 +3344,20 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       if (op.isInstance())
         b.append("<p>URL: [base]/"+resource.getName()+"/[id]/$"+op.getName()+"</p>\r\n");
       if (!op.getParameters().isEmpty()) {
-        b.append("<p>Parameters:</p>\r\n");
+        b.append("<p>Параметры:</p>\r\n");
         b.append("<table class=\"grid\">\r\n");
         b.append("<tr><td>");
-        b.append("<b>Use</b>");
+        b.append("<b>Употребление</b>");
         b.append("</td><td>");
-        b.append("<b>Name</b>");
+        b.append("<b>Имя</b>");
         b.append("</td><td>");
-        b.append("<b>Cardinality</b>");
+        b.append("<b>Кардинальное число</b>");
         b.append("</td><td>");
-        b.append("<b>Type</b>");
+        b.append("<b>Тип</b>");
         b.append("</td><td>");
-        b.append("<b>Profile</b>");
+        b.append("<b>Профиль</b>");
         b.append("</td><td>");
-        b.append("<b>Documentation</b>");
+        b.append("<b>Документация</b>");
         b.append("</td></tr>");
         for (OperationParameter p : op.getParameters()) {
           b.append("<tr><td>");
@@ -3418,7 +3418,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
           b.append("</td><td>");
           b.append(processMarkdown(p.getDoc()));
           if (p.getName().equals("return") && isOnlyOutParameter(op.getParameters(), p) && definitions.hasResource(t))
-            b.append("<p>Note: as this the only out parameter, it is a resource, and it has the name 'return', the result of this operation is returned directly as a resource</p>");
+            b.append("<p>Примечание: так как это единственный выходной параметр, то он представляет собой ресурс с именем 'return', результат этой операции возвращается непосредственно в виде ресурса</p>");
           b.append("</td></tr>");
           if (t.equals("Tuple"))
             for (OperationTuplePart pp : p.getParts()) {
