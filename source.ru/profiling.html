@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Profiling FHIR%]
+[%settitle Профилирование FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,20 +13,23 @@
 
 [%profilesheader base%]
 
-<h2>Profiling FHIR</h2>
+<h2>Профилирование FHIR</h2>
 
 <p>
-The base FHIR specification (this specification) describes a set of base resources, frameworks
+Основная спецификация FHIR (данная спецификация) описывает набор базовых ресурсов, механизмов и интерфейсов, которые используются в различных контекстах в сфере здравоохранения. Однако существует широкий (?) между юрисдикциями и экосистемой здравоохранения насчет методов, требований, норм, образования и того, какие действия являются выполнимыми и/или выгодными.
+<!-- The base FHIR specification (this specification) describes a set of base resources, frameworks
 and APIs that are used in many different contexts in healthcare. However there is wide 
 between jurisdictions and across the healthcare eco-system around 
 practices, requirements, regulations, education and what actions are feasible 
-and/or beneficial.
+and/or beneficial. -->
 </p>
 <p>
-For this reason, the FHIR specification is a "platform specification" - it creates
+По этой причине спецификация FHIR является "платформенной спецификацией" - она создают общую платформу или фундамент, на котором реализуется множество различных решений.
+Вследствие этого, данной спецификации требуется дальнейшая адаптация к конкретному контексту использования. Обычно такие адаптации означают:
+<!-- For this reason, the FHIR specification is a "platform specification" - it creates
 a common platform or foundation on which a variety of different solutions are implemented. 
 As a consequence, this specification requires further adaptation to particular
-contexts of use. Typically, these adaptations specify:
+contexts of use. Typically, these adaptations specify: -->
 </p>
 <ul>
  <li>Rules about which resource elements are or are not used, and what additional elements are added that are not part of the base specification</li>
@@ -35,8 +38,9 @@ contexts of use. Typically, these adaptations specify:
  <li>Descriptions of how the Resource elements and API features map to local requirements</li>
 </ul>
 <p>
-Note that because of the nature of the healthcare eco-system, there may be multiple 
-overlapping set of adaptations - by healthcare domain, by country, by institution, and/or by vendor/implementation. 
+Обратите внимание, что из-за характера медицинской экосистемы может быть множество перекрывающих друг друга адаптаций - по домену здравоохранения, по стране, по учреждению и/или по поставщику/реализации.
+<!-- Note that because of the nature of the healthcare eco-system, there may be multiple 
+overlapping set of adaptations - by healthcare domain, by country, by institution, and/or by vendor/implementation.  -->
 </p>
 <p>
 Typically, adaptations (either actual implementations or specifications - sometimes called "Implementation Guides")
