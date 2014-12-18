@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Profiling FHIR%]
+[%settitle Профилирование FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,18 +13,22 @@
 
 <div class="col-9">
 
-<h2>Slicing and Discriminator Examples</h2>
+<h2>Примеры разделения на слои (Slicing) и селекторов (Discriminator)</h2>
 
-<h3>Extensions</h3>
+<h3>Расширения</h3>
 
 <p>
-As an example, consider slicing extensions. The base extension on every element is defined as a list (0..*) of extensions, and each extension has a url that identifies it, and a value. 
+В качестве примера рассмотрим разделяющие расширения (slicing extensions). Базовое расширение на каждом элементе определяется как список (0..*) расширений, и каждое расширение имеет URL, который идентифицирует его, и значение.
+Рассмотрим пример, где профиль определяет для конкретного элемента (с именем Patient) два расширения с URL-адресами http://acme.com/a и http://acme.com/b. Кроме того, этот профиль разрешает использовать другие расширения.
+<!-- As an example, consider slicing extensions. The base extension on every element is defined as a list (0..*) of extensions, and each extension has a url that identifies it, and a value. 
 Consider an example where a profile defines that for a particular element (named Patient) two extensions, with URLs http://acme.com/a and http://acme.com/b. In addition, the profile 
-allows other extensions to be used. 
+allows other extensions to be used.  -->
 </p>
 <p>
-Technically, the profile achieves this by "slicing" the extension list, into two slices, and saying that the slicing is "open" - that there can be other slices introduced. 
-Here's the relevant parts of the Profile on patient:
+Технически, профиль достигает этого с помощью "разделения" списка расширений на два среза слоя, и говорит, что разрез "открыт" - что здесь могут быть введены другие разрезы.
+Вот соответствующие части профиля пациента:
+<!-- Technically, the profile achieves this by "slicing" the extension list, into two slices, and saying that the slicing is "open" - that there can be other slices introduced. 
+Here's the relevant parts of the Profile on patient: -->
 </p>
 <div class="xml">
 <pre>
@@ -82,7 +86,8 @@ Here's the relevant parts of the Profile on patient:
 </pre>
 </div>
 <p>
-Here's a patient example that conforms to this profile:
+Вот пример пациента, соответствующего этому профилю:<!-- 
+Here's a patient example that conforms to this profile: -->
 </p>
 <div class="xml">
 <pre>
@@ -101,15 +106,18 @@ Here's a patient example that conforms to this profile:
 </pre>
 </div>
 
-<h3>Diagnostic Report &amp; Observation</h3>
+<h3>Diagnostic Report и Observation</h3>
 <p>
-In this example, a profile on an diagnostic report says that it must have 
+В этом примере профиль для диагностического отчета говорит, что он должен иметь 4 исследования, каждое с различным LOINC-кодом (например классический набор лабораторных тестов).
+В этом случае (взятом из <a href="diagnosticreport-profile-lipids.html">Example 
+Lipid Profile</a>) структура, применяемая к DiagnosticReport, сообщит, что имеются 4 среза на DiagnosticReport.result, каждый соответствует отдельной структуре, которые содержатся в том же профиле. Каждая из этих структур будет ограничивать LOINC-код в исследовании.
+<!-- In this example, a profile on an diagnostic report says that it must have 
 4 observations, each with a different LOINC code (e.g. a classic lab panel).
 In this case (taken from the <a href="diagnosticreport-profile-lipids.html">Example 
 Lipid Profile</a>), the structure that applies to DiagnosticReport will say that 
 there is 4 slices on DiagnosticReport.result, each conforming to a different structure, 
 which are also contained in the same profile. Each of those structures will constrain 
-the LOINC code in the observation. 
+the LOINC code in the observation.  -->
 </p>
 
 <div class="xml">
@@ -195,15 +203,15 @@ the LOINC code in the observation.
     &lt;/snapshot&gt;
   &lt;/structure&gt;
   
-  &lt;!-- now, the second structure, for the Cholesterol profile --&gt;
+  &lt;!-- далее идет вторая структура профиля для холестерина (Cholesterol) --&gt;
   &lt;structure&gt;
     &lt;type value=&quot;Observation&quot;/&gt;
     &lt;base value=&quot;http://hl7.org/fhir/Profile/Observation&quot;/&gt;
-    &lt;name value=&quot;Cholesterol&quot;/&gt; &lt;!-- this is the target of #Cholesterol --&gt;
+    &lt;name value=&quot;Cholesterol&quot;/&gt; &lt;!-- это цель ссылки #Cholesterol --&gt;
     &lt;snapshot&gt;
       &lt;!-- snip elements --&gt;
       &lt;element&gt;
-        &lt;!-- this the element definition for name. Because of the 
+        &lt;!-- это определение элемента для name. Because of the 
           slicing / discriminator rules in the LipidReport profile 
           that references it, it is required to fix the value of 
           the name element --&gt;
@@ -295,16 +303,16 @@ the LOINC code in the observation.
     &lt;snapshot&gt;
       &lt;!-- snip elements --&gt;
       &lt;element&gt;
-        &lt;!-- this the element definition for name. Because of the 
-          slicing / discriminator rules in the LipidReport profile 
-          that references it, it is required to fix the value of 
-          the name element --&gt;
+        &lt;!-- это определение элемента для name. Из-за 
+          slicing / discriminator правил в профиле LipidReport, 
+          который ссылается на него, требуется исправить 
+		  значение элемента name --&gt;
         &lt;path value=&quot;Observation.name&quot;/&gt;
         &lt;definition&gt;
-           &lt;!-- there's actually 3 ways to fix a CodeableConcept
-           to a single fixed value. Here, we used the simplest one --&gt;
+           &lt;!-- фактически есть 3 способа исправить CodeableConcept
+           на одно фиксированное значение. Здесь мы использовали самый простой --&gt;
            &lt;valueCodeableConcept&gt;
-             &lt;!-- just fix the value to the right code --&gt;
+             &lt;!-- просто исправьте это значение на правильный код --&gt;
              &lt;coding&gt;
                &lt;system value=&quot;http://loinc.org&quot;/&gt;
                &lt;code value=&quot;2085-9&quot;/&gt;
@@ -322,17 +330,16 @@ the LOINC code in the observation.
 </div>
 
 <p>
-Here is an instance that meets the rules for this profile:
+Вот пример, который отвечает правилам для этого профиля:<!-- 
+Here is an instance that meets the rules for this profile: -->
 </p>
 
 <div class="xml">
 <pre>
-&lt;!-- first, the diagnostic report --&gt;
+&lt;!-- сначала сам diagnostic report --&gt;
 &lt;DiagnosticReport xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;!-- snip --&gt;
-  &lt;!-- here's the set of results. We don't know what 
-    slices they are or anything until we go off, find 
-    the references, and look in them --&gt;
+  &lt;!-- вот набор результатов. Мы не узнаем, срезы это или что-то ещё, пока не пройдем по ссылкам и не посмотрим --&gt;
   &lt;result&gt;
     &lt;reference value=&quot;Observation/cholesterol&quot;/&gt;
   &lt;/result&gt;  
@@ -350,8 +357,7 @@ Here is an instance that meets the rules for this profile:
 
 &lt;!-- Observation, id = cholesterol --&gt;
 &lt;Observation xmlns=&quot;http://hl7.org/fhir&quot;&gt;
-  &lt;!-- the observation starts with the name, as specified
-    by the profile for the first slice  --&gt;
+  &lt;!-- исследование начинается с этого названия, как указано в профиле для первого среза  --&gt;
   &lt;name&gt;
     &lt;coding&gt;
       &lt;system value=&quot;http://loinc.org&quot;/&gt;
@@ -363,7 +369,7 @@ Here is an instance that meets the rules for this profile:
 &lt;/Observation&gt;
 
 &lt;!-- Observation, id = triglyceride --&gt;
-&lt;!-- this code matches the second slice. good --&gt;
+&lt;!-- этот код соответствует второму срезу. хорошо --&gt;
 &lt;Observation xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;name&gt;
     &lt;coding&gt;
@@ -376,7 +382,7 @@ Here is an instance that meets the rules for this profile:
 &lt;/Observation&gt;
 
 &lt;!-- Observation, id = hdlcholesterol --&gt;
-&lt;!-- this code matches the fourth slice. good --&gt;
+&lt;!-- этот код соответствует четвертому срезу. хорошо --&gt;
 &lt;Observation xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;name&gt;
     &lt;coding&gt;
@@ -389,7 +395,7 @@ Here is an instance that meets the rules for this profile:
 &lt;/Observation&gt;
 
 &lt;!-- Observation, id = ldlcholesterol --&gt;
-&lt;!-- this code matches the third slice. good --&gt;
+&lt;!-- этот код соответствует третьему срезу. хорошо --&gt;
 &lt;Observation id=&quot;ldlcholesterol&quot;&gt;
   &lt;name&gt;
     &lt;coding&gt;
@@ -404,16 +410,15 @@ Here is an instance that meets the rules for this profile:
 </div>
 
 <p>
-Note that this version isn't valid, because the slices are not in the correct order:
+Обратите внимание, что эта версия неправильная, потому что срезы идут в неправильном порядке:<!-- 
+Note that this version isn't valid, because the slices are not in the correct order: -->
 </p>
 <div class="xml">
 <pre>
-&lt;!-- first, the diagnostic report --&gt;
+&lt;!-- сначала diagnostic report --&gt;
 &lt;DiagnosticReport xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;!-- snip --&gt;
-  &lt;!-- here's the set of results. We don't know what 
-    slices they are or anything until we go off, find 
-    the references, and look in them --&gt;
+  &lt;!-- вот набор результатов. Мы не узнаем, срезы это или что-то ещё, пока не пройдем по ссылкам и не посмотрим --&gt;
   &lt;result&gt;
     &lt;reference value=&quot;Observation/cholesterol&quot;/&gt;
   &lt;/result&gt;  
