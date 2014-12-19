@@ -937,7 +937,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">name</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Structured Data Capture Value Set</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Набор значений для сбора структурированных данных<!-- Structured Data Capture Value Set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">author.name</Data></Cell>
@@ -953,7 +953,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="69.75">
     <Cell ss:StyleID="s74"><Data ss:Type="String">description</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Defines how ValueSet is used to reflect code lists found in data element defintiions and form definitions to be used within the ONC's Structured Data Capture standard.</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Описывает, каким образом ресурс ValueSet используется для отражения перечней кодов, найденных в определениях элементов данных и определениях форм, которые будут использоваться в ONC-стандарте сбора структурированных данных.<!-- Defines how ValueSet is used to reflect code lists found in data element defintiions and form definitions to be used within the ONC's Structured Data Capture standard. --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">status</Data></Cell>

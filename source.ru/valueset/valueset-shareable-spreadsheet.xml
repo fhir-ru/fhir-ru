@@ -943,7 +943,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">name</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Shareable ValueSet</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Совместно используемый<!-- Shareable ValueSet --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">author.name</Data></Cell>
@@ -959,7 +959,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="69.695999999999998">
     <Cell ss:StyleID="s74"><Data ss:Type="String">description</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Enforces the minimum information set for the value set metadata required by HL7 and other organisations that share and publish value sets</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Обязывает к заполнению минимального набора информации в метаданных наборов значений, требуемого HL7 и другими организациями, которые совместно используют и публикуют наборы значений<!-- Enforces the minimum information set for the value set metadata required by HL7 and other organisations that share and publish value sets --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">status</Data></Cell>
