@@ -16,7 +16,7 @@
 <h2>Профилирование FHIR</h2>
 
 <p>
-Основная спецификация FHIR (данная спецификация) описывает набор базовых ресурсов, механизмов и интерфейсов, которые используются в различных контекстах в сфере здравоохранения. Однако существует широкий (?) между юрисдикциями и экосистемой здравоохранения насчет методов, требований, норм, образования и того, какие действия являются выполнимыми и/или выгодными.
+Основная спецификация FHIR (данная спецификация) описывает набор базовых ресурсов, механизмов и интерфейсов, которые используются в различных контекстах в сфере здравоохранения. Однако имеются разногласия между юрисдикциями и экосистемой здравоохранения насчет методов, требований, норм, образования и того, какие действия являются выполнимыми и/или выгодными.
 <!-- The base FHIR specification (this specification) describes a set of base resources, frameworks
 and APIs that are used in many different contexts in healthcare. However there is wide 
 between jurisdictions and across the healthcare eco-system around 
@@ -24,7 +24,7 @@ practices, requirements, regulations, education and what actions are feasible
 and/or beneficial. -->
 </p>
 <p>
-По этой причине спецификация FHIR является "платформенной спецификацией" - она создают общую платформу или фундамент, на котором реализуется множество различных решений.
+По этой причине спецификация FHIR является "платформенной спецификацией" - она создает общую платформу или фундамент, на котором реализуется множество различных решений.
 Вследствие этого, данной спецификации требуется дальнейшая адаптация к конкретному контексту использования. Обычно такие адаптации означают:
 <!-- For this reason, the FHIR specification is a "platform specification" - it creates
 a common platform or foundation on which a variety of different solutions are implemented. 
@@ -32,42 +32,49 @@ As a consequence, this specification requires further adaptation to particular
 contexts of use. Typically, these adaptations specify: -->
 </p>
 <ul>
- <li>Rules about which resource elements are or are not used, and what additional elements are added that are not part of the base specification</li>
- <li>Rules about which API features are used, and how</li>
- <li>Rules about which terminologies and used in particular elements</li>
- <li>Descriptions of how the Resource elements and API features map to local requirements</li>
+ <li>Правила о том, какие элементы ресурса использовать, какие не использовать, а также какие дополнительные элементы, которые не вошли в основную спецификацию,  добавлять<!-- Rules about which resource elements are or are not used, and what additional elements are added that are not part of the base specification --></li>
+ <li>Правила о том, какие свойства интерфейса использовать и каким образом<!-- Rules about which API features are used, and how --></li>
+ <li>Правила о том, какие справочники использовать в конкретных элементах<!-- Rules about which terminologies and used in particular elements --></li>
+ <li>Описание, каким образом элементы ресурса и свойства интерфейса сопоставляются с локальными требованиями<!-- Descriptions of how the Resource elements and API features map to local requirements --></li>
 </ul>
 <p>
-Обратите внимание, что из-за характера медицинской экосистемы может быть множество перекрывающих друг друга адаптаций - по домену здравоохранения, по стране, по учреждению и/или по поставщику/реализации.
+Обратите внимание, что из-за особенности медицинской экосистемы может появиться множество перекрывающих друг друга адаптаций - по домену здравоохранения, по стране, по учреждению и/или по поставщику/реализации.
 <!-- Note that because of the nature of the healthcare eco-system, there may be multiple 
 overlapping set of adaptations - by healthcare domain, by country, by institution, and/or by vendor/implementation.  -->
 </p>
 <p>
-Typically, adaptations (either actual implementations or specifications - sometimes called "Implementation Guides")
+Обычно адаптации (либо сами реализации, либо спецификации - иногда называемые "Руководствами по реализации")
+сужают и расширяют интерфейсы, ресурсы и справочники. FHIR предоставляет набор ресурсов, которые
+представляют решения, которые были сделаны, и позволяет реализаторам создавать из них полезные сервисы. Эти
+ресурсы известны как ресурсы соответствия. Эти ресурсы соответствия позволяют реализаторам:
+<!-- Typically, adaptations (either actual implementations or specifications - sometimes called "Implementation Guides")
 both restrict and extend APIs, resources and terminologies. FHIR provides a set of resources that 
 represent the decisions that have been made, and allows implementers to build useful services from them. These
-resources are known as the conformance resources. These comformance resources allow implementers to:
+resources are known as the conformance resources. These comformance resources allow implementers to: -->
 </p>
 <ul>
- <li>Indicate that <a href="http.html">some API calls</a> are not used for a particular use , and provide additional details about how the API calls are used (<a href="conformance.html">Conformance</a> Resource)</li>
- <li>Add additional <a href="operations.html">operations</a> or <a href="search.html">search parameters</a> not in the base specification 
-   (using the <a href="operationdefinition.html">OperationDefinition</a> resource or the <a href="searchparameter.html">SearchParameter</a> Resource</li>
- <li>Identify specific elements in resources that are not used (<a href="profile.html">Profile</a> Resource)</li>
- <li>Describe how existing elements in resources are used (Profile resource)</li>
- <li>Define new elements that are used resources or data types (Profile resource)</li>
- <li>Mix custom and standard terminologies and choose which codes from these to use for a particular use (Profile and <a href="valueset.html">Value Set</a> Resources)</li>
- <li>Map between local and standard terminologies or content models (<a href="conceptmap.html">Concept Map</a> Resource)</li>
- <li>Register system namespaces for identifiers and terminologies (<a href="namingsystem.html">NamingSystem</a> Resource)</li>
- <li>Describe and register specific Data Elements that are used across systems in a Data Dictionary (<a href="dataelement.html">DataElement</a> Resource)</li>
+ <li>Указывать, что <a href="http.html">некоторые вызовы интерфейса</a> не используются в определенных случаях, и предоставлять дополнительное описание по использованию интерфейса (ресурс <a href="conformance.html">Conformance</a>) <!-- Indicate that <a href="http.html">some API calls</a> are not used for a particular use , and provide additional details about how the API calls are used (<a href="conformance.html">Conformance</a> Resource) --></li>
+ <li>Вводить дополнительные <a href="operations.html">операции</a> и <a href="search.html">параметры поиска</a>, отсутствующие в базовой спецификации (с помощью ресурсов <a href="operationdefinition.html">OperationDefinition</a> и <a href="searchparameter.html">SearchParameter</a>)<!-- Add additional <a href="operations.html">operations</a> or <a href="search.html">search parameters</a> not in the base specification 
+   (using the <a href="operationdefinition.html">OperationDefinition</a> resource or the <a href="searchparameter.html">SearchParameter</a> Resource --></li>
+ <li>Указывать, какие именно элементы в ресурсах не используются (ресурс <a href="profile.html">Profile</a>)<!-- Identify specific elements in resources that are not used (<a href="profile.html">Profile</a> Resource) --></li>
+ <li>Описывать, каким образом используются существующие элементы ресурсов (ресурс Profile)<!-- Describe how existing elements in resources are used (Profile resource) --></li>
+ <li>Вводить новые элементы, которые используются в ресурсах или типах данных (ресурс Profile)<!-- Define new elements that are used resources or data types (Profile resource) --></li>
+ <li>Смешивать пользовательские и стандартные справочники и выбирать, какие коды из них использовать в конкретных случаях (ресурсы Profile и <a href="valueset.html">Value Set</a>)<!-- Mix custom and standard terminologies and choose which codes from these to use for a particular use (Profile and <a href="valueset.html">Value Set</a> Resources) --></li>
+ <li>Устанавливать соответствие между локальными и стандартными справочниками или моделями содержания (ресурс <a href="conceptmap.html">Concept Map</a>)<!-- Map between local and standard terminologies or content models (<a href="conceptmap.html">Concept Map</a> Resource) --></li>
+ <li>Регистрировать пространства имен систем для идентификаторов и справочников (ресурс <a href="namingsystem.html">NamingSystem</a>)<!-- Register system namespaces for identifiers and terminologies (<a href="namingsystem.html">NamingSystem</a> Resource) --></li>
+ <li>Регистрировать и описывать особые элементы данных, которые используются в Словаре данных различных систем (ресурс <a href="dataelement.html">DataElement</a> )<!-- Describe and register specific Data Elements that are used across systems in a Data Dictionary (<a href="dataelement.html">DataElement</a> Resource) --></li>
 </ul>
 <p>
-These need to be used following the policies discussed below, and also 
+Эти возможности необходимо использовать, придерживаясь правил, рассмотренных ниже, а также 
+следуя основным концепциям расширения, которые описаны в разделе <a href="extensibility.html">"Расширяемость"</a>.
+Для удобства реализаторов основные определения самой спецификации публикуются с помощью этих же самых ресурсов.
+<!-- These need to be used following the policies discussed below, and also 
 following the basic concepts for extension that are described in <a href="extensibility.html">"Extensibility"</a>. 
-For implementer convenience, the specification itself publishes its base definitions using these same resources.
+For implementer convenience, the specification itself publishes its base definitions using these same resources. -->
 </p>
 
 <a name="api"> </a>
-<h3>Extending and Restricting the API</h3>
+<h3>Сужение и расширение интерфейса<!-- Extending and Restricting the API --></h3>
 <p>
 A conformance resource lists the REST interactions (read, update, search, etc) that a server provides or that a client uses, along with 
 some supporting information for each. It can also be used to define a set of desired behavior (e.g. as part of a specification or
