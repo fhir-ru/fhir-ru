@@ -25,7 +25,7 @@
 </p>
 </blockquote>
 
-<h3>Идентификации версии</h3>
+<h3>Идентификация версий</h3>
 <p>
 У содержимого ресурса нет явного обозначения версии. FHIR придерживается подхода DICOM к управлению версиями, в котором содержимое может благополучно обрабатываться инстанциями вне зависимости от версии. При работе с содержимым уровня DSTU приложения могут использовать <a href="resource.html#tags">теги ресурсов</a> для облегчения управления им в период пробного использования.
 </p>
@@ -88,23 +88,20 @@
       <td>Наборы значений</td>
       <td>
         <p>
-		Определения наборов значений, помеченных как "неизменяемые" ("immutable"), никогда не изменятся. Расширения неизменяемых наборов значений, тем не менее, могут меняться, если не заявлена "stable date" и набор значений не сужает кодовую систему и/или ссылки на наборы значений определенной версией, если кодовая система(ы) или набор(ы) значений меняются.
-        <!-- The definition of any value set that is marked as "immutable" will never change.  The expansions for
-        immutable value sets may still change if no "stable date" is declared and the value set does not
-        restrict code system and/or value set references to specific versions if the referenced code system(s)
-        or value set(s) change. -->
+		Определения наборов значений, помеченных как "неизменяемые" ("immutable"), никогда не изменятся. Расширения неизменяемых наборов значений, тем не менее, могут меняться, если не заявлена "stable date" и набор значений не ограничивает кодовую систему и/или ссылки на наборы значений определенной версией при изменении кодовой систем(ы) или набор(ов) значений.
+        <!-- The definition of any value set that is marked as "immutable" will never change.  The expansions for         immutable value sets may still change if no "stable date" is declared and the value set does not         restrict code system and/or value set references to specific versions if the referenced code system(s)         or value set(s) change. -->
         </p>
         <p>
         Для неизменяемых наборов значений: <!-- For non-immutable value sets: -->
         </p>
         <ul>
-          <li>Value sets with an enumerated list of codes and having a 'fixed' binding may have additional codes introduced but will never have codes removed.</li>
-          <li>Value sets making use of filters may have filters loosened or tightened to accomodate changes to
+          <li>В наборы значений с перечислением кодов и "фиксированной" привязкой могут вводиться дополнительные коды, однако удаляться коды из них не будут.<!-- Value sets with an enumerated list of codes and having a 'fixed' binding may have additional codes introduced but will never have codes removed. --></li>
+          <li>В наборах значений, использующих фильтры, критерии отбора могут расширяться или сужаться в соответствии с изменениями лежащих в основе кодовых систем. StableDates и версии кодовых систем и наборов значений могут корректироваться, чтобы указывать на свежие версии.<!-- Value sets making use of filters may have filters loosened or tightened to accommodate changes to
           underlying code systems.  StableDates and referenced code system and value set versions may be adjusted
-          to point to newer versions.</li>
-          <li>Definitions and display values for codes may change, but only in a manner that would not change 
-          the reasonable interpretation of data captured using the previous definitions or names.</li>
-          <li>Abstract codes may be made concrete.  Concrete codes will not be made abstract.</li>
+          to point to newer versions. --></li>
+          <li>Определения кодов и значения их элементов "display" могут модифицироваться, но только таким образом, чтобы не изменить корректную интерпретацию данных, собранных с использованием ранних определений или имен.<!-- Definitions and display values for codes may change, but only in a manner that would not change 
+          the reasonable interpretation of data captured using the previous definitions or names. --></li>
+          <li>Абстрактные коды могут стать конкретными. Конкретные коды не могут стать абстрактными.<!-- Abstract codes may be made concrete.  Concrete codes will not be made abstract. --></li>
         </ul>
         <p>
 		Как в постоянных, так и непостоянных наборах значений могут быть объявлены дополнительные наименования.

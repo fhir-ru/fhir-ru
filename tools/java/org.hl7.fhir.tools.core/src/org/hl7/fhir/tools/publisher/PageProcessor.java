@@ -1946,9 +1946,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Content", n+".html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
-    b.append(makeHeaderTab("Mappings", n+"-mappings.html", "mappings".equals(mode)));
+    b.append(makeHeaderTab("Значение", n+".html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Мэппинг", n+"-mappings.html", "mappings".equals(mode)));
     b.append(makeHeaderTab("XML", n+".profile.xml.html", "xml".equals(mode)));
     b.append(makeHeaderTab("JSON", n+".profile.json.html", "json".equals(mode)));
 
@@ -1965,9 +1965,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Content", n+".html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
-    b.append(makeHeaderTab("Mappings", n+"-mappings.html", "mappings".equals(mode)));
+    b.append(makeHeaderTab("Значение", n+".html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Мэппинг", n+"-mappings.html", "mappings".equals(mode)));
     b.append(makeHeaderTab("XML", n+".xml.html", "xml".equals(mode)));
     b.append(makeHeaderTab("JSON", n+".json.html", "json".equals(mode)));
 
@@ -2034,7 +2034,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       pfx = "../../../";
 
     b.append("<ul class=\"nav nav-tabs\">");    
-    b.append(makeHeaderTab("Formats", pfx + "formats.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Форматы", pfx + "formats.html", mode==null || "base".equals(mode)));
     b.append(makeHeaderTab("XML", pfx + "xml.html", "xml".equals(mode)));
     b.append(makeHeaderTab("JSON", pfx + "json.html", "json".equals(mode)));
     b.append("</ul>\r\n");
@@ -2135,13 +2135,13 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     boolean hasOps = !definitions.getResourceByName(title).getOperations().isEmpty();
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Content", n+".html", mode==null || "content".equals(mode)));
-    b.append(makeHeaderTab("Examples", n+"-examples.html", "examples".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
-    b.append(makeHeaderTab("Mappings", n+"-mappings.html", "mappings".equals(mode)));
-    b.append(makeHeaderTab("Conformance Packages", n+"-packages.html", "packages".equals(mode)));
+    b.append(makeHeaderTab("Значение", n+".html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("Примеры", n+"-examples.html", "examples".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Мэппинг", n+"-mappings.html", "mappings".equals(mode)));
+    b.append(makeHeaderTab("Соглашения о соответствии", n+"-packages.html", "packages".equals(mode)));
     if (hasOps)
-      b.append(makeHeaderTab("Operations", n+"-operations.html", "operations".equals(mode)));
+      b.append(makeHeaderTab("Операции", n+"-operations.html", "operations".equals(mode)));
 
     b.append("</ul>\r\n");
 
@@ -2157,12 +2157,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     boolean hasExamples = !definitions.getResourceByName(title).getExamples().isEmpty();
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Content", n+".html", mode==null || "content".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Значение", n+".html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
     if (hasExamples)
-      b.append(makeHeaderTab("Examples", n+"-examples.html", "operations".equals(mode)));
+      b.append(makeHeaderTab("Примеры", n+"-examples.html", "operations".equals(mode)));
     if (hasOps)
-      b.append(makeHeaderTab("Operations", n+"-operations.html", "operations".equals(mode)));
+      b.append(makeHeaderTab("Операции", n+"-operations.html", "operations".equals(mode)));
 
     b.append("</ul>\r\n");
 
@@ -2204,7 +2204,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genConceptMapsTable() throws Exception {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
-    s.append(" <tr><td><b>Name</b></td><td><b>Source</b></td><td><b>Target</b></td></tr>\r\n");
+    s.append(" <tr><td><b>Имя</b></td><td><b>Источник</b></td><td><b>Адресат (Целевой объект)</b></td></tr>\r\n");
     List<String> sorts = new ArrayList<String>();
     sorts.addAll(conceptMaps.keySet());
     Collections.sort(sorts);
@@ -2226,7 +2226,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genIGValueSetsTable() throws Exception {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
-    s.append(" <tr><td><b>Name</b></td><td><b>Definition</b></td><td><b>Source</b></td><td></td></tr>\r\n");
+    s.append(" <tr><td><b>Имя</b></td><td><b>Определение</b></td><td><b>Источник</b></td><td></td></tr>\r\n");
     List<String> namespaces = new ArrayList<String>();
     Map<String, ValueSet> vslist = new HashMap<String, ValueSet>();
     for (String sn : igResources.keySet()) {
@@ -2247,7 +2247,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genValueSetsTable() throws Exception {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
-    s.append(" <tr><td><b>Name</b></td><td><b>Definition</b></td><td><b>Source</b></td><td><b>Id</b></td></tr>\r\n");
+    s.append(" <tr><td><b>Имя</b></td><td><b>Определение</b></td><td><b>Источник</b></td><td><b>Идентификатор</b></td></tr>\r\n");
     List<String> namespaces = new ArrayList<String>();
     for (String sn : valueSets.keySet()) {
       String n = getNamespace(sn);
