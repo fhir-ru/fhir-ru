@@ -3235,7 +3235,7 @@ public class Publisher implements URIResolver {
 
     src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-mappings.html");
     src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, tx, src, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
-    page.getEpub().registerFile(title + "-mappings.html", "Mappings for Profile " + profile.getResource().getName(), EPubManager.XHTML_TYPE);
+    page.getEpub().registerFile(title + "-mappings.html", "Мэппинги для профиля " + profile.getResource().getName(), EPubManager.XHTML_TYPE);
     TextFile.stringToFile(src, page.getFolders().dstDir + title + "-mappings.html");
 
 //    src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-examples.html");

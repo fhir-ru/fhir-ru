@@ -104,12 +104,12 @@ public class MappingsGenerator {
   
   public void generate(ExtensionDefinition ed) {
     if (ed.getMapping().isEmpty())
-      mappings = "<p>No Mappings</p>";
+      mappings = "<p>Нет мэппингов</p>";
     else {
       StringBuilder s = new StringBuilder();
       for (ExtensionDefinitionMappingComponent map : ed.getMapping()) {
 
-        s.append("<a name=\""+map.getIdentity() +"\"> </a><h3>Mappings for "+map.getName()+" ("+map.getUri()+")</h3>");
+        s.append("<a name=\""+map.getIdentity() +"\"> </a><h3>Мэппинги для "+map.getName()+" ("+map.getUri()+")</h3>");
         if (map.hasComments())
           s.append("<p>"+Utilities.escapeXml(map.getComments())+"</p>");
         else if (definitions.getMapTypes().containsKey(map.getUri()))   

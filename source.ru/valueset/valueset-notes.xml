@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h2>Identifier and Version</h2>
+<h2>Идентификатор и версия<!-- Identifier and Version --></h2>
 <p>
 The <i>identifier</i> and <i>version</i> elements may be used to reference this value set in a design, a profile, a 
 CDA template or V3 message (valueSet and valueSetVersion). These different contexts may make additional restrictions 
@@ -8,7 +8,7 @@ on the possible values of these elements.  These elements are generally not need
 implementations as they can make use of the innate identifier and versioning mechanism associated with the resource
 </p>
 
-<h2>Value Sets that define codes</h2>
+<h2>Наборы значений, определяющие коды<!-- Value Sets that define codes --></h2>
 
 <p>
 Valuesets can define their own codes. A value set that defines codes automatically includes all 
@@ -29,13 +29,13 @@ be different.
   <li>The set of codes defined SHALL not contain duplicate codes</li>
 </ul>
 <p>
-Note: Value sets only define their own codes when they are not defined elsewhere,
+Примечание: Value sets only define their own codes when they are not defined elsewhere,
 such as codes defined in SNOMED CT, LOINC, RxNorm etc. To specify a value set that
 is made up of codes from other code systems, see "compose" below. 
 </p>
 
 <a name="versioning"> </a>
-<h3>Versioning Code Systems</h3>
+<h3>Контроль версий кодовых систем<!-- Versioning Code Systems --></h3>
 <p>
 Most code systems evolve over time, due to corrections, clarifications, and changes to approach or underlying knowledge or reality.
 If these changes lead to the meanings of existing codes changing significantly, then the interpretation of the code system becomes
@@ -61,7 +61,7 @@ Where the terminology does not clearly define what string should be used to iden
 
 
 
-<h2>Value Sets that include codes defined elsewhere</h2>
+<h2>Наборы значений, включающие коды, определенные в другом месте<!-- Value Sets that include codes defined elsewhere --></h2>
 
 <p>
 Value sets that include codes defined in some other code system are most useful when 
@@ -118,7 +118,7 @@ even if a value set is referenced explicitly in the Coding. The alternative disp
 specified in the value set would go in <a href="datatypes.html#CodeableConcept">CodeableConcept</a>.text.
 </p>
  
-<h3>Code systems Note</h3>
+<h3>Примечание к кодовым системам<!-- Code systems Note --></h3>
 <p>
 How filters are used with various code systems:
 </p>
@@ -153,7 +153,7 @@ How filters are used with various code systems:
 </table>
 
 <a name="expansion"> </a>
-<h2>Value Set Expansion</h2>
+<h2>Расширение набора значений<!-- Value Set Expansion --></h2>
 <p>
 A value set can be "expanded", where the definition of the value set is 
 used to create a simple collection of codes suitable for use for data 
