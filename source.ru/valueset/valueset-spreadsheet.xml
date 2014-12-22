@@ -1908,7 +1908,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Child Concepts (is-a / contains)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Концепты-потомки (является / содержит)<!-- Child Concepts (is-a / contains) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2545,7 +2545,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда расширение было создано системой<!-- The time at which the expansion was produced by the expanding system. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Штамп времени СЛЕДУЕТ заполнять полностью, но в некоторых ситуациях наборы значений расширяются вручную и расширение публикуется без требуемой точности<!-- This SHOULD have be a fully populated instant, but in some circumstances, value sets are expanded by hand, of the expansion is published without that precision --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Отметку даты/времени СЛЕДУЕТ заполнять полностью, но в некоторых ситуациях наборы значений расширяются вручную и расширение публикуется без требуемой точности<!-- This SHOULD have be a fully populated instant, but in some circumstances, value sets are expanded by hand, of the expansion is published without that precision --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2731,7 +2731,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">User display for the concept</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение концепта для отображения пользователю<!-- User display for the concept --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4170,7 +4170,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">ValueSet.compose</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">A value set composition SHALL have an include or an import</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">В композицию набора значений ДОЛЖНО входить включение или импорт<!-- A value set composition SHALL have an include or an import --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">exists(f:include) or exists(f:import)</Data><NamedCell
@@ -4192,7 +4192,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">ValueSet.define</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Within a code system definition, all the codes SHALL be unique</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">В пределах определения кодовой системы все коды ДОЛЖНЫ быть уникальными<!-- Within a code system definition, all the codes SHALL be unique --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(distinct-values(descendant::f:concept/f:code/@value))=count(descendant::f:concept)</Data></Cell>
    </Row>
@@ -4232,7 +4232,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">ValueSet.define</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Codes must be unique</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Коды должны быть уникальными<!-- Codes must be unique --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(descendant::f:concept)=count(distinct-values(descendant::f:concept/f:code/@value))</Data></Cell>
    </Row>
@@ -7256,7 +7256,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ValueSetStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The lifecycle status of a Value Set or Concept Map</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус жизненного цикла Value Set или Concept Map<!-- The lifecycle status of a Value Set or Concept Map --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус жизненного цикла Value Set или Concept Map<!-- The lifecycle status of a Value Set or Concept Map --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#valueset-status</Data></Cell>
@@ -7271,7 +7272,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="29.951999999999998">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ConceptDesignationUse</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Details of how a designation would be used</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание того, как обозначение будет использоваться<!-- Details of how a designation would be used --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-designation-use</Data></Cell>

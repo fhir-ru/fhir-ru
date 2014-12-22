@@ -106,22 +106,24 @@ safely be used in addition to those defined in this specification.
 </p>
 
 <a name="resources"> </a>
-<h3>Extending and Restricting Resources</h3>
+<h3>Расширение и ограничение ресурсов<!-- Extending and Restricting Resources --></h3>
 
 <p>
-Extending and restricted resources is done with a "Profile" resource, which is a statement of rules about 
-how the elements in a resource are used, and where extensions are used in a resource. 
+Расширение и ограничение ресурсов совершается с помощью ресурса "Profile", который представляет собой утверждение правил о том, каким образом используются элементы в ресурсе и где в ресурсе используются расширения.
+<!-- Extending and restricted resources is done with a "Profile" resource, which is a statement of rules about 
+how the elements in a resource are used, and where extensions are used in a resource. --> 
 </p>
 
-<h3>Limitations of Use</h3>
+<h3>Границы применения<!-- Limitations of Use --></h3>
 <p>
-What profiles can do is limited in some respects:
+Возможности профилей несколько ограничены:
+<!-- What profiles can do is limited in some respects: -->
 </p>
 <ul>
- <li>Profiles cannot break the rules established in the base specification (e.g. if the element cardinality is 1..1 in the base specification, a profile cannot say it is 0..1, or 1..*)</li>
- <li>Profiles cannot specify default values or meanings for elements</li>
- <li>Profiles cannot give more specific names to elements</li>
- <li>It must be safe to process a resource without knowing of the profile</li>
+ <li>Профили не могут нарушать правила, установленные в базовой спецификации (например если кардинальное число элемента в базовой спецификации 1..1, профиль не может объявить его 0..1 или 1..*)<!-- Profiles cannot break the rules established in the base specification (e.g. if the element cardinality is 1..1 in the base specification, a profile cannot say it is 0..1, or 1..*) --></li>
+ <li>Профили не могут задавать элементам значения или смысл по умолчанию<!-- Profiles cannot specify default values or meanings for elements --></li>
+ <li>Профили не могут давать элементам более конкретные имена<!-- Profiles cannot give more specific names to elements --></li>
+ <li>Обрабатывать ресурс без знания его профиля должно быть безопасно<!-- It must be safe to process a resource without knowing of the profile --></li>
 </ul>
 <p>
 The consequence of this is that if a profile mandates extended behavior that cannot 
@@ -142,34 +144,37 @@ see <a href="resources.html#ruleset">Restricted Understanding of Resources</a>.
 </p>
  
 
-<h3>Using Profiles</h3>
+<h3>Применение профилей<!-- Using Profiles --></h3>
 <p>
-A profile specifies a set of restrictions on the content of a FHIR resource or data type. 
+Профиль устанавливает набор ограничений для содержимого FHIR-ресурса или типа данных. Профили идентифицируются по их каноническому URL-адресу, который должен быть тем URL, по которому они были опубликованы. О том, каким образом используется элемент, могут быть сделаны следующие виды утверждений:
+<!-- A profile specifies a set of restrictions on the content of a FHIR resource or data type. 
 Profiles are identified by their canonical URL, which should be the URL at which they 
-are published. The following kinds of statements can be made about how an element is used:
+are published. The following kinds of statements can be made about how an element is used: -->
 </p>
 <ul>
- <li>Restricting the cardinality of the element. e.g. the base might allow 0..*, and a particular application might support 1..2</li>
- <li>Ruling out use of an element by setting its maximum cardinality to 0</li>
- <li>Restricting the contents of an element to a single fixed value</li>
- <li>Making additional invariants on the content of nested elements within the resource (expressed as XPath statements)</li>
- <li>Restricting the types for an element that allows multiple types</li>
- <li>Requiring a typed element or the target of a resource reference to conform to another structure profile (declared in the same profile, or elsewhere)</li>
- <li>Specifying a binding to a different terminology value set (see below)</li>
- <li>Providing alternative definitions and examples for the elements defined in a Resource to explain how they are used in the context of the Profile</li>
- <li>Providing more specific or additional mappings (e.g. to v2 or v3) for the resource when used in a particular context</li>
- <li>Declaring that one or more elements in the profile must be 'supported' (see below)</li>
+ <li>Уменьшение кардинального числа элемента, например базовая спецификация может разрешать 0..*, а конкретное приложение может поддерживать 1..2<!-- Restricting the cardinality of the element. e.g. the base might allow 0..*, and a particular application might support 1..2 --></li>
+ <li>Исключение элемента из использования  установкой его максимального значения кардинального числа в 0<!-- Ruling out use of an element by setting its maximum cardinality to 0 --></li>
+ <li>Ограничение содержимого элемента одним фиксированным значением<!-- Restricting the contents of an element to a single fixed value --></li>
+ <li>Создание дополнительных инвариантов для содержимого вложенных элементов внутри ресурса (выраженных в виде XPath-утверждений)<!-- Making additional invariants on the content of nested elements within the resource (expressed as XPath statements) --></li>
+ <li>Ограничение доступных типов данных для элемента, в котором допустимы несколько типов<!-- Restricting the types for an element that allows multiple types --></li>
+ <li>Требование к типизированному элементу или целевому объекту ссылки ресурса соответствовать другому структурному профилю (объявленному в этом же профиле либо в другом месте)<!-- Requiring a typed element or the target of a resource reference to conform to another structure profile (declared in the same profile, or elsewhere) --></li>
+ <li>Указание привязки к другому терминологическому набору значений (см. ниже)<!-- Specifying a binding to a different terminology value set (see below) --></li>
+ <li>Предоставление альтернативных определений и примеров для элементов, заданных в ресурсе, для объяснения, каким образом они используются в контексте этого профиля<!-- Providing alternative definitions and examples for the elements defined in a Resource to explain how they are used in the context of the Profile --></li>
+ <li>Предоставление более конкретных или дополнительных таблиц соответствия (например с v2 или v3) для ресурса при использовании в определенном контексте<!-- Providing more specific or additional mappings (e.g. to v2 or v3) for the resource when used in a particular context --></li>
+ <li>Объявление, что один или несколько элементов в профиле должны быть 'поддержаны' (см. ниже)<!-- Declaring that one or more elements in the profile must be 'supported' (see below) --></li>
 </ul>
 <p>
-All of these changed definitions SHALL be restrictions that are consistent with the 
+Все эти измененные определения ДОЛЖНЫ быть ограничениями, которые не противоречат правилам, установленным в базовом ресурсе в спецификации FHIR. Обратите внимание, что некоторые из этих ограничений могут быть обеспечены принудительно с помощью инструментов (и обеспечиваются средствами FHIR), однако другие (например регулирование изменений описательного текста) не могут быть автоматически применены.
+<!-- All of these changed definitions SHALL be restrictions that are consistent with the 
 rules defined in the base resource in the FHIR Specification. Note that some of 
 these restrictions can be enforced by tooling (and are by the FHIR tooling), but 
-others (e.g. alignment of changes to descriptive text) cannot be automatically enforced.
+others (e.g. alignment of changes to descriptive text) cannot be automatically enforced. -->
 </p>
 <p>
-A profile contains a linear list of element declarations. The inherent 
+Профиль содержит линейный список объявлений элементов. Присущая вложенная структура элементов происходит из значения <i>path</i> каждого элемента. К примеру, такая последовательность путей элементов
+<!-- A profile contains a linear list of element declarations. The inherent 
 nested structure of the elements is derived from the <i>path</i> value of each element. 
-For instance, a sequence of the element paths like this:
+For instance, a sequence of the element paths like this: -->
 </p>
 <ul>
  <li>Root</li>
@@ -178,7 +183,8 @@ For instance, a sequence of the element paths like this:
  <li>Root.childB</li>
 </ul>
 <p>
-defines the following structure:
+определяет следующую структуру:
+<!-- defines the following structure: -->
 </p>
 <pre class="xml">
  &lt;Root&gt;
@@ -189,21 +195,26 @@ defines the following structure:
  &lt;/Root&gt;
 </pre>
 <p>
-or its JSON equivalent. The structure is coherent - children are never 
+или ее JSON-эквивалент. Структура является логически последовательной - потомки никогда не подразумеваются, а пути всегда идут по порядку. Перечень элементов - это линейный список, а не явно вложенные элементы, так как определения элементов часто используются повторно в нескольких местах внутри одного профиля, и это повторное использование проще осуществлять с плоской структурой.
+<!-- or its JSON equivalent. The structure is coherent - children are never 
 implied, and the path statements are always in order. The element list is 
 a linear list rather than being explicitly nested because element definitions
 are frequently re-used in multiple places within a single profile, and this re-use
-is easier with a flat structure.
+is easier with a flat structure. -->
 </p>
 
 <a name="snapshot"> </a>
 <h3>Differential vs Snapshot</h3>
  
 <p>
-Profiles may contain either a differential statement, a snapshot
-statement or both.
+Профили могут содержать либо differential statement, либо snapshot statement, либо оба.
+<!-- Profiles may contain either a differential statement, a snapshot
+statement or both. -->
 </p>
-<p>Differential statements describe only the differences that they make 
+<p>
+Differential statements описывают только те изменения, которые они задают по отношению к другому профилю (которым чаще всего является базовый FHIR-ресурс или тип данных). Например профиль может делать один из элементов обязательным (кардинальное число 1..1). В этом случае дифференциальная структура будет содержать один элемент и его путь, сделанный обязательным, и кардинальное число.
+Больше ничего не заявляется - вся остальная структура подразумевается (примечание: это означает, что дифференциальный профиль может быть разреженным и указывать только те элементы, которые были изменены, без необходимости перечисления всей структуры).
+<!-- Differential statements describe only the differences that they make 
 relative to another profile (which is most often the base FHIR resource or data type). 
 For example, a profile may make a single element mandadory (cardinality 1..1).
 In the case of a differential structure, it will contain a single element 
@@ -211,7 +222,7 @@ with the path of the element being made mandatory, and a cardinality statement.
 Nothing else is stated - all the rest of the structure is implied (note:
 this implies that a differential profile can be sparse, and only 
 mention the elements that are changed, without having to list the
-full structure).
+full structure). -->
 </p>
 <p>
 In order to properly understand a differential structure, it must be 
