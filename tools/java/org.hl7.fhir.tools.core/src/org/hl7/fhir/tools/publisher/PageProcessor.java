@@ -2771,7 +2771,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         b.append("<a href=\""+an+"\">"+n+"</a>");
       }
       if (i == vslist.size() - 1)
-        b.append(" and ");
+        b.append(" и ");
       else if (vslist.size() > 1 && i != vslist.size() )
         b.append(", ");
     }
@@ -3509,9 +3509,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }
     if (refs.size() == 1)
-      return "<p>This resource is referenced by <a href=\""+refs.get(0).toLowerCase()+".html\">"+refs+"</a></p>\r\n";
+      return "<p>На этот ресурс ссылаются <a href=\""+refs.get(0).toLowerCase()+".html\">"+refs+"</a></p>\r\n";
     else if (refs.size() > 1)
-      return "<p>This resource is referenced by "+asLinks(refs)+"</p>\r\n";
+      return "<p>На этот ресурс ссылаются "+asLinks(refs)+"</p>\r\n";
     else
       return "";
   }
@@ -3520,7 +3520,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     for (int i = 0; i < refs.size(); i++) {
       if (i == refs.size() - 1)
-        b.append(" and ");
+        b.append(" и ");
       else if (i > 0)
         b.append(", ");
       b.append("<a href=\""+refs.get(i).toLowerCase()+".html\">"+refs.get(i)+"</a>");
