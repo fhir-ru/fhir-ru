@@ -2426,7 +2426,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Code from the system, or regex criteria</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код из системы либо регулярное выражение<!-- Code from the system, or regex criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Значением совпадения может быть либо код, определенный системой, либо строковое значение, которое применяется регулярным выражением к строковому литералу значения свойства <!-- The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2460,7 +2460,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Explicitly exclude codes</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Явно исключает коды<!-- Explicitly exclude codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Исключает один или больше кодов из набора значений<!-- Exclude one or more codes from the value set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2493,7 +2493,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Used when the value set is &quot;expanded&quot;</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Используется, когда набор значений &quot;расширен&quot;<!-- Used when the value set is &quot;expanded&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Набор значений может быть расширен, если он превращен в простую коллекцию перечисленных кодов. Этот элемент хранит расширение, если оно было выполнено<!-- A value set can also be &quot;expanded&quot;, where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2526,7 +2526,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Uniquely identifies this expansion</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор этого расширения<!-- Uniquely identifies this expansion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, который однозначно идентифицирует данное расширение набора значений. Системы могут повторно использовать тот же самый идентификатор, пока расширение и определение остаются прежними, но это не обязательное требование<!-- An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2557,7 +2557,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time valueset expansion happened</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время, когда произошло расширение набора значений<!-- Time valueset expansion happened --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда расширение было создано системой<!-- The time at which the expansion was produced by the expanding system. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2588,7 +2588,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes in the value set</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды в этом наборе значений<!-- Codes in the value set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Коды, содержащиеся в расширении набора значений<!-- The codes that are contained in the value set expansion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2620,7 +2620,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">System value for the code</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение системы для этого кода<!-- System value for the code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Система, в которой определен код для этого элемента в расширении<!-- The system in which the code for this item in the expansion is defined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2651,7 +2651,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If user cannot select this entry</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если пользователь не может выбирать этот пункт<!-- If user cannot select this entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если значение true, то эта запись включена в расширение в целях навигации, и пользователь не может выбирать этот код непосредственно в качестве допустимого значения <!-- If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2683,7 +2683,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Version in which this code / display is defined</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Версия, в которой определен этот код / значение для отображения<!-- Version in which this code / display is defined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Версия кодовой системы, которая определила этот код и/или значение для отображения. Следует использовать только с теми кодовыми системами, которые не обеспечивают неизменяемость концептов<!-- The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4239,7 +4239,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">ValueSet</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Указанная кодовая система (если задана) ДОЛЖНА иметь идентификатор, не сходный с идентификатором самого набора значений<!-- A defined code system (if present) SHALL have a different identifier to the value set itself --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Указанная кодовая система (если задана) ДОЛЖНА иметь идентификатор, отличающийся от идентификатора самого набора значений<!-- A defined code system (if present) SHALL have a different identifier to the value set itself --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:define)) or (f:define/f:system/@value != f:identifier/@value)</Data></Cell>
    </Row>

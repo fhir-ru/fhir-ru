@@ -51,16 +51,20 @@ is often not practical - for instance, <a href="http://loinc.org">LOINC</a> has 
 but there is only one identifier for LOINC.  -->
 </p>
 <p>
-For this reason, a code system MAY provide a version identifer in <i>ValueSet.define.version</i>. The version specific identifier SHOULD be 
+По этой причине кодовая система МОЖЕТ указать идентификатор версии в <i>ValueSet.define.version</i>. Конкретный идентификатор версии СЛЕДУЕТ указывать всякий раз, когда имеются потенциально существенные изменения смысла, распространяющиеся на несколько релизов кодовой системы.
+К формату идентификатора версии нет какого-то определенного требования, однако HL7 рекомендует подход, основанный на дате.
+<!-- For this reason, a code system MAY provide a version identifer in <i>ValueSet.define.version</i>. The version specific identifier SHOULD be 
 provided whenever there are potentially significant changes in meaning across multiple releases of a code system.
-There is no particular format requirement for the version identifier, though HL7 recommends a date based approach. 
+There is no particular format requirement for the version identifier, though HL7 recommends a date based approach.  -->
 </p>
 <p>
-When the value set definition of a code system includes a version identifier, the version identifier SHOULD be 
-used in <a href="datatypes.html#coding">Coding</a> instances that refer to the code system. 
+Когда определение кодовой системы в наборе значений включает идентификатор версии, этот идентификатор версии СЛЕДУЕТ использовать в экземплярах <a href="datatypes.html#coding">Coding</a>, которые ссылаются на эту кодовую систему.
+<!-- When the value set definition of a code system includes a version identifier, the version identifier SHOULD be 
+used in <a href="datatypes.html#coding">Coding</a> instances that refer to the code system.  -->
 </p>
 <p>
-Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.
+Там, где терминология не определяет четко, какую строку следует использовать для идентификации версий кодовой системы, в качестве даты версии рекомендуется использовать дату (выраженную в FHIR-формате даты), когда эта версия была официально опубликована.
+<!-- Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date. -->
 </p>
 
 
@@ -68,52 +72,56 @@ Where the terminology does not clearly define what string should be used to iden
 <h2>Наборы значений, включающие коды, определенные в другом месте<!-- Value Sets that include codes defined elsewhere --></h2>
 
 <p>
-Value sets that include codes defined in some other code system are most useful when 
+Наборы значений, которые включают коды, определенные в каких-то других кодовых системах, чаще всего применяют, когда имеют дело с большими общепринятыми кодовыми системами, например SNOMED CT, LOINC, RxNorm или различные IETF-наборы значений, включая естественный язык. Набор значений может быть простым перечнем включенных кодов либо некоторым обобщающим критерием выборки, использующим средства, предоставленные кодовой системой.
+<!-- Value sets that include codes defined in some other code system are most useful when 
 dealing with large general code systems such as SNOMED CT, LOINC, RxNorm or various IETF code sets 
 including human language. The value set can be a simple list of included codes or it can be some 
-kind of general selection criteria using the facilities provided by the code system. 
+kind of general selection criteria using the facilities provided by the code system.  -->
 </p>
 <ul>
- <li>Within an include or exclude criterion, multiple filters and concept selections are intersected. All the 
-   conditions specified SHALL be true.</li>
- <li>The value set always includes any codes it defines itself. A typical use for this
+ <li>В исключающем или включающем критерии пересекаются различные фильтры и выборки концептов. Все заданные условия ДОЛЖНЫ выполняться.<!-- Within an include or exclude criterion, multiple filters and concept selections are intersected. All the 
+   conditions specified SHALL be true. --></li>
+ <li>Набор значений всегда включает все коды, которые он определяет сам. Типичное использование - когда включение набора кодов откуда-то еще и добавление нескольких дополнительных кодов для случаев, не покрытых включенными кодами<!-- The value set always includes any codes it defines itself. A typical use for this
     is when including a set of codes from elsewhere, and adding a few additional codes to cover
-    cases not catered to by the included codes</li>
- <li>An include statement consists of any enumerated codes and any codes that meet the filter criteria</li>
- <li>If the system reference is not version specific and filters are present, then the contents of the value set are open and change 
-    over time as the underlying code systems are updated</li>
- <li>The content of the value set is constructed by unioning of all the import and include statements and then 
-  eliminating any of the 'excluded' codes.</li>
- <li>A value set needs to do something.  It can't simply include an existing value set without 
-   also including additional content or excluding content</li>
+    cases not catered to by the included codes --></li>
+ <li>Оператор включение состоит из любых перечисленных кодов и любых кодов, которые соответствуют критериям фильтра<!-- An include statement consists of any enumerated codes and any codes that meet the filter criteria --></li>
+ <li>Если ссылка на систему указывает не на конкретную версию и присутствуют фильтры, тогда содержимое набора значений открыто и меняется со временем вместе с обновлениями лежащих в основе кодовых систем<!-- If the system reference is not version specific and filters are present, then the contents of the value set are open and change 
+    over time as the underlying code systems are updated --></li>
+ <li>Содержимое набора значений компонуется путем объединения всего импорта и операторов включения, а затем удалением всех 'исключенных' кодов.<!-- The content of the value set is constructed by unioning of all the import and include statements and then 
+  eliminating any of the 'excluded' codes. --></li>
+ <li>Набор значений должен что-то делать. Он не может просто включать существующий набор значений без включения дополнительных данных или исключения части содержимого<!-- A value set needs to do something.  It can't simply include an existing value set without 
+   also including additional content or excluding content --></li>
 <!--
  <li>The point of declaring that this value set restricts another is that this value set can then replace the other in a profile 
 without changing the meaning. Declaring this explicitly allows profile tools to reason about the relationship without having 
 to compute the relationship, which might not be possible for a profile tool</li>
 -->
- <li>Using the property filters is only possible where the underlying code system defines 
+ <li>Использование фильтров по свойствам возможно только там, где лежащая в основе кодовая система задает соответствующие свойства. Обратите внимание, что в некоторых случаях лежащая в основе кодовая система определяет логические концепты, а не синтаксис для их применения. В таких случаях буквальные определения могут предоставляться третьей стороной. См. ниже примечания к их использованию в распространенных кодовых системах<!-- Using the property filters is only possible where the underlying code system defines 
   appropriate properties. Note that in some cases, the underlying code system defines the 
   logical concepts but not the syntax for exercising them. In such cases, the literal 
-  definitions may be provided by a third party. See below for notes about its use against common code systems</li>
- <li>Value sets may include abstract codes - that is, codes designated by the underlying code system as 
+  definitions may be provided by a third party. See below for notes about its use against common code systems --></li>
+ <li>Наборы значений могут включать абстрактные коды - это коды, обозначенные лежащей в основе кодовой системой как не для использования в качестве реального концепта. Такие абстрактные коды, как правило, используются в качестве механизма группировки/поиска и могут быть включены либо перечислением, либо с помощью фильтра<!-- Value sets may include abstract codes - that is, codes designated by the underlying code system as 
    not for use as a real concept. These abstract codes are typically used as a grouping/searching mechanism,
-   and can be included either by enumerating them, or by using a filter</li>
+   and can be included either by enumerating them, or by using a filter --></li>
 </ul>
 <p>
-When a value set enumerates codes, it is also able to define an alternative display for 
+Когда набор значений перечисляет коды, он также может задавать альтернативные значения для отображения этих кодов, которые должны будут использоваться, как бы этот набор значений ни расширялся и где бы ни использовался в пользовательском интерфейсе. Эта возможность предоставлена для покрытия следующих обстоятельств:
+<!-- When a value set enumerates codes, it is also able to define an alternative display for 
 the code that is to be used where ever the value set is expanded and used in a UI. This 
-facility is provided to cover the following circumstances:
+facility is provided to cover the following circumstances: -->
 </p>
 <ul>
- <li>The system that defines the code or expression doesn't provide a display for this code (or any codes)</li>
- <li>The system that defines the code or expression defines multiple choices for display</li>
- <li>The system provides a very long display name that is unnecssary or innappropriate in the context of this value set (e.g. a display name of "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" for LOINC code 48991-4, when the value set only includes Glucose mass/vol in serum/plasma codes). As the display names get longer, this becomes more important</li>
+ <li>Система, которая определяет код или выражение, не предоставляет значения для отображения для этого кода (или всех кодов)<!-- The system that defines the code or expression doesn't provide a display for this code (or any codes) --></li>
+ <li>Система, которая определяет код или выражение, предоставляет на выбор несколько значений для отображения<!-- The system that defines the code or expression defines multiple choices for display --></li>
+ <li>Система предлагает очень длинное название для отображения, в котором нет необходимости или которое не подходит в контексте данного набора значений (например название для отображения "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" для LOINC-кода 48991-4, когда набор значений включает только Glucose mass/vol в кодах serum/plasma). С удлинением названий для отображения эта возможность становится все более и более актуальной <!-- The system provides a very long display name that is unnecssary or innappropriate in the context of this value set (e.g. a display name of "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" for LOINC code 48991-4, when the value set only includes Glucose mass/vol in serum/plasma codes). As the display names get longer, this becomes more important --></li>
 </ul>
 <p>
-Note that care must be taken in order to avoid "changing the meaning" of the concept by
+Обратите внимание, что необходимо соблюдать осторожность, чтобы избежать "изменения смысла" концепта что он значит что-то другое, чем явное определение концепта в лежащей в основе системе (например для случая выше это будет использование значения для отображения "Glucose Concentration at 10pm"). 
+По этой причине в некоторых контекстах использования не разрешается ассоциировать значение для отображения с некоторыми кодами.
+<!-- Note that care must be taken in order to avoid "changing the meaning" of the concept by
 implying that it means something other than the explicit definition of the concept in the
 underlying system (e.g. in the case above, using a display "Glucose Concentration at 10pm"). 
-For this reason, some contexts of use do not allow a display to be associated with a specific code.
+For this reason, some contexts of use do not allow a display to be associated with a specific code. -->
 </p>
 <p>
 The display name for the code in the value set is only used in the UI. The display in a 
@@ -124,7 +132,8 @@ specified in the value set would go in <a href="datatypes.html#CodeableConcept">
  
 <h3>Примечание к кодовым системам<!-- Code systems Note --></h3>
 <p>
-How filters are used with various code systems:
+Как используются фильтры с различными кодовыми системами:
+<!-- How filters are used with various code systems: -->
 </p>
 <ul>
  <li>LOINC: See <a href="loinc.html">Using LOINC with FHIR</a></li>
