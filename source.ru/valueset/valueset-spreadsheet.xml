@@ -7256,8 +7256,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ValueSetStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус жизненного цикла Value Set или Concept Map<!-- The lifecycle status of a Value Set or Concept Map --></Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус жизненного цикла Value Set или Concept Map<!-- The lifecycle status of a Value Set or Concept Map --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The lifecycle status of a Value Set or Concept Map</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The lifecycle status of a Value Set or Concept Map</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#valueset-status</Data></Cell>
