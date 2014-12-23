@@ -124,10 +124,11 @@ underlying system (e.g. in the case above, using a display "Glucose Concentratio
 For this reason, some contexts of use do not allow a display to be associated with a specific code. -->
 </p>
 <p>
-The display name for the code in the value set is only used in the UI. The display in a 
+Название кода для отображения в наборе значений используется только в пользовательском интерфейсе. Значение для отображения в <a href="datatypes.html#Coding">Coding</a> необходимо взять в основной системе, даже если на набор значений есть явная ссылка в кодинге. Альтернативное значение для отображения, указанное в наборе значений, попадет в <a href="datatypes.html#CodeableConcept">CodeableConcept</a>.text.
+<!-- The display name for the code in the value set is only used in the UI. The display in a 
 a <a href="datatypes.html#Coding">Coding</a> must be taken from the underlying system, 
 even if a value set is referenced explicitly in the Coding. The alternative display 
-specified in the value set would go in <a href="datatypes.html#CodeableConcept">CodeableConcept</a>.text.
+specified in the value set would go in <a href="datatypes.html#CodeableConcept">CodeableConcept</a>.text. -->
 </p>
  
 <h3>Примечание к кодовым системам<!-- Code systems Note --></h3>
@@ -136,18 +137,18 @@ specified in the value set would go in <a href="datatypes.html#CodeableConcept">
 <!-- How filters are used with various code systems: -->
 </p>
 <ul>
- <li>LOINC: See <a href="loinc.html">Using LOINC with FHIR</a></li>
- <li>SNOMED-CT: See <a href="snomedct.html">Using SNOMED CT with FHIR</a></li>
- <li>RxNorm: See <a href="rxnorm.html">Using RxNorm with FHIR</a></li>
+ <li>LOINC: См. <a href="loinc.html">Использование LOINC в FHIR</a></li>
+ <li>SNOMED-CT: См. <a href="snomedct.html">Использование SNOMED CT в FHIR</a></li>
+ <li>RxNorm: См. <a href="rxnorm.html">Использование RxNorm в FHIR</a></li>
 </ul>
 <table class="grid">
  <tr>
-   <th>System</th>    
-   <th>Property Name</th> 
-   <th>Operation</th> 
-   <th>Value</th>        
-   <th>Definition</th>
-   <th>Example</th>
+   <th>Система<!-- System --></th>    
+   <th>Имя свойства<!-- Property Name --></th> 
+   <th>Операция<!-- Operation --></th> 
+   <th>Значение<!-- Value --></th>        
+   <th>Определение<!-- Definition --></th>
+   <th>Пример<!-- Example --></th>
  </tr>
  <tr>
    <td colspan="4"><hr/></td>
@@ -159,7 +160,7 @@ specified in the value set would go in <a href="datatypes.html#CodeableConcept">
    <td>concept</td>
    <td>is-a</td>       
    <td>[code]</td>    
-   <td>Includes all codes that have a transitive is-a relationship with the concept identified by the value</td> 
+   <td>Включает все коды, связанные с концептом, идентифицируемом этим значением, переходным отношением "является" (transitive is-a relationship)<!-- Includes all codes that have a transitive is-a relationship with the concept identified by the value --></td> 
    <td><a href="valueset-relatedperson-relationshiptype.html">Relationship Type</a></td>
  </tr>
  
@@ -168,13 +169,18 @@ specified in the value set would go in <a href="datatypes.html#CodeableConcept">
 <a name="expansion"> </a>
 <h2>Расширение набора значений<!-- Value Set Expansion --></h2>
 <p>
-A value set can be "expanded", where the definition of the value set is 
+Набор значений может быть "расширен", при этом определение этого набора значений используется для создания простой коллекции кодов, подходящих для использования при вводе данных или валидации. Это особенно полезно, когда набор значений включает всех потомков кода или набор кодов по фильтру.<!-- A value set can be "expanded", where the definition of the value set is 
 used to create a simple collection of codes suitable for use for data 
 entry or validation. This is most useful when a value set includes 
-all the children of a code or a set of codes by filter.
+all the children of a code or a set of codes by filter. -->
 </p>
 <p>
-A resource that represents a value set expansion includes the same
+Ресурс, который представляет расширение набора значений, включает 
+такие же идентификационные данные, что и определение этого набора значений,
+ и МОЖЕТ включать определение этого набора значений (элементы <i>define</i> и <i>compose</i>). Кроме того, у него есть элемент <i>expansion</i>, который содержит
+ перечень кодов, которые составляют расширение набора значений. Если это
+ иерархическое расширение (коды содержат другие концепты), нет никакой скрытой логической взаимосвязи между ними; это руководство для помощи пользователям в навигации по выбору кодов, которые могут относиться к логическим определениям кодов или концептов.
+<!-- A resource that represents a value set expansion includes the same
 identification details as the definition of the value set, and MAY
 include the definition of the value set (<i>define</i> and <i>compose</i>
 elements). In addition it has a <i>expansion</i> element which contains
@@ -182,35 +188,39 @@ the list of codes that constitute the value set expansion. If the
 expansion is heirarchical (codes contain other concepts), there 
 is no implication about the logical relationship between them; this 
 is guidance for helping human user navigate the choice of codes that 
-may or may not relate to the logical definitions of the codes or concepts.
+may or may not relate to the logical definitions of the codes or concepts. -->
 </p>
 <p>
-In general, the following process should be followed when 
-expanding a value set:
+В общем, при расширении набора значений следует придерживаться следующего алгоритма:
+<!-- In general, the following process should be followed when 
+expanding a value set: -->
 </p>
 <ul>
- <li>for each <i>compose.import</i>, find the referenced value set, expand that, and add it to the result set</li>
- <li>for each <i>compose.include</i>, identify the correct version of the code system, and then:
+ <li>для каждого <i>compose.import</i> найти набор значений, на который он ссылается, расширить его и добавить его в итоговый набор<!-- for each <i>compose.import</i>, find the referenced value set, expand that, and add it to the result set --></li>
+ <li>для каждого <i>compose.include</i> установить корректную версию кодовой системы, затем:<!-- for each <i>compose.include</i>, identify the correct version of the code system, and then: -->
   <ul>
-   <li>if there is no codes or filters, add every code in the code system to the result set</li>
-   <li>if codes are listed, add them to the result set</li>
-   <li>if any filters are present, process them in order (as explained above), and add the intersection of their results to the result set</li>
+   <li>если в ней нет кодов или фильтров, добавьте каждый код из кодовой системы в итоговый набор<!-- if there is no codes or filters, add every code in the code system to the result set --></li>
+   <li>если перечислены коды, добавьте их в итоговый набор<!-- if codes are listed, add them to the result set --></li>
+   <li>если есть фильтры, обработайте их в порядке (как описано выше) и добавьте пересечение их результатов к итоговому набору<!-- if any filters are present, process them in order (as explained above), and add the intersection of their results to the result set --></li>
   </ul>
  </li>
- <li>for each <i>compose.exclude</i>, follow the same process as for <i>compose.include</i>, but remove any codes from the result set, instead of adding them</li>
- <li>add any codes in the <i>define</i> to the result set</li>
+ <li>для каждого <i>compose.exclude</i> следуйте тому же самому алгоритму, что и для <i>compose.include</i>, но вместо добавления удалите коды из итогового набора<!-- for each <i>compose.exclude</i>, follow the same process as for <i>compose.include</i>, but remove any codes from the result set, instead of adding them --></li>
+ <li>добавьте коды из <i>define</i> в итоговый набор<!-- add any codes in the <i>define</i> to the result set --></li>
 </ul>
 <p>
-The "result set" is then represented in <i>expansion</i>. Note that the expansion structure is inherently ordered, and 
+"Итоговый набор" после этого будет представлен в <i>расширении</i>. Обратите внимание, что структура расширения по своей природе упорядочена, а также 
+обеспечивает поддержку иерархического дерева элементов. Данная спецификация не фиксирует значение использования ни первого, ни второго, и описанный концептуальный подход не следует понимать как запрещение других подходов к реализации в этом отношении. Для запроса сервера на выполнение этого расширения используется <a href="valueset-operations.html">defined operation</a>.
+<!-- The "result set" is then represented in <i>expansion</i>. Note that the expansion structure is inherently ordered, and 
 also provides support for a hierarchical tree of items. This specification does not fix the meaning of use of either
 of these, and the conceptual approach described should not be understood to prohibit any implementation approach in
-these regards. There is a <a href="valueset-operations.html">defined operation</a> to ask a server to perform this expansion.
+these regards. There is a <a href="valueset-operations.html">defined operation</a> to ask a server to perform this expansion. -->
 </p>
 <p>
-An expansion may include entries in the expansion that only serve an arbitrary grouping purpose, to make it easier
+Расширение может включать записи в расширение, которое служить только в целях произвольной группировки, чтобы упростить для человека использование списка. Такие элементы не имеют системы и кода и должны быть помечены как абстрактные. Обратите внимание, что определение и составление набора значений не предлагают поддержки в определении этого, но это не исключает серверы от использования расширений или других сообщений для внесения таких групп в особенности реализации. 
+<!-- An expansion may include entries in the expansion that only serve an arbitrary grouping purpose, to make it easier
 for a human to use the list. These entries have no system or code, and must be marked as abstract. Note that the 
 value set define and compose offer no support for defining these, but this does not exclude servers from using
-extensions or other knowledge to introduce such groups as an implementation feature. 
+extensions or other knowledge to introduce such groups as an implementation feature. --> 
 </p>
 
 
