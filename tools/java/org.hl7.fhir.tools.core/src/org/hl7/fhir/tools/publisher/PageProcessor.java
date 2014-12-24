@@ -3562,13 +3562,13 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h2>Search Parameters</h2>\r\n");
+      b.append("<h2>Параметры поиска</h2>\r\n");
       if (resource.getName().equals("Query"))
-        b.append("<p>Search parameters for this resource. The <a href=\"#all\">common parameters</a> also apply.</p>\r\n");
+        b.append("<p>Параметры поиска для этого ресурса. Также применяются <a href=\"#all\">общие параметры</a>.</p>\r\n");
       else
-        b.append("<p>Search parameters for this resource. The <a href=\"search.html#all\">common parameters</a> also apply. See <a href=\"search.html\">Searching</a> for more information about searching in REST, messaging, and services.</p>\r\n");
+        b.append("<p>Параметры поиска для этого ресурса. Также применяются <a href=\"search.html#all\">общие параметры</a>. См. <a href=\"search.html\">Поиск</a> для более подробной информации о поиске в REST, обмене сообщениями и в сервисах.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>\r\n");
+      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       names.addAll(resource.getSearchParams().keySet());
       Collections.sort(names);
@@ -3607,10 +3607,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h2>Search Parameters</h2>\r\n");       
-      b.append("<p>Search parameters defined by this structure. See <a href=\"search.html\">Searching</a> for more information about searching in REST, messaging, and services.</p>\r\n");
+      b.append("<h2>Параметры поиска</h2>\r\n");       
+      b.append("<p>Параметры поиска, определенные этой структурой. См. <a href=\"search.html\">Поиск</a> для более подробной информации о поиске в REST, обмене сообщениями и в сервисах.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>\r\n");
+      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       for (SearchParameter t : pack.getSearchParameters())
         names.add(t.getName());
@@ -3652,7 +3652,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String produceProfiles(ResourceDefn resource) {
     StringBuilder s = new StringBuilder();
     if (resource.getConformancePackages().size() == 0) {
-      s.append("<tr><td colspan=\"2\">No Profiles defined for this resource</td></tr>");
+      s.append("<tr><td colspan=\"2\">Для этого ресурса нет профилей</td></tr>");
     } else { 
       for (ConformancePackage ap: resource.getConformancePackages()) {
 //        if (ap.getProfiles().size() + ap.getExtensions().size() + ap.getExamples().size() + ap.getValuesets().size() > 0) {

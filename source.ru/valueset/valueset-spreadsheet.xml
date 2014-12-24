@@ -1765,7 +1765,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Formal Definition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Формализованное определение<!-- Formal Definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Формализованное определение концепта. Формализованные определения не являются обязательными, однако настоятельно рекомендуются, так как без них с концептом не ассоциируется никакое формальное значение<!-- The formal definition of the concept. Formal definitions are not required, because of the prevalence of legacy systems without them, but they are highly recommended, as without them there is no formal meaning associated with the concept --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2360,7 +2360,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A property defined by the code system </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Свойство, заданной кодовой системой<!-- A property defined by the code system --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, идентифицирующий свойство, определенное в кодовой системе<!-- A code that identifies a property defined in the code system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4753,70 +4753,70 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">ValueSet.identifier</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The identifier of the value set</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Идентификатор набора значений<!-- The identifier of the value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet.version</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The version identifier of the value set</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор версии этого набора значений<!-- The version identifier of the value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">name</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet.name</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The name of the value set</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Название набора значений<!-- The name of the value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">publisher</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet.publisher</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Name of the publisher of the value set</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Имя владельца этого набора значений<!-- Name of the publisher of the value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet.description</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search in the description of the value set</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по описанию набора значений<!-- Text search in the description of the value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The status of the value set</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Статус этого набора значений<!-- The status of the value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet.date</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The value set publication date</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Дата публикации набора значений<!-- The value set publication date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">system</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet.define.system</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The system for any codes defined by this value set</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Система для всех кодов, определенных этим набором значений<!-- The system for any codes defined by this value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet.define.concept.code</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A code defined in the value set</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Код, определенный в этом наборе значений<!-- A code defined in the value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet.compose.include.system</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A code system included or excluded in the value set or an imported value set</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Кодовая система, включенная или исключенная из этого набора значений, или импортированный набор значений<!-- A code system included or excluded in the value set or an imported value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!restricts</Data></Cell>
