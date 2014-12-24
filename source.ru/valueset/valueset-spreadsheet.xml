@@ -5114,11 +5114,11 @@
     <Cell ss:StyleID="s114"><Data ss:Type="String">operation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">Value Set Expansion</Data><NamedCell
+    <Cell ss:StyleID="s114"><Data ss:Type="String">Расширение набора значений<!-- Value Set Expansion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">The definition of a value set is used to create a simple collection of codes suitable for use for data entry or validation. &#10;&#10;If the operation is not called at the instance level, one of the in parameters identifier or valueset must be provided.&#10;&#10;An expanded value set will be returned, or an OperationOutcome with an error message</Data><NamedCell
+    <Cell ss:StyleID="s128"><Data ss:Type="String">Определение набора значений используется для создания простой коллекции кодов, подходящих к использованию при вводе данных или валидации. &#10;&#10;Если эта операция не вызывается на уровне экземпляра, необходимо указывать один из входных параметров identifier либо valueset.&#10;&#10;Будет возвращен расширенный набор значений или OperationOutcome с сообщением об ошибке<!-- The definition of a value set is used to create a simple collection of codes suitable for use for data entry or validation. &#10;&#10;If the operation is not called at the instance level, one of the in parameters identifier or valueset must be provided.&#10;&#10;An expanded value set will be returned, or an OperationOutcome with an error message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">The value set expansion returned by this query should be treated as a transient result that will change over time (whether it does or not depends on how the value set is specified), so applications should repeat the operation each time the value set is used. &#10;&#10;Different servers may return different results from expanding a value set for the following reasons:&#10;&#10;* The underlying code systems are different (e.g. different versions, possibly with different defined behaviour)&#10;* The server optimises filter includes differently, such as sorting by code frequency&#10;* Servers introduce arbitrary groups to assist a user to navigate the lists based either on extensions in the definition, or additional knowledge available to the server</Data><NamedCell
+    <Cell ss:StyleID="s129"><Data ss:Type="String">Расширение набора значений, возвращаемое этим запросом, следует обрабатывать как переходный результат, который будет изменяться со временем (зависит он или нет от того, каким образом задан этот набор значений), поэтому приложениям следует повторять эту операцию каждый раз, когда этот набор значений используется. &#10;&#10;Разные серверы могут возвращать различные результаты расширения набора значений по следующим причинам:&#10;&#10;* Лежащие в основе кодовые системы различаются (например различные версии, возможно с разным заданным поведением)&#10;* Сервер оптимизирует включения по фильтру по-другому, например сортировка по частоте кода&#10;* Серверы вводят произвольные группы для содействия пользователю в перемещении по спискам, основанные либо на расширениях в определениях, либо на дополнительных знаниях, доступных серверу <!-- The value set expansion returned by this query should be treated as a transient result that will change over time (whether it does or not depends on how the value set is specified), so applications should repeat the operation each time the value set is used. &#10;&#10;Different servers may return different results from expanding a value set for the following reasons:&#10;&#10;* The underlying code systems are different (e.g. different versions, possibly with different defined behaviour)&#10;* The server optimises filter includes differently, such as sorting by code frequency&#10;* Servers introduce arbitrary groups to assist a user to navigate the lists based either on extensions in the definition, or additional knowledge available to the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75.024000000000001">
@@ -5129,7 +5129,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">A logical value set identifier (i.e. ValueSet.identifier). The server must know the value set (e.g. it is defined explicitly in the server's valuesets, or it is defined implicitly by some code system known to the server</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Логический идентификатор набора значений (т. е. ValueSet.identifier). Сервер должен знать этот набор значений (например он определен явно в наборах значений сервера или определен неявно некоторой кодовой системой, известной серверу <!-- A logical value set identifier (i.e. ValueSet.identifier). The server must know the value set (e.g. it is defined explicitly in the server's valuesets, or it is defined implicitly by some code system known to the server --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45.072000000000003">
@@ -5140,7 +5140,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The value set is provided directly as part of the request. Servers may choose not to accept value sets in this fashion</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Набор значений указывается непосредственно как часть запроса. Серверы могут не принимать наборы значений, [отправленные] таким образом<!-- The value set is provided directly as part of the request. Servers may choose not to accept value sets in this fashion --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="29.951999999999998">
@@ -5183,7 +5183,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">operation</Data></Cell>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Concept Look Up</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Поиск концепта<!-- Concept Look Up --></Data></Cell>
     <Cell ss:StyleID="s131"><Data ss:Type="String">С учетом кода/системы либо кодинга получить дополнительные сведения о концепте<!-- Given a code/system, or a Coding, get additional details about the concept --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
@@ -5217,7 +5217,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The version of the system, if one was provided in the source data</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Версия системы, если она была указана в данных источника<!-- The version of the system, if one was provided in the source data --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5228,7 +5228,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">A coding to look up</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Концепт для поиска<!-- A coding to look up --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75.024000000000001">
@@ -5239,7 +5239,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The date for which the information should be returned. Normally, this is the current conditions (which is the default value) but under some circumstances, systems need to acccess this information as it would have been in the past. A typical example of this would be where code selection is constrained to the set of codes that were available when the patient was treated, not when the record is being edited. Note that which date is appropriate is a matter for implementation policy.</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Дата, когда эта информация должна быть возвращена. Обычно это текущая дата (значение по умолчанию), но в некоторых обстоятельствах системам необходим доступ к информации, как будто это происходит в прошлом. Типичный пример этого, когда выбор ограничен набором кодов, которые были доступны, когда пациент проходил лечение, а не когда происходит редактирование этой записи. Обратите внимание, что вопрос о том, какая дата является подходящей, остается на усмотрение реализации. <!-- The date for which the information should be returned. Normally, this is the current conditions (which is the default value) but under some circumstances, systems need to acccess this information as it would have been in the past. A typical example of this would be where code selection is constrained to the set of codes that were available when the patient was treated, not when the record is being edited. Note that which date is appropriate is a matter for implementation policy. --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5305,7 +5305,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The language this designation is defined for </Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык, для которого предназначено это обозначение<!-- The language this designation is defined for --> </Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5316,7 +5316,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that details how this designation would be used</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, который описывает, каким образом будет использоваться это обозначение<!-- A code that details how this designation would be used --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5327,7 +5327,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The text value for this designation </Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текстовое значение для этого обозначения<!-- The text value for this designation --> </Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5337,8 +5337,8 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">operation</Data></Cell>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Value Set based Validation</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Validate that a coded value is in the set of codes allowed by a value set. &#10;&#10;If the operation is not called at the instance level, one of the in parameters identifier or valueset must be provided.&#10;&#10;One (and only one) of the in parameters (code, coding, codeableConcept) must be provided. || The outcome is an OperationOutcome with hints, warnings, or errors. </Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Валидация на основе набора значений<!-- Value Set based Validation --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Проверяет, что кодированное значение находится в наборе кодов, разрешенным некоторым набором значений. &#10;&#10;Если эта операция не вызывается на уровне экземпляра, необходимо указывать один из входных параметров identifier либо valueset.&#10;&#10;Один (и только один) из входных параметров (code, coding, codeableConcept) должен быть указан. || Результатом будет OperationOutcome с подсказками, предупреждениями или ошибками.<!-- Validate that a coded value is in the set of codes allowed by a value set. &#10;&#10;If the operation is not called at the instance level, one of the in parameters identifier or valueset must be provided.&#10;&#10;One (and only one) of the in parameters (code, coding, codeableConcept) must be provided. || The outcome is an OperationOutcome with hints, warnings, or errors.  --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75.024000000000001">
@@ -5349,7 +5349,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">A logical value set identifier (i.e. ValueSet.identifier). The server must know the value set (e.g. it is defined explicitly in the server's valuesets, or it is defined implicitly by some code system known to the server</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Логический идентификатор набора значений (т. е. ValueSet.identifier). Сервер должен знать этот набор значений (например он определен явно в наборах значений сервера или определен неявно некоторой кодовой системой, известной серверу<!-- A logical value set identifier (i.e. ValueSet.identifier). The server must know the value set (e.g. it is defined explicitly in the server's valuesets, or it is defined implicitly by some code system known to the server --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45.072000000000003">
@@ -5360,7 +5360,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">ValueSet</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The value set is provided directly as part of the request. Servers may choose not to accept value sets in this fashion</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Набор значений указывается непосредственно как часть запроса. Серверы могут не принимать наборы значений, [отправленные] таким образом<!-- The value set is provided directly as part of the request. Servers may choose not to accept value sets in this fashion --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="29.951999999999998">
@@ -5371,7 +5371,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The code that is to be validated. If a code is provided, a system must be provided</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Код, который необходимо провалидировать. Если код указан, также необходимо указать и систему<!-- The code that is to be validated. If a code is provided, a system must be provided --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5382,7 +5382,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The system for the code that is to be validated</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Система для кода, который необходимо провалидировать<!-- The system for the code that is to be validated --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="29.951999999999998">
@@ -5393,7 +5393,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The version of the system, if one was provided in the source data</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Версия системы, если она была указана в данных источника<!-- The version of the system, if one was provided in the source data --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5404,7 +5404,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The display associated with the code, if provided. If a display is provided a code must be provided. If no display is provided, the server cannot validate the display value, but may choose to return athe recommended display name in an extension in the outcome</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Значение для отображения, ассоциированное с этим кодом, если указано. Если значение для отображения указано, то код также должен быть указан. Если значение для отображения не указано, сервер не может валидировать значение display, но может вернуть рекомендуемое имя для отображения в расширении в результатах<!-- The display associated with the code, if provided. If a display is provided a code must be provided. If no display is provided, the server cannot validate the display value, but may choose to return athe recommended display name in an extension in the outcome --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5415,7 +5415,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">A coding to validate</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Кодинг, который необходимо валидировать<!-- A coding to validate --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60.047999999999995">
@@ -5426,7 +5426,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">A full codeableConcept to validate. The server returns true if one of the coding values is in the value set, and may also validate that the codings are not in conflict with each other</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Полный codeableConcept для валидации. Сервер возвращает истину, если один из значений кодингов входит в набор значений, и может также валидировать, что кодинги не конфликтуют друг с другом<!-- A full codeableConcept to validate. The server returns true if one of the coding values is in the value set, and may also validate that the codings are not in conflict with each other --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75.024000000000001">
@@ -5437,7 +5437,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The date for which the validation should be checked. Normally, this is the current conditions (which is the default values) but under some circumstances, systems need to validate that a correct code was used at some point in the past. A typical example of this would be where code selection is constrained to the set of codes that were available when the patient was treated, not when the record is being edited. Note that which date is appropriate is a matter for implementation policy.</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Дата, относительно которой следует выполнить эту проверку. Обычно это текущая дата (является значением по умолчанию), но при некоторых обстоятельствах системам необходимо проверить, что корректный код был использован в некоторый момент времени в прошлом. Типичный пример - ограничение выбора набором кодов, которые были доступны в то время, когда пациент проходил лечение, а не сейчас, когда эта запись редактируется. Обратите внимание, что вопрос о том, какая дата является подходящей, относится к политике реализации.<!-- The date for which the validation should be checked. Normally, this is the current conditions (which is the default values) but under some circumstances, systems need to validate that a correct code was used at some point in the past. A typical example of this would be where code selection is constrained to the set of codes that were available when the patient was treated, not when the record is being edited. Note that which date is appropriate is a matter for implementation policy. --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75.024000000000001">
@@ -5448,7 +5448,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">if true, then an abstract code is allowed to be used in the context of the code that is being validated. Typically, abstract codes are allowed to be used in value set specifications (e.g. any code that is subsumed by an abstract code). If false (which is the default value), then only concrete codes as defined by the value set are allowed</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">если истинно, то асбтрактный код разрешается использовать в контексте кода, который валидируется. Обычно абстрактные коды разрешается использовать в спецификациях наборов значений (например любой код, который входит в абстрактный код). Если ложно (это значение по умолчанию), то только конкретные коды, заданные этим набором значений, разрешены<!-- if true, then an abstract code is allowed to be used in the context of the code that is being validated. Typically, abstract codes are allowed to be used in value set specifications (e.g. any code that is subsumed by an abstract code). If false (which is the default value), then only concrete codes as defined by the value set are allowed --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5459,7 +5459,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">True if the concept details supplied are valid</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Истинно, если предоставленные детали концепта валидны<!-- True if the concept details supplied are valid --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45.072000000000003">
@@ -5470,7 +5470,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Error details, if result = false. If this is provided when result = true, the message carries hints and wanrings</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Описание ошибки, если result = false. Если это указано, когда result = true, то сообщение передает подсказки и предупреждения.<!-- Error details, if result = false. If this is provided when result = true, the message carries hints and wanrings --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="29.951999999999998">
@@ -5481,7 +5481,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">A valid display for the concept if the system wishes to display this to a user</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Валидное значение для отображения концепта, если система хочет показать это пользователю<!-- A valid display for the concept if the system wishes to display this to a user --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5491,8 +5491,8 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">operation</Data></Cell>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Batch Mode Validation</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Validate a set of concepts against value sets in a single oeration&#10;&#10;Typically, this would be called when a validating a resource or document that contains many codes, to reduce network latency events</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Пакетный режим проверки<!-- Batch Mode Validation --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Проверяет набор концептов против наборов значений в рамках одной операции&#10;&#10;Обычно вызывается при проверке ресурса или документа, который содержит много кодов, для уменьшения случаев сетевой задержки<!-- Validate a set of concepts against value sets in a single oeration&#10;&#10;Typically, this would be called when a validating a resource or document that contains many codes, to reduce network latency events --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5503,7 +5503,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">Tuple</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">An item to be validated</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Элемент, который необходимо проверить<!-- An item to be validated --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5514,7 +5514,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">A codeable concept to be validated. If the source is a coding, or a code/system pair, wrap it in a CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Кодируемый концепт, который необходимо проверить. Если источником является кодинг или пара код/система, оберните его в кодируемый концепт.<!-- A codeable concept to be validated. If the source is a coding, or a code/system pair, wrap it in a CodeableConcept --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5525,7 +5525,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The value set to validate the concept against. This is a logical value set identifier (i.e. ValueSet.identifier). The server must know the value set (e.g. it is defined explicitly in the server's valuesets, or it is defined implicitly by some code system known to the server</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Набор значений, против которого необходимо проверить концепт. Это логический идентификатор набора значений (т. е. ValueSet.identifier). Сервер должен знать этот набор значений (например он определен явно в наборах значений сервера или определен неявно некоторой кодовой системой, известной серверу<!-- The value set to validate the concept against. This is a logical value set identifier (i.e. ValueSet.identifier). The server must know the value set (e.g. it is defined explicitly in the server's valuesets, or it is defined implicitly by some code system known to the server --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75.024000000000001">
@@ -5536,7 +5536,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The date for which the validation should be checked. Normally, this is the current conditions (which is the default values) but under some circumstances, systems need to validate that a correct code was used at some point in the past. A typical example of this would be where code selection is constrained to the set of codes that were available when the patient was treated, not when the record is being edited. Note that which date is appropriate is a matter for implementation policy.</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Дата, относительно которой следует выполнить эту проверку. Обычно это текущая дата (является значением по умолчанию), но при некоторых обстоятельствах системам необходимо проверить, что корректный код был использован в некоторый момент времени в прошлом. Типичный пример - ограничение выбора набором кодов, которые были доступны в то время, когда пациент проходил лечение, а не сейчас, когда эта запись редактируется. Обратите внимание, что вопрос о том, какая дата является подходящей, относится к политике реализации.<!-- The date for which the validation should be checked. Normally, this is the current conditions (which is the default values) but under some circumstances, systems need to validate that a correct code was used at some point in the past. A typical example of this would be where code selection is constrained to the set of codes that were available when the patient was treated, not when the record is being edited. Note that which date is appropriate is a matter for implementation policy. --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5547,7 +5547,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">Tuple</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The outcome of validating an item. There must be an entry for every item in the same order</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Результат проверки элемента. Должен содержать запись для каждого элемента в том же порядке<!-- The outcome of validating an item. There must be an entry for every item in the same order --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5558,7 +5558,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">True if the concept details supplied are valid</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Истинно, если предоставленные детали концепта валидны<!-- True if the concept details supplied are valid --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5569,7 +5569,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Error details, if result = false. If this is provided when result = true, the message carries hints and wanrings</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Описание ошибки, если result = false. Если это указано, когда result = true, то сообщение передает подсказки и предупреждения.<!-- Error details, if result = false. If this is provided when result = true, the message carries hints and wanrings --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5580,7 +5580,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">A valid display for the concept if the system wishes to display this to a user</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Валидное значение для отображения концепта, если система хочет показать это пользователю<!-- A valid display for the concept if the system wishes to display this to a user --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:Index="48" ss:AutoFitHeight="0">
