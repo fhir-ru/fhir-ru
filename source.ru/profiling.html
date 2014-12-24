@@ -573,33 +573,37 @@ Profiles can bind to these value sets instead of the ones defined in the base
 specification, following these rules: -->
 </p>
 <table class="grid">
- <tr> <td><b>Binding Type in base specification</b></td> <td><b>Matching Profile Properties</b></td> <td><b>Customization Rules in Profiles</b></td> </tr>
+ <tr> <td><b>Тип привязки в базовой спецификации<!-- Binding Type in base specification --></b></td> <td><b>Соответствующие свойства профиля<!-- Matching Profile Properties --></b></td> <td><b>Правила кастомизации в профилях<!-- Customization Rules in Profiles --></b></td> </tr>
 
- <tr> <td>Complete</td> <td>conformance = required, extensible = false</td> <td>The value set can only contain codes contained in the value set specified by the FHIR specification</td> </tr>
- <tr> <td>Incomplete</td> <td>conformance = preferred and extensible = true</td> <td>The value set can contain codes not found in the base value set. These additional codes SHOULD not have the same meaning as existing codes in the base value set</td> </tr>
- <tr> <td>Example</td> <td>conformance = example</td> <td>The value set can contain whatever is appropriate for local use</td> </tr> 
+ <tr> <td>Complete</td> <td>conformance = required, extensible = false</td> <td>Этот набор значений может содержать только коды, содержащиеся в наборе значений, определенном спецификацией FHIR<!-- The value set can only contain codes contained in the value set specified by the FHIR specification --></td> </tr>
+ <tr> <td>Incomplete</td> <td>conformance = preferred and extensible = true</td> <td>Этот набор значений может содержать коды, не найденные в базовом наборе значений. Этим дополнительным кодам НЕ СЛЕДУЕТ иметь такой же смысл, как у существующих кодов в базовом наборе значений<!-- The value set can contain codes not found in the base value set. These additional codes SHOULD not have the same meaning as existing codes in the base value set< -->/td> </tr>
+ <tr> <td>Example</td> <td>conformance = example</td> <td>Этот набор значений может содержать все, что допустимо для локального использования<!-- The value set can contain whatever is appropriate for local use --></td> </tr> 
 </table> 
 
 <a name="mustSupport"> </a>
 <h3>Must Support</h3>
 <p>
-One property that can be declared on profiles that is not declared on the resource or data type definitions is "Must Support".
+Одно свойство, которое может быть объявлено в профилях, которое не объявляется в определениях ресурса или типа данных, это (должен быть поддержан) "Must Support".
+Это логическое свойство. Если истинно, значит системы, заявляющие о соответствии данному профилю, должны "поддерживать" этот элемент.
+Это отличается от кардинального числа. Возможно иметь элемент с минимальным кардинальным числом "0" и при этом ожидать от систем поддержки этого элемента.
+<!-- One property that can be declared on profiles that is not declared on the resource or data type definitions is "Must Support".
 This is a boolean property.  If true, it means that systems claiming to conform to a given profile must "support" the element.
 This is distinct from cardinality.  It is possible to have an element with a minimum cardinality of "0", but still expect systems
-to support the element.
+to support the element. -->
 </p>
 <p>
-The meaning of "support" is left deliberately ambiguous.  Examples might include:
+Смысл слова ("поддержан") "support" намеренно оставлен неоднозначным. Примеры могут включать:
+<!-- The meaning of "support" is left deliberately ambiguous.  Examples might include: -->
 </p>
 <ul>
-  <li>The system must be able to store and retrieve the element</li>
-  <li>The system must display the element to the user and/or allow the user to capture the element via the UI</li>
-  <li>The element must appear in an output report</li>
-  <li>The element must be taken into account when performing decision support, calculations or other processing</li>
-  <li>etc.</li>
+  <li>Система должна быть способна хранить и извлекать элемент<!-- The system must be able to store and retrieve the element --></li>
+  <li>Система должна показывать элемент пользователю и/или позволять пользователю вводить элемент с помощью пользовательского интерфейса<!-- The system must display the element to the user and/or allow the user to capture the element via the UI --></li>
+  <li>Элемент должен появиться в выходном отчете<!-- The element must appear in an output report --></li>
+  <li>Элемент должен быть принят во внимание при совершении поддержки принятия решений, вычислений или другой обработки<!-- The element must be taken into account when performing decision support, calculations or other processing --></li>
+  <li>другое<!-- etc. --></li>
 </ul>
 <p>
-Конкретный смысл "Must Support" для целей конкретного профиля, ДОЛЖНЫ быть описаны в Profile.description или в другой документации для
+Конкретный смысл "Must Support" для целей конкретного профиля ДОЛЖЕН быть описан в Profile.description или в другой документации для
 инструкции по реализации, частью которой является профиль.
 <!-- The specific meaning of "Must Support" for the purposes of a particular profile SHALL be described in the Profile.description or in other documentation for the
 implementation guide the profile is part of. -->
