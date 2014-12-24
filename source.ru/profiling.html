@@ -255,7 +255,7 @@ systems should always have the snapshot view propulated. -->
 </p>
 
 <a name="slicing"> </a>
-<h3>Slicing</h3>
+<h3>Нарезка (Slicing)</h3>
 <p>
 Одна из распространенных функций профилей - это взять элемент, который может появиться больше одного раза (например список) и разбить этот список на последовательность подсписков, каждый со своими ограничениями на элементы в подсписке с ассоциированным дополнительным значением. В FHIR эта операция называется "нарезка" ("Slicing") списка. Общепринято "нарезать" список на подсписки, содержащие по одному элементу, эффективно накладывая ограничения на каждый элемент в списке.
 <!-- One common feature of profiles is to take an element that may occur more than once (e.g. in a list), --> <!-- What about slicing type choices? -->
@@ -269,29 +269,32 @@ additional meaning. In FHIR, this operation is known as "Slicing" a list. It is 
 </p>
 <img alt="Slicing diagram" src="slicing.png" width="461" height="353"/>
 <p>
-In this example, the base resource defines the "related" element which refers to 
+В этом примере базовый ресурс определяет элемент "related", который относится к другому Observation, который связан с основным Observation и который может появляться многократно. Каждый "related" элемент имеет элемент "type", обозначающий природу этого взаимоотношения (компонент, замещение, производное и т.п.), и элемент "target", указывающий непосредственно на observation. На этой диаграмме для удобства содержимое элемента "target" показано во внутреннем прямоугольнике, вместо того чтобы показать целевую ссылку явно. Также, чтобы избежать лишнего загромождения в этом упрощенном примере, атрибут "name" в Observation показан просто как код, а не полный CodeableConcept.
+<!-- In this example, the base resource defines the "related" element which refers to 
 another Observation which is related to the main Observation and which may occur
 multiple times. Each "related" element has a "type" element specifying the nature 
 of the relationship (component, replacement, derivation etc.), and a "target" element
 which identifies the actual observation. In this diagram, for convenience, the contents 
 of the target element are shown in the inner box instead of the showing the target 
 reference explicitly. Also, to avoid adding clutter to this simplified example, 
-the "name" attribute of Observation is shown as just a code not a full CodeableConcept.
+the "name" attribute of Observation is shown as just a code not a full CodeableConcept. -->
 </p>
 <p>
-The profile for Blood Pressure constrains the related element list into 
+Профиль для Blood Pressure ограничивает связанный список элементов на 2 подсписка из одного элемента: элемент systolic и элемент diastolic. Каждый из этих элементов имеет фиксированное значение для типа элемента, и профиль также закрепляет содержимое целевого observation, указывая постоянный LOINC-код для элемента name и устанавливая для обоих значение типа Quantity. Это процесс также называется "нарезка" (slicing), а элементы Systolic и Diastolic - "срезы" (slices).
+<!-- The profile for Blood Pressure constrains the related element list into 
 2 sublists of one element: a systolic element, and a diastolic element. Each of these
 elements has a fixed value for the type element, and the profile also fixes the 
 contents of the target observation as well, specifying a fixed LOINC code for
 the name and specifying that both have a value of type Quantity. This process
-is known as "slicing" and the Systolic and Diastolic elements are called "slices".
+is known as "slicing" and the Systolic and Diastolic elements are called "slices". -->
 </p>
 
 <p>
-Note that when the resource is exchanged, the wire format that is exchanged is not 
+Обратите внимание, что при обмене ресурсом, проводной формат обмена не изменяется профилем. Это означает, что имена элементов, определенные в профиле (в этом примере "systolic")  никогда не меняются. Экземпляр ресурса выглядит следующим образом:
+<!-- Note that when the resource is exchanged, the wire format that is exchanged is not 
 altered by the profile. This means that the item profile names defined in the 
 profile ("systolic", etc. in this example) are never exchanged. A resource 
-instance looks like this:
+instance looks like this: -->
 </p>
 <pre>
  &lt;Observation&gt;
@@ -307,71 +310,89 @@ instance looks like this:
  &lt;/Observation&gt;
 </pre>
 <p>
-In order to determine that the first related item corresponds to "Systolic" in 
+Для того чтобы определить, что первый связанный элемент соответствует "Systolic" в профиле необходимо установить, каким дополнительным ограничениям для подсписка этот элемент соответствует, система проверяет значения элементов - в этом случае элемент name в ресурсе, к которому относится эта ссылка. Этот элемент называется "дискриминатор" (классифицирующая функция, “discriminator”).
+<!-- In order to determine that the first related item corresponds to "Systolic" in 
 the profile  to determine to which additional constraints for a sub-list the item conforms, 
 the system checks the values of the elements - in this case, the name element
-in the resource that target refers to. This element is called the “discriminator”.
+in the resource that target refers to. This element is called the “discriminator”. -->
 </p>
 
 <a name="discriminator"> </a>
-<h3>Discriminator</h3>
+<h3>Дискриминатор (Discriminator)</h3>
 <p>
-In the general case, systems processing resources using a profile
+В общем случае, системы обработки ресурсов, использующих профиль, который разбивает список, могут установить, какому срезу профиля соответствует элемент в списке проверкой, соответствует ли его содержимое правилам, указанным для этого среза. 
+<!-- In the general case, systems processing resources using a profile
 that slices a list can determine which profile slice an item in 
 the list by checking whether its content meets the rules specified
-for the slice. 
+for the slice.  -->
 </p>
 <p>
-This requires for a processor to be able to check all the rules
+Это требует от обработчика возможности проверить все правила, применимые к этому срезу и сделать это умозрительно depth-first способом. Ничто из этого не подходит для операционной системы, в частности для генерируемого кода. По этой причине срез может nominate набор полей, которые ведут себя как "дискриминатор" - они используются для разделения срезов друг от друга.
+<!-- This requires for a processor to be able to check all the rules
 applied in the slice and to do so speculatively in a depth-first
 fashion. Neither of these is appropriate for an operational system,
 and particularly not for generated code. For this reason, a slice 
 can nominate a set of fields that act as a "discriminator" - they
-are used to tell the slices apart. 
+are used to tell the slices apart.  -->
 </p>
 <p>
-When a discriminator is provided, the composite of the values of 
+Когда есть дискриминатор, композиция значений элементов, обозначенных в этом дискриминаторе, является уникальной и различается для каждого возможного среза, и приложения могут легко определить, какому разрезу соответствует пункт в списке. Предполагается, что это можно будет делать в генерируемом коде.
+<!-- When a discriminator is provided, the composite of the values of 
 the elements nominated in the discriminator is unique and distinct
 for each possible slice and applications can easily determine
 which slice an item in a list corresponds to. The intention is that 
-this can be done in generated code.
+this can be done in generated code. -->
 </p>
 <p>
-When a profile nominates one or more discriminators, it SHALL 
+Когда профиль назначает одного или нескольких дискриминаторов, он ДОЛЖЕН зафиксировать значение элемента для каждого дискриминатора для каждого среза либо, если элемент имеет терминологическую привязку, он ДОЛЖЕН быть связан с полной привязкой с версионной ссылкой на <a href="valueset.html">Value Set</a>, который перечисляет возможные коды в наборе значений.
+Профиль ДОЛЖЕН гарантировать, что не будет частичного совпадения между наборо значений и/или кодов в наборе значений между срезами.
+<!-- When a profile nominates one or more discriminators, it SHALL 
 fix the value of the element for each discriminator for each 
 slice, or if the element has a terminology binding, it SHALL be 
 associated with a complete binding with a version specific <a href="valueset.html">Value Set</a> 
 reference that enumerates the possible codes in the value set.
 The profile SHALL ensure that there is no overlap between the 
-set of values and/or codes in the value sets between slices.
+set of values and/or codes in the value sets between slices. -->
 </p>
 <p>
-It is the composite (combined) values of the discriminators 
+Именно композитные (комбинированные) значения дискриминаторов являются уникальными, а не каждый дискриминатор по отдельности. Например срез списка элементов, которые являются ссылками на другие ресурсы, может назначать поля из различных ресурсов, где каждый ресурс имеет только один из предложенных элементов до тех пор, пока они различаются между срезами.
+<!-- It is the composite (combined) values of the discriminators 
 that are unique, not each discriminator alone. For example,
 a slice on a list of items that are references to other 
 resources could nominate fields from different resources, 
 where each resource only has one of the nominated elements,
-as long as they are distinct across slices. 
+as long as they are distinct across slices.  -->
 </p>
 <p>
-A profile is not required to nominate any discriminator at all 
+Профилю не требуется предлагать дискриминатор вообще для среза, однако профили, которые не указывают дискриминаторы, описывают содержимое, которое очень трудно обрабатывать, поэтому это не поощряется.
+<!-- A profile is not required to nominate any discriminator at all 
 for a slice, but profiles that don't identify discriminators are describing 
 content that is very difficult to process, and so this is 
-discouraged.
+discouraged. -->
 </p>
 <p> 
-Within a profile, a slice is defined using multiple <i>element</i>
+Внутри профиля срез определяется с помощью нескольких записей <i>element</i>, которые имеют общий <i>path</i>, но различные <i>name</i>.
+Эти записи вместе формируют "группу срезов", которая:
+<!-- Within a profile, a slice is defined using multiple <i>element</i>
 entries that share a <i>path</i> but have distinct<i>name</i>s. 
-These entries together form a "slice group" that is:
+These entries together form a "slice group" that is: -->
 </p>
 <ol>
        
-	<li><b>Initiated by a "slicing entry"</b> That is, the first
+	<li><b>Инициируется с помощью "slicing entry"</b> То есть первый 
+		<i>element</i> в группе срезов обязан содержать свойство
+		<i>slicing</i>, которое устанавливает
+		<i>discriminator</i> для всех членов этой группы.  Также он содержит естественное определение элемента, который был разбит<!-- <b>Initiated by a "slicing entry"</b> That is, the first
 		<i>element</i> in a slice group must contain a
 		<i>slicing</i> property that defines the
-		<i>discriminator</i> for all members of the group.  It also contains the unconstrained definition of the element that is sliced</li>
+		<i>discriminator</i> for all members of the group.  It also contains the unconstrained definition of the element that is sliced --></li>
 
-	<li><b>Mutually exclusive</b>. This means that each
+	<li><b>Взаимно исключающий</b>. Это значит, что каждый 
+		<i>element</i> в группе срезов ДОЛЖЕН описывать 
+		различный набор значений для 
+		<i>discriminators</i> группы. Из-за этого условия элемент в экземпляре ресурса <b>instance</b> никогда не будет соответствовать более чем одному
+		<i>element</i> в данной группе срезов. Если дискриминаторы не названы, 
+    СЛЕДУЕТ оставить возможность дифференцировать эти срезы по их свойствам, хотя может это и существенно сложнее будет сделать<!-- <b>Mutually exclusive</b>. This means that each
 		<i>element</i> in a slice group SHALL describe a
 		distinct set of  values for the group's
 		<i>discriminators</i>.  Because of this constraint, an 
@@ -379,9 +400,14 @@ These entries together form a "slice group" that is:
 		than one <i>element</i> in a given slice group. If no discriminators are named, 
     it SHOULD still be possible to differentiate the slices based 
     on their properties, though it may be substantially harder to 
-    do so</li>
+    do so --></li>
 
-	<li><b>Serialized as a group</b>. The entries in a slice
+	<li><b>Сериализованный как группа</b>. Записи в группе срезов должны быть <b>adjacent</b> в сериализованном Profile,
+		<b>либо</b>, если есть какие-либо промежуточные элементы, эти элементы должны быть "совместимы с" этой группой. Конкретно это означает, что любые промежуточные элементы должны иметь
+		<i>path</i>, который начинается с 
+		<i>path</i> группы срезов. Например <i>element</i> с
+		<i>path</i> <i>Observation.name.extension</i>
+		будет совместим с (и, таким образом, не будет "break up") группой срезов, чей путь был <i>Observation.name</i> <!-- <b>Serialized as a group</b>. The entries in a slice
 		group must be <b>adjacent</b> in a serialized Profile,
 		<b>or</b>, if there are any intervening elements, those
 		elements must be "compatible with" the group. Concretely, this
@@ -390,142 +416,161 @@ These entries together form a "slice group" that is:
 		<i>path</i>.  For example, an <i>element</i> with a
 		<i>path</i> of <i>Observation.name.extension</i>
 		would be compatible with (and thus, would not "break up") a
-		slice group whose path was <i>Observation.name</i> </li>
+		slice group whose path was <i>Observation.name</i>  --></li>
 </ol>
 <p>
-The value of the discriminator element is a path name that identifies
+Значение элемента дискриминатор - это название пути, которое идентифицирует потомок элемента с помощью точечной нотации. Для ссылок этот путь плавно перемещается через ссылку и в потомков корневого элемента/объекта ресурса. Для расширений, расширение может уточняться URL-адресом расширений, на которые идет ссылка.
+Есть два специальных имени: @type и @profile. Вот несколько примеров дискриминаторов:
+<!-- The value of the discriminator element is a path name that identifies
 the descendant element using a dotted notation. For references, the path
 transitions smoothly across the reference and into the children of the 
 root element/object of the resource. For extensions, an extension can be
 qualified with the URL of the extensions being referred to.
-There are two special names: @type, and @profile. Here are some example discriminators:
+There are two special names: @type, and @profile. Here are some example discriminators: -->
 </p>
 <table class="grid">
- <tr>  <td><b>Context</b></td> <td><b>Discriminator</b></td> <td><b>Interpretation</b></td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.name</td> <td>Entries are differentiated by the name element on the target resource - probably an observation, which could be determined by other information in the profile</td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.@type</td> <td>Entries are differentiated by the type of the target element that the reference points to</td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.@profile</td> <td>Entries are differentiated by a profile tag on the target of the reference, as specified by a profile (todo: how to do that?)</td> </tr>
- <tr>  <td>List.entry</td> <td>item.extension["http://acme.org/extensions/test"].code</td> <td>Entries are differentiated by the value of the code element in the extension with the nominated URL</td> </tr>
- <tr>  <td>List.entry.extension</td> <td>url</td> <td>Extensions are differentiated by the value of their url property (usually how extensions are sliced)</td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.@type, item.reference.name</td> <td>Extensions are differentiated by the combination of item.reference.name, and, if it has one, the name element. This would be
-   appropriate for where a List might be comprised of a Condition, and set of observations, each differentiated by it's name - the condition has no name, so that is evaluated as a null in the discriminator set</td> </tr>
+ <tr>  <td><b>Контекст</b></td> <td><b>Дискриминатор</b></td> <td><b>Интерпретация</b></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.reference.name</td> <td>Записи различаются элементами name в целевом ресурсе - возможно observation, которое может быть определено по другой информации в профиле<!-- Entries are differentiated by the name element on the target resource - probably an observation, which could be determined by other information in the profile --></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.reference.@type</td> <td>Записи различаются по типу целевого элемента, на который указывает ссылка<!-- Entries are differentiated by the type of the target element that the reference points to --></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.reference.@profile</td> <td>Записи различаются по профильному тегу целевого объекта ссылки, как указано в профиле (TODO: как это сделать?)<!-- Entries are differentiated by a profile tag on the target of the reference, as specified by a profile (todo: how to do that?) --></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.extension["http://acme.org/extensions/test"].code</td> <td>Записи различаются по значению элемента code в расширении с обозначенным URL<!-- Entries are differentiated by the value of the code element in the extension with the nominated URL --></td> </tr>
+ <tr>  <td>List.entry.extension</td> <td>url</td> <td>Расширения различаются по значению их свойства url (обычно как разбиваются расширения)<!-- Extensions are differentiated by the value of their url property (usually how extensions are sliced) --></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.reference.@type, item.reference.name</td> <td>Расширения различаются сочетанием item.reference.name и, если есть, элементом name. Это подойдет тогда, когда List может состоять из Condition, а набор observations, каждое различается по своему имени - condition не имеет имени, так что считается null в этом наборе дискриминаторов<!-- Extensions are differentiated by the combination of item.reference.name, and, if it has one, the name element. This would be
+   appropriate for where a List might be comprised of a Condition, and set of observations, each differentiated by it's name - the condition has no name, so that is evaluated as a null in the discriminator set --></td> </tr>
 </table>
 
 <p>
-See also <a href="profiling-examples.html">examples of slicing and discriminators</a>.
+См. также <a href="profiling-examples.html">примеры срезов и дискриминаторов</a>.
 </p>
 
 <a name="extensions"> </a>
-<h3>Extension Definitions</h3>
+<h3>Определение расширений<!-- Extension Definitions --></h3>
 <p>
-An extension definition defines the url that identifies the extension
+Определение расширения указывает url, который идентифицирует это расширение и который используется для ссылки на определение этого расширения, когда оно используется в ресурсе.
+<!-- An extension definition defines the url that identifies the extension
 and which is used to refers to the extension definition when it is used 
-in a resource.
+in a resource. -->
 </p>
 <p>
-The extension definition also defines the context where the extension can be used (usually
+Определение расширения также устанавливает контекст, в котором это расширение может использоваться (обычно конкретный путь или тип данных) и затем определяет элемент extension с помощью те же данные, используемые для профилирования структурных элементов, входящих в ресурс. Это означает, что одно расширение может быть определено только один раз и использоваться в различных ресурсах и/или типах данных, например потребуется определить расширение для "цвет волос" один раз и потом указать, что его можно использовать и в Patient, и в Practitioner.
+<!-- The extension definition also defines the context where the extension can be used (usually
 a particular path or a data type) and then defines the extension element using the same details used to 
 profile the structural elements that are part of resources. This means that a single extension 
 can be defined once and used on different Resource and/or datatypes, e.g. one would only have to 
-define an extension for “hair color” once, and then specify it can be used on both Patient and Practitioner.
+define an extension for “hair color” once, and then specify it can be used on both Patient and Practitioner. -->
 </p>
 <p>
-For further discussion of defining and using extensions, along with some examples, 
-see <a href="extensibility.html">Extensibility</a>. 
+Для дальнейшего обсуждения определения и использования расширений наряду с некоторыми примерами, см. <a href="extensibility.html">Extensibility</a>. 
+<!-- For further discussion of defining and using extensions, along with some examples, 
+see <a href="extensibility.html">Extensibility</a>.  -->
 </p>
 
-<h4>Using Extensions in Profiles</h4>
+<h4>Использование расширений в профилях<!-- Using Extensions in Profiles --></h4>
 <p>
-Once defined, an extension can be used in an instance of a resource 
+Однажды определенное, расширение может использоваться в экземпляре ресурса без того, чтобы какой-то профиль объявлял, что это возможно, следует или должно быть, однако профили могут использоваться для описания, каким образом используется расширение.
+<!-- Once defined, an extension can be used in an instance of a resource 
 without any Profile declaring that it can, should or must be, but 
-Profiles can be used to describe how an extension is used.
+Profiles can be used to describe how an extension is used. -->
 </p>
 <p>
-To actually prescribe the use of an extension in an instance, the extension list 
+Чтобы на самом деле предписать использование расширения в частном случае, список расширений ресурса необходимо нарезать. Это показывается в <a href="extensibility-examples.html#sliceextensions">примерах расширяемости</a>
+<!-- To actually prescribe the use of an extension in an instance, the extension list 
 on the resource needs to be sliced. This is shown in <a href="extensibility-examples.html#sliceextensions">the extensibility 
-examples</a></p>
+examples</a> --></p>
 <p>
-Note that the minimum cardinality of an extension SHALL be a valid restriction
+Обратите внимание, что минимальное кардинальное число расширения ДОЛЖНО быть допустимым ограничением на минимальное кардинальное число в определении этого расширения. Если минимальное кардинальное число расширения 1, когда оно было определено, оно может быть обязательным только если добавлено в профиль. Это  не рекомендуется - минимальное кардинальное число, как правило, должно быть 0.
+<!-- Note that the minimum cardinality of an extension SHALL be a valid restriction
 on the minimum cardinality in the definition of the extension. if the minimum
 cardinality of the extension is 1 when it is defined, it can only be mandatory
 when it is added to a profile. This is not recommended - the minimum cardinality
-of an extension should usually be 0. 
+of an extension should usually be 0.  -->
 </p>
 
 
 <a name="binding"> </a>
-<h3>Binding Definitions</h3>
+<h3>Определение привязок<!-- Binding Definitions --></h3>
 
 <p>
-Coded elements have bindings that link from the element to a definition of the 
+Кодированные элементы имеют привязки, которые связывают элемент с   определением набора возможных кодов, которые может содержать элемент. Привязка идентифицирует определение набора возможных кодов и контролирует, как жестко набор возможных кодов интерпретируется.
+<!-- Coded elements have bindings that link from the element to a definition of the 
 set of possible codes the element may contain. The binding identifies the 
-definition of the set of possible codes and controls how tightly the set of the possible codes is interpreted.
+definition of the set of possible codes and controls how tightly the set of the possible codes is interpreted. -->
 </p>
 <p>
-The set of possible codes is either a formal reference to a <a href="valueset.html">ValueSet</a> 
+Набор возможных кодов - это либо формальная ссылка на ресурс <a href="valueset.html">ValueSet</a> , которая может быть версионной, либо ссылка общего вида на какое-то веб-содержимое, которое определяет набор кодов. Второе более уместно, когда набор значений определяется некоторым внешним стандартом (например MIME-типы). В качестве альтернативы, если привязка неполная (например находится в разработке), можно предоставить просто текстовое описание возможных кодов.
+<!-- The set of possible codes is either a formal reference to a <a href="valueset.html">ValueSet</a> 
 resource, which may be version specific, or a general reference to some web content that defines a set of 
 codes. The second is most appropriate where set of values is defined by 
 some external standard (such as mime types). Alternatively, where the binding
 is incomplete (e.g. under development) just a text description of the 
-possible codes can be provided. 
+possible codes can be provided.  -->
 </p>
 <p> 
-Bindings have two properties that define how the set of codes is used: <i>isExtensible</i> and <i>conformance</i>.
+Привязки имеют два свойства, которые определяют, каким образом набор кодов используется: <i>isExtensible</i> и <i>conformance</i>.
+<!-- Bindings have two properties that define how the set of codes is used: <i>isExtensible</i> and <i>conformance</i>. -->
 </p>
 <ul>
-  <li><p><b>isExtensible</b><a name="extensibility"> </a>indicates whether additional codes are allowed beyond those in the defined set of codes.</p>
+  <li><p><b>isExtensible</b><a name="extensibility"> </a>указывает, допустимы ли дополнительные коды помимо тех, что есть в определенном наборе кодов.<!-- indicates whether additional codes are allowed beyond those in the defined set of codes. --></p>
     <table>
-      <tr><td>false</td> <td>No additional codes are to be used beyond the list provided</td> </tr>
-      <tr><td>true</td>  <td>Supplemental codes or plain text may be needed (this is common because it is frequently the case that concepts will need to be used which won't be in the defined set of codes)</td></tr>
+      <tr><td>false</td> <td>Никакие дополнительные коды вне этого списка не должны использоваться <!-- No additional codes are to be used beyond the list provided --></td> </tr>
+      <tr><td>true</td>  <td>Дополнительные коды или простой текст могут быть необходимы (это распространено, так как часто случается, что требуется использовать концепты, которые отсутствуют в определенном наборе кодов<!-- Supplemental codes or plain text may be needed (this is common because it is frequently the case that concepts will need to be used which won't be in the defined set of codes) --></td></tr>
     </table>
   </li>
-  <li><p><b>Conformance</b><a name="conformance"> </a>indicates the expectations for implementers of the specification.  
-    There are three possible values:</p>
+  <li><p><b>Conformance</b><a name="conformance"> </a>указывает на ожидания реализаторов спецификации.
+Есть три возможных значения:<!-- indicates the expectations for implementers of the specification.  
+    There are three possible values:< -->/p>
     <p/>
     <table>
       <tr><td>required</td><td>
-        <p>Only codes in the specified set are allowed.</p>
+        <p>Разрешены только коды из указанного набора<!-- Only codes in the specified set are allowed. --></p>
         <p>
-        If the strength is 'extensible', other codes may be used for concepts not covered by the 
+		Если численность 'extensible', другие коды могут использоваться для концептов, не покрытых набором значений, однако не могут использоваться для концептов, покрытых связанным списком кодов, даже если профиль ограничивает некоторые из этих кодов.
+        <!-- If the strength is 'extensible', other codes may be used for concepts not covered by the 
         value set but cannot be used for concepts covered by the bound code list, even 
-        if a profile constrains out some of those codes).</p>
+        if a profile constrains out some of those codes). --></p>
       </td></tr>
       <tr><td>preferred</td><td>
-        For greater interoperability, implementers are strongly encouraged to use the bound set of
+        Для большей совместимости, реализаторам настоятельно рекомендуется воспользоваться связанным набором кодов, однако альтернативные коды могут использоваться в профилях без необходимости считаться не соответствующими, если это необходимо<!-- For greater interoperability, implementers are strongly encouraged to use the bound set of
         codes, however alternate codes may be used in profiles if necessary without being considered
-        non-conformant.
+        non-conformant. -->
       </td></tr>
       <tr><td>example</td><td>
-        The codes in the set are an example to illustrate the meaning of the field.
-        There is no particular preference for the set's use.
+	  Коды в наборе - это пример, иллюстрирующий значение этого поля. Нет никакого предпочтения в использовании этого набора.
+        <!-- The codes in the set are an example to illustrate the meaning of the field.
+        There is no particular preference for the set's use. -->
       </td></tr>
     </table>
   </li>
 </ul>
 
 <p>
-The interplay between the meaning of these is subtle but sometimes important. The following table helps 
-define the meanings:
+Взаимодействие между их значениями едва различимо, однако иногда важно. Таблица ниже поможет определить эти значения:
+<!-- The interplay between the meaning of these is subtle but sometimes important. The following table helps 
+define the meanings: -->
 </p>
 <table>
  <tr><td><b>Conformance</b></td><td><b>isExtensible=false</b></td><td><b>isExtensible=true</b></td></tr>
- <tr><td><b>Required</b></td><td>Implementers SHALL use a code from the defined set</td><td>Implementers SHALL use a code from the defined set if one is applicable, but otherwise may provide their own code or use text</td></tr>
- <tr><td><b>Preferred</b></td><td>Implementers SHOULD use a code from the defined set<br/>Using a different code will generate a warning from a validator</td><td>Implementers SHOULD use a code from the defined set if one is applicable, but MAY provide their own code or use text</td></tr>
- <tr><td><b>Example</b></td><td>Implementers MAY use a code from the defined set, or provide their own code, or use text</td></tr>
+ <tr><td><b>Required</b></td><td>Реализаторы ДОЛЖНЫ использовать код из определенного набора<!-- Implementers SHALL use a code from the defined set --></td><td>Исполнители ДОЛЖНЫ использовать код из определенного набора, если это применимо, но в противном случае могут предоставить свой собственный код или использовать текст<!-- Implementers SHALL use a code from the defined set if one is applicable, but otherwise may provide their own code or use text --></td></tr>
+ <tr><td><b>Preferred</b></td><td>Реализаторам СЛЕДУЕТ использовать код из определенного набора <br/> Использование другого кода приведет к получению предупреждения от валидатора<!-- Implementers SHOULD use a code from the defined set<br/>Using a different code will generate a warning from a validator --></td><td>Реализаторам СЛЕДУЕТ использовать код из определенного набора, если это применимо, но можно предоставить свой собственный код или использовать текст<!-- Implementers SHOULD use a code from the defined set if one is applicable, but MAY provide their own code or use text --></td></tr>
+ <tr><td><b>Example</b></td><td>Реализаторы могут или использовать код из определенного набора, или предоставить свой собственный код, или использовать текст<!-- Implementers MAY use a code from the defined set, or provide their own code, or use text --></td></tr>
 </table>
 <p>
-Note: Example binding isExtensible = false is not generally a useful statement. 
+Примечание: Примерная привязка isExtensible = false является, как правило, бесполезным утверждением.
+<!-- Note: Example binding isExtensible = false is not generally a useful statement.  -->
 </p>
 
 
 <a name="tx"> </a>
-<h3>Mixing Custom and Standard Terminologies</h3>
+<h3>Смешение пользовательских и стандартных терминологий<!-- Mixing Custom and Standard Terminologies --></h3>
 <p>
-<a href="valueset.html">Value Set</a> resources can be used to define local codes (Example) and 
+<a href="valueset.html">Value Set</a> ресурсы могут быть использованы для определения локальных кодов (Example) и
+смешивать сочетание локальных кодов и стандартных кодов (примеры: LOINC, SNOMED), или просто
+выбирать определенный набор стандартных кодов (например: LOINC, SNOMED, RxNorm).
+Профили могут привязываться к этим наборам значений вместо тех, которые определены в базовой спецификации, следуя этим правилам:<!-- resources can be used to define local codes (Example) and 
 to mix a combination of local codes and standard codes (examples: LOINC, SNOMED), or just
 to choose a particular set of standard codes (examples: LOINC, SNOMED, RxNorm). 
 Profiles can bind to these value sets instead of the ones defined in the base
-specification, following these rules:
+specification, following these rules: -->
 </p>
 <table class="grid">
  <tr> <td><b>Binding Type in base specification</b></td> <td><b>Matching Profile Properties</b></td> <td><b>Customization Rules in Profiles</b></td> </tr>
@@ -554,27 +599,33 @@ The meaning of "support" is left deliberately ambiguous.  Examples might include
   <li>etc.</li>
 </ul>
 <p>
-The specific meaning of "Must Support" for the purposes of a particular profile SHALL be described in the Profile.description or in other documentation for the
-implementation guide the profile is part of.
+Конкретный смысл "Must Support" для целей конкретного профиля, ДОЛЖНЫ быть описаны в Profile.description или в другой документации для
+инструкции по реализации, частью которой является профиль.
+<!-- The specific meaning of "Must Support" for the purposes of a particular profile SHALL be described in the Profile.description or in other documentation for the
+implementation guide the profile is part of. -->
 </p>
 <p>
-If creating a profile based on another profile, Must Support can be changed from false to true, but cannot be changed from true to false.
+При создании профиля, основанного на другом профиле, значение Must Support может быть изменено с ложного на истинное, но не может быть изменено с истинного на ложное.
+<!-- If creating a profile based on another profile, Must Support can be changed from false to true, but cannot be changed from true to false. -->
 </p>
 
 <a name="search"> </a>
-<h3>Search Criteria</h3>
+<h3>Критерии поиска<!-- Search Criteria --></h3>
 <p>
-The final thing implementations can do is to define search criteria in addition to those defined in the specification itself.  
-Search criteria fall into one of four categories:
+Последнее, что реализации могут сделать, это определить критерии поиска в дополнение к тем, что определены в самой спецификации.
+Критерии поиска попадают в одну из четырех категорий:
+<!-- The final thing implementations can do is to define search criteria in addition to those defined in the specification itself.  
+Search criteria fall into one of four categories: -->
 </p>
 <ol>
-  <li>Enabling search on core elements that don't have standard search criteria defined (e.g. searching Observation by normal range)</li>
-  <li>Enabling search on elements that already have a standard search criteria defined, but with custom matching rules.  E.g. a sounds-like search on Practitioner name</li>
-  <li>Enabling search on a particular extension</li>
-  <li>Enabling search that doesn't correspond to a single element but rather a combination of elements or computation on an element.  E.g. searching for patients by age</li>
+  <li>Включение поиска по основным элементам, у которых не определены стандартные критерии поиска (например, поиск Observation по диапазону нормальных значений)<!-- Enabling search on core elements that don't have standard search criteria defined (e.g. searching Observation by normal range) --></li>
+  <li>Включение поиска по элементам, у которых уже определены стандартные критерии поиска, но с пользовательскими правилами соответствия. Например sounds-like поиск по имени Practitioner<!-- Enabling search on elements that already have a standard search criteria defined, but with custom matching rules.  E.g. a sounds-like search on Practitioner name --></li>
+  <li>Включение поиска по определенному расширению<!-- Enabling search on a particular extension --></li>
+  <li>Включение поиска, который соответствует не одному элементу, а, скорее, сочетанию элементов или вычислению на элементе. Например поиск пациентов по возрасту<!-- Enabling search that doesn't correspond to a single element but rather a combination of elements or computation on an element.  E.g. searching for patients by age --></li>
 </ol>
 <p>
-Additional Search Parameters can be defined using the <a href="searchparameter.html">SearchParameter</a> resource.
+Дополнительные параметры поиска могут быть определены с помощью ресурса <a href="searchparameter.html">SearchParameter</a>.
+<!-- Additional Search Parameters can be defined using the <a href="searchparameter.html">SearchParameter</a> resource. -->
 </p>
 
 </div>

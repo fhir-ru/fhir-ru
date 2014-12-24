@@ -1859,7 +1859,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String profilesHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Profiling FHIR", "profiling.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Профилирование FHIR", "profiling.html", mode==null || "base".equals(mode)));
     b.append(makeHeaderTab("Примеры", "profiling-examples.html", mode==null || "examples".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
