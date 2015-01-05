@@ -14,64 +14,74 @@
 <h2>Terminology Service</h2>
 
 <p>
-This specification includes support for the provision of a consumer level terminology service - that is, a 
+Спецификация включает поддержку обеспечения потребительского уровня терминологического сервиса - это сервис, который позволяет медицинским приложениям использовать коды и наборы значений без необходимости становиться экспертами в тонких деталях ресурса value set и лежащих в основе кодовых систем.
+Сервер, который поддерживает полную функциональность, приведенную здесь, может быть описан как "FHIR Terminology Service" и ДОЛЖЕН соответствовать следующему заявлению о соответствии: [ссылка будет предоставлена].
+<!-- This specification includes support for the provision of a consumer level terminology service - that is, a 
 service that lets healthcare applications make use of codes and value sets without having to become 
 experts in the fine details of the value set resource, and the underlying code systems. 
 A server that supports all the functionality described here can be described as a "FHIR Terminology Service", 
-and SHALL conform to this conformance statement: [link to be provided].
+and SHALL conform to this conformance statement: [link to be provided]. -->
 </p>
 
-<h3>Notes from Michael Lawley's talk at HL7 Australia - issues to be addressed</h3>
+<h3>Заметки из выступления Michael Lawley на HL7 Australia - вопросы, требующие решения<!-- Notes from Michael Lawley's talk at HL7 Australia - issues to be addressed --></h3>
 <ul>
-  <li> improve the definitions of mapping equivalence, and change "inexact" map to "overlap"</li>
+  <li>улучшить определения отображения эквивалентности, а также изменить "неточную" карту на "перекрывающую"<!--  improve the definitions of mapping equivalence, and change "inexact" map to "overlap" --></li>
 </ul>
 
-<h3>Security</h3>
+<h3>Безопасность<!-- Security --></h3>
 <p>
-Generally, SSL SHOULD be used for all production health care data exchange. 
+SSL, как правило, СЛЕДУЕТ использовать для любого обмена медицинскими данными в рабочем режиме.
+Несмотря на то, что терминологические сервисы не оперируют информацией пациентов непосредственно, хакеры всё ещё в состоянии вывести информацию о пациентах, наблюдая за кодами и концептами, о которых запрашивают терминологический сервис, поэтому шифрование всё же рекомендуется.
+<!-- Generally, SSL SHOULD be used for all production health care data exchange. 
 Even though terminology servers do not directly handle patient information, 
 hackers may still be able to infer information about patients by observing 
 the codes and concepts that the terminology service is asked about, so 
-encryption is still recommended. 
+encryption is still recommended. --> 
 </p>
 <p>
-A terminology server may choose not to authenticate the clients/users in any fashion, 
+Терминологический сервер может работать без аутентификации клиентов/пользователей, однако он может делать это в порядке ограничения или учета использования.
+Для сервера, поддерживающего набор значений, который разрешает редактирование справочников, будет уместно использование некоторой формы <a href="security.html">авторизации и/или аутентификации</a>.
+Данная спецификация не требует какого-то определенного подхода к безопасности.
+<!-- A terminology server may choose not to authenticate the clients/users in any fashion, 
 but can do so in order to limit or account for usage. 
 For a value set maintenance server that allows terminologies to be edited, 
 some form of <a href="security.html">authorization and/or authentication would be appropriate</a>.
-This specification does not require any particular approach to security. 
+This specification does not require any particular approach to security. --> 
 </p>
 <p>
-<i>Note to reviewers/implementers: can we? it would increase interoperability if we could bind 
+<i>Примечание для рецензентов/реализаторов: можем ли мы? Это привело бы к увеличению функциональной совместимости, если бы мы смогли закрепить определенный подход. Если мы, скажем, для операций будем требовать SSL + сертификат сервера обязательно, использовать сертификаты клиентов при необходимости аутентификация этих клиентов и использовать Smart на FHIR для редактирования наборов значений и таблиц соответствия концептов, будут ли с этим какие-то проблемы?<!-- Note to reviewers/implementers: can we? it would increase interoperability if we could bind 
 to a particular approach. If we said, for the operations, SSL+server certs 
 mandatory, use client certificates if you want to authenticate the clients, 
 and to use Smart on FHIR for editing value sets and concept maps, is there 
-any problems with that?</i>
+any problems with that? --></i>
 </p>
 
 
 <h3>Basic Concepts</h3>
 <p>
-A FHIR terminology service is a simply a set of functions built on the definitions 
+Терминологический сервис FHIR - это просто набор функций, построенный на определениях, предоставленных набором ресурсов <a href="valueset.html">ValueSet</a> и <a href="conceptmap.html">ConceptMap, с обеспечивающими поддержку дополнительными внутренними справочниками.</a>
+<!-- A FHIR terminology service is a simply a set of functions built on the definitions 
 provided by a set of <a href="valueset.html">ValueSet</a> and 
-<a href="conceptmap.html">ConceptMap</a> resources, with additional inherently known terminologies providing support.
+<a href="conceptmap.html">ConceptMap</a> resources, with additional inherently known terminologies providing support. -->
 </p>
 <p>
-The terminology service builds on the basic principles for using terminologies 
-in FHIR. Implementers should be familiar with:
+Этот терминологический сервис основывается на базовых принципах использования справочников в FHIR. Реализаторам следует ознакомиться с: 
+<!-- The terminology service builds on the basic principles for using terminologies 
+in FHIR. Implementers should be familiar with: -->
 </p>
 <ul>
- <li><a href="terminologies.html">Using codes in FHIR</a></li>
- <li>The <a href="valueset.html">ValueSet</a> resource</li>
- <li>The <a href="conceptmap.html">ConceptMap</a> resource</li>
+ <li><a href="terminologies.html">Использование кодов в FHIR</a></li>
+ <li>Ресурс <a href="valueset.html">ValueSet</a></li>
+ <li>Ресурс <a href="conceptmap.html">ConceptMap</a></li>
 </ul>
 <p>
-In addition, implementers should be familiar with the <a href="operations.html">operations 
-framework</a>. Further useful information may be found in:
+Кроме того, реализаторам следует ознакомиться с <a href="operations.html">фреймворком операций</a>. Дополнительная полезная информация может быть найдена в:
+<!-- In addition, implementers should be familiar with the <a href="operations.html">operations 
+framework</a>. Further useful information may be found in: -->
 </p>
 <ul>
- <li>Underlying Principles: <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">V3 Core Principles</a></li>
- <li>SNOMED CT <a href="http://ihtsdo.org/fileadmin/user_upload/doc/">technical documentation</a>. Note; "namespace" is used differentyl here from the way it is used by IHTSDO</li>
+ <li>Основные принципы<!-- Underlying Principles -->: <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">V3 Core Principles</a></li>
+ <li>SNOMED CT <a href="http://ihtsdo.org/fileadmin/user_upload/doc/">техническая документация<!-- technical documentation --></a>. Примечание: "namespace" используется здесь иначе, чем в IHTSDO<!-- is used differentyl here from the way it is used by IHTSDO --></li>
 </ul>
 
 <h4>External Code Systems</h4>

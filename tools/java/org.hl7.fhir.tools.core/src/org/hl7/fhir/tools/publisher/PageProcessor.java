@@ -3328,7 +3328,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String genOpCount(ResourceDefn resource) {
-    return Integer.toString(resource.getOperations().size()) + (resource.getOperations().size() == 1 ? " operation" : " operations");
+    return Integer.toString(resource.getOperations().size()) + (resource.getOperations().size() == 1 ? " операция" : " операции(-ий)");
   }
 
   private String genOperations(ResourceDefn resource) throws Exception {
