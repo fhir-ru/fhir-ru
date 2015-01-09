@@ -780,20 +780,31 @@ this specification allows that servers MAY alter the resource on
 create/update. 
 </p>
 <p>
-Similarly, to the degree that an implementation context makes special 
+Аналогичным образом, по мере того как контекст реализации привносит особые
+правила слияния контента или изменения содержания, контекст
+становится всё более дорогими в обслуживании.
+<!-- Similarly, to the degree that an implementation context makes special 
 rules about merging content or altering the content, that context will
-become more expensive to maintain. 
+become more expensive to maintain.  -->
 </p>
 <p>
-Although these rules are stated with regard to servers, a similar 
+Хотя эти правила изложены для серверов, 
+подобная концепция применяется и к клиентам - в связи с тем, что 
+различные клиентские системы, взаимодействующие с этим сервером, 
+не поддерживают один и тот же набор характеристик, клиенты и/или 
+этот сервер будут вынуждены применять специальную логику для 
+предотвращения потери или повреждения информации.
+<!-- Although these rules are stated with regard to servers, a similar 
 concept applies to clients - to the degree that different client 
 systems interacting with the server do not support the same feature 
 set, the clients and/or the server will be forced to implement custom 
-logic to prevent information from being lost or corrupted. 
+logic to prevent information from being lost or corrupted.  -->
 </p>
 <p>
-Some of these problems can be mitigated by following a pattern 
-built on top of version-aware updates. In this pattern:
+Некоторые из этих трудностей можно уменьшить, следуя схеме, 
+построенной на версионных апдейтах. В этой схеме:
+<!-- Some of these problems can be mitigated by following a pattern 
+built on top of version-aware updates. In this pattern: -->
 </p>
 <ul>
  <li>The server provides a <a href="#read">read</a> operation for any resource it accepts <a href="#update">update</a> operations on</li>
@@ -802,20 +813,30 @@ built on top of version-aware updates. In this pattern:
  <li>The client writes the result back as an <a href="#update">update</a> operation, and is able to handle a 409 or 412 response (usually by trying again)</li>
 </ul>
 <p>
-If clients follow this pattern, then information from other systems
-that they do not understand will be maintained through the update.
+Если клиенты придерживаются этой схемы, то информация 
+из других систем, которую они не поинмают, будет сохраняться 
+на протяжении этого апдейта.
+<!-- If clients follow this pattern, then information from other systems
+that they do not understand will be maintained through the update. -->
 </p>
 <p>
-Note that it's possible for a server to choose to maintain the 
+Обратите внимание, что у сервера есть возможность хранить 
+информацию, которая была бы потеряна, но у сервера нет способа  
+определить, опустил ли клиент эту информацию, потому что она 
+не поддерживалась (возможно в этом случае) или он хотел 
+удалить эту информацию.
+<!-- Note that it's possible for a server to choose to maintain the 
 information that would be lost, but there is no defined way for
 a server to determine whether the client omitted the information
 because it wasn't supported (perhaps in this case) or whether it 
-wishes to delete the information. 
+wishes to delete the information.  -->
 </p>
 <h4>Conformance</h4>
 <p>
-Both client and server systems SHOULD clearly document how transaction 
-integrity is handled.
+И клиентским, и серверным системам СЛЕДУЕТ четко документировать, 
+каким образом обеспечивается целостность транзакции.
+<!-- Both client and server systems SHOULD clearly document how transaction 
+integrity is handled. -->
 </p>
 <p>
 DSTU TODO: how? 
@@ -826,13 +847,21 @@ DSTU TODO: how?
 <a name="paging"> </a>
 <h3>Paging</h3>
 <p> 
-If servers provide paging for the results of a <a href="#search">search</a> or <a href="#history">history</a> interaction,
+Если серверы предоставляют разбиение результатов взаимодействий 
+<a href="#search">search</a> или <a href="#history">history</a> на страницы, 
+они ДОЛЖНЫ соответствовать этому методу (адаптированному из 
+<a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed Paging and Archiving)</a>, 
+для отправки ссылок продолжения клиенту при возвращении <a href="bundle.html">Bundle</a> 
+(например для истории и поиска). Если сервер не делает этого, нет никакого способа продолжать 
+навигацию по страницам.
+<!-- If servers provide paging for the results of a <a href="#search">search</a> or <a href="#history">history</a> interaction,
 they SHALL conform to this method (adapted from <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed 
 Paging and Archiving)</a> for sending continuation links to the client when returning a <a href="bundle.html">Bundle</a>
-(e.g. with history and search). If the server does not do this, there is no way to continue paging.
+(e.g. with history and search). If the server does not do this, there is no way to continue paging. -->
 </p>
 <p>
-This example shows the third page of a search result:
+Данный пример показывает третью страницу результатов поиска:
+<!-- This example shows the third page of a search result: -->
 </p>
 
 <pre class="xml">
@@ -873,69 +902,103 @@ This example shows the third page of a search result:
 </pre>
 
 <p>
-The server need not use a stateful paging method as shown in this example - it is at 
+Серверу нет необходимости использовать динамический способ подкачки, как 
+показано в этом примере - это остается на усмотрение сервера, как лучше всего обеспечить, 
+чтобы продолжение сохраняло целостность в контексте текущих изменений в ресурсах. 
+Альтернативный подход заключается в использовании ссылок на конкретные версии 
+записей на границах, но он подвержен сбоям непрерывности при обновлении записей.
+<!-- The server need not use a stateful paging method as shown in this example - it is at 
 the discretion of the server how to best ensure that the continuation retains 
 integrity in the context of ongoing changes to the resources. An alternative approach
 is to use version specific references to the records on the boundaries, but this is 
-subject to continuity failures when records are updated.
+subject to continuity failures when records are updated. -->
 </p>
 <p>
-A server MAY inform the client of the total number of resources returned by the interaction for which the results are paged
-using  the <a href="bundle-definitions.html#Bundle.total">Bundle.total</a>.
+Сервер МОЖЕТ сообщить клиенту общее количество ресурсов, возвращаемых этим 
+взаимодействием, для которого результаты разбиваются на страницы, с помощью 
+ <a href="bundle-definitions.html#Bundle.total">Bundle.total</a>.
+<!-- A server MAY inform the client of the total number of resources returned by the interaction for which the results are paged
+using  the <a href="bundle-definitions.html#Bundle.total">Bundle.total</a>. -->
 </p>
-<p>Note that for search, where _include can be used to return additional related resources, the total number 
-of resources in the feed may exceed the number indicated in totalResults.</p>
+<p>Обратите внимание, что при поиске, где можно использовать _include для 
+возвращения дополнительных связанных ресурсов, общее число ресурсов 
+в фиде может превышать число, указанное в totalResults.
+<!-- Note that for search, where _include can be used to return additional related resources, the total number 
+of resources in the feed may exceed the number indicated in totalResults. --></p>
 
-<h3>Intermediaries</h3>
+<h3>Посредники<!-- Intermediaries --></h3>
 <p>
-The HTTP protocol may be routed through an HTTP proxy such as 
+Протокол HTTP может быть направлен через HTTP-прокси, например squid. 
+Подобные прокси прозрачны для приложений, хотя реализаторы должны 
+быть готовы к последствиям кэширования, особенно к риску получения 
+устаревшего содержимого. См. более подробную информацию в 
+<a href="http://tools.ietf.org/html/rfc2616#page-74">спецификации HTTP</a>.
+
+
+<!-- The HTTP protocol may be routed through an HTTP proxy such as 
 squid. Such proxies are transparent to the applications, though
 implementers should be alert to the effects of caching, particularly
 including the risk of receiving stale content. See the <a href="http://tools.ietf.org/html/rfc2616#page-74">HTTP specification</a>
-for further detail
+for further detail -->
 </p>
 <p>
-Interface engines may also be placed between the consumer and
+Механизмы интерфейса могут также размещаться между потребителем и 
+провайдером. Они отличаются от прокси тем, что они активно изменяют 
+содержимое и/или назначение HTTP-обмена и не связаны правилами, 
+которые применяются к HTTP-прокси. Такие агенты разрешены, но 
+ДОЛЖНЫ помечать HTTP-заголовки для оказания помощи в устранении неполадок.
+<!-- Interface engines may also be placed between the consumer and
 the provider. These differ from proxies because they actively
 alter the content and/or destination of the HTTP exchange and are
 not bound the rules that apply to HTTP proxies. Such agents are allowed, 
-but SHALL mark the http header to assist with troubleshooting.
+but SHALL mark the http header to assist with troubleshooting. -->
 </p>
 <p>
-Any agent that modifies an HTTP request or Response content other
+Любой агент, модифицирующий HTTP-запрос или содержимое ответа не в 
+рамках правил для HTTP прокси, ДОЛЖЕН добавить штамп в HTTP-заголовки, 
+подобный этому:
+<!-- Any agent that modifies an HTTP request or Response content other
 than under the rules for HTTP proxies SHALL add a stamp to the HTTP 
-headers like this:
+headers like this: -->
 </p>
 <pre>
   request-modified-[identity]: [purpose]
   response-modified-[identity]: [purpose]
 </pre>
 <p>
-The identity SHALL be a single token defined by the administrator of the agent
+Этот идентификатор ДОЛЖЕН быть отдельным токеном, определенным администратором 
+агента, который будет достаточно идентифицировать этого агента в контексте использования. 
+Заголовок ДОЛЖЕН указывать цель модификации содержимого агентом. Оконечные системы 
+НЕ ДОЛЖНЫ использовать этот заголовок ни для каких целей. Он предназначен для помощи в 
+решении проблем с системой.
+<!-- The identity SHALL be a single token defined by the administrator of the agent
 that will sufficiently identify the agent in the context of use. The header
 SHALL specify the agent's purpose in modifying the content. End point systems SHALL
 not use this header for any purpose. Its aim is to assist with 
-system troubleshooting.
+system troubleshooting. -->
 </p>
 
 <a name="hdata"> </a>
 <h3>OMG hData RESTful Transport</h3>
 
 <p>
-This RESTful specification described here is based on the <a href="http://www.omg.org">OMG Health RESTful specification</a> (specific reference to be provided when this is published). 
-In this regard, FHIR functions as a Record Format Profile as described in that specification. Note the following significant factors to be aware of:
+Данная RESTful-спецификация, описываемая здесь, основана на спецификации <a href="http://www.omg.org">OMG Health RESTful</a> (конкретная ссылка будет предоставлена 
+при публикации). В этом отношении FHIR действует как Record Format Profile, как описано в той спецификации. Следует учитывать следующие существенные факторы:
+<!-- This RESTful specification described here is based on the <a href="http://www.omg.org">OMG Health RESTful specification</a> (specific reference to be provided when this is published). 
+In this regard, FHIR functions as a Record Format Profile as described in that specification. Note the following significant factors to be aware of: -->
 </p>
 <ul>
- <li>FHIR maps the hData sections to resource types, and hData documents to resource instances. There are no subsections, and client systems are not able to create new sections, though <a href="extras.html#compartments">compartments</a> behave somewhat like sections</li>
- <li>Because clients cannot submit new sections (POST to service URL), POST to the service URL has been re-used for <a href="#transaction">the transaction interaction</a> (difference under review)</li>
- <li>FHIR does not (yet) define a root document. When defined, it will contain information about what the FHIR server has done (as opposed to a conformance statement, which describes what it is capable of doing)</li>
- <li>Note that this specification does not repeat the rules in the hData RESTful Transport concerning the OPTIONS command on the service URL, but these rules (extra headers etc.) still apply</li>
+ <li>FHIR устанавливает соответствие между hData-разделами и типами ресурсов, и hData-документами и экземплярами ресурсов. Подразделы отсутствуют, а клиентские системы не могут создавать новые секции, хотя <a href="extras.html#compartments">compartments</a> ведут себя в некоторой степени наподобие разделов<!-- FHIR maps the hData sections to resource types, and hData documents to resource instances. There are no subsections, and client systems are not able to create new sections, though <a href="extras.html#compartments">compartments</a> behave somewhat like sections --></li>
+ <li>Так как клиенты не могут создавать новые секции (POST на URL сервиса), POST на URL сервиса использован для взаимодействия <a href="#transaction">transaction</a> (различие проходит проверку)<!-- Because clients cannot submit new sections (POST to service URL), POST to the service URL has been re-used for <a href="#transaction">the transaction interaction</a> (difference under review) --></li>
+ <li>FHIR не определяет (пока что) корневой документ. Когда определен, он будет содержать информацию о том, что FHIR-сервер сделал (в противоположность заявлению о соответствии, которое описывает, что он может сделать)<!-- FHIR does not (yet) define a root document. When defined, it will contain information about what the FHIR server has done (as opposed to a conformance statement, which describes what it is capable of doing) --></li>
+ <li>Обратите внимание, что данная спецификация не приводит повторно правила из hData RESTful Transport, относящиеся к команде OPTIONS в URL сервиса, однако эти правила (дополнительные заголовки и пр.) по-прежнему применяются<!-- Note that this specification does not repeat the rules in the hData RESTful Transport concerning the OPTIONS command on the service URL, but these rules (extra headers etc.) still apply --></li>
 </ul>
 
 <a name="summary"> </a>
-<h3>Summary</h3>
+<h3>Сводка<!-- Summary --></h3>
 <p>
-These tables present a summary of the interactions described here.
+Таблицы ниже представляют собой сводку всех описанных здесь взаимодействий.
+<!-- These tables present a summary of the interactions described here. -->
 </p>
 
 <table class="grid">
@@ -968,7 +1031,8 @@ These tables present a summary of the interactions described here.
 </table>
 
 <p>
-Note: N/A = not present, R = Required, O = optional.
+Примечание: N/A = не представлен, R = обязательный, O = необязательный.
+<!-- Note: N/A = not present, R = Required, O = optional. -->
 </p>
 
 <table class="grid">
@@ -1001,8 +1065,10 @@ Note: N/A = not present, R = Required, O = optional.
 </table>
 
 <p>
-Note: this table lists the status codes described here, but other status codes are possible as described by the HTTP specification. 
-Additional codes that are likely a server errors and various codes associated with authentication protocols.
+Примечание: в этой таблице перечислены статус-коды, описанные здесь, но возможны и другие статус-коды в соответствии  
+с HTTP-спецификацией. Дополнительными кодами будут, скорее всего, ошибки сервера и различные коды, связанные с протоколами аутентификации.
+<!-- Note: this table lists the status codes described here, but other status codes are possible as described by the HTTP specification. 
+Additional codes that are likely a server errors and various codes associated with authentication protocols. -->
 </p>
 
 </div>
