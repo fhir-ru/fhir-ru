@@ -564,8 +564,8 @@ for the <a href="conformance.html">Conformance Resource</a> end-point.
 This is different to the conformance operation: -->
 </p>
 <table class="grid">
- <tr><td>conformance operation</td><td>returns a conformance statement describes the server's current operational functionality</td></tr>
- <tr><td>Conformance end-point</td><td>manages a repository of conformance statements (e.g. the HL7 conformance statement registry)</td></tr>
+ <tr><td>conformance operation</td><td>возвращает заявление о соответствии, описывающее текущую функциональность сервера<!-- returns a conformance statement describes the server's current operational functionality --></td></tr>
+ <tr><td>Conformance end-point</td><td>управляет репозиторием заявлений о соответствии (например HL7-реестр заявлений о соответствии)<!-- manages a repository of conformance statements (e.g. the HL7 conformance statement registry) --></td></tr>
 </table>
 <p>
 Все серверы должны поддерживать операцию conformance, однако серверы могут выбрать, хотят ли они поддерживать точку взаимодействия conformance, как и любую другую точку взаимодействия.
@@ -775,7 +775,7 @@ for an alternate means of system synschronization. -->
 </p>
  
  <a name="tags"> </a>
-<h3>Meta Interaction</h3>
+<h3>Взаимодействие meta<!-- Meta Interaction --></h3>
  
 <p>
 Элемент <a href="resource.html#meta">meta</a> содержит ссылки на профили, теги и метки уровня безопасности, управляющие поведением ресурса. Эти правила применяются к следующим атрибутам метаданных:
@@ -783,7 +783,7 @@ for an alternate means of system synschronization. -->
 labels that control the behaviour of the resource. These rules apply to these meta-attributes: --> 
 </p>
 <table class="grid">
- <tr><td><b>Interaction</b></td><td><b>Meta-Attribute Actions</b></td></tr>
+ <tr><td><b>Взаимодействие<!-- Interaction --></b></td><td><b>Действия над мета-атрибутами<!-- Meta-Attribute Actions --></b></td></tr>
  <tr><td>read/vread</td><td>Сервер возвращает пункты элемента meta <!-- The server returns the items in the meta element --></td></tr>
  <tr><td>create</td><td>Сервер сохраняет элементы, предоставленные с ресурсом, и может добавить свои собственные или отредактировать их по собственным причинам<!-- The server stores the items provided with the resource, and may add it's own or edit them for it's own reasons --></td></tr>
  <tr><td>update</td><td>Сервер выполняет слияние элементов, предоставленных с ресурсом, с теми, которые уже ассоциированы с этим ресурсом, и может добавить свои собственные или отредактировать их по собственным причинам<!-- The server merges the items provided with the resource along with those already associated with the resource, and may add it's own or edit them for it's own reasons --></td></tr>
@@ -797,18 +797,18 @@ labels on old version of a resource. To support this, this operation provides se
 interactions that operate directly on the meta element: -->
 </p>
 <table class="grid">
- <tr><td width="50%"><b>HTTP Command</b></td><td valign="center"><b>description</b></td></tr>
- <tr><td><pre>GET [base]/_meta</pre></td><td valign="center">get a list of all profiles, security labels, and tags used in the system</td></tr>
- <tr><td><pre>GET [base]/[type]/_meta</pre></td><td valign="center">get a list of all profiles, security labels, and tags used for the nominated resource type</td></tr>
- <tr><td><pre>GET [base]/[type]/[id]/_meta</pre></td><td valign="center">get a list of all profiles, security labels, and tags affixed to the nominated resource. This is the same information included when reading the resource, but may have different security clearance</td></tr>
- <tr><td><pre>GET [base]/[type]/[id]/_history/[vid]/_meta</pre></td><td valign="center">get a list of all profiles, security labels, and tags affixed  to the nominated version of the resource. This is the same information included when reading the given version of the resource, but may have different security clearance</td></tr>
- <tr><td><pre>POST [base]/[type]/[id]/_meta</pre></td><td valign="center">Affix the provided profiles, security labels, and tags in the list to the nominated resource</td></tr>
- <tr><td><pre>POST [base]/[type]/[id]/_history/[vid]/meta</pre></td><td valign="center">Affix the provided profiles, security labels, and tags in the list to the nominated version of the resource</td></tr>
- <tr><td><pre>POST [base]/[type]/[id]/_meta-delete</pre></td><td valign="center">Remove all profiles, security labels, and tags in the provided list from the meta for the nominated resource</td></tr>
- <tr><td><pre>POST [base]/[type]/[id]/_history/[vid]/_meta-delete</pre></td><td valign="center">Remove all profiles, security labels, and tags in the provided list from the list of tags for the nominated version of the resource</td></tr>
+ <tr><td width="50%"><b>HTTP команда</b></td><td valign="center"><b>Описание</b></td></tr>
+ <tr><td><pre>GET [base]/_meta</pre></td><td valign="center">получить список всех профилей, меток уровня безопасности и тегов, используемых в системе<!-- get a list of all profiles, security labels, and tags used in the system --></td></tr>
+ <tr><td><pre>GET [base]/[type]/_meta</pre></td><td valign="center">получить список всех профилей, меток уровня безопасности и тегов, используемых для обозначенного типа ресурса<!-- get a list of all profiles, security labels, and tags used for the nominated resource type --></td></tr>
+ <tr><td><pre>GET [base]/[type]/[id]/_meta</pre></td><td valign="center">получить список всех профилей, меток уровня безопасности и тегов, принадлежащих обозначенному ресурсу. Это та же самая информация, что показывается при чтении ресурса, но она может иметь другую категорию допуска <!-- get a list of all profiles, security labels, and tags affixed to the nominated resource. This is the same information included when reading the resource, but may have different security clearance --></td></tr>
+ <tr><td><pre>GET [base]/[type]/[id]/_history/[vid]/_meta</pre></td><td valign="center">получить список всех профилей, меток уровня безопасности и тегов, принадлежащих обозначенной версии ресурса. Это та же самая информация, что показывается при чтении заданной версии ресурса, но она может иметь другую категорию допуска<!-- get a list of all profiles, security labels, and tags affixed  to the nominated version of the resource. This is the same information included when reading the given version of the resource, but may have different security clearance --></td></tr>
+ <tr><td><pre>POST [base]/[type]/[id]/_meta</pre></td><td valign="center">Присвоить обозначенному ресурсу предоставленные профили, метки уровня безопасности и теги в списке<!-- Affix the provided profiles, security labels, and tags in the list to the nominated resource --></td></tr>
+ <tr><td><pre>POST [base]/[type]/[id]/_history/[vid]/meta</pre></td><td valign="center">Присвоить обозначенной версии ресурса предоставленные профили, метки уровня безопасности и теги в списке<!-- Affix the provided profiles, security labels, and tags in the list to the nominated version of the resource --></td></tr>
+ <tr><td><pre>POST [base]/[type]/[id]/_meta-delete</pre></td><td valign="center">Удалить все профили, метки уровня безопасности и теги в предоставленном списке из метаданных обозначенного ресурса <!-- Remove all profiles, security labels, and tags in the provided list from the meta for the nominated resource --></td></tr>
+ <tr><td><pre>POST [base]/[type]/[id]/_history/[vid]/_meta-delete</pre></td><td valign="center">Удалить все профили, метки уровня безопасности и теги в предоставленном списке из метаданных обозначенной версии ресурса<!-- Remove all profiles, security labels, and tags in the provided list from the list of tags for the nominated version of the resource --></td></tr>
 </table>  
 <p>
-VersionId не используется во всех этих операциях. Сервер может решить заполнять lastUpdated. Обратите внимание, что эти взаимодействия не создают новую версию ресурса. Эти взаимодействия используют непосредственно элемент meta:
+Во всех этих операциях versionId не используется. Сервер может решить заполнять lastUpdated. Обратите внимание, что эти взаимодействия не создают новую версию ресурса. Эти взаимодействия используют непосредственно элемент meta:
 <!-- In all these operations, versionId is not used. The server may choose to populate the lastUpdated. Note that these interactions do not create a new version of the resource. 
 These interactions use the meta element directly: -->
 </p>
@@ -947,7 +947,7 @@ DSTU TODO: how?
 
 
 <a name="paging"> </a>
-<h3>Paging</h3>
+<h3>Пагинация (разбиение на страницы)<!-- Paging --></h3>
 <p> 
 Если серверы предоставляют разбиение результатов взаимодействий 
 <a href="#search">search</a> или <a href="#history">history</a> на страницы, 
@@ -1028,7 +1028,7 @@ using  the <a href="bundle-definitions.html#Bundle.total">Bundle.total</a>. -->
 <!-- Note that for search, where _include can be used to return additional related resources, the total number 
 of resources in the feed may exceed the number indicated in totalResults. --></p>
 
-<h3>Посредники<!-- Intermediaries --></h3>
+<h3>Программы-посредники<!-- Intermediaries --></h3>
 <p>
 Протокол HTTP может быть направлен через HTTP-прокси, например squid. 
 Подобные прокси прозрачны для приложений, хотя реализаторы должны 
@@ -1045,7 +1045,7 @@ for further detail -->
 </p>
 <p>
 Механизмы интерфейса могут также размещаться между потребителем и 
-провайдером. Они отличаются от прокси тем, что они активно изменяют 
+провайдером. Они отличаются от прокси тем, что активно изменяют 
 содержимое и/или назначение HTTP-обмена и не связаны правилами, 
 которые применяются к HTTP-прокси. Такие агенты разрешены, но 
 ДОЛЖНЫ помечать HTTP-заголовки для оказания помощи в устранении неполадок.
@@ -1104,8 +1104,8 @@ In this regard, FHIR functions as a Record Format Profile as described in that s
 </p>
 
 <table class="grid">
-<tr><th>Interaction</th><th>Path</th><th colspan="5">Request</th></tr>
-<tr><th colspan="2"></th>                                     <th>Verb</th>         <th>Content-Type</th> <th>Body</th>     <th>Accept</th> <th>Content-Location</th></tr>
+<tr><th>Взаимодействие<!-- Interaction --></th><th>Путь<!-- Path --></th><th colspan="5">Запрос<!-- Request --></th></tr>
+<tr><th colspan="2"></th>                                     <th>Действие<!-- Verb --></th>         <th>Content-Type</th> <th>Body</th>     <th>Accept</th> <th>Content-Location</th></tr>
 <tr><td>read</td>       <td>/[type]/[id]</td>                <td>GET</td>          <td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
 <tr><td>vread</td>      <td>/[type]/[id]/_history/[vid]</td> <td>GET</td>          <td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
 <tr><td>conformance</td><td>/ or /metadata</td>               <td>OPTIONS / GET</td><td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
@@ -1138,7 +1138,7 @@ In this regard, FHIR functions as a Record Format Profile as described in that s
 </p>
 
 <table class="grid">
-<tr><th>Interaction</th><th colspan="5">Response</th></tr>
+<tr><th>Взаимодействие<!-- Interaction --></th><th colspan="5">Ответ<!-- Response --></th></tr>
 <tr><th colspan="1"></th> <th>Content-Type</th> <th>Body</th>               <th>Location</th> <th>Content-Location</th> <th>Status Codes</th></tr>
 <tr><td>read</td>         <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>R</td>                <td>200, 404, 410</td></tr>
 <tr><td>vread</td>        <td>R</td>            <td>Resource</td>           <td>N/A</td>      <td>O</td>                <td>200, 404</td></tr>
