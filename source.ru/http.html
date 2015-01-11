@@ -116,7 +116,7 @@ https://server/path/Patient
 
 <h3>Безопасность</h3>
 <p>
-Использование HTTPS опционально, но для передачи любых реальных данных ДОЛЖЕН быть использован SSL и другие дополнительные предосторожности. Смотри <a href="security.html#http">Безопасность HTTP </a> для более детальной информации.
+Использование HTTPS не обязательно, но для передачи любых реальных данных ДОЛЖЕН быть использован SSL и другие дополнительные предосторожности. Смотри <a href="security.html#http">Безопасность HTTP </a> для более детальной информации.
 </p>
 <p>
 Примечание: для поддержки браузерных клиентских приложений сервер ДОЛЖЕН реализовывать <a href="http://enable-cors.org/">Кросс-доменный доступ к ресурсам</a>.  
@@ -125,7 +125,7 @@ https://server/path/Patient
 
 <h3>HTTP коды состояния (Status Codes)</h3>
 <p>
-Данная спецификация описывает использование определенных кодов состояния (status codes). Другие коды (не описанные в спецификации) могут быть использованы, когда код не ясен или его использование подходит по семантике HTTP (обычно это коды, связанные с аутентификацией, авторизацией и перенаправлениям (redirect).
+Данная спецификация описывает использование определенных кодов состояния (status codes). Другие коды (не описанные в спецификации) могут быть использованы, когда код не ясен или его использование подходит по семантике HTTP (обычно это коды, связанные с аутентификацией, авторизацией и перенаправлением (redirect).
 Перенаправление для аутентификации не должно быть интерпретировано как изменение адреса ресурса (часто встречающаяся ошибка). 
 </p>
 <p>
@@ -308,7 +308,7 @@ the note on <a href="#transactional-integrity">transactional integrity</a> for d
 
 <a name="versionaware"> </a>
 <a name="concurrency"> </a>
-<h3>Управление конкурентным доступок к ресурсам<!-- Managing Resource Contention --></h3>
+<h3>Управление конкурентным доступом к ресурсам<!-- Managing Resource Contention --></h3>
 <p>
 Ситуацию <a href="http://www.w3.org/1999/04/Editing/">потери обновлений</a>, когда два клиента обновляют один и тот же ресурс, и второй перезаписывает изменения первого, можно предотвратить, используя комбинацию заголовков <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19">ETag</a> и 
 <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.24">If-Match</a>.
@@ -613,7 +613,7 @@ once, and since some bundles may have the same resource more than once or other 
 dependencies (e.g. history lists), some kinds of bundles may not be able to be used 
 in a transaction. Servers may choose to only accept bundles with a <a href="bundle-definitions.html#Bundle.type">type</a> "transaction". -->
 </p>
-<p><b>Обработка ввода комплектов<!-- Processing Bundle Entries --></b></p>
+<p><b>Обработка записей в комплекте<!-- Processing Bundle Entries --></b></p>
 <p>
 Способ обработки каждой записи в комплекте зависит от того, есть ли <a href="bundle-definitions.html#Bundle.entry.deleted">удаленная запись</a>, либо значение entry.status code.
 <!-- How each entry in the bundle is processed depends on whether there is a <a href="bundle-definitions.html#Bundle.entry.deleted">deleted entry</a>,
@@ -625,16 +625,16 @@ or else the value of the entry.status code. -->
 </p>
 <table class="grid">
   <tr>
-   <td><b>Status Code</b></td>
-   <td><b>Processing</b></td>
+   <td><b>Код состояния<!-- Status Code --></b></td>
+   <td><b>Обработка<!-- Processing --></b></td>
   </tr>
   <tr>
    <td>create</td>
-   <td>The resource is to be treated as a create. Any id provided with the resource SHALL be ignored</td>
+   <td>Ресурс следует обрабатывать как создание. Все идентификаторы, переданные с ресурсом, ДОЛЖНЫ игнорироваться<!-- The resource is to be treated as a create. Any id provided with the resource SHALL be ignored --></td>
   </tr>
   <tr>
    <td>update</td>
-   <td>The resource is to be treated as an updated based on the provided id. If there is no id, the transaction must be rejected</td>
+   <td>Ресурс следует обрабатывать как обновление на основе заданного идентификатора. Если идентификатор отсутствует, эта транзакция должна быть отклонена<!-- The resource is to be treated as an updated based on the provided id. If there is no id, the transaction must be rejected --></td>
   </tr>
   <tr>
    <td>match</td>
@@ -642,16 +642,17 @@ or else the value of the entry.status code. -->
   </tr>
   <tr>
    <td>include</td>
-   <td>This is an error, and the transaction must be rejected</td>
+   <td>Это ошибка, и транзакция должна быть отклонена<!-- This is an error, and the transaction must be rejected --></td>
   </tr>
   <tr>
    <td>(missing)</td>
-   <td>If the resource has no id, treat it as a create, else treat it as a </td>
+   <td>Если у ресурса отсутствует идентификатор, то обрабатывать его как создание, иначе обрабатывать его как<!-- If the resource has no id, treat it as a create, else treat it as a --> </td>
   </tr>
 </table>
 
 <p>
-A transaction may include references from one resource to another in the bundle, including 
+Транзакция может содержать ссылки от одного ресурса на другой в комплекте, включая циклические ссылки, где ресурсы ссылаются друг на друга. Если сервер назначает новый идентификатор какому-то ресурсу в комплекте в рамках правил обработки, описанных выше, он ДОЛЖЕН также обновить все ссылки на этот ресурс в это же комплекте, когда они будут обрабатываться. Ссылки на ресурсы, не являющиеся частью этого комплекта, остаются нетронутыми. Ссылки на конкретные версии должны остаться ссылками на конкретные версии после обновления ссылок. Серверы ДОЛЖНЫ заменить все соответствующие ссылки в комплекте, включая идентификаторы ресурсов, ссылки на ресурсы, URL-элементы и атрибуты тегов &lt;a href="" &amp; &lt;img src="" в описательной части.
+<!-- A transaction may include references from one resource to another in the bundle, including 
 circular references where resources refer to each other. If the server assigns 
 a new id to any resource in the bundle as part of the processing rules above, 
 it SHALL also update any references to that resource in the same bundle as they 
@@ -659,41 +660,46 @@ are processed. References to resources that are not
 part of the bundle are left untouched. Version-specific references should remain
 as version=specific references after the references have been updated.
 Servers SHALL be replace all matching links in the bundle, whether they are found in the resource ids, 
-resource references, url elements, or &lt;a href="" &amp; &lt;img src="" in the narrative.
+resource references, url elements, or &lt;a href="" &amp; &lt;img src="" in the narrative. -->
 </p>
 <p>
-In order to allow the client to know the id assigned to the resources by the server, the 
+Чтобы дать возможность клиентам узнавать идентификаторы, присвоенные ресурсам сервером, сервер ДОЛЖЕН возвращать <a href="extras.html#bundle">комплект (Bundle)</a> с <a href="bundle-definitions.html#Bundle.type">типом</a> = "transaction-response", который содержит по одной записи для каждого элемента в транзакции с полученным ресурсом (или удаленной записью).
+<!-- In order to allow the client to know the id assigned to the resources by the server, the 
 server SHALL return a <a href="extras.html#bundle">Bundle</a> with 
 <a href="bundle-definitions.html#Bundle.type">type</a> = "transaction-response" that contains one entry for each entry in the 
-transaction, with the resulting resource (or deleted entry).
+transaction, with the resulting resource (or deleted entry). -->
 </p>
 <p>
-The server MAY also return an OperationOutcome resource with additional information about the transaction; if one is sent it SHALL not include any errors if the transaction was successful.
+Сервер также МОЖЕТ возвращать ресурс OperationOutcome с дополнительной информацией о транзакции; в этом случае он НЕ ДОЛЖЕН включать никаких ошибок, если транзакция была успешной.
+<!-- The server MAY also return an OperationOutcome resource with additional information about the transaction; if one is sent it SHALL not include any errors if the transaction was successful. -->
 </p>
 <a name="match"> </a>
-<p><b>Conditional Processing</b></p>
+<p><b>Условная обработка<!-- Conditional Processing --></b></p>
 
 <p>
-The application constructing a bundle may not be sure whether a particular resource will already exist
+Приложение, создающее комплект, может быть не уверено насчет того, существует ли уже конкретный ресурс на момент выполнения транзакции; как правило, это случай со ссылочными ресурсами (reference resources), такими как patient и provider. В этом случае комплект должен содержать ресурс-кандидат со статусом "match", идентификатором и свойством <a href="bundle-definitions.html#Bundle.entry.search">search</a>
+<!-- The application constructing a bundle may not be sure whether a particular resource will already exist
 at the time that the transaction is executed; this is typically the case with reference resources such 
 as patient and provider. In this case, the bundle should contain a candidate resource with
-a status of "match", an id, and <a href="bundle-definitions.html#Bundle.entry.search">search</a> property
+a status of "match", an id, and <a href="bundle-definitions.html#Bundle.entry.search">search</a> property -->
 </p>
 <pre>
  &lt;search value="Patient?[parameters]"/&gt;
 </pre>
 <p>
-This means that the server search it's local resource store for a match as specified in the 
+Это означает, что сервер ищет в своем локальном хранилище ресурсов совпадение с указанными параметрами поиска (которые должны соответствовать поисковым возможностям сервера, описанными в его заявлении о соответствии). Если этот поиск не возвращает результатов, сервер обрабатывает ресурс как создание и игнорирует предоставленный идентификатор. Если поиск возвращает одно совпадение, сервер игнорирует переданный ему ресурс и использует вместо него этот найденный уже существующий ресурс. Если найдено больше одного ресурса, транзакция ДОЛЖНА быть отклонена с ошибкой.
+<!-- This means that the server search it's local resource store for a match as specified in the 
 search parameters (which must conform to the servers capability for searching as specified 
 in its conformance statement). If the search returns no matches, the server process the 
 resource as a create, and ignores the provided id. If the search returns one match, the server
 uses this matching resource that already exists instead, and ignores the submitted resource. 
-If more than one resource is found, the transaction SHALL be rejected with an error.
+If more than one resource is found, the transaction SHALL be rejected with an error. -->
 </p>
 <p>
-If the server that is processing the transaction requires version aware updates, 
+Если серверу, обрабатывающему транзакцию, требуется версионное обновление, клиенту может потребоваться указать текущую версию ресурса на сервере, которая теперь является предыдущей версией для клиента:
+<!-- If the server that is processing the transaction requires version aware updates, 
 the client may need to reference what is the server's current version of
-the resource, which is now the client's previous version:
+the resource, which is now the client's previous version: -->
 </p>
 <pre>
  &lt;meta&gt;
@@ -701,17 +707,19 @@ the resource, which is now the client's previous version:
  &lt;/meta&gt;
 </pre>
 <p>
-If the value of the versionId doesn't match the server's version (or is missing and the 
+Если значение versionId не совпадает с версией на сервере (или отсутствует, а сервер сконфигурирован требовать её), вся транзакция должна быть отклонена с сообщением об ошибке 412 Pre-condition Failed. 
+<!-- If the value of the versionId doesn't match the server's version (or is missing and the 
 server is configured to require it), the entire transaction must fail with a 412 Pre-condition 
-Failed message.
+Failed message. -->
 </p>
 
 <a name="history"> </a>
 <h3>history</h3>
 <p>
-The history interaction retrieves the history of either a particular resource, all resources of 
+Взаимодействие history извлекает историю либо конкретного ресурса, либо всех ресурсов данного типа, либо всех ресурсов, поддерживаемых системой. Эти три варианта взаимодействия history выполняются HTTP-командой Get, как показано ниже:
+<!-- The history interaction retrieves the history of either a particular resource, all resources of 
 a given type, or all resources supported by the system. These three variations of the history
-interaction are performed by HTTP Get command as shown:
+interaction are performed by HTTP Get command as shown: -->
 </p>
 <pre>
   GET [base]/[type]/[id]/_history{?[parameters]&amp;_format=[mime-type]}
@@ -719,10 +727,11 @@ interaction are performed by HTTP Get command as shown:
   GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 </pre>
 <p>
-The return content is a <a href="extras.html#bundle">Bundle</a> with 
+Возвращаемым содержимым будет <a href="extras.html#bundle">комплект (Bundle)</a> с <a href="bundle-definitions.html#Bundle.type">типом</a> = "history", содержащий историю версий, сортированную таким образом, что старые версии идут последними, и включающую удаленные ресурсы, представленные типом, идентификатором и, необязательно, временем удаления ресурса, в bundle.entry.deleted:
+<!-- The return content is a <a href="extras.html#bundle">Bundle</a> with 
 <a href="bundle-definitions.html#Bundle.type">type</a> = "history" containingcontaining the specified version history, 
 sorted with oldest versions last, and including deleted resources, represented with a type and id, and optionally a time of deletion, 
-in bundle.entry.deleted:
+in bundle.entry.deleted: -->
 </p>
 <pre class="xml">
   &lt;entry&gt;
@@ -734,50 +743,58 @@ in bundle.entry.deleted:
   &lt;/entry&gt;
 </pre>
 <p>
-In addition to the standard _format parameter, the parameters to this interaction may also include:
+Кроме стандартного параметра _format, параметры этого взаимодействия могут также включать:
+<!-- In addition to the standard _format parameter, the parameters to this interaction may also include: -->
 </p>
 <table class="list">
-  <tr><td>_count : <a href="datatypes.html#integer">integer</a></td><td>single</td><td>Number of return records requested. The server is not bound to return the number requested, but cannot return more</td></tr>
-  <tr><td>_since : <a href="datatypes.html#integer">instant</a></td><td>single</td><td>Only include resource versions that were created at or after the given instant in time</td></tr>
+  <tr><td>_count : <a href="datatypes.html#integer">integer</a></td><td>single</td><td>Требуемое количество возвращаемых записей. Сервер не обязан вернуть именно столько записей, но не может вернуть большее количество<!-- Number of return records requested. The server is not bound to return the number requested, but cannot return more --></td></tr>
+  <tr><td>_since : <a href="datatypes.html#integer">instant</a></td><td>single</td><td>Включить только те версии ресурсов, которые были созданы в или после указанного времени<!-- Only include resource versions that were created at or after the given instant in time --></td></tr>
 </table>
 <p>
-The history list can be restricted to a limited period by specifying a _since parameter which contains a full date time with time zone. 
+Список истории можно ограничить некоторым периодом с помощью параметра _since, который содержит полную дату/время с указанием часового пояса. 
+Серверы ДОЛЖНЫ гарантировать, что если клиенты используют дату feed.meta.lastUpdated из последнего ответа, который они получили, в качестве параметра _since, то никакие версии не будут пропущены. Клиентам следует осознавать, что из-за погрешности времени они могут получать уведомления об обновлении ресурса в граничные моменты времени более одного раза. 
+Серверы не обязаны поддерживать точность выше, чем 1 секунда. 
+<!-- The history list can be restricted to a limited period by specifying a _since parameter which contains a full date time with time zone. 
 Servers SHALL ensure that if a client uses the feed.meta.lastUpdated date from the last response they received as 
 the value of the _since parameter, no versions will be missed. Clients should be aware that due to timing imprecision, 
 they may receive notifications of a resource update on the boundary instant more than once. Servers are 
-not required to support a precision finer than by second. 
+not required to support a precision finer than by second. --> 
 </p>
 <p>
-The updates list can be long, so servers may use paging. If they do, they SHALL use the method <a href="#paging">described 
-below </a> for breaking the list into pages if appropriate.
+Список обновлений может быть длинным, поэтому серверы могут использовать разбиение на страницы (пагинацию). Если они делают это, они ДОЛЖНЫ использовать метод, <a href="#paging">описанный ниже</a>, для разбиения списка на страницы, где это необходимо.
+<!-- The updates list can be long, so servers may use paging. If they do, they SHALL use the method <a href="#paging">described 
+below </a> for breaking the list into pages if appropriate. -->
 </p>
 <p>
-The history interaction can be used to set up a subscription from one system
+Взаимодействие history может использоваться для установки подписки одной системы на другую для синхронизации ресурсов между ними. Системам, получающие такие фиды и планирующие обеспечение целостности ресурсов, следует отметить, что границы <a href="#transaction">транзакции</a> не отражаются в списке истории и плане, соответственно. Альтернативные средства синхронизации систем можно посмотреть на странице ресурса <a href="subscription.html">Subscription</a>.
+<!-- The history interaction can be used to set up a subscription from one system
 to another, so that resources are synchronized between them. Systems receiving such feeds and planning
 on enforcing resource integrity should note that <a href="#transaction">transaction</a> boundaries 
 are not reflected in the history list nd plan accordingly. Refer to the <a href="subscription.html">Subscription reosurce</a>
-for an alternate means of system synschronization.
+for an alternate means of system synschronization. -->
 </p>
  
  <a name="tags"> </a>
 <h3>Meta Interaction</h3>
  
 <p>
-The <a href="resource.html#meta">meta element</a> contains references to profiles, tags and security
-labels that control the behaviour of the resource. These rules apply to these meta-attributes: 
+Элемент <a href="resource.html#meta">meta</a> содержит ссылки на профили, теги и метки уровня безопасности, управляющие поведением ресурса. Эти правила применяются к следующим атрибутам метаданных:
+<!-- The <a href="resource.html#meta">meta element</a> contains references to profiles, tags and security
+labels that control the behaviour of the resource. These rules apply to these meta-attributes: --> 
 </p>
 <table class="grid">
  <tr><td><b>Interaction</b></td><td><b>Meta-Attribute Actions</b></td></tr>
- <tr><td>read/vread</td><td>The server returns the items in the meta element</td></tr>
- <tr><td>create</td><td>The server stores the items provided with the resource, and may add it's own or edit them for it's own reasons</td></tr>
- <tr><td>update</td><td>The server merges the items provided with the resource along with those already associated with the resource, and may add it's own or edit them for it's own reasons</td></tr>
+ <tr><td>read/vread</td><td>Сервер возвращает пункты элемента meta <!-- The server returns the items in the meta element --></td></tr>
+ <tr><td>create</td><td>Сервер сохраняет элементы, предоставленные с ресурсом, и может добавить свои собственные или отредактировать их по собственным причинам<!-- The server stores the items provided with the resource, and may add it's own or edit them for it's own reasons --></td></tr>
+ <tr><td>update</td><td>Сервер выполняет слияние элементов, предоставленных с ресурсом, с теми, которые уже ассоциированы с этим ресурсом, и может добавить свои собственные или отредактировать их по собственным причинам<!-- The server merges the items provided with the resource along with those already associated with the resource, and may add it's own or edit them for it's own reasons --></td></tr>
 </table>
 <p>
-These items are allowed to change without changing the version of the resource 
+Эти элементы разрешается изменять без изменения версии ресурса (примечание: никакое другое содержимое ресурса не разрешается изменять без изменения версии ресурса). В частности, должна быть возможность обновить метки уровня безопасности старой версии ресурса. Для поддержки этой возможности данная операция предоставляет несколько взаимодействий, которые оперируют непосредственно элементом meta:
+<!-- These items are allowed to change without changing the version of the resource 
 (note: none of the other contents of a resource are allowed to change without changing 
 the version of the resource). In particular, it must be possible to update the security
 labels on old version of a resource. To support this, this operation provides several 
-interactions that operate directly on the meta element:
+interactions that operate directly on the meta element: -->
 </p>
 <table class="grid">
  <tr><td width="50%"><b>HTTP Command</b></td><td valign="center"><b>description</b></td></tr>
@@ -791,8 +808,9 @@ interactions that operate directly on the meta element:
  <tr><td><pre>POST [base]/[type]/[id]/_history/[vid]/_meta-delete</pre></td><td valign="center">Remove all profiles, security labels, and tags in the provided list from the list of tags for the nominated version of the resource</td></tr>
 </table>  
 <p>
-In all these operations, versionId is not used. The server may choose to populate the lastUpdated. Note that these interactions do not create a new version of the resource. 
-These interactions use the meta element directly:
+VersionId не используется во всех этих операциях. Сервер может решить заполнять lastUpdated. Обратите внимание, что эти взаимодействия не создают новую версию ресурса. Эти взаимодействия используют непосредственно элемент meta:
+<!-- In all these operations, versionId is not used. The server may choose to populate the lastUpdated. Note that these interactions do not create a new version of the resource. 
+These interactions use the meta element directly: -->
 </p>
 <pre class="xml">
 &lt;meta xmlns=&quot;http://hl7.org/fhir&quot;&gt; 
@@ -808,7 +826,7 @@ These interactions use the meta element directly:
 &lt;/meta&gt;
 </pre>
 <p>
-Or, in JSON:
+Или в JSON:
 </p>
 <div class="example">
 <pre class="json linecounter">
@@ -828,36 +846,40 @@ Or, in JSON:
 </div>
 
 <a name="transactional-integrity"> </a>
-<h3>Transactional Integrity</h3>
+<h3>Транзакционная целостность<!-- Transactional Integrity --></h3>
 <p>
-When processing <a href="#create">create</a> and <a href="#update">update</a> 
+При обработке операций  <a href="#create">create</a> и <a href="#update">update</a> FHIR-сервер не обязан принимать ресурс целиком как есть; когда ресурс извлекается с помощью операции <a href="#read">read</a> впоследствии, ресурс может быть другим. Разница может возникнуть по нескольким причинам:
+<!-- When processing <a href="#create">create</a> and <a href="#update">update</a> 
 operations, a FHIR server is not obliged to accept the entire resource as it 
 is; when the resource is retrieved through a <a href="#read">read</a> operation 
 subsequently, the resource may be different. The difference may arise for
-several reasons:
+several reasons: -->
 </p>
 <ul>
- <li>The server merged updated content with existing content</li>
- <li>The server applied business rules and altered the content</li>
- <li>The server does not fully support all the features or possible values of the resource</li>
+ <li>Сервер объединил обновленное содержимое с существующим<!-- The server merged updated content with existing content --></li>
+ <li>Сервер применил бизнес-правила и изменил содержимое<!-- The server applied business rules and altered the content --></li>
+ <li>Сервер не полностью поддерживает все свойства или возможные значения ресурса<!-- The server does not fully support all the features or possible values of the resource --></li>
 </ul>
 <p>
-Note that there is no general purpose method to make merging with existing content or 
+Обратите внимание, что нет метода общего назначения сделать слияние с существующим содержимым или изменение содержимого в соответствии с бизнес-правилами безопасным или предсказуемым, а те, что доступны, надежны и/или необходимы - в значительной степени зависят от контекста. Такого рода поведение может
+быть вызвано соображениями безопасности. Что касается неполной поддержки, клиенты могут обратиться к ссылкам на профили в базовом заявлении о соответствии сервера, чтобы определить, какие свойства или значения сервер не поддерживает.
+<!-- Note that there is no general purpose method to make merging with existing content or 
 altering the content by business rules safe or predictable - what is possible,
 safe and/or required is highly context dependent. These kind of behaviors may
 be driven by security considerations. With regard to incomplete support, Clients can consult the server's
 base conformance statement profile references to determine which features or 
-values the server does not support.
+values the server does not support. -->
 </p>
 <p>
-To the degree that the server alters the resource for any of 
+По мере того, как сервер изменяет ресурс под любой из перечисленных выше причин, FHIR-сервер будет создавать последствия реализации для экосистемы, частью которой он является, которыми будет необходимо управлять (т. е. это будет обходиться дороже). По этой причине серверам СЛЕДУЕТ менять ресурс как можно меньше. Однако из-за изменчивости, которая существует в здравоохранении, данная спецификация допускает, что серверы МОГУТ изменять ресурс при создании/обновлении.
+<!-- To the degree that the server alters the resource for any of 
 the 3 reasons above, the FHIR server will create implementation 
 consequences for the eco-system that it is part of, which will 
 need to be managed (i.e. it will cost more). For this reason, 
 servers SHOULD change the resource as little as possible. 
 However due to the variability that exists within healthcare, 
 this specification allows that servers MAY alter the resource on
-create/update. 
+create/update.  -->
 </p>
 <p>
 Аналогичным образом, по мере того как контекст реализации привносит особые
@@ -882,20 +904,20 @@ logic to prevent information from being lost or corrupted.  -->
 </p>
 <p>
 Некоторые из этих трудностей можно уменьшить, следуя схеме, 
-построенной на версионных апдейтах. В этой схеме:
+построенной на версионных обновлениях. В этой схеме:
 <!-- Some of these problems can be mitigated by following a pattern 
 built on top of version-aware updates. In this pattern: -->
 </p>
 <ul>
- <li>The server provides a <a href="#read">read</a> operation for any resource it accepts <a href="#update">update</a> operations on</li>
- <li>Before updating, the client <a href="#read">reads</a> the latest version of the resource</li>
- <li>The client applies the changes it wants to the resource, leaving other information intact (note the <a href="extensibility.html#exchange">extension related rules</a> around this)</li>
- <li>The client writes the result back as an <a href="#update">update</a> operation, and is able to handle a 409 or 412 response (usually by trying again)</li>
+ <li>Сервер предоставляет операцию чтения <a href="#read">read</a> для любого ресурса, над которым он принимает операцию обновления <a href="#update">update</a><!-- The server provides a <a href="#read">read</a> operation for any resource it accepts <a href="#update">update</a> operations on --></li>
+ <li>Перед обновлением клиент <a href="#read">читает</a> последнюю версию ресурса<!-- Before updating, the client <a href="#read">reads</a> the latest version of the resource --></li>
+ <li>Клиент применяет к ресурсу желаемые изменения, оставляя другую информацию нетронутой (обратите внимание на <a href="extensibility.html#exchange">правила, связанные с extension</a> в связи с этим)<!-- The client applies the changes it wants to the resource, leaving other information intact (note the <a href="extensibility.html#exchange">extension related rules</a> around this) --></li>
+ <li>Клиент записывает результат с помощью операции <a href="#update">update</a> и может обработать ответы 409 и 412 (как правило, выполняя повторную попытку)<!-- The client writes the result back as an <a href="#update">update</a> operation, and is able to handle a 409 or 412 response (usually by trying again) --></li>
 </ul>
 <p>
 Если клиенты придерживаются этой схемы, то информация 
-из других систем, которую они не поинмают, будет сохраняться 
-на протяжении этого апдейта.
+из других систем, которую они не понимают, будет сохраняться 
+на протяжении этого обновления.
 <!-- If clients follow this pattern, then information from other systems
 that they do not understand will be maintained through the update. -->
 </p>
@@ -1010,7 +1032,7 @@ of resources in the feed may exceed the number indicated in totalResults. --></p
 <p>
 Протокол HTTP может быть направлен через HTTP-прокси, например squid. 
 Подобные прокси прозрачны для приложений, хотя реализаторы должны 
-быть готовы к последствиям кэширования, особенно к риску получения 
+быть готовы к последствиям кеширования, особенно к риску получения 
 устаревшего содержимого. См. более подробную информацию в 
 <a href="http://tools.ietf.org/html/rfc2616#page-74">спецификации HTTP</a>.
 
