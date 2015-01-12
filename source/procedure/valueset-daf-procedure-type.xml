@@ -8,10 +8,11 @@
   </telecom>
   <description value="This example value set defines a set of codes that can be used to indicate the type
     of procedure: a specific code indicating type of procedure performed (NEED TO ADD CPT)."/>
+  <copyright value="This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement"/>  
   <status value="draft"/>
   <compose>
     <include>
-      <system value="http://snomed.info/sct/"/>
+      <system value="http://snomed.info/sct"/>
     </include>
    <include>
      <system value="http://hl7.org/fhir/sid/icd-10"/>

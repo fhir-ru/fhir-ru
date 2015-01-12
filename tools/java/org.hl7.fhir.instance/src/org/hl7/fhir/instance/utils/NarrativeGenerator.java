@@ -158,7 +158,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     } else if (r instanceof OperationDefinition) {
       generate((OperationDefinition) r);   // Maintainer = Grahame
     } else if (context.getProfiles().containsKey(r.getResourceType().toString())) {
-      Profile p = ctxt.findResource(Profile.class, "test");
+      Profile p = ctxt.fetchResource(Profile.class, "test");
       generateByProfile(r, p /* context.getProfiles().get(r.getResourceType().toString()) */, true); // todo: make this manageable externally 
     } else if (context.getProfiles().containsKey("http://hl7.org/fhir/profile/"+r.getResourceType().toString().toLowerCase())) {
       generateByProfile(r, context.getProfiles().get("http://hl7.org/fhir/profile/"+r.getResourceType().toString().toLowerCase()), true); // todo: make this manageable externally 
@@ -343,13 +343,13 @@ public class NarrativeGenerator implements INarrativeGenerator {
     else if (e instanceof Extension)
       x.addText("Extensions: Todo");
     else if (e instanceof InstantType)
-      x.addText(((InstantType) e).getValue().toHumanDisplay());
+      x.addText(((InstantType) e).toHumanDisplay());
     else if (e instanceof DateTimeType)
-      x.addText(((DateTimeType) e).getValue().toHumanDisplay());
+      x.addText(((DateTimeType) e).toHumanDisplay());
     else if (e instanceof Base64BinaryType)
       x.addText(new Base64().encodeAsString(((Base64BinaryType) e).getValue()));
     else if (e instanceof org.hl7.fhir.instance.model.DateType)
-      x.addText(((org.hl7.fhir.instance.model.DateType) e).getValue().toHumanDisplay());
+      x.addText(((org.hl7.fhir.instance.model.DateType) e).toHumanDisplay());
     else if (e instanceof Enumeration)
       x.addText(((Enumeration<?>) e).getValue().toString()); // todo: look up a display name if there is one
     else if (e instanceof BooleanType)
@@ -382,9 +382,9 @@ public class NarrativeGenerator implements INarrativeGenerator {
       renderQuantity(((Ratio) e).getDenominator(), x, showCodeDetails);
     } else if (e instanceof Period) {
       Period p = (Period) e;
-      x.addText(!p.hasStart() ? "??" : p.getStart().toHumanDisplay());
+      x.addText(!p.hasStart() ? "??" : p.getStartElement().toHumanDisplay());
       x.addText(" --> ");
-      x.addText(!p.hasEnd() ? "(ongoing)" : p.getEnd().toHumanDisplay());
+      x.addText(!p.hasEnd() ? "(ongoing)" : p.getEndElement().toHumanDisplay());
     } else if (e instanceof Reference) {
       Reference r = (Reference) e;
       XhtmlNode c = x;
@@ -439,16 +439,16 @@ public class NarrativeGenerator implements INarrativeGenerator {
       x.addText(name+": "+((IdType) e).getValue());
       return true;
     } else if (e instanceof DateTimeType) {
-      x.addText(name+": "+((DateTimeType) e).getValue().toHumanDisplay());
+      x.addText(name+": "+((DateTimeType) e).toHumanDisplay());
       return true;
     } else if (e instanceof InstantType) {
-      x.addText(name+": "+((InstantType) e).getValue().toHumanDisplay());
+      x.addText(name+": "+((InstantType) e).toHumanDisplay());
       return true;
     } else if (e instanceof Extension) {
       x.addText("Extensions: todo");
       return true;
     } else if (e instanceof org.hl7.fhir.instance.model.DateType) {
-      x.addText(name+": "+((org.hl7.fhir.instance.model.DateType) e).getValue().toHumanDisplay());
+      x.addText(name+": "+((org.hl7.fhir.instance.model.DateType) e).toHumanDisplay());
       return true;
     } else if (e instanceof Enumeration) {
       x.addText(((Enumeration<?>) e).getValue().toString()); // todo: look up a display name if there is one
@@ -496,9 +496,9 @@ public class NarrativeGenerator implements INarrativeGenerator {
     } else if (e instanceof Period) {
       Period p = (Period) e;
       x.addText(name+": ");
-      x.addText(!p.hasStart() ? "??" : p.getStart().toHumanDisplay());
+      x.addText(!p.hasStart() ? "??" : p.getStartElement().toHumanDisplay());
       x.addText(" --> ");
-      x.addText(!p.hasEnd() ? "(ongoing)" : p.getEnd().toHumanDisplay());
+      x.addText(!p.hasEnd() ? "(ongoing)" : p.getEndElement().toHumanDisplay());
       return true;
     } else if (e instanceof Reference) {
       Reference r = (Reference) e;
@@ -538,9 +538,9 @@ public class NarrativeGenerator implements INarrativeGenerator {
   }
 
   private String displayPeriod(Period p) {
-    String s = !p.hasStart() ? "??" : p.getStart().toHumanDisplay();
+    String s = !p.hasStart() ? "??" : p.getStartElement().toHumanDisplay();
     s = s + " --> ";
-    return s + (!p.hasEnd() ? "(ongoing)" : p.getEnd().toHumanDisplay());
+    return s + (!p.hasEnd() ? "(ongoing)" : p.getEndElement().toHumanDisplay());
   }
 
   private void generateResourceSummary(XhtmlNode x, Resource res, boolean textAlready, boolean showCodeDetails) throws Exception {
@@ -823,7 +823,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
         if (rep.hasCountElement())
           b.append(" "+Integer.toString(rep.getCount())+" times");
         else if (rep.hasEnd()) 
-          b.append(" until "+rep.getEnd().toHumanDisplay());
+          b.append(" until "+rep.getEndElement().toHumanDisplay());
       }
       return b.toString();
     } else
@@ -987,7 +987,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       p.addText(Utilities.capitalize(cm.getStatus().toString())+" (not intended for production usage). ");
     else
       p.addText(Utilities.capitalize(cm.getStatus().toString())+". ");
-    p.addText("Published on "+cm.getDate().toHumanDisplay()+" by "+cm.getPublisher());
+    p.addText("Published on "+cm.getDateElement().toHumanDisplay()+" by "+cm.getPublisher());
     if (!cm.getTelecom().isEmpty()) {
       p.addText(" (");
       boolean first = true;
@@ -1250,12 +1250,44 @@ public class NarrativeGenerator implements INarrativeGenerator {
       else
         throw new Exception("Error: should not encounter value set expansion at this point");
     }
+    Integer count = countMembership(vs);
+    if (count == null)
+      x.addTag("p").addText("This value set does not contain a fixed number of concepts");
+    else
+      x.addTag("p").addText("This value set contains "+count.toString()+" concepts");
+    
     boolean hasExtensions = false;
     if (vs.hasDefine())
       hasExtensions = generateDefinition(x, vs);
     if (vs.hasCompose()) 
       hasExtensions = generateComposition(x, vs) || hasExtensions;
     inject(vs, x, hasExtensions ? NarrativeStatus.EXTENSIONS :  NarrativeStatus.GENERATED);
+  }
+
+  private Integer countMembership(ValueSet vs) {
+    int count = 0;
+    if (vs.hasDefine())
+      count = count + countConcepts(vs.getDefine().getConcept());
+    if (vs.hasCompose()) {
+      if (vs.getCompose().hasExclude())
+        throw new Error("Not done yet"); // can't simply subtract. do an expand?
+      for (ConceptSetComponent inc : vs.getCompose().getInclude()) {
+        if (inc.hasFilter())
+          return null;
+        if (!inc.hasConcept())
+          return null;
+        count = count + inc.getConcept().size();
+      }
+    }
+    return count;
+  }
+
+  private int countConcepts(List<ConceptDefinitionComponent> list) {
+    int count = list.size();
+    for (ConceptDefinitionComponent c : list)
+      if (c.hasConcept())
+        count = count + countConcepts(c.getConcept());
+    return count;
   }
 
   private boolean generateExpansion(XhtmlNode x, ValueSet vs) {
@@ -1321,7 +1353,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       heirarchy = heirarchy || c.hasConcept();
       scanLangs(c, langs);
     }
-    addMapHeaders(addTableHeaderRowStandard(t, true, heirarchy, display, commentS, deprecated), mymaps);
+    addMapHeaders(addTableHeaderRowStandard(t, heirarchy, display, true, commentS, deprecated), mymaps);
     for (ConceptDefinitionComponent c : vs.getDefine().getConcept()) {
       hasExtensions = addDefineRowToTable(t, c, 0, heirarchy, display, commentS, deprecated, mymaps) || hasExtensions;
     }    

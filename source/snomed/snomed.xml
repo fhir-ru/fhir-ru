@@ -862,6 +862,14 @@
     <display value="Certainty"/>
     <display value="Certain (qualifier value)"/>
   </concept>
+  <concept id="172676009" display="Myringotomy and insertion of short-term tympanic ventilation tube (procedure)">
+    <display value="Myringotomy and insertion of short-term grommet"/>
+    <display value="Gs - Short-term grommet insertion"/>
+    <display value="Myringotomy and insertion of short-term ventilation tube"/>
+    <display value="Myringotomy and insertion of short-term tympanic ventilation tube (procedure)"/>
+    <display value="Myringotomy and insertion of short-term tympanic ventilation tube"/>
+    <display value="Myringotomy and insertion of short-term grommet (procedure)"/>
+  </concept>
   <concept id="172960003" display="Incision of retropharyngeal abscess">
     <display value="Incision of retropharyngeal abscess"/>
     <display value="Incision of retropharyngeal abscess (procedure)"/>
@@ -1129,6 +1137,12 @@
   <concept id="225944008" display="Wound tenderness (finding)">
     <display value="Wound tenderness"/>
     <display value="Wound tenderness (finding)"/>
+  </concept>
+  <concept id="226307009" display="Carbohydrate supplementation (product)">
+    <display value="Carbohydrate supplementation (product)"/>
+    <display value="Carbohydrate supplementation"/>
+    <display value="CHO - Carbohydrate supplementation"/>
+    <display value="Carbohydrate supplementation (substance)"/>
   </concept>
   <concept id="226376004" display="Benzoate (substance)">
     <display value="Benzoate"/>
@@ -1494,6 +1508,10 @@
     <display value="Puncture of vein"/>
     <display value="Venipuncture (procedure)"/>
   </concept>
+  <concept id="227983006" display="Baby food (substance)">
+    <display value="Baby food"/>
+    <display value="Baby food (substance)"/>
+  </concept>
   <concept id="22836000" display="Vegetable (substance)">
     <display value="Vegetable"/>
     <display value="Vegetable (substance)"/>
@@ -1681,10 +1699,21 @@
     <display value="Chives"/>
     <display value="Allium schoenoprasum (organism)"/>
   </concept>
+  <concept id="248342006" display="Underweight (finding)">
+    <display value="Underweight"/>
+    <display value="Patient underweight"/>
+    <display value="Underweight (finding)"/>
+  </concept>
   <concept id="248490000" display="Bloating symptom (finding)">
     <display value="Abdomen feels bloated"/>
     <display value="Bloating symptom"/>
     <display value="Bloating symptom (finding)"/>
+  </concept>
+  <concept id="248536006" display="Finding of functional performance and activity (finding)">
+    <display value="Observation of functional performance and activity"/>
+    <display value="Skill and ability"/>
+    <display value="Finding of functional performance and activity"/>
+    <display value="Finding of functional performance and activity (finding)"/>
   </concept>
   <concept id="24863003" display="Postprandial (qualifier value)">
     <display value="pc - post cibum"/>
@@ -1695,6 +1724,7 @@
     <display value="Postprandial"/>
     <display value="Postprandial (qualifier value)"/>
   </concept>
+  <concept id="249943000:363698007=72098002,260868000=6934004" display="Weakness of distal arms and legs (finding) where Finding site (attribute) = Entire left upper arm (body structure), and Permanence (attribute) = Permanent (qualifier value)"/>
   <concept id="25062003" display="Feeding tube">
     <display value="Feeding tube, device"/>
     <display value="Feeding tube"/>
@@ -2852,6 +2882,10 @@
     <display value="Travel vaccinations"/>
     <display value="Travel vaccinations (procedure)"/>
   </concept>
+  <concept id="282291009" display="Diagnosis interpretation (observable entity)">
+    <display value="Diagnosis interpretation"/>
+    <display value="Diagnosis interpretation (observable entity)"/>
+  </concept>
   <concept id="28230009" display="Poultry (substance)">
     <display value="White meat"/>
     <display value="Poultry"/>
@@ -3661,6 +3695,11 @@
     <display value="Cimetidine (substance)"/>
     <display value="Cimetidine"/>
   </concept>
+  <concept id="373930000" display="Cognitive function finding (finding)">
+    <display value="Cognitive function finding (finding)"/>
+    <display value="Cognitive function finding"/>
+    <display value="Cognitive function observations"/>
+  </concept>
   <concept id="373933003" display="Acute onset (qualifier value)">
     <display value="Acute onset (qualifier value)"/>
     <display value="Acute onset"/>
@@ -3931,6 +3970,12 @@
     <display value="q7days"/>
     <display value="Every 7 days"/>
   </concept>
+  <concept id="396427003" display="Measles vaccine (substance)">
+    <display value="Measles vaccine (substance)"/>
+    <display value="Measles vaccine"/>
+    <display value="Rubeola virus vaccine"/>
+    <display value="Measles live virus vaccine"/>
+  </concept>
   <concept id="397158004" display="Perianal region structure (body structure)">
     <display value="Perianal region structure (body structure)"/>
     <display value="Perianal region structure"/>
@@ -4019,6 +4064,10 @@
     <display value="Neighbor of"/>
     <display value="Proximal (qualifier value)"/>
   </concept>
+  <concept id="404684003" display="Clinical finding (finding)">
+    <display value="Clinical finding (finding)"/>
+    <display value="Clinical finding"/>
+  </concept>
   <concept id="405430002" display="Catheterization of subclavian vein (procedure)">
     <display value="Catheterization of subclavian vein (procedure)"/>
     <display value="Catheterisation of subclavian vein"/>
@@ -4075,6 +4124,12 @@
     <display value="Parent, NOS"/>
     <display value="Parent (person)"/>
   </concept>
+  <concept id="407152001" display="Raised blood lead level">
+    <display value="Increased blood lead level (finding)"/>
+    <display value="Increased blood lead level"/>
+    <display value="Elevated blood lead level"/>
+    <display value="Raised blood lead level"/>
+  </concept>
   <concept id="40768004" display="Left thorax">
     <display value="Left thorax structure"/>
     <display value="Left thorax"/>
@@ -4107,6 +4162,10 @@
     <display value="Drowning, NOS"/>
     <display value="Fatal submersion-immersion"/>
     <display value="Drowning (finding)"/>
+  </concept>
+  <concept id="409586006" display="Complaint (finding)">
+    <display value="Complaint (finding)"/>
+    <display value="Complaint"/>
   </concept>
   <concept id="410001006" display="Military medicine">
     <display value="Military medicine (qualifier value)"/>
@@ -4214,6 +4273,10 @@
     <display value="Doxylamine (product)"/>
     <display value="Doxylamine"/>
   </concept>
+  <concept id="412414007" display="Infant formula + iron (product)">
+    <display value="Infant formula + iron (product)"/>
+    <display value="Infant formula + iron"/>
+  </concept>
   <concept id="412601002" display="Carob (substance)">
     <display value="Carob (substance)"/>
     <display value="Carob"/>
@@ -4231,6 +4294,10 @@
     <display value="Polyp"/>
     <display value="Polyp, NOS"/>
     <display value="Polyp (morphologic abnormality)"/>
+  </concept>
+  <concept id="413322009" display="Problem resolved (finding)">
+    <display value="Problem resolved (finding)"/>
+    <display value="Problem resolved"/>
   </concept>
   <concept id="413651001" display="Bioptics">
     <display value="Bioptics (procedure)"/>
@@ -4370,6 +4437,10 @@
   <concept id="418693002" display="Swallowed whole, not chewed (qualifier value)">
     <display value="Swallowed whole, not chewed (qualifier value)"/>
     <display value="Swallowed whole, not chewed"/>
+  </concept>
+  <concept id="418799008" display="Finding reported by subject or history provider (finding)">
+    <display value="Finding reported by subject or history provider (finding)"/>
+    <display value="Finding reported by subject or history provider"/>
   </concept>
   <concept id="418849000" display="Warning. Follow the printed instructions you have been given with this medicine (qualifier value)">
     <display value="Warning. Follow the printed instructions you have been given with this medicine (qualifier value)"/>
@@ -4521,6 +4592,11 @@
     <display value="Then stop"/>
     <display value="Then stop - dosing instruction fragment"/>
   </concept>
+  <concept id="422504002" display="Ischemic stroke (disorder)">
+    <display value="Ischemic stroke (disorder)"/>
+    <display value="Ischemic stroke"/>
+    <display value="Ischaemic stroke"/>
+  </concept>
   <concept id="424124008" display="Sudden onset AND/OR short duration (qualifier value)">
     <display value="Sudden onset AND/OR short duration (qualifier value)"/>
     <display value="Sudden onset AND/OR short duration"/>
@@ -4569,6 +4645,10 @@
     <display value="Sugar beet"/>
     <display value="Mangels"/>
     <display value="Beta vulgaris (organism)"/>
+  </concept>
+  <concept id="427298002" display="Enteral dietary supplement (substance)">
+    <display value="Enteral dietary supplement (substance)"/>
+    <display value="Enteral dietary supplement"/>
   </concept>
   <concept id="428263003" display="NOT suspected (qualifier value)">
     <display value="NOT suspected (qualifier value)"/>
@@ -4753,6 +4833,10 @@
   <concept id="445085009" display="Tunneled central venous catheter (physical object)">
     <display value="Tunneled central venous catheter (physical object)"/>
     <display value="Tunneled central venous catheter"/>
+  </concept>
+  <concept id="445518008" display="Age at onset of clinical finding (observable entity)">
+    <display value="Age at onset of clinical finding (observable entity)"/>
+    <display value="Age at onset of clinical finding"/>
   </concept>
   <concept id="44567001" display="Tracheal structure (body structure)">
     <display value="Tracheal structure"/>
@@ -4982,6 +5066,11 @@
     <display value="Blood group antigen Sd^a^"/>
     <display value="Blood group antigen Sid"/>
   </concept>
+  <concept id="49436004" display="Atrial fibrillation (disorder)">
+    <display value="AF - Atrial fibrillation"/>
+    <display value="Atrial fibrillation (disorder)"/>
+    <display value="Atrial fibrillation"/>
+  </concept>
   <concept id="49521004" display="Left external ear">
     <display value="Left external ear structure"/>
     <display value="Left external ear structure (body structure)"/>
@@ -5066,6 +5155,16 @@
     <display value="Admitting diagnosis"/>
     <display value="AD"/>
   </concept>
+  <concept id="53120007" display="Upper limb structure (body structure)">
+    <display value="Arm"/>
+    <display value="Upper limb structure"/>
+    <display value="Upper limb structure (body structure)"/>
+    <display value="Upper extremity"/>
+    <display value="Upper extremity, NOS"/>
+    <display value="Upper limb, NOS"/>
+    <display value="Forelimb, NOS"/>
+    <display value="Upper limb"/>
+  </concept>
   <concept id="53410008" display="Beer (substance)">
     <display value="Beer (substance)"/>
     <display value="Beer"/>
@@ -5123,6 +5222,10 @@
     <display value="Hydrocele (disorder)"/>
     <display value="Hydrocele"/>
     <display value="Hydrocele, NOS"/>
+  </concept>
+  <concept id="55561003" display="Active (qualifier value)">
+    <display value="Active (qualifier value)"/>
+    <display value="Active"/>
   </concept>
   <concept id="5558000" display="Working diagnosis (contextual qualifier) (qualifier value)">
     <display value="Working diagnosis"/>
@@ -5307,6 +5410,23 @@
     <display value="Nettle rash"/>
     <display value="Urticaria (morphologic abnormality)"/>
   </concept>
+  <concept id="64572001" display="Disease (disorder)">
+    <display value="Disease"/>
+    <display value="Disease, NOS"/>
+    <display value="Disease or syndrome present, NOS"/>
+    <display value="Clinical disease or syndrome present, NOS"/>
+    <display value="Clinical disease or syndrome, NOS"/>
+    <display value="Clinical disease AND/OR syndrome"/>
+    <display value="Disorder"/>
+    <display value="Syndrome"/>
+    <display value="Disorder, NOS"/>
+    <display value="Syndrome, NOS"/>
+    <display value="Disease AND/OR syndrome present"/>
+    <display value="Clinical disease AND/OR syndrome present"/>
+    <display value="Disorders"/>
+    <display value="Diseases"/>
+    <display value="Disease (disorder)"/>
+  </concept>
   <concept id="64915003" display="Operation on heart">
     <display value="Operative procedure on heart"/>
     <display value="Operative procedure on heart, NOS"/>
@@ -5339,6 +5459,12 @@
     <display value="Midgrade"/>
     <display value="Moderate (severity modifier)"/>
     <display value="Moderate (severity modifier) (qualifier value)"/>
+  </concept>
+  <concept id="67734004" display="Upper trunk structure (body structure)">
+    <display value="Upper trunk"/>
+    <display value="Structure of thoracic segment of trunk"/>
+    <display value="Upper trunk structure"/>
+    <display value="Upper trunk structure (body structure)"/>
   </concept>
   <concept id="67889009" display="Lavage">
     <display value="Irrigation"/>
@@ -5473,6 +5599,10 @@
   <concept id="73063007" display="Colicky pain (finding)">
     <display value="Colicky pain"/>
     <display value="Colicky pain (finding)"/>
+  </concept>
+  <concept id="73425007" display="Inactive (qualifier value)">
+    <display value="Inactive"/>
+    <display value="Inactive (qualifier value)"/>
   </concept>
   <concept id="73775008" display="Morning (qualifier value)">
     <display value="Morning"/>

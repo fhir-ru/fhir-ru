@@ -63,11 +63,8 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">CitaRespuesta</translation>
         <translation lang="fr">RéponseRendezVous</translation>
     </item>
-    <item id="Availability">
-        <translation lang="en">Availability</translation>
-        <translation lang="zh">可用</translation>
-        <translation lang="es">Disponibilidad</translation>
-        <translation lang="fr">Disponibilité</translation>
+    <item id="Schedule">
+        <translation lang="en">Schedule</translation>
     </item>
     <item id="Basic">
       <translation lang="en">Basic</translation>
@@ -87,6 +84,12 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">PlanCuidado</translation>
         <translation lang="fr">PlanDeSoins</translation>
     </item>
+    <item id="CarePlan2">
+        <translation lang="en">CarePlan</translation>
+        <translation lang="zh">护理计划</translation>
+        <translation lang="es">PlanCuidado</translation>
+        <translation lang="fr">PlanDeSoins</translation>
+    </item>
     <item id="Claim">
         <translation lang="en">Claim</translation>
         <translation lang="zh">声称</translation>
@@ -95,6 +98,12 @@ NOTE: while translations on Resources are possible they should be used for rende
     </item>
     <item id="ClaimResponse">
         <translation lang="en">ClaimResponse</translation>
+    </item>
+    <item id="ClinicalAssessment">
+        <translation lang="en">ClinicalAssessment</translation>
+    </item>
+    <item id="Communication">
+        <translation lang="en">Communication</translation>
     </item>
     <item id="CommunicationRequest">
         <translation lang="en">CommunicationRequest</translation>
@@ -161,9 +170,9 @@ NOTE: while translations on Resources are possible they should be used for rende
     </item>-->
 	<item id="DeviceComponent">
         <translation lang="en">DeviceComponent</translation>
-        <translation lang="zh">设备组件</translation>
-        <translation lang="es">ComponenteDeDispositivo</translation>
-        <translation lang="fr">ComposanteDeL'appareil</translation>
+    </item>
+	<item id="DeviceMetric">
+        <translation lang="en">DeviceMetric</translation>
     </item>
     <item id="DiagnosticOrder">
         <translation lang="en">DiagnosticOrder</translation>
@@ -201,6 +210,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Encuentro</translation>
         <translation lang="fr">Venue</translation>
     </item>
+    <item id="EpisodeOfCare">
+        <translation lang="en">EpisodeOfCare</translation>
+    </item>
     <item id="EnrollmentRequest">
         <translation lang="en">EnrollmentRequest</translation>
     </item>
@@ -218,6 +230,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="zh">家族病史</translation>
         <translation lang="es">AntecedentesFamiliares</translation>
         <translation lang="fr">AntécédentsFamiliaux</translation>
+    </item>
+    <item id="Goal">
+        <translation lang="en">Goal</translation>
     </item>
     <item id="Subscription">
         <translation lang="en">Subscription</translation>
@@ -278,6 +293,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="zh">免疫推荐</translation>
         <translation lang="es">RecomendaciónInmunización</translation>
         <translation lang="fr">RecommendationImmunisation</translation>
+    </item>
+    <item id="InstitutionalClaim">
+        <translation lang="en">InstitutionalClaim</translation>
     </item>
     <item id="List">
         <translation lang="en">List</translation>
@@ -395,6 +413,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Paciente</translation>
         <translation lang="fr">Patient</translation>
     </item>
+    <item id="Person">
+        <translation lang="en">Person</translation>
+    </item>
      <item id="PaymentNotice">
         <translation lang="en">PaymentNotice</translation>
     </item>
@@ -403,6 +424,9 @@ NOTE: while translations on Resources are possible they should be used for rende
     </item>
      <item id="PendedRequest">
         <translation lang="en">PendedRequest</translation>
+    </item>
+    <item id="PharmacyClaim">
+        <translation lang="en">PharmacyClaim</translation>
     </item>
     <item id="Picture">
         <translation lang="en">Picture</translation>
@@ -425,6 +449,9 @@ NOTE: while translations on Resources are possible they should be used for rende
     <item id="ProcedureRequest">
         <translation lang="en">ProcedureRequest</translation>
         <translation lang="fr">ProcédureDemande</translation>
+    </item>
+    <item id="ProfessionalClaim">
+        <translation lang="en">ProfessionalClaim</translation>
     </item>
     <item id="Profile">
         <translation lang="en">Profile</translation>
@@ -564,6 +591,12 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="zh">取值集合</translation>
         <translation lang="es">ConuntoValores</translation>
         <translation lang="fr">EnsembleValeurs</translation>
+    </item>
+    <item id="VisionClaim">
+        <translation lang="en">VisionClaim</translation>
+    </item>
+    <item id="VisionPrescription">
+        <translation lang="en">VisionPrescription</translation>
     </item>
     <item id="VCFMeta">
         <translation lang="en">VCFMeta</translation>
@@ -971,6 +1004,9 @@ NOTE: while translations on Resources are possible they should be used for rende
         <translation lang="es">Se requiere un recurso</translation>
         <translation lang="fr">Une ressource est requise</translation>
         <translation lang="ru">Требуется ресурс</translation>
+    </item>
+    <item id="MSG_RESOURCE_ID_MISMATCH">
+        <translation lang="en">Resource Id Mismatch</translation>
     </item>
     <item id="MSG_RESOURCE_TYPE_MISMATCH">
         <translation lang="en">Resource Type Mismatch</translation>

@@ -49,6 +49,10 @@ namespace Hl7.Fhir.Model
                 // There is currently no validation in the portable .net
                 // for the XDocument validation, would need to scan for
                 // another implementation to cover this
+#if !PORTABLE45
+                var doc = XDocument.Parse(value as string);
+                doc.Validate(_xhtmlSchemaSet.Value, validationEventHandler: null);
+#endif
 
                 return true;
             }
@@ -57,6 +61,15 @@ namespace Hl7.Fhir.Model
                 return false;
             }
         }
+
+#if !PORTABLE45
+        private static Lazy<XmlSchemaSet> _xhtmlSchemaSet = new Lazy<XmlSchemaSet>(compileXhtmlSchema, true);
+
+        private static XmlSchemaSet compileXhtmlSchema()
+        {
+            return null; 
+        }
+#endif
 
     }
   

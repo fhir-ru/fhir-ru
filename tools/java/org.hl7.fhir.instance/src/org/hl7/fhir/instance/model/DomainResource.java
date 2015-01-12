@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -86,7 +86,7 @@ public abstract class DomainResource extends Resource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DomainResource.text");
         else if (Configuration.doAutoCreate())
-          this.text = new Narrative();
+          this.text = new Narrative(); // cc
       return this.text;
     }
 

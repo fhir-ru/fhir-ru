@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -40,7 +40,7 @@ import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
 /**
- * This resource provides payment details supporting a bulk payment, or the errors in,  processing a ReconciliationRequest resource.
+ * This resource provides payment details and claim references supporting a bulk payment.
  */
 @ResourceDef(name="PaymentReconciliation", profile="http://hl7.org/fhir/Profile/PaymentReconciliation")
 public class PaymentReconciliation extends DomainResource {
@@ -97,8 +97,8 @@ public class PaymentReconciliation extends DomainResource {
         }
     }
 
-  public static class RSLinkEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class RSLinkEnumFactory implements EnumFactory<RSLink> {
+    public RSLink fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -106,9 +106,9 @@ public class PaymentReconciliation extends DomainResource {
           return RSLink.COMPLETE;
         if ("error".equals(codeString))
           return RSLink.ERROR;
-        throw new Exception("Unknown RSLink code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown RSLink code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(RSLink code) {
       if (code == RSLink.COMPLETE)
         return "complete";
       if (code == RSLink.ERROR)
@@ -207,7 +207,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailsComponent.type");
             else if (Configuration.doAutoCreate())
-              this.type = new Coding();
+              this.type = new Coding(); // cc
           return this.type;
         }
 
@@ -231,7 +231,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailsComponent.request");
             else if (Configuration.doAutoCreate())
-              this.request = new Reference();
+              this.request = new Reference(); // cc
           return this.request;
         }
 
@@ -270,7 +270,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailsComponent.responce");
             else if (Configuration.doAutoCreate())
-              this.responce = new Reference();
+              this.responce = new Reference(); // cc
           return this.responce;
         }
 
@@ -309,7 +309,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailsComponent.submitter");
             else if (Configuration.doAutoCreate())
-              this.submitter = new Reference();
+              this.submitter = new Reference(); // cc
           return this.submitter;
         }
 
@@ -333,7 +333,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailsComponent.submitter");
             else if (Configuration.doAutoCreate())
-              this.submitterTarget = new Organization();
+              this.submitterTarget = new Organization(); // aa
           return this.submitterTarget;
         }
 
@@ -353,7 +353,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailsComponent.payee");
             else if (Configuration.doAutoCreate())
-              this.payee = new Reference();
+              this.payee = new Reference(); // cc
           return this.payee;
         }
 
@@ -377,7 +377,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailsComponent.payee");
             else if (Configuration.doAutoCreate())
-              this.payeeTarget = new Organization();
+              this.payeeTarget = new Organization(); // aa
           return this.payeeTarget;
         }
 
@@ -397,7 +397,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailsComponent.date");
             else if (Configuration.doAutoCreate())
-              this.date = new DateType();
+              this.date = new DateType(); // bb
           return this.date;
         }
 
@@ -420,14 +420,14 @@ public class PaymentReconciliation extends DomainResource {
         /**
          * @return The date of the invoice or financial resource.
          */
-        public DateAndTime getDate() { 
+        public Date getDate() { 
           return this.date == null ? null : this.date.getValue();
         }
 
         /**
          * @param value The date of the invoice or financial resource.
          */
-        public DetailsComponent setDate(DateAndTime value) { 
+        public DetailsComponent setDate(Date value) { 
           if (value == null)
             this.date = null;
           else {
@@ -446,7 +446,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailsComponent.amount");
             else if (Configuration.doAutoCreate())
-              this.amount = new Money();
+              this.amount = new Money(); // cc
           return this.amount;
         }
 
@@ -525,7 +525,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create NotesComponent.type");
             else if (Configuration.doAutoCreate())
-              this.type = new Coding();
+              this.type = new Coding(); // cc
           return this.type;
         }
 
@@ -549,7 +549,7 @@ public class PaymentReconciliation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create NotesComponent.text");
             else if (Configuration.doAutoCreate())
-              this.text = new StringType();
+              this.text = new StringType(); // bb
           return this.text;
         }
 
@@ -619,16 +619,16 @@ public class PaymentReconciliation extends DomainResource {
     protected List<Identifier> identifier;
 
     /**
-     * Original request resource referrence.
+     * Original request resource reference.
      */
-    @Child(name="request", type={Enrollment.class}, order=0, min=0, max=1)
-    @Description(shortDefinition="Claim reference", formalDefinition="Original request resource referrence." )
+    @Child(name="request", type={PendedRequest.class}, order=0, min=0, max=1)
+    @Description(shortDefinition="Claim reference", formalDefinition="Original request resource reference." )
     protected Reference request;
 
     /**
-     * The actual object that is the target of the reference (Original request resource referrence.)
+     * The actual object that is the target of the reference (Original request resource reference.)
      */
-    protected Enrollment requestTarget;
+    protected PendedRequest requestTarget;
 
     /**
      * Transaction status: error, complete.
@@ -661,14 +661,21 @@ public class PaymentReconciliation extends DomainResource {
     /**
      * The date when the enclosed suite of services were performed or completed.
      */
-    @Child(name="date", type={DateType.class}, order=5, min=0, max=1)
+    @Child(name="created", type={DateTimeType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="Creation date", formalDefinition="The date when the enclosed suite of services were performed or completed." )
-    protected DateType date;
+    protected DateTimeType created;
+
+    /**
+     * The period of time for which payments have been gathered into this bulk payment for settlement.
+     */
+    @Child(name="period", type={Period.class}, order=6, min=0, max=1)
+    @Description(shortDefinition="Period covered", formalDefinition="The period of time for which payments have been gathered into this bulk payment for settlement." )
+    protected Period period;
 
     /**
      * The Insurer who produced this adjudicated response.
      */
-    @Child(name="organization", type={Organization.class}, order=6, min=0, max=1)
+    @Child(name="organization", type={Organization.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Insurer", formalDefinition="The Insurer who produced this adjudicated response." )
     protected Reference organization;
 
@@ -680,7 +687,7 @@ public class PaymentReconciliation extends DomainResource {
     /**
      * The practitioner who is responsible for the services rendered to the patient.
      */
-    @Child(name="requestProvider", type={Practitioner.class}, order=7, min=0, max=1)
+    @Child(name="requestProvider", type={Practitioner.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Responsible practitioner", formalDefinition="The practitioner who is responsible for the services rendered to the patient." )
     protected Reference requestProvider;
 
@@ -692,7 +699,7 @@ public class PaymentReconciliation extends DomainResource {
     /**
      * The organization which is responsible for the services rendered to the patient.
      */
-    @Child(name="requestOrganization", type={Organization.class}, order=8, min=0, max=1)
+    @Child(name="requestOrganization", type={Organization.class}, order=9, min=0, max=1)
     @Description(shortDefinition="Responsible organization", formalDefinition="The organization which is responsible for the services rendered to the patient." )
     protected Reference requestOrganization;
 
@@ -704,30 +711,23 @@ public class PaymentReconciliation extends DomainResource {
     /**
      * List of individual settlement amounts and the corresponding transaction.
      */
-    @Child(name="detail", type={}, order=9, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name="detail", type={}, order=10, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Details", formalDefinition="List of individual settlement amounts and the corresponding transaction." )
     protected List<DetailsComponent> detail;
 
     /**
      * The form to be used for printing the content.
      */
-    @Child(name="form", type={Coding.class}, order=10, min=0, max=1)
+    @Child(name="form", type={Coding.class}, order=11, min=0, max=1)
     @Description(shortDefinition="Printed Form Identifier", formalDefinition="The form to be used for printing the content." )
     protected Coding form;
 
     /**
      * Total payment amount.
      */
-    @Child(name="total", type={Money.class}, order=11, min=1, max=1)
+    @Child(name="total", type={Money.class}, order=12, min=1, max=1)
     @Description(shortDefinition="Total amount of Payment", formalDefinition="Total payment amount." )
     protected Money total;
-
-    /**
-     * List of errors detected in the request.
-     */
-    @Child(name="error", type={Coding.class}, order=12, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="Error code", formalDefinition="List of errors detected in the request." )
-    protected List<Coding> error;
 
     /**
      * Suite of notes.
@@ -736,7 +736,7 @@ public class PaymentReconciliation extends DomainResource {
     @Description(shortDefinition="Note text", formalDefinition="Suite of notes." )
     protected List<NotesComponent> note;
 
-    private static final long serialVersionUID = -484463801L;
+    private static final long serialVersionUID = 2043460985L;
 
     public PaymentReconciliation() {
       super();
@@ -778,14 +778,14 @@ public class PaymentReconciliation extends DomainResource {
     }
 
     /**
-     * @return {@link #request} (Original request resource referrence.)
+     * @return {@link #request} (Original request resource reference.)
      */
     public Reference getRequest() { 
       if (this.request == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.request");
         else if (Configuration.doAutoCreate())
-          this.request = new Reference();
+          this.request = new Reference(); // cc
       return this.request;
     }
 
@@ -794,7 +794,7 @@ public class PaymentReconciliation extends DomainResource {
     }
 
     /**
-     * @param value {@link #request} (Original request resource referrence.)
+     * @param value {@link #request} (Original request resource reference.)
      */
     public PaymentReconciliation setRequest(Reference value) { 
       this.request = value;
@@ -802,21 +802,21 @@ public class PaymentReconciliation extends DomainResource {
     }
 
     /**
-     * @return {@link #request} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Original request resource referrence.)
+     * @return {@link #request} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Original request resource reference.)
      */
-    public Enrollment getRequestTarget() { 
+    public PendedRequest getRequestTarget() { 
       if (this.requestTarget == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.request");
         else if (Configuration.doAutoCreate())
-          this.requestTarget = new Enrollment();
+          this.requestTarget = new PendedRequest(); // aa
       return this.requestTarget;
     }
 
     /**
-     * @param value {@link #request} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Original request resource referrence.)
+     * @param value {@link #request} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Original request resource reference.)
      */
-    public PaymentReconciliation setRequestTarget(Enrollment value) { 
+    public PaymentReconciliation setRequestTarget(PendedRequest value) { 
       this.requestTarget = value;
       return this;
     }
@@ -829,7 +829,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.outcome");
         else if (Configuration.doAutoCreate())
-          this.outcome = new Enumeration<RSLink>();
+          this.outcome = new Enumeration<RSLink>(new RSLinkEnumFactory()); // bb
       return this.outcome;
     }
 
@@ -864,7 +864,7 @@ public class PaymentReconciliation extends DomainResource {
         this.outcome = null;
       else {
         if (this.outcome == null)
-          this.outcome = new Enumeration<RSLink>();
+          this.outcome = new Enumeration<RSLink>(new RSLinkEnumFactory());
         this.outcome.setValue(value);
       }
       return this;
@@ -878,7 +878,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.disposition");
         else if (Configuration.doAutoCreate())
-          this.disposition = new StringType();
+          this.disposition = new StringType(); // bb
       return this.disposition;
     }
 
@@ -927,7 +927,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.ruleset");
         else if (Configuration.doAutoCreate())
-          this.ruleset = new Coding();
+          this.ruleset = new Coding(); // cc
       return this.ruleset;
     }
 
@@ -951,7 +951,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.originalRuleset");
         else if (Configuration.doAutoCreate())
-          this.originalRuleset = new Coding();
+          this.originalRuleset = new Coding(); // cc
       return this.originalRuleset;
     }
 
@@ -968,51 +968,75 @@ public class PaymentReconciliation extends DomainResource {
     }
 
     /**
-     * @return {@link #date} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @return {@link #created} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getCreated" gives direct access to the value
      */
-    public DateType getDateElement() { 
-      if (this.date == null)
+    public DateTimeType getCreatedElement() { 
+      if (this.created == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create PaymentReconciliation.date");
+          throw new Error("Attempt to auto-create PaymentReconciliation.created");
         else if (Configuration.doAutoCreate())
-          this.date = new DateType();
-      return this.date;
+          this.created = new DateTimeType(); // bb
+      return this.created;
     }
 
-    public boolean hasDateElement() { 
-      return this.date != null && !this.date.isEmpty();
+    public boolean hasCreatedElement() { 
+      return this.created != null && !this.created.isEmpty();
     }
 
-    public boolean hasDate() { 
-      return this.date != null && !this.date.isEmpty();
+    public boolean hasCreated() { 
+      return this.created != null && !this.created.isEmpty();
     }
 
     /**
-     * @param value {@link #date} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @param value {@link #created} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getCreated" gives direct access to the value
      */
-    public PaymentReconciliation setDateElement(DateType value) { 
-      this.date = value;
+    public PaymentReconciliation setCreatedElement(DateTimeType value) { 
+      this.created = value;
       return this;
     }
 
     /**
      * @return The date when the enclosed suite of services were performed or completed.
      */
-    public DateAndTime getDate() { 
-      return this.date == null ? null : this.date.getValue();
+    public Date getCreated() { 
+      return this.created == null ? null : this.created.getValue();
     }
 
     /**
      * @param value The date when the enclosed suite of services were performed or completed.
      */
-    public PaymentReconciliation setDate(DateAndTime value) { 
+    public PaymentReconciliation setCreated(Date value) { 
       if (value == null)
-        this.date = null;
+        this.created = null;
       else {
-        if (this.date == null)
-          this.date = new DateType();
-        this.date.setValue(value);
+        if (this.created == null)
+          this.created = new DateTimeType();
+        this.created.setValue(value);
       }
+      return this;
+    }
+
+    /**
+     * @return {@link #period} (The period of time for which payments have been gathered into this bulk payment for settlement.)
+     */
+    public Period getPeriod() { 
+      if (this.period == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create PaymentReconciliation.period");
+        else if (Configuration.doAutoCreate())
+          this.period = new Period(); // cc
+      return this.period;
+    }
+
+    public boolean hasPeriod() { 
+      return this.period != null && !this.period.isEmpty();
+    }
+
+    /**
+     * @param value {@link #period} (The period of time for which payments have been gathered into this bulk payment for settlement.)
+     */
+    public PaymentReconciliation setPeriod(Period value) { 
+      this.period = value;
       return this;
     }
 
@@ -1024,7 +1048,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.organization");
         else if (Configuration.doAutoCreate())
-          this.organization = new Reference();
+          this.organization = new Reference(); // cc
       return this.organization;
     }
 
@@ -1048,7 +1072,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.organization");
         else if (Configuration.doAutoCreate())
-          this.organizationTarget = new Organization();
+          this.organizationTarget = new Organization(); // aa
       return this.organizationTarget;
     }
 
@@ -1068,7 +1092,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.requestProvider");
         else if (Configuration.doAutoCreate())
-          this.requestProvider = new Reference();
+          this.requestProvider = new Reference(); // cc
       return this.requestProvider;
     }
 
@@ -1092,7 +1116,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.requestProvider");
         else if (Configuration.doAutoCreate())
-          this.requestProviderTarget = new Practitioner();
+          this.requestProviderTarget = new Practitioner(); // aa
       return this.requestProviderTarget;
     }
 
@@ -1112,7 +1136,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.requestOrganization");
         else if (Configuration.doAutoCreate())
-          this.requestOrganization = new Reference();
+          this.requestOrganization = new Reference(); // cc
       return this.requestOrganization;
     }
 
@@ -1136,7 +1160,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.requestOrganization");
         else if (Configuration.doAutoCreate())
-          this.requestOrganizationTarget = new Organization();
+          this.requestOrganizationTarget = new Organization(); // aa
       return this.requestOrganizationTarget;
     }
 
@@ -1186,7 +1210,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.form");
         else if (Configuration.doAutoCreate())
-          this.form = new Coding();
+          this.form = new Coding(); // cc
       return this.form;
     }
 
@@ -1210,7 +1234,7 @@ public class PaymentReconciliation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create PaymentReconciliation.total");
         else if (Configuration.doAutoCreate())
-          this.total = new Money();
+          this.total = new Money(); // cc
       return this.total;
     }
 
@@ -1224,36 +1248,6 @@ public class PaymentReconciliation extends DomainResource {
     public PaymentReconciliation setTotal(Money value) { 
       this.total = value;
       return this;
-    }
-
-    /**
-     * @return {@link #error} (List of errors detected in the request.)
-     */
-    public List<Coding> getError() { 
-      if (this.error == null)
-        this.error = new ArrayList<Coding>();
-      return this.error;
-    }
-
-    public boolean hasError() { 
-      if (this.error == null)
-        return false;
-      for (Coding item : this.error)
-        if (!item.isEmpty())
-          return true;
-      return false;
-    }
-
-    /**
-     * @return {@link #error} (List of errors detected in the request.)
-     */
-    // syntactic sugar
-    public Coding addError() { //3
-      Coding t = new Coding();
-      if (this.error == null)
-        this.error = new ArrayList<Coding>();
-      this.error.add(t);
-      return t;
     }
 
     /**
@@ -1289,19 +1283,19 @@ public class PaymentReconciliation extends DomainResource {
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "The Response Business Identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("request", "Reference(Enrollment)", "Original request resource referrence.", 0, java.lang.Integer.MAX_VALUE, request));
+        childrenList.add(new Property("request", "Reference(PendedRequest)", "Original request resource reference.", 0, java.lang.Integer.MAX_VALUE, request));
         childrenList.add(new Property("outcome", "code", "Transaction status: error, complete.", 0, java.lang.Integer.MAX_VALUE, outcome));
         childrenList.add(new Property("disposition", "string", "A description of the status of the adjudication.", 0, java.lang.Integer.MAX_VALUE, disposition));
         childrenList.add(new Property("ruleset", "Coding", "The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.", 0, java.lang.Integer.MAX_VALUE, ruleset));
         childrenList.add(new Property("originalRuleset", "Coding", "The style (standard) and version of the original material which was converted into this resource.", 0, java.lang.Integer.MAX_VALUE, originalRuleset));
-        childrenList.add(new Property("date", "date", "The date when the enclosed suite of services were performed or completed.", 0, java.lang.Integer.MAX_VALUE, date));
+        childrenList.add(new Property("created", "dateTime", "The date when the enclosed suite of services were performed or completed.", 0, java.lang.Integer.MAX_VALUE, created));
+        childrenList.add(new Property("period", "Period", "The period of time for which payments have been gathered into this bulk payment for settlement.", 0, java.lang.Integer.MAX_VALUE, period));
         childrenList.add(new Property("organization", "Reference(Organization)", "The Insurer who produced this adjudicated response.", 0, java.lang.Integer.MAX_VALUE, organization));
         childrenList.add(new Property("requestProvider", "Reference(Practitioner)", "The practitioner who is responsible for the services rendered to the patient.", 0, java.lang.Integer.MAX_VALUE, requestProvider));
         childrenList.add(new Property("requestOrganization", "Reference(Organization)", "The organization which is responsible for the services rendered to the patient.", 0, java.lang.Integer.MAX_VALUE, requestOrganization));
         childrenList.add(new Property("detail", "", "List of individual settlement amounts and the corresponding transaction.", 0, java.lang.Integer.MAX_VALUE, detail));
         childrenList.add(new Property("form", "Coding", "The form to be used for printing the content.", 0, java.lang.Integer.MAX_VALUE, form));
         childrenList.add(new Property("total", "Money", "Total payment amount.", 0, java.lang.Integer.MAX_VALUE, total));
-        childrenList.add(new Property("error", "Coding", "List of errors detected in the request.", 0, java.lang.Integer.MAX_VALUE, error));
         childrenList.add(new Property("note", "", "Suite of notes.", 0, java.lang.Integer.MAX_VALUE, note));
       }
 
@@ -1318,7 +1312,8 @@ public class PaymentReconciliation extends DomainResource {
         dst.disposition = disposition == null ? null : disposition.copy();
         dst.ruleset = ruleset == null ? null : ruleset.copy();
         dst.originalRuleset = originalRuleset == null ? null : originalRuleset.copy();
-        dst.date = date == null ? null : date.copy();
+        dst.created = created == null ? null : created.copy();
+        dst.period = period == null ? null : period.copy();
         dst.organization = organization == null ? null : organization.copy();
         dst.requestProvider = requestProvider == null ? null : requestProvider.copy();
         dst.requestOrganization = requestOrganization == null ? null : requestOrganization.copy();
@@ -1329,11 +1324,6 @@ public class PaymentReconciliation extends DomainResource {
         };
         dst.form = form == null ? null : form.copy();
         dst.total = total == null ? null : total.copy();
-        if (error != null) {
-          dst.error = new ArrayList<Coding>();
-          for (Coding i : error)
-            dst.error.add(i.copy());
-        };
         if (note != null) {
           dst.note = new ArrayList<NotesComponent>();
           for (NotesComponent i : note)
@@ -1350,9 +1340,9 @@ public class PaymentReconciliation extends DomainResource {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (request == null || request.isEmpty())
            && (outcome == null || outcome.isEmpty()) && (disposition == null || disposition.isEmpty())
            && (ruleset == null || ruleset.isEmpty()) && (originalRuleset == null || originalRuleset.isEmpty())
-           && (date == null || date.isEmpty()) && (organization == null || organization.isEmpty()) && (requestProvider == null || requestProvider.isEmpty())
-           && (requestOrganization == null || requestOrganization.isEmpty()) && (detail == null || detail.isEmpty())
-           && (form == null || form.isEmpty()) && (total == null || total.isEmpty()) && (error == null || error.isEmpty())
+           && (created == null || created.isEmpty()) && (period == null || period.isEmpty()) && (organization == null || organization.isEmpty())
+           && (requestProvider == null || requestProvider.isEmpty()) && (requestOrganization == null || requestOrganization.isEmpty())
+           && (detail == null || detail.isEmpty()) && (form == null || form.isEmpty()) && (total == null || total.isEmpty())
            && (note == null || note.isEmpty());
       }
 

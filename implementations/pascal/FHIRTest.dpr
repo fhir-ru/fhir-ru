@@ -94,9 +94,7 @@ uses
   XMLSupport in 'support\XMLSupport.pas',
   InternetFetcher in 'support\InternetFetcher.pas',
   SCIMObjects in 'SCIMObjects.pas',
-
   IdSSLOpenSSLHeaders,
-
   FHIRLang in 'FHIRLang.pas',
   FHIRBase in 'FHIRBase.pas',
   FHIRParserBase in 'FHIRParserBase.pas',
@@ -107,7 +105,8 @@ uses
   FHIRParser in 'FHIRParser.pas',
   FHIRSupport in 'FHIRSupport.pas',
   FHIRUtilities in 'FHIRUtilities.pas',
-  FHIRDigitalSignatures in 'FHIRDigitalSignatures.pas';
+  FHIRDigitalSignatures in 'FHIRDigitalSignatures.pas',
+  AdvNames in 'support\AdvNames.pas';
 
 procedure SaveStringToFile(s : AnsiString; fn : String);
 var
@@ -151,7 +150,7 @@ begin
       c := TFHIRJsonComposer.Create('en');
       try
         TFHIRJsonComposer(c).Comments := true;
-        c.Compose(m, '', '', '', r, true, nil);
+        c.Compose(m, r, true, nil);
       finally
         c.free;
       end;
@@ -176,7 +175,7 @@ begin
     try
       c := TFHIRXMLComposer.Create('en');
       try
-        c.Compose(f, '', '', '', r, true, nil);
+        c.Compose(f, r, true, nil);
       finally
         c.free;
       end;

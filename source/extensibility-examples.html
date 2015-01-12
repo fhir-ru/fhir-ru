@@ -34,9 +34,9 @@ This page contains examples of how this process executes.
 The basic patient resource contains no information relating to patient 
 consent, and/or the policy under which the patient consents to their registration 
 details. A social web provider of personal healthcare record (PHR) services 
-might be obliged to to keep track of the particular policy under which 
+might be obliged to keep track of the particular policy under which 
 a patient has created their relationship with the PHR provider, and share
-this with their partipcants via their FHIR api. If they wish, they can 
+this with their participants via their FHIR API. If they wish, they can 
 extend the patient resource to represent the patient's participation
 agreement. Note that other approaches to this problem are possible, but
 it suffices to demonstrate the extension process.
@@ -290,7 +290,7 @@ and their associated bindings. In this case, the profile looks like this:
     &lt;isModifier value="false" /&gt;
     &lt;binding&gt;
       &lt;name value="EntityNamePartQualifier" /&gt;
-      &lt;isExtensible value="codelist" /&gt;
+      &lt;isExtensible value="false" /&gt;
       &lt;conformance value="required" /&gt;
       &lt;description value="A set of codes each of which specifies a certain subcategory
           of the name part in addition to the main name part type" /&gt;

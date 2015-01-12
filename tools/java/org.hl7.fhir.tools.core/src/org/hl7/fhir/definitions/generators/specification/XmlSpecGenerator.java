@@ -65,9 +65,9 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 	private String dtRoot;
 	private Definitions definitions;
   private PageProcessor page;
+  private String tla;
 
-	public XmlSpecGenerator(OutputStream out, String defPage, String dtRoot,
-			PageProcessor page) throws UnsupportedEncodingException {
+	public XmlSpecGenerator(OutputStream out, String defPage, String dtRoot, PageProcessor page) throws UnsupportedEncodingException {
 		super(out, "UTF-8");
 		this.defPage = defPage;
 		this.dtRoot = dtRoot == null ? "" : dtRoot;
@@ -77,6 +77,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 	public void generate(ElementDefn root, boolean isAbstract) throws Exception {
 		write("<pre class=\"spec\">\r\n");
+		tla = page.getAbbreviationFor(root.getName());
 
 		generateInner(root, true, isAbstract);
 
@@ -87,6 +88,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
   public void generate(ExtensionDefinition ed) throws Exception {
     write("<pre class=\"spec\">\r\n");
+    tla = page.getAbbreviationFor(ed);
 
     generateInner(ed);
 
@@ -98,7 +100,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
   private void generateInner(ExtensionDefinition ed) throws IOException, Exception {
     ElementDefinition root = ed.getElement().get(0);
     write("&lt;!-- "+Utilities.escapeXml(ed.getName())+" -->");
-    write("<span style=\"float: right\"><a title=\"Documentation for this format\" href=\"formats.html\"><img src=\"help.png\" alt=\"doco\"/></a></span>\r\n");
+    write("<span style=\"float: right\"><a title=\"Documentation for this format\" href=\"xml.html\"><img src=\"help.png\" alt=\"doco\"/></a></span>\r\n");
     String rn = ed.getElement().get(0).getIsModifier() ? "modifierExtension" : "extension";
 
     write("\r\n&lt;");
@@ -170,7 +172,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		  }
 		}
 		if (resource) {
-		    write("&gt; <span style=\"float: right\"><a title=\"Documentation for this format\" href=\"formats.html\"><img src=\"help.png\" alt=\"doco\"/></a></span>\r\n");
+		    write("&gt; <span style=\"float: right\"><a title=\"Documentation for this format\" href=\"xml.html\"><img src=\"help.png\" alt=\"doco\"/></a></span>\r\n");
 		} else 
 		  write("&gt;\r\n");
     if (rn.equals(root.getName()) && resource) {
@@ -210,7 +212,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
   }
 
 //  public void generate(ProfileDefn profile, String root) throws Exception {
-//		write("<pre class=\"spec\"> <span style=\"float: right\"><a title=\"Documentation for this format\" href=\"formats.html\"><img src=\"help.png\" alt=\"doco\"/></a></span>\r\n");
+//		write("<pre class=\"spec\"> <span style=\"float: right\"><a title=\"Documentation for this format\" href=\"xml.html\"><img src=\"help.png\" alt=\"doco\"/></a></span>\r\n");
 //
 //		ResourceDefn r = profile.getResource();
 //		write("<span style=\"color: Gray\">&lt;!--<a name=\"" + r.getRoot().getProfileName() + "\"> </a><span style=\"color: Darkviolet\">"+Utilities.escapeXml(r.getRoot().getProfileName())+"</span> --&gt;</span>\r\n");
@@ -986,7 +988,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			if (!first)
 				b.append("; ");
 			first = false;
-			b.append("Inv-"+i.getId()+": "+i.getEnglish());
+			b.append(tla+"-"+i.getId()+": "+i.getEnglish());
 		}
 
 		return b.toString();
@@ -999,7 +1001,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
       if (!first)
         b.append("; ");
       first = false;
-      b.append("Inv-"+i.getKey()+": "+i.getHuman());
+      b.append(tla+"-"+i.getKey()+": "+i.getHuman());
     }
 
     return b.toString();

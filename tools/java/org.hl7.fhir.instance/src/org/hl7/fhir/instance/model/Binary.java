@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -79,7 +79,7 @@ public class Binary extends Resource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Binary.contentType");
         else if (Configuration.doAutoCreate())
-          this.contentType = new CodeType();
+          this.contentType = new CodeType(); // bb
       return this.contentType;
     }
 
@@ -124,7 +124,7 @@ public class Binary extends Resource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Binary.content");
         else if (Configuration.doAutoCreate())
-          this.content = new Base64BinaryType();
+          this.content = new Base64BinaryType(); // bb
       return this.content;
     }
 

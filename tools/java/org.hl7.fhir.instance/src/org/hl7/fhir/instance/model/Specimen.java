@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -97,8 +97,8 @@ public class Specimen extends DomainResource {
         }
     }
 
-  public static class HierarchicalRelationshipTypeEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class HierarchicalRelationshipTypeEnumFactory implements EnumFactory<HierarchicalRelationshipType> {
+    public HierarchicalRelationshipType fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -106,9 +106,9 @@ public class Specimen extends DomainResource {
           return HierarchicalRelationshipType.PARENT;
         if ("child".equals(codeString))
           return HierarchicalRelationshipType.CHILD;
-        throw new Exception("Unknown HierarchicalRelationshipType code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown HierarchicalRelationshipType code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(HierarchicalRelationshipType code) {
       if (code == HierarchicalRelationshipType.PARENT)
         return "parent";
       if (code == HierarchicalRelationshipType.CHILD)
@@ -157,7 +157,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenSourceComponent.relationship");
             else if (Configuration.doAutoCreate())
-              this.relationship = new Enumeration<HierarchicalRelationshipType>();
+              this.relationship = new Enumeration<HierarchicalRelationshipType>(new HierarchicalRelationshipTypeEnumFactory()); // bb
           return this.relationship;
         }
 
@@ -189,7 +189,7 @@ public class Specimen extends DomainResource {
          */
         public SpecimenSourceComponent setRelationship(HierarchicalRelationshipType value) { 
             if (this.relationship == null)
-              this.relationship = new Enumeration<HierarchicalRelationshipType>();
+              this.relationship = new Enumeration<HierarchicalRelationshipType>(new HierarchicalRelationshipTypeEnumFactory());
             this.relationship.setValue(value);
           return this;
         }
@@ -313,10 +313,10 @@ public class Specimen extends DomainResource {
         protected CodeableConcept method;
 
         /**
-         * Anatomical location from which the specimen should be collected (if subject is a patient). This element is not used for environmental specimens.
+         * Anatomical location from which the specimen was collected (if subject is a patient). This element is not used for environmental specimens.
          */
         @Child(name="sourceSite", type={CodeableConcept.class}, order=6, min=0, max=1)
-        @Description(shortDefinition="Anatomical collection site", formalDefinition="Anatomical location from which the specimen should be collected (if subject is a patient). This element is not used for environmental specimens." )
+        @Description(shortDefinition="Anatomical collection site", formalDefinition="Anatomical location from which the specimen was collected (if subject is a patient). This element is not used for environmental specimens." )
         protected CodeableConcept sourceSite;
 
         private static final long serialVersionUID = 498103158L;
@@ -333,7 +333,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenCollectionComponent.collector");
             else if (Configuration.doAutoCreate())
-              this.collector = new Reference();
+              this.collector = new Reference(); // cc
           return this.collector;
         }
 
@@ -357,7 +357,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenCollectionComponent.collector");
             else if (Configuration.doAutoCreate())
-              this.collectorTarget = new Practitioner();
+              this.collectorTarget = new Practitioner(); // aa
           return this.collectorTarget;
         }
 
@@ -468,7 +468,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenCollectionComponent.quantity");
             else if (Configuration.doAutoCreate())
-              this.quantity = new Quantity();
+              this.quantity = new Quantity(); // cc
           return this.quantity;
         }
 
@@ -492,7 +492,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenCollectionComponent.method");
             else if (Configuration.doAutoCreate())
-              this.method = new CodeableConcept();
+              this.method = new CodeableConcept(); // cc
           return this.method;
         }
 
@@ -509,14 +509,14 @@ public class Specimen extends DomainResource {
         }
 
         /**
-         * @return {@link #sourceSite} (Anatomical location from which the specimen should be collected (if subject is a patient). This element is not used for environmental specimens.)
+         * @return {@link #sourceSite} (Anatomical location from which the specimen was collected (if subject is a patient). This element is not used for environmental specimens.)
          */
         public CodeableConcept getSourceSite() { 
           if (this.sourceSite == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenCollectionComponent.sourceSite");
             else if (Configuration.doAutoCreate())
-              this.sourceSite = new CodeableConcept();
+              this.sourceSite = new CodeableConcept(); // cc
           return this.sourceSite;
         }
 
@@ -525,7 +525,7 @@ public class Specimen extends DomainResource {
         }
 
         /**
-         * @param value {@link #sourceSite} (Anatomical location from which the specimen should be collected (if subject is a patient). This element is not used for environmental specimens.)
+         * @param value {@link #sourceSite} (Anatomical location from which the specimen was collected (if subject is a patient). This element is not used for environmental specimens.)
          */
         public SpecimenCollectionComponent setSourceSite(CodeableConcept value) { 
           this.sourceSite = value;
@@ -539,7 +539,7 @@ public class Specimen extends DomainResource {
           childrenList.add(new Property("collected[x]", "dateTime|Period", "Time when specimen was collected from subject - the physiologically relevant time.", 0, java.lang.Integer.MAX_VALUE, collected));
           childrenList.add(new Property("quantity", "Quantity", "The quantity of specimen collected; for instance the volume of a blood sample, or the physical measurement of an anatomic pathology sample.", 0, java.lang.Integer.MAX_VALUE, quantity));
           childrenList.add(new Property("method", "CodeableConcept", "A coded value specifying the technique that is used to perform the procedure.", 0, java.lang.Integer.MAX_VALUE, method));
-          childrenList.add(new Property("sourceSite", "CodeableConcept", "Anatomical location from which the specimen should be collected (if subject is a patient). This element is not used for environmental specimens.", 0, java.lang.Integer.MAX_VALUE, sourceSite));
+          childrenList.add(new Property("sourceSite", "CodeableConcept", "Anatomical location from which the specimen was collected (if subject is a patient). This element is not used for environmental specimens.", 0, java.lang.Integer.MAX_VALUE, sourceSite));
         }
 
       public SpecimenCollectionComponent copy() {
@@ -608,7 +608,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenTreatmentComponent.description");
             else if (Configuration.doAutoCreate())
-              this.description = new StringType();
+              this.description = new StringType(); // bb
           return this.description;
         }
 
@@ -657,7 +657,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenTreatmentComponent.procedure");
             else if (Configuration.doAutoCreate())
-              this.procedure = new CodeableConcept();
+              this.procedure = new CodeableConcept(); // cc
           return this.procedure;
         }
 
@@ -839,7 +839,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenContainerComponent.description");
             else if (Configuration.doAutoCreate())
-              this.description = new StringType();
+              this.description = new StringType(); // bb
           return this.description;
         }
 
@@ -888,7 +888,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenContainerComponent.type");
             else if (Configuration.doAutoCreate())
-              this.type = new CodeableConcept();
+              this.type = new CodeableConcept(); // cc
           return this.type;
         }
 
@@ -912,7 +912,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenContainerComponent.capacity");
             else if (Configuration.doAutoCreate())
-              this.capacity = new Quantity();
+              this.capacity = new Quantity(); // cc
           return this.capacity;
         }
 
@@ -936,7 +936,7 @@ public class Specimen extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SpecimenContainerComponent.specimenQuantity");
             else if (Configuration.doAutoCreate())
-              this.specimenQuantity = new Quantity();
+              this.specimenQuantity = new Quantity(); // cc
           return this.specimenQuantity;
         }
 
@@ -1045,14 +1045,14 @@ public class Specimen extends DomainResource {
     protected List<SpecimenSourceComponent> source;
 
     /**
-     * Where the specimen came from. This may be the patient(s) or from the environment or  a device.
+     * Where the specimen came from. This may be from the patient(s) or from the environment or a device.
      */
     @Child(name="subject", type={Patient.class, Group.class, Device.class, Substance.class}, order=2, min=1, max=1)
-    @Description(shortDefinition="Where the specimen came from. This may be the patient(s) or from the environment or  a device", formalDefinition="Where the specimen came from. This may be the patient(s) or from the environment or  a device." )
+    @Description(shortDefinition="Where the specimen came from. This may be from the patient(s) or from the environment or a device", formalDefinition="Where the specimen came from. This may be from the patient(s) or from the environment or a device." )
     protected Reference subject;
 
     /**
-     * The actual object that is the target of the reference (Where the specimen came from. This may be the patient(s) or from the environment or  a device.)
+     * The actual object that is the target of the reference (Where the specimen came from. This may be from the patient(s) or from the environment or a device.)
      */
     protected Resource subjectTarget;
 
@@ -1140,7 +1140,7 @@ public class Specimen extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Specimen.type");
         else if (Configuration.doAutoCreate())
-          this.type = new CodeableConcept();
+          this.type = new CodeableConcept(); // cc
       return this.type;
     }
 
@@ -1187,14 +1187,14 @@ public class Specimen extends DomainResource {
     }
 
     /**
-     * @return {@link #subject} (Where the specimen came from. This may be the patient(s) or from the environment or  a device.)
+     * @return {@link #subject} (Where the specimen came from. This may be from the patient(s) or from the environment or a device.)
      */
     public Reference getSubject() { 
       if (this.subject == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Specimen.subject");
         else if (Configuration.doAutoCreate())
-          this.subject = new Reference();
+          this.subject = new Reference(); // cc
       return this.subject;
     }
 
@@ -1203,7 +1203,7 @@ public class Specimen extends DomainResource {
     }
 
     /**
-     * @param value {@link #subject} (Where the specimen came from. This may be the patient(s) or from the environment or  a device.)
+     * @param value {@link #subject} (Where the specimen came from. This may be from the patient(s) or from the environment or a device.)
      */
     public Specimen setSubject(Reference value) { 
       this.subject = value;
@@ -1211,14 +1211,14 @@ public class Specimen extends DomainResource {
     }
 
     /**
-     * @return {@link #subject} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Where the specimen came from. This may be the patient(s) or from the environment or  a device.)
+     * @return {@link #subject} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Where the specimen came from. This may be from the patient(s) or from the environment or a device.)
      */
     public Resource getSubjectTarget() { 
       return this.subjectTarget;
     }
 
     /**
-     * @param value {@link #subject} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Where the specimen came from. This may be the patient(s) or from the environment or  a device.)
+     * @param value {@link #subject} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Where the specimen came from. This may be from the patient(s) or from the environment or a device.)
      */
     public Specimen setSubjectTarget(Resource value) { 
       this.subjectTarget = value;
@@ -1233,7 +1233,7 @@ public class Specimen extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Specimen.accessionIdentifier");
         else if (Configuration.doAutoCreate())
-          this.accessionIdentifier = new Identifier();
+          this.accessionIdentifier = new Identifier(); // cc
       return this.accessionIdentifier;
     }
 
@@ -1257,7 +1257,7 @@ public class Specimen extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Specimen.receivedTime");
         else if (Configuration.doAutoCreate())
-          this.receivedTime = new DateTimeType();
+          this.receivedTime = new DateTimeType(); // bb
       return this.receivedTime;
     }
 
@@ -1280,14 +1280,14 @@ public class Specimen extends DomainResource {
     /**
      * @return Time when specimen was received for processing or testing.
      */
-    public DateAndTime getReceivedTime() { 
+    public Date getReceivedTime() { 
       return this.receivedTime == null ? null : this.receivedTime.getValue();
     }
 
     /**
      * @param value Time when specimen was received for processing or testing.
      */
-    public Specimen setReceivedTime(DateAndTime value) { 
+    public Specimen setReceivedTime(Date value) { 
       if (value == null)
         this.receivedTime = null;
       else {
@@ -1306,7 +1306,7 @@ public class Specimen extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Specimen.collection");
         else if (Configuration.doAutoCreate())
-          this.collection = new SpecimenCollectionComponent();
+          this.collection = new SpecimenCollectionComponent(); // cc
       return this.collection;
     }
 
@@ -1387,7 +1387,7 @@ public class Specimen extends DomainResource {
         childrenList.add(new Property("identifier", "Identifier", "Id for specimen.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("type", "CodeableConcept", "Kind of material that forms the specimen.", 0, java.lang.Integer.MAX_VALUE, type));
         childrenList.add(new Property("source", "", "Parent specimen from which the focal specimen was a component.", 0, java.lang.Integer.MAX_VALUE, source));
-        childrenList.add(new Property("subject", "Reference(Patient|Group|Device|Substance)", "Where the specimen came from. This may be the patient(s) or from the environment or  a device.", 0, java.lang.Integer.MAX_VALUE, subject));
+        childrenList.add(new Property("subject", "Reference(Patient|Group|Device|Substance)", "Where the specimen came from. This may be from the patient(s) or from the environment or a device.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("accessionIdentifier", "Identifier", "The identifier assigned by the lab when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures.", 0, java.lang.Integer.MAX_VALUE, accessionIdentifier));
         childrenList.add(new Property("receivedTime", "dateTime", "Time when specimen was received for processing or testing.", 0, java.lang.Integer.MAX_VALUE, receivedTime));
         childrenList.add(new Property("collection", "", "Details concerning the specimen collection.", 0, java.lang.Integer.MAX_VALUE, collection));
@@ -1443,10 +1443,28 @@ public class Specimen extends DomainResource {
     return ResourceType.Specimen;
    }
 
+  @SearchParamDefinition(name="site", path="Specimen.collection.sourceSite", description="The source or body site from where the specimen came", type="token" )
+  public static final String SP_SITE = "site";
+  @SearchParamDefinition(name="collector", path="Specimen.collection.collector", description="Who collected the specimen", type="reference" )
+  public static final String SP_COLLECTOR = "collector";
   @SearchParamDefinition(name="patient", path="Specimen.subject", description="The patient the specimen comes from", type="reference" )
   public static final String SP_PATIENT = "patient";
+  @SearchParamDefinition(name="source", path="Specimen.source.target", description="The parent of the specimen", type="reference" )
+  public static final String SP_SOURCE = "source";
+  @SearchParamDefinition(name="container", path="Specimen.container.type", description="The kind of specimen container", type="token" )
+  public static final String SP_CONTAINER = "container";
+  @SearchParamDefinition(name="collected", path="Specimen.collection.collected[x]", description="The date the specimen was collected", type="date" )
+  public static final String SP_COLLECTED = "collected";
   @SearchParamDefinition(name="subject", path="Specimen.subject", description="The subject of the specimen", type="reference" )
   public static final String SP_SUBJECT = "subject";
+  @SearchParamDefinition(name="containerid", path="Specimen.container.identifier", description="The unique identifier associated with the specimen container", type="token" )
+  public static final String SP_CONTAINERID = "containerid";
+  @SearchParamDefinition(name="accession", path="Specimen.accessionIdentifier", description="The accession number associated with the specimen", type="token" )
+  public static final String SP_ACCESSION = "accession";
+  @SearchParamDefinition(name="type", path="Specimen.type", description="The specimen type", type="token" )
+  public static final String SP_TYPE = "type";
+  @SearchParamDefinition(name="identifier", path="Specimen.identifier", description="The unique identifier associated with the specimen", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
 
 }
 

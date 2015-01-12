@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -107,8 +107,8 @@ public class DataElement extends DomainResource {
         }
     }
 
-  public static class ResourceObservationDefStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class ResourceObservationDefStatusEnumFactory implements EnumFactory<ResourceObservationDefStatus> {
+    public ResourceObservationDefStatus fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -118,15 +118,143 @@ public class DataElement extends DomainResource {
           return ResourceObservationDefStatus.ACTIVE;
         if ("retired".equals(codeString))
           return ResourceObservationDefStatus.RETIRED;
-        throw new Exception("Unknown ResourceObservationDefStatus code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown ResourceObservationDefStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(ResourceObservationDefStatus code) {
       if (code == ResourceObservationDefStatus.DRAFT)
         return "draft";
       if (code == ResourceObservationDefStatus.ACTIVE)
         return "active";
       if (code == ResourceObservationDefStatus.RETIRED)
         return "retired";
+      return "?";
+      }
+    }
+
+    public enum DataelementGranularity {
+        /**
+         * The data element is sufficiently well-constrained that multiple pieces of data captured according to the constraints of the data element will be comparable (though in some cases, a degree of automated conversion/normalization may be required).
+         */
+        COMPARABLE, 
+        /**
+         * The data element is fully specified down to a single value set, single unit of measure, single data type, etc.  Multiple pieces of data associated with this data element are fully compareable.
+         */
+        FULLYSPECIFIED, 
+        /**
+         * The data element allows multiple units of measure having equivalent meaning.  E.g. "cc" (cubic centimeter) and "mL".
+         */
+        EQUIVALENT, 
+        /**
+         * The data element allows multiple units of measure that are convertable between each other (e.g. Inches and centimeters) and/or allows data to be captured in multiple value sets for which a known mapping exists allowing conversion of meaning.
+         */
+        CONVERTABLE, 
+        /**
+         * A convertable data element where unit conversions are different only by a power of 10.  E.g. g, mg, kg.
+         */
+        SCALEABLE, 
+        /**
+         * The data element is unconstrained in units, choice of data types and/or choice of vocabulary such that automated comparison of data captured using the data element is not possible.
+         */
+        FLEXIBLE, 
+        /**
+         * added to help the parsers
+         */
+        NULL;
+        public static DataelementGranularity fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("comparable".equals(codeString))
+          return COMPARABLE;
+        if ("fully specified".equals(codeString))
+          return FULLYSPECIFIED;
+        if ("equivalent".equals(codeString))
+          return EQUIVALENT;
+        if ("convertable".equals(codeString))
+          return CONVERTABLE;
+        if ("scaleable".equals(codeString))
+          return SCALEABLE;
+        if ("flexible".equals(codeString))
+          return FLEXIBLE;
+        throw new Exception("Unknown DataelementGranularity code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case COMPARABLE: return "comparable";
+            case FULLYSPECIFIED: return "fully specified";
+            case EQUIVALENT: return "equivalent";
+            case CONVERTABLE: return "convertable";
+            case SCALEABLE: return "scaleable";
+            case FLEXIBLE: return "flexible";
+            default: return "?";
+          }
+        }
+        public String getSystem() {
+          switch (this) {
+            case COMPARABLE: return "";
+            case FULLYSPECIFIED: return "";
+            case EQUIVALENT: return "";
+            case CONVERTABLE: return "";
+            case SCALEABLE: return "";
+            case FLEXIBLE: return "";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case COMPARABLE: return "The data element is sufficiently well-constrained that multiple pieces of data captured according to the constraints of the data element will be comparable (though in some cases, a degree of automated conversion/normalization may be required).";
+            case FULLYSPECIFIED: return "The data element is fully specified down to a single value set, single unit of measure, single data type, etc.  Multiple pieces of data associated with this data element are fully compareable.";
+            case EQUIVALENT: return "The data element allows multiple units of measure having equivalent meaning.  E.g. 'cc' (cubic centimeter) and 'mL'.";
+            case CONVERTABLE: return "The data element allows multiple units of measure that are convertable between each other (e.g. Inches and centimeters) and/or allows data to be captured in multiple value sets for which a known mapping exists allowing conversion of meaning.";
+            case SCALEABLE: return "A convertable data element where unit conversions are different only by a power of 10.  E.g. g, mg, kg.";
+            case FLEXIBLE: return "The data element is unconstrained in units, choice of data types and/or choice of vocabulary such that automated comparison of data captured using the data element is not possible.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case COMPARABLE: return "comparable";
+            case FULLYSPECIFIED: return "fully specified";
+            case EQUIVALENT: return "equivalent";
+            case CONVERTABLE: return "convertable";
+            case SCALEABLE: return "scaleable";
+            case FLEXIBLE: return "flexible";
+            default: return "?";
+          }
+        }
+    }
+
+  public static class DataelementGranularityEnumFactory implements EnumFactory<DataelementGranularity> {
+    public DataelementGranularity fromCode(String codeString) throws IllegalArgumentException {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("comparable".equals(codeString))
+          return DataelementGranularity.COMPARABLE;
+        if ("fully specified".equals(codeString))
+          return DataelementGranularity.FULLYSPECIFIED;
+        if ("equivalent".equals(codeString))
+          return DataelementGranularity.EQUIVALENT;
+        if ("convertable".equals(codeString))
+          return DataelementGranularity.CONVERTABLE;
+        if ("scaleable".equals(codeString))
+          return DataelementGranularity.SCALEABLE;
+        if ("flexible".equals(codeString))
+          return DataelementGranularity.FLEXIBLE;
+        throw new IllegalArgumentException("Unknown DataelementGranularity code '"+codeString+"'");
+        }
+    public String toCode(DataelementGranularity code) {
+      if (code == DataelementGranularity.COMPARABLE)
+        return "comparable";
+      if (code == DataelementGranularity.FULLYSPECIFIED)
+        return "fully specified";
+      if (code == DataelementGranularity.EQUIVALENT)
+        return "equivalent";
+      if (code == DataelementGranularity.CONVERTABLE)
+        return "convertable";
+      if (code == DataelementGranularity.SCALEABLE)
+        return "scaleable";
+      if (code == DataelementGranularity.FLEXIBLE)
+        return "flexible";
       return "?";
       }
     }
@@ -193,8 +321,8 @@ public class DataElement extends DomainResource {
         }
     }
 
-  public static class BindingConformanceEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class BindingConformanceEnumFactory implements EnumFactory<BindingConformance> {
+    public BindingConformance fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -204,9 +332,9 @@ public class DataElement extends DomainResource {
           return BindingConformance.PREFERRED;
         if ("example".equals(codeString))
           return BindingConformance.EXAMPLE;
-        throw new Exception("Unknown BindingConformance code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown BindingConformance code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(BindingConformance code) {
       if (code == BindingConformance.REQUIRED)
         return "required";
       if (code == BindingConformance.PREFERRED)
@@ -271,7 +399,7 @@ public class DataElement extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DataElementBindingComponent.isExtensible");
             else if (Configuration.doAutoCreate())
-              this.isExtensible = new BooleanType();
+              this.isExtensible = new BooleanType(); // bb
           return this.isExtensible;
         }
 
@@ -316,7 +444,7 @@ public class DataElement extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DataElementBindingComponent.conformance");
             else if (Configuration.doAutoCreate())
-              this.conformance = new Enumeration<BindingConformance>();
+              this.conformance = new Enumeration<BindingConformance>(new BindingConformanceEnumFactory()); // bb
           return this.conformance;
         }
 
@@ -351,7 +479,7 @@ public class DataElement extends DomainResource {
             this.conformance = null;
           else {
             if (this.conformance == null)
-              this.conformance = new Enumeration<BindingConformance>();
+              this.conformance = new Enumeration<BindingConformance>(new BindingConformanceEnumFactory());
             this.conformance.setValue(value);
           }
           return this;
@@ -365,7 +493,7 @@ public class DataElement extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DataElementBindingComponent.description");
             else if (Configuration.doAutoCreate())
-              this.description = new StringType();
+              this.description = new StringType(); // bb
           return this.description;
         }
 
@@ -414,7 +542,7 @@ public class DataElement extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DataElementBindingComponent.valueSet");
             else if (Configuration.doAutoCreate())
-              this.valueSet = new Reference();
+              this.valueSet = new Reference(); // cc
           return this.valueSet;
         }
 
@@ -438,7 +566,7 @@ public class DataElement extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DataElementBindingComponent.valueSet");
             else if (Configuration.doAutoCreate())
-              this.valueSetTarget = new ValueSet();
+              this.valueSetTarget = new ValueSet(); // aa
           return this.valueSetTarget;
         }
 
@@ -532,7 +660,7 @@ public class DataElement extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DataElementMappingComponent.uri");
             else if (Configuration.doAutoCreate())
-              this.uri = new UriType();
+              this.uri = new UriType(); // bb
           return this.uri;
         }
 
@@ -581,7 +709,7 @@ public class DataElement extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DataElementMappingComponent.definitional");
             else if (Configuration.doAutoCreate())
-              this.definitional = new BooleanType();
+              this.definitional = new BooleanType(); // bb
           return this.definitional;
         }
 
@@ -630,7 +758,7 @@ public class DataElement extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DataElementMappingComponent.name");
             else if (Configuration.doAutoCreate())
-              this.name = new StringType();
+              this.name = new StringType(); // bb
           return this.name;
         }
 
@@ -679,7 +807,7 @@ public class DataElement extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DataElementMappingComponent.comments");
             else if (Configuration.doAutoCreate())
-              this.comments = new StringType();
+              this.comments = new StringType(); // bb
           return this.comments;
         }
 
@@ -728,7 +856,7 @@ public class DataElement extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DataElementMappingComponent.map");
             else if (Configuration.doAutoCreate())
-              this.map = new StringType();
+              this.map = new StringType(); // bb
           return this.map;
         }
 
@@ -829,10 +957,10 @@ public class DataElement extends DomainResource {
     protected Enumeration<ResourceObservationDefStatus> status;
 
     /**
-     * The date that this version of the data element was published.
+     * The date that the status for this business version of the data element became effective.  (I.e. Date the draft was created, date element became active or date element became retired).
      */
     @Child(name="date", type={DateTimeType.class}, order=4, min=0, max=1)
-    @Description(shortDefinition="Date for this version of the data element", formalDefinition="The date that this version of the data element was published." )
+    @Description(shortDefinition="Date for this version of the data element", formalDefinition="The date that the status for this business version of the data element became effective.  (I.e. Date the draft was created, date element became active or date element became retired)." )
     protected DateTimeType date;
 
     /**
@@ -850,90 +978,104 @@ public class DataElement extends DomainResource {
     protected List<CodeableConcept> category;
 
     /**
+     * Identifies how precise the data element is in its definition.
+     */
+    @Child(name="granularity", type={CodeType.class}, order=7, min=0, max=1)
+    @Description(shortDefinition="comparable | fully specified | equivalent | convertable | scaleable | flexible", formalDefinition="Identifies how precise the data element is in its definition." )
+    protected Enumeration<DataelementGranularity> granularity;
+
+    /**
      * A code that provides the meaning for a data element according to a particular terminology.
      */
-    @Child(name="code", type={Coding.class}, order=7, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name="code", type={Coding.class}, order=8, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Identifying concept", formalDefinition="A code that provides the meaning for a data element according to a particular terminology." )
     protected List<Coding> code;
 
     /**
-     * The default/suggested phrasing to use when prompting a human to capture the data element.
+     * The default/suggested phrasing to use when prompting a human to capture the data element in question form (e.g. In a survey).
      */
-    @Child(name="question", type={StringType.class}, order=8, min=0, max=1)
-    @Description(shortDefinition="How to ask for element", formalDefinition="The default/suggested phrasing to use when prompting a human to capture the data element." )
+    @Child(name="question", type={StringType.class}, order=9, min=0, max=1)
+    @Description(shortDefinition="Prompt for element phrased as question", formalDefinition="The default/suggested phrasing to use when prompting a human to capture the data element in question form (e.g. In a survey)." )
     protected StringType question;
+
+    /**
+     * The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.
+     */
+    @Child(name="label", type={StringType.class}, order=10, min=0, max=1)
+    @Description(shortDefinition="Name for element to display with or prompt for element", formalDefinition="The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form." )
+    protected StringType label;
 
     /**
      * Provides a complete explanation of the meaning of the data element for human readability.
      */
-    @Child(name="definition", type={StringType.class}, order=9, min=0, max=1)
+    @Child(name="definition", type={StringType.class}, order=11, min=0, max=1)
     @Description(shortDefinition="Definition/description as narrative text", formalDefinition="Provides a complete explanation of the meaning of the data element for human readability." )
     protected StringType definition;
 
     /**
      * Comments about the use of the element, including notes about how to use the data properly, exceptions to proper use, etc.
      */
-    @Child(name="comments", type={StringType.class}, order=10, min=0, max=1)
+    @Child(name="comments", type={StringType.class}, order=12, min=0, max=1)
     @Description(shortDefinition="Comments about the use of this element", formalDefinition="Comments about the use of the element, including notes about how to use the data properly, exceptions to proper use, etc." )
     protected StringType comments;
 
     /**
      * Explains why this element is needed and why it's been constrained as it has.
      */
-    @Child(name="requirements", type={StringType.class}, order=11, min=0, max=1)
+    @Child(name="requirements", type={StringType.class}, order=13, min=0, max=1)
     @Description(shortDefinition="Why is this needed?", formalDefinition="Explains why this element is needed and why it's been constrained as it has." )
     protected StringType requirements;
 
     /**
      * Identifies additional names by which this element might also be known.
      */
-    @Child(name="synonym", type={StringType.class}, order=12, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name="synonym", type={StringType.class}, order=14, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Other names", formalDefinition="Identifies additional names by which this element might also be known." )
     protected List<StringType> synonym;
 
     /**
-     * The FHIR data type that is the type for this element.
+     * The FHIR data type that is the type for data that corresponds to this data element.
      */
-    @Child(name="type", type={CodeType.class}, order=13, min=0, max=1)
-    @Description(shortDefinition="Name of Data type", formalDefinition="The FHIR data type that is the type for this element." )
+    @Child(name="type", type={CodeType.class}, order=15, min=0, max=1)
+    @Description(shortDefinition="Name of Data type", formalDefinition="The FHIR data type that is the type for data that corresponds to this data element." )
     protected CodeType type;
 
     /**
-     * An sample value for this element demonstrating the type of information that would typically be captured.
+     * A sample value for this element demonstrating the type of information that would typically be captured.
      */
-    @Child(name="example", type={}, order=14, min=0, max=1)
-    @Description(shortDefinition="Example value: [as defined for type]", formalDefinition="An sample value for this element demonstrating the type of information that would typically be captured." )
+    @Child(name="example", type={}, order=16, min=0, max=1)
+    @Description(shortDefinition="Example value: [as defined for type]", formalDefinition="A sample value for this element demonstrating the type of information that would typically be captured." )
     protected org.hl7.fhir.instance.model.Type example;
 
     /**
      * Indicates the shortest length that SHALL be supported by conformant instances without truncation.
      */
-    @Child(name="maxLength", type={IntegerType.class}, order=15, min=0, max=1)
+    @Child(name="maxLength", type={IntegerType.class}, order=17, min=0, max=1)
     @Description(shortDefinition="Length for strings", formalDefinition="Indicates the shortest length that SHALL be supported by conformant instances without truncation." )
     protected IntegerType maxLength;
 
     /**
      * Identifies the units of measure in which the data element should be captured or expressed.
      */
-    @Child(name="units", type={CodeableConcept.class}, order=16, min=0, max=1)
+    @Child(name="units", type={CodeableConcept.class, ValueSet.class}, order=18, min=0, max=1)
     @Description(shortDefinition="Units to use for measured value", formalDefinition="Identifies the units of measure in which the data element should be captured or expressed." )
-    protected CodeableConcept units;
+    protected Type units;
 
     /**
      * Binds to a value set if this element is coded (code, Coding, CodeableConcept).
      */
-    @Child(name="binding", type={}, order=17, min=0, max=1)
+    @Child(name="binding", type={}, order=19, min=0, max=1)
     @Description(shortDefinition="ValueSet details if this is coded", formalDefinition="Binds to a value set if this element is coded (code, Coding, CodeableConcept)." )
     protected DataElementBindingComponent binding;
 
     /**
      * Identifies a concept from an external specification that roughly corresponds to this element.
      */
-    @Child(name="mapping", type={}, order=18, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name="mapping", type={}, order=20, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Map element to another set of definitions", formalDefinition="Identifies a concept from an external specification that roughly corresponds to this element." )
     protected List<DataElementMappingComponent> mapping;
 
-    private static final long serialVersionUID = 692149082L;
+    private static final long serialVersionUID = 1810868955L;
 
     public DataElement() {
       super();
@@ -952,7 +1094,7 @@ public class DataElement extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.identifier");
         else if (Configuration.doAutoCreate())
-          this.identifier = new Identifier();
+          this.identifier = new Identifier(); // cc
       return this.identifier;
     }
 
@@ -976,7 +1118,7 @@ public class DataElement extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.version");
         else if (Configuration.doAutoCreate())
-          this.version = new StringType();
+          this.version = new StringType(); // bb
       return this.version;
     }
 
@@ -1025,7 +1167,7 @@ public class DataElement extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.publisher");
         else if (Configuration.doAutoCreate())
-          this.publisher = new StringType();
+          this.publisher = new StringType(); // bb
       return this.publisher;
     }
 
@@ -1104,7 +1246,7 @@ public class DataElement extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.status");
         else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<ResourceObservationDefStatus>();
+          this.status = new Enumeration<ResourceObservationDefStatus>(new ResourceObservationDefStatusEnumFactory()); // bb
       return this.status;
     }
 
@@ -1136,20 +1278,20 @@ public class DataElement extends DomainResource {
      */
     public DataElement setStatus(ResourceObservationDefStatus value) { 
         if (this.status == null)
-          this.status = new Enumeration<ResourceObservationDefStatus>();
+          this.status = new Enumeration<ResourceObservationDefStatus>(new ResourceObservationDefStatusEnumFactory());
         this.status.setValue(value);
       return this;
     }
 
     /**
-     * @return {@link #date} (The date that this version of the data element was published.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @return {@link #date} (The date that the status for this business version of the data element became effective.  (I.e. Date the draft was created, date element became active or date element became retired).). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public DateTimeType getDateElement() { 
       if (this.date == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.date");
         else if (Configuration.doAutoCreate())
-          this.date = new DateTimeType();
+          this.date = new DateTimeType(); // bb
       return this.date;
     }
 
@@ -1162,7 +1304,7 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @param value {@link #date} (The date that this version of the data element was published.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @param value {@link #date} (The date that the status for this business version of the data element became effective.  (I.e. Date the draft was created, date element became active or date element became retired).). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public DataElement setDateElement(DateTimeType value) { 
       this.date = value;
@@ -1170,16 +1312,16 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @return The date that this version of the data element was published.
+     * @return The date that the status for this business version of the data element became effective.  (I.e. Date the draft was created, date element became active or date element became retired).
      */
-    public DateAndTime getDate() { 
+    public Date getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
-     * @param value The date that this version of the data element was published.
+     * @param value The date that the status for this business version of the data element became effective.  (I.e. Date the draft was created, date element became active or date element became retired).
      */
-    public DataElement setDate(DateAndTime value) { 
+    public DataElement setDate(Date value) { 
       if (value == null)
         this.date = null;
       else {
@@ -1198,7 +1340,7 @@ public class DataElement extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.name");
         else if (Configuration.doAutoCreate())
-          this.name = new StringType();
+          this.name = new StringType(); // bb
       return this.name;
     }
 
@@ -1270,6 +1412,55 @@ public class DataElement extends DomainResource {
     }
 
     /**
+     * @return {@link #granularity} (Identifies how precise the data element is in its definition.). This is the underlying object with id, value and extensions. The accessor "getGranularity" gives direct access to the value
+     */
+    public Enumeration<DataelementGranularity> getGranularityElement() { 
+      if (this.granularity == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create DataElement.granularity");
+        else if (Configuration.doAutoCreate())
+          this.granularity = new Enumeration<DataelementGranularity>(new DataelementGranularityEnumFactory()); // bb
+      return this.granularity;
+    }
+
+    public boolean hasGranularityElement() { 
+      return this.granularity != null && !this.granularity.isEmpty();
+    }
+
+    public boolean hasGranularity() { 
+      return this.granularity != null && !this.granularity.isEmpty();
+    }
+
+    /**
+     * @param value {@link #granularity} (Identifies how precise the data element is in its definition.). This is the underlying object with id, value and extensions. The accessor "getGranularity" gives direct access to the value
+     */
+    public DataElement setGranularityElement(Enumeration<DataelementGranularity> value) { 
+      this.granularity = value;
+      return this;
+    }
+
+    /**
+     * @return Identifies how precise the data element is in its definition.
+     */
+    public DataelementGranularity getGranularity() { 
+      return this.granularity == null ? null : this.granularity.getValue();
+    }
+
+    /**
+     * @param value Identifies how precise the data element is in its definition.
+     */
+    public DataElement setGranularity(DataelementGranularity value) { 
+      if (value == null)
+        this.granularity = null;
+      else {
+        if (this.granularity == null)
+          this.granularity = new Enumeration<DataelementGranularity>(new DataelementGranularityEnumFactory());
+        this.granularity.setValue(value);
+      }
+      return this;
+    }
+
+    /**
      * @return {@link #code} (A code that provides the meaning for a data element according to a particular terminology.)
      */
     public List<Coding> getCode() { 
@@ -1300,14 +1491,14 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @return {@link #question} (The default/suggested phrasing to use when prompting a human to capture the data element.). This is the underlying object with id, value and extensions. The accessor "getQuestion" gives direct access to the value
+     * @return {@link #question} (The default/suggested phrasing to use when prompting a human to capture the data element in question form (e.g. In a survey).). This is the underlying object with id, value and extensions. The accessor "getQuestion" gives direct access to the value
      */
     public StringType getQuestionElement() { 
       if (this.question == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.question");
         else if (Configuration.doAutoCreate())
-          this.question = new StringType();
+          this.question = new StringType(); // bb
       return this.question;
     }
 
@@ -1320,7 +1511,7 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @param value {@link #question} (The default/suggested phrasing to use when prompting a human to capture the data element.). This is the underlying object with id, value and extensions. The accessor "getQuestion" gives direct access to the value
+     * @param value {@link #question} (The default/suggested phrasing to use when prompting a human to capture the data element in question form (e.g. In a survey).). This is the underlying object with id, value and extensions. The accessor "getQuestion" gives direct access to the value
      */
     public DataElement setQuestionElement(StringType value) { 
       this.question = value;
@@ -1328,14 +1519,14 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @return The default/suggested phrasing to use when prompting a human to capture the data element.
+     * @return The default/suggested phrasing to use when prompting a human to capture the data element in question form (e.g. In a survey).
      */
     public String getQuestion() { 
       return this.question == null ? null : this.question.getValue();
     }
 
     /**
-     * @param value The default/suggested phrasing to use when prompting a human to capture the data element.
+     * @param value The default/suggested phrasing to use when prompting a human to capture the data element in question form (e.g. In a survey).
      */
     public DataElement setQuestion(String value) { 
       if (Utilities.noString(value))
@@ -1349,6 +1540,55 @@ public class DataElement extends DomainResource {
     }
 
     /**
+     * @return {@link #label} (The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.). This is the underlying object with id, value and extensions. The accessor "getLabel" gives direct access to the value
+     */
+    public StringType getLabelElement() { 
+      if (this.label == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create DataElement.label");
+        else if (Configuration.doAutoCreate())
+          this.label = new StringType(); // bb
+      return this.label;
+    }
+
+    public boolean hasLabelElement() { 
+      return this.label != null && !this.label.isEmpty();
+    }
+
+    public boolean hasLabel() { 
+      return this.label != null && !this.label.isEmpty();
+    }
+
+    /**
+     * @param value {@link #label} (The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.). This is the underlying object with id, value and extensions. The accessor "getLabel" gives direct access to the value
+     */
+    public DataElement setLabelElement(StringType value) { 
+      this.label = value;
+      return this;
+    }
+
+    /**
+     * @return The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.
+     */
+    public String getLabel() { 
+      return this.label == null ? null : this.label.getValue();
+    }
+
+    /**
+     * @param value The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.
+     */
+    public DataElement setLabel(String value) { 
+      if (Utilities.noString(value))
+        this.label = null;
+      else {
+        if (this.label == null)
+          this.label = new StringType();
+        this.label.setValue(value);
+      }
+      return this;
+    }
+
+    /**
      * @return {@link #definition} (Provides a complete explanation of the meaning of the data element for human readability.). This is the underlying object with id, value and extensions. The accessor "getDefinition" gives direct access to the value
      */
     public StringType getDefinitionElement() { 
@@ -1356,7 +1596,7 @@ public class DataElement extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.definition");
         else if (Configuration.doAutoCreate())
-          this.definition = new StringType();
+          this.definition = new StringType(); // bb
       return this.definition;
     }
 
@@ -1405,7 +1645,7 @@ public class DataElement extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.comments");
         else if (Configuration.doAutoCreate())
-          this.comments = new StringType();
+          this.comments = new StringType(); // bb
       return this.comments;
     }
 
@@ -1454,7 +1694,7 @@ public class DataElement extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.requirements");
         else if (Configuration.doAutoCreate())
-          this.requirements = new StringType();
+          this.requirements = new StringType(); // bb
       return this.requirements;
     }
 
@@ -1550,14 +1790,14 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @return {@link #type} (The FHIR data type that is the type for this element.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
+     * @return {@link #type} (The FHIR data type that is the type for data that corresponds to this data element.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
      */
     public CodeType getTypeElement() { 
       if (this.type == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.type");
         else if (Configuration.doAutoCreate())
-          this.type = new CodeType();
+          this.type = new CodeType(); // bb
       return this.type;
     }
 
@@ -1570,7 +1810,7 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @param value {@link #type} (The FHIR data type that is the type for this element.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
+     * @param value {@link #type} (The FHIR data type that is the type for data that corresponds to this data element.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
      */
     public DataElement setTypeElement(CodeType value) { 
       this.type = value;
@@ -1578,14 +1818,14 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @return The FHIR data type that is the type for this element.
+     * @return The FHIR data type that is the type for data that corresponds to this data element.
      */
     public String getType() { 
       return this.type == null ? null : this.type.getValue();
     }
 
     /**
-     * @param value The FHIR data type that is the type for this element.
+     * @param value The FHIR data type that is the type for data that corresponds to this data element.
      */
     public DataElement setType(String value) { 
       if (Utilities.noString(value))
@@ -1599,7 +1839,7 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @return {@link #example} (An sample value for this element demonstrating the type of information that would typically be captured.)
+     * @return {@link #example} (A sample value for this element demonstrating the type of information that would typically be captured.)
      */
     public org.hl7.fhir.instance.model.Type getExample() { 
       return this.example;
@@ -1610,7 +1850,7 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @param value {@link #example} (An sample value for this element demonstrating the type of information that would typically be captured.)
+     * @param value {@link #example} (A sample value for this element demonstrating the type of information that would typically be captured.)
      */
     public DataElement setExample(org.hl7.fhir.instance.model.Type value) { 
       this.example = value;
@@ -1625,7 +1865,7 @@ public class DataElement extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.maxLength");
         else if (Configuration.doAutoCreate())
-          this.maxLength = new IntegerType();
+          this.maxLength = new IntegerType(); // bb
       return this.maxLength;
     }
 
@@ -1669,13 +1909,26 @@ public class DataElement extends DomainResource {
     /**
      * @return {@link #units} (Identifies the units of measure in which the data element should be captured or expressed.)
      */
-    public CodeableConcept getUnits() { 
-      if (this.units == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create DataElement.units");
-        else if (Configuration.doAutoCreate())
-          this.units = new CodeableConcept();
+    public Type getUnits() { 
       return this.units;
+    }
+
+    /**
+     * @return {@link #units} (Identifies the units of measure in which the data element should be captured or expressed.)
+     */
+    public CodeableConcept getUnitsCodeableConcept() throws Exception { 
+      if (!(this.units instanceof CodeableConcept))
+        throw new Exception("Type mismatch: the type CodeableConcept was expected, but "+this.units.getClass().getName()+" was encountered");
+      return (CodeableConcept) this.units;
+    }
+
+    /**
+     * @return {@link #units} (Identifies the units of measure in which the data element should be captured or expressed.)
+     */
+    public Reference getUnitsReference() throws Exception { 
+      if (!(this.units instanceof Reference))
+        throw new Exception("Type mismatch: the type Reference was expected, but "+this.units.getClass().getName()+" was encountered");
+      return (Reference) this.units;
     }
 
     public boolean hasUnits() { 
@@ -1685,7 +1938,7 @@ public class DataElement extends DomainResource {
     /**
      * @param value {@link #units} (Identifies the units of measure in which the data element should be captured or expressed.)
      */
-    public DataElement setUnits(CodeableConcept value) { 
+    public DataElement setUnits(Type value) { 
       this.units = value;
       return this;
     }
@@ -1698,7 +1951,7 @@ public class DataElement extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.binding");
         else if (Configuration.doAutoCreate())
-          this.binding = new DataElementBindingComponent();
+          this.binding = new DataElementBindingComponent(); // cc
       return this.binding;
     }
 
@@ -1751,19 +2004,21 @@ public class DataElement extends DomainResource {
         childrenList.add(new Property("publisher", "string", "Details of the individual or organization who accepts responsibility for publishing the data element.", 0, java.lang.Integer.MAX_VALUE, publisher));
         childrenList.add(new Property("telecom", "ContactPoint", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, telecom));
         childrenList.add(new Property("status", "code", "The status of the data element.", 0, java.lang.Integer.MAX_VALUE, status));
-        childrenList.add(new Property("date", "dateTime", "The date that this version of the data element was published.", 0, java.lang.Integer.MAX_VALUE, date));
+        childrenList.add(new Property("date", "dateTime", "The date that the status for this business version of the data element became effective.  (I.e. Date the draft was created, date element became active or date element became retired).", 0, java.lang.Integer.MAX_VALUE, date));
         childrenList.add(new Property("name", "string", "The term used by humans to refer to the data element.  Should ideally be unique within the context in which the data element is expected to be used.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("category", "CodeableConcept", "A set of terms from external terminologies that may be used to assist with indexing and searching of data element definitions.", 0, java.lang.Integer.MAX_VALUE, category));
+        childrenList.add(new Property("granularity", "code", "Identifies how precise the data element is in its definition.", 0, java.lang.Integer.MAX_VALUE, granularity));
         childrenList.add(new Property("code", "Coding", "A code that provides the meaning for a data element according to a particular terminology.", 0, java.lang.Integer.MAX_VALUE, code));
-        childrenList.add(new Property("question", "string", "The default/suggested phrasing to use when prompting a human to capture the data element.", 0, java.lang.Integer.MAX_VALUE, question));
+        childrenList.add(new Property("question", "string", "The default/suggested phrasing to use when prompting a human to capture the data element in question form (e.g. In a survey).", 0, java.lang.Integer.MAX_VALUE, question));
+        childrenList.add(new Property("label", "string", "The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.", 0, java.lang.Integer.MAX_VALUE, label));
         childrenList.add(new Property("definition", "string", "Provides a complete explanation of the meaning of the data element for human readability.", 0, java.lang.Integer.MAX_VALUE, definition));
         childrenList.add(new Property("comments", "string", "Comments about the use of the element, including notes about how to use the data properly, exceptions to proper use, etc.", 0, java.lang.Integer.MAX_VALUE, comments));
         childrenList.add(new Property("requirements", "string", "Explains why this element is needed and why it's been constrained as it has.", 0, java.lang.Integer.MAX_VALUE, requirements));
         childrenList.add(new Property("synonym", "string", "Identifies additional names by which this element might also be known.", 0, java.lang.Integer.MAX_VALUE, synonym));
-        childrenList.add(new Property("type", "code", "The FHIR data type that is the type for this element.", 0, java.lang.Integer.MAX_VALUE, type));
-        childrenList.add(new Property("example[x]", "*", "An sample value for this element demonstrating the type of information that would typically be captured.", 0, java.lang.Integer.MAX_VALUE, example));
+        childrenList.add(new Property("type", "code", "The FHIR data type that is the type for data that corresponds to this data element.", 0, java.lang.Integer.MAX_VALUE, type));
+        childrenList.add(new Property("example[x]", "*", "A sample value for this element demonstrating the type of information that would typically be captured.", 0, java.lang.Integer.MAX_VALUE, example));
         childrenList.add(new Property("maxLength", "integer", "Indicates the shortest length that SHALL be supported by conformant instances without truncation.", 0, java.lang.Integer.MAX_VALUE, maxLength));
-        childrenList.add(new Property("units", "CodeableConcept", "Identifies the units of measure in which the data element should be captured or expressed.", 0, java.lang.Integer.MAX_VALUE, units));
+        childrenList.add(new Property("units[x]", "CodeableConcept|Reference(ValueSet)", "Identifies the units of measure in which the data element should be captured or expressed.", 0, java.lang.Integer.MAX_VALUE, units));
         childrenList.add(new Property("binding", "", "Binds to a value set if this element is coded (code, Coding, CodeableConcept).", 0, java.lang.Integer.MAX_VALUE, binding));
         childrenList.add(new Property("mapping", "", "Identifies a concept from an external specification that roughly corresponds to this element.", 0, java.lang.Integer.MAX_VALUE, mapping));
       }
@@ -1787,12 +2042,14 @@ public class DataElement extends DomainResource {
           for (CodeableConcept i : category)
             dst.category.add(i.copy());
         };
+        dst.granularity = granularity == null ? null : granularity.copy();
         if (code != null) {
           dst.code = new ArrayList<Coding>();
           for (Coding i : code)
             dst.code.add(i.copy());
         };
         dst.question = question == null ? null : question.copy();
+        dst.label = label == null ? null : label.copy();
         dst.definition = definition == null ? null : definition.copy();
         dst.comments = comments == null ? null : comments.copy();
         dst.requirements = requirements == null ? null : requirements.copy();
@@ -1822,11 +2079,12 @@ public class DataElement extends DomainResource {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (version == null || version.isEmpty())
            && (publisher == null || publisher.isEmpty()) && (telecom == null || telecom.isEmpty()) && (status == null || status.isEmpty())
            && (date == null || date.isEmpty()) && (name == null || name.isEmpty()) && (category == null || category.isEmpty())
-           && (code == null || code.isEmpty()) && (question == null || question.isEmpty()) && (definition == null || definition.isEmpty())
-           && (comments == null || comments.isEmpty()) && (requirements == null || requirements.isEmpty())
-           && (synonym == null || synonym.isEmpty()) && (type == null || type.isEmpty()) && (example == null || example.isEmpty())
-           && (maxLength == null || maxLength.isEmpty()) && (units == null || units.isEmpty()) && (binding == null || binding.isEmpty())
-           && (mapping == null || mapping.isEmpty());
+           && (granularity == null || granularity.isEmpty()) && (code == null || code.isEmpty()) && (question == null || question.isEmpty())
+           && (label == null || label.isEmpty()) && (definition == null || definition.isEmpty()) && (comments == null || comments.isEmpty())
+           && (requirements == null || requirements.isEmpty()) && (synonym == null || synonym.isEmpty())
+           && (type == null || type.isEmpty()) && (example == null || example.isEmpty()) && (maxLength == null || maxLength.isEmpty())
+           && (units == null || units.isEmpty()) && (binding == null || binding.isEmpty()) && (mapping == null || mapping.isEmpty())
+          ;
       }
 
   @Override

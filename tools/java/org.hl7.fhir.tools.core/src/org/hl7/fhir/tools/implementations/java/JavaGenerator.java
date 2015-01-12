@@ -195,6 +195,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     TextFile.stringToFileNoPrefix(makeConstantsClass(version, svnRevision, genDate), implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl+"Constants.java");
     ZipGenerator zip = new ZipGenerator(destDir+getReference(version));
     zip.addFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl, "org/hl7/fhir/instance/model/", ".java", null);
+    zip.addFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl+"annotations"+sl, "org/hl7/fhir/instance/model/annotations/", ".java", null);
     zip.addFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl, "org/hl7/fhir/instance/formats/", ".java", null);
     zip.addFiles(implDir+"org.hl7.fhir.utilities"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl, "org/hl7/fhir/utilities/", ".java", null);
     zip.addFiles(implDir+"org.hl7.fhir.utilities"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl+"xhtml"+sl, "org/hl7/fhir/utilities/xhtml/", ".java", null);
@@ -204,7 +205,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     zip.addFileName("imports/xpp3-1.1.4c.jar", importsDir+sl+"xpp3-1.1.4c.jar", false);
     zip.addFileName("imports/gson-2.3.jar", importsDir+sl+"gson-2.3.jar", false);
     zip.addFileName("imports/commons-codec-1.9.jar", importsDir+sl+"commons-codec-1.9.jar", false);
-    zip.addFileName("imports/commons-lang3-3.1.jar", importsDir+sl+"commons-lang3-3.1.jar", false);
+    zip.addFileName("imports/commons-lang3-3.3.2.jar", importsDir+sl+"commons-lang3-3.3.2.jar", false);
     zip.addFileName("imports/commons-logging-1.1.1.jar", importsDir+sl+"commons-logging-1.1.1.jar", false);
     zip.addFileName("imports/commons-logging-api-1.1.jar", importsDir+sl+"commons-logging-api-1.1.jar", false);
     zip.addFileName("imports/httpclient-4.2.3.jar", importsDir+sl+"httpclient-4.2.3.jar", false);
@@ -369,7 +370,7 @@ public boolean compile(String rootDir, List<String> errors, Logger logger) throw
     AddJarToJar(jar, importsDir+sl+"gson-2.3.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-codec-1.9.jar", names);
     AddJarToJar(jar, importsDir+sl+"Saxon-B-9.0.jar", names);
-    AddJarToJar(jar, importsDir+sl+"commons-lang3-3.1.jar", names);
+    AddJarToJar(jar, importsDir+sl+"commons-lang3-3.3.2.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-logging-1.1.1.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-logging-api-1.1.jar", names);    
     AddJarToJar(jar, importsDir+sl+"httpclient-4.2.3.jar", names);
@@ -398,7 +399,7 @@ public boolean compile(String rootDir, List<String> errors, Logger logger) throw
     AddJarToJar(jar, importsDir+sl+"commons-codec-1.9.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-io-1.2.jar", names);
     AddJarToJar(jar, importsDir+sl+"Saxon-B-9.0.jar", names);
-    AddJarToJar(jar, importsDir+sl+"commons-lang3-3.1.jar", names);
+    AddJarToJar(jar, importsDir+sl+"commons-lang3-3.3.2.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-logging-1.1.1.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-logging-api-1.1.jar", names);    
     AddJarToJar(jar, importsDir+sl+"httpclient-4.2.3.jar", names);

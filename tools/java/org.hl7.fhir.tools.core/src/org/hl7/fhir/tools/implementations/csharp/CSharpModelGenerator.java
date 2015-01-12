@@ -35,6 +35,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.codec.binary.StringUtils;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
@@ -229,8 +230,9 @@ public class CSharpModelGenerator extends GenBlock
 			//generateValidationMethod(composite);
 
 			// Put in the NotifyPropertyChanged bits
-			String derivation = composite.getName();
-			if(	derivation.compareTo("Element") == 0 || derivation.compareTo("Resource") == 0 )
+			//String derivation = composite.getName();
+			
+			if( composite.getBaseType() == null )
 			{
 				ln("public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;");
 				ln("protected void OnPropertyChanged(String property)");
@@ -251,23 +253,30 @@ public class CSharpModelGenerator extends GenBlock
   {
     String modifier = isResource && name.equals("Resource") ? "virtual" : "override";
     if(isResource)
+    {
+      ln("[NotMapped]");
       ln("public " + modifier + " ResourceType ResourceType { get { return ResourceType." + name + "; } }");
+    }
       
+    ln("[NotMapped]");      
     ln("public override string TypeName { get { return " + "\"" + name + "\"" + "; } }");
     ln();
   }
 
 
   private void generateMembers(CompositeTypeDefn composite) throws Exception {
-    // Start ordering the elements at 10 (increase by 10)
-    // If there's a base class, start numbering after base class elements
-    int order = 10;
-    if(composite.getBaseType() != null)
+    int numChildren = 0;
+    CompositeTypeDefn baseScan = composite;
+    while(baseScan.getBaseType() != null)
     {
-      CompositeTypeDefn base = (CompositeTypeDefnImpl)composite.resolve(composite.getBaseType());
-      order = (base.getElement().size()+1)*10;
+      baseScan = (CompositeTypeDefnImpl)composite.resolve(baseScan.getBaseType());
+      numChildren += baseScan.getElement().size();
     }
-   
+
+    // Start ordering the elements at 10 (increase by 10), but start after the
+    // numbers used in our baseclasses 
+    int order = numChildren*10 + 10;
+    
     // Make sure elements that need to be serialized as attributes in Xml
     // are sorted and generated first, since the streaming Xml writer api
     // will need to have them before the elements come in.
@@ -299,17 +308,16 @@ public class CSharpModelGenerator extends GenBlock
   private void generateCopyTo(CompositeTypeDefn composite) throws Exception
   {
     String className = GeneratorUtils.generateCSharpTypeName(composite.getName());
-    Boolean isBase = className.equals("Resource") || className.equals("Element");
-    //String override = isBase ? "virtual" : "override";
-    String override = "override";
+//    Boolean isBase = className.equals("Resource") || className.equals("Element");
     
-    ln("public " + override + " IDeepCopyable CopyTo(IDeepCopyable other)");
+    ln("public override IDeepCopyable CopyTo(IDeepCopyable other)");
     bs("{");      
       ln("var dest = other as " + className + ";");
       ln();
       ln("if (dest != null)");
       bs("{");
-        if(!isBase) ln("base.CopyTo(dest);");
+//        if(!isBase) ln("base.CopyTo(dest);");
+        ln("base.CopyTo(dest);");   // Since there's now a virtual CopyTo in Base.cs, you can always call base
         
         for( ElementDefn member : composite.getElement() )
         {
@@ -382,7 +390,7 @@ public class CSharpModelGenerator extends GenBlock
 	
 	private void generateMemberProperty(CompositeTypeDefn context, ElementDefn member, int order)
 			throws Exception {
-
+  
     // Determine the most appropriate FHIR type to use for this
     // (possibly polymorphic) element.
     TypeRef tref = GeneratorUtils.getMemberTypeForElement(getDefinitions(),member);
@@ -391,7 +399,6 @@ public class CSharpModelGenerator extends GenBlock
                                     member.isPrimitiveValueElement();
     boolean hasBothPrimitiveAndElementProperty = isFhirPrimitive && !needsNativeProperty;
     
-
     String choiceType = null;
     String choices = "";
         
@@ -504,11 +511,26 @@ public class CSharpModelGenerator extends GenBlock
 		nl( memberCsType + " " + memberName  );
 		
 		bs("{");
-		ln("get { return _"+memberName+"; }");
+		
+		if(member.getMaxCardinality() == -1)
+		{
+		  ln("get { if(_" + memberName + "==null) _" + memberName + " = new " + memberCsType + "();");
+		  nl(" return _"+memberName+"; }");		  
+		  //get { if (_Relationship == null) _Relationship = new List<Hl7.Fhir.Model.CodeableConcept>(); return _Relationship; }
+		}
+		else
+		  ln("get { return _"+memberName+"; }");
+		
 		ln("set { _"+memberName+" = value; OnPropertyChanged(\""+memberName+"\"); }");
 		es("}");
-		ln( "private " + memberCsType + " _" + memberName + ";" );
 		ln();
+		
+		if(!member.isPrimitiveValueElement())
+		{
+		  // Primitives have this value as a protected member in their base, Primitive<T>
+  		ln( "private " + memberCsType + " _" + memberName + ";" );
+  		ln();
+		}
 		
 		if(hasBothPrimitiveAndElementProperty)
 	    // If this element is of a type that is a FHIR primitive, generate extra helper
@@ -644,7 +666,18 @@ public class CSharpModelGenerator extends GenBlock
 		if( composite.getBaseType() != null ) 
 		{
 			nl( " : " ); 						
-		  nl(GeneratorUtils.buildFullyScopedTypeName(composite.getBaseType()));
+			
+			String baseName = composite.getBaseType().getFullName();
+			
+	    boolean isFhirPrimitive = Character.isLowerCase(composite.getName().charAt(0));
+	    
+	    if(isFhirPrimitive)
+	    {
+	      String memberCsType = GeneratorUtils.mapPrimitiveToCSharpType(composite.getName());	
+			  baseName = "Primitive<" + memberCsType + ">";
+	    }
+	    
+		  nl(GeneratorUtils.buildFullyScopedTypeName(baseName));
 			nl(", System.ComponentModel.INotifyPropertyChanged");
 		}
 		else

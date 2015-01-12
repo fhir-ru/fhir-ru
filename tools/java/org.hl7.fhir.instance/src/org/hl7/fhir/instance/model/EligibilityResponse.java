@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -97,8 +97,8 @@ public class EligibilityResponse extends DomainResource {
         }
     }
 
-  public static class RSLinkEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class RSLinkEnumFactory implements EnumFactory<RSLink> {
+    public RSLink fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -106,9 +106,9 @@ public class EligibilityResponse extends DomainResource {
           return RSLink.COMPLETE;
         if ("error".equals(codeString))
           return RSLink.ERROR;
-        throw new Exception("Unknown RSLink code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown RSLink code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(RSLink code) {
       if (code == RSLink.COMPLETE)
         return "complete";
       if (code == RSLink.ERROR)
@@ -125,16 +125,16 @@ public class EligibilityResponse extends DomainResource {
     protected List<Identifier> identifier;
 
     /**
-     * Original request resource referrence.
+     * Original request resource reference.
      */
-    @Child(name="request", type={Eligibility.class}, order=0, min=0, max=1)
-    @Description(shortDefinition="Claim reference", formalDefinition="Original request resource referrence." )
+    @Child(name="request", type={EligibilityRequest.class}, order=0, min=0, max=1)
+    @Description(shortDefinition="Claim reference", formalDefinition="Original request resource reference." )
     protected Reference request;
 
     /**
-     * The actual object that is the target of the reference (Original request resource referrence.)
+     * The actual object that is the target of the reference (Original request resource reference.)
      */
-    protected Eligibility requestTarget;
+    protected EligibilityRequest requestTarget;
 
     /**
      * Transaction status: error, complete.
@@ -167,9 +167,9 @@ public class EligibilityResponse extends DomainResource {
     /**
      * The date when the enclosed suite of services were performed or completed.
      */
-    @Child(name="date", type={DateType.class}, order=5, min=0, max=1)
+    @Child(name="created", type={DateTimeType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="Creation date", formalDefinition="The date when the enclosed suite of services were performed or completed." )
-    protected DateType date;
+    protected DateTimeType created;
 
     /**
      * The Insurer who produced this adjudicated response.
@@ -207,7 +207,7 @@ public class EligibilityResponse extends DomainResource {
      */
     protected Organization requestOrganizationTarget;
 
-    private static final long serialVersionUID = -281414348L;
+    private static final long serialVersionUID = 241710852L;
 
     public EligibilityResponse() {
       super();
@@ -244,14 +244,14 @@ public class EligibilityResponse extends DomainResource {
     }
 
     /**
-     * @return {@link #request} (Original request resource referrence.)
+     * @return {@link #request} (Original request resource reference.)
      */
     public Reference getRequest() { 
       if (this.request == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.request");
         else if (Configuration.doAutoCreate())
-          this.request = new Reference();
+          this.request = new Reference(); // cc
       return this.request;
     }
 
@@ -260,7 +260,7 @@ public class EligibilityResponse extends DomainResource {
     }
 
     /**
-     * @param value {@link #request} (Original request resource referrence.)
+     * @param value {@link #request} (Original request resource reference.)
      */
     public EligibilityResponse setRequest(Reference value) { 
       this.request = value;
@@ -268,21 +268,21 @@ public class EligibilityResponse extends DomainResource {
     }
 
     /**
-     * @return {@link #request} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Original request resource referrence.)
+     * @return {@link #request} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Original request resource reference.)
      */
-    public Eligibility getRequestTarget() { 
+    public EligibilityRequest getRequestTarget() { 
       if (this.requestTarget == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.request");
         else if (Configuration.doAutoCreate())
-          this.requestTarget = new Eligibility();
+          this.requestTarget = new EligibilityRequest(); // aa
       return this.requestTarget;
     }
 
     /**
-     * @param value {@link #request} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Original request resource referrence.)
+     * @param value {@link #request} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Original request resource reference.)
      */
-    public EligibilityResponse setRequestTarget(Eligibility value) { 
+    public EligibilityResponse setRequestTarget(EligibilityRequest value) { 
       this.requestTarget = value;
       return this;
     }
@@ -295,7 +295,7 @@ public class EligibilityResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.outcome");
         else if (Configuration.doAutoCreate())
-          this.outcome = new Enumeration<RSLink>();
+          this.outcome = new Enumeration<RSLink>(new RSLinkEnumFactory()); // bb
       return this.outcome;
     }
 
@@ -330,7 +330,7 @@ public class EligibilityResponse extends DomainResource {
         this.outcome = null;
       else {
         if (this.outcome == null)
-          this.outcome = new Enumeration<RSLink>();
+          this.outcome = new Enumeration<RSLink>(new RSLinkEnumFactory());
         this.outcome.setValue(value);
       }
       return this;
@@ -344,7 +344,7 @@ public class EligibilityResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.disposition");
         else if (Configuration.doAutoCreate())
-          this.disposition = new StringType();
+          this.disposition = new StringType(); // bb
       return this.disposition;
     }
 
@@ -393,7 +393,7 @@ public class EligibilityResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.ruleset");
         else if (Configuration.doAutoCreate())
-          this.ruleset = new Coding();
+          this.ruleset = new Coding(); // cc
       return this.ruleset;
     }
 
@@ -417,7 +417,7 @@ public class EligibilityResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.originalRuleset");
         else if (Configuration.doAutoCreate())
-          this.originalRuleset = new Coding();
+          this.originalRuleset = new Coding(); // cc
       return this.originalRuleset;
     }
 
@@ -434,50 +434,50 @@ public class EligibilityResponse extends DomainResource {
     }
 
     /**
-     * @return {@link #date} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @return {@link #created} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getCreated" gives direct access to the value
      */
-    public DateType getDateElement() { 
-      if (this.date == null)
+    public DateTimeType getCreatedElement() { 
+      if (this.created == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create EligibilityResponse.date");
+          throw new Error("Attempt to auto-create EligibilityResponse.created");
         else if (Configuration.doAutoCreate())
-          this.date = new DateType();
-      return this.date;
+          this.created = new DateTimeType(); // bb
+      return this.created;
     }
 
-    public boolean hasDateElement() { 
-      return this.date != null && !this.date.isEmpty();
+    public boolean hasCreatedElement() { 
+      return this.created != null && !this.created.isEmpty();
     }
 
-    public boolean hasDate() { 
-      return this.date != null && !this.date.isEmpty();
+    public boolean hasCreated() { 
+      return this.created != null && !this.created.isEmpty();
     }
 
     /**
-     * @param value {@link #date} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @param value {@link #created} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getCreated" gives direct access to the value
      */
-    public EligibilityResponse setDateElement(DateType value) { 
-      this.date = value;
+    public EligibilityResponse setCreatedElement(DateTimeType value) { 
+      this.created = value;
       return this;
     }
 
     /**
      * @return The date when the enclosed suite of services were performed or completed.
      */
-    public DateAndTime getDate() { 
-      return this.date == null ? null : this.date.getValue();
+    public Date getCreated() { 
+      return this.created == null ? null : this.created.getValue();
     }
 
     /**
      * @param value The date when the enclosed suite of services were performed or completed.
      */
-    public EligibilityResponse setDate(DateAndTime value) { 
+    public EligibilityResponse setCreated(Date value) { 
       if (value == null)
-        this.date = null;
+        this.created = null;
       else {
-        if (this.date == null)
-          this.date = new DateType();
-        this.date.setValue(value);
+        if (this.created == null)
+          this.created = new DateTimeType();
+        this.created.setValue(value);
       }
       return this;
     }
@@ -490,7 +490,7 @@ public class EligibilityResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.organization");
         else if (Configuration.doAutoCreate())
-          this.organization = new Reference();
+          this.organization = new Reference(); // cc
       return this.organization;
     }
 
@@ -514,7 +514,7 @@ public class EligibilityResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.organization");
         else if (Configuration.doAutoCreate())
-          this.organizationTarget = new Organization();
+          this.organizationTarget = new Organization(); // aa
       return this.organizationTarget;
     }
 
@@ -534,7 +534,7 @@ public class EligibilityResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.requestProvider");
         else if (Configuration.doAutoCreate())
-          this.requestProvider = new Reference();
+          this.requestProvider = new Reference(); // cc
       return this.requestProvider;
     }
 
@@ -558,7 +558,7 @@ public class EligibilityResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.requestProvider");
         else if (Configuration.doAutoCreate())
-          this.requestProviderTarget = new Practitioner();
+          this.requestProviderTarget = new Practitioner(); // aa
       return this.requestProviderTarget;
     }
 
@@ -578,7 +578,7 @@ public class EligibilityResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.requestOrganization");
         else if (Configuration.doAutoCreate())
-          this.requestOrganization = new Reference();
+          this.requestOrganization = new Reference(); // cc
       return this.requestOrganization;
     }
 
@@ -602,7 +602,7 @@ public class EligibilityResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create EligibilityResponse.requestOrganization");
         else if (Configuration.doAutoCreate())
-          this.requestOrganizationTarget = new Organization();
+          this.requestOrganizationTarget = new Organization(); // aa
       return this.requestOrganizationTarget;
     }
 
@@ -617,12 +617,12 @@ public class EligibilityResponse extends DomainResource {
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "The Response Business Identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("request", "Reference(Eligibility)", "Original request resource referrence.", 0, java.lang.Integer.MAX_VALUE, request));
+        childrenList.add(new Property("request", "Reference(EligibilityRequest)", "Original request resource reference.", 0, java.lang.Integer.MAX_VALUE, request));
         childrenList.add(new Property("outcome", "code", "Transaction status: error, complete.", 0, java.lang.Integer.MAX_VALUE, outcome));
         childrenList.add(new Property("disposition", "string", "A description of the status of the adjudication.", 0, java.lang.Integer.MAX_VALUE, disposition));
         childrenList.add(new Property("ruleset", "Coding", "The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.", 0, java.lang.Integer.MAX_VALUE, ruleset));
         childrenList.add(new Property("originalRuleset", "Coding", "The style (standard) and version of the original material which was converted into this resource.", 0, java.lang.Integer.MAX_VALUE, originalRuleset));
-        childrenList.add(new Property("date", "date", "The date when the enclosed suite of services were performed or completed.", 0, java.lang.Integer.MAX_VALUE, date));
+        childrenList.add(new Property("created", "dateTime", "The date when the enclosed suite of services were performed or completed.", 0, java.lang.Integer.MAX_VALUE, created));
         childrenList.add(new Property("organization", "Reference(Organization)", "The Insurer who produced this adjudicated response.", 0, java.lang.Integer.MAX_VALUE, organization));
         childrenList.add(new Property("requestProvider", "Reference(Practitioner)", "The practitioner who is responsible for the services rendered to the patient.", 0, java.lang.Integer.MAX_VALUE, requestProvider));
         childrenList.add(new Property("requestOrganization", "Reference(Organization)", "The organization which is responsible for the services rendered to the patient.", 0, java.lang.Integer.MAX_VALUE, requestOrganization));
@@ -641,7 +641,7 @@ public class EligibilityResponse extends DomainResource {
         dst.disposition = disposition == null ? null : disposition.copy();
         dst.ruleset = ruleset == null ? null : ruleset.copy();
         dst.originalRuleset = originalRuleset == null ? null : originalRuleset.copy();
-        dst.date = date == null ? null : date.copy();
+        dst.created = created == null ? null : created.copy();
         dst.organization = organization == null ? null : organization.copy();
         dst.requestProvider = requestProvider == null ? null : requestProvider.copy();
         dst.requestOrganization = requestOrganization == null ? null : requestOrganization.copy();
@@ -656,8 +656,9 @@ public class EligibilityResponse extends DomainResource {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (request == null || request.isEmpty())
            && (outcome == null || outcome.isEmpty()) && (disposition == null || disposition.isEmpty())
            && (ruleset == null || ruleset.isEmpty()) && (originalRuleset == null || originalRuleset.isEmpty())
-           && (date == null || date.isEmpty()) && (organization == null || organization.isEmpty()) && (requestProvider == null || requestProvider.isEmpty())
-           && (requestOrganization == null || requestOrganization.isEmpty());
+           && (created == null || created.isEmpty()) && (organization == null || organization.isEmpty())
+           && (requestProvider == null || requestProvider.isEmpty()) && (requestOrganization == null || requestOrganization.isEmpty())
+          ;
       }
 
   @Override

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -85,16 +85,16 @@ public class ElementDefinition extends Type {
         }
     }
 
-  public static class PropertyRepresentationEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class PropertyRepresentationEnumFactory implements EnumFactory<PropertyRepresentation> {
+    public PropertyRepresentation fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("xmlAttr".equals(codeString))
           return PropertyRepresentation.XMLATTR;
-        throw new Exception("Unknown PropertyRepresentation code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown PropertyRepresentation code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(PropertyRepresentation code) {
       if (code == PropertyRepresentation.XMLATTR)
         return "xmlAttr";
       return "?";
@@ -163,8 +163,8 @@ public class ElementDefinition extends Type {
         }
     }
 
-  public static class ResourceSlicingRulesEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class ResourceSlicingRulesEnumFactory implements EnumFactory<ResourceSlicingRules> {
+    public ResourceSlicingRules fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -174,9 +174,9 @@ public class ElementDefinition extends Type {
           return ResourceSlicingRules.OPEN;
         if ("openAtEnd".equals(codeString))
           return ResourceSlicingRules.OPENATEND;
-        throw new Exception("Unknown ResourceSlicingRules code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown ResourceSlicingRules code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(ResourceSlicingRules code) {
       if (code == ResourceSlicingRules.CLOSED)
         return "closed";
       if (code == ResourceSlicingRules.OPEN)
@@ -249,8 +249,8 @@ public class ElementDefinition extends Type {
         }
     }
 
-  public static class ResourceAggregationModeEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class ResourceAggregationModeEnumFactory implements EnumFactory<ResourceAggregationMode> {
+    public ResourceAggregationMode fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -260,9 +260,9 @@ public class ElementDefinition extends Type {
           return ResourceAggregationMode.REFERENCED;
         if ("bundled".equals(codeString))
           return ResourceAggregationMode.BUNDLED;
-        throw new Exception("Unknown ResourceAggregationMode code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown ResourceAggregationMode code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(ResourceAggregationMode code) {
       if (code == ResourceAggregationMode.CONTAINED)
         return "contained";
       if (code == ResourceAggregationMode.REFERENCED)
@@ -325,8 +325,8 @@ public class ElementDefinition extends Type {
         }
     }
 
-  public static class ConstraintSeverityEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class ConstraintSeverityEnumFactory implements EnumFactory<ConstraintSeverity> {
+    public ConstraintSeverity fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -334,9 +334,9 @@ public class ElementDefinition extends Type {
           return ConstraintSeverity.ERROR;
         if ("warning".equals(codeString))
           return ConstraintSeverity.WARNING;
-        throw new Exception("Unknown ConstraintSeverity code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown ConstraintSeverity code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(ConstraintSeverity code) {
       if (code == ConstraintSeverity.ERROR)
         return "error";
       if (code == ConstraintSeverity.WARNING)
@@ -407,8 +407,8 @@ public class ElementDefinition extends Type {
         }
     }
 
-  public static class BindingConformanceEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class BindingConformanceEnumFactory implements EnumFactory<BindingConformance> {
+    public BindingConformance fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -418,9 +418,9 @@ public class ElementDefinition extends Type {
           return BindingConformance.PREFERRED;
         if ("example".equals(codeString))
           return BindingConformance.EXAMPLE;
-        throw new Exception("Unknown BindingConformance code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown BindingConformance code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(BindingConformance code) {
       if (code == BindingConformance.REQUIRED)
         return "required";
       if (code == BindingConformance.PREFERRED)
@@ -435,9 +435,9 @@ public class ElementDefinition extends Type {
         /**
          * Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.
          */
-        @Child(name="discriminator", type={IdType.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name="discriminator", type={StringType.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Element values that used to distinguish the slices", formalDefinition="Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices." )
-        protected List<IdType> discriminator;
+        protected List<StringType> discriminator;
 
         /**
          * A humane readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
@@ -460,7 +460,7 @@ public class ElementDefinition extends Type {
         @Description(shortDefinition="closed | open | openAtEnd", formalDefinition="Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end." )
         protected Enumeration<ResourceSlicingRules> rules;
 
-        private static final long serialVersionUID = 598129403L;
+        private static final long serialVersionUID = -321298491L;
 
       public ElementDefinitionSlicingComponent() {
         super();
@@ -474,16 +474,16 @@ public class ElementDefinition extends Type {
         /**
          * @return {@link #discriminator} (Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.)
          */
-        public List<IdType> getDiscriminator() { 
+        public List<StringType> getDiscriminator() { 
           if (this.discriminator == null)
-            this.discriminator = new ArrayList<IdType>();
+            this.discriminator = new ArrayList<StringType>();
           return this.discriminator;
         }
 
         public boolean hasDiscriminator() { 
           if (this.discriminator == null)
             return false;
-          for (IdType item : this.discriminator)
+          for (StringType item : this.discriminator)
             if (!item.isEmpty())
               return true;
           return false;
@@ -493,10 +493,10 @@ public class ElementDefinition extends Type {
          * @return {@link #discriminator} (Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.)
          */
     // syntactic sugar
-        public IdType addDiscriminatorElement() {//2 
-          IdType t = new IdType();
+        public StringType addDiscriminatorElement() {//2 
+          StringType t = new StringType();
           if (this.discriminator == null)
-            this.discriminator = new ArrayList<IdType>();
+            this.discriminator = new ArrayList<StringType>();
           this.discriminator.add(t);
           return t;
         }
@@ -505,10 +505,10 @@ public class ElementDefinition extends Type {
          * @param value {@link #discriminator} (Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.)
          */
         public ElementDefinitionSlicingComponent addDiscriminator(String value) { //1
-          IdType t = new IdType();
+          StringType t = new StringType();
           t.setValue(value);
           if (this.discriminator == null)
-            this.discriminator = new ArrayList<IdType>();
+            this.discriminator = new ArrayList<StringType>();
           this.discriminator.add(t);
           return this;
         }
@@ -519,8 +519,8 @@ public class ElementDefinition extends Type {
         public boolean hasDiscriminator(String value) { 
           if (this.discriminator == null)
             return false;
-          for (IdType v : this.discriminator)
-            if (v.equals(value)) // id
+          for (StringType v : this.discriminator)
+            if (v.equals(value)) // string
               return true;
           return false;
         }
@@ -533,7 +533,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionSlicingComponent.description");
             else if (Configuration.doAutoCreate())
-              this.description = new StringType();
+              this.description = new StringType(); // bb
           return this.description;
         }
 
@@ -582,7 +582,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionSlicingComponent.ordered");
             else if (Configuration.doAutoCreate())
-              this.ordered = new BooleanType();
+              this.ordered = new BooleanType(); // bb
           return this.ordered;
         }
 
@@ -631,7 +631,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionSlicingComponent.rules");
             else if (Configuration.doAutoCreate())
-              this.rules = new Enumeration<ResourceSlicingRules>();
+              this.rules = new Enumeration<ResourceSlicingRules>(new ResourceSlicingRulesEnumFactory()); // bb
           return this.rules;
         }
 
@@ -663,14 +663,14 @@ public class ElementDefinition extends Type {
          */
         public ElementDefinitionSlicingComponent setRules(ResourceSlicingRules value) { 
             if (this.rules == null)
-              this.rules = new Enumeration<ResourceSlicingRules>();
+              this.rules = new Enumeration<ResourceSlicingRules>(new ResourceSlicingRulesEnumFactory());
             this.rules.setValue(value);
           return this;
         }
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("discriminator", "id", "Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.", 0, java.lang.Integer.MAX_VALUE, discriminator));
+          childrenList.add(new Property("discriminator", "string", "Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.", 0, java.lang.Integer.MAX_VALUE, discriminator));
           childrenList.add(new Property("description", "string", "A humane readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.", 0, java.lang.Integer.MAX_VALUE, description));
           childrenList.add(new Property("ordered", "boolean", "If the matching elements have to occur in the same order as defined in the profile.", 0, java.lang.Integer.MAX_VALUE, ordered));
           childrenList.add(new Property("rules", "code", "Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.", 0, java.lang.Integer.MAX_VALUE, rules));
@@ -680,8 +680,8 @@ public class ElementDefinition extends Type {
         ElementDefinitionSlicingComponent dst = new ElementDefinitionSlicingComponent();
         copyValues(dst);
         if (discriminator != null) {
-          dst.discriminator = new ArrayList<IdType>();
-          for (IdType i : discriminator)
+          dst.discriminator = new ArrayList<StringType>();
+          for (StringType i : discriminator)
             dst.discriminator.add(i.copy());
         };
         dst.description = description == null ? null : description.copy();
@@ -738,7 +738,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create TypeRefComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new CodeType();
+              this.code = new CodeType(); // bb
           return this.code;
         }
 
@@ -783,7 +783,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create TypeRefComponent.profile");
             else if (Configuration.doAutoCreate())
-              this.profile = new UriType();
+              this.profile = new UriType(); // bb
           return this.profile;
         }
 
@@ -847,7 +847,7 @@ public class ElementDefinition extends Type {
          */
     // syntactic sugar
         public Enumeration<ResourceAggregationMode> addAggregationElement() {//2 
-          Enumeration<ResourceAggregationMode> t = new Enumeration<ResourceAggregationMode>();
+          Enumeration<ResourceAggregationMode> t = new Enumeration<ResourceAggregationMode>(new ResourceAggregationModeEnumFactory());
           if (this.aggregation == null)
             this.aggregation = new ArrayList<Enumeration<ResourceAggregationMode>>();
           this.aggregation.add(t);
@@ -858,7 +858,7 @@ public class ElementDefinition extends Type {
          * @param value {@link #aggregation} (If the type is a reference to another resource, how the resource is or can be aggreated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.)
          */
         public TypeRefComponent addAggregation(ResourceAggregationMode value) { //1
-          Enumeration<ResourceAggregationMode> t = new Enumeration<ResourceAggregationMode>();
+          Enumeration<ResourceAggregationMode> t = new Enumeration<ResourceAggregationMode>(new ResourceAggregationModeEnumFactory());
           t.setValue(value);
           if (this.aggregation == null)
             this.aggregation = new ArrayList<Enumeration<ResourceAggregationMode>>();
@@ -963,7 +963,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionConstraintComponent.key");
             else if (Configuration.doAutoCreate())
-              this.key = new IdType();
+              this.key = new IdType(); // bb
           return this.key;
         }
 
@@ -1008,7 +1008,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionConstraintComponent.name");
             else if (Configuration.doAutoCreate())
-              this.name = new StringType();
+              this.name = new StringType(); // bb
           return this.name;
         }
 
@@ -1057,7 +1057,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionConstraintComponent.severity");
             else if (Configuration.doAutoCreate())
-              this.severity = new Enumeration<ConstraintSeverity>();
+              this.severity = new Enumeration<ConstraintSeverity>(new ConstraintSeverityEnumFactory()); // bb
           return this.severity;
         }
 
@@ -1089,7 +1089,7 @@ public class ElementDefinition extends Type {
          */
         public ElementDefinitionConstraintComponent setSeverity(ConstraintSeverity value) { 
             if (this.severity == null)
-              this.severity = new Enumeration<ConstraintSeverity>();
+              this.severity = new Enumeration<ConstraintSeverity>(new ConstraintSeverityEnumFactory());
             this.severity.setValue(value);
           return this;
         }
@@ -1102,7 +1102,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionConstraintComponent.human");
             else if (Configuration.doAutoCreate())
-              this.human = new StringType();
+              this.human = new StringType(); // bb
           return this.human;
         }
 
@@ -1147,7 +1147,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionConstraintComponent.xpath");
             else if (Configuration.doAutoCreate())
-              this.xpath = new StringType();
+              this.xpath = new StringType(); // bb
           return this.xpath;
         }
 
@@ -1268,7 +1268,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionBindingComponent.name");
             else if (Configuration.doAutoCreate())
-              this.name = new StringType();
+              this.name = new StringType(); // bb
           return this.name;
         }
 
@@ -1313,7 +1313,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionBindingComponent.isExtensible");
             else if (Configuration.doAutoCreate())
-              this.isExtensible = new BooleanType();
+              this.isExtensible = new BooleanType(); // bb
           return this.isExtensible;
         }
 
@@ -1358,7 +1358,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionBindingComponent.conformance");
             else if (Configuration.doAutoCreate())
-              this.conformance = new Enumeration<BindingConformance>();
+              this.conformance = new Enumeration<BindingConformance>(new BindingConformanceEnumFactory()); // bb
           return this.conformance;
         }
 
@@ -1393,7 +1393,7 @@ public class ElementDefinition extends Type {
             this.conformance = null;
           else {
             if (this.conformance == null)
-              this.conformance = new Enumeration<BindingConformance>();
+              this.conformance = new Enumeration<BindingConformance>(new BindingConformanceEnumFactory());
             this.conformance.setValue(value);
           }
           return this;
@@ -1407,7 +1407,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionBindingComponent.description");
             else if (Configuration.doAutoCreate())
-              this.description = new StringType();
+              this.description = new StringType(); // bb
           return this.description;
         }
 
@@ -1548,7 +1548,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionMappingComponent.identity");
             else if (Configuration.doAutoCreate())
-              this.identity = new IdType();
+              this.identity = new IdType(); // bb
           return this.identity;
         }
 
@@ -1593,7 +1593,7 @@ public class ElementDefinition extends Type {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionMappingComponent.map");
             else if (Configuration.doAutoCreate())
-              this.map = new StringType();
+              this.map = new StringType(); // bb
           return this.map;
         }
 
@@ -1852,7 +1852,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.path");
         else if (Configuration.doAutoCreate())
-          this.path = new StringType();
+          this.path = new StringType(); // bb
       return this.path;
     }
 
@@ -1912,7 +1912,7 @@ public class ElementDefinition extends Type {
      */
     // syntactic sugar
     public Enumeration<PropertyRepresentation> addRepresentationElement() {//2 
-      Enumeration<PropertyRepresentation> t = new Enumeration<PropertyRepresentation>();
+      Enumeration<PropertyRepresentation> t = new Enumeration<PropertyRepresentation>(new PropertyRepresentationEnumFactory());
       if (this.representation == null)
         this.representation = new ArrayList<Enumeration<PropertyRepresentation>>();
       this.representation.add(t);
@@ -1923,7 +1923,7 @@ public class ElementDefinition extends Type {
      * @param value {@link #representation} (Codes that define how this element is represented in instances, when the deviation varies from the normal case.)
      */
     public ElementDefinition addRepresentation(PropertyRepresentation value) { //1
-      Enumeration<PropertyRepresentation> t = new Enumeration<PropertyRepresentation>();
+      Enumeration<PropertyRepresentation> t = new Enumeration<PropertyRepresentation>(new PropertyRepresentationEnumFactory());
       t.setValue(value);
       if (this.representation == null)
         this.representation = new ArrayList<Enumeration<PropertyRepresentation>>();
@@ -1951,7 +1951,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.name");
         else if (Configuration.doAutoCreate())
-          this.name = new StringType();
+          this.name = new StringType(); // bb
       return this.name;
     }
 
@@ -2000,7 +2000,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.slicing");
         else if (Configuration.doAutoCreate())
-          this.slicing = new ElementDefinitionSlicingComponent();
+          this.slicing = new ElementDefinitionSlicingComponent(); // cc
       return this.slicing;
     }
 
@@ -2024,7 +2024,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.short_");
         else if (Configuration.doAutoCreate())
-          this.short_ = new StringType();
+          this.short_ = new StringType(); // bb
       return this.short_;
     }
 
@@ -2073,7 +2073,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.formal");
         else if (Configuration.doAutoCreate())
-          this.formal = new StringType();
+          this.formal = new StringType(); // bb
       return this.formal;
     }
 
@@ -2122,7 +2122,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.comments");
         else if (Configuration.doAutoCreate())
-          this.comments = new StringType();
+          this.comments = new StringType(); // bb
       return this.comments;
     }
 
@@ -2171,7 +2171,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.requirements");
         else if (Configuration.doAutoCreate())
-          this.requirements = new StringType();
+          this.requirements = new StringType(); // bb
       return this.requirements;
     }
 
@@ -2274,7 +2274,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.min");
         else if (Configuration.doAutoCreate())
-          this.min = new IntegerType();
+          this.min = new IntegerType(); // bb
       return this.min;
     }
 
@@ -2323,7 +2323,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.max");
         else if (Configuration.doAutoCreate())
-          this.max = new StringType();
+          this.max = new StringType(); // bb
       return this.max;
     }
 
@@ -2402,7 +2402,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.nameReference");
         else if (Configuration.doAutoCreate())
-          this.nameReference = new StringType();
+          this.nameReference = new StringType(); // bb
       return this.nameReference;
     }
 
@@ -2470,7 +2470,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.meaningWhenMissing");
         else if (Configuration.doAutoCreate())
-          this.meaningWhenMissing = new StringType();
+          this.meaningWhenMissing = new StringType(); // bb
       return this.meaningWhenMissing;
     }
 
@@ -2576,7 +2576,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.maxLength");
         else if (Configuration.doAutoCreate())
-          this.maxLength = new IntegerType();
+          this.maxLength = new IntegerType(); // bb
       return this.maxLength;
     }
 
@@ -2709,7 +2709,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.mustSupport");
         else if (Configuration.doAutoCreate())
-          this.mustSupport = new BooleanType();
+          this.mustSupport = new BooleanType(); // bb
       return this.mustSupport;
     }
 
@@ -2758,7 +2758,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.isModifier");
         else if (Configuration.doAutoCreate())
-          this.isModifier = new BooleanType();
+          this.isModifier = new BooleanType(); // bb
       return this.isModifier;
     }
 
@@ -2807,7 +2807,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.isSummary");
         else if (Configuration.doAutoCreate())
-          this.isSummary = new BooleanType();
+          this.isSummary = new BooleanType(); // bb
       return this.isSummary;
     }
 
@@ -2856,7 +2856,7 @@ public class ElementDefinition extends Type {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.binding");
         else if (Configuration.doAutoCreate())
-          this.binding = new ElementDefinitionBindingComponent();
+          this.binding = new ElementDefinitionBindingComponent(); // cc
       return this.binding;
     }
 

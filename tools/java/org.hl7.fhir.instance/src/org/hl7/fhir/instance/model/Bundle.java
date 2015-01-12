@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -148,8 +148,8 @@ public class Bundle extends Resource {
         }
     }
 
-  public static class BundleTypeEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class BundleTypeEnumFactory implements EnumFactory<BundleType> {
+    public BundleType fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -167,9 +167,9 @@ public class Bundle extends Resource {
           return BundleType.SEARCHSET;
         if ("collection".equals(codeString))
           return BundleType.COLLECTION;
-        throw new Exception("Unknown BundleType code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown BundleType code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(BundleType code) {
       if (code == BundleType.DOCUMENT)
         return "document";
       if (code == BundleType.MESSAGE)
@@ -260,8 +260,8 @@ public class Bundle extends Resource {
         }
     }
 
-  public static class BundleEntryStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class BundleEntryStatusEnumFactory implements EnumFactory<BundleEntryStatus> {
+    public BundleEntryStatus fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -273,9 +273,9 @@ public class Bundle extends Resource {
           return BundleEntryStatus.MATCH;
         if ("include".equals(codeString))
           return BundleEntryStatus.INCLUDE;
-        throw new Exception("Unknown BundleEntryStatus code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown BundleEntryStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(BundleEntryStatus code) {
       if (code == BundleEntryStatus.CREATE)
         return "create";
       if (code == BundleEntryStatus.UPDATE)
@@ -324,7 +324,7 @@ public class Bundle extends Resource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleLinkComponent.relation");
             else if (Configuration.doAutoCreate())
-              this.relation = new StringType();
+              this.relation = new StringType(); // bb
           return this.relation;
         }
 
@@ -369,7 +369,7 @@ public class Bundle extends Resource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleLinkComponent.url");
             else if (Configuration.doAutoCreate())
-              this.url = new UriType();
+              this.url = new UriType(); // bb
           return this.url;
         }
 
@@ -458,10 +458,10 @@ public class Bundle extends Resource {
         protected DecimalType score;
 
         /**
-         * If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further informatino.
+         * If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further information.
          */
         @Child(name="deleted", type={}, order=5, min=0, max=1)
-        @Description(shortDefinition="If this is a deleted resource (transaction/history)", formalDefinition="If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further informatino." )
+        @Description(shortDefinition="If this is a deleted resource (transaction/history)", formalDefinition="If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further information." )
         protected BundleEntryDeletedComponent deleted;
 
         /**
@@ -485,7 +485,7 @@ public class Bundle extends Resource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleEntryComponent.base");
             else if (Configuration.doAutoCreate())
-              this.base = new UriType();
+              this.base = new UriType(); // bb
           return this.base;
         }
 
@@ -534,7 +534,7 @@ public class Bundle extends Resource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleEntryComponent.status");
             else if (Configuration.doAutoCreate())
-              this.status = new Enumeration<BundleEntryStatus>();
+              this.status = new Enumeration<BundleEntryStatus>(new BundleEntryStatusEnumFactory()); // bb
           return this.status;
         }
 
@@ -569,7 +569,7 @@ public class Bundle extends Resource {
             this.status = null;
           else {
             if (this.status == null)
-              this.status = new Enumeration<BundleEntryStatus>();
+              this.status = new Enumeration<BundleEntryStatus>(new BundleEntryStatusEnumFactory());
             this.status.setValue(value);
           }
           return this;
@@ -583,7 +583,7 @@ public class Bundle extends Resource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleEntryComponent.search");
             else if (Configuration.doAutoCreate())
-              this.search = new UriType();
+              this.search = new UriType(); // bb
           return this.search;
         }
 
@@ -632,7 +632,7 @@ public class Bundle extends Resource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleEntryComponent.score");
             else if (Configuration.doAutoCreate())
-              this.score = new DecimalType();
+              this.score = new DecimalType(); // bb
           return this.score;
         }
 
@@ -674,14 +674,14 @@ public class Bundle extends Resource {
         }
 
         /**
-         * @return {@link #deleted} (If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further informatino.)
+         * @return {@link #deleted} (If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further information.)
          */
         public BundleEntryDeletedComponent getDeleted() { 
           if (this.deleted == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleEntryComponent.deleted");
             else if (Configuration.doAutoCreate())
-              this.deleted = new BundleEntryDeletedComponent();
+              this.deleted = new BundleEntryDeletedComponent(); // cc
           return this.deleted;
         }
 
@@ -690,7 +690,7 @@ public class Bundle extends Resource {
         }
 
         /**
-         * @param value {@link #deleted} (If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further informatino.)
+         * @param value {@link #deleted} (If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further information.)
          */
         public BundleEntryComponent setDeleted(BundleEntryDeletedComponent value) { 
           this.deleted = value;
@@ -722,7 +722,7 @@ public class Bundle extends Resource {
           childrenList.add(new Property("status", "code", "The status of a resource in the bundle. Used for search (to differentiate between resources included as a match, and resources included as an _include), for history (deleted resources), and for transactions (create/update/delete).", 0, java.lang.Integer.MAX_VALUE, status));
           childrenList.add(new Property("search", "uri", "Search URL for this resource when processing a transaction (see transaction documentation).", 0, java.lang.Integer.MAX_VALUE, search));
           childrenList.add(new Property("score", "decimal", "When searching, the server's search ranking score for the entry.", 0, java.lang.Integer.MAX_VALUE, score));
-          childrenList.add(new Property("deleted", "", "If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further informatino.", 0, java.lang.Integer.MAX_VALUE, deleted));
+          childrenList.add(new Property("deleted", "", "If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further information.", 0, java.lang.Integer.MAX_VALUE, deleted));
           childrenList.add(new Property("resource", "Resource", "The Resources for the entry.", 0, java.lang.Integer.MAX_VALUE, resource));
         }
 
@@ -758,9 +758,9 @@ public class Bundle extends Resource {
         /**
          * The id of the resource that was deleted.
          */
-        @Child(name="id", type={IdType.class}, order=2, min=1, max=1)
+        @Child(name="resourceId", type={IdType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="Id of resource that was deleted", formalDefinition="The id of the resource that was deleted." )
-        protected IdType id;
+        protected IdType resourceId;
 
         /**
          * Version id for releted resource.
@@ -776,16 +776,16 @@ public class Bundle extends Resource {
         @Description(shortDefinition="When the resource was deleted", formalDefinition="The date/time that the resource was deleted." )
         protected InstantType instant;
 
-        private static final long serialVersionUID = 1013425873L;
+        private static final long serialVersionUID = -1528107649L;
 
       public BundleEntryDeletedComponent() {
         super();
       }
 
-      public BundleEntryDeletedComponent(CodeType type, IdType id, IdType versionId, InstantType instant) {
+      public BundleEntryDeletedComponent(CodeType type, IdType resourceId, IdType versionId, InstantType instant) {
         super();
         this.type = type;
-        this.id = id;
+        this.resourceId = resourceId;
         this.versionId = versionId;
         this.instant = instant;
       }
@@ -798,7 +798,7 @@ public class Bundle extends Resource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleEntryDeletedComponent.type");
             else if (Configuration.doAutoCreate())
-              this.type = new CodeType();
+              this.type = new CodeType(); // bb
           return this.type;
         }
 
@@ -836,47 +836,47 @@ public class Bundle extends Resource {
         }
 
         /**
-         * @return {@link #id} (The id of the resource that was deleted.). This is the underlying object with id, value and extensions. The accessor "getId" gives direct access to the value
+         * @return {@link #resourceId} (The id of the resource that was deleted.). This is the underlying object with id, value and extensions. The accessor "getResourceId" gives direct access to the value
          */
-        public IdType getIdElement() { 
-          if (this.id == null)
+        public IdType getResourceIdElement() { 
+          if (this.resourceId == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create BundleEntryDeletedComponent.id");
+              throw new Error("Attempt to auto-create BundleEntryDeletedComponent.resourceId");
             else if (Configuration.doAutoCreate())
-              this.id = new IdType();
-          return this.id;
+              this.resourceId = new IdType(); // bb
+          return this.resourceId;
         }
 
-        public boolean hasIdElement() { 
-          return this.id != null && !this.id.isEmpty();
+        public boolean hasResourceIdElement() { 
+          return this.resourceId != null && !this.resourceId.isEmpty();
         }
 
-        public boolean hasId() { 
-          return this.id != null && !this.id.isEmpty();
+        public boolean hasResourceId() { 
+          return this.resourceId != null && !this.resourceId.isEmpty();
         }
 
         /**
-         * @param value {@link #id} (The id of the resource that was deleted.). This is the underlying object with id, value and extensions. The accessor "getId" gives direct access to the value
+         * @param value {@link #resourceId} (The id of the resource that was deleted.). This is the underlying object with id, value and extensions. The accessor "getResourceId" gives direct access to the value
          */
-        public BundleEntryDeletedComponent setIdElement(IdType value) { 
-          this.id = value;
+        public BundleEntryDeletedComponent setResourceIdElement(IdType value) { 
+          this.resourceId = value;
           return this;
         }
 
         /**
          * @return The id of the resource that was deleted.
          */
-        public String getId() { 
-          return this.id == null ? null : this.id.getValue();
+        public String getResourceId() { 
+          return this.resourceId == null ? null : this.resourceId.getValue();
         }
 
         /**
          * @param value The id of the resource that was deleted.
          */
-        public BundleEntryDeletedComponent setId(String value) { 
-            if (this.id == null)
-              this.id = new IdType();
-            this.id.setValue(value);
+        public BundleEntryDeletedComponent setResourceId(String value) { 
+            if (this.resourceId == null)
+              this.resourceId = new IdType();
+            this.resourceId.setValue(value);
           return this;
         }
 
@@ -888,7 +888,7 @@ public class Bundle extends Resource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleEntryDeletedComponent.versionId");
             else if (Configuration.doAutoCreate())
-              this.versionId = new IdType();
+              this.versionId = new IdType(); // bb
           return this.versionId;
         }
 
@@ -933,7 +933,7 @@ public class Bundle extends Resource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleEntryDeletedComponent.instant");
             else if (Configuration.doAutoCreate())
-              this.instant = new InstantType();
+              this.instant = new InstantType(); // bb
           return this.instant;
         }
 
@@ -956,14 +956,14 @@ public class Bundle extends Resource {
         /**
          * @return The date/time that the resource was deleted.
          */
-        public DateAndTime getInstant() { 
+        public Date getInstant() { 
           return this.instant == null ? null : this.instant.getValue();
         }
 
         /**
          * @param value The date/time that the resource was deleted.
          */
-        public BundleEntryDeletedComponent setInstant(DateAndTime value) { 
+        public BundleEntryDeletedComponent setInstant(Date value) { 
             if (this.instant == null)
               this.instant = new InstantType();
             this.instant.setValue(value);
@@ -973,7 +973,7 @@ public class Bundle extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("type", "code", "The type of resource that was deleted (required to construct the identity).", 0, java.lang.Integer.MAX_VALUE, type));
-          childrenList.add(new Property("id", "id", "The id of the resource that was deleted.", 0, java.lang.Integer.MAX_VALUE, id));
+          childrenList.add(new Property("resourceId", "id", "The id of the resource that was deleted.", 0, java.lang.Integer.MAX_VALUE, resourceId));
           childrenList.add(new Property("versionId", "id", "Version id for releted resource.", 0, java.lang.Integer.MAX_VALUE, versionId));
           childrenList.add(new Property("instant", "instant", "The date/time that the resource was deleted.", 0, java.lang.Integer.MAX_VALUE, instant));
         }
@@ -982,15 +982,15 @@ public class Bundle extends Resource {
         BundleEntryDeletedComponent dst = new BundleEntryDeletedComponent();
         copyValues(dst);
         dst.type = type == null ? null : type.copy();
-        dst.id = id == null ? null : id.copy();
+        dst.resourceId = resourceId == null ? null : resourceId.copy();
         dst.versionId = versionId == null ? null : versionId.copy();
         dst.instant = instant == null ? null : instant.copy();
         return dst;
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (type == null || type.isEmpty()) && (id == null || id.isEmpty()) && (versionId == null || versionId.isEmpty())
-           && (instant == null || instant.isEmpty());
+        return super.isEmpty() && (type == null || type.isEmpty()) && (resourceId == null || resourceId.isEmpty())
+           && (versionId == null || versionId.isEmpty()) && (instant == null || instant.isEmpty());
       }
 
   }
@@ -1056,7 +1056,7 @@ public class Bundle extends Resource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Bundle.type");
         else if (Configuration.doAutoCreate())
-          this.type = new Enumeration<BundleType>();
+          this.type = new Enumeration<BundleType>(new BundleTypeEnumFactory()); // bb
       return this.type;
     }
 
@@ -1088,7 +1088,7 @@ public class Bundle extends Resource {
      */
     public Bundle setType(BundleType value) { 
         if (this.type == null)
-          this.type = new Enumeration<BundleType>();
+          this.type = new Enumeration<BundleType>(new BundleTypeEnumFactory());
         this.type.setValue(value);
       return this;
     }
@@ -1101,7 +1101,7 @@ public class Bundle extends Resource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Bundle.base");
         else if (Configuration.doAutoCreate())
-          this.base = new UriType();
+          this.base = new UriType(); // bb
       return this.base;
     }
 
@@ -1150,7 +1150,7 @@ public class Bundle extends Resource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Bundle.total");
         else if (Configuration.doAutoCreate())
-          this.total = new IntegerType();
+          this.total = new IntegerType(); // bb
       return this.total;
     }
 
@@ -1259,7 +1259,7 @@ public class Bundle extends Resource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Bundle.signature");
         else if (Configuration.doAutoCreate())
-          this.signature = new Base64BinaryType();
+          this.signature = new Base64BinaryType(); // bb
       return this.signature;
     }
 

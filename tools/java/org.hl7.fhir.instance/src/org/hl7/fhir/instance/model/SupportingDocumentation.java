@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -87,7 +87,7 @@ public class SupportingDocumentation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SupportingDocumentationDetailComponent.linkId");
             else if (Configuration.doAutoCreate())
-              this.linkId = new IntegerType();
+              this.linkId = new IntegerType(); // bb
           return this.linkId;
         }
 
@@ -169,7 +169,7 @@ public class SupportingDocumentation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SupportingDocumentationDetailComponent.dateTime");
             else if (Configuration.doAutoCreate())
-              this.dateTime = new DateTimeType();
+              this.dateTime = new DateTimeType(); // bb
           return this.dateTime;
         }
 
@@ -192,14 +192,14 @@ public class SupportingDocumentation extends DomainResource {
         /**
          * @return The date and optionally time when the material was created.
          */
-        public DateAndTime getDateTime() { 
+        public Date getDateTime() { 
           return this.dateTime == null ? null : this.dateTime.getValue();
         }
 
         /**
          * @param value The date and optionally time when the material was created.
          */
-        public SupportingDocumentationDetailComponent setDateTime(DateAndTime value) { 
+        public SupportingDocumentationDetailComponent setDateTime(Date value) { 
           if (value == null)
             this.dateTime = null;
           else {
@@ -257,9 +257,9 @@ public class SupportingDocumentation extends DomainResource {
     /**
      * The date when this resource was created.
      */
-    @Child(name="date", type={DateType.class}, order=2, min=0, max=1)
+    @Child(name="created", type={DateTimeType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Creation date", formalDefinition="The date when this resource was created." )
-    protected DateType date;
+    protected DateTimeType created;
 
     /**
      * The Insurer, organization or Provider who is target  of the submission.
@@ -298,26 +298,26 @@ public class SupportingDocumentation extends DomainResource {
     protected Organization organizationTarget;
 
     /**
-     * Original request identifer.
+     * Original request.
      */
     @Child(name="request", type={}, order=6, min=0, max=1)
-    @Description(shortDefinition="Request reference", formalDefinition="Original request identifer." )
+    @Description(shortDefinition="Request reference", formalDefinition="Original request." )
     protected Reference request;
 
     /**
-     * The actual object that is the target of the reference (Original request identifer.)
+     * The actual object that is the target of the reference (Original request.)
      */
     protected Resource requestTarget;
 
     /**
-     * Original response identifer.
+     * Original response.
      */
     @Child(name="response", type={}, order=7, min=0, max=1)
-    @Description(shortDefinition="Response reference", formalDefinition="Original response identifer." )
+    @Description(shortDefinition="Response reference", formalDefinition="Original response." )
     protected Reference response;
 
     /**
-     * The actual object that is the target of the reference (Original response identifer.)
+     * The actual object that is the target of the reference (Original response.)
      */
     protected Resource responseTarget;
 
@@ -352,7 +352,7 @@ public class SupportingDocumentation extends DomainResource {
     @Description(shortDefinition="Supporting Files", formalDefinition="Supporting Files." )
     protected List<SupportingDocumentationDetailComponent> detail;
 
-    private static final long serialVersionUID = -1532144943L;
+    private static final long serialVersionUID = -1353519836L;
 
     public SupportingDocumentation() {
       super();
@@ -396,7 +396,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.ruleset");
         else if (Configuration.doAutoCreate())
-          this.ruleset = new Coding();
+          this.ruleset = new Coding(); // cc
       return this.ruleset;
     }
 
@@ -420,7 +420,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.originalRuleset");
         else if (Configuration.doAutoCreate())
-          this.originalRuleset = new Coding();
+          this.originalRuleset = new Coding(); // cc
       return this.originalRuleset;
     }
 
@@ -437,50 +437,50 @@ public class SupportingDocumentation extends DomainResource {
     }
 
     /**
-     * @return {@link #date} (The date when this resource was created.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @return {@link #created} (The date when this resource was created.). This is the underlying object with id, value and extensions. The accessor "getCreated" gives direct access to the value
      */
-    public DateType getDateElement() { 
-      if (this.date == null)
+    public DateTimeType getCreatedElement() { 
+      if (this.created == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create SupportingDocumentation.date");
+          throw new Error("Attempt to auto-create SupportingDocumentation.created");
         else if (Configuration.doAutoCreate())
-          this.date = new DateType();
-      return this.date;
+          this.created = new DateTimeType(); // bb
+      return this.created;
     }
 
-    public boolean hasDateElement() { 
-      return this.date != null && !this.date.isEmpty();
+    public boolean hasCreatedElement() { 
+      return this.created != null && !this.created.isEmpty();
     }
 
-    public boolean hasDate() { 
-      return this.date != null && !this.date.isEmpty();
+    public boolean hasCreated() { 
+      return this.created != null && !this.created.isEmpty();
     }
 
     /**
-     * @param value {@link #date} (The date when this resource was created.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @param value {@link #created} (The date when this resource was created.). This is the underlying object with id, value and extensions. The accessor "getCreated" gives direct access to the value
      */
-    public SupportingDocumentation setDateElement(DateType value) { 
-      this.date = value;
+    public SupportingDocumentation setCreatedElement(DateTimeType value) { 
+      this.created = value;
       return this;
     }
 
     /**
      * @return The date when this resource was created.
      */
-    public DateAndTime getDate() { 
-      return this.date == null ? null : this.date.getValue();
+    public Date getCreated() { 
+      return this.created == null ? null : this.created.getValue();
     }
 
     /**
      * @param value The date when this resource was created.
      */
-    public SupportingDocumentation setDate(DateAndTime value) { 
+    public SupportingDocumentation setCreated(Date value) { 
       if (value == null)
-        this.date = null;
+        this.created = null;
       else {
-        if (this.date == null)
-          this.date = new DateType();
-        this.date.setValue(value);
+        if (this.created == null)
+          this.created = new DateTimeType();
+        this.created.setValue(value);
       }
       return this;
     }
@@ -493,7 +493,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.target");
         else if (Configuration.doAutoCreate())
-          this.target = new Reference();
+          this.target = new Reference(); // cc
       return this.target;
     }
 
@@ -532,7 +532,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.provider");
         else if (Configuration.doAutoCreate())
-          this.provider = new Reference();
+          this.provider = new Reference(); // cc
       return this.provider;
     }
 
@@ -556,7 +556,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.provider");
         else if (Configuration.doAutoCreate())
-          this.providerTarget = new Practitioner();
+          this.providerTarget = new Practitioner(); // aa
       return this.providerTarget;
     }
 
@@ -576,7 +576,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.organization");
         else if (Configuration.doAutoCreate())
-          this.organization = new Reference();
+          this.organization = new Reference(); // cc
       return this.organization;
     }
 
@@ -600,7 +600,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.organization");
         else if (Configuration.doAutoCreate())
-          this.organizationTarget = new Organization();
+          this.organizationTarget = new Organization(); // aa
       return this.organizationTarget;
     }
 
@@ -613,14 +613,14 @@ public class SupportingDocumentation extends DomainResource {
     }
 
     /**
-     * @return {@link #request} (Original request identifer.)
+     * @return {@link #request} (Original request.)
      */
     public Reference getRequest() { 
       if (this.request == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.request");
         else if (Configuration.doAutoCreate())
-          this.request = new Reference();
+          this.request = new Reference(); // cc
       return this.request;
     }
 
@@ -629,7 +629,7 @@ public class SupportingDocumentation extends DomainResource {
     }
 
     /**
-     * @param value {@link #request} (Original request identifer.)
+     * @param value {@link #request} (Original request.)
      */
     public SupportingDocumentation setRequest(Reference value) { 
       this.request = value;
@@ -637,14 +637,14 @@ public class SupportingDocumentation extends DomainResource {
     }
 
     /**
-     * @return {@link #request} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Original request identifer.)
+     * @return {@link #request} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Original request.)
      */
     public Resource getRequestTarget() { 
       return this.requestTarget;
     }
 
     /**
-     * @param value {@link #request} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Original request identifer.)
+     * @param value {@link #request} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Original request.)
      */
     public SupportingDocumentation setRequestTarget(Resource value) { 
       this.requestTarget = value;
@@ -652,14 +652,14 @@ public class SupportingDocumentation extends DomainResource {
     }
 
     /**
-     * @return {@link #response} (Original response identifer.)
+     * @return {@link #response} (Original response.)
      */
     public Reference getResponse() { 
       if (this.response == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.response");
         else if (Configuration.doAutoCreate())
-          this.response = new Reference();
+          this.response = new Reference(); // cc
       return this.response;
     }
 
@@ -668,7 +668,7 @@ public class SupportingDocumentation extends DomainResource {
     }
 
     /**
-     * @param value {@link #response} (Original response identifer.)
+     * @param value {@link #response} (Original response.)
      */
     public SupportingDocumentation setResponse(Reference value) { 
       this.response = value;
@@ -676,14 +676,14 @@ public class SupportingDocumentation extends DomainResource {
     }
 
     /**
-     * @return {@link #response} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Original response identifer.)
+     * @return {@link #response} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Original response.)
      */
     public Resource getResponseTarget() { 
       return this.responseTarget;
     }
 
     /**
-     * @param value {@link #response} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Original response identifer.)
+     * @param value {@link #response} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Original response.)
      */
     public SupportingDocumentation setResponseTarget(Resource value) { 
       this.responseTarget = value;
@@ -698,7 +698,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.author");
         else if (Configuration.doAutoCreate())
-          this.author = new Reference();
+          this.author = new Reference(); // cc
       return this.author;
     }
 
@@ -722,7 +722,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.author");
         else if (Configuration.doAutoCreate())
-          this.authorTarget = new Practitioner();
+          this.authorTarget = new Practitioner(); // aa
       return this.authorTarget;
     }
 
@@ -742,7 +742,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.subject");
         else if (Configuration.doAutoCreate())
-          this.subject = new Reference();
+          this.subject = new Reference(); // cc
       return this.subject;
     }
 
@@ -766,7 +766,7 @@ public class SupportingDocumentation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupportingDocumentation.subject");
         else if (Configuration.doAutoCreate())
-          this.subjectTarget = new Patient();
+          this.subjectTarget = new Patient(); // aa
       return this.subjectTarget;
     }
 
@@ -813,12 +813,12 @@ public class SupportingDocumentation extends DomainResource {
         childrenList.add(new Property("identifier", "Identifier", "The Response Business Identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("ruleset", "Coding", "The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.", 0, java.lang.Integer.MAX_VALUE, ruleset));
         childrenList.add(new Property("originalRuleset", "Coding", "The style (standard) and version of the original material which was converted into this resource.", 0, java.lang.Integer.MAX_VALUE, originalRuleset));
-        childrenList.add(new Property("date", "date", "The date when this resource was created.", 0, java.lang.Integer.MAX_VALUE, date));
+        childrenList.add(new Property("created", "dateTime", "The date when this resource was created.", 0, java.lang.Integer.MAX_VALUE, created));
         childrenList.add(new Property("target", "Reference(Organization|Practitioner)", "The Insurer, organization or Provider who is target  of the submission.", 0, java.lang.Integer.MAX_VALUE, target));
         childrenList.add(new Property("provider", "Reference(Practitioner)", "The practitioner who is responsible for the services rendered to the patient.", 0, java.lang.Integer.MAX_VALUE, provider));
         childrenList.add(new Property("organization", "Reference(Organization)", "The organization which is responsible for the services rendered to the patient.", 0, java.lang.Integer.MAX_VALUE, organization));
-        childrenList.add(new Property("request", "Reference(Any)", "Original request identifer.", 0, java.lang.Integer.MAX_VALUE, request));
-        childrenList.add(new Property("response", "Reference(Any)", "Original response identifer.", 0, java.lang.Integer.MAX_VALUE, response));
+        childrenList.add(new Property("request", "Reference(Any)", "Original request.", 0, java.lang.Integer.MAX_VALUE, request));
+        childrenList.add(new Property("response", "Reference(Any)", "Original response.", 0, java.lang.Integer.MAX_VALUE, response));
         childrenList.add(new Property("author", "Reference(Practitioner)", "Person who created the submission.", 0, java.lang.Integer.MAX_VALUE, author));
         childrenList.add(new Property("subject", "Reference(Patient)", "The patient who is directly or indirectly the subject of the supporting information.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("detail", "", "Supporting Files.", 0, java.lang.Integer.MAX_VALUE, detail));
@@ -834,7 +834,7 @@ public class SupportingDocumentation extends DomainResource {
         };
         dst.ruleset = ruleset == null ? null : ruleset.copy();
         dst.originalRuleset = originalRuleset == null ? null : originalRuleset.copy();
-        dst.date = date == null ? null : date.copy();
+        dst.created = created == null ? null : created.copy();
         dst.target = target == null ? null : target.copy();
         dst.provider = provider == null ? null : provider.copy();
         dst.organization = organization == null ? null : organization.copy();
@@ -856,7 +856,7 @@ public class SupportingDocumentation extends DomainResource {
 
       public boolean isEmpty() {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (ruleset == null || ruleset.isEmpty())
-           && (originalRuleset == null || originalRuleset.isEmpty()) && (date == null || date.isEmpty())
+           && (originalRuleset == null || originalRuleset.isEmpty()) && (created == null || created.isEmpty())
            && (target == null || target.isEmpty()) && (provider == null || provider.isEmpty()) && (organization == null || organization.isEmpty())
            && (request == null || request.isEmpty()) && (response == null || response.isEmpty()) && (author == null || author.isEmpty())
            && (subject == null || subject.isEmpty()) && (detail == null || detail.isEmpty());

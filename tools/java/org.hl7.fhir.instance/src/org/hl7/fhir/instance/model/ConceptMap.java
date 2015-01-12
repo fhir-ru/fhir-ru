@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -107,8 +107,8 @@ public class ConceptMap extends DomainResource {
         }
     }
 
-  public static class ValuesetStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class ValuesetStatusEnumFactory implements EnumFactory<ValuesetStatus> {
+    public ValuesetStatus fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -118,9 +118,9 @@ public class ConceptMap extends DomainResource {
           return ValuesetStatus.ACTIVE;
         if ("retired".equals(codeString))
           return ValuesetStatus.RETIRED;
-        throw new Exception("Unknown ValuesetStatus code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown ValuesetStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(ValuesetStatus code) {
       if (code == ValuesetStatus.DRAFT)
         return "draft";
       if (code == ValuesetStatus.ACTIVE)
@@ -133,13 +133,13 @@ public class ConceptMap extends DomainResource {
 
     public enum ConceptEquivalence {
         /**
-         * The definitions of the concepts are exactly the same (i.e. only grammatical differences) and structural implications of meaning are identifical or irrelevant (i.e. intensionally identical).
-         */
-        EQUAL, 
-        /**
          * The definitions of the concepts mean the same thing (including when structural implications of meaning are considered) (i.e. extensionally identical).
          */
         EQUIVALENT, 
+        /**
+         * The definitions of the concepts are exactly the same (i.e. only grammatical differences) and structural implications of meaning are identifical or irrelevant (i.e. intensionally identical).
+         */
+        EQUAL, 
         /**
          * The target mapping is wider in meaning than the source concept.
          */
@@ -157,7 +157,7 @@ public class ConceptMap extends DomainResource {
          */
         SPECIALISES, 
         /**
-         * The target mapping overlaps with the source concept, but both source and target cover additional meaning. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.
+         * The target mapping overlaps with the source concept, but both source and target cover additional meaning, or the definitions are imprecise and it is uncertain whether they have the same boundaries to their meaning. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.
          */
         INEXACT, 
         /**
@@ -175,10 +175,10 @@ public class ConceptMap extends DomainResource {
         public static ConceptEquivalence fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("equal".equals(codeString))
-          return EQUAL;
         if ("equivalent".equals(codeString))
           return EQUIVALENT;
+        if ("equal".equals(codeString))
+          return EQUAL;
         if ("wider".equals(codeString))
           return WIDER;
         if ("subsumes".equals(codeString))
@@ -197,8 +197,8 @@ public class ConceptMap extends DomainResource {
         }
         public String toCode() {
           switch (this) {
-            case EQUAL: return "equal";
             case EQUIVALENT: return "equivalent";
+            case EQUAL: return "equal";
             case WIDER: return "wider";
             case SUBSUMES: return "subsumes";
             case NARROWER: return "narrower";
@@ -211,8 +211,8 @@ public class ConceptMap extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case EQUAL: return "";
             case EQUIVALENT: return "";
+            case EQUAL: return "";
             case WIDER: return "";
             case SUBSUMES: return "";
             case NARROWER: return "";
@@ -225,13 +225,13 @@ public class ConceptMap extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case EQUAL: return "The definitions of the concepts are exactly the same (i.e. only grammatical differences) and structural implications of meaning are identifical or irrelevant (i.e. intensionally identical).";
             case EQUIVALENT: return "The definitions of the concepts mean the same thing (including when structural implications of meaning are considered) (i.e. extensionally identical).";
+            case EQUAL: return "The definitions of the concepts are exactly the same (i.e. only grammatical differences) and structural implications of meaning are identifical or irrelevant (i.e. intensionally identical).";
             case WIDER: return "The target mapping is wider in meaning than the source concept.";
             case SUBSUMES: return "The target mapping subsumes the meaning of the source concept (e.g. the source is-a target).";
             case NARROWER: return "The target mapping is narrower in meaning that the source concept. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.";
             case SPECIALISES: return "The target mapping specialises the meaning of the source concept (e.g. the target is-a source).";
-            case INEXACT: return "The target mapping overlaps with the source concept, but both source and target cover additional meaning. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.";
+            case INEXACT: return "The target mapping overlaps with the source concept, but both source and target cover additional meaning, or the definitions are imprecise and it is uncertain whether they have the same boundaries to their meaning. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.";
             case UNMATCHED: return "There is no match for this concept in the destination concept system.";
             case DISJOINT: return "This is an explicit assertion that there is no mapping between the source and target concept.";
             default: return "?";
@@ -239,8 +239,8 @@ public class ConceptMap extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case EQUAL: return "equal";
             case EQUIVALENT: return "equivalent";
+            case EQUAL: return "equal";
             case WIDER: return "wider";
             case SUBSUMES: return "subsumes";
             case NARROWER: return "narrower";
@@ -253,15 +253,15 @@ public class ConceptMap extends DomainResource {
         }
     }
 
-  public static class ConceptEquivalenceEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class ConceptEquivalenceEnumFactory implements EnumFactory<ConceptEquivalence> {
+    public ConceptEquivalence fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("equal".equals(codeString))
-          return ConceptEquivalence.EQUAL;
         if ("equivalent".equals(codeString))
           return ConceptEquivalence.EQUIVALENT;
+        if ("equal".equals(codeString))
+          return ConceptEquivalence.EQUAL;
         if ("wider".equals(codeString))
           return ConceptEquivalence.WIDER;
         if ("subsumes".equals(codeString))
@@ -276,13 +276,13 @@ public class ConceptMap extends DomainResource {
           return ConceptEquivalence.UNMATCHED;
         if ("disjoint".equals(codeString))
           return ConceptEquivalence.DISJOINT;
-        throw new Exception("Unknown ConceptEquivalence code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown ConceptEquivalence code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
-      if (code == ConceptEquivalence.EQUAL)
-        return "equal";
+    public String toCode(ConceptEquivalence code) {
       if (code == ConceptEquivalence.EQUIVALENT)
         return "equivalent";
+      if (code == ConceptEquivalence.EQUAL)
+        return "equal";
       if (code == ConceptEquivalence.WIDER)
         return "wider";
       if (code == ConceptEquivalence.SUBSUMES)
@@ -345,7 +345,7 @@ public class ConceptMap extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ConceptMapElementComponent.codeSystem");
             else if (Configuration.doAutoCreate())
-              this.codeSystem = new UriType();
+              this.codeSystem = new UriType(); // bb
           return this.codeSystem;
         }
 
@@ -394,7 +394,7 @@ public class ConceptMap extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ConceptMapElementComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new CodeType();
+              this.code = new CodeType(); // bb
           return this.code;
         }
 
@@ -572,7 +572,7 @@ public class ConceptMap extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create OtherElementComponent.element");
             else if (Configuration.doAutoCreate())
-              this.element = new UriType();
+              this.element = new UriType(); // bb
           return this.element;
         }
 
@@ -617,7 +617,7 @@ public class ConceptMap extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create OtherElementComponent.codeSystem");
             else if (Configuration.doAutoCreate())
-              this.codeSystem = new UriType();
+              this.codeSystem = new UriType(); // bb
           return this.codeSystem;
         }
 
@@ -662,7 +662,7 @@ public class ConceptMap extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create OtherElementComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new StringType();
+              this.code = new StringType(); // bb
           return this.code;
         }
 
@@ -742,7 +742,7 @@ public class ConceptMap extends DomainResource {
          * The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from source to target (e.g. the source is 'wider' than the target.
          */
         @Child(name="equivalence", type={CodeType.class}, order=3, min=1, max=1)
-        @Description(shortDefinition="equal | equivalent | wider | subsumes | narrower | specialises | inexact | unmatched | disjoint", formalDefinition="The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from source to target (e.g. the source is 'wider' than the target." )
+        @Description(shortDefinition="equivalent | equal | wider | subsumes | narrower | specialises | inexact | unmatched | disjoint", formalDefinition="The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from source to target (e.g. the source is 'wider' than the target." )
         protected Enumeration<ConceptEquivalence> equivalence;
 
         /**
@@ -778,7 +778,7 @@ public class ConceptMap extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ConceptMapElementMapComponent.codeSystem");
             else if (Configuration.doAutoCreate())
-              this.codeSystem = new UriType();
+              this.codeSystem = new UriType(); // bb
           return this.codeSystem;
         }
 
@@ -827,7 +827,7 @@ public class ConceptMap extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ConceptMapElementMapComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new CodeType();
+              this.code = new CodeType(); // bb
           return this.code;
         }
 
@@ -876,7 +876,7 @@ public class ConceptMap extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ConceptMapElementMapComponent.equivalence");
             else if (Configuration.doAutoCreate())
-              this.equivalence = new Enumeration<ConceptEquivalence>();
+              this.equivalence = new Enumeration<ConceptEquivalence>(new ConceptEquivalenceEnumFactory()); // bb
           return this.equivalence;
         }
 
@@ -908,7 +908,7 @@ public class ConceptMap extends DomainResource {
          */
         public ConceptMapElementMapComponent setEquivalence(ConceptEquivalence value) { 
             if (this.equivalence == null)
-              this.equivalence = new Enumeration<ConceptEquivalence>();
+              this.equivalence = new Enumeration<ConceptEquivalence>(new ConceptEquivalenceEnumFactory());
             this.equivalence.setValue(value);
           return this;
         }
@@ -921,7 +921,7 @@ public class ConceptMap extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ConceptMapElementMapComponent.comments");
             else if (Configuration.doAutoCreate())
-              this.comments = new StringType();
+              this.comments = new StringType(); // bb
           return this.comments;
         }
 
@@ -1136,7 +1136,7 @@ public class ConceptMap extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ConceptMap.identifier");
         else if (Configuration.doAutoCreate())
-          this.identifier = new StringType();
+          this.identifier = new StringType(); // bb
       return this.identifier;
     }
 
@@ -1185,7 +1185,7 @@ public class ConceptMap extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ConceptMap.version");
         else if (Configuration.doAutoCreate())
-          this.version = new StringType();
+          this.version = new StringType(); // bb
       return this.version;
     }
 
@@ -1234,7 +1234,7 @@ public class ConceptMap extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ConceptMap.name");
         else if (Configuration.doAutoCreate())
-          this.name = new StringType();
+          this.name = new StringType(); // bb
       return this.name;
     }
 
@@ -1283,7 +1283,7 @@ public class ConceptMap extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ConceptMap.publisher");
         else if (Configuration.doAutoCreate())
-          this.publisher = new StringType();
+          this.publisher = new StringType(); // bb
       return this.publisher;
     }
 
@@ -1362,7 +1362,7 @@ public class ConceptMap extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ConceptMap.description");
         else if (Configuration.doAutoCreate())
-          this.description = new StringType();
+          this.description = new StringType(); // bb
       return this.description;
     }
 
@@ -1411,7 +1411,7 @@ public class ConceptMap extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ConceptMap.copyright");
         else if (Configuration.doAutoCreate())
-          this.copyright = new StringType();
+          this.copyright = new StringType(); // bb
       return this.copyright;
     }
 
@@ -1460,7 +1460,7 @@ public class ConceptMap extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ConceptMap.status");
         else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<ValuesetStatus>();
+          this.status = new Enumeration<ValuesetStatus>(new ValuesetStatusEnumFactory()); // bb
       return this.status;
     }
 
@@ -1492,7 +1492,7 @@ public class ConceptMap extends DomainResource {
      */
     public ConceptMap setStatus(ValuesetStatus value) { 
         if (this.status == null)
-          this.status = new Enumeration<ValuesetStatus>();
+          this.status = new Enumeration<ValuesetStatus>(new ValuesetStatusEnumFactory());
         this.status.setValue(value);
       return this;
     }
@@ -1505,7 +1505,7 @@ public class ConceptMap extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ConceptMap.experimental");
         else if (Configuration.doAutoCreate())
-          this.experimental = new BooleanType();
+          this.experimental = new BooleanType(); // bb
       return this.experimental;
     }
 
@@ -1554,7 +1554,7 @@ public class ConceptMap extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ConceptMap.date");
         else if (Configuration.doAutoCreate())
-          this.date = new DateTimeType();
+          this.date = new DateTimeType(); // bb
       return this.date;
     }
 
@@ -1577,14 +1577,14 @@ public class ConceptMap extends DomainResource {
     /**
      * @return The date that the concept map status was last changed.
      */
-    public DateAndTime getDate() { 
+    public Date getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
      * @param value The date that the concept map status was last changed.
      */
-    public ConceptMap setDate(DateAndTime value) { 
+    public ConceptMap setDate(Date value) { 
       if (value == null)
         this.date = null;
       else {

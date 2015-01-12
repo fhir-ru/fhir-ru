@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -157,8 +157,8 @@ public class DiagnosticReport extends DomainResource {
         }
     }
 
-  public static class DiagnosticReportStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class DiagnosticReportStatusEnumFactory implements EnumFactory<DiagnosticReportStatus> {
+    public DiagnosticReportStatus fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -178,9 +178,9 @@ public class DiagnosticReport extends DomainResource {
           return DiagnosticReportStatus.CANCELLED;
         if ("entered in error".equals(codeString))
           return DiagnosticReportStatus.ENTEREDINERROR;
-        throw new Exception("Unknown DiagnosticReportStatus code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown DiagnosticReportStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(DiagnosticReportStatus code) {
       if (code == DiagnosticReportStatus.REGISTERED)
         return "registered";
       if (code == DiagnosticReportStatus.PARTIAL)
@@ -241,7 +241,7 @@ public class DiagnosticReport extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DiagnosticReportImageComponent.comment");
             else if (Configuration.doAutoCreate())
-              this.comment = new StringType();
+              this.comment = new StringType(); // bb
           return this.comment;
         }
 
@@ -290,7 +290,7 @@ public class DiagnosticReport extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DiagnosticReportImageComponent.link");
             else if (Configuration.doAutoCreate())
-              this.link = new Reference();
+              this.link = new Reference(); // cc
           return this.link;
         }
 
@@ -314,7 +314,7 @@ public class DiagnosticReport extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DiagnosticReportImageComponent.link");
             else if (Configuration.doAutoCreate())
-              this.linkTarget = new Media();
+              this.linkTarget = new Media(); // aa
           return this.linkTarget;
         }
 
@@ -426,13 +426,13 @@ public class DiagnosticReport extends DomainResource {
     protected Type diagnostic;
 
     /**
-     * Details about the specimens on which this Disagnostic report is based.
+     * Details about the specimens on which this diagnostic report is based.
      */
     @Child(name="specimen", type={Specimen.class}, order=8, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="Specimens this report is based on", formalDefinition="Details about the specimens on which this Disagnostic report is based." )
+    @Description(shortDefinition="Specimens this report is based on", formalDefinition="Details about the specimens on which this diagnostic report is based." )
     protected List<Reference> specimen;
     /**
-     * The actual objects that are the target of the reference (Details about the specimens on which this Disagnostic report is based.)
+     * The actual objects that are the target of the reference (Details about the specimens on which this diagnostic report is based.)
      */
     protected List<Specimen> specimenTarget;
 
@@ -513,7 +513,7 @@ public class DiagnosticReport extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DiagnosticReport.name");
         else if (Configuration.doAutoCreate())
-          this.name = new CodeableConcept();
+          this.name = new CodeableConcept(); // cc
       return this.name;
     }
 
@@ -537,7 +537,7 @@ public class DiagnosticReport extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DiagnosticReport.status");
         else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<DiagnosticReportStatus>();
+          this.status = new Enumeration<DiagnosticReportStatus>(new DiagnosticReportStatusEnumFactory()); // bb
       return this.status;
     }
 
@@ -569,7 +569,7 @@ public class DiagnosticReport extends DomainResource {
      */
     public DiagnosticReport setStatus(DiagnosticReportStatus value) { 
         if (this.status == null)
-          this.status = new Enumeration<DiagnosticReportStatus>();
+          this.status = new Enumeration<DiagnosticReportStatus>(new DiagnosticReportStatusEnumFactory());
         this.status.setValue(value);
       return this;
     }
@@ -582,7 +582,7 @@ public class DiagnosticReport extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DiagnosticReport.issued");
         else if (Configuration.doAutoCreate())
-          this.issued = new DateTimeType();
+          this.issued = new DateTimeType(); // bb
       return this.issued;
     }
 
@@ -605,14 +605,14 @@ public class DiagnosticReport extends DomainResource {
     /**
      * @return The date and/or time that this version of the report was released from the source diagnostic service.
      */
-    public DateAndTime getIssued() { 
+    public Date getIssued() { 
       return this.issued == null ? null : this.issued.getValue();
     }
 
     /**
      * @param value The date and/or time that this version of the report was released from the source diagnostic service.
      */
-    public DiagnosticReport setIssued(DateAndTime value) { 
+    public DiagnosticReport setIssued(Date value) { 
         if (this.issued == null)
           this.issued = new DateTimeType();
         this.issued.setValue(value);
@@ -627,7 +627,7 @@ public class DiagnosticReport extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DiagnosticReport.subject");
         else if (Configuration.doAutoCreate())
-          this.subject = new Reference();
+          this.subject = new Reference(); // cc
       return this.subject;
     }
 
@@ -666,7 +666,7 @@ public class DiagnosticReport extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DiagnosticReport.performer");
         else if (Configuration.doAutoCreate())
-          this.performer = new Reference();
+          this.performer = new Reference(); // cc
       return this.performer;
     }
 
@@ -705,7 +705,7 @@ public class DiagnosticReport extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DiagnosticReport.identifier");
         else if (Configuration.doAutoCreate())
-          this.identifier = new Identifier();
+          this.identifier = new Identifier(); // cc
       return this.identifier;
     }
 
@@ -780,7 +780,7 @@ public class DiagnosticReport extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DiagnosticReport.serviceCategory");
         else if (Configuration.doAutoCreate())
-          this.serviceCategory = new CodeableConcept();
+          this.serviceCategory = new CodeableConcept(); // cc
       return this.serviceCategory;
     }
 
@@ -834,7 +834,7 @@ public class DiagnosticReport extends DomainResource {
     }
 
     /**
-     * @return {@link #specimen} (Details about the specimens on which this Disagnostic report is based.)
+     * @return {@link #specimen} (Details about the specimens on which this diagnostic report is based.)
      */
     public List<Reference> getSpecimen() { 
       if (this.specimen == null)
@@ -852,7 +852,7 @@ public class DiagnosticReport extends DomainResource {
     }
 
     /**
-     * @return {@link #specimen} (Details about the specimens on which this Disagnostic report is based.)
+     * @return {@link #specimen} (Details about the specimens on which this diagnostic report is based.)
      */
     // syntactic sugar
     public Reference addSpecimen() { //3
@@ -864,7 +864,7 @@ public class DiagnosticReport extends DomainResource {
     }
 
     /**
-     * @return {@link #specimen} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Details about the specimens on which this Disagnostic report is based.)
+     * @return {@link #specimen} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Details about the specimens on which this diagnostic report is based.)
      */
     public List<Specimen> getSpecimenTarget() { 
       if (this.specimenTarget == null)
@@ -874,7 +874,7 @@ public class DiagnosticReport extends DomainResource {
 
     // syntactic sugar
     /**
-     * @return {@link #specimen} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. Details about the specimens on which this Disagnostic report is based.)
+     * @return {@link #specimen} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. Details about the specimens on which this diagnostic report is based.)
      */
     public Specimen addSpecimenTarget() { 
       Specimen r = new Specimen();
@@ -1024,7 +1024,7 @@ public class DiagnosticReport extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DiagnosticReport.conclusion");
         else if (Configuration.doAutoCreate())
-          this.conclusion = new StringType();
+          this.conclusion = new StringType(); // bb
       return this.conclusion;
     }
 
@@ -1136,7 +1136,7 @@ public class DiagnosticReport extends DomainResource {
         childrenList.add(new Property("requestDetail", "Reference(DiagnosticOrder)", "Details concerning a test requested.", 0, java.lang.Integer.MAX_VALUE, requestDetail));
         childrenList.add(new Property("serviceCategory", "CodeableConcept", "The section of the diagnostic service that performs the examination e.g. biochemistry, hematology, MRI.", 0, java.lang.Integer.MAX_VALUE, serviceCategory));
         childrenList.add(new Property("diagnostic[x]", "dateTime|Period", "The time or time-period the observed values are related to. This is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.", 0, java.lang.Integer.MAX_VALUE, diagnostic));
-        childrenList.add(new Property("specimen", "Reference(Specimen)", "Details about the specimens on which this Disagnostic report is based.", 0, java.lang.Integer.MAX_VALUE, specimen));
+        childrenList.add(new Property("specimen", "Reference(Specimen)", "Details about the specimens on which this diagnostic report is based.", 0, java.lang.Integer.MAX_VALUE, specimen));
         childrenList.add(new Property("result", "Reference(Observation)", "Observations that are part of this diagnostic report. Observations can be simple name/value pairs (e.g. 'atomic' results), or they can be grouping observations that include references to other members of the group (e.g. 'panels').", 0, java.lang.Integer.MAX_VALUE, result));
         childrenList.add(new Property("imagingStudy", "Reference(ImagingStudy)", "One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images.", 0, java.lang.Integer.MAX_VALUE, imagingStudy));
         childrenList.add(new Property("image", "", "A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).", 0, java.lang.Integer.MAX_VALUE, image));

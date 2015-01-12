@@ -229,9 +229,14 @@ Type
     FCompartmentId: String;
     FForm: TIdSoapMimeMessage;
     FOperationName: String;
+    FIfMatch : String;
+    FMeta: TFhirResourceMeta;
     procedure SetResource(const Value: TFhirResource);
     procedure SetSource(const Value: TAdvBuffer);
     procedure SetSession(const Value: TFhirSession);
+    function GetFeed: TFhirBundle;
+    procedure SetFeed(const Value: TFhirBundle);
+    procedure SetMeta(const Value: TFhirResourceMeta);
   Public
     Constructor Create; Override;
     Destructor Destroy; Override;
@@ -315,7 +320,8 @@ Type
       part of the FHIR specification
     }
     Property Resource : TFhirResource read FResource write SetResource;
-
+    Property Feed : TFhirBundle read GetFeed write SetFeed;
+    property meta : TFhirResourceMeta read FMeta write SetMeta;
 
     {@member categories
       Tags on the request - if it's a resource directly
@@ -357,6 +363,7 @@ Type
     }
     Property Lang : String read FLang write FLang;
 
+    Property IfMatch : String read FIfMatch write FIfMatch;
   End;
 
   {@Class TFHIRResponse
@@ -390,10 +397,14 @@ Type
     FContentLocation: String;
     FLocation: String;
     FCategories : TFHIRCodingList;
-    FLinks : TAdvStringMatch;
+    Flink_list : TFhirBundleLinkList;
     FOrigin: String;
     FId: String;
+    FMeta: TFhirResourceMeta;
     procedure SetResource(const Value: TFhirResource);
+    function GetFeed: TFhirBundle;
+    procedure SetFeed(const Value: TFhirBundle);
+    procedure SetMeta(const Value: TFhirResourceMeta);
   public
     Constructor Create; Override;
     Destructor Destroy; Override;
@@ -437,6 +448,7 @@ Type
       part of the FHIR specification
     }
     Property Resource : TFhirResource read FResource write SetResource;
+    Property Feed : TFhirBundle read GetFeed write SetFeed;
 
     {@member Format
       The format for the response, if known and identified (xml, or json). Derived
@@ -486,10 +498,12 @@ Type
     }
     property categories : TFHIRCodingList read Fcategories;
 
-    {@member links
-      Links for the response
+    property meta : TFhirResourceMeta read FMeta write SetMeta;
+
+    {@member link_list
+      link_list for the response
     }
-    property links : TAdvStringMatch read FLinks;
+    property link_list : TFhirBundleLinkList read Flink_list;
 
     {@member Origin
       HTTP Origin header - see http://en.wikipedia.org/wiki/Cross-origin_resource_sharing
@@ -709,7 +723,7 @@ begin
   try
     comp := TFHIRXmlComposer.create(lang);
     try
-      comp.Compose(stream, CODES_TFHIRResourceType[ResourceType], id, subId, resource, true, nil);
+      comp.Compose(stream, resource, true, nil);
     finally
       comp.free;
     end;
@@ -741,12 +755,18 @@ end;
 
 destructor TFHIRRequest.Destroy;
 begin
+  FMeta.Free;
   FContent.Free;
   FCategories.free;
   FSession.Free;
   FSource.Free;
   FResource.Free;
   inherited;
+end;
+
+function TFHIRRequest.GetFeed: TFhirBundle;
+begin
+  result := Resource as TFhirBundle;
 end;
 
 function TFHIRRequest.Link: TFHIRRequest;
@@ -783,6 +803,17 @@ begin
   result := CODES_TFHIRCommandType[CommandType]+'\('+CODES_TFHIRFormat[PostFormat]+')'+CODES_TFhirResourceType[ResourceType]+'\'+Id;
   if SubId <> '' then
     result := result + '\'+SubId;
+end;
+
+procedure TFHIRRequest.SetFeed(const Value: TFhirBundle);
+begin
+  setresource(value);
+end;
+
+procedure TFHIRRequest.SetMeta(const Value: TFhirResourceMeta);
+begin
+  FMeta.Free;
+  FMeta := Value;
 end;
 
 procedure TFHIRRequest.SetResource(const Value: TFhirResource);
@@ -837,20 +868,37 @@ constructor TFHIRResponse.Create;
 begin
   inherited;
   FCategories := TFHIRCodingList.create;
-  FLinks := TAdvStringMatch.create;
+  Flink_list := TFhirBundleLinkList.create;
 end;
 
 destructor TFHIRResponse.Destroy;
 begin
-  FLinks.Free;
+  Flink_list.Free;
   FCategories.free;
   FResource.Free;
+  FMeta.Free;
   inherited;
+end;
+
+function TFHIRResponse.GetFeed: TFhirBundle;
+begin
+  result := FResource as TFhirBundle;
 end;
 
 function TFHIRResponse.Link: TFHIRResponse;
 begin
   result := TFHIRResponse(Inherited Link);
+end;
+
+procedure TFHIRResponse.SetFeed(const Value: TFhirBundle);
+begin
+  SetResource(value);
+end;
+
+procedure TFHIRResponse.SetMeta(const Value: TFhirResourceMeta);
+begin
+  FMeta.Free;
+  FMeta := Value;
 end;
 
 procedure TFHIRResponse.SetResource(const Value: TFhirResource);

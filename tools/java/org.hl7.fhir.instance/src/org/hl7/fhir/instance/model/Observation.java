@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -157,8 +157,8 @@ public class Observation extends DomainResource {
         }
     }
 
-  public static class DataAbsentReasonEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class DataAbsentReasonEnumFactory implements EnumFactory<DataAbsentReason> {
+    public DataAbsentReason fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -178,9 +178,9 @@ public class Observation extends DomainResource {
           return DataAbsentReason.ASTEXT;
         if ("error".equals(codeString))
           return DataAbsentReason.ERROR;
-        throw new Exception("Unknown DataAbsentReason code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown DataAbsentReason code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(DataAbsentReason code) {
       if (code == DataAbsentReason.UNKNOWN)
         return "unknown";
       if (code == DataAbsentReason.ASKED)
@@ -293,8 +293,8 @@ public class Observation extends DomainResource {
         }
     }
 
-  public static class ObservationStatusEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class ObservationStatusEnumFactory implements EnumFactory<ObservationStatus> {
+    public ObservationStatus fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -310,9 +310,9 @@ public class Observation extends DomainResource {
           return ObservationStatus.CANCELLED;
         if ("entered in error".equals(codeString))
           return ObservationStatus.ENTEREDINERROR;
-        throw new Exception("Unknown ObservationStatus code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown ObservationStatus code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(ObservationStatus code) {
       if (code == ObservationStatus.REGISTERED)
         return "registered";
       if (code == ObservationStatus.PRELIMINARY)
@@ -431,8 +431,8 @@ public class Observation extends DomainResource {
         }
     }
 
-  public static class ObservationReliabilityEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class ObservationReliabilityEnumFactory implements EnumFactory<ObservationReliability> {
+    public ObservationReliability fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -450,9 +450,9 @@ public class Observation extends DomainResource {
           return ObservationReliability.ERROR;
         if ("unknown".equals(codeString))
           return ObservationReliability.UNKNOWN;
-        throw new Exception("Unknown ObservationReliability code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown ObservationReliability code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(ObservationReliability code) {
       if (code == ObservationReliability.OK)
         return "ok";
       if (code == ObservationReliability.ONGOING)
@@ -573,8 +573,8 @@ public class Observation extends DomainResource {
         }
     }
 
-  public static class ObservationRelationshiptypesEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class ObservationRelationshiptypesEnumFactory implements EnumFactory<ObservationRelationshiptypes> {
+    public ObservationRelationshiptypes fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -592,9 +592,9 @@ public class Observation extends DomainResource {
           return ObservationRelationshiptypes.QUALIFIEDBY;
         if ("interfered-by".equals(codeString))
           return ObservationRelationshiptypes.INTERFEREDBY;
-        throw new Exception("Unknown ObservationRelationshiptypes code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown ObservationRelationshiptypes code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(ObservationRelationshiptypes code) {
       if (code == ObservationRelationshiptypes.HASCOMPONENT)
         return "has-component";
       if (code == ObservationRelationshiptypes.HASMEMBER)
@@ -664,7 +664,7 @@ public class Observation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ObservationReferenceRangeComponent.low");
             else if (Configuration.doAutoCreate())
-              this.low = new Quantity();
+              this.low = new Quantity(); // cc
           return this.low;
         }
 
@@ -688,7 +688,7 @@ public class Observation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ObservationReferenceRangeComponent.high");
             else if (Configuration.doAutoCreate())
-              this.high = new Quantity();
+              this.high = new Quantity(); // cc
           return this.high;
         }
 
@@ -712,7 +712,7 @@ public class Observation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ObservationReferenceRangeComponent.meaning");
             else if (Configuration.doAutoCreate())
-              this.meaning = new CodeableConcept();
+              this.meaning = new CodeableConcept(); // cc
           return this.meaning;
         }
 
@@ -736,7 +736,7 @@ public class Observation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ObservationReferenceRangeComponent.age");
             else if (Configuration.doAutoCreate())
-              this.age = new Range();
+              this.age = new Range(); // cc
           return this.age;
         }
 
@@ -760,7 +760,7 @@ public class Observation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ObservationReferenceRangeComponent.text");
             else if (Configuration.doAutoCreate())
-              this.text = new StringType();
+              this.text = new StringType(); // bb
           return this.text;
         }
 
@@ -869,7 +869,7 @@ public class Observation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ObservationRelatedComponent.type");
             else if (Configuration.doAutoCreate())
-              this.type = new Enumeration<ObservationRelationshiptypes>();
+              this.type = new Enumeration<ObservationRelationshiptypes>(new ObservationRelationshiptypesEnumFactory()); // bb
           return this.type;
         }
 
@@ -904,7 +904,7 @@ public class Observation extends DomainResource {
             this.type = null;
           else {
             if (this.type == null)
-              this.type = new Enumeration<ObservationRelationshiptypes>();
+              this.type = new Enumeration<ObservationRelationshiptypes>(new ObservationRelationshiptypesEnumFactory());
             this.type.setValue(value);
           }
           return this;
@@ -918,7 +918,7 @@ public class Observation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ObservationRelatedComponent.target");
             else if (Configuration.doAutoCreate())
-              this.target = new Reference();
+              this.target = new Reference(); // cc
           return this.target;
         }
 
@@ -942,7 +942,7 @@ public class Observation extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ObservationRelatedComponent.target");
             else if (Configuration.doAutoCreate())
-              this.targetTarget = new Observation();
+              this.targetTarget = new Observation(); // aa
           return this.targetTarget;
         }
 
@@ -1060,14 +1060,16 @@ public class Observation extends DomainResource {
     protected Identifier identifier;
 
     /**
-     * The thing the observation is being made about.
+     * The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus,
+other observer (for example a relative or EMT), or any observation made about the subject.
      */
     @Child(name="subject", type={Patient.class, Group.class, Device.class, Location.class}, order=11, min=0, max=1)
-    @Description(shortDefinition="Who and/or what this is about", formalDefinition="The thing the observation is being made about." )
+    @Description(shortDefinition="Who and/or what this is about", formalDefinition="The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus,\nother observer (for example a relative or EMT), or any observation made about the subject." )
     protected Reference subject;
 
     /**
-     * The actual object that is the target of the reference (The thing the observation is being made about.)
+     * The actual object that is the target of the reference (The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus,
+other observer (for example a relative or EMT), or any observation made about the subject.)
      */
     protected Resource subjectTarget;
 
@@ -1141,7 +1143,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.name");
         else if (Configuration.doAutoCreate())
-          this.name = new CodeableConcept();
+          this.name = new CodeableConcept(); // cc
       return this.name;
     }
 
@@ -1265,7 +1267,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.dataAbsentReason");
         else if (Configuration.doAutoCreate())
-          this.dataAbsentReason = new Enumeration<DataAbsentReason>();
+          this.dataAbsentReason = new Enumeration<DataAbsentReason>(new DataAbsentReasonEnumFactory()); // bb
       return this.dataAbsentReason;
     }
 
@@ -1300,7 +1302,7 @@ public class Observation extends DomainResource {
         this.dataAbsentReason = null;
       else {
         if (this.dataAbsentReason == null)
-          this.dataAbsentReason = new Enumeration<DataAbsentReason>();
+          this.dataAbsentReason = new Enumeration<DataAbsentReason>(new DataAbsentReasonEnumFactory());
         this.dataAbsentReason.setValue(value);
       }
       return this;
@@ -1314,7 +1316,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.interpretation");
         else if (Configuration.doAutoCreate())
-          this.interpretation = new CodeableConcept();
+          this.interpretation = new CodeableConcept(); // cc
       return this.interpretation;
     }
 
@@ -1338,7 +1340,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.comments");
         else if (Configuration.doAutoCreate())
-          this.comments = new StringType();
+          this.comments = new StringType(); // bb
       return this.comments;
     }
 
@@ -1424,7 +1426,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.issued");
         else if (Configuration.doAutoCreate())
-          this.issued = new InstantType();
+          this.issued = new InstantType(); // bb
       return this.issued;
     }
 
@@ -1447,14 +1449,14 @@ public class Observation extends DomainResource {
     /**
      * @return The date and time this observation was made available.
      */
-    public DateAndTime getIssued() { 
+    public Date getIssued() { 
       return this.issued == null ? null : this.issued.getValue();
     }
 
     /**
      * @param value The date and time this observation was made available.
      */
-    public Observation setIssued(DateAndTime value) { 
+    public Observation setIssued(Date value) { 
       if (value == null)
         this.issued = null;
       else {
@@ -1473,7 +1475,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.status");
         else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<ObservationStatus>();
+          this.status = new Enumeration<ObservationStatus>(new ObservationStatusEnumFactory()); // bb
       return this.status;
     }
 
@@ -1505,7 +1507,7 @@ public class Observation extends DomainResource {
      */
     public Observation setStatus(ObservationStatus value) { 
         if (this.status == null)
-          this.status = new Enumeration<ObservationStatus>();
+          this.status = new Enumeration<ObservationStatus>(new ObservationStatusEnumFactory());
         this.status.setValue(value);
       return this;
     }
@@ -1518,7 +1520,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.reliability");
         else if (Configuration.doAutoCreate())
-          this.reliability = new Enumeration<ObservationReliability>();
+          this.reliability = new Enumeration<ObservationReliability>(new ObservationReliabilityEnumFactory()); // bb
       return this.reliability;
     }
 
@@ -1553,7 +1555,7 @@ public class Observation extends DomainResource {
         this.reliability = null;
       else {
         if (this.reliability == null)
-          this.reliability = new Enumeration<ObservationReliability>();
+          this.reliability = new Enumeration<ObservationReliability>(new ObservationReliabilityEnumFactory());
         this.reliability.setValue(value);
       }
       return this;
@@ -1567,7 +1569,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.bodySite");
         else if (Configuration.doAutoCreate())
-          this.bodySite = new CodeableConcept();
+          this.bodySite = new CodeableConcept(); // cc
       return this.bodySite;
     }
 
@@ -1591,7 +1593,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.method");
         else if (Configuration.doAutoCreate())
-          this.method = new CodeableConcept();
+          this.method = new CodeableConcept(); // cc
       return this.method;
     }
 
@@ -1615,7 +1617,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.identifier");
         else if (Configuration.doAutoCreate())
-          this.identifier = new Identifier();
+          this.identifier = new Identifier(); // cc
       return this.identifier;
     }
 
@@ -1632,14 +1634,15 @@ public class Observation extends DomainResource {
     }
 
     /**
-     * @return {@link #subject} (The thing the observation is being made about.)
+     * @return {@link #subject} (The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus,
+other observer (for example a relative or EMT), or any observation made about the subject.)
      */
     public Reference getSubject() { 
       if (this.subject == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.subject");
         else if (Configuration.doAutoCreate())
-          this.subject = new Reference();
+          this.subject = new Reference(); // cc
       return this.subject;
     }
 
@@ -1648,7 +1651,8 @@ public class Observation extends DomainResource {
     }
 
     /**
-     * @param value {@link #subject} (The thing the observation is being made about.)
+     * @param value {@link #subject} (The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus,
+other observer (for example a relative or EMT), or any observation made about the subject.)
      */
     public Observation setSubject(Reference value) { 
       this.subject = value;
@@ -1656,14 +1660,16 @@ public class Observation extends DomainResource {
     }
 
     /**
-     * @return {@link #subject} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The thing the observation is being made about.)
+     * @return {@link #subject} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus,
+other observer (for example a relative or EMT), or any observation made about the subject.)
      */
     public Resource getSubjectTarget() { 
       return this.subjectTarget;
     }
 
     /**
-     * @param value {@link #subject} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The thing the observation is being made about.)
+     * @param value {@link #subject} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus,
+other observer (for example a relative or EMT), or any observation made about the subject.)
      */
     public Observation setSubjectTarget(Resource value) { 
       this.subjectTarget = value;
@@ -1678,7 +1684,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.specimen");
         else if (Configuration.doAutoCreate())
-          this.specimen = new Reference();
+          this.specimen = new Reference(); // cc
       return this.specimen;
     }
 
@@ -1702,7 +1708,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.specimen");
         else if (Configuration.doAutoCreate())
-          this.specimenTarget = new Specimen();
+          this.specimenTarget = new Specimen(); // aa
       return this.specimenTarget;
     }
 
@@ -1761,7 +1767,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.encounter");
         else if (Configuration.doAutoCreate())
-          this.encounter = new Reference();
+          this.encounter = new Reference(); // cc
       return this.encounter;
     }
 
@@ -1785,7 +1791,7 @@ public class Observation extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Observation.encounter");
         else if (Configuration.doAutoCreate())
-          this.encounterTarget = new Encounter();
+          this.encounterTarget = new Encounter(); // aa
       return this.encounterTarget;
     }
 
@@ -1871,7 +1877,7 @@ public class Observation extends DomainResource {
         childrenList.add(new Property("bodySite", "CodeableConcept", "Indicates the site on the subject's body where the observation was made ( i.e. the target site).", 0, java.lang.Integer.MAX_VALUE, bodySite));
         childrenList.add(new Property("method", "CodeableConcept", "Indicates the mechanism used to perform the observation.", 0, java.lang.Integer.MAX_VALUE, method));
         childrenList.add(new Property("identifier", "Identifier", "A unique identifier for the simple observation.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("subject", "Reference(Patient|Group|Device|Location)", "The thing the observation is being made about.", 0, java.lang.Integer.MAX_VALUE, subject));
+        childrenList.add(new Property("subject", "Reference(Patient|Group|Device|Location)", "The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus,\nother observer (for example a relative or EMT), or any observation made about the subject.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("specimen", "Reference(Specimen)", "The specimen that was used when this observation was made.", 0, java.lang.Integer.MAX_VALUE, specimen));
         childrenList.add(new Property("performer", "Reference(Practitioner|Device|Organization|Patient|RelatedPerson)", "Who was responsible for asserting the observed value as 'true'.", 0, java.lang.Integer.MAX_VALUE, performer));
         childrenList.add(new Property("encounter", "Reference(Encounter)", "The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.", 0, java.lang.Integer.MAX_VALUE, encounter));

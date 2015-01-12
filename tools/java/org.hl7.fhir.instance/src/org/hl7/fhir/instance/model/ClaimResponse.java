@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -98,8 +98,8 @@ public class ClaimResponse extends DomainResource {
         }
     }
 
-  public static class RSLinkEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class RSLinkEnumFactory implements EnumFactory<RSLink> {
+    public RSLink fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -107,9 +107,9 @@ public class ClaimResponse extends DomainResource {
           return RSLink.COMPLETE;
         if ("error".equals(codeString))
           return RSLink.ERROR;
-        throw new Exception("Unknown RSLink code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown RSLink code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(RSLink code) {
       if (code == RSLink.COMPLETE)
         return "complete";
       if (code == RSLink.ERROR)
@@ -167,7 +167,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ItemsComponent.sequenceLinkId");
             else if (Configuration.doAutoCreate())
-              this.sequenceLinkId = new IntegerType();
+              this.sequenceLinkId = new IntegerType(); // bb
           return this.sequenceLinkId;
         }
 
@@ -398,7 +398,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ItemAdjudicationComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new Coding();
+              this.code = new Coding(); // cc
           return this.code;
         }
 
@@ -422,7 +422,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ItemAdjudicationComponent.amount");
             else if (Configuration.doAutoCreate())
-              this.amount = new Money();
+              this.amount = new Money(); // cc
           return this.amount;
         }
 
@@ -446,7 +446,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ItemAdjudicationComponent.value");
             else if (Configuration.doAutoCreate())
-              this.value = new DecimalType();
+              this.value = new DecimalType(); // bb
           return this.value;
         }
 
@@ -552,7 +552,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ItemDetailComponent.sequenceLinkId");
             else if (Configuration.doAutoCreate())
-              this.sequenceLinkId = new IntegerType();
+              this.sequenceLinkId = new IntegerType(); // bb
           return this.sequenceLinkId;
         }
 
@@ -722,7 +722,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailAdjudicationComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new Coding();
+              this.code = new Coding(); // cc
           return this.code;
         }
 
@@ -746,7 +746,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailAdjudicationComponent.amount");
             else if (Configuration.doAutoCreate())
-              this.amount = new Money();
+              this.amount = new Money(); // cc
           return this.amount;
         }
 
@@ -770,7 +770,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DetailAdjudicationComponent.value");
             else if (Configuration.doAutoCreate())
-              this.value = new DecimalType();
+              this.value = new DecimalType(); // bb
           return this.value;
         }
 
@@ -869,7 +869,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ItemSubdetailComponent.sequenceLinkId");
             else if (Configuration.doAutoCreate())
-              this.sequenceLinkId = new IntegerType();
+              this.sequenceLinkId = new IntegerType(); // bb
           return this.sequenceLinkId;
         }
 
@@ -1003,7 +1003,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SubdetailAdjudicationComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new Coding();
+              this.code = new Coding(); // cc
           return this.code;
         }
 
@@ -1027,7 +1027,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SubdetailAdjudicationComponent.amount");
             else if (Configuration.doAutoCreate())
-              this.amount = new Money();
+              this.amount = new Money(); // cc
           return this.amount;
         }
 
@@ -1051,7 +1051,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SubdetailAdjudicationComponent.value");
             else if (Configuration.doAutoCreate())
-              this.value = new DecimalType();
+              this.value = new DecimalType(); // bb
           return this.value;
         }
 
@@ -1232,7 +1232,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AddedItemComponent.service");
             else if (Configuration.doAutoCreate())
-              this.service = new Coding();
+              this.service = new Coding(); // cc
           return this.service;
         }
 
@@ -1256,7 +1256,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AddedItemComponent.fee");
             else if (Configuration.doAutoCreate())
-              this.fee = new Money();
+              this.fee = new Money(); // cc
           return this.fee;
         }
 
@@ -1475,7 +1475,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AddedItemAdjudicationComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new Coding();
+              this.code = new Coding(); // cc
           return this.code;
         }
 
@@ -1499,7 +1499,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AddedItemAdjudicationComponent.amount");
             else if (Configuration.doAutoCreate())
-              this.amount = new Money();
+              this.amount = new Money(); // cc
           return this.amount;
         }
 
@@ -1523,7 +1523,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AddedItemAdjudicationComponent.value");
             else if (Configuration.doAutoCreate())
-              this.value = new DecimalType();
+              this.value = new DecimalType(); // bb
           return this.value;
         }
 
@@ -1629,7 +1629,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AddedItemsDetailComponent.service");
             else if (Configuration.doAutoCreate())
-              this.service = new Coding();
+              this.service = new Coding(); // cc
           return this.service;
         }
 
@@ -1653,7 +1653,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AddedItemsDetailComponent.fee");
             else if (Configuration.doAutoCreate())
-              this.fee = new Money();
+              this.fee = new Money(); // cc
           return this.fee;
         }
 
@@ -1768,7 +1768,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AddedItemDetailAdjudicationComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new Coding();
+              this.code = new Coding(); // cc
           return this.code;
         }
 
@@ -1792,7 +1792,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AddedItemDetailAdjudicationComponent.amount");
             else if (Configuration.doAutoCreate())
-              this.amount = new Money();
+              this.amount = new Money(); // cc
           return this.amount;
         }
 
@@ -1816,7 +1816,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AddedItemDetailAdjudicationComponent.value");
             else if (Configuration.doAutoCreate())
-              this.value = new DecimalType();
+              this.value = new DecimalType(); // bb
           return this.value;
         }
 
@@ -1929,7 +1929,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ErrorsComponent.sequenceLinkId");
             else if (Configuration.doAutoCreate())
-              this.sequenceLinkId = new IntegerType();
+              this.sequenceLinkId = new IntegerType(); // bb
           return this.sequenceLinkId;
         }
 
@@ -1978,7 +1978,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ErrorsComponent.detailSequenceLinkId");
             else if (Configuration.doAutoCreate())
-              this.detailSequenceLinkId = new IntegerType();
+              this.detailSequenceLinkId = new IntegerType(); // bb
           return this.detailSequenceLinkId;
         }
 
@@ -2027,7 +2027,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ErrorsComponent.subdetailSequenceLinkId");
             else if (Configuration.doAutoCreate())
-              this.subdetailSequenceLinkId = new IntegerType();
+              this.subdetailSequenceLinkId = new IntegerType(); // bb
           return this.subdetailSequenceLinkId;
         }
 
@@ -2076,7 +2076,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ErrorsComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new Coding();
+              this.code = new Coding(); // cc
           return this.code;
         }
 
@@ -2155,7 +2155,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create NotesComponent.number");
             else if (Configuration.doAutoCreate())
-              this.number = new IntegerType();
+              this.number = new IntegerType(); // bb
           return this.number;
         }
 
@@ -2204,7 +2204,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create NotesComponent.type");
             else if (Configuration.doAutoCreate())
-              this.type = new Coding();
+              this.type = new Coding(); // cc
           return this.type;
         }
 
@@ -2228,7 +2228,7 @@ public class ClaimResponse extends DomainResource {
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create NotesComponent.text");
             else if (Configuration.doAutoCreate())
-              this.text = new StringType();
+              this.text = new StringType(); // bb
           return this.text;
         }
 
@@ -2302,14 +2302,14 @@ public class ClaimResponse extends DomainResource {
     /**
      * Original request resource referrence.
      */
-    @Child(name="request", type={OralHealthClaim.class}, order=0, min=0, max=1)
+    @Child(name="request", type={OralHealthClaim.class, PharmacyClaim.class, VisionClaim.class, ProfessionalClaim.class, InstitutionalClaim.class}, order=0, min=0, max=1)
     @Description(shortDefinition="Id of resource triggering adjudication", formalDefinition="Original request resource referrence." )
     protected Reference request;
 
     /**
      * The actual object that is the target of the reference (Original request resource referrence.)
      */
-    protected OralHealthClaim requestTarget;
+    protected Resource requestTarget;
 
     /**
      * The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.
@@ -2328,9 +2328,9 @@ public class ClaimResponse extends DomainResource {
     /**
      * The date when the enclosed suite of services were performed or completed.
      */
-    @Child(name="date", type={DateType.class}, order=3, min=0, max=1)
+    @Child(name="created", type={DateTimeType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Creation date", formalDefinition="The date when the enclosed suite of services were performed or completed." )
-    protected DateType date;
+    protected DateTimeType created;
 
     /**
      * The Insurer who produced this adjudicated response.
@@ -2487,7 +2487,7 @@ public class ClaimResponse extends DomainResource {
     @Description(shortDefinition="Processing notes", formalDefinition="Note text." )
     protected List<NotesComponent> note;
 
-    private static final long serialVersionUID = 2102880382L;
+    private static final long serialVersionUID = -2105513621L;
 
     public ClaimResponse() {
       super();
@@ -2531,7 +2531,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.request");
         else if (Configuration.doAutoCreate())
-          this.request = new Reference();
+          this.request = new Reference(); // cc
       return this.request;
     }
 
@@ -2550,19 +2550,14 @@ public class ClaimResponse extends DomainResource {
     /**
      * @return {@link #request} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Original request resource referrence.)
      */
-    public OralHealthClaim getRequestTarget() { 
-      if (this.requestTarget == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create ClaimResponse.request");
-        else if (Configuration.doAutoCreate())
-          this.requestTarget = new OralHealthClaim();
+    public Resource getRequestTarget() { 
       return this.requestTarget;
     }
 
     /**
      * @param value {@link #request} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Original request resource referrence.)
      */
-    public ClaimResponse setRequestTarget(OralHealthClaim value) { 
+    public ClaimResponse setRequestTarget(Resource value) { 
       this.requestTarget = value;
       return this;
     }
@@ -2575,7 +2570,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.ruleset");
         else if (Configuration.doAutoCreate())
-          this.ruleset = new Coding();
+          this.ruleset = new Coding(); // cc
       return this.ruleset;
     }
 
@@ -2599,7 +2594,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.originalRuleset");
         else if (Configuration.doAutoCreate())
-          this.originalRuleset = new Coding();
+          this.originalRuleset = new Coding(); // cc
       return this.originalRuleset;
     }
 
@@ -2616,50 +2611,50 @@ public class ClaimResponse extends DomainResource {
     }
 
     /**
-     * @return {@link #date} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @return {@link #created} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getCreated" gives direct access to the value
      */
-    public DateType getDateElement() { 
-      if (this.date == null)
+    public DateTimeType getCreatedElement() { 
+      if (this.created == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create ClaimResponse.date");
+          throw new Error("Attempt to auto-create ClaimResponse.created");
         else if (Configuration.doAutoCreate())
-          this.date = new DateType();
-      return this.date;
+          this.created = new DateTimeType(); // bb
+      return this.created;
     }
 
-    public boolean hasDateElement() { 
-      return this.date != null && !this.date.isEmpty();
+    public boolean hasCreatedElement() { 
+      return this.created != null && !this.created.isEmpty();
     }
 
-    public boolean hasDate() { 
-      return this.date != null && !this.date.isEmpty();
+    public boolean hasCreated() { 
+      return this.created != null && !this.created.isEmpty();
     }
 
     /**
-     * @param value {@link #date} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @param value {@link #created} (The date when the enclosed suite of services were performed or completed.). This is the underlying object with id, value and extensions. The accessor "getCreated" gives direct access to the value
      */
-    public ClaimResponse setDateElement(DateType value) { 
-      this.date = value;
+    public ClaimResponse setCreatedElement(DateTimeType value) { 
+      this.created = value;
       return this;
     }
 
     /**
      * @return The date when the enclosed suite of services were performed or completed.
      */
-    public DateAndTime getDate() { 
-      return this.date == null ? null : this.date.getValue();
+    public Date getCreated() { 
+      return this.created == null ? null : this.created.getValue();
     }
 
     /**
      * @param value The date when the enclosed suite of services were performed or completed.
      */
-    public ClaimResponse setDate(DateAndTime value) { 
+    public ClaimResponse setCreated(Date value) { 
       if (value == null)
-        this.date = null;
+        this.created = null;
       else {
-        if (this.date == null)
-          this.date = new DateType();
-        this.date.setValue(value);
+        if (this.created == null)
+          this.created = new DateTimeType();
+        this.created.setValue(value);
       }
       return this;
     }
@@ -2672,7 +2667,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.organization");
         else if (Configuration.doAutoCreate())
-          this.organization = new Reference();
+          this.organization = new Reference(); // cc
       return this.organization;
     }
 
@@ -2696,7 +2691,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.organization");
         else if (Configuration.doAutoCreate())
-          this.organizationTarget = new Organization();
+          this.organizationTarget = new Organization(); // aa
       return this.organizationTarget;
     }
 
@@ -2716,7 +2711,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.requestProvider");
         else if (Configuration.doAutoCreate())
-          this.requestProvider = new Reference();
+          this.requestProvider = new Reference(); // cc
       return this.requestProvider;
     }
 
@@ -2740,7 +2735,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.requestProvider");
         else if (Configuration.doAutoCreate())
-          this.requestProviderTarget = new Practitioner();
+          this.requestProviderTarget = new Practitioner(); // aa
       return this.requestProviderTarget;
     }
 
@@ -2760,7 +2755,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.requestOrganization");
         else if (Configuration.doAutoCreate())
-          this.requestOrganization = new Reference();
+          this.requestOrganization = new Reference(); // cc
       return this.requestOrganization;
     }
 
@@ -2784,7 +2779,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.requestOrganization");
         else if (Configuration.doAutoCreate())
-          this.requestOrganizationTarget = new Organization();
+          this.requestOrganizationTarget = new Organization(); // aa
       return this.requestOrganizationTarget;
     }
 
@@ -2804,7 +2799,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.outcome");
         else if (Configuration.doAutoCreate())
-          this.outcome = new Enumeration<RSLink>();
+          this.outcome = new Enumeration<RSLink>(new RSLinkEnumFactory()); // bb
       return this.outcome;
     }
 
@@ -2839,7 +2834,7 @@ public class ClaimResponse extends DomainResource {
         this.outcome = null;
       else {
         if (this.outcome == null)
-          this.outcome = new Enumeration<RSLink>();
+          this.outcome = new Enumeration<RSLink>(new RSLinkEnumFactory());
         this.outcome.setValue(value);
       }
       return this;
@@ -2853,7 +2848,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.disposition");
         else if (Configuration.doAutoCreate())
-          this.disposition = new StringType();
+          this.disposition = new StringType(); // bb
       return this.disposition;
     }
 
@@ -2902,7 +2897,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.payeeType");
         else if (Configuration.doAutoCreate())
-          this.payeeType = new Coding();
+          this.payeeType = new Coding(); // cc
       return this.payeeType;
     }
 
@@ -3016,7 +3011,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.totalCost");
         else if (Configuration.doAutoCreate())
-          this.totalCost = new Money();
+          this.totalCost = new Money(); // cc
       return this.totalCost;
     }
 
@@ -3040,7 +3035,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.unallocDeductable");
         else if (Configuration.doAutoCreate())
-          this.unallocDeductable = new Money();
+          this.unallocDeductable = new Money(); // cc
       return this.unallocDeductable;
     }
 
@@ -3064,7 +3059,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.totalBenefit");
         else if (Configuration.doAutoCreate())
-          this.totalBenefit = new Money();
+          this.totalBenefit = new Money(); // cc
       return this.totalBenefit;
     }
 
@@ -3088,7 +3083,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.paymentAdjustment");
         else if (Configuration.doAutoCreate())
-          this.paymentAdjustment = new Money();
+          this.paymentAdjustment = new Money(); // cc
       return this.paymentAdjustment;
     }
 
@@ -3112,7 +3107,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.paymentAdjustmentReason");
         else if (Configuration.doAutoCreate())
-          this.paymentAdjustmentReason = new Coding();
+          this.paymentAdjustmentReason = new Coding(); // cc
       return this.paymentAdjustmentReason;
     }
 
@@ -3136,7 +3131,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.paymentDate");
         else if (Configuration.doAutoCreate())
-          this.paymentDate = new DateType();
+          this.paymentDate = new DateType(); // bb
       return this.paymentDate;
     }
 
@@ -3159,14 +3154,14 @@ public class ClaimResponse extends DomainResource {
     /**
      * @return Estimated payment data.
      */
-    public DateAndTime getPaymentDate() { 
+    public Date getPaymentDate() { 
       return this.paymentDate == null ? null : this.paymentDate.getValue();
     }
 
     /**
      * @param value Estimated payment data.
      */
-    public ClaimResponse setPaymentDate(DateAndTime value) { 
+    public ClaimResponse setPaymentDate(Date value) { 
       if (value == null)
         this.paymentDate = null;
       else {
@@ -3185,7 +3180,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.paymentAmount");
         else if (Configuration.doAutoCreate())
-          this.paymentAmount = new Money();
+          this.paymentAmount = new Money(); // cc
       return this.paymentAmount;
     }
 
@@ -3209,7 +3204,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.paymentRef");
         else if (Configuration.doAutoCreate())
-          this.paymentRef = new Identifier();
+          this.paymentRef = new Identifier(); // cc
       return this.paymentRef;
     }
 
@@ -3233,7 +3228,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.reserved");
         else if (Configuration.doAutoCreate())
-          this.reserved = new Coding();
+          this.reserved = new Coding(); // cc
       return this.reserved;
     }
 
@@ -3257,7 +3252,7 @@ public class ClaimResponse extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ClaimResponse.form");
         else if (Configuration.doAutoCreate())
-          this.form = new Coding();
+          this.form = new Coding(); // cc
       return this.form;
     }
 
@@ -3306,10 +3301,10 @@ public class ClaimResponse extends DomainResource {
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "The Response Business Identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("request", "Reference(OralHealthClaim)", "Original request resource referrence.", 0, java.lang.Integer.MAX_VALUE, request));
+        childrenList.add(new Property("request", "Reference(OralHealthClaim|PharmacyClaim|VisionClaim|ProfessionalClaim|InstitutionalClaim)", "Original request resource referrence.", 0, java.lang.Integer.MAX_VALUE, request));
         childrenList.add(new Property("ruleset", "Coding", "The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.", 0, java.lang.Integer.MAX_VALUE, ruleset));
         childrenList.add(new Property("originalRuleset", "Coding", "The style (standard) and version of the original material which was converted into this resource.", 0, java.lang.Integer.MAX_VALUE, originalRuleset));
-        childrenList.add(new Property("date", "date", "The date when the enclosed suite of services were performed or completed.", 0, java.lang.Integer.MAX_VALUE, date));
+        childrenList.add(new Property("created", "dateTime", "The date when the enclosed suite of services were performed or completed.", 0, java.lang.Integer.MAX_VALUE, created));
         childrenList.add(new Property("organization", "Reference(Organization)", "The Insurer who produced this adjudicated response.", 0, java.lang.Integer.MAX_VALUE, organization));
         childrenList.add(new Property("requestProvider", "Reference(Practitioner)", "The practitioner who is responsible for the services rendered to the patient.", 0, java.lang.Integer.MAX_VALUE, requestProvider));
         childrenList.add(new Property("requestOrganization", "Reference(Organization)", "The organization which is responsible for the services rendered to the patient.", 0, java.lang.Integer.MAX_VALUE, requestOrganization));
@@ -3343,7 +3338,7 @@ public class ClaimResponse extends DomainResource {
         dst.request = request == null ? null : request.copy();
         dst.ruleset = ruleset == null ? null : ruleset.copy();
         dst.originalRuleset = originalRuleset == null ? null : originalRuleset.copy();
-        dst.date = date == null ? null : date.copy();
+        dst.created = created == null ? null : created.copy();
         dst.organization = organization == null ? null : organization.copy();
         dst.requestProvider = requestProvider == null ? null : requestProvider.copy();
         dst.requestOrganization = requestOrganization == null ? null : requestOrganization.copy();
@@ -3390,11 +3385,11 @@ public class ClaimResponse extends DomainResource {
       public boolean isEmpty() {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (request == null || request.isEmpty())
            && (ruleset == null || ruleset.isEmpty()) && (originalRuleset == null || originalRuleset.isEmpty())
-           && (date == null || date.isEmpty()) && (organization == null || organization.isEmpty()) && (requestProvider == null || requestProvider.isEmpty())
-           && (requestOrganization == null || requestOrganization.isEmpty()) && (outcome == null || outcome.isEmpty())
-           && (disposition == null || disposition.isEmpty()) && (payeeType == null || payeeType.isEmpty())
-           && (item == null || item.isEmpty()) && (additem == null || additem.isEmpty()) && (error == null || error.isEmpty())
-           && (totalCost == null || totalCost.isEmpty()) && (unallocDeductable == null || unallocDeductable.isEmpty())
+           && (created == null || created.isEmpty()) && (organization == null || organization.isEmpty())
+           && (requestProvider == null || requestProvider.isEmpty()) && (requestOrganization == null || requestOrganization.isEmpty())
+           && (outcome == null || outcome.isEmpty()) && (disposition == null || disposition.isEmpty())
+           && (payeeType == null || payeeType.isEmpty()) && (item == null || item.isEmpty()) && (additem == null || additem.isEmpty())
+           && (error == null || error.isEmpty()) && (totalCost == null || totalCost.isEmpty()) && (unallocDeductable == null || unallocDeductable.isEmpty())
            && (totalBenefit == null || totalBenefit.isEmpty()) && (paymentAdjustment == null || paymentAdjustment.isEmpty())
            && (paymentAdjustmentReason == null || paymentAdjustmentReason.isEmpty()) && (paymentDate == null || paymentDate.isEmpty())
            && (paymentAmount == null || paymentAmount.isEmpty()) && (paymentRef == null || paymentRef.isEmpty())

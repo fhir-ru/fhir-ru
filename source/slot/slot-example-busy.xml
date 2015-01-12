@@ -7,17 +7,20 @@
 			25 Dec 2013 9:00am - 9:15am: <b>Busy</b> Physiotherapy
 		</div>
 	</text>
-	<identifier id="example" />
+	<identifier>
+    <system value="http://example.org/identifiers/slots"/>
+    <value value="123132"/>
+  </identifier>
 	<type>
 		<coding>
 			<code value="45"/>
 			<display value="Physiotherapy" />
 		</coding>
 	</type>
-	<availability>
-		<reference value="Availability/example" />
-	</availability>
-	<freeBusyType value="BUSY" />
+  <schedule>
+    <reference value="Schedule/example" />
+  </schedule>
+  <freeBusyType value="BUSY" />
 	<start value="2013-12-25T09:00:00Z" />
 	<end value="2013-12-25T09:15:00Z" />
 	<overbooked value="true" />

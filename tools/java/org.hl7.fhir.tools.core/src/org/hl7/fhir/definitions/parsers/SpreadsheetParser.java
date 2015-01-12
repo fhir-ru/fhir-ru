@@ -70,7 +70,6 @@ import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Base64BinaryType;
 import org.hl7.fhir.instance.model.CodeType;
-import org.hl7.fhir.instance.model.DateAndTime;
 import org.hl7.fhir.instance.model.DateTimeType;
 import org.hl7.fhir.instance.model.DateType;
 import org.hl7.fhir.instance.model.DecimalType;
@@ -123,8 +122,9 @@ public class SpreadsheetParser {
   private Calendar genDate;
   private boolean isAbstract;
   private Map<String, BindingSpecification> bindings; // when parsing profiles
+  private Map<String, ExtensionDefinition> extensionDefinitions = new HashMap<String, ExtensionDefinition>();
   
-	public SpreadsheetParser(InputStream in, String name,	Definitions definitions, String root, Logger log, BindingNameRegistry registry, String version, WorkerContext context, Calendar genDate, boolean isAbstract) throws Exception {
+	public SpreadsheetParser(InputStream in, String name,	Definitions definitions, String root, Logger log, BindingNameRegistry registry, String version, WorkerContext context, Calendar genDate, boolean isAbstract, Map<String, ExtensionDefinition> extensionDefinitions) throws Exception {
 		this.name = name;
 		xls = new XLSXmlParser(in, name);
 		this.definitions = definitions;
@@ -143,6 +143,7 @@ public class SpreadsheetParser {
 		this.context = context;
 		this.genDate = genDate;
 		this.isAbstract = isAbstract;
+		this.extensionDefinitions = extensionDefinitions;
 	}
 
 
@@ -216,16 +217,21 @@ public class SpreadsheetParser {
 		
 				// If user has given an explicit name, use it, otherwise  automatically
 				// generated name for this nested type
-				if( element.typeCode().startsWith("=") ) {
+				if( element.typeCode().startsWith("=") ) 
+				{
 				  if (isProfile)
 				    throw new Exception("Cannot use '=' types in profiles on "+parentName);
+				  
 				  element.setStatedType(element.typeCode().substring(1));
 					nestedTypeName = element.typeCode().substring(1);
-				} else {
+				} 
+				else 
+				{
 					nestedTypeName = parentName + Utilities.capitalize(element.getName());
-					newCompositeType.setAnonymousTypedGroup(true);
 				}
-				
+			
+		    newCompositeType.setAnonymousTypedGroup(true);
+		    
 				// Add Component to the actually generated name to avoid
 				// confusing between the element name and the element's type
 				newCompositeType.setName(nestedTypeName+"Component");
@@ -489,11 +495,20 @@ public class SpreadsheetParser {
             for (String pi : pl) {
               String p = pi.trim();
               ElementDefn e = null;
-              if (!Utilities.noString(p) && !p.startsWith("!")) {
+              if (!Utilities.noString(p) && !p.startsWith("!") && !p.startsWith("Extension{") ) {
                 e = root2.getRoot().getElementForPath(p, definitions, "search param", true); 
               }
               if (Utilities.noString(d) && e != null)
                 d = e.getShortDefn();
+              if (p.startsWith("Extension(")) {
+                String url = extractExtensionUrl(p);
+                ExtensionDefinition ex = extensionDefinitions.get(url);
+                if (ex == null)
+                  throw new Exception("Search Param "+root2.getName()+"/"+n+" refers to unknown extension '"+url+"' "+ getLocation(row));
+                if (Utilities.noString(d))
+                  d = ex.getDescription();
+                pn.add(p);
+              }
               if (d == null)
                 throw new Exception("Search Param "+root2.getName()+"/"+n+" has no description "+ getLocation(row));
               if (e != null)
@@ -515,14 +530,18 @@ public class SpreadsheetParser {
               sp.setManualTypes(sheet.getColumn(row, "Target Types").split("\\,"));
             }
           }
-
-
           root2.getSearchParams().put(n, sp);
         }
       }
 	}
 
-	private SearchType readSearchType(String s, int row) throws Exception {
+	private String extractExtensionUrl(String p) {
+    String url = p.substring(10);
+    return url.substring(0, url.length()-1);
+  }
+
+
+  private SearchType readSearchType(String s, int row) throws Exception {
 		if ("number".equals(s))
 			return SearchType.number;
 		if ("string".equals(s))
@@ -824,6 +843,8 @@ public class SpreadsheetParser {
 				String name = sheet.getColumn(row, "Name");
 				if (name != null && !name.equals("") && !name.startsWith("!")) {
 				  String id  = sheet.getColumn(row, "Identity");
+          if (id == null || id.equals(""))
+            throw new Exception("Example " + name + " has no identity parsing " + this.name);
 					String desc = sheet.getColumn(row, "Description");
 					if (desc == null || desc.equals(""))
 						throw new Exception("Example " + name + " has no description parsing " + this.name);
@@ -1100,13 +1121,13 @@ public class SpreadsheetParser {
       if (type.equals("base64Binary"))
         return new Base64BinaryType(Base64.decode(source.toCharArray()));  
       if (type.equals("instant"))
-        return new InstantType(new DateAndTime(source)); 
+        return new InstantType(source); 
       if (type.equals("uri"))
         return new UriType(source); 
       if (type.equals("date"))
-        return new DateType(new DateAndTime(source)); 
+        return new DateType(source); 
       if (type.equals("dateTime"))
-        return new DateTimeType(new DateAndTime(source)); 
+        return new DateTimeType(source); 
       if (type.equals("time"))
         return new TimeType(source); 
       if (type.equals("code"))
@@ -1150,7 +1171,10 @@ public class SpreadsheetParser {
 	  ap.getExtensions().add(ex);
 	  if (context == null) {
       ex.setContextType(readContextType(sheet.getColumn(row, "Context Type"), row));
-      ex.addContext(sheet.getColumn(row, "Context"));
+      String cc = sheet.getColumn(row, "Context");
+      if (!Utilities.noString(cc))
+        for (String c : cc.split("\\;"))
+          ex.addContext(c);
 	  }
 	  ex.setDisplay(sheet.getColumn(row, "Display"));
 	  
@@ -1158,7 +1182,11 @@ public class SpreadsheetParser {
 	  exe.setName(sheet.getColumn(row, "Code"));
 	  
     parseExtensionElement(sheet, row, definitions, exe);
-    ex.setName(exe.getShortDefn());
+    String sl = exe.getShortDefn();
+    if (!Utilities.noString(sl)) 
+      ex.setName(sl);
+    if (!ex.hasName())
+      throw new Exception("Extension "+ex.getUrl()+" missing short label at "+getLocation(row));
     ex.setDescription(exe.getDefinition());
 
     ex.setPublisher(ap.metadata("author.name"));
@@ -1168,7 +1196,7 @@ public class SpreadsheetParser {
     if (ap.hasMetadata("date"))
       ex.setDateElement(Factory.newDateTime(ap.metadata("date").substring(0, 10)));
     else
-      ex.setDate(new DateAndTime(genDate));
+      ex.setDate(genDate.getTime());
 
     if (ap.hasMetadata("status")) 
       ex.setStatus(ExtensionDefinition.ResourceProfileStatus.fromCode(ap.metadata("status")));

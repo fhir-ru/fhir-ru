@@ -61,6 +61,7 @@
 			</VMD>
 		</Simple_MDS>
 	-->
+  <id value="example-prodspec"/>
 	<text>
 		<status value="generated"/>
 		<div xmlns="http://www.w3.org/1999/xhtml">
@@ -103,7 +104,7 @@
 		<label value="Handle ID"/>
 		<value value="0"/>
 	</identifier>
-	<lastSystemChange value="2014-10-07T14:45:00"/>
+	<lastSystemChange value="2014-10-07T14:45:00Z"/>
 	<source>
 		<reference value="#d1"/>
 	</source>	

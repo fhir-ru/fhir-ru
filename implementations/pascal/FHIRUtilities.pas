@@ -32,7 +32,7 @@ interface
 
 uses
   SysUtils, Classes,
-  StringSupport, GuidSupport, DateSupport,
+  StringSupport, GuidSupport, DateSupport, BytesSupport,
   AdvObjects,
 
   IdSoapMime, TextUtilities, ZLib,
@@ -61,6 +61,8 @@ Function FhirGUIDToString(aGuid : TGuid):String;
 function ParseXhtml(lang : String; content : String; policy : TFHIRXhtmlParserPolicy):TFhirXHtmlNode;
 function geTFhirResourceNarrativeAsText(resource : TFhirDomainResource) : String;
 function IsId(s : String) : boolean;
+function fullResourceUri(base: String; aType : TFhirResourceType; id : String) : String;
+
 procedure listReferences(resource : TFhirResource; list : TFhirReferenceList);
 procedure listAttachments(resource : TFhirResource; list : TFhirAttachmentList);
 Function FhirHtmlToText(html : TFhirXHtmlNode):String;
@@ -152,6 +154,11 @@ type
     function rest(type_ : TFhirResourceType) : TFhirConformanceRestResource;
   end;
 
+  TFHIRCodeableConceptHelper = class helper (TFHIRElementHelper) for TFHIRCodeableConcept
+  public
+    function hasCode(System, Code : String) : boolean;
+  end;
+
   TFhirConformanceRestResourceHelper = class helper (TFHIRElementHelper) for TFhirConformanceRestResource
   public
     function interaction(type_ : TFhirTypeRestfulInteraction) : TFhirConformanceRestResourceInteraction;
@@ -173,7 +180,6 @@ type
     function hasErrors : boolean;
   end;
 
-  {$IFNDEF FHIR-DSTU}
   TFhirConceptMapElementHelper = class helper (TFhirElementHelper) for TFhirConceptMapElement
   public
     function systemObject : TFhirUri;
@@ -196,7 +202,41 @@ type
     function systemObject : TFhirUri;
     function system : String;
   end;
-  {$ENDIF}
+
+  TFHIRBundleHelper = class helper (TFhirResourceHelper) for TFHIRBundle
+  private
+    function GetLinks(s: string): String;
+  public
+    property Links[s : string] : String read GetLinks;
+    procedure deleteEntry(resource : TFHIRResource);
+    class function Create(aType : TFhirBundleType) : TFhirBundle; overload;
+  end;
+
+  TFHIRCodingListHelper = class helper for TFHIRCodingList
+  public
+    procedure CopyTags(tags : TFHIRCodingList);
+    function AsHeader : String;
+    function json : TBytes;
+    procedure AddValue(code, system, display : String);
+  end;
+
+  TFhirBundleLinkListHelper = class helper for TFhirBundleLinkList
+  private
+    function getMatch(rel: String): string;
+    procedure SetMatch(rel: String; const Value: string);
+  public
+    procedure AddValue(rel, ref : String);
+    function AsHeader : String;
+    property Matches[rel : String] : string read getMatch write SetMatch;
+  end;
+
+  TFhirParametersHelper = class helper for TFhirParameters
+  private
+    function GetNamedParameter(name: String): TFhirBase;
+  public
+    function hasParameter(name : String):Boolean;
+    Property NamedParameter[name : String] : TFhirBase read GetNamedParameter; default;
+  end;
 
 function ZCompressBytes(const s: TBytes): TBytes;
 function ZDecompressBytes(const s: TBytes): TBytes;
@@ -326,7 +366,7 @@ function IsId(s : String) : boolean;
 var
   i : integer;
 begin
-  result := length(s) in [1..36];
+  result := length(s) in [1..ID_LENGTH];
   if result then
     for i := 1 to length(s) do
       result := result and CharInset(s[i], ['0'..'9', 'a'..'z', 'A'..'Z', '-', '.']);
@@ -347,7 +387,7 @@ begin
           if (iter.current.list[i] <> nil)  and not StringStartsWith(TFhirReference(iter.current.list[i]).reference, '#') then
             list.add(iter.Current.list[i].Link)
       end
-      else if iter.Current.Type_ = 'Resource' then
+      else if (iter.Current.list <> nil) and (iter.Current.Type_ = 'Resource') then
       begin
         for i := 0 to iter.Current.List.count - 1 do
           iterateReferences(path+'/'+iter.Current.Name, TFhirReference(iter.current.list[i]), list)
@@ -1548,6 +1588,150 @@ end;
 procedure TFHIRResourceHelper.SetmlId(const Value: String);
 begin
   id := value;
+end;
+
+{ TFHIRBundleHelper }
+
+class function TFHIRBundleHelper.Create(aType: TFhirBundleType): TFhirBundle;
+begin
+  result := TFhirBundle.Create;
+  result.type_ := aType;
+end;
+
+procedure TFHIRBundleHelper.deleteEntry(resource: TFHIRResource);
+var
+  i : integer;
+begin
+  for i := entryList.Count -1 downto 0 do
+    if entryList[i].resource = resource then
+      entrylist.DeleteByIndex(i);
+end;
+
+function TFHIRBundleHelper.GetLinks(s: string): String;
+var
+  i : integer;
+begin
+  result := '';
+  for i := 0 to link_List.count -  1 do
+    if link_List[i].relation = s then
+    begin
+      result := link_List[i].url;
+      exit;
+    end;
+end;
+
+{ TFHIRCodingListHelper }
+
+procedure TFHIRCodingListHelper.AddValue(code, system, display: String);
+var
+  c : TFHIRCoding;
+begin
+  c := append;
+  c.system := system;
+  c.code := code;
+  c.display := display;
+end;
+
+function TFHIRCodingListHelper.AsHeader: String;
+begin
+  raise Exception.Create('todo');
+end;
+
+procedure TFHIRCodingListHelper.CopyTags(tags: TFHIRCodingList);
+begin
+  raise Exception.Create('todo');
+end;
+
+function TFHIRCodingListHelper.json: TBytes;
+begin
+  SetLength(result, 0);
+end;
+
+{ TFhirBundleLinkListHelper }
+
+procedure TFhirBundleLinkListHelper.AddValue(rel, ref: String);
+var
+  link : TFhirBundleLink;
+begin
+  link := Append;
+  link.relation := rel;
+  link.url := ref;
+end;
+
+function TFhirBundleLinkListHelper.AsHeader: String;
+begin
+  result := ''; // todo
+end;
+
+function TFhirBundleLinkListHelper.getMatch(rel: String): string;
+var
+  i : integer;
+begin
+  result := '';
+  for i := 0 to count - 1 do
+    if Item(i).relation = rel then
+      result := Item(i).url;
+
+end;
+
+procedure TFhirBundleLinkListHelper.SetMatch(rel: String; const Value: string);
+begin
+  raise Exception.Create('todo');
+end;
+
+function fullResourceUri(base: String; aType : TFhirResourceType; id : String) : String;
+begin
+  if (base = 'urn:uuid:') or ( base = 'urn:oid:') then
+    result := base+id
+  else
+    result := AppendForwardSlash(base) + CODES_TFhirResourceType[atype]+'/'+id;
+end;
+
+{ TFhirParametersHelper }
+
+function TFhirParametersHelper.GetNamedParameter(name: String): TFhirBase;
+var
+  i: Integer;
+begin
+  for i := 0 to parameterList.Count - 1 do
+    if (parameterList[i].name = name) then
+    begin
+      if parameterList[i].valueElement <> nil then
+        result := parameterList[i].valueElement.Link
+      else
+        result := parameterList[i].resourceElement.Link;
+      exit;
+    end;
+  result := nil;
+end;
+
+function TFhirParametersHelper.hasParameter(name: String): Boolean;
+var
+  i: Integer;
+begin
+  for i := 0 to parameterList.Count - 1 do
+    if (parameterList[i].name = name) then
+    begin
+      result := true;
+      exit;
+    end;
+  result := false;
+end;
+
+{ TFHIRCodeableConceptHelper }
+
+function TFHIRCodeableConceptHelper.hasCode(System, Code: String): boolean;
+var
+  i : integer;
+begin
+  result :=  false;
+  if self <> nil then
+    for i := 0 to codingList.Count - 1 do
+      if (codingList[i].system = system) and (codingList[i].code = code) then
+      begin
+        result := true;
+        break;
+      end;
 end;
 
 end.

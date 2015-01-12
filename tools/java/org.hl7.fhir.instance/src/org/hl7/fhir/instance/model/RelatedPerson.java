@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Dec 3, 2014 12:34+1100 for FHIR v0.3.0
+// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -117,8 +117,8 @@ public class RelatedPerson extends DomainResource {
         }
     }
 
-  public static class AdministrativeGenderEnumFactory implements EnumFactory {
-    public Enum<?> fromCode(String codeString) throws Exception {
+  public static class AdministrativeGenderEnumFactory implements EnumFactory<AdministrativeGender> {
+    public AdministrativeGender fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -130,9 +130,9 @@ public class RelatedPerson extends DomainResource {
           return AdministrativeGender.OTHER;
         if ("unknown".equals(codeString))
           return AdministrativeGender.UNKNOWN;
-        throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
+        throw new IllegalArgumentException("Unknown AdministrativeGender code '"+codeString+"'");
         }
-    public String toCode(Enum<?> code) throws Exception {
+    public String toCode(AdministrativeGender code) {
       if (code == AdministrativeGender.MALE)
         return "male";
       if (code == AdministrativeGender.FEMALE)
@@ -206,7 +206,14 @@ public class RelatedPerson extends DomainResource {
     @Description(shortDefinition="Image of the person", formalDefinition="Image of the person." )
     protected List<Attachment> photo;
 
-    private static final long serialVersionUID = 1338186224L;
+    /**
+     * The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.
+     */
+    @Child(name="period", type={Period.class}, order=7, min=0, max=1)
+    @Description(shortDefinition="Period of time that this relationship is considered valid", formalDefinition="The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown." )
+    protected Period period;
+
+    private static final long serialVersionUID = 1871047258L;
 
     public RelatedPerson() {
       super();
@@ -255,7 +262,7 @@ public class RelatedPerson extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create RelatedPerson.patient");
         else if (Configuration.doAutoCreate())
-          this.patient = new Reference();
+          this.patient = new Reference(); // cc
       return this.patient;
     }
 
@@ -279,7 +286,7 @@ public class RelatedPerson extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create RelatedPerson.patient");
         else if (Configuration.doAutoCreate())
-          this.patientTarget = new Patient();
+          this.patientTarget = new Patient(); // aa
       return this.patientTarget;
     }
 
@@ -299,7 +306,7 @@ public class RelatedPerson extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create RelatedPerson.relationship");
         else if (Configuration.doAutoCreate())
-          this.relationship = new CodeableConcept();
+          this.relationship = new CodeableConcept(); // cc
       return this.relationship;
     }
 
@@ -323,7 +330,7 @@ public class RelatedPerson extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create RelatedPerson.name");
         else if (Configuration.doAutoCreate())
-          this.name = new HumanName();
+          this.name = new HumanName(); // cc
       return this.name;
     }
 
@@ -377,7 +384,7 @@ public class RelatedPerson extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create RelatedPerson.gender");
         else if (Configuration.doAutoCreate())
-          this.gender = new Enumeration<AdministrativeGender>();
+          this.gender = new Enumeration<AdministrativeGender>(new AdministrativeGenderEnumFactory()); // bb
       return this.gender;
     }
 
@@ -412,7 +419,7 @@ public class RelatedPerson extends DomainResource {
         this.gender = null;
       else {
         if (this.gender == null)
-          this.gender = new Enumeration<AdministrativeGender>();
+          this.gender = new Enumeration<AdministrativeGender>(new AdministrativeGenderEnumFactory());
         this.gender.setValue(value);
       }
       return this;
@@ -426,7 +433,7 @@ public class RelatedPerson extends DomainResource {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create RelatedPerson.address");
         else if (Configuration.doAutoCreate())
-          this.address = new Address();
+          this.address = new Address(); // cc
       return this.address;
     }
 
@@ -472,6 +479,30 @@ public class RelatedPerson extends DomainResource {
       return t;
     }
 
+    /**
+     * @return {@link #period} (The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.)
+     */
+    public Period getPeriod() { 
+      if (this.period == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create RelatedPerson.period");
+        else if (Configuration.doAutoCreate())
+          this.period = new Period(); // cc
+      return this.period;
+    }
+
+    public boolean hasPeriod() { 
+      return this.period != null && !this.period.isEmpty();
+    }
+
+    /**
+     * @param value {@link #period} (The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.)
+     */
+    public RelatedPerson setPeriod(Period value) { 
+      this.period = value;
+      return this;
+    }
+
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "Identifier for a person within a particular scope.", 0, java.lang.Integer.MAX_VALUE, identifier));
@@ -482,6 +513,7 @@ public class RelatedPerson extends DomainResource {
         childrenList.add(new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, java.lang.Integer.MAX_VALUE, gender));
         childrenList.add(new Property("address", "Address", "Address where the related person can be contacted or visited.", 0, java.lang.Integer.MAX_VALUE, address));
         childrenList.add(new Property("photo", "Attachment", "Image of the person.", 0, java.lang.Integer.MAX_VALUE, photo));
+        childrenList.add(new Property("period", "Period", "The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.", 0, java.lang.Integer.MAX_VALUE, period));
       }
 
       public RelatedPerson copy() {
@@ -507,6 +539,7 @@ public class RelatedPerson extends DomainResource {
           for (Attachment i : photo)
             dst.photo.add(i.copy());
         };
+        dst.period = period == null ? null : period.copy();
         return dst;
       }
 
@@ -518,7 +551,7 @@ public class RelatedPerson extends DomainResource {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (patient == null || patient.isEmpty())
            && (relationship == null || relationship.isEmpty()) && (name == null || name.isEmpty()) && (telecom == null || telecom.isEmpty())
            && (gender == null || gender.isEmpty()) && (address == null || address.isEmpty()) && (photo == null || photo.isEmpty())
-          ;
+           && (period == null || period.isEmpty());
       }
 
   @Override
