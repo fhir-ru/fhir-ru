@@ -19,17 +19,9 @@
     <system value="http://hl7.org/fhir/paymentstatus"/>
     <concept>
       <code value="paid"/> <!-- Payment has been sent via cheque, EFT, other -->
-	  <designation>
-		<language value="ru"/>
-		<value value="Оплачено"/>
-	  </designation>
     </concept>
     <concept>
       <code value="cleared"/> <!-- Payment has been cashed or otherwise been received -->
-	  <designation>
-		<language value="ru"/>
-		<value value="Расчёт произведен"/>
-	  </designation>
     </concept>
   </define>
 </ValueSet>

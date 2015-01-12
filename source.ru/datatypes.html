@@ -72,7 +72,7 @@
    <td>integer</td><td>xs:int</td><td>32-битное целое число со знаком (для больших значений используйте тип decimal)</td>
  </tr>
  <tr>
-   <td>decimal</td><td>xs:decimal</td><td>Рациональное число. Примечание: при реализации не используйте IEEE-тип с плавающей точкой, вместо этого пользуйтесь чем-то, что работает как настоящее десятичное число, т.е. имеет встроенную точность (например Java BigDecimal). <b>Значения типа decimal могут не использовать экспоненциальную запись.</b></td>
+   <td>decimal</td><td>xs:decimal</td><td>Рациональное число. Примечание: при реализации не используйте IEEE-тип с плавающей точкой. Вместо этого используйте что-то, что работает как настоящее десятичное число, т.е. имеет встроенную точность (например Java BigDecimal). <b>Значения типа decimal могут не использовать экспоненциальную запись.</b></td>
  </tr>
  <tr>
    <td>base64Binary</td><td>xs:base64Binary</td><td>Поток байтов в кодировке base64 (<a href="http://tools.ietf.org/html/rfc4648">RFC 4648</a>)</td>
@@ -111,7 +111,7 @@
  <tr><td>code</td><td>string</td><td>Указывает, что значение взято из набора регулируемых строк, определенных в другом месте (см. <a href="terminologies.html">Использование кодов</a> для дальнейшего обсуждения). Техническое ограничение: код должен быть строкой, содержащей хотя бы один символ и не имеющей пробела в начале и в конце, внутри которой есть только одиночные пробелы. <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
  <tr><td>oid</td><td>uri</td><td>OID (идентификатор объекта), представленный в виде URI (унифицированный идентификатор ресурса) (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>): urn:oid:1.2.3.4.5</td></tr>
  <tr><td>uuid</td><td>uri</td><td>UUID (Universally Unique Identifier), представленный в виде URI (унифицированный идентификатор ресурса) (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11. Обратите внимание на комментарий в RFC о регистре: значения UUID ДОЛЖНЫ быть в нижнем регистре, но системам СЛЕДУЕТ интерпретировать их регистронезависимо. </td></tr>
- <tr><td>id</td><td>string</td><td>Any combination of upper or lower case asci letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an unprefixed OID, UUID or any other identifier pattern that meets these constraints.)  Ids are case sensitive. UUIDs SHALL be sent using lowercase letters.
+ <tr><td>id</td><td>string</td><td>Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.)  Ids are case sensitive. UUIDs SHALL be sent using lowercase letters.
    <br/>Note: this format includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232.
    <br/>regex: [%id_regex%]</td></tr>
 </table>
@@ -260,7 +260,7 @@ Coding - это представление определенного конце
 Элемент coding может быть помечен как "первичный" ("primary"), если пользователь выбрал определенное кодовое значение в интерфейсе пользователя (например пользователь выбирает пункт в списке). Первичное значение является предпочтительным выбором для выполнения переводом, например.
 </p>
 <p>
-Ссылка на <a href="valueset.html">value set</a> может приводиться в помощь пользователю или системе, обрабатывающей код, понять контекст, в котором этот код возник. В некоторых обстоятельствах возможных набор кодов, из которого этот код был выбран, влияет на то, каким образом этот код надо интерпретировать. Ссылка на набор значений не является допустимым замещением для логического URI в системе, и системный URI НЕ ДОЛЖЕН содержать ссылка на набор значений. (Если этот набор значений определяется свои собственные коды, тогда корректное значения для системы будет <i>ValueSet.define.system</i>, и набор значений содержит прямую ссылку на ресурс value set.
+Ссылка на <a href="valueset.html">value set</a> может приводиться в помощь пользователю или системе, обрабатывающей код, понять контекст, в котором этот код возник. В некоторых обстоятельствах возможных набор кодов, из которого этот код был выбран, влияет на то, каким образом этот код надо интерпретировать. Ссылка на набор значений не является допустимым замещением для логического URI в системе. Системный URI НЕ ДОЛЖЕН содержать ссылку на набор значений. (Если этот набор значений определяется свои собственные коды, тогда корректное значения для системы будет <i>ValueSet.define.system</i>, и набор значений содержит прямую ссылку на ресурс value set.
 </p>
 
 <!--<h3>Version Management</h3>

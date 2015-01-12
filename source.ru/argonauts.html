@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+
+
+      
+[%settitle Project Argonaut%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+<div class="col-9">
+
+<a name="DAF"> </a> 
+<h2>The Argonaut Project</h2>
+<p>
+The Argonaut Project addresses the recommendations of the JASON Task Force, a joint task force of the HIT Standards and Policy Committees
+and is a joint project between HL7 and the following organizations:
+</p>
+<ul>
+ <li><a href="http://www.athenahealth.com/">athenahealth</a></li>
+ <li><a href="http://www.bidmc.org/">Beth Israel Deaconess Medical Center</a></li>
+ <li><a href="http://www.cerner.com/">Cerner</a></li>
+ <li><a href="http://www.epic.com/">Epic</a></li>
+ <li><a href="http://intermountainhealthcare.org">Intermountain Healthcare</a></li>
+ <li><a href="http://www.mayoclinic.org/">Mayo Clinic</a></li>
+ <li><a href="http://home.meditech.com">MEDITECH</a></li>
+ <li><a href="http://www.mckesson.com/">McKesson</a></li>
+ <li><a href="http://www.partners.org/">Partners HealthCare System</a></li>
+ <li><a href="http://smartplatforms.org/">SMART at the Boston Children's Hospital Informatics Program</a></li>
+ <li><a href="http://www.advisory.com">The Advisory Board Company</a></li>
+</ul>
+<p>
+The purpose of the Argonaut Project is to develop a first-generation API and Core Data Services specification 
+to enable expanded information sharing for electronic health records, documents, and other health information  
+based on the FHIR specification.
+</p>
+<h3>First Draft</h3>
+<p>
+This is the first draft; the scope of this draft is to present a simple API that provides 
+patient access to Meaningful Use based data sets. This simple API is the basis for consultation
+and testing through the FHIR connectathon process with the intent of developing a solid basis
+for Meaningful Use based access to data in the forthcoming DSTU2 ballot of FHIR.
+</p>
+<p>
+For the purpose of the HL7 connectathon, server (patient portal) implementations
+should implement the <a href="">Fetch Patient Record</a> operation, and return 
+the following Meaningful Use based Data:
+</p>
+<ol>
+ <li>Patient name / Sex / Date of birth / Race / Ethnicity / Preferred language</li>
+ <li>Smoking status</li>
+ <li>Problems</li>
+ <li>Medications</li>
+ <li>Medication allergies</li>
+ <li>Laboratory test(s)</li>
+ <li>Laboratory value(s)/result(s)</li>
+ <li>Vital signs – height, weight, blood pressure, BMI</li>
+ <li>Care plan field(s), including goals and instructions</li>
+ <li>Procedures</li>
+ <li>Care team member(s)</li>
+ <li>Documents relating to a patient</li>
+</ol>
+<p>
+The connectathon will be open for both client and server (e.g. patient portal 
+and patient data access tools). For further information about the connectathon,
+including event details, security arrangements, and test/development tools support,
+see <a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_8">FHIR Connectathon 8</a>.
+</p>
+<p>
+The Meaningful Use profiles for the connectathon are mostly those defined for the <a href="daf.html">DAF Implementation Guide</a>.
+Specifically, this is the map between the MU data list above, and their corresponding FHIR resources and DAF profiles:
+</p>
+<table class="grid">
+ <tr>
+   <td>MU Data Item</td>
+   <td>FHIR Resource</td>
+   <td>DAF Profile</td>
+ </tr>
+ <tr>
+   <td>Patient Details</td>
+   <td><a href="patient.html">Patient</a><br/>+ <a href="encounter.html">Encounter</a> in support</td>
+   <td><a href="patient-daf.html">DAF Patient</a><br/><a href="encounter-daf.html">DAF Encounter</a></td>
+ </tr>
+ <tr>
+   <td>Smoking status</td>
+   <td><a href="observation.html">Observation</a></td>
+   <td><a href="observation-ccda-smokingstatus.html">C-CDA Smoking Status Observation</a></td>
+ </tr>
+ <tr>
+   <td>Problems</td>
+   <td><a href="condition.html">Condition</a></td>
+   <td><a href="condition-daf.html">DAF Condition (a.k.a. Problem)</a></td>
+ </tr>
+ <tr>
+   <td>Medications</td>
+   <td>A combination of<ul>
+     <li><a href="medicationprescription.html">MedicationPrescription</a></li>
+     <li><a href="medicationdispense.html">MedicationDispense</a></li>
+     <li><a href="medicationadministration.html">MedicationAdministration</a></li>
+     <li><a href="medicationstatement.html">MedicationStatement</a></li>
+     <li><a href="immunization.html">Immunization</a></li>
+    </ul> 
+   </td>
+   <td>DAF:<ul>
+     <li><i>Not done yet</i></li>
+     <li><i>Not done yet</i></li>
+     <li><a href="medicationadministration-daf.html">DAF Medication Administration</a></li>
+     <li><a href="medicationstatement-daf.html">DAF MedicationStatement</a></li>
+     <li><a href="immunization-daf.html">DAF Immunization</a> (note: it is expected that this be replaced by use of MedicationAdministration)</li>
+    </ul> 
+   </td>
+ </tr>
+ <tr>
+   <td>Medication allergies</td>
+   <td><a href="allergyintolerance.html">AllergyIntolerance</a></td>
+   <td><a href="allergyintolerance-daf.html">DAF AllergyIntolerance</a></td>
+ </tr>
+ <tr>
+   <td>Laboratory test(s)</td>
+   <td><a href="diagnosticorder.html">DiagnosticOrder</a></td>
+   <td><a href="diagnosticorder-daf.html">DAF DiagnosticOrder</a></td>
+ </tr>
+ <tr>
+   <td>Laboratory value(s)/result(s)</td>
+   <td><a href="diagnosticreport.html">DiagnosticReport</a> &amp; <a href="observation.html">Observation</a> </td>
+   <td><a href="diagnosticreport-daf.html">DAF Diagnostic Report</a> / <a href="observation-daf-results.html">DAF Results</a></td>
+ </tr>
+ <tr>
+   <td>Vital signs</td>
+   <td><a href="observation.html">Observation</a></td>
+   <td><a href="observation-daf-vitalsigns.html">DAF Vital Signs</a></td>
+ </tr>
+ <tr>
+   <td>Care Plan</td>
+   <td><a href="careplan.html">CarePlan</a> or <a href="careplan2.html">CarePlan2</a></td>
+   <td><i>Not done yet</i> (HL7 is considering two different approaches here)</td>
+ </tr>
+ <tr>
+   <td>Procedures</td>
+   <td><a href="procedure.html">Procedure</a></td>
+   <td><a href="procedure-daf.html">DAF Procedure</a></td>
+ </tr>
+ <tr>
+   <td>Care team</td>
+   <td><a href="practitioner.html">Practitioner</a></td>
+   <td><i>Not done yet</i></td>
+ </tr>
+ <tr>
+   <td>Patient Documents</td>
+   <td><a href="documentreference.html">DocumentReference</a></td>
+   <td><i>Not done yet</i> (will be consistent with IHE use in the <a href="ftp://ftp.ihe.net/IT_Infrastructure/iheitiyr13-2015-2016/Technical_Cmte/Workitems/MHD2/IHE_ITI_Suppl_MHD_20141205.docx">MHD profile</a>)</td>
+ </tr>
+</table>
+
+<p>
+Note that the DAF profiles identify specific conformance requirements 
+around search parameters. For the purposes of the connectathon, 
+implementers are not required to implement search for the individual
+resource types - only the "Fetch Patient Record" operation is required. 
+As a result, the DAF rules about search do not apply. 
+</p>
+<p>
+However implementers should note that the DAF and JASON taskforce
+work in this space is closely related and the DAF rules should be 
+understood as candidates for the JASON taskforce deliberations in
+this space. For this reason, implementers are encouraged to implement
+these for the connectathon and/or to comment on them in depth.
+</p>
+<p>
+Where no particular profile is nominated (<i>not done yet</i>), implementers 
+are free to experiment and make recommendations for the next phase 
+of development, which is expected to refine this list and the details
+of the profiles based on implementation experience.
+</p>
+
+
+<h3>Lists, and "No Known [X]"</h3>
+
+<p>
+In the FHIR specification, a patient's problem list, etc. consists of 0 or more 
+instances of the <a href="condition.html">Condition</a> resource. These are
+found in the <a href="bundle.html">Bundle</a> that is returned from the 
+"Fetch Patient Record" operation.
+</p>
+<p>
+FHIR also includes a <a href="list.html">List</a> resource that represents
+a logical list of items, such as a problem list. As well as providing
+list status tracking information, the list carries an important data 
+element. If the list is empty, it can indicate a reason why. For consistency in the 
+returned data, all responses to the Fetch Patient Operation SHALL 
+return the following lists:
+</p>
+<ul>
+ <li>Problems - a list with the LOINC code "11450-4"</li>
+ <li>Medication Allergies - a list with the LOINC code "48765-2"</li>
+ <li>Medications - a list with the LOINC code "10160-0"</li>
+</ul>
+<p>
+If these lists are empty, they SHALL contain a reason why (which may 
+be "not supported in this source" or equivalent). If they are not 
+empty, all the relevant resources for the list SHALL be explicitly 
+referenced in the list items. 
+</p>
+<p>
+Clients that request a patient record should only treat problems, medication-type
+and allergy/intolerance resources that appear in the patient record as 
+part of the history if they are listed in the relevant list resources. Otherwise,
+they may have been provided as supporting data for other resources, but are 
+not included in the patient summary.
+</p>
+
+<h3>Conformance Rules</h3>
+<p>
+The "Fetch Patient Record" SHALL always return a patient record that conforms 
+to the profile identified above, and SHALL include a list for Problems,
+Medications, and Medication Allergies. The allergies list may include 
+non-medication allergies.
+</p>
+
+
+</div>
+
+[%file newfooter%]
+
+</body>
+</html>

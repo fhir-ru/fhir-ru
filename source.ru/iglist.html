@@ -16,10 +16,33 @@
 <p>
 Руководство по реализации представляет собой коллекцию <a href="profile.html">профилей</a>, <a href="conformance.html">требований соответствия</a>, <a href="valueset.html">наборов значений (ValueSets)</a> и других ресурсов вместе с текстовыми указаниями, содержащими инструкции по использованию FHIR в определенной области задач. Руководства по реализации могут разрабатываться и публиковаться в составе версии спецификации FHIR или в виде отдельной спецификации. Дополнительные инструменты и средства поддержки руководств по реализации продолжают разрабатываться, поэтому предлагаемые материалы следует рассматривать как "предварительные" с точки зрения публикации.
 </p>
+<p>
+At present, implementation guides are published in conjunction with the FHIR specification because tooling that supports
+straightforward independent publication is not yet developed.  However, the intention is that in the future implementation guides
+will be published separately from the core FHIR specification and can be subject to separate approval processes.
+</p>
+<p>
+The predominance of US implementation guides in this specification is a result of the fact that the US doesn't have an independent
+affiliate body to support balloting and publishing of US realm-specific content.  It should in no way be interpreted as suggesting
+that FHIR is a US-centric specification.
+</p>
 <table class="grid">
   <tr>
     <td><b>Название</b></td>
     <td><b>Использование</b></td>
+  </tr>
+  <tr>
+    <td><a href="argonauts.html">Argonaut Project</a></td>
+    <td>A joint task force of the HIT Standards and Policy Committees: a first-generation FHIR-based API and Core Data Services specification</td>
+  </tr>
+  <tr>
+    <td><a href="daf.html">Data Access Framework</a></td>
+    <td>A U.S. Realm guide for making use of FHIR resources to support queries between systems within an enterprise and across enterprises.</td>
+  </tr>
+  <tr>
+    <td><a href="ehrs-rle.html">EHRS Functional model - Record Lifecycle Events</a></td>
+    <td>Describes the use of the <a href="provenance.html">Provenance</a> and <a href="securityevent.html">SecurityEvent</a>
+    resources to support meeting the needs of the EHRS functional model requirements for tracking record lifecycle.</td>
   </tr>
   <tr>
     <td><a href="sdc.html">Структурированный сбор данных</a></td>
@@ -27,24 +50,33 @@
       <a href="questionnaire.html">Questionnaires</a> и <a href="questionnaireanswers.html">QuestionnaireAnswers</a> для поддержки предзаполнения и автозаполнения форм.</td>
   </tr>
   <tr>
-    <td><a href="daf.html">Фреймворк доступа к данным</a></td>
-    <td>Американское руководство по использованию FHIR-ресурсов для поддержки запросов между системами в пределах предприятия и между предприятиями.</td>
+    <td><a href="sdc-de.html">Structured Data Capture - Data Element Exchange</a></td>
+    <td>A U.S. Realm guide for supporting the exchange and maintenance of <a href="dataelement.html">Data Elements</a> by
+      and between data element registries.</td>
   </tr>
   <tr>
-    <td>Заказывание тестов и предоставление отчетов в американских лабораториях
-    <ul>
-					<li><a href="uslaborder.html">Американской лабораторный заказ</a></li>
-					<li><a href="uslabreport.html">Американский лабораторный отчет</a></li>
-					<li><a href="uslabphreport.html">Американский лабораторный отчет для общественного здравоохранения</a></li>
-				</ul>
+    <td><a href="uslaborder.html">US Laboratory Order</a>
+    
     
     </td>
-    <td>Серия американских руководств по использованию <a href="diagnosticorder.html">Diagnostic Order</a>, <a href="diagnosticreport.html">Diagnostic Report</a> и FHIR-ресурсов, на которые они ссылаются, для поддержки:<ol>
-					<li> заказа лабораторных тестов при амбулаторном лечении;</li>
-					<li> предоставления отчетов о лабораторных тестах при амбулаторном лечении;</li>
-					<li> предоставления отчетов о лабораторных тестах, подлежащих публикации, юрисдикциям общественного здравоохранения.</li>
-				</ol> </td>
+    <td>A US Realm guide making use of <a href="diagnosticorder.html">Diagnostic Order</a> and FHIR resources referenced by them to support ordering of laboratory tests in ambulatory care.
+ </td>
   </tr>
+    <tr>
+    <td><a href="uslabreport.html">US Laboratory Report</a>
+ 
+    
+    </td>
+    <td>A US Realm guide making use of <a href="diagnosticreport.html">Diagnostic Report</a>, and FHIR resources referenced by them to support reporting of laboratory tests in ambulatory care.</td>
+  </tr>
+
+  <tr>
+    <td><a href="uslabphreport.html">US Laboratory Report to Public Health</a>
+   
+    </td>
+    <td>A US Realm guide making use of <a href="diagnosticreport.html">Diagnostic Report</a>, and FHIR resources referenced by them to support reporting of reportable lab tests to Public Health jurisdictions.</td>
+  </tr>
+
 </table>
 
 </div>

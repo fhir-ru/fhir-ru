@@ -121,7 +121,6 @@ https://server/path/Patient
 <p>
 Примечание: для поддержки браузерных клиентских приложений сервер ДОЛЖЕН реализовывать <a href="http://enable-cors.org/">Кросс-доменный доступ к ресурсам</a>.  
 </p>
-<a name="httpstatuscodes"> </a>
 
 <h3>HTTP коды состояния (Status Codes)</h3>
 <p>
@@ -331,15 +330,13 @@ Content-Type: application/json+fhir
 <p>
 Если указано, значение ETag ДОЛЖНО совпадать со значением version id ресурса. 
 Серверам разрешается генерировать version id каким угодно образом при условии, что они являются допустимыми в соответствии с типом данных <a href="datatypes.html#id">id</a> и уникальными в пределах адресного пространства всех версий одного ресурса. 
-Когда ресурсы возвращаются в рамках комплекта (например см. операцию <a href="#search">search</a> ниже), сервер должен вернуть значение ETag в качестве атрибута с именем "etag" в пространстве имен FHIR ("http://hl7.org/fhir") в элементе feed.entry (либо, для JSON, свойстве "etag" объекта feed.entry).
+Когда ресурсы возвращаются в рамках комплекта, ETag отсутствует, и используется непосредственно versionId ресурсов.
 <!-- if provided, the value of the ETag SHALL match the value of the version id for the resource. Servers 
 are allowed to generate the version id in whatever fashion that they wish, so long 
 as they are valid according to the <a href="datatypes.html#id">id</a> data type,
 and are unique within the address space of all versions of the same resource.
-When resources are returned as part of a bundle (e.g. see <a href="#search">search</a> below), the server 
-should return the ETag value as an attribute named "etag" in the FHIR namespace 
-("http://hl7.org/fhir") on the feed.entry element (or, for JSON, a property "etag" on the 
-feed.entry object). -->
+When resources are returned as part of a bundle, there is no ETag, and the 
+versionId of the resources is used directly. -->
 </p>
 <p>
 Если клиент желает запросить версионное обновление, он отправляет запрос с заголовком If-Match, который ссылается на ETag с сервера:
@@ -489,7 +486,6 @@ To search all resources at once: -->
 </p>
 <pre>
   GET [base]/[type]?[parameters] {&amp;_format=[mime-type]}
-  GET [base]/[type]/_search?[parameters] {&amp;_format=[mime-type]}
 </pre>
 <p>
 Чтобы искать в модуле <a href="extras.html#compartments">compartment</a> либо по всем возможным ресурсам, либо ресурсам одного типа, соответственно:
@@ -505,16 +501,23 @@ To search all resources at once: -->
 <!-- Note that there is a specific operation defined to support <a href="patient-operations.html#everything">fetching an entire patient record</a>. -->
 </p>
 <p>
-Из-за способа, которым некоторые пользовательские агенты и прокси обрабатывают запросы GET и POST, POST-отправки в /_search также разрешается с точно такой же семантикой, как и эквивалентная команда GET. Сервера должны поддерживать оба поиска GET и POST. Все эти взаимодействия поиска принимают ряд параметров, которые являются серией пар name'='value, закодированных в URL (или как x-multi-part-form отправка POST). 
+Из-за способа, которым некоторые пользовательские агенты и прокси обрабатывают запросы GET и POST, в дополнение к методу поиска на основе GET-запроса серверы, которые поддерживают <i>search</i>, ДОЛЖНЫ также поддерживать поиск на основе POST-запроса:
+<!-- Because of the way that some user agents and proxies treat GET and POST requests, in addition
+to the get based search method above, servers that support <i>search</i> SHALL also support a POST based search: -->
+</p>
+<pre>
+POST  [base]/[type]/_search?[parameters] {&amp;_format=[mime-type]}
+</pre>
+<p>
+Запрос этого вида имеет точно такую же семантику, что и эквивалентная команда GET. Все эти взаимодействия поиска принимают ряд параметров, которые являются серией пар name'='value, закодированных в URL (или в виде x-multi-part-form отправки POST).
 (См.  <a href="http://www.w3.org/TR/REC-html40/interact/forms.html#form-content-type">W3C HTML forms</a>). 
-Операции поиска обрабатываются, как определено в <a href="search.html">механизме обработки поиска/запросов</a>.
-<!-- Because of the way that some user agents and proxies treat GET and POST requests, POST submissions to /_search 
-are also allowed with exactly the same semantics as the equivalent GET command. Servers are required 
-to support both GET and POST searches. All these search interactions take a series of parameters that 
+Операции поиска обрабатываются, как определено в <a href="search.html">механизме обработки поиска</a>.
+<!-- This has exactly the same semantics as the equivalent GET command. All these search interactions take a series of parameters that 
 are a series of name'='value pairs encoded in the URL (or as an x-multi-part-form submission for a POST).
 (See <a href="http://www.w3.org/TR/REC-html40/interact/forms.html#form-content-type">W3C HTML forms</a>). 
-Searches are processed as specified for the <a href="search.html">Search/Query handling mechanism</a>.  -->
+Searches are processed as specified for the <a href="search.html">Search handling mechanism</a>. -->
 </p>
+
 <p>
 Если поиск не удается выполнить, возвращается код состояния вида 4xx или 5xx наряду с ресурсом <a href="operationoutcome.html">OperationOutcome</a>. 
 Если поиск выполняется успешно, возвращается <a href="extras.html#bundle">комплект (Bundle)</a> с <a href="bundle-definitions.html#Bundle.type">типом</a> = "searchset", содержащий результаты поиска в виде перечня ресурсов в определенном порядке. Результирующий список может быть длинным, поэтому серверы могут использовать разбиение на страницы. Если он делают это, они ДОЛЖНЫ использовать метод, <a href="#paging">описанный ниже</a>, адаптированный из <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed Paging and Archiving</a>), для разбиения списка на страницы, когда это необходимо. Сервер МОЖЕТ также возвращать ресурс OperationOutcome с дополнительной информацией о поиске; в этом случае он НЕ ДОЛЖЕН содержать никаких ошибок и должен быть помечен <a href="bundle-definitions.html#Bundle.entry.status">статусом записи</a> со значением <a href="bundle-entry-status.html#include">"include"</a>.
@@ -803,7 +806,7 @@ interactions that operate directly on the meta element: -->
  <tr><td><pre>GET [base]/[type]/[id]/_meta</pre></td><td valign="center">получить список всех профилей, меток уровня безопасности и тегов, принадлежащих обозначенному ресурсу. Это та же самая информация, что показывается при чтении ресурса, но она может иметь другую категорию допуска <!-- get a list of all profiles, security labels, and tags affixed to the nominated resource. This is the same information included when reading the resource, but may have different security clearance --></td></tr>
  <tr><td><pre>GET [base]/[type]/[id]/_history/[vid]/_meta</pre></td><td valign="center">получить список всех профилей, меток уровня безопасности и тегов, принадлежащих обозначенной версии ресурса. Это та же самая информация, что показывается при чтении заданной версии ресурса, но она может иметь другую категорию допуска<!-- get a list of all profiles, security labels, and tags affixed  to the nominated version of the resource. This is the same information included when reading the given version of the resource, but may have different security clearance --></td></tr>
  <tr><td><pre>POST [base]/[type]/[id]/_meta</pre></td><td valign="center">Присвоить обозначенному ресурсу предоставленные профили, метки уровня безопасности и теги в списке<!-- Affix the provided profiles, security labels, and tags in the list to the nominated resource --></td></tr>
- <tr><td><pre>POST [base]/[type]/[id]/_history/[vid]/meta</pre></td><td valign="center">Присвоить обозначенной версии ресурса предоставленные профили, метки уровня безопасности и теги в списке<!-- Affix the provided profiles, security labels, and tags in the list to the nominated version of the resource --></td></tr>
+ <tr><td><pre>POST [base]/[type]/[id]/_history/[vid]/_meta</pre></td><td valign="center">Присвоить обозначенной версии ресурса предоставленные профили, метки уровня безопасности и теги в списке<!-- Affix the provided profiles, security labels, and tags in the list to the nominated version of the resource --></td></tr>
  <tr><td><pre>POST [base]/[type]/[id]/_meta-delete</pre></td><td valign="center">Удалить все профили, метки уровня безопасности и теги в предоставленном списке из метаданных обозначенного ресурса <!-- Remove all profiles, security labels, and tags in the provided list from the meta for the nominated resource --></td></tr>
  <tr><td><pre>POST [base]/[type]/[id]/_history/[vid]/_meta-delete</pre></td><td valign="center">Удалить все профили, метки уровня безопасности и теги в предоставленном списке из метаданных обозначенной версии ресурса<!-- Remove all profiles, security labels, and tags in the provided list from the list of tags for the nominated version of the resource --></td></tr>
 </table>  
@@ -1104,32 +1107,33 @@ In this regard, FHIR functions as a Record Format Profile as described in that s
 </p>
 
 <table class="grid">
-<tr><th>Взаимодействие<!-- Interaction --></th><th>Путь<!-- Path --></th><th colspan="5">Запрос<!-- Request --></th></tr>
+<tr><th>Взаимодействие<!-- Interaction --></th>
+<th>Путь<!-- Path --></th><th colspan="5">Запрос<!-- Request --></th></tr>
 <tr><th colspan="2"></th>                                     <th>Действие<!-- Verb --></th>         <th>Content-Type</th> <th>Body</th>     <th>Accept</th> <th>Content-Location</th></tr>
 <tr><td>read</td>       <td>/[type]/[id]</td>                <td>GET</td>          <td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
 <tr><td>vread</td>      <td>/[type]/[id]/_history/[vid]</td> <td>GET</td>          <td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
-<tr><td>conformance</td><td>/ or /metadata</td>               <td>OPTIONS / GET</td><td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
+<tr><td>conformance</td>                <td>/ or /metadata</td>                 <td>OPTIONS / GET</td>  <td>N/A</td>            <td>N/A</td>                <td>O</td>      <td>N/A</td></tr>
 <tr><td>update</td>     <td>/[type]/[id]</td>                <td>PUT</td>          <td>R</td>            <td>Resource</td> <td>N/A</td>      <td>O or R</td></tr>
 <tr><td>create</td>     <td>/[type]</td>           		      <td>POST</td>         <td>R</td>            <td>Resource</td> <td>N/A</td>      <td>N/A</td></tr>
-<tr><td>transaction</td><td>/</td>                            <td>POST</td>         <td>R</td>            <td>Bundle</td>   <td>O</td>      <td>N/A</td></tr>
+<tr><td>transaction</td>                <td>/</td>                              <td>POST</td>           <td>R</td>              <td>Bundle</td>             <td>O</td>      <td>N/A</td></tr>
 <tr><td>delete</td>     <td>/[type]/[id]</td>                <td>DELETE</td>       <td>N/A</td>          <td>N/A</td>      <td>N/A</td>    <td>N/A</td></tr>
-<tr><td>search</td>     <td>/[type]/_search? or /[type]?</td>    <td>GET</td>          <td>N/A</td>         <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
+<tr><td rowspan="2">search</td>         <td>/[type]/_search? or /[type]?</td>   <td>GET</td>            <td>N/A</td>            <td>N/A</td>                <td>O</td>      <td>N/A</td></tr>
+<tr>                                    <td>/[type]/_search?</td>               <td>POST</td>           <td>R</td>              <td>x-multi-part-form</td>  <td>O</td>      <td>N/A</td></tr>
 <tr><td>search-all</td>	<td>/</td>                   		  <td>GET</td>          <td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
 <tr><td>history</td>	<td>/[type]/[id]/_history</td> 		  <td>GET</td>          <td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
-<tr><td>history-type</td><td>/[type]/_history</td> 		  	  <td>GET</td>          <td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
-<tr><td>history-all</td><td>/_history</td> 		  			  <td>GET</td>          <td>N/A</td>          <td>N/A</td>      <td>O</td>      <td>N/A</td></tr>
-<tr><td>tags-all</td>	<td>/_tags</td><td>GET</td><td>N/A</td><td>N/A</td><td>O</td><td>N/A</td></tr>
-<tr><td>tags-type</td>	<td>/[type]/_tags</td><td>GET</td><td>N/A</td><td>N/A</td><td>O</td><td>N/A</td></tr>
-<tr><td rowspan="2">tags</td><td rowspan="2">/[type]/[id]/_tags</td><td>GET</td><td>N/A</td><td>N/A</td><td>O</td><td>N/A</td></tr>
-<tr><td>POST</td><td>R</td><td>TagList</td><td>N/A</td><td>N/A</td></tr>
-<tr><td>tags-delete</td>	<td>/[type]/[id]/_tags/_delete</td><td>POST</td><td>R</td><td>TagList</td><td>N/A</td><td>N/A</td></tr>
-<tr><td rowspan="2">tags-version</td><td rowspan="2">/[type]/[id]/_history/[vid]/_tags</td><td>GET</td><td>N/A</td><td>N/A</td><td>O</td><td>N/A</td></tr>
-<tr><td>POST</td><td>R</td><td>TagList</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>history-type</td>               <td>/[type]/_history</td>               <td>GET</td>            <td>N/A</td>            <td>N/A</td>                <td>O</td>      <td>N/A</td></tr>
+<tr><td>history-all</td>                <td>/_history</td>                      <td>GET</td>            <td>N/A</td>            <td>N/A</td>                <td>O</td>      <td>N/A</td></tr>
+<tr><td>tags-all</td>                   <td>/_tags</td>                         <td>GET</td>            <td>N/A</td>            <td>N/A</td>                <td>O</td>      <td>N/A</td></tr>
+<tr><td>tags-type</td>                  <td>/[type]/_tags</td>                  <td>GET</td>            <td>N/A</td>            <td>N/A</td>                <td>O</td>      <td>N/A</td></tr>
+<tr><td rowspan="2">tags</td>           <td rowspan="2">/[type]/[id]/_tags</td> <td>GET</td>            <td>N/A</td>            <td>N/A</td>                <td>O</td>      <td>N/A</td></tr>
+<tr>                                                                            <td>POST</td>           <td>R</td>              <td>TagList</td>            <td>N/A</td>    <td>N/A</td></tr>
+<tr><td>tags-delete</td>                <td>/[type]/[id]/_tags/_delete</td>     <td>POST</td>           <td>R</td>              <td>TagList</td>            <td>N/A</td>    <td>N/A</td></tr>
+<tr><td rowspan="2">tags-version</td>   <td rowspan="2">/[type]/[id]/_history/[vid]/_tags</td><td>GET</td><td>N/A</td><td>N/A</td><td>O</td><td>N/A</td></tr>
+<tr>                                                                            <td>POST</td>           <td>R</td>              <td>TagList</td>            <td>N/A</td>    <td>N/A</td></tr>
 <tr><td>tags-version-delete</td>	<td>/[type]/[id]/_history/[vid]/_tags/_delete</td><td>POST</td><td>R</td><td>TagList</td><td>N/A</td><td>N/A</td></tr>
-<tr><td rowspan="2">mailbox</td>
-<td><a href="messaging.html#mailbox">/Mailbox (Message)</a></td><td>POST</td><td>R</td><td>Bundle</td><td>R</td><td>N/A</td></tr>
-<tr><td><a href="documents.html#bundle">/Mailbox (Document)</a></td><td>POST</td><td>R</td><td>Bundle</td><td>N/A</td><td>N/A</td></tr>
-<tr><td><a href="documents.html#bundle">document</a></td>	<td>/Document</td><td>POST</td><td>R</td><td>Bundle</td><td>N/A</td><td>N/A</td></tr>
+<tr><td rowspan="2">mailbox</td>        <td><a href="messaging.html#mailbox">/Mailbox (Message)</a></td><td>POST</td><td>R</td><td>Bundle</td><td>R</td><td>N/A</td></tr>
+<tr>                                    <td><a href="documents.html#bundle">/Mailbox (Document)</a></td><td>POST</td><td>R</td><td>Bundle</td><td>N/A</td><td>N/A</td></tr>
+<tr><td><a href="documents.html#bundle">document</a></td><td>/Document</td>  <td>POST</td><td>R</td><td>Bundle</td><td>N/A</td><td>N/A</td></tr>
 </table>
 
 <p>
@@ -1152,16 +1156,15 @@ In this regard, FHIR functions as a Record Format Profile as described in that s
 <tr><td>history</td>   	  <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
 <tr><td>history-type</td> <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
 <tr><td>history-all</td>  <td>R</td>            <td>Bundle</td>             <td>N/A</td>      <td>N/A</td>              <td>200</td></tr>
-<tr><td>tags-all</td><td>R</td><td>TagList</td><td>N/A</td><td>N/A</td><td>200</td></tr>
-<tr><td>tags-type</td><td>R</td><td>TagList</td><td>N/A</td><td>N/A</td><td>200</td></tr><tr><td rowspan="2">tags</td><td>R (GET)</td><td>TagList</td><td>N/A</td><td>N
-/A</td><td>200, 404, 410</td></tr>
+<tr><td>tags-all</td>       <td>R</td>            <td>TagList</td><td>N/A</td><td>N/A</td><td>200</td></tr>
+<tr><td>tags-type</td>      <td>R</td>            <td>TagList</td><td>N/A</td><td>N/A</td><td>200</td></tr>
+<tr><td rowspan="2">tags</td><td>R (GET)</td>     <td>TagList</td><td>N/A</td><td>N/A</td><td>200, 404, 410</td></tr>
 <tr><td>N/A (POST)</td><td>N/A</td><td>N/A</td><td>N/A</td><td>204</td></tr>
 <tr><td>tags-delete</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>204</td></tr>
 <tr><td rowspan="2">tags-version</td><td>R (GET)</td><td>TagList</td><td>N/A</td><td>N/A</td><td>200, 404</td></tr>
 <tr><td>N/A (POST)</td><td>N/A</td><td>N/A</td><td>N/A</td><td>204</td></tr>
 <tr><td>tags-version-delete</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>204</td></tr>
-<tr><td rowspan="2">mailbox</td>
-	<td>R (Message)</td><td>Bundle</td><td>N/A</td><td>N/A</td><td>200</td></tr>
+<tr><td rowspan="2">mailbox</td><td>R (Message)</td><td>Bundle</td><td>N/A</td><td>N/A</td><td>200</td></tr>
 <tr><td>N/A (Document)</td><td>N/A</td><td>N/A</td><td>N/A</td><td>204</td></tr>
 <tr><td>document</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>200</td></tr>
 </table>

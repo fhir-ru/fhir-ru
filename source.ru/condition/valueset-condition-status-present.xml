@@ -28,24 +28,12 @@
     <system value="http://hl7.org/fhir/condition-status"/>
     <concept>
       <code value="provisional"/>
-	  <designation>
-		<language value="ru"/>
-		<value value="предварительный"/>
-	  </designation>
     </concept>
     <concept>
       <code value="working"/>
-	  <designation>
-		<language value="ru"/>
-		<value value="рабочий"/>
-	  </designation>
     </concept>
     <concept>
       <code value="confirmed"/>
-	  <designation>
-		<language value="ru"/>
-		<value value="подтвержденный"/>
-	  </designation>
     </concept>
    </include>
   </compose>

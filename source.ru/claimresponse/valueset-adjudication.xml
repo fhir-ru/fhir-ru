@@ -19,52 +19,24 @@
     <system value="http://hl7.org/fhir/adjudication"/>
     <concept>
       <code value="total"/>
-	  <designation>
-	    <language value="ru"/>
-	    <value value="Сумма"/>
-	  </designation>
     </concept>
     <concept>
       <code value="copay"/>
-	  <designation>
-	    <language value="ru"/>
-	    <value value="Соплатёж"/>
-	  </designation>
     </concept>
     <concept>
       <code value="eligible"/>
-	  <designation>
-	    <language value="ru"/>
-	    <value value="Приемлемый долг (eligible)"/>
-	  </designation>
     </concept>
     <concept>
       <code value="deductable"/>
-	  <designation>
-	    <language value="ru"/>
-	    <value value="Франшиза"/>
-	  </designation>
     </concept>
     <concept>
       <code value="eligpercent"/>
-	  <designation>
-	    <language value="ru"/>
-	    <value value="Процент приемлемого долга (eligpercent)"/>
-	  </designation>
     </concept>
     <concept>
       <code value="tax"/>
-	  <designation>
-	    <language value="ru"/>
-	    <value value="Налог"/>
-	  </designation>
     </concept>
     <concept>
       <code value="benefit"/>
-	  <designation>
-	    <language value="ru"/>
-	    <value value="Льгота"/>
-	  </designation>
     </concept>
   </define>
 </ValueSet>

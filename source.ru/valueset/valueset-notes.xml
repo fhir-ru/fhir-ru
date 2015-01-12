@@ -1,154 +1,140 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h2>Идентификатор и версия<!-- Identifier and Version --></h2>
+<h2>Identifier and Version</h2>
 <p>
-Элементы <i>identifier</i> и <i>version</i> можно использовать для ссылки на набор значений в проекте, профиле, CDA-шаблоне или V3-сообщении (valueSet и valueSetVersion). Различные контексты могут вводить дополнительные ограничения возможных значений этих элементов. Вообще, эти элементы не требуются при использовании наборов значений в FHIR-реализациях, так как они могут использовать присущие им механизмы идентификации и контроля версиями, связанные с ресурсом.
-<!-- The <i>identifier</i> and <i>version</i> elements may be used to reference this value set in a design, a profile, a 
+The <i>identifier</i> and <i>version</i> elements may be used to reference this value set in a design, a profile, a 
 CDA template or V3 message (valueSet and valueSetVersion). These different contexts may make additional restrictions 
 on the possible values of these elements.  These elements are generally not needed when using value sets with FHIR
-implementations as they can make use of the innate identifier and versioning mechanism associated with the resource -->
+implementations as they can make use of the innate identifier and versioning mechanism associated with the resource
 </p>
 
-<h2>Наборы значений, определяющие коды<!-- Value Sets that define codes --></h2>
+<h2>Value Sets that define codes</h2>
 
 <p>
-Наборы значений могут вводить свои собственные коды. Набор значений, который вводит коды, автоматически включает все коды, которые он определяет, и используется для простых наборов кодов, которые очень специфичны и контекстно-зависимы. И у набора значений, и у кодовой системы есть URI-идентификаторы, по которым их можно идентифицировать из других мест (ValueSet.identifier и ValueSet.define.system). Эти идентификаторы ДОЛЖНЫ быть разными.
-<!-- Valuesets can define their own codes. A value set that defines codes automatically includes all 
+Valuesets can define their own codes. A value set that defines codes automatically includes all 
 the codes it defines, and is useful for simple sets of codes that are highly 
 specific and context-dependent. The value set and the code system are both 
 given URI identifiers by which they may be identified from elsewhere 
 (ValueSet.identifier and ValueSet.define.system). These identifiers SHALL 
-be different. -->
+be different.
 </p>
 <ul>
- <li><i>ValueSet.define.system</i> - это URI, который идентифицирует эти коды при использовании в  <a href="datatypes.html#Coding">Coding</a><!-- <i>ValueSet.define.system</i> is the URI that identifies these codes 
-   when used in a <a href="datatypes.html#Coding">Coding</a> --></li>
- <li>Удобство в использовании кодов тесно связано с качеством их определений. Хотя наличие определения для каждого концепта и не обязательно, СЛЕДУЕТ приводить хорошее определение. При отсутствии хоть какого-то определения с концептом не ассоциируется никакое формальное значение<!-- The usability of the codes is closely linked to the quality of the definitions. 
-   Although a definition is not required for each concept, a good definition SHOULD be provided. In the absence of any definition, there is no formal meaning associated with the concept --></li>
- <li>Если концепты содержат другие концепты, тогда вложенные концепты "относятся к" содержащим их концептам (между такими кодами имеется взаимосвязь типа "является" ("is-a")).<!-- If concepts contain other concepts, then the contained concepts are "subsumed" by 
-   the containing concept (there is an "is-a" relationship between the codes). --></li>
-  <li>Абстрактный концепт ДОЛЖЕН иметь вложенные концепты<!-- An abstract concept SHALL have contained concepts --></li>
-  <li>Набор заданных кодов НЕ ДОЛЖЕН содержать дубликаты<!-- The set of codes defined SHALL not contain duplicate codes --></li>
+ <li><i>ValueSet.define.system</i> is the URI that identifies these codes 
+   when used in a <a href="datatypes.html#Coding">Coding</a></li>
+ <li>The usability of the codes is closely linked to the quality of the definitions. 
+   Although a definition is not required for each concept, a good definition SHOULD be provided. In the absence of any definition, there is no formal meaning associated with the concept</li>
+ <li>If concepts contain other concepts, then the contained concepts are "subsumed" by 
+   the containing concept (there is an "is-a" relationship between the codes).</li>
+  <li>An abstract concept SHALL have contained concepts</li>
+  <li>The set of codes defined SHALL not contain duplicate codes</li>
 </ul>
 <p>
-Примечание: Наборы значений вводят собственные коды только в том случае, когда они не определены где-то еще, например коды, определенные в SNOMED CT, LOINC, RxNorm и др. Для создания набора значений, состоящего из кодов других кодовых систем, см. "компоновку" ниже.<!-- Value sets only define their own codes when they are not defined elsewhere,
+Note: Value sets only define their own codes when they are not defined elsewhere,
 such as codes defined in SNOMED CT, LOINC, RxNorm etc. To specify a value set that
-is made up of codes from other code systems, see "compose" below.  -->
+is made up of codes from other code systems, see "compose" below. 
 </p>
 
 <a name="versioning"> </a>
-<h3>Контроль версий кодовых систем<!-- Versioning Code Systems --></h3>
+<h3>Versioning Code Systems</h3>
 <p>
-Большинство кодовых систем развиваются со временем вследствие исправлений, уточнений и изменений в подходе, лежащих в основе знаний или реальном мире.
-Если эти изменения ведут к существенному изменению смысла существующих кодов, тогда интерпретация кодовой системы становится зависимой от ее версии. Это значительно усложняет реализацию, основанную на такой кодовой системе, до того момента, когда надежность уже не может быть обеспечена, поэтому этого СЛЕДУЕТ избегать, насколько это возможно. Более предпочтительно назначать новый идентификатор кодовой системе, когда какие-то концепты в ней получают существенное изменение в смысле (например немецкая кодовая система классификации диагнозов ICD10GM2009 имеет другое значение элемента <i>system</i> по сравнению с ICD10GM2008), однако и это тоже может оказать значительное влияние на реализацию, поэтому часто непрактично - к примеру,  <a href="http://loinc.org">LOINC</a> переопределяла значение своих кодов в прошлом, однако по-прежнему имеет единственный идентификатор.
-<!-- Most code systems evolve over time, due to corrections, clarifications, and changes to approach or underlying knowledge or reality.
+Most code systems evolve over time, due to corrections, clarifications, and changes to approach or underlying knowledge or reality.
 If these changes lead to the meanings of existing codes changing significantly, then the interpretation of the code system becomes
 version dependent. This significantly complicates implementation based on the code system, to the point where it is not clear that
 safety can be assured, so SHOULD be avoided whenever possible. It is preferable to assign a new identifier to a code system 
 when any concepts in it have a significant change in meaning (for example, the German diagnostic classification code system 
 ICD10GM2009 has a different <i>system</i> to ICD10GM2008), but this also can have substantial impact on implementation, so 
 is often not practical - for instance, <a href="http://loinc.org">LOINC</a> has re-defined the meaning of codes in the past,
-but there is only one identifier for LOINC.  -->
+but there is only one identifier for LOINC. 
 </p>
 <p>
-По этой причине кодовая система МОЖЕТ указать идентификатор версии в <i>ValueSet.define.version</i>. Конкретный идентификатор версии СЛЕДУЕТ указывать всякий раз, когда имеются потенциально существенные изменения смысла, распространяющиеся на несколько релизов кодовой системы.
-К формату идентификатора версии нет какого-то определенного требования, однако HL7 рекомендует подход, основанный на дате.
-<!-- For this reason, a code system MAY provide a version identifer in <i>ValueSet.define.version</i>. The version specific identifier SHOULD be 
+For this reason, a code system MAY provide a version identifer in <i>ValueSet.define.version</i>. The version specific identifier SHOULD be 
 provided whenever there are potentially significant changes in meaning across multiple releases of a code system.
-There is no particular format requirement for the version identifier, though HL7 recommends a date based approach.  -->
+There is no particular format requirement for the version identifier, though HL7 recommends a date based approach. 
 </p>
 <p>
-Когда определение кодовой системы в наборе значений включает идентификатор версии, этот идентификатор версии СЛЕДУЕТ использовать в экземплярах <a href="datatypes.html#coding">Coding</a>, которые ссылаются на эту кодовую систему.
-<!-- When the value set definition of a code system includes a version identifier, the version identifier SHOULD be 
-used in <a href="datatypes.html#coding">Coding</a> instances that refer to the code system.  -->
+When the value set definition of a code system includes a version identifier, the version identifier SHOULD be 
+used in <a href="datatypes.html#coding">Coding</a> instances that refer to the code system. 
 </p>
 <p>
-Там, где терминология не определяет четко, какую строку следует использовать для идентификации версий кодовой системы, в качестве даты версии рекомендуется использовать дату (выраженную в FHIR-формате даты), когда эта версия была официально опубликована.
-<!-- Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date. -->
+Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.
 </p>
 
 
 
-<h2>Наборы значений, включающие коды, определенные в другом месте<!-- Value Sets that include codes defined elsewhere --></h2>
+<h2>Value Sets that include codes defined elsewhere</h2>
 
 <p>
-Наборы значений, которые включают коды, определенные в каких-то других кодовых системах, чаще всего применяют, когда имеют дело с большими общепринятыми кодовыми системами, например SNOMED CT, LOINC, RxNorm или различные IETF-наборы значений, включая естественный язык. Набор значений может быть простым перечнем включенных кодов либо некоторым обобщающим критерием выборки, использующим средства, предоставленные кодовой системой.
-<!-- Value sets that include codes defined in some other code system are most useful when 
+Value sets that include codes defined in some other code system are most useful when 
 dealing with large general code systems such as SNOMED CT, LOINC, RxNorm or various IETF code sets 
 including human language. The value set can be a simple list of included codes or it can be some 
-kind of general selection criteria using the facilities provided by the code system.  -->
+kind of general selection criteria using the facilities provided by the code system. 
 </p>
 <ul>
- <li>В исключающем или включающем критерии пересекаются различные фильтры и выборки концептов. Все заданные условия ДОЛЖНЫ выполняться.<!-- Within an include or exclude criterion, multiple filters and concept selections are intersected. All the 
-   conditions specified SHALL be true. --></li>
- <li>Набор значений всегда включает все коды, которые он определяет сам. Типичное использование - когда включение набора кодов откуда-то еще и добавление нескольких дополнительных кодов для случаев, не покрытых включенными кодами<!-- The value set always includes any codes it defines itself. A typical use for this
+ <li>Within an include or exclude criterion, multiple filters and concept selections are intersected. All the 
+   conditions specified SHALL be true.</li>
+ <li>The value set always includes any codes it defines itself. A typical use for this
     is when including a set of codes from elsewhere, and adding a few additional codes to cover
-    cases not catered to by the included codes --></li>
- <li>Оператор включение состоит из любых перечисленных кодов и любых кодов, которые соответствуют критериям фильтра<!-- An include statement consists of any enumerated codes and any codes that meet the filter criteria --></li>
- <li>Если ссылка на систему указывает не на конкретную версию и присутствуют фильтры, тогда содержимое набора значений открыто и меняется со временем вместе с обновлениями лежащих в основе кодовых систем<!-- If the system reference is not version specific and filters are present, then the contents of the value set are open and change 
-    over time as the underlying code systems are updated --></li>
- <li>Содержимое набора значений компонуется путем объединения всего импорта и операторов включения, а затем удалением всех 'исключенных' кодов.<!-- The content of the value set is constructed by unioning of all the import and include statements and then 
-  eliminating any of the 'excluded' codes. --></li>
- <li>Набор значений должен что-то делать. Он не может просто включать существующий набор значений без включения дополнительных данных или исключения части содержимого<!-- A value set needs to do something.  It can't simply include an existing value set without 
-   also including additional content or excluding content --></li>
+    cases not catered to by the included codes</li>
+ <li>An include statement consists of any enumerated codes and any codes that meet the filter criteria</li>
+ <li>If the system reference is not version specific and filters are present, then the contents of the value set are open and change 
+    over time as the underlying code systems are updated</li>
+ <li>The content of the value set is constructed by unioning of all the import and include statements and then 
+  eliminating any of the 'excluded' codes.</li>
+ <li>A value set needs to do something.  It can't simply include an existing value set without 
+   also including additional content or excluding content</li>
 <!--
  <li>The point of declaring that this value set restricts another is that this value set can then replace the other in a profile 
 without changing the meaning. Declaring this explicitly allows profile tools to reason about the relationship without having 
 to compute the relationship, which might not be possible for a profile tool</li>
 -->
- <li>Использование фильтров по свойствам возможно только там, где лежащая в основе кодовая система задает соответствующие свойства. Обратите внимание, что в некоторых случаях лежащая в основе кодовая система определяет логические концепты, а не синтаксис для их применения. В таких случаях буквальные определения могут предоставляться третьей стороной. См. ниже примечания к их использованию в распространенных кодовых системах<!-- Using the property filters is only possible where the underlying code system defines 
+ <li>Using the property filters is only possible where the underlying code system defines 
   appropriate properties. Note that in some cases, the underlying code system defines the 
   logical concepts but not the syntax for exercising them. In such cases, the literal 
-  definitions may be provided by a third party. See below for notes about its use against common code systems --></li>
- <li>Наборы значений могут включать абстрактные коды - это коды, обозначенные лежащей в основе кодовой системой как не для использования в качестве реального концепта. Такие абстрактные коды, как правило, используются в качестве механизма группировки/поиска и могут быть включены либо перечислением, либо с помощью фильтра<!-- Value sets may include abstract codes - that is, codes designated by the underlying code system as 
+  definitions may be provided by a third party. See below for notes about its use against common code systems</li>
+ <li>Value sets may include abstract codes - that is, codes designated by the underlying code system as 
    not for use as a real concept. These abstract codes are typically used as a grouping/searching mechanism,
-   and can be included either by enumerating them, or by using a filter --></li>
+   and can be included either by enumerating them, or by using a filter</li>
 </ul>
 <p>
-Когда набор значений перечисляет коды, он также может задавать альтернативные значения для отображения этих кодов, которые должны будут использоваться, как бы этот набор значений ни расширялся и где бы ни использовался в пользовательском интерфейсе. Эта возможность предоставлена для покрытия следующих обстоятельств:
-<!-- When a value set enumerates codes, it is also able to define an alternative display for 
+When a value set enumerates codes, it is also able to define an alternative display for 
 the code that is to be used where ever the value set is expanded and used in a UI. This 
-facility is provided to cover the following circumstances: -->
+facility is provided to cover the following circumstances:
 </p>
 <ul>
- <li>Система, которая определяет код или выражение, не предоставляет значения для отображения для этого кода (или всех кодов)<!-- The system that defines the code or expression doesn't provide a display for this code (or any codes) --></li>
- <li>Система, которая определяет код или выражение, предоставляет на выбор несколько значений для отображения<!-- The system that defines the code or expression defines multiple choices for display --></li>
- <li>Система предлагает очень длинное название для отображения, в котором нет необходимости или которое не подходит в контексте данного набора значений (например название для отображения "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" для LOINC-кода 48991-4, когда набор значений включает только Glucose mass/vol в кодах serum/plasma). С удлинением названий для отображения эта возможность становится все более и более актуальной <!-- The system provides a very long display name that is unnecssary or innappropriate in the context of this value set (e.g. a display name of "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" for LOINC code 48991-4, when the value set only includes Glucose mass/vol in serum/plasma codes). As the display names get longer, this becomes more important --></li>
+ <li>The system that defines the code or expression doesn't provide a display for this code (or any codes)</li>
+ <li>The system that defines the code or expression defines multiple choices for display</li>
+ <li>The system provides a very long display name that is unnecssary or innappropriate in the context of this value set (e.g. a display name of "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" for LOINC code 48991-4, when the value set only includes Glucose mass/vol in serum/plasma codes). As the display names get longer, this becomes more important</li>
 </ul>
 <p>
-Обратите внимание, что необходимо соблюдать осторожность, чтобы избежать "изменения смысла" концепта что он значит что-то другое, чем явное определение концепта в лежащей в основе системе (например для случая выше это будет использование значения для отображения "Glucose Concentration at 10pm"). 
-По этой причине в некоторых контекстах использования не разрешается ассоциировать значение для отображения с некоторыми кодами.
-<!-- Note that care must be taken in order to avoid "changing the meaning" of the concept by
+Note that care must be taken in order to avoid "changing the meaning" of the concept by
 implying that it means something other than the explicit definition of the concept in the
 underlying system (e.g. in the case above, using a display "Glucose Concentration at 10pm"). 
-For this reason, some contexts of use do not allow a display to be associated with a specific code. -->
+For this reason, some contexts of use do not allow a display to be associated with a specific code.
 </p>
 <p>
-Название кода для отображения в наборе значений используется только в пользовательском интерфейсе. Значение для отображения в <a href="datatypes.html#Coding">Coding</a> необходимо взять в основной системе, даже если на набор значений есть явная ссылка в кодинге. Альтернативное значение для отображения, указанное в наборе значений, попадет в <a href="datatypes.html#CodeableConcept">CodeableConcept</a>.text.
-<!-- The display name for the code in the value set is only used in the UI. The display in a 
+The display name for the code in the value set is only used in the UI. The display in a 
 a <a href="datatypes.html#Coding">Coding</a> must be taken from the underlying system, 
 even if a value set is referenced explicitly in the Coding. The alternative display 
-specified in the value set would go in <a href="datatypes.html#CodeableConcept">CodeableConcept</a>.text. -->
+specified in the value set would go in <a href="datatypes.html#CodeableConcept">CodeableConcept</a>.text.
 </p>
  
-<h3>Примечание к кодовым системам<!-- Code systems Note --></h3>
+<h3>Code systems Note</h3>
 <p>
-Как используются фильтры с различными кодовыми системами:
-<!-- How filters are used with various code systems: -->
+How filters are used with various code systems:
 </p>
 <ul>
- <li>LOINC: См. <a href="loinc.html">Использование LOINC в FHIR</a></li>
- <li>SNOMED-CT: См. <a href="snomedct.html">Использование SNOMED CT в FHIR</a></li>
- <li>RxNorm: См. <a href="rxnorm.html">Использование RxNorm в FHIR</a></li>
+ <li>LOINC: See <a href="loinc.html">Using LOINC with FHIR</a></li>
+ <li>SNOMED-CT: See <a href="snomedct.html">Using SNOMED CT with FHIR</a></li>
+ <li>RxNorm: See <a href="rxnorm.html">Using RxNorm with FHIR</a></li>
 </ul>
 <table class="grid">
  <tr>
-   <th>Система<!-- System --></th>    
-   <th>Имя свойства<!-- Property Name --></th> 
-   <th>Операция<!-- Operation --></th> 
-   <th>Значение<!-- Value --></th>        
-   <th>Определение<!-- Definition --></th>
-   <th>Пример<!-- Example --></th>
+   <th>System</th>    
+   <th>Property Name</th> 
+   <th>Operation</th> 
+   <th>Value</th>        
+   <th>Definition</th>
+   <th>Example</th>
  </tr>
  <tr>
    <td colspan="4"><hr/></td>
@@ -160,27 +146,22 @@ specified in the value set would go in <a href="datatypes.html#CodeableConcept">
    <td>concept</td>
    <td>is-a</td>       
    <td>[code]</td>    
-   <td>Включает все коды, связанные с концептом, идентифицируемом этим значением, переходным отношением "является" (transitive is-a relationship)<!-- Includes all codes that have a transitive is-a relationship with the concept identified by the value --></td> 
+   <td>Includes all codes that have a transitive is-a relationship with the concept identified by the value</td> 
    <td><a href="valueset-relatedperson-relationshiptype.html">Relationship Type</a></td>
  </tr>
  
 </table>
 
 <a name="expansion"> </a>
-<h2>Расширение набора значений<!-- Value Set Expansion --></h2>
+<h2>Value Set Expansion</h2>
 <p>
-Набор значений может быть "расширен", при этом определение этого набора значений используется для создания простой коллекции кодов, подходящих для использования при вводе данных или валидации. Это особенно полезно, когда набор значений включает всех потомков кода или набор кодов по фильтру.<!-- A value set can be "expanded", where the definition of the value set is 
+A value set can be "expanded", where the definition of the value set is 
 used to create a simple collection of codes suitable for use for data 
 entry or validation. This is most useful when a value set includes 
-all the children of a code or a set of codes by filter. -->
+all the children of a code or a set of codes by filter.
 </p>
 <p>
-Ресурс, который представляет расширение набора значений, включает 
-такие же идентификационные данные, что и определение этого набора значений,
- и МОЖЕТ включать определение этого набора значений (элементы <i>define</i> и <i>compose</i>). Кроме того, у него есть элемент <i>expansion</i>, который содержит
- перечень кодов, которые составляют расширение набора значений. Если это
- иерархическое расширение (коды содержат другие концепты), нет никакой скрытой логической взаимосвязи между ними; это руководство для помощи пользователям в навигации по выбору кодов, которые могут относиться к логическим определениям кодов или концептов.
-<!-- A resource that represents a value set expansion includes the same
+A resource that represents a value set expansion includes the same
 identification details as the definition of the value set, and MAY
 include the definition of the value set (<i>define</i> and <i>compose</i>
 elements). In addition it has a <i>expansion</i> element which contains
@@ -188,39 +169,35 @@ the list of codes that constitute the value set expansion. If the
 expansion is heirarchical (codes contain other concepts), there 
 is no implication about the logical relationship between them; this 
 is guidance for helping human user navigate the choice of codes that 
-may or may not relate to the logical definitions of the codes or concepts. -->
+may or may not relate to the logical definitions of the codes or concepts.
 </p>
 <p>
-В общем, при расширении набора значений следует придерживаться следующего алгоритма:
-<!-- In general, the following process should be followed when 
-expanding a value set: -->
+In general, the following process should be followed when 
+expanding a value set:
 </p>
 <ul>
- <li>для каждого <i>compose.import</i> найти набор значений, на который он ссылается, расширить его и добавить его в итоговый набор<!-- for each <i>compose.import</i>, find the referenced value set, expand that, and add it to the result set --></li>
- <li>для каждого <i>compose.include</i> установить корректную версию кодовой системы, затем:<!-- for each <i>compose.include</i>, identify the correct version of the code system, and then: -->
+ <li>for each <i>compose.import</i>, find the referenced value set, expand that, and add it to the result set</li>
+ <li>for each <i>compose.include</i>, identify the correct version of the code system, and then:
   <ul>
-   <li>если в ней нет кодов или фильтров, добавьте каждый код из кодовой системы в итоговый набор<!-- if there is no codes or filters, add every code in the code system to the result set --></li>
-   <li>если перечислены коды, добавьте их в итоговый набор<!-- if codes are listed, add them to the result set --></li>
-   <li>если есть фильтры, обработайте их в порядке (как описано выше) и добавьте пересечение их результатов к итоговому набору<!-- if any filters are present, process them in order (as explained above), and add the intersection of their results to the result set --></li>
+   <li>if there is no codes or filters, add every code in the code system to the result set</li>
+   <li>if codes are listed, add them to the result set</li>
+   <li>if any filters are present, process them in order (as explained above), and add the intersection of their results to the result set</li>
   </ul>
  </li>
- <li>для каждого <i>compose.exclude</i> следуйте тому же самому алгоритму, что и для <i>compose.include</i>, но вместо добавления удалите коды из итогового набора<!-- for each <i>compose.exclude</i>, follow the same process as for <i>compose.include</i>, but remove any codes from the result set, instead of adding them --></li>
- <li>добавьте коды из <i>define</i> в итоговый набор<!-- add any codes in the <i>define</i> to the result set --></li>
+ <li>for each <i>compose.exclude</i>, follow the same process as for <i>compose.include</i>, but remove any codes from the result set, instead of adding them</li>
+ <li>add any codes in the <i>define</i> to the result set</li>
 </ul>
 <p>
-"Итоговый набор" после этого будет представлен в <i>расширении</i>. Обратите внимание, что структура расширения по своей природе упорядочена, а также 
-обеспечивает поддержку иерархического дерева элементов. Данная спецификация не фиксирует значение использования ни первого, ни второго, и описанный концептуальный подход не следует понимать как запрещение других подходов к реализации в этом отношении. Для запроса сервера на выполнение этого расширения используется <a href="valueset-operations.html">defined operation</a>.
-<!-- The "result set" is then represented in <i>expansion</i>. Note that the expansion structure is inherently ordered, and 
+The "result set" is then represented in <i>expansion</i>. Note that the expansion structure is inherently ordered, and 
 also provides support for a hierarchical tree of items. This specification does not fix the meaning of use of either
 of these, and the conceptual approach described should not be understood to prohibit any implementation approach in
-these regards. There is a <a href="valueset-operations.html">defined operation</a> to ask a server to perform this expansion. -->
+these regards. There is a <a href="valueset-operations.html">defined operation</a> to ask a server to perform this expansion.
 </p>
 <p>
-Расширение может включать записи в расширение, которое служить только в целях произвольной группировки, чтобы упростить для человека использование списка. Такие элементы не имеют системы и кода и должны быть помечены как абстрактные. Обратите внимание, что определение и составление набора значений не предлагают поддержки в определении этого, но это не исключает серверы от использования расширений или других сообщений для внесения таких групп в особенности реализации. 
-<!-- An expansion may include entries in the expansion that only serve an arbitrary grouping purpose, to make it easier
+An expansion may include entries in the expansion that only serve an arbitrary grouping purpose, to make it easier
 for a human to use the list. These entries have no system or code, and must be marked as abstract. Note that the 
 value set define and compose offer no support for defining these, but this does not exclude servers from using
-extensions or other knowledge to introduce such groups as an implementation feature. --> 
+extensions or other knowledge to introduce such groups as an implementation feature. 
 </p>
 
 

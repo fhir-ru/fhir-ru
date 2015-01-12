@@ -86,13 +86,13 @@ framework</a>. Further useful information may be found in: -->
 
 <h4>Внешние кодовые системы<!-- External Code Systems --></h4>
 <p>
-Чтобы использоваться в наборе значений, код должен быть где-то определен. Они могут быть определены в рамках <a href="valueset.html#define">inline code system definition</a> либо где-то ещё, и затем использоваться в наборе значений ссылаясь на корректное пространство имён. Документация FHIR определяет <a href="terminology-systems.html">ряд пространств имён</a> для часто встречающихся кодовых систем и описывает, как некоторые из них работают с FHIR (например <a href="snomed.html">SNOMED-CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorml.html">RxNorm</a>).
+Чтобы использоваться в наборе значений, код должен быть где-то определен. Они могут быть определены в рамках <a href="valueset.html#define">inline code system definition</a> либо где-то ещё, и затем использоваться в наборе значений ссылаясь на корректное пространство имён. Документация FHIR определяет <a href="terminology-systems.html">ряд пространств имён</a> для часто встречающихся кодовых систем и описывает, как некоторые из них работают с FHIR (например <a href="snomedct.html">SNOMED-CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>).
 Эти кодовые системы часто большие и имеют много определенных внутри свойств, являющихся частью их формальных описаний. Встроенные кодовые системы (Inline code systems) в ресурсах типа ValueSet не являются подходящим способом для определения этих кодовых систем; FHIR не предоставляет формального представления вообще. Вместо этого эти справочники предлагают свои собственные форматы распределения, и предполагается, что справочники известны терминологическому серверу и являются внешними по отношению к нему.
 <!-- In order to be used with a value set, a code must be defined somewhere. They can be defined as part of 
 an <a href="valueset.html#define">inline code system definition</a>, or they can be defined elsewhere, 
 and then used in a value set by quoting the correct namespace. The FHIR specification defines a <a href="terminology-systems.html">set of 
 namespaces</a> for commonly encountered code systems, and defines how some work with FHIR (e.g. 
-<a href="snomed.html">SNOMED-CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorml.html">RxNorm</a>). 
+<a href="snomedct.html">SNOMED-CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>). 
 These code systems are often large, and have many internally defined properties that are part of their 
 formal definitions. Inline code systems in Value Set resources are not an appropriate way to define 
 these code systems; FHIR does not provide a formal representation at all. Instead, these terminologies
@@ -307,6 +307,11 @@ purposes. The client passes the server the following information: -->
  <li>Является ли этот код абстрактным или нет <!-- Whether the code is abstract or not --></li>
  <li>Другие обозначения для этого кода (значение с необязательным указанием языка и/или применения) <!-- Other designations for the code (a value, optionally with language and/or a use code) --></li>
 </ul>
+<p>
+The recommended display to the code is a text representation of the code 
+that the terminology server recommends as the default choice to show 
+to the user, though a  client may choose out of the other designations if it has reason to.
+</p>
 
 <div class="example">
 <p><b>Примеры</b></p>
@@ -410,7 +415,13 @@ display for the concept for use in a UI context. -->
 whether any of the codes are valid against the value set, and also check whether 
 multiple codings are allowed and/or the codings provided are consistent with each other.  -->
 </p>
-
+<p>
+Every code system has an implicit value set that is "all the concepts defined
+in the code system". For some code systems, these value set URIs are defined 
+in advance (e.g. for <a href="loinc.html">LOINC</a>, it's <code>http://loinc.org/vs</code>). 
+However for some code systems, they are not known. Clients can refer to these implicit 
+value sets by providing the URI for the code system itself. 
+</p>
 <div class="example">
 <p><b>Примеры</b></p>
 <p>
@@ -552,6 +563,10 @@ latency effects. In this case, the client passes the server the following inform
  <li>(Необязательно) дата, когда развёртывание должно быть выполнено (обычно это текущая дата/время, но есть обстоятельства, где это не подходит)<!--  (Optionally) a date at which the expansion should be evaluated (usually, this is the current date/time, but there are circumstances where that is not appropriate) --></li>
 </ul>
 <p>
+Code system URIs may be used to refer to the implicit value set that includes
+all the codes in the code system  (as described for the validation operation).
+</p>
+<p>
 Сервер возвращает ряд параметров, по одному на каждый отправленный элемент, 
 каждый из которых имеет результат, сообщение и значение для отображения (
 такое же, как и для операции $validate).
@@ -660,27 +675,32 @@ HTTP/1.1 200 OK
 Клиент может запросить сервер перевести концепт из одного набора значений в другой. Обычно 
 это используется для перевода между кодовыми системами (например из LOINC в SNOMED CT или 
 из v3-кода в v2-код). Клиент вызывает <a href="conceptmap-operations.html#translate">операцию translate</a> и 
-передает 3 параметра:
+передает следующие параметры:
 <!-- A client can ask a server to translate a concept from one value set to another. Typically, this 
 is used to translate between code systems (e.g. from LOINC to SNOMED CT, or from a v3 code to 
-a v2 code). The client calls <a href="conceptmap-operations.html#translate">the translate operation</a> and passes 3 parameters: -->
+a v2 code). The client calls <a href="conceptmap-operations.html#translate">the translate operation</a> and passes the following parameters: -->
 </p>
 <ul>
-  <li>код+система, Кодинг, или CodeableConcept<!-- a code+system, Coding, or CodeableConcept --></li>
-  <li>набор значений-источник <!-- the value set for the context of the source --> </li>
-  <li>набора значений-назначение  <!-- the value set for the destination --></li>
+  <li>код+система, Кодинг, или CodeableConcept<!-- A code+system, Coding, or CodeableConcept --></li>
+  <li>A Concept Map to use for the translation</li>
+  <li>набор значений-источник <!-- The value set for the context of the source --> </li>
+  <li>набора значений-назначение  <!-- The value set for the destination --></li>
 </ul>
 <p>
-<i>Примечание для рецензентов/реализаторов: должны ли мы разрешить указание конкретной таблицы соответствия концептов для перевода?
-<!-- Note to reviewers/implementers: do we need to allow a specific conceptmap to be specified for a translation? --></i> 
-</p>
-<p>
+The client passes either a concept map, or the value sets for the source and destination context.
+If there is no concept map, then the server may determine the appropriate map to use from 
+context provided in the value sets.
 Если нет особого контекста, подходящими наборами значений будут наборы значений 
 для всей кодовой системы, к которой идет обращение (например из  http://snomed.info/sct в http://loinc.org/vs). 
 Сервер выполняет перевод как может, на основе карт соответствия концептов, которые ему известны.
-<!-- If there is no particular context, the appropriate value sets would be the value sets for the 
+<!-- The client passes either a concept map, or the value sets for the source and destination context.
+If there is no concept map, then the server may determine the appropriate map to use from 
+context provided in the value sets.
+If there is no particular context, the appropriate value sets would be the value sets for the 
 entire coding system at question (e.g. from http://snomed.info/sct to http://loinc.org/vs).
 The server performs the translation as it is able based on the concept maps that it knows about. -->
+If no single mapping can be determined then the 
+server returns an error. Some servers may require a concept map to use for the translation.
 </p>
 
 <div class="example">

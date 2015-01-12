@@ -18,8 +18,6 @@
             <designation>
                 <language value="nl"/>
                 <value value="gesteriliseerd"/>
-				<language value="ru"/>
-				<value value="Кастрированное"/>
             </designation>
         </concept>
         <concept>
@@ -29,8 +27,6 @@
             <designation>
                 <language value="nl"/>
                 <value value="intact"/>
-				<language value="ru"/>
-				<value value="Некастрированное"/>
             </designation>
         </concept>
     </define>

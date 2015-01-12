@@ -16,8 +16,6 @@
             <designation>
                 <language value="nl"/>
                 <value value="Duitse herdershond"/>
-				<language value="ru"/>
-				<value value="Немецкая овчарка"/>
             </designation>
         </concept>
         <concept>
@@ -26,8 +24,6 @@
             <designation>
                 <language value="nl"/>
                 <value value="Ierse terrier"/>
-				<language value="ru"/>
-				<value value="Ирландский терьер"/>
             </designation>
         </concept>
         <concept>
@@ -36,8 +32,6 @@
             <designation>
                 <language value="nl"/>
                 <value value="Tibetaanse mastiff"/>
-				<language value="ru"/>
-				<value value="Тибетский мастифф"/>
             </designation>
         </concept>
         <concept>
@@ -46,8 +40,6 @@
             <designation>
                 <language value="nl"/>
                 <value value="Golden Retriever"/>
-				<language value="ru"/>
-				<value value="Золотистый ретривер"/>
             </designation>
         </concept>
     </define>
