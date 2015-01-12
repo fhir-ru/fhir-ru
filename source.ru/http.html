@@ -295,11 +295,11 @@ the note on <a href="#transactional-integrity">transactional integrity</a> for d
 <!-- Common HTTP Status codes returned on FHIR-related errors (in addition to normal HTTP errors related to security, header and content type negotiation issues): -->
 </p>
 <ul>
- <li><b>400 Bad Request</b> - resource could not be parsed or failed basic FHIR validation rules</li>
- <li><b>404 Not Found</b> - resource type not supported, or not a FHIR end point</li>
- <li><b>405 Method Not allowed</b> - the resource did not exist prior to the update, and the serer does not allow client defined ids</li>
- <li><b>409/412</b> - version conflict management - see above</li> 
- <li><b>422 Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="operationoutcome.html">OperationOutcome</a> resource providing additional detail</li>
+ <li><b>400 Bad Request</b> - невозможно выполнить синтаксический разбор ресурса, либо ресурс не соответствует основным правилам валидации FHIR<!-- resource could not be parsed or failed basic FHIR validation rules --></li>
+ <li><b>404 Not Found</b> - тип ресурса не поддерживается, либо это не точка взаимодействия FHIR<!-- resource type not supported, or not a FHIR end point --></li>
+ <li><b>405 Method Not allowed</b> - ресурс не существует на момент обновления, и сервер не разрешает определенные клиентом идентификаторы <!-- the resource did not exist prior to the update, and the serer does not allow client defined ids --></li>
+ <li><b>409/412</b> - <!-- version conflict management - see above --></li> 
+ <li><b>422 Unprocessable Entity</b> - предложенный ресурс нарушает применимые профили FHIR или бизнес-правила сервера. Эта ошибка может сопровождаться ресурсом <a href="operationoutcome.html">OperationOutcome</a>, предоставляющим дополнительные подробности<!-- the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="operationoutcome.html">OperationOutcome</a> resource providing additional detail --></li>
 </ul>
 <p>
 Примечание: сервера МОГУТ выбрать сохранять XML комментарии, команды обработки и форматирование или пробельные символы в JSON, когда принимают обновления, но не обязаны это делать. Возможно потребуется рассмотреть влияние этого на электронные цифровые подписи.
