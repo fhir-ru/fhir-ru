@@ -7535,7 +7535,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
-    <Cell><Data ss:Type="String">????????????</Data></Cell>
+    <Cell><Data ss:Type="String">замена</Data></Cell>
     <Cell><Data ss:Type="String">vervangen</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
@@ -7548,7 +7548,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">????????????</Data></Cell>
+    <Cell><Data ss:Type="String">ссылка</Data></Cell>
     <Cell><Data ss:Type="String">verwijzing</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
@@ -7561,7 +7561,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">&#160;???????????? ??????????</Data></Cell>
+    <Cell><Data ss:Type="String">см. также</Data></Cell>
     <Cell><Data ss:Type="String">zie ook</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">

@@ -13617,6 +13617,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"><Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font></ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s165"><Data ss:Type="String">official</Data></Cell>
@@ -13628,6 +13629,7 @@
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s168"/>
+    <Cell><Data ss:Type="String">официальное</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s169"><Data ss:Type="String">anonymous</Data></Cell>
@@ -13639,6 +13641,7 @@
     <Cell ss:StyleID="s157"/>
     <Cell ss:StyleID="s157"/>
     <Cell ss:StyleID="s171"/>
+    <Cell><Data ss:Type="String">анонимное</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s169"/>
@@ -14247,6 +14250,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"><Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font></ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s165"><Data ss:Type="String">official</Data></Cell>
@@ -14258,6 +14262,7 @@
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s168"/>
+    <Cell><Data ss:Type="String">официальное</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s169"><Data ss:Type="String">anonymous</Data></Cell>
@@ -14269,6 +14274,7 @@
     <Cell ss:StyleID="s157"/>
     <Cell ss:StyleID="s157"/>
     <Cell ss:StyleID="s171"/>
+    <Cell><Data ss:Type="String">анонимное</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s169"><Data ss:Type="String">maiden</Data></Cell>
@@ -14280,6 +14286,7 @@
     <Cell ss:StyleID="s157"/>
     <Cell ss:StyleID="s157"/>
     <Cell ss:StyleID="s171"/>
+    <Cell><Data ss:Type="String">девичье</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s169"/>

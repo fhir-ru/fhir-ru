@@ -7168,6 +7168,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s138"><Data ss:Type="String">codesystem</Data></Cell>
@@ -7179,6 +7180,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">кодовая система</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">identifier</Data></Cell>
@@ -7190,6 +7192,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">идентификатор</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">root</Data></Cell>
@@ -7201,6 +7204,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">корень</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>
@@ -7837,6 +7841,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s138"><Data ss:Type="String">proposed</Data></Cell>
@@ -7848,6 +7853,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">предложена</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">active</Data></Cell>
@@ -7859,6 +7865,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">активная</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">retired</Data></Cell>
@@ -7870,6 +7877,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">устарела</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>
@@ -8506,6 +8514,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s138"><Data ss:Type="String">oid</Data></Cell>
@@ -8550,6 +8559,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">другой</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>

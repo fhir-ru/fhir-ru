@@ -7268,6 +7268,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s138"><Data ss:Type="String">person</Data></Cell>
@@ -7279,6 +7280,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Человек</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">animal</Data></Cell>
@@ -7290,6 +7292,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Животное</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">practitioner</Data></Cell>
@@ -7301,6 +7304,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Исполнитель</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">device</Data></Cell>
@@ -7312,6 +7316,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Устройство</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">medication</Data></Cell>
@@ -7323,6 +7328,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Медикамент</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">substance</Data></Cell>
@@ -7334,6 +7340,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Вещество</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>
