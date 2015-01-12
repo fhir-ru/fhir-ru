@@ -7301,7 +7301,6 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113000"><Data
@@ -7314,7 +7313,6 @@
     <Cell ss:StyleID="s141"/>
     <Cell ss:StyleID="s141"/>
     <Cell ss:StyleID="s155"/>
-    <Cell><Data ss:Type="String">Представляющий интерес</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113001"><Data
@@ -7327,7 +7325,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Отклонено по соображениям качества</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113002"><Data
@@ -7340,7 +7337,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для направившего провайдера</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113003"><Data
@@ -7351,7 +7347,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для хирургии</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113004"><Data
@@ -7362,7 +7357,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для преподавания</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113005"><Data
@@ -7373,7 +7367,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для конференции</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113006"><Data
@@ -7384,7 +7377,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для терапии</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113007"><Data
@@ -7395,7 +7387,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для пациента</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113008"><Data
@@ -7406,7 +7397,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для экспертной оценки</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113009"><Data
@@ -7417,7 +7407,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для исследований</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113010"><Data
@@ -7428,7 +7417,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Проблема качества</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113013"><Data
@@ -7439,7 +7427,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Лучшее в наборе</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113018"><Data
@@ -7450,7 +7437,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для печати</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113020"><Data
@@ -7461,7 +7447,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для вложения в отчет</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113021"><Data
@@ -7472,7 +7457,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Для судебного разбирательства</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113030"><Data
@@ -7483,7 +7467,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Манифест</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113031"><Data
@@ -7494,7 +7477,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Подписанный манифест</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113032"><Data
@@ -7505,7 +7487,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Полностью учебное содержание</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113033"><Data
@@ -7516,7 +7497,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Подписанное полностью учебное содержание</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113034"><Data
@@ -7527,7 +7507,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Полный комплект содержимого</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113035"><Data
@@ -7538,7 +7517,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Подписанный полный комплект содержимого</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113036"><Data
@@ -7549,7 +7527,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Группа кадров для отображения</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113037"><Data
@@ -7560,7 +7537,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Отклонено по соображениям безопасности пациента</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113038"><Data
@@ -7571,7 +7547,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Некорректная запись модальности рабочего списка</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163" ss:HRef="http://medical.nema.org/medical/dicom/current/output/chtml/part16/chapter_D.html#DCM_113039"><Data
@@ -7582,7 +7557,6 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
-    <Cell><Data ss:Type="String">Истек срок хранения данных</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s156"/>

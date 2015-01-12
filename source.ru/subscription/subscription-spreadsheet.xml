@@ -7135,7 +7135,6 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:Height="60">
     <Cell ss:StyleID="s138"><Data ss:Type="String">rest-hook</Data></Cell>
@@ -7158,7 +7157,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">вебсокет</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">email</Data></Cell>
@@ -7170,7 +7168,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">емейл</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">sms</Data></Cell>
@@ -7182,7 +7179,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">смс</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">message</Data></Cell>
@@ -7194,7 +7190,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">сообщение</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>
@@ -7809,7 +7804,6 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s138"><Data ss:Type="String">requested</Data></Cell>
@@ -7821,7 +7815,6 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
-    <Cell><Data ss:Type="String">сделан запрос</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">active</Data></Cell>
@@ -7833,7 +7826,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">активна</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">error</Data></Cell>
@@ -7845,7 +7837,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">ошибка</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">off</Data></Cell>
@@ -7857,7 +7848,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">нерабочая</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>

@@ -7936,7 +7936,6 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s143"><Data ss:Type="String">draft</Data></Cell>
@@ -7948,7 +7947,6 @@
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s144"/>
-    <Cell><Data ss:Type="String">Черновой</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">active</Data></Cell>
@@ -7960,7 +7958,6 @@
     <Cell ss:StyleID="s135"/>
     <Cell ss:StyleID="s135"/>
     <Cell ss:StyleID="s146"/>
-    <Cell><Data ss:Type="String">Активный</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell ss:StyleID="s145"><Data ss:Type="String">retired</Data></Cell>
@@ -7972,7 +7969,6 @@
     <Cell ss:StyleID="s135"/>
     <Cell ss:StyleID="s135"/>
     <Cell ss:StyleID="s146"><Data ss:Type="String">Marking an data element as &quot;retired&quot; is an assertion by the data element author/maintainer that the definition should not be used anymore (often because the author would prefer implementers use something else).  Implementers are permitted to continue to use the definition, but best practice would be to phase its use out</Data></Cell>
-    <Cell><Data ss:Type="String">Устаревший</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"/>

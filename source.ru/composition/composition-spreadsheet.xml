@@ -7429,7 +7429,6 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s138"><Data ss:Type="String">personal</Data></Cell>
@@ -7441,7 +7440,6 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
-    <Cell><Data ss:Type="String">Персональный</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">professional</Data></Cell>
@@ -7453,7 +7451,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">Профессиональный</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">legal</Data></Cell>
@@ -7465,7 +7462,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">Легальный</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">official</Data></Cell>
@@ -7477,7 +7473,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">Официальный</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>
@@ -8103,7 +8098,6 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s138"><Data ss:Type="String">preliminary</Data></Cell>
@@ -8115,7 +8109,6 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"><Data ss:Type="String">~ActStatus.active</Data></Cell>
     <Cell ss:StyleID="s139"><Data ss:Type="String">Compositions are sometimes shared prior to being finalised</Data></Cell>
-    <Cell><Data ss:Type="String">Предварительный</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">final</Data></Cell>
@@ -8127,7 +8120,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">&lt;ActStatus.completed</Data></Cell>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">Окончательный</Data></Cell>
    </Row>
    <Row ss:Height="90">
     <Cell ss:StyleID="s140"><Data ss:Type="String">appended</Data></Cell>
@@ -8139,7 +8131,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">&lt;ActStatus.completed</Data></Cell>
     <Cell ss:StyleID="s141"><Data ss:Type="String">If systems are not able to be sure whether existing information has changed or not, they should use the status &quot;amended&quot;</Data></Cell>
-    <Cell><Data ss:Type="String">С приложением</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">amended</Data></Cell>
@@ -8151,7 +8142,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">&lt;ActStatus.completed</Data></Cell>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">Исправлен</Data></Cell>
    </Row>
    <Row ss:Height="60">
     <Cell ss:StyleID="s140"><Data ss:Type="String">entered in error</Data></Cell>
@@ -8163,7 +8153,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">~ActStatus.nullified</Data></Cell>
     <Cell ss:StyleID="s141"><Data ss:Type="String">Usually this is because some major error has been detected in the workflow that created the composition or document, or the content was associated with the wrong patient/author etc.</Data></Cell>
-    <Cell><Data ss:Type="String">Внесен по ошибке</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>
