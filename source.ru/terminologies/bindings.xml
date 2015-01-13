@@ -169,7 +169,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">MessageEvent</Data></Cell>
-    <Cell><Data ss:Type="String">One of the message events defined as part of FHIR</Data></Cell>
+    <Cell><Data ss:Type="String">Одно из сообщений о событии, определенное в рамках FHIR<!-- One of the message events defined as part of FHIR --></Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">preferred</Data></Cell>
     <Cell><Data ss:Type="String">#message-events</Data></Cell>

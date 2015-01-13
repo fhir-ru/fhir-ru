@@ -967,11 +967,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A resource that describes a message that is exchanged between systems</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс, который описывает сообщение, которым обмениваются системы<!-- A resource that describes a message that is exchanged between systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The header for a message exchange that is either requesting or responding to an action.  The Reference(s) that are the subject of the action as well as other Information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Заголовок сообщения обмена, которое либо запрашивает, либо отвечает на действие. Reference(s), являющиеся субъектами этого действия, также как и другая информация, связанная с этим действием, обычно передаются в виде комплекта, в котором первым идёт экземпляр ресурса MessageHeader <!-- The header for a message exchange that is either requesting or responding to an action.  The Reference(s) that are the subject of the action as well as other Information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Many implementations are not prepared to use REST and need a messaging based infrastructure</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Многие реализации не готовы к использованию REST и требуют инфраструктуры на основе обмена сообщениями<!-- Many implementations are not prepared to use REST and need a messaging based infrastructure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7187,7 +7187,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">EventReason</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Reason for event occurrence</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Причина наступления события<!-- Reason for event occurrence --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-message-reason-encounter</Data></Cell>
@@ -7202,7 +7202,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ResponseType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The kind of response to a message</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид ответа на сообщение<!-- The kind of response to a message --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#response-code</Data></Cell>
