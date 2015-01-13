@@ -7508,6 +7508,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s138"><Data ss:Type="String">registered</Data></Cell>
@@ -7519,6 +7520,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"><Data ss:Type="String">This is used where an observation record is created before it is made as a place holder. Some times called &quot;To Follow&quot;</Data></Cell>
+    <Cell><Data ss:Type="String">Зарегистрирован</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">partial</Data></Cell>
@@ -7530,6 +7532,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Неполный</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">final</Data></Cell>
@@ -7541,6 +7544,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Окончательный</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">corrected</Data></Cell>
@@ -7552,6 +7556,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Скорректированный</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">amended</Data></Cell>
@@ -7563,6 +7568,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Исправленный</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s140"><Data ss:Type="String">appended</Data></Cell>
@@ -7574,6 +7580,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">С приложением</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">cancelled</Data></Cell>
@@ -7585,6 +7592,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Отменен</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">entered in error</Data></Cell>
@@ -7596,6 +7604,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"><Data ss:Type="String">Usually this is because the report was entered against the wrong patient</Data></Cell>
+    <Cell><Data ss:Type="String">Внесен по ошибке</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>

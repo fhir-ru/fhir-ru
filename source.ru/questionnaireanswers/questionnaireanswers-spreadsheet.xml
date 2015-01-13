@@ -7353,6 +7353,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">в процессе</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">completed</Data></Cell>
@@ -7364,6 +7365,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">завершено</Data></Cell>
    </Row>
    <Row ss:Height="60">
     <Cell ss:StyleID="s140"><Data ss:Type="String">amended</Data></Cell>
@@ -7375,6 +7377,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">исправлено</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>

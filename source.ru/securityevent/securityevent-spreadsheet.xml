@@ -7502,6 +7502,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="String">Emergency</Data></Cell>
@@ -7513,6 +7514,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Аварийное</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">Alert</Data></Cell>
@@ -7524,6 +7526,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Оповещение</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">Critical</Data></Cell>
@@ -7535,6 +7538,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Критичное</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">Error</Data></Cell>
@@ -7546,6 +7550,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Ошибка</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">Warning</Data></Cell>
@@ -7557,6 +7562,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Предупреждение</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">Notice</Data></Cell>
@@ -7568,6 +7574,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Извещение</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">Informational</Data></Cell>
@@ -7579,6 +7586,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Информационное</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">Debug</Data></Cell>
@@ -7590,6 +7598,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Отладка</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
@@ -8172,6 +8181,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s138"><Data ss:Type="String">C</Data></Cell>
@@ -8183,6 +8193,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Создать</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">R</Data></Cell>
@@ -8194,6 +8205,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Чтение/Просмотр/Печать</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">U</Data></Cell>
@@ -8205,6 +8217,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Обновить</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">D</Data></Cell>
@@ -8216,6 +8229,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Удалить</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">E</Data></Cell>
@@ -8227,6 +8241,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Выполнить</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
@@ -8842,6 +8857,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s138"><Data ss:Type="Number">0</Data></Cell>
@@ -8853,6 +8869,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Успех</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">4</Data></Cell>
@@ -8864,6 +8881,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Небольшой сбой</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">8</Data></Cell>
@@ -8875,6 +8893,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Серьезный сбой</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">12</Data></Cell>
@@ -8886,6 +8905,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Фатальный сбой</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
@@ -9512,6 +9532,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="Number">1</Data></Cell>
@@ -9523,6 +9544,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Имя машины</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">2</Data></Cell>
@@ -9534,6 +9556,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">IP-адрес</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">3</Data></Cell>
@@ -9545,6 +9568,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Телефон</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">4</Data></Cell>
@@ -9556,6 +9580,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Емейл</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">5</Data></Cell>
@@ -9567,6 +9592,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">URI</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
@@ -10080,7 +10106,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>0</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -10182,6 +10208,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="Number">1</Data></Cell>
@@ -10193,6 +10220,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Интерфейс конечного пользователя</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">2</Data></Cell>
@@ -10204,6 +10232,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Устройство или инструмент получения данных</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">3</Data></Cell>
@@ -10215,6 +10244,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Уровень процесса веб-сервера в многоуровневой системе</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">4</Data></Cell>
@@ -10226,6 +10256,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Уровень процесса приложения сервера в многоуровневой системе</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">5</Data></Cell>
@@ -10237,6 +10268,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Уровень процесса сервера базы данных в многоуровневой системе</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">6</Data></Cell>
@@ -10248,6 +10280,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Сервер безопасности, например, контроллер домена</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">7</Data></Cell>
@@ -10259,6 +10292,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Уровни 1-3 сетевого компонента ISO</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">8</Data></Cell>
@@ -10270,6 +10304,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Уровни 4-6 операционной системы ISO</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">9</Data></Cell>
@@ -10281,6 +10316,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Внешний источник, другой или неизвестный тип</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
@@ -10808,8 +10844,8 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s136" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s136" ss:Width="80.25"/>
-   <Column ss:StyleID="s136" ss:AutoFitWidth="0" ss:Width="34.5"/>
+   <Column ss:StyleID="s136" ss:Width="80.064000000000007"/>
+   <Column ss:StyleID="s136" ss:AutoFitWidth="0" ss:Width="34.56"/>
    <Column ss:StyleID="s136" ss:AutoFitWidth="0" ss:Width="155.25"/>
    <Column ss:StyleID="s136" ss:AutoFitWidth="0" ss:Width="80.25" ss:Span="1"/>
    <Column ss:Index="6" ss:StyleID="s136" ss:AutoFitWidth="0" ss:Width="244.5"/>
@@ -10852,6 +10888,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="Number">1</Data></Cell>
@@ -10863,6 +10900,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Человек</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">2</Data></Cell>
@@ -10874,6 +10912,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Системный объект</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">3</Data></Cell>
@@ -10885,6 +10924,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Организация</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">4</Data></Cell>
@@ -10896,6 +10936,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Другое</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
@@ -11522,6 +11563,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s138"><Data ss:Type="Number">1</Data></Cell>
@@ -11533,6 +11575,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Пациент</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">2</Data></Cell>
@@ -11544,6 +11587,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Местоположение</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">3</Data></Cell>
@@ -11555,6 +11599,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Отчет</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">4</Data></Cell>
@@ -11566,6 +11611,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"><Data ss:Type="String">Still defined for existing use related to DICOM definitions</Data></Cell>
+    <Cell><Data ss:Type="String">Ресурс домена</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">5</Data></Cell>
@@ -11577,6 +11623,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Мастер-файл</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">6</Data></Cell>
@@ -11588,6 +11635,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Пользователь</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">7</Data></Cell>
@@ -11599,6 +11647,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"><Data ss:Type="String">Still defined for existing use related to DICOM definitions</Data></Cell>
+    <Cell><Data ss:Type="String">Список</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">8</Data></Cell>
@@ -11610,6 +11659,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Врач</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">9</Data></Cell>
@@ -11621,6 +11671,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Подписчик</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">10</Data></Cell>
@@ -11632,6 +11683,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Гарант</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">11</Data></Cell>
@@ -11643,6 +11695,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Сущность пользователя системы безопасности</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">12</Data></Cell>
@@ -11654,6 +11707,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Группа пользователей системы безопасности</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">13</Data></Cell>
@@ -11665,6 +11719,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"><Data ss:Type="String">Consents, ACLs, Access Control rules, Audit repository analysis systems, etc.  Any non-human thing that is worth identifying as part of the security process</Data></Cell>
+    <Cell><Data ss:Type="String">Ресурс системы безопасности</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">14</Data></Cell>
@@ -11676,6 +11731,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"><Data ss:Type="String">Still defined for existing use related to DICOM definitions</Data></Cell>
+    <Cell><Data ss:Type="String">Детализация определения безопасности</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">15</Data></Cell>
@@ -11687,6 +11743,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Исполнитель</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">16</Data></Cell>
@@ -11698,6 +11755,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Назначение данных</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">17</Data></Cell>
@@ -11709,6 +11767,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Хранилище данных</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">18</Data></Cell>
@@ -11720,6 +11779,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Расписание</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">19</Data></Cell>
@@ -11731,6 +11791,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Клиент</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">20</Data></Cell>
@@ -11742,6 +11803,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Работа</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">21</Data></Cell>
@@ -11753,6 +11815,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Рабочий поток</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">22</Data></Cell>
@@ -11764,6 +11827,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"><Data ss:Type="String">Still defined for existing use related to DICOM definitions</Data></Cell>
+    <Cell><Data ss:Type="String">Таблица</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">23</Data></Cell>
@@ -11775,6 +11839,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Критерии маршрутизации</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">24</Data></Cell>
@@ -11786,6 +11851,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Запрос</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
@@ -12192,6 +12258,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="Number">1</Data></Cell>
@@ -12203,6 +12270,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Возникновение / Создание</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">2</Data></Cell>
@@ -12214,6 +12282,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Импорт / Копия с оригинала</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">3</Data></Cell>
@@ -12225,6 +12294,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Поправка</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">4</Data></Cell>
@@ -12236,6 +12306,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Проверка</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">5</Data></Cell>
@@ -12247,6 +12318,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Перевод</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">6</Data></Cell>
@@ -12258,6 +12330,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Доступ / Использование</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">7</Data></Cell>
@@ -12269,6 +12342,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Деидентификация</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">8</Data></Cell>
@@ -12280,6 +12354,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Объединение, обобщение, вывод</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">9</Data></Cell>
@@ -12291,6 +12366,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Отчет</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">10</Data></Cell>
@@ -12302,6 +12378,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Экспорт / Копия в указанное место</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">11</Data></Cell>
@@ -12313,6 +12390,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Нарушение конфиденциальности</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">12</Data></Cell>
@@ -12324,6 +12402,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Расписка в нарушении конфиденциальности</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">13</Data></Cell>
@@ -12335,6 +12414,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Архивирование</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">14</Data></Cell>
@@ -12346,6 +12426,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Логическое удаление</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">15</Data></Cell>
@@ -12357,6 +12438,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Необратимое удаление / Физическое уничтожение</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
@@ -12862,6 +12944,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="Number">1</Data></Cell>
@@ -12873,6 +12956,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Номер медицинской записи</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">2</Data></Cell>
@@ -12884,6 +12968,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Номер пациента</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">3</Data></Cell>
@@ -12895,6 +12980,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Номер визита</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">4</Data></Cell>
@@ -12906,6 +12992,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Номер подписчика</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">5</Data></Cell>
@@ -12917,6 +13004,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Номер социального страхования</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">6</Data></Cell>
@@ -12928,6 +13016,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Номер счета</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">7</Data></Cell>
@@ -12939,6 +13028,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Номер гаранта</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">8</Data></Cell>
@@ -12950,6 +13040,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Название отчета</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">9</Data></Cell>
@@ -12961,6 +13052,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Номер отчета</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">10</Data></Cell>
@@ -12972,6 +13064,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Критерии поиска</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">11</Data></Cell>
@@ -12983,6 +13076,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Идентификатор пользователя</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="Number">12</Data></Cell>
@@ -12994,6 +13088,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">URI</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>

@@ -7421,6 +7421,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s138"><Data ss:Type="String">pending</Data></Cell>
@@ -7432,6 +7433,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Занят</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">booked</Data></Cell>
@@ -7443,6 +7445,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Свободен</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">arrived</Data></Cell>
@@ -7454,6 +7457,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Предварительный</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">fulfilled</Data></Cell>
@@ -7465,6 +7469,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">The encounter may still be inprogress, however this status is managed by the Encounter</Data></Cell>
+    <Cell><Data ss:Type="String">Вне офиса</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">cancelled</Data></Cell>
@@ -8092,6 +8097,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s138"><Data ss:Type="String">required</Data></Cell>
@@ -8103,6 +8109,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Требуется</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">optional</Data></Cell>
@@ -8114,6 +8121,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Необязательно</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">information-only</Data></Cell>
@@ -8125,6 +8133,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Только информация</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
@@ -8762,6 +8771,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="String">accepted</Data></Cell>
@@ -8773,6 +8783,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Принял</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">declined</Data></Cell>
@@ -8784,6 +8795,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Отклонил</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:StyleID="s140"><Data ss:Type="String">tentative</Data></Cell>
@@ -8795,6 +8807,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Предварительно принял</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">in-process</Data></Cell>
@@ -8806,6 +8819,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"><Data ss:Type="String">The implication of this is often that the subject is likely to have travel or other time unavailable before/after this appointment</Data></Cell>
+    <Cell><Data ss:Type="String">В процессе</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">completed</Data></Cell>
@@ -8817,6 +8831,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Завершил</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">needs-action</Data></Cell>
@@ -8828,6 +8843,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Требуется действие</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>

@@ -7140,6 +7140,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="String">other</Data></Cell>
@@ -7151,6 +7152,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">Другой</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">chemical</Data></Cell>
@@ -7162,6 +7164,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Химический</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">electrical</Data></Cell>
@@ -7173,6 +7176,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Электрический</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">impedance</Data></Cell>
@@ -7184,6 +7188,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Сопротивление</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">nuclear</Data></Cell>
@@ -7195,6 +7200,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Ядерный</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">optical</Data></Cell>
@@ -7206,6 +7212,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Оптический</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">thermal</Data></Cell>
@@ -7217,6 +7224,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Термический</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">biological</Data></Cell>
@@ -7228,6 +7236,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Биологический</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">mechanical</Data></Cell>
@@ -7239,6 +7248,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Механический</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">acoustical</Data></Cell>
@@ -7250,6 +7260,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Акустический</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">manual</Data></Cell>
@@ -7261,6 +7272,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Ручной</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>

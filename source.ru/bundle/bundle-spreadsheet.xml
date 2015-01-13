@@ -7290,6 +7290,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">document</Data></Cell>
@@ -7301,6 +7302,7 @@
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Документ</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s142"><Data ss:Type="String">message</Data></Cell>
@@ -7312,6 +7314,7 @@
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
+    <Cell><Data ss:Type="String">Сообщение</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s142"><Data ss:Type="String">transaction</Data></Cell>
@@ -7323,6 +7326,7 @@
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
+    <Cell><Data ss:Type="String">Транзакция</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s142"><Data ss:Type="String">transaction-response</Data></Cell>
@@ -7334,6 +7338,7 @@
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
+    <Cell><Data ss:Type="String">Ответ (операции) транзакции</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s142"><Data ss:Type="String">history</Data></Cell>
@@ -7345,6 +7350,7 @@
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
+    <Cell><Data ss:Type="String">История</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s142"><Data ss:Type="String">searchset</Data></Cell>
@@ -7356,6 +7362,7 @@
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
+    <Cell><Data ss:Type="String">Результаты поиска</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s142"><Data ss:Type="String">collection</Data></Cell>
@@ -7367,6 +7374,7 @@
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
+    <Cell><Data ss:Type="String">Коллекция</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s142"/>
@@ -7960,6 +7968,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">create</Data></Cell>
@@ -7971,6 +7980,7 @@
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Создать</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s142"><Data ss:Type="String">update</Data></Cell>
@@ -7982,6 +7992,7 @@
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
+    <Cell><Data ss:Type="String">Обновить</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s142"><Data ss:Type="String">match</Data></Cell>
@@ -7993,6 +8004,7 @@
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
+    <Cell><Data ss:Type="String">Совпадение</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s142"><Data ss:Type="String">include</Data></Cell>
@@ -8004,6 +8016,7 @@
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
+    <Cell><Data ss:Type="String">Содержит</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s142"/>

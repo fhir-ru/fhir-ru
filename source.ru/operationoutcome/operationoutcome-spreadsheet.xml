@@ -7113,6 +7113,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s138"><Data ss:Type="String">fatal</Data></Cell>
@@ -7124,6 +7125,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">фатальный сбой</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">error</Data></Cell>
@@ -7135,6 +7137,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">ошибка</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">warning</Data></Cell>
@@ -7146,6 +7149,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">предупреждение</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">information</Data></Cell>
@@ -7157,6 +7161,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">информация</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>
@@ -7782,6 +7787,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s138"><Data ss:Type="String">invalid</Data></Cell>
@@ -7793,6 +7799,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">недопустимый</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">structure</Data></Cell>
@@ -7804,6 +7811,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">структура</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">required</Data></Cell>
@@ -7815,6 +7823,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">отсутствует обязательный элемент</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">value</Data></Cell>
@@ -7826,6 +7835,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">недопустимое значение элемента</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">invariant</Data></Cell>
@@ -7837,6 +7847,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">инвариант</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">security</Data></Cell>
@@ -7848,6 +7859,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">безопасность</Data></Cell>
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">login</Data></Cell>
@@ -7859,6 +7871,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"><Data ss:Type="String">Sometimes associated with HTTP 3xx response codes, but not if the client gets to choose which authentication process to initiate</Data></Cell>
+    <Cell><Data ss:Type="String">имя пользователя</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">unknown</Data></Cell>
@@ -7870,6 +7883,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">неизвестный пользователь</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">expired</Data></Cell>
@@ -7881,6 +7895,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">время сессии истекло</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">forbidden</Data></Cell>
@@ -7892,6 +7907,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">нет прав доступа</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">processing</Data></Cell>
@@ -7903,6 +7919,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">обработка</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">not-supported</Data></Cell>
@@ -7914,6 +7931,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">не поддерживается</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">duplicate</Data></Cell>

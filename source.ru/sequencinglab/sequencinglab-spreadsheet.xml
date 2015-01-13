@@ -7134,6 +7134,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s138"><Data ss:Type="String">whole_genome</Data></Cell>
@@ -7145,6 +7146,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">полный_геном</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">whole_exome</Data></Cell>
@@ -7156,6 +7158,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">полной_экзом</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">targeted_capture</Data></Cell>
@@ -7167,6 +7170,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">целевая_выборка</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>
@@ -7201,7 +7205,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s117"/>
@@ -7803,6 +7807,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s138"><Data ss:Type="String">srs</Data></Cell>
@@ -7836,6 +7841,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">Метод_Сэнгера</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">dna_chip</Data></Cell>
@@ -7847,6 +7853,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">ДНК_микрочип</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>
@@ -8472,6 +8479,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s138"><Data ss:Type="String">illumina</Data></Cell>
@@ -9141,6 +9149,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s138"><Data ss:Type="String">germline</Data></Cell>
@@ -9152,6 +9161,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
+    <Cell><Data ss:Type="String">генеративная_линия</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">somatic</Data></Cell>
@@ -9163,6 +9173,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">соматический</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">likely_germline</Data></Cell>
@@ -9174,6 +9185,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">вероятно_генеративная_линия</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">likely_somatic</Data></Cell>
@@ -9185,6 +9197,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">вероятно_соматический</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>

@@ -1,35 +1,49 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div> 
-<h2>Scope and Usage</h2> 
+<h2>Область применения и использование<!-- Scope and Usage --></h2> 
 <p>
-A concept map defines a mapping from a concept defined in <a href="terminologies.html">one system</a> to one or more concepts defined in other systems. 
-Mappings are always framed within the concept of <a href="valueset.html">value sets</a> - they are specific to a context of use. 
+Карта соответствия концептов определяет отображение концепта, определенного в <a href="terminologies.html">одной системе</a>, на один или несколько концептов, определенных в других системах.
+Мэппинги всегда ограничены понятием <a href="valueset.html">набор значений</a> - они специфичны для контекста использования. 
+<!-- A concept map defines a mapping from a concept defined in <a href="terminologies.html">one system</a> to one or more concepts defined in other systems. 
+Mappings are always framed within the concept of <a href="valueset.html">value sets</a> - they are specific to a context of use.  -->
 </p> 
 
 <p>
-Note that the mappings are one way - from the source to the destination. In many cases, the reverse mappings 
-are valid, but this cannot be assumed to be the case. 
+Обратите внимание, что мэппинги односторонние - от источника в назначение. В большинстве случаев обратные мэппинги 
+допустимы, но не могут быть приняты за правило.
+<!-- Note that the mappings are one way - from the source to the destination. In many cases, the reverse mappings 
+are valid, but this cannot be assumed to be the case.  -->
 </p>
 <p>
-Mappings between code systems are only defined in the context of the specified source and destination valuesets. 
+Мэппинги между кодовыми системами определяются только в контексте указанных наборов значений источника и назначения.
+Мэппинги могут применяться в других контекстах, но это должно определяться на основе контекста использования и 
+значения; это не может считаться само собой разумеющимся автоматически. Все кодовые системы имеют наборы значений, которые 
+включают кодовую систему целиком, и эти наборы значений можно использовать для мэппингов, которые будут валидными во всех контекстах.
+<!-- Mappings between code systems are only defined in the context of the specified source and destination valuesets. 
 The mappings may be useful in other contexts, but this must be determined based on the context of use and 
 meaning; it cannot be taken for granted automatically. All code systems have value sets that include the entire
-code system, and these value sets can be used for mappings that are valid in all contexts.
+code system, and these value sets can be used for mappings that are valid in all contexts. -->
 </p>
 <p>
-Each mapping for a concept from source to destination also includes an [<a rel="nofollow" class="external text" 
+Каждый мэппинг концепта от источника в назначение также включает показатель [<a rel="nofollow" class="external text" 
+href="http://hl7.org/implement/standards/fhir/concept-equivalence.html">эквивалентности</a>], 
+который указывает, насколько равнозначен мэппинг (или, в некоторых случаях, что допустимые соответствия отсутствуют).
+<!-- Each mapping for a concept from source to destination also includes an [<a rel="nofollow" class="external text" 
 href="http://hl7.org/implement/standards/fhir/concept-equivalence.html">equivalence</a>] property that 
-specifies how similar the mapping is (or, in some cases, that there is no valid mapping). 
+specifies how similar the mapping is (or, in some cases, that there is no valid mapping).  -->
 </p>
 </div> 
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
-Further discussion of the issues involved in mapping between concept definition systems can be found in the  
+Более подробную информацию по вопросам мэппинга между системами определений концептов можно 
+найти в документе <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a>  
+и функциональности, описанной в спецификации <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a>.
+<!-- Further discussion of the issues involved in mapping between concept definition systems can be found in the  
 <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a> document 
-and the functionality described in the <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a> specification. 
+and the functionality described in the <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a> specification.  -->
 </p>
 
 </div>

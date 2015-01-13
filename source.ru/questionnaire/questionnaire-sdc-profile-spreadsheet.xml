@@ -10911,6 +10911,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"><Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font></ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s154"><Data ss:Type="String">header</Data></Cell>
@@ -10922,6 +10923,7 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s157"/>
+    <Cell><Data ss:Type="String">верхний колонтитул</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s158"><Data ss:Type="String">footer</Data></Cell>
@@ -10933,6 +10935,7 @@
     <Cell ss:StyleID="s147"/>
     <Cell ss:StyleID="s147"/>
     <Cell ss:StyleID="s160"/>
+    <Cell><Data ss:Type="String">нижний колонтитул</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s158"/>
