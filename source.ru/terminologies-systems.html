@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Defined Systems%]
+[%settitle Описанные системы%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,54 +13,52 @@
 
 <%txheader systems%>
 
-<h2>Named Systems List</h2>
+<h2>Перечень именованных систем</h2>
 <p>
-The URIs defined on this page are available as a value set (<a href="valueset-systems.xml.html">XML</a> or <a href="valueset-systems.json.html">JSON</a>).
+URI на этой странице доступны в виде набора значений (<a href="valueset-systems.xml.html">XML</a> или <a href="valueset-systems.json.html">JSON</a>).
 </p>
 
-<h3>Known Code Systems</h3>
+<h3>Известные кодовые системы</h3>
 
 <p>
-The following names (URIs) may be used in the <i>system</i> element of the <a href="datatypes.html#Coding">Coding</a> data type.
-If a URI is defined here, it SHALL be used in preference to any other identifying mechanisms. If a code system is not listed
-here, the correct URI may be determined by working through the following list, in order:
+Следующие имена (URI) могут использоваться в элементе <i>system</i> типа данных <a href="datatypes.html#Coding">Coding</a>. Если URI определен здесь, ему СЛЕДУЕТ отдавать предпочтение при использовании относительно других механизмов идентификации. Если кодовая система не перечислена здесь, корректный URI может быть определен проработкой следующего списка, в порядке:
 </p>
 <ul>
- <li>the HL7 OID Registry</li>
- <li>the documentation associated with the code system</li>
- <li>consulting the owner of the code system</li>
- <li>asking on the HL7 vocabulary mailing list</li>
+ <li>реестр HL7 OID;</li>
+ <li>документация, связанная с кодовой системой;</li>
+ <li>консультирование с владельцем кодовой системы;</li>
+ <li>задать вопрос в списке рассылки HL7-словаря.</li>
 </ul>
 
 <table class="grid">
  <tr>
    <th width="150">URI</th>
-   <th>Source</th>
-   <th>Comment</th>
+   <th>Источник</th>
+   <th>Комментарий</th>
  </tr>
 
  <tr>
    <td>http://snomed.info/sct <a name="http://snomed.info/sct"> </a></td>
-   <td>SNOMED CT (<a href="http://ihtsdo.org">IHTSDO</a>) Concept IDs, Expressions and SNOMED Legacy codes (e.g. SCTV3 codes)</td>
-   <td><p>See <a href="snomedct.html">Using SNOMED CT with FHIR</a><br/><br/>OID=2.16.840.1.113883.6.96</p></td>
+   <td>SNOMED CT (<a href="http://ihtsdo.org">IHTSDO</a>) Concept IDs, Expressions and SNOMED Legacy codes (например SCTV3 codes)</td>
+   <td><p>См. <a href="snomedct.html">Использование SNOMED CT в FHIR</a><br/><br/>OID=2.16.840.1.113883.6.96</p></td>
  </tr>
  <tr>
    <td>http://www.nlm.nih.gov/research/umls/rxnorm<a name=" http://www.nlm.nih.gov/research/umls/rxnorm"> </a></td>
    <td>RxNorm (<a href="http://www.nlm.nih.gov/">US NLM</a>)</td>
-   <td><p>See <a href="rxnorm.html">Using RxNorm with FHIR</a><br/><br/>OID=2.16.840.1.113883.6.88</p>
+   <td><p>См. <a href="rxnorm.html">Использование RxNorm в FHIR</a><br/><br/>OID=2.16.840.1.113883.6.88</p>
    </td>
  </tr>
  <tr>
    <td>http://loinc.org <a name="http://loinc.org"> </a></td>
    <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
-   <td><p>See <a href="loinc.html">Using LOINC with FHIR</a>
+   <td><p>См. <a href="loinc.html">Использование LOINC в FHIR</a>
        <br/><br/>OID=2.16.840.1.113883.6.1</p>
    </td>
  </tr>
  <tr>
    <td>http://unitsofmeasure.org <a name="http://unitsofmeasure.org"> </a></td>
    <td>UCUM: (<a href="http://unitsofmeasure.org">UnitsOfMeasure.org</a>) Case Sensitive Codes</td>
-   <td><p>See <a href="ucum.html">Using UCUM with FHIR</a>
+   <td><p>См. <a href="ucum.html">Использование UCUM в FHIR</a>
      <br/><br/>OID=2.16.840.1.113883.6.8</p></td>
  </tr>
  <tr>
@@ -115,17 +113,17 @@ here, the correct URI may be determined by working through the following list, i
  <tr>
    <td>http://hl7.org/fhir/v2/[X](/v) <a name="http://hl7.org/fhir/v2/[X](/v"> </a></td>
    <td>Version 2 table code</td>
-   <td>[X] is the 4 digit identifier for a table. e.g. http://hl7.org/fhir/v2/0203<br/>
-     Only <a href="terminologies-v2.html">some tables</a> may be treated in this fashion.
-     For some tables, the meaning of the code is version dependent, and so additional information 
-     must be included in the namespace, e.g. http://hl7.org/fhir/v2/0123/2.3+, as defined in the <a href="terminologies-v2.html">v2 table namespace list</a>.
-     Version 2 codes are case sensitive.
-     <br/>OID=2.16.840.1.113883.12.[X] (note that this is the table OID, which is not the same as the codeSystem OID)<br/><br/>Note: This namespace may be revised in the future</td>
+   <td>[X] - это 4значный идентификатор таблицы, например http://hl7.org/fhir/v2/0203<br/>
+     Только <a href="terminologies-v2.html">некоторые таблицы</a> можно трактовать таким образом.
+	 Для некоторых таблиц значение кода является версионно-зависимым, и поэтому дополнительная информация должна быть включена в пространство имен, например http://hl7.org/fhir/v2/0123/2.3+, как определено в <a href="terminologies-v2.html">v2 table namespace list</a>.
+	 Коды версии 2 регистрозависимые. 
+     <br/>OID=2.16.840.1.113883.12.[X] (обратите внимание, что это OID таблицы, это не то же самое, что codeSystem OID)<br/><br/>Примечание: Это пространство имен может быть пересмотрено и изменено в будущем.</td>
  </tr>
  <tr>
    <td>http://hl7.org/fhir/v3/[X] <a name="http://hl7.org/fhir/v3/[X"> </a></td>
    <td>A Version 3 code system, from <a href="terminologies-v3.html">the list of code systems defined here</a></td>
-   <td>[X] is the code system name. e.g. http://hl7.org/fhir/v3/GenderStatus<br/>OID=[as specified by the <a href="terminologies-v3.html">index</a>]. Version 3 code systems are case sensitive.<br/><br/>Note: This namespace may be revised in the future </td>
+   <td>[X] - это имя кодовой системы, например http://hl7.org/fhir/v3/GenderStatus
+   <br/>OID=[как указано в <a href="terminologies-v3.html">каталоге</a>]. Кодовые системы версии 3 регистрозависимые.<br/><br/>Примечание: Это пространство имен может быть пересмотрено и изменено в будущем.</td>
  </tr>
  <tr>
    <td>http://www.whocc.no/atc <a name="http://www.whocc.no/atc"> </a></td>
@@ -134,15 +132,14 @@ here, the correct URI may be determined by working through the following list, i
  </tr> 
  <tr>
    <td>urn:std:iso:11073:10101 <a name="urn:std:iso:11073:10101"> </a></td>
-   <td>Medical Device Codes defined in ISO 11073-10101 (see <a href="http://hit-testing.nist.gov:13110/rtmms/index.html#rosetta">RTM Management service</a>)<br/>
-     The ISO/IEEE 11073-10201 Terminology Code is used in the <i>code</i> element, and the Terminology Reference ID is 
-     used in the <i>display</i> element (CODE10 and REFID in the reference)</td>
+   <td>Medical Device Codes defined in ISO 11073-10101 (см. <a href="http://hit-testing.nist.gov:13110/rtmms/index.html#rosetta">RTM Management service</a>)<br/>
+     ISO/IEEE 11073-10201 Terminology Code используется в элементе <i>code</i>, а Terminology Reference ID используется в элементе <i>display</i> (CODE10 и REFID in the reference)</td>
    <td><br/>OID=2.16.840.1.113883.6.24</td>
  </tr> 
  <tr>
    <td><a href="valueset-dicom-dcim.html">http://nema.org/dicom/dicm</a> <a name="http://nema.org/dicom/dicm"> </a></td>
    <td>DICOM Code Definitions (DCM)<br/>
-   the meanings of codes defined in DICOM, either explicitly or by reference to another part of DICOM or an external reference document or standard</td>
+   значения кодов определены в DICOM, либо явно, либо ссылкой на другую часть DICOM или внешний reference документ или стандарт</td>
    <td><br/>v2/DICOM code="DCM". OID=1.2.840.10008.2.16.4</td>
  </tr> 
 
@@ -200,18 +197,16 @@ here, the correct URI may be determined by working through the following list, i
 </table>
  
 <a name="identifiersystems"> </a> 
-<h3>Known Identifier Systems</h3>
+<h3>Известные системы идентификаторов [Identifier Systems]</h3>
 
 <p>
-The following names (URIs) may be used in the <i>system</i> element of the <a href="datatypes.html#Identifier">Identifier</a> data type.
-If a URI is defined here, it SHALL be used in preference to any other identifying mechanisms. If an identifier system is not listed
-here, the correct URI may be determined by working through the following list, in order:
+Следующие имена (URI) могут использоваться в элементе <i>system</i> типа данных <a href="datatypes.html#Identifier">Identifier</a>. Если URI определен здесь, ему СЛЕДУЕТ отдавать предпочтение при использовании относительно других механизмов идентификации. Если система идентификатора [identifier system] не перечислена здесь, корректный URI может быть определен проработкой следующего списка, в порядке:
 </p>
 <ul>
- <li>the HL7 OID Registry</li>
- <li>the documentation associated with the identifier</li>
- <li>consulting the owner of the identifier</li>
- <li>asking on the HL7 vocabulary mailing list</li>
+ <li>реестр HL7 OID;</li>
+ <li>документация, связанная с идентификатором;</li>
+ <li>консультирование с владельцем идентификатора;</li>
+ <li>задать вопрос в списке рассылки HL7-словаря.</li>
 </ul>
 
 <table class="grid">
@@ -222,19 +217,19 @@ here, the correct URI may be determined by working through the following list, i
  </tr>
 
  <tr>
-   <td>URIs (<a href="http://www.w3.org">W3C</a>): when the identifier is a URI</td>
+   <td>URIs (<a href="http://www.w3.org">W3C</a>): когда идентификатор является URI</td>
    <td>urn:ietf:rfc:3986 <a name="rn:ietf:rfc:3986"> </a></td>
-   <td>As defined by <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a> (with many schemes defined in many RFCs). 
-   OIDs and UUIDs are represented in their URN form (<a href="http://www.ietf.org/rfc/rfc3001.txt">urn:oid:</a> and <a href="http://www.ietf.org/rfc/rfc4122.txt">urn:uuid:</a> 
-   - plain <a href="http://tools.ietf.org/id/draft-larmouth-oid-iri-04.txt">oid:</a> and uuid: are not used). Note that UUIDs are always lowercase in a IRI<br/>No OID</td>
+   <td>Как определено в <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a> (with many schemes defined in many RFCs). 
+   OIDs и UUIDs представлены в их URN форме (<a href="http://www.ietf.org/rfc/rfc3001.txt">urn:oid:</a> и <a href="http://www.ietf.org/rfc/rfc4122.txt">urn:uuid:</a> 
+   - простые <a href="http://tools.ietf.org/id/draft-larmouth-oid-iri-04.txt">oid:</a> и uuid: не используются). Обратите внимание, что UUIDs всегда пишутся в нижнем регистре в IRI<br/>Нет OID</td>
  </tr>
  <tr>
    <td>SSN (<a href="http://www.ssa.gov/ssnumber/">US Government</a>)</td>
    <td>http://hl7.org/fhir/sid/us-ssn <a name="ttp://hl7.org/fhir/sid/us-ssn"> </a></td>
-   <td>US SSN. Represented with dashes removed<br/>OID=2.16.840.1.113883.4.1</td>
+   <td>US SSN. Представление с тире удалено<br/>OID=2.16.840.1.113883.4.1</td>
  </tr>
  <tr>
-   <td>Driver's License</td>
+   <td>Водительские права</td>
    <td>
 <b>USA</b><br/>   
 AK: urn:oid:2.16.840.1.113883.4.3.2	<!-- Alaska --> <br/>
@@ -289,20 +284,17 @@ WV: urn:oid:2.16.840.1.113883.4.3.54	<!-- WestVirginia --> <br/>
 WY: urn:oid:2.16.840.1.113883.4.3.56	<!-- Wyoming --> <br/>
    
    </td>
-   <td>Driver's licenses are often recorded without recording which authority issued the license. In these cases, use the general identifier http://hl7.org/fhir/drivers-license</td>
+   <td>Водительские права часто записывают без указания органов, выдавших их. В таких случаях используйте общий идентификатор http://hl7.org/fhir/drivers-license.</td>
  </tr>
  
 </table>
 <p>
-<b>Important Note:</b> This list of names is incomplete and subject to change.
-Some values may be dropped and others will likely be added in the coming months as HL7
-institutes formal processes around URIs in vocabulary.
+<b>Существенное примечание:</b> Этот список названий не полный и подлежит изменению. Некоторые значения могут быть удалены, другие значения, вероятно, будут добавлены в  следующие месяцы после того, как HL7 начнет формальные процессы по URI-адресам в словаре.
 </p>
 
 <p>
-Note that some of the URNs in this list follow the URN specification in <a href="http://tools.ietf.org/html/rfc5141">RFC 5141</a> for referring to 
-standards published by ISO, such as urn:std:iso:11073:10101. Where ISO standards define codes with meanings, and there is no entry in the list above,
-and they are not registered in the HL7 OID registry, the default URN for the code system is that defined by the RFC 5141.
+Следует отметить, что некоторые URN в этом списке следуют спецификации URN в <a href="http://tools.ietf.org/html/rfc5141">RFC 5141</a> для отсылки к стандартам, опубликованным ISO, например 
+urn:std:iso:11073:10101. Там, где ISO-стандарты определяют коды со значениями, и нет записи в списке выше, и они не зарегистрированы в реестре HL7 OID, значением URN по умолчанию для кодовой системы является то, которое определено RFC 5141.
 </p>
 
 
