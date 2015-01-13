@@ -62,10 +62,13 @@ todo: compartments
       </page>
       <page title="Использование кодовых значений" filename="terminologies.html">
         <page title="Перечень кодовых систем" filename="terminologies-systems.html">
-          <page title="LOINC" filename="loinc.html"/>
           <page title="SNOMED CT" filename="snomedct.html"/>
           <page title="RxNorm" filename="rxnorm.html"/>
-          <page title="UCUM" filename="ucum.html"/>
+					<page title="LOINC" filename="loinc.html"/>
+					<page title="NCI Metothesuaras" filename="ncimeta.html"/>
+					<page title="NDFRT" filename="ndfrt.html"/>
+					<page title="UNII" filename="unii.html"/>
+					<page title="CVX" filename="cvx.html"/>
         </page>
         <page title="Value Sets" filename="terminologies-valuesets.html">
           <pages type="valueset" filename="template-valueset.html"/>
@@ -108,14 +111,20 @@ todo: compartments
       </page>
       <page title="Комплексные примеры" filename="integrated-examples.html"/>
       <page title="Руководства по реализации" filename="iglist.html">
+				<page title="Argonaut Project" filename="argonauts.html"/>
+
+        <page title="Фреймворк доступа к данным (DAF)" filename="daf.html">
+          <page title="Введение в DAF" filename="daf-intro.html"/>
+          <page title="Безопасность в DAF" filename="daf-security.html"/>
+					<page title="DAF Medication Profiles Usage" filename="daf-medicationusage.html"/>
+					<page title="DAF Outstanding Issues" filename="daf-outstandingissues.html"/>
+        </page>
+				<page title="EHRS Functional model - Record Lifecycle Events" filename="ehrs-rle.html"/>
         <page title="Сбор структурированных данных (SDC)" filename="sdc.html">
           <page title="Введение в SDC" filename="sdc-intro.html"/>
           <page title="Безопасность в SDC" filename="sdc-security.html"/>
         </page>
-        <page title="Фреймворк доступа к данным (DAF)" filename="daf.html">
-          <page title="Введение в DAF" filename="daf-intro.html"/>
-          <page title="Безопасность в DAF" filename="daf-security.html"/>
-        </page>
+				<page title="Structured Data Capture - Data Element Exchange" filename="sdc-de.html"/>
                 <page title="US Laboratory Order Implementation" filename="uslaborder.html">
           <page title="USLabOrder Documentation" filename="uslaborder-guide.html"/>
                 </page>
@@ -140,6 +149,9 @@ todo: compartments
       <page type="resource" resource="AllergyIntolerance"/>
       <page type="resource" resource="Condition"/>
       <page type="resource" resource="CarePlan"/>
+			<page type="resource" resource="CarePlan2"/>
+			<page type="resource" resource="Goal"/>
+			<page type="resource" resource="ClinicalAssessment"/>
       <page type="resource" resource="ReferralRequest"/>
       <page type="resource" resource="Procedure"/>
       <page type="resource" resource="ProcedureRequest"/>
@@ -163,30 +175,35 @@ todo: compartments
       <page type="resource" resource="Questionnaire"/>
       <page type="resource" resource="QuestionnaireAnswers"/>
       <page type="resource" resource="FamilyHistory"/>
+			<page type="resource" resource="VisionPrescription"/>
     </page>
     <page title="Административные" filename="administration.html">
       <page type="resource" resource="Patient"/>
       <page type="resource" resource="RelatedPerson"/>
+			<page type="resource" resource="Person"/>
       <page type="resource" resource="Practitioner"/>
       <page type="resource" resource="Organization"/>
       <page type="resource" resource="HealthcareService"/>
       <page type="resource" resource="Contract"/>
       <page type="resource" resource="Device"/>
       <page type="resource" resource="DeviceComponent"/>
+			<page type="resource" resource="DeviceMetric"/>
       <page type="resource" resource="DeviceUseRequest"/>
       <page type="resource" resource="DeviceUseStatement"/>
       <page type="resource" resource="Location"/>
       <page type="resource" resource="Substance"/>
       <page type="resource" resource="Group"/>
       <page type="resource" resource="Encounter"/>
+			<page type="resource" resource="EpisodeOfCare"/>
       <page type="resource" resource="Alert"/>
+			<page type="resource" resource="Communication"/>
       <page type="resource" resource="CommunicationRequest"/>
       <page type="resource" resource="Supply"/>
       <page type="resource" resource="Order"/>
       <page type="resource" resource="OrderResponse"/>
       <page type="resource" resource="Appointment"/>
       <page type="resource" resource="AppointmentResponse"/>
-      <page type="resource" resource="Availability"/>
+			<page type="resource" resource="Schedule"/>
       <page type="resource" resource="Slot"/>
     </page>
     <page title="Инфраструктурные" filename="infrastructure.html">
@@ -204,7 +221,7 @@ todo: compartments
       <page type="resource" resource="MessageHeader"/>
       <page type="resource" resource="OperationOutcome"/>
       <page type="resource" resource="Parameters"/>
-      <page type="resource" resource="Query"/>
+			<!--        <page type="resource" resource="Query"/> -->
       <page type="resource" resource="Subscription"/>
       <!--    <page type="resource" resource="SecurityPrincipal"/>
            <page type="resource" resource="SecurityGroup"/>
@@ -227,15 +244,19 @@ todo: compartments
       <page type="resource" resource="ExplanationOfBenefit"/>
             <page type="resource" resource="EnrollmentRequest"/>
       <page type="resource" resource="EnrollmentResponse"/>
+			<page type="resource" resource="InstitutionalClaim"/>
       <page type="resource" resource="OralHealthClaim"/>
             <page type="resource" resource="PaymentNotice"/>
             <page type="resource" resource="PaymentReconciliation"/>
       <page type="resource" resource="PendedRequest"/>
+			<page type="resource" resource="PharmacyClaim"/>
+			<page type="resource" resource="ProfessionalClaim"/>
             <page type="resource" resource="Readjudicate"/>
       <page type="resource" resource="Reversal"/>
       <page type="resource" resource="StatusRequest"/>
       <page type="resource" resource="StatusResponse"/>
       <page type="resource" resource="SupportingDocumentation"/>
+			<page type="resource" resource="VisionClaim"/>
     </page>
   </page>
 </fhir>
