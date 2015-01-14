@@ -1030,7 +1030,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">fatal | error | warning | information&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, означает ли эта проблема  вариант успешной обработки<!-- Indicates whether the issue indicates a variation from successful processing  -->/Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, означает ли эта проблема  вариант успешной обработки<!-- Indicates whether the issue indicates a variation from successful processing  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает, насколько значима эта проблема для общей успешности действия.<!-- Indicates how relevant the issue is to the overall success of the action. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
