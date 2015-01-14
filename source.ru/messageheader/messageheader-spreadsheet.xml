@@ -1438,13 +1438,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Message Destination Application(s)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Приложение(-я), которому предназначено сообщение<!-- Message Destination Application(s) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The destination application which the message is intended for</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Целевое приложение, которому предназначено это сообщение<!-- The destination application which the message is intended for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates where message is to be sent to for routing purposes.  Allows verification of &quot;am I the intended recipient&quot;</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает в целях маршрутизации, куда должно быть отправлено сообщение. Позволяет верификацию вида &quot;являюсь ли я предполагаемым получателем&quot;<!-- Indicates where message is to be sent to for routing purposes.  Allows verification of &quot;am I the intended recipient&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">there SHOULD be at least one destination, but in some circumstances, the source system is unaware of any particular destination system</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">ДОЛЖНО быть как минимум одно назначение, однако в некоторых обстоятельствах исходной системе не известна конкретная система назначения<!-- there SHOULD be at least one destination, but in some circumstances, the source system is unaware of any particular destination system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./communicationFunction[typeCode=&quot;RCV&quot;]</Data><NamedCell
@@ -1474,9 +1474,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Название системы<!-- Name of system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Human-readable name for the target system</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое название целевой системы<!-- Human-readable name for the target system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">May be used for routing of response and/or to support audit</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может использоваться для маршрутизации ответа и/или для поддержки аудита<!-- May be used for routing of response and/or to support audit --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1505,11 +1505,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Particular delivery destination within the destination</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретный адресат доставки по назначению<!-- Particular delivery destination within the destination --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the target end system in situations where the initial message transmission is to an intermediary system.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает целевую конечную систему в ситуациях, когда первоначально сообщение было передано промежуточной системе.<!-- Identifies the target end system in situations where the initial message transmission is to an intermediary system. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Supports multi-hop routing</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Поддержка многосегментной (multi-hop) маршрутизации<!-- Supports multi-hop routing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1539,11 +1539,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Фактический адрес или идентификатор назначения<!-- Actual destination address or id --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates where the message should be routed to.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, куда должно быть направлено сообщение.<!-- Indicates where the message should be routed to. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies where to route the message</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает, куда направить сообщение<!-- Identifies where to route the message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The id may be a non-resolvable URI for systems that do not use standard network-based addresses</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор может быть неразрешимым URI для систем, которые не используют стандартные сетевые адреса<!-- The id may be a non-resolvable URI for systems that do not use standard network-based addresses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./telecom</Data><NamedCell
@@ -1571,13 +1571,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The source of the data entry</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Источник ввода данных<!-- The source of the data entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person or device that performed the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Физическое лицо или устройство, выполнившее ввод данных, вызвавшее это сообщение. Когда имеется несколько кандидатур, выберите наиболее подходящую к сообщению. Остальных можно будет указать в расширениях<!-- The person or device that performed the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know for audit/traceback requirements and possibly for authorization.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать в целях аудита/отслеживания и, возможно, для авторизации.<!-- Need to know for audit/traceback requirements and possibly for authorization. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Usually only for the request, but can be used in a response</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно только для запроса, однако может использоваться и в ответе<!-- Usually only for the request, but can be used in a response --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[typeCode=&quot;ENT&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/player[isNormalEntity() and classCode=(&quot;DEV&quot;, &quot;PSN&quot;) and determinerCode=&quot;INST&quot;])</Data><NamedCell
@@ -1605,13 +1605,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The source of the decision</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Источник решения<!-- The source of the decision --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the MessageHeader. Can provide other authors in extensions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Логический автор сообщения - физическое лицо или устройство, принявшее решение о том, что описанное событие должно произойти. Когда имеется несколько кандидатур, выберите наиболее подходящую к MessageHeader. Остальных авторов можно будет указать в расширениях<!-- The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the MessageHeader. Can provide other authors in extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know for audit/traceback requirements and possibly for authorization.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать в целях аудита/отслеживания и, возможно, для авторизации.<!-- Need to know for audit/traceback requirements and possibly for authorization. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Usually only for the request, but can be used in a response</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно только для запроса, однако может использоваться и в ответе<!-- Usually only for the request, but can be used in a response --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/player[isNormalEntity() and classCode=(&quot;DEV&quot;, &quot;PSN&quot;) and determinerCode=&quot;INST&quot;])</Data><NamedCell
@@ -1641,9 +1641,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Планируемый &quot;реальный&quot; получатель данных<!-- Intended &quot;real-world&quot; recipient for the data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Позволяет данные, передаваемые в сообщении, адресовать конкретному человеку или отделению, когда направления конкретному приложению не достаточно. <!-- Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows routing beyond just the application level</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет маршрутизацию за пределами уровня приложений<!-- Allows routing beyond just the application level --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1673,13 +1673,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Final responsibility for event</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Окончательная ответственность за событие<!-- Final responsibility for event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person or organization that accepts overall responsibility for the contents of the message. The implication is that the message event happened under the policies of the responsible party</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Физическое лицо или организация, которые принимают полную ответственность за содержимое этого сообщения. Подразумевается, что событие в сообщении произошло в рамках политики ответственной стороны<!-- The person or organization that accepts overall responsibility for the contents of the message. The implication is that the message event happened under the policies of the responsible party --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know for audit/traceback requirements and possibly for authorization.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать в целях аудита/отслеживания и, возможно, для авторизации.<!-- Need to know for audit/traceback requirements and possibly for authorization. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Usually only for the request, but can be used in a response</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно только для запроса, однако может использоваться и в ответе<!-- Usually only for the request, but can be used in a response --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[isHighest(priorityCode) and typeCode=&quot;RESP&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/player[isNormalEntity() and classCode=&quot;PSN&quot; and determinerCode=&quot;INST&quot;] or ./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[isHighest(priorityCode) and typeCode=&quot;RESP&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/scoper[isNormalEntity() and classCode=&quot;ORG&quot; and determinerCode=&quot;INST&quot;])</Data><NamedCell
@@ -1708,11 +1708,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Cause of event</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Причина события<!-- Cause of event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Coded indication of the cause for the event - indicates  a reason for the occurance of the event that is a focus of this message</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированное обозначение причины события - указывает причину наступления события, описываемого этим сообщением<!-- Coded indication of the cause for the event - indicates  a reason for the occurance of the event that is a focus of this message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to track why resources are being changed and report in the audit log/history of the resource.  May affect authorization.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо для возможности отслеживать причины изменения ресурсов и составлять отчеты в журнале аудита/истории ресурса. Может влиять на авторизацию.<!-- Need to be able to track why resources are being changed and report in the audit log/history of the resource.  May affect authorization. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1747,7 +1747,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String"><!-- Every message event is about actual data, a single resource, that is identified in the definition of the event, and perhaps some or all linked resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The data is defined where the transaction type is defined. The transaction data is always included in the bundle that is the full message.  Only the root resource is specified.  The resources it references should be contained in the bundle but are not also listed here.  Multiple repetitions are allowed to cater for merges and other situations with multiple focal targets</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Данные определяются там, где определяется тип транзакции. Данные транзакции всегда включаются в комплект, т. е. полное сообщение. Указывается только корневой ресурс. Ресурсы, на которые он ссылается, должны содержаться в комплекте, однако также не перечисляются здесь. Многократные повторения разрешены в целях поддержки слияний и других ситуаций с несколькими координационными целями<!-- The data is defined where the transaction type is defined. The transaction data is always included in the bundle that is the full message.  Only the root resource is specified.  The resources it references should be contained in the bundle but are not also listed here.  Multiple repetitions are allowed to cater for merges and other situations with multiple focal targets --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[typeCode=&quot;SUBJ&quot; and isNormalParticipation]/role or ./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/outboundRelationship[typeCode=&quot;SBJ&quot; and isNormalActRelatoinship]/target)</Data><NamedCell
