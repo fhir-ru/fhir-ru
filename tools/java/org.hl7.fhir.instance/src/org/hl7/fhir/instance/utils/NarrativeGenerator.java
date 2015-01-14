@@ -1903,14 +1903,14 @@ public class NarrativeGenerator implements INarrativeGenerator {
         x.addTag("p").addText("URL: [base]/"+c.getValue()+"/[id]/$"+opd.getName());
     }
     
-    x.addTag("p").addText("Parameters");
+    x.addTag("p").addText("Параметры");
     XhtmlNode tbl = x.addTag("table").setAttribute("class", "grid");
     XhtmlNode tr = tbl.addTag("tr");
-    tr.addTag("td").addTag("b").addText("Use");
-    tr.addTag("td").addTag("b").addText("Name");
-    tr.addTag("td").addTag("b").addText("Cardinality");
-    tr.addTag("td").addTag("b").addText("Type");
-    tr.addTag("td").addTag("b").addText("Documentation");
+    tr.addTag("td").addTag("b").addText("Применение");
+    tr.addTag("td").addTag("b").addText("Имя");
+    tr.addTag("td").addTag("b").addText("Кард. число");
+    tr.addTag("td").addTag("b").addText("Тип");
+    tr.addTag("td").addTag("b").addText("Документация");
     for (OperationDefinitionParameterComponent p : opd.getParameter()) {
       tr = tbl.addTag("tr");
       tr.addTag("td").addText(p.getUse().toString());
@@ -1965,17 +1965,17 @@ public class NarrativeGenerator implements INarrativeGenerator {
     smartAddText(x.addTag("p"), conf.getDescription());
     ConformanceRestComponent rest = conf.getRest().get(0);
     XhtmlNode t = x.addTag("table");
-    addTableRow(t, "Mode", rest.getMode().toString());
-    addTableRow(t, "Description", rest.getDocumentation());
+    addTableRow(t, "Режим", rest.getMode().toString()); //"Mode"
+    addTableRow(t, "Описание", rest.getDocumentation());
     
-    addTableRow(t, "Transaction", showOp(rest, SystemRestfulInteraction.TRANSACTION));
-    addTableRow(t, "System History", showOp(rest, SystemRestfulInteraction.HISTORYSYSTEM));
-    addTableRow(t, "System Search", showOp(rest, SystemRestfulInteraction.SEARCHSYSTEM));
+    addTableRow(t, "Транзакция", showOp(rest, SystemRestfulInteraction.TRANSACTION));
+    addTableRow(t, "Системная история", showOp(rest, SystemRestfulInteraction.HISTORYSYSTEM)); //"System History"
+    addTableRow(t, "Системный поиск", showOp(rest, SystemRestfulInteraction.SEARCHSYSTEM)); //"System Search"
     
     t = x.addTag("table");
     XhtmlNode tr = t.addTag("tr");
-    tr.addTag("th").addTag("b").addText("Resource Type");
-    tr.addTag("th").addTag("b").addText("Profile");
+    tr.addTag("th").addTag("b").addText("Тип ресурса");
+    tr.addTag("th").addTag("b").addText("Профиль");
     tr.addTag("th").addTag("b").addText("Read");
     tr.addTag("th").addTag("b").addText("V-Read");
     tr.addTag("th").addTag("b").addText("Search");
