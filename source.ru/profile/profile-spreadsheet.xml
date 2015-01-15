@@ -6285,7 +6285,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">tool</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Base Resources defined as profiles (implementation assistance, for derivation and product development)</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Базовые ресурсы, определенные как профили (помощь в реализации, для создания производных и разработки продуктов)<!-- Base Resources defined as profiles (implementation assistance, for derivation and product development) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">(generated)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

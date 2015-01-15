@@ -968,7 +968,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">A conformance statement</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Заявление о соответствии - это набор требований для желаемой реализации или описание, как целевое приложение выполняет эти требования в конкретной реализации<!-- A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
