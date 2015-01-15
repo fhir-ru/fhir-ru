@@ -163,7 +163,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">FHIRDefinedType</Data></Cell>
-    <Cell><Data ss:Type="String">Either a resource or a data type</Data></Cell>
+    <Cell><Data ss:Type="String">Либо тип ресурса, либо тип данных<!-- Either a resource or a data type --></Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">#defined-types</Data></Cell>
    </Row>
