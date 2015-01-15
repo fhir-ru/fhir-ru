@@ -957,7 +957,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="69.75">
     <Cell ss:StyleID="s74"><Data ss:Type="String">description</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">This profile describes common extensions that are used with Profiles</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Этот профиль описывает общие расширения, используемые с профилями<!-- This profile describes common extensions that are used with Profiles --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">status</Data></Cell>

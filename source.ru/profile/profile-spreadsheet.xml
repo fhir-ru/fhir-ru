@@ -1575,7 +1575,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Версии, проблемы, ограничения области применения и др<!-- Versions, Issues, Scope limitations etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Комментарии к этому мэппингу, включая версионные примечания, вопросы, ограничения области применения и другие важные применения к использованию<!-- Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Комментарии к этому мэппингу, включая версионные примечания, вопросы, ограничения области применения и другие важные примечания к использованию<!-- Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4893,11 +4893,12 @@
     <Cell ss:StyleID="s114"><Data ss:Type="String">operation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">Build Questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s114"><Data ss:Type="String">Создание вопросника<!-- Build Questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">Generates a [[[Questionnaire]]] instance  based on a specified [[[Profile]]], creating questions for each core element or extension element found in the profile.  &#10;&#10;If the operation is not called at the instance level, one of the *identifier*, *profile* or *url* 'in' parameters must be provided.  (If called at the instance level, these parameters will be ignored.  If more than one is specified, servers may raise an error or may resolve with the parameter of their choice.)&#10;&#10;The response will contain a [[[Questionnaire]]] instance based on the specified [[[Profile]]] and/or an [[[OperationOutcome]]] resource with errors or warnings.&#10;&#10;Nested groups are used to handle complex structures and data types.  If the 'supportedOnly' parameter is set to true, only those elements marked as &quot;must support&quot; will be included.&#10;&#10;This operation is intended to enable auto-generation of simple interfaces for arbitrary profiles.  The 'questionnaire' approach to data entry has limitations that will make it less optimal than custom-defined interfaces.  However, this function may be useful for simple applications or for systems that wish to support &quot;non-core&quot; resources with minimal development effort.</Data><NamedCell
+    <Cell ss:StyleID="s128"><Data ss:Type="String">Генерирует экземпляр вопросника [[[Questionnaire]]] на основе указанного профиля [[[Profile]]], создавая вопросы для каждого основного элемента или элемента расширения, найденные в профиле.  &#10;&#10;Если эта операция вызывается не на уровне экземпляра, необходимо указать один из входных ('in') параметров *identifier*, *profile* или *url*. (Если вызывается на уровне экземпляра, эти параметры будут игнорироваться. Если указано более одного, серверы могут вызвать ошибку или выполнить с параметром на свой выбор.)&#10;&#10;Ответ будет содержать экземпляр вопросника [[[Questionnaire]]] на основе указанного профиля [[[Profile]]] и/или ресурс [[[OperationOutcome]]] с ошибками и предупреждениями.&#10;&#10;Вложенные группы используются для обработки сложных структур и типов данных. Если параметр 'supportedOnly' установлен в значение true, будут включены только элементы, помеченные как &quot;must support&quot;.&#10;&#10;Эта операция предназначена дать возможность автогенерации простых интерфейсов для произвольных профилей. Этот подход с вопросниками 'questionnaire' к вводу данных имеет ограничения, которые сделают его менее оптимальным, чем пользовательские интерфейсы. Однако эта функция может быть полезна для простых приложений или для систем, которые хотят поддержать &quot;non-core&quot; ресурсы с минимальными усилиями разработчиков.
+	<!-- Generates a [[[Questionnaire]]] instance  based on a specified [[[Profile]]], creating questions for each core element or extension element found in the profile.  &#10;&#10;If the operation is not called at the instance level, one of the *identifier*, *profile* or *url* 'in' parameters must be provided.  (If called at the instance level, these parameters will be ignored.  If more than one is specified, servers may raise an error or may resolve with the parameter of their choice.)&#10;&#10;The response will contain a [[[Questionnaire]]] instance based on the specified [[[Profile]]] and/or an [[[OperationOutcome]]] resource with errors or warnings.&#10;&#10;Nested groups are used to handle complex structures and data types.  If the 'supportedOnly' parameter is set to true, only those elements marked as &quot;must support&quot; will be included.&#10;&#10;This operation is intended to enable auto-generation of simple interfaces for arbitrary profiles.  The 'questionnaire' approach to data entry has limitations that will make it less optimal than custom-defined interfaces.  However, this function may be useful for simple applications or for systems that wish to support &quot;non-core&quot; resources with minimal development effort. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">**Open Issue**: Ideally, extensions should be populated in the generated [[[Questionnaire]]] that will support taking [[[QuestionnaireAnswers]]] resources generated from the Questionnaire and turning them back into the appropriate resources.</Data><NamedCell
+    <Cell ss:StyleID="s129"><Data ss:Type="String">**Открытый вопрос**: В идеале, расширения должны заполняться в сгенерированном вопроснике [[[Questionnaire]]], который будет поддерживать принятие ресурсов [[[QuestionnaireAnswers]]], сгенерированных из этого вопросника и возвращать их обратно в соответствующие ресурсы.<!-- **Open Issue**: Ideally, extensions should be populated in the generated [[[Questionnaire]]] that will support taking [[[QuestionnaireAnswers]]] resources generated from the Questionnaire and turning them back into the appropriate resources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -4908,7 +4909,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">A logical profile identifier (i.e. 'Profile.identifier''). The server must know the profile or be able to retrieve it from other known repositories.</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Логический идентификатор профиля (т. е. 'Profile.identifier'). Сервер должен знать этот профиль или иметь возможность извлекать его из других известных репозиториев.<!-- A logical profile identifier (i.e. 'Profile.identifier''). The server must know the profile or be able to retrieve it from other known repositories. --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -4919,7 +4920,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The [[[Profile]]] is provided directly as part of the request. Servers may choose not to accept profiles in this fashion</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String"> [[[Profile]]] указывается непосредственно в рамках запроса. Серверы могут выбрать не принимать профили, переданные таким образом<!-- The [[[Profile]]] is provided directly as part of the request. Servers may choose not to accept profiles in this fashion --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -4930,7 +4931,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The profile's official url (i.e. 'Profile.url'). The server must know the profile or be able to retrieve it from other known repositories.</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Официальный url профиля (т. е. 'Profile.url'). Сервер должен знать этот профиль или иметь возможность получать его из других известных репозиториев.<!-- The profile's official url (i.e. 'Profile.url'). The server must know the profile or be able to retrieve it from other known repositories. --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -4941,7 +4942,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">If true, the questionnaire will only include those elements marked as &quot;mustSupport='true'&quot; in the profile.</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Если имеет значение true, вопросник будет включать только элементы, отмеченные в профиле как &quot;mustSupport='true'&quot;.<!-- If true, the questionnaire will only include those elements marked as &quot;mustSupport='true'&quot; in the profile. --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -4952,7 +4953,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">Questionnaire</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The questionnaire form generated based on the profile.</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Форма вопросника, сгенерированная на основе этого профиля.<!-- The questionnaire form generated based on the profile. --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
