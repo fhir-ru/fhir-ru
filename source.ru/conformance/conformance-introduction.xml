@@ -28,42 +28,48 @@ presence of the <i>implementation</i> element. -->
 
 <h3>Опишите возможности программного решения <!-- Describe software solution capabilities --></h3>
 <p>
-In this scenario, the conformance statement describes generic capabilities of a 
+В этом сценарии conformance statement описывает общие возможности приложения или компонентного решения. Это решение может быть доступно для покупки или другого приобретения и может быть развернут и настроен на любом количестве независимых сайтов. Поскольку это не зависит от какой-либо конкретной реализации, профиль не может предоставить конкретную информацию, такую как адреса точек взаимодействия. Ему также может потребоваться документировать различные конфигурации, в которых приложение может быть настроено или описывать степень кастомизации, связанной с этим решением.
+<!-- In this scenario, the conformance statement describes generic capabilities of a 
 software application or component solution.  The solution might be available for
 purchase or other acquisition and might be deployed and configured at any number of
 independent sites.  Because it is not dependent on any particular implementation, the
 profile cannot provide specific details such as endpoint addresses.  It may also need
 to document various configurations in which the application can be set up or describe
-the degree of customizability associated with the solution.
+the degree of customizability associated with the solution. -->
 </p>
-<p>This type of statement may be used as a marketing tool by software and system
+<p>Этот тип conformance statement может использоваться как маркетинговое средство ПО и системными разработчиками для формального описания их возможностей. Также может использоваться в качестве основы для тестирования соответствия программных решений независимо от конкретной инсталляции.
+<!-- This type of statement may be used as a marketing tool by software and system
 developers to formally describe their capabilities.  It can also be used as the basis
-for conformance testing of software solutions independent of a particular installation.
+for conformance testing of software solutions independent of a particular installation. -->
 </p>
 <p>
-A conformance statement is identified as being a software solution statement through the 
-presence of the <i>software</i> element.
+Conformance statements такого типа называются "заявление о программном решении" (software solution statement) и определяются наличием элемента <i>software</i>.
+<!-- A conformance statement is identified as being a software solution statement through the 
+presence of the <i>software</i> element. -->
 </p>
 
 <h3>Опишите желаемое решение<!-- Describe a desired solution --></h3>
 <p>
-In this scenario, the conformance statement describes the capabilities of a desired
+В этом сценарии conformance statement описывает желаемые возможности системы. Может использоваться в рамках процесса архитектурного проектирования для документации требуемых системе возможностей, или в рамках RFP-процесса для формальной документации требований запрашиваемого решения и документации критериев, по которым по которым предложения будут оцениваться.
+<!-- In this scenario, the conformance statement describes the capabilities of a desired
 system.  It might be used as part of an architectural design process to document
 needed system capabilities, or might be used as part of an RFP process to formally
 document the requirements of a requested solution and to document the criteria by
-which proposals will be evaluated.
+which proposals will be evaluated. -->
 </p>
 <p>
-A conformance statement is identified as being a requirements statement through the 
-presence of the <i>proposal</i> element.
+Conformance statements такого типа называются "заявление о требованиях" (requirements statement) и определяются наличием элемента  <i>proposal</i>.
+<!-- A conformance statement is identified as being a requirements statement through the 
+presence of the <i>proposal</i> element. -->
 </p>
 <p/>
 
 <p>
-These three types of profiles can be used together.  A requirements statement can 
+Эти 3 типа профилей могут использоваться вместе. Заявление о требованиях можно сравнивать с заявлениями о программных решениях, предлагаемых опрашиваемыми RFP. Заявление о программном решении для пакета ПО образует начальную точку для заявления о реализации, связанного с конкретной инсталляцией этого пакета ПО.
+<!-- These three types of profiles can be used together.  A requirements statement can 
 be compared against the solution statements proffered by respondents to an RFP.  A 
 solution statement for a software package forms the starting point for the implementation 
-statement associated with a particular installation of that software package.
+statement associated with a particular installation of that software package. -->
 </p>
 </div> 
 
