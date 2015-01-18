@@ -4722,49 +4722,49 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Conformance.date</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The conformance statement publication date</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Дата публикации заявления о соответствии<!-- The conformance statement publication date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">software</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Conformance.software.name</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Part of a the name of a software application</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть имени приложения<!-- Part of a the name of a software application --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">fhirversion</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Conformance.version</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The version of FHIR</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Версия FHIR<!-- The version of FHIR --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">resource</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Conformance.rest.resource.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Name of a resource mentioned in a conformance statement</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Имя ресурса, упоминаемого в заявлении о соответствии<!-- Name of a resource mentioned in a conformance statement --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">event</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Conformance.messaging.event.code</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Event code in a conformance statement</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Код события в заявлении о соответствии<!-- Event code in a conformance statement --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">mode</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Conformance.rest.mode</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Mode - restful (server/client) or messaging (sender/receiver)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Режим - restful (server/client) или messaging (sender/receiver)<!-- Mode - restful (server/client) or messaging (sender/receiver) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">profile</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Conformance.rest.resource.profile</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A profile id invoked in a conformance statement</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор профиля, вызываемого в заявлении о соответствии<!-- A profile id invoked in a conformance statement --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">format</Data></Cell>
@@ -7076,7 +7076,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ConformanceStatementStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The status of this conformance statement</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус этого заявления о соответствии<!-- The status of this conformance statement --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#conformance-statement-status</Data></Cell>
@@ -7091,7 +7091,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SearchParamType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Data types allowed to be used for search parameters</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Типы данных, разрешенные к использованию в качестве параметров поиска<!-- Data types allowed to be used for search parameters --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#search-param-type</Data></Cell>
@@ -7106,7 +7106,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">MessageSignificanceCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The impact of the content of a message</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Степень влияния содержимого сообщения<!-- The impact of the content of a message --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#message-significance-category</Data></Cell>
@@ -7121,7 +7121,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ResourceVersionPolicy</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How the system supports versioning for a resource</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Как система поддерживает версионирование ресурса<!-- How the system supports versioning for a resource --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#versioning-policy</Data></Cell>
