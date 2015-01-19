@@ -1031,7 +1031,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Логический идентификатор конкретной версии заявления<!-- Logical id for this version of the statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор для указания на конкретную версию заявления о соответствии в спецификации, модели, проекте или примере. Это произвольное значение, контролируемое автором профиля вручную и оно должно быть штампом времени<!-- The identifier that is used to identify this version of the conformance statement when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор для указания на конкретную версию заявления о соответствии в спецификации, модели, проекте или примере. Это произвольное значение, контролируемое автором профиля вручную, и оно должно быть штампом времени<!-- The identifier that is used to identify this version of the conformance statement when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Несколько различных экземпляров заявления о соответствии могут иметь одинаковый идентификатор, но различные версии<!-- There may be multiple different instances of a conformance statement that have the same identifier but different versions --></Data><NamedCell
@@ -1601,7 +1601,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Профили, поддерживаемые системой<!-- Profiles supported by the system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Список профилей, поддерживаемых системой. Для сервера слова &quot;supported by the system&quot; означают, что система ./производит набор ресурсов, соответствующих определенному профилю, и позволяет своим клиентам выполнять поиск, используя этот профиль и находить соответствующие данные. Для клиента это означает, что система будет искать по этому профилю и обрабатываться данные в соответствии с руководством, подразумеваемым в этом профиле. <!-- A list of profiles supported by the system. For a server, &quot;supported by the system&quot; means the system hosts/produces a set of resources, conformant to a particular profile, and allows its clients to search using this profile and to find appropriate data. For a client, it means the system will search by this profile and process data according to the guidance implicit in the profile. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Список профилей, поддерживаемых системой. Для сервера слова &quot;supported by the system&quot; означают, что система размещает/производит набор ресурсов, соответствующих определенному профилю, и позволяет своим клиентам выполнять поиск, используя этот профиль и находить соответствующие данные. Для клиента это означает, что система будет искать по этому профилю и обрабатываться данные в соответствии с руководством, подразумеваемым в этом профиле. <!-- A list of profiles supported by the system. For a server, &quot;supported by the system&quot; means the system hosts/produces a set of resources, conformant to a particular profile, and allows its clients to search using this profile and to find appropriate data. For a client, it means the system will search by this profile and process data according to the guidance implicit in the profile. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Поддерживаемые профили отличаются от профилей, которые применяются к конкретному ресурсу в rest.resource.profile. Профиль ресурса - это общее заявление о том, какие свойства ресурса поддерживаются вообще системой - общая сумма средств, которые он поддерживает. 
@@ -2556,7 +2556,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Определение операции или пользовательского запроса<!-- Definition of an operation or a custom query --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определение операции или именованного запроса с параметрами, из значением и типом<!-- Definition of an operation or a named query and with its parameters and their meaning and type --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определение операции или именованного запроса с параметрами, их значением и типом<!-- Definition of an operation or a named query and with its parameters and their meaning and type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2775,7 +2775,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- Messaging interface behavior details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Документация возможностей системы касательно обмена сообщениями для этой точки взаимодействия, не задокументированной иным способом в заявлении о соответствии. Например процесс, как стать авторизованным партнером обмена сообщениями. <!-- Documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Документация возможностей системы касательно обмена сообщениями для этой точки взаимодействия, не задокументированной иным способом в заявлении о соответствии. Например описание процесса, как стать авторизованным партнером обмена сообщениями. <!-- Documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3147,7 +3147,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Описание поддержки документов<!-- Description of document support --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание того, как приложение поддерживает или использует указанный профиль документа. Например какие действия предпринимается при создании документов и т. п.<!-- A description of how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание того, как приложение поддерживает или использует указанный профиль документа. Например какие действия предпринимаются при создании документов и т. п.<!-- A description of how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4112,7 +4112,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Conformance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Conformance statement ДОЛЖЕН иметь хотя бы один из [элементов] rest, messaging или document<!-- A Conformance statement SHALL have at least one of rest, messaging or document --></Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Заявление о соответствии ДОЛЖНО иметь хотя бы один из [элементов] rest, messaging или document<!-- A Conformance statement SHALL have at least one of rest, messaging or document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">exists(f:rest) or exists(f:messaging) or exists(f:document)</Data><NamedCell
@@ -4124,7 +4124,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Details</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Conformance</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Conformance statement ДОЛЖЕН иметь хотя бы один из [элементов] description, software или implementation<!-- A Conformance statement SHALL have at least one of description, software, or implementation --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Заявление о соответствии ДОЛЖНО иметь хотя бы один из [элементов] description, software или implementation<!-- A Conformance statement SHALL have at least one of description, software, or implementation --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(f:software | f:implementation | f:description) &gt; 0</Data></Cell>
    </Row>
@@ -7031,7 +7031,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ConformanceEventMode</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Режим "mode" заявления о соответствии для сообщений <!-- The mode of a message conformance statement --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Режим заявления о соответствии для сообщений <!-- The mode of a message conformance statement --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#message-conformance-event-mode</Data></Cell>
