@@ -969,9 +969,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Extension Definition</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Определение расширения<!-- Extension Definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Defines an extension that can be used in resources</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Определяет расширение, которое может быть использовано в ресурсах<!-- Defines an extension that can be used in resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3806,7 +3806,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">ExtensionDefinition.mapping</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Must have at a name or a uri (or both)</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Должен иметь имя или URI (или оба)<!-- Must have at a name or a uri (or both) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">exists(f:uri) or exists(f:name)</Data><NamedCell
@@ -3818,7 +3818,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Element Path name</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">ExtensionDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">All element names must start with the extension name</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Имена всех элементов должны начинаться с имени расширения<!-- All element names must start with the extension name --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(f:element)=count(f:element[(not(preceding-sibling::f:element) and f:path/@value='Extension') or (preceding-sibling::f:element and starts-with(f:path/@value, concat('Extension', '.')))])</Data></Cell>
    </Row>
@@ -3828,7 +3828,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Element Name</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">ExtensionDefinition.element</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Path names cannot contain .value</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Имена путей не могут содержать .value<!-- Path names cannot contain .value --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(contains(f:path/@value, '.value'))</Data></Cell>
    </Row>
@@ -6623,7 +6623,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">ExtensionContext</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">How an extension context is interpreted</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Как интерпретируется контекст расширения<!-- How an extension context is interpreted --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#extension-context</Data></Cell>

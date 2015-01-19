@@ -1,48 +1,60 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-The Extension Definition resource provides a forml definition of an extension used 
-in a FHIR resource, that can used as the basis for validation, and code, report and UI generation. 
+Ресурс Extension Definition предоставляет формальное определение расширения, используемого в FHIR-ресурсе, которое может применяться в качестве основания для валидации, а также генерации кода, отчетов и пользовательского интерфейса.
+<!-- The Extension Definition resource provides a forml definition of an extension used 
+in a FHIR resource, that can used as the basis for validation, and code, report and UI generation.  -->
 </p>
 </div> 
 
 <div> 
-<h2>Boundaries and Relationships</h2> 
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2> 
 <ul>
- <li>Every extension in a resource refers directly to it's definition</li>
- <li>ExtensionDefinitions are used by <a href="profile.html">Profile</a> instances when specifying that extensions are used in a resource</li>
+ <li>Каждое расширение в ресурсе ссылается непосредственно на свое определение<!-- Every extension in a resource refers directly to it's definition --></li>
+ <li>Ресурсы ExtensionDefinition используются экземплярами <a href="profile.html">Profile</a> для указания того, какие расширения применяются в ресурсе<!-- ExtensionDefinitions are used by <a href="profile.html">Profile</a> instances when specifying that extensions are used in a resource --></li>
 </ul>
 
 <p>
-Whenever resources containing extensions are exchanged, the definitions of the extensions SHALL be available to all the parties that share the resources.
+Когда бы ни обменивались ресурсы, содержащие расширения, определения этих расширений ДОЛЖНЫ быть доступны всем сторонам, которые совместно используют эти ресурсы. 
+Каждое расширение содержит URI, ссылающийся на источник определений как Resource Profile. Этот источник ДОЛЖЕН быть символьной ссылкой, например http: url, которая ведет в точку взаимодействия, отвечающую содержимым определений - предпочтительно <a href="http.html">FHIR RESTful-сервер</a>, поддерживающий Resources Profile, или логической ссылкой (например urn:) - к примеру, на государственный опубликованный стандарт.
+<!-- Whenever resources containing extensions are exchanged, the definitions of the extensions SHALL be available to all the parties that share the resources.
 Each extension contains a URI that references the source of the definitions as a Resource Profile. The source SHOULD be a literal reference, such as an
 http: url that refers to an end-point that responds with the contents of the definitions - preferably a <a href="http.html">FHIR RESTful server</a>
 supporting the Resources Profile, or a logical reference (e.g. using a urn:) - for instance, to a national published
-standard.
+standard. -->
 </p>
 </div> 
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
-Extensions may be defined by any project or jurisdiction, up to and including international standards organizations such as HL7 itself. 
+Расширения могут быть определены любым проектом или юрисдикцией, включая международные организации по стандартизации, например сам HL7. 
+Расширения всегда определяются в отношении некоторого конкретного контекста - типа элемента, который они могут расширять. Далее перечислены возможные типы контекста для расширения:
+<!-- Extensions may be defined by any project or jurisdiction, up to and including international standards organizations such as HL7 itself. 
 Extensions are always defined against some particular context - the type of element 
-that they may be used to extend. The following are possible contexts for an extension:
+that they may be used to extend. The following are possible contexts for an extension: -->
 </p>
 <table class="codes">
- <tr><th>Context type</th><th>Context format</th><th>Examples</th></tr>
- <tr><td>A particular element (including the root) in a single resource</td><td>The element path for that element<br/>Note: If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not</td><td>Profile.resource.element; Person</td></tr>
- <tr><td>A particular element (including the root) in a particular data type</td><td>The data type name for primitive types or the element path for complex data types</td><td>Address.part.value; string</td></tr>
- <tr><td>A particular context in one of the mapped reference models</td><td>The name of the reference model followed by the mapping path</td><td>RIM: Act[moodCode="EVN"]</td></tr>
- <tr><td>Another extension</td><td>The profile uri of the extension followed by the extension code</td><td>http://myextensions.org#someExtension</td></tr>
- <tr><td>A set of some combination of the above</td><td>As above, separated by ';'</td><td>Address; Contact</td></tr>
+ <tr><th>Тип контекста<!-- Context type --></th><th>Формат контекста<!-- Context format --></th><th>Примеры<!-- Examples --></th></tr>
+  <tr><td>Конкретный элемент (включая корневой) в отдельном ресурсе</td><td>Путь к этому элементу<br/>Примечание: если контекстом является элемент, который может иметь разные типы, тогда используйте value[x], если расширение работает на все предлагаемые на выбор типы, иначе перечисление явно названных элементов, если нет</td><td>Profile.resource.element; Person</td></tr>
+<!--  <tr><td>A particular element (including the root) in a single resource</td><td>The element path for that element<br/>Note: If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not</td><td>Profile.resource.element; Person</td></tr> -->
+ <tr><td>Конкретный элемент (включая корневой) в конкретном типе данных</td><td>Имя типа данных для примитивных типов или путь к элементу для комплексных типов данных</td><td>Address.part.value; string</td></tr>
+<!--  <tr><td>A particular element (including the root) in a particular data type</td><td>The data type name for primitive types or the element path for complex data types</td><td>Address.part.value; string</td></tr> -->
+ <tr><td>Определенный контекст в одной из сопоставляемых эталонных моделей</td><td>Название эталонной модели с последующим путем мэппинга</td><td>RIM: Act[moodCode="EVN"]</td></tr>
+<!--  <tr><td>A particular context in one of the mapped reference models</td><td>The name of the reference model followed by the mapping path</td><td>RIM: Act[moodCode="EVN"]</td></tr> -->
+ <tr><td>Другое расширение</td><td>Профильный URI расширения, за которым следует код расширения</td><td>http://myextensions.org#someExtension</td></tr>
+ <tr><td>Набор из комбинации перечисленных типов контекста</td><td>Как указано выше, разделенные ';'</td><td>Address; Contact</td></tr>
+<!--  <tr><td>Another extension</td><td>The profile uri of the extension followed by the extension code</td><td>http://myextensions.org#someExtension</td></tr>
+ <tr><td>A set of some combination of the above</td><td>As above, separated by ';'</td><td>Address; Contact</td></tr> -->
 </table>
 <p>
-In addition, an extension definition might apply additional constraints with
+Кроме того, определение расширения может применять дополнительные ограничения по отношению к конкретным значениям элементов цели, что делает его использование уместным. 
+Расширения ДОЛЖНЫ использоваться только на цели, для которой они определены.
+<!-- In addition, an extension definition might apply additional constraints with
 regards to particular element values of the target that make its use appropriate.
-Extensions SHALL only be used on a target for which they are defined.
+Extensions SHALL only be used on a target for which they are defined. -->
 </p>
 
 
