@@ -1633,10 +1633,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">If the endpoint is a RESTful one</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A definition of the restful capabilities of the solution, if any</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определение restful-возможностей этого решения, если имеются<!-- A definition of the restful capabilities of the solution, if any --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Multiple repetitions allow definition of both client and / or server behaviors or possibly behaviors under different configuration settings (for software or requirements statements)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Многократные повторения позволяют определение и клиентского, и/или серверного поведения, или возможного поведения при разных конфигурационных настройках (для software или requirements statements)<!-- Multiple repetitions allow definition of both client and / or server behaviors or possibly behaviors under different configuration settings (for software or requirements statements) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1666,7 +1666,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">client | server</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies whether this portion of the statement is describing ability to initiate or receive restful operations</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, что описывает эта часть заявления: возможность инициирования или получения restful-операций<!-- Identifies whether this portion of the statement is describing ability to initiate or receive restful operations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1696,7 +1696,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">General description of implementation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Information about the system's restful capabilities that apply across all applications, such as security</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о restful-возможностях системы, которые применяются во всех приложениях, например безопасность<!-- Information about the system's restful capabilities that apply across all applications, such as security --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1723,7 +1723,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Information about security of implementation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Информация о безопасности реализации<!-- Information about security of implementation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о безопасности реализации<!-- Information about security of implementation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1756,10 +1756,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Adds CORS Headers (http://enable-cors.org/)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Server adds CORS headers when responding to requests - this enables javascript applications to use the server</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сервер добавляет CORS-заголовки, когда отвечает на запросы - это позволяет javascript-приложениям использовать этот сервер<!-- Server adds CORS headers when responding to requests - this enables javascript applications to use the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The easiest CORS headers to add are Access-Control-Allow-Origin: * &amp; Access-Control-Request-Method: GET, POST, PUT, DELETE</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Простейшиер CORS-заголовки для добавления - это Access-Control-Allow-Origin: * &amp; Access-Control-Request-Method: GET, POST, PUT, DELETE<!-- The easiest CORS headers to add are Access-Control-Allow-Origin: * &amp; Access-Control-Request-Method: GET, POST, PUT, DELETE --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1788,7 +1788,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">OAuth | OAuth2 | NTLM | Basic | Kerberos</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Types of security services are supported/required by the system</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Типы сервисов безопасности, поддерживаемые/требуемые системой<!-- Types of security services are supported/required by the system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1816,9 +1816,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">General description of how security works</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общее описание работы безопасности<!-- General description of how security works --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">General description of how security works</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общее описание того, как работает обеспечение безопасности<!-- General description of how security works --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1845,9 +1845,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Certificates associated with security profiles</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сертификаты, связанные с профилями безопасности<!-- Certificates associated with security profiles --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Certificates associated with security profiles</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сертификаты, связанные с профилями безопасности<!-- Certificates associated with security profiles --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1877,9 +1877,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Mime type for certificate</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">MIME-тип сертификата<!-- Mime type for certificate --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Mime type for certificate</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">MIME-тип сертификата<!-- Mime type for certificate --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1907,9 +1907,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Actual certificate</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Непосредственно сам сертификат<!-- Actual certificate --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Actual certificate</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Непосредственно сам сертификат<!-- Actual certificate --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1936,12 +1936,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Resource served on the REST interface</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс, обслуживаемый в этом REST-интерфейсе<!-- Resource served on the REST interface --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A specification of the restful capabilities of the solution for a specific resource type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Спецификация restful-возможностей этого решения для конкретного типа ресурса<!-- A specification of the restful capabilities of the solution for a specific resource type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Max of one repetition per resource type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Максимум одно повторение на один тип ресурса<!-- Max of one repetition per resource type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1969,9 +1969,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A resource type that is supported</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип ресурса, который поддерживается<!-- A resource type that is supported --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A type of resource exposed via the restful interface</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип ресурса, подвергаемого действию через этот restful-интерфейс<!-- A type of resource exposed via the restful interface --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1999,12 +1999,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What structural features are supported</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Какие структурные особенности поддерживаются<!-- What structural features are supported --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A specification of the profile that describes the solution's support for the resource, including any constraints on cardinality, bindings, lengths or other limitations</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Спецификация профиля, которая описывает поддержку решения для ресурса, включая все ограничения по кардинальным числам, привязкам, длине и другим ограничениям<!-- A specification of the profile that describes the solution's support for the resource, including any constraints on cardinality, bindings, lengths or other limitations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The profile applies to all  resources of this type - i.e. it is the superset of what is supported by the system</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Профиль применяется ко всем ресурсам этого типа - т. е. это супермножество того, что поддерживается системой<!-- The profile applies to all  resources of this type - i.e. it is the superset of what is supported by the system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2032,7 +2032,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">What operations are supported?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies a restful operation supported by the solution</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует restful-операцию, поддерживаемую решением <!-- Identifies a restful operation supported by the solution --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2064,7 +2064,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">read | vread | update | delete | history-instance | validate | history-type | create | search-type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Coded identifier of the operation, supported by the system resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированный идентификатор операции, поддерживаемой системным ресурсом<!-- Coded identifier of the operation, supported by the system resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2094,9 +2094,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Anything special about operation behavior</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only'</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Руководство, характерное для реализации этой операции, например 'delete - это логическое удаление' или 'обновления разрешены только с version id' или 'creates разрешены только с сертификатами предварительной авторизации'<!-- Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only' --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">REST allows a degree of variability in the implementation of RESTful solutions that is useful for exchange partners to be aware of.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">REST допускает некоторую степень изменчивости в реализации RESTful-решений, о которой полезно знать партнерам по обмену<!-- REST allows a degree of variability in the implementation of RESTful solutions that is useful for exchange partners to be aware of. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6971,7 +6971,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">RestfulConformanceMode</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Режим mode RESTful заявления о соответствии<!-- The mode of a RESTful conformance statement --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Режим RESTful-заявления о соответствии<!-- The mode of a RESTful conformance statement --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#restful-conformance-mode</Data></Cell>
