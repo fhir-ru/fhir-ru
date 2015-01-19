@@ -90,7 +90,8 @@ they support the particular endocrine profile, but how does the expert
 system actually find the endocrine reports that it knows how to process?  -->
 </p>
 <p>
-One possible option is for the expert system to receive every single 
+Один возможный способ для экспертной системы - получать каждый отдельный отчет, приходящий из лабораторной системы, проверять, соответствует ли он этому профилю или нет, и затем решать, обрабатывать ли его. Проверка, соответствует ли ресурс определенному профилю или нет - это прямая операция (как вариант для этого можно использовать  <a href="downloads.html">предложенные инструменты</a>), но это очень неэффективный способ - экспертной системе придется получать и обрабатывать в 100 тысяч раз больше ресурсов. Чтобы помочь потребителю находить подходящий набор отчетов для конкретного варианта использования, производитель ресурсов ДОЛЖЕН:
+<!-- One possible option is for the expert system to receive every single 
 report coming from the lab system, check whether it conforms to the 
 profile or not, and then decide whether to process it. Checking whether
 a resource conforms to a particular profile or not is a straight 
@@ -98,23 +99,25 @@ forward operation (on option is to use the <a href="downloads.html">provided too
 but this is very inefficient way - the expert system has to receive 
 and process 100 times many resources as it uses. To help a consumer 
 find the correct set of reports for a use-case, the producer of the 
-resources also SHALL:
+resources also SHALL: -->
 </p>
 <ol>
- <li><a href="resource.html#tags">Mark resources</a> with profile assertions documenting the profile(s) they conform to (this enables indexing by the profile)</li>
- <li>(if a server) support searching by the <a href="search.html#profile">_profile parameter</a> for the declared profiles</li>
+ <li><a href="resource.html#tags">Помечать ресурсы</a> утверждениями о профилях, которым они соответствуют (что позволит делать индексирование по профилям)<!-- <a href="resource.html#tags">Mark resources</a> with profile assertions documenting the profile(s) they conform to (this enables indexing by the profile) --></li>
+ <li>(для сервера) поддерживать поиск по <a href="search.html#profile">параметру _profile</a> для заявленных профилей<!-- (if a server) support searching by the <a href="search.html#profile">_profile parameter</a> for the declared profiles --></li>
 </ol>
 <p>
-Beyond these requirements, a producer of resources SHOULD ensure that any data that would reasonably be expected
-to conform to the declared profiles SHOULD be published in this form. 
+Помимо этих требований, производитель ресурсов ДОЛЖЕН гарантировать, что любые данные, от которых резонно будет ожидаться соответствие заявленным профилям, ДОЛЖНЫ быть опубликованы в этой форме.
+<!-- Beyond these requirements, a producer of resources SHOULD ensure that any data that would reasonably be expected
+to conform to the declared profiles SHOULD be published in this form.  -->
 </p>
 
 <a name="dstu"> </a>
 <blockquote>
 <p>
-DSTU note: there are many uninvestigated issues associated with system profiles. 
+Примечание к DSTU: имеется много неисследованных вопросов, связанных с системными профилями. HL7 ведет активный поиск обратной связи от пользователей, которые экспериментируют с системными профилями, и пользователи должны быть готовы к изменениям свойств и обязательств в этой области в будущем.
+<!-- DSTU note: there are many uninvestigated issues associated with system profiles. 
 HL7 is actively seeking feedback from users who experiment with system profiles, and users
-should be prepared for changes to features and obligations in this area in the future.
+should be prepared for changes to features and obligations in this area in the future. -->
 </p>
 </blockquote>
 
