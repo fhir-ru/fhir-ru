@@ -1694,7 +1694,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">General description of implementation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общее описание реализации<!-- General description of implementation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о restful-возможностях системы, которые применяются во всех приложениях, например безопасность<!-- Information about the system's restful capabilities that apply across all applications, such as security --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1754,7 +1754,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adds CORS Headers (http://enable-cors.org/)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Добавляет CORS-заголовки (http://enable-cors.org/)<!-- Adds CORS Headers (http://enable-cors.org/) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Сервер добавляет CORS-заголовки, когда отвечает на запросы - это позволяет javascript-приложениям использовать этот сервер<!-- Server adds CORS headers when responding to requests - this enables javascript applications to use the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2030,7 +2030,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What operations are supported?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Какие операции поддерживаются?<!-- What operations are supported? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует restful-операцию, поддерживаемую решением <!-- Identifies a restful operation supported by the solution --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2092,7 +2092,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Anything special about operation behavior</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Особенности работы операции<!-- Anything special about operation behavior --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Руководство, специфичное для реализации этой операции, например 'delete - это логическое удаление' или 'обновления разрешены только с version id' или 'creates разрешены только с сертификатами предварительной авторизации'<!-- Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only' --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2525,7 +2525,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Что-нибудь особенное в работе операции<!-- Anything special about operation behavior --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Особенности работы операции<!-- Anything special about operation behavior --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Руководство, специфичное для реализации этой операции, например ограничение разрешенных видов транзакции или информация об осуществлении системного поиска <!-- Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
