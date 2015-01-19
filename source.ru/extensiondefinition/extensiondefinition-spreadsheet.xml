@@ -1002,11 +1002,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Literal URL used to reference this extension</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Символьный URL, используемый для ссылок на это расширение<!-- Literal URL used to reference this extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The URL at which this definition is (or will be) published, and which is used to reference this profile in extension urls in operational FHIR systems</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">URL, по которому это определение опубликовано (или будет опубликовано), и который используется для ссылки на этот профиль в URL-адресах расширений в рабочих системах FHIR<!-- The URL at which this definition is (or will be) published, and which is used to reference this profile in extension urls in operational FHIR systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">So you can say, in a profile, what the full extensions URL should be. This is required to allow hosting profiles on multiple different servers, and to allow for the editorial process</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Чтобы можно было сказать, какими должны быть полные URL-адреса расширений в профиле. Это требуется для размещения профилей на нескольких различных серверах и поддержки редакционного процесса<!-- So you can say, in a profile, what the full extensions URL should be. This is required to allow hosting profiles on multiple different servers, and to allow for the editorial process --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1035,9 +1035,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Other identifiers for the extension</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Другие идентификаторы расширения<!-- Other identifiers for the extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Formal identifier that is used to identify this profile when it is represented in other formats (e.g. ISO 11179(, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Формальный идентификатор, используемый для указания этого профиля, когда он представлен в других форматах (например ISO 11179), или для ссылки на него в спецификации, модели, проекте или примере (должен быть глобально уникальным OID, UUID или URI), (если нет возможности использовать символьный URI)<!-- Formal identifier that is used to identify this profile when it is represented in other formats (e.g. ISO 11179(, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1066,12 +1066,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Descriptional name for this profile</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описательное название этого профиля<!-- Descriptional name for this profile --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A free text natural language name identifying the extension</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольное текстовое название на естественном языке, идентифицирующее это расширение<!-- A free text natural language name identifying the extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Not expected to be globally unique</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не предполагается глобально уникальным<!-- Not expected to be globally unique --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1097,12 +1097,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Use this name when displaying the value</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Используйте это имя при отображении значения<!-- Use this name when displaying the value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Defined so that applications can use this name when displaying the value of the extension to the user </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определено, чтобы приложения могли использовать это имя при отображении значения расширения пользователю<!-- Defined so that applications can use this name when displaying the value of the extension to the user --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Applications don't have to use this name, but can always fall back to it. In the absence of a value for this element, use the name</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Приложения не обязаны использовать это имя, но всегда могут прибегнуть к нему. При отсутствии значения для этого элемента используйте это имя<!-- Applications don't have to use this name, but can always fall back to it. In the absence of a value for this element, use the name --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1129,13 +1129,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of the publisher (Organization or individual)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя издателя (организация или частное лицо)<!-- Name of the publisher (Organization or individual) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Details of the individual or organization who accepts responsibility for publishing the extension definition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о частном лице или организации, несущем ответственность за публикацию определения расширения<!-- Details of the individual or organization who accepts responsibility for publishing the extension definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Helps establish the &quot;authority/credibility&quot; of the extension.  Should also allow for contact</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает установить "авторитет/надежность" расширения. Должно также указываться для контакта.<!-- Helps establish the &quot;authority/credibility&quot; of the extension.  Should also allow for contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно организация, но может быть и частное лица. Этот элемент НЕОБХОДИМО заполнять, если только эта информация не вытекает из контекста.<!-- Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1162,12 +1162,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact information of the publisher</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация издателя<!-- Contact information of the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contact details to assist a user in finding and communicating with the publisher</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные данные для помощи пользователю найти и вступить в контакт с издателем.<!-- Contact details to assist a user in finding and communicating with the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May be a web site, an email address, a telephone number (tel:), etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может быть веб-сайтом, адресом электронной почты, телефонным номером (tel:) и т. п.<!-- May be a web site, an email address, a telephone number (tel:), etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1194,12 +1194,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Natural language description of the extension</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание расширения на естественном языке<!-- Natural language description of the extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A free text natural language description of the extension and its use</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольное текстовое описание расширения и его использования на естественном языке<!-- A free text natural language description of the extension and its use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This field can be used for things such as comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the extension definition as conveyed in Profile.text</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это поле можно использовать для таких вещей, как комментарии о неправильном использовании, инструкции к клиническому применению и интерпретации, ссылки на литературу, примеры из бумажных документов т. п. Это *не* отображение определения расширения, передаваемого в Profile.text <!-- This field can be used for things such as comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the extension definition as conveyed in Profile.text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1226,11 +1226,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Assist with indexing and finding</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Помощь в индексации и поиске<!-- Assist with indexing and finding --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A set of terms from external terminologies that may be used to assist with indexing and searching of extension definitions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ряд терминов из внешних справочников, которые могут использоваться для содействия индексации и поиску по определениям расширений<!-- A set of terms from external terminologies that may be used to assist with indexing and searching of extension definitions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Assist in searching for appropriate extensions</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает при поиске подходящих расширений<!-- Assist in searching for appropriate extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1262,9 +1262,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">draft | active | retired</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the extension</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус расширения<!-- The status of the extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows filtering of extnsions that are appropriate for use vs. not</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию расширения от неподходящих<!-- Allows filtering of extnsions that are appropriate for use vs. not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1292,11 +1292,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If for testing purposes, not real usage</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если предназначено для тестирования, а не реального применения<!-- If for testing purposes, not real usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This extension definition was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это определение расширения было создано для тестирования (или обучения/оценки/маркетинга), и не предназначено для реального применения<!-- This extension definition was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows filtering of extensions that are appropriate for use vs. not</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию расширения от неподходящих<!-- Allows filtering of extensions that are appropriate for use vs. not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1324,9 +1324,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Date for this version of the extension</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата этой версии расширения<!-- Date for this version of the extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date that this version of the extension was published</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата публикации этой версии расширения<!-- The date that this version of the extension was published --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1354,9 +1354,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Scope and Usage this extesion is for</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Область применения и предназначение этого расширения<!-- Scope and Usage this extesion is for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The Scope and Usage that this extension was created to meet</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Область применения и предназначение этого расширения<!-- The Scope and Usage that this extension was created to meet --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1383,9 +1383,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">External specification that the content is mapped to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешняя спецификация, с которой сопоставляется это содержимое<!-- External specification that the content is mapped to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An external specification that the content is mapped to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешняя спецификация, с которой сопоставляется это содержимое<!-- An external specification that the content is mapped to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1413,12 +1413,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Internal id when this mapping is used</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внутренний идентификатор, когда этот мэппинг используется<!-- Internal id when this mapping is used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An Internal id that is used to identify this mapping set when specific mappings are made</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внутренний идентификатор, который используется для идентификации этого набора мэппингов, когда делаются конкретные мэппинги<!-- An Internal id that is used to identify this mapping set when specific mappings are made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The specification is described once, with general comments, and then specific mappings are made that reference this declaration in the element definition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Спецификация объявляется один раз, с общими комментариями, и затем делаются конкретные мэппинги, которые ссылаются на эту декларацию в определении элементов<!-- The specification is described once, with general comments, and then specific mappings are made that reference this declaration in the element definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1445,12 +1445,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifies what this mapping refers to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентифицирует, на что ссылается этот мэппинг<!-- Identifies what this mapping refers to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A URI that identifies the specification that this mapping is expressed to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">URI, идентифицирующий спецификацию, в которой выражен этот мэппинг<!-- A URI that identifies the specification that this mapping is expressed to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A formal identity for the specification being mapped to helps with identifying maps consistently</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Формальный идентификатор этой спецификации, на которую делается мэппинг, помогающий единообразно идентифицировать карты соответствия<!-- A formal identity for the specification being mapped to helps with identifying maps consistently --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1477,9 +1477,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Names what this mapping refers to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Называет, к чему относится этот мэппинг<!-- Names what this mapping refers to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A name for the specification that is being mapped to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя спецификации, на которую делается мэппинг<!-- A name for the specification that is being mapped to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1507,9 +1507,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Versions, Issues, Scope limitations etc</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Версии, проблемы, ограничения применения др<!-- Versions, Issues, Scope limitations etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Комментарии к этому мэппингу, включая версионные примечания, вопросы, ограничения области применения и другие важные примечания к использованию<!-- Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1540,7 +1540,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">resource | datatype | mapping | extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the type of context to which the extension applies</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает тип контекста, в котором применяется расширение<!-- Identifies the type of context to which the extension applies --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1568,12 +1568,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where the extension can be used in instances</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где расширение можно использовать в экземплярах<!-- Where the extension can be used in instances --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the types of resource or data type elements to which the extension can be applied</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает типы элементов ресурса или типа данных, к которым можно применять это расширение<!-- Identifies the types of resource or data type elements to which the extension can be applied --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not. Note that a context of &quot;string&quot; doesn't mean that the extension can be used with one of the string patterns such as &quot;id&quot; etc</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если контекстом является элемент, который может иметь несколько разных типов на выбор, используйте value[x], если расширение работает на все типы, иначе перечислите явно имена элементов, если нет. Обратите внимание, что контекст строки &quot;string&quot; не означает, что расширение можно использовать с одним из строковых шаблонов, таких как &quot;id&quot; и т. п<!-- If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not. Note that a context of &quot;string&quot; doesn't mean that the extension can be used with one of the string patterns such as &quot;id&quot; etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1600,9 +1600,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Definition of the elements in the extension</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элементов в расширении<!-- Definition of the elements in the extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Definition of the elements that are defined to be in the extension</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определение элементов, которые будут в расширении<!-- Definition of the elements that are defined to be in the extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
