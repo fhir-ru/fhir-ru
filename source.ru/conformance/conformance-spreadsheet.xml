@@ -966,7 +966,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A conformance statement</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Заявление о соответствии<!-- A conformance statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Заявление о соответствии - это набор требований для желаемой реализации или описание, как целевое приложение выполняет эти требования в конкретной реализации<!-- A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1192,10 +1192,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">draft | active | retired&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус этого conformance statement<!-- The status of this conformance statement --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус этого заявления о соответствии<!-- The status of this conformance statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Не предназначен к использованию с настоящими conformance statement, а только там, где conformance statement используются для описания возможных или желаемых систем<!-- This is not intended for use with actual conformance statements, but where conformance statements are used to describe possible or desired systems --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не предназначен к использованию с настоящими заявлениями о соответствии, а только там, где заявления о соответствии используются для описания возможных или желаемых систем<!-- This is not intended for use with actual conformance statements, but where conformance statements are used to describe possible or desired systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1224,10 +1224,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Если только для тестирования, не для реального использования<!-- If for testing purposes, not real usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Флаг для указания, что это conformance statement создан для тестирования (обучения/оценки/маркетинга), и не предназначен для реального использования<!-- A flag to indicate that this conformance statement is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Флаг для указания, что это заявление о соответствии создано для тестирования (обучения/оценки/маркетинга), и не предназначено для реального использования<!-- A flag to indicate that this conformance statement is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Позволяет отфильтровывать подходящие для использования conformance statement от неподходящих<!-- Allows filtering of conformance statements that are appropriate for use vs. not --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Позволяет отфильтровывать подходящие для использования заявления о соответствии от неподходящих<!-- Allows filtering of conformance statements that are appropriate for use vs. not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1256,7 +1256,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дата(/время) публикации<!-- Publication Date(/time) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (и, необязательно, время), когда conformance statement было опубликовано<!-- The date  (and optionally time) when the conformance statement was published --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (и, необязательно, время), когда заявление о соответствии было опубликовано<!-- The date  (and optionally time) when the conformance statement was published --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1285,7 +1285,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">ПО, покрываемое этим conformance statement<!-- Software that is covered by this conformance statement --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">ПО, покрываемое этим заявлением о соответствии<!-- Software that is covered by this conformance statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Программное обеспечение, которое подпадает под условия данного заявления о соответствии. Используется, когда профиль описывает возможности конкретной версии программного обеспечения, независимо от инсталляции.<!-- Software that is covered by this conformance statement.  It is used when the profile describes the capabilities of a particular software version, independent of an installation. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2094,7 +2094,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Anything special about operation behavior</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Руководство, характерное для реализации этой операции, например 'delete - это логическое удаление' или 'обновления разрешены только с version id' или 'creates разрешены только с сертификатами предварительной авторизации'<!-- Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only' --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Руководство, специфичное для реализации этой операции, например 'delete - это логическое удаление' или 'обновления разрешены только с version id' или 'creates разрешены только с сертификатами предварительной авторизации'<!-- Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only' --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">REST допускает некоторую степень изменчивости в реализации RESTful-решений, о которой полезно знать партнерам по обмену<!-- REST allows a degree of variability in the implementation of RESTful solutions that is useful for exchange partners to be aware of. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2126,10 +2126,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">no-version | versioned | versioned-update</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Thi field is set to true to specify that the system does not support (server) or use (client) versioning for this resource type. If this is not set to true, the server must at least correctly track and populate the versionId meta-property on resources</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это поле устанавливается в значение true для обозначения, что система не поддерживает (сервер) или не использует (клиент) версионирование для этого типа ресурса. Если не установлено в true, сервер должен как минимум корректно отслеживать и заполнять метасвойство versionId в ресурсах<!-- Thi field is set to true to specify that the system does not support (server) or use (client) versioning for this resource type. If this is not set to true, the server must at least correctly track and populate the versionId meta-property on resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If a server supports versionIds correctly, it should support vread too, but is not required to do so</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если сервер поддерживает versionIds корректно, он должен также поддерживать и vread, но не обязан этого делать<!-- If a server supports versionIds correctly, it should support vread too, but is not required to do so --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2155,12 +2155,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether vRead can return past versions</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Может ли vRead возвращать прошлые версии<!-- Whether vRead can return past versions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A flag for whether the server is able to return past versions as part of the vRead operation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Флаг того, может ли сервер возвращать прошлые версии в рамках операции vRead<!-- A flag for whether the server is able to return past versions as part of the vRead operation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">It is useful to support the vRead operation for current operations, even if past versions aren't available</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Применяется для поддержки операции vRead для текущих операций, даже если прошлые версии не доступны<!-- It is useful to support the vRead operation for current operations, even if past versions aren't available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2186,12 +2186,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If allows/uses update to a new location</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Позволяет/использует ли обновление в новое место<!-- If allows/uses update to a new location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A flag to indicate that the server allows the client to create new identities on the server. If the update operation is used (client) or allowed (server) to a new location where a resource doesn't already exist. This means that the server allows the client to create new identities on the server</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Флаг для указания, позволяет ли сервер клиенту создавать новые сущности на сервере. Если операция обновления update используется (клиентом) или разрешена (сервером) в новое место, где ресурс еще не существует. Это значит, что сервер позволяет клиенту создавать новые сущности на сервере<!-- A flag to indicate that the server allows the client to create new identities on the server. If the update operation is used (client) or allowed (server) to a new location where a resource doesn't already exist. This means that the server allows the client to create new identities on the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Allowing the clients to create new identities on the server means that the system administrator needs to have confidence that the clients do not create clashing identities between them. Obviously, there is only one client, this won't happen. While creating identities on the client means that the clients need to be managed, it's much more convenient for many scenarios</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Позволяет клиентам создавать новые сущности на сервере - это значит, что системному администратору нужна уверенность в том, что клиенты не создадут конфликтующие между собой сущности. Очевидно, что если клиент только один, то этого не произойдет. В то же время создание сущностей на клиенте означает, что контроль необходим клиентам, а это намного более удобно в большинстве сценариев<!-- Allowing the clients to create new identities on the server means that the system administrator needs to have confidence that the clients do not create clashing identities between them. Obviously, there is only one client, this won't happen. While creating identities on the client means that the clients need to be managed, it's much more convenient for many scenarios --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2217,12 +2217,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">_include values supported by the server</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Значения _include, поддерживаемые сервером<!-- _include values supported by the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of _include values supported by the server</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Список значений _include, поддерживаемых сервером<!-- A list of _include values supported by the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If this list is empty, the server does not support includes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если список пустой, значит сервер не поддерживает включения<!-- If this list is empty, the server does not support includes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2247,9 +2247,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional search params defined</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительно определенные параметры поиска<!-- Additional search params defined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional search parameters for implementations to support and/or make use of</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительные параметры поиска для поддержки и/или использования реализациями<!-- Additional search parameters for implementations to support and/or make use of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2278,12 +2278,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of search parameter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя параметра поиска<!-- Name of search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of the search parameter used in the interface</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя параметра поиска, используемого в интерфейсе<!-- The name of the search parameter used in the interface --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Parameter names cannot overlap with standard parameter names, and standard parameters cannot be redefined</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имена параметров не могут частично совпадать со стандартными именами параметров, а стандартные параметры не могут быть переопределены<!-- Parameter names cannot overlap with standard parameter names, and standard parameters cannot be redefined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2309,12 +2309,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Source of definition for parameter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Источник определения параметра<!-- Source of definition for parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Формальная ссылка на место, где этот параметр был впервые определен, чтобы клиент мог быть уверен в значении этого параметра поиска<!-- A formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This SHOULD be present, and matches SearchParameter.url</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">ДОЛЖНО присутствовать, и соответствует SearchParameter.url<!-- This SHOULD be present, and matches SearchParameter.url --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2343,10 +2343,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">number | date | string | token | reference | composite | quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of value a search parameter refers to, and how the content is interpreted</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип значения, на которое ссылается параметр поиска, и как интерпретировать его содержимое<!-- The type of value a search parameter refers to, and how the content is interpreted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">While this can be looked up from the definition, it is included here as a convenience for systems that auto-generate a query interface based on the server conformance statement.  It SHALL be the same as the type in the search parameter definition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Хотя его можно понять из определения, оно включается здесь для удобства систем, которые автогенерируют интерфейс запросов на основе серверного заявления о соответствии. Он ДОЛЖЕН совпадать с типом параметра поиска<!-- While this can be looked up from the definition, it is included here as a convenience for systems that auto-generate a query interface based on the server conformance statement.  It SHALL be the same as the type in the search parameter definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2372,9 +2372,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Server-specific usage</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- Server-specific usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This allows documentation of any distinct behaviors about how the search parameter is used.  For example, text matching algorithms.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Позволяет документировать различное поведение и использование параметра поиска. Например алгоритмы поиска текстовых совпадений<!-- This allows documentation of any distinct behaviors about how the search parameter is used.  For example, text matching algorithms. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2403,12 +2403,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Types of resource (if a resource reference)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Типы ресурса (для ссылки на ресурс)<!-- Types of resource (if a resource reference) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Types of resource (if a resource is referenced)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Типы ресурса (если это ссылка на ресурс)<!-- Types of resource (if a resource is referenced) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This SHALL be the same as or a proper subset of the resources listed in the search parameter definition.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">ДОЛЖНО быть таким же, как и собственное подмножество ресурсов, перечисленных в определении параметра поиска<!-- This SHALL be the same as or a proper subset of the resources listed in the search parameter definition. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2434,7 +2434,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Chained names supported</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Цепочечные имена поддерживаются<!-- Chained names supported --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2463,9 +2463,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What operations are supported?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Какие операции поддерживаются?<!-- What operations are supported? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A specification of restful operations supported by the system</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Спецификация restful-операций, поддерживаемых системой<!-- A specification of restful operations supported by the system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2497,7 +2497,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">transaction | search-system | history-system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded identifier of the operation, supported by the system</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированный идентификатор операции, поддерживаемой системой<!-- A coded identifier of the operation, supported by the system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2525,9 +2525,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Anything special about operation behavior</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Что-нибудь особенное в работе операции<!-- Anything special about operation behavior --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Руководство, специфичное для реализации этой операции, например ограничение разрешенных видов транзакции или информация об осуществлении системного поиска <!-- Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2554,9 +2554,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Definition of an operation or a custom query</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение операции или пользовательского запроса<!-- Definition of an operation or a custom query --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Definition of an operation or a named query and with its parameters and their meaning and type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определение операции или именованного запроса с параметрами, из значением и типом<!-- Definition of an operation or a named query and with its parameters and their meaning and type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2585,12 +2585,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name by which the operation/query is invoked</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя для вызова операции/запроса<!-- Name by which the operation/query is invoked --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of a query, which is used in the _query parameter when the query is called</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя запроса, используемое в параметре _query при вызове этого запроса<!-- The name of a query, which is used in the _query parameter when the query is called --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name here SHOULD be the same as the name in the definition, unless there is a name clash and the name cannot be used</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя ДОЛЖНО совпадать с именем в определении, за исключением конфликта, когда это имя не может быть использовано<!-- The name here SHOULD be the same as the name in the definition, unless there is a name clash and the name cannot be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2616,12 +2616,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The the operation/query is defined</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где определена операция/запрос<!-- The the operation/query is defined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Where the formal definition can be found</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Где можно найти формальное определение<!-- Where the formal definition can be found --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This can be used to build ah HTML form to invoke the operation, for instance</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может использоваться при генерации HTML-формы для вызова этой операции, к примеру<!-- This can be used to build ah HTML form to invoke the operation, for instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2647,12 +2647,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How documents are accepted in /Mailbox</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Как принимаются документы в /Mailbox<!-- How documents are accepted in /Mailbox --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of profiles that this server implements for accepting documents in the mailbox. If this list is empty, then documents are not accepted. The base specification has the profile identifier &quot;http://hl7.org/fhir/documents/mailbox&quot;. Other specifications can declare their own identifier for this purpose</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Список профилей, которые реализует сервер для приема документов в почтовом ящике. Если список пустой, значит документы не принимаются. Идентификатор профиля базовой спецификации &quot;http://hl7.org/fhir/documents/mailbox&quot;. Другие спецификации могут объявлять свои собственные идентификаторы для этой цели<!-- A list of profiles that this server implements for accepting documents in the mailbox. If this list is empty, then documents are not accepted. The base specification has the profile identifier &quot;http://hl7.org/fhir/documents/mailbox&quot;. Other specifications can declare their own identifier for this purpose --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If a server accepts messages on the /Mailbox end-point, it declares this in the messaging elements</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если сервер принимает сообщения в точке взаимодействия /Mailbox, он объявляет об этом в элементах обмена сообщениями<!-- If a server accepts messages on the /Mailbox end-point, it declares this in the messaging elements --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2678,12 +2678,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If messaging is supported</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Поддерживается ли обмен сообщениями<!-- If messaging is supported --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A description of the messaging capabilities of the solution</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание возможностей решения, связанных с обменом сообщениями<!-- A description of the messaging capabilities of the solution --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Multiple repetitions allow the documentation of multiple endpoints per solution</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Многократные повторения позволяют документировать множество точек взаимодействия для одного решения<!-- Multiple repetitions allow the documentation of multiple endpoints per solution --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2711,12 +2711,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Actual endpoint being described</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сама описываемая точка взаимодействия<!-- Actual endpoint being described --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An address to which messages and/or replies are to be sent.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Адрес, по которому отправлять сообщения и/или ответы<!-- An address to which messages and/or replies are to be sent. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For solutions that do not use network addresses for routing, it can be just an identifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для решений, не использующих для маршрутизации сетевые адреса, это может быть просто идентификатор<!-- For solutions that do not use network addresses for routing, it can be just an identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2742,12 +2742,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reliable Message Cache Length (min)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время кеширования для безотказного обмена сообщениями (мин)<!-- Reliable Message Cache Length (min) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Length if the receiver's reliable messaging cache in minutes (if a receiver) or how long the cache length on the receiver should be (if a sender)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Продолжительность кеширования получателя при безотказном обмене сообщениями (если это получатель) или каким должно быть время кеширования у получателя (если это отправитель)<!-- Length if the receiver's reliable messaging cache in minutes (if a receiver) or how long the cache length on the receiver should be (if a sender) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If this value is missing then the application does not implement (receiver) or depend on (sender) reliable messaging</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если это значение отсутствует, значит приложение не осуществляет (получатель) или зависит от (отправитель) безотказного обмена сообщениями<!-- If this value is missing then the application does not implement (receiver) or depend on (sender) reliable messaging --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2773,9 +2773,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Messaging interface behavior details</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- Messaging interface behavior details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Документация возможностей системы касательно обмена сообщениями для этой точки взаимодействия, не задокументированной иным способом в заявлении о соответствии. Например процесс, как стать авторизованным партнером обмена сообщениями. <!-- Documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2802,14 +2802,14 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Declare support for this event</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Объявить поддержку этого события<!-- Declare support for this event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A description of the solution's support for an event at this end point.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание поддержки решением события в этой точке взаимодействия<!-- A description of the solution's support for an event at this end point. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The same event may be listed up to two times - once as sender and once as receiver.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это же событие может быть перечислено до двух раз - одна для отправителя и одно для получателя.<!-- The same event may be listed up to two times - once as sender and once as receiver. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to add follow-ups and need to do more to flesh out messaging dynamic model</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно добавить последующие мероприятия и конкретизировать динамическую модель обмена сообщениями<!-- Need to add follow-ups and need to do more to flesh out messaging dynamic model --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2836,13 +2836,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Event type</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип события<!-- Event type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded identifier of a supported messaging event</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированный идентификатор поддерживаемого события обмена сообщениями<!-- A coded identifier of a supported messaging event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">May need a profile id as well if profiles can define message events</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может также потребоваться идентификатор профиля, если профили могут определять события сообщений<!-- May need a profile id as well if profiles can define message events --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2870,7 +2870,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Consequence | Currency | Notification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The impact of the content of the message</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Влияние содержимого сообщения<!-- The impact of the content of the message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2901,7 +2901,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">sender | receiver</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The mode of this event declaration - whether application is sender or receiver</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Режим декларации события - является ли приложение отправителем или получателем<!-- The mode of this event declaration - whether application is sender or receiver --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2932,11 +2932,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">http | ftp | mllp +</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of the messaging transport protocol(s) identifiers, supported by this endpoint</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень идентификаторов протоколов передачи сообщений, поддерживаемых этой точкой взаимодействия<!-- A list of the messaging transport protocol(s) identifiers, supported by this endpoint --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Loosen this to &quot;extensible&quot; once tooling supports that.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Оставить это на расширяемость&quot;extensible&quot;, как только инструментарий будет это поддерживать.<!-- Loosen this to &quot;extensible&quot; once tooling supports that. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2962,12 +2962,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Resource that's focus of message</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс в центре внимания сообщения<!-- Resource that's focus of message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A resource associated with the event.  This is the resource that defines the event.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурс, связанный с событием. Это тот ресурс, который определяет событие.<!-- A resource associated with the event.  This is the resource that defines the event. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This SHALL be provided if the event type supports multiple different resource types</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">ДОЛЖНО быть указано, если тип события поддерживает несколько различных типов ресурсов<!-- This SHALL be provided if the event type supports multiple different resource types --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2993,9 +2993,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Profile that describes the request</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Профиль, описывающий запрос<!-- Profile that describes the request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Information about the request for this event</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о запросе для этого события<!-- Information about the request for this event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3023,9 +3023,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Profile that describes the response</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Профиль, описывающий ответ<!-- Profile that describes the response --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Information about the response for this event</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация об ответе на это событие<!-- Information about the response for this event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3053,9 +3053,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Endpoint-specific event documentation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Документация события, специфичная для точки взаимодействия<!-- Endpoint-specific event documentation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Guidance on how this event is handled, such as internal system trigger points, business rules, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Руководство по обработке этого события, например внутренние системные точки запуска, бизнес-правила и т. д. <!-- Guidance on how this event is handled, such as internal system trigger points, business rules, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3083,9 +3083,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Document definition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение документа<!-- Document definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A document definition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определение документа<!-- A document definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3117,7 +3117,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">producer | consumer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Mode of this document declaration - whether application is producer or consumer</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Режим объявления этого документа - является ли приложение производителем или потребителем<!-- Mode of this document declaration - whether application is producer or consumer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3145,9 +3145,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Description of document support</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание поддержки документов<!-- Description of document support --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A description of how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание того, как приложение поддерживает или использует указанный профиль документа. Например какие действия предпринимается при создании документов и т. п.<!-- A description of how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3175,12 +3175,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Constraint on a resource used in the document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ограничение на ресурс, используемый в документе<!-- Constraint on a resource used in the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A constraint on a resource used in the document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ограничение на ресурс, используемый в документе<!-- A constraint on a resource used in the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The first resource is the document resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Первый ресурс - это document<!-- The first resource is the document resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
