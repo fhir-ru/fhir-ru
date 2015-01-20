@@ -157,7 +157,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ResourceType</Data></Cell>
-    <Cell><Data ss:Type="String">One of the resource types defined as part of FHIR</Data></Cell>
+    <Cell><Data ss:Type="String">Один из типов ресурсов, определенных в рамках FHIR<!-- One of the resource types defined as part of FHIR --></Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">#resource-types</Data></Cell>
    </Row>
