@@ -968,12 +968,12 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Search Parameter for a resource</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Параметр поиска для ресурса<!-- Search Parameter for a resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A Search Parameter that defines a named search item that can be used to search/filter on a resource</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Параметр поиска, определяющий именованный элемент поиска, который можно использовать для поиска/фильтрации по ресурсу<!-- A Search Parameter that defines a named search item that can be used to search/filter on a resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content </Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">В FHIR поиск не совершается непосредственно по ресурсу (по XML- или JSON-пути), а по именованному параметру, который отображает содержимое ресурса<!-- In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">n/a</Data><NamedCell
