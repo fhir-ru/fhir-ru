@@ -105,7 +105,7 @@ moderately technical users to guess at the correct content of the form.
 For this reason, highly technical documentation should go in OperationDefinition.notes. -->
 </p>
 <p>
-Отметим также, что это не ожидается быть полезным средством для типичного медицинского конечного пользователя; такие пользователи, как правило, нуждаются в большей поддержке, чем та, что может быть предложена в сгенерированной форме.
+Отметим также, что это средство не ожидается быть полезным для типичного медицинского конечного пользователя; такие пользователи, как правило, нуждаются в большей поддержке, чем та, что может быть предложена в сгенерированной форме.
 <!-- Note also this is not expected to a be a tool of use to typical healthcare
 end-users; such users will usually need more support than can be offered
 in a generated form.  -->
