@@ -3868,7 +3868,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">OperationDefinition.parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Either a type must be provided, or parts</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Необходимо указывать либо тип, либо parts<!-- Either a type must be provided, or parts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">exists(f:type) or exists(f:part)</Data><NamedCell
