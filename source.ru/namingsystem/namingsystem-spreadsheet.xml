@@ -1363,12 +1363,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If there are multiple ids, and one is labelled &quot;preferred&quot;, then the assumption is that the others are not preferred. In the absence of any id marked as preferred, no inference can be drawn</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если есть несколько идентификаторов, и один из них помечен как &quot;предпочтительный&quot;, тогда предполагается, что остальные не являются предпочтительными. В отсутствие идентификатора, помеченного как предпочтительный, такой вывод сделать нельзя<!-- If there are multiple ids, and one is labelled &quot;preferred&quot;, then the assumption is that the others are not preferred. In the absence of any id marked as preferred, no inference can be drawn --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Is this the id that should be used for this type</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Это тот идентификатор, который следует использовать для этого типа?<!-- Is this the id that should be used for this type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates whether this identifier is the &quot;preferred&quot; identifier of this type.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, является ли этот идентификатор &quot;предпочтительным&quot; для этого типа.<!-- Indicates whether this identifier is the &quot;preferred&quot; identifier of this type. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1396,12 +1396,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When is identifier valid?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда допустим этот идентификатор?<!-- When is identifier valid? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the period of time over which this identifier is considered appropriate to refer to the namingsystem.  Outside of this window, the identifier might be non-deterministic</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет период времени, в течение которого этот идентификатор считается допустимым для ссылки на namingsystem. Вне этого периода идентификатор может быть недетерминированным<!-- Identifies the period of time over which this identifier is considered appropriate to refer to the namingsystem.  Outside of this window, the identifier might be non-deterministic --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Within a registry, a given identifier should only be &quot;active&quot; for a single namespace at a time.  (Ideally, an identifier should only ever be associated with a single namespace across all time)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В реестре только один идентификатор должен быть &quot;активным&quot; для одного пространства имен единовременно. (В идеале, идентификатор должен быть связан только с одним пространством имен в любой момент времени)<!-- Within a registry, a given identifier should only be &quot;active&quot; for a single namespace at a time.  (Ideally, an identifier should only ever be associated with a single namespace across all time) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1426,9 +1426,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who should be contacted for questions about namingsystem</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">С кем следует связаться в случае вопросов по namingsystem<!-- Who should be contacted for questions about namingsystem --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person who can be contacted about this system registration entry</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, с которым можно связаться насчет регистрационной записи этой системы<!-- The person who can be contacted about this system registration entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1457,9 +1457,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of person</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя контактного лица<!-- Name of person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Names of the person who can be contacted</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя контактного лица<!-- Names of the person who can be contacted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1487,9 +1487,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Phone, email, etc.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Телефон, адрес электронной почты и т. п.<!-- Phone, email, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the mechanism(s) by which they can be contacted</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Типы связи для контакта<!-- Identifies the mechanism(s) by which they can be contacted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1518,9 +1518,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Use this instead</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Используйте это взамен <!-- Use this instead --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For namingsystems that are retired, indicates the namingsystem that should be used in their place (if any)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для namingsystems, которые были удалены, обозначает namingsystem, которую следует использовать взамен (если есть)<!-- For namingsystems that are retired, indicates the namingsystem that should be used in their place (if any) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
