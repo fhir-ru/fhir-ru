@@ -1487,7 +1487,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Телефон, адрес электронной почты и т. п.<!-- Phone, email, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Телефон, адрес электронной почты и т. п<!-- Phone, email, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Типы связи для контакта<!-- Identifies the mechanism(s) by which they can be contacted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
