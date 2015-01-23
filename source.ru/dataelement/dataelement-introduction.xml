@@ -1,40 +1,48 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-This resource covers two major use-cases: 
+Этот ресурс охватывает два основных сценария использования:
+<!-- This resource covers two major use-cases:  -->
 </p>
 <ol>
-  <li>Definitions of types of measurements or observations that may be requested or performed.  In HL7, these are sometimes referred to as service, test or observation "master files"</li>
-  <li>Definitions of "data elements" (DEs) that may be used in <a href="questionnaire.html">questionnaires</a> (survey instruments and data collection forms) and <a href="profile.html">profiles</a> and potentially mapped to elements in other resources and profiles</li>
+  <li>Определения типов измерений или наблюдений, которые могут быть запрошены или выполнены. В HL7 их иногда называют "мастер-файлами" сервисов, тестов или наблюдений<!-- Definitions of types of measurements or observations that may be requested or performed.  In HL7, these are sometimes referred to as service, test or observation "master files" --></li>
+  <li>Определения "элементов данных" (DEs), которые могут быть использованы в <a href="questionnaire.html">вопросниках (questionnaires)</a> (инструменты создания форм для проведения опросов и сбора данных) и <a href="profile.html">профилях</a> и, потенциально,  отображаются на элементы других ресурсов и профилей<!-- Definitions of "data elements" (DEs) that may be used in <a href="questionnaire.html">questionnaires</a> (survey instruments and data collection forms) and <a href="profile.html">profiles</a> and potentially mapped to elements in other resources and profiles --></li>
 </ol>
 <p>
-The purpose of the first use-case is to allow systems to identify what types of lab orders, diagnostic studies and other types of observations may be requested or
+Цель первого сценария использования - позволить системам идентифицировать, какие типы лабораторных заказов, диагностических исследований и других видов наблюдений могут быть заказаны или осуществлены в рамках определенной организации или ином контексте. Практикующий врач, делающий заказ, может запросить список элементов данных по названию категории или другим критериям и указать, какие тесты из набора он хочет заказать.
+<!-- The purpose of the first use-case is to allow systems to identify what types of lab orders, diagnostic studies and other types of observations may be requested or
 performed within a particular organization or other context.  An ordering practitioner can query for a list of data elements by category name or other
-criteria and identify which, within a set of similar tests, they wish to request to be performed.
+criteria and identify which, within a set of similar tests, they wish to request to be performed. -->
 </p>
 <p>
-The focus of the second use-case is standardizing data capture and reporting.  By defining standard names, data capture constraints, questions and other characteristics,
+Направленность второго случая использования -  стандартизация сбора данных и отчетности. Определяя стандартные имена, ограничения ввода данных, вопросы и другие характеристики,
+данные, собранные внутри и между организациями с помощью анкет, в рамках клинических исследований и т. д., можно сделать более согласованными. При проектировании клинических исследований, составления анкет, построение профилей или выполнения других задач, которые связаны с определением, какие данные будут собираться или обмениваться и как, дизайнеры могут делать запросы, чтобы найти определения предопределенных элементов данных, которые  они смогут использовать или на которые делать отображение. Поощряя согласованность определений элементов данных, типов данных, наборов значений, длин строк и другие ограничения, данные становятся более легко обмениваемыми и сопоставимыми между системами. Это выгодно для способности к взаимодействию и клинических исследований. (Более подробное обсуждение см. в разделе <a href="#standardization">стандартизации</a> ниже).
+<!-- The focus of the second use-case is standardizing data capture and reporting.  By defining standard names, data capture constraints, questions and other characteristics,
 the data gathered within and across organizations via questionnaires, as part of clinical studies, etc. can be made more consistent.  When designing clinical studies,
 constructing questionnaires, building profiles or performing other tasks that involve determining what data will be captured or exchanged and how, designers can query
 to find pre-defined data element definitions they can leverage or map to.  By encouraging consistency around data element definitions, data types, value sets, string
 lengths and other constraints, data becomes more easily exchangeable and comparable across systems.  This benefits interoperability and clinical research.  (For more 
-discussion, see the section on <a href="#standardization">standardization</a> below.)
+discussion, see the section on <a href="#standardization">standardization</a> below.) -->
 </p>
 <p>
-The scope covers base capabilities of the ISO 11179 Metadata Registries specification which defines DEs.  It also covers observation definitions by ontologies such as LOINC.  
+Область действия охватывает базовые возможности спецификации метаданных реестров ISO 11179, которая определяет элементы данных. Также она охватывает определение наблюдений такими онтологиями, как LOINC. Термин "наблюдение" интерпретируется в широком смысле как "любой элемент, который может рассматриваться как 'значение' в паре имя-значение". Так, он включает в себя такие понятия, как пол пациента, адрес практикующего врача и другие элементы данных, которые обычно не собираются с помощью ресурса <a href="observation.html">Observation</a>.
+<!-- The scope covers base capabilities of the ISO 11179 Metadata Registries specification which defines DEs.  It also covers observation definitions by ontologies such as LOINC.  
 The term "observation" is interpreted in its broadest sense as "any element that might be thought of as the 'value' in a name-value pair".  So it includes such concepts as
-patient gender, practitioner address and other data elements that would not typically be captured using the <a href="observation.html">Observation</a> resource.
+patient gender, practitioner address and other data elements that would not typically be captured using the <a href="observation.html">Observation</a> resource. -->
 </p>
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-This resource has significant overlap with <a href="profile.html">Profile</a> and <a href="questionnaire.html">Questionnaire</a>.
+Этот ресурс имеет много общего с <a href="profile.html">Profile</a> и <a href="questionnaire.html">Questionnaire</a>.
+<!-- This resource has significant overlap with <a href="profile.html">Profile</a> and <a href="questionnaire.html">Questionnaire</a>. -->
 </p>
 <p>
+Профиль тоже определяет элементы данных. Однако он делает это только в контексте ограничений или расширений ресурсов FHIR. Кроме того, <a href="profile.html">Profile</a>, как правило, определяет некоторое количество элементов данных в одном контексте. <b>DataElement</b> определяет только один элемент данных и делает это таким образом, что не быть непосредственно привязанным к FHIR. Элементы данных могут определять значение <a href="observation.html">Observation</a>, ограничивать допустимый ответ на вопрос в <a href="questionnaire.html">Questionnaire</a> (в том числе предоставление списка разрешенных ответов), описывать допустимое значение, собранное в элементе некоторого другого ресурса (<a href="patient.html">Patient</a>, <a href="familyhistory.html">FamilyHistory</a> и т. д.), или даже использоваться полностью за пределами FHIR в документе CDA или спецификации HL7 v2. Авторы  <a href="profile.html">профиля</a> могут использовать (и ссылаться на) <b>DataElement</b>s при определении элементов данных в этом профиле. (По причинам возможностей реализации ограничения данных все равно должны задаваться явно в <a href="profile.html">профиле</a>, а не включаться "по ссылке" в <b>DataElement.)</b> 
+<!-- 
 Profile also defines data elements.  However,
 it does so only in the context of constraints or extensions on FHIR resources.  As well, <a href="profile.html">Profile</a> typically identifies a number of data elements
 together in context.  <b>DataElement</b> defines only a single data element and it does so in a manner that is not directly tied to FHIR.  Data elements
@@ -43,28 +51,37 @@ might define the value of an <a href="observation.html">Observation</a>, constra
 other resource (<a href="patient.html">Patient</a>, <a href="familyhistory.html">FamilyHistory</a>, etc.) or even used outside FHIR entirely in a CDA document or HL7 v2
 specification.  Authors of <a href="profile.html">Profile</a>s may leverage (and reference) <b>DataElement</b>s when defining the data elements with the Profile.
 (For implementability reasons, the data constraints should still be explicitly exposed within the <a href="profile.html">Profile</a> rather than being included "by reference" 
-to the <b>DataElement.)</b>
+to the <b>DataElement.)</b> -->
 </p>
 <p>
+<a href="questionnaire.html">Questionnaire</a> используется для определения форм, опросов и других структур= которые могут быть заполнены. <a href="questionnaire.html">Questionnaire</a>
+тоже определяет элементы данных. Однако он делает это только в контексте конкретной конструкции анкеты. В отличие от этого, <b>DataElement</b> направлен на определение элементов данных независимо от их использования в анкетах и других структурах. На отдельный <b>DataElement</b> могут ссылаться многочисленные <a href="questionnaire.html">анкеты</a> или даже, возможно, несколько мест одной <a href="questionnaire.html">анкеты</a>. Эти ссылки
+могут быть либо неявными, либо могут быть явно выраженными через расширение. (По причинам реализуемости ограничения данных все равно должны задаваться явно в
+<a href="questionnaire.html">анкете</a>, а не включаться "через ссылку" на <b>DataElement</b>.)
+<!-- 
 <a href="questionnaire.html">Questionnaire</a> is to both define forms, surveys and other structures that can be filled out.  <a href="questionnaire.html">Questionnaire</a> 
 also defines data elements.  However, it does so only in the context of a particular questionnaire
 design.  In contrast, <b>DataElement</b> is focused on defining data elements independent of their use in questionnaires
 and other structures.  A single <b>DataElement</b> might be referenced in numerous 
 <a href="questionnaire.html">Questionnaire</a>s, or even potentially in multiple places within a single <a href="questionnaire.html">Questionnaire</a>.  This reference
 might either be implicit or may be explicit through an extension.  (For implementability reasons, the data constraints should still be explicitly exposed within the
-<a href="questionnaire.html">Questionnaire</a> rather than being included "by reference" to the <b>DataElement</b>.)
+<a href="questionnaire.html">Questionnaire</a> rather than being included "by reference" to the <b>DataElement</b>.) -->
 </p>
 <p>
+<b>Примечание</b>: Расширения для <b>DataElement</b>, которые определяют характеристики элемента данных, как правило, также применимы к ElementDefinition <a href="profile.html">профиля</a> и элементу данных Question <a href="questionnaire.html">анкеты</a>, так как они оба используются также для определения характеристик элемента данных.
+<!-- 
 <b>Note</b>: Extensions on <b>DataElement</b> that define the characteristics of a data element will typically also be applicable to <a href="profile.html">Profile</a>'s
-ElementDefinition and <a href="questionnaire.html">Questionnaire</a>'s Question data element as both are also used to define the characteristics of a data element.
+ElementDefinition and <a href="questionnaire.html">Questionnaire</a>'s Question data element as both are also used to define the characteristics of a data element. -->
+</p>
+<p><b>Вопрос для голосования</b>: Следует ли использовать совместную структуру в <a href="profile.html">Profile</a>, <a href="questionnaire.html">Questionnaire</a> и <b>DataElement</b> для сбора ограничений элементов данных, или допустимо им продолжать поддерживаться раздельно, но "похожим образом"?
+<!-- <b>Ballot Issue</b>: Should a shared structure be used in <a href="profile.html">Profile</a>, <a href="questionnaire.html">Questionnaire</a> and <b>DataElement</b>
+to capture constraints on data elements, or is it acceptable for them to continue to be maintained in a separate, but "similar" manner? -->
 </p>
 <p>
-<b>Ballot Issue</b>: Should a shared structure be used in <a href="profile.html">Profile</a>, <a href="questionnaire.html">Questionnaire</a> and <b>DataElement</b>
-to capture constraints on data elements, or is it acceptable for them to continue to be maintained in a separate, but "similar" manner?
-</p>
-<p>
+<b>DataElement</b> отличается от  <a href="observation.html">Observation</a> тем, что он описывает, какой вид наблюдений <b>может</b> происходить, в то время как
+<a href="observation.html">Observation</a> фокусируется на конкретном наблюдении за конкретным субъектом в конкретное время, которое <b>уже</b> произошло.<!-- 
 <b>DataElement</b> differs from <a href="observation.html">Observation</a> in that it describes what kind of observations <b>can</b> occur, while 
-<a href="observation.html">Observation</a> focuses on a specific observation of a specific subject at a particular time that <b>has</b> occurred.
+<a href="observation.html">Observation</a> focuses on a specific observation of a specific subject at a particular time that <b>has</b> occurred. -->
 </p>
 </div>
 
