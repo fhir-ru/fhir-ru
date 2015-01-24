@@ -151,7 +151,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DataType</Data></Cell>
-    <Cell><Data ss:Type="String">The type of an element - one of the FHIR data types</Data></Cell>
+    <Cell><Data ss:Type="String">Тип элемента - один из типов данных FHIR<!-- The type of an element - one of the FHIR data types --></Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">#data-types</Data></Cell>
    </Row>
