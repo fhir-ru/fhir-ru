@@ -2,14 +2,16 @@
 
 
 <h2>
-Notes:
+Примечания:
+<!-- Notes: -->
 </h2>
 <ul> 
- <li>The author and the attester are often the same person, but this may not be the case in some clinical workflows</li>
- <li>The attester attests contents of the document resource, the subject resource and the resources referred to 
+ <li>Часто автор и заверитель - одно и то же лицо, но это может быть не так в некоторых клинических рабочих процессах<!-- The author and the attester are often the same person, but this may not be the case in some clinical workflows --></li>
+ <li>Заверитель удостоверяет содержимое ресурса document, ресурса subject и ресурсов, на которые есть ссылки в Composition.section.content. Поскольку документы часто производят Compositions и заверение из composition проводится для того, чтобы применить к документу, метод для <a href="documents.html#presentation">presenting a document</a> должен использоваться, когда/если . проверяют содержимое композиции
+ <!-- The attester attests contents of the document resource, the subject resource and the resources referred to 
    in the Composition.section.content references. Because documents are often derived Compositions and the attestation
    from the composition is held to apply to the document, the method for <a href="documents.html#presentation">presenting a document</a>
-   should be used when/if attesters review the content of the composition
+   should be used when/if attesters review the content of the composition -->
    </li>
  <li>The custodian is responsible for the maintenance of the composition and any documents derived from it. With regard to the documents, they are 
    responsible for the policy regarding persistence of the documents. Although they need not actually retain a copy of the document, they SHOULD do so.
