@@ -995,7 +995,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- Master Version Specific Identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор, специфичный для мастер-версии<!-- Master Version Specific Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор документа, назначенный источником этого документа. Этот идентификатор специфичен для данной версии документа. Этот уникальный идентификатор может использоваться где-то в другом месте для указания на эту версию документа <!-- Document identifier as assigned by the source of the document. This identifier is specific to this version of the document. This unique identifier may be used elsewhere to identify this version of the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

@@ -2372,7 +2372,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- Server-specific usage --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Применение, специфичное для сервера<!-- Server-specific usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Позволяет документировать различное поведение и использование параметра поиска. Например алгоритмы поиска текстовых совпадений<!-- This allows documentation of any distinct behaviors about how the search parameter is used.  For example, text matching algorithms. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2773,7 +2773,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- Messaging interface behavior details --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробности работы интерфейса обмена сообщениями<!-- Messaging interface behavior details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Документация возможностей системы касательно обмена сообщениями для этой точки взаимодействия, не задокументированной иным способом в заявлении о соответствии. Например описание процесса, как стать авторизованным партнером обмена сообщениями. <!-- Documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

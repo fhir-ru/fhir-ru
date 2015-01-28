@@ -1867,7 +1867,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, который подробно описывает, как это обозначение будет использоваться<!-- A code that details how this designation would be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"><!-- if no use is provided, the designation can be assumed to be suitable for general display to a human user --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">если применение не указано, предполагается, что обозначение подходит для общего отображения человеческому пользователю <!-- if no use is provided, the designation can be assumed to be suitable for general display to a human user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2656,7 +2656,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если значение true, то эта запись включена в расширение в целях навигации, и пользователь не может выбирать этот код непосредственно в качестве допустимого значения <!-- If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"><!-- This shouldn't be understood to exclude its use for searchig (e..g by subsumption testing). The client should know whether it is appropriate for the user to select an abstract code or not --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не следует понимать, что это предназначено исключительно для поиска (например через проверку включения). Клиент должен понимать, когда пользователю допустимо выбирать абстрактный код, а когда нет<!-- This shouldn't be understood to exclude its use for searchig (e..g by subsumption testing). The client should know whether it is appropriate for the user to select an abstract code or not --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>

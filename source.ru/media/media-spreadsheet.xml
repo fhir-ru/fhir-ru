@@ -1104,12 +1104,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- When the media was taken/recorded (start) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда медиаданные были получены/записаны (начало)<!-- When the media was taken/recorded (start) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата/время, когда медиаданные были первоначально записаны. Для видео и аудио, если длина записи не малозначительная, это будет временем начала записи<!-- The date/time when the media was originally recorded. For video and audio, if the length of the recording is not insignificant, this is the start of the recording --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"><!-- For an image including multiple frames, this is the start time. Creation time is used for tracking, organizing versions and searching --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для изображений, содержащих несколько кадров, это будет время начала. Время создания используется для отслеживания, организации версий и поиска.<!-- For an image including multiple frames, this is the start time. Creation time is used for tracking, organizing versions and searching --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.effectiveTime</Data><NamedCell
@@ -1243,9 +1243,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- Imaging view e.g Lateral or Antero-posterior --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Проекция изображения, например боковая или переднезадняя<!-- Imaging view e.g Lateral or Antero-posterior --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Название проекции изображения, например боковое или переднезаднее <!-- The name of the imaging view e.g Lateral or Antero-posterior (AP). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название проекции изображения, например боковая или переднезадняя <!-- The name of the imaging view e.g Lateral or Antero-posterior (AP). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
