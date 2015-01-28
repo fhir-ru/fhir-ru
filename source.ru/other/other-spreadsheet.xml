@@ -963,11 +963,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Resource for non-supported content</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс для не поддерживаемого контента<!-- Resource for non-supported content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Other is a conformant for handling resource concepts not yet defined for FHIR or outside HL7's scope of interest</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Other подходит для оперирования концептами ресурсов, которые еще не определены для FHIR или лежат вне кругозора HL7<!-- Other is a conformant for handling resource concepts not yet defined for FHIR or outside HL7's scope of interest --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Need some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Нужен какой-то способ надежно (без нарушения способности к взаимодействию) позволить реализаторам обмениваться содержимым, не поддерживаемым начальным набором объявленных ресурсов.<!-- Need some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -995,9 +995,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Business identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Бизнес-идентификатор<!-- Business identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier assigned to the resource for business purposes, outside the context of FHIR</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, назначенный ресурсу в бизнес-целях вне FHIR-контекста <!-- Identifier assigned to the resource for business purposes, outside the context of FHIR --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1028,13 +1028,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Kind of Resource</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид ресурса<!-- Kind of Resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the 'type' of resource - equivalent to the resource name for other resources.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет 'тип' ресурса - эквивалент имени ресурса для других ресурсов<!-- Identifies the 'type' of resource - equivalent to the resource name for other resources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Must be able to distinguish different types of &quot;other&quot; resources.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Должна быть возможность отличать разные типы ресурсов от ресурсов &quot;other&quot;<!-- Must be able to distinguish different types of &quot;other&quot; resources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Because resource references will only be able to indicate 'Other', the type of reference will need to be specified in a Profile identified as part of the resource.  Refer to the resource notes section for information on appropriate terminologies for this code.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Поскольку ссылки на ресурсы смогут указывать только 'Other', потребуется тип ссылки определить в Профиле, указанном в рамках ресурса. Информацию по соответствующим справочникам для этого кода см. в разделе примечаний к ресурсу.<!-- Because resource references will only be able to indicate 'Other', the type of reference will need to be specified in a Profile identified as part of the resource.  Refer to the resource notes section for information on appropriate terminologies for this code. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./code</Data><NamedCell
@@ -1061,13 +1061,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifies the </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определяет пациента, медицинского работника, устройство или любой другой ресурс, находящийся &quot;фокусе&quot; данного ресурса <!-- Identifies the  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the patient, practitioner, device or any other resource that is the &quot;focus&quot; of this resoruce.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет пациента, медицинского работника, устройство или любой другой ресурс, находящийся &quot;фокусе&quot; данного ресурса<!-- Identifies the patient, practitioner, device or any other resource that is the &quot;focus&quot; of this resoruce. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Needed for partitioning the resource by Patient.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется для разбиения ресурсов по пациентам<!-- Needed for partitioning the resource by Patient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Optional as not all resources potential resources will have subjects.  Resources associated with multiple subjects can handle this via extension.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Необязательный элемент, так как не все потенциальные ресурсы имеют субъекты. Ресурсы, ассоциированные с несколькими субъектами, могут решить этот вопрос через расширение. <!-- Optional as not all resources potential resources will have subjects.  Resources associated with multiple subjects can handle this via extension. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./participation[typeCode='SBJ'] (possibly through a ControlAct and Role)</Data><NamedCell
@@ -1094,11 +1094,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who created</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто создал<!-- Who created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates who was responsible for creating the resource instance</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, кто ответственен за создание экземпляра ресурса<!-- Indicates who was responsible for creating the resource instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Needed for partitioning the resource</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется для распределения (partitioning) ресурса<!-- Needed for partitioning the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1126,11 +1126,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When created</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда создан<!-- When created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies when the resource was first created</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, когда ресурс был впервые создан<!-- Identifies when the resource was first created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows ordering resource instances by time</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет упорядочивать экземпляры ресурсов по времени<!-- Allows ordering resource instances by time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>

@@ -974,7 +974,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">RIM в целях гармонизации предлагает поместить LIST под GROUPER&#10;&#10;RIM в целях гармонизации предлагает разрешить организаторам группировать роли так же, как и действия.<!-- RIM harmonization proposal to move LIST under GROUPER&#10;&#10;RIM harmonization proposal to allow organizers to group roles as well as acts. --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Предложение согласования RIM - поместить LIST под GROUPER&#10;&#10;RIM в целях гармонизации предлагает разрешить организаторам группировать роли так же, как и действия.<!-- RIM harmonization proposal to move LIST under GROUPER&#10;&#10;RIM harmonization proposal to allow organizers to group roles as well as acts. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Act[classCode&lt;ORG,moodCode=EVN]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

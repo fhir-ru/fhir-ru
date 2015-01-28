@@ -962,12 +962,12 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A reference to a document</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ссылка на документ<!-- A reference to a document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A reference to a document </Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ссылка на документ<!-- A reference to a document --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Usually, this is used for documents other than those defined by FHIR</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Как правило, используется для других документов, а не тех, что определены FHIR <!-- Usually, this is used for documents other than those defined by FHIR --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Document[classCode=&quot;DOC&quot; and moodCode=&quot;EVN&quot;]</Data><NamedCell
@@ -995,9 +995,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Master Version Specific Identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- Master Version Specific Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Document identifier as assigned by the source of the document. This identifier is specific to this version of the document. This unique identifier may be used elsewhere to identify this version of the document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор документа, назначенный источником этого документа. Этот идентификатор специфичен для данной версии документа. Этот уникальный идентификатор может использоваться где-то в другом месте для указания на эту версию документа <!-- Document identifier as assigned by the source of the document. This identifier is specific to this version of the document. This unique identifier may be used elsewhere to identify this version of the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1027,12 +1027,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Other identifiers for the document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Другие идентификаторы для этого документа<!-- Other identifiers for the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Other identifiers associated with the document, including version independent, source record and workflow related identifiers</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Другие идентификаторы, ассоциированные с документом, включая версионно-независимый, исходной записи и связанный с рабочим процессом <!-- Other identifiers associated with the document, including version independent, source record and workflow related identifiers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Other identifiers can also include Identifiers may be Accession Numbers, Order Numbers, Referral Request &#10;Identifiers, XDS Workflow Instance Identifiers</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Другие идентификаторы могут также включать такие, как Accession Numbers, Order Numbers, Referral Request &#10;Identifiers, XDS Workflow Instance Identifiers<!-- Other identifiers can also include Identifiers may be Accession Numbers, Order Numbers, Referral Request &#10;Identifiers, XDS Workflow Instance Identifiers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.id / .setId</Data><NamedCell
@@ -1060,9 +1060,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who|what is the subject of the document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто|что является темой документа<!-- Who|what is the subject of the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (I.e. machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">О ком или о чем этот документ. Документ может быть о человеке (пациент или медицинский работник), об устройстве (т. е. машине) или даже о группе субъектов (например документ о стаде сельскохозяйственных животных, или документ о ряде пациентов, испытавших общее воздействие)<!-- Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (I.e. machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1093,12 +1093,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What kind of document this is (LOINC if possible)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Что это за вид документа (LOINC, если возможно)<!-- What kind of document this is (LOINC if possible) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Specifies the particular kind of document (e.g. Patient Summary, Discharge Summary, Prescription, etc.)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Устанавливает конкретный вид документа (например Patient Summary, Discharge Summary, Prescription и т. п.)<!-- Specifies the particular kind of document (e.g. Patient Summary, Discharge Summary, Prescription, etc.) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Key metadata element describing the document, used in searching/filtering.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ключевой элемент метаданных, описывающий документ, используемый при поиске/фильтрации<!-- Key metadata element describing the document, used in searching/filtering. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./code</Data><NamedCell
@@ -1127,12 +1127,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Categorization of Document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Классификация документа<!-- Categorization of Document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A categorization for the type of the document. This may be implied by or derived from the code specified in the Document Type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Классификация типа документа. Может подразумеваться или вытекать из кода, указанного в типе документа<!-- A categorization for the type of the document. This may be implied by or derived from the code specified in the Document Type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Helps humans to assess whether the document is of interest when viewing an index of documents</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Помогает людям оценивать, представляет ли документ для них интерес, при просмотре указателя документов<!-- Helps humans to assess whether the document is of interest when viewing an index of documents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship[typeCode=&quot;COMP].target[classCode=&quot;LIST&quot;, moodCode=&quot;EVN&quot;].code</Data><NamedCell
@@ -1160,12 +1160,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who and/or what authored the document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто и/или что является автором документа<!-- Who and/or what authored the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies who is responsible for adding the information to the document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет, кто ответственен за добавление информации в документ<!-- Identifies who is responsible for adding the information to the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Not necessarily who did the actual data entry (i.e. typist) it in or who was the source (informant)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это не обязательно тот, кто фактически сделал ввод данных (т. е. машинистка) или кто был источником (информатор)<!-- Not necessarily who did the actual data entry (i.e. typist) it in or who was the source (informant) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=&quot;AUT&quot;].role[classCode=&quot;ASSIGNED&quot;]</Data><NamedCell
@@ -1193,12 +1193,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Org which maintains the document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая поддерживает документ<!-- Org which maintains the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the organization or group who is responsible for ongoing maintenance of and access to the document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет организацию или группу, которая несет ответственность за текущее обслуживание и доступ к документу <!-- Identifies the organization or group who is responsible for ongoing maintenance of and access to the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the logical organization to go to find the current version, where to report issues, etc. This is different from the physical location of the document, which is the technical location of the document, which host may be delegated to the management of some other organization</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет логическую организацию, в которой искать текущую версию, куда сообщать о проблемах и т. п. Отличается от физического расположения документа, которое является техническим местоположением документа, которое может быть делегировано под управление другой организации<!-- Identifies the logical organization to go to find the current version, where to report issues, etc. This is different from the physical location of the document, which is the technical location of the document, which host may be delegated to the management of some other organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=&quot;RCV&quot;].role[classCode=&quot;CUST&quot;].scoper[classCode=&quot;ORG&quot; and determinerCode=&quot;INST&quot;]</Data><NamedCell
@@ -1225,15 +1225,15 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Manages access policies for the document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Управляет политикой доступа к документу<!-- Manages access policies for the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to a domain or server that manages policies under which the document is accessed and/or made available</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на домен или сервер, который управляет политикой доступа и/или доступности документа<!-- A reference to a domain or server that manages policies under which the document is accessed and/or made available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Harmonization proposal to define participation type.  (And evaluate whether this is in the 80%)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Предложение согласования - определить тип участия. (И оценить, входит ли оно в 80%)<!-- Harmonization proposal to define participation type.  (And evaluate whether this is in the 80%) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">N/A - New participation type required</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">N/A - Требуется новый тип участия<!-- N/A - New participation type required --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1257,9 +1257,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who/What authenticated the document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто/что подтвердил подлинность документа<!-- Who/What authenticated the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Which person or organization authenticates that this document is valid</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Какое лицо или организация удостоверяет, что это документ действителен<!-- Which person or organization authenticates that this document is valid --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1289,12 +1289,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Document creation time</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время создания документа<!-- Document creation time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">When the document was created </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда документ был создан<!-- When the document was created --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Creation time is used for tracking, organizing versions and searching. This is the creation time of the document, not the source material on which it is based</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Время создания используется для отслеживания, организации версий и поиска. Это время создания документа, а не материала-источника, на котором он основывается<!-- Creation time is used for tracking, organizing versions and searching. This is the creation time of the document, not the source material on which it is based --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.effectiveTime[type=&quot;TS&quot;]</Data><NamedCell
@@ -1322,12 +1322,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When this document reference created</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда этот document reference создан<!-- When this document reference created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">When the document reference was created</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда этот document reference был создан<!-- When the document reference was created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Referencing/indexing time is used for tracking, organizing versions and searching.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Время ссылки/индексации используется для отслеживания, организации версий и поиска.<!-- Referencing/indexing time is used for tracking, organizing versions and searching. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.availabilityTime[type=&quot;TS&quot;]</Data><NamedCell
@@ -1358,7 +1358,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">current | superceded | entered in error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of this document reference </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус этого document reference<!-- The status of this document reference --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1391,7 +1391,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">preliminary | final | appended | amended | entered in error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the underlying document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус базового документа<!-- The status of the underlying document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1421,9 +1421,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Relationships to other documents</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Взаимосвязи с другими документами<!-- Relationships to other documents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Relationships that this document has with other document references that already exist</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Взаимосвязи этого документа с другими document references, которые уже существуют<!-- Relationships that this document has with other document references that already exist --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1456,10 +1456,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">replaces | transforms | signs | appends</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of relationship that this document has with anther document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип взаимосвязи, который этот документ имеет с другим документом<!-- The type of relationship that this document has with anther document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If this document appends another document, then the document cannot be fully understood without also accessing the referenced document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если данный документ добавляет еще один документ, то документ не может быть полностью понят без доступа к указанному документу<!-- If this document appends another document, then the document cannot be fully understood without also accessing the referenced document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship.typeCode</Data><NamedCell
@@ -1486,9 +1486,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Target of the relationship</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Целевой документ взаимосвязи<!-- Target of the relationship --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The target document of this relationship</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Целевой документ этой взаимосвязи<!-- The target document of this relationship --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1517,13 +1517,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Human-readable description (title)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человекочитаемое описание (заголовок)<!-- Human-readable description (title) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Human-readable description of the source document. This is sometimes known as the &quot;title&quot;</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое описание документа-источника. Также известно как &quot;заголовок<!-- Human-readable description of the source document. This is sometimes known as the &quot;title&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Helps humans to assess whether the document is of interest</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает людям оценивать, представляет ли документ интерес<!-- Helps humans to assess whether the document is of interest --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">What the document is about, rather than a terse summary of the document. It is commonly the case that records do not have a title and are collectively referred to by the display name of Record code (e.g. a &quot;consultation&quot; or &quot;progress note&quot;).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Говорит, о чем этот документ, а не пересказывает его краткое изложение. Как правило, записи не имеют заголовка, и на них в совокупности ссылаются по имени для отображения кода записи (например &quot;consultation&quot; или &quot;progress note&quot;).<!-- What the document is about, rather than a terse summary of the document. It is commonly the case that records do not have a title and are collectively referred to by the display name of Record code (e.g. a &quot;consultation&quot; or &quot;progress note&quot;). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship[typeCode=&quot;SUBJ&quot;].target.text</Data><NamedCell
@@ -1553,12 +1553,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Sensitivity of source document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уровень конфиденциальности исходного документа<!-- Sensitivity of source document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code specifying the level of confidentiality of the XDS Document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, определяющий уровень конфиденциальности этого XDS-документа<!-- A code specifying the level of confidentiality of the XDS Document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The interpretation of this field, and more generally enforcement and issues related to highly sensitive documents are beyond the scope of this resource. confidentialityCode can only be understood in the context of the policies, procedures, and value set specified by the context in which the document reference is being used</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Интерпретация этого поля, а также обеспечение соблюдения и вопросы, связанные с высоким уровнем конфиденциальности, выходят за рамки этого ресурса. confidentialityCode может быть понят только в контексте политики, процедур и набора значений, определяемых контекстом использования этого document reference<!-- The interpretation of this field, and more generally enforcement and issues related to highly sensitive documents are beyond the scope of this resource. confidentialityCode can only be understood in the context of the policies, procedures, and value set specified by the context in which the document reference is being used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.confidentialityCode</Data><NamedCell
@@ -1587,9 +1587,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The marked primary language for the document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Язык документа, помеченный как основной<!-- The marked primary language for the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The primary language in which the source document is written</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Основной язык, на котором написан исходный документ<!-- The primary language in which the source document is written --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1619,12 +1619,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Mime type, + maybe character encoding</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">MIME-тип +, возможно, символьная кодировка<!-- Mime type, + maybe character encoding --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The mime type of the source document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">MIME-тип исходного документа<!-- The mime type of the source document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Note: application/hl7-v3+xml for CDA. application/binary for proprietary record formats</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Примечание: application/hl7-v3+xml для CDA. application/binary для частных форматов записи<!-- Note: application/hl7-v3+xml for CDA. application/binary for proprietary record formats --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.text.mediaType</Data><NamedCell
@@ -1652,12 +1652,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Format/content rules for the document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Правила формата/содержимого документа<!-- Format/content rules for the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An identifier that identifies that the format and content of the document conforms to additional rules beyond the base format indicated in the mimeType</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, который указывает, что формат и содержимое документа соответствуют дополнительным правилам, выходящим за рамки базового формата, обозначенного в mimeType<!-- An identifier that identifies that the format and content of the document conforms to additional rules beyond the base format indicated in the mimeType --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Most often used when the mime-type is text/xml</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Чаще всего используется с MIME-типом text/xml<!-- Most often used when the mime-type is text/xml --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">n/a</Data><NamedCell
@@ -1684,9 +1684,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Size of the document in bytes</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Размер документа в байтах<!-- Size of the document in bytes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The size of the source document this reference refers to in bytes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Размер исходного документа, на который ссылается этот ресурс, в байтах<!-- The size of the source document this reference refers to in bytes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1715,12 +1715,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Base64 representation of SHA1</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Представление SHA1 в кодировке Base64<!-- Base64 representation of SHA1 --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A hash of the source document to ensure that changes have not occurred</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Хэш исходного документа для гарантии, что в нем не произошли изменения<!-- A hash of the source document to ensure that changes have not occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether the hash must be present and/or correct depends on the document handling rules defined in the context of use</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Должен ли хэш присутствовать и/или быть корректным, зависит от правил обработки документов, определенных в контексте использования<!-- Whether the hash must be present and/or correct depends on the document handling rules defined in the context of use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.text.integrityCheck</Data><NamedCell
@@ -1748,9 +1748,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where to access the document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где доступен документ<!-- Where to access the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A url at which the document can be accessed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">URL, по которому доступен документ<!-- A url at which the document can be accessed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1780,12 +1780,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If access is not fully described by location</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если доступ не полностью описывается местоположением<!-- If access is not fully described by location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A description of a service call that can be used to retrieve the document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание вызова сервиса, который можно использовать для извлечения документа<!-- A description of a service call that can be used to retrieve the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If a document can be accessed by either a service or directly by a URL (i.e. an XDS repository with an MHD access point, or a DICOM network with a WADO portal) just provide the URL</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если документ доступен через сервис или напрямую по URL (например XDS-репозиторий с точкой доступа MHD или DICOM-сеть с WADO-порталом), просто укажите URL<!-- If a document can be accessed by either a service or directly by a URL (i.e. an XDS repository with an MHD access point, or a DICOM network with a WADO portal) just provide the URL --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.text.reference</Data><NamedCell
@@ -1814,12 +1814,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of service (i.e. XDS.b)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип сервиса (например XDS.b)<!-- Type of service (i.e. XDS.b) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of the service that can be used to access the documents</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип сервиса, который можно использовать для доступа к документу<!-- The type of the service that can be used to access the documents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The meaning and interpretation of the parameters depends on the service type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">От типа сервиса зависит значение и интерпретация параметров<!-- The meaning and interpretation of the parameters depends on the service type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">n/a</Data><NamedCell
@@ -1846,12 +1846,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where service is located (usually a URL)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где находится сервис (как правило, URL)<!-- Where service is located (usually a URL) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Where the service end-point is located </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Где расположена точка взаимодействия сервиса<!-- Where the service end-point is located --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Usually this is a URL, but for some services, the end-point is a simple network name or address that is not a valid URL</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Как правило, это URL, но для некоторых сервисов точка взаимодействия - это просто сетевое имя или адрес, не являющийся валидным URL<!-- Usually this is a URL, but for some services, the end-point is a simple network name or address that is not a valid URL --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">n/a</Data><NamedCell
@@ -1877,12 +1877,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Service call parameters</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Параметры вызова сервиса<!-- Service call parameters --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of named parameters that is used in the service call</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Список именованных параметров, используемых при вызове сервиса<!-- A list of named parameters that is used in the service call --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The interpretation of the parameters, and how to convert them into a proper service call, is dependent on the type of the service, and needs to be specified in an implementation guide somewhere</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Интерпретация параметров, а также конвертация их в соответствующий вызов сервиса зависят от типа сервиса и должны приводиться в руководстве по реализации<!-- The interpretation of the parameters, and how to convert them into a proper service call, is dependent on the type of the service, and needs to be specified in an implementation guide somewhere --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">n/a</Data><NamedCell
@@ -1910,9 +1910,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Parameter name in service call</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя параметра вызова сервиса<!-- Parameter name in service call --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of a parameter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя параметра<!-- The name of a parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1941,9 +1941,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Parameter value for the name</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение параметра с таким именем<!-- Parameter value for the name --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The value of the named parameter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение именованного параметра<!-- The value of the named parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1971,12 +1971,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Clinical context of document</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Клинический контекст документа<!-- Clinical context of document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The clinical context in which the document was prepared</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Клинический контекст, в котором документ был подготовлен<!-- The clinical context in which the document was prepared --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">These values are primarily added to help with searching for interesting/relevant documents</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Эти значения главным образом добавляются для упрощения поиска интересующих/релевантных документов<!-- These values are primarily added to help with searching for interesting/relevant documents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">outboundRelationship[typeCode=&quot;SUBJ&quot;].target[classCode&lt;'ACT']</Data><NamedCell
@@ -2005,12 +2005,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Main Clinical Acts Documented</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Задокументированные основные клинические акты<!-- Main Clinical Acts Documented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a &quot;History and Physical Report&quot; in which the procedure being documented is necessarily a &quot;History and Physical&quot; act</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Этот перечень кодов представляет собой задокументированные основные клинические акты, например колоноскопия или аппендэктомия. В некоторых случаях событие берется из typeCode, например &quot;History and Physical Report&quot;, в котором документируемой процедурой обязательно будет акт &quot;History and Physical&quot;<!-- This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a &quot;History and Physical Report&quot; in which the procedure being documented is necessarily a &quot;History and Physical&quot; act --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An event can further specialize the act inherent in the type, such as &#10;where it is simply &quot;Procedure Report&quot; and the procedure was a &quot;colonoscopy&quot;. If one or more event codes are included, they shall not conflict with the values inherent in the class or type elements as such a conflict would create an ambiguous situation.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Событие может дополнительно специализировать акт, берущийся из типа, например &#10;, где это просто &quot;Procedure Report&quot; , и процедурой была &quot;colonoscopy&quot;. Если включен один или несколько кодов событий, они не должны конфликтовать со значениями, присущими элементам class или type, поскольку такой конфликт создал бы неоднозначную ситуацию.<!-- An event can further specialize the act inherent in the type, such as &#10;where it is simply &quot;Procedure Report&quot; and the procedure was a &quot;colonoscopy&quot;. If one or more event codes are included, they shall not conflict with the values inherent in the class or type elements as such a conflict would create an ambiguous situation. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
@@ -2037,9 +2037,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time of service that is being documented</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время услуги, которая документируется<!-- Time of service that is being documented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The time period over which the service that is described by the document was provided</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени, в течение которого услуга, которая описана в документе, была представлена <!-- The time period over which the service that is described by the document was provided --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2069,9 +2069,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Kind of facility where patient was seen</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид заведения, где наблюдался пациент<!-- Kind of facility where patient was seen --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The kind of facility where the patient was seen</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вид заведения, где наблюдался пациент<!-- The kind of facility where the patient was seen --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
