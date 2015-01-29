@@ -996,7 +996,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Starting time with inclusive boundary</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время начала, включая границу<!-- Starting time with inclusive boundary --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The start of the period. The boundary is inclusive.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1031,7 +1031,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String"> If the end of the period is missing, it means that the period is ongoing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">End time with inclusive boundary, if not ongoing</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время окончания, включая границу, если не продолжается в настоящее время<!-- End time with inclusive boundary, if not ongoing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The end of the period. If the end of the period is missing, it means that the period is ongoing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
