@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 The FHIR terminology specification is based two key concepts, originally defined in <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a>:
 </p>

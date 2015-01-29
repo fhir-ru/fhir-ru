@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 The NutritionOrder resource describes a request for oral diets (including general diets such as General Healthy diet, or therapeutic diets such as Consistent Carbohydrate, 2 gram Sodium, or Fluid Restricted), oral nutrition supplements, enteral nutrition (tube feedings) and infant formula which govern the distribution of food and nutritional products used to feed patients within an in-patient setting.These nutrition orders are combined with information on a patient's food allergies and intolerances, and ethnic or cultural food preferences (Kosher, Vegetarian) to inform healthcare personnel about the type, texture, and/or quantity of foods that the patient should receive or consume. The NutritionOrder resource is tied to the Order resource; however, addresses the unique attributes of nutrition orders. It is not intended for use in prescribing parenteral (IV) nutrition or dietary supplements such as vitamin/mineral supplements.
 </p>

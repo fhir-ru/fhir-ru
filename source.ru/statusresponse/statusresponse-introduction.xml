@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 The StatusResponse resource indicates the resource for which the processing status is requested and 
 provides simple acknowledgement and status information of application level errors. It may also be used to 

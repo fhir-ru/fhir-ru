@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 <b>Basic</b> is a special type of resource. Unlike all other resources, it doesn't correspond to a specific pre-defined HL7 concept. Instead, it's a placeholder for any resource-like concept that isn't already defined in the HL7 specification.
 </p>

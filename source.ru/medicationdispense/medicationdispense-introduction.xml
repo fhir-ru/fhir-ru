@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 This resource covers the supply of all medications to a patient.  Examples include dispensing and pick-up from an out-patient pharmacy, 
 dispensing patient-specific medications from in-patient pharmacy to ward as well as issuing a single dose from ward stock to a patient for consumption.

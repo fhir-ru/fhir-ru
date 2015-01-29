@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 A <b>Questionnaire</b> is an organized collection of questions intended to solicit information from patients, providers or other individuals involved
 in the healthcare domain.  They may be simple flat lists of questions or can be hierarchically organized in 
