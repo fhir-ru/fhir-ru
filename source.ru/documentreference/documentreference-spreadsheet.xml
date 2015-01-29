@@ -3930,7 +3930,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">DocumentReference</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">A location or a service (or both) SHALL be provided</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Местоположение или сервис (или оба) ДОЛЖНЫ быть указаны<!-- A location or a service (or both) SHALL be provided --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">exists(f:location) or exists(f:service)</Data><NamedCell
@@ -4570,7 +4570,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">relatesto &amp; relation</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Combination of relation and relatesTo</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Комбинация relation и relatesTo<!-- Combination of relation and relatesTo --></Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s116"><Data ss:Type="String">description</Data></Cell>
@@ -6741,7 +6741,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">DocumentReferenceStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of the document reference</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус ссылки на документ<!-- The status of the document reference --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#document-reference-status</Data></Cell>
@@ -6756,7 +6756,7 @@
    </Row>
    <Row>
     <Cell ss:StyleID="s146"><Data ss:Type="String">DocumentClass</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">SubType of a clinical document</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подтип клинического документа<!-- SubType of a clinical document --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-xds-typecodes</Data></Cell>
@@ -6771,7 +6771,7 @@
    </Row>
    <Row>
     <Cell ss:StyleID="s146"><Data ss:Type="String">DocumentFacilityType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">XDS Facility Type</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">XDS-тип учреждения<!-- XDS Facility Type --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-xds-facilitycodes</Data></Cell>
@@ -6786,7 +6786,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">DocumentServiceType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Document Reference Service Type</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип сервиса Document Reference<!-- Document Reference Service Type --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-documentreference-service-types</Data></Cell>
@@ -6801,7 +6801,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ReferredDocumentStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Status of the underlying document</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус базового документа<!-- Status of the underlying document --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">http://hl7.org/fhir/vs/composition-status</Data></Cell>
@@ -6816,7 +6816,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">DocumentRelationshipType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of relationship between documents</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип взаимосвязи между документами<!-- The type of relationship between documents --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#document-relationship-type</Data></Cell>

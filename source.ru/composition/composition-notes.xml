@@ -6,7 +6,7 @@
 <!-- Notes: -->
 </h2>
 <ul> 
- <li>Часто автор и заверитель - одно и то же лицо, но это может быть не так в некоторых клинических рабочих процессах<!-- The author and the attester are often the same person, but this may not be the case in some clinical workflows --></li>
+ <li>Часто автор и заверитель - одно лицо, но это может быть не так в некоторых клинических рабочих процессах<!-- The author and the attester are often the same person, but this may not be the case in some clinical workflows --></li>
  <li>Заверитель удостоверяет содержимое ресурса document, ресурса subject и ресурсов, на которые есть ссылки в Composition.section.content. Поскольку документы часто производят Compositions и заверение композиции проводится для того, чтобы применить и к документу, должен использоваться метод <a href="documents.html#presentation">презентации документа</a>, когда/если заверители проверяют содержимое композиции
  <!-- The attester attests contents of the document resource, the subject resource and the resources referred to 
    in the Composition.section.content references. Because documents are often derived Compositions and the attestation

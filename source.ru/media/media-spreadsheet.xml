@@ -3895,7 +3895,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Media</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Height can only be used for a photo or video</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Высота используется только для фото или видео<!-- Height can only be used for a photo or video --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(f:type/@value='audio') or not(f:height)</Data><NamedCell
@@ -3907,7 +3907,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Width rule</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Media</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Width can only be used for a photo or video</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Ширина используется только для фото или видео<!-- Width can only be used for a photo or video --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(f:type/@value='audio') or not(f:width)</Data></Cell>
    </Row>
@@ -3917,7 +3917,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Frames rule</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Media</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Frames can only be used for a photo</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Кадры используются только для фото<!-- Frames can only be used for a photo --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">(f:type/@value='photo') or not(f:frames)</Data></Cell>
    </Row>
@@ -3927,7 +3927,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Length rule</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Media</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Length can only be used for an audio or a video</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Длина используется только для аудио или видео<!-- Length can only be used for an audio or a video --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(f:type/@value='photo') or not(f:length)</Data></Cell>
    </Row>
@@ -6705,7 +6705,7 @@
    </Row>
    <Row>
     <Cell ss:StyleID="s145"><Data ss:Type="String">MediaType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Whether the Media is a photo, video, or audio</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Что представляют собой медиаданные: фото, видео или аудио<!-- Whether the Media is a photo, video, or audio --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Code List</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#media-type</Data></Cell>
@@ -6720,7 +6720,7 @@
    </Row>
    <Row ss:Height="45">
     <Cell ss:StyleID="s146"><Data ss:Type="String">MediaSubtype</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed information about the type of the image - its kind, purpose, or the kind of equipment used to generate it </Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробная информация о типе изображения - вид, назначение, либо вид оборудования, на котором оно было получено<!-- Detailed information about the type of the image - its kind, purpose, or the kind of equipment used to generate it --> </Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Value Set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-media-subtype</Data></Cell>
@@ -6750,7 +6750,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">MediaView</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Imaging view (projection) used when collecting an image</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Точка обзора (проекция), используемая при сборе изображения<!-- Imaging view (projection) used when collecting an image --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Value Set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-media-view</Data></Cell>
