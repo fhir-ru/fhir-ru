@@ -37,7 +37,7 @@ more sophisticated questionnaires and forms.
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 <b>Questionnaires</b> differ from <a href="list.html">Lists</a> because <a href="list.html">Lists</a> group existing resources, while <b>Questionnaires</b> group
 arbitrary questions.  In theory, a <b>Questionnaire</b> could be expressed as a <a href="list.html">List</a> or <a href="composition.html">Composition</a> containing
@@ -47,7 +47,7 @@ must generally be maintained as a single structure.  The latter would focus on r
 </div>
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Groups and questions that make up a Questionnaire can be explicitly coded to refer to externally defined numbering or identification of questions and sections on
 formally defined questionnaires. This allows extraction of the data on a form and post-processing of the data contained in a Questionnaire. Such coding is not required however 

@@ -13,7 +13,7 @@ For the initial scope, this DeviceComponent resource is only applicable to descr
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 There are several related resources
 </p>
@@ -27,7 +27,7 @@ There are several related resources
 </div>
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <h3>Structure of a DeviceComponent Resource</h3>
 
 <p>

@@ -36,7 +36,7 @@ Presntly open issues for this resource:
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 This resource is used to provide a single place within the health record to document a range of clinical statements about adverse reactions, including:
 </p>
@@ -140,7 +140,7 @@ such as history, examination and diagnoses stored elsewhere in the record, if it
 
 <!-- (optional):
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>

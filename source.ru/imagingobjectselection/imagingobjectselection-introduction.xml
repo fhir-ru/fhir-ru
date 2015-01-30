@@ -12,7 +12,7 @@ This resource summarizes a set of images or other instances gathered for some sp
 
 <!-- (recommended): 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 In distinction to ImagingStudy, this resource is a set of specifically selected objects, potentially from multiple studies on the same patient.  ImagingStudy is intended as the resource that identifies a single complete study in itself.
 </p>
@@ -21,7 +21,7 @@ In distinction to ImagingStudy, this resource is a set of specifically selected 
 
 <!-- (optional):
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 This resource corresponds to the DICOM Key Object Selection (KOS) SOP Class, and may represent a FHIR access mechanism to the content of KOS SOP Instances. The content is closely based on the definitions of the equivalent DICOM constructs, and informed by usage patterns already established through DICOM implementation practices, including IHE KIN, TCE, and XDS-I profiles. However, it is not necessary to use DICOM infrastructure in order to use this resource.
 </p>

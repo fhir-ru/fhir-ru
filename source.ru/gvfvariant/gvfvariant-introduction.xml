@@ -9,7 +9,7 @@ This resource describes a single fragment (feature) within a GVF file. The resou
 
 <!-- (recommended): 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Explains how this resource relates to others. Particularly important is to differentiate between appropriate usages for related resources when an implementer might be confused about what to reference when.
 </p>
@@ -18,7 +18,7 @@ Explains how this resource relates to others. Particularly important is to diffe
 
 <!-- (optional):
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>

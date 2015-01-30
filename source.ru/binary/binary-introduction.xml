@@ -22,7 +22,7 @@ feed directly rather than leaving them by reference).
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 This resource is generally used as the target of a <a href="documentreference.html">Document Reference</a> or an <a href="datatypes.html#Attachment">Attachment</a>, when a FHIR server finds it convenient to manage the content within the same overall REST framework as the other resources.
 </p>

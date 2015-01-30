@@ -24,7 +24,7 @@
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
     <b>Notes to reviewers:</b>
 
@@ -36,7 +36,7 @@
 </div>
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 The notion of a procedure request is of key importance to clinical decision support system which may recommend 
 procedures based on a number of criteria evaluated on patient and other clinical information.

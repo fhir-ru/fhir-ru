@@ -35,7 +35,7 @@ draw the attention of reviewers and implementers to the following issues:
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 There is another related clinical concept often called an "assessment": assessment Tools such as Apgar (also known as "Assessment Scales"),
 and this is different to the scope of the "clinical assessment" resource. Assessment tools such as Apgar are represented as 
@@ -46,7 +46,7 @@ during the assessment process.
 </div>
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 An important background to understanding this resource is <a href="">the FHIR wiki page for clinical assessment</a>. In particular,
 the storyboards there drove the design of the resource, and will be the basis for all examples created.

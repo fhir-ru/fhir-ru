@@ -20,7 +20,7 @@ mostly includes the whole content of a resource. These resource bundles are usef
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 There are two ways to group resources together - <a href="references.html#contained">contained resources</a>, and
 bundles. There is an important difference between the two: 

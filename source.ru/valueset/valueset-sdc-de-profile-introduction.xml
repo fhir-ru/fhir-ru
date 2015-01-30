@@ -14,7 +14,7 @@ and information capture associated with the <a href="valueset.html">ValueSet</a>
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 This profile relies on the use of the <a href="valueset-extensions.html">valueset-extensions</a> profile which defines a number of less common properties for value sets, several of which are mandated for this profile.
 It also makes use of the <a href="rendering-extensions.html">rendering-extensions</a> which defines rendering information for display names and labels of codes.

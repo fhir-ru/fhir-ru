@@ -24,7 +24,7 @@
 
 <!-- (recommended): -->
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 This resource is a record of a request. It does not represent the actual flow of communication.
 
@@ -39,7 +39,7 @@ Communication of orders and the ensuing responses are described by Order and Ord
 
 <!-- (optional):
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>

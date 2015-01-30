@@ -11,7 +11,7 @@
     
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
     The Referral Request resource references or includes a number of other resources including Practitioner, Organization, Condition, Family History, Allergy/Intolerance, Alerts, Medication, Diagnostic Reports, Care Plan, etc   
     </p>
@@ -22,7 +22,7 @@
 
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>

@@ -9,7 +9,7 @@ dispensing patient-specific medications from in-patient pharmacy to ward as well
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 <b>The Medication domain includes a number of related resources</b>
 </p>
@@ -39,7 +39,7 @@ This resource does not deal with the supply or transfer of non-medication relate
 </div>
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>    
     The supply and the associated administration instructions may not exactly follow the original order (prescription) either because some details were left for completion at this point in the process, or because the dispenser exercised their clinical judgment to make some appropriate modification.
 </p>

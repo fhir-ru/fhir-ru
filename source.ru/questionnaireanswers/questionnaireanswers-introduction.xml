@@ -31,7 +31,7 @@ groups and questions are answered and that answers fit constraints in terms of c
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 The <b>QuestionnaireAnswers</b> resource captures the responses to a questionnaire, while <a href="questionnaire.html">Questionnaire</a> represents
 the definition of the questionnaire form, including what questions are asked, how they're organized and the constraints on the allowed answers.
@@ -49,7 +49,7 @@ ranges, interpretation, date, etc. may also be captured.
 </div>
 
 <!--<div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 </p>
 </div>-->

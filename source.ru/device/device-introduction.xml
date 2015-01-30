@@ -26,7 +26,7 @@ statement to create a device observation, which is suitable for wider use within
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Devices that are implanted in a patient differ from medications because they are not "used up" - they remain active in a patient in an ongoing fashion.
 The <a href="medication.html">Medication resource</a> SHOULD not be used to represent implanted devices.

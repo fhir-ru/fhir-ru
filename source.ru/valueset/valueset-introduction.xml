@@ -34,7 +34,7 @@ their own distributions formats .
 </p>
 </div>
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <ul>
  <li>Value sets are used in <a href="profile.html">Profiles</a>, and <a href="questionnaire.html">Questionnaires</a> to specify the allowable contents for coded elements</li>
  <li>In addition, a specific <a href="datatypes.html#Coding">Coding</a> can reference the value set it was picked from</li>
@@ -45,7 +45,7 @@ resources can be converted to CTS2 value set and code system resources</li>
 </div>
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 
 <p>
 When using value sets, proper differentiation between a code system and a value set is important. 

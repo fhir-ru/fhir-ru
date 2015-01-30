@@ -30,7 +30,7 @@ Implementers don't need to be concerned with which of the three categories their
 </div>
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Basic defines only a minimal set of data elements - those necessary to identify what kind of resource it
 represents and those necessary to support resource <a href="extras.html#compartments">compartmenting</a>.  All other data elements
