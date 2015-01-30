@@ -1,10 +1,11 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <p>
-Notes:
+Примечания:
+<!-- Notes: -->
 </p>
 <ul>
-<li>multipleBirth can be either expressed as a boolean (just indicating whether the patient is part of a multiple birth) or as an integer, indicating the actual birth order.</li>
+<li>multipleBirth может быть выражено либо в виде булева значения (просто указание, <!-- multipleBirth can be either expressed as a boolean (just indicating whether the patient is part of a multiple birth) or as an integer, indicating the actual birth order. --></li>
 <li>Patient records may only be in one of two statuses: in use (active=true) and not in use (active=false). 
 A normal record is active, i.e. it is in use. Active is set to 'false' when a record is created as a duplicate or in error. 
 A record does not need to be linked to be inactivated.

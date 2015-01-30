@@ -10,7 +10,7 @@ This resource records the genotypic/proteomic information of the patient at a sp
 
 <!-- (recommended): 
 <div>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<h2>Boundaries and Relationships</h2>
 <p>
 Explains how this resource relates to others. Particularly important is to differentiate between appropriate usages for related resources when an implementer might be confused about what to reference when.
 </p>

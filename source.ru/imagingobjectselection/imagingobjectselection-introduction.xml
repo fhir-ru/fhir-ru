@@ -12,7 +12,7 @@ This resource summarizes a set of images or other instances gathered for some sp
 
 <!-- (recommended): 
 <div>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<h2>Boundaries and Relationships</h2>
 <p>
 In distinction to ImagingStudy, this resource is a set of specifically selected objects, potentially from multiple studies on the same patient.  ImagingStudy is intended as the resource that identifies a single complete study in itself.
 </p>
