@@ -26,27 +26,32 @@ See below for further discussion --></li>
 <p>Элемент <i>link</i> используется для утверждения, что ресурсы patient относятся к одному и тому же человеку. Этот элемент используется для поддержки трех различных сценариев, в которых для одного человека существует несколько записей:<!-- The <i>link</i> element is used to assert that patient resources refer to the same person. This element is used
 to support three distinct scenario's where multiple records of the same person exist: --></p>
 
-<h3>Duplicate Patient records</h3>
-<p>Managing Patient registration is a well known difficult problem. Around 2% of registrations are in error, 
+<h3>Записи-дубликаты Patient<!-- Duplicate Patient records --></h3>
+<p>
+Управление регистрацией пациентов - хорошо известная трудная задача. Около 2% регистраций производятся по ошибке, в основном это записи-дубликаты. Иногда дубликат записи обнаруживается достаточно быстро и удаляется до того, как в нем накопятся данные. В противном случае могут накопиться существенные объемы данных. С помощью использования связи типа 'replace', запись, содержащая такую ссылку, помечается как дубликат, а эта ссылка ведет на запись, которую следует использовать взамен. Обратите внимание, что запись, на которую ведет указатель, может в свою очередь быть признанной введенной по ошибке и указывать в свою очередь на еще один ресурс Patient. Записи, замещающие другую запись, не указывают обратно на замещаемую запись. 
+<!-- Managing Patient registration is a well known difficult problem. Around 2% of registrations are in error, 
 mostly duplicate records. Sometimes the duplicate record is caught fairly quickly and retired before much 
 data is accumulated. In other cases, substantial amounts of data may accumulate. By using a link of type 'replace',
 the record containing such a link is marked as a duplicate and the link points forward to a record that should
 be used instead. Note that the record pointed to may in its turn have been identified as created in error and forward
-to yet another Patient resource. Records that replace another record, do not point back to the replaced record.
+to yet another Patient resource. Records that replace another record, do not point back to the replaced record. -->
 </p>
 
-<h3>Patient record in a Patient index</h3>
-<p>A Patient record may be present in a system that acts as a Patient Index: it maintains a (summary of) patient data and
+<h3>Запись пациента в указателе пациентов<!-- Patient record in a Patient index --></h3>
+<p>Запись Patient может быть представлена в системе, которая действует как указатель пациентов: она поддерживает (сводку) данных пациентов и список одного или нескольких серверов, которые, она знает, хранят более исчерпывающую и/или авторитетную запись для этого же пациента. Для обозначения такой связи используется ссылка типа 'refer'. Обратите внимание, что связанные ресурсы могут содержать противоречивую информацию. Запись, на которую идет ссылка, не указывает обратно на запись, из которой на нее ссылаются.<!-- A Patient record may be present in a system that acts as a Patient Index: it maintains a (summary of) patient data and
 a list of one or more servers that it are known to hold a more comprehensive and/or authorative record of the same patient.
 The link type 'refer' is used denote such a link. Note that linked records may contain contradictory information. The
-record referred to does not point back to the referring record.</p>
+record referred to does not point back to the referring record. --></p>
 
-<h3>Distributed Patient record</h3>
-<p>In a distributed architecture, multiple systems keep separate patient records concerning the same person. These
+<h3>Распределенная запись пациента<!-- Distributed Patient record --></h3>
+<p>
+В распределенной архитектуре несколько систем хранят отдельные записи пациентов, относящиеся к одному человеку. Эти записи не считаются дубликатами, однако содержат распределенное, потенциально пересекающееся представление данных пациента. 
+Каждая такая запись может иметь свое собственное направление или поддерживающую организацию, и не должно быть чувства, что одна запись более полная или более авторитетная, чем другая. В таких случаях могут использоваться связи типа 'seealso' для указания на другие записи пациента. Не является требованием, чтобы такие ссылки были двусторонними.
+<!-- In a distributed architecture, multiple systems keep separate patient records concerning the same person. These
 records are not considered duplicates, but contain a distributed, potentially overlapping view of the patient's data.
 Each such record may have its own focus or maintaining organization and there need not be a sense of one record
 being more complete or more authorative than another. In such cases, links of type 'seealso' can be used to point to
-other patient records. It is not a requirement that such links are bilateral. 
+other patient records. It is not a requirement that such links are bilateral.  -->
 </p>
 
 <h3>Patient vs Person vs Patient.Link</h3>
