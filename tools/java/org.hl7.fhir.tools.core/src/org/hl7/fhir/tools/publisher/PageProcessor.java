@@ -2182,7 +2182,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append(makeHeaderTab("Примеры", n+"-examples.html", "examples".equals(mode)));
     b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
     b.append(makeHeaderTab("Мэппинг", n+"-mappings.html", "mappings".equals(mode)));
-    b.append(makeHeaderTab("Соглашения о соответствии", n+"-packages.html", "packages".equals(mode)));
+    b.append(makeHeaderTab("Профили", n+"-packages.html", "packages".equals(mode)));
     if (hasOps)
       b.append(makeHeaderTab("Операции", n+"-operations.html", "operations".equals(mode)));
 

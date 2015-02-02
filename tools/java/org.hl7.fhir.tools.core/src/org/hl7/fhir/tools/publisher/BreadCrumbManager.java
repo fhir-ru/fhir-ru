@@ -456,7 +456,7 @@ public class BreadCrumbManager {
         addLink(b, p.getReference().toLowerCase()+"-examples.html", p.getReference()+" Примеры", path+".1", level+1);
         addLink(b, p.getReference().toLowerCase()+"-definitions.html", p.getReference()+" Определения", path+".2", level+1);
         addLink(b, p.getReference().toLowerCase()+"-mappings.html", p.getReference()+" Мэппинг", path+".3", level+1);
-        addLink(b, p.getReference().toLowerCase()+"-packages.html", p.getReference()+" Соглашения о соответствии", path+".4", level+1);
+        addLink(b, p.getReference().toLowerCase()+"-packages.html", p.getReference()+" Профили", path+".4", level+1);
     } else {
       addLink(b, p.getFilename(), p.getTitle(), path, level);
       for (Node n : p.getChildren()) {
