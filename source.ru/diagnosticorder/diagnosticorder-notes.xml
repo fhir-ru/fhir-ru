@@ -1,17 +1,25 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <h2>
-Notes:
+Примечания:
+<!-- Notes: -->
 </h2>
 <ul>
- <li>In normal practice, there would always be at least one item in a request (no point requesting nothing), but the minimum cardinality is 0 so that a workflow can quote order details (identifiers, requester) without having to list the items</li>
- <li>Typically the system placing the order sets the status to requested. There after, the order is maintained by the receiver that updates the status as the request is processed</li>
- <li>If the request has multiple items that have their own life cycles, then the items will have their own status while the overall diagnostic order is (usually) "in progress"</li>
- <li>The event list is not the same as an audit trail - it is a view of the important things that happened in the past. Typically, there would only be one entry for any given status, and systems may not record all the status events</li>
- <li>Many investigation requests will create a need for specimens, but in these cases, the request itself is not actually about the specimens.
-  This specimen elements in this resource are provided for when the diagnostic investigation is requested on already existing specimens</li>
- <li>A single specimen should not appear in both DiagnosticOrder.specimen and DiagnosticOrder.item.specimen - DiagnosticOrder.specimen should only be used when the entire order relates to a single specimen, and then there is no need to repeat it for each item</li>
- <li>The clinical notes may be used to decide how the diagnostic investigation will be performed, or even if it will be performed at all</li>
+ <li>В обычной практике всегда будет по крайней мере один элемент в запросе (нет смысла делать запрос ни о чем), однако минимальное кардинальное число 0, чтобы рабочий процесс мог цитировать детали заказа (идентификаторы, запрашивающего) без необходимости перечисления всех элементов
+ <!-- In normal practice, there would always be at least one item in a request (no point requesting nothing), but the minimum cardinality is 0 so that a workflow can quote order details (identifiers, requester) without having to list the items --></li>
+ <li>Обычно система размещения заказа устанавливает статус requested. После этого заказ поддерживается получателем, который обновляет статус по мере обработки запроса.
+ <!-- Typically the system placing the order sets the status to requested. There after, the order is maintained by the receiver that updates the status as the request is processed --></li>
+ <li>Если у запроса имеется несколько элементов со своими собственными жизненными циклами, тогда у этих элементов будут свои собственные статусы, в то время как общий diagnostic order будет (как правило) иметь статус "in progress"
+ <!-- If the request has multiple items that have their own life cycles, then the items will have their own status while the overall diagnostic order is (usually) "in progress" --></li>
+ <li>Список событий отличается от журнала аудита - это взгляд на важные веди, которые произошли в прошлом. Как правило, для любого заданного статуса будет только одна запись, и системы могут не записывать все события, связанные со статусами
+ <!-- The event list is not the same as an audit trail - it is a view of the important things that happened in the past. Typically, there would only be one entry for any given status, and systems may not record all the status events --></li>
+ <li>Многие запросы на исследования создают потребность в образцах (specimens), но в этих случаях сам запрос на самом деле не об образцах. Элементы specimen в данном ресурсе заполняются при запросе на диагностическое исследование уже существующих образцов
+ <!-- Many investigation requests will create a need for specimens, but in these cases, the request itself is not actually about the specimens.
+  This specimen elements in this resource are provided for when the diagnostic investigation is requested on already existing specimens --></li>
+ <li>Один и тот же образец не должен указываться и в DiagnosticOrder.specimen, и в DiagnosticOrder.item.specimen - DiagnosticOrder.specimen должен использоваться, только когда заказ целиком относится к отдельному образцу, и тогда нет необходимости повторять его для каждого пункта
+ <!-- A single specimen should not appear in both DiagnosticOrder.specimen and DiagnosticOrder.item.specimen - DiagnosticOrder.specimen should only be used when the entire order relates to a single specimen, and then there is no need to repeat it for each item --></li>
+ <li>Для решения, каким образом диагностическое исследование будет выполняться, или даже будет ли оно выполняться вообще, могут использоваться клинические записи
+ <!-- The clinical notes may be used to decide how the diagnostic investigation will be performed, or even if it will be performed at all --></li>
 </ul>
 
 </div>
