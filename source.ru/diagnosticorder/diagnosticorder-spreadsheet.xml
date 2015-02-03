@@ -1100,9 +1100,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">encounter, с которым связан этот диагностический заказ<!-- The encounter that this diagnostic order is associated with --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter, с которым связан этот диагностический заказ<!-- The encounter that this diagnostic order is associated with --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">encounter, предоставляющий дополнительную информацию о медицинском контексте, в котором был сделан этот заказ<!-- An encounter that provides additional information about the healthcare context in which this request is made --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Encounter, предоставляющий дополнительную информацию о медицинском контексте, в котором был сделан этот заказ<!-- An encounter that provides additional information about the healthcare context in which this request is made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
