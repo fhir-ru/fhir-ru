@@ -974,7 +974,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Лицо с официальными обязанностями в предоставлении медицинских или связанных со здравоохранением услуг<!-- A person with a  formal responsibility in the provisioning of healthcare or related services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Лицо, прямо или косвенно участвующее в предоставлении медицинского обслуживания<!-- A person who is directly or indirectly involved in the provisioning of healthcare --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Лицо, прямо или косвенно участвующее в предоставлении услуг здравоохранения<!-- A person who is directly or indirectly involved in the provisioning of healthcare --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Необходимо отслеживать врачей, персонал, заместителей и т. д. как для медицинских работников, так и спонсоров и т. п.<!-- Need to track doctors, staff, locums etc. for both healthcare practitioners, funders, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1337,9 +1337,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific specialty of the practitioner</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретная специальность practitioner<!-- Specific specialty of the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Specific specialty of the practitioner</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Конкретная специальность practitioner<!-- Specific specialty of the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1372,11 +1372,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The period during which the practitioner is authorized to perform in these role(s)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период, в течение которого лицо уполномочено действовать в качестве специалиста в этой роли(-ях)<!-- The period during which the practitioner is authorized to perform in these role(s) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The period during which the person is authorized to act as a practitioner in these role(s) for the organization</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, в течение которого лицо уполномочено действовать в качестве специалиста в этой роли(-ях) в этой организации<!-- The period during which the person is authorized to act as a practitioner in these role(s) for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Even after the agencies is revoked, the fact that it existed must still be recorded</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Даже после аннулирования деятельности факт ее существования все еще должен быть записан<!-- Even after the agencies is revoked, the fact that it existed must still be recorded --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1408,9 +1408,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The location(s) at which this practitioner provides care</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Место(-а), в котором этот practitioner предоставляет услуги<!-- The location(s) at which this practitioner provides care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The location(s) at which this practitioner provides care</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Место(-а), в котором этот practitioner предоставляет услуги<!-- The location(s) at which this practitioner provides care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1440,7 +1440,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Qualifications obtained by training and certification</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Квалификация, полученная в результате обучения и сертификации<!-- Qualifications obtained by training and certification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1474,11 +1474,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">An identifier for this qualification for the practitioner</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор этой квалификации для practitioner<!-- An identifier for this qualification for the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An identifier that applies to this person's qualification in this role</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, который применяется к квалификации этого лица в данной роли<!-- An identifier that applies to this person's qualification in this role --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Often, specific identities are assigned for the qualification</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Часто квалификации присваиваются специфические идентификаторы<!-- Often, specific identities are assigned for the qualification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1507,7 +1507,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Coded representation of the qualification</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированное представление квалификации<!-- Coded representation of the qualification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1539,11 +1539,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Period during which the qualification is valid</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период, в течение которого квалификация действительна<!-- Period during which the qualification is valid --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Period during which the qualification is valid</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, в течение которого квалификация действительна<!-- Period during which the qualification is valid --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Qualifications are often for a limited period of time, and can be revoked.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Квалификация часто действительна в течение ограниченного периода времени, и может быть отозвана.<!-- Qualifications are often for a limited period of time, and can be revoked. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1573,9 +1573,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Organization that regulates and issues the qualification</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая регламентирует и выдает квалификацию<!-- Organization that regulates and issues the qualification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Organization that regulates and issues the qualification</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, которая регламентирует и выдает квалификацию<!-- Organization that regulates and issues the qualification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1606,13 +1606,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A language the practitioner is able to use in patient communication</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Язык, который practitioner может использовать для общения с пациентом<!-- A language the practitioner is able to use in patient communication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A language the practitioner is able to use in patient communication</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык, который practitioner может использовать для общения с пациентом<!-- A language the practitioner is able to use in patient communication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Knowing which language a practitioner speaks can help in facilitating communication with patients</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Знание, на каком языке говорит practitioner, может упростить общение с пациентами<!-- Knowing which language a practitioner speaks can help in facilitating communication with patients --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Структура aa-BB с именно в таких регистрах - одно из наиболее широко распространенных обозначений локали. Однако не все системы действительно кодируют это, а вместо этого указывают в виде произвольного текста. Поэтому в качестве типа данных вместо кода используется CodeableConcept<!-- The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./languageCode</Data><NamedCell
