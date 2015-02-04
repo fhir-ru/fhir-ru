@@ -972,13 +972,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A person with a  formal responsibility in the provisioning of healthcare or related services</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Лицо с официальными обязанностями в предоставлении медицинских или связанных со здравоохранением услуг<!-- A person with a  formal responsibility in the provisioning of healthcare or related services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A person who is directly or indirectly involved in the provisioning of healthcare</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Лицо, прямо или косвенно участвующее в предоставлении медицинского обслуживания<!-- A person who is directly or indirectly involved in the provisioning of healthcare --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to track doctors, staff, locums etc. for both healthcare practitioners, funders, etc.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Необходимо отслеживать врачей, персонал, заместителей и т. д. как для медицинских работников, так и спонсоров и т. п.<!-- Need to track doctors, staff, locums etc. for both healthcare practitioners, funders, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Note that a cab driver no longer fits the bill. You probably would be interested in the organization rather than the individual?</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Обратите внимание, что таксист уже не отвечает этим требованиям. Вы, наверное, были бы заинтересованы в организации, а не в отдельном человеке?<!-- Note that a cab driver no longer fits the bill. You probably would be interested in the organization rather than the individual? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Role</Data><NamedCell
@@ -1009,11 +1009,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A identifier for the person as this agent</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор для этого лица в качестве агента (уполномоченного сотрудника)<!-- A identifier for the person as this agent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An identifier that applies to this person in this role</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, применяемый к данному лицу в данной роли<!-- An identifier that applies to this person in this role --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Often, specific identities are assigned for the agent</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Часто агенту присваиваются определенные идентификаторы<!-- Often, specific identities are assigned for the agent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1046,11 +1046,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A name associated with the person</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- A name associated with the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A name associated with the person</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- A name associated with the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that person</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо идентифицировать контактное лицо по имени, но редко когда нужны подробности о других именах этого человека<!-- Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1082,13 +1082,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A contact detail for the practitioner</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация этого practitioner<!-- A contact detail for the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A contact detail for the practitioner, e.g. a telephone number or an email address.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация этого practitioner, например телефонный номер или адрес электронной почты.<!-- A contact detail for the practitioner, e.g. a telephone number or an email address. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know how to reach a practitioner</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно знать, как связаться с practitioner<!-- Need to know how to reach a practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Person may have multiple ways to be contacted with different uses or applicable periods. &#13;May need to have options for contacting the person urgently, and also to help with identification</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек может иметь несколько различных способов связи с ним разного вида использования или разными периодами применения. &#13;Может потребоваться возможность связаться с человеком срочно, а также для помощи в идентификации<!-- Person may have multiple ways to be contacted with different uses or applicable periods. &#13;May need to have options for contacting the person urgently, and also to help with identification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./telecom</Data><NamedCell
@@ -1119,11 +1119,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where practitioner can be found/visited</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где можно найти/лично встретить practitioner<!-- Where practitioner can be found/visited --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The postal address where the practitioner can be found or visited or to which mail can be delivered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Почтовый адрес, по которому можно найти practitioner, или посетить, или отправить почту<!-- The postal address where the practitioner can be found or visited or to which mail can be delivered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to keep track where the practitioner can found during work or for directing mail</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно для отслеживания, где можно найти practitioner во время работы или для направления почты<!-- Need to keep track where the practitioner can found during work or for directing mail --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1158,9 +1158,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">male | female | other | unknown</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Административный пол - пол, который, считается, имеет этот человек для административных целей и ведения учета.<!-- Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Needed to address the person correctly</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужен для корректного обращения к человеку<!-- Needed to address the person correctly --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1192,11 +1192,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The date and time of birth for the practitioner</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата и время рождения practitioner<!-- The date and time of birth for the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date and time of birth for the practitioner</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время рождения practitioner<!-- The date and time of birth for the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Needed for identification</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно для идентификации<!-- Needed for identification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1227,11 +1227,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Image of the person</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Изображение человека<!-- Image of the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Image of the person</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Изображение человека<!-- Image of the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Many EHR systems have the capability to capture an image of patients and personnel. Fits with newer social media usage too.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Большинство EHR-систем имеют возможность сохранять изображение пациента. Также это соответствует новому применению социальных средств массовой информации.<!-- Many EHR systems have the capability to capture an image of patients and personnel. Fits with newer social media usage too. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1262,11 +1262,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The represented organization</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Представляемая организация<!-- The represented organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The organization that the practitioner represents</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, которую представляет practitioner<!-- The organization that the practitioner represents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to track the represented organization separately, if any.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность отслеживать представляемые им организации отдельно, если таковые имеются<!-- Need to be able to track the represented organization separately, if any. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1299,13 +1299,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Roles which this practitioner may perform</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Роли, которые может выполнять этот practitioner<!-- Roles which this practitioner may perform --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Roles which this practitioner is authorized to perform for the organization</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Роли, которые уполномочен выполнять этот practitioner для организации<!-- Roles which this practitioner is authorized to perform for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know what authority the practitioner has - what can they do?</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно, чтобы знать, какие полномочия имеет practitioner - что он может делать?<!-- Need to know what authority the practitioner has - what can they do? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A person may have more than one role. At least one role is required.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек может иметь больше одной роли. Обязательна по крайней мере одна роль.<!-- A person may have more than one role. At least one role is required. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./code</Data><NamedCell
