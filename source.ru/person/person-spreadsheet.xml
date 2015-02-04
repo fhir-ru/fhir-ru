@@ -970,13 +970,14 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A generic person record</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запись общего вида о человеке<!-- A generic person record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Demographics and administrative information about a person independent of a specific health-related context</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Демографическая и административная информация о человеке независимо от конкретного контекста, связанного со здравоохранением<!-- Demographics and administrative information about a person independent of a specific health-related context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to track persons potentially across multiple roles</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Необходимо отслеживать людей, возможно в разных ролях<!-- Need to track persons potentially across multiple roles --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The Person resource does justice to Person registries that keep track of Persons regardless of their role. The Person resource is also a primary resource to point to for people acting in a particular role such as SubjectofCare, Practitioner, and Agent. Very few attributes are specific to any role and so Person is kept lean. Most attributes are expected to be tied to the role the Person plays rather than the Person himself. Examples of that are Guardian (SubjectofCare), ContactParty (SubjectOfCare, Practitioner), and multipleBirthInd (SubjectofCare)</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ресурс Person подходит для реестров, которые отслеживают людей независимо от их роли. Ресурс Person также является первичным ресурсом, чтобы указывать на людей, выполняющих определенную роль, например SubjectofCare, Practitioner и Agent. Очень мало атрибутов являются специфичными для любой роли, поэтому ресурс Person не богат элементами. Большинство атрибутов, как предполагаются, будут связаны с ролью, которую играет человек, а не с самим человеком. Примерами будут Guardian (SubjectofCare), ContactParty (SubjectOfCare, Practitioner), и multipleBirthInd (SubjectofCare)
+	<!-- The Person resource does justice to Person registries that keep track of Persons regardless of their role. The Person resource is also a primary resource to point to for people acting in a particular role such as SubjectofCare, Practitioner, and Agent. Very few attributes are specific to any role and so Person is kept lean. Most attributes are expected to be tied to the role the Person plays rather than the Person himself. Examples of that are Guardian (SubjectofCare), ContactParty (SubjectOfCare, Practitioner), and multipleBirthInd (SubjectofCare) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Person(classCode=&quot;PSN&quot; and determinerCode=&quot;INST&quot; and quantity=&quot;1&quot;)</Data><NamedCell

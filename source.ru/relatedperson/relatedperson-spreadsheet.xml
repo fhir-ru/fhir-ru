@@ -966,11 +966,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">An person that is related to a patient, but who is not a direct target of care</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Человек, который имеет отношение к пациенту, но не является непосредственным объектом ухода<!-- An person that is related to a patient, but who is not a direct target of care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Информация о человеке, который участвует в уходе за пациентом, но не является объектом медицинской помощи и не имеет официальных обязанностей в процессе оказания помощи<!-- Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to track persons related to the patient or the healthcare process.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Необходимо отслеживать людей, связанных с пациентом или процессом здравоохранения.<!-- Need to track persons related to the patient or the healthcare process. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
