@@ -1,56 +1,67 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-Examples of nested report groups: the antibody hepatitis order panel code for a group of hepatitis antibody related tests, or the organism code for a group of antibiotic isolate/sensitivities, or a set of perinatal measurements on a single fetus.
+Примеры вложенных отчетов: код заказа панели на антитела к гепатиту для группы анализов, связанных с антителами к гепатиту, или код организма для теста на чувствительность к антибиотикам, или ряд перинатальных измерений на отдельном плоде.
+<!-- Examples of nested report groups: the antibody hepatitis order panel code for a group of hepatitis antibody related tests, or the organism code for a group of antibiotic isolate/sensitivities, or a set of perinatal measurements on a single fetus. -->
 
 
 
 <h2>
-Notes:
+Примечания:
+<!-- Notes: -->
 </h2>
 <ul>
 <li>
-If the diagnostic procedure was performed on the patient directly, <i>diagnostic[x]</i> is a dateTime, the time it was performed.
+Если диагностическая процедура выполнялась непосредственно на пациенте, <i>diagnostic[x]</i> будет dateTime - временем, когда она была выполнена. 
+Если брались образцы, релевантное с точки зрения диагностики время может быть взято из времени сбора образцов, но поскольку детальная информация об образце не всегда доступна, а релевантное с точки зрения диагностики время не всегда точно совпадает со временем сбора образцов (например сложные продолжительные исследования), отчет всегда ДОЛЖЕН включать в себя элемент <i>diagnostic[x]</i>. Обратите внимание, что сообщения v2 часто передают релевантное с точки зрения диагностики время без какой-либо информации об образцах.
+<!-- If the diagnostic procedure was performed on the patient directly, <i>diagnostic[x]</i> is a dateTime, the time it was performed.
 If specimens were taken, the diagnostically relevant time can be derived from the specimen collection times, but
 since detailed specimen information is not always available, and nor is the diagnostically relevant time always exactly the specimen collection time (e.g. complex timed tests), the
-reports SHALL always include a <i>diagnostic[x]</i> element. Note that v2 messages often carry a diagnostically relevant time without carrying any specimen information.
+reports SHALL always include a <i>diagnostic[x]</i> element. Note that v2 messages often carry a diagnostically relevant time without carrying any specimen information. -->
 </li>
 <li>
-A report always contains the name of the report itself. The report can also contain a set of observations, which can themselves be simple observations (e.g. atomic results) or can themselves be groups/panels of other observations.
+Отчет всегда содержит имя самого отчета. Отчет может также содержать ряд наблюдений (observations), которые сами могут быть как простыми наблюдениями (например атомарными результатами), так и группами/панелями других наблюдений. Observation.name - это код, обозначающий род наблюдения или панели (например отдельное измерение, определение чувствительности микроорганизмов или функциональный тест на антитела). Когда это уместно, в наблюдении может указываться конкретный образец, к которому относится результат.
+<!-- A report always contains the name of the report itself. The report can also contain a set of observations, which can themselves be simple observations (e.g. atomic results) or can themselves be groups/panels of other observations.
 The Observation.name is a code that indicates the nature of the observation or panel (e.g. individual measure, organism isolate/sensitivity or antibody functional testing).  When relevant, the observation can specify a particular
-specimen from which the result comes.
+specimen from which the result comes. -->
 </li>
 <li>
-There is rarely a need for more than two levels of nesting in the Observation tree. One known use is for organism sensitivities - see <a href="diagnosticreport-micro1.html">this example</a>.
+Редко когда требуется больше двух уровней вложенности в дереве наблюдений (Observation). Один из таких случаев - определение чувствительности микроорганизмов, см. <a href="diagnosticreport-micro1.html">этот пример</a>.
+<!-- There is rarely a need for more than two levels of nesting in the Observation tree. One known use is for organism sensitivities - see <a href="diagnosticreport-micro1.html">this example</a>. -->
 </li>
 <li>
-Applications consuming diagnostic reports must take careful note of updated reports, and ensure that retracted reports are appropriately handled.
+Приложения, работающие с полученными диагностическими отчетами, должны внимательно следить за обновлением отчетов и обеспечивать надлежащую обработку отмененных отчетов. 
+<!-- Applications consuming diagnostic reports must take careful note of updated reports, and ensure that retracted reports are appropriately handled. -->
 </li>
 <li>
-For applications providing diagnostic reports, a report should not be final until all the individual data items
+Для приложений, создающих диагностические отчеты, отчет не должен быть окончательным (иметь статус final), пока все отдельные элементы данных в нем не будут окончательными (final) или с внесенными поправками (amended). Если отчет отменен (retracted), все результаты должны быть отменены заменой каждого значения результата концептом "withdrawn" из внутреннего справочника <a href="special-values.html">"Special values"</a>
+(url = "http://hl7.org/fhir/special-values"), и заполнением заключения (если есть) и описательной части текстом наподобие "Этот отчет был изъят (отозван, отменен)" на соответствующем языке. В описательной части может быть приведена причина изъятия.
+<!-- For applications providing diagnostic reports, a report should not be final until all the individual data items
 reported with it are final or amended. If a report is retracted, all the results should be retracted by replacing
 every result value with the Concept "withdrawn" in the internal terminology <a href="special-values.html">"Special values"</a>
 (url = "http://hl7.org/fhir/special-values"), and setting the conclusion (if provided) and the text narrative to some
 text like "This report has been withdrawn" in the appropriate language. A reason for retraction may be provided in the
-narrative. </li>
+narrative. --> </li>
 </ul>
 
 
-<h3>Report Content</h3>
+<h3>Содержимое отчета<!-- Report Content --></h3>
 <p>
-This resource provides for 3 different ways of presenting the Diagnostic Report:
+Ресурс предлагает 3 различных способа представления диагностического отчета:
+<!-- This resource provides for 3 different ways of presenting the Diagnostic Report: -->
 </p>
 <ul>
- <li>As atomic data items: a hierarchical set of nested references to Observation resources, one or more images, and possibly with a conclusion and/or one or more coded diagnoses</li>
- <li>As narrative: an XHTML presentation in the standard resource narrative</li>
- <li>As a "presented form": A rich text representation of the report - typically a PDF</li>
+ <li>В виде атомарных элементов данных: иерархическое множество вложенных ссылок на ресурсы Observation, одно или несколько изображений, возможно, с заключением и/или одним или несколькими кодированными диагнозами<!-- As atomic data items: a hierarchical set of nested references to Observation resources, one or more images, and possibly with a conclusion and/or one or more coded diagnoses --></li>
+ <li>В виде описательной части: XHTML-представление в стандартной описательной части ресурса<!-- As narrative: an XHTML presentation in the standard resource narrative --></li>
+ <li>В "представленной форме": богатое текстовое представление отчета - как правило, PDF<!-- As a "presented form": A rich text representation of the report - typically a PDF --></li>
 </ul>
 <p>
-Note that the conclusion and the coded diagnoses are part of the atomic data, and SHOULD be duplicated in the narrative and in the presented form if the latter is present.
+Обратите внимание, что заключение и кодированные диагнозы являются частью атомарных данных и ДОЛЖНЫ быть продублированы в описательной части и в 
+<!-- Note that the conclusion and the coded diagnoses are part of the atomic data, and SHOULD be duplicated in the narrative and in the presented form if the latter is present.
 The narrative and the presented form serve the same function: a representation of the report for a human. The presented form is included since diagnostic service reports
 often contain presentation features that are not easy to reproduce in the HTML narrative. Whether or not the presented form is included, the narrative must be a
 clinically safe view of the diagnostic report; at a minimum, this could be fulfilled by a note indicating that the narrative is not proper representation of
 the report, and that the presented form must be used, or a generated view from the atomic data. However consumers of the report will best be served if the
-narrative contains clinically relevant data from the form. Commonly, the following patterns are used:
+narrative contains clinically relevant data from the form. Commonly, the following patterns are used: -->
 </p>
 <ul>
  <li>Simple Laboratory Reports: A single set of atomic observations, and a tabular presentation in narrative. Typically this is encountered in high volume areas such as Biochemistry and Hematology</li>

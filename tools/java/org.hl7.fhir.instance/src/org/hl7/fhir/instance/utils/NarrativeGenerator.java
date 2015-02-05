@@ -1251,10 +1251,21 @@ public class NarrativeGenerator implements INarrativeGenerator {
         throw new Exception("Error: should not encounter value set expansion at this point");
     }
     Integer count = countMembership(vs);
-    if (count == null)
+    /* if (count == null)
       x.addTag("p").addText("This value set does not contain a fixed number of concepts");
     else
-      x.addTag("p").addText("This value set contains "+count.toString()+" concepts");
+      x.addTag("p").addText("This value set contains "+count.toString()+" concepts"); */
+	  if (count == null)
+      x.addTag("p").addText("Данный набор значений не содержит фиксированного числа концептов");
+	  //"This value set does not contain a fixed number of concepts"
+    else if (count % 10 == 1)
+      x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концепт");
+	  else if (count % 10 > 1 && count % 10 < 5)
+		x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концепта");
+		else
+			x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концептов");
+    //"This value set contains "+count.toString()+" concepts"
+	//"Данный набор значений содержит следующее количество концептов: "+count.toString()+"."
     
     boolean hasExtensions = false;
     if (vs.hasDefine())

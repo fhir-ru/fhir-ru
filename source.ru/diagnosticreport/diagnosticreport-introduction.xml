@@ -14,10 +14,10 @@ of the outcomes for a particular investigation. -->
 <!-- The Diagnostic Report Resource is suitable for the following kinds of Diagnostic Reports: -->
 </p>
 <ul>
- <li>Laboratory (Clinical Chemistry, Hematology, Microbiology т. п.)</li>
- <li>Pathology / Histopathology / связанные дисциплины</li>
- <li>Imaging Investigations (рентгенограмма, КТ, МРТ и т. д)</li>
- <li>Другие виды диагностики - Cardiology, Gastroenterology и т. п.</li>
+ <li>Лабораторные (клиническая биохимия, гематология, микробиология т. д.)</li>
+ <li>Патологические/гистопатологические и связанных дисциплин</li>
+ <li>Медицинская визуализация (рентгенограмма, КТ, МРТ и т. д)</li>
+ <li>Другие виды диагностики - кардиология, гастроэнтерология и т. д.</li>
 <!--  <li>Laboratory (Clinical Chemistry, Hematology, Microbiology, etc.)</li>
  <li>Pathology / Histopathology / related disciplines</li>
  <li>Imaging Investigations (x-ray, CT, MRI etc.)</li>
@@ -38,20 +38,27 @@ The Diagnostic Report resource does not yet provide full support for detailed st
 <!-- The Diagnostic Report resource has the following aspects: -->
 </p>
 <ul>
- <li>status, issued, identifier, performer, serviceCategory: information about the diagnostic report itself</li>
+ <li>status, issued, identifier, performer, serviceCategory: информация о самом диагностическом отчете</li>
+ <li>subject, diagnostic[x]: информация об объекте отчета</li>
+ <li>request details: ссылка на 0 или больше ресурсов <a href="diagnosticorder.html">DiagnosticOrder</a> для связи отчета с клиническими рабочими процессами</li>
+ <li>results: ссылка на 0 или больше ресурсов <a href="observation.html">Observation</a>, которые представляют собой иерархическое дерево групп результатов</li>
+ <li>specimen details: ссылка на 0 или больше ресурсов <a href="specimen.html">Specimen</a>, на которых основан отчет</li>
+ <li>conclusion, codedDiagnosis: поддержка структурированных отчетов</li>
+ <li>images, representation: изображения и медиа-представления отчета, а также вспомогательные изображения</li>
+<!--  <li>status, issued, identifier, performer, serviceCategory: information about the diagnostic report itself</li>
  <li>subject, diagnostic[x]: information about the subject of the report</li>
  <li>request details: a reference to 0 or more <a href="diagnosticorder.html">DiagnosticOrder resources</a> to allow the report to connected to clinical work flows</li>
  <li>results: a reference to 0 or more <a href="observation.html">Observation resources</a> which provide
     a hierarchical tree of groups of results</li>
  <li>specimen details: a reference to 0 or more <a href="specimen.html">Specimen resources</a> on which the report is based</li>
  <li>conclusion, codedDiagnosis: support for structured reporting</li>
- <li>images, representation: image and media representations of the report and supporting images</li>
+ <li>images, representation: image and media representations of the report and supporting images</li> -->
 </ul>
 
-<h3>Diagnostic Report Names</h3>
+<h3>Обозначения диагностического отчета<!-- Diagnostic Report Names --></h3>
 
 <p>
-Слова "тесты", "результаты", "наблюдения", "панели" и "batteries" часто используются как взаимозаменяемые при описании
+Слова "тесты", "результаты", "наблюдения", "панели" и "batteries" (комплексы) часто используются как взаимозаменяемые при описании
 различных частей диагностического отчета. Это приводит к путанице. Неразбериха с именами растет из-за широкого разнообразия форм, которые может принять результат диагностического исследования, как описано выше. Другие языки помимо английского имеют свои собственные вариации на эту тему.
 <!-- The words "tests", "results", "observations", "panels" and "batteries" are often used interchangeably when describing
 the various parts of a diagnostic report. This leads to much confusion. The naming confusion is
