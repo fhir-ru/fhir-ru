@@ -1288,7 +1288,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Биохимия, гематология и т. д.<!-- Biochemistry, Hematology etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Биохимия, гематология и т. д<!-- Biochemistry, Hematology etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Направление службы диагностики, которое выполняет исследование, например биохимия, гематология, МРТ<!-- The section of the diagnostic service that performs the examination e.g. biochemistry, hematology, MRI --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
