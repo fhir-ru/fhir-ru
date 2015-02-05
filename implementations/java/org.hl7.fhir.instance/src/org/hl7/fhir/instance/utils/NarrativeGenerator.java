@@ -1252,10 +1252,16 @@ public class NarrativeGenerator implements INarrativeGenerator {
     }
     Integer count = countMembership(vs);
     if (count == null)
-      x.addTag("p").addText("This value set does not contain a fixed number of concepts");
-    else
-      x.addTag("p").addText("This value set contains "+count.toString()+" concepts");
-    
+      x.addTag("p").addText("Данный набор значений не содержит фиксированного числа концептов");
+	  //"This value set does not contain a fixed number of concepts"
+    else if (count % 10 == 1)
+      x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концепт");
+	  else if (count % 10 > 1 && count % 10 < 5)
+		x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концепта");
+		else
+			x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концептов");
+    //"This value set contains "+count.toString()+" concepts"
+	//"Данный набор значений содержит следующее количество концептов: "+count.toString()+"."
     boolean hasExtensions = false;
     if (vs.hasDefine())
       hasExtensions = generateDefinition(x, vs);
@@ -1340,7 +1346,8 @@ public class NarrativeGenerator implements INarrativeGenerator {
     if (vs.hasCopyright())
       generateCopyright(x, vs);
     p = x.addTag("p");
-    p.addText("This value set defines its own terms in the system "+vs.getDefine().getSystem());
+    p.addText("Этот набор значений определяет свои собственные термины в системе "+vs.getDefine().getSystem());
+	//"This value set defines its own terms in the system "
     XhtmlNode t = x.addTag("table").setAttribute("class", "codes");
     boolean commentS = false;
     boolean deprecated = false;
@@ -1359,7 +1366,8 @@ public class NarrativeGenerator implements INarrativeGenerator {
     }    
     if (langs.size() > 0) {
       Collections.sort(langs);
-      x.addTag("p").addTag("b").addText("Additional Language Displays");
+      x.addTag("p").addTag("b").addText("Значения для отображения на других языках");
+	  //"Additional Language Displays"
       t = x.addTag("table").setAttribute("class", "codes");
       XhtmlNode tr = t.addTag("tr");
       tr.addTag("td").addTag("b").addText("Code");
