@@ -52,10 +52,10 @@ narrative. --> </li>
 <ul>
  <li>В виде атомарных элементов данных: иерархическое множество вложенных ссылок на ресурсы Observation, одно или несколько изображений, возможно, с заключением и/или одним или несколькими кодированными диагнозами<!-- As atomic data items: a hierarchical set of nested references to Observation resources, one or more images, and possibly with a conclusion and/or one or more coded diagnoses --></li>
  <li>В виде описательной части: XHTML-представление в стандартной описательной части ресурса<!-- As narrative: an XHTML presentation in the standard resource narrative --></li>
- <li>В "представленной форме": богатое текстовое представление отчета - как правило, PDF<!-- As a "presented form": A rich text representation of the report - typically a PDF --></li>
+ <li>В "форме для представления": богатое текстовое представление отчета - как правило, PDF<!-- As a "presented form": A rich text representation of the report - typically a PDF --></li>
 </ul>
 <p>
-Обратите внимание, что заключение и кодированные диагнозы являются частью атомарных данных и ДОЛЖНЫ быть продублированы в описательной части и в 
+Обратите внимание, что заключение и кодированные диагнозы являются частью атомарных данных и ДОЛЖНЫ быть продублированы в описательной части и в форме для представления, если она есть. Описательная часть и форма для представления выполняют одну и ту же функцию: отображение отчета человеку. Форма для представления включается, поскольку отчеты диагностических услуг часто содержат особенности представления, которые непросто воспроизвести в HTML-описании. Включена или нет форма для представления, описательная часть должна быть клинически безопасным представлением диагностического отчета; по крайней мере она может быть заполнена указанием, что данное описание не является надлежащим представлением отчета, и что необходимо использовать форму для представления или снегерированное представление атомарных данных. Однако для потребителей отчета лучше всего будет, если описательная часть содержит клинически существенную информацию из этой формы. Как правило, используются следующие виды отчетов:
 <!-- Note that the conclusion and the coded diagnoses are part of the atomic data, and SHOULD be duplicated in the narrative and in the presented form if the latter is present.
 The narrative and the presented form serve the same function: a representation of the report for a human. The presented form is included since diagnostic service reports
 often contain presentation features that are not easy to reproduce in the HTML narrative. Whether or not the presented form is included, the narrative must be a
@@ -64,15 +64,16 @@ the report, and that the presented form must be used, or a generated view from t
 narrative contains clinically relevant data from the form. Commonly, the following patterns are used: -->
 </p>
 <ul>
- <li>Simple Laboratory Reports: A single set of atomic observations, and a tabular presentation in narrative. Typically this is encountered in high volume areas such as Biochemistry and Hematology</li>
- <li>Histopathology Report: A document report in a presented form and the narrative. Possibly a few key images, and some coded diagnoses for registries. If the service is creating a structured report, some atomic data may be included</li>
- <li>imaging Report; A document report in a presented form and the narrative, with an imaging study reference and possibly some key images. Some imaging reports such as a Bone Density Scan may include some atomic data</li>
+ <li>Простые лабораторные отчеты (Simple Laboratory Reports): отдельный набор атомарных наблюдений и табличное представление в описательной части. Встречается обычно в крупносерийных областях, таких как биохимия и гематология<!-- Simple Laboratory Reports: A single set of atomic observations, and a tabular presentation in narrative. Typically this is encountered in high volume areas such as Biochemistry and Hematology --></li>
+ <li>Гистопатологический отчет: документированный отчет в форме для представления и описательной части. Может содержать несколько ключевых изображений и некоторые кодированные диагнозы для реестров. Если в результате исследования создается структурированный отчет, в него могут быть включены какие-то атомарные данные<!-- Histopathology Report: A document report in a presented form and the narrative. Possibly a few key images, and some coded diagnoses for registries. If the service is creating a structured report, some atomic data may be included --></li>
+ <li>imaging Report: документированный отчет в форме для представления и описательной части, со ссылкой на исследование изображения и, возможно, несколькими ключевыми изображениями. Некоторые imaging reports, например сканирование плотности костной ткани (Bone Density Scan), могут включать какие-то атомарные данные<!-- imaging Report; A document report in a presented form and the narrative, with an imaging study reference and possibly some key images. Some imaging reports such as a Bone Density Scan may include some atomic data --></li>
 </ul>
 <p>
-Note that the nature of reports from the various disciplines that provide diagnostic reports are changing quickly,
+Обратите внимание, что вид отчетов для различных дисциплин, проставляющих диагностические отчеты, быстро меняется, в то время как экспертные системы предлагают улучшенные описательные отчеты для отчетов высокого объема, структурированные отчеты приносят дополнительные данные в отчеты областей, которые раньше были на описательной основе, а визуальные и лабораторные процедуры объединяются. Как следствие, описанные выше виды отчетов представляют собой всего лишь примеры использования ресурса diagnostic report.
+<!-- Note that the nature of reports from the various disciplines that provide diagnostic reports are changing quickly,
 as expert systems provide improved narrative reporting in high volume reports, structured reporting brings additional
 data to areas that have classically been narrative based, and the nature of the imaging and laboratory procedures are
-merging. As a consequence the patterns described above are only examples of how a diagnostic report can be used.
+merging. As a consequence the patterns described above are only examples of how a diagnostic report can be used. -->
 </p>
 
 
