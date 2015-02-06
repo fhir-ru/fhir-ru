@@ -984,7 +984,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A formal agreement between parties regarding the conduct of business, exchange of information or other matters.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Официальное соглашение между участниками относительно ведения бизнеса, обмена информацией или других вопросов.<!-- A formal agreement between parties regarding the conduct of business, exchange of information or other matters. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1013,9 +1013,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор контракта<!-- Contract identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Unique Id for this contract.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор этого контракта.<!-- Unique Id for this contract. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1044,9 +1044,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Subject</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Объект<!-- Subject --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who and/or what this is about: typically Patient, Organization, property.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">О ком и/или о чем он: обычно пациент, организация, собственность.<!-- Who and/or what this is about: typically Patient, Organization, property. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
