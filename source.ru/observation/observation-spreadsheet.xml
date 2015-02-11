@@ -1001,9 +1001,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Измерения и простые утверждения, сделанные о пациенте, устройстве или другом субъекте<!-- Measurements and simple assertions made about a patient, device or other subject --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Наблюдения являются ключевым аспектом в здравоохранении. Данный ресурс используется для ввода того, что не требует более сложных механизмов.<!-- Observations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms. --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Observations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Используется для таких простых наблюдений, как измерения устройств, лабораторные атомарные результаты, основные показатели состояния организма, рост, вес, статус курильщика, комментарии и т. п. Для обеспечения контекста наблюдений используются другие ресурсы, например лабораторные отчеты и др<!-- Used for simple observations such as device measurements, laboratory atomic results, vital signs, height, weight, smoking status, comments, etc.  Other resources are used to provide context for observations such as Lab reports, etc --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Used for simple observations such as device measurements, laboratory atomic results, vital signs, height, weight, smoking status, comments, etc.  Other resources are used to provide context for observations such as Lab reports, etc</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Observation[classCode=OBS, moodCode=EVN]</Data><NamedCell
@@ -1050,7 +1050,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает, что именно наблюдалось. Иногда называется &quot;кодом&quot; наблюдения<!-- Describes what was observed. Sometimes this is called the observation &quot;code&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Знание вида проводимого наблюдения очень важно для понимания значения этого наблюдения.<!-- Knowing what kind of observation is being made is essential to understanding the observation. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Knowing what kind of observation is being made is essential to understanding the observation.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1108,11 +1108,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Информация, определенная в результате выполнения этого наблюдения, если эта информация имеет простое значение<!-- The information determined as a result of making the observation, if the information has a simple value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">a<!-- Наблюдение существует, чтобы иметь значение, хотя оно может его не иметь, если было создано по ошибке или представляет собой группу наблюдений --><!-- An observation exists to have a value, though it may not if it is in error, or it represents a group of observations --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">An observation exists to have a value, though it may not if it is in error, or it represents a group of observations</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">a<!-- Как правило, наблюдение будет иметь либо значение, либо набор связанных наблюдений. Некоторые наблюдения (например оценка по шкале Апгар) могут иметь и значение, и связанные наблюдения (для Апгар это будут наблюдения, из которых выводится оценка). Если значение указано, тип данных этого элемента должен определяться Observation.name. CodeableConcept с простым текстом будет использоваться вместо строки, если поле обычно кодировалось, или если тип, ассоциируемый с Observation.name, задает кодированное значение. Для булевых значений используйте valueCodeableConcept и выбирайте коды из &lt;http://hl7.org/fhir/v2/vs/0136&gt; (Эти &quot;yes/no&quot; концепты могут иметь мэппинг на имя для отображения &quot;true/false&quot; или другие взаимоисключающие термины, которые могут потребоваться). Элемент Observation.value[x] имеет разное имя в зависимости от следующего типа: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData или valueString (Формат имени будет такой: &quot;'value' + имя типа&quot; с большой буквы). --><!-- Normally, an observation will have either a value or a set of related observations. A few observations (e.g. apgar store) may have both a value and related observations (for apgar, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.name. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.name defines a coded value.   For boolean values use valueCodeableConcept and select codes from &lt;http://hl7.org/fhir/v2/vs/0136&gt; (These &quot;yes/no&quot; concepts can be mapped to the display name &quot;true/false&quot; or other mutually exclusive terms that may be needed&quot;).  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is &quot;'value' + the type name&quot; with a capital on the first letter of the type). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Normally, an observation will have either a value or a set of related observations. A few observations (e.g. apgar store) may have both a value and related observations (for apgar, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.name. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.name defines a coded value.   For boolean values use valueCodeableConcept and select codes from &lt;http://hl7.org/fhir/v2/vs/0136&gt; (These &quot;yes/no&quot; concepts can be mapped to the display name &quot;true/false&quot; or other mutually exclusive terms that may be needed&quot;).  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (The name format is &quot;'value' + the type name&quot; with a capital on the first letter of the type).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">a<!-- Среди доступных типов данных необходимо иметь Range --><!-- Should have Range as a valid data type here --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Should have Range as a valid data type here</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">value</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1157,7 +1157,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">По многим причинам необходимо обрабатывать исключительные значения в измерениях.<!-- For many results it is necessary to handle exceptional values in measurements. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">&quot;Null&quot; или значения-исключения могут быть представлены двумя способами в FHIR Observations. Один способ - это просто включить их в набор значений и представлять исключения в значении. Например значениями измерений для серологического исследования могут быть &quot;detected&quot;, &quot;not detected&quot;, &quot;inconclusive&quot; или &quot;test not done&quot;. Другим способом будет использование элемента value для самих наблюдений и использовать недвусмысленный элемент dataAbsentReason для записи значений-исключений. Например код dataAbsentReason &quot;error&quot; может использоваться, когда измерение не было завершено. Из-за этих опций требуются соглашения по сценариям использования для интерпретации общих наблюдений и значений-исключений.<!-- &quot;Null&quot; or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  &quot;detected&quot;, &quot;not detected&quot;, &quot;inconclusive&quot;, or  &quot;test not done&quot;.   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code &quot;error&quot; could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">&quot;Null&quot; or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  &quot;detected&quot;, &quot;not detected&quot;, &quot;inconclusive&quot;, or  &quot;test not done&quot;.   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code &quot;error&quot; could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">value.nullFlavor</Data><NamedCell
@@ -1193,7 +1193,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Оценка, сделанная на основе результата наблюдения.<!-- The assessment made based on the result of the observation. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Для некоторых результатов, особенно числовых, для полного понимания смысла результата необходима интерпретация.<!-- For some results, particularly numeric results, an interpretation is necessary to fully understand the significance of a result. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">For some results, particularly numeric results, an interpretation is necessary to fully understand the significance of a result.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1233,7 +1233,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Может включать утверждения о существенных, неожиданных или недостоверных значениях, или информацию об источнике значения, где это может иметь значение при интерпретации результата.<!-- May include statements about significant, unexpected or unreliable values, or information about the source of the value where this may be relevant to the interpretation of the result. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность указать дополнительную информацию в виде произвольного текста<!-- Need to be able to provide free text additional information --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to provide free text additional information</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1270,7 +1270,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Знание о том, когда наблюдение считалось верным, важно для понимания его актуальности, а также определения тенденций<!-- Knowing when an observation was deemed true is important to its relevance as well as determining trends --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Как минимум дата должна быть указана, если только это наблюдение не является статистическим сообщением<!-- At least a date should be present unless this observation is a historical report --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">At least a date should be present unless this observation is a historical report</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">effectiveTime</Data><NamedCell
@@ -1306,7 +1306,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время, когда это наблюдение было предоставлено<!-- The date and time this observation was made available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обновляется при обновлении результата<!-- Updated when the result is updated --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Updated when the result is updated</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">participation[typeCode=AUT].time</Data><NamedCell
@@ -1382,7 +1382,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Не все результаты абсолютно достоверны, и некоторые из них по-прежнему отмечаются в любом случае.<!-- Not all results are completely reliable, and some are still reported anyway. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обратите внимание, что в большинстве контекстов недостоверные результаты не записываются, удаляются или другим образом исключаются, однако не всегда возможно исключить их из записи. Если присутствует показатель надежности, интерпретаторам результата, человеку или машине, следует всегда либо иметь в виду этот статус или предотвращать использование этого наблюдения, если нет уверенности в том, что показатель надежности равен &quot;ok&quot;.<!-- Note that in most contexts, unreliable results are not recorded, deleted, or otherwise excluded, but it's not always possible to exclude them from the record.  If the reliability indicator is present, interpreters of a result, whether human or machine, should always either be aware of the status or prevented from using the observation without being unaware that the reliability is not &quot;ok&quot;. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Note that in most contexts, unreliable results are not recorded, deleted, or otherwise excluded, but it's not always possible to exclude them from the record.  If the reliability indicator is present, interpreters of a result, whether human or machine, should always either be aware of the status or prevented from using the observation without being unaware that the reliability is not &quot;ok&quot;.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">uncertaintyCode</Data><NamedCell
@@ -1419,9 +1419,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает место на теле субъекта, где проводится наблюдение (т. е. целевое место).<!-- Indicates the site on the subject's body where the observation was made ( i.e. the target site). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Знание того, где проводится наблюдение, важно для отслеживания, когда возможны различные места.<!-- Knowing where the observation is made is important for tracking if multiple sites are possible. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Knowing where the observation is made is important for tracking if multiple sites are possible.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Используется только в случае, если это не явно из кода в Observation.name<!-- Only used if not implicit in code found in Observation.name --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Only used if not implicit in code found in Observation.name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">targetSiteCode</Data><NamedCell
@@ -1461,9 +1461,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает механизм проведения наблюдения<!-- Indicates the mechanism used to perform the observation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">В некоторых случаях метод может влиять на результаты и, таким образом, для определения, могут ли результаты быть сравнимыми, или определения смысла результатов<!-- In some cases, method can impact results and is thus for determining whether results can be compared or determining significance of results --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">In some cases, method can impact results and is thus for determining whether results can be compared or determining significance of results</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Используется только в случае, если это не явно из кода в Observation.name<!-- Only used if not implicit in code for Observation.name --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Only used if not implicit in code for Observation.name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">methodCode</Data><NamedCell
@@ -1499,7 +1499,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор для простого наблюдения<!-- A unique identifier for the simple observation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет различать наблюдения и ссылаться на них<!-- Allows observations to be distinguished and referenced --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows observations to be distinguished and referenced</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1550,9 +1550,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Пациент или группа пациентов, местоположение или устройство, чьи характеристики (прямые или косвенные) описываются в этом наблюдении и в чью запись помещается это наблюдение. Комментарии: косвенными характеристиками могут быть характеристики образца, плода,&#10;другого наблюдателя (например родственника или фельдшера скорой помощи), или любое наблюдение, выполненное на субъекте. <!-- The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus,&#10;other observer (for example a relative or EMT), or any observation made about the subject. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Наблюдения не имеют смысла, если вы не знаете, над кем или чем они проводились.<!-- Observations have no value if you don't know who or what they're about. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Observations have no value if you don't know who or what they're about.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Единственным обстоятельством, в котором субъект может быть опущен, это когда наблюдение проводится устройством, которое не знает о пациенте. В этом случае наблюдение ДОЛЖНО быть сопоставлено с пациентом с помощью некоторого метода сопоставления контекста/канала, и на этой стадии observation должен быть обновлен. Если цель наблюдения не совпадает с субъектом, можно использовать расширение общего вида (http://hl7.org/fhir/ExtensionDefinition/indirectTarget). <!-- The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.  If the target of the observation is different than the subject, the general extension (http://hl7.org/fhir/ExtensionDefinition/indirectTarget) can  be used. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.  If the target of the observation is different than the subject, the general extension (http://hl7.org/fhir/ExtensionDefinition/indirectTarget) can  be used.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">participation[typeCode=SBJ]</Data><NamedCell
@@ -1594,7 +1594,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Образец, используемый при выполнении этого наблюдения<!-- The specimen that was used when this observation was made --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Наблюдения не проводятся над самими образцами; они проводятся над субъектом, но обычно с помощью образца. Отметьте, что хотя образцы часто не участвуют, они не всегда явно прослеживаются и протоколируются. Также отметьте, что ресурсы observation часто используются в контекстах, где образец прослеживается явно (например Diagnostic Report)<!-- Observations are not made on specimens themselves; they are made on a subject, but usually by the means of a specimen. Note that although specimens are often involved, they are not always tracked and reported explicitly. Also note that observation resources are often used in contexts that track the specimen explicitly (e.g. Diagnostic Report) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Observations are not made on specimens themselves; they are made on a subject, but usually by the means of a specimen. Note that although specimens are often involved, they are not always tracked and reported explicitly. Also note that observation resources are often used in contexts that track the specimen explicitly (e.g. Diagnostic Report)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">participation[typeCode=SPC].specimen</Data><NamedCell
@@ -1627,9 +1627,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Кто несет ответственность за утверждение, что наблюдаемое значение &quot;верно&quot;<!-- Who was responsible for asserting the observed value as &quot;true&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Может дать степень уверенность в наблюдении и также указать, куда следует направлять последующие вопросы.<!-- May give a degree of confidence in the observation and also indicates where follow-up questions should be directed. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">May give a degree of confidence in the observation and also indicates where follow-up questions should be directed.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Это будет &quot;Device&quot; только в том случае, если устройство ответственно за измерение, не для ввода устройства, используемого человеком для выполнения измерения. (Последнее следует вводить в виде расширения.)<!-- This would only be &quot;Device&quot; if the device is responsible for the measurement, not to capture the device used by a human to make the measurement.  (The latter could be captured as an extension.) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This would only be &quot;Device&quot; if the device is responsible for the measurement, not to capture the device used by a human to make the measurement.  (The latter could be captured as an extension.)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">participation[typeCode=PRF]</Data><NamedCell
@@ -1669,7 +1669,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Событие здравоохранения (например взаимодействие пациента и поставщика медицинских услуг), которое относится к этому наблюдению<!-- The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Для некоторых наблюдений может быть важно знать связь между наблюдением и конкретным encounter.<!-- For some observations it may be important to know the link between an observation and a particular encounter. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">For some observations it may be important to know the link between an observation and a particular encounter.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">review mapping</Data><NamedCell
@@ -1707,7 +1707,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Ожидаемый диапазон значений - руководство к интерпретации<!-- Expected value range - guide for interpretation --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Expected value range - guide for interpretation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1750,9 +1750,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Руководство о том, как интерпретировать значение по сравнению с нормальным или рекомендованным диапазоном<!-- Guidance on how to interpret the value by comparison to a normal or recommended range --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Знание того, какие значения считаются &quot;нормальными&quot;, может помочь определить значимость конкретного результата. Нужна возможность указывать несколько диапазонов нормальных значений для различных контекстов<!-- Knowing what values are considered &quot;normal&quot; can help evaluate the significance of a particular result. Need to be able to provide multiple reference ranges for different contexts --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Knowing what values are considered &quot;normal&quot; can help evaluate the significance of a particular result. Need to be able to provide multiple reference ranges for different contexts</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Большинство наблюдений имеют только один общий диапазон нормальных значений. Системы МОГУТ ограничиться указанием только актуального диапазона нормальных значений на основе знаний о пациенте (например специфичный для пациента возраст, пол, вес и другие факторы), однако это может быть невозможно или не допустимо. При предоставлении более одного диапазона нормальных значений, различия между ними ДОЛЖНЫ указываться в свойствах reference range и/или age<!-- Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">outboundRelationship[typeCode=REFV]/target[classCode=OBS, moodCode=EVN]</Data><NamedCell
@@ -1789,7 +1789,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Значение нижней границы диапазона нормальных значений. Если не указано, нижняя граница диапазона нормальных значений считается не имеющей смысла. Например &lt;2.3<!-- The value of the low bound of the reference range. If this is omitted, the low bound of the reference range is assumed to be meaningless. E.g. &lt;2.3 --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Не используйте компаратор для &lt; или &gt;<!-- Do not use the comparator for &lt; or &gt; --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Do not use the comparator for &lt; or &gt;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">value:IVL_PQ.low</Data><NamedCell
@@ -1825,7 +1825,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Значение верхней границы диапазона нормальных значений. Если не указано, верхняя граница диапазона нормальных значений считается не имеющей смысла. Например &gt;5<!-- The value of the high bound of the reference range. If this is omitted, the high bound of the reference range is assumed to be meaningless. E.g. &gt;5 --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Не используйте компаратор для &lt; или &gt;<!-- Do not use the comparator for &lt; or &gt; --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Do not use the comparator for &lt; or &gt;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">value:IVL_PQ.high</Data><NamedCell
@@ -1860,9 +1860,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код значения диапазона<!-- Code for the meaning of the reference range --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность сказать, какого вида данный диапазон нормальных значений - стандартный, рекомендованный, терапевтический, или, возможно, к какому состоянию относится этот диапазон нормальных значений (т. е. возраст, гормональный цикл и т. п.)<!-- Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, or perhaps what state this reference range applies to (i.e. age, hormonal cycles, etc.) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, or perhaps what state this reference range applies to (i.e. age, hormonal cycles, etc.)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">ДОЛЖНО заполняться, если указывается больше одного диапазона<!-- This SHOULD be populated if there is more than one range --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This SHOULD be populated if there is more than one range</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">interpretationCode</Data><NamedCell
@@ -1897,7 +1897,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Возраст, в котором этот диапазон нормальных значений применяется. Это неонатальный возраст (например число недель в сроке), если указано такое значение<!-- The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Некоторые вещества, определяемые при анализе, сильно различаются для разного возраста<!-- Some analytes vary greatly over age --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Some analytes vary greatly over age</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1962,9 +1962,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Связанные наблюдения - или компоненты, или предыдущие наблюдения, или выводы<!-- Related observations - either components, or previous observations, or statements of derivation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Некоторые наблюдения имеют важные взаимосвязи с другими наблюдениями (например кровяное давление = систолическое + диастолическое), или вытекают из других наблюдений (например расчетная оценка по шкале Апгар)<!-- Some observations have important relationships to other observations (e.g Blood Pressure = systolic + diastolic), or are derived from other observations (e.g. calculated apgar score) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Some observations have important relationships to other observations (e.g Blood Pressure = systolic + diastolic), or are derived from other observations (e.g. calculated apgar score)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Как правило, наблюдение будет иметь либо значение, либо набор связанных наблюдений. Некоторые наблюдения (например оценка по шкале Апгар) могут иметь и значение, и связанные наблюдения (для Апгар это будут наблюдения, из которых выводится оценка)<!-- Normally, an observation will have either a value or a set of related observations. A few observations (e.g. apgar store) may have both a value and related observations (for apgar, the observations from which the measure is derived) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Normally, an observation will have either a value or a set of related observations. A few observations (e.g. apgar store) may have both a value and related observations (for apgar, the observations from which the measure is derived)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">outBoundRelationship</Data><NamedCell
@@ -2002,7 +2002,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может потребоваться указать, состоит ли это наблюдение из других или просто вытекает из них<!-- May need to indicate whether this observation is composed of others, or merely derived from them --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип взаимосвязи ДОЛЖЕН быть указан. Если тип взаимосвязи &quot;COMP&quot; (composed), значит наблюдение не следует отображать/интерпретировать в отсутствии связанных наблюдений<!-- A relationship type SHOULD be provided. If the relationship type is &quot;COMP&quot; (composed), then the observation should not be displayed/interpreted in the absence of the related observations --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A relationship type SHOULD be provided. If the relationship type is &quot;COMP&quot; (composed), then the observation should not be displayed/interpreted in the absence of the related observations</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.typeCode</Data><NamedCell
