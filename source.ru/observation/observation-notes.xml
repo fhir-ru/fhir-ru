@@ -1,10 +1,11 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h2>Notes:</h2>
+<h2>Примечания:<!-- Notes: --></h2>
 
 <ul>
   <li>
-    The element, Observation.value[x], has a variable name depending on the type as follows:
+  Элемент Observation.value[x] будет иметь разное имя в зависимости от следующего типа:
+    <!-- The element, Observation.value[x], has a variable name depending on the type as follows: -->
     <ul>
      <li>valueQuantity</li>
      <li>valueCodeableConcept</li>
@@ -16,7 +17,8 @@
     </ul>
   </li>
   <li>
-    The appliesDateTime or appliesPeriod is the time that the observation is most 
+ appliesDateTime или appliesPeriod - это время, когда наблюдение было наиболее актуально для наблюдения объекта. Для биологического объекта (например человеческого пациента), это физиологическое время наблюдения. Если наблюдение проводится над образцом (пробой), эти даты представляют собой начало и окончание сбора образца (например 24 hour Urine Sodium - моча, собранная в течение суток), однако если время сбора достаточно короткое, оно записывается в виде значения момента времени (например стандартная венопункция). В случае наблюдений, получаемых непосредственно с субъекта (например кровяное давление, рентгеновский снимок грудной клетки), указывается время начала и окончания процесса наблюдения, что опять-таки сообщается в виде момента времени.
+    <!-- The appliesDateTime or appliesPeriod is the time that the observation is most 
     relevant as an observation of the subject. For a biological subject (e.g. a human patient), 
     this is the physiologically relevant time of the observation. 
 	In the case of an observation using a specimen, this represents the start and 
@@ -24,27 +26,33 @@
     sufficiently short, this is reported as a point in time value (e.g. normal venepuncture). 
     In the case of an observation obtained directly from a subject (e.g., BP, 
     Chest X-ray), this is the start and end time of the observation process, which again, is 
-    often reported as a single point in time.
+    often reported as a single point in time. -->
   </li>
   <li>
-    At its simplest, resource instances can consist of only a type and a value, with a reliability and status flag.  
+  В самом простом случае экземпляры ресурса могут состоять из одного типа и значения с флагами надежности и статуса.
+    Актуальность других свойств будет меняться в зависимости от типа наблюдения.
+Указание диапазонов нормальных значений может быть полезно для лабораторных исследований и других измерений, таких как систолическое артериальное давление, но будет иметь мало актуально для таких, как "статус беременности"
+    <!-- At its simplest, resource instances can consist of only a type and a value, with a reliability and status flag.  
     The relevance of other properties will vary based on the type of observation.  
 	Reference ranges may be useful for lab tests and other measures like systolic blood pressure, but will have little 
-	relevance for something like "pregnancy status"
+	relevance for something like "pregnancy status" -->
   </li>
   <li>
-    Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties
+ Большинство наблюдений имеют только один общий диапазон нормальных значений. Системы МОГУТ ограничить  указание актуального диапазона нормальных значений на основе знаний о пациенте (например специфичный для пациента возраст, пол, вес и другие факторы), однако это может быть невозможно или не допустимо. При предоставлении более одного диапазона нормальных значений, различия между ними ДОЛЖНЫ указываться в свойствах reference range и/или age
+    <!-- Most observations only have one generic reference range. Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties -->
   </li>
   <li>
-    Profiles will be created to provide guidance on capturing certain types 
+  Будут созданы профили для руководства по вводу определенных типов простых наблюдений. Данный ресурс посвящен уровню детализации, поддерживаемому большинством систем. Однако любое "простое" наблюдение может быть легко разбито на многочисленные компоненты и подкомпоненты для обеспечения дополнительной информации, имеющей значение в определенных обстоятельствах. Как и в других ресурсах, здесь могут использоваться расширения для ввода этой дополнительной сложности.
+    <!-- Profiles will be created to provide guidance on capturing certain types 
     of simple observations.  This resource focuses on the level of detail
     captured by most systems.  However, any "simple" observation can easily 
 	be broken into numerous components and sub-components to provide additional
     information relevant in certain circumstances.  As with other resources, 
-	extensions can be used to introduce this additional complexity.
+	extensions can be used to introduce this additional complexity. -->
  </li>
  <li>
-   Because there are multiple types allowed for the <i>value</i> element, multiple value search parameters are defined. There is no standard parameter for searching values of type Attachment, or Ratio
+ Поскольку элементу <i>value</i> соответствует несколько разрешенных типов, определено несколько значений параметров поиска. Для поиска значений типа Attachment или Ratio стандартные параметры отсутствуют.
+   <!-- Because there are multiple types allowed for the <i>value</i> element, multiple value search parameters are defined. There is no standard parameter for searching values of type Attachment, or Ratio -->
  </li>
 </ul>
 

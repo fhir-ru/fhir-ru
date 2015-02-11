@@ -1044,7 +1044,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Объект<!-- Subject --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Предмет контракта<!-- Subject --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">О ком и/или о чем он: обычно пациент, организация, собственность.<!-- Who and/or what this is about: typically Patient, Organization, property. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1814,7 +1814,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Объект условия<!-- Subject for the Term --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Предмет условия контракта<!-- Subject for the Term --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">О ком или о чем это условие контракта.<!-- Who or what the contract term is about. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2116,7 +2116,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Время действия юридически обязательного договора<!-- Binding Contract effective time --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время вступления юридически обязательного договора в силу <!-- Binding Contract effective time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Релевантное время/период времени действия<!-- Relevant time/time-period when applicable --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
