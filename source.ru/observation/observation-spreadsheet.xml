@@ -1189,7 +1189,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокое, низкое, нормальное и т. п.<!-- High, low, normal, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокое, низкое, нормальное и т. п<!-- High, low, normal, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Оценка, сделанная на основе результата наблюдения.<!-- The assessment made based on the result of the observation. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

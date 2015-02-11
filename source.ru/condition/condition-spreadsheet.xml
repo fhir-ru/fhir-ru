@@ -1242,7 +1242,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">предварительный | рабочий | подтвержденный | опровергнутый<!-- provisional | working | confirmed | refuted --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">provisional | working | confirmed | refuted<!-- предварительный | рабочий | подтвержденный | опровергнутый --><!-- provisional | working | confirmed | refuted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Клинический статус состояния<!-- The clinical status of the condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
