@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-[%settitle USLabOrder Documentation%]
+[%settitle Документация по USLabOrder%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
    <head>
       [%file newheader%]
@@ -10,34 +10,42 @@
       <div class="col-9">
          <a id="uslaborder-guide"> </a>
          <a id="purpose"></a>
-         <h2>Purpose</h2>
+         <h2>Назначение<!-- Purpose --></h2>
          <p>
-            The FHIR USLab Order Implementation focuses on identifying the requirements, specifications and
+		 FHIR-реализация USLab Order направлена на определение требований, спецификаций и стандартов, а также на обеспечение руководством по реализации для электронного заказа лабораторных исследований в США с помощью <a href="http.html">FHIR в RESTful-фреймворке</a>. Область использования интерфейса лабораторных заказов включает требования, позволяющие конкретной реализации Системы электронных медицинских записей (EHR-S) использовать стандартизованные структурированные данные в определенной межорганизационной лабораторной транзакции. Требования по использованию ориентированы на заказы лабораторных исследований между Системой электронных медицинских записей провайдера амбулаторных услуг и лабораторной информационной системой (LIS). Будущие версии этой реализации, возможно, будут согласованы с существующими руководствами для расширения совместимости лабораторных результатов и с другими видами помощи, например скорой медицинской помощью.
+            <!-- The FHIR USLab Order Implementation focuses on identifying the requirements, specifications and
             standards, and on providing the implementation guidance for electronic ordering of laboratory tests in
             the US Realm using <a href="http.html">the FHIR in the RESTful framework</a>. The scope of the Laboratory Orders Interface Use Case includes requirements to enable a
             particular implementation of Electronic Health Record System (EHR-S) to use standardized structured
             data in a defined inter-organizational laboratory transaction. The Use Case requirements are directed at
             laboratory test orders between an Ambulatory Provider's EHR-S and a Laboratory's Laboratory
-            Information System (LIS). Future versions of this implementation  may harmonize with existing guides to extend
-            interoperability of laboratory results across care settings, e.g., acute care.
+            Information System (LIS). Future versions of this implementation  may harmonize with existing guides to extend interoperability of laboratory results across care settings, e.g., acute care. -->
          </p>
          <a id="audience"></a>
-         <h2>Audience</h2>
+         <h2>Целевая аудитория<!-- Audience --></h2>
          <p>
-            This guide is designed for use by analysts and developers who require guidance on FHIR resources, elements and specific extensions
+		 Данное руководство создано для использования аналитиками и разработчиками, которым требуется руководство по FHIR-ресурсам, элементам и особым расширениям, связанным с инициативой по интерфейсу лабораторных результатов (LRI) и концептуальной спецификацией лабораторных заказов HL7. Пользователи данного руководства должны быть знакомы с деталями FHIR-спецификации и обработки ресурсов. Это руководство не предназначено для освещения этой темы.
+            <!-- This guide is designed for use by analysts and developers who require guidance on FHIR resources, elements and specific extensions
             relative to the Laboratory Results Interface (LRI) initiative and HL7 Lab Order Conceptual Specification. Users of this guide must be familiar with the details of the FHIR Specification and resource
-            processing. This guide is not intended to be a tutorial on that subject.
+            processing. This guide is not intended to be a tutorial on that subject. -->
          </p>
          <a id="conventions"></a>
-         <h2>Conventions</h2>
+         <h2>Условные обозначения<!-- Conventions --></h2>
          <p>
-            This guide adheres to the following conventions:
+		 Это руководство придерживается следующих конвенций:
+            <!-- This guide adheres to the following conventions: -->
          </p>
          <ul>
-            <li>The guide is constructed assuming the implementer has access to the FHIR Specification. Although some information from the standard is included in this implementation guide, much information from the standard has not been repeated here. </li>
-            <li>The guide is constructed assuming the implementer SHALL conform to the <a href="http.html"> FHIR RESTful API</a></li>
+            <li>
+			Руководство построено с предположением, что реализатор имеет доступ к FHIR-спецификации. Хотя некоторая информация из стандарта и включена в это руководство по реализации, большинство информации из стандарта здесь не повторяется.
+			<!-- The guide is constructed assuming the implementer has access to the FHIR Specification. Although some information from the standard is included in this implementation guide, much information from the standard has not been repeated here.  --></li>
+            <li>
+			Руководство построено с предположением, что разработчик БУДУЕТ реализовывать <a href="http.html"> FHIR RESTful API</a>
+			<!-- The guide is constructed assuming the implementer SHALL conform to the <a href="http.html"> FHIR RESTful API</a> --></li>
             <!-- EH:  todo create the messaging and document version of uslaborder-->
-            <li>The rules defined in the FHIR Conformance Profile were used to document the use case for, and constraints applied to, the resources described in this guide. </li>
+            <li>
+			Правила, определенные в FHIR Conformance Profile, были использованы для документации вариантов использования и ограничений, применяемых к ресурсам, описанным в этом руководстве.
+			<!-- The rules defined in the FHIR Conformance Profile were used to document the use case for, and constraints applied to, the resources described in this guide.  --></li>
          </ul>
          <!--  EH not needed :  The rules outlined in HL7 2.7.1, Chapter 2B, Section 2B5, Conformance Using Message Profiles,
             were used to document the use case for, and constraints applied to, the messages described in this
@@ -69,27 +77,35 @@
          <!--  EH not needed : 1.3.3  KEYWORDS -->
          <!--  EH not needed : 1.3.4  USAGE CONFORMANCE TESTING RECOMMENDATIONS  -->
          <a id="usecase"></a>
-         <h2>Use Case - Ambulatory Care Setting</h2>
+         <h2>Варианты использования - Амбулаторная помощь<!-- Use Case - Ambulatory Care Setting --></h2>
          <p>
-            This use case was developed as a collaborative effort between the HHS/ONC Standards and
+		 Этот вариант использования был разработан совместными усилиями HHS/ONC стандартов и инициативой фреймворка лабораторных заказов, Фондом здравоохранения Калифорния и рабочей группой HL7 Orders and Observations.
+           <!--  This use case was developed as a collaborative effort between the HHS/ONC Standards and
             Interoperability Framework Laboratory Orders Initiative, the California Health Care Foundation, and the
-            HL7 Orders and Observations Work Group.
+            HL7 Orders and Observations Work Group. -->
          </p>
          <p>
-            This guide defines the following terms from the historic paper-based workflows in relation to the
+		 Данное руководство определяет следующие термины из исторически сложившихся рабочих процессов, основанных на бумажных документах, относящихся к поддерживаемым вариантам использования для электронного обмена информации по лабораторным заказам с OML-структурой сообщений как:
+            <!-- This guide defines the following terms from the historic paper-based workflows in relation to the
             supported use cases for electronic exchange of laboratory order information to the OML message
-            structure as:
+            structure as: -->
          </p>
          <a id="definitions"></a>
-         <h3>Definitions </h3>
+         <h3>Определения<!-- Definitions --> </h3>
          <ul>
-            <li><b>Measurement</b> - a single observation value or calculation recorded using a single Observation Resource. Note that multiple representations of the same measurement may require multiple observation
-               segments, e.g., quantitative and qualitative statement of the same measurement.
+            <li>
+			<b>Измерение (Measurement)</b> - отдельное значение наблюдения или вычисления, записанное с помощью отдельного ресурса Observation. Обратите внимание, что несколько представлений одного и того же измерения могут потребовать использования нескольких сегментов наблюдения, например количественное и качественное утверждения одного измерения.			
+			<!-- <b>Measurement</b> - a single observation value or calculation recorded using a single Observation Resource. Note that multiple representations of the same measurement may require multiple observation
+               segments, e.g., quantitative and qualitative statement of the same measurement. -->
             </li>
-            <li><b>Orderable Test or Laboratory Order </b>- a DiagnosticOrder Resource item requesting
-               one or more measurements (Observation Resources).
+            <li>
+			<b>Orderable Test или Laboratory Order </b> - пункт ресурса DiagnosticOrder, запрашивающий один или более измерений (Observation Resources). 
+			<!-- <b>Orderable Test or Laboratory Order </b>- a DiagnosticOrder Resource item requesting
+               one or more measurements (Observation Resources). -->
             </li>
-            <li><b>Requisition</b> - One or more Orderable Test(s) transmitted as a new or appended DiagnosticOrder Resource. </li>
+            <li>
+			<b>Заявка (Requisition)</b> - одно или несколько исследований, доступных для заказа, передаваемых как новый или присоединенный ресурс DiagnosticOrder.
+			<!-- <b>Requisition</b> - One or more Orderable Test(s) transmitted as a new or appended DiagnosticOrder Resource.  --></li>
          </ul>
          <br></br>
          <p>
@@ -98,67 +114,81 @@
          <img alt="definitions" src="todo"/>
          <!--EH is figure needed here?-->
          <a id="scope"></a>
-         <h3>Scope </h3>
-         <p>EHR-S and a LIS in an ambulatory care setting. This includes new, scheduled, add-on laboratory orders
+         <h3>Область действия<!-- Scope --> </h3>
+         <p>
+		 EHR-S и LIS в случаях оказания амбулаторной помощи. Сюда входят новые, запланированные, добавленные лабораторные заказы, а также отмену лабораторных заказов, которые были размещены ранее. Этот вариант использования имеет 4 сценария:
+		 <!-- EHR-S and a LIS in an ambulatory care setting. This includes new, scheduled, add-on laboratory orders
          and the cancellation of laboratory orders that were previously placed.
-         This Use Case has four scenarios: </p>
+         This Use Case has four scenarios:  --></p>
          <ul>
-            <li>Scenario 1: Electronic Ordering of New or Scheduled Laboratory Test(s) </li>
-            <li>Scenario 2: Electronic Ordering of Add-On Laboratory Test(s)</li>
-            <li>Scenario 3: Requesting the Cancellation of a Previously Placed Laboratory Order by the Order
-               Placer
+            <li>Сценарий 1: Электронный заказ новых или запланированных лабораторных исследований<!-- Scenario 1: Electronic Ordering of New or Scheduled Laboratory Test(s) --> </li>
+            <li>Сценарий 2: Электронный заказ добавленных лабораторных исследований<!-- Scenario 2: Electronic Ordering of Add-On Laboratory Test(s) --></li>
+            <li>Сценарий 3: Заказ отмены размещенного ранее лабораторного заказа тем, кто разместил этот заказ<!-- Scenario 3: Requesting the Cancellation of a Previously Placed Laboratory Order by the Order
+               Placer -->
             </li>
-            <li>Scenario 4: Laboratory Cancellation of a Previously Placed Laboratory Order </li>
+            <li>Сценарий 4: Отмена лабораторией ранее размещенного лабораторного заказа<!-- Scenario 4: Laboratory Cancellation of a Previously Placed Laboratory Order --> </li>
          </ul>
          <a id="inscope"></a>
-         <h4>In Scope</h4>
+         <h4>В области действия<!-- In Scope --></h4>
          <ul>
-            <li>Electronic ordering of laboratory tests and/or panels in the ambulatory setting for the US Realm. </li>
-            <li>Defining the core data elements required for ordering ambulatory laboratory tests and/or panels. </li>
-            <li>Laboratory Order Placer (i.e., Ordering Provider) may designate other non-order placers to receive results. </li>
-            <li>Harmonization of data elements that are used in both laboratory orders and results.</li>
+            <li>
+			Электронный заказ лабораторных исследований и/или панелей при оказании амбулаторной помощи в США.
+			<!-- Electronic ordering of laboratory tests and/or panels in the ambulatory setting for the US Realm. --> </li>
+            <li>Определение основных элементов данных, требуемых для заказа амбулаторных лабораторных исследований и/или панелей.
+			<!-- Defining the core data elements required for ordering ambulatory laboratory tests and/or panels.  --></li>
+            <li>Тот, кто размещает лабораторный заказ (т. е. провайдер заказа) может указать других людей, на являющихся провайдерами заказа, в качестве получателей результатов.<!-- Laboratory Order Placer (i.e., Ordering Provider) may designate other non-order placers to receive results.  --></li>
+            <li>Согласование элементов данных, которые используются и в лабораторных заказах, и в результатах.<!-- Harmonization of data elements that are used in both laboratory orders and results. --></li>
          </ul>
          <a id="outscope"></a>
-         <h4>Out of Scope</h4>
+         <h4>Вне области действия<!-- Out of Scope --></h4>
          <ul>
-            <li>Requesting Status on a Previously Placed Laboratory Order Electronic ordering of laboratory tests and/or panels in an acute care setting, internally within a laboratory, referral orders placed between laboratories, and laboratory orders outside the US Realm.
+            <li>
+			Запрос статуса размещенного ранее лабораторного заказа. Электронный заказ лабораторных исследований и/или панелей в условиях оказания скорой медицинской помощи, внутри лаборатории, реферальные (направления) заказы, размещаемые между лабораториями, а также лабораторные заказа за пределами США. 
+			<!-- Requesting Status on a Previously Placed Laboratory Order Electronic ordering of laboratory tests and/or panels in an acute care setting, internally within a laboratory, referral orders placed between laboratories, and laboratory orders outside the US Realm. -->
             <ul>
-               <li>Note that the authors of this guide did not validate whether constraints on components should be loosened to support these use cases. This will be addressed in a future version, including definition of minimal incremental profiles to support these use cases. Until such time, implementers are not discouraged from attempting to use this guide for those use cases but should recognize that they may not be able to remain fully conformant. The authors invite comments from implementers on their experience to inform the next version. </li>
+               <li>
+			   Обратите внимание, что авторы этого руководства не валидировали, есть ли необходимость ослабить ограничения на компонентах для поддержки этих вариантов использования. Это будет рассмотрено в будущей версии, включая определение минимальных увеличивающихся профилей для поддержки этих вариантов использования. А пока что ничто не мешает реализаторам пытаться использовать это руководство для этих вариантов использования, однако следует осознавать, что они могут стать не полностью подходящими. Авторы приглашают реализаторов комментировать свой опыт для сбора информации для будущих версий.
+			   <!-- Note that the authors of this guide did not validate whether constraints on components should be loosened to support these use cases. This will be addressed in a future version, including definition of minimal incremental profiles to support these use cases. Until such time, implementers are not discouraged from attempting to use this guide for those use cases but should recognize that they may not be able to remain fully conformant. The authors invite comments from implementers on their experience to inform the next version. --> </li>
             </ul></li>
-            <li>Concepts related to: order queues, clearing houses, or other transport-level mechanisms and protocols that may be used to transfer or hold laboratory orders for later retrieval by a laboratory selected to perform the laboratory service. </li>
-            <li>Multi-order status requests (for one patient or multiple patients). </li>
-            <li>Specification of the required/supported error condition codes as part of acknowledgements in REST or with a FHIR Resource. </li>
+            <li>Концепции, относящиеся к: очередям заказов, клиринговым палатам и другим механизмам и протоколам транспортного уровня, которые могут использоваться для передачи или хранения лабораторных заказов для последующего извлечения лабораторией, выбранной для выполнения лабораторной услуги.<!-- Concepts related to: order queues, clearing houses, or other transport-level mechanisms and protocols that may be used to transfer or hold laboratory orders for later retrieval by a laboratory selected to perform the laboratory service.  --></li>
+            <li>Запросы на статус для нескольких заказов (для одного или нескольких пациентов).<!-- Multi-order status requests (for one patient or multiple patients).  --></li>
+            <li>Спецификация обязательных/поддерживаемых кодов ошибочных условий в рамках подтверждения приема в REST или с FHIR-ресурсом.
+			<!-- Specification of the required/supported error condition codes as part of acknowledgements in REST or with a FHIR Resource.  --></li>
             <!-- EH check if this is accurate for REST-->
-            <li>Laboratory orders not transmitted electronically. </li>
-            <li>Secondary uses of laboratory order data. </li>
-            <li>The human mechanisms required to resolve differences between the order identifier and the specimen label. </li>
-            <li>Specimen labeling and transport. </li>
-            <li>Physical transport level confirmations. </li>
-            <li>Interactions between the LIS and EHR System for add-on orders beyond the transmission of the order (to address scenarios such as insufficient specimen or late arrivals of add-on orders).</li>
+            <li>Лабораторные заказы, не передаваемые электронно.<!-- Laboratory orders not transmitted electronically.  --></li>
+            <li>Вторичное использование данных лабораторных заказов.<!-- Secondary uses of laboratory order data.  --></li>
+            <li>Человеческое вмешательство, требуемое для разрешения различий между идентификатором заказа и меткой образца.<!-- The human mechanisms required to resolve differences between the order identifier and the specimen label.  --></li>
+            <li>Маркировка и транспортировка образцов для анализа.<!-- Specimen labeling and transport.  --></li>
+            <li>Физические подтверждения транспортного уровня.<!-- Physical transport level confirmations.  --></li>
+            <li>Взаимодействия между LIS и EHR-системой для добавления заказов помимо передачи заказа (для таких сценариев, как несоответствующий образец или позднее прибытие добавленных заказов).<!-- Interactions between the LIS and EHR System for add-on orders beyond the transmission of the order (to address scenarios such as insufficient specimen or late arrivals of add-on orders). --></li>
          </ul>
          <a id="actors"></a>
-         <h2>Actors</h2>
+         <h2>Действующие лица<!-- Actors --></h2>
          <p>
-            There are two actors that have responsibilities related to the conformance profiles defined in this
-            document:
+		 Есть два действующих лица, имеющие обязанности, связанные с профилями соответствия, определенными в данном документе:
+            <!-- There are two actors that have responsibilities related to the conformance profiles defined in this
+            document: -->
          </p>
          <ul>
-            <li>Laboratory Order Sender - The originator of the DiagnosticOrder Resource Instance that declares conformance to "RESTful FHIR" and
-               FHIR profiles defined in this guide. This actor is the Organization Resource referenced through the .orderer (Practitioner) Resource within FHIR.
+            <li>Отправитель лабораторного заказа - создатель экземпляра ресурса DiagnosticOrder, который декларирует поддержку "RESTful FHIR" и FHIR-профилей, определенных в этому руководстве. Этим действующим лицом будет ресурс Organization, на который указывается ссылка в элементе .orderer FHIR-ресурса (Practitioner).
+				<!-- Laboratory Order Sender - The originator of the DiagnosticOrder Resource Instance that declares conformance to "RESTful FHIR" and
+               FHIR profiles defined in this guide. This actor is the Organization Resource referenced through the .orderer (Practitioner) Resource within FHIR. -->
             </li>
             <!-- EH discuss whether should use the dot notation to refer to elements  e.g. .orderer-->
-            <li>Laboratory Order Receiver - The receiver of the DiagnosticOrder Resource Instance that declares conformance
-               to "RESTful FHIR" and FHIR profiles defined in this guide. This actor is implied within FHIR. ( i.e. not explicitly referenced in the DiagnosticOrder Resource Instance or the linked resources).
+            <li>
+			Получатель лабораторного заказа - получатель экземпляра ресурса DiagnosticOrder, который декларирует поддержку "RESTful FHIR" и FHIR-профилей, определенных в этому руководстве. Это действующее лицо подразумевается в FHIR (т. е. не упоминается явным образом в экземпляре ресурса DiagnosticOrder или связанных ресурсах).
+			<!-- Laboratory Order Receiver - The receiver of the DiagnosticOrder Resource Instance that declares conformance
+               to "RESTful FHIR" and FHIR profiles defined in this guide. This actor is implied within FHIR. ( i.e. not explicitly referenced in the DiagnosticOrder Resource Instance or the linked resources). -->
             </li>
          </ul>
          <a id="usecasesandcontext"></a>
-         <h2>Orders for Ambulatory Care Use Case and Context Diagrams </h2>
+         <h2>Заказы для амбулаторного случая использования и контекстные диаграммы<!-- Orders for Ambulatory Care Use Case and Context Diagrams --> </h2>
          <p><b>Figure 2-1. Use Case Diagram</b></p>
          <img alt="Figure 2-1. Use Case Diagram" src="uslaborder-usecasediagram"/>
          <p><b>Figure 2-2. Context Diagram</b></p>
          <img alt="Figure 2-2. Context Diagram" src="uslaborder-contextdiagram"/>
          <a id="userstory"></a>
-         <h3>User Story</h3>
+         <h3>Пользовательская история<!-- User Story --></h3>
          <p>
             <!--  EH not needed here at least :  Laboratory orders interfaces automate the electronic communication of test order information between
                EHR Systems and LIS. To date, there is no consistent implementation guidance available for electronic
@@ -175,40 +205,40 @@
                 -->
          </p>
          <a id="assumptions"></a>
-         <h4>Use Case Assumptions</h4>
+         <h4>Допущения сценария использования<!-- Use Case Assumptions --></h4>
          <ul>
-            <li>Providers (.orderer) securely access clinical information through an EHR system. </li>
-            <li>Users have a need to exchange laboratory order data between ambulatory care EHRs and
-               laboratories.
+            <li>Провайдеры (.orderer) безопасным образом получает доступ к клинической информации через EHR-систему.<!-- Providers (.orderer) securely access clinical information through an EHR system.  --></li>
+            <li>У пользователей есть потребность в обмене данными лабораторных заказов между амбулаторными EHR и лабораториями.<!-- Users have a need to exchange laboratory order data between ambulatory care EHRs and
+               laboratories. -->
             </li>
-            <li>An EHR system has the ability to manage a laboratory order, including generating the laboratory
-               requisition and sending it to a laboratory.
+            <li>EHR-система имеет возможность управлять лабораторным заказом, включая генерацию лабораторной заявки и отправку ее в лабораторию.<!-- An EHR system has the ability to manage a laboratory order, including generating the laboratory
+               requisition and sending it to a laboratory. -->
             </li>
-            <li>Requisitions are defined by laboratory practice and their exact instantiation is determined
-               by trading partner agreement.
+            <li>Заявки устанавливаются лабораторной практикой, а их точная конкретизация определяется соглашениям торговых партнеров. <!-- Requisitions are defined by laboratory practice and their exact instantiation is determined
+               by trading partner agreement. -->
             </li>
-            <li>An EHR system is capable of generating an order electronically and is capable of receiving and
-               processing acknowledgements, results and cancellations.
+            <li>EHR-система способна генерировать заказ электронным образом и может получать и обрабатывать подтверждения получения, результаты и отмены.<!-- An EHR system is capable of generating an order electronically and is capable of receiving and
+               processing acknowledgements, results and cancellations. -->
             </li>
-            <li>A LIS is capable of receiving orders and cancellation requests, and generating
-               acknowledgements and cancelation notifications.
+            <li>LIS способна получать заказы и запросы на отмену и генерировать подтверждения получения и уведомления об отмене.<!-- A LIS is capable of receiving orders and cancellation requests, and generating
+               acknowledgements and cancelation notifications. -->
             </li>
-            <li>The Laboratory is capable of receiving laboratory orders electronically and in standardized
-               structured format.
+            <li>Лаборатория способна получать лабораторные заказы электронным образом и в стандартизованном структурированном формате.<!-- The Laboratory is capable of receiving laboratory orders electronically and in standardized
+               structured format. -->
             </li>
-            <li>The EHR System and LIS both use data models that include discrete representations of patients,
+            <li>Обе системы EHR и LIS используют модели данных, которые содержат дискретные представления пациентов, конечных пользователей-клиницистов, лабораторных требований (requisitions), лабораторных заказов (которые включают исследования и панели) и результаты лабораторных исследований (минимально на уровне отдельных веществ, определяемых при анализе).<!-- The EHR System and LIS both use data models that include discrete representations of patients,
                clinician end-users, laboratory requisitions, laboratory orders (which include tests and panels),
-               and laboratory test results (minimally at the level of individual analytes).
+               and laboratory test results (minimally at the level of individual analytes). -->
             </li>
-            <li>The  <a href="todo">USLabResult Profile</a>
+            <li> <a href="todo">USLabResult Profile</a> и USLabOrder Profile будут синхронизированы с той целью, что лаборатория, которая получает заказ, соответствующий USLabOrder Profile, должна быть способна ответить сообщением, соответствующим USLabResult Profile.<!-- The  <a href="todo">USLabResult Profile</a>
             and the USLabOrder Profile will be
             synchronized with the goal that a laboratory that receives an order conforming to the USLabOrder Profile should
-            be capable of responding with a message conforming to the USLabResult Profile.
+            be capable of responding with a message conforming to the USLabResult Profile. -->
             </li>
-            <li>Appropriate security and transport protocols, patient identification methodology, order
+            <li>Подходящие транспортный и протокол безопасности, методика идентификации пациентов, другие методики идентификации, согласие пациента, процедуры обеспечения конфиденциальности и безопасности, кодирование, лексикон, обработка ошибок и стандарты нормализации были согласованы всеми участниками. <!-- Appropriate security and transport protocols, patient identification methodology, order
                identification methodology, patient consent, privacy and security procedures, coding,
                vocabulary, error handling, and normalization standards have been agreed to by all relevant
-               participants.
+               participants. -->
             </li>
             <li>Legal and governance issues regarding data access authorizations, data ownership, and data use
                are in effect.
