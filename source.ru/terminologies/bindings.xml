@@ -144,7 +144,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DataAbsentReason</Data></Cell>
-    <Cell><Data ss:Type="String">Used to specify why the normally expected content of the data element is missing</Data></Cell>
+    <Cell><Data ss:Type="String">Используется для указания, почему обычно ожидаемое содержимое элемента данных отсутствует<!-- Used to specify why the normally expected content of the data element is missing --></Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">#data-absent-reason</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">http://hl7.org/fhir/v3/vs/NullFlavor</Data></Cell>
@@ -189,7 +189,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AdministrativeGender</Data></Cell>
-    <Cell><Data ss:Type="String">The gender of a person used for administrative purposes  </Data></Cell>
+    <Cell><Data ss:Type="String">Пол человека, используемый в административных целях<!-- The gender of a person used for administrative purposes -->  </Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -202,7 +202,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MaritalStatus</Data></Cell>
-    <Cell><Data ss:Type="String">The domestic partnership status of a person</Data></Cell>
+    <Cell><Data ss:Type="String">Статус домашнего партнерства человека<!-- The domestic partnership status of a person --></Data></Cell>
     <Cell><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>

@@ -4326,7 +4326,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The patient the reuqest order is related to</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Пациент, с которым связан заказ заявки<!-- The patient the reuqest order is related to --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6542,7 +6542,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">OrderOutcomeStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of the response to an order</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус ответа на заказ<!-- The status of the response to an order --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#order-outcome-code</Data></Cell>

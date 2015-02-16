@@ -4103,7 +4103,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Patient.contact</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">SHALL at least contain a contact's details or a reference to an organization</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">ДОЛЖЕН содержать как минимум либо контактные данные, либо ссылку на организацию<!-- SHALL at least contain a contact's details or a reference to an organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">f:name or f:telecom or f:address or f:organization</Data><NamedCell
@@ -4661,112 +4661,112 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Patient.identifier</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">A patient identifier</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Идентификатор пациента<!-- A patient identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">name</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.name</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A portion of either family or given name of the patient</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть либо фамилии, либо имени пациента<!-- A portion of either family or given name of the patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">family</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.name.family</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A portion of the family name of the patient</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть фамилии пациента<!-- A portion of the family name of the patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">given</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.name.given</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A portion of the given name of the patient</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть имени пациента<!-- A portion of the given name of the patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">phonetic</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A portion of either family or given name using some kind of phonetic matching algorithm</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть либо фамилии, либо имени, используя некоторый алгоритм фонетического соответствия<!-- A portion of either family or given name using some kind of phonetic matching algorithm --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">telecom</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.telecom</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The value in any kind of telecom details of the patient</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Значение в любом виде контактных данных пациента<!-- The value in any kind of telecom details of the patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">address</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.address</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">An address in any kind of address/part of the patient</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Адрес в любом виде адреса/части записи пациента<!-- An address in any kind of address/part of the patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">gender</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.gender</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Gender of the patient</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Пол пациента<!-- Gender of the patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">language</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.communication</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Language code (irrespective of use value)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Код языка (безотносительно значения вида использования)<!-- Language code (irrespective of use value) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">birthdate</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.birthDate</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The patient's date of birth</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Дата рождения пациента<!-- The patient's date of birth --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.managingOrganization</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The organization at which this person is a patient</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Организация, в которой этот человек является пациентом<!-- The organization at which this person is a patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">careprovider</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.careProvider</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Patient's nominated care provider, could be a care manager, not the organization that manages the record</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Назначенный поставщик медицинских услуг пациента, может быть управляющим медицинским обслуживанием, но не организацией, которая администрирует запись <!-- Patient's nominated care provider, could be a care manager, not the organization that manages the record --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">active</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.active</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Whether the patient record is active</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Активна ли данная запись о пациенте<!-- Whether the patient record is active --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">animal-species</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.animal.species</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The species for animal patients</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Вид для пациентов-животных<!-- The species for animal patients --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">animal-breed</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.animal.breed</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The breed for animal patients</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Порода для пациентов-животных<!-- The breed for animal patients --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">link</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.link.other</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">All patients linked to the given patient</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Все пациенты, связанные с данным пациентом<!-- All patients linked to the given patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6933,7 +6933,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">AnimalGenderStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The state of the animal's reproductive organs</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Состояние репродуктивных органов животного<!-- The state of the animal's reproductive organs --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-animal-genderstatus</Data></Cell>
@@ -6948,7 +6948,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">AnimalSpecies</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The species of an animal</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид животного<!-- The species of an animal --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-animal-species</Data></Cell>
@@ -6963,7 +6963,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">AnimalBreed</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The breed of an animal</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Порода животного<!-- The breed of an animal --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-animal-breeds</Data></Cell>
@@ -6978,7 +6978,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ContactRelationship</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The nature of the relationship between a patient and a contact person for that patient</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид родственных отношений между пациентом и контактным лицом этого пациента<!-- The nature of the relationship between a patient and a contact person for that patient --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-patient-contact-relationship</Data></Cell>
@@ -6993,7 +6993,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">LinkType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of link between this patient resource and another patient resource.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип связи между этим ресурсом patient и другим ресурсом patient.<!-- The type of link between this patient resource and another patient resource. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#link-type</Data></Cell>

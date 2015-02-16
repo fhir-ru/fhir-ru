@@ -3749,7 +3749,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Order.when</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Указывайте код или график, но не оба<!-- Provide a code or a schedule, but not both --></Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Указывайте либо код, либо расписание, но не оба элемента<!-- Provide a code or a schedule, but not both --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">exists(f:code) != exists(f:schedule)</Data><NamedCell

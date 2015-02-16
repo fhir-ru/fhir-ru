@@ -4562,56 +4562,56 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Coverage.issuer</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The identity of the insurer</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Личность страхователя<!-- The identity of the insurer --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The primary identifier of the insured</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Основной идентификатор застрахованного<!-- The primary identifier of the insured --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The kind of coverage</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Вид страхового покрытия<!-- The kind of coverage --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">plan</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.plan</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A plan or policy identifier</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор плана или полиса<!-- A plan or policy identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">subplan</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.subplan</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Sub-plan identifier</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор субплана<!-- Sub-plan identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">group</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.group</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Group identifier</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор группы<!-- Group identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">dependent</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.dependent</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Dependent number</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Номер материально зависимого лица<!-- Dependent number --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">sequence</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.sequence</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Sequence number</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Порядковый номер<!-- Sequence number --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6924,7 +6924,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s147"><Data ss:Type="String">CoverageType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The type of insurance: public health, worker compensation; private accident, auto, private health, etc.)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип страховки: здравоохранение, компенсация работника; личное страхование от несчастных случаев, автострахование, частное страхование здоровья и т. п.)<!-- The type of insurance: public health, worker compensation; private accident, auto, private health, etc.) --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">http://hl7.org/fhir/v3/vs/ActCoverageTypeCode</Data></Cell>

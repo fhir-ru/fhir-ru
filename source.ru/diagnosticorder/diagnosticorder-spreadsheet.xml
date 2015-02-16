@@ -4538,7 +4538,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">item-past-status &amp; item-date</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A combination of item-past-status and item-date</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Комбинация статуса пункта в прошлом и даты пункта<!-- A combination of item-past-status and item-date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">orderer</Data></Cell>
@@ -4573,7 +4573,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">event-status &amp; event-date</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A combination of past-status and date</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Комбинация статуса в прошлом и даты<!-- A combination of past-status and date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">subject</Data></Cell>
@@ -6737,7 +6737,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">DiagnosticOrderStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of a diagnostic order</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус диагностического заказа<!-- The status of a diagnostic order --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#diagnostic-order-status</Data></Cell>
@@ -6752,7 +6752,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">DiagnosticOrderPriority</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The clinical priority of a diagnostic order</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Клинический приоритет диагностического заказа<!-- The clinical priority of a diagnostic order --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#diagnostic-order-priority</Data></Cell>
@@ -6767,7 +6767,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">DiagnosticRequests</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for tests/services that can be performed by diagnostic services</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды тестов/услуг, которые могут быть выполнены службами диагностики<!-- Codes for tests/services that can be performed by diagnostic services --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-diagnostic-requests</Data></Cell>
@@ -6782,7 +6782,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">DiagnosticOrderEventDescription</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional information about an event that occurred to a diagnostic order - e.g. if the status remained unchanged</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация о событии, которое произошло с диагностическим заказом - например если статус не меняется<!-- Additional information about an event that occurred to a diagnostic order - e.g. if the status remained unchanged --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-diagnostic-order-event</Data></Cell>

@@ -4407,77 +4407,77 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Specimen.subject</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The subject of the specimen</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Предмет образца<!-- The subject of the specimen --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Specimen.subject</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The patient the specimen comes from</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Пациент, у которого был взят образец<!-- The patient the specimen comes from --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Specimen.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The unique identifier associated with the specimen</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Уникальный идентификатор, ассоциированный с образцом<!-- The unique identifier associated with the specimen --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Specimen.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The specimen type</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Тип образца<!-- The specimen type --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">source</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Specimen.source.target</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The parent of the specimen</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Родительский источник образца<!-- The parent of the specimen --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">accession</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Specimen.accessionIdentifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The accession number associated with the specimen</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Инвентарный номер, ассоциируемый с образцом<!-- The accession number associated with the specimen --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">collected</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Specimen.collection.collected[x]</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The date the specimen was collected</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Дата сбора образца<!-- The date the specimen was collected --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">collector</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Specimen.collection.collector</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Who collected the specimen</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Кто собрал образец<!-- Who collected the specimen --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">site</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Specimen.collection.sourceSite</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The source or body site from where the specimen came</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Источник или часть тела, где был взят образец<!-- The source or body site from where the specimen came --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">containerid</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Specimen.container.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The unique identifier associated with the specimen container</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Уникальный идентификатор, ассоциированный с контейнером образца<!-- The unique identifier associated with the specimen container --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">container</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Specimen.container.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The kind of specimen container</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Вид контейнера с образцом<!-- The kind of specimen container --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6669,7 +6669,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">HierarchicalRelationshipType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Type indicating if this is a parent or child relationship</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Вид взаимосвязи - родительский или дочерний<!-- Type indicating if this is a parent or child relationship --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#hierarchical-relationship-type</Data></Cell>
@@ -6684,7 +6684,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SpecimenType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of the specimen. </Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип образца для анализа.<!-- The type of the specimen. --> </Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">http://hl7.org/fhir/v2/vs/0487</Data></Cell>
@@ -6714,7 +6714,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SpecimenTreatmentProcedure</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type indicating the technique used to process the specimen</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип метода, используемого для обработки образца для анализа<!-- Type indicating the technique used to process the specimen --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-specimen-treatment-procedure</Data></Cell>
@@ -6729,7 +6729,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SpecimenContainerType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of specimen container</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип контейнера с образцом<!-- Type of specimen container --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-specimen-container-type</Data></Cell>
@@ -6744,7 +6744,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SpecimenContainerAdditive</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Substance added to specimen container</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вещество, добавленное в контейнер с образцом<!-- Substance added to specimen container --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">http://hl7.org/fhir/v2/vs/0371</Data></Cell>
