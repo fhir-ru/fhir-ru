@@ -1,6 +1,6 @@
 
 <!DOCTYPE HTML>
-[%settitle Документация по USLabOrder%]
+[%settitle Р”РѕРєСѓРјРµРЅС‚Р°С†РёСЏ РїРѕ USLabOrder%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
    <head>
       [%file newheader%]
@@ -10,9 +10,9 @@
       <div class="col-9">
          <a id="uslaborder-guide"> </a>
          <a id="purpose"></a>
-         <h2>Назначение<!-- Purpose --></h2>
+         <h2>РќР°Р·РЅР°С‡РµРЅРёРµ<!-- Purpose --></h2>
          <p>
-		 FHIR-реализация USLab Order направлена на определение требований, спецификаций и стандартов, а также на обеспечение руководством по реализации для электронного заказа лабораторных исследований в США с помощью <a href="http.html">FHIR в RESTful-фреймворке</a>. Область использования интерфейса лабораторных заказов включает требования, позволяющие конкретной реализации Системы электронных медицинских записей (EHR-S) использовать стандартизованные структурированные данные в определенной межорганизационной лабораторной транзакции. Требования по использованию ориентированы на заказы лабораторных исследований между Системой электронных медицинских записей провайдера амбулаторных услуг и лабораторной информационной системой (LIS). Будущие версии этой реализации, возможно, будут согласованы с существующими руководствами для расширения совместимости лабораторных результатов и с другими видами помощи, например скорой медицинской помощью.
+		 FHIR-СЂРµР°Р»РёР·Р°С†РёСЏ USLab Order РЅР°РїСЂР°РІР»РµРЅР° РЅР° РѕРїСЂРµРґРµР»РµРЅРёРµ С‚СЂРµР±РѕРІР°РЅРёР№, СЃРїРµС†РёС„РёРєР°С†РёР№ Рё СЃС‚Р°РЅРґР°СЂС‚РѕРІ, Р° С‚Р°РєР¶Рµ РЅР° РѕР±РµСЃРїРµС‡РµРЅРёРµ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕРј РїРѕ СЂРµР°Р»РёР·Р°С†РёРё РґР»СЏ СЌР»РµРєС‚СЂРѕРЅРЅРѕРіРѕ Р·Р°РєР°Р·Р° Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РёСЃСЃР»РµРґРѕРІР°РЅРёР№ РІ РЎРЁРђ СЃ РїРѕРјРѕС‰СЊСЋ <a href="http.html">FHIR РІ RESTful-С„СЂРµР№РјРІРѕСЂРєРµ</a>. РћР±Р»Р°СЃС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РёРЅС‚РµСЂС„РµР№СЃР° Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·РѕРІ РІРєР»СЋС‡Р°РµС‚ С‚СЂРµР±РѕРІР°РЅРёСЏ, РїРѕР·РІРѕР»СЏСЋС‰РёРµ РєРѕРЅРєСЂРµС‚РЅРѕР№ СЂРµР°Р»РёР·Р°С†РёРё РЎРёСЃС‚РµРјС‹ СЌР»РµРєС‚СЂРѕРЅРЅС‹С… РјРµРґРёС†РёРЅСЃРєРёС… Р·Р°РїРёСЃРµР№ (EHR-S) РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃС‚Р°РЅРґР°СЂС‚РёР·РѕРІР°РЅРЅС‹Рµ СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ РІ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РјРµР¶РѕСЂРіР°РЅРёР·Р°С†РёРѕРЅРЅРѕР№ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕР№ С‚СЂР°РЅР·Р°РєС†РёРё. РўСЂРµР±РѕРІР°РЅРёСЏ РїРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЋ РѕСЂРёРµРЅС‚РёСЂРѕРІР°РЅС‹ РЅР° Р·Р°РєР°Р·С‹ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РёСЃСЃР»РµРґРѕРІР°РЅРёР№ РјРµР¶РґСѓ РЎРёСЃС‚РµРјРѕР№ СЌР»РµРєС‚СЂРѕРЅРЅС‹С… РјРµРґРёС†РёРЅСЃРєРёС… Р·Р°РїРёСЃРµР№ РїСЂРѕРІР°Р№РґРµСЂР° Р°РјР±СѓР»Р°С‚РѕСЂРЅС‹С… СѓСЃР»СѓРі Рё Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕР№ СЃРёСЃС‚РµРјРѕР№ (LIS). Р‘СѓРґСѓС‰РёРµ РІРµСЂСЃРёРё СЌС‚РѕР№ СЂРµР°Р»РёР·Р°С†РёРё, РІРѕР·РјРѕР¶РЅРѕ, Р±СѓРґСѓС‚ СЃРѕРіР»Р°СЃРѕРІР°РЅС‹ СЃ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРјРё СЂСѓРєРѕРІРѕРґСЃС‚РІР°РјРё РґР»СЏ СЂР°СЃС€РёСЂРµРЅРёСЏ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ Рё СЃ РґСЂСѓРіРёРјРё РІРёРґР°РјРё РїРѕРјРѕС‰Рё, РЅР°РїСЂРёРјРµСЂ СЃРєРѕСЂРѕР№ РјРµРґРёС†РёРЅСЃРєРѕР№ РїРѕРјРѕС‰СЊСЋ.
             <!-- The FHIR USLab Order Implementation focuses on identifying the requirements, specifications and
             standards, and on providing the implementation guidance for electronic ordering of laboratory tests in
             the US Realm using <a href="http.html">the FHIR in the RESTful framework</a>. The scope of the Laboratory Orders Interface Use Case includes requirements to enable a
@@ -22,36 +22,36 @@
             Information System (LIS). Future versions of this implementation  may harmonize with existing guides to extend interoperability of laboratory results across care settings, e.g., acute care. -->
          </p>
          <a id="audience"></a>
-         <h2>Целевая аудитория<!-- Audience --></h2>
+         <h2>Р¦РµР»РµРІР°СЏ Р°СѓРґРёС‚РѕСЂРёСЏ<!-- Audience --></h2>
          <p>
-		 Данное руководство создано для использования аналитиками и разработчиками, которым требуется руководство по FHIR-ресурсам, элементам и особым расширениям, связанным с инициативой по интерфейсу лабораторных результатов (LRI) и концептуальной спецификацией лабораторных заказов HL7. Пользователи данного руководства должны быть знакомы с деталями FHIR-спецификации и обработки ресурсов. Это руководство не предназначено для освещения этой темы.
+		 Р”Р°РЅРЅРѕРµ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ СЃРѕР·РґР°РЅРѕ РґР»СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ Р°РЅР°Р»РёС‚РёРєР°РјРё Рё СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР°РјРё, РєРѕС‚РѕСЂС‹Рј С‚СЂРµР±СѓРµС‚СЃСЏ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ РїРѕ FHIR-СЂРµСЃСѓСЂСЃР°Рј, СЌР»РµРјРµРЅС‚Р°Рј Рё РѕСЃРѕР±С‹Рј СЂР°СЃС€РёСЂРµРЅРёСЏРј, СЃРІСЏР·Р°РЅРЅС‹Рј СЃ РёРЅРёС†РёР°С‚РёРІРѕР№ РїРѕ РёРЅС‚РµСЂС„РµР№СЃСѓ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ (LRI) Рё РєРѕРЅС†РµРїС‚СѓР°Р»СЊРЅРѕР№ СЃРїРµС†РёС„РёРєР°С†РёРµР№ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·РѕРІ HL7. РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РґР°РЅРЅРѕРіРѕ СЂСѓРєРѕРІРѕРґСЃС‚РІР° РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ Р·РЅР°РєРѕРјС‹ СЃ РґРµС‚Р°Р»СЏРјРё FHIR-СЃРїРµС†РёС„РёРєР°С†РёРё Рё РѕР±СЂР°Р±РѕС‚РєРё СЂРµСЃСѓСЂСЃРѕРІ. Р­С‚Рѕ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ РЅРµ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРѕ РґР»СЏ РѕСЃРІРµС‰РµРЅРёСЏ СЌС‚РѕР№ С‚РµРјС‹.
             <!-- This guide is designed for use by analysts and developers who require guidance on FHIR resources, elements and specific extensions
             relative to the Laboratory Results Interface (LRI) initiative and HL7 Lab Order Conceptual Specification. Users of this guide must be familiar with the details of the FHIR Specification and resource
             processing. This guide is not intended to be a tutorial on that subject. -->
          </p>
          <a id="conventions"></a>
-         <h2>Условные обозначения<!-- Conventions --></h2>
+         <h2>РЈСЃР»РѕРІРЅС‹Рµ РѕР±РѕР·РЅР°С‡РµРЅРёСЏ<!-- Conventions --></h2>
          <p>
-		 Это руководство придерживается следующих конвенций:
+		 Р­С‚Рѕ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ РїСЂРёРґРµСЂР¶РёРІР°РµС‚СЃСЏ СЃР»РµРґСѓСЋС‰РёС… РєРѕРЅРІРµРЅС†РёР№:
             <!-- This guide adheres to the following conventions: -->
          </p>
          <ul>
             <li>
-			Руководство построено с предположением, что реализатор имеет доступ к FHIR-спецификации. Хотя некоторая информация из стандарта и включена в это руководство по реализации, большинство информации из стандарта здесь не повторяется.
+			Р СѓРєРѕРІРѕРґСЃС‚РІРѕ РїРѕСЃС‚СЂРѕРµРЅРѕ СЃ РїСЂРµРґРїРѕР»РѕР¶РµРЅРёРµРј, С‡С‚Рѕ СЂРµР°Р»РёР·Р°С‚РѕСЂ РёРјРµРµС‚ РґРѕСЃС‚СѓРї Рє FHIR-СЃРїРµС†РёС„РёРєР°С†РёРё. РҐРѕС‚СЏ РЅРµРєРѕС‚РѕСЂР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РёР· СЃС‚Р°РЅРґР°СЂС‚Р° Рё РІРєР»СЋС‡РµРЅР° РІ СЌС‚Рѕ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ РїРѕ СЂРµР°Р»РёР·Р°С†РёРё, Р±РѕР»СЊС€РёРЅСЃС‚РІРѕ РёРЅС„РѕСЂРјР°С†РёРё РёР· СЃС‚Р°РЅРґР°СЂС‚Р° Р·РґРµСЃСЊ РЅРµ РїРѕРІС‚РѕСЂСЏРµС‚СЃСЏ.
 			<!-- The guide is constructed assuming the implementer has access to the FHIR Specification. Although some information from the standard is included in this implementation guide, much information from the standard has not been repeated here.  --></li>
             <li>
-			Руководство построено с предположением, что разработчик БУДУЕТ реализовывать <a href="http.html"> FHIR RESTful API</a>
+			Р СѓРєРѕРІРѕРґСЃС‚РІРѕ РїРѕСЃС‚СЂРѕРµРЅРѕ СЃ РїСЂРµРґРїРѕР»РѕР¶РµРЅРёРµРј, С‡С‚Рѕ СЂР°Р·СЂР°Р±РѕС‚С‡РёРє Р‘РЈР”РЈР•Рў СЂРµР°Р»РёР·РѕРІС‹РІР°С‚СЊ <a href="http.html"> FHIR RESTful API</a>
 			<!-- The guide is constructed assuming the implementer SHALL conform to the <a href="http.html"> FHIR RESTful API</a> --></li>
             <!-- EH:  todo create the messaging and document version of uslaborder-->
             <li>
-			Правила, определенные в FHIR Conformance Profile, были использованы для документации вариантов использования и ограничений, применяемых к ресурсам, описанным в этом руководстве.
+			РџСЂР°РІРёР»Р°, РѕРїСЂРµРґРµР»РµРЅРЅС‹Рµ РІ FHIR Conformance Profile, Р±С‹Р»Рё РёСЃРїРѕР»СЊР·РѕРІР°РЅС‹ РґР»СЏ РґРѕРєСѓРјРµРЅС‚Р°С†РёРё РІР°СЂРёР°РЅС‚РѕРІ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ Рё РѕРіСЂР°РЅРёС‡РµРЅРёР№, РїСЂРёРјРµРЅСЏРµРјС‹С… Рє СЂРµСЃСѓСЂСЃР°Рј, РѕРїРёСЃР°РЅРЅС‹Рј РІ СЌС‚РѕРј СЂСѓРєРѕРІРѕРґСЃС‚РІРµ.
 			<!-- The rules defined in the FHIR Conformance Profile were used to document the use case for, and constraints applied to, the resources described in this guide.  --></li>
          </ul>
          <!--  EH not needed :  The rules outlined in HL7 2.7.1, Chapter 2B, Section 2B5, Conformance Using Message Profiles,
             were used to document the use case for, and constraints applied to, the messages described in this
             guide. -->
-         <!--  EH not needed :  • Data types have been described separately from the fields that use the data types.  -->
-         <!--  EH not needed :  •o conformance information is provided for fully optional message elements and segments ("O") or
+         <!--  EH not needed :  вЂў Data types have been described separately from the fields that use the data types.  -->
+         <!--  EH not needed :  вЂўo conformance information is provided for fully optional message elements and segments ("O") or
             unsupported message elements and segments ("X"). This includes cardinality, value sets and
             descriptive information. Implementers who want to use optional message elements should refer to
             the base HL7 V2.5.1 Standard to determine how these optional message elements will be used.
@@ -77,34 +77,34 @@
          <!--  EH not needed : 1.3.3  KEYWORDS -->
          <!--  EH not needed : 1.3.4  USAGE CONFORMANCE TESTING RECOMMENDATIONS  -->
          <a id="usecase"></a>
-         <h2>Варианты использования - Амбулаторная помощь<!-- Use Case - Ambulatory Care Setting --></h2>
+         <h2>Р’Р°СЂРёР°РЅС‚С‹ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ - РђРјР±СѓР»Р°С‚РѕСЂРЅР°СЏ РїРѕРјРѕС‰СЊ<!-- Use Case - Ambulatory Care Setting --></h2>
          <p>
-		 Этот вариант использования был разработан совместными усилиями HHS/ONC стандартов и инициативой фреймворка лабораторных заказов, Фондом здравоохранения Калифорния и рабочей группой HL7 Orders and Observations.
+		 Р­С‚РѕС‚ РІР°СЂРёР°РЅС‚ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ Р±С‹Р» СЂР°Р·СЂР°Р±РѕС‚Р°РЅ СЃРѕРІРјРµСЃС‚РЅС‹РјРё СѓСЃРёР»РёСЏРјРё HHS/ONC СЃС‚Р°РЅРґР°СЂС‚РѕРІ Рё РёРЅРёС†РёР°С‚РёРІРѕР№ С„СЂРµР№РјРІРѕСЂРєР° Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·РѕРІ, Р¤РѕРЅРґРѕРј Р·РґСЂР°РІРѕРѕС…СЂР°РЅРµРЅРёСЏ РљР°Р»РёС„РѕСЂРЅРёСЏ Рё СЂР°Р±РѕС‡РµР№ РіСЂСѓРїРїРѕР№ HL7 Orders and Observations.
            <!--  This use case was developed as a collaborative effort between the HHS/ONC Standards and
             Interoperability Framework Laboratory Orders Initiative, the California Health Care Foundation, and the
             HL7 Orders and Observations Work Group. -->
          </p>
          <p>
-		 Данное руководство определяет следующие термины из исторически сложившихся рабочих процессов, основанных на бумажных документах, относящихся к поддерживаемым вариантам использования для электронного обмена информации по лабораторным заказам с OML-структурой сообщений как:
+		 Р”Р°РЅРЅРѕРµ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ РѕРїСЂРµРґРµР»СЏРµС‚ СЃР»РµРґСѓСЋС‰РёРµ С‚РµСЂРјРёРЅС‹ РёР· РёСЃС‚РѕСЂРёС‡РµСЃРєРё СЃР»РѕР¶РёРІС€РёС…СЃСЏ СЂР°Р±РѕС‡РёС… РїСЂРѕС†РµСЃСЃРѕРІ, РѕСЃРЅРѕРІР°РЅРЅС‹С… РЅР° Р±СѓРјР°Р¶РЅС‹С… РґРѕРєСѓРјРµРЅС‚Р°С…, РѕС‚РЅРѕСЃСЏС‰РёС…СЃСЏ Рє РїРѕРґРґРµСЂР¶РёРІР°РµРјС‹Рј РІР°СЂРёР°РЅС‚Р°Рј РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РґР»СЏ СЌР»РµРєС‚СЂРѕРЅРЅРѕРіРѕ РѕР±РјРµРЅР° РёРЅС„РѕСЂРјР°С†РёРё РїРѕ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рј Р·Р°РєР°Р·Р°Рј СЃ OML-СЃС‚СЂСѓРєС‚СѓСЂРѕР№ СЃРѕРѕР±С‰РµРЅРёР№ РєР°Рє:
             <!-- This guide defines the following terms from the historic paper-based workflows in relation to the
             supported use cases for electronic exchange of laboratory order information to the OML message
             structure as: -->
          </p>
          <a id="definitions"></a>
-         <h3>Определения<!-- Definitions --> </h3>
+         <h3>РћРїСЂРµРґРµР»РµРЅРёСЏ<!-- Definitions --> </h3>
          <ul>
             <li>
-			<b>Измерение (Measurement)</b> - отдельное значение наблюдения или вычисления, записанное с помощью отдельного ресурса Observation. Обратите внимание, что несколько представлений одного и того же измерения могут потребовать использования нескольких сегментов наблюдения, например количественное и качественное утверждения одного измерения.			
+			<b>РР·РјРµСЂРµРЅРёРµ (Measurement)</b> - РѕС‚РґРµР»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РЅР°Р±Р»СЋРґРµРЅРёСЏ РёР»Рё РІС‹С‡РёСЃР»РµРЅРёСЏ, Р·Р°РїРёСЃР°РЅРЅРѕРµ СЃ РїРѕРјРѕС‰СЊСЋ РѕС‚РґРµР»СЊРЅРѕРіРѕ СЂРµСЃСѓСЂСЃР° Observation. РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ РЅРµСЃРєРѕР»СЊРєРѕ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёР№ РѕРґРЅРѕРіРѕ Рё С‚РѕРіРѕ Р¶Рµ РёР·РјРµСЂРµРЅРёСЏ РјРѕРіСѓС‚ РїРѕС‚СЂРµР±РѕРІР°С‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РЅРµСЃРєРѕР»СЊРєРёС… СЃРµРіРјРµРЅС‚РѕРІ РЅР°Р±Р»СЋРґРµРЅРёСЏ, РЅР°РїСЂРёРјРµСЂ РєРѕР»РёС‡РµСЃС‚РІРµРЅРЅРѕРµ Рё РєР°С‡РµСЃС‚РІРµРЅРЅРѕРµ СѓС‚РІРµСЂР¶РґРµРЅРёСЏ РѕРґРЅРѕРіРѕ РёР·РјРµСЂРµРЅРёСЏ.			
 			<!-- <b>Measurement</b> - a single observation value or calculation recorded using a single Observation Resource. Note that multiple representations of the same measurement may require multiple observation
                segments, e.g., quantitative and qualitative statement of the same measurement. -->
             </li>
             <li>
-			<b>Orderable Test или Laboratory Order </b> - пункт ресурса DiagnosticOrder, запрашивающий один или более измерений (Observation Resources). 
+			<b>Orderable Test РёР»Рё Laboratory Order </b> - РїСѓРЅРєС‚ СЂРµСЃСѓСЂСЃР° DiagnosticOrder, Р·Р°РїСЂР°С€РёРІР°СЋС‰РёР№ РѕРґРёРЅ РёР»Рё Р±РѕР»РµРµ РёР·РјРµСЂРµРЅРёР№ (Observation Resources). 
 			<!-- <b>Orderable Test or Laboratory Order </b>- a DiagnosticOrder Resource item requesting
                one or more measurements (Observation Resources). -->
             </li>
             <li>
-			<b>Заявка (Requisition)</b> - одно или несколько исследований, доступных для заказа, передаваемых как новый или присоединенный ресурс DiagnosticOrder.
+			<b>Р—Р°СЏРІРєР° (Requisition)</b> - РѕРґРЅРѕ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ РёСЃСЃР»РµРґРѕРІР°РЅРёР№, РґРѕСЃС‚СѓРїРЅС‹С… РґР»СЏ Р·Р°РєР°Р·Р°, РїРµСЂРµРґР°РІР°РµРјС‹С… РєР°Рє РЅРѕРІС‹Р№ РёР»Рё РїСЂРёСЃРѕРµРґРёРЅРµРЅРЅС‹Р№ СЂРµСЃСѓСЂСЃ DiagnosticOrder.
 			<!-- <b>Requisition</b> - One or more Orderable Test(s) transmitted as a new or appended DiagnosticOrder Resource.  --></li>
          </ul>
          <br></br>
@@ -114,81 +114,81 @@
          <img alt="definitions" src="todo"/>
          <!--EH is figure needed here?-->
          <a id="scope"></a>
-         <h3>Область действия<!-- Scope --> </h3>
+         <h3>РћР±Р»Р°СЃС‚СЊ РґРµР№СЃС‚РІРёСЏ<!-- Scope --> </h3>
          <p>
-		 EHR-S и LIS в случаях оказания амбулаторной помощи. Сюда входят новые, запланированные, добавленные лабораторные заказы, а также отмену лабораторных заказов, которые были размещены ранее. Этот вариант использования имеет 4 сценария:
+		 EHR-S Рё LIS РІ СЃР»СѓС‡Р°СЏС… РѕРєР°Р·Р°РЅРёСЏ Р°РјР±СѓР»Р°С‚РѕСЂРЅРѕР№ РїРѕРјРѕС‰Рё. РЎСЋРґР° РІС…РѕРґСЏС‚ РЅРѕРІС‹Рµ, Р·Р°РїР»Р°РЅРёСЂРѕРІР°РЅРЅС‹Рµ, РґРѕР±Р°РІР»РµРЅРЅС‹Рµ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ Р·Р°РєР°Р·С‹, Р° С‚Р°РєР¶Рµ РѕС‚РјРµРЅСѓ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·РѕРІ, РєРѕС‚РѕСЂС‹Рµ Р±С‹Р»Рё СЂР°Р·РјРµС‰РµРЅС‹ СЂР°РЅРµРµ. Р­С‚РѕС‚ РІР°СЂРёР°РЅС‚ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РёРјРµРµС‚ 4 СЃС†РµРЅР°СЂРёСЏ:
 		 <!-- EHR-S and a LIS in an ambulatory care setting. This includes new, scheduled, add-on laboratory orders
          and the cancellation of laboratory orders that were previously placed.
          This Use Case has four scenarios:  --></p>
          <ul>
-            <li>Сценарий 1: Электронный заказ новых или запланированных лабораторных исследований<!-- Scenario 1: Electronic Ordering of New or Scheduled Laboratory Test(s) --> </li>
-            <li>Сценарий 2: Электронный заказ добавленных лабораторных исследований<!-- Scenario 2: Electronic Ordering of Add-On Laboratory Test(s) --></li>
-            <li>Сценарий 3: Заказ отмены размещенного ранее лабораторного заказа тем, кто разместил этот заказ<!-- Scenario 3: Requesting the Cancellation of a Previously Placed Laboratory Order by the Order
+            <li>РЎС†РµРЅР°СЂРёР№ 1: Р­Р»РµРєС‚СЂРѕРЅРЅС‹Р№ Р·Р°РєР°Р· РЅРѕРІС‹С… РёР»Рё Р·Р°РїР»Р°РЅРёСЂРѕРІР°РЅРЅС‹С… Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РёСЃСЃР»РµРґРѕРІР°РЅРёР№<!-- Scenario 1: Electronic Ordering of New or Scheduled Laboratory Test(s) --> </li>
+            <li>РЎС†РµРЅР°СЂРёР№ 2: Р­Р»РµРєС‚СЂРѕРЅРЅС‹Р№ Р·Р°РєР°Р· РґРѕР±Р°РІР»РµРЅРЅС‹С… Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РёСЃСЃР»РµРґРѕРІР°РЅРёР№<!-- Scenario 2: Electronic Ordering of Add-On Laboratory Test(s) --></li>
+            <li>РЎС†РµРЅР°СЂРёР№ 3: Р—Р°РєР°Р· РѕС‚РјРµРЅС‹ СЂР°Р·РјРµС‰РµРЅРЅРѕРіРѕ СЂР°РЅРµРµ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ Р·Р°РєР°Р·Р° С‚РµРј, РєС‚Рѕ СЂР°Р·РјРµСЃС‚РёР» СЌС‚РѕС‚ Р·Р°РєР°Р·<!-- Scenario 3: Requesting the Cancellation of a Previously Placed Laboratory Order by the Order
                Placer -->
             </li>
-            <li>Сценарий 4: Отмена лабораторией ранее размещенного лабораторного заказа<!-- Scenario 4: Laboratory Cancellation of a Previously Placed Laboratory Order --> </li>
+            <li>РЎС†РµРЅР°СЂРёР№ 4: РћС‚РјРµРЅР° Р»Р°Р±РѕСЂР°С‚РѕСЂРёРµР№ СЂР°РЅРµРµ СЂР°Р·РјРµС‰РµРЅРЅРѕРіРѕ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ Р·Р°РєР°Р·Р°<!-- Scenario 4: Laboratory Cancellation of a Previously Placed Laboratory Order --> </li>
          </ul>
          <a id="inscope"></a>
-         <h4>В области действия<!-- In Scope --></h4>
+         <h4>Р’ РѕР±Р»Р°СЃС‚Рё РґРµР№СЃС‚РІРёСЏ<!-- In Scope --></h4>
          <ul>
             <li>
-			Электронный заказ лабораторных исследований и/или панелей при оказании амбулаторной помощи в США.
+			Р­Р»РµРєС‚СЂРѕРЅРЅС‹Р№ Р·Р°РєР°Р· Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РёСЃСЃР»РµРґРѕРІР°РЅРёР№ Рё/РёР»Рё РїР°РЅРµР»РµР№ РїСЂРё РѕРєР°Р·Р°РЅРёРё Р°РјР±СѓР»Р°С‚РѕСЂРЅРѕР№ РїРѕРјРѕС‰Рё РІ РЎРЁРђ.
 			<!-- Electronic ordering of laboratory tests and/or panels in the ambulatory setting for the US Realm. --> </li>
-            <li>Определение основных элементов данных, требуемых для заказа амбулаторных лабораторных исследований и/или панелей.
+            <li>РћРїСЂРµРґРµР»РµРЅРёРµ РѕСЃРЅРѕРІРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ РґР°РЅРЅС‹С…, С‚СЂРµР±СѓРµРјС‹С… РґР»СЏ Р·Р°РєР°Р·Р° Р°РјР±СѓР»Р°С‚РѕСЂРЅС‹С… Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РёСЃСЃР»РµРґРѕРІР°РЅРёР№ Рё/РёР»Рё РїР°РЅРµР»РµР№.
 			<!-- Defining the core data elements required for ordering ambulatory laboratory tests and/or panels.  --></li>
-            <li>Тот, кто размещает лабораторный заказ (т. е. провайдер заказа) может указать других людей, на являющихся провайдерами заказа, в качестве получателей результатов.<!-- Laboratory Order Placer (i.e., Ordering Provider) may designate other non-order placers to receive results.  --></li>
-            <li>Согласование элементов данных, которые используются и в лабораторных заказах, и в результатах.<!-- Harmonization of data elements that are used in both laboratory orders and results. --></li>
+            <li>РўРѕС‚, РєС‚Рѕ СЂР°Р·РјРµС‰Р°РµС‚ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Р№ Р·Р°РєР°Р· (С‚. Рµ. РїСЂРѕРІР°Р№РґРµСЂ Р·Р°РєР°Р·Р°) РјРѕР¶РµС‚ СѓРєР°Р·Р°С‚СЊ РґСЂСѓРіРёС… Р»СЋРґРµР№, РЅР° СЏРІР»СЏСЋС‰РёС…СЃСЏ РїСЂРѕРІР°Р№РґРµСЂР°РјРё Р·Р°РєР°Р·Р°, РІ РєР°С‡РµСЃС‚РІРµ РїРѕР»СѓС‡Р°С‚РµР»РµР№ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ.<!-- Laboratory Order Placer (i.e., Ordering Provider) may designate other non-order placers to receive results.  --></li>
+            <li>РЎРѕРіР»Р°СЃРѕРІР°РЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РґР°РЅРЅС‹С…, РєРѕС‚РѕСЂС‹Рµ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ Рё РІ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·Р°С…, Рё РІ СЂРµР·СѓР»СЊС‚Р°С‚Р°С….<!-- Harmonization of data elements that are used in both laboratory orders and results. --></li>
          </ul>
          <a id="outscope"></a>
-         <h4>Вне области действия<!-- Out of Scope --></h4>
+         <h4>Р’РЅРµ РѕР±Р»Р°СЃС‚Рё РґРµР№СЃС‚РІРёСЏ<!-- Out of Scope --></h4>
          <ul>
             <li>
-			Запрос статуса размещенного ранее лабораторного заказа. Электронный заказ лабораторных исследований и/или панелей в условиях оказания скорой медицинской помощи, внутри лаборатории, реферальные (направления) заказы, размещаемые между лабораториями, а также лабораторные заказа за пределами США. 
+			Р—Р°РїСЂРѕСЃ СЃС‚Р°С‚СѓСЃР° СЂР°Р·РјРµС‰РµРЅРЅРѕРіРѕ СЂР°РЅРµРµ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ Р·Р°РєР°Р·Р°. Р­Р»РµРєС‚СЂРѕРЅРЅС‹Р№ Р·Р°РєР°Р· Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РёСЃСЃР»РµРґРѕРІР°РЅРёР№ Рё/РёР»Рё РїР°РЅРµР»РµР№ РІ СѓСЃР»РѕРІРёСЏС… РѕРєР°Р·Р°РЅРёСЏ СЃРєРѕСЂРѕР№ РјРµРґРёС†РёРЅСЃРєРѕР№ РїРѕРјРѕС‰Рё, РІРЅСѓС‚СЂРё Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё, СЂРµС„РµСЂР°Р»СЊРЅС‹Рµ (РЅР°РїСЂР°РІР»РµРЅРёСЏ) Р·Р°РєР°Р·С‹, СЂР°Р·РјРµС‰Р°РµРјС‹Рµ РјРµР¶РґСѓ Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЏРјРё, Р° С‚Р°РєР¶Рµ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ Р·Р°РєР°Р·Р° Р·Р° РїСЂРµРґРµР»Р°РјРё РЎРЁРђ. 
 			<!-- Requesting Status on a Previously Placed Laboratory Order Electronic ordering of laboratory tests and/or panels in an acute care setting, internally within a laboratory, referral orders placed between laboratories, and laboratory orders outside the US Realm. -->
             <ul>
                <li>
-			   Обратите внимание, что авторы этого руководства не валидировали, есть ли необходимость ослабить ограничения на компонентах для поддержки этих вариантов использования. Это будет рассмотрено в будущей версии, включая определение минимальных увеличивающихся профилей для поддержки этих вариантов использования. А пока что ничто не мешает реализаторам пытаться использовать это руководство для этих вариантов использования, однако следует осознавать, что они могут стать не полностью подходящими. Авторы приглашают реализаторов комментировать свой опыт для сбора информации для будущих версий.
+			   РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ Р°РІС‚РѕСЂС‹ СЌС‚РѕРіРѕ СЂСѓРєРѕРІРѕРґСЃС‚РІР° РЅРµ РІР°Р»РёРґРёСЂРѕРІР°Р»Рё, РµСЃС‚СЊ Р»Рё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ РѕСЃР»Р°Р±РёС‚СЊ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ РЅР° РєРѕРјРїРѕРЅРµРЅС‚Р°С… РґР»СЏ РїРѕРґРґРµСЂР¶РєРё СЌС‚РёС… РІР°СЂРёР°РЅС‚РѕРІ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ. Р­С‚Рѕ Р±СѓРґРµС‚ СЂР°СЃСЃРјРѕС‚СЂРµРЅРѕ РІ Р±СѓРґСѓС‰РµР№ РІРµСЂСЃРёРё, РІРєР»СЋС‡Р°СЏ РѕРїСЂРµРґРµР»РµРЅРёРµ РјРёРЅРёРјР°Р»СЊРЅС‹С… СѓРІРµР»РёС‡РёРІР°СЋС‰РёС…СЃСЏ РїСЂРѕС„РёР»РµР№ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё СЌС‚РёС… РІР°СЂРёР°РЅС‚РѕРІ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ. Рђ РїРѕРєР° С‡С‚Рѕ РЅРёС‡С‚Рѕ РЅРµ РјРµС€Р°РµС‚ СЂРµР°Р»РёР·Р°С‚РѕСЂР°Рј РїС‹С‚Р°С‚СЊСЃСЏ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЌС‚Рѕ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ РґР»СЏ СЌС‚РёС… РІР°СЂРёР°РЅС‚РѕРІ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ, РѕРґРЅР°РєРѕ СЃР»РµРґСѓРµС‚ РѕСЃРѕР·РЅР°РІР°С‚СЊ, С‡С‚Рѕ РѕРЅРё РјРѕРіСѓС‚ СЃС‚Р°С‚СЊ РЅРµ РїРѕР»РЅРѕСЃС‚СЊСЋ РїРѕРґС…РѕРґСЏС‰РёРјРё. РђРІС‚РѕСЂС‹ РїСЂРёРіР»Р°С€Р°СЋС‚ СЂРµР°Р»РёР·Р°С‚РѕСЂРѕРІ РєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ СЃРІРѕР№ РѕРїС‹С‚ РґР»СЏ СЃР±РѕСЂР° РёРЅС„РѕСЂРјР°С†РёРё РґР»СЏ Р±СѓРґСѓС‰РёС… РІРµСЂСЃРёР№.
 			   <!-- Note that the authors of this guide did not validate whether constraints on components should be loosened to support these use cases. This will be addressed in a future version, including definition of minimal incremental profiles to support these use cases. Until such time, implementers are not discouraged from attempting to use this guide for those use cases but should recognize that they may not be able to remain fully conformant. The authors invite comments from implementers on their experience to inform the next version. --> </li>
             </ul></li>
-            <li>Концепции, относящиеся к: очередям заказов, клиринговым палатам и другим механизмам и протоколам транспортного уровня, которые могут использоваться для передачи или хранения лабораторных заказов для последующего извлечения лабораторией, выбранной для выполнения лабораторной услуги.<!-- Concepts related to: order queues, clearing houses, or other transport-level mechanisms and protocols that may be used to transfer or hold laboratory orders for later retrieval by a laboratory selected to perform the laboratory service.  --></li>
-            <li>Запросы на статус для нескольких заказов (для одного или нескольких пациентов).<!-- Multi-order status requests (for one patient or multiple patients).  --></li>
-            <li>Спецификация обязательных/поддерживаемых кодов ошибочных условий в рамках подтверждения приема в REST или с FHIR-ресурсом.
+            <li>РљРѕРЅС†РµРїС†РёРё, РѕС‚РЅРѕСЃСЏС‰РёРµСЃСЏ Рє: РѕС‡РµСЂРµРґСЏРј Р·Р°РєР°Р·РѕРІ, РєР»РёСЂРёРЅРіРѕРІС‹Рј РїР°Р»Р°С‚Р°Рј Рё РґСЂСѓРіРёРј РјРµС…Р°РЅРёР·РјР°Рј Рё РїСЂРѕС‚РѕРєРѕР»Р°Рј С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СѓСЂРѕРІРЅСЏ, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РґР»СЏ РїРµСЂРµРґР°С‡Рё РёР»Рё С…СЂР°РЅРµРЅРёСЏ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·РѕРІ РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ РёР·РІР»РµС‡РµРЅРёСЏ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРµР№, РІС‹Р±СЂР°РЅРЅРѕР№ РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕР№ СѓСЃР»СѓРіРё.<!-- Concepts related to: order queues, clearing houses, or other transport-level mechanisms and protocols that may be used to transfer or hold laboratory orders for later retrieval by a laboratory selected to perform the laboratory service.  --></li>
+            <li>Р—Р°РїСЂРѕСЃС‹ РЅР° СЃС‚Р°С‚СѓСЃ РґР»СЏ РЅРµСЃРєРѕР»СЊРєРёС… Р·Р°РєР°Р·РѕРІ (РґР»СЏ РѕРґРЅРѕРіРѕ РёР»Рё РЅРµСЃРєРѕР»СЊРєРёС… РїР°С†РёРµРЅС‚РѕРІ).<!-- Multi-order status requests (for one patient or multiple patients).  --></li>
+            <li>РЎРїРµС†РёС„РёРєР°С†РёСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹С…/РїРѕРґРґРµСЂР¶РёРІР°РµРјС‹С… РєРѕРґРѕРІ РѕС€РёР±РѕС‡РЅС‹С… СѓСЃР»РѕРІРёР№ РІ СЂР°РјРєР°С… РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РїСЂРёРµРјР° РІ REST РёР»Рё СЃ FHIR-СЂРµСЃСѓСЂСЃРѕРј.
 			<!-- Specification of the required/supported error condition codes as part of acknowledgements in REST or with a FHIR Resource.  --></li>
             <!-- EH check if this is accurate for REST-->
-            <li>Лабораторные заказы, не передаваемые электронно.<!-- Laboratory orders not transmitted electronically.  --></li>
-            <li>Вторичное использование данных лабораторных заказов.<!-- Secondary uses of laboratory order data.  --></li>
-            <li>Человеческое вмешательство, требуемое для разрешения различий между идентификатором заказа и меткой образца.<!-- The human mechanisms required to resolve differences between the order identifier and the specimen label.  --></li>
-            <li>Маркировка и транспортировка образцов для анализа.<!-- Specimen labeling and transport.  --></li>
-            <li>Физические подтверждения транспортного уровня.<!-- Physical transport level confirmations.  --></li>
-            <li>Взаимодействия между LIS и EHR-системой для добавления заказов помимо передачи заказа (для таких сценариев, как несоответствующий образец или позднее прибытие добавленных заказов).<!-- Interactions between the LIS and EHR System for add-on orders beyond the transmission of the order (to address scenarios such as insufficient specimen or late arrivals of add-on orders). --></li>
+            <li>Р›Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ Р·Р°РєР°Р·С‹, РЅРµ РїРµСЂРµРґР°РІР°РµРјС‹Рµ СЌР»РµРєС‚СЂРѕРЅРЅРѕ.<!-- Laboratory orders not transmitted electronically.  --></li>
+            <li>Р’С‚РѕСЂРёС‡РЅРѕРµ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РґР°РЅРЅС‹С… Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·РѕРІ.<!-- Secondary uses of laboratory order data.  --></li>
+            <li>Р§РµР»РѕРІРµС‡РµСЃРєРѕРµ РІРјРµС€Р°С‚РµР»СЊСЃС‚РІРѕ, С‚СЂРµР±СѓРµРјРѕРµ РґР»СЏ СЂР°Р·СЂРµС€РµРЅРёСЏ СЂР°Р·Р»РёС‡РёР№ РјРµР¶РґСѓ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРј Р·Р°РєР°Р·Р° Рё РјРµС‚РєРѕР№ РѕР±СЂР°Р·С†Р°.<!-- The human mechanisms required to resolve differences between the order identifier and the specimen label.  --></li>
+            <li>РњР°СЂРєРёСЂРѕРІРєР° Рё С‚СЂР°РЅСЃРїРѕСЂС‚РёСЂРѕРІРєР° РѕР±СЂР°Р·С†РѕРІ РґР»СЏ Р°РЅР°Р»РёР·Р°.<!-- Specimen labeling and transport.  --></li>
+            <li>Р¤РёР·РёС‡РµСЃРєРёРµ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СѓСЂРѕРІРЅСЏ.<!-- Physical transport level confirmations.  --></li>
+            <li>Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ РјРµР¶РґСѓ LIS Рё EHR-СЃРёСЃС‚РµРјРѕР№ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ Р·Р°РєР°Р·РѕРІ РїРѕРјРёРјРѕ РїРµСЂРµРґР°С‡Рё Р·Р°РєР°Р·Р° (РґР»СЏ С‚Р°РєРёС… СЃС†РµРЅР°СЂРёРµРІ, РєР°Рє РЅРµСЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РѕР±СЂР°Р·РµС† РёР»Рё РїРѕР·РґРЅРµРµ РїСЂРёР±С‹С‚РёРµ РґРѕР±Р°РІР»РµРЅРЅС‹С… Р·Р°РєР°Р·РѕРІ).<!-- Interactions between the LIS and EHR System for add-on orders beyond the transmission of the order (to address scenarios such as insufficient specimen or late arrivals of add-on orders). --></li>
          </ul>
          <a id="actors"></a>
-         <h2>Действующие лица<!-- Actors --></h2>
+         <h2>Р”РµР№СЃС‚РІСѓСЋС‰РёРµ Р»РёС†Р°<!-- Actors --></h2>
          <p>
-		 Есть два действующих лица, имеющие обязанности, связанные с профилями соответствия, определенными в данном документе:
+		 Р•СЃС‚СЊ РґРІР° РґРµР№СЃС‚РІСѓСЋС‰РёС… Р»РёС†Р°, РёРјРµСЋС‰РёРµ РѕР±СЏР·Р°РЅРЅРѕСЃС‚Рё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РїСЂРѕС„РёР»СЏРјРё СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ, РѕРїСЂРµРґРµР»РµРЅРЅС‹РјРё РІ РґР°РЅРЅРѕРј РґРѕРєСѓРјРµРЅС‚Рµ:
             <!-- There are two actors that have responsibilities related to the conformance profiles defined in this
             document: -->
          </p>
          <ul>
-            <li>Отправитель лабораторного заказа - создатель экземпляра ресурса DiagnosticOrder, который декларирует поддержку "RESTful FHIR" и FHIR-профилей, определенных в этому руководстве. Этим действующим лицом будет ресурс Organization, на который указывается ссылка в элементе .orderer FHIR-ресурса (Practitioner).
+            <li>РћС‚РїСЂР°РІРёС‚РµР»СЊ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ Р·Р°РєР°Р·Р° - СЃРѕР·РґР°С‚РµР»СЊ СЌРєР·РµРјРїР»СЏСЂР° СЂРµСЃСѓСЂСЃР° DiagnosticOrder, РєРѕС‚РѕСЂС‹Р№ РґРµРєР»Р°СЂРёСЂСѓРµС‚ РїРѕРґРґРµСЂР¶РєСѓ "RESTful FHIR" Рё FHIR-РїСЂРѕС„РёР»РµР№, РѕРїСЂРµРґРµР»РµРЅРЅС‹С… РІ СЌС‚РѕРјСѓ СЂСѓРєРѕРІРѕРґСЃС‚РІРµ. Р­С‚РёРј РґРµР№СЃС‚РІСѓСЋС‰РёРј Р»РёС†РѕРј Р±СѓРґРµС‚ СЂРµСЃСѓСЂСЃ Organization, РЅР° РєРѕС‚РѕСЂС‹Р№ СѓРєР°Р·С‹РІР°РµС‚СЃСЏ СЃСЃС‹Р»РєР° РІ СЌР»РµРјРµРЅС‚Рµ .orderer FHIR-СЂРµСЃСѓСЂСЃР° (Practitioner).
 				<!-- Laboratory Order Sender - The originator of the DiagnosticOrder Resource Instance that declares conformance to "RESTful FHIR" and
                FHIR profiles defined in this guide. This actor is the Organization Resource referenced through the .orderer (Practitioner) Resource within FHIR. -->
             </li>
             <!-- EH discuss whether should use the dot notation to refer to elements  e.g. .orderer-->
             <li>
-			Получатель лабораторного заказа - получатель экземпляра ресурса DiagnosticOrder, который декларирует поддержку "RESTful FHIR" и FHIR-профилей, определенных в этому руководстве. Это действующее лицо подразумевается в FHIR (т. е. не упоминается явным образом в экземпляре ресурса DiagnosticOrder или связанных ресурсах).
+			РџРѕР»СѓС‡Р°С‚РµР»СЊ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ Р·Р°РєР°Р·Р° - РїРѕР»СѓС‡Р°С‚РµР»СЊ СЌРєР·РµРјРїР»СЏСЂР° СЂРµСЃСѓСЂСЃР° DiagnosticOrder, РєРѕС‚РѕСЂС‹Р№ РґРµРєР»Р°СЂРёСЂСѓРµС‚ РїРѕРґРґРµСЂР¶РєСѓ "RESTful FHIR" Рё FHIR-РїСЂРѕС„РёР»РµР№, РѕРїСЂРµРґРµР»РµРЅРЅС‹С… РІ СЌС‚РѕРјСѓ СЂСѓРєРѕРІРѕРґСЃС‚РІРµ. Р­С‚Рѕ РґРµР№СЃС‚РІСѓСЋС‰РµРµ Р»РёС†Рѕ РїРѕРґСЂР°Р·СѓРјРµРІР°РµС‚СЃСЏ РІ FHIR (С‚. Рµ. РЅРµ СѓРїРѕРјРёРЅР°РµС‚СЃСЏ СЏРІРЅС‹Рј РѕР±СЂР°Р·РѕРј РІ СЌРєР·РµРјРїР»СЏСЂРµ СЂРµСЃСѓСЂСЃР° DiagnosticOrder РёР»Рё СЃРІСЏР·Р°РЅРЅС‹С… СЂРµСЃСѓСЂСЃР°С…).
 			<!-- Laboratory Order Receiver - The receiver of the DiagnosticOrder Resource Instance that declares conformance
                to "RESTful FHIR" and FHIR profiles defined in this guide. This actor is implied within FHIR. ( i.e. not explicitly referenced in the DiagnosticOrder Resource Instance or the linked resources). -->
             </li>
          </ul>
          <a id="usecasesandcontext"></a>
-         <h2>Заказы для амбулаторного случая использования и контекстные диаграммы<!-- Orders for Ambulatory Care Use Case and Context Diagrams --> </h2>
+         <h2>Р—Р°РєР°Р·С‹ РґР»СЏ Р°РјР±СѓР»Р°С‚РѕСЂРЅРѕРіРѕ СЃР»СѓС‡Р°СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ Рё РєРѕРЅС‚РµРєСЃС‚РЅС‹Рµ РґРёР°РіСЂР°РјРјС‹<!-- Orders for Ambulatory Care Use Case and Context Diagrams --> </h2>
          <p><b>Figure 2-1. Use Case Diagram</b></p>
          <img alt="Figure 2-1. Use Case Diagram" src="uslaborder-usecasediagram"/>
          <p><b>Figure 2-2. Context Diagram</b></p>
          <img alt="Figure 2-2. Context Diagram" src="uslaborder-contextdiagram"/>
          <a id="userstory"></a>
-         <h3>Пользовательская история<!-- User Story --></h3>
+         <h3>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ РёСЃС‚РѕСЂРёСЏ<!-- User Story --></h3>
          <p>
             <!--  EH not needed here at least :  Laboratory orders interfaces automate the electronic communication of test order information between
                EHR Systems and LIS. To date, there is no consistent implementation guidance available for electronic
@@ -205,80 +205,80 @@
                 -->
          </p>
          <a id="assumptions"></a>
-         <h4>Допущения сценария использования<!-- Use Case Assumptions --></h4>
+         <h4>Р”РѕРїСѓС‰РµРЅРёСЏ СЃС†РµРЅР°СЂРёСЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ<!-- Use Case Assumptions --></h4>
          <ul>
-            <li>Провайдеры (.orderer) безопасным образом получает доступ к клинической информации через EHR-систему.<!-- Providers (.orderer) securely access clinical information through an EHR system.  --></li>
-            <li>У пользователей есть потребность в обмене данными лабораторных заказов между амбулаторными EHR и лабораториями.<!-- Users have a need to exchange laboratory order data between ambulatory care EHRs and
+            <li>РџСЂРѕРІР°Р№РґРµСЂС‹ (.orderer) Р±РµР·РѕРїР°СЃРЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕР»СѓС‡Р°РµС‚ РґРѕСЃС‚СѓРї Рє РєР»РёРЅРёС‡РµСЃРєРѕР№ РёРЅС„РѕСЂРјР°С†РёРё С‡РµСЂРµР· EHR-СЃРёСЃС‚РµРјСѓ.<!-- Providers (.orderer) securely access clinical information through an EHR system.  --></li>
+            <li>РЈ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РµСЃС‚СЊ РїРѕС‚СЂРµР±РЅРѕСЃС‚СЊ РІ РѕР±РјРµРЅРµ РґР°РЅРЅС‹РјРё Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·РѕРІ РјРµР¶РґСѓ Р°РјР±СѓР»Р°С‚РѕСЂРЅС‹РјРё EHR Рё Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЏРјРё.<!-- Users have a need to exchange laboratory order data between ambulatory care EHRs and
                laboratories. -->
             </li>
-            <li>EHR-система имеет возможность управлять лабораторным заказом, включая генерацию лабораторной заявки и отправку ее в лабораторию.<!-- An EHR system has the ability to manage a laboratory order, including generating the laboratory
+            <li>EHR-СЃРёСЃС‚РµРјР° РёРјРµРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СѓРїСЂР°РІР»СЏС‚СЊ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рј Р·Р°РєР°Р·РѕРј, РІРєР»СЋС‡Р°СЏ РіРµРЅРµСЂР°С†РёСЋ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕР№ Р·Р°СЏРІРєРё Рё РѕС‚РїСЂР°РІРєСѓ РµРµ РІ Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЋ.<!-- An EHR system has the ability to manage a laboratory order, including generating the laboratory
                requisition and sending it to a laboratory. -->
             </li>
-            <li>Заявки устанавливаются лабораторной практикой, а их точная конкретизация определяется соглашениям торговых партнеров. <!-- Requisitions are defined by laboratory practice and their exact instantiation is determined
+            <li>Р—Р°СЏРІРєРё СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋС‚СЃСЏ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕР№ РїСЂР°РєС‚РёРєРѕР№, Р° РёС… С‚РѕС‡РЅР°СЏ РєРѕРЅРєСЂРµС‚РёР·Р°С†РёСЏ РѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ СЃРѕРіР»Р°С€РµРЅРёСЏРј С‚РѕСЂРіРѕРІС‹С… РїР°СЂС‚РЅРµСЂРѕРІ. <!-- Requisitions are defined by laboratory practice and their exact instantiation is determined
                by trading partner agreement. -->
             </li>
-            <li>EHR-система способна генерировать заказ электронным образом и может получать и обрабатывать подтверждения получения, результаты и отмены.<!-- An EHR system is capable of generating an order electronically and is capable of receiving and
+            <li>EHR-СЃРёСЃС‚РµРјР° СЃРїРѕСЃРѕР±РЅР° РіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ Р·Р°РєР°Р· СЌР»РµРєС‚СЂРѕРЅРЅС‹Рј РѕР±СЂР°Р·РѕРј Рё РјРѕР¶РµС‚ РїРѕР»СѓС‡Р°С‚СЊ Рё РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РїРѕР»СѓС‡РµРЅРёСЏ, СЂРµР·СѓР»СЊС‚Р°С‚С‹ Рё РѕС‚РјРµРЅС‹.<!-- An EHR system is capable of generating an order electronically and is capable of receiving and
                processing acknowledgements, results and cancellations. -->
             </li>
-            <li>LIS способна получать заказы и запросы на отмену и генерировать подтверждения получения и уведомления об отмене.<!-- A LIS is capable of receiving orders and cancellation requests, and generating
+            <li>LIS СЃРїРѕСЃРѕР±РЅР° РїРѕР»СѓС‡Р°С‚СЊ Р·Р°РєР°Р·С‹ Рё Р·Р°РїСЂРѕСЃС‹ РЅР° РѕС‚РјРµРЅСѓ Рё РіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РїРѕР»СѓС‡РµРЅРёСЏ Рё СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕР± РѕС‚РјРµРЅРµ.<!-- A LIS is capable of receiving orders and cancellation requests, and generating
                acknowledgements and cancelation notifications. -->
             </li>
-            <li>Лаборатория способна получать лабораторные заказы электронным образом и в стандартизованном структурированном формате.<!-- The Laboratory is capable of receiving laboratory orders electronically and in standardized
+            <li>Р›Р°Р±РѕСЂР°С‚РѕСЂРёСЏ СЃРїРѕСЃРѕР±РЅР° РїРѕР»СѓС‡Р°С‚СЊ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ Р·Р°РєР°Р·С‹ СЌР»РµРєС‚СЂРѕРЅРЅС‹Рј РѕР±СЂР°Р·РѕРј Рё РІ СЃС‚Р°РЅРґР°СЂС‚РёР·РѕРІР°РЅРЅРѕРј СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅРѕРј С„РѕСЂРјР°С‚Рµ.<!-- The Laboratory is capable of receiving laboratory orders electronically and in standardized
                structured format. -->
             </li>
-            <li>Обе системы EHR и LIS используют модели данных, которые содержат дискретные представления пациентов, конечных пользователей-клиницистов, лабораторных требований (requisitions), лабораторных заказов (которые включают исследования и панели) и результаты лабораторных исследований (минимально на уровне отдельных веществ, определяемых при анализе).<!-- The EHR System and LIS both use data models that include discrete representations of patients,
+            <li>РћР±Рµ СЃРёСЃС‚РµРјС‹ EHR Рё LIS РёСЃРїРѕР»СЊР·СѓСЋС‚ РјРѕРґРµР»Рё РґР°РЅРЅС‹С…, РєРѕС‚РѕСЂС‹Рµ СЃРѕРґРµСЂР¶Р°С‚ РґРёСЃРєСЂРµС‚РЅС‹Рµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ РїР°С†РёРµРЅС‚РѕРІ, РєРѕРЅРµС‡РЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№-РєР»РёРЅРёС†РёСЃС‚РѕРІ, Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… С‚СЂРµР±РѕРІР°РЅРёР№ (requisitions), Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·РѕРІ (РєРѕС‚РѕСЂС‹Рµ РІРєР»СЋС‡Р°СЋС‚ РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ Рё РїР°РЅРµР»Рё) Рё СЂРµР·СѓР»СЊС‚Р°С‚С‹ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РёСЃСЃР»РµРґРѕРІР°РЅРёР№ (РјРёРЅРёРјР°Р»СЊРЅРѕ РЅР° СѓСЂРѕРІРЅРµ РѕС‚РґРµР»СЊРЅС‹С… РІРµС‰РµСЃС‚РІ, РѕРїСЂРµРґРµР»СЏРµРјС‹С… РїСЂРё Р°РЅР°Р»РёР·Рµ).<!-- The EHR System and LIS both use data models that include discrete representations of patients,
                clinician end-users, laboratory requisitions, laboratory orders (which include tests and panels),
                and laboratory test results (minimally at the level of individual analytes). -->
             </li>
-            <li> <a href="todo">USLabResult Profile</a> и USLabOrder Profile будут синхронизированы с той целью, что лаборатория, которая получает заказ, соответствующий USLabOrder Profile, должна быть способна ответить сообщением, соответствующим USLabResult Profile.<!-- The  <a href="todo">USLabResult Profile</a>
+            <li> <a href="todo">USLabResult Profile</a> Рё USLabOrder Profile Р±СѓРґСѓС‚ СЃРёРЅС…СЂРѕРЅРёР·РёСЂРѕРІР°РЅС‹ СЃ С‚РѕР№ С†РµР»СЊСЋ, С‡С‚Рѕ Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЏ, РєРѕС‚РѕСЂР°СЏ РїРѕР»СѓС‡Р°РµС‚ Р·Р°РєР°Р·, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ USLabOrder Profile, РґРѕР»Р¶РЅР° Р±С‹С‚СЊ СЃРїРѕСЃРѕР±РЅР° РѕС‚РІРµС‚РёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµРј, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРј USLabResult Profile.<!-- The  <a href="todo">USLabResult Profile</a>
             and the USLabOrder Profile will be
             synchronized with the goal that a laboratory that receives an order conforming to the USLabOrder Profile should
             be capable of responding with a message conforming to the USLabResult Profile. -->
             </li>
-            <li>Подходящие транспортный протокол и протокол безопасности, методика идентификации пациентов, другие методики идентификации, согласие пациента, процедуры обеспечения конфиденциальности и безопасности, кодирование, лексикон, обработка ошибок и стандарты нормализации были согласованы всеми участниками. <!-- Appropriate security and transport protocols, patient identification methodology, order
+            <li>РџРѕРґС…РѕРґСЏС‰РёРµ С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹Р№ РїСЂРѕС‚РѕРєРѕР» Рё РїСЂРѕС‚РѕРєРѕР» Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё, РјРµС‚РѕРґРёРєР° РёРґРµРЅС‚РёС„РёРєР°С†РёРё РїР°С†РёРµРЅС‚РѕРІ, РґСЂСѓРіРёРµ РјРµС‚РѕРґРёРєРё РёРґРµРЅС‚РёС„РёРєР°С†РёРё, СЃРѕРіР»Р°СЃРёРµ РїР°С†РёРµРЅС‚Р°, РїСЂРѕС†РµРґСѓСЂС‹ РѕР±РµСЃРїРµС‡РµРЅРёСЏ РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё Рё Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё, РєРѕРґРёСЂРѕРІР°РЅРёРµ, Р»РµРєСЃРёРєРѕРЅ, РѕР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє Рё СЃС‚Р°РЅРґР°СЂС‚С‹ РЅРѕСЂРјР°Р»РёР·Р°С†РёРё Р±С‹Р»Рё СЃРѕРіР»Р°СЃРѕРІР°РЅС‹ РІСЃРµРјРё СѓС‡Р°СЃС‚РЅРёРєР°РјРё. <!-- Appropriate security and transport protocols, patient identification methodology, order
                identification methodology, patient consent, privacy and security procedures, coding,
                vocabulary, error handling, and normalization standards have been agreed to by all relevant
                participants. -->
             </li>
-            <li>Юридические вопросы и проблемы управления, касающиеся разрешений доступа к данным, прав собственности на данные и использования данных, которые находятся в силе.<!-- Legal and governance issues regarding data access authorizations, data ownership, and data use
+            <li>Р®СЂРёРґРёС‡РµСЃРєРёРµ РІРѕРїСЂРѕСЃС‹ Рё РїСЂРѕР±Р»РµРјС‹ СѓРїСЂР°РІР»РµРЅРёСЏ, РєР°СЃР°СЋС‰РёРµСЃСЏ СЂР°Р·СЂРµС€РµРЅРёР№ РґРѕСЃС‚СѓРїР° Рє РґР°РЅРЅС‹Рј, РїСЂР°РІ СЃРѕР±СЃС‚РІРµРЅРЅРѕСЃС‚Рё РЅР° РґР°РЅРЅС‹Рµ Рё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РґР°РЅРЅС‹С…, РєРѕС‚РѕСЂС‹Рµ РЅР°С…РѕРґСЏС‚СЃСЏ РІ СЃРёР»Рµ.<!-- Legal and governance issues regarding data access authorizations, data ownership, and data use
                are in effect. -->
             </li>
-            <li>Установленная инфраструктура сети и политики безопасности существует для того, чтобы сделать возможным непротиворечивый, надлежащий и точный обмен данными между системами-провайдерами, репозиториями данных и сервисами поиска. Это включает в себя, но не ограничивается:
+            <li>РЈСЃС‚Р°РЅРѕРІР»РµРЅРЅР°СЏ РёРЅС„СЂР°СЃС‚СЂСѓРєС‚СѓСЂР° СЃРµС‚Рё Рё РїРѕР»РёС‚РёРєРё Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё СЃСѓС‰РµСЃС‚РІСѓРµС‚ РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СЃРґРµР»Р°С‚СЊ РІРѕР·РјРѕР¶РЅС‹Рј РЅРµРїСЂРѕС‚РёРІРѕСЂРµС‡РёРІС‹Р№, РЅР°РґР»РµР¶Р°С‰РёР№ Рё С‚РѕС‡РЅС‹Р№ РѕР±РјРµРЅ РґР°РЅРЅС‹РјРё РјРµР¶РґСѓ СЃРёСЃС‚РµРјР°РјРё-РїСЂРѕРІР°Р№РґРµСЂР°РјРё, СЂРµРїРѕР·РёС‚РѕСЂРёСЏРјРё РґР°РЅРЅС‹С… Рё СЃРµСЂРІРёСЃР°РјРё РїРѕРёСЃРєР°. Р­С‚Рѕ РІРєР»СЋС‡Р°РµС‚ РІ СЃРµР±СЏ, РЅРѕ РЅРµ РѕРіСЂР°РЅРёС‡РёРІР°РµС‚СЃСЏ:
 			<!-- Established network and policy infrastructure exists to enable consistent, appropriate, and
                accurate information exchange across provider systems, data repositories and locator services.
                This includes, but is not limited to: -->
 
             <ul>
-               <li>Методы идентификации и аутентификации пользователей;<!-- Methods to identify and authenticate users;  --></li>
-               <li>Методы идентификации и определения поставщиков медицинских услуг;<!-- Methods to identify and determine Providers of care;  --></li>
-               <li>Методы обеспечения соблюдения политики авторизации доступа к данным;<!-- Methods to enforce data access authorization policies;  --></li>
-               <li>Методы обеспечения достоверности данных;<!-- Methods to ensure the veracity of data;  --></li>
+               <li>РњРµС‚РѕРґС‹ РёРґРµРЅС‚РёС„РёРєР°С†РёРё Рё Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№;<!-- Methods to identify and authenticate users;  --></li>
+               <li>РњРµС‚РѕРґС‹ РёРґРµРЅС‚РёС„РёРєР°С†РёРё Рё РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕСЃС‚Р°РІС‰РёРєРѕРІ РјРµРґРёС†РёРЅСЃРєРёС… СѓСЃР»СѓРі;<!-- Methods to identify and determine Providers of care;  --></li>
+               <li>РњРµС‚РѕРґС‹ РѕР±РµСЃРїРµС‡РµРЅРёСЏ СЃРѕР±Р»СЋРґРµРЅРёСЏ РїРѕР»РёС‚РёРєРё Р°РІС‚РѕСЂРёР·Р°С†РёРё РґРѕСЃС‚СѓРїР° Рє РґР°РЅРЅС‹Рј;<!-- Methods to enforce data access authorization policies;  --></li>
+               <li>РњРµС‚РѕРґС‹ РѕР±РµСЃРїРµС‡РµРЅРёСЏ РґРѕСЃС‚РѕРІРµСЂРЅРѕСЃС‚Рё РґР°РЅРЅС‹С…;<!-- Methods to ensure the veracity of data;  --></li>
             </ul></li>
-            <li>Подробные контрольные записи хранятся по мере необходимости всеми системами-участниками.<!-- Detailed audit trails are kept as necessary by all participating systems.  --></li>
-            <li>Политики безопасности и конфиденциальности, процедуры и практики, как правило, реализуются для поддержки приемлемого уровня безопасности и конфиденциальности пациентов; т. е. HIPAA, HITECH и критерии сертификации EHR (ЭМК).<!-- Security and privacy policies, procedures and practices are commonly implemented to support
+            <li>РџРѕРґСЂРѕР±РЅС‹Рµ РєРѕРЅС‚СЂРѕР»СЊРЅС‹Рµ Р·Р°РїРёСЃРё С…СЂР°РЅСЏС‚СЃСЏ РїРѕ РјРµСЂРµ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РІСЃРµРјРё СЃРёСЃС‚РµРјР°РјРё-СѓС‡Р°СЃС‚РЅРёРєР°РјРё.<!-- Detailed audit trails are kept as necessary by all participating systems.  --></li>
+            <li>РџРѕР»РёС‚РёРєРё Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё Рё РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё, РїСЂРѕС†РµРґСѓСЂС‹ Рё РїСЂР°РєС‚РёРєРё, РєР°Рє РїСЂР°РІРёР»Рѕ, СЂРµР°Р»РёР·СѓСЋС‚СЃСЏ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РїСЂРёРµРјР»РµРјРѕРіРѕ СѓСЂРѕРІРЅСЏ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё Рё РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё РїР°С†РёРµРЅС‚РѕРІ; С‚. Рµ. HIPAA, HITECH Рё РєСЂРёС‚РµСЂРёРё СЃРµСЂС‚РёС„РёРєР°С†РёРё EHR (Р­РњРљ).<!-- Security and privacy policies, procedures and practices are commonly implemented to support
                acceptable levels of patient privacy and security; i.e. HIPAA, HITECH and EHR certification
                criteria. -->
             </li>
          </ul>
          <a id="preconditions"></a>
-         <h4>Предусловия<!-- Pre-Conditions --></h4>
-         <p><b>Примечание<!-- Note --></b>: пред- и постусловия могут применяться не ко всем сценариям.<!-- The pre- and post-conditions may not apply to all scenarios.  --></p>
+         <h4>РџСЂРµРґСѓСЃР»РѕРІРёСЏ<!-- Pre-Conditions --></h4>
+         <p><b>РџСЂРёРјРµС‡Р°РЅРёРµ<!-- Note --></b>: РїСЂРµРґ- Рё РїРѕСЃС‚СѓСЃР»РѕРІРёСЏ РјРѕРіСѓС‚ РїСЂРёРјРµРЅСЏС‚СЊСЃСЏ РЅРµ РєРѕ РІСЃРµРј СЃС†РµРЅР°СЂРёСЏРј.<!-- The pre- and post-conditions may not apply to all scenarios.  --></p>
          <ul>
-            <li>Провайдер (.orderer) выполнил все необходимые проверки в соответствии с медицинскими требованиями, проверил страховую пригодность и выполнил все предварительные авторизации.<!-- The Provider (.orderer) has performed all of the necessary checks for medical necessity,
+            <li>РџСЂРѕРІР°Р№РґРµСЂ (.orderer) РІС‹РїРѕР»РЅРёР» РІСЃРµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РїСЂРѕРІРµСЂРєРё РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РјРµРґРёС†РёРЅСЃРєРёРјРё С‚СЂРµР±РѕРІР°РЅРёСЏРјРё, РїСЂРѕРІРµСЂРёР» СЃС‚СЂР°С…РѕРІСѓСЋ РїСЂРёРіРѕРґРЅРѕСЃС‚СЊ Рё РІС‹РїРѕР»РЅРёР» РІСЃРµ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рµ Р°РІС‚РѕСЂРёР·Р°С†РёРё.<!-- The Provider (.orderer) has performed all of the necessary checks for medical necessity,
                insurance eligibility and any needed pre-authorizations. -->
             </li>
-            <li>После того, как провайдер (.orderer) вводит лабораторный заказ, EHR-система создает электронную лабораторную заявку, содержащую относящуюся к делу информацию, а также надлежащие идентификаторы, такие как пациент, заказ, образец для анализа.<!-- After a Provider (.orderer) enters a laboratory order, the EHR system generates an
+            <li>РџРѕСЃР»Рµ С‚РѕРіРѕ, РєР°Рє РїСЂРѕРІР°Р№РґРµСЂ (.orderer) РІРІРѕРґРёС‚ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Р№ Р·Р°РєР°Р·, EHR-СЃРёСЃС‚РµРјР° СЃРѕР·РґР°РµС‚ СЌР»РµРєС‚СЂРѕРЅРЅСѓСЋ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅСѓСЋ Р·Р°СЏРІРєСѓ, СЃРѕРґРµСЂР¶Р°С‰СѓСЋ РѕС‚РЅРѕСЃСЏС‰СѓСЋСЃСЏ Рє РґРµР»Сѓ РёРЅС„РѕСЂРјР°С†РёСЋ, Р° С‚Р°РєР¶Рµ РЅР°РґР»РµР¶Р°С‰РёРµ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹, С‚Р°РєРёРµ РєР°Рє РїР°С†РёРµРЅС‚, Р·Р°РєР°Р·, РѕР±СЂР°Р·РµС† РґР»СЏ Р°РЅР°Р»РёР·Р°.<!-- After a Provider (.orderer) enters a laboratory order, the EHR system generates an
                electronic laboratory requisition containing pertinent information as well as appropriate
                identifiers, such as patient, order, and specimen. -->
             </li>
-            <li>Сборник тестов лаборатории был введен (вручную или с помощью автоматики) в систему ЭМК.<!-- The Laboratory's test compendium has been entered (manually or via automation) into the EHR
+            <li>РЎР±РѕСЂРЅРёРє С‚РµСЃС‚РѕРІ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё Р±С‹Р» РІРІРµРґРµРЅ (РІСЂСѓС‡РЅСѓСЋ РёР»Рё СЃ РїРѕРјРѕС‰СЊСЋ Р°РІС‚РѕРјР°С‚РёРєРё) РІ СЃРёСЃС‚РµРјСѓ Р­РњРљ.<!-- The Laboratory's test compendium has been entered (manually or via automation) into the EHR
                system. -->
             </li>
-            <li>Информация по отмене заказов лабораторных ордеров безошибочно собирается в системе ЭМК.<!-- Information for the cancellation requests for laboratory orders has been accurately captured
+            <li>РРЅС„РѕСЂРјР°С†РёСЏ РїРѕ РѕС‚РјРµРЅРµ Р·Р°РєР°Р·РѕРІ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РѕСЂРґРµСЂРѕРІ Р±РµР·РѕС€РёР±РѕС‡РЅРѕ СЃРѕР±РёСЂР°РµС‚СЃСЏ РІ СЃРёСЃС‚РµРјРµ Р­РњРљ.<!-- Information for the cancellation requests for laboratory orders has been accurately captured
                within the EHR System. -->
             </li>
-            <li>Все соответствующие платежные данные доступны в системе электронных медицинских карт.<!-- All appropriate billing information is available within the EHR system. --> </li>
-            <li>Образцы маркируются в соответствии с установленными правилами и процедурами представления образцов и могут быть связаны с порядком (can be linked to the order)<!-- Specimens are labeled in accordance with established policies and procedures for specimen
+            <li>Р’СЃРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ РїР»Р°С‚РµР¶РЅС‹Рµ РґР°РЅРЅС‹Рµ РґРѕСЃС‚СѓРїРЅС‹ РІ СЃРёСЃС‚РµРјРµ СЌР»РµРєС‚СЂРѕРЅРЅС‹С… РјРµРґРёС†РёРЅСЃРєРёС… РєР°СЂС‚.<!-- All appropriate billing information is available within the EHR system. --> </li>
+            <li>РћР±СЂР°Р·С†С‹ РјР°СЂРєРёСЂСѓСЋС‚СЃСЏ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹РјРё РїСЂР°РІРёР»Р°РјРё Рё РїСЂРѕС†РµРґСѓСЂР°РјРё РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ РѕР±СЂР°Р·С†РѕРІ Рё РјРѕРіСѓС‚ Р±С‹С‚СЊ СЃРІСЏР·Р°РЅС‹ СЃ РїРѕСЂСЏРґРєРѕРј (can be linked to the order)<!-- Specimens are labeled in accordance with established policies and procedures for specimen
                submission and can be linked to the order -->
                <sup>4</sup>
             </li>
@@ -287,50 +287,50 @@
             Laboratory Standards Institute; 2011; ISBN 1-56238-748-0; ISSN 0273-3099, Volume 31 Number 7.
          </p>
          <a id="postconditions"></a>
-         <h4>Постусловия<!-- Post-Conditions --></h4>
+         <h4>РџРѕСЃС‚СѓСЃР»РѕРІРёСЏ<!-- Post-Conditions --></h4>
          <ul>
-            <li>Лабораторные заказы успешно передаются в электронном виде от системы ЭМК провайдера (.orderer) к ЛИС лаборатории. Лаборатория-получатель электронным образом передает подтверждение получения лабораторного заказа. Полученный заказ может быть помещен в электронную очередь для дальнейшей обработки в зависимости от рабочего процесса лаборатории (хотя очереди заказов выходят за рамки данного сценария использования).<!-- Laboratory orders are successfully transmitted electronically from the Provider's (.orderer) EHR System to the Laboratory's LIS. The Receiving Laboratory electronically
+            <li>Р›Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ Р·Р°РєР°Р·С‹ СѓСЃРїРµС€РЅРѕ РїРµСЂРµРґР°СЋС‚СЃСЏ РІ СЌР»РµРєС‚СЂРѕРЅРЅРѕРј РІРёРґРµ РѕС‚ СЃРёСЃС‚РµРјС‹ Р­РњРљ РїСЂРѕРІР°Р№РґРµСЂР° (.orderer) Рє Р›РРЎ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё. Р›Р°Р±РѕСЂР°С‚РѕСЂРёСЏ-РїРѕР»СѓС‡Р°С‚РµР»СЊ СЌР»РµРєС‚СЂРѕРЅРЅС‹Рј РѕР±СЂР°Р·РѕРј РїРµСЂРµРґР°РµС‚ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РїРѕР»СѓС‡РµРЅРёСЏ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ Р·Р°РєР°Р·Р°. РџРѕР»СѓС‡РµРЅРЅС‹Р№ Р·Р°РєР°Р· РјРѕР¶РµС‚ Р±С‹С‚СЊ РїРѕРјРµС‰РµРЅ РІ СЌР»РµРєС‚СЂРѕРЅРЅСѓСЋ РѕС‡РµСЂРµРґСЊ РґР»СЏ РґР°Р»СЊРЅРµР№С€РµР№ РѕР±СЂР°Р±РѕС‚РєРё РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂР°Р±РѕС‡РµРіРѕ РїСЂРѕС†РµСЃСЃР° Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё (С…РѕС‚СЏ РѕС‡РµСЂРµРґРё Р·Р°РєР°Р·РѕРІ РІС‹С…РѕРґСЏС‚ Р·Р° СЂР°РјРєРё РґР°РЅРЅРѕРіРѕ СЃС†РµРЅР°СЂРёСЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ).<!-- Laboratory orders are successfully transmitted electronically from the Provider's (.orderer) EHR System to the Laboratory's LIS. The Receiving Laboratory electronically
                transmits acknowledgement of receipt of the laboratory order. The received order may be placed
                into an electronic queue for further processing depending on laboratory workflow (although
                order queues are out of scope for this Use Case). -->
             </li>
-            <li>Образец(-цы), связанные с лабораторным заказом, собираются и, в случае необходимости, перевозятся в лабораторию.<!-- Specimen(s) associated with the laboratory order are collected and, if necessary, transported to
+            <li>РћР±СЂР°Р·РµС†(-С†С‹), СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рј Р·Р°РєР°Р·РѕРј, СЃРѕР±РёСЂР°СЋС‚СЃСЏ Рё, РІ СЃР»СѓС‡Р°Рµ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё, РїРµСЂРµРІРѕР·СЏС‚СЃСЏ РІ Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЋ.<!-- Specimen(s) associated with the laboratory order are collected and, if necessary, transported to
                the laboratory. -->
             </li>
-            <li>Лаборатория обрабатывает лабораторный заказ и связанный образец(-цы). Этот этап может включать извлечение и обработку лабораторных заказов из очереди или перечня полученных ордеров. Очереди заказов могут использоваться в ЛИС для хранения электронных лабораторных заказов до получения связанных образцов и проведения сопоставления и регистрации соответствующего пациента (хотя очереди заказов выходят за рамки данного сценария использования). После сопоставления и регистрации пациента электронный заказ может пройти компьютерную обработку в ЛИС. <!-- The laboratory processes the laboratory order and associated specimen(s). This step may include
+            <li>Р›Р°Р±РѕСЂР°С‚РѕСЂРёСЏ РѕР±СЂР°Р±Р°С‚С‹РІР°РµС‚ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Р№ Р·Р°РєР°Р· Рё СЃРІСЏР·Р°РЅРЅС‹Р№ РѕР±СЂР°Р·РµС†(-С†С‹). Р­С‚РѕС‚ СЌС‚Р°Рї РјРѕР¶РµС‚ РІРєР»СЋС‡Р°С‚СЊ РёР·РІР»РµС‡РµРЅРёРµ Рё РѕР±СЂР°Р±РѕС‚РєСѓ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·РѕРІ РёР· РѕС‡РµСЂРµРґРё РёР»Рё РїРµСЂРµС‡РЅСЏ РїРѕР»СѓС‡РµРЅРЅС‹С… РѕСЂРґРµСЂРѕРІ. РћС‡РµСЂРµРґРё Р·Р°РєР°Р·РѕРІ РјРѕРіСѓС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РІ Р›РРЎ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЌР»РµРєС‚СЂРѕРЅРЅС‹С… Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… Р·Р°РєР°Р·РѕРІ РґРѕ РїРѕР»СѓС‡РµРЅРёСЏ СЃРІСЏР·Р°РЅРЅС‹С… РѕР±СЂР°Р·С†РѕРІ Рё РїСЂРѕРІРµРґРµРЅРёСЏ СЃРѕРїРѕСЃС‚Р°РІР»РµРЅРёСЏ Рё СЂРµРіРёСЃС‚СЂР°С†РёРё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ РїР°С†РёРµРЅС‚Р° (С…РѕС‚СЏ РѕС‡РµСЂРµРґРё Р·Р°РєР°Р·РѕРІ РІС‹С…РѕРґСЏС‚ Р·Р° СЂР°РјРєРё РґР°РЅРЅРѕРіРѕ СЃС†РµРЅР°СЂРёСЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ). РџРѕСЃР»Рµ СЃРѕРїРѕСЃС‚Р°РІР»РµРЅРёСЏ Рё СЂРµРіРёСЃС‚СЂР°С†РёРё РїР°С†РёРµРЅС‚Р° СЌР»РµРєС‚СЂРѕРЅРЅС‹Р№ Р·Р°РєР°Р· РјРѕР¶РµС‚ РїСЂРѕР№С‚Рё РєРѕРјРїСЊСЋС‚РµСЂРЅСѓСЋ РѕР±СЂР°Р±РѕС‚РєСѓ РІ Р›РРЎ. <!-- The laboratory processes the laboratory order and associated specimen(s). This step may include
                retrieval and processing of laboratory orders from a queue or list of received orders. Order
                queues may be used in the LIS to hold electronic laboratory orders until associated specimens are
                received and the appropriate patient matching and registration occur (although order queues are
                out of scope for this Use Case). After patient matching and registration, the electronic order may
                be electronically processed in the LIS. -->
             </li>
-            <li>Если лабораторный заказ и образец(-цы) годятся для исследования, лаборатория выполнит или попытается выполнить этот тест(-ы).<!-- If the laboratory order and specimen(s) are satisfactory for testing the laboratory will perform, or
+            <li>Р•СЃР»Рё Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Р№ Р·Р°РєР°Р· Рё РѕР±СЂР°Р·РµС†(-С†С‹) РіРѕРґСЏС‚СЃСЏ РґР»СЏ РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ, Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЏ РІС‹РїРѕР»РЅРёС‚ РёР»Рё РїРѕРїС‹С‚Р°РµС‚СЃСЏ РІС‹РїРѕР»РЅРёС‚СЊ СЌС‚РѕС‚ С‚РµСЃС‚(-С‹).<!-- If the laboratory order and specimen(s) are satisfactory for testing the laboratory will perform, or
                attempt to perform, the test(s). -->
             </li>
-            <li>Результат лабораторного исследования получен, введен/опубликован в ЛИС и отправлен системе ЭМК провайдера (.orderer). Об этом говорится в сценарии использования интерфейса лабораторных результатов.<!-- The laboratory test result is obtained, entered/released in the LIS, and sent to the Provider's
+            <li>Р РµР·СѓР»СЊС‚Р°С‚ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ РїРѕР»СѓС‡РµРЅ, РІРІРµРґРµРЅ/РѕРїСѓР±Р»РёРєРѕРІР°РЅ РІ Р›РРЎ Рё РѕС‚РїСЂР°РІР»РµРЅ СЃРёСЃС‚РµРјРµ Р­РњРљ РїСЂРѕРІР°Р№РґРµСЂР° (.orderer). РћР± СЌС‚РѕРј РіРѕРІРѕСЂРёС‚СЃСЏ РІ СЃС†РµРЅР°СЂРёРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РёРЅС‚РµСЂС„РµР№СЃР° Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ.<!-- The laboratory test result is obtained, entered/released in the LIS, and sent to the Provider's
                (.orderer) EHR System. This is covered within the Laboratory Results Interface Use
                Case. -->
             </li>
-            <li>Успешно передавать запрос на отмену лабораторного заказа от системы ЭМК провайдера (.orderer) ЛИС лаборатории.<!-- Successfully transmit laboratory order cancellation request from the Provider's (.orderer)
+            <li>РЈСЃРїРµС€РЅРѕ РїРµСЂРµРґР°РІР°С‚СЊ Р·Р°РїСЂРѕСЃ РЅР° РѕС‚РјРµРЅСѓ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ Р·Р°РєР°Р·Р° РѕС‚ СЃРёСЃС‚РµРјС‹ Р­РњРљ РїСЂРѕРІР°Р№РґРµСЂР° (.orderer) Р›РРЎ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё.<!-- Successfully transmit laboratory order cancellation request from the Provider's (.orderer)
                EHR system to the Laboratory's LIS. -->
             </li>
-            <li>ЛИС лаборатории получает в электронном виде запрос на отмену лабораторного заказа. <!-- The Laboratory's LIS has electronically received the laboratory order cancellation request.  --></li>
-            <li>Аннулирование лабораторией заявки (одного или нескольких заказов) или отдельного заказа получает электронным образом система ЭМК провайдера (.orderer). Обратите внимание, что аннулирование части заказа должно выполняться через ресурс DiagnosticResult в соответствии с профилем USLabResult.<!-- The Laboratory's cancellation of a requisition (one or more orders) or an individual order has
+            <li>Р›РРЎ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё РїРѕР»СѓС‡Р°РµС‚ РІ СЌР»РµРєС‚СЂРѕРЅРЅРѕРј РІРёРґРµ Р·Р°РїСЂРѕСЃ РЅР° РѕС‚РјРµРЅСѓ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ Р·Р°РєР°Р·Р°. <!-- The Laboratory's LIS has electronically received the laboratory order cancellation request.  --></li>
+            <li>РђРЅРЅСѓР»РёСЂРѕРІР°РЅРёРµ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРµР№ Р·Р°СЏРІРєРё (РѕРґРЅРѕРіРѕ РёР»Рё РЅРµСЃРєРѕР»СЊРєРёС… Р·Р°РєР°Р·РѕРІ) РёР»Рё РѕС‚РґРµР»СЊРЅРѕРіРѕ Р·Р°РєР°Р·Р° РїРѕР»СѓС‡Р°РµС‚ СЌР»РµРєС‚СЂРѕРЅРЅС‹Рј РѕР±СЂР°Р·РѕРј СЃРёСЃС‚РµРјР° Р­РњРљ РїСЂРѕРІР°Р№РґРµСЂР° (.orderer). РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ Р°РЅРЅСѓР»РёСЂРѕРІР°РЅРёРµ С‡Р°СЃС‚Рё Р·Р°РєР°Р·Р° РґРѕР»Р¶РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊСЃСЏ С‡РµСЂРµР· СЂРµСЃСѓСЂСЃ DiagnosticResult РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РїСЂРѕС„РёР»РµРј USLabResult.<!-- The Laboratory's cancellation of a requisition (one or more orders) or an individual order has
                been electronically received by the Provider's (.orderer) EHR System. Note that
                cancellation of part of an order must be done through a DiagnosticResult Resource as defined in the USLabResult Profile. -->
             </li>
          </ul>
          <a id="scen1"></a>
-         <h4>Сценарий 1 - Электронный заказ нового или запланированного лабораторного исследования(-ий)<!-- Scenario 1 - Electronic Ordering Of New Or Scheduled
+         <h4>РЎС†РµРЅР°СЂРёР№ 1 - Р­Р»РµРєС‚СЂРѕРЅРЅС‹Р№ Р·Р°РєР°Р· РЅРѕРІРѕРіРѕ РёР»Рё Р·Р°РїР»Р°РЅРёСЂРѕРІР°РЅРЅРѕРіРѕ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ(-РёР№)<!-- Scenario 1 - Electronic Ordering Of New Or Scheduled
             Laboratory Test(S) -->
          </h4>
-         <p>С помощью системы ЭМК провайдер (размещающий заказ) заказывает выполнение лабораторией одного или нескольких новых лабораторных исследований или запланированных лабораторных тестов (включая тесты, которые должны будут выполниться в будущем).<!-- Using an EHR System, a Provider (Order Placer) orders one or more new laboratory tests or scheduled
+         <p>РЎ РїРѕРјРѕС‰СЊСЋ СЃРёСЃС‚РµРјС‹ Р­РњРљ РїСЂРѕРІР°Р№РґРµСЂ (СЂР°Р·РјРµС‰Р°СЋС‰РёР№ Р·Р°РєР°Р·) Р·Р°РєР°Р·С‹РІР°РµС‚ РІС‹РїРѕР»РЅРµРЅРёРµ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРµР№ РѕРґРЅРѕРіРѕ РёР»Рё РЅРµСЃРєРѕР»СЊРєРёС… РЅРѕРІС‹С… Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РёСЃСЃР»РµРґРѕРІР°РЅРёР№ РёР»Рё Р·Р°РїР»Р°РЅРёСЂРѕРІР°РЅРЅС‹С… Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… С‚РµСЃС‚РѕРІ (РІРєР»СЋС‡Р°СЏ С‚РµСЃС‚С‹, РєРѕС‚РѕСЂС‹Рµ РґРѕР»Р¶РЅС‹ Р±СѓРґСѓС‚ РІС‹РїРѕР»РЅРёС‚СЊСЃСЏ РІ Р±СѓРґСѓС‰РµРј).<!-- Using an EHR System, a Provider (Order Placer) orders one or more new laboratory tests or scheduled
             laboratory tests (including future tests) to be performed by a laboratory. -->
          </p>
-         <h5>Функциональные требования<!-- Functional Requirements --></h5>
+         <h5>Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ<!-- Functional Requirements --></h5>
          <p>todo</p>
          <!--EH:  need to rework for REST  acknowledgment codes -->
-         <h5>Диаграмма последовательности действий<!-- Sequence Diagram --></h5>
+         <h5>Р”РёР°РіСЂР°РјРјР° РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё РґРµР№СЃС‚РІРёР№<!-- Sequence Diagram --></h5>
          <p>
             <b>Figure N-N: Scenario 1 Sequence Diagram</b>
          </p>
@@ -338,9 +338,9 @@
             Laboratory Test(S) " src="todo"/>
          <!--EH:  need to rework for REST  acknowledgment codes -->
          <a id="scen2"></a>
-         <h4>Сценарий 2 - Электронный заказ дополнительных лабораторных исследований <!-- Scenario 2 - Electronic Ordering Of Add-On Laboratory Test(S) --></h4>
-         <p>С помощью системы ЭМК провайдер (размещающий заказ) добавляет один или несколько дополнительных тестов к ранее переданной заявке на исследование. Обратите внимание, что если нет необходимости связывать дополнительный заказ к образцу для анализа из сделанного ранее заказа, то необходимо создать обычный новый заказ. 
-		 В момент, когда провайдер делает заявку на добавление к заказу, может случиться, что образец уже выработан или все еще ждет выработки. Провайдер может не знать текущей ситуации. Следовательно данное руководство предлагает, что пока не будет больше ясности, как заказывающая система провайдера обновляется информацией о сборе образцов для анализа, добавочная заявка на заказ провайдера передается как обычный заказ и может использовать, если известно:
+         <h4>РЎС†РµРЅР°СЂРёР№ 2 - Р­Р»РµРєС‚СЂРѕРЅРЅС‹Р№ Р·Р°РєР°Р· РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… РёСЃСЃР»РµРґРѕРІР°РЅРёР№ <!-- Scenario 2 - Electronic Ordering Of Add-On Laboratory Test(S) --></h4>
+         <p>РЎ РїРѕРјРѕС‰СЊСЋ СЃРёСЃС‚РµРјС‹ Р­РњРљ РїСЂРѕРІР°Р№РґРµСЂ (СЂР°Р·РјРµС‰Р°СЋС‰РёР№ Р·Р°РєР°Р·) РґРѕР±Р°РІР»СЏРµС‚ РѕРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… С‚РµСЃС‚РѕРІ Рє СЂР°РЅРµРµ РїРµСЂРµРґР°РЅРЅРѕР№ Р·Р°СЏРІРєРµ РЅР° РёСЃСЃР»РµРґРѕРІР°РЅРёРµ. РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ РµСЃР»Рё РЅРµС‚ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё СЃРІСЏР·С‹РІР°С‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ Р·Р°РєР°Р· Рє РѕР±СЂР°Р·С†Сѓ РґР»СЏ Р°РЅР°Р»РёР·Р° РёР· СЃРґРµР»Р°РЅРЅРѕРіРѕ СЂР°РЅРµРµ Р·Р°РєР°Р·Р°, С‚Рѕ РЅРµРѕР±С…РѕРґРёРјРѕ СЃРѕР·РґР°С‚СЊ РѕР±С‹С‡РЅС‹Р№ РЅРѕРІС‹Р№ Р·Р°РєР°Р·. 
+		 Р’ РјРѕРјРµРЅС‚, РєРѕРіРґР° РїСЂРѕРІР°Р№РґРµСЂ РґРµР»Р°РµС‚ Р·Р°СЏРІРєСѓ РЅР° РґРѕР±Р°РІР»РµРЅРёРµ Рє Р·Р°РєР°Р·Сѓ, РјРѕР¶РµС‚ СЃР»СѓС‡РёС‚СЊСЃСЏ, С‡С‚Рѕ РѕР±СЂР°Р·РµС† СѓР¶Рµ РІС‹СЂР°Р±РѕС‚Р°РЅ РёР»Рё РІСЃРµ РµС‰Рµ Р¶РґРµС‚ РІС‹СЂР°Р±РѕС‚РєРё. РџСЂРѕРІР°Р№РґРµСЂ РјРѕР¶РµС‚ РЅРµ Р·РЅР°С‚СЊ С‚РµРєСѓС‰РµР№ СЃРёС‚СѓР°С†РёРё. РЎР»РµРґРѕРІР°С‚РµР»СЊРЅРѕ РґР°РЅРЅРѕРµ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ РїСЂРµРґР»Р°РіР°РµС‚, С‡С‚Рѕ РїРѕРєР° РЅРµ Р±СѓРґРµС‚ Р±РѕР»СЊС€Рµ СЏСЃРЅРѕСЃС‚Рё, РєР°Рє Р·Р°РєР°Р·С‹РІР°СЋС‰Р°СЏ СЃРёСЃС‚РµРјР° РїСЂРѕРІР°Р№РґРµСЂР° РѕР±РЅРѕРІР»СЏРµС‚СЃСЏ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ СЃР±РѕСЂРµ РѕР±СЂР°Р·С†РѕРІ РґР»СЏ Р°РЅР°Р»РёР·Р°, РґРѕР±Р°РІРѕС‡РЅР°СЏ Р·Р°СЏРІРєР° РЅР° Р·Р°РєР°Р· РїСЂРѕРІР°Р№РґРµСЂР° РїРµСЂРµРґР°РµС‚СЃСЏ РєР°Рє РѕР±С‹С‡РЅС‹Р№ Р·Р°РєР°Р· Рё РјРѕР¶РµС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ, РµСЃР»Рё РёР·РІРµСЃС‚РЅРѕ:
 		 <!-- Using an EHR System, a Provider (Order Placer) adds one or more additional tests to a previously
             transmitted test requisition.
             Note that if there is no need to relate the additional order to the specimen associated with a prior order,
@@ -352,13 +352,13 @@
             regular order and may use, if known: -->
          </p>
          <ul>
-            <li>Элемент .identifier при использовании неуникальных порядковых номеров первоначального заказа; и/или<!-- The .identifier, when using non-unique order numbers, of the original order; and/or --> </li>
-            <li>Элемент .identifier, который использовался при размещении первоначального заказа; и/или <!-- The .identifier that was used when the original order was placed; and/or --></li>
-            <li>Specimen.identifier или другая информация об образце, к которому будет добавлен заказ.<!-- The Specimen.identifier or other specimen data of the specimen the order is intended to be added to. --></li>
+            <li>Р­Р»РµРјРµРЅС‚ .identifier РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РЅРµСѓРЅРёРєР°Р»СЊРЅС‹С… РїРѕСЂСЏРґРєРѕРІС‹С… РЅРѕРјРµСЂРѕРІ РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРіРѕ Р·Р°РєР°Р·Р°; Рё/РёР»Рё<!-- The .identifier, when using non-unique order numbers, of the original order; and/or --> </li>
+            <li>Р­Р»РµРјРµРЅС‚ .identifier, РєРѕС‚РѕСЂС‹Р№ РёСЃРїРѕР»СЊР·РѕРІР°Р»СЃСЏ РїСЂРё СЂР°Р·РјРµС‰РµРЅРёРё РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРіРѕ Р·Р°РєР°Р·Р°; Рё/РёР»Рё <!-- The .identifier that was used when the original order was placed; and/or --></li>
+            <li>Specimen.identifier РёР»Рё РґСЂСѓРіР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РѕР± РѕР±СЂР°Р·С†Рµ, Рє РєРѕС‚РѕСЂРѕРјСѓ Р±СѓРґРµС‚ РґРѕР±Р°РІР»РµРЅ Р·Р°РєР°Р·.<!-- The Specimen.identifier or other specimen data of the specimen the order is intended to be added to. --></li>
          </ul>
          <p>
-		 Использование первых двух методов заставляет это выглядеть, кроме отличающейся даты/времени транзакции, как если бы заказ был размещен вместе и последовательно с первоначальным заказом. 
-		 Третий метод явно связывает новый заказ с тем же образцом, который уже был собран для предыдущего заказа. Обратите внимание, что в зависимости от состояния выполнения заказа лаборатория может не иметь возможности выполнить заказанный тест над предназначенным образцом, так как может быть слишком поздно по ряду причин (например недостаточное количество образца, образец уже слишком старый).
+		 РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїРµСЂРІС‹С… РґРІСѓС… РјРµС‚РѕРґРѕРІ Р·Р°СЃС‚Р°РІР»СЏРµС‚ СЌС‚Рѕ РІС‹РіР»СЏРґРµС‚СЊ, РєСЂРѕРјРµ РѕС‚Р»РёС‡Р°СЋС‰РµР№СЃСЏ РґР°С‚С‹/РІСЂРµРјРµРЅРё С‚СЂР°РЅР·Р°РєС†РёРё, РєР°Рє РµСЃР»Рё Р±С‹ Р·Р°РєР°Р· Р±С‹Р» СЂР°Р·РјРµС‰РµРЅ РІРјРµСЃС‚Рµ Рё РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕ СЃ РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅС‹Рј Р·Р°РєР°Р·РѕРј. 
+		 РўСЂРµС‚РёР№ РјРµС‚РѕРґ СЏРІРЅРѕ СЃРІСЏР·С‹РІР°РµС‚ РЅРѕРІС‹Р№ Р·Р°РєР°Р· СЃ С‚РµРј Р¶Рµ РѕР±СЂР°Р·С†РѕРј, РєРѕС‚РѕСЂС‹Р№ СѓР¶Рµ Р±С‹Р» СЃРѕР±СЂР°РЅ РґР»СЏ РїСЂРµРґС‹РґСѓС‰РµРіРѕ Р·Р°РєР°Р·Р°. РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЃРѕСЃС‚РѕСЏРЅРёСЏ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РєР°Р·Р° Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЏ РјРѕР¶РµС‚ РЅРµ РёРјРµС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РІС‹РїРѕР»РЅРёС‚СЊ Р·Р°РєР°Р·Р°РЅРЅС‹Р№ С‚РµСЃС‚ РЅР°Рґ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРЅС‹Рј РѕР±СЂР°Р·С†РѕРј, С‚Р°Рє РєР°Рє РјРѕР¶РµС‚ Р±С‹С‚СЊ СЃР»РёС€РєРѕРј РїРѕР·РґРЅРѕ РїРѕ СЂСЏРґСѓ РїСЂРёС‡РёРЅ (РЅР°РїСЂРёРјРµСЂ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°Р·С†Р°, РѕР±СЂР°Р·РµС† СѓР¶Рµ СЃР»РёС€РєРѕРј СЃС‚Р°СЂС‹Р№).
             <!-- Using the first two methods make it appear, other than the transaction date/time, as if the order was
             placed together and consistent with the original order.
             The third method clearly associates the new order with the same specimen that was already collected for
@@ -367,13 +367,13 @@
             (e.g., insufficient specimen, specimen too old). -->
          </p>
          <a id="scen3"></a>
-         <h4>Сценарий 3 - Запрос аннулирования ранее размещенного лабораторного заказа <!-- Scenario 3 - Requesting The Cancellation Of A Previously Placed
+         <h4>РЎС†РµРЅР°СЂРёР№ 3 - Р—Р°РїСЂРѕСЃ Р°РЅРЅСѓР»РёСЂРѕРІР°РЅРёСЏ СЂР°РЅРµРµ СЂР°Р·РјРµС‰РµРЅРЅРѕРіРѕ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ Р·Р°РєР°Р·Р° <!-- Scenario 3 - Requesting The Cancellation Of A Previously Placed
             Laboratory Order -->
          </h4>
          <p>
-		 Провайдер (.orderer) обнаруживает, что один или несколько заказов в ранее переданной электронной лабораторной заявке необходимо отменить и через ЭМК запрашивает лабораторию отменить выполнение лабораторного заказа(-ов). 
-		 Поскольку провайдер не знает текущего статуса выполнения лабораторией теста, или может она еще даже не получила образец, провайдер обязан использовать профиль USLabOrder DiagnosticOrder Cancel. 
-		 Лаборатория определяет, можно ли отменить тест или обработка заказа зашла слишком далеко, чтобы его можно было отменить. Лаборатории обязаны использовать профиль USLabReport DiagnosticResult Cancel. Как только провайдер получает любые предварительные или окончательные результаты, тест уже больше не может быть отменен, и провайдеру больше не нужно использовать профиль USLabOrder DiagnosticOrder Cancel.
+		 РџСЂРѕРІР°Р№РґРµСЂ (.orderer) РѕР±РЅР°СЂСѓР¶РёРІР°РµС‚, С‡С‚Рѕ РѕРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ Р·Р°РєР°Р·РѕРІ РІ СЂР°РЅРµРµ РїРµСЂРµРґР°РЅРЅРѕР№ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕР№ Р·Р°СЏРІРєРµ РЅРµРѕР±С…РѕРґРёРјРѕ РѕС‚РјРµРЅРёС‚СЊ Рё С‡РµСЂРµР· Р­РњРљ Р·Р°РїСЂР°С€РёРІР°РµС‚ Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЋ РѕС‚РјРµРЅРёС‚СЊ РІС‹РїРѕР»РЅРµРЅРёРµ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРіРѕ Р·Р°РєР°Р·Р°(-РѕРІ). 
+		 РџРѕСЃРєРѕР»СЊРєСѓ РїСЂРѕРІР°Р№РґРµСЂ РЅРµ Р·РЅР°РµС‚ С‚РµРєСѓС‰РµРіРѕ СЃС‚Р°С‚СѓСЃР° РІС‹РїРѕР»РЅРµРЅРёСЏ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРµР№ С‚РµСЃС‚Р°, РёР»Рё РјРѕР¶РµС‚ РѕРЅР° РµС‰Рµ РґР°Р¶Рµ РЅРµ РїРѕР»СѓС‡РёР»Р° РѕР±СЂР°Р·РµС†, РїСЂРѕРІР°Р№РґРµСЂ РѕР±СЏР·Р°РЅ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїСЂРѕС„РёР»СЊ USLabOrder DiagnosticOrder Cancel. 
+		 Р›Р°Р±РѕСЂР°С‚РѕСЂРёСЏ РѕРїСЂРµРґРµР»СЏРµС‚, РјРѕР¶РЅРѕ Р»Рё РѕС‚РјРµРЅРёС‚СЊ С‚РµСЃС‚ РёР»Рё РѕР±СЂР°Р±РѕС‚РєР° Р·Р°РєР°Р·Р° Р·Р°С€Р»Р° СЃР»РёС€РєРѕРј РґР°Р»РµРєРѕ, С‡С‚РѕР±С‹ РµРіРѕ РјРѕР¶РЅРѕ Р±С‹Р»Рѕ РѕС‚РјРµРЅРёС‚СЊ. Р›Р°Р±РѕСЂР°С‚РѕСЂРёРё РѕР±СЏР·Р°РЅС‹ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїСЂРѕС„РёР»СЊ USLabReport DiagnosticResult Cancel. РљР°Рє С‚РѕР»СЊРєРѕ РїСЂРѕРІР°Р№РґРµСЂ РїРѕР»СѓС‡Р°РµС‚ Р»СЋР±С‹Рµ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рµ РёР»Рё РѕРєРѕРЅС‡Р°С‚РµР»СЊРЅС‹Рµ СЂРµР·СѓР»СЊС‚Р°С‚С‹, С‚РµСЃС‚ СѓР¶Рµ Р±РѕР»СЊС€Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚РјРµРЅРµРЅ, Рё РїСЂРѕРІР°Р№РґРµСЂСѓ Р±РѕР»СЊС€Рµ РЅРµ РЅСѓР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїСЂРѕС„РёР»СЊ USLabOrder DiagnosticOrder Cancel.
 		 <!-- The Provider (.orderer) determines that one or more orders from a previously transmitted
             electronic laboratory requisition needs to be cancelled and requests via the EHR that the Laboratory
             cancel the performance of the laboratory order(s).
@@ -388,10 +388,10 @@
          </p>
          <!-- EH  need to discuss this once wrok out the cancel profile -->
          <a id="fnreq"></a>
-         <h5>Функциональные требования<!-- Functional Requirements --></h5>
+         <h5>Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ<!-- Functional Requirements --></h5>
          <p>todo</p>
          <!--EH:  need to rework for REST  acknowledgment codes -->
-         <h5>Диаграмма последовательности действий<!-- Sequence Diagram --></h5>
+         <h5>Р”РёР°РіСЂР°РјРјР° РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё РґРµР№СЃС‚РІРёР№<!-- Sequence Diagram --></h5>
          <p>
             <b>Figure N-N: Scenario 3 Sequence Diagram</b>
          </p>
@@ -399,7 +399,7 @@
             Laboratory Order" src="todo"/>
          <!--EH:  need to rework for REST  acknowledgment codes -->
          <a id="scen4"></a>
-         <h4>Сценарий 4 - Лаборатория аннулирует ранее размещенный лабораторный заказ<!-- Scenario 4 - Laboratory Cancellation Of A Previously Placed
+         <h4>РЎС†РµРЅР°СЂРёР№ 4 - Р›Р°Р±РѕСЂР°С‚РѕСЂРёСЏ Р°РЅРЅСѓР»РёСЂСѓРµС‚ СЂР°РЅРµРµ СЂР°Р·РјРµС‰РµРЅРЅС‹Р№ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Р№ Р·Р°РєР°Р·<!-- Scenario 4 - Laboratory Cancellation Of A Previously Placed
             Laboratory Order -->
          </h4>
          <p>
@@ -410,7 +410,7 @@
             test report (preliminary or final) is transmitted to the provider(s).  Laboratories must use the USLabReport DiagnosticResult Cancel Profile.   See that Implementation Guide for details.  <!-- EH  need to discuss this once wrok out the cancel profile -->
          </p>
          <a id="keytechdecisions"></a>
-         <h2>Ключевые технические решения<!-- Key Technical Decisions --></h2>
+         <h2>РљР»СЋС‡РµРІС‹Рµ С‚РµС…РЅРёС‡РµСЃРєРёРµ СЂРµС€РµРЅРёСЏ<!-- Key Technical Decisions --></h2>
          <!-- EH not needed : One of the primary features of this implementation guide is its focus on key points of broad
             interoperability. The HL7 implementation guides in Sections 1.2.1
             Relevant Laboratory Implementation Guides and 1.2.2 Requisite Knowledge informed the content of
@@ -419,9 +419,9 @@
             current body of work while making further adjustment to meet the needs of ambulatory ordering and
             preparing for increased consistency of laboratory orders across care settings. -->
          <a id="profile"></a>
-         <h3>Архитектура профилей и компонентов<!-- Profile And Component Architecture  --></h3>
+         <h3>РђСЂС…РёС‚РµРєС‚СѓСЂР° РїСЂРѕС„РёР»РµР№ Рё РєРѕРјРїРѕРЅРµРЅС‚РѕРІ<!-- Profile And Component Architecture  --></h3>
          <!-- also in uslaborder.html-->
-         <p>Данное руководство использует профили FHIR для определения минимального набора требований в целях обеспечения возможности успешного обмена лабораторными заказами для следующих ресурсов:<!-- This guide uses FHIR profiles on the following resource to define a minimum set of requirements to enable the
+         <p>Р”Р°РЅРЅРѕРµ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ РёСЃРїРѕР»СЊР·СѓРµС‚ РїСЂРѕС„РёР»Рё FHIR РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ РЅР°Р±РѕСЂР° С‚СЂРµР±РѕРІР°РЅРёР№ РІ С†РµР»СЏС… РѕР±РµСЃРїРµС‡РµРЅРёСЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СѓСЃРїРµС€РЅРѕРіРѕ РѕР±РјРµРЅР° Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹РјРё Р·Р°РєР°Р·Р°РјРё РґР»СЏ СЃР»РµРґСѓСЋС‰РёС… СЂРµСЃСѓСЂСЃРѕРІ:<!-- This guide uses FHIR profiles on the following resource to define a minimum set of requirements to enable the
             successful exchange of laboratory orders: --></p>
          <ul>
             <li>DiagnosticOrder</li>
@@ -434,7 +434,7 @@
             <li>Specimen</li>
          </ul>
          <p>
-		 Основная задача - обеспечить обмен лабораторными заказами между ЭМК и лабораторными системами с минимальными модификациями, если они вообще будут иметь место, от одной комбинации программного обеспечения к другой, при этом поддерживая гибкость для обеспечения возможности предоставить больше возможностей разработчикам ПО, использующим одни и те же основные определения ресурсов.<!-- 
+		 РћСЃРЅРѕРІРЅР°СЏ Р·Р°РґР°С‡Р° - РѕР±РµСЃРїРµС‡РёС‚СЊ РѕР±РјРµРЅ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹РјРё Р·Р°РєР°Р·Р°РјРё РјРµР¶РґСѓ Р­РњРљ Рё Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹РјРё СЃРёСЃС‚РµРјР°РјРё СЃ РјРёРЅРёРјР°Р»СЊРЅС‹РјРё РјРѕРґРёС„РёРєР°С†РёСЏРјРё, РµСЃР»Рё РѕРЅРё РІРѕРѕР±С‰Рµ Р±СѓРґСѓС‚ РёРјРµС‚СЊ РјРµСЃС‚Рѕ, РѕС‚ РѕРґРЅРѕР№ РєРѕРјР±РёРЅР°С†РёРё РїСЂРѕРіСЂР°РјРјРЅРѕРіРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЏ Рє РґСЂСѓРіРѕР№, РїСЂРё СЌС‚РѕРј РїРѕРґРґРµСЂР¶РёРІР°СЏ РіРёР±РєРѕСЃС‚СЊ РґР»СЏ РѕР±РµСЃРїРµС‡РµРЅРёСЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РїСЂРµРґРѕСЃС‚Р°РІРёС‚СЊ Р±РѕР»СЊС€Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚РµР№ СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР°Рј РџРћ, РёСЃРїРѕР»СЊР·СѓСЋС‰РёРј РѕРґРЅРё Рё С‚Рµ Р¶Рµ РѕСЃРЅРѕРІРЅС‹Рµ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЂРµСЃСѓСЂСЃРѕРІ.<!-- 
          The main objective is to ensure that EHR systems and
          Laboratory systems can exchange laboratory orders with minimum if any modifications from one
          combination to another combination of software, while maintaining flexibility to enable software
@@ -452,9 +452,9 @@
             identifiers could use OIDs as well for the assigning authority. Note that OIDs are not intended to be used
             to identify a coding system as referenced in CWE-03/CWE-06 and further enumerated in . -->
          <a id="vocabstandards"></a>
-         <h3>Использование стандартных глоссариев<!-- Use Of Vocabulary Standards --></h3>
+         <h3>РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЃС‚Р°РЅРґР°СЂС‚РЅС‹С… РіР»РѕСЃСЃР°СЂРёРµРІ<!-- Use Of Vocabulary Standards --></h3>
          <p>
-		 Данное руководство призывает к использованию определенных стандартных глоссариев для обмена лабораторной информацией, таких как LOINC и SNOMED. Стандартные глоссарии, в частности кодированные лабораторные тесты и их результаты, обеспечивают автоматическую поддержку принятия решений в здравоохранении пациентов, а также в надзоре за здравоохранением населения. Ресурсы Value Set предоставлены в рамках этой реализации.
+		 Р”Р°РЅРЅРѕРµ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ РїСЂРёР·С‹РІР°РµС‚ Рє РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЋ РѕРїСЂРµРґРµР»РµРЅРЅС‹С… СЃС‚Р°РЅРґР°СЂС‚РЅС‹С… РіР»РѕСЃСЃР°СЂРёРµРІ РґР»СЏ РѕР±РјРµРЅР° Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРµР№, С‚Р°РєРёС… РєР°Рє LOINC Рё SNOMED. РЎС‚Р°РЅРґР°СЂС‚РЅС‹Рµ РіР»РѕСЃСЃР°СЂРёРё, РІ С‡Р°СЃС‚РЅРѕСЃС‚Рё РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ С‚РµСЃС‚С‹ Рё РёС… СЂРµР·СѓР»СЊС‚Р°С‚С‹, РѕР±РµСЃРїРµС‡РёРІР°СЋС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєСѓСЋ РїРѕРґРґРµСЂР¶РєСѓ РїСЂРёРЅСЏС‚РёСЏ СЂРµС€РµРЅРёР№ РІ Р·РґСЂР°РІРѕРѕС…СЂР°РЅРµРЅРёРё РїР°С†РёРµРЅС‚РѕРІ, Р° С‚Р°РєР¶Рµ РІ РЅР°РґР·РѕСЂРµ Р·Р° Р·РґСЂР°РІРѕРѕС…СЂР°РЅРµРЅРёРµРј РЅР°СЃРµР»РµРЅРёСЏ. Р РµСЃСѓСЂСЃС‹ Value Set РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅС‹ РІ СЂР°РјРєР°С… СЌС‚РѕР№ СЂРµР°Р»РёР·Р°С†РёРё.
 		 <!-- This guide calls for specific vocabulary standards for the exchange of laboratory information such as
             LOINC and SNOMED. Standard vocabularies, particularly coded laboratory tests and their results,
             enable automated decision support for patient healthcare, as well as for public health surveillance of
@@ -464,21 +464,21 @@
             This guide is silent as to the field length definition conventions, lengths, and truncation rules and directs
             the reader to HL7 Version 2.7.1, Chapter 2 Control for informative guidance.  -->
          <a id="implementationscope"></a>
-         <h3>Область действия реализации<!-- Scope Of Implementation --></h3>
-         <!--EH not needed: The base standard indicates that receiving applications "…shall process (save/print/archive/etc.)…". For
+         <h3>РћР±Р»Р°СЃС‚СЊ РґРµР№СЃС‚РІРёСЏ СЂРµР°Р»РёР·Р°С†РёРё<!-- Scope Of Implementation --></h3>
+         <!--EH not needed: The base standard indicates that receiving applications "вЂ¦shall process (save/print/archive/etc.)вЂ¦". For
             order-specific segments, e.g., ORC, OBR, SPM, this typically means saving that data. For other
             segments, e.g., MSH, the receiving application may not always have to save the data as the segment is
             focused on ensuring the order-specific data arrives in the appropriate place and therefore may have
             shorter-term value. -->
          <p>
-		 Из-за большого разнообразия систем-получателей и их потребностей данное руководство специально не указывает для каждого поля, сохранять его или нет. Это остается на усмотрение каждой отдельной системы в зависимости от ее области действия и назначения.
+		 РР·-Р·Р° Р±РѕР»СЊС€РѕРіРѕ СЂР°Р·РЅРѕРѕР±СЂР°Р·РёСЏ СЃРёСЃС‚РµРј-РїРѕР»СѓС‡Р°С‚РµР»РµР№ Рё РёС… РїРѕС‚СЂРµР±РЅРѕСЃС‚РµР№ РґР°РЅРЅРѕРµ СЂСѓРєРѕРІРѕРґСЃС‚РІРѕ СЃРїРµС†РёР°Р»СЊРЅРѕ РЅРµ СѓРєР°Р·С‹РІР°РµС‚ РґР»СЏ РєР°Р¶РґРѕРіРѕ РїРѕР»СЏ, СЃРѕС…СЂР°РЅСЏС‚СЊ РµРіРѕ РёР»Рё РЅРµС‚. Р­С‚Рѕ РѕСЃС‚Р°РµС‚СЃСЏ РЅР° СѓСЃРјРѕС‚СЂРµРЅРёРµ РєР°Р¶РґРѕР№ РѕС‚РґРµР»СЊРЅРѕР№ СЃРёСЃС‚РµРјС‹ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РµРµ РѕР±Р»Р°СЃС‚Рё РґРµР№СЃС‚РІРёСЏ Рё РЅР°Р·РЅР°С‡РµРЅРёСЏ.
 		 <!-- Due to receiving system variations and need, this guide does not specifically indicate for each field
             whether to store it or not. This is left to the individual system's scope and purpose. -->
          </p>
          <a id="aoe"></a>
-         <h3>Использование ресурса Observation для вопросов, задаваемых при вводе заказа (AOE)<!-- Ask At Order Entry (AOE) Observations  --></h3>
-         <p>Ответы на задаваемые при вводе заказа вопросы записываются в виде наблюдений, предоставляющих важную информацию для вычисления или интерпретации некоторых лабораторных результатов или для удовлетворения требований по сбору информации уполномоченных государственных и федеральных учреждений здравоохранения, например для тестирования содержания свинца в крови. Не для каждого заказа будут требоваться AOE-вопросы и связанные наблюдения. Лаборатория будет указывать, если и какие AOE-вопросы включать в заказ в своем сборнике тестов. 
-		 Примеры данных, получаемых от пациента, включают информацию о трудоустройстве, беременность, дату последней менструации, возраст матери, а также вопросы о семейной и личной истории. В некоторых случаях могут быть AOE-вопросы, которые требуют знания предыдущих результатов, сформулированных в форме вопроса, например "Ваш предыдущий результат мазка был в норме?". AOE-ответы могут быть в разных форматах, включая, но не ограничиваясь следующими:
+         <h3>РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЂРµСЃСѓСЂСЃР° Observation РґР»СЏ РІРѕРїСЂРѕСЃРѕРІ, Р·Р°РґР°РІР°РµРјС‹С… РїСЂРё РІРІРѕРґРµ Р·Р°РєР°Р·Р° (AOE)<!-- Ask At Order Entry (AOE) Observations  --></h3>
+         <p>РћС‚РІРµС‚С‹ РЅР° Р·Р°РґР°РІР°РµРјС‹Рµ РїСЂРё РІРІРѕРґРµ Р·Р°РєР°Р·Р° РІРѕРїСЂРѕСЃС‹ Р·Р°РїРёСЃС‹РІР°СЋС‚СЃСЏ РІ РІРёРґРµ РЅР°Р±Р»СЋРґРµРЅРёР№, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰РёС… РІР°Р¶РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РёР»Рё РёРЅС‚РµСЂРїСЂРµС‚Р°С†РёРё РЅРµРєРѕС‚РѕСЂС‹С… Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РёР»Рё РґР»СЏ СѓРґРѕРІР»РµС‚РІРѕСЂРµРЅРёСЏ С‚СЂРµР±РѕРІР°РЅРёР№ РїРѕ СЃР±РѕСЂСѓ РёРЅС„РѕСЂРјР°С†РёРё СѓРїРѕР»РЅРѕРјРѕС‡РµРЅРЅС‹С… РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅС‹С… Рё С„РµРґРµСЂР°Р»СЊРЅС‹С… СѓС‡СЂРµР¶РґРµРЅРёР№ Р·РґСЂР°РІРѕРѕС…СЂР°РЅРµРЅРёСЏ, РЅР°РїСЂРёРјРµСЂ РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ СЃРѕРґРµСЂР¶Р°РЅРёСЏ СЃРІРёРЅС†Р° РІ РєСЂРѕРІРё. РќРµ РґР»СЏ РєР°Р¶РґРѕРіРѕ Р·Р°РєР°Р·Р° Р±СѓРґСѓС‚ С‚СЂРµР±РѕРІР°С‚СЊСЃСЏ AOE-РІРѕРїСЂРѕСЃС‹ Рё СЃРІСЏР·Р°РЅРЅС‹Рµ РЅР°Р±Р»СЋРґРµРЅРёСЏ. Р›Р°Р±РѕСЂР°С‚РѕСЂРёСЏ Р±СѓРґРµС‚ СѓРєР°Р·С‹РІР°С‚СЊ, РµСЃР»Рё Рё РєР°РєРёРµ AOE-РІРѕРїСЂРѕСЃС‹ РІРєР»СЋС‡Р°С‚СЊ РІ Р·Р°РєР°Р· РІ СЃРІРѕРµРј СЃР±РѕСЂРЅРёРєРµ С‚РµСЃС‚РѕРІ. 
+		 РџСЂРёРјРµСЂС‹ РґР°РЅРЅС‹С…, РїРѕР»СѓС‡Р°РµРјС‹С… РѕС‚ РїР°С†РёРµРЅС‚Р°, РІРєР»СЋС‡Р°СЋС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ С‚СЂСѓРґРѕСѓСЃС‚СЂРѕР№СЃС‚РІРµ, Р±РµСЂРµРјРµРЅРЅРѕСЃС‚СЊ, РґР°С‚Сѓ РїРѕСЃР»РµРґРЅРµР№ РјРµРЅСЃС‚СЂСѓР°С†РёРё, РІРѕР·СЂР°СЃС‚ РјР°С‚РµСЂРё, Р° С‚Р°РєР¶Рµ РІРѕРїСЂРѕСЃС‹ Рѕ СЃРµРјРµР№РЅРѕР№ Рё Р»РёС‡РЅРѕР№ РёСЃС‚РѕСЂРёРё. Р’ РЅРµРєРѕС‚РѕСЂС‹С… СЃР»СѓС‡Р°СЏС… РјРѕРіСѓС‚ Р±С‹С‚СЊ AOE-РІРѕРїСЂРѕСЃС‹, РєРѕС‚РѕСЂС‹Рµ С‚СЂРµР±СѓСЋС‚ Р·РЅР°РЅРёСЏ РїСЂРµРґС‹РґСѓС‰РёС… СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ, СЃС„РѕСЂРјСѓР»РёСЂРѕРІР°РЅРЅС‹С… РІ С„РѕСЂРјРµ РІРѕРїСЂРѕСЃР°, РЅР°РїСЂРёРјРµСЂ "Р’Р°С€ РїСЂРµРґС‹РґСѓС‰РёР№ СЂРµР·СѓР»СЊС‚Р°С‚ РјР°Р·РєР° Р±С‹Р» РІ РЅРѕСЂРјРµ?". AOE-РѕС‚РІРµС‚С‹ РјРѕРіСѓС‚ Р±С‹С‚СЊ РІ СЂР°Р·РЅС‹С… С„РѕСЂРјР°С‚Р°С…, РІРєР»СЋС‡Р°СЏ, РЅРѕ РЅРµ РѕРіСЂР°РЅРёС‡РёРІР°СЏСЃСЊ СЃР»РµРґСѓСЋС‰РёРјРё:
 		 <!-- Ask at Order Entry (AOE) responses are recorded as observations that provide critical information for
             the calculation or interpretation of some lab results or to satisfy state and federal health agency
             mandated information gathering requirements, e.g., for blood lead testing. Not every order will have the
@@ -490,32 +490,32 @@
             as a question, e.g., "Was your previous pap abnormal?"
             AOE responses can take several formats, including but not limited to --></p>
          <ul>
-            <li>Да/нет (и кодированные) для ответов на такие вопросы, как "Это ваша первая беременность?"<!-- Yes/No (and coded) to answer questions like "Is this your first pregnancy?"  --></li>
-            <li>Код, взятый из набора значений для указания кодированного ответа, например "К какой этнической (расовой) принадлежности вы относите себя?"<!-- A code drawn from a value set to provide a coded response to, e.g., "What ethnicity do you
+            <li>Р”Р°/РЅРµС‚ (Рё РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ) РґР»СЏ РѕС‚РІРµС‚РѕРІ РЅР° С‚Р°РєРёРµ РІРѕРїСЂРѕСЃС‹, РєР°Рє "Р­С‚Рѕ РІР°С€Р° РїРµСЂРІР°СЏ Р±РµСЂРµРјРµРЅРЅРѕСЃС‚СЊ?"<!-- Yes/No (and coded) to answer questions like "Is this your first pregnancy?"  --></li>
+            <li>РљРѕРґ, РІР·СЏС‚С‹Р№ РёР· РЅР°Р±РѕСЂР° Р·РЅР°С‡РµРЅРёР№ РґР»СЏ СѓРєР°Р·Р°РЅРёСЏ РєРѕРґРёСЂРѕРІР°РЅРЅРѕРіРѕ РѕС‚РІРµС‚Р°, РЅР°РїСЂРёРјРµСЂ "Рљ РєР°РєРѕР№ СЌС‚РЅРёС‡РµСЃРєРѕР№ (СЂР°СЃРѕРІРѕР№) РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё РІС‹ РѕС‚РЅРѕСЃРёС‚Рµ СЃРµР±СЏ?"<!-- A code drawn from a value set to provide a coded response to, e.g., "What ethnicity do you
                consider yourself to be?" -->
             </li>
-            <li>Число с единицами измерения для записи возраста матери<!-- A number with units for the mother's age  --></li>
-            <li>Формат даты для указания даты последней менструации пациента<!-- A date format for the patient's last menstrual period. --></li>
+            <li>Р§РёСЃР»Рѕ СЃ РµРґРёРЅРёС†Р°РјРё РёР·РјРµСЂРµРЅРёСЏ РґР»СЏ Р·Р°РїРёСЃРё РІРѕР·СЂР°СЃС‚Р° РјР°С‚РµСЂРё<!-- A number with units for the mother's age  --></li>
+            <li>Р¤РѕСЂРјР°С‚ РґР°С‚С‹ РґР»СЏ СѓРєР°Р·Р°РЅРёСЏ РґР°С‚С‹ РїРѕСЃР»РµРґРЅРµР№ РјРµРЅСЃС‚СЂСѓР°С†РёРё РїР°С†РёРµРЅС‚Р°<!-- A date format for the patient's last menstrual period. --></li>
          </ul>
-         <p>Для передачи таких задаваемых при вводе заказа вопросов необходимо использовать элемент .supporting information с типом Reference(Observation) в ресурсе DiagnosticOrder.<!-- .supporting information element with type Reference(Observation) must be used in the DiagnosticOrder Resource to convey these Ask at Order Entry questions. --></p>
+         <p>Р”Р»СЏ РїРµСЂРµРґР°С‡Рё С‚Р°РєРёС… Р·Р°РґР°РІР°РµРјС‹С… РїСЂРё РІРІРѕРґРµ Р·Р°РєР°Р·Р° РІРѕРїСЂРѕСЃРѕРІ РЅРµРѕР±С…РѕРґРёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЌР»РµРјРµРЅС‚ .supporting information СЃ С‚РёРїРѕРј Reference(Observation) РІ СЂРµСЃСѓСЂСЃРµ DiagnosticOrder.<!-- .supporting information element with type Reference(Observation) must be used in the DiagnosticOrder Resource to convey these Ask at Order Entry questions. --></p>
          <p>
-		 Хотя вопросы задаются не строго во время ввода заказа, другая вспомогательная клиническая информация о пациенте, собранная во время взятия образца для анализа, например статус воздержания от пищи (пост, натощак) пациента, считаются AOE-наблюдениями в контексте данного руководства и также должны передаваться с помощью элемента .supporting information с типом Reference(Observation).
+		 РҐРѕС‚СЏ РІРѕРїСЂРѕСЃС‹ Р·Р°РґР°СЋС‚СЃСЏ РЅРµ СЃС‚СЂРѕРіРѕ РІРѕ РІСЂРµРјСЏ РІРІРѕРґР° Р·Р°РєР°Р·Р°, РґСЂСѓРіР°СЏ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ РєР»РёРЅРёС‡РµСЃРєР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїР°С†РёРµРЅС‚Рµ, СЃРѕР±СЂР°РЅРЅР°СЏ РІРѕ РІСЂРµРјСЏ РІР·СЏС‚РёСЏ РѕР±СЂР°Р·С†Р° РґР»СЏ Р°РЅР°Р»РёР·Р°, РЅР°РїСЂРёРјРµСЂ СЃС‚Р°С‚СѓСЃ РІРѕР·РґРµСЂР¶Р°РЅРёСЏ РѕС‚ РїРёС‰Рё (РїРѕСЃС‚, РЅР°С‚РѕС‰Р°Рє) РїР°С†РёРµРЅС‚Р°, СЃС‡РёС‚Р°СЋС‚СЃСЏ AOE-РЅР°Р±Р»СЋРґРµРЅРёСЏРјРё РІ РєРѕРЅС‚РµРєСЃС‚Рµ РґР°РЅРЅРѕРіРѕ СЂСѓРєРѕРІРѕРґСЃС‚РІР° Рё С‚Р°РєР¶Рµ РґРѕР»Р¶РЅС‹ РїРµСЂРµРґР°РІР°С‚СЊСЃСЏ СЃ РїРѕРјРѕС‰СЊСЋ СЌР»РµРјРµРЅС‚Р° .supporting information СЃ С‚РёРїРѕРј Reference(Observation).
 		 <!-- Although not strictly asked at order entry, other supporting clinical information about the patient
             collected during specimen collection, e.g., fasting status of the patient, are considered AOE observations
             for purposes of this guide and must be communicated using the  .supporting information element with type Reference(Observation) as well. -->
          </p>
          <p>
-		 В качестве стандартной кодовой системы для AOE-вопросов необходимо использовать LOINC, если имеется подходящий и допустимый LOINC-код. LOINC-код и локальный код, описывающий вопрос, будет помещен в элемент Observation.name. Подходящий и допустимый статус определяется в LOINC Manual Section 11.2 Classification of LOINC Term Status. Если используется локальная кодовая система, и LOINC, и локальный код должны также отправляться для облегчения идентификации проблем кодирования. Когда допустимый LOINC-код не существует, единственным высылаемым кодом будет только локальный код.
+		 Р’ РєР°С‡РµСЃС‚РІРµ СЃС‚Р°РЅРґР°СЂС‚РЅРѕР№ РєРѕРґРѕРІРѕР№ СЃРёСЃС‚РµРјС‹ РґР»СЏ AOE-РІРѕРїСЂРѕСЃРѕРІ РЅРµРѕР±С…РѕРґРёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ LOINC, РµСЃР»Рё РёРјРµРµС‚СЃСЏ РїРѕРґС…РѕРґСЏС‰РёР№ Рё РґРѕРїСѓСЃС‚РёРјС‹Р№ LOINC-РєРѕРґ. LOINC-РєРѕРґ Рё Р»РѕРєР°Р»СЊРЅС‹Р№ РєРѕРґ, РѕРїРёСЃС‹РІР°СЋС‰РёР№ РІРѕРїСЂРѕСЃ, Р±СѓРґРµС‚ РїРѕРјРµС‰РµРЅ РІ СЌР»РµРјРµРЅС‚ Observation.name. РџРѕРґС…РѕРґСЏС‰РёР№ Рё РґРѕРїСѓСЃС‚РёРјС‹Р№ СЃС‚Р°С‚СѓСЃ РѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РІ LOINC Manual Section 11.2 Classification of LOINC Term Status. Р•СЃР»Рё РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р»РѕРєР°Р»СЊРЅР°СЏ РєРѕРґРѕРІР°СЏ СЃРёСЃС‚РµРјР°, Рё LOINC, Рё Р»РѕРєР°Р»СЊРЅС‹Р№ РєРѕРґ РґРѕР»Р¶РЅС‹ С‚Р°РєР¶Рµ РѕС‚РїСЂР°РІР»СЏС‚СЊСЃСЏ РґР»СЏ РѕР±Р»РµРіС‡РµРЅРёСЏ РёРґРµРЅС‚РёС„РёРєР°С†РёРё РїСЂРѕР±Р»РµРј РєРѕРґРёСЂРѕРІР°РЅРёСЏ. РљРѕРіРґР° РґРѕРїСѓСЃС‚РёРјС‹Р№ LOINC-РєРѕРґ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РµРґРёРЅСЃС‚РІРµРЅРЅС‹Рј РІС‹СЃС‹Р»Р°РµРјС‹Рј РєРѕРґРѕРј Р±СѓРґРµС‚ С‚РѕР»СЊРєРѕ Р»РѕРєР°Р»СЊРЅС‹Р№ РєРѕРґ.
 		 <!-- LOINC shall be used as the standard coding system for AOE questions if an appropriate and valid
             LOINC code exists. The LOINC and local code describing the question will be placed in Observation.name element.  Appropriate and valid status is defined in the LOINC Manual Section 11.2 Classification of LOINC Term Status. If a local coding system is in use, both the LOINC and the local
             code should also be sent to help with identification of coding issues. When no valid LOINC exists, the local code may be the only code sent. -->
          </p>
          <a id="specialcondsideration"></a>
-         <h4>Особые соображения<!-- Special Considerations --></h4>
+         <h4>РћСЃРѕР±С‹Рµ СЃРѕРѕР±СЂР°Р¶РµРЅРёСЏ<!-- Special Considerations --></h4>
          <p>
-		 Обратите внимание, что различным задаваемым при вводе заказа вопросам могут соответствовать некоторые элементы в ресурсах FHIR. 
-		 Когда клинически значимое значение узнается через задаваемый при вводе заказа вопрос, его необходимо передавать через сегменты OBX, как описано выше, поскольку эти значения используются для клинической интерпретации, а не через, казалось бы, подходящий FHIR-элемент.
-		 Далее приводятся конкретные примеры и указания, где следует использовать FHIR-элемент, а где - элемент .supporting information с типом Reference(Observation). Этот список не является исчерпывающим:
+		 РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ СЂР°Р·Р»РёС‡РЅС‹Рј Р·Р°РґР°РІР°РµРјС‹Рј РїСЂРё РІРІРѕРґРµ Р·Р°РєР°Р·Р° РІРѕРїСЂРѕСЃР°Рј РјРѕРіСѓС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІРѕРІР°С‚СЊ РЅРµРєРѕС‚РѕСЂС‹Рµ СЌР»РµРјРµРЅС‚С‹ РІ СЂРµСЃСѓСЂСЃР°С… FHIR. 
+		 РљРѕРіРґР° РєР»РёРЅРёС‡РµСЃРєРё Р·РЅР°С‡РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ СѓР·РЅР°РµС‚СЃСЏ С‡РµСЂРµР· Р·Р°РґР°РІР°РµРјС‹Р№ РїСЂРё РІРІРѕРґРµ Р·Р°РєР°Р·Р° РІРѕРїСЂРѕСЃ, РµРіРѕ РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµРґР°РІР°С‚СЊ С‡РµСЂРµР· СЃРµРіРјРµРЅС‚С‹ OBX, РєР°Рє РѕРїРёСЃР°РЅРѕ РІС‹С€Рµ, РїРѕСЃРєРѕР»СЊРєСѓ СЌС‚Рё Р·РЅР°С‡РµРЅРёСЏ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РґР»СЏ РєР»РёРЅРёС‡РµСЃРєРѕР№ РёРЅС‚РµСЂРїСЂРµС‚Р°С†РёРё, Р° РЅРµ С‡РµСЂРµР·, РєР°Р·Р°Р»РѕСЃСЊ Р±С‹, РїРѕРґС…РѕРґСЏС‰РёР№ FHIR-СЌР»РµРјРµРЅС‚.
+		 Р”Р°Р»РµРµ РїСЂРёРІРѕРґСЏС‚СЃСЏ РєРѕРЅРєСЂРµС‚РЅС‹Рµ РїСЂРёРјРµСЂС‹ Рё СѓРєР°Р·Р°РЅРёСЏ, РіРґРµ СЃР»РµРґСѓРµС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ FHIR-СЌР»РµРјРµРЅС‚, Р° РіРґРµ - СЌР»РµРјРµРЅС‚ .supporting information СЃ С‚РёРїРѕРј Reference(Observation). Р­С‚РѕС‚ СЃРїРёСЃРѕРє РЅРµ СЏРІР»СЏРµС‚СЃСЏ РёСЃС‡РµСЂРїС‹РІР°СЋС‰РёРј:
             <!-- Note that various Ask at Order Entry questions may appear to have specific elements in FHIR Resources.
             When a clinically relevant value is asked through an Ask at Order Entry question it
             must be conveyed through the OBX segments as described above as these values are used for
@@ -523,20 +523,20 @@
             The following provide specific examples and guidance whether to use a FHIR element or the supporting information element with type Reference(Observation).
             This is list is not meant to be exhaustive:  --></p>
          <ul>
-            <li>Дата рождения - всегда используйте Patient.birthDate и никогда не предлагайте в качестве AOE, так как она всегда одна в любой момент времени.<!-- Date of Birth - Always use Patient.birthDate and should never be asked as an AOE as
+            <li>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ - РІСЃРµРіРґР° РёСЃРїРѕР»СЊР·СѓР№С‚Рµ Patient.birthDate Рё РЅРёРєРѕРіРґР° РЅРµ РїСЂРµРґР»Р°РіР°Р№С‚Рµ РІ РєР°С‡РµСЃС‚РІРµ AOE, С‚Р°Рє РєР°Рє РѕРЅР° РІСЃРµРіРґР° РѕРґРЅР° РІ Р»СЋР±РѕР№ РјРѕРјРµРЅС‚ РІСЂРµРјРµРЅРё.<!-- Date of Birth - Always use Patient.birthDate and should never be asked as an AOE as
                there is only one at any point in time. -->
             </li>
-            <li>Расширение us-core-race(http://hl7.org/fhir/ExtensionDefinition/us-core-race) предназначено для демографического (административного/выставления счетов), а не клинического использования и ограничено задавать 5 категорий рас, как это предписывается федеральными стандартами. Лаборатория должна указать AOE для тех тестов, где раса влияет на интерпретацию результатов. Это значение должно определяться заказывающим провайдером (Ordering Provider) и должно передаваться в элементе .supporting information с типом Reference(Observation). Обратите внимание, что государственные и/или национальные постановления могут диктовать другие правила. 
+            <li>Р Р°СЃС€РёСЂРµРЅРёРµ us-core-race(http://hl7.org/fhir/ExtensionDefinition/us-core-race) РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРѕ РґР»СЏ РґРµРјРѕРіСЂР°С„РёС‡РµСЃРєРѕРіРѕ (Р°РґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅРѕРіРѕ/РІС‹СЃС‚Р°РІР»РµРЅРёСЏ СЃС‡РµС‚РѕРІ), Р° РЅРµ РєР»РёРЅРёС‡РµСЃРєРѕРіРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ Рё РѕРіСЂР°РЅРёС‡РµРЅРѕ Р·Р°РґР°РІР°С‚СЊ 5 РєР°С‚РµРіРѕСЂРёР№ СЂР°СЃ, РєР°Рє СЌС‚Рѕ РїСЂРµРґРїРёСЃС‹РІР°РµС‚СЃСЏ С„РµРґРµСЂР°Р»СЊРЅС‹РјРё СЃС‚Р°РЅРґР°СЂС‚Р°РјРё. Р›Р°Р±РѕСЂР°С‚РѕСЂРёСЏ РґРѕР»Р¶РЅР° СѓРєР°Р·Р°С‚СЊ AOE РґР»СЏ С‚РµС… С‚РµСЃС‚РѕРІ, РіРґРµ СЂР°СЃР° РІР»РёСЏРµС‚ РЅР° РёРЅС‚РµСЂРїСЂРµС‚Р°С†РёСЋ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ. Р­С‚Рѕ Р·РЅР°С‡РµРЅРёРµ РґРѕР»Р¶РЅРѕ РѕРїСЂРµРґРµР»СЏС‚СЊСЃСЏ Р·Р°РєР°Р·С‹РІР°СЋС‰РёРј РїСЂРѕРІР°Р№РґРµСЂРѕРј (Ordering Provider) Рё РґРѕР»Р¶РЅРѕ РїРµСЂРµРґР°РІР°С‚СЊСЃСЏ РІ СЌР»РµРјРµРЅС‚Рµ .supporting information СЃ С‚РёРїРѕРј Reference(Observation). РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅС‹Рµ Рё/РёР»Рё РЅР°С†РёРѕРЅР°Р»СЊРЅС‹Рµ РїРѕСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РјРѕРіСѓС‚ РґРёРєС‚РѕРІР°С‚СЊ РґСЂСѓРіРёРµ РїСЂР°РІРёР»Р°. 
 			<!-- The extension us-core-race(http://hl7.org/fhir/ExtensionDefinition/us-core-race) is provided for demographic (administrative/billing), not clinical use and is bound to define five race categories as  prescribed by federal standards. The
                lab must provide an AOE for those tests where Race drives the interpretation of results. The
                value must be determined by the Ordering Provider and must be sent as the .supporting information element with type Reference(Observation). Note that state and/or national regulations may dictate other behaviors. -->
             </li>
             <li>
-			Расширение us-core-ethnicity(http://hl7.org/fhir/ExtensionDefinition/us-core-ethnicity) предназначено для демографического (административного/выставления счетов), а не клинического использования и ограничено задавать 2 категории этнической (расовой) принадлежности, как это предписывается федеральными стандартами. Лаборатория должна указать AOE для тех тестов, где этническая (расовая) принадлежность влияет на интерпретацию результатов. Это значение должно определяться заказывающим провайдером (Ordering Provider) и должно передаваться в элементе .supporting information с типом Reference(Observation). Обратите внимание, что государственные и/или национальные постановления могут диктовать другие правила. 
+			Р Р°СЃС€РёСЂРµРЅРёРµ us-core-ethnicity(http://hl7.org/fhir/ExtensionDefinition/us-core-ethnicity) РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРѕ РґР»СЏ РґРµРјРѕРіСЂР°С„РёС‡РµСЃРєРѕРіРѕ (Р°РґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅРѕРіРѕ/РІС‹СЃС‚Р°РІР»РµРЅРёСЏ СЃС‡РµС‚РѕРІ), Р° РЅРµ РєР»РёРЅРёС‡РµСЃРєРѕРіРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ Рё РѕРіСЂР°РЅРёС‡РµРЅРѕ Р·Р°РґР°РІР°С‚СЊ 2 РєР°С‚РµРіРѕСЂРёРё СЌС‚РЅРёС‡РµСЃРєРѕР№ (СЂР°СЃРѕРІРѕР№) РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё, РєР°Рє СЌС‚Рѕ РїСЂРµРґРїРёСЃС‹РІР°РµС‚СЃСЏ С„РµРґРµСЂР°Р»СЊРЅС‹РјРё СЃС‚Р°РЅРґР°СЂС‚Р°РјРё. Р›Р°Р±РѕСЂР°С‚РѕСЂРёСЏ РґРѕР»Р¶РЅР° СѓРєР°Р·Р°С‚СЊ AOE РґР»СЏ С‚РµС… С‚РµСЃС‚РѕРІ, РіРґРµ СЌС‚РЅРёС‡РµСЃРєР°СЏ (СЂР°СЃРѕРІР°СЏ) РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚СЊ РІР»РёСЏРµС‚ РЅР° РёРЅС‚РµСЂРїСЂРµС‚Р°С†РёСЋ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ. Р­С‚Рѕ Р·РЅР°С‡РµРЅРёРµ РґРѕР»Р¶РЅРѕ РѕРїСЂРµРґРµР»СЏС‚СЊСЃСЏ Р·Р°РєР°Р·С‹РІР°СЋС‰РёРј РїСЂРѕРІР°Р№РґРµСЂРѕРј (Ordering Provider) Рё РґРѕР»Р¶РЅРѕ РїРµСЂРµРґР°РІР°С‚СЊСЃСЏ РІ СЌР»РµРјРµРЅС‚Рµ .supporting information СЃ С‚РёРїРѕРј Reference(Observation). РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅС‹Рµ Рё/РёР»Рё РЅР°С†РёРѕРЅР°Р»СЊРЅС‹Рµ РїРѕСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РјРѕРіСѓС‚ РґРёРєС‚РѕРІР°С‚СЊ РґСЂСѓРіРёРµ РїСЂР°РІРёР»Р°. 
 			<!-- The extension us-core-ethnicity(http://hl7.org/fhir/ExtensionDefinition/us-core-ethnicity) is provided for demographic (administrative/billing), not clinical use and is bound to specify two ethnicity categories as  prescribed by federal standards. The lab must provide an AOE where Ethnicity drives the interpretation of results. The value must be determined by the Ordering Provider and must be sent as the .supporting information element with type Reference(Observation.  Note that state and/or national regulations may dictate other behaviors.  --></li>
          </ul>
          <p>
-		 Более конкретные значения расовой или этнической принадлежности доступны, но не ограничены теми, которые можно найти в <a href="v3/Race/index.html">v3 Code System Race</a> и <a href="v3/Ethnicity/index.html"> v3 Code System Ethnicity</a>.
+		 Р‘РѕР»РµРµ РєРѕРЅРєСЂРµС‚РЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ СЂР°СЃРѕРІРѕР№ РёР»Рё СЌС‚РЅРёС‡РµСЃРєРѕР№ РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё РґРѕСЃС‚СѓРїРЅС‹, РЅРѕ РЅРµ РѕРіСЂР°РЅРёС‡РµРЅС‹ С‚РµРјРё, РєРѕС‚РѕСЂС‹Рµ РјРѕР¶РЅРѕ РЅР°Р№С‚Рё РІ <a href="v3/Race/index.html">v3 Code System Race</a> Рё <a href="v3/Ethnicity/index.html"> v3 Code System Ethnicity</a>.
 		 <!-- More specific race and ethnicity values are available, but not limited to,
          those found   <a href="v3/Race/index.html">v3 Code System Race</a> and  <a href="v3/Ethnicity/index.html"> v3 Code System Ethnicity</a>. --><!-- Eh todo see if these value set align with the text-->
          </p>
@@ -545,9 +545,9 @@
             OBX-4 (Observation Sub-ID) to link the Name to an Address when more than one employer is
             communicated.   ( will provide examples elsewhere )-->
          <a id="priorresults"></a>
-         <h3>Передача другой клинической информации или предыдущих результатов<!-- Communication Of Other Clinical Information Or Prior Results --> </h3>
+         <h3>РџРµСЂРµРґР°С‡Р° РґСЂСѓРіРѕР№ РєР»РёРЅРёС‡РµСЃРєРѕР№ РёРЅС„РѕСЂРјР°С†РёРё РёР»Рё РїСЂРµРґС‹РґСѓС‰РёС… СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ<!-- Communication Of Other Clinical Information Or Prior Results --> </h3>
          <p>
-            В случае возникновения необходимости отправить результаты, полученные не во время ввода заказа или сбора образца для анализа и/или те, которые требуют полную структуру отчета с результатами, например определение чувствительности микроорганизмов, используйте USlabOrder DiagnosticReport-расширение priorResults.
+            Р’ СЃР»СѓС‡Р°Рµ РІРѕР·РЅРёРєРЅРѕРІРµРЅРёСЏ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РѕС‚РїСЂР°РІРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РЅРµ РІРѕ РІСЂРµРјСЏ РІРІРѕРґР° Р·Р°РєР°Р·Р° РёР»Рё СЃР±РѕСЂР° РѕР±СЂР°Р·С†Р° РґР»СЏ Р°РЅР°Р»РёР·Р° Рё/РёР»Рё С‚Рµ, РєРѕС‚РѕСЂС‹Рµ С‚СЂРµР±СѓСЋС‚ РїРѕР»РЅСѓСЋ СЃС‚СЂСѓРєС‚СѓСЂСѓ РѕС‚С‡РµС‚Р° СЃ СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё, РЅР°РїСЂРёРјРµСЂ РѕРїСЂРµРґРµР»РµРЅРёРµ С‡СѓРІСЃС‚РІРёС‚РµР»СЊРЅРѕСЃС‚Рё РјРёРєСЂРѕРѕСЂРіР°РЅРёР·РјРѕРІ, РёСЃРїРѕР»СЊР·СѓР№С‚Рµ USlabOrder DiagnosticReport-СЂР°СЃС€РёСЂРµРЅРёРµ priorResults.
 			<!-- Should the need arise to send results not obtained at the time of order entry or specimen collection
             and/or those requiring full results report structure such as culture/sensitivity reports.  Use the USlabOrder DiagnosticReport priorResults extension. -->
             <!-- todo -->
@@ -565,9 +565,9 @@
             step 2.
               (REST takes care of this )-->
          <a id="errorhandling"></a>
-         <h2>Обработка ошибок<!-- Error Handling --></h2>
+         <h2>РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє<!-- Error Handling --></h2>
          <p>
-		 Обратитесь к спецификации FHIR за <a href="http.html#httpstatuscodes"> REST статус-кодами</a> и использованием ресурса <a href="operationoutcome.html">OperationOutcome</a>, если потребуется дополнительная информация о транзакционных ошибках. Примечание для голосования: спецификация обработки ошибок в настоящее время не в полной мере определена для этой реализации.
+		 РћР±СЂР°С‚РёС‚РµСЃСЊ Рє СЃРїРµС†РёС„РёРєР°С†РёРё FHIR Р·Р° <a href="http.html#httpstatuscodes"> REST СЃС‚Р°С‚СѓСЃ-РєРѕРґР°РјРё</a> Рё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј СЂРµСЃСѓСЂСЃР° <a href="operationoutcome.html">OperationOutcome</a>, РµСЃР»Рё РїРѕС‚СЂРµР±СѓРµС‚СЃСЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚СЂР°РЅР·Р°РєС†РёРѕРЅРЅС‹С… РѕС€РёР±РєР°С…. РџСЂРёРјРµС‡Р°РЅРёРµ РґР»СЏ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ: СЃРїРµС†РёС„РёРєР°С†РёСЏ РѕР±СЂР°Р±РѕС‚РєРё РѕС€РёР±РѕРє РІ РЅР°СЃС‚РѕСЏС‰РµРµ РІСЂРµРјСЏ РЅРµ РІ РїРѕР»РЅРѕР№ РјРµСЂРµ РѕРїСЂРµРґРµР»РµРЅР° РґР»СЏ СЌС‚РѕР№ СЂРµР°Р»РёР·Р°С†РёРё.
 		 <!-- Refer to the FHIR Specification on <a href="http.html#httpstatuscodes"> REST status codes</a> and the use of the <a href="operationoutcome.html">OperationOutcome Resource</a> when further information about the transaction error is needed.  Note to balloters: The error handling specifications are currently not fully defined for this implementation. --></p>
          <!--EH needed?  these are covered by functional requirments  ? 2.7.9  ERROR HANDLING -->
          <!-- EH  Not needed: 2.8  Referenced Profiles - Antecedents-->
@@ -578,19 +578,19 @@
          <!-- EH  Examples will be given in spec  APPENDIX A.   LABORATORY ORDER MESSAGE DEVELOPMENT RESOURCES  -->
          <a id="addlguidance"></a>
          <!-- EH   APPENDIX B.   ADDITIONAL IMPLEMENTATION GUIDANCE - OTHER -->
-         <h2>Дополнительные указания по реализации - Другое<!-- Additional Implementation Guidance - Other --></h2>
-         <h3>Соображения о резолюции к улучшению клинической лаборатории<!-- Clinical Laboratory Improvement Amendments Considerations --> </h3>
+         <h2>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓРєР°Р·Р°РЅРёСЏ РїРѕ СЂРµР°Р»РёР·Р°С†РёРё - Р”СЂСѓРіРѕРµ<!-- Additional Implementation Guidance - Other --></h2>
+         <h3>РЎРѕРѕР±СЂР°Р¶РµРЅРёСЏ Рѕ СЂРµР·РѕР»СЋС†РёРё Рє СѓР»СѓС‡С€РµРЅРёСЋ РєР»РёРЅРёС‡РµСЃРєРѕР№ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё<!-- Clinical Laboratory Improvement Amendments Considerations --> </h3>
          <p>
-		 В США клинико-лабораторные исследования образцов для анализа, взятых у людей, регулируются резолюцией к улучшению клинической лаборатории (Clinical Laboratory Improvements Amendments (CLIA)) 1988 года. (Прим. пер. - это регулируемые правительством США стандарты, которые распространяются на все существующие лаборатории в стране, чья деятельность связана с тестированием людей. Аккредитация CLIA дает повышенную гарантию на точность, своевременность и надежность результатов лабораторий. Аккредитации CLIA выдаётся Департаментом Здравоохранения Соединённых Штатов Америки. <a href="http://oftalmic.ru/diagn_clia.php">Ссылка на источник</a>) Несколько разделов постановлений, реализующих CLIA, влияют на то, как электронные лабораторные данные форматируются для США, и они описаны в данном разделе. Затронутые области включают обязательные требования к заказу тестов. <a href="http://wwwn.cdc.gov/clia/regs/toc.aspx">CLIA Regulation Specifics</a>.
+		 Р’ РЎРЁРђ РєР»РёРЅРёРєРѕ-Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ РѕР±СЂР°Р·С†РѕРІ РґР»СЏ Р°РЅР°Р»РёР·Р°, РІР·СЏС‚С‹С… Сѓ Р»СЋРґРµР№, СЂРµРіСѓР»РёСЂСѓСЋС‚СЃСЏ СЂРµР·РѕР»СЋС†РёРµР№ Рє СѓР»СѓС‡С€РµРЅРёСЋ РєР»РёРЅРёС‡РµСЃРєРѕР№ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё (Clinical Laboratory Improvements Amendments (CLIA)) 1988 РіРѕРґР°. (РџСЂРёРј. РїРµСЂ. - СЌС‚Рѕ СЂРµРіСѓР»РёСЂСѓРµРјС‹Рµ РїСЂР°РІРёС‚РµР»СЊСЃС‚РІРѕРј РЎРЁРђ СЃС‚Р°РЅРґР°СЂС‚С‹, РєРѕС‚РѕСЂС‹Рµ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅСЏСЋС‚СЃСЏ РЅР° РІСЃРµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё РІ СЃС‚СЂР°РЅРµ, С‡СЊСЏ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚СЊ СЃРІСЏР·Р°РЅР° СЃ С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµРј Р»СЋРґРµР№. РђРєРєСЂРµРґРёС‚Р°С†РёСЏ CLIA РґР°РµС‚ РїРѕРІС‹С€РµРЅРЅСѓСЋ РіР°СЂР°РЅС‚РёСЋ РЅР° С‚РѕС‡РЅРѕСЃС‚СЊ, СЃРІРѕРµРІСЂРµРјРµРЅРЅРѕСЃС‚СЊ Рё РЅР°РґРµР¶РЅРѕСЃС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ Р»Р°Р±РѕСЂР°С‚РѕСЂРёР№. РђРєРєСЂРµРґРёС‚Р°С†РёРё CLIA РІС‹РґР°С‘С‚СЃСЏ Р”РµРїР°СЂС‚Р°РјРµРЅС‚РѕРј Р—РґСЂР°РІРѕРѕС…СЂР°РЅРµРЅРёСЏ РЎРѕРµРґРёРЅС‘РЅРЅС‹С… РЁС‚Р°С‚РѕРІ РђРјРµСЂРёРєРё. <a href="http://oftalmic.ru/diagn_clia.php">РЎСЃС‹Р»РєР° РЅР° РёСЃС‚РѕС‡РЅРёРє</a>) РќРµСЃРєРѕР»СЊРєРѕ СЂР°Р·РґРµР»РѕРІ РїРѕСЃС‚Р°РЅРѕРІР»РµРЅРёР№, СЂРµР°Р»РёР·СѓСЋС‰РёС… CLIA, РІР»РёСЏСЋС‚ РЅР° С‚Рѕ, РєР°Рє СЌР»РµРєС‚СЂРѕРЅРЅС‹Рµ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ РґР°РЅРЅС‹Рµ С„РѕСЂРјР°С‚РёСЂСѓСЋС‚СЃСЏ РґР»СЏ РЎРЁРђ, Рё РѕРЅРё РѕРїРёСЃР°РЅС‹ РІ РґР°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ. Р—Р°С‚СЂРѕРЅСѓС‚С‹Рµ РѕР±Р»Р°СЃС‚Рё РІРєР»СЋС‡Р°СЋС‚ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ Рє Р·Р°РєР°Р·Сѓ С‚РµСЃС‚РѕРІ. <a href="http://wwwn.cdc.gov/clia/regs/toc.aspx">CLIA Regulation Specifics</a>.
 		 <!-- In the United States, clinical laboratory testing of human specimens is regulated by the Clinical
             Laboratory Improvements Amendments of 1988 (CLIA). Several sections of the regulations
             implementing CLIA impact how electronic laboratory data is formatted for the US Realm and these are
             outlined in this section. Impacted areas include mandatory test request requirements.
             <a href="http://wwwn.cdc.gov/clia/regs/toc.aspx">CLIA Regulation Specifics</a>. -->
          </p>
-         <h3>Обязательные требования для заказа<!-- Mandatory Ordering Requirements --></h3>
+         <h3>РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ РґР»СЏ Р·Р°РєР°Р·Р°<!-- Mandatory Ordering Requirements --></h3>
          <p>
-		 <a href="http://wwwn.cdc.gov/clia/regs/subpart_k.aspx493.1241">Раздел 493.1241 положения CLIA</a> обязывает лабораторию иметь письменный или электронный запрос на исследование пациента от уполномоченного лица, а также определяет пункты, которые должны присутствовать в рамках запроса на клинико-лабораторное исследование. Лаборатория может принимать устные запросы на лабораторные тестирования, если она требует письменную или электронную авторизацию в течение 30 дней с момента устного обращения и поддерживает авторизацию или документацию попыток получения этой авторизации.
+		 <a href="http://wwwn.cdc.gov/clia/regs/subpart_k.aspx493.1241">Р Р°Р·РґРµР» 493.1241 РїРѕР»РѕР¶РµРЅРёСЏ CLIA</a> РѕР±СЏР·С‹РІР°РµС‚ Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЋ РёРјРµС‚СЊ РїРёСЃСЊРјРµРЅРЅС‹Р№ РёР»Рё СЌР»РµРєС‚СЂРѕРЅРЅС‹Р№ Р·Р°РїСЂРѕСЃ РЅР° РёСЃСЃР»РµРґРѕРІР°РЅРёРµ РїР°С†РёРµРЅС‚Р° РѕС‚ СѓРїРѕР»РЅРѕРјРѕС‡РµРЅРЅРѕРіРѕ Р»РёС†Р°, Р° С‚Р°РєР¶Рµ РѕРїСЂРµРґРµР»СЏРµС‚ РїСѓРЅРєС‚С‹, РєРѕС‚РѕСЂС‹Рµ РґРѕР»Р¶РЅС‹ РїСЂРёСЃСѓС‚СЃС‚РІРѕРІР°С‚СЊ РІ СЂР°РјРєР°С… Р·Р°РїСЂРѕСЃР° РЅР° РєР»РёРЅРёРєРѕ-Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕРµ РёСЃСЃР»РµРґРѕРІР°РЅРёРµ. Р›Р°Р±РѕСЂР°С‚РѕСЂРёСЏ РјРѕР¶РµС‚ РїСЂРёРЅРёРјР°С‚СЊ СѓСЃС‚РЅС‹Рµ Р·Р°РїСЂРѕСЃС‹ РЅР° Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ, РµСЃР»Рё РѕРЅР° С‚СЂРµР±СѓРµС‚ РїРёСЃСЊРјРµРЅРЅСѓСЋ РёР»Рё СЌР»РµРєС‚СЂРѕРЅРЅСѓСЋ Р°РІС‚РѕСЂРёР·Р°С†РёСЋ РІ С‚РµС‡РµРЅРёРµ 30 РґРЅРµР№ СЃ РјРѕРјРµРЅС‚Р° СѓСЃС‚РЅРѕРіРѕ РѕР±СЂР°С‰РµРЅРёСЏ Рё РїРѕРґРґРµСЂР¶РёРІР°РµС‚ Р°РІС‚РѕСЂРёР·Р°С†РёСЋ РёР»Рё РґРѕРєСѓРјРµРЅС‚Р°С†РёСЋ РїРѕРїС‹С‚РѕРє РїРѕР»СѓС‡РµРЅРёСЏ СЌС‚РѕР№ Р°РІС‚РѕСЂРёР·Р°С†РёРё.
 		 <!-- <a href="http://wwwn.cdc.gov/clia/regs/subpart_k.aspx493.1241">Section 493.1241 of the CLIA Regulations</a> requires the laboratory to have a written or electronic request
             for patient testing from an authorized person, and defines items that must appear as part of a clinical
             laboratory test request . The laboratory may
@@ -599,7 +599,7 @@
             authorization. -->
          </p>
          <p>
-		 <a href="http://www.cms.hhs.gov/CLIA/downloads/apcsubk2.pdf">Пояснительные указания к элементам, обязательным в заявке на исследование</a>. Поля, на которые оказывается влияние, включают следующие:
+		 <a href="http://www.cms.hhs.gov/CLIA/downloads/apcsubk2.pdf">РџРѕСЏСЃРЅРёС‚РµР»СЊРЅС‹Рµ СѓРєР°Р·Р°РЅРёСЏ Рє СЌР»РµРјРµРЅС‚Р°Рј, РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј РІ Р·Р°СЏРІРєРµ РЅР° РёСЃСЃР»РµРґРѕРІР°РЅРёРµ</a>. РџРѕР»СЏ, РЅР° РєРѕС‚РѕСЂС‹Рµ РѕРєР°Р·С‹РІР°РµС‚СЃСЏ РІР»РёСЏРЅРёРµ, РІРєР»СЋС‡Р°СЋС‚ СЃР»РµРґСѓСЋС‰РёРµ:
 		 <!-- <a href="http://www.cms.hhs.gov/CLIA/downloads/apcsubk2.pdf">Interpretative guidelines on the elements required in a test requisition </a>. Specific fields impacted include the following: --></p>
          <table>
             <tr>
@@ -608,39 +608,39 @@
             </tr>
             <tr>
                <td>Patient.name</td>
-               <td>Имя или уникальный идентификатор пациента.<!-- The patient's name or unique patient identifier. --></td>
+               <td>РРјСЏ РёР»Рё СѓРЅРёРєР°Р»СЊРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїР°С†РёРµРЅС‚Р°.<!-- The patient's name or unique patient identifier. --></td>
             </tr>
             <tr>
                <td>Patient.gender</td>
-               <td>Пол и возраст или дата рождения пациента.<!-- The sex and age or date of birth of the patient. --></td>
+               <td>РџРѕР» Рё РІРѕР·СЂР°СЃС‚ РёР»Рё РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ РїР°С†РёРµРЅС‚Р°.<!-- The sex and age or date of birth of the patient. --></td>
             </tr>
             <tr>
                <td>DiagnosticOrder.orderer</td>
-               <td>Имя и адрес или другие подходящие идентификаторы уполномоченного лица, заказывающего исследование.<!-- The name and address or other suitable identifiers of the authorized person requesting the test. --></td>
+               <td>РРјСЏ Рё Р°РґСЂРµСЃ РёР»Рё РґСЂСѓРіРёРµ РїРѕРґС…РѕРґСЏС‰РёРµ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ СѓРїРѕР»РЅРѕРјРѕС‡РµРЅРЅРѕРіРѕ Р»РёС†Р°, Р·Р°РєР°Р·С‹РІР°СЋС‰РµРіРѕ РёСЃСЃР»РµРґРѕРІР°РЅРёРµ.<!-- The name and address or other suitable identifiers of the authorized person requesting the test. --></td>
             </tr>
             <tr>
                <td>DiagnosticOrder.orderer</td>
-               <td>Лицо, ответственное за использование результатов исследования.<!-- The individual responsible for using the test results. --></td>
+               <td>Р›РёС†Рѕ, РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕРµ Р·Р° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ.<!-- The individual responsible for using the test results. --></td>
             </tr>
             <tr>
                <td>Practitioner.organization</td>
-               <td>Имя и адрес лаборатории, предоставляющей образец для анализа.<!-- The name and address of the laboratory submitting the specimen. --></td>
+               <td>РРјСЏ Рё Р°РґСЂРµСЃ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰РµР№ РѕР±СЂР°Р·РµС† РґР»СЏ Р°РЅР°Р»РёР·Р°.<!-- The name and address of the laboratory submitting the specimen. --></td>
             </tr>
             <tr>
                <td>Practitioner.telecom|Organization.telecom</td>
-               <td>Контактное лицо для сообщения об угрожающих жизни лабораторных результатах или тревожных значениях.  <!-- Contact person to enable the reporting of imminently life threatening laboratory results or panic or alert values. --></td>
+               <td>РљРѕРЅС‚Р°РєС‚РЅРѕРµ Р»РёС†Рѕ РґР»СЏ СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± СѓРіСЂРѕР¶Р°СЋС‰РёС… Р¶РёР·РЅРё Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… СЂРµР·СѓР»СЊС‚Р°С‚Р°С… РёР»Рё С‚СЂРµРІРѕР¶РЅС‹С… Р·РЅР°С‡РµРЅРёСЏС….  <!-- Contact person to enable the reporting of imminently life threatening laboratory results or panic or alert values. --></td>
             </tr>
             <tr>
                <td>DiagnosticOrder.name</td>
-               <td>Тест(-ы), которые должны быть выполнены.<!-- The test(s) to be performed. --></td>
+               <td>РўРµСЃС‚(-С‹), РєРѕС‚РѕСЂС‹Рµ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІС‹РїРѕР»РЅРµРЅС‹.<!-- The test(s) to be performed. --></td>
             </tr>
             <tr>
                <td>DiagnosticOrder.supportingInformation</td>
-               <td>Для исследования цитологического мазка - дата последней менструации пациента и указание, был ли предыдущий результат аномальным, проходил ли пациент лечение или биопсию.<!-- For Pap smears, the patient's last menstrual period, and indication of whether the patient had a previous abnormal report, treatment or biopsy. --></td>
+               <td>Р”Р»СЏ РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ С†РёС‚РѕР»РѕРіРёС‡РµСЃРєРѕРіРѕ РјР°Р·РєР° - РґР°С‚Р° РїРѕСЃР»РµРґРЅРµР№ РјРµРЅСЃС‚СЂСѓР°С†РёРё РїР°С†РёРµРЅС‚Р° Рё СѓРєР°Р·Р°РЅРёРµ, Р±С‹Р» Р»Рё РїСЂРµРґС‹РґСѓС‰РёР№ СЂРµР·СѓР»СЊС‚Р°С‚ Р°РЅРѕРјР°Р»СЊРЅС‹Рј, РїСЂРѕС…РѕРґРёР» Р»Рё РїР°С†РёРµРЅС‚ Р»РµС‡РµРЅРёРµ РёР»Рё Р±РёРѕРїСЃРёСЋ.<!-- For Pap smears, the patient's last menstrual period, and indication of whether the patient had a previous abnormal report, treatment or biopsy. --></td>
             </tr>
             <tr>
                <td>Specimen.type</td>
-               <td>Источник (тип) образца для анализа, при необходимости.<!-- The source (type) of the specimen, when appropriate. --></td>
+               <td>РСЃС‚РѕС‡РЅРёРє (С‚РёРї) РѕР±СЂР°Р·С†Р° РґР»СЏ Р°РЅР°Р»РёР·Р°, РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё.<!-- The source (type) of the specimen, when appropriate. --></td>
             </tr>
             <tr>
                <td>Specimen.collection.collected[x]</td>
