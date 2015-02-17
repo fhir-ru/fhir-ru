@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-[%settitle USLabPHReport Documentation%]
+[%settitle Документация по USLabPHReport%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
    <head>
       [%file newheader%]
@@ -9,32 +9,43 @@
       <div class="col-9">
          <a id="usphreport-guide"> </a>
          <a id="purpose"></a>
-         <h2>Purpose</h2>
+         <h2>Назначение<!-- Purpose --></h2>
          <p>
-            The FHIR USLab Public Health Report (FHIR ELR) Implementation (FHIR ELR) is based upon the <a href="uslabreport-guide.html">USLab Report Implementation</a> and repeats most of that content here as well as the additional requirements, specifications and standards, and on providing the implementation guidanceneeded to transmit reportable laboratory observations to appropriate US local, state, territorial and federal health agencies using  using <a href="http.html">FHIR in the RESTful framework</a>.  FHIR ELR facilitates the inclusion of information necessary for public health reporting in the larger test order - test result process between ordering providers/laboratories and performing laboratories to ensure that the data is available to be sent to PH when necessary. Harmonizing the technical specifications (format and vocabulary) for the test order (order placer sends order to lab), test result (lab sends result to order placer), and reportable test result (lab sends result to PH) enhances interoperability and data quality thus improving the overall laboratory result reporting process for both the sender and the receiver.
+			FHIR-реализация USLab Public Health Report (FHIR ELR) основывается на <a href="uslabreport-guide.html">реализации USLab Report</a> и повторяет большую часть этого контента здесь, а также дополнительные требования, спецификации и стандарты, и на обеспечении указаний по реализации, необходимых для передачи заслуживающих публикации лабораторных наблюдений в соответствующие местные, государственные, территориальные и федеральные здравоохранительные учреждения США с помощью <a href="http.html">FHIR in the RESTful framework</a>. FHIR ELR упрощает включение информации, необходимой для составления отчетов по здравоохранению в больший заказ исследований - процесс результата исследования между заказывающими провайдерами/лабораториями и лабораториями-исполнителями для обеспечения гарантии, что данные доступны для отправки в PH, когда это потребуется. Согласование технических спецификаций (формат и глоссарий) для заказа исследований (заказчик отправляет заказ в лабораторию), результат исследования (лаборатория отравляет результат заказчику) и заслуживающий публикации результат исследования (лаборатория отправляет результат в PH) повышает совместимость и качество данных, улучшая таким образом общий процесс составления отчетов по лабораторным результатам как для отправителя, так и для получателя.
+            <!-- The FHIR USLab Public Health Report (FHIR ELR) Implementation (FHIR ELR) is based upon the <a href="uslabreport-guide.html">USLab Report Implementation</a> and repeats most of that content here as well as the additional requirements, specifications and standards, and on providing the implementation guidanceneeded to transmit reportable laboratory observations to appropriate US local, state, territorial and federal health agencies using  using <a href="http.html">FHIR in the RESTful framework</a>.  FHIR ELR facilitates the inclusion of information necessary for public health reporting in the larger test order - test result process between ordering providers/laboratories and performing laboratories to ensure that the data is available to be sent to PH when necessary. Harmonizing the technical specifications (format and vocabulary) for the test order (order placer sends order to lab), test result (lab sends result to order placer), and reportable test result (lab sends result to PH) enhances interoperability and data quality thus improving the overall laboratory result reporting process for both the sender and the receiver. -->
          </p>
-         <p>This implementation is not specific to any pathogen or reportable condition and is applicable for most biological and chemistry reportable laboratory observations. Each state and territory has requirements for laboratories to report certain findings to health officials. Authority to establish a list of reportable conditions and to specify the content of those reports resides with the individual public health jurisdiction. Reports made to Public Health come in two forms: case reports (not the subject of this guide), and laboratory reports related to reportable conditions.  Reporters can access further information about reportable conditions at the website for their own Public Health jurisdiction relevant to their service area.   Additionally, this implementation does not replace the need for each public health jurisdiction to document additional constraints of their specific implementation.</p>
-         <a id="audience"></a>
-         <h2>Audience</h2>
          <p>
-            This guide is designed for use by analysts and developers who require guidance on FHIR resources, elements and specific extensions
-            relative to the Laboratory Results Interface (LOI) initiative, HL7 V3 Lab Normative Standard and electronic laboratory reporting  (ELR) requirements to Public Health. Users of this guide must be familiar with the details of the FHIR Specification and resource  processing. This guide is not intended to be a tutorial on that subject.
+		 Данная реализация не является специфичной для какого-либо патогена (болезнетворного организма) или отчетного состояния, и применима для большинства биологических и химических отчетных лабораторных наблюдений. Каждый штат и территория имеет требования к лабораториям сообщать об определенных полученных данных в органы здравоохранения. Орган будет устанавливать перечень отчетных условий и указывать содержание таких отчетов отдельным юрисдикциям общественного здравоохранения. Отчеты для представления общественному здравоохранению приходят в двух форматах: судебные отчеты (не являются предметом данного руководства) и лабораторные отчеты, связанные с отчетными состояниями. Докладчики могут получить доступ к дополнительной информации об отчетных состояниях на сайте их собственной юрисдикции общественного здравоохранения, имеющей отношение к их зоне обслуживания. Кроме того, эта реализация не заменяет необходимость для каждой юрисдикции общественного здравоохранения документировать дополнительные ограничения их конкретной реализации.
+		 <!-- This implementation is not specific to any pathogen or reportable condition and is applicable for most biological and chemistry reportable laboratory observations. Each state and territory has requirements for laboratories to report certain findings to health officials. Authority to establish a list of reportable conditions and to specify the content of those reports resides with the individual public health jurisdiction. Reports made to Public Health come in two forms: case reports (not the subject of this guide), and laboratory reports related to reportable conditions.  Reporters can access further information about reportable conditions at the website for their own Public Health jurisdiction relevant to their service area.   Additionally, this implementation does not replace the need for each public health jurisdiction to document additional constraints of their specific implementation. --></p>
+         <a id="audience"></a>
+         <h2>Целевая аудитория<!-- Audience --></h2>
+         <p>
+			Данное руководство создано для использования аналитиками и разработчиками, которым требуется руководство по FHIR-ресурсам, элементам и особым расширениям, связанным с инициативой по интерфейсу лабораторных результатов (LOI), HL7 V3 Lab Normative Standard и electronic laboratory reporting (ELR) требованиям к общественному здравоохранению. Пользователи данного руководства должны быть знакомы с деталями FHIR-спецификации и обработки ресурсов. Это руководство не предназначено для освещения этой темы.
+            <!-- This guide is designed for use by analysts and developers who require guidance on FHIR resources, elements and specific extensions
+            relative to the Laboratory Results Interface (LOI) initiative, HL7 V3 Lab Normative Standard and electronic laboratory reporting  (ELR) requirements to Public Health. Users of this guide must be familiar with the details of the FHIR Specification and resource  processing. This guide is not intended to be a tutorial on that subject. -->
          </p>
          <!-- EH not needed   Section  1.4  REQUISITE KNOWLEDGE  -->
          <a id="conventions"></a>
-         <h2>Conventions</h2>
+         <h2>Условные обозначения<!-- Conventions --></h2>
          <p>
-            This guide adheres to the following conventions:
+Это руководство придерживается следующих конвенций:
+            <!-- This guide adheres to the following conventions: -->
          </p>
          <ul>
             <!--  EH not needed
                The guide is constructed assuming the implementer has access to the 2.5.1 and 2.7.1 versions of
                the HL7 Standard. Although some information from the standard is included in this
                implementation guide, much information from the standard has not been repeated here. -->
-            <li>The guide is constructed assuming the implementer has access to the FHIR Specification. Although some information from the standard is included in this implementation guide, much information from the standard has not been repeated here. </li>
-            <li>The guide is constructed assuming the implementer SHALL conform to the <a href="http.html"> FHIR RESTful API</a></li>
+            <li>
+			Руководство построено с предположением, что реализатор имеет доступ к FHIR-спецификации. Хотя некоторая информация из стандарта и включена в это руководство по реализации, большинство информации из стандарта здесь не повторяется.
+			<!-- The guide is constructed assuming the implementer has access to the FHIR Specification. Although some information from the standard is included in this implementation guide, much information from the standard has not been repeated here.  --></li>
+            <li>
+			Руководство построено с предположением, что разработчик БУДУЕТ реализовывать <a href="http.html"> FHIR RESTful API</a>
+			<!-- The guide is constructed assuming the implementer SHALL conform to the <a href="http.html"> FHIR RESTful API</a> --></li>
             <!-- EH:  todo create the messaging and document version of uslaborder-->
-            <li>The rules defined in the FHIR Conformance Profile were used to document the use case for, and constraints applied to, the resources described in this guide. </li>
+            <li>
+			Правила, определенные в FHIR Conformance Profile, были использованы для документации вариантов использования и ограничений, применяемых к ресурсам, описанным в этом руководстве.
+			<!-- The rules defined in the FHIR Conformance Profile were used to document the use case for, and constraints applied to, the resources described in this guide.  --></li>
          </ul>
          <!--  EH not needed :  The rules outlined in HL7 2.7.1, Chapter 2B, Section 2B5, Conformance Using Message Profiles,
             were used to document the use case for, and constraints applied to, the messages described in this
@@ -67,12 +78,14 @@
          <!--  EH not needed : 1.3.3  KEYWORDS -->
          <!--  EH not needed : 1.3.4  USAGE CONFORMANCE TESTING RECOMMENDATIONS  -->
          <a id="keytechdecisions"></a>
-         <h2>Key Technical Decisions</h2>
+         <h2>Ключевые технические решения<!-- Key Technical Decisions --></h2>
          <a id="profile"></a>
-         <h3>Profile And Component Architecture </h3>
+         <h3>Архитектура профилей и компонентов<!-- Profile And Component Architecture  --></h3>
          <!-- also in uslaborder.html-->
-         <p>This guide uses FHIR profiles on the following resource to define a minimum set of requirements to enable the
-            successful exchange of laboratory orders:
+         <p>
+		 Данное руководство использует профили FHIR для определения минимального набора требований в целях обеспечения возможности успешного обмена лабораторными заказами для следующих ресурсов:
+		 <!-- This guide uses FHIR profiles on the following resource to define a minimum set of requirements to enable the
+            successful exchange of laboratory orders: -->
          </p>
          <ul>
             <li>DiagnosticOrder</li>
