@@ -367,10 +367,14 @@
             (e.g., insufficient specimen, specimen too old). -->
          </p>
          <a id="scen3"></a>
-         <h4> Scenario 3 - Requesting The Cancellation Of A Previously Placed
-            Laboratory Order
+         <h4>Сценарий 3 - Запрос аннулирования ранее размещенного лабораторного заказа <!-- Scenario 3 - Requesting The Cancellation Of A Previously Placed
+            Laboratory Order -->
          </h4>
-         <p>The Provider (.orderer) determines that one or more orders from a previously transmitted
+         <p>
+		 Провайдер (.orderer) обнаруживает, что один или несколько заказов в ранее переданной электронной лабораторной заявке необходимо отменить и через ЭМК запрашивает лабораторию отменить выполнение лабораторного заказа(-ов). 
+		 Поскольку провайдер не знает текущего статуса выполнения лабораторией теста, или может она еще даже не получила образец, провайдер обязан использовать профиль USLabOrder DiagnosticOrder Cancel. 
+		 Лаборатория определяет, можно ли отменить тест или обработка заказа зашла слишком далеко, чтобы его можно было отменить. Лаборатории обязаны использовать профиль USLabReport DiagnosticResult Cancel. Как только провайдер получает любые предварительные или окончательные результаты, тест уже больше не может быть отменен, и провайдеру больше не нужно использовать профиль USLabOrder DiagnosticOrder Cancel.
+		 <!-- The Provider (.orderer) determines that one or more orders from a previously transmitted
             electronic laboratory requisition needs to be cancelled and requests via the EHR that the Laboratory
             cancel the performance of the laboratory order(s).
             Since the Provider does not know how far the Laboratory has progressed with the performance of the
@@ -380,14 +384,14 @@
             far to cancel.  Laboratories must use the USLabReport DiagnosticResult Cancel Profile.
             Once the Provider receives any preliminary or final results, the test cannot be cancelled anymore and the
             Provider shall not use the USLabOrder DiagnosticOrder Cancel
-            Profile.  anymore.
+            Profile.  anymore. -->
          </p>
          <!-- EH  need to discuss this once wrok out the cancel profile -->
          <a id="fnreq"></a>
-         <h5>Functional Requirements</h5>
+         <h5>Функциональные требования<!-- Functional Requirements --></h5>
          <p>todo</p>
          <!--EH:  need to rework for REST  acknowledgment codes -->
-         <h5>Sequence Diagram</h5>
+         <h5>Диаграмма последовательности действий<!-- Sequence Diagram --></h5>
          <p>
             <b>Figure N-N: Scenario 3 Sequence Diagram</b>
          </p>
@@ -395,8 +399,8 @@
             Laboratory Order" src="todo"/>
          <!--EH:  need to rework for REST  acknowledgment codes -->
          <a id="scen4"></a>
-         <h4>Scenario 4 - Laboratory Cancellation Of A Previously Placed
-            Laboratory Order
+         <h4>Сценарий 4 - Лаборатория аннулирует ранее размещенный лабораторный заказ<!-- Scenario 4 - Laboratory Cancellation Of A Previously Placed
+            Laboratory Order -->
          </h4>
          <p>
             The Laboratory may cancel laboratory orders and send a cancellation notification
@@ -406,7 +410,7 @@
             test report (preliminary or final) is transmitted to the provider(s).  Laboratories must use the USLabReport DiagnosticResult Cancel Profile.   See that Implementation Guide for details.  <!-- EH  need to discuss this once wrok out the cancel profile -->
          </p>
          <a id="keytechdecisions"></a>
-         <h2>Key Technical Decisions</h2>
+         <h2>Ключевые технические решения<!-- Key Technical Decisions --></h2>
          <!-- EH not needed : One of the primary features of this implementation guide is its focus on key points of broad
             interoperability. The HL7 implementation guides in Sections 1.2.1
             Relevant Laboratory Implementation Guides and 1.2.2 Requisite Knowledge informed the content of
@@ -415,10 +419,10 @@
             current body of work while making further adjustment to meet the needs of ambulatory ordering and
             preparing for increased consistency of laboratory orders across care settings. -->
          <a id="profile"></a>
-         <h3>Profile And Component Architecture </h3>
+         <h3>Архитектура профилей и компонентов<!-- Profile And Component Architecture  --></h3>
          <!-- also in uslaborder.html-->
-         <p>This guide uses FHIR profiles on the following resource to define a minimum set of requirements to enable the
-            successful exchange of laboratory orders:</p>
+         <p>Данное руководство использует профили FHIR для определения минимального набора требований в целях обеспечения возможности успешного обмена лабораторными заказами для следующих ресурсов:<!-- This guide uses FHIR profiles on the following resource to define a minimum set of requirements to enable the
+            successful exchange of laboratory orders: --></p>
          <ul>
             <li>DiagnosticOrder</li>
             <li>DiagnosticReport</li>
@@ -430,10 +434,11 @@
             <li>Specimen</li>
          </ul>
          <p>
+		 Основная задача - обеспечить обмен лабораторными заказами между ЭМК и лабораторными системами с минимальными модификациями, если они вообще будут иметь место, от одной комбинации программного обеспечения к другой, при этом поддерживая гибкость для обеспечения возможности предоставить больше возможностей разработчикам ПО, использующим одни и те же основные определения ресурсов.<!-- 
          The main objective is to ensure that EHR systems and
          Laboratory systems can exchange laboratory orders with minimum if any modifications from one
          combination to another combination of software, while maintaining flexibility to enable software
-         developers to provide more capabilities using the same core Resource definitions.</p>
+         developers to provide more capabilities using the same core Resource definitions. --></p>
          <!--EH not needed: 2.7.2  USE OF ISO OBJECT IDENTIFIER (OID)
             OIDs, or Object Identifiers, provide a strong identifier that uniquely identifies the object in question and
             is global in scope. Examples of information that OIDs can identify are items about patients, orders,
@@ -447,27 +452,31 @@
             identifiers could use OIDs as well for the assigning authority. Note that OIDs are not intended to be used
             to identify a coding system as referenced in CWE-03/CWE-06 and further enumerated in . -->
          <a id="vocabstandards"></a>
-         <h3>Use Of Vocabulary Standards</h3>
-         <p>This guide calls for specific vocabulary standards for the exchange of laboratory information such as
+         <h3>Использование стандартных глоссариев<!-- Use Of Vocabulary Standards --></h3>
+         <p>
+		 Данное руководство призывает к использованию определенных стандартных глоссариев для обмена лабораторной информацией, таких как LOINC и SNOMED. Стандартные глоссарии, в частности кодированные лабораторные тесты и их результаты, обеспечивают автоматическую поддержку принятия решений в здравоохранении пациентов, а также в надзоре за здравоохранением населения. Ресурсы Value Set предоставлены в рамках этой реализации.
+		 <!-- This guide calls for specific vocabulary standards for the exchange of laboratory information such as
             LOINC and SNOMED. Standard vocabularies, particularly coded laboratory tests and their results,
             enable automated decision support for patient healthcare, as well as for public health surveillance of
-            populations. Value Sets resource are provided as part of this implementation.
+            populations. Value Sets resource are provided as part of this implementation. -->
          </p>
          <!--EH not needed:2.7.4  FIELD LENGTH AND TRUNCATION
             This guide is silent as to the field length definition conventions, lengths, and truncation rules and directs
             the reader to HL7 Version 2.7.1, Chapter 2 Control for informative guidance.  -->
          <a id="implementationscope"></a>
-         <h3>Scope Of Implementation</h3>
+         <h3>Область действия реализации<!-- Scope Of Implementation --></h3>
          <!--EH not needed: The base standard indicates that receiving applications "…shall process (save/print/archive/etc.)…". For
             order-specific segments, e.g., ORC, OBR, SPM, this typically means saving that data. For other
             segments, e.g., MSH, the receiving application may not always have to save the data as the segment is
             focused on ensuring the order-specific data arrives in the appropriate place and therefore may have
             shorter-term value. -->
-         <p>Due to receiving system variations and need, this guide does not specifically indicate for each field
-            whether to store it or not. This is left to the individual system's scope and purpose.
+         <p>
+		 Из-за большого разнообразия систем-получателей и их потребностей данное руководство специально не указывает для каждого поля, сохранять его или нет. Это остается на усмотрение каждой отдельной системы в зависимости от ее области действия и назначения.
+		 <!-- Due to receiving system variations and need, this guide does not specifically indicate for each field
+            whether to store it or not. This is left to the individual system's scope and purpose. -->
          </p>
          <a id="aoe"></a>
-         <h3>Наблюдения для вопросов, задаваемых при вводе заказа (AOE)<!-- Ask At Order Entry (AOE) Observations  --></h3>
+         <h3>Использование ресурса Observation для вопросов, задаваемых при вводе заказа (AOE)<!-- Ask At Order Entry (AOE) Observations  --></h3>
          <p>Ответы на задаваемые при вводе заказа вопросы записываются в виде наблюдений, предоставляющих важную информацию для вычисления или интерпретации некоторых лабораторных результатов или для удовлетворения требований по сбору информации уполномоченных государственных и федеральных учреждений здравоохранения, например для тестирования содержания свинца в крови. Не для каждого заказа будут требоваться AOE-вопросы и связанные наблюдения. Лаборатория будет указывать, если и какие AOE-вопросы включать в заказ в своем сборнике тестов. 
 		 Примеры данных, получаемых от пациента, включают информацию о трудоустройстве, беременность, дату последней менструации, возраст матери, а также вопросы о семейной и личной истории. В некоторых случаях могут быть AOE-вопросы, которые требуют знания предыдущих результатов, сформулированных в форме вопроса, например "Ваш предыдущий результат мазка был в норме?". AOE-ответы могут быть в разных форматах, включая, но не ограничиваясь следующими:
 		 <!-- Ask at Order Entry (AOE) responses are recorded as observations that provide critical information for
@@ -504,34 +513,43 @@
          <a id="specialcondsideration"></a>
          <h4>Особые соображения<!-- Special Considerations --></h4>
          <p>
-            Note that various Ask at Order Entry questions may appear to have specific elements in FHIR Resources.
+		 Обратите внимание, что различным задаваемым при вводе заказа вопросам могут соответствовать некоторые элементы в ресурсах FHIR. 
+		 Когда клинически значимое значение узнается через задаваемый при вводе заказа вопрос, его необходимо передавать через сегменты OBX, как описано выше, поскольку эти значения используются для клинической интерпретации, а не через, казалось бы, подходящий FHIR-элемент.
+		 Далее приводятся конкретные примеры и указания, где следует использовать FHIR-элемент, а где - элемент .supporting information с типом Reference(Observation). Этот список не является исчерпывающим:
+            <!-- Note that various Ask at Order Entry questions may appear to have specific elements in FHIR Resources.
             When a clinically relevant value is asked through an Ask at Order Entry question it
             must be conveyed through the OBX segments as described above as these values are used for
             clinical interpretations rather than through a seemingly similar FHIR element.
             The following provide specific examples and guidance whether to use a FHIR element or the supporting information element with type Reference(Observation).
-            This is list is not meant to be exhaustive: </p>
+            This is list is not meant to be exhaustive:  --></p>
          <ul>
-            <li>Date of Birth - Always use Patient.birthDate and should never be asked as an AOE as
-               there is only one at any point in time.
+            <li>Дата рождения - всегда используйте Patient.birthDate и никогда не предлагайте в качестве AOE, так как она всегда одна в любой момент времени.<!-- Date of Birth - Always use Patient.birthDate and should never be asked as an AOE as
+               there is only one at any point in time. -->
             </li>
-            <li>The extension us-core-race(http://hl7.org/fhir/ExtensionDefinition/us-core-race) is provided for demographic (administrative/billing), not clinical use and is bound to define five race categories as  prescribed by federal standards. The
+            <li>Расширение us-core-race(http://hl7.org/fhir/ExtensionDefinition/us-core-race) предназначено для демографического (административного/выставления счетов), а не клинического использования и ограничено задавать 5 категорий рас, как это предписывается федеральными стандартами. Лаборатория должна указать AOE для тех тестов, где раса влияет на интерпретацию результатов. Это значение должно определяться заказывающим провайдером (Ordering Provider) и должно передаваться в элементе .supporting information с типом Reference(Observation). Обратите внимание, что государственные и/или национальные постановления могут диктовать другие правила. 
+			<!-- The extension us-core-race(http://hl7.org/fhir/ExtensionDefinition/us-core-race) is provided for demographic (administrative/billing), not clinical use and is bound to define five race categories as  prescribed by federal standards. The
                lab must provide an AOE for those tests where Race drives the interpretation of results. The
-               value must be determined by the Ordering Provider and must be sent as the .supporting information element with type Reference(Observation). Note that state and/or national regulations may dictate other behaviors.
+               value must be determined by the Ordering Provider and must be sent as the .supporting information element with type Reference(Observation). Note that state and/or national regulations may dictate other behaviors. -->
             </li>
-            <li>The extension us-core-ethnicity(http://hl7.org/fhir/ExtensionDefinition/us-core-ethnicity) is provided for demographic (administrative/billing), not clinical use and is bound to specify two ethnicity categories as  prescribed by federal standards. The lab must provide an AOE where Ethnicity drives the interpretation of results. The value must be determined by the Ordering Provider and must be sent as the .supporting information element with type Reference(Observation.  Note that state and/or national regulations may dictate other behaviors. </li>
+            <li>
+			Расширение us-core-ethnicity(http://hl7.org/fhir/ExtensionDefinition/us-core-ethnicity) предназначено для демографического (административного/выставления счетов), а не клинического использования и ограничено задавать 2 категории этнической (расовой) принадлежности, как это предписывается федеральными стандартами. Лаборатория должна указать AOE для тех тестов, где этническая (расовая) принадлежность влияет на интерпретацию результатов. Это значение должно определяться заказывающим провайдером (Ordering Provider) и должно передаваться в элементе .supporting information с типом Reference(Observation). Обратите внимание, что государственные и/или национальные постановления могут диктовать другие правила. 
+			<!-- The extension us-core-ethnicity(http://hl7.org/fhir/ExtensionDefinition/us-core-ethnicity) is provided for demographic (administrative/billing), not clinical use and is bound to specify two ethnicity categories as  prescribed by federal standards. The lab must provide an AOE where Ethnicity drives the interpretation of results. The value must be determined by the Ordering Provider and must be sent as the .supporting information element with type Reference(Observation.  Note that state and/or national regulations may dictate other behaviors.  --></li>
          </ul>
-         <p> More specific race and ethnicity values are available, but not limited to,
-         those found   <a href="v3/Race/index.html">v3 Code System Race</a> and  <a href="v3/Ethnicity/index.html"> v3 Code System Ethnicity</a>.<!-- Eh todo see if these value set align with the text-->
+         <p>
+		 Более конкретные значения расовой или этнической принадлежности доступны, но не ограничены теми, которые можно найти в <a href="v3/Race/index.html">v3 Code System Race</a> и <a href="v3/Ethnicity/index.html"> v3 Code System Ethnicity</a>.
+		 <!-- More specific race and ethnicity values are available, but not limited to,
+         those found   <a href="v3/Race/index.html">v3 Code System Race</a> and  <a href="v3/Ethnicity/index.html"> v3 Code System Ethnicity</a>. --><!-- Eh todo see if these value set align with the text-->
          </p>
          <!--EH not needed: 2.7.6.2  EXAMPLES
             Example AOE using OBX for blood lead test in adults; the highlighted 1 and 2 indicate how to use
             OBX-4 (Observation Sub-ID) to link the Name to an Address when more than one employer is
             communicated.   ( will provide examples elsewhere )-->
          <a id="priorresults"></a>
-         <h3>Communication Of Other Clinical Information Or Prior Results </h3>
+         <h3>Передача другой клинической информации или предыдущих результатов<!-- Communication Of Other Clinical Information Or Prior Results --> </h3>
          <p>
-            Should the need arise to send results not obtained at the time of order entry or specimen collection
-            and/or those requiring full results report structure such as culture/sensitivity reports.  Use the USlabOrder DiagnosticReport priorResults extension.
+            В случае возникновения необходимости отправить результаты, полученные не во время ввода заказа или сбора образца для анализа и/или те, которые требуют полную структуру отчета с результатами, например определение чувствительности микроорганизмов, используйте USlabOrder DiagnosticReport-расширение priorResults.
+			<!-- Should the need arise to send results not obtained at the time of order entry or specimen collection
+            and/or those requiring full results report structure such as culture/sensitivity reports.  Use the USlabOrder DiagnosticReport priorResults extension. -->
             <!-- todo -->
          </p>
          <!--EH not needed: 2.7.8  ACKNOWLEDGEMENTS
@@ -547,8 +565,10 @@
             step 2.
               (REST takes care of this )-->
          <a id="errorhandling"></a>
-         <h2>Error Handling</h2>
-         <p>Refer to the FHIR Specification on <a href="http.html#httpstatuscodes"> REST status codes</a> and the use of the <a href="operationoutcome.html">OperationOutcome Resource</a> when further information about the transaction error is needed.  Note to balloters: The error handling specifications are currently not fully defined for this implementation.</p>
+         <h2>Обработка ошибок<!-- Error Handling --></h2>
+         <p>
+		 Обратитесь к спецификации FHIR за <a href="http.html#httpstatuscodes"> REST статус-кодами</a> и использованием ресурса <a href="operationoutcome.html">OperationOutcome</a>, если потребуется дополнительная информация о транзакционных ошибках. Примечание для голосования: спецификация обработки ошибок в настоящее время не в полной мере определена для этой реализации.
+		 <!-- Refer to the FHIR Specification on <a href="http.html#httpstatuscodes"> REST status codes</a> and the use of the <a href="operationoutcome.html">OperationOutcome Resource</a> when further information about the transaction error is needed.  Note to balloters: The error handling specifications are currently not fully defined for this implementation. --></p>
          <!--EH needed?  these are covered by functional requirments  ? 2.7.9  ERROR HANDLING -->
          <!-- EH  Not needed: 2.8  Referenced Profiles - Antecedents-->
          <!--- EH  Not needed: 2.9  Conformance to this Guide  (covered in the actual profiles -->
@@ -558,23 +578,29 @@
          <!-- EH  Examples will be given in spec  APPENDIX A.   LABORATORY ORDER MESSAGE DEVELOPMENT RESOURCES  -->
          <a id="addlguidance"></a>
          <!-- EH   APPENDIX B.   ADDITIONAL IMPLEMENTATION GUIDANCE - OTHER -->
-         <h2>Additional Implementation Guidance - Other</h2>
-         <h3>Clinical Laboratory Improvement Amendments Considerations </h3>
-         <p>In the United States, clinical laboratory testing of human specimens is regulated by the Clinical
+         <h2>Дополнительные указания по реализации - Другое<!-- Additional Implementation Guidance - Other --></h2>
+         <h3>Соображения о резолюции к улучшению клинической лаборатории<!-- Clinical Laboratory Improvement Amendments Considerations --> </h3>
+         <p>
+		 В США клинико-лабораторные исследования образцов для анализа, взятых у людей, регулируются резолюцией к улучшению клинической лаборатории (Clinical Laboratory Improvements Amendments (CLIA)) 1988 года. (Прим. пер. - это регулируемые правительством США стандарты, которые распространяются на все существующие лаборатории в стране, чья деятельность связана с тестированием людей. Аккредитация CLIA дает повышенную гарантию на точность, своевременность и надежность результатов лабораторий. Аккредитации CLIA выдаётся Департаментом Здравоохранения Соединённых Штатов Америки. <a href="http://oftalmic.ru/diagn_clia.php">Ссылка на источник</a>) Несколько разделов постановлений, реализующих CLIA, влияют на то, как электронные лабораторные данные форматируются для США, и они описаны в данном разделе. Затронутые области включают обязательные требования к заказу тестов. <a href="http://wwwn.cdc.gov/clia/regs/toc.aspx">CLIA Regulation Specifics</a>.
+		 <!-- In the United States, clinical laboratory testing of human specimens is regulated by the Clinical
             Laboratory Improvements Amendments of 1988 (CLIA). Several sections of the regulations
             implementing CLIA impact how electronic laboratory data is formatted for the US Realm and these are
             outlined in this section. Impacted areas include mandatory test request requirements.
-            <a href="http://wwwn.cdc.gov/clia/regs/toc.aspx">CLIA Regulation Specifics</a>.
+            <a href="http://wwwn.cdc.gov/clia/regs/toc.aspx">CLIA Regulation Specifics</a>. -->
          </p>
-         <h3>Mandatory Ordering Requirements</h3>
-         <p><a href="http://wwwn.cdc.gov/clia/regs/subpart_k.aspx493.1241">Section 493.1241 of the CLIA Regulations</a> requires the laboratory to have a written or electronic request
+         <h3>Обязательные требования для заказа<!-- Mandatory Ordering Requirements --></h3>
+         <p>
+		 <a href="http://wwwn.cdc.gov/clia/regs/subpart_k.aspx493.1241">Раздел 493.1241 положения CLIA</a> обязывает лабораторию иметь письменный или электронный запрос на исследование пациента от уполномоченного лица, а также определяет пункты, которые должны присутствовать в рамках запроса на клинико-лабораторное исследование. Лаборатория может принимать устные запросы на лабораторные тестирования, если она требует письменную или электронную авторизацию в течение 30 дней с момента устного обращения и поддерживает авторизацию или документацию попыток получения этой авторизации.
+		 <!-- <a href="http://wwwn.cdc.gov/clia/regs/subpart_k.aspx493.1241">Section 493.1241 of the CLIA Regulations</a> requires the laboratory to have a written or electronic request
             for patient testing from an authorized person, and defines items that must appear as part of a clinical
             laboratory test request . The laboratory may
             accept oral requests for laboratory tests if it solicits a written or electronic authorization within 30 days
             of the oral request and maintains the authorization or documentation of its efforts to obtain the
-            authorization.
+            authorization. -->
          </p>
-         <p><a href="http://www.cms.hhs.gov/CLIA/downloads/apcsubk2.pdf">Interpretative guidelines on the elements required in a test requisition </a>. Specific fields impacted include the following:</p>
+         <p>
+		 <a href="http://www.cms.hhs.gov/CLIA/downloads/apcsubk2.pdf">Пояснительные указания к элементам, обязательным в заявке на исследование</a>. Поля, на которые оказывается влияние, включают следующие:
+		 <!-- <a href="http://www.cms.hhs.gov/CLIA/downloads/apcsubk2.pdf">Interpretative guidelines on the elements required in a test requisition </a>. Specific fields impacted include the following: --></p>
          <table>
             <tr>
                <th>FHIR element</th>
@@ -582,39 +608,39 @@
             </tr>
             <tr>
                <td>Patient.name</td>
-               <td>The patient's name or unique patient identifier.</td>
+               <td>Имя или уникальный идентификатор пациента.<!-- The patient's name or unique patient identifier. --></td>
             </tr>
             <tr>
                <td>Patient.gender</td>
-               <td>The sex and age or date of birth of the patient.</td>
+               <td>Пол и возраст или дата рождения пациента.<!-- The sex and age or date of birth of the patient. --></td>
             </tr>
             <tr>
                <td>DiagnosticOrder.orderer</td>
-               <td>The name and address or other suitable identifiers of the authorized person requesting the test.</td>
+               <td>Имя и адрес или другие подходящие идентификаторы уполномоченного лица, заказывающего исследование.<!-- The name and address or other suitable identifiers of the authorized person requesting the test. --></td>
             </tr>
             <tr>
                <td>DiagnosticOrder.orderer</td>
-               <td>The individual responsible for using the test results.</td>
+               <td>Лицо, ответственное за использование результатов исследования.<!-- The individual responsible for using the test results. --></td>
             </tr>
             <tr>
                <td>Practitioner.organization</td>
-               <td>The name and address of the laboratory submitting the specimen.</td>
+               <td>Имя и адрес лаборатории, предоставляющей образец для анализа.<!-- The name and address of the laboratory submitting the specimen. --></td>
             </tr>
             <tr>
                <td>Practitioner.telecom|Organization.telecom</td>
-               <td>Contact person to enable the reporting of imminently life threatening laboratory results or panic or alert values.</td>
+               <td>Контактное лицо для сообщения об угрожающих жизни лабораторных результатах или тревожных значениях.  <!-- Contact person to enable the reporting of imminently life threatening laboratory results or panic or alert values. --></td>
             </tr>
             <tr>
                <td>DiagnosticOrder.name</td>
-               <td>The test(s) to be performed.</td>
+               <td>Тест(-ы), которые должны быть выполнены.<!-- The test(s) to be performed. --></td>
             </tr>
             <tr>
                <td>DiagnosticOrder.supportingInformation</td>
-               <td>For Pap smears, the patient's last menstrual period, and indication of whether the patient had a previous abnormal report, treatment or biopsy.</td>
+               <td>Для исследования цитологического мазка - дата последней менструации пациента и указание, был ли предыдущий результат аномальным, проходил ли пациент лечение или биопсию.<!-- For Pap smears, the patient's last menstrual period, and indication of whether the patient had a previous abnormal report, treatment or biopsy. --></td>
             </tr>
             <tr>
                <td>Specimen.type</td>
-               <td>The source (type) of the specimen, when appropriate.</td>
+               <td>Источник (тип) образца для анализа, при необходимости.<!-- The source (type) of the specimen, when appropriate. --></td>
             </tr>
             <tr>
                <td>Specimen.collection.collected[x]</td>
