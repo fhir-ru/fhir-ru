@@ -99,7 +99,7 @@
                segments, e.g., quantitative and qualitative statement of the same measurement. -->
             </li>
             <li>
-			<b>Orderable Test или Laboratory Order </b> - пункт ресурса DiagnosticOrder, запрашивающий один или более измерений (Observation Resources). 
+			<b>Orderable Test или Laboratory Order </b> - элемент item ресурса DiagnosticOrder, запрашивающий одно или несколько измерений (Observation Resources). 
 			<!-- <b>Orderable Test or Laboratory Order </b>- a DiagnosticOrder Resource item requesting
                one or more measurements (Observation Resources). -->
             </li>
@@ -644,33 +644,44 @@
             </tr>
             <tr>
                <td>Specimen.collection.collected[x]</td>
-               <td>The date and, if appropriate, time of specimen collection.</td>
+               <td>Дата и, при необходимости, время взятия образца для анализа.<!-- The date and, if appropriate, time of specimen collection. --></td>
             </tr>
             <tr>
                <td>DiagnosticOrder.supportingInformation</td>
-               <td>Any additional information relevant and necessary for a specific test to ensure accurate and timely testing and reporting of results, including interpretation, if applicable.</td>
+               <td>Любая дополнительная информация, значимая или необходимая для конкретного теста для обеспечения точного и своевременного выполнения исследования и протоколирования результатов, включая их интерпретацию, если это возможно.
+			   <!-- Any additional information relevant and necessary for a specific test to ensure accurate and timely testing and reporting of results, including interpretation, if applicable. --></td>
             </tr>
          </table>
          <a id="glossary"></a>
-         <h3>Glossary</h3>
+         <h3>Глоссарий<!-- Glossary --></h3>
          <ul>
-            <li><b>Analyte:  </b>Component represented in the name of a measurable quantity. It is the most granular level at which
-               measurements are made and always represented using a single Observation segment group
+            <li><b>Analyte (Вещество, определяемое при анализе):  </b>Компонент, представляемый в названии измеряемой величины. Это наиболее гранулированный уровень, на котором выполняются измерения, он всегда представляется с помощью отдельной группы сегментов Observation.<!-- Component represented in the name of a measurable quantity. It is the most granular level at which
+               measurements are made and always represented using a single Observation segment group -->
             </li>
-            <li><b>Cancellation:  </b>Act of cancelling the order. </li>
-            <li><b>Electronic Health Record:  </b>Clinical information for a specific patient that is stored electronically within an EHR-S.
+            <li><b>Cancellation (Отмена):  </b>Акт отмены заказа.<!-- Act of cancelling the order.  --></li>
+            <li><b>Electronic Health Record (Электронная медицинская карта):  </b>
+			Клиническая информация о конкретном пациенте, которая хранится в электронном виде в системе ЭМК. Система электронных медицинских карт.
+			Данное руководство использует этот термин в том же контексте, как указано в "HL7 EHR System Functional Model White Paper" разделе 4 Определения (HL7 2004 www.hl7.org): "Важно отметить, что DSTU не пытается установить другое определение EHR-систем, однако выбирает для применения существующие определения, которые включает концепцию ЭМК-систем как систему (по крайней мере одну) или систему систем, которые совместно удовлетворяют потребностям конечного пользователя."
+			<!-- Clinical information for a specific patient that is stored electronically within an EHR-S.
                Electronic Health Record
                System (EHR-S)
                This IG uses this term in the same context as stated in the "HL7 EHR System Functional Model White
                Paper" Section 4 Definitions (HL7 2004 www.hl7.org):
                "It is important to note that the DSTU does not attempt to establish another definition for EHR Systems,
                but chooses to utilize existing definitions that include the concept of EHR Systems as a system (at least
-               one) or a system-of- systems that cooperatively meet the needs of the end user."
+               one) or a system-of- systems that cooperatively meet the needs of the end user." -->
             </li>
-            <li><b>Future Order:  </b>A future order is an order with a start date/time where that start date/time indicates the earliest time the
-               specimen can be collected.
+            <li><b>Future Order (Будущий заказ/Заказ на срок):  </b>Будущий заказ - это заказ с датой/временем начала, где эта дата/время начала обозначает самое раннее время, когда можно будет взять образец для анализа.<!-- A future order is an order with a start date/time where that start date/time indicates the earliest time the
+               specimen can be collected. -->
             </li>
-            <li><b>Laboratory:  </b>A facility or organization that performs laboratory testing on specimens for the purpose of providing
+            <li><b>Laboratory (Лаборатория):  </b>
+			Объект или организация, которая проводит лабораторные исследования образцов для анализа с целью предоставления информации для диагностики, профилактики, лечения заболевания или нарушения, или оценки здоровья для людей.
+			Laboratory Information
+               System (LIS) - Лабораторная информационная система (ЛИС)
+			   Информационная система, которая получает, обрабатывает и хранит информацию, относящуюся к лабораторным процессам. 
+			   ЛИС может взаимодействовать с HIS и EHR приложениями.
+			   Данное определение является минимальным и опускает множество функций и возможностей, которые, как правило, связаны с лабораторными информационными системами. Эта минимальная характеристика является намеренной, чтобы включить как можно более широкий набор лабораторных информационных систем в этот сценарий использования. Минималистский характер этого определения вовсе не исключает ЛИС со значительно большими возможностями.
+			<!-- A facility or organization that performs laboratory testing on specimens for the purpose of providing
                information for the diagnosis, prevention, treatment of disease or impairment, or assessment of health for
                humans.
                Laboratory Information
@@ -680,44 +691,63 @@
                This definition is very minimal and omits many features and capabilities that are typically associated with
                laboratory information systems. This minimal characterization is intentional, as to include the broadest
                possible set of LIS systems in the use case. The minimal nature of the definition by no means excludes
-               LIS with significantly greater capabilities.
+               LIS with significantly greater capabilities. -->
             </li>
             <!-- EH - do we need this here? <li><b>Laboratory Message:  </b>An electronic communication between a Laboratory Order System and a Laboratory Information System
                related to laboratory testing. Laboratory messages may be used to request that one or more tests be
                performed, to change previous requests for testing, to report the cancellation of requested tests, or to
                report the results of requested tests.
             </li> -->
-            <li><b>Laboratory Order:  </b>a DiagnosticOrder Resource item requesting  one or more measurements (Observation Resources). Synonymous with a Requisition when referring to a single DiagnosticOrder Resource item. </li>
-            <li><b>Laboratory Order System:  </b>Software, either stand-alone or as part of an EHR system, used by a Provider (Order Placer) to 			manage a  laboratory order, including generating the laboratory requisition and sending it to a laboratory.
+            <li><b>Laboratory Order (Лабораторный заказ):  </b>
+			элемент item ресурса DiagnosticOrder, запрашивающий одно или несколько измерений (ресурсы Observation). Является синонимом Requisition (Заявка) при отсылке к отдельному пункту ресурса DiagnosticOrder.
+			<!-- a DiagnosticOrder Resource item requesting  one or more measurements (Observation Resources). Synonymous with a Requisition when referring to a single DiagnosticOrder Resource item.  --></li>
+            <li><b>Laboratory Order System (Система лабораторных заказов):  </b>
+			Программное обеспечение, либо автономное, либо как часть EHR системы, используемое провайдером (Order Placer) для управления лабораторным заказом, в том числе создания лабораторной заявки и отправки ее в лабораторию.
+                Обычно система лабораторных заказов является неотъемлемой частью системы управления заказами, что позволяет пользователям управлять заказами для различных видов услуг, процедур, расходных материалов и т. д. Так как данное руководство фокусируется только на обмене данными, связанными с лабораторными заказами, в нем намеренно используется очень ограниченное определение.
+			<!-- Software, either stand-alone or as part of an EHR system, used by a Provider (Order Placer) to 			manage a  laboratory order, including generating the laboratory requisition and sending it to a laboratory.
                Typically a laboratory order system is an integral part of an order management system that enables users
                to manage orders for many different types of services, procedures, supplies, etc. Since this guide only
-               focuses on data exchange relative to laboratory orders it is purposely using a very limited definition.
+               focuses on data exchange relative to laboratory orders it is purposely using a very limited definition. -->
             </li>
-            <li><b>Laboratory Requisition:  </b>A set of information that constitutes an official request for one or more laboratory tests to be performed on
+            <li><b>Laboratory Requisition (Лабораторная заявка):  </b>
+			Набор сведений, составляющих официальный запрос на одно или несколько лабораторных исследований, которые должны быть выполнены для индивидуального пациента. Лабораторная заявка конкретизируется в клинических условиях и передается в лабораторию в виде отдельной бумаги или электронного артефакта. Лабораторные заявки всегда включают в себя, по меньшей мере, один заказ исследования. В терминах FHIR транзакции заказа, это представляет собой один или несколько элементов item ресурса DiagnosticOrder.			
+			<!-- A set of information that constitutes an official request for one or more laboratory tests to be performed on
                an individual patient. A laboratory requisition is specified in a clinical setting and communicated to a
                laboratory as a discrete paper or electronic artifact. Laboratory requisitions always include at least one
-               test order. In terms of a FHIR order transaction it represents one or more DiagnosticOrders Resource item(s).
+               test order. In terms of a FHIR order transaction it represents one or more DiagnosticOrders Resource item(s). -->
             </li>
-            <li><b>Newborn:  </b>The precise cutoff when a patient is considered a newborn or an infant is subject to interpretation and this
+            <li><b>Newborn (Новорожденный):  </b>
+			Точная граница, когда пациент считается новорожденным или младенцем, может меняться в зависимости от интерпретации, и данное руководство не предлагает окончательного ответа на этот вопрос. Для получения дополнительных сведений читатель может обратиться к следующим ресурсам:
+			<!-- The precise cutoff when a patient is considered a newborn or an infant is subject to interpretation and this
                guide does not intend to provide a definitive answer to that. For further background the reader is directed
-               to the following resources:
+               to the following resources: -->
 
             <ul>
                <li>Mosby's Medical Dictionary, 8th edition. &copy; 2009, Elsevier </li>
-               <li>World Health Organization - provides standardization for perinatal definitions </li>
-               <li>Management of Hyperbilirubinemia in the Newborn Infant 35 or More Weeks of Gestation </li>
+               <li>Всемирная организация здравоохранения - занимается стандартизацией перинатальных определений<!-- World Health Organization - provides standardization for perinatal definitions --> </li>
+               <li>Лечение гипербилирубинемии у новорожденных, детей или 35 и более недель беременности<!-- Management of Hyperbilirubinemia in the Newborn Infant 35 or More Weeks of Gestation  --></li>
                <li> <a href="http:/pediatrics.aappublications.org/content/114/1/297.full.html ">http:/pediatrics.aappublications.org/content/114/1/297.full.html</a></li>
             </ul>
             </li>
-             <li><b>Orderable Test:  </b>A request to perform an individual test or panel. It always refers to a single  DiagnosticOrder Resource item. and 		may have one or more associated analytes (bservations).
+             <li><b>Orderable Test (Заказываемый тест):  </b>
+			 Запрос на выполнение отдельного теста или панели. Это всегда относится к одному элементу item ресурса DiagnosticOrder и может иметь один или более связанных аналитов (наблюдений).
+			 <!-- A request to perform an individual test or panel. It always refers to a single  DiagnosticOrder Resource item. and 		may have one or more associated analytes (bservations). -->
             </li>
-            <li><b>Panel:  </b>While there are differences in the meanings of the terms "panel" among various laboratories, for the
+            <li><b>Panel (Панель):  </b>
+			Хотя имеются различия в значении термина "панель" среди различных лабораторий, для целей данного руководства она определяется как группировка процедур по измерению нескольких аналитов из одного образца для анализа (или нескольких образцов в некоторых случаях) и может быть заказана с помощью одного лабораторного заказа. Также это может упоминаться как "battery". Например CBC [complete blood count - клинический анализ крови] или анализ мочи можно назвать панелями.
+			<!-- While there are differences in the meanings of the terms "panel" among various laboratories, for the
                purposes of this guide, it is defined as a grouping of procedures that measure multiple analytes from a
                single specimen (or multiple specimens in some cases) and can be requested through one laboratory
                order. This is also referred to as a battery. For example, a CBC or a urinalysis may be referred to as a
-               panel.
+               panel. -->
             </li>
-            <li><b>Order Set:  </b>A set of laboratory orders that involve multiple tests and panels and that may require multiple specimens,
+            <li><b>Order Set (Набор заказов):  </b>
+			Набор лабораторных заказов, которые включают несколько тестов и панелей и для которых может потребоваться несколько образцов, но для удобства могут быть заказаны одним блоком. Например "diabetic order set profile" (профиль набора заказов при диабете) может включать в себя клинический анализ крови, определение содержания гликозилированного гемоглобина и анализ мочи. Термин "панель" часто используется как взаимозаменяемый с "набором заказов", таким образом профиль набора заказов, который содержит несколько заказов лабораторных тестов, которые могут быть сами по себе или комбинироваться с другими заказами исследований (например радиологическое изображение, консултация и т. д.) можно считать набором заказов. Наборы заказов не должны передаваться лаборатории. 
+			Запрос на аннулирование (RFC) 
+			Запрос провайдера (Order Placer) не выполнять заказ.
+			
+			
+			<!-- A set of laboratory orders that involve multiple tests and panels and that may require multiple specimens,
                but can be requested as a single unit for convenience. For example, a "diabetic order set profile" might
                include a CBC, a glycosylated hemoglobin test, and a urinalysis. The term "panel" is frequently used
                interchangeably with "order set", thus an order set profile that contains a variety of laboratory test orders
@@ -725,11 +755,13 @@
                considered an order set. Order sets shall not be communicated to the laboratory.
                Request for Cancellation
                (RFC)
-               Request by the Provider (Order Placer) not to perform the order.
+               Request by the Provider (Order Placer) not to perform the order. -->
             </li>
-            <li><b>Test:  </b>A medical procedure or named set of related procedures that involves analyzing one analyte using a
+            <li><b>Test (Тест/исследование):  </b>
+			Медицинская процедура или именованный набор связанных процедур, которые включает в себя анализ одного аналита с помощью одного образца крови, мочи или других образцов, взятых у пациента, с целью диагностики заболевания или состояния здоровья, планирования или оценки лечения, или контроля за ходом болезни.
+			<!-- A medical procedure or named set of related procedures that involves analyzing one analyte using a
                single sample of blood, urine, or other specimen from a patient for the purpose of diagnosing a disease or
-               medical condition, planning or evaluating treatment, or monitoring the course of a disease.
+               medical condition, planning or evaluating treatment, or monitoring the course of a disease. -->
             </li>
          </ul>
       </div>
