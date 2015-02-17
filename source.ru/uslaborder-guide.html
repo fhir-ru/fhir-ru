@@ -240,45 +240,46 @@
                vocabulary, error handling, and normalization standards have been agreed to by all relevant
                participants. -->
             </li>
-            <li>Legal and governance issues regarding data access authorizations, data ownership, and data use
-               are in effect.
+            <li>Юридические вопросы и проблемы управления, касающиеся разрешений доступа к данным, прав собственности на данные и использования данных, которые находятся в силе.<!-- Legal and governance issues regarding data access authorizations, data ownership, and data use
+               are in effect. -->
             </li>
-            <li>Established network and policy infrastructure exists to enable consistent, appropriate, and
+            <li>Установленная инфраструктура сети и политики безопасности существует для того, чтобы сделать возможным непротиворечивый, надлежащий и точный обмен данными между системами-провайдерами, репозиториями данных и сервисами поиска. Это включает в себя, но не ограничивается:
+			<!-- Established network and policy infrastructure exists to enable consistent, appropriate, and
                accurate information exchange across provider systems, data repositories and locator services.
-               This includes, but is not limited to:
+               This includes, but is not limited to: -->
 
             <ul>
-               <li>Methods to identify and authenticate users; </li>
-               <li>Methods to identify and determine Providers of care; </li>
-               <li>Methods to enforce data access authorization policies; </li>
-               <li>Methods to ensure the veracity of data; </li>
+               <li>Методы идентификации и аутентификации пользователей;<!-- Methods to identify and authenticate users;  --></li>
+               <li>Методы идентификации и определения поставщиков медицинских услуг;<!-- Methods to identify and determine Providers of care;  --></li>
+               <li>Методы обеспечения соблюдения политики авторизации доступа к данным;<!-- Methods to enforce data access authorization policies;  --></li>
+               <li>Методы обеспечения достоверности данных;<!-- Methods to ensure the veracity of data;  --></li>
             </ul></li>
-            <li>Detailed audit trails are kept as necessary by all participating systems. </li>
-            <li>Security and privacy policies, procedures and practices are commonly implemented to support
+            <li>Подробные контрольные записи хранятся по мере необходимости всеми системами-участниками.<!-- Detailed audit trails are kept as necessary by all participating systems.  --></li>
+            <li>Политики безопасности и конфиденциальности, процедуры и практики, как правило, реализуются для поддержки приемлемого уровня безопасности и конфиденциальности пациентов; т. е. HIPAA, HITECH и критерии сертификации EHR (ЭМК).<!-- Security and privacy policies, procedures and practices are commonly implemented to support
                acceptable levels of patient privacy and security; i.e. HIPAA, HITECH and EHR certification
-               criteria.
+               criteria. -->
             </li>
          </ul>
          <a id="preconditions"></a>
          <h4>Предусловия<!-- Pre-Conditions --></h4>
          <p><b>Примечание<!-- Note --></b>: пред- и постусловия могут применяться не ко всем сценариям.<!-- The pre- and post-conditions may not apply to all scenarios.  --></p>
          <ul>
-            <li>The Provider (.orderer) has performed all of the necessary checks for medical necessity,
-               insurance eligibility and any needed pre-authorizations.
+            <li>Провайдер (.orderer) выполнил все необходимые проверки в соответствии с медицинскими требованиями, проверил страховую пригодность и выполнил все предварительные авторизации.<!-- The Provider (.orderer) has performed all of the necessary checks for medical necessity,
+               insurance eligibility and any needed pre-authorizations. -->
             </li>
-            <li>After a Provider (.orderer) enters a laboratory order, the EHR system generates an
+            <li>После того, как провайдер (.orderer) вводит лабораторный заказ, EHR-система создает электронную лабораторную заявку, содержащую относящуюся к делу информацию, а также надлежащие идентификаторы, такие как пациент, заказ, образец для анализа.<!-- After a Provider (.orderer) enters a laboratory order, the EHR system generates an
                electronic laboratory requisition containing pertinent information as well as appropriate
-               identifiers, such as patient, order, and specimen.
+               identifiers, such as patient, order, and specimen. -->
             </li>
-            <li>The Laboratory's test compendium has been entered (manually or via automation) into the EHR
-               system.
+            <li>Сборник тестов лаборатории был введен (вручную или с помощью автоматики) в систему ЭМК.<!-- The Laboratory's test compendium has been entered (manually or via automation) into the EHR
+               system. -->
             </li>
-            <li>Information for the cancellation requests for laboratory orders has been accurately captured
-               within the EHR System.
+            <li>Информация по отмене заказов лабораторных ордеров безошибочно собирается в системе ЭМК.<!-- Information for the cancellation requests for laboratory orders has been accurately captured
+               within the EHR System. -->
             </li>
-            <li>All appropriate billing information is available within the EHR system. </li>
-            <li>Specimens are labeled in accordance with established policies and procedures for specimen
-               submission and can be linked to the order
+            <li>Все соответствующие платежные данные доступны в системе электронных медицинских карт.<!-- All appropriate billing information is available within the EHR system. --> </li>
+            <li>Образцы маркируются в соответствии с установленными правилами и процедурами представления образцов и могут быть связаны с порядком (can be linked to the order)<!-- Specimens are labeled in accordance with established policies and procedures for specimen
+               submission and can be linked to the order -->
                <sup>4</sup>
             </li>
          </ul>
@@ -286,50 +287,50 @@
             Laboratory Standards Institute; 2011; ISBN 1-56238-748-0; ISSN 0273-3099, Volume 31 Number 7.
          </p>
          <a id="postconditions"></a>
-         <h4>Post-Conditions</h4>
+         <h4>Постусловия<!-- Post-Conditions --></h4>
          <ul>
-            <li>Laboratory orders are successfully transmitted electronically from the Provider's (.orderer) EHR System to the Laboratory's LIS. The Receiving Laboratory electronically
+            <li>Лабораторные заказы успешно передаются в электронном виде от системы ЭМК провайдера (.orderer) к ЛИС лаборатории. Лаборатория-получатель электронным образом передает подтверждение получения лабораторного заказа. Полученный заказ может быть помещен в электронную очередь для дальнейшей обработки в зависимости от рабочего процесса лаборатории (хотя очереди заказов выходят за рамки данного сценария использования).<!-- Laboratory orders are successfully transmitted electronically from the Provider's (.orderer) EHR System to the Laboratory's LIS. The Receiving Laboratory electronically
                transmits acknowledgement of receipt of the laboratory order. The received order may be placed
                into an electronic queue for further processing depending on laboratory workflow (although
-               order queues are out of scope for this Use Case).
+               order queues are out of scope for this Use Case). -->
             </li>
-            <li>Specimen(s) associated with the laboratory order are collected and, if necessary, transported to
-               the laboratory.
+            <li>Образец(-цы), связанные с лабораторным заказом, собираются и, в случае необходимости, перевозятся в лабораторию.<!-- Specimen(s) associated with the laboratory order are collected and, if necessary, transported to
+               the laboratory. -->
             </li>
-            <li>The laboratory processes the laboratory order and associated specimen(s). This step may include
+            <li>Лаборатория обрабатывает лабораторный заказ и связанный образец(-цы). Этот этап может включать извлечение и обработку лабораторных заказов из очереди или перечня полученных ордеров. Очереди заказов могут использоваться в ЛИС для хранения электронных лабораторных заказов до получения связанных образцов и проведения сопоставления и регистрации соответствующего пациента (хотя очереди заказов выходят за рамки данного сценария использования). После сопоставления и регистрации пациента электронный заказ может пройти компьютерную обработку в ЛИС. <!-- The laboratory processes the laboratory order and associated specimen(s). This step may include
                retrieval and processing of laboratory orders from a queue or list of received orders. Order
                queues may be used in the LIS to hold electronic laboratory orders until associated specimens are
                received and the appropriate patient matching and registration occur (although order queues are
                out of scope for this Use Case). After patient matching and registration, the electronic order may
-               be electronically processed in the LIS.
+               be electronically processed in the LIS. -->
             </li>
-            <li>If the laboratory order and specimen(s) are satisfactory for testing the laboratory will perform, or
-               attempt to perform, the test(s).
+            <li>Если лабораторный заказ и образец(-цы) годятся для исследования, лаборатория выполнит или попытается выполнить этот тест(-ы).<!-- If the laboratory order and specimen(s) are satisfactory for testing the laboratory will perform, or
+               attempt to perform, the test(s). -->
             </li>
-            <li>The laboratory test result is obtained, entered/released in the LIS, and sent to the Provider's
+            <li>Результат лабораторного исследования получен, введен/опубликован в ЛИС и отправлен системе ЭМК провайдера (.orderer). Об этом говорится в сценарии использования интерфейса лабораторных результатов.<!-- The laboratory test result is obtained, entered/released in the LIS, and sent to the Provider's
                (.orderer) EHR System. This is covered within the Laboratory Results Interface Use
-               Case.
+               Case. -->
             </li>
-            <li>Successfully transmit laboratory order cancellation request from the Provider's (.orderer)
-               EHR system to the Laboratory's LIS.
+            <li>Успешно передавать запрос на отмену лабораторного заказа от системы ЭМК провайдера (.orderer) ЛИС лаборатории.<!-- Successfully transmit laboratory order cancellation request from the Provider's (.orderer)
+               EHR system to the Laboratory's LIS. -->
             </li>
-            <li>The Laboratory's LIS has electronically received the laboratory order cancellation request. </li>
-            <li>The Laboratory's cancellation of a requisition (one or more orders) or an individual order has
+            <li>ЛИС лаборатории получает в электронном виде запрос на отмену лабораторного заказа. <!-- The Laboratory's LIS has electronically received the laboratory order cancellation request.  --></li>
+            <li>Аннулирование лабораторией заявки (одного или нескольких заказов) или отдельного заказа получает электронным образом система ЭМК провайдера (.orderer). Обратите внимание, что аннулирование части заказа должно выполняться через ресурс DiagnosticResult в соответствии с профилем USLabResult.<!-- The Laboratory's cancellation of a requisition (one or more orders) or an individual order has
                been electronically received by the Provider's (.orderer) EHR System. Note that
-               cancellation of part of an order must be done through a DiagnosticResult Resource as defined in the USLabResult Profile.
+               cancellation of part of an order must be done through a DiagnosticResult Resource as defined in the USLabResult Profile. -->
             </li>
          </ul>
          <a id="scen1"></a>
-         <h4>Scenario 1 - Electronic Ordering Of New Or Scheduled
-            Laboratory Test(S)
+         <h4>Сценарий 1 - Электронный заказ нового или запланированного лабораторного исследования(-ий)<!-- Scenario 1 - Electronic Ordering Of New Or Scheduled
+            Laboratory Test(S) -->
          </h4>
-         <p>Using an EHR System, a Provider (Order Placer) orders one or more new laboratory tests or scheduled
-            laboratory tests (including future tests) to be performed by a laboratory.
+         <p>С помощью системы ЭМК провайдер (размещающий заказ) заказывает выполнение лабораторией одного или нескольких новых лабораторных исследований или запланированных лабораторных тестов (включая тесты, которые должны будут выполниться в будущем).<!-- Using an EHR System, a Provider (Order Placer) orders one or more new laboratory tests or scheduled
+            laboratory tests (including future tests) to be performed by a laboratory. -->
          </p>
-         <h5>Functional Requirements</h5>
+         <h5>Функциональные требования<!-- Functional Requirements --></h5>
          <p>todo</p>
          <!--EH:  need to rework for REST  acknowledgment codes -->
-         <h5>Sequence Diagram</h5>
+         <h5>Диаграмма последовательности действий<!-- Sequence Diagram --></h5>
          <p>
             <b>Figure N-N: Scenario 1 Sequence Diagram</b>
          </p>
@@ -337,8 +338,10 @@
             Laboratory Test(S) " src="todo"/>
          <!--EH:  need to rework for REST  acknowledgment codes -->
          <a id="scen2"></a>
-         <h4> Scenario 2 - Electronic Ordering Of Add-On Laboratory Test(S)</h4>
-         <p>Using an EHR System, a Provider (Order Placer) adds one or more additional tests to a previously
+         <h4>Сценарий 2 - Электронный заказ дополнительных лабораторных исследований <!-- Scenario 2 - Electronic Ordering Of Add-On Laboratory Test(S) --></h4>
+         <p>С помощью системы ЭМК провайдер (размещающий заказ) добавляет один или несколько дополнительных тестов к ранее переданной заявке на исследование. Обратите внимание, что если нет необходимости связывать дополнительный заказ к образцу для анализа из сделанного ранее заказа, то необходимо создать обычный новый заказ. 
+		 В момент, когда провайдер делает заявку на добавление к заказу, может случиться, что образец уже выработан или все еще ждет выработки. Провайдер может не знать текущей ситуации. Следовательно данное руководство предлагает, что пока не будет больше ясности, как заказывающая система провайдера обновляется информацией о сборе образцов для анализа, добавочная заявка на заказ провайдера передается как обычный заказ и может использовать, если известно:
+		 <!-- Using an EHR System, a Provider (Order Placer) adds one or more additional tests to a previously
             transmitted test requisition.
             Note that if there is no need to relate the additional order to the specimen associated with a prior order,
             the regular new order must be followed.
@@ -346,20 +349,22 @@
             drawn or still needs to be drawn. The provider may not know which situation is in place.
             Therefore, this guide suggests that until there is more clarity on how the provider's ordering system is
             updated with specimen collection information, the provider's add-on order request is communicated as a
-            regular order and may use, if known:
+            regular order and may use, if known: -->
          </p>
          <ul>
-            <li>The .identifier, when using non-unique order numbers, of the original order; and/or </li>
-            <li>The .identifier that was used when the original order was placed; and/or</li>
-            <li>The Specimen.identifier or other specimen data of the specimen the order is intended to be added to.</li>
+            <li>Элемент .identifier при использовании неуникальных порядковых номеров первоначального заказа; и/или<!-- The .identifier, when using non-unique order numbers, of the original order; and/or --> </li>
+            <li>Элемент .identifier, который использовался при размещении первоначального заказа; и/или <!-- The .identifier that was used when the original order was placed; and/or --></li>
+            <li>Specimen.identifier или другая информация об образце, к которому будет добавлен заказ.<!-- The Specimen.identifier or other specimen data of the specimen the order is intended to be added to. --></li>
          </ul>
          <p>
-            Using the first two methods make it appear, other than the transaction date/time, as if the order was
+		 Использование первых двух методов заставляет это выглядеть, кроме отличающейся даты/времени транзакции, как если бы заказ был размещен вместе и последовательно с первоначальным заказом. 
+		 Третий метод явно связывает новый заказ с тем же образцом, который уже был собран для предыдущего заказа. Обратите внимание, что в зависимости от состояния выполнения заказа лаборатория может не иметь возможности выполнить заказанный тест над предназначенным образцом, так как может быть слишком поздно по ряду причин (например недостаточное количество образца, образец уже слишком старый).
+            <!-- Using the first two methods make it appear, other than the transaction date/time, as if the order was
             placed together and consistent with the original order.
             The third method clearly associates the new order with the same specimen that was already collected for
             a prior order. Note that depending on the state of the order fulfillment, the Laboratory may not be able to
             perform the requested test against the intended specimen as it may be too late for a number of reasons
-            (e.g., insufficient specimen, specimen too old).
+            (e.g., insufficient specimen, specimen too old). -->
          </p>
          <a id="scen3"></a>
          <h4> Scenario 3 - Requesting The Cancellation Of A Previously Placed
@@ -462,8 +467,10 @@
             whether to store it or not. This is left to the individual system's scope and purpose.
          </p>
          <a id="aoe"></a>
-         <h3>Ask At Order Entry (AOE) Observations </h3>
-         <p>Ask at Order Entry (AOE) responses are recorded as observations that provide critical information for
+         <h3>Наблюдения для вопросов, задаваемых при вводе заказа (AOE)<!-- Ask At Order Entry (AOE) Observations  --></h3>
+         <p>Ответы на задаваемые при вводе заказа вопросы записываются в виде наблюдений, предоставляющих важную информацию для вычисления или интерпретации некоторых лабораторных результатов или для удовлетворения требований по сбору информации уполномоченных государственных и федеральных учреждений здравоохранения, например для тестирования содержания свинца в крови. Не для каждого заказа будут требоваться AOE-вопросы и связанные наблюдения. Лаборатория будет указывать, если и какие AOE-вопросы включать в заказ в своем сборнике тестов. 
+		 Примеры данных, получаемых от пациента, включают информацию о трудоустройстве, беременность, дату последней менструации, возраст матери, а также вопросы о семейной и личной истории. В некоторых случаях могут быть AOE-вопросы, которые требуют знания предыдущих результатов, сформулированных в форме вопроса, например "Ваш предыдущий результат мазка был в норме?". AOE-ответы могут быть в разных форматах, включая, но не ограничиваясь следующими:
+		 <!-- Ask at Order Entry (AOE) responses are recorded as observations that provide critical information for
             the calculation or interpretation of some lab results or to satisfy state and federal health agency
             mandated information gathering requirements, e.g., for blood lead testing. Not every order will have the
             need for AOE questions and associated observations. The lab will indicate if and which AOEs to include
@@ -472,26 +479,30 @@
             pregnancy status, the date of the last menstrual period, mother's age, and questions about family and
             personal history. In some cases there may be AOEs that request the outcome of previous results phrased
             as a question, e.g., "Was your previous pap abnormal?"
-            AOE responses can take several formats, including but not limited to</p>
+            AOE responses can take several formats, including but not limited to --></p>
          <ul>
-            <li>Yes/No (and coded) to answer questions like "Is this your first pregnancy?" </li>
-            <li>A code drawn from a value set to provide a coded response to, e.g., "What ethnicity do you
-               consider yourself to be?"
+            <li>Да/нет (и кодированные) для ответов на такие вопросы, как "Это ваша первая беременность?"<!-- Yes/No (and coded) to answer questions like "Is this your first pregnancy?"  --></li>
+            <li>Код, взятый из набора значений для указания кодированного ответа, например "К какой этнической (расовой) принадлежности вы относите себя?"<!-- A code drawn from a value set to provide a coded response to, e.g., "What ethnicity do you
+               consider yourself to be?" -->
             </li>
-            <li>A number with units for the mother's age </li>
-            <li>A date format for the patient's last menstrual period.</li>
+            <li>Число с единицами измерения для записи возраста матери<!-- A number with units for the mother's age  --></li>
+            <li>Формат даты для указания даты последней менструации пациента<!-- A date format for the patient's last menstrual period. --></li>
          </ul>
-         <p> .supporting information element with type Reference(Observation) must be used in the DiagnosticOrder Resource to convey these Ask at Order Entry questions.</p>
-         <p>Although not strictly asked at order entry, other supporting clinical information about the patient
+         <p>Для передачи таких задаваемых при вводе заказа вопросов необходимо использовать элемент .supporting information с типом Reference(Observation) в ресурсе DiagnosticOrder.<!-- .supporting information element with type Reference(Observation) must be used in the DiagnosticOrder Resource to convey these Ask at Order Entry questions. --></p>
+         <p>
+		 Хотя вопросы задаются не строго во время ввода заказа, другая вспомогательная клиническая информация о пациенте, собранная во время взятия образца для анализа, например статус воздержания от пищи (пост, натощак) пациента, считаются AOE-наблюдениями в контексте данного руководства и также должны передаваться с помощью элемента .supporting information с типом Reference(Observation).
+		 <!-- Although not strictly asked at order entry, other supporting clinical information about the patient
             collected during specimen collection, e.g., fasting status of the patient, are considered AOE observations
-            for purposes of this guide and must be communicated using the  .supporting information element with type Reference(Observation) as well.
+            for purposes of this guide and must be communicated using the  .supporting information element with type Reference(Observation) as well. -->
          </p>
-         <p>LOINC shall be used as the standard coding system for AOE questions if an appropriate and valid
+         <p>
+		 В качестве стандартной кодовой системы для AOE-вопросов необходимо использовать LOINC, если имеется подходящий и допустимый LOINC-код. LOINC-код и локальный код, описывающий вопрос, будет помещен в элемент Observation.name. Подходящий и допустимый статус определяется в LOINC Manual Section 11.2 Classification of LOINC Term Status. Если используется локальная кодовая система, и LOINC, и локальный код должны также отправляться для облегчения идентификации проблем кодирования. Когда допустимый LOINC-код не существует, единственным высылаемым кодом будет только локальный код.
+		 <!-- LOINC shall be used as the standard coding system for AOE questions if an appropriate and valid
             LOINC code exists. The LOINC and local code describing the question will be placed in Observation.name element.  Appropriate and valid status is defined in the LOINC Manual Section 11.2 Classification of LOINC Term Status. If a local coding system is in use, both the LOINC and the local
-            code should also be sent to help with identification of coding issues. When no valid LOINC exists, the local code may be the only code sent.
+            code should also be sent to help with identification of coding issues. When no valid LOINC exists, the local code may be the only code sent. -->
          </p>
          <a id="specialcondsideration"></a>
-         <h4>Special Considerations</h4>
+         <h4>Особые соображения<!-- Special Considerations --></h4>
          <p>
             Note that various Ask at Order Entry questions may appear to have specific elements in FHIR Resources.
             When a clinically relevant value is asked through an Ask at Order Entry question it
