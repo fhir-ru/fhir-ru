@@ -422,65 +422,92 @@
          <a id="codesystems"></a>
          <h2>Кодовые системы и наборы значений<!-- Code Systems And Value Sets --></h2>
          <p>
-		 Успешная реализация обмена сообщениями требует, чтобы переданные сообщения (экземпляры сообщений) содержали допустимые значения в кодированных полях. Для дальнейшего обсуждения <a href="terminologies.html">использования кодов в FHIR</a>обратитесь к спецификации FHIR.		 
+		 Для успешной реализации обмена сообщениями требуется, чтобы передаваемые сообщения (экземпляры сообщений) содержали в кодированных полях допустимые значения. Для дальнейшего обсуждения <a href="terminologies.html">использования кодов в FHIR</a> обратитесь к спецификации FHIR.		 
 		 <!-- Successful message implementation requires that transmitted messages (message instances) contain
             valid values for coded fields. For further discussion on <a href="terminologies.html">Using codes in FHIR </a> refer to the FHIR specification. -->
          </p>
          <h3>LOINC</h3>
-         <p>The use of the <a href="http://loinc.org/ ">Logical Observation Identifiers Names and Codes (LOINC) </a> code system is required
+         <p>
+		 Использование кодовой системы <a href="http://loinc.org/ ">Logical Observation Identifiers Names and Codes (LOINC)</a> требуется там, где для поля Observation.name есть соответствующий доступный LOINC-код, т. е. являющийся результатом. Подходящий статус определен в разделе 11.2 Classification of LOINC Term Status руководства по LOINC. Если используется локальная кодовая система, локальный код также должен быть послан в дополнение к LOINC, чтобы помочь с определением проблем кодирования. Когда подходящего LOINC-кода не существует, можно отправить только локальный код.  
+		 <!-- The use of the <a href="http://loinc.org/ ">Logical Observation Identifiers Names and Codes (LOINC) </a> code system is required
             where a LOINC code is available for the Observation.name,  i.e. the being resulted.   Appropriate status is defined in the LOINC
-            Manual Section 11.2 Classification of LOINC Term Status. If a local coding system is in use, a local code should also be sent in addition to the LOINC to help with identification of coding issues. When no valid LOINC exists the local code may be the only code sent.
+            Manual Section 11.2 Classification of LOINC Term Status. If a local coding system is in use, a local code should also be sent in addition to the LOINC to help with identification of coding issues. When no valid LOINC exists the local code may be the only code sent. -->
          </p>
-         <p>While data storage requirements in the EHR will not be addressed in this guide, it is recommended
-            that LOINC codes be stored in or accessible by the EHR for the following reasons:
+         <p>
+		 Хотя требования к хранению данных в ЭМК-системах не рассматриваются в этом руководстве, рекомендуется, чтобы LOINC-коды хранились в ЭМК или были ей доступны, по следующим причинам:
+		 <!-- While data storage requirements in the EHR will not be addressed in this guide, it is recommended
+            that LOINC codes be stored in or accessible by the EHR for the following reasons: -->
         </p>
 
          <ol>
-            <li>If the result is related to a reportable condition and the laboratory provides a LOINC code, </li>
-            <li>Meaningful Use Stage requires the EHR to send the LOINC code to public health.  If the LOINC code is the only code sent to the lab in OBX-3, then the EHR must store and retain
-               that code to satisfy CLIA reporting requirements.
+            <li>
+			Если результат относится к отчетному состоянию, и лаборатория предоставляет LOINC-код,
+			<!-- If the result is related to a reportable condition and the laboratory provides a LOINC code,  --></li>
+            <li>
+			Meaningful Use Stage требует от ЭМК отправлять LOINC-код в общественное здравоохранение. Если в лабораторию отправляется только LOINC-код в OBX-3, тогда ЭМК должна сохранить и поддерживать этот код для удовлетворения требований CLIA к отчетности.
+			<!-- Meaningful Use Stage requires the EHR to send the LOINC code to public health.  If the LOINC code is the only code sent to the lab in OBX-3, then the EHR must store and retain
+               that code to satisfy CLIA reporting requirements. -->
             </li>
-            <li>LOINC codes may be used for secondary data exchange purposes and other partner exchange
-               agreements.
+            <li>
+			Коды LOINC могут использоваться в целях вторичного обмена данными и других партнерских соглашений по обмену.
+			<!-- LOINC codes may be used for secondary data exchange purposes and other partner exchange
+               agreements. -->
             </li>
          </ol>
          <h3>SNOMED CT</h3>
-         <p>The use of the <a href="http://snomed.info/sct">SNOMED-CT</a> code system is required
-            where a SNOMED-CT concept code is available for Observation.valueCodeableConcept,  i.e. the actiual coded result.   If a local coding system is in use, a local code should also be sent in addition to the SNOMED-CT concept code to help with identification of coding issues. When no valid SNOMED-CT exists the local code may be the only code sent.  to satisfy CLIA reporting requirements, It also recommended that the Observation.valueCodeableConcept.text element is used if laboratory's original text which is used for printing and/or display is different from the code display value.
-         </p>
-         <p>SNOMED CT is required for specimen source term elements, Specimen.type and Specimen.Collection.sourceSite where a SNOMED-CT concept code is available.</p>
-         <h3>UCUM</h3>
-         <p>The use of the <a href="http://unitsofmeasure.org">UCUM (Unified Code for Units of Measure)</a> code system is required for reporting units of
-            measure in Observation.quantity.
-         </p>
-         <h3>Value Sets</h3>
          <p>
-            The value sets for this implementation as well as USLabOrder and USLabPHReport can be found  on the <a href="uslab.html">USlab Implementation page</a>. <!-- to do create section bookmark to valueset-->
-            In additionm, mappings to the <i>HL7 Version 2.5.1 Implementation Guide:
-            S&amp;I Framework Lab Results Interface</i> are also available.
+		 Использование кодовой системы <a href="http://snomed.info/sct">SNOMED-CT</a> требуется там, где для поля Observation.valueCodeableConcept есть доступный SNOMED-CT-код концепта, т. е. непосредственно кодируемый результат. Если используется локальная кодовая система, локальный код также должен быть послан в дополнение к SNOMED-CT-коду концепта, чтобы помочь с определением проблем кодирования. Когда подходящего SNOMED-CT-кода не существует, можно отправить только локальный код. Для удовлетворения требований CLIA к отчетности также рекомендуется использовать элемент Observation.valueCodeableConcept.text, если исходный текст от лаборатории, который используется для печати и/или отображения, отличается от значения для отображения кода.
+		 <!-- The use of the <a href="http://snomed.info/sct">SNOMED-CT</a> code system is required
+            where a SNOMED-CT concept code is available for Observation.valueCodeableConcept,  i.e. the actiual coded result.   If a local coding system is in use, a local code should also be sent in addition to the SNOMED-CT concept code to help with identification of coding issues. When no valid SNOMED-CT exists the local code may be the only code sent.  to satisfy CLIA reporting requirements, It also recommended that the Observation.valueCodeableConcept.text element is used if laboratory's original text which is used for printing and/or display is different from the code display value. -->
+         </p>
+         <p>
+		 SNOMED-CT требуется в элементах для указания терминов источника образца для анализа Specimen.type и Specimen.Collection.sourceSite там, где доступен SNOMED-CT-код концепта.
+		 <!-- SNOMED CT is required for specimen source term elements, Specimen.type and Specimen.Collection.sourceSite where a SNOMED-CT concept code is available. --></p>
+         <h3>UCUM</h3>
+         <p>
+		 Использование кодовой системы <a href="http://unitsofmeasure.org">UCUM (Unified Code for Units of Measure)</a> требуется для сообщения единиц измерений в поле Observation.quantity.
+		 <!-- The use of the <a href="http://unitsofmeasure.org">UCUM (Unified Code for Units of Measure)</a> code system is required for reporting units of
+            measure in Observation.quantity. -->
+         </p>
+         <h3>Наборы значений (Value Sets)<!-- Value Sets --></h3>
+         <p>
+		 Наборы значений для этой реализации, как для USLabOrder, так и USLabPHReport, находятся на странице <a href="uslab.html">Реализация USlab</a>. 
+            <!-- The value sets for this implementation as well as USLabOrder and USLabPHReport can be found  on the <a href="uslab.html">USlab Implementation page</a>.  -->
+			<!-- to do create section bookmark to valueset-->
+			Кроме того, также доступны мэппинги на <i>HL7 Version 2.5.1 Implementation Guide:
+            S&amp;I Framework Lab Results Interface</i>.
+           <!--  In additionm, mappings to the <i>HL7 Version 2.5.1 Implementation Guide:
+            S&amp;I Framework Lab Results Interface</i> are also available. -->
          </p>
          <!-- EH  8   ADDITIONAL IMPLEMENTATION GUIDANCE - REFLEX AND CULTURE/SUSCEPTIBILITY TESTING -->
          <!-- EH  9.   ADDITIONAL IMPLEMENTATION GUIDANCE - OTHER -->
          <a id="addlguidance"></a>
          <h2>Дополнительные указания по реализации<!-- Additional Implementation Guidance --> </h2>
          <a id="reflex"></a>
-         <h3>Confirmatory and Reflex Testing ( Including Culture/Susceptibility Testing)</h3>
-         <p><b>Definition: </b>  Additional laboratory testing included in the original test request by reference to specific
+         <h3>Подтверждающее и рефлексное тестирование (включая тестирование на чувствительность микроорганизмов)
+		 <!-- Confirmatory and Reflex Testing ( Including Culture/Susceptibility Testing) --></h3>
+         <p><b>Определение:<!-- Definition:  --></b>  
+		 Дополнительное лабораторное тестирование, входящее в первоначальный запрос на исследование со ссылкой на конкретное дополнительное тестирование, например "Urinalysis w/Culture Reflex" в отличие от "Urinalysis", заказанному как отдельный тест. Решение о выполнении рефлексного или повторного тестирования принимается на основании результатов первоначального тестирования и применения установленного локального или государственного практического руководства, утвержденного протокола или юридического требования. 
+		 <!-- Additional laboratory testing included in the original test request by reference to specific
             follow-up testing, e.g. "Urinalysis w/Culture Reflex" as opposed to "Urinalysis" ordered as a
             standalone test. The decision to perform the reflex or confirmatory test is based upon the results of
             the initial test and application of a predetermined local or national practice guideline, approved
-            protocol or legal requirement.
+            protocol or legal requirement. -->
          </p>
          <ul>
-            <li><b>Example: </b> A Urinalysis with elevated WBCs signals the potential for bacterial infection and a
+            <li><b>Пример:<!-- Example:  --></b> 
+			Анализ мочи с повышенными лейкоцитами сигнализирует о потенциальной бактериальной инфекции, и заказывается подтверждающий анализ мочи на культивацию на том же образце для анализа в качестве рефлексного тестирования. В зависимости от стандартной рабочей процедуры лаборатории, ЛИС и характера рефлексного или подтверждающего тестирования может быть создано одно или несколько следующих: новый инвентарный номер, новые коды исследований и дополнительные расходы.
+			<!-- A Urinalysis with elevated WBCs signals the potential for bacterial infection and a
                confirmatory Urine Culture is ordered on the same specimen as a reflex test. Depending on the
                laboratory standard operating procedure, LIS and nature of the reflexed or confirmatory test
                one or more of the following may be generated: a new accession number, new test codes and
-               additional charges.
+               additional charges. -->
             </li>
-            <li><b>CLIA Compliance: </b> The initial test request received in the laboratory is adequate to
+            <li><b>CLIA Compliance: </b> 
+			Исходный запрос на тестирование, полученный лабораторией, подходит для демонстрации заказа как для начального, так и дополнительного тестирования в соответствии с CLIA и целями аудита CMS.
+			<!-- The initial test request received in the laboratory is adequate to
                demonstrate an order for both the initial and the additional testing for CLIA compliance and
-               CMS auditing purposes.
+               CMS auditing purposes. -->
                </li>
                <li>
                <a id="reflexprocess"></a>
