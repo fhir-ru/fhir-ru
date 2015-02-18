@@ -135,14 +135,15 @@
          </p>
          <a id="snapshot"></a>
          <h3>Режим снимка состояния (Snapshot)<!-- Snapshot Mode  --></h3>
-         FHIR only functions using snapshot mode - updates are communicated by sending a complete copy of the instance with the new data filled in.  If a correction and/or status update to Obsveration Resource is necessary, the DiagnosticReport with all references to all Obsveration Resource, even if previously
+         FHIR функционирует только при использовании режима снимка состояния - обновления передаются отправкой полной копии экземпляра, заполненного новыми данными. Если необходима коррекция и/или обновление статуса ресурса Observation, DiagnosticReport со всеми ссылками на все ресурсы Observation, даже если он был уже ранее отправлен, должен быть отправлен повторно с коррекцией и/или обновлением статуса и/или текущих значений. Например, когда заказывается клинический анализ крови с ручным подсчётом форменных элементов (Complete Blood Count with manual differential), анализ крови будет выполнен, а затем некоторое время спустя будет выполнен и опубликован ручной подсчёт форменных элементов. Когда анализ крови опубликован, DiagnosticReport будет ссылаться только на ресурсы Observation, как на окончательные результаты. Когда ручной подсчёт форменных элементов будет завершен, DiagnosticReport будет ссылаться на все предыдущие ресурсы Observation, а также на новые ресурсы Observation - в данном случае на анализ крови и дифференциальные результаты.		 
+		 <!-- FHIR only functions using snapshot mode - updates are communicated by sending a complete copy of the instance with the new data filled in.  If a correction and/or status update to Obsveration Resource is necessary, the DiagnosticReport with all references to all Obsveration Resource, even if previously
          sent, shall be resent with the correction and/or current status and/or current values. For example,
          when a Complete Blood Count with manual differential is ordered, the blood count will be released
          and then at a later time the manual differential will be performed and released. When the blood count
          is released the DiagnosticReport will reference only the Observation Resources for the count as final results. When the differential is completed,
          the DiagnosticReport will reference all previous Observation Resources as well as the new Observation resources -  in this case the blood
-         count and the differential results.
-         -->
+         count and the differential results. -->
+         
          <!--EH not needed:2.7.4  FIELD LENGTH AND TRUNCATION
             This guide is silent as to the field length definition conventions, lengths, and truncation rules and directs
             the reader to HL7 Version 2.7.1, Chapter 2 Control for informative guidance.  -->
@@ -170,7 +171,9 @@
          </p>
          <a id="scope"></a>
          <h3>Область действия<!-- Scope --> </h3>
-         <p>The scope is the sending of lab results from a laboratory to an ambulatory provider. </p>
+         <p>
+		 Область действия - отправка лабораторных результатов из лаборатории провайдеру амбулаторной помощи.
+		 <!-- The scope is the sending of lab results from a laboratory to an ambulatory provider.  --></p>
          <a id="inscope"></a>
          <h4>В области действия<!-- In Scope --></h4>
          <ul>
@@ -180,17 +183,21 @@
             <li>
 			Сообщение результатов клинико-лабораторных исследований при оказании амбулаторной помощи в США.
 			<!-- Reporting of clinical laboratory test results for ambulatory care in the US Realm. --></li>
-            <li>Sending clinical laboratory test results as standardized structured data so they can be
-               incorporated that way into an EHR-S.
+            <li>
+			Отправка результатов клинико-лабораторных исследований в виде стандартизованных структурированных данных, чтобы их можно было встроить таким образом в систему ЭМК.
+			<!-- Sending clinical laboratory test results as standardized structured data so they can be
+               incorporated that way into an EHR-S. -->
             </li>
             <!--EH needed ?
                <li>Supporting Stage 2 certification criteria and Meaningful Use (MU) requirements by developing
                requirements for an interface that enables the incorporation of clinical laboratory test results into
                an EHR-S when data is sent as standardized structured data </li>
                -->
-            <li>Reporting test results for an order that was placed either manually or electronically. </li>
-            <li>Some order specific data has been included to enable the receiving EHR-S to correlate the results
-               back to the originating order.
+            <li>Сообщение результатов исследований по заказу, который был размещен вручную или электронным образом.<!-- Reporting test results for an order that was placed either manually or electronically.  --></li>
+            <li>
+			Некоторые специфичные для заказа данные были включены для обеспечения возможности ЭМК-системам-получателям соотносить результаты с первоначальными заказами.
+			<!-- Some order specific data has been included to enable the receiving EHR-S to correlate the results
+               back to the originating order. -->
             </li>
             <li>
 			Покрытие всех <a href="#addlguidance"> требований CLIA к составлению отчетов</a>.
@@ -202,14 +209,16 @@
          <a id="outscope"></a>
          <h4>Вне области действия<!-- Out of Scope --></h4>
          <ul>
-            <li>Specifications and implementation guidance on laboratory ordering transactions. ( see <a href="uslaborder-guide.html">USLabOrder</a></li>
-            <li>Querying for laboratory results.</li>
-            <li>Querying for historical laboratory results. </li>
-            <li>Receiving historical laboratory results.</li>
-            <li>Secondary use of laboratory data (i.e., public health or bio surveillance uses of the reported
-               laboratory results).
+            <li>
+			Спецификации и руководство по реализации транзакций лабораторных заказов (см. <a href="uslaborder-guide.html">USLabOrder</a>)
+			<!-- Specifications and implementation guidance on laboratory ordering transactions. ( see <a href="uslaborder-guide.html">USLabOrder</a> --></li>
+            <li>Запрос результатов лабораторных исследований.<!-- Querying for laboratory results. --></li>
+            <li>Запрос истории лабораторных результатов.<!-- Querying for historical laboratory results.  --></li>
+            <li>Прием исторических результатов лабораторных исследований. <!-- Receiving historical laboratory results. --></li>
+            <li>Вторичное использование лабораторных данных (т.е., здоровья или био наблюдения использует сообщенных результатов лабораторных исследований).<!-- Secondary use of laboratory data (i.e., public health or bio surveillance uses of the reported
+               laboratory results). -->
             </li>
-            <li>In hospital ordering and reporting of laboratory results. </li>
+            <li>Заказ и сообщение лабораторных результатов в госпитале.<!-- In hospital ordering and reporting of laboratory results.  --></li>
             <!--EH this is in scope since using REST and defined there
                <li>•Advanced error messages related to application transport.</li>
                -->
@@ -218,23 +227,25 @@
                -->
          </ul>
          <a id="actors"></a>
-         <h2>Действующие лица<!-- Actors --></h2>
+         <h2>Действующие субъекты<!-- Actors --></h2>
          <p>
-		 Есть два действующих лица, имеющие обязанности, связанные с профилями соответствия, определенными в данном документе:
+		 Есть два действующих субъекта, имеющие обязанности, связанные с профилями соответствия, определенными в данном документе:
             <!-- There are two actors that have responsibilities related to the conformance profiles defined in this
             document:           --></p>
 
          <ul>
-            <li>Laboratory Report Sender - The originator of the DiagnosticReport Resource Instance that declares conformance to "RESTful FHIR" and
-               FHIR profiles defined in this guide. This actor is the Organization Resource referenced through the .performer (Organization) Resource within FHIR.
+            <li>Отправитель лабораторного отчета - создатель экземпляра ресурса DiagnosticReport, который декларирует соответствие "RESTful FHIR" и профилям FHIR, описанным в данном руководстве. Этим действующим субъектом является ресурс Organization, на который в FHIR ссылаются через элемент .performer (Organization).<!-- Laboratory Report Sender - The originator of the DiagnosticReport Resource Instance that declares conformance to "RESTful FHIR" and
+               FHIR profiles defined in this guide. This actor is the Organization Resource referenced through the .performer (Organization) Resource within FHIR. -->
             </li>
             <!-- EH discuss whether should use the dot notation to refer to elements  e.g. .orderer-->
-            <li>Laboratory Report Receiver - The receiver of the DiagnosticReport Resource Instance that declares conformance
-               to "RESTful FHIR" and FHIR profiles defined in this guide. This actor is implied within FHIR. ( i.e. not explicitly referenced in the DiagnosticReport Resource Instance or the linked resources).
+            <li>
+			Получатель лабораторного отчета - получатель экземпляра ресурса DiagnosticReport, который декларирует поддержку "RESTful FHIR" и FHIR-профилей, определенных в этому руководстве. Этот действующий субъект подразумевается в FHIR (т. е. не упоминается явным образом в экземпляре ресурса DiagnosticReport или связанных ресурсах).
+			<!-- Laboratory Report Receiver - The receiver of the DiagnosticReport Resource Instance that declares conformance
+               to "RESTful FHIR" and FHIR profiles defined in this guide. This actor is implied within FHIR. ( i.e. not explicitly referenced in the DiagnosticReport Resource Instance or the linked resources). -->
             </li>
          </ul>
          <a id="usecasesandcontext"></a>
-         <h2>Заказы для амбулаторного случая использования и контекстные диаграммы<!-- Orders for Ambulatory Care Use Case and Context Diagrams  --></h2>
+         <h2>Заказы для амбулаторного сценария использования и контекстные диаграммы<!-- Orders for Ambulatory Care Use Case and Context Diagrams  --></h2>
          <p><b>Figure 2-1. Use Case Diagram</b></p>
          <img alt="Figure 2-1. Use Case Diagram" src="uslaborder-usecasediagram"/>
          <p><b>Figure 2-2. Context Diagram</b></p>
@@ -242,7 +253,8 @@
          <a id="userstory"></a>
          <h3>Пользовательская история<!-- User Story --></h3>
          <p>
-            A Provider (orderer) may enter a laboratory order into an ambulatory EHR-S. A laboratory
+		 Провайдер (заказчик) может ввести лабораторный заказ в амбулаторную систему ЭМК. Генерируется лабораторная заявка (бумажная или электронная) и передается в лабораторию. Информация в лабораторной заявке вводится вручную или фиксируется в электронном виде в ЛИС. После того, как образец(-цы) для анализа был взят и, если необходимо, выслан или доставлен в лабораторию, лаборатория обрабатывает этот образец(-цы). Если образец подходит для проведения исследования, лаборатория выполнит исследование. До момента успешного завершения исследования может потребоваться дополнительная коммуникация для индикации отмены, неспособности выполнить исследование и связанных с этим причин; например когда образец либо не подходит для выполнения заказанного теста, либо является неудовлетворительным в другом отношении, об отклонении образца будет передано с помощью профиля USLabOrder.
+            <!-- A Provider (orderer) may enter a laboratory order into an ambulatory EHR-S. A laboratory
             requisition is generated (paper or electronic) and is communicated to the laboratory. The information
             in the laboratory requisition is entered manually or captured electronically into the LIS. After the
             specimen(s) has been collected and, if necessary, shipped or delivered to the laboratory, the
@@ -251,100 +263,140 @@
             indicate cancellation, failure to perform the test and the related reasons; for example if the specimen
             is either not appropriate for the ordered test, or otherwise unsatisfactory the rejection of the specimen
             will be communicated using USlabReport profile. Order cancellation notifications should be
-            communicated using the USLabOrder profile. The laboratory performs or attempts to perform the test(s). If testing is
+            communicated using the USLabOrder profile.  -->
+			Лаборатория выполняет или пытается выполнить тест(-ы). Если тестирование проходит успешно, результаты получены и введены/опубликованы в ЛИС. Уполномоченное лицо в лаборатории проверяет и утверждает результаты лабораторного исследования, либо рецензент заверяющей лаборатории проверяет запись в случае автоматического процесса верификации, которые будут отправлены провайдеру и всем не-провайдерам заказа, указанным в лабораторном заказе.
+			<!-- The laboratory performs or attempts to perform the test(s). If testing is
             successful, results are obtained and entered/released in the LIS. An authorized person at the
             laboratory reviews and approves the laboratory test results, or the certifying laboratory reviewer of
-            record in the case of an auto-verification process, to be sent to the provider and any non-ordering providers requested in the laboratory order.
-            The results are either <a href="pushpull.html">pushed or pulled</a> into  the provider's EHR-S (results receiver).
+            record in the case of an auto-verification process, to be sent to the provider and any non-ordering providers requested in the laboratory order. -->
+            Результаты либо <a href="pushpull.html">pushed or pulled</a> в систему ЭМК провайдера (получателя результатов). Эта система ЭМК включает результаты в электронную карту пациента. Провайдер логинится в свою систему ЭМК и просматривает лабораторные результаты для обоснования решений по уходу за пациентом.
+			<!-- The results are either <a href="pushpull.html">pushed or pulled</a> into  the provider's EHR-S (results receiver).
             The EHR-S incorporates the results into the patient's electronic record. The provider logs into his/her
-            EHR-S and views the laboratory results in order to inform patient care decisions.
+            EHR-S and views the laboratory results in order to inform patient care decisions. -->
          </p>
          <a id="assumptions"></a>
-         <h4>Допущения сценария использования<!-- Use Case Assumptions --></h4>
+         <h4>Допущения, сделанные в сценарии использования<!-- Use Case Assumptions --></h4>
          <ul>
-            <li>Providers securely access clinical information through an EHR-S.</li>
-            <li>Appropriate security and transport protocols; patient identification methodology; requisition
+            <li>Провайдеры безопасным способом получают доступ к клинической информации через EHR-систему.<!-- Providers securely access clinical information through an EHR-S. --></li>
+            <li>Подходящие протоколы - транспортный и безопасности, методика идентификации пациентов, методика идентификации заявки (заказа); согласие пациента; процедуры обеспечения конфиденциальности и безопасности; кодирование, глоссарий, обработка ошибок и стандарты нормализации были согласованы всеми участниками. <!-- Appropriate security and transport protocols; patient identification methodology; requisition
                (order) identification methodology; consent; privacy and security procedures; coding, vocabulary
-               and normalization standards have been agreed to by all relevant participants.
+               and normalization standards have been agreed to by all relevant participants. -->
             </li>
-            <li>This Use Case only addresses the exchange of laboratory results that are associated with the In
-               Scope laboratory tests.
+            <li>
+			Этот сценарий использования . только обмена лабораторными результатами, которые соотносятся с лабораторными исследованиями, входящими в область действия.
+			<!-- This Use Case only addresses the exchange of laboratory results that are associated with the In
+               Scope laboratory tests. -->
             </li>
             <!--EH not needed
                <li>All relevant parties have agreed on a structured laboratory test results message format.</li>
                -->
-            <li>This Use Case covers all <a href="#addlguidance">CLIA reporting requirements</a> </li>
-            <li>For the specimen collection process the data included in the dataset considerations table 6 are assumed to be available and reported in the result.  </li>
-            <li>Legal and governance issues regarding data access authorizations, data ownership, and data use are in effect.  </li>
+            <li>Данный сценарий использования покрывает все <a href="#addlguidance">требования CLIA по передаче отчетов</a> <!-- This Use Case covers all <a href="#addlguidance">CLIA reporting requirements</a>  --></li>
+            <li>Для процесса взятия образцов для анализа предполагается, что данные, включенные в dataset considerations таблицу 6, будут доступны и представлены в самом результате.<!-- For the specimen collection process the data included in the dataset considerations table 6 are assumed to be available and reported in the result.   --></li>
+            <li>Юридические вопросы и проблемы управления, касающиеся разрешений на доступ к данным, прав собственности на данные и использования данных, находятся в силе.<!-- Legal and governance issues regarding data access authorizations, data ownership, and data use are in effect.   --></li>
             <li>
-               Established network and policy infrastructure to enable consistent, appropriate, and accurate
+			Установленная инфраструктура сети и политики безопасности существует для того, чтобы сделать возможным непротиворечивый, надлежащий и точный обмен данными между системами-провайдерами, репозиториями данных и сервисами поиска. Это включает в себя, но не ограничивается:
+               <!-- Established network and policy infrastructure to enable consistent, appropriate, and accurate
                information exchange across provider systems, data repositories and locator services. This
-               includes, but is not limited to:
+               includes, but is not limited to: -->
                <ul>
-                  <li>Methods to identify and authenticate users; </li>
-                  <li>Methods to identify and determine Providers of care;</li>
-                  <li>Methods to enforce data access authorization policies; </li>
-                  <li>Methods to ensure the veracity of data; </li>
+                  <li>Методы идентификации и аутентификации пользователей;<!-- Methods to identify and authenticate users; --> </li>
+                  <li>Методы идентификации и определения поставщиков медицинских услуг;<!-- Methods to identify and determine Providers of care; --></li>
+                  <li>Методы обеспечения соблюдения политики авторизации доступа к данным;<!-- Methods to enforce data access authorization policies;  --></li>
+                  <li>Методы обеспечения достоверности данных;<!-- Methods to ensure the veracity of data;  --></li>
                </ul>
             </li>
-            <li>Detailed audit trails are kept as necessary by all participating systems. </li>
-            <li>Security and privacy policies, procedures and practices are commonly implemented to support
+            <li>Подробные контрольные записи хранятся по мере необходимости всеми системами-участниками.<!-- Detailed audit trails are kept as necessary by all participating systems.  --></li>
+            <li>
+			Политика безопасности и конфиденциальности, процедуры и практики, как правило, реализуются для поддержки приемлемого уровня безопасности и конфиденциальности пациентов; т. е. HIPAA, HITECH и критерии сертификации EHR (ЭМК).
+			<!-- Security and privacy policies, procedures and practices are commonly implemented to support
                acceptable levels of patient privacy and security; i.e. HIPAA, HITECH and EHR certification
-               criteria.
+               criteria. -->
             </li>
-            <li>A LIS will be the source of laboratory test results while an EHR will be the recipient. </li>
+            <li>ЛИС будет источником результатов лабораторных исследований, а ЭМК будет получателем.<!-- A LIS will be the source of laboratory test results while an EHR will be the recipient.  --></li>
             <!--EH not needed 	using REST
                <li>The transport mechanism will provide guaranteed delivery and error handling. </li>
                -->
-            <li>This Use Case acknowledges the variations in requirements for reporting across local, state,
-               tribal, and territorial boundaries as well as voluntary versus mandatory requirements.
+            <li>
+			Данный сценарий использования осознает различия в требованиях к передаче отчетов между местными, государственными, родовыми и территориальными границами, также как и в добровольности или обязательности требований.
+			<!-- This Use Case acknowledges the variations in requirements for reporting across local, state,
+               tribal, and territorial boundaries as well as voluntary versus mandatory requirements. -->
             </li>
-            <li>Laboratories meet accreditation criteria according to jurisdiction requirements or agency criteria. </li>
+            <li>
+			Лаборатории отвечают критериям аккредитации в соответствии с требованиями юрисдикции или критериями ведомств.
+			<!-- Laboratories meet accreditation criteria according to jurisdiction requirements or agency criteria.  --></li>
          </ul>
          <a id="preconditions"></a>
          <h4>Предусловия<!-- Pre-Conditions --></h4>
          <ul>
-            <li>An order has been generated by an Ordering Provider for one or more laboratory tests results to
-               be produced.
+            <li>
+			 Заказывающим провайдером был создан заказ на получение одного или нескольких результатов лабораторных тестов. 
+			<!-- An order has been generated by an Ordering Provider for one or more laboratory tests results to
+               be produced. -->
             </li>
-            <li>When indicated, the Laboratory receives request to send laboratory results to a non-order placer. </li>
-            <li>The Laboratory receives an order (electronic, paper, etc.) or the Laboratory receives a request to
+            <li>
+			Когда это указано, лаборатория получает запрос на отправку лабораторных результатов лицу, не являющемуся непосредственным заказчиком. 
+			<!-- When indicated, the Laboratory receives request to send laboratory results to a non-order placer.  --></li>
+            <li>
+			Лаборатория получает заказ (в электронном, бумажном виде и т. п.), или лаборатория получает запрос повторно провести (повторить) тест, или определяет необходимость повторного проведения теста для возможной коррекции, или определяет, что требуется рефлексное тестирование (которое основано на критериях, установленных медицинским комитетом по надзору), или определяет необходимость внесения поправки в результат теста, содержащий ошибочную информацию.
+			<!-- The Laboratory receives an order (electronic, paper, etc.) or the Laboratory receives a request to
                re-run (repeat) a test, or determines a need to re-run a test for possible correction, or determines
                that reflex testing (which is based on criteria set by the medical review board) is required or
-               determines the need to amend a test result based on erroneous information.
+               determines the need to amend a test result based on erroneous information. -->
             </li>
-            <li>The Laboratory receives the appropriate clinical information to perform the ordered test. </li>
-            <li>Laboratory has entered manually or through the interface pertinent (or corrected) data from an
-               order into the LIS
+            <li>
+			Лаборатория получает надлежащую клиническую информацию для выполнения заказанного исследования.
+			<!-- The Laboratory receives the appropriate clinical information to perform the ordered test. --> </li>
+            <li>
+			Лаборатория ввела вручную или через интерфейс подходящие (или исправленные) данные из заказа в ЛИС.
+			<!-- Laboratory has entered manually or through the interface pertinent (or corrected) data from an
+               order into the LIS -->
             </li>
-            <li>Laboratory has received and processed properly identified specimen(s) related to the ordered
-               test(s).
+            <li>
+			Лаборатория получила и обработала надлежащим образом идентифицированный образец(-цы) для анализа, относящийся к заказанному тесту(-ам).
+			<!-- Laboratory has received and processed properly identified specimen(s) related to the ordered
+               test(s). -->
             </li>
-            <li>Laboratory entered or received from the ordering EHR-S, pertinent data from/about the specimen
-               into the LIS.
+            <li>
+			Лаборатория ввела или получила от заказывающей системы ЭМК уместные данные об образце в ЛИС.			
+			<!-- Laboratory entered or received from the ordering EHR-S, pertinent data from/about the specimen
+               into the LIS. -->
             </li>
-            <li>Laboratory performed the ordered tests on received specimens and/or incorporated calculated
-               and reference data to produce the results to be exchanged.
+            <li>
+			Лаборатория выполнила заказанные тесты на полученных образцах и/или включила подсчеты и справочные/эталонные данные в полученные результаты, которыми в дальнейшем будет обмениваться. 
+			<!-- Laboratory performed the ordered tests on received specimens and/or incorporated calculated
+               and reference data to produce the results to be exchanged. -->
             </li>
-            <li>The laboratory DiargnosticReport resource refers to the appropriate Patient resource and DiagnosticOrder resource
-               to associate the laboratory results to the correct patient and original order.
+            <li>
+			Лабораторный ресурс DiargnosticReport ссылается на соответствующие ресурсыPatient и DiagnosticOrder для сопоставления лабораторных результатов с нужным пациентом и исходным заказом.
+			<!-- The laboratory DiargnosticReport resource refers to the appropriate Patient resource and DiagnosticOrder resource
+               to associate the laboratory results to the correct patient and original order. -->
             </li>
-            <li>The LIS is capable of and ready to send laboratory results using FHIR and REST and standardized
-               structured data format.
+            <li>
+			ЛИС способна и готова отправить лабораторные результаты, используя FHIR, REST и стандартизованный структурированный формат данных.
+			<!-- The LIS is capable of and ready to send laboratory results using FHIR and REST and standardized
+               structured data format. -->
             </li>
-            <li>EHR-S is in place and capable of receiving laboratory results using FHIR and REST and standardized
-               structured data format.
+            <li>
+			ЭМК-система готова к использованию и способна принимать лабораторные результаты, используя FHIR, REST и стандартизованный структурированный формат данных.
+			<!-- EHR-S is in place and capable of receiving laboratory results using FHIR and REST and standardized
+               structured data format. -->
             </li>
-            <li>The laboratory result is verified and ready for release. </li>
+            <li>
+			Лабораторный результат проверен и готов к выпуску в свет.
+			<!-- The laboratory result is verified and ready for release.  --></li>
          </ul>
          <a id="postconditions"></a>
          <h4>Постусловия<!-- Post-Conditions --></h4>
          <ul>
-            <li>Laboratory results are accurately reported and successfully transmitted electronically from the
-               LIS to the Ordering Provider's (order placer's) EHR-S, module or other results receiver.
+            <li>
+			Лабораторные результаты точно запротоколированы и успешно переданы в электронном виде из ЛИС в ЭМК-систему, модуль или другой приемник результатов провайдера заказа (разместившего заказ).
+			<!-- Laboratory results are accurately reported and successfully transmitted electronically from the
+               LIS to the Ordering Provider's (order placer's) EHR-S, module or other results receiver. -->
             </li>
-            <li>The provider's EHR-S has electronically received the laboratory results, incorporated in a
-               standardized structured format, and if available, associated with a patient and laboratory order.
+            <li>
+			ЭМК-система провайдера получила электронным образом лабораторные результаты, включила их в стандартном структурированном формате и, если возможно, связала с пациентом и лабораторным заказом.
+			<!-- The provider's EHR-S has electronically received the laboratory results, incorporated in a
+               standardized structured format, and if available, associated with a patient and laboratory order. -->
             </li>
          </ul>
          <h4>Функциональные требования<!-- Functional Requirements --></h4>
@@ -369,8 +421,10 @@
          <!--EH not needed  7 LABORATORY RESULT MESSAGE DEVELOPMENT-->
          <a id="codesystems"></a>
          <h2>Кодовые системы и наборы значений<!-- Code Systems And Value Sets --></h2>
-         <p>Successful message implementation requires that transmitted messages (message instances) contain
-            valid values for coded fields. For further discussion on <a href="terminologies.html">Using codes in FHIR </a> refer to the FHIR specification.
+         <p>
+		 Успешная реализация обмена сообщениями требует, чтобы переданные сообщения (экземпляры сообщений) содержали допустимые значения в кодированных полях. Для дальнейшего обсуждения <a href="terminologies.html">использования кодов в FHIR</a>обратитесь к спецификации FHIR.		 
+		 <!-- Successful message implementation requires that transmitted messages (message instances) contain
+            valid values for coded fields. For further discussion on <a href="terminologies.html">Using codes in FHIR </a> refer to the FHIR specification. -->
          </p>
          <h3>LOINC</h3>
          <p>The use of the <a href="http://loinc.org/ ">Logical Observation Identifiers Names and Codes (LOINC) </a> code system is required
@@ -712,7 +766,7 @@
                panel. -->
             </li>
             <li><b>Order Set (Предустановленный набор заказов):  </b>
-			Набор лабораторных заказов, которые включают несколько тестов и панелей и для которых может потребоваться несколько образцов, но для удобства могут быть заказаны одним блоком. Например "diabetic order set profile" (профиль набора заказов при диабете) может включать в себя клинический анализ крови, определение содержания гликозилированного гемоглобина и анализ мочи. Термин "панель" часто используется как взаимозаменяемый с "набором заказов", таким образом профиль набора заказов, который содержит несколько заказов лабораторных тестов, которые могут быть сами по себе или комбинироваться с другими заказами исследований (например радиологическое изображение, консултация и т. д.) можно считать набором заказов. Наборы заказов не должны передаваться лаборатории. 
+			Набор лабораторных заказов, которые включают несколько тестов и панелей и для которых может потребоваться несколько образцов, но для удобства могут быть заказаны одним блоком. Например "diabetic order set profile" (профиль набора заказов при диабете) может включать в себя клинический анализ крови, определение содержания гликозилированного гемоглобина и анализ мочи. Термин "панель" часто используется как взаимозаменяемый с "набором заказов", таким образом профиль набора заказов, который содержит несколько заказов лабораторных тестов, которые могут быть сами по себе или комбинироваться с другими заказами исследований (например радиологическое изображение, консультация и т. д.) можно считать набором заказов. Наборы заказов не должны передаваться лаборатории. 
 			Запрос на аннулирование (RFC) 
 			Запрос провайдера (Order Placer) не выполнять заказ.		
 			<!-- A set of laboratory orders that involve multiple tests and panels and that may require multiple specimens,

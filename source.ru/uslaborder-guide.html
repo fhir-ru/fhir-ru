@@ -163,26 +163,26 @@
             <li>Взаимодействия между LIS и EHR-системой для добавления заказов помимо передачи заказа (для таких сценариев, как несоответствующий образец или позднее прибытие добавленных заказов).<!-- Interactions between the LIS and EHR System for add-on orders beyond the transmission of the order (to address scenarios such as insufficient specimen or late arrivals of add-on orders). --></li>
          </ul>
          <a id="actors"></a>
-         <h2>Действующие лица<!-- Actors --></h2>
+         <h2>Действующие субъекты<!-- Actors --></h2>
          <p>
-		 Есть два действующих лица, имеющие обязанности, связанные с профилями соответствия, определенными в данном документе:
+		 Есть два действующих субъекта, имеющие обязанности, связанные с профилями соответствия, определенными в данном документе:
             <!-- There are two actors that have responsibilities related to the conformance profiles defined in this
             document: -->
          </p>
          <ul>
-            <li>Отправитель лабораторного заказа - создатель экземпляра ресурса DiagnosticOrder, который декларирует поддержку "RESTful FHIR" и FHIR-профилей, определенных в этому руководстве. Этим действующим лицом будет ресурс Organization, на который указывается ссылка в элементе .orderer FHIR-ресурса (Practitioner).
+            <li>Отправитель лабораторного заказа - создатель экземпляра ресурса DiagnosticOrder, который декларирует поддержку "RESTful FHIR" и FHIR-профилей, определенных в этому руководстве. Этим действующим субъектом будет ресурс Organization, на который указывается ссылка в элементе .orderer FHIR-ресурса (Practitioner).
 				<!-- Laboratory Order Sender - The originator of the DiagnosticOrder Resource Instance that declares conformance to "RESTful FHIR" and
                FHIR profiles defined in this guide. This actor is the Organization Resource referenced through the .orderer (Practitioner) Resource within FHIR. -->
             </li>
             <!-- EH discuss whether should use the dot notation to refer to elements  e.g. .orderer-->
             <li>
-			Получатель лабораторного заказа - получатель экземпляра ресурса DiagnosticOrder, который декларирует поддержку "RESTful FHIR" и FHIR-профилей, определенных в этому руководстве. Это действующее лицо подразумевается в FHIR (т. е. не упоминается явным образом в экземпляре ресурса DiagnosticOrder или связанных ресурсах).
+			Получатель лабораторного заказа - получатель экземпляра ресурса DiagnosticOrder, который декларирует поддержку "RESTful FHIR" и FHIR-профилей, определенных в этому руководстве. Этот действующий субъект подразумевается в FHIR (т. е. не упоминается явным образом в экземпляре ресурса DiagnosticOrder или связанных ресурсах).
 			<!-- Laboratory Order Receiver - The receiver of the DiagnosticOrder Resource Instance that declares conformance
                to "RESTful FHIR" and FHIR profiles defined in this guide. This actor is implied within FHIR. ( i.e. not explicitly referenced in the DiagnosticOrder Resource Instance or the linked resources). -->
             </li>
          </ul>
          <a id="usecasesandcontext"></a>
-         <h2>Заказы для амбулаторного случая использования и контекстные диаграммы<!-- Orders for Ambulatory Care Use Case and Context Diagrams --> </h2>
+         <h2>Заказы для амбулаторного сценария использования и контекстные диаграммы<!-- Orders for Ambulatory Care Use Case and Context Diagrams --> </h2>
          <p><b>Figure 2-1. Use Case Diagram</b></p>
          <img alt="Figure 2-1. Use Case Diagram" src="uslaborder-usecasediagram"/>
          <p><b>Figure 2-2. Context Diagram</b></p>
@@ -205,9 +205,9 @@
                 -->
          </p>
          <a id="assumptions"></a>
-         <h4>Допущения сценария использования<!-- Use Case Assumptions --></h4>
+         <h4>Допущения, сделанные в сценарии использования<!-- Use Case Assumptions --></h4>
          <ul>
-            <li>Провайдеры (.orderer) безопасным образом получает доступ к клинической информации через EHR-систему.<!-- Providers (.orderer) securely access clinical information through an EHR system.  --></li>
+            <li>Провайдеры (.orderer) безопасным способом получают доступ к клинической информации через EHR-систему.<!-- Providers (.orderer) securely access clinical information through an EHR system.  --></li>
             <li>У пользователей есть потребность в обмене данными лабораторных заказов между амбулаторными EHR и лабораториями.<!-- Users have a need to exchange laboratory order data between ambulatory care EHRs and
                laboratories. -->
             </li>
@@ -235,12 +235,12 @@
             synchronized with the goal that a laboratory that receives an order conforming to the USLabOrder Profile should
             be capable of responding with a message conforming to the USLabResult Profile. -->
             </li>
-            <li>Подходящие транспортный протокол и протокол безопасности, методика идентификации пациентов, другие методики идентификации, согласие пациента, процедуры обеспечения конфиденциальности и безопасности, кодирование, лексикон, обработка ошибок и стандарты нормализации были согласованы всеми участниками. <!-- Appropriate security and transport protocols, patient identification methodology, order
+            <li>Подходящие транспортный протокол и протокол безопасности, методика идентификации пациентов, другие методики идентификации, согласие пациента, процедуры обеспечения конфиденциальности и безопасности, кодирование, глоссарий, обработка ошибок и стандарты нормализации были согласованы всеми участниками. <!-- Appropriate security and transport protocols, patient identification methodology, order
                identification methodology, patient consent, privacy and security procedures, coding,
                vocabulary, error handling, and normalization standards have been agreed to by all relevant
                participants. -->
             </li>
-            <li>Юридические вопросы и проблемы управления, касающиеся разрешений доступа к данным, прав собственности на данные и использования данных, которые находятся в силе.<!-- Legal and governance issues regarding data access authorizations, data ownership, and data use
+            <li>Юридические вопросы и проблемы управления, касающиеся разрешений на доступ к данным, прав собственности на данные и использования данных, находятся в силе.<!-- Legal and governance issues regarding data access authorizations, data ownership, and data use
                are in effect. -->
             </li>
             <li>Установленная инфраструктура сети и политики безопасности существует для того, чтобы сделать возможным непротиворечивый, надлежащий и точный обмен данными между системами-провайдерами, репозиториями данных и сервисами поиска. Это включает в себя, но не ограничивается:
@@ -255,7 +255,7 @@
                <li>Методы обеспечения достоверности данных;<!-- Methods to ensure the veracity of data;  --></li>
             </ul></li>
             <li>Подробные контрольные записи хранятся по мере необходимости всеми системами-участниками.<!-- Detailed audit trails are kept as necessary by all participating systems.  --></li>
-            <li>Политики безопасности и конфиденциальности, процедуры и практики, как правило, реализуются для поддержки приемлемого уровня безопасности и конфиденциальности пациентов; т. е. HIPAA, HITECH и критерии сертификации EHR (ЭМК).<!-- Security and privacy policies, procedures and practices are commonly implemented to support
+            <li>Политика безопасности и конфиденциальности, процедуры и практики, как правило, реализуются для поддержки приемлемого уровня безопасности и конфиденциальности пациентов; т. е. HIPAA, HITECH и критерии сертификации EHR (ЭМК).<!-- Security and privacy policies, procedures and practices are commonly implemented to support
                acceptable levels of patient privacy and security; i.e. HIPAA, HITECH and EHR certification
                criteria. -->
             </li>
@@ -742,7 +742,7 @@
                panel. -->
             </li>
             <li><b>Order Set (Предустановленный набор заказов):  </b>
-			Набор лабораторных заказов, которые включают несколько тестов и панелей и для которых может потребоваться несколько образцов, но для удобства могут быть заказаны одним блоком. Например "diabetic order set profile" (профиль набора заказов при диабете) может включать в себя клинический анализ крови, определение содержания гликозилированного гемоглобина и анализ мочи. Термин "панель" часто используется как взаимозаменяемый с "набором заказов", таким образом профиль набора заказов, который содержит несколько заказов лабораторных тестов, которые могут быть сами по себе или комбинироваться с другими заказами исследований (например радиологическое изображение, консултация и т. д.) можно считать набором заказов. Наборы заказов не должны передаваться лаборатории. 
+			Набор лабораторных заказов, которые включают несколько тестов и панелей и для которых может потребоваться несколько образцов, но для удобства могут быть заказаны одним блоком. Например "diabetic order set profile" (профиль набора заказов при диабете) может включать в себя клинический анализ крови, определение содержания гликозилированного гемоглобина и анализ мочи. Термин "панель" часто используется как взаимозаменяемый с "набором заказов", таким образом профиль набора заказов, который содержит несколько заказов лабораторных тестов, которые могут быть сами по себе или комбинироваться с другими заказами исследований (например радиологическое изображение, консультация и т. д.) можно считать набором заказов. Наборы заказов не должны передаваться лаборатории. 
 			Запрос на аннулирование (RFC) 
 			Запрос провайдера (Order Placer) не выполнять заказ.		
 			<!-- A set of laboratory orders that involve multiple tests and panels and that may require multiple specimens,
