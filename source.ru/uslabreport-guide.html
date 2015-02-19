@@ -215,7 +215,7 @@
             <li>Запрос результатов лабораторных исследований.<!-- Querying for laboratory results. --></li>
             <li>Запрос истории лабораторных результатов.<!-- Querying for historical laboratory results.  --></li>
             <li>Прием исторических результатов лабораторных исследований. <!-- Receiving historical laboratory results. --></li>
-            <li>Вторичное использование лабораторных данных (т.е., здоровья или био наблюдения использует сообщенных результатов лабораторных исследований).<!-- Secondary use of laboratory data (i.e., public health or bio surveillance uses of the reported
+            <li>Вторичное использование лабораторных данных (например использование сообщенных результатов лабораторных исследований для контроля общественного здравоохранения или биологических наблюдений).<!-- Secondary use of laboratory data (i.e., public health or bio surveillance uses of the reported
                laboratory results). -->
             </li>
             <li>Заказ и сообщение лабораторных результатов в госпитале.<!-- In hospital ordering and reporting of laboratory results.  --></li>
@@ -511,54 +511,79 @@
                </li>
                <li>
                <a id="reflexprocess"></a>
-               <b> LIS Process: </b>The LIS shall report the reflexed test as one of the following:
+               <b>Процесс ЛИС:<!--  LIS Process:  --></b>
+			   ЛИС передает отчет по рефлексному тестированию в одном из следующих видов:
+			   <!-- The LIS shall report the reflexed test as one of the following: -->
                <ol>
-                  <li>Additional results within the same DiagnosticReport.referencing the same DiagnosticOrder from the original order request in the DiagnosticReport.requestDetail element</li>
-                  <li>One or more additional DiagnosticReports referencing the same DiagnosticOrder from the original order request in the DiagnosticReport.requestDetail element</li>
-                  <li>One or more additional DiagnosticReports referencing a new DiagnosticOrder from add-on order request and the DiagnosticOrder from the original order request in the DiagnosticReport.requestDetail element</li>
+                  <li>
+				  В виде дополнительных результатов в том же DiagnosticReport, ссылающемся в элементе DiagnosticReport.requestDetail на тот же самый DiagnosticOrder из оригинального заказа
+				  <!-- Additional results within the same DiagnosticReport.referencing the same DiagnosticOrder from the original order request in the DiagnosticReport.requestDetail element --></li>
+                  <li>
+				  В виде одного или нескольких дополнительных DiagnosticReports, ссылающихся в элементе DiagnosticReport.requestDetail на тот же самый DiagnosticOrder из оригинального заказа 
+				  <!-- One or more additional DiagnosticReports referencing the same DiagnosticOrder from the original order request in the DiagnosticReport.requestDetail element --></li>
+                  <li>
+				  В виде одного или нескольких дополнительных DiagnosticReports, ссылающихся в элементе DiagnosticReport.requestDetail на новый DiagnosticOrder из добавленного заказа и на DiagnosticOrder из оригинального заказа
+				  <!-- One or more additional DiagnosticReports referencing a new DiagnosticOrder from add-on order request and the DiagnosticOrder from the original order request in the DiagnosticReport.requestDetail element --></li>
                </ol>
                </li>
          </ul>
-         <p>An <a href="todo">Culture and Susceptibility example</a> example is provided here for the scenario in which a urine cultire results in the identification of the pathogens:  E.coli, x and y and a susceptibilty is performed on all three pathogens.  todo..
+         <p>
+		 Здесь приведен пример сценария <a href="todo">Culture and Susceptibility</a>, в котором результатом анализа мочи на культивацию было выявление патогенов E.coli, x и y, и было выполнено тестирование на чувствительность к антибиотикам для всех трех патогенов. todo..
+		 <!-- An <a href="todo">Culture and Susceptibility example</a> example is provided here for the scenario in which a urine cultire results in the identification of the pathogens:  E.coli, x and y and a susceptibilty is performed on all three pathogens.  todo.. -->
          </p>
             <a id="addon"></a>
-         <h3>Add-On Testing</h3>
-         <p><b>Definition: </b> Additional laboratory testing is requested by an authorized provider (as defined by CLIA
+         <h3>Дополнительное тестирование<!-- Add-On Testing --></h3>
+         <p><b>Определение:<!-- Definition:  --></b> 
+		 Дополнительное лабораторное тестирование заказывается уполномоченным провайдером (в соответствии с CLIA и государственным законом) над существующим образцом для анализа после того, как первоначальный заказ на исследование был отправлен в лабораторию. Решение о запросе на проведение дополнительного исследования принимается провайдером индивидуально и на основе любого числа факторов, не ограниченных результатом теста.
+		 <!-- Additional laboratory testing is requested by an authorized provider (as defined by CLIA
             and state law) on an existing specimen after the original test request has been submitted to the laboratory. The decision to request additional testing is individual provider driven and based on any
-            number of factors not limited to a test result.
+            number of factors not limited to a test result. -->
          </p>
          <ul>
-            <li><b>Example: </b>A physician orders a Complete Blood Count and Basic Metabolic Panel on an
+            <li><b>Пример:<!-- Example:  --></b> 
+			Врач заказывает клинический анализ крови и основную метаболическую панель для амбулаторного больного, который находится в кабинете с симптомами усталости и субфебрильной температурой после туристического похода в Висконсин. После консультации со специалистом по инфекционным заболеваниям позже этим же днем он звонит в лабораторию и заказывает дополнительный тест на антитела к болезни Лайма для образца для анализа, уже находящегося в лаборатории.
+			<!-- A physician orders a Complete Blood Count and Basic Metabolic Panel on an
                outpatient who presented in the office with symptoms of fatigue and a low-grade fever
                following a camping trip to Wisconsin. After consultation with an infectious disease
                physician later in the day, he calls the laboratory and requests the addition of a Lyme's
-               Disease Antibody test to the specimens already in the laboratory.
+               Disease Antibody test to the specimens already in the laboratory. -->
             </li>
-            <li><b>CLIA Compliance: </b>CLIA requires the laboratory to obtain a written or electronic test
+            <li><b>Соответствие CLIA:<!-- CLIA Compliance: --> </b> 
+			CLIA требует от лаборатории получать письменный или электронный запрос на дополнительное исследование от уполномоченного провайдера для своих записей. Если запрос на тестирование был устным, лаборатория обязана задокументировать свои попытки получить письменный или электронный запрос на исследование в течение 30 дней. [&sect;42CFR493.1241(b)]
+			<!-- CLIA requires the laboratory to obtain a written or electronic test
                request for the add-on testing from the authorized provider for its records. If the test request
                is verbal the laboratory must document its efforts to receive a written or electronic test
-               request within 30 days. [&sect;42CFR493.1241(b)]
+               request within 30 days. [&sect;42CFR493.1241(b)] -->
             </li>
-            <li><b>LIS Process: </b>The LIS shall report the reflexed test as described <a href="#reflexprocess">above</a>:
+            <li><b>Процесс ЛИС:<!-- LIS Process: --> </b> 
+			ЛИС должна отправить отчет по рефлексному тестированию, как описано <a href="#reflexprocess">выше</a>: 
+			<!-- The LIS shall report the reflexed test as described <a href="#reflexprocess">above</a>: -->
             </li>
          </ul>
          <a id="clia"></a>
-         <h3>Clinical Laboratory Improvement Amendments Considerations </h3>
-         <p>In the United States, clinical laboratory testing of human specimens is regulated by the Clinical
+         <h3>Соображения по резолюции к улучшению клинической лаборатории<!-- Clinical Laboratory Improvement Amendments Considerations  --></h3>
+         <p>
+		 В США клинико-лабораторные исследования образцов для анализа, взятых у людей, регулируются резолюцией к улучшению клинической лаборатории (Clinical Laboratory Improvements Amendments (CLIA)) 1988 года. Несколько разделов постановлений, реализующих CLIA, влияют на то, как электронные лабораторные данные форматируются для США, и они описаны в данном разделе. Затронутые области включают обязательные требования к заказу тестов. <a href="http://wwwn.cdc.gov/clia/regs/toc.aspx">CLIA Regulation Specifics</a>.
+		 
+		 <!-- In the United States, clinical laboratory testing of human specimens is regulated by the Clinical
             Laboratory Improvements Amendments of 1988 (CLIA). Several sections of the regulations
             implementing CLIA impact how electronic laboratory data is formatted for the US Realm and these are
             outlined in this section. Impacted areas include mandatory test request requirements.
-            <a href="http://wwwn.cdc.gov/clia/regs/toc.aspx">CLIA Regulation Specifics</a>.
+            <a href="http://wwwn.cdc.gov/clia/regs/toc.aspx">CLIA Regulation Specifics</a>. -->
          </p>
          <h3>Обязательные требования для заказа<!-- Mandatory Ordering Requirements --></h3>
-         <p><a href="http://wwwn.cdc.gov/clia/regs/subpart_k.aspx493.1241">Section 493.1241 of the CLIA Regulations</a> requires the laboratory to have a written or electronic request
+         <p>
+		 <a href="http://wwwn.cdc.gov/clia/regs/subpart_k.aspx493.1241">Раздел 493.1241 положения CLIA</a> обязывает лабораторию иметь письменный или электронный запрос на исследование пациента от уполномоченного лица, а также определяет пункты, которые должны присутствовать в рамках запроса на клинико-лабораторное исследование. Лаборатория может принимать устные запросы на лабораторные тестирования, если она требует письменную или электронную авторизацию в течение 30 дней с момента устного обращения и поддерживает авторизацию или документацию попыток получения этой авторизации.
+		 <!-- <a href="http://wwwn.cdc.gov/clia/regs/subpart_k.aspx493.1241">Section 493.1241 of the CLIA Regulations</a> requires the laboratory to have a written or electronic request
             for patient testing from an authorized person, and defines items that must appear as part of a clinical
             laboratory test request . The laboratory may
             accept oral requests for laboratory tests if it solicits a written or electronic authorization within 30 days
             of the oral request and maintains the authorization or documentation of its efforts to obtain the
-            authorization.
+            authorization. -->
          </p>
-         <p><a href="http://www.cms.hhs.gov/CLIA/downloads/apcsubk2.pdf">Interpretative guidelines on the elements required in a test requisition </a>. Specific fields impacted include the following:</p>
+         <p>
+		 <a href="http://www.cms.hhs.gov/CLIA/downloads/apcsubk2.pdf">Пояснительные указания к элементам, обязательным в заявке на исследование</a>. Поля, на которые оказывается влияние, включают следующие:
+		 <!-- <a href="http://www.cms.hhs.gov/CLIA/downloads/apcsubk2.pdf">Interpretative guidelines on the elements required in a test requisition </a>. Specific fields impacted include the following: --></p>
          <table>
             <tr>
                <th>FHIR element</th>
@@ -566,15 +591,18 @@
             </tr>
             <tr>
                <td>Patient.identifier</td>
-               <td>A unique patient identification number is required  </td>
+               <td>Требуется уникальный идентификационный номер пациента<!-- A unique patient identification number is required   --></td>
             </tr>
             <tr>
                <td>Patient.name</td>
-               <td>The patient's name or unique patient identifier.</td>
+               <td>Имя или уникальный идентификатор пациента.<!-- The patient's name or unique patient identifier. --></td>
             </tr>
             <tr>
                <td>Observation.name</td>
-               <td>Unique identification of the test performed is required.Use of LOINC codes for additional
+               <td>
+			   Обязательна однозначная идентификация выполненного теста. Настоятельно рекомендуется использование LOINC-кодов для дополнительных тестов. Для некоторых тестов CLIA требует дополнительную информацию: лаборатории, использующие инструменты производителя, комплекты или тест-системы, маркированные "только для исследований" или "только для исследования", должны четко указывать, что результаты исследований не должны быть использованы для лечения или в целях диагностики. Если результаты таких тестов сообщаются без письменного отказа от ответственности, или используются провайдером при оказании помощи больному, они относятся к той же категории, что и тесты собственной разработки, и лаборатория должна установить характеристики работы в соответствии с §493.1253.
+			   В отказе от ответственности для особых реактивов аналитов Analyte Specific Reagents (ASR) необходимо указывать: "Этот тест был разработан и его эксплуатационные характеристики определены лабораторией (название лаборатории). Он не был согласован или одобрен Управлением по санитарному надзору за качеством пищевых продуктов и медикаментов США". ASR-отказ от ответственности на отчетах об исследовании требуется Управлением по санитарному надзору за качеством пищевых продуктов и медикаментов США в соответствии со статьей 21 CFR, часть 809.30 "Ограничения на продажу, распространение и использование анализируемых специфических реагентов".			   
+			   <!-- Unique identification of the test performed is required.Use of LOINC codes for additional
                   tests is strongly encouraged. For certain tests CLIA requires additional information:
                   Laboratories using manufacturer's instruments, kits or test systems
                   labeled for "investigational use only" or "research use only" must
@@ -589,118 +617,146 @@
                   approved by the U.S. Food and Drug Administration." The ASR
                   disclaimer on the test report is required by the FDA under 21 CFR,
                   Part 809.30, "Restrictions on the sale, distribution and use of analyte
-                  -specific reagents."
+                  -specific reagents." -->
                </td>
             </tr>
             <tr>
                <td>Observation.value</td>
-               <td>The laboratory result is required. No regulatory requirements are
-                  specified, outside of readability, regarding result appearance.
+               <td>
+			   Лабораторный результат является обязательным. Нет никаких установленных нормативных требований относительно внешнего вида результата помимо удобочитаемости.
+			   <!-- The laboratory result is required. No regulatory requirements are
+                  specified, outside of readability, regarding result appearance. -->
                </td>
             </tr>
             <tr>
                <td>Observation.valueQuantity</td>
-               <td>Units, if required, or an interpretation must be given. For tests such
+               <td>
+			   Должны быть указаны единицы измерения, если необходимо, или интерпретация. Для таких тестов, как генетический скрининг, интерпретация может быть фактическим результатом теста. Предпочтительно в качестве словаря использовать UCUM.
+			   <!-- Units, if required, or an interpretation must be given. For tests such
                   as genetic screens the interpretation may actually be the test result.
-                  UCUM for vocabulary use is preferred.
+                  UCUM for vocabulary use is preferred. -->
                </td>
             </tr>
             <tr>
                <td>Observation.interpretation</td>
-               <td>Units, if required, or an interpretation must be given. For tests such
-                  as genetic screens the interpretation may actually be the test result.
+               <td>
+			   Должны быть указаны единицы измерения, если необходимо, или интерпретация. Для таких тестов, как генетический скрининг, интерпретация может быть фактическим результатом теста.
+			   <!-- Units, if required, or an interpretation must be given. For tests such
+                  as genetic screens the interpretation may actually be the test result. -->
                </td>
             </tr>
             <tr>
                <td>Observation.referenceRange</td>
-               <td>When available reference range shall be valued.</td>
+               <td>Когда имеется, необходимо указывать диапазон нормальных значений.<!-- When available reference range shall be valued. --></td>
             </tr>
             <tr>
                <td>DiagnosticReport.status</td>
-               <td>Used to reflect CLIA required conditions such as specimen
+               <td>
+			   Используется для отражения требуемых CLIA состояний, таких как приемлемость образца для анализа, исправления результатов, отмены, а также статусы отчетов (&sect;493.1291 (c)(7) and (k)(1,2). 
+			   <!-- Used to reflect CLIA required conditions such as specimen
                   acceptability, result corrections, cancellations as well as report status
-                  (&sect;493.1291 (c)(7) and (k)(1,2).
+                  (&sect;493.1291 (c)(7) and (k)(1,2). -->
                </td>
             </tr>
             <tr>
                <td>Observation.issued</td>
-               <td>This field is used to transfer the time stamp associated with
+               <td>
+			   Это поле используется для передачи штампа времени, соответствующего генерации аналитических данных инструментом, указанном в идентификаторе экземпляра оборудования (Equipment Instance Identifier).
+			   <!-- This field is used to transfer the time stamp associated with
                   generation of the analytical result by the instrument specified in
-                  Equipment Instance Identifier.
+                  Equipment Instance Identifier. -->
                </td>
             </tr>
             <tr>
                <td>DiagnosticReport.performer(Organization)</td>
-               <td>The identification of the performing laboratory is required. Populated
+               <td>
+			   Идентификация лаборатории-исполнителя обязательна. Заполняется идентификационным номером CLIA. Если этот CLIA ID номер не используется, все демографические поля должны быть заполнены соответствующей информацией. 
+			   <!-- The identification of the performing laboratory is required. Populated
                   with the CLIA ID Number.  If the CLIA ID
-                  number is not used, all demographic fieldsmust be provided with appropriate information.
+                  number is not used, all demographic fieldsmust be provided with appropriate information. -->
                </td>
             </tr>
             <tr>
                <td>Specimen.type</td>
-               <td>Reporting requirements call for the specimen source, which equates
-                  at minimum to the Specimen Type
+               <td>
+			   В требования к отчетности входит указание источника образца для анализа, который приравнивается, как минимум, к типу образца (Specimen Type)
+			   <!-- Reporting requirements call for the specimen source, which equates
+                  at minimum to the Specimen Type -->
                </td>
             </tr>
             <tr>
                <td>Observation.UnsatisfactorySpecimenReason (extension)</td>
                <!--EH - need to find best plae for this at repor level or obs level or at speicmen level -->
-               <td>To specify the
-                  reason for specimen rejection..
+               <td>Для указания причины отклонения образца для анализа..<!-- To specify the
+                  reason for specimen rejection.. -->
                </td>
             </tr>
          </table>
          <a id="clsi-definitions"></a>
-         <h3>CLSI Definitions - Quantitative, Semi-quantitative, Qualitative Results </h3>
-         <p>The following <a href="http://www.clsi.org/Content/NavigationMenu/Resources/HarmonizedTerminologyDatabase/Harmonized_Terminolo.htm">defnitions</a> were derived from the CLSI website:
+         <h3>CLSI-определения - количественные, полуколичественные, качественные результаты<!-- CLSI Definitions - Quantitative, Semi-quantitative, Qualitative Results  --></h3>
+         <p>
+		 Следующие <a href="http://www.clsi.org/Content/NavigationMenu/Resources/HarmonizedTerminologyDatabase/Harmonized_Terminolo.htm">определения</a> были получены с веб-сайта CLSI:
+		 <!-- The following <a href="http://www.clsi.org/Content/NavigationMenu/Resources/HarmonizedTerminologyDatabase/Harmonized_Terminolo.htm">defnitions</a> were derived from the CLSI website: -->
          </p>
          <ul>
             <li>
-               <b>QUANTITATIVE </b>
+               <b>КОЛИЧЕСТВЕННЫЙ<!-- QUANTITATIVE --> </b>
                <ul>
-                  <li>A characterization applied to laboratory tests that give results expressing a numerical amount
-                     or level (concentration) of an analyte in a specimen; <br/>
-                     NOTE 1: It is usually compared to an accredited recognized standard;  <br/>
-                     NOTE 2: This is in contrast to qualitative tests.
+                  <li>
+				  Характеристика, используемая для лабораторных тестов, которые дают результаты, выраженные в числовом количестве или уровне (концентрации) аналита в образце;
+				  <!-- A characterization applied to laboratory tests that give results expressing a numerical amount
+                     or level (concentration) of an analyte in a specimen;  --><br/>
+                     ПРИМЕЧАНИЕ 1: Обычно сравнивается с аккредитованным признанным стандартом;<!-- NOTE 1: It is usually compared to an accredited recognized standard; -->  <br/>
+                    ПРИМЕЧАНИЕ 2: В противоположность качественным тестам.<!-- NOTE 2: This is in contrast to qualitative tests. -->
                   </li>
-                  <li>When used to describe a test, means a test that produces a result that is numerical. For
+                  <li>
+				  При использовании для описания теста означает тест, который дает числовой результат. Например тест на содержание глюкозы в крови у постели больного может сгенерировать результат 120 mg/dL (1.20 g/L). В противоположность этому, качественный тест дает не-числовой результат, такой как "положительно" или "обнаружены". Подмножество количественных тестов, называемых полуколичественными, дает результаты либо в диапазоне значений, например urine dipstick, результатом которого могут быть диапазоны глюкозы 0-40, 40-100 и >100
+                     mg/dL (0-0.4, 0.4-1 и >1 g/L), или в виде серии относительных значений, например тот же urine dipstick, результатом которого может быть показатель гемоглобина 0, +, ++, +++ и ++++.
+				  <!-- When used to describe a test, means a test that produces a result that is numerical. For
                      example, a point-of-care blood glucose test might generate a result of 120 mg/dL (1.20 g/L).
                      In contrast, a qualitative test generates a non-numerical result such as 'positive' or 'detected.'
                      A subset of quantitative tests called semiquantitative provides results either over a range of
                      values, such as a urine dipstick that results in glucose ranges of 0-40, 40-100, and >100
                      mg/dL (0-0.4, 0.4-1, and >1 g/L), or as a series of relative values, such as the same multiple
-                     test urine dipstick that results in hemoglobin as 0, +, ++, +++, and ++++.
+                     test urine dipstick that results in hemoglobin as 0, +, ++, +++, and ++++. -->
                   </li>
                </ul>
             </li>
             <li>
-               <b>QUALITATIVE </b>
+               <b>КАЧЕСТВЕННЫЙ<!-- QUALITATIVE --> </b>
                <ul>
-                  <li>When used to describe a test, means a test that produces a result that is descriptive rather than
+                  <li>
+				  При использовании для описания теста означает, что тест дает описательный результат, а не числовой. Например тест мочи на беременность может генерировать «позитивный» или «негативный» результат для мочевого ХГЧ. В противоположность этому, количественный тест генерирует числовой результат. Процедуры контроля качества и отчетности существенно отличаются для количественных и качественных тестов.
+				  <!-- When used to describe a test, means a test that produces a result that is descriptive rather than
                      numerical. For example, a urine pregnancy test might generate a result of 'positive' or 'negative'
                      for urinary hCG. In contrast, a quantitative test generates a numerical result. The quality control
-                     and reporting procedures differ significantly for quantitative and qualitative tests.
+                     and reporting procedures differ significantly for quantitative and qualitative tests. -->
                   </li>
-                  <li>Characterization applied to laboratory tests that detect and/or identify a particular analyte,
-                     constituent, or condition;  <br/>
-                     NOTE 1: This term is applied to tests that detect whether a particular analyte, constituent, or
-                     condition is present or absent, and is sometimes assigned a positive degree (ie, 1+, 2+);  <br/>
-                     NOTE 2: It may also be called semiquantitative tests;  <br/>
-                     NOTE 3: Specific identification may be performed.
+                  <li>
+				  Характеристика, применяемая к лабораторным тестам, которые обнаруживают и/или идентифицируют определенный аналит, компонент или состояние:
+				  <!-- Characterization applied to laboratory tests that detect and/or identify a particular analyte,
+                     constituent, or condition; -->  <br/>
+                     ПРИМЕЧАНИЕ 1: Этот термин применим к тестам, которые обнаруживают, присутствует или отсутствует определенный аналит, компонент или состояние, и ему иногда присваивается положительная степень (т. е. 1+, 2+);<!-- NOTE 1: This term is applied to tests that detect whether a particular analyte, constituent, or
+                     condition is present or absent, and is sometimes assigned a positive degree (ie, 1+, 2+);  --> <br/>
+                     ПРИМЕЧАНИЕ 2: Иногда называются полуколичественными тестами;<!-- NOTE 2: It may also be called semiquantitative tests;  --> <br/>
+                     ПРИМЕЧАНИЕ 3: Может осуществляться конкретное определение.<!-- NOTE 3: Specific identification may be performed. -->
                   </li>
                </ul>
             </li>
             <li>
-               <b>SEMI-QUANTITATIVE</b>
+               <b>ПОЛУКОЛИЧЕСТВЕННЫЙ<!-- SEMI-QUANTITATIVE --></b>
                <ul>
-                  <li>A test that has a dose-response gradient that may be included in the reported result, but for which
+                  <li>
+				  Тест, имеющий градиент (зависимость) "доза-ответная реакция", который может включаться в отчетный результат, но для которого не существует официальных градуировочных шкал для определения погрешности и неточности; тесты, которые дают результаты в приблизительном диапазоне значений (например отслеживается, умеренный);
+				  <!-- A test that has a dose-response gradient that may be included in the reported result, but for which
                      no authorative calibration scale exists to determine inaccuracy and imprecision; tests that yield
-                     results in an approximate range of values (e.g., trace, moderate);  <br/>
-                     NOTE: This definition includes tests with subjective readout of quantification such as IF-ANA
+                     results in an approximate range of values (e.g., trace, moderate);  --> <br/>                     
+					 ПРИМЕЧАНИЕ: Это определение включает в себя тесты с субъективным отсчетом количественного анализа, такие как IF-ANA титры, а также включает в себя тесты с инструментальным отсчетом количественного анализа, такие как ELISA-ANA, когда шкала измерительного прибора не может быть отнесена к официальным градуировочным шкалам.
+					 <!-- NOTE: This definition includes tests with subjective readout of quantification such as IF-ANA
                      titers, and it includes tests with an instrumental readout of quantification such as ELISA-ANA
-                     when the instrument scale cannot be referenced to an authoritative calibration scale.
+                     when the instrument scale cannot be referenced to an authoritative calibration scale. -->
                   </li>
-                  <li>Tests that yield results in an approximate range of values (e.g., trace, moderate).</li>
+                  <li>Тесты, которые дают результаты в приблизительном диапазоне значений (например отслеживается, умеренный).<!-- Tests that yield results in an approximate range of values (e.g., trace, moderate). --></li>
                </ul>
             </li>
          </ul>
