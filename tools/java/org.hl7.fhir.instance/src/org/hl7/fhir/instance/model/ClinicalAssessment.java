@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -158,6 +158,26 @@ public class ClinicalAssessment extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ClinicalAssessmentInvestigationsComponent))
+          return false;
+        ClinicalAssessmentInvestigationsComponent o = (ClinicalAssessmentInvestigationsComponent) other;
+        return compareDeep(code, o.code, true) && compareDeep(item, o.item, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ClinicalAssessmentInvestigationsComponent))
+          return false;
+        ClinicalAssessmentInvestigationsComponent o = (ClinicalAssessmentInvestigationsComponent) other;
+        return true;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (code == null || code.isEmpty()) && (item == null || item.isEmpty())
           ;
@@ -279,6 +299,26 @@ public class ClinicalAssessment extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ClinicalAssessmentDiagnosisComponent))
+          return false;
+        ClinicalAssessmentDiagnosisComponent o = (ClinicalAssessmentDiagnosisComponent) other;
+        return compareDeep(item, o.item, true) && compareDeep(cause, o.cause, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ClinicalAssessmentDiagnosisComponent))
+          return false;
+        ClinicalAssessmentDiagnosisComponent o = (ClinicalAssessmentDiagnosisComponent) other;
+        return compareValues(cause, o.cause, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (item == null || item.isEmpty()) && (cause == null || cause.isEmpty())
           ;
@@ -398,6 +438,26 @@ public class ClinicalAssessment extends DomainResource {
         dst.item = item == null ? null : item.copy();
         dst.reason = reason == null ? null : reason.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ClinicalAssessmentRuledOutComponent))
+          return false;
+        ClinicalAssessmentRuledOutComponent o = (ClinicalAssessmentRuledOutComponent) other;
+        return compareDeep(item, o.item, true) && compareDeep(reason, o.reason, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ClinicalAssessmentRuledOutComponent))
+          return false;
+        ClinicalAssessmentRuledOutComponent o = (ClinicalAssessmentRuledOutComponent) other;
+        return compareValues(reason, o.reason, true);
       }
 
       public boolean isEmpty() {
@@ -1354,6 +1414,32 @@ public class ClinicalAssessment extends DomainResource {
         return copy();
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ClinicalAssessment))
+          return false;
+        ClinicalAssessment o = (ClinicalAssessment) other;
+        return compareDeep(patient, o.patient, true) && compareDeep(assessor, o.assessor, true) && compareDeep(date, o.date, true)
+           && compareDeep(description, o.description, true) && compareDeep(previous, o.previous, true) && compareDeep(problem, o.problem, true)
+           && compareDeep(careplan, o.careplan, true) && compareDeep(referral, o.referral, true) && compareDeep(investigations, o.investigations, true)
+           && compareDeep(protocol, o.protocol, true) && compareDeep(summary, o.summary, true) && compareDeep(diagnosis, o.diagnosis, true)
+           && compareDeep(resolved, o.resolved, true) && compareDeep(ruledOut, o.ruledOut, true) && compareDeep(prognosis, o.prognosis, true)
+           && compareDeep(plan, o.plan, true) && compareDeep(action, o.action, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ClinicalAssessment))
+          return false;
+        ClinicalAssessment o = (ClinicalAssessment) other;
+        return compareValues(date, o.date, true) && compareValues(description, o.description, true) && compareValues(protocol, o.protocol, true)
+           && compareValues(summary, o.summary, true) && compareValues(prognosis, o.prognosis, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (patient == null || patient.isEmpty()) && (assessor == null || assessor.isEmpty())
            && (date == null || date.isEmpty()) && (description == null || description.isEmpty()) && (previous == null || previous.isEmpty())
@@ -1377,10 +1463,10 @@ public class ClinicalAssessment extends DomainResource {
   public static final String SP_DIAGNOSIS = "diagnosis";
   @SearchParamDefinition(name="problem", path="ClinicalAssessment.problem", description="General assessment of patient state", type="reference" )
   public static final String SP_PROBLEM = "problem";
-  @SearchParamDefinition(name="careplan", path="ClinicalAssessment.careplan", description="A specific careplan that prompted this assessment", type="reference" )
-  public static final String SP_CAREPLAN = "careplan";
   @SearchParamDefinition(name="date", path="ClinicalAssessment.date", description="When the assessment occurred", type="date" )
   public static final String SP_DATE = "date";
+  @SearchParamDefinition(name="careplan", path="ClinicalAssessment.careplan", description="A specific careplan that prompted this assessment", type="reference" )
+  public static final String SP_CAREPLAN = "careplan";
   @SearchParamDefinition(name="ruledout", path="ClinicalAssessment.ruledOut.item", description="Specific text of code for diagnosis", type="token" )
   public static final String SP_RULEDOUT = "ruledout";
   @SearchParamDefinition(name="assessor", path="ClinicalAssessment.assessor", description="The clinicial performing the assessment", type="reference" )

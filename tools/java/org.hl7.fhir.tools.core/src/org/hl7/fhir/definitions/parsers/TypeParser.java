@@ -32,14 +32,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.utilities.Utilities;
 
 public class TypeParser {
 
 	public List<TypeRef> parse(String n, boolean inProfile, String profileExtensionBase) throws Exception {
 		ArrayList<TypeRef> a = new ArrayList<TypeRef>();
 
-		if (n == null || n.equals(""))
+		if (n == null || n.equals("") || n.startsWith("!"))
 			return a;
 
 		// We use "|" as a separator both between types as well as to separate resources when

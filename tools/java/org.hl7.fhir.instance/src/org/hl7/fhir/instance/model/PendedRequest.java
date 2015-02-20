@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -624,6 +624,30 @@ public class PendedRequest extends DomainResource {
 
       protected PendedRequest typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof PendedRequest))
+          return false;
+        PendedRequest o = (PendedRequest) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(ruleset, o.ruleset, true) && compareDeep(originalRuleset, o.originalRuleset, true)
+           && compareDeep(created, o.created, true) && compareDeep(target, o.target, true) && compareDeep(provider, o.provider, true)
+           && compareDeep(organization, o.organization, true) && compareDeep(request, o.request, true) && compareDeep(include, o.include, true)
+           && compareDeep(exclude, o.exclude, true) && compareDeep(period, o.period, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof PendedRequest))
+          return false;
+        PendedRequest o = (PendedRequest) other;
+        return compareValues(created, o.created, true) && compareValues(include, o.include, true) && compareValues(exclude, o.exclude, true)
+          ;
       }
 
       public boolean isEmpty() {

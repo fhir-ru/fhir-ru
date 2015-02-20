@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -482,6 +482,28 @@ public class ContactPoint extends Type {
 
       protected ContactPoint typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ContactPoint))
+          return false;
+        ContactPoint o = (ContactPoint) other;
+        return compareDeep(system, o.system, true) && compareDeep(value, o.value, true) && compareDeep(use, o.use, true)
+           && compareDeep(period, o.period, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ContactPoint))
+          return false;
+        ContactPoint o = (ContactPoint) other;
+        return compareValues(system, o.system, true) && compareValues(value, o.value, true) && compareValues(use, o.use, true)
+          ;
       }
 
       public boolean isEmpty() {

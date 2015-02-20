@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -227,20 +227,16 @@ public class ImmunizationRecommendation extends DomainResource {
          * @return This indicates the next recommended dose number (e.g. dose 2 is the next recommended dose).
          */
         public int getDoseNumber() { 
-          return this.doseNumber == null ? null : this.doseNumber.getValue();
+          return this.doseNumber == null ? 0 : this.doseNumber.getValue();
         }
 
         /**
          * @param value This indicates the next recommended dose number (e.g. dose 2 is the next recommended dose).
          */
         public ImmunizationRecommendationRecommendationComponent setDoseNumber(int value) { 
-          if (value == -1)
-            this.doseNumber = null;
-          else {
             if (this.doseNumber == null)
               this.doseNumber = new IntegerType();
             this.doseNumber.setValue(value);
-          }
           return this;
         }
 
@@ -450,6 +446,29 @@ public class ImmunizationRecommendation extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ImmunizationRecommendationRecommendationComponent))
+          return false;
+        ImmunizationRecommendationRecommendationComponent o = (ImmunizationRecommendationRecommendationComponent) other;
+        return compareDeep(date, o.date, true) && compareDeep(vaccineType, o.vaccineType, true) && compareDeep(doseNumber, o.doseNumber, true)
+           && compareDeep(forecastStatus, o.forecastStatus, true) && compareDeep(dateCriterion, o.dateCriterion, true)
+           && compareDeep(protocol, o.protocol, true) && compareDeep(supportingImmunization, o.supportingImmunization, true)
+           && compareDeep(supportingPatientInformation, o.supportingPatientInformation, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ImmunizationRecommendationRecommendationComponent))
+          return false;
+        ImmunizationRecommendationRecommendationComponent o = (ImmunizationRecommendationRecommendationComponent) other;
+        return compareValues(date, o.date, true) && compareValues(doseNumber, o.doseNumber, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (date == null || date.isEmpty()) && (vaccineType == null || vaccineType.isEmpty())
            && (doseNumber == null || doseNumber.isEmpty()) && (forecastStatus == null || forecastStatus.isEmpty())
@@ -571,6 +590,26 @@ public class ImmunizationRecommendation extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ImmunizationRecommendationRecommendationDateCriterionComponent))
+          return false;
+        ImmunizationRecommendationRecommendationDateCriterionComponent o = (ImmunizationRecommendationRecommendationDateCriterionComponent) other;
+        return compareDeep(code, o.code, true) && compareDeep(value, o.value, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ImmunizationRecommendationRecommendationDateCriterionComponent))
+          return false;
+        ImmunizationRecommendationRecommendationDateCriterionComponent o = (ImmunizationRecommendationRecommendationDateCriterionComponent) other;
+        return compareValues(value, o.value, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (code == null || code.isEmpty()) && (value == null || value.isEmpty())
           ;
@@ -651,20 +690,16 @@ public class ImmunizationRecommendation extends DomainResource {
          * @return Indicates the nominal position in a series of the next dose.  This is the recommended dose number as per a specified protocol.
          */
         public int getDoseSequence() { 
-          return this.doseSequence == null ? null : this.doseSequence.getValue();
+          return this.doseSequence == null ? 0 : this.doseSequence.getValue();
         }
 
         /**
          * @param value Indicates the nominal position in a series of the next dose.  This is the recommended dose number as per a specified protocol.
          */
         public ImmunizationRecommendationRecommendationProtocolComponent setDoseSequence(int value) { 
-          if (value == -1)
-            this.doseSequence = null;
-          else {
             if (this.doseSequence == null)
               this.doseSequence = new IntegerType();
             this.doseSequence.setValue(value);
-          }
           return this;
         }
 
@@ -828,6 +863,28 @@ public class ImmunizationRecommendation extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ImmunizationRecommendationRecommendationProtocolComponent))
+          return false;
+        ImmunizationRecommendationRecommendationProtocolComponent o = (ImmunizationRecommendationRecommendationProtocolComponent) other;
+        return compareDeep(doseSequence, o.doseSequence, true) && compareDeep(description, o.description, true)
+           && compareDeep(authority, o.authority, true) && compareDeep(series, o.series, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ImmunizationRecommendationRecommendationProtocolComponent))
+          return false;
+        ImmunizationRecommendationRecommendationProtocolComponent o = (ImmunizationRecommendationRecommendationProtocolComponent) other;
+        return compareValues(doseSequence, o.doseSequence, true) && compareValues(description, o.description, true)
+           && compareValues(series, o.series, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (doseSequence == null || doseSequence.isEmpty()) && (description == null || description.isEmpty())
            && (authority == null || authority.isEmpty()) && (series == null || series.isEmpty());
@@ -843,16 +900,16 @@ public class ImmunizationRecommendation extends DomainResource {
     protected List<Identifier> identifier;
 
     /**
-     * The patient who is the subject of the profile.
+     * The patient for whom the recommendations are for.
      */
-    @Child(name="subject", type={Patient.class}, order=0, min=1, max=1)
-    @Description(shortDefinition="Who this profile is for", formalDefinition="The patient who is the subject of the profile." )
-    protected Reference subject;
+    @Child(name="patient", type={Patient.class}, order=0, min=1, max=1)
+    @Description(shortDefinition="Who this profile is for", formalDefinition="The patient for whom the recommendations are for." )
+    protected Reference patient;
 
     /**
-     * The actual object that is the target of the reference (The patient who is the subject of the profile.)
+     * The actual object that is the target of the reference (The patient for whom the recommendations are for.)
      */
-    protected Patient subjectTarget;
+    protected Patient patientTarget;
 
     /**
      * Vaccine administration recommendations.
@@ -861,15 +918,15 @@ public class ImmunizationRecommendation extends DomainResource {
     @Description(shortDefinition="Vaccine administration recommendations", formalDefinition="Vaccine administration recommendations." )
     protected List<ImmunizationRecommendationRecommendationComponent> recommendation;
 
-    private static final long serialVersionUID = -1614145779L;
+    private static final long serialVersionUID = 641058495L;
 
     public ImmunizationRecommendation() {
       super();
     }
 
-    public ImmunizationRecommendation(Reference subject) {
+    public ImmunizationRecommendation(Reference patient) {
       super();
-      this.subject = subject;
+      this.patient = patient;
     }
 
     /**
@@ -903,46 +960,46 @@ public class ImmunizationRecommendation extends DomainResource {
     }
 
     /**
-     * @return {@link #subject} (The patient who is the subject of the profile.)
+     * @return {@link #patient} (The patient for whom the recommendations are for.)
      */
-    public Reference getSubject() { 
-      if (this.subject == null)
+    public Reference getPatient() { 
+      if (this.patient == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create ImmunizationRecommendation.subject");
+          throw new Error("Attempt to auto-create ImmunizationRecommendation.patient");
         else if (Configuration.doAutoCreate())
-          this.subject = new Reference(); // cc
-      return this.subject;
+          this.patient = new Reference(); // cc
+      return this.patient;
     }
 
-    public boolean hasSubject() { 
-      return this.subject != null && !this.subject.isEmpty();
+    public boolean hasPatient() { 
+      return this.patient != null && !this.patient.isEmpty();
     }
 
     /**
-     * @param value {@link #subject} (The patient who is the subject of the profile.)
+     * @param value {@link #patient} (The patient for whom the recommendations are for.)
      */
-    public ImmunizationRecommendation setSubject(Reference value) { 
-      this.subject = value;
+    public ImmunizationRecommendation setPatient(Reference value) { 
+      this.patient = value;
       return this;
     }
 
     /**
-     * @return {@link #subject} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The patient who is the subject of the profile.)
+     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The patient for whom the recommendations are for.)
      */
-    public Patient getSubjectTarget() { 
-      if (this.subjectTarget == null)
+    public Patient getPatientTarget() { 
+      if (this.patientTarget == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create ImmunizationRecommendation.subject");
+          throw new Error("Attempt to auto-create ImmunizationRecommendation.patient");
         else if (Configuration.doAutoCreate())
-          this.subjectTarget = new Patient(); // aa
-      return this.subjectTarget;
+          this.patientTarget = new Patient(); // aa
+      return this.patientTarget;
     }
 
     /**
-     * @param value {@link #subject} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The patient who is the subject of the profile.)
+     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The patient for whom the recommendations are for.)
      */
-    public ImmunizationRecommendation setSubjectTarget(Patient value) { 
-      this.subjectTarget = value;
+    public ImmunizationRecommendation setPatientTarget(Patient value) { 
+      this.patientTarget = value;
       return this;
     }
 
@@ -979,7 +1036,7 @@ public class ImmunizationRecommendation extends DomainResource {
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "A unique identifier assigned to this particular recommendation record.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("subject", "Reference(Patient)", "The patient who is the subject of the profile.", 0, java.lang.Integer.MAX_VALUE, subject));
+        childrenList.add(new Property("patient", "Reference(Patient)", "The patient for whom the recommendations are for.", 0, java.lang.Integer.MAX_VALUE, patient));
         childrenList.add(new Property("recommendation", "", "Vaccine administration recommendations.", 0, java.lang.Integer.MAX_VALUE, recommendation));
       }
 
@@ -991,7 +1048,7 @@ public class ImmunizationRecommendation extends DomainResource {
           for (Identifier i : identifier)
             dst.identifier.add(i.copy());
         };
-        dst.subject = subject == null ? null : subject.copy();
+        dst.patient = patient == null ? null : patient.copy();
         if (recommendation != null) {
           dst.recommendation = new ArrayList<ImmunizationRecommendationRecommendationComponent>();
           for (ImmunizationRecommendationRecommendationComponent i : recommendation)
@@ -1004,8 +1061,29 @@ public class ImmunizationRecommendation extends DomainResource {
         return copy();
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ImmunizationRecommendation))
+          return false;
+        ImmunizationRecommendation o = (ImmunizationRecommendation) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(patient, o.patient, true) && compareDeep(recommendation, o.recommendation, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ImmunizationRecommendation))
+          return false;
+        ImmunizationRecommendation o = (ImmunizationRecommendation) other;
+        return true;
+      }
+
       public boolean isEmpty() {
-        return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (subject == null || subject.isEmpty())
+        return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (patient == null || patient.isEmpty())
            && (recommendation == null || recommendation.isEmpty());
       }
 
@@ -1018,7 +1096,7 @@ public class ImmunizationRecommendation extends DomainResource {
   public static final String SP_INFORMATION = "information";
   @SearchParamDefinition(name="dose-sequence", path="ImmunizationRecommendation.recommendation.protocol.doseSequence", description="Number of dose within sequence", type="token" )
   public static final String SP_DOSESEQUENCE = "dose-sequence";
-  @SearchParamDefinition(name="patient", path="ImmunizationRecommendation.subject", description="Who this profile is for", type="reference" )
+  @SearchParamDefinition(name="patient", path="ImmunizationRecommendation.patient", description="Who this profile is for", type="reference" )
   public static final String SP_PATIENT = "patient";
   @SearchParamDefinition(name="support", path="ImmunizationRecommendation.recommendation.supportingImmunization", description="Past immunizations supporting recommendation", type="reference" )
   public static final String SP_SUPPORT = "support";
@@ -1028,7 +1106,7 @@ public class ImmunizationRecommendation extends DomainResource {
   public static final String SP_STATUS = "status";
   @SearchParamDefinition(name="dose-number", path="ImmunizationRecommendation.recommendation.doseNumber", description="Recommended dose number", type="number" )
   public static final String SP_DOSENUMBER = "dose-number";
-  @SearchParamDefinition(name="subject", path="ImmunizationRecommendation.subject", description="Who this profile is for", type="reference" )
+  @SearchParamDefinition(name="subject", path="ImmunizationRecommendation.patient", description="Who this profile is for", type="reference" )
   public static final String SP_SUBJECT = "subject";
   @SearchParamDefinition(name="date", path="ImmunizationRecommendation.recommendation.date", description="Date recommendation created", type="date" )
   public static final String SP_DATE = "date";

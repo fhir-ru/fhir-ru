@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -173,7 +173,7 @@ public class ValueSet extends DomainResource {
           return REGEX;
         if ("in".equals(codeString))
           return IN;
-        if ("not in".equals(codeString))
+        if ("not-in".equals(codeString))
           return NOTIN;
         throw new Exception("Unknown FilterOperator code '"+codeString+"'");
         }
@@ -184,7 +184,7 @@ public class ValueSet extends DomainResource {
             case ISNOTA: return "is-not-a";
             case REGEX: return "regex";
             case IN: return "in";
-            case NOTIN: return "not in";
+            case NOTIN: return "not-in";
             default: return "?";
           }
         }
@@ -217,7 +217,7 @@ public class ValueSet extends DomainResource {
             case ISNOTA: return "is-not-a";
             case REGEX: return "regex";
             case IN: return "in";
-            case NOTIN: return "not in";
+            case NOTIN: return "not-in";
             default: return "?";
           }
         }
@@ -238,7 +238,7 @@ public class ValueSet extends DomainResource {
           return FilterOperator.REGEX;
         if ("in".equals(codeString))
           return FilterOperator.IN;
-        if ("not in".equals(codeString))
+        if ("not-in".equals(codeString))
           return FilterOperator.NOTIN;
         throw new IllegalArgumentException("Unknown FilterOperator code '"+codeString+"'");
         }
@@ -254,7 +254,7 @@ public class ValueSet extends DomainResource {
       if (code == FilterOperator.IN)
         return "in";
       if (code == FilterOperator.NOTIN)
-        return "not in";
+        return "not-in";
       return "?";
       }
     }
@@ -426,20 +426,16 @@ public class ValueSet extends DomainResource {
          * @return If code comparison is case sensitive when codes within this system are compared to each other.
          */
         public boolean getCaseSensitive() { 
-          return this.caseSensitive == null ? false : this.caseSensitive.getValue();
+          return this.caseSensitive == null || this.caseSensitive.isEmpty() ? false : this.caseSensitive.getValue();
         }
 
         /**
          * @param value If code comparison is case sensitive when codes within this system are compared to each other.
          */
         public ValueSetDefineComponent setCaseSensitive(boolean value) { 
-          if (value == false)
-            this.caseSensitive = null;
-          else {
             if (this.caseSensitive == null)
               this.caseSensitive = new BooleanType();
             this.caseSensitive.setValue(value);
-          }
           return this;
         }
 
@@ -493,6 +489,28 @@ public class ValueSet extends DomainResource {
             dst.concept.add(i.copy());
         };
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ValueSetDefineComponent))
+          return false;
+        ValueSetDefineComponent o = (ValueSetDefineComponent) other;
+        return compareDeep(system, o.system, true) && compareDeep(version, o.version, true) && compareDeep(caseSensitive, o.caseSensitive, true)
+           && compareDeep(concept, o.concept, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ValueSetDefineComponent))
+          return false;
+        ValueSetDefineComponent o = (ValueSetDefineComponent) other;
+        return compareValues(system, o.system, true) && compareValues(version, o.version, true) && compareValues(caseSensitive, o.caseSensitive, true)
+          ;
       }
 
       public boolean isEmpty() {
@@ -642,13 +660,9 @@ public class ValueSet extends DomainResource {
          * @param value If this code is not for use as a real concept.
          */
         public ConceptDefinitionComponent setAbstract(boolean value) { 
-          if (value == false)
-            this.abstract_ = null;
-          else {
             if (this.abstract_ == null)
               this.abstract_ = new BooleanType();
             this.abstract_.setValue(value);
-          }
           return this;
         }
 
@@ -840,6 +854,29 @@ public class ValueSet extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ConceptDefinitionComponent))
+          return false;
+        ConceptDefinitionComponent o = (ConceptDefinitionComponent) other;
+        return compareDeep(code, o.code, true) && compareDeep(abstract_, o.abstract_, true) && compareDeep(display, o.display, true)
+           && compareDeep(definition, o.definition, true) && compareDeep(designation, o.designation, true)
+           && compareDeep(concept, o.concept, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ConceptDefinitionComponent))
+          return false;
+        ConceptDefinitionComponent o = (ConceptDefinitionComponent) other;
+        return compareValues(code, o.code, true) && compareValues(abstract_, o.abstract_, true) && compareValues(display, o.display, true)
+           && compareValues(definition, o.definition, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (code == null || code.isEmpty()) && (abstract_ == null || abstract_.isEmpty())
            && (display == null || display.isEmpty()) && (definition == null || definition.isEmpty())
@@ -1015,6 +1052,27 @@ public class ValueSet extends DomainResource {
         dst.use = use == null ? null : use.copy();
         dst.value = value == null ? null : value.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ConceptDefinitionDesignationComponent))
+          return false;
+        ConceptDefinitionDesignationComponent o = (ConceptDefinitionDesignationComponent) other;
+        return compareDeep(language, o.language, true) && compareDeep(use, o.use, true) && compareDeep(value, o.value, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ConceptDefinitionDesignationComponent))
+          return false;
+        ConceptDefinitionDesignationComponent o = (ConceptDefinitionDesignationComponent) other;
+        return compareValues(language, o.language, true) && compareValues(value, o.value, true);
       }
 
       public boolean isEmpty() {
@@ -1193,6 +1251,27 @@ public class ValueSet extends DomainResource {
             dst.exclude.add(i.copy());
         };
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ValueSetComposeComponent))
+          return false;
+        ValueSetComposeComponent o = (ValueSetComposeComponent) other;
+        return compareDeep(import_, o.import_, true) && compareDeep(include, o.include, true) && compareDeep(exclude, o.exclude, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ValueSetComposeComponent))
+          return false;
+        ValueSetComposeComponent o = (ValueSetComposeComponent) other;
+        return compareValues(import_, o.import_, true);
       }
 
       public boolean isEmpty() {
@@ -1423,6 +1502,27 @@ public class ValueSet extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ConceptSetComponent))
+          return false;
+        ConceptSetComponent o = (ConceptSetComponent) other;
+        return compareDeep(system, o.system, true) && compareDeep(version, o.version, true) && compareDeep(concept, o.concept, true)
+           && compareDeep(filter, o.filter, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ConceptSetComponent))
+          return false;
+        ConceptSetComponent o = (ConceptSetComponent) other;
+        return compareValues(system, o.system, true) && compareValues(version, o.version, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (system == null || system.isEmpty()) && (version == null || version.isEmpty())
            && (concept == null || concept.isEmpty()) && (filter == null || filter.isEmpty());
@@ -1608,6 +1708,27 @@ public class ValueSet extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ConceptReferenceComponent))
+          return false;
+        ConceptReferenceComponent o = (ConceptReferenceComponent) other;
+        return compareDeep(code, o.code, true) && compareDeep(display, o.display, true) && compareDeep(designation, o.designation, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ConceptReferenceComponent))
+          return false;
+        ConceptReferenceComponent o = (ConceptReferenceComponent) other;
+        return compareValues(code, o.code, true) && compareValues(display, o.display, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (code == null || code.isEmpty()) && (display == null || display.isEmpty())
            && (designation == null || designation.isEmpty());
@@ -1628,7 +1749,7 @@ public class ValueSet extends DomainResource {
          * The kind of operation to perform as a part of the filter criteria.
          */
         @Child(name="op", type={CodeType.class}, order=2, min=1, max=1)
-        @Description(shortDefinition="= | is-a | is-not-a | regex | in | not in", formalDefinition="The kind of operation to perform as a part of the filter criteria." )
+        @Description(shortDefinition="= | is-a | is-not-a | regex | in | not-in", formalDefinition="The kind of operation to perform as a part of the filter criteria." )
         protected Enumeration<FilterOperator> op;
 
         /**
@@ -1802,6 +1923,28 @@ public class ValueSet extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ConceptSetFilterComponent))
+          return false;
+        ConceptSetFilterComponent o = (ConceptSetFilterComponent) other;
+        return compareDeep(property, o.property, true) && compareDeep(op, o.op, true) && compareDeep(value, o.value, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ConceptSetFilterComponent))
+          return false;
+        ConceptSetFilterComponent o = (ConceptSetFilterComponent) other;
+        return compareValues(property, o.property, true) && compareValues(op, o.op, true) && compareValues(value, o.value, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (property == null || property.isEmpty()) && (op == null || op.isEmpty())
            && (value == null || value.isEmpty());
@@ -1962,6 +2105,27 @@ public class ValueSet extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ValueSetExpansionComponent))
+          return false;
+        ValueSetExpansionComponent o = (ValueSetExpansionComponent) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(timestamp, o.timestamp, true)
+           && compareDeep(contains, o.contains, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ValueSetExpansionComponent))
+          return false;
+        ValueSetExpansionComponent o = (ValueSetExpansionComponent) other;
+        return compareValues(timestamp, o.timestamp, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (timestamp == null || timestamp.isEmpty())
            && (contains == null || contains.isEmpty());
@@ -2107,13 +2271,9 @@ public class ValueSet extends DomainResource {
          * @param value If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.
          */
         public ValueSetExpansionContainsComponent setAbstract(boolean value) { 
-          if (value == false)
-            this.abstract_ = null;
-          else {
             if (this.abstract_ == null)
               this.abstract_ = new BooleanType();
             this.abstract_.setValue(value);
-          }
           return this;
         }
 
@@ -2320,6 +2480,29 @@ public class ValueSet extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ValueSetExpansionContainsComponent))
+          return false;
+        ValueSetExpansionContainsComponent o = (ValueSetExpansionContainsComponent) other;
+        return compareDeep(system, o.system, true) && compareDeep(abstract_, o.abstract_, true) && compareDeep(version, o.version, true)
+           && compareDeep(code, o.code, true) && compareDeep(display, o.display, true) && compareDeep(contains, o.contains, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ValueSetExpansionContainsComponent))
+          return false;
+        ValueSetExpansionContainsComponent o = (ValueSetExpansionContainsComponent) other;
+        return compareValues(system, o.system, true) && compareValues(abstract_, o.abstract_, true) && compareValues(version, o.version, true)
+           && compareValues(code, o.code, true) && compareValues(display, o.display, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (system == null || system.isEmpty()) && (abstract_ == null || abstract_.isEmpty())
            && (version == null || version.isEmpty()) && (code == null || code.isEmpty()) && (display == null || display.isEmpty())
@@ -2350,104 +2533,97 @@ public class ValueSet extends DomainResource {
     protected StringType name;
 
     /**
-     * This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
-     */
-    @Child(name="purpose", type={StringType.class}, order=2, min=0, max=1)
-    @Description(shortDefinition="Textual description of the intended scope and use", formalDefinition="This should describe 'the semantic space' to be included in the value set. This can also describe the approach taken to build the value set." )
-    protected StringType purpose;
-
-    /**
      * If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
      */
-    @Child(name="immutable", type={BooleanType.class}, order=3, min=0, max=1)
+    @Child(name="immutable", type={BooleanType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Indicates whether or not any change to the content logical definition may occur", formalDefinition="If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change." )
     protected BooleanType immutable;
 
     /**
      * The name of the individual or organization that published the value set.
      */
-    @Child(name="publisher", type={StringType.class}, order=4, min=0, max=1)
+    @Child(name="publisher", type={StringType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Name of the publisher (Organization or individual)", formalDefinition="The name of the individual or organization that published the value set." )
     protected StringType publisher;
 
     /**
      * Contacts of the publisher to assist a user in finding and communicating with the publisher.
      */
-    @Child(name="telecom", type={ContactPoint.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name="telecom", type={ContactPoint.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Contact information of the publisher", formalDefinition="Contacts of the publisher to assist a user in finding and communicating with the publisher." )
     protected List<ContactPoint> telecom;
 
     /**
-     * A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.
+     * A free text natural language description of the use of the value set - reason for definition, "the semantic space" to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set.
      */
-    @Child(name="description", type={StringType.class}, order=6, min=0, max=1)
-    @Description(shortDefinition="Human language description of the value set", formalDefinition="A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set." )
+    @Child(name="description", type={StringType.class}, order=5, min=0, max=1)
+    @Description(shortDefinition="Human language description of the value set", formalDefinition="A free text natural language description of the use of the value set - reason for definition, 'the semantic space' to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set." )
     protected StringType description;
 
     /**
      * A copyright statement relating to the value set and/or its contents. These are generally legal restrictions on the use and publishing of the value set.
      */
-    @Child(name="copyright", type={StringType.class}, order=7, min=0, max=1)
+    @Child(name="copyright", type={StringType.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Publishing restrictions for the value set", formalDefinition="A copyright statement relating to the value set and/or its contents. These are generally legal restrictions on the use and publishing of the value set." )
     protected StringType copyright;
 
     /**
      * The status of the value set.
      */
-    @Child(name="status", type={CodeType.class}, order=8, min=1, max=1)
+    @Child(name="status", type={CodeType.class}, order=7, min=1, max=1)
     @Description(shortDefinition="draft | active | retired", formalDefinition="The status of the value set." )
     protected Enumeration<ValuesetStatus> status;
 
     /**
      * This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    @Child(name="experimental", type={BooleanType.class}, order=9, min=0, max=1)
+    @Child(name="experimental", type={BooleanType.class}, order=8, min=0, max=1)
     @Description(shortDefinition="If for testing purposes, not real usage", formalDefinition="This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage." )
     protected BooleanType experimental;
 
     /**
      * Whether this is intended to be used with an extensible binding or not.
      */
-    @Child(name="extensible", type={BooleanType.class}, order=10, min=0, max=1)
+    @Child(name="extensible", type={BooleanType.class}, order=9, min=0, max=1)
     @Description(shortDefinition="Whether this is intended to be used with an extensible binding", formalDefinition="Whether this is intended to be used with an extensible binding or not." )
     protected BooleanType extensible;
 
     /**
      * The date that the value set status was last changed.
      */
-    @Child(name="date", type={DateTimeType.class}, order=11, min=0, max=1)
+    @Child(name="date", type={DateTimeType.class}, order=10, min=0, max=1)
     @Description(shortDefinition="Date for given status", formalDefinition="The date that the value set status was last changed." )
     protected DateTimeType date;
 
     /**
      * If a Stability Date is expanded by evaluating the Content Logical Definition using the current version of all referenced code system(s) and value sets as of the Stability Date.
      */
-    @Child(name="stableDate", type={DateType.class}, order=12, min=0, max=1)
+    @Child(name="stableDate", type={DateType.class}, order=11, min=0, max=1)
     @Description(shortDefinition="Fixed date for the version of all referenced code systems and value sets", formalDefinition="If a Stability Date is expanded by evaluating the Content Logical Definition using the current version of all referenced code system(s) and value sets as of the Stability Date." )
     protected DateType stableDate;
 
     /**
      * When value set defines its own codes.
      */
-    @Child(name="define", type={}, order=13, min=0, max=1)
+    @Child(name="define", type={}, order=12, min=0, max=1)
     @Description(shortDefinition="When value set defines its own codes", formalDefinition="When value set defines its own codes." )
     protected ValueSetDefineComponent define;
 
     /**
      * When value set includes codes from elsewhere.
      */
-    @Child(name="compose", type={}, order=14, min=0, max=1)
+    @Child(name="compose", type={}, order=13, min=0, max=1)
     @Description(shortDefinition="When value set includes codes from elsewhere", formalDefinition="When value set includes codes from elsewhere." )
     protected ValueSetComposeComponent compose;
 
     /**
      * A value set can also be "expanded", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.
      */
-    @Child(name="expansion", type={}, order=15, min=0, max=1)
+    @Child(name="expansion", type={}, order=14, min=0, max=1)
     @Description(shortDefinition="Used when the value set is 'expanded'", formalDefinition="A value set can also be 'expanded', where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed." )
     protected ValueSetExpansionComponent expansion;
 
-    private static final long serialVersionUID = -1119903575L;
+    private static final long serialVersionUID = 1856329856L;
 
     public ValueSet() {
       super();
@@ -2606,55 +2782,6 @@ public class ValueSet extends DomainResource {
     }
 
     /**
-     * @return {@link #purpose} (This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
-     */
-    public StringType getPurposeElement() { 
-      if (this.purpose == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create ValueSet.purpose");
-        else if (Configuration.doAutoCreate())
-          this.purpose = new StringType(); // bb
-      return this.purpose;
-    }
-
-    public boolean hasPurposeElement() { 
-      return this.purpose != null && !this.purpose.isEmpty();
-    }
-
-    public boolean hasPurpose() { 
-      return this.purpose != null && !this.purpose.isEmpty();
-    }
-
-    /**
-     * @param value {@link #purpose} (This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
-     */
-    public ValueSet setPurposeElement(StringType value) { 
-      this.purpose = value;
-      return this;
-    }
-
-    /**
-     * @return This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
-     */
-    public String getPurpose() { 
-      return this.purpose == null ? null : this.purpose.getValue();
-    }
-
-    /**
-     * @param value This should describe "the semantic space" to be included in the value set. This can also describe the approach taken to build the value set.
-     */
-    public ValueSet setPurpose(String value) { 
-      if (Utilities.noString(value))
-        this.purpose = null;
-      else {
-        if (this.purpose == null)
-          this.purpose = new StringType();
-        this.purpose.setValue(value);
-      }
-      return this;
-    }
-
-    /**
      * @return {@link #immutable} (If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.). This is the underlying object with id, value and extensions. The accessor "getImmutable" gives direct access to the value
      */
     public BooleanType getImmutableElement() { 
@@ -2693,13 +2820,9 @@ public class ValueSet extends DomainResource {
      * @param value If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.
      */
     public ValueSet setImmutable(boolean value) { 
-      if (value == false)
-        this.immutable = null;
-      else {
         if (this.immutable == null)
           this.immutable = new BooleanType();
         this.immutable.setValue(value);
-      }
       return this;
     }
 
@@ -2783,7 +2906,7 @@ public class ValueSet extends DomainResource {
     }
 
     /**
-     * @return {@link #description} (A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
+     * @return {@link #description} (A free text natural language description of the use of the value set - reason for definition, "the semantic space" to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
     public StringType getDescriptionElement() { 
       if (this.description == null)
@@ -2803,7 +2926,7 @@ public class ValueSet extends DomainResource {
     }
 
     /**
-     * @param value {@link #description} (A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
+     * @param value {@link #description} (A free text natural language description of the use of the value set - reason for definition, "the semantic space" to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
      */
     public ValueSet setDescriptionElement(StringType value) { 
       this.description = value;
@@ -2811,14 +2934,14 @@ public class ValueSet extends DomainResource {
     }
 
     /**
-     * @return A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.
+     * @return A free text natural language description of the use of the value set - reason for definition, "the semantic space" to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set.
      */
     public String getDescription() { 
       return this.description == null ? null : this.description.getValue();
     }
 
     /**
-     * @param value A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.
+     * @param value A free text natural language description of the use of the value set - reason for definition, "the semantic space" to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set.
      */
     public ValueSet setDescription(String value) { 
       if (Utilities.noString(value))
@@ -2964,13 +3087,9 @@ public class ValueSet extends DomainResource {
      * @param value This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
     public ValueSet setExperimental(boolean value) { 
-      if (value == false)
-        this.experimental = null;
-      else {
         if (this.experimental == null)
           this.experimental = new BooleanType();
         this.experimental.setValue(value);
-      }
       return this;
     }
 
@@ -3013,13 +3132,9 @@ public class ValueSet extends DomainResource {
      * @param value Whether this is intended to be used with an extensible binding or not.
      */
     public ValueSet setExtensible(boolean value) { 
-      if (value == false)
-        this.extensible = null;
-      else {
         if (this.extensible == null)
           this.extensible = new BooleanType();
         this.extensible.setValue(value);
-      }
       return this;
     }
 
@@ -3198,11 +3313,10 @@ public class ValueSet extends DomainResource {
         childrenList.add(new Property("identifier", "uri", "The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance (should be globally unique OID, UUID, or URI).", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("version", "string", "The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.", 0, java.lang.Integer.MAX_VALUE, version));
         childrenList.add(new Property("name", "string", "A free text natural language name describing the value set.", 0, java.lang.Integer.MAX_VALUE, name));
-        childrenList.add(new Property("purpose", "string", "This should describe 'the semantic space' to be included in the value set. This can also describe the approach taken to build the value set.", 0, java.lang.Integer.MAX_VALUE, purpose));
         childrenList.add(new Property("immutable", "boolean", "If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change.", 0, java.lang.Integer.MAX_VALUE, immutable));
         childrenList.add(new Property("publisher", "string", "The name of the individual or organization that published the value set.", 0, java.lang.Integer.MAX_VALUE, publisher));
         childrenList.add(new Property("telecom", "ContactPoint", "Contacts of the publisher to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, telecom));
-        childrenList.add(new Property("description", "string", "A free text natural language description of the use of the value set - reason for definition, conditions of use, etc. The description may include a list of expected usages for the value set.", 0, java.lang.Integer.MAX_VALUE, description));
+        childrenList.add(new Property("description", "string", "A free text natural language description of the use of the value set - reason for definition, 'the semantic space' to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set.", 0, java.lang.Integer.MAX_VALUE, description));
         childrenList.add(new Property("copyright", "string", "A copyright statement relating to the value set and/or its contents. These are generally legal restrictions on the use and publishing of the value set.", 0, java.lang.Integer.MAX_VALUE, copyright));
         childrenList.add(new Property("status", "code", "The status of the value set.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("experimental", "boolean", "This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.", 0, java.lang.Integer.MAX_VALUE, experimental));
@@ -3220,7 +3334,6 @@ public class ValueSet extends DomainResource {
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.version = version == null ? null : version.copy();
         dst.name = name == null ? null : name.copy();
-        dst.purpose = purpose == null ? null : purpose.copy();
         dst.immutable = immutable == null ? null : immutable.copy();
         dst.publisher = publisher == null ? null : publisher.copy();
         if (telecom != null) {
@@ -3245,10 +3358,39 @@ public class ValueSet extends DomainResource {
         return copy();
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ValueSet))
+          return false;
+        ValueSet o = (ValueSet) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(version, o.version, true) && compareDeep(name, o.name, true)
+           && compareDeep(immutable, o.immutable, true) && compareDeep(publisher, o.publisher, true) && compareDeep(telecom, o.telecom, true)
+           && compareDeep(description, o.description, true) && compareDeep(copyright, o.copyright, true) && compareDeep(status, o.status, true)
+           && compareDeep(experimental, o.experimental, true) && compareDeep(extensible, o.extensible, true)
+           && compareDeep(date, o.date, true) && compareDeep(stableDate, o.stableDate, true) && compareDeep(define, o.define, true)
+           && compareDeep(compose, o.compose, true) && compareDeep(expansion, o.expansion, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ValueSet))
+          return false;
+        ValueSet o = (ValueSet) other;
+        return compareValues(identifier, o.identifier, true) && compareValues(version, o.version, true) && compareValues(name, o.name, true)
+           && compareValues(immutable, o.immutable, true) && compareValues(publisher, o.publisher, true) && compareValues(description, o.description, true)
+           && compareValues(copyright, o.copyright, true) && compareValues(status, o.status, true) && compareValues(experimental, o.experimental, true)
+           && compareValues(extensible, o.extensible, true) && compareValues(date, o.date, true) && compareValues(stableDate, o.stableDate, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (version == null || version.isEmpty())
-           && (name == null || name.isEmpty()) && (purpose == null || purpose.isEmpty()) && (immutable == null || immutable.isEmpty())
-           && (publisher == null || publisher.isEmpty()) && (telecom == null || telecom.isEmpty()) && (description == null || description.isEmpty())
+           && (name == null || name.isEmpty()) && (immutable == null || immutable.isEmpty()) && (publisher == null || publisher.isEmpty())
+           && (telecom == null || telecom.isEmpty()) && (description == null || description.isEmpty())
            && (copyright == null || copyright.isEmpty()) && (status == null || status.isEmpty()) && (experimental == null || experimental.isEmpty())
            && (extensible == null || extensible.isEmpty()) && (date == null || date.isEmpty()) && (stableDate == null || stableDate.isEmpty())
            && (define == null || define.isEmpty()) && (compose == null || compose.isEmpty()) && (expansion == null || expansion.isEmpty())

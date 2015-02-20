@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -371,6 +371,27 @@ public class OralHealthClaim extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof PayeeComponent))
+          return false;
+        PayeeComponent o = (PayeeComponent) other;
+        return compareDeep(type, o.type, true) && compareDeep(provider, o.provider, true) && compareDeep(organization, o.organization, true)
+           && compareDeep(person, o.person, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof PayeeComponent))
+          return false;
+        PayeeComponent o = (PayeeComponent) other;
+        return true;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (type == null || type.isEmpty()) && (provider == null || provider.isEmpty())
            && (organization == null || organization.isEmpty()) && (person == null || person.isEmpty())
@@ -439,7 +460,7 @@ public class OralHealthClaim extends DomainResource {
          * @return Sequence of diagnosis.
          */
         public int getSequence() { 
-          return this.sequence == null ? null : this.sequence.getValue();
+          return this.sequence == null ? 0 : this.sequence.getValue();
         }
 
         /**
@@ -488,6 +509,26 @@ public class OralHealthClaim extends DomainResource {
         dst.sequence = sequence == null ? null : sequence.copy();
         dst.diagnosis = diagnosis == null ? null : diagnosis.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof DiagnosisComponent))
+          return false;
+        DiagnosisComponent o = (DiagnosisComponent) other;
+        return compareDeep(sequence, o.sequence, true) && compareDeep(diagnosis, o.diagnosis, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof DiagnosisComponent))
+          return false;
+        DiagnosisComponent o = (DiagnosisComponent) other;
+        return compareValues(sequence, o.sequence, true);
       }
 
       public boolean isEmpty() {
@@ -611,7 +652,7 @@ public class OralHealthClaim extends DomainResource {
          * @return A service line item.
          */
         public int getSequence() { 
-          return this.sequence == null ? null : this.sequence.getValue();
+          return this.sequence == null ? 0 : this.sequence.getValue();
         }
 
         /**
@@ -938,6 +979,30 @@ public class OralHealthClaim extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof CoverageComponent))
+          return false;
+        CoverageComponent o = (CoverageComponent) other;
+        return compareDeep(sequence, o.sequence, true) && compareDeep(focal, o.focal, true) && compareDeep(coverage, o.coverage, true)
+           && compareDeep(businessArrangement, o.businessArrangement, true) && compareDeep(relationship, o.relationship, true)
+           && compareDeep(preauthref, o.preauthref, true) && compareDeep(claimResponse, o.claimResponse, true)
+           && compareDeep(originalRuleset, o.originalRuleset, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof CoverageComponent))
+          return false;
+        CoverageComponent o = (CoverageComponent) other;
+        return compareValues(sequence, o.sequence, true) && compareValues(focal, o.focal, true) && compareValues(businessArrangement, o.businessArrangement, true)
+           && compareValues(preauthref, o.preauthref, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (sequence == null || sequence.isEmpty()) && (focal == null || focal.isEmpty())
            && (coverage == null || coverage.isEmpty()) && (businessArrangement == null || businessArrangement.isEmpty())
@@ -1093,6 +1158,27 @@ public class OralHealthClaim extends DomainResource {
         dst.reason = reason == null ? null : reason.copy();
         dst.extractiondate = extractiondate == null ? null : extractiondate.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof MissingTeethComponent))
+          return false;
+        MissingTeethComponent o = (MissingTeethComponent) other;
+        return compareDeep(tooth, o.tooth, true) && compareDeep(reason, o.reason, true) && compareDeep(extractiondate, o.extractiondate, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof MissingTeethComponent))
+          return false;
+        MissingTeethComponent o = (MissingTeethComponent) other;
+        return compareValues(extractiondate, o.extractiondate, true);
       }
 
       public boolean isEmpty() {
@@ -1312,20 +1398,16 @@ public class OralHealthClaim extends DomainResource {
          * @return The estimated treatment duration in months.
          */
         public int getDurationMonths() { 
-          return this.durationMonths == null ? null : this.durationMonths.getValue();
+          return this.durationMonths == null ? 0 : this.durationMonths.getValue();
         }
 
         /**
          * @param value The estimated treatment duration in months.
          */
         public OrthodonticPlanComponent setDurationMonths(int value) { 
-          if (value == -1)
-            this.durationMonths = null;
-          else {
             if (this.durationMonths == null)
               this.durationMonths = new IntegerType();
             this.durationMonths.setValue(value);
-          }
           return this;
         }
 
@@ -1361,20 +1443,16 @@ public class OralHealthClaim extends DomainResource {
          * @return The anticipated number of payments.
          */
         public int getPaymentCount() { 
-          return this.paymentCount == null ? null : this.paymentCount.getValue();
+          return this.paymentCount == null ? 0 : this.paymentCount.getValue();
         }
 
         /**
          * @param value The anticipated number of payments.
          */
         public OrthodonticPlanComponent setPaymentCount(int value) { 
-          if (value == -1)
-            this.paymentCount = null;
-          else {
             if (this.paymentCount == null)
               this.paymentCount = new IntegerType();
             this.paymentCount.setValue(value);
-          }
           return this;
         }
 
@@ -1424,6 +1502,30 @@ public class OralHealthClaim extends DomainResource {
         dst.paymentCount = paymentCount == null ? null : paymentCount.copy();
         dst.periodicPayment = periodicPayment == null ? null : periodicPayment.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof OrthodonticPlanComponent))
+          return false;
+        OrthodonticPlanComponent o = (OrthodonticPlanComponent) other;
+        return compareDeep(start, o.start, true) && compareDeep(examFee, o.examFee, true) && compareDeep(diagnosticFee, o.diagnosticFee, true)
+           && compareDeep(initialPayment, o.initialPayment, true) && compareDeep(durationMonths, o.durationMonths, true)
+           && compareDeep(paymentCount, o.paymentCount, true) && compareDeep(periodicPayment, o.periodicPayment, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof OrthodonticPlanComponent))
+          return false;
+        OrthodonticPlanComponent o = (OrthodonticPlanComponent) other;
+        return compareValues(start, o.start, true) && compareValues(durationMonths, o.durationMonths, true)
+           && compareValues(paymentCount, o.paymentCount, true);
       }
 
       public boolean isEmpty() {
@@ -1606,7 +1708,7 @@ public class OralHealthClaim extends DomainResource {
          * @return A service line number.
          */
         public int getSequence() { 
-          return this.sequence == null ? null : this.sequence.getValue();
+          return this.sequence == null ? 0 : this.sequence.getValue();
         }
 
         /**
@@ -2206,6 +2308,34 @@ public class OralHealthClaim extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ItemsComponent))
+          return false;
+        ItemsComponent o = (ItemsComponent) other;
+        return compareDeep(sequence, o.sequence, true) && compareDeep(type, o.type, true) && compareDeep(provider, o.provider, true)
+           && compareDeep(diagnosisLinkId, o.diagnosisLinkId, true) && compareDeep(service, o.service, true)
+           && compareDeep(serviceDate, o.serviceDate, true) && compareDeep(quantity, o.quantity, true) && compareDeep(unitPrice, o.unitPrice, true)
+           && compareDeep(factor, o.factor, true) && compareDeep(points, o.points, true) && compareDeep(net, o.net, true)
+           && compareDeep(udi, o.udi, true) && compareDeep(bodySite, o.bodySite, true) && compareDeep(subsite, o.subsite, true)
+           && compareDeep(modifier, o.modifier, true) && compareDeep(detail, o.detail, true) && compareDeep(prosthesis, o.prosthesis, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ItemsComponent))
+          return false;
+        ItemsComponent o = (ItemsComponent) other;
+        return compareValues(sequence, o.sequence, true) && compareValues(diagnosisLinkId, o.diagnosisLinkId, true)
+           && compareValues(serviceDate, o.serviceDate, true) && compareValues(factor, o.factor, true) && compareValues(points, o.points, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (sequence == null || sequence.isEmpty()) && (type == null || type.isEmpty())
            && (provider == null || provider.isEmpty()) && (diagnosisLinkId == null || diagnosisLinkId.isEmpty())
@@ -2336,7 +2466,7 @@ public class OralHealthClaim extends DomainResource {
          * @return A service line number.
          */
         public int getSequence() { 
-          return this.sequence == null ? null : this.sequence.getValue();
+          return this.sequence == null ? 0 : this.sequence.getValue();
         }
 
         /**
@@ -2655,6 +2785,30 @@ public class OralHealthClaim extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof DetailComponent))
+          return false;
+        DetailComponent o = (DetailComponent) other;
+        return compareDeep(sequence, o.sequence, true) && compareDeep(type, o.type, true) && compareDeep(service, o.service, true)
+           && compareDeep(quantity, o.quantity, true) && compareDeep(unitPrice, o.unitPrice, true) && compareDeep(factor, o.factor, true)
+           && compareDeep(points, o.points, true) && compareDeep(net, o.net, true) && compareDeep(udi, o.udi, true)
+           && compareDeep(subDetail, o.subDetail, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof DetailComponent))
+          return false;
+        DetailComponent o = (DetailComponent) other;
+        return compareValues(sequence, o.sequence, true) && compareValues(factor, o.factor, true) && compareValues(points, o.points, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (sequence == null || sequence.isEmpty()) && (type == null || type.isEmpty())
            && (service == null || service.isEmpty()) && (quantity == null || quantity.isEmpty()) && (unitPrice == null || unitPrice.isEmpty())
@@ -2774,7 +2928,7 @@ public class OralHealthClaim extends DomainResource {
          * @return A service line number.
          */
         public int getSequence() { 
-          return this.sequence == null ? null : this.sequence.getValue();
+          return this.sequence == null ? 0 : this.sequence.getValue();
         }
 
         /**
@@ -3057,6 +3211,30 @@ public class OralHealthClaim extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof SubDetailComponent))
+          return false;
+        SubDetailComponent o = (SubDetailComponent) other;
+        return compareDeep(sequence, o.sequence, true) && compareDeep(type, o.type, true) && compareDeep(service, o.service, true)
+           && compareDeep(quantity, o.quantity, true) && compareDeep(unitPrice, o.unitPrice, true) && compareDeep(factor, o.factor, true)
+           && compareDeep(points, o.points, true) && compareDeep(net, o.net, true) && compareDeep(udi, o.udi, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof SubDetailComponent))
+          return false;
+        SubDetailComponent o = (SubDetailComponent) other;
+        return compareValues(sequence, o.sequence, true) && compareValues(factor, o.factor, true) && compareValues(points, o.points, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (sequence == null || sequence.isEmpty()) && (type == null || type.isEmpty())
            && (service == null || service.isEmpty()) && (quantity == null || quantity.isEmpty()) && (unitPrice == null || unitPrice.isEmpty())
@@ -3134,13 +3312,9 @@ public class OralHealthClaim extends DomainResource {
          * @param value Indicates whether this is the initial placement of a fixed prosthesis.
          */
         public ProsthesisComponent setInitial(boolean value) { 
-          if (value == false)
-            this.initial = null;
-          else {
             if (this.initial == null)
               this.initial = new BooleanType();
             this.initial.setValue(value);
-          }
           return this;
         }
 
@@ -3231,6 +3405,27 @@ public class OralHealthClaim extends DomainResource {
         dst.priorDate = priorDate == null ? null : priorDate.copy();
         dst.priorMaterial = priorMaterial == null ? null : priorMaterial.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ProsthesisComponent))
+          return false;
+        ProsthesisComponent o = (ProsthesisComponent) other;
+        return compareDeep(initial, o.initial, true) && compareDeep(priorDate, o.priorDate, true) && compareDeep(priorMaterial, o.priorMaterial, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ProsthesisComponent))
+          return false;
+        ProsthesisComponent o = (ProsthesisComponent) other;
+        return compareValues(initial, o.initial, true) && compareValues(priorDate, o.priorDate, true);
       }
 
       public boolean isEmpty() {
@@ -4519,6 +4714,37 @@ public class OralHealthClaim extends DomainResource {
 
       protected OralHealthClaim typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof OralHealthClaim))
+          return false;
+        OralHealthClaim o = (OralHealthClaim) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(ruleset, o.ruleset, true) && compareDeep(originalRuleset, o.originalRuleset, true)
+           && compareDeep(created, o.created, true) && compareDeep(target, o.target, true) && compareDeep(provider, o.provider, true)
+           && compareDeep(organization, o.organization, true) && compareDeep(use, o.use, true) && compareDeep(priority, o.priority, true)
+           && compareDeep(fundsReserve, o.fundsReserve, true) && compareDeep(enterer, o.enterer, true) && compareDeep(facility, o.facility, true)
+           && compareDeep(payee, o.payee, true) && compareDeep(referral, o.referral, true) && compareDeep(diagnosis, o.diagnosis, true)
+           && compareDeep(condition, o.condition, true) && compareDeep(patient, o.patient, true) && compareDeep(coverage, o.coverage, true)
+           && compareDeep(exception, o.exception, true) && compareDeep(school, o.school, true) && compareDeep(accident, o.accident, true)
+           && compareDeep(accidentType, o.accidentType, true) && compareDeep(interventionException, o.interventionException, true)
+           && compareDeep(missingteeth, o.missingteeth, true) && compareDeep(orthoPlan, o.orthoPlan, true)
+           && compareDeep(item, o.item, true) && compareDeep(additionalMaterials, o.additionalMaterials, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof OralHealthClaim))
+          return false;
+        OralHealthClaim o = (OralHealthClaim) other;
+        return compareValues(created, o.created, true) && compareValues(use, o.use, true) && compareValues(school, o.school, true)
+           && compareValues(accident, o.accident, true);
       }
 
       public boolean isEmpty() {

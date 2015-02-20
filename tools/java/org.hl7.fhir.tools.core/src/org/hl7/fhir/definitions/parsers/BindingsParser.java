@@ -35,7 +35,6 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.definitions.model.DefinedCode;
-import org.hl7.fhir.instance.model.ConceptMap;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
@@ -73,7 +72,7 @@ public class BindingsParser {
 	}
 	
 	private void processLine(List<BindingSpecification> results, Sheet sheet, int row) throws Exception {
-	  BindingSpecification cd = new BindingSpecification();
+	  BindingSpecification cd = new BindingSpecification("core");
 	  cd.setName(sheet.getColumn(row, "Binding Name"));
 	  if (!cd.getName().startsWith("!")) {
 	    cd.setDefinition(sheet.getColumn(row, "Definition"));

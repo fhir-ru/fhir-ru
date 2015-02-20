@@ -42,13 +42,12 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.formats.IParser.OutputStyle;
+import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.ElementDefinition;
 import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionConstraintComponent;
 import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionMappingComponent;
 import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionSlicingComponent;
-import org.hl7.fhir.instance.model.ElementDefinition.ResourceSlicingRules;
 import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.instance.model.ExtensionDefinition;
 import org.hl7.fhir.instance.model.ExtensionDefinition.ExtensionDefinitionMappingComponent;
@@ -71,7 +70,6 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	private Definitions definitions;
 	private ProfileUtilities utilities;
 	private PageProcessor page;
-	private String tla;
 	
 	public DictHTMLGenerator(OutputStream out, PageProcessor page) throws UnsupportedEncodingException {
 	  super(out, "UTF-8");
@@ -83,7 +81,6 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	public void generate(Profile profile) throws Exception {
 	  int i = 1;
 	  write("<table class=\"dict\">\r\n");
-	  tla = page.getAbbreviationFor(profile);
 
 	  for (ElementDefinition ec : profile.getSnapshot().getElement()) {
 	    if (isProfiledExtension(ec)) {
@@ -114,7 +111,6 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
 
   public void generate(ExtensionDefinition ed) throws Exception {
-    tla = page.getAbbreviationFor(ed);
     int i = 1;
     write("<p><a name=\"i"+Integer.toString(i)+"\"><b>"+ed.getName()+"</b></a></p>\r\n");
     write("<table class=\"dict\">\r\n");
@@ -246,7 +242,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
   private void describeType(StringBuilder b, TypeRefComponent t) throws Exception {
     b.append("<a href=\"");
-    b.append(GeneratorUtils.getSrcFile(t.getCode(), false));
+    b.append(definitions.getSrcFile(t.getCode()));
     b.append(".html#");
     String type = t.getCode();
     if (type.equals("*"))
@@ -287,7 +283,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
           s.append("<br/>");
         else
           b = true;
-        s.append("<b title=\"Formal Invariant Identifier\">"+tla+"-"+id+"</b>: "+Utilities.escapeXml(inv.getHuman())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
+        s.append("<b title=\"Formal Invariant Identifier\">"+id+"</b>: "+Utilities.escapeXml(inv.getHuman())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
       }
     }
     
@@ -335,7 +331,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     else {
       CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
       for (IdType t : conditions)
-        b.append(tla+"-"+t.getValue());
+        b.append(t.getValue());
       return " This element is affected by the following invariants: "+b.toString();
     }
   }
@@ -351,7 +347,6 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
   public void generate(ElementDefn root) throws Exception
 	{
-    tla = page.getAbbreviationFor(root.getName());
 		write("<table class=\"dict\">\r\n");
 		writeEntry(root.getName(), "1..1", "", "", root);
 		for (ElementDefn e : root.getElements()) {
@@ -445,14 +440,14 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	    s.append("<b>Определено на этом элементе</b><br/>\r\n");
 	    List<Integer> ids = new ArrayList<Integer>();
 	    for (String id : invariants.keySet())
-	      ids.add(Integer.parseInt(id));
+	      ids.add(id);
 	    Collections.sort(ids);
 	    boolean b = false;
-	    for (Integer i : ids) {
-	      Invariant inv = invariants.get(i.toString());
+	    for (String i : ids) {
+	      Invariant inv = invariants.get(i);
 	      if (b)
 	        s.append("<br/>");
-	      s.append("<b title=\"Formal Invariant Identifier\">"+tla+"-"+i.toString()+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
+	      s.append("<b title=\"Formal Invariant Identifier\">"+i+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
 	      b = true;
 	    }
 	  }
@@ -464,7 +459,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
       for (Invariant id : stated) {
         if (b)
           s.append("<br/>");
-        s.append("<b>"+tla+"-"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
+        s.append("<b>"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
         b = true;
       }
     }
@@ -517,7 +512,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
         } else if (definitions.hasResource(linkText)) {
           url = linkText.toLowerCase()+".html#";
         } else if (definitions.hasElementDefn(linkText)) {
-          url = GeneratorUtils.getSrcFile(linkText, false)+".html#"+linkText;
+          url = definitions.getSrcFile(linkText)+".html#"+linkText;
         } else if (definitions.hasPrimitiveType(linkText)) {
           url = "datatypes.html#"+linkText;
         } else {
@@ -529,16 +524,26 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     }
     write("  <tr><td>"+name+"</td><td>"+Processor.process(Utilities.escapeXml(text))+"</td></tr>\r\n");
   }
-	private void tableRow(String name, String defRef, String value) throws IOException {
-		if (value != null && !"".equals(value)) {
-		  if (defRef != null) 
-	      write("  <tr><td><a href=\""+defRef+"\">"+name+"</a></td><td>"+Utilities.escapeXml(value)+"</td></tr>\r\n");
-		  else
-		    write("  <tr><td>"+name+"</td><td>"+Utilities.escapeXml(value)+"</td></tr>\r\n");
-		}
-	}
+  private void tableRow(String name, String defRef, String value) throws IOException {
+    if (value != null && !"".equals(value)) {
+      if (defRef != null) 
+        write("  <tr><td><a href=\""+defRef+"\">"+name+"</a></td><td>"+Utilities.escapeXml(value)+"</td></tr>\r\n");
+      else
+        write("  <tr><td>"+name+"</td><td>"+Utilities.escapeXml(value)+"</td></tr>\r\n");
+    }
+  }
 
-	
+  
+  private void tableRowHint(String name, String hint, String defRef, String value) throws IOException {
+    if (value != null && !"".equals(value)) {
+      if (defRef != null) 
+        write("  <tr><td><a href=\""+defRef+"\" title=\""+Utilities.escapeXml(hint)+"\">"+name+"</a></td><td>"+Utilities.escapeXml(value)+"</td></tr>\r\n");
+      else
+        write("  <tr><td title=\""+Utilities.escapeXml(hint)+"\">"+name+"</td><td>"+Utilities.escapeXml(value)+"</td></tr>\r\n");
+    }
+  }
+
+  
   private void tableRowNE(String name, String defRef, String value) throws IOException {
     if (value != null && !"".equals(value))
       if (defRef != null) 
@@ -579,7 +584,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	}
 
   private String typeLink(String name) throws Exception {
-    String srcFile = GeneratorUtils.getSrcFile(name, false);
+    String srcFile = definitions.getSrcFile(name);
     if (srcFile.equalsIgnoreCase(name))
       return srcFile+ ".html";
     else

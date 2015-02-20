@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -39,7 +39,7 @@ import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
 /**
- * 
+ * A resource that includes narrative, extensions, and contained resources.
  */
 @ResourceDef(name="DomainResource", profile="http://hl7.org/fhir/Profile/DomainResource")
 public abstract class DomainResource extends Resource {
@@ -209,6 +209,27 @@ public abstract class DomainResource extends Resource {
           for (Extension i : modifierExtension)
             dst.modifierExtension.add(i.copy());
         };
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof DomainResource))
+          return false;
+        DomainResource o = (DomainResource) other;
+        return compareDeep(text, o.text, true) && compareDeep(contained, o.contained, true) && compareDeep(extension, o.extension, true)
+           && compareDeep(modifierExtension, o.modifierExtension, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof DomainResource))
+          return false;
+        DomainResource o = (DomainResource) other;
+        return true;
       }
 
       public boolean isEmpty() {

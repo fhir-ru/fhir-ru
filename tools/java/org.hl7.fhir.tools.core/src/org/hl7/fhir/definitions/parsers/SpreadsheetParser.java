@@ -36,15 +36,15 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
-import org.hl7.fhir.definitions.model.ConformancePackage.ConformancePackageSourceType;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
+import org.hl7.fhir.definitions.model.ConformancePackage;
+import org.hl7.fhir.definitions.model.ConformancePackage.ConformancePackageSourceType;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -53,13 +53,12 @@ import org.hl7.fhir.definitions.model.EventDefn.Category;
 import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.Example.ExampleType;
-import org.hl7.fhir.definitions.model.ConformancePackage;
 import org.hl7.fhir.definitions.model.Invariant;
+import org.hl7.fhir.definitions.model.MappingSpace;
 import org.hl7.fhir.definitions.model.Operation;
 import org.hl7.fhir.definitions.model.OperationParameter;
 import org.hl7.fhir.definitions.model.OperationTuplePart;
 import org.hl7.fhir.definitions.model.ProfileDefn;
-import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
@@ -69,30 +68,29 @@ import org.hl7.fhir.instance.formats.FormatUtilities;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Base64BinaryType;
+import org.hl7.fhir.instance.model.BooleanType;
 import org.hl7.fhir.instance.model.CodeType;
+import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.instance.model.DateTimeType;
 import org.hl7.fhir.instance.model.DateType;
 import org.hl7.fhir.instance.model.DecimalType;
-import org.hl7.fhir.instance.model.ExtensionDefinition;
-import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.instance.model.ElementDefinition.BindingConformance;
+import org.hl7.fhir.instance.model.ExtensionDefinition;
 import org.hl7.fhir.instance.model.ExtensionDefinition.ExtensionContext;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.IdType;
 import org.hl7.fhir.instance.model.InstantType;
 import org.hl7.fhir.instance.model.IntegerType;
 import org.hl7.fhir.instance.model.OidType;
-import org.hl7.fhir.instance.model.BooleanType;
-import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.StringType;
 import org.hl7.fhir.instance.model.TimeType;
 import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.UuidType;
 import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.utils.ProfileUtilities;
+import org.hl7.fhir.instance.utils.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.instance.utils.ValueSetUtilities;
 import org.hl7.fhir.instance.utils.WorkerContext;
-import org.hl7.fhir.tools.publisher.BreadCrumbManager.Page;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Logger.LogMessageType;
@@ -104,6 +102,7 @@ import com.trilead.ssh2.crypto.Base64;
 
 public class SpreadsheetParser {
 
+  private String usageContext;
 	private String name;
 	private XLSXmlParser xls;
 	private List<EventDefn> events = new ArrayList<EventDefn>();
@@ -123,10 +122,12 @@ public class SpreadsheetParser {
   private boolean isAbstract;
   private Map<String, BindingSpecification> bindings; // when parsing profiles
   private Map<String, ExtensionDefinition> extensionDefinitions = new HashMap<String, ExtensionDefinition>();
+  private ProfileKnowledgeProvider pkp;
   
-	public SpreadsheetParser(InputStream in, String name,	Definitions definitions, String root, Logger log, BindingNameRegistry registry, String version, WorkerContext context, Calendar genDate, boolean isAbstract, Map<String, ExtensionDefinition> extensionDefinitions) throws Exception {
+	public SpreadsheetParser(String usageContext, InputStream in, String name,	Definitions definitions, String root, Logger log, BindingNameRegistry registry, String version, WorkerContext context, Calendar genDate, boolean isAbstract, Map<String, ExtensionDefinition> extensionDefinitions, ProfileKnowledgeProvider pkp, boolean isType) throws Exception {
+	  this.usageContext = usageContext;
 		this.name = name;
-		xls = new XLSXmlParser(in, name);
+  	xls = new XLSXmlParser(in, name);	
 		this.definitions = definitions;
 		if (name.indexOf('-') > 0)
 			title = name.substring(0, name.indexOf('-'));
@@ -134,7 +135,7 @@ public class SpreadsheetParser {
 			title = name.substring(0, name.indexOf('.'));
 		else
 		  title = name;
-		this.folder = root + title + File.separator;
+		this.folder = root + (isType ? "datatypes" : title) + File.separator;
     this.dataTypesFolder =  root + "datatypes" + File.separator;
     this.txFolder =  root + "terminologies" + File.separator;
 		this.log = log;
@@ -144,6 +145,7 @@ public class SpreadsheetParser {
 		this.genDate = genDate;
 		this.isAbstract = isAbstract;
 		this.extensionDefinitions = extensionDefinitions;
+		this.pkp = pkp;
 	}
 
 
@@ -157,9 +159,17 @@ public class SpreadsheetParser {
 	  return xls.getSheets().get(name);
 	}
 
+	public String getAbbreviationFor(String id) {
+    id = id.toLowerCase();
+    if (definitions.getTLAs().containsKey(id))
+      return definitions.getTLAs().get(id);
+    else
+      return "inv";
+  }
+	
 	private ResourceDefn parseCommonTypeColumns() throws Exception {
 		ResourceDefn resource = new ResourceDefn();
-		
+				
 		Sheet sheet = loadSheet("Bindings");
 		Map<String, BindingSpecification> typeLocalBindings = null;
 		if (sheet != null)
@@ -168,13 +178,13 @@ public class SpreadsheetParser {
 		sheet = loadSheet("Invariants");
 		Map<String,Invariant> invariants = null;
 		if (sheet != null)
-			invariants = readInvariants(sheet);
+			invariants = readInvariants(sheet, title);
 		
 		sheet = loadSheet("Data Elements");
 		if (sheet == null)
 		  throw new Exception("No Sheet found for Data Elements");
 		for (int row = 0; row < sheet.rows.size(); row++) {
-			processLine(resource, sheet, row, invariants, false);
+			processLine(resource, sheet, row, invariants, false, null);
 		}
 
 		if (invariants != null) {
@@ -384,9 +394,15 @@ public class SpreadsheetParser {
       for (int row = 0; row < sheet.rows.size(); row++) {
         String name = sheet.getColumn(row, "Name");
         if (name != null && !name.equals("") && !name.startsWith("!")) {
-          ConformancePackage pack = new ConformancePackage();
+          ConformancePackage pack = new ConformancePackage(sheet.getColumn(row, "IG Name"));
+          if (Utilities.noString(pack.getCategory()))
+            throw new Exception("Missing IG Name at "+getLocation(row));
           pack.setTitle(name);
           pack.setSource(checkFile(sheet, row, "Source", false, sheet.getColumn(row, "Filename"))); // todo-profile
+          if (!definitions.getIgs().containsKey(pack.getCategory()))
+            throw new Exception("IG Name '"+pack.getCategory()+"' is not reegistered in [igs] in fhir.ini at "+getLocation(row));
+            
+            
           String type = sheet.getColumn(row, "Type");
           if ("bundle".equalsIgnoreCase(type))
             pack.setSourceType(ConformancePackageSourceType.Bundle);
@@ -421,8 +437,7 @@ public class SpreadsheetParser {
   }
 
 
-  private Map<String,Invariant> readInvariants(Sheet sheet)
-			throws Exception {
+  private Map<String,Invariant> readInvariants(Sheet sheet, String id) throws Exception {
 		Map<String,Invariant> result = new HashMap<String,Invariant>();
 		
 		for (int row = 0; row < sheet.rows.size(); row++) {
@@ -430,7 +445,7 @@ public class SpreadsheetParser {
 
 			String s = sheet.getColumn(row, "Id");
 			if (!s.startsWith("!")) {
-			  inv.setId(s);
+			  inv.setId(s.contains("-") ? s : getAbbreviationFor(id)+"-"+s);
 			  inv.setName(sheet.getColumn(row, "Name"));
 			  inv.setContext(sheet.getColumn(row, "Context"));
 			  inv.setEnglish(sheet.getColumn(row, "English"));
@@ -571,7 +586,7 @@ public class SpreadsheetParser {
 		  // Ignore bindings whose name start with "!"
 		  if (bindingName.startsWith("!")) continue;
 	      
-			BindingSpecification cd = new BindingSpecification();
+			BindingSpecification cd = new BindingSpecification(usageContext);
 
 			cd.setName(bindingName);
 			cd.setDefinition(sheet.getColumn(row, "Definition"));
@@ -616,32 +631,36 @@ public class SpreadsheetParser {
 			  } else if (new File(Utilities.appendSlash(folder)+cd.getReference()+".xml").exists()) {
 			    XmlParser p = new XmlParser();
 			    FileInputStream input = new FileInputStream(Utilities.appendSlash(folder)+cd.getReference()+".xml");
-	        cd.setReferredValueSet((ValueSet) p.parse(input));
+	        cd.setReferredValueSet(ValueSetUtilities.makeShareable((ValueSet) p.parse(input)));
 			  } else if (new File(Utilities.appendSlash(folder)+cd.getReference()+".json").exists()) {
 			    JsonParser p = new JsonParser();
 			    FileInputStream input = new FileInputStream(Utilities.appendSlash(folder)+cd.getReference()+".json");
-			    cd.setReferredValueSet((ValueSet) p.parse(input));
+			    cd.setReferredValueSet(ValueSetUtilities.makeShareable((ValueSet) p.parse(input)));
 			  } else if (new File(Utilities.appendSlash(dataTypesFolder)+cd.getReference()+".xml").exists()) {
 			    XmlParser p = new XmlParser();
 			    FileInputStream input = new FileInputStream(Utilities.appendSlash(dataTypesFolder)+cd.getReference()+".xml");
-			    cd.setReferredValueSet((ValueSet) p.parse(input));
+			    cd.setReferredValueSet(ValueSetUtilities.makeShareable((ValueSet) p.parse(input)));
 			  } else if (new File(Utilities.appendSlash(dataTypesFolder)+cd.getReference()+".json").exists()) {
 			    JsonParser p = new JsonParser();
 			    FileInputStream input = new FileInputStream(Utilities.appendSlash(dataTypesFolder)+cd.getReference()+".json");
-			    cd.setReferredValueSet((ValueSet) p.parse(input));
+			    cd.setReferredValueSet(ValueSetUtilities.makeShareable((ValueSet) p.parse(input)));
         } else if (new File(Utilities.appendSlash(txFolder)+cd.getReference()+".xml").exists()) {
           XmlParser p = new XmlParser();
           FileInputStream input = new FileInputStream(Utilities.appendSlash(txFolder)+cd.getReference()+".xml");
-          cd.setReferredValueSet((ValueSet) p.parse(input));
+          cd.setReferredValueSet(ValueSetUtilities.makeShareable((ValueSet) p.parse(input)));
         } else if (new File(Utilities.appendSlash(txFolder)+cd.getReference()+".json").exists()) {
           JsonParser p = new JsonParser();
           FileInputStream input = new FileInputStream(Utilities.appendSlash(txFolder)+cd.getReference()+".json");
-          cd.setReferredValueSet((ValueSet) p.parse(input));
+          cd.setReferredValueSet(ValueSetUtilities.makeShareable((ValueSet) p.parse(input)));
 			  } else
 			    throw new Exception("Unable to find source for "+cd.getReference()+" ("+Utilities.appendSlash(folder)+cd.getReference()+".xml/json)");
 			  if (cd.getReferredValueSet() != null) {
 			    cd.getReferredValueSet().setId(FormatUtilities.makeId(cd.getReference()));
-			    cd.getReferredValueSet().setUserData("filename", cd.getReference()+".html");
+          cd.getReferredValueSet().setUserData("filename", cd.getReference()+".html");
+          if (!cd.getReferredValueSet().hasExperimental())
+            cd.getReferredValueSet().setExperimental(true);
+          if (!cd.getReferredValueSet().hasVersion())
+            cd.getReferredValueSet().setVersion(version);
 			  }
 			}
 			if (definitions.getBindingByName(cd.getName()) != null) {
@@ -706,6 +725,7 @@ public class SpreadsheetParser {
 	public void parseConformancePackage(ConformancePackage ap, Definitions definitions, String folder) throws Exception {
 	  try {
 	    isProfile = true;
+	    checkMappings(ap);
 	    Sheet sheet = loadSheet("Bindings");
 	    if (sheet != null)
 	      bindings = readBindings(sheet);
@@ -724,6 +744,7 @@ public class SpreadsheetParser {
 	        }
 	      }
 	    }
+      String usage = ap.metadata("category");
       if (ap.hasMetadata("name"))
         ap.setTitle(ap.metadata("name"));
       if (ap.hasMetadata("introduction"))
@@ -745,13 +766,13 @@ public class SpreadsheetParser {
 	    if (ap.getMetadata().containsKey("published.structure")) {
 	      for (String n : ap.getMetadata().get("published.structure")) {
 	        if (!Utilities.noString(n))
-	          ap.getProfiles().add(parseProfileSheet(definitions, ap, n, namedSheets, true));
+	          ap.getProfiles().add(parseProfileSheet(definitions, ap, n, namedSheets, true, usage));
 	      }
 	    }
 
 	    int i = 0;
 	    while (i < namedSheets.size()) {
-	      ap.getProfiles().add(parseProfileSheet(definitions, ap, namedSheets.get(i), namedSheets, false));
+	      ap.getProfiles().add(parseProfileSheet(definitions, ap, namedSheets.get(i), namedSheets, false, usage));
 	      i++;
 	    }
 
@@ -772,7 +793,20 @@ public class SpreadsheetParser {
 	}
 
 
-  private ProfileDefn parseProfileSheet(Definitions definitions, ConformancePackage ap, String n, List<String> namedSheets, boolean published) throws Exception {
+  private void checkMappings(ConformancePackage pack) throws Exception {
+    pack.getMappingSpaces().clear();
+    Sheet sheet = loadSheet("Mappings");
+    if (sheet != null) {
+      for (int row = 0; row < sheet.rows.size(); row++) {
+        String uri = sheet.getNonEmptyColumn(row, "Uri");
+        MappingSpace ms = new MappingSpace(sheet.getNonEmptyColumn(row, "Column"), sheet.getNonEmptyColumn(row, "Title"), sheet.getNonEmptyColumn(row, "Id"), sheet.getIntColumn(row, "Sort Order"));
+        pack.getMappingSpaces().put(uri, ms);
+      }
+    }
+  }
+
+
+  private ProfileDefn parseProfileSheet(Definitions definitions, ConformancePackage ap, String n, List<String> namedSheets, boolean published, String usage) throws Exception {
     Sheet sheet;
     ResourceDefn resource = new ResourceDefn();
     resource.setPublishedInProfile(published);
@@ -780,7 +814,7 @@ public class SpreadsheetParser {
 		sheet = loadSheet(n+"-Inv");
 	  Map<String,Invariant> invariants = null;
     if (sheet != null) {
-	    invariants = readInvariants(sheet);
+	    invariants = readInvariants(sheet, n);
 	  } else {
 	  	invariants = new HashMap<String,Invariant>();
 		}
@@ -789,7 +823,7 @@ public class SpreadsheetParser {
     if (sheet == null)
       throw new Exception("The Profile referred to a tab by the name of '"+n+"', but no tab by the name could be found");
     for (int row = 0; row < sheet.rows.size(); row++) {
-      ElementDefn e = processLine(resource, sheet, row, invariants, true);
+      ElementDefn e = processLine(resource, sheet, row, invariants, true, ap);
       if (e != null) 
         for (TypeRef t : e.getTypes()) {
           if (t.getProfile() != null && !t.getName().equals("Extension") && t.getProfile().startsWith("#")) { 
@@ -833,7 +867,7 @@ public class SpreadsheetParser {
 		}
 
     resource.getRoot().setProfileName(n);
-		ProfileDefn p = new ProfileDefn(ap.getId().toLowerCase()+'-'+n.toLowerCase(), resource.getRoot().getProfileName(), resource);
+		ProfileDefn p = new ProfileDefn(ap.getId().toLowerCase()+'-'+n.toLowerCase(), resource.getRoot().getProfileName(), resource, usage);
     return p;
   }
 
@@ -951,7 +985,7 @@ public class SpreadsheetParser {
   }
 
 
-  private ElementDefn processLine(ResourceDefn root, Sheet sheet, int row, Map<String, Invariant> invariants, boolean profile) throws Exception {
+  private ElementDefn processLine(ResourceDefn root, Sheet sheet, int row, Map<String, Invariant> invariants, boolean profile, ConformancePackage pack) throws Exception {
 		ElementDefn e;
 		String path = sheet.getColumn(row, "Element");
 		if (path.startsWith("!"))
@@ -992,7 +1026,7 @@ public class SpreadsheetParser {
 		  e.setXmlAttribute(true);
 		}
 		String c = sheet.getColumn(row, "Card.");
-		if (c == null || c.equals("")) {
+		if (c == null || c.equals("") || c.startsWith("!")) {
 			if (!isRoot && !profile)
 				throw new Exception("Missing cardinality");
 			if (isRoot) {
@@ -1004,7 +1038,7 @@ public class SpreadsheetParser {
 			if (card.length != 2 || !Utilities.IsInteger(card[0]) || (!"*".equals(card[1]) && !Utilities.IsInteger(card[1])))
 				throw new Exception("Unable to parse Cardinality '" + c + "' " + c + " in " + getLocation(row) + " on " + path);
 			e.setMinCardinality(Integer.parseInt(card[0]));
-			e.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
+			e.setMaxCardinality("*".equals(card[1]) ? Integer.MAX_VALUE : Integer.parseInt(card[1]));
 		}
 		if (profileName.startsWith("#"))
 		  throw new Exception("blah: "+profileName);
@@ -1017,10 +1051,10 @@ public class SpreadsheetParser {
     if (sheet.hasColumn(row, "Must Understand"))
       throw new Exception("Column 'Must Understand' has been renamed to 'Is Modifier'");
 
-		e.setIsModifier(parseBoolean(sheet.getColumn(row, "Is Modifier"), row, false));
+		e.setIsModifier(parseBoolean(sheet.getColumn(row, "Is Modifier"), row, null));
 		if (isProfile)
-		  e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"), row, false));
-    e.setSummaryItem(parseBoolean(sheet.getColumn(row, "Summary"), row, false));
+		  e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"), row, null));
+    e.setSummaryItem(parseBoolean(sheet.getColumn(row, "Summary"), row, null));
     e.setRegex(sheet.getColumn(row, "Regex"));
     String uml = sheet.getColumn(row, "UML");
     if (uml != null) {
@@ -1082,6 +1116,11 @@ public class SpreadsheetParser {
     for (String n : definitions.getMapTypes().keySet()) {
       e.addMapping(n, sheet.getColumn(row, definitions.getMapTypes().get(n).getColumnName()));
     }
+    if (pack != null) {
+      for (String n : pack.getMappingSpaces().keySet()) {
+        e.addMapping(n, sheet.getColumn(row, pack.getMappingSpaces().get(n).getColumnName()));
+      }      
+    }
 		e.setTodo(Utilities.appendPeriod(sheet.getColumn(row, "To Do")));
 		e.setExample(processValue(sheet, row, "Example", e));
 		e.setCommitteeNotes(Utilities.appendPeriod(sheet.getColumn(row, "Committee Notes")));
@@ -1093,15 +1132,25 @@ public class SpreadsheetParser {
       e.setDefaultValue(processValue(sheet, row, "Default Value", e));
       e.setMeaningWhenMissing(sheet.getColumn(row, "Missing Meaning"));
 		}
+		e.setW5(checkW5(sheet.getColumn(row, "w5"), path));
 		return e;
 	}
 
-	private Type processValue(Sheet sheet, int row, String column, ElementDefn e) throws Exception {
+	private String checkW5(String value, String path) throws Exception {
+    if (Utilities.noString(value))
+      return null;
+    if (!definitions.getW5s().containsKey(value))
+      throw new Exception("Unknown w5 value "+value+" at "+path);
+    return value;
+  }
+
+
+  private Type processValue(Sheet sheet, int row, String column, ElementDefn e) throws Exception {
     String source = sheet.getColumn(row, column);
     if (Utilities.noString(source))
       return null;  
 	  if (e.getTypes().size() != 1) 
-      throw new Exception("Unable to process "+column+" unless a single type is speciifed (types = "+e.typeCode()+") "+getLocation(row));
+      throw new Exception("Unable to process "+column+" unless a single type is specified (types = "+e.typeCode()+") "+getLocation(row));
     if (source.startsWith("{")) {
       JsonParser json = new JsonParser();
       return json.parseType(source, e.typeCode());
@@ -1225,7 +1274,6 @@ public class SpreadsheetParser {
 	    e.setMaxCardinality(exe.getMaxCardinality());
 	    e.setCondition(exe.getCondition());
 	    e.setBindingName(sheet.getColumn(row, "Binding"));
-	    e.setIsModifier(exe.isModifier());
 	    e.setDefinition(exe.getDefinition());
 	    e.setRequirements(exe.getRequirements());
 	    e.setComments(exe.getComments());
@@ -1233,17 +1281,20 @@ public class SpreadsheetParser {
 	    e.setTodo(exe.getTodo());
 	    e.setExample(exe.getExample());
 	    e.setCommitteeNotes(exe.getCommitteeNotes());
-	    e.setIsModifier(exe.isModifier());
+	    if (exe.hasModifier())
+	      e.setIsModifier(exe.isModifier());
 
 
 
 	    e.getTypes().clear();
 	    e.getElementByName("definition").setFixed(new UriType(uri));
 	    e.getElementByName("ref").ban();
-	    if (e.isModifier())
-	      e.getElementByName("mustUnderstand").setFixed(new BooleanType(true));
-	    else
-	      e.getElementByName("mustUnderstand").ban();
+	    if (e.hasModifier()) {
+	      if (e.isModifier())
+	        e.getElementByName("mustUnderstand").setFixed(new BooleanType(true));
+	      else
+	        e.getElementByName("mustUnderstand").ban();
+	    }
 	    ElementDefn v = e.getElementByName("value[x]");
 	    v.setShortDefn(sheet.getColumn(row, "Short Name"));
 	    e.setShortDefn("");
@@ -1257,7 +1308,7 @@ public class SpreadsheetParser {
 	    }
 	    e.getElements().remove(e.getElementByName("extension"));
 	  }
-    new ProfileGenerator(definitions, null).convertElements(exe, ex, null);
+    new ProfileGenerator(definitions, null, pkp).convertElements(exe, ex, null);
 	  this.context.seeExtensionDefinition("http://hl7.org/fhir", ex);
 	  return row;
 	}
@@ -1273,10 +1324,10 @@ public class SpreadsheetParser {
       throw new Exception("Unable to parse Cardinality "
           + sheet.getColumn(row, "Card.") + " in " + getLocation(row));
     exe.setMinCardinality(Integer.parseInt(card[0]));
-    exe.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
+    exe.setMaxCardinality("*".equals(card[1]) ? Integer.MAX_VALUE : Integer.parseInt(card[1]));
     exe.setCondition(sheet.getColumn(row, "Condition"));
     exe.setBindingName(sheet.getColumn(row, "Binding"));
-    exe.setIsModifier(parseBoolean(sheet.getColumn(row, "Must Understand"), row, false));
+    exe.setIsModifier(parseBoolean(sheet.getColumn(row, "Must Understand"), row, null));
     exe.setDefinition(Utilities.appendPeriod(processDefinition(sheet.getColumn(row, "Definition"))));
     exe.setRequirements(Utilities.appendPeriod(sheet.getColumn(row, "Requirements")));
     exe.setComments(Utilities.appendPeriod(sheet.getColumn(row, "Comments")));
@@ -1313,6 +1364,8 @@ public class SpreadsheetParser {
     if (value.equals("DataType") || value.equals("Data Type"))
       return ExtensionContext.DATATYPE;
     if (value.equals("Elements"))
+      return ExtensionContext.RESOURCE;
+    if (value.equals("Element"))
       return ExtensionContext.RESOURCE;
     if (value.equals("Mapping"))
       return ExtensionContext.MAPPING;
@@ -1416,7 +1469,7 @@ public class SpreadsheetParser {
 		return res;
 	}
 
-	protected boolean parseBoolean(String s, int row, boolean def) throws Exception {
+	protected Boolean parseBoolean(String s, int row, Boolean def) throws Exception {
 		s = s.toLowerCase();
 		if (s == null || s.equals(""))
 			return def;

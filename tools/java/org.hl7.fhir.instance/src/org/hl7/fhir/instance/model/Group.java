@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -349,6 +349,27 @@ public class Group extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof GroupCharacteristicComponent))
+          return false;
+        GroupCharacteristicComponent o = (GroupCharacteristicComponent) other;
+        return compareDeep(code, o.code, true) && compareDeep(value, o.value, true) && compareDeep(exclude, o.exclude, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof GroupCharacteristicComponent))
+          return false;
+        GroupCharacteristicComponent o = (GroupCharacteristicComponent) other;
+        return compareValues(exclude, o.exclude, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (code == null || code.isEmpty()) && (value == null || value.isEmpty())
            && (exclude == null || exclude.isEmpty());
@@ -648,20 +669,16 @@ public class Group extends DomainResource {
      * @return A count of the number of resource instances that are part of the group.
      */
     public int getQuantity() { 
-      return this.quantity == null ? null : this.quantity.getValue();
+      return this.quantity == null ? 0 : this.quantity.getValue();
     }
 
     /**
      * @param value A count of the number of resource instances that are part of the group.
      */
     public Group setQuantity(int value) { 
-      if (value == -1)
-        this.quantity = null;
-      else {
         if (this.quantity == null)
           this.quantity = new IntegerType();
         this.quantity.setValue(value);
-      }
       return this;
     }
 
@@ -770,6 +787,29 @@ public class Group extends DomainResource {
 
       protected Group typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Group))
+          return false;
+        Group o = (Group) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(type, o.type, true) && compareDeep(actual, o.actual, true)
+           && compareDeep(code, o.code, true) && compareDeep(name, o.name, true) && compareDeep(quantity, o.quantity, true)
+           && compareDeep(characteristic, o.characteristic, true) && compareDeep(member, o.member, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Group))
+          return false;
+        Group o = (Group) other;
+        return compareValues(type, o.type, true) && compareValues(actual, o.actual, true) && compareValues(name, o.name, true)
+           && compareValues(quantity, o.quantity, true);
       }
 
       public boolean isEmpty() {

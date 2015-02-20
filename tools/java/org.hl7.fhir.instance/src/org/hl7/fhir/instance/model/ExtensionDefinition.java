@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -480,6 +480,28 @@ public class ExtensionDefinition extends DomainResource {
         dst.name = name == null ? null : name.copy();
         dst.comments = comments == null ? null : comments.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ExtensionDefinitionMappingComponent))
+          return false;
+        ExtensionDefinitionMappingComponent o = (ExtensionDefinitionMappingComponent) other;
+        return compareDeep(identity, o.identity, true) && compareDeep(uri, o.uri, true) && compareDeep(name, o.name, true)
+           && compareDeep(comments, o.comments, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ExtensionDefinitionMappingComponent))
+          return false;
+        ExtensionDefinitionMappingComponent o = (ExtensionDefinitionMappingComponent) other;
+        return compareValues(identity, o.identity, true) && compareValues(uri, o.uri, true) && compareValues(name, o.name, true)
+           && compareValues(comments, o.comments, true);
       }
 
       public boolean isEmpty() {
@@ -1026,13 +1048,9 @@ public class ExtensionDefinition extends DomainResource {
      * @param value This extension definition was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
     public ExtensionDefinition setExperimental(boolean value) { 
-      if (value == false)
-        this.experimental = null;
-      else {
         if (this.experimental == null)
           this.experimental = new BooleanType();
         this.experimental.setValue(value);
-      }
       return this;
     }
 
@@ -1361,6 +1379,34 @@ public class ExtensionDefinition extends DomainResource {
 
       protected ExtensionDefinition typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ExtensionDefinition))
+          return false;
+        ExtensionDefinition o = (ExtensionDefinition) other;
+        return compareDeep(url, o.url, true) && compareDeep(identifier, o.identifier, true) && compareDeep(name, o.name, true)
+           && compareDeep(display, o.display, true) && compareDeep(publisher, o.publisher, true) && compareDeep(telecom, o.telecom, true)
+           && compareDeep(description, o.description, true) && compareDeep(code, o.code, true) && compareDeep(status, o.status, true)
+           && compareDeep(experimental, o.experimental, true) && compareDeep(date, o.date, true) && compareDeep(requirements, o.requirements, true)
+           && compareDeep(mapping, o.mapping, true) && compareDeep(contextType, o.contextType, true) && compareDeep(context, o.context, true)
+           && compareDeep(element, o.element, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ExtensionDefinition))
+          return false;
+        ExtensionDefinition o = (ExtensionDefinition) other;
+        return compareValues(url, o.url, true) && compareValues(name, o.name, true) && compareValues(display, o.display, true)
+           && compareValues(publisher, o.publisher, true) && compareValues(description, o.description, true) && compareValues(status, o.status, true)
+           && compareValues(experimental, o.experimental, true) && compareValues(date, o.date, true) && compareValues(requirements, o.requirements, true)
+           && compareValues(contextType, o.contextType, true) && compareValues(context, o.context, true);
       }
 
       public boolean isEmpty() {

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -356,6 +356,29 @@ public class Schedule extends DomainResource {
 
       protected Schedule typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Schedule))
+          return false;
+        Schedule o = (Schedule) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(type, o.type, true) && compareDeep(actor, o.actor, true)
+           && compareDeep(planningHorizon, o.planningHorizon, true) && compareDeep(comment, o.comment, true)
+           && compareDeep(lastModified, o.lastModified, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Schedule))
+          return false;
+        Schedule o = (Schedule) other;
+        return compareValues(comment, o.comment, true) && compareValues(lastModified, o.lastModified, true)
+          ;
       }
 
       public boolean isEmpty() {

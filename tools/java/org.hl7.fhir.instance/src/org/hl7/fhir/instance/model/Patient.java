@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -550,6 +550,28 @@ public class Patient extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ContactComponent))
+          return false;
+        ContactComponent o = (ContactComponent) other;
+        return compareDeep(relationship, o.relationship, true) && compareDeep(name, o.name, true) && compareDeep(telecom, o.telecom, true)
+           && compareDeep(address, o.address, true) && compareDeep(gender, o.gender, true) && compareDeep(organization, o.organization, true)
+           && compareDeep(period, o.period, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ContactComponent))
+          return false;
+        ContactComponent o = (ContactComponent) other;
+        return compareValues(gender, o.gender, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (relationship == null || relationship.isEmpty()) && (name == null || name.isEmpty())
            && (telecom == null || telecom.isEmpty()) && (address == null || address.isEmpty()) && (gender == null || gender.isEmpty())
@@ -679,6 +701,27 @@ public class Patient extends DomainResource {
         dst.breed = breed == null ? null : breed.copy();
         dst.genderStatus = genderStatus == null ? null : genderStatus.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof AnimalComponent))
+          return false;
+        AnimalComponent o = (AnimalComponent) other;
+        return compareDeep(species, o.species, true) && compareDeep(breed, o.breed, true) && compareDeep(genderStatus, o.genderStatus, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof AnimalComponent))
+          return false;
+        AnimalComponent o = (AnimalComponent) other;
+        return true;
       }
 
       public boolean isEmpty() {
@@ -822,6 +865,26 @@ public class Patient extends DomainResource {
         dst.other = other == null ? null : other.copy();
         dst.type = type == null ? null : type.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof PatientLinkComponent))
+          return false;
+        PatientLinkComponent o = (PatientLinkComponent) other;
+        return compareDeep(other, o.other, true) && compareDeep(type, o.type, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof PatientLinkComponent))
+          return false;
+        PatientLinkComponent o = (PatientLinkComponent) other;
+        return compareValues(type, o.type, true);
       }
 
       public boolean isEmpty() {
@@ -1548,13 +1611,9 @@ public class Patient extends DomainResource {
      * @param value Whether this patient record is in active use.
      */
     public Patient setActive(boolean value) { 
-      if (value == false)
-        this.active = null;
-      else {
         if (this.active == null)
           this.active = new BooleanType();
         this.active.setValue(value);
-      }
       return this;
     }
 
@@ -1642,6 +1701,33 @@ public class Patient extends DomainResource {
         return copy();
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Patient))
+          return false;
+        Patient o = (Patient) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(name, o.name, true) && compareDeep(telecom, o.telecom, true)
+           && compareDeep(gender, o.gender, true) && compareDeep(birthDate, o.birthDate, true) && compareDeep(deceased, o.deceased, true)
+           && compareDeep(address, o.address, true) && compareDeep(maritalStatus, o.maritalStatus, true) && compareDeep(multipleBirth, o.multipleBirth, true)
+           && compareDeep(photo, o.photo, true) && compareDeep(contact, o.contact, true) && compareDeep(animal, o.animal, true)
+           && compareDeep(communication, o.communication, true) && compareDeep(careProvider, o.careProvider, true)
+           && compareDeep(managingOrganization, o.managingOrganization, true) && compareDeep(link, o.link, true)
+           && compareDeep(active, o.active, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Patient))
+          return false;
+        Patient o = (Patient) other;
+        return compareValues(gender, o.gender, true) && compareValues(birthDate, o.birthDate, true) && compareValues(active, o.active, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (name == null || name.isEmpty())
            && (telecom == null || telecom.isEmpty()) && (gender == null || gender.isEmpty()) && (birthDate == null || birthDate.isEmpty())
@@ -1681,10 +1767,10 @@ public class Patient extends DomainResource {
   public static final String SP_TELECOM = "telecom";
   @SearchParamDefinition(name="birthdate", path="Patient.birthDate", description="The patient's date of birth", type="date" )
   public static final String SP_BIRTHDATE = "birthdate";
-  @SearchParamDefinition(name="gender", path="Patient.gender", description="Gender of the patient", type="token" )
-  public static final String SP_GENDER = "gender";
   @SearchParamDefinition(name="active", path="Patient.active", description="Whether the patient record is active", type="token" )
   public static final String SP_ACTIVE = "active";
+  @SearchParamDefinition(name="gender", path="Patient.gender", description="Gender of the patient", type="token" )
+  public static final String SP_GENDER = "gender";
   @SearchParamDefinition(name="language", path="Patient.communication", description="Language code (irrespective of use value)", type="token" )
   public static final String SP_LANGUAGE = "language";
   @SearchParamDefinition(name="identifier", path="Patient.identifier", description="A patient identifier", type="token" )

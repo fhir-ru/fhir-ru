@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -314,42 +314,42 @@ public class ImagingStudy extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case AR: return "http://nema.org/dicom/dcid";
-            case BMD: return "http://nema.org/dicom/dcid";
-            case BDUS: return "http://nema.org/dicom/dcid";
-            case EPS: return "http://nema.org/dicom/dcid";
-            case CR: return "http://nema.org/dicom/dcid";
-            case CT: return "http://nema.org/dicom/dcid";
-            case DX: return "http://nema.org/dicom/dcid";
-            case ECG: return "http://nema.org/dicom/dcid";
-            case ES: return "http://nema.org/dicom/dcid";
-            case XC: return "http://nema.org/dicom/dcid";
-            case GM: return "http://nema.org/dicom/dcid";
-            case HD: return "http://nema.org/dicom/dcid";
-            case IO: return "http://nema.org/dicom/dcid";
-            case IVOCT: return "http://nema.org/dicom/dcid";
-            case IVUS: return "http://nema.org/dicom/dcid";
-            case KER: return "http://nema.org/dicom/dcid";
-            case LEN: return "http://nema.org/dicom/dcid";
-            case MR: return "http://nema.org/dicom/dcid";
-            case MG: return "http://nema.org/dicom/dcid";
-            case NM: return "http://nema.org/dicom/dcid";
-            case OAM: return "http://nema.org/dicom/dcid";
-            case OCT: return "http://nema.org/dicom/dcid";
-            case OPM: return "http://nema.org/dicom/dcid";
-            case OP: return "http://nema.org/dicom/dcid";
-            case OPR: return "http://nema.org/dicom/dcid";
-            case OPT: return "http://nema.org/dicom/dcid";
-            case OPV: return "http://nema.org/dicom/dcid";
-            case PX: return "http://nema.org/dicom/dcid";
-            case PT: return "http://nema.org/dicom/dcid";
-            case RF: return "http://nema.org/dicom/dcid";
-            case RG: return "http://nema.org/dicom/dcid";
-            case SM: return "http://nema.org/dicom/dcid";
-            case SRF: return "http://nema.org/dicom/dcid";
-            case US: return "http://nema.org/dicom/dcid";
-            case VA: return "http://nema.org/dicom/dcid";
-            case XA: return "http://nema.org/dicom/dcid";
+            case AR: return "http://nema.org/dicom/dicm";
+            case BMD: return "http://nema.org/dicom/dicm";
+            case BDUS: return "http://nema.org/dicom/dicm";
+            case EPS: return "http://nema.org/dicom/dicm";
+            case CR: return "http://nema.org/dicom/dicm";
+            case CT: return "http://nema.org/dicom/dicm";
+            case DX: return "http://nema.org/dicom/dicm";
+            case ECG: return "http://nema.org/dicom/dicm";
+            case ES: return "http://nema.org/dicom/dicm";
+            case XC: return "http://nema.org/dicom/dicm";
+            case GM: return "http://nema.org/dicom/dicm";
+            case HD: return "http://nema.org/dicom/dicm";
+            case IO: return "http://nema.org/dicom/dicm";
+            case IVOCT: return "http://nema.org/dicom/dicm";
+            case IVUS: return "http://nema.org/dicom/dicm";
+            case KER: return "http://nema.org/dicom/dicm";
+            case LEN: return "http://nema.org/dicom/dicm";
+            case MR: return "http://nema.org/dicom/dicm";
+            case MG: return "http://nema.org/dicom/dicm";
+            case NM: return "http://nema.org/dicom/dicm";
+            case OAM: return "http://nema.org/dicom/dicm";
+            case OCT: return "http://nema.org/dicom/dicm";
+            case OPM: return "http://nema.org/dicom/dicm";
+            case OP: return "http://nema.org/dicom/dicm";
+            case OPR: return "http://nema.org/dicom/dicm";
+            case OPT: return "http://nema.org/dicom/dicm";
+            case OPV: return "http://nema.org/dicom/dicm";
+            case PX: return "http://nema.org/dicom/dicm";
+            case PT: return "http://nema.org/dicom/dicm";
+            case RF: return "http://nema.org/dicom/dicm";
+            case RG: return "http://nema.org/dicom/dicm";
+            case SM: return "http://nema.org/dicom/dicm";
+            case SRF: return "http://nema.org/dicom/dicm";
+            case US: return "http://nema.org/dicom/dicm";
+            case VA: return "http://nema.org/dicom/dicm";
+            case XA: return "http://nema.org/dicom/dicm";
             default: return "?";
           }
         }
@@ -638,10 +638,10 @@ public class ImagingStudy extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case ONLINE: return "http://nema.org/dicom/dcid";
-            case OFFLINE: return "http://nema.org/dicom/dcid";
-            case NEARLINE: return "http://nema.org/dicom/dcid";
-            case UNAVAILABLE: return "http://nema.org/dicom/dcid";
+            case ONLINE: return "http://nema.org/dicom/dicm";
+            case OFFLINE: return "http://nema.org/dicom/dicm";
+            case NEARLINE: return "http://nema.org/dicom/dicm";
+            case UNAVAILABLE: return "http://nema.org/dicom/dicm";
             default: return "?";
           }
         }
@@ -1081,59 +1081,59 @@ public class ImagingStudy extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case AR: return "http://nema.org/dicom/dcid";
-            case AU: return "http://nema.org/dicom/dcid";
-            case BDUS: return "http://nema.org/dicom/dcid";
-            case BI: return "http://nema.org/dicom/dcid";
-            case BMD: return "http://nema.org/dicom/dcid";
-            case CR: return "http://nema.org/dicom/dcid";
-            case CT: return "http://nema.org/dicom/dcid";
-            case DG: return "http://nema.org/dicom/dcid";
-            case DX: return "http://nema.org/dicom/dcid";
-            case ECG: return "http://nema.org/dicom/dcid";
-            case EPS: return "http://nema.org/dicom/dcid";
-            case ES: return "http://nema.org/dicom/dcid";
-            case GM: return "http://nema.org/dicom/dcid";
-            case HC: return "http://nema.org/dicom/dcid";
-            case HD: return "http://nema.org/dicom/dcid";
-            case IO: return "http://nema.org/dicom/dcid";
-            case IVOCT: return "http://nema.org/dicom/dcid";
-            case IVUS: return "http://nema.org/dicom/dcid";
-            case KER: return "http://nema.org/dicom/dcid";
-            case KO: return "http://nema.org/dicom/dcid";
-            case LEN: return "http://nema.org/dicom/dcid";
-            case LS: return "http://nema.org/dicom/dcid";
-            case MG: return "http://nema.org/dicom/dcid";
-            case MR: return "http://nema.org/dicom/dcid";
-            case NM: return "http://nema.org/dicom/dcid";
-            case OAM: return "http://nema.org/dicom/dcid";
-            case OCT: return "http://nema.org/dicom/dcid";
-            case OP: return "http://nema.org/dicom/dcid";
-            case OPM: return "http://nema.org/dicom/dcid";
-            case OPT: return "http://nema.org/dicom/dcid";
-            case OPV: return "http://nema.org/dicom/dcid";
-            case OT: return "http://nema.org/dicom/dcid";
-            case PR: return "http://nema.org/dicom/dcid";
-            case PT: return "http://nema.org/dicom/dcid";
-            case PX: return "http://nema.org/dicom/dcid";
-            case REG: return "http://nema.org/dicom/dcid";
-            case RF: return "http://nema.org/dicom/dcid";
-            case RG: return "http://nema.org/dicom/dcid";
-            case RTDOSE: return "http://nema.org/dicom/dcid";
-            case RTIMAGE: return "http://nema.org/dicom/dcid";
-            case RTPLAN: return "http://nema.org/dicom/dcid";
-            case RTRECORD: return "http://nema.org/dicom/dcid";
-            case RTSTRUCT: return "http://nema.org/dicom/dcid";
-            case SEG: return "http://nema.org/dicom/dcid";
-            case SM: return "http://nema.org/dicom/dcid";
-            case SMR: return "http://nema.org/dicom/dcid";
-            case SR: return "http://nema.org/dicom/dcid";
-            case SRF: return "http://nema.org/dicom/dcid";
-            case TG: return "http://nema.org/dicom/dcid";
-            case US: return "http://nema.org/dicom/dcid";
-            case VA: return "http://nema.org/dicom/dcid";
-            case XA: return "http://nema.org/dicom/dcid";
-            case XC: return "http://nema.org/dicom/dcid";
+            case AR: return "http://nema.org/dicom/dicm";
+            case AU: return "http://nema.org/dicom/dicm";
+            case BDUS: return "http://nema.org/dicom/dicm";
+            case BI: return "http://nema.org/dicom/dicm";
+            case BMD: return "http://nema.org/dicom/dicm";
+            case CR: return "http://nema.org/dicom/dicm";
+            case CT: return "http://nema.org/dicom/dicm";
+            case DG: return "http://nema.org/dicom/dicm";
+            case DX: return "http://nema.org/dicom/dicm";
+            case ECG: return "http://nema.org/dicom/dicm";
+            case EPS: return "http://nema.org/dicom/dicm";
+            case ES: return "http://nema.org/dicom/dicm";
+            case GM: return "http://nema.org/dicom/dicm";
+            case HC: return "http://nema.org/dicom/dicm";
+            case HD: return "http://nema.org/dicom/dicm";
+            case IO: return "http://nema.org/dicom/dicm";
+            case IVOCT: return "http://nema.org/dicom/dicm";
+            case IVUS: return "http://nema.org/dicom/dicm";
+            case KER: return "http://nema.org/dicom/dicm";
+            case KO: return "http://nema.org/dicom/dicm";
+            case LEN: return "http://nema.org/dicom/dicm";
+            case LS: return "http://nema.org/dicom/dicm";
+            case MG: return "http://nema.org/dicom/dicm";
+            case MR: return "http://nema.org/dicom/dicm";
+            case NM: return "http://nema.org/dicom/dicm";
+            case OAM: return "http://nema.org/dicom/dicm";
+            case OCT: return "http://nema.org/dicom/dicm";
+            case OP: return "http://nema.org/dicom/dicm";
+            case OPM: return "http://nema.org/dicom/dicm";
+            case OPT: return "http://nema.org/dicom/dicm";
+            case OPV: return "http://nema.org/dicom/dicm";
+            case OT: return "http://nema.org/dicom/dicm";
+            case PR: return "http://nema.org/dicom/dicm";
+            case PT: return "http://nema.org/dicom/dicm";
+            case PX: return "http://nema.org/dicom/dicm";
+            case REG: return "http://nema.org/dicom/dicm";
+            case RF: return "http://nema.org/dicom/dicm";
+            case RG: return "http://nema.org/dicom/dicm";
+            case RTDOSE: return "http://nema.org/dicom/dicm";
+            case RTIMAGE: return "http://nema.org/dicom/dicm";
+            case RTPLAN: return "http://nema.org/dicom/dicm";
+            case RTRECORD: return "http://nema.org/dicom/dicm";
+            case RTSTRUCT: return "http://nema.org/dicom/dicm";
+            case SEG: return "http://nema.org/dicom/dicm";
+            case SM: return "http://nema.org/dicom/dicm";
+            case SMR: return "http://nema.org/dicom/dicm";
+            case SR: return "http://nema.org/dicom/dicm";
+            case SRF: return "http://nema.org/dicom/dicm";
+            case TG: return "http://nema.org/dicom/dicm";
+            case US: return "http://nema.org/dicom/dicm";
+            case VA: return "http://nema.org/dicom/dicm";
+            case XA: return "http://nema.org/dicom/dicm";
+            case XC: return "http://nema.org/dicom/dicm";
             default: return "?";
           }
         }
@@ -1596,20 +1596,16 @@ public class ImagingStudy extends DomainResource {
          * @return The Numeric identifier of this series in the study.
          */
         public int getNumber() { 
-          return this.number == null ? null : this.number.getValue();
+          return this.number == null ? 0 : this.number.getValue();
         }
 
         /**
          * @param value The Numeric identifier of this series in the study.
          */
         public ImagingStudySeriesComponent setNumber(int value) { 
-          if (value == -1)
-            this.number = null;
-          else {
             if (this.number == null)
               this.number = new IntegerType();
             this.number.setValue(value);
-          }
           return this;
         }
 
@@ -1784,7 +1780,7 @@ public class ImagingStudy extends DomainResource {
          * @return Sequence that contains attributes from the.
          */
         public int getNumberOfInstances() { 
-          return this.numberOfInstances == null ? null : this.numberOfInstances.getValue();
+          return this.numberOfInstances == null ? 0 : this.numberOfInstances.getValue();
         }
 
         /**
@@ -2032,6 +2028,32 @@ public class ImagingStudy extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ImagingStudySeriesComponent))
+          return false;
+        ImagingStudySeriesComponent o = (ImagingStudySeriesComponent) other;
+        return compareDeep(number, o.number, true) && compareDeep(modality, o.modality, true) && compareDeep(uid, o.uid, true)
+           && compareDeep(description, o.description, true) && compareDeep(numberOfInstances, o.numberOfInstances, true)
+           && compareDeep(availability, o.availability, true) && compareDeep(url, o.url, true) && compareDeep(bodySite, o.bodySite, true)
+           && compareDeep(dateTime, o.dateTime, true) && compareDeep(instance, o.instance, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ImagingStudySeriesComponent))
+          return false;
+        ImagingStudySeriesComponent o = (ImagingStudySeriesComponent) other;
+        return compareValues(number, o.number, true) && compareValues(modality, o.modality, true) && compareValues(uid, o.uid, true)
+           && compareValues(description, o.description, true) && compareValues(numberOfInstances, o.numberOfInstances, true)
+           && compareValues(availability, o.availability, true) && compareValues(url, o.url, true) && compareValues(dateTime, o.dateTime, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (number == null || number.isEmpty()) && (modality == null || modality.isEmpty())
            && (uid == null || uid.isEmpty()) && (description == null || description.isEmpty()) && (numberOfInstances == null || numberOfInstances.isEmpty())
@@ -2141,20 +2163,16 @@ public class ImagingStudy extends DomainResource {
          * @return The number of this image in the series.
          */
         public int getNumber() { 
-          return this.number == null ? null : this.number.getValue();
+          return this.number == null ? 0 : this.number.getValue();
         }
 
         /**
          * @param value The number of this image in the series.
          */
         public ImagingStudySeriesInstanceComponent setNumber(int value) { 
-          if (value == -1)
-            this.number = null;
-          else {
             if (this.number == null)
               this.number = new IntegerType();
             this.number.setValue(value);
-          }
           return this;
         }
 
@@ -2456,6 +2474,30 @@ public class ImagingStudy extends DomainResource {
         dst.url = url == null ? null : url.copy();
         dst.attachment = attachment == null ? null : attachment.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ImagingStudySeriesInstanceComponent))
+          return false;
+        ImagingStudySeriesInstanceComponent o = (ImagingStudySeriesInstanceComponent) other;
+        return compareDeep(number, o.number, true) && compareDeep(uid, o.uid, true) && compareDeep(sopclass, o.sopclass, true)
+           && compareDeep(type, o.type, true) && compareDeep(title, o.title, true) && compareDeep(url, o.url, true)
+           && compareDeep(attachment, o.attachment, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ImagingStudySeriesInstanceComponent))
+          return false;
+        ImagingStudySeriesInstanceComponent o = (ImagingStudySeriesInstanceComponent) other;
+        return compareValues(number, o.number, true) && compareValues(uid, o.uid, true) && compareValues(sopclass, o.sopclass, true)
+           && compareValues(type, o.type, true) && compareValues(title, o.title, true) && compareValues(url, o.url, true)
+          ;
       }
 
       public boolean isEmpty() {
@@ -3090,7 +3132,7 @@ public class ImagingStudy extends DomainResource {
      * @return Number of Series in Study.
      */
     public int getNumberOfSeries() { 
-      return this.numberOfSeries == null ? null : this.numberOfSeries.getValue();
+      return this.numberOfSeries == null ? 0 : this.numberOfSeries.getValue();
     }
 
     /**
@@ -3135,7 +3177,7 @@ public class ImagingStudy extends DomainResource {
      * @return Number of SOP Instances in Study.
      */
     public int getNumberOfInstances() { 
-      return this.numberOfInstances == null ? null : this.numberOfInstances.getValue();
+      return this.numberOfInstances == null ? 0 : this.numberOfInstances.getValue();
     }
 
     /**
@@ -3416,6 +3458,35 @@ public class ImagingStudy extends DomainResource {
 
       protected ImagingStudy typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ImagingStudy))
+          return false;
+        ImagingStudy o = (ImagingStudy) other;
+        return compareDeep(started, o.started, true) && compareDeep(patient, o.patient, true) && compareDeep(uid, o.uid, true)
+           && compareDeep(accession, o.accession, true) && compareDeep(identifier, o.identifier, true) && compareDeep(order, o.order, true)
+           && compareDeep(modalityList, o.modalityList, true) && compareDeep(referrer, o.referrer, true) && compareDeep(availability, o.availability, true)
+           && compareDeep(url, o.url, true) && compareDeep(numberOfSeries, o.numberOfSeries, true) && compareDeep(numberOfInstances, o.numberOfInstances, true)
+           && compareDeep(clinicalInformation, o.clinicalInformation, true) && compareDeep(procedure, o.procedure, true)
+           && compareDeep(interpreter, o.interpreter, true) && compareDeep(description, o.description, true)
+           && compareDeep(series, o.series, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ImagingStudy))
+          return false;
+        ImagingStudy o = (ImagingStudy) other;
+        return compareValues(started, o.started, true) && compareValues(uid, o.uid, true) && compareValues(modalityList, o.modalityList, true)
+           && compareValues(availability, o.availability, true) && compareValues(url, o.url, true) && compareValues(numberOfSeries, o.numberOfSeries, true)
+           && compareValues(numberOfInstances, o.numberOfInstances, true) && compareValues(clinicalInformation, o.clinicalInformation, true)
+           && compareValues(description, o.description, true);
       }
 
       public boolean isEmpty() {

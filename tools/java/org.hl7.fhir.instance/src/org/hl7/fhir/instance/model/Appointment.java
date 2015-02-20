@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -618,6 +618,27 @@ public class Appointment extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof AppointmentParticipantComponent))
+          return false;
+        AppointmentParticipantComponent o = (AppointmentParticipantComponent) other;
+        return compareDeep(type, o.type, true) && compareDeep(actor, o.actor, true) && compareDeep(required, o.required, true)
+           && compareDeep(status, o.status, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof AppointmentParticipantComponent))
+          return false;
+        AppointmentParticipantComponent o = (AppointmentParticipantComponent) other;
+        return compareValues(required, o.required, true) && compareValues(status, o.status, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (type == null || type.isEmpty()) && (actor == null || actor.isEmpty())
            && (required == null || required.isEmpty()) && (status == null || status.isEmpty());
@@ -825,20 +846,16 @@ public class Appointment extends DomainResource {
      * @return The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments. (The iCal Standard specifies 0 as undefined, 1 as highest, 9 as lowest priority) (Need to change back to CodeableConcept).
      */
     public int getPriority() { 
-      return this.priority == null ? null : this.priority.getValue();
+      return this.priority == null ? 0 : this.priority.getValue();
     }
 
     /**
      * @param value The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments. (The iCal Standard specifies 0 as undefined, 1 as highest, 9 as lowest priority) (Need to change back to CodeableConcept).
      */
     public Appointment setPriority(int value) { 
-      if (value == -1)
-        this.priority = null;
-      else {
         if (this.priority == null)
           this.priority = new IntegerType();
         this.priority.setValue(value);
-      }
       return this;
     }
 
@@ -1434,6 +1451,33 @@ public class Appointment extends DomainResource {
 
       protected Appointment typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Appointment))
+          return false;
+        Appointment o = (Appointment) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(priority, o.priority, true) && compareDeep(status, o.status, true)
+           && compareDeep(type, o.type, true) && compareDeep(reason, o.reason, true) && compareDeep(description, o.description, true)
+           && compareDeep(start, o.start, true) && compareDeep(end, o.end, true) && compareDeep(slot, o.slot, true)
+           && compareDeep(location, o.location, true) && compareDeep(comment, o.comment, true) && compareDeep(order, o.order, true)
+           && compareDeep(participant, o.participant, true) && compareDeep(lastModifiedBy, o.lastModifiedBy, true)
+           && compareDeep(lastModified, o.lastModified, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Appointment))
+          return false;
+        Appointment o = (Appointment) other;
+        return compareValues(priority, o.priority, true) && compareValues(status, o.status, true) && compareValues(description, o.description, true)
+           && compareValues(start, o.start, true) && compareValues(end, o.end, true) && compareValues(comment, o.comment, true)
+           && compareValues(lastModified, o.lastModified, true);
       }
 
       public boolean isEmpty() {

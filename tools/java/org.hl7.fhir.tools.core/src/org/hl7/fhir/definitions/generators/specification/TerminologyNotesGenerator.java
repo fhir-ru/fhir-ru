@@ -283,6 +283,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       else 
         throw new Exception("Unknown special type "+cd.getName());
     } 
+    String bs = (cd.getBindingStrength() == null ? "??" : cd.getBindingStrength().toString());
     if (cd.getBinding() == BindingSpecification.Binding.ValueSet) {
       if (Utilities.noString(cd.getReference())) 
         return cd.getDescription();
@@ -297,23 +298,23 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       } else if (cd.getReferredValueSet() != null) {
         if (cd.getReference().startsWith("http://hl7.org/fhir/vs/")) {
           if (page.getValueSets().containsKey(cd.getReference()) && page.getValueSets().get(cd.getReference()).getUserData("filename") != null)
-            return cd.getBindingStrength().toString()+": <a href=\""+page.getValueSets().get(cd.getReference()).getUserData("filename")+"\">See "+cd.getReferredValueSet().getIdentifier()+"</a> ("+cd.getDefinition()+")"; 
+            return bs+": <a href=\""+page.getValueSets().get(cd.getReference()).getUserData("filename")+"\">See "+cd.getReferredValueSet().getIdentifier()+"</a> ("+cd.getDefinition()+")"; 
           else
-          return cd.getBindingStrength().toString()+": <a href=\""+cd.getReference().substring(23)+".html\">See "+cd.getReferredValueSet().getIdentifier()+"</a> ("+cd.getDefinition()+")";
+          return bs+": <a href=\""+cd.getReference().substring(23)+".html\">See "+cd.getReferredValueSet().getIdentifier()+"</a> ("+cd.getDefinition()+")";
         } else 
-          return cd.getBindingStrength().toString()+": <a href=\""+cd.getReference()+".html\">See "+cd.getReferredValueSet().getIdentifier()+"</a> ("+cd.getDefinition()+")";
+          return bs+": <a href=\""+cd.getReference()+".html\">See "+cd.getReferredValueSet().getIdentifier()+"</a> ("+cd.getDefinition()+")";
       }
       else
-        return cd.getBindingStrength().toString()+": <a href=\""+cd.getReference()+".html\">Value Set Definition</a> ("+cd.getDefinition()+")";
+        return bs+": <a href=\""+cd.getReference()+".html\">Value Set Definition</a> ("+cd.getDefinition()+")";
     }
     if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
       if (Utilities.noString(cd.getReference())) 
-        return cd.getBindingStrength().toString()+": "+cd.getDescription()+" ("+cd.getDefinition()+")";
+        return bs+": "+cd.getDescription()+" ("+cd.getDefinition()+")";
       else
-        return cd.getBindingStrength().toString()+": <a href=\""+cd.getReference().substring(1)+".html\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a> ("+cd.getDefinition()+")";
+        return bs+": <a href=\""+cd.getReference().substring(1)+".html\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a> ("+cd.getDefinition()+")";
     }
     if (cd.getBinding() == BindingSpecification.Binding.Reference) {
-      return cd.getBindingStrength().toString()+": <a href=\""+cd.getReference()+"\">"+cd.getDescription()+"</a> ("+cd.getDefinition()+")";
+      return bs+": <a href=\""+cd.getReference()+"\">"+cd.getDescription()+"</a> ("+cd.getDefinition()+")";
     }
     return "??";
   }

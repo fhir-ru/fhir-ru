@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -65,7 +65,7 @@ public class QuestionnaireAnswers extends DomainResource {
         public static QuestionnaireAnswersStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return INPROGRESS;
         if ("completed".equals(codeString))
           return COMPLETED;
@@ -75,7 +75,7 @@ public class QuestionnaireAnswers extends DomainResource {
         }
         public String toCode() {
           switch (this) {
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case COMPLETED: return "completed";
             case AMENDED: return "amended";
             default: return "?";
@@ -99,7 +99,7 @@ public class QuestionnaireAnswers extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case COMPLETED: return "completed";
             case AMENDED: return "amended";
             default: return "?";
@@ -112,7 +112,7 @@ public class QuestionnaireAnswers extends DomainResource {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return QuestionnaireAnswersStatus.INPROGRESS;
         if ("completed".equals(codeString))
           return QuestionnaireAnswersStatus.COMPLETED;
@@ -122,7 +122,7 @@ public class QuestionnaireAnswers extends DomainResource {
         }
     public String toCode(QuestionnaireAnswersStatus code) {
       if (code == QuestionnaireAnswersStatus.INPROGRESS)
-        return "in progress";
+        return "in-progress";
       if (code == QuestionnaireAnswersStatus.COMPLETED)
         return "completed";
       if (code == QuestionnaireAnswersStatus.AMENDED)
@@ -462,6 +462,29 @@ public class QuestionnaireAnswers extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof GroupComponent))
+          return false;
+        GroupComponent o = (GroupComponent) other;
+        return compareDeep(linkId, o.linkId, true) && compareDeep(title, o.title, true) && compareDeep(text, o.text, true)
+           && compareDeep(subject, o.subject, true) && compareDeep(group, o.group, true) && compareDeep(question, o.question, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof GroupComponent))
+          return false;
+        GroupComponent o = (GroupComponent) other;
+        return compareValues(linkId, o.linkId, true) && compareValues(title, o.title, true) && compareValues(text, o.text, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (linkId == null || linkId.isEmpty()) && (title == null || title.isEmpty())
            && (text == null || text.isEmpty()) && (subject == null || subject.isEmpty()) && (group == null || group.isEmpty())
@@ -690,6 +713,27 @@ public class QuestionnaireAnswers extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof QuestionComponent))
+          return false;
+        QuestionComponent o = (QuestionComponent) other;
+        return compareDeep(linkId, o.linkId, true) && compareDeep(text, o.text, true) && compareDeep(answer, o.answer, true)
+           && compareDeep(group, o.group, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof QuestionComponent))
+          return false;
+        QuestionComponent o = (QuestionComponent) other;
+        return compareValues(linkId, o.linkId, true) && compareValues(text, o.text, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (linkId == null || linkId.isEmpty()) && (text == null || text.isEmpty())
            && (answer == null || answer.isEmpty()) && (group == null || group.isEmpty());
@@ -851,6 +895,26 @@ public class QuestionnaireAnswers extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof QuestionAnswerComponent))
+          return false;
+        QuestionAnswerComponent o = (QuestionAnswerComponent) other;
+        return compareDeep(value, o.value, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof QuestionAnswerComponent))
+          return false;
+        QuestionAnswerComponent o = (QuestionAnswerComponent) other;
+        return true;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (value == null || value.isEmpty());
       }
@@ -880,7 +944,7 @@ public class QuestionnaireAnswers extends DomainResource {
      * The lifecycle status of the questionnaire answers as a whole.
      */
     @Child(name="status", type={CodeType.class}, order=1, min=1, max=1)
-    @Description(shortDefinition="in progress | completed | amended", formalDefinition="The lifecycle status of the questionnaire answers as a whole." )
+    @Description(shortDefinition="in-progress | completed | amended", formalDefinition="The lifecycle status of the questionnaire answers as a whole." )
     protected Enumeration<QuestionnaireAnswersStatus> status;
 
     /**
@@ -1330,6 +1394,29 @@ public class QuestionnaireAnswers extends DomainResource {
 
       protected QuestionnaireAnswers typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof QuestionnaireAnswers))
+          return false;
+        QuestionnaireAnswers o = (QuestionnaireAnswers) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(questionnaire, o.questionnaire, true)
+           && compareDeep(status, o.status, true) && compareDeep(subject, o.subject, true) && compareDeep(author, o.author, true)
+           && compareDeep(authored, o.authored, true) && compareDeep(source, o.source, true) && compareDeep(encounter, o.encounter, true)
+           && compareDeep(group, o.group, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof QuestionnaireAnswers))
+          return false;
+        QuestionnaireAnswers o = (QuestionnaireAnswers) other;
+        return compareValues(status, o.status, true) && compareValues(authored, o.authored, true);
       }
 
       public boolean isEmpty() {

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -103,7 +103,7 @@ public class DeviceUseRequest extends DomainResource {
           return RECEIVED;
         if ("accepted".equals(codeString))
           return ACCEPTED;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return INPROGRESS;
         if ("completed".equals(codeString))
           return COMPLETED;
@@ -122,7 +122,7 @@ public class DeviceUseRequest extends DomainResource {
             case REQUESTED: return "requested";
             case RECEIVED: return "received";
             case ACCEPTED: return "accepted";
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case COMPLETED: return "completed";
             case SUSPENDED: return "suspended";
             case REJECTED: return "rejected";
@@ -167,7 +167,7 @@ public class DeviceUseRequest extends DomainResource {
             case REQUESTED: return "requested";
             case RECEIVED: return "received";
             case ACCEPTED: return "accepted";
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case COMPLETED: return "completed";
             case SUSPENDED: return "suspended";
             case REJECTED: return "rejected";
@@ -192,7 +192,7 @@ public class DeviceUseRequest extends DomainResource {
           return DeviceUseRequestStatus.RECEIVED;
         if ("accepted".equals(codeString))
           return DeviceUseRequestStatus.ACCEPTED;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return DeviceUseRequestStatus.INPROGRESS;
         if ("completed".equals(codeString))
           return DeviceUseRequestStatus.COMPLETED;
@@ -216,7 +216,7 @@ public class DeviceUseRequest extends DomainResource {
       if (code == DeviceUseRequestStatus.ACCEPTED)
         return "accepted";
       if (code == DeviceUseRequestStatus.INPROGRESS)
-        return "in progress";
+        return "in-progress";
       if (code == DeviceUseRequestStatus.COMPLETED)
         return "completed";
       if (code == DeviceUseRequestStatus.SUSPENDED)
@@ -340,7 +340,7 @@ public class DeviceUseRequest extends DomainResource {
      * The status of the request.
      */
     @Child(name="status", type={CodeType.class}, order=0, min=0, max=1)
-    @Description(shortDefinition="proposed | planned | requested | received | accepted | in progress | completed | suspended | rejected | aborted", formalDefinition="The status of the request." )
+    @Description(shortDefinition="proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | aborted", formalDefinition="The status of the request." )
     protected Enumeration<DeviceUseRequestStatus> status;
 
     /**
@@ -1053,6 +1053,31 @@ public class DeviceUseRequest extends DomainResource {
 
       protected DeviceUseRequest typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof DeviceUseRequest))
+          return false;
+        DeviceUseRequest o = (DeviceUseRequest) other;
+        return compareDeep(bodySite, o.bodySite, true) && compareDeep(status, o.status, true) && compareDeep(device, o.device, true)
+           && compareDeep(encounter, o.encounter, true) && compareDeep(identifier, o.identifier, true) && compareDeep(indication, o.indication, true)
+           && compareDeep(notes, o.notes, true) && compareDeep(prnReason, o.prnReason, true) && compareDeep(orderedOn, o.orderedOn, true)
+           && compareDeep(recordedOn, o.recordedOn, true) && compareDeep(subject, o.subject, true) && compareDeep(timing, o.timing, true)
+           && compareDeep(priority, o.priority, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof DeviceUseRequest))
+          return false;
+        DeviceUseRequest o = (DeviceUseRequest) other;
+        return compareValues(status, o.status, true) && compareValues(notes, o.notes, true) && compareValues(orderedOn, o.orderedOn, true)
+           && compareValues(recordedOn, o.recordedOn, true) && compareValues(priority, o.priority, true);
       }
 
       public boolean isEmpty() {

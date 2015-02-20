@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -243,7 +243,7 @@ public class Observation extends DomainResource {
           return AMENDED;
         if ("cancelled".equals(codeString))
           return CANCELLED;
-        if ("entered in error".equals(codeString))
+        if ("entered-in-error".equals(codeString))
           return ENTEREDINERROR;
         throw new Exception("Unknown ObservationStatus code '"+codeString+"'");
         }
@@ -254,7 +254,7 @@ public class Observation extends DomainResource {
             case FINAL: return "final";
             case AMENDED: return "amended";
             case CANCELLED: return "cancelled";
-            case ENTEREDINERROR: return "entered in error";
+            case ENTEREDINERROR: return "entered-in-error";
             default: return "?";
           }
         }
@@ -287,7 +287,7 @@ public class Observation extends DomainResource {
             case FINAL: return "final";
             case AMENDED: return "amended";
             case CANCELLED: return "cancelled";
-            case ENTEREDINERROR: return "entered in error";
+            case ENTEREDINERROR: return "entered-in-error";
             default: return "?";
           }
         }
@@ -308,7 +308,7 @@ public class Observation extends DomainResource {
           return ObservationStatus.AMENDED;
         if ("cancelled".equals(codeString))
           return ObservationStatus.CANCELLED;
-        if ("entered in error".equals(codeString))
+        if ("entered-in-error".equals(codeString))
           return ObservationStatus.ENTEREDINERROR;
         throw new IllegalArgumentException("Unknown ObservationStatus code '"+codeString+"'");
         }
@@ -324,7 +324,7 @@ public class Observation extends DomainResource {
       if (code == ObservationStatus.CANCELLED)
         return "cancelled";
       if (code == ObservationStatus.ENTEREDINERROR)
-        return "entered in error";
+        return "entered-in-error";
       return "?";
       }
     }
@@ -821,6 +821,27 @@ public class Observation extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ObservationReferenceRangeComponent))
+          return false;
+        ObservationReferenceRangeComponent o = (ObservationReferenceRangeComponent) other;
+        return compareDeep(low, o.low, true) && compareDeep(high, o.high, true) && compareDeep(meaning, o.meaning, true)
+           && compareDeep(age, o.age, true) && compareDeep(text, o.text, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ObservationReferenceRangeComponent))
+          return false;
+        ObservationReferenceRangeComponent o = (ObservationReferenceRangeComponent) other;
+        return compareValues(text, o.text, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (low == null || low.isEmpty()) && (high == null || high.isEmpty())
            && (meaning == null || meaning.isEmpty()) && (age == null || age.isEmpty()) && (text == null || text.isEmpty())
@@ -968,6 +989,26 @@ public class Observation extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ObservationRelatedComponent))
+          return false;
+        ObservationRelatedComponent o = (ObservationRelatedComponent) other;
+        return compareDeep(type, o.type, true) && compareDeep(target, o.target, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ObservationRelatedComponent))
+          return false;
+        ObservationRelatedComponent o = (ObservationRelatedComponent) other;
+        return compareValues(type, o.type, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (type == null || type.isEmpty()) && (target == null || target.isEmpty())
           ;
@@ -1041,9 +1082,9 @@ public class Observation extends DomainResource {
     /**
      * Indicates the site on the subject's body where the observation was made ( i.e. the target site).
      */
-    @Child(name="bodySite", type={CodeableConcept.class}, order=8, min=0, max=1)
+    @Child(name="bodySite", type={CodeableConcept.class, BodySite.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Observed body part", formalDefinition="Indicates the site on the subject's body where the observation was made ( i.e. the target site)." )
-    protected CodeableConcept bodySite;
+    protected Type bodySite;
 
     /**
      * Indicates the mechanism used to perform the observation.
@@ -1088,7 +1129,7 @@ other observer (for example a relative or EMT), or any observation made about th
     /**
      * Who was responsible for asserting the observed value as "true".
      */
-    @Child(name="performer", type={Practitioner.class, Device.class, Organization.class, Patient.class, RelatedPerson.class}, order=13, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name="performer", type={Practitioner.class, Organization.class, Patient.class, RelatedPerson.class}, order=13, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Who did the observation", formalDefinition="Who was responsible for asserting the observed value as 'true'." )
     protected List<Reference> performer;
     /**
@@ -1098,32 +1139,44 @@ other observer (for example a relative or EMT), or any observation made about th
 
 
     /**
-     * The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.
+     * The device used to generate the observation data.
      */
-    @Child(name="encounter", type={Encounter.class}, order=14, min=0, max=1)
-    @Description(shortDefinition="Healthcare event related to the observation", formalDefinition="The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation." )
+    @Child(name="device", type={Device.class, DeviceMetric.class}, order=14, min=0, max=1)
+    @Description(shortDefinition="(Measurement) Device", formalDefinition="The device used to generate the observation data." )
+    protected Reference device;
+
+    /**
+     * The actual object that is the target of the reference (The device used to generate the observation data.)
+     */
+    protected Resource deviceTarget;
+
+    /**
+     * The healthcare event  ( e.g. a patient and healthcare provider interaction ) during which this observation is made.
+     */
+    @Child(name="encounter", type={Encounter.class}, order=15, min=0, max=1)
+    @Description(shortDefinition="Healthcare event during which this observation is made", formalDefinition="The healthcare event  ( e.g. a patient and healthcare provider interaction ) during which this observation is made." )
     protected Reference encounter;
 
     /**
-     * The actual object that is the target of the reference (The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.)
+     * The actual object that is the target of the reference (The healthcare event  ( e.g. a patient and healthcare provider interaction ) during which this observation is made.)
      */
     protected Encounter encounterTarget;
 
     /**
      * Guidance on how to interpret the value by comparison to a normal or recommended range.
      */
-    @Child(name="referenceRange", type={}, order=15, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name="referenceRange", type={}, order=16, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Provides guide for interpretation", formalDefinition="Guidance on how to interpret the value by comparison to a normal or recommended range." )
     protected List<ObservationReferenceRangeComponent> referenceRange;
 
     /**
      * Related observations - either components, or previous observations, or statements of derivation.
      */
-    @Child(name="related", type={}, order=16, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name="related", type={}, order=17, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Observations related to this observation", formalDefinition="Related observations - either components, or previous observations, or statements of derivation." )
     protected List<ObservationRelatedComponent> related;
 
-    private static final long serialVersionUID = -700112511L;
+    private static final long serialVersionUID = 124119028L;
 
     public Observation() {
       super();
@@ -1564,13 +1617,26 @@ other observer (for example a relative or EMT), or any observation made about th
     /**
      * @return {@link #bodySite} (Indicates the site on the subject's body where the observation was made ( i.e. the target site).)
      */
-    public CodeableConcept getBodySite() { 
-      if (this.bodySite == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Observation.bodySite");
-        else if (Configuration.doAutoCreate())
-          this.bodySite = new CodeableConcept(); // cc
+    public Type getBodySite() { 
       return this.bodySite;
+    }
+
+    /**
+     * @return {@link #bodySite} (Indicates the site on the subject's body where the observation was made ( i.e. the target site).)
+     */
+    public CodeableConcept getBodySiteCodeableConcept() throws Exception { 
+      if (!(this.bodySite instanceof CodeableConcept))
+        throw new Exception("Type mismatch: the type CodeableConcept was expected, but "+this.bodySite.getClass().getName()+" was encountered");
+      return (CodeableConcept) this.bodySite;
+    }
+
+    /**
+     * @return {@link #bodySite} (Indicates the site on the subject's body where the observation was made ( i.e. the target site).)
+     */
+    public Reference getBodySiteReference() throws Exception { 
+      if (!(this.bodySite instanceof Reference))
+        throw new Exception("Type mismatch: the type Reference was expected, but "+this.bodySite.getClass().getName()+" was encountered");
+      return (Reference) this.bodySite;
     }
 
     public boolean hasBodySite() { 
@@ -1580,7 +1646,7 @@ other observer (for example a relative or EMT), or any observation made about th
     /**
      * @param value {@link #bodySite} (Indicates the site on the subject's body where the observation was made ( i.e. the target site).)
      */
-    public Observation setBodySite(CodeableConcept value) { 
+    public Observation setBodySite(Type value) { 
       this.bodySite = value;
       return this;
     }
@@ -1760,7 +1826,46 @@ other observer (for example a relative or EMT), or any observation made about th
     }
 
     /**
-     * @return {@link #encounter} (The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.)
+     * @return {@link #device} (The device used to generate the observation data.)
+     */
+    public Reference getDevice() { 
+      if (this.device == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Observation.device");
+        else if (Configuration.doAutoCreate())
+          this.device = new Reference(); // cc
+      return this.device;
+    }
+
+    public boolean hasDevice() { 
+      return this.device != null && !this.device.isEmpty();
+    }
+
+    /**
+     * @param value {@link #device} (The device used to generate the observation data.)
+     */
+    public Observation setDevice(Reference value) { 
+      this.device = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #device} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The device used to generate the observation data.)
+     */
+    public Resource getDeviceTarget() { 
+      return this.deviceTarget;
+    }
+
+    /**
+     * @param value {@link #device} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The device used to generate the observation data.)
+     */
+    public Observation setDeviceTarget(Resource value) { 
+      this.deviceTarget = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #encounter} (The healthcare event  ( e.g. a patient and healthcare provider interaction ) during which this observation is made.)
      */
     public Reference getEncounter() { 
       if (this.encounter == null)
@@ -1776,7 +1881,7 @@ other observer (for example a relative or EMT), or any observation made about th
     }
 
     /**
-     * @param value {@link #encounter} (The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.)
+     * @param value {@link #encounter} (The healthcare event  ( e.g. a patient and healthcare provider interaction ) during which this observation is made.)
      */
     public Observation setEncounter(Reference value) { 
       this.encounter = value;
@@ -1784,7 +1889,7 @@ other observer (for example a relative or EMT), or any observation made about th
     }
 
     /**
-     * @return {@link #encounter} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.)
+     * @return {@link #encounter} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The healthcare event  ( e.g. a patient and healthcare provider interaction ) during which this observation is made.)
      */
     public Encounter getEncounterTarget() { 
       if (this.encounterTarget == null)
@@ -1796,7 +1901,7 @@ other observer (for example a relative or EMT), or any observation made about th
     }
 
     /**
-     * @param value {@link #encounter} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.)
+     * @param value {@link #encounter} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The healthcare event  ( e.g. a patient and healthcare provider interaction ) during which this observation is made.)
      */
     public Observation setEncounterTarget(Encounter value) { 
       this.encounterTarget = value;
@@ -1874,13 +1979,14 @@ other observer (for example a relative or EMT), or any observation made about th
         childrenList.add(new Property("issued", "instant", "The date and time this observation was made available.", 0, java.lang.Integer.MAX_VALUE, issued));
         childrenList.add(new Property("status", "code", "The status of the result value.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("reliability", "code", "An estimate of the degree to which quality issues have impacted on the value reported.", 0, java.lang.Integer.MAX_VALUE, reliability));
-        childrenList.add(new Property("bodySite", "CodeableConcept", "Indicates the site on the subject's body where the observation was made ( i.e. the target site).", 0, java.lang.Integer.MAX_VALUE, bodySite));
+        childrenList.add(new Property("bodySite[x]", "CodeableConcept|Reference(BodySite)", "Indicates the site on the subject's body where the observation was made ( i.e. the target site).", 0, java.lang.Integer.MAX_VALUE, bodySite));
         childrenList.add(new Property("method", "CodeableConcept", "Indicates the mechanism used to perform the observation.", 0, java.lang.Integer.MAX_VALUE, method));
         childrenList.add(new Property("identifier", "Identifier", "A unique identifier for the simple observation.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("subject", "Reference(Patient|Group|Device|Location)", "The patient, or group of patients, location, or device whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus,\nother observer (for example a relative or EMT), or any observation made about the subject.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("specimen", "Reference(Specimen)", "The specimen that was used when this observation was made.", 0, java.lang.Integer.MAX_VALUE, specimen));
-        childrenList.add(new Property("performer", "Reference(Practitioner|Device|Organization|Patient|RelatedPerson)", "Who was responsible for asserting the observed value as 'true'.", 0, java.lang.Integer.MAX_VALUE, performer));
-        childrenList.add(new Property("encounter", "Reference(Encounter)", "The healthcare event  ( e.g. a patient and healthcare provider interaction ) that relates to this observation.", 0, java.lang.Integer.MAX_VALUE, encounter));
+        childrenList.add(new Property("performer", "Reference(Practitioner|Organization|Patient|RelatedPerson)", "Who was responsible for asserting the observed value as 'true'.", 0, java.lang.Integer.MAX_VALUE, performer));
+        childrenList.add(new Property("device", "Reference(Device|DeviceMetric)", "The device used to generate the observation data.", 0, java.lang.Integer.MAX_VALUE, device));
+        childrenList.add(new Property("encounter", "Reference(Encounter)", "The healthcare event  ( e.g. a patient and healthcare provider interaction ) during which this observation is made.", 0, java.lang.Integer.MAX_VALUE, encounter));
         childrenList.add(new Property("referenceRange", "", "Guidance on how to interpret the value by comparison to a normal or recommended range.", 0, java.lang.Integer.MAX_VALUE, referenceRange));
         childrenList.add(new Property("related", "", "Related observations - either components, or previous observations, or statements of derivation.", 0, java.lang.Integer.MAX_VALUE, related));
       }
@@ -1907,6 +2013,7 @@ other observer (for example a relative or EMT), or any observation made about th
           for (Reference i : performer)
             dst.performer.add(i.copy());
         };
+        dst.device = device == null ? null : device.copy();
         dst.encounter = encounter == null ? null : encounter.copy();
         if (referenceRange != null) {
           dst.referenceRange = new ArrayList<ObservationReferenceRangeComponent>();
@@ -1925,6 +2032,35 @@ other observer (for example a relative or EMT), or any observation made about th
         return copy();
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Observation))
+          return false;
+        Observation o = (Observation) other;
+        return compareDeep(name, o.name, true) && compareDeep(value, o.value, true) && compareDeep(dataAbsentReason, o.dataAbsentReason, true)
+           && compareDeep(interpretation, o.interpretation, true) && compareDeep(comments, o.comments, true)
+           && compareDeep(applies, o.applies, true) && compareDeep(issued, o.issued, true) && compareDeep(status, o.status, true)
+           && compareDeep(reliability, o.reliability, true) && compareDeep(bodySite, o.bodySite, true) && compareDeep(method, o.method, true)
+           && compareDeep(identifier, o.identifier, true) && compareDeep(subject, o.subject, true) && compareDeep(specimen, o.specimen, true)
+           && compareDeep(performer, o.performer, true) && compareDeep(device, o.device, true) && compareDeep(encounter, o.encounter, true)
+           && compareDeep(referenceRange, o.referenceRange, true) && compareDeep(related, o.related, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Observation))
+          return false;
+        Observation o = (Observation) other;
+        return compareValues(dataAbsentReason, o.dataAbsentReason, true) && compareValues(comments, o.comments, true)
+           && compareValues(issued, o.issued, true) && compareValues(status, o.status, true) && compareValues(reliability, o.reliability, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (name == null || name.isEmpty()) && (value == null || value.isEmpty())
            && (dataAbsentReason == null || dataAbsentReason.isEmpty()) && (interpretation == null || interpretation.isEmpty())
@@ -1932,7 +2068,7 @@ other observer (for example a relative or EMT), or any observation made about th
            && (status == null || status.isEmpty()) && (reliability == null || reliability.isEmpty())
            && (bodySite == null || bodySite.isEmpty()) && (method == null || method.isEmpty()) && (identifier == null || identifier.isEmpty())
            && (subject == null || subject.isEmpty()) && (specimen == null || specimen.isEmpty()) && (performer == null || performer.isEmpty())
-           && (encounter == null || encounter.isEmpty()) && (referenceRange == null || referenceRange.isEmpty())
+           && (device == null || device.isEmpty()) && (encounter == null || encounter.isEmpty()) && (referenceRange == null || referenceRange.isEmpty())
            && (related == null || related.isEmpty());
       }
 
@@ -1969,9 +2105,11 @@ other observer (for example a relative or EMT), or any observation made about th
   public static final String SP_NAME = "name";
   @SearchParamDefinition(name="specimen", path="Observation.specimen", description="Specimen used for this observation", type="reference" )
   public static final String SP_SPECIMEN = "specimen";
+  @SearchParamDefinition(name="device", path="Observation.device", description="The Device that generated the observation data.", type="reference" )
+  public static final String SP_DEVICE = "device";
   @SearchParamDefinition(name="related-type", path="Observation.related.type", description="has-component | has-member | derived-from | sequel-to | replaces | qualified-by | interfered-by", type="token" )
   public static final String SP_RELATEDTYPE = "related-type";
-  @SearchParamDefinition(name="performer", path="Observation.performer", description="Who and/or what performed the observation", type="reference" )
+  @SearchParamDefinition(name="performer", path="Observation.performer", description="Who performed the observation", type="reference" )
   public static final String SP_PERFORMER = "performer";
   @SearchParamDefinition(name="identifier", path="Observation.identifier", description="The unique Id for a particular observation", type="token" )
   public static final String SP_IDENTIFIER = "identifier";

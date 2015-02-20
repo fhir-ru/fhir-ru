@@ -30,7 +30,7 @@
    represented here. For instance, here's some possible types:
      lithium heparin plasma   (+ .container.additive) (e.g. SNOMED CT 446272009)
      transfusion bag of blood (+ container.type) 
-     Peritoneal lavage        (+ collection.sourceSite)
+     Peritoneal lavage        (+ collection.bodySite)
    If the type includes other fields, it would be normal not to populate the other fields
 
    Note that this practice is so widespread that it's pointless to try and stop it -->
@@ -53,7 +53,7 @@
     <system value="http://lab.acme.org/specimens/2011"/>
     <value value="X352356"/>
   </accessionIdentifier>
-  <receivedTime value="2011-03-04T07:03:00"/>
+  <receivedTime value="2011-03-04T07:03:00Z"/>
 
  
   <collection>
@@ -63,7 +63,7 @@
     </collector>
     <!-- the time of collection is required. Usually a point in time, but can be a period 
       (collectedPeriod) if it's a timed collection (e.g. a 24 hour urine) --> 
-    <collectedDateTime value="2011-05-30T06:15:00" />
+    <collectedDateTime value="2011-05-30T06:15:00Z" />
     
     <quantity>
       <value value="6"/>

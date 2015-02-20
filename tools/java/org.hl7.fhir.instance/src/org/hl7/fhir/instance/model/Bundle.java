@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -188,44 +188,30 @@ public class Bundle extends Resource {
       }
     }
 
-    public enum BundleEntryStatus {
+    public enum SearchEntryMode {
         /**
-         * Transaction: perform a create operation on this resource.
-         */
-        CREATE, 
-        /**
-         * Transaction: perform an update operation on this resource.
-         */
-        UPDATE, 
-        /**
-         * Transaction: look for this resource using the search url provided. If there's no match, create it. Search: this resource is returned because it matches the search criteria.
+         * This resource matched the search specification.
          */
         MATCH, 
         /**
-         * Search: this resource is returned because it meets an _include criteria.
+         * This resource is returned because it is referred to from another resource in the search set.
          */
         INCLUDE, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static BundleEntryStatus fromCode(String codeString) throws Exception {
+        public static SearchEntryMode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("create".equals(codeString))
-          return CREATE;
-        if ("update".equals(codeString))
-          return UPDATE;
         if ("match".equals(codeString))
           return MATCH;
         if ("include".equals(codeString))
           return INCLUDE;
-        throw new Exception("Unknown BundleEntryStatus code '"+codeString+"'");
+        throw new Exception("Unknown SearchEntryMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case CREATE: return "create";
-            case UPDATE: return "update";
             case MATCH: return "match";
             case INCLUDE: return "include";
             default: return "?";
@@ -233,8 +219,6 @@ public class Bundle extends Resource {
         }
         public String getSystem() {
           switch (this) {
-            case CREATE: return "";
-            case UPDATE: return "";
             case MATCH: return "";
             case INCLUDE: return "";
             default: return "?";
@@ -242,48 +226,136 @@ public class Bundle extends Resource {
         }
         public String getDefinition() {
           switch (this) {
-            case CREATE: return "Transaction: perform a create operation on this resource.";
-            case UPDATE: return "Transaction: perform an update operation on this resource.";
-            case MATCH: return "Transaction: look for this resource using the search url provided. If there's no match, create it. Search: this resource is returned because it matches the search criteria.";
-            case INCLUDE: return "Search: this resource is returned because it meets an _include criteria.";
+            case MATCH: return "This resource matched the search specification.";
+            case INCLUDE: return "This resource is returned because it is referred to from another resource in the search set.";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case CREATE: return "Create";
-            case UPDATE: return "Update";
-            case MATCH: return "Match";
-            case INCLUDE: return "Include";
+            case MATCH: return "match";
+            case INCLUDE: return "include";
             default: return "?";
           }
         }
     }
 
-  public static class BundleEntryStatusEnumFactory implements EnumFactory<BundleEntryStatus> {
-    public BundleEntryStatus fromCode(String codeString) throws IllegalArgumentException {
+  public static class SearchEntryModeEnumFactory implements EnumFactory<SearchEntryMode> {
+    public SearchEntryMode fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("create".equals(codeString))
-          return BundleEntryStatus.CREATE;
-        if ("update".equals(codeString))
-          return BundleEntryStatus.UPDATE;
         if ("match".equals(codeString))
-          return BundleEntryStatus.MATCH;
+          return SearchEntryMode.MATCH;
         if ("include".equals(codeString))
-          return BundleEntryStatus.INCLUDE;
-        throw new IllegalArgumentException("Unknown BundleEntryStatus code '"+codeString+"'");
+          return SearchEntryMode.INCLUDE;
+        throw new IllegalArgumentException("Unknown SearchEntryMode code '"+codeString+"'");
         }
-    public String toCode(BundleEntryStatus code) {
-      if (code == BundleEntryStatus.CREATE)
-        return "create";
-      if (code == BundleEntryStatus.UPDATE)
-        return "update";
-      if (code == BundleEntryStatus.MATCH)
+    public String toCode(SearchEntryMode code) {
+      if (code == SearchEntryMode.MATCH)
         return "match";
-      if (code == BundleEntryStatus.INCLUDE)
+      if (code == SearchEntryMode.INCLUDE)
         return "include";
+      return "?";
+      }
+    }
+
+    public enum HttpVerb {
+        /**
+         * HTTP GET.
+         */
+        GET, 
+        /**
+         * HTTP POST.
+         */
+        POST, 
+        /**
+         * HTTP PUT.
+         */
+        PUT, 
+        /**
+         * HTTP DELETE.
+         */
+        DELETE, 
+        /**
+         * added to help the parsers
+         */
+        NULL;
+        public static HttpVerb fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("GET".equals(codeString))
+          return GET;
+        if ("POST".equals(codeString))
+          return POST;
+        if ("PUT".equals(codeString))
+          return PUT;
+        if ("DELETE".equals(codeString))
+          return DELETE;
+        throw new Exception("Unknown HttpVerb code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case GET: return "GET";
+            case POST: return "POST";
+            case PUT: return "PUT";
+            case DELETE: return "DELETE";
+            default: return "?";
+          }
+        }
+        public String getSystem() {
+          switch (this) {
+            case GET: return "";
+            case POST: return "";
+            case PUT: return "";
+            case DELETE: return "";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case GET: return "HTTP GET.";
+            case POST: return "HTTP POST.";
+            case PUT: return "HTTP PUT.";
+            case DELETE: return "HTTP DELETE.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case GET: return "GET";
+            case POST: return "POST";
+            case PUT: return "PUT";
+            case DELETE: return "DELETE";
+            default: return "?";
+          }
+        }
+    }
+
+  public static class HttpVerbEnumFactory implements EnumFactory<HttpVerb> {
+    public HttpVerb fromCode(String codeString) throws IllegalArgumentException {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("GET".equals(codeString))
+          return HttpVerb.GET;
+        if ("POST".equals(codeString))
+          return HttpVerb.POST;
+        if ("PUT".equals(codeString))
+          return HttpVerb.PUT;
+        if ("DELETE".equals(codeString))
+          return HttpVerb.DELETE;
+        throw new IllegalArgumentException("Unknown HttpVerb code '"+codeString+"'");
+        }
+    public String toCode(HttpVerb code) {
+      if (code == HttpVerb.GET)
+        return "GET";
+      if (code == HttpVerb.POST)
+        return "POST";
+      if (code == HttpVerb.PUT)
+        return "PUT";
+      if (code == HttpVerb.DELETE)
+        return "DELETE";
       return "?";
       }
     }
@@ -420,6 +492,26 @@ public class Bundle extends Resource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof BundleLinkComponent))
+          return false;
+        BundleLinkComponent o = (BundleLinkComponent) other;
+        return compareDeep(relation, o.relation, true) && compareDeep(url, o.url, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof BundleLinkComponent))
+          return false;
+        BundleLinkComponent o = (BundleLinkComponent) other;
+        return compareValues(relation, o.relation, true) && compareValues(url, o.url, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (relation == null || relation.isEmpty()) && (url == null || url.isEmpty())
           ;
@@ -437,41 +529,34 @@ public class Bundle extends Resource {
         protected UriType base;
 
         /**
-         * The status of a resource in the bundle. Used for search (to differentiate between resources included as a match, and resources included as an _include), for history (deleted resources), and for transactions (create/update/delete).
-         */
-        @Child(name="status", type={CodeType.class}, order=2, min=0, max=1)
-        @Description(shortDefinition="create | update | match | include - for search & transaction", formalDefinition="The status of a resource in the bundle. Used for search (to differentiate between resources included as a match, and resources included as an _include), for history (deleted resources), and for transactions (create/update/delete)." )
-        protected Enumeration<BundleEntryStatus> status;
-
-        /**
-         * Search URL for this resource when processing a transaction (see transaction documentation).
-         */
-        @Child(name="search", type={UriType.class}, order=3, min=0, max=1)
-        @Description(shortDefinition="Search URL (see transaction)", formalDefinition="Search URL for this resource when processing a transaction (see transaction documentation)." )
-        protected UriType search;
-
-        /**
-         * When searching, the server's search ranking score for the entry.
-         */
-        @Child(name="score", type={DecimalType.class}, order=4, min=0, max=1)
-        @Description(shortDefinition="Search ranking (between 0 and 1)", formalDefinition="When searching, the server's search ranking score for the entry." )
-        protected DecimalType score;
-
-        /**
-         * If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further information.
-         */
-        @Child(name="deleted", type={}, order=5, min=0, max=1)
-        @Description(shortDefinition="If this is a deleted resource (transaction/history)", formalDefinition="If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further information." )
-        protected BundleEntryDeletedComponent deleted;
-
-        /**
          * The Resources for the entry.
          */
-        @Child(name="resource", type={Resource.class}, order=6, min=0, max=1)
+        @Child(name="resource", type={Resource.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Resources in this bundle", formalDefinition="The Resources for the entry." )
         protected Resource resource;
 
-        private static final long serialVersionUID = 509077972L;
+        /**
+         * Information about the search process that lead to the creation of this entry.
+         */
+        @Child(name="search", type={}, order=3, min=0, max=1)
+        @Description(shortDefinition="Search related information", formalDefinition="Information about the search process that lead to the creation of this entry." )
+        protected BundleEntrySearchComponent search;
+
+        /**
+         * Additional information about how this entry should be processed as part of a transaction.
+         */
+        @Child(name="transaction", type={}, order=4, min=0, max=1)
+        @Description(shortDefinition="Transaction Related Information", formalDefinition="Additional information about how this entry should be processed as part of a transaction." )
+        protected BundleEntryTransactionComponent transaction;
+
+        /**
+         * Additional information about how this entry should be processed as part of a transaction.
+         */
+        @Child(name="transactionResponse", type={}, order=5, min=0, max=1)
+        @Description(shortDefinition="Transaction Related Information", formalDefinition="Additional information about how this entry should be processed as part of a transaction." )
+        protected BundleEntryTransactionResponseComponent transactionResponse;
+
+        private static final long serialVersionUID = 2068509254L;
 
       public BundleEntryComponent() {
         super();
@@ -527,177 +612,6 @@ public class Bundle extends Resource {
         }
 
         /**
-         * @return {@link #status} (The status of a resource in the bundle. Used for search (to differentiate between resources included as a match, and resources included as an _include), for history (deleted resources), and for transactions (create/update/delete).). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
-         */
-        public Enumeration<BundleEntryStatus> getStatusElement() { 
-          if (this.status == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create BundleEntryComponent.status");
-            else if (Configuration.doAutoCreate())
-              this.status = new Enumeration<BundleEntryStatus>(new BundleEntryStatusEnumFactory()); // bb
-          return this.status;
-        }
-
-        public boolean hasStatusElement() { 
-          return this.status != null && !this.status.isEmpty();
-        }
-
-        public boolean hasStatus() { 
-          return this.status != null && !this.status.isEmpty();
-        }
-
-        /**
-         * @param value {@link #status} (The status of a resource in the bundle. Used for search (to differentiate between resources included as a match, and resources included as an _include), for history (deleted resources), and for transactions (create/update/delete).). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
-         */
-        public BundleEntryComponent setStatusElement(Enumeration<BundleEntryStatus> value) { 
-          this.status = value;
-          return this;
-        }
-
-        /**
-         * @return The status of a resource in the bundle. Used for search (to differentiate between resources included as a match, and resources included as an _include), for history (deleted resources), and for transactions (create/update/delete).
-         */
-        public BundleEntryStatus getStatus() { 
-          return this.status == null ? null : this.status.getValue();
-        }
-
-        /**
-         * @param value The status of a resource in the bundle. Used for search (to differentiate between resources included as a match, and resources included as an _include), for history (deleted resources), and for transactions (create/update/delete).
-         */
-        public BundleEntryComponent setStatus(BundleEntryStatus value) { 
-          if (value == null)
-            this.status = null;
-          else {
-            if (this.status == null)
-              this.status = new Enumeration<BundleEntryStatus>(new BundleEntryStatusEnumFactory());
-            this.status.setValue(value);
-          }
-          return this;
-        }
-
-        /**
-         * @return {@link #search} (Search URL for this resource when processing a transaction (see transaction documentation).). This is the underlying object with id, value and extensions. The accessor "getSearch" gives direct access to the value
-         */
-        public UriType getSearchElement() { 
-          if (this.search == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create BundleEntryComponent.search");
-            else if (Configuration.doAutoCreate())
-              this.search = new UriType(); // bb
-          return this.search;
-        }
-
-        public boolean hasSearchElement() { 
-          return this.search != null && !this.search.isEmpty();
-        }
-
-        public boolean hasSearch() { 
-          return this.search != null && !this.search.isEmpty();
-        }
-
-        /**
-         * @param value {@link #search} (Search URL for this resource when processing a transaction (see transaction documentation).). This is the underlying object with id, value and extensions. The accessor "getSearch" gives direct access to the value
-         */
-        public BundleEntryComponent setSearchElement(UriType value) { 
-          this.search = value;
-          return this;
-        }
-
-        /**
-         * @return Search URL for this resource when processing a transaction (see transaction documentation).
-         */
-        public String getSearch() { 
-          return this.search == null ? null : this.search.getValue();
-        }
-
-        /**
-         * @param value Search URL for this resource when processing a transaction (see transaction documentation).
-         */
-        public BundleEntryComponent setSearch(String value) { 
-          if (Utilities.noString(value))
-            this.search = null;
-          else {
-            if (this.search == null)
-              this.search = new UriType();
-            this.search.setValue(value);
-          }
-          return this;
-        }
-
-        /**
-         * @return {@link #score} (When searching, the server's search ranking score for the entry.). This is the underlying object with id, value and extensions. The accessor "getScore" gives direct access to the value
-         */
-        public DecimalType getScoreElement() { 
-          if (this.score == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create BundleEntryComponent.score");
-            else if (Configuration.doAutoCreate())
-              this.score = new DecimalType(); // bb
-          return this.score;
-        }
-
-        public boolean hasScoreElement() { 
-          return this.score != null && !this.score.isEmpty();
-        }
-
-        public boolean hasScore() { 
-          return this.score != null && !this.score.isEmpty();
-        }
-
-        /**
-         * @param value {@link #score} (When searching, the server's search ranking score for the entry.). This is the underlying object with id, value and extensions. The accessor "getScore" gives direct access to the value
-         */
-        public BundleEntryComponent setScoreElement(DecimalType value) { 
-          this.score = value;
-          return this;
-        }
-
-        /**
-         * @return When searching, the server's search ranking score for the entry.
-         */
-        public BigDecimal getScore() { 
-          return this.score == null ? null : this.score.getValue();
-        }
-
-        /**
-         * @param value When searching, the server's search ranking score for the entry.
-         */
-        public BundleEntryComponent setScore(BigDecimal value) { 
-          if (value == null)
-            this.score = null;
-          else {
-            if (this.score == null)
-              this.score = new DecimalType();
-            this.score.setValue(value);
-          }
-          return this;
-        }
-
-        /**
-         * @return {@link #deleted} (If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further information.)
-         */
-        public BundleEntryDeletedComponent getDeleted() { 
-          if (this.deleted == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create BundleEntryComponent.deleted");
-            else if (Configuration.doAutoCreate())
-              this.deleted = new BundleEntryDeletedComponent(); // cc
-          return this.deleted;
-        }
-
-        public boolean hasDeleted() { 
-          return this.deleted != null && !this.deleted.isEmpty();
-        }
-
-        /**
-         * @param value {@link #deleted} (If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further information.)
-         */
-        public BundleEntryComponent setDeleted(BundleEntryDeletedComponent value) { 
-          this.deleted = value;
-          return this;
-        }
-
-        /**
          * @return {@link #resource} (The Resources for the entry.)
          */
         public Resource getResource() { 
@@ -716,281 +630,913 @@ public class Bundle extends Resource {
           return this;
         }
 
+        /**
+         * @return {@link #search} (Information about the search process that lead to the creation of this entry.)
+         */
+        public BundleEntrySearchComponent getSearch() { 
+          if (this.search == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryComponent.search");
+            else if (Configuration.doAutoCreate())
+              this.search = new BundleEntrySearchComponent(); // cc
+          return this.search;
+        }
+
+        public boolean hasSearch() { 
+          return this.search != null && !this.search.isEmpty();
+        }
+
+        /**
+         * @param value {@link #search} (Information about the search process that lead to the creation of this entry.)
+         */
+        public BundleEntryComponent setSearch(BundleEntrySearchComponent value) { 
+          this.search = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #transaction} (Additional information about how this entry should be processed as part of a transaction.)
+         */
+        public BundleEntryTransactionComponent getTransaction() { 
+          if (this.transaction == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryComponent.transaction");
+            else if (Configuration.doAutoCreate())
+              this.transaction = new BundleEntryTransactionComponent(); // cc
+          return this.transaction;
+        }
+
+        public boolean hasTransaction() { 
+          return this.transaction != null && !this.transaction.isEmpty();
+        }
+
+        /**
+         * @param value {@link #transaction} (Additional information about how this entry should be processed as part of a transaction.)
+         */
+        public BundleEntryComponent setTransaction(BundleEntryTransactionComponent value) { 
+          this.transaction = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #transactionResponse} (Additional information about how this entry should be processed as part of a transaction.)
+         */
+        public BundleEntryTransactionResponseComponent getTransactionResponse() { 
+          if (this.transactionResponse == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryComponent.transactionResponse");
+            else if (Configuration.doAutoCreate())
+              this.transactionResponse = new BundleEntryTransactionResponseComponent(); // cc
+          return this.transactionResponse;
+        }
+
+        public boolean hasTransactionResponse() { 
+          return this.transactionResponse != null && !this.transactionResponse.isEmpty();
+        }
+
+        /**
+         * @param value {@link #transactionResponse} (Additional information about how this entry should be processed as part of a transaction.)
+         */
+        public BundleEntryComponent setTransactionResponse(BundleEntryTransactionResponseComponent value) { 
+          this.transactionResponse = value;
+          return this;
+        }
+
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("base", "uri", "The Base URL for the resource, if different to the base URL specified for the bundle as a whole.", 0, java.lang.Integer.MAX_VALUE, base));
-          childrenList.add(new Property("status", "code", "The status of a resource in the bundle. Used for search (to differentiate between resources included as a match, and resources included as an _include), for history (deleted resources), and for transactions (create/update/delete).", 0, java.lang.Integer.MAX_VALUE, status));
-          childrenList.add(new Property("search", "uri", "Search URL for this resource when processing a transaction (see transaction documentation).", 0, java.lang.Integer.MAX_VALUE, search));
-          childrenList.add(new Property("score", "decimal", "When searching, the server's search ranking score for the entry.", 0, java.lang.Integer.MAX_VALUE, score));
-          childrenList.add(new Property("deleted", "", "If this is an entry that represents a deleted resource. Only used when the bundle is a transaction or a history type. See RESTful API documentation for further information.", 0, java.lang.Integer.MAX_VALUE, deleted));
           childrenList.add(new Property("resource", "Resource", "The Resources for the entry.", 0, java.lang.Integer.MAX_VALUE, resource));
+          childrenList.add(new Property("search", "", "Information about the search process that lead to the creation of this entry.", 0, java.lang.Integer.MAX_VALUE, search));
+          childrenList.add(new Property("transaction", "", "Additional information about how this entry should be processed as part of a transaction.", 0, java.lang.Integer.MAX_VALUE, transaction));
+          childrenList.add(new Property("transactionResponse", "", "Additional information about how this entry should be processed as part of a transaction.", 0, java.lang.Integer.MAX_VALUE, transactionResponse));
         }
 
       public BundleEntryComponent copy() {
         BundleEntryComponent dst = new BundleEntryComponent();
         copyValues(dst);
         dst.base = base == null ? null : base.copy();
-        dst.status = status == null ? null : status.copy();
-        dst.search = search == null ? null : search.copy();
-        dst.score = score == null ? null : score.copy();
-        dst.deleted = deleted == null ? null : deleted.copy();
         dst.resource = resource == null ? null : resource.copy();
+        dst.search = search == null ? null : search.copy();
+        dst.transaction = transaction == null ? null : transaction.copy();
+        dst.transactionResponse = transactionResponse == null ? null : transactionResponse.copy();
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof BundleEntryComponent))
+          return false;
+        BundleEntryComponent o = (BundleEntryComponent) other;
+        return compareDeep(base, o.base, true) && compareDeep(resource, o.resource, true) && compareDeep(search, o.search, true)
+           && compareDeep(transaction, o.transaction, true) && compareDeep(transactionResponse, o.transactionResponse, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof BundleEntryComponent))
+          return false;
+        BundleEntryComponent o = (BundleEntryComponent) other;
+        return compareValues(base, o.base, true);
+      }
+
       public boolean isEmpty() {
-        return super.isEmpty() && (base == null || base.isEmpty()) && (status == null || status.isEmpty())
-           && (search == null || search.isEmpty()) && (score == null || score.isEmpty()) && (deleted == null || deleted.isEmpty())
-           && (resource == null || resource.isEmpty());
+        return super.isEmpty() && (base == null || base.isEmpty()) && (resource == null || resource.isEmpty())
+           && (search == null || search.isEmpty()) && (transaction == null || transaction.isEmpty())
+           && (transactionResponse == null || transactionResponse.isEmpty());
       }
 
   }
 
     @Block()
-    public static class BundleEntryDeletedComponent extends BackboneElement {
+    public static class BundleEntrySearchComponent extends BackboneElement {
         /**
-         * The type of resource that was deleted (required to construct the identity).
+         * Why this entry is in the result set - whether it's included as a match or because of an _include requirement.
          */
-        @Child(name="type", type={CodeType.class}, order=1, min=1, max=1)
-        @Description(shortDefinition="Type of resource that was deleted", formalDefinition="The type of resource that was deleted (required to construct the identity)." )
-        protected CodeType type;
-
-        /**
-         * The id of the resource that was deleted.
-         */
-        @Child(name="resourceId", type={IdType.class}, order=2, min=1, max=1)
-        @Description(shortDefinition="Id of resource that was deleted", formalDefinition="The id of the resource that was deleted." )
-        protected IdType resourceId;
+        @Child(name="mode", type={CodeType.class}, order=1, min=0, max=1)
+        @Description(shortDefinition="match | include - why this is in the result set", formalDefinition="Why this entry is in the result set - whether it's included as a match or because of an _include requirement." )
+        protected Enumeration<SearchEntryMode> mode;
 
         /**
-         * Version id for releted resource.
+         * When searching, the server's search ranking score for the entry.
          */
-        @Child(name="versionId", type={IdType.class}, order=3, min=1, max=1)
-        @Description(shortDefinition="Version id for releted resource", formalDefinition="Version id for releted resource." )
-        protected IdType versionId;
+        @Child(name="score", type={DecimalType.class}, order=2, min=0, max=1)
+        @Description(shortDefinition="Search ranking (between 0 and 1)", formalDefinition="When searching, the server's search ranking score for the entry." )
+        protected DecimalType score;
 
-        /**
-         * The date/time that the resource was deleted.
-         */
-        @Child(name="instant", type={InstantType.class}, order=4, min=1, max=1)
-        @Description(shortDefinition="When the resource was deleted", formalDefinition="The date/time that the resource was deleted." )
-        protected InstantType instant;
+        private static final long serialVersionUID = 837739866L;
 
-        private static final long serialVersionUID = -1528107649L;
-
-      public BundleEntryDeletedComponent() {
+      public BundleEntrySearchComponent() {
         super();
       }
 
-      public BundleEntryDeletedComponent(CodeType type, IdType resourceId, IdType versionId, InstantType instant) {
-        super();
-        this.type = type;
-        this.resourceId = resourceId;
-        this.versionId = versionId;
-        this.instant = instant;
-      }
-
         /**
-         * @return {@link #type} (The type of resource that was deleted (required to construct the identity).). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
+         * @return {@link #mode} (Why this entry is in the result set - whether it's included as a match or because of an _include requirement.). This is the underlying object with id, value and extensions. The accessor "getMode" gives direct access to the value
          */
-        public CodeType getTypeElement() { 
-          if (this.type == null)
+        public Enumeration<SearchEntryMode> getModeElement() { 
+          if (this.mode == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create BundleEntryDeletedComponent.type");
+              throw new Error("Attempt to auto-create BundleEntrySearchComponent.mode");
             else if (Configuration.doAutoCreate())
-              this.type = new CodeType(); // bb
-          return this.type;
+              this.mode = new Enumeration<SearchEntryMode>(new SearchEntryModeEnumFactory()); // bb
+          return this.mode;
         }
 
-        public boolean hasTypeElement() { 
-          return this.type != null && !this.type.isEmpty();
+        public boolean hasModeElement() { 
+          return this.mode != null && !this.mode.isEmpty();
         }
 
-        public boolean hasType() { 
-          return this.type != null && !this.type.isEmpty();
+        public boolean hasMode() { 
+          return this.mode != null && !this.mode.isEmpty();
         }
 
         /**
-         * @param value {@link #type} (The type of resource that was deleted (required to construct the identity).). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
+         * @param value {@link #mode} (Why this entry is in the result set - whether it's included as a match or because of an _include requirement.). This is the underlying object with id, value and extensions. The accessor "getMode" gives direct access to the value
          */
-        public BundleEntryDeletedComponent setTypeElement(CodeType value) { 
-          this.type = value;
+        public BundleEntrySearchComponent setModeElement(Enumeration<SearchEntryMode> value) { 
+          this.mode = value;
           return this;
         }
 
         /**
-         * @return The type of resource that was deleted (required to construct the identity).
+         * @return Why this entry is in the result set - whether it's included as a match or because of an _include requirement.
          */
-        public String getType() { 
-          return this.type == null ? null : this.type.getValue();
+        public SearchEntryMode getMode() { 
+          return this.mode == null ? null : this.mode.getValue();
         }
 
         /**
-         * @param value The type of resource that was deleted (required to construct the identity).
+         * @param value Why this entry is in the result set - whether it's included as a match or because of an _include requirement.
          */
-        public BundleEntryDeletedComponent setType(String value) { 
-            if (this.type == null)
-              this.type = new CodeType();
-            this.type.setValue(value);
+        public BundleEntrySearchComponent setMode(SearchEntryMode value) { 
+          if (value == null)
+            this.mode = null;
+          else {
+            if (this.mode == null)
+              this.mode = new Enumeration<SearchEntryMode>(new SearchEntryModeEnumFactory());
+            this.mode.setValue(value);
+          }
           return this;
         }
 
         /**
-         * @return {@link #resourceId} (The id of the resource that was deleted.). This is the underlying object with id, value and extensions. The accessor "getResourceId" gives direct access to the value
+         * @return {@link #score} (When searching, the server's search ranking score for the entry.). This is the underlying object with id, value and extensions. The accessor "getScore" gives direct access to the value
          */
-        public IdType getResourceIdElement() { 
-          if (this.resourceId == null)
+        public DecimalType getScoreElement() { 
+          if (this.score == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create BundleEntryDeletedComponent.resourceId");
+              throw new Error("Attempt to auto-create BundleEntrySearchComponent.score");
             else if (Configuration.doAutoCreate())
-              this.resourceId = new IdType(); // bb
-          return this.resourceId;
+              this.score = new DecimalType(); // bb
+          return this.score;
         }
 
-        public boolean hasResourceIdElement() { 
-          return this.resourceId != null && !this.resourceId.isEmpty();
+        public boolean hasScoreElement() { 
+          return this.score != null && !this.score.isEmpty();
         }
 
-        public boolean hasResourceId() { 
-          return this.resourceId != null && !this.resourceId.isEmpty();
+        public boolean hasScore() { 
+          return this.score != null && !this.score.isEmpty();
         }
 
         /**
-         * @param value {@link #resourceId} (The id of the resource that was deleted.). This is the underlying object with id, value and extensions. The accessor "getResourceId" gives direct access to the value
+         * @param value {@link #score} (When searching, the server's search ranking score for the entry.). This is the underlying object with id, value and extensions. The accessor "getScore" gives direct access to the value
          */
-        public BundleEntryDeletedComponent setResourceIdElement(IdType value) { 
-          this.resourceId = value;
+        public BundleEntrySearchComponent setScoreElement(DecimalType value) { 
+          this.score = value;
           return this;
         }
 
         /**
-         * @return The id of the resource that was deleted.
+         * @return When searching, the server's search ranking score for the entry.
          */
-        public String getResourceId() { 
-          return this.resourceId == null ? null : this.resourceId.getValue();
+        public BigDecimal getScore() { 
+          return this.score == null ? null : this.score.getValue();
         }
 
         /**
-         * @param value The id of the resource that was deleted.
+         * @param value When searching, the server's search ranking score for the entry.
          */
-        public BundleEntryDeletedComponent setResourceId(String value) { 
-            if (this.resourceId == null)
-              this.resourceId = new IdType();
-            this.resourceId.setValue(value);
-          return this;
-        }
-
-        /**
-         * @return {@link #versionId} (Version id for releted resource.). This is the underlying object with id, value and extensions. The accessor "getVersionId" gives direct access to the value
-         */
-        public IdType getVersionIdElement() { 
-          if (this.versionId == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create BundleEntryDeletedComponent.versionId");
-            else if (Configuration.doAutoCreate())
-              this.versionId = new IdType(); // bb
-          return this.versionId;
-        }
-
-        public boolean hasVersionIdElement() { 
-          return this.versionId != null && !this.versionId.isEmpty();
-        }
-
-        public boolean hasVersionId() { 
-          return this.versionId != null && !this.versionId.isEmpty();
-        }
-
-        /**
-         * @param value {@link #versionId} (Version id for releted resource.). This is the underlying object with id, value and extensions. The accessor "getVersionId" gives direct access to the value
-         */
-        public BundleEntryDeletedComponent setVersionIdElement(IdType value) { 
-          this.versionId = value;
-          return this;
-        }
-
-        /**
-         * @return Version id for releted resource.
-         */
-        public String getVersionId() { 
-          return this.versionId == null ? null : this.versionId.getValue();
-        }
-
-        /**
-         * @param value Version id for releted resource.
-         */
-        public BundleEntryDeletedComponent setVersionId(String value) { 
-            if (this.versionId == null)
-              this.versionId = new IdType();
-            this.versionId.setValue(value);
-          return this;
-        }
-
-        /**
-         * @return {@link #instant} (The date/time that the resource was deleted.). This is the underlying object with id, value and extensions. The accessor "getInstant" gives direct access to the value
-         */
-        public InstantType getInstantElement() { 
-          if (this.instant == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create BundleEntryDeletedComponent.instant");
-            else if (Configuration.doAutoCreate())
-              this.instant = new InstantType(); // bb
-          return this.instant;
-        }
-
-        public boolean hasInstantElement() { 
-          return this.instant != null && !this.instant.isEmpty();
-        }
-
-        public boolean hasInstant() { 
-          return this.instant != null && !this.instant.isEmpty();
-        }
-
-        /**
-         * @param value {@link #instant} (The date/time that the resource was deleted.). This is the underlying object with id, value and extensions. The accessor "getInstant" gives direct access to the value
-         */
-        public BundleEntryDeletedComponent setInstantElement(InstantType value) { 
-          this.instant = value;
-          return this;
-        }
-
-        /**
-         * @return The date/time that the resource was deleted.
-         */
-        public Date getInstant() { 
-          return this.instant == null ? null : this.instant.getValue();
-        }
-
-        /**
-         * @param value The date/time that the resource was deleted.
-         */
-        public BundleEntryDeletedComponent setInstant(Date value) { 
-            if (this.instant == null)
-              this.instant = new InstantType();
-            this.instant.setValue(value);
+        public BundleEntrySearchComponent setScore(BigDecimal value) { 
+          if (value == null)
+            this.score = null;
+          else {
+            if (this.score == null)
+              this.score = new DecimalType();
+            this.score.setValue(value);
+          }
           return this;
         }
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("type", "code", "The type of resource that was deleted (required to construct the identity).", 0, java.lang.Integer.MAX_VALUE, type));
-          childrenList.add(new Property("resourceId", "id", "The id of the resource that was deleted.", 0, java.lang.Integer.MAX_VALUE, resourceId));
-          childrenList.add(new Property("versionId", "id", "Version id for releted resource.", 0, java.lang.Integer.MAX_VALUE, versionId));
-          childrenList.add(new Property("instant", "instant", "The date/time that the resource was deleted.", 0, java.lang.Integer.MAX_VALUE, instant));
+          childrenList.add(new Property("mode", "code", "Why this entry is in the result set - whether it's included as a match or because of an _include requirement.", 0, java.lang.Integer.MAX_VALUE, mode));
+          childrenList.add(new Property("score", "decimal", "When searching, the server's search ranking score for the entry.", 0, java.lang.Integer.MAX_VALUE, score));
         }
 
-      public BundleEntryDeletedComponent copy() {
-        BundleEntryDeletedComponent dst = new BundleEntryDeletedComponent();
+      public BundleEntrySearchComponent copy() {
+        BundleEntrySearchComponent dst = new BundleEntrySearchComponent();
         copyValues(dst);
-        dst.type = type == null ? null : type.copy();
-        dst.resourceId = resourceId == null ? null : resourceId.copy();
-        dst.versionId = versionId == null ? null : versionId.copy();
-        dst.instant = instant == null ? null : instant.copy();
+        dst.mode = mode == null ? null : mode.copy();
+        dst.score = score == null ? null : score.copy();
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof BundleEntrySearchComponent))
+          return false;
+        BundleEntrySearchComponent o = (BundleEntrySearchComponent) other;
+        return compareDeep(mode, o.mode, true) && compareDeep(score, o.score, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof BundleEntrySearchComponent))
+          return false;
+        BundleEntrySearchComponent o = (BundleEntrySearchComponent) other;
+        return compareValues(mode, o.mode, true) && compareValues(score, o.score, true);
+      }
+
       public boolean isEmpty() {
-        return super.isEmpty() && (type == null || type.isEmpty()) && (resourceId == null || resourceId.isEmpty())
-           && (versionId == null || versionId.isEmpty()) && (instant == null || instant.isEmpty());
+        return super.isEmpty() && (mode == null || mode.isEmpty()) && (score == null || score.isEmpty())
+          ;
+      }
+
+  }
+
+    @Block()
+    public static class BundleEntryTransactionComponent extends BackboneElement {
+        /**
+         * The HTTP verb for this entry in either a update history, or a transaction/ transaction response.
+         */
+        @Child(name="method", type={CodeType.class}, order=1, min=1, max=1)
+        @Description(shortDefinition="GET | POST | PUT | DELETE", formalDefinition="The HTTP verb for this entry in either a update history, or a transaction/ transaction response." )
+        protected Enumeration<HttpVerb> method;
+
+        /**
+         * A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).
+         */
+        @Child(name="url", type={UriType.class}, order=2, min=1, max=1)
+        @Description(shortDefinition="The URL for the transaction", formalDefinition="A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation)." )
+        protected UriType url;
+
+        /**
+         * If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation.
+         */
+        @Child(name="ifNoneMatch", type={StringType.class}, order=3, min=0, max=1)
+        @Description(shortDefinition="For managing cache currency", formalDefinition="If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation." )
+        protected StringType ifNoneMatch;
+
+        /**
+         * Only perform the operation if the Etag value matches. For more information, see the API section "Managing Resource Contention".
+         */
+        @Child(name="ifMatch", type={StringType.class}, order=4, min=0, max=1)
+        @Description(shortDefinition="For managing update contention", formalDefinition="Only perform the operation if the Etag value matches. For more information, see the API section 'Managing Resource Contention'." )
+        protected StringType ifMatch;
+
+        /**
+         * Only perform the operation if the last updated date matches. For more information, see the API section "Managing Resource Contention".
+         */
+        @Child(name="ifModifiedSince", type={StringType.class}, order=5, min=0, max=1)
+        @Description(shortDefinition="For managing update contention", formalDefinition="Only perform the operation if the last updated date matches. For more information, see the API section 'Managing Resource Contention'." )
+        protected StringType ifModifiedSince;
+
+        /**
+         * Instruct the server not to perform the create if a specified resource already exists. For further information, see "Conditional Create".
+         */
+        @Child(name="ifNoneExist", type={StringType.class}, order=6, min=0, max=1)
+        @Description(shortDefinition="For conditional creates", formalDefinition="Instruct the server not to perform the create if a specified resource already exists. For further information, see 'Conditional Create'." )
+        protected StringType ifNoneExist;
+
+        private static final long serialVersionUID = 1494764694L;
+
+      public BundleEntryTransactionComponent() {
+        super();
+      }
+
+      public BundleEntryTransactionComponent(Enumeration<HttpVerb> method, UriType url) {
+        super();
+        this.method = method;
+        this.url = url;
+      }
+
+        /**
+         * @return {@link #method} (The HTTP verb for this entry in either a update history, or a transaction/ transaction response.). This is the underlying object with id, value and extensions. The accessor "getMethod" gives direct access to the value
+         */
+        public Enumeration<HttpVerb> getMethodElement() { 
+          if (this.method == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryTransactionComponent.method");
+            else if (Configuration.doAutoCreate())
+              this.method = new Enumeration<HttpVerb>(new HttpVerbEnumFactory()); // bb
+          return this.method;
+        }
+
+        public boolean hasMethodElement() { 
+          return this.method != null && !this.method.isEmpty();
+        }
+
+        public boolean hasMethod() { 
+          return this.method != null && !this.method.isEmpty();
+        }
+
+        /**
+         * @param value {@link #method} (The HTTP verb for this entry in either a update history, or a transaction/ transaction response.). This is the underlying object with id, value and extensions. The accessor "getMethod" gives direct access to the value
+         */
+        public BundleEntryTransactionComponent setMethodElement(Enumeration<HttpVerb> value) { 
+          this.method = value;
+          return this;
+        }
+
+        /**
+         * @return The HTTP verb for this entry in either a update history, or a transaction/ transaction response.
+         */
+        public HttpVerb getMethod() { 
+          return this.method == null ? null : this.method.getValue();
+        }
+
+        /**
+         * @param value The HTTP verb for this entry in either a update history, or a transaction/ transaction response.
+         */
+        public BundleEntryTransactionComponent setMethod(HttpVerb value) { 
+            if (this.method == null)
+              this.method = new Enumeration<HttpVerb>(new HttpVerbEnumFactory());
+            this.method.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #url} (A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+         */
+        public UriType getUrlElement() { 
+          if (this.url == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryTransactionComponent.url");
+            else if (Configuration.doAutoCreate())
+              this.url = new UriType(); // bb
+          return this.url;
+        }
+
+        public boolean hasUrlElement() { 
+          return this.url != null && !this.url.isEmpty();
+        }
+
+        public boolean hasUrl() { 
+          return this.url != null && !this.url.isEmpty();
+        }
+
+        /**
+         * @param value {@link #url} (A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+         */
+        public BundleEntryTransactionComponent setUrlElement(UriType value) { 
+          this.url = value;
+          return this;
+        }
+
+        /**
+         * @return A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).
+         */
+        public String getUrl() { 
+          return this.url == null ? null : this.url.getValue();
+        }
+
+        /**
+         * @param value A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).
+         */
+        public BundleEntryTransactionComponent setUrl(String value) { 
+            if (this.url == null)
+              this.url = new UriType();
+            this.url.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #ifNoneMatch} (If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation.). This is the underlying object with id, value and extensions. The accessor "getIfNoneMatch" gives direct access to the value
+         */
+        public StringType getIfNoneMatchElement() { 
+          if (this.ifNoneMatch == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryTransactionComponent.ifNoneMatch");
+            else if (Configuration.doAutoCreate())
+              this.ifNoneMatch = new StringType(); // bb
+          return this.ifNoneMatch;
+        }
+
+        public boolean hasIfNoneMatchElement() { 
+          return this.ifNoneMatch != null && !this.ifNoneMatch.isEmpty();
+        }
+
+        public boolean hasIfNoneMatch() { 
+          return this.ifNoneMatch != null && !this.ifNoneMatch.isEmpty();
+        }
+
+        /**
+         * @param value {@link #ifNoneMatch} (If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation.). This is the underlying object with id, value and extensions. The accessor "getIfNoneMatch" gives direct access to the value
+         */
+        public BundleEntryTransactionComponent setIfNoneMatchElement(StringType value) { 
+          this.ifNoneMatch = value;
+          return this;
+        }
+
+        /**
+         * @return If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation.
+         */
+        public String getIfNoneMatch() { 
+          return this.ifNoneMatch == null ? null : this.ifNoneMatch.getValue();
+        }
+
+        /**
+         * @param value If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation.
+         */
+        public BundleEntryTransactionComponent setIfNoneMatch(String value) { 
+          if (Utilities.noString(value))
+            this.ifNoneMatch = null;
+          else {
+            if (this.ifNoneMatch == null)
+              this.ifNoneMatch = new StringType();
+            this.ifNoneMatch.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #ifMatch} (Only perform the operation if the Etag value matches. For more information, see the API section "Managing Resource Contention".). This is the underlying object with id, value and extensions. The accessor "getIfMatch" gives direct access to the value
+         */
+        public StringType getIfMatchElement() { 
+          if (this.ifMatch == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryTransactionComponent.ifMatch");
+            else if (Configuration.doAutoCreate())
+              this.ifMatch = new StringType(); // bb
+          return this.ifMatch;
+        }
+
+        public boolean hasIfMatchElement() { 
+          return this.ifMatch != null && !this.ifMatch.isEmpty();
+        }
+
+        public boolean hasIfMatch() { 
+          return this.ifMatch != null && !this.ifMatch.isEmpty();
+        }
+
+        /**
+         * @param value {@link #ifMatch} (Only perform the operation if the Etag value matches. For more information, see the API section "Managing Resource Contention".). This is the underlying object with id, value and extensions. The accessor "getIfMatch" gives direct access to the value
+         */
+        public BundleEntryTransactionComponent setIfMatchElement(StringType value) { 
+          this.ifMatch = value;
+          return this;
+        }
+
+        /**
+         * @return Only perform the operation if the Etag value matches. For more information, see the API section "Managing Resource Contention".
+         */
+        public String getIfMatch() { 
+          return this.ifMatch == null ? null : this.ifMatch.getValue();
+        }
+
+        /**
+         * @param value Only perform the operation if the Etag value matches. For more information, see the API section "Managing Resource Contention".
+         */
+        public BundleEntryTransactionComponent setIfMatch(String value) { 
+          if (Utilities.noString(value))
+            this.ifMatch = null;
+          else {
+            if (this.ifMatch == null)
+              this.ifMatch = new StringType();
+            this.ifMatch.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #ifModifiedSince} (Only perform the operation if the last updated date matches. For more information, see the API section "Managing Resource Contention".). This is the underlying object with id, value and extensions. The accessor "getIfModifiedSince" gives direct access to the value
+         */
+        public StringType getIfModifiedSinceElement() { 
+          if (this.ifModifiedSince == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryTransactionComponent.ifModifiedSince");
+            else if (Configuration.doAutoCreate())
+              this.ifModifiedSince = new StringType(); // bb
+          return this.ifModifiedSince;
+        }
+
+        public boolean hasIfModifiedSinceElement() { 
+          return this.ifModifiedSince != null && !this.ifModifiedSince.isEmpty();
+        }
+
+        public boolean hasIfModifiedSince() { 
+          return this.ifModifiedSince != null && !this.ifModifiedSince.isEmpty();
+        }
+
+        /**
+         * @param value {@link #ifModifiedSince} (Only perform the operation if the last updated date matches. For more information, see the API section "Managing Resource Contention".). This is the underlying object with id, value and extensions. The accessor "getIfModifiedSince" gives direct access to the value
+         */
+        public BundleEntryTransactionComponent setIfModifiedSinceElement(StringType value) { 
+          this.ifModifiedSince = value;
+          return this;
+        }
+
+        /**
+         * @return Only perform the operation if the last updated date matches. For more information, see the API section "Managing Resource Contention".
+         */
+        public String getIfModifiedSince() { 
+          return this.ifModifiedSince == null ? null : this.ifModifiedSince.getValue();
+        }
+
+        /**
+         * @param value Only perform the operation if the last updated date matches. For more information, see the API section "Managing Resource Contention".
+         */
+        public BundleEntryTransactionComponent setIfModifiedSince(String value) { 
+          if (Utilities.noString(value))
+            this.ifModifiedSince = null;
+          else {
+            if (this.ifModifiedSince == null)
+              this.ifModifiedSince = new StringType();
+            this.ifModifiedSince.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #ifNoneExist} (Instruct the server not to perform the create if a specified resource already exists. For further information, see "Conditional Create".). This is the underlying object with id, value and extensions. The accessor "getIfNoneExist" gives direct access to the value
+         */
+        public StringType getIfNoneExistElement() { 
+          if (this.ifNoneExist == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryTransactionComponent.ifNoneExist");
+            else if (Configuration.doAutoCreate())
+              this.ifNoneExist = new StringType(); // bb
+          return this.ifNoneExist;
+        }
+
+        public boolean hasIfNoneExistElement() { 
+          return this.ifNoneExist != null && !this.ifNoneExist.isEmpty();
+        }
+
+        public boolean hasIfNoneExist() { 
+          return this.ifNoneExist != null && !this.ifNoneExist.isEmpty();
+        }
+
+        /**
+         * @param value {@link #ifNoneExist} (Instruct the server not to perform the create if a specified resource already exists. For further information, see "Conditional Create".). This is the underlying object with id, value and extensions. The accessor "getIfNoneExist" gives direct access to the value
+         */
+        public BundleEntryTransactionComponent setIfNoneExistElement(StringType value) { 
+          this.ifNoneExist = value;
+          return this;
+        }
+
+        /**
+         * @return Instruct the server not to perform the create if a specified resource already exists. For further information, see "Conditional Create".
+         */
+        public String getIfNoneExist() { 
+          return this.ifNoneExist == null ? null : this.ifNoneExist.getValue();
+        }
+
+        /**
+         * @param value Instruct the server not to perform the create if a specified resource already exists. For further information, see "Conditional Create".
+         */
+        public BundleEntryTransactionComponent setIfNoneExist(String value) { 
+          if (Utilities.noString(value))
+            this.ifNoneExist = null;
+          else {
+            if (this.ifNoneExist == null)
+              this.ifNoneExist = new StringType();
+            this.ifNoneExist.setValue(value);
+          }
+          return this;
+        }
+
+        protected void listChildren(List<Property> childrenList) {
+          super.listChildren(childrenList);
+          childrenList.add(new Property("method", "code", "The HTTP verb for this entry in either a update history, or a transaction/ transaction response.", 0, java.lang.Integer.MAX_VALUE, method));
+          childrenList.add(new Property("url", "uri", "A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).", 0, java.lang.Integer.MAX_VALUE, url));
+          childrenList.add(new Property("ifNoneMatch", "string", "If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation.", 0, java.lang.Integer.MAX_VALUE, ifNoneMatch));
+          childrenList.add(new Property("ifMatch", "string", "Only perform the operation if the Etag value matches. For more information, see the API section 'Managing Resource Contention'.", 0, java.lang.Integer.MAX_VALUE, ifMatch));
+          childrenList.add(new Property("ifModifiedSince", "string", "Only perform the operation if the last updated date matches. For more information, see the API section 'Managing Resource Contention'.", 0, java.lang.Integer.MAX_VALUE, ifModifiedSince));
+          childrenList.add(new Property("ifNoneExist", "string", "Instruct the server not to perform the create if a specified resource already exists. For further information, see 'Conditional Create'.", 0, java.lang.Integer.MAX_VALUE, ifNoneExist));
+        }
+
+      public BundleEntryTransactionComponent copy() {
+        BundleEntryTransactionComponent dst = new BundleEntryTransactionComponent();
+        copyValues(dst);
+        dst.method = method == null ? null : method.copy();
+        dst.url = url == null ? null : url.copy();
+        dst.ifNoneMatch = ifNoneMatch == null ? null : ifNoneMatch.copy();
+        dst.ifMatch = ifMatch == null ? null : ifMatch.copy();
+        dst.ifModifiedSince = ifModifiedSince == null ? null : ifModifiedSince.copy();
+        dst.ifNoneExist = ifNoneExist == null ? null : ifNoneExist.copy();
+        return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof BundleEntryTransactionComponent))
+          return false;
+        BundleEntryTransactionComponent o = (BundleEntryTransactionComponent) other;
+        return compareDeep(method, o.method, true) && compareDeep(url, o.url, true) && compareDeep(ifNoneMatch, o.ifNoneMatch, true)
+           && compareDeep(ifMatch, o.ifMatch, true) && compareDeep(ifModifiedSince, o.ifModifiedSince, true)
+           && compareDeep(ifNoneExist, o.ifNoneExist, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof BundleEntryTransactionComponent))
+          return false;
+        BundleEntryTransactionComponent o = (BundleEntryTransactionComponent) other;
+        return compareValues(method, o.method, true) && compareValues(url, o.url, true) && compareValues(ifNoneMatch, o.ifNoneMatch, true)
+           && compareValues(ifMatch, o.ifMatch, true) && compareValues(ifModifiedSince, o.ifModifiedSince, true)
+           && compareValues(ifNoneExist, o.ifNoneExist, true);
+      }
+
+      public boolean isEmpty() {
+        return super.isEmpty() && (method == null || method.isEmpty()) && (url == null || url.isEmpty())
+           && (ifNoneMatch == null || ifNoneMatch.isEmpty()) && (ifMatch == null || ifMatch.isEmpty())
+           && (ifModifiedSince == null || ifModifiedSince.isEmpty()) && (ifNoneExist == null || ifNoneExist.isEmpty())
+          ;
+      }
+
+  }
+
+    @Block()
+    public static class BundleEntryTransactionResponseComponent extends BackboneElement {
+        /**
+         * The status code returned by processing this entry.
+         */
+        @Child(name="status", type={StringType.class}, order=1, min=1, max=1)
+        @Description(shortDefinition="Status return code for entry", formalDefinition="The status code returned by processing this entry." )
+        protected StringType status;
+
+        /**
+         * The location header created by processing this operation.
+         */
+        @Child(name="location", type={UriType.class}, order=2, min=0, max=1)
+        @Description(shortDefinition="The location, if the operation returns a location", formalDefinition="The location header created by processing this operation." )
+        protected UriType location;
+
+        /**
+         * The etag for the resource, it the operation for the entry produced a versioned resource.
+         */
+        @Child(name="etag", type={StringType.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
+        @Description(shortDefinition="The etag for the resource (if relevant)", formalDefinition="The etag for the resource, it the operation for the entry produced a versioned resource." )
+        protected List<StringType> etag;
+
+        private static final long serialVersionUID = -1512370306L;
+
+      public BundleEntryTransactionResponseComponent() {
+        super();
+      }
+
+      public BundleEntryTransactionResponseComponent(StringType status) {
+        super();
+        this.status = status;
+      }
+
+        /**
+         * @return {@link #status} (The status code returned by processing this entry.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
+         */
+        public StringType getStatusElement() { 
+          if (this.status == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryTransactionResponseComponent.status");
+            else if (Configuration.doAutoCreate())
+              this.status = new StringType(); // bb
+          return this.status;
+        }
+
+        public boolean hasStatusElement() { 
+          return this.status != null && !this.status.isEmpty();
+        }
+
+        public boolean hasStatus() { 
+          return this.status != null && !this.status.isEmpty();
+        }
+
+        /**
+         * @param value {@link #status} (The status code returned by processing this entry.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
+         */
+        public BundleEntryTransactionResponseComponent setStatusElement(StringType value) { 
+          this.status = value;
+          return this;
+        }
+
+        /**
+         * @return The status code returned by processing this entry.
+         */
+        public String getStatus() { 
+          return this.status == null ? null : this.status.getValue();
+        }
+
+        /**
+         * @param value The status code returned by processing this entry.
+         */
+        public BundleEntryTransactionResponseComponent setStatus(String value) { 
+            if (this.status == null)
+              this.status = new StringType();
+            this.status.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #location} (The location header created by processing this operation.). This is the underlying object with id, value and extensions. The accessor "getLocation" gives direct access to the value
+         */
+        public UriType getLocationElement() { 
+          if (this.location == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create BundleEntryTransactionResponseComponent.location");
+            else if (Configuration.doAutoCreate())
+              this.location = new UriType(); // bb
+          return this.location;
+        }
+
+        public boolean hasLocationElement() { 
+          return this.location != null && !this.location.isEmpty();
+        }
+
+        public boolean hasLocation() { 
+          return this.location != null && !this.location.isEmpty();
+        }
+
+        /**
+         * @param value {@link #location} (The location header created by processing this operation.). This is the underlying object with id, value and extensions. The accessor "getLocation" gives direct access to the value
+         */
+        public BundleEntryTransactionResponseComponent setLocationElement(UriType value) { 
+          this.location = value;
+          return this;
+        }
+
+        /**
+         * @return The location header created by processing this operation.
+         */
+        public String getLocation() { 
+          return this.location == null ? null : this.location.getValue();
+        }
+
+        /**
+         * @param value The location header created by processing this operation.
+         */
+        public BundleEntryTransactionResponseComponent setLocation(String value) { 
+          if (Utilities.noString(value))
+            this.location = null;
+          else {
+            if (this.location == null)
+              this.location = new UriType();
+            this.location.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #etag} (The etag for the resource, it the operation for the entry produced a versioned resource.)
+         */
+        public List<StringType> getEtag() { 
+          if (this.etag == null)
+            this.etag = new ArrayList<StringType>();
+          return this.etag;
+        }
+
+        public boolean hasEtag() { 
+          if (this.etag == null)
+            return false;
+          for (StringType item : this.etag)
+            if (!item.isEmpty())
+              return true;
+          return false;
+        }
+
+        /**
+         * @return {@link #etag} (The etag for the resource, it the operation for the entry produced a versioned resource.)
+         */
+    // syntactic sugar
+        public StringType addEtagElement() {//2 
+          StringType t = new StringType();
+          if (this.etag == null)
+            this.etag = new ArrayList<StringType>();
+          this.etag.add(t);
+          return t;
+        }
+
+        /**
+         * @param value {@link #etag} (The etag for the resource, it the operation for the entry produced a versioned resource.)
+         */
+        public BundleEntryTransactionResponseComponent addEtag(String value) { //1
+          StringType t = new StringType();
+          t.setValue(value);
+          if (this.etag == null)
+            this.etag = new ArrayList<StringType>();
+          this.etag.add(t);
+          return this;
+        }
+
+        /**
+         * @param value {@link #etag} (The etag for the resource, it the operation for the entry produced a versioned resource.)
+         */
+        public boolean hasEtag(String value) { 
+          if (this.etag == null)
+            return false;
+          for (StringType v : this.etag)
+            if (v.equals(value)) // string
+              return true;
+          return false;
+        }
+
+        protected void listChildren(List<Property> childrenList) {
+          super.listChildren(childrenList);
+          childrenList.add(new Property("status", "string", "The status code returned by processing this entry.", 0, java.lang.Integer.MAX_VALUE, status));
+          childrenList.add(new Property("location", "uri", "The location header created by processing this operation.", 0, java.lang.Integer.MAX_VALUE, location));
+          childrenList.add(new Property("etag", "string", "The etag for the resource, it the operation for the entry produced a versioned resource.", 0, java.lang.Integer.MAX_VALUE, etag));
+        }
+
+      public BundleEntryTransactionResponseComponent copy() {
+        BundleEntryTransactionResponseComponent dst = new BundleEntryTransactionResponseComponent();
+        copyValues(dst);
+        dst.status = status == null ? null : status.copy();
+        dst.location = location == null ? null : location.copy();
+        if (etag != null) {
+          dst.etag = new ArrayList<StringType>();
+          for (StringType i : etag)
+            dst.etag.add(i.copy());
+        };
+        return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof BundleEntryTransactionResponseComponent))
+          return false;
+        BundleEntryTransactionResponseComponent o = (BundleEntryTransactionResponseComponent) other;
+        return compareDeep(status, o.status, true) && compareDeep(location, o.location, true) && compareDeep(etag, o.etag, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof BundleEntryTransactionResponseComponent))
+          return false;
+        BundleEntryTransactionResponseComponent o = (BundleEntryTransactionResponseComponent) other;
+        return compareValues(status, o.status, true) && compareValues(location, o.location, true) && compareValues(etag, o.etag, true)
+          ;
+      }
+
+      public boolean isEmpty() {
+        return super.isEmpty() && (status == null || status.isEmpty()) && (location == null || location.isEmpty())
+           && (etag == null || etag.isEmpty());
       }
 
   }
@@ -1024,10 +1570,10 @@ public class Bundle extends Resource {
     protected List<BundleLinkComponent> link;
 
     /**
-     * An entry in a bundle resource - will either contain a resource, or a deleted entry (transaction and history bundles only).
+     * An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).
      */
     @Child(name="entry", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="Entry in the bundle - will have deleted or resource", formalDefinition="An entry in a bundle resource - will either contain a resource, or a deleted entry (transaction and history bundles only)." )
+    @Description(shortDefinition="Entry in the bundle - will have a resource, or information", formalDefinition="An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only)." )
     protected List<BundleEntryComponent> entry;
 
     /**
@@ -1174,20 +1720,16 @@ public class Bundle extends Resource {
      * @return If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle).
      */
     public int getTotal() { 
-      return this.total == null ? null : this.total.getValue();
+      return this.total == null ? 0 : this.total.getValue();
     }
 
     /**
      * @param value If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle).
      */
     public Bundle setTotal(int value) { 
-      if (value == -1)
-        this.total = null;
-      else {
         if (this.total == null)
           this.total = new IntegerType();
         this.total.setValue(value);
-      }
       return this;
     }
 
@@ -1222,7 +1764,7 @@ public class Bundle extends Resource {
     }
 
     /**
-     * @return {@link #entry} (An entry in a bundle resource - will either contain a resource, or a deleted entry (transaction and history bundles only).)
+     * @return {@link #entry} (An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).)
      */
     public List<BundleEntryComponent> getEntry() { 
       if (this.entry == null)
@@ -1240,7 +1782,7 @@ public class Bundle extends Resource {
     }
 
     /**
-     * @return {@link #entry} (An entry in a bundle resource - will either contain a resource, or a deleted entry (transaction and history bundles only).)
+     * @return {@link #entry} (An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).)
      */
     // syntactic sugar
     public BundleEntryComponent addEntry() { //3
@@ -1306,7 +1848,7 @@ public class Bundle extends Resource {
         childrenList.add(new Property("base", "uri", "The base URL for the service that provided these resources. All relative URLs are relative to this one (equivalent to xml:base).", 0, java.lang.Integer.MAX_VALUE, base));
         childrenList.add(new Property("total", "integer", "If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle).", 0, java.lang.Integer.MAX_VALUE, total));
         childrenList.add(new Property("link", "", "A series of links that provide context to this bundle.", 0, java.lang.Integer.MAX_VALUE, link));
-        childrenList.add(new Property("entry", "", "An entry in a bundle resource - will either contain a resource, or a deleted entry (transaction and history bundles only).", 0, java.lang.Integer.MAX_VALUE, entry));
+        childrenList.add(new Property("entry", "", "An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).", 0, java.lang.Integer.MAX_VALUE, entry));
         childrenList.add(new Property("signature", "base64Binary", "XML Digital Signature - base64 encoded.", 0, java.lang.Integer.MAX_VALUE, signature));
       }
 
@@ -1332,6 +1874,29 @@ public class Bundle extends Resource {
 
       protected Bundle typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Bundle))
+          return false;
+        Bundle o = (Bundle) other;
+        return compareDeep(type, o.type, true) && compareDeep(base, o.base, true) && compareDeep(total, o.total, true)
+           && compareDeep(link, o.link, true) && compareDeep(entry, o.entry, true) && compareDeep(signature, o.signature, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Bundle))
+          return false;
+        Bundle o = (Bundle) other;
+        return compareValues(type, o.type, true) && compareValues(base, o.base, true) && compareValues(total, o.total, true)
+           && compareValues(signature, o.signature, true);
       }
 
       public boolean isEmpty() {

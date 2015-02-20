@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -457,20 +457,16 @@ public class Timing extends Type {
          * @return Indicates how often the event should occur.
          */
         public int getFrequency() { 
-          return this.frequency == null ? null : this.frequency.getValue();
+          return this.frequency == null ? 0 : this.frequency.getValue();
         }
 
         /**
          * @param value Indicates how often the event should occur.
          */
         public TimingRepeatComponent setFrequency(int value) { 
-          if (value == -1)
-            this.frequency = null;
-          else {
             if (this.frequency == null)
               this.frequency = new IntegerType();
             this.frequency.setValue(value);
-          }
           return this;
         }
 
@@ -645,20 +641,16 @@ public class Timing extends Type {
          * @return A total count of the desired number of repetitions.
          */
         public int getCount() { 
-          return this.count == null ? null : this.count.getValue();
+          return this.count == null ? 0 : this.count.getValue();
         }
 
         /**
          * @param value A total count of the desired number of repetitions.
          */
         public TimingRepeatComponent setCount(int value) { 
-          if (value == -1)
-            this.count = null;
-          else {
             if (this.count == null)
               this.count = new IntegerType();
             this.count.setValue(value);
-          }
           return this;
         }
 
@@ -731,6 +723,30 @@ public class Timing extends Type {
         dst.count = count == null ? null : count.copy();
         dst.end = end == null ? null : end.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof TimingRepeatComponent))
+          return false;
+        TimingRepeatComponent o = (TimingRepeatComponent) other;
+        return compareDeep(frequency, o.frequency, true) && compareDeep(when, o.when, true) && compareDeep(duration, o.duration, true)
+           && compareDeep(units, o.units, true) && compareDeep(count, o.count, true) && compareDeep(end, o.end, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof TimingRepeatComponent))
+          return false;
+        TimingRepeatComponent o = (TimingRepeatComponent) other;
+        return compareValues(frequency, o.frequency, true) && compareValues(when, o.when, true) && compareValues(duration, o.duration, true)
+           && compareValues(units, o.units, true) && compareValues(count, o.count, true) && compareValues(end, o.end, true)
+          ;
       }
 
       public boolean isEmpty() {
@@ -835,6 +851,26 @@ public class Timing extends Type {
 
       protected Timing typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Timing))
+          return false;
+        Timing o = (Timing) other;
+        return compareDeep(event, o.event, true) && compareDeep(repeat, o.repeat, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Timing))
+          return false;
+        Timing o = (Timing) other;
+        return true;
       }
 
       public boolean isEmpty() {

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -95,7 +95,7 @@ public class DiagnosticOrder extends DomainResource {
           return RECEIVED;
         if ("accepted".equals(codeString))
           return ACCEPTED;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return INPROGRESS;
         if ("review".equals(codeString))
           return REVIEW;
@@ -114,7 +114,7 @@ public class DiagnosticOrder extends DomainResource {
             case REQUESTED: return "requested";
             case RECEIVED: return "received";
             case ACCEPTED: return "accepted";
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case REVIEW: return "review";
             case COMPLETED: return "completed";
             case SUSPENDED: return "suspended";
@@ -156,7 +156,7 @@ public class DiagnosticOrder extends DomainResource {
             case REQUESTED: return "requested";
             case RECEIVED: return "received";
             case ACCEPTED: return "accepted";
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case REVIEW: return "review";
             case COMPLETED: return "completed";
             case SUSPENDED: return "suspended";
@@ -178,7 +178,7 @@ public class DiagnosticOrder extends DomainResource {
           return DiagnosticOrderStatus.RECEIVED;
         if ("accepted".equals(codeString))
           return DiagnosticOrderStatus.ACCEPTED;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return DiagnosticOrderStatus.INPROGRESS;
         if ("review".equals(codeString))
           return DiagnosticOrderStatus.REVIEW;
@@ -200,7 +200,7 @@ public class DiagnosticOrder extends DomainResource {
       if (code == DiagnosticOrderStatus.ACCEPTED)
         return "accepted";
       if (code == DiagnosticOrderStatus.INPROGRESS)
-        return "in progress";
+        return "in-progress";
       if (code == DiagnosticOrderStatus.REVIEW)
         return "review";
       if (code == DiagnosticOrderStatus.COMPLETED)
@@ -321,7 +321,7 @@ public class DiagnosticOrder extends DomainResource {
          * The status for the event.
          */
         @Child(name="status", type={CodeType.class}, order=1, min=1, max=1)
-        @Description(shortDefinition="requested | received | accepted | in progress | review | completed | suspended | rejected | failed", formalDefinition="The status for the event." )
+        @Description(shortDefinition="requested | received | accepted | in-progress | review | completed | suspended | rejected | failed", formalDefinition="The status for the event." )
         protected Enumeration<DiagnosticOrderStatus> status;
 
         /**
@@ -533,6 +533,27 @@ public class DiagnosticOrder extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof DiagnosticOrderEventComponent))
+          return false;
+        DiagnosticOrderEventComponent o = (DiagnosticOrderEventComponent) other;
+        return compareDeep(status, o.status, true) && compareDeep(description, o.description, true) && compareDeep(dateTime, o.dateTime, true)
+           && compareDeep(actor, o.actor, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof DiagnosticOrderEventComponent))
+          return false;
+        DiagnosticOrderEventComponent o = (DiagnosticOrderEventComponent) other;
+        return compareValues(status, o.status, true) && compareValues(dateTime, o.dateTime, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (status == null || status.isEmpty()) && (description == null || description.isEmpty())
            && (dateTime == null || dateTime.isEmpty()) && (actor == null || actor.isEmpty());
@@ -564,15 +585,15 @@ public class DiagnosticOrder extends DomainResource {
         /**
          * Anatomical location where the request test should be performed.
          */
-        @Child(name="bodySite", type={CodeableConcept.class}, order=3, min=0, max=1)
+        @Child(name="bodySite", type={CodeableConcept.class, BodySite.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Location of requested test (if applicable)", formalDefinition="Anatomical location where the request test should be performed." )
-        protected CodeableConcept bodySite;
+        protected Type bodySite;
 
         /**
          * The status of this individual item within the order.
          */
         @Child(name="status", type={CodeType.class}, order=4, min=0, max=1)
-        @Description(shortDefinition="requested | received | accepted | in progress | review | completed | suspended | rejected | failed", formalDefinition="The status of this individual item within the order." )
+        @Description(shortDefinition="requested | received | accepted | in-progress | review | completed | suspended | rejected | failed", formalDefinition="The status of this individual item within the order." )
         protected Enumeration<DiagnosticOrderStatus> status;
 
         /**
@@ -582,7 +603,7 @@ public class DiagnosticOrder extends DomainResource {
         @Description(shortDefinition="Events specific to this item", formalDefinition="A summary of the events of interest that have occurred as this item of the request is processed." )
         protected List<DiagnosticOrderEventComponent> event;
 
-        private static final long serialVersionUID = 381238192L;
+        private static final long serialVersionUID = 1960490281L;
 
       public DiagnosticOrderItemComponent() {
         super();
@@ -671,13 +692,26 @@ public class DiagnosticOrder extends DomainResource {
         /**
          * @return {@link #bodySite} (Anatomical location where the request test should be performed.)
          */
-        public CodeableConcept getBodySite() { 
-          if (this.bodySite == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create DiagnosticOrderItemComponent.bodySite");
-            else if (Configuration.doAutoCreate())
-              this.bodySite = new CodeableConcept(); // cc
+        public Type getBodySite() { 
           return this.bodySite;
+        }
+
+        /**
+         * @return {@link #bodySite} (Anatomical location where the request test should be performed.)
+         */
+        public CodeableConcept getBodySiteCodeableConcept() throws Exception { 
+          if (!(this.bodySite instanceof CodeableConcept))
+            throw new Exception("Type mismatch: the type CodeableConcept was expected, but "+this.bodySite.getClass().getName()+" was encountered");
+          return (CodeableConcept) this.bodySite;
+        }
+
+        /**
+         * @return {@link #bodySite} (Anatomical location where the request test should be performed.)
+         */
+        public Reference getBodySiteReference() throws Exception { 
+          if (!(this.bodySite instanceof Reference))
+            throw new Exception("Type mismatch: the type Reference was expected, but "+this.bodySite.getClass().getName()+" was encountered");
+          return (Reference) this.bodySite;
         }
 
         public boolean hasBodySite() { 
@@ -687,7 +721,7 @@ public class DiagnosticOrder extends DomainResource {
         /**
          * @param value {@link #bodySite} (Anatomical location where the request test should be performed.)
          */
-        public DiagnosticOrderItemComponent setBodySite(CodeableConcept value) { 
+        public DiagnosticOrderItemComponent setBodySite(Type value) { 
           this.bodySite = value;
           return this;
         }
@@ -775,7 +809,7 @@ public class DiagnosticOrder extends DomainResource {
           super.listChildren(childrenList);
           childrenList.add(new Property("code", "CodeableConcept", "A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested.", 0, java.lang.Integer.MAX_VALUE, code));
           childrenList.add(new Property("specimen", "Reference(Specimen)", "If the item is related to a specific specimen.", 0, java.lang.Integer.MAX_VALUE, specimen));
-          childrenList.add(new Property("bodySite", "CodeableConcept", "Anatomical location where the request test should be performed.", 0, java.lang.Integer.MAX_VALUE, bodySite));
+          childrenList.add(new Property("bodySite[x]", "CodeableConcept|Reference(BodySite)", "Anatomical location where the request test should be performed.", 0, java.lang.Integer.MAX_VALUE, bodySite));
           childrenList.add(new Property("status", "code", "The status of this individual item within the order.", 0, java.lang.Integer.MAX_VALUE, status));
           childrenList.add(new Property("event", "@DiagnosticOrder.event", "A summary of the events of interest that have occurred as this item of the request is processed.", 0, java.lang.Integer.MAX_VALUE, event));
         }
@@ -797,6 +831,27 @@ public class DiagnosticOrder extends DomainResource {
             dst.event.add(i.copy());
         };
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof DiagnosticOrderItemComponent))
+          return false;
+        DiagnosticOrderItemComponent o = (DiagnosticOrderItemComponent) other;
+        return compareDeep(code, o.code, true) && compareDeep(specimen, o.specimen, true) && compareDeep(bodySite, o.bodySite, true)
+           && compareDeep(status, o.status, true) && compareDeep(event, o.event, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof DiagnosticOrderItemComponent))
+          return false;
+        DiagnosticOrderItemComponent o = (DiagnosticOrderItemComponent) other;
+        return compareValues(status, o.status, true);
       }
 
       public boolean isEmpty() {
@@ -885,7 +940,7 @@ public class DiagnosticOrder extends DomainResource {
      * The status of the order.
      */
     @Child(name="status", type={CodeType.class}, order=6, min=0, max=1)
-    @Description(shortDefinition="requested | received | accepted | in progress | review | completed | suspended | rejected | failed", formalDefinition="The status of the order." )
+    @Description(shortDefinition="requested | received | accepted | in-progress | review | completed | suspended | rejected | failed", formalDefinition="The status of the order." )
     protected Enumeration<DiagnosticOrderStatus> status;
 
     /**
@@ -1430,6 +1485,31 @@ public class DiagnosticOrder extends DomainResource {
         return copy();
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof DiagnosticOrder))
+          return false;
+        DiagnosticOrder o = (DiagnosticOrder) other;
+        return compareDeep(subject, o.subject, true) && compareDeep(orderer, o.orderer, true) && compareDeep(identifier, o.identifier, true)
+           && compareDeep(encounter, o.encounter, true) && compareDeep(clinicalNotes, o.clinicalNotes, true)
+           && compareDeep(supportingInformation, o.supportingInformation, true) && compareDeep(specimen, o.specimen, true)
+           && compareDeep(status, o.status, true) && compareDeep(priority, o.priority, true) && compareDeep(event, o.event, true)
+           && compareDeep(item, o.item, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof DiagnosticOrder))
+          return false;
+        DiagnosticOrder o = (DiagnosticOrder) other;
+        return compareValues(clinicalNotes, o.clinicalNotes, true) && compareValues(status, o.status, true)
+           && compareValues(priority, o.priority, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (subject == null || subject.isEmpty()) && (orderer == null || orderer.isEmpty())
            && (identifier == null || identifier.isEmpty()) && (encounter == null || encounter.isEmpty())
@@ -1445,13 +1525,13 @@ public class DiagnosticOrder extends DomainResource {
 
   @SearchParamDefinition(name="orderer", path="DiagnosticOrder.orderer", description="Who ordered the test", type="reference" )
   public static final String SP_ORDERER = "orderer";
-  @SearchParamDefinition(name="status", path="DiagnosticOrder.status", description="requested | received | accepted | in progress | review | completed | suspended | rejected | failed", type="token" )
+  @SearchParamDefinition(name="status", path="DiagnosticOrder.status", description="requested | received | accepted | in-progress | review | completed | suspended | rejected | failed", type="token" )
   public static final String SP_STATUS = "status";
   @SearchParamDefinition(name="subject", path="DiagnosticOrder.subject", description="Who and/or what test is about", type="reference" )
   public static final String SP_SUBJECT = "subject";
-  @SearchParamDefinition(name="item-status", path="DiagnosticOrder.item.status", description="requested | received | accepted | in progress | review | completed | suspended | rejected | failed", type="token" )
+  @SearchParamDefinition(name="item-status", path="DiagnosticOrder.item.status", description="requested | received | accepted | in-progress | review | completed | suspended | rejected | failed", type="token" )
   public static final String SP_ITEMSTATUS = "item-status";
-  @SearchParamDefinition(name="event-status", path="DiagnosticOrder.event.status", description="requested | received | accepted | in progress | review | completed | suspended | rejected | failed", type="token" )
+  @SearchParamDefinition(name="event-status", path="DiagnosticOrder.event.status", description="requested | received | accepted | in-progress | review | completed | suspended | rejected | failed", type="token" )
   public static final String SP_EVENTSTATUS = "event-status";
   @SearchParamDefinition(name="actor", path="DiagnosticOrder.event.actor|DiagnosticOrder.item.event.actor", description="Who recorded or did this", type="reference" )
   public static final String SP_ACTOR = "actor";
@@ -1459,11 +1539,11 @@ public class DiagnosticOrder extends DomainResource {
   public static final String SP_CODE = "code";
   @SearchParamDefinition(name="encounter", path="DiagnosticOrder.encounter", description="The encounter that this diagnostic order is associated with", type="reference" )
   public static final String SP_ENCOUNTER = "encounter";
-  @SearchParamDefinition(name="item-past-status", path="DiagnosticOrder.item.event.status", description="requested | received | accepted | in progress | review | completed | suspended | rejected | failed", type="token" )
+  @SearchParamDefinition(name="item-past-status", path="DiagnosticOrder.item.event.status", description="requested | received | accepted | in-progress | review | completed | suspended | rejected | failed", type="token" )
   public static final String SP_ITEMPASTSTATUS = "item-past-status";
   @SearchParamDefinition(name="patient", path="DiagnosticOrder.subject", description="Who and/or what test is about", type="reference" )
   public static final String SP_PATIENT = "patient";
-  @SearchParamDefinition(name="bodysite", path="DiagnosticOrder.item.bodySite", description="Location of requested test (if applicable)", type="token" )
+  @SearchParamDefinition(name="bodysite", path="DiagnosticOrder.item.bodySite[x]", description="Location of requested test (if applicable)", type="token" )
   public static final String SP_BODYSITE = "bodysite";
   @SearchParamDefinition(name="item-date", path="DiagnosticOrder.item.event.dateTime", description="The date at which the event happened", type="date" )
   public static final String SP_ITEMDATE = "item-date";

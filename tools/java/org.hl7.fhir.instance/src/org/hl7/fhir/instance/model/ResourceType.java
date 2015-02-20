@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 public enum ResourceType {
     Condition,
@@ -38,6 +38,7 @@ public enum ResourceType {
     ImagingObjectSelection,
     OperationDefinition,
     ClaimResponse,
+    BodySite,
     CommunicationRequest,
     RiskAssessment,
     Observation,
@@ -48,8 +49,8 @@ public enum ResourceType {
     InstitutionalClaim,
     Alert,
     EligibilityResponse,
-    StatusRequest,
     Person,
+    StatusRequest,
     ProcedureRequest,
     VisionClaim,
     DeviceMetric,
@@ -75,13 +76,14 @@ public enum ResourceType {
     ImagingStudy,
     Provenance,
     Device,
+    StructureDefinition,
     Order,
     Procedure,
     DiagnosticReport,
     Medication,
     MessageHeader,
-    DataElement,
     DocumentManifest,
+    DataElement,
     MedicationAdministration,
     Encounter,
     SecurityEvent,
@@ -177,6 +179,8 @@ public enum ResourceType {
       return "operationdefinition";
     case ClaimResponse:
       return "claimresponse";
+    case BodySite:
+      return "bodysite";
     case CommunicationRequest:
       return "communicationrequest";
     case RiskAssessment:
@@ -197,10 +201,10 @@ public enum ResourceType {
       return "alert";
     case EligibilityResponse:
       return "eligibilityresponse";
-    case StatusRequest:
-      return "statusrequest";
     case Person:
       return "person";
+    case StatusRequest:
+      return "statusrequest";
     case ProcedureRequest:
       return "procedurerequest";
     case VisionClaim:
@@ -251,6 +255,8 @@ public enum ResourceType {
       return "provenance";
     case Device:
       return "device";
+    case StructureDefinition:
+      return "structuredefinition";
     case Order:
       return "order";
     case Procedure:
@@ -261,10 +267,10 @@ public enum ResourceType {
       return "medication";
     case MessageHeader:
       return "messageheader";
-    case DataElement:
-      return "dataelement";
     case DocumentManifest:
       return "documentmanifest";
+    case DataElement:
+      return "dataelement";
     case MedicationAdministration:
       return "medicationadministration";
     case Encounter:

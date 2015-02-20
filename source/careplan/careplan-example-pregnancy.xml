@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CarePlan xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/CarePlan.xsd">
     <id value="preg"/>
-    <!-- an extension to record the LMP, which is required at the plan level... -->
-    <extension url="http://example.org/DoNotUse/careplan#lmp" >
-        <valueDateTime value="2013-01-01" />
-    </extension>
- 
     <text>
-        <status value="additional"></status>
+        <status value="additional"/>
         <div xmlns="http://www.w3.org/1999/xhtml">
             <p>A maternity care plan (for a pregnant woman).</p>           
             <p>LMP is 1st Jan, 2013 (a greaat new years party!) The plan has a scheduled first antenatal,
@@ -34,10 +29,12 @@
           <name>
             <family value="Midwife"/>
             <given value="Mavis"/>
-          </name>      
-        <specialty>
+          </name>
+				<practitionerRole>
+				<specialty>
           <text value="Midwife"/>
         </specialty>
+				</practitionerRole>
       </Practitioner>
     </contained>
     <contained>
@@ -46,12 +43,19 @@
           <name>
             <family value="Obstetrician"/>
             <given value="Oscar"/>
-          </name>     
+          </name>
+				<practitionerRole>
+					
         <specialty>
           <text value="Obstetrician"/>
         </specialty>
+				</practitionerRole>
       </Practitioner>
     </contained>
+    <!-- an extension to record the LMP, which is required at the plan level... -->
+    <extension url="http://example.org/DoNotUse/careplan#lmp" >
+        <valueDateTime value="2013-01-01" />
+    </extension>
     <patient>
         <reference value="Patient/1"/>
         <display value="Eve Everywoman"/>
@@ -77,7 +81,7 @@
             <text value='Midwife'></text>
         </role>
         <member>
-            <!-- This links to the clincian resource, so we get all the stuff related to that like address, contact etc... -->
+            <!-- This links to the clinician resource, so we get all the stuff related to that like address, contact etc... -->
             <reference value="#pr1"/>
             <display value="Mavis Midwife"/>
         </member>
@@ -92,7 +96,7 @@
             <text value='Obstretitian'></text>
         </role>
         <member>
-            <!-- This links to the clincian resource, so we get all tha stuff related to that like address, contact etc... -->
+            <!-- This links to the clinician resource, so we get all tha stuff related to that like address, contact etc... -->
             <reference value="#pr2"/>
             <display value="Oscar Obstetrician"/>
         </member>
@@ -143,7 +147,7 @@
     </activity>
     
     <activity>
-        <status value="not started"/>
+        <status value="not-started"/>
         <prohibited value="false"></prohibited>
         <simple>
         <!-- This will be the second antenatal encounter - 3 months after LMP. It is not yet scheduled. -->
@@ -179,7 +183,7 @@
     -->
     
     <activity>
-        <status value="not started"/>
+        <status value="not-started"/>
         <prohibited value="false"></prohibited>
         <simple>
         <!-- This will be the delivery. It is not yet scheduled. -->
@@ -193,7 +197,7 @@
             
         </code>
         <scheduledTiming>
-            <!-- The delivery should occur between 1 september and 14 september -->
+            <!-- The delivery should occur between 1 September and 14 September -->
             <event>
                 <start value="2013-09-01"/>
                 <end value="2013-09-14"/>
@@ -206,7 +210,7 @@
             <display value="St Albans delivery suite"/>
         </location>-->
         <performer>
-            <!-- The intention is that Maris will be perfroming the delivery... -->
+            <!-- The intention is that Maris will be performing the delivery... -->
             <reference value="#pr1"/>
             <display value="Mavis Midwife"/>
         </performer>

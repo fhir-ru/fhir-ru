@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -103,7 +103,7 @@ public class CommunicationRequest extends DomainResource {
           return RECEIVED;
         if ("accepted".equals(codeString))
           return ACCEPTED;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return INPROGRESS;
         if ("completed".equals(codeString))
           return COMPLETED;
@@ -122,7 +122,7 @@ public class CommunicationRequest extends DomainResource {
             case REQUESTED: return "requested";
             case RECEIVED: return "received";
             case ACCEPTED: return "accepted";
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case COMPLETED: return "completed";
             case SUSPENDED: return "suspended";
             case REJECTED: return "rejected";
@@ -167,7 +167,7 @@ public class CommunicationRequest extends DomainResource {
             case REQUESTED: return "requested";
             case RECEIVED: return "received";
             case ACCEPTED: return "accepted";
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case COMPLETED: return "completed";
             case SUSPENDED: return "suspended";
             case REJECTED: return "rejected";
@@ -192,7 +192,7 @@ public class CommunicationRequest extends DomainResource {
           return CommunicationRequestStatus.RECEIVED;
         if ("accepted".equals(codeString))
           return CommunicationRequestStatus.ACCEPTED;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return CommunicationRequestStatus.INPROGRESS;
         if ("completed".equals(codeString))
           return CommunicationRequestStatus.COMPLETED;
@@ -216,7 +216,7 @@ public class CommunicationRequest extends DomainResource {
       if (code == CommunicationRequestStatus.ACCEPTED)
         return "accepted";
       if (code == CommunicationRequestStatus.INPROGRESS)
-        return "in progress";
+        return "in-progress";
       if (code == CommunicationRequestStatus.COMPLETED)
         return "completed";
       if (code == CommunicationRequestStatus.SUSPENDED)
@@ -307,6 +307,26 @@ public class CommunicationRequest extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof CommunicationRequestPayloadComponent))
+          return false;
+        CommunicationRequestPayloadComponent o = (CommunicationRequestPayloadComponent) other;
+        return compareDeep(content, o.content, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof CommunicationRequestPayloadComponent))
+          return false;
+        CommunicationRequestPayloadComponent o = (CommunicationRequestPayloadComponent) other;
+        return true;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (content == null || content.isEmpty());
       }
@@ -381,7 +401,7 @@ public class CommunicationRequest extends DomainResource {
      * The status of the proposal or order.
      */
     @Child(name="status", type={CodeType.class}, order=6, min=0, max=1)
-    @Description(shortDefinition="proposed | planned | requested | received | accepted | in progress | completed | suspended | rejected | failed", formalDefinition="The status of the proposal or order." )
+    @Description(shortDefinition="proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | failed", formalDefinition="The status of the proposal or order." )
     protected Enumeration<CommunicationRequestStatus> status;
 
     /**
@@ -1024,6 +1044,31 @@ public class CommunicationRequest extends DomainResource {
         return copy();
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof CommunicationRequest))
+          return false;
+        CommunicationRequest o = (CommunicationRequest) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(category, o.category, true) && compareDeep(sender, o.sender, true)
+           && compareDeep(recipient, o.recipient, true) && compareDeep(payload, o.payload, true) && compareDeep(medium, o.medium, true)
+           && compareDeep(requester, o.requester, true) && compareDeep(status, o.status, true) && compareDeep(encounter, o.encounter, true)
+           && compareDeep(scheduledTime, o.scheduledTime, true) && compareDeep(reason, o.reason, true) && compareDeep(orderedOn, o.orderedOn, true)
+           && compareDeep(subject, o.subject, true) && compareDeep(priority, o.priority, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof CommunicationRequest))
+          return false;
+        CommunicationRequest o = (CommunicationRequest) other;
+        return compareValues(status, o.status, true) && compareValues(scheduledTime, o.scheduledTime, true)
+           && compareValues(orderedOn, o.orderedOn, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (category == null || category.isEmpty())
            && (sender == null || sender.isEmpty()) && (recipient == null || recipient.isEmpty()) && (payload == null || payload.isEmpty())
@@ -1038,32 +1083,32 @@ public class CommunicationRequest extends DomainResource {
     return ResourceType.CommunicationRequest;
    }
 
-  @SearchParamDefinition(name="requester", path="CommunicationRequest.requester", description="Requester of communication", type="reference" )
-  public static final String SP_REQUESTER = "requester";
-  @SearchParamDefinition(name="status", path="CommunicationRequest.status", description="proposed | planned | requested | received | accepted | in progress | completed | suspended | rejected | failed", type="token" )
-  public static final String SP_STATUS = "status";
-  @SearchParamDefinition(name="subject", path="CommunicationRequest.subject", description="Focus of message", type="reference" )
-  public static final String SP_SUBJECT = "subject";
-  @SearchParamDefinition(name="encounter", path="CommunicationRequest.encounter", description="Encounter leading to message", type="reference" )
-  public static final String SP_ENCOUNTER = "encounter";
-  @SearchParamDefinition(name="recipient", path="CommunicationRequest.recipient", description="Message recipient", type="reference" )
-  public static final String SP_RECIPIENT = "recipient";
-  @SearchParamDefinition(name="medium", path="CommunicationRequest.medium", description="Communication medium", type="token" )
-  public static final String SP_MEDIUM = "medium";
   @SearchParamDefinition(name="sender", path="CommunicationRequest.sender", description="Message sender", type="reference" )
   public static final String SP_SENDER = "sender";
-  @SearchParamDefinition(name="category", path="CommunicationRequest.category", description="Message category", type="token" )
-  public static final String SP_CATEGORY = "category";
   @SearchParamDefinition(name="time", path="CommunicationRequest.scheduledTime", description="When scheduled", type="date" )
   public static final String SP_TIME = "time";
+  @SearchParamDefinition(name="requester", path="CommunicationRequest.requester", description="Requester of communication", type="reference" )
+  public static final String SP_REQUESTER = "requester";
+  @SearchParamDefinition(name="category", path="CommunicationRequest.category", description="Message category", type="token" )
+  public static final String SP_CATEGORY = "category";
   @SearchParamDefinition(name="patient", path="CommunicationRequest.subject", description="Focus of message", type="reference" )
   public static final String SP_PATIENT = "patient";
-  @SearchParamDefinition(name="ordered", path="CommunicationRequest.orderedOn", description="When ordered or proposed", type="date" )
-  public static final String SP_ORDERED = "ordered";
+  @SearchParamDefinition(name="status", path="CommunicationRequest.status", description="proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | failed", type="token" )
+  public static final String SP_STATUS = "status";
   @SearchParamDefinition(name="priority", path="CommunicationRequest.priority", description="Message urgency", type="token" )
   public static final String SP_PRIORITY = "priority";
+  @SearchParamDefinition(name="subject", path="CommunicationRequest.subject", description="Focus of message", type="reference" )
+  public static final String SP_SUBJECT = "subject";
+  @SearchParamDefinition(name="ordered", path="CommunicationRequest.orderedOn", description="When ordered or proposed", type="date" )
+  public static final String SP_ORDERED = "ordered";
+  @SearchParamDefinition(name="encounter", path="CommunicationRequest.encounter", description="Encounter leading to message", type="reference" )
+  public static final String SP_ENCOUNTER = "encounter";
   @SearchParamDefinition(name="identifier", path="CommunicationRequest.identifier", description="Unique identifier", type="token" )
   public static final String SP_IDENTIFIER = "identifier";
+  @SearchParamDefinition(name="medium", path="CommunicationRequest.medium", description="Communication medium", type="token" )
+  public static final String SP_MEDIUM = "medium";
+  @SearchParamDefinition(name="recipient", path="CommunicationRequest.recipient", description="Message recipient", type="reference" )
+  public static final String SP_RECIPIENT = "recipient";
 
 }
 

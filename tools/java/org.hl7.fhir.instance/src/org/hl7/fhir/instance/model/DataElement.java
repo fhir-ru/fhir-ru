@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -165,7 +165,7 @@ public class DataElement extends DomainResource {
                 return null;
         if ("comparable".equals(codeString))
           return COMPARABLE;
-        if ("fully specified".equals(codeString))
+        if ("fully-specified".equals(codeString))
           return FULLYSPECIFIED;
         if ("equivalent".equals(codeString))
           return EQUIVALENT;
@@ -180,7 +180,7 @@ public class DataElement extends DomainResource {
         public String toCode() {
           switch (this) {
             case COMPARABLE: return "comparable";
-            case FULLYSPECIFIED: return "fully specified";
+            case FULLYSPECIFIED: return "fully-specified";
             case EQUIVALENT: return "equivalent";
             case CONVERTABLE: return "convertable";
             case SCALEABLE: return "scaleable";
@@ -213,7 +213,7 @@ public class DataElement extends DomainResource {
         public String getDisplay() {
           switch (this) {
             case COMPARABLE: return "comparable";
-            case FULLYSPECIFIED: return "fully specified";
+            case FULLYSPECIFIED: return "fully-specified";
             case EQUIVALENT: return "equivalent";
             case CONVERTABLE: return "convertable";
             case SCALEABLE: return "scaleable";
@@ -230,7 +230,7 @@ public class DataElement extends DomainResource {
                 return null;
         if ("comparable".equals(codeString))
           return DataelementGranularity.COMPARABLE;
-        if ("fully specified".equals(codeString))
+        if ("fully-specified".equals(codeString))
           return DataelementGranularity.FULLYSPECIFIED;
         if ("equivalent".equals(codeString))
           return DataelementGranularity.EQUIVALENT;
@@ -246,7 +246,7 @@ public class DataElement extends DomainResource {
       if (code == DataelementGranularity.COMPARABLE)
         return "comparable";
       if (code == DataelementGranularity.FULLYSPECIFIED)
-        return "fully specified";
+        return "fully-specified";
       if (code == DataelementGranularity.EQUIVALENT)
         return "equivalent";
       if (code == DataelementGranularity.CONVERTABLE)
@@ -596,6 +596,28 @@ public class DataElement extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof DataElementBindingComponent))
+          return false;
+        DataElementBindingComponent o = (DataElementBindingComponent) other;
+        return compareDeep(isExtensible, o.isExtensible, true) && compareDeep(conformance, o.conformance, true)
+           && compareDeep(description, o.description, true) && compareDeep(valueSet, o.valueSet, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof DataElementBindingComponent))
+          return false;
+        DataElementBindingComponent o = (DataElementBindingComponent) other;
+        return compareValues(isExtensible, o.isExtensible, true) && compareValues(conformance, o.conformance, true)
+           && compareValues(description, o.description, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (isExtensible == null || isExtensible.isEmpty()) && (conformance == null || conformance.isEmpty())
            && (description == null || description.isEmpty()) && (valueSet == null || valueSet.isEmpty())
@@ -740,13 +762,9 @@ public class DataElement extends DomainResource {
          * @param value If true, indicates that the official meaning of the data element is exactly equivalent to the mapped element.
          */
         public DataElementMappingComponent setDefinitional(boolean value) { 
-          if (value == false)
-            this.definitional = null;
-          else {
             if (this.definitional == null)
               this.definitional = new BooleanType();
             this.definitional.setValue(value);
-          }
           return this;
         }
 
@@ -913,6 +931,28 @@ public class DataElement extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof DataElementMappingComponent))
+          return false;
+        DataElementMappingComponent o = (DataElementMappingComponent) other;
+        return compareDeep(uri, o.uri, true) && compareDeep(definitional, o.definitional, true) && compareDeep(name, o.name, true)
+           && compareDeep(comments, o.comments, true) && compareDeep(map, o.map, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof DataElementMappingComponent))
+          return false;
+        DataElementMappingComponent o = (DataElementMappingComponent) other;
+        return compareValues(uri, o.uri, true) && compareValues(definitional, o.definitional, true) && compareValues(name, o.name, true)
+           && compareValues(comments, o.comments, true) && compareValues(map, o.map, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (uri == null || uri.isEmpty()) && (definitional == null || definitional.isEmpty())
            && (name == null || name.isEmpty()) && (comments == null || comments.isEmpty()) && (map == null || map.isEmpty())
@@ -981,7 +1021,7 @@ public class DataElement extends DomainResource {
      * Identifies how precise the data element is in its definition.
      */
     @Child(name="granularity", type={CodeType.class}, order=7, min=0, max=1)
-    @Description(shortDefinition="comparable | fully specified | equivalent | convertable | scaleable | flexible", formalDefinition="Identifies how precise the data element is in its definition." )
+    @Description(shortDefinition="comparable | fully-specified | equivalent | convertable | scaleable | flexible", formalDefinition="Identifies how precise the data element is in its definition." )
     protected Enumeration<DataelementGranularity> granularity;
 
     /**
@@ -1889,20 +1929,16 @@ public class DataElement extends DomainResource {
      * @return Indicates the shortest length that SHALL be supported by conformant instances without truncation.
      */
     public int getMaxLength() { 
-      return this.maxLength == null ? null : this.maxLength.getValue();
+      return this.maxLength == null ? 0 : this.maxLength.getValue();
     }
 
     /**
      * @param value Indicates the shortest length that SHALL be supported by conformant instances without truncation.
      */
     public DataElement setMaxLength(int value) { 
-      if (value == -1)
-        this.maxLength = null;
-      else {
         if (this.maxLength == null)
           this.maxLength = new IntegerType();
         this.maxLength.setValue(value);
-      }
       return this;
     }
 
@@ -2073,6 +2109,37 @@ public class DataElement extends DomainResource {
 
       protected DataElement typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof DataElement))
+          return false;
+        DataElement o = (DataElement) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(version, o.version, true) && compareDeep(publisher, o.publisher, true)
+           && compareDeep(telecom, o.telecom, true) && compareDeep(status, o.status, true) && compareDeep(date, o.date, true)
+           && compareDeep(name, o.name, true) && compareDeep(category, o.category, true) && compareDeep(granularity, o.granularity, true)
+           && compareDeep(code, o.code, true) && compareDeep(question, o.question, true) && compareDeep(label, o.label, true)
+           && compareDeep(definition, o.definition, true) && compareDeep(comments, o.comments, true) && compareDeep(requirements, o.requirements, true)
+           && compareDeep(synonym, o.synonym, true) && compareDeep(type, o.type, true) && compareDeep(example, o.example, true)
+           && compareDeep(maxLength, o.maxLength, true) && compareDeep(units, o.units, true) && compareDeep(binding, o.binding, true)
+           && compareDeep(mapping, o.mapping, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof DataElement))
+          return false;
+        DataElement o = (DataElement) other;
+        return compareValues(version, o.version, true) && compareValues(publisher, o.publisher, true) && compareValues(status, o.status, true)
+           && compareValues(date, o.date, true) && compareValues(name, o.name, true) && compareValues(granularity, o.granularity, true)
+           && compareValues(question, o.question, true) && compareValues(label, o.label, true) && compareValues(definition, o.definition, true)
+           && compareValues(comments, o.comments, true) && compareValues(requirements, o.requirements, true) && compareValues(synonym, o.synonym, true)
+           && compareValues(type, o.type, true) && compareValues(maxLength, o.maxLength, true);
       }
 
       public boolean isEmpty() {

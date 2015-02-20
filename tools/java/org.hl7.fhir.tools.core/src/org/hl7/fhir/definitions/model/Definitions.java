@@ -96,7 +96,9 @@ public class Definitions {
   private List<String> pastVersions = new ArrayList<String>();
   private Map<String, String> TLAs = new HashMap<String, String>();
 
-
+  private Map<String, W5Entry> w5s = new HashMap<String, W5Entry>();
+  private Map<String, String> typePages = new HashMap<String, String>();
+  private Map<String, ImplementationGuide> igs = new HashMap<String, ImplementationGuide>();
   
   // Returns the root TypeDefn of a CompositeType or Resource,
 	// excluding future Resources (as they don't have definitions yet).
@@ -345,6 +347,35 @@ public class Definitions {
     throw new Exception("unable to find snapshot for "+type);
   }
 
+  public Profile getSnapShotForBase(String base) throws Exception {
+    Profile p = getProfileByURL(base);
+    if (p == null)
+      throw new Exception("unable to find base definition "+base);
+    if (p.getSnapshot() != null)
+      return p;
+    throw new Exception("unable to find snapshot for "+base);
+  }
+
+  private Profile getProfileByURL(String base) {
+    for (ResourceDefn r : resources.values()) {
+      if (r.getProfile().getUrl().equals(base))
+        return r.getProfile();
+      for (ConformancePackage cp : r.getConformancePackages()) {
+        for (ProfileDefn p : cp.getProfiles()) {
+          if (p.getResource() != null && base.equals(p.getResource().getUrl()))
+            return p.getResource();
+        }
+      }
+    }
+    for (ConformancePackage cp : packs.values()) {
+      for (ProfileDefn p : cp.getProfiles()) {
+        if (p.getResource() != null && base.equals(p.getResource().getUrl()))
+          return p.getResource();
+      }      
+    }
+    return null;
+  }
+
   public String getSourceFile(String type) {
     return null;
   }
@@ -357,33 +388,28 @@ public class Definitions {
     return TLAs;
   }
 
-//  public Profile getProfileByURL(String url) {
-//    if (url.contains("#"))
-//      url = url.substring(0, url.indexOf('#'));
-//    for (ProfileDefn p : profiles.values())
-//      if (p.getSource() != null && p.getSource().getUrl().equals(url))
-//        return p.getSource();
-//    for (ResourceDefn rd : resources.values()) {
-//      for (RegisteredProfile p : rd.getProfiles()) {
-//        if (p.getProfile().getSource().getUrl().equals(url)) {
-//          return p.getProfile().getSource();
-//        }
-//      }
-//    }
-//    return null;
-//  }
-//
-//  public Profile getSnapShotForProfile(String base) throws Exception {
-//    String[] parts = base.split("#");
-//    if (parts[0].startsWith("http://hl7.org/fhir/Profile/") && parts.length == 1) {
-//      String name = base.substring(28);
-//      if (hasType(name) || hasResource(name)) 
-//        return getSnapShotForType(name);
-//    }
-//    Profile p = getProfileByURL(parts[0]);
-//    if (p == null)
-//      throw new Exception("unable to find base definition for "+base);
-//    return p;
-//  }
-//
+  public Map<String, W5Entry> getW5s() {
+    return w5s;
+  }
+
+  public String getSrcFile(String name) throws Exception {
+    if (name == null)
+      throw new Exception("unknown null type");
+    String lname = name.toLowerCase();
+    if (typePages.containsKey(lname))
+      return typePages.get(lname);
+    if (hasType(name))
+      return "datatypes";
+    return lname;
+  }
+
+  public Map<String, String> getTypePages() {
+    return typePages;
+  }
+
+  public Map<String, ImplementationGuide> getIgs() {
+    return igs;
+  }
+
+
 }

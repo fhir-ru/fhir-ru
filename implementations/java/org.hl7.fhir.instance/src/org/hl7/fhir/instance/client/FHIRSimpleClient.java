@@ -47,6 +47,8 @@ import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Conformance;
 import org.hl7.fhir.instance.model.Constants;
 import org.hl7.fhir.instance.model.OperationOutcome;
+import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.instance.model.OperationOutcome.OperationOutcomeIssueComponent;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.utils.Version;
@@ -62,7 +64,7 @@ import org.hl7.fhir.instance.utils.Version;
  * fhirClient.initialize("http://my.fhir.domain/myServiceRoot");
  * </code></pre>
  * 
- * Default Accept and Content-Type headers are application/fhir+xml for resources and application/atom+xml for bundles.
+ * Default Accept and Content-Type headers are application/xml+fhir and application/j+fhir.
  * 
  * These can be changed by invoking the following setter functions:
  * 
@@ -111,6 +113,12 @@ public class FHIRSimpleClient implements IFHIRClient {
 	public void initialize(String baseServiceUrl, int maxResultSetSize)  throws URISyntaxException {
 		resourceAddress = new ResourceAddress(baseServiceUrl);
 		this.maxResultSetSize = maxResultSetSize;
+		checkConformance();
+	}
+	
+	private void checkConformance() {
+//    Conformance conf = getConformanceStatement();
+    
 	}
 	
 	@Override
@@ -218,6 +226,15 @@ public class FHIRSimpleClient implements IFHIRClient {
 		} catch(Exception e) {
 			throw new EFhirClientException("An error has occurred while trying to update this resource", e);
 		}
+		// TODO oe 26.1.2015 could be made nicer if only OperationOutcome	locationheader is returned with an operationOutcome would be returned (and not	the resource also) we make another read
+		try {
+		  OperationOutcome operationOutcome = (OperationOutcome)result.getPayload();
+		  ResourceAddress.ResourceVersionedIdentifier resVersionedIdentifier = ResourceAddress.parseCreateLocation(result.getLocation());
+		  return this.vread(resourceClass, resVersionedIdentifier.getId(),resVersionedIdentifier.getVersionId());
+		} catch(ClassCastException e) {
+		  // if we fall throught we have the correct type already in the create
+		}
+
 		return result.getPayload();
 	}
 
@@ -244,7 +261,25 @@ public class FHIRSimpleClient implements IFHIRClient {
 		} catch(Exception e) {
 			handleException("An error has occurred while trying to create this resource", e);
 		}
-		return (OperationOutcome)resourceRequest.getPayload();
+	  OperationOutcome operationOutcome = null;;
+	  try {
+	    operationOutcome = (OperationOutcome)resourceRequest.getPayload();
+	    ResourceAddress.ResourceVersionedIdentifier resVersionedIdentifier = 
+	        ResourceAddress.parseCreateLocation(resourceRequest.getLocation());
+	    OperationOutcomeIssueComponent issue = operationOutcome.addIssue();
+	    issue.setSeverity(IssueSeverity.INFORMATION);
+	    issue.setUserData(ResourceAddress.ResourceVersionedIdentifier.class.toString(),
+	        resVersionedIdentifier);
+	    return operationOutcome;
+	  } catch(ClassCastException e) {
+	    // some server (e.g. grahams) returns the resource directly
+	    operationOutcome = new OperationOutcome();
+	    OperationOutcomeIssueComponent issue = operationOutcome.addIssue();
+	    issue.setSeverity(IssueSeverity.INFORMATION);
+	    issue.setUserData(ResourceRequest.class.toString(),
+	        resourceRequest.getPayload());
+	    return operationOutcome;
+	  }	
 	}
 
 	@Override
@@ -620,9 +655,19 @@ public class FHIRSimpleClient implements IFHIRClient {
 
   @Override
   public ValueSet expandValueset(ValueSet source) throws Exception {
-    Bundle searchResults = null;
-    searchResults = ClientUtils.issuePostFeedRequest(resourceAddress.resolveOperationUri(ValueSet.class, "expand"), new HashMap<String, String>(), "valueSet", source, getPreferredFeedFormat());
-    return (ValueSet) searchResults.getEntry().get(0).getResource();
+    List<Header> headers = null;
+    ResourceRequest<Resource> result = ClientUtils.issuePostRequest(resourceAddress.resolveOperationUri(ValueSet.class, "expand"), 
+        ClientUtils.getResourceAsByteArray(source, false, isJson(getPreferredResourceFormat())), getPreferredResourceFormat(), headers, proxy);
+    result.addErrorStatus(410);//gone
+    result.addErrorStatus(404);//unknown
+    result.addErrorStatus(405);
+    result.addErrorStatus(422);//Unprocessable Entity
+    result.addSuccessStatus(200);
+    result.addSuccessStatus(201);
+    if(result.isUnsuccessfulRequest()) {
+      throw new EFhirClientException("Server returned error code " + result.getHttpStatus(), (OperationOutcome)result.getPayload());
+    }
+    return (ValueSet) result.getPayload();
   }
 
 }

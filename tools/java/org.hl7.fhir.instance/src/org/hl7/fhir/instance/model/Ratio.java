@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -126,6 +126,27 @@ public class Ratio extends Type {
 
       protected Ratio typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Ratio))
+          return false;
+        Ratio o = (Ratio) other;
+        return compareDeep(numerator, o.numerator, true) && compareDeep(denominator, o.denominator, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Ratio))
+          return false;
+        Ratio o = (Ratio) other;
+        return true;
       }
 
       public boolean isEmpty() {

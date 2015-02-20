@@ -511,7 +511,6 @@ public class QuestionnaireBuilder {
           vs.setDefine(null);
           vs.setCompose(null);
           vs.getTelecom().clear();
-          vs.setPurposeElement(null);
           vs.setPublisherElement(null);
           vs.setCopyrightElement(null);
         }
@@ -709,7 +708,7 @@ public class QuestionnaireBuilder {
       addSampledDataQuestions(group, element, path, answerGroups);
     else if (t.getCode().equals("Extension"))
       addExtensionQuestions(profile, group, element, path, t.getProfile(), answerGroups);
-    else if (!t.getCode().equals("Narrative") && !t.getCode().equals("Resource") && !t.getCode().equals("ElementDefinition"))
+    else if (!t.getCode().equals("Narrative") && !t.getCode().equals("Resource") && !t.getCode().equals("ElementDefinition")&& !t.getCode().equals("Meta"))
       throw new Exception("Unhandled Data Type: "+t.getCode()+" on element "+element.getPath());
   }
 

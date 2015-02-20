@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -103,7 +103,7 @@ public class ProcedureRequest extends DomainResource {
           return RECEIVED;
         if ("accepted".equals(codeString))
           return ACCEPTED;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return INPROGRESS;
         if ("completed".equals(codeString))
           return COMPLETED;
@@ -122,7 +122,7 @@ public class ProcedureRequest extends DomainResource {
             case REQUESTED: return "requested";
             case RECEIVED: return "received";
             case ACCEPTED: return "accepted";
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case COMPLETED: return "completed";
             case SUSPENDED: return "suspended";
             case REJECTED: return "rejected";
@@ -167,7 +167,7 @@ public class ProcedureRequest extends DomainResource {
             case REQUESTED: return "requested";
             case RECEIVED: return "received";
             case ACCEPTED: return "accepted";
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case COMPLETED: return "completed";
             case SUSPENDED: return "suspended";
             case REJECTED: return "rejected";
@@ -192,7 +192,7 @@ public class ProcedureRequest extends DomainResource {
           return ProcedureRequestStatus.RECEIVED;
         if ("accepted".equals(codeString))
           return ProcedureRequestStatus.ACCEPTED;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return ProcedureRequestStatus.INPROGRESS;
         if ("completed".equals(codeString))
           return ProcedureRequestStatus.COMPLETED;
@@ -216,7 +216,7 @@ public class ProcedureRequest extends DomainResource {
       if (code == ProcedureRequestStatus.ACCEPTED)
         return "accepted";
       if (code == ProcedureRequestStatus.INPROGRESS)
-        return "in progress";
+        return "in-progress";
       if (code == ProcedureRequestStatus.COMPLETED)
         return "completed";
       if (code == ProcedureRequestStatus.SUSPENDED)
@@ -404,7 +404,7 @@ public class ProcedureRequest extends DomainResource {
      * The status of the order.
      */
     @Child(name="status", type={CodeType.class}, order=7, min=0, max=1)
-    @Description(shortDefinition="proposed | planned | requested | received | accepted | in progress | completed | suspended | rejected | aborted", formalDefinition="The status of the order." )
+    @Description(shortDefinition="proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | aborted", formalDefinition="The status of the order." )
     protected Enumeration<ProcedureRequestStatus> status;
 
     /**
@@ -1079,6 +1079,31 @@ public class ProcedureRequest extends DomainResource {
 
       protected ProcedureRequest typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ProcedureRequest))
+          return false;
+        ProcedureRequest o = (ProcedureRequest) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(subject, o.subject, true) && compareDeep(type, o.type, true)
+           && compareDeep(bodySite, o.bodySite, true) && compareDeep(indication, o.indication, true) && compareDeep(timing, o.timing, true)
+           && compareDeep(encounter, o.encounter, true) && compareDeep(performer, o.performer, true) && compareDeep(status, o.status, true)
+           && compareDeep(notes, o.notes, true) && compareDeep(asNeeded, o.asNeeded, true) && compareDeep(orderedOn, o.orderedOn, true)
+           && compareDeep(orderer, o.orderer, true) && compareDeep(priority, o.priority, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ProcedureRequest))
+          return false;
+        ProcedureRequest o = (ProcedureRequest) other;
+        return compareValues(status, o.status, true) && compareValues(notes, o.notes, true) && compareValues(orderedOn, o.orderedOn, true)
+           && compareValues(priority, o.priority, true);
       }
 
       public boolean isEmpty() {

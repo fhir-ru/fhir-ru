@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -128,6 +128,26 @@ public class Order extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof OrderWhenComponent))
+          return false;
+        OrderWhenComponent o = (OrderWhenComponent) other;
+        return compareDeep(code, o.code, true) && compareDeep(schedule, o.schedule, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof OrderWhenComponent))
+          return false;
+        OrderWhenComponent o = (OrderWhenComponent) other;
+        return true;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (code == null || code.isEmpty()) && (schedule == null || schedule.isEmpty())
           ;
@@ -152,14 +172,14 @@ public class Order extends DomainResource {
     /**
      * Patient this order is about.
      */
-    @Child(name="subject", type={Patient.class}, order=1, min=0, max=1)
+    @Child(name="subject", type={Patient.class, Group.class, Device.class, Substance.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Patient this order is about", formalDefinition="Patient this order is about." )
     protected Reference subject;
 
     /**
      * The actual object that is the target of the reference (Patient this order is about.)
      */
-    protected Patient subjectTarget;
+    protected Resource subjectTarget;
 
     /**
      * Who initiated the order.
@@ -223,7 +243,7 @@ public class Order extends DomainResource {
     protected List<Resource> detailTarget;
 
 
-    private static final long serialVersionUID = 400955487L;
+    private static final long serialVersionUID = 595782234L;
 
     public Order() {
       super();
@@ -335,19 +355,14 @@ public class Order extends DomainResource {
     /**
      * @return {@link #subject} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Patient this order is about.)
      */
-    public Patient getSubjectTarget() { 
-      if (this.subjectTarget == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Order.subject");
-        else if (Configuration.doAutoCreate())
-          this.subjectTarget = new Patient(); // aa
+    public Resource getSubjectTarget() { 
       return this.subjectTarget;
     }
 
     /**
      * @param value {@link #subject} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Patient this order is about.)
      */
-    public Order setSubjectTarget(Patient value) { 
+    public Order setSubjectTarget(Resource value) { 
       this.subjectTarget = value;
       return this;
     }
@@ -578,7 +593,7 @@ public class Order extends DomainResource {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "Identifiers assigned to this order by the orderer or by the receiver.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("date", "dateTime", "When the order was made.", 0, java.lang.Integer.MAX_VALUE, date));
-        childrenList.add(new Property("subject", "Reference(Patient)", "Patient this order is about.", 0, java.lang.Integer.MAX_VALUE, subject));
+        childrenList.add(new Property("subject", "Reference(Patient|Group|Device|Substance)", "Patient this order is about.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("source", "Reference(Practitioner)", "Who initiated the order.", 0, java.lang.Integer.MAX_VALUE, source));
         childrenList.add(new Property("target", "Reference(Organization|Device|Practitioner)", "Who is intended to fulfill the order.", 0, java.lang.Integer.MAX_VALUE, target));
         childrenList.add(new Property("reason[x]", "CodeableConcept|Reference(Any)", "Text - why the order was made.", 0, java.lang.Integer.MAX_VALUE, reason));
@@ -612,6 +627,29 @@ public class Order extends DomainResource {
 
       protected Order typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Order))
+          return false;
+        Order o = (Order) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(date, o.date, true) && compareDeep(subject, o.subject, true)
+           && compareDeep(source, o.source, true) && compareDeep(target, o.target, true) && compareDeep(reason, o.reason, true)
+           && compareDeep(authority, o.authority, true) && compareDeep(when, o.when, true) && compareDeep(detail, o.detail, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Order))
+          return false;
+        Order o = (Order) other;
+        return compareValues(date, o.date, true);
       }
 
       public boolean isEmpty() {

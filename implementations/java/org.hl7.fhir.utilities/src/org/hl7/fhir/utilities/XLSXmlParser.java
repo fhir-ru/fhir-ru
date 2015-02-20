@@ -78,6 +78,21 @@ public class XLSXmlParser {
     public List<Row> getRows() {
       return rows;
     }
+
+    public int getIntColumn(int row, String column) throws Exception {
+      String value = getColumn(row, column);
+      if (Utilities.noString(value))
+        return 0;
+      else
+        return Integer.parseInt(value);
+    }
+
+    public String getNonEmptyColumn(int row, String column) throws Exception {
+     String value = getColumn(row, column);
+     if (Utilities.noString(value))
+       throw new Exception("The colummn "+column+" cannot be empty");
+     return value;
+    }
     
     
   }
@@ -88,9 +103,13 @@ public class XLSXmlParser {
   
   public XLSXmlParser(InputStream in, String name) throws Exception {
     this.name = name;
-    xml = parseXml(in);
-    sheets = new HashMap<String, Sheet>();
-    readXml();
+    try {
+      xml = parseXml(in);
+      sheets = new HashMap<String, Sheet>();
+      readXml();
+    } catch (Exception e) {
+      throw new Exception("unable to load "+name+": "+e.getMessage(), e);
+    }
   }
 
   private Document parseXml(InputStream in) throws Exception {

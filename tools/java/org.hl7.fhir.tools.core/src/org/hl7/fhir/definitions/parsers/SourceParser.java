@@ -42,7 +42,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.print.Doc;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -52,25 +51,25 @@ import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
-import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
-import org.hl7.fhir.definitions.model.ConformancePackage;
-import org.hl7.fhir.definitions.model.ConformancePackage.ConformancePackageSourceType;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Compartment;
+import org.hl7.fhir.definitions.model.ConformancePackage;
+import org.hl7.fhir.definitions.model.ConformancePackage.ConformancePackageSourceType;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
+import org.hl7.fhir.definitions.model.ImplementationGuide;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.MappingSpace;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ProfiledType;
-import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.definitions.model.WorkGroup;
 import org.hl7.fhir.definitions.parsers.converters.BindingConverter;
 import org.hl7.fhir.definitions.parsers.converters.CompositeTypeConverter;
@@ -79,17 +78,17 @@ import org.hl7.fhir.definitions.parsers.converters.EventConverter;
 import org.hl7.fhir.definitions.parsers.converters.PrimitiveConverter;
 import org.hl7.fhir.instance.formats.FormatUtilities;
 import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.formats.ResourceOrFeed;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.instance.model.Bundle.BundleType;
 import org.hl7.fhir.instance.model.Composition;
-import org.hl7.fhir.instance.model.DomainResource;
 import org.hl7.fhir.instance.model.ExtensionDefinition;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ValueSet;
+import org.hl7.fhir.instance.utils.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.instance.utils.ValueSetUtilities;
 import org.hl7.fhir.instance.utils.WorkerContext;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
@@ -129,14 +128,16 @@ public class SourceParser {
 	private WorkerContext context; 
 	private Calendar genDate;
   private Map<String, ExtensionDefinition> extensionDefinitions = new HashMap<String, ExtensionDefinition>();
+  private ProfileKnowledgeProvider pkp;
 
-	public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication, String version, WorkerContext context, Calendar genDate, Map<String, ExtensionDefinition> extensionDefinitions) {
+	public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication, String version, WorkerContext context, Calendar genDate, Map<String, ExtensionDefinition> extensionDefinitions, ProfileKnowledgeProvider pkp) {
 		this.logger = logger;
 		this.registry = new BindingNameRegistry(root, forPublication);
 		this.definitions = definitions;
 		this.version = version;
 		this.context = context;
 		this.genDate = genDate;
+		this.pkp = pkp;
 
 		char sl = File.separatorChar;
 		srcDir = root + sl + "source" + sl;
@@ -199,11 +200,14 @@ public class SourceParser {
 
 		eCoreParseResults = DefinitionsImpl.build(genDate.getTime(), version);
 		loadWorkGroups();
+		loadW5s();
 		loadMappingSpaces();
 		loadGlobalConceptDomains();
 		eCoreParseResults.getBinding().addAll(sortBindings(BindingConverter.buildBindingsFromFhirModel(definitions.getBindings().values(), null)));
 
 		loadTLAs();
+		loadIgs();
+		loadTypePages();
 		
 		loadPrimitives();
 		eCoreParseResults.getPrimitive().addAll(PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions.getPrimitives().values()));
@@ -288,6 +292,36 @@ public class SourceParser {
 	}
 
 
+  private void loadIgs() {
+    if (ini.getPropertyNames("igs") != null) {
+      for (String n : ini.getPropertyNames("igs")) {
+        definitions.getIgs().put(n, new ImplementationGuide(n, ini.getStringProperty("igs", n), ini.getStringProperty("ig-pages", n), ini.getBooleanProperty("ig-review", n)));        
+      }
+    }
+  
+  }
+
+
+  private void loadTypePages() {
+    String[] tps = ini.getPropertyNames("type-pages");
+    for (String tp : tps) {
+     String s = ini.getStringProperty("type-pages", tp);
+     definitions.getTypePages().put(tp, s);
+    }    
+    
+  }
+
+
+  private void loadW5s() {
+    if (new File(Utilities.path(srcDir, "w5.ini")).exists()) {
+      IniFile w5 = new IniFile(Utilities.path(srcDir, "w5.ini"));
+      for (String n : w5.getPropertyNames("names")) { 
+        definitions.getW5s().put(n, new W5Entry(w5.getStringProperty("names", n), w5.getBooleanProperty("display", n)));
+      }
+    }
+  }
+
+
   private void loadTLAs() throws Exception {
       Set<String> tlas = new HashSet<String>();
       
@@ -346,8 +380,7 @@ public class SourceParser {
       ArrayList<String> codes = new ArrayList<String>();
       for (int i = 1; i <= 80; i++) {
         String s = sheet.getColumn(row, "c"+Integer.toString(i));
-        if (!Utilities.noString(s))
-          codes.add(s);
+        codes.add(s);
       }
       definitions.getStatusCodes().put(path, codes); 
     }    
@@ -404,11 +437,12 @@ public class SourceParser {
 	
 	
 	private void loadConformancePackages(String n, Map<String, ConformancePackage> packs) throws Exception {
+	  String usage = "core";
 	  File spreadsheet = new CSFile(rootDir+ ini.getStringProperty("profiles", n));
 	  if (TextFile.fileToString(spreadsheet.getAbsolutePath()).contains("urn:schemas-microsoft-com:office:spreadsheet")) {
-	    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions);
+	    SpreadsheetParser sparser = new SpreadsheetParser(n, new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions, pkp, false);
 	    try {
-	      ConformancePackage pack = new ConformancePackage();
+	      ConformancePackage pack = new ConformancePackage(usage);
 	      pack.setTitle(n);
 	      pack.setSource(spreadsheet.getAbsolutePath());
 	      pack.setSourceType(ConformancePackageSourceType.Spreadsheet);
@@ -418,14 +452,14 @@ public class SourceParser {
 	      throw new Exception("Error Parsing Profile: '"+n+"': "+e.getMessage(), e);
 	    }
 	  } else {
-	    ConformancePackage pack = new ConformancePackage();
-	    parseConformanceDocument(pack, n, spreadsheet);
+	    ConformancePackage pack = new ConformancePackage(usage);
+	    parseConformanceDocument(pack, n, spreadsheet, usage);
       packs.put(n, pack);
 	  }
 	}
 
 
-  private void parseConformanceDocument(ConformancePackage pack, String n, File file) throws Exception {
+  private void parseConformanceDocument(ConformancePackage pack, String n, File file, String usage) throws Exception {
     try {
       Resource rf = new XmlParser().parse(new CSFileInputStream(file));
       if (!(rf instanceof Bundle))
@@ -438,7 +472,7 @@ public class SourceParser {
         if (ae.getResource() instanceof Composition)
           pack.loadFromComposition((Composition) ae.getResource(), file.getAbsolutePath());
         else if (ae.getResource() instanceof Profile)
-          pack.getProfiles().add(new ProfileDefn((Profile) ae.getResource()));
+          pack.getProfiles().add(new ProfileDefn((Profile) ae.getResource(), usage));
         else if (ae.getResource() instanceof ExtensionDefinition) {
           ExtensionDefinition ed = (ExtensionDefinition) ae.getResource();
           context.seeExtensionDefinition(base, ed);
@@ -453,11 +487,11 @@ public class SourceParser {
 
   private void loadConformancePackage(ConformancePackage ap) throws FileNotFoundException, IOException, Exception {
     if (ap.getSourceType() == ConformancePackageSourceType.Spreadsheet) {
-      SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(ap.getSource()), ap.getId(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions);
+      SpreadsheetParser sparser = new SpreadsheetParser(ap.getCategory(), new CSFileInputStream(ap.getSource()), Utilities.noString(ap.getId()) ? ap.getSource() : ap.getId(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions, pkp, false);
       sparser.setFolder(Utilities.getDirectoryForFile(ap.getSource()));
       sparser.parseConformancePackage(ap, definitions, Utilities.getDirectoryForFile(ap.getSource()));
     } else // if (ap.getSourceType() == ConformancePackageSourceType.Bundle) {
-      parseConformanceDocument(ap, ap.getId(), new File(ap.getSource()));
+      parseConformanceDocument(ap, ap.getId(), new File(ap.getSource()), ap.getCategory());
   }
 	
 	private void loadGlobalConceptDomains() throws Exception {
@@ -492,11 +526,20 @@ public class SourceParser {
 		    } else if (new File(Utilities.appendSlash(termDir)+cd.getReference()+".xml").exists()) {
 		      XmlParser p = new XmlParser();
 		      FileInputStream input = new FileInputStream(Utilities.appendSlash(termDir)+cd.getReference()+".xml");
-		      cd.setReferredValueSet((ValueSet) p.parse(input));
+		      cd.setReferredValueSet(ValueSetUtilities.makeShareable((ValueSet) p.parse(input)));
+		      if (!cd.getReferredValueSet().hasExperimental())
+		        cd.getReferredValueSet().setExperimental(true);
+          if (!cd.getReferredValueSet().hasVersion())
+            cd.getReferredValueSet().setVersion(version);
 		    } else if (new File(Utilities.appendSlash(termDir)+cd.getReference()+".json").exists()) {
 		      JsonParser p = new JsonParser();
 		      FileInputStream input = new FileInputStream(Utilities.appendSlash(termDir)+cd.getReference()+".json");
-		      cd.setReferredValueSet((ValueSet) p.parse(input));
+		      cd.setReferredValueSet(ValueSetUtilities.makeShareable((ValueSet) p.parse(input)));
+          cd.getReferredValueSet().setExperimental(true);
+          if (!cd.getReferredValueSet().hasExperimental())
+            cd.getReferredValueSet().setExperimental(true);
+          if (!cd.getReferredValueSet().hasVersion())
+            cd.getReferredValueSet().setVersion(version);
 		    } else
 		      throw new Exception("Unable to find source for "+cd.getReference()+" ("+Utilities.appendSlash(termDir)+cd.getReference()+".xml/json)");
 		    if (cd.getReferredValueSet().getId() == null)
@@ -556,7 +599,7 @@ public class SourceParser {
 		  TypeRef t = ts.get(0);
 		  File csv = new CSFile(dtDir + t.getName().toLowerCase() + ".xml");
 		  if (csv.exists()) {
-		    SpreadsheetParser p = new SpreadsheetParser(new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions);
+		    SpreadsheetParser p = new SpreadsheetParser("core", new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions, pkp, true);
 		    org.hl7.fhir.definitions.model.TypeDefn el = p.parseCompositeType();
 		    map.put(t.getName(), el);
 		    el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
@@ -600,8 +643,8 @@ public class SourceParser {
     String folder = n;
 		File spreadsheet = new CSFile((srcDir) + folder + File.separatorChar + n + "-spreadsheet.xml");
 
-		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(
-				spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, isAbstract, extensionDefinitions);
+		SpreadsheetParser sparser = new SpreadsheetParser("core", new CSFileInputStream(
+				spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, isAbstract, extensionDefinitions, pkp, false);
 		ResourceDefn root;
 		try {
 		  root = sparser.parseResource();

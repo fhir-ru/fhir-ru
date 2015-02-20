@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -69,7 +69,7 @@ public class Alert extends DomainResource {
           return ACTIVE;
         if ("inactive".equals(codeString))
           return INACTIVE;
-        if ("entered in error".equals(codeString))
+        if ("entered-in-error".equals(codeString))
           return ENTEREDINERROR;
         throw new Exception("Unknown AlertStatus code '"+codeString+"'");
         }
@@ -77,7 +77,7 @@ public class Alert extends DomainResource {
           switch (this) {
             case ACTIVE: return "active";
             case INACTIVE: return "inactive";
-            case ENTEREDINERROR: return "entered in error";
+            case ENTEREDINERROR: return "entered-in-error";
             default: return "?";
           }
         }
@@ -101,7 +101,7 @@ public class Alert extends DomainResource {
           switch (this) {
             case ACTIVE: return "active";
             case INACTIVE: return "inactive";
-            case ENTEREDINERROR: return "entered in error";
+            case ENTEREDINERROR: return "entered-in-error";
             default: return "?";
           }
         }
@@ -116,7 +116,7 @@ public class Alert extends DomainResource {
           return AlertStatus.ACTIVE;
         if ("inactive".equals(codeString))
           return AlertStatus.INACTIVE;
-        if ("entered in error".equals(codeString))
+        if ("entered-in-error".equals(codeString))
           return AlertStatus.ENTEREDINERROR;
         throw new IllegalArgumentException("Unknown AlertStatus code '"+codeString+"'");
         }
@@ -126,7 +126,7 @@ public class Alert extends DomainResource {
       if (code == AlertStatus.INACTIVE)
         return "inactive";
       if (code == AlertStatus.ENTEREDINERROR)
-        return "entered in error";
+        return "entered-in-error";
       return "?";
       }
     }
@@ -149,7 +149,7 @@ public class Alert extends DomainResource {
      * Supports basic workflow.
      */
     @Child(name="status", type={CodeType.class}, order=1, min=1, max=1)
-    @Description(shortDefinition="active | inactive | entered in error", formalDefinition="Supports basic workflow." )
+    @Description(shortDefinition="active | inactive | entered-in-error", formalDefinition="Supports basic workflow." )
     protected Enumeration<AlertStatus> status;
 
     /**
@@ -177,19 +177,19 @@ public class Alert extends DomainResource {
     protected Resource authorTarget;
 
     /**
-     * The textual component of the alert to display to the user.
+     * The coded value or textual component of the alert to display to the user.
      */
-    @Child(name="note", type={StringType.class}, order=4, min=1, max=1)
-    @Description(shortDefinition="Text of alert", formalDefinition="The textual component of the alert to display to the user." )
-    protected StringType note;
+    @Child(name="note", type={CodeableConcept.class}, order=4, min=1, max=1)
+    @Description(shortDefinition="A coded value or text string to represent the meaning of alert", formalDefinition="The coded value or textual component of the alert to display to the user." )
+    protected CodeableConcept note;
 
-    private static final long serialVersionUID = -655685828L;
+    private static final long serialVersionUID = -1519932996L;
 
     public Alert() {
       super();
     }
 
-    public Alert(Enumeration<AlertStatus> status, Reference subject, StringType note) {
+    public Alert(Enumeration<AlertStatus> status, Reference subject, CodeableConcept note) {
       super();
       this.status = status;
       this.subject = subject;
@@ -379,19 +379,15 @@ public class Alert extends DomainResource {
     }
 
     /**
-     * @return {@link #note} (The textual component of the alert to display to the user.). This is the underlying object with id, value and extensions. The accessor "getNote" gives direct access to the value
+     * @return {@link #note} (The coded value or textual component of the alert to display to the user.)
      */
-    public StringType getNoteElement() { 
+    public CodeableConcept getNote() { 
       if (this.note == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Alert.note");
         else if (Configuration.doAutoCreate())
-          this.note = new StringType(); // bb
+          this.note = new CodeableConcept(); // cc
       return this.note;
-    }
-
-    public boolean hasNoteElement() { 
-      return this.note != null && !this.note.isEmpty();
     }
 
     public boolean hasNote() { 
@@ -399,27 +395,10 @@ public class Alert extends DomainResource {
     }
 
     /**
-     * @param value {@link #note} (The textual component of the alert to display to the user.). This is the underlying object with id, value and extensions. The accessor "getNote" gives direct access to the value
+     * @param value {@link #note} (The coded value or textual component of the alert to display to the user.)
      */
-    public Alert setNoteElement(StringType value) { 
+    public Alert setNote(CodeableConcept value) { 
       this.note = value;
-      return this;
-    }
-
-    /**
-     * @return The textual component of the alert to display to the user.
-     */
-    public String getNote() { 
-      return this.note == null ? null : this.note.getValue();
-    }
-
-    /**
-     * @param value The textual component of the alert to display to the user.
-     */
-    public Alert setNote(String value) { 
-        if (this.note == null)
-          this.note = new StringType();
-        this.note.setValue(value);
       return this;
     }
 
@@ -430,7 +409,7 @@ public class Alert extends DomainResource {
         childrenList.add(new Property("status", "code", "Supports basic workflow.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("subject", "Reference(Patient)", "The person who this alert concerns.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("author", "Reference(Practitioner|Patient|Device)", "The person or device that created the alert.", 0, java.lang.Integer.MAX_VALUE, author));
-        childrenList.add(new Property("note", "string", "The textual component of the alert to display to the user.", 0, java.lang.Integer.MAX_VALUE, note));
+        childrenList.add(new Property("note", "CodeableConcept", "The coded value or textual component of the alert to display to the user.", 0, java.lang.Integer.MAX_VALUE, note));
       }
 
       public Alert copy() {
@@ -451,6 +430,28 @@ public class Alert extends DomainResource {
 
       protected Alert typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Alert))
+          return false;
+        Alert o = (Alert) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(category, o.category, true) && compareDeep(status, o.status, true)
+           && compareDeep(subject, o.subject, true) && compareDeep(author, o.author, true) && compareDeep(note, o.note, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Alert))
+          return false;
+        Alert o = (Alert) other;
+        return compareValues(status, o.status, true);
       }
 
       public boolean isEmpty() {

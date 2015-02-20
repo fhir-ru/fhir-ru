@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -499,13 +499,9 @@ public class Slot extends DomainResource {
      * @param value This slot has already been overbooked, appointments are unlikely to be accepted for this time.
      */
     public Slot setOverbooked(boolean value) { 
-      if (value == false)
-        this.overbooked = null;
-      else {
         if (this.overbooked == null)
           this.overbooked = new BooleanType();
         this.overbooked.setValue(value);
-      }
       return this;
     }
 
@@ -641,6 +637,31 @@ public class Slot extends DomainResource {
 
       protected Slot typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Slot))
+          return false;
+        Slot o = (Slot) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(type, o.type, true) && compareDeep(schedule, o.schedule, true)
+           && compareDeep(freeBusyType, o.freeBusyType, true) && compareDeep(start, o.start, true) && compareDeep(end, o.end, true)
+           && compareDeep(overbooked, o.overbooked, true) && compareDeep(comment, o.comment, true) && compareDeep(lastModified, o.lastModified, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Slot))
+          return false;
+        Slot o = (Slot) other;
+        return compareValues(freeBusyType, o.freeBusyType, true) && compareValues(start, o.start, true) && compareValues(end, o.end, true)
+           && compareValues(overbooked, o.overbooked, true) && compareValues(comment, o.comment, true) && compareValues(lastModified, o.lastModified, true)
+          ;
       }
 
       public boolean isEmpty() {

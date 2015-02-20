@@ -37,11 +37,11 @@ public class TableGenerator extends BaseGenerator {
     row.getCells().add(gen.new Cell(null, dictLinks() ? pageName+"#"+path.replace("[", "_").replace("]", "_") : null, e.getName(), e.getDefinition(), null));
     Cell gc = gen.new Cell();
     row.getCells().add(gc);
-    if (e.isMustSupport()) 
+    if (e.hasMustSupport() && e.isMustSupport()) 
       gc.addImage("mustsupport.png", "This element must be supported", "S");
     if (e.isModifier()) 
       gc.addImage("modifier.png", "This element is a modifier element", "M");
-    if (e.isSummaryItem()) 
+    if (e.isSummary()) 
       gc.addImage("summary.png", "This element is included in summaries", "Σ");
     if (!e.getInvariants().isEmpty() || !e.getStatedInvariants().isEmpty()) 
       gc.addImage("lock.png", "This element has or is affected by some invariants", "I");
@@ -88,7 +88,7 @@ public class TableGenerator extends BaseGenerator {
             row.setIcon("icon_extension_simple.png", HeirarchicalTableGenerator.TEXT_ICON_EXTENSION);
           else
             row.setIcon("icon_datatype.gif", HeirarchicalTableGenerator.TEXT_ICON_DATATYPE);
-          c = gen.new Cell(null, GeneratorUtils.getSrcFile(t, false)+".html#"+t.replace("*", "open"), t, null, null);
+          c = gen.new Cell(null, definitions.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null);
         }
         row.getCells().add(c);
       } else {
@@ -98,7 +98,7 @@ public class TableGenerator extends BaseGenerator {
       }
     }
       
-    Cell cc = gen.new Cell(Utilities.isURL(e.getShortDefn()) ? e.getShortDefn() : null, null, e.getShortDefn(), null, null);
+    Cell cc = gen.new Cell(null, Utilities.isURL(e.getShortDefn()) ? e.getShortDefn() : null, e.getShortDefn(), null, null);
     row.getCells().add(cc);
     
     // constraints
@@ -160,7 +160,7 @@ public class TableGenerator extends BaseGenerator {
           choicerow.getCells().add(gen.new Cell());
           choicerow.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null));
           choicerow.setIcon("icon_datatype.gif", HeirarchicalTableGenerator.TEXT_ICON_DATATYPE);
-          choicerow.getCells().add(gen.new Cell(null, GeneratorUtils.getSrcFile(t, false)+".html#"+t.replace("*", "open"), t, null, null));
+          choicerow.getCells().add(gen.new Cell(null, definitions.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null));
         }
       
         choicerow.getCells().add(gen.new Cell());

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -81,7 +81,7 @@ public class Composition extends DomainResource {
           return APPENDED;
         if ("amended".equals(codeString))
           return AMENDED;
-        if ("entered in error".equals(codeString))
+        if ("entered-in-error".equals(codeString))
           return ENTEREDINERROR;
         throw new Exception("Unknown CompositionStatus code '"+codeString+"'");
         }
@@ -91,7 +91,7 @@ public class Composition extends DomainResource {
             case FINAL: return "final";
             case APPENDED: return "appended";
             case AMENDED: return "amended";
-            case ENTEREDINERROR: return "entered in error";
+            case ENTEREDINERROR: return "entered-in-error";
             default: return "?";
           }
         }
@@ -121,7 +121,7 @@ public class Composition extends DomainResource {
             case FINAL: return "final";
             case APPENDED: return "appended";
             case AMENDED: return "amended";
-            case ENTEREDINERROR: return "entered in error";
+            case ENTEREDINERROR: return "entered-in-error";
             default: return "?";
           }
         }
@@ -140,7 +140,7 @@ public class Composition extends DomainResource {
           return CompositionStatus.APPENDED;
         if ("amended".equals(codeString))
           return CompositionStatus.AMENDED;
-        if ("entered in error".equals(codeString))
+        if ("entered-in-error".equals(codeString))
           return CompositionStatus.ENTEREDINERROR;
         throw new IllegalArgumentException("Unknown CompositionStatus code '"+codeString+"'");
         }
@@ -154,7 +154,7 @@ public class Composition extends DomainResource {
       if (code == CompositionStatus.AMENDED)
         return "amended";
       if (code == CompositionStatus.ENTEREDINERROR)
-        return "entered in error";
+        return "entered-in-error";
       return "?";
       }
     }
@@ -455,6 +455,27 @@ public class Composition extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof CompositionAttesterComponent))
+          return false;
+        CompositionAttesterComponent o = (CompositionAttesterComponent) other;
+        return compareDeep(mode, o.mode, true) && compareDeep(time, o.time, true) && compareDeep(party, o.party, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof CompositionAttesterComponent))
+          return false;
+        CompositionAttesterComponent o = (CompositionAttesterComponent) other;
+        return compareValues(mode, o.mode, true) && compareValues(time, o.time, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (mode == null || mode.isEmpty()) && (time == null || time.isEmpty())
            && (party == null || party.isEmpty());
@@ -611,6 +632,27 @@ public class Composition extends DomainResource {
             dst.detail.add(i.copy());
         };
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof CompositionEventComponent))
+          return false;
+        CompositionEventComponent o = (CompositionEventComponent) other;
+        return compareDeep(code, o.code, true) && compareDeep(period, o.period, true) && compareDeep(detail, o.detail, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof CompositionEventComponent))
+          return false;
+        CompositionEventComponent o = (CompositionEventComponent) other;
+        return true;
       }
 
       public boolean isEmpty() {
@@ -825,6 +867,27 @@ public class Composition extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof SectionComponent))
+          return false;
+        SectionComponent o = (SectionComponent) other;
+        return compareDeep(title, o.title, true) && compareDeep(code, o.code, true) && compareDeep(section, o.section, true)
+           && compareDeep(content, o.content, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof SectionComponent))
+          return false;
+        SectionComponent o = (SectionComponent) other;
+        return compareValues(title, o.title, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (title == null || title.isEmpty()) && (code == null || code.isEmpty())
            && (section == null || section.isEmpty()) && (content == null || content.isEmpty());
@@ -871,7 +934,7 @@ public class Composition extends DomainResource {
      * The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.
      */
     @Child(name="status", type={CodeType.class}, order=4, min=1, max=1)
-    @Description(shortDefinition="preliminary | final | appended | amended | entered in error", formalDefinition="The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document." )
+    @Description(shortDefinition="preliminary | final | appended | amended | entered-in-error", formalDefinition="The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document." )
     protected Enumeration<CompositionStatus> status;
 
     /**
@@ -1514,6 +1577,32 @@ public class Composition extends DomainResource {
         return copy();
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Composition))
+          return false;
+        Composition o = (Composition) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(date, o.date, true) && compareDeep(type, o.type, true)
+           && compareDeep(class_, o.class_, true) && compareDeep(title, o.title, true) && compareDeep(status, o.status, true)
+           && compareDeep(confidentiality, o.confidentiality, true) && compareDeep(subject, o.subject, true)
+           && compareDeep(author, o.author, true) && compareDeep(attester, o.attester, true) && compareDeep(custodian, o.custodian, true)
+           && compareDeep(event, o.event, true) && compareDeep(encounter, o.encounter, true) && compareDeep(section, o.section, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Composition))
+          return false;
+        Composition o = (Composition) other;
+        return compareValues(date, o.date, true) && compareValues(title, o.title, true) && compareValues(status, o.status, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (date == null || date.isEmpty())
            && (type == null || type.isEmpty()) && (class_ == null || class_.isEmpty()) && (title == null || title.isEmpty())
@@ -1530,18 +1619,18 @@ public class Composition extends DomainResource {
 
   @SearchParamDefinition(name="section-code", path="Composition.section.code", description="Classification of section (recommended)", type="token" )
   public static final String SP_SECTIONCODE = "section-code";
-  @SearchParamDefinition(name="status", path="Composition.status", description="preliminary | final | appended | amended | entered in error", type="token" )
+  @SearchParamDefinition(name="status", path="Composition.status", description="preliminary | final | appended | amended | entered-in-error", type="token" )
   public static final String SP_STATUS = "status";
   @SearchParamDefinition(name="subject", path="Composition.subject", description="Who and/or what the composition is about", type="reference" )
   public static final String SP_SUBJECT = "subject";
   @SearchParamDefinition(name="class", path="Composition.class", description="Categorization of Composition", type="token" )
   public static final String SP_CLASS = "class";
+  @SearchParamDefinition(name="period", path="Composition.event.period", description="The period covered by the documentation", type="date" )
+  public static final String SP_PERIOD = "period";
   @SearchParamDefinition(name="type", path="Composition.type", description="Kind of composition (LOINC if possible)", type="token" )
   public static final String SP_TYPE = "type";
   @SearchParamDefinition(name="date", path="Composition.date", description="Composition editing time", type="date" )
   public static final String SP_DATE = "date";
-  @SearchParamDefinition(name="period", path="Composition.event.period", description="The period covered by the documentation", type="date" )
-  public static final String SP_PERIOD = "period";
   @SearchParamDefinition(name="section", path="Composition.section.content", description="The Content of the section", type="reference" )
   public static final String SP_SECTION = "section";
   @SearchParamDefinition(name="author", path="Composition.author", description="Who and/or what authored the composition", type="reference" )

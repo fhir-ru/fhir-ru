@@ -100,10 +100,8 @@ public class ValidationEngine {
 
     if (!noSchematron) {
     	// 2. schematron validation
-    	String sch = doc.getDocumentElement().getNodeName().toLowerCase();
-    	if (sch.equals("feed"))
-    		sch = "fhir-atom";
-    	byte[] tmp = Utilities.saxonTransform(definitions, definitions.get(sch+".sch"), definitions.get("iso_svrl_for_xslt2.xsl"));
+    	String sch = "fhir-invariants.sch";
+    	byte[] tmp = Utilities.saxonTransform(definitions, definitions.get(sch), definitions.get("iso_svrl_for_xslt2.xsl"));
     	byte[] out = Utilities.saxonTransform(definitions, source, tmp);
     	processSchematronOutput(out);
     }
@@ -120,11 +118,11 @@ public class ValidationEngine {
     InstanceValidator validator = new InstanceValidator(context);
 
 		if (profile != null)
-      outputs.addAll(validator.validate(doc.getDocumentElement(), profile));
+      outputs.addAll(validator.validate(doc, profile));
     else if (profileURI != null)
-      outputs.addAll(validator.validate(doc.getDocumentElement(), profileURI));
+      outputs.addAll(validator.validate(doc, profileURI));
     else
-      outputs.addAll(validator.validate(doc.getDocumentElement()));
+      outputs.addAll(validator.validate(doc));
     
     new XmlParser().parse(new ByteArrayInputStream(source));
         
@@ -154,9 +152,8 @@ public class ValidationEngine {
   }
 
   private Schema readSchema() throws SAXException {
-    StreamSource[] sources = new StreamSource[2];
+    StreamSource[] sources = new StreamSource[1];
     sources[0] = new StreamSource(new ByteArrayInputStream(definitions.get("fhir-all.xsd")));
-    sources[1] = new StreamSource(new ByteArrayInputStream(definitions.get("fhir-atom.xsd")));
 
     SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
     schemaFactory.setErrorHandler(new ValidationErrorHandler(outputs));

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -177,6 +177,26 @@ public class Binary extends Resource {
 
       protected Binary typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Binary))
+          return false;
+        Binary o = (Binary) other;
+        return compareDeep(contentType, o.contentType, true) && compareDeep(content, o.content, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Binary))
+          return false;
+        Binary o = (Binary) other;
+        return compareValues(contentType, o.contentType, true) && compareValues(content, o.content, true);
       }
 
       public boolean isEmpty() {

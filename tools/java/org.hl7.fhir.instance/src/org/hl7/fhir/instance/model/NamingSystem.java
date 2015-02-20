@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -488,13 +488,9 @@ public class NamingSystem extends DomainResource {
          * @param value Indicates whether this identifier is the "preferred" identifier of this type.
          */
         public NamingSystemUniqueIdComponent setPreferred(boolean value) { 
-          if (value == false)
-            this.preferred = null;
-          else {
             if (this.preferred == null)
               this.preferred = new BooleanType();
             this.preferred.setValue(value);
-          }
           return this;
         }
 
@@ -538,6 +534,28 @@ public class NamingSystem extends DomainResource {
         dst.preferred = preferred == null ? null : preferred.copy();
         dst.period = period == null ? null : period.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof NamingSystemUniqueIdComponent))
+          return false;
+        NamingSystemUniqueIdComponent o = (NamingSystemUniqueIdComponent) other;
+        return compareDeep(type, o.type, true) && compareDeep(value, o.value, true) && compareDeep(preferred, o.preferred, true)
+           && compareDeep(period, o.period, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof NamingSystemUniqueIdComponent))
+          return false;
+        NamingSystemUniqueIdComponent o = (NamingSystemUniqueIdComponent) other;
+        return compareValues(type, o.type, true) && compareValues(value, o.value, true) && compareValues(preferred, o.preferred, true)
+          ;
       }
 
       public boolean isEmpty() {
@@ -639,6 +657,26 @@ public class NamingSystem extends DomainResource {
             dst.telecom.add(i.copy());
         };
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof NamingSystemContactComponent))
+          return false;
+        NamingSystemContactComponent o = (NamingSystemContactComponent) other;
+        return compareDeep(name, o.name, true) && compareDeep(telecom, o.telecom, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof NamingSystemContactComponent))
+          return false;
+        NamingSystemContactComponent o = (NamingSystemContactComponent) other;
+        return true;
       }
 
       public boolean isEmpty() {
@@ -1234,6 +1272,31 @@ public class NamingSystem extends DomainResource {
 
       protected NamingSystem typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof NamingSystem))
+          return false;
+        NamingSystem o = (NamingSystem) other;
+        return compareDeep(type, o.type, true) && compareDeep(name, o.name, true) && compareDeep(status, o.status, true)
+           && compareDeep(country, o.country, true) && compareDeep(category, o.category, true) && compareDeep(responsible, o.responsible, true)
+           && compareDeep(description, o.description, true) && compareDeep(usage, o.usage, true) && compareDeep(uniqueId, o.uniqueId, true)
+           && compareDeep(contact, o.contact, true) && compareDeep(replacedBy, o.replacedBy, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof NamingSystem))
+          return false;
+        NamingSystem o = (NamingSystem) other;
+        return compareValues(type, o.type, true) && compareValues(name, o.name, true) && compareValues(status, o.status, true)
+           && compareValues(country, o.country, true) && compareValues(responsible, o.responsible, true) && compareValues(description, o.description, true)
+           && compareValues(usage, o.usage, true);
       }
 
       public boolean isEmpty() {

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -155,7 +155,7 @@ public class CarePlan extends DomainResource {
         public static CarePlanGoalStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return INPROGRESS;
         if ("achieved".equals(codeString))
           return ACHIEVED;
@@ -167,7 +167,7 @@ public class CarePlan extends DomainResource {
         }
         public String toCode() {
           switch (this) {
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case ACHIEVED: return "achieved";
             case SUSTAINING: return "sustaining";
             case CANCELLED: return "cancelled";
@@ -194,7 +194,7 @@ public class CarePlan extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case ACHIEVED: return "achieved";
             case SUSTAINING: return "sustaining";
             case CANCELLED: return "cancelled";
@@ -208,7 +208,7 @@ public class CarePlan extends DomainResource {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return CarePlanGoalStatus.INPROGRESS;
         if ("achieved".equals(codeString))
           return CarePlanGoalStatus.ACHIEVED;
@@ -220,7 +220,7 @@ public class CarePlan extends DomainResource {
         }
     public String toCode(CarePlanGoalStatus code) {
       if (code == CarePlanGoalStatus.INPROGRESS)
-        return "in progress";
+        return "in-progress";
       if (code == CarePlanGoalStatus.ACHIEVED)
         return "achieved";
       if (code == CarePlanGoalStatus.SUSTAINING)
@@ -263,13 +263,13 @@ public class CarePlan extends DomainResource {
         public static CarePlanActivityStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("not started".equals(codeString))
+        if ("not-started".equals(codeString))
           return NOTSTARTED;
         if ("scheduled".equals(codeString))
           return SCHEDULED;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return INPROGRESS;
-        if ("on hold".equals(codeString))
+        if ("on-hold".equals(codeString))
           return ONHOLD;
         if ("completed".equals(codeString))
           return COMPLETED;
@@ -279,10 +279,10 @@ public class CarePlan extends DomainResource {
         }
         public String toCode() {
           switch (this) {
-            case NOTSTARTED: return "not started";
+            case NOTSTARTED: return "not-started";
             case SCHEDULED: return "scheduled";
-            case INPROGRESS: return "in progress";
-            case ONHOLD: return "on hold";
+            case INPROGRESS: return "in-progress";
+            case ONHOLD: return "on-hold";
             case COMPLETED: return "completed";
             case CANCELLED: return "cancelled";
             default: return "?";
@@ -312,10 +312,10 @@ public class CarePlan extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case NOTSTARTED: return "not started";
+            case NOTSTARTED: return "not-started";
             case SCHEDULED: return "scheduled";
-            case INPROGRESS: return "in progress";
-            case ONHOLD: return "on hold";
+            case INPROGRESS: return "in-progress";
+            case ONHOLD: return "on-hold";
             case COMPLETED: return "completed";
             case CANCELLED: return "cancelled";
             default: return "?";
@@ -328,13 +328,13 @@ public class CarePlan extends DomainResource {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("not started".equals(codeString))
+        if ("not-started".equals(codeString))
           return CarePlanActivityStatus.NOTSTARTED;
         if ("scheduled".equals(codeString))
           return CarePlanActivityStatus.SCHEDULED;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return CarePlanActivityStatus.INPROGRESS;
-        if ("on hold".equals(codeString))
+        if ("on-hold".equals(codeString))
           return CarePlanActivityStatus.ONHOLD;
         if ("completed".equals(codeString))
           return CarePlanActivityStatus.COMPLETED;
@@ -344,13 +344,13 @@ public class CarePlan extends DomainResource {
         }
     public String toCode(CarePlanActivityStatus code) {
       if (code == CarePlanActivityStatus.NOTSTARTED)
-        return "not started";
+        return "not-started";
       if (code == CarePlanActivityStatus.SCHEDULED)
         return "scheduled";
       if (code == CarePlanActivityStatus.INPROGRESS)
-        return "in progress";
+        return "in-progress";
       if (code == CarePlanActivityStatus.ONHOLD)
-        return "on hold";
+        return "on-hold";
       if (code == CarePlanActivityStatus.COMPLETED)
         return "completed";
       if (code == CarePlanActivityStatus.CANCELLED)
@@ -610,6 +610,26 @@ public class CarePlan extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof CarePlanParticipantComponent))
+          return false;
+        CarePlanParticipantComponent o = (CarePlanParticipantComponent) other;
+        return compareDeep(role, o.role, true) && compareDeep(member, o.member, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof CarePlanParticipantComponent))
+          return false;
+        CarePlanParticipantComponent o = (CarePlanParticipantComponent) other;
+        return true;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (role == null || role.isEmpty()) && (member == null || member.isEmpty())
           ;
@@ -630,7 +650,7 @@ public class CarePlan extends DomainResource {
          * Indicates whether the goal has been reached and is still considered relevant.
          */
         @Child(name="status", type={CodeType.class}, order=2, min=0, max=1)
-        @Description(shortDefinition="in progress | achieved | sustaining | cancelled", formalDefinition="Indicates whether the goal has been reached and is still considered relevant." )
+        @Description(shortDefinition="in-progress | achieved | sustaining | cancelled", formalDefinition="Indicates whether the goal has been reached and is still considered relevant." )
         protected Enumeration<CarePlanGoalStatus> status;
 
         /**
@@ -879,6 +899,28 @@ public class CarePlan extends DomainResource {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof CarePlanGoalComponent))
+          return false;
+        CarePlanGoalComponent o = (CarePlanGoalComponent) other;
+        return compareDeep(description, o.description, true) && compareDeep(status, o.status, true) && compareDeep(notes, o.notes, true)
+           && compareDeep(concern, o.concern, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof CarePlanGoalComponent))
+          return false;
+        CarePlanGoalComponent o = (CarePlanGoalComponent) other;
+        return compareValues(description, o.description, true) && compareValues(status, o.status, true) && compareValues(notes, o.notes, true)
+          ;
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (description == null || description.isEmpty()) && (status == null || status.isEmpty())
            && (notes == null || notes.isEmpty()) && (concern == null || concern.isEmpty());
@@ -899,7 +941,7 @@ public class CarePlan extends DomainResource {
          * Identifies what progress is being made for the specific activity.
          */
         @Child(name="status", type={CodeType.class}, order=2, min=0, max=1)
-        @Description(shortDefinition="not started | scheduled | in progress | on hold | completed | cancelled", formalDefinition="Identifies what progress is being made for the specific activity." )
+        @Description(shortDefinition="not-started | scheduled | in-progress | on-hold | completed | cancelled", formalDefinition="Identifies what progress is being made for the specific activity." )
         protected Enumeration<CarePlanActivityStatus> status;
 
         /**
@@ -1287,6 +1329,29 @@ public class CarePlan extends DomainResource {
         dst.detail = detail == null ? null : detail.copy();
         dst.simple = simple == null ? null : simple.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof CarePlanActivityComponent))
+          return false;
+        CarePlanActivityComponent o = (CarePlanActivityComponent) other;
+        return compareDeep(goal, o.goal, true) && compareDeep(status, o.status, true) && compareDeep(prohibited, o.prohibited, true)
+           && compareDeep(actionResulting, o.actionResulting, true) && compareDeep(notes, o.notes, true) && compareDeep(detail, o.detail, true)
+           && compareDeep(simple, o.simple, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof CarePlanActivityComponent))
+          return false;
+        CarePlanActivityComponent o = (CarePlanActivityComponent) other;
+        return compareValues(goal, o.goal, true) && compareValues(status, o.status, true) && compareValues(prohibited, o.prohibited, true)
+           && compareValues(notes, o.notes, true);
       }
 
       public boolean isEmpty() {
@@ -1753,6 +1818,29 @@ public class CarePlan extends DomainResource {
         dst.quantity = quantity == null ? null : quantity.copy();
         dst.details = details == null ? null : details.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof CarePlanActivitySimpleComponent))
+          return false;
+        CarePlanActivitySimpleComponent o = (CarePlanActivitySimpleComponent) other;
+        return compareDeep(category, o.category, true) && compareDeep(code, o.code, true) && compareDeep(scheduled, o.scheduled, true)
+           && compareDeep(location, o.location, true) && compareDeep(performer, o.performer, true) && compareDeep(product, o.product, true)
+           && compareDeep(dailyAmount, o.dailyAmount, true) && compareDeep(quantity, o.quantity, true) && compareDeep(details, o.details, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof CarePlanActivitySimpleComponent))
+          return false;
+        CarePlanActivitySimpleComponent o = (CarePlanActivitySimpleComponent) other;
+        return compareValues(category, o.category, true) && compareValues(details, o.details, true);
       }
 
       public boolean isEmpty() {
@@ -2289,6 +2377,30 @@ public class CarePlan extends DomainResource {
 
       protected CarePlan typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof CarePlan))
+          return false;
+        CarePlan o = (CarePlan) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(patient, o.patient, true) && compareDeep(status, o.status, true)
+           && compareDeep(period, o.period, true) && compareDeep(modified, o.modified, true) && compareDeep(concern, o.concern, true)
+           && compareDeep(participant, o.participant, true) && compareDeep(goal, o.goal, true) && compareDeep(activity, o.activity, true)
+           && compareDeep(notes, o.notes, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof CarePlan))
+          return false;
+        CarePlan o = (CarePlan) other;
+        return compareValues(status, o.status, true) && compareValues(modified, o.modified, true) && compareValues(notes, o.notes, true)
+          ;
       }
 
       public boolean isEmpty() {

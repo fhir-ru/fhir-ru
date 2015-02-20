@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -580,20 +580,16 @@ public class Media extends DomainResource {
      * @return Height of the image in pixels(photo/video).
      */
     public int getHeight() { 
-      return this.height == null ? null : this.height.getValue();
+      return this.height == null ? 0 : this.height.getValue();
     }
 
     /**
      * @param value Height of the image in pixels(photo/video).
      */
     public Media setHeight(int value) { 
-      if (value == -1)
-        this.height = null;
-      else {
         if (this.height == null)
           this.height = new IntegerType();
         this.height.setValue(value);
-      }
       return this;
     }
 
@@ -629,20 +625,16 @@ public class Media extends DomainResource {
      * @return Width of the image in pixels (photo/video).
      */
     public int getWidth() { 
-      return this.width == null ? null : this.width.getValue();
+      return this.width == null ? 0 : this.width.getValue();
     }
 
     /**
      * @param value Width of the image in pixels (photo/video).
      */
     public Media setWidth(int value) { 
-      if (value == -1)
-        this.width = null;
-      else {
         if (this.width == null)
           this.width = new IntegerType();
         this.width.setValue(value);
-      }
       return this;
     }
 
@@ -678,20 +670,16 @@ public class Media extends DomainResource {
      * @return The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required.
      */
     public int getFrames() { 
-      return this.frames == null ? null : this.frames.getValue();
+      return this.frames == null ? 0 : this.frames.getValue();
     }
 
     /**
      * @param value The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required.
      */
     public Media setFrames(int value) { 
-      if (value == -1)
-        this.frames = null;
-      else {
         if (this.frames == null)
           this.frames = new IntegerType();
         this.frames.setValue(value);
-      }
       return this;
     }
 
@@ -727,20 +715,16 @@ public class Media extends DomainResource {
      * @return The duration of the recording in seconds - for audio and video.
      */
     public int getDuration() { 
-      return this.duration == null ? null : this.duration.getValue();
+      return this.duration == null ? 0 : this.duration.getValue();
     }
 
     /**
      * @param value The duration of the recording in seconds - for audio and video.
      */
     public Media setDuration(int value) { 
-      if (value == -1)
-        this.duration = null;
-      else {
         if (this.duration == null)
           this.duration = new IntegerType();
         this.duration.setValue(value);
-      }
       return this;
     }
 
@@ -810,6 +794,32 @@ public class Media extends DomainResource {
 
       protected Media typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Media))
+          return false;
+        Media o = (Media) other;
+        return compareDeep(type, o.type, true) && compareDeep(subtype, o.subtype, true) && compareDeep(identifier, o.identifier, true)
+           && compareDeep(created, o.created, true) && compareDeep(subject, o.subject, true) && compareDeep(operator, o.operator, true)
+           && compareDeep(view, o.view, true) && compareDeep(deviceName, o.deviceName, true) && compareDeep(height, o.height, true)
+           && compareDeep(width, o.width, true) && compareDeep(frames, o.frames, true) && compareDeep(duration, o.duration, true)
+           && compareDeep(content, o.content, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Media))
+          return false;
+        Media o = (Media) other;
+        return compareValues(type, o.type, true) && compareValues(created, o.created, true) && compareValues(deviceName, o.deviceName, true)
+           && compareValues(height, o.height, true) && compareValues(width, o.width, true) && compareValues(frames, o.frames, true)
+           && compareValues(duration, o.duration, true);
       }
 
       public boolean isEmpty() {

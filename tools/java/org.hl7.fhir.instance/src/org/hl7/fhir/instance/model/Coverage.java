@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -451,20 +451,16 @@ public class Coverage extends DomainResource {
      * @return A unique identifier for a dependent under the coverage.
      */
     public int getDependent() { 
-      return this.dependent == null ? null : this.dependent.getValue();
+      return this.dependent == null ? 0 : this.dependent.getValue();
     }
 
     /**
      * @param value A unique identifier for a dependent under the coverage.
      */
     public Coverage setDependent(int value) { 
-      if (value == -1)
-        this.dependent = null;
-      else {
         if (this.dependent == null)
           this.dependent = new IntegerType();
         this.dependent.setValue(value);
-      }
       return this;
     }
 
@@ -500,20 +496,16 @@ public class Coverage extends DomainResource {
      * @return An optional counter for a particular instance of the identified coverage which increments upon each renewal.
      */
     public int getSequence() { 
-      return this.sequence == null ? null : this.sequence.getValue();
+      return this.sequence == null ? 0 : this.sequence.getValue();
     }
 
     /**
      * @param value An optional counter for a particular instance of the identified coverage which increments upon each renewal.
      */
     public Coverage setSequence(int value) { 
-      if (value == -1)
-        this.sequence = null;
-      else {
         if (this.sequence == null)
           this.sequence = new IntegerType();
         this.sequence.setValue(value);
-      }
       return this;
     }
 
@@ -680,6 +672,31 @@ public class Coverage extends DomainResource {
 
       protected Coverage typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Coverage))
+          return false;
+        Coverage o = (Coverage) other;
+        return compareDeep(issuer, o.issuer, true) && compareDeep(period, o.period, true) && compareDeep(type, o.type, true)
+           && compareDeep(identifier, o.identifier, true) && compareDeep(group, o.group, true) && compareDeep(plan, o.plan, true)
+           && compareDeep(subplan, o.subplan, true) && compareDeep(dependent, o.dependent, true) && compareDeep(sequence, o.sequence, true)
+           && compareDeep(subscriber, o.subscriber, true) && compareDeep(network, o.network, true) && compareDeep(contract, o.contract, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Coverage))
+          return false;
+        Coverage o = (Coverage) other;
+        return compareValues(group, o.group, true) && compareValues(plan, o.plan, true) && compareValues(subplan, o.subplan, true)
+           && compareValues(dependent, o.dependent, true) && compareValues(sequence, o.sequence, true);
       }
 
       public boolean isEmpty() {

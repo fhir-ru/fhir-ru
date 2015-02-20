@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -440,10 +440,10 @@ public class ElementDefinition extends Type {
         protected List<StringType> discriminator;
 
         /**
-         * A humane readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
+         * A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
          */
         @Child(name="description", type={StringType.class}, order=2, min=0, max=1)
-        @Description(shortDefinition="Text description of how slicing works (or not)", formalDefinition="A humane readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated." )
+        @Description(shortDefinition="Text description of how slicing works (or not)", formalDefinition="A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated." )
         protected StringType description;
 
         /**
@@ -526,7 +526,7 @@ public class ElementDefinition extends Type {
         }
 
         /**
-         * @return {@link #description} (A humane readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
+         * @return {@link #description} (A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
          */
         public StringType getDescriptionElement() { 
           if (this.description == null)
@@ -546,7 +546,7 @@ public class ElementDefinition extends Type {
         }
 
         /**
-         * @param value {@link #description} (A humane readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
+         * @param value {@link #description} (A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.). This is the underlying object with id, value and extensions. The accessor "getDescription" gives direct access to the value
          */
         public ElementDefinitionSlicingComponent setDescriptionElement(StringType value) { 
           this.description = value;
@@ -554,14 +554,14 @@ public class ElementDefinition extends Type {
         }
 
         /**
-         * @return A humane readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
+         * @return A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
          */
         public String getDescription() { 
           return this.description == null ? null : this.description.getValue();
         }
 
         /**
-         * @param value A humane readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
+         * @param value A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
          */
         public ElementDefinitionSlicingComponent setDescription(String value) { 
           if (Utilities.noString(value))
@@ -613,13 +613,9 @@ public class ElementDefinition extends Type {
          * @param value If the matching elements have to occur in the same order as defined in the profile.
          */
         public ElementDefinitionSlicingComponent setOrdered(boolean value) { 
-          if (value == false)
-            this.ordered = null;
-          else {
             if (this.ordered == null)
               this.ordered = new BooleanType();
             this.ordered.setValue(value);
-          }
           return this;
         }
 
@@ -671,7 +667,7 @@ public class ElementDefinition extends Type {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("discriminator", "string", "Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.", 0, java.lang.Integer.MAX_VALUE, discriminator));
-          childrenList.add(new Property("description", "string", "A humane readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.", 0, java.lang.Integer.MAX_VALUE, description));
+          childrenList.add(new Property("description", "string", "A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.", 0, java.lang.Integer.MAX_VALUE, description));
           childrenList.add(new Property("ordered", "boolean", "If the matching elements have to occur in the same order as defined in the profile.", 0, java.lang.Integer.MAX_VALUE, ordered));
           childrenList.add(new Property("rules", "code", "Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.", 0, java.lang.Integer.MAX_VALUE, rules));
         }
@@ -688,6 +684,28 @@ public class ElementDefinition extends Type {
         dst.ordered = ordered == null ? null : ordered.copy();
         dst.rules = rules == null ? null : rules.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ElementDefinitionSlicingComponent))
+          return false;
+        ElementDefinitionSlicingComponent o = (ElementDefinitionSlicingComponent) other;
+        return compareDeep(discriminator, o.discriminator, true) && compareDeep(description, o.description, true)
+           && compareDeep(ordered, o.ordered, true) && compareDeep(rules, o.rules, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ElementDefinitionSlicingComponent))
+          return false;
+        ElementDefinitionSlicingComponent o = (ElementDefinitionSlicingComponent) other;
+        return compareValues(discriminator, o.discriminator, true) && compareValues(description, o.description, true)
+           && compareValues(ordered, o.ordered, true) && compareValues(rules, o.rules, true);
       }
 
       public boolean isEmpty() {
@@ -896,6 +914,28 @@ public class ElementDefinition extends Type {
             dst.aggregation.add(i.copy());
         };
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof TypeRefComponent))
+          return false;
+        TypeRefComponent o = (TypeRefComponent) other;
+        return compareDeep(code, o.code, true) && compareDeep(profile, o.profile, true) && compareDeep(aggregation, o.aggregation, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof TypeRefComponent))
+          return false;
+        TypeRefComponent o = (TypeRefComponent) other;
+        return compareValues(code, o.code, true) && compareValues(profile, o.profile, true) && compareValues(aggregation, o.aggregation, true)
+          ;
       }
 
       public boolean isEmpty() {
@@ -1204,6 +1244,28 @@ public class ElementDefinition extends Type {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ElementDefinitionConstraintComponent))
+          return false;
+        ElementDefinitionConstraintComponent o = (ElementDefinitionConstraintComponent) other;
+        return compareDeep(key, o.key, true) && compareDeep(name, o.name, true) && compareDeep(severity, o.severity, true)
+           && compareDeep(human, o.human, true) && compareDeep(xpath, o.xpath, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ElementDefinitionConstraintComponent))
+          return false;
+        ElementDefinitionConstraintComponent o = (ElementDefinitionConstraintComponent) other;
+        return compareValues(key, o.key, true) && compareValues(name, o.name, true) && compareValues(severity, o.severity, true)
+           && compareValues(human, o.human, true) && compareValues(xpath, o.xpath, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (key == null || key.isEmpty()) && (name == null || name.isEmpty())
            && (severity == null || severity.isEmpty()) && (human == null || human.isEmpty()) && (xpath == null || xpath.isEmpty())
@@ -1505,6 +1567,28 @@ public class ElementDefinition extends Type {
         return dst;
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ElementDefinitionBindingComponent))
+          return false;
+        ElementDefinitionBindingComponent o = (ElementDefinitionBindingComponent) other;
+        return compareDeep(name, o.name, true) && compareDeep(isExtensible, o.isExtensible, true) && compareDeep(conformance, o.conformance, true)
+           && compareDeep(description, o.description, true) && compareDeep(reference, o.reference, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ElementDefinitionBindingComponent))
+          return false;
+        ElementDefinitionBindingComponent o = (ElementDefinitionBindingComponent) other;
+        return compareValues(name, o.name, true) && compareValues(isExtensible, o.isExtensible, true) && compareValues(conformance, o.conformance, true)
+           && compareValues(description, o.description, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (name == null || name.isEmpty()) && (isExtensible == null || isExtensible.isEmpty())
            && (conformance == null || conformance.isEmpty()) && (description == null || description.isEmpty())
@@ -1642,6 +1726,26 @@ public class ElementDefinition extends Type {
         dst.identity = identity == null ? null : identity.copy();
         dst.map = map == null ? null : map.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ElementDefinitionMappingComponent))
+          return false;
+        ElementDefinitionMappingComponent o = (ElementDefinitionMappingComponent) other;
+        return compareDeep(identity, o.identity, true) && compareDeep(map, o.map, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ElementDefinitionMappingComponent))
+          return false;
+        ElementDefinitionMappingComponent o = (ElementDefinitionMappingComponent) other;
+        return compareValues(identity, o.identity, true) && compareValues(map, o.map, true);
       }
 
       public boolean isEmpty() {
@@ -2298,20 +2402,16 @@ public class ElementDefinition extends Type {
      * @return The minimum number of times this element SHALL appear in the instance.
      */
     public int getMin() { 
-      return this.min == null ? null : this.min.getValue();
+      return this.min == null ? 0 : this.min.getValue();
     }
 
     /**
      * @param value The minimum number of times this element SHALL appear in the instance.
      */
     public ElementDefinition setMin(int value) { 
-      if (value == -1)
-        this.min = null;
-      else {
         if (this.min == null)
           this.min = new IntegerType();
         this.min.setValue(value);
-      }
       return this;
     }
 
@@ -2600,20 +2700,16 @@ public class ElementDefinition extends Type {
      * @return Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.
      */
     public int getMaxLength() { 
-      return this.maxLength == null ? null : this.maxLength.getValue();
+      return this.maxLength == null ? 0 : this.maxLength.getValue();
     }
 
     /**
      * @param value Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.
      */
     public ElementDefinition setMaxLength(int value) { 
-      if (value == -1)
-        this.maxLength = null;
-      else {
         if (this.maxLength == null)
           this.maxLength = new IntegerType();
         this.maxLength.setValue(value);
-      }
       return this;
     }
 
@@ -2740,13 +2836,9 @@ public class ElementDefinition extends Type {
      * @param value If true, conformant resource authors SHALL be capable of providing a value for the element and resource consumers SHALL be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported.
      */
     public ElementDefinition setMustSupport(boolean value) { 
-      if (value == false)
-        this.mustSupport = null;
-      else {
         if (this.mustSupport == null)
           this.mustSupport = new BooleanType();
         this.mustSupport.setValue(value);
-      }
       return this;
     }
 
@@ -2789,13 +2881,9 @@ public class ElementDefinition extends Type {
      * @param value If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.
      */
     public ElementDefinition setIsModifier(boolean value) { 
-      if (value == false)
-        this.isModifier = null;
-      else {
         if (this.isModifier == null)
           this.isModifier = new BooleanType();
         this.isModifier.setValue(value);
-      }
       return this;
     }
 
@@ -2838,13 +2926,9 @@ public class ElementDefinition extends Type {
      * @param value Whether the element should be included if a client requests a search with the parameter _summary=true.
      */
     public ElementDefinition setIsSummary(boolean value) { 
-      if (value == false)
-        this.isSummary = null;
-      else {
         if (this.isSummary == null)
           this.isSummary = new BooleanType();
         this.isSummary.setValue(value);
-      }
       return this;
     }
 
@@ -2990,6 +3074,40 @@ public class ElementDefinition extends Type {
 
       protected ElementDefinition typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ElementDefinition))
+          return false;
+        ElementDefinition o = (ElementDefinition) other;
+        return compareDeep(path, o.path, true) && compareDeep(representation, o.representation, true) && compareDeep(name, o.name, true)
+           && compareDeep(slicing, o.slicing, true) && compareDeep(short_, o.short_, true) && compareDeep(formal, o.formal, true)
+           && compareDeep(comments, o.comments, true) && compareDeep(requirements, o.requirements, true) && compareDeep(synonym, o.synonym, true)
+           && compareDeep(min, o.min, true) && compareDeep(max, o.max, true) && compareDeep(type, o.type, true)
+           && compareDeep(nameReference, o.nameReference, true) && compareDeep(defaultValue, o.defaultValue, true)
+           && compareDeep(meaningWhenMissing, o.meaningWhenMissing, true) && compareDeep(fixed, o.fixed, true)
+           && compareDeep(pattern, o.pattern, true) && compareDeep(example, o.example, true) && compareDeep(maxLength, o.maxLength, true)
+           && compareDeep(condition, o.condition, true) && compareDeep(constraint, o.constraint, true) && compareDeep(mustSupport, o.mustSupport, true)
+           && compareDeep(isModifier, o.isModifier, true) && compareDeep(isSummary, o.isSummary, true) && compareDeep(binding, o.binding, true)
+           && compareDeep(mapping, o.mapping, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ElementDefinition))
+          return false;
+        ElementDefinition o = (ElementDefinition) other;
+        return compareValues(path, o.path, true) && compareValues(representation, o.representation, true) && compareValues(name, o.name, true)
+           && compareValues(short_, o.short_, true) && compareValues(formal, o.formal, true) && compareValues(comments, o.comments, true)
+           && compareValues(requirements, o.requirements, true) && compareValues(synonym, o.synonym, true) && compareValues(min, o.min, true)
+           && compareValues(max, o.max, true) && compareValues(nameReference, o.nameReference, true) && compareValues(meaningWhenMissing, o.meaningWhenMissing, true)
+           && compareValues(maxLength, o.maxLength, true) && compareValues(condition, o.condition, true) && compareValues(mustSupport, o.mustSupport, true)
+           && compareValues(isModifier, o.isModifier, true) && compareValues(isSummary, o.isSummary, true);
       }
 
       public boolean isEmpty() {

@@ -47,7 +47,9 @@ import org.hl7.fhir.instance.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 
 /* 
@@ -106,23 +108,70 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
   }
   
   @Override
+  public List<ValidationMessage> validate(Document document) throws Exception {
+    List<ValidationMessage> results = new ArrayList<ValidationMessage>();
+    validate(results, document);
+    return results;
+  }
+  @Override
+  public List<ValidationMessage> validate(Document document, String profile) throws Exception {
+    List<ValidationMessage> results = new ArrayList<ValidationMessage>();
+    validate(results, document, profile);
+    return results;
+  }
+  @Override
+  public List<ValidationMessage> validate(Document document, Profile profile) throws Exception {
+    List<ValidationMessage> results = new ArrayList<ValidationMessage>();
+    validate(results, document, profile);
+    return results;
+  }
+  
+  @Override
   public void validate(List<ValidationMessage> errors, Element element) throws Exception {
-    validateResource(errors, "", new DOMWrapperElement(element), null, false);
+    validateResource(errors, "", new DOMWrapperElement(element), null, requiresResourceId, null);
   }
   @Override
   public void validate(List<ValidationMessage> errors, Element element, String profile) throws Exception {
     Profile p = context.getProfiles().get(profile);
     if (p == null)
       throw new Exception("Profile '"+profile+"' not found");
-    validateResource(errors, "", new DOMWrapperElement(element), p, false);
+    validateResource(errors, "", new DOMWrapperElement(element), p, requiresResourceId, null);
   }
   @Override
   public void validate(List<ValidationMessage> errors, Element element, Profile profile) throws Exception {
-    validateResource(errors, "", new DOMWrapperElement(element), profile, false);
+    validateResource(errors, "", new DOMWrapperElement(element), profile, requiresResourceId, null);
   }
+  
+  @Override
+  public void validate(List<ValidationMessage> errors, Document document) throws Exception {
+  	checkForProcessingInstruction(errors, document);
+    validateResource(errors, "", new DOMWrapperElement(document.getDocumentElement()), null, requiresResourceId, null);
+  }
+  @Override
+  public void validate(List<ValidationMessage> errors, Document document, String profile) throws Exception {
+  	checkForProcessingInstruction(errors, document);
+    Profile p = context.getProfiles().get(profile);
+    if (p == null)
+      throw new Exception("Profile '"+profile+"' not found");
+    validateResource(errors, "", new DOMWrapperElement(document.getDocumentElement()), p, requiresResourceId, null);
+  }
+
+  @Override
+  public void validate(List<ValidationMessage> errors, Document document, Profile profile) throws Exception {
+  	checkForProcessingInstruction(errors, document);
+    validateResource(errors, "", new DOMWrapperElement(document.getDocumentElement()), profile, requiresResourceId, null);
+  }
+  
   
   // implementation
   
+  private void checkForProcessingInstruction(List<ValidationMessage> errors, Document document) {
+	  Node node = document.getFirstChild();
+	  while (node != null) {
+	  	rule(errors, "invalid", "(document)", node.getNodeType() != Node.PROCESSING_INSTRUCTION_NODE, "No processing instructions allowed in resources");
+	  	node = node.getNextSibling();
+	  }
+  }
 
   public abstract class WrapperElement {
     public abstract WrapperElement getNamedChild(String name);
@@ -138,6 +187,8 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     public abstract boolean doesNamespace();
     
     public abstract String getText();
+		public abstract boolean hasNamespace(String string);
+		public abstract boolean hasProcessingInstruction();
   }
 
   public class DOMWrapperElement extends WrapperElement {
@@ -217,6 +268,28 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     public String getText() {
       return element.getTextContent();
     }
+
+		@Override
+    public boolean hasNamespace(String ns) {
+	    for (int i = 0; i < element.getAttributes().getLength(); i++) {
+	    	Node a = element.getAttributes().item(i);
+	    	if ((a.getNodeName().equals("xmlns") || a.getNodeName().startsWith("xmlns:")) && a.getNodeValue().equals(ns))
+	    		return true;
+	    }
+	    return false;
+    }
+
+		@Override
+    public boolean hasProcessingInstruction() {
+		  Node node = element.getFirstChild();
+		  while (node != null) {
+		  	if (node.getNodeType() == Node.PROCESSING_INSTRUCTION_NODE)
+		  		return true;
+		  	node = node.getNextSibling();
+		  }
+	    return false;
+    }
+
   }
 
   public class ChildIterator {
@@ -257,7 +330,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
       String sfx = "";
       WrapperElement n = child.getNextSibling();
       if (n != null && n.getName().equals(child.getName())) { 
-        sfx = "["+Integer.toString(lastCount)+"]";
+        sfx = "["+Integer.toString(lastCount+1)+"]";
       }
       return basePath+"/f:"+name()+sfx;
     }
@@ -284,7 +357,11 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
   /*
    * The actual base entry point
    */
-  private void validateResource(List<ValidationMessage> errors, String path, WrapperElement element, Profile profile, boolean contained) throws Exception {
+  private void validateResource(List<ValidationMessage> errors, String path, WrapperElement element, Profile profile, boolean needsId, List<WrapperElement> containers) throws Exception {
+    if (containers == null) 
+      containers = new ArrayList<InstanceValidator.WrapperElement>();
+    containers.add(element);
+
     // getting going - either we got a profile, or not.
     boolean ok;
     if (element.doesNamespace()) {
@@ -301,22 +378,24 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
       throw new Error("not done yet");
     }
     if (ok) {
-      rule(errors, "invalid", path + "/f:"+element.getName(), (element.getNamedChild("id") != null) || (!(contained || requiresResourceId)), "Resource has no id");
-      start(errors, element, profile);
+      rule(errors, "invalid", path + "/f:"+element.getName(), !needsId ||(element.getNamedChild("id") != null), "Resource has no id");
+      start(errors, path, element, profile, containers);
     }
   }
   
   // we assume that the following things are true: 
   // the instance at root is valid against the schema and schematron
   // the instance validator had no issues against the base resource profile
-  private void start(List<ValidationMessage> errors, WrapperElement element, Profile profile) throws Exception {
-    // profile is valid, and matches the resource name 
+  private void start(List<ValidationMessage> errors, String path, WrapperElement element, Profile profile, List<WrapperElement> containers) throws Exception {
+    // profile is valid, and matches the resource name
     if (rule(errors, "structure", element.getName(), profile.hasSnapshot(), "Profile has no snapshort - validation is against the snapshot, so it must be provided")) {
-      validateElement(errors, profile, null, "/f:"+element.getName(), profile.getSnapshot().getElement().get(0), null, null, element, element.getName());
+      validateElement(errors, profile, null, path+"/f:"+element.getName(), profile.getSnapshot().getElement().get(0), null, null, element, element.getName(), containers);
+
+      checkDeclaredProfiles(errors, path, element, containers);
       
       // specific known special validations 
-//      if (element.getName().equals("Query"))
-//        validateQuery(errors, element);
+      if (element.getName().equals("Bundle"))
+        validateBundle(errors, element);
     }
   }
 
@@ -333,13 +412,139 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
 //  }
 
 
+  private void checkDeclaredProfiles(List<ValidationMessage> errors, String path, WrapperElement element, List<WrapperElement> containers) throws Exception {
+    WrapperElement meta = element.getNamedChild("meta");
+    if (meta != null) {
+      List<WrapperElement> profiles = new ArrayList<InstanceValidator.WrapperElement>();
+      meta.getNamedChildren("profile", profiles);
+      int i = 0;
+      for (WrapperElement profile : profiles) {
+        String ref = profile.getAttribute("value");
+        String p = path+"/f:meta/f:profile["+Integer.toString(i)+"]";
+        if (rule(errors, "invalid", p, !Utilities.noString(ref), "Profile reference invalid")) {
+          Profile pr = context.getProfiles().get(ref);
+          if (warning(errors, "invalid", p, pr != null, "Profile reference could not be resolved")) {
+            if (rule(errors, "structure", p, pr.hasSnapshot(), "Profile has no snapshort - validation is against the snapshot, so it must be provided")) {
+              validateElement(errors, pr, null, path, pr.getSnapshot().getElement().get(0), null, null, element, element.getName(), containers);
+            }
+          }
+          i++;
+        }
+      }   
+    }
+  }
+  
+  private void validateBundle(List<ValidationMessage> errors, WrapperElement bundle) {
+    String base = bundle.getNamedChildValue("base");
+    rule(errors, "invalid", "Bundle", !"urn:guid:".equals(base), "The base 'urn:guid:' is not valid (use urn:uuid:)");
+    
+    List<WrapperElement> entries = new ArrayList<WrapperElement>();
+    bundle.getNamedChildren("entry", entries);
+    WrapperElement firstEntry = null;
+    String firstBase = null;
+    int i = 0;
+    for (WrapperElement entry : entries) {
+      String ebase = entry.getNamedChildValue("base");
+      rule(errors, "invalid", "f:Bundle/f:entry["+Integer.toString(i)+"]", !"urn:guid:".equals(ebase), "The base 'urn:guid:' is not valid");
+      rule(errors, "invalid", "f:Bundle/f:entry["+Integer.toString(i)+"]", !Utilities.noString(base) || !Utilities.noString(ebase), "entry does not have a base");
+      if (i == 0) { 
+        firstEntry = entry;
+        firstBase = ebase == null ? base : ebase;
+      }
+      i++;
+    }
+    if (bundle.getNamedChildValue("type").equals("document"))
+      if (rule(errors, "invalid", "f:Bundle/f:entry[0]", firstEntry.getNamedChild("resource") != null, "No resource on first entry"))
+        validateDocument(errors, bundle, firstEntry.getNamedChild("resource").getFirstChild(), firstBase);
+    if (bundle.getNamedChildValue("type").equals("message"))
+      validateMessage(errors, bundle);
+  }
+  
+  private void validateMessage(List<ValidationMessage> errors, WrapperElement bundle) {
+    // TODO Auto-generated method stub
+                                                                                                                                           
+  }
+  
+  
+  private void validateDocument(List<ValidationMessage> errors, WrapperElement bundle, WrapperElement composition, String base) {
+    // first entry must be a composition
+    if (rule(errors, "invalid", "f:Bundle/f:entry[0]/f:resource", composition.getName().equals("Composition"), "The first entry in a document must be a composition")) {
+      // the compsotion subject and section references must resolve in the bundle
+      validateBundleReference(errors, "f:Bundle/f:entry[0]/f:resource/f:Composition/f:subject", bundle, base, composition.getNamedChild("subject"), "Composition Subject");
+      validateSections(errors, "f:Bundle/f:entry[0]/f:resource/f:Composition", base, bundle, composition);      
+    }
+  }  
+  
+  private void validateSections(List<ValidationMessage> errors, String path, String base, WrapperElement bundle, WrapperElement focus) {
+    List<WrapperElement> sections = new ArrayList<WrapperElement>();
+    focus.getNamedChildren("entry", sections);
+    int i = 0;
+    for (WrapperElement section : sections) {
+      validateBundleReference(errors, path+"/f:section["+Integer.toString(i)+"]", bundle, base, section.getNamedChild("content"), "Section Content");    
+      validateSections(errors, path+"/f:section["+Integer.toString(i)+"]", base, bundle, section);
+      i++;
+    }
+  }
+    
+  private void validateBundleReference(List<ValidationMessage> errors, String path, WrapperElement bundle, String base, WrapperElement ref, String name) {
+    if (ref != null && !Utilities.noString(ref.getNamedChildValue("reference"))) {
+      WrapperElement target = resolveInBundle(bundle, base, ref.getNamedChildValue("reference"));
+      rule(errors, "invalid", path+"/f:reference", target != null, "Unable to resolve the target of the reference in the bundle ("+name+")");
+    }
+  }
+  
+  private WrapperElement resolveInBundle(WrapperElement bundle, String base, String ref) {
+    String target;
+    if (ref.startsWith("http:") || ref.startsWith("https:") || ref.startsWith("urn:"))
+      target = ref;
+    else if ("urn:uuid:".equals(base) || "urn:oid:".equals(base))
+      target = base+ref;
+    else
+      target = Utilities.appendSlash(base)+ref;
+        
+    List<WrapperElement> entries = new ArrayList<WrapperElement>();
+    bundle.getNamedChildren("entry", entries);
+    for (WrapperElement entry : entries) {
+      String tbase = entry.getNamedChildValue("base");
+      if (Utilities.noString(base))
+        tbase = bundle.getNamedChildValue("base");
+      if (tbase == null)
+        tbase = "";
+      WrapperElement res = entry.getNamedChild("resource");
+      if (res != null)
+        res = res.getFirstChild();
+      if (res != null) {
+        String turl;
+        if ("urn:uuid:".equals(base) || "urn:oid:".equals(base))
+          turl = tbase+ref;
+        else
+          turl = appendForwardSlash(tbase)+res.getName()+"/"+res.getNamedChildValue("id");
+        if (turl.equals(target)) 
+          return res;
+      }
+    }
+    return null;
+  }
+  
+  private String appendForwardSlash(String tbase) {
+    if (tbase == null)
+      return "/";
+    else if (tbase.endsWith("/"))
+      return tbase;
+    else
+      return tbase+"/";
+  }
   private Profile getProfileForType(String type) throws Exception {
     return context.getProfiles().get("http://hl7.org/fhir/Profile/"+type);
   }
 
-  private void validateElement(List<ValidationMessage> errors, Profile profile, ExtensionDefinitionResult ex, String path, ElementDefinition definition, Profile cprofile, ElementDefinition context, WrapperElement element, String actualType) throws Exception {
+  private void validateElement(List<ValidationMessage> errors, Profile profile, ExtensionDefinitionResult ex, String path, ElementDefinition definition, Profile cprofile, ElementDefinition context, WrapperElement element, String actualType, List<WrapperElement> containers) throws Exception {
     // irrespective of what element it is, it cannot be empty
-    rule(errors, "invalid", path, !element.doesNamespace() || FormatUtilities.FHIR_NS.equals(element.getNamespace()), "Namespace mismatch - expected '"+FormatUtilities.FHIR_NS+"', found '"+element.getNamespace()+"'");
+  	if (element.doesNamespace()) {
+      rule(errors, "invalid", path, FormatUtilities.FHIR_NS.equals(element.getNamespace()), "Namespace mismatch - expected '"+FormatUtilities.FHIR_NS+"', found '"+element.getNamespace()+"'");
+      rule(errors, "invalid", path, !element.hasNamespace("http://www.w3.org/2001/XMLSchema-instance"), "Schema Instance Namespace is not allowed in instances");
+      rule(errors, "invalid", path, !element.hasProcessingInstruction(), "No Processing Instructions in resources");
+  	}
     rule(errors, "invalid", path, !empty(element), "Elements must have some content (@value, extensions, or children elements)");
     
     Map<String, ElementDefinition> children = ProfileUtilities.getChildMap(profile, definition.getPath(), definition.getNameReference());
@@ -348,10 +553,10 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     		List<WrapperElement> list = new ArrayList<WrapperElement>();  
     		element.getNamedChildrenWithWildcard(tail(child.getPath()), list);
     		if (child.getMin() > 0) {
-    			rule(errors, "structure", child.getPath(), list.size() > 0, "Element "+child.getPath()+" is required");
+    			rule(errors, "structure", mergePath(path, child.getPath()), list.size() > 0, "Element "+child.getPath()+" is required");
     		}
     		if (child.hasMax() && !child.getMax().equals("*")) {
-    			rule(errors, "structure", child.getPath(), list.size() <= Integer.parseInt(child.getMax()), "Element "+child.getPath()+" can only occur "+child.getMax()+" time"+(child.getMax().equals("1") ? "" : "s"));
+    			rule(errors, "structure", mergePath(path, child.getPath()), list.size() <= Integer.parseInt(child.getMax()), "Element "+child.getPath()+" can only occur "+child.getMax()+" time"+(child.getMax().equals("1") ? "" : "s"));
     		}
     	}
     }
@@ -403,24 +608,40 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
           else if (type.equals("CodeableConcept"))
             checkCodeableConcept(errors, ci.path(), ci.element(), profile, child);
           else if (type.equals("Extension"))
-            ec = checkExtension(errors, ci.path(), ci.element(), profile, child, actualType, ex);
+            ec = checkExtension(errors, ci.path(), ci.element(), profile, child, actualType, ex, containers);
+          else if (type.equals("Reference"))
+            checkReference(errors, ci.path(), ci.element(), profile, child, actualType, ex, containers);
 
           if (type.equals("Resource"))
-            validateContains(errors, ci.path(), child, definition, ci.element());
+            validateContains(errors, ci.path(), child, definition, ci.element(), containers, !isBundleEntry(ci.path())); //    if (str.matches(".*([.,/])work\\1$"))
           else {
             Profile p = getProfileForType(type); 
             if (rule(errors, "structure", ci.path(), p != null, "Unknown type "+type)) {
-              validateElement(errors, p, ec, ci.path(), p.getSnapshot().getElement().get(0), profile, child, ci.element(), type);
+              validateElement(errors, p, ec, ci.path(), p.getSnapshot().getElement().get(0), profile, child, ci.element(), type, containers);
             }
           }
         }
       } else {
         if (rule(errors, "structure", path, child != null, "Unrecognised Content "+ci.name()))
-          validateElement(errors, profile, ex, ci.path(), child, null, null, ci.element(), type);
+          validateElement(errors, profile, ex, ci.path(), child, null, null, ci.element(), type, containers);
       }
     }
   }
 
+  private String mergePath(String path1, String path2) {
+    // path1 is xpath path
+    // path2 is dotted path 
+    String[] parts = path2.split("\\.");
+    StringBuilder b = new StringBuilder(path1);
+    for (int i = 1; i < parts.length -1; i++)
+      b.append("/f:"+parts[i]);
+    return b.toString();
+  }
+  private boolean isBundleEntry(String path) {
+    String[] parts = path.split("\\/");
+    return parts.length > 2 && parts[parts.length-1].startsWith("f:resource") && parts[parts.length-2].startsWith("f:entry["); 
+  }
+  
   private String describeTypes(List<TypeRefComponent> types) {
     CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
     for (TypeRefComponent t : types) {
@@ -429,7 +650,156 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     return b.toString();
   }
 
-  private ExtensionDefinitionResult checkExtension(List<ValidationMessage> errors, String path, WrapperElement element, Profile profile, ElementDefinition container, String parentType, ExtensionDefinitionResult extensionContext) throws Exception {
+  private void checkReference(List<ValidationMessage> errors, String path, WrapperElement element, Profile profile, ElementDefinition container, String parentType, ExtensionDefinitionResult extensionContext, List<WrapperElement> containers) throws Exception {
+    String ref = element.getNamedChildValue("reference");
+    if (Utilities.noString(ref)) {
+      // todo - what should we do in this case?
+      hint(errors, "structure", path, !Utilities.noString(element.getNamedChildValue("display")), "A Reference without an actual reference should have a display");
+      return; 
+    }
+    
+    WrapperElement we = resolve(ref, containers);
+    String ft;
+    if (we != null)
+      ft = we.getName();
+    else
+      ft = tryParse(ref);
+    if (hint(errors, "structure", path, ft != null, "Unable to determine type of target resource")) {
+      boolean ok = false;
+      CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
+      for (TypeRefComponent type : container.getType()) {
+        if (!ok && type.getCode().equals("Reference")) {
+          // we validate as much as we can. First, can we infer a type from the profile? 
+          if (!type.hasProfile() || type.getProfile().equals("http://hl7.org/fhir/Profile/Any")) 
+            ok = true;
+          else {
+            String pr = type.getProfile();
+
+            String bt = getBaseType(profile, pr);
+            if (rule(errors, "structure", path, bt != null, "Unable to resolve the profile reference '"+pr+"'")) {
+              b.append(bt);
+              ok = bt.equals(ft);
+            } else 
+              ok = true; // suppress following check
+          }
+        }
+        if (!ok && type.getCode().equals("*")) {
+          ok = true; // can refer to anything
+        }
+      }
+      rule(errors, "structure", path, ok, "Invalid Resource target type. Found "+ft+", but expected one of ("+b.toString()+")");
+    }
+  }
+  
+  private WrapperElement resolve(String ref, List<WrapperElement> containers) {
+    if (ref.startsWith("#")) {
+      // work back through the contained list.
+      // really, there should only be one level for this (contained resources cannot contain 
+      // contained resources), but we'll leave that to some other code to worry about
+      for (int i = containers.size() - 1; i >= 0; i--) {
+        WrapperElement res = getContainedById(containers.get(i), ref.substring(1));
+        if (res != null)
+          return res;
+      }
+      return null;
+    } else {
+      // work back through the contained list - if any of them are bundles, try to resolve 
+      // the resource in the bundle
+      for (int i = containers.size() - 1; i >= 0; i--) {
+        if (containers.get(i).getName().equals("Bundle")) {
+        WrapperElement res = getFromBundle(containers.get(i), ref.substring(1));
+        if (res != null)
+          return res;
+        }
+      }
+      
+      // todo: consult the external host for resolution 
+      return null;
+      
+    }
+  }
+  
+  private WrapperElement getFromBundle(WrapperElement bundle, String ref) {
+    List<WrapperElement> entries = new ArrayList<WrapperElement>();
+    bundle.getNamedChildren("entry", entries);
+    for (WrapperElement we : entries) {
+      WrapperElement res = we.getNamedChild("resource").getFirstChild();
+      if (res != null) {
+        String url = genFullUrl(bundle.getNamedChildValue("base"), we.getNamedChildValue("base"), res.getName(), res.getNamedChildValue("id"));
+        if (url.endsWith(ref))
+          return res;
+      }
+    }
+    return null;
+  }
+
+  private String genFullUrl(String bundleBase, String entryBase, String type, String id) {
+    String base = Utilities.noString(entryBase) ? bundleBase : entryBase;
+    if (Utilities.noString(base)) {
+      return type+"/"+id;
+    } else if ("urn:uuid".equals(base) || "urn:oid".equals(base))
+      return base+id;
+    else 
+      return Utilities.appendSlash(base)+type+"/"+id;
+  }
+  
+  private WrapperElement getContainedById(WrapperElement container, String id) {
+    List<WrapperElement> contained = new ArrayList<WrapperElement>();
+    container.getNamedChildren("contained", contained);
+    for (WrapperElement we : contained) {
+      if (id.equals(we.getNamedChildValue("id")))
+        return we;
+    }
+    return null;
+  }
+
+  private String tryParse(String ref) {
+    String[] parts = ref.split("\\/");
+    switch (parts.length) {
+    case 1:
+      return null;
+    case 2:
+      return checkResourceType(parts[0]);
+    default:
+      if (parts[parts.length-2].equals("_history"))
+        return checkResourceType(parts[parts.length-4]);
+      else
+        return checkResourceType(parts[parts.length-2]);
+    }
+  }
+  
+  private String checkResourceType(String type) {
+    if (context.getProfiles().containsKey("http://hl7.org/fhir/Profile/"+type))
+      return type;
+    else
+      return null;
+  }
+  private String getBaseType(Profile profile, String pr) {
+    if (pr.startsWith("http://hl7.org/fhir/Profile/")) {
+      // this just has to be a base type
+      return pr.substring(28);
+    } else {
+      Profile p = resolveProfile(profile, pr);
+      if (p == null)
+        return null;
+      else
+        return p.getType();
+    }
+  }
+  
+  private Profile resolveProfile(Profile profile, String pr) {
+    if (pr.startsWith("#")) {
+      for (Resource r : profile.getContained()) {
+        if (r.getId().equals(pr.substring(1)) && r instanceof Profile)
+          return (Profile) r;
+      }
+      return null;
+    }
+    else
+      return context.getProfiles().get(pr);
+  }
+  
+  private ExtensionDefinitionResult checkExtension(List<ValidationMessage> errors, String path, WrapperElement element, Profile profile, ElementDefinition container, String parentType, ExtensionDefinitionResult extensionContext, List<WrapperElement> containers) throws Exception {
     String url = element.getAttribute("url");
     if (extensionContext == fakeExtension)
       return extensionContext;
@@ -472,7 +842,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
           
           ElementDefinition ec = ptype.getSnapshot().getElement().get(0);
           if (type != null) 
-            validateElement(errors, ptype, extensionContext, path+"[url='"+url+"']."+child.getName(), ec, null, null, child, "Extension");
+            validateElement(errors, ptype, extensionContext, path+"[url='"+url+"']."+child.getName(), ec, null, null, child, "Extension", containers);
           else {
             checkPrimitive(errors, path+"[url='"+url+"']."+child.getName(), type, ec, child);
             // special: check vocabulary. Mostly, this isn't needed on a code, but it is with extension
@@ -618,12 +988,14 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     return path.substring(path.lastIndexOf(".")+1);
   }
 
-  private void validateContains(List<ValidationMessage> errors, String path, ElementDefinition child, ElementDefinition context, WrapperElement element) throws Exception {
+  private void validateContains(List<ValidationMessage> errors, String path, ElementDefinition child, ElementDefinition context, WrapperElement element, List<WrapperElement> containers, boolean needsId) throws Exception {
     WrapperElement e = element.getFirstChild();
+    List<WrapperElement> clone = new ArrayList<InstanceValidator.WrapperElement>();
+    clone.addAll(containers);
     String resourceName = e.getName();
     Profile profile = this.context.getProfiles().get("http://hl7.org/fhir/Profile/"+resourceName);
     if (rule(errors, "invalid", path + "/f:"+resourceName, profile != null, "No profile found for contained resource of type '"+resourceName+"'"))
-      validateResource(errors, path, e, profile, true);    
+      validateResource(errors, path, e, profile, needsId, clone);    
   }
 
   private boolean typeIsPrimitive(String t) {
@@ -656,18 +1028,28 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
       }
     }
     if (type.equals("dateTime")) {
+      rule(errors, "invalid", path, yearIsValid(e.getAttribute("value")), "The value '"+e.getAttribute("value")+"' is not a valid year");
       rule(errors, "invalid", path, e.getAttribute("value").matches("-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?)?)?)?"), "Not a valid date time");
       rule(errors, "invalid", path, !hasTime(e.getAttribute("value")) || hasTimeZone(e.getAttribute("value")), "if a date has a time, it must have a timezone");
       
     }
     if (type.equals("instant")) {
       rule(errors, "invalid", path, e.getAttribute("value").matches("-?[0-9]{4}-(0[1-9]|1[0-2])-(0[0-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))"), "The instant '"+e.getAttribute("value")+"' is not valid (by regex)");
-      
+      rule(errors, "invalid", path, yearIsValid(e.getAttribute("value")), "The value '"+e.getAttribute("value")+"' is not a valid year");      
     }
 
     // for nothing to check    
   }
 
+  private boolean yearIsValid(String v) {
+    if (Utilities.noString(v) || v.length() < 4)
+      return false;
+    v = v.substring(0, 4);
+    if (!Utilities.IsInteger(v))
+      return false;
+    int i = Integer.parseInt(v);
+    return i >= 1800 && i <= 2100;
+  }
   private boolean hasTimeZone(String fmt) {
     return fmt.length() > 10 && (fmt.substring(10).contains("-") || fmt.substring(10).contains("-") || fmt.substring(10).contains("+") || fmt.substring(10).contains("Z"));
   }
@@ -677,11 +1059,6 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
   }
   
   private void checkIdentifier(String path, WrapperElement element, ElementDefinition context) {
-
-  }
-
-  private void checkReference(String path, Element element, ElementDefinition context, boolean b) {
-    // nothing to do yet
 
   }
 

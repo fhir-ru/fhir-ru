@@ -47,9 +47,9 @@ public class ElementDefn {
 	private Integer minCardinality;
 	private Integer maxCardinality;
 	private List<Invariant> statedInvariants = new ArrayList<Invariant>(); // a reference to an invariant defined on another element, but which constrains this one
-	private boolean modifier;
-	private boolean mustSupport;
-	private boolean summaryItem; // whether this is included in a summary
+	private Boolean modifier;
+	private Boolean mustSupport;
+	private Boolean summaryItem; // whether this is included in a summary
 	private String regex;
 	private boolean xmlAttribute;
 
@@ -87,7 +87,7 @@ public class ElementDefn {
   private String statedType; // explicitly stated type (=xxxx)
 	private boolean isCoveredByExample; // true if an example has hit this
 	private String displayHint; // hits for generated narrative
-	
+	private String w5;
 	public ElementDefn() {
 		super();
 	  svgLeft = MAX_NEG;
@@ -107,6 +107,7 @@ public class ElementDefn {
 		modifier = pattern.modifier;
 		mustSupport = pattern.mustSupport;
 
+		
 		bindingName = pattern.bindingName;
 		name = pattern.name;
 		shortDefn = pattern.shortDefn;
@@ -136,12 +137,16 @@ public class ElementDefn {
 		return condition != null && !"".equals(condition);
 	}
 
-	public boolean isModifier() {
-		return modifier;
+  public boolean hasModifier() {
+    return modifier != null;    
+  }
+  
+  public boolean isModifier() {
+		return modifier != null ? modifier : false;
 	}
 
-	public void setIsModifier(boolean mustUnderstand) {
-		this.modifier = mustUnderstand;
+	public void setIsModifier(Boolean value) {
+		this.modifier = value;
 	}
 
 	public String getTodo() {
@@ -166,11 +171,11 @@ public class ElementDefn {
 	}
 
 	public String getEnhancedDefinition() {
-	  if (isModifier() && isMustSupport())
+	  if (isModifier() && getMustSupport())
       return Utilities.removePeriod(getDefinition()) + " (this element modifies the meaning of other elements, and must be supported)";
     else if (isModifier())
       return Utilities.removePeriod(getDefinition()) + " (this element modifies the meaning of other elements)";
-    else if (isMustSupport())
+    else if (getMustSupport())
       return Utilities.removePeriod(getDefinition()) + " (this element must be supported)";
     else
       return Utilities.removePeriod(getDefinition());
@@ -343,10 +348,9 @@ public class ElementDefn {
 	}
 
 	public String describeCardinality() {
-		if (maxCardinality == null)
-			return minCardinality.toString() + "..*";
-		else
-			return minCardinality.toString() + ".." + maxCardinality.toString();
+	  String min = minCardinality == null ? "" : minCardinality.toString();
+	  String max = maxCardinality == null ? "" : maxCardinality == Integer.MAX_VALUE ? "*" : maxCardinality.toString();
+		return min + ".." + max;
 	}
 
 	// public String textForCardinality() {
@@ -370,7 +374,7 @@ public class ElementDefn {
 	}
 
 	public boolean unbounded() {
-		return maxCardinality == null;
+		return maxCardinality != null && maxCardinality == Integer.MAX_VALUE;
 	}
 
   public boolean hasBinding() {
@@ -515,12 +519,16 @@ public class ElementDefn {
 		return statedInvariants;
 	}
 
-	public boolean isMustSupport() {
+  public boolean hasMustSupport() {
+    return mustSupport != null;
+  }
+
+	public Boolean isMustSupport() {
 		return mustSupport;
 	}
 
-	public void setMustSupport(boolean mustSupport) {
-		this.mustSupport = mustSupport;
+	public void setMustSupport(Boolean value) {
+		this.mustSupport = value;
 	}
 
 
@@ -677,11 +685,19 @@ public class ElementDefn {
     this.statedType = statedType;
   }
 
-  public boolean isSummaryItem() {
+  public boolean isSummary() {
+    return summaryItem != null && summaryItem; 
+  }
+
+  public boolean hasSummaryItem() {
+    return summaryItem != null; 
+  }
+
+  public Boolean isSummaryItem() {
     return summaryItem;
   }
 
-  public void setSummaryItem(boolean summaryItem) {
+  public void setSummaryItem(Boolean summaryItem) {
     this.summaryItem = summaryItem;
   }
 
@@ -796,6 +812,22 @@ public class ElementDefn {
 
   public void setMeaningWhenMissing(String meaningWhenMissing) {
     this.meaningWhenMissing = meaningWhenMissing;
+  }
+
+  public String getW5() {
+    return w5;
+  }
+
+  public void setW5(String w5) {
+    this.w5 = w5;
+  }
+
+  public boolean eliminated() {
+    return getMaxCardinality() != null && getMaxCardinality() == 0;
+  }
+
+  public boolean getMustSupport() {
+    return mustSupport == null ? false: mustSupport;
   }	
   
 }

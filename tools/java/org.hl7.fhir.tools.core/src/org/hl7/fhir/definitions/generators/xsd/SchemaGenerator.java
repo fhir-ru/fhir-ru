@@ -125,23 +125,13 @@ public class SchemaGenerator {
 		  xsd = processSchemaIncludes(definitions, n, xsd, false);
 		  TextFile.stringToFile(xsd, xsdDir + n);
 	  }
-    produceAtomSchema(definitions, xsdDir, dstDir, srcDir);
-	  produceCombinedSchema(definitions, xsdDir, dstDir, srcDir);
+    produceCombinedSchema(definitions, xsdDir, dstDir, srcDir);
 
 	  dir = new CSFile(xsdDir);
 	  for (File f : dir.listFiles()) {
 		  if (!f.isDirectory())
 			  Utilities.copyFile(f, new CSFile(dstDir+f.getName()));
 	  }
-  }
-
-  private void produceAtomSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {
-    String src = TextFile.fileToString(srcDir + "atom-template.xsd");
-    src = processSchemaIncludes(definitions, "atom-templates.xsd", src, false);
-    TextFile.stringToFile(src, xsdDir + "fhir-atom.xsd");
-    src = TextFile.fileToString(srcDir + "atom-template.xsd");
-    src = processSchemaIncludes(definitions, "atom-templates.xsd", src, true);
-    TextFile.stringToFile(src, xsdDir + "fhir-atom-single.xsd");
   }
 
   private void produceCombinedSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {

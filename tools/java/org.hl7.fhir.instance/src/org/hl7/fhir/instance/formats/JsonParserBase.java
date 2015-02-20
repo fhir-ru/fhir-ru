@@ -41,7 +41,6 @@ import org.hl7.fhir.instance.model.DomainResource;
 import org.hl7.fhir.instance.model.Element;
 import org.hl7.fhir.instance.model.Extension;
 import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.Resource.ResourceMetaComponent;
 import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
@@ -75,8 +74,6 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
   abstract protected boolean hasTypeName(JsonObject json, String prefix);
   abstract protected void composeResource(Resource resource) throws Exception;
   abstract protected void composeTypeInner(Type type) throws Exception;
-  abstract protected Resource.ResourceMetaComponent parseResourceResourceMetaComponent(JsonObject json, Resource owner) throws Exception;
-  abstract protected void composeResourceResourceMetaComponentInner(Resource.ResourceMetaComponent element) throws Exception;
 
   /* -- entry points --------------------------------------------------- */
   
@@ -94,12 +91,6 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
    */
   public Resource parse(JsonObject json) throws Exception {
     return parseResource(json);
-  }
-
-  @Override
-  public ResourceMetaComponent parseMeta(InputStream input) throws Exception {
-    JsonObject json = loadJson(input);
-    return parseResourceResourceMetaComponent(json, null);
   }
 
   @Override
@@ -134,21 +125,6 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
     composeResource(resource);
   }
   
-  @Override
-  public void compose(OutputStream stream, ResourceMetaComponent meta) throws Exception {
-    OutputStreamWriter osw = new OutputStreamWriter(stream, "UTF-8");
-    if (style == OutputStyle.CANONICAL)
-      json = new JsonCreatorCanonical(osw);
-    else
-      json = new JsonCreatorGson(osw);
-    json.setIndent(style == OutputStyle.PRETTY ? "  " : "");
-    json.beginObject();
-    composeResourceResourceMetaComponentInner(meta);
-    json.endObject();
-    json.finish();
-    osw.flush();
-  }
-
   @Override
   public void compose(OutputStream stream, Type type, String rootName) throws Exception {
     OutputStreamWriter osw = new OutputStreamWriter(stream, "UTF-8");
@@ -201,26 +177,6 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
 	  return (DomainResource) parseResource(json);
   }
 
-  protected void parseExtensions(JsonObject json, List<Extension> extensions, boolean inExtension) throws Exception {
-	  for (Entry<String, JsonElement> p : json.entrySet()) {
-	  	if (p.getKey().contains(":") || (inExtension && !(p.getKey().startsWith("value") || p.getKey().startsWith("_value")))) {
-	  		// it's an extension
-	  		if (!(p.getValue() instanceof JsonArray))
-	  			throw new Exception("The property "+p.getKey()+" looks like an extension, but isn't a JSON array (it's a "+p.getValue().getClass().getName()+")");
-	  		JsonArray arr = (JsonArray) p.getValue();
-	  		for (int i = 0; i < arr.size(); i++) {
-	  			Extension ex = new Extension();
-	  			ex.setUrl(p.getKey());
-	  			JsonObject obj = (JsonObject) arr.get(i);
-	  			if (hasTypeName(obj, "value"))
-	  			  ex.setValue(parseType("value", obj));
-	  			parseExtensions(obj, ex.getExtension(), true);
-	  			extensions.add(ex);
-	  		}
-	  	}
-	  }
-  }
-  
 	protected void writeNull(String name) throws Exception {
 		json.nullValue();
 	}
@@ -321,25 +277,5 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
 
   protected abstract void composeType(String prefix, Type type) throws Exception;
 
-  protected void composeExtensions(List<Extension> extensions) throws Exception {
-  	Set<String> handled = new HashSet<String>();
-  	for (Extension e : extensions) {
-  		if (!handled.contains(e.getUrl())) {
-  			handled.add(e.getUrl());
-  			openArray(e.getUrl());
-  			for (Extension ex : extensions) {
-  				if (ex.getUrl().equals(e.getUrl())) {
-  					openObject(null);
-  					if (e.getValue() != null)
-  						composeType("value", e.getValue());
-  					if (ex.getExtension().size() > 0)
-  					  composeExtensions(ex.getExtension());
-  					close();
-  				}
-  			}
-  			closeArray();
-  		}
-  		
-  	}
-  }
+
 }

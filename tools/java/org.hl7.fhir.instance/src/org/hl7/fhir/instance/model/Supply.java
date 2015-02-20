@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -179,7 +179,7 @@ public class Supply extends DomainResource {
         public static ValuesetSupplyDispenseStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return INPROGRESS;
         if ("dispensed".equals(codeString))
           return DISPENSED;
@@ -189,7 +189,7 @@ public class Supply extends DomainResource {
         }
         public String toCode() {
           switch (this) {
-            case INPROGRESS: return "in progress";
+            case INPROGRESS: return "in-progress";
             case DISPENSED: return "dispensed";
             case ABANDONED: return "abandoned";
             default: return "?";
@@ -226,7 +226,7 @@ public class Supply extends DomainResource {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("in progress".equals(codeString))
+        if ("in-progress".equals(codeString))
           return ValuesetSupplyDispenseStatus.INPROGRESS;
         if ("dispensed".equals(codeString))
           return ValuesetSupplyDispenseStatus.DISPENSED;
@@ -236,7 +236,7 @@ public class Supply extends DomainResource {
         }
     public String toCode(ValuesetSupplyDispenseStatus code) {
       if (code == ValuesetSupplyDispenseStatus.INPROGRESS)
-        return "in progress";
+        return "in-progress";
       if (code == ValuesetSupplyDispenseStatus.DISPENSED)
         return "dispensed";
       if (code == ValuesetSupplyDispenseStatus.ABANDONED)
@@ -258,7 +258,7 @@ public class Supply extends DomainResource {
          * A code specifying the state of the dispense event.
          */
         @Child(name="status", type={CodeType.class}, order=2, min=0, max=1)
-        @Description(shortDefinition="in progress | dispensed | abandoned", formalDefinition="A code specifying the state of the dispense event." )
+        @Description(shortDefinition="in-progress | dispensed | abandoned", formalDefinition="A code specifying the state of the dispense event." )
         protected Enumeration<ValuesetSupplyDispenseStatus> status;
 
         /**
@@ -309,9 +309,9 @@ public class Supply extends DomainResource {
         /**
          * The time the dispensed item was sent or handed to the patient (or agent).
          */
-        @Child(name="whenHandedOver", type={Period.class}, order=8, min=0, max=1)
+        @Child(name="whenHandedOver", type={DateTimeType.class}, order=8, min=0, max=1)
         @Description(shortDefinition="Handover time", formalDefinition="The time the dispensed item was sent or handed to the patient (or agent)." )
-        protected Period whenHandedOver;
+        protected DateTimeType whenHandedOver;
 
         /**
          * Identification of the facility/location where the Supply was shipped to, as part of the dispense event.
@@ -337,7 +337,7 @@ public class Supply extends DomainResource {
         protected List<Practitioner> receiverTarget;
 
 
-        private static final long serialVersionUID = 1089359939L;
+        private static final long serialVersionUID = -1941592649L;
 
       public SupplyDispenseComponent() {
         super();
@@ -572,15 +572,19 @@ public class Supply extends DomainResource {
         }
 
         /**
-         * @return {@link #whenHandedOver} (The time the dispensed item was sent or handed to the patient (or agent).)
+         * @return {@link #whenHandedOver} (The time the dispensed item was sent or handed to the patient (or agent).). This is the underlying object with id, value and extensions. The accessor "getWhenHandedOver" gives direct access to the value
          */
-        public Period getWhenHandedOver() { 
+        public DateTimeType getWhenHandedOverElement() { 
           if (this.whenHandedOver == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SupplyDispenseComponent.whenHandedOver");
             else if (Configuration.doAutoCreate())
-              this.whenHandedOver = new Period(); // cc
+              this.whenHandedOver = new DateTimeType(); // bb
           return this.whenHandedOver;
+        }
+
+        public boolean hasWhenHandedOverElement() { 
+          return this.whenHandedOver != null && !this.whenHandedOver.isEmpty();
         }
 
         public boolean hasWhenHandedOver() { 
@@ -588,10 +592,31 @@ public class Supply extends DomainResource {
         }
 
         /**
-         * @param value {@link #whenHandedOver} (The time the dispensed item was sent or handed to the patient (or agent).)
+         * @param value {@link #whenHandedOver} (The time the dispensed item was sent or handed to the patient (or agent).). This is the underlying object with id, value and extensions. The accessor "getWhenHandedOver" gives direct access to the value
          */
-        public SupplyDispenseComponent setWhenHandedOver(Period value) { 
+        public SupplyDispenseComponent setWhenHandedOverElement(DateTimeType value) { 
           this.whenHandedOver = value;
+          return this;
+        }
+
+        /**
+         * @return The time the dispensed item was sent or handed to the patient (or agent).
+         */
+        public Date getWhenHandedOver() { 
+          return this.whenHandedOver == null ? null : this.whenHandedOver.getValue();
+        }
+
+        /**
+         * @param value The time the dispensed item was sent or handed to the patient (or agent).
+         */
+        public SupplyDispenseComponent setWhenHandedOver(Date value) { 
+          if (value == null)
+            this.whenHandedOver = null;
+          else {
+            if (this.whenHandedOver == null)
+              this.whenHandedOver = new DateTimeType();
+            this.whenHandedOver.setValue(value);
+          }
           return this;
         }
 
@@ -699,7 +724,7 @@ public class Supply extends DomainResource {
           childrenList.add(new Property("suppliedItem", "Reference(Medication|Substance|Device)", "Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.", 0, java.lang.Integer.MAX_VALUE, suppliedItem));
           childrenList.add(new Property("supplier", "Reference(Practitioner)", "The individual responsible for dispensing the medication, supplier or device.", 0, java.lang.Integer.MAX_VALUE, supplier));
           childrenList.add(new Property("whenPrepared", "Period", "The time the dispense event occurred.", 0, java.lang.Integer.MAX_VALUE, whenPrepared));
-          childrenList.add(new Property("whenHandedOver", "Period", "The time the dispensed item was sent or handed to the patient (or agent).", 0, java.lang.Integer.MAX_VALUE, whenHandedOver));
+          childrenList.add(new Property("whenHandedOver", "dateTime", "The time the dispensed item was sent or handed to the patient (or agent).", 0, java.lang.Integer.MAX_VALUE, whenHandedOver));
           childrenList.add(new Property("destination", "Reference(Location)", "Identification of the facility/location where the Supply was shipped to, as part of the dispense event.", 0, java.lang.Integer.MAX_VALUE, destination));
           childrenList.add(new Property("receiver", "Reference(Practitioner)", "Identifies the person who picked up the Supply.", 0, java.lang.Integer.MAX_VALUE, receiver));
         }
@@ -722,6 +747,30 @@ public class Supply extends DomainResource {
             dst.receiver.add(i.copy());
         };
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof SupplyDispenseComponent))
+          return false;
+        SupplyDispenseComponent o = (SupplyDispenseComponent) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(status, o.status, true) && compareDeep(type, o.type, true)
+           && compareDeep(quantity, o.quantity, true) && compareDeep(suppliedItem, o.suppliedItem, true) && compareDeep(supplier, o.supplier, true)
+           && compareDeep(whenPrepared, o.whenPrepared, true) && compareDeep(whenHandedOver, o.whenHandedOver, true)
+           && compareDeep(destination, o.destination, true) && compareDeep(receiver, o.receiver, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof SupplyDispenseComponent))
+          return false;
+        SupplyDispenseComponent o = (SupplyDispenseComponent) other;
+        return compareValues(status, o.status, true) && compareValues(whenHandedOver, o.whenHandedOver, true)
+          ;
       }
 
       public boolean isEmpty() {
@@ -1032,6 +1081,28 @@ public class Supply extends DomainResource {
         return copy();
       }
 
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Supply))
+          return false;
+        Supply o = (Supply) other;
+        return compareDeep(kind, o.kind, true) && compareDeep(identifier, o.identifier, true) && compareDeep(status, o.status, true)
+           && compareDeep(orderedItem, o.orderedItem, true) && compareDeep(patient, o.patient, true) && compareDeep(dispense, o.dispense, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Supply))
+          return false;
+        Supply o = (Supply) other;
+        return compareValues(status, o.status, true);
+      }
+
       public boolean isEmpty() {
         return super.isEmpty() && (kind == null || kind.isEmpty()) && (identifier == null || identifier.isEmpty())
            && (status == null || status.isEmpty()) && (orderedItem == null || orderedItem.isEmpty())
@@ -1055,7 +1126,7 @@ public class Supply extends DomainResource {
   public static final String SP_SUPPLIER = "supplier";
   @SearchParamDefinition(name="kind", path="Supply.kind", description="The kind of supply (central, non-stock, etc)", type="token" )
   public static final String SP_KIND = "kind";
-  @SearchParamDefinition(name="dispensestatus", path="Supply.dispense.status", description="in progress | dispensed | abandoned", type="token" )
+  @SearchParamDefinition(name="dispensestatus", path="Supply.dispense.status", description="in-progress | dispensed | abandoned", type="token" )
   public static final String SP_DISPENSESTATUS = "dispensestatus";
 
 }

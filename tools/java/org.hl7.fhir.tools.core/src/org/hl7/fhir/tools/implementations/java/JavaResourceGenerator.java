@@ -161,7 +161,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			}
 
       allfields = "";
-      int i = -1;
+      int i = 0;
 			for (ElementDefn e : root.getElements()) {
 				generateField(root, e, "    ", i++);
 			}
@@ -185,6 +185,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       write("    private static final long serialVersionUID = "+inheritedHash+"L;\r\n\r\n");
 
 		generateCopy(root, classname, false, isAbstract);
+		generateEquals(root, classname, false, isAbstract);
 		generateIsEmpty(root, classname, false, isAbstract);
 
 		if (clss == JavaGenClass.Resource && !isAbstract) {
@@ -501,12 +502,81 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		}
     generateChildrenRegister(e, "      ", false);
     generateCopy(e, tn, true, false);
+    generateEquals(e, tn, true, false);
     generateIsEmpty(e, tn, true, false);
     write("  }\r\n");
 		write("\r\n");
 
 	}
 
+  
+  private void generateEquals(ElementDefn e, String tn, boolean owner, boolean isAbstract) throws IOException {
+    write("      @Override\r\n");
+    write("      public boolean equalsDeep(Base other) {\r\n");
+    write("        if (!super.equalsDeep(other))\r\n");
+    write("          return false;\r\n");
+    write("        if (!(other instanceof "+tn+"))\r\n");
+    write("          return false;\r\n");
+    write("        "+tn+" o = ("+tn+") other;\r\n");
+    write("        return ");
+    boolean first = true;
+    int col = 18;
+    for (ElementDefn c : e.getElements()) {
+      if (first)
+        first = false;
+      else {
+        write(" && ");
+        col = col+4;
+      }
+      String name = getElementName(c.getName(), true);
+      if (name.endsWith("[x]"))
+        name = name.substring(0, name.length()-3);
+      write("compareDeep("+name+", o."+name+", true)");
+      col = col+21 + name.length()*2;
+      if (col > 100) {
+        col = 10;
+        write("\r\n          ");
+      }
+    }
+    if (first)
+      write("true"); 
+    write(";\r\n");
+    write("      }\r\n\r\n");  
+    write("      @Override\r\n");
+    write("      public boolean equalsShallow(Base other) {\r\n");
+    write("        if (!super.equalsShallow(other))\r\n");
+    write("          return false;\r\n");
+    write("        if (!(other instanceof "+tn+"))\r\n");
+    write("          return false;\r\n");
+    write("        "+tn+" o = ("+tn+") other;\r\n");
+    write("        return ");
+    first = true;
+    col = 18;
+    for (ElementDefn c : e.getElements()) {
+      if (isJavaPrimitive(c)) {
+        if (first)
+          first = false;
+        else {
+          write(" && ");
+          col = col+4;
+        }
+        String name = getElementName(c.getName(), true);
+        if (name.endsWith("[x]"))
+          name = name.substring(0, name.length()-3);
+        write("compareValues("+name+", o."+name+", true)");
+        col = col+21 + name.length()*2;
+        if (col > 100) {
+          col = 10;
+          write("\r\n          ");
+        }
+      }
+    }
+    if (first)
+      write("true"); 
+    write(";\r\n");
+    write("      }\r\n\r\n");  
+  }
+  
 	private void generateCopy(ElementDefn e, String tn, boolean owner, boolean isAbstract) throws IOException {
 	  if (isAbstract) {
       write("      public abstract "+tn+" copy();\r\n\r\n");
@@ -731,7 +801,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
   private void writeAttributeAnnotation(String indent, ElementDefn e, int order, String tn) throws Exception {
     write(indent+"@Child(name=\""+getElementName(e.getName(), true)+"\", type={"+getTypeClassList(e, tn)+
-        "}, order="+Integer.toString(order)+", min="+e.getMinCardinality().toString()+", max="+(e.getMaxCardinality() == null ?  "Child.MAX_UNLIMITED" : e.getMaxCardinality().toString())+")\r\n");
+        "}, order="+Integer.toString(order)+", min="+e.getMinCardinality().toString()+", max="+(e.getMaxCardinality() == Integer.MAX_VALUE ?  "Child.MAX_UNLIMITED" : e.getMaxCardinality().toString())+")\r\n");
     write(indent+"@Description(shortDefinition=\""+Utilities.escapeJava(e.getShortDefn())+"\", formalDefinition=\""+Utilities.escapeJava(e.getDefinition())+"\" )\r\n");
   }
 
@@ -785,7 +855,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     if (n.equals("InstantType"))
       return "Date";
     if (n.equals("TimeType"))
-      return "Date";
+      return "String";
     
     String tns = null;
     if (n.indexOf("<") > 0) {
@@ -927,17 +997,18 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	      write("\r\n");
 	      jdoc(indent, "@return "+e.getDefinition());
 	      write(indent+"public "+getSimpleType(tn)+" get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
-	      write(indent+"  return this."+getElementName(e.getName(), true)+" == null ? "+(e.typeCode().equals("boolean") ? "false" : (e.typeCode().equals("integer") ? "0" : "null"))+" : this."+getElementName(e.getName(), true)+".getValue();\r\n");
+	      if (e.typeCode().equals("boolean"))
+          write(indent+"  return this."+getElementName(e.getName(), true)+" == null || this."+getElementName(e.getName(), true)+".isEmpty() ? false : this."+getElementName(e.getName(), true)+".getValue();\r\n");
+	      else if (e.typeCode().equals("integer"))
+          write(indent+"  return this."+getElementName(e.getName(), true)+" == null || this."+getElementName(e.getName(), true)+".isEmpty() ? 0 : this."+getElementName(e.getName(), true)+".getValue();\r\n");
+	      else
+	        write(indent+"  return this."+getElementName(e.getName(), true)+" == null ? null : this."+getElementName(e.getName(), true)+".getValue();\r\n");
 	      write(indent+"}\r\n");
 	      write("\r\n");
 	      jdoc(indent, "@param value "+e.getDefinition());
 	      write(indent+"public "+className+" set"+getTitle(getElementName(e.getName(), false))+"("+getSimpleType(tn)+" value) { \r\n");
-	      if (e.getMinCardinality() == 0) {
-	        if (tn.equals("IntegerType"))
-	          write(indent+"  if (value == -1)\r\n");
-	        else if (tn.equals("BooleanType"))
-	          write(indent+"  if (value == false)\r\n");
-          else if (isString(tn))
+	      if (e.getMinCardinality() == 0 && !tn.equals("IntegerType") && !tn.equals("BooleanType")) {
+          if (isString(tn))
             write(indent+"  if (Utilities.noString(value))\r\n");
 	        else
 	          write(indent+"  if (value == null)\r\n");
@@ -947,7 +1018,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	      write(indent+"    if (this."+getElementName(e.getName(), true)+" == null)\r\n");
         write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
         write(indent+"    this."+getElementName(e.getName(), true)+".setValue(value);\r\n");
-        if (e.getMinCardinality() == 0) {
+        if (e.getMinCardinality() == 0 && !tn.equals("IntegerType") && !tn.equals("BooleanType")) {
           write(indent+"  }\r\n");
         }
         write(indent+"  return this;\r\n");

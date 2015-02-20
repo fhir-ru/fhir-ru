@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -331,13 +331,9 @@ public class Coding extends Type {
      * @param value Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
      */
     public Coding setPrimary(boolean value) { 
-      if (value == false)
-        this.primary = null;
-      else {
         if (this.primary == null)
           this.primary = new BooleanType();
         this.primary.setValue(value);
-      }
       return this;
     }
 
@@ -409,6 +405,29 @@ public class Coding extends Type {
 
       protected Coding typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof Coding))
+          return false;
+        Coding o = (Coding) other;
+        return compareDeep(system, o.system, true) && compareDeep(version, o.version, true) && compareDeep(code, o.code, true)
+           && compareDeep(display, o.display, true) && compareDeep(primary, o.primary, true) && compareDeep(valueSet, o.valueSet, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof Coding))
+          return false;
+        Coding o = (Coding) other;
+        return compareValues(system, o.system, true) && compareValues(version, o.version, true) && compareValues(code, o.code, true)
+           && compareValues(display, o.display, true) && compareValues(primary, o.primary, true);
       }
 
       public boolean isEmpty() {

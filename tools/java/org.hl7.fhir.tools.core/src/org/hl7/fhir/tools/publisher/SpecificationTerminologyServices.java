@@ -22,12 +22,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.hl7.fhir.instance.client.EFhirClientException;
-import org.hl7.fhir.instance.client.IFHIRClient;
 import org.hl7.fhir.instance.client.FHIRSimpleClient;
-import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.formats.ResourceOrFeed;
+import org.hl7.fhir.instance.client.IFHIRClient;
 import org.hl7.fhir.instance.formats.IParser.OutputStyle;
+import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
@@ -44,7 +42,6 @@ import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XMLWriter;
-import org.tmatesoft.sqljet.core.internal.lang.SqlParser.operation_conflict_clause_return;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -76,10 +73,12 @@ public class SpecificationTerminologyServices  implements ITerminologyServices {
   private boolean triedServer = false;
   private boolean serverOk = false;
   private String cache;
+  private String tsServer;
   
-  public SpecificationTerminologyServices(String cache) {
+  public SpecificationTerminologyServices(String cache, String tsServer) {
     super();
     this.cache = cache;
+    this.tsServer = tsServer;
   }
 
   @Override
@@ -138,8 +137,8 @@ public class SpecificationTerminologyServices  implements ITerminologyServices {
       triedServer = true;
       serverOk = false;
       HttpClient httpclient = new DefaultHttpClient();
-      HttpGet httpget = new HttpGet("http://fhir.healthintersections.com.au/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
-//      HttpGet httpget = new HttpGet("http://localhost:960/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
+      // HttpGet httpget = new HttpGet("http://fhir.healthintersections.com.au/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
+      HttpGet httpget = new HttpGet("http://localhost:960/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
       HttpResponse response = httpclient.execute(httpget);
       HttpEntity entity = response.getEntity();
       InputStream instream = entity.getContent();
@@ -315,15 +314,15 @@ public class SpecificationTerminologyServices  implements ITerminologyServices {
         serverOk = false;
         // for this, we use the FHIR client
         IFHIRClient client = new FHIRSimpleClient();
-        client.initialize("http://fhir.healthintersections.com.au/open");
-        //client.initialize("http://localhost:960/open");
+        // client.initialize("http://fhir.healthintersections.com.au/open");
+        client.initialize(tsServer+"/open");
         Map<String, String> params = new HashMap<String, String>();
         params.put("_query", "expand");
         params.put("limit", "500");
-        Bundle result = client.searchPost(ValueSet.class, vs, params);
+        ValueSet result = client.expandValueset(vs);
         serverOk = true;
         parser.compose(new FileOutputStream(fn), result);
-        return ((ValueSet) result.getEntry().get(0).getResource()).getExpansion().getContains();
+        return result.getExpansion().getContains();
       } catch (EFhirClientException e) {
         serverOk = true;
         parser.compose(new FileOutputStream(fn), e.getServerErrors().get(0));

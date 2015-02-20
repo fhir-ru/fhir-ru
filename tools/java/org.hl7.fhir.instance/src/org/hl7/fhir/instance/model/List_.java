@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Dec 23, 2014 16:09+1100 for FHIR v0.4.0
+// Generated on Mon, Feb 16, 2015 11:04-0500 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -246,13 +246,9 @@ public class List_ extends DomainResource {
          * @param value True if this item is marked as deleted in the list.
          */
         public ListEntryComponent setDeleted(boolean value) { 
-          if (value == false)
-            this.deleted = null;
-          else {
             if (this.deleted == null)
               this.deleted = new BooleanType();
             this.deleted.setValue(value);
-          }
           return this;
         }
 
@@ -364,6 +360,27 @@ public class List_ extends DomainResource {
         dst.date = date == null ? null : date.copy();
         dst.item = item == null ? null : item.copy();
         return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ListEntryComponent))
+          return false;
+        ListEntryComponent o = (ListEntryComponent) other;
+        return compareDeep(flag, o.flag, true) && compareDeep(deleted, o.deleted, true) && compareDeep(date, o.date, true)
+           && compareDeep(item, o.item, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ListEntryComponent))
+          return false;
+        ListEntryComponent o = (ListEntryComponent) other;
+        return compareValues(deleted, o.deleted, true) && compareValues(date, o.date, true);
       }
 
       public boolean isEmpty() {
@@ -677,13 +694,9 @@ public class List_ extends DomainResource {
      * @param value Whether items in the list have a meaningful order.
      */
     public List_ setOrdered(boolean value) { 
-      if (value == false)
-        this.ordered = null;
-      else {
         if (this.ordered == null)
           this.ordered = new BooleanType();
         this.ordered.setValue(value);
-      }
       return this;
     }
 
@@ -824,6 +837,30 @@ public class List_ extends DomainResource {
 
       protected List_ typedCopy() {
         return copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof List_))
+          return false;
+        List_ o = (List_) other;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(code, o.code, true) && compareDeep(subject, o.subject, true)
+           && compareDeep(source, o.source, true) && compareDeep(date, o.date, true) && compareDeep(ordered, o.ordered, true)
+           && compareDeep(mode, o.mode, true) && compareDeep(entry, o.entry, true) && compareDeep(emptyReason, o.emptyReason, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof List_))
+          return false;
+        List_ o = (List_) other;
+        return compareValues(date, o.date, true) && compareValues(ordered, o.ordered, true) && compareValues(mode, o.mode, true)
+          ;
       }
 
       public boolean isEmpty() {
