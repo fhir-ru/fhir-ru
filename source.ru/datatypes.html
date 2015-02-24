@@ -22,7 +22,7 @@
 
 <p>
 В спецификации FHIR описаны типы данных, которые используются в элементах ресурсов. 
-Типы данных делятся на две категории: простые / примитивные типы, заимствованные из XML-схемы, и сложные типы, являющиеся повторно используемыми кластерами элементов. На этой странице приведены описания этих типов данных. Также см. страницы <a href="datatypes-examples.html">Примеры</a>, <a href="datatypes-definitions.html">Подробное описание</a> и 
+Типы данных делятся на две категории: простые / примитивные типы, являющиеся отдельными элементами, и сложные типы, являющиеся повторно используемыми кластерами элементов. На этой странице приведены описания этих типов данных. Также см. страницы <a href="datatypes-examples.html">Примеры</a>, <a href="datatypes-definitions.html">Подробное описание</a> и 
 <a href="datatypes-mappings.html">Мэппинги</a>.
 </p>
 
@@ -40,8 +40,7 @@
 
 <a name="imports"> </a>
 <p>
-В таблице ниже приведены использующиеся в спецификации примитивные типы и их простые ограничения. Примитивными являются типы без дополнительных свойств, хотя примитивы, как и все типы, имеют <a href="extensibility.html">расширения</a>.
-Примитивные типы имеют соответствующее значение из набора типов, определенного в <a href="http://www.w3.org/TR/xmlschema-2/">W3C Спецификации схемы (1.0) часть 2</a>, хотя в большинстве случаев спецификация накладывает дополнительные ограничения, выделенные полужирным шрифтом.
+В таблице ниже описываются используемые в данной спецификации примитивные типы. Примитивные типы - это типы, имеющие только value, без дополнительных элементов-потомков, хотя как и все типы, они могут иметь <a href="extensibility.html">расширения</a>.
 </p>
 
 <a name="boolean"> </a>
@@ -57,6 +56,180 @@
 <a name="datetime"> </a>
 <a name="time"> </a>
 
+<table class="list">
+ <tr>
+   <td colspan="3"><b>Primitive Types</b></td>
+ </tr>
+ <tr>
+   <th>FHIR Name</th>
+   <th>Value Domain</th>
+   <th>XML Representation</th>
+   <th>JSON representation</th>
+ </tr>
+ <tr>
+   <td>boolean</td>
+   <td>true | false</td>
+   <td>xs:boolean, except that <b>0 and 1 are not valid values</b></td>
+   <td>JSON boolean (true or false)</td>
+ </tr>
+ <tr>
+   <td>integer</td>
+   <td>A signed 32-bit integer (for larger values, use decimal)</td>
+   <td>xs:int</td>
+   <td>JSON number</td>
+ </tr>
+ <tr>
+   <td>string</td>
+   <td>A sequence of Unicode characters</td>
+   <td>xs:string</td>
+   <td>JSON String</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Note that strings SHALL NOT exceed 1MB in size</td>
+ </tr> 
+ <tr>
+   <td>decimal</td>
+   <td>Rational numbers that have a decimal representation. See below for a decision about the precision of the number</td>
+   <td>xs:decimal, except that <b>decimals may not use exponents</b></td>
+   <td>A JSON number, but without exponents</td>
+ </tr>
+ <tr>
+   <td>uri</td>
+   <td>A Uniform Resource Identifier Reference (<a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>)</td>
+    <td>xs:anyURI</td>
+   <td>A JSON string - a URI</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">URIs can be absolute or relative, and may have an optional fragment identifier</td>
+ </tr> 
+ <tr>
+   <td>base64Binary</td>
+   <td>A stream of bytes, base64 encoded (<a href="http://tools.ietf.org/html/rfc4648">RFC 4648</a>)</td>
+   <td>xs:base64Binary</td>
+   <td>A JSON string - base64 content</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid"><i>Todo: is it possible to impose an upper absolute limit on a base64Binary (for denial of service reasons, like on string)</i></td>
+ </tr> 
+ <tr>
+   <td>instant</td>
+   <td>An instant in time - <b>known at least to the second and always includes a time zone</b></td>
+   <td>xs:dateTime</td>
+   <td>A JSON string - an xs:dateTime</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Note: This type is for system times, not human times (see date and dateTime below).</td>
+ </tr>
+ <tr>
+   <td>date</td>
+   <td>A date, or partial date (e.g. just year or year + month) as used in human communication. <b>There is no time zone</b>. Dates SHALL be valid dates</td>
+   <td>union of xs:date, xs:gYearMonth, xs:gYear</td>
+   <td>A JSON string - a union of xs:date, xs:gYearMonth, xs:gYear</td>
+  </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: -?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?</td>
+ </tr>
+ <tr>
+   <td>dateTime</td>
+   <td>A date, date-time or partial date (e.g. just year or year + month) as used in human communication. If hours and minutes are specified, a time zone SHALL be populated. Seconds may be provided but may also be ignored. Dates SHALL be valid dates. <b>The time "24:00" is not allowed</b></td>
+   <td>union of xs:dateTime, xs:date, xs:gYearMonth, xs:gYear</td>
+   <td>A JSON string - a union of xs:dateTime, xs:date, xs:gYearMonth, xs:gYear</td>
+  </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: -?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?)?)?)?</td>
+ </tr>
+ <tr>
+   <td>time</td>
+   <td>A time during the day, with no date specified (can be converted to a <a href="#Duration">Duration</a> since midnight). Seconds may be provided but may also be ignored. <b>The time "24:00" is not allowed, and neither is a time zone</b></td>
+   <td>xs:time</td>
+   <td>A JSON string - an xs:time</td>
+  </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: ([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?</td>
+ </tr>
+</table>
+
+<p>
+Notes:
+</p>
+<ul>
+ <li>For all the types, the XML and JSON representations are the same except for different escaping in XML and JSON</li>
+ <li>The regexes allow a broader set of values than are actually valid (e.g. leap years) so additional validation is needed</li>
+ <li>The precision of the decimal value is signficant
+    <ul> 
+      <li>e.g 0.010 is regarded as different to 0.01</li>
+      <li>Implementations SHALL handle decimal values in ways that preserve and respect the precision of the value as represented</li> 
+      <li>Implementations that might meet this constraint are GMP implementations or Java BigDecimal that implement arbitrary precision, or a combination of a (64 bit) floating point value with a precision field</li> 
+      <li>Note that there is no absolute limit to the magnitude of the value, though large and/or highly precise values are extremely rare in medicine</li>
+    </ul>
+ </li>
+</ul>
+
+
+<h3>XML and JSON representations</h3>
+
+<p>
+All the primitive types have some combination of value as described above, an internal identity (e.g. xml:id), and extensions. 
+The value is represented in XML as an attribute named "value":
+</p>
+<pre>
+  &lt;count value="2"/&gt;
+</pre>
+<p>
+ and as the value of the property in JSON:
+</p>
+<pre>
+  "count" : 2
+</pre>
+<p>
+For additional details, including how the internal identity and extensions are represented, see the <a href="xml.html">XML</a> and <a href="json.html">JSON</a> formats. 
+When the value is missing, it is not represented in the instance; the XML value attribute or the JSON property are not represented at all. 
+</p>
+<p>
+According to XML schema, leading and trailing whitespace in the value attribute is ignored for the types 
+boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid, and uri. Note that this means that the 
+schema aware XML libraries give different attribute values to non schema aware libraries when reading the 
+XML instances. For this reason, the value attribute for these types SHOULD not have leading and trailing spaces.
+String values should only have leading and trailing spaces if they are part of the content of the value. 
+In JSON, whitespace in string values is always significant. Primitive types other than string SHALL NOT have leading or trailing whitespace.
+</p>
+
+<h3>Simple Restrictions</h3>
+<p>
+In addition to the base primitive types, a few additional primitive types are defined as restrictions on one of the other primitive types.
+</p>
+
+<a name="patterns"></a>
+<a name="code"> </a>
+<a name="oid"> </a>
+<a name="uuid"> </a>
+<a name="id"> </a>
+
+<table class="list">
+ <tr>
+   <th>FHIR Name</th><th>Base FHIR Type</th><th>Description</th>
+ </tr>
+ <tr><td>code</td><td>string</td><td>Indicates that the value is taken from a set of controlled strings defined elsewhere (see <a href="terminologies.html">Using codes</a> for further discussion). Technically, a code is restricted to string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
+ 
+ 
+ <tr><td>oid</td><td>uri</td><td>An OID represented as a URI (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>). e.g. urn:oid:1.2.3.4.5</td></tr>
+<!--
+ <tr><td>uuid</td><td>uri</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11. Note the RFC comments about case: UUID values SHALL be represented in lower case, but systems SHOULD interpret them case insensitively</td></tr>
+-->
+ <tr><td>id</td><td>string</td><td>Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.)  Ids are case sensitive. UUIDs SHALL be sent using lowercase letters.
+   <br/>Note: this format includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232.
+   <br/>regex: [%id_regex%]</td></tr>
+</table>
+<!--
+<hr/>
+<p>Old primitive data types description, for reference</p>
  
 <table class="list">
  <tr>
@@ -66,7 +239,7 @@
    <th>Имя в FHIR</th><th>Тип из схемы</th><th>Описание</th>
  </tr>
  <tr>
-   <td>boolean</td><td>xs:boolean</td><td>Может принимать только значения true или false (<b>0 и 1 не являются допустимыми значениями</b>)</td>
+   <td>boolean</td><td>xs:boolean</td><td>Может принимать только значения 'true' или 'false' (<b>0 и 1 не являются допустимыми значениями</b>)</td>
  </tr>
  <tr>
    <td>integer</td><td>xs:int</td><td>32-битное целое число со знаком (для больших значений используйте тип decimal)</td>
@@ -93,7 +266,7 @@
  </td></tr>
  <tr><td>time</td><td>xs:time</td><td>A time during the day, with no date specified (can be converted to a <a href="#Duration">Duration</a> since midnght. Seconds may be provided but may also be ignored. <b>The time "24:00" is not allowed, and neither is a time zone</b><br/>
  regex: ([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?
-<!-- these regex tested using http://www.regexr.com/ -->
+<!-- these regex tested using http://www.regexr.com/ - ->
  </td> 
  </tr>
  <tr><td colspan="3"><i>Примечание: не все ограничения, наложенные на этот тип данных, могут быть выражены с помощью регулярных выражений, поэтому эти регулярные выражения пропускают более широкий набор значений, чем фактически допустимый.</i></td></tr>
@@ -127,8 +300,13 @@
 Типы также имеют свойство id и расширения. Их представление описано в <a href="json.html">формате JSON</a>. В JSON пробелы всегда имеют значение. Все примитивные типы, кроме строки (string), НЕ ДОЛЖНЫ иметь пробелы в начале и в конце.
 </p>
 
+<hr/>
+<!-- these regex tested using http://www.regexr.com/ - ->
+
+<!-- <tr><td colspan="3"><i>Note: not all restrictions imposed on the date/time types can be expressed using regular expressions, so these regexes allow a broader set of values than are actually valid</i></td></tr> -->
 
 <hr/>
+
 <a name="Types"/>
 <h2>Сложные типы</h2>
 
@@ -416,7 +594,7 @@ Range обозначает множество возможных значени�
 Элементы <i>units</i> и <i>code</i>/<i>system</i> в элементах <i>low</i> и <i>high</i> ДОЛЖНЫ совпадать. Если элемент  <i>low</i> или <i>high</i> отсутствует, это означает, что нижняя или верхняя граница не известна и, следовательно, ни тот, ни другой не является полным диапазоном (neither is the complete range).
 </p>
 <p>
-Элементы <i>low</i> и <i>high</i> не могут иметь флаг <i>range</i>. Обратите внимание, что тип Range не должен использоваться для измерений, выходящих за пределы диапазона: в этом случае следует использовать тип quantity с элементом comparator.
+Элементы <i>low</i> и <i>high</i> не могут иметь флаг <i>comparator</i>. Обратите внимание, что тип Range не должен использоваться для измерений, выходящих за пределы диапазона: в этом случае следует использовать тип quantity с элементом comparator.
 </p>
 <p>
 Значения low и high входят в диапазон и предполагается, что они имеют сколь угодно высокую точность. К примеру, диапазон 1.5 - 2.5 включает значения 1.50 и 2.50, но не 1.49 или 2.51.
@@ -699,19 +877,35 @@ If the timing schedule has repeating criteria, the repeat can occur a given numb
 the specified duration or in relation to some real world event. Also, if the event repeats,
 a time to end the timing can be specified, either with a count of the number of times 
 it can occur or a date/time at which to end the schedule. If no end condition is specified, 
-the Schedule will terminate on some criteria that are expressed elsewhere. 
+the schedule will terminate on some criteria that are expressed elsewhere. 
 Если в расписании имеется критерий повторения, событие может повториться заданное количество раз за указанный период либо относительно некоторого события реального мира.
 Если событие повторяющееся, время до окончания расписания может быть задано, либо количеством повторений count, либо датой/временем окончания расписания end. Если условие окончания не задано, расписание Schedule завершится по некоторому критерию, представленному где-то в другом месте.
 </p>
 
+<a name="Signature"></a>
+<a name="signature"></a>
+<h2 style="margin-bottom: 1px">
+Signature
+</h2>
+<p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
+See also <a href="datatypes-examples.html#Signature">Examples</a>, <a href="datatypes-definitions.html#Signature">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Signature">Mappings</a>.
+</p>
+<p>
+todo
+</p>
+[%dt Signature%]
+<p>
+todo
+</p>
+
 <div class="use">
 <p><b>Ограничения</b></p>
-[%dt.constraints Timing%]
+[%dt.constraints Signature%]
 
 </div>
 
 <p>
-Timing используется в следующих местах: [%dtusage Timing%]
+Signature используется в следующих местах: [%dtusage Signature%]
 </p>
 
 <a name="open"> </a>
@@ -743,6 +937,7 @@ Timing используется в следующих местах: [%dtusage Ti
  <li><a href="datatypes.html#Address">Address</a></li>
  <li><a href="datatypes.html#ContactPoint">ContactPoint</a></li>
  <li><a href="datatypes.html#Timing">Timing</a></li>
+ <li><a href="datatypes.html#Signature">Signature</a></li>
  <li><a href="references.html#Reference">Reference</a> - - ссылка на другой ресурс</li>
 </ul>
 <p>
@@ -797,6 +992,7 @@ $( '#tabs-HumanName' ).tabs({ active: currentTabIndex, activate: function( event
 $( '#tabs-Address' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
 $( '#tabs-ContactPoint' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
 $( '#tabs-Timing' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Signature' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
      
      
 function store(currentTab) {
@@ -819,6 +1015,7 @@ function store(currentTab) {
   $( '#tabs-Address' ).tabs('option', 'active', currentTab);
   $( '#tabs-ContactPoint' ).tabs('option', 'active', currentTab);
   $( '#tabs-Timing' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Signature' ).tabs('option', 'active', currentTab);
 }     
 </script>
 

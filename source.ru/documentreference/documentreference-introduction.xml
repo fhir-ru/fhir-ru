@@ -4,10 +4,10 @@
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p> 
 Ресурс document reference используется для описания документа, который сделан доступным для медицинской системы. 
-Документ - это некоторая последовательность байтов, которые можно идентифицировать, устанавливает свой собственный контекст (например какой субъект, автор и т. п.), может быть отображен пользователю и имеет определенное управление обновлениями. Ресурс document может использоваться с любыми форматами документов, имеющими распознаваемый MIME-тип, и которые соответствуют этому определению.
+Документ - это некоторая последовательность байтов, которые можно идентифицировать, устанавливает свой собственный контекст (например какой субъект, автор и т. п.), может быть отображен пользователю и имеет определенное управление обновлениями. Ресурс DocumentReference может использоваться с любыми форматами документов, имеющими распознаваемый MIME-тип, и которые соответствуют этому определению.
 <!-- A document reference resource is used to describe a document that is made available to a healthcare system. 
 A document is some sequence of bytes that is identifiable, establishes its own context (e.g. what subject, 
-author etc), can be displayed to the user, and has defined update management. The document resource can be 
+author etc), can be displayed to the user, and has defined update management. The DocumentReference resource can be 
 used with any document format that has a recognized mime type, and that conforms to this definition. -->
 </p>
 <p>
@@ -41,7 +41,7 @@ that are authored and assembled in FHIR. This resource is mainly intended for ge
 the target can be stored in the special <a href="http.html#binary">FHIR Binary Resource</a>, or the target can be 
 stored on some other server system. The document reference is also able to address documents that are retrieved 
 by a service call such as an XDS.b RetrieveDocumentSet, or a DICOM exchange, or a v2 message query, though 
-the way each of these service calls works must be specified in some external stanard or other documentation. -->
+the way each of these service calls works must be specified in some external standard or other documentation. -->
 </p>
 </div>
 

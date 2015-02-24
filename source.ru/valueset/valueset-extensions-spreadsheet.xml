@@ -940,7 +940,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">name</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Расширения ресурса ValueSet от HL7<!-- ValueSet HL7 Extensions --></Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">ValueSet HL7 Extensions</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">author.name</Data></Cell>
@@ -956,7 +956,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="69.75">
     <Cell ss:StyleID="s74"><Data ss:Type="String">description</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Описывает распространенные расширения, используемые с или связанные с ресурсом ValueSet<!-- Defines common extensions used with or related to the ValueSet resource --></Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Defines common extensions used with or related to the ValueSet resource</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">status</Data></Cell>

@@ -50,7 +50,7 @@ overlapping set of adaptations - by healthcare domain, by country, by institutio
 <!-- Typically, adaptations (either actual implementations or specifications - sometimes called "Implementation Guides")
 both restrict and extend APIs, resources and terminologies. FHIR provides a set of resources that 
 represent the decisions that have been made, and allows implementers to build useful services from them. These
-resources are known as the conformance resources. These comformance resources allow implementers to: -->
+resources are known as the conformance resources. These conformance resources allow implementers to: -->
 </p>
 <ul>
  <li>Указывать, что <a href="http.html">некоторые вызовы интерфейса</a> не используются в определенных случаях, и предоставлять дополнительное описание по использованию интерфейса (ресурс <a href="conformance.html">Conformance</a>) <!-- Indicate that <a href="http.html">some API calls</a> are not used for a particular use , and provide additional details about how the API calls are used (<a href="conformance.html">Conformance</a> Resource) --></li>
@@ -510,7 +510,7 @@ possible codes can be provided.  -->
 <!-- Bindings have two properties that define how the set of codes is used: <i>isExtensible</i> and <i>conformance</i>. -->
 </p>
 <ul>
-  <li><p><b>isExtensible</b><a name="extensibility"> </a>указывает, допустимы ли дополнительные коды помимо тех, что есть в определенном наборе кодов.<!-- indicates whether additional codes are allowed beyond those in the defined set of codes. --></p>
+  <li><p><b>isExtensible</b><a name="extensibility"> </a>указывает, допустимы ли дополнительные коды и/или простой текст помимо тех, что есть в определенном наборе кодов.<!-- indicates whether additional codes and/or plain text are allowed beyond those in the defined set of codes. --></p>
     <table>
       <tr><td>false</td> <td>Никакие дополнительные коды вне этого списка не должны использоваться <!-- No additional codes are to be used beyond the list provided --></td> </tr>
       <tr><td>true</td>  <td>Дополнительные коды или простой текст могут быть необходимы (это распространено, так как часто случается, что требуется использовать концепты, которые отсутствуют в определенном наборе кодов<!-- Supplemental codes or plain text may be needed (this is common because it is frequently the case that concepts will need to be used which won't be in the defined set of codes) --></td></tr>

@@ -47,8 +47,8 @@ This is always expected to be the same period as the encounter itself, where thi
 
 <h3>Status Management</h3>
 <p>
-Во время жизненного цикла encounter получает разные статусы. Как правило, они назначаются в порядке или процессе организации: запланирован, в процессе, закончен/отменен.
-<!-- During the life-cycle of an encounter it will pass through many statuses. Typically these are in order or the organizations workflow: planned, in progress, finished/cancelled. -->
+Во время жизненного цикла encounter получает разные статусы. Как правило, они назначаются в порядке или процессе организации: запланирован, в процессе, закончен/отменен (planned, in-progress, finished/cancelled).
+<!-- During the life-cycle of an encounter it will pass through many statuses. Typically these are in order or the organizations workflow: planned, in-progress, finished/cancelled. -->
 <br/>
 Информация о статусе часто используется для других вещей, и часто необходим анализ истории изменения статуса. Он может выполняться сканированием всех версий encounter и, затем, проверкой периода каждого и выполнения некоторой формы постобработки. Для облегчения этой работы (или если система не поддерживает истории ресурсов) включается компонент status history.
 <!-- This status information is often used for other things, and often an analysis of the status history is required.

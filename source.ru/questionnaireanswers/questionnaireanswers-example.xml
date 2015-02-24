@@ -49,13 +49,13 @@
   <contained>
     <Observation>
       <id value="obs.pt-category"/>
-      <name>
+      <code>
         <coding>
           <system value="http://snomed.info/sct"/>
           <code value="53786006"/>
           <display value="pT1 category"/>
         </coding>
-      </name>
+      </code>
       <valueCodeableConcept>
         <coding>
           <system value="http://snomed.info/sct"/>
@@ -74,7 +74,7 @@
   <author>
     <reference value="#questauth"/>
   </author>
-  <authored value="2013-02-19T14:15:00+11:00"/>
+  <authored value="2013-02-19T14:15:00-05:00"/>
   <group>
     <title value="Cancer Quality Forum Questionnaire 2012"/>
     <group>
@@ -123,7 +123,7 @@
     <!-- HISTOPATHOLOGY -->
     <!-- TODO: decide how to do this
     <group>
- 
+
       <group>
         <question>
          <dataResource>

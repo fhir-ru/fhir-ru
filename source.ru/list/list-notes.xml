@@ -91,20 +91,20 @@ possible approaches to work around this issue: -->
  <li>Информация для заполнения списка не была собрано - т. е. не опросили ("Not asked")<!-- The information to populate the list wasn't gathered - i.e. "Not asked" --></li>
 </ul>
 <p>
-Учитывая эти возможности и общий и важный первый случай, исходные системы ДОЛЖНЫ предоставлять причину в случае пустого списка. Из-за важности этого случая необходимо использовать особое значение <a href="special-values.html">"nil known"</a>, когда нет (существенных) записей в этом контексте медицинской помощи. Обратите внимание, что это понятие иногда описывается по-разному, например "пациент отрицает прием медикаментов" или "пациент не был в состоянии указать какую-либо значимую историю болезни".
+Учитывая эти возможности и общий и важный первый случай, исходные системы ДОЛЖНЫ предоставлять причину в случае пустого списка. Из-за важности этого случая необходимо использовать особое значение <a href="special-values.html">"nil-known"</a>, когда нет (существенных) записей в этом контексте медицинской помощи. Обратите внимание, что это понятие иногда описывается по-разному, например "пациент отрицает прием медикаментов" или "пациент не был в состоянии указать какую-либо значимую историю болезни".
 <!-- Given these possibilities, and the common and significant first case, source systems SHOULD 
 provide an empty reason if the list is empty. Because of the importance of this case, the 
-<a href="special-values.html">special value "nil known"</a> should be used when 
+<a href="special-values.html">special value "nil-known"</a> should be used when 
 there are no (significant) entries in this context of care. Note that this concept is 
 sometimes described differently, such as "patient denies taking medications", or 
 "patient was unable to identify any relevant medical history". -->
 </p>
 <p>
-При получении списка системы не должны делать предположение, что этот список является полным (некоторые записи могут не быть получены по разным причинам), если только не имеют место конкретные договоренности между торговыми партнерами или, если список пустой, что нет известных (nil known), если только не присутствует код "nil known".
+При получении списка системы не должны делать предположение, что этот список является полным (некоторые записи могут не быть получены по разным причинам), если только не имеют место конкретные договоренности между торговыми партнерами или, если список пустой, что нет известных (nil known), если только не присутствует код "nil-known".
 <!-- When receiving a list, systems should not assume that the list is complete (some entries may 
 have been withheld for a variety of reasons), unless there are specific trading partner
 arrangements in place or, if the list is empty, that there are actually nil known, 
-unless the "nil known" code is present. -->
+unless the "nil-known" code is present. -->
 </p>
 <p>
 Если список пустой, описательная часть должна содержать текст, эквивалентный указанной причине в элементе empty.

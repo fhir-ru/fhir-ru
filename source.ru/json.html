@@ -37,7 +37,6 @@ In the current absence of a specific json description, the JSON representation i
  <li>Тип ресурса представляется в JSON по-другому - instead of being the name of the base object (there is none in JSON), it is carried as the property "resourceType"</li>
  <li>Порядок следования свойств объекта в JSON-представлении не имеет значения, хотя внутри массива порядок должен поддерживаться</li>
  <li>JSON не имеет различия в обозначении атрибута и элемента, поэтому атрибуты (id, value) обрабатываются иначе</li>
- <li><a href="extensibility.html">Extensions are represented differently</a></li>
  <li>JSON имеет систему обозначений для массивов, использующихся для представления повторяющихся элементов. Обратите внимание, что массивы используются, когда элемент может повторяться, даже если он не повторяется в данном случае</li>
  <li>XHTML-элемент &lt;div&gt; в типе данных <a href="narrative.html">Narrative</a> представлен как отдельная экранированная строка XHTML. Это делается для того, чтобы избежать проблем в JSON со смешанным содержимым и проч. XHTML ДОЛЖЕН по-прежнему соответствовать правилам, описанным для <a href="narrative.html">Narrative</a></li>
  <li>There is no inherent support in JSON for a comment syntax. As a convention, content that would be comments in an XML representation is represented in a property with the name "fhir_comments", which is an array of strings, which can appear on any JSON object. 
@@ -119,7 +118,7 @@ FHIR-типы <a href="datatypes.html#integer">integer</a> и <a href="datatypes
 </p>
 <pre class="xml">
  &lt;<b>dob</b> id="314159" value="1970-03-30" &gt;
-   &lt;extension url="http://example.org/fhir/extensions#text"&gt;
+   &lt;extension url="http://example.org/fhir/ExtensionDefinition/text"&gt;
      &lt;valueString value="Easter 1970"/&gt;     
    &lt;/extension&gt;
  &lt;/<b>dob</b>&gt;
@@ -129,7 +128,8 @@ FHIR-типы <a href="datatypes.html#integer">integer</a> и <a href="datatypes
  "dob": "1972-11-30",
  "_dob": { 
    "id": "314159", 
-   "http://example.org/fhir/extensions#text": [{
+   "extension" : [ {
+      "url" : "http://example.org/fhir/ExtensionDefinition/text",
       "valueString" : "Easter 1970"
    }]
  }
@@ -141,7 +141,7 @@ FHIR-типы <a href="datatypes.html#integer">integer</a> и <a href="datatypes
 <pre class="xml">
  &lt;<b>code</b> value="au"/&gt;
  &lt;<b>code</b> value="nz"&gt;
-   &lt;extension url="http://hl7.org/fhir/Profile/tools-extensions#display"&gt;
+   &lt;extension url="http://hl7.org/fhir/ExtensionDefinition/display"&gt;
      &lt;valueString value="New Zealand a.k.a Kiwiland"/&gt;     
    &lt;/extension&gt;
  &lt;/<b>code</b>&gt;
@@ -151,9 +151,12 @@ FHIR-типы <a href="datatypes.html#integer">integer</a> и <a href="datatypes
  "code": [ "au", "nz" ],
  "_code": [ 
    null, 
-   { "http://example.org/fhir/extensions#text": [{
+   { 
+     "extension" : [ {
+        "url" : "http://hl7.org/fhir/ExtensionDefinition/display",
       "valueString" : "New Zealand a.k.a Kiwiland"
-   }] }
+     }]
+   }
   ]
  }
 </pre>

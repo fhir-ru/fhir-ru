@@ -172,7 +172,11 @@ ancestor::f:*[not(parent::f:*)]/f:contained/*[@id=substring-after(<b>current()</
   <li>Вложенные ресурсы НЕ ДОЛЖНЫ содержать других вложенных ресурсов</li>
   <li>Вложенные ресурсы НЕ ДОЛЖНЫ содержать описательную часть (narrative)</li>
   <li>Ресурсы, содержащиеся внутри, также "наследуют" контекст от их родительского ресурса. Например, если родительский ресурс содержит "subject", и вложенный ресурс также имеет определенный элемент subject, но не указывает никакого объекта, обрабатывающее приложение может заключить, что объект тот же самый. Обратите внимание, однако, что подобные заключения являются специфичными для конкретной ситуации. Нет правила, к примеру, что значение элемента "subject" совпадает в родительском и вложенном ресурсах</li>
-  <li>A contained resources can only be included in another resource if something in the resource actually refers to it:</li>
+  <li>Вложенный ресурс может быть включен в другой ресурс, только если в этом ресурсе есть непосредственная отсылка к нему:
+<!--
+A contained resource can only be included in another resource if something in the resource actually refers to it:
+-->
+</li>
 </ul>
 <div class="use">
 <p><b>Ограничения (Constraints)</b></p>

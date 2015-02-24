@@ -9,8 +9,7 @@
   <base value="cid:123@healthintersections.com.au"/>
   <entry>
     <!-- although the resource has an id - which it might need so it can referred to 
-      from within the transaction, the server is to treat it as a new resource -->
-    <status value="create"/>
+      from within this transaction, the server is to treat it as a new resource (see transaction below) -->
     <resource>
       <DocumentReference>
         <id value="a1"/>
@@ -46,6 +45,7 @@
             <display value="History and Physical"/>
           </coding>
         </type>
+        <format value="urn:oid:1.3.6.1.4.1.19376.1.5.3.1.1.16.1.4"/> 
         <author>
           <reference value="cid:123@healthintersections.com.au/Practitioner/a3"/>
         </author>
@@ -56,10 +56,11 @@
         <indexed value="2013-07-01T23:11:33+10:00"/>
         <status value="current"/>
         <description value="Physical"/>
-        <primaryLanguage value="en-us"/>
-        <mimeType value="text/plain"/>
-        <format value="urn:oid:1.3.6.1.4.1.19376.1.5.3.1.1.16.1.4"/>
-        <location value="http://localhost:9556/svc/fhir/Binary/1e404af3-077f-4bee-b7a6-a9be97e1ce32"/>
+        <content>
+          <contentType value="text/plain"/>
+          <language value="en-us"/> 
+          <url value="http://localhost:9556/svc/fhir/Binary/1e404af3-077f-4bee-b7a6-a9be97e1ce32"/>
+        </content>
         <context>
           <period>
             <start value="2004-12-23T08:00:00"/>
@@ -67,14 +68,15 @@
           </period>
         </context>
       </DocumentReference>
-
     </resource>
+    <transaction>
+      <method value="POST"/>
+      <url value="DocumentReference"/>
+    </transaction>
   </entry>
   <entry>
     <!-- if the server can find a matching resource, use that, else create a new 
       resource with these details -->
-    <status value="match"/>
-    <search value="Patient?identifier=http://acme.org/xds/patients!89765a87b"/>
     <resource>  
       <Patient>
         <id value="a2"/>
@@ -96,13 +98,15 @@
           <given value="John"/>
         </name>
         <birthDate value="1956-05-27"/>
-
       </Patient>
-
     </resource>
+    <transaction>
+      <method value="POST"/>
+      <url value="Patient"/>
+      <ifNoneExist value="Patient?identifier=http://acme.org/xds/patients!89765a87b"/>
+    </transaction> 
   </entry>
   <entry>
-    <status value="create"/>
     <resource>  
       <Practitioner>
         <id value="a3"/>
@@ -126,10 +130,10 @@
           <family value="Smitty"/>
           <given value="Gerald"/>
         </name>
-
-        <organization>
+				<practitionerRole>
+        <managingOrganization>
           <display value="Cleveland Clinic"/>
-        </organization>
+        </managingOrganization>
         <role>
           <coding>
             <code value="Attending"/>
@@ -140,12 +144,16 @@
             <code value="Orthopedic"/>
           </coding>
         </specialty>
+				</practitionerRole>
       </Practitioner>
 
     </resource>
+    <transaction>
+      <method value="POST"/>
+      <url value="Practitioner"/>
+    </transaction>
   </entry>
   <entry>
-    <status value="create"/>
     <resource>  
       <Practitioner>
         <id value="a4"/>
@@ -170,10 +178,11 @@
           <family value="Dopplemeyer"/>
           <given value="Sherry"/>
         </name>
+				<practitionerRole>
 
-        <organization>
+        <managingOrganization>
           <display value="Cleveland Clinic"/>
-        </organization>
+        </managingOrganization>
         <role>
           <coding>
             <code value="Primary Surgon"/>
@@ -184,12 +193,16 @@
             <code value="Orthopedic"/>
           </coding>
         </specialty>
+				</practitionerRole>
       </Practitioner>
 
     </resource>
+    <transaction>
+      <method value="POST"/>
+      <url value="Practitioner"/>
+    </transaction>
   </entry>
   <entry>
-    <status value="update"/>
     <resource>  
       <Binary>
         <id value="1e404af3-077f-4bee-b7a6-a9be97e1ce32"/>
@@ -200,5 +213,9 @@
         <content value="YXNkYXNkYXNkYXNkYXNk"/>
       </Binary>    
     </resource>
+    <transaction>
+      <method value="POST"/>
+      <url value="Binary"/>
+    </transaction>
   </entry>
 </Bundle>

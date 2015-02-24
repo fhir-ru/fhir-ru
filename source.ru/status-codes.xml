@@ -10,16 +10,16 @@
   <LastAuthor>Claude Nanjo</LastAuthor>
   <Created>2013-11-28T10:43:10Z</Created>
   <LastSaved>2014-12-04T19:22:58Z</LastSaved>
-  <Version>15.00</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9000</WindowHeight>
-  <WindowWidth>27330</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowHeight>11595</WindowHeight>
+  <WindowWidth>27195</WindowWidth>
+  <WindowTopX>-27195</WindowTopX>
+  <WindowTopY>-465</WindowTopY>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -86,7 +86,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Status Codes">
-  <Table ss:ExpandedColumnCount="38" ss:ExpandedRowCount="54" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="38" ss:ExpandedRowCount="56" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s62" ss:Width="314.25"/>
@@ -136,7 +136,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Alert.status</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">entered-in-error</Data></Cell>
     <Cell ss:Index="26"><Data ss:Type="String">active</Data></Cell>
     <Cell><Data ss:Type="String">inactive</Data></Cell>
    </Row>
@@ -149,16 +149,16 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">CarePlan.activity.status</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not started</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not-started</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">scheduled</Data></Cell>
-    <Cell><Data ss:Type="String">in progress</Data></Cell>
+    <Cell><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">cancelled</Data></Cell>
-    <Cell><Data ss:Type="String">on hold</Data></Cell>
+    <Cell><Data ss:Type="String">on-hold</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">CarePlan.goal.status</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">in progress</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">achieved</Data></Cell>
     <Cell><Data ss:Type="String">sustaining</Data></Cell>
     <Cell><Data ss:Type="String">cancelled</Data></Cell>
@@ -171,7 +171,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Composition.status</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">entered-in-error</Data></Cell>
     <Cell ss:Index="19"><Data ss:Type="String">preliminary</Data></Cell>
     <Cell ss:Index="21"><Data ss:Type="String">final</Data></Cell>
     <Cell ss:Index="23"><Data ss:Type="String">amended</Data></Cell>
@@ -198,10 +198,12 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="26.0625">
     <Cell><Data ss:Type="String">DiagnosticOrder.event.status</Data></Cell>
+    <Cell><Data ss:Type="String">proposed</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">planned</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">requested</Data></Cell>
     <Cell><Data ss:Type="String">received</Data></Cell>
     <Cell><Data ss:Type="String">accepted</Data></Cell>
-    <Cell><Data ss:Type="String">in progress</Data></Cell>
+    <Cell><Data ss:Type="String">in-progress</Data></Cell>
     <Cell><Data ss:Type="String">review</Data></Cell>
     <Cell><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">suspended</Data></Cell>
@@ -210,10 +212,12 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DiagnosticOrder.item.status</Data></Cell>
+    <Cell><Data ss:Type="String">proposed</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">planned</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">requested</Data></Cell>
     <Cell><Data ss:Type="String">received</Data></Cell>
     <Cell><Data ss:Type="String">accepted</Data></Cell>
-    <Cell><Data ss:Type="String">in progress</Data></Cell>
+    <Cell><Data ss:Type="String">in-progress</Data></Cell>
     <Cell><Data ss:Type="String">review</Data></Cell>
     <Cell><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">suspended</Data></Cell>
@@ -222,10 +226,12 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DiagnosticOrder.status</Data></Cell>
+    <Cell><Data ss:Type="String">proposed</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">planned</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">requested</Data></Cell>
     <Cell><Data ss:Type="String">received</Data></Cell>
     <Cell><Data ss:Type="String">accepted</Data></Cell>
-    <Cell><Data ss:Type="String">in progress</Data></Cell>
+    <Cell><Data ss:Type="String">in-progress</Data></Cell>
     <Cell><Data ss:Type="String">review</Data></Cell>
     <Cell><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">suspended</Data></Cell>
@@ -235,7 +241,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DiagnosticReport.status</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">cancelled</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">entered-in-error</Data></Cell>
     <Cell ss:Index="18"><Data ss:Type="String">registered</Data></Cell>
     <Cell ss:Index="20"><Data ss:Type="String">partial</Data></Cell>
     <Cell><Data ss:Type="String">final</Data></Cell>
@@ -245,13 +251,13 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DocumentManifest.status</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">entered-in-error</Data></Cell>
     <Cell ss:Index="26"><Data ss:Type="String">current</Data></Cell>
     <Cell ss:Index="28"><Data ss:Type="String">superceded</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DocumentReference.docStatus</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">entered-in-error</Data></Cell>
     <Cell ss:Index="19"><Data ss:Type="String">preliminary</Data></Cell>
     <Cell ss:Index="21"><Data ss:Type="String">final</Data></Cell>
     <Cell ss:Index="23"><Data ss:Type="String">amended</Data></Cell>
@@ -259,7 +265,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DocumentReference.status</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">entered-in-error</Data></Cell>
     <Cell ss:Index="26"><Data ss:Type="String">current</Data></Cell>
     <Cell ss:Index="28"><Data ss:Type="String">superceded</Data></Cell>
    </Row>
@@ -267,7 +273,7 @@
     <Cell><Data ss:Type="String">Encounter.status</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">arrived</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">planned</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">in progress</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">finished</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">cancelled</Data></Cell>
     <Cell><Data ss:Type="String">onleave</Data></Cell>
@@ -276,7 +282,7 @@
     <Cell><Data ss:Type="String">Encounter.statusHistory.status</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">arrived</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">planned</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">in progress</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">finished</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">cancelled</Data></Cell>
     <Cell><Data ss:Type="String">onleave</Data></Cell>
@@ -293,39 +299,42 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MedicationAdministration.status</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">in progress</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">stopped</Data></Cell>
-    <Cell><Data ss:Type="String">on hold</Data></Cell>
-    <Cell><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell><Data ss:Type="String">on-hold</Data></Cell>
+    <Cell><Data ss:Type="String">entered-in-error</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MedicationDispense.dispense.status</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">in progress</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">stopped</Data></Cell>
-    <Cell><Data ss:Type="String">on hold</Data></Cell>
-    <Cell><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell><Data ss:Type="String">on-hold</Data></Cell>
+    <Cell><Data ss:Type="String">entered-in-error</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MedicationDispense.status</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">in progress</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">stopped</Data></Cell>
-    <Cell><Data ss:Type="String">on hold</Data></Cell>
-    <Cell><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell><Data ss:Type="String">on-hold</Data></Cell>
+    <Cell><Data ss:Type="String">entered-in-error</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MedicationPrescription.status</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">active</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">stopped</Data></Cell>
-    <Cell><Data ss:Type="String">on hold</Data></Cell>
-    <Cell><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell><Data ss:Type="String">on-hold</Data></Cell>
+    <Cell><Data ss:Type="String">entered-in-error</Data></Cell>
+    <Cell ss:Index="19"><Data ss:Type="String">draft</Data></Cell>
     <Cell ss:Index="28"><Data ss:Type="String">superceded</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">NutritionOrder.status</Data></Cell>
+    <Cell><Data ss:Type="String">proposed</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">planned</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">requested</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">cancelled</Data></Cell>
     <Cell><Data ss:Type="String">held</Data></Cell>
@@ -336,7 +345,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Observation.status</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">cancelled</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">entered in error</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">entered-in-error</Data></Cell>
     <Cell ss:Index="18"><Data ss:Type="String">registered</Data></Cell>
     <Cell><Data ss:Type="String">preliminary</Data></Cell>
     <Cell ss:Index="21"><Data ss:Type="String">final</Data></Cell>
@@ -346,6 +355,12 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Profile.status</Data></Cell>
+    <Cell ss:Index="19"><Data ss:Type="String">draft</Data></Cell>
+    <Cell ss:Index="26"><Data ss:Type="String">active</Data></Cell>
+    <Cell ss:Index="28"><Data ss:Type="String">retired</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">StructureDefinition.status</Data></Cell>
     <Cell ss:Index="19"><Data ss:Type="String">draft</Data></Cell>
     <Cell ss:Index="26"><Data ss:Type="String">active</Data></Cell>
     <Cell ss:Index="28"><Data ss:Type="String">retired</Data></Cell>
@@ -364,7 +379,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">QuestionnaireAnswers.status</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">in progress</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="23"><Data ss:Type="String">amended</Data></Cell>
    </Row>
@@ -390,7 +405,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Supply.dispense.status</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">in progress</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">dispensed</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">abandoned</Data></Cell>
    </Row>
@@ -466,7 +481,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">requested</Data></Cell>
     <Cell><Data ss:Type="String">received</Data></Cell>
     <Cell><Data ss:Type="String">accepted</Data></Cell>
-    <Cell><Data ss:Type="String">in progress</Data></Cell>
+    <Cell><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">suspended</Data></Cell>
     <Cell ss:Index="17"><Data ss:Type="String">rejected</Data></Cell>
@@ -479,7 +494,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">requested</Data></Cell>
     <Cell><Data ss:Type="String">received</Data></Cell>
     <Cell><Data ss:Type="String">accepted</Data></Cell>
-    <Cell><Data ss:Type="String">in progress</Data></Cell>
+    <Cell><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">suspended</Data></Cell>
     <Cell ss:Index="17"><Data ss:Type="String">rejected</Data></Cell>
@@ -492,7 +507,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">requested</Data></Cell>
     <Cell><Data ss:Type="String">received</Data></Cell>
     <Cell><Data ss:Type="String">accepted</Data></Cell>
-    <Cell><Data ss:Type="String">in progress</Data></Cell>
+    <Cell><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">suspended</Data></Cell>
     <Cell ss:Index="17"><Data ss:Type="String">rejected</Data></Cell>
@@ -507,7 +522,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Communication.status</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">in progress</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">suspended</Data></Cell>
     <Cell ss:Index="17"><Data ss:Type="String">rejected</Data></Cell>
@@ -518,7 +533,7 @@
     <Cell><Data ss:Type="String">proposed</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">planned</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">accepted</Data></Cell>
-    <Cell><Data ss:Type="String">in progress</Data></Cell>
+    <Cell><Data ss:Type="String">in-progress</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">achieved</Data></Cell>
     <Cell><Data ss:Type="String">sustaining</Data></Cell>
     <Cell><Data ss:Type="String">cancelled</Data></Cell>
@@ -554,6 +569,12 @@
     <Cell ss:Index="15"><Data ss:Type="String">onhold</Data></Cell>
     <Cell ss:Index="17"><Data ss:Type="String">other</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MedicationStatement.status</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">in-progress</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">completed</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">entered-in-error</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -568,11 +589,10 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>37</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>52</ActiveRow>
+     <ActiveRow>29</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

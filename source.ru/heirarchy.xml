@@ -25,9 +25,10 @@ todo: compartments
       </page>
       <page title="Предстоящие задачи" filename="change.html"/>
       <page title="Соответствие ФМ ЭПМЗ и FHIR" filename="ehr-fm.html"/>
-      <page type="resource" resource="Encounter">
-        <!--    <page title="Resource Definitions" filename="resource.html"> -->
-        <page title="Определения" filename="resource-definitions.html"/>
+      <page title="Definitions" filename="resource-definitions.html">
+  			<page type="resource" resource="Resource"/>
+  			<page type="resource" resource="DomainResource"/>
+      </page>
         <page title="Определение элемента" filename="elementdefinition.html">
           <page title="Примеры определений элементов" filename="elementdefinition-examples.html"/>
                     <page title="Element Definition Detailed Descriptions" filename="elementdefinition-definitions.html"/>
@@ -54,7 +55,6 @@ todo: compartments
           <page title="Примеры" filename="extensibility-examples.html"/>
           <page title="Определения" filename="extensibility-definitions.html"/>
         </page>
-      </page>
       <page title="Типы данных" filename="datatypes.html">
         <page title="Примеры" filename="datatypes-examples.html"/>
         <page title="Формализованные определения" filename="datatypes-definitions.html"/>
@@ -147,6 +147,7 @@ todo: compartments
     -->
     <page title="Клинические" filename="clinical.html">
       <page type="resource" resource="AllergyIntolerance"/>
+			<page type="resource" resource="BodySite"/>
       <page type="resource" resource="Condition"/>
       <page type="resource" resource="CarePlan"/>
 			<page type="resource" resource="CarePlan2"/>
@@ -228,6 +229,7 @@ todo: compartments
            <page type="resource" resource="SecurityClaim"/>-->
       <page type="resource" resource="Conformance"/>
       <page type="resource" resource="Profile"/>
+			<page type="resource" resource="StructureDefinition"/>
       <page type="resource" resource="OperationDefinition"/>
       <page type="resource" resource="ExtensionDefinition"/>
       <page type="resource" resource="SearchParameter"/>

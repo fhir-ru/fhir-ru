@@ -4,7 +4,7 @@
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Ресурс Extension Definition предоставляет формальное определение расширения, используемого в FHIR-ресурсе, которое может применяться в качестве основания для валидации, а также генерации кода, отчетов и пользовательского интерфейса.
-<!-- The Extension Definition resource provides a forml definition of an extension used 
+<!-- The Extension Definition resource provides a formal definition of an extension used 
 in a FHIR resource, that can used as the basis for validation, and code, report and UI generation.  -->
 </p>
 </div> 
