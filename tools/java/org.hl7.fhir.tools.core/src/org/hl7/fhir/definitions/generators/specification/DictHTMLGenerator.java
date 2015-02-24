@@ -172,7 +172,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
 
   private void generateElementInner(Profile profile, ExtensionDefinition ed, ElementDefinition d) throws Exception {
-    tableRowMarkdown("Definition", d.getDefinition());
+    tableRowMarkdown("Definition", d.getFormal());
     tableRow("Control", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
     tableRowNE("Binding", "terminologies.html", describeBinding(d));
     if (d.hasNameReference())
