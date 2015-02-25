@@ -9342,14 +9342,12 @@
     <Cell ss:StyleID="s139"><Data ss:Type="String">has-component</Data></Cell>
     <Cell ss:StyleID="s128"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s115"/>
-    <Cell><Data ss:Type="String">имеет компонент</Data></Cell>
     <Cell ss:StyleID="s150"/>
     <Cell ss:StyleID="s150"/>
     <Cell ss:StyleID="s150"><Data ss:Type="String">The target observation is a component of this observation (e.g. Systolic and Diastolic Blood Pressure)</Data></Cell>
     <Cell ss:StyleID="s128"/>
     <Cell ss:StyleID="s128"><Data ss:Type="String">=ActRrelationshipType.COMP</Data></Cell>
     <Cell ss:StyleID="s140"/>
-    <Cell><Data ss:Type="String">включает члена группы</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s141"><Data ss:Type="String">has-member</Data></Cell>
@@ -9372,7 +9370,6 @@
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"><Data ss:Type="String">=ActRrelationshipType.DRIV</Data></Cell>
     <Cell ss:StyleID="s142"/>
-    <Cell><Data ss:Type="String">выведено из</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s141"><Data ss:Type="String">sequel-to</Data></Cell>
@@ -9384,7 +9381,6 @@
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"><Data ss:Type="String">=ActRrelationshipType.SEQL</Data></Cell>
     <Cell ss:StyleID="s142"/>
-    <Cell><Data ss:Type="String">следует за</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s141"><Data ss:Type="String">replaces</Data></Cell>
@@ -9396,7 +9392,6 @@
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"><Data ss:Type="String">=ActRrelationshipType.RPLC</Data></Cell>
     <Cell ss:StyleID="s142"/>
-    <Cell><Data ss:Type="String">заменяет</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s141"><Data ss:Type="String">qualified-by</Data></Cell>
@@ -9408,7 +9403,6 @@
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"><Data ss:Type="String">=ActRrelationshipType.QUALF</Data></Cell>
     <Cell ss:StyleID="s142"/>
-    <Cell><Data ss:Type="String">ограничен</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:StyleID="s141"><Data ss:Type="String">interfered-by</Data></Cell>
@@ -9420,7 +9414,6 @@
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"><Data ss:Type="String">=ActRrelationshipType.INTF</Data></Cell>
     <Cell ss:StyleID="s142"/>
-    <Cell><Data ss:Type="String">подвержен влиянию</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s141"/>
