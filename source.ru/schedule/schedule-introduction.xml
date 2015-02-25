@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 	<div>
-		<h2>Scope and Usage</h2>
+		<h2>Область применения и использование<!-- Scope and Usage --></h2>
 		<p>
 			Need to describe Searching for "Schedule's" that belong to a HealthcareService using Categories, or 
 			where using pracitioners or locations as the actor, then the "type" field is expected to be used to store the
@@ -13,7 +13,7 @@
 		</p>
 	</div>
     <div>
-		<h2>Scope and Usage</h2>
+		<h2>Область применения и использование<!-- Scope and Usage --></h2>
 		<p>
       Schedule resources provide a container for time-slots that can be booked using an appointment,
       It provides the window of time (period) that slots are defined for and what type of appointments can be booked.

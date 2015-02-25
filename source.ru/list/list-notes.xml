@@ -5,39 +5,45 @@
 <h2>List Mode &amp; Item Deleted</h2>
 
 <p>
-There are several different kinds of uses for a List resource:
+Имеется несколько различных видов использования ресурса List:
+<!-- There are several different kinds of uses for a List resource: -->
 </p>
 <%codelist ListMode%>
 
 <p>
-The final mode - a changes list, may include deleted items. A typical case is a medication
+Режим final - список изменений, может включать удаленные пункты. Типичный пример - список медикаментов в discharge summary, где список включает как добавленные, так и удаленные пункты. Для того, чтобы гарантировать безопасность обработки списка, любой пункт с флагом, подразумевающим, что этот пункт был фактически удален, ДОЛЖЕН иметь элемент deleted в значении true.
+<!-- The final mode - a changes list, may include deleted items. A typical case is a medication
 list in a discharge summary, where the list includes items that have been both added and deleted.
 In order to ensure that the list is safe to process, any item where the flag implies that the 
-item has actually been deleted SHALL have the deleted element set to true. 
+item has actually been deleted SHALL have the deleted element set to true.  -->
 </p>
 <p>
-Note that there is no implication about the status of a resource that has been deleted.
+Обратите внимание, что нет никакого вывода о статусе ресурса, который был удален. Единственное утверждение, которое делается - что этот ресурс был убран из списка. Однако приложениям следует гарантировать, что добавление или удаление пунктов в списке по смыслу не противоречит логическому статусу соответствующего ресурса и его содержимого.
+<!-- Note that there is no implication about the status of a resource that has been deleted.
 The only statement that is made is that the resource has been dropped from the list. 
 However applications should ensure that the implication of adding or deleting items
-from the list is consistent with the logical status of the resource and its contents.
+from the list is consistent with the logical status of the resource and its contents. -->
 </p>
 <p>
-A proper use of List.mode = "changes" with a deleted resource is in a medications list 
+Корректное использование списка в режиме List.mode = "changes" с удаленным ресурсом - это список медикаментов в discharge summary. См. пример med-list". Использование было бы неправильным, если бы список был действующим списком медикаментов пациента в клинической системе отслеживания, и флаги пунктов списка использовались бы для осуществления отслеживания истории версий внутри ресурса.
+<!-- A proper use of List.mode = "changes" with a deleted resource is in a medications list 
 for a discharge summary. See Example "med-list". An improper use would be if the list 
 was a working list of patient medications in a clinical tracking system, and list item
-flags were used to implement version tracking history within the resource.
+flags were used to implement version tracking history within the resource. -->
 </p>
 
 <a name="narrative"> </a>
 <h2>Narrative Content</h2>
 
 <p>
-The narrative portion of the List resource should contain a summary 
+Описательная часть ресурса List должна содержать сводку ключевых свойств пунктов в списке  наряду с человекочитаемой сводкой их флагов (если они есть).
+<!-- The narrative portion of the List resource should contain a summary 
 of key properties of the items in the list, along with a human-readable 
-summary of their flags (if present).
+summary of their flags (if present). -->
 </p>
 <p>
-An HTML table is the recommended approach, though this is not required.
+Рекомендуемый подход - HTML-таблица, хотя это и не обязательно. Каждый List.item должен появиться в описательной части ресурса. Т. е. не обязательно извлекать пункты списка, чтобы получить человекочитаемое отображение его содержимого. Кроме того, описательная часть не должна предполагать, что список содержит пункты, для которых нет соответствующего элемента List.item. Если в списке если флаги, представление на экране должно использовать понятные визуальные подсказки (границы, линии, маркеры списков и т. п.), чтобы гарантировать, что читатели не запутаются, какие флаги к каким пунктам относятся, на маленьких экранах (например для предотвращения переносов, разносящих флаги и пункты по разным местам экрана).
+<!-- An HTML table is the recommended approach, though this is not required.
 Each List.item should appear in the narrative for the resource.  I.e. It 
 should not be necessary to retrieve the list items in order to have a 
 human-readable rendering of the content. In addiiton, the narrative 
@@ -46,58 +52,63 @@ corresponding List.item elements. If the list has flags, the representation
 should make clear use of visual hints (borders, lines, bullet marks, etc.) 
 to ensure that human readers do not get confused about which flags belong 
 with which item on space-poor displays (e.g. to prevent wrapping from 
-separating the flags from the items).
+separating the flags from the items). -->
 </p>
 
 <p>
-This means that the narrative content of the list will be limited to the
+Это означает, что содержание описательной части списка будет ограничено версией вложенных ресурсов на момент последнего обновления списка. А может быть даже и раньше, если описательная часть не была обновлена и не отражает последние версии всех ресурсов, на которые есть ссылки, при каждом их обновлении. Лучшим способом будет для действующих 'working' списков обновлять описательную часть, чтобы она отражала самое свежее содержимое всех перечисленных элементов, каждый раз, когда список пересматривается. Следовательно, на списки нельзя полагаться как на представление ссылочного содержимого в реальном времени. Есть несколько возможных подходов к решению этой проблемы:
+<!-- This means that the narrative content of the list will be limited to the
 version of the contained resources at the time the list was last updated. It may be
 even earlier if the narrative isn't updated to reflect the most recent version
 of all referenced resources at each update.  Best practice for 'working' lists is to update 
 the narrative to reflect the most recent content of all list elements each time the list
 is revised.  Lists should therefore not be
 relied on as a real-time view of the referenced content.  There are a few
-possible approaches to work around this issue:
+possible approaches to work around this issue: -->
 </p>
 <ul>
- <li>Provide minimal information about the listed resources, possibly limited to only a link.  
+ <li>Предоставлять минимум информации о перечисленных ресурсах, возможно ограничиваясь только ссылкой. (Не рекомендуется, так как это существенно ограничивает полезность описательной части и, в частности, проблематично для таких вещей, как документы, где, возможно, единственным заверенным содержимым будет только описательная часть ресурса List)<!-- Provide minimal information about the listed resources, possibly limited to only a link.  
  (Not recommended as this severely limits the usefulness of the narrative and is particularly
  problematic for things like documents where the only attested content might be the List
- narrative)</li>
- <li>Include only "generated" narrative, so the retriever can easily generate their own "current"
- view of the list by retrieving the referenced resources, ignoring the fixed narrative.</li>
- <li>The server hosting the list can subscribe to all referenced resources and auto-update the
- narrative each time one of the referenced resources changes (or at least on a semi-frequent basis)</li>
+ narrative) --></li>
+ <li>Включать только "генерируемое" описание, чтобы устройство поиска могло просто сгенерировать собственный "текущий" список, запрашивая ресурсы по ссылками и игнорируя фиксированное описание. <!-- Include only "generated" narrative, so the retriever can easily generate their own "current"
+ view of the list by retrieving the referenced resources, ignoring the fixed narrative. --></li>
+ <li>Сервер, на котором размещается список, может подписаться на все упоминаемые ресурсы и автоматически обновлять описательную часть при каждом изменении ресурсов, на которые даются ссылки (или, по крайне мере, делать это на полурегулярной основе)<!-- The server hosting the list can subscribe to all referenced resources and auto-update the
+ narrative each time one of the referenced resources changes (or at least on a semi-frequent basis) --></li>
 </ul>
 
 <a name="emptyReason"> </a>
 <h2>Empty Reason</h2>
 
 <p>
-If the list is empty, there could be several different reasons why this is so. For example:
+Если список пустой, этому может быть несколько различных причин. Например:
+<!-- If the list is empty, there could be several different reasons why this is so. For example: -->
 </p>
 <ul>
- <li>There are no appropriate entries for the list (i.e. the patient has no known medications/allergies/history)</li>
- <li>The sender (human or system) deemed that these were not related to this context of patient care (usually for privacy related reasons)</li>
- <li>The source system doesn't support these type of entries</li>
- <li>The information to populate the list wasn't gathered - i.e. "Not asked"</li>
+ <li>Нет соответствующих записей для этого списка (т. е. у пациента нет известных медикаментов/аллергий/истории)<!-- There are no appropriate entries for the list (i.e. the patient has no known medications/allergies/history) --></li>
+ <li>Отправитель (человек или система) считал, что они не были связаны с этим контекстом медицинской помощи пациенту (как правило по причинам, связанным с неприкосновенностью частной жизни)<!-- The sender (human or system) deemed that these were not related to this context of patient care (usually for privacy related reasons) --></li>
+ <li>Исходная система не поддерживает этот тип записей<!-- The source system doesn't support these type of entries --></li>
+ <li>Информация для заполнения списка не была собрано - т. е. не опросили ("Not asked")<!-- The information to populate the list wasn't gathered - i.e. "Not asked" --></li>
 </ul>
 <p>
-Given these possibilities, and the common and significant first case, source systems SHOULD 
+Учитывая эти возможности и общий и важный первый случай, исходные системы ДОЛЖНЫ предоставлять причину в случае пустого списка. Из-за важности этого случая необходимо использовать особое значение <a href="special-values.html">"nil-known"</a>, когда нет (существенных) записей в этом контексте медицинской помощи. Обратите внимание, что это понятие иногда описывается по-разному, например "пациент отрицает прием медикаментов" или "пациент не был в состоянии указать какую-либо значимую историю болезни".
+<!-- Given these possibilities, and the common and significant first case, source systems SHOULD 
 provide an empty reason if the list is empty. Because of the importance of this case, the 
 <a href="special-values.html">special value "nil-known"</a> should be used when 
 there are no (significant) entries in this context of care. Note that this concept is 
 sometimes described differently, such as "patient denies taking medications", or 
-"patient was unable to identify any relevant medical history".
+"patient was unable to identify any relevant medical history". -->
 </p>
 <p>
-When receiving a list, systems should not assume that the list is complete (some entries may 
+При получении списка системы не должны делать предположение, что этот список является полным (некоторые записи могут не быть получены по разным причинам), если только не имеют место конкретные договоренности между торговыми партнерами или, если список пустой, что нет известных (nil known), если только не присутствует код "nil-known".
+<!-- When receiving a list, systems should not assume that the list is complete (some entries may 
 have been withheld for a variety of reasons), unless there are specific trading partner
 arrangements in place or, if the list is empty, that there are actually nil known, 
-unless the "nil-known" code is present.
+unless the "nil-known" code is present. -->
 </p>
 <p>
-If the list is empty, the narrative should contain text equivalent to the empty reason.
+Если список пустой, описательная часть должна содержать текст, эквивалентный указанной причине в элементе empty.
+<!-- If the list is empty, the narrative should contain text equivalent to the empty reason. -->
 </p>
 
 </div>

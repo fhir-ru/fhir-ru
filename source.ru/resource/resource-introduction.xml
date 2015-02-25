@@ -2,7 +2,7 @@
 
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 This specification defines a series of different types of resource that can be used to exchange and/or store data 
 in order to solve a wide range of healthcare related problems, both clinical and administrative. In addition,
@@ -37,7 +37,7 @@ Basic definitions:
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 
 <p>
 All resources have the following optional or mandatory elements and properties:

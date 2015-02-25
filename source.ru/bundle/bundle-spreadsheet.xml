@@ -988,9 +988,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Contains a group of resources</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Содержит группу ресурсов<!-- Contains a group of resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A container for a group of resources</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Контейнер для группы ресурсов<!-- A container for a group of resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1024,10 +1024,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">document | message | transaction | transaction-response | history | searchset | collection</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the purpose of this bundle- how it was intended to be used</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает назначение этого bundle - как его намереваются использовать<!-- Indicates the purpose of this bundle- how it was intended to be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">It's possible to use a bundle for other purposes (e.g. a document can be accepted as a transaction). This is primarily defined so that there can be specific rules for some of the bundle types</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Возможно использование bundle и в других целях (например документ может быть принят как транзакция). Это прежде всего определяется для того, чтобы были конкретные правила для некоторых типов связок<!-- It's possible to use a bundle for other purposes (e.g. a document can be accepted as a transaction). This is primarily defined so that there can be specific rules for some of the bundle types --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1053,9 +1053,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Stated Base URL</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Установленный базовый URL<!-- Stated Base URL --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The base URL for the service that provided these resources. All relative URLs are relative to this one (equivalent to xml:base)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Базовый URL для сервиса, который предоставил эти ресурсы. Все относительные URL разрешаются относительно этого (эквивалентно xml:base)<!-- The base URL for the service that provided these resources. All relative URLs are relative to this one (equivalent to xml:base) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1085,12 +1085,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If search, the total number of matches</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для поиска общее количество совпадений<!-- If search, the total number of matches --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для набора совпадений при поиске это общее количество найденных совпадений (в противоположность количеству результатов в этом bundle)<!-- If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Only used if the bundle is a search result set</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Используется только если bundle является набором результатов поиска<!-- Only used if the bundle is a search result set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1116,9 +1116,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Links related to this Bundle</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Связи относительно данного Bundle<!-- Links related to this Bundle --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A series of links that provide context to this bundle </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Серия связей, обеспечивающих контекст для данного bundle<!-- A series of links that provide context to this bundle  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1150,7 +1150,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">http://www.iana.org/assignments/link-relations/link-relations.xhtml</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A name which details the functional use for this link - see [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]]</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название, детализирующее функциональное использование данной связи - см. [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]]<!-- A name which details the functional use for this link - see [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]] --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1179,9 +1179,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reference details for the link</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Данные по ссылке для связи<!-- Reference details for the link --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The reference details for the link</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Данные по ссылке для связи<!-- The reference details for the link --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1209,9 +1209,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Entry in the bundle - will have a resource, or information</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Запись в bundle - будет содержать deleted или ресурс<!-- Entry in the bundle - will have deleted or resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Запись в bundle - будет содержать либо ресурс, либо удаленную запись (только транзакционные и архивные bundle)<!-- An entry in a bundle resource - will either contain a resource, or a deleted entry (transaction and history bundles only) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1240,12 +1240,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Base URL, if different to bundle base</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Базовый URL, если он отличается от базового URL связки (bundle)<!-- Base URL, if different to bundle base --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The Base URL for the resource, if different to the base URL specified for the bundle as a whole</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Базовый URL для ресурса, если он отличается от базового URL, указанного для bundle в целом<!-- The Base URL for the resource, if different to the base URL specified for the bundle as a whole --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This allows bundles to be composed of resources from multiple servers (collated search, documents etc)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это дает возможность составлять связки (bundles) из ресурсов с разных серверов (обобщенный поиск, документы и т. п.)<!-- This allows bundles to be composed of resources from multiple servers (collated search, documents etc) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1271,9 +1271,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Resources in this bundle</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурсы в данном bundle<!-- Resources in this bundle --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The Resources for the entry</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурсы в записи<!-- The Resources for the entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1364,9 +1364,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Search ranking (between 0 and 1)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Поисковый рейтинг (от 0 до 1)<!-- Search ranking (between 0 and 1) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">When searching, the server's search ranking score for the entry</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">При поиске оценка поискового рейтинга сервером для записи<!-- When searching, the server's search ranking score for the entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Servers are not required to return a ranking score. 1 is most relevant, and 0 is least relevant. Often, search results are sorted by score, but the client may specify a different sort order</Data><NamedCell
