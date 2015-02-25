@@ -2113,7 +2113,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Есть несколько сценариев использования: * Записи-дубликаты пациента вследствие канцелярских ошибок, связанных с трудностью непротиворечивой идентификации людей, и * Распределение информации о пациенте среди нескольких серверов  <!-- There are multiple usecases: * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"><!-- There is no assumption that linked patient records have mutual links. --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">There is no assumption that linked patient records have mutual links. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">outboundLink</Data><NamedCell
