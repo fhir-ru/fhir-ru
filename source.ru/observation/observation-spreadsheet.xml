@@ -1670,6 +1670,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может дать степень уверенность в наблюдении и также указать, куда следует направлять последующие вопросы.<!-- May give a degree of confidence in the observation and also indicates where follow-up questions should be directed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Это будет &quot;Device&quot; только в том случае, если устройство ответственно за измерение, не для ввода устройства, используемого человеком для выполнения измерения. (Последнее следует вводить в виде расширения.)<!-- This would only be &quot;Device&quot; if the device is responsible for the measurement, not to capture the device used by a human to make the measurement.  (The latter could be captured as an extension.) --></Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">participation[typeCode=PRF]</Data><NamedCell
