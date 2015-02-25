@@ -14,31 +14,32 @@
 
 <%extheader examples%>
 
-<h2>Примеры использования расширений в ресурсах (Extensibility Examples)</h2>
+<h2>Extensibility Examples</h2>
 
 <p>
-Чтобы пользоваться расширениями ресурсов (extensions), необходимо выполнить следующие три шага:
-<!-- In order to use an extension, there is a three step process: -->
+In order to use an extension, there is a three step process:
 </p>
 <ol>
-  <li>Дать определение расширению <!--Define the extension --></li>
-  <li>Зарегистрировать его <!-- Register the extension --></li>
-  <li>Использовать расширение как часть некоторой сущности<!--Use it in the instance --></li>
+  <li>Define the extension</li>
+  <li>Register the extension</li>
+  <li>Use it in the instance</li>
 </ol>
 <p>
-Описание данного процесса находится на настоящей странице.
+This page contains examples of how this process executes.
 </p>
 
-<h3>Согласие пациента на обмен записями о его здоровье<!--Patient Consent for Record Sharing --></h3>
+<h3>Patient Consent for Record Sharing</h3>
 
 <p>
-Базовый ресурс "пациент" не содержит информации, касающейся согласия пациента на передачу его персональной информации 
-и/или действующей политики, по которой пациент соглашается на регистрацию его данных. Общественные веб-провайдеры сервисов
-персональных медицинских записей (PHR) могут быть обязаны следить за изменениями конкретной политики, в соответствии 
-с которой пользователь сервиса встeпил во взаимоотношения с поставщиком PHR-услуг, и информировать пользователя об
-изменении политики с помощью FHIR API. При желании, поставщик PHR-услуг может расширить базовые ресурсы о пациенте
-для представления в них (и передачи) соглашения об участии пациента (participation agreement). Обратите внимание на
-существование и иных решений данной проблемы, но для демонстрации процесса расширения достаточно этого.
+The basic patient resource contains no information relating to patient 
+consent, and/or the policy under which the patient consents to their registration 
+details. A social web provider of personal healthcare record (PHR) services 
+might be obliged to keep track of the particular policy under which 
+a patient has created their relationship with the PHR provider, and share
+this with their participants via their FHIR API. If they wish, they can 
+extend the patient resource to represent the patient's participation
+agreement. Note that other approaches to this problem are possible, but
+it suffices to demonstrate the extension process.
 </p>
 <p>
 For the purposes of this example, we assume that the patient agrees to
@@ -81,7 +82,7 @@ From this table, we can build a formal extension definition. In this case, it lo
   &lt;element>
     &lt;path value="participation-agreement"/>
     &lt;short value="Agreed agreement/policy" /&gt;
-    &lt;formal value="A URI that identifies a participation agreement/policy 
+    &lt;definition value="A URI that identifies a participation agreement/policy 
       to which the patient has agreed" /&gt;
     &lt;comments value="URI is a literal reference to agreement text (html). 
       Systems SHALL conform to the policies as indicated. 
@@ -175,7 +176,7 @@ will use this resource, a profile on the patient resource is used:
       &lt;!-- clone information from the extension definition. 
         duplicative, but this duplication makes it over all simpler --&gt;
       &lt;short value=&quot;Agreed agreement/policy&quot;/&gt;
-      &lt;formal value=&quot;A URI that identifies a participation agreement/policy 
+      &lt;definition value=&quot;A URI that identifies a participation agreement/policy 
       to which the patient has agreed&quot;/&gt;
       &lt;!--  min has to be 1, since the extension itself has min = 1 --&gt;
       &lt;min value=&quot;1&quot;/&gt;
@@ -276,7 +277,7 @@ and their associated bindings. In this case, the profile looks like this:
   &lt;element>
     &lt;path value="name-qualifier"/>
     &lt;short value="LS | AC | NB | PR | HON | BR | AD | SP | MID | CL | IN" /&gt;
-    &lt;formal value="A set of codes each of which specifies a certain subcategory
+    &lt;definition value="A set of codes each of which specifies a certain subcategory
         of the name part in addition to the main name part type" /&gt;
     &lt;comments value="Used to indicate additional information about the
            name part and how it should be used" /&gt;

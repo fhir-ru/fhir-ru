@@ -2,7 +2,7 @@
 
 
       
-[%settitle Безопасность%]
+[%settitle Security%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -12,54 +12,42 @@
 
 <div class="col-9">
 
-<h1>Вопросы безопасности FHIR</h1>
+<h1>FHIR Security</h1>
 
 <p>
-FHIR - не является безопасным протоколом обмена данными и не имеет какой-либо функциональности, 
-имеющей отношение к обеспечению защищенности информационного обмена. Однако, он определяет 
-жесткие правила обмена и модели содержимого, которые необходимо использовать с протоколами безопасной
-пересылки данных, определенных в других источниках. Дадим краткие определения основным понятиям:
-<!-- Fast Healthcare Interoperability Resources (FHIR) is not a security protocol, nor does it define any security
+Fast Healthcare Interoperability Resources (FHIR) is not a security protocol, nor does it define any security
 related functionality. However FHIR does define exchange protocols and content models that need to be used
 with various security protocols defined elsewhere. This section gathers all information about security
-in one section. A summary: -->
+in one section. A summary:
 </p>
 <ul class="dense">
- <li>Защита коммуникации (Communications Security) - обмен рабочей информацией должен быть защищен с помощью протоколов TLS/SSL (например https)</li>
- <li>Аутентификация (Authentication) - возможна любая форма аутентификации пользователей / клиентов. Для решений, основанных на веб, рекомендуется использовать OAuth</li>
- <li>Контроль авторизации / доступа (Authorization/Access Control) - стандарт FHIR определяет инфраструктуру для различных уровней безопасности (Security Label infrastructure) в целях обеспечения контроля доступа. FHIR также может определять набор ресурсов для управления доступом к информации, однако, на настоящий момент такие ресурсы не были определены. <!-- FHIR defines a Security Label infrastructure to support access control management.  FHIR may also define a set of resources to administer access control management, but does not define any at present --> </li>
- <li>Аудит (Audit) - стандарт FHIR определяет ресурсы, отвечающие за установление <a href="provenance.html">происхождения (provenance) ресурсов</a> и формализованное представление <a href="securityevent.html">событий, имеющих отношение к обеспечению безопасности (security event)</a>, используемых для отслеживания происхождения, авторства, истории, статуса и получения доступа к ресурсам.   <!--resources suitable for tracking the origins, authorship, history, status and access of resources --></li>
- <li>Цифровые подписи (Digital Signatures) - FHIR предусматривает специально зарезервированные сегменты для цифровых подписей</li>
- <li>Вложения (Attachments) - стандарт FHIR предусматривает возможность двоичного представления ресурсов и использование вложений. Использование вложений имеет свои особенности <!--FHIR allows for binary resources and attachments. These have their own concerns --></li>
- <li><a href="security-labels.html"> Метки уровней безопасности (Labels)</a> - стандарт FHIR предусматривает несколько уровней безопасности, в соответствии с которыми осуществляется обработка ресурса <!--FHIR allows for set of security related tags that affect that way resources are handled --></li>
- <li>Политики управления данными (Data Management Policies) - стандарт FHIR определяет набор средств поддержки обмена данными. <!-- FHIR defines a set of capabilities to support data exchange. -->
- Не все предлагаемые средства соответствуют локальным требованиям (в том числе законодательным) и могут быть неприменимыми в некоторых контекстах здравоохранения, странах и территориях (напр., обмен данными между медицинскими учреждениями в США осуществляется в соответствии с правилами HIPAA) <!--Not all the capabilities that FHIR enables may be appropriate or legal for use in some combinations of context and jurisdiction (e.g. HIPAA for exchange between institutions).--> 
- Выполнение локально-установленных законодательных и других требований является ответственностью разработчика. <!--It is the responsibility of implementers to ensure that relevant regulations and other requirements are met --></li>
- <li>Описание (Narrative) - Выполнение действий по лечению и уходу должно проходить только в том случае, если описательная часть ресурса (narrative) доступна для отображения <!--Care must be taken when displaying the narrative from FHIR resources --></li>
+ <li>Communications Security - all exchange of production data should be secured using TLS/SSL (e.g. https)</li>
+ <li>Authentication - Users/Clients may be authenticated in any way desired. For web-centric use, OAuth is recommended</li>
+ <li>Authorization/Access Control - FHIR defines a Security Label infrastructure to support access control management. FHIR may also define a set of resources to administer access control management, but does not define any at present</li>
+ <li>Audit - FHIR defines <a href="provenance.html">provenance</a> and <a href="auditevent.html">audit event</a> resources suitable for tracking the origins, authorship, history, status and access of resources</li>
+ <li>Digital Signatures - FHIR includes several specifically reserved locations for digital signatures</li>
+ <li>Attachments - FHIR allows for binary resources and attachments. These have their own concerns</li>
+ <li><a href="security-labels.html">Labels</a> - FHIR allows for set of security related tags that affect that way resources are handled</li>
+ <li>Data Management Policies - FHIR defines a set of capabilities to support data exchange.
+     Not all the capabilities that FHIR enables may be appropriate or legal for use in some combinations of context and jurisdiction (e.g. HIPAA for exchange between institutions). 
+     It is the responsibility of implementers to ensure that relevant regulations and other requirements are met</li>
+ <li>Narrative - Care must be taken when displaying the narrative from FHIR resources</li>
 </ul>
 <p>
-Информацию о дефектах безопасности FHIR, требующих срочного разрешения, необходимо сообщать в 
-<a href="http://wiki.hl7.org/index.php?title=FHIR_email_list_subscription_instructions">списках рассылки FHIR</a>
-для наиболее быстрого их исправления. Данные вопросы также можно поднимать на рассмотрение с помощью существующего механизма 
-<a href="http://wiki.hl7.org/index.php?title=FHIR_Security_Page">коллективной работы сообщества</a>.
-<!-- Time critical concerns regarding security flaws in the FHIR specification should be addressed to 
+Time critical concerns regarding security flaws in the FHIR specification should be addressed to 
 the <a href="http://wiki.hl7.org/index.php?title=FHIR_email_list_subscription_instructions">FHIR email 
 list</a> for prompt consideration. Alternatively, issues can be raised through the 
-<a href="http://wiki.hl7.org/index.php?title=FHIR_Security_Page">community input</a> mechanism. -->
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Security_Page">community input</a> mechanism.
 </p>
 
 <p>
-Разработчикам следует следить за развитием профиля IHE IUA для его последующего использования в целях обеспечения дополнительной безопасности.
-<!-- Implementers should track the developing IHE IUA Profile for additional security considerations. -->
+Implementers should track the developing IHE IUA Profile for additional security considerations.
 </p>
 
 <p>
-Системе, построенной на стандарте FHIR, потребуется подсистема контроля безопасности и пользовательского доступа, 
-обеспечивающая аутентификацию и авторизацию пользователей. Вопрос соответствия системы архитектуре развертывания
-относится к проектированию системы:
-<!-- A production FHIR system will need some kind of security sub-system that administers 
+A production FHIR system will need some kind of security sub-system that administers 
 users, user authentication and user-authorization. Where this sub-system fits into the 
-deployment architecture is a matter for system design: -->
+deployment architecture is a matter for system design:
 </p>
 <table class="dense">
  <tr>
@@ -69,54 +57,40 @@ deployment architecture is a matter for system design: -->
 <td>&nbsp;&nbsp;&nbsp;</td>
 <td valign="center" style="border-left: 1px solid grey">
 <table class="dense">
- <tr><td><img height="32" width="32" src="security-icon-user.png"/></td><td> Пользователь (consumer) системы,  имеющий отношение к процессу оказания медицинских услуг <!--The consumer that is using a healthcare related system --></td></tr>
- <tr><td><img height="32" width="32" src="security-icon-app.png"/></td><td> Клиентское приложение пользователя (приложение, мобильное приложение, веб-сайт и т. д.) <!--The client application the user is using (application, mobile app, website, etc.) --></td></tr>
- <tr><td><img height="32" width="32" src="security-icon-sec.png"/></td><td> Система безопасности (контроль аутентификации и доступа) <!--The security system (authentication and access control) --></td></tr>
- <tr><td><img height="32" width="32" src="security-icon-fhir.png"/></td><td> Репозиторий клинических данных / данных здравоохранения <!-- The clinical/healthcare repository --></td></tr>
+ <tr><td><img height="32" width="32" src="security-icon-user.png"/></td><td>The consumer that is using a healthcare related system</td></tr>
+ <tr><td><img height="32" width="32" src="security-icon-app.png"/></td><td>The client application the user is using (application, mobile app, website, etc.)</td></tr>
+ <tr><td><img height="32" width="32" src="security-icon-sec.png"/></td><td>The security system (authentication and access control)</td></tr>
+ <tr><td><img height="32" width="32" src="security-icon-fhir.png"/></td><td>The clinical/healthcare repository</td></tr>
 </table>
 </td></tr></table>
 
 <p>
-На данном рисунке красные линии представляют FHIR-интерфейсы. С точки зрения FHIR API,
-клиент (пользователь сервисов FHIR) может взаимодействовать с системой безопасности, которая представляется как
-FHIR-сервер и находится в зависимости от следующего за ней FHIR-интерфейса, непосредственно обеспечивающего 
-хранение. Также возможно независимое взаимодействие клиента / сервера с системой безопасности.
-<!-- In this diagram, the red lines represent FHIR interfaces. From the perspective of the FHIR API, 
+In this diagram, the red lines represent FHIR interfaces. From the perspective of the FHIR API, 
 the client (consumer of FHIR services) may either interact with a security system that manifests
 as a FHIR server, and which depends on a subsequent FHIR interface to provide the actual storage,
-or either the client or server interacts with the security system independently. -->
-В каждом из трех представленных сценариев, возможны различные варианты сборки компонентов в приложения или компоненты сети,
-однако, несмотря на это, логическая схема расположения компонентов сохраняется. Спецификация FHIR предполагает наличие
-системы безопасности, которая может быть реализована как перед, так и за FHIR API.
-<!-- In each of these 3 scenarios, the different components may be assembled into applications or network components
+or either the client or server interacts with the security system independently. In each of these
+3 scenarios, the different components may be assembled into applications or network components
 differently, but the same logical layout applies. The FHIR specification assumes that a security 
-system exists, and that it may be deployed in front of or behind the FHIR API. -->
+system exists, and that it may be deployed in front of or behind the FHIR API. 
 </p>
 <a name="access-control"> </a>
 <p>
-Система безопасности может содержать следующие подсистемы:
-<!--The security system includes the following subsystems: -->
+The security system includes the following subsystems:
 </p>
 <ul>
- <li>Аутентификация (Authentication): Идентифицирует и аутентифицирует пользователя <!--Identifies and Authenticates the user --></li>
- <li>Механизм контроля доступа (Access Control decision engine): принимает решение о разрешении / запрете доступа <!--Access Control decision engine: decides whether FHIR operations are allowed --></li>
- <li>Журнал аудита (Audit Log): фиксирует выполняемые действия и позволяет обнаруживать неправомерные действия и попытки вторжения <!--records actions to allow for subsequent review and detection of intrusion or inappropriate usage --></li>
+ <li>Authentication: Identifies and Authenticates the user</li>
+ <li>Access Control decision engine: decides whether FHIR operations are allowed</li>
+ <li>Audit Log: records actions to allow for subsequent review and detection of intrusion or inappropriate usage</li>
 </ul>
 
 <p>
-Учитывая все множество стандартов администрирования и функционирования систем безопасности,
-FHIR не предлагает специальных административных ресурсов. Вместо этого, на ресурсы FHIR распространяются 
-политики, определенные сторонними подходами (стандартами). В то же время, FHIR предполагает назначение 
-<a href="security-labels.html"> ресурсам уровней конфиденциальности (security labels)</a> для того, чтобы системы безопасности
-могли определить допустимость выполнения FHIR-операции конкретным пользователем (также, такое решение 
-может приниматься с учетом содержимого ресурса).
-<!-- Because there are a plethora of standards relating to 
+Because there are a plethora of standards relating to 
 the administration and functionality of the security system, FHIR does not provide user,
 profile, or other such administration resources. Instead, the FHIR resources are the targets
 of the policies expressed in these other approaches. What FHIR does specify is a way to apply
-<a href="security-labels.html">security labels</a> to resources so that a security system may use these 
-(along with the contents of the resources if appropriate) to determine whether a user is authorized to perform a 
-particular FHIR operation or not. -->
+<a href="security-labels.html">security labels</a> to resources so that a security system may use these (along with the contents
+of the resources if appropriate) to determine whether a user is authorized to perform a 
+particular FHIR operation or not.
 </p>
 
 
@@ -138,209 +112,145 @@ some other kind of profiled REST interface.
 
 <a name="http"> </a>
 <h2>
-Обмен информацией (Communications)
+Communications
 </h2>
 <p>
-Правила безопасности HTTP распространяются на <a href="http.html">RESTful API</a>. 
-<a href="http.html#root">Service Root URL</a> определяет необходимость использования SSL. 
-Сервер может затребовать аутентификацию клиента и, возможно, сертификат (client certificate).
+For the <a href="http.html">RESTful API</a>, normal HTTP security rules apply. 
+The <a href="http.html#root">Service Root URL</a> will specify whether SSL is required. 
+Client authentication may be required by the server, possibly including the requirement for 
+client certificates.
 </p>
 <p>
-Использовать SSL при обмене медицинской информацией строго ОБЯЗАТЕЛЬНО. 
-<!--SSL SHOULD be used for all production data exchange. -->
+SSL SHOULD be used for all production data exchange.
 </p>
 <p>
-Для поддержки браузерных клиентских приложений, рекомендуется чтобы на сервере была реализована 
-технология <a href="http://enable-cors.org/">CORS</a> (cross-origin resource sharing) для 
-<a href="http.html">REST-операций</a>.
-<!--To support browser-based client applications, recommend that servers SHOULD implement 
-<a href="http://enable-cors.org/">cross-origin resource sharing</a> for the <a href="http.html">REST operations</a>.  -->
+To support browser-based client applications, recommend that servers SHOULD implement <a href="http://enable-cors.org/">cross-origin resource sharing</a> for the <a href="http.html">REST operations</a>.  
 </p>
 
 <a name="authentication"> </a>
-<h2>Аутентификация (Authentication)</h2>
+<h2>Authentication</h2>
 <p>
-FHIR-серверы, не являющиеся тестовыми, должны проводить аутентификацию клиентов (clients). Сервер может проводить
-аутентификацию отдельной клиентской системы и внести ее в список доверенных, либо аутентифицировать каждого пользователя
-в отдельности в соответствии с целым рядом различных способов. Для решений, основанных на веб, рекомендуется использовать 
-<a href="http://oauth.net/">OAuth</a> для аутентификации и авторизации пользователей.
-<!-- Other than testing systems, FHIR servers should authenticate the clients. 
+Other than testing systems, FHIR servers should authenticate the clients. 
 The server may choose to authenticate the client system and trust it, or to authenticate
 the individual user by a variety of techniques. For web-centric use, 
 <a href="http://oauth.net/">OAuth</a> may be used to authenticate and/or authorize 
-the users. -->
+the users. 
 </p>
 
 <!-- note about using OAuth and delegating user authority -->
 
 <a name="binding"> </a>
 <h2>
-Контроль авторизации / доступа (Authorization/Access Control)
+Authorization/Access Control
 </h2>
+
+
 <p>
-Корректная идентификация людей, устройств (медицинских изделий), территориальных объектов и организаций - одна из основ,
-на которой строятся системы обеспечения безопасности (security system). Большая часть реализаций протоколов защиты
-(security protocols), будь то аутентификация, контроль доступа, цифровые подписи и т. д. основываются на корректном
-связывании (mapping) ресурсов и систем, которые эти ресурсы предоставляют. Обратите внимание, нет прямой необходимости 
-обеспечения защиты: сам по себе стандарт FHIR не требует и не основывается на системах защиты или какой-либо другой
-реализации такой системы. Однако, практическое применение FHIR потребует наличие контроля за безопасностью клинической
-информации.
-<!-- Correctly identifying people, devices, locations and organizations is one of the foundations that any security system is 
-built on. Most applications of security protocols, whether authentication, access control, digital signatures, etc. 
-rely on the correct mapping between the relevant resources and the underlying systems. Note that this isn't necessary: 
-there is nothing in FHIR that requires or relies on any security being in place, or any particular implementation. But 
-real world usage will generally require this. -->
+Correctly identifying people, devices, locations and organizations is one of the foundations that any security system is built on. 
+Most applications of security protocols, whether authentication, access control, digital signatures, etc. rely on the correct mapping between
+the relevant resources and the underlying systems. Note that this isn't necessary: there is nothing in FHIR that requires or relies 
+on any security being in place, or any particular implementation. But real world usage will generally require this. 
 </p>
 <p>
-Система / приложение, имеющее в своем распоряжении данные, не должна осуществлять обмен этими данными до тех пор, пока не получит подтверждение, что принимающая сторона имеет разрешение на их получение. Данное правило применяется, когда клиент создает ресурсы с помощью команд PUT/POST, а сервер возвращает ресурсы по команде GET. Обязательным условием является корректная авторизация, удовлетворяющая требованиям держателя информации, без которой обмен данными не состоится.
-<!-- A holder of data should not allow the data to be communicated unless there is assurances that the 
+A holder of data should not allow the data to be communicated unless there is assurances that the 
 other party is authorized to receive it. This is true for a Client creating a resource through a PUT/POST, 
 as much as it is true for a Server returning resources on a GET. The presumption is that without 
-proper authorization, to the satisfaction of the data holder, the data does not get communicated. -->
+proper authorization, to the satisfaction of the data holder, the data does not get communicated.
 </p>
 <p>
-Правила, на которых основываются решения по предоставлению доступа часто очень сложны, и могут зависеть от информации, источником которой является:
+The rules behind the Access Control decision are often very complex, and potentially depends on information sourced from:
 </p>
 <ul>
- <li>Клиент (Client) - например, идентификационная информация пользователя (User Identity), роль пользователя (User Role), 
- местоположение (Location), уровень гарантий (level of assurance) <!-- это что вообще такое?--></li>
- <li>Ресурс (Resource) - например, конфиденциальность (confidentiality), степень "чувствительности" 
- (конфиденциальности) данных (sensitivity), тип данных (type of data), покрываемый диапазон данных (date ranges), авторство данных (author of the data)</li>
- <li>Пациент (Patient) - например, идентификационные данные пациента (patient identity), связь между пользователем и 
- пациентом (patient relationship to the user), политики согласия пациента (patient consent policies)</li>
- <li>Контекст транзакции (context of the transaction), идентификационные данные системы (system identity), 
- время суток (time-of-day), цель использования (purpose of use), статус процесса (workflow state) и
- безопасность передачи (transport security)</li>
+ <li>Client, such as User Identity, User Role, Location, level of assurance</li>
+ <li>Resource, such as confidentiality, sensitivity, type of data, date ranges covered by the data, author of the data</li>
+ <li>Patient, such as the patient identity, patient relationship to the user, patient consent policies</li>
+ <li>Context of the transaction, system identity, time-of-day, purpose of use, workflow state, and transport security</li>
 </ul>
 <!-- HL7 has papers on this topic. -->
-<p>Для получения дополнительной информации, смотрите  
-<a href="http://www.ihe.net/Technical_Framework/upload/IHE_ITI_TF_WhitePaper_AccessControl_2009-09-28.pdf">официальный документ IHE Access Control</a>
+<p>For one source of further information, see the 
+<a href="http://www.ihe.net/Technical_Framework/upload/IHE_ITI_TF_WhitePaper_AccessControl_2009-09-28.pdf">IHE Access Control white paper</a>
 </p>
 
 <a name="audit"> </a>
-<h2>Ведение контрольных журналов (Audit Logging)</h2>
+<h2>Audit Logging</h2>
 <p>
-В стандарте FHIR предусмотрен ресурс <a href="securityevent.html">SecurityEvent</a>, используемый клиентами и 
-FHIR-сервером для фиксирования событий, имеющих отношение к защите конфиденциальности 
-и безопасности. Данная форма ведения контрольных журналов позволяет фиксировать столько данных, сколько необходимо
-на момент времени выполнения некоторого действия / события.
-<!-- FHIR provides a <a href="securityevent.html">SecurityEvent</a> resource suitable for use by 
+FHIR provides a <a href="auditevent.html">AuditEvent</a> resource suitable for use by 
 FHIR clients and servers to record when a security or privacy relevant event has occurred. 
-This form of audit logging records as much detail as reasonable at the time the event happened. -->
+This form of audit logging records as much detail as reasonable at the time the event happened. 
 </p>
 <p>
-Ресурс SecurityEvent, использующийся для записи событий имеющих отношение к безопасности и 
-защите конфиденциальности, может быть в последствии использован приложением (имеющим соответствующее
-разрешение) для формирования аудиторских отчетов (audit reporting), отправки уведомлений, фильтрации
-и пересылки полученных данных. Данная модель была разработана и уже больше десяти лет используется 
-как <a href="http://wiki.ihe.net/index.php?title=Audit_Trail_and_Node_Authentication">интеграционный профиль IHE-ATNA</a>.
-События журнала ATNA могут автоматически конвертироваться в ресурсы типа "SecurityEvent", после чего
-клиентское приложение сможет выполнять поиск событий, связанных с безопасностью, или подписаться на такие
-события (subscribe to them).
-<!-- The SecurityEvent when used to record security and privacy relevant events can then be 
+The AuditEvent when used to record security and privacy relevant events can then be 
 used by properly authorized applications to support audit reporting, alerting, filtering, 
 and forwarding. This model has been developed and used in healthcare for a decade as 
 <a href="http://wiki.ihe.net/index.php?title=Audit_Trail_and_Node_Authentication">IHE-ATNA profile</a>. 
-ATNA log events can be automatically converted to SecurityEvent resources, and from there,
-client applications are able to search the security events, or subscribe to them. -->
+ATNA log events can be automatically converted to AuditEvent resources, and from there,
+client applications are able to search the audit events, or subscribe to them.
 </p>
 
 
 <a name="signatures"> </a>
 <h2>
-Цифровые подписи (Digital Signatures)
+Digital Signatures
 </h2>
 <p>
-Спецификация FHIR рекомендует использовать <a href="http://www.w3.org/TR/xmldsig-core/">цифровые подписи консорциума W3C</a>
-для подписи [ресурсов].
-<!--This specification recommends the use of <a href="http://www.w3.org/TR/xmldsig-core/">W3C Digital Signatures</a> 
-for signatures. -->
+This specification recommends the use of <a href="http://www.w3.org/TR/xmldsig-core/">W3C Digital Signatures</a> for signatures.
 </p>
 <p>
-Ресурсы могут быть подписаны с помощью ресурсов типа <a href="provenance.html">Provenance (происхождение)</a>, 
-несущих <a href="http://www.w3.org/TR/xmldsig-core/#def-SignatureDetached">отделенную цифровую подпись 
-(detached digital signature)</a> в целях идентификации последующих изменений ресурса. Данный тип подписи
-не может использоваться как гарант сохранения авторства (for non-repudiation purposes).
-<!-- Resources can be signed using the <a href="provenance.html">Provenance</a> resource to carry a 
+Resources can be signed using the <a href="provenance.html">Provenance</a> resource to carry a 
 <a href="http://www.w3.org/TR/xmldsig-core/#def-SignatureDetached">detached digital signature</a> 
 for the purpose of detecting subsequent changes to the resource. This signature is not
-suitable for non-repudiation purposes. -->
+suitable for non-repudiation purposes. 
 </p>
 <p>
-Кроме того, <a href="documents.html#signatures">документы могут быть подписаны</a> с помощью 
-<a href="http://www.w3.org/TR/xmldsig-core/#def-SignatureEnveloped">упакованной цифровой подписи (enveloped signature)</a>.
-<!-- In addition, <a href="documents.html#signatures">documents may be signed</a> using an 
+In addition, <a href="documents.html#signatures">documents may be signed</a> using an 
 <a href="http://www.w3.org/TR/xmldsig-core/#def-SignatureEnveloped">enveloped</a> 
-signature. -->
+signature. 
 </p>
 <p>
-Разрешается также использование других способов электронной подписи документов и ресурсов.
-<!-- Neither of these definitions prohibits the use of other ways of using digital signatures. -->
+Neither of these definitions prohibits the use of other ways of using digital signatures.
 </p>
 
 <a name="dstu"> </a>
 <blockquote>
 <p>
-Примечание DSTU: Ожидается, что в данной области будет проведена дополнительная работа, заключающаяся также
-в слиянии с интеграционным профилем <a href="http://wiki.ihe.net/index.php?title=Document_Digital_Signature">IHE DSG</a>.
-<!--Additional work is anticipated in this area, including alignment with the 
-<a href="http://wiki.ihe.net/index.php?title=Document_Digital_Signature">IHE DSG profile</a>. -->
+DSTU Note: Additional work is anticipated in this area, including alignment with the <a href="http://wiki.ihe.net/index.php?title=Document_Digital_Signature">IHE DSG profile</a>.
 </p>
 </blockquote>
 
 <a name="attachments"> </a>
-<h2>Вложения (Attachments)</h2>
+<h2>Attachments</h2>
 <p>
-Некоторые ресурсы FHIR могут содержать вложения. Вложениями могут быть ссылки на некоторое содержимое во внешних источниках
-или строчное включение кодированное base64.
-<!-- Several FHIR resources include attachments. Attachments can either be references to content found elsewhere, or included 
-inline encoded in base64. -->
-Вложения могут представлять опасность для защиты системы, в отличие от ресурсов FHIR, т. к. вложения могут
-содержать исполняемый код. Разработчики должны всегда с осторожностью пользоваться вложениями.
-<!-- Attachments represent security risks in a way that FHIR resources do not, since some attachments contain executable code. 
-Implementers should always use caution when handling resources. -->
+Several FHIR resources include attachments. Attachments can either be references to content found elsewhere, or included inline encoded in base64.
+Attachments represent security risks in a way that FHIR resources do not, since some attachments contain executable code. Implementers should 
+always use caution when handling resources.
 </p>
 
 <a name="labels"> </a>
-<h2>Метки уровней конфиденциальности (Security Labels)</h2>
+<h2>Security Labels</h2>
+
 <p>
-См. <a href="security-labels.html">Уровни безопасности</a>.
+See <a href="security-labels.html">Security Labels</a>.
 </p>
+
 <a name="narrative"> </a>
-<h2>Описание / описательная часть ресурса (Narrative)</h2>
+<h2>Narrative</h2>
+
 <p>
-Ресурсы FHIR содержат описательную часть в XHTML представлении, поэтому приложения могут отображать содержимое
-ресурса без необходимости полной и корректной обработки его содержимого. Однако, отображение HTML-содержимого сопряжено 
-с некоторыми проблемами безопасности медицинских информационных систем и ПО, которые были изучены в рамках других контекстов (напр., <a href="http://smartplatforms.org/2014/04/security-vulnerabilities-in-ccda-display/">
-в CDA</a>). По этой причине, <a href="narrative.html#security"> описательная человекочитаемая часть ресурса (narrative) 
-не должна содержать динамического содержимого</a>. Несмотря на это, все же необходимо соблюдать следующие правила при отображение описательной части ресурса:
-<!-- FHIR resources include an XHTML narrative, so that applications can display the contents of the resource to users
+FHIR resources include an XHTML narrative, so that applications can display the contents of the resource to users
 without having to fully and correctly process the data in the resource. However displaying HTML is associated 
 with several known security issues that have been observed in production systems in other contexts (e.g. 
 <a href="http://smartplatforms.org/2014/04/security-vulnerabilities-in-ccda-display/">with CDA</a>). For
 this reason, the <a href="narrative.html#security">FHIR narrative is not allowed to contain active content</a>.
-However, care is still needed when displaying the narrative: -->
+However, care is still needed when displaying the narrative:
 </p>
 <ul>
- <li>Проводите валидацию описательной части ресурса (стандартные схемы FHIR запрещают использовать динамическое
- содержимое, поэтому эталонные реализации FHIR пропускают такое содержимое). Обратите внимание, если внешние ссылки 
- включены в CSS, на них не распространяется схема FHIR и правила эталонной реализации <!-- вот тут надо подумать что-то-->.
- <!-- Validate the narrative (the standard FHIR schemas do not allow active content, and the reference implementations 
- won't handle it). Note, though, that external references could still be included in CSS, and these are outside the scope 
- of schemas and reference implementations. --></li>
- <li>Убедитесь, что внешние ссылки на изображения (напр., на внешние по отношению к ресурсу источники) при просмотре в
- соответствующем программном обеспечении <a href="http://smartplatforms.org/2014/04/security-vulnerabilities-in-ccda-display/">
- не вызывают утечки конфиденциальной информации</a>
- <!-- Ensure that any external references to images or anchors (e.g. outside the resource) do not cause the display 
- software to <a href="http://smartplatforms.org/2014/04/security-vulnerabilities-in-ccda-display/">leak sensitive 
- information in headers</a></li> --></li>
- <li>Не переходите по внешним ссылкам при работе с привилегированными правами, если не уверены в их безопасности <!--Do not allow external links to run in a privileged context such as the EHR unless you are sure they can be trusted --></li>
+ <li>Validate the narrative (the standard FHIR schemas do not allow active content, and the reference implementations won't handle it). Note, though, that external references could still be included in CSS, and these are outside the scope of schemas and reference implementations.</li>
+ <li>Ensure that any external references to images or anchors (e.g. outside the resource) do not cause the display software to <a href="http://smartplatforms.org/2014/04/security-vulnerabilities-in-ccda-display/">leak sensitive information in headers</a></li>
+ <li>Do not allow external links to run in a privileged context such as the EHR unless you are sure they can be trusted</li>
 </ul>
 <p>
-Обратите внимание: включение внешней ссылки в изображение может позволить серверу, на котором оно хранится, отслеживать, 
-кто просматривает изображение. Это может быть как полезной дополнительной функцией, так и проблемой безопасности.
-<!--Also note that the inclusion of an external reference to an image can allow the server that hosts the image to track 
-when the resource is displayed. This may be a feature or a problem depending on the context. -->
+Also note that the inclusion of an external reference to an image can allow the server that hosts the image to track 
+when the resource is displayed. This may be a feature or a problem depending on the context.
 </p>
 
 
