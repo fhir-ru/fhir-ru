@@ -889,7 +889,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append("  </tr>\r\n");
     
     b.append("  <tr>\r\n");
-    b.append("    <td colspan=\"2\"><b>General</b></td>\r\n");
+    b.append("    <td colspan=\"2\"><b>Общие</b></td>\r\n");
     b.append("  </tr>\r\n");
     List<String> names = new ArrayList<String>();
     names.addAll(definitions.getConformancePackages().keySet());
@@ -922,7 +922,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String profileRef(String name) {
-    return "Alternate definitions: Resource Profile (<a href=\""+name+".profile.xml.html\">XML</a>, <a href=\""+name+".profile.json.html\">JSON</a>)";
+    return "Альтернативные определения: Профиль ресурса (<a href=\""+name+".profile.xml.html\">XML</a>, <a href=\""+name+".profile.json.html\">JSON</a>)";
   }
 
   private String reflink(String name) {
@@ -1456,7 +1456,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     
     String[] entries = mappings.split("\\|");
     StringBuilder b = new StringBuilder();
-    b.append("<div class=\"itoc\">\r\n<p>Mappings:</p>\r\n");
+    b.append("<div class=\"itoc\">\r\n<p>Мэппинг:</p>\r\n");
     for (String e : entries) {
       String[] p = e.split("#");
       if (p.length == 2)
@@ -1579,9 +1579,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }
     if (b.length() == 0)
-      return "<p>\r\nThis value set is not currently used\r\n</p>\r\n";
+      return "<p>\r\nЭтот набор значений в настоящее время не используется\r\n</p>\r\n";
     else
-      return "<p>\r\nThis value set is used in the following places:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
+      return "<p>\r\nЭтот набор значений используется в следующих местах:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
   }
 
   private void scanForProfileUsage(StringBuilder b, BindingSpecification cd, ResourceDefn r) {
@@ -1866,10 +1866,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String dtHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Data Types", "datatypes.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Examples", "datatypes-examples.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", "datatypes-definitions.html", mode==null || "definitions".equals(mode)));
-    b.append(makeHeaderTab("Mappings", "datatypes-mappings.html", mode==null || "mappings".equals(mode)));
+    b.append(makeHeaderTab("Типы данных", "datatypes.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Примеры", "datatypes-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", "datatypes-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Мэппинг", "datatypes-mappings.html", mode==null || "mappings".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -1877,10 +1877,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String edHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Element Definition", "elementdefinition.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Examples", "elementdefinition-examples.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", "elementdefinition-definitions.html", mode==null || "definitions".equals(mode)));
-    b.append(makeHeaderTab("Mappings", "elementdefinition-mappings.html", mode==null || "mappings".equals(mode)));
+    b.append(makeHeaderTab("Определение элемента", "elementdefinition.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Примеры", "elementdefinition-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", "elementdefinition-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Мэппинг", "elementdefinition-mappings.html", mode==null || "mappings".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -1888,8 +1888,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String elHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Element", "element.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", "element-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Элемент", "element.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", "element-definitions.html", mode==null || "definitions".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -1898,8 +1898,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
     b.append(makeHeaderTab("Extensiblity", "extensibility.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Examples", "extensibility-examples.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", "extensibility-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Примеры", "extensibility-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", "extensibility-definitions.html", mode==null || "definitions".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -1908,8 +1908,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
     b.append(makeHeaderTab("Narrative", "narrative.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Examples", "narrative-example.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", "narrative-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Примеры", "narrative-example.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", "narrative-definitions.html", mode==null || "definitions".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -1917,8 +1917,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String profilesHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Profiling FHIR", "profiling.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Examples", "profiling-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Профилирование FHIR", "profiling.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Примеры", "profiling-examples.html", mode==null || "examples".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -1927,8 +1927,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
     b.append(makeHeaderTab("Tags, Bundles, Compartments", "extras.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Examples", "extras-examples.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", "extras-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Примеры", "extras-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", "extras-definitions.html", mode==null || "definitions".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -1937,8 +1937,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
     b.append(makeHeaderTab("Resource Definitions", "resources.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Examples", "resources-examples.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", "resources-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Примеры", "resources-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", "resources-definitions.html", mode==null || "definitions".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -1946,8 +1946,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String refHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("References", "references.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", "references-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Ссылки", "references.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", "references-definitions.html", mode==null || "definitions".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2004,9 +2004,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Content", n+".html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
-    b.append(makeHeaderTab("Mappings", n+"-mappings.html", "mappings".equals(mode)));
+    b.append(makeHeaderTab("Значение", n+".html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Мэппинг", n+"-mappings.html", "mappings".equals(mode)));
     b.append(makeHeaderTab("XML", n+".profile.xml.html", "xml".equals(mode)));
     b.append(makeHeaderTab("JSON", n+".profile.json.html", "json".equals(mode)));
 
@@ -2040,9 +2040,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Content", n+".html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
-    b.append(makeHeaderTab("Mappings", n+"-mappings.html", "mappings".equals(mode)));
+    b.append(makeHeaderTab("Значение", n+".html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Мэппинг", n+"-mappings.html", "mappings".equals(mode)));
     b.append(makeHeaderTab("XML", n+".xml.html", "xml".equals(mode)));
     b.append(makeHeaderTab("JSON", n+".json.html", "json".equals(mode)));
 
@@ -2064,10 +2064,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       pfx = "../../../";
 
     b.append("<ul class=\"nav nav-tabs\">");    
-    b.append(makeHeaderTab("Orientation", pfx + ig.getFilePrefix()+"orientation.html", mode==null || "orientation".equals(mode)));
-    b.append(makeHeaderTab("Profiles", pfx + "ig-profiles.html", "profiles".equals(mode)));
-    b.append(makeHeaderTab("Value Sets", pfx + "ig-valuesets.html", "valuesets".equals(mode)));
-    b.append(makeHeaderTab("Security", pfx + ig.getFilePrefix()+"security.html", "security".equals(mode)));
+    b.append(makeHeaderTab("Ориентация", pfx + ig.getFilePrefix()+"orientation.html", mode==null || "orientation".equals(mode)));
+    b.append(makeHeaderTab("Профили", pfx + "ig-profiles.html", "profiles".equals(mode)));
+    b.append(makeHeaderTab("Наборы значений", pfx + "ig-valuesets.html", "valuesets".equals(mode)));
+    b.append(makeHeaderTab("Безопасность", pfx + ig.getFilePrefix()+"security.html", "security".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2085,13 +2085,13 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       pfx = "../../../";
 
     b.append("<ul class=\"nav nav-tabs\">");    
-    b.append(makeHeaderTab("Using Codes", pfx + "terminologies.html", mode==null || "content".equals(mode)));
-    b.append(makeHeaderTab("Systems", pfx + "terminologies-systems.html", "systems".equals(mode)));
-    b.append(makeHeaderTab("Value Sets", pfx + "terminologies-valuesets.html", "valuesets".equals(mode)));
-    b.append(makeHeaderTab("v2 Tables", pfx + "terminologies-v2.html", "v2".equals(mode)));
-    b.append(makeHeaderTab("v3 Namespaces", pfx + "terminologies-v3.html", "v3".equals(mode)));
+    b.append(makeHeaderTab("Использование кодов", pfx + "terminologies.html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("Системы", pfx + "terminologies-systems.html", "systems".equals(mode)));
+    b.append(makeHeaderTab("Наборы значений", pfx + "terminologies-valuesets.html", "valuesets".equals(mode)));
+    b.append(makeHeaderTab("Таблицы v2", pfx + "terminologies-v2.html", "v2".equals(mode)));
+    b.append(makeHeaderTab("Пространства имен v3", pfx + "terminologies-v3.html", "v3".equals(mode)));
     b.append(makeHeaderTab("Concept Maps", pfx + "terminologies-conceptmaps.html", "conceptmaps".equals(mode)));
-    b.append(makeHeaderTab("Terminology Service", pfx + "terminology-service.html", "service".equals(mode)));
+    b.append(makeHeaderTab("Терминологический сервис", pfx + "terminology-service.html", "service".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2109,7 +2109,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       pfx = "../../../";
 
     b.append("<ul class=\"nav nav-tabs\">");    
-    b.append(makeHeaderTab("Formats", pfx + "formats.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Форматы", pfx + "formats.html", mode==null || "base".equals(mode)));
     b.append(makeHeaderTab("XML", pfx + "xml.html", "xml".equals(mode)));
     b.append(makeHeaderTab("JSON", pfx + "json.html", "json".equals(mode)));
     b.append("</ul>\r\n");
@@ -2129,11 +2129,11 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       pfx = "../../../";
 
     b.append("<ul class=\"nav nav-tabs\">");    
-    b.append(makeHeaderTab("Comparison Appendix", pfx + "comparison.html", mode==null || "content".equals(mode)));
-    b.append(makeHeaderTab("V2 Messaging", pfx + "comparison-v2.html", "v2".equals(mode)));
-    b.append(makeHeaderTab("V3 (Messaging)", pfx + "comparison-v3.html", "v3".equals(mode)));
+    b.append(makeHeaderTab("Приложение: сравнение", pfx + "comparison.html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("Обмен сообщениями V2", pfx + "comparison-v2.html", "v2".equals(mode)));
+    b.append(makeHeaderTab("Обмен сообщениями V3", pfx + "comparison-v3.html", "v3".equals(mode)));
     b.append(makeHeaderTab("CDA", pfx + "comparison-cda.html", "cda".equals(mode)));
-    b.append(makeHeaderTab("Other", pfx + "comparison-other.html", "misc".equals(mode)));
+    b.append(makeHeaderTab("Другое", pfx + "comparison-other.html", "misc".equals(mode)));
     
     b.append("</ul>\r\n");
     return b.toString();
@@ -2210,13 +2210,13 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     boolean hasOps = !definitions.getResourceByName(title).getOperations().isEmpty();
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Content", n+".html", mode==null || "content".equals(mode)));
-    b.append(makeHeaderTab("Examples", n+"-examples.html", "examples".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
-    b.append(makeHeaderTab("Mappings", n+"-mappings.html", "mappings".equals(mode)));
-    b.append(makeHeaderTab("Conformance Packages", n+"-packages.html", "packages".equals(mode)));
+    b.append(makeHeaderTab("Значение", n+".html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("Примеры", n+"-examples.html", "examples".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Мэппинг", n+"-mappings.html", "mappings".equals(mode)));
+    b.append(makeHeaderTab("Профили", n+"-packages.html", "packages".equals(mode)));
     if (hasOps)
-      b.append(makeHeaderTab("Operations", n+"-operations.html", "operations".equals(mode)));
+      b.append(makeHeaderTab("Операции", n+"-operations.html", "operations".equals(mode)));
 
     b.append("</ul>\r\n");
 
@@ -2232,12 +2232,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     boolean hasExamples = !definitions.getResourceByName(title).getExamples().isEmpty();
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Content", n+".html", mode==null || "content".equals(mode)));
-    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Значение", n+".html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
     if (hasExamples)
-      b.append(makeHeaderTab("Examples", n+"-examples.html", "operations".equals(mode)));
+      b.append(makeHeaderTab("Примеры", n+"-examples.html", "operations".equals(mode)));
     if (hasOps)
-      b.append(makeHeaderTab("Operations", n+"-operations.html", "operations".equals(mode)));
+      b.append(makeHeaderTab("Операции", n+"-operations.html", "operations".equals(mode)));
 
     b.append("</ul>\r\n");
 
@@ -2279,7 +2279,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genConceptMapsTable() throws Exception {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
-    s.append(" <tr><td><b>Name</b></td><td><b>Source</b></td><td><b>Target</b></td></tr>\r\n");
+    s.append(" <tr><td><b>Имя</b></td><td><b>Источник</b></td><td><b>Адресат (Целевой объект)</b></td></tr>\r\n");
     List<String> sorts = new ArrayList<String>();
     sorts.addAll(conceptMaps.keySet());
     Collections.sort(sorts);
@@ -2301,7 +2301,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genIGValueSetsTable() throws Exception {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
-    s.append(" <tr><td><b>Name</b></td><td><b>Definition</b></td><td><b>Source</b></td><td></td></tr>\r\n");
+    s.append(" <tr><td><b>Имя</b></td><td><b>Определение</b></td><td><b>Источник</b></td><td></td></tr>\r\n");
     List<String> namespaces = new ArrayList<String>();
     Map<String, ValueSet> vslist = new HashMap<String, ValueSet>();
     for (String sn : igResources.keySet()) {
@@ -2322,7 +2322,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genValueSetsTable() throws Exception {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
-    s.append(" <tr><td><b>Name</b></td><td><b>Definition</b></td><td><b>Source</b></td><td><b>Id</b></td><td><b>Usage</b></td></tr>\r\n");
+    s.append(" <tr><td><b>Имя</b></td><td><b>Определение</b></td><td><b>Источник</b></td><td><b>Id</b></td><td><b>Применение</b></td></tr>\r\n");
     List<String> namespaces = new ArrayList<String>();
     for (String sn : valueSets.keySet()) {
       String n = getNamespace(sn);
@@ -2874,12 +2874,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     List<String> vslist = cd.getVSSources();
     StringBuilder b = new StringBuilder();
     if (vslist.contains("")) {
-      b.append("This value set defines its own codes");
+      b.append("Этот набор значений определяет свои собственные коды");
       vslist.remove(0);
       if (vslist.size() > 0)
-        b.append(" and includes codes taken from");
+        b.append(" и включает в себя коды, взятые из");
     } else 
-      b.append("This is a value set with codes taken from ");
+      b.append("Это набор знчений с кодами, взятыми из ");
     int i = 0;
     for (String n : cd.getVSSources()) {
       i++;
@@ -2890,7 +2890,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         b.append("<a href=\""+an+"\">"+n+"</a>");
       }
       if (i == vslist.size() - 1)
-        b.append(" and ");
+        b.append(" и ");
       else if (vslist.size() > 1 && i != vslist.size() )
         b.append(", ");
     }
@@ -3396,7 +3396,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("profiles")) 
         src = s1+produceProfiles(resource)+s3;
       else if (com[0].equals("wg")) 
-        src = s1+(resource.getWg() == null ? "" : "<p>This resource maintained by the <a _target=\"blank\" href=\""+resource.getWg().getUrl()+"\">"+resource.getWg().getName()+"</a> Work Group</p>\r\n")+s3;
+        src = s1+(resource.getWg() == null ? "" : "<p>Этот ресурс разработан рабочей группой <a _target=\"blank\" href=\""+resource.getWg().getUrl()+"\">"+resource.getWg().getName()+"</a></p>\r\n")+s3;
       else if (com[0].equals("example-list")) 
         src = s1+produceExampleList(resource)+s3;
       else if (com[0].equals("examples-book")) 
@@ -3479,13 +3479,13 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   private String abstractResourceTitle(ResourceDefn resource) {
     if (resource.getName().equals("Resource"))
-      return "Base Resource Definitions";
+      return "Базовые определения ресурса";
     else 
-      return resource.getName() + " Resource";
+      return  "Ресурс " + resource.getName();
   }
 
   private String genOpCount(ResourceDefn resource) {
-    return Integer.toString(resource.getOperations().size()) + (resource.getOperations().size() == 1 ? " operation" : " operations");
+    return Integer.toString(resource.getOperations().size()) + (resource.getOperations().size() == 1 ? " операция" : " операции(-ий)");
   }
 
   private String genOperations(ResourceDefn resource) throws Exception {
@@ -3531,15 +3531,15 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private void genParameterHeader(StringBuilder b, String mode) {
     b.append("<tr><td colspan=\"5\"><b>").append(mode).append(" Parameters:</b></td></tr>\r\n");
     b.append("<tr><td>");
-    b.append("<b>Name</b>");
+    b.append("<b>Имя</b>");
     b.append("</td><td>");
-    b.append("<b>Cardinality</b>");
+    b.append("<b>Кардинальное число</b>");
     b.append("</td><td>");
-    b.append("<b>Type</b>");
+    b.append("<b>Тип</b>");
     b.append("</td><td>");
-    b.append("<b>Profile</b>");
+    b.append("<b>Профиль</b>");
     b.append("</td><td>");
-    b.append("<b>Documentation</b>");
+    b.append("<b>Документация</b>");
     b.append("</td></tr>");
   }
 
@@ -3602,7 +3602,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append("</td><td>");
     b.append(processMarkdown(p.getDoc()));
     if (p.getName().equals("return") && isOnlyOutParameter(op.getParameters(), p) && definitions.hasResource(t))
-      b.append("<p>Note: as this the only out parameter, it is a resource, and it has the name 'return', the result of this operation is returned directly as a resource</p>");
+      b.append("<p>Примечание: так как это единственный выходной параметр, то он представляет собой ресурс с именем 'return', результат этой операции возвращается непосредственно в виде ресурса</p>");
     b.append("</td></tr>");
     if (t.equals("Tuple"))
       for (OperationTuplePart pp : p.getParts()) {
@@ -3686,9 +3686,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }
     if (refs.size() == 1)
-      return "<p>This resource is referenced by <a href=\""+refs.get(0).toLowerCase()+".html\">"+refs+"</a></p>\r\n";
+      return "<p>На этот ресурс ссылаются <a href=\""+refs.get(0).toLowerCase()+".html\">"+refs+"</a></p>\r\n";
     else if (refs.size() > 1)
-      return "<p>This resource is referenced by "+asLinks(refs)+"</p>\r\n";
+      return "<p>На этот ресурс ссылаются "+asLinks(refs)+"</p>\r\n";
     else
       return "";
   }
@@ -3697,7 +3697,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     for (int i = 0; i < refs.size(); i++) {
       if (i == refs.size() - 1)
-        b.append(" and ");
+        b.append(" и ");
       else if (i > 0)
         b.append(", ");
       b.append("<a href=\"").append(refs.get(i).toLowerCase()).append(".html\">").append(refs.get(i)).append("</a>");
@@ -3738,13 +3738,13 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h2>Search Parameters</h2>\r\n");
+      b.append("<h2>Параметры поиска</h2>\r\n");
       if (resource.getName().equals("Query"))
-        b.append("<p>Search parameters for this resource. The <a href=\"#all\">common parameters</a> also apply.</p>\r\n");
+        b.append("<p>Параметры поиска для этого ресурса. Также применяются <a href=\"#all\">общие параметры</a> also apply.</p>\r\n");
       else
-        b.append("<p>Search parameters for this resource. The <a href=\"search.html#all\">common parameters</a> also apply. See <a href=\"search.html\">Searching</a> for more information about searching in REST, messaging, and services.</p>\r\n");
+        b.append("<p>Параметры поиска для этого ресурса. Также применяются <a href=\"search.html#all\">общие параметры</a>. См. <a href=\"search.html\">Поиск</a>  для более подробной информации о поиске в REST, обмене сообщениями и в сервисах.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>\r\n");
+      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       names.addAll(resource.getSearchParams().keySet());
       Collections.sort(names);
@@ -3763,10 +3763,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h2>Search Parameters</h2>\r\n");
-      b.append("<p>Common search parameters defined by this resource. See <a href=\"search.html\">Searching</a> for more information about searching in REST, messaging, and services.</p>\r\n");
+      b.append("<h2>Параметры поиска</h2>\r\n");
+      b.append("<p>Общие параметры поиска, определенные этим ресурсом. См. <a href=\"search.html\">Поиск</a> для более подробной информации о поиске в REST, обмене сообщениями и в сервисах.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>\r\n");
+      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       names.addAll(resource.getSearchParams().keySet());
       Collections.sort(names);
@@ -3785,10 +3785,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h2>Search Parameters</h2>\r\n");       
-      b.append("<p>Search parameters defined by this structure. See <a href=\"search.html\">Searching</a> for more information about searching in REST, messaging, and services.</p>\r\n");
+      b.append("<h2>Параметры поиска</h2>\r\n");       
+      b.append("<p>Параметры поиска, определенные этой структурой. См. <a href=\"search.html\">Поиск</a> для более подробной информации о поиске в REST, обмене сообщениями и в сервисах.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>\r\n");
+      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       for (SearchParameter t : pack.getSearchParameters())
         names.add(t.getName());
@@ -3832,7 +3832,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String produceProfiles(ResourceDefn resource) {
     StringBuilder s = new StringBuilder();
     if (resource.getConformancePackages().size() == 0) {
-      s.append("<tr><td colspan=\"2\">No Profiles defined for this resource</td></tr>");
+      s.append("<tr><td colspan=\"2\">Для этого ресурса нет профилей</td></tr>");
     } else { 
       for (ConformancePackage ap: resource.getConformancePackages()) {
 //        if (ap.getProfiles().size() + ap.getExtensions().size() + ap.getExamples().size() + ap.getValuesets().size() > 0) {
@@ -3868,7 +3868,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     for (Example e: resource.getExamples()) {
       //   if (!e.isInBook()) {
       if (!started)
-        s.append("<p>Example Index:</p>\r\n<table class=\"list\">\r\n");
+        s.append("<p>Указатель примеров:</p>\r\n<table class=\"list\">\r\n");
       started = true;
       if (e.getFileTitle().equals("conformance-base") || e.getFileTitle().equals("conformance-base2") || e.getFileTitle().equals("profiles-resources"))
         s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td>");
@@ -3899,7 +3899,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       for (String pn : definitions.getConformancePackages().keySet()) {
         ConformancePackage ap = definitions.getConformancePackages().get(pn);
         if (!started)
-          s.append("<p>Example Index:</p>\r\n<table class=\"list\">\r\n");
+          s.append("<p>Указатель примеров:</p>\r\n<table class=\"list\">\r\n");
         started = true;
         for (ProfileDefn p : ap.getProfiles()) {
           String ln = p.getId();
@@ -4587,7 +4587,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       for (String n : names) {
         Example e = examples.get(n);
         if (!started)
-          s.append("<p>Example Index:</p>\r\n<table class=\"list\">\r\n");
+          s.append("<p>Указатель примеров:</p>\r\n<table class=\"list\">\r\n");
         started = true;
         if (e.getFileTitle().equals("conformance-base") || e.getFileTitle().equals("conformance-base2") || e.getFileTitle().equals("profiles-resources"))
           s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td>");
@@ -4636,7 +4636,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     if (source.getMapping().size() < 2)
       return "";
     StringBuilder b = new StringBuilder();
-    b.append("<div class=\"itoc\">\r\n<p>Mappings:</p>\r\n");
+    b.append("<div class=\"itoc\">\r\n<p>Таблица соответствий:</p>\r\n");
     for (ProfileMappingComponent map : source.getMapping()) {
       b.append("<p class=\"link\"><a href=\"#").append(map.getIdentity()).append("\">").append(map.getName()).append("</a></p>");
     }
@@ -5219,7 +5219,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"lines\">");
     if (pack.getProfiles().size() > 0) {
-      s.append("<tr><td colspan=\"2\"><b>Profiles</b>: </td></tr>");
+      s.append("<tr><td colspan=\"2\"><b>Профили</b>: </td></tr>");
       for (ProfileDefn p : pack.getProfiles())
         s.append("<tr><td><a href=\"").append(p.getId()).append(".html\">").append(Utilities.escapeXml(p.getTitle()))
                 .append("</a></td><td>").append(Utilities.escapeXml(p.getResource().getDescription())).append("</td></tr>");
