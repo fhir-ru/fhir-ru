@@ -1,18 +1,16 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
-Ресурс MessageHeader определяется для того, чтобы поддерживать <a href="messaging.html">Обмен сообщениями с использованием FHIR-ресурсов</a>. 
-Ресурс MessageHeader используется при обмене сообщениями. Однако как ресурс, который может быть использован в RESTful-фреймворке, у MessageHeader имеется стандартная для ресурса точка взаимодействия ([base-url]/Message), которая используется для управления набором ресурсов статических сообщений. Она может использоваться для создания архива доступных прошлых сообщений.  <b>Создание или обновление подобным образом ресурсов Message не представляет собой непосредственное наступление события и не может вызвать срабатывание никакой связанной с реальным событием логики.</b> Это только для управления набором ресурсов Message.
-<!-- The MessageHeader resource is defined in order to support <a href="messaging.html">Messaging using FHIR resources</a>.
+The MessageHeader resource is defined in order to support <a href="messaging.html">Messaging using FHIR resources</a>.
 The principle usage of the MessageHeader resource is when messages are exchanged. However, as a 
 resource that can be used with the RESTful framework, the MessageHeader
 resource has the normal resource end-point ([base-url]/Message), which is
 used to manage a set of static messages resources. This could be used to 
 make an archive of past messages available. <b>Creating or updating Message resources
 in this fashion does not represent the actual occurrence of any event, nor can it trigger
-any logic associated with the actual event.</b> It is just for managing a set of message resources. -->
+any logic associated with the actual event.</b> It is just for managing a set of message resources.
 </p>
 </div>
 

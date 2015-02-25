@@ -1,7 +1,7 @@
-<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
 A record of a clinical assessment of an Allergy or Intolerance; a propensity, or a potential risk 
 to an individual, to have an adverse reaction on future exposure to the specified substance, or class 
@@ -36,7 +36,7 @@ Presntly open issues for this resource:
 </div>
 
 <div>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<h2>Boundaries and Relationships</h2>
 <p>
 This resource is used to provide a single place within the health record to document a range of clinical statements about adverse reactions, including:
 </p>

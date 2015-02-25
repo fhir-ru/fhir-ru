@@ -1,14 +1,14 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
 The core extensions provide HL7 provided extensions to the <a href="questionnaire.html">Questionnaire</a> resource.
 </p>
 </div>
 
 <div>
-<h2>Предпосылки и контекст<!-- Background and Context --></h2>
+<h2>Background and Context</h2>
 <h3>Questionnaire documentation</h3>
 <p>
 The <a href="#category"><b>category</b></a> extension allows a questionnaire to be grouped under various headings for discovery and/or

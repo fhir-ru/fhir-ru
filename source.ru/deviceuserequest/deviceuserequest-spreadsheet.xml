@@ -7485,7 +7485,6 @@
       ss:Author=""><Data> <Font html:Face="Tahoma" x:Family="Swiss" html:Size="8"
         html:Color="#000000" xmlns="http://www.w3.org/TR/REC-html40">Additional notes about the code.  Not published</Font> </Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="String">proposed</Data></Cell>
@@ -7497,7 +7496,6 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
-    <Cell><Data ss:Type="String">Запланирован</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s150">
     <Cell ss:StyleID="s130"><Data ss:Type="String">planned</Data></Cell>
@@ -7509,7 +7507,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
-    <Cell><Data ss:Type="String">Предложен</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:StyleID="s150">
     <Cell ss:StyleID="s130"><Data ss:Type="String">requested</Data></Cell>
@@ -7520,7 +7517,6 @@
     <Cell ss:StyleID="s151"><Data ss:Type="String">The request has been placed</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
-	<Cell><Data ss:Type="String">Заказан</Data></Cell>
     <Cell ss:StyleID="s130"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s150">
@@ -8163,7 +8159,6 @@
       ss:Author=""><Data> <Font html:Face="Tahoma" x:Family="Swiss" html:Size="8"
         html:Color="#000000" xmlns="http://www.w3.org/TR/REC-html40">Additional notes about the code.  Not published</Font> </Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="String">routine</Data></Cell>
@@ -8175,7 +8170,6 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
-    <Cell><Data ss:Type="String">Обычный</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">urgent</Data></Cell>
@@ -8187,7 +8181,6 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">Срочный</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">stat</Data></Cell>

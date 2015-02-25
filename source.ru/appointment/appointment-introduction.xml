@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 	<div>
-		<h2>Область применения и использование<!-- Scope and Usage --></h2>
+		<h2>Scope and Usage</h2>
 		<p>
 			Appointment resources are used to provide information about
 			a planned meeting that may be in the future or past.  The resource only describes a single meeting,
@@ -112,7 +112,7 @@
 		</ul>
 	</div>
   <div>
-    <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+    <h2>Boundaries and Relationships</h2>
 
     <h3>Appointment Statuses and Encounters</h3>
     <p>

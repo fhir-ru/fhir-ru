@@ -1,83 +1,72 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h3>Применение ресурса Provenance<!-- Using the Provenance Resource --></h3>
+<h3>Using the Provenance Resource</h3>
 
 <p>
-Ресурс Provenance определяет информацию о другом ресурсе (элемент <i>reference</i>). 
-Ресурс Provenance может использоваться несколькими различными способами:
-<!-- The provenance resource identifies information about another resource (the <i>reference</i> element). 
-The provenance resource may be used in several different ways: -->
+The provenance resource identifies information about another resource (the <i>reference</i> element). 
+The provenance resource may be used in several different ways:
 </p>
 <ul>
- <li>В рамках <a href="documents.html">комплекта документов (document bundle)</a>, где он идентифицирует происхождение части или всего документа<!-- As part of a <a href="documents.html">document bundle</a> where it identifies the provenance of part or all of the document --></li>
- <li>В <a href="http.html">RESTful system</a>, где он отслеживает информацию о происхождении, относящуюся к ресурсам<!-- On a <a href="http.html">RESTful system</a> where it keeps track of provenance information relating to resources --></li>
+ <li>As part of a <a href="documents.html">document bundle</a> where it identifies the provenance of part or all of the document</li>
+ <li>On a <a href="http.html">RESTful system</a> where it keeps track of provenance information relating to resources</li>
 </ul>
 <p>
-При использовании в комплекте документов <i>references</i> частоне версионируют явным образом, однако всегда подразумевается, что они соответствуют той версии ресурса, которая содержится в документе. В RESTful-системе ссылка на целевой ресурс должна быть на конкретную версию, но при этом следует соблюдать осторожность: для новых ресурсов, которые должны иметь соответствующий ресурс Provenance, ссылку на конкретную версию часто невозможно узнать, пока целевой ресурс не будет обновлен. Это может привести к проблеме целостности системы: что, если ресурс Provenance не может быть создан после того, как целевой ресурс был обновлен? Чтобы избежать таких проблем целостности, целевой ресурс и ресурс Provenance должны отправляться на сервер парой в одной <a href="http.html#transaction">транзакции</a>. 
-<!-- When used in a document bundle, the <i>references</i> are often not explicitly versioned, but they always implicitly pertain to the version of the 
+When used in a document bundle, the <i>references</i> are often not explicitly versioned, but they always implicitly pertain to the version of the 
 resource found in the document. On a RESTful system, the target resource reference should be version specific, but this
 requires special care: For new resources that need to have a corresponding Provenance resource, the version-specific
 reference is often not knowable until after the target resource has been updated. This can create an 
 integrity problem for the system - what if the provenance resource cannot be created after the target 
 resource has been updated? To avoid any such integrity problems, the target resource and the provenance resources should be submitted 
-as a pair using a <a href="http.html#transaction">transaction</a>.  -->
+as a pair using a <a href="http.html#transaction">transaction</a>. 
 </p>
 
-<h3>Электронные цифровые подписи<!-- Digital Signatures --></h3>
+<h3>Digital Signatures</h3>
 
 <p>
-Ресурс provenance включает элемент integritySignature, который содержит <a href="http://www.w3.org/TR/xmldsig-core/">XML электронную цифровую подпись</a>. 
-<!-- The provenance resource includes an integritySignature element which contains 
-an <a href="http://www.w3.org/TR/xmldsig-core/">XML digital signature</a>.  -->
+The provenance resource includes an integritySignature element which contains 
+an <a href="http://www.w3.org/TR/xmldsig-core/">XML digital signature</a>. 
 </p>
 <p>
-Назначение этой подписи ограничивается проверкой криптографической целостности целевой ссылки(-ок); например обнаружением, произошли ли изменения данных между первоначальной конструкцией ресурса и приложением, обрабатывающим его. Чтобы правильно использовать элемент signature, в профилях реализации требуется дополнительно прояснять обязанности по созданию и проверке такой подписи.
-<!-- The purpose of the signature is limited to checking cryptographic integrity of the target Reference(s); 
+The purpose of the signature is limited to checking cryptographic integrity of the target Reference(s); 
 e.g. detecting whether changes have occurred between the original construction of the resource and the application
 processing it. In order to make proper use of the signature element, 
 implementation profiles are required to further clarify the obligations 
-around creating and checking the signature. -->
+around creating and checking the signature.
 </p>
 <p>
-К электронным цифровым подписям применяются следующие правила:
-<!-- The following rules apply to digital signature: -->
+The following rules apply to digital signature:
 </p>
 <ul>
- <li>Идентификатор сертификата ДОЛЖЕН совпадать с идентификатором агента (Provenance.agent.reference)<!-- The Certificate identifier SHOULD match the identity of an agent (Provenance.agent.reference) --></li>
- <li>Если подпись имеет IHE-свойство purposeOfSignature, его значение ДОЛЖНО быть "source", 
-   OID "1.2.840.10065.1.12", что означает "подпись автоматизированного источника данных". Если у подписи нет свойства purposeOfSignature, она все еще используется для этой цели <!-- If the signature has an IHE purposeOfSignature property, the value SHALL be "source", 
+ <li>The Certificate identifier SHOULD match the identity of an agent (Provenance.agent.reference)</li>
+ <li>If the signature has an IHE purposeOfSignature property, the value SHALL be "source", 
    OID "1.2.840.10065.1.12", which means "the signature of an automated data source". If 
    the signature does not have a purposeOfSignature property, the signature is still to used 
-   for this use --></li>
- <li>Вне зависимости от представления ресурса Provenance в формате XML или JSON, это будет <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#sec-Signature">XML-подпись</a> в кодировке base64<!-- Whether the representation of the Provenance resource is xml or json, the signature is a base64 of the 
-   <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#sec-Signature">XML signature</a> --></li>
- <li>Подпись всегда будет подписью XML-представления целевого ресурса в официально утвержденной канонической форме<!-- The signature is always a signature of the target resource XML representation using a stated canonicalization --></li> 
+   for this use</li>
+ <li>Whether the representation of the Provenance resource is xml or json, the signature is a base64 of the 
+   <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#sec-Signature">XML signature</a></li>
+ <li>The signature is always a signature of the target resource XML representation using a stated canonicalization</li> 
 </ul>
-Подпись добавляется только для поддержки, а не для представления рабочего процесса и клинических аспектов процесса подписания, либо для поддержки невозможности отказа от авторства.
-<!-- The signature is only added to support , and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation. -->			
+The signature is only added to support , and not to represent workflow and clinical aspects of the signing process, or to support non-repudiation.			
  
 <h3>Party References</h3>
 
 <p>
-Поскольку ресурс Provenance часто относится к субъектам, не представленным в виде FHIR-ресурсов, ссылки Agent и Entity могут быть либо ссылками на другие ресурсы, либо они могут ссылаться на другие сущности, которые не являются FHIR-ресурсами.
-<!-- Because the Provenance resource often refers to parties that are not represented 
+Because the Provenance resource often refers to parties that are not represented 
 as FHIR resources, Agent and Entity references are allowed to be either references 
-to other resources, or they can refer to other entities that are not FHIR resources. -->
+to other resources, or they can refer to other entities that are not FHIR resources.
 </p>
 <p>
-Код в элементе <i>.type</i> используется для их различения: если код из системы "http://hl7.org/fhir/resource-types", значит это ссылка на ресурс, и элемент <i>reference</i> функционирует точно так же, как и в <a href="references.html#references">Resource Reference</a>.
-<!-- The code in the <i>.type</i> element is used to differentiate between the two: if the 
+The code in the <i>.type</i> element is used to differentiate between the two: if the 
 code is in the system "http://hl7.org/fhir/resource-types", then the reference is to 
 a resource, and the element <i>reference</i> functions exactly the same as in 
-a <a href="references.html#references">Resource Reference</a>.  -->
+a <a href="references.html#references">Resource Reference</a>. 
 </p>
 
 
 
 <div class="example">
 <p>
-Ссылка на конкретную версию FHIR-ресурса на том же сервере:
-<!-- A version specific reference to a FHIR resource on the same server: -->
+A version specific reference to a FHIR resource on the same server:
 </p>
 <pre class="xml">
   &lt;agent&gt;
@@ -90,16 +79,14 @@ a <a href="references.html#references">Resource Reference</a>.  -->
 </pre>
 </div>
 <p>
-По сути, это тот же шаблон, что и стандартная ссылка на ресурс, только тип становится расширяемым, чтобы можно было ссылаться на другие виды ресурсов.
-<!-- In effect, this is the same pattern as a standard resource reference, 
+In effect, this is the same pattern as a standard resource reference, 
 but the type becomes extensible to allow referencing other kinds of 
-resources.  -->
+resources. 
 </p>
 
 <div class="example">
 <p>
-Ссылка на пользователя (человека), не представленного в виде FHIR-ресурса:
-<!-- A reference to a user (a person) not represented by a FHIR resource: -->
+A reference to a user (a person) not represented by a FHIR resource:
 </p>
 <pre class="xml">
   &lt;agent&gt;
@@ -113,13 +100,12 @@ resources.  -->
 </div>
 
 <p>
-Есть один тонкий вопрос в использовании ресурса Provenance - как различать, это ссылка на сам ресурс, или это ссылка на сущность реального мира, которую представляет ресурс, например это человек участвовал в активности или запись об этом человеке. В случае Агентов следует понимать, что речь идет о сущности реального мира, которую представляет ресурс. 
-<!-- One subtle issue with the use of the Provenance resource is to differentiate
+One subtle issue with the use of the Provenance resource is to differentiate
 between whether the reference is to the Resource itself, or whether the 
 the reference is to the real world thing that the resource represents,
 e.g. was it the person involved in the activity, or the record of the person. 
 For Agents, it should be understood that the reference is to the real 
-world thing that the resource represents.  -->
+world thing that the resource represents. 
 </p>
 
 </div>

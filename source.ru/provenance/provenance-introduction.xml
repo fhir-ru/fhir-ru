@@ -1,55 +1,44 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
-Ресурс provenance отслеживает информацию об активности по созданию версий ресурса, включая сущности и агентов, участвующих в создании ресурса. 
-Эта информация может использоваться для получения оценки качества, надежности и достоверности, или для предоставления указателей, куда перейти для дальнейшего изучения происхождения ресурса и содержащейся в нем информации.
-<!-- The provenance resource tracks information about activity that created a version of a resource, including the entities, and agents involved in producing a resource.
-This information can be used to form assessments about its quality, reliability or trustworthiness, or to provide pointers for where to go to further investigate the origins of the resource and the information in it.  -->
+The provenance resource tracks information about activity that created a version of a resource, including the entities, and agents involved in producing a resource.
+This information can be used to form assessments about its quality, reliability or trustworthiness, or to provide pointers for where to go to further investigate the origins of the resource and the information in it. 
 </p>
 <p>
-<a href="provenance.html">Ресурсы Provenance</a> ведут учет по сбору информации о контексте, в котором была получена информация в ресурсе. Ресурсы Provenance подготавливаются приложением, которое инициирует создание/обновление и т. п. ресурса. 
-Ресурс <a href="securityevent.html">Security Event</a> содержит пересекающуюся информацию, но создается при наступлении события для отслеживания и аудита событий. 
-Ресурсы Security Event часто (хотя и не исключительно) создаются приложением, в ответ на событие чтения/запроса/создания/обновления и т. п.
-<!-- <a href="provenance.html">Provenance resources</a> are a record-keeping assertion that gathers information about the context in which the information in a resource was obtained. 
+<a href="provenance.html">Provenance resources</a> are a record-keeping assertion that gathers information about the context in which the information in a resource was obtained. 
 Provenance resources are prepared by the application that initiates the create/update etc. of the resource.
 A <a href="securityevent.html">Security Event</a> resource contains overlapping information, but is created as events occur, to track and audit the events. 
-Security Event resources are often (though not exclusively) created by the application responding to the read/query/create/update etc. event.  -->
+Security Event resources are often (though not exclusively) created by the application responding to the read/query/create/update etc. event. 
 </p>
 </div>
 
 <div>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<h2>Boundaries and Relationships</h2>
 <p>
-Многие FHIR-ресурсы содержат элементы с информацией о происхождении ресурса, которые пересекаются с функциональностью ресурса Provenance. Этим свойствам в других ресурсах всегда следует отдавать предпочтение при использовании, а ресурс Provenance следует использовать тогда, когда требуется указать дополнительную информацию, хоть и может возникнуть дублирование.
-<!-- Many other FHIR resources contain some elements that represent information
+Many other FHIR resources contain some elements that represent information
 about how the resource was obtained, and therefore thay overlap with the 
 functionality of the Provenance resource. These properties in other resources
 should always be used in preference to the provenance resource, and the 
 provenance resource should be used where additional information is required,
-though overlap can occur.  -->
+though overlap can occur. 
 </p>
 </div>
 
 <div>
-<h2>Предпосылки и контекст<!-- Background and Context --></h2>
+<h2>Background and Context</h2>
 <p>
-Ресурс Provenance основывается на <a href="http://www.w3.org/TR/2013/NOTE-prov-overview-20130430/">W3C-спецификации Provenance</a>, с которой у него есть мэппинги. Ресурс Provenance адаптирован, чтобы лучше соответствовать сценариям использования в FHIR для описания происхождения. 
-W3C-спецификация Provenance определяет следующую функциональную модель:
-
-<!-- The provenance resource is based on the <a href="http://www.w3.org/TR/2013/NOTE-prov-overview-20130430/">W3C Provenance specification</a>, 
+The provenance resource is based on the <a href="http://www.w3.org/TR/2013/NOTE-prov-overview-20130430/">W3C Provenance specification</a>, 
 and mappings are provided. The Provenance resource is tailored to fit the FHIR use-cases for provenance more directly. 
-The W3C Provenance Specification has the following fundamental model: -->
+The W3C Provenance Specification has the following fundamental model:
 </p>
 <p>
 <img alt="Key concepts" src="http://www.w3.org/TR/prov-primer/images/key-concepts.png" width="280" height="173" style="float: none; clear: both"/>
 </p>
 <p>
-Ресурс <i>Provenance</i> фактически соответствует одной активности, которая определяет набор ресурсов (<i>target</i>), генерируемых этой активностью. 
-Эта активность также ссылается на другие сущности (<i>entity</i>), которые были использованы, и агентов (<i>agent</i>), которые были связаны с этой активностью.
-<!-- The <i>Provenance</i> resource actually corresponds to a single activity that identifies a set of resources (<i>target</i>) generated by the activity.
-The activity also references other entities (<i>entity</i>) that were used and the agents (<i>agent</i>) that were associated with the activity.  -->
+The <i>Provenance</i> resource actually corresponds to a single activity that identifies a set of resources (<i>target</i>) generated by the activity.
+The activity also references other entities (<i>entity</i>) that were used and the agents (<i>agent</i>) that were associated with the activity. 
 </p>
 </div>
 

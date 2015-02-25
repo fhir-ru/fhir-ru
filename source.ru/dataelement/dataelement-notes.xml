@@ -1,30 +1,24 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
-	<h3>Связь с ISO 11179<!-- Relationship to ISO 11179 --></h3>
+	<h3>Relationship to ISO 11179</h3>
 	<p>
-	Одним из источников определения ресурса <b>DataElement</b> была спецификация метаданных реестров <a href="http://metadata-standards.org/11179/">ISO 11179</a>. В ней определяется логическая модель для классификации, идентификации, наименования и регистрации элементов данных, концептов элементов данных и связанных с ними концептуального домена и домена  значений.
-<!-- 
 One of the sources of the <b>DataElement</b> resource definition was the <a href="http://metadata-standards.org/11179/">ISO 11179</a>
 Metadata Registries specification.  It defines a logical model for the classification, identification, naming and registration of 
-Data Elements, Data Element Concepts and their associated Value and Conceptual Domains. --></p>
+Data Elements, Data Element Concepts and their associated Value and Conceptual Domains.</p>
 	<p>
-	Ресурс <b>DataElement</b> может быть использован для представления как Data_Element, так и Data_Element_Concept в логической модели ISO.
-(Ресурс <a href="valueset.html"> ValueSet </a>  предоставляет информацию для Value_Domain и Conceptual_Domain для перечисленных элементов).
-Определение того, является ли экземпляр ресурса <b>DataElement</b> ISO 11179 Data_Element или Data_Element_Concept, устанавливается наличием или отсутствием значения свойства <code>type</code>, которое соответствует ISO-свойству Data_Element.domain.datatype, требующемуся для Data_Elements. Таким образом, если DataElement.type присутствует, то экземпляр представляет собой элемент данных 11179. Если DataElement.type отсутствует, экземпляр представляет собой концепт элемента данных 11179. 
-<!-- The <b>DataElement</b> resource can be used to represent both Data_Element and Data_Element_Concept in the ISO logical model.
+The <b>DataElement</b> resource can be used to represent both Data_Element and Data_Element_Concept in the ISO logical model.
 (The <a href="valueset.html">ValueSet</a> resource provides the details for Value_Domain and Conceptual_Domain for enumerated elements.)
 The determination of whether a <b>DataElement</b> resource instance is an ISO 11179 Data_Element or Data_Element_Concept is determined by 
 whether the <code>type</code> property is specified - which corresponds to the ISO property Data_Element.domain.datatype which is required 
 for Data_Elements.  I.e. If DataElement.type is present, the instance represents a 11179 data element.  If DataElement.type is absent, the
-instance represents a 11179 data element concept. -->
+instance represents a 11179 data element concept.
 </p>
 	<p>
-	В отличие от логической спецификации 11179, ресурс <b>DataElement</b> не требует наличия связи между элементом данных и отдельным концептом элемента данных, хотя эта связь, при желании, может быть установлена с помощью расширения. Вместо типичных ожидаемых средств идентификация концепта элемента данных происходит через мэппинг элемента данных на конкретный код или эталонную модель, которые формально определяют концепт. Эта эталонная модель может быть основана на ISO-механизме Object_Class и Property. Однако возможны мэппинги и на другие эталонные модели, например:
-<!-- Unlike the 11179 logical specification, the
+Unlike the 11179 logical specification, the
 <b>DataElement</b> resource does not require a linkage from data element to a distinct data element concept, though this linkage can
 be established through an extension if desired.  The typical means of identification of the data element concept is expected to instead
 occur through the mapping of the data element to a particular code or reference model that formally defines the concept. It is possible this
 reference model could be based on ISO's Object_Class and Property mechanism.  However, mappings to other reference models are also possible,
-for example: -->
+for example:
 </p>
 	<ul>
 		<li>HL7's <a href="http://www.hl7.org/implement/standards/rim.cfm">Reference Information Model</a>
@@ -36,25 +30,20 @@ for example: -->
 		</li>
 	</ul>
 	<p>
-	В случае нескольких кодов и/или мэппингов, "авторитетный" мэппинг (формально определяющий концепт) определяется либо установкой элемента "primary" в этот код, либо указанием ISO 11179 расширения "primary mapping".
-	<!-- In the event of multiple
+	In the event of multiple
 codes and/or mappings, the "authoritative" mapping (the one formally defining the concept) is identified by either setting the "primary" element
-on the code or by specifying the "primary mapping" ISO 11179 extension. -->
+on the code or by specifying the "primary mapping" ISO 11179 extension.
     </p>
 	<p>
-	Можно создавать экземпляры, которые "соответствуют" или даже "строго соответствуют" спецификации 11179. Однако это потребует использования расширений, чтобы передать определенные свойства, которые не являются частью основного ресурса и типов данных. 
-	Изначальный <a href="dataelement-11179.html">ISO 11179 профиль</a> входит в спецификации FHIR. Он определяет расширения, которые имеют отношение к профилю <a href="dataelement-sdc.html">SDC DataElement</a>. При наличии достаточного интереса существующий набор для начала работы может быть расширен в будущих версиях этой спецификации включением в него полного набора расширений и всей спецификации 11179.
-<!-- It is possible to create instances that are "conforming", or even "strictly conforming" to the 11179 specification. However, doing
+It is possible to create instances that are "conforming", or even "strictly conforming" to the 11179 specification. However, doing
 so will require the use of extensions to convey certain properties that are not part of the core resource and data types.  An initial
 starter <a href="dataelement-11179.html">ISO 11179 profile</a> is included in the FHIR specification.  It defines extensions that are relevant to the 
 <a href="dataelement-sdc.html">SDC DataElement</a> profile.  If there is sufficient interest, the existing starter set may be
-enhanced to contain a complete set of extensions and a full 11179 in a future release of the specification. -->
+enhanced to contain a complete set of extensions and a full 11179 in a future release of the specification.
 </p>
-	<h3>Сравнение кодов и элементов данных<!-- Data Elements vs. Codes --></h3>
+	<h3>Data Elements vs. Codes</h3>
 	<p>
-	Элементы данных (и их реестры) и коды (и их кодовые системы) служат разным целям. Элементы данных описывают характеристики некоторой порции данных, а коды описывают конкретный концепт (часто относительно других концептов). Тем не менее, так как элементы данных обеспечивают определение значения конкретного элемента, о они можно думать как о кодах. Одно из их назначений - определение переменных, наблюдений или вопросов, которые включают в себя информацию о том, как собирать значение переменной - в том числе сведения о типах данных и руководства об использовании перечней ответов и/или единиц измерения. 
-Эта функция обычно выполняется кодовыми системами, такими как <a href="http://loinc.org">LOINC</a> and <a href="http://www.ihtsdo.org/snomed-ct/">SNOMED CT</a>. (Обратите внимание, что LOINC предоставляет довольно подробную информацию о разрешенных ответах, в то время как большинство других кодовых систем, таких как SNOMED, позволяют только указать сам вопрос.) Можно было бы обрабатывать реестр элементов данных с помощью общей идентификационной системы/пространства имен как кодовую систему. Кроме того, элементы данных могут быть отображены друг на друга (и на коды) таким же образом, как коды могут быть отображены путем использования ресурса <a href="conceptmap.html">ConceptMap</a>.
-<!-- Data elements (and their registries) and codes (and their code systems) serve different purposes.  Data elements describe the characteristics of a piece of
+Data elements (and their registries) and codes (and their code systems) serve different purposes.  Data elements describe the characteristics of a piece of
 data while codes describe a particular concept (often in relation to other concepts).  However, because data elements provide
 a definition of the meaning of a particular element, they  
 can be thought of as being codes.  One of their purpose is to define  variables, observations, or questions, that include information about how to 
@@ -63,50 +52,44 @@ This function is typically done by code systems such as <a href="http://loinc.or
 <a href="http://www.ihtsdo.org/snomed-ct/">SNOMED CT</a>.  (Note that LOINC provides considerable detail about allowed answers, while most other code 
 systems such as SNOMED only allow identifying the question.)It would be possible to treat a registry of data elements using a common
 identifier system/namespace as a code system.  Similarly, data elements can be mapped to each other (and to codes) in the same manner as 
-codes can be mapped by making use of the <a href="conceptmap.html">ConceptMap</a> resource. -->
+codes can be mapped by making use of the <a href="conceptmap.html">ConceptMap</a> resource.
 </p>
 	<p>
-	На практике, как правило, лучше поддерживать отдельную кодовую систему, на коды которой можно ссылаться в элементе <code>code</code> ресурса <b>Data Element</b> вместо того, чтобы обрабатывать сам идентификатор элемента данных как код. Большинство систем, спроектированных для обработки кодовых систем, не смогут обрабатывать дополнительные данные, ассоциированные с элементом данных. Также процессы поддержки и версионирования элементов данных могут не совпадать с этими же процессами для кодов.
-<!-- In practice, it is generally best to maintain a separate code system whose codes can be referenced in the <code>code</code> element
+In practice, it is generally best to maintain a separate code system whose codes can be referenced in the <code>code</code> element
 of a <b>Data Element</b> rather than to treat the data element identifier itself as a code.  Most systems designed to handle code
 systems will not be able to handle the additional data associated with a data element.  As well, the maintenance and versioning process
-for data elements may not align well with the maintenance and versioning processes for codes. -->
+for data elements may not align well with the maintenance and versioning processes for codes.
 </p>
 	<a name="standardization"/>
-	<h3>Стандартизация через административное управление и реестры<!-- Standardization through governance and registries --></h3>
+	<h3>Standardization through governance and registries</h3>
 	<p>
-	Как отмечалось во введении, одна из основных целей использования элементов данных -  'стандартизация' - собрала состоятельные (и, таким образом, сопоставимые) данные в  <a href="questionnaire.html">questionnaires</a>, <a href="observation.html">observations</a> и других ресурсах. Тем не менее, лишь определения элементов данных самого по себе не достаточно для улучшения стандартизации. Для обеспечения согласованности данных необходимо несколько дополнений:
-<!-- As noted in the introduction, one of the main purposes for the use of data elements is 'standardization' - gaining consistent
+As noted in the introduction, one of the main purposes for the use of data elements is 'standardization' - gaining consistent
 (and thus comparable) data capture of data in <a href="questionnaire.html">questionnaires</a>, <a href="observation.html">observations</a>
 and within other resources.  However, merely defining data elements is not, in itself, sufficient to improve standardization.  To
-ensure consistency of data, there needs to be several additional things: -->
+ensure consistency of data, there needs to be several additional things:
 </p>
 	<ul>
-		<li>Необходим совместный репозиторий элементов данных, к которому будет обращаться и использовать сообщество в целях улучшения совместимости. Многочисленные группы будут определять и регистрировать элементы данных в самых разнообразных репозиториях самого разнообразного назначения. Для улучшения совместимости каждому в целевом сообществе придется работать с одним и тем набором.
-		<!-- There must be a shared repository of data elements that will be consulted and used by the community where improved interoperability
+		<li>There must be a shared repository of data elements that will be consulted and used by the community where improved interoperability
     is targeted.  Numerous groups will define and register data elements in a wide variety of repositories for a wide variety of purposes.
-    To improve interoperability, everyone in the target community needs to be working from the same set. --></li>
-		<li>Необходимо административное управление репозиторием элементов данных для обеспечения непротиворечивых гранулярности и структур ссылок - тем, кто проектирует вопросники, профили и проч., потребуется возможность легко находить подходящий элемент данных внутри репозитория и, в идеале, заданной цели должен соответствовать только один элемент данных. Если репозиторий принимает 15 элементов данных, определяющих различные способы сбора одной и той же информации, улучшения совместимости не произойдет.
-		<!-- There must be governance over the repository of data elements to ensure consistency of granularity and reference structures - those
+    To improve interoperability, everyone in the target community needs to be working from the same set.</li>
+		<li>There must be governance over the repository of data elements to ensure consistency of granularity and reference structures - those
     designing questionnaires, profiles, etc. need to be able to find the appropriate data element easily within the repository and there
     should ideally only be one data element for a given purpose.  If a repository accepts 15 data elements defining different ways of
-    capturing the same piece of information, there will be no improvement in interoperability. --></li>
-		<li>Должен иметь место стимул или административные процессы, которые будут поощрять или требовать использования элементов данных из общего репозитория при определении форм, профилей и других структур, где желательная улучшенная совместимость.<!-- There must be incentives or governance processes in place that encourage or require the use of data elements from the shared
-    repository when defining forms, profiles and other structures where improved interoperability is desired. --></li>
-		<li>Нужна поправка для (и путь переходя) унаследованных систем, которые собирают данные или имеют уже существующие данные, не соответствующие утвержденным элементам данных.<!-- There must be allowance for (and a transition path for) legacy systems that capture data or have existing data that is not in
-    alignment with the approved data elements. --></li>
+    capturing the same piece of information, there will be no improvement in interoperability.</li>
+		<li>There must be incentives or governance processes in place that encourage or require the use of data elements from the shared
+    repository when defining forms, profiles and other structures where improved interoperability is desired.</li>
+		<li>There must be allowance for (and a transition path for) legacy systems that capture data or have existing data that is not in
+    alignment with the approved data elements.</li>
 	</ul>
 	<p>
-	<b>Data Elements</b> - это средства, с помощью которых можно достигнуть улучшения стандартизации, но без адекватных процессов они не принесут существенной пользы.
-		<!-- <b>Data Elements</b> are a tool through which improved standardization can be achieved but without adequate processes, they will not
-achieve significant benefit. -->
+		<b>Data Elements</b> are a tool through which improved standardization can be achieved but without adequate processes, they will not
+achieve significant benefit.
 </p>
 
-<h3>Степень детализации и иерархия элементов данных<!-- Data Element granularity and hierarchy --></h3>
+<h3>Data Element granularity and hierarchy</h3>
 <p>
-Элементы данных можно определять с самой разнообразной степенью детализации. Например:
-<!-- Data elements can be defined at a wide variety of granularities.  For example:
- --></p>
+Data elements can be defined at a wide variety of granularities.  For example:
+</p>
 <ul>
   <li>Systolic Blood pressure</li>
   <li>Systolic Blood pressure (sitting)</li>
@@ -114,73 +97,66 @@ achieve significant benefit. -->
   <li>Systolic Blood pressure (sitting, pressure cuff) mmHg</li>
 </ul>
 <p>
-Кодированные элементы данных могут быть определены: без наборов значений, с предложенными наборами значений, с ограниченными, но расширяемыми наборами значений или же с полностью ограниченными наборами значений. Числовые значения могут быть определены с использованием или без допустимого диапазона. Строковые данные могут быть определены с указанием шаблонов и длины или без. Все они являются допустимыми  элементами данных.
-<!-- Coded data elements can be defined without value sets, with suggested value sets, with required but extensible value sets or with
+Coded data elements can be defined without value sets, with suggested value sets, with required but extensible value sets or with
 completely locked down value sets.  Numeric values can be defined with or without allowed ranges.  String data can be defined
-with or without patterns or lengths.  All are valid data elements. -->
+with or without patterns or lengths.  All are valid data elements.
 </p>
 <p>
-При определении элементов данных важно решить, какой уровень детализации /структуризации подходит по назначению.
-Чем жестче элемент данных определяется, тем больше совместимость данных, однако меньший набор систем сможет удовлетворить эти ограничения, и большее количество элементов данных потребуется для покрытия данного домена. В некоторых случаях может быть целесообразным определение нескольких степеней детализации, хотя это может привести к трудностям в обеспечении того, что для данного применения выбрана соответствующая степень детализации. Как правило, элементы данных должны быть определены настолько свободно, насколько это возможно, при этом гарантируя, что все данные, собранные с помощью этого элемента, будут в достаточной мере сопоставимы для удовлетворения потребностей группы, определившей и использующей эти элементы данных. Следствием этого является то, что элементы данных, определенные одной группой, не всегда отвечают потребностям другой группы, даже если они покрывают одну и ту же область.
-<!-- When defining data elements, it's important to decide what level of detail/granularity is appropriate for the intended purpose.
+When defining data elements, it's important to decide what level of detail/granularity is appropriate for the intended purpose.
 The tighter the data element is defined, the greater interoperability of the data, however the smaller the set of systems that
 will be able to satisfy the constraints and the larger the number of data elements that will be required to cover a given
 domain.  In some cases, multiple granularities may be appropriate, though this can introduce challenges in ensuring that the
 appropriate granularity is selected for a given use.  As a rule, data elements should be defined as loosely as possible while
 still ensuring that all data captured using the data element will be sufficiently comparable to meet the needs of the group
 defining and using the data elements.  A corollary to this is that data elements defined by one group will not always meet
-the needs of another group, even if they may be covering the same domain. -->
+the needs of another group, even if they may be covering the same domain.
 </p>
 
-<h3>Уникальность элементов данных<!-- Uniqueness of data elements --></h3>
+<h3>Uniqueness of data elements</h3>
 <p>
-Clem должен добавить этот раздел
+Clem to add section
 </p>
 
-<h3>Сопоставимость и преобразования элементов данных<!-- Comparability and conversion of data elements --></h3>
+<h3>Comparability and conversion of data elements</h3>
 <p>
-Две порции данных не обязательно должны основываться на одном и том же элементе данных для того, чтобы быть сопоставимыми или агрегируемыми.
-Как отмечалось выше,  один элемент данных может быть подмножеством другого. Кроме того, возможно преобразование данных от совместимости с одним элементом данных к совместимости с другим элементом данных. Это преобразование может быть без потерь или включать некоторую потерю смысловой точностью. Например измерение массы в фунтах
-может быть легко преобразовано в килограммы. Кроме того, кодированные данные собранные с помощью одного набора значений могут быть преобразованы в другой набор Значений при условии, что доступны мэппинги. Характер мэппинга определит, произойдет ли какая-либо потеря семантики.
-<!-- Two pieces of data don't necessarily need to be based on the same data element in order to be comparable or aggregatable.
+Two pieces of data don't necessarily need to be based on the same data element in order to be comparable or aggregatable.
 As noted above, it's possible for one data element to be a proper subset of another.  In addition, it may be possible to
 convert data from being conformant with one data element to being conformant with another data element.  This conversion
 could be lossless or may involve some loss of semantic precision.  For example, a weight measurement captured in pounds
 can be seamlessly converted to kilograms.  Similarly, coded data captured using one value set can be converted to another
 value set provided mappings are available.  The nature of the mappings would determine whether any loss of semantics
-would occur. -->
+would occur.
 </p>
 
-<h3>Определения<!-- Definitions --></h3>
+<h3>Definitions</h3>
 <p>
-Ценность элементов данных в том, что они четко определяют смысл и содержание конкретного типа данных, подлежащего обмену.
-Эта ценность зависит от смысла, вкладываемого в элемент, ясного для всех потенциальных пользователей этого элемента.
-То есть чтобы элемент данных был полезным, он должен иметь определение хорошего качества. Характеристики определения хорошего качества включают в себя:
-<!-- Data elements provide their value by clearly defining the meaning and content of a particular type of data to be exchanged.
+Data elements provide their value by clearly defining the meaning and content of a particular type of data to be exchanged.
 This value depends on the meaning associated with the element being clear for all potential implementers of the element.
 I.e. For a data element to be useful, it needs to have a good quality definition.  Characteristics of good quality
-definitions include: -->
+definitions include:
 </p>
 <ul>
-  <li>В определении не используется имя этого элемента в - оно должно предоставить дополнительную информацию сверх этого имени.<!-- The definition does not use the name of the element as part of the definition - it should provide additional information
-  above and beyond the name. --></li>
-  <li>Определение должно состоять не из одного-двух слов.<!-- The definition should be more than one or two words. --></li>
-  <li>В идеале определение должно быть сформулировано таким образом, чтобы им можно было заменить имя элемента данных в предложении. Например "gender" можно определить как "половая принадлежность человека для административных целей" <!-- Ideally, the definition should be phrased in a manner such that the definition could be substituted for the data element
-  name in a sentence.  E.g. "gender" might be defined as "the sexual identity of a person as used for administrative purposes" --></li>
-  <li>Если у элемента данных нет набора значений и не использует такие простые типы, как дата, целое или булев, необходимо привести в рамках определения несколько примеров его значений.<!-- If the data element does not have a value set and does not make use of a simple type such as date, integer or boolean,
-  it should list several example values as part of the definition. --></li>
-  <li>
-  Информация о логическом обосновании элемента или дополнительные примечания к использованию не должны передаваться в рамках этого определения, их следует указывать в элементах <code>notes</code> и <code>rationale</code>.<!-- Information about the rationale for the element or additional usage notes should not be conveyed as part of the definition
-  but should instead make use of the <code>notes</code> or <code>rationale</code> elements. --></li>
+  <li>The definition does not use the name of the element as part of the definition - it should provide additional information
+  above and beyond the name.</li>
+  <li>The definition should be more than one or two words.</li>
+  <li>Ideally, the definition should be phrased in a manner such that the definition could be substituted for the data element
+  name in a sentence.  E.g. "gender" might be defined as "the sexual identity of a person as used for administrative purposes"</li>
+  <li>If the data element does not have a value set and does not make use of a simple type such as date, integer or boolean,
+  it should list several example values as part of the definition.</li>
+  <li>Information about the rationale for the element or additional usage notes should not be conveyed as part of the definition
+  but should instead make use of the <code>notes</code> or <code>rationale</code> elements.</li>
 </ul>
 
-<h3>Элементы данных и контроль доступа<!-- Data Elements and Access Control --></h3>
+<h3>Data Elements and Access Control</h3>
 <p>
-Поскольку элементы данных определяют точные порции данных, которые могут передаваться в различные места, они могут образовывать полезный механизм определения тонко гранулированных элементов управления доступа к данным. Базовый ресурс не включает в себя механизмы для привязывания элементов управления доступом непосредственно к элементам данных, однако расширение может позволить ассоциировать конкретный элемент данных с конкретными <a href="security-labels.html">метками уровня безопасности</a>. Является ли этот уровень контроля надлежащим, может меняться в зависимости от среды реализации.
-<!-- Because Data Elements define precise pieces of data that can be conveyed in a variety of places, they may form a useful mechanism for the definition of fine-grained data access controls.  The base resource does not include mechanisms for linking access controls directly do data elements, however, an extension could allow a particular data element to be associated with particular <a href="security-labels.html">Security Labels</a>.  Whether this level of control is appropriate may vary by implementation environment. -->
+Because Data Elements define precise pieces of data that can be conveyed in a variety of places, they may form a useful
+mechanism for the definition of fine-grained data access controls.  The base resource does not include mechanisms for linking
+access controls directly do data elements, however, an extension could allow a particular data element to be associated with
+particular <a href="security-labels.html">Security Labels</a>.  Whether this level of control is appropriate may vary by
+implementation environment.
 </p>
 
-<h3>Ссылки на элементы данных и из них<!-- References to and from Data Elements --></h3>
+<h3>References to and from Data Elements</h3>
 <p>
 
 </p>

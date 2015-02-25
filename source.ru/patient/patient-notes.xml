@@ -1,116 +1,97 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <p>
-Примечания:
-<!-- Notes: -->
+Notes:
 </p>
 <ul>
-<li>multipleBirth может быть выражено либо в виде булева значения (просто указание, появился ли пациент при многоплодных родах), либо в виде целого числа, указывающего фактическую очередность рождения.<!-- multipleBirth can be either expressed as a boolean (just indicating whether the patient is part of a multiple birth) or as an integer, indicating the actual birth order. --></li>
-<li>Записи Patient могут быть только в одном из двух статусов: "в употреблении" (active=true) и "не используется" (active=false). Обычное состояние для записи - активна, т. е. используется. Значение активности устанавливается в 'false', когда запись создана по ошибке или является дубликатом. Нет необходимости связывать запись, чтобы ее инактивировать.<!-- Patient records may only be in one of two statuses: in use (active=true) and not in use (active=false). 
+<li>multipleBirth can be either expressed as a boolean (just indicating whether the patient is part of a multiple birth) or as an integer, indicating the actual birth order.</li>
+<li>Patient records may only be in one of two statuses: in use (active=true) and not in use (active=false). 
 A normal record is active, i.e. it is in use. Active is set to 'false' when a record is created as a duplicate or in error. 
-A record does not need to be linked to be inactivated. -->
+A record does not need to be linked to be inactivated.
 </li>
-<li>Элемент <i>link</i> используется для утверждения, что имеется два или больше ресурсов Patient об одном и том же реальном человеке.<!-- The <i>link</i> element is used to assert that two or more Patient resources are both about the same actual person. 
-See below for further discussion --></li>
-<li>Может быть только один предпочтительный язык (Language.preference = true) для одного режима выражения.<!-- There should be only one preferred language (Language.preference = true) per mode of expression. --></li>
-<li>У Contact для Patient есть элемент <i>organization</i>, это для использования с опекунами или бизнес-контактами, где важна только организация.<!-- The Contact for a Patient has an element <i>organization</i>, this is for use with guardians or business related contacts where just the organization is relevant. --></li>
+<li>The <i>link</i> element is used to assert that two or more Patient resources are both about the same actual person. 
+See below for further discussion</li>
+<li>There should be only one preferred language (Language.preference = true) per mode of expression.</li>
+<li>The Contact for a Patient has an element <i>organization</i>, this is for use with guardians or business related contacts where just the organization is relevant.</li>
 </ul>
 
 <h2>Patient id's and Patient resource id's</h2>
-<p>Resource Id записи Patient никогда не меняется. По этой причине идентификаторы, с которыми связаны люди (часто называются MRN - Номер медицинской карты (Medical Record Number), или UR (Unit Record) - единичная запись), не следует использовать для идентификаторов ресурса, поскольку MRN может измениться, например в результате дублирующихся записей для одного человека. Вместо этого они должны быть представлены в списке <i>Patient.identifier</i>, где ими можно управлять. Также это полезно в случае учреждений, которые получили несколько номеров из-за слияния пациентов учетных систем с течением времени.  <!-- A Patient record's Resource Id can never change. For this reason the identifiers with which humans are concerned (often called MRN - Medical Record Number, or UR - Unit Record) should not be used for the resource's id, since MRN's may change, i.e. as a result of having duplicate records of the same person. Instead they should be represented in the <i>Patient.identifier</i> list where they can be managed. This is also useful for the case of institutions that have acquired multiple numbers because of mergers of patient record systems over time. -->
+<p>A Patient record's Resource Id can never change. For this reason the identifiers with 
+which humans are concerned (often called MRN - Medical Record Number, or UR - Unit Record) should not 
+be used for the resource's id, since MRN's may change, i.e. as a result of having duplicate records of
+the same person. Instead they should be represented in the <i>Patient.identifier</i> 
+list where they can be managed. This is also useful for the case of institutions that have acquired 
+multiple numbers because of mergers of patient record systems over time.
 </p>
 
 
 <a name="links"> </a>
 <h2>Linking Patients</h2>
-<p>Элемент <i>link</i> используется для утверждения, что ресурсы patient относятся к одному и тому же человеку. Этот элемент используется для поддержки трех различных сценариев, в которых для одного человека существует несколько записей:<!-- The <i>link</i> element is used to assert that patient resources refer to the same person. This element is used
-to support three distinct scenario's where multiple records of the same person exist: --></p>
+<p>The <i>link</i> element is used to assert that patient resources refer to the same person. This element is used
+to support three distinct scenario's where multiple records of the same person exist:</p>
 
-<h3>Записи-дубликаты Patient<!-- Duplicate Patient records --></h3>
-<p>
-Управление регистрацией пациентов - хорошо известная трудная задача. Около 2% регистраций производятся по ошибке, в основном это записи-дубликаты. Иногда дубликат записи обнаруживается достаточно быстро и удаляется до того, как в нем накопятся данные. В противном случае могут накопиться существенные объемы данных. С помощью использования связи типа 'replace', запись, содержащая такую ссылку, помечается как дубликат, а эта ссылка ведет на запись, которую следует использовать взамен. Обратите внимание, что запись, на которую ведет указатель, может в свою очередь быть признанной введенной по ошибке и указывать в свою очередь на еще один ресурс Patient. Записи, замещающие другую запись, не указывают обратно на замещаемую запись. 
-<!-- Managing Patient registration is a well known difficult problem. Around 2% of registrations are in error, 
+<h3>Duplicate Patient records</h3>
+<p>Managing Patient registration is a well known difficult problem. Around 2% of registrations are in error, 
 mostly duplicate records. Sometimes the duplicate record is caught fairly quickly and retired before much 
 data is accumulated. In other cases, substantial amounts of data may accumulate. By using a link of type 'replace',
 the record containing such a link is marked as a duplicate and the link points forward to a record that should
 be used instead. Note that the record pointed to may in its turn have been identified as created in error and forward
-to yet another Patient resource. Records that replace another record, do not point back to the replaced record. -->
+to yet another Patient resource. Records that replace another record, do not point back to the replaced record.
 </p>
 
-<h3>Запись пациента в указателе пациентов<!-- Patient record in a Patient index --></h3>
-<p>Запись Patient может быть представлена в системе, которая действует как указатель пациентов: она поддерживает (сводку) данных пациентов и список одного или нескольких серверов, которые, она знает, хранят более исчерпывающую и/или авторитетную запись для этого же пациента. Для обозначения такой связи используется ссылка типа 'refer'. Обратите внимание, что связанные ресурсы могут содержать противоречивую информацию. Запись, на которую идет ссылка, не указывает обратно на запись, из которой на нее ссылаются.<!-- A Patient record may be present in a system that acts as a Patient Index: it maintains a (summary of) patient data and
+<h3>Patient record in a Patient index</h3>
+<p>A Patient record may be present in a system that acts as a Patient Index: it maintains a (summary of) patient data and
 a list of one or more servers that it are known to hold a more comprehensive and/or authorative record of the same patient.
 The link type 'refer' is used denote such a link. Note that linked records may contain contradictory information. The
-record referred to does not point back to the referring record. --></p>
+record referred to does not point back to the referring record.</p>
 
-<h3>Распределенная запись пациента<!-- Distributed Patient record --></h3>
-<p>
-В распределенной архитектуре несколько систем хранят отдельные записи пациентов, относящиеся к одному человеку. Эти записи не считаются дубликатами, однако содержат распределенное, потенциально пересекающееся представление данных пациента. 
-Каждая такая запись может иметь свое собственное направление или поддерживающую организацию, и не должно быть чувства, что одна запись более полная или более авторитетная, чем другая. В таких случаях могут использоваться связи типа 'seealso' для указания на другие записи пациента. Не обязательно, чтобы эти ссылки были двусторонними.
-<!-- In a distributed architecture, multiple systems keep separate patient records concerning the same person. These
+<h3>Distributed Patient record</h3>
+<p>In a distributed architecture, multiple systems keep separate patient records concerning the same person. These
 records are not considered duplicates, but contain a distributed, potentially overlapping view of the patient's data.
 Each such record may have its own focus or maintaining organization and there need not be a sense of one record
 being more complete or more authorative than another. In such cases, links of type 'seealso' can be used to point to
-other patient records. It is not a requirement that such links are bilateral.  -->
+other patient records. It is not a requirement that such links are bilateral. 
 </p>
 
-<h3>Сравнение Patient, Person и Patient.Link<!-- Patient vs Person vs Patient.Link --></h3>
+<h3>Patient vs Person vs Patient.Link</h3>
 <p>
-Ресурс Person поверхностно очень напоминает ресурс Patient, а использование его очень похоже на возможности применения Patient.Link.
-<!-- The Person resource on the surface appears to be very similar to the Patient resource, and the usage for it is very similar
-to using the Patient.Link capability. -->
-<br/>
-Замысел ресурса Person в том, чтобы иметь возможность связывать экземпляры ресурсов вместе, которые, полагается, относятся к одному индивидууму. Что включает в себя такие типы ресурсов, как RelatedPerson, Practitioner, Patient и даже другие ресурсы Person.
-<!-- The intention of the Person resource is to be able to link instances of resources together that are believed to be the same
-individual. This includes across resource types, such as RelatedPerson, Practitioner, Patient and even other Person resources. -->
-<br/>
-Patient Link, в свою очередь, предназначен для использования только с ресурсами Patient.
-<!-- The Patient Link however is only intended to be used for Patient resources. -->
+The Person resource on the surface appears to be very similar to the Patient resource, and the usage for it is very similar
+to using the Patient.Link capability.<br/>
+The intention of the Person resource is to be able to link instances of resources together that are believed to be the same
+individual. This includes across resource types, such as RelatedPerson, Practitioner, Patient and even other Person resources.<br/>
+The Patient Link however is only intended to be used for Patient resources.
 </p>
 <p>
-Основной сценарий использования для ресурса Person - возможность поддержки реестров Person, которые не обязательно имеют медицинский контекст и способны идентифицировать и оценивать уровни достоверности, что это один и тот же человек. 
-<!-- The primary use case for the Person resource is to be able to support Person registries that do not necessarily have a
-healthcare context, and are able to identify and quantify confidence levels that this is the same person. -->
-<br/>
-Это может включать потребительские порталы, где фактическим хранителем информации о человеке является непосредственно сам человек.
-<!-- This could include consumer portals where the actual maintainer of the Person information is the actual person themselves. -->
-<br/>
-Система может использовать запись Person для перепроверки изменений в информации, применимой к одной части записи, к значениям в другой системе. Потребитель при переезде обновляет свою контактные номера и адрес в своей Person записи, и затем система администрирования пациентов способна увидеть, что эти данные изменились, и предложить организации дополнить данные пациента, который привязан к записи этого человека, если они хотят обновить его информацию или, если им больше не нужны услуги и они должны быть отменены, поскольку они переехали из этого района.
-<!-- A system could use the Person entry to cross check changes to information applied to one part of a record to values in another
+The primary use case for the Person resource is to be able to support Person registries that do not necessarily have a
+healthcare context, and are able to identify and quantify confidence levels that this is the same person.<br/>
+This could include consumer portals where the actual maintainer of the Person information is the actual person themselves.<br/>
+A system could use the Person entry to cross check changes to information applied to one part of a record to values in another
 system. e.g. A Consumer updates his contact numbers and address when moving in his Person record, and then a Patient Administation
 system is able to see that this data is changed, and prompt the organization to follow up with the patient that was linked to
 the person record if they want their details updated, or if they no longer need services and they should be cancelled, 
-as they've moved from the area. -->
+as they've moved from the area.
 </p>
   
-<h3>Сравнение Patient.Contact и RelatedPerson<!-- Patient.Contact vs RelatedPerson --></h3>
+<h3>Patient.Contact vs RelatedPerson</h3>
 <p>
-Компонент contact в ресурсе Patient следует использовать для хранения контактной информации людей. Ресурс RelatedPerson следует использовать там, где у системы имеется отдельная запись для других людей для иных целей, чем просто контактные данные.
-<!-- The contact component on the Patient Resource should be used for storing persons to contact information.
+The contact component on the Patient Resource should be used for storing persons to contact information.
 Where a system has a separate record for other people for purposes other than just the contact details, The RelatedPerson
-resource should be used. -->
-<br/>
-Это включает в себя случаи, когда эти связанные люди фактически вносят вклад в запись, и на них нужно ссылаться индивидуально (например, CarePlan.Participant, Encounter, DocumentReference, Appointment), где не может быть использован компонент Patient.Contact.
-<!-- This includes cases where these related people are actually contributing to the record, and need to be referenced individually 
-(e.g. CarePlan.Participant, Encounter, DocumentReference, Appointment) where the Patient.Contact component cannot be used. -->
+resource should be used.<br/>
+This includes cases where these related people are actually contributing to the record, and need to be referenced individually 
+(e.g. CarePlan.Participant, Encounter, DocumentReference, Appointment) where the Patient.Contact component cannot be used.
 </p>
-<p>
-Не ожидается, что эти записи будут использоваться для основного лечащего врача, данная информация должна храниться в поле Patient.careProvider.
-<!-- It is not expected that these records will be used for primary care provider, this information should be stored in
-the Patient.careProvider field. --></p>
+<p>It is not expected that these records will be used for primary care provider, this information should be stored in
+the Patient.careProvider field.</p>
 
-<h2>Слияние записей<!-- Merging records --></h2>
+<h2>Merging records</h2>
 <p>
-Данная спецификация не определяет функциональность слияния: если обнаруживается, что несколько записей пациента являются дубликатами, они могут быть связаны вместе, как описано выше. Такие ссылки просто выражают отношения между записями, а в случае ссылки замещения указывают на "мастер"-запись. Данная спецификация не требует, чтобы FHIR-серверы мигрировали данные между такими записями при обнаружении такой ссылки. Отметьте:
-<!-- This specification does not specify merge functionality: if multiple patient records are found to be 
+This specification does not specify merge functionality: if multiple patient records are found to be 
 duplicates, they can be linked together, as described above. These links merely express the relationship
 between records, and in the case of a replacement link, indicate a "master" record.  This specification
-does not mandate that FHIR servers migrate information between such records on finding such a link. Note: -->
+does not mandate that FHIR servers migrate information between such records on finding such a link. Note:
 </p>
 <ul>
- <li>Администраторы медицинской информации могут называть этот процесс "слиянием", но часто он реализуется как "связывание" на уровне записей
- <!-- Health information administrators may call the process "merging", but it is often implemented as "linking" at the record level --></li>
- <li>Серверы могут осуществлять слияние/миграцию записей, хоть это и не является обязательным.
- <!-- Servers are allowed to implement merging/record migration even though it is not mandated. --> </li>
+ <li>Health information administrators may call the process "merging", but it is often implemented as "linking" at the record level</li>
+ <li>Servers are allowed to implement merging/record migration even though it is not mandated. </li>
 </ul>
 </div>

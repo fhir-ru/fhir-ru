@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
 This profile is a placeholder and is not complete.  It will eventually set expectations for the capability of data element registry systems as well as systems that create and curate
 data elements.  It expands on the expectations of the <a href="dataelement-sdc.html">base SDC DataElement</a> profile by adding DataElement properties relevant for
@@ -15,7 +15,7 @@ to requests.
 </p>
 </div>
 <div>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<h2>Boundaries and Relationships</h2>
 <p>
 This profile relies on the use of a number of other profiles, some required, others available for use "when necessary":
 </p>

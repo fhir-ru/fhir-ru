@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 
 <p>
 This resource allows for a material to be represented. The resource can be used to represent either a kind of a 
@@ -14,7 +14,7 @@ The composition of the material can be specified in terms of a mix of other mate
 </div>
 
 <div> 
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2> 
+<h2>Boundaries and Relationships</h2> 
 <p>
 A medication is a substance that is packaged and used for use as an administered medication. 
 The <a href="medication.html">medication resource</a> uses the substance resource to represent 

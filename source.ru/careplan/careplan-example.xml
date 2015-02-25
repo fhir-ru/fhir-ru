@@ -33,7 +33,7 @@
             <given value="Dorothy"/>
           </name>
 				<practitionerRole>
-        <specialty>
+			  <specialty>
           <text value="Dietician"/>
         </specialty>
 				</practitionerRole>

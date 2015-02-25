@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
 The Alert resource provides a single interface for managing clinical and administrative facts that need to be brought to the attention of
 users of clinical systems.  Examples can include many things.  Patient's posing particular risks (falls, physical violence), patient's needing special accomodations (hard of hearing, use easy-open caps), administrative concerns (verify postal address, pre-payment required) or any other situation that

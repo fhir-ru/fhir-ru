@@ -1,25 +1,17 @@
-<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
-<!-- Состояние -->
-Используется для записи подробной информации, имеющей отношение к оценке и утверждениям клинициста о конкретных аспектах состояния здоровья человека. Примеры состояния включают проблемы, диагнозы, беспокойства. Возможное применение ресурса condition:
-<!-- Used to record detailed information pertinent to a clinician's assessment and assertion of a particular aspect of a person's state of health. Examples of condition include problems, diagnoses, concerns, issues. There are many uses of condition which include: -->
+<h2>Scope and Usage</h2>
+Used to record detailed information pertinent to a clinician's assessment and assertion of a particular aspect of a person's state of health. Examples of condition include problems, diagnoses, concerns, issues. There are many uses of condition which include:
 <ul>
-<li>запись проблемы, диагноза, проблемы здравоохранения или вопроса здоровья во время encounter<!-- recording a problem, diagnosis, health concern or health issue during an encounter --></li>
-<li>использование такой информации для заполнения списка проблем в таких документах, как выписной эпикриз<!-- the use of such information to populate a problem list of a summary statement such as a discharge summary --> </li>
+<li>recording a problem, diagnosis, health concern or health issue during an encounter</li>
+<li>the use of such information to populate a problem list of a summary statement such as a discharge summary </li>
 </ul> 
-<br />
-Этот ресурс используется для записи подробной информации об оценке и утверждениях клинициста о конкретных аспектах состояния здоровья пациента. Предназначен для записи информации о болезни/заболевании, определенной в результате клинического обоснования над полученными патологическими и патофизиологическими данными (диагноза), или определение проблем/ситуаций со здоровьем, которые требуют постоянного мониторинга и/или ведения (проблема со здоровьем/беспокойство), или определение вопросов/ситуаций со здоровьем, считающимися вредными, потенциально вредными или которым требуется исследование и регулирование (проблемы).
-<!-- This resource is used to record detailed information about a clinician's assessment and assertion of a particular aspect of a patient's state of health. It is intended for use to record information about a disease/illness identified from application of clinical reasoning over the pathologic and pathophysiologic findings (diagnosis), or identification of health issues/situations that require ongoing monitoring and/or management (health issue/concern), or identification of health issues/situations considered harmful, potentially harmful and required to be investigated and managed (problems). -->
-<br /><br />
-Ресурс condition можно также использовать для записи конкретного состояния здоровья пациента, которое, как правило, не имеет негативного исхода (пока не прогнозируются или не обнаруживаются осложнения), например беременность. Примеры осложнений беременности включают: гиперемезис беременных, эклампсизм (поздний токсикоз беременных), эклампсия (тяжелая форма позднего токсикоза беременных), которые вводятся в качестве проблем/диагнозов.
-<!-- The condition resource may also be used to record certain health state of a patient which does not normally present negative outcome (until complications are predicted or detected), e.g. pregnancy. Examples of complications of pregnancy include: hyperemesis gravidarum, preeclampsia, eclampsia, which are captured as problems/diagnoses. -->
-<br /><br />Другие ресурсы могут ссылаться на ресурс condition в качестве "основания" для действия (например предписание, процедура, DiagnosticOrder и др.)<!-- The condition resource may be referenced by other resources as “reasons” for an action (e.g. prescription, procedure, DiagnosticOrder, etc) -->
-<br /><br />
-Этот ресурс не предназначен для записи информации о признаках и симптомах, которые обычно вводятся с использованием ресурса observation; несмотря на то, что в некоторых случаях постоянный симптом, например жар, головная боль могут вводиться как condition перед тем, как клиницист распознает окончательный диагноз. 
-<!-- This resource is not to be used to record information about signs and symptoms that are typically captured using the “observation” resource; although in some cases a persistent symptom, e.g. fever, headache may be captured as a condition before a definitive diagnosis can be discerned by a clinician. -->
-<br /><br />Также ресурс condition специально исключает AllergyIntolerance и Adverse Reactions, так как для них есть отдельные ресурсы. <!-- The condition resource also specifically excludes “AllergyIntolerance” and “Adverse Reactions” as those are handled with their own resources. -->
+<br />This resource is used to record detailed information about a clinician's assessment and assertion of a particular aspect of a patient's state of health. It is intended for use to record information about a disease/illness identified from application of clinical reasoning over the pathologic and pathophysiologic findings (diagnosis), or identification of health issues/situations that require ongoing monitoring and/or management (health issue/concern), or identification of health issues/situations considered harmful, potentially harmful and required to be investigated and managed (problems).
+<br /><br />The condition resource may also be used to record certain health state of a patient which does not normally present negative outcome (until complications are predicted or detected), e.g. pregnancy. Examples of complications of pregnancy include: hyperemesis gravidarum, preeclampsia, eclampsia, which are captured as problems/diagnoses.
+<br /><br />The condition resource may be referenced by other resources as “reasons” for an action (e.g. prescription, procedure, DiagnosticOrder, etc)
+<br /><br />This resource is not to be used to record information about signs and symptoms that are typically captured using the “observation” resource; although in some cases a persistent symptom, e.g. fever, headache may be captured as a condition before a definitive diagnosis can be discerned by a clinician.
+<br /><br />The condition resource also specifically excludes “AllergyIntolerance” and “Adverse Reactions” as those are handled with their own resources.
 <br />
 </div>
 

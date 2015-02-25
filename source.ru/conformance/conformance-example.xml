@@ -12,12 +12,12 @@
       <p>The EHR Application has a <a href="http://fhir.hl7.org/base/Profilebc054d23-75e1-4dc6-aca5-838b6b1ac81d/_history/b5fdd9fc-b021-4ea1-911a-721a60663796">general document profile</a>.</p>
     </div>
   </text>
-  <!--  идентификатор этого заявления о соответствии.
-	Этот идентификатор и версия устанавливают идентификаторы, которые другие 
-	спецификации и проч. могут использовать для ссылки на это заявление о соответствии, 
-	и которые этот ресурс представляет скорее логическим способом, чем буквальным (URL)
-	
-	Этот идентификатор должен быть глобально уникальным - UUID, OID или URL/URI    
+  <!--  the identifier for this conformance statement. 
+    The identifier and version establish identifiers that other specifications etc may use to 
+    refer to the conformance statement that this resource represents in a logical manner 
+    rather than in a literal (URL) fashion 
+
+    The identifier should be globally unique - a UUID, an OID, or a URL/URI
    -->
   <identifier value="68D043B5-9ECF-4559-A57A-396E0D452311"/>
   <version value="20130510"/>
@@ -34,30 +34,33 @@
     <version value="0.00.020.2134"/>
   </software>
 
-  <!-- хотя инфраструктура FHIR и переделывается перед разработкой, указание версии обязательно. Обратите внимание, что позже это может быть аннулировано? -->
+  <!-- while the FHIR infrastructure is turning over prior to development, a version is 
+    required. Note that this may be rescinded later? -->
   <fhirVersion value="0.07"/>
   
-  <!-- эта система принимает неизвестное содержимое в ресурсах -->
+  <!-- this system accepts unknown content in the resources -->
   <acceptUnknown value="true"/>
 
-  <!-- эта система поддерживает либо xml, либо json. (Перечисление обоих подразумевает полную поддержку каждого с взаимным преобразованием) -->  
+  <!-- this system can do either xml or json. (Listing both implies full support for either, with interconversion) -->  
   <format value="xml"/>
   <format value="json"/>
   
-  <!-- в реальном заявлении о соответствии маловероятно, что отдельное заявление 
-  о соответствии будет декларировать соответствие для REST, обмена сообщениями и 
-  документов, хотя это и допустимо.
-  В этом примере это делается для демонстрации всех частей заявления о соответствии  -->
+  <!-- in a real conformance statement, it's unlikely that a single conformance statement 
+    would declare conformance for REST, messaging and documents, though it is legal. 
+    This example does so in order to show all the parts of a conformance statement -->
   <rest>
-    <!-- это серверное заявление о соответствии. Обратите внимание, что серверы обязаны предоставлять одно из таких. Его можно легко редактировать вручную - скопируйте его, замените метаданные выше, удалите информацию, относящуюся к обмену сообщениями и документам ниже, затем замените соответствующие данные. -->
+    <!-- this is a server conformance statement. Note that servers are required to provide 
+      one of these. It can easily be edited by hand - copy this, replace the metadata above, 
+      delete the messaging and document stuff below, and then replace the details appropriately. -->
     <mode value="server"/>
-    <!-- ноль или больше таких записей - объявление поддержки ресурса -->
+    <!-- zero or more of these - declaration of support for a resource -->
     <resource>
       <type value="Patient"/>
-      <!-- давайте предположим, HL7 поднял реестр профилей на http://fhir.hl7.org/fhir 
-        - вполне вероятно, что такой реестр будет, хотя это еще не решено и URL не выбран.
-		Это приложение просто использует профиль, зарегистрированных непосредственно 
-		в HL7. Для простейшего случая FHIR REST-сервера, просто удалите эту ссылку на профиль. Ссылки на профили не обязательно делать UUID, хотя реестр профилей может ввести такое требование -->
+      <!-- let's assume that HL7 has stood up a profile registry at http://fhir.hl7.org/fhir 
+        - it's likely to have a registry, though this is not decided, nor is a URL decided. 
+        This application simply uses a profile registered directly with HL7. For the simplest 
+        case of a FHIR REST Server, just delete this profile reference. Profile references do 
+        not need to be a UUID, though a profile registry could insist that they are -->
       <profile>
         <reference value="http://fhir.hl7.org/base/Profile7896271d-57f6-4231-89dc-dcc91eab2416"/>
       </profile> 
@@ -88,17 +91,19 @@
     </interaction>
   </rest>
 
-  <!-- заявление о соответствии для сообщений. Приложениям не требуется делать заявление о соответствии для обмена сообщениями, хотя имеется активная аргументация, что им следует это делать.  -->
+  <!-- a messaging conformance statement. Applications are not required to make a conformance 
+    statement with regard to messaging, though there is active argument that they should.  -->
   <messaging>
-    <!-- как сказать, является ли этот llp сервером или клиентом? -->
+    <!-- how to tell whether this llp is a server or a client? -->
     <event>
       <code>
         <system value="http://hl7.org/fhir/message-type"/>
         <code value="admin-notify"/>
       </code> 
-      <mode value="receiver"/> <!-- это получатель "receiver" - т. е. ответы. Не обязательно сервер" -->
+      <mode value="receiver"/> <!-- this a receiver - i.e. answers. Not neccessariy a serve" -->
       <focus value="Patient"/>
-      <!-- укажите профиль для запроса пользователя. Очень часто нет смысла в профилировании ответа, это не представляет интереса -->
+      <!-- specify a profile for the request person. Very often there's no point profiling 
+        the response, it's not interesting -->
       <request>
         <reference value="Profile/101"/>
       </request> 
@@ -108,12 +113,12 @@
     </event>
   </messaging>
   
-  <!-- заявление о соответствии для документов -->
+  <!-- a document conformance statement -->
   <document>
     <mode value="consumer"/>
     <documentation value="Basic rules for all documents in the EHR system"/>
-    <!-- это важный элемент: ссылка на опубликованный профиль документа
-	обратите внимание, что это ссылка на конкретную версию.-->
+    <!-- this is the important element: a reference to a published document profile 
+       note that this is a version specific reference.-->
     <profile>
       <reference value="http://fhir.hl7.org/base/Profilebc054d23-75e1-4dc6-aca5-838b6b1ac81d/_history/b5fdd9fc-b021-4ea1-911a-721a60663796"/>
     </profile>

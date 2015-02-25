@@ -35,57 +35,57 @@ Resource Content
   <div id="tabs-struc">
     <div id="tbl">
       <p><b>Structure</b></p>
- <div id="tbl-inner">
-  <%resource-table%>
- </div>
+      <div id="tbl-inner">
+        <%resource-table%>
+      </div>
     </div>
   </div>
-  <div id="tabs-uml">
+  <div id="tabs-uml"> 
     <div id="uml">
       <p><b>UML Diagram</b></p>
- <div id="uml-inner">
- <%svg%>
- </div>
+      <div id="uml-inner">
+        <%svg%>
+      </div>
     </div>
   </div>
   <div id="tabs-xml">
     <div id="xml">
       <p><b>XML Template</b></p>
- <div id="xml-inner">
-  <%xml%>
- </div>
+      <div id="xml-inner">
+        <%xml%>
+      </div>
+    </div>
   </div>
- </div>
   <div id="tabs-json">
     <div id="json">
       <p><b>JSON Template</b></p>
       <div id="json-inner">
         <%json%>
-  </div>
+      </div>
     </div>
   </div>
   <div id="tabs-all">
     <div id="tbl">
       <a name="tbl"> </a>
       <p><b>Structure</b></p>
- <div id="tbl-inner">
-  <%resource-table%>
- </div>
+      <div id="tbl-inner">
+        <%resource-table%>
+      </div>
     </div>
     <div id="uml">
       <a name="uml"> </a>
       <p><b>UML Diagram</b></p>
- <div id="uml-inner">
- <%svg%>
- </div>
+      <div id="uml-inner">
+        <%svg%>
+      </div>
     </div>
     <div id="xml">
       <a name="xml"> </a>
       <p><b>XML Template</b></p>
- <div id="xml-inner">
-  <%xml%>
- </div>
- </div>
+      <div id="xml-inner">
+        <%xml%>
+      </div>
+    </div>
     <div id="json">
       <a name="json"> </a>
       <p><b>JSON Template</b></p>
@@ -118,7 +118,7 @@ Resource Content
 <script src="jquery-ui.min.js"> </script>
 <script>
  try {
-  var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
+   var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
  } catch(exception){ 
   if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
     alert(exception);
@@ -128,14 +128,14 @@ Resource Content
 
 $( '#tabs' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
 <%othertabs setup%>     
-
+     
 function store(currentTab) {
-             try {
+  try {
     sessionStorage.setItem('fhir-resource-tab-index', currentTab);
   } catch(exception){ 
-              if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
-                alert(exception);
-             }
+  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
+    alert(exception);
+  }
   $( '#tabs' ).tabs('option', 'active', currentTab);
 <%othertabs store%>     
 }     
