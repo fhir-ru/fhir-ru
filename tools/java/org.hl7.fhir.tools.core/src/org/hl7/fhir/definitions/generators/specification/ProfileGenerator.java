@@ -76,8 +76,10 @@ import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.ConstraintComponent;
+import org.hl7.fhir.instance.model.Profile.ProfileContactComponent;
 import org.hl7.fhir.instance.model.Profile.ProfileMappingComponent;
 import org.hl7.fhir.instance.model.SearchParameter;
+import org.hl7.fhir.instance.model.SearchParameter.SearchParameterContactComponent;
 import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.instance.utils.ProfileUtilities;
 import org.hl7.fhir.instance.utils.ProfileUtilities.ProfileKnowledgeProvider;
@@ -105,27 +107,29 @@ public class ProfileGenerator {
   private final Map<String, ElementDefinition> paths = new HashMap<String, ElementDefinition>();
   private final List<String> pathNames = new ArrayList<String>();
   private ProfileKnowledgeProvider pkp;
+  private Calendar genDate;
 
   private static class SliceHandle {
     private String name;
     private Map<String, ElementDefinition> paths = new HashMap<String, ElementDefinition>();
   }
 
-  public ProfileGenerator(Definitions definitions, WorkerContext context, ProfileKnowledgeProvider pkp) {
+  public ProfileGenerator(Definitions definitions, WorkerContext context, ProfileKnowledgeProvider pkp, Calendar genDate) {
     super();
     this.definitions = definitions;
     this.context = context;
     this.pkp = pkp;
+    this.genDate = genDate;
   }
 
-  public Profile generate(PrimitiveType type, Calendar genDate) throws Exception {
+  public Profile generate(PrimitiveType type) throws Exception {
     Profile p = new Profile();
-    ResourceUtilities.updateUsage(p, "core");
+    ToolResourceUtilities.updateUsage(p, "core");
     p.setId(type.getCode());
     p.setUrl("http://hl7.org/fhir/Profile/"+ type.getCode());
     p.setName(type.getCode());
     p.setPublisher("HL7 FHIR Standard");
-    p.getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
+    p.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
     p.setDescription("Base Profile for "+type.getCode()+" Resource: "+type.getDefinition());
     p.setDate(genDate.getTime());
     p.setStatus(Profile.ResourceProfileStatus.fromCode("draft")); // DSTU
@@ -140,7 +144,7 @@ public class ProfileGenerator {
     p.getDifferential().getElement().add(ec);
     ec.setPath(type.getCode());
     ec.setShort("Primitive Type " +type.getCode());
-    ec.setFormal(type.getDefinition());
+    ec.setDefinition(type.getDefinition());
     ec.setComments(type.getComment());
     ec.setMin(0);
     ec.setMax("*");
@@ -151,7 +155,7 @@ public class ProfileGenerator {
     ec.setPath("value");
     ec.addRepresentation(PropertyRepresentation.XMLATTR);
     ec.setShort("Primitive value for " +type.getCode());
-    ec.setFormal("Primitive value for " +type.getCode());
+    ec.setDefinition("Primitive value for " +type.getCode());
     ec.setMin(0);
     ec.setMax("1");
     ec.getType().add(new TypeRefComponent().setCode("xsd:"+type.getSchemaType()));
@@ -163,7 +167,7 @@ public class ProfileGenerator {
     p.getSnapshot().getElement().add(ec);
     ec.setPath(type.getCode());
     ec.setShort("Primitive Type " +type.getCode());
-    ec.setFormal(type.getDefinition());
+    ec.setDefinition(type.getDefinition());
     ec.setComments(type.getComment());
     ec.getType().add(new TypeRefComponent().setCode("Element"));
     ec.setMin(0);
@@ -175,7 +179,7 @@ public class ProfileGenerator {
     p.getSnapshot().getElement().add(ec);
     ec.setPath("value");
     ec.addRepresentation(PropertyRepresentation.XMLATTR);
-    ec.setFormal("The actual value");
+    ec.setDefinition("The actual value");
     ec.setMin(0);
     ec.setMax("1");
     ec.setShort("Primitive value for " +type.getCode());
@@ -191,14 +195,14 @@ public class ProfileGenerator {
     return p;
   }
 
-  public Profile generate(DefinedStringPattern type, Calendar genDate) throws Exception {
+  public Profile generate(DefinedStringPattern type) throws Exception {
     Profile p = new Profile();
-    ResourceUtilities.updateUsage(p, "core");
+    ToolResourceUtilities.updateUsage(p, "core");
     p.setId(type.getCode());
     p.setUrl("http://hl7.org/fhir/Profile/"+ type.getCode());
     p.setName(type.getCode());
     p.setPublisher("HL7 FHIR Standard");
-    p.getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
+    p.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
     p.setDescription("Base Profile for "+type.getCode()+" Resource: "+type.getDefinition());
     p.setDate(genDate.getTime());
     p.setStatus(Profile.ResourceProfileStatus.fromCode("draft")); // DSTU
@@ -214,7 +218,7 @@ public class ProfileGenerator {
     ec.setPath(type.getCode());
     
     ec.setShort("Primitive Type " +type.getCode());
-    ec.setFormal(type.getDefinition());
+    ec.setDefinition(type.getDefinition());
     ec.setComments(type.getComment());
     ec.setMin(0);
     ec.setMax("*");
@@ -226,7 +230,7 @@ public class ProfileGenerator {
     ec.addRepresentation(PropertyRepresentation.XMLATTR);
     
     ec.setShort("Primitive value for " +type.getCode());
-    ec.setFormal("Primitive value for " +type.getCode());
+    ec.setDefinition("Primitive value for " +type.getCode());
     ec.setMin(0);
     ec.setMax("1");
     ec.getType().add(new TypeRefComponent().setCode("xsd:"+type.getBase()));
@@ -239,7 +243,7 @@ public class ProfileGenerator {
     ec.setPath(type.getCode());
     
     ec.setShort("Primitive Type " +type.getCode());
-    ec.setFormal(type.getDefinition());
+    ec.setDefinition(type.getDefinition());
     ec.setComments(type.getComment());
     ec.getType().add(new TypeRefComponent().setCode("Element"));
     ec.setMin(0);
@@ -253,7 +257,7 @@ public class ProfileGenerator {
     ec.setPath("value");
     ec.addRepresentation(PropertyRepresentation.XMLATTR);
     
-    ec.setFormal("Primitive value for " +type.getCode());
+    ec.setDefinition("Primitive value for " +type.getCode());
     ec.setShort("Primitive value for " +type.getCode());
     ec.setMin(0);
     ec.setMax("1");
@@ -269,14 +273,14 @@ public class ProfileGenerator {
     return p;
   }
 
-  public Profile generate(TypeDefn t, Calendar genDate) throws Exception {
+  public Profile generate(TypeDefn t) throws Exception {
     Profile p = new Profile();
-    ResourceUtilities.updateUsage(p, "core");
+    ToolResourceUtilities.updateUsage(p, "core");
     p.setId(t.getName());
     p.setUrl("http://hl7.org/fhir/Profile/"+ t.getName());
     p.setName(t.getName());
     p.setPublisher("HL7 FHIR Standard");
-    p.getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
+    p.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
     p.setDescription("Base Profile for "+t.getName()+" Resource");
     p.setRequirements(t.getRequirements());
     p.setDate(genDate.getTime());
@@ -305,14 +309,14 @@ public class ProfileGenerator {
     return p;
   }
   
-  public Profile generate(ProfiledType pt, Calendar genDate) throws Exception {
+  public Profile generate(ProfiledType pt) throws Exception {
     Profile p = new Profile();
-    ResourceUtilities.updateUsage(p, "core");
+    ToolResourceUtilities.updateUsage(p, "core");
     p.setId(pt.getName());
     p.setUrl("http://hl7.org/fhir/Profile/"+ pt.getName());
     p.setName(pt.getName());
     p.setPublisher("HL7 FHIR Standard");
-    p.getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
+    p.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
     p.setDescription("Base Profile for "+pt.getName()+" Resource");
     p.setDescription(pt.getDefinition());
     p.setDate(genDate.getTime());
@@ -326,7 +330,7 @@ public class ProfileGenerator {
     e.setPath(pt.getBaseType());
     e.setName(pt.getName());
     e.setShort(pt.getDefinition());
-    e.setFormal(pt.getDescription());
+    e.setDefinition(pt.getDescription());
     e.setMin(1);
     e.setMax("1");
     e.setIsModifier(false);
@@ -370,16 +374,16 @@ public class ProfileGenerator {
     throw new Exception("Unable to find snapshot for "+baseType);
   }
 
-  public Profile generate(ConformancePackage pack, ResourceDefn r, Calendar genDate, String usage) throws Exception {
+  public Profile generate(ConformancePackage pack, ResourceDefn r, String usage) throws Exception {
     Profile p = new Profile();
-    ResourceUtilities.updateUsage(p, usage);
+    ToolResourceUtilities.updateUsage(p, usage);
     p.setId(r.getRoot().getName());
     p.setUrl("http://hl7.org/fhir/Profile/"+ r.getRoot().getName());
     p.setName(r.getRoot().getName());
     p.setPublisher("HL7 FHIR Project"+(r.getWg() == null ? "" : " ("+r.getWg().getName()+")"));
-    p.getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
+    p.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
     if (r.getWg() != null)
-      p.getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, r.getWg().getUrl()));
+      p.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, r.getWg().getUrl()));
     p.setDescription("Base Profile for "+r.getRoot().getName()+" Resource");
     p.setRequirements(r.getRequirements());
     p.setDate(genDate.getTime());
@@ -419,26 +423,26 @@ public class ProfileGenerator {
     pathNames.clear();  
   }
 
-  public Profile generate(ConformancePackage pack, ProfileDefn profile, ResourceDefn resource, String id, Calendar genDate, String usage) throws Exception {
+  public Profile generate(ConformancePackage pack, ProfileDefn profile, ResourceDefn resource, String id, String usage) throws Exception {
     
     try {
-      return generate(pack, profile, resource, id, null, genDate, usage);
+      return generate(pack, profile, resource, id, null, usage);
     } catch (Exception e) {
       throw new Exception("Error processing profile '"+id+"': "+e.getMessage(), e);
     }
   }
   
-  public Profile generate(ConformancePackage pack, ProfileDefn profile, ResourceDefn resource, String id, String html, Calendar genDate, String usage) throws Exception {
+  public Profile generate(ConformancePackage pack, ProfileDefn profile, ResourceDefn resource, String id, String html, String usage) throws Exception {
     if (profile.getResource() != null)
       return profile.getResource();
     Profile p = new Profile();
-    ResourceUtilities.updateUsage(p, usage);
+    ToolResourceUtilities.updateUsage(p, usage);
     p.setId(FormatUtilities.makeId(id));
     p.setUrl("http://hl7.org/fhir/Profile/"+ id);
     p.setName(pack.metadata("name"));
     p.setPublisher(pack.metadata("author.name"));
     if (pack.hasMetadata("author.reference"))
-      p.getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, pack.metadata("author.reference")));
+      p.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, pack.metadata("author.reference")));
     //  <code> opt Zero+ Coding assist with indexing and finding</code>
     p.setDescription(resource.getRoot().getShortDefn());    
     if (!p.hasDescriptionElement() && pack.hasMetadata("description"))
@@ -458,6 +462,9 @@ public class ProfileGenerator {
         if (!Utilities.noString(s))
           p.getCode().add(Factory.makeCoding(s));
 
+    if (pack.hasMetadata("datadictionary"))
+      ToolingExtensions.setStringExtension(p, "http://hl7.org/fhir/ExtensionDefinition/datadictionary", pack.metadata("datadictionary"));
+    
     Set<String> containedSlices = new HashSet<String>();
 
     p.setType(resource.getRoot().getName());
@@ -528,9 +535,14 @@ public class ProfileGenerator {
     sp.setId(rn.toLowerCase()+"-"+spd.getCode().replace("_", "").replace("[", "").replace("]", ""));
     sp.setUrl("http://hl7.org/fhir/SearchParameter/"+sp.getId());
     sp.setName(spd.getCode());
+    sp.setDate(genDate.getTime());
     sp.setPublisher(p.getPublisher());
-    for (ContactPoint tc : p.getTelecom()) 
-      sp.getTelecom().add(tc.copy());
+    for (ProfileContactComponent tc : p.getContact()) {
+      SearchParameterContactComponent t = sp.addContact();
+      t.setNameElement(tc.getNameElement().copy());
+      for (ContactPoint ts : tc.getTelecom())
+        t.getTelecom().add(ts.copy());
+    }
     sp.setBase(p.getName());
     sp.setType(getSearchParamType(spd.getType()));
     sp.setDescription(spd.getDescription());
@@ -712,7 +724,7 @@ public class ProfileGenerator {
     if (!"".equals(e.getShortDefn()))
       ce.setShort(e.getShortDefn());
     if (!"".equals(e.getDefinition())) {
-      ce.setFormal(e.getDefinition());
+      ce.setDefinition(e.getDefinition());
       if ("".equals(e.getShortDefn()))
         ce.setShort(e.getDefinition());
     }
@@ -1010,7 +1022,7 @@ public class ProfileGenerator {
     ElementDefinition ce = new ElementDefinition();
     ce.setPath(path+"."+src.getName());
     ce.setShort(src.getShortDefn());
-    ce.setFormal(src.getDefinition());
+    ce.setDefinition(src.getDefinition());
     ce.setComments(src.getComments());
     ce.setRequirements(src.getRequirements());
     for (String a : src.getAliases())
@@ -1034,7 +1046,7 @@ public class ProfileGenerator {
   }
 
   public static ProfileDefn wrapProfile(Profile profile) {
-    return new ProfileDefn(profile, (String) profile.getUserData(ResourceUtilities.NAME_SPEC_USAGE));
+    return new ProfileDefn(profile, (String) profile.getUserData(ToolResourceUtilities.NAME_SPEC_USAGE));
   }
 
   public void convertElements(ElementDefn src, ExtensionDefinition ed, String path) throws Exception {
@@ -1044,7 +1056,7 @@ public class ProfileGenerator {
     dst.setPath(thisPath);
 
     dst.setShort(src.getShortDefn());
-    dst.setFormal(src.getDefinition());
+    dst.setDefinition(src.getDefinition());
     dst.setComments(src.getComments());
     if (src.getMaxCardinality() == Integer.MAX_VALUE)
       dst.setMax("*");

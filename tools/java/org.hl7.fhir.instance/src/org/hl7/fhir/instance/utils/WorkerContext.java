@@ -211,7 +211,7 @@ public class WorkerContext {
       else if (e.getResource() instanceof ExtensionDefinition)
         seeExtensionDefinition(base, (ExtensionDefinition) e.getResource());
       else if (e.getResource() instanceof ConceptMap)
-        maps.put(((ConceptMap) e.getResource()).getIdentifier(), (ConceptMap) e.getResource());
+        maps.put(((ConceptMap) e.getResource()).getUrl(), (ConceptMap) e.getResource());
     }
       }
 
@@ -226,7 +226,7 @@ public class WorkerContext {
   public void seeValueSet(String base, ValueSet vs) {
   	valueSets.put(vs.getId(), vs);
   	valueSets.put(base+"/ValueSet/"+vs.getId(), vs);
-	  valueSets.put(vs.getIdentifier(), vs);
+	  valueSets.put(vs.getUrl(), vs);
 	  if (vs.hasDefine()) {
 	    codeSystems.put(vs.getDefine().getSystem().toString(), vs);
         }

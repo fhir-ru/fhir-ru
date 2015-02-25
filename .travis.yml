@@ -17,6 +17,7 @@ after_success:
   - git remote add origin git@github.com:fhir-ru/fhir-ru.github.io
   - touch .test
   - cp -r ../publish/* .
+  - ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
   - git add -A .
   - git commit -m "Travis docs build"
   - git push -f origin master

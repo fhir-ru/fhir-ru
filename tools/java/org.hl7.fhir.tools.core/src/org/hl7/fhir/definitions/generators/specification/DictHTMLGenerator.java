@@ -80,7 +80,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
 	  for (ElementDefinition ec : profile.getSnapshot().getElement()) {
 	    if (isProfiledExtension(ec)) {
-	      String name = profile.getName()+"."+ makePathLink(ec);
+	      String name = profile.getId()+"."+ makePathLink(ec);
         ExtensionDefinitionResult extDefn = page.getWorkerContext().getExtensionDefinition(null, ec.getType().get(0).getProfile());
 	      if (extDefn == null) {
 	        String title = ec.getPath() + " ("+(ec.getType().get(0).getProfile().startsWith("#") ? profile.getUrl() : "")+ec.getType().get(0).getProfile()+")";
@@ -92,7 +92,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	        generateElementInner(null, extDefn.getExtensionDefinition(), extDefn.getElementDefinition());
 	      }
 	    } else {
-	      String name = profile.getName()+"."+ makePathLink(ec);
+	      String name = profile.getId()+"."+ makePathLink(ec);
 	      String title = ec.getPath() + (!ec.hasName() ? "" : "(" +ec.getName() +")");
 	      write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a><b>"+title+"</b></td></tr>\r\n");
 	      generateElementInner(profile, null, ec);
@@ -172,7 +172,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
 
   private void generateElementInner(Profile profile, ExtensionDefinition ed, ElementDefinition d) throws Exception {
-    tableRowMarkdown("Definition", d.getFormal());
+    tableRowMarkdown("Definition", d.getDefinition());
     tableRow("Control", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
     tableRowNE("Binding", "terminologies.html", describeBinding(d));
     if (d.hasNameReference())

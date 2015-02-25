@@ -50,6 +50,7 @@ import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Composition;
 import org.hl7.fhir.instance.model.Composition.SectionComponent;
 import org.hl7.fhir.instance.model.ConceptMap;
+import org.hl7.fhir.instance.model.ConceptMap.ConceptMapContactComponent;
 import org.hl7.fhir.instance.model.ConceptMap.ConceptMapElementComponent;
 import org.hl7.fhir.instance.model.ConceptMap.ConceptMapElementMapComponent;
 import org.hl7.fhir.instance.model.ConceptMap.OtherElementComponent;
@@ -974,7 +975,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
   public void generate(ConceptMap cm) throws Exception {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
-    x.addTag("h2").addText(cm.getName()+" ("+cm.getIdentifier()+")");
+    x.addTag("h2").addText(cm.getName()+" ("+cm.getUrl()+")");
 
     XhtmlNode p = x.addTag("p");
     p.addText("Mapping from ");
@@ -988,15 +989,25 @@ public class NarrativeGenerator implements INarrativeGenerator {
     else
       p.addText(Utilities.capitalize(cm.getStatus().toString())+". ");
     p.addText("Published on "+cm.getDateElement().toHumanDisplay()+" by "+cm.getPublisher());
-    if (!cm.getTelecom().isEmpty()) {
+    if (!cm.getContact().isEmpty()) {
       p.addText(" (");
+      boolean firsti = true;
+      for (ConceptMapContactComponent ci : cm.getContact()) {
+        if (firsti) 
+          firsti = false;
+        else
+          p.addText(", ");
+        if (ci.hasName())
+          p.addText(ci.getName()+": ");
       boolean first = true;
-      for (ContactPoint c : cm.getTelecom()) {
+        for (ContactPoint c : ci.getTelecom()) {
         if (first) 
           first = false;
         else
           p.addText(", ");
         addTelecom(p, c);
+        }
+        p.addText("; ");
       }
       p.addText(")");
     }
@@ -1300,7 +1311,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     boolean hasExtensions = false;
     Map<ConceptMap, String> mymaps = new HashMap<ConceptMap, String>();
     for (ConceptMap a : context.getMaps().values()) {
-      if (((Reference) a.getSource()).getReference().equals(vs.getIdentifier())) {
+      if (((Reference) a.getSource()).getReference().equals(vs.getUrl())) {
         String url = "";
         if (context.getValueSets().containsKey(((Reference) a.getTarget()).getReference()))
             url = (String) context.getValueSets().get(((Reference) a.getTarget()).getReference()).getUserData("filename");
@@ -1330,7 +1341,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     boolean hasExtensions = false;
     Map<ConceptMap, String> mymaps = new HashMap<ConceptMap, String>();
     for (ConceptMap a : context.getMaps().values()) {
-      if (((Reference) a.getSource()).getReference().equals(vs.getIdentifier())) {
+      if (((Reference) a.getSource()).getReference().equals(vs.getUrl())) {
         String url = "";
         if (context.getValueSets().containsKey(((Reference) a.getTarget()).getReference()))
             url = (String) context.getValueSets().get(((Reference) a.getTarget()).getReference()).getUserData("filename");
@@ -1528,20 +1539,20 @@ public class NarrativeGenerator implements INarrativeGenerator {
       td.addText(Integer.toString(i+1));
       td = tr.addTag("td");
       String s = Utilities.padLeft("", '\u00A0', i*2);
-    td.addText(s);
+      td.addText(s);
     }
     td.addText(c.getCode());
     XhtmlNode a;
     if (c.hasCodeElement()) {
       a = td.addTag("a");
-    a.setAttribute("name", Utilities.nmtokenize(c.getCode()));
-    a.addText(" ");
+      a.setAttribute("name", Utilities.nmtokenize(c.getCode()));
+      a.addText(" ");
     }
     
     if (hasDisplay) {
-    td = tr.addTag("td");
-    if (c.hasDisplayElement())
-      td.addText(c.getDisplay());
+      td = tr.addTag("td");
+      if (c.hasDisplayElement())
+        td.addText(c.getDisplay());
     }
     td = tr.addTag("td");
     if (c != null)
@@ -1899,7 +1910,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
 	public void generate(OperationDefinition opd) throws Exception {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
-    x.addTag("h2").addText(opd.getTitle());
+    x.addTag("h2").addText(opd.getName());
     x.addTag("p").addText(Utilities.capitalize(opd.getKind().toString())+": "+opd.getName());
     addMarkdown(x, opd.getDescription());
     
@@ -1943,27 +1954,27 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	
 	private void addMarkdown(XhtmlNode x, String text) throws Exception {
 	  if (text != null) {	    
-    // 1. custom FHIR extensions
-    while (text.contains("[[[")) {
-      String left = text.substring(0, text.indexOf("[[["));
-      String url = text.substring(text.indexOf("[[[")+3, text.indexOf("]]]"));
-      String right = text.substring(text.indexOf("]]]")+3);
-      String actual = url;
-//      String[] parts = url.split("\\#");
-//      Profile p = parts[0]; // todo: definitions.getProfileByURL(parts[0]);
-//      if (p != null)
-//        actual = p.getTag("filename")+".html";
-//      else {
-//        throw new Exception("Unresolved logical URL "+url);
-//      }
-      text = left+"["+url+"]("+actual+")"+right;
-    }
-    
-    // 2. markdown
-    String s = Processor.process(Utilities.escapeXml(text));
-    XhtmlParser p = new XhtmlParser();
-    XhtmlNode m = p.parse("<div>"+s+"</div>", "div");
-    x.getChildNodes().addAll(m.getChildNodes());   
+	    // 1. custom FHIR extensions
+	    while (text.contains("[[[")) {
+	      String left = text.substring(0, text.indexOf("[[["));
+	      String url = text.substring(text.indexOf("[[[")+3, text.indexOf("]]]"));
+	      String right = text.substring(text.indexOf("]]]")+3);
+	      String actual = url;
+	      //      String[] parts = url.split("\\#");
+	      //      Profile p = parts[0]; // todo: definitions.getProfileByURL(parts[0]);
+	      //      if (p != null)
+	      //        actual = p.getTag("filename")+".html";
+	      //      else {
+	      //        throw new Exception("Unresolved logical URL "+url);
+	      //      }
+	      text = left+"["+url+"]("+actual+")"+right;
+	    }
+
+	    // 2. markdown
+	    String s = Processor.process(Utilities.escapeXml(text));
+	    XhtmlParser p = new XhtmlParser();
+	    XhtmlNode m = p.parse("<div>"+s+"</div>", "div");
+	    x.getChildNodes().addAll(m.getChildNodes());
 	  }
   }
 

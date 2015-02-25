@@ -50,6 +50,7 @@ import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Composition;
 import org.hl7.fhir.instance.model.Composition.SectionComponent;
 import org.hl7.fhir.instance.model.ConceptMap;
+import org.hl7.fhir.instance.model.ConceptMap.ConceptMapContactComponent;
 import org.hl7.fhir.instance.model.ConceptMap.ConceptMapElementComponent;
 import org.hl7.fhir.instance.model.ConceptMap.ConceptMapElementMapComponent;
 import org.hl7.fhir.instance.model.ConceptMap.OtherElementComponent;
@@ -974,7 +975,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
   public void generate(ConceptMap cm) throws Exception {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
-    x.addTag("h2").addText(cm.getName()+" ("+cm.getIdentifier()+")");
+    x.addTag("h2").addText(cm.getName()+" ("+cm.getUrl()+")");
 
     XhtmlNode p = x.addTag("p");
     p.addText("Mapping from ");
@@ -988,15 +989,25 @@ public class NarrativeGenerator implements INarrativeGenerator {
     else
       p.addText(Utilities.capitalize(cm.getStatus().toString())+". ");
     p.addText("Published on "+cm.getDateElement().toHumanDisplay()+" by "+cm.getPublisher());
-    if (!cm.getTelecom().isEmpty()) {
+    if (!cm.getContact().isEmpty()) {
       p.addText(" (");
-      boolean first = true;
-      for (ContactPoint c : cm.getTelecom()) {
-        if (first) 
-          first = false;
+      boolean firsti = true;
+      for (ConceptMapContactComponent ci : cm.getContact()) {
+        if (firsti) 
+          firsti = false;
         else
           p.addText(", ");
-        addTelecom(p, c);
+        if (ci.hasName())
+          p.addText(ci.getName()+": ");
+        boolean first = true;
+        for (ContactPoint c : ci.getTelecom()) {
+          if (first) 
+            first = false;
+          else
+            p.addText(", ");
+          addTelecom(p, c);
+        }
+        p.addText("; ");
       }
       p.addText(")");
     }
@@ -1305,7 +1316,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     boolean hasExtensions = false;
     Map<ConceptMap, String> mymaps = new HashMap<ConceptMap, String>();
     for (ConceptMap a : context.getMaps().values()) {
-      if (((Reference) a.getSource()).getReference().equals(vs.getIdentifier())) {
+      if (((Reference) a.getSource()).getReference().equals(vs.getUrl())) {
         String url = "";
         if (context.getValueSets().containsKey(((Reference) a.getTarget()).getReference()))
             url = (String) context.getValueSets().get(((Reference) a.getTarget()).getReference()).getUserData("filename");
@@ -1335,7 +1346,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     boolean hasExtensions = false;
     Map<ConceptMap, String> mymaps = new HashMap<ConceptMap, String>();
     for (ConceptMap a : context.getMaps().values()) {
-      if (((Reference) a.getSource()).getReference().equals(vs.getIdentifier())) {
+      if (((Reference) a.getSource()).getReference().equals(vs.getUrl())) {
         String url = "";
         if (context.getValueSets().containsKey(((Reference) a.getTarget()).getReference()))
             url = (String) context.getValueSets().get(((Reference) a.getTarget()).getReference()).getUserData("filename");
@@ -1902,7 +1913,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
 	public void generate(OperationDefinition opd) throws Exception {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
-    x.addTag("h2").addText(opd.getTitle());
+    x.addTag("h2").addText(opd.getName());
     x.addTag("p").addText(Utilities.capitalize(opd.getKind().toString())+": "+opd.getName());
     addMarkdown(x, opd.getDescription());
     

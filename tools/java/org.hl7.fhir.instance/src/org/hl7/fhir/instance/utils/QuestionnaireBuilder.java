@@ -250,7 +250,7 @@ public class QuestionnaireBuilder {
 	  group.setLinkId(element.getPath()); // todo: this will be wrong when we start slicing
 	  group.setTitle(element.getShort()); // todo - may need to prepend the name tail... 
 	  group.setText(element.getComments());
-	  ToolingExtensions.addFlyOver(group, element.getFormal());
+	  ToolingExtensions.addFlyOver(group, element.getDefinition());
     group.setRequired(element.getMin() > 0);
     group.setRepeats(!element.getMax().equals("1"));
 
@@ -334,9 +334,9 @@ public class QuestionnaireBuilder {
       }
 
       if (!Utilities.noString(element.getComments())) 
-        ToolingExtensions.addFlyOver(group, element.getFormal()+" "+element.getComments());
+        ToolingExtensions.addFlyOver(group, element.getDefinition()+" "+element.getComments());
       else
-        ToolingExtensions.addFlyOver(group, element.getFormal());
+        ToolingExtensions.addFlyOver(group, element.getDefinition());
 
       if (element.getType().size() > 1 || element.getType().get(0).getCode().equals("*")) {
         List<TypeRefComponent> types = expandTypeList(element.getType());
@@ -393,7 +393,7 @@ public class QuestionnaireBuilder {
 
   private ValueSet makeTypeList(Profile profile, List<TypeRefComponent> types, String path) throws Exception {
     ValueSet vs = new ValueSet();
-    vs.setIdentifier(Utilities.makeUuidUrn());
+    vs.setUrl(Utilities.makeUuidUrn());
     vs.setName("Type options for "+path);
     vs.setDescription(vs.getName());
 	  vs.setStatus(ValuesetStatus.ACTIVE);
@@ -500,17 +500,17 @@ public class QuestionnaireBuilder {
     if (vs != null) {
       result.setOptions(new Reference());
       if (vs.getExpansion() == null) {
-        result.getOptions().setReference(vs.getIdentifier());
+        result.getOptions().setReference(vs.getUrl());
         ToolingExtensions.addFilterOnly(result.getOptions(), true); 
       } else {
         if (Utilities.noString(vs.getId())) {
           vs.setId(nextId("vs"));
           questionnaire.getContained().add(vs);
-          vsCache.put(vs.getIdentifier(), vs.getId());
+          vsCache.put(vs.getUrl(), vs.getId());
           vs.setText(null);
           vs.setDefine(null);
           vs.setCompose(null);
-          vs.getTelecom().clear();
+          vs.getContact().clear();
           vs.setPublisherElement(null);
           vs.setCopyrightElement(null);
         }
@@ -623,7 +623,7 @@ public class QuestionnaireBuilder {
                   if (result == null)
                     result = c.getSystem();
                   else
-                    throw new Exception("Multiple matches in "+vs.getIdentifier()+" for code "+code+" at path = "+path);
+                    throw new Exception("Multiple matches in "+vs.getUrl()+" for code "+code+" at path = "+path);
               }
             }
           }
@@ -636,7 +636,7 @@ public class QuestionnaireBuilder {
         if (result == null)
           result = c.getSystem();
         else
-          throw new Exception("Multiple matches in "+vs.getIdentifier()+" for code "+code+" at path = "+path);
+          throw new Exception("Multiple matches in "+vs.getUrl()+" for code "+code+" at path = "+path);
       }
     }
     if (result != null)
