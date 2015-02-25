@@ -117,7 +117,7 @@
     <id>iso11179</id>
     <preamble>
      <p>
-      These mappings are included to indicate where properties of the data elements defined by the FHIR specification relate to similar fields in the ISO 11179 specification.
+      Эти мэппинги включены для указания, какие свойства элементов данных, определенные спецификацией FHIR, соотносятся с такими же полями в спецификации ISO 11179.<!-- These mappings are included to indicate where properties of the data elements defined by the FHIR specification relate to similar fields in the ISO 11179 specification. -->
      </p>
     </preamble>
     <sort>13</sort>
