@@ -984,9 +984,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Prescription of medication to for patient</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Предписание медикамента пациенту<!-- Prescription of medication to for patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">An order for both supply of the medication and the instructions for administration of the medicine to a patient.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Заказ на поставку медикамента, а также на введение медикамента пациенту<!-- An order for both supply of the medication and the instructions for administration of the medicine to a patient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1018,9 +1018,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">External identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешний идентификатор<!-- External identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">External identifier - one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an erntire workflow process where records have to be tracked through an entire system.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешний идентификатор, который будет использоваться другой не-FHIR системой - например система возмещения расходов может назначать свой собственный идентификатор каждому создаваемому предписанию. Особенно это важно там, где FHIR обеспечивает только часть общего рабочего процесса, а записи должны отслеживаться целой системой.<!-- External identifier - one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an erntire workflow process where records have to be tracked through an entire system. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1052,9 +1052,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When prescription was authorized</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда предписание было выписано<!-- When prescription was authorized --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date (and perhaps time) when the prescription was written</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (и, возможно, время), когда было выписано предписание<!-- The date (and perhaps time) when the prescription was written --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1091,7 +1091,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">active | on-hold | completed | entered-in-error | stopped | superceded | draft</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code specifying the state of the order.  Generally this will be active or completed state &#13;</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код для указания статуса заказа. Как правило, это будет состояние active или completed &#13;<!-- A code specifying the state of the order.  Generally this will be active or completed state &#13; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1122,9 +1122,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who prescription is for</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для кого это предписание<!-- Who prescription is for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A link to a resource representing the person to whom the medication will be given.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс, представляющий лицо, которому будет выдано это предписание. <!-- A link to a resource representing the person to whom the medication will be given. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">SubstanceAdministration-&gt;subject-&gt;Patient</Data><NamedCell
@@ -1157,9 +1157,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who ordered the medication(s)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто заказал медикамент(-ы)<!-- Who ordered the medication(s) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The healthcare professional responsible for authorizing the prescription</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Специалист по медицинскому обеспечению, ответственный за выдачу этого предписания<!-- The healthcare professional responsible for authorizing the prescription --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1191,9 +1191,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Created during encounter / admission / stay</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Создано во время encounter / госпитализации / пребывания<!-- Created during encounter / admission / stay --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A link to a resource that identifies the particular occurrence of contact between patient and health care provider.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс, идентифицирующий конкретный случай контакта между пациентом и поставщиком медицинских услуг.<!-- A link to a resource that identifies the particular occurrence of contact between patient and health care provider. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">SubstanceAdministration-&gt;component-&gt;EncounterEvent</Data><NamedCell
