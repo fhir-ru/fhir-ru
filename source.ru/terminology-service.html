@@ -103,7 +103,7 @@ terminology server. -->
 Терминологические серверы сделают одну или несколько таких внешних кодовых систем доступными для использования в наборах значений, которыми они управляют. Перечень дополнительных справочников, которые поддерживает терминологический сервер сверх тех, что определены в его наборах значений, публикуется для клиентов с помощью (всё ещё необходимо выяснить, как это работает).
 <!-- Most useful terminology servers will make one or more of these external code systems available for use 
 within the value sets that they manage. The list of additional terminologies that a terminology server supports 
-beyond those defined in it's value sets is published to clients by (still to figure out how this works).  -->
+beyond those defined in its value sets is published to clients by (still to figure out how this works).  -->
 </p>
 <p>
 Серверу СЛЕДУЕТ публиковать дополнительные кодовые системы, которые он поддерживает встроенно, с помощью расширения <a href="??">http://hl7.org/fhir/ExtensionDefinition/supported-system:</a> 
@@ -124,7 +124,7 @@ internally that serve the operational interfaces below. The internal server depe
 logical information for a terminology: -->
 </p>
 <ul>
-  <li>его URL (пространство имён и как работает версионирование) <!-- it's URL (namespace, and how versioning works) --></li>
+  <li>его URL (пространство имён и как работает версионирование) <!-- its URL (namespace, and how versioning works) --></li>
   <li>какие коды считаются допустимыми<!--  what codes are valid -->  </li>
   <li>какие свойства могут использоваться для выбора кодов <!-- what properties can be used to select codes --> </li>
   <li>какие неявные наборы значений существуют <!-- what implicit value sets exist --> </li>
@@ -191,7 +191,7 @@ of the current codes in the value set. This is known as <a href="valueset-operat
 As a summary, the client passes the server the following information: -->
 </p>
 <ul> 
- <li>набор значений (либо по его URL в RESTful-интерфейсе, либо по его логическому идентификатору <a href="valueset-definition.html#ValueSet.url">(ValueSet.url)</a>, либо непосредственно в виде параметра вызова) <!-- the value set (either by it's URL on the RESTful interface, by it's logical identifier <a href="valueset-definition.html#ValueSet.url">(ValueSet.url)</a>, or directly as a parameter to the call) --></li>
+ <li>набор значений (либо по его URL в RESTful-интерфейсе, либо по его логическому идентификатору <a href="valueset-definition.html#ValueSet.url">(ValueSet.url)</a>, либо непосредственно в виде параметра вызова) <!-- the value set (either by its URL on the RESTful interface, by it's logical identifier <a href="valueset-definition.html#ValueSet.url">(ValueSet.url)</a>, or directly as a parameter to the call) --></li>
  <li>(Необязательно) текстовый фильтр для ограничения возвращаемых кодов (например текст, введенный пользователем). Как применить этот текстовый фильтр - остается на усмотрение сервера<!--  (Optionally) a text filter to use to restrict the codes that are returned (e.g. user input text). It is left to server discretion to choose how to apply the text filter --></li>
  <li>(Необязательно) дата, когда развёртывание должно быть выполнено (обычно это текущая дата/время, но есть обстоятельства, где это не подходит) <!-- (Optionally) a date at which the expansion should be evaluated (usually, this is the current date/time, but there are circumstances where that is not appropriate) --></li>
 </ul>
@@ -395,7 +395,7 @@ However this is not an efficient way to test whether a code is valid, and for so
 provides <a href="valueset-operations.html#validate">a "validate" operation</a>. The client passes the server the following information: -->
 </p>
 <ul>
- <li>набор значений (либо по его URL в RESTful-интерфейсе, либо по его логическому идентификатору <a href="valueset-definition.html#ValueSet.url">(ValueSet.url)</a>, либо непосредственно в виде параметра вызова) <!-- the value set (either by it's URL on the RESTful interface, by it's logical identifier <a href="valueset-definition.html#ValueSet.url">(ValueSet.url)</a>, or directly as a parameter to the call) --></li>
+ <li>набор значений (либо по его URL в RESTful-интерфейсе, либо по его логическому идентификатору <a href="valueset-definition.html#ValueSet.url">(ValueSet.url)</a>, либо непосредственно в виде параметра вызова) <!-- the value set (either by its URL on the RESTful interface, by it's logical identifier <a href="valueset-definition.html#ValueSet.url">(ValueSet.url)</a>, or directly as a parameter to the call) --></li>
  <li>значение кода (либо код+система, тип данных Кодинг, либо CodeableConcept) <!-- the code value (either a code+system, a Coding data type, or a CodeableConcept --></li>
  <li>(Необязательно) дата, когда развёртывание должно быть выполнено (обычно это текущая дата/время, но есть обстоятельства, где это не подходит)  <!-- (Optionally) a date at which the expansion should be evaluated (usually, this is the current date/time, but there are circumstances where that is not appropriate) --></li>
 </ul>
@@ -824,14 +824,14 @@ whether the concept is post-coordinated or not. Here's a description of how the 
  <!-- The client registers this name with the FHIR Terminology server using the $closure operation (described below), with only one parameter, the name of the context --></li>
  <li>каждый раз, когда клиентская система встречает новый Кодинг, не введенный в таблицу замыканий, она вызывает операцию $closure с именем контекста, и значение Кодинга, которое она встретила
  <!-- any time the client system encounters a new Coding that isn't entered in the closure table, it calls the $closure operation with the context name, and the Coding value it has encountered --></li>
- <li>сервер возвращает ресурс ConceptMap с перечнем новых записей (code&nbsp;: system -&gt; code&nbsp;: system), которые клиенту следует добавить в таблицу замыканий 
- <!-- the server returns a ConceptMap resource with a list of new entries (code&nbsp;: system -&gt; code&nbsp;: system) that the client should add to it's closure table --> 
+ <li>сервер возвращает ресурс ConceptMap с перечнем новых записей (code&nbsp;: system -&gt; code&nbsp;: system), которые клиенту следует добавить в свою таблицу замыканий 
+ <!-- the server returns a ConceptMap resource with a list of new entries (code&nbsp;: system -&gt; code&nbsp;: system) that the client should add to its closure table --> 
    <ul>
     <li>сервер может указать, что записи следует удалить из этой таблицы, передав (code&nbsp;: system -&gt; code&nbsp;: system) с эквивалентом "unmatched" (хотя это не известно, зачем это может потребоваться)
 	<!-- the server can indicate that entries should be removed from the table by providing a (code&nbsp;: system -&gt; code&nbsp;: system) with equivalence "unmatched" (though it's not known why that would be needed) --></li>
    </ul>
  </li>
- <li>Клиент добавляет эти записи в таблицу замыканий <!-- The client makes these entries into it's closure table --> </li>
+ <li>Клиент добавляет эти записи в свою таблицу замыканий <!-- The client makes these entries into its closure table --> </li>
  <li>для облегчения процесса инициализации сервер может вызывать операцию $closure с несколькими значениями Кодингов<!-- to facilitate the initialization process, a server can call $closure with multiple Coding values --></li>
 </ol>
 <p>Операция <a href="conceptmap-operations.html#closure">$closure</a> принимает 2 параметра:

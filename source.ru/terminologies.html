@@ -51,14 +51,15 @@
 <p>
 Множество кодированных значений, которые разрешено использовать в элементах одного из этих трех типов данных, называется <a href="valueset.html">"value set"</a> (набор значений). Везде, где используются эти типы данных, спецификация связывает соответствующий набор значений с элементом. Способ, которым это делается, различается для простого типа данных <a href="datatypes.html#code">code</a> и сложных типов данных (<a href="datatypes.html#Coding">Coding</a>/<a href="datatypes.html#CodeableConcept">CodeableConcept</a>).
 <p>
-Разница между кодовой системой и набором значений является существенным различием, которое часто упускается при реализации, так как строгое различение часто воспринимается как само собой разумеющееся в конструкции системы. К примеру, не редкость увидеть системную таблицу, состоящую из смешанных кодов, содержащую некоторые LOINC-коды, а также некоторые дополнительные собственные коды. 
-<!-- Довольно часто между ними нет явного различия; тот факт, что код оказался похожим на LOINC-код, не меняет его происхождения.
+Разница между кодовой системой и набором значений является существенным различием, которое часто упускается при реализации, так как строгое различение часто воспринимается как само собой разумеющееся в конструкции системы. К примеру, не редкость увидеть системную таблицу, состоящую из смешанных кодов, содержащую некоторые LOINC-коды, а также некоторые дополнительные собственные коды. Довольно часто между ними нет явного различия; тот факт, что код выглядит похожим на LOINC-код, не изменяет его происхождения.
+<!-- 
 The difference between a code system and a value set is an important distinction that is often
 missed by implementers, since strict differentiation is often taked for granted in system
 design. For instance, it's not unusual to see a system table that is a mixed list of codes,
 containing some LOINC codes and also some additional in-house codes. Quit often, there is 
 no explicit differentiation between them; only the fact that a code happens to look like a 
-LOINC code betrays it's origin. --> 
+LOINC code betrays its origin.
+ --> 
 </p>
 <p>
 В FHIR, с другой стороны, явное отслеживание источника кода является и важным, и необходимым.
