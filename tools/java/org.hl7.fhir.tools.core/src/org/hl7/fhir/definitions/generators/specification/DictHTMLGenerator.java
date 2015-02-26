@@ -381,7 +381,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 		tableRowNE("Требования", null, page.processMarkdown(e.getRequirements()));
 		tableRowHint("Альтернативные имена", "Другие имена, под которыми известен ресурс/элемент", null, toSeperatedString(e.getAliases()));
     if (e.hasSummaryItem())
-      tableRow("Краткое изложение", "search.html#summary", Boolean.toString(e.isSummaryItem()));
+      tableRow("Суммарный", "search.html#summary", Boolean.toString(e.isSummaryItem()));
     tableRowNE("Комментарии", null, page.processMarkdown(e.getComments()));
     tableRowNE("Инварианты", null, invariants(e.getInvariants(), e.getStatedInvariants()));
     tableRow("LOINC-код", null, e.getMapping(Definitions.LOINC_MAPPING));
