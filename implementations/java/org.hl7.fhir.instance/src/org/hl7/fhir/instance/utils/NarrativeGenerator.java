@@ -1465,7 +1465,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
   private void generateCopyright(XhtmlNode x, ValueSet vs) {
     XhtmlNode p = x.addTag("p");
-    p.addTag("b").addText("Заявление об авторских правах:");
+    p.addTag("b").addText("Copyright Statement:");
     smartAddText(p, " " + vs.getCopyright());
   }
 

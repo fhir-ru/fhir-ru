@@ -1,34 +1,39 @@
 ﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <a name="id"> </a>
-<h3>Resource Identity</h3>
+<h3>ID ресурса<!-- Resource Identity --></h3>
 
 <p>
-Each resource has an "id" element which contains the logical identity of the resource 
+У каждого ресурса есть элемент "id", который содержит логический идентификатор ресурса, присвоенный ему сервером, отвечающим за его хранение. У ресурсов всегда есть известный идентификатор за исключением особого случая, когда новые ресурсы отправляются на сервер для назначения им идентификатора (операция <a href="http.html#create">create</a>). 
+Логический идентификатор является уникальным в пространстве всех ресурсов одного типа на одном сервере. Однажды присвоенный, идентификатор больше никогда не меняется, однако копии одного ресурса, сделанные в другом месте, могут не сохранить этот идентификатор.
+<!-- Each resource has an "id" element which contains the logical identity of the resource 
 assigned by the server responsible for storing it. Resources always have a known identity
 except for the special case when a new resources is being sent to a server to assign
 an identity (<a href="http.html#create">create interaction</a>). 
 The logical identity is unique within the space of all resources of the same type on 
 the same server. Once assigned, the identity is never changed, though copies of the 
-same resource made elsewhere may not retain the same identity.
+same resource made elsewhere may not retain the same identity. -->
 </p>
 
 <p>
-The full identity of a resource is an absolute URL constructed from the server base address at 
+Полный идентификатор ресурса представляет собой абсолютный URL, построенный из базового адреса сервера, на котором он находится, типа ресурса и логического идентификатора, например http://test.fhir.org/rest/Patient/123 (где 123 - это логический идентификатор). Обратите внимание, что реализации НЕ ДОЛЖНЫ полагаться на то, что идентификатор ресурса не всегда разрешается сервером в буквальном смысле - он может быть временно не доступен, либо не доступен из-за политики безопасности (например брандмауэры), либо, в некоторых случаях, он может не существовать в действительности (например использование ресурса вне среды RESTful). Ресурсы ссылаются друг на друга по своим идентификаторам. Такие ссылки могут быть абсолютными или относительными (см. <a href="references.html">Resource References</a> для дальнейшего обсуждения).
+Копирование или перемещение ресурсов с одного сервера на другое означает, что ресурсы получают новые идентификаторы. Более подробную информацию см. в <a href="managing.html">Managing Resource Identity</a>.
+<!-- The full identity of a resource is an absolute URL constructed from the server base address at 
 which it is found, the resource type, and the Logical Id, such as http://test.fhir.org/rest/Patient/123 
 (where 123 is the Logical Id). Note that implementations SHOULD NOT assume that the identity of a resource 
 is always resolvable to a literal server - it may be temporarily unavailable, or not available by policy (e.g. firewalls) or in some 
 cases, it may not actually exist (e.g. use of resource outside a RESTful environment). Resources reference each other by their identity. 
 These references are allowed to be absolute or relative (see <a href="references.html">Resource References</a> for further discussion).
 Copying or moving resources from one server to another means that resources acquire a new identity. For further details, 
-see <a href="managing.html">Managing Resource Identity</a>.
+see <a href="managing.html">Managing Resource Identity</a>. -->
 </p>
 
 <p>
-Logical ids are case sensitive. Ids are always opaque, and external systems need not and should not 
+Логические идентификаторы чувствительны к регистру. Идентификаторы всегда непрозрачны, и системам нет необходимости и не следует пытаться определить их внутреннюю структуру. Идентификатор ДОЛЖЕН всегда быть представлен одинаковым образом в ссылках на ресурсы и в URL-адресах. Идентификаторы могут быть до 64 символов длиной и содержать любую комбинацию букв верхнего и нижнего регистра в коде ASCII (Американский стандартный код обмена информацией), цифр, знаков "-" и ".".
+<!-- Logical ids are case sensitive. Ids are always opaque, and external systems need not and should not 
 attempt to determine their internal structure. An id SHALL always be represented in the same way in 
 resource references and URLs. Ids can be up to 64 characters long, and contain any combination of 
-upper and lowercase ASCII letters, numerals, "-" and ".". 
+upper and lowercase ASCII letters, numerals, "-" and ".".  -->
 </p>
 
 <a name="metadata"> </a>
@@ -36,38 +41,43 @@ upper and lowercase ASCII letters, numerals, "-" and ".".
 <a name="Meta"></a>
 
 <h3 style="margin-bottom: 1px">
-Resource Metadata
+Метаданные ресурса<!-- Resource Metadata -->
 </h3>
 
 <p>
-Each resource contains an element "meta", of type "Meta", which is a set of 
+У каждого ресурса есть элемент "meta" типа "Meta", который представляет собой набор метаданных, обеспечивающих ресурсу технический контекст в рабочем процессе. Все элементы метаданных являются необязательными, хотя некоторые из них могут требоваться в конкретных реализациях или контекстах использования.
+<!-- Each resource contains an element "meta", of type "Meta", which is a set of 
 metadata that provides technical and workflow context to the resource. The 
 metadata items are all optional, though some of all of them may be required 
-in particular implementations or contexts of use.
+in particular implementations or contexts of use. -->
 </p>
 
 <table class="grid">
   <tr>
-    <th>Metadata Item</th>
-    <th>Type</th>
-    <th>Usage</th>
+    <th>Элемент метаданных<!-- Metadata Item --></th>
+    <th>Тип<!-- Type --></th>
+    <th>Применение<!-- Usage --></th>
   </tr>
   <tr>
     <td>versionId (0..1)</td>
     <td><a href="datatypes.html#id">id</a></td>
-    <td>Changes each time the content of the resource changes. Can be referenced in a <a href="references.html#Resource">resource reference</a>. 
-      Can be used to ensure that updates are based on the latest version of the resource. 
-    <br/>The version can be globally unique, or scoped by the Logical Id of the resource. 
+    <td>Изменяется при каждом изменении содержимого ресурса. На него можно ссылаться в <a href="references.html#Resource">ссылке на ресурс</a>. Может использоваться для гарантии, что обновления исходят из последней версии ресурса.
+	<!-- Changes each time the content of the resource changes. Can be referenced in a <a href="references.html#Resource">resource reference</a>. 
+      Can be used to ensure that updates are based on the latest version of the resource.  -->
+    <br/>Версия может быть уникальной либо глобально, либо только в области действия логического идентификатора ресурса. Идентификаторы версии, как правило, являются либо последовательно увеличивающимися идентификаторами, ограниченными логическим идентификатором, либо UUID, хотя ни один из этих вариантов не является обязательным. Обратите внимание, что серверы ДОЛЖНЫ поддерживать версии, но некоторые из них не в состоянии это делать
+	<!-- The version can be globally unique, or scoped by the Logical Id of the resource. 
      Version identifiers are generally either a serially incrementing id scoped by the logical id, or a uuid, though neither of these approaches 
-     is required. Note that servers SHOULD support versions, but some are unable to</td>
+     is required. Note that servers SHOULD support versions, but some are unable to --></td>
   </tr>
 	 
   <tr>
    <td>lastUpdated (0..1)</td>
    <td><a href="datatypes.html#instant">instant</a></td>
-   <td>If populated, this value changes each time the content of the resource 
+   <td>
+   Если заполнено, это значение меняется при каждом изменении содержимого ресурса. Может использоваться системой или человеком для оценки актуальности содержимого ресурса. Обратите внимание, что <a href="http.html#update">версионные обновления</a> не используют этот элемент
+   <!-- If populated, this value changes each time the content of the resource 
     changes. it can be used by a system or a human to judge the currency of the resource content. 
-    Note that <a href="http.html#update">version aware updates</a> do not use this element</td>
+    Note that <a href="http.html#update">version aware updates</a> do not use this element --></td>
   </tr>
 	
   <tr>
@@ -208,7 +218,7 @@ about the information in the resource. For further information, see
 <a href="security-labels.html">Security Labels</a>.
 </p>
 
-<h3>Further Information</h3>
+<h3>Дополнительная информация<!-- Further Information --></h3>
 <ul>
   <li><a href="conformance-rules.html">Conformance Rules</a></li>
   <li><a href="resources.html">Resource Definitions</a></li>

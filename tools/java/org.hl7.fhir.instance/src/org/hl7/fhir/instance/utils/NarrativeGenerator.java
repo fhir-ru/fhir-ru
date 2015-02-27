@@ -1262,21 +1262,14 @@ public class NarrativeGenerator implements INarrativeGenerator {
         throw new Exception("Error: should not encounter value set expansion at this point");
     }
     Integer count = countMembership(vs);
-    /* if (count == null)
-      x.addTag("p").addText("This value set does not contain a fixed number of concepts");
-    else
-      x.addTag("p").addText("This value set contains "+count.toString()+" concepts"); */
 	  if (count == null)
-      x.addTag("p").addText("Данный набор значений не содержит фиксированного числа концептов");
-	  //"This value set does not contain a fixed number of concepts"
-    else if (count % 10 == 1)
-      x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концепт");
-	  else if (count % 10 > 1 && count % 10 < 5)
-		x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концепта");
+      	x.addTag("p").addText("Данный набор значений не содержит фиксированного числа концептов");	  
+    	else if (count % 10 == 1)
+      		x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концепт");
+	  	else if (count % 10 > 1 && count % 10 < 5)
+			x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концепта");
 		else
-			x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концептов");
-    //"This value set contains "+count.toString()+" concepts"
-	//"Данный набор значений содержит следующее количество концептов: "+count.toString()+"."
+			x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концептов");   
     
     boolean hasExtensions = false;
     if (vs.hasDefine())
@@ -1928,7 +1921,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     x.addTag("p").addText("Параметры");
     XhtmlNode tbl = x.addTag("table").setAttribute("class", "grid");
     XhtmlNode tr = tbl.addTag("tr");
-    tr.addTag("td").addTag("b").addText("Применение");
+	tr.addTag("td").addTag("b").addText("Применение");
     tr.addTag("td").addTag("b").addText("Имя");
     tr.addTag("td").addTag("b").addText("Кард. число");
     tr.addTag("td").addTag("b").addText("Тип");
@@ -1987,7 +1980,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     smartAddText(x.addTag("p"), conf.getDescription());
     ConformanceRestComponent rest = conf.getRest().get(0);
     XhtmlNode t = x.addTag("table");
-    addTableRow(t, "Режим", rest.getMode().toString()); //"Mode"
+    addTableRow(t, "Метод", rest.getMode().toString()); //"Mode"
     addTableRow(t, "Описание", rest.getDocumentation());
     
     addTableRow(t, "Транзакция", showOp(rest, SystemRestfulInteraction.TRANSACTION));
