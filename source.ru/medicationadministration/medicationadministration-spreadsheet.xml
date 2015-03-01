@@ -978,9 +978,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Administration of medication to a patient</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Введение лекарственного средства пациенту<!-- Administration of medication to a patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.&#13;&#13;Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает событие употребления пациентом или другого введения лекарственного средства. Может быть как простым - проглотить таблетку, так и длительным вливанием.&#13;&#13;Связанные ресурсы привязывают это событие к его санкционирующему предписанию (authorizing prescription) и конкретной встрече (encounter) пациента и медицинского специалиста (health care practitioner)<!-- Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.&#13;&#13;Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1012,9 +1012,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">External identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешний идентификатор<!-- External identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешний идентификатор - FHIR сгенерирует свои собственные внутренние идентификаторы (возможно URLs), которыми ресурсу нет необходимости явно управлять. Здесь указывается тот идентификатор, который будет использоваться другой не FHIR системой - например автоматизированная подача лекарственного средства будет создавать запись при каждом срабатывании; введение, когда пациент отсутствовал в палате, может выполняться другой системой или вводиться после этого события. Особенно важно, если эти записи необходимо обновлять.<!-- External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1050,7 +1050,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">in-progress | on-hold | completed | entered-in-error | stopped</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Устанавливается, как правило, для указания, что введение было завершено. Для некоторых длительных введений, например вливаний, возможно состояние, когда введение начато, но не завершено или приостановлено на время, пока идет другой процесс. <!-- Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1083,9 +1083,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who received medication?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто получил лекарственное средство?<!-- Who received medication? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person or animal to whom the medication was given.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек или животное, которому было выдано лекарственное средство. <!-- The person or animal to whom the medication was given. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1118,9 +1118,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who administered substance?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто ввел вещество?<!-- Who administered substance? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The individual who was responsible for giving the medication to the patient.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Лицо, ответственное за выдачу лекарственного средства пациенту. <!-- The individual who was responsible for giving the medication to the patient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1153,9 +1153,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter administered as part of</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter, в рамках котором введено<!-- Encounter administered as part of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Визит, госпитализация или другой вид контакта пациента и поставщика медицинских услуг, в рамках которого было выполнено введение. <!-- The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1187,9 +1187,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Order administration performed against</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Заказ, по которому выполнено введение<!-- Order administration performed against --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The original request, instruction or authority to perform the administration.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Исходный запрос, указание или полномочие на выполнение введения. <!-- The original request, instruction or authority to perform the administration. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1220,12 +1220,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If this is missing, then the medication was administered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если отсутствует, значит лекарственное средство было введено<!-- If this is missing, then the medication was administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">True if medication not administered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">True, если лекарственное средство не введено<!-- True if medication not administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Set this to true if the record is saying that the medication was NOT administered.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Установите в true, если запись говорит о том, что лекарственное средство НЕ БЫЛО введено. <!-- Set this to true if the record is saying that the medication was NOT administered. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1259,9 +1259,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason administration not performed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Причина, по которой введение не было выполнено<!-- Reason administration not performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code indicating why the administration was not performed.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, указывающий почему введение не было выполнено. <!-- A code indicating why the administration was not performed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1295,9 +1295,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason administration performed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Основание выполнения введения<!-- Reason administration performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code indicating why the medication was given.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, указывающий, почему лекарственное средство было выдано. <!-- A code indicating why the medication was given. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1328,9 +1328,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Start and end time of administration</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время начала и окончания введения<!-- Start and end time of administration --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true).  For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Интервал времени, в течение которого происходило введение (или не происходило, когда атрибут 'notGiven' установлен в true). Для большинства введений, таких как глотание таблетки, больше подходит использование dateTime. <!-- An interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true).  For many administrations, such as swallowing a tablet the use of dateTime is more appropriate. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1363,12 +1363,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What was administered?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Что было введено?<!-- What was administered? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет лекарственное средство, которое было введено. Это либо ссылка на ресурс, представляющий детали лекарственного средства, либо простой атрибут с кодом лекарственного средства из известного списка медикаментов. <!-- Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Note: do not use Medication.name to describe the administered medication. When the only available information is a text description of the medication, Medication.code.text should be used</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Примечание: не используйте Medication.name для описания введенного лекарственного средства. Если единственная доступная информация - это текстовое описание лекарственного средства, следует использовать Medication.code.text<!-- Note: do not use Medication.name to describe the administered medication. When the only available information is a text description of the medication, Medication.code.text should be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Consumeable-&gt;AdministerableMedication</Data><NamedCell
@@ -1398,9 +1398,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Device used to administer</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Устройство, используемое для введения<!-- Device used to administer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The device used in administering the medication to the patient.  E.g. a particular infusion pump</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Устройство, используемое для введения лекарственного средства пациенту. Например конкретный инфузионный насос<!-- The device used in administering the medication to the patient.  E.g. a particular infusion pump --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1432,9 +1432,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Information about the administration</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Информация о введении<!-- Information about the administration --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Extra information about the medication administration that is not conveyed by the other attributes.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация о введении лекарственного средства, которая не может быть передана в других атрибутах. <!-- Extra information about the medication administration that is not conveyed by the other attributes. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1463,9 +1463,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Details of how medication was taken</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробности о том, каким образом был принят медикамент<!-- Details of how medication was taken --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates how the medication is/was used by the patient</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, каким образом лекарственное средство было использовано пациентом<!-- Indicates how the medication is/was used by the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1498,9 +1498,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Dosage Instructions</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Инструкции по дозировке<!-- Dosage Instructions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольные текстовые инструкции по дозировке могут указываться в случае, когда они слишком сложные, чтобы их закодировать. Если присутствуют кодированные инструкции, произвольные текстовые инструкции могут также прилагаться для отображения людям, принимающим или вводящим этот медикамент.<!-- Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1531,9 +1531,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Body site administered to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Место тела, куда ввели<!-- Body site administered to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded specification of the anatomic site where the medication first entered the body.  E.g. &quot;left arm&quot;</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированное указание анатомического положения, где медикамент вводится в тело. Например &quot;левая рука&quot;<!-- A coded specification of the anatomic site where the medication first entered the body.  E.g. &quot;left arm&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1566,9 +1566,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Path of substance into body</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Путь вещества в теле<!-- Path of substance into body --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.   E.g. topical, intravenous, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, обозначающий способ ввода или физиологический путь введения терапевтического средства в или на пациента. Например местный, внутривенный и т. д. <!-- A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.   E.g. topical, intravenous, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1601,9 +1601,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How drug was administered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Как препарат был введен<!-- How drug was administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded value indicating the method by which the medication was introduced into or onto the body. Most commonly used for injections.  Examples:  Slow Push; Deep IV.&#13;&#13;Terminologies used often pre-coordinate this term with the route and or form of administration.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированное значение, обозначающее метод, которым лекарственное средство было введено в или на тело. Наиболее часто используется для инъекций. Примеры: Slow Push; Deep IV.&#13;&#13;При использовании справочников этот термин уже согласован со способом или формой введения.<!-- A coded value indicating the method by which the medication was introduced into or onto the body. Most commonly used for injections.  Examples:  Slow Push; Deep IV.&#13;&#13;Terminologies used often pre-coordinate this term with the route and or form of administration. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1635,12 +1635,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Amount administered in one dose</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество, введенное в одной дозе<!-- Amount administered in one dose --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.  </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество лекарственного средства, данного при одном введении. Используйте это значение, когда введение является, по сути, мгновенным событием, таким как проглотить таблетку или сделать инъекцию. <!-- The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.   --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the administration is not instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount administered over period of time of a single administration (as indicated by schedule)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если введение происходит не мгновенно (присутствует скорость или продолжительность), может указываться для передачи общего количества, введенного за период времени одного введения (как указано в графике)<!-- If the administration is not instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount administered over period of time of a single administration (as indicated by schedule) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">doseQuantity</Data><NamedCell
@@ -1670,12 +1670,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Dose quantity per unit of time</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество дозы в единицу времени<!-- Dose quantity per unit of time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the speed with which the medication was introduced into the patient. Typically the rate for an infusion e.g. 200ml in 2 hours.  May also expressed as a rate per unit of time such as 100ml per hour - the duration is then not specified, or is specified in the quantity.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет скорость, с которой лекарственное средство вводится в пациента. Обычно это скорость вливания, например: 200 мл в течение 2 часов. Может также выражаться как скорость в единицу времени, например 100 мл в час - продолжительность не указана либо указана в quantity<!-- Identifies the speed with which the medication was introduced into the patient. Typically the rate for an infusion e.g. 200ml in 2 hours.  May also expressed as a rate per unit of time such as 100ml per hour - the duration is then not specified, or is specified in the quantity. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the rate changes over time, each change should be captured as a distinct &quot;dosage&quot; repetition.  This element should *not* be used to convey an average rate.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если скорость меняется с течением времени, каждое изменение следует фиксировать как отдельное повторение &quot;dosage&quot;. Данный элемент *не* следует использовать для передачи средней скорости. <!-- If the rate changes over time, each change should be captured as a distinct &quot;dosage&quot; repetition.  This element should *not* be used to convey an average rate. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">rateQuantity</Data><NamedCell

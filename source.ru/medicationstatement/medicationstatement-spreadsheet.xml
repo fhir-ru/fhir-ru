@@ -1008,7 +1008,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Внешний идентификатор<!-- External Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешний идентификатор - FHIR сгенерирует свои собственные внутренние идентификаторы (возможно URLs), которыми ресурсу нет необходимости явно управлять. Идентификатор здесь такой, что будет использоваться другой не FHIR системой - например автоматизированная подача лекарственного средства будет создавать запись при каждом срабатывании; введение, когда пациент отсутствовал в палате, может выполняться другой системой или вводиться после этого события. Особенно важно, если эти записи необходимо обновлять.<!-- External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешний идентификатор - FHIR сгенерирует свои собственные внутренние идентификаторы (возможно URLs), которыми ресурсу нет необходимости явно управлять. Здесь указывается тот идентификатор, который будет использоваться другой не FHIR системой - например автоматизированная подача лекарственного средства будет создавать запись при каждом срабатывании; введение, когда пациент отсутствовал в палате, может выполняться другой системой или вводиться после этого события. Особенно важно, если эти записи необходимо обновлять.<!-- External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1368,7 +1368,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Детали, каким образом был принят медикамент<!-- Details of how medication was taken --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробности о том, каким образом был принят медикамент<!-- Details of how medication was taken --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, каким образом лекарственное средство было использовано пациентом<!-- Indicates how the medication is/was used by the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1601,7 +1601,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество, введенное одной дозой<!-- Amount administered in one dose --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество, введенное в одной дозе<!-- Amount administered in one dose --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Количество терапевтического или другого вещества, выданного при введении.<!-- The amount of therapeutic or other substance given at one administration event.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

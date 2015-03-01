@@ -1424,7 +1424,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда лекарственное средство должно быть введено<!-- When medication should be administered --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда должно быть введено лекарственное средство<!-- When medication should be administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">График времени выдачи лекарственного средства пациенту. Тип данных Schedule позволяет задавать различные выражения, например &quot;каждые 8 часов&quot;; &quot;три раза в день&quot;; &quot;за полчаса до завтрака в течение 10 дней с 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 и 1 Nov 2013&quot;<!-- The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  &quot;Every  8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1491,7 +1491,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Место на теле для ввода<!-- Body site to administer to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Место на теле для введения<!-- Body site to administer to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированное указание анатомического местоположения, где лекарственное средство входит в тело<!-- A coded specification of the anatomic site where the medication first enters the body --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
