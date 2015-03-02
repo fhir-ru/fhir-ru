@@ -7114,7 +7114,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s147"><Data ss:Type="String">MedicationIntendedSubstitutionType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A coded concept describing whether a different medicinal product may be dispensed other than the product as specified exactly in the prescription</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Кодированный концепт, описывающий, можно ли приготовить другой лекарственный продукт вместо указанного в предписании <!-- A coded concept describing whether a different medicinal product may be dispensed other than the product as specified exactly in the prescription --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">http://hl7.org/fhir/v3/vs/ActSubstanceAdminSubstitutionCode</Data></Cell>
@@ -7129,7 +7129,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s148"><Data ss:Type="String">MedicationIntendedSubstitutionReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept describing the reason that a different medication should (or should not) be substituted from what was prescribed.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, описывающий причину, по которой назначенное лекарственное средство должно (или не должно) быть заменено. <!-- A coded concept describing the reason that a different medication should (or should not) be substituted from what was prescribed. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">http://hl7.org/fhir/v3/vs/SubstanceAdminSubstitutionReason</Data></Cell>
@@ -7144,7 +7144,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s148"><Data ss:Type="String">MedicationAsNeededReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept identifying the pre-condition that should hold prior to consuming a medication dose.  For example &quot;pain&quot;, &quot;30 minutes prior to sexual intercourse&quot;, &quot;on flare-up&quot;, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, определяющий условие, которое должно выполниться до принятия дозы лекарственного средства. Например &quot;боль&quot;, &quot;за 30 минут до полового акта&quot;, &quot;при обострении болезни&quot; и т. п. <!-- A coded concept identifying the pre-condition that should hold prior to consuming a medication dose.  For example &quot;pain&quot;, &quot;30 minutes prior to sexual intercourse&quot;, &quot;on flare-up&quot;, etc. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -7159,7 +7159,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">MedicationAdministrationSite</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept describing the site location the medicine enters into or onto the body</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, описывающий местоположение входа медикамента в или на тело<!-- A coded concept describing the site location the medicine enters into or onto the body --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-approach-site-codes</Data></Cell>
@@ -7174,7 +7174,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">MedicationAdministrationMethod</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept describing the technique by which the medicine is administered</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, описывающий метод введения медикамента<!-- A coded concept describing the technique by which the medicine is administered --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-administration-method-codes</Data></Cell>
@@ -7204,7 +7204,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s148"><Data ss:Type="String">RouteOfAdministration</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject. </Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, описывающий способ или физиологический путь введения терапевтического средства в или на тело субъекта. <!-- A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject. --> </Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-route-codes</Data></Cell>

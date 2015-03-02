@@ -1863,7 +1863,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">В случае замены одного медикамента другим<!-- Deals with substitution of one medicine for another --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, была ли сделана замена в рамках приготовления. В некоторых случаях замена ожидается, но не происходит, в других случаях замена не ожидается, но происходит. Этот блок поясняет, произошла ли замена, и если да, то какая и почему. <!-- Indicates whether or not substitution was made as part of the dispense.  In some cases substitution will be expected but doesn't happen, in other cases substitution is not expected but does happen.  This block explains what substitition did or did not happen and why. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, была ли сделана замена в рамках приготовления. В некоторых случаях замена предполагалась, но не происходила, в других случаях замена не предполагалась, но происходила. Этот блок поясняет, произошла ли замена, и если да, то какая и почему. <!-- Indicates whether or not substitution was made as part of the dispense.  In some cases substitution will be expected but doesn't happen, in other cases substitution is not expected but does happen.  This block explains what substitition did or did not happen and why. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4307,7 +4307,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">MedicationDispense</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">whenHandedOver cannot be before whenPrepared</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">whenHandedOver не может быть раньше whenPrepared<!-- whenHandedOver cannot be before whenPrepared --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:whenHandedOver/@value)) or not(exists(f:whenPrepared/@value)) or ( f:whenHandedOver/@value &gt;= f:whenPrepared/@value)</Data><NamedCell
@@ -4865,77 +4865,77 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">MedicationDispense.destination</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Return dispenses that should be sent to a secific destination</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Возвращает dispenses, которые необходимо отправить по указанному пункту назначения<!-- Return dispenses that should be sent to a secific destination --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">dispenser</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">MedicationDispense.dispenser</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Return all dispenses performed by a specific indiividual</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Возвращает все dispenses, выполненные указанным лицом<!-- Return all dispenses performed by a specific indiividual --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">MedicationDispense.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Return dispenses with this external identity</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Возвращает dispenses с указанным внешним идентификатором<!-- Return dispenses with this external identity --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">medication</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">MedicationDispense.medication</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Returns dispenses of this medicine</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Возвращает dispenses данного медикамента<!-- Returns dispenses of this medicine --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">MedicationDispense.patient</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The identity of a patient to list dispenses  for</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор пациента, для которого необходимо вывести список dispenses<!-- The identity of a patient to list dispenses  for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">prescription</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">MedicationDispense.authorizingPrescription</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The identity of a prescription to list dispenses from</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор назначения, из которого необходимо перечислить dispenses<!-- The identity of a prescription to list dispenses from --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">responsibleparty</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">MedicationDispense.substitution.responsibleParty</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Return all dispenses with the specified responsible party</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Возвращает все dispenses с указанным ответственным участником<!-- Return all dispenses with the specified responsible party --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">MedicationDispense.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Status of the dispense</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Статус данного dispense<!-- Status of the dispense --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">MedicationDispense.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Return all dispenses of a specific type</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Возвращает все dispenses указанного типа<!-- Return all dispenses of a specific type --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">whenhandedover</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">MedicationDispense.whenHandedOver</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Date when medication handed over to patient (outpatient setting), or supplied to ward or clinic (inpatient setting)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Дата, когда лекарственное средство было вручено пациенту (амбулатория) или доставлено в палату или клинику (стационар)<!-- Date when medication handed over to patient (outpatient setting), or supplied to ward or clinic (inpatient setting) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">whenprepared</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">MedicationDispense.whenPrepared</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Date when medication prepared</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Дата приготовления лекарственного средства<!-- Date when medication prepared --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -7141,7 +7141,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s145"><Data ss:Type="String">MedicationDispenseType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc. </Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип приготовления лекарства по рецепту. Примеры: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc. <!-- Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.  --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">http://hl7.org/fhir/v3/vs/ActPharmacySupplyType</Data></Cell>
@@ -7156,7 +7156,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">MedicationDispenseStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A code specifying the state of the dispense event.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код статуса события dispense<!-- A code specifying the state of the dispense event. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#medication-dispense-status</Data></Cell>

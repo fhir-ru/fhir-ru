@@ -4383,7 +4383,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">MedicationAdministration.dosage</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">SHALL have at least one of dosage.quantity and dosage.rate</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">ДОЛЖНО содержать по крайней мере dosage.quantity или dosage.rate<!-- SHALL have at least one of dosage.quantity and dosage.rate --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">exists(f:quantity) or exists(f:rate)</Data><NamedCell
@@ -4395,7 +4395,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Not given reason</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">MedicationAdministration.reasonNotGiven</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Reason not given is only permitted if wasNotGiven is true</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Причину reasonNotGiven разрешается указывать только когда wasNotGiven имеет значение true<!-- Reason not given is only permitted if wasNotGiven is true --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:reasonNotGiven) and f:wasNotGiven/@value='false')</Data></Cell>
    </Row>
@@ -4405,7 +4405,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Given reason</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">MedicationAdministration.reasonGiven</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Reason given is only permitted if wasNotGiven is false</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Причину reasonGiven разрешается указывать только когда wasNotGiven имеет значение false<!-- Reason given is only permitted if wasNotGiven is false --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:reasonGiven) and f:wasNotGiven/@value='true')</Data></Cell>
    </Row>
@@ -7227,7 +7227,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">MedicationAdministrationStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A set of codes indicating the current status of a MedicationAdministration</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ряд кодов, указывающих текущий статус MedicationAdministration<!-- A set of codes indicating the current status of a MedicationAdministration --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#medication-admin-status</Data></Cell>
@@ -7242,7 +7242,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">MedicationAdministrationNegationReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A set of codes indicating the reason why the MedicationAdministration is negated.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ряд кодов, обозначающих причину отрицания MedicationAdministration. <!-- A set of codes indicating the reason why the MedicationAdministration is negated. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-reason-medication-not-given-codes</Data></Cell>
