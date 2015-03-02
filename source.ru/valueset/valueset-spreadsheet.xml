@@ -5566,7 +5566,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык, для которого предназначено это обозначение<!-- The language this designation is defined for -->/Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык, для которого предназначено это обозначение<!-- The language this designation is defined for --></Data></Cell>
     <Cell ss:StyleID="s133"/>
    </Row>
    <Row ss:AutoFitHeight="0">
