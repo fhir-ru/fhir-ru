@@ -5,7 +5,7 @@
     <status value="additional"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
      <p>
-     This value set includes all terms in <a href="snomedct.html">SNOMED CT</a>, IDC-10-AM, and CPT-4.
+     Данный набор значений включает в себя все термины из <a href="snomedct.html">SNOMED CT</a>, IDC-10-AM и CPT-4.
      </p>
      <p>
        <b>Open Issue</b>: Due to CPT license conditions, the correct use of CPT-4 in FHIR cannot be described.
