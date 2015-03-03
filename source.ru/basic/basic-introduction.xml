@@ -3,7 +3,8 @@
 <div>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-<b>Basic</b> is a special type of resource. Unlike all other resources, it doesn't correspond to a specific pre-defined HL7 concept. Instead, it's a placeholder for any resource-like concept that isn't already defined in the HL7 specification.
+<b>Basic</b> - особый тип ресурса. В отличие от остальных ресурсов он не соответствует никакому конкретному предопределенному HL7-понятию. Вместо этого он является бланком для любого ресурсоподобного понятия, которое пока что не определено в спецификации HL7.
+<!-- <b>Basic</b> is a special type of resource. Unlike all other resources, it doesn't correspond to a specific pre-defined HL7 concept. Instead, it's a placeholder for any resource-like concept that isn't already defined in the HL7 specification. -->
 </p>
 
 <p>

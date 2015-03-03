@@ -976,11 +976,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Resource for non-supported content</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс для не поддерживаемого содержимого<!-- Resource for non-supported content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ресурс Basic используется для работы с концептами пока что не определенными в FHIR, ресурсы, содержащие только описательную часть, которые не отображаются ни на один из существующих ресурсов, а также пользовательские ресурсы, не подлежащие включению в спецификацию FHIR. <!-- Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Need some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Реализаторам нужен какой-то способ для надежного (без нарушения совместимости) обмена содержимым, не поддерживаемым первоначальным набором заявленных ресурсов. <!-- Need some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
