@@ -2,7 +2,7 @@
     <div>
         <p>Published by: <a href="daf.html">Data Access Framework (DAF)</a><br/>Supporting Work Group: Public Health Emergency Response (PHER)</p>
               
-        <h2>Scope and Usage</h2>
+        <h2>Область применения и использование</h2>
         <p>
             This profile sets expectations for use of the <a href="immunization.html">Immunization</a> resource within the 
             <a href="http://wiki.siframework.org/Data+Access+Framework+Homepage">Data Access Framework (DAF)</a> project.  This includes

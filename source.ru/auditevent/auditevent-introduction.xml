@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
 The audit event is based on the ATNA Audit record definitions, originally from <a href="http://tools.ietf.org/html/rfc3881">RFC 3881</a>, and now managed by
 DICOM (see <a href="http://medical.nema.org/DICOM/2011/11_15pu.pdf">DICOM Part 15 Annex A5</a>). This resource is managed collaboratively between HL7, DICOM,

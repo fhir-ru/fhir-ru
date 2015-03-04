@@ -1,28 +1,33 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
-<p><b>This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft.</b></p>
+<h2>Область применения и использование</h2>
+<p><b>Этот ресурс еще не прошел надлежащую проверку рабочей группой FM. На данной момент его следует рассматривать в качестве проекта.<!-- This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft. --></b></p>
 <p>
-The ProfessionalClaim  is one of a suite of similar resources (OralHealthClaim, VisionClaim, PharmacyClaim, ProfessionalClaim, InstitutionalClaim) which are used by providers to 
+ProfessionalClaim - один из набора аналогичных ресурсов (OralHealthClaim, VisionClaim, PharmacyClaim, ProfessionalClaim, InstitutionalClaim), которые используются поставщиками для обмена финансовой информацией, а также для поддержки клинической информации в отношении предоставления услуг здравоохранения. Основными видами использования этого ресурса является поддержка eClaims, обмен данными о текущих или предлагаемых услугах c плательщиками пособий (benefit payors), страховщиками и национальными программами здравоохранения для планирования оплаты лечения и компенсации.
+<!-- The ProfessionalClaim  is one of a suite of similar resources (OralHealthClaim, VisionClaim, PharmacyClaim, ProfessionalClaim, InstitutionalClaim) which are used by providers to 
 exchange the financial information, and supporting clinical information, regarding the provision of healthcare services. The primary uses of this resource is to support eClaims, 
-the exchange of proposed or actual services to benefit payors, insurers and national health programs, for treatment payment planning and reimbursement.
+the exchange of proposed or actual services to benefit payors, insurers and national health programs, for treatment payment planning and reimbursement. -->
 </p>
 <p>
-The Claim is intended to support:
+Ресурс вида Claim предназначен для поддержки:
+<!-- The Claim is intended to support: -->
 <ul>
-<li>Claims - where the provision of goods and services is <b>complete</b> and reimbursement is sought.</li>
-<li>Pre-Authorization - where the provision of goods and services is <b>proposed</b> and either authorization and/or the reservation of funds is desired.</li>
-<li>Pre-Determination - where the provision of goods and services is <b>explored</b> to determine what services may be covered and to what amount. Essentially a 'what if' claim.</li>
+<li>страховых требований (Claims) - для случаев, где предоставление товаров и услуг <b>завершено</b> и требуется компенсация.
+<!-- Claims - where the provision of goods and services is <b>complete</b> and reimbursement is sought. --></li>
+<li>Pre-Authorization - для случаев, где предоставление товаров и услуг <b>предложено</b> и требуется санкционирование (authorization) и/или резервирование средств. <!-- Pre-Authorization - where the provision of goods and services is <b>proposed</b> and either authorization and/or the reservation of funds is desired. --></li>
+<li>Pre-Determination - для случаев, где предоставление товаров и услуг <b>исследуется</b> для определения того, какие услуги покрываются и какой суммой. По сути это страховое требование "что будет, если".
+<!-- Pre-Determination - where the provision of goods and services is <b>explored</b> to determine what services may be covered and to what amount. Essentially a 'what if' claim. --></li>
 </ul>
 </p>
 
 <p>
-The Claim also supports:
+Ресурсы вида Claim также поддерживают:
+<!-- The Claim also supports: -->
 <ul>
-<li>Up to a 3 tier hierarchy of Goods, products, and Services, to support simple to complex billing.</li>
-<li>Multiple insurance programs arranged in a Coordination of Benefit sequence to enable exchange with primary, secondary, tertiary etc. insurance coverages.</li>
-<li>Assignment of benefit - the benefit may be requested to be directed to the subscriber, the provider or another party.</li>
+<li>До 3 уровней иерархии товаров, продуктов и услуг для поддержки выставления от простых до сложных счетов.<!-- Up to a 3 tier hierarchy of Goods, products, and Services, to support simple to complex billing. --></li>
+<li>Несколько страховых программ, расположенных в последовательности согласования выгоды (Coordination of Benefit), чтобы позволить руботу с первичными, вторичными, третичными и т. д. страховыми покрытиями.<!-- Multiple insurance programs arranged in a Coordination of Benefit sequence to enable exchange with primary, secondary, tertiary etc. insurance coverages. --></li>
+<li>Назначение пособия - пособие по запросу может быть направлено абоненту-подписчику (subscriber), поставщику или другой стороне.<!-- Assignment of benefit - the benefit may be requested to be directed to the subscriber, the provider or another party. --></li>
 </ul>
 </p>
 <p>

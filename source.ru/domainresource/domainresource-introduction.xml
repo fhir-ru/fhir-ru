@@ -2,7 +2,7 @@
 
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
 This resource is defined to add text, contained resources, and extension support
 to the base <a href="resource.html">resource</a>. As an abstract resource, this 
