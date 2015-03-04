@@ -650,4 +650,52 @@ public class Utilities {
     return ok;
  }
 
+
+  public static String escapeJson(String value) {
+    if (value == null)
+      return "";
+    
+    StringBuilder b = new StringBuilder();
+    for (char c : value.toCharArray()) {
+      if (c == '\r')
+        b.append("\\r");
+      else if (c == '\n')
+        b.append("\\n");
+      else if (c == '"')
+        b.append("\\\"");
+      else if (c == '\'')
+        b.append("\\'");
+      else if (c == '\\')
+        b.append("\\\\");
+      else 
+        b.append(c);
+    }   
+    return b.toString();
+  }
+
+  public static String humanize(String code) {
+    StringBuilder b = new StringBuilder();
+    boolean lastBreak = true;
+    for (char c : code.toCharArray()) {
+      if (Character.isAlphabetic(c)) {
+        if (lastBreak)
+          b.append(Character.toUpperCase(c));
+        else { 
+          if (Character.isUpperCase(c))
+            b.append(" ");          
+          b.append(c);
+        }
+        lastBreak = false;
+      } else {
+        b.append(" ");
+        lastBreak = true;
+      }
+    }
+    if (b.length() == 0)
+      return code;
+    else 
+      return b.toString();
+  }
+
+
 }

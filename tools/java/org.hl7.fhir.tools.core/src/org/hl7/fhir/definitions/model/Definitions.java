@@ -35,7 +35,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.instance.model.ConceptMap;
-import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.StructureDefinition;
+import org.hl7.fhir.instance.model.StructureDefinition.ExtensionContext;
 import org.hl7.fhir.instance.model.ValueSet;
 
 /**
@@ -71,7 +72,7 @@ public class Definitions {
   private Map<String, ResourceDefn> resources = new HashMap<String, ResourceDefn>();
   private Map<String, WorkGroup> workgroups = new HashMap<String, WorkGroup>();
 
-	// conformance packages not owned by a particular resource
+	// profiles not owned by a particular resource
   private Map<String, ConformancePackage> packs = new HashMap<String, ConformancePackage>();
   private Map<String, String> dictionaries = new HashMap<String, String>();
 
@@ -100,6 +101,7 @@ public class Definitions {
   private Map<String, W5Entry> w5s = new HashMap<String, W5Entry>();
   private Map<String, String> typePages = new HashMap<String, String>();
   private Map<String, ImplementationGuide> igs = new HashMap<String, ImplementationGuide>();
+  private List<ImplementationGuide> sortedIgs = new ArrayList<ImplementationGuide>();
   
   // Returns the root TypeDefn of a CompositeType or Resource,
 	// excluding future Resources (as they don't have definitions yet).
@@ -339,17 +341,26 @@ public class Definitions {
     return mapTypes;
   }
 
-  public Profile getSnapShotForType(String type) throws Exception {
+  public StructureDefinition getSnapShotForType(String type) throws Exception {
+    ElementDefn e = getElementDefn(type); 
+    if (e != null && e instanceof TypeDefn) {
+      TypeDefn t = (TypeDefn) e;
+      if (t.getProfile().getSnapshot() != null)
+        return t.getProfile();
+      throw new Exception("unable to find snapshot for "+type);
+      
+    }
     ResourceDefn r = getResourceByName(type);
-    if (r == null)
-      throw new Exception("unable to find base definition for "+type);
-    if (r.getProfile().getSnapshot() != null)
-      return r.getProfile();
-    throw new Exception("unable to find snapshot for "+type);
+    if (r != null) {
+      if (r.getProfile().getSnapshot() != null)
+        return r.getProfile();
+      throw new Exception("unable to find snapshot for "+type);
+    }
+    throw new Exception("unable to find base definition for "+type);
   }
 
-  public Profile getSnapShotForBase(String base) throws Exception {
-    Profile p = getProfileByURL(base);
+  public StructureDefinition getSnapShotForBase(String base) throws Exception {
+    StructureDefinition p = getProfileByURL(base);
     if (p == null)
       throw new Exception("unable to find base definition "+base);
     if (p.getSnapshot() != null)
@@ -357,7 +368,7 @@ public class Definitions {
     throw new Exception("unable to find snapshot for "+base);
   }
 
-  private Profile getProfileByURL(String base) {
+  private StructureDefinition getProfileByURL(String base) throws Exception {
     for (ResourceDefn r : resources.values()) {
       if (r.getProfile().getUrl().equals(base))
         return r.getProfile();
@@ -373,6 +384,10 @@ public class Definitions {
         if (p.getResource() != null && base.equals(p.getResource().getUrl()))
           return p.getResource();
       }      
+    }
+    if (base.startsWith("http://hl7.org/fhir/StructureDefinition/") && hasType(base.substring(40))) {
+      TypeDefn t = getElementDefn(base.substring(40));
+      return t.getProfile();
     }
     return null;
   }
@@ -414,6 +429,60 @@ public class Definitions {
 
   public Map<String, String> getDictionaries() {
     return dictionaries;
+  }
+
+  public List<ImplementationGuide> getSortedIgs() {
+    return sortedIgs;
+  }
+
+  public ImplementationGuide getUsageIG(String usage, String context) throws Exception {
+    if (!igs.containsKey(usage))
+      throw new Exception("Attempt to use an undefined implementation guide '"+usage+"' @ "+context);
+    return igs.get(usage);
+  }
+
+  public void checkContextValid(ExtensionContext contextType, String value, String context) throws Exception {
+    if (contextType == ExtensionContext.DATATYPE) {
+      if (value.equals("*") || value.equals("Any"))
+        return;
+      if (primitives.containsKey(value))
+        return;
+      String[] parts = value.split("\\.");
+      if (hasType(parts[0]) && getElementByPath(parts) != null)
+        return;
+      
+      throw new Error("The data type context '"+value+"' is not valid @ "+context);
+      
+    } else if (contextType == ExtensionContext.RESOURCE) {
+      if (value.equals("*") || value.equals("Any"))
+        return;
+      String[] parts = value.split("\\.");
+      if (sortedResourceNames().contains(value))
+        return;
+      if (getElementByPath(parts) != null)
+        return;
+      
+      throw new Error("The resource context '"+value+"' is not valid @ "+context);
+    } else
+    throw new Error("not checked yet @ "+context);
+    
+  }
+
+  private Object getElementByPath(String[] parts) throws Exception {
+    ElementDefn e;
+    try {
+      e = getElementDefn(parts[0]);
+    } catch (Exception e1) {
+     return null;
+    }
+    int i = 1;
+    while (e != null && i < parts.length) {
+      if (e.getAcceptableGenericTypes().isEmpty() && hasType(e.typeCode()))
+        e = getElementDefn(e.typeCode());
+      e = e.getElementByName(parts[i]);
+      i++;
+    }
+    return e;
   }
 
 

@@ -32,10 +32,13 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.httpclient.methods.DeleteMethod;
 import org.hl7.fhir.instance.model.BooleanType;
 import org.hl7.fhir.instance.model.CodeType;
+import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.DomainResource;
 import org.hl7.fhir.instance.model.Element;
+import org.hl7.fhir.instance.model.ElementDefinition;
 import org.hl7.fhir.instance.model.Extension;
 import org.hl7.fhir.instance.model.ExtensionHelper;
 import org.hl7.fhir.instance.model.Factory;
@@ -56,17 +59,18 @@ import org.hl7.fhir.utilities.Utilities;
 public class ToolingExtensions {
 
   // validated
-  public static final String EXT_SUBSUMES = "http://hl7.org/fhir/ExtensionDefinition/valueset-subsumes"; 
-  private static final String EXT_OID = "http://hl7.org/fhir/ExtensionDefinition/valueset-oid";
-  public static final String EXT_DEPRECATED = "http://hl7.org/fhir/ExtensionDefinition/valueset-deprecated";
-  public static final String EXT_DEFINITION = "http://hl7.org/fhir/ExtensionDefinition/valueset-definition";
-  public static final String EXT_COMMENT = "http://hl7.org/fhir/ExtensionDefinition/valueset-comments";
-  private static final String EXT_IDENTIFIER = "http://hl7.org/fhir/ExtensionDefinition/identifier";
-  private static final String EXT_TRANSLATION = "http://hl7.org/fhir/ExtensionDefinition/translation";
-  public static final String EXT_ISSUE_SOURCE = "http://hl7.org/fhir/ExtensionDefinition/operationoutcome-issue-source";
-  public static final String EXT_DISPLAY_HINT = "http://hl7.org/fhir/ExtensionDefinition/profile-display-hint"; 
+  public static final String EXT_SUBSUMES = "http://hl7.org/fhir/StructureDefinition/valueset-subsumes"; 
+  private static final String EXT_OID = "http://hl7.org/fhir/StructureDefinition/valueset-oid";
+  public static final String EXT_DEPRECATED = "http://hl7.org/fhir/StructureDefinition/valueset-deprecated";
+  public static final String EXT_DEFINITION = "http://hl7.org/fhir/StructureDefinition/valueset-definition";
+  public static final String EXT_COMMENT = "http://hl7.org/fhir/StructureDefinition/valueset-comments";
+  private static final String EXT_IDENTIFIER = "http://hl7.org/fhir/StructureDefinition/identifier";
+  private static final String EXT_TRANSLATION = "http://hl7.org/fhir/StructureDefinition/translation";
+  public static final String EXT_ISSUE_SOURCE = "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source";
+  public static final String EXT_DISPLAY_HINT = "http://hl7.org/fhir/StructureDefinition/structuredefinition-display-hint"; 
 
   // unregistered?
+  
   public static final String EXT_FLYOVER = "http://hl7.org/fhir/Profile/questionnaire-extensions#flyover";
   private static final String EXT_QTYPE = "http://www.healthintersections.com.au/fhir/Profile/metadata#type";
   private static final String EXT_EXPANSION_CLOSED = "http://hl7.org/fhir/Profile/questionnaire-extensions#closed";
@@ -74,6 +78,7 @@ public class ToolingExtensions {
   private static final String EXTENSION_FILTER_ONLY = "http://www.healthintersections.com.au/fhir/Profile/metadata#expandNeedsFilter";
   private static final String EXT_TYPE = "http://www.healthintersections.com.au/fhir/Profile/metadata#type";
   private static final String EXT_REFERENCE = "http://www.healthintersections.com.au/fhir/Profile/metadata#reference";
+  private static final String EXT_ALLOWABLE_UNITS = "http://hl7.org/fhir/StructureDefinition/elementdefinition-question";
 
   
   // specific extension helpers
@@ -328,5 +333,22 @@ public class ToolingExtensions {
     extension.addExtension().setUrl("lang").setValue(new StringType(lang));
     extension.addExtension().setUrl("content").setValue(new StringType(value));
     element.getExtension().add(extension);
+  }
+
+  public static Type getAllowedUnits(ElementDefinition eld) {
+    for (Extension e : eld.getExtension()) 
+      if (e.getUrl().equals(EXT_ALLOWABLE_UNITS)) 
+        return e.getValue();
+    return null;
+  }
+
+  public static void setAllowableUnits(ElementDefinition eld, CodeableConcept cc) {
+    for (Extension e : eld.getExtension()) 
+      if (e.getUrl().equals(EXT_ALLOWABLE_UNITS)) {
+        e.setValue(cc);
+        return;
+      }
+    eld.getExtension().add(new Extension().setUrl(EXT_ALLOWABLE_UNITS).setValue(cc));
+ 
   }
 }

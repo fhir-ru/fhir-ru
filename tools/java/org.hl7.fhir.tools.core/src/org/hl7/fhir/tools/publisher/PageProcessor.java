@@ -48,6 +48,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.hl7.fhir.definitions.Config;
+import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.generators.specification.DataTypeTableGenerator;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.JsonSpecGenerator;
@@ -69,6 +70,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.Example;
+import org.hl7.fhir.definitions.model.ImplementationGuide;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.Operation;
 import org.hl7.fhir.definitions.model.OperationParameter;
@@ -100,14 +102,13 @@ import org.hl7.fhir.instance.model.ElementDefinition.BindingConformance;
 import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionBindingComponent;
 import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionConstraintComponent;
 import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.instance.model.ExtensionDefinition;
-import org.hl7.fhir.instance.model.Profile;
-import org.hl7.fhir.instance.model.Profile.ProfileMappingComponent;
+import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.Quantity;
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.SearchParameter;
 import org.hl7.fhir.instance.model.SearchParameter.SearchParamType;
+import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionMappingComponent;
 import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.ValueSet;
@@ -121,7 +122,7 @@ import org.hl7.fhir.instance.utils.Translations;
 import org.hl7.fhir.instance.utils.ValueSetExpander.ValueSetExpansionOutcome;
 import org.hl7.fhir.instance.utils.ValueSetExpansionCache;
 import org.hl7.fhir.instance.utils.WorkerContext;
-import org.hl7.fhir.instance.utils.WorkerContext.ExtensionDefinitionResult;
+import org.hl7.fhir.tools.implementations.GeneratorUtils;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
@@ -167,7 +168,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private final Map<String, ValueSet> codeSystems = new HashMap<String, ValueSet>();
   private final Map<String, ValueSet> valueSets = new HashMap<String, ValueSet>();
   private final Map<String, ConceptMap> conceptMaps = new HashMap<String, ConceptMap>();
-  private final Map<String, Profile> profiles = new HashMap<String, Profile>();
+  private final Map<String, StructureDefinition> profiles = new HashMap<String, StructureDefinition>();
   private final Map<String, Resource> igResources = new HashMap<String, Resource>();
   private final Map<String, String> svgs = new HashMap<String, String>();
   private Translations translations = new Translations();
@@ -560,6 +561,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1 + genCodeSystemsTable() + s3;
       else if (com[0].equals("valuesetslist"))
         src = s1 + genValueSetsTable() + s3;
+      else if (com[0].equals("extensionslist"))
+        src = s1 + genExtensionsTable() + s3;
       else if (com[0].equals("igvaluesetslist"))
         src = s1 + genIGValueSetsTable() + s3;
       else if (com[0].equals("conceptmapslist"))
@@ -698,6 +701,30 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return src;
   }
 
+  private String genExtensionsTable() {
+    StringBuilder s = new StringBuilder();
+    
+    s.append("<table class=\"list\">\r\n");
+    List<String> names = new ArrayList<String>();
+    names.addAll(workerContext.getExtensionDefinitions().keySet());
+    Collections.sort(names);
+    for (ImplementationGuide ig : definitions.getSortedIgs()) {
+      boolean started = false;
+      for (String n : names) {
+        StructureDefinition ed = workerContext.getExtensionDefinitions().get(n);
+        if (ig.getCode().equals(ToolResourceUtilities.getUsage(ed))) {
+          if (!started) {
+            started = true;
+            genStructureExampleCategory(s, ig.getName());            
+          }
+          genStructureExample(s, ed.getId().toLowerCase()+".html", ed.getId().toLowerCase(), ed.getUrl().startsWith("http://hl7.org/fhir/StructureDefinition/") ? ed.getUrl().substring(40) : ed.getUrl(), ed.getName());
+        }
+      }
+    }
+    s.append("</table>\r\n");
+    return s.toString();
+  }
+
   private String vsSource(String name) {
     BindingSpecification cd = definitions.getBindingByReference("#"+name);
     if (cd == null)
@@ -820,14 +847,14 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     
     List<String> names = new ArrayList<String>();
     for (Resource ae : igResources.values()) {
-      if (ae instanceof Profile) 
+      if (ae instanceof StructureDefinition) 
         names.add(ae.getId());
     }
     Collections.sort(names);
     
     for (String s : names) {
       @SuppressWarnings("unchecked")
-      Profile ae  = (Profile) igResources.get(s);
+      StructureDefinition ae  = (StructureDefinition) igResources.get(s);
       b.append("  <tr>\r\n");
       b.append("    <td><a href=\""+((String) ae.getUserData("path")).replace(".xml", ".html")+"\">"+Utilities.escapeXml(ae.getName())+"</a></td>\r\n");
       b.append("    <td>").append(Utilities.escapeXml(ae.getDescription())).append("</td>\r\n");
@@ -922,7 +949,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String profileRef(String name) {
-    return "Альтернативные определения: Профиль ресурса (<a href=\""+name+".profile.xml.html\">XML</a>, <a href=\""+name+".profile.json.html\">JSON</a>)";
+    return "Альтернативные определения: ресурс StructureDefinition (<a href=\""+name+".profile.xml.html\">XML</a>, <a href=\""+name+".profile.json.html\">JSON</a>)";
   }
 
   private String reflink(String name) {
@@ -1590,7 +1617,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         for (ElementDefinition ed : p.getResource().getSnapshot().getElement()) {
           if (ed.hasBinding()) {
             if (ed.getBinding().getName().equals(cd.getName()))
-              b.append(" <li><a href=\"").append(p.getId()).append(".html\">Profile ")
+              b.append(" <li><a href=\"").append(p.getId()).append(".html\">StructureDefinition ")
                       .append(p.getTitle()).append(": ").append(ed.getPath()).append("</a> ").append(getBindingTypeDesc(ed.getBinding())).append("</li>\r\n");
           }
         }
@@ -1744,7 +1771,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return system.substring(system.lastIndexOf("/")+1);
   }
 
-  private String genProfileConstraints(Profile res) throws Exception {
+  private String genProfileConstraints(StructureDefinition res) throws Exception {
     StringBuilder b = new StringBuilder();
     for (ElementDefinition e : res.getSnapshot().getElement()) {      
       for (ElementDefinitionConstraintComponent inv : e.getConstraint()) {
@@ -1760,9 +1787,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
   }
   
-  private String genExtensionConstraints(ExtensionDefinition ed) throws Exception {
+  private String genExtensionConstraints(StructureDefinition ed) throws Exception {
     StringBuilder b = new StringBuilder();
-    for (ElementDefinition e : ed.getElement()) {      
+    for (ElementDefinition e : ed.getSnapshot().getElement()) {      
       for (ElementDefinitionConstraintComponent inv : e.getConstraint()) {
         if (!e.getPath().contains("."))
           b.append("<li><b title=\"Formal Invariant Identifier\">"+inv.getKey()+"</b>: "+Utilities.escapeXml(inv.getHuman())+" (xpath: <span style=\"font-family: Courier New, monospace\">"+Utilities.escapeXml(inv.getXpath())+"</span>)</li>");
@@ -1807,7 +1834,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     for (ProfiledType c : definitions.getConstraints().values()) {
       if (c.getBaseType().equals(name)) {
         b.append("<a name=\""+c.getName()+"\"> </a><a name=\""+c.getName().toLowerCase()+"\"> </a>\r\n");
-        b2.append(" <tr><td>"+c.getName()+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>Profile (<a href=\""+c.getName()+".profile.xml.html\">XML</a>, <a href=\""+c.getName()+".profile.json.html\">JSON</a>)</td></tr>\r\n");
+        b2.append(" <tr><td>"+c.getName()+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>StructureDefinition (<a href=\""+c.getName()+".profile.xml.html\">XML</a>, <a href=\""+c.getName()+".profile.json.html\">JSON</a>)</td></tr>\r\n");
       }
     }
     if (b.length() > 0) 
@@ -1900,6 +1927,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append(makeHeaderTab("Extensiblity", "extensibility.html", mode==null || "base".equals(mode)));
     b.append(makeHeaderTab("Примеры", "extensibility-examples.html", mode==null || "examples".equals(mode)));
     b.append(makeHeaderTab("Подробное описание", "extensibility-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Реестр", "extensibility-registry.html", mode==null || "registry".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2209,7 +2237,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
     boolean hasOps = !definitions.getResourceByName(title).getOperations().isEmpty();
     b.append("<ul class=\"nav nav-tabs\">");
-    
+ 
     b.append(makeHeaderTab("Значение", n+".html", mode==null || "content".equals(mode)));
     b.append(makeHeaderTab("Примеры", n+"-examples.html", "examples".equals(mode)));
     b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
@@ -3260,6 +3288,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1 + publicationNotice + s3;      
       else if (com[0].equals("profilelist"))
         src = s1 + genProfilelist() + s3;  
+      else if (com[0].equals("extensionslist"))
+        src = s1 + genExtensionsTable() + s3;  
       else if (com[0].equals("igprofileslist"))
         src = s1 + genIGProfilelist() + s3;  
       else if (com[0].equals("operationslist"))
@@ -3537,7 +3567,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append("</td><td>");
     b.append("<b>Тип</b>");
     b.append("</td><td>");
-    b.append("<b>Профиль</b>");
+    b.append("<b>StructureDefinition</b>");
     b.append("</td><td>");
     b.append("<b>Документация</b>");
     b.append("</td></tr>");
@@ -3834,101 +3864,214 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     if (resource.getConformancePackages().size() == 0) {
       s.append("<tr><td colspan=\"2\">Для этого ресурса нет профилей</td></tr>");
     } else { 
-      for (ConformancePackage ap: resource.getConformancePackages()) {
-//        if (ap.getProfiles().size() + ap.getExtensions().size() + ap.getExamples().size() + ap.getValuesets().size() > 0) {
-//          s.append("<tr><td colspan=\"2\"><b>"+Utilities.escapeXml(ap.getTitle())+"</b>"+(Utilities.noString(ap.getDescription()) ? "<br/>"+ap.getDescription() : "") + "</td></tr>");
-//          if (ap.getProfiles().size() > 0) {
-//            s.append("<tr><td colspan=\"2\">Profiles: </td></tr>");
-//            for (ProfileDefn p : ap.getProfiles())
-//              s.append("<tr><td><a href=\""+p.getId()+".html\">"+Utilities.escapeXml(p.getTitle())+"</a></td><td>"+Utilities.escapeXml(p.getResource().getDescription())+"</td></tr>");
-//          }
-//          if (ap.getExtensions().size() > 0) {
-//            s.append("<tr><td colspan=\"2\">Extensions: </td></tr>");
-//            for (ExtensionDefinition ed : ap.getExtensions())
-//              s.append("<tr><td><a href=\"extension-"+ed.getId()+".html\">"+Utilities.escapeXml(ed.getId())+"</a></td><td>"+Utilities.escapeXml(ed.getName()+" : "+ed.getDescription())+"</td></tr>");
-//          }
-//          if (ap.getExamples().size() > 0) {
-//            s.append("<tr><td colspan=\"2\">Examples: </td></tr>");
-//            for (Example ex : ap.getExamples())
-//              s.append("<tr><td><a href=\""+ex.getFileTitle()+".html\">"+Utilities.escapeXml(ex.getName())+"</a></td><td>"+Utilities.escapeXml(ex.getDescription())+"</td></tr>");
-//          }
-//        }
-        s.append("  <tr>\r\n");
-        s.append("    <td><a href=\"").append(ap.getId().toLowerCase()).append(".html\">").append(Utilities.escapeXml(ap.getTitle())).append("</a></td>\r\n");
-        s.append("    <td>").append(Utilities.escapeXml(ap.getDescription())).append("</td>\r\n");
-        s.append(" </tr>\r\n");
+      for (ImplementationGuide ig : definitions.getSortedIgs()) {
+        boolean started = false;
+        for (ConformancePackage ap: resource.getConformancePackages()) {
+          if (ig.getCode().equals(ap.getCategory())) {
+            if (!started) {
+              started = true;
+              s.append("  <tr><td colspan=\"2\"><b>"+Utilities.escapeXml(ig.getName())+"</b></td></tr>\r\n");
+            }
+            s.append("  <tr>\r\n");
+            s.append("    <td><a href=\"").append(ap.getId().toLowerCase()).append(".html\">").append(Utilities.escapeXml(ap.getTitle())).append("</a></td>\r\n");
+            s.append("    <td>").append(Utilities.escapeXml(ap.getDescription())).append("</td>\r\n");
+            s.append(" </tr>\r\n");
+          }
+        }
       }
     }
     return s.toString();
   }
 
   private String produceExampleList(ResourceDefn resource) throws Exception {
-    StringBuilder s = new StringBuilder();
-    boolean started = false;
-    for (Example e: resource.getExamples()) {
-      //   if (!e.isInBook()) {
-      if (!started)
-        s.append("<p>Указатель примеров:</p>\r\n<table class=\"list\">\r\n");
-      started = true;
-      if (e.getFileTitle().equals("conformance-base") || e.getFileTitle().equals("conformance-base2") || e.getFileTitle().equals("profiles-resources"))
-        s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td>");
-      else
-        s.append("<tr><td><a href=\""+e.getFileTitle()+".html\">"+Utilities.escapeXml(e.getDescription())+"</a></td>");
-      s.append("<td><a href=\""+e.getFileTitle()+".xml.html\">XML</a></td>");
-      s.append("<td><a href=\""+e.getFileTitle()+".json.html\">JSON</a></td>");
-      s.append("</tr>");
-    }
-    if (resource.getName().equals("ExtensionDefinition")) {
-      s.append("</table>\r\n<p>Extensions Defined as part of the specification:</p><table class=\"list\">\r\n");
-      List<String> urls = new ArrayList<String>();
-      urls.addAll(workerContext.getExtensionDefinitions().keySet());
-      Collections.sort(urls);
-      for (String url : urls) {
-        if (url.startsWith("http://hl7.org/fhir/ExtensionDefinition/")) {
-          ExtensionDefinition ed = workerContext.getExtensionDefinitions().get(url);
-          s.append("<tr><td><a href=\""+ed.getUserData("filename")+".html\">"+url.substring(40)+"</a></td>");
-          s.append("<td>"+Utilities.escapeXml(ed.getName())+"</td>");
-          s.append("<td><a href=\""+ed.getUserData("filename")+".xml.html\">XML</a></td>");
-          s.append("<td><a href=\""+ed.getUserData("filename")+".json.html\">JSON</a></td>");
-          s.append("</tr>\r\n");       
-        }
-      }
-    }
-    if (resource.getName().equals("Profile")) {
-      started = true;
-      for (String pn : definitions.getConformancePackages().keySet()) {
-        ConformancePackage ap = definitions.getConformancePackages().get(pn);
+    if (resource.getName().equals("StructureDefinition")) {
+      return produceStructureDefinitionExamples();
+    } else {
+      StringBuilder s = new StringBuilder();
+      boolean started = false;
+      for (Example e: resource.getExamples()) {
+        //   if (!e.isInBook()) {
         if (!started)
           s.append("<p>Указатель примеров:</p>\r\n<table class=\"list\">\r\n");
         started = true;
-        for (ProfileDefn p : ap.getProfiles()) {
-          String ln = p.getId();
-          s.append("<tr><td><a href=\""+ln+ ".html\">"+Utilities.escapeXml(p.getResource().getDescription())+"</a></td>");
-          s.append("<td><a href=\""+ln+".profile.xml.html\">XML</a></td>");
-          s.append("<td><a href=\""+ln+".profile.json.html\">JSON</a></td>");
-          s.append("</tr>");
-        }
-      }
-      for (String rn : definitions.sortedResourceNames()) {
-        if (!rn.equals("Profile")) {
-          for (ConformancePackage ap: definitions.getResourceByName(rn).getConformancePackages()) {
-            for (ProfileDefn p : ap.getProfiles()) {
-              s.append("<tr><td><a href=\""+p.getId()+".html\">"+Utilities.escapeXml(p.getTitle())+"</a>:"+Utilities.escapeXml(p.getResource().getDescription())+"</td>"+
-                  "<td><a href=\""+p.getTitle()+".profile.xml.html\">XML</a></td><td><a href=\""+p.getTitle()+".profile.json.html\">JSON</a></td></tr>");
-            }
-          }
-        }
-      }
-    }
+        if (e.getFileTitle().equals("conformance-base") || e.getFileTitle().equals("conformance-base2") || e.getFileTitle().equals("profiles-resources"))
+          s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td>");
+        else
+          s.append("<tr><td><a href=\""+e.getFileTitle()+".html\">"+Utilities.escapeXml(e.getDescription())+"</a></td>");
+        s.append("<td><a href=\""+e.getFileTitle()+".xml.html\">XML</a></td>");
+        s.append("<td><a href=\""+e.getFileTitle()+".json.html\">JSON</a></td>");
+        s.append("</tr>");
 
-    //  }
-    if (started)
-      s.append("</table>\r\n");
-    return s.toString();
+      }
+
+      //  }
+      if (started)
+        s.append("</table>\r\n");
+      return s.toString();
+    }
   }
 
   
     
+  private String produceStructureDefinitionExamples() throws Exception {
+    StringBuilder s = new StringBuilder();
+    
+    s.append("<div id=\"tabs\">\r\n");
+    s.append("<ul>\r\n");
+    s.append("  <li><a href=\"#tabs-1\">Base Types</a></li>\r\n");
+    s.append("  <li><a href=\"#tabs-2\">Constraints</a></li>\r\n");
+    s.append("  <li><a href=\"#tabs-3\">Extensions</a></li>\r\n");
+    s.append("</ul>\r\n");
+    s.append("<div id=\"tabs-1\">\r\n");
+
+    // base types
+    s.append("<table class=\"list\">\r\n");
+    genStructureExampleCategory(s, "Abstract Types");
+    genStructureExample(s, "element.html", "element", "Element");
+    genStructureExample(s, "backboneelement.html", "backboneelement", "BackBoneElement");
+    genStructureExample(s, "resource.html", "resource", "Resource");
+    genStructureExample(s, "domainresource.html", "domainresource", "DomainResource");
+    
+    genStructureExampleCategory(s, "Primitive Types");
+    List<String> names = new ArrayList<String>();
+    names.addAll(definitions.getPrimitives().keySet());
+    Collections.sort(names);
+    for (String n : names) {
+      DefinedCode dc = definitions.getPrimitives().get(n);
+      genStructureExample(s, "datatypes.html#"+dc.getCode(), dc.getCode().toLowerCase(), dc.getCode());
+    }
+
+    genStructureExampleCategory(s, "Data Types");
+    names.clear();
+    names.addAll(definitions.getTypes().keySet());
+    names.addAll(definitions.getStructures().keySet());
+    names.addAll(definitions.getInfrastructure().keySet());
+    Collections.sort(names);
+    for (String n : names) {
+      org.hl7.fhir.definitions.model.TypeDefn t = definitions.getTypes().get(n);
+      if (t == null)
+        t = definitions.getStructures().get(n);
+      if (t == null)
+        t = definitions.getInfrastructure().get(n);
+      genStructureExample(s, getLinkFor(t.getName()), t.getName().toLowerCase(), t.getName());
+    }
+
+    genStructureExampleCategory(s, "Resources");
+    for (String n : definitions.sortedResourceNames()) {
+      ResourceDefn r = definitions.getResources().get(n);
+      genStructureExample(s, r.getName().toLowerCase()+".html", r.getName().toLowerCase(), r.getName());
+    }
+    s.append("</table>\r\n");
+    
+    s.append("</div>\r\n");
+    s.append("<div id=\"tabs-2\">\r\n");
+
+    s.append("<table class=\"list\">\r\n");
+    Map<String, ProfileDefn> constraints = new HashMap<String, ProfileDefn>();
+    for (String pn : definitions.getConformancePackages().keySet()) 
+      for (ProfileDefn p : definitions.getConformancePackages().get(pn).getProfiles())
+        constraints.put(p.getId(), p);
+    for (String rn : definitions.sortedResourceNames()) 
+      for (ConformancePackage ap: definitions.getResourceByName(rn).getConformancePackages()) 
+        for (ProfileDefn p : ap.getProfiles()) 
+          constraints.put(p.getId(), p);
+    names.clear();
+    names.addAll(constraints.keySet());
+    Collections.sort(names);
+    for (ImplementationGuide ig : definitions.getSortedIgs()) {
+      boolean started = false;
+      for (String n : names) {
+        ProfileDefn p = constraints.get(n);
+        if (ig == p.getUsage()) {
+          if (!started) {
+            started = true;
+            genStructureExampleCategory(s, ig.getName());            
+          }
+          genStructureExample(s, p.getId().toLowerCase()+".html", p.getId().toLowerCase(), p.getTitle());
+        }
+      }
+    }
+    s.append("</table>\r\n");
+
+    s.append("</div>\r\n");
+    s.append("<div id=\"tabs-3\">\r\n");
+
+    s.append("<table class=\"list\">\r\n");
+    names.clear();
+    names.addAll(workerContext.getExtensionDefinitions().keySet());
+    Collections.sort(names);
+    for (ImplementationGuide ig : definitions.getSortedIgs()) {
+      boolean started = false;
+      for (String n : names) {
+        StructureDefinition ed = workerContext.getExtensionDefinitions().get(n);
+        if (ig.getCode().equals(ToolResourceUtilities.getUsage(ed))) {
+          if (!started) {
+            started = true;
+            genStructureExampleCategory(s, ig.getName());            
+          }
+          genStructureExample(s, ed.getId().toLowerCase()+".html", ed.getId().toLowerCase(), ed.getUrl().startsWith("http://hl7.org/fhir/StructureDefinition/") ? ed.getUrl().substring(40) : ed.getUrl(), ed.getName());
+        }
+      }
+    }
+    s.append("</table>\r\n");
+    
+    s.append("</div>\r\n");
+    s.append("</div>\r\n");
+    s.append("\r\n");
+
+    s.append("<script src=\"external/jquery/jquery.js\"> </script>\r\n");
+    s.append("<script src=\"jquery-ui.min.js\"> </script>\r\n");
+    s.append("<script>\r\n");
+    s.append("try {\r\n");
+    s.append("  var currentTabIndex = sessionStorage.getItem('fhir-sdelist-tab-index');\r\n");
+    s.append("}\r\n");
+    s.append("catch(exception){\r\n");
+    s.append("  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)\r\n");
+    s.append("    alert(exception);\r\n");
+    s.append("}\r\n");
+    s.append("\r\n");
+    s.append("if (!currentTabIndex)\r\n");
+    s.append("  currentTabIndex = '0';\r\n");
+    s.append("  \r\n");
+    s.append("$( '#tabs' ).tabs({\r\n");
+    s.append("         active: currentTabIndex,\r\n");
+    s.append("         activate: function( event, ui ) {\r\n");
+    s.append("             var active = $('.selector').tabs('option', 'active');\r\n");
+    s.append("             currentTabIndex = ui.newTab.index();\r\n");
+    s.append("             try {\r\n");
+    s.append("               sessionStorage.setItem('fhir-sdelist-tab-index', currentTabIndex);\r\n");
+    s.append("             }\r\n");
+    s.append("             catch(exception){\r\n");
+    s.append("              if (navigator.userAgent.toLowerCase().indexof('msie') == -1)\r\n");
+    s.append("                alert(exception);\r\n");
+    s.append("             }\r\n");
+    s.append("         }\r\n");
+    s.append("     });\r\n");
+    s.append("</script>\r\n");
+    s.append("\r\n");
+    
+    return s.toString();
+  }
+
+  private void genStructureExampleCategory(StringBuilder s, String heading) {
+    s.append("<tr>");
+    s.append("<td colspan=\"3\"><b>"+Utilities.escapeXml(heading)+"</b></td>");
+    s.append("</tr>");
+
+  }
+
+  private void genStructureExample(StringBuilder s, String link, String basename, String description) {
+    genStructureExample(s, link, basename, description, null);  
+  }
+  
+  private void genStructureExample(StringBuilder s, String link, String basename, String description, String tail) {
+    s.append("<tr>");
+    s.append("<td><a href=\""+link+"\">"+Utilities.escapeXml(description)+"</a> "+(Utilities.noString(tail) ? "" : Utilities.escapeXml(tail))+"</td>");
+    s.append("<td><a href=\""+basename+".profile.xml.html\">XML</a></td>");
+    s.append("<td><a href=\""+basename+".profile.json.html\">JSON</a></td>");
+    s.append("</tr>");
+  }
+  
   private String produceBookExamples(ResourceDefn resource) {
     StringBuilder s = new StringBuilder();
     for (Example e: resource.getExamples()) {
@@ -4114,9 +4257,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("footer3"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer3.html")+s3;
       else if (com[0].equals("title"))
-        src = s1+(workingTitle == null ? Utilities.escapeXml("Profile: "+profile.getTitle()) : workingTitle)+s3;
+        src = s1+(workingTitle == null ? Utilities.escapeXml("StructureDefinition: "+profile.getTitle()) : workingTitle)+s3;
       else if (com[0].equals("xtitle"))
-        src = s1+(workingTitle == null ? Utilities.escapeXml("Profile: "+profile.getTitle()) : Utilities.escapeXml(workingTitle))+s3;
+        src = s1+(workingTitle == null ? Utilities.escapeXml("StructureDefinition: "+profile.getTitle()) : Utilities.escapeXml(workingTitle))+s3;
       else if (com[0].equals("profiletitle"))
         src = s1+Utilities.escapeXml(pack.metadata("name"))+s3;
       else if (com[0].equals("filetitle"))
@@ -4224,7 +4367,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String profileDictionaryLink(ProfileDefn profile) {
-    String uri = ToolingExtensions.readStringExtension(profile.getResource(), "http://hl7.org/fhir/ExtensionDefinition/datadictionary");
+    String uri = ToolingExtensions.readStringExtension(profile.getResource(), "http://hl7.org/fhir/StructureDefinition/datadictionary");
     if (Utilities.noString(uri))
       return "<!-- no uri -->";
     String dict = definitions.getDictionaries().get(uri);
@@ -4236,7 +4379,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
           " resource must be a valid Observation as defined in the data dictionary <a href=\""+uri+".html\">"+dict+"</a>.</p>";
   }
 
-  private String generateHumanSummary(ConformancePackage pack, Profile profile) {
+  private String generateHumanSummary(ConformancePackage pack, StructureDefinition profile) {
     try {
       if ("true".equalsIgnoreCase(pack.metadata("no-summary")))
           return "";
@@ -4288,10 +4431,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     if (types.size() != 1)
       throw new Exception("unable to summarise extension (wrong count)");
     String url = types.get(0).getProfile();
-    ExtensionDefinitionResult ed = workerContext.getExtensionDefinition(null, url);
+    StructureDefinition ed = workerContext.getExtensionStructure(null, url);
     if (ed == null)
       throw new Exception("unable to summarise extension (no extension found)");
-    return "<li>Use the "+(modifier ? "<b>modifier</b> " : "")+"extension <a href=\""+ed.getExtensionDefinition().getUserData("filename")+".html\"><i>"+url+"</i></a> on element <i>"+root(path)+"</i></li>\r\n";    // TODO Auto-generated method stub
+    return "<li>Use the "+(modifier ? "<b>modifier</b> " : "")+"extension <a href=\""+ed.getUserData("filename")+".html\"><i>"+url+"</i></a> on element <i>"+root(path)+"</i></li>\r\n";    // TODO Auto-generated method stub
   }
 
   private boolean hasType(ElementDefinition ed, String tn) {
@@ -4369,7 +4512,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return path.contains(".") ? path.substring(0, path.lastIndexOf('.')) : path;
   }
 
-  public String processExtensionIncludes(String filename, ExtensionDefinition ed, String xml, String json, String tx, String src, String pagePath) throws Exception {
+  public String processExtensionIncludes(String filename, StructureDefinition ed, String xml, String json, String tx, String src, String pagePath) throws Exception {
     String workingTitle = null;
 
     while (src.contains("<%") || src.contains("[%"))
@@ -4491,12 +4634,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return src;
   }
 
-  private String generateExtensionTable(ExtensionDefinition ed, String filename) throws Exception {
+  private String generateExtensionTable(StructureDefinition ed, String filename) throws Exception {
     return new XhtmlComposer().compose(new ProfileUtilities(workerContext).generateExtensionTable(filename, ed, folders.dstDir, false, this));
   }
 
 
-  private String getTerminologyNotes(Profile profile) {
+  private String getTerminologyNotes(StructureDefinition profile) {
     List<String> txlist = new ArrayList<String>();
     Map<String, ElementDefinitionBindingComponent> txmap = new HashMap<String, ElementDefinitionBindingComponent>();
     for (ElementDefinition ed : profile.getSnapshot().getElement()) {
@@ -4536,7 +4679,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     }
   }
 
-  private String getInvariantList(Profile profile) {
+  private String getInvariantList(StructureDefinition profile) {
     List<String> txlist = new ArrayList<String>();
     Map<String, List<ElementDefinitionConstraintComponent>> txmap = new HashMap<String, List<ElementDefinitionConstraintComponent>>();
     for (ElementDefinition ed : profile.getSnapshot().getElement()) {
@@ -4564,10 +4707,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String profileReviewLink(ProfileDefn profile) {
-    String s = profile.getUsage();
-    if (!definitions.getIgs().containsKey(s) || !definitions.getIgs().get(s).isReview())
+    if (!profile.getUsage().isReview())
       return "";
-    s = Utilities.changeFileExt((String) profile.getResource().getUserData("filename"), "-review.xls");
+    String s = Utilities.changeFileExt((String) profile.getResource().getUserData("filename"), "-review.xls");
     return "Use the <a href=\""+s+"\">Review Spreadsheet</a> to comment on this profile."; 
   }
 
@@ -4606,60 +4748,62 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
   */
   
-  private String mappingsProfile(Profile source) {
+  private String mappingsProfile(StructureDefinition source) {
     MappingsGenerator m = new MappingsGenerator(definitions);
     m.generate(source);
     return m.getMappings();
   }
 
-  private String mappingsExtension(ExtensionDefinition ed) {
+  private String mappingsExtension(StructureDefinition ed) {
     MappingsGenerator m = new MappingsGenerator(definitions);
     m.generate(ed);
     return m.getMappings();
   }
 
-  private String definitionsProfile(Profile source) throws Exception {
+  private String definitionsProfile(StructureDefinition source) throws Exception {
     ByteArrayOutputStream b = new ByteArrayOutputStream();
     DictHTMLGenerator d = new DictHTMLGenerator(b, this);
     d.generate(source);
+    d.close();
     return b.toString();
   }
 
-  private String definitionsExtension(ExtensionDefinition ed) throws Exception {
+  private String definitionsExtension(StructureDefinition ed) throws Exception {
     ByteArrayOutputStream b = new ByteArrayOutputStream();
     DictHTMLGenerator d = new DictHTMLGenerator(b, this);
     d.generate(ed);
+    d.close();
     return b.toString();
   }
 
-  private String mapOnPageProfile(Profile source) {
+  private String mapOnPageProfile(StructureDefinition source) {
     if (source.getMapping().size() < 2)
       return "";
     StringBuilder b = new StringBuilder();
-    b.append("<div class=\"itoc\">\r\n<p>Таблица соответствий:</p>\r\n");
-    for (ProfileMappingComponent map : source.getMapping()) {
+    b.append("<div class=\"itoc\">\r\n<p>Мэппинг:</p>\r\n");
+    for (StructureDefinitionMappingComponent map : source.getMapping()) {
       b.append("<p class=\"link\"><a href=\"#").append(map.getIdentity()).append("\">").append(map.getName()).append("</a></p>");
     }
     b.append("</div>\r\n");
     return b.toString();
   }
 
-  private String baseLink(Profile structure) throws Exception {
-    if (structure.getBase().startsWith("http://hl7.org/fhir/Profile/")) {
+  private String baseLink(StructureDefinition structure) throws Exception {
+    if (structure.getBase().startsWith("http://hl7.org/fhir/StructureDefinition/")) {
       String name = structure.getBase().substring(28);
       if (definitions.hasResource(name))
         return "<a href=\""+name.toLowerCase()+".html\">"+name+"</a>";
       else if (definitions.hasElementDefn(name))
         return "<a href=\""+definitions.getSrcFile(name)+"#"+name+".html\">"+name+"</a>";  
       else {
-        Profile p = definitions.getSnapShotForBase(structure.getBase());
+        StructureDefinition p = definitions.getSnapShotForBase(structure.getBase());
         if (p == null)
           return "??"+name;
         return "<a href=\""+name+".html\">"+name+"</a>";  
       }
     } else {
       String[] parts = structure.getBase().split("#");
-      Profile profile = new ProfileUtilities(workerContext).getProfile(structure, parts[0]);
+      StructureDefinition profile = new ProfileUtilities(workerContext).getProfile(structure, parts[0]);
       if (profile != null) {
         if (parts.length == 2) {
           return "<a href=\""+profile.getUserData("filename")+"."+parts[1]+".html\">the structure "+parts[1]+"</a> in <a href=\""+profile.getUserData("filename")+".html\">the "+profile.getName()+" profile</a>";
@@ -4925,7 +5069,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return terminologyServices;
   }
 
-  public Map<String, Profile> getProfiles() {
+  public Map<String, StructureDefinition> getProfiles() {
     return profiles;
   }
 
@@ -4977,14 +5121,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       String right = text.substring(text.indexOf("]]]")+3);
       String url = "";
       String[] parts = linkText.split("\\#");
-      if (parts[0].contains("/ExtensionDefinition/")) {
-        ExtensionDefinitionResult ed = workerContext.getExtensionDefinition(null, parts[0]);
-        if (ed == null)
-          System.out.println("Error: Unresolved logical URL "+linkText);
-        else
-          url = ed.getExtensionDefinition().getUserData("filename")+".html";
-      } else {
-        Profile p = new ProfileUtilities(workerContext).getProfile(null, parts[0]);
+      if (parts[0].contains("/StructureDefinition/")) {
+        StructureDefinition ed = workerContext.getExtensionStructure(null, parts[0]);
+        url = ed.getUserData("filename")+".html";
+      } 
+      if (Utilities.noString(url)) {
+        StructureDefinition p = new ProfileUtilities(workerContext).getProfile(null, parts[0]);
         if (p != null) {
           if (p.getUserData("filename") == null)
             url = parts[0].toLowerCase()+".html";
@@ -4997,7 +5139,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         } else if (definitions.hasPrimitiveType(linkText)) {
           url = "datatypes.html#"+linkText;
         } else {
-          System.out.println("Error: Unresolved logical URL "+linkText);
+          System.out.println("Error (#3): Unresolved logical URL "+linkText);
           //        throw new Exception("Unresolved logical URL "+url);
         }
       }
@@ -5062,12 +5204,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   @Override
-  public String getLinkForProfile(Profile profile, String url) throws Exception {
+  public String getLinkForProfile(StructureDefinition profile, String url) throws Exception {
     String fn;
     if (!url.startsWith("#")) {
       String[] path = url.split("#");
       profile = new ProfileUtilities(workerContext).getProfile(null, path[0]);
-      if (profile == null && url.startsWith("Profile/"))
+      if (profile == null && url.startsWith("StructureDefinition/"))
         return "hspc-"+url.substring(8)+".html|"+url.substring(8);
     }
     if (profile != null) {
@@ -5106,7 +5248,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         level = Integer.parseInt(com[1]);
         src = s1+s3;
       } else if (com.length != 1)
-        throw new Exception("Instruction <%"+s2+"%> not understood parsing conformance package "+pack.getId());
+        throw new Exception("Instruction <%"+s2+"%> not understood parsing profile "+pack.getId());
       else if (com[0].equals("pageheader"))
         src = s1+pageHeader(pack.getId().toUpperCase().substring(0, 1)+pack.getId().substring(1))+s3;
       else if (com[0].equals("header"))
@@ -5126,7 +5268,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("footer3"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer3.html")+s3;
       else if (com[0].equals("title"))
-        src = s1+(workingTitle == null ? Utilities.escapeXml(pack.getTitle()+" (Conformance Package)") : workingTitle)+s3;
+        src = s1+(workingTitle == null ? Utilities.escapeXml(pack.getTitle()+" (Profile)") : workingTitle)+s3;
       else if (com[0].equals("xtitle"))
         src = s1+Utilities.escapeXml(pack.getId().toUpperCase().substring(0, 1)+pack.getId().substring(1))+s3;
       else if (com[0].equals("name"))
@@ -5210,7 +5352,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("package.search"))
         src = s1+getSearch(pack)+s3;
       else 
-        throw new Exception("Instruction <%"+s2+"%> not understood parsing conformance package "+pack.getId());
+        throw new Exception("Instruction <%"+s2+"%> not understood parsing profile "+pack.getId());
     }
     return src;
   }
@@ -5226,7 +5368,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     }
     if (pack.getExtensions().size() > 0) {
       s.append("<tr><td colspan=\"2\"><b>Extensions</b>: </td></tr>");
-      for (ExtensionDefinition ed : pack.getExtensions())
+      for (StructureDefinition ed : pack.getExtensions())
         s.append("<tr><td><a name=\"extension-").append(ed.getId()).append("\"/><a href=\"extension-").append(ed.getId()).append(".html\">").append(Utilities.escapeXml(ed.getId()))
                 .append("</a></td><td><b>").append(Utilities.escapeXml(ed.getName())).append("</b> : ").append(processMarkdown(ed.getDescription())).append("</td></tr>");
     }

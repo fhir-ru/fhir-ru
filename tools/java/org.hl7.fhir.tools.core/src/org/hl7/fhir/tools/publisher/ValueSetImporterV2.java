@@ -14,6 +14,7 @@ import org.hl7.fhir.definitions.validation.ValueSetValidator;
 import org.hl7.fhir.instance.formats.FormatUtilities;
 import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.instance.model.DateTimeType;
+import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
@@ -21,9 +22,9 @@ import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValuesetStatus;
 import org.hl7.fhir.instance.utils.ToolingExtensions;
 import org.hl7.fhir.instance.utils.ValueSetUtilities;
+import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.IniFile;
@@ -36,13 +37,14 @@ import org.w3c.dom.Element;
 
 public class ValueSetImporterV2 {
   private static final String HTTP_separator = "/";
-
+  private List<ValidationMessage> errors; 
   private PageProcessor page;
   private List<ValueSet> valuesets = new ArrayList<ValueSet>();
   
-  public ValueSetImporterV2(PageProcessor page) {
+  public ValueSetImporterV2(PageProcessor page, List<ValidationMessage> errors) {
     super();
     this.page = page;
+    this.errors = errors;
   }
 
   public void execute() throws Exception {
@@ -237,7 +239,7 @@ public class ValueSetImporterV2 {
     vs.setPublisher("HL7, Inc");
     vs.setVersion("2.7");
     vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org"));
-    vs.setStatus(ValuesetStatus.ACTIVE);
+    vs.setStatus(ConformanceResourceStatus.ACTIVE);
     vs.setExperimental(true);
     vs.setDateElement(new DateTimeType("2011-01-28")); // v2.7 version
     ValueSetDefineComponent def = new ValueSet.ValueSetDefineComponent();
@@ -304,7 +306,7 @@ public class ValueSetImporterV2 {
     // v2 versioning
     // information
     vs.getText().setDiv(new XhtmlParser().parse("<div>" + s.toString() + "</div>", "div").getElement("div"));
-    new ValueSetValidator(page.getWorkerContext()).validate("v2 table "+id, vs, false, true);
+    new ValueSetValidator(page.getWorkerContext()).validate(errors, "v2 table "+id, vs, false, true);
     return vs;
   }
 
@@ -319,7 +321,7 @@ public class ValueSetImporterV2 {
     vs.setName("v2 table " + id + ", Version " + version);
     vs.setPublisher("HL7, Inc");
     vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org"));
-    vs.setStatus(ValuesetStatus.ACTIVE);
+    vs.setStatus(ConformanceResourceStatus.ACTIVE);
     vs.setExperimental(false);
     vs.setVersion(id);
     vs.setDateElement(new DateTimeType("2011-01-28")); // v2.7 version
@@ -392,7 +394,7 @@ public class ValueSetImporterV2 {
     // v2 versioning
     // information
     vs.getText().setDiv(new XhtmlParser().parse("<div>" + s.toString() + "</div>", "div").getElement("div"));
-    new ValueSetValidator(page.getWorkerContext()).validate("v2 table "+id, vs, false, true);
+    new ValueSetValidator(page.getWorkerContext()).validate(errors, "v2 table "+id, vs, false, true);
     return vs;
   }
 

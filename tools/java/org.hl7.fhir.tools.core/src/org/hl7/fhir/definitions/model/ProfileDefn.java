@@ -27,29 +27,33 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
-import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.StructureDefinition;
 
 // publishing details about a profile + the profile
 public class ProfileDefn {
 
   private String title; // human readable name
   private String id; // id in the resource, which is also the file name root
-  private Profile resource;
+  private StructureDefinition resource;
   private ResourceDefn defn; // temporary, until we get around to building the resource 
-  private String usage;
+  private ImplementationGuide usage;
     
-  public ProfileDefn(Profile resource, String usage) {
+  public ProfileDefn(StructureDefinition resource, ImplementationGuide usage) {
     this.id = resource.getId();
     this.title = resource.getName();
     this.resource = resource;
+    if (usage == null)
+      throw new Error("No usage on profile on "+resource.getName());
     this.usage = usage;
   }
 
-  public ProfileDefn(String id, String title, ResourceDefn defn, String usage) {
+  public ProfileDefn(String id, String title, ResourceDefn defn, ImplementationGuide usage) {
     this.id = id;
     this.title = title;
     this.defn = defn;
     this.usage = usage;
+    if (usage == null)
+      throw new Error("No usage on profile "+id+" ("+title+"):");
   }
 
   public String getTitle() {
@@ -68,11 +72,11 @@ public class ProfileDefn {
     this.id = id;
   }
 
-  public Profile getResource() {
+  public StructureDefinition getResource() {
     return resource;
   }
 
-  public void setResource(Profile resource) {
+  public void setResource(StructureDefinition resource) {
     this.resource = resource;
   }
 
@@ -84,11 +88,11 @@ public class ProfileDefn {
     this.defn = defn;
   }
 
-  public String getUsage() {
+  public ImplementationGuide getUsage() {
     return usage;
   }
 
-  public void setUsage(String usage) {
+  public void setUsage(ImplementationGuide usage) {
     this.usage = usage;
   }
 

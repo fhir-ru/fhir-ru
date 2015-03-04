@@ -10,11 +10,12 @@ import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.instance.model.Bundle.BundleType;
+import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.DataElement;
-import org.hl7.fhir.instance.model.DataElement.ResourceObservationDefStatus;
 import org.hl7.fhir.instance.model.DateTimeType;
+import org.hl7.fhir.instance.model.ElementDefinition;
 import org.hl7.fhir.instance.model.Identifier;
 import org.hl7.fhir.instance.model.InstantType;
 import org.hl7.fhir.instance.model.Meta;
@@ -157,27 +158,26 @@ public class LoincToDEConvertor {
 				id.setValue(code);
 				de.setIdentifier(id);
 				de.setPublisher("Regenstrief + FHIR Project Team");
-//				cde.getTelecom().add(new Contact().setSystem(ContactSystem.url).setValue("http://hl7.org/fhir"));
-//				cde.getTelecom().add(new Contact().setSystem(ContactSystem.url).setValue("http://loinc.org"));
 				if (!col(row, "STATUS").equals("ACTIVE"))
-	 				de.setStatus(ResourceObservationDefStatus.DRAFT); // till we get good at this
+	 				de.setStatus(ConformanceResourceStatus.DRAFT); // till we get good at this
 				else
-					de.setStatus(ResourceObservationDefStatus.RETIRED);
+					de.setStatus(ConformanceResourceStatus.RETIRED);
 				de.setDateElement(DateTimeType.now());
 				de.setName(comp);
+				ElementDefinition dee = de.addElement();
 
 				// PROPERTY	ignore
 				// TIME_ASPCT	
 				// SYSTEM	
 				// SCALE_TYP	
 				// METHOD_TYP	
-				de.getCategory().add(new CodeableConcept().setText(col(row, "CLASS")));
+				// dee.getCategory().add(new CodeableConcept().setText(col(row, "CLASS")));
 				// SOURCE	
 				// DATE_LAST_CHANGED - should be in ?	
 				// CHNG_TYPE	
-				de.setComments(col(row , "COMMENTS"));
+				dee.setComments(col(row , "COMMENTS"));
 				if (hasCol(row, "CONSUMER_NAME"))
-					de.addSynonym(col(row, "CONSUMER_NAME"));	
+					dee.addSynonym(col(row, "CONSUMER_NAME"));	
 				// MOLAR_MASS	
 				// CLASSTYPE	
 				// FORMULA	
@@ -193,17 +193,19 @@ public class LoincToDEConvertor {
 	        String n = col(row, "RELATEDNAMES2");
 	        for (String s : n.split("\\;")) {
 						if (!Utilities.noString(s))
-							de.addSynonym(s);	
-					}
-        }
-				de.addSynonym(col(row, "SHORTNAME"));	
+							dee.addSynonym(s);	
+	        }
+				}
+				dee.addSynonym(col(row, "SHORTNAME"));	
 				// ORDER_OBS	
 				// CDISC Code	
 				// HL7_FIELD_SUBFIELD_ID	
 				//  ------------------ EXTERNAL_COPYRIGHT_NOTICE todo	
-				de.setDefinition(col(row, "LONG_COMMON_NAME"));	
-				// HL7_V2_DATATYPE	
-				de.setType(makeType(col(row, "HL7_V3_DATATYPE"), code));	
+				dee.setDefinition(col(row, "LONG_COMMON_NAME"));	
+				// HL7_V2_DATATYPE
+				String cc = makeType(col(row, "HL7_V3_DATATYPE"), code);
+				if (cc != null)
+				  dee.addType().setCode(cc);	
 				// todo... CURATED_RANGE_AND_UNITS	
 				// todo: DOCUMENT_SECTION	
 				// STATUS_REASON	
@@ -217,9 +219,9 @@ public class LoincToDEConvertor {
 				// units:
 				// UNITSREQUIRED	
 				// SUBMITTED_UNITS
-				de.setUnits(makeUnits(col(row, "EXAMPLE_UNITS"), col(row, "EXAMPLE_UCUM_UNITS")));
+				ToolingExtensions.setAllowableUnits(dee, makeUnits(col(row, "EXAMPLE_UNITS"), col(row, "EXAMPLE_UCUM_UNITS")));
 				// EXAMPLE_SI_UCUM_UNITS	
-//			}
+			
 			row = XMLUtil.getNextSibling(row);
 		}
 		System.out.println("done");

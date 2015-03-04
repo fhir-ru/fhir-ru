@@ -12,10 +12,12 @@ import org.hl7.fhir.instance.model.ContactPoint;
 import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.DataElement;
-import org.hl7.fhir.instance.model.DataElement.DataElementBindingComponent;
 import org.hl7.fhir.instance.model.DataElement.DataElementContactComponent;
 import org.hl7.fhir.instance.model.DomainResource;
 import org.hl7.fhir.instance.model.Element;
+import org.hl7.fhir.instance.model.ElementDefinition;
+import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionBindingComponent;
+import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.instance.model.Extension;
 import org.hl7.fhir.instance.model.Meta;
 import org.hl7.fhir.instance.model.OperationOutcome;
@@ -111,26 +113,27 @@ public class ResourceUtilities {
     b.append("<tr>");
     for (String col : cols) {
       String v;
+      ElementDefinition dee = de.getElement().get(0);
       if (col.equals("DataElement.name")) {
         v = de.hasName() ? Utilities.escapeXml(de.getName()) : "";
       } else if (col.equals("DataElement.status")) {
         v = de.hasStatusElement() ? de.getStatusElement().asStringValue() : "";
       } else if (col.equals("DataElement.code")) {
-        v = renderCoding(de.getCode());
+        v = renderCoding(dee.getCode());
       } else if (col.equals("DataElement.type")) {
-        v = de.hasType() ? Utilities.escapeXml(de.getType()) : "";
+        v = dee.hasType() ? Utilities.escapeXml(dee.getType().get(0).getCode()) : "";
       } else if (col.equals("DataElement.units")) {
-        v = renderDEUnits(de.getUnits());
+        v = renderDEUnits(ToolingExtensions.getAllowedUnits(dee));
       } else if (col.equals("DataElement.binding")) {
-        v = renderBinding(de.getBinding());
+        v = renderBinding(dee.getBinding());
       } else if (col.equals("DataElement.minValue")) {
-        v = ToolingExtensions.hasExtension(de, "http://hl7.org/fhir/ExtensionDefinition/minValue") ? Utilities.escapeXml(ToolingExtensions.readPrimitiveExtension(de, "http://hl7.org/fhir/ExtensionDefinition/minValue").asStringValue()) : "";
+        v = ToolingExtensions.hasExtension(de, "http://hl7.org/fhir/StructureDefinition/minValue") ? Utilities.escapeXml(ToolingExtensions.readPrimitiveExtension(de, "http://hl7.org/fhir/StructureDefinition/minValue").asStringValue()) : "";
       } else if (col.equals("DataElement.maxValue")) {
-        v = ToolingExtensions.hasExtension(de, "http://hl7.org/fhir/ExtensionDefinition/maxValue") ? Utilities.escapeXml(ToolingExtensions.readPrimitiveExtension(de, "http://hl7.org/fhir/ExtensionDefinition/maxValue").asStringValue()) : "";
+        v = ToolingExtensions.hasExtension(de, "http://hl7.org/fhir/StructureDefinition/maxValue") ? Utilities.escapeXml(ToolingExtensions.readPrimitiveExtension(de, "http://hl7.org/fhir/StructureDefinition/maxValue").asStringValue()) : "";
       } else if (col.equals("DataElement.maxLength")) {
-        v = ToolingExtensions.hasExtension(de, "http://hl7.org/fhir/ExtensionDefinition/maxLength") ? Utilities.escapeXml(ToolingExtensions.readPrimitiveExtension(de, "http://hl7.org/fhir/ExtensionDefinition/maxLength").asStringValue()) : "";
+        v = ToolingExtensions.hasExtension(de, "http://hl7.org/fhir/StructureDefinition/maxLength") ? Utilities.escapeXml(ToolingExtensions.readPrimitiveExtension(de, "http://hl7.org/fhir/StructureDefinition/maxLength").asStringValue()) : "";
       } else if (col.equals("DataElement.mask")) {
-        v = ToolingExtensions.hasExtension(de, "http://hl7.org/fhir/ExtensionDefinition/mask") ? Utilities.escapeXml(ToolingExtensions.readPrimitiveExtension(de, "http://hl7.org/fhir/ExtensionDefinition/mask").asStringValue()) : "";
+        v = ToolingExtensions.hasExtension(de, "http://hl7.org/fhir/StructureDefinition/mask") ? Utilities.escapeXml(ToolingExtensions.readPrimitiveExtension(de, "http://hl7.org/fhir/StructureDefinition/mask").asStringValue()) : "";
       } else 
         throw new Error("Unknown column name: "+col);
 
@@ -142,8 +145,10 @@ public class ResourceUtilities {
   }
 
   
-  private static String renderBinding(DataElementBindingComponent binding) {
-    return "todo";  
+
+  private static String renderBinding(ElementDefinitionBindingComponent binding) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
   private static String renderDEUnits(Type units) {
@@ -192,7 +197,7 @@ public class ResourceUtilities {
       results.add("DataElement.code");
       b.append("<td><b>Code</b></td>");
     }
-    if (!common.hasType() && hasType(bundle)) {
+    if (!common.getElement().get(0).hasType() && hasType(bundle)) {
       results.add("DataElement.type");
       b.append("<td><b>Type</b></td>");
     }
@@ -204,19 +209,19 @@ public class ResourceUtilities {
       results.add("DataElement.binding");
       b.append("<td><b>Binding</b></td>");
     }
-    if (hasExtension(bundle, "http://hl7.org/fhir/ExtensionDefinition/minValue")) {
+    if (hasExtension(bundle, "http://hl7.org/fhir/StructureDefinition/minValue")) {
       results.add("DataElement.minValue");
       b.append("<td><b>Min Value</b></td>");
     }
-    if (hasExtension(bundle, "http://hl7.org/fhir/ExtensionDefinition/maxValue")) {
+    if (hasExtension(bundle, "http://hl7.org/fhir/StructureDefinition/maxValue")) {
       results.add("DataElement.maxValue");
       b.append("<td><b>Max Value</b></td>");
     }
-    if (hasExtension(bundle, "http://hl7.org/fhir/ExtensionDefinition/maxLength")) {
+    if (hasExtension(bundle, "http://hl7.org/fhir/StructureDefinition/maxLength")) {
       results.add("DataElement.maxLength");
       b.append("<td><b>Max Length</b></td>");
     }
-    if (hasExtension(bundle, "http://hl7.org/fhir/ExtensionDefinition/mask")) {
+    if (hasExtension(bundle, "http://hl7.org/fhir/StructureDefinition/mask")) {
       results.add("DataElement.mask");
       b.append("<td><b>Mask</b></td>");
     }
@@ -238,7 +243,7 @@ public class ResourceUtilities {
   private static boolean hasBinding(Bundle bundle) {
     for (BundleEntryComponent e : bundle.getEntry()) {
       DataElement de = (DataElement) e.getResource();
-      if (de.hasBinding())
+      if (de.getElement().get(0).hasBinding())
         return true;
     }
     return false;
@@ -247,7 +252,7 @@ public class ResourceUtilities {
   private static boolean hasCode(Bundle bundle) {
     for (BundleEntryComponent e : bundle.getEntry()) {
       DataElement de = (DataElement) e.getResource();
-      if (de.hasCode())
+      if (de.getElement().get(0).hasCode())
         return true;
     }
     return false;
@@ -256,7 +261,7 @@ public class ResourceUtilities {
   private static boolean hasType(Bundle bundle) {
     for (BundleEntryComponent e : bundle.getEntry()) {
       DataElement de = (DataElement) e.getResource();
-      if (de.hasType())
+      if (de.getElement().get(0).hasType())
         return true;
     }
     return false;
@@ -265,7 +270,7 @@ public class ResourceUtilities {
   private static boolean hasUnits(Bundle bundle) {
     for (BundleEntryComponent e : bundle.getEntry()) {
       DataElement de = (DataElement) e.getResource();
-      if (de.hasUnits())
+      if (ToolingExtensions.getAllowedUnits(de.getElement().get(0)) != null)
         return true;
     }
     return false;
@@ -278,7 +283,7 @@ public class ResourceUtilities {
     meta.getContact().addAll(prototype.getContact());
     meta.setStatus(prototype.getStatus());
     meta.setDate(prototype.getDate());
-    meta.setType(prototype.getType());
+    meta.addElement().getType().addAll(prototype.getElement().get(0).getType());
 
     for (BundleEntryComponent e : bundle.getEntry()) {
       DataElement de = (DataElement) e.getResource();
@@ -290,10 +295,10 @@ public class ResourceUtilities {
         meta.setStatusElement(null);
       if (!Base.compareDeep(de.getDateElement(), meta.getDateElement(), false))
         meta.setDateElement(null);
-      if (!Base.compareDeep(de.getTypeElement(), meta.getTypeElement(), false))
-        meta.setTypeElement(null);
+      if (!Base.compareDeep(de.getElement().get(0).getType(), meta.getElement().get(0).getType(), false))
+        meta.getElement().get(0).getType().clear();
     }
-    if (meta.hasPublisher() || meta.hasContact() || meta.hasStatus() || meta.hasDate() || meta.hasType()) {
+    if (meta.hasPublisher() || meta.hasContact() || meta.hasStatus() || meta.hasDate() /* || meta.hasType() */) {
       b.append("<table class=\"grid\">\r\n"); 
       if (meta.hasPublisher())
         b.append("<tr><td>Publisher:</td><td>"+meta.getPublisher()+"</td></tr>\r\n");
@@ -322,11 +327,26 @@ public class ResourceUtilities {
         b.append("<tr><td>Status:</td><td>"+meta.getStatus().toString()+"</td></tr>\r\n");
       if (meta.hasDate())
         b.append("<tr><td>Date:</td><td>"+meta.getDateElement().asStringValue()+"</td></tr>\r\n");
-      if (meta.hasType())
-        b.append("<tr><td>Type:</td><td>"+meta.getType()+"</td></tr>\r\n");
+      if (meta.getElement().get(0).hasType())
+        b.append("<tr><td>Type:</td><td>"+renderType(meta.getElement().get(0).getType())+"</td></tr>\r\n");
       b.append("</table>\r\n"); 
     }  
     return meta;
+  }
+
+  private static String renderType(List<TypeRefComponent> type) {
+    if (type == null || type.isEmpty())
+      return "";
+    CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
+    for (TypeRefComponent c : type)
+      b.append(renderType(c));
+    return b.toString();
+  }
+
+  private static String renderType(TypeRefComponent type) {
+    if (type == null || type.isEmpty())
+      return "";
+    return type.getCode();
   }
 
   public static void renderContactPoint(StringBuilder b, ContactPoint cp) {

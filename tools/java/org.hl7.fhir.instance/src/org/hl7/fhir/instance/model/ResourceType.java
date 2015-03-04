@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Generated on Mon, Feb 23, 2015 08:50+1100 for FHIR v0.4.0
+// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
 
 public enum ResourceType {
     Condition,
@@ -14,11 +14,10 @@ public enum ResourceType {
     Appointment,
     Slot,
     Contraindication,
-    EpisodeOfCare,
     Composition,
+    EpisodeOfCare,
     Conformance,
     NamingSystem,
-    Profile,
     HealthcareService,
     OrderResponse,
     StatusResponse,
@@ -48,6 +47,7 @@ public enum ResourceType {
     RelatedPerson,
     InstitutionalClaim,
     Alert,
+    AuditEvent,
     EligibilityResponse,
     StatusRequest,
     Person,
@@ -70,7 +70,6 @@ public enum ResourceType {
     VisionPrescription,
     DocumentReference,
     Immunization,
-    ExtensionDefinition,
     Bundle,
     Subscription,
     ImagingStudy,
@@ -86,7 +85,6 @@ public enum ResourceType {
     DocumentManifest,
     MedicationAdministration,
     Encounter,
-    SecurityEvent,
     PendedRequest,
     List,
     DeviceUseStatement,
@@ -131,16 +129,14 @@ public enum ResourceType {
       return "slot";
     case Contraindication:
       return "contraindication";
-    case EpisodeOfCare:
-      return "episodeofcare";
     case Composition:
       return "composition";
+    case EpisodeOfCare:
+      return "episodeofcare";
     case Conformance:
       return "conformance";
     case NamingSystem:
       return "namingsystem";
-    case Profile:
-      return "profile";
     case HealthcareService:
       return "healthcareservice";
     case OrderResponse:
@@ -199,6 +195,8 @@ public enum ResourceType {
       return "institutionalclaim";
     case Alert:
       return "alert";
+    case AuditEvent:
+      return "auditevent";
     case EligibilityResponse:
       return "eligibilityresponse";
     case StatusRequest:
@@ -243,8 +241,6 @@ public enum ResourceType {
       return "documentreference";
     case Immunization:
       return "immunization";
-    case ExtensionDefinition:
-      return "extensiondefinition";
     case Bundle:
       return "bundle";
     case Subscription:
@@ -275,8 +271,6 @@ public enum ResourceType {
       return "medicationadministration";
     case Encounter:
       return "encounter";
-    case SecurityEvent:
-      return "securityevent";
     case PendedRequest:
       return "pendedrequest";
     case List:

@@ -1,12 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/questionnaire.xsd">
- <id value="sdc-loinc"/>
-   <extension url="http://hl7.org/fhir/ExtensionDefinition/questionnaire-category">
-    <valueCodeableConcept>
-      <coding>
-        <code value="Acute Care Hospitals"/>
-      </coding>
-    </valueCodeableConcept>
-  </extension>
+  <id value="sdc-loinc"/>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">Todo</div>
@@ -15,83 +9,86 @@
     <ValueSet>
       <id value="ll2655-0"/>
       <name value="AHRQ_Medication_Q2"/>
-      <description value="The answer list for question 2 on the AHRQ &quot;Medication or Other Substance&quot; form"/>
+      <description value="The answer list for question 2 on the AHRQ &#34;Medication or Other Substance&#34; form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2655-0"/>
-        <caseSensitive value="true"/>          
-        <concept>
-          <code value="LA20278-0"/>
-          <display value="Prescription or over-the- counter (including herbal supplements)"/>
-        </concept>
-        <concept>
-          <code value="LA20298-8"/>
-          <display value="Compounded preparations"/>
-        </concept>
-        <concept>
-          <code value="LA20299-6"/>
-          <display value="Investigational drugs"/>
-        </concept>
-        <concept>
-          <code value="LA4489-6"/>
-          <display value="Unknown"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2655-0"/>
+          <concept>
+            <code value="LA20278-0"/>
+            <display value="Prescription or over-the- counter (including herbal supplements)"/>
+          </concept>
+          <concept>
+            <code value="LA20298-8"/>
+            <display value="Compounded preparations"/>
+          </concept>
+          <concept>
+            <code value="LA20299-6"/>
+            <display value="Investigational drugs"/>
+          </concept>
+          <concept>
+            <code value="LA4489-6"/>
+            <display value="Unknown"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
     <ValueSet>
       <id value="ll2657-6"/>
       <name value="AHRQ_Medication_Q4"/>
-      <description value="The answer list for question 4 on the AHRQ &quot;Medication or Other Substance&quot; form"/>
+      <description value="The answer list for question 4 on the AHRQ &#34;Medication or Other Substance&#34; form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2657-6"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA20283-0"/>
-          <display value="Vaccines"/>
-        </concept>
-        <concept>
-          <code value="LA20287-1"/>
-          <display value="Other biological products (e.g., thrombolytic)"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2657-6"/>
+          <concept>
+            <code value="LA20283-0"/>
+            <display value="Vaccines"/>
+          </concept>
+          <concept>
+            <code value="LA20287-1"/>
+            <display value="Other biological products (e.g., thrombolytic)"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
     <ValueSet>
       <id value="ll2659-2"/>
       <name value="AHRQ_Medication_Q6"/>
-      <description value="The answer list for question 6 on the AHRQ &quot;Medication or Other Substance&quot; form"/>
+      <description value="The answer list for question 6 on the AHRQ &#34;Medication or Other Substance&#34; form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2659-2"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA20273-1"/>
-          <display value="Dietary supplements (other than vitamins or minerals)"/>
-        </concept>
-        <concept>
-          <code value="LA16117-6"/>
-          <display value="Vitamins or minerals"/>
-        </concept>
-        <concept>
-          <code value="LA20320-0"/>
-          <display value="Enteral nutritional products, including infant formula"/>
-        </concept>
-        <concept>
-          <code value="LA20321-8"/>
-          <display value="Parenteral nutritional products"/>
-        </concept>
-        <concept>
-          <code value="LA20318-4"/>
-          <display value="Other: PLEASE SPECIFY"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2659-2"/>
+          <concept>
+            <code value="LA20273-1"/>
+            <display value="Dietary supplements (other than vitamins or minerals)"/>
+          </concept>
+          <concept>
+            <code value="LA16117-6"/>
+            <display value="Vitamins or minerals"/>
+          </concept>
+          <concept>
+            <code value="LA20320-0"/>
+            <display value="Enteral nutritional products, including infant formula"/>
+          </concept>
+          <concept>
+            <code value="LA20321-8"/>
+            <display value="Parenteral nutritional products"/>
+          </concept>
+          <concept>
+            <code value="LA20318-4"/>
+            <display value="Other: PLEASE SPECIFY"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -101,28 +98,27 @@
       <description value="The answer list for question 7 on the AHRQ 'Medication or Other Substance' form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2660-0"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA20275-6"/>
-          <display value="Incorrect action (process failure or error) (e.g., such as administering overdose or incorrect
-                 medication)"/>
-        </concept>
-        <concept>
-          <code value="LA20314-3	"/>
-          <display value="Unsafe condition"/>
-        </concept>
-        <concept>
-          <code value="LA20315-0"/>
-          <display value="Adverse reaction in patient to the administered substance without any apparent incorrect
-                 action"/>
-        </concept>
-        <concept>
-          <code value="LA4489-6"/>
-          <display value="Unknown"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2660-0"/>
+          <concept>
+            <code value="LA20275-6"/>
+            <display value="Incorrect action (process failure or error) (e.g., such as administering overdose or incorrect                  medication)"/>
+          </concept>
+          <concept>
+            <code value="LA20314-3 "/>
+            <display value="Unsafe condition"/>
+          </concept>
+          <concept>
+            <code value="LA20315-0"/>
+            <display value="Adverse reaction in patient to the administered substance without any apparent incorrect                  action"/>
+          </concept>
+          <concept>
+            <code value="LA4489-6"/>
+            <display value="Unknown"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -132,71 +128,71 @@
       <description value="The answer list for question 8 on the AHRQ 'Medication or Other Substance' form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2661-8"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA20276-4"/>
-          <display value="Incorrect patient"/>
-        </concept>
-        <concept>
-          <code value="LA20302-8	"/>
-          <display value="Incorrect medication/substance"/>
-        </concept>
-        <concept>
-          <code value="LA20303-6	 "/>
-          <display value="Incorrect dose(s)"/>
-        </concept>
-        <concept>
-          <code value="LA20304-4"/>
-          <display value="Incorrect route of administration"/>
-        </concept>
-        <concept>
-          <code value="LA20305-1"/>
-          <display value="Incorrect timing"/>
-        </concept>
-        <concept>
-          <code value="LA20306-9"/>
-          <display value="Incorrect rate"/>
-        </concept>
-        <concept>
-          <code value="LA20307-7"/>
-          <display value="Incorrect duration of administration or course of therapy"/>
-        </concept>
-        <concept>
-          <code value="LA20308-5"/>
-          <display value="Incorrect dosage form (e.g., sustained release instead of immediate release)"/>
-        </concept>
-        <concept>
-          <code value="LA20309-3"/>
-          <display value="Incorrect strength or concentration"/>
-        </concept>
-        <concept>
-          <code value="LA20310-1"/>
-          <display value="Incorrect preparation, including inappropriate cutting of tablets, error in compounding,
-                 mixing, etc."/>
-        </concept>
-        <concept>
-          <code value="LA20311-9"/>
-          <display value="Expired or deteriorated medication/substance"/>
-        </concept>
-        <concept>
-          <code value="LA20312-7"/>
-          <display value="Medication/substance that is known to be an allergen to the patient"/>
-        </concept>
-        <concept>
-          <code value="LA20345-7"/>
-          <display value="Medication/substance that is known to be contraindicated for the patient"/>
-        </concept>
-        <concept>
-          <code value="LA20313-5"/>
-          <display value="Incorrect patient/family action (e.g., self-administration error)"/>
-        </concept>
-        <concept>
-          <code value="LA20318-4"/>
-          <display value="Other: PLEASE SPECIFY"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2661-8"/>
+          <concept>
+            <code value="LA20276-4"/>
+            <display value="Incorrect patient"/>
+          </concept>
+          <concept>
+            <code value="LA20302-8 "/>
+            <display value="Incorrect medication/substance"/>
+          </concept>
+          <concept>
+            <code value="LA20303-6  "/>
+            <display value="Incorrect dose(s)"/>
+          </concept>
+          <concept>
+            <code value="LA20304-4"/>
+            <display value="Incorrect route of administration"/>
+          </concept>
+          <concept>
+            <code value="LA20305-1"/>
+            <display value="Incorrect timing"/>
+          </concept>
+          <concept>
+            <code value="LA20306-9"/>
+            <display value="Incorrect rate"/>
+          </concept>
+          <concept>
+            <code value="LA20307-7"/>
+            <display value="Incorrect duration of administration or course of therapy"/>
+          </concept>
+          <concept>
+            <code value="LA20308-5"/>
+            <display value="Incorrect dosage form (e.g., sustained release instead of immediate release)"/>
+          </concept>
+          <concept>
+            <code value="LA20309-3"/>
+            <display value="Incorrect strength or concentration"/>
+          </concept>
+          <concept>
+            <code value="LA20310-1"/>
+            <display value="Incorrect preparation, including inappropriate cutting of tablets, error in compounding,                  mixing, etc."/>
+          </concept>
+          <concept>
+            <code value="LA20311-9"/>
+            <display value="Expired or deteriorated medication/substance"/>
+          </concept>
+          <concept>
+            <code value="LA20312-7"/>
+            <display value="Medication/substance that is known to be an allergen to the patient"/>
+          </concept>
+          <concept>
+            <code value="LA20345-7"/>
+            <display value="Medication/substance that is known to be contraindicated for the patient"/>
+          </concept>
+          <concept>
+            <code value="LA20313-5"/>
+            <display value="Incorrect patient/family action (e.g., self-administration error)"/>
+          </concept>
+          <concept>
+            <code value="LA20318-4"/>
+            <display value="Other: PLEASE SPECIFY"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -206,30 +202,31 @@
       <description value="The answer list for question 9 on the AHRQ 'Medication or Other Substance' form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2662-6"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA20277-2"/>
-          <display value="Overdose"/>
-        </concept>
-        <concept>
-          <code value="LA20300-2"/>
-          <display value="Underdose"/>
-        </concept>
-        <concept>
-          <code value="LA20301-0"/>
-          <display value="Missed or omitted dose"/>
-        </concept>
-        <concept>
-          <code value="LA7271-5"/>
-          <display value="Extra dose"/>
-        </concept>
-        <concept>
-          <code value="LA4489-6"/>
-          <display value="Unknown"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2662-6"/>
+          <concept>
+            <code value="LA20277-2"/>
+            <display value="Overdose"/>
+          </concept>
+          <concept>
+            <code value="LA20300-2"/>
+            <display value="Underdose"/>
+          </concept>
+          <concept>
+            <code value="LA20301-0"/>
+            <display value="Missed or omitted dose"/>
+          </concept>
+          <concept>
+            <code value="LA7271-5"/>
+            <display value="Extra dose"/>
+          </concept>
+          <concept>
+            <code value="LA4489-6"/>
+            <display value="Unknown"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -239,22 +236,23 @@
       <description value="The answer list for question 10 on the AHRQ 'Medication or Other Substance' form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2663-4"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA20280-6"/>
-          <display value="Too early"/>
-        </concept>
-        <concept>
-          <code value="LA20290-5"/>
-          <display value="Too late"/>
-        </concept>
-        <concept>
-          <code value="LA20290-5"/>
-          <display value="Unknown"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2663-4"/>
+          <concept>
+            <code value="LA20280-6"/>
+            <display value="Too early"/>
+          </concept>
+          <concept>
+            <code value="LA20290-5"/>
+            <display value="Too late"/>
+          </concept>
+          <concept>
+            <code value="LA4489-6"/>
+            <display value="Unknown"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -264,22 +262,23 @@
       <description value="The answer list for question 11 on the AHRQ 'Medication or Other Substance' form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2664-2"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA20282-2"/>
-          <display value="Too quickly"/>
-        </concept>
-        <concept>
-          <code value="LA20288-"/>
-          <display value="Too slowly"/>
-        </concept>
-        <concept>
-          <code value="LA4489-6"/>
-          <display value="Unknown"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2664-2"/>
+          <concept>
+            <code value="LA20282-2"/>
+            <display value="Too quickly"/>
+          </concept>
+          <concept>
+            <code value="LA20288-"/>
+            <display value="Too slowly"/>
+          </concept>
+          <concept>
+            <code value="LA4489-6"/>
+            <display value="Unknown"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -289,22 +288,23 @@
       <description value="The answer list for question 12 on the AHRQ 'Medication or Other Substance' form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2665-9"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA20281-4"/>
-          <display value="Too high"/>
-        </concept>
-        <concept>
-          <code value="LA20289-7"/>
-          <display value="Too low"/>
-        </concept>
-        <concept>
-          <code value="LA4489-6"/>
-          <display value="Unknown"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2665-9"/>
+          <concept>
+            <code value="LA20281-4"/>
+            <display value="Too high"/>
+          </concept>
+          <concept>
+            <code value="LA20289-7"/>
+            <display value="Too low"/>
+          </concept>
+          <concept>
+            <code value="LA4489-6"/>
+            <display value="Unknown"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -314,22 +314,23 @@
       <description value="AHRQ Common Format Answer list for Yes (A15), No (A18), Unknown (UNK)"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2817-6"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA33-6"/>
-          <display value="Yes"/>
-        </concept>
-        <concept>
-          <code value="LA32-8"/>
-          <display value="No"/>
-        </concept>
-        <concept>
-          <code value="LA4489-6"/>
-          <display value="Unkown"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2817-6"/>
+          <concept>
+            <code value="LA33-6"/>
+            <display value="Yes"/>
+          </concept>
+          <concept>
+            <code value="LA32-8"/>
+            <display value="No"/>
+          </concept>
+          <concept>
+            <code value="LA4489-6"/>
+            <display value="Unkown"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -339,26 +340,27 @@
       <description value="The answer list for question 15 on the AHRQ 'Medication or Other Substance' form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2668-3"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA20274-9"/>
-          <display value="Drug-drug"/>
-        </concept>
-        <concept>
-          <code value="LA20316-8"/>
-          <display value="Drug-food"/>
-        </concept>
-        <concept>
-          <code value="LA20317-6"/>
-          <display value="Drug-disease"/>
-        </concept>
-        <concept>
-          <code value="LA20318-4"/>
-          <display value="Other: PLEASE SPECIFY"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2668-3"/>
+          <concept>
+            <code value="LA20274-9"/>
+            <display value="Drug-drug"/>
+          </concept>
+          <concept>
+            <code value="LA20316-8"/>
+            <display value="Drug-food"/>
+          </concept>
+          <concept>
+            <code value="LA20317-6"/>
+            <display value="Drug-disease"/>
+          </concept>
+          <concept>
+            <code value="LA20318-4"/>
+            <display value="Other: PLEASE SPECIFY"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -368,50 +370,51 @@
       <description value="The answer list for question 16 on the AHRQ 'Medication or Other Substance' form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2669-1"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA20279-8"/>
-          <display value="Purchasing"/>
-        </concept>
-        <concept>
-          <code value="LA20291-3"/>
-          <display value="Storing"/>
-        </concept>
-        <concept>
-          <code value="LA20292-1"/>
-          <display value="Prescribing/ordering"/>
-        </concept>
-        <concept>
-          <code value="LA20293-9"/>
-          <display value="Transcribing"/>
-        </concept>
-        <concept>
-          <code value="LA20294-7"/>
-          <display value="Preparing"/>
-        </concept>
-        <concept>
-          <code value="LA20295-4"/>
-          <display value="Dispensing"/>
-        </concept>
-        <concept>
-          <code value="LA20296-2"/>
-          <display value="Administering"/>
-        </concept>
-        <concept>
-          <code value="LA20297-0"/>
-          <display value="Monitoring"/>
-        </concept>
-        <concept>
-          <code value="LA4489-6"/>
-          <display value="Unknown"/>
-        </concept>
-        <concept>
-          <code value="LA20318-4"/>
-          <display value="Other: PLEASE SPECIFY"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2669-1"/>
+          <concept>
+            <code value="LA20279-8"/>
+            <display value="Purchasing"/>
+          </concept>
+          <concept>
+            <code value="LA20291-3"/>
+            <display value="Storing"/>
+          </concept>
+          <concept>
+            <code value="LA20292-1"/>
+            <display value="Prescribing/ordering"/>
+          </concept>
+          <concept>
+            <code value="LA20293-9"/>
+            <display value="Transcribing"/>
+          </concept>
+          <concept>
+            <code value="LA20294-7"/>
+            <display value="Preparing"/>
+          </concept>
+          <concept>
+            <code value="LA20295-4"/>
+            <display value="Dispensing"/>
+          </concept>
+          <concept>
+            <code value="LA20296-2"/>
+            <display value="Administering"/>
+          </concept>
+          <concept>
+            <code value="LA20297-0"/>
+            <display value="Monitoring"/>
+          </concept>
+          <concept>
+            <code value="LA4489-6"/>
+            <display value="Unknown"/>
+          </concept>
+          <concept>
+            <code value="LA20318-4"/>
+            <display value="Other: PLEASE SPECIFY"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -421,18 +424,19 @@
       <description value="AHRQ Common Format Answer list for Yes (A15) and No (A18)"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2828-3"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="LA33-6"/>
-          <display value="Yes"/>
-        </concept>
-        <concept>
-          <code value="LA32-8"/>
-          <display value="No"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2828-3"/>
+          <concept>
+            <code value="LA33-6"/>
+            <display value="Yes"/>
+          </concept>
+          <concept>
+            <code value="LA32-8"/>
+            <display value="No"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
   <contained>
@@ -442,76 +446,84 @@
       <description value="The answer list for questions 28 and 29 on the AHRQ 'Medication or Other Substance' form"/>
       <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use"/>
       <status value="active"/>
-      <define>
-        <system value="http://loinc.org/vs/LL2682-4"/>
-        <caseSensitive value="true"/>  
-        <concept>
-          <code value="	LA20272-3	"/>
-          <display value="Cutaneous, topical application, including ointment, spray, patch"/>
-        </concept>
-        <concept>
-          <code value="LA9451-1"/>
-          <display value="Subcutaneous"/>
-        </concept>
-        <concept>
-          <code value="LA9444-6"/>
-          <display value="Ophthalmic"/>
-        </concept>
-        <concept>
-          <code value="LA20324-2"/>
-          <display value="Oral, including sublingual or buccal"/>
-        </concept>
-        <concept>
-          <code value="LA9445-"/>
-          <display value="Otic"/>
-        </concept>
-        <concept>
-          <code value="LA9263-0"/>
-          <display value="Nasal"/>
-        </concept>
-        <concept>
-          <code value="LA9427-1"/>
-          <display value="Inhalation"/>
-        </concept>
-        <concept>
-          <code value="LA9437-0"/>
-          <display value="Intravenous"/>
-        </concept>
-        <concept>
-          <code value="LA9429-7"/>
-          <display value="Intramuscular"/>
-        </concept>
-        <concept>
-          <code value="LA9435-4"/>
-          <display value="Intrathecal"/>
-        </concept>
-        <concept>
-          <code value="LA9418-0"/>
-          <display value="Epidural"/>
-        </concept>
-        <concept>
-          <code value="LA20332-5"/>
-          <display value="Gastric"/>
-        </concept>
-        <concept>
-          <code value="LA9369-5"/>
-          <display value="Rectal"/>
-        </concept>
-        <concept>
-          <code value="LA9459-4"/>
-          <display value="Vaginal"/>
-        </concept>
-        <concept>
-          <code value="LA4489-6"/>
-          <display value="Unknown"/>
-        </concept>
-        <concept>
-          <code value="LA20318-4"/>
-          <display value="Other: PLEASE SPECIFY"/>
-        </concept>
-      </define>
+      <compose>
+        <include>
+          <system value="http://loinc.org/vs/LL2682-4"/>
+          <concept>
+            <code value=" LA20272-3 "/>
+            <display value="Cutaneous, topical application, including ointment, spray, patch"/>
+          </concept>
+          <concept>
+            <code value="LA9451-1"/>
+            <display value="Subcutaneous"/>
+          </concept>
+          <concept>
+            <code value="LA9444-6"/>
+            <display value="Ophthalmic"/>
+          </concept>
+          <concept>
+            <code value="LA20324-2"/>
+            <display value="Oral, including sublingual or buccal"/>
+          </concept>
+          <concept>
+            <code value="LA9445-"/>
+            <display value="Otic"/>
+          </concept>
+          <concept>
+            <code value="LA9263-0"/>
+            <display value="Nasal"/>
+          </concept>
+          <concept>
+            <code value="LA9427-1"/>
+            <display value="Inhalation"/>
+          </concept>
+          <concept>
+            <code value="LA9437-0"/>
+            <display value="Intravenous"/>
+          </concept>
+          <concept>
+            <code value="LA9429-7"/>
+            <display value="Intramuscular"/>
+          </concept>
+          <concept>
+            <code value="LA9435-4"/>
+            <display value="Intrathecal"/>
+          </concept>
+          <concept>
+            <code value="LA9418-0"/>
+            <display value="Epidural"/>
+          </concept>
+          <concept>
+            <code value="LA20332-5"/>
+            <display value="Gastric"/>
+          </concept>
+          <concept>
+            <code value="LA9369-5"/>
+            <display value="Rectal"/>
+          </concept>
+          <concept>
+            <code value="LA9459-4"/>
+            <display value="Vaginal"/>
+          </concept>
+          <concept>
+            <code value="LA4489-6"/>
+            <display value="Unknown"/>
+          </concept>
+          <concept>
+            <code value="LA20318-4"/>
+            <display value="Other: PLEASE SPECIFY"/>
+          </concept>
+        </include>
+      </compose>
     </ValueSet>
   </contained>
+  <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-category">
+    <valueCodeableConcept>
+      <coding>
+        <code value="Acute Care Hospitals"/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
   <identifier>
     <system value="http://loinc.org/vs"/>
     <value value="74080-3"/>
@@ -523,15 +535,15 @@
     <linkId value="root"/>
     <title value="Medication or Other Substance"/>
     <group>
-      <extension url="http://hl7.org/fhir/ExtensionDefinition/questionnaire-sdc-specialGroup">
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-sdc-specialGroup">
         <valueCode value="header"/>
       </extension>
       <linkId value="Medication/header"/>
       <question>
-        <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+        <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
           <valueInteger value="3"/>
         </extension>
-        <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
           <valueInteger value="9"/>
         </extension>
         <linkId value="74080-3/74081-1"/>
@@ -549,25 +561,18 @@
     <group>
       <linkId value="Medication/SEC00"/>
       <title value="Medication or Other Substance"/>
-      <text value="Use this form to report any patient safety event or unsafe condition involving a substance
-             such as a medications, biological products, nutritional products, expressed human breast
-             milk, medical gases, or contrast media. Do not complete this form if the event involves
-             appropriateness of therapeutic choice or decision making (e.g., physician decision to
-             prescribe medication despite known drug-drug interaction). If the event involves a device,
-             please also complete the Device or Medical/Surgical Supply including Health Information
-             Technology (HIT) form. Narrative detail can be captured on the Healthcare Event Reporting
-             Form (HERF)."/>
+      <text value="Use this form to report any patient safety event or unsafe condition involving a substance              such as a medications, biological products, nutritional products, expressed human breast              milk, medical gases, or contrast media. Do not complete this form if the event involves              appropriateness of therapeutic choice or decision making (e.g., physician decision to              prescribe medication despite known drug-drug interaction). If the event involves a device,              please also complete the Device or Medical/Surgical Supply including Health Information              Technology (HIT) form. Narrative detail can be captured on the Healthcare Event Reporting              Form (HERF)."/>
       <group>
         <linkId value="Medication/SEC01/74080-3"/>
         <required value="true"/>
         <question>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
             <valueInteger value="1"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
             <valueInteger value="30"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/questionnaire-deReference">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-deReference">
             <valueReference>
               <reference value="http://loinc.org/74076-1"/>
             </valueReference>
@@ -584,13 +589,13 @@
             <required value="false"/>
             <repeats value="false"/>
             <question>
-              <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+              <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
                 <valueInteger value="7"/>
               </extension>
-              <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
                 <valueInteger value="65"/>
               </extension>
-              <extension url="http://hl7.org/fhir/ExtensionDefinition/questionnaire-deReference">
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-deReference">
                 <valueReference>
                   <reference value="http://loinc.org/vs/74075-3"/>
                 </valueReference>
@@ -607,13 +612,13 @@
                 <required value="false"/>
                 <repeats value="false"/>
                 <question>
-                  <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+                  <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
                     <valueInteger value="0"/>
                   </extension>
-                  <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+                  <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
                     <valueInteger value="500"/>
                   </extension>
-                  <extension url="http://hl7.org/fhir/ExtensionDefinition/questionnaire-deReference">
+                  <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-deReference">
                     <valueReference>
                       <reference value="http://loinc.org/74077-9"/>
                     </valueReference>
@@ -631,10 +636,10 @@
             <required value="false"/>
             <repeats value="false"/>
             <question>
-              <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+              <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
                 <valueInteger value="8"/>
               </extension>
-              <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
                 <valueInteger value="65"/>
               </extension>
               <linkId value="74080-3/74074-6"/>
@@ -760,8 +765,7 @@
             <repeats value="false"/>
             <question>
               <linkId value="Medication/74065-4"/>
-              <text value="Was there a documented history of allergies or sensitivities to the medication/substance
-                     administered?"/>
+              <text value="Was there a documented history of allergies or sensitivities to the medication/substance                      administered?"/>
               <type value="open-choice"/>
               <required value="true"/>
               <options>
@@ -786,8 +790,7 @@
         </question>
         <question>
           <linkId value="74080-3/74063-9"/>
-          <text value="At what stage in the process did the event originate, regardless of the stage at which
-                 it was discovered?"/>
+          <text value="At what stage in the process did the event originate, regardless of the stage at which                  it was discovered?"/>
           <type value="open-choice"/>
           <required value="true"/>
           <options>
@@ -796,18 +799,17 @@
         </question>
       </group>
       <group>
-        <extension url="http://hl7.org/fhir/ExtensionDefinition/questionnaire-maxOccurs">
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
           <valueInteger value="5"/>
         </extension>
         <linkId value="74080-3/74078-7"/>
-        <text value="Please provide the following medication details for any medications or other substances
-               directly involved in the event."/>
+        <text value="Please provide the following medication details for any medications or other substances                directly involved in the event."/>
         <repeats value="true"/>
         <question>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
             <valueInteger value="0"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
             <valueInteger value="65"/>
           </extension>
           <linkId value="74080-3/74078-7/74062-1"/>
@@ -815,10 +817,10 @@
           <type value="string"/>
         </question>
         <question>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
             <valueInteger value="0"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
             <valueInteger value="65"/>
           </extension>
           <linkId value="74080-3/74078-7/74061-3"/>
@@ -826,10 +828,10 @@
           <type value="string"/>
         </question>
         <question>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
             <valueInteger value="0"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
             <valueInteger value="65"/>
           </extension>
           <linkId value="74080-3/74078-7/74060-5"/>
@@ -837,10 +839,10 @@
           <type value="string"/>
         </question>
         <question>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
             <valueInteger value="0"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
             <valueInteger value="65"/>
           </extension>
           <linkId value="74080-3/74078-7/74059-7"/>
@@ -848,10 +850,10 @@
           <type value="string"/>
         </question>
         <question>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
             <valueInteger value="0"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
             <valueInteger value="65"/>
           </extension>
           <linkId value="74080-3/74078-7/74058-9"/>
@@ -859,10 +861,10 @@
           <type value="string"/>
         </question>
         <question>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
             <valueInteger value="0"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
             <valueInteger value="65"/>
           </extension>
           <linkId value="74080-3/74078-7/74057-1"/>
@@ -870,10 +872,10 @@
           <type value="string"/>
         </question>
         <question>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
             <valueInteger value="0"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
             <valueInteger value="65"/>
           </extension>
           <linkId value="74080-3/74078-7/74056-3"/>
@@ -881,10 +883,10 @@
           <type value="string"/>
         </question>
         <question>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
             <valueInteger value="0"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
             <valueInteger value="65"/>
           </extension>
           <linkId value="74080-3/74078-7/74055-5"/>
@@ -892,10 +894,10 @@
           <type value="string"/>
         </question>
         <question>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/minLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/minLength">
             <valueInteger value="0"/>
           </extension>
-          <extension url="http://hl7.org/fhir/ExtensionDefinition/maxLength">
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxLength">
             <valueInteger value="65"/>
           </extension>
           <linkId value="74080-3/74078-7/74054-8"/>
@@ -950,17 +952,11 @@
       <group>
         <linkId value="Medication/SEC05"/>
         <title value="Thank you for completing these questions."/>
-        <text value="OMB No. 0935-0143 Exp. Date 10/31/2014 Public reporting burden for the collection of information
-               is estimated to average 10 minutes per response. An agency may not conduct or sponsor,
-               and a person is not required to respond to, a collection of information unless it displays
-               a currently valid OMB control number. Send comments regarding this burden estimate or
-               any other aspect of this collection of information, including suggestions for reducing
-               this burden, to: AHRQ Reports Clearance Officer, Attention: PRA, Paperwork Reduction Project
-               (0935-0143), AHRQ, 540 Gaither Road, Room #5036, Rockville, MD 20850."/>
+        <text value="OMB No. 0935-0143 Exp. Date 10/31/2014 Public reporting burden for the collection of information                is estimated to average 10 minutes per response. An agency may not conduct or sponsor,                and a person is not required to respond to, a collection of information unless it displays                a currently valid OMB control number. Send comments regarding this burden estimate or                any other aspect of this collection of information, including suggestions for reducing                this burden, to: AHRQ Reports Clearance Officer, Attention: PRA, Paperwork Reduction Project                (0935-0143), AHRQ, 540 Gaither Road, Room #5036, Rockville, MD 20850."/>
       </group>
     </group>
     <group>
-      <extension url="http://hl7.org/fhir/ExtensionDefinition/questionnaire-sdc-specialGroup">
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-sdc-specialGroup">
         <valueCode value="footer"/>
       </extension>
       <linkId value="Medication/footer"/>

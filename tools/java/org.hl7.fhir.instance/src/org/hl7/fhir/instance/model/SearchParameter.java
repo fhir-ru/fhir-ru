@@ -29,11 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Feb 23, 2015 08:50+1100 for FHIR v0.4.0
+// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
 import org.hl7.fhir.instance.model.annotations.Block;
@@ -44,92 +45,6 @@ import org.hl7.fhir.instance.model.annotations.Description;
  */
 @ResourceDef(name="SearchParameter", profile="http://hl7.org/fhir/Profile/SearchParameter")
 public class SearchParameter extends DomainResource {
-
-    public enum ConformanceStatementStatus {
-        /**
-         * This conformance statement is still under development.
-         */
-        DRAFT, 
-        /**
-         * This conformance statement is ready for use in production systems.
-         */
-        ACTIVE, 
-        /**
-         * This conformance statement has been withdrawn or superceded and should no longer be used.
-         */
-        RETIRED, 
-        /**
-         * added to help the parsers
-         */
-        NULL;
-        public static ConformanceStatementStatus fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("draft".equals(codeString))
-          return DRAFT;
-        if ("active".equals(codeString))
-          return ACTIVE;
-        if ("retired".equals(codeString))
-          return RETIRED;
-        throw new Exception("Unknown ConformanceStatementStatus code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case DRAFT: return "draft";
-            case ACTIVE: return "active";
-            case RETIRED: return "retired";
-            default: return "?";
-          }
-        }
-        public String getSystem() {
-          switch (this) {
-            case DRAFT: return "";
-            case ACTIVE: return "";
-            case RETIRED: return "";
-            default: return "?";
-          }
-        }
-        public String getDefinition() {
-          switch (this) {
-            case DRAFT: return "This conformance statement is still under development.";
-            case ACTIVE: return "This conformance statement is ready for use in production systems.";
-            case RETIRED: return "This conformance statement has been withdrawn or superceded and should no longer be used.";
-            default: return "?";
-          }
-        }
-        public String getDisplay() {
-          switch (this) {
-            case DRAFT: return "draft";
-            case ACTIVE: return "active";
-            case RETIRED: return "retired";
-            default: return "?";
-          }
-        }
-    }
-
-  public static class ConformanceStatementStatusEnumFactory implements EnumFactory<ConformanceStatementStatus> {
-    public ConformanceStatementStatus fromCode(String codeString) throws IllegalArgumentException {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("draft".equals(codeString))
-          return ConformanceStatementStatus.DRAFT;
-        if ("active".equals(codeString))
-          return ConformanceStatementStatus.ACTIVE;
-        if ("retired".equals(codeString))
-          return ConformanceStatementStatus.RETIRED;
-        throw new IllegalArgumentException("Unknown ConformanceStatementStatus code '"+codeString+"'");
-        }
-    public String toCode(ConformanceStatementStatus code) {
-      if (code == ConformanceStatementStatus.DRAFT)
-        return "draft";
-      if (code == ConformanceStatementStatus.ACTIVE)
-        return "active";
-      if (code == ConformanceStatementStatus.RETIRED)
-        return "retired";
-      return "?";
-      }
-    }
 
     public enum SearchParamType {
         /**
@@ -459,7 +374,7 @@ public class SearchParameter extends DomainResource {
      */
     @Child(name="status", type={CodeType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="draft | active | retired", formalDefinition="The status of this search parameter definition." )
-    protected Enumeration<ConformanceStatementStatus> status;
+    protected Enumeration<ConformanceResourceStatus> status;
 
     /**
      * A flag to indicate that this search parameter definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
@@ -510,7 +425,7 @@ public class SearchParameter extends DomainResource {
     @Description(shortDefinition="Types of resource (if a resource reference)", formalDefinition="Types of resource (if a resource is referenced)." )
     protected List<CodeType> target;
 
-    private static final long serialVersionUID = 160353798L;
+    private static final long serialVersionUID = 1984222207L;
 
     public SearchParameter() {
       super();
@@ -746,12 +661,12 @@ public class SearchParameter extends DomainResource {
     /**
      * @return {@link #status} (The status of this search parameter definition.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<ConformanceStatementStatus> getStatusElement() { 
+    public Enumeration<ConformanceResourceStatus> getStatusElement() { 
       if (this.status == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SearchParameter.status");
         else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<ConformanceStatementStatus>(new ConformanceStatementStatusEnumFactory()); // bb
+          this.status = new Enumeration<ConformanceResourceStatus>(new ConformanceResourceStatusEnumFactory()); // bb
       return this.status;
     }
 
@@ -766,7 +681,7 @@ public class SearchParameter extends DomainResource {
     /**
      * @param value {@link #status} (The status of this search parameter definition.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public SearchParameter setStatusElement(Enumeration<ConformanceStatementStatus> value) { 
+    public SearchParameter setStatusElement(Enumeration<ConformanceResourceStatus> value) { 
       this.status = value;
       return this;
     }
@@ -774,19 +689,19 @@ public class SearchParameter extends DomainResource {
     /**
      * @return The status of this search parameter definition.
      */
-    public ConformanceStatementStatus getStatus() { 
+    public ConformanceResourceStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value The status of this search parameter definition.
      */
-    public SearchParameter setStatus(ConformanceStatementStatus value) { 
+    public SearchParameter setStatus(ConformanceResourceStatus value) { 
       if (value == null)
         this.status = null;
       else {
         if (this.status == null)
-          this.status = new Enumeration<ConformanceStatementStatus>(new ConformanceStatementStatusEnumFactory());
+          this.status = new Enumeration<ConformanceResourceStatus>(new ConformanceResourceStatusEnumFactory());
         this.status.setValue(value);
       }
       return this;

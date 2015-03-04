@@ -29,11 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Feb 23, 2015 08:50+1100 for FHIR v0.4.0
+// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
 import org.hl7.fhir.instance.model.annotations.Block;
@@ -127,92 +128,6 @@ public class NamingSystem extends DomainResource {
         return "identifier";
       if (code == NamingsystemType.ROOT)
         return "root";
-      return "?";
-      }
-    }
-
-    public enum NamingsystemStatus {
-        /**
-         * System has been submitted but not yet approved.
-         */
-        DRAFT, 
-        /**
-         * System is valid for use.
-         */
-        ACTIVE, 
-        /**
-         * System should no longer be used.
-         */
-        RETIRED, 
-        /**
-         * added to help the parsers
-         */
-        NULL;
-        public static NamingsystemStatus fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("draft".equals(codeString))
-          return DRAFT;
-        if ("active".equals(codeString))
-          return ACTIVE;
-        if ("retired".equals(codeString))
-          return RETIRED;
-        throw new Exception("Unknown NamingsystemStatus code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case DRAFT: return "draft";
-            case ACTIVE: return "active";
-            case RETIRED: return "retired";
-            default: return "?";
-          }
-        }
-        public String getSystem() {
-          switch (this) {
-            case DRAFT: return "";
-            case ACTIVE: return "";
-            case RETIRED: return "";
-            default: return "?";
-          }
-        }
-        public String getDefinition() {
-          switch (this) {
-            case DRAFT: return "System has been submitted but not yet approved.";
-            case ACTIVE: return "System is valid for use.";
-            case RETIRED: return "System should no longer be used.";
-            default: return "?";
-          }
-        }
-        public String getDisplay() {
-          switch (this) {
-            case DRAFT: return "draft";
-            case ACTIVE: return "active";
-            case RETIRED: return "retired";
-            default: return "?";
-          }
-        }
-    }
-
-  public static class NamingsystemStatusEnumFactory implements EnumFactory<NamingsystemStatus> {
-    public NamingsystemStatus fromCode(String codeString) throws IllegalArgumentException {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("draft".equals(codeString))
-          return NamingsystemStatus.DRAFT;
-        if ("active".equals(codeString))
-          return NamingsystemStatus.ACTIVE;
-        if ("retired".equals(codeString))
-          return NamingsystemStatus.RETIRED;
-        throw new IllegalArgumentException("Unknown NamingsystemStatus code '"+codeString+"'");
-        }
-    public String toCode(NamingsystemStatus code) {
-      if (code == NamingsystemStatus.DRAFT)
-        return "draft";
-      if (code == NamingsystemStatus.ACTIVE)
-        return "active";
-      if (code == NamingsystemStatus.RETIRED)
-        return "retired";
       return "?";
       }
     }
@@ -737,7 +652,7 @@ public class NamingSystem extends DomainResource {
      */
     @Child(name="status", type={CodeType.class}, order=3, min=1, max=1)
     @Description(shortDefinition="draft | active | retired", formalDefinition="Indicates whether the namingsystem is 'ready for use' or not." )
-    protected Enumeration<NamingsystemStatus> status;
+    protected Enumeration<ConformanceResourceStatus> status;
 
     /**
      * If present, indicates that the identifier or code system is principally intended for use or applies to entities within the specified country.  For example, the country associated with a national code system.
@@ -807,13 +722,13 @@ public class NamingSystem extends DomainResource {
      */
     protected NamingSystem replacedByTarget;
 
-    private static final long serialVersionUID = -1088011513L;
+    private static final long serialVersionUID = -241224889L;
 
     public NamingSystem() {
       super();
     }
 
-    public NamingSystem(Enumeration<NamingsystemType> type, StringType name, DateTimeType date, Enumeration<NamingsystemStatus> status) {
+    public NamingSystem(Enumeration<NamingsystemType> type, StringType name, DateTimeType date, Enumeration<ConformanceResourceStatus> status) {
       super();
       this.type = type;
       this.name = name;
@@ -959,12 +874,12 @@ public class NamingSystem extends DomainResource {
     /**
      * @return {@link #status} (Indicates whether the namingsystem is "ready for use" or not.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<NamingsystemStatus> getStatusElement() { 
+    public Enumeration<ConformanceResourceStatus> getStatusElement() { 
       if (this.status == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create NamingSystem.status");
         else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<NamingsystemStatus>(new NamingsystemStatusEnumFactory()); // bb
+          this.status = new Enumeration<ConformanceResourceStatus>(new ConformanceResourceStatusEnumFactory()); // bb
       return this.status;
     }
 
@@ -979,7 +894,7 @@ public class NamingSystem extends DomainResource {
     /**
      * @param value {@link #status} (Indicates whether the namingsystem is "ready for use" or not.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public NamingSystem setStatusElement(Enumeration<NamingsystemStatus> value) { 
+    public NamingSystem setStatusElement(Enumeration<ConformanceResourceStatus> value) { 
       this.status = value;
       return this;
     }
@@ -987,16 +902,16 @@ public class NamingSystem extends DomainResource {
     /**
      * @return Indicates whether the namingsystem is "ready for use" or not.
      */
-    public NamingsystemStatus getStatus() { 
+    public ConformanceResourceStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value Indicates whether the namingsystem is "ready for use" or not.
      */
-    public NamingSystem setStatus(NamingsystemStatus value) { 
+    public NamingSystem setStatus(ConformanceResourceStatus value) { 
         if (this.status == null)
-          this.status = new Enumeration<NamingsystemStatus>(new NamingsystemStatusEnumFactory());
+          this.status = new Enumeration<ConformanceResourceStatus>(new ConformanceResourceStatusEnumFactory());
         this.status.setValue(value);
       return this;
     }

@@ -33,8 +33,8 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
 import org.hl7.fhir.instance.model.ElementDefinition.BindingConformance;
+import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.ValueSet.ValuesetStatus;
 import org.hl7.fhir.utilities.Utilities;
 
 /**
@@ -113,12 +113,16 @@ public class BindingSpecification {
 
   private String v2Map;
   private String v3Map;
-  private ValuesetStatus status;
+  private ConformanceResourceStatus status;
   
   
   public BindingSpecification(String usageContext) {
     super();
     this.usageContext = usageContext;
+  }
+
+  public String getUsageContext() {
+    return usageContext;
   }
 
   public String getId() {
@@ -395,11 +399,11 @@ public class BindingSpecification {
     this.vsOid = vsOid;
   }
 
-  public ValuesetStatus getStatus() {
+  public ConformanceResourceStatus getStatus() {
     return status;
   }
 
-  public void setStatus(ValuesetStatus status) {
+  public void setStatus(ConformanceResourceStatus status) {
     this.status = status;
   }
   

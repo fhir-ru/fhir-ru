@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Feb 23, 2015 08:50+1100 for FHIR v0.4.0
+// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
 
 public class ResourceFactory extends Factory {
 
@@ -56,16 +56,14 @@ public class ResourceFactory extends Factory {
             return new Slot();
         if ("Contraindication".equals(name))
             return new Contraindication();
-        if ("EpisodeOfCare".equals(name))
-            return new EpisodeOfCare();
         if ("Composition".equals(name))
             return new Composition();
+        if ("EpisodeOfCare".equals(name))
+            return new EpisodeOfCare();
         if ("Conformance".equals(name))
             return new Conformance();
         if ("NamingSystem".equals(name))
             return new NamingSystem();
-        if ("Profile".equals(name))
-            return new Profile();
         if ("HealthcareService".equals(name))
             return new HealthcareService();
         if ("OrderResponse".equals(name))
@@ -124,6 +122,8 @@ public class ResourceFactory extends Factory {
             return new InstitutionalClaim();
         if ("Alert".equals(name))
             return new Alert();
+        if ("AuditEvent".equals(name))
+            return new AuditEvent();
         if ("EligibilityResponse".equals(name))
             return new EligibilityResponse();
         if ("Person".equals(name))
@@ -170,8 +170,6 @@ public class ResourceFactory extends Factory {
             return new DocumentReference();
         if ("Immunization".equals(name))
             return new Immunization();
-        if ("ExtensionDefinition".equals(name))
-            return new ExtensionDefinition();
         if ("Bundle".equals(name))
             return new Bundle();
         if ("Subscription".equals(name))
@@ -202,8 +200,6 @@ public class ResourceFactory extends Factory {
             return new MedicationAdministration();
         if ("Encounter".equals(name))
             return new Encounter();
-        if ("SecurityEvent".equals(name))
-            return new SecurityEvent();
         if ("PendedRequest".equals(name))
             return new PendedRequest();
         if ("List".equals(name))
