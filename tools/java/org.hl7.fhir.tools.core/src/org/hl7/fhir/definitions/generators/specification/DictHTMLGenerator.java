@@ -192,8 +192,8 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     tableRowNE("Шаблон значения", null, encodeValue(d.getPattern()));
     tableRow("Пример", null, encodeValue(d.getExample()));
     tableRowNE("Инварианты", null, invariants(d.getConstraint()));
-    tableRow("LOINC-код", null, getMapping(profile, ed, d, Definitions.LOINC_MAPPING));
-    tableRow("SNOMED-CT-код", null, getMapping(profile, ed, d, Definitions.SNOMED_MAPPING));
+	tableRow("LOINC-код", null, getMapping(profile, d, Definitions.LOINC_MAPPING));
+    tableRow("SNOMED-CT-код", null, getMapping(profile, d, Definitions.SNOMED_MAPPING));
    }
 
   private String encodeValue(Type value) throws Exception {
