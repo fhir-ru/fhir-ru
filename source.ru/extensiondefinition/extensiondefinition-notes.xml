@@ -38,8 +38,8 @@ HL7-реестры определений расширений.
  <tr><th>Registry</th><th>Search</th><th>Submit</th></tr>
  <tr><td>HL7 Approved</td><td>[TBD]</td><td>[TBD]</td></tr>
  <tr><td>Community</td><td>[TBD]</td><td>[TBD]</td></tr>
- <tr><td>Interim</td><td><a href="http://fhir-dev.healthintersections.com.au/open/ExtensionDefinition/_search">http://fhir-dev.healthintersections.com.au/open/ExtensionDefinition/_search</a></td>
- <td><a href="http://fhir.healthintersections.com.au/open/ExtensionDefinition/upload">http://fhir.healthintersections.com.au/open/ExtensionDefinition/upload</a></td></tr>
+ <tr><td>Interim</td><td><a href="http://fhir-dev.healthintersections.com.au/open/StructureDefinition/_search">http://fhir-dev.healthintersections.com.au/open/StructureDefinition/_search</a></td>
+ <td><a href="http://fhir.healthintersections.com.au/open/StructureDefinition/upload">http://fhir.healthintersections.com.au/open/StructureDefinition/upload</a></td></tr>
 </table>
 <p>
 HL7 определения расширений могут выноситься на голосование вместе с содержанием ресурсов в рамках спецификации FHIR, или могут публиковаться в рамках отдельных спецификаций. 

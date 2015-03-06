@@ -90,7 +90,7 @@
  </tr> 
  <tr>
    <td>decimal</td>
-   <td>Rational numbers that have a decimal representation. See below for a decision about the precision of the number</td>
+   <td>Rational numbers that have a decimal representation. See below about the precision of the number</td>
    <td>xs:decimal, except that <b>decimals may not use exponents</b></td>
    <td>A JSON number, but without exponents</td>
  </tr>
@@ -162,7 +162,7 @@ Notes:
 <ul>
  <li>For all the types, the XML and JSON representations are the same except for different escaping in XML and JSON</li>
  <li>The regexes allow a broader set of values than are actually valid (e.g. leap years) so additional validation is needed</li>
- <li>The precision of the decimal value is signficant
+ <li>The precision of the decimal value is signficant:
     <ul> 
       <li>e.g 0.010 is regarded as different to 0.01</li>
       <li>Implementations SHALL handle decimal values in ways that preserve and respect the precision of the value as represented</li> 
@@ -881,6 +881,13 @@ the schedule will terminate on some criteria that are expressed elsewhere.
 Если в расписании имеется критерий повторения, событие может повториться заданное количество раз за указанный период либо относительно некоторого события реального мира.
 Если событие повторяющееся, время до окончания расписания может быть задано, либо количеством повторений count, либо датой/временем окончания расписания end. Если условие окончания не задано, расписание Schedule завершится по некоторому критерию, представленному где-то в другом месте.
 </p>
+
+
+<div class="use">
+<p><b>Constraints</b></p>
+[%dt.constraints Timing%]
+
+</div>
 
 <a name="Signature"></a>
 <a name="signature"></a>

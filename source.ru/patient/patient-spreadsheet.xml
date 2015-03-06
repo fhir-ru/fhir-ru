@@ -10,18 +10,18 @@
   <LastAuthor>Brian Postlethwaite</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2014-12-08T02:27:59Z</LastSaved>
-  <Version>15.00</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12435</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
+  <WindowHeight>5865</WindowHeight>
+  <WindowWidth>20160</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <TabRatio>808</TabRatio>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>6</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -951,7 +951,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">UML</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40"> <Font html:Face="Tahoma"
-        x:Family="Swiss" html:Size="8" html:Color="#000000">Guidance for class location in UML diagram.  Only specify on root.&#10;See wiki for guidance</Font> </ss:Data></Comment><NamedCell
+        x:Family="Swiss" html:Size="8" html:Color="#000000">Guidance for class location in UML diagram.  Only specify on root.&#13;See wiki for guidance</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">Display Hint</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
@@ -980,11 +980,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Информация о человеке или животном, получающем услуги здравоохранения<!-- Information about a person or animal receiving health care services --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Information about a person or animal receiving health care services</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Демографическая и другая административная информация о человеке или животном, получающем медицинскую помощь или другие услуги, связанные со здоровьем<!-- Demographics and other administrative information about a person or animal receiving care or other health-related services --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Demographics and other administrative information about a person or animal receiving care or other health-related services</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Процесс здравоохранения сосредоточен на отслеживании пациента<!-- Tracking patient is the center of the healthcare process --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Tracking patient is the center of the healthcare process</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1016,11 +1016,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор человека в качестве данного пациента<!-- An identifier for the person as this patient --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">An identifier for the person as this patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, который применяется к данному человеку в качестве пациента<!-- An identifier that applies to this person as a patient --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An identifier that applies to this person as a patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Пациентам почти всегда присваиваются индивидуальные числовые идентификаторы<!-- Patients are almost always assigned specific numerical identifiers --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Patients are almost always assigned specific numerical identifiers</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1052,13 +1052,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя, ассоциируемое с пациентом<!-- A name associated with the patient --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A name associated with the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя, ассоциируемое с индивидуумом<!-- A name associated with the individual. --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A name associated with the individual. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность отслеживать человека по нескольким именам. Примерами будут ваше официальное имя и домашнее имя.<!-- Need to be able to track the person by multiple names. Examples are your official name and a partner name. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to track the person by multiple names. Examples are your official name and a partner name.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек может иметь несколько имен, используемых в различных случаях или в разные периоды. Для животных именем будет &quot;HumanName&quot; в том смысле, который назначен и используется людьми и имеет те же шаблоны<!-- Person may have multiple names with different uses or applicable periods.For animals, the name is a &quot;HumanName&quot; in the sense that is assigned and used by humans and has the same patterns --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Person may have multiple names with different uses or applicable periods.For animals, the name is a &quot;HumanName&quot; in the sense that is assigned and used by humans and has the same patterns</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">name</Data><NamedCell
@@ -1089,13 +1089,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактные данные индивидуума<!-- A contact detail for the individual --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A contact detail for the individual</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные данные (например телефонный номер или адрес электронной почты), по которым с индивидуумом можно связаться<!-- A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted. --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">У людей есть (основные) способы связи с ними, например по телефону, электронной почте.<!-- People have (primary) ways to contact them in some way such as phone, email. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">People have (primary) ways to contact them in some way such as phone, email.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">У человека может быть несколько способов связи с ним с различными видами использования и периодами применения. &#13;Может потребоваться иметь возможность связаться с человеком срочно или для помощи с идентификацией. Адрес может быть не непосредственно индивидуума, а другой стороны, уполномоченной действовать от имени пациента (например домашний телефон, или телефон владельца домашнего животного) <!-- Person may have multiple ways to be contacted with different uses or applicable periods. &#13;May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner's phone) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Person may have multiple ways to be contacted with different uses or applicable periods. &#13;May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner's phone)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">telecom</Data><NamedCell
@@ -1129,11 +1129,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">male | female | other | unknown</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Административный пол - пол, который считается полом пациента для административных целей и для ведения учета.<!-- Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes. --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется для идентификации индивидуума в комбинации с (как минимум) именем и датой рождения. Пол индивидуума влияет на многие клинические процессы.<!-- Needed for identification of the individual, in combination with (at least) name and birth date. Gender of individual drives many clinical processes. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Needed for identification of the individual, in combination with (at least) name and birth date. Gender of individual drives many clinical processes.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Пол (gender) может не совпадать с биологическим полом (sex), определяемым генетикой, или с личным предпочтением человека. Обратите внимание, что и для людей, и, в частности, для животных, есть и другие законные варианты значений, кроме М и Ж (M и F), хотя подавляющее большинство систем и контекстов поддерживает только М и Ж (M and F)<!-- The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender</Data><NamedCell
@@ -1165,13 +1165,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата и время рождения индивидуума<!-- The date and time of birth for the individual --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The date of birth for the individual</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время рождения индивидуума<!-- The date and time of birth for the individual --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The date of birth for the individual</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Возраст индивидуума влияет на многие клинические процессы. Кроме общего сценария записи чей-то даты рождения, также в некоторых общих случаях регистрируют и время.<!-- Age of the individual drives many clinical processes. Next to the common use case of capturing someone birth date, also in some common cases time is registered. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Age of the individual drives many clinical processes. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">По крайней мере необходимо указать предполагаемый год рождения, если реальная дата рождения не известна<!-- At least an estimated year should be provided as a guess if the real dob is unknown --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">At least an estimated year should be provided as a guess if the real dob is unknown</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">player[classCode=PSN|ANM and determinerCode=INSTANCE]/birthTime</Data><NamedCell
@@ -1186,7 +1186,7 @@
     <Cell ss:StyleID="s92"><Data ss:Type="String">renamed from dob, because the abbreviation is not obvious to non-English speakers</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="136.5">
+   <Row ss:AutoFitHeight="0" ss:Height="135.9375">
     <Cell ss:StyleID="s86"><Data ss:Type="String">Patient.birthTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1243,13 +1243,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывает, умер ли индивидуум или нет<!-- Indicates if the individual is deceased or not --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates if the individual is deceased or not</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, умер ли индивидуум или нет<!-- Indicates if the individual is deceased or not --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates if the individual is deceased or not</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Факт смерти пациента влияет на клинический процесс. Кроме того, в человеческом общении и управлении отношениями необходимо знать, жив ли человек.<!-- The fact that a patient is deceased influences the clinical process. Also, in human communication and relation management it is necessary to know whether the person is alive. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The fact that a patient is deceased influences the clinical process. Also, in human communication and relation management it is necessary to know whether the person is alive.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если значение элемента не указано, это значит, что нет утверждения, умер индивидуум или нет. Большинство систем будут интерпретировать отсутствие этого значения как признак того, что человек жив.<!-- If there's no value in the instance it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If there's no value in the instance it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">player[classCode=PSN|ANM and determinerCode=INSTANCE]/deceasedInd,&#13;player[classCode=PSN|ANM and determinerCode=INSTANCE]/deceasedTime</Data><NamedCell
@@ -1280,13 +1280,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Адрес индивидуума<!-- Addresses for the individual --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Addresses for the individual</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Адрес индивидуума<!-- Addresses for the individual --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Addresses for the individual</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Может потребоваться для отслеживания адресов человека для связи, выставления счетов или требований к отчетности, а также для идентификации<!-- May need to keep track of persons addresses for contacting, billing or reporting requirements and also to help with identification --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">May need to keep track of persons addresses for contacting, billing or reporting requirements and also to help with identification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек может иметь несколько адресов различного назначения или разными периодами применения<!-- Person may have multiple addresses with different uses or applicable periods --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Person may have multiple addresses with different uses or applicable periods</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">addr</Data><NamedCell
@@ -1318,11 +1318,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Семейный (гражданский) статус человека<!-- Marital (civil) status of a person --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Marital (civil) status of a person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Данное поле содержит самый последний семейный (гражданский) статус пациента.<!-- This field contains a patient's most recent marital (civil) status. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This field contains a patient's most recent marital (civil) status.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Большинство, если не все системы собирают эти данные. <!-- Most, if not all systems capture it. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Most, if not all systems capture it.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1354,11 +1354,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Появился ли пациент при многоплодных родах<!-- Whether patient is part of a multiple birth --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether patient is part of a multiple birth</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, появился ли пациент при многоплодных родах или фактический порядок рождения.<!-- Indicates whether the patient is part of a multiple or indicates the actual birth order. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates whether the patient is part of a multiple or indicates the actual birth order.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Для устранения неоднозначности для детей из многоплодных родов, особенно важно там, где поставщик услуг не видит пациента, например в лабораториях.<!-- For disambiguation of multiple-birth children, especially relevant where the care provider doesn't meet the patient, such as labs. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">For disambiguation of multiple-birth children, especially relevant where the care provider doesn't meet the patient, such as labs.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1389,11 +1389,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Изображение человека<!-- Image of the person --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Image of the person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Изображение человека<!-- Image of the person --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Image of the person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Большинство EHR-систем имеют возможность сохранять изображение пациента. Также это соответствует новому применению социальных средств массовой информации.<!-- Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1424,13 +1424,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактное лицо пациента (например опекун, партнер, друг)<!-- A contact party (e.g. guardian, partner, friend) for the patient --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A contact party (e.g. guardian, partner, friend) for the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактное лицо пациента (например опекун, партнер, друг)<!-- A contact party (e.g. guardian, partner, friend) for the patient --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A contact party (e.g. guardian, partner, friend) for the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется для отслеживания людей, с которыми вы может связаться насчет пациента<!-- Need to track people you can contact about the patient --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to track people you can contact about the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контакт охватывает все виды контактных лиц: члены семьи, деловые контакты, опекуны, попечители. Не применимо для регистрации родословных и семейных связей помимо используемых для связи.<!-- Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and family ties beyond use of having contact. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Contact covers all kinds of contact parties: family members, business contacts, guardians, caregivers. Not applicable to register pedigree and family ties beyond use of having contact.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]</Data><NamedCell
@@ -1461,11 +1461,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид родственной связи<!-- The kind of relationship --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The kind of relationship</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Характер отношений между пациентом и контактным лицом<!-- The nature of the relationship between the patient and the contact person --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The nature of the relationship between the patient and the contact person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется для определения наиболее подходящего контактного лица для связи в зависимости от обстоятельств<!-- Used to determine which contact person is the most relevant to approach, depending on circumstances --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Used to determine which contact person is the most relevant to approach, depending on circumstances</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1496,11 +1496,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя, ассоциируемое с этим человеком<!-- A name associated with the person --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A name associated with the person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя, ассоциируемое с этим человеком<!-- A name associated with the person --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A name associated with the person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Контактные лица необходимо идентифицировать по имени, но редко когда нужны подробности о других именах этого человека <!-- Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that person --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1531,13 +1531,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактные данные для этого человека<!-- A contact detail for the person --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A contact detail for the person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные данные для этого человека, например номер телефона или адрес электронной почты.<!-- A contact detail for the person, e.g. a telephone number or an email address. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A contact detail for the person, e.g. a telephone number or an email address.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">У людей есть (в основном) способы связи с ними, такие как телефон, электронная почта.<!-- People have (primary) ways to contact them in some way such as phone, email. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">People have (primary) ways to contact them in some way such as phone, email.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">У человека может быть несколько способов связи с ним различного применения или с разными периодами применения. &#13;Может потребоваться для возможности срочного контакта с человеком, а также для помощи с идентификацией<!-- Person may have multiple ways to be contacted with different uses or applicable periods. &#13;May need to have options for contacting the person urgently, and also to help with identification --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Person may have multiple ways to be contacted with different uses or applicable periods. &#13;May need to have options for contacting the person urgently, and also to help with identification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">telecom</Data><NamedCell
@@ -1567,11 +1567,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Адрес контактного лица<!-- Address for the contact person --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Address for the contact person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Адрес контактного лица<!-- Address for the contact person --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Address for the contact person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно отслеживать, по какому адресу с контактным лицом можно связаться по почте, а по какому посетить<!-- Need to keep track where the contact person can be contacted per postal mail or visited --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to keep track where the contact person can be contacted per postal mail or visited</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1605,9 +1605,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">male | female | other | unknown</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Административный пол - пол, который считается полом человека для административных целей и для ведения учета.<!-- Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes. --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется для корректного обращения к человеку<!-- Needed to address the person correctly --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Needed to address the person correctly</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1639,11 +1639,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, ассоциируемая с контактом<!-- Organization that is associated with the contact --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Organization that is associated with the contact</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, от имени которой действует контактное лицо, или на которую оно работает.<!-- Organization on behalf of which the contact is acting or for which the contact is working. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Organization on behalf of which the contact is acting or for which the contact is working.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Организация уместна для опекунов или деловых контактных лиц<!-- For guardians or business related contacts, the organization is relevant --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">For guardians or business related contacts, the organization is relevant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1674,9 +1674,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени, в течение которого с этим человеком или организацией можно связываться по поводу данного пациента<!-- The period during which this person or organization is valid to be contacted relating to this patient --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The period during which this person or organization is valid to be contacted relating to this patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени, в течение которого с этим человеком или организацией можно связываться по поводу данного пациента<!-- The period during which this person or organization is valid to be contacted relating to this patient --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The period during which this person or organization is valid to be contacted relating to this patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1708,13 +1708,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Если пациентом является животное (не человек)<!-- If this patient is an animal (non-human) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">If this patient is an animal (non-human)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Данный элемент имеет значение, если пациентом является животное<!-- This element has a value if the patient is an animal --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This element has a value if the patient is an animal</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Большинство клинических систем распространяют уход на пациентов-животных наряду с пациентами-людьми <!-- Many clinical systems are extended to care for animal patients as well as human --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Many clinical systems are extended to care for animal patients as well as human</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент animal помечен как &quot;Is Modifier&quot;, так как пациенты могут быть не людьми. Системы ДОЛЖНЫ обрабатывать данные пациентов надлежащим образом (например информировать пользователей, что пациент - не человек) или отклонять записи с пациентом-не человеком<!-- The animal element is labeled &quot;Is Modifier&quot; since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject non-human patient records --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The animal element is labeled &quot;Is Modifier&quot; since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject non-human patient records</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">player[classCode=ANM]</Data><NamedCell
@@ -1746,13 +1746,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Например собака, корова<!-- E.g. Dog, Cow --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">E.g. Dog, Cow</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет высокий уровень классификации вида животного<!-- Identifies the high level categorization of the kind of animal --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the high level categorization of the kind of animal</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужен, чтобы знать, что это за вид животного<!-- Need to know what kind of animal --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know what kind of animal</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если пациент не является человеком, то НЕОБХОДИМО указать по крайней мере вид животного<!-- If the patient is non-human, at least a species SHALL be specified --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If the patient is non-human, at least a species SHALL be specified</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">code</Data><NamedCell
@@ -1784,11 +1784,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Например пудель, ангус<!-- E.g. Poodle, Angus --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">E.g. Poodle, Angus</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет более подробную классификацию вида животного<!-- Identifies the detailed categorization of the kind of animal. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the detailed categorization of the kind of animal.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Может понадобиться, чтобы узнать конкретный подвид<!-- May need to know the specific kind within the species --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">May need to know the specific kind within the species</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1821,11 +1821,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Например кастрированный, некастрированный<!-- E.g. Neutered, Intact --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">E.g. Neutered, Intact</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает текущее состояние репродуктивных органов животного<!-- Indicates the current state of the animal's reproductive organs --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the current state of the animal's reproductive organs</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Гендерный статус может влиять на расселение и поведения животного <!-- Gender status can affect housing and animal behavior --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Gender status can affect housing and animal behavior</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1857,13 +1857,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Язык, который можно использовать для общения с пациентом о его или ее здоровье<!-- Languages which may be used to communicate with the patient about his or her health --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Languages which may be used to communicate with the patient about his or her health</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык, который можно использовать для общения с пациентом о его или ее здоровье<!-- Languages which may be used to communicate with the patient about his or her health --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Languages which may be used to communicate with the patient about his or her health</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Если пациент не говорит на местном языке, могут потребоваться переводчики, поэтому важно знать как для пациента, так и для других заинтересованных лиц, на каких языках говорит пациент<!-- If a patient does not speak the local language, interpreters may be required, so languages spoken is an important things to keep track of both for patient and other persons of interest --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">If a patient does not speak the local language, interpreters may be required, so languages spoken is an important things to keep track of both for patient and other persons of interest</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если язык не указан, это *означает*, что пациент говорит на местном языке.&#13;Для животных это поле не имеет смысла и не должно заполняться<!-- If no language is specified, this *implies* that the default local language is spoken.&#13;For animals, language is not a relevant field, and should be absent from the instance --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If no language is specified, this *implies* that the default local language is spoken.&#13;For animals, language is not a relevant field, and should be absent from the instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">player[classCode=PSN|ANM and determinerCode=INSTANCE]/languageCommunication/code</Data><NamedCell
@@ -1893,13 +1893,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Уровень знания языка человека<!-- The person's  proficiency level of a language --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The person's  proficiency level of a language</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык, на котором говорит человек, с указанием уровня знания<!-- A language spoken by the person, with proficiency --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A language spoken by the person, with proficiency</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Если пациент не говорит на местном языке, могут потребоваться переводчики, поэтому важно знать как для пациента, так и для других заинтересованных лиц, какими языками и на каком уровне владеет пациент<!-- If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency is an important things to keep track of both for patient and other persons of interest --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency is an important things to keep track of both for patient and other persons of interest</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если язык не указан, это *означает*, что пациент говорит на местном языке.&#13;Если вам нужно передать уровень владения для нескольких способов передачи информации, тогда вам потребуется несколько ассоциаций Person.language.&#13;&#13;Для животных это поле не имеет смысла и не должно заполняться<!-- If no language is specified, this *implies* that the default local language is spoken.&#13;If you need to convey proficiency for multiple modes than you need multiple Person.language associations.&#13;&#13;For animals, language is not a relevant field, and should be absent from the instance --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If no language is specified, this *implies* that the default local language is spoken.&#13;If you need to convey proficiency for multiple modes than you need multiple Person.language associations.&#13;&#13;For animals, language is not a relevant field, and should be absent from the instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">LanguageCommunication</Data><NamedCell
@@ -1931,13 +1931,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Язык с необязательным указанием региона<!-- Language with optional region --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Language with optional region</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">ISO-639-1 alpha 2 код языка в нижнем регистре, с необязательным указанием за ним через дефис ISO-3166-1 alpha 2 кода региона в верхнем регистре. Например &quot;en&quot; для английского, или &quot;en-US&quot; для американского английского в отличие от &quot;en-EN&quot; для британского английского<!-- The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case. E.g. &quot;en&quot; for English, or &quot;en-US&quot; for American English versus &quot;en-EN&quot; for England English --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case. E.g. &quot;en&quot; for English, or &quot;en-US&quot; for American English versus &quot;en-EN&quot; for England English</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Большинство систем в многоязычных странах захотят передавать язык. В действительности не всем системам нужен региональный диалект.<!-- Most systems in multilingual countries will want to convey language. Not all systems actually need the regional dialect. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Most systems in multilingual countries will want to convey language. Not all systems actually need the regional dialect.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Структура aa-BB с именно в таких регистрах - одно из наиболее широко распространенных обозначений локали. Однако не все системы действительно кодируют это, а вместо этого указывают в виде произвольного текста. Поэтому в качестве типа данных вместо кода используется CodeableConcept<!-- The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">languageCode</Data><NamedCell
@@ -1968,13 +1968,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Метод выражения (например выражено в письменном виде, получено устно)<!-- Method of expression (e.g.,expressed written, received spoken) --> </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Method of expression (e.g.,expressed written, received spoken) </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение, представляющее собой метод коммуникации с пациентом на данном языке. Примеры: выражено устно, выражено письменно, выражено знаками, получено устно, получено письменно, получено знаками<!-- A value representing the person's method of expression of this language. Examples: expressed spoken, expressed written, expressed signed, received spoken, received written, received signed --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A value representing the person's method of expression of this language. Examples: expressed spoken, expressed written, expressed signed, received spoken, received written, received signed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Человек, который может довольно хорошо писать по-английски, но не в состоянии понять<!-- A Person that can write English fairly well, but is not capable to understand --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A Person that can write English fairly well, but is not capable to understand</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ожидается, что modeCode и proficiencyLevelCode работают совместно. Это дает меньше смысла при указании одного только modeCode, если вы не хотите отчетливо обозначить уровень владения конкретным способом. Однако вполне приемлемо указывать proficiencyLevelCode без modeCode<!-- It's expected that modeCode and proficiencyLevelCode work in conjunction. It makes less sense to convey modeCode unless you want to distinctly denote someone proficiency for a particular mode. It's however perfectly acceptable to have a proficiencyLevelCode without a modeCode --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">It's expected that modeCode and proficiencyLevelCode work in conjunction. It makes less sense to convey modeCode unless you want to distinctly denote someone proficiency for a particular mode. It's however perfectly acceptable to have a proficiencyLevelCode without a modeCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">modeCode</Data><NamedCell
@@ -2005,13 +2005,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Насколько хорошо понимается/выражается<!-- How well understood/expressed --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">How well understood/expressed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, который описывает, насколько хорошо на языке изъясняются или понимают его<!-- A code that describes how well the language is expressed or understood --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that describes how well the language is expressed or understood</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">В зависимости от уровня владения можно выбрать общий язык, подходящий как для пациента, так и для поставщика услуг.<!-- Depending on proficiency level, a common language that is useable to both the patient and the care provider can be chosen. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Depending on proficiency level, a common language that is useable to both the patient and the care provider can be chosen.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">См. комментарии к Person.language.modeCode<!-- See comments for Person.language.modeCode --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">See comments for Person.language.modeCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">proficiencyLanguageCode</Data><NamedCell
@@ -2041,11 +2041,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Показатель предпочтения языка <!-- Language preference indicator --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Language preference indicator</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает, предпочитает или нет человек этот язык (другим языкам, которыми он владеет на некотором уровне)<!-- Indicates whether or not the Person prefers this language (over other languages he masters up a certain level) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates whether or not the Person prefers this language (over other languages he masters up a certain level)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Люди, владеющие несколькими языками на некотором уровне, могут предпочитать один или несколько, а именно чувствуют себя более уверенно при общении на конкретном языке, а остальные языки указывают в качестве запасного метода<!-- People that master multiple languages up to certain level may prefer one or more, i.e. feel more confident in communicating in a particular language making other languages sort of a fall back method --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">People that master multiple languages up to certain level may prefer one or more, i.e. feel more confident in communicating in a particular language making other languages sort of a fall back method</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2076,13 +2076,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Назначенный пациенту поставщик услуг (care provider)<!-- Patient's nominated care provider --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Patient's nominated care provider</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Назначенный пациенту поставщик услуг (care provider)<!-- Patient's nominated care provider --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Patient's nominated care provider</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо рационализировать это с circleOfCare из CarePlan<!-- Need to rationalize this with circleOfCare from CarePlan --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to rationalize this with circleOfCare from CarePlan</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">subjectOf.CareEvent.performer.AssignedEntity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2111,11 +2111,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, занимающаяся хранением записи пациента<!-- Organization that is the custodian of the patient record --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Organization that is the custodian of the patient record</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, занимающаяся хранением записи пациента<!-- Organization that is the custodian of the patient record --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Organization that is the custodian of the patient record</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо, чтобы знать, кто занимается распознаванием данной записи, администрирует и обновляет ее<!-- Need to know who recognizes this patient record, manages and updates it --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know who recognizes this patient record, manages and updates it</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2146,11 +2146,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на другой ресурс patient, который имеет отношение к этому же реальному человеку<!-- Link to another patient resource that concerns the same actual person --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Link to another patient resource that concerns the same actual person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на другой ресурс patient, который имеет отношение к этому же реальному человеку<!-- Link to another patient resource that concerns the same actual person --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Link to another patient resource that concerns the same actual person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Есть несколько сценариев использования: * Записи-дубликаты пациента вследствие канцелярских ошибок, связанных с трудностью непротиворечивой идентификации людей, и * Распределение информации о пациенте среди нескольких серверов  <!-- There are multiple usecases: * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">There are multiple usecases: * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">There is no assumption that linked patient records have mutual links. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2184,9 +2184,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Другой ресурс patient, на который указывает ссылка<!-- The other patient resource that the link refers to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The other patient resource that the link refers to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Другой ресурс patient, на который указывает ссылка<!-- The other patient resource that the link refers to --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The other patient resource that the link refers to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2221,9 +2221,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">replace | refer | seealso - тип связи<!-- replace | refer | seealso - type of link --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">replace | refer | seealso - type of link</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип связи между данным ресурсом patient и другим ресурсом patient.<!-- The type of link between this patient resource and another patient resource. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of link between this patient resource and another patient resource.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2258,13 +2258,13 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Находится ли данная запись пациента в активном использовании<!-- Whether this patient's record is in active use --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether this patient's record is in active use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Находится ли данная запись пациента в активном использовании<!-- Whether this patient record is in active use --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether this patient record is in active use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужен для возможности пометить запись пациента как непригодную к использованию, потому что она была создана по ошибке<!-- Need to be able to mark a patient record as not to be used because it was created in error --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to mark a patient record as not to be used because it was created in error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение по умолчанию true. Если запись неактивная и связана с активной записью, значит будущие обновления пациента/человека/записи должны происходить на другом ресурсе patient<!-- Default is true. If a record is inactive, and linked to an active record, then future patient/person/record updates should occur on the other patient --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Default is true. If a record is inactive, and linked to an active record, then future patient/person/record updates should occur on the other patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">statusCode</Data><NamedCell
@@ -4017,7 +4017,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -4103,273 +4102,199 @@
    xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C14:R7C14,R10C14:R101C14</Range>
+   <Range>R10C14:R101C14,R2C14:R8C14</Range>
    <Condition>
-    <Value1>(R[-1]C1=&quot;&quot;)&lt;&gt;(R[-1]C[-13]=&quot;&quot;)</Value1>
+    <Value1>(R[1048574]C1=&quot;&quot;)&lt;&gt;(R[1048574]C[16358]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R7C25,R10C1:R101C25</Range>
+   <Range>R10C1:R101C25,R2C1:R8C25</Range>
    <Condition>
-    <Value1>R[-1]C3=&quot;0..0&quot;</Value1>
+    <Value1>R[1048574]C3=&quot;0..0&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
    </Condition>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[-1]C1=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C&lt;&gt;&quot;&quot;,R[1048574]C1=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R11C1:R101C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[-2]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048565]C&lt;&gt;&quot;&quot;,R[1048564]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C24,R2C3:R2C4,R2C6:R2C13</Range>
    <Condition>
-    <Value1>R[-1]C[-2]&lt;&gt;&quot;&quot;</Value1>
+    <Value1>R[1048574]C[16380]&lt;&gt;&quot;&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R3C3:R7C3,R10C3:R101C3,R2C15:R7C15,R10C15:R101C15</Range>
+   <Range>R10C3:R101C3,R10C15:R101C15,R3C3:R8C3,R2C15:R8C15</Range>
    <Condition>
-    <Value1>(R[-1]C1=&quot;&quot;)&lt;&gt;(R[-1]C[-2]=&quot;&quot;)</Value1>
+    <Value1>(R[1048574]C1=&quot;&quot;)&lt;&gt;(R[1048574]C[16380]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C10:R7C10,R10C10:R101C10,R2C13:R7C13,R10C13:R101C13</Range>
+   <Range>R10C10:R101C10,R10C13:R101C13,R2C10:R8C10,R2C13:R8C13</Range>
    <Condition>
-    <Value1>AND(SEARCH(&quot;|&quot;,R[-1]C5)&lt;&gt;0,R[-1]C[-9]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(SEARCH(&quot;|&quot;,R[1048574]C5)&lt;&gt;0,R[1048574]C[16366]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C11:R7C11,R10C11:R101C11,R2C13:R7C13,R10C13:R101C13</Range>
+   <Range>R10C11:R101C11,R10C13:R101C13,R2C11:R8C11,R2C13:R8C13</Range>
    <Condition>
-    <Value1>AND(R[-1]C[-10]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(R[-1]C5,1),LOWER(LEFT(R[-1]C5,1)))))</Value1>
+    <Value1>AND(R[1048574]C[16364]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(R[1048574]C5,1),LOWER(LEFT(R[1048574]C5,1)))))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C11:R7C12,R10C11:R101C12</Range>
+   <Range>R10C11:R101C12,R2C11:R8C12</Range>
    <Condition>
-    <Value1>AND(R[-1]C11&lt;&gt;&quot;&quot;,R[-1]C12&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C11&lt;&gt;&quot;&quot;,R[1048574]C12&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C14:R7C15,R10C14:R101C15</Range>
+   <Range>R10C14:R101C15,R2C14:R8C15</Range>
    <Condition>
-    <Value1>AND(R[-1]C14&lt;&gt;&quot;&quot;,R[-1]C14=R[-1]C15)</Value1>
+    <Value1>AND(R[1048574]C14&lt;&gt;&quot;&quot;,R[1048574]C14=R[1048574]C15)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C19:R2C20</Range>
    <Condition>
-    <Value1>R[-1]C[-18]=&quot;&quot;</Value1>
+    <Value1>R[1048574]C[16348]=&quot;&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R3C19:R7C20,R11C19:R101C20</Range>
+   <Range>R11C19:R101C20,R3C19:R8C20</Range>
    <Condition>
-    <Value1>AND(R[-2]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[-18])),R[-2]C[-18]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048572]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16348])),R[1048572]C[16348]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C23:R7C23,R10C23:R101C23</Range>
+   <Range>R10C23:R101C23,R2C23:R8C23</Range>
    <Condition>
-    <Value1>AND(R[-1]C[-22]&lt;&gt;&quot;&quot;,LEFT(R[-1]C5,1)&lt;&gt;&quot;@&quot;,LEFT(RC1,LEN(R[-1]C1)+1)&lt;&gt;(R[-1]C1&amp;&quot;.&quot;),LEFT(RC1,LEN(R[-1]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[-1]C1&amp;&quot;.&quot;))</Value1>
+    <Value1>AND(R[1048574]C[16340]&lt;&gt;&quot;&quot;,LEFT(R[1048574]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[-1]C1,LEN(R[1048574]C1)+1)&lt;&gt;(R[1048574]C1&amp;&quot;.&quot;),LEFT(R[-1]C1,LEN(R[1048574]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048574]C1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R7C25,R10C1:R101C25</Range>
+   <Range>R10C1:R101C25,R2C1:R8C25</Range>
    <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C14</Range>
    <Condition>
-    <Value1>(R[-2]C1=&quot;&quot;)&lt;&gt;(R[-2]C[-13]=&quot;&quot;)</Value1>
+    <Value1>(R[1048566]C1=&quot;&quot;)&lt;&gt;(R[1048566]C[16358]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C1:R9C25</Range>
    <Condition>
-    <Value1>R[-2]C3=&quot;0..0&quot;</Value1>
+    <Value1>R[1048566]C3=&quot;0..0&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
    </Condition>
    <Condition>
-    <Value1>AND(R[-2]C&lt;&gt;&quot;&quot;,R[-2]C1=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048566]C&lt;&gt;&quot;&quot;,R[1048566]C1=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R7C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C1</Range>
    <Condition>
-    <Value1>AND(R[-2]C&lt;&gt;&quot;&quot;,R[-3]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048566]C&lt;&gt;&quot;&quot;,R[1048565]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R10C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[-3]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048566]C&lt;&gt;&quot;&quot;,R[1048564]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C3,R9C15</Range>
    <Condition>
-    <Value1>(R[-2]C1=&quot;&quot;)&lt;&gt;(R[-2]C[-2]=&quot;&quot;)</Value1>
+    <Value1>(R[1048566]C1=&quot;&quot;)&lt;&gt;(R[1048566]C[16380]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C10,R9C13</Range>
    <Condition>
-    <Value1>AND(SEARCH(&quot;|&quot;,R[-2]C5)&lt;&gt;0,R[-2]C[-9]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(SEARCH(&quot;|&quot;,R[1048566]C5)&lt;&gt;0,R[1048566]C[16366]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C11,R9C13</Range>
    <Condition>
-    <Value1>AND(R[-2]C[-10]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(R[-2]C5,1),LOWER(LEFT(R[-2]C5,1)))))</Value1>
+    <Value1>AND(R[1048566]C[16364]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(R[1048566]C5,1),LOWER(LEFT(R[1048566]C5,1)))))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C11:R9C12</Range>
    <Condition>
-    <Value1>AND(R[-2]C11&lt;&gt;&quot;&quot;,R[-2]C12&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048566]C11&lt;&gt;&quot;&quot;,R[1048566]C12&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C14:R9C15</Range>
    <Condition>
-    <Value1>AND(R[-2]C14&lt;&gt;&quot;&quot;,R[-2]C14=R[-2]C15)</Value1>
+    <Value1>AND(R[1048566]C14&lt;&gt;&quot;&quot;,R[1048566]C14=R[1048566]C15)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C19:R10C20</Range>
    <Condition>
-    <Value1>AND(R[-3]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[-18])),R[-3]C[-18]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048565]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16348])),R[1048565]C[16348]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C23</Range>
    <Condition>
-    <Value1>AND(R[-2]C[-22]&lt;&gt;&quot;&quot;,LEFT(R[-2]C5,1)&lt;&gt;&quot;@&quot;,LEFT(RC1,LEN(R[-2]C1)+1)&lt;&gt;(R[-2]C1&amp;&quot;.&quot;),LEFT(RC1,LEN(R[-2]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[-2]C1&amp;&quot;.&quot;))</Value1>
+    <Value1>AND(R[1048566]C[16340]&lt;&gt;&quot;&quot;,LEFT(R[1048566]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[-8]C1,LEN(R[1048566]C1)+1)&lt;&gt;(R[1048566]C1&amp;&quot;.&quot;),LEFT(R[-8]C1,LEN(R[1048566]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048566]C1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R9C1:R9C25</Range>
    <Condition>
-    <Value1>LEFT(R[-2]C1,1)=&quot;!&quot;</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C14</Range>
-   <Condition>
-    <Value1>(R[-1]C1=&quot;&quot;)&lt;&gt;(R[-1]C[-13]=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C1:R8C25</Range>
-   <Condition>
-    <Value1>R[-1]C3=&quot;0..0&quot;</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
-   </Condition>
-   <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[-1]C1=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C3,R8C15</Range>
-   <Condition>
-    <Value1>(R[-1]C1=&quot;&quot;)&lt;&gt;(R[-1]C[-2]=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C10,R8C13</Range>
-   <Condition>
-    <Value1>AND(SEARCH(&quot;|&quot;,R[-1]C5)&lt;&gt;0,R[-1]C[-9]&lt;&gt;&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C11,R8C13</Range>
-   <Condition>
-    <Value1>AND(R[-1]C[-10]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(R[-1]C5,1),LOWER(LEFT(R[-1]C5,1)))))</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C11:R8C12</Range>
-   <Condition>
-    <Value1>AND(R[-1]C11&lt;&gt;&quot;&quot;,R[-1]C12&lt;&gt;&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C14:R8C15</Range>
-   <Condition>
-    <Value1>AND(R[-1]C14&lt;&gt;&quot;&quot;,R[-1]C14=R[-1]C15)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C19:R8C20</Range>
-   <Condition>
-    <Value1>AND(R[-2]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[-18])),R[-2]C[-18]=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C23</Range>
-   <Condition>
-    <Value1>AND(R[-1]C[-22]&lt;&gt;&quot;&quot;,LEFT(R[-1]C5,1)&lt;&gt;&quot;@&quot;,LEFT(RC1,LEN(R[-1]C1)+1)&lt;&gt;(R[-1]C1&amp;&quot;.&quot;),LEFT(RC1,LEN(R[-1]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[-1]C1&amp;&quot;.&quot;))</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C1:R8C25</Range>
-   <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048566]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R8C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048568]C&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -4426,7 +4351,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Patient.contact</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">ДОЛЖЕН содержать как минимум либо контактные данные, либо ссылку на организацию<!-- SHALL at least contain a contact's details or a reference to an organization --></Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">SHALL at least contain a contact's details or a reference to an organization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">f:name or f:telecom or f:address or f:organization</Data><NamedCell
@@ -4920,28 +4845,28 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C7</Range>
    <Condition>
-    <Value1>AND(R[-1]C1=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[1048574]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C&lt;&gt;&quot;&quot;,R[1048573]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C2,R2C4:R50C5,R2C7:R50C7</Range>
    <Condition>
-    <Value1>(R[-1]C1&lt;&gt;&quot;&quot;)&lt;&gt;(R[-1]C[-1]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>(R[1048574]C1&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048574]C[16382]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C7</Range>
    <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -4985,112 +4910,112 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Patient.identifier</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Идентификатор пациента<!-- A patient identifier --></Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">A patient identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">name</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.name</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть либо фамилии, либо имени пациента<!-- A portion of either family or given name of the patient --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">A portion of either family or given name of the patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">family</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.name.family</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть фамилии пациента<!-- A portion of the family name of the patient --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">A portion of the family name of the patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">given</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.name.given</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть имени пациента<!-- A portion of the given name of the patient --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">A portion of the given name of the patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">phonetic</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть либо фамилии, либо имени, используя некоторый алгоритм фонетического соответствия<!-- A portion of either family or given name using some kind of phonetic matching algorithm --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">A portion of either family or given name using some kind of phonetic matching algorithm</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">telecom</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.telecom</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Значение в любом виде контактных данных пациента<!-- The value in any kind of telecom details of the patient --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">The value in any kind of telecom details of the patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">address</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.address</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Адрес в любом виде адреса/части записи пациента<!-- An address in any kind of address/part of the patient --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">An address in any kind of address/part of the patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">gender</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.gender</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Пол пациента<!-- Gender of the patient --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Gender of the patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">language</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.communication</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Код языка (безотносительно значения вида использования)<!-- Language code (irrespective of use value) --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Language code (irrespective of use value)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">birthdate</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.birthDate</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Дата рождения пациента<!-- The patient's date of birth --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">The patient's date of birth</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.managingOrganization</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Организация, в которой этот человек является пациентом<!-- The organization at which this person is a patient --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">The organization at which this person is a patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">careprovider</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.careProvider</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Назначенный поставщик медицинских услуг пациента, может быть управляющим медицинским обслуживанием, но не организацией, которая администрирует запись <!-- Patient's nominated care provider, could be a care manager, not the organization that manages the record --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Patient's nominated care provider, could be a care manager, not the organization that manages the record</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">active</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.active</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Активна ли данная запись о пациенте<!-- Whether the patient record is active --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Whether the patient record is active</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">animal-species</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.animal.species</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Вид для пациентов-животных<!-- The species for animal patients --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">The species for animal patients</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">animal-breed</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.animal.breed</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Порода для пациентов-животных<!-- The breed for animal patients --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">The breed for animal patients</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">link</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Patient.link.other</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Все пациенты, связанные с данным пациентом<!-- All patients linked to the given patient --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">All patients linked to the given patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -5234,56 +5159,56 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C5</Range>
    <Condition>
-    <Value1>AND(R[-1]C1=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C1</Range>
    <Condition>
-    <Value1>AND(R[1048574]C=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048573]C=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R30C2</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,R[-1]C[-1]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,R[1048574]C[16382]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R30C3</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;reference&quot;,R[-1]C[-2]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;reference&quot;,R[1048574]C[16380]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R30C4</Range>
    <Condition>
-    <Value1>AND(R[-1]C2=&quot;reference&quot;,R[-1]C3=&quot;&quot;,R[-1]C[-3]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C2=&quot;reference&quot;,R[1048574]C3=&quot;&quot;,R[1048574]C[16378]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R30C4</Range>
    <Condition>
-    <Value1>AND(R[-1]C2=&quot;reference&quot;,R[-1]C3&lt;&gt;&quot;&quot;,R[-1]C[-3]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C2=&quot;reference&quot;,R[1048574]C3&lt;&gt;&quot;&quot;,R[1048574]C[16378]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R30C5</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,R[-1]C[-4]=&quot;&quot;,R[-1]C4=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,R[1048574]C[16376]=&quot;&quot;,R[1048574]C4=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C5</Range>
    <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -5306,11 +5231,11 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s123"><Data ss:Type="String">Name</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40"> <Font html:Face="Tahoma"
-        x:Family="Swiss" html:Size="8" html:Color="#000000">The name of the operation or parameter (parameters prefixed by operation name + &quot;.&quot;)&#10;</Font> </ss:Data></Comment><NamedCell
+        x:Family="Swiss" html:Size="8" html:Color="#000000">The name of the operation or parameter (parameters prefixed by operation name + &quot;.&quot;)&#13;</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s124"><Data ss:Type="String">Use</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40"> <Font html:Face="Tahoma"
-        x:Family="Swiss" html:Size="8" html:Color="#000000">&quot;System | Resource | Instance&quot; (operation)&#10;&quot;In&quot; or &quot;Out&quot; (parameter)</Font> </ss:Data></Comment><NamedCell
+        x:Family="Swiss" html:Size="8" html:Color="#000000">&quot;System | Resource | Instance&quot; (operation)&#13;&quot;In&quot; or &quot;Out&quot; (parameter)</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s124"><Data ss:Type="String">Min</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40"> <Font html:Face="Tahoma"
@@ -5353,9 +5278,9 @@
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Fetch Patient Record</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">This operation is used to return all the information related to patient described in the resource on which this operation is invoked. The response is a bundle of type &quot;searchset&quot;. At a minimum, the patient resource itself is returned, along with any other resources that the server has available for the given user. The server also returns whatever resources are needed to support the records - e.g. linked practitioners, locations, organizations etc. The principle intended use for rhis operation is to provide a patient with access to their records (e.g. &quot;Blue Button&quot;).&#10;&#10;The server SHOULD return all resources that it has that are in the patient compartment for the identified patient, and any resource referenced from those, including binaries and attachments. At a mimimum, the resources returned SHALL include all the data covered by the meaningful use common data elements (ref to be provided). Other applicable implementation guides may make additional rules about the information that is returned. Note: the expectations here will be refined after experience with this at connectathon.</Data><NamedCell
+    <Cell ss:StyleID="s128"><Data ss:Type="String">This operation is used to return all the information related to patient described in the resource on which this operation is invoked. The response is a bundle of type &quot;searchset&quot;. At a minimum, the patient resource itself is returned, along with any other resources that the server has available for the given user. The server also returns whatever resources are needed to support the records - e.g. linked practitioners, locations, organizations etc. The principle intended use for rhis operation is to provide a patient with access to their records (e.g. &quot;Blue Button&quot;).&#13;&#13;The server SHOULD return all resources that it has that are in the patient compartment for the identified patient, and any resource referenced from those, including binaries and attachments. At a mimimum, the resources returned SHALL include all the data covered by the meaningful use common data elements (ref to be provided). Other applicable implementation guides may make additional rules about the information that is returned. Note: the expectations here will be refined after experience with this at connectathon.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">The key differences between this operation and simply searching the patient compartment are:&#10;&#10;* unless the client requests otherwise, the server returns the entire result set in a single bundle (rather than using paging)&#10;* the server is responsible for determining what resources to return as included resources (rather than the client specifying which ones)&#10;&#10;It is assumed that the server has identified and secured the context appropriately, and can either associate the authorization context with a single patient, or determine whether the context has the rights to the nominated patient, if there is one. If there is no nominated patient (e.g. the operation is invoked at the system level) and the context is not associated with a single patient record, then the server should return an error. Speciying the relationship between the context, a user and patient records is outside the scope of this specification.</Data><NamedCell
+    <Cell ss:StyleID="s129"><Data ss:Type="String">The key differences between this operation and simply searching the patient compartment are:&#13;&#13;* unless the client requests otherwise, the server returns the entire result set in a single bundle (rather than using paging)&#13;* the server is responsible for determining what resources to return as included resources (rather than the client specifying which ones)&#13;&#13;It is assumed that the server has identified and secured the context appropriately, and can either associate the authorization context with a single patient, or determine whether the context has the rights to the nominated patient, if there is one. If there is no nominated patient (e.g. the operation is invoked at the system level) and the context is not associated with a single patient record, then the server should return an error. Speciying the relationship between the context, a user and patient records is outside the scope of this specification.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -5947,80 +5872,80 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>AND(R[-1]C1=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND(R[1048574]C=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048573]C=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C2,R2C5:R50C5,R2C8:R50C8</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,R[-1]C[-1]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,R[1048574]C[16382]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C2</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[-1]C1))),R[-1]C[-1]&lt;&gt;&quot;IN&quot;, R[-1]C[-1]&lt;&gt;&quot;OUT&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048574]C1))),R[1048574]C[16382]&lt;&gt;&quot;IN&quot;, R[1048574]C[16382]&lt;&gt;&quot;OUT&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R50C3</Range>
    <Condition>
-    <Value1>AND(R[-1]C[-2]&lt;&gt;&quot;&quot;,ISERR(VALUE(R[-1]C[-2])))</Value1>
+    <Value1>AND(R[1048574]C[16380]&lt;&gt;&quot;&quot;,ISERR(VALUE(R[1048574]C[16380])))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R50C4</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,R[-1]C1))&lt;&gt;(R[-1]C[-2]=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,R[1048574]C1))&lt;&gt;(R[1048574]C[16380]=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R50C4</Range>
    <Condition>
-    <Value1>AND(R[-1]C3&lt;&gt;&quot;&quot;,R[-1]C[-3]&lt;&gt;&quot;&quot;,R[-1]C[-3]&lt;&gt;&quot;*&quot;,R[-1]C[-3]&lt;R[-1]C3)</Value1>
+    <Value1>AND(R[1048574]C3&lt;&gt;&quot;&quot;,R[1048574]C[16378]&lt;&gt;&quot;&quot;,R[1048574]C[16378]&lt;&gt;&quot;*&quot;,R[1048574]C[16378]&lt;R[1048574]C3)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
    <Condition>
-    <Value1>AND(R[-1]C[-3]&lt;&gt;&quot;&quot;,R[-1]C[-3]&lt;&gt;&quot;*&quot;,ISERR(VALUE(R[-1]C[-3])))</Value1>
+    <Value1>AND(R[1048574]C[16378]&lt;&gt;&quot;&quot;,R[1048574]C[16378]&lt;&gt;&quot;*&quot;,ISERR(VALUE(R[1048574]C[16378])))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R50C5</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[-1]C1))),R[-1]C2&lt;&gt;&quot;QUERY&quot;, R[-1]C2&lt;&gt;&quot;OPERATION&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048574]C1))),R[1048574]C2&lt;&gt;&quot;QUERY&quot;, R[1048574]C2&lt;&gt;&quot;OPERATION&quot;)</Value1>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R50C6</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,R[-1]C1)),(R[-1]C[-5]&lt;&gt;&quot;&quot;))</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,R[1048574]C1)),(R[1048574]C[16374]&lt;&gt;&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C9:R50C9</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[-1]C1))),R[-1]C[-8]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048574]C1))),R[1048574]C[16368]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -6044,7 +5969,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s101"><Data ss:Type="String">Event Code</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
-        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Unique code for the event.  E.g. patient-link&#10;&#10;</Font> </ss:Data></Comment><NamedCell
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Unique code for the event.  E.g. patient-link&#13;&#13;</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">Category</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
@@ -6333,28 +6258,28 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R20C9</Range>
    <Condition>
-    <Value1>AND(R[-1]C1=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R20C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[1048574]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C&lt;&gt;&quot;&quot;,R[1048573]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R20C3</Range>
    <Condition>
-    <Value1>(R[-1]C1&lt;&gt;&quot;&quot;)&lt;&gt;(R[-1]C[-1]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>(R[1048574]C1&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048574]C[16382]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R20C9</Range>
    <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -6373,7 +6298,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s101"><Data ss:Type="String">Name</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40"> <Font html:Face="Tahoma"
-        x:Family="Swiss" html:Size="8" html:Color="#000000">Label for profile&#10;Comment the row by starting with '!'</Font> </ss:Data></Comment><NamedCell
+        x:Family="Swiss" html:Size="8" html:Color="#000000">Label for profile&#13;Comment the row by starting with '!'</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">Filename</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
@@ -6381,7 +6306,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">Source</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
-        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Name of profile spreadsheet or XML file.  Defaults to same as Filename&#10;</Font> </ss:Data></Comment><NamedCell
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Name of profile spreadsheet or XML file.  Defaults to same as Filename&#13;</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="String">Type</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40"> <Font html:Face="Tahoma"
@@ -6401,7 +6326,7 @@
     <Cell><Data ss:Type="String">daf</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s116"><Data ss:Type="String">cqf-patient</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">!cqf-patient</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">cqf-patient.xml</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">patient-cqf-profile-spreadsheet.xml</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">spreadsheet</Data></Cell>
@@ -6422,11 +6347,11 @@
     <Cell><Data ss:Type="String">core</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s116"><Data ss:Type="String">hspc-patient</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">patient-hspc.xml</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">patient-hspc-profile-spreadsheet.xml</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">patient-qicore</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">patient-qicore.xml</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">patient-qicore-profile-spreadsheet.xml</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">spreadsheet</Data></Cell>
-    <Cell><Data ss:Type="String">hspc</Data></Cell>
+    <Cell><Data ss:Type="String">cqf</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!example1-patient-profile</Data></Cell>
@@ -6642,6 +6567,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -6661,7 +6587,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>7</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
@@ -6680,28 +6606,28 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C4</Range>
    <Condition>
-    <Value1>AND(R[-1]C1=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[1048574]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C&lt;&gt;&quot;&quot;,R[1048573]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R40C2,R2C4:R40C4</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,R[-1]C[-1]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,R[1048574]C[16382]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C4</Range>
    <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -7165,35 +7091,35 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C7</Range>
    <Condition>
-    <Value1>AND(R[-1]C1=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[1048574]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C&lt;&gt;&quot;&quot;,R[1048573]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R40C3,R2C5:R40C5</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,R[-1]C[-2]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,R[1048574]C[16380]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C7</Range>
    <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R40C4</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,OR(R[-1]C2=&quot;&quot;,R[-1]C2=&quot;xml&quot;),R[-1]C[-3]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,OR(R[1048574]C2=&quot;&quot;,R[1048574]C2=&quot;xml&quot;),R[1048574]C[16378]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -7236,7 +7162,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">Reference</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
-        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">#tab-name or value set filename(without extension) or URL for reference&#10;</Font> </ss:Data></Comment><NamedCell
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">#tab-name or value set filename(without extension) or URL for reference&#13;</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">Description</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
@@ -7273,7 +7199,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">AnimalGenderStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Состояние репродуктивных органов животного<!-- The state of the animal's reproductive organs --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">The state of the animal's reproductive organs</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-animal-genderstatus</Data></Cell>
@@ -7288,7 +7214,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">AnimalSpecies</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид животного<!-- The species of an animal --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The species of an animal</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-animal-species</Data></Cell>
@@ -7303,7 +7229,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">AnimalBreed</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Порода животного<!-- The breed of an animal --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The breed of an animal</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-animal-breeds</Data></Cell>
@@ -7318,7 +7244,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ContactRelationship</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид родственных отношений между пациентом и контактным лицом этого пациента<!-- The nature of the relationship between a patient and a contact person for that patient --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The nature of the relationship between a patient and a contact person for that patient</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-patient-contact-relationship</Data></Cell>
@@ -7333,7 +7259,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">LinkType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип связи между этим ресурсом patient и другим ресурсом patient.<!-- The type of link between this patient resource and another patient resource. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of link between this patient resource and another patient resource.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#link-type</Data></Cell>
@@ -7764,49 +7690,49 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C13</Range>
    <Condition>
-    <Value1>AND(R[-1]C1=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[1048574]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C&lt;&gt;&quot;&quot;,R[1048573]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R30C3</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,R[-1]C[-1]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,R[1048574]C[16382]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R30C5</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,(R[-1]C3=&quot;unbound&quot;)&lt;&gt;(R[-1]C[-4]=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,(R[1048574]C3=&quot;unbound&quot;)&lt;&gt;(R[1048574]C[16376]=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R30C6</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,(R[-1]C[-5]&lt;&gt;&quot;&quot;)&lt;&gt;(R[-1]C3=&quot;reference&quot;))</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,(R[1048574]C[16374]&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048574]C3=&quot;reference&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C7:R30C10</Range>
    <Condition>
-    <Value1>AND(R[-1]C[-6]&lt;&gt;&quot;&quot;,R[-1]C3&lt;&gt;&quot;code list&quot;)</Value1>
+    <Value1>AND(R[1048574]C[16372]&lt;&gt;&quot;&quot;,R[1048574]C3&lt;&gt;&quot;code list&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C13</Range>
    <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -7876,7 +7802,7 @@
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
-    <Cell><Data ss:Type="String">замена</Data></Cell>
+    <Cell><Data ss:Type="String">????????????</Data></Cell>
     <Cell><Data ss:Type="String">vervangen</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
@@ -7889,7 +7815,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">ссылка</Data></Cell>
+    <Cell><Data ss:Type="String">????????????</Data></Cell>
     <Cell><Data ss:Type="String">verwijzing</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
@@ -7902,7 +7828,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">см. также</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;???????????? ??????????</Data></Cell>
     <Cell><Data ss:Type="String">zie ook</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -8458,42 +8384,42 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>AND(R[-1]C1=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[1048574]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C&lt;&gt;&quot;&quot;,R[1048573]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C3</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,(R[-1]C2=&quot;&quot;)=(R[-1]C3=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,(R[1048574]C2=&quot;&quot;)=(R[1048574]C3=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R50C6</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,R[-1]C3=&quot;&quot;,R[-1]C[-4]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,R[1048574]C3=&quot;&quot;,R[1048574]C[16376]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R50C6</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,,R[-1]C3=&quot;&quot;,R[-1]C5=&quot;&quot;,R[-1]C[-5]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,,R[1048574]C3=&quot;&quot;,R[1048574]C5=&quot;&quot;,R[1048574]C[16374]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -9130,42 +9056,42 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>AND(R[-1]C1=&quot;&quot;,R[-1]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[1048574]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C&lt;&gt;&quot;&quot;,R[1048573]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C3</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,(R[-1]C2=&quot;&quot;)=(R[-1]C3=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,(R[1048574]C2=&quot;&quot;)=(R[1048574]C3=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R50C6</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,R[-1]C3=&quot;&quot;,R[-1]C[-4]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,R[1048574]C3=&quot;&quot;,R[1048574]C[16376]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R50C6</Range>
    <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,,R[-1]C3=&quot;&quot;,R[-1]C5=&quot;&quot;,R[-1]C[-5]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,,R[1048574]C3=&quot;&quot;,R[1048574]C5=&quot;&quot;,R[1048574]C[16374]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>

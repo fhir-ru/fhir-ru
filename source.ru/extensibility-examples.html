@@ -26,7 +26,7 @@
   <li>Использовать расширение как часть некоторой сущности<!--Use it in the instance --></li>
 </ol>
 <p>
-Описание данного процесса находится на настоящей странице.
+Ниже приводится описание данного процесса.
 </p>
 
 <h3>Согласие пациента на обмен записями о его здоровье<!--Patient Consent for Record Sharing --></h3>
@@ -66,20 +66,22 @@ extension</a>:
  <tr><td>Binding</td><td>(No binding - not a coded value)</td></tr>
 </table>
 
-<h4>Write the ExtensionDefinition</h4>
+<h4>Write the Definition of the Extension</h4>
 <p>
 From this table, we can build a formal extension definition. In this case, it looks like this:
 </p>
 
-<pre class="xml" fragment="ExtensionDefinition">
-&lt;ExtensionDefinition xmlns="http://hl7.org/fhir">
-  &lt;url value="http://example.org/fhir/ExtensionDefinition/participation-agreement" /&gt;
+<pre class="xml" fragment="StructureDefinition">
+&lt;StructureDefinition xmlns="http://hl7.org/fhir">
+  &lt;url value="http://example.org/fhir/StructureDefinition/participation-agreement" /&gt;
   &lt;name value="Example Extension Definition" /&gt;
   &lt;!-- snip other metadata -->
+  &lt;type value="extension" /&gt;
   &lt;contextType value="resource" /&gt;
   &lt;context value="Patient" /&gt;
+  &lt;differential>
   &lt;element>
-    &lt;path value="participation-agreement"/>
+    &lt;path value="Extension.value"/>
     &lt;short value="Agreed agreement/policy" /&gt;
     &lt;definition value="A URI that identifies a participation agreement/policy 
       to which the patient has agreed" /&gt;
@@ -94,7 +96,8 @@ From this table, we can build a formal extension definition. In this case, it lo
     &lt;mustSupport value="true" /&gt;
     &lt;isModifier value="false" /&gt;
   &lt;/element>
-&lt;/ExtensionDefinition>
+  &lt;/differential>
+&lt;/StructureDefinition>
 
 </pre>
 <p>
@@ -129,16 +132,16 @@ fragment identifier.
 
 </pre>
 <a name="sliceextensions"></a>
-<h4>Adding it to Patient Profile</h4>
+<h4>Adding it to Patient StructureDefinition</h4>
 <p>
 The profile definition above simply defines the extension "participation-agreement", and 
 says that it is used with patient. But the profile above doesn't say that the server 
 actually uses it. For the PHR provider to indicate that all the patients resources 
-will use this resource, a profile on the patient resource is used:
+will use this resource, a StructureDefinition on the patient resource is used:
 </p>
 
-<pre class="xml" fragment="Profile">
-&lt;Profile xmlns="http://hl7.org/fhir">
+<pre class="xml" fragment="StructureDefinition">
+&lt;StructureDefinition xmlns="http://hl7.org/fhir">
   &lt;name value="iso-21090" /&gt;
   &lt;!-- snip other metadata, narrative -->
   &lt;differential&gt;
@@ -193,7 +196,7 @@ will use this resource, a profile on the patient resource is used:
   &lt;!-- snip the rest of the profile -->
 
   &lt;/differential&gt;
-&lt;/Profile>
+&lt;/StructureDefinition>
 
 </pre>
 
@@ -260,21 +263,23 @@ can be used. Here is a table of the codes (see the <a href="http://www.hl7.org/v
 
 <p>
 This is all then represented formally in a profile. Such profiles do not need to include constraint statements of resources; instead, they include just extension declarations
-and their associated bindings. In this case, the profile looks like this:
+and their associated bindings. In this case, the definition looks like this:
 </p>
 
-<pre class="xml" fragment="ExtensionDefinition">
-&lt;ExtensionDefinition xmlns="http://hl7.org/fhir">
-  &lt;url value="http://hl7.org/fhir/ExtensionDefinition/iso21090-EN-qualifier" /&gt;
+<pre class="xml" fragment="StructureDefinition">
+&lt;StructureDefinition xmlns="http://hl7.org/fhir">
+  &lt;url value="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier" /&gt;
   &lt;name value="iso-21090" /&gt;
   &lt;!-- snip other metadata, including definition of RIM Mapping -->
+  &lt;type value="extension" /&gt;
   &lt;contextType value="datatype" /&gt;
   &lt;context value="HumanName.given" /&gt;
   &lt;context value="HumanName.prefix" /&gt;
   &lt;context value="HumanName.family" /&gt;
   &lt;context value="HumanName.suffix" /&gt;
+  &lt;differential>
   &lt;element>
-    &lt;path value="name-qualifier"/>
+      &lt;path value="Extension.value"/>
     &lt;short value="LS | AC | NB | PR | HON | BR | AD | SP | MID | CL | IN" /&gt;
     &lt;definition value="A set of codes each of which specifies a certain subcategory
         of the name part in addition to the main name part type" /&gt;
@@ -302,7 +307,8 @@ and their associated bindings. In this case, the profile looks like this:
        &lt;map value="ENXP.qualifier" /&gt;
     &lt;/mapping>
   &lt;/element>
-&lt;/ExtensionDefinition>
+  &lt;/differential>
+&lt;/StructureDefinition>
 
 </pre>
 <p>
@@ -310,7 +316,7 @@ Note that usually you would build the actual profile using some tool. This examp
 </p>
 <h4>Register the Extension</h4>
 <p>
-For this example, it is registered at <a href="http://hl7.org/fhir/ExtensionDefinition/iso21090-?_format=text/html">http://hl7.org/fhir/Profile/iso-21090</a>.
+For this example, it is registered at <a href="http://hl7.org/fhir/StructureDefinition/iso21090-?_format=text/html">http://hl7.org/fhir/StructureDefinition/iso-21090</a>.
 This is the url that will appear in the definition element when the extension is used.
 </p>
 <h4>Use it in the instance</h4>
@@ -323,7 +329,7 @@ fragment identifier.
 &lt;name&gt;
   &lt;use value=&quot;official&quot; /&gt;
   &lt;given value=&quot;Östlund&quot;&gt;
-     &lt;extension url=&quot;http://hl7.org/fhir/Profile/iso-21090#name-qualifier&quot; &gt;
+     &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso-21090#name-qualifier&quot; &gt;
         &lt;valueCode value=&quot;MID&quot; /&gt;
      &lt;/extension&gt;
   &lt;/given&gt;

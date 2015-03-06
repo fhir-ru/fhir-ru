@@ -24,7 +24,7 @@
   <WindowWidth>9870</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -971,9 +971,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Базовый ресурс<!-- Base Resource --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Base Resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Базовый ресурс для всего<!-- Base Resource for everything --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Base Resource for everything</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1003,12 +1003,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Логический идентификатор этого артефакта<!-- Logical id of this artefact --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Logical id of this artefact</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Логический идентификатор ресурса, который используется в URL-адресе ресурса. Однажды присвоенное, это значение никогда больше не меняется<!-- The logical id of the resource, as used in the url for the resoure. Once assigned, this value never changes --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The logical id of the resource, as used in the url for the resoure. Once assigned, this value never changes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурс не имеет идентификатора только в тот момент, когда он отправляется на сервер с помощью операции создания. У комплетов всегда имеется идентификатор, хотя обычно это сгенерированный UUID<!-- The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1035,9 +1035,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Метаданные ресурса<!-- Metadata about the resource --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Metadata about the resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Метаданные ресурса. Это такая информация, которая поддерживается инфраструктурой. Изменения этой информации не всегда можно ассоциировать с версионными изменениями ресурса<!-- The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1068,12 +1068,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Свод правил, в соответствии с которыми создавалось это содержимое<!-- A set of rules under which this content was created --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A set of rules under which this content was created</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на свод правил, которым следовали при создании этого ресурса и которые необходимо понимать при обработке этого содержимого.<!-- A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Установка такого свода правил ограничивает понимание содержимого до лимитированного количества торговых партнеров. Это, по сути, ограничивает полезность данных в долгосрочном плане. Тем не менее, существующая экосистема здравоохранения сильно раздроблена и пока что не готова определять, собирать и обмениваться данными в полностью вычислительном контексте. Реализаторам и/или авторам спецификации следует избегать использования этого элемента, насколько это возможно<!-- Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1101,12 +1101,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Язык содержимого ресурса<!-- Language of the resource content --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Language of the resource content</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Основной язык, на котором написан ресурс<!-- The base language in which the resource is written --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The base language in which the resource is written</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык указывается для поддержки предварительной обработки текстов и доступности для понимания (например при преобразовании текста в речь используется языковой тег). HTML-тег language в описательной части применяется к этой описательной части. Языковой тег ресурса может использоваться для указания языков других представлений, генерируемых из данных ресурса&#10;&#10;Не все содержание ресурса должно быть на указанном основном языке. Resource.language нельзя автоматически принимать за язык описательной части. Если язык указан, его также следует указать в элементе div в HTML (информацию о связи между xml:lang и HTML-атрибутом lang см. в правилах HTML5)<!-- Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource&#10;&#10;Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource&#10;&#10;Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3355,10 +3355,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>4</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -3371,11 +3372,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -4516,11 +4517,11 @@
     <Cell ss:StyleID="s114"><Data ss:Type="String">operation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">Валидация ресурса<!-- Validate a resource --></Data><NamedCell
+    <Cell ss:StyleID="s114"><Data ss:Type="String">Validate a resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">Операция валидации проверяет, допустимо ли вложенное содержимое либо в общем, либо как создание, обновление или удаление существующего ресурса.&#10;&#10;Действие сервера зависит от параметра mode:&#10;&#10;* [отсутствует]: Сервер проверяет содержимое ресурса на соответствие некоторой схеме, ограничивающим условиям и другим общим номенклатурным правилам&#10;* create: Сервер проверяет содержимое, затем проверяет, что это содержимое допустимо для создания (например, что содержимое не нарушает никакие ограничения уникальности)&#10;* update: Сервер проверяет содержимое, затем проверяет, что оно допустимо в качестве обновления заявленного конкретного ресурса (например, что оно не модифицирует неизменяемые поля, которые сервер не позволяет менять, а также проверка версионной целостности при необходимости)&#10;* delete: Сервер игнорирует содержимое и проверяет, что удаление названного ресурса разрешено (например проверка соблюдения правил ссылочной целостности)&#10;&#10;Режимы "update" и "delete" могут использоваться, только когда операция вызывается на уровне ресурса. &#10;&#10;Ответом такой операции будет OperationOutcome&#10;&#10;&#10;<!-- The validate interaction checks whether the attached content would be acceptable either generally, or as a create, or an update or delete to an existing resource.&#10;&#10;The action the server takes depends on the mode parameter:&#10;&#10;* [missing]: The server checks the content of the resource against any schema, constraint rules, and other general terminology rules&#10;* create: The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not validate any uniqueness constraints)&#10;* update: The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate)&#10;* delete: The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules)&#10;&#10;Modes update and delete can only be used when the operation is invoked at the resource level. &#10;&#10;The return from this operation is an OperationOutcome&#10;&#10;&#10; --></Data><NamedCell
+    <Cell ss:StyleID="s128"><Data ss:Type="String">The validate interaction checks whether the attached content would be acceptable either generally, or as a create, or an update or delete to an existing resource.&#10;&#10;The action the server takes depends on the mode parameter:&#10;&#10;* [missing]: The server checks the content of the resource against any schema, constraint rules, and other general terminology rules&#10;* create: The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not validate any uniqueness constraints)&#10;* update: The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate)&#10;* delete: The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules)&#10;&#10;Modes update and delete can only be used when the operation is invoked at the resource level. &#10;&#10;The return from this operation is an OperationOutcome&#10;&#10;&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">Эту операцию можно использовать во время проектирования и разработки приложения для его валидации. Также она может использоваться и во время выполнения. Одним из возможных способов использования может быть такой, когда клиент запрашивает сервер, допустимо ли предлагаемое обновление, которое пользователь редактирует в диалоговом окне, и сервер показывает пользователю актуальную ошибку. Эта операция может использоваться как часть облегченного двухфазного протокола исполнения, при этом отсутствует ожидание того, что сервер будет хранить содержимое ресурса после совершения этой операции, или что сервер будет гарантировать успешное выполнение фактического создания, обновления или удаления после завершения операции валидации.<!-- This operation may be used during design and development to validate application design. It can also be used at run-time. One possible use might be that a client asks the server whether a proposed update is valid as the user is editing a dialog, and displays an updated error to the user. The operation can be used as part of a light-weight two phase commit protocol but there is no expectation that the server will hold the content of the resource after this operation is used, or that the server guarantees to succesfully perform an actual create, update or delete after the validation operation completes. --></Data><NamedCell
+    <Cell ss:StyleID="s129"><Data ss:Type="String">This operation may be used during design and development to validate application design. It can also be used at run-time. One possible use might be that a client asks the server whether a proposed update is valid as the user is editing a dialog, and displays an updated error to the user. The operation can be used as part of a light-weight two phase commit protocol but there is no expectation that the server will hold the content of the resource after this operation is used, or that the server guarantees to succesfully perform an actual create, update or delete after the validation operation completes.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4531,7 +4532,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">The resource to validate</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Должно присутствовать, если только не задан режим удаления &quot;delete&quot;<!-- Must be present unles the mode is &quot;delete&quot; --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Must be present unles the mode is &quot;delete&quot;</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4542,10 +4543,10 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">What kind of validation to perform</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Значением по умолчанию является 'no action' (например общая валидация)<!-- Default is 'no action; (e.g. general validation) --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Default is 'no action; (e.g. general validation)</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s116"><Data ss:Type="String">validate.profile</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">in</Data></Cell>
     <Cell ss:StyleID="s130"><Data ss:Type="Number">0</Data></Cell>
@@ -4553,7 +4554,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Literal or logical uri of a profile</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Если обозначено, то ресурс валидируется на соответствие этому указанному профилю. Если профиль обозначен, а сервер не может провести валидацию на соответствие этому обозначенному профилю, он ДОЛЖЕН вернуть ошибку<!-- If this is nominated, then the resource is validated against this specific profile. If a profile is nominated, and the server cannot validate agsinst the nominated profile, it SHALL return an error --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">If this is nominated, then the resource is validated against this specific profile. If a profile is nominated, and the server cannot validate agsinst the nominated profile, it SHALL return an error</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
@@ -4564,7 +4565,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">OperationOutcome</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">The outcome of the validation operation</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Если в ответе операции не перечислены никакие ошибки, и режим был указан, тогда это указывает на то, что операция будет успешной (за исключением вопросов транзакционной целостности, см. ниже)<!-- If the operation outcome does not list any errors, and a mode was specified, then this is an indication that the operation would be expected to succeed (excepting for transactional integrity issues, see below) --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">If the operation outcome does not list any errors, and a mode was specified, then this is an indication that the operation would be expected to succeed (excepting for transactional integrity issues, see below)</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120.75">
@@ -5038,11 +5039,10 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>2</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -5055,11 +5055,10 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>

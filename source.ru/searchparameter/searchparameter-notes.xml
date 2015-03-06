@@ -1,18 +1,26 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 <h2>SearchParameters on Extensions</h2>
-<p>Ресурс SearchParameter можно использовать для определения различных поисков по расширениям. В зависимости от контекста расширения (типы контекста приводятся в <a href="extensiondefinition.html">ExtensionDefinition</a>) может потребоваться несколько экземпляров элемента SearchParameter.xpath следующим образом:
-<!-- The SearchParameter resource may be used to define searches on extensions. Depending on the context of the extension
-(as defined in the <a href="extensiondefinition.html">ExtensionDefinition</a>), this may require multiple instances of the
-SearchParameter.xpath element like so: --></p>
+<p>Ресурс SearchParameter можно использовать для определения различных поисков по расширениям. В зависимости от контекста расширения (типы контекста приводятся в <a href="structuredefinition.html">StructureDefinition</a>) может потребоваться несколько экземпляров элемента SearchParameter.xpath следующим образом:
+<!-- 
+The SearchParameter resource may be used to define searches on extensions. Depending on the context of the extension
+(as defined in the <a href="structuredefinition.html">StructureDefinition</a>), this may require multiple instances of the
+SearchParameter.xpath element like so:
+ --></p>
 <ul>
 <li>Если контекст расширения ограничивается одним ресурсом, в SearchParameter.base необходимо задать этот ресурс, а элементам, определенным в этом контексте расширения, может соответствовать один или несколько xpath-элементов, например "f:Patient/f:name/f:extension[@url='extension url']"
-<!-- If the extension's context is scoped by a single resource, SearchParameter.base must be set to that resource,
+<!-- 
+If the extension's context is scoped by a single resource, SearchParameter.base must be set to that resource,
 and there may be one or more xpath elements corresponding to the elements specified in the extension's context, e.g.
-"f:Patient/f:name/f:extension[@url='extension url']" --></li> 
+"f:Patient/f:name/f:extension[@url='extension url']"
+ --></li> 
 <li>Если контекст расширения охватывает несколько ресурсов, в SearchParameter.base необходимо задать значение "DomainResource".
-<!-- If the extension's context specifies multiple resources, SearchParameter.base must be set to "DomainResource". --></li>
+<!-- 
+If the extension's context specifies multiple resources, SearchParameter.base must be set to "DomainResource".
+ --></li>
 <li>Вы можете использовать один xpath-элемент с полным URL расширения для обозначения того, что SearchParameter будет искать по всем элементами заданного в SearchParameter.base ресурса для данного расширения.
-<!-- You may use a single xpath element with the full url of the Extension to indicate that the SearchParameter
-would search in all elements of the given SearchParameter.base resource for the given extension. --></li>
+<!-- 
+You may use a single xpath element with the full url of the Extension to indicate that the SearchParameter
+would search in all elements of the given SearchParameter.base resource for the given extension.
+ --></li>
 </ul>
 </div>

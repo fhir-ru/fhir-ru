@@ -67,8 +67,8 @@ API состоит из набора операций (взаимодейств�
      <li><b>base</b>: The <a href="#root">Базовый URL сервиса</a></li>
      <li><b>mime-type</b>: The <a href="#mime-type">Mime Type</a></li>
      <li><b>type</b>: Имя типа ресурса (например "Patient")</li>
-     <li><b>id</b>: The <a href="resources.html#metadata">Логический Id</a> ресурса</li>
-     <li><b>vid</b>: <a href="resources.html#metadata">Идентификатор версии</a> ресурса</li>
+     <li><b>id</b>: The <a href="resource.html#id">Logical Id</a> ресурса</li>
+     <li><b>vid</b>: <a href="resource.html#metadata">Version Id</a> ресурса</li>
      <li><b>compartment</b>: Имя  <a href="extras.html#compartment">модуля</a></li>
      <li><b>parameters</b>: URL-параметры запроса, определенные для каждой операции</li>
    </ul>
@@ -104,12 +104,12 @@ https://server/path/Patient
 
 <h3>Метаданные ресурсов и версионирование</h3>
 <p>
-Каждый ресурс имеет связанный с ним набор <a href="resources.html#metadata">метаданных</a>, которые передаются в запросах и ответах в следующих полях:
+Каждый ресурс имеет связанный с ним набор <a href="resource.html#metadata">метаданных</a>, которые передаются в запросах и ответах в следующих полях:
 </p>
 <table class="grid">
   <tr><th>Элемент метаданных</th><th>В какой части HTTP</th></tr>
-  <tr><td><a href="resources.html#metadata">Логический Id (.id)</a></td><td>Id всегда явно представлен в URL</td></tr>
-  <tr><td><a href="resources.html#metadata">Id версии (.meta.versionId)</a></td><td>Version Id представлен в заголовке <code>ETag</code>. Его СЛЕДУЕТ также возвращать в виде абсолютного канонического URL в заголовке запроса "Content-Location" (см. <a href="#vread">vread</a> ниже)</td></tr>
+  <tr><td><a href="resource.html#id">Logical Id (.id)</a></td><td>Id всегда явно представлен в URL</td></tr>
+  <tr><td><a href="resource.html#metadata">Version Id (.meta.versionId)</a></td><td>Version Id представлен в заголовке <code>ETag</code>. Его СЛЕДУЕТ также возвращать в виде абсолютного канонического URL в заголовке запроса "Content-Location" (см. <a href="#vread">vread</a> ниже)</td></tr>
   <tr><td>Дата последней модификации (.meta.lastUpdated)</td><td>HTTP  заголовок - "Last-Modified"</td></tr>
 </table>
 <p>Note that the Version Id is considered a "weak" ETag and <code>ETag</code> headers
@@ -235,7 +235,7 @@ in their <a href="conformance-definitions.html#Conformance.rest.resource.noVersi
   GET [base]/[type]/[id] {?_format=[mime-type]}
 </pre>
 <p>
-В ответ сервер присылает содержимое соответствующего типа. Этот адрес может быть доступен из браузера. Возможные значения для логического идентификатора (<a href="resources.html#metadata">Logical Id</a>; id) описаны в секции <a href="datatypes.html#id">идентификационный тип</a>.
+В ответ сервер присылает содержимое соответствующего типа. Этот адрес может быть доступен из браузера. Возможные значения для логического идентификатора (<a href="resource.html#id">Logical Id</a>; id) описаны в секции <a href="datatypes.html#id">идентификационный тип</a>.
 Возвращаемый ресурс ДОЛЖЕН иметь элемент <code>id</code> со значением [id].
 Серверам СЛЕДУЕТ возвращать заголовок <code>ETag</code> с versionId и заголовок <code>Content-Location</code> с ответом, представляющим собой полный URL, включающий версию (смотри "vread" ниже) и заголовок <code>Last-Modified</code> с датой последней модификации.
 </p>
@@ -269,10 +269,10 @@ specific url (see vread below) and a <code>Last-Modified</code> header.
 -->
 </p>
 <p>
-<a href="resources.html#metadata">Version Id</a> (vid) - это непрозрачный идентификатор, соответствующий тем же <a href="datatypes.html#id">требованиям к формату</a>, что и <a href="resources.html#metadata">Logical Id</a>. Этот id может быть найден с помощью выполнения операции history (см. ниже), с помощью записи version id в местонахождении содержимого, возвращенного операцией read, либо в ссылке на конкретную версию в модели содержимого. Если это ссылка на версию, в которой этот ресурс был удален, то серверу следует вернуть код состояния 410.
+<a href="resource.html#metadata">Version Id</a> (vid) - это непрозрачный идентификатор, соответствующий тем же <a href="datatypes.html#id">требованиям к формату</a>, что и <a href="resource.html#id">Logical Id</a>. Этот id может быть найден с помощью выполнения операции history (см. ниже), с помощью записи version id в местонахождении содержимого, возвращенного операцией read, либо в ссылке на конкретную версию в модели содержимого. Если это ссылка на версию, в которой этот ресурс был удален, то серверу следует вернуть код состояния 410.
 <!-- 
-The <a href="resources.html#metadata">Version Id</a> (vid) is an opaque identifier that conforms to the same <a href="datatypes.html#id">format requirements</a> as
-a <a href="resources.html#metadata">Logical Id</a>. The id may have been found by performing a history interaction (see below), by recording the
+The <a href="resource.html#metadata">Version Id</a> (vid) is an opaque identifier that conforms to the same <a href="datatypes.html#id">format requirements</a> as
+a <a href="resource.html#id">Logical Id</a>. The id may have been found by performing a history interaction (see below), by recording the
 version id from a content location returned from a read or from a version specific reference in a
 content model. If the version referred to is actually one where the resource was deleted, the
 server should return a 410 status code.

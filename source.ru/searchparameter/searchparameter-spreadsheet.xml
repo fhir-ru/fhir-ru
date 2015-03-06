@@ -20,7 +20,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>8</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -972,12 +972,12 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Параметр поиска для ресурса<!-- Search Parameter for a resource --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Search Parameter for a resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Параметр поиска, определяющий именованный элемент поиска, который можно использовать для поиска/фильтрации по ресурсу<!-- A Search Parameter that defines a named search item that can be used to search/filter on a resource --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A Search Parameter that defines a named search item that can be used to search/filter on a resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">В FHIR поиск не совершается непосредственно по ресурсу (по XML- или JSON-пути), а по именованному параметру, который отображает содержимое ресурса<!-- In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content --> </Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">n/a</Data><NamedCell
@@ -1007,11 +1007,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Символьный URL, используемый для ссылки на этот параметр поиска<!-- Literal URL used to reference this search parameter --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Literal URL used to reference this search parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">URL, по которому этот параметр поиска  опубликован (или будет опубликован), и который используется для ссылки на этот профиль в заявлениях о соответствии <!-- The URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Обеспечить возможность ссылаться и повторно использовать определения параметров поиска под другими именами в операционных системах (в случае конфликта имен)<!-- To allow referencing and reusing search parameter definitions under other names on operational systems (in case of name clash) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">To allow referencing and reusing search parameter definitions under other names on operational systems (in case of name clash)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1040,12 +1040,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя параметра поиска<!-- Name of search parameter --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of search parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя стандартного или пользовательского параметра поиска<!-- The name of the standard or custom search parameter --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of the standard or custom search parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Это имя используется для этого параметра в параметрах поиска в URL<!-- This is the name to be used for this parameter in the search parameters in the URL --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This is the name to be used for this parameter in the search parameters in the URL</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1074,7 +1074,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя издателя (организация или частное лицо)<!-- Name of the publisher (Organization or individual) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of the publisher (Organization or individual)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The name of the individual or organization that published the search parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1205,7 +1205,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Почему определен этот параметр поиска<!-- Why this search parameter is defined --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Why this search parameter is defined</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The Scope and Usage that this search parameter was created to meet</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1232,7 +1232,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">y</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">ConformanceStatementStatus</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">ConformanceResourceStatus</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">status</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1346,9 +1346,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип ресурса, к которому применяется этот параметр поиска<!-- The resource type this search parameter applies to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The resource type this search parameter applies to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Базовый тип ресурса, к которому относится этот параметр поиска<!-- The base resource type that this search parameter refers to --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The base resource type that this search parameter refers to </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1380,7 +1380,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">number | date | string | token | reference | composite | quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип значения, к которому относится параметр поиска, и как интерпретируется его содержимое<!-- The type of value a search parameter refers to, and how the content is interpreted --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of value a search parameter refers to, and how the content is interpreted</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1409,9 +1409,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Документация для параметра поиска<!-- Documentation for  search parameter --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Documentation for  search parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание параметров поиска и их применения<!-- A description of the search parameters and how it used --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A description of the search parameters and how it used</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1440,12 +1440,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath, который извлекает эти значения<!-- XPath that extracts the values --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath that extracts the values</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">XPath-выражение, возвращающее набор элементов для этого параметра поиска<!-- An XPath expression that returns a set of elements for the search parameter --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An XPath expression that returns a set of elements for the search parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обратите внимание, что элементы, возвращаемые этим XPath, иногда являются комплексными элементами, и требуется логика для определения того, как их обрабатывать. Например CodeableConcepts могут содержать текст и/или несколько кодингов, где сами кодинги содержат код и систему<!-- Note that the elements returned by the XPath are sometimes complex elements where logic is required to determine quite how to handle them. E.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Note that the elements returned by the XPath are sometimes complex elements where logic is required to determine quite how to handle them. E.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1473,9 +1473,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Типы ресурса (если это ссылка на ресурс)<!-- Types of resource (if a resource reference) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Types of resource (if a resource reference)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Типы ресурса (если это ссылка на ресурс)<!-- Types of resource (if a resource is referenced) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Types of resource (if a resource is referenced)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3788,7 +3788,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -3809,7 +3808,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>11</ActiveRow>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7316,6 +7316,7 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>

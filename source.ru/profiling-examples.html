@@ -127,7 +127,7 @@ the LOINC code in the observation.  -->
   &lt;structure&gt;
     &lt;!-- first structure, the DiagnosticReport --&gt;
     &lt;type value=&quot;DiagnosticReport&quot;/&gt;
-    &lt;base value=&quot;http://hl7.org/fhir/Profile/DiagnosticReport&quot;/&gt;
+    &lt;base value=&quot;http://hl7.org/fhir/StructureDefinition/DiagnosticReport&quot;/&gt;
     &lt;name value=&quot;LipidProfile&quot;/&gt;
     &lt;!-- snip --&gt;
     &lt;snapshot&gt;
@@ -206,8 +206,8 @@ the LOINC code in the observation.  -->
   &lt;!-- далее идет вторая структура профиля для холестерина (Cholesterol) --&gt;
   &lt;structure&gt;
     &lt;type value=&quot;Observation&quot;/&gt;
-    &lt;base value=&quot;http://hl7.org/fhir/Profile/Observation&quot;/&gt;
-    &lt;name value=&quot;Cholesterol&quot;/&gt; &lt;!-- это цель ссылки #Cholesterol --&gt;
+    &lt;base value=&quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;/&gt;
+    &lt;name value=&quot;Cholesterol&quot;/&gt; &lt;!-- this is the target of #Cholesterol --&gt;
     &lt;snapshot&gt;
       &lt;!-- snip elements --&gt;
       &lt;element&gt;
@@ -236,7 +236,7 @@ the LOINC code in the observation.  -->
   &lt;!-- Triglyceride profile --&gt;
   &lt;structure&gt;
     &lt;type value=&quot;Observation&quot;/&gt;
-    &lt;base value=&quot;http://hl7.org/fhir/Profile/Observation&quot;/&gt;
+    &lt;base value=&quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;/&gt;
     &lt;name value=&quot;Triglyceride&quot;/&gt; &lt;!-- this is the target of #Cholesterol --&gt;
     &lt;snapshot&gt;
       &lt;!-- snip elements --&gt;
@@ -266,7 +266,7 @@ the LOINC code in the observation.  -->
   &lt;!-- LDLCholesterol profile --&gt;
   &lt;structure&gt;
     &lt;type value=&quot;Observation&quot;/&gt;
-    &lt;base value=&quot;http://hl7.org/fhir/Profile/Observation&quot;/&gt;
+    &lt;base value=&quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;/&gt;
     &lt;name value=&quot;LDLCholesterol&quot;/&gt; &lt;!-- this is the target of #Cholesterol --&gt;
     &lt;snapshot&gt;
       &lt;!-- snip elements --&gt;
@@ -298,7 +298,7 @@ the LOINC code in the observation.  -->
   &lt;!-- HDLCholesterol profile --&gt;
   &lt;structure&gt;
     &lt;type value=&quot;Observation&quot;/&gt;
-    &lt;base value=&quot;http://hl7.org/fhir/Profile/Observation&quot;/&gt;
+    &lt;base value=&quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;/&gt;
     &lt;name value=&quot;HDLCholesterol&quot;/&gt; &lt;!-- this is the target of #Cholesterol --&gt;
     &lt;snapshot&gt;
       &lt;!-- snip elements --&gt;

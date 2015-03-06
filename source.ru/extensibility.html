@@ -49,7 +49,7 @@
 Примечания:
 </p>
 <ul>
- <li><i>url</i> - это обязательный атрибут / свойство, который используется как идентификатор извлекаемого <a href="extensiondefinition.html">описания элемента расширения</a>, применяемого по отношению к данному ресурсу и определяющего содержимое и семантику элемента расширения.</li>
+ <li><i>url</i> - это обязательный атрибут / свойство, который используется как идентификатор извлекаемого <a href="structuredefinition.html">extension definition</a>, применяемого по отношению к данному ресурсу и определяющего содержимое и семантику элемента расширения.</li>
  <li>Расширение ДОЛЖНО иметь либо значение (т. е. [x]-элемент), либо вложенные расширения. Если присутствует, [x]-элемент ДОЛЖЕН иметь содерижмое (атрибует value или другие элементы)</li>
  <li>Если для приложения, обрабатывающего содержимое ресурса, не безопасно игнорировать расширение, это должно быть представлено по-другому (см. <a href="#modifier">ниже</a>)</li>
  <li>Фактическим именем элемента <i>value[x]</i> является слово "value", к которому добавляется с большой буквы имя одного из следующих определенных типов, а его содержимым будет то, которое определено для этого типа:
@@ -87,7 +87,7 @@
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;extension url=&quot;http://hl7.org/fhir/ExtensionDefinition/iso-21090-name-use&quot; &gt;
+  &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso-21090-name-use&quot; &gt;
     &lt;valueCode value=&quot;I&quot; /&gt;
   &lt;/extension&gt;
   &lt;text value=&quot;Chief Red Cloud&quot;/&gt;
@@ -99,7 +99,7 @@
 <pre class="json" fragment="HumanName">
   "name" : {
     "extension" : [{
-      "url" : "http://hl7.org/fhir/ExtensionDefinition/iso-21090-name-use",
+      "url" : "http://hl7.org/fhir/StructureDefinition/iso-21090-name-use",
         "valueCode" : "I"
      }],
      "text" : "Chief Red Cloud"
@@ -121,7 +121,7 @@
 </p>
 <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
-  &lt;extension url=&quot;http://acme.org/fhir/ExtensionDefinition/trial-status&quot; &gt;
+  &lt;extension url=&quot;http://acme.org/fhir/StructureDefinition/trial-status&quot; &gt;
     &lt;extension url=&quot;code&quot; &gt;	  
       &lt;valueCode value=&quot;unsure&quot; /&gt;	  
     &lt;/extension&gt;
@@ -144,7 +144,7 @@
 {
   "resourceType" : "Patient",
   "extension" : [{
-    "url" : "http://acme.org/fhir/ExtensionDefinition/trial-status",
+    "url" : "http://acme.org/fhir/StructureDefinition/trial-status",
     "extension" : [{ 
       "url" : "code",
       "valueCode" : "unsure"
@@ -174,14 +174,14 @@ JSON-представление более лаконичное, так как �
 </p>
 <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
-  &lt;extension url=&quot;http://acme.org/fhir/ExtensionDefinition/trial-status&quot; &gt;
+  &lt;extension url=&quot;http://acme.org/fhir/StructureDefinition/trial-status&quot; &gt;
     &lt;extension url=&quot;code&quot; &gt;	  
       &lt;valueCode value=&quot;unsure&quot; /&gt;	  
     &lt;/extension&gt;
     &lt;extension url=&quot;date&quot; &gt;	  
       &lt;valueDate value=&quot;2009-03-14&quot; /&gt;	  
     &lt;/extension&gt;
-    &lt;extension url=&quot;http://acme.org/fhir/ExtensionDefinition/registrar&quot; &gt;	  
+    &lt;extension url=&quot;http://acme.org/fhir/StructureDefinition/registrar&quot; &gt;
       &lt;valueReference array="true"&gt;	  
         &lt;reference value=&quot;Practitioner/example&quot; /&gt;	  	    
       &lt;/valueReference&gt;	  
@@ -197,7 +197,7 @@ JSON-представление более лаконичное, так как �
 {
   "resourceType" : "Patient",
   "extension" : [{
-    "url" : "http://acme.org/fhir/ExtensionDefinition/trial-status",
+    "url" : "http://acme.org/fhir/StructureDefinition/trial-status",
     "extension" : [{
       "url" : "code",
       "valueCode" : "unsure"
@@ -205,7 +205,7 @@ JSON-представление более лаконичное, так как �
       "url" : "date",
       "valueDate" : "2009-03-14" 
     }, {
-      "url" : "http://acme.org/fhir/ExtensionDefinition/registrar",
+      "url" : "http://acme.org/fhir/StructureDefinition/registrar",
       "valueReference" : {
       "reference" : "Practitioner/example"
       }
@@ -253,7 +253,7 @@ the resource) или в структуру любого другого элем�
 </p>
 <pre class="xml">
 &lt;Procedure&gt;
-  &lt;modifierExtension url=&quot;http://example.org/fhir/ExtensionDefinition/negation&quot;&gt;
+  &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/negation&quot;&gt;
     &lt;valueBoolean value="true"/&gt;
   &lt;/modifierExtension&gt;
   &lt;!-- ... other content ... --&gt;
@@ -266,7 +266,7 @@ the resource) или в структуру любого другого элем�
 {
   "resourceType" : "Procedure",
   "modifierExtension" : [{ 
-    "url" : "http://example.org/fhir/ExtensionDefinition/negation",
+    "url" : "http://example.org/fhir/StructureDefinition/negation",
     "valueBoolean" : "true"
       }],
   .. other content ... 
@@ -317,7 +317,7 @@ the resource) или в структуру любого другого элем�
   &lt;/text&gt;
   &lt;!-- ...data... --&gt;
   &lt;performer&gt;
-    &lt;modifierExtension url=&quot;http://example.org/fhir/ExtensionDefinition/negation&quot;&gt;
+    &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/negation&quot;&gt;
       &lt;boolean value="true"/&gt;
     &lt;/modifierExtension&gt;
     &lt;person&gt;
@@ -347,7 +347,7 @@ the resource) или в структуру любого другого элем�
 </p>
 <pre class="xml">
 &lt;uri&gt;
-  &lt;extension url=&quot;http://hl7.org/fhir/ExtensionDefinition/data-absent-reason&quot;&gt;
+  &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/data-absent-reason&quot;&gt;
     &lt;code=&quot;unknown&quot;/&gt;
   &lt;/extension&gt;
 &lt;/uri&gt;

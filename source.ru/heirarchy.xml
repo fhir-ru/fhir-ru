@@ -11,7 +11,6 @@ todo: compartments
       <page title="Наше сообщество и благодарности" filename="credits.html"/>
       <page title="Хронология FHIR" filename="timelines.html"/>
       <page title="Журнал версий" filename="history.html"/>
-      <page title="Соображения, касающиеся DSTU" filename="dstu.html"/>
       <page title="Нерешенные вопросы" filename="todo.html"/>
       <page title="Краткий обзор" filename="summary.html"/>
       <page title="Обзор стандарта и план развития" filename="overview.html">
@@ -228,10 +227,8 @@ todo: compartments
     <page type="resource" resource="SecurityGroup"/>
     <page type="resource" resource="SecurityClaim"/>-->
 			<page type="resource" resource="Conformance"/>
-			<page type="resource" resource="Profile"/>
 			<page type="resource" resource="StructureDefinition"/>
 			<page type="resource" resource="OperationDefinition"/>
-			<page type="resource" resource="ExtensionDefinition"/>
 			<page type="resource" resource="SearchParameter"/>
 			<page type="resource" resource="DataElement"/>
 			<page type="resource" resource="ValueSet"/>

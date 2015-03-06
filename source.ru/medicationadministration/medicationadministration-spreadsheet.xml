@@ -7,19 +7,19 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Jean-Henri Duteau</LastAuthor>
+  <LastAuthor>Claude Nanjo</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2015-01-20T22:28:25Z</LastSaved>
+  <LastSaved>2015-02-28T07:36:53Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9825</WindowHeight>
-  <WindowWidth>28560</WindowWidth>
-  <WindowTopX>29400</WindowTopX>
-  <WindowTopY>-4425</WindowTopY>
+  <WindowHeight>9960</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
   <ActiveSheet>6</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
@@ -978,9 +978,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Введение лекарственного средства пациенту<!-- Administration of medication to a patient --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Administration of medication to a patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает событие употребления пациентом или другого введения лекарственного средства. Может быть как простым - проглотить таблетку, так и длительным вливанием.&#13;&#13;Связанные ресурсы привязывают это событие к его санкционирующему предписанию (authorizing prescription) и конкретной встрече (encounter) пациента и медицинского специалиста (health care practitioner)<!-- Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.&#13;&#13;Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.&#13;&#13;Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1012,9 +1012,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешний идентификатор<!-- External identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">External identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешний идентификатор - FHIR сгенерирует свои собственные внутренние идентификаторы (возможно URLs), которыми ресурсу нет необходимости явно управлять. Здесь указывается тот идентификатор, который будет использоваться другой не FHIR системой - например автоматизированная подача лекарственного средства будет создавать запись при каждом срабатывании; введение, когда пациент отсутствовал в палате, может выполняться другой системой или вводиться после этого события. Особенно важно, если эти записи необходимо обновлять.<!-- External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1050,7 +1050,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">in-progress | on-hold | completed | entered-in-error | stopped</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Устанавливается, как правило, для указания, что введение было завершено. Для некоторых длительных введений, например вливаний, возможно состояние, когда введение начато, но не завершено или приостановлено на время, пока идет другой процесс. <!-- Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1083,9 +1083,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто получил лекарственное средство?<!-- Who received medication? --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who received medication?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек или животное, которому было выдано лекарственное средство. <!-- The person or animal to whom the medication was given. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The person or animal to whom the medication was given.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1118,9 +1118,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто ввел вещество?<!-- Who administered substance? --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who administered substance?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Лицо, ответственное за выдачу лекарственного средства пациенту. <!-- The individual who was responsible for giving the medication to the patient. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The individual who was responsible for giving the medication to the patient.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1153,9 +1153,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter, в рамках котором введено<!-- Encounter administered as part of --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter administered as part of</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Визит, госпитализация или другой вид контакта пациента и поставщика медицинских услуг, в рамках которого было выполнено введение. <!-- The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The visit or admission the or other contact between patient and health care provider the medication administration was performed as part of.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1187,9 +1187,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Заказ, по которому выполнено введение<!-- Order administration performed against --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Order administration performed against</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Исходный запрос, указание или полномочие на выполнение введения. <!-- The original request, instruction or authority to perform the administration. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The original request, instruction or authority to perform the administration.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1220,12 +1220,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Если отсутствует, значит лекарственное средство было введено<!-- If this is missing, then the medication was administered --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">If this is missing, then the medication was administered</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">True, если лекарственное средство не введено<!-- True if medication not administered --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">True if medication not administered</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Установите в true, если запись говорит о том, что лекарственное средство НЕ БЫЛО введено. <!-- Set this to true if the record is saying that the medication was NOT administered. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Set this to true if the record is saying that the medication was NOT administered.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1259,9 +1259,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Причина, по которой введение не было выполнено<!-- Reason administration not performed --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason administration not performed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, указывающий почему введение не было выполнено. <!-- A code indicating why the administration was not performed. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A code indicating why the administration was not performed.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1295,9 +1295,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Основание выполнения введения<!-- Reason administration performed --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason administration performed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, указывающий, почему лекарственное средство было выдано. <!-- A code indicating why the medication was given. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A code indicating why the medication was given.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1328,9 +1328,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Время начала и окончания введения<!-- Start and end time of administration --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Start and end time of administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Интервал времени, в течение которого происходило введение (или не происходило, когда атрибут 'notGiven' установлен в true). Для большинства введений, таких как глотание таблетки, больше подходит использование dateTime. <!-- An interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true).  For many administrations, such as swallowing a tablet the use of dateTime is more appropriate. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true).  For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1363,12 +1363,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Что было введено?<!-- What was administered? --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">What was administered?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет лекарственное средство, которое было введено. Это либо ссылка на ресурс, представляющий детали лекарственного средства, либо простой атрибут с кодом лекарственного средства из известного списка медикаментов. <!-- Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Примечание: не используйте Medication.name для описания введенного лекарственного средства. Если единственная доступная информация - это текстовое описание лекарственного средства, следует использовать Medication.code.text<!-- Note: do not use Medication.name to describe the administered medication. When the only available information is a text description of the medication, Medication.code.text should be used --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Note: do not use Medication.name to describe the administered medication. When the only available information is a text description of the medication, Medication.code.text should be used</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Consumeable-&gt;AdministerableMedication</Data><NamedCell
@@ -1398,9 +1398,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Устройство, используемое для введения<!-- Device used to administer --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Device used to administer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Устройство, используемое для введения лекарственного средства пациенту. Например конкретный инфузионный насос<!-- The device used in administering the medication to the patient.  E.g. a particular infusion pump --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The device used in administering the medication to the patient.  E.g. a particular infusion pump</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1432,9 +1432,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Информация о введении<!-- Information about the administration --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Information about the administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация о введении лекарственного средства, которая не может быть передана в других атрибутах. <!-- Extra information about the medication administration that is not conveyed by the other attributes. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Extra information about the medication administration that is not conveyed by the other attributes.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1463,9 +1463,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробности о том, каким образом был принят медикамент<!-- Details of how medication was taken --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Details of how medication was taken</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, каким образом лекарственное средство было использовано пациентом<!-- Indicates how the medication is/was used by the patient --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates how the medication is/was used by the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1498,9 +1498,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Инструкции по дозировке<!-- Dosage Instructions --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Dosage Instructions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольные текстовые инструкции по дозировке могут указываться в случае, когда они слишком сложные, чтобы их закодировать. Если присутствуют кодированные инструкции, произвольные текстовые инструкции могут также прилагаться для отображения людям, принимающим или вводящим этот медикамент.<!-- Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1531,9 +1531,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Место тела, куда ввели<!-- Body site administered to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Body site administered to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированное указание анатомического положения, где медикамент вводится в тело. Например &quot;левая рука&quot;<!-- A coded specification of the anatomic site where the medication first entered the body.  E.g. &quot;left arm&quot; --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded specification of the anatomic site where the medication first entered the body.  E.g. &quot;left arm&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1566,9 +1566,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Путь вещества в теле<!-- Path of substance into body --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Path of substance into body</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, обозначающий способ ввода или физиологический путь введения терапевтического средства в или на пациента. Например местный, внутривенный и т. д. <!-- A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.   E.g. topical, intravenous, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.   E.g. topical, intravenous, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1601,9 +1601,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Как препарат был введен<!-- How drug was administered --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">How drug was administered</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированное значение, обозначающее метод, которым лекарственное средство было введено в или на тело. Наиболее часто используется для инъекций. Примеры: Slow Push; Deep IV.&#13;&#13;При использовании справочников этот термин уже согласован со способом или формой введения.<!-- A coded value indicating the method by which the medication was introduced into or onto the body. Most commonly used for injections.  Examples:  Slow Push; Deep IV.&#13;&#13;Terminologies used often pre-coordinate this term with the route and or form of administration. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded value indicating the method by which the medication was introduced into or onto the body. Most commonly used for injections.  Examples:  Slow Push; Deep IV.&#13;&#13;Terminologies used often pre-coordinate this term with the route and or form of administration.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1635,12 +1635,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество, введенное в одной дозе<!-- Amount administered in one dose --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Amount administered in one dose</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество лекарственного средства, данного при одном введении. Используйте это значение, когда введение является, по сути, мгновенным событием, таким как проглотить таблетку или сделать инъекцию. <!-- The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.   --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.  </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если введение происходит не мгновенно (присутствует скорость или продолжительность), может указываться для передачи общего количества, введенного за период времени одного введения (как указано в графике)<!-- If the administration is not instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount administered over period of time of a single administration (as indicated by schedule) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If the administration is not instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount administered over period of time of a single administration (as indicated by schedule)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">doseQuantity</Data><NamedCell
@@ -1670,12 +1670,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество дозы в единицу времени<!-- Dose quantity per unit of time --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Dose quantity per unit of time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет скорость, с которой лекарственное средство вводится в пациента. Обычно это скорость вливания, например: 200 мл в течение 2 часов. Может также выражаться как скорость в единицу времени, например 100 мл в час - продолжительность не указана либо указана в quantity<!-- Identifies the speed with which the medication was introduced into the patient. Typically the rate for an infusion e.g. 200ml in 2 hours.  May also expressed as a rate per unit of time such as 100ml per hour - the duration is then not specified, or is specified in the quantity. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the speed with which the medication was introduced into the patient. Typically the rate for an infusion e.g. 200ml in 2 hours.  May also expressed as a rate per unit of time such as 100ml per hour - the duration is then not specified, or is specified in the quantity.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если скорость меняется с течением времени, каждое изменение следует фиксировать как отдельное повторение &quot;dosage&quot;. Данный элемент *не* следует использовать для передачи средней скорости. <!-- If the rate changes over time, each change should be captured as a distinct &quot;dosage&quot; repetition.  This element should *not* be used to convey an average rate. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If the rate changes over time, each change should be captured as a distinct &quot;dosage&quot; repetition.  This element should *not* be used to convey an average rate.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">rateQuantity</Data><NamedCell
@@ -3896,146 +3896,12 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R20C14:R100C14</Range>
    <Condition>
-    <Value1>(R[1048517]C1=&quot;&quot;)&lt;&gt;(R[1048517]C[16293]=&quot;&quot;)</Value1>
+    <Value1>(R[1048479]C1=&quot;&quot;)&lt;&gt;(R[1048479]C[16267]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R20C1:R100C25,R17C1:R17C13,R17C16:R17C25</Range>
-   <Condition>
-    <Value1>R[1048526]C3=&quot;0..0&quot;</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
-   </Condition>
-   <Condition>
-    <Value1>AND(R[1048526]C&lt;&gt;&quot;&quot;,R[1048526]C1=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R24C1:R100C1,R21C1:R22C1</Range>
-   <Condition>
-    <Value1>AND(R[1048514]C&lt;&gt;&quot;&quot;,R[1048513]C=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R20C3:R100C3,R20C15:R100C15,R17C3</Range>
-   <Condition>
-    <Value1>(R[1048526]C1=&quot;&quot;)&lt;&gt;(R[1048526]C[16370]=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R20C10:R100C10,R20C13:R100C13</Range>
-   <Condition>
-    <Value1>AND(SEARCH(&quot;|&quot;,R[1048485]C5)&lt;&gt;0,R[1048485]C[16321]&lt;&gt;&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R20C11:R100C11,R20C13:R100C13</Range>
-   <Condition>
-    <Value1>AND(R[1048485]C[16314]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(R[1048485]C5,1),LOWER(LEFT(R[1048485]C5,1)))))</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R20C11:R100C12</Range>
-   <Condition>
-    <Value1>AND(R[1048485]C11&lt;&gt;&quot;&quot;,R[1048485]C12&lt;&gt;&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R20C14:R100C15</Range>
-   <Condition>
-    <Value1>AND(R[1048517]C14&lt;&gt;&quot;&quot;,R[1048517]C14=R[1048517]C15)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R22C19:R100C20</Range>
-   <Condition>
-    <Value1>AND(R[1048473]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16258])),R[1048473]C[16258]=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R23C23:R100C23,R20C23:R21C23</Range>
-   <Condition>
-    <Value1>AND(R[1048517]C[16230]&lt;&gt;&quot;&quot;,LEFT(R[1048517]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048518]C1,LEN(R[1048517]C1)+1)&lt;&gt;(R[1048517]C1&amp;&quot;.&quot;),LEFT(R[1048518]C1,LEN(R[1048517]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048517]C1&amp;&quot;.&quot;))</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R20C1:R100C25,R17C1:R17C13,R17C16:R17C25</Range>
-   <Condition>
-    <Value1>LEFT(R[1048526]C1,1)=&quot;!&quot;</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R18C1,R23C1</Range>
-   <Condition>
-    <Value1>AND(R[1048469]C&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R22C23</Range>
-   <Condition>
-    <Value1>AND(R[1048451]C[16230]&lt;&gt;&quot;&quot;,LEFT(R[1048451]C5,1)&lt;&gt;&quot;@&quot;,LEFT(#REF!,LEN(R[1048451]C1)+1)&lt;&gt;(R[1048451]C1&amp;&quot;.&quot;),LEFT(#REF!,LEN(R[1048451]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048451]C1&amp;&quot;.&quot;))</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R16C14:R17C14</Range>
-   <Condition>
-    <Value1>(R[1048482]C1=&quot;&quot;)&lt;&gt;(R[1048482]C[16293]=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R16C14:R17C15</Range>
-   <Condition>
-    <Value1>R[1048482]C3=&quot;0..0&quot;</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
-   </Condition>
-   <Condition>
-    <Value1>AND(R[1048482]C[16293]&lt;&gt;&quot;&quot;,R[1048482]C1=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R16C15:R17C15</Range>
-   <Condition>
-    <Value1>(R[1048482]C1=&quot;&quot;)&lt;&gt;(R[1048482]C[16286]=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R16C14:R17C15</Range>
-   <Condition>
-    <Value1>AND(R[1048482]C14&lt;&gt;&quot;&quot;,R[1048482]C14=R[1048482]C15)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R16C14:R17C15</Range>
-   <Condition>
-    <Value1>LEFT(R[1048482]C1,1)=&quot;!&quot;</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R18C14:R19C14</Range>
-   <Condition>
-    <Value1>(R[1048494]C1=&quot;&quot;)&lt;&gt;(R[1048494]C[16293]=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R18C1:R19C25</Range>
    <Condition>
     <Value1>R[1048494]C3=&quot;0..0&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
@@ -4046,16 +3912,150 @@
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R24C1:R100C1,R21C1:R22C1</Range>
+   <Condition>
+    <Value1>AND(R[1048474]C&lt;&gt;&quot;&quot;,R[1048473]C=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R20C3:R100C3,R20C15:R100C15,R17C3</Range>
+   <Condition>
+    <Value1>(R[1048494]C1=&quot;&quot;)&lt;&gt;(R[1048494]C[16366]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R20C10:R100C10,R20C13:R100C13</Range>
+   <Condition>
+    <Value1>AND(SEARCH(&quot;|&quot;,R[1048447]C5)&lt;&gt;0,R[1048447]C[16303]&lt;&gt;&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R20C11:R100C11,R20C13:R100C13</Range>
+   <Condition>
+    <Value1>AND(R[1048447]C[16294]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(R[1048447]C5,1),LOWER(LEFT(R[1048447]C5,1)))))</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R20C11:R100C12</Range>
+   <Condition>
+    <Value1>AND(R[1048447]C11&lt;&gt;&quot;&quot;,R[1048447]C12&lt;&gt;&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R20C14:R100C15</Range>
+   <Condition>
+    <Value1>AND(R[1048479]C14&lt;&gt;&quot;&quot;,R[1048479]C14=R[1048479]C15)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R22C19:R100C20</Range>
+   <Condition>
+    <Value1>AND(R[1048431]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16222])),R[1048431]C[16222]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R23C23:R100C23,R20C23:R21C23</Range>
+   <Condition>
+    <Value1>AND(R[1048479]C[16186]&lt;&gt;&quot;&quot;,LEFT(R[1048479]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048480]C1,LEN(R[1048479]C1)+1)&lt;&gt;(R[1048479]C1&amp;&quot;.&quot;),LEFT(R[1048480]C1,LEN(R[1048479]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048479]C1&amp;&quot;.&quot;))</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R20C1:R100C25,R17C1:R17C13,R17C16:R17C25</Range>
+   <Condition>
+    <Value1>LEFT(R[1048494]C1,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R18C1,R23C1</Range>
+   <Condition>
+    <Value1>AND(R[1048435]C&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R22C23</Range>
+   <Condition>
+    <Value1>AND(R[1048409]C[16186]&lt;&gt;&quot;&quot;,LEFT(R[1048409]C5,1)&lt;&gt;&quot;@&quot;,LEFT(#REF!,LEN(R[1048409]C1)+1)&lt;&gt;(R[1048409]C1&amp;&quot;.&quot;),LEFT(#REF!,LEN(R[1048409]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048409]C1&amp;&quot;.&quot;))</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R16C14:R17C14</Range>
+   <Condition>
+    <Value1>(R[1048452]C1=&quot;&quot;)&lt;&gt;(R[1048452]C[16267]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R16C14:R17C15</Range>
+   <Condition>
+    <Value1>R[1048452]C3=&quot;0..0&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
+   </Condition>
+   <Condition>
+    <Value1>AND(R[1048452]C[16267]&lt;&gt;&quot;&quot;,R[1048452]C1=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R16C15:R17C15</Range>
+   <Condition>
+    <Value1>(R[1048452]C1=&quot;&quot;)&lt;&gt;(R[1048452]C[16258]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R16C14:R17C15</Range>
+   <Condition>
+    <Value1>AND(R[1048452]C14&lt;&gt;&quot;&quot;,R[1048452]C14=R[1048452]C15)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R16C14:R17C15</Range>
+   <Condition>
+    <Value1>LEFT(R[1048452]C1,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R18C14:R19C14</Range>
+   <Condition>
+    <Value1>(R[1048460]C1=&quot;&quot;)&lt;&gt;(R[1048460]C[16267]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R18C1:R19C25</Range>
+   <Condition>
+    <Value1>R[1048460]C3=&quot;0..0&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
+   </Condition>
+   <Condition>
+    <Value1>AND(R[1048460]C&lt;&gt;&quot;&quot;,R[1048460]C1=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R19C1</Range>
    <Condition>
-    <Value1>AND(R[1048489]C&lt;&gt;&quot;&quot;,R[1048488]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048453]C&lt;&gt;&quot;&quot;,R[1048452]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R20C1</Range>
    <Condition>
-    <Value1>AND(R[1048485]C&lt;&gt;&quot;&quot;,R[1048483]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048447]C&lt;&gt;&quot;&quot;,R[1048445]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -4069,7 +4069,7 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R18C3:R19C3,R18C15:R19C15</Range>
    <Condition>
-    <Value1>(R[1048494]C1=&quot;&quot;)&lt;&gt;(R[1048494]C[16370]=&quot;&quot;)</Value1>
+    <Value1>(R[1048460]C1=&quot;&quot;)&lt;&gt;(R[1048460]C[16366]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -4083,7 +4083,7 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R18C10:R19C10,R18C13:R19C13</Range>
    <Condition>
-    <Value1>AND(SEARCH(&quot;|&quot;,R[1048494]C5)&lt;&gt;0,R[1048494]C[16321]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(SEARCH(&quot;|&quot;,R[1048460]C5)&lt;&gt;0,R[1048460]C[16303]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -4097,7 +4097,7 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R18C11:R19C11,R18C13:R19C13</Range>
    <Condition>
-    <Value1>AND(R[1048494]C[16314]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(R[1048494]C5,1),LOWER(LEFT(R[1048494]C5,1)))))</Value1>
+    <Value1>AND(R[1048460]C[16294]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(R[1048460]C5,1),LOWER(LEFT(R[1048460]C5,1)))))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -4111,14 +4111,14 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R18C11:R19C12</Range>
    <Condition>
-    <Value1>AND(R[1048494]C11&lt;&gt;&quot;&quot;,R[1048494]C12&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048460]C11&lt;&gt;&quot;&quot;,R[1048460]C12&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R18C14:R19C15</Range>
    <Condition>
-    <Value1>AND(R[1048494]C14&lt;&gt;&quot;&quot;,R[1048494]C14=R[1048494]C15)</Value1>
+    <Value1>AND(R[1048460]C14&lt;&gt;&quot;&quot;,R[1048460]C14=R[1048460]C15)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -4132,201 +4132,201 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R18C19:R21C20</Range>
    <Condition>
-    <Value1>AND(R[1048492]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16258])),R[1048492]C[16258]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048458]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16222])),R[1048458]C[16222]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R18C23</Range>
    <Condition>
-    <Value1>AND(R[1048494]C[16230]&lt;&gt;&quot;&quot;,LEFT(R[1048494]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048495]C1,LEN(R[1048494]C1)+1)&lt;&gt;(R[1048494]C1&amp;&quot;.&quot;),LEFT(R[1048495]C1,LEN(R[1048494]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048494]C1&amp;&quot;.&quot;))</Value1>
+    <Value1>AND(R[1048460]C[16186]&lt;&gt;&quot;&quot;,LEFT(R[1048460]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048461]C1,LEN(R[1048460]C1)+1)&lt;&gt;(R[1048460]C1&amp;&quot;.&quot;),LEFT(R[1048461]C1,LEN(R[1048460]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048460]C1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R19C23</Range>
    <Condition>
-    <Value1>AND(R[1048489]C[16230]&lt;&gt;&quot;&quot;,LEFT(R[1048489]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048491]C1,LEN(R[1048489]C1)+1)&lt;&gt;(R[1048489]C1&amp;&quot;.&quot;),LEFT(R[1048491]C1,LEN(R[1048489]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048489]C1&amp;&quot;.&quot;))</Value1>
+    <Value1>AND(R[1048453]C[16186]&lt;&gt;&quot;&quot;,LEFT(R[1048453]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048455]C1,LEN(R[1048453]C1)+1)&lt;&gt;(R[1048453]C1&amp;&quot;.&quot;),LEFT(R[1048455]C1,LEN(R[1048453]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048453]C1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R18C1:R19C25</Range>
    <Condition>
-    <Value1>LEFT(R[1048494]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048460]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R16C23:R17C23</Range>
    <Condition>
-    <Value1>AND(R[1048482]C[16230]&lt;&gt;&quot;&quot;,LEFT(R[1048482]C5,1)&lt;&gt;&quot;@&quot;,LEFT(#REF!,LEN(R[1048482]C1)+1)&lt;&gt;(R[1048482]C1&amp;&quot;.&quot;),LEFT(#REF!,LEN(R[1048482]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048482]C1&amp;&quot;.&quot;))</Value1>
+    <Value1>AND(R[1048452]C[16186]&lt;&gt;&quot;&quot;,LEFT(R[1048452]C5,1)&lt;&gt;&quot;@&quot;,LEFT(#REF!,LEN(R[1048452]C1)+1)&lt;&gt;(R[1048452]C1&amp;&quot;.&quot;),LEFT(#REF!,LEN(R[1048452]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048452]C1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C14:R11C14</Range>
    <Condition>
-    <Value1>(R[1048570]C1=&quot;&quot;)&lt;&gt;(R[1048570]C[16293]=&quot;&quot;)</Value1>
+    <Value1>(R[1048568]C1=&quot;&quot;)&lt;&gt;(R[1048568]C[16267]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R12C14:R15C14</Range>
    <Condition>
-    <Value1>(R[1048539]C1=&quot;&quot;)&lt;&gt;(R[1048539]C[16293]=&quot;&quot;)</Value1>
+    <Value1>(R[1048517]C1=&quot;&quot;)&lt;&gt;(R[1048517]C[16267]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R11C25</Range>
    <Condition>
-    <Value1>R[1048570]C3=&quot;0..0&quot;</Value1>
+    <Value1>R[1048568]C3=&quot;0..0&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
    </Condition>
    <Condition>
-    <Value1>AND(R[1048570]C&lt;&gt;&quot;&quot;,R[1048570]C1=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048568]C&lt;&gt;&quot;&quot;,R[1048568]C1=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R16C1:R16C13,R16C16:R16C25</Range>
    <Condition>
-    <Value1>R[1048534]C3=&quot;0..0&quot;</Value1>
+    <Value1>R[1048504]C3=&quot;0..0&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
    </Condition>
    <Condition>
-    <Value1>AND(R[1048534]C&lt;&gt;&quot;&quot;,R[1048534]C1=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048504]C&lt;&gt;&quot;&quot;,R[1048504]C1=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R11C1</Range>
    <Condition>
-    <Value1>AND(R[1048570]C&lt;&gt;&quot;&quot;,R[1048569]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048568]C&lt;&gt;&quot;&quot;,R[1048567]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R16C1</Range>
    <Condition>
-    <Value1>AND(R[1048534]C&lt;&gt;&quot;&quot;,R[1048533]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048504]C&lt;&gt;&quot;&quot;,R[1048503]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R17C1</Range>
    <Condition>
-    <Value1>AND(R[1048526]C&lt;&gt;&quot;&quot;,R[1048524]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048494]C&lt;&gt;&quot;&quot;,R[1048492]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C15:R11C15,R3C3:R11C3</Range>
    <Condition>
-    <Value1>(R[1048570]C1=&quot;&quot;)&lt;&gt;(R[1048570]C[16370]=&quot;&quot;)</Value1>
+    <Value1>(R[1048568]C1=&quot;&quot;)&lt;&gt;(R[1048568]C[16366]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R12C15:R15C15,R12C3:R15C3</Range>
    <Condition>
-    <Value1>(R[1048539]C1=&quot;&quot;)&lt;&gt;(R[1048539]C[16370]=&quot;&quot;)</Value1>
+    <Value1>(R[1048517]C1=&quot;&quot;)&lt;&gt;(R[1048517]C[16366]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C14:R11C15</Range>
    <Condition>
-    <Value1>AND(R[1048570]C14&lt;&gt;&quot;&quot;,R[1048570]C14=R[1048570]C15)</Value1>
+    <Value1>AND(R[1048568]C14&lt;&gt;&quot;&quot;,R[1048568]C14=R[1048568]C15)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R12C14:R15C15</Range>
    <Condition>
-    <Value1>AND(R[1048539]C14&lt;&gt;&quot;&quot;,R[1048539]C14=R[1048539]C15)</Value1>
+    <Value1>AND(R[1048517]C14&lt;&gt;&quot;&quot;,R[1048517]C14=R[1048517]C15)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C23:R11C23</Range>
    <Condition>
-    <Value1>AND(R[1048570]C[16230]&lt;&gt;&quot;&quot;,LEFT(R[1048570]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048571]C1,LEN(R[1048570]C1)+1)&lt;&gt;(R[1048570]C1&amp;&quot;.&quot;),LEFT(R[1048571]C1,LEN(R[1048570]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048570]C1&amp;&quot;.&quot;))</Value1>
+    <Value1>AND(R[1048568]C[16186]&lt;&gt;&quot;&quot;,LEFT(R[1048568]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048569]C1,LEN(R[1048568]C1)+1)&lt;&gt;(R[1048568]C1&amp;&quot;.&quot;),LEFT(R[1048569]C1,LEN(R[1048568]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048568]C1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R12C23:R15C23</Range>
    <Condition>
-    <Value1>AND(R[1048539]C[16230]&lt;&gt;&quot;&quot;,LEFT(R[1048539]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048540]C1,LEN(R[1048539]C1)+1)&lt;&gt;(R[1048539]C1&amp;&quot;.&quot;),LEFT(R[1048540]C1,LEN(R[1048539]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048539]C1&amp;&quot;.&quot;))</Value1>
+    <Value1>AND(R[1048517]C[16186]&lt;&gt;&quot;&quot;,LEFT(R[1048517]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048518]C1,LEN(R[1048517]C1)+1)&lt;&gt;(R[1048517]C1&amp;&quot;.&quot;),LEFT(R[1048518]C1,LEN(R[1048517]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048517]C1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R11C25</Range>
    <Condition>
-    <Value1>LEFT(R[1048570]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048568]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R16C1:R16C13,R16C16:R16C25</Range>
    <Condition>
-    <Value1>LEFT(R[1048534]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048504]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R3C19:R11C20</Range>
    <Condition>
-    <Value1>AND(R[1048564]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16258])),R[1048564]C[16258]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048560]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16222])),R[1048560]C[16222]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R16C19:R17C20</Range>
    <Condition>
-    <Value1>AND(R[1048531]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16258])),R[1048531]C[16258]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048501]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16222])),R[1048501]C[16222]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R12C1:R15C25</Range>
    <Condition>
-    <Value1>R[1048539]C3=&quot;0..0&quot;</Value1>
+    <Value1>R[1048517]C3=&quot;0..0&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
    </Condition>
    <Condition>
-    <Value1>AND(R[1048539]C&lt;&gt;&quot;&quot;,R[1048539]C1=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048517]C&lt;&gt;&quot;&quot;,R[1048517]C1=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R12C1:R15C1</Range>
    <Condition>
-    <Value1>AND(R[1048539]C&lt;&gt;&quot;&quot;,R[1048538]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048517]C&lt;&gt;&quot;&quot;,R[1048516]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R16C3</Range>
    <Condition>
-    <Value1>(R[1048534]C1=&quot;&quot;)&lt;&gt;(R[1048534]C[16370]=&quot;&quot;)</Value1>
+    <Value1>(R[1048504]C1=&quot;&quot;)&lt;&gt;(R[1048504]C[16366]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R12C1:R15C25</Range>
    <Condition>
-    <Value1>LEFT(R[1048539]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048517]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R12C19:R15C20</Range>
    <Condition>
-    <Value1>AND(R[1048536]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16258])),R[1048536]C[16258]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048514]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16222])),R[1048514]C[16222]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
    </Condition>
   </ConditionalFormatting>
@@ -4383,7 +4383,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">MedicationAdministration.dosage</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">ДОЛЖНО содержать по крайней мере dosage.quantity или dosage.rate<!-- SHALL have at least one of dosage.quantity and dosage.rate --></Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">SHALL have at least one of dosage.quantity and dosage.rate</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">exists(f:quantity) or exists(f:rate)</Data><NamedCell
@@ -4395,7 +4395,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Not given reason</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">MedicationAdministration.reasonNotGiven</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Причину reasonNotGiven разрешается указывать только когда wasNotGiven имеет значение true<!-- Reason not given is only permitted if wasNotGiven is true --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Reason not given is only permitted if wasNotGiven is true</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:reasonNotGiven) and f:wasNotGiven/@value='false')</Data></Cell>
    </Row>
@@ -4405,7 +4405,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Given reason</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">MedicationAdministration.reasonGiven</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Причину reasonGiven разрешается указывать только когда wasNotGiven имеет значение false<!-- Reason given is only permitted if wasNotGiven is false --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Reason given is only permitted if wasNotGiven is false</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:reasonGiven) and f:wasNotGiven/@value='true')</Data></Cell>
    </Row>
@@ -4880,28 +4880,28 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C7</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND(R[1048569]C&lt;&gt;&quot;&quot;,R[1048568]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C2,R2C4:R50C5,R2C7:R50C7</Range>
    <Condition>
-    <Value1>(R[1048569]C1&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048569]C[16377]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>(R[1048567]C1&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048567]C[16375]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C7</Range>
    <Condition>
-    <Value1>LEFT(R[1048569]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -5195,56 +5195,56 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C5</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C1</Range>
    <Condition>
-    <Value1>AND(R[1048568]C=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048566]C=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R30C2</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,R[1048569]C[16377]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16375]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R30C3</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;reference&quot;,R[1048569]C[16370]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;reference&quot;,R[1048567]C[16366]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R30C4</Range>
    <Condition>
-    <Value1>AND(R[1048569]C2=&quot;reference&quot;,R[1048569]C3=&quot;&quot;,R[1048569]C[16363]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C2=&quot;reference&quot;,R[1048567]C3=&quot;&quot;,R[1048567]C[16357]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R30C4</Range>
    <Condition>
-    <Value1>AND(R[1048569]C2=&quot;reference&quot;,R[1048569]C3&lt;&gt;&quot;&quot;,R[1048569]C[16363]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C2=&quot;reference&quot;,R[1048567]C3&lt;&gt;&quot;&quot;,R[1048567]C[16357]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R30C5</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,R[1048569]C[16356]=&quot;&quot;,R[1048569]C4=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16348]=&quot;&quot;,R[1048567]C4=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C5</Range>
    <Condition>
-    <Value1>LEFT(R[1048569]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -5902,80 +5902,80 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND(R[1048568]C=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048566]C=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C2,R2C5:R50C5,R2C8:R50C8</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,R[1048569]C[16377]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16375]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C2</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048569]C1))),R[1048569]C[16377]&lt;&gt;&quot;IN&quot;, R[1048569]C[16377]&lt;&gt;&quot;OUT&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048567]C1))),R[1048567]C[16375]&lt;&gt;&quot;IN&quot;, R[1048567]C[16375]&lt;&gt;&quot;OUT&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R50C3</Range>
    <Condition>
-    <Value1>AND(R[1048569]C[16370]&lt;&gt;&quot;&quot;,ISERR(VALUE(R[1048569]C[16370])))</Value1>
+    <Value1>AND(R[1048567]C[16366]&lt;&gt;&quot;&quot;,ISERR(VALUE(R[1048567]C[16366])))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R50C4</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,R[1048569]C1))&lt;&gt;(R[1048569]C[16370]=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,R[1048567]C1))&lt;&gt;(R[1048567]C[16366]=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R50C4</Range>
    <Condition>
-    <Value1>AND(R[1048569]C3&lt;&gt;&quot;&quot;,R[1048569]C[16363]&lt;&gt;&quot;&quot;,R[1048569]C[16363]&lt;&gt;&quot;*&quot;,R[1048569]C[16363]&lt;R[1048569]C3)</Value1>
+    <Value1>AND(R[1048567]C3&lt;&gt;&quot;&quot;,R[1048567]C[16357]&lt;&gt;&quot;&quot;,R[1048567]C[16357]&lt;&gt;&quot;*&quot;,R[1048567]C[16357]&lt;R[1048567]C3)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
    <Condition>
-    <Value1>AND(R[1048569]C[16363]&lt;&gt;&quot;&quot;,R[1048569]C[16363]&lt;&gt;&quot;*&quot;,ISERR(VALUE(R[1048569]C[16363])))</Value1>
+    <Value1>AND(R[1048567]C[16357]&lt;&gt;&quot;&quot;,R[1048567]C[16357]&lt;&gt;&quot;*&quot;,ISERR(VALUE(R[1048567]C[16357])))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R50C5</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048569]C1))),R[1048569]C2&lt;&gt;&quot;QUERY&quot;, R[1048569]C2&lt;&gt;&quot;OPERATION&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048567]C1))),R[1048567]C2&lt;&gt;&quot;QUERY&quot;, R[1048567]C2&lt;&gt;&quot;OPERATION&quot;)</Value1>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R50C6</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,R[1048569]C1)),(R[1048569]C[16349]&lt;&gt;&quot;&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,R[1048567]C1)),(R[1048567]C[16339]&lt;&gt;&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C9:R50C9</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048569]C1))),R[1048569]C[16328]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048567]C1))),R[1048567]C[16312]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>LEFT(R[1048569]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -6288,28 +6288,28 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R20C9</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R20C1</Range>
    <Condition>
-    <Value1>AND(R[1048569]C&lt;&gt;&quot;&quot;,R[1048568]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R20C3</Range>
    <Condition>
-    <Value1>(R[1048569]C1&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048569]C[16377]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>(R[1048567]C1&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048567]C[16375]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R20C9</Range>
    <Condition>
-    <Value1>LEFT(R[1048569]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -6323,7 +6323,7 @@
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s111" ss:AutoFitWidth="0" ss:Width="158.25"/>
    <Column ss:StyleID="s111" ss:AutoFitWidth="0" ss:Width="281.25"/>
-   <Column ss:StyleID="s111" ss:AutoFitWidth="0" ss:Width="252"/>
+   <Column ss:StyleID="s111" ss:AutoFitWidth="0" ss:Width="306.75"/>
    <Column ss:StyleID="s111" ss:Width="63"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s101"><Data ss:Type="String">Name</Data><Comment ss:Author=""><ss:Data
@@ -6370,16 +6370,18 @@
     <Cell><Data ss:Type="String">daf</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s116"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s118"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">medicationadministration-qicore</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">medicationadministration-qicore.xml</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">medicationadministration-qicore-profile-spreadsheet.xml</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">spreadsheet</Data></Cell>
+    <Cell><Data ss:Type="String">cqf</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s116"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s118"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">medicationadministration-extensions</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">medicationadministration-extensions.xml</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">medicationadministration-extensions-spreadsheet.xml</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">spreadsheet</Data></Cell>
+    <Cell><Data ss:Type="String">core</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6600,6 +6602,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Zoom>150</Zoom>
    <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
@@ -6620,8 +6623,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -6639,28 +6642,28 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C4</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C1</Range>
    <Condition>
-    <Value1>AND(R[1048569]C&lt;&gt;&quot;&quot;,R[1048568]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R40C2,R2C4:R40C4</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,R[1048569]C[16377]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16375]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C4</Range>
    <Condition>
-    <Value1>LEFT(R[1048569]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -7118,35 +7121,35 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C7</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C1</Range>
    <Condition>
-    <Value1>AND(R[1048569]C&lt;&gt;&quot;&quot;,R[1048568]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R40C3,R2C5:R40C5</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,R[1048569]C[16370]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16366]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R40C7</Range>
    <Condition>
-    <Value1>LEFT(R[1048569]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R40C4</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,OR(R[1048569]C2=&quot;&quot;,R[1048569]C2=&quot;xml&quot;),R[1048569]C[16363]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,OR(R[1048567]C2=&quot;&quot;,R[1048567]C2=&quot;xml&quot;),R[1048567]C[16357]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -7227,7 +7230,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">MedicationAdministrationStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Ряд кодов, указывающих текущий статус MedicationAdministration<!-- A set of codes indicating the current status of a MedicationAdministration --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">A set of codes indicating the current status of a MedicationAdministration</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#medication-admin-status</Data></Cell>
@@ -7242,7 +7245,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">MedicationAdministrationNegationReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Ряд кодов, обозначающих причину отрицания MedicationAdministration. <!-- A set of codes indicating the reason why the MedicationAdministration is negated. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A set of codes indicating the reason why the MedicationAdministration is negated.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-reason-medication-not-given-codes</Data></Cell>
@@ -7719,49 +7722,49 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C13</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C1</Range>
    <Condition>
-    <Value1>AND(R[1048569]C&lt;&gt;&quot;&quot;,R[1048568]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R30C3</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,R[1048569]C[16377]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16375]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R30C5</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,(R[1048569]C3=&quot;unbound&quot;)&lt;&gt;(R[1048569]C[16356]=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,(R[1048567]C3=&quot;unbound&quot;)&lt;&gt;(R[1048567]C[16348]=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R30C6</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,(R[1048569]C[16349]&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048569]C3=&quot;reference&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,(R[1048567]C[16339]&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048567]C3=&quot;reference&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C7:R30C10</Range>
    <Condition>
-    <Value1>AND(R[1048569]C[16342]&lt;&gt;&quot;&quot;,R[1048569]C3&lt;&gt;&quot;code list&quot;)</Value1>
+    <Value1>AND(R[1048567]C[16330]&lt;&gt;&quot;&quot;,R[1048567]C3&lt;&gt;&quot;code list&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C13</Range>
    <Condition>
-    <Value1>LEFT(R[1048569]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -8404,42 +8407,42 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND(R[1048569]C&lt;&gt;&quot;&quot;,R[1048568]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C3</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,(R[1048569]C2=&quot;&quot;)=(R[1048569]C3=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,(R[1048567]C2=&quot;&quot;)=(R[1048567]C3=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R50C6</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,R[1048569]C3=&quot;&quot;,R[1048569]C[16356]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C3=&quot;&quot;,R[1048567]C[16348]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R50C6</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,,R[1048569]C3=&quot;&quot;,R[1048569]C5=&quot;&quot;,R[1048569]C[16349]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,,R[1048567]C3=&quot;&quot;,R[1048567]C5=&quot;&quot;,R[1048567]C[16339]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>LEFT(R[1048569]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -9076,42 +9079,42 @@
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1=&quot;&quot;,R[1048569]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND(R[1048569]C&lt;&gt;&quot;&quot;,R[1048568]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C3</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,(R[1048569]C2=&quot;&quot;)=(R[1048569]C3=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,(R[1048567]C2=&quot;&quot;)=(R[1048567]C3=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R50C6</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,R[1048569]C3=&quot;&quot;,R[1048569]C[16356]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C3=&quot;&quot;,R[1048567]C[16348]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R50C6</Range>
    <Condition>
-    <Value1>AND(R[1048569]C1&lt;&gt;&quot;&quot;,,R[1048569]C3=&quot;&quot;,R[1048569]C5=&quot;&quot;,R[1048569]C[16349]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,,R[1048567]C3=&quot;&quot;,R[1048567]C5=&quot;&quot;,R[1048567]C[16339]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>LEFT(R[1048569]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>

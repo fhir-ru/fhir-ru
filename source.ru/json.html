@@ -118,7 +118,7 @@ FHIR-типы <a href="datatypes.html#integer">integer</a> и <a href="datatypes
 </p>
 <pre class="xml">
  &lt;<b>dob</b> id="314159" value="1970-03-30" &gt;
-   &lt;extension url="http://example.org/fhir/ExtensionDefinition/text"&gt;
+   &lt;extension url="http://example.org/fhir/StructureDefinition/text"&gt;
      &lt;valueString value="Easter 1970"/&gt;     
    &lt;/extension&gt;
  &lt;/<b>dob</b>&gt;
@@ -129,7 +129,7 @@ FHIR-типы <a href="datatypes.html#integer">integer</a> и <a href="datatypes
  "_dob": { 
    "id": "314159", 
    "extension" : [ {
-      "url" : "http://example.org/fhir/ExtensionDefinition/text",
+      "url" : "http://example.org/fhir/StructureDefinition/text",
       "valueString" : "Easter 1970"
    }]
  }
@@ -141,7 +141,7 @@ FHIR-типы <a href="datatypes.html#integer">integer</a> и <a href="datatypes
 <pre class="xml">
  &lt;<b>code</b> value="au"/&gt;
  &lt;<b>code</b> value="nz"&gt;
-   &lt;extension url="http://hl7.org/fhir/ExtensionDefinition/display"&gt;
+   &lt;extension url="http://hl7.org/fhir/StructureDefinition/display"&gt;
      &lt;valueString value="New Zealand a.k.a Kiwiland"/&gt;     
    &lt;/extension&gt;
  &lt;/<b>code</b>&gt;
@@ -153,7 +153,7 @@ FHIR-типы <a href="datatypes.html#integer">integer</a> и <a href="datatypes
    null, 
    { 
      "extension" : [ {
-        "url" : "http://hl7.org/fhir/ExtensionDefinition/display",
+        "url" : "http://hl7.org/fhir/StructureDefinition/display",
       "valueString" : "New Zealand a.k.a Kiwiland"
      }]
    }

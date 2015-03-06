@@ -28,7 +28,7 @@
   <WindowWidth>22350</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>9</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -984,7 +984,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Официальное соглашение между участниками относительно ведения бизнеса, обмена информацией или других вопросов.<!-- A formal agreement between parties regarding the conduct of business, exchange of information or other matters. --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A formal agreement between parties regarding the conduct of business, exchange of information or other matters.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1013,9 +1013,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор контракта<!-- Contract identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор этого контракта.<!-- Unique Id for this contract. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Unique Id for this contract.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1044,9 +1044,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Предмет контракта<!-- Subject --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Subject</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">О ком и/или о чем он: обычно пациент, организация, собственность.<!-- Who and/or what this is about: typically Patient, Organization, property. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Who and/or what this is about: typically Patient, Organization, property.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1074,9 +1074,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Орган власти<!-- Authority --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Authority</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Официально или неофициально признанная группировка людей или организаций, сформированная с целью достижения какой-то формы коллективного действия. Включает в себя компании, учреждения, корпорации, отделы, сообщества, практикующие группы в области здравоохранения и т. д.<!-- A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action. Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc.  --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action. Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1104,9 +1104,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Территория<!-- Domain --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Domain</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Местоположение (Location) включает как случайные (место, используемое для оказания медицинской помощи без предварительного назначения или разрешения), так и выделенные, официально назначенные места.<!-- A Location includes both incidental locations (a place which is used for healthcare without prior designation or authorization) and dedicated, formally appointed locations. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A Location includes both incidental locations (a place which is used for healthcare without prior designation or authorization) and dedicated, formally appointed locations.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1136,9 +1136,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип контракта<!-- Type of contract --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of contract</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип контракта (конфиденциальность, безопасность, соглашение, страховка)<!-- Type of contract (Privacy-Security, Agreement, Insurance) --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Type of contract (Privacy-Security, Agreement, Insurance) </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1168,9 +1168,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Подтип контракта<!-- Subtype of contract --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Subtype of contract</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Более конкретный тип договора (конфиденциальность, разрешение на разглашение, предварительное распоряжение, отказ от реанимации, разрешение на лечение)<!-- More specific type of contract (Privacy, Disclosure-Authorization, Advanced-Directive, DNR, Authorization-to-Treat) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">More specific type of contract (Privacy, Disclosure-Authorization, Advanced-Directive, DNR, Authorization-to-Treat)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1199,9 +1199,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда был создан<!-- When this was issued --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When this was issued</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда был создан.<!-- When this was issued. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">When this was issued.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1230,9 +1230,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Время действия<!-- Effective time --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Effective time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Релевантное время/период времени действия<!-- Relevant time/time-period when applicable --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Relevant time/time-period when applicable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1260,9 +1260,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество продуктов или услуг<!-- Count of Products or Services --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Count of Products or Services</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество повторений продукта или услуги<!-- The number of repetitions of a service or product. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The number of repetitions of a service or product.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1290,9 +1290,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Комиссия, сбор или стоимость для каждого пункта<!-- Fee, charge or cost per point --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Fee, charge or cost per point</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Цена единицы продукта.<!-- The unit price product. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The unit price product.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1321,9 +1321,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент пересчёта цены<!-- Price scaling factor --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Price scaling factor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Действительное число, которое представляет собой множитель, используемый при определении общей стоимости предоставляемых услуг и/или полученных товаров. Концепция коэффициента позволяет применять множитель скидки или надбавки к денежной сумме.<!-- A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount. --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1352,9 +1352,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент пересчёта сложности<!-- Difficulty scaling factor --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Difficulty scaling factor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Величина, выражающая тяжесть (основанную на сложности, стоимости и/или интенсивности ресурсов), связанную с поставляемым товаром или услугой. Идея элемента Points в присвоении значений point услугам и/или товарам, чтобы каждому point можно было назначить денежную сумму.<!-- An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1383,9 +1383,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Общая стоимость пункта<!-- Total item cost --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Total item cost</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество, умноженное на цену за единицу дополнительной услуги, продукта или сбора. Например формула unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor и points считаются равными 1, если не указаны.<!-- The quantity times the unit price for an additional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The quantity times the unit price for an additional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1415,9 +1415,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Автор контракта или ответственное лицо<!-- Contract author or responsible party --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract author or responsible party</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Автор контракта или ответственное лицо.<!-- Contract author or responsible party. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Contract author or responsible party.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1446,9 +1446,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Первое лицо или доверитель<!-- First Party or delegator --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">First Party or delegator</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Первое лицо контракта, может быть стороной, которая предоставляет или делегирует права, определенные в контракте.<!-- First Party to the contract, may be the party who confers or delegates the rights defined in the contract. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">First Party to the contract, may be the party who confers or delegates the rights defined in the contract.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1477,9 +1477,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Вторая сторона или делегат<!-- Second Party or delegatee --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Second Party or delegatee</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Вторая сторона контракта, может быть стороной, которая принимает на себя обязательства или той, которой делегируются права.<!-- The Second party to the contract, may be the party who accepts obligations or be that to which rights are delegated. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The Second party to the contract, may be the party who accepts obligations or be that to which rights are delegated.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1507,9 +1507,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Свидетель контракта<!-- Witness to the contract --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Witness to the contract</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Кто был свидетелем при оформлении контракта.<!-- Who witnesses the contract. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Who witnesses the contract.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1538,9 +1538,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Доверенное лицо<!-- Trustee --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Trustee</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Первое лицо контракта, может быть стороной, которая предоставляет или делегирует права, определенные в контракте.<!-- First Party to the contract, may be the party who confers or delegates the rights defined in the contract. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">First Party to the contract, may be the party who confers or delegates the rights defined in the contract.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1569,9 +1569,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Государственный нотариус<!-- Notary Public --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Notary Public</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Первое лицо контракта, может быть стороной, которая предоставляет или делегирует права, определенные в контракте.<!-- First Party to the contract, may be the party who confers or delegates the rights defined in the contract. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">First Party to the contract, may be the party who confers or delegates the rights defined in the contract.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1598,9 +1598,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Подписавшая сторона<!-- Signer --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Signer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Список подписей контракта.<!-- List or contract signatures. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">List or contract signatures.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1624,15 +1624,15 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">ContractSignerType</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">SignatureType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип подписывающего<!-- Signer Type --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Signer Type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Участие или роль подписывающего.<!-- Party or role who is signing. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Party or role who is signing.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1660,9 +1660,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Электронная цифровая подпись документа<!-- Documentation Signature --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Documentation Signature</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержимое электронной цифровой подписи в Base64.<!-- The DSIG signature contents in Base64. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The DSIG signature contents in Base64.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1690,9 +1690,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Условия контракта<!-- The terms of the Contract --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The terms of the Contract</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Распределенные по пунктам условия контракта. Правовые клаузулы или условия контракта, которые требуют (или препятствуют) от одной или обеих сторон выполнить конкретное требование за какое-то указанное время.<!-- The itemized terms of the contract. The legal clause or conditions of the Contract that requires or prevents either one or both parties to perform a particular requirement by some specified time. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The itemized terms of the contract. The legal clause or conditions of the Contract that requires or prevents either one or both parties to perform a particular requirement by some specified time.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1722,9 +1722,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор условия<!-- Term identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Term identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор конкретного условия.<!-- Unique Id for this particular term. --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Unique Id for this particular term. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1753,9 +1753,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип условия<!-- Term type --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Term type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип условия.<!-- The type of the term. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of the term.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1784,9 +1784,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Подтип условия<!-- Term subtype --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Term subtype</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Подтип условия, который соответствует типу условия.<!-- The subtype of the term which is appropriate to the term type. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The subtype of the term which is appropriate to the term type.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1814,9 +1814,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Предмет условия контракта<!-- Subject for the Term --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Subject for the Term</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">О ком или о чем это условие контракта.<!-- Who or what the contract term is about. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Who or what the contract term is about.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1844,9 +1844,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Человекочитаемый текст условия<!-- Human readable Term text --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Human readable Term text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемая форма условия контракта.<!-- Human readable form of the term of the contract. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Human readable form of the term of the contract.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1875,9 +1875,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда издан<!-- When issued --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When issued</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда это условие было издано<!-- When this term was issued. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">When this term was issued.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1906,9 +1906,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда действителен<!-- When effective --> </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When effective </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Релевантное время/временной период, когда это условие применимо<!-- Relevant time/time-period when the term is applicable --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Relevant time/time-period when the term is applicable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1936,9 +1936,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество продуктов или услуг<!-- Count of Products or Services --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Count of Products or Services</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Число повторений услуги или продукта.<!-- The number of repetitions of a service or product. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The number of repetitions of a service or product.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1966,9 +1966,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Комиссия, сбор или стоимость для каждого пункта<!-- Fee, charge or cost per point --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Fee, charge or cost per point</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Цена единицы продукта.<!-- The unit price product. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The unit price product.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1996,9 +1996,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент пересчёта цены<!-- Price scaling factor --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Price scaling factor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Действительное число, которое представляет собой множитель, используемый при определении общей стоимости предоставляемых услуг и/или полученных товаров. Концепция коэффициента позволяет применять множитель скидки или надбавки к денежной сумме.<!-- A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount. --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2026,9 +2026,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент пересчёта сложности<!-- Difficulty scaling factor --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Difficulty scaling factor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Величина, выражающая тяжесть (основанную на сложности, стоимости и/или интенсивности ресурсов), связанную с поставляемым товаром или услугой. Идея элемента Points в присвоении значений point услугам и/или товарам, чтобы каждому point можно было назначить денежную сумму.<!-- An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2056,9 +2056,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Общая стоимость пункта<!-- Total item cost --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Total item cost</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество, умноженное на цену за единицу дополнительной услуги, продукта или сбора. Например формула unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor и points считаются равными 1, если не указаны.<!-- The quantity times the unit price for an additional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The quantity times the unit price for an additional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2086,9 +2086,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Юридически обязательный договор<!-- Binding Contract --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Binding Contract</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контракт, имеющий обязательную силу<!-- Legally binding contract --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Legally binding contract</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2116,9 +2116,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Время вступления юридически обязательного договора в силу <!-- Binding Contract effective time --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Binding Contract effective time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Релевантное время/период времени действия<!-- Relevant time/time-period when applicable --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Relevant time/time-period when applicable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2146,9 +2146,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Человекочитаемый текст контракта<!-- Human readable contract text --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Human readable contract text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дружественная человекочитаемая форма (может быть ссылкой на пользовательский интерфейс, используемый для ввода контракта)<!-- Friendly Human readable form (might be a reference to the UI used to capture the contract) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Friendly Human readable form (might be a reference to the UI used to capture the contract)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2176,9 +2176,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Человекочитаемый текст о времени действия контракта<!-- Human readable contract text effective time --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Human readable contract text effective time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Релевантное время/период времени действия<!-- Relevant time/time-period when applicable --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Relevant time/time-period when applicable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2206,9 +2206,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Юридический текст контракта<!-- Legal contract text --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Legal contract text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Юридический текст в человекочитаемой форме<!-- Legal text in Human readable form --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Legal text in Human readable form </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2236,9 +2236,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата/время юридического текста контракта<!-- Legal contract text date time --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Legal contract text date time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Релевантное время/период времени действия<!-- Relevant time/time-period when applicable --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Relevant time/time-period when applicable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2266,9 +2266,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Вычислительный текст контракта<!-- Computable contract text --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Computable contract text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Исчисляемые правила политики (например XACML, DKAL, SecPal)<!-- Computable Policy rules (e.g. XACML, DKAL, SecPal) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Computable Policy rules (e.g. XACML, DKAL, SecPal)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2296,9 +2296,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Эффективное время вычислительного текста контракта<!-- Computable contract text effect time --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Computable contract text effect time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Релевантное время/период времени действия<!-- Relevant time/time-period when applicable --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Relevant time/time-period when applicable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4023,6 +4023,7 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -4043,8 +4044,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>22</ActiveRow>
-     <RangeSelection>R23C2:R23C14</RangeSelection>
+     <ActiveRow>23</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -4968,7 +4969,7 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Contract.subject</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Личность цели контракта<!-- The identity of the target of the contract --></Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">The identity of the target of the contract</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!request</Data></Cell>
@@ -4996,7 +4997,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Contract.subject</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Личность цели контракта (если это пациент) <!-- The identity of the target of the contract (if a patient) --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">The identity of the target of the contract (if a patient)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6356,7 +6357,7 @@
     <Cell><Data ss:Type="String">IG Name</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s113"><Data ss:Type="String">consentdirective</Data><NamedCell
+    <Cell ss:StyleID="s113"><Data ss:Type="String">!consentdirective</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">contract-consentdirective.xml</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6623,7 +6624,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7276,7 +7277,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ContractType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Список всех кодов контракта<!-- List of overall contract codes --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">List of overall contract codes</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-contract-type</Data></Cell>
@@ -7291,7 +7292,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ContractSubtype</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Детализированные коды, указанные выше<!-- Detailed codes within the above --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed codes within the above</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-contract-subtype</Data></Cell>
@@ -7306,7 +7307,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ContractTermType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Детализированные коды типов условий контракта<!-- Detailed codes for the types of contract provisions --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed codes for the types of contract provisions</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-contract-term-type</Data></Cell>
@@ -7321,7 +7322,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ContractTermSubType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Детализированные коды подтипов условий контракта<!-- Detailed codes for the subtypes of contract provisions --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed codes for the subtypes of contract provisions</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-contract-term-subtype</Data></Cell>
@@ -7336,7 +7337,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">!ContractSignerType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень лиц, которые могут подписывать<!-- List of parties who may be signing --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">List of parties who may be signing</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-contract-signer-type</Data></Cell>
@@ -7723,7 +7724,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
