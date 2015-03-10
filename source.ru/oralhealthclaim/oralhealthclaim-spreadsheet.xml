@@ -987,7 +987,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Claim, Pre-determination or Pre-authorization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Выданный поставщиком перечень предоставленных пациенту или планируемых продуктов и услуг для предоставления страховой компании для взыскания платежа. <!-- A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
