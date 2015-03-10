@@ -24,7 +24,7 @@ todo: compartments
 			</page>
       <page title="Предстоящие задачи" filename="change.html"/>
       <page title="Соответствие ФМ ЭПМЗ и FHIR" filename="ehr-fm.html"/>
-      <page title="Definitions" filename="resource-definitions.html">
+      <page title="Определения" filename="resource-definitions.html">
   			<page type="resource" resource="Resource"/>
   			<page type="resource" resource="DomainResource"/>
       </page>
