@@ -1,52 +1,68 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 
-<h2>Interpretation Notes:</h2>
+<h2>Примечания к трактовке:<!-- Interpretation Notes: --></h2>
 
 <ul>
 
-<li>A structure is represented as a flat list of elements. The <code>element.path</code> provides the overall structure.</li>
-<li><code>element.short</code>, <code>element.formal</code>, <code>element.comments</code> and <code>element.mapping</code> provide the specific definition for the field in a specific context.</li>
-<li><code>element.type</code> is used to specify which types may be used for this element. If there is more than one type, the element offers a choice of types and must have a name that terminates in "[x]". 
-Names of elements that are choices retain the "[x]" in the name, even if a constraint on such an element limits the number of allowed types down to one.</li>
-<li>When using xpath to make constraints about the relationship between the contents of the narrative and the contents of the data elements, the element against which the rule is expressed is the one against which the error or warning will be reported by a validator.</li>
-<li>When xpath constraints refer to elements that offer a choice of types, the statement must use the fully expanded name (including the actual type), not the name ending in "[x]".</li>
-<li>For xpath constraints, the prefix "f" should be used for "http://hl7.org/fhir", and "h" for "http://www.w3.org/1999/xhtml". XPath constraints are written against the XML representation, but the rules they describe SHALL be true in any other representation as well</li>
-<li>The condition element is used to assert that a constraint defined on another element affects the allowed cardinality of this element.</li>
+<li>Структура представляется в виде линейного списка элементов. В <code>element.path</code> хранится вся общая структура целиком.<!-- A structure is represented as a flat list of elements. The <code>element.path</code> provides the overall structure. --></li>
+<li>Элементы <code>element.short</code>, <code>element.formal</code>, <code>element.comments</code> и <code>element.mapping</code> содержат конкретное определение соответствующего поля для определенного контекста.<!-- <code>element.short</code>, <code>element.formal</code>, <code>element.comments</code> and <code>element.mapping</code> provide the specific definition for the field in a specific context. --></li>
+<li>В <code>element.type</code> перечисляются типы, которые могут использоваться для этого элемента. Если указано больше одного типа, значит в элементе предполагается выбор типа, и он должен иметь имя, заканчивающееся на "[x]". Окончание "[x]" сохраняется даже для тех имен элементов, максимальное число которых равно единице. <!-- <code>element.type</code> is used to specify which types may be used for this element. If there is more than one type, the element offers a choice of types and must have a name that terminates in "[x]". 
+Names of elements that are choices retain the "[x]" in the name, even if a constraint on such an element limits the number of allowed types down to one. --></li>
+<li>Когда для создания ограничений на взаимосвязи между содержимым описательной части и содержимым элементов данных используется xpath, то элемент, по отношению к которому выражено правило, и будет тем, о котором будет сообщаться в ошибке или предупреждении. 
+<!-- When using xpath to make constraints about the relationship between the contents of the narrative and the contents of the data elements, the element against which the rule is expressed is the one against which the error or warning will be reported by a validator. --></li>
+<li>Когда xpath-ограничения относятся к элементам, которые предлагают выбор типа, необходимо использовать полностью развернутое имя (включая фактический тип), а не имя, оканчивающееся на "[x]".
+<!-- When xpath constraints refer to elements that offer a choice of types, the statement must use the fully expanded name (including the actual type), not the name ending in "[x]". --></li>
+<li>Для xpath-ограничений префикс "f" должен использоваться для "http://hl7.org/fhir", и "h" для "http://www.w3.org/1999/xhtml". XPath-ограничения пишутся для XML-представления, однако правила, которые они описывают, ДОЛЖНЫ выполняться и для других представлений тоже.
+<!-- For xpath constraints, the prefix "f" should be used for "http://hl7.org/fhir", and "h" for "http://www.w3.org/1999/xhtml". XPath constraints are written against the XML representation, but the rules they describe SHALL be true in any other representation as well --></li>
+<li>Элемент condition используется для объявления о том, что ограничение, определенное на другом элементе, влияет на допустимое кардинальное число этого элемента.
+<!-- The condition element is used to assert that a constraint defined on another element affects the allowed cardinality of this element. --></li>
 </ul>
 
-<h3>Different types of Structure</h3>
+<h3>Различные типы структур<!-- Different types of Structure --></h3>
 <p>
-<code>StructureDefinition.type</code> indicates what kind of structure is being defined. There are 5 kinds of structures:
+<code>StructureDefinition.type</code> означает, какой вид структуры задается. Есть 5 видов структур:
+<!-- <code>StructureDefinition.type</code> indicates what kind of structure is being defined. There are 5 kinds of structures: -->
 </p>
 <ol>
- <li><b>abstract</b>: "Abstract type" - one of the underlying base types defined as part of the specification (e.g. <a href="resource.html">Resource</a>)</li>
- <li><b>type</b>: "Data Type" - a primitive or complex structure that defines a set of data elements, most of which are defined in the <a href="datatypes.html">Data Types</a> section</li>
- <li><b>resource</b>: "Resource" - A resource defined by the FHIR specification (see the <a href="resourcelist.html">resource list</a>)</li>
- <li><b>constraint</b>: "Constrained Type" - A set of constraints on a resource or data type that describe how it is used for a particular use</li>
- <li><b>extension</b>: "Extension Definition" - A definition of an extension that can be used in a FHIR resource (or a set of constraints on an exsting extension)</li>
+ <li><b>abstract</b>: "Абстрактный тип" - один из основополагающих базовых типов, определяемых в рамках спецификации (например <a href="resource.html">Resource</a>)
+ <!-- <b>abstract</b>: "Abstract type" - one of the underlying base types defined as part of the specification (e.g. <a href="resource.html">Resource</a>) --></li>
+ <li><b>type</b>: "Тип данных" - примитивная или комплексная структура, которая задает набор элементов данных, большинство из которых определены в разделе <a href="datatypes.html">Data Types</a>
+ <!-- <b>type</b>: "Data Type" - a primitive or complex structure that defines a set of data elements, most of which are defined in the <a href="datatypes.html">Data Types</a> section --></li>
+ <li><b>resource</b>: "Ресурс" - ресурс, определенный FHIR-спецификацией (см. <a href="resourcelist.html">перечень ресурсов</a>)
+ <!-- <b>resource</b>: "Resource" - A resource defined by the FHIR specification (see the <a href="resourcelist.html">resource list</a>) --></li>
+ <li><b>constraint</b>: "Ограниченный тип" - набор ограничений ресурса или типа данных, которые описывают его конкретное применение
+ <!-- <b>constraint</b>: "Constrained Type" - A set of constraints on a resource or data type that describe how it is used for a particular use --></li>
+ <li><b>extension</b>: "Определение расширения" - определение расширения, которое может использоваться в FHIR-ресурсе (или набор ограничений над существующим расширением)<!-- <b>extension</b>: "Extension Definition" - A definition of an extension that can be used in a FHIR resource (or a set of constraints on an exsting extension) --></li>
 </ol>
 <p>
-The first 3 types can only be defined by the FHIR specification. Types 4 and 5 are used in profiles and implementation guides, and may be published
-by any implementer of the specification. 
+Первые 3 типа задаются только спецификацией FHIR. Типы 4 и 5 используются в профилях и руководствах по реализации и могут публиковаться любым реализатором спецификации.
+<!-- The first 3 types can only be defined by the FHIR specification. Types 4 and 5 are used in profiles and implementation guides, and may be published
+by any implementer of the specification.  -->
 </p>
 
-<h3>Rules for Constrained Types</h3>
+<h3>Правила для структур ограничивающего типа  (Constrained Types)<!-- Rules for Constrained Types --></h3>
 <p>
-When the type of a structure definition is either a "constraint" or an "extension", then the following rules apply:
+Когда типом структурного определения является "constraint" или "extension", применяются следующие правила:
+<!-- When the type of a structure definition is either a "constraint" or an "extension", then the following rules apply: -->
 </p>
 <ul>
- <li>The structure must nominate a base resource from which it is derived</li>
- <li>The structure definition cannot introduce any new elements or value domains that are not valid in the structure - e.g. the structure must be a true constraint, and anything that meets the description of this structure must also be valid following the description of the base structure</li>
- <li>In practice, this means that:
+ <li>В структуре обязательно необходимо указать базовый ресурс, на котором она построена
+ <!-- The structure must nominate a base resource from which it is derived --></li>
+ <li>structure definition не может вводить новые элементы или домены значений, которые не допустимы в этой структуре - например структура должна быть истинно ограничивающей и всё, что соответствует описанию этой структуры также должно быть допустимым в соответствии с описанием базовой структуры
+ <!-- The structure definition cannot introduce any new elements or value domains that are not valid in the structure - e.g. the structure must be a true constraint, and anything that meets the description of this structure must also be valid following the description of the base structure --></li>
+ <li>На практике это означает, что:<!-- In practice, this means that: -->
    <ul>
-     <li>no new paths may be introduced that are not found in the base structure</li> 
-     <li>the list of types for an element must be the same or a subset of the list of types for the same element in the base structure</li> 
-     <li>The definition can be changed in the derived structure, but it must still be logically consistent with the definition in the base. e.g. the base element may be defined as "Result value" and this structure could define it as "Plasma Cholesterol Test Value", but not "Result status".</li>
-     <li>The cardinality must be a subset of the allowable cardinality in the base structure i.e. the minumum must be >= the base minimum, and the maximum must be &lt;= the base maximum</li>
+     <li>не могут вводиться новые пути, которых нет в базовой структуре<!-- no new paths may be introduced that are not found in the base structure --></li> 
+     <li>список типов для элемента должен совпадать или быть подмножеством списка типов для этого же элемента в базовой структуре<!-- the list of types for an element must be the same or a subset of the list of types for the same element in the base structure --></li> 
+     <li>Определение может быть изменено в производной структуре, но должно оставаться логически непротиворечивым с определением в базовом, например базовый элемент может быть определен как "Result value", и эта структура может определить его как "Result value", а эта структура может определить его как "Plasma Cholesterol Test Value", но не как "Result status".
+	 <!-- The definition can be changed in the derived structure, but it must still be logically consistent with the definition in the base. e.g. the base element may be defined as "Result value" and this structure could define it as "Plasma Cholesterol Test Value", but not "Result status". --></li>
+     <li>Кардинальное число должно быть подмножеством разрешенного кардинального числа в базовой структуре, т. е. его минимум должен быть >=  базовому минимуму, а максимум должен быть &lt;= базовому максимуму
+	 <!-- The cardinality must be a subset of the allowable cardinality in the base structure i.e. the minumum must be >= the base minimum, and the maximum must be &lt;= the base maximum --></li>
    </ul>
   </li>
-  <li>Note that because of slicing, there can be more than element for the same path. For details, see <a href="profiling.html">Profiling resources</a></li>
+  <li>Обратите внимание, что благодаря слайсингу одному пути может соответствовать больше одного элемента. Более подробную информацию см. в <a href="profiling.html">профилировании ресурсов</a>
+  <!-- Note that because of slicing, there can be more than element for the same path. For details, see <a href="profiling.html">Profiling resources</a> --></li>
 </ul>
   
 <!-- 
@@ -61,12 +77,13 @@ though the maximum one still does.
   Each of these appears in the list with the order and cardinality specified. By this means, a list may be "sliced" into a series of different components.</li>
 --> 
   
-<h3>Common Mapping Targets</h3>
+<h3>Распространенные адресаты мэппинга<!-- Common Mapping Targets --></h3>
 <p>
-Structures are able to map elements to concepts in other definition systems. Generally these are used to 
+В структурах есть возможность мапить элементы на концепты в других системах определений. Они, как правило, используются для мэппинга элементов на локальные модели реализации, пути данных и концепты. Однако они также используются для мэппинга на другие стандарты и опубликованные справочники. Вот стандартные URI распространенных адресатов мэппинга:
+<!-- Structures are able to map elements to concepts in other definition systems. Generally these are used to 
 map the elements to local implementation models, data paths, and concepts. However they are also used to map
 to other standards and published terminologies. These are the standard URIs used for common targets of the 
-mapping:
+mapping: -->
 </p>
 
 <table class="lines">

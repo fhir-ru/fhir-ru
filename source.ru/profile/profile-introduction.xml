@@ -4,7 +4,8 @@
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Ресурс Profile описывает набор правил о том, как некоторый ресурс используется в соответствии с общим вариантом применения, для того чтобы эти правила можно было использовать совместно и публиковать в репозиториях определений профилей, сравнивать между собой и использовать в качестве основы для генерации кода, отчетов и пользовательского интерфейса.
-<!-- The Profile resource describes a set of rules about how a resource is used to 
+<!-- 
+The Profile resource describes a set of rules about how a resource is used to 
 meet a general use case, so that the rules can be shared and published through 
 repositories of profile definitions, compared with each other, and used as the basis
 for code, report and UI generation.  -->
@@ -18,7 +19,8 @@ supports registry searching and they define and describe how a Resource or Data 
 Обратите внимание, что в рамках самой спецификации публикуется <a href="downloads.html#profiles">полный перечень профилей</a> для всех ресурсов и типов данных. 
 FHIR RESTful-сервер, обслуживающий ресурс profile, является также и репозиторием профилей. 
 У HL7 есть такой репозиторий для общедоступной регистрации профилей FHIR по адресу (пока ещё не сделано).
-<!-- Note that  as part of the specification itself, a <a href="downloads.html#profiles">full 
+<!-- 
+Note that  as part of the specification itself, a <a href="downloads.html#profiles">full 
 set of profiles</a> for all resources and data types is published.
 A FHIR RESTful server serving the profile resource is also a profile repository. 
 HL7 hosts one for public registration of FHIR profiles at (yet to be done). -->
@@ -28,7 +30,8 @@ HL7 hosts one for public registration of FHIR profiles at (yet to be done). -->
 <div> 
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2> 
 <ul>
- <li>Профили используются экземплярами <a href="conformance.html">Conformance</a> для определения способа использования ресурсов<!-- Profiles are used by <a href="conformance.html">Conformance</a> instances for specifying how resources are used --></li>
+ <li>Профили используются экземплярами <a href="conformance.html">Conformance</a> для определения способа использования ресурсов<!-- 
+Profiles are used by <a href="conformance.html">Conformance</a> instances for specifying how resources are used --></li>
  <li>Профили используют наборы значений <a href="valueset.html">Value Sets</a> для определения содержимого кодированных элементов<!-- Profiles use <a href="valueset.html">Value Sets</a> to specify the content of coded elements --></li>
  <li>Профили могут использовать определения расширений <a href="extensiondefinition.html">Extension Definitions</a>, когда указывают способ использования ресурса<!-- Profiles can use <a href="extensiondefinition.html">Extension Definitions</a> when specifying how a resource is used --></li>
 </ul>
@@ -39,25 +42,43 @@ HL7 hosts one for public registration of FHIR profiles at (yet to be done). -->
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Перед началом работы с этим ресурсом реализаторам следует ознакомиться с предпосылками и концепциями, описанными в статье <a href="profiling.html">Профилирование FHIR</a>.
-<!-- Implementers should be familiar with with the 
+<!-- 
+Implementers should be familiar with with the 
 background and concepts described in <a href="profiling.html">Profiling FHIR</a> 
 before working with this resource. -->
 </p>
 
 <h3>Метаданные<!-- Metadata --></h3>
-<p>Ресурс profile содержит набор метаданных, которые в основном совместно используются с <a href="valueset.html">Value Set</a>,
+
+
+
+
+
+
+
+<p>
+Ресурс profile содержит набор метаданных, которые в основном совместно используются с <a href="valueset.html">Value Set</a>,
 <a href="conformance.html">Conformance</a> и другими инфраструктурными ресурсами. Эти метаданные описывают профиль и помогают его найти, если он зарегистрирован в репозиториях профилей.
 <!-- 
+
+
+
+
+
+
 The profile resource has a set of metadata that is mostly shared with the <a href="valueset.html">Value Set</a>,
 <a href="conformance.html">Conformance</a> and other infrastructure resources. The metadata describes the profile, and helps 
 find the profile when registered in profile repositories.  -->
 </p>
 
 <table class="grid">
- <tr><td>url</td><td>Идентификатор, используемый для указания на этот профиль, когда на него ссылаются в спецификации, модели, проекте или примере. Это URL, по которому доступен профиль<!-- The identifier that is used to identify this profile when it is referenced in a specification, model, design or an instance. This URL is where the profile can be accessed --></td></tr>
- <tr><td>identifier</td><td>Другие идентификаторы, используемые для идентификации этого профиля<!-- Other identifiers that are used to identify this profile --></td></tr>
+ <tr><td>url</td><td>Идентификатор, используемый для указания на этот профиль, когда на него ссылаются в спецификации, модели, проекте или примере. Это URL, по которому доступен профиль<!-- 
+The identifier that is used to identify this profile when it is referenced in a specification, model, design or an instance. This URL is where the profile can be accessed --></td></tr>
+ <tr><td>identifier</td><td>Другие идентификаторы, используемые для идентификации этого профиля<!-- 
+Other identifiers that are used to identify this profile --></td></tr>
  <tr><td>version</td><td>
-   <p>Этот идентификатор используется для указания на конкретную версию профиля, когда на него ссылаются в спецификации, модели, проекте или примере.Он имеет произвольное значение, контролируемое автором профиля вручную, которое должно быть штампом времени.<!-- The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp. --></p>
+   <p>Этот идентификатор используется для указания на конкретную версию профиля, когда на него ссылаются в спецификации, модели, проекте или примере.Он имеет произвольное значение, контролируемое автором профиля вручную, которое должно быть штампом времени.<!-- 
+The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp. --></p>
    <p>Обратите внимание, что может иметься несколько версий ресурсов этого профиля, имеющих одинаковый идентификатор. Ресурс будет иметь обновления, которые создают новые версии по техническим причинам, в то время как заявленный номер версии должен быть под контролем автора<!-- Note that there may be multiple resource versions of the profile that have this same identifier. The resource will have updates that create new versions for technical reasons, whereas the stated version number needs to be under the author's control --></p>
    </td></tr>
  <tr><td>name</td><td>Произвольное текстовое название профиля на естественном языке<!-- A free text natural language name identifying the Profile -->	</td></tr>
