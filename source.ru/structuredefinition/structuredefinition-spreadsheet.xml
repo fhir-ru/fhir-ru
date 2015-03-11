@@ -4492,7 +4492,7 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">StructureDefinition.snapshot</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Element paths must be unique - or not (LM)</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Пути элементов должны быть уникальными - либо нет (LM)<!-- Element paths must be unique - or not (LM) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(f:element) &gt;= count(distinct-values(f:element/f:path/@value))</Data><NamedCell
@@ -4504,7 +4504,7 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition.mapping</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Must have at a name or a uri (or both)</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Должен иметь name или uri (или оба) <!-- Must have at a name or a uri (or both) --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">exists(f:uri) or exists(f:name)</Data></Cell>
    </Row>
@@ -4514,7 +4514,7 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition.snapshot</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If a structure is a snapshot, then each element definition must have a formal definition, and cardinalities</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если структура является снапшотом, определение каждого элемента должно содержать формальное определение и кардинальное множество<!-- If a structure is a snapshot, then each element definition must have a formal definition, and cardinalities --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s110"><Data ss:Type="String">exists(f:base) or (count(f:element) = count(f:element[exists(f:definition) and exists(f:min) and exists(f:max)]))</Data></Cell>
    </Row>
@@ -4524,7 +4524,7 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A structure must have a base unless it’s type is 'abstract'</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Структура обязательно должна иметь базовую структуру, иначе ее тип будет 'abstract'<!-- A structure must have a base unless it’s type is 'abstract' --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">(f:type/@value = 'abstract') or f:base</Data></Cell>
    </Row>
@@ -4534,7 +4534,7 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If the type is 'extension' then the structure must have context information</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если тип 'extension', значит структура должна иметь информацию о контексте<!-- If the type is 'extension' then the structure must have context information --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">not(f:type/@value = 'extension') or (f:context and f:contextType)</Data></Cell>
    </Row>
@@ -4544,7 +4544,7 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A structure must have either a differential, or a snapshot (or both)</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Структура должна иметь либо дифференциал, либо снапшот (либо оба)<!-- A structure must have either a differential, or a snapshot (or both) --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">f:snapshot or f:differential</Data></Cell>
    </Row>
@@ -4554,7 +4554,7 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If the type is Resource or Type, the url has to start with &quot;http://hl7.org/fhir/StructureDefinition/&quot; and the tail must match the name</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если типом является Resource или Type, url должен начинаться с &quot;http://hl7.org/fhir/StructureDefinition/&quot; и заканчиваться именем<!-- If the type is Resource or Type, the url has to start with &quot;http://hl7.org/fhir/StructureDefinition/&quot; and the tail must match the name --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">not(f:type/@value=('Resource', 'Type')) or f:url/@value=concat('http://hl7.org/fhir/StructureDefinition/', f:name/@value)</Data></Cell>
    </Row>
@@ -4564,7 +4564,7 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">In any snapshot or differential, all the elements except the first have to have a path that starts with the path of the first + &quot;.&quot;</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">В любом снапшоте или дифференциале все элементы за исключением первого имеют путь, начинающийся с пути первого элемента + &quot;.&quot;<!-- In any snapshot or differential, all the elements except the first have to have a path that starts with the path of the first + &quot;.&quot; --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">string-join(for $elementName in f:*[self::f:snapshot or self::f:differential]/f:element[position()&gt;1]/f:path/@value return if (starts-with($elementName, concat($elementName/ancestor::f:element/parent::f:*/f:element[1]/f:path/@value, '.'))) then '' else $elementName,'')=''</Data></Cell>
    </Row>
@@ -7350,7 +7350,7 @@ Generates a [[[Questionnaire]]] instance  based on a specified [[[StructureDefin
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">StructureDefinitionType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Defines the type of structure that a definition is describing</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Задает тип структуры, которую описывает определение<!-- Defines the type of structure that a definition is describing --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#structure-definition-type</Data></Cell>
@@ -7365,7 +7365,7 @@ Generates a [[[Questionnaire]]] instance  based on a specified [[[StructureDefin
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">ExtensionContext</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">How an extension context is interpreted</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Как интерпретируется контекст расширения<!-- How an extension context is interpreted --></Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">#extension-context</Data></Cell>
