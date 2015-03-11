@@ -135,10 +135,11 @@ FHIR определяет специальный ресурс <a href="operation
 OperationOutcome должен быть включен в ответ для определенных случаев, описанных в спецификации. Также его опционально можно использовать в качестве тела ответа на ошибочные запросы с кодами  4xx or 5xx, однако это не обязательно - большинство этих ошибок могут генерироваться фреймворками сервера общего вида, лежащими в основе FHIR-сервера.
 </p>
 <a name="return"> </a>
-<h3>Managing Return Content</h3>
+<h3>Управление возвращаемым содержимым<!-- Managing Return Content --></h3>
 <p>
-In the interests of managing band-width, this specification allows clients
-to specify what kind of content to return.
+В интересах управления пропускной способностью данная спецификация позволяет клиентам указывать тип возвращаемого контента.
+<!-- In the interests of managing band-width, this specification allows clients
+to specify what kind of content to return. -->
 </p>
 <h4>conditional read</h4>
 <p>
@@ -161,26 +162,30 @@ not required to support this.
 </p>
 <h4>create/update/transaction</h4>
 <p>
-These operations are performed using <code>POST</code>,<code>PUT</code> and <code>POST</code> respectively, and
+Эти операции выполняются с помощью <code>POST</code>,<code>PUT</code> и <code>POST</code> соответственно, и для сервера может быть уместно возвращать либо только статус-код, либо также сам ресурс целиком, что будет являться результатом операции create или update (которые могут отличаться от того, что предоставляется клиентом). В случае транзакций это означает вернуть Bundle с <code>Bundle.entry.transactionResponse</code>, а не <code>Bundle.entry.resource</code>.
+<!-- These operations are performed using <code>POST</code>,<code>PUT</code> and <code>POST</code> respectively, and
 it may be appropriate for a server to return either only a status
 code, or also return the entire resource that is the outcome of the
 create or update (which may be different to that provided by the
 client). In the case of transactions this means returning a Bundle with just the <code>Bundle.entry.transactionResponse</code>,
-not the <code>Bundle.entry.resource</code>.
+not the <code>Bundle.entry.resource</code>. -->
 </p>
-<p>The client can indicate whether the entire resource is
-returned using the <a href="https://tools.ietf.org/html/rfc7240#section-4.2">HTTP
+<p>Клиент может указать, вернется ли ресурс целиком, с помощью <a href="https://tools.ietf.org/html/rfc7240#section-4.2">HTTP
 return preference</a>:
+<!-- The client can indicate whether the entire resource is
+returned using the <a href="https://tools.ietf.org/html/rfc7240#section-4.2">HTTP
+return preference</a>: -->
 </p>
 <pre>
 Prefer: return=minimal
 Prefer: return=representation
 </pre>
 <p>
-The first of these two asks to return no body (or an operation outcome). The
+Первая настройка просит не возвращать body (или результат операции). Вторая просит вернуть полный ресурс. Серверы ДОЛЖНЫ учитывать этот заголовок. При отсутствии такого заголовка серверы сами решают, возвращать ресурс целиком или нет.
+<!-- The first of these two asks to return no body (or an operation outcome). The
 second asks to return the full resource. Servers SHOULD honour this header.
 In the absence of the header, servers may chose whether to return the
-full resource or not.
+full resource or not. -->
 </p>
 
 <a name="mime-type"> </a>
@@ -336,31 +341,37 @@ return a <code>Location</code> header.</p>
 resource with hints and warnings about the resource; if one is sent it SHALL not include any errors.
  -->
 </p>
-<h4>Conditional updates</h4>
+<h4>Условные обновления (Conditional updates)<!-- Conditional updates --></h4>
 <p>
-The conditional update operation allows a client to update an existing resource based on some identification criteria,
-rather than by  <a href="resource.html#meta">logical id</a>. To accomplish this, the client issues a <code>PUT</code> as shown:
+Операция условного обновления позволяет клиенту обновить существующий ресурс на основе некоторых идентификационных критериев, а не по <a href="resource.html#meta">logical id</a>. Для выполнения этого клиент создает <code>PUT</code>:
+<!-- The conditional update operation allows a client to update an existing resource based on some identification criteria,
+rather than by  <a href="resource.html#meta">logical id</a>. To accomplish this, the client issues a <code>PUT</code> as shown: -->
 </p>
 <pre>
   PUT [base]/[type]/?[search parameters]
 </pre>
 <p>
-When the server processes this update, it performs a search using the its standard
+Когда сервер обрабатывает это обновление, он выполняет поиск с помощью своих стандартных <a href="search.html">средств поиска</a> по типу ресурса с целью разрешения отдельного logical id для этого запроса. Следующее действие сервера зависит от того, сколько совпадений он нашел:
+<!-- When the server processes this update, it performs a search using the its standard
 <a href="search.html">search facilities</a> for the resource type, with the goal of resolving a single logical id for this request. The action it takes depends
-on how many matches are found:
+on how many matches are found: -->
 </p>
 <ul>
- <li><b>No matches</b>: The server performs a <a href="#create">create</a> operation</li>
- <li><b>One Match</b>: The server performs the update against the matching resource</li>
- <li><b>Multiple matches</b>: The server returns a 412 Precondition Failed error indicating the the client's criteria were not selective enough</li>
+ <li><b>Нет совпадений</b>: Сервер выполняет операцию <a href="#create">create</a>
+ <!-- <b>No matches</b>: The server performs a <a href="#create">create</a> operation --></li>
+ <li><b>Одно совпадение</b>: Сервер выполняет обновление найденного ресурса
+ <!-- <b>One Match</b>: The server performs the update against the matching resource --></li>
+ <li><b>Несколько совпадений</b>: Сервер возвращает ошибку 412 Precondition Failed, означающую, что критерии клиента не были достаточно селективными
+ <!-- <b>Multiple matches</b>: The server returns a 412 Precondition Failed error indicating the the client's criteria were not selective enough --></li>
 </ul>
 <p>
-This variant can be used to allow a stateless client (such as an interface engine) to submit
+Этот вариант может использоваться, чтобы дать возможность stateless-клиенту (без запоминания состояния; такому как интерфейсная машина - interface engine) отправить обновленные результаты на сервер без необходимости помнить логические идентификаторы, которые назначил сервер. Например клиент, обновляющий статус лабораторного результата с "preliminary" на "final", мог бы отправить окончательный результат с помощью <code>PUT /Observation?identifier=http://my-lab-system|123</code>
+<!-- This variant can be used to allow a stateless client (such as an interface engine) to submit
 updated results to a server, without having to remember the logical ids that the server has assigned.
 For example, a client updating the status of a lab result from "preliminary" to "final"
-might submit the finalized result using <code>PUT /Observation?identifier=http://my-lab-system|123</code>
+might submit the finalized result using <code>PUT /Observation?identifier=http://my-lab-system|123</code> -->
 </p>
-<h4>Rejecting Updates</h4>
+<h4>Отклонение обновлений (Rejecting Updates)<!-- Rejecting Updates --></h4>
 <p>
 Серверам разрешается отклонять операцию update в связи с вопросами целостности или бизнес-правилами, применяемыми на сервере, и возвращать соответствующий HTTP код состояния (обычно 422). 
 <!-- 
@@ -488,28 +499,34 @@ no content and is marked as deleted.
 -->
 </p>
 
-<h4>Conditional deletes</h4>
+<h4>Условные удаления (Conditional deletes)<!-- Conditional deletes --></h4>
 <p>
-The conditional delete operation allows a client to update an existing resource based on some identification criteria,
-rather than by  <a href="resource.html#meta">logical id</a>. To accomplish this, the client issues an HTTP DELETE as shown:
+Операция условного удаления позволяет клиенту обновить существующий ресурс на основе некоторых идентификационных критериев, а не по <a href="resource.html#meta">logical id</a>. Для выполнения этой операции клиент выполняет HTTP DELETE:
+<!-- The conditional delete operation allows a client to update an existing resource based on some identification criteria,
+rather than by  <a href="resource.html#meta">logical id</a>. To accomplish this, the client issues an HTTP DELETE as shown: -->
 </p>
 <pre>
   DELETE [base]/[type]/?[search parameters]
 </pre>
 <p>
-When the server processes this update, it performs a search as specified using the standard
+Когда сервер обрабатывает это обновление, он выполняет поиск, как указано, используя стандартные <a href="search.html">средства поиска</a> по типу ресурса. Следующее действие сервера зависит от того, сколько совпадений было найдено:
+<!-- When the server processes this update, it performs a search as specified using the standard
 <a href="search.html">search facilities</a> for the resource type. The action it takes depends
-on how many matches are found:
+on how many matches are found: -->
 </p>
 <ul>
- <li><b>No matches</b>: The server returns 404 (Not found)</li>
- <li><b>One Match</b>: The server performs an ordinary <code>delete</code> on the matching resource</li>
- <li><b>Multiple matches</b>: The server returns a 412 Precondition Failed error indicating the the client's criteria were not selective enough</li>
+ <li><b>Нет совпадений</b>: Сервер возвращает ошибку 404 (Not found)
+ <!-- <b>No matches</b>: The server returns 404 (Not found) --></li>
+ <li><b>Одно совпадение</b>: Сервер выполняет обычную операцию <code>delete</code> над найденным ресурсом
+ <!-- <b>One Match</b>: The server performs an ordinary <code>delete</code> on the matching resource --></li>
+ <li><b>Несколько совпадений</b>: Сервер возвращает ошибку 412 Precondition Failed, означающую, что критерии клиента не были достаточно селективными
+ <!-- <b>Multiple matches</b>: The server returns a 412 Precondition Failed error indicating the the client's criteria were not selective enough --></li>
 </ul>
 <p>
-This variant can be used to allow a stateless client (such as an interface engine) to delete
+Этот вариант может использоваться, чтобы дать возможность stateless-клиенту (без запоминания состояния; такому как интерфейсная машина - interface engine) удалить ресурс на сервере без необходимости помнить логические идентификаторы, которые назначил сервер. Например клиент, удаляющий атомарный лабораторный результат, мог бы удалить ресурс с помощью <code>DELETE /Observation?identifier=http://my-lab-system|123</code>.
+<!-- This variant can be used to allow a stateless client (such as an interface engine) to delete
 a resource on a  server, without having to remember the logical ids that the server has assigned.
-For example, a client deleting a lab atomic result might delete the resource using <code>DELETE /Observation?identifier=http://my-lab-system|123</code>.
+For example, a client deleting a lab atomic result might delete the resource using <code>DELETE /Observation?identifier=http://my-lab-system|123</code>. -->
 </p>
 
 <a name="create"> </a>
@@ -587,41 +604,51 @@ In either case, the server SHOULD include a response body containing an <a href=
 <!-- Common HTTP Status codes returned on FHIR-related errors (in addition to normal HTTP errors related to security, header and content type negotiation issues): -->
 </p>
 <ul>
- <li><b>400 Bad Request</b> - resource could not be parsed or failed basic FHIR validation rules</li>
+ <li><b>400 Bad Request</b> - невозможно выполнить синтаксический разбор ресурса, либо он не проходит базовые правила валидации FHIR</li>
+ <li><b>404 Not Found</b> - не поддерживаемый тип ресурса, либо это не точка взаимодействия FHIR</li>
+ <li><b>422 Unprocessable Entity</b> - предложенный ресурс нарушает применимые профили FHIR или безнес-правила сервера. Ошибка может сопровождаться ресурсом <a href="operationoutcome.html">OperationOutcome</a> с дополнительной информацией</li>
+<!--  <li><b>400 Bad Request</b> - resource could not be parsed or failed basic FHIR validation rules</li>
  <li><b>404 Not Found</b> - resource type not supported, or not a FHIR end point</li>
- <li><b>422 Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="operationoutcome.html">OperationOutcome</a> resource providing additional detail</li>
+ <li><b>422 Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules. This should be accompanied by an <a href="operationoutcome.html">OperationOutcome</a> resource providing additional detail</li> -->
 </ul>
 <p>
 Примечание: серверы МОГУТ выбрать сохранять XML комментарии, команды обработки и форматирование или пробельные символы в JSON, когда принимают обновления, но не обязаны это делать. Возможно потребуется рассмотреть влияние этого на электронные цифровые подписи.
 <!-- Note: Servers MAY choose to preserve XML comments, instructions, and formatting or JSON whitespace when accepting creates, but are not required to do so. The impact of this on digital signatures may need to be considered. -->
 </p>
 <p>
-For additional information on how systems may behave when processing updates, refer to the <a href="updates.html">Create and Update Behavior</a> page.
+Для получения дополнительной информации по работе систем при обработке обновлений обратитесь к статье <a href="updates.html">Create and Update Behavior</a>. 
+<!-- For additional information on how systems may behave when processing updates, refer to the <a href="updates.html">Create and Update Behavior</a> page. -->
 </p>
 
-<h4>Conditional create</h4>
+<h4>Условное создание (Conditional create)<!-- Conditional create --></h4>
 <p>
-The conditional <code>create</code> operation allows a client to create a new resource only if some equivalent resource
+Операция условного <code>create</code> позволяет клиенту создавать новый ресурс только в том случае, если некоторый эквивалентный ресурс ещё не существует на сервере. Клиент задает значение эквивалентности для данного случая с помощью поискового FHIR-запроса в заголовке <code>If-None-Exist</code>:
+<!-- The conditional <code>create</code> operation allows a client to create a new resource only if some equivalent resource
 does not already exist on the server. The client defines what equivalence means in this case by supplying
-a FHIR search query in an <code>If-None-Exist</code> header as shown:
+a FHIR search query in an <code>If-None-Exist</code> header as shown: -->
 </p>
 <pre>
   If-None-Exist: base/[type]?[search parameters]
 </pre>
 <p>
-When the server processes this update, it performs a search as specified using its standard
+Когда сервер обрабатывает это обновление, он выполняет поиск, как указано, используя свои стандартные <a href="search.html">средства поиска</a> по типу ресурса. Следующее действие сервера зависит от того, сколько совпадений было найдено:
+<!-- When the server processes this update, it performs a search as specified using its standard
 <a href="search.html">search facilities</a> for the resource type. The action it takes depends
-on how many matches are found:
+on how many matches are found: -->
 </p>
 <ul>
- <li><b>No matches</b>: The server processes the create as above</li>
+ <li><b>Нет совпадений</b>: Сервер выполняет create, как описано выше</li>
+ <li><b>Одно совпадение</b>: Сервер игнорирует команду post и возвращает 200 OK</li>
+ <li><b>Несколько совпадений</b>: Сервер возвращает ошибку 412 Precondition Failed, означающую, что критерии клиента не были достаточно селективными</li>
+<!--  <li><b>No matches</b>: The server processes the create as above</li>
  <li><b>One Match</b>: The server ignore the post and returns 200 OK</li>
- <li><b>Multiple matches</b>: The server returns a 412 Precondition Failed error indicating the the client's criteria were not selective enough</li>
+ <li><b>Multiple matches</b>: The server returns a 412 Precondition Failed error indicating the the client's criteria were not selective enough</li> -->
 </ul>
 <p>
-This variant can be used to avoid the risk of two clients
+Этот вариант может использоваться, чтобы избежать риска создания двумя клиентами ресурсов-дубликатов для одной и той же записи. Например клиент, отправляющий новый лабораторный результат, мог бы указать <code>If-None-Exist: /Observation?identifier=http://my-lab-system|123</code> для гарантии, что он не создает запись-дубликат.
+<!-- This variant can be used to avoid the risk of two clients
 creating duplicate resources for the same record. For example, a client posting a new lab result might specify
-<code>If-None-Exist: /Observation?identifier=http://my-lab-system|123</code> to ensure it is does not create a duplicate record.
+<code>If-None-Exist: /Observation?identifier=http://my-lab-system|123</code> to ensure it is does not create a duplicate record. -->
 </p>
 
 
@@ -839,28 +866,30 @@ In addition, a resource may be included in the entry.
 </p>
 
 <a name="other-bundles"> </a>
-<h4>Accepting Other bundle types</h4>
+<h4>Прием bundle других типов <!-- Accepting Other bundle types --></h4>
 
 <p>
 Сервер может принимать и другие типы bundle, кроме <code>transaction</code>, в качестве транзакций.
 <!-- A server may choose to accept bundle types other than <code>transaction</code> as transactions. -->
 </p>
 <p>
-Bundles of type <code>history</code> inherently have the same structure as a transaction, and 
+Bundles типа <code>history</code> имеют такую же внутреннюю структуру, что и транзакция, и могут обрабатываться как она, поэтому серверы ДОЛЖНЫ принимать bundle типа history - это дает возможность без труда копировать данные с одного сервера на другой. Однако обратите внимание, что существующие ограничения транзакций не применяются к history list, и ресурс может появиться в нем больше одного раза, поэтому у серверов, обрабатывающих bundles типа history, должна быть какая-то стратегия для управления такими случаями.
+<!-- Bundles of type <code>history</code> inherently have the same structure as a transaction, and 
 can be treated as one, so servers SHOULD accept a history bundle - this makes it
 possible to replicate data from one server to another easily. Not, however, that 
 existing transaction boundaries are not represented in a history list, and
 a resource may occur more than once in a history list, so
-servers processing history bundles must have some strategy to manage this. 
+servers processing history bundles must have some strategy to manage this.  -->
 </p>
 <p>
-For other bundle types, should the server choose to accept them, there will be 
+У других типов bundle, если сервер решает принимать их, не будет элемента  <code>transaction</code> (отметьте, что в каждом entry будет ресурс). В этом случае сервер обрабатывает entry либо операцией create, либо update в зависимости от того, идентифицирует ли он ресурс - если идентификация ресурса относится к допустимому адресу на сервере, он должен трактовать это как обновление по этому адресу. Примечание: эта опция позволяет клиенту делегировать серверу процесс нахождения соответствия.
+<!-- For other bundle types, should the server choose to accept them, there will be 
 no <code>transaction</code> element (note that every entry will have a resource). 
 In this case, the server treats the entry as either a create or an update operation, 
 depending on whether it recognises the identity of the resource - if the identity 
 of the resource refers to a valid location on the server, it should treat it 
 as an update to that location. Note: this option allows a client to delegate 
-the matching process to the server.
+the matching process to the server. -->
 </p>
 
 
@@ -887,11 +916,14 @@ Each entry SHALL contain a <code>transaction</code>, and, if the <code>entry.tra
 The entry SHALL contain the resource state at the conclusion of the operation. 
 </p>
 <p>
-The operations <a href="#create">create</a>, <a href="#update">update</a>, and <a href="#delete">delete</a>
+Операции <a href="#create">create</a>, <a href="#update">update</a> и <a href="#delete">delete</a> создают записи в истории. Другие операции - нет (обратите внимание, что эти операции могут создавать побочные эффекты, такие как новые ресурсы AuditEvent; они представляются в виде операций create сами по себе).
+
+Операция create представляется в истории операций следующим образом:
+<!-- The operations <a href="#create">create</a>, <a href="#update">update</a>, and <a href="#delete">delete</a>
 create history entries. Other operations do not (note that these operations may produce side-effects 
 such as new AuditEvent resources; these are represented as create operations in their own right).
 
-A create operation is represented in a history operation in the following way:
+A create operation is represented in a history operation in the following way: -->
 </p>
 <pre class="xml">
   &lt;entry&gt;
@@ -910,8 +942,9 @@ A create operation is represented in a history operation in the following way:
   &lt;/entry&gt;
 </pre>
 <p>
-Note that conditional creates, updates and deletes are converted to direct 
-updates and deletes in a history list. 
+Обратите внимание, что условное создание, обновление и удаление конвертируются в прямые обновления и удаления в истории операций.
+<!-- Note that conditional creates, updates and deletes are converted to direct 
+updates and deletes in a history list.  -->
 </p>
 <p>
 Кроме стандартного параметра <code>_format</code>, параметры этого взаимодействия могут также включать:
@@ -922,8 +955,7 @@ updates and deletes in a history list.
   <tr><td>_since : <a href="datatypes.html#integer">instant</a></td><td>single</td><td>Включить только те версии ресурсов, которые были созданы в или после указанного времени<!-- Only include resource versions that were created at or after the given instant in time --></td></tr>
 </table>
 <p>
-Список истории можно ограничить некоторым периодом с помощью параметра <code>_since</code>, который содержит полную дату/время с указанием часового пояса. 
-Clients should be aware that due to timing imprecision, they may receive notifications of a resource update on the boundary instant more than once.
+Список истории можно ограничить некоторым периодом с помощью параметра <code>_since</code>, который содержит полную дату/время с указанием часового пояса. Клиенты должны понимать, что из-за неточности времени они могут получать уведомления об обновлении ресурсов on the boundary instant больше одного раза. 
 Серверы не обязаны поддерживать точность выше, чем 1 секунда. 
 <!-- The history list can be restricted to a limited period by specifying a <code>_since</code> parameter which contains a full date time with time zone. 
 Clients should be aware that due to timing imprecision, they may receive notifications of a resource update on the boundary instant more than once. Servers are
@@ -935,9 +967,10 @@ not required to support a precision finer than by second. -->
 below</a> for breaking the list into pages if appropriate. -->
 </p>
 <p>
-The history interaction can be used to set up a subscription from one system
+Взаимодействие history может использоваться для установки подписки одной системы на другую в целях синхронизации ресурсов между ними. Другие средства синхронизации систем можно посмотреть в статье <a href="subscription.html">Subscription resource</a>.
+<!-- The history interaction can be used to set up a subscription from one system
 to another, so that resources are synchronized between them. Refer to the <a href="subscription.html">Subscription resource</a>
-for an alternate means of system synchronization.
+for an alternate means of system synchronization. -->
 </p>
 
 <a name="transactional-integrity"> </a>
