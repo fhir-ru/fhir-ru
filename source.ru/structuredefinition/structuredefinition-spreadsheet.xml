@@ -5062,42 +5062,42 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">StructureDefinition.identifier</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Идентификатор профиля The identifier of the profile</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Идентификатор профиля <!-- The identifier of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.version</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String"> Идентификатор версии профиля The version identifier of the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String"> Идентификатор версии профиля <!-- The version identifier of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">name</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.name</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Имя профиля Name of the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Имя профиля <!-- Name of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">publisher</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.publisher</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Имя издателя профиля Name of the publisher of the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Имя издателя профиля <!-- Name of the publisher of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.description</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по описанию профиля Text search in the description of the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по описанию профиля <!-- Text search in the description of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Текущий статус профиля The current status of the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текущий статус профиля <!-- The current status of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">date</Data></Cell>
@@ -5118,7 +5118,7 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.snapshot.element.binding.reference[x]</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A vocabulary binding code</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Код привязки к словарю<!-- A vocabulary binding code --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
@@ -5132,7 +5132,7 @@ The version of the FHIR specification on which this profile is based - this is t
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.snapshot.element.path | StructureDefinition.differential.element.path </Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A path that is constrained in the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Путь, который ограничивается в профиле<!-- A path that is constrained in the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
