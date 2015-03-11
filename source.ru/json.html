@@ -17,13 +17,15 @@
 <a name="json"> </a>
 <h2>JSON-представление ресурсов</h2>
 <p>
-The JSON representation for a resource is described using this format: 
+JSON-представление для ресурса описывается с помощью следующего формата:
+<!-- The JSON representation for a resource is described using this format:  -->
 </p>
 <p>
 <i>todo - develop this</i>
 </p>
 <p>
-In the current absence of a specific json description, the JSON representation is described relative to the XML representation:
+В отсутствие отдельного описания JSON-представление описывается относительно XML-представления:
+<!-- In the current absence of a specific json description, the JSON representation is described relative to the XML representation: -->
 </p>
 <ul>
  <li>Имена членов JSON-объекта соответствуют именам элементов и атрибутов в XML, включая элементы, которые могут повторяться. Имена свойств чувствительны к регистру</li>
@@ -39,13 +41,15 @@ In the current absence of a specific json description, the JSON representation i
  <li>JSON не имеет различия в обозначении атрибута и элемента, поэтому атрибуты (id, value) обрабатываются иначе</li>
  <li>JSON имеет систему обозначений для массивов, использующихся для представления повторяющихся элементов. Обратите внимание, что массивы используются, когда элемент может повторяться, даже если он не повторяется в данном случае</li>
  <li>XHTML-элемент &lt;div&gt; в типе данных <a href="narrative.html">Narrative</a> представлен как отдельная экранированная строка XHTML. Это делается для того, чтобы избежать проблем в JSON со смешанным содержимым и проч. XHTML ДОЛЖЕН по-прежнему соответствовать правилам, описанным для <a href="narrative.html">Narrative</a></li>
- <li>There is no inherent support in JSON for a comment syntax. As a convention, content that would be comments in an XML representation is represented in a property with the name "fhir_comments", which is an array of strings, which can appear on any JSON object. 
-  This is heavily used in example instances, e.g. in this specification, but not usually used in production systems (and production systems may choose to reject resources with comments in them)</li>
+ <li>В JSON нет собственной поддержки синтаксиса комментариев. По конвенции содержимое. которое было бы комментариями в XML-представлении обозначается в свойстве с именем "fhir_comments", представляющем собой строковый массив, который может появиться в любом JSON-объекте. Это больше всего используется в экземплярах примеров, например в данной спецификации, но обычно не используется в работающих системах (и работающие системы могут отклонять ресурсы с комментариями)
+ <!-- There is no inherent support in JSON for a comment syntax. As a convention, content that would be comments in an XML representation is represented in a property with the name "fhir_comments", which is an array of strings, which can appear on any JSON object. 
+  This is heavily used in example instances, e.g. in this specification, but not usually used in production systems (and production systems may choose to reject resources with comments in them) --></li>
 </ul>
 
 <p>
-The JSON format for the resources follows the standard XML format closely to make interconversion 
-easy, and so that XPath queries can easily be mapped to query the JSON structures. Однако различия – особенно с повторяющимся элементом, которого невозможно избежать – означают, что универсальные преобразователи XML --&gt; JSON не в состоянии выполнить эту операцию корректно. Эти <a href="downloads.html#refimpl">справочные платформы</a> 
+Формат JSON для ресурсов приближен к стандартному XML-формату, что делает взаимное преобразование легкодоступным, поэтому XPath-запросы легко мапятся на запросы JSON-структур.
+<!-- The JSON format for the resources follows the standard XML format closely to make interconversion 
+easy, and so that XPath queries can easily be mapped to query the JSON structures. --> Однако различия – особенно с повторяющимся элементом, которого невозможно избежать – означают, что универсальные преобразователи XML --&gt; JSON не в состоянии выполнить эту операцию корректно. Эти <a href="downloads.html#refimpl">справочные платформы</a> 
 предлагают функциональность по преобразованию XML &lt;--&gt; JSON, которая учитывает эти специфичные для FHIR технические детали.
 </p>
 
