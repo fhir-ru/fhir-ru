@@ -58,13 +58,13 @@
 
 <table class="list">
  <tr>
-   <td colspan="3"><b>Primitive Types</b></td>
+   <td colspan="3"><b>Примитивные типы<!-- Primitive Types --></b></td>
  </tr>
  <tr>
-   <th>FHIR Name</th>
-   <th>Value Domain</th>
-   <th>XML Representation</th>
-   <th>JSON representation</th>
+   <th>Имя в FHIR<!-- FHIR Name --></th>
+   <th>Возможные значения<!-- Value Domain --></th>
+   <th>XML-представление<!-- XML Representation --></th>
+   <th>JSON-представление<!-- JSON representation --></th>
  </tr>
  <tr>
    <td>boolean</td>
@@ -74,39 +74,39 @@
  </tr>
  <tr>
    <td>integer</td>
-   <td>A signed 32-bit integer (for larger values, use decimal)</td>
+   <td>32-битное целое число со знаком (для больших значений используйте тип decimal)<!-- A signed 32-bit integer (for larger values, use decimal) --></td>
    <td>xs:int</td>
    <td>JSON number</td>
  </tr>
  <tr>
    <td>string</td>
-   <td>A sequence of Unicode characters</td>
+   <td>Последовательность символов в кодировке Unicode<!-- A sequence of Unicode characters --></td>
    <td>xs:string</td>
    <td>JSON String</td>
  </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid">Note that strings SHALL NOT exceed 1MB in size</td>
+   <td colspan="3" style="border-top: 0px silver solid">Обратите внимание, что строки НЕ ДОЛЖНЫ превышать 1 Мбайт по размеру<!-- Note that strings SHALL NOT exceed 1MB in size --></td>
  </tr> 
  <tr>
    <td>decimal</td>
-   <td>Rational numbers that have a decimal representation. See below about the precision of the number</td>
-   <td>xs:decimal, except that <b>decimals may not use exponents</b></td>
-   <td>A JSON number, but without exponents</td>
+   <td>Рациональные числа, имеющие десятичное представление. См. ниже о точности таких чисел<!-- Rational numbers that have a decimal representation. See below about the precision of the number --></td>
+   <td>xs:decimal, исключая <b>decimals, которые не используют экспоненту</b><!-- xs:decimal, except that <b>decimals may not use exponents</b> --></td>
+   <td>JSON-число (number), но без экспоненты<!-- A JSON number, but without exponents --></td>
  </tr>
  <tr>
    <td>uri</td>
-   <td>A Uniform Resource Identifier Reference (<a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>)</td>
+   <td>Унифицированный идентификатор ресурса (<a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>)<!-- A Uniform Resource Identifier Reference (<a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>) --></td>
     <td>xs:anyURI</td>
    <td>A JSON string - a URI</td>
  </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid">URIs can be absolute or relative, and may have an optional fragment identifier</td>
+   <td colspan="3" style="border-top: 0px silver solid">URIs могут быть абсолютными или относительными и могут иметь необязательный идентификатор фрагмента<!-- URIs can be absolute or relative, and may have an optional fragment identifier --></td>
  </tr> 
  <tr>
    <td>base64Binary</td>
-   <td>A stream of bytes, base64 encoded (<a href="http://tools.ietf.org/html/rfc4648">RFC 4648</a>)</td>
+   <td>Поток байтов в кодировке base64<!-- A stream of bytes, base64 encoded --> (<a href="http://tools.ietf.org/html/rfc4648">RFC 4648</a>)</td>
    <td>xs:base64Binary</td>
    <td>A JSON string - base64 content</td>
  </tr>
@@ -116,17 +116,17 @@
  </tr> 
  <tr>
    <td>instant</td>
-   <td>An instant in time - <b>known at least to the second and always includes a time zone</b></td>
+   <td>Момент времени, указанный <b>с точностью как минимум до секунды и всегда включающий в себя часовой пояс.</b><!-- An instant in time - <b>known at least to the second and always includes a time zone</b> --></td>
    <td>xs:dateTime</td>
    <td>A JSON string - an xs:dateTime</td>
  </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid">Note: This type is for system times, not human times (see date and dateTime below).</td>
+   <td colspan="3" style="border-top: 0px silver solid">Примечание: это тип для указания системного времени, а не человеческого (см. date и dateTime ниже).<!-- Note: This type is for system times, not human times (see date and dateTime below). --></td>
  </tr>
  <tr>
    <td>date</td>
-   <td>A date, or partial date (e.g. just year or year + month) as used in human communication. <b>There is no time zone</b>. Dates SHALL be valid dates</td>
+   <td>Дата или часть даты (например только год или год + месяц) в том представлении, как она используется в человеческой коммуникации. <b>Здесь нет указания часового пояса</b>. Даты ДОЛЖНЫ быть допустимыми датами<!-- A date, or partial date (e.g. just year or year + month) as used in human communication. <b>There is no time zone</b>. Dates SHALL be valid dates --></td>
    <td>union of xs:date, xs:gYearMonth, xs:gYear</td>
    <td>A JSON string - a union of xs:date, xs:gYearMonth, xs:gYear</td>
   </tr>
@@ -136,7 +136,7 @@
  </tr>
  <tr>
    <td>dateTime</td>
-   <td>A date, date-time or partial date (e.g. just year or year + month) as used in human communication. If hours and minutes are specified, a time zone SHALL be populated. Seconds may be provided but may also be ignored. Dates SHALL be valid dates. <b>The time "24:00" is not allowed</b></td>
+   <td>Дата, дата/время или часть даты (например только год или год + месяц) в том представлении, как она используется в человеческой коммуникации. Если указаны часы и минуты, то также ДОЛЖЕН быть указан и часовой пояс. Секунды могут быть как указаны, так и опущены. Даты ДОЛЖНЫ быть допустимыми. <b>Время "24:00" не допустимо</b><!-- A date, date-time or partial date (e.g. just year or year + month) as used in human communication. If hours and minutes are specified, a time zone SHALL be populated. Seconds may be provided but may also be ignored. Dates SHALL be valid dates. <b>The time "24:00" is not allowed</b> --></td>
    <td>union of xs:dateTime, xs:date, xs:gYearMonth, xs:gYear</td>
    <td>A JSON string - a union of xs:dateTime, xs:date, xs:gYearMonth, xs:gYear</td>
   </tr>
@@ -146,7 +146,7 @@
  </tr>
  <tr>
    <td>time</td>
-   <td>A time during the day, with no date specified (can be converted to a <a href="#Duration">Duration</a> since midnight). Seconds may be provided but may also be ignored. <b>The time "24:00" is not allowed, and neither is a time zone</b></td>
+   <td>Время в пределах дня без указания даты (может быть сконвертировано в <a href="#Duration">Duration</a> с точкой отсчета в полночь). Секунды могут как указываться, так и игнорироваться. <b>Время "24:00" не допустимо, как и указание таймзоны</b><!-- A time during the day, with no date specified (can be converted to a <a href="#Duration">Duration</a> since midnight). Seconds may be provided but may also be ignored. <b>The time "24:00" is not allowed, and neither is a time zone</b> --></td>
    <td>xs:time</td>
    <td>A JSON string - an xs:time</td>
   </tr>
@@ -157,53 +157,63 @@
 </table>
 
 <p>
-Notes:
+Примечания:
+<!-- Notes: -->
 </p>
 <ul>
- <li>For all the types, the XML and JSON representations are the same except for different escaping in XML and JSON</li>
- <li>The regexes allow a broader set of values than are actually valid (e.g. leap years) so additional validation is needed</li>
- <li>The precision of the decimal value is signficant:
+ <li>Для всех типов их XML и JSON представления совпадают за исключением различий в экранировании символов в XML и JSON<!-- For all the types, the XML and JSON representations are the same except for different escaping in XML and JSON --></li>
+ <li>Приведенные регулярные выражения пропускают более широкий набор значений, чем фактически допустим (например високосные года), поэтому требуется дополнительная валидация 
+ <!-- The regexes allow a broader set of values than are actually valid (e.g. leap years) so additional validation is needed --></li>
+ <li>Точность десятичных значений существенна:<!-- The precision of the decimal value is signficant: -->
     <ul> 
-      <li>e.g 0.010 is regarded as different to 0.01</li>
-      <li>Implementations SHALL handle decimal values in ways that preserve and respect the precision of the value as represented</li> 
-      <li>Implementations that might meet this constraint are GMP implementations or Java BigDecimal that implement arbitrary precision, or a combination of a (64 bit) floating point value with a precision field</li> 
-      <li>Note that there is no absolute limit to the magnitude of the value, though large and/or highly precise values are extremely rare in medicine</li>
+      <li>например 0.010 рассматривается как отличное от 0.01<!-- e.g 0.010 is regarded as different to 0.01 --></li>
+      <li>Реализации ДОЛЖНЫ обрабатывать десятичные значения таким образом, чтобы сохранять и учитывать точность представленного значения
+	  <!-- Implementations SHALL handle decimal values in ways that preserve and respect the precision of the value as represented --></li> 
+      <li>Реализации, выполняющие это ограничение, являются GMP-реализациями или Java BigDecimal, который реализует произвольную точность, либо комбинацией значения с плавающей точкой (64 bit) с полем для указания точности
+	  <!-- Implementations that might meet this constraint are GMP implementations or Java BigDecimal that implement arbitrary precision, or a combination of a (64 bit) floating point value with a precision field --></li> 
+      <li>Обратите внимание, что нет абсолютного лимита размера значения, хотя большие и/или высокоточные значения чрезвычайно редки в медицине
+	  <!-- Note that there is no absolute limit to the magnitude of the value, though large and/or highly precise values are extremely rare in medicine --></li>
     </ul>
  </li>
 </ul>
 
 
-<h3>XML and JSON representations</h3>
+<h3>XML и JSON представления<!-- XML and JSON representations --></h3>
 
 <p>
-All the primitive types have some combination of value as described above, an internal identity (e.g. xml:id), and extensions. 
-The value is represented in XML as an attribute named "value":
+Все примитивные типы имеют некоторую комбинацию значения, как описано выше, внутреннюю сущность (например xml:id) и расширения. Значение представляется в XML как атрибут "value":
+<!-- All the primitive types have some combination of value as described above, an internal identity (e.g. xml:id), and extensions. 
+The value is represented in XML as an attribute named "value": -->
 </p>
 <pre>
   &lt;count value="2"/&gt;
 </pre>
 <p>
- and as the value of the property in JSON:
+и как значение свойства в JSON:
+<!--  and as the value of the property in JSON: -->
 </p>
 <pre>
   "count" : 2
 </pre>
 <p>
-For additional details, including how the internal identity and extensions are represented, see the <a href="xml.html">XML</a> and <a href="json.html">JSON</a> formats. 
-When the value is missing, it is not represented in the instance; the XML value attribute or the JSON property are not represented at all. 
+Дополнительную информацию включая представление внутренней сущности и расширений см. на страницах описания форматов <a href="xml.html">XML</a> и <a href="json.html">JSON</a>. Когда значение отсутствует, оно не обозначается в экземпляре; XML-атрибут value или JSON-свойство в этом случае не указываются вообще.
+<!-- For additional details, including how the internal identity and extensions are represented, see the <a href="xml.html">XML</a> and <a href="json.html">JSON</a> formats. 
+When the value is missing, it is not represented in the instance; the XML value attribute or the JSON property are not represented at all.  -->
 </p>
 <p>
-According to XML schema, leading and trailing whitespace in the value attribute is ignored for the types 
+В соответствии с XML-схемой пробелы в начале и в конце атрибута value игнорируются для типов boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid и uri. Обратите внимание, из этого следует, что библиотеки XML, следующие схеме, дают разные значения атрибутов по сравнению с библиотеками, не соответствующими схеме, во время чтения экземпляров XML. По этой причине атрибут value для этих типов НЕ ДОЛЖЕН иметь пробелы в начале и в конце. Строковые значения могут иметь пробелы в начале и в конце, если они являются частью содержимого их значения. В JSON пробелы в строковых значениях всегда являются значимыми. Примитивные типы за исключением string НЕ ДОЛЖНЫ содержать пробелы в начале и в конце.
+<!-- According to XML schema, leading and trailing whitespace in the value attribute is ignored for the types 
 boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid, and uri. Note that this means that the 
 schema aware XML libraries give different attribute values to non schema aware libraries when reading the 
 XML instances. For this reason, the value attribute for these types SHOULD not have leading and trailing spaces.
 String values should only have leading and trailing spaces if they are part of the content of the value. 
-In JSON, whitespace in string values is always significant. Primitive types other than string SHALL NOT have leading or trailing whitespace.
+In JSON, whitespace in string values is always significant. Primitive types other than string SHALL NOT have leading or trailing whitespace. -->
 </p>
 
-<h3>Simple Restrictions</h3>
+<h3>Простые ограничения<!-- Simple Restrictions --></h3>
 <p>
-In addition to the base primitive types, a few additional primitive types are defined as restrictions on one of the other primitive types.
+Кроме базовых примитивных типов определено несколько дополнительных примитивных типов в виде ограничений над одним из других базовых типов.
+<!-- In addition to the base primitive types, a few additional primitive types are defined as restrictions on one of the other primitive types. -->
 </p>
 
 <a name="patterns"></a>
@@ -214,17 +224,19 @@ In addition to the base primitive types, a few additional primitive types are de
 
 <table class="list">
  <tr>
-   <th>FHIR Name</th><th>Base FHIR Type</th><th>Description</th>
+   <th>Имя в FHIR<!-- FHIR Name --></th><th>Базовый FHIR-тип<!-- Base FHIR Type --></th><th>Описание<!-- Description --></th>
  </tr>
- <tr><td>code</td><td>string</td><td>Indicates that the value is taken from a set of controlled strings defined elsewhere (see <a href="terminologies.html">Using codes</a> for further discussion). Technically, a code is restricted to string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
+ <tr><td>code</td><td>string</td><td>Указывает, что значение взято из набора регулируемых строк, определенных в другом месте (см. <a href="terminologies.html">Использование кодов</a> для дальнейшего обсуждения). Техническое ограничение: код должен быть строкой, содержащей хотя бы один символ и не имеющей пробела в начале и в конце, внутри которой есть только одиночные пробелы<!-- Indicates that the value is taken from a set of controlled strings defined elsewhere (see <a href="terminologies.html">Using codes</a> for further discussion). Technically, a code is restricted to string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents --> <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
  
  
- <tr><td>oid</td><td>uri</td><td>An OID represented as a URI (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>). e.g. urn:oid:1.2.3.4.5</td></tr>
+ <tr><td>oid</td><td>uri</td><td>OID (идентификатор объекта), представленный в виде URI<!-- An OID represented as a URI --> (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>). Например urn:oid:1.2.3.4.5</td></tr>
 <!--
  <tr><td>uuid</td><td>uri</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11. Note the RFC comments about case: UUID values SHALL be represented in lower case, but systems SHOULD interpret them case insensitively</td></tr>
 -->
- <tr><td>id</td><td>string</td><td>Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.)  Ids are case sensitive. UUIDs SHALL be sent using lowercase letters.
-   <br/>Note: this format includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232.
+ <tr><td>id</td><td>string</td><td>Любая комбинация ASCII-символов верхнего и нижнего регистра ('A'..'Z', 'a'..'z', цифры ('0'..'9'), '-' и '.' с ограничением по длине в 64 символа. (Это может быть целое число, OID без префиксов, UUID или любой другой паттерн идентификаторов, соответствующим этим ограничениям). Идентификаторы чувствительны к регистру. UUIDs ДОЛЖНЫ пересылаться в символах нижнего регистра.
+ <!-- Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.)  Ids are case sensitive. UUIDs SHALL be sent using lowercase letters. -->
+   <br/>Примечание: этот формат включает идентификаторы, согласующиеся с <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, а также другие форматы идентификаторов, и не чувствителен к регистру в отличие от ISO 18232.
+   <!-- Note: this format includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232. -->
    <br/>regex: [%id_regex%]</td></tr>
 </table>
 <!--
