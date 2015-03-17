@@ -7670,7 +7670,7 @@
     <Cell ss:StyleID="s128"/>
     <Cell ss:StyleID="s151"/>
     <Cell ss:StyleID="s151"><Data ss:Type="String">Document</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">The bundle is a document. The first resource is a Composition</Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">Бандл является документом. Первым ресурсом идет Composition<!-- The bundle is a document. The first resource is a Composition --></Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s141"/>
@@ -7681,7 +7681,7 @@
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s152"/>
     <Cell ss:StyleID="s152"><Data ss:Type="String">Message</Data></Cell>
-    <Cell ss:StyleID="s152"><Data ss:Type="String">The bundle is a message. The first resource is a MessageHeader</Data></Cell>
+    <Cell ss:StyleID="s152"><Data ss:Type="String">Бандл является сообщением. Первым ресурсом идет MessageHeader<!-- The bundle is a message. The first resource is a MessageHeader --></Data></Cell>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
@@ -7692,7 +7692,7 @@
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s152"/>
     <Cell ss:StyleID="s152"><Data ss:Type="String">Transaction</Data></Cell>
-    <Cell ss:StyleID="s152"><Data ss:Type="String">The bundle is a transaction - intended to be processed by a server as an atomic commit</Data></Cell>
+    <Cell ss:StyleID="s152"><Data ss:Type="String">Бандл является транзакцией - предназначен для обработки сервером одним атомарным коммитом<!-- The bundle is a transaction - intended to be processed by a server as an atomic commit --></Data></Cell>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
@@ -7703,7 +7703,7 @@
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s152"/>
     <Cell ss:StyleID="s152"><Data ss:Type="String">Transaction Response</Data></Cell>
-    <Cell ss:StyleID="s152"><Data ss:Type="String">The bundle is a transaction response</Data></Cell>
+    <Cell ss:StyleID="s152"><Data ss:Type="String">Бандл является ответом транзакции<!-- The bundle is a transaction response --></Data></Cell>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
@@ -7714,7 +7714,7 @@
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s152"/>
     <Cell ss:StyleID="s152"><Data ss:Type="String">History List</Data></Cell>
-    <Cell ss:StyleID="s152"><Data ss:Type="String">The bundle is a list of resources from a _history interaction on a server</Data></Cell>
+    <Cell ss:StyleID="s152"><Data ss:Type="String">Бандл представляет собой список ресурсов, полученных в результате выполнения операции _history на сервере<!-- The bundle is a list of resources from a _history interaction on a server --></Data></Cell>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
@@ -7725,7 +7725,7 @@
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s152"/>
     <Cell ss:StyleID="s152"><Data ss:Type="String">Search Results</Data></Cell>
-    <Cell ss:StyleID="s152"><Data ss:Type="String">The bundle is a list of resources returned as a result of a search/query interaction, operation, or message</Data></Cell>
+    <Cell ss:StyleID="s152"><Data ss:Type="String">Бандл представляет собой список ресурсов, возвращенных в результате выполнения операции поиска/запроса, другой операции или сообщения<!-- The bundle is a list of resources returned as a result of a search/query interaction, operation, or message --></Data></Cell>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
@@ -7736,7 +7736,7 @@
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s152"/>
     <Cell ss:StyleID="s152"><Data ss:Type="String">Collection</Data></Cell>
-    <Cell ss:StyleID="s152"><Data ss:Type="String">The bundle is a set of resources collected into a single document for ease of distribution</Data></Cell>
+    <Cell ss:StyleID="s152"><Data ss:Type="String">Бандл является набором ресурсов, собранных в единый документ для упрощения рассылки<!-- The bundle is a set of resources collected into a single document for ease of distribution --></Data></Cell>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"/>
