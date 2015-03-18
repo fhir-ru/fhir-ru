@@ -761,15 +761,15 @@ This is different to the conformance operation: -->
 <a name="transaction"> </a>
 <h3>transaction</h3>
 <p>
-Взаимодействие transaction отправляет набор действий для выполнения на сервер в виде отдельного атомарного действия.
-Можно отправлять несколько действий над несколькими ресурсами одного или различных типов, и это может быть сочетание других операций, определенных на этой странице (например read, search, create, update, delete и т. п.).
+Взаимодействие transaction отправляет на сервер набор действий, чтобы выполнить их одним атомарным действием.
+Можно отправлять несколько действий над несколькими ресурсами одного или различных типов, это может быть сочетание разных операций, определенных на этой странице (например read, search, create, update, delete и т. п.).
 <!-- 
 The transaction interaction submits a set of actions to perform on a server as a single atomic action. 
 Multiple actions on multiple resources of the same or different types may be submitted, and they may be a mix of other operations defined on this page (e.g. read, search, create, update, delete, etc).
   -->
 </p>
 <p>
-Особенно это полезно, когда иначе бы потребовалось множество взаимодействий, с возможным риском потери ссылочной целостности, если бы последующие взаимодействия не удались (например при сохранении ресурса Provenance и его соответствующего целевого ресурса, или, в репозиториях документов, ввод индекса документа и сопровождающего его документа).
+Особенно это полезно, когда иначе потребовалось бы множество взаимодействий с возможным риском потери ссылочной целостности, если бы последующие взаимодействия не удались (например при сохранении ресурса Provenance и его соответствующего целевого ресурса, или ввод индекса документа и сопровождающего его документа в репозиториях документов).
 <!-- This is especially useful where one would otherwise need multiple interactions, possibly
 with a risk of loss of referential integrity if a later interaction fails (e.g. when storing
 a Provenance resource and its corresponding target resource, or, on document repositories, a
@@ -784,9 +784,10 @@ document index entry and its accompanying document). -->
 </pre>
 <p>
 Содержимое тела post-запроса - это <a href="bundle.html">Bundle</a> с типом <code>transaction</code>.
-Each entry carries a <code>transaction</code> (<a href="bundle-definitions.html#Bundle.entry.transaction">Bundle.entry.transaction</a>) 
+Каждый элемент entry содержит элемент <code>transaction</code> (<a href="bundle-definitions.html#Bundle.entry.transaction">Bundle.entry.transaction</a>) , в котором указываются HTTP-детали операции для того, чтобы проинформировать систему, обрабатывающую транзакцию, о том, что необходимо сделать с каждым entry. Если указана HTTP-операция <code>PUT</code> или <code>POST</code>, тогда entry ДОЛЖНА содержать ресурс, выступающий телом операции.
+<!-- Each entry carries a <code>transaction</code> (<a href="bundle-definitions.html#Bundle.entry.transaction">Bundle.entry.transaction</a>) 
 that provides the HTTP details of the operation in order to inform the system processing the transaction 
-what to do for the entry. If the HTTP operation is a <code>PUT</code> or <code>POST</code>, then the entry SHALL contain a resource for the body of the operation. 
+what to do for the entry. If the HTTP operation is a <code>PUT</code> or <code>POST</code>, then the entry SHALL contain a resource for the body of the operation.  -->
 Ресурсы в Bundle обрабатываются каждый по отдельности, как будто это отдельные операции, описанные на этой странице или для <a href="operations.html">Extended 
 Operations</a>. Эти операции подлежат обычной обработке для каждого, включая <a href="resource.html#meta">элемент meta</a>, верификацию и версионные обновления, а также <a href="#transactional-integrity">транзакционную целостность</a>).
 <!-- 
@@ -829,7 +830,7 @@ together, and that order of the entries doesn't matter, there is a particular or
 </p>
  
 <p>
-Транзакция может содержать ссылки от одного ресурса на другой в комплекте, включая циклические ссылки, где ресурсы ссылаются друг на друга. Если сервер назначает новый идентификатор какому-то ресурсу в комплекте в рамках правил обработки, описанных выше, он ДОЛЖЕН также обновить все ссылки на этот ресурс в это же комплекте, когда они будут обрабатываться. Ссылки на ресурсы, не являющиеся частью этого комплекта, остаются нетронутыми. Ссылки на конкретные версии должны остаться ссылками на конкретные версии после обновления ссылок. Серверы ДОЛЖНЫ заменить все соответствующие ссылки в комплекте, включая идентификаторы ресурсов, ссылки на ресурсы, URL-элементы и атрибуты тегов &lt;a href="" &amp; &lt;img src="" в описательной части.
+Транзакция может содержать ссылки от одного ресурса на другой в комплекте, включая циклические ссылки, где ресурсы ссылаются друг на друга. Если сервер назначает новый идентификатор какому-то ресурсу в комплекте в рамках правил обработки, описанных выше, он ДОЛЖЕН также обновить все ссылки на этот ресурс в этом же комплекте, когда они будут обрабатываться. Ссылки на ресурсы, не являющиеся частью этого комплекта, остаются нетронутыми. Ссылки на конкретные версии должны остаться ссылками на конкретные версии после обновления ссылок. Серверы ДОЛЖНЫ заменить все соответствующие ссылки в комплекте, включая идентификаторы ресурсов, ссылки на ресурсы, URL-элементы и атрибуты тегов &lt;a href="" &amp; &lt;img src="" в описательной части.
 <!-- A transaction may include references from one resource to another in the bundle, including 
 circular references where resources refer to each other. If the server assigns
 a new id to any resource in the bundle as part of the processing rules above,
