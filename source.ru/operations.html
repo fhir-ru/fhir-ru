@@ -39,8 +39,7 @@
 </p>
 <%operationslist%>
 <p>
-Реализации имеют возможность определять свои собственные операции в дополнение к тем, что заданы здесь. Конфликт имен между операциями, определенными различными исполнителями, может решаться использованием 
-<a href="conformance.html">заявления о соответствии</a>.
+Реализации имеют возможность определять свои собственные операции в дополнение к тем, что описаны здесь. Конфликты имен между операциями, определенными различными реализаторами, можно разрешать с помощью <a href="conformance.html">заявлений о соответствии</a>.
 </p>
 
 <a name="defining"> </a>
@@ -59,7 +58,7 @@
 Для каждого параметра необходима следующая информация:
 </p>
 <ul> 
- <li>Имя - имя операции. Для удобства разработчиков, имя должно быть допустимым токеном (см. ниже)</li>
+ <li>Имя - имя операции. Для удобства разработчиков имя должно быть допустимым токеном (см. ниже)</li>
  <li>Использование - In | Out | Both</li>
  <li>Тип - тип данных или тип ресурса</li>
  <li>Profile - профиль, который применяет дополнительные ограничения к ресурсу</li>
@@ -79,7 +78,8 @@
 Реализации могут расширять операции определением новых именованных параметров. Реализации могут публиковать свои собственные расширенные определения с помощью ресурса <a href="operationdefinition.html">Operation Definition</a>, и этот вариант определения может использовать OperationDefinition.base для ссылки на лежащее в его основе определение.
 </p>
 <p>
-Note that the FHIR specification will never define any parameter names starting with "x-".
+Обратите внимание, что спецификация FHIR никогда не будет давать параметрам имена, начинающиеся на "x-".
+<!-- Note that the FHIR specification will never define any parameter names starting with "x-". -->
 </p>
 
 
@@ -89,13 +89,14 @@ Note that the FHIR specification will never define any parameter names starting 
 <h3>Синхронное исполнение операции</h3>
 
 <p>
-Most commonly, operations are executed synchronously - the client sends a request
+Чаще всего операции выполняются синхронно - клиент отправляет серверу запрос с входными параметрами операции, и сервер отвечает с выходными параметрами операции.
+<!-- Most commonly, operations are executed synchronously - the client sends a request
 to the server with the operation in parameters, and the server replies with the 
-operation out parameters. 
+operation out parameters.  -->
 </p>
 
 <p>
-URL точки взаимодействия операции зависит от ее контекста:
+URL-адрес точки взаимодействия операции зависит от ее контекста:
 </p>
 <ul>
  <li>система: URL - [base]/$[name]</li>
@@ -108,23 +109,27 @@ URL точки взаимодействия операции зависит от
 
 <p>
 В общем случае операция вызывается выполнением HTTP POST-запроса к точке взаимодействия операции.
-The format of the submitted content is the special <a href="parameters.html">Parameters</a> format - a list 
-of named parameters (the "in" parameters). For an example, see <a href="op-example-request.html">the value set expansion request example</a>.
+Форматом отправляемого содержимого будет специальный формат <a href="parameters.html">Parameters</a> - это список именованных параметров (входные, "in"-параметры). В качестве примера см. <a href="op-example-request.html">запрос на развертывание (expansion) набора значений</a>.
+<!-- The format of the submitted content is the special <a href="parameters.html">Parameters</a> format - a list 
+of named parameters (the "in" parameters). For an example, see <a href="op-example-request.html">the value set expansion request example</a>. -->
 </p>
 <p>
-Note that the same arrangement as the RESTful interface applies
-in regard to <a href="http.html#mime-type">content types</a>.
+Обратите внимание, что к <a href="http.html#mime-type">типам контента</a> применяются те же самые соглашения, что и к RESTful-интерфейсу.
+<!-- Note that the same arrangement as the RESTful interface applies
+in regard to <a href="http.html#mime-type">content types</a>. -->
 </p>
 <p>
-If there are no parameters with complex types (including resourcse) to the operation, and the operation 
+Если у операции нет параметров с комплексными типами (включая ресурсы), и эта операция является идемпотентной (см. <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">определение термина "идемпотентный" (idempotent) в спецификации HTTP</a>), операцию можно вызывать выполнением операции HTTP GET, где все параметры добавляются к URL-адресу в его поисковую часть (например после "?"). Серверы ДОЛЖНЫ поддерживать этот метод вызова.
+<!-- If there are no parameters with complex types (including resourcse) to the operation, and the operation 
 is idempotent (see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP specification 
 definition of idempotent</a>), the operation may be invoked by performing an HTTP GET operation where 
 all the parameters are appended to the URL in the search portion of the URL (e.g. after the "?").
-Servers SHALL support this method of invocation.
+Servers SHALL support this method of invocation. -->
 </p>
 <p>
-Servers MAY choose to support submission of the parameters multi-part form method as well, 
-which can be useful for allowing testing of an operation using HTML forms.
+Серверы МОГУТ также поддерживать метод отправки параметров с полей формы, который может быть полезен при тестировании операции с помощью HTML-форм.
+<!-- Servers MAY choose to support submission of the parameters multi-part form method as well, 
+which can be useful for allowing testing of an operation using HTML forms. -->
 </p>
 
 <a name="response"> </a>
@@ -132,20 +137,22 @@ which can be useful for allowing testing of an operation using HTML forms.
 <h4>Ответ на операцию</h4>
 
 <p>
-Если операция выполняется успешно, HTTP-статус возвращает код 200 ОК. Код HTTP-статуса вида 4xx или 5xx говорит об ошибке, and an 
-<a href="operationoutcome.html">OperationOutcome</a> may be returned. 
+Если операция выполнена успешно, возвращается HTTP статус-код 200 ОК. HTTP статус-код вида 4xx или 5xx говорит об ошибке, при этом может быть возвращен <a href="operationoutcome.html">OperationOutcome</a>. <!-- and an 
+<a href="operationoutcome.html">OperationOutcome</a> may be returned.  -->
 Пользовательским агентам следует отметить, что серверы могут переадресовывать клиента для аутентификации в ответ на запрос операции.
 </p>
 
 <p>
-In the general case, an operation response uses the same
+В общем случае ответ на операцию использует тот же самый формат <a href="parameters.html">Parameters</a> с одним или несколькими именованными параметрами ("выходными", "out" параметрами).
+<!-- In the general case, an operation response uses the same
 <a href="parameters.html">Parameters</a> format one or more
-named parameters (the "out" parameters). 
+named parameters (the "out" parameters).  -->
 </p>
 <p>
-If there is only one out parameter, which is a resource, 
+Если выходной параметр только один, его имя "return" и это ресурс, тогда parameter-формат не используется, а ответ представляет собой просто сам ресурс.
+<!-- If there is only one out parameter, which is a resource, 
 and it has the name "return" then the parameter format is 
-not used, and the response is simply the resource itself.
+not used, and the response is simply the resource itself. -->
 </p>
 <p>
 Ресурсы, возвращаемые в результате операции, могут быть сохранены и доступны в репозитории ресурсов на 
@@ -156,37 +163,39 @@ not used, and the response is simply the resource itself.
 
 <!-- todo: add async/sync to the operation definition -->
 
-<h3>Executing an Operation Asynchronously</h3>
+<h3>Асинхронное выполнение операций<!-- Executing an Operation Asynchronously --></h3>
 
 <p>
-Operations can also be executed asynchronously. In this case, the 
+Операции могут выполняться асинхронно. В этом случае запрашивающий отправляет сообщение с запросом на выполнение операции, а система-адресат впоследствии отправляет сообщение обратно с результатами выполнения этой операции.
+<!-- Operations can also be executed asynchronously. In this case, the 
 requester sends a message requesting that an operation be executed,
 and the destination system subsequently sends a message back with 
-the results of the operation. 
+the results of the operation.  -->
 </p>
 <p>
-Given the increased complexity of the asynchronous use case, the 
+Учитывая возрастающую сложность асинхронного варианта использования, возрастает и сложность реализации. Подведя итоги, асинхронные операции выполняются следующим образом:
+<!-- Given the increased complexity of the asynchronous use case, the 
 implementation has increased complexity. As a summary, asynchronous
-operations are performed like this: 
+operations are performed like this:  -->
 </p>
 <ul>
- <li>The requester contructs a message (a bundle with type = message)</li>
- <li>The message header has an event.system of http://blame-Lloyd.com/operations</li>
- <li>The event.code is the URL of the operation definition</li>
- <li>The message data item refers to a <a href="parameters.html">Parameters</a>
+ <li>Запрашивающий составляет сообщение (бандл с типом message)<!-- The requester contructs a message (a bundle with type = message) --></li>
+ <li>Заголовок этого сообщения содержит event.system = http://blame-Lloyd.com/operations<!-- The message header has an event.system of http://blame-Lloyd.com/operations --></li>
+ <li>Элемент event.code содержит URL определения операции<!-- The event.code is the URL of the operation definition --></li>
+ <li>Элемент сообщения data ссылается на <a href="parameters.html">Parameters</a>-формат, передающий входные параметры для этой операции. Если параметров нет, сообщение НЕ ДОЛЖНО иметь элемент data<!-- The message data item refers to a <a href="parameters.html">Parameters</a>
   format that carries the in parameters for the operation. If there are no parameters,
-  the message SHOULD have no data element</li>
- <li>The sender accepts the message (see <a href="messaging.html#asynchronous">Asynchronous messaging</a>)</li>
- <li>When the operation has been executed, the processor sends back one or more messages</li>
- <li>Each message is a bundle of type = message that contains a message header that refers to the id of the original message</li>
- <li>If the operation fails, the MessageHeader.response.code must indicate failure, and an <a href="operationoutcome.html">OperationOutcome</a> SHOULD be returned as well</li>
- <li>If there is only one out parameter, which is a resource, and it has the name "return", then the data of the message is the return resource</li>
- <li>Else the message data will refer to a <a href="parameters.html">Parameters</a>
+  the message SHOULD have no data element --></li>
+ <li>Отправитель принимает сообщение (см. <a href="messaging.html#asynchronous">Asynchronous messaging</a>)<!-- The sender accepts the message (see <a href="messaging.html#asynchronous">Asynchronous messaging</a>) --></li>
+ <li>После того как операция была выполнена, процессор высылает обратно одно или несколько сообщений<!-- When the operation has been executed, the processor sends back one or more messages --></li>
+ <li>Каждое сообщение - это бандл с типом message, который содержит заголовок сообщения, ссылающийся на id исходного сообщения<!-- Each message is a bundle of type = message that contains a message header that refers to the id of the original message --></li>
+ <li>Если происходит сбой при выполнении операции, MessageHeader.response.code должен указывать на ошибку, и также ДОЛЖЕН БЫТЬ возвращен <a href="operationoutcome.html">OperationOutcome</a><!-- If the operation fails, the MessageHeader.response.code must indicate failure, and an <a href="operationoutcome.html">OperationOutcome</a> SHOULD be returned as well --></li>
+ <li>Если выходной параметр только один, его имя "return" и это ресурс, тогда data в сообщении - это  возвращенный ресурс <!-- If there is only one out parameter, which is a resource, and it has the name "return", then the data of the message is the return resource --></li>
+ <li>Иначе data в сообщении будет указывать на <a href="parameters.html">Parameters</a>-формат, передающий выходные параметры для этой операции. Если параметров нет, сообщение НЕ ДОЛЖНО содержать элемент data<!-- Else the message data will refer to a <a href="parameters.html">Parameters</a>
   format that carries the out parameters for the operation. If there are no parameters,
-  the message SHOULD have no data element</li>
+  the message SHOULD have no data element --></li>
 </ul>
 <p>
-Todo: fill out with details and examples.
+Todo: дополнить деталями и примерами.<!-- fill out with details and examples. -->
 </p>
 </div>
 
