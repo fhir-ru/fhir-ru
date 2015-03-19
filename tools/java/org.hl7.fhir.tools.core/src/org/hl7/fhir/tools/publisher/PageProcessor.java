@@ -593,12 +593,18 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         }
       } else if (com[0].equals("toc"))
         src = s1 + generateToc() + s3;
-	  else if (com[0].equals("vsnameonly"))
-        {
-		  BindingSpecification bs = definitions.getBindingByName(Utilities.fileTitle(file));
-          String reference = bs.getReference();          
-          src = s1 +reference + s3;
+	  else if (com[0].equals("vsnameonly")) {
+        if (resource != null)
+          src = s1 + Utilities.fileTitle((String) resource.getUserData("filename")) + s3;
+        else {
+        BindingSpecification bs = definitions.getBindingByName(Utilities.fileTitle(file));
+        if (bs == null)
+          src = s1 + Utilities.fileTitle(file) + s3;
+        else
+          src = s1 + bs.getReference() + s3;
         }
+		  src = src.substring(18);
+      }
       else if (com[0].equals("txdef"))
         src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("igname"))
