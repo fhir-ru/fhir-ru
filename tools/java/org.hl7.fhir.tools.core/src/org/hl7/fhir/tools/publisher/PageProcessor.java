@@ -743,11 +743,11 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String vsSource(String name) {
     BindingSpecification cd = definitions.getBindingByReference("#"+name);
     if (cd == null)
-      return "by the FHIR project";
+      return "проектом FHIR";
     
     ValueSet vs = cd.getReferredValueSet();    
     if (vs == null || vs.getContact().isEmpty() || vs.getContact().get(0).getTelecom().isEmpty() || vs.getContact().get(0).getTelecom().get(0).getSystem() != ContactPointSystem.URL || vs.getContact().get(0).getTelecom().get(0).getValue().startsWith("http://hl7.org/fhir"))
-      return "by the FHIR project";
+      return "проектом FHIR";
     return " at <a href=\""+vs.getContact().get(0).getTelecom().get(0).getValue()+"\">"+vs.getContact().get(0).getTelecom().get(0).getValue()+"</a>";
   }
 
