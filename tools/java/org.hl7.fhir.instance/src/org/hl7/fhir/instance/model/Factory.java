@@ -2,6 +2,7 @@ package org.hl7.fhir.instance.model;
 
 import java.net.URISyntaxException;
 import java.text.ParseException;
+import java.util.UUID;
 
 import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
@@ -159,4 +160,16 @@ public static Coding makeCoding(String code) throws Exception {
   return c;
 }
  
+	public static Reference makeReference(String url, String text) {
+		Reference rr = new Reference();
+		rr.setReference(url);
+		if (!Utilities.noString(text))
+			rr.setDisplay(text);
+		return rr;
+	}
+
+  public static String createUUID() {
+    return "urn:uuid:"+UUID.randomUUID().toString().toLowerCase();
+  }
+
 }

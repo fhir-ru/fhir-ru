@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
+// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -76,6 +76,10 @@ public class SearchParameter extends DomainResource {
          */
         QUANTITY, 
         /**
+         * A search parameter that searches on a URI (RFC 3986).
+         */
+        URI, 
+        /**
          * added to help the parsers
          */
         NULL;
@@ -96,6 +100,8 @@ public class SearchParameter extends DomainResource {
           return COMPOSITE;
         if ("quantity".equals(codeString))
           return QUANTITY;
+        if ("uri".equals(codeString))
+          return URI;
         throw new Exception("Unknown SearchParamType code '"+codeString+"'");
         }
         public String toCode() {
@@ -107,6 +113,7 @@ public class SearchParameter extends DomainResource {
             case REFERENCE: return "reference";
             case COMPOSITE: return "composite";
             case QUANTITY: return "quantity";
+            case URI: return "uri";
             default: return "?";
           }
         }
@@ -119,6 +126,7 @@ public class SearchParameter extends DomainResource {
             case REFERENCE: return "";
             case COMPOSITE: return "";
             case QUANTITY: return "";
+            case URI: return "";
             default: return "?";
           }
         }
@@ -131,18 +139,20 @@ public class SearchParameter extends DomainResource {
             case REFERENCE: return "A reference to another resource.";
             case COMPOSITE: return "A composite search parameter that combines a search on two values together.";
             case QUANTITY: return "A search parameter that searches on a quantity.";
+            case URI: return "A search parameter that searches on a URI (RFC 3986).";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case NUMBER: return "number";
-            case DATE: return "date";
-            case STRING: return "string";
-            case TOKEN: return "token";
-            case REFERENCE: return "reference";
-            case COMPOSITE: return "composite";
-            case QUANTITY: return "quantity";
+            case NUMBER: return "Number";
+            case DATE: return "Date/DateTime";
+            case STRING: return "String";
+            case TOKEN: return "Token";
+            case REFERENCE: return "Reference";
+            case COMPOSITE: return "Composite";
+            case QUANTITY: return "Quantity";
+            case URI: return "URI";
             default: return "?";
           }
         }
@@ -167,6 +177,8 @@ public class SearchParameter extends DomainResource {
           return SearchParamType.COMPOSITE;
         if ("quantity".equals(codeString))
           return SearchParamType.QUANTITY;
+        if ("uri".equals(codeString))
+          return SearchParamType.URI;
         throw new IllegalArgumentException("Unknown SearchParamType code '"+codeString+"'");
         }
     public String toCode(SearchParamType code) {
@@ -184,6 +196,8 @@ public class SearchParameter extends DomainResource {
         return "composite";
       if (code == SearchParamType.QUANTITY)
         return "quantity";
+      if (code == SearchParamType.URI)
+        return "uri";
       return "?";
       }
     }
@@ -193,14 +207,14 @@ public class SearchParameter extends DomainResource {
         /**
          * The name of an individual to contact regarding the search parameter.
          */
-        @Child(name="name", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name ="name", type={StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Name of a individual to contact", formalDefinition="The name of an individual to contact regarding the search parameter." )
         protected StringType name;
 
         /**
          * Contact details for individual (if a name was provided) or the publisher.
          */
-        @Child(name="telecom", type={ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="telecom", type={ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Contact details for individual or publisher", formalDefinition="Contact details for individual (if a name was provided) or the publisher." )
         protected List<ContactPoint> telecom;
 
@@ -289,6 +303,16 @@ public class SearchParameter extends DomainResource {
           return t;
         }
 
+    // syntactic sugar
+        public SearchParameterContactComponent addTelecom(ContactPoint t) { //3
+          if (t == null)
+            return this;
+          if (this.telecom == null)
+            this.telecom = new ArrayList<ContactPoint>();
+          this.telecom.add(t);
+          return this;
+        }
+
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("name", "string", "The name of an individual to contact regarding the search parameter.", 0, java.lang.Integer.MAX_VALUE, name));
@@ -335,93 +359,93 @@ public class SearchParameter extends DomainResource {
   }
 
     /**
-     * The URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.
+     * An absolute URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.
      */
-    @Child(name="url", type={UriType.class}, order=0, min=1, max=1)
-    @Description(shortDefinition="Literal URL used to reference this search parameter", formalDefinition="The URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements." )
+    @Child(name ="url", type={UriType.class}, order=0, min=1, max=1)
+    @Description(shortDefinition="Literal URL used to reference this search parameter", formalDefinition="An absolute URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements." )
     protected UriType url;
 
     /**
      * The name of the standard or custom search parameter.
      */
-    @Child(name="name", type={StringType.class}, order=1, min=1, max=1)
+    @Child(name ="name", type={StringType.class}, order=1, min=1, max=1)
     @Description(shortDefinition="Name of search parameter", formalDefinition="The name of the standard or custom search parameter." )
     protected StringType name;
 
     /**
      * The name of the individual or organization that published the search parameter.
      */
-    @Child(name="publisher", type={StringType.class}, order=2, min=0, max=1)
+    @Child(name ="publisher", type={StringType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Name of the publisher (Organization or individual)", formalDefinition="The name of the individual or organization that published the search parameter." )
     protected StringType publisher;
 
     /**
      * Contacts to assist a user in finding and communicating with the publisher.
      */
-    @Child(name="contact", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="contact", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Contact details of the publisher", formalDefinition="Contacts to assist a user in finding and communicating with the publisher." )
     protected List<SearchParameterContactComponent> contact;
 
     /**
      * The Scope and Usage that this search parameter was created to meet.
      */
-    @Child(name="requirements", type={StringType.class}, order=4, min=0, max=1)
+    @Child(name ="requirements", type={StringType.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Why this search parameter is defined", formalDefinition="The Scope and Usage that this search parameter was created to meet." )
     protected StringType requirements;
 
     /**
      * The status of this search parameter definition.
      */
-    @Child(name="status", type={CodeType.class}, order=5, min=0, max=1)
+    @Child(name ="status", type={CodeType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="draft | active | retired", formalDefinition="The status of this search parameter definition." )
     protected Enumeration<ConformanceResourceStatus> status;
 
     /**
      * A flag to indicate that this search parameter definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    @Child(name="experimental", type={BooleanType.class}, order=6, min=0, max=1)
+    @Child(name ="experimental", type={BooleanType.class}, order=6, min=0, max=1)
     @Description(shortDefinition="If for testing purposes, not real usage", formalDefinition="A flag to indicate that this search parameter definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage." )
     protected BooleanType experimental;
 
     /**
      * The date  (and optionally time) when the search parameter definition was published.
      */
-    @Child(name="date", type={DateTimeType.class}, order=7, min=0, max=1)
+    @Child(name ="date", type={DateTimeType.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Publication Date(/time)", formalDefinition="The date  (and optionally time) when the search parameter definition was published." )
     protected DateTimeType date;
 
     /**
      * The base resource type that this search parameter refers to.
      */
-    @Child(name="base", type={CodeType.class}, order=8, min=1, max=1)
+    @Child(name ="base", type={CodeType.class}, order=8, min=1, max=1)
     @Description(shortDefinition="The resource type this search parameter applies to", formalDefinition="The base resource type that this search parameter refers to." )
     protected CodeType base;
 
     /**
      * The type of value a search parameter refers to, and how the content is interpreted.
      */
-    @Child(name="type", type={CodeType.class}, order=9, min=1, max=1)
-    @Description(shortDefinition="number | date | string | token | reference | composite | quantity", formalDefinition="The type of value a search parameter refers to, and how the content is interpreted." )
+    @Child(name ="type", type={CodeType.class}, order=9, min=1, max=1)
+    @Description(shortDefinition="number | date | string | token | reference | composite | quantity | uri", formalDefinition="The type of value a search parameter refers to, and how the content is interpreted." )
     protected Enumeration<SearchParamType> type;
 
     /**
      * A description of the search parameters and how it used.
      */
-    @Child(name="description", type={StringType.class}, order=10, min=1, max=1)
+    @Child(name ="description", type={StringType.class}, order=10, min=1, max=1)
     @Description(shortDefinition="Documentation for  search parameter", formalDefinition="A description of the search parameters and how it used." )
     protected StringType description;
 
     /**
      * An XPath expression that returns a set of elements for the search parameter.
      */
-    @Child(name="xpath", type={StringType.class}, order=11, min=0, max=1)
+    @Child(name ="xpath", type={StringType.class}, order=11, min=0, max=1)
     @Description(shortDefinition="XPath that extracts the values", formalDefinition="An XPath expression that returns a set of elements for the search parameter." )
     protected StringType xpath;
 
     /**
      * Types of resource (if a resource is referenced).
      */
-    @Child(name="target", type={CodeType.class}, order=12, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="target", type={CodeType.class}, order=12, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Types of resource (if a resource reference)", formalDefinition="Types of resource (if a resource is referenced)." )
     protected List<CodeType> target;
 
@@ -441,7 +465,7 @@ public class SearchParameter extends DomainResource {
     }
 
     /**
-     * @return {@link #url} (The URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @return {@link #url} (An absolute URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
     public UriType getUrlElement() { 
       if (this.url == null)
@@ -461,7 +485,7 @@ public class SearchParameter extends DomainResource {
     }
 
     /**
-     * @param value {@link #url} (The URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @param value {@link #url} (An absolute URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
     public SearchParameter setUrlElement(UriType value) { 
       this.url = value;
@@ -469,14 +493,14 @@ public class SearchParameter extends DomainResource {
     }
 
     /**
-     * @return The URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.
+     * @return An absolute URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.
      */
     public String getUrl() { 
       return this.url == null ? null : this.url.getValue();
     }
 
     /**
-     * @param value The URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.
+     * @param value An absolute URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.
      */
     public SearchParameter setUrl(String value) { 
         if (this.url == null)
@@ -607,6 +631,16 @@ public class SearchParameter extends DomainResource {
         this.contact = new ArrayList<SearchParameterContactComponent>();
       this.contact.add(t);
       return t;
+    }
+
+    // syntactic sugar
+    public SearchParameter addContact(SearchParameterContactComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.contact == null)
+        this.contact = new ArrayList<SearchParameterContactComponent>();
+      this.contact.add(t);
+      return this;
     }
 
     /**
@@ -1041,7 +1075,7 @@ public class SearchParameter extends DomainResource {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("url", "uri", "The URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.", 0, java.lang.Integer.MAX_VALUE, url));
+        childrenList.add(new Property("url", "uri", "An absolute URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.", 0, java.lang.Integer.MAX_VALUE, url));
         childrenList.add(new Property("name", "string", "The name of the standard or custom search parameter.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("publisher", "string", "The name of the individual or organization that published the search parameter.", 0, java.lang.Integer.MAX_VALUE, publisher));
         childrenList.add(new Property("contact", "", "Contacts to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact));
@@ -1137,9 +1171,9 @@ public class SearchParameter extends DomainResource {
   public static final String SP_TARGET = "target";
   @SearchParamDefinition(name="base", path="SearchParameter.base", description="The resource type this search parameter applies to", type="token" )
   public static final String SP_BASE = "base";
-  @SearchParamDefinition(name="type", path="SearchParameter.type", description="number | date | string | token | reference | composite | quantity", type="token" )
+  @SearchParamDefinition(name="type", path="SearchParameter.type", description="number | date | string | token | reference | composite | quantity | uri", type="token" )
   public static final String SP_TYPE = "type";
-  @SearchParamDefinition(name="url", path="SearchParameter.url", description="Literal URL used to reference this search parameter", type="token" )
+  @SearchParamDefinition(name="url", path="SearchParameter.url", description="Literal URL used to reference this search parameter", type="uri" )
   public static final String SP_URL = "url";
 
 }

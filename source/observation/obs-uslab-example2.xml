@@ -10,7 +10,8 @@ see narrative
 -->
 <Observation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\observation.xsd">
 	<id value="uslab-example2"/>
-	<text>
+	<!-- FHIR build is generating the narratives
+<text>
 		<status value="generated"/>
 		<div xmlns="http://www.w3.org/1999/xhtml">
 			<ul>
@@ -21,6 +22,7 @@ see narrative
 			</ul>
 		</div>
 	</text>
+-->
 	<!-- extenstion for specimen reject goes here - not for this use case
 	<extension url="http://hl7.org/fhir/StructureDefinition/uslabspecimenrejectreason">
 		<valueCodeableConcept>
@@ -61,8 +63,10 @@ see narrative
 		</coding>
 		<coding>
 			<system value="urn:oid:2.16.840.1.113883.3.72.5.24"/>
-			<code value="POS"></code><display value="Positive"></display>
-		</coding><text value="Positive for Neisseira gonorrheoea rRNA"></text>
+			<code value="POS"/>
+			<display value="Positive"/>
+		</coding>
+		<text value="Positive for Neisseira gonorrheoea rRNA"/>
 	</valueCodeableConcept>
 	<!--  eH dataabsent reason  would go here if valueQuantity was empty e.g.:
 	<dataAbsentReason value="error"</dataAbsentReason> -->
@@ -87,7 +91,7 @@ see narrative
 		<display value="Todd Lerr"/>
 	</subject>
 	<specimen>
-		<reference value="Specimen/uslab-example1"/>
+		<reference value="Specimen/uslab-example2"/>
 		<display value="Blood sample"/>
 	</specimen>
 	<performer>

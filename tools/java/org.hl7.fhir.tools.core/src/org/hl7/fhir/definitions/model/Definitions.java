@@ -73,7 +73,7 @@ public class Definitions {
   private Map<String, WorkGroup> workgroups = new HashMap<String, WorkGroup>();
 
 	// profiles not owned by a particular resource
-  private Map<String, ConformancePackage> packs = new HashMap<String, ConformancePackage>();
+  private Map<String, Profile> packs = new HashMap<String, Profile>();
   private Map<String, String> dictionaries = new HashMap<String, String>();
 
   // indexes of above
@@ -102,6 +102,7 @@ public class Definitions {
   private Map<String, String> typePages = new HashMap<String, String>();
   private Map<String, ImplementationGuide> igs = new HashMap<String, ImplementationGuide>();
   private List<ImplementationGuide> sortedIgs = new ArrayList<ImplementationGuide>();
+  private Map<String, String> pageTitles = new HashMap<String, String>();
   
   // Returns the root TypeDefn of a CompositeType or Resource,
 	// excluding future Resources (as they don't have definitions yet).
@@ -238,7 +239,7 @@ public class Definitions {
 
 	// Returns all defined Profiles, which are the profiles found
 	// under [profiles] in fhir.ini
-	public Map<String, ConformancePackage> getConformancePackages() {
+	public Map<String, Profile> getConformancePackages() {
 		return packs;
 	}
 
@@ -372,15 +373,15 @@ public class Definitions {
     for (ResourceDefn r : resources.values()) {
       if (r.getProfile().getUrl().equals(base))
         return r.getProfile();
-      for (ConformancePackage cp : r.getConformancePackages()) {
-        for (ProfileDefn p : cp.getProfiles()) {
+      for (Profile cp : r.getConformancePackages()) {
+        for (ConstraintStructure p : cp.getProfiles()) {
           if (p.getResource() != null && base.equals(p.getResource().getUrl()))
             return p.getResource();
         }
       }
     }
-    for (ConformancePackage cp : packs.values()) {
-      for (ProfileDefn p : cp.getProfiles()) {
+    for (Profile cp : packs.values()) {
+      for (ConstraintStructure p : cp.getProfiles()) {
         if (p.getResource() != null && base.equals(p.getResource().getUrl()))
           return p.getResource();
       }      
@@ -454,6 +455,8 @@ public class Definitions {
       throw new Error("The data type context '"+value+"' is not valid @ "+context);
       
     } else if (contextType == ExtensionContext.RESOURCE) {
+      if (value.startsWith("@"))
+        value = value.substring(1);
       if (value.equals("*") || value.equals("Any"))
         return;
       String[] parts = value.split("\\.");
@@ -479,10 +482,14 @@ public class Definitions {
     while (e != null && i < parts.length) {
       if (e.getAcceptableGenericTypes().isEmpty() && hasType(e.typeCode()))
         e = getElementDefn(e.typeCode());
-      e = e.getElementByName(parts[i]);
+      e = e.getElementByName(parts[i], true);
       i++;
     }
     return e;
+  }
+
+  public Map<String, String> getPageTitles() {
+    return pageTitles;
   }
 
 

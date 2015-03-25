@@ -7,7 +7,7 @@
    <body>
       [%file newnavbar%]
       <div class="col-9">
-         <a id="USLabReport"> </a>
+         <a name="USLabReport"> </a>
         <p>Published by:  HL7 Orders and Observations Workgroup</p>
 		<p>Primary Author/Editor:  Eric M Haas, Health eData Inc.</p>
          <h2>US Laboratory Report Implementation</h2>
@@ -17,12 +17,12 @@
          </p>
 
     <b>Laboratory Test Reporting in the US Realm ambulatory care setting (USLab Report) -</b> This use case is based upon upon existing regulatory requirements for Laboratories and Electronic Health Record Systems (EHR-S) for reporting clinical laboratory results to ordering providers.  The content has been modeled after the joint HL7 and <a href="http://wiki.siframework.org/Lab+Results+Interface+(LRI)+Initiative">The Standards and Interoperability (S&amp;I) Framework Laboratory Results Interface (LRI) Initiative</a> and the<a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=59"> HL7 V3 Lab Normative Standard </a>.  However, much of the content is likely to be useable outside the ambulatory space and in other jurisdictions.
-               <h4><a href="USLabReport-guide.html">USLabReport Documentation</a></h4>
+               <h4><a href="uslabreport-guide.html">USLabReport Documentation</a></h4>
                <ul>
-            <li><a href="USLabReport-guide.html#purpose">Purpose</a>- How this project came to be and what it is trying to achieve</li>
-            <li><a href="USLabReport-guide.html#usecase">Use case</a>- Describes the Scope, Assumptions, Pre and Post Conditions and Use Cases for this guide</li>
-            <li><a href="USLabReport-guide.html#keytechdecisions">Key Technical Decisions</a>- List of key technical decisions in creating this guide</li>
-            <li><a href="USLabReport-guide.html#addlguidance">Additional Guidance</a>-Information on Add-on and Reflex testing ( Including Culture and Sensitivities),  CLIA, and Glossary of laboratory terms defined for this implementation</li>
+            <li><a href="uslabreport-guide.html#purpose">Purpose</a>- How this project came to be and what it is trying to achieve</li>
+            <li><a href="uslabreport-guide.html#usecase">Use case</a>- Describes the Scope, Assumptions, Pre and Post Conditions and Use Cases for this guide</li>
+            <li><a href="uslabreport-guide.html#keytechdecisions">Key Technical Decisions</a>- List of key technical decisions in creating this guide</li>
+            <li><a href="uslabreport-guide.html#addlguidance">Additional Guidance</a>-Information on Add-on and Reflex testing ( Including Culture and Sensitivities),  CLIA, and Glossary of laboratory terms defined for this implementation</li>
             </ul>
 
          <h3>Draft for Comment Ballot</h3>
@@ -56,7 +56,7 @@
 
           <li><a href="do-uslab.html">US Lab DiagnosticOrder</a> constrains and extends <a href="diagnosticorder.html">DiagnosticOrder</a> which is used to define the laboratory order.   This Resources references these <a href="uslaborder.html#doprofiles">USLabOrder Profiles</a></li>
 			<li><a href="spec-uslab.html">USlabSpec</a> constrains and extends <a href="specimen.html">Specimen</a> which is used to define what, when, and how the specimen was collected.</li>
-			<li><a href="obs-uslab.html">USLabObsCode | USLabObsQuantity | USLabObsOther | USLabObsRatio</a> constrains and extends <a href="observation.html">Observation</a> which are used to support the various result types for recording laboratory observations.
+			<li><a href="obs-uslab.html">USLabObsCode | USLabObsQuantity | USLabObsRange | USLabObsRatio | USLabObsOther | USLabObsPanel</a> constrains and extends <a href="observation.html">Observation</a> which are used to support the various result types for recording laboratory observations.
 						<ul>
 					<li><a href="org-uslab.html">USLabPerformingLab</a> constrains and extends <a href="organization.html">Organization</a> which is used to define a the organization that is responsible for the observation.</li>
 			</ul>
@@ -77,7 +77,7 @@ In addition to defining the the <i>USLabReport</i> bundle this implementation co
          <ul>
 
             <li>
-            <b>Operations</b> -<a href="#todo">Some USLabReport Operation</a> - Question for balloters are there any operations that <i>USLabReport</i> should consider?
+            <b>Operations</b> -<!--a href="#todo">Some USLabReport Operation</a--> Question for balloters are there any operations that <i>USLabReport</i> should consider?
            </li>
            <li>
 
@@ -97,7 +97,7 @@ In addition to defining the the <i>USLabReport</i> bundle this implementation co
 
             </li>
                         <li>
-               <b>Mappings</b> - <a href="conceptmap-lri-uslabreport.html">LRI to USLabReport Concept Codes Cross-mapping</a> are translation of  the concept codes for LRI to <i>USLabReport</i> - Note to balloters this is a stub entry for future work.
+               <b>Mappings</b> - <!--a href="conceptmap-lri-uslabreport.html">LRI to USLabReport Concept Codes Cross-mapping</a--> are translation of  the concept codes for LRI to <i>USLabReport</i> - Note to balloters this is a stub entry for future work.
                </li>
 
             <li>

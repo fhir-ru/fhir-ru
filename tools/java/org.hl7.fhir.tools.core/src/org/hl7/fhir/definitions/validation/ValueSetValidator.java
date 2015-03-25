@@ -26,8 +26,9 @@ public class ValueSetValidator extends BaseValidator {
       for (String s : sources) {
         rule(errors, "business-rule", "ValueSet["+vs.getId()+"].copyright", !s.equals("http://snomed.info/sct") && !s.equals("http://loinc.org"), 
            "Value set "+nameForErrors+" ("+vs.getName()+"): A copyright statement is required for any value set that includes Snomed or Loinc codes");
-        warning(errors, "business-rule", "ValueSet["+vs.getId()+"].copyright", s.startsWith("http://hl7.org"),
-           "Value set "+nameForErrors+" ("+vs.getName()+"): A copyright statement should be present for any value set that includes non-HL7 sourced codes");
+        warning(errors, "business-rule", "ValueSet["+vs.getId()+"].copyright", s.startsWith("http://hl7.org") || s.startsWith("urn:iso") || s.startsWith("urn:ietf") || s.startsWith("http://need.a.uri.org")
+            || s.contains("cdc.gov") || s.startsWith("urn:oid:"),
+           "Value set "+nameForErrors+" ("+vs.getName()+"): A copyright statement should be present for any value set that includes non-HL7 sourced codes ("+s+")");
       }
     }
     if (vs.hasDefine()) {
@@ -37,9 +38,12 @@ public class ValueSetValidator extends BaseValidator {
       checkCodeCaseDuplicates(errors, nameForErrors, vs, codes, vs.getDefine().getConcept());
       if (!vs.getDefine().getSystem().startsWith("http://hl7.org/fhir/v2/") && !vs.getDefine().getSystem().startsWith("urn:uuid:"))
         checkCodesForSpaces(errors, nameForErrors, vs, vs.getDefine().getConcept());
-      if (!vs.getDefine().getSystem().startsWith("http://hl7.org/fhir/v2/") && !vs.getDefine().getSystem().startsWith("http://hl7.org/fhir/v3/") && !vs.getDefine().getSystem().startsWith("urn:uuid:"))
+      if (!vs.getDefine().getSystem().startsWith("http://hl7.org/fhir/v2/") && !vs.getDefine().getSystem().startsWith("urn:uuid:"))
         warning(errors, "business-rule", "ValueSet["+vs.getId()+"].define", checkCodesForDisplayAndDefinition(vs.getDefine().getConcept()),
           "Value set "+nameForErrors+" ("+vs.getName()+") contains codes with missing display or definition");
+      if (vs.getDefine().getSystem().startsWith("http://hl7.org/fhir/v3/"))
+        warning(errors, "business-rule", "ValueSet["+vs.getId()+"].define", checkCodesForDisplayAndDefinition(vs.getDefine().getConcept()),
+          "V3 Value set "+nameForErrors+" ("+vs.getName()+") contains codes with missing display or definition");
     }
   }
 

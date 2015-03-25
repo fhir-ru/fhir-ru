@@ -32,7 +32,7 @@ documents, REST and other service models).  Refer to the <a href="messageheader.
 </p>
 <p>
 <b>Granularity:</b> HL7 V2's "Segment" structure provides re-useable chunks of data that 
-roughly correspond to FHIR's idea of <a href="resources.html">resources</a>.  However, V2 
+roughly correspond to FHIR's idea of <a href="resource.html">resources</a>.  However, V2 
 segments can't be independently manipulated.  Additionally, not all segments have the characteristics 
 of independent identity held by FHIR resources.  Due to differences in scope and approach to 
 extensibility, V2 segments and data types are frequently cluttered with data elements that are not 
@@ -103,7 +103,7 @@ FHIR resources are much more limited in terms of what elements are included in t
 those elements that the vast majority of systems will support.  HL7 V2 tends to include many elements that 
 are used in only very limited circumstances. FHIR uses extensions for those circumstances.  V2 and FHIR both 
 provide formal mechanisms for defining profiles to give guidance on the use of the specification.  However, 
-the V2 mechanism has not been widely used.  FHIR <a href="profile.html">Profiles</a> form an essential 
+the V2 mechanism has not been widely used.  FHIR <a href="profiling.html">Profiles</a> form an essential 
 component of the methodology and are built into tooling, increasing the likelihood of their use.
 </p>
 
@@ -167,7 +167,7 @@ multiple resource instances - often 10s or even 100s of resource instances.  To 
 with the V2 messaging paradigm, all resource data will typically be sent over the wire as part of the 
 FHIR message rather than being sent by reference as would be typical in a RESTful implementation.  
 However, FHIR provides two different ways of communicating the resources as part of the message <a href="extras.html#bundle">bundle</a>: 
-they can either be sent as "fully identified" resources (direct entries in the atom feed with their 
+they can either be sent as "fully identified" resources (direct entries in the bundle with their 
 own identity, and able to be the subject of independent transactions), or they can be sent as <a href="references.html#contained">contained</a> 
 resources, meaning they are only identified relative to another resources and cannot be retrieved or 
 otherwise manipulated on their own.  A V2 to FHIR conversion process will need to make the determination 

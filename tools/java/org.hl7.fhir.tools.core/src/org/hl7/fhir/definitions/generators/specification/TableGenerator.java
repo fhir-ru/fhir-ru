@@ -2,7 +2,6 @@ package org.hl7.fhir.definitions.generators.specification;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
-import org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
@@ -34,13 +33,13 @@ public class TableGenerator extends BaseGenerator {
 
     row.setAnchor(path);
     boolean isProfiledExtension = isProfile && (e.getName().equals("extension") || e.getName().equals("modifierExtension"));
-    row.getCells().add(gen.new Cell(null, dictLinks() ? pageName+"#"+path.replace("[", "_").replace("]", "_") : null, e.getName(), e.getDefinition(), null));
+    row.getCells().add(gen.new Cell(null, dictLinks() ? pageName+"#"+path.replace("[", "_").replace("]", "_") : null, e.getName(), path+" : "+e.getDefinition(), null));
     Cell gc = gen.new Cell();
     row.getCells().add(gc);
     if (e.hasMustSupport() && e.isMustSupport()) 
       gc.addImage("mustsupport.png", "This element must be supported", "S");
     if (e.isModifier()) 
-      gc.addImage("modifier.png", "This element is a modifier element", "M");
+      gc.addImage("modifier.png", "This element is a modifier element", "?!");
     if (e.isSummary()) 
       gc.addImage("summary.png", "This element is included in summaries", "Σ");
     if (!e.getInvariants().isEmpty() || !e.getStatedInvariants().isEmpty()) 
@@ -57,11 +56,11 @@ public class TableGenerator extends BaseGenerator {
       // todo: base elements
     } else {
       if (!e.getElements().isEmpty()) {
-        row.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null)); 
+        row.getCells().add(gen.new Cell(null, null, path.contains(".") ? e.describeCardinality() : "", null, null)); 
         row.setIcon("icon_element.gif", HeirarchicalTableGenerator.TEXT_ICON_ELEMENT);
         row.getCells().add(gen.new Cell(null, "element.html", "Element", null, null));   
       } else if (e.getTypes().size() == 1) {
-        row.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null)); 
+        row.getCells().add(gen.new Cell(null, null, path.contains(".") ? e.describeCardinality() : "", null, null)); 
         String t = e.getTypes().get(0).getName();
         Cell c;
         if (t.startsWith("@")) {
@@ -113,15 +112,7 @@ public class TableGenerator extends BaseGenerator {
       cc.getPieces().add(gen.new Piece(getBindingLink(e), e.getBindingName(), definitions.getBindingByName(e.getBindingName()).getDefinition()));
       cc.getPieces().add(gen.new Piece(null, " (", null));
       BindingSpecification b = definitions.getBindingByName(e.getBindingName());
-      if (b.getBindingStrength() == BindingStrength.Example) {
-        cc.getPieces().add(gen.new Piece("terminologies.html#example",    "Example", "These codes are an example of the type of codes that may be used"));
-      } else if (b.getBindingStrength() == BindingStrength.Preferred) {
-        cc.getPieces().add(gen.new Piece("terminologies.html#incomplete", "Incomplete", "If one of the defined codes is appropriate, it must be used, or some other code may be used"));
-      } else if (b.getBindingStrength() == BindingStrength.Required) {
-        cc.getPieces().add(gen.new Piece("terminologies.html#code",       "Required",   "One of the the defined codes must be used"));
-      } else {
-        cc.getPieces().add(gen.new Piece(null, "??", null));
-      }
+      cc.getPieces().add(gen.new Piece("terminologies.html#"+b.getStrength().toCode(), b.getStrength().getDisplay(),  b.getStrength().getDefinition()));
       cc.getPieces().add(gen.new Piece(null, ")", null));
     }
     for (String name : e.getInvariants().keySet()) {

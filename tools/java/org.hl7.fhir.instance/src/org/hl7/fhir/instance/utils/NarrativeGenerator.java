@@ -159,17 +159,14 @@ public class NarrativeGenerator implements INarrativeGenerator {
     } else if (r instanceof OperationDefinition) {
       generate((OperationDefinition) r);   // Maintainer = Grahame
     } else if (context.getProfiles().containsKey(r.getResourceType().toString())) {
-      StructureDefinition p = ctxt.fetchResource(StructureDefinition.class, "test");
+      StructureDefinition p = context.getProfiles().get(r.getResourceType().toString());
       generateByProfile(r, p /* context.getProfiles().get(r.getResourceType().toString()) */, true); // todo: make this manageable externally 
     } else if (context.getProfiles().containsKey("http://hl7.org/fhir/profile/"+r.getResourceType().toString().toLowerCase())) {
       generateByProfile(r, context.getProfiles().get("http://hl7.org/fhir/profile/"+r.getResourceType().toString().toLowerCase()), true); // todo: make this manageable externally 
     }
   }
   
-  private void generateByProfile(DomainResource r, StructureDefinition profile, boolean showCodeDetails) throws Exception {
-    if (!r.getModifierExtension().isEmpty())
-      throw new Exception("Unable to generate narrative for resource of type "+r.getResourceType().toString()+" because it has modifier extensions");
-    
+  private void generateByProfile(DomainResource r, StructureDefinition profile, boolean showCodeDetails) throws Exception {  
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
     x.addTag("p").addTag("b").addText("Generated Narrative"+(showCodeDetails ? " with Details" : ""));
     try {
@@ -415,7 +412,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       return;
     } else if (e instanceof ElementDefinition) {
       x.addText("todo-bundle");
-    } else if (!(e instanceof Attachment))
+    } else if (!(e instanceof Attachment) && !(e instanceof Narrative))
       throw new Exception("type "+e.getClass().getName()+" not handled yet");      
   }
 
@@ -660,7 +657,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
           first = false;
         } else
           sp.addText("; ");
-        sp.addText("{"+describeSystem(c.getSystem())+" code '"+c.getCode()+"' = '"+lookupCode(c.getSystem(), c.getCode())+"', given as '"+c.getDisplay()+"'}");
+        sp.addText("{"+describeSystem(c.getSystem())+" code '"+c.getCode()+"' = '"+lookupCode(c.getSystem(), c.getCode())+(c.hasDisplay() ? "', given as '"+c.getDisplay()+"'}" : ""));
       }
       sp.addText(")");
     } else {
@@ -800,39 +797,59 @@ public class NarrativeGenerator implements INarrativeGenerator {
   
   
   private String displayTiming(Timing s) {
+    CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
     if (s.getEvent().size() > 1 || (!s.hasRepeat() && !s.getEvent().isEmpty())) {
       CommaSeparatedStringBuilder c = new CommaSeparatedStringBuilder();
-      for (Period p : s.getEvent()) {
-        c.append(displayPeriod(p));
+      for (DateTimeType p : s.getEvent()) {
+        c.append(p.toHumanDisplay());
       }
-      return c.toString();
-    } else if (s.hasRepeat()) {
+      b.append("Events: "+ c.toString());
+    }
+    if (s.hasRepeat()) {
       TimingRepeatComponent rep = s.getRepeat();
-      StringBuilder b = new StringBuilder();
-      if (s.getEvent().size() == 1) 
-        b.append("Starting "+displayPeriod(s.getEvent().get(0))+", ");
+      if (rep.hasBounds() && rep.getBounds().hasStart()) 
+        b.append("Starting "+rep.getBounds().getStartElement().toHumanDisplay());
+      if (rep.hasCount()) 
+        b.append("Count "+Integer.toString(rep.getCount())+"x");
+      if (rep.hasDuration()) 
+        b.append("Duration "+rep.getDuration().toPlainString()+displayTimeUnits(rep.getPeriodUnits()));
+      
       if (rep.hasWhen()) {
-        b.append(rep.getDuration().toString()+" "+displayTimeUnits(rep.getUnits()));
-        b.append(" ");
-        b.append(displayEventCode(rep.getWhen()));
+        String st = "";
+        if (rep.hasPeriod()) {
+          st = rep.getPeriod().toPlainString();
+          if (rep.hasPeriodMax())
+            st = st + "-"+rep.getPeriodMax().toPlainString();
+          st = st + displayTimeUnits(rep.getPeriodUnits());
+        }
+        b.append("Do "+st+displayEventCode(rep.getWhen()));
       } else {
-        if (rep.getFrequency() == 1)
-          b.append("Once per ");
-        else 
-          b.append(Integer.toString(rep.getFrequency())+" per ");
-        b.append(rep.getDuration().toString()+" "+displayTimeUnits(rep.getUnits()));
-        if (rep.hasCountElement())
-          b.append(" "+Integer.toString(rep.getCount())+" times");
-        else if (rep.hasEnd()) 
-          b.append(" until "+rep.getEndElement().toHumanDisplay());
+        String st = "";
+        if (!rep.hasFrequency() || (!rep.hasFrequencyMax() && rep.getFrequency() == 1) ) 
+          st = "Once";
+        else {  
+          st = Integer.toString(rep.getFrequency());
+          if (rep.hasFrequencyMax())
+            st = st + "-"+Integer.toString(rep.getFrequency());
+        }
+        st = st + " per "+rep.getPeriod().toPlainString();
+        if (rep.hasPeriodMax())
+          st = st + "-"+rep.getPeriodMax().toPlainString();
+        st = st + displayTimeUnits(rep.getPeriodUnits());
+        b.append("Do "+st);
       }
-      return b.toString();
-    } else
-      return "??";    
+      if (rep.hasBounds() && rep.getBounds().hasEnd()) 
+        b.append("Until "+rep.getBounds().getEndElement().toHumanDisplay());
+    } 
+    return b.toString();
   }
   
   private Object displayEventCode(EventTiming when) {
     switch (when) {
+    case C: return "at meals";
+    case CD: return "at lunch";
+    case CM: return "at breakfast";
+    case CV: return "at dinner";
     case AC: return "before meals";
     case ACD: return "before lunch";
     case ACM: return "before breakfast";
@@ -1842,12 +1859,10 @@ public class NarrativeGenerator implements INarrativeGenerator {
   public void generate(OperationOutcome op) throws Exception {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
     boolean hasSource = false;
-    boolean hasType = false;
     boolean success = true;
     for (OperationOutcomeIssueComponent i : op.getIssue()) {
     	success = success && i.getSeverity() != IssueSeverity.INFORMATION;
     	hasSource = hasSource || ExtensionHelper.hasExtension(i, ToolingExtensions.EXT_ISSUE_SOURCE);
-    	hasType = hasType || i.hasType();
     }
     if (success)
     	x.addTag("p").addText("All OK");
@@ -1858,8 +1873,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     		tr.addTag("td").addTag("b").addText("Severity");
     		tr.addTag("td").addTag("b").addText("Location");
     		tr.addTag("td").addTag("b").addText("Details");
-    		if (hasType)
-    			tr.addTag("td").addTag("b").addText("Type");
+  			tr.addTag("td").addTag("b").addText("Code");
     		if (hasSource)
     			tr.addTag("td").addTag("b").addText("Source");
     		for (OperationOutcomeIssueComponent i : op.getIssue()) {
@@ -1875,8 +1889,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     				td.addText(s.getValue());      		
     			}
     			smartAddText(tr.addTag("td"), i.getDetails());
-    			if (hasType)
-    				tr.addTag("td").addText(gen(i.getType()));
+  				tr.addTag("td").addText(gen(i.getCode()));
     			if (hasSource)
     				tr.addTag("td").addText(gen(ExtensionHelper.getExtension(i, ToolingExtensions.EXT_ISSUE_SOURCE)));
     		}    
@@ -1894,13 +1907,23 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	  throw new Exception("Unhandled type "+extension.getValue().getClass().getName());
   }
 
-	private String gen(Coding type) {
-	  if (type == null)
+	private String gen(CodeableConcept code) {
+		if (code == null)
 	  	return null;
-	  if (type.hasDisplayElement())
-	  	return type.getDisplay();
-	  if (type.hasCodeElement())
-	  	return type.getCode();
+		if (code.hasText())
+			return code.getText();
+		if (code.hasCoding())
+			return gen(code.getCoding().get(0));
+		return null;
+	}
+	
+	private String gen(Coding code) {
+	  if (code == null)
+	  	return null;
+	  if (code.hasDisplayElement())
+	  	return code.getDisplay();
+	  if (code.hasCodeElement())
+	  	return code.getCode();
 	  return null;
   }
 

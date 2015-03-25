@@ -12,7 +12,6 @@ import java.util.UUID;
 
 import org.hl7.fhir.tools.publisher.BreadCrumbManager.Page;
 import org.hl7.fhir.utilities.FileNotifier;
-import org.hl7.fhir.utilities.Logger.LogMessageType;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
@@ -287,8 +286,19 @@ public class EPubManager implements FileNotifier {
   }
 
   private void reportError(String msg) {
-//    page.log(msg, LogMessageType.Error);
-    page.getQa().brokenlink(msg);
+    if (!ok(msg)) {
+      page.getQa().brokenlink(msg);
+    }
+  }
+
+  private boolean ok(String msg) {
+    if (msg.startsWith("Broken Link in extension-cda"))
+      return true;
+    if (msg.startsWith("Broken Link in hspc-qnlab"))
+      return true;
+    if (msg.contains("'??"))
+      return true;
+    return false;
   }
 
   private void checkLinks(XhtmlNode node, Entry e) throws FileNotFoundException, Exception {
@@ -305,6 +315,8 @@ public class EPubManager implements FileNotifier {
   }
 
   private void check(XhtmlNode node, String href, String base) throws FileNotFoundException, Exception {
+    if (href == null)
+      throw new Exception("no ref at "+node.allText());
     if (href.startsWith("http:") || href.startsWith("https:") || href.startsWith("ftp:") || href.startsWith("mailto:"))
       return;
     String path = href;

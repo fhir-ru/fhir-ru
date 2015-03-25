@@ -66,6 +66,7 @@ function fullResourceUri(base: String; aType : TFhirResourceType; id : String) :
 function fullResourceUri(base: String; ref : TFhirReference) : String; overload;
 function isHistoryURL(url : String) : boolean;
 procedure splitHistoryUrl(var url : String; var history : String);
+procedure RemoveBOM(var s : String);
 
 procedure listReferences(resource : TFhirResource; list : TFhirReferenceList);
 procedure listAttachments(resource : TFhirResource; list : TFhirAttachmentList);
@@ -240,7 +241,18 @@ type
   public
     function hasParameter(name : String):Boolean;
     Property NamedParameter[name : String] : TFhirBase read GetNamedParameter; default;
+    procedure AddParameter(name: String; value: TFhirType); overload;
+    procedure AddParameter(name: String; value: TFhirResource); overload;
+    procedure AddParameter(name: String; value: boolean); overload;
+    procedure AddParameter(name, value: string); overload;
   end;
+
+  TFhirResourceMetaHelper = class helper for TFhirMeta
+  public
+    function HasTag(system, code : String)  : boolean;
+  end;
+
+
 
 function ZCompressBytes(const s: TBytes): TBytes;
 function ZDecompressBytes(const s: TBytes): TBytes;
@@ -546,10 +558,10 @@ begin
       for i := 0 to value.eventList.count - 1 do
         result := DateTimeMax(result, AsUTCMax(value.eventList[i]));
   end
-  else if (value.repeat_.end_ <> nil) then
-    result := asUTCMax(value.repeat_.end_Element)
+  else if (value.repeat_.bounds <> nil) and (value.repeat_.bounds.end_ <> nil) then
+    result := asUTCMax(value.repeat_.bounds.end_Element)
   else if (value.repeat_.count <> '') and (value.eventList.Count > 0) and
-    (value.repeat_.frequency <> '') and (value.repeat_.duration <> '') and (value.repeat_.units <> UnitsOfTimeNull) then
+    (value.repeat_.frequency <> '') and (value.repeat_.period <> '') and (value.repeat_.periodunits <> UnitsOfTimeNull) then
   begin
     result := MIN_DATE;
     for i := 0 to value.eventList.count - 1 do
@@ -558,7 +570,7 @@ begin
       result := MAX_DATE
     else
     begin
-      case value.repeat_.units of
+      case value.repeat_.periodunits of
         UnitsOfTimeS : duration := DATETIME_SECOND_ONE;
         UnitsOfTimeMin : duration := DATETIME_MINUTE_ONE;
         UnitsOfTimeH : duration := DATETIME_HOUR_ONE;
@@ -567,7 +579,7 @@ begin
         UnitsOfTimeMo : duration := 30;
         UnitsOfTimeA : duration := 365 // todo - how to correct for leap years?;
       else
-        raise exception.create('unknown duration units "'+value.repeat_.unitsElement.value+'"');
+        raise exception.create('unknown duration units "'+value.repeat_.periodunitsElement.value+'"');
       end;
       result := result + (StrToInt(value.repeat_.count) * duration / StrToInt(value.repeat_.frequency));
     end;
@@ -669,6 +681,18 @@ begin
     result := '';
 end;
 
+function gen(code : TFhirCodeableConcept):String; overload;
+begin
+  if (code = nil) then
+    result := ''
+  else if (code.text <> '') then
+    result := code.text
+  else if (code.codingList.Count > 0) then
+    result := gen(code.codingList[0])
+  else
+    result := '';
+end;
+
 function gen(extension : TFHIRExtension):String; overload;
 begin
   if extension = nil then
@@ -684,7 +708,7 @@ end;
 procedure BuildNarrative(op: TFhirOperationOutcome; opDesc : String);
 var
   x, tbl, tr, td : TFhirXHtmlNode;
-  hasSource, hasType, success, d : boolean;
+  hasSource, success, d : boolean;
   i, j : integer;
   issue : TFhirOperationOutcomeIssue;
   s : TFhirString;
@@ -696,14 +720,12 @@ begin
     x.AddTag('p').addTag('b').addText('Operation Outcome for :'+opDesc);
 
     hasSource := false;
-    hasType := false;
     success := true;
     for i := 0 to op.issueList.count - 1 do
     begin
       issue := op.issueList[i];
       success := success and (issue.Severity = IssueSeverityInformation);
       hasSource := hasSource or (hasExtension(issue, 'http://hl7.org/fhir/tools#issue-source'));
-      hasType := hasType or (issue.Type_ <> nil);
     end;
     if (success) then
       x.AddChild('p').addText('All OK');
@@ -715,8 +737,7 @@ begin
       tr.addTag('td').addTag('b').addText('Severity');
       tr.addTag('td').addTag('b').addText('Location');
       tr.addTag('td').addTag('b').addText('Details');
-      if (hasType) then
-        tr.addTag('td').addTag('b').addText('Type');
+      tr.addTag('td').addTag('b').addText('Type');
       if (hasSource) then
         tr.addTag('td').addTag('b').addText('Source');
       for i := 0 to op.issueList.count - 1 do
@@ -736,8 +757,7 @@ begin
            td.addText(s.Value);
         end;
         tr.addTag('td').addText(issue.details);
-        if (hasType) then
-          tr.addTag('td').addText(gen(issue.Type_));
+        tr.addTag('td').addText(gen(issue.Code));
         if (hasSource) then
           tr.addTag('td').addText(gen(getExtension(issue, 'http://hl7.org/fhir/tools#issue-source')));
       end;
@@ -1137,9 +1157,12 @@ begin
     issue := TFhirOperationOutcomeIssue.create;
     try
       issue.severity := IssueSeverityError;
-      issue.type_ := TFhirCoding.create;
-      issue.type_.system := 'http://hl7.org/fhir/issue-type';
-      issue.type_.code := typeCode;
+      issue.code := TFhirCodeableConcept.create;
+      with issue.code.codingList.Append do
+      begin
+        system := 'http://hl7.org/fhir/issue-type';
+        code := typeCode;
+      end;
       issue.details := msg;
       issue.locationList.Append.value := path;
       ex := issue.ExtensionList.Append;
@@ -1173,9 +1196,12 @@ begin
     issue := TFhirOperationOutcomeIssue.create;
     try
       issue.severity := IssueSeverityInformation;
-      issue.type_ := TFhirCoding.create;
-      issue.type_.system := 'http://hl7.org/fhir/issue-type';
-      issue.type_.code := typeCode;
+      issue.code := TFhirCodeableConcept.create;
+      with issue.code.codingList.Append do
+      begin
+        system := 'http://hl7.org/fhir/issue-type';
+        code := typeCode;
+      end;
       issue.details := msg;
       issue.locationList.Append.value := path;
       ex := issue.ExtensionList.Append;
@@ -1200,9 +1226,12 @@ begin
     issue := TFhirOperationOutcomeIssue.create;
     try
       issue.severity := level;
-      issue.type_ := TFhirCoding.create;
-      issue.type_.system := 'http://hl7.org/fhir/issue-type';
-      issue.type_.code := typeCode;
+      issue.code := TFhirCodeableConcept.create;
+      with issue.code.codingList.Append do
+      begin
+        system := 'http://hl7.org/fhir/issue-type';
+        code := typeCode;
+      end;
       issue.details := msg;
       issue.locationList.Append.value := path;
       ex := issue.ExtensionList.Append;
@@ -1227,9 +1256,12 @@ begin
     issue := TFhirOperationOutcomeIssue.create;
     try
       issue.severity := IssueSeverityWarning;
-      issue.type_ := TFhirCoding.create;
-      issue.type_.system := 'http://hl7.org/fhir/issue-type';
-      issue.type_.code := typeCode;
+      issue.code := TFhirCodeableConcept.create;
+      with issue.code.codingList.Append do
+      begin
+        system := 'http://hl7.org/fhir/issue-type';
+        code := typeCode;
+      end;
       issue.details := msg;
       issue.locationList.Append.value := path;
       ex := issue.ExtensionList.Append;
@@ -1745,6 +1777,42 @@ begin
 end;
 { TFhirParametersHelper }
 
+procedure TFhirParametersHelper.AddParameter(name: String; value: TFhirType);
+var
+  p : TFhirParametersParameter;
+begin
+  p := self.parameterList.Append;
+  p.name := name;
+  p.value := value.Link;
+end;
+
+procedure TFhirParametersHelper.AddParameter(name: String; value: TFhirResource);
+var
+  p : TFhirParametersParameter;
+begin
+  p := self.parameterList.Append;
+  p.name := name;
+  p.resource := value.Link;
+end;
+
+procedure TFhirParametersHelper.AddParameter(name: String; value: boolean);
+var
+  p : TFhirParametersParameter;
+begin
+  p := self.parameterList.Append;
+  p.name := name;
+  p.value := TFhirBoolean.Create(value);
+end;
+
+procedure TFhirParametersHelper.AddParameter(name, value: string);
+var
+  p : TFhirParametersParameter;
+begin
+  p := self.parameterList.Append;
+  p.name := name;
+  p.value := TFhirString.Create(value);
+end;
+
 function TFhirParametersHelper.GetNamedParameter(name: String): TFhirBase;
 var
   i: Integer;
@@ -1788,6 +1856,24 @@ begin
         result := true;
         break;
       end;
+end;
+
+procedure RemoveBOM(var s : String);
+begin
+  if s.startsWith(#$FEFF) then
+    s := s.substring(1);
+end;
+
+
+{ TFhirResourceMetaHelper }
+
+function TFhirResourceMetaHelper.HasTag(system, code: String): boolean;
+var
+  i : integer;
+begin
+  result := false;
+  for i := 0 to taglist.Count - 1 do
+    result := result or (taglist[i].system = system) and (taglist[i].code = code);
 end;
 
 end.

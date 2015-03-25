@@ -29,10 +29,6 @@
         <title value="CDA R2 Profile"/>
         <status value="preliminary"/>
         <!-- todo: make these two optional -->
-        <confidentiality>
-          <system value="http://hl7.org/fhir/v3/Confidentiality"/>
-          <code value="NC"/>
-        </confidentiality>
         <subject>
           <display value="specification"/>
         </subject>
@@ -202,7 +198,7 @@
             <min value="1"/>
             <max value="1"/>
             <type>
-              <code value="Coding"/>
+              <code value="code"/>
             </type>
             <isModifier value="true"/>
             <mapping>
@@ -280,8 +276,8 @@
             <short value="Additional Content defined by implementations"/>
             <definition value="May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
             <comments value="there can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core simplicity for everyone."/>
-            <synonym value="extensions"/>
-            <synonym value="user content"/>
+            <alias value="extensions"/>
+            <alias value="user content"/>
             <min value="0"/>
             <max value="*"/>
             <type>
@@ -293,8 +289,8 @@
             <short value="Extensions that cannot be ignored"/>
             <definition value="May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions."/>
             <comments value="there can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core simplicity for everyone."/>
-            <synonym value="extensions"/>
-            <synonym value="user content"/>
+            <alias value="extensions"/>
+            <alias value="user content"/>
             <min value="0"/>
             <max value="*"/>
             <type>
@@ -314,11 +310,11 @@
             <isModifier value="false"/>
             <binding>
               <name value="CompositionAttestationMode"/>
-              <isExtensible value="false"/>
+              <strength value="required"/>
               <description value="The way in which a person authenticated a composition"/>
-              <referenceReference>
+              <valueSetReference>
                 <reference value="http://hl7.org/fhir/vs/composition-attestation-mode"/>
-              </referenceReference>
+              </valueSetReference>
             </binding>
             <mapping>
               <identity value="cda"/>
@@ -421,8 +417,8 @@
             <short value="Additional Content defined by implementations"/>
             <definition value="May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
             <comments value="there can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core simplicity for everyone."/>
-            <synonym value="extensions"/>
-            <synonym value="user content"/>
+            <alias value="extensions"/>
+            <alias value="user content"/>
             <min value="0"/>
             <max value="*"/>
             <type>
@@ -434,8 +430,8 @@
             <short value="Extensions that cannot be ignored"/>
             <definition value="May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions."/>
             <comments value="there can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core simplicity for everyone."/>
-            <synonym value="extensions"/>
-            <synonym value="user content"/>
+            <alias value="extensions"/>
+            <alias value="user content"/>
             <min value="0"/>
             <max value="*"/>
             <type>
@@ -455,11 +451,11 @@
             <isModifier value="false"/>
             <binding>
               <name value="DocumentEventType"/>
-              <isExtensible value="false"/>
+              <strength value="required"/>
               <description value="This list of codes represents the main clinical acts being documented"/>
-              <referenceReference>
+              <valueSetReference>
                 <reference value="http://hl7.org/fhir/v3/vs/ActCode"/>
-              </referenceReference>
+              </valueSetReference>
             </binding>
             <mapping>
               <identity value="cda"/>
@@ -558,8 +554,8 @@
             <short value="Additional Content defined by implementations"/>
             <definition value="May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
             <comments value="there can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core simplicity for everyone."/>
-            <synonym value="extensions"/>
-            <synonym value="user content"/>
+            <alias value="extensions"/>
+            <alias value="user content"/>
             <min value="0"/>
             <max value="*"/>
             <type>
@@ -571,8 +567,8 @@
             <short value="Extensions that cannot be ignored"/>
             <definition value="May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions."/>
             <comments value="there can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core simplicity for everyone."/>
-            <synonym value="extensions"/>
-            <synonym value="user content"/>
+            <alias value="extensions"/>
+            <alias value="user content"/>
             <min value="0"/>
             <max value="*"/>
             <type>
@@ -610,11 +606,11 @@
             <isModifier value="false"/>
             <binding>
               <name value="CompositionSectionType"/>
-              <isExtensible value="false"/>
+              <strength value="required"/>
               <description value="Classification of a composition / document"/>
-              <referenceReference>
+              <valueSetReference>
                 <reference value="http://hl7.org/fhir/vs/doc-section-codes"/>
-              </referenceReference>
+              </valueSetReference>
             </binding>
             <mapping>
               <identity value="cda"/>
@@ -1214,8 +1210,8 @@
             <max value="1"/>
             <binding>
               <name value="OrganizationIndustryClass"/>
-              <isExtensible value="true"/>
-              <referenceUri value="http://hl7.org/fhir/v3/vs/OrganizationIndustryClass"/>
+              <strength value="extensible"/>
+              <valueSetUri value="http://hl7.org/fhir/v3/vs/OrganizationIndustryClass"/>
             </binding>
             <mapping>
               <identity value="cda"/>
@@ -1704,8 +1700,8 @@
           </type>
           <binding>
             <name value="LanguageAbiliityProficiency"/>
-            <isExtensible value="true"/>
-            <referenceUri value="http://hl7.org/fhir/v3/vs/LanguageAbilityProficiency"/>
+            <strength value="extensible"/>
+            <valueSetUri value="http://hl7.org/fhir/v3/vs/LanguageAbilityProficiency"/>
           </binding>
         </element>
       </differential>
@@ -1759,8 +1755,8 @@
           </type>
           <binding>
             <name value="LanguageAbiliityMode"/>
-            <isExtensible value="true"/>
-            <referenceUri value="http://hl7.org/fhir/v3/vs/LanguageAbilityMode"/>
+            <strength value="extensible"/>
+            <valueSetUri value="http://hl7.org/fhir/v3/vs/LanguageAbilityMode"/>
           </binding>
         </element>
       </differential>
@@ -1965,8 +1961,8 @@
           </type>
           <binding>
             <name value="RoleStatus"/>
-            <isExtensible value="false"/>
-            <referenceUri value="http://hl7.org/fhir/v3/vs/RoleStatus"/>
+            <strength value="required"/>
+            <valueSetUri value="http://hl7.org/fhir/v3/vs/RoleStatus"/>
           </binding>
         </element>
       </differential>
@@ -2020,8 +2016,8 @@
           </type>
           <binding>
             <name value="RoleCode"/>
-            <isExtensible value="true"/>
-            <referenceUri value="http://hl7.org/fhir/v3/vs/RoleCode"/>
+            <strength value="extensible"/>
+            <valueSetUri value="http://hl7.org/fhir/v3/vs/RoleCode"/>
           </binding>
         </element>
       </differential>

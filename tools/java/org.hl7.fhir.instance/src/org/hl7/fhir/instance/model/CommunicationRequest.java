@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
+// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -162,16 +162,16 @@ public class CommunicationRequest extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case PROPOSED: return "proposed";
-            case PLANNED: return "planned";
-            case REQUESTED: return "requested";
-            case RECEIVED: return "received";
-            case ACCEPTED: return "accepted";
-            case INPROGRESS: return "in-progress";
-            case COMPLETED: return "completed";
-            case SUSPENDED: return "suspended";
-            case REJECTED: return "rejected";
-            case FAILED: return "failed";
+            case PROPOSED: return "Proposed";
+            case PLANNED: return "Planned";
+            case REQUESTED: return "Requested";
+            case RECEIVED: return "Received";
+            case ACCEPTED: return "Accepted";
+            case INPROGRESS: return "In Progress";
+            case COMPLETED: return "Completed";
+            case SUSPENDED: return "Suspended";
+            case REJECTED: return "Rejected";
+            case FAILED: return "Failed";
             default: return "?";
           }
         }
@@ -234,7 +234,7 @@ public class CommunicationRequest extends DomainResource {
         /**
          * An individual message part for multi-part messages.
          */
-        @Child(name="content", type={StringType.class, Attachment.class}, order=1, min=1, max=1)
+        @Child(name ="content", type={StringType.class, Attachment.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Message part content", formalDefinition="An individual message part for multi-part messages." )
         protected Type content;
 
@@ -336,21 +336,21 @@ public class CommunicationRequest extends DomainResource {
     /**
      * A unique ID of this request for reference purposes. It must be provided if user wants it returned as part of any output, otherwise it will be auto-generated, if needed, by CDS system. Does not need to be the actual ID of the source system.
      */
-    @Child(name="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Unique identifier", formalDefinition="A unique ID of this request for reference purposes. It must be provided if user wants it returned as part of any output, otherwise it will be auto-generated, if needed, by CDS system. Does not need to be the actual ID of the source system." )
     protected List<Identifier> identifier;
 
     /**
      * The type of message such as alert, notification, reminder, instruction, etc.
      */
-    @Child(name="category", type={CodeableConcept.class}, order=1, min=0, max=1)
+    @Child(name ="category", type={CodeableConcept.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Message category", formalDefinition="The type of message such as alert, notification, reminder, instruction, etc." )
     protected CodeableConcept category;
 
     /**
      * The entity (e.g., person, organization, clinical information system, or device) which is the source of the communication.
      */
-    @Child(name="sender", type={Patient.class, Practitioner.class, Device.class, RelatedPerson.class, Organization.class}, order=2, min=0, max=1)
+    @Child(name ="sender", type={Patient.class, Practitioner.class, Device.class, RelatedPerson.class, Organization.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Message sender", formalDefinition="The entity (e.g., person, organization, clinical information system, or device) which is the source of the communication." )
     protected Reference sender;
 
@@ -362,7 +362,7 @@ public class CommunicationRequest extends DomainResource {
     /**
      * The entity (e.g., person, organization, clinical information system, or device) which is the intended target of the communication.
      */
-    @Child(name="recipient", type={Patient.class, Device.class, RelatedPerson.class, Practitioner.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="recipient", type={Patient.class, Device.class, RelatedPerson.class, Practitioner.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Message recipient", formalDefinition="The entity (e.g., person, organization, clinical information system, or device) which is the intended target of the communication." )
     protected List<Reference> recipient;
     /**
@@ -374,21 +374,21 @@ public class CommunicationRequest extends DomainResource {
     /**
      * Text, attachment(s), or resource(s) to be communicated to the recipient.
      */
-    @Child(name="payload", type={}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="payload", type={}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Message payload", formalDefinition="Text, attachment(s), or resource(s) to be communicated to the recipient." )
     protected List<CommunicationRequestPayloadComponent> payload;
 
     /**
      * The communication medium, e.g., email, fax.
      */
-    @Child(name="medium", type={CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="medium", type={CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Communication medium", formalDefinition="The communication medium, e.g., email, fax." )
     protected List<CodeableConcept> medium;
 
     /**
      * The responsible person who authorizes this order, e.g., physician. This may be different than the author of the order statement, e.g., clerk, who may have entered the statement into the order entry application.
      */
-    @Child(name="requester", type={Practitioner.class, Patient.class, RelatedPerson.class}, order=6, min=0, max=1)
+    @Child(name ="requester", type={Practitioner.class, Patient.class, RelatedPerson.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Requester of communication", formalDefinition="The responsible person who authorizes this order, e.g., physician. This may be different than the author of the order statement, e.g., clerk, who may have entered the statement into the order entry application." )
     protected Reference requester;
 
@@ -400,14 +400,14 @@ public class CommunicationRequest extends DomainResource {
     /**
      * The status of the proposal or order.
      */
-    @Child(name="status", type={CodeType.class}, order=7, min=0, max=1)
+    @Child(name ="status", type={CodeType.class}, order=7, min=0, max=1)
     @Description(shortDefinition="proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | failed", formalDefinition="The status of the proposal or order." )
     protected Enumeration<CommunicationRequestStatus> status;
 
     /**
      * The encounter within which the communication request was created.
      */
-    @Child(name="encounter", type={Encounter.class}, order=8, min=0, max=1)
+    @Child(name ="encounter", type={Encounter.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Encounter leading to message", formalDefinition="The encounter within which the communication request was created." )
     protected Reference encounter;
 
@@ -419,28 +419,28 @@ public class CommunicationRequest extends DomainResource {
     /**
      * The time when this communication is to occur.
      */
-    @Child(name="scheduledTime", type={DateTimeType.class}, order=9, min=0, max=1)
+    @Child(name ="scheduledTime", type={DateTimeType.class}, order=9, min=0, max=1)
     @Description(shortDefinition="When scheduled", formalDefinition="The time when this communication is to occur." )
     protected DateTimeType scheduledTime;
 
     /**
      * The reason or justification for the communication request.
      */
-    @Child(name="reason", type={CodeableConcept.class}, order=10, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="reason", type={CodeableConcept.class}, order=10, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Indication for message", formalDefinition="The reason or justification for the communication request." )
     protected List<CodeableConcept> reason;
 
     /**
      * The time when the request was made.
      */
-    @Child(name="orderedOn", type={DateTimeType.class}, order=11, min=0, max=1)
+    @Child(name ="orderedOn", type={DateTimeType.class}, order=11, min=0, max=1)
     @Description(shortDefinition="When ordered or proposed", formalDefinition="The time when the request was made." )
     protected DateTimeType orderedOn;
 
     /**
      * The patient who is the focus of this communication request.
      */
-    @Child(name="subject", type={Patient.class}, order=12, min=0, max=1)
+    @Child(name ="subject", type={Patient.class}, order=12, min=0, max=1)
     @Description(shortDefinition="Focus of message", formalDefinition="The patient who is the focus of this communication request." )
     protected Reference subject;
 
@@ -452,7 +452,7 @@ public class CommunicationRequest extends DomainResource {
     /**
      * Characterizes how quickly the proposed act must be initiated. Includes concepts such as stat, urgent, routine.
      */
-    @Child(name="priority", type={CodeableConcept.class}, order=13, min=0, max=1)
+    @Child(name ="priority", type={CodeableConcept.class}, order=13, min=0, max=1)
     @Description(shortDefinition="Message urgency", formalDefinition="Characterizes how quickly the proposed act must be initiated. Includes concepts such as stat, urgent, routine." )
     protected CodeableConcept priority;
 
@@ -490,6 +490,16 @@ public class CommunicationRequest extends DomainResource {
         this.identifier = new ArrayList<Identifier>();
       this.identifier.add(t);
       return t;
+    }
+
+    // syntactic sugar
+    public CommunicationRequest addIdentifier(Identifier t) { //3
+      if (t == null)
+        return this;
+      if (this.identifier == null)
+        this.identifier = new ArrayList<Identifier>();
+      this.identifier.add(t);
+      return this;
     }
 
     /**
@@ -585,6 +595,16 @@ public class CommunicationRequest extends DomainResource {
       return t;
     }
 
+    // syntactic sugar
+    public CommunicationRequest addRecipient(Reference t) { //3
+      if (t == null)
+        return this;
+      if (this.recipient == null)
+        this.recipient = new ArrayList<Reference>();
+      this.recipient.add(t);
+      return this;
+    }
+
     /**
      * @return {@link #recipient} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The entity (e.g., person, organization, clinical information system, or device) which is the intended target of the communication.)
      */
@@ -624,6 +644,16 @@ public class CommunicationRequest extends DomainResource {
       return t;
     }
 
+    // syntactic sugar
+    public CommunicationRequest addPayload(CommunicationRequestPayloadComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.payload == null)
+        this.payload = new ArrayList<CommunicationRequestPayloadComponent>();
+      this.payload.add(t);
+      return this;
+    }
+
     /**
      * @return {@link #medium} (The communication medium, e.g., email, fax.)
      */
@@ -652,6 +682,16 @@ public class CommunicationRequest extends DomainResource {
         this.medium = new ArrayList<CodeableConcept>();
       this.medium.add(t);
       return t;
+    }
+
+    // syntactic sugar
+    public CommunicationRequest addMedium(CodeableConcept t) { //3
+      if (t == null)
+        return this;
+      if (this.medium == null)
+        this.medium = new ArrayList<CodeableConcept>();
+      this.medium.add(t);
+      return this;
     }
 
     /**
@@ -863,6 +903,16 @@ public class CommunicationRequest extends DomainResource {
         this.reason = new ArrayList<CodeableConcept>();
       this.reason.add(t);
       return t;
+    }
+
+    // syntactic sugar
+    public CommunicationRequest addReason(CodeableConcept t) { //3
+      if (t == null)
+        return this;
+      if (this.reason == null)
+        this.reason = new ArrayList<CodeableConcept>();
+      this.reason.add(t);
+      return this;
     }
 
     /**

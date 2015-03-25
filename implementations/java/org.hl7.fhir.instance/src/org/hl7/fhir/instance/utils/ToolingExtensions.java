@@ -78,7 +78,7 @@ public class ToolingExtensions {
   private static final String EXTENSION_FILTER_ONLY = "http://www.healthintersections.com.au/fhir/Profile/metadata#expandNeedsFilter";
   private static final String EXT_TYPE = "http://www.healthintersections.com.au/fhir/Profile/metadata#type";
   private static final String EXT_REFERENCE = "http://www.healthintersections.com.au/fhir/Profile/metadata#reference";
-  private static final String EXT_ALLOWABLE_UNITS = "http://hl7.org/fhir/StructureDefinition/elementdefinition-question";
+  private static final String EXT_ALLOWABLE_UNITS = "http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits";
 
   
   // specific extension helpers
@@ -350,5 +350,21 @@ public class ToolingExtensions {
       }
     eld.getExtension().add(new Extension().setUrl(EXT_ALLOWABLE_UNITS).setValue(cc));
  
+  }
+
+	public static List<Extension> getExtensions(Element element, String url) {
+	  List<Extension> results = new ArrayList<Extension>();
+	  for (Extension ex : element.getExtension())
+	  	if (ex.getUrl().equals(url))
+	  		results.add(ex);
+	  return results;
+  }
+
+	public static List<Extension> getExtensions(DomainResource resource, String url) {
+	  List<Extension> results = new ArrayList<Extension>();
+	  for (Extension ex : resource.getExtension())
+	  	if (ex.getUrl().equals(url))
+	  		results.add(ex);
+	  return results;
   }
 }

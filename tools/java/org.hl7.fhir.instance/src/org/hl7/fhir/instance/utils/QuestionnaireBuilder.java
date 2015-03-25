@@ -14,6 +14,7 @@ import org.hl7.fhir.instance.model.DecimalType;
 import org.hl7.fhir.instance.model.Element;
 import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.ElementDefinition;
+import org.hl7.fhir.instance.model.ElementDefinition.BindingStrength;
 import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionBindingComponent;
 import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.instance.model.Enumeration;
@@ -396,6 +397,7 @@ public class QuestionnaireBuilder {
     vs.setDescription(vs.getName());
 	  vs.setStatus(ConformanceResourceStatus.ACTIVE);
     vs.setExpansion(new ValueSetExpansionComponent());
+    vs.getExpansion().setIdentifier(Factory.createUUID());
     vs.getExpansion().setTimestampElement(DateTimeType.now());
     for (TypeRefComponent t : types) {
       ValueSetExpansionContainsComponent cc = vs.getExpansion().addContains();
@@ -804,7 +806,7 @@ public class QuestionnaireBuilder {
   private AnswerFormat answerTypeForBinding(ElementDefinitionBindingComponent binding) {
     if (binding == null) 
       return AnswerFormat.OPENCHOICE;
-    else if (binding.getIsExtensible()) 
+    else if (binding.getStrength() != BindingStrength.REQUIRED) 
       return AnswerFormat.OPENCHOICE;
     else
       return AnswerFormat.CHOICE;

@@ -14,6 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
 import org.hl7.fhir.instance.model.ElementDefinition;
 import org.hl7.fhir.instance.model.StructureDefinition;
 
@@ -33,12 +34,12 @@ public class ReviewSpreadsheetGenerator {
   }
 
   private void generateReviewSheet(HSSFWorkbook workbook, StructureDefinition profile) {
-    HSSFSheet sheet = workbook.createSheet(profile.getName());
+    HSSFSheet sheet = workbook.createSheet(sanitize(profile.getName()));
     sheet.setColumnWidth(0, 8000);
     sheet.setColumnWidth(3, 100);
     
     HSSFFont font = workbook.createFont();
-    font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+    font.setBoldweight(Font.BOLDWEIGHT_BOLD);
     font.setFontName("Calibri");
     HSSFCellStyle style = workbook.createCellStyle();
     style.setFont(font);
@@ -57,6 +58,16 @@ public class ReviewSpreadsheetGenerator {
     String path = ed.getPath();
     addRow(sheet, style, path+" : "+profile.getType(), profile.getName(), "", ed.getDefinition(), "");
     processRows(workbook, path, profile.getSnapshot().getElement(), 1, sheet, "  ");
+  }
+
+  private String sanitize(String name) {
+    StringBuilder b = new StringBuilder();
+    for (char c : name.toCharArray())
+      if (Character.isAlphabetic(c) || Character.isDigit(c))
+        b.append(c);
+      else
+        b.append(' ');
+    return b.toString();
   }
 
   private int processRows(HSSFWorkbook workbook, String path, List<ElementDefinition> list, int i, HSSFSheet sheet, String indent) {
@@ -145,7 +156,7 @@ public class ReviewSpreadsheetGenerator {
   private void generateReviewHeader(HSSFWorkbook workbook) {
     HSSFSheet sheet = workbook.createSheet("Review Details");
     HSSFFont font = workbook.createFont();
-    font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+    font.setBoldweight(Font.BOLDWEIGHT_BOLD);
     HSSFCellStyle style = workbook.createCellStyle();
     style.setFont(font);
     

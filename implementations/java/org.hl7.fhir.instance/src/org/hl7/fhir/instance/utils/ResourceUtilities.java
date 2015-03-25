@@ -39,6 +39,8 @@ import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
  */
 public class ResourceUtilities {
 
+  public final static String FHIR_LANGUAGE = "urn:ietf:params:language";
+
 	public static boolean isAnError(OperationOutcome error) {
 		for (OperationOutcomeIssueComponent t : error.getIssue())
 			if (t.getSeverity() == IssueSeverity.ERROR)
@@ -140,7 +142,7 @@ public class ResourceUtilities {
       b.append("<td>"+v+"</td>");
     }
     if (profileLink)
-      b.append("<td><a href=\""+linkBase+"-"+de.getId()+".html\">Profile</a>, <a href=\"http://www.clinicalelement.com/#/20130723/Intermountain/"+de.getId()+"\">CEM</a></td>");
+      b.append("<td><a href=\""+linkBase+"-"+de.getId()+".html\">Profile</a>, <a href=\"http://www.opencem.org/#/20140917/Intermountain/"+de.getId()+"\">CEM</a></td>");
     b.append("</tr>\r\n");
   }
 

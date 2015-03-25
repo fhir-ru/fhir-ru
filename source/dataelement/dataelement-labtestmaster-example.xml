@@ -10,7 +10,7 @@
 		</text -->
   <identifier>
     <label value="Prothrombin Time, PT"/>
-    <system value="htpp://www.CenturyHospital/Laboratory/DirectoryofServices"/>
+    <system value="http://www.CenturyHospital/Laboratory/DirectoryofServices"/>
     <value value="11"/>
     <period>
       <start value="2011-05-19"/>
@@ -31,15 +31,11 @@
     <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits">
       <valueCodeableConcept>
         <coding>
-          <system value="http:/unitsofmeasure.org"/>
+          <system value="http://unitsofmeasure.org"/>
           <version value="1.9"/>
           <code value="s"/>
           <display value="second"/>
           <primary value="true"/>
-          <valueSet>
-            <reference value="http:/unitsofmeasure.org/vs"/>
-            <display value="UCUM"/>
-          </valueSet>
         </coding>
         <text value="second"/>
       </valueCodeableConcept>
@@ -50,7 +46,7 @@
 "/>
     <requirements value="This test is orderable.
 A plasma specimen in a 3.2% sodium citrate blue top tube is required."/>
-    <synonym value="Protime, PT"/>
+    <alias value="Protime, PT"/>
     <type>
       <code value="Decimal"/>
     </type>

@@ -1,7 +1,5 @@
 <!DOCTYPE HTML>
 
-
-
 [%settitle Data Type Examples%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -17,10 +15,35 @@
 
 <p>This page includes additional examples of the data types, based on common usages and questions</p>
 
-[%diagram datatypes/alltypes.diagram%]
+<p><b>Table of Contents</b></p>
+<table class="grid">
+ <tr>
+  <td><b>Primitive Types</b><br/>[%diagram datatypes/allprimitivetypes.diagram%]</td>
+  <td><b>Complex Types</b><br/>[%diagram datatypes/alltypes.diagram%]</td>
+ </tr>
+</table>
+
 
 <a name="primitive"></a>
 <h3>Primitive Types</h3>
+<a name="boolean"> </a>
+<a name="integer"> </a>
+<a name="string"> </a>
+<a name="decimal"> </a>
+<a name="uri"> </a>
+<a name="base64Binary"> </a>
+<a name="base64binary"> </a>
+<a name="instant"> </a>
+<a name="date"> </a>
+<a name="dateTime"> </a>
+<a name="datetime"> </a>
+<a name="time"> </a>
+<a name="patterns"></a>
+<a name="code"> </a>
+<a name="oid"> </a>
+<a name="uuid"> </a>
+<a name="id"> </a>
+
 
 <div class="example">
 	<p>A boolean true value:</p><pre class="xml" fragment="boolean">&lt;active value="true" /&gt;</pre>
@@ -257,9 +280,6 @@ In this case, there is no display element, because no display is defined for SNO
   &lt;valueCoding&gt;
     &lt;system value="http://example.org/codes/simple-grades" /&gt;
     &lt;code value="+" /&gt;
-    &lt;valueSet&gt;
-      &lt;reference url="ValueSet/simple-grades" /&gt;
-    &lt;/valueSet&gt;
   &lt;/valueCoding&gt;
 </pre>
 <p>
@@ -285,7 +305,7 @@ And where the value set would be something like this:
     &lt;experimental value=&quot;true&quot;/&gt;
     &lt;date value=&quot;2013-10-01&quot;/&gt;
     &lt;define&gt;
-      &lt;system value=&quot;http://hl7.org/fhir/clinistix&quot;/&gt;
+      &lt;system value=&quot;http://example.org/codes/simple-grades&quot;/&gt;
       &lt;caseSensitive value=&quot;false&quot;/&gt;
       &lt;concept&gt;
         &lt;code value=&quot;neg&quot;/&gt;
@@ -912,6 +932,14 @@ Address
 See also <a href="datatypes.html#Address">Base Definition</a>, <a href="datatypes-definitions.html#Address">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Address">Mappings</a>.
 </p>
 
+<p>
+Note about these examples: the most important element in an address is the 'text' element - this defines
+what is printed on the envelope, the actual postal address. The other data elements are provided to 
+support either data analysis based on a patient's address, or for the many systems that exchange 
+fully structured addresses specific to a particular culture. For this reason, these examples focus 
+on the structured data elements of the address.
+</p>
+
 <div class="example">
 <p><b>Example</b></p>
 <p>HL7 office's address.</p>
@@ -930,7 +958,7 @@ See also <a href="datatypes.html#Address">Base Definition</a>, <a href="datatype
 <p>A UK example address.</p>
 <pre class="xml" fragment="Address">
   &lt;address&gt;
-    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-county&quot; &gt; &lt;!-- todo: review this --&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-county&quot;&gt;
       &lt;valueString value=&quot;HUDDERSFIELD&quot;/&gt;
     &lt;/extension&gt;
     &lt;text value=&quot;1 Back Lane&amp;#13;&amp;#10;Holmfirth&amp;#13;&amp;#10;HUDDERSFIELD&amp;#13;&amp;#10;HD7 1HQ&quot;/&gt;
@@ -943,7 +971,7 @@ See also <a href="datatypes.html#Address">Base Definition</a>, <a href="datatype
 <p>A Postal address - i.e. an address that it doesn't make sense to try and visit.</p>
 <pre class="xml" fragment="Address">
   &lt;address&gt;
-    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-AD-use&quot;&gt; &lt;!-- todo: review this --&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-AD-use&quot;&gt; 
       &lt;valueCode value=&quot;PST&quot;/&gt;
     &lt;/extension&gt;
     &lt;line value=&quot;PO Box 31445&quot;/&gt;
@@ -951,12 +979,115 @@ See also <a href="datatypes.html#Address">Base Definition</a>, <a href="datatype
     &lt;postalCode value=&quot;0001&quot;/&gt;
   &lt;/address&gt;
 </pre>
+
+<p>
+The next set of examples are taken from the official <a href="http://www.upu.int">international 
+postal union</a> examples.
+</p>
+
+<table class="lines">
+<tr><td>Rue Lougoraïa 12, app. 10</td><td>thoroughfare type, name and number, apartment</td></tr>
+<tr><td>Korolevo</td><td>locality</td></tr>
+<tr><td>223016 NOVY DVOR</td><td>postcode + post office name</td></tr>
+<tr><td>Minsk</td><td>District name of district</td></tr>
+<tr><td>Minsk</td><td>Region name of region</td></tr>
+<tr><td>BELARUS</td><td>Country</td></tr>
+</table>
+<pre class="xml" fragment="Address">
+  &lt;address&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-county&quot;&gt;
+      &lt;valueCode value=&quot;Minsk&quot;/&gt;
+    &lt;/extension&gt;
+    &lt;line value=&quot;Rue Lougoraïa 12, app. 10&quot;/&gt;
+    &lt;city value=&quot;Korolevo&quot;/&gt;
+    &lt;state value="Minsk" /&gt;
+    &lt;country value="BELARUS" /&gt;
+  &lt;/address&gt;
+</pre>
+
+
+<table class="lines">
+<tr><td>Protea Apt 12</td><td>apartment number</td></tr>
+<tr><td>22 Ally Hassan Mwinyi</td><td>premise + street</td></tr>
+<tr><td>14111 MSASANI</td><td>postcode + locality</td></tr>
+<tr><td>DAR ES SALAM</td><td>province</td></tr>
+<tr><td>TANZANIA</td><td>country</td></tr>
+</table>
+<pre class="xml" fragment="Address">
+  &lt;address&gt;
+    &lt;line value=&quot;Protea Apt 12&quot;/&gt;
+    &lt;line value=&quot;22 Ally Hassan Mwinyi&quot;/&gt;
+    &lt;city value=&quot;MSASANI&quot;/&gt;
+    &lt;state value="DAR ES SALAM" /&gt;
+    &lt;postalCode value=&quot;14111&quot;/&gt;
+    &lt;country value="TANZANIA" /&gt;
+  &lt;/address&gt;
+</pre>
+
+<table class="lines">
+<tr><td>15 Shiri</td><td>premise + sub-locality 2</td></tr>
+<tr><td>Kimashuku Village</td><td>sub-locality</td></tr>
+<tr><td>25204 MACHAME KUSINI</td><td>postcode + locality</td></tr>
+<tr><td>HAI</td><td>sub-province</td></tr>
+<tr><td>KILIMANJARO</td><td>province</td></tr>
+<tr><td>TANZANIA</td><td>country</td></tr>
+</table>
+<pre class="xml" fragment="Address">
+  &lt;address&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-county&quot;&gt;
+      &lt;valueCode value=&quot;HAI&quot;/&gt;
+    &lt;/extension&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-precinct&quot;&gt;
+      &lt;valueCode value=&quot;Kimashuku Village&quot;/&gt;
+    &lt;/extension&gt;
+    &lt;line value=&quot;15 Shiri&quot;/&gt;
+    &lt;city value=&quot;MACHAME KUSINI&quot;/&gt;
+    &lt;state value="KILIMANJARO" /&gt;
+    &lt;postalCode value=&quot;25204&quot;/&gt;
+    &lt;country value="TANZANIA" /&gt;
+  &lt;/address&gt;
+</pre>
+
+<table class="lines">
+<tr><td>101-dong 103-ho</td><td>building number + door</td></tr>
+<tr><td>1229-1 Suseong 4-ga</td><td>complex of buildings + locality</td></tr>
+<tr><td>Suseong-gu</td><td>sub-province</td></tr>
+<tr><td>DAEGU, SEOUL 706-836</td><td>province + “SEOUL” + postcode</td></tr>
+<tr><td>REP. OF KOREA</td><td>country</td></tr>
+</table>
+<pre class="xml" fragment="Address">
+  &lt;address&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-county&quot;&gt;
+      &lt;valueCode value=&quot;Suseong-gu&quot;/&gt;
+    &lt;/extension&gt;
+    &lt;line value=&quot;101-dong 103-ho&quot;/&gt;
+    &lt;line value=&quot;1229-1 Suseong 4-ga&quot;/&gt;
+    &lt;city value=&quot;Suseong&quot;/&gt;
+    &lt;state value="DAEGU" /&gt;
+    &lt;postalCode value=&quot;706-836&quot;/&gt;
+    &lt;country value="REP. OF KOREA" /&gt;
+  &lt;/address&gt;
+</pre>
+
+<table class="lines">
+<tr><td>35-8 Doekhyeon-ri, Gujeong-myeon</td><td>premises + locality + sub-province 2</td></tr>
+<tr><td>Gangneung-si</td><td>sub-province</td></tr>
+<tr><td>GANGWON-do, SEOUL 210-813</td><td>province + “SEOUL” + postcode</td></tr>
+<tr><td>REP. OF KOREA</td><td>country</td></tr>
+</table>
+<pre class="xml" fragment="Address">
+  &lt;address&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-county&quot;&gt;
+      &lt;valueCode value=&quot;Gangneung-si&quot;/&gt;
+    &lt;/extension&gt;
+    &lt;line value=&quot;35-8 Doekhyeon-ri&quot;/&gt;
+    &lt;city value=&quot;Gujeong-myeon&quot;/&gt;
+    &lt;state value="GANGWON-do" /&gt;
+    &lt;postalCode value=&quot;210-813&quot;/&gt;
+    &lt;country value="REP. OF KOREA" /&gt;
+  &lt;/address&gt;
+</pre>
 </div>
-
-
-
-
-
 
 <a name="ContactPoint"></a>
 <a name="contactpoint"></a>
@@ -973,12 +1104,32 @@ See also <a href="datatypes.html#ContactPoint">Base Definition</a>, <a href="dat
 <pre class="xml" fragment="ContactPoint">
   &lt;telecom&gt;
    &lt;system value="phone" /&gt;
-   &lt;value value="+15556755745" /&gt;
+   &lt;value value="(555) 675 5745" /&gt;
    &lt;use value="home" /&gt;
   &lt;/telecom&gt;
 </pre>
 </div>
 
+<p>
+In ISO 21090, CDA and other Version 3 specifications, the TEL data type requires that the telephone number be represented as a formal URI in <a href="http://www.ietf.org/rfc/rfc3966.txt">RFC 3166</a> syntax. 
+Many CDA documents violate this rule, since the telephone numbers are not collected from the user in conformance with the underlying rules (particularly around extensions, nots about use, etc), so
+the base FHIR type does not require the phone number to be conformant. A ISO 21090 extension can be used to convey this if desired:
+</p>
+
+<div class="example">
+<p><b>Example</b></p>
+<p>Formally correct URI:</p>
+<pre class="xml" fragment="ContactPoint">
+  &lt;telecom&gt;
+    &lt;extension uri="http://hl7.org/fhir/StructureDefinition/iso21090-TEL-address" &gt;
+      &lt;valueUri value="tel:+15556755745" /&gt;
+    &lt;/extension&gt;
+    &lt;system value="phone" /&gt;
+    &lt;value value="(555) 675 5745" /&gt;
+    &lt;use value="home" /&gt;
+  &lt;/telecom&gt;
+</pre>
+</div>
 
 <a name="Timing"></a>
 <a name="timing"></a>
@@ -994,18 +1145,9 @@ See also <a href="datatypes.html#Timing">Base Definition</a>, <a href="datatypes
 <p>A series of appointments for radiotherapy:</p>
 <pre class="xml" fragment="Timing">
   &lt;schedule&gt;
-    &lt;event&gt;
-      &lt;start value="2012-01-07T09:00:00+10:00" /&gt;
-      &lt;end value="2012-01-07T13:00:00+10:00" /&gt;
-    &lt;/event&gt;
-    &lt;event&gt;
-      &lt;start value="2012-01-14T09:00:00+10:00" /&gt;
-      &lt;end value="2012-01-14T13:00:00+10:00" /&gt;
-    &lt;/event&gt;
-    &lt;event&gt;
-      &lt;start value="2012-01-22T11:00:00+10:00" /&gt;
-      &lt;end value="2012-01-22T15:00:00+10:00" /&gt;
-    &lt;/event&gt;
+    &lt;event value="2012-01-07T09:00:00+10:00" /&gt;
+    &lt;event value="2012-01-14T09:00:00+10:00" /&gt;
+    &lt;event value="2012-01-22T11:00:00+10:00" /&gt;
   &lt;/schedule&gt;
 </pre>
 <p>BID (twice a day) (no start or end specified):</p>
@@ -1013,27 +1155,27 @@ See also <a href="datatypes.html#Timing">Base Definition</a>, <a href="datatypes
   &lt;schedule&gt;
    &lt;repeat&gt;
      &lt;frequency value="2" /&gt;
-     &lt;duration value="1" /&gt;
-     &lt;units value="d" /&gt;
+     &lt;period value="1" /&gt;
+     &lt;periodUnits value="d" /&gt;
    &lt;/repeat&gt;
   &lt;/schedule&gt;
 </pre>
 <p>1/2 an hour before breakfast for 10 days from 23-Dec 2011:</p>
 <pre class="xml" fragment="Timing">
   &lt;schedule&gt;
-    &lt;event&gt;
-      &lt;start value="2011-12-23" /&gt;
-    &lt;/event&gt;
     &lt;repeat&gt;
+      &lt;bounds&gt;
+        &lt;start value="2011-12-23" /&gt;
+        &lt;end value="2012-01-02" /&gt;
+      &lt;/bounds&gt;
       &lt;when value="ACM" /&gt;
-      &lt;duration value="30" /&gt;
-      &lt;units value="min" /&gt;
-      &lt;end value="2012-01-02" /&gt;
+      &lt;period value="30" /&gt;
+      &lt;periodUnits value="min" /&gt;
     &lt;/repeat&gt;
   &lt;/schedule&gt;
 </pre>
 <p>
-Note that the end date is inclusive like the high date of a Period.
+Note that the end date is inclusive like the end date of a Period.
 </p>
 </div>
 

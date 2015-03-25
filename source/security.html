@@ -36,8 +36,7 @@ in one section. A summary:
 <p>
 Time critical concerns regarding security flaws in the FHIR specification should be addressed to 
 the <a href="http://wiki.hl7.org/index.php?title=FHIR_email_list_subscription_instructions">FHIR email 
-list</a> for prompt consideration. Alternatively, issues can be raised through the 
-<a href="http://wiki.hl7.org/index.php?title=FHIR_Security_Page">community input</a> mechanism.
+list</a> for prompt consideration. 
 </p>
 
 <p>
@@ -126,7 +125,18 @@ SSL SHOULD be used for all production data exchange.
 <p>
 To support browser-based client applications, recommend that servers SHOULD implement <a href="http://enable-cors.org/">cross-origin resource sharing</a> for the <a href="http.html">REST operations</a>.  
 </p>
-
+<p>
+The choice of whether to return 403 or 404 depends upon the specific situation and specific 
+local policies, regulations, and laws. The decision of which error to use will include consideration 
+of whether disclosure of the existence of relevant records is considered an acceptable 
+disclosure of PI or  a prohibited disclosure of PI.
+</p>
+<p>
+Chained search implementations need to observe the restrictions on a user in the chained 
+search, and that it would be normal to simply omit resources from the search if the user is not 
+authorized, but a server may elect to add an operationOutcome to indicate that additional 
+resources may be available if other access tokens are used (e.g. break the glass). 
+</p>
 <a name="authentication"> </a>
 <h2>Authentication</h2>
 <p>
@@ -152,7 +162,7 @@ the relevant resources and the underlying systems. Note that this isn't necessar
 on any security being in place, or any particular implementation. But real world usage will generally require this. 
 </p>
 <p>
-A holder of data should not allow the data to be communicated unless there is assurances that the 
+A holder of data should not allow the data to be communicated unless there are sufficient assurances that the 
 other party is authorized to receive it. This is true for a Client creating a resource through a PUT/POST, 
 as much as it is true for a Server returning resources on a GET. The presumption is that without 
 proper authorization, to the satisfaction of the data holder, the data does not get communicated.
@@ -193,29 +203,21 @@ client applications are able to search the audit events, or subscribe to them.
 Digital Signatures
 </h2>
 <p>
-This specification recommends the use of <a href="http://www.w3.org/TR/xmldsig-core/">W3C Digital Signatures</a> for signatures.
-</p>
-<p>
+This specification recommends the use of <a href="http://www.w3.org/TR/xmldsig-core/">W3C Digital Signatures</a> for signatures. 
 Resources can be signed using the <a href="provenance.html">Provenance</a> resource to carry a 
-<a href="http://www.w3.org/TR/xmldsig-core/#def-SignatureDetached">detached digital signature</a> 
-for the purpose of detecting subsequent changes to the resource. This signature is not
-suitable for non-repudiation purposes. 
+<a href="http://www.w3.org/TR/xmldsig-core/#def-SignatureDetached">detached digital signature</a>. 
+The <a href="datatypes.html#signature">Signature datatype</a> is available to carry various Signature types including non-repudiation purposes. 
+Further details on creation and valiation of <a href="datatypes.html#signature">Signature is defined.</a>
 </p>
 <p>
 In addition, <a href="documents.html#signatures">documents may be signed</a> using an 
 <a href="http://www.w3.org/TR/xmldsig-core/#def-SignatureEnveloped">enveloped</a> 
-signature. 
+signature. A specification for Enveloped signature is profiled in 
+the <a href="http://wiki.ihe.net/index.php?title=Document_Digital_Signature">IHE DSG profile</a>.
 </p>
 <p>
 Neither of these definitions prohibits the use of other ways of using digital signatures.
 </p>
-
-<a name="dstu"> </a>
-<blockquote>
-<p>
-DSTU Note: Additional work is anticipated in this area, including alignment with the <a href="http://wiki.ihe.net/index.php?title=Document_Digital_Signature">IHE DSG profile</a>.
-</p>
-</blockquote>
 
 <a name="attachments"> </a>
 <h2>Attachments</h2>
@@ -247,6 +249,7 @@ However, care is still needed when displaying the narrative:
  <li>Validate the narrative (the standard FHIR schemas do not allow active content, and the reference implementations won't handle it). Note, though, that external references could still be included in CSS, and these are outside the scope of schemas and reference implementations.</li>
  <li>Ensure that any external references to images or anchors (e.g. outside the resource) do not cause the display software to <a href="http://smartplatforms.org/2014/04/security-vulnerabilities-in-ccda-display/">leak sensitive information in headers</a></li>
  <li>Do not allow external links to run in a privileged context such as the EHR unless you are sure they can be trusted</li>
+ <li>Care should be taken to differentiate HTTP RESTful (API) from browser based server content. Specifically one should separate user session cookies, as an attacker could create content that serves up with content-type "text/html" and has content like "&lt;script&gt;send_to_attacker(document.cookie);&lt;/script&gt;".</li>
 </ul>
 <p>
 Also note that the inclusion of an external reference to an image can allow the server that hosts the image to track 

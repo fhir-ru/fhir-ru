@@ -81,11 +81,10 @@ https://www.psoppc.org/c/document_library/get_file?uuid=6034c5aa-ad07-4dbe-ab19-
     </type>
     <binding>
       <name value="Gender"/>
-      <isExtensible value="false"/>
-      <conformance value="required"/>
-      <referenceReference>
+      <strength value="required"/>
+      <valueSetReference>
         <reference value="#de42"/>
-      </referenceReference>
+      </valueSetReference>
     </binding>
     <mapping>
       <extension url="http://hl7.org/fhir/StructureDefinition/11179-objectClass">
@@ -95,7 +94,7 @@ https://www.psoppc.org/c/document_library/get_file?uuid=6034c5aa-ad07-4dbe-ab19-
           <display value="Patient"/>
         </valueCoding>
       </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/11179-property">
+      <extension url="http://hl7.org/fhir/StructureDefinition/11179-objectClassProperty">
         <valueCoding>
           <system value="http://snomed.info/sct"/>
           <code value="263495000"/>

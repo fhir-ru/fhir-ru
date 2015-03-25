@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
+// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -136,28 +136,28 @@ public class QuestionnaireAnswers extends DomainResource {
         /**
          * Identifies the group from the Questionnaire that corresponds to this group in the QuestionnaireAnswers resource.
          */
-        @Child(name="linkId", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name ="linkId", type={StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Corresponding group within Questionnaire", formalDefinition="Identifies the group from the Questionnaire that corresponds to this group in the QuestionnaireAnswers resource." )
         protected StringType linkId;
 
         /**
          * Text that is displayed above the contents of the group.
          */
-        @Child(name="title", type={StringType.class}, order=2, min=0, max=1)
+        @Child(name ="title", type={StringType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Name for this group", formalDefinition="Text that is displayed above the contents of the group." )
         protected StringType title;
 
         /**
          * Additional text for the group, used for display purposes.
          */
-        @Child(name="text", type={StringType.class}, order=3, min=0, max=1)
+        @Child(name ="text", type={StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Additional text for the group", formalDefinition="Additional text for the group, used for display purposes." )
         protected StringType text;
 
         /**
          * More specific subject this section's answers are about, details the subject given in QuestionnaireAnswers.
          */
-        @Child(name="subject", type={}, order=4, min=0, max=1)
+        @Child(name ="subject", type={}, order=4, min=0, max=1)
         @Description(shortDefinition="The subject this group's answers are about", formalDefinition="More specific subject this section's answers are about, details the subject given in QuestionnaireAnswers." )
         protected Reference subject;
 
@@ -169,14 +169,14 @@ public class QuestionnaireAnswers extends DomainResource {
         /**
          * A sub-group within a group. The ordering of groups within this group is relevant.
          */
-        @Child(name="group", type={GroupComponent.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="group", type={GroupComponent.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Nested questionnaire answers group", formalDefinition="A sub-group within a group. The ordering of groups within this group is relevant." )
         protected List<GroupComponent> group;
 
         /**
          * Set of questions within this group. The order of questions within the group is relevant.
          */
-        @Child(name="question", type={}, order=6, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="question", type={}, order=6, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Questions in this group", formalDefinition="Set of questions within this group. The order of questions within the group is relevant." )
         protected List<QuestionComponent> question;
 
@@ -402,6 +402,16 @@ public class QuestionnaireAnswers extends DomainResource {
           return t;
         }
 
+    // syntactic sugar
+        public GroupComponent addGroup(GroupComponent t) { //3
+          if (t == null)
+            return this;
+          if (this.group == null)
+            this.group = new ArrayList<GroupComponent>();
+          this.group.add(t);
+          return this;
+        }
+
         /**
          * @return {@link #question} (Set of questions within this group. The order of questions within the group is relevant.)
          */
@@ -430,6 +440,16 @@ public class QuestionnaireAnswers extends DomainResource {
             this.question = new ArrayList<QuestionComponent>();
           this.question.add(t);
           return t;
+        }
+
+    // syntactic sugar
+        public GroupComponent addQuestion(QuestionComponent t) { //3
+          if (t == null)
+            return this;
+          if (this.question == null)
+            this.question = new ArrayList<QuestionComponent>();
+          this.question.add(t);
+          return this;
         }
 
         protected void listChildren(List<Property> childrenList) {
@@ -498,28 +518,28 @@ public class QuestionnaireAnswers extends DomainResource {
         /**
          * Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireAnswers resource.
          */
-        @Child(name="linkId", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name ="linkId", type={StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Corresponding question within Questionnaire", formalDefinition="Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireAnswers resource." )
         protected StringType linkId;
 
         /**
          * The actual question as shown to the user to prompt them for an answer.
          */
-        @Child(name="text", type={StringType.class}, order=2, min=0, max=1)
+        @Child(name ="text", type={StringType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Text of the question as it is shown to the user", formalDefinition="The actual question as shown to the user to prompt them for an answer." )
         protected StringType text;
 
         /**
          * The respondent's answer(s) to the question.
          */
-        @Child(name="answer", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="answer", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="The response(s) to the question", formalDefinition="The respondent's answer(s) to the question." )
         protected List<QuestionAnswerComponent> answer;
 
         /**
          * Nested group, containing nested question for this question. The order of groups within the question is relevant.
          */
-        @Child(name="group", type={GroupComponent.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="group", type={GroupComponent.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Nested questionnaire group", formalDefinition="Nested group, containing nested question for this question. The order of groups within the question is relevant." )
         protected List<GroupComponent> group;
 
@@ -657,6 +677,16 @@ public class QuestionnaireAnswers extends DomainResource {
           return t;
         }
 
+    // syntactic sugar
+        public QuestionComponent addAnswer(QuestionAnswerComponent t) { //3
+          if (t == null)
+            return this;
+          if (this.answer == null)
+            this.answer = new ArrayList<QuestionAnswerComponent>();
+          this.answer.add(t);
+          return this;
+        }
+
         /**
          * @return {@link #group} (Nested group, containing nested question for this question. The order of groups within the question is relevant.)
          */
@@ -685,6 +715,16 @@ public class QuestionnaireAnswers extends DomainResource {
             this.group = new ArrayList<GroupComponent>();
           this.group.add(t);
           return t;
+        }
+
+    // syntactic sugar
+        public QuestionComponent addGroup(GroupComponent t) { //3
+          if (t == null)
+            return this;
+          if (this.group == null)
+            this.group = new ArrayList<GroupComponent>();
+          this.group.add(t);
+          return this;
         }
 
         protected void listChildren(List<Property> childrenList) {
@@ -746,7 +786,7 @@ public class QuestionnaireAnswers extends DomainResource {
         /**
          * The answer (or one of the answers) provided by the respondant to the question.
          */
-        @Child(name="value", type={BooleanType.class, DecimalType.class, IntegerType.class, DateType.class, DateTimeType.class, InstantType.class, TimeType.class, StringType.class, UriType.class, Attachment.class, Coding.class, Quantity.class}, order=1, min=0, max=1)
+        @Child(name ="value", type={BooleanType.class, DecimalType.class, IntegerType.class, DateType.class, DateTimeType.class, InstantType.class, TimeType.class, StringType.class, UriType.class, Attachment.class, Coding.class, Quantity.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Single-valued answer to the question", formalDefinition="The answer (or one of the answers) provided by the respondant to the question." )
         protected Type value;
 
@@ -933,14 +973,14 @@ public class QuestionnaireAnswers extends DomainResource {
     /**
      * A business identifier assigned to a particular completed (or partially completed) questionnaire.
      */
-    @Child(name="identifier", type={Identifier.class}, order=0, min=0, max=1)
+    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=1)
     @Description(shortDefinition="Unique id for this set of answers", formalDefinition="A business identifier assigned to a particular completed (or partially completed) questionnaire." )
     protected Identifier identifier;
 
     /**
      * Indicates the Questionnaire resource that defines the form for which answers are being provided.
      */
-    @Child(name="questionnaire", type={Questionnaire.class}, order=1, min=0, max=1)
+    @Child(name ="questionnaire", type={Questionnaire.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Form being answered", formalDefinition="Indicates the Questionnaire resource that defines the form for which answers are being provided." )
     protected Reference questionnaire;
 
@@ -952,14 +992,14 @@ public class QuestionnaireAnswers extends DomainResource {
     /**
      * The lifecycle status of the questionnaire answers as a whole.
      */
-    @Child(name="status", type={CodeType.class}, order=2, min=1, max=1)
+    @Child(name ="status", type={CodeType.class}, order=2, min=1, max=1)
     @Description(shortDefinition="in-progress | completed | amended", formalDefinition="The lifecycle status of the questionnaire answers as a whole." )
     protected Enumeration<QuestionnaireAnswersStatus> status;
 
     /**
      * The subject of the questionnaire answers.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information.
      */
-    @Child(name="subject", type={}, order=3, min=0, max=1)
+    @Child(name ="subject", type={}, order=3, min=0, max=1)
     @Description(shortDefinition="The subject of the questions", formalDefinition="The subject of the questionnaire answers.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information." )
     protected Reference subject;
 
@@ -971,7 +1011,7 @@ public class QuestionnaireAnswers extends DomainResource {
     /**
      * Person who received the answers to the questions in the QuestionnaireAnswers and recorded them in the system.
      */
-    @Child(name="author", type={Practitioner.class, Patient.class, RelatedPerson.class}, order=4, min=0, max=1)
+    @Child(name ="author", type={Practitioner.class, Patient.class, RelatedPerson.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Person who received and recorded the answers", formalDefinition="Person who received the answers to the questions in the QuestionnaireAnswers and recorded them in the system." )
     protected Reference author;
 
@@ -983,14 +1023,14 @@ public class QuestionnaireAnswers extends DomainResource {
     /**
      * The date and/or time that this version of the questionnaire answers was authored.
      */
-    @Child(name="authored", type={DateTimeType.class}, order=5, min=0, max=1)
+    @Child(name ="authored", type={DateTimeType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="Date this version was authored", formalDefinition="The date and/or time that this version of the questionnaire answers was authored." )
     protected DateTimeType authored;
 
     /**
      * The person who answered the questions about the subject.
      */
-    @Child(name="source", type={Patient.class, Practitioner.class, RelatedPerson.class}, order=6, min=0, max=1)
+    @Child(name ="source", type={Patient.class, Practitioner.class, RelatedPerson.class}, order=6, min=0, max=1)
     @Description(shortDefinition="The person who answered the questions", formalDefinition="The person who answered the questions about the subject." )
     protected Reference source;
 
@@ -1002,7 +1042,7 @@ public class QuestionnaireAnswers extends DomainResource {
     /**
      * Encounter during which this set of questionnaire answers were collected. When there were multiple encounters, this is the one considered most relevant to the context of the answers.
      */
-    @Child(name="encounter", type={Encounter.class}, order=7, min=0, max=1)
+    @Child(name ="encounter", type={Encounter.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Primary encounter during which the answers were collected", formalDefinition="Encounter during which this set of questionnaire answers were collected. When there were multiple encounters, this is the one considered most relevant to the context of the answers." )
     protected Reference encounter;
 
@@ -1014,7 +1054,7 @@ public class QuestionnaireAnswers extends DomainResource {
     /**
      * A group of questions to a possibly similarly grouped set of questions in the questionnaire answers.
      */
-    @Child(name="group", type={}, order=8, min=0, max=1)
+    @Child(name ="group", type={}, order=8, min=0, max=1)
     @Description(shortDefinition="Grouped questions", formalDefinition="A group of questions to a possibly similarly grouped set of questions in the questionnaire answers." )
     protected GroupComponent group;
 
@@ -1451,6 +1491,8 @@ public class QuestionnaireAnswers extends DomainResource {
   public static final String SP_PATIENT = "patient";
   @SearchParamDefinition(name="authored", path="QuestionnaireAnswers.authored", description="When the questionnaire was authored", type="date" )
   public static final String SP_AUTHORED = "authored";
+  @SearchParamDefinition(name="source", path="QuestionnaireAnswers.source", description="The person who answered the questions", type="reference" )
+  public static final String SP_SOURCE = "source";
   @SearchParamDefinition(name="status", path="QuestionnaireAnswers.status", description="The status of the questionnaire answers", type="token" )
   public static final String SP_STATUS = "status";
   @SearchParamDefinition(name="subject", path="QuestionnaireAnswers.subject", description="The subject of the questionnaire", type="reference" )

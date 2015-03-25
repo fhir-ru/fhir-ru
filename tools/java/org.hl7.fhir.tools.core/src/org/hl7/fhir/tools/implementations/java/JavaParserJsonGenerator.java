@@ -683,7 +683,7 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
     write("    composeElement(element);\r\n");
     write("    if (element.hasModifierExtension()) {\r\n");
     write("      openArray(\"modifierExtension\");\r\n");
-    write("      for (Extension e : element.getExtension())\r\n");
+    write("      for (Extension e : element.getModifierExtension())\r\n");
     write("        composeExtension(null, e);\r\n");
     write("      closeArray();\r\n");
     write("    }\r\n");
@@ -1134,6 +1134,7 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
     return i == -1 ? path : path.substring(0, i);
   }
 
+  @Override
   protected String getElementName(String name, boolean alone) {
     if (name.equals("[type]"))
       return "value";

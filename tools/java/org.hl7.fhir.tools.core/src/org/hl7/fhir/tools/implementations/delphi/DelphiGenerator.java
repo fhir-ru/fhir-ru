@@ -441,7 +441,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
-    def.append("    "+Utilities.normaliseEolns(root.getDefinition())+"\r\n");
+    def.append("    "+makeDocoSafe(root.getDefinition())+"\r\n");
     def.append("  }\r\n");
     def.append("  {!.Net HL7Connect.Fhir."+tn.substring(5)+"}\r\n");
     def.append("  "+tn+" = class ("+superClass+")\r\n");
@@ -572,7 +572,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
-    def.append("    "+Utilities.normaliseEolns(root.getDefinition())+"\r\n");
+    def.append("    "+makeDocoSafe(root.getDefinition())+"\r\n");
     def.append("  }\r\n");
     def.append("  {!.Net HL7Connect.Fhir."+tn.substring(5)+"}\r\n");
     def.append("  "+tn+" = {abstract} class ("+superClass+")\r\n");
@@ -762,7 +762,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
-    def.append("    "+Utilities.normaliseEolns(root.getDefinition())+"\r\n");
+    def.append("    "+makeDocoSafe(root.getDefinition())+"\r\n");
     def.append("  }\r\n");
     def.append("  {!.Net HL7Connect.Fhir."+tn.substring(5)+"}\r\n");
     def.append("  "+tn+" = class ("+superClass+")\r\n");
@@ -856,7 +856,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     getCode(category).classDefs.add(def.toString());
     getCode(category).classImpls.add(impl2.toString() + impl.toString());
     getCode(category).classFwds.add("  "+tn+" = class;\r\n");
-    generateParser(tn, category.Resource, !superClass.equals("TFHIRObject"), root.getRoot().typeCode());
+    generateParser(tn, ClassCategory.Resource, !superClass.equals("TFHIRObject"), root.getRoot().typeCode());
   }
 
   private boolean hasASummary(ResourceDefn root) {
@@ -892,6 +892,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       con2.append("//  CHECK_"+tn+" : Array["+tn+"] of "+tn+" = (");
       con6.append("  PATHS_"+tn+" : Array["+tn+"] of String = (");
       con7.append("  TARGETS_"+tn+" : Array["+tn+"] of TFhirResourceTypeSet = (");
+      int l4 = 0;
+      int l2 = 0;
 
       List<String> names = new ArrayList<String>();
       Map<String, SearchParameterDefn> params = new HashMap<String, SearchParameterDefn>();
@@ -912,7 +914,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         SearchParameterDefn p = params.get(name);
         i++;
         String n = p.getCode().replace("$", "_");
-        String d = Utilities.normaliseEolns(p.getDescription());
+        String d = makeDocoSafe(p.getDescription());
         String nf = n.replace("-", "_").replace("[x]", "x");
         String t = getTarget(p.getWorkingTargets());
         if (i == l) {
@@ -932,6 +934,14 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
           con3.append("'"+defCodeType.escape(n)+"', ");
           con6.append("'"+defCodeType.escape(n+": "+t)+"',\r\n     ");
           con7.append(""+t+", ");
+          if (con4.length() - l4 > 250) {
+            con4.append("\r\n      ");
+            l4 = con4.length();
+          }
+          if (con2.length() - l2 > 250) {
+            con2.append("\r\n      // ");
+            l2 = con2.length();
+          }
         }
       }
 
@@ -976,7 +986,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       StringBuilder def = new StringBuilder();
       StringBuilder con = new StringBuilder();
       def.append("  {@Enum "+tn+"\r\n");
-      def.append("    "+Utilities.normaliseEolns(cd.getDefinition())+"\r\n");
+      def.append("    "+makeDocoSafe(cd.getDefinition())+"\r\n");
       def.append("  }\r\n");
       def.append("  "+tn+" = (\r\n");
       con.append("  CODES_"+tn+" : Array["+tn+"] of String = (");
@@ -1003,11 +1013,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         if (GeneratorUtils.isDelphiReservedWord(cc))
           cc = cc + "_";
         if (i == l) {
-          def.append("    "+cc+"); {@enum.value "+cc+" "+Utilities.normaliseEolns(c.getDefinition())+" }\r\n");
+          def.append("    "+cc+"); {@enum.value "+cc+" "+makeDocoSafe(c.getDefinition())+" }\r\n");
           con.append("'"+c.getCode()+"');");
         }
         else {
-          def.append("    "+cc+", {@enum.value "+cc+" "+Utilities.normaliseEolns(c.getDefinition())+" }\r\n");
+          def.append("    "+cc+", {@enum.value "+cc+" "+makeDocoSafe(c.getDefinition())+" }\r\n");
           con.append("'"+c.getCode()+"', ");
         }
       }
@@ -1086,7 +1096,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     StringBuilder setprops = new StringBuilder();
 
     def.append("  {@Class "+tn+" : TFhirElement\r\n");
-    def.append("    "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
+    def.append("    "+makeDocoSafe(e.getDefinition())+"\r\n");
     def.append("  }\r\n");
     def.append("  {!.Net HL7Connect.Fhir."+tn.substring(5)+"}\r\n");
     if (category == ClassCategory.Component)
@@ -1535,7 +1545,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         assign.append("    F"+getTitle(s)+" := "+listForm("TFHIREnum")+".Create;\r\n");
         if (enumSizes.get(tn) < 32) {
           defPub.append("    {@member "+s+"\r\n");
-          defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
+          defPub.append("      "+makeDocoSafe(e.getDefinition())+"\r\n");
           defPub.append("    }\r\n");
           defPub.append("    property "+s+" : "+listForm(tn)+" read Get"+getTitle(s)+"ST write Set"+getTitle(s)+"ST;\r\n");
           defPub.append("    property "+s+"Element : "+listForm("TFhirEnum")+" read Get"+getTitle(s)+";\r\n");
@@ -1622,7 +1632,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         s = s+"List";
         defPriv1.append("    F"+s+" : "+tnl+";\r\n");
         defPub.append("    {@member "+s+"\r\n");
-        defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
+        defPub.append("      "+makeDocoSafe(e.getDefinition())+"\r\n");
         defPub.append("    }\r\n");
         defPriv2.append("    function Get"+Utilities.capitalize(s)+" : "+tnl+";\r\n");
         defPriv2.append("    function GetHas"+Utilities.capitalize(s)+" : Boolean;\r\n");
@@ -1723,7 +1733,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         defPriv2.append("    Function Get"+getTitle(s)+"ST : "+tn+";\r\n");
         defPriv2.append("    Procedure Set"+getTitle(s)+"ST(value : "+tn+");\r\n");
         defPub.append("    {@member "+s+"\r\n");
-        defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
+        defPub.append("      "+makeDocoSafe(e.getDefinition())+"\r\n");
         defPub.append("    }\r\n");
         defPub.append("    property "+s+" : "+tn+" read Get"+getTitle(s)+"ST write Set"+getTitle(s)+"ST;\r\n");
         defPub.append("    property "+s+"Element : TFhirEnum read F"+getTitle(s)+" write Set"+getTitle(s)+";\r\n");
@@ -1735,20 +1745,20 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
           defPriv2.append("    Function Get"+getTitle(s)+"ST : "+sn+";\r\n");
           defPriv2.append("    Procedure Set"+getTitle(s)+"ST(value : "+sn+");\r\n");
           defPub.append("    {@member "+s+"\r\n");
-          defPub.append("      Typed access to "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
+          defPub.append("      Typed access to "+makeDocoSafe(e.getDefinition())+"\r\n");
           defPub.append("    }\r\n");
           defPub.append("    property "+s+" : "+sn+" read Get"+getTitle(s)+"ST write Set"+getTitle(s)+"ST;\r\n");
           defPub.append("    {@member "+s+"Element\r\n");
-          defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
+          defPub.append("      "+makeDocoSafe(e.getDefinition())+"\r\n");
           defPub.append("    }\r\n");
           defPub.append("    property "+s+"Element : "+tn+" read F"+getTitle(s)+" write Set"+getTitle(s)+";\r\n");
         } else {
           defPub.append("    {@member "+s+"\r\n");
-          defPub.append("      Typed access to "+Utilities.normaliseEolns(e.getDefinition())+" (defined for API consistency)\r\n");
+          defPub.append("      Typed access to "+makeDocoSafe(e.getDefinition())+" (defined for API consistency)\r\n");
           defPub.append("    }\r\n");
           defPub.append("    property "+s+" : "+tn+" read F"+getTitle(s)+" write Set"+getTitle(s)+";\r\n");
           defPub.append("    {@member "+s+"Element\r\n");
-          defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
+          defPub.append("      "+makeDocoSafe(e.getDefinition())+"\r\n");
           defPub.append("    }\r\n");
           defPub.append("    property "+s+"Element : "+tn+" read F"+getTitle(s)+" write Set"+getTitle(s)+";\r\n");
         }
@@ -3046,16 +3056,17 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         s2 = s2 + "_";
       con.append("'"+s);
       if (i < types.size() - 1) {
-        def.append("    "+s2+", {@enum.value "+Utilities.normaliseEolns(definitions.getResourceByName(s).getDefinition())+" }\r\n");
+        def.append("    "+s2+", {@enum.value "+makeDocoSafe(definitions.getResourceByName(s).getDefinition())+" }\r\n");
         con.append("', ");
       } else {
-        def.append("    "+s2+"); {@enum.value "+Utilities.normaliseEolns(definitions.getResourceByName(s).getDefinition())+" }\r\n");
+        def.append("    "+s2+"); {@enum.value "+makeDocoSafe(definitions.getResourceByName(s).getDefinition())+" }\r\n");
         con.append("');");
       }
     }
 
     def.append("\r\n  TFhirResourceTypeSet = set of TFhirResourceType;");
 
+    int last = 0;
     cmp.append("\r\n  COMPARTMENT_PARAM_NAMES : Array[TFhirResourceType, TFhirResourceType] of String = (");
     cmp.append("(''");
     for (String s : types) {
@@ -3072,11 +3083,19 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       if (c == null) {
         for (String s1 : types) {
           cmp.append(", ''");
+          if (cmp.length() - last > 256) {
+            cmp.append("\r\n      ");
+            last = cmp.length();
+          }
         }            
       } else {
         for (String s1 : types) {
           String p = c.getPathForName(s1);
           cmp.append(", '"+p+"'");
+          if (cmp.length() - last > 256) {
+            cmp.append("\r\n      ");
+            last = cmp.length();
+          }
         }    
       }
       if (i == types.size() - 1) {
@@ -3129,6 +3148,15 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
   }
 
+
+  private String makeDocoSafe(String string) {
+    string = Utilities.normaliseEolns(string);
+    while (string.contains("]{") && string.contains("}") && string.indexOf("]{") < string.indexOf("}")) {
+      string = string.substring(0, string.indexOf("]{")+1)+string.substring(string.indexOf("}")+1);
+    }
+    string = string.replace("}", "))");
+    return string;
+  }
 
   private void initParser(String version, Date genDate) {
     prsrCode.uses.add("SysUtils");
@@ -3298,7 +3326,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
   @Override
   public boolean doesCompile() {
-    String dcc = System.getenv("ProgramFiles(X86)")+"\\Embarcadero\\RAD Studio\\12.0\\bin\\dcc32.exe";
+    String dcc = System.getenv("ProgramFiles(X86)")+"\\Embarcadero\\RAD Studio\\12.0\\bin\\dcc64.exe";
     return new File(dcc).exists();
   }
 

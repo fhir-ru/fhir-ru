@@ -737,6 +737,16 @@
     <display value="United States Black"/>
     <display value="African American (ethnic group)"/>
   </concept>
+  <concept id="15108003" display="Restricted fiber diet (finding)">
+    <display value="Restricted fiber diet"/>
+    <display value="Low fiber diet"/>
+    <display value="Minimal residue diet"/>
+    <display value="LF - Low fiber diet"/>
+    <display value="Low fibre diet"/>
+    <display value="LF - Low fibre diet"/>
+    <display value="Restricted fibre diet"/>
+    <display value="Restricted fiber diet (finding)"/>
+  </concept>
   <concept id="15220000" display="Laboratory test">
     <display value="Laboratory test"/>
     <display value="Laboratory test, NOS"/>
@@ -766,12 +776,25 @@
     <display value="Medical laboratory technician"/>
     <display value="Medical laboratory technician (occupation)"/>
   </concept>
+  <concept id="160670007" display="Diabetic diet (finding)">
+    <display value="DD - Diabetic diet"/>
+    <display value="Diabetic diet"/>
+    <display value="Diabetic diet (finding)"/>
+  </concept>
   <concept id="16100001" display="Death diagnosis (contextual qualifier) (qualifier value)">
     <display value="Death diagnosis"/>
     <display value="Major cause of death"/>
     <display value="DD"/>
     <display value="Death diagnosis (contextual qualifier)"/>
     <display value="Death diagnosis (contextual qualifier) (qualifier value)"/>
+  </concept>
+  <concept id="16208003" display="Low fat diet (finding)">
+    <display value="LF - Low fat diet"/>
+    <display value="LFD - Low fat diet"/>
+    <display value="Diet - low in fat"/>
+    <display value="Low fat diet"/>
+    <display value="Low fat diet, NOS"/>
+    <display value="Low fat diet (finding)"/>
   </concept>
   <concept id="162308004" display="Throbbing headache (finding)">
     <display value="Throbbing headache"/>
@@ -805,6 +828,12 @@
     <display value="Tea"/>
     <display value="Tea, NOS"/>
     <display value="Tea (substance)"/>
+  </concept>
+  <concept id="163220003" display="On examination - abdominal pain - right iliac (finding)">
+    <display value="O/E - abd. pain - R.iliac"/>
+    <display value="On examination - abdominal pain - right iliac (finding)"/>
+    <display value="On examination - abdominal pain - right iliac"/>
+    <display value="On examination - abdominal pain - right iliac (context-dependent category)"/>
   </concept>
   <concept id="16331000" display="Heartburn (finding)">
     <display value="Heartburn"/>
@@ -1144,6 +1173,14 @@
   <concept id="225944008" display="Wound tenderness (finding)">
     <display value="Wound tenderness"/>
     <display value="Wound tenderness (finding)"/>
+  </concept>
+  <concept id="226208002" display="Fluid restricted diet">
+    <display value="Fluid restricted diet"/>
+    <display value="Fluid restricted diet (finding)"/>
+  </concept>
+  <concept id="226211001" display="Pureed diet">
+    <display value="Pureed diet"/>
+    <display value="Pureed diet (finding)"/>
   </concept>
   <concept id="226307009" display="Carbohydrate supplementation (product)">
     <display value="Carbohydrate supplementation (product)"/>
@@ -1630,6 +1667,12 @@
     <display value="Worsened"/>
     <display value="Worse"/>
     <display value="Worse (qualifier value)"/>
+  </concept>
+  <concept id="2331003" display="Carbohydrate (substance)">
+    <display value="Sugars and carbohydrates"/>
+    <display value="Carbohydrate"/>
+    <display value="Carbohydrate, NOS"/>
+    <display value="Carbohydrate (substance)"/>
   </concept>
   <concept id="233174007" display="Cardiac pacemaker procedure (procedure)">
     <display value="Cardiac pacemaker procedure"/>
@@ -2131,6 +2174,10 @@
   <concept id="25649003" display="Chronic migratory (qualifier value)">
     <display value="Chronic migratory"/>
     <display value="Chronic migratory (qualifier value)"/>
+  </concept>
+  <concept id="256674009" display="Fat (substance)">
+    <display value="Fat"/>
+    <display value="Fat (substance)"/>
   </concept>
   <concept id="257261003" display="Swab (specimen)">
     <display value="Swab"/>
@@ -3225,6 +3272,11 @@
     <display value="Superficial forearm vein"/>
     <display value="Superficial forearm vein (body structure)"/>
   </concept>
+  <concept id="30820000" display="Phosphorus (substance)">
+    <display value="Phosphorus"/>
+    <display value="Phosphorus, NOS"/>
+    <display value="Phosphorus (substance)"/>
+  </concept>
   <concept id="309049000" display="Lesion sample (specimen)">
     <display value="Lesion sample"/>
     <display value="Lesion sample (specimen)"/>
@@ -3489,6 +3541,20 @@
     <display value="Ketamine (product)"/>
     <display value="Ketamine"/>
     <display value="Ketamine (substance)"/>
+  </concept>
+  <concept id="33463005" display="Liquid substance (substance)">
+    <display value="Fluid"/>
+    <display value="Liquid substance"/>
+    <display value="Liquid substance, NOS"/>
+    <display value="Liquid, NOS"/>
+    <display value="Liquid"/>
+    <display value="Liquid substance (substance)"/>
+  </concept>
+  <concept id="33489005" display="Renal disease diet (finding)">
+    <display value="Renal diet"/>
+    <display value="Renal disease diet"/>
+    <display value="Renal disease diet, NOS"/>
+    <display value="Renal disease diet (finding)"/>
   </concept>
   <concept id="33526004" display="Laboratory reporting, computer">
     <display value="Laboratory reporting, electronic"/>
@@ -3910,6 +3976,16 @@
     <display value="Normal appearance (finding)"/>
     <display value="Normal appearance"/>
   </concept>
+  <concept id="386619000" display="Low sodium diet (finding)">
+    <display value="Low sodium diet (finding)"/>
+    <display value="Low sodium diet"/>
+    <display value="Restricted salt diet"/>
+    <display value="Reduced sodium diet"/>
+    <display value="Restricted sodium diet"/>
+    <display value="Na - Low sodium diet"/>
+    <display value="Low salt diet"/>
+    <display value="Reduced salt diet"/>
+  </concept>
   <concept id="386661006" display="Fever">
     <display value="Fever (finding)"/>
     <display value="Fever"/>
@@ -4133,6 +4209,12 @@
   <concept id="399713008" display="Specimen from uterine cervix obtained by cone biopsy (specimen)">
     <display value="Specimen from uterine cervix obtained by cone biopsy (specimen)"/>
     <display value="Specimen from uterine cervix obtained by cone biopsy"/>
+  </concept>
+  <concept id="39972003" display="Sodium (substance)">
+    <display value="Na - Sodium"/>
+    <display value="Sodium"/>
+    <display value="Sodium, NOS"/>
+    <display value="Sodium (substance)"/>
   </concept>
   <concept id="40199007" display="Supine body position (finding)">
     <display value="Lying flat on back"/>
@@ -4472,6 +4554,12 @@
     <display value="Epicranium"/>
     <display value="Scalp structure (body structure)"/>
   </concept>
+  <concept id="417887005" display="Pediatric otolaryngology (qualifier value)">
+    <display value="Paediatric otolaryngology (qualifier value)"/>
+    <display value="Pediatric otolaryngology"/>
+    <display value="Paediatric otolaryngology"/>
+    <display value="Pediatric otolaryngology (qualifier value)"/>
+  </concept>
   <concept id="417980006" display="Contains aspirin (qualifier value)">
     <display value="Contains aspirin (qualifier value)"/>
     <display value="Contains aspirin"/>
@@ -4749,6 +4837,21 @@
     <display value="Enteral dietary supplement (substance)"/>
     <display value="Enteral dietary supplement"/>
   </concept>
+  <concept id="428041000124106" display="Occasional tobacco smoker (finding)">
+    <display value="Occasional tobacco smoker"/>
+    <display value="Occasional tobacco smoker (finding)"/>
+    <display value="Current some day smoker"/>
+  </concept>
+  <concept id="428061000124105" display="Light tobacco smoker (finding)">
+    <display value="Light tobacco smoker (finding)"/>
+    <display value="Light tobacco smoker"/>
+    <display value="Current light tobacco smoker"/>
+  </concept>
+  <concept id="428071000124103" display="Heavy tobacco smoker (finding)">
+    <display value="Heavy tobacco smoker (finding)"/>
+    <display value="Heavy tobacco smoker"/>
+    <display value="Current heavy tobacco smoker"/>
+  </concept>
   <concept id="428263003" display="NOT suspected (qualifier value)">
     <display value="NOT suspected (qualifier value)"/>
     <display value="NOT suspected"/>
@@ -4825,6 +4928,10 @@
     <display value="Upper jaw region structure (body structure)"/>
     <display value="Upper jaw"/>
   </concept>
+  <concept id="434746001" display="Specimen vial (physical object)">
+    <display value="Specimen vial (physical object)"/>
+    <display value="Specimen vial"/>
+  </concept>
   <concept id="43664005" display="Normal weight (finding)">
     <display value="Normal weight"/>
     <display value="Normal weight (finding)"/>
@@ -4843,6 +4950,15 @@
   <concept id="438660002" display="Specimen from prosthetic device (specimen)">
     <display value="Specimen from prosthetic device (specimen)"/>
     <display value="Specimen from prosthetic device"/>
+  </concept>
+  <concept id="439021000124105" display="Dietary liquid consistency - nectar thick liquid (regime/therapy)">
+    <display value="Liquids included in the diet are provided at a viscosity of 51--350 centipoise (cP). (Source: Nutrition Care Manual, Academy of Nutrition and Dietetics 2013)."/>
+    <display value="Dietary liquid consistency - nectar thick liquid (regime/therapy)"/>
+    <display value="Dietary liquid consistency - nectar thick liquid"/>
+  </concept>
+  <concept id="439091000124107" display="Easy to chew food (substance)">
+    <display value="Easy to chew food (substance)"/>
+    <display value="Easy to chew food"/>
   </concept>
   <concept id="439336003" display="Brush biopsy (procedure)">
     <display value="Brush biopsy (procedure)"/>
@@ -4895,10 +5011,63 @@
     <display value="Numbness"/>
     <display value="Numbness (finding)"/>
   </concept>
+  <concept id="441531000124102" display="Standard enteral formula (product)">
+    <display value="Standard enteral formula"/>
+    <display value="Standard enteral formula (product)"/>
+    <display value="Generic enteral nutrition product formulated to provide 1 Calorie (1 kcal/1 milliliter); used for patients who require enteral feeding (tube feeding) (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013)"/>
+  </concept>
+  <concept id="441561000124106" display="Standard enteral formula with fiber (product)"/>
+  <concept id="441571000124104" display="High energy enteral formula with fiber (product)">
+    <display value="High energy enteral formula with fiber (product)"/>
+    <display value="High energy enteral formula with fiber"/>
+    <display value="Calorically dense enteral nutrition product formulated to provide 1.5 Calorie (1.2 kcal/milliliter) with addition of fiber (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013)"/>
+  </concept>
+  <concept id="441591000124103" display="Diabetic enteral formula with fiber (product)">
+    <display value="Diabetic enteral formula with fiber"/>
+    <display value="Diabetic enteral formula with fibre"/>
+    <display value="Diabetic enteral formula with fiber (product)"/>
+    <display value="Specialtiy enteral formula plus fiber designed to provide defined nutrients for patients with diabetes or altered carbohydrate metabolism (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013)"/>
+  </concept>
+  <concept id="441601000124106" display="Diabetic high calorie high protein enteral formula with fiber (product)">
+    <display value="Diabetic high calorie high protein enteral formula with fiber"/>
+    <display value="Diabetic high calorie high protein enteral formula with fibre"/>
+    <display value="Diabetic high calorie high protein enteral formula with fiber (product)"/>
+    <display value="Calorically dense, high protein speciality enteral nutrition product with fiber designed to provide for patients with diabetes or altered carbohydrate metabolism (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013) fiber"/>
+  </concept>
+  <concept id="441671000124100" display="Hydrolyzed peptide-based high protein enteral formula (product)">
+    <display value="Hydrolyzed peptide-based high protein enteral formula"/>
+    <display value="Hydrolyzed peptide-based high protein enteral formula (product)"/>
+    <display value="Nutritionally complete, calorically dense, high protein specialty enteral formula with partially or fully hydrolyzed protein (amino acids) designed to be easily digestible (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013)."/>
+  </concept>
+  <concept id="441751000124100" display="Mashed food (substance)">
+    <display value="Mashed food (substance)"/>
+    <display value="Mashed food"/>
+    <display value="Foods are soft, tender and moist, and need very little chewing. Has been mashed up with a fork before serving (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013)."/>
+  </concept>
+  <concept id="441761000124103" display="Minced food (substance)">
+    <display value="Minced food (substance)"/>
+    <display value="Minced food"/>
+    <display value="Soft diet of cohesive, consistent textures requiring some chewing. Easily broken up with the flat edge of a fork into 0-5 cm pieces. No coarse textures such as nuts and raw fruits or vegetables (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013)."/>
+  </concept>
+  <concept id="441771000124105" display="Soft, tender foods that require little chewing. Served with liquids in the form of sauces or gravies. No lumps, grains, mixed consistencies or dry solids (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013).">
+    <display value="Moist food (substance)"/>
+    <display value="Moist food"/>
+    <display value="Soft, tender foods that require little chewing. Served with liquids in the form of sauces or gravies. No lumps, grains, mixed consistencies or dry solids (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013)."/>
+  </concept>
+  <concept id="441791000124106" display="Strained food">
+    <display value="Strained food (substance)"/>
+    <display value="Strained food"/>
+    <display value="Soft, moist foods pureed and strained to remove lumps and make them smooth in texture (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013)."/>
+  </concept>
   <concept id="44180009" display="Cyclic (qualifier value)">
     <display value="Cyclical"/>
     <display value="Cyclic"/>
     <display value="Cyclic (qualifier value)"/>
+  </concept>
+  <concept id="441881000124103" display="Ground food (substance)">
+    <display value="Ground food (substance)"/>
+    <display value="Ground food"/>
+    <display value="Regular table foods ground into a soft, fine texture, using a baby food grinder or food chopper. Crispy or crunchy foods are not acceptable. Minimal chewing is required (Source: Academy of Nutrition and Dietetics Nutrition Informatics Committee 2013)."/>
   </concept>
   <concept id="442173007" display="Urine specimen from nephrostomy tube (specimen)">
     <display value="Urine specimen from nephrostomy tube"/>
@@ -4916,9 +5085,191 @@
     <display value="Decreased relative to previous"/>
     <display value="Decreased relative to previous (qualifier value)"/>
   </concept>
+  <concept id="442651000124102" display="Adult formula (product)">
+    <display value="Adult formula (product)"/>
+    <display value="Adult formula"/>
+  </concept>
+  <concept id="442901000124106" display="Adult clear liquid supplement (product)">
+    <display value="Adult clear liquid supplement (product)"/>
+    <display value="Adult clear liquid supplement"/>
+    <display value="Liquid formula intended oral method of delivery, formulated for adults. Product contains no fat, is clear, and is a liquid at room temperature."/>
+  </concept>
+  <concept id="442911000124109" display="Adult elemental formula (product)">
+    <display value="Adult elemental formula (product)"/>
+    <display value="Adult elemental formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the needs of adults; designed with elemental energy (kcal/kJ) sources to improve GI tolerance"/>
+  </concept>
+  <concept id="442921000124101" display="Adult standard formula (product)">
+    <display value="Adult standard formula (product)"/>
+    <display value="Adult standard formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults without any other specialized nutrition therapy needs."/>
+  </concept>
+  <concept id="442931000124103" display="Adult soy protein isolate formula (product)">
+    <display value="Adult soy protein isolate formula (product)"/>
+    <display value="Adult soy protein isolate formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults and based on soy protein instead of cow?€™s milk."/>
+  </concept>
+  <concept id="442941000124108" display="Adult renal specialty formula (product)">
+    <display value="Adult renal specialty formula (product)"/>
+    <display value="Adult renal specialty formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults with renal disorders."/>
+  </concept>
+  <concept id="442951000124105" display="Adult pulmonary specialty formula (product)">
+    <display value="Adult pulmonary specialty formula (product)"/>
+    <display value="Adult pulmonary specialty formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults and reduce carbon dioxide production in patient with pulmonary disorders."/>
+  </concept>
+  <concept id="442961000124107" display="Adult low carbohydrate formula (product)">
+    <display value="Adult low carbohydrate formula (product)"/>
+    <display value="Adult low carbohydrate formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults and provide reduced carbohydrate relative to standard formula."/>
+  </concept>
+  <concept id="442971000124100" display="Adult high energy formula (product)">
+    <display value="Adult high energy formula (product)"/>
+    <display value="Adult high energy formula"/>
+    <display value="Adult high calorie formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults and provide increased energy (kcal/kJ) relative to standard formula."/>
+  </concept>
+  <concept id="442981000124102" display="Adult hydrolyzed protein formula (product)">
+    <display value="Adult hydrolyzed protein formula (product)"/>
+    <display value="Adult hydrolyzed protein formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adult and provide protein hydrolyzed to peptides."/>
+  </concept>
+  <concept id="442991000124104" display="Adult high protein formula (product)">
+    <display value="Adult high protein formula (product)"/>
+    <display value="Adult high protein formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults and provide increased protein."/>
+  </concept>
+  <concept id="443011000124100" display="Adult high protein high fiber formula (product)">
+    <display value="Adult high protein high fiber formula (product)"/>
+    <display value="Adult high protein high fiber formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults and provide increased protein and fiber."/>
+  </concept>
+  <concept id="443021000124108" display="Adult hepatic specialty formula (product)">
+    <display value="Adult hepatic specialty formula (product)"/>
+    <display value="Adult hepatic specialty formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults with hepatic disease and reduce metabolic end products."/>
+  </concept>
+  <concept id="443051000124104" display="Adult diabetic specialty formula (product)">
+    <display value="Adult diabetic specialty formula (product)"/>
+    <display value="Adult diabetic specialty formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults with diabetes."/>
+  </concept>
+  <concept id="443111000124101" display="High protein formula (product)">
+    <display value="High protein formula (product)"/>
+    <display value="High protein formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to provide increased protein relative to standard formula."/>
+  </concept>
+  <concept id="443351000124102" display="Increased fiber formula (product)">
+    <display value="Increased fiber formula (product)"/>
+    <display value="Increased fiber formula"/>
+  </concept>
   <concept id="443357004" display="pT1a category">
     <display value="pT1a category (finding)"/>
     <display value="pT1a category"/>
+  </concept>
+  <concept id="443361000124100" display="Pediatric formula">
+    <display value="Pediatric formula (product)"/>
+    <display value="Pediatric formula"/>
+  </concept>
+  <concept id="443391000124108" display="Pediatric clear liquid supplement (product)">
+    <display value="Pediatric clear liquid supplement (product)"/>
+    <display value="Pediatric clear liquid supplement"/>
+    <display value="Liquid formula intended for oral method of delivery, formulated for children. Product contains no fat, is clear, and is a liquid at room temperature."/>
+  </concept>
+  <concept id="443401000124105" display="Pediatric elemental formula (product)">
+    <display value="Pediatric elemental formula (product)"/>
+    <display value="Pediatric elemental formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of children. Designed with elemental energy (kcal/kJ) sources to improve GI tolerance."/>
+  </concept>
+  <concept id="443411000124108" display="Elemental formula (product)">
+    <display value="Elemental formula (product)"/>
+    <display value="Elemental formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to provide energy (kcal/kJ) sources which are easier to digest relative to standard formulas."/>
+  </concept>
+  <concept id="443421000124100" display="Pediatric hydrolyzed protein formula (product)">
+    <display value="Pediatric hydrolyzed protein formula (product)"/>
+    <display value="Pediatric hydrolyzed protein formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of children and providing protein as peptides"/>
+  </concept>
+  <concept id="443431000124102" display="High energy formula (product)">
+    <display value="High energy formula"/>
+    <display value="High calorie formula"/>
+    <display value="High energy formula (product)"/>
+  </concept>
+  <concept id="443441000124107" display="Liquid formula intended for enteral oral method of delivery. Product contains no fat, is clear, and is a liquid at room temperature.">
+    <display value="Clear liquid supplement (product)"/>
+    <display value="Clear liquid supplement"/>
+    <display value="Liquid formula intended for enteral oral method of delivery. Product contains no fat, is clear, and is a liquid at room temperature."/>
+  </concept>
+  <concept id="443451000124109" display="Pediatric standard formula (product)">
+    <display value="Pediatric standard formula (product)"/>
+    <display value="Pediatric standard formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of children without any other specialized nutrition therapy needs."/>
+  </concept>
+  <concept id="443461000124106" display="Standard formula (product)">
+    <display value="Standard formula (product)"/>
+    <display value="Standard formula"/>
+  </concept>
+  <concept id="443471000124104" display="Pediatric increased fiber formula (product)">
+    <display value="Pediatric increased fiber formula (product)"/>
+    <display value="Pediatric increased fiber formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of children and provide increased fiber relative to a standard formula."/>
+  </concept>
+  <concept id="443481000124101" display="Renal formula (product)">
+    <display value="Renal formula"/>
+    <display value="Renal formula (product)"/>
+  </concept>
+  <concept id="443491000124103" display="Pediatric high energy formula (product)">
+    <display value="Pediatric high energy formula (product)"/>
+    <display value="Pediatric high energy formula"/>
+    <display value="Pediatric high calorie formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of children and provide increased energy (kcal/kJ) relative to standard formula."/>
+  </concept>
+  <concept id="443501000124106" display="Pediatric high energy formula with increased fiber (product)">
+    <display value="Pediatric high energy formula with increased fiber (product)"/>
+    <display value="Pediatric high energy formula with increased fiber"/>
+    <display value="Pediatric high calorie formula with increased fiber"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of children and provide increased calories and fiber relative to standard formula."/>
+  </concept>
+  <concept id="443561000124107" display="Soy-based formula (product)">
+    <display value="Soy-based formula (product)"/>
+    <display value="Soy-based formula"/>
+  </concept>
+  <concept id="443771000124106" display="Hydrolyzed protein formula (product)">
+    <display value="Hydrolyzed protein formula (product)"/>
+    <display value="Hydrolyzed protein formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to provide protein hydrolyzed into peptides."/>
+  </concept>
+  <concept id="444321000124108" display="Standard pudding oral supplement (product)">
+    <display value="Standard pudding oral supplement (product)"/>
+    <display value="Standard pudding oral supplement"/>
+  </concept>
+  <concept id="444331000124106" display="Diabetic meal replacement bar (product)">
+    <display value="Diabetic meal replacement bar (product)"/>
+    <display value="Diabetic meal replacement bar"/>
+  </concept>
+  <concept id="444361000124102" display="Electrolyte replacement supplement (product)">
+    <display value="Electrolyte replacement supplement (product)"/>
+    <display value="Electrolyte replacement supplement"/>
+  </concept>
+  <concept id="444371000124109" display="Powdered electrolyte replacement supplement (product)">
+    <display value="Powdered electrolyte replacement supplement (product)"/>
+    <display value="Powdered electrolyte replacement supplement"/>
+  </concept>
+  <concept id="444381000124107" display="Liquid electrolyte replacement supplement (product)">
+    <display value="Liquid electrolyte replacement supplement (product)"/>
+    <display value="Liquid electrolyte replacement supplement"/>
+  </concept>
+  <concept id="444401000124107" display="Frozen electrolyte replacement supplement">
+    <display value="Frozen electrolyte replacement supplement (product)"/>
+    <display value="Frozen electrolyte replacement supplement"/>
+  </concept>
+  <concept id="444431000124104" display="Pediatric reduced energy formula (product)">
+    <display value="Pediatric reduced energy formula (product)"/>
+    <display value="Pediatric reduced energy formula"/>
+    <display value="Pediatric reduced calorie formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of children and provide reduced calories relative to a standard formula."/>
   </concept>
   <concept id="444752003" display="Every lunchtime (qualifier value)">
     <display value="Every lunchtime (qualifier value)"/>
@@ -5550,6 +5901,12 @@
     <display value="Uncertain"/>
     <display value="Uncertain (qualifier value)"/>
   </concept>
+  <concept id="65363002" display="Otitis media (disorder)">
+    <display value="Otitis media"/>
+    <display value="Otitis media, NOS"/>
+    <display value="OM - Otitis media"/>
+    <display value="Otitis media (disorder)"/>
+  </concept>
   <concept id="66051006" display="Pyloric antrum structure (body structure)">
     <display value="Pyloric antrum"/>
     <display value="Antrum of stomach"/>
@@ -5629,6 +5986,10 @@
   <concept id="69910005" display="Unidentified (qualifier value)">
     <display value="Unidentified"/>
     <display value="Unidentified (qualifier value)"/>
+  </concept>
+  <concept id="700274009" display="Referral for procedure (procedure)">
+    <display value="Referral for procedure"/>
+    <display value="Referral for procedure (procedure)"/>
   </concept>
   <concept id="70317007" display="Abortion (disorder)">
     <display value="Abortion"/>

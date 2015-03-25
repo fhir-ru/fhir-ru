@@ -61,9 +61,9 @@ Notes:
 </p>
 <ul>
  <li>The <i>url</i> is a mandatory attribute / property and identifies a retrievable <a href="structuredefinition.html">extension definition</a> that defines the content and meaning of the extension.</li>
- <li>An extension SHALL have either a value (i.e. a [x] element) or sub-extensions. If present, the [x] element SHALL have content (value attribute or other elements)</li>
+ <li>An extension SHALL have either a value (i.e. a value[x] element) or sub-extensions, but not both. If present, the value[x] element SHALL have content (value attribute or other elements)</li>
  <li>If it is not safe for an application processing the content of the resource to ignore the extension it must be represented diffferent (see <a href="#modifier">below</a>)</li>
- <li>The <i>value[x]</i> element has an actual name of "value" and then the TitleCased name of one of these defined types, and it's contents are those as defined for that type:
+ <li>The <i>value[x]</i> element has an actual name of "value" and then the TitleCased name of one of these defined types, and its contents are those as defined for that type:
   <ul class="dense">
    <li><a href="datatypes.html#integer">Integer</a></li>
    <li><a href="datatypes.html#decimal">Decimal</a></li>
@@ -105,6 +105,11 @@ Here is an example of an extension in XML:
 &lt;/name&gt;
 </pre>
 <p>
+In this example, the name with text = "Chief Red Cloud" is extended to have a 
+name use code of "Indigenous" (defined in ISO 21090, but very rarely used in 
+practice). 
+</p>
+<p>
 In JSON, extensions are represented similarly:
 </p>
 <pre class="json" fragment="HumanName">
@@ -124,8 +129,9 @@ definition of the extension.
 </p>
 <p>
 Extensions can also contain extensions, either because the extension 
-definition itself defines complex content, or because the extension 
-is extended with an additional extension defined separately. 
+definition itself defines complex content - that is, a nested tree of values 
+in the extension, or because the extension is extended with an additional 
+extension defined separately. 
 </p>
 <p>
 In the first case, the identity of the parts of the extension are local/relative to the reference
@@ -180,18 +186,15 @@ Or in JSON:
 }
 </pre>
 </div>
-<p>
-The JSON representation is more concise, since it is not constrained by 
-the limitations of schema, though the type of the value must still be 
-explicit.
-</p>
+
 <p>
 In the second case, the contained extension is defined separately.
 </p>
 <div class="example">
 <p>
-The registrar was defined as a separate extension (e.g. to 
-allow wider use). The url of the extension is different:
+In this case, the registrar is defined as a separate extension (e.g. to 
+allow wider use), rather than part of the clinical-trial extension. 
+The url of the extension is different:
 </p>
 <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
@@ -247,12 +250,10 @@ of the element that contains it. Typically, this means information that qualifie
 negates the primary meaning of the element that contains it. Some examples:
 </p>
 <ul>
- <li>Adding a certainty extension to an <a href="allergyintolerance.html">Allergy/Intolerance</a> that includes a value "highly doubtful"</li>
- <li>Asserting an additional subsumption relationship on a concept in a <a href="valueset.html">value set</a></li>
  <li>An anti-prescription: recording an instruction <b>not</b> to take a medication</li>
- <li>Using the <a href="condition.html">Condition</a> resource to record an assertion that a patient <b>doesn't</b> have a particular diagnosis</li>
+ <li>Using the <a href="condition.html">Condition</a> resource to record an assertion that a patient <b>doesn't</b> have a particular diagnosis (as opposed to refuted)</li>
  <li>Asserting that a performer was <b>not</b> actually involved in a <a href="procedure.html">Procedure</a></li>
- <li>Recording that a <a href="supply.html">Supply</a> was <b>not</b> provided (i.e. refusal to fill)</li>
+ <li>Asserting an additional subsumption relationship on a concept in a <a href="valueset.html">value set</a></li>
 </ul>
 <p>
 Implementers should avoid the use of modifier extensions where possible.  Any use should be 
@@ -273,16 +274,15 @@ In XML, these modifier elements are represented using an element named "modifier
 </p>
 <div class="example">
 <p>
-Example: There's no element on <a href="procedure.html">Procedure</a> 
-so it can be used to say "this procedure did not occur"; however, a source system does 
-have this flag on its procedure records. It could choose not to share those
-procedures (e.g. consider them as logically deleted). However, it may be that
-it is required to share procedures marked as "did not occur" with its trading
-partners. Hence, applications are allowed to extend a resource with data like this: 
+Example: There's no element on <a href="medicationprescription.html">MedicationPescription</a> 
+to write an "anti-prescription" - an instruction not to take a medication for a particular time.
+Classical clinical recording systems do not record this as a prescription - but one particular
+system does, and these "anti-prescription" records need to be shared within the institution 
+where this happens, as they are an important part of the workflow.  Hence, applications are allowed to extend a resource with data like this: 
 </p>
 <pre class="xml">
-&lt;Procedure&gt;
-  &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/negation&quot;&gt;
+&lt;MedicationPescription&gt;
+  &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/anti-prescription&quot;&gt;
     &lt;valueBoolean value="true"/&gt;
   &lt;/modifierExtension&gt;
   &lt;!-- ... other content ... --&gt;
@@ -293,9 +293,9 @@ Or in JSON:
 </p>
 <pre class="json">
 {
-  "resourceType" : "Procedure",
+  "resourceType" : "MedicationPescription",
   "modifierExtension" : [{
-    "url" : "http://example.org/fhir/StructureDefinition/negation",
+    "url" : "http://example.org/fhir/StructureDefinition/anti-prescription",
     "valueBoolean" : "true"
   }],
   .. other content ...
@@ -360,34 +360,33 @@ offer the user the choice to see the original narrative.
 </p>
 <div class="example">
 <p>
-Here is the procedure example from above with narrative:
+Here is the prescription example from above with narrative:
 </p>
 <pre class="xml">
-&lt;Procedure xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+&lt;MedicationPescription xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;text&gt;
     &lt;status value=&quot;generated&quot;/&gt;
-    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;Routine appendicectomy for Fred Smith performed By Susan Taylor. Note: This operation was not performed by Dr Lakin&lt;/div&gt;
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+      &lt;p&gt;&lt;b&gt;Note: This prescription is an instruction NOT to take a medication&lt;/b&gt;&lt;/p&gt;
+      &lt;!-- snip actual narrative --&gt;
+    &lt;/div&gt;
   &lt;/text&gt;
   &lt;!-- ...data... --&gt;
-  &lt;performer&gt;
-    &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/negation&quot;&gt;
-      &lt;boolean value="true"/&gt;
-    &lt;/modifierExtension&gt;
-    &lt;person&gt;
-      &lt;reference value=&quot;Practitioner/example&quot;/&gt;
-      &lt;display value=&quot;Dr Lakin&quot;/&gt;
-    &lt;/person&gt;
-  &lt;/performer&gt;
+  &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/anti-prescription&quot;&gt;
+    &lt;boolean value="true"/&gt;
+  &lt;/modifierExtension&gt;
   &lt;!-- ...data... --&gt;
-&lt;/Procedure&gt;
+&lt;/MedicationPescription&gt;
 </pre>
 </div>
 <p>
-In this case, if an application is not reading the performers of the operation at all,
+An application only needs to concern itself with modifierExtensions on elements that
+it processes. Take, for example, the case above where a procedure resource 
+has a modifierExtension on one of the performer elements indicating that they did 
+not participate in the procedure. In this case, if an application is not using the performer details at all,
 the fact that one of the performers has a modifierExtension is irrelevant and the 
 application is free to ignore it. If it does process the performers, and it sees the
-modifier extension, it can warn the user that there is data it does not understand,
-and present the narrative to the user.
+modifier extension, it must act in one of the ways outlined above.
 </p>
 
 <h3>Summary: Conformance Rules for Modifier Extensions</h3>
@@ -482,7 +481,7 @@ Use the following rules as a guideline for handling resources:
 <ul>
  <li>When writing extensions, make sure they are defined and published</li>
  <li>When reading, navigating through or searching on elements that can have modifier extensions, check whether there are any</li>
- <li>When reading elements, ignore other extensions, unless you want to read a particular extension</li>
+ <li>When reading elements, read and process the extensions you know and use, and ignore other extensions</li>
  <li>Retain extensions whenever you can</li>
 </ul> 
  

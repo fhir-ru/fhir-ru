@@ -55,18 +55,22 @@ this is not safe.
 <h3>Note for CDA aware readers</h3>
 
 <p>
-May uesrs of this specification are familiar with the <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">Clinical Document Architecture</a> (CDA) and related specifications.
+Many users of this specification are familiar with the <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">Clinical Document Architecture</a> (CDA) and related specifications.
 CDA is a primary design input to the composition resource (other principle inputs are other HL7 document specifications, and EN13606). There are two important structural 
 differences between CDA and the composition resource:
 </p>
 <ul>
- <li>A composition is a logical construct- it's identifier matches to the CDA ClinicalDocument.setId. 
+ <li>A composition is a logical construct- its identifier matches to the CDA ClinicalDocument.setId. 
  Composition resources are wrapped into <a href="documents.html">Document</a> structures, for exchange
- of the whole package (the composition and it's parts), and this wrapped, sealed entity is equivalent to a CDA document </li>
+ of the whole package (the composition and its parts), and this wrapped, sealed entity is equivalent to a CDA document, 
+ where the Bundle.id is equivalent in function to ClinicalDocument.id (but not identical, if interconverting, since it's a transform between them)</li>
  <li>The composition section defines a section (or sub-section) of the document, but unlike in CDA, the section content is 
    actually a reference to another <a href="resourcelist.html">resource</a> that actually holds both the narrative 
    and data content for the section. This design means that the narrative and data can be reused in many other ways. 
-   Note that the most common resource to use for the content of a section is the <a href="list.html">List</a> resource.</li>
+   Note that the most common resource to use for the content of a section is the <a href="list.html">List</a> resource.
+   When a composition and its lists are wrapped into <a href="documents.html">Document</a>, the List narrative 
+   is part of the 'attested content' (see below), and an indivisible part of the document.
+   </li>
 </ul>
 <p>
 In addition, note that both the code lists (e.g. <a href="composition-status.html">Composition status</a>) and the composition resource are <a href="composition-mappings.html">mapped</a> to v3 and/or CDA.

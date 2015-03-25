@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
+// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -46,53 +46,60 @@ public class Attachment extends Type {
     /**
      * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.
      */
-    @Child(name="contentType", type={CodeType.class}, order=0, min=0, max=1)
+    @Child(name ="contentType", type={CodeType.class}, order=0, min=0, max=1)
     @Description(shortDefinition="Mime type of the content, with charset etc.", formalDefinition="Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate." )
     protected CodeType contentType;
 
     /**
      * The human language of the content. The value can be any valid value according to BCP 47.
      */
-    @Child(name="language", type={CodeType.class}, order=1, min=0, max=1)
+    @Child(name ="language", type={CodeType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Human language of the content (BCP-47)", formalDefinition="The human language of the content. The value can be any valid value according to BCP 47." )
     protected CodeType language;
 
     /**
      * The actual data of the attachment - a sequence of bytes. In XML, represented using base64.
      */
-    @Child(name="data", type={Base64BinaryType.class}, order=2, min=0, max=1)
+    @Child(name ="data", type={Base64BinaryType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Data inline, base64ed", formalDefinition="The actual data of the attachment - a sequence of bytes. In XML, represented using base64." )
     protected Base64BinaryType data;
 
     /**
      * An alternative location where the data can be accessed.
      */
-    @Child(name="url", type={UriType.class}, order=3, min=0, max=1)
+    @Child(name ="url", type={UriType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Uri where the data can be found", formalDefinition="An alternative location where the data can be accessed." )
     protected UriType url;
 
     /**
      * The number of bytes of data that make up this attachment.
      */
-    @Child(name="size", type={IntegerType.class}, order=4, min=0, max=1)
+    @Child(name ="size", type={IntegerType.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Number of bytes of content (if url provided)", formalDefinition="The number of bytes of data that make up this attachment." )
     protected IntegerType size;
 
     /**
      * The calculated hash of the data using SHA-1. Represented using base64.
      */
-    @Child(name="hash", type={Base64BinaryType.class}, order=5, min=0, max=1)
+    @Child(name ="hash", type={Base64BinaryType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="Hash of the data (sha-1, base64ed )", formalDefinition="The calculated hash of the data using SHA-1. Represented using base64." )
     protected Base64BinaryType hash;
 
     /**
      * A label or set of text to display in place of the data.
      */
-    @Child(name="title", type={StringType.class}, order=6, min=0, max=1)
+    @Child(name ="title", type={StringType.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Label to display in place of the data", formalDefinition="A label or set of text to display in place of the data." )
     protected StringType title;
 
-    private static final long serialVersionUID = 483430116L;
+    /**
+     * The date that the attachment was first created.
+     */
+    @Child(name ="creation", type={DateTimeType.class}, order=7, min=0, max=1)
+    @Description(shortDefinition="Date attachment was first created", formalDefinition="The date that the attachment was first created." )
+    protected DateTimeType creation;
+
+    private static final long serialVersionUID = 992912868L;
 
     public Attachment() {
       super();
@@ -437,6 +444,55 @@ public class Attachment extends Type {
       return this;
     }
 
+    /**
+     * @return {@link #creation} (The date that the attachment was first created.). This is the underlying object with id, value and extensions. The accessor "getCreation" gives direct access to the value
+     */
+    public DateTimeType getCreationElement() { 
+      if (this.creation == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Attachment.creation");
+        else if (Configuration.doAutoCreate())
+          this.creation = new DateTimeType(); // bb
+      return this.creation;
+    }
+
+    public boolean hasCreationElement() { 
+      return this.creation != null && !this.creation.isEmpty();
+    }
+
+    public boolean hasCreation() { 
+      return this.creation != null && !this.creation.isEmpty();
+    }
+
+    /**
+     * @param value {@link #creation} (The date that the attachment was first created.). This is the underlying object with id, value and extensions. The accessor "getCreation" gives direct access to the value
+     */
+    public Attachment setCreationElement(DateTimeType value) { 
+      this.creation = value;
+      return this;
+    }
+
+    /**
+     * @return The date that the attachment was first created.
+     */
+    public Date getCreation() { 
+      return this.creation == null ? null : this.creation.getValue();
+    }
+
+    /**
+     * @param value The date that the attachment was first created.
+     */
+    public Attachment setCreation(Date value) { 
+      if (value == null)
+        this.creation = null;
+      else {
+        if (this.creation == null)
+          this.creation = new DateTimeType();
+        this.creation.setValue(value);
+      }
+      return this;
+    }
+
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("contentType", "code", "Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.", 0, java.lang.Integer.MAX_VALUE, contentType));
@@ -446,6 +502,7 @@ public class Attachment extends Type {
         childrenList.add(new Property("size", "integer", "The number of bytes of data that make up this attachment.", 0, java.lang.Integer.MAX_VALUE, size));
         childrenList.add(new Property("hash", "base64Binary", "The calculated hash of the data using SHA-1. Represented using base64.", 0, java.lang.Integer.MAX_VALUE, hash));
         childrenList.add(new Property("title", "string", "A label or set of text to display in place of the data.", 0, java.lang.Integer.MAX_VALUE, title));
+        childrenList.add(new Property("creation", "dateTime", "The date that the attachment was first created.", 0, java.lang.Integer.MAX_VALUE, creation));
       }
 
       public Attachment copy() {
@@ -458,6 +515,7 @@ public class Attachment extends Type {
         dst.size = size == null ? null : size.copy();
         dst.hash = hash == null ? null : hash.copy();
         dst.title = title == null ? null : title.copy();
+        dst.creation = creation == null ? null : creation.copy();
         return dst;
       }
 
@@ -474,7 +532,8 @@ public class Attachment extends Type {
         Attachment o = (Attachment) other;
         return compareDeep(contentType, o.contentType, true) && compareDeep(language, o.language, true)
            && compareDeep(data, o.data, true) && compareDeep(url, o.url, true) && compareDeep(size, o.size, true)
-           && compareDeep(hash, o.hash, true) && compareDeep(title, o.title, true);
+           && compareDeep(hash, o.hash, true) && compareDeep(title, o.title, true) && compareDeep(creation, o.creation, true)
+          ;
       }
 
       @Override
@@ -486,13 +545,15 @@ public class Attachment extends Type {
         Attachment o = (Attachment) other;
         return compareValues(contentType, o.contentType, true) && compareValues(language, o.language, true)
            && compareValues(data, o.data, true) && compareValues(url, o.url, true) && compareValues(size, o.size, true)
-           && compareValues(hash, o.hash, true) && compareValues(title, o.title, true);
+           && compareValues(hash, o.hash, true) && compareValues(title, o.title, true) && compareValues(creation, o.creation, true)
+          ;
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && (contentType == null || contentType.isEmpty()) && (language == null || language.isEmpty())
            && (data == null || data.isEmpty()) && (url == null || url.isEmpty()) && (size == null || size.isEmpty())
-           && (hash == null || hash.isEmpty()) && (title == null || title.isEmpty());
+           && (hash == null || hash.isEmpty()) && (title == null || title.isEmpty()) && (creation == null || creation.isEmpty())
+          ;
       }
 
 

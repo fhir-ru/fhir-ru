@@ -40,7 +40,7 @@ variety of architectures and scenarios.
 <h3>Framework</h3>
 <p>
 FHIR is based on "Resources" which are the common building block
-for all exchanges.  Each resource has the following <a href="resources.html">common features</a>:
+for all exchanges.  Each resource has the following <a href="resource.html">common features</a>:
 </p>
 <ul>
  <li>A URL that identifies it</li>
@@ -54,9 +54,9 @@ Resources are represented as either <a href="xml.html">XML</a> or <a href="json.
 different <a href="resourcelist.html">resource types defined</a> in the FHIR specification.
 </p>
 
-<h3>Example Patient</h3>
+<h3>Example Resource</h3>
 <p>
-This is an example of how a <a href="patient.html">patient</a> is represented as a FHIR object in JSON. XML encoding is also defined in the specification.
+This is an example of how a <a href="patient.html">patient</a> is represented as a FHIR object in <a href="json.html">JSON</a>. An <a href="xml.html">XML encoding</a> is also defined in the specification.
 </p>
 
 <div class="example">
@@ -114,7 +114,7 @@ Each resource consists of:
 <ul>
   <li><b>resourceType</b> (line 2) - Required: FHIR defines many different types of resources. See <a href="resourcelist.html">the full index</a></li>
   <li><b>id</b> (line 3) - The id of the resource. Always present when a resource is exchanged, except during the create operation (below)</li>
-  <li><b>meta</b> (lines 4 - 7) - Usually Present: <a href="resources.html#meta">Common use/context data to all resources</a> and managed by the infrastructure. Missing if there is no metadata</li>
+  <li><b>meta</b> (lines 4 - 7) - Usually Present: <a href="resource.html#meta">Common use/context data to all resources</a> and managed by the infrastructure. Missing if there is no metadata</li>
   <li><b>text</b> (lines 12 - 17) - Recommended: XHTML that provides a <a href="narrative.html">human readable representation</a> for the resource</li>
   <li><b>extension</b> (lines 12 - 17) - Optional: <a href="extensibility.html">Extensions</a> defined by the extensibility framework</li>
   <li><b>data</b> (lines 18 - 43) - Optional: data elements defined for each type of resource</li>
@@ -135,7 +135,7 @@ rich but simple set of interactions:
 <li><a href="http.html#delete">Delete</a> = DELETE https://example.com/path/{resourceType}/{id}</li>
 <li><a href="http.html#search">Search</a> = GET https://example.com/path/{resourceType}?search parameters...</li>
 <li><a href="http.html#history">History</a> = GET https://example.com/path/{resourceType}/{id}/_history</li>
-<li><a href="http.html#transaction">Transaction</a> = POST https://example.com/path/</li>
+<li><a href="http.html#transaction">Transaction</a> = POST https://example.com/path/ <i>(POST a tranasction bundle to the system)</i></li>
 <li><a href="operations.html">Operation</a> = GET https://example.com/path/{resourceType}/{id}/${opname}</li>
 </ul>
 <p>
@@ -156,7 +156,13 @@ the FHIR specification defines a <a href="extensibility.html">common extension f
 <h3>Creating a resource</h3>
 <p>
 To <a href="http.html#create">create a resource</a>, send an HTTP POST request to the resource's respective end
-point. In the example below we see the creation of a Patient.
+point. 
+</p>
+<pre> 
+  POST https://example.com/path/{resourceType}
+</pre>
+<p>
+In the example below we see the creation of a Patient.
 </p>
 
 <div class="example">
@@ -262,7 +268,13 @@ Notes:
 <h3>Read Request</h3>
 <p>
 <a href="http.html#read">Reading a resource</a> is done by sending HTTP GET requests to the desired Resource
-end point, as in this example.
+end point.
+</p>
+<pre> 
+  GET https://example.com/path/{resourceType}/{id}
+</pre>
+<p>
+Here's an example.
 </p>
 <div class="example">
 <pre class="http linecounter">
@@ -327,12 +339,11 @@ general pattern is:
 </p>
 <div class="example">
 <pre class="http">
-GET base/{resourceType}?criteria HTTP/1.1
+  GET https://example.com/path/{resourceType}?criteria
 </pre>
 </div>
 <p>
-or simply https://example.com/{resourceType}?criteria. The criteria is a set of
-http parameters that specify which resources to return. The search operation
+The criteria is a set of http parameters that specify which resources to return. The search operation
 </p>
 
 <div class="example">
@@ -368,15 +379,17 @@ The response to a search request is a <a href="bundle.html">bundle</a>: list of 
 <code>      "url" : "https://example.com/base/MedicationPrescription?patient=347"</code>
 <code>    }</code>
 <code>  ],</code>
-<code>  "item": [</code>
+<code>  "entry": [</code>
 <code>    {</code>
-<code>      "resourceType": "MedicationPrescription",</code>
-<code>      "id" : "3123",</code>
-<code>      "meta" : {</code>
-<code>        "versionId" : "1",</code>
-<code>        "lastUpdated" : "2014-08-16T05:31:17Z"</code>
+<code>      "resource" : {</code>
+<code>        "resourceType": "MedicationPrescription",</code>
+<code>        "id" : "3123",</code>
+<code>        "meta" : {</code>
+<code>          "versionId" : "1",</code>
+<code>          "lastUpdated" : "2014-08-16T05:31:17Z"</code>
+<code>        }, </code>
+<code>        ... content of resource ...</code>
 <code>      }, </code>
-<code>      ... content of resource ...</code>
 <code>    }, </code>
 <code>    ... 2 additional resources ....</code>
 <code>  ]</code>
@@ -400,7 +413,14 @@ Notes:
 
 <h3>Update Request</h3>
 <p>
-The client sends the server a new version of the resource to replace the exist version.
+The client sends the server a new version of the resource to replace the exist version - it PUTs it to the location of the existing resource:
+</p>
+<pre> 
+  PUT https://example.com/path/{resourceType}/{id}
+</pre>
+<p>
+Note that there does not need to be a resource already existing at {id} - the server may elect to automatically create the resource at the specified address. 
+Here is an example of updating a patient:
 </p>
 
 <div class="example">
@@ -504,7 +524,7 @@ Implementers notes:
   <li><b>meta.versionId</b> (line 5) - changes each time any resource contents change (except for the last 3 elements in meta)</li>
   <li><b>meta.lastUpdated</b> (line 6) - Changes when the versionId changes. Systems that don't support versions usually don't track lastUpdated either</li>
   <li><b>meta.profile</b> (line 7) - An assertion that the content conforms to a profile. See <a href="profiling.html#resources">Extending and Restricting Resources</a> for further discussion. Can be changed as profiles and value sets change or the system rechecks conformance</li>
-  <li><b>meta.security</b> (lines 8 - 11) - <a href="securitylabels.html">Security labels</a> applied to this resource. These tags connect resources in specific ways to the overall security policy and infrastructure. Security tags can be updated when the resource changes, or whenever the security sub-system chooses to</li>
+  <li><b>meta.security</b> (lines 8 - 11) - <a href="security-labels.html">Security labels</a> applied to this resource. These tags connect resources in specific ways to the overall security policy and infrastructure. Security tags can be updated when the resource changes, or whenever the security sub-system chooses to</li>
   <li><b>meta.tag</b> (lines 12 - 16) - <a href="extras.html">Tags</a> applied to this resource. Tags are used to relate resources to process and workflow. Applications are not required to consider the tags when interpreting the meaning of a resource. Tags can be <a href="http.html#tags">updated</a> without changing the resource version</li>
   <li><b>implicitRules</b> (line 17) - indicates that there is a <a href="profiling.html#agreement">custom agreement</a> about how the resources are used that must be understood in order to safely process the resource. Use of this is discouraged because it restricts sharing, but sometimes necessary</li>
   <li><b>language</b> (line 18) - The <a href="narrative.html#language">base language of the resource</a>. The resource is allowed to have content from other languages; this is just the base, but should be the main language of the resource</li>

@@ -492,9 +492,10 @@ public class Utilities {
   public static String appendPeriod(String s) {
     if (Utilities.noString(s))
       return s;
-    if (s.endsWith("."))
+    s = s.trim();
+    if (s.endsWith(".") || s.endsWith("?"))
       return s;
-    return s.trim()+".";
+    return s+".";
   }
 
 
@@ -695,6 +696,15 @@ public class Utilities {
       return code;
     else 
       return b.toString();
+  }
+
+
+  public static String uncapitalize(String s) {
+    if( s == null ) return null;
+    if( s.length() == 0 ) return s;
+    if( s.length() == 1 ) return s.toLowerCase();
+    
+    return s.substring(0, 1).toLowerCase() + s.substring(1);
   }
 
 

@@ -134,7 +134,7 @@ public class HeirarchicalTableGenerator  {
       if (this.hint == null)
         this.hint = text;
       else
-        this.hint += (this.hint.endsWith(".") ? " " : ". ")+text;
+        this.hint += (this.hint.endsWith(".") || this.hint.endsWith("?") ? " " : ". ")+text;
     }
   }
   
@@ -276,13 +276,13 @@ public class HeirarchicalTableGenerator  {
   public TableModel initNormalTable() {
     TableModel model = new TableModel();
     
-    model.getTitles().add(new Title(null, null, "Имя", null, null, 0));
-    model.getTitles().add(new Title(null, null, "Флаги", null, null, 0));
-    model.getTitles().add(new Title(null, null, "Кард.", null, null, 0));
-    model.getTitles().add(new Title(null, null, "Тип", null, null, 100));
-    model.getTitles().add(new Title(null, null, "Описание и ограничения", null, null, 0));
     model.setDocoImg("help16.png");
     model.setDocoRef("formats.html#table");
+    model.getTitles().add(new Title(null, model.getDocoRef(), "Имя", "Логическое имя элемента", null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), "Флаги", "Информация о применении элемента", null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), "Кард.", "Минимальное и максимальное # раз, которое элемент может появиться в экземпляре", null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), "Тип", "Ссылка на тип элемента", null, 100));
+    model.getTitles().add(new Title(null, model.getDocoRef(), "Описание и ограничения", "Дополнительная информация об элементе", null, 0));
     return model;
   }
 

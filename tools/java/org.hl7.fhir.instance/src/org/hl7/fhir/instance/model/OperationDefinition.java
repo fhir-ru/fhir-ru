@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
+// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -91,8 +91,8 @@ public class OperationDefinition extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case OPERATION: return "operation";
-            case QUERY: return "query";
+            case OPERATION: return "Operation";
+            case QUERY: return "Query";
             default: return "?";
           }
         }
@@ -163,8 +163,8 @@ public class OperationDefinition extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case IN: return "in";
-            case OUT: return "out";
+            case IN: return "In";
+            case OUT: return "Out";
             default: return "?";
           }
         }
@@ -195,14 +195,14 @@ public class OperationDefinition extends DomainResource {
         /**
          * The name of an individual to contact regarding the operation definition.
          */
-        @Child(name="name", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name ="name", type={StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Name of a individual to contact", formalDefinition="The name of an individual to contact regarding the operation definition." )
         protected StringType name;
 
         /**
          * Contact details for individual (if a name was provided) or the publisher.
          */
-        @Child(name="telecom", type={ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="telecom", type={ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Contact details for individual or publisher", formalDefinition="Contact details for individual (if a name was provided) or the publisher." )
         protected List<ContactPoint> telecom;
 
@@ -291,6 +291,16 @@ public class OperationDefinition extends DomainResource {
           return t;
         }
 
+    // syntactic sugar
+        public OperationDefinitionContactComponent addTelecom(ContactPoint t) { //3
+          if (t == null)
+            return this;
+          if (this.telecom == null)
+            this.telecom = new ArrayList<ContactPoint>();
+          this.telecom.add(t);
+          return this;
+        }
+
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("name", "string", "The name of an individual to contact regarding the operation definition.", 0, java.lang.Integer.MAX_VALUE, name));
@@ -341,49 +351,49 @@ public class OperationDefinition extends DomainResource {
         /**
          * The name of used to identify the parameter.
          */
-        @Child(name="name", type={CodeType.class}, order=1, min=1, max=1)
+        @Child(name ="name", type={CodeType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Name of the parameter", formalDefinition="The name of used to identify the parameter." )
         protected CodeType name;
 
         /**
          * Whether this is an input or an output parameter.
          */
-        @Child(name="use", type={CodeType.class}, order=2, min=1, max=1)
+        @Child(name ="use", type={CodeType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="in | out", formalDefinition="Whether this is an input or an output parameter." )
         protected Enumeration<OperationParameterUse> use;
 
         /**
          * The minimum number of times this parameter SHALL appear in the request or response.
          */
-        @Child(name="min", type={IntegerType.class}, order=3, min=1, max=1)
+        @Child(name ="min", type={IntegerType.class}, order=3, min=1, max=1)
         @Description(shortDefinition="Minimum Cardinality", formalDefinition="The minimum number of times this parameter SHALL appear in the request or response." )
         protected IntegerType min;
 
         /**
          * The maximum number of times this element is permitted to appear in the request or response.
          */
-        @Child(name="max", type={StringType.class}, order=4, min=1, max=1)
+        @Child(name ="max", type={StringType.class}, order=4, min=1, max=1)
         @Description(shortDefinition="Maximum Cardinality (a number or *)", formalDefinition="The maximum number of times this element is permitted to appear in the request or response." )
         protected StringType max;
 
         /**
          * Describes the meaning or use of this parameter.
          */
-        @Child(name="documentation", type={StringType.class}, order=5, min=0, max=1)
+        @Child(name ="documentation", type={StringType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="Description of meaning/use", formalDefinition="Describes the meaning or use of this parameter." )
         protected StringType documentation;
 
         /**
          * The type for this parameter.
          */
-        @Child(name="type", type={CodeType.class}, order=6, min=0, max=1)
+        @Child(name ="type", type={CodeType.class}, order=6, min=0, max=1)
         @Description(shortDefinition="What type this parameter hs", formalDefinition="The type for this parameter." )
         protected CodeType type;
 
         /**
          * A profile the specifies the rules that this parameter must conform to.
          */
-        @Child(name="profile", type={StructureDefinition.class}, order=7, min=0, max=1)
+        @Child(name ="profile", type={StructureDefinition.class}, order=7, min=0, max=1)
         @Description(shortDefinition="Profile on the type", formalDefinition="A profile the specifies the rules that this parameter must conform to." )
         protected Reference profile;
 
@@ -395,7 +405,7 @@ public class OperationDefinition extends DomainResource {
         /**
          * The parts of a Tuple Parameter.
          */
-        @Child(name="part", type={}, order=8, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="part", type={}, order=8, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Parts of a Tuple Parameter", formalDefinition="The parts of a Tuple Parameter." )
         protected List<OperationDefinitionParameterPartComponent> part;
 
@@ -765,6 +775,16 @@ public class OperationDefinition extends DomainResource {
           return t;
         }
 
+    // syntactic sugar
+        public OperationDefinitionParameterComponent addPart(OperationDefinitionParameterPartComponent t) { //3
+          if (t == null)
+            return this;
+          if (this.part == null)
+            this.part = new ArrayList<OperationDefinitionParameterPartComponent>();
+          this.part.add(t);
+          return this;
+        }
+
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("name", "code", "The name of used to identify the parameter.", 0, java.lang.Integer.MAX_VALUE, name));
@@ -833,42 +853,42 @@ public class OperationDefinition extends DomainResource {
         /**
          * The name of used to identify the parameter.
          */
-        @Child(name="name", type={CodeType.class}, order=1, min=1, max=1)
+        @Child(name ="name", type={CodeType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Name of the parameter", formalDefinition="The name of used to identify the parameter." )
         protected CodeType name;
 
         /**
          * The minimum number of times this parameter SHALL appear in the request or response.
          */
-        @Child(name="min", type={IntegerType.class}, order=2, min=1, max=1)
+        @Child(name ="min", type={IntegerType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="Minimum Cardinality", formalDefinition="The minimum number of times this parameter SHALL appear in the request or response." )
         protected IntegerType min;
 
         /**
          * The maximum number of times this element is permitted to appear in the request or response.
          */
-        @Child(name="max", type={StringType.class}, order=3, min=1, max=1)
+        @Child(name ="max", type={StringType.class}, order=3, min=1, max=1)
         @Description(shortDefinition="Maximum Cardinality (a number or *)", formalDefinition="The maximum number of times this element is permitted to appear in the request or response." )
         protected StringType max;
 
         /**
          * Describes the meaning or use of this parameter.
          */
-        @Child(name="documentation", type={StringType.class}, order=4, min=0, max=1)
+        @Child(name ="documentation", type={StringType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Description of meaning/use", formalDefinition="Describes the meaning or use of this parameter." )
         protected StringType documentation;
 
         /**
          * The type for this parameter.
          */
-        @Child(name="type", type={CodeType.class}, order=5, min=1, max=1)
+        @Child(name ="type", type={CodeType.class}, order=5, min=1, max=1)
         @Description(shortDefinition="What type this parameter hs", formalDefinition="The type for this parameter." )
         protected CodeType type;
 
         /**
          * A profile the specifies the rules that this parameter must conform to.
          */
-        @Child(name="profile", type={StructureDefinition.class}, order=6, min=0, max=1)
+        @Child(name ="profile", type={StructureDefinition.class}, order=6, min=0, max=1)
         @Description(shortDefinition="Profile on the type", formalDefinition="A profile the specifies the rules that this parameter must conform to." )
         protected Reference profile;
 
@@ -1218,100 +1238,100 @@ public class OperationDefinition extends DomainResource {
   }
 
     /**
-     * The url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).
+     * An absolute url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).
      */
-    @Child(name="url", type={UriType.class}, order=0, min=0, max=1)
-    @Description(shortDefinition="Logical url to reference this operation definition", formalDefinition="The url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri)." )
+    @Child(name ="url", type={UriType.class}, order=0, min=0, max=1)
+    @Description(shortDefinition="Logical url to reference this operation definition", formalDefinition="An absolute url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri)." )
     protected UriType url;
 
     /**
      * The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
      */
-    @Child(name="version", type={StringType.class}, order=1, min=0, max=1)
+    @Child(name ="version", type={StringType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Logical id for this version of the operation definition", formalDefinition="The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp." )
     protected StringType version;
 
     /**
      * A free text natural language name identifying the Profile.
      */
-    @Child(name="name", type={StringType.class}, order=2, min=1, max=1)
+    @Child(name ="name", type={StringType.class}, order=2, min=1, max=1)
     @Description(shortDefinition="Informal name for this profile", formalDefinition="A free text natural language name identifying the Profile." )
     protected StringType name;
 
     /**
      * The name of the individual or organization that published the operation definition.
      */
-    @Child(name="publisher", type={StringType.class}, order=3, min=0, max=1)
+    @Child(name ="publisher", type={StringType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Name of the publisher (Organization or individual)", formalDefinition="The name of the individual or organization that published the operation definition." )
     protected StringType publisher;
 
     /**
      * Contacts to assist a user in finding and communicating with the publisher.
      */
-    @Child(name="contact", type={}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="contact", type={}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Contact details of the publisher", formalDefinition="Contacts to assist a user in finding and communicating with the publisher." )
     protected List<OperationDefinitionContactComponent> contact;
 
     /**
      * A free text natural language description of the profile and its use.
      */
-    @Child(name="description", type={StringType.class}, order=5, min=0, max=1)
+    @Child(name ="description", type={StringType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="Natural language description of the operation", formalDefinition="A free text natural language description of the profile and its use." )
     protected StringType description;
 
     /**
      * Explains why this operation definition is needed and why it's been constrained as it has.
      */
-    @Child(name="requirements", type={StringType.class}, order=6, min=0, max=1)
+    @Child(name ="requirements", type={StringType.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Why is this needed?", formalDefinition="Explains why this operation definition is needed and why it's been constrained as it has." )
     protected StringType requirements;
 
     /**
      * The status of the profile.
      */
-    @Child(name="status", type={CodeType.class}, order=7, min=1, max=1)
+    @Child(name ="status", type={CodeType.class}, order=7, min=1, max=1)
     @Description(shortDefinition="draft | active | retired", formalDefinition="The status of the profile." )
     protected Enumeration<ConformanceResourceStatus> status;
 
     /**
      * This profile was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    @Child(name="experimental", type={BooleanType.class}, order=8, min=0, max=1)
+    @Child(name ="experimental", type={BooleanType.class}, order=8, min=0, max=1)
     @Description(shortDefinition="If for testing purposes, not real usage", formalDefinition="This profile was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage." )
     protected BooleanType experimental;
 
     /**
      * The date that this version of the profile was published.
      */
-    @Child(name="date", type={DateTimeType.class}, order=9, min=0, max=1)
+    @Child(name ="date", type={DateTimeType.class}, order=9, min=0, max=1)
     @Description(shortDefinition="Date for this version of the operation definition", formalDefinition="The date that this version of the profile was published." )
     protected DateTimeType date;
 
     /**
      * Whether this is operation or named query.
      */
-    @Child(name="kind", type={CodeType.class}, order=10, min=1, max=1)
+    @Child(name ="kind", type={CodeType.class}, order=10, min=1, max=1)
     @Description(shortDefinition="operation | query", formalDefinition="Whether this is operation or named query." )
     protected Enumeration<OperationKind> kind;
 
     /**
      * The name used to invoke the operation.
      */
-    @Child(name="code", type={CodeType.class}, order=11, min=1, max=1)
+    @Child(name ="code", type={CodeType.class}, order=11, min=1, max=1)
     @Description(shortDefinition="Name used to invoke the operation", formalDefinition="The name used to invoke the operation." )
     protected CodeType code;
 
     /**
      * Additional information about how to use this operation or named query.
      */
-    @Child(name="notes", type={StringType.class}, order=12, min=0, max=1)
+    @Child(name ="notes", type={StringType.class}, order=12, min=0, max=1)
     @Description(shortDefinition="Additional information about use", formalDefinition="Additional information about how to use this operation or named query." )
     protected StringType notes;
 
     /**
      * Indicates that this operation definition is a constraining profile on the base.
      */
-    @Child(name="base", type={OperationDefinition.class}, order=13, min=0, max=1)
+    @Child(name ="base", type={OperationDefinition.class}, order=13, min=0, max=1)
     @Description(shortDefinition="Marks this as a profile of the base", formalDefinition="Indicates that this operation definition is a constraining profile on the base." )
     protected Reference base;
 
@@ -1323,28 +1343,28 @@ public class OperationDefinition extends DomainResource {
     /**
      * Indicates whether this operation or named query can be invoked at the system level (e.g. without needing to choose a resource type for the context).
      */
-    @Child(name="system", type={BooleanType.class}, order=14, min=1, max=1)
+    @Child(name ="system", type={BooleanType.class}, order=14, min=1, max=1)
     @Description(shortDefinition="Invoke at the system level?", formalDefinition="Indicates whether this operation or named query can be invoked at the system level (e.g. without needing to choose a resource type for the context)." )
     protected BooleanType system;
 
     /**
      * Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a resource type for the context).
      */
-    @Child(name="type", type={CodeType.class}, order=15, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="type", type={CodeType.class}, order=15, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Invoke at resource level for these type", formalDefinition="Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a resource type for the context)." )
     protected List<CodeType> type;
 
     /**
      * Indicates whether this operation can be invoked on a particular instance of one of the given types.
      */
-    @Child(name="instance", type={BooleanType.class}, order=16, min=1, max=1)
+    @Child(name ="instance", type={BooleanType.class}, order=16, min=1, max=1)
     @Description(shortDefinition="Invoke on an instance?", formalDefinition="Indicates whether this operation can be invoked on a particular instance of one of the given types." )
     protected BooleanType instance;
 
     /**
      * The parameters for the operation/query.
      */
-    @Child(name="parameter", type={}, order=17, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="parameter", type={}, order=17, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Parameters for the operation/query", formalDefinition="The parameters for the operation/query." )
     protected List<OperationDefinitionParameterComponent> parameter;
 
@@ -1365,7 +1385,7 @@ public class OperationDefinition extends DomainResource {
     }
 
     /**
-     * @return {@link #url} (The url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @return {@link #url} (An absolute url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
     public UriType getUrlElement() { 
       if (this.url == null)
@@ -1385,7 +1405,7 @@ public class OperationDefinition extends DomainResource {
     }
 
     /**
-     * @param value {@link #url} (The url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @param value {@link #url} (An absolute url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
     public OperationDefinition setUrlElement(UriType value) { 
       this.url = value;
@@ -1393,14 +1413,14 @@ public class OperationDefinition extends DomainResource {
     }
 
     /**
-     * @return The url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).
+     * @return An absolute url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).
      */
     public String getUrl() { 
       return this.url == null ? null : this.url.getValue();
     }
 
     /**
-     * @param value The url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).
+     * @param value An absolute url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).
      */
     public OperationDefinition setUrl(String value) { 
       if (Utilities.noString(value))
@@ -1584,6 +1604,16 @@ public class OperationDefinition extends DomainResource {
         this.contact = new ArrayList<OperationDefinitionContactComponent>();
       this.contact.add(t);
       return t;
+    }
+
+    // syntactic sugar
+    public OperationDefinition addContact(OperationDefinitionContactComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.contact == null)
+        this.contact = new ArrayList<OperationDefinitionContactComponent>();
+      this.contact.add(t);
+      return this;
     }
 
     /**
@@ -2180,9 +2210,19 @@ public class OperationDefinition extends DomainResource {
       return t;
     }
 
+    // syntactic sugar
+    public OperationDefinition addParameter(OperationDefinitionParameterComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.parameter == null)
+        this.parameter = new ArrayList<OperationDefinitionParameterComponent>();
+      this.parameter.add(t);
+      return this;
+    }
+
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("url", "uri", "The url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).", 0, java.lang.Integer.MAX_VALUE, url));
+        childrenList.add(new Property("url", "uri", "An absolute url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).", 0, java.lang.Integer.MAX_VALUE, url));
         childrenList.add(new Property("version", "string", "The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.", 0, java.lang.Integer.MAX_VALUE, version));
         childrenList.add(new Property("name", "string", "A free text natural language name identifying the Profile.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("publisher", "string", "The name of the individual or organization that published the operation definition.", 0, java.lang.Integer.MAX_VALUE, publisher));
@@ -2297,7 +2337,7 @@ public class OperationDefinition extends DomainResource {
   public static final String SP_DATE = "date";
   @SearchParamDefinition(name="type", path="OperationDefinition.type", description="Invoke at resource level for these type", type="token" )
   public static final String SP_TYPE = "type";
-  @SearchParamDefinition(name="url", path="OperationDefinition.url", description="Logical url to reference this operation definition", type="token" )
+  @SearchParamDefinition(name="url", path="OperationDefinition.url", description="Logical url to reference this operation definition", type="uri" )
   public static final String SP_URL = "url";
   @SearchParamDefinition(name="kind", path="OperationDefinition.kind", description="operation | query", type="token" )
   public static final String SP_KIND = "kind";

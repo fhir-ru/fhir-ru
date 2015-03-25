@@ -1059,7 +1059,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2005-01-27T06:40:17"/>
+        <diagnosticDateTime value="2005-01-27T06:40:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -2012,7 +2012,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-08T07:45:17"/>
+        <diagnosticDateTime value="2004-12-08T07:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -2950,7 +2950,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-15T07:20:17"/>
+        <diagnosticDateTime value="2004-12-15T07:20:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -3883,7 +3883,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-22T07:45:17"/>
+        <diagnosticDateTime value="2004-12-22T07:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -4802,7 +4802,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-03T09:45:17"/>
+        <diagnosticDateTime value="2004-12-03T09:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -5723,7 +5723,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-03T20:30:17"/>
+        <diagnosticDateTime value="2004-12-03T20:30:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -6644,7 +6644,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-05T07:15:17"/>
+        <diagnosticDateTime value="2004-12-05T07:15:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -7566,7 +7566,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2005-01-27T06:40:17"/>
+        <diagnosticDateTime value="2005-01-27T06:40:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -8516,7 +8516,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-08T07:45:17"/>
+        <diagnosticDateTime value="2004-12-08T07:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -9454,7 +9454,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-15T07:20:17"/>
+        <diagnosticDateTime value="2004-12-15T07:20:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -10387,7 +10387,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-22T07:45:17"/>
+        <diagnosticDateTime value="2004-12-22T07:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -11306,7 +11306,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-03T09:45:17"/>
+        <diagnosticDateTime value="2004-12-03T09:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -12227,7 +12227,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-03T20:30:17"/>
+        <diagnosticDateTime value="2004-12-03T20:30:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -13148,7 +13148,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-05T07:15:17"/>
+        <diagnosticDateTime value="2004-12-05T07:15:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -13277,7 +13277,7 @@
             <id value="o3"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="AMS"/>
                 <display value="AMPICILLIN/SULBACTAM"/>
               </coding>
@@ -13301,7 +13301,7 @@
             <id value="o4"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="AM"/>
                 <display value="AMPICILLIN"/>
               </coding>
@@ -13325,7 +13325,7 @@
             <id value="o5"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="ATM"/>
                 <display value="AZTREONAM"/>
               </coding>
@@ -13350,7 +13350,7 @@
             <id value="o6"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="CFZ"/>
                 <display value="CEFAZOLIN"/>
               </coding>
@@ -13375,7 +13375,7 @@
             <id value="o7"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="FEP"/>
                 <display value="CEFEPIME"/>
               </coding>
@@ -13400,7 +13400,7 @@
             <id value="o8"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="CTN"/>
                 <display value="CEFOTETAN"/>
               </coding>
@@ -13425,7 +13425,7 @@
             <id value="o9"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="TAZ"/>
                 <display value="CEFTAZIDIME"/>
               </coding>
@@ -13450,7 +13450,7 @@
             <id value="o10"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="CRO"/>
                 <display value="CEFTRIAXONE"/>
               </coding>
@@ -13475,7 +13475,7 @@
             <id value="o11"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="CIPRO"/>
                 <display value="CIPROFLOXACIN"/>
               </coding>
@@ -13500,7 +13500,7 @@
             <id value="o12"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="GM"/>
                 <display value="GENTAMICIN"/>
               </coding>
@@ -13525,7 +13525,7 @@
             <id value="o13"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="IPM"/>
                 <display value="IMIPENEM"/>
               </coding>
@@ -13550,7 +13550,7 @@
             <id value="o14"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="LVX"/>
                 <display value="LEVOFLOXACIN"/>
               </coding>
@@ -13575,7 +13575,7 @@
             <id value="o15"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="NIT"/>
                 <display value="NITROFURANTOIN"/>
               </coding>
@@ -13599,7 +13599,7 @@
             <id value="o16"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="PTZ"/>
                 <display value="PIPERACILLIN/TAZOBAC"/>
               </coding>
@@ -13624,7 +13624,7 @@
             <id value="o17"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="TRSUV"/>
                 <display value="TRIMETH/SULFA"/>
               </coding>
@@ -13649,7 +13649,7 @@
             <id value="o18"/>
             <code>
               <coding>
-                <system value="local"/>
+                <system value="http://example.org/local"/>
                 <code value="TOB"/>
                 <display value="TOBRAMYCIN"/>
               </coding>
@@ -13689,7 +13689,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2005-11-07T21:44:17"/>
+        <diagnosticDateTime value="2005-11-07T21:44:17Z"/>
         <specimen>
           <display value="URINE, CLEAN CATCH/MIDSTREAM"/>
         </specimen>
@@ -13799,7 +13799,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2005-03-07T14:02:17"/>
+        <diagnosticDateTime value="2005-03-07T14:02:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -13880,7 +13880,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="23412355"/>
         </identifier>
-        <diagnosticDateTime value="2012-05-21T10:45:00"/>
+        <diagnosticDateTime value="2012-05-21T10:45:00Z"/>
         <result>
           <reference value="#o1"/>
         </result>

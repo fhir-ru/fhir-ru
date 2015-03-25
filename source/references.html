@@ -45,7 +45,7 @@ search parameters for the references).
 <p>
 Because resources are processed independently, relationships are not considered to be transitive.
 For example, if a <a href="condition.html">Condition</a> resource references a particular
-<a href="patient.html">Patient</a> as its subject, and it links to a <a href="procedure.html">Procedure</a>
+<a href="patient.html">Patient</a> as its subject, and references a <a href="procedure.html">Procedure</a>
 resource as its cause, there is no automatic rule or implication that the procedure
 has the same patient for its subject. Instead, the subject of the procedure must be established
 directly in the procedure itself. Another way to state this is that the context of the subject
@@ -78,7 +78,14 @@ The actual reference looks like this:
  <li>Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a
    flexible approach suitable for use when trading across closed ecosystem boundaries. (see <a href="implementation.html#identity">implementation issues for further discussion</a>)</li>
  <li>Absolute URLs do not need to point to a <a href="http.html">FHIR RESTful server</a>, though this is the preferred approach.
-   Whether or not the reference is to a FHIR RESTful server, the reference SHALL point to a Resource as defined by this specification</li>
+   Whether or not the reference is to a FHIR RESTful server, the reference SHALL point to a Resource as defined by this specification. 
+   <br/>Note: This regex is true if the reference to a resource is consistent with a FHIR API:
+   <pre>
+   ((http|https)://([A-Za-z0-9\\\/\.\:\%\$])*)?([%piperesources%])\/[%id_regex%](\/_history\/[%id_regex%])?
+   </pre>
+   <br/>
+   However conformance with this regex is no guarantee that the end point is a FHIR server
+   </li>
  <li>URLs are always considered to be case-sensitive</li>
  <li>The <i>display</i>, if populated, does generally not have identical content to the Resource.text of the referenced resource.  The purpose is to
    identify what's being referenced, not to more fully describe it</li>
@@ -207,11 +214,6 @@ Some notes about use and interpretation of contained resources:
   <li>Contained resources share the same internal id resolution space as the parent resource (for id attributes, see below)</li>
   <li>Contained resources SHALL NOT contain additional contained resources</li>
   <li>Contained resources SHALL NOT contain any narrative</li>
-  <li>Resources that are contained inline also "inherit" context from their parent resource. For instance, if
-    the parent resource contains a "subject", and the contained resource also has a subject element defined,
-    but does not specify any subject, a processing application may infer that the subject is the same. Note,
-    however, that such inferences are specific to a particular circumstance. There is no rule, for instance,
-	that the meaning of the "subject" element is the same in both parent and contained resources</li>
   <li>A contained resource can only be included in another resource if something in the resource actually refers to it:</li>
 </ul>
 <div class="use">
@@ -222,6 +224,26 @@ Some notes about use and interpretation of contained resources:
 
 </div>
 
+<h4>Context Inside a Resource</h4>
+<p>
+Resources that are contained inline may also "inherit" context from their parent resource. For instance, if
+the parent resource contains a "subject", and the contained resource also has a "subject" element defined,
+but does not specify any subject, a processing application might infer that the subject is the same.
+</p>
+<p>
+However FHIR provides no mechanism for defining or constraining any conduction of "equivalent" properties 
+from a containing resource into any contained resource - not even by declaring the use of a particular profile.
+Best practice is to explicitly include all known properties on contained resources, even if redundant with 
+properties on the containing resource.  E.g. If the containing resource and contained resource both have a 
+"subject" element, both elements should be present, even if they reference the same resouce.  Applications that 
+choose to omit redundant elements on contained resources should not expect other applications to infer 
+(or correctly infer) the intended meaning in this case.  Applications cannot safely presume that omitted 
+elements in contained resources can safely be inferred to be the same as the containing resource.  
+Any attempt to optimize resource content by 'conducting' meaning from containing to contained resources must 
+be managed through out-of-band agreement and must be done with the recognition that any receiver not party 
+to that agreement may not make correct (or any) inferences.
+</p>
+    
 <a name="bundle-refs"> </a>
 <h3>Resolving references to Resources in Bundles</h3>
 <p>
@@ -240,11 +262,12 @@ bundle first when a <a href="#Resource">resource reference</a> is encountered.
 </div>
 <p>
 then the application should look for any entry in the bundle where either the
-entry.id or the entry.link[self] matches the reference URL exactly:
+entry.id matches the reference URL exactly:
 </p>
 <div class="example">
 <pre class="xml">
-   .. bundle ..
+  .. bundle ..
+  &lt;>base value="http://acme.com/fhir"/&gt;
   &lt;item>
     &lt;Organization xmlns="http://hl7.org/fhir">
        &lt;id value="23"/&gt;
@@ -266,7 +289,9 @@ entry.id or the entry.link[self] matches the reference URL exactly:
 </div>
 <p>
 In the second case, the match is based on a specific version of the
-resource. If the resource reference cannot be resolved
+resource. Note that the matching is based on full URLs by prepending
+the base for the entry (see <a href="bundle.html#resolving">"Bundles" for further information</a>).
+If the resource reference cannot be resolved
 in the bundle, the application SHOULD be able to retrieve the resource by
 following the provided URL directly. If it can't, it will have to use some
 other implementation-specific method for resolving how to find the resource.

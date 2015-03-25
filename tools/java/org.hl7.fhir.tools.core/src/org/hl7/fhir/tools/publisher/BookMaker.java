@@ -73,7 +73,7 @@ public class BookMaker {
     checkCrossLinks();
     
     String src = TextFile.fileToString(page.getFolders().srcDir+"book.html");
-    src = page.processPageIncludes(page.getFolders().srcDir+"book.html", src, "book", null, null, null);
+    src = page.processPageIncludes(page.getFolders().srcDir+"book.html", src, "book", null, null, null, "Book");
     XhtmlDocument doc = new XhtmlParser().parse(src, "html");
     XhtmlNode body = doc.getElement("html").getElement("body");
     addTOC(body);   
@@ -139,7 +139,7 @@ public class BookMaker {
 				  }
 				  if (!found && !new File(page.getFolders().dstDir+href).exists() && !href.equals("qa.html")) {
 				    page.getQa().brokenlink("broken link in "+name+": <a href=\""+href+"\">"+node.allText()+"</a>");
-//					  page.log("broken link in "+name+": <a href=\""+href+"\">"+node.allText()+"</a>", LogMessageType.Warning);
+					  page.log("broken link in "+name+": <a href=\""+href+"\">"+node.allText()+"</a>", LogMessageType.Warning);
 				  }
 			  }
 		  }

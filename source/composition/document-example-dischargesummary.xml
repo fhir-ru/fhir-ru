@@ -22,17 +22,13 @@
         <date value="2013-02-01T12:30:02Z"/>
         <type>
           <coding>
-            <system value="www.loinc.org"/>
+            <system value="http://loinc.org"/>
             <code value="28655-9"/>
           </coding>
           <text value="Discharge Summary from Responsible Clinician"/>
         </type>
         <status value="final"/>
-        <confidentiality>
-          <system value="www.nz.org"/>
-          <code value="1234-5"/>
-          <display value="Normal"/>
-        </confidentiality>
+        <confidentiality value="N"/>
         <subject>
           <reference value="http://fhir.healthintersections.com.au/open/Patient/d1"/>
           <display value="Eve Everywoman"/>
@@ -42,12 +38,9 @@
           <display value="Doctor Dave"/>
         </author>
         <!-- The Encounter resource. Points directly to an Encounter resource. Contains the dates of admission, specialtyu etc. -->
-        <section>
-          <title value="Encounter Information"/>
-          <content>
-            <reference value="http://fhir.healthintersections.com.au/open/Encounter/doc-example"/>
-          </content>
-        </section>
+        <encounter>
+          <reference value="http://fhir.healthintersections.com.au/open/Encounter/doc-example"/>
+        </encounter>
         <section>
           <title value="Reason for admission"/>
           <content>
@@ -77,19 +70,43 @@
   <entry>
     <resource>
       <Practitioner>
-        <id value="doc-example"/>
+        <id value="example"/>
         <meta>
           <lastUpdated value="2013-05-05T16:13:03Z"/>
         </meta>
         <text>
           <status value="generated"/>
           <div xmlns="http://www.w3.org/1999/xhtml">
-            <h5>Doctor dave</h5>
+            
+            <p>Dr Adam Careful is a Referring Practitioner for Acme Hospital from 1-Jan 2012 to 31-Mar
+              2012</p>
+          
           </div>
         </text>
+        <identifier>
+          <system value="http://www.acme.org/practitioners"/>
+          <value value="23"/>
+        </identifier>
         <name>
-          <text value="Doctor Dave"/>
+          <family value="Careful"/>
+          <given value="Adam"/>
+          <prefix value="Dr"/>
         </name>
+        <practitionerRole>
+          <managingOrganization>
+            <reference value="Organization/1"/>
+          </managingOrganization><!--   Referring Practitioner for the first 3 months of 2012   -->
+          <role>
+            <coding>
+              <system value="http://hl7.org/fhir/v2/0286"/>
+              <code value="RP"/>
+            </coding>
+          </role>
+          <period>
+            <start value="2012-01-01"/>
+            <end value="2012-03-31"/>
+          </period>
+        </practitionerRole>
       </Practitioner>
     </resource>
   </entry>
@@ -104,9 +121,6 @@
             <h1>Eve Everywoman</h1>
           </div>
         </text>
-        <identifier>
-          <system value="nhi"/>
-        </identifier>
         <name>
           <text value="Eve Everywoman"/>
           <family value="Everywoman1"/>
@@ -167,8 +181,53 @@
   <entry>
     <base value="urn:uuid:"/>
     <resource>
-      <Observation>
+      <List>
         <id value="d0dd51d3-3ab2-4c84-b697-a630c3e40e7a"/>
+        <meta>
+          <lastUpdated value="2013-05-05T16:13:03Z"/>
+        </meta>
+        <text>
+          <status value="additional"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+            <table>
+              <thead>
+                <tr>
+                  <td>Details</td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Acute Asthmatic attack. Was wheezing
+                        for days prior to admission.</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </text>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="8646-2"/>
+            <display value="Hospital admission diagnosis"/>
+          </coding>
+        </code>
+        <mode value="working"/>
+        <!-- This is an entry that refers to an Observation resource in this document. -->
+        <entry>
+          <item>
+            <reference value="urn:uuid:541a72a8-df75-4484-ac89-ac4923f03b81"/>
+          </item>
+        </entry>
+      </List>
+    </resource>
+  </entry>
+  <entry>
+    <base value="urn:uuid:"/>
+    <resource>
+      <Observation>
+        <id value="541a72a8-df75-4484-ac89-ac4923f03b81"/>
         <meta>
           <lastUpdated value="2013-05-05T16:13:03Z"/>
         </meta>
@@ -296,7 +355,7 @@
             <name value="Theophylline 200mg"/>
             <code>
               <coding>
-                <system value="http:/snomed.org"/>
+                <system value="http://snomed.info/sct"/>
                 <code value="66493003"/>
               </coding>
             </code>
@@ -319,7 +378,7 @@
         <!-- a reference to the medication being prescribed. As described earlier, this could be contained (as is the example here), separately
         within the document bundle or simply a reference to a remote server. See comment in the contained resource-->
         <medication>
-          <reference value="Medication/example"/>
+          <reference value="#med1"/>
           <display value="Theophylline 200mg BD"/>
         </medication>
         <dosageInstruction>
@@ -330,8 +389,8 @@
           <scheduledTiming>
             <repeat>
               <frequency value="2"/>
-              <duration value="1"/>
-              <units value="d"/>
+              <period value="1"/>
+              <periodUnits value="d"/>
             </repeat>
           </scheduledTiming>
           <!-- Orally -->
@@ -412,10 +471,10 @@
                         Hives</div>
         </text>
         <recordedDate value="2012-09-17"/>
-        <subject>
+        <patient>
           <reference value="http://fhir.healthintersections.com.au/open/Patient/d1"/>
           <display value="Eve Everywoman"/>
-        </subject>
+        </patient>
         <substance>
           <text value="Doxycycline"/>
         </substance>
@@ -425,7 +484,7 @@
         <event>
           <manifestation>
             <coding>
-              <system value="sys"/>
+              <system value="http://example.org/system"/>
               <code value="xxx"/>
               <display value="Hives"/>
             </coding>

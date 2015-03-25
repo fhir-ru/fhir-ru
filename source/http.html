@@ -77,6 +77,10 @@ The interactions on this page are defined like this:
  </li>
  <li>Content surrounded by {} is optional</li>
 </ul>
+<p>
+Implementations constructing URLs using these patterns SHOULD conform to <a href="https://tools.ietf.org/html/rfc3986#appendix-A">RFC 3986 Section 6 Appendix A</a>
+which requires percent-encoding for a number of characters that occasionally appear in the URLs (mainly in search parameters).
+</p>
 <a name="root"> </a>
 <a name="general"> </a>
 <h3>Service Root URL</h3>
@@ -114,7 +118,8 @@ by the logical identity associated with [xx]. In this case, the FHIR API present
 patient or user centric view of a record, where authentication/authorization is
 explicitly granted to the URL, on the grounds that some identifiable user is associated
 with the logical identity. It is not necessary to explicitly embed the patient id in the
-URL - see <a href="extras.html#compartments">Compartments</a> for an alternative approach.
+URL - implementations can associate an FHIR end-point with a particular patient or 
+provider by using an OAuth login. See <a href="extras.html#compartments">Compartments</a> for the logical underpinning.
 </p>
 
 <h3>Resource Metadata and Versioning</h3>
@@ -135,7 +140,14 @@ ETag: W/"3141"
 </pre>
 <h3>Security</h3>
 <p>
-Using HTTPS is optional, but all production exchange of healthcare data SHOULD use SSL and additional security as appropriate. See <a href="security.html#http">HTTP Security</a> for further information.
+Using HTTPS is optional, but all production exchange of healthcare data SHOULD use SSL and 
+additional security as appropriate. See <a href="security.html#http">HTTP Security</a> for further information.
+</p>
+<p>
+The choice of whether to return 403 or 404 depends upon the specific situation and specific 
+local policies, regulations, and laws. The decision of which error to use will include consideration 
+of whether disclosure of the existence of relevant records is considered an acceptable 
+disclosure of PI or  a prohibited disclosure of PI.
 </p>
 <p>
 Note: to support browser-based client applications, recommend that servers SHOULD implement <a href="http://enable-cors.org/">cross-origin resource sharing</a> for the operations documented here.
@@ -438,14 +450,16 @@ is performed by an HTTP DELETE command as shown:
 A delete interaction means that subsequent <a href="#read">non-version specific reads</a> of a resource
 return a 410 HTTP status code and that the resource is no longer found through <a href="#search">search</a>
 interactions. Upon successful deletion, or if the resource does not exist at all, the server should return
-204 (No Content), or 202 Accepted status code, with an <a href="operationoutcome.html">OperationOutcome</a>
+204 (No Content), or 200 OK status code, with an <a href="operationoutcome.html">OperationOutcome</a>
 resource containing hints and warnings about the deletion; if one is sent it SHALL not include any errors.
 </p>
 <p>
+Whether to support delete at all, or for a particular resource type or a particular instance is at the 
+discretion of the server based on the business rules that apply in its context.  
 If the server refuses to delete resources of that type as a blanket policy, then it should return the 405
 Method not allowed status code. If the server refuses to delete a resource because of reasons specific
 to that resource, such as referential integrity, it should return the 409 Conflict status code.
-Performing this interaction on a resource that is already deleted has no effect, and the server should return a 204 No Response status code.
+Performing this interaction on a resource that is already deleted has no effect, and the server should return a 204 or 200 response.
 Resources that have been deleted may be "brought back to life" by a subsequent <a href="#href">update</a> interaction using an HTTP <code>PUT</code>.
 </p>
 <p>
@@ -455,7 +469,7 @@ deletion interaction should be understood as deleting the record of the resource
 about the state of the real-world corresponding resource implied.
 </p>
 <p>
-The <code>delete</code> operation does not remove a resource's version history. From a version history respect,
+For servers that maintain a version history, the <code>delete</code> operation does not remove a resource's version history. From a version history respect,
 deleting a resource is the equivalent of creating a special kind of history entry that has
 no content and is marked as deleted.
 </p>
@@ -575,33 +589,19 @@ creating duplicate resources for the same record. For example, a client posting 
 <h3>search</h3>
 <p>
 This interaction searches a set of resources based on some filter criteria. The interaction can be performed by several different HTTP commands.
-To search all resources at once:
 </p>
 <pre>
-  GET [base]?[parameters] {&amp;_format=[mime-type]}
+  GET [base]/[type]{?[parameters]{&amp;_format=[mime-type]}}
 </pre>
 <p>
-To search a single resource type:
-</p>
-<pre>
-  GET [base]/[type]?[parameters] {&amp;_format=[mime-type]}
-</pre>
-<p>
-To search a <a href="extras.html#compartments">compartment</a>, either all possible resources, or a single resource type, respectively:
-</p>
-<pre>
-  GET [base]/[Compartment]/[id]/*?[parameters]  {&amp;_format=[mime-type]}
-  GET [base]/[Compartment]/[id]/[type]?[parameters]  {&amp;_format=[mime-type]}
-</pre>
-<p>
-Note that there is a specific operation defined to support <a href="patient-operations.html#everything">fetching an entire patient record</a>.
+This searches all resources of a particular type using the criteria represented in the parameters. 
 </p>
 <p>
 Because of the way that some user agents and proxies treat <code>GET</code> and <code>POST</code> requests, in addition
 to the get based search method above, servers that support <i>search</i> SHALL also support a <code>POST</code> based search:
 </p>
 <pre>
-POST  [base]/[type]/_search?[parameters] {&amp;_format=[mime-type]}
+POST  [base]/[type]/_search{?[parameters]{&amp;_format=[mime-type]}}
 </pre>
 <p>
 This has exactly the same semantics as the equivalent <code>GET</code> command. All these search interactions take a series of parameters that
@@ -619,6 +619,35 @@ list into pages if appropriate. The server MAY also return an OperationOutcome r
 if one is sent it SHALL not include any errors, and it shall be marked with an <a href="search-entry-mode.html">entry
 mode</a> of <code>include</code>.
 </p>
+<h4>Variant Searches</h4>
+<p>
+To search a <a href="extras.html#compartments">compartment</a>, either all possible resources, or for a particular resource type, respectively:
+</p>
+<pre>
+  GET [base]/[Compartment]/[id]/{*?[parameters]{&amp;_format=[mime-type]}}
+  GET [base]/[Compartment]/[id]/[type]{?[parameters]{&amp;_format=[mime-type]}}
+</pre>
+<p>
+For example, to retrieve all the observation resources for a particular LOINC code associated with a particular encounter:
+</p>
+<pre>
+  GET [base]/Encounter/23423445/Observation?code=2951-2  {&amp;_format=[mime-type]}
+</pre>
+<p>
+Note that there are a specific operations defined to support fetching <a href="patient-operations.html#everything">an entire patient record</a>
+or <a href="encounter-operations.html#everything">all record for an encounter</a>.
+</p>
+<p>
+Finally, it's possible to search all resources at once:
+</p>
+<pre>
+  GET [base]?[parameters]{&amp;_format=[mime-type]}
+</pre>
+<p>
+When searching all resources at once, only the parameters defined for all resources 
+can be used.
+</p>
+
 
 <a name="conformance"> </a>
 <h3>conformance</h3>
@@ -823,7 +852,7 @@ not required to support a precision finer than by second.
 </p>
 <p>
 The updates list can be long, so servers may use paging. If they do, they SHALL use the method <a href="#paging">described
-below</a> for breaking the list into pages if appropriate.
+below</a> for breaking the list into pages if appropriate, and maintain the specified _count across pages.
 </p>
 <p>
 The history interaction can be used to set up a subscription from one system
@@ -1050,8 +1079,12 @@ Note that <i>all</i> requests may include an optional <code>Accept</code> header
 </table>
 
 <p>
-Note: N/A = not present, R = Required, O = optional.
+Notes: 
 </p>
+<ul>
+ <li>N/A = not present, R = Required, O = optional</li>
+ <li>For operations defined on all resources, including direct access to the meta element, see <a href="resource-operations.html">Resource Operations</a></li>
+</ul>
 
 <table class="grid">
 <tr><th>Interaction</th><th colspan="6">Response</th></tr>
@@ -1059,7 +1092,7 @@ Note: N/A = not present, R = Required, O = optional.
 <tr><td>read</td>           <td>R</td>            <td>R: Resource</td>           <td>N/A</td>      	<td>R</td>                <td>R: ETag, Last-Modified</td>		<td>200, 404, 410</td></tr>
 <tr><td>vread</td>          <td>R</td>            <td>R: Resource</td>           <td>N/A</td>      	<td>R</td>                <td>R: ETag, Last-Modified</td>		<td>200, 404</td></tr>
 <tr><td>update</td>         <td>R if body</td>    <td>O: Resource (Prefer)</td>                  <td>R on create</td>	<td>R</td>                <td>R: ETag, Last-Modified</td>		<td>200, 201, 400, 404, 405, 409, 412, 422</td></tr>
-<tr><td>delete</td>         <td>R if body</td><td>O: OperationOutcome</td>  <td>N/A</td>      	<td>N/A</td>              <td>N/A</td>							<td>202, 204, 404, 405, 409, 412</td></tr>
+<tr><td>delete</td>         <td>R if body</td><td>O: OperationOutcome</td>  <td>N/A</td>      	<td>N/A</td>              <td>N/A</td>							<td>200, 204, 404, 405, 409, 412</td></tr>
 <tr><td>create</td>         <td>R if body</td>    <td>O : Resource (Prefer)</td>                <td>R</td>			<td>R</td>               <td>R: ETag, Last-Modified</td>		<td>201, 400, 404, 405, 422</td></tr>
 <tr><td>search</td>         <td>R</td>            <td>R: Bundle</td>             <td>N/A</td>      	<td>N/A</td>              <td>N/A</td>							<td>200, 403?</td></tr>
 <tr><td>search-all</td>     <td>R</td>            <td>R: Bundle</td>             <td>N/A</td>      	<td>N/A</td>              <td>N/A</td>							<td>200, 403?</td></tr>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
+// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -107,10 +107,10 @@ public class Narrative extends Element {
         }
         public String getDisplay() {
           switch (this) {
-            case GENERATED: return "generated";
-            case EXTENSIONS: return "extensions";
-            case ADDITIONAL: return "additional";
-            case EMPTY: return "empty";
+            case GENERATED: return "Generated";
+            case EXTENSIONS: return "Extensions";
+            case ADDITIONAL: return "Additional";
+            case EMPTY: return "Empty";
             default: return "?";
           }
         }
@@ -147,14 +147,14 @@ public class Narrative extends Element {
     /**
      * The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.
      */
-    @Child(name="status", type={CodeType.class}, order=0, min=1, max=1)
+    @Child(name ="status", type={CodeType.class}, order=0, min=1, max=1)
     @Description(shortDefinition="generated | extensions | additional | empty", formalDefinition="The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data." )
     protected Enumeration<NarrativeStatus> status;
 
     /**
      * The actual narrative content, a stripped down version of XHTML.
      */
-    @Child(name="div", type={}, order=1, min=1, max=1)
+    @Child(name ="div", type={}, order=1, min=1, max=1)
     @Description(shortDefinition="Limited xhtml content", formalDefinition="The actual narrative content, a stripped down version of XHTML." )
     protected XhtmlNode div;
 

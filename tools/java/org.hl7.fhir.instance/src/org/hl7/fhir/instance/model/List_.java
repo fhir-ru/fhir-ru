@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
+// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -99,9 +99,9 @@ public class List_ extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case WORKING: return "working";
-            case SNAPSHOT: return "snapshot";
-            case CHANGES: return "changes";
+            case WORKING: return "Working";
+            case SNAPSHOT: return "Snapshot";
+            case CHANGES: return "Changes";
             default: return "?";
           }
         }
@@ -136,28 +136,28 @@ public class List_ extends DomainResource {
         /**
          * The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list.
          */
-        @Child(name="flag", type={CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="flag", type={CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Workflow information about this item", formalDefinition="The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list." )
         protected List<CodeableConcept> flag;
 
         /**
          * True if this item is marked as deleted in the list.
          */
-        @Child(name="deleted", type={BooleanType.class}, order=2, min=0, max=1)
+        @Child(name ="deleted", type={BooleanType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="If this item is actually marked as deleted", formalDefinition="True if this item is marked as deleted in the list." )
         protected BooleanType deleted;
 
         /**
          * When this item was added to the list.
          */
-        @Child(name="date", type={DateTimeType.class}, order=3, min=0, max=1)
+        @Child(name ="date", type={DateTimeType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="When item added to list", formalDefinition="When this item was added to the list." )
         protected DateTimeType date;
 
         /**
          * A reference to the actual resource from which data was derived.
          */
-        @Child(name="item", type={}, order=4, min=1, max=1)
+        @Child(name ="item", type={}, order=4, min=1, max=1)
         @Description(shortDefinition="Actual entry", formalDefinition="A reference to the actual resource from which data was derived." )
         protected Reference item;
 
@@ -205,6 +205,16 @@ public class List_ extends DomainResource {
             this.flag = new ArrayList<CodeableConcept>();
           this.flag.add(t);
           return t;
+        }
+
+    // syntactic sugar
+        public ListEntryComponent addFlag(CodeableConcept t) { //3
+          if (t == null)
+            return this;
+          if (this.flag == null)
+            this.flag = new ArrayList<CodeableConcept>();
+          this.flag.add(t);
+          return this;
         }
 
         /**
@@ -393,21 +403,21 @@ public class List_ extends DomainResource {
     /**
      * Identifier for the List assigned for business purposes outside the context of FHIR.
      */
-    @Child(name="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Business identifier", formalDefinition="Identifier for the List assigned for business purposes outside the context of FHIR." )
     protected List<Identifier> identifier;
 
     /**
      * This code defines the purpose of the list - why it was created.
      */
-    @Child(name="code", type={CodeableConcept.class}, order=1, min=0, max=1)
+    @Child(name ="code", type={CodeableConcept.class}, order=1, min=0, max=1)
     @Description(shortDefinition="What the purpose of this list is", formalDefinition="This code defines the purpose of the list - why it was created." )
     protected CodeableConcept code;
 
     /**
      * The common subject (or patient) of the resources that are in the list, if there is one.
      */
-    @Child(name="subject", type={Patient.class, Group.class, Device.class, Location.class}, order=2, min=0, max=1)
+    @Child(name ="subject", type={Patient.class, Group.class, Device.class, Location.class}, order=2, min=0, max=1)
     @Description(shortDefinition="If all resources have the same subject", formalDefinition="The common subject (or patient) of the resources that are in the list, if there is one." )
     protected Reference subject;
 
@@ -419,7 +429,7 @@ public class List_ extends DomainResource {
     /**
      * The entity responsible for deciding what the contents of the list were.
      */
-    @Child(name="source", type={Practitioner.class, Patient.class, Device.class}, order=3, min=0, max=1)
+    @Child(name ="source", type={Practitioner.class, Patient.class, Device.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Who and/or what defined the list contents", formalDefinition="The entity responsible for deciding what the contents of the list were." )
     protected Reference source;
 
@@ -431,39 +441,39 @@ public class List_ extends DomainResource {
     /**
      * The date that the list was prepared.
      */
-    @Child(name="date", type={DateTimeType.class}, order=4, min=0, max=1)
+    @Child(name ="date", type={DateTimeType.class}, order=4, min=0, max=1)
     @Description(shortDefinition="When the list was prepared", formalDefinition="The date that the list was prepared." )
     protected DateTimeType date;
 
     /**
-     * Whether items in the list have a meaningful order.
+     * What order applies to the items in the list.
      */
-    @Child(name="ordered", type={BooleanType.class}, order=5, min=0, max=1)
-    @Description(shortDefinition="Whether items in the list have a meaningful order", formalDefinition="Whether items in the list have a meaningful order." )
-    protected BooleanType ordered;
+    @Child(name ="orderedBy", type={CodeableConcept.class}, order=5, min=0, max=1)
+    @Description(shortDefinition="What order the list has", formalDefinition="What order applies to the items in the list." )
+    protected CodeableConcept orderedBy;
 
     /**
      * How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.
      */
-    @Child(name="mode", type={CodeType.class}, order=6, min=1, max=1)
+    @Child(name ="mode", type={CodeType.class}, order=6, min=1, max=1)
     @Description(shortDefinition="working | snapshot | changes", formalDefinition="How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted." )
     protected Enumeration<ListMode> mode;
 
     /**
      * Entries in this list.
      */
-    @Child(name="entry", type={}, order=7, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="entry", type={}, order=7, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Entries in the list", formalDefinition="Entries in this list." )
     protected List<ListEntryComponent> entry;
 
     /**
      * If the list is empty, why the list is empty.
      */
-    @Child(name="emptyReason", type={CodeableConcept.class}, order=8, min=0, max=1)
+    @Child(name ="emptyReason", type={CodeableConcept.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Why list is empty", formalDefinition="If the list is empty, why the list is empty." )
     protected CodeableConcept emptyReason;
 
-    private static final long serialVersionUID = 1475323442L;
+    private static final long serialVersionUID = -1912258148L;
 
     public List_() {
       super();
@@ -502,6 +512,16 @@ public class List_ extends DomainResource {
         this.identifier = new ArrayList<Identifier>();
       this.identifier.add(t);
       return t;
+    }
+
+    // syntactic sugar
+    public List_ addIdentifier(Identifier t) { //3
+      if (t == null)
+        return this;
+      if (this.identifier == null)
+        this.identifier = new ArrayList<Identifier>();
+      this.identifier.add(t);
+      return this;
     }
 
     /**
@@ -656,47 +676,26 @@ public class List_ extends DomainResource {
     }
 
     /**
-     * @return {@link #ordered} (Whether items in the list have a meaningful order.). This is the underlying object with id, value and extensions. The accessor "getOrdered" gives direct access to the value
+     * @return {@link #orderedBy} (What order applies to the items in the list.)
      */
-    public BooleanType getOrderedElement() { 
-      if (this.ordered == null)
+    public CodeableConcept getOrderedBy() { 
+      if (this.orderedBy == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create List_.ordered");
+          throw new Error("Attempt to auto-create List_.orderedBy");
         else if (Configuration.doAutoCreate())
-          this.ordered = new BooleanType(); // bb
-      return this.ordered;
+          this.orderedBy = new CodeableConcept(); // cc
+      return this.orderedBy;
     }
 
-    public boolean hasOrderedElement() { 
-      return this.ordered != null && !this.ordered.isEmpty();
-    }
-
-    public boolean hasOrdered() { 
-      return this.ordered != null && !this.ordered.isEmpty();
+    public boolean hasOrderedBy() { 
+      return this.orderedBy != null && !this.orderedBy.isEmpty();
     }
 
     /**
-     * @param value {@link #ordered} (Whether items in the list have a meaningful order.). This is the underlying object with id, value and extensions. The accessor "getOrdered" gives direct access to the value
+     * @param value {@link #orderedBy} (What order applies to the items in the list.)
      */
-    public List_ setOrderedElement(BooleanType value) { 
-      this.ordered = value;
-      return this;
-    }
-
-    /**
-     * @return Whether items in the list have a meaningful order.
-     */
-    public boolean getOrdered() { 
-      return this.ordered == null || this.ordered.isEmpty() ? false : this.ordered.getValue();
-    }
-
-    /**
-     * @param value Whether items in the list have a meaningful order.
-     */
-    public List_ setOrdered(boolean value) { 
-        if (this.ordered == null)
-          this.ordered = new BooleanType();
-        this.ordered.setValue(value);
+    public List_ setOrderedBy(CodeableConcept value) { 
+      this.orderedBy = value;
       return this;
     }
 
@@ -775,6 +774,16 @@ public class List_ extends DomainResource {
       return t;
     }
 
+    // syntactic sugar
+    public List_ addEntry(ListEntryComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.entry == null)
+        this.entry = new ArrayList<ListEntryComponent>();
+      this.entry.add(t);
+      return this;
+    }
+
     /**
      * @return {@link #emptyReason} (If the list is empty, why the list is empty.)
      */
@@ -806,7 +815,7 @@ public class List_ extends DomainResource {
         childrenList.add(new Property("subject", "Reference(Patient|Group|Device|Location)", "The common subject (or patient) of the resources that are in the list, if there is one.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("source", "Reference(Practitioner|Patient|Device)", "The entity responsible for deciding what the contents of the list were.", 0, java.lang.Integer.MAX_VALUE, source));
         childrenList.add(new Property("date", "dateTime", "The date that the list was prepared.", 0, java.lang.Integer.MAX_VALUE, date));
-        childrenList.add(new Property("ordered", "boolean", "Whether items in the list have a meaningful order.", 0, java.lang.Integer.MAX_VALUE, ordered));
+        childrenList.add(new Property("orderedBy", "CodeableConcept", "What order applies to the items in the list.", 0, java.lang.Integer.MAX_VALUE, orderedBy));
         childrenList.add(new Property("mode", "code", "How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.", 0, java.lang.Integer.MAX_VALUE, mode));
         childrenList.add(new Property("entry", "", "Entries in this list.", 0, java.lang.Integer.MAX_VALUE, entry));
         childrenList.add(new Property("emptyReason", "CodeableConcept", "If the list is empty, why the list is empty.", 0, java.lang.Integer.MAX_VALUE, emptyReason));
@@ -824,7 +833,7 @@ public class List_ extends DomainResource {
         dst.subject = subject == null ? null : subject.copy();
         dst.source = source == null ? null : source.copy();
         dst.date = date == null ? null : date.copy();
-        dst.ordered = ordered == null ? null : ordered.copy();
+        dst.orderedBy = orderedBy == null ? null : orderedBy.copy();
         dst.mode = mode == null ? null : mode.copy();
         if (entry != null) {
           dst.entry = new ArrayList<ListEntryComponent>();
@@ -847,7 +856,7 @@ public class List_ extends DomainResource {
           return false;
         List_ o = (List_) other;
         return compareDeep(identifier, o.identifier, true) && compareDeep(code, o.code, true) && compareDeep(subject, o.subject, true)
-           && compareDeep(source, o.source, true) && compareDeep(date, o.date, true) && compareDeep(ordered, o.ordered, true)
+           && compareDeep(source, o.source, true) && compareDeep(date, o.date, true) && compareDeep(orderedBy, o.orderedBy, true)
            && compareDeep(mode, o.mode, true) && compareDeep(entry, o.entry, true) && compareDeep(emptyReason, o.emptyReason, true)
           ;
       }
@@ -859,14 +868,13 @@ public class List_ extends DomainResource {
         if (!(other instanceof List_))
           return false;
         List_ o = (List_) other;
-        return compareValues(date, o.date, true) && compareValues(ordered, o.ordered, true) && compareValues(mode, o.mode, true)
-          ;
+        return compareValues(date, o.date, true) && compareValues(mode, o.mode, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (code == null || code.isEmpty())
            && (subject == null || subject.isEmpty()) && (source == null || source.isEmpty()) && (date == null || date.isEmpty())
-           && (ordered == null || ordered.isEmpty()) && (mode == null || mode.isEmpty()) && (entry == null || entry.isEmpty())
+           && (orderedBy == null || orderedBy.isEmpty()) && (mode == null || mode.isEmpty()) && (entry == null || entry.isEmpty())
            && (emptyReason == null || emptyReason.isEmpty());
       }
 

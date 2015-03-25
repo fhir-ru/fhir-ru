@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
+// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -331,11 +331,11 @@ public class AuditEvent extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case _1: return "1";
-            case _2: return "2";
-            case _3: return "3";
-            case _4: return "4";
-            case _5: return "5";
+            case _1: return " ";
+            case _2: return " ";
+            case _3: return " ";
+            case _4: return " ";
+            case _5: return " ";
             default: return "?";
           }
         }
@@ -436,10 +436,10 @@ public class AuditEvent extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case _1: return "1";
-            case _2: return "2";
-            case _3: return "3";
-            case _4: return "4";
+            case _1: return " ";
+            case _2: return " ";
+            case _3: return " ";
+            case _4: return " ";
             default: return "?";
           }
         }
@@ -1015,21 +1015,21 @@ public class AuditEvent extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case _1: return "1";
-            case _2: return "2";
-            case _3: return "3";
-            case _4: return "4";
-            case _5: return "5";
-            case _6: return "6";
-            case _7: return "7";
-            case _8: return "8";
-            case _9: return "9";
-            case _10: return "10";
-            case _11: return "11";
-            case _12: return "12";
-            case _13: return "13";
-            case _14: return "14";
-            case _15: return "15";
+            case _1: return " ";
+            case _2: return " ";
+            case _3: return " ";
+            case _4: return " ";
+            case _5: return " ";
+            case _6: return " ";
+            case _7: return " ";
+            case _8: return " ";
+            case _9: return " ";
+            case _10: return "  ";
+            case _11: return "  ";
+            case _12: return "  ";
+            case _13: return "  ";
+            case _14: return "  ";
+            case _15: return "  ";
             default: return "?";
           }
         }
@@ -1112,42 +1112,42 @@ public class AuditEvent extends DomainResource {
         /**
          * Identifier for a family of the event.
          */
-        @Child(name="type", type={CodeableConcept.class}, order=1, min=1, max=1)
+        @Child(name ="type", type={CodeableConcept.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Type/identifier of event", formalDefinition="Identifier for a family of the event." )
         protected CodeableConcept type;
 
         /**
          * Identifier for the category of event.
          */
-        @Child(name="subtype", type={CodeableConcept.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="subtype", type={CodeableConcept.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="More specific type/id for the event", formalDefinition="Identifier for the category of event." )
         protected List<CodeableConcept> subtype;
 
         /**
          * Indicator for type of action performed during the event that generated the audit.
          */
-        @Child(name="action", type={CodeType.class}, order=3, min=0, max=1)
+        @Child(name ="action", type={CodeType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Type of action performed during the event", formalDefinition="Indicator for type of action performed during the event that generated the audit." )
         protected Enumeration<AuditEventAction> action;
 
         /**
          * The time when the event occurred on the source.
          */
-        @Child(name="dateTime", type={InstantType.class}, order=4, min=1, max=1)
+        @Child(name ="dateTime", type={InstantType.class}, order=4, min=1, max=1)
         @Description(shortDefinition="Time when the event occurred on source", formalDefinition="The time when the event occurred on the source." )
         protected InstantType dateTime;
 
         /**
          * Indicates whether the event succeeded or failed.
          */
-        @Child(name="outcome", type={CodeType.class}, order=5, min=0, max=1)
+        @Child(name ="outcome", type={CodeType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="Whether the event succeeded or failed", formalDefinition="Indicates whether the event succeeded or failed." )
         protected Enumeration<AuditEventOutcome> outcome;
 
         /**
          * A free text description of the outcome of the event.
          */
-        @Child(name="outcomeDesc", type={StringType.class}, order=6, min=0, max=1)
+        @Child(name ="outcomeDesc", type={StringType.class}, order=6, min=0, max=1)
         @Description(shortDefinition="Description of the event outcome", formalDefinition="A free text description of the outcome of the event." )
         protected StringType outcomeDesc;
 
@@ -1215,6 +1215,16 @@ public class AuditEvent extends DomainResource {
             this.subtype = new ArrayList<CodeableConcept>();
           this.subtype.add(t);
           return t;
+        }
+
+    // syntactic sugar
+        public AuditEventEventComponent addSubtype(CodeableConcept t) { //3
+          if (t == null)
+            return this;
+          if (this.subtype == null)
+            this.subtype = new ArrayList<CodeableConcept>();
+          this.subtype.add(t);
+          return this;
         }
 
         /**
@@ -1471,14 +1481,14 @@ public class AuditEvent extends DomainResource {
         /**
          * Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the role-based access control security system used in the local context.
          */
-        @Child(name="role", type={CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="role", type={CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="User roles (e.g. local RBAC codes)", formalDefinition="Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the role-based access control security system used in the local context." )
         protected List<CodeableConcept> role;
 
         /**
          * Direct reference to a resource that identifies the participant.
          */
-        @Child(name="reference", type={Practitioner.class, Patient.class, Device.class}, order=2, min=0, max=1)
+        @Child(name ="reference", type={Practitioner.class, Organization.class, Device.class, Patient.class, RelatedPerson.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Direct reference to resource", formalDefinition="Direct reference to a resource that identifies the participant." )
         protected Reference reference;
 
@@ -1490,46 +1500,65 @@ public class AuditEvent extends DomainResource {
         /**
          * Unique identifier for the user actively participating in the event.
          */
-        @Child(name="userId", type={StringType.class}, order=3, min=0, max=1)
+        @Child(name ="userId", type={StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Unique identifier for the user", formalDefinition="Unique identifier for the user actively participating in the event." )
         protected StringType userId;
 
         /**
          * Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.
          */
-        @Child(name="altId", type={StringType.class}, order=4, min=0, max=1)
+        @Child(name ="altId", type={StringType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Alternative User id e.g. authentication", formalDefinition="Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available." )
         protected StringType altId;
 
         /**
          * Human-meaningful name for the user.
          */
-        @Child(name="name", type={StringType.class}, order=5, min=0, max=1)
+        @Child(name ="name", type={StringType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="Human-meaningful name for the user", formalDefinition="Human-meaningful name for the user." )
         protected StringType name;
 
         /**
          * Indicator that the user is or is not the requestor, or initiator, for the event being audited.
          */
-        @Child(name="requestor", type={BooleanType.class}, order=6, min=1, max=1)
+        @Child(name ="requestor", type={BooleanType.class}, order=6, min=1, max=1)
         @Description(shortDefinition="Whether user is initiator", formalDefinition="Indicator that the user is or is not the requestor, or initiator, for the event being audited." )
         protected BooleanType requestor;
 
         /**
+         * Where the event occurred.
+         */
+        @Child(name ="location", type={Location.class}, order=7, min=0, max=1)
+        @Description(shortDefinition="Where", formalDefinition="Where the event occurred." )
+        protected Reference location;
+
+        /**
+         * The actual object that is the target of the reference (Where the event occurred.)
+         */
+        protected Location locationTarget;
+
+        /**
+         * The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.
+         */
+        @Child(name ="policy", type={UriType.class}, order=8, min=0, max=Child.MAX_UNLIMITED)
+        @Description(shortDefinition="Policy that authorized event", formalDefinition="The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used." )
+        protected List<UriType> policy;
+
+        /**
          * Type of media involved. Used when the event is about exporting/importing onto media.
          */
-        @Child(name="media", type={Coding.class}, order=7, min=0, max=1)
+        @Child(name ="media", type={Coding.class}, order=9, min=0, max=1)
         @Description(shortDefinition="Type of media", formalDefinition="Type of media involved. Used when the event is about exporting/importing onto media." )
         protected Coding media;
 
         /**
          * Logical network location for application activity, if the activity has a network location.
          */
-        @Child(name="network", type={}, order=8, min=0, max=1)
+        @Child(name ="network", type={}, order=10, min=0, max=1)
         @Description(shortDefinition="Logical network location for application activity", formalDefinition="Logical network location for application activity, if the activity has a network location." )
         protected AuditEventParticipantNetworkComponent network;
 
-        private static final long serialVersionUID = 339756070L;
+        private static final long serialVersionUID = -424356495L;
 
       public AuditEventParticipantComponent() {
         super();
@@ -1568,6 +1597,16 @@ public class AuditEvent extends DomainResource {
             this.role = new ArrayList<CodeableConcept>();
           this.role.add(t);
           return t;
+        }
+
+    // syntactic sugar
+        public AuditEventParticipantComponent addRole(CodeableConcept t) { //3
+          if (t == null)
+            return this;
+          if (this.role == null)
+            this.role = new ArrayList<CodeableConcept>();
+          this.role.add(t);
+          return this;
         }
 
         /**
@@ -1802,6 +1841,104 @@ public class AuditEvent extends DomainResource {
         }
 
         /**
+         * @return {@link #location} (Where the event occurred.)
+         */
+        public Reference getLocation() { 
+          if (this.location == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create AuditEventParticipantComponent.location");
+            else if (Configuration.doAutoCreate())
+              this.location = new Reference(); // cc
+          return this.location;
+        }
+
+        public boolean hasLocation() { 
+          return this.location != null && !this.location.isEmpty();
+        }
+
+        /**
+         * @param value {@link #location} (Where the event occurred.)
+         */
+        public AuditEventParticipantComponent setLocation(Reference value) { 
+          this.location = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #location} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Where the event occurred.)
+         */
+        public Location getLocationTarget() { 
+          if (this.locationTarget == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create AuditEventParticipantComponent.location");
+            else if (Configuration.doAutoCreate())
+              this.locationTarget = new Location(); // aa
+          return this.locationTarget;
+        }
+
+        /**
+         * @param value {@link #location} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Where the event occurred.)
+         */
+        public AuditEventParticipantComponent setLocationTarget(Location value) { 
+          this.locationTarget = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #policy} (The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.)
+         */
+        public List<UriType> getPolicy() { 
+          if (this.policy == null)
+            this.policy = new ArrayList<UriType>();
+          return this.policy;
+        }
+
+        public boolean hasPolicy() { 
+          if (this.policy == null)
+            return false;
+          for (UriType item : this.policy)
+            if (!item.isEmpty())
+              return true;
+          return false;
+        }
+
+        /**
+         * @return {@link #policy} (The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.)
+         */
+    // syntactic sugar
+        public UriType addPolicyElement() {//2 
+          UriType t = new UriType();
+          if (this.policy == null)
+            this.policy = new ArrayList<UriType>();
+          this.policy.add(t);
+          return t;
+        }
+
+        /**
+         * @param value {@link #policy} (The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.)
+         */
+        public AuditEventParticipantComponent addPolicy(String value) { //1
+          UriType t = new UriType();
+          t.setValue(value);
+          if (this.policy == null)
+            this.policy = new ArrayList<UriType>();
+          this.policy.add(t);
+          return this;
+        }
+
+        /**
+         * @param value {@link #policy} (The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.)
+         */
+        public boolean hasPolicy(String value) { 
+          if (this.policy == null)
+            return false;
+          for (UriType v : this.policy)
+            if (v.equals(value)) // uri
+              return true;
+          return false;
+        }
+
+        /**
          * @return {@link #media} (Type of media involved. Used when the event is about exporting/importing onto media.)
          */
         public Coding getMedia() { 
@@ -1852,11 +1989,13 @@ public class AuditEvent extends DomainResource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("role", "CodeableConcept", "Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the role-based access control security system used in the local context.", 0, java.lang.Integer.MAX_VALUE, role));
-          childrenList.add(new Property("reference", "Reference(Practitioner|Patient|Device)", "Direct reference to a resource that identifies the participant.", 0, java.lang.Integer.MAX_VALUE, reference));
+          childrenList.add(new Property("reference", "Reference(Practitioner|Organization|Device|Patient|RelatedPerson)", "Direct reference to a resource that identifies the participant.", 0, java.lang.Integer.MAX_VALUE, reference));
           childrenList.add(new Property("userId", "string", "Unique identifier for the user actively participating in the event.", 0, java.lang.Integer.MAX_VALUE, userId));
           childrenList.add(new Property("altId", "string", "Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.", 0, java.lang.Integer.MAX_VALUE, altId));
           childrenList.add(new Property("name", "string", "Human-meaningful name for the user.", 0, java.lang.Integer.MAX_VALUE, name));
           childrenList.add(new Property("requestor", "boolean", "Indicator that the user is or is not the requestor, or initiator, for the event being audited.", 0, java.lang.Integer.MAX_VALUE, requestor));
+          childrenList.add(new Property("location", "Reference(Location)", "Where the event occurred.", 0, java.lang.Integer.MAX_VALUE, location));
+          childrenList.add(new Property("policy", "uri", "The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.", 0, java.lang.Integer.MAX_VALUE, policy));
           childrenList.add(new Property("media", "Coding", "Type of media involved. Used when the event is about exporting/importing onto media.", 0, java.lang.Integer.MAX_VALUE, media));
           childrenList.add(new Property("network", "", "Logical network location for application activity, if the activity has a network location.", 0, java.lang.Integer.MAX_VALUE, network));
         }
@@ -1874,6 +2013,12 @@ public class AuditEvent extends DomainResource {
         dst.altId = altId == null ? null : altId.copy();
         dst.name = name == null ? null : name.copy();
         dst.requestor = requestor == null ? null : requestor.copy();
+        dst.location = location == null ? null : location.copy();
+        if (policy != null) {
+          dst.policy = new ArrayList<UriType>();
+          for (UriType i : policy)
+            dst.policy.add(i.copy());
+        };
         dst.media = media == null ? null : media.copy();
         dst.network = network == null ? null : network.copy();
         return dst;
@@ -1888,7 +2033,8 @@ public class AuditEvent extends DomainResource {
         AuditEventParticipantComponent o = (AuditEventParticipantComponent) other;
         return compareDeep(role, o.role, true) && compareDeep(reference, o.reference, true) && compareDeep(userId, o.userId, true)
            && compareDeep(altId, o.altId, true) && compareDeep(name, o.name, true) && compareDeep(requestor, o.requestor, true)
-           && compareDeep(media, o.media, true) && compareDeep(network, o.network, true);
+           && compareDeep(location, o.location, true) && compareDeep(policy, o.policy, true) && compareDeep(media, o.media, true)
+           && compareDeep(network, o.network, true);
       }
 
       @Override
@@ -1899,13 +2045,14 @@ public class AuditEvent extends DomainResource {
           return false;
         AuditEventParticipantComponent o = (AuditEventParticipantComponent) other;
         return compareValues(userId, o.userId, true) && compareValues(altId, o.altId, true) && compareValues(name, o.name, true)
-           && compareValues(requestor, o.requestor, true);
+           && compareValues(requestor, o.requestor, true) && compareValues(policy, o.policy, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && (role == null || role.isEmpty()) && (reference == null || reference.isEmpty())
            && (userId == null || userId.isEmpty()) && (altId == null || altId.isEmpty()) && (name == null || name.isEmpty())
-           && (requestor == null || requestor.isEmpty()) && (media == null || media.isEmpty()) && (network == null || network.isEmpty())
+           && (requestor == null || requestor.isEmpty()) && (location == null || location.isEmpty())
+           && (policy == null || policy.isEmpty()) && (media == null || media.isEmpty()) && (network == null || network.isEmpty())
           ;
       }
 
@@ -1916,14 +2063,14 @@ public class AuditEvent extends DomainResource {
         /**
          * An identifier for the network access point of the user device for the audit event.
          */
-        @Child(name="identifier", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name ="identifier", type={StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Identifier for the network access point of the user device", formalDefinition="An identifier for the network access point of the user device for the audit event." )
         protected StringType identifier;
 
         /**
          * An identifier for the type of network access point that originated the audit event.
          */
-        @Child(name="type", type={CodeType.class}, order=2, min=0, max=1)
+        @Child(name ="type", type={CodeType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="The type of network access point", formalDefinition="An identifier for the type of network access point that originated the audit event." )
         protected Enumeration<NetworkType> type;
 
@@ -2077,21 +2224,21 @@ public class AuditEvent extends DomainResource {
         /**
          * Logical source location within the healthcare enterprise network.
          */
-        @Child(name="site", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name ="site", type={StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Logical source location within the enterprise", formalDefinition="Logical source location within the healthcare enterprise network." )
         protected StringType site;
 
         /**
          * Identifier of the source where the event originated.
          */
-        @Child(name="identifier", type={StringType.class}, order=2, min=1, max=1)
+        @Child(name ="identifier", type={StringType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="The id of source where event originated", formalDefinition="Identifier of the source where the event originated." )
         protected StringType identifier;
 
         /**
          * Code specifying the type of source where event originated.
          */
-        @Child(name="type", type={Coding.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="type", type={Coding.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="The type of source where event originated", formalDefinition="Code specifying the type of source where event originated." )
         protected List<Coding> type;
 
@@ -2230,6 +2377,16 @@ public class AuditEvent extends DomainResource {
           return t;
         }
 
+    // syntactic sugar
+        public AuditEventSourceComponent addType(Coding t) { //3
+          if (t == null)
+            return this;
+          if (this.type == null)
+            this.type = new ArrayList<Coding>();
+          this.type.add(t);
+          return this;
+        }
+
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("site", "string", "Logical source location within the healthcare enterprise network.", 0, java.lang.Integer.MAX_VALUE, site));
@@ -2283,14 +2440,14 @@ public class AuditEvent extends DomainResource {
         /**
          * Identifies a specific instance of the participant object. The reference should always be version specific.
          */
-        @Child(name="identifier", type={Identifier.class}, order=1, min=0, max=1)
+        @Child(name ="identifier", type={Identifier.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Specific instance of object (e.g. versioned)", formalDefinition="Identifies a specific instance of the participant object. The reference should always be version specific." )
         protected Identifier identifier;
 
         /**
          * Identifies a specific instance of the participant object. The reference should always be version specific.
          */
-        @Child(name="reference", type={}, order=2, min=0, max=1)
+        @Child(name ="reference", type={}, order=2, min=0, max=1)
         @Description(shortDefinition="Specific instance of resource (e.g. versioned)", formalDefinition="Identifies a specific instance of the participant object. The reference should always be version specific." )
         protected Reference reference;
 
@@ -2302,56 +2459,56 @@ public class AuditEvent extends DomainResource {
         /**
          * Object type being audited.
          */
-        @Child(name="type", type={CodeType.class}, order=3, min=0, max=1)
+        @Child(name ="type", type={CodeType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Object type being audited", formalDefinition="Object type being audited." )
         protected Enumeration<ObjectType> type;
 
         /**
          * Code representing the functional application role of Participant Object being audited.
          */
-        @Child(name="role", type={CodeType.class}, order=4, min=0, max=1)
+        @Child(name ="role", type={CodeType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Functional application role of Object", formalDefinition="Code representing the functional application role of Participant Object being audited." )
         protected Enumeration<ObjectRole> role;
 
         /**
          * Identifier for the data life-cycle stage for the participant object.
          */
-        @Child(name="lifecycle", type={CodeType.class}, order=5, min=0, max=1)
+        @Child(name ="lifecycle", type={CodeType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="Life-cycle stage for the object", formalDefinition="Identifier for the data life-cycle stage for the participant object." )
         protected Enumeration<ObjectLifecycle> lifecycle;
 
         /**
          * Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status or similar topics.
          */
-        @Child(name="sensitivity", type={CodeableConcept.class}, order=6, min=0, max=1)
+        @Child(name ="sensitivity", type={CodeableConcept.class}, order=6, min=0, max=1)
         @Description(shortDefinition="Policy-defined sensitivity for the object", formalDefinition="Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status or similar topics." )
         protected CodeableConcept sensitivity;
 
         /**
          * An instance-specific descriptor of the Participant Object ID audited, such as a person's name.
          */
-        @Child(name="name", type={StringType.class}, order=7, min=0, max=1)
+        @Child(name ="name", type={StringType.class}, order=7, min=0, max=1)
         @Description(shortDefinition="Instance-specific descriptor for Object", formalDefinition="An instance-specific descriptor of the Participant Object ID audited, such as a person's name." )
         protected StringType name;
 
         /**
          * Text that describes the object in more detail.
          */
-        @Child(name="description", type={StringType.class}, order=8, min=0, max=1)
+        @Child(name ="description", type={StringType.class}, order=8, min=0, max=1)
         @Description(shortDefinition="Descriptive text", formalDefinition="Text that describes the object in more detail." )
         protected StringType description;
 
         /**
          * The actual query for a query-type participant object.
          */
-        @Child(name="query", type={Base64BinaryType.class}, order=9, min=0, max=1)
+        @Child(name ="query", type={Base64BinaryType.class}, order=9, min=0, max=1)
         @Description(shortDefinition="Actual query for object", formalDefinition="The actual query for a query-type participant object." )
         protected Base64BinaryType query;
 
         /**
          * Additional Information about the Object.
          */
-        @Child(name="detail", type={}, order=10, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name ="detail", type={}, order=10, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Additional Information about the Object", formalDefinition="Additional Information about the Object." )
         protected List<AuditEventObjectDetailComponent> detail;
 
@@ -2772,6 +2929,16 @@ public class AuditEvent extends DomainResource {
           return t;
         }
 
+    // syntactic sugar
+        public AuditEventObjectComponent addDetail(AuditEventObjectDetailComponent t) { //3
+          if (t == null)
+            return this;
+          if (this.detail == null)
+            this.detail = new ArrayList<AuditEventObjectDetailComponent>();
+          this.detail.add(t);
+          return this;
+        }
+
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("identifier", "Identifier", "Identifies a specific instance of the participant object. The reference should always be version specific.", 0, java.lang.Integer.MAX_VALUE, identifier));
@@ -2845,14 +3012,14 @@ public class AuditEvent extends DomainResource {
         /**
          * Name of the property.
          */
-        @Child(name="type", type={StringType.class}, order=1, min=1, max=1)
+        @Child(name ="type", type={StringType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Name of the property", formalDefinition="Name of the property." )
         protected StringType type;
 
         /**
          * Property value.
          */
-        @Child(name="value", type={Base64BinaryType.class}, order=2, min=1, max=1)
+        @Child(name ="value", type={Base64BinaryType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="Property value", formalDefinition="Property value." )
         protected Base64BinaryType value;
 
@@ -3002,28 +3169,28 @@ public class AuditEvent extends DomainResource {
     /**
      * Identifies the name, action type, time, and disposition of the audited event.
      */
-    @Child(name="event", type={}, order=0, min=1, max=1)
+    @Child(name ="event", type={}, order=0, min=1, max=1)
     @Description(shortDefinition="What was done", formalDefinition="Identifies the name, action type, time, and disposition of the audited event." )
     protected AuditEventEventComponent event;
 
     /**
      * A person, a hardware device or software process.
      */
-    @Child(name="participant", type={}, order=1, min=1, max=Child.MAX_UNLIMITED)
+    @Child(name ="participant", type={}, order=1, min=1, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="A person, a hardware device or software process", formalDefinition="A person, a hardware device or software process." )
     protected List<AuditEventParticipantComponent> participant;
 
     /**
      * Application systems and processes.
      */
-    @Child(name="source", type={}, order=2, min=1, max=1)
+    @Child(name ="source", type={}, order=2, min=1, max=1)
     @Description(shortDefinition="Application systems and processes", formalDefinition="Application systems and processes." )
     protected AuditEventSourceComponent source;
 
     /**
      * Specific instances of data or objects that have been accessed.
      */
-    @Child(name="object", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="object", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Specific instances of data or objects that have been accessed", formalDefinition="Specific instances of data or objects that have been accessed." )
     protected List<AuditEventObjectComponent> object;
 
@@ -3093,6 +3260,16 @@ public class AuditEvent extends DomainResource {
       return t;
     }
 
+    // syntactic sugar
+    public AuditEvent addParticipant(AuditEventParticipantComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.participant == null)
+        this.participant = new ArrayList<AuditEventParticipantComponent>();
+      this.participant.add(t);
+      return this;
+    }
+
     /**
      * @return {@link #source} (Application systems and processes.)
      */
@@ -3145,6 +3322,16 @@ public class AuditEvent extends DomainResource {
         this.object = new ArrayList<AuditEventObjectComponent>();
       this.object.add(t);
       return t;
+    }
+
+    // syntactic sugar
+    public AuditEvent addObject(AuditEventObjectComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.object == null)
+        this.object = new ArrayList<AuditEventObjectComponent>();
+      this.object.add(t);
+      return this;
     }
 
       protected void listChildren(List<Property> childrenList) {
@@ -3236,6 +3423,10 @@ public class AuditEvent extends DomainResource {
   public static final String SP_NAME = "name";
   @SearchParamDefinition(name="action", path="AuditEvent.event.action", description="Type of action performed during the event", type="token" )
   public static final String SP_ACTION = "action";
+  @SearchParamDefinition(name="participant", path="AuditEvent.participant.reference", description="Direct reference to resource", type="reference" )
+  public static final String SP_PARTICIPANT = "participant";
+  @SearchParamDefinition(name="policy", path="AuditEvent.participant.policy", description="Policy that authorized event", type="uri" )
+  public static final String SP_POLICY = "policy";
   @SearchParamDefinition(name="object-type", path="AuditEvent.object.type", description="Object type being audited", type="token" )
   public static final String SP_OBJECTTYPE = "object-type";
   @SearchParamDefinition(name="user", path="AuditEvent.participant.userId", description="Unique identifier for the user", type="token" )

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
+// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -41,7 +41,7 @@ import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
 /**
- * A container for a group of resources.
+ * A container for a collection of resources.
  */
 @ResourceDef(name="Bundle", profile="http://hl7.org/fhir/Profile/Bundle")
 public class Bundle extends Resource {
@@ -365,14 +365,14 @@ public class Bundle extends Resource {
         /**
          * A name which details the functional use for this link - see [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]].
          */
-        @Child(name="relation", type={StringType.class}, order=1, min=1, max=1)
+        @Child(name ="relation", type={StringType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="http://www.iana.org/assignments/link-relations/link-relations.xhtml", formalDefinition="A name which details the functional use for this link - see [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]]." )
         protected StringType relation;
 
         /**
          * The reference details for the link.
          */
-        @Child(name="url", type={UriType.class}, order=2, min=1, max=1)
+        @Child(name ="url", type={UriType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="Reference details for the link", formalDefinition="The reference details for the link." )
         protected UriType url;
 
@@ -524,39 +524,46 @@ public class Bundle extends Resource {
         /**
          * The Base URL for the resource, if different to the base URL specified for the bundle as a whole.
          */
-        @Child(name="base", type={UriType.class}, order=1, min=0, max=1)
+        @Child(name ="base", type={UriType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Base URL, if different to bundle base", formalDefinition="The Base URL for the resource, if different to the base URL specified for the bundle as a whole." )
         protected UriType base;
 
         /**
+         * A series of links that provide context to this entry.
+         */
+        @Child(name ="link", type={BundleLinkComponent.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+        @Description(shortDefinition="Links related to this entry", formalDefinition="A series of links that provide context to this entry." )
+        protected List<BundleLinkComponent> link;
+
+        /**
          * The Resources for the entry.
          */
-        @Child(name="resource", type={Resource.class}, order=2, min=0, max=1)
+        @Child(name ="resource", type={Resource.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Resources in this bundle", formalDefinition="The Resources for the entry." )
         protected Resource resource;
 
         /**
          * Information about the search process that lead to the creation of this entry.
          */
-        @Child(name="search", type={}, order=3, min=0, max=1)
+        @Child(name ="search", type={}, order=4, min=0, max=1)
         @Description(shortDefinition="Search related information", formalDefinition="Information about the search process that lead to the creation of this entry." )
         protected BundleEntrySearchComponent search;
 
         /**
          * Additional information about how this entry should be processed as part of a transaction.
          */
-        @Child(name="transaction", type={}, order=4, min=0, max=1)
+        @Child(name ="transaction", type={}, order=5, min=0, max=1)
         @Description(shortDefinition="Transaction Related Information", formalDefinition="Additional information about how this entry should be processed as part of a transaction." )
         protected BundleEntryTransactionComponent transaction;
 
         /**
          * Additional information about how this entry should be processed as part of a transaction.
          */
-        @Child(name="transactionResponse", type={}, order=5, min=0, max=1)
+        @Child(name ="transactionResponse", type={}, order=6, min=0, max=1)
         @Description(shortDefinition="Transaction Related Information", formalDefinition="Additional information about how this entry should be processed as part of a transaction." )
         protected BundleEntryTransactionResponseComponent transactionResponse;
 
-        private static final long serialVersionUID = 2068509254L;
+        private static final long serialVersionUID = -1846898377L;
 
       public BundleEntryComponent() {
         super();
@@ -608,6 +615,46 @@ public class Bundle extends Resource {
               this.base = new UriType();
             this.base.setValue(value);
           }
+          return this;
+        }
+
+        /**
+         * @return {@link #link} (A series of links that provide context to this entry.)
+         */
+        public List<BundleLinkComponent> getLink() { 
+          if (this.link == null)
+            this.link = new ArrayList<BundleLinkComponent>();
+          return this.link;
+        }
+
+        public boolean hasLink() { 
+          if (this.link == null)
+            return false;
+          for (BundleLinkComponent item : this.link)
+            if (!item.isEmpty())
+              return true;
+          return false;
+        }
+
+        /**
+         * @return {@link #link} (A series of links that provide context to this entry.)
+         */
+    // syntactic sugar
+        public BundleLinkComponent addLink() { //3
+          BundleLinkComponent t = new BundleLinkComponent();
+          if (this.link == null)
+            this.link = new ArrayList<BundleLinkComponent>();
+          this.link.add(t);
+          return t;
+        }
+
+    // syntactic sugar
+        public BundleEntryComponent addLink(BundleLinkComponent t) { //3
+          if (t == null)
+            return this;
+          if (this.link == null)
+            this.link = new ArrayList<BundleLinkComponent>();
+          this.link.add(t);
           return this;
         }
 
@@ -705,6 +752,7 @@ public class Bundle extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("base", "uri", "The Base URL for the resource, if different to the base URL specified for the bundle as a whole.", 0, java.lang.Integer.MAX_VALUE, base));
+          childrenList.add(new Property("link", "@Bundle.link", "A series of links that provide context to this entry.", 0, java.lang.Integer.MAX_VALUE, link));
           childrenList.add(new Property("resource", "Resource", "The Resources for the entry.", 0, java.lang.Integer.MAX_VALUE, resource));
           childrenList.add(new Property("search", "", "Information about the search process that lead to the creation of this entry.", 0, java.lang.Integer.MAX_VALUE, search));
           childrenList.add(new Property("transaction", "", "Additional information about how this entry should be processed as part of a transaction.", 0, java.lang.Integer.MAX_VALUE, transaction));
@@ -715,6 +763,11 @@ public class Bundle extends Resource {
         BundleEntryComponent dst = new BundleEntryComponent();
         copyValues(dst);
         dst.base = base == null ? null : base.copy();
+        if (link != null) {
+          dst.link = new ArrayList<BundleLinkComponent>();
+          for (BundleLinkComponent i : link)
+            dst.link.add(i.copy());
+        };
         dst.resource = resource == null ? null : resource.copy();
         dst.search = search == null ? null : search.copy();
         dst.transaction = transaction == null ? null : transaction.copy();
@@ -729,8 +782,8 @@ public class Bundle extends Resource {
         if (!(other instanceof BundleEntryComponent))
           return false;
         BundleEntryComponent o = (BundleEntryComponent) other;
-        return compareDeep(base, o.base, true) && compareDeep(resource, o.resource, true) && compareDeep(search, o.search, true)
-           && compareDeep(transaction, o.transaction, true) && compareDeep(transactionResponse, o.transactionResponse, true)
+        return compareDeep(base, o.base, true) && compareDeep(link, o.link, true) && compareDeep(resource, o.resource, true)
+           && compareDeep(search, o.search, true) && compareDeep(transaction, o.transaction, true) && compareDeep(transactionResponse, o.transactionResponse, true)
           ;
       }
 
@@ -745,8 +798,8 @@ public class Bundle extends Resource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (base == null || base.isEmpty()) && (resource == null || resource.isEmpty())
-           && (search == null || search.isEmpty()) && (transaction == null || transaction.isEmpty())
+        return super.isEmpty() && (base == null || base.isEmpty()) && (link == null || link.isEmpty())
+           && (resource == null || resource.isEmpty()) && (search == null || search.isEmpty()) && (transaction == null || transaction.isEmpty())
            && (transactionResponse == null || transactionResponse.isEmpty());
       }
 
@@ -757,14 +810,14 @@ public class Bundle extends Resource {
         /**
          * Why this entry is in the result set - whether it's included as a match or because of an _include requirement.
          */
-        @Child(name="mode", type={CodeType.class}, order=1, min=0, max=1)
+        @Child(name ="mode", type={CodeType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="match | include - why this is in the result set", formalDefinition="Why this entry is in the result set - whether it's included as a match or because of an _include requirement." )
         protected Enumeration<SearchEntryMode> mode;
 
         /**
          * When searching, the server's search ranking score for the entry.
          */
-        @Child(name="score", type={DecimalType.class}, order=2, min=0, max=1)
+        @Child(name ="score", type={DecimalType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Search ranking (between 0 and 1)", formalDefinition="When searching, the server's search ranking score for the entry." )
         protected DecimalType score;
 
@@ -918,42 +971,42 @@ public class Bundle extends Resource {
         /**
          * The HTTP verb for this entry in either a update history, or a transaction/ transaction response.
          */
-        @Child(name="method", type={CodeType.class}, order=1, min=1, max=1)
+        @Child(name ="method", type={CodeType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="GET | POST | PUT | DELETE", formalDefinition="The HTTP verb for this entry in either a update history, or a transaction/ transaction response." )
         protected Enumeration<HttpVerb> method;
 
         /**
          * A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).
          */
-        @Child(name="url", type={UriType.class}, order=2, min=1, max=1)
+        @Child(name ="url", type={UriType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="The URL for the transaction", formalDefinition="A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation)." )
         protected UriType url;
 
         /**
          * If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation.
          */
-        @Child(name="ifNoneMatch", type={StringType.class}, order=3, min=0, max=1)
+        @Child(name ="ifNoneMatch", type={StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="For managing cache currency", formalDefinition="If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation." )
         protected StringType ifNoneMatch;
 
         /**
          * Only perform the operation if the Etag value matches. For more information, see the API section "Managing Resource Contention".
          */
-        @Child(name="ifMatch", type={StringType.class}, order=4, min=0, max=1)
+        @Child(name ="ifMatch", type={StringType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="For managing update contention", formalDefinition="Only perform the operation if the Etag value matches. For more information, see the API section 'Managing Resource Contention'." )
         protected StringType ifMatch;
 
         /**
          * Only perform the operation if the last updated date matches. For more information, see the API section "Managing Resource Contention".
          */
-        @Child(name="ifModifiedSince", type={InstantType.class}, order=5, min=0, max=1)
+        @Child(name ="ifModifiedSince", type={InstantType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="For managing update contention", formalDefinition="Only perform the operation if the last updated date matches. For more information, see the API section 'Managing Resource Contention'." )
         protected InstantType ifModifiedSince;
 
         /**
          * Instruct the server not to perform the create if a specified resource already exists. For further information, see "Conditional Create".
          */
-        @Child(name="ifNoneExist", type={StringType.class}, order=6, min=0, max=1)
+        @Child(name ="ifNoneExist", type={StringType.class}, order=6, min=0, max=1)
         @Description(shortDefinition="For conditional creates", formalDefinition="Instruct the server not to perform the create if a specified resource already exists. For further information, see 'Conditional Create'." )
         protected StringType ifNoneExist;
 
@@ -1315,28 +1368,28 @@ public class Bundle extends Resource {
         /**
          * The status code returned by processing this entry.
          */
-        @Child(name="status", type={StringType.class}, order=1, min=1, max=1)
+        @Child(name ="status", type={StringType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Status return code for entry", formalDefinition="The status code returned by processing this entry." )
         protected StringType status;
 
         /**
          * The location header created by processing this operation.
          */
-        @Child(name="location", type={UriType.class}, order=2, min=0, max=1)
+        @Child(name ="location", type={UriType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="The location, if the operation returns a location", formalDefinition="The location header created by processing this operation." )
         protected UriType location;
 
         /**
          * The etag for the resource, it the operation for the entry produced a versioned resource.
          */
-        @Child(name="etag", type={StringType.class}, order=3, min=0, max=1)
+        @Child(name ="etag", type={StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="The etag for the resource (if relevant)", formalDefinition="The etag for the resource, it the operation for the entry produced a versioned resource." )
         protected StringType etag;
 
         /**
          * The date/time that the resource was modified on the server.
          */
-        @Child(name="lastModified", type={InstantType.class}, order=4, min=0, max=1)
+        @Child(name ="lastModified", type={InstantType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Server's date time modified", formalDefinition="The date/time that the resource was modified on the server." )
         protected InstantType lastModified;
 
@@ -1593,42 +1646,42 @@ public class Bundle extends Resource {
     /**
      * Indicates the purpose of this bundle- how it was intended to be used.
      */
-    @Child(name="type", type={CodeType.class}, order=0, min=1, max=1)
+    @Child(name ="type", type={CodeType.class}, order=0, min=1, max=1)
     @Description(shortDefinition="document | message | transaction | transaction-response | history | searchset | collection", formalDefinition="Indicates the purpose of this bundle- how it was intended to be used." )
     protected Enumeration<BundleType> type;
 
     /**
      * The base URL for the service that provided these resources. All relative URLs are relative to this one (equivalent to xml:base).
      */
-    @Child(name="base", type={UriType.class}, order=1, min=0, max=1)
+    @Child(name ="base", type={UriType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Stated Base URL", formalDefinition="The base URL for the service that provided these resources. All relative URLs are relative to this one (equivalent to xml:base)." )
     protected UriType base;
 
     /**
      * If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle).
      */
-    @Child(name="total", type={IntegerType.class}, order=2, min=0, max=1)
+    @Child(name ="total", type={IntegerType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="If search, the total number of matches", formalDefinition="If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle)." )
     protected IntegerType total;
 
     /**
      * A series of links that provide context to this bundle.
      */
-    @Child(name="link", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="link", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Links related to this Bundle", formalDefinition="A series of links that provide context to this bundle." )
     protected List<BundleLinkComponent> link;
 
     /**
      * An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).
      */
-    @Child(name="entry", type={}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="entry", type={}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Entry in the bundle - will have a resource, or information", formalDefinition="An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only)." )
     protected List<BundleEntryComponent> entry;
 
     /**
      * XML Digital Signature - base64 encoded.
      */
-    @Child(name="signature", type={Base64BinaryType.class}, order=5, min=0, max=1)
+    @Child(name ="signature", type={Base64BinaryType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="XML Digital Signature (base64 encoded)", formalDefinition="XML Digital Signature - base64 encoded." )
     protected Base64BinaryType signature;
 
@@ -1812,6 +1865,16 @@ public class Bundle extends Resource {
       return t;
     }
 
+    // syntactic sugar
+    public Bundle addLink(BundleLinkComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.link == null)
+        this.link = new ArrayList<BundleLinkComponent>();
+      this.link.add(t);
+      return this;
+    }
+
     /**
      * @return {@link #entry} (An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).)
      */
@@ -1840,6 +1903,16 @@ public class Bundle extends Resource {
         this.entry = new ArrayList<BundleEntryComponent>();
       this.entry.add(t);
       return t;
+    }
+
+    // syntactic sugar
+    public Bundle addEntry(BundleEntryComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.entry == null)
+        this.entry = new ArrayList<BundleEntryComponent>();
+      this.entry.add(t);
+      return this;
     }
 
     /**
@@ -1959,9 +2032,9 @@ public class Bundle extends Resource {
     return ResourceType.Bundle;
    }
 
-  @SearchParamDefinition(name="message", path="", description="The first resource in the bundle, if the bundle type is 'message' - this is a message header, and this parameter provides access to search it's contents", type="reference" )
+  @SearchParamDefinition(name="message", path="", description="The first resource in the bundle, if the bundle type is 'message' - this is a message header, and this parameter provides access to search its contents", type="reference" )
   public static final String SP_MESSAGE = "message";
-  @SearchParamDefinition(name="composition", path="", description="The first resource in the bundle, if the bundle type is 'document' - this is a composition, and this parameter provides access to searches it's contents", type="reference" )
+  @SearchParamDefinition(name="composition", path="", description="The first resource in the bundle, if the bundle type is 'document' - this is a composition, and this parameter provides access to searches its contents", type="reference" )
   public static final String SP_COMPOSITION = "composition";
   @SearchParamDefinition(name="type", path="Bundle.type", description="document | message | transaction | transaction-response | history | searchset | collection", type="token" )
   public static final String SP_TYPE = "type";

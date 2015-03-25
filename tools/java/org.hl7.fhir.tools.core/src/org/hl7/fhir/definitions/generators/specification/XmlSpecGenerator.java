@@ -50,8 +50,10 @@ import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionConstraint
 import org.hl7.fhir.instance.model.ElementDefinition.PropertyRepresentation;
 import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.instance.model.Enumeration;
+import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.Type;
+import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.Utilities;
@@ -676,12 +678,14 @@ public class XmlSpecGenerator extends OutputStreamWriter {
         } else {
           if (elem.hasMax() && elem.getMax().equals("0")) 
             write("<span style=\"text-decoration: line-through\">");
-          if (elem.hasBinding() && elem.getBinding().hasReference()) {
-            ValueSet vs = resolveValueSet(elem.getBinding().getReference());
+          if (elem.hasBinding() && elem.getBinding().hasValueSet()) {
+            ValueSet vs = resolveValueSet(elem.getBinding().getValueSet());
             if (vs != null)
               write("<span style=\"color: navy\"><a href=\""+vs.getUserData("filename")+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");
+            else if (elem.getBinding().getValueSet() instanceof UriType)
+              write("<span style=\"color: navy\"><a href=\""+((UriType)elem.getBinding().getValueSet()).getValue()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");          
             else
-              write("<span style=\"color: navy\"><a href=\""+elem.getBinding().getReference()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");          
+              write("<span style=\"color: navy\"><a href=\""+((Reference)elem.getBinding().getValueSet()).getReference()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");          
           } else
             write("<span style=\"color: navy\">" + docPrefix(width, indent, elem)+Utilities.escapeXml(elem.getShort()) + "</span>");
           if (elem.hasMax() && elem.getMax().equals("0")) 

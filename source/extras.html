@@ -12,11 +12,7 @@
 
 <div class="col-9">
 
-[%extrasheader base%]
-
 <h2>Compartment Based Access</h2>
-
-
 
 <a name="root"> </a>
 <a name="compartments"> </a>
@@ -73,6 +69,10 @@ many valid reasons, including:
 Given the wide variety of use cases and contexts in which FHIR is used, compartments 
 do not define how cross-linking is handled. Systems may reject resources, remove them 
 from both compartments, or place them in both, or act in some other fashion.
+</p>
+<p>
+It is at the discretion of the server whether to include resources in a compartment when
+the reference to the resource that establishes the compartment is in an extension.
 </p>
 
 <hr/>

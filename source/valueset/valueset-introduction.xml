@@ -36,7 +36,7 @@ their own distributions formats .
 <div>
 <h2>Boundaries and Relationships</h2>
 <ul>
- <li>Value sets are used in <a href="profile.html">Profiles</a>, and <a href="questionnaire.html">Questionnaires</a> to specify the allowable contents for coded elements</li>
+ <li>Value sets are used in <a href="structuredefinition.html">StructureDefinitions</a>, and <a href="questionnaire.html">Questionnaires</a> to specify the allowable contents for coded elements</li>
  <li>In addition, a specific <a href="datatypes.html#Coding">Coding</a> can reference the value set it was picked from</li>
  <li><a href="conceptmap.html">Concept Maps</a> describe mappings between value sets</li>
  <li>The ValueSet resource design is based on the functionality described in the <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a> specification. Value set
@@ -53,8 +53,8 @@ This is one very common area where significant clinical safety risks occur in pr
 should be familiar with the content in <a href="terminologies.html">Using Codes in resources</a>.
 </p>
 <p>
-Each value set has 2 different URLs that can be used to reference it, it's logical identifier, and 
-it's location. 
+Each value set has 2 different URLs that can be used to reference it, its logical identifier, and 
+its location. 
 </p>
 <p>
 The location of the value set is a URL by which it may be retrieved, usually from a FHIR 

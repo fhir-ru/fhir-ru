@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Mar 3, 2015 17:16+1100 for FHIR v0.4.0
+// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
 
 import java.util.*;
 
@@ -40,7 +40,7 @@ import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
 /**
- * Describes the intended objective(s) of the care.
+ * Describes the intended objective(s) of patient care, for example, weight loss, restoring an activity of daily living, etc.
  */
 @ResourceDef(name="Goal", profile="http://hl7.org/fhir/Profile/Goal")
 public class Goal extends DomainResource {
@@ -144,14 +144,14 @@ public class Goal extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case PROPOSED: return "proposed";
-            case PLANNED: return "planned";
-            case INPROGRESS: return "in-progress";
-            case ACHIEVED: return "achieved";
-            case SUSTAINING: return "sustaining";
-            case CANCELLED: return "cancelled";
-            case ACCEPTED: return "accepted";
-            case REJECTED: return "rejected";
+            case PROPOSED: return "Proposed";
+            case PLANNED: return "Planned";
+            case INPROGRESS: return "In Progress";
+            case ACHIEVED: return "Achieved";
+            case SUSTAINING: return "Sustaining";
+            case CANCELLED: return "Cancelled";
+            case ACCEPTED: return "Accepted";
+            case REJECTED: return "Rejected";
             default: return "?";
           }
         }
@@ -204,14 +204,14 @@ public class Goal extends DomainResource {
     /**
      * This records identifiers associated with this care plan that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
      */
-    @Child(name="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="External Ids for this goal", formalDefinition="This records identifiers associated with this care plan that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)." )
     protected List<Identifier> identifier;
 
     /**
      * Identifies the patient/subject whose intended care is described by the plan.
      */
-    @Child(name="patient", type={Patient.class}, order=1, min=0, max=1)
+    @Child(name ="patient", type={Patient.class}, order=1, min=0, max=1)
     @Description(shortDefinition="The patient for whom this goal is intended for", formalDefinition="Identifies the patient/subject whose intended care is described by the plan." )
     protected Reference patient;
 
@@ -223,28 +223,28 @@ public class Goal extends DomainResource {
     /**
      * Human-readable description of a specific desired objective of care.
      */
-    @Child(name="description", type={StringType.class}, order=2, min=1, max=1)
+    @Child(name ="description", type={StringType.class}, order=2, min=1, max=1)
     @Description(shortDefinition="What's the desired outcome?", formalDefinition="Human-readable description of a specific desired objective of care." )
     protected StringType description;
 
     /**
      * Indicates whether the goal has been reached and is still considered relevant.
      */
-    @Child(name="status", type={CodeType.class}, order=3, min=0, max=1)
+    @Child(name ="status", type={CodeType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="proposed | planned | in-progress | achieved | sustaining | cancelled | accepted | rejected", formalDefinition="Indicates whether the goal has been reached and is still considered relevant." )
     protected Enumeration<GoalStatus> status;
 
     /**
      * Any comments related to the goal.
      */
-    @Child(name="notes", type={StringType.class}, order=4, min=0, max=1)
+    @Child(name ="notes", type={StringType.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Comments about the goal", formalDefinition="Any comments related to the goal." )
     protected StringType notes;
 
     /**
      * The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address.
      */
-    @Child(name="concern", type={Condition.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name ="concern", type={Condition.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Health issues this goal addresses", formalDefinition="The identified conditions that this goal relates to - the condition that caused it to be created, or that it is intended to address." )
     protected List<Reference> concern;
     /**
@@ -292,6 +292,16 @@ public class Goal extends DomainResource {
         this.identifier = new ArrayList<Identifier>();
       this.identifier.add(t);
       return t;
+    }
+
+    // syntactic sugar
+    public Goal addIdentifier(Identifier t) { //3
+      if (t == null)
+        return this;
+      if (this.identifier == null)
+        this.identifier = new ArrayList<Identifier>();
+      this.identifier.add(t);
+      return this;
     }
 
     /**
@@ -509,6 +519,16 @@ public class Goal extends DomainResource {
         this.concern = new ArrayList<Reference>();
       this.concern.add(t);
       return t;
+    }
+
+    // syntactic sugar
+    public Goal addConcern(Reference t) { //3
+      if (t == null)
+        return this;
+      if (this.concern == null)
+        this.concern = new ArrayList<Reference>();
+      this.concern.add(t);
+      return this;
     }
 
     /**

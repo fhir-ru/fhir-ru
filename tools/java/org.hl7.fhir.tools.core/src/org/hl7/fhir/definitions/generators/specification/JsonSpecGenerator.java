@@ -1,34 +1,5 @@
 package org.hl7.fhir.definitions.generators.specification;
 
-/*
- Copyright (c) 2011+, HL7, Inc
- All rights reserved.
-
- Redistribution and use in source and binary forms, with or without modification, 
- are permitted provided that the following conditions are met:
-
- * Redistributions of source code must retain the above copyright notice, this 
- list of conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, 
- this list of conditions and the following disclaimer in the documentation 
- and/or other materials provided with the distribution.
- * Neither the name of HL7 nor the names of its contributors may be used to 
- endorse or promote products derived from this software without specific 
- prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
- ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
- WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
- IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
- NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
- WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
- ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
- POSSIBILITY OF SUCH DAMAGE.
-
- */
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -43,14 +14,14 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.instance.formats.IParser.OutputStyle;
-import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.ElementDefinition;
 import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionConstraintComponent;
 import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.instance.model.PrimitiveType;
+import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.Type;
+import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.Utilities;
@@ -232,7 +203,7 @@ public class JsonSpecGenerator extends OutputStreamWriter {
     tr.add(new TypeRef().setName("Ratio"));
     tr.add(new TypeRef().setName("HumanName"));
     tr.add(new TypeRef().setName("Address"));
-    tr.add(new TypeRef().setName("Contact"));
+    tr.add(new TypeRef().setName("ContactPoint"));
     tr.add(new TypeRef().setName("Schedule"));
     tr.add(new TypeRef().setName("Reference"));
     return tr;
@@ -451,12 +422,14 @@ public class JsonSpecGenerator extends OutputStreamWriter {
 
     // 4. doco
     if (!elem.hasFixed()) {
-      if (elem.hasBinding() && elem.getBinding().hasReference()) {
-        ValueSet vs = resolveValueSet(elem.getBinding().getReference());
+      if (elem.hasBinding() && elem.getBinding().hasValueSet()) {
+        ValueSet vs = resolveValueSet(elem.getBinding().getValueSet());
         if (vs != null)
           write("<span style=\"color: navy; opacity: 0.8\"><a href=\""+vs.getUserData("filename")+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");
+        else if (elem.getBinding().getValueSet() instanceof UriType)
+          write("<span style=\"color: navy; opacity: 0.8\"><a href=\""+((UriType)elem.getBinding().getValueSet()).getValue()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");          
         else
-          write("<span style=\"color: navy; opacity: 0.8\"><a href=\""+elem.getBinding().getReference()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");          
+          write("<span style=\"color: navy; opacity: 0.8\"><a href=\""+((Reference)elem.getBinding().getValueSet()).getReference()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");          
       } else
         write("<span style=\"color: navy; opacity: 0.8\">" + Utilities.escapeXml(elem.getShort()) + "</span>");
     }
@@ -540,6 +513,7 @@ public class JsonSpecGenerator extends OutputStreamWriter {
       return "";
   }
 
+  /*
   private String docPrefix(int widthSoFar, int indent, ElementDefinition elem) {
     if (widthSoFar + (elem.getShort() == null ? 0 : elem.getShort().length())+8+elem.getPath().length() > 105) {
       String ret = "\r\n  ";
@@ -551,6 +525,7 @@ public class JsonSpecGenerator extends OutputStreamWriter {
     else
       return "";
   }
+  */
 
   private int writeTypeLinks(ElementDefn elem, int indent, TypeRef t) throws Exception {
     write(" <span style=\"color: darkgreen\">");
@@ -616,6 +591,7 @@ public class JsonSpecGenerator extends OutputStreamWriter {
     return w;
   }
 
+    /*
   private int writeTypeLinks(ElementDefinition elem, int indent) throws Exception {
     write(" <span style=\"color: darkgreen\">");
     int i = 0;
@@ -645,6 +621,7 @@ public class JsonSpecGenerator extends OutputStreamWriter {
     write("</span>");
     return w;
   }
+  */
 
   private void writeCardinality(ElementDefn elem) throws IOException {
     if (elem.getStatedInvariants().size() > 0)
@@ -687,6 +664,7 @@ public class JsonSpecGenerator extends OutputStreamWriter {
     return b.toString();
   }
 
+ /*
   private String renderType(int indent, Type value) throws Exception {
     StringBuilder b = new StringBuilder();
     for (int i = 0; i < indent-2; i++)
@@ -706,5 +684,6 @@ public class JsonSpecGenerator extends OutputStreamWriter {
     }
     return b.toString()+"\r\n"+ind;  
   }
+  */
 
 }
