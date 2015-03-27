@@ -26,10 +26,17 @@
 <a href="datatypes-mappings.html">Мэппинги</a>.
 </p>
 
-[%diagram datatypes/alltypes.diagram%]
+<p><b>Table of Contents</b></p>
+<table class="grid">
+ <tr>
+  <td><b>Primitive Types</b><br/>[%diagram datatypes/allprimitivetypes.diagram%]</td>
+  <td><b>Complex Types</b><br/>[%diagram datatypes/alltypes.diagram%]</td>
+ </tr>
+</table>
 
 <p>
-Типы данных доступны в виде <a href="fhir-base.xsd">W3C схемы</a>.
+White = abstract type. Light blue - types. Light Pink - Profile on Type.
+Типы данных также доступны в виде <a href="fhir-base.xsd">W3C Schema</a>.
 </p>
 
 <a name="primitive"></a>
@@ -43,18 +50,6 @@
 В таблице ниже описываются используемые в данной спецификации примитивные типы. Примитивные типы - это типы, имеющие только value, без дополнительных элементов-потомков, хотя как и все типы, они могут иметь <a href="extensibility.html">расширения</a>.
 </p>
 
-<a name="boolean"> </a>
-<a name="integer"> </a>
-<a name="decimal"> </a>
-<a name="base64Binary"> </a>
-<a name="base64binary"> </a>
-<a name="instant"> </a>
-<a name="string"> </a>
-<a name="uri"> </a>
-<a name="date"> </a>
-<a name="dateTime"> </a>
-<a name="datetime"> </a>
-<a name="time"> </a>
 
 <table class="list">
  <tr>
@@ -67,19 +62,19 @@
    <th>JSON-представление<!-- JSON representation --></th>
  </tr>
  <tr>
-   <td>boolean</td>
+   <td>boolean<a name="boolean"> </a></td>
    <td>true | false</td>
    <td>xs:boolean, except that <b>0 and 1 are not valid values</b></td>
    <td>JSON boolean (true or false)</td>
  </tr>
  <tr>
-   <td>integer</td>
+   <td>integer<a name="integer"> </a></td>
    <td>32-битное целое число со знаком (для больших значений используйте тип decimal)<!-- A signed 32-bit integer (for larger values, use decimal) --></td>
    <td>xs:int</td>
    <td>JSON number</td>
  </tr>
  <tr>
-   <td>string</td>
+   <td>string<a name="string"> </a></td>
    <td>Последовательность символов в кодировке Unicode<!-- A sequence of Unicode characters --></td>
    <td>xs:string</td>
    <td>JSON String</td>
@@ -89,14 +84,14 @@
    <td colspan="3" style="border-top: 0px silver solid">Обратите внимание, что строки НЕ ДОЛЖНЫ превышать 1 Мбайт по размеру<!-- Note that strings SHALL NOT exceed 1MB in size --></td>
  </tr> 
  <tr>
-   <td>decimal</td>
+   <td>decimal<a name="decimal"> </a></td>
    <td>Рациональные числа, имеющие десятичное представление. См. ниже о точности таких чисел<!-- Rational numbers that have a decimal representation. See below about the precision of the number --></td>
    <td>xs:decimal, исключая <b>decimals, которые не используют экспоненту</b><!-- xs:decimal, except that <b>decimals may not use exponents</b> --></td>
    <td>JSON-число (number), но без экспоненты<!-- A JSON number, but without exponents --></td>
  </tr>
  <tr>
-   <td>uri</td>
-   <td>Унифицированный идентификатор ресурса (<a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>)<!-- A Uniform Resource Identifier Reference (<a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>) --></td>
+   <td>uri<a name="uri"> </a></td>
+   <td>Унифицированный идентификатор ресурса (<a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>). Примечание: URI чувствительны к регистру. Для UUID (urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7) используйте нижний регистр<!-- A Uniform Resource Identifier Reference (<a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>). Note: URIs are case sensitive. For UUID (urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7) use all lowercase --></td>
     <td>xs:anyURI</td>
    <td>A JSON string - a URI</td>
  </tr>
@@ -105,7 +100,7 @@
    <td colspan="3" style="border-top: 0px silver solid">URIs могут быть абсолютными или относительными и могут иметь необязательный идентификатор фрагмента<!-- URIs can be absolute or relative, and may have an optional fragment identifier --></td>
  </tr> 
  <tr>
-   <td>base64Binary</td>
+   <td>base64Binary<a name="base64Binary"> </a><a name="base64binary"> </a></td>
    <td>Поток байтов в кодировке base64<!-- A stream of bytes, base64 encoded --> (<a href="http://tools.ietf.org/html/rfc4648">RFC 4648</a>)</td>
    <td>xs:base64Binary</td>
    <td>A JSON string - base64 content</td>
@@ -115,7 +110,7 @@
    <td colspan="3" style="border-top: 0px silver solid"><i>Todo: is it possible to impose an upper absolute limit on a base64Binary (for denial of service reasons, like on string)</i></td>
  </tr> 
  <tr>
-   <td>instant</td>
+   <td>instant<a name="instant"> </a></td>
    <td>Момент времени, указанный <b>с точностью как минимум до секунды и всегда включающий в себя часовой пояс.</b><!-- An instant in time - <b>known at least to the second and always includes a time zone</b> --></td>
    <td>xs:dateTime</td>
    <td>A JSON string - an xs:dateTime</td>
@@ -125,7 +120,7 @@
    <td colspan="3" style="border-top: 0px silver solid">Примечание: это тип для указания системного времени, а не человеческого (см. date и dateTime ниже).<!-- Note: This type is for system times, not human times (see date and dateTime below). --></td>
  </tr>
  <tr>
-   <td>date</td>
+   <td>date<a name="date"> </a></td>
    <td>Дата или часть даты (например только год или год + месяц) в том представлении, как она используется в человеческой коммуникации. <b>Здесь нет указания часового пояса</b>. Даты ДОЛЖНЫ быть допустимыми датами<!-- A date, or partial date (e.g. just year or year + month) as used in human communication. <b>There is no time zone</b>. Dates SHALL be valid dates --></td>
    <td>union of xs:date, xs:gYearMonth, xs:gYear</td>
    <td>A JSON string - a union of xs:date, xs:gYearMonth, xs:gYear</td>
@@ -135,8 +130,8 @@
    <td colspan="3" style="border-top: 0px silver solid">Regex: -?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?</td>
  </tr>
  <tr>
-   <td>dateTime</td>
-   <td>Дата, дата/время или часть даты (например только год или год + месяц) в том представлении, как она используется в человеческой коммуникации. Если указаны часы и минуты, то также ДОЛЖЕН быть указан и часовой пояс. Секунды могут быть как указаны, так и опущены. Даты ДОЛЖНЫ быть допустимыми. <b>Время "24:00" не допустимо</b><!-- A date, date-time or partial date (e.g. just year or year + month) as used in human communication. If hours and minutes are specified, a time zone SHALL be populated. Seconds may be provided but may also be ignored. Dates SHALL be valid dates. <b>The time "24:00" is not allowed</b> --></td>
+   <td>dateTime<a name="dateTime"> </a><a name="datetime"> </a></td>
+   <td>Дата, дата/время или часть даты (например только год или год + месяц) в том представлении, как она используется в человеческой коммуникации. Если указаны часы и минуты, то также ДОЛЖЕН быть указан и часовой пояс. Секунды должны указываться в соответствии с ограничениями схемы для типов, но их можно заполнить нулями и игнорировать. Даты ДОЛЖНЫ быть допустимыми датами. <b>Время "24:00" не допустимо</b><!-- A date, date-time or partial date (e.g. just year or year + month) as used in human communication. If hours and minutes are specified, a time zone SHALL be populated. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored. Dates SHALL be valid dates. <b>The time "24:00" is not allowed</b> --></td>
    <td>union of xs:dateTime, xs:date, xs:gYearMonth, xs:gYear</td>
    <td>A JSON string - a union of xs:dateTime, xs:date, xs:gYearMonth, xs:gYear</td>
   </tr>
@@ -145,8 +140,8 @@
    <td colspan="3" style="border-top: 0px silver solid">Regex: -?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?)?)?)?</td>
  </tr>
  <tr>
-   <td>time</td>
-   <td>Время в пределах дня без указания даты (может быть сконвертировано в <a href="#Duration">Duration</a> с точкой отсчета в полночь). Секунды могут как указываться, так и игнорироваться. <b>Время "24:00" не допустимо, как и указание таймзоны</b><!-- A time during the day, with no date specified (can be converted to a <a href="#Duration">Duration</a> since midnight). Seconds may be provided but may also be ignored. <b>The time "24:00" is not allowed, and neither is a time zone</b> --></td>
+   <td>time<a name="time"> </a></td>
+   <td>Время в пределах дня без указания даты (может быть сконвертировано в <a href="#Duration">Duration</a> с точкой отсчета в полночь). Секунды должны указываться в соответствии с ограничениями схемы для типов, но их можно заполнить нулями и игнорировать. <b>Время "24:00" не допустимо, как и указание таймзоны</b><!-- A time during the day, with no date specified (can be converted to a <a href="#Duration">Duration</a> since midnight). Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored. <b>The time "24:00" is not allowed, and neither is a time zone</b> --></td>
    <td>xs:time</td>
    <td>A JSON string - an xs:time</td>
   </tr>
@@ -171,8 +166,8 @@
 	  <!-- Implementations SHALL handle decimal values in ways that preserve and respect the precision of the value as represented --></li> 
       <li>Реализации, выполняющие это ограничение, являются GMP-реализациями или Java BigDecimal, который реализует произвольную точность, либо комбинацией значения с плавающей точкой (64 bit) с полем для указания точности
 	  <!-- Implementations that might meet this constraint are GMP implementations or Java BigDecimal that implement arbitrary precision, or a combination of a (64 bit) floating point value with a precision field --></li> 
-      <li>Обратите внимание, что нет абсолютного лимита размера значения, хотя большие и/или высокоточные значения чрезвычайно редки в медицине
-	  <!-- Note that there is no absolute limit to the magnitude of the value, though large and/or highly precise values are extremely rare in medicine --></li>
+      <li>Обратите внимание, что нет абсолютного лимита для размера значения, хотя большие и/или высокоточные значения чрезвычайно редки в медицине. Единственный элемент, где могут встретиться десятичные значения высокой точности - это координаты в <a href="location.html">Location</a>
+	  <!-- Note that there is no absolute limit to the magnitude of the value, though large and/or highly precise values are extremely rare in medicine. One element where highly precise decimals may be encountered is the <a href="location.html">Location</a> coordinates --></li>
     </ul>
  </li>
 </ul>
@@ -181,8 +176,8 @@
 <h3>XML и JSON представления<!-- XML and JSON representations --></h3>
 
 <p>
-Все примитивные типы имеют некоторую комбинацию значения, как описано выше, внутреннюю сущность (например xml:id) и расширения. Значение представляется в XML как атрибут "value":
-<!-- All the primitive types have some combination of value as described above, an internal identity (e.g. xml:id), and extensions. 
+Все элементы, использующие эти примитивные типы, имеют некоторую комбинацию значения, как описано выше, внутренней сущности (например xml:id) и расширения. Значение представляется в XML как атрибут "value":
+<!-- All elements using these primitive types have some combination of value as described above, an internal identity (e.g. xml:id), and extensions. 
 The value is represented in XML as an attribute named "value": -->
 </p>
 <pre>
@@ -233,90 +228,36 @@ In JSON, whitespace in string values is always significant. Primitive types othe
 <!--
  <tr><td>uuid</td><td>uri</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11. Note the RFC comments about case: UUID values SHALL be represented in lower case, but systems SHOULD interpret them case insensitively</td></tr>
 -->
- <tr><td>id</td><td>string</td><td>Любая комбинация ASCII-символов верхнего и нижнего регистра ('A'..'Z', 'a'..'z', цифры ('0'..'9'), '-' и '.' с ограничением по длине в 64 символа. (Это может быть целое число, OID без префиксов, UUID или любой другой паттерн идентификаторов, соответствующим этим ограничениям). Идентификаторы чувствительны к регистру. UUIDs ДОЛЖНЫ пересылаться в символах нижнего регистра.
- <!-- Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.)  Ids are case sensitive. UUIDs SHALL be sent using lowercase letters. -->
-   <br/>Примечание: этот формат включает идентификаторы, согласующиеся с <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, а также другие форматы идентификаторов, и не чувствителен к регистру в отличие от ISO 18232.
-   <!-- Note: this format includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232. -->
+ <tr><td>id</td><td>string</td><td>Любая комбинация ASCII-символов верхнего и нижнего регистра ('A'..'Z', 'a'..'z', цифры ('0'..'9'), '-' и '.' с ограничением по длине в 64 символа. (Это может быть целое число, OID без префиксов, UUID или любой другой паттерн идентификаторов, соответствующим этим ограничениям).
+ <!-- Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) -->
    <br/>regex: [%id_regex%]</td></tr>
 </table>
-<!--
-<hr/>
-<p>Old primitive data types description, for reference</p>
  
-<table class="list">
- <tr>
-   <td colspan="3"><b>Примитивные типы</b></td>
- </tr>
- <tr>
-   <th>Имя в FHIR</th><th>Тип из схемы</th><th>Описание</th>
- </tr>
- <tr>
-   <td>boolean</td><td>xs:boolean</td><td>Может принимать только значения 'true' или 'false' (<b>0 и 1 не являются допустимыми значениями</b>)</td>
- </tr>
- <tr>
-   <td>integer</td><td>xs:int</td><td>32-битное целое число со знаком (для больших значений используйте тип decimal)</td>
- </tr>
- <tr>
-   <td>decimal</td><td>xs:decimal</td><td>Рациональное число. Примечание: при реализации не используйте IEEE-тип с плавающей точкой. Вместо этого используйте что-то, что работает как настоящее десятичное число, т.е. имеет встроенную точность (например Java BigDecimal). <b>Значения типа decimal могут не использовать экспоненциальную запись.</b></td>
- </tr>
- <tr>
-   <td>base64Binary</td><td>xs:base64Binary</td><td>Поток байтов в кодировке base64 (<a href="http://tools.ietf.org/html/rfc4648">RFC 4648</a>)</td>
- </tr>
- <tr>
-   <td>instant</td><td>xs:dateTime</td><td>Момент времени, указанный <b>с точностью как минимум до секунды и всегда включающий в себя часовой пояс.</b>. 
-   Примечание: Это тип для системного времени, а не человеческого (см. date и dateTime ниже).</td>
- </tr>
- <tr>
-   <td>string</td><td>xs:string</td><td>Последовательность символов в кодировке Unicode. <b>Обратите внимание, что строки НЕ ДОЛЖНЫ превышать 1 Мбайт по размеру</b></td>
- </tr>
- <tr>
-   <td>uri</td><td>xs:anyURI</td><td>Унифицированный идентификатор ресурса. Ссылка может быть абсолютной или относительной и может иметь необязательный идентификатор фрагмента (<a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>)</td>
- </tr>
- <tr><td>date</td><td>union of xs:date, xs:gYearMonth, xs:gYear</td><td>Дата или часть даты (например только год или год + месяц) в том представлении, как она используется в человеческой коммуникации. <b>Здесь нет указания часового пояса</b>. Даты ДОЛЖНЫ быть допустимыми. <br/>date − это объединение следующих типов данных из w3c схемы: date, gYearMonth и gYear<br/>regex: -?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?</td></tr>
- <tr><td>dateTime</td><td>union of xs:dateTime, xs:date, xs:gYearMonth, xs:gYear</td><td>Дата, дата/время или часть даты (например только год или год + месяц) в том представлении, как она используется в человеческой коммуникации. Если указаны часы и минуты, то также ДОЛЖЕН быть указан и часовой пояс. Секунды могут быть как указаны, так и опущены. Даты ДОЛЖНЫ быть допустимыми. <b>Время "24:00" не допустимо.</b><br/>dateTime  − это объединение следующих типов данных из w3c схемы: dateTime, date, gYearMonth, gYear<br/>
- regex: -?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?)?)?)?
- </td></tr>
- <tr><td>time</td><td>xs:time</td><td>A time during the day, with no date specified (can be converted to a <a href="#Duration">Duration</a> since midnght. Seconds may be provided but may also be ignored. <b>The time "24:00" is not allowed, and neither is a time zone</b><br/>
- regex: ([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?
-<!-- these regex tested using http://www.regexr.com/ - ->
- </td> 
- </tr>
- <tr><td colspan="3"><i>Примечание: не все ограничения, наложенные на этот тип данных, могут быть выражены с помощью регулярных выражений, поэтому эти регулярные выражения пропускают более широкий набор значений, чем фактически допустимый.</i></td></tr>
- <tr><td colspan="3"></td></tr>
- <tr>
-   <td colspan="3"><b>Простые ограничения</b> <a name="patterns"></a>
-<a name="code"> </a>
-<a name="oid"> </a>
-<a name="uuid"> </a>
-<a name="id"> </a></td>
- </tr>
- <tr>
-   <th>Имя в FHIR</th><th>Базовый FHIR-тип</th><th>Описание</th>
- </tr>
- <tr><td>code</td><td>string</td><td>Указывает, что значение взято из набора регулируемых строк, определенных в другом месте (см. <a href="terminologies.html">Использование кодов</a> для дальнейшего обсуждения). Техническое ограничение: код должен быть строкой, содержащей хотя бы один символ и не имеющей пробела в начале и в конце, внутри которой есть только одиночные пробелы. <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
- <tr><td>oid</td><td>uri</td><td>OID (идентификатор объекта), представленный в виде URI (унифицированный идентификатор ресурса) (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>): urn:oid:1.2.3.4.5</td></tr>
- <tr><td>uuid</td><td>uri</td><td>UUID (Universally Unique Identifier), представленный в виде URI (унифицированный идентификатор ресурса) (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11. Обратите внимание на комментарий в RFC о регистре: значения UUID ДОЛЖНЫ быть в нижнем регистре, но системам СЛЕДУЕТ интерпретировать их регистронезависимо. </td></tr>
- <tr><td>id</td><td>string</td><td>Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.)  Ids are case sensitive. UUIDs SHALL be sent using lowercase letters.
-   <br/>Note: this format includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232.
-   <br/>regex: [%id_regex%]</td></tr>
-</table>
 <p>
-Примитивные типы данных кроме значения, как описано выше, могут также иметь идентификатор (identity) (например xml:id), и, как и любые другие элементы в ресурсе, они могут иметь <a href="extensibility.html">расширения</a>. Обратите внимание, что значение является необязательным и может отсутствовать в соответствии со <a href="formats.html#element-rules">стандартными правилами для всех элементов</a>. К примеру, элемент примитивного типа может не иметь значения, а вместо этого включать в себя <a href="extension-data-absent-reason.html">расширение data-absent-reason</a>.
+Some additional notes about the <i>id</i> datatype:
 </p>
-<p>
-В XML эти типы представлены XML-элементами со значением этого типа в атрибуте value. Имя этого элемента определяется там, где этот тип используется. XML-элементы могут иметь <a href="references.html#id">атрибут id</a> и элементы-потомки, называемые расширениями (extension).
-В соответствии с XML-схемой пробелы в начале и в конце атрибута value игнорируются для типов boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid и uri. Обратите внимание, из этого следует, что библиотеки XML, следующие схеме, дают разные значения атрибутов по сравнению с библиотеками, не соответствующими схеме, во время чтения экземпляров XML. По этой причине атрибут value для этих типов НЕ ДОЛЖЕН иметь пробелы в начале и в конце. Строковые значения могут иметь пробелы в начале и в конце, если они являются частью содержимого значения.
-</p>
-<p>
-В JSON эти типы представлены в виде простых свойств объекта, содержащего их. Имя свойства определяется там, где этот тип используется.
-Типы также имеют свойство id и расширения. Их представление описано в <a href="json.html">формате JSON</a>. В JSON пробелы всегда имеют значение. Все примитивные типы, кроме строки (string), НЕ ДОЛЖНЫ иметь пробелы в начале и в конце.
-</p>
-
-<hr/>
-<!-- these regex tested using http://www.regexr.com/ - ->
-
-<!-- <tr><td colspan="3"><i>Note: not all restrictions imposed on the date/time types can be expressed using regular expressions, so these regexes allow a broader set of values than are actually valid</i></td></tr> -->
-
+<ul>
+ <li>Ids are case sensitive. UUIDs SHALL be sent using lowercase letters</li>
+ <li>The ID type includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232.</li>
+ <li>In a typical FHIR URL, like http://example.com/fhir/Patient/<span style="color: navy">1234</span>, the last part "1234" (highlighted in navy) is the part that is an id datatype</li>
+ <li>A full UUID is a uri, not an <i>id</i>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b), which SHALL be in lowercase</li>
+</ul>
+<!-- 
+boolean: [%dtusage boolean%]
+integer: [%dtusage integer%]
+decimal: [%dtusage decimal%]
+base64Binary: [%dtusage base64Binary%]
+base64binary: [%dtusage base64binary%]
+instant: [%dtusage instant%]
+string: [%dtusage string%]
+uri: [%dtusage uri%]
+date: [%dtusage date%]
+dateTime: [%dtusage dateTime%]
+datetime: [%dtusage datetime%]
+time: [%dtusage time%]
+code: [%dtusage code%]
+id: [%dtusage id%]
+-->
 <hr/>
 
 <a name="Types"/>
@@ -327,7 +268,7 @@ In JSON, whitespace in string values is always significant. Primitive types othe
 Любой XML-элемент может иметь <a href="references.html#id">атрибут id</a>. В JSON этот тип данных представлен объектом со свойствами, называющимися так же, как и эти XML-элементы. JSON-представление почти ничем не отличается, поэтому только первый из <a href="datatypes-examples.html#Attachment">примеров</a> содержит дополнительно JSON-представление.
 </p>
 <p>
-Сложные типы данных могут быть "профилированными". В <a href="profile.html">профиле</a> задается набор правил о том, какие элементы ДОЛЖНЫ иметь значения, и приводятся возможные значения.  
+Сложные типы данных могут быть "профилированы". <a href="structuredefinition.html">Structure Definition</a> типа "constraint" задает набор правил о том, какие элементы ДОЛЖНЫ иметь значения и какие значения являются допустимыми. 
 </p>
 
 <p><b>UML-диаграмма типов данных</b></p>
@@ -364,7 +305,7 @@ In JSON, whitespace in string values is always significant. Primitive types othe
 <p><b>Ограничения</b></p>
 [%dt.constraints Attachment%]
 <p>
-Если ни <i>data</i>, ни <i>URL</i> не заполнены, значение понимается как утверждение о том, что никакие данные не доступны для указанного <i>mimeType</i> и/или <i>language</i> по изложенным причинам. 
+Если ни <i>data</i>, ни <i>URL</i> не заполнены, значение следует понимать как утверждение о том, что для такой комбинации  <i>language</i> и <i>contentType</i> нет доступных данных. 
 </p>
 <p>
 Контекст использования часто может диктовать правила о том, какой тип вложения (и, следовательно, какой MIME-тип) может быть использован. 
@@ -419,12 +360,11 @@ Coding - это представление определенного конце
 Обратите внимание, что следующим системам указывать версию НЕОБХОДИМО всегда:
 </p>
 <ul>
- <li><a href="http://loinc.org">LOINC</a></li>
- <li>Различные версии ICD</li>
  <li>Национальные выпуски SNOMED CT (согласованность определений различается в разных странах, и некоторые страны могут принимать свои собственные правила на этот счет)</li>
+ <li>Various versions of ICD (note: the major releases are labelled as different code systems altogether, but there is veration within versions)</li>
 </ul>
 <p>
-См. <a href="valueset.html#versioning">обсуждение версий кодовых систем в ресурсе Value Set</a> для дальнейшего обсуждения версионирования.
+В общем случае любая классификация (например кодовая система), которая включает концепты с относительными определениями, например "not otherwise coded", потребует указания версии. См. <a href="valueset.html#versioning">обсуждение версий кодовых систем в ресурсе Value Set</a> для дальнейшего обсуждения версионирования.
 </p>
 
 <p>
@@ -773,26 +713,34 @@ For further information, including all <a href="http://www.w3.org/International/
 consult the <a href="datatypes-examples.html#HumanName">examples</a>.
 </p>
 <p> 
-The <i>text</i> element specifies the entire name as it should be represented. This
-may be provided instead of or as well as specific parts. 
-Элемент <i>text</i> содержит полное имя в том виде, как оно должно показываться. Текст может быть задан как в дополнение к частям имени, так и вместо них.
-The parts of a name SHOULD NOT 
-contain whitespace. For family name, hyphenated  names such as "Smith-Jones" are a 
-single name, but names with spaces such as "Smith Jones" are broken into multiple parts.
-For given names, initials may be used in place of the full name if that is all that is recorded. 
-Части имени НЕ ДОЛЖНЫ содержать пробельные символы. Для фамилий (family name) имена через дефис, например "Smith-Jones", считаются единым именем, однако имена с пробелами, например "Smith Jones" необходимо разбивать на несколько частей. Вместо имени (given name) можно использовать инициалы, если другой информации не было записано.
-The order of the  parts within a given part type has 
-significance and SHALL be observed. The appropriate order between 
-family name and given names depends on culture and context of use. порядок значений в пределах части имени данного типа имеет значение и ДОЛЖЕН соблюдаться. Порядок следования имени и фамилии зависит от культуры и контекста использования.
-Systems that operate across
-cultures should generally rely on the text form for presentation, and use the parts for index/search functionality. 
+The multiple give and family name parts combine to form a single name. Multiple given and family names are for
+when a person's name has multiple given names (relatively common across cultures) and multiple surnames (less common).
+Where a person has alternate names that may be used in place of each other, these are different
+instances of <i>HumanName</i>.
 </p>
 <p>
+Элемент <i>text</i> содержит полное имя в том виде, как оно должно показываться. Текст может быть задан как в дополнение к частям имени, так и вместо них.
+The <i>text</i> element specifies the entire name as it should be represented. This
+may be provided instead of or as well as specific parts, and can be built from the parts, though
+the correct order of assembly is culture dependent: the order of the  parts within a given part type has 
+significance and SHALL be observed. The appropriate order between 
+family name and given names depends on culture and context of use.
+</p>
+<p>
+Части имени НЕ ДОЛЖНЫ содержать пробельные символы. Для фамилий (family name) имена через дефис, например "Smith-Jones", считаются единым именем, однако имена с пробелами, например "Smith Jones" необходимо разбивать на несколько частей. Вместо имени (given name) можно использовать инициалы, если другой информации не было записано.
+The parts of a name SHOULD NOT contain whitespace. For family name, hyphenated  names such as "Smith-Jones" are a 
+single name, but names with spaces such as "Smith Jones" are broken into multiple parts.
+For given names, initials may be used in place of the full name if that is all that is recorded.
+Systems that operate across cultures should generally rely on the text form for presentation, and 
+use the parts for index/search functionality. For this reasons, applications SHOULD populate the 
+text element for future robustness.
+</p>
+<p>
+Приложения, обновляющие имя, ДОЛЖНЫ убедиться, что либо текст соответствует частям имени, либо из них присутствует только что-то одно. Системы, не поддерживающие столько частей имени, сколько предусмотрено, могут пожелать соединить некоторые части, разделяя их пробелами.
 Applications updating a name SHALL ensure either that the text and the parts 
 are in agreement, or that only one of the two is present. Systems that do not 
 support as many name parts as are provided in an instance may wish to append 
 some of the parts together using spaces
-Приложения, обновляющие имя, ДОЛЖНЫ убедиться, что либо текст соответствует частям имени, либо из них присутствует только что-то одно. Системы, не поддерживающие столько частей имени, сколько предусмотрено, могут пожелать соединить некоторые части, разделяя их пробелами.
 </p>
 <p>
 HumanName используется в следующих местах: [%dtusage HumanName%]
@@ -868,30 +816,48 @@ Timing
 См. также <a href="datatypes-examples.html#Timing">Примеры</a>, <a href="datatypes-definitions.html#Timing">Подробное описание</a> и <a href="datatypes-mappings.html#Timing">Мэппинги</a>.
 </p>
 <p>
-Specifies an event that may occur multiple times. Timing schedules are not used for recording when things did happen, but when they are expected or requested to occur.
-A Timing schedule can be either a list of events - periods on which the event occurs, 
-or a single event with repeating criteria, or just repeating criteria with no actual event. 
 Определяет событие, которое может произойти несколько раз. Расписания используются для записи не уже произошедших событий, а для ожидаемых или тех событий, на которые есть запрос. Расписание может представлять собой либо список событий - периодов, в которые событие наступает, либо отдельное событие с критерием его повторения, либо только критерий повторения без самого события.
+Specifies an event that may occur multiple times. Timing schedules are not used for recording when things did happen, but when they are expected or requested to occur.
+A Timing schedule can be either a list of events, or criteria for when the event happens. In addition, both can be proposed. When both event and a repeating specification 
+are provided, the list of events should be understood as an interpretation of the information in the repeat structure
 </p>
-<!--
 <p>
-Note: a possible enhancement to this is to have the repeat content repeat with each event. This is richer and more complex - is the added functionality useful?
+Many systems avoid the complexity of the Timing structure by using a text field for these things (e.g. "Dosage Text"). 
+Those systems do not use the Timing data type. Other systems use a set of 'common' codes - including, but usually
+not limited to, widely understood acronyms such as "BID". The timing data uses a fully structured representation 
+of the meaning of the codes for most general interoperability. 
 </p>
--->
 [%dt Timing%]
 <p>
-If events are specified, at least <i>event.start</i> SHALL be specified for each event. If no <i>event.end</i> is 
-specified, the event is assumed to last a limited but unknown time as clinically relevant.
 Если события указаны, то по крайней мере <i>event.start</i> ДОЛЖНО быть задано для каждого события. Если <i>event.end</i> не задано, предполагается, что событие длится ограниченное, но не известное время, насколько это оправданно с медицинской точки зрения.
+If the timing schedule has repeating criteria, the repeat can occur a given number of times per 
+the specified duration or in relation to some real world event. If no end condition is specified, 
+the schedule will terminate on some criteria that are expressed elsewhere. 
 </p>
 <p>
-If the timing schedule has repeating criteria, the repeat can occur a given number of times per 
-the specified duration or in relation to some real world event. Also, if the event repeats,
-a time to end the timing can be specified, either with a count of the number of times 
-it can occur or a date/time at which to end the schedule. If no end condition is specified, 
-the schedule will terminate on some criteria that are expressed elsewhere. 
+This table summarises some common uses of the Timing Data Type criteria.
+</p>
+<table class="grid">
+ <tr><td><b>text</b></td><td><b>duration+units</b></td><td><b>frequency</b></td><td><b>frequencyMax</b></td><td><b>period+units</b></td><td><b>periodMax</b></td><td><b>when</b></td></tr>
+ <tr><td>BID</td><td></td><td>2</td><td></td><td>1 d</td><td></td><td></td></tr>
+ <tr><td>TID</td><td></td><td>3</td><td></td><td>1 d</td><td></td><td></td></tr>
+ <tr><td>QID</td><td></td><td>4</td><td></td><td>1 d</td><td></td><td></td></tr>
+ <tr><td>Q6H</td><td></td><td>1</td><td></td><td>6 h</td><td></td><td></td></tr>
+ <tr><td>Every 8 hours</td><td></td><td>1</td><td></td><td>8 h</td><td></td><td></td></tr>
+ <tr><td>Every 7 days</td><td></td><td>1</td><td></td><td>7 d</td><td></td><td></td></tr>
+ <tr><td>3 times a day</td><td></td><td>3</td><td></td><td>1 d</td><td></td><td></td></tr>
+ <tr><td>3-4 times a day</td><td></td><td>3</td><td>4</td><td>1 d</td><td></td><td></td></tr>
+ <tr><td>Every 4-6 hours</td><td></td><td>1</td><td></td><td>4 h</td><td>6</td><td></td></tr>
+ <tr><td>Every 21 days for 1 hour</td><td>1 hr</td><td>1</td><td></td><td>21 d</td><td></td><td></td></tr>
+ <tr><td>Three times a week for ½ hour</td><td>0.5 hr</td><td>3</td><td></td><td>1 wk</td><td></td><td></td></tr>
+ <tr><td>With breakfast</td><td></td><td></td><td></td><td></td><td></td><td>CM</td></tr>
+ <tr><td>For 10 minutes before meals</td><td>10 min</td><td></td><td></td><td>10 min</td><td></td><td>AC</td></tr>
+</table>
+
+<p>
 Если в расписании имеется критерий повторения, событие может повториться заданное количество раз за указанный период либо относительно некоторого события реального мира.
 Если событие повторяющееся, время до окончания расписания может быть задано, либо количеством повторений count, либо датой/временем окончания расписания end. Если условие окончания не задано, расписание Schedule завершится по некоторому критерию, представленному где-то в другом месте.
+Timing is used in the following places: [%dtusage Timing%]
 </p>
 
 
@@ -910,13 +876,40 @@ Signature
 See also <a href="datatypes-examples.html#Signature">Examples</a>, <a href="datatypes-definitions.html#Signature">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Signature">Mappings</a>.
 </p>
 <p>
-todo
+A Signature holds a Digital Signature and supporting context in a FHIR accessible form. The non-repudiation proof is provided through the XML-Signature blob. 
 </p>
 [%dt Signature%]
 <p>
-todo
+The Signature.blob is base64 encoded XML-Signature. The XML-Signature is a <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature. Where the content that is signed is separate from the signature itself. 
 </p>
-
+<p>
+The Signature should conform to XAdES-X-L for support of Long Term signatures. The XAdES-X-L specification adds the timestamp of the signing, inclusion of the signing certificate, and statement of revocation. 
+</p>
+<p>
+Where the signed content is a FHIR Resource(s), the signature is accross the the XML form of the resource(s).
+</p>
+<p>
+The content should be canonicalized using the "Canonical XML 1.1. with Comments".
+</p>
+<p>
+The Signature should use the hashing algorithm sha256. The XML-Signature indicates the algorithm used. Other hashing algoirthms should be expected to have been used, signature validation policy would determine acceptability.
+</p>
+<p>
+The Signature Shall include a “CommitmentTypeIndication” element for the Purpose(s) of Signature. The Purpose can be the action being attested to, or the role associated with the signature. The value shall come from ASTM E1762-95(2013). 
+The Signature.type shall contain the same values as committmentTypeIndication.
+</p>
+<p>
+There are three levels of signature verification: 
+<ol>
+   <li>	verifying that the Digital Signature block itself has integrity through verifying the signature across the XML-Signature, </li>
+   <li> confirming that the signer was authentic, not revoked, and appropriate to the signature purpose, </li>
+   <li> confirming that the signed content of interest are unmodified using the hash algorithm.</li>
+</ol>
+</p>
+<p>
+Deviations from these guidelines would need to be expressed in site policy, and would be enumerated in the XML-Signature block. 
+For example some environments may choose a different XAdES profile, hashing algorithm, policy identifier, or signature purpose vocabulary. 
+</p>
 <div class="use">
 <p><b>Ограничения</b></p>
 [%dt.constraints Signature%]
@@ -975,7 +968,7 @@ Open references are used in the following places: [%dtusage *%]
 [%diagram datatypes/types3.diagram%]
 
 <ul>
- <li><b><a href="resources.html#metadata">Resource</a></b> - концептуальный базовый класс для всех ресурсов</li>
+ <li><b><a href="resource.html#metadata">Resource</a></b> - концептуальный базовый класс для всех ресурсов</li>
  <li><b><a href="references.html#Reference">Reference</a></b> - для ссылок из одного ресурса на другой</li>
  <li><b><a href="extensibility.html">Extension</a></b> - используется для передачи дополнительных данных в ресурсе</li>
  <li><b><a href="narrative.html#Narrative">Narrative</a></b> - передает человекочитаемое представление содержимого ресурса</li>

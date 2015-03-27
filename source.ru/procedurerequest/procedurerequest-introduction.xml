@@ -15,12 +15,11 @@
         It can be used to represent a procedure that is planned, that is proposed, or that is ordered. -->
     </p>
     <p>
-	<i>Procedure Request</i> может представлять заказ, введенный специалистом (practitioner) в CPOE-систему, а также предложение, сделанное клинической системой поддержки принятия решений (CDSS) на основе медицинской записи пациента и контекста оказания помощи. Запланированные процедуры также могут быть представлены с помощью этого ресурса (хотя этот случай использования все еще обсуждается и требует  проверки рабочими группами Patient Care и Orders and Observation).
+	<i>Procedure Request</i> может представлять заказ, введенный специалистом (practitioner) в CPOE-систему, а также предложение, сделанное клинической системой поддержки принятия решений (CDS) на основе медицинской записи пациента и контекста оказания помощи. Запланированные процедуры также могут быть представлены с помощью этого ресурса.
         <!-- The procedure request may represent an order that is entered by a practitioner in a CPOE 
-        system as well as a proposal made by a clinical decision support system (CDSS) based 
+        system as well as a proposal made by a clinical decision support system (CDS) based 
         on a patient's clinical record and context of care. Planned procedures may also be 
-        represented by this resource (though this use case is still being discussed and will 
-        need to be validated by Patient Care and Orders and Observation). -->
+        represented by this resource. -->
     </p>
 </p>
 </div>
@@ -33,6 +32,9 @@
     <p>
         <i>Пожалуйста, обратите внимание, что конкретные границы между ресурсами Diagnostic Order и Procedure Request должны быть определены рабочей группой Patient Care.<!-- Please note that the boundaries between a Diagnostic Order and a Procedure Request will need to be concretely
         defined by Patient Care. --></i>
+    </p>
+    <p>
+        <i>Also note that referrals should use the ReferralRequest resource rather than ProcedureRequest.</i>
     </p>
 </p>
 </div>

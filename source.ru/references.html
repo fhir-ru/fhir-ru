@@ -38,7 +38,7 @@
 </p>
 <p>
 Т. к. ресурсы обрабатываются независимо, взаимосвязи не считаются переходными. Например, если ресурс <a href="condition.html">Condition</a> ссылается на конкретного 
-<a href="patient.html">Patient</a> в качестве своего объекта и связан с ресурсом <a href="procedure.html">Procedure</a>
+<a href="patient.html">Patient</a> в качестве своего объекта и ссылается на ресурс <a href="procedure.html">Procedure</a>
 в качестве его основания, то нет автоматического правила или вывода, что эта процедура в качестве своего объекта ссылается на того же самого пациента. Напротив, объект процедуры должен устанавливаться непосредственно в самой процедуре. 
 Другими словами, контекст объекта не "наследуется" и не "вытекает" из связи с процедурой. Единственное исключение этому - в случае вложенных ресурсов (см. ниже). Обратите внимание, что на практике эти взаимосвязи действительно должны описывать логическую и не противоречивую запись, и в описанном здесь примере с Condition и Procedure они, как правило, должны будут  иметь одного пациента в качестве объекта.
 </p>
@@ -61,7 +61,14 @@
    </ul>
  </li>
  <li>Использование абсолютных URL адресов обеспечивает стабильный масштабируемый подход, подходящий для облачного/веб окружения, в то время как использование относительных/логических ссылок обеспечивает гибкий подход, подходящий для использования при торговле через границы закрытых экосистем (см. <a href="implementation.html#identity">проблемы реализации</a> для дальнейшего обсуждения)</li>
- <li>Абсолютные URL-адреса не обязательно должны указывать на  <a href="http.html">FHIR RESTful сервер</a>, хотя это и предпочтительный подход. Ведет ли ссылка на FHIR RESTful сервер или нет, она ДОЛЖНА указывать на Ресурс как определено в данной спецификации.</li>
+ <li>Абсолютные URL-адреса не обязательно должны указывать на  <a href="http.html">FHIR RESTful сервер</a>, хотя это и предпочтительный подход. Ведет ли ссылка на FHIR RESTful сервер или нет, она ДОЛЖНА указывать на Ресурс как определено в данной спецификации.
+	<br/>Note: This regex is true if the reference to a resource is consistent with a FHIR API:
+   <pre>
+   ((http|https)://([A-Za-z0-9\\\/\.\:\%\$])*)?([%piperesources%])\/[%id_regex%](\/_history\/[%id_regex%])?
+   </pre>
+   <br/>
+   However conformance with this regex is no guarantee that the end point is a FHIR server
+	</li>
  <li>URL-адреса всегда считаются чувствительными к регистру.</li>
  <li>Элемент <i>display</i>, если заполнен, в основном не имеет идентичного содержимого в Resource.text ссылаемого ресурса. Его цель  - обозначить, на что идет ссылка, а не более полно описать это.</li>
 </ul>
@@ -171,7 +178,6 @@ ancestor::f:*[not(parent::f:*)]/f:contained/*[@id=substring-after(<b>current()</
   <li>Вложенные ресурсы разделяют одно пространство разрешения внутренних id, что и родительский ресурс (for id attributes, see below)</li>
   <li>Вложенные ресурсы НЕ ДОЛЖНЫ содержать других вложенных ресурсов</li>
   <li>Вложенные ресурсы НЕ ДОЛЖНЫ содержать описательную часть (narrative)</li>
-  <li>Ресурсы, содержащиеся внутри, также "наследуют" контекст от их родительского ресурса. Например, если родительский ресурс содержит "subject", и вложенный ресурс также имеет определенный элемент subject, но не указывает никакого объекта, обрабатывающее приложение может заключить, что объект тот же самый. Обратите внимание, однако, что подобные заключения являются специфичными для конкретной ситуации. Нет правила, к примеру, что значение элемента "subject" совпадает в родительском и вложенном ресурсах</li>
   <li>Вложенный ресурс может быть включен в другой ресурс, только если в этом ресурсе есть непосредственная отсылка к нему:
 <!--
 A contained resource can only be included in another resource if something in the resource actually refers to it:
@@ -186,6 +192,26 @@ A contained resource can only be included in another resource if something in th
 
 </div>
 
+<h4>Context Inside a Resource</h4>
+<p>
+Resources that are contained inline may also "inherit" context from their parent resource. For instance, if
+the parent resource contains a "subject", and the contained resource also has a "subject" element defined,
+but does not specify any subject, a processing application might infer that the subject is the same.
+</p>
+<p>
+However FHIR provides no mechanism for defining or constraining any conduction of "equivalent" properties 
+from a containing resource into any contained resource - not even by declaring the use of a particular profile.
+Best practice is to explicitly include all known properties on contained resources, even if redundant with 
+properties on the containing resource.  E.g. If the containing resource and contained resource both have a 
+"subject" element, both elements should be present, even if they reference the same resouce.  Applications that 
+choose to omit redundant elements on contained resources should not expect other applications to infer 
+(or correctly infer) the intended meaning in this case.  Applications cannot safely presume that omitted 
+elements in contained resources can safely be inferred to be the same as the containing resource.  
+Any attempt to optimize resource content by 'conducting' meaning from containing to contained resources must 
+be managed through out-of-band agreement and must be done with the recognition that any receiver not party 
+to that agreement may not make correct (or any) inferences.
+</p>
+    
 <a name="bundle-refs"> </a>
 <h3>Разрешение ссылок на ресурсы в комплектах (Bundles)</h3>
 <p>
@@ -202,11 +228,12 @@ A contained resource can only be included in another resource if something in th
 </pre>
 </div>
 <p>
-тогда приложению следует искать любую запись в комплекте, где либо entry.id, либо entry.link[self] точно совпадает с URL-ссылкой:
+тогда приложению следует искать любую запись в комплекте, где entry.id точно совпадает с URL-ссылкой:
 </p>
 <div class="example">
 <pre class="xml">
    .. bundle ..
+  &lt;>base value="http://acme.com/fhir"/&gt;
   &lt;item>
     &lt;Organization xmlns="http://hl7.org/fhir">
        &lt;id value="23"/&gt;
@@ -227,7 +254,9 @@ A contained resource can only be included in another resource if something in th
 </pre>
 </div>
 <p>
-Во втором случае совпадение основано на конкретной версии ресурса. Если ссылка на ресурс не может быть разрешена внутри комплекта, приложение ДОЛЖНО иметь возможность получить ресурс, следуя прямо по приведенной URL-ссылке. Если это невозможно, ему придется использовать некоторый другой, специфичный для реализации, метод поиска ресурса.
+Во втором случае совпадение основано на конкретной версии ресурса. Note that the matching is based on full URLs by prepending
+the base for the entry (see <a href="bundle.html#resolving">"Bundles" for further information</a>).
+Если ссылка на ресурс не может быть разрешена внутри комплекта, приложение ДОЛЖНО иметь возможность получить ресурс, следуя прямо по приведенной URL-ссылке. Если это невозможно, ему придется использовать некоторый другой, специфичный для реализации, метод поиска ресурса.
 </p>
 <p>
 Если ссылка на ресурс является абсолютным URL, применяется тот же базовый принцип: сначала попытка разрешить ссылку в комплекте, затем поиск вне его. Однако перед тем, как это можно будет сделать, абсолютный URL must 

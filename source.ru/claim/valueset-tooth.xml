@@ -8,6 +8,8 @@
   </text>
   <name value="Surface Codes"/>
   <publisher value="FHIR Project team"/>
+  <copyright value="This is an example set"/>
+  <status value="draft"/>
   <contact>
     <telecom>  
     <system value="url"/>
@@ -17,8 +19,8 @@
   <description value="This value set includes a smattering of FDI tooth surface codes."/>
   <status value="draft"/>
     <define>
-	<system value="urn:ISO-3950"/>
-    <caseSensitive value="true"/>  
+	<system value="http://hl7.org/fhir/ex-surface"/>
+    <caseSensitive value="true"/>    
 	<concept>
     <code value="0"/>
   </concept>
@@ -35,8 +37,20 @@
     <code value="4"/>
   </concept>
 	<concept>
-    <code value="5"/>
-  </concept>
+		<code value="5"/>
+	</concept>
+	<concept>
+		<code value="10"/>
+	</concept>
+	<concept>
+		<code value="20"/>
+	</concept>
+	<concept>
+		<code value="30"/>
+	</concept>
+	<concept>
+		<code value="40"/>
+	</concept>
 	<concept>
     <code value="11"/>
   </concept>

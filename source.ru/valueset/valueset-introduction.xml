@@ -38,8 +38,8 @@ their own distributions formats .
 <div>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <ul>
- <li>Наборы значений используются в <a href="profile.html">профилях</a> и <a href="questionnaire.html">вопросниках</a> для перечисления допустимого содержания кодированных элементов<!-- 
-Value sets are used in <a href="profile.html">Profiles</a>, and <a href="questionnaire.html">Questionnaires</a> to specify the allowable contents for coded elements
+ <li>Наборы значений используются в <a href="structuredefinition.html">StructureDefinitions</a> и <a href="questionnaire.html">вопросниках</a> для перечисления допустимого содержания кодированных элементов<!-- 
+Value sets are used in <a href="structuredefinition.html">StructureDefinitions</a>, and <a href="questionnaire.html">Questionnaires</a> to specify the allowable contents for coded elements
  --></li>
  <li>Кроме того, особый <a href="datatypes.html#Coding">Coding</a> может ссылаться на набор значений, из которого он был взят<!-- 
 In addition, a specific <a href="datatypes.html#Coding">Coding</a> can reference the value set it was picked from 
@@ -68,8 +68,8 @@ should be familiar with the content in <a href="terminologies.html">Using Codes 
 </p>
 <p>
 Каждый набор значений имеет 2 разных URL-адреса, которые могут использоваться как ссылки на него, это его логический идентификатор и адрес.<!-- 
-Each value set has 2 different URLs that can be used to reference it, it's logical identifier, and 
-it's location. 
+Each value set has 2 different URLs that can be used to reference it, its logical identifier, and 
+its location. 
 -->
 </p>
 <p>

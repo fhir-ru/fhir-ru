@@ -12,7 +12,8 @@
   </identifier>
   <name value="South Wing Neuro OR 1"/>
   <description value="Old South Wing, Neuro Radiology Operation Room 1 on second floor" />
-  <type>
+	<mode value="instance" />
+	<type>
     <coding>
       <system value="http://hl7.org/fhir/v3/RoleCode" />
       <code value="RNEU" />
@@ -33,8 +34,8 @@
   <managingOrganization>
     <reference value="Organization/f001" />
   </managingOrganization>
-  <status value="suspended" />
   <partOf>
     <reference value="Location/1"></reference>
   </partOf>
+  <status value="suspended" />
 </Location>

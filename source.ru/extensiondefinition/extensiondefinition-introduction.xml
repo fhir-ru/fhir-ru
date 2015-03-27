@@ -12,7 +12,7 @@ in a FHIR resource, that can used as the basis for validation, and code, report 
 <div> 
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2> 
 <ul>
- <li>Каждое расширение в ресурсе ссылается непосредственно на свое определение<!-- Every extension in a resource refers directly to it's definition --></li>
+ <li>Каждое расширение в ресурсе ссылается непосредственно на свое определение<!-- Every extension in a resource refers directly to its definition --></li>
  <li>Ресурсы ExtensionDefinition используются экземплярами <a href="profile.html">Profile</a> для указания того, какие расширения применяются в ресурсе<!-- ExtensionDefinitions are used by <a href="profile.html">Profile</a> instances when specifying that extensions are used in a resource --></li>
 </ul>
 
@@ -45,9 +45,9 @@ that they may be used to extend. The following are possible contexts for an exte
  <tr><td>Определенный контекст в одной из сопоставляемых эталонных моделей</td><td>Название эталонной модели с последующим путем мэппинга</td><td>RIM: Act[moodCode="EVN"]</td></tr>
 <!--  <tr><td>A particular context in one of the mapped reference models</td><td>The name of the reference model followed by the mapping path</td><td>RIM: Act[moodCode="EVN"]</td></tr> -->
  <tr><td>Другое расширение</td><td>Профильный URI расширения, за которым следует код расширения</td><td>http://myextensions.org#someExtension</td></tr>
- <tr><td>Набор из комбинации перечисленных типов контекста</td><td>Как указано выше, разделенные ';'</td><td>Address; Contact</td></tr>
+ <tr><td>Набор из комбинации перечисленных выше</td><td>указывает несколько элементов useContext - один для каждого контекста</td><td>Address; Contact</td></tr>
 <!--  <tr><td>Another extension</td><td>The profile uri of the extension followed by the extension code</td><td>http://myextensions.org#someExtension</td></tr>
- <tr><td>A set of some combination of the above</td><td>As above, separated by ';'</td><td>Address; Contact</td></tr> -->
+ <tr><td>A set of some combination of the above</td><td>specify multiple useContext elements - one for each context</td><td>Address; Contact</td></tr> -->
 </table>
 <p>
 Кроме того, определение расширения может применять дополнительные ограничения по отношению к конкретным значениям элементов цели, что делает его использование уместным. 

@@ -175,7 +175,7 @@ notes: do not list revision in the version
           <li><a href="datatypes.html#Quantity">Quantity</a>: Correct schema spelling for "QuantityCompararator" (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3531">3531</a>)</li>
           <li>Change allowable values for the <a href="datatypes.html#id">id</a> type to include capital letters, and allow up to 64 chars (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3750">3750</a>)</li>
         </li>
-        <li>Restructure <a href="profile.html">Profile</a> - only one structure, and pull <a href="extensiondefinition.html">ExtensionDefinition</a> out of Profile (3647, 3498), and pull <a href="searchparameter.html">SearchParameter</a> out (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3626">3626</a>)</li>
+        <li>Restructure <a href="profile.html">Profile</a> - only one structure, and pull <a href="structuredefinition.html">ExtensionDefinition</a> out of Profile (3647, 3498), and pull <a href="searchparameter.html">SearchParameter</a> out (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3626">3626</a>)</li>
         <li><a href="profile.html">Profile</a>: allow 0..* discriminator (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3131">3131</a>), and change the way discriminators work across resource boundaries (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3124">3124</a>) + generate multiple types properly (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=2856">2856</a>)</li>
         <li>remove _validate interaction, and replace with $validate operation (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3686">3686</a>)</li>
         <li><a href="patient.html">Patient</a>: separate birth time from birthDate (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3731">3731</a>), Change Administrative Gender from a CodableConcept to a Code. Also fixed the values as male|female|other|unknown with mappings to v2 and v3 (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3070">3070</a>)</li>
@@ -198,7 +198,7 @@ notes: do not list revision in the version
         <li><a href="basic.html">Basic</a></li>
         <li><a href="careplan2.html">CarePlan2</a> </li>
         <li><a href="claimresponse.html">ClaimResponse</a></li>
-        <li><a href="clinicalassessment.html">ClinicalAssessment</a></li>
+        <li><a href="clinicalimpression.html">ClinicalImpression</a></li>
         <li><a href="communication.html">Communication</a></li>
         <li><a href="communicationrequest.html">CommunicationRequest</a></li>
         <li><a href="contract.html">Contract</a></li>
@@ -207,7 +207,6 @@ notes: do not list revision in the version
         <li><a href="dataelement.html">DataElement</a></li>
         <li><a href="devicecomponent.html">DeviceComponent</a></li>
         <li><a href="devicemetric.html">DeviceMetric</a></li>
-        <li><a href="deviceobservationreport.html">DeviceObservationReport</a></li>
         <li><a href="deviceuserequest.html">DeviceUseRequest</a> </li>
         <li><a href="deviceusestatement.html">DeviceUseStatement</a></li>
         <li><a href="eligibilityrequest.html">EligibilityRequest</a></li>
@@ -216,7 +215,7 @@ notes: do not list revision in the version
         <li><a href="enrollmentresponse.html">EnrollmentResponse</a></li>
         <li><a href="episodeofcare.html">EpisodeOfCare</a></li>
         <li><a href="explanationofbenefit.html">ExplanationOfBenefit</a></li>
-        <li><a href="extensiondefinition.html">ExtensionDefinition</a></li>
+        <li><a href="structuredefinition.html">StructureDefinition</a></li>
         <li><a href="goal.html">Goal</a> </li>
         <li><a href="healthcareservice.html">HealthcareService</a></li>
         <li><a href="imagingobjectselection.html">ImagingObjectSelection</a></li>
@@ -227,27 +226,22 @@ notes: do not list revision in the version
         <li><a href="oralhealthclaim.html">OralHealthClaim</a></li>
         <li><a href="paymentnotice.html">PaymentNotice</a></li>
         <li><a href="paymentreconciliation.html">PaymentReconciliation</a></li>
-        <li><a href="pendedrequest.html">PendedRequest</a></li>
         <li><a href="person.html">Person</a></li>
         <li><a href="pharmacyclaim.html">PharmacyClaim</a></li>
         <li><a href="procedurerequest.html">ProcedureRequest</a> </li>
         <li><a href="professionalclaim.html">ProfessionalClaim</a></li>
         <li><a href="questionnaireanswers.html">QuestionnaireAnswers</a></li>
-        <li><a href="readjudicate.html">Readjudicate</a></li>
         <li><a href="referralrequest.html">ReferralRequest</a></li>
-        <li><a href="reversal.html">Reversal</a></li>
         <li><a href="riskassessment.html">RiskAssessment</a></li>
         <li><a href="searchparameter.html">SearchParameter</a></li>
         <li><a href="schedule.html">Schedule</a></li>
         <li><a href="slot.html">Slot</a></li>
-        <li><a href="statusrequest.html">StatusRequest</a></li>
-        <li><a href="statusresponse.html">StatusResponse</a></li>
         <li><a href="subscription.html">Subscription</a></li>
         <li><a href="supportingdocumentation.html">SupportingDocumentation</a></li>
         <li><a href="visionclaim.html">VisionClaim</a></li>
         <li><a href="visionprescription.html">VisionPrescription</a></li>
       </ul>
-      <p>New Implementation Guides</p>
+      <p>New Implementation Guides (see <a href="iglist.html">discussion of status</a>)</p>
       <ul>
         <li><a href="argonauts.html">Argonaut Project</a></li>
         <li><a href="daf.html">Data Access Framework</a></li>
@@ -306,7 +300,7 @@ notes: do not list revision in the version
    <td>
      <ul>
        <li>Add <a href="appointment.html">Appointment</a>, <a href="appointmentresponse.html">Appointment Response</a>, <a href="schedule.html">Schedule</a> and <a href="slot.html">Slot</a></li>
-       <li>Add <a href="namespace.html">Namespace</a></li>
+       <li>Add <i>Namespace</i></li>
      </ul>
    </td>
  </tr>

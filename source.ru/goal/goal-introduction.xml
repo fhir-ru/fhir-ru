@@ -1,10 +1,18 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
-Todo
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
+    <p>
+        Goal represents desired targets and/or expectation for the progression, mitigation, enhancement or prevention of particular 
+        health-related concerns whose course can be impacted by a number of health-related activities. These targets are the motivation 
+        towards which diagnostic, therapeutic, and other activities are directed.  
+    </p>
+    
+    <p>
+    Goals may address for instance the prevention of illness, cure or mitigation of a condition, prolongation of life, or mitigation of pain and discomfort.
+    </p>
 </p>
 </div>
 

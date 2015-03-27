@@ -14,12 +14,23 @@ with different types or levels of organization. -->
 <div>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-<b>Organization</b> используется для совокупности людей, которые собрались вместе, чтобы достичь некоторой цели. 
+Ресурс Organization используется для описания совокупности людей, которые собрались вместе, чтобы достичь некоторой цели. 
 Ресурс  <a href="group.html">Group</a> используется для идентификации совокупности людей (или животных, устройств и т. п.), которые были собраны вместе в целях анализа или действия над ними, но не предполагается, что они будут действовать сами.
-<!-- <b>Organization</b> is used for collections of people that have come together to achieve an objective.  
+<!-- The Organization resourse is used for collections of people that have come together to achieve an objective.  
 The <a href="group.html">Group</a> resource is used to identify a collection of people (or animals, devices, etc.) 
 that are gathered for the purpose of analysis or acting upon, but are not expected to act themselves. -->
 </p>
+	<p>
+		The Organization resource often exists as a hierarchy of organization resources, using the <i>part-of</i> property to provide
+		the association of the child to its parent organization.<br/>
+		This organizational hierachy helps communicate the conceptual structure, where-as the Location resource provides the physical
+		representation of the heirachy.<br/>
+		The linkage between Organization and Location is from each point in the location hierarchy to the appropriate level in the 
+		Organization hierarchy. These links don't all have to be to the top level Organization.<br/>
+		When populating the organization and location hierarchies there is often not a clear distinction between these 2, however
+		to assist in making the decision, Locations are always used for recording where a service occurs, and hence where encounters
+		and observations are associated. The Organization property on these resources may not be the location where the service took place.
+	</p>
 </div>
 
 </div>

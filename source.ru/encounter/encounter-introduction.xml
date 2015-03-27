@@ -29,9 +29,9 @@ See <a href="#examples">below</a> for examples. -->
 </p>
 
 <p>
-Экземпляры Encounter могут существовать еще до того, как произойдет непосредственно сам визит, для передачи предварительной догоспитальной информации, в том числе с использованием элементов Encounter для отражения запланированной даты начала, запланированного места размещения или планируемых мест встреч. В этом  случае элемент  <i>status</i> устанавливается в 'planned'.
+Экземпляры Encounter могут существовать еще до того, как произойдет непосредственно сам визит, для передачи предварительной догоспитальной информации, в том числе с использованием элементов Encounter для отражения запланированной даты начала или планируемых мест встреч. В этом  случае элемент  <i>status</i> устанавливается в 'planned'.
 <!-- Encounter instances may exist before the actual encounter takes place to convey pre-admission information, including
-using Encounters elements to reflect the planned start date, planned accommodation or planned encounter locations. In 
+using Encounters elements to reflect the planned start date or planned encounter locations. In 
 this case the <i>status</i> element is set to 'planned'. -->
 </p>
 
@@ -39,10 +39,6 @@ this case the <i>status</i> element is set to 'planned'. -->
 Компонент Hospitalization предназначен для хранения расширенной информации, относящейся к событию госпитализации. Предполагается, что он будет совпадать с периодом самого encounter, однако он будет различаться, если вводится другой encounter, который собирает эту информацию, которая становится частью (partOf) данного экземпляра encounter.
 <!-- The Hospitalization component is intended to store the extended information relating to a hospitalization event.
 This is always expected to be the same period as the encounter itself, where this is different then another encounter is entered which captures this information which is a partOf this encounter instance. -->
-<br/>
-Как таковая, информация по размещению хранится в компоненте Location (который может содержать несколько записей, такие как кровать, палата, крыло, здание и т. п., где location.type может использоваться для определения того, какая запись location представляет интерес)
-<!-- As such, the accomodation information is stored in the Location component 
-(which can include multiple entries, such as the bed, ward, wing, facility etc where the location.type can be used to determine which location entry is of interest) -->
 </p>
 
 <h3>Status Management</h3>
@@ -68,9 +64,11 @@ Note that in many systems outpatient encounters (which are in scope for Encounte
 concurrently. In FHIR, Appointment is used for establishing a date for the encounter, while Encounter is 
 applicable to information about the actual Encounter, i.e. the patient showing up. -->
 <br/>
-Как таковые, в большинстве случаев запланированные визиты в действительности не считаются условленной встречей (appointment), а намерением, что помещение подготавливается для визита. В течение этого времени пациент может находиться, а может и не находиться в этом месте.
-<!-- As such in most cases planned encounters are not really considered an appointment, but an intent that the location is
-being prepared for the encounter to occur. During this time the patient may or may not be present at the location. -->
+По существу, encounter в статусе "planned" - не то же самое, что appointment, который запланировал его, это encounter до своего фактического начала, с ожиданием того, что этот encounter будет обновляться по мере продвижения к завершению. Прибытие пациента на место не обязательно означает начало encounter (например пациент пришел на час раньше того времени, когда он был непосредственно принят специалистом).
+<!-- As such an encounter in the "planned" status is not identical to the appointment that scheduled it,
+but it is the encounter prior to its actual occurrence, with the expectation that encounter will be
+updated as it progresses to completion. Patient arrival at a location does not necessarily mean the
+start of the encounter (e.g., a patient arrives an hour earlier than he is actually seen by a practitioner). -->
 </p>
 <p>
 Appointment обычно используется на стадии планирования встречи, поиска, нахождения доступного времени, затем записи на прием. Как только этот процесс завершен и встреча начинается, тогда appointment помечается как выполненный и привязывается к новому созданному encounter.

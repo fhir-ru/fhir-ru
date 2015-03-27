@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <!-- PA original:
 <p>
 
@@ -14,11 +14,13 @@ and multipleBirthInd (SubjectofCare).
 </p>
 -->
 <p>
-  A natural person has identity outside of a healthcare setting. The Person resource is used to capture this
+  An individual has identity outside of a healthcare setting. The Person resource is used to capture this
   information and to relate the person as an individual to other resources that do have a health-related context.
 </p>
   <p>
-    For example, while a patient resource may be created and maintained by each organization providing care for that person as a patient, a person resource provides a mechanism for linking patient resources across different organizations and their unique patient identity domains. Additionally, a person resource may be used by organizations to allow patients to manage their demographic data while maintaining stricter control of the associated patient resource data.
+    For example, while a patient resource may be created and maintained by each organization providing care for
+    that person as a patient, a person resource provides a mechanism for linking patient resources across 
+    different organizations and their unique patient identity domains.
   </p>
   <p>
     This resource is not referenced by any other resources.
@@ -36,7 +38,7 @@ Explains how this resource relates to others. Particularly important is to diffe
 
 <!-- (optional):
 <div>
-<h2>Предпосылки и контекст</h2>
+<h2>Background and Context</h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>

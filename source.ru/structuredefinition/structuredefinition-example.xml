@@ -52,10 +52,10 @@
         <short value="Text summary of the resource, for human interpretation"/>
         <definition value="A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."/>
         <comments value="Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative."/>
-        <synonym value="narrative"/>
-        <synonym value="html"/>
-        <synonym value="xhtml"/>
-        <synonym value="display"/>
+        <alias value="narrative"/>
+        <alias value="html"/>
+        <alias value="xhtml"/>
+        <alias value="display"/>
         <min value="0"/>
         <max value="1"/>
         <type>
@@ -68,9 +68,9 @@
         <short value="Contained, inline Resources"/>
         <definition value="These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."/>
         <comments value="This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again."/>
-        <synonym value="inline resources"/>
-        <synonym value="anonymous resources"/>
-        <synonym value="contained resources"/>
+        <alias value="inline resources"/>
+        <alias value="anonymous resources"/>
+        <alias value="contained resources"/>
         <min value="0"/>
         <max value="*"/>
         <type>
@@ -91,11 +91,10 @@
         <isModifier value="false"/>
         <binding>
           <name value="ObservationStatus"/>
-          <isExtensible value="false"/>
-          <conformance value="required"/>
-          <referenceReference>
+          <strength value="required"/>
+          <valueSetReference>
             <reference value="http://hl7.org/fhir/vs/observation-status"/>
-          </referenceReference>
+          </valueSetReference>
         </binding>
     </element>
     <element>
@@ -201,11 +200,10 @@
         <isModifier value="false"/>
         <binding>
           <name value="DiagnosticRequests"/>
-          <isExtensible value="true"/>
-          <conformance value="example"/>
-          <referenceReference>
+          <strength value="example"/>
+          <valueSetReference>
             <reference value="http://hl7.org/fhir/vs/diagnostic-requests"/>
-          </referenceReference>
+          </valueSetReference>
         </binding>
     </element>
     <element>
@@ -221,11 +219,10 @@
         <isModifier value="false"/>
         <binding>
           <name value="BodySite"/>
-          <isExtensible value="true"/>
-          <conformance value="example"/>
-          <referenceReference>
+          <strength value="example"/>
+          <valueSetReference>
             <reference value="http://hl7.org/fhir/vs/body-site"/>
-          </referenceReference>
+          </valueSetReference>
         </binding>
     </element>
     <element>
@@ -262,11 +259,10 @@
         <isModifier value="false"/>
         <binding>
           <name value="DiagnosticServiceSection"/>
-          <isExtensible value="true"/>
-          <conformance value="preferred"/>
-          <referenceReference>
+          <strength value="preferred"/>
+          <valueSetReference>
             <reference value="http://hl7.org/fhir/vs/diagnostic-service-sections"/>
-          </referenceReference>
+          </valueSetReference>
         </binding>
     </element>
     <element>
@@ -305,11 +301,10 @@
         <isModifier value="false"/>
         <binding>
           <name value="DiagnosticResultGroupNames"/>
-          <isExtensible value="true"/>
-          <conformance value="preferred"/>
-          <referenceReference>
+          <strength value="preferred"/>
+          <valueSetReference>
             <reference value="http://hl7.org/fhir/vs/report-names"/>
-          </referenceReference>
+          </valueSetReference>
         </binding>
     </element>
     <element>
@@ -426,11 +421,10 @@
         <isModifier value="false"/>
         <binding>
           <name value="DiagnosisCodes"/>
-          <isExtensible value="true"/>
-          <conformance value="example"/>
-          <referenceReference>
+          <strength value="example"/>
+          <valueSetReference>
             <reference value="http://hl7.org/fhir/vs/clinical-findings"/>
-          </referenceReference>
+          </valueSetReference>
         </binding>
     </element>
     <element>

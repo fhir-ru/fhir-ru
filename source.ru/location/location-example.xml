@@ -6,11 +6,18 @@
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">Burgers UMC, South Wing, second floor</div>
   </text>
-  <identifier>
+	<extension url="http://hl7.org/fhir/StructureDefinition/location-alias">
+		<valueString value="Burgers University Medical Center, South Wing, second floor" />
+	</extension>
+	<extension url="http://hl7.org/fhir/StructureDefinition/location-alias">
+		<valueString value="BU MC, SW, F2" />
+	</extension>
+	<identifier>
     <value value="B1-S.F2" />
   </identifier>
   <name value="South Wing, second floor"/>
   <description value="Second floor of the Old South Wing, formerly in use by Psychiatry"/>
+	<mode value="instance" />
   <telecom>
     <system value="phone"/>
     <value value="2328"/>
@@ -45,8 +52,8 @@
     </coding>
   </physicalType>
   <position>
-    <longitude value="4.844614000123024"/>
-    <latitude value="52.37799399970903" />
+    <longitude value="-83.6945691"/>
+    <latitude value="42.25475478" />
     <altitude value="0" />
   </position>
   <managingOrganization>

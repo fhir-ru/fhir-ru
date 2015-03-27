@@ -12,7 +12,7 @@ todo
 <ul>
  <li>Профили, используемые экземплярами <a href="conformance.html">Conformance</a> чтобы указывать, какие ресурсы применяются<!-- Profiles are used by <a href="conformance.html">Conformance</a> instances for specifying how resources are used --></li>
  <li>Профили используют <a href="valueset.html">Value Sets</a> для указания содержимого кодированных элементов<!-- Profiles use <a href="valueset.html">Value Sets</a> to specify the content of coded elements --></li>
- <li>Профили могут использовать <a href="extensiondefinition.html">Extension Definitions</a> при указании, каким образом ресурс применяется<!-- Profiles can use <a href="extensiondefinition.html">Extension Definitions</a> when specifying how a resource is used --></li>
+ <li>Профили могут использовать <a href="structuredefinition.html">Extension Definitions</a> при указании, каким образом ресурс применяется<!-- Profiles can use <a href="structuredefinition.html">Extension Definitions</a> when specifying how a resource is used --></li>
 </ul>
 
 </div> 

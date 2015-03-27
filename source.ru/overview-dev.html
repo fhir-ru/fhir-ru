@@ -35,7 +35,7 @@ variety of architectures and scenarios. -->
 
 <h3>Framework</h3>
 <p>
-В основе FHIR лежат "ресурсы" -  общие строительные блоки для любого обмена данными. Каждый ресурс имеет следующие <a href="resources.html">общие характеристики</a>:
+В основе FHIR лежат "ресурсы" -  общие строительные блоки для любого обмена данными. Каждый ресурс имеет следующие <a href="resource.html">общие характеристики</a>:
 </p>
 <ul>
  <li>URL, который его идентифицирует</li>
@@ -49,9 +49,9 @@ variety of architectures and scenarios. -->
 различных <a href="resourcelist.html">типов ресурсов</a>.
 </p>
 
-<h3>Example Patient</h3>
+<h3>Example Resource</h3>
 <p>
-Это пример представления <a href="patient.html">пациента</a> в виде FHIR-объекта в формате JSON. Кодировка XML (XML encoding) также определена в спецификации.
+Это пример представления ресурса <a href="patient.html">patient</a> в виде FHIR-объекта в формате <a href="json.html">JSON</a>. Формат <a href="xml.html">XML</a> также определен в спецификации.
 </p>
 
 <div class="example">
@@ -109,7 +109,7 @@ variety of architectures and scenarios. -->
 <ul>
   <li><b>resourceType</b> (строка 2) - Обязательный: FHIR определяет много различных типов ресурсов. См. <a href="resourcelist.html">полный индекс</a></li>
   <li><b>id</b> (строка 3) - Идентификатор ресурса. Всегда присутствует при обмене ресурсом, за исключением момента выполнения операции создания (ниже)</li>
-  <li><b>meta</b> (строки 4 - 7) - Обычно присутствует: <a href="resources.html#meta">Common use/context data to all resources</a> и контролируется инфраструктурой. Отсутствует, если нет метаданных</li>
+  <li><b>meta</b> (строки 4 - 7) - Обычно присутствует: <a href="resource.html#meta">Common use/context data to all resources</a> и контролируется инфраструктурой. Отсутствует, если нет метаданных</li>
   <li><b>text</b> (строки 12 - 17) - Рекомендуется: XHTML, описывающий <a href="narrative.html">человекочитаемое представление</a> ресурса</li>
   <li><b>extension</b> (строки 12 - 17) - Необязательный: <a href="extensbility.html">Расширения</a> задаются с помощью системы расширений</li>
   <li><b>data</b> (строки 18 - 43) - Необязательный: элементы данных, определенные для каждого типа ресурса</li>
@@ -130,7 +130,7 @@ variety of architectures and scenarios. -->
 <li><a href="http.html#delete">Delete</a> = DELETE https://example.com/path/{resourceType}/{id}</li>
 <li><a href="http.html#search">Search</a> = GET https://example.com/path/{resourceType}?search parameters...</li>
 <li><a href="http.html#history">History</a> = GET https://example.com/path/{resourceType}/{id}/_history</li>
-<li><a href="http.html#transaction">Transaction</a> = POST https://example.com/path/</li>
+<li><a href="http.html#transaction">Transaction</a> = POST https://example.com/path/ <i>(POST a tranasction bundle to the system)</i></li>
 <li><a href="operations.html">Operation</a> = GET https://example.com/path/{resourceType}/{id}/${opname}</li>
 </ul>
 <p>
@@ -146,7 +146,13 @@ FHIR-спецификация описывает и другие виды обм
 
 <h3>Создание ресурса</h3>
 <p>
-Для <a href="http.html#create">создания ресурса</a> отправьте HTTP POST-запрос в соответствующей точке взаимодействия ресурса. В примере ниже мы видим создание ресурса "пациент".
+Для <a href="http.html#create">создания ресурса</a> отправьте HTTP POST-запрос в соответствующей точке взаимодействия ресурса.
+</p>
+<pre> 
+  POST https://example.com/path/{resourceType}
+</pre>
+<p>
+В примере ниже мы видим создание ресурса "пациент".
 </p>
 
 <div class="example">
@@ -245,7 +251,13 @@ FHIR-спецификация описывает и другие виды обм
 
 <h3>Read Request</h3>
 <p>
-<a href="http.html#read">Чтение ресурса</a> выполняется отправкой HTTP GET-запросов в требуемую точку взаимодействия ресурса, как в этом примере:. 
+<a href="http.html#read">Чтение ресурса</a> выполняется отправкой HTTP GET-запросов в требуемую точку взаимодействия ресурса.
+</p>
+<pre> 
+  GET https://example.com/path/{resourceType}/{id}
+</pre>
+<p>
+Пример: 
 </p>
 <div class="example">
 <pre class="http linecounter">
@@ -308,11 +320,11 @@ FHIR-спецификация описывает и другие виды обм
 </p>
 <div class="example">
 <pre class="http">
-GET base/{resourceType}?criteria HTTP/1.1
+  GET https://example.com/path/{resourceType}?criteria
 </pre>
 </div>
 <p>
-или просто https://example.com/{resourceType}?criteria. Критерии - это набор HTTP-параметров, определяющих, какие ресурсы возвращать. Операция поиска
+Критерии - это набор HTTP-параметров, определяющих, какие ресурсы возвращать. Операция поиска
 </p>
 
 <div class="example">
@@ -348,8 +360,9 @@ https://example.com/base/MedicationPrescription?patient=347
 <code>      "url" : "https://example.com/base/MedicationPrescription?patient=347"</code>
 <code>    }</code>
 <code>  ],</code>
-<code>  "item": [</code>
+<code>  "entry": [</code>
 <code>    {</code>
+<code>      "resource" : {</code>
 <code>      "resourceType": "MedicationPrescription",</code>
 <code>      "id" : "3123",</code>
 <code>      "meta" : {</code>
@@ -357,6 +370,7 @@ https://example.com/base/MedicationPrescription?patient=347
 <code>        "lastUpdated" : "2014-08-16T05:31:17Z"</code>
 <code>      }, </code>
 <code>      ... content of resource ...</code>
+<code>    }, </code>
 <code>    }, </code>
 <code>    ... 2 additional resources ....</code>
 <code>  ]</code>
@@ -380,7 +394,14 @@ https://example.com/base/MedicationPrescription?patient=347
 
 <h3>Update Request</h3>
 <p>
-Клиент отправляет на сервер новую версию ресурса для замены существующей версии.
+Клиент отправляет на сервер новую версию ресурса для замены существующей версии - it PUTs it to the location of the existing resource:
+</p>
+<pre> 
+  PUT https://example.com/path/{resourceType}/{id}
+</pre>
+<p>
+Note that there does not need to be a resource already existing at {id} - the server may elect to automatically create the resource at the specified address. 
+Here is an example of updating a patient:
 </p>
 
 <div class="example">
@@ -484,7 +505,7 @@ https://example.com/base/MedicationPrescription?patient=347
   <li><b>meta.versionId</b> (строка 5) - изменяется каждый раз при любом изменении содержимого ресурса (за исключением последних 3 элементов в meta)</li>
   <li><b>meta.lastUpdated</b> (строка 6) - изменяется при смене versionId. Системы, не поддерживающие версионирование, обычно не отслеживают и lastUpdated</li>
   <li><b>meta.profile</b> (строка 7) - утверждение, что содержимое соответствует профилю. См. <a href="profiling.html#resources">Extending and Restricting Resources</a> для дальнейшего обсуждения. Может меняться при изменении профилей или наборов значений или когда система проводит повторную проверку на соответствие</li>
-  <li><b>meta.security</b> (строки 8 - 11) - <a href="securitylabels.html">Метки уровня безопасности</a>, применимые к этому ресурсу. Эти теги связывают ресурсы определенным образом с общей политикой безопасности и инфраструктурой. Теги безопасности могут быть обновлены при изменениях ресурса или всякий раз, когда подсистема безопасности решит</li>
+  <li><b>meta.security</b> (строки 8 - 11) - <a href="security-labels.html">Метки уровня безопасности</a>, применимые к этому ресурсу. Эти теги связывают ресурсы определенным образом с общей политикой безопасности и инфраструктурой. Теги безопасности могут быть обновлены при изменениях ресурса или всякий раз, когда подсистема безопасности решит</li>
   <li><b>meta.tag</b> (строки 12 - 16) - <a href="extras.html">Теги</a>, применимые к этому ресурсу. Теги используются для связи ресурсов с обработкой и рабочим процессом. Приложения не обязаны учитывать теги во время интерпретации смыслового значения ресурса. Теги могут <a href="http.html#tags">обновляться</a> без изменения версии ресурса</li>
   <li><b>implicitRules</b> (строка 17) - показывает, что имеется <a href="profiling.html#agreement">пользовательское соглашение</a> о том, каким образом используются ресурсы, которое необходимо понимать для безопасной обработки ресурса. Использование этого не поощряется, так как оно ограничивает совместное использование, но иногда оно необходимо</li>
   <li><b>language</b> (строка 18) - <a href="narrative.html#language">базовый язык ресурса</a>. Позволяется иметь в ресурсе содержимое и на других языках; этот язык всего лишь базовый, но он должен быть главным языком ресурса</li>

@@ -7,7 +7,7 @@
    <body>
       [%file newnavbar%]
       <div class="col-9">
-         <a id="USLabReport"> </a>
+         <a name="USLabReport"> </a>
         <p>Опубликовано рабочей группой HL7 Orders and Observations<!-- Published by:  HL7 Orders and Observations Workgroup --></p>
 		<p>Автор/главный редактор:  Eric M Haas, Health eData Inc.<!-- Primary Author/Editor:  Eric M Haas, Health eData Inc. --></p>
          <h2>Реализация лабораторного отчета в США<!-- US Laboratory Report Implementation --></h2>
@@ -72,8 +72,8 @@
 			<a href="spec-uslab.html">USlabSpec</a> ограничивает и расширяет ресурс <a href="specimen.html">Specimen</a>, который используется для определения того, что, когда и как было взято в качестве образца.
 			<!-- <a href="spec-uslab.html">USlabSpec</a> constrains and extends <a href="specimen.html">Specimen</a> which is used to define what, when, and how the specimen was collected. --></li>
 			<li>
-			<a href="obs-uslab.html">USLabObsCode | USLabObsQuantity | USLabObsOther | USLabObsRatio</a> ограничивают и расширяют ресурсы <a href="observation.html">Observation</a>, которые используются для поддержки различных типов результатов для записи лабораторных наблюдений. 
-			<!-- <a href="obs-uslab.html">USLabObsCode | USLabObsQuantity | USLabObsOther | USLabObsRatio</a> constrains and extends <a href="observation.html">Observation</a> which are used to support the various result types for recording laboratory observations.  -->
+			<a href="obs-uslab.html">USLabObsCode | USLabObsQuantity | USLabObsRange | USLabObsRatio | USLabObsOther | USLabObsPanel</a> ограничивают и расширяют ресурсы <a href="observation.html">Observation</a>, которые используются для поддержки различных типов результатов для записи лабораторных наблюдений. 
+			<!-- <a href="obs-uslab.html">USLabObsCode | USLabObsQuantity | USLabObsRange | USLabObsRatio | USLabObsOther | USLabObsPanel</a> constrains and extends <a href="observation.html">Observation</a> which are used to support the various result types for recording laboratory observations  -->
 						<ul>
 					<li>
 					<a href="org-uslab.html">USLabPerformingLab</a> ограничивает и расширяет ресурс <a href="organization.html">Organization</a>, который используется для задания организации, которая несет ответственность за это наблюдение.
@@ -97,8 +97,7 @@
          <ul>
 
             <li>
-			<b>Operations</b> - <a href="#todo">некоторая USLabReport операция</a> - Вопрос для голосования: есть ли какие-то операции, которые должен рассмотреть <i>USLabReport</i>?
-            <!-- <b>Operations</b> -<a href="#todo">Some USLabReport Operation</a> - Question for balloters are there any operations that <i>USLabReport</i> should consider? -->
+            <b>Operations</b> -<!--a href="#todo">Some USLabReport Operation</a--> Вопрос для голосования: есть ли какие-то операции, которые должен учитывать <i>USLabReport</i>?
            </li>
            <li>
 			<b>Conformance statements</b> - Определения предполагаемых возможностей каждого из действующих лиц, вовлеченных в поддержку функциональности <i>USLabReport</i>:
@@ -120,8 +119,7 @@
                
             </li>
                         <li>
-				<b>Mappings</b> - <a href="conceptmap-lri-uslabreport.html">LRI to USLabReport Concept Codes Cross-mapping</a> - это перевод кодов концептов для LRI в <i>USLabReport</i> - Примечание для голосования:  это заглушка для будущей работы.
-               <!-- <b>Mappings</b> - <a href="conceptmap-lri-uslabreport.html">LRI to USLabReport Concept Codes Cross-mapping</a> are translation of  the concept codes for LRI to <i>USLabReport</i> - Note to balloters this is a stub entry for future work. -->
+               <b>Mappings</b> - <!--a href="conceptmap-lri-uslabreport.html">LRI to USLabReport Concept Codes Cross-mapping</a-->  - это перевод кодов концептов для LRI в <i>USLabReport</i> - Примечание для голосования:  это заглушка для будущей работы.
                </li>
             
             <li>

@@ -75,6 +75,10 @@ API состоит из набора операций (взаимодейств�
  </li>
  <li>Содержимое внутри фигурных скобок {} является необязательным</li>
 </ul>
+<p>
+Implementations constructing URLs using these patterns SHOULD conform to <a href="https://tools.ietf.org/html/rfc3986#appendix-A">RFC 3986 Section 6 Appendix A</a>
+which requires percent-encoding for a number of characters that occasionally appear in the URLs (mainly in search parameters).
+</p>
 <a name="root"> </a>
 <a name="general"> </a>
 <h3>Базовый URL сервиса</h3>
@@ -98,8 +102,8 @@ https://server/path/Patient
 <p>
 Примечание: Все URLы и идентификаторы чувствительны к регистру.</p>
 <p>
-Сервер может использовать пути типа "http://server/...[xx]...", где [xx] - это некоторая переменная. Обычно это идентификатор пациента или пользователя, и его присутствие означает, что вся информация относится к данному пациенту/пользователю либо персонализирована для него.  
-Так, в случае пользователя это означает, что именно ему предоставлен явный доступ к операции. Не обязательно всегда включать идентификатор пациента - смотри главу <a href="extras.html#compartments">Compartments </a>  про альтернативный подход.
+Обратите внимание, что сервер может использовать пути типа "http://server/...[xx]...", где [xx] - это некоторая переменная часть, идентифицирующая конкретный экземпляр реализации FHIR API. Обычно это идентификатор пациента или пользователя, и его присутствие означает, что вся информация относится к данному пациенту/пользователю либо персонализирована для него.  
+Так, в случае пользователя это означает, что именно ему предоставлен явный доступ к операции. Не обязательно всегда включать идентификатор пациента в URL - реализации могут связывать точку взаимодействия FHIR с конкретным пациентом или провайдером с помощью OAuth. Логическое обоснование можно посмотреть в <a href="extras.html#compartments">Compartments</a>.
 </p>
 
 <h3>Метаданные ресурсов и версионирование</h3>
@@ -119,7 +123,13 @@ ETag: W/"3141"
 </pre>
 <h3>Безопасность</h3>
 <p>
-Использование HTTPS не обязательно, но для передачи любых реальных данных ДОЛЖЕН быть использован SSL и другие дополнительные предосторожности. См. <a href="security.html#http">Безопасность HTTP </a> для более детальной информации.
+Использование HTTPS является необязательным, но для передачи любых реальных медицинских данных ДОЛЖЕН быть использован SSL и, при необходимости, другие дополнительные предосторожности. См. <a href="security.html#http">Безопасность HTTP </a> для более детальной информации.
+</p>
+<p>
+The choice of whether to return 403 or 404 depends upon the specific situation and specific 
+local policies, regulations, and laws. The decision of which error to use will include consideration 
+of whether disclosure of the existence of relevant records is considered an acceptable 
+disclosure of PI or  a prohibited disclosure of PI.
 </p>
 <p>
 Примечание: для поддержки браузерных клиентских приложений сервер ДОЛЖЕН реализовывать <a href="http://enable-cors.org/">Кросс-доменный доступ к ресурсам</a>.  
@@ -463,23 +473,25 @@ is performed by an HTTP DELETE command as shown: -->
   DELETE [base]/[type]/[id]
 </pre>
 <p>
-Операция delete означает, что последующие операции <a href="#read">чтения ресурса без указания версии</a> вернут HTTP статус-код 410, и что этот ресурс больше не будет находиться операцией <a href="#search">search</a>. После успешного удаления или если ресурс вообще не существовал, сервер должен возвращать статус-коды 204 (No Content) или 202 Accepted, а также ресурс <a href="operationoutcome.html">OperationOutcome</a> с подсказками и предупреждениями относительно этого удаления; если возвращается OperationOutcome, то он  НЕ ДОЛЖЕН содержать никаких ошибок.
+Операция delete означает, что последующие операции <a href="#read">чтения ресурса без указания версии</a> вернут HTTP статус-код 410, и что этот ресурс больше не будет находиться операцией <a href="#search">search</a>. После успешного удаления или если ресурс вообще не существовал, сервер должен возвращать статус-коды 204 (No Content) или 200 OK, а также ресурс <a href="operationoutcome.html">OperationOutcome</a> с подсказками и предупреждениями относительно этого удаления; если возвращается OperationOutcome, то он  НЕ ДОЛЖЕН содержать никаких ошибок.
 <!-- A delete interaction means that subsequent <a href="#read">non-version specific reads</a> of a resource
 return a 410 HTTP status code and that the resource is no longer found through <a href="#search">search</a>
 interactions. Upon successful deletion, or if the resource does not exist at all, the server should return
-204 (No Content), or 202 Accepted status code, with an <a href="operationoutcome.html">OperationOutcome</a>
+204 (No Content), or 200 OK status code, with an <a href="operationoutcome.html">OperationOutcome</a>
 resource containing hints and warnings about the deletion; if one is sent it SHALL not include any errors. -->
 </p>
 <p>
+Whether to support delete at all, or for a particular resource type or a particular instance is at the 
+discretion of the server based on the business rules that apply in its context.
 Если сервер отказывает удалять ресурсы такого типа в соответствии с общей политикой безопасности, тогда он должен возвращать статус-код 405 Method not allowed. Если сервер отказывается удалять ресурс по причинам, специфичным для конкретного ресурса, например из-за вопросов целостности ссылок, он должен возвращать статус-код 409 Conflict. 
-Выполнение этого взаимодействия с ресурсом, который уже удален, не имеет эффекта, и сервер должен возвращать статус-код 204 No Response. 
+Выполнение этого взаимодействия с ресурсом, который уже удален, не имеет эффекта, и сервер должен возвращать статус-код 204 или 200. 
 Ресурсы, которые были удалены, могут быть восстановлены с помощью последующего выполнения операции <a href="#href">update</a> с помощью HTTP <code>PUT</code>.
 
 <!-- 
 If the server refuses to delete resources of that type as a blanket policy, then it should return the 405
 Method not allowed status code. If the server refuses to delete a resource because of reasons specific
 to that resource, such as referential integrity, it should return the 409 Conflict status code.
-Performing this interaction on a resource that is already deleted has no effect, and the server should return a 204 No Response status code.
+Performing this interaction on a resource that is already deleted has no effect, and the server should return a 204 or 200 response.
 Resources that have been deleted may be "brought back to life" by a subsequent <a href="#href">update</a> interaction using an HTTP <code>PUT</code>.
   -->
 </p>
@@ -491,9 +503,9 @@ deletion interaction should be understood as deleting the record of the resource
 about the state of the real-world corresponding resource implied. -->
 </p>
 <p>
-Операция <code>delete</code> не удаляет историю версий ресурса. С точки зрения истории версий, удаление ресурса эквивалентно созданию особого вида записи в истории, которая не имеет содержимого и помечена как удаленная.
+Для серверов, которые поддерживают историю версий, операция <code>delete</code> не удаляет историю версий ресурса. С точки зрения истории версий, удаление ресурса эквивалентно созданию особого вида записи в истории, которая не имеет содержимого и помечена как удаленная.
 <!-- 
-The <code>delete</code> operation does not remove a resource's version history. From a version history respect,
+For servers that maintain a version history, the <code>delete</code> operation does not remove a resource's version history. From a version history respect,
 deleting a resource is the equivalent of creating a special kind of history entry that has
 no content and is marked as deleted.
 -->
@@ -657,30 +669,13 @@ creating duplicate resources for the same record. For example, a client posting 
 <p>
 Эта операция ищет набор ресурсов на основе некоторого критерия фильтра. Это взаимодействие выполняется несколькими различными HTTP-командами. Чтобы искать сразу по всем ресурсам:
 <!-- This interaction searches a set of resources based on some filter criteria. The interaction can be performed by several different HTTP commands. 
-To search all resources at once: -->
+ -->
 </p>
 <pre>
-  GET [base]?[parameters] {&amp;_format=[mime-type]}
+  GET [base]/[type]{?[parameters]{&amp;_format=[mime-type]}}
 </pre>
 <p>
-Чтобы искать по ресурсам конкретного типа:
-<!-- To search a single resource type: -->
-</p>
-<pre>
-  GET [base]/[type]?[parameters] {&amp;_format=[mime-type]}
-</pre>
-<p>
-Чтобы искать в модуле <a href="extras.html#compartments">compartment</a> либо по всем возможным ресурсам, либо ресурсам одного типа, соответственно:
-<!-- To search a <a href="extras.html#compartments">compartment</a>, either all possible resources, or a single resource type, respectively: -->
-</p>
-<pre>
-  GET [base]/[Compartment]/[id]/*?[parameters]  {&amp;_format=[mime-type]}
-  GET [base]/[Compartment]/[id]/[type]?[parameters]  {&amp;_format=[mime-type]}
-</pre>
-<p>
-Обратите внимание, что имеется особая операция, определенная для поддержки 
-<a href="patient-operations.html#everything">извлечения записи пациента целиком</a>.
-<!-- Note that there is a specific operation defined to support <a href="patient-operations.html#everything">fetching an entire patient record</a>. -->
+This searches all resources of a particular type using the criteria represented in the parameters. 
 </p>
 <p>
 Из-за способа, которым некоторые пользовательские агенты и прокси обрабатывают запросы <code>GET</code> и <code>POST</code>, в дополнение к методу поиска на основе GET-запроса серверы, которые поддерживают <i>search</i>, ДОЛЖНЫ также поддерживать поиск на основе <code>POST</code>-запроса:
@@ -688,7 +683,7 @@ To search all resources at once: -->
 to the get based search method above, servers that support <i>search</i> SHALL also support a <code>POST</code> based search: -->
 </p>
 <pre>
-POST  [base]/[type]/_search?[parameters] {&amp;_format=[mime-type]}
+POST  [base]/[type]/_search{?[parameters]{&amp;_format=[mime-type]}}
 </pre>
 <p>
 Запрос этого вида имеет точно такую же семантику, что и эквивалентная команда <code>GET</code>. Все эти взаимодействия поиска принимают ряд параметров, которые являются серией пар name'='value, закодированных в URL (или в виде <code>application/x-www-form-urlencoded</code> отправки <code>POST</code>).
@@ -713,6 +708,35 @@ list into pages if appropriate. The server MAY also return an OperationOutcome r
 if one is sent it SHALL not include any errors, and it shall be marked with an <a href="search-entry-mode.html">entry
 mode</a> of <code>include</code>. -->
 </p>
+<h4>Variant Searches</h4>
+<p>
+To search a <a href="extras.html#compartments">compartment</a>, either all possible resources, or for a particular resource type, respectively:
+</p>
+<pre>
+  GET [base]/[Compartment]/[id]/{*?[parameters]{&amp;_format=[mime-type]}}
+  GET [base]/[Compartment]/[id]/[type]{?[parameters]{&amp;_format=[mime-type]}}
+</pre>
+<p>
+For example, to retrieve all the observation resources for a particular LOINC code associated with a particular encounter:
+</p>
+<pre>
+  GET [base]/Encounter/23423445/Observation?code=2951-2  {&amp;_format=[mime-type]}
+</pre>
+<p>
+Note that there are a specific operations defined to support fetching <a href="patient-operations.html#everything">an entire patient record</a>
+or <a href="encounter-operations.html#everything">all record for an encounter</a>.
+</p>
+<p>
+Finally, it's possible to search all resources at once:
+</p>
+<pre>
+  GET [base]?[parameters]{&amp;_format=[mime-type]}
+</pre>
+<p>
+When searching all resources at once, only the parameters defined for all resources 
+can be used.
+</p>
+
 
 <a name="conformance"> </a>
 <h3>conformance</h3>
@@ -963,9 +987,9 @@ Clients should be aware that due to timing imprecision, they may receive notific
 not required to support a precision finer than by second. --> 
 </p>
 <p>
-Список обновлений может быть длинным, поэтому серверы могут использовать разбиение на страницы (пагинацию). Если они делают это, они ДОЛЖНЫ использовать метод, <a href="#paging">описанный ниже</a>, для разбиения списка на страницы, где это необходимо.
+Список обновлений может быть длинным, поэтому серверы могут использовать разбиение на страницы (пагинацию). Если они делают это, они ДОЛЖНЫ использовать метод, <a href="#paging">описанный ниже</a>, для разбиения списка на страницы, где это необходимо, и поддерживать указанный _count на всех страницах.
 <!-- The updates list can be long, so servers may use paging. If they do, they SHALL use the method <a href="#paging">described 
-below</a> for breaking the list into pages if appropriate. -->
+below</a> for breaking the list into pages if appropriate, and maintain the specified _count across pages. -->
 </p>
 <p>
 Взаимодействие history может использоваться для установки подписки одной системы на другую в целях синхронизации ресурсов между ними. Другие средства синхронизации систем можно посмотреть в статье <a href="subscription.html">Subscription resource</a>.
@@ -1259,9 +1283,12 @@ Note that <i>all</i> requests may include an optional <code>Accept</code> header
 </table>
 
 <p>
-Примечание: N/A = не представлен, R = обязательный, O = необязательный.
-<!-- Note: N/A = not present, R = Required, O = optional. -->
+Примечания: 
 </p>
+<ul>
+ <li>N/A = не представлен (not present), R = обязательный (Required), O = необязательный (optional)</li>
+ <li>Операции, определенные для всех ресурсов, включая прямой доступ к элементу meta, см. в <a href="resource-operations.html">Resource Operations</a></li>
+</ul>
 
 <table class="grid">
 <tr><th>Interaction</th><th colspan="6">Response</th></tr>
@@ -1269,7 +1296,7 @@ Note that <i>all</i> requests may include an optional <code>Accept</code> header
 <tr><td>read</td>           <td>R</td>            <td>R: Resource</td>           <td>N/A</td>      	<td>R</td>                <td>R: ETag, Last-Modified</td>		<td>200, 404, 410</td></tr>
 <tr><td>vread</td>          <td>R</td>            <td>R: Resource</td>           <td>N/A</td>      	<td>R</td>                <td>R: ETag, Last-Modified</td>		<td>200, 404</td></tr>
 <tr><td>update</td>         <td>R if body</td>    <td>O: Resource (Prefer)</td>                  <td>R on create</td>	<td>R</td>                <td>R: ETag, Last-Modified</td>		<td>200, 201, 400, 404, 405, 409, 412, 422</td></tr>
-<tr><td>delete</td>         <td>R if body</td><td>O: OperationOutcome</td>  <td>N/A</td>      	<td>N/A</td>              <td>N/A</td>							<td>202, 204, 404, 405, 409, 412</td></tr>
+<tr><td>delete</td>         <td>R if body</td><td>O: OperationOutcome</td>  <td>N/A</td>      	<td>N/A</td>              <td>N/A</td>							<td>200, 204, 404, 405, 409, 412</td></tr>
 <tr><td>create</td>         <td>R if body</td>    <td>O : Resource (Prefer)</td>                <td>R</td>			<td>R</td>               <td>R: ETag, Last-Modified</td>		<td>201, 400, 404, 405, 422</td></tr>
 <tr><td>search</td>         <td>R</td>            <td>R: Bundle</td>             <td>N/A</td>      	<td>N/A</td>              <td>N/A</td>							<td>200, 403?</td></tr>
 <tr><td>search-all</td>     <td>R</td>            <td>R: Bundle</td>             <td>N/A</td>      	<td>N/A</td>              <td>N/A</td>							<td>200, 403?</td></tr>

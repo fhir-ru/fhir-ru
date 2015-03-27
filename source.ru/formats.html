@@ -18,6 +18,7 @@
 <h1>Форматы представления ресурсов</h1>
 <p>
 На этой странице задокументировано, каким образом описываются ресурсы. В реальности ресурсы могут быть представлены в следующих форматах: <a href="xml.html">XML</a> и <a href="json.html">JSON</a>. 
+Other representations are allowed, but are not described by this specification.
 </p>
 
 <h2>Описание ресурсов</h2>
@@ -31,7 +32,7 @@
  <li>с помощью JSON-псевдосинтаксиса, дающего визуальное представление о том, как конечные экземпляры ресурса будут выглядеть в формате JSON</li>
 </ul> 
 <p>
-В дополнение к этому наглядному синтаксису доступны и другие формы определений, включая W3C-схему и Schematron, а также <a href="profile.html">Profile</a>-синтаксис, определенный внутри.
+В дополнение к этому наглядному синтаксису доступны и другие формы определений, включая W3C-схему и Schematron, а также <a href="structuredefinition.html">StructureDefinition</a>-синтаксис, определенный внутри.
 </p>
 
 <a name="table"> </a>
@@ -62,7 +63,7 @@
   <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)" class="heirarchy"><img alt="." class="heirarchy" src="tbl_spacer.png"/><img title="Resource" style="background-color: white;" alt="." class="heirarchy" src="icon_resource.png"/> <a title="Definition" href="#">Resource Name</a></td>
   <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
   <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
-  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><a href="resources.html">Base Type</a></td>
+  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><a href="resource.html">Base Type</a></td>
   <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">Definition</td>
 </tr>
 <tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
@@ -74,7 +75,7 @@
 </tr>
 <tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck11.png)" class="heirarchy"><img alt="." class="heirarchy" src="tbl_spacer.png"/><img alt="." class="heirarchy" src="tbl_vjoin.png"/><img title="Choice of Types" style="background-color: white;" alt="." class="heirarchy" src="icon_choice.gif"/> <a title="Description" href="#">nameB[x]</a></td>
- <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><span title="This element is a modifier element">M </span><span title="This element is included in summaries">Σ</span></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"><span title="This element is a modifier element">?! </span><span title="This element is included in summaries">Σ</span></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">0..1</td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy"></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="heirarchy">description<br/><span title="1">SHALL at least have a value</span></td>
@@ -113,7 +114,7 @@
 <a name="legend"> </a>
 <p>Ключи к иконкам и флагам</p>
 <ul>
- <li><img title="Resource" style="background-color: white;" alt="." class="heirarchy" src="icon_resource.png"/>: Базовый элемент ресурса (см. <a href="resources.html">Resources</a>)</li>
+ <li><img title="Resource" style="background-color: white;" alt="." class="heirarchy" src="icon_resource.png"/>: Базовый элемент ресурса (см. <a href="resource.html">Resources</a>)</li>
  <li><img title="Bundle" style="background-color: white;" alt="." class="heirarchy" src="icon_bundle.png"/>: Базовый элемент комплекта (Bundle) (см. <a href="extras.html#bundles">Bundles</a>)</li>
  <li><img title="Element" style="background-color: white;" alt="." class="heirarchy" src="icon_element.gif"/>: Элемент, являющийся частью ресурса и содержащий другие элементы, определенные в этом же ресурсе или профиле</li>
  <li><img title="Choice of Types" style="background-color: white;" alt="." class="heirarchy" src="icon_choice.gif"/>: Элемент, который может иметь один из нескольких типов (см. ниже)</li>
@@ -127,8 +128,8 @@
  <li><img title="Simple Extension" style="background-color: white;" alt="." class="heirarchy" src="icon_extension_simple.png"/>: Расширение, имеющее элемент value и не содержащее вложенных расширений (см. <a href="extensibility.html">Extensibility</a>)</li>
  <li><img title="Profile" style="background-color: white;" alt="." class="heirarchy" src="icon_profile.png"/>: Корневой элемент логического профиля</li>
 <!-- dont think this is used <li><img title="Text" style="background-color: white;" alt="." class="heirarchy" src="icon_text.png"/>: Простой текст</li> -->
- <li>M: Это элемент-модификатор - см. <a href="conformance.html#isModifier">Modifier Elements</a></li>
- <li>S: Это элемент, который должен быть поддержан обязательно - см. <a href="conformance.html#mustSupport">Must-Support Elements</a></li>
+ <li>?!: Это элемент-модификатор - см. <a href="conformance.html#isModifier">Modifier Elements</a></li>
+ <li>S: Это элемент, который должен быть поддержан обязательно - см. <a href="conformance-rules.html#mustSupport">Must-Support Elements</a></li>
  <li>Σ: Это элемент, входящий в сокращенный вариант - см. <a href="search.html#mustSupport">Summary Searches</a></li>
  <li>I: Этот элемент вводит инварианты или зависит от них - см. <a href="conformance.html#invariants">Invariants</a></li>
  <li>NE: Этот элемент не может иметь расширений (только для некоторых элементов инфраструктуры)</li>
@@ -144,13 +145,31 @@
  <li>У элементов есть кардинальное число, указывающее, сколько раз этот элемент может или должен появиться.</li>
  <li>Если только у элементов нет непосредственно заданных потомков (как у nameC выше), им назначается один или несколько типов. Все типы приведены в <a href="datatypes.html">типах данных</a>. Имена всех типов сделаны гиперссылками и ведут на свои определения</li>
  <li>Повторное использование элементов: некоторые типы данных, имеющие потомков, содержат такой же набор потомков, как и некоторый другой элемент, определенный в этом ресурсе. В этом случае тип этого элемента содержит указание "см. [name]", где [name] - это имя элемента, у которого определены элементы-потомки.</li>
- <li>Когда логический элемент может иметь более одного типа, его имя принимает форму nnn[x]. Часть имени "nnn" является постоянной, а [x] заменяется именем его типа с большой буквы, который фактически используется. В таблице все эти имена приводятся явно.</li>
  <li>Каждое имя элемента также сделано гиперссылкой и ведет на подробное описание этого элемента в словаре данных, лежащем в основе форматов обмена.</li>
  <li><!-- Any of the elements may have an id attribute to serve as <a href="references.html#id">the target of an internal reference</a>. The id attribute is not shown in this format. Extensions are not always shown, but may appear except where the flag "NE" appears -->Любые элементы могут иметь атрибут id, используемый в качестве <a href="references.html#id">цели внутренней ссылки</a>. В этом формате атрибут id не показывается. Расширения показываются не всегда, но могут быть везде, где нет флага "NE"</li>
  <a name="element-rules"> </a>
  <li>FHIR-элементы никогда не могут быть пустыми. Если элемент присутствует в ресурсе, он ДОЛЖЕН иметь либо значение (value), либо элементы-потомки, соответствующие его типу, либо 1 или более <a href="extensibility.html">расширений</a></li>
  <li>В логическом представлении не показаны инфраструктурные элементы, являющиеся общими для всех ресурсов. Они описываются в общих базовых классах <a href="resource.html">Resource</a> и <a href="domainresource.html">DomainResource</a></li>
 </ul>
+    
+<a name="choice"> </a>
+<h3>Choice of Data Types</h3>
+<p>
+A few elements have a choice of more than one type for their content. All such elements have a name that 
+takes the form nnn[x]. The "nnn" part of the name is constant, and the [x] is replaced with the title-cased 
+name of the type that is actually used. The table view shows each of these names explicitly.
+</p>
+<p>
+All elements that have a choice of data type have a maximum cardinality of 1. There can only be one 
+element for type, of one of the allowed data types. 
+</p>
+<p>
+Note: In object-orientated based implementations, this is naturally represented as a polymorphic property. 
+However this is not necessary, and the correct implementation varies according to the particular features 
+of the language. In XML schema, these become an xs:choice of element.
+</p>
+
+
     
 <a name="uml"> </a>
 <h3>UML</h3>

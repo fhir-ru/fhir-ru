@@ -7,8 +7,8 @@
    <body>
       [%file newnavbar%]
       <div class="col-9">
-         <a id="usreport-guide"> </a>
-         <a id="purpose"></a>
+         <a name="usreport-guide"> </a>
+         <a name="purpose"></a>
          <h2>Назначение<!-- Purpose --></h2>
          <p>
 			FHIR-реализация USLab Report сосредоточена на определении требований, спецификаций и стандартов, а также на предоставлении указаний по реализации отчетов лабораторных результатов исследований для провайдеров амбулаторной помощи в США с помощью <a href="http.html">the FHIR in the RESTful framework</a>. Ее область действия включает требования по обеспечению встраивания результатов клинико-лабораторных исследований в систему ЭМК в виде стандартизованных структурированных данных, используя определенную межорганизационную лабораторную транзакцию. Требования такого сценария использования направлены на сообщение результатов лабораторных исследований между лабораторной информационной системой (ЛИС) и амбулаторной системой ЭМК в различных организационных объектах, например различных корпоративной структуре, собственности или управлении. Будущие версии этой реализации могут быть согласованы с существующими руководствами для расширения совместимости лабораторных результатов в разных условиях оказания помощи, например неотложная медицинская помощь и общественное здравоохранение.
@@ -23,7 +23,7 @@
             governance. Future versions of this implementation may harmonize with existing guides to extend
             interoperability of laboratory results across care settings, e.g., acute care and public health. -->
          </p>
-         <a id="audience"></a>
+         <a name="audience"></a>
          <h2>Целевая аудитория<!-- Audience --></h2>
          <p>
 		 Данное руководство создано для использования аналитиками и разработчиками, которым требуется руководство по FHIR-ресурсам, элементам и особым расширениям, связанным с инициативой по интерфейсу лабораторных результатов (LOI) и HL7 V3 Lab Normative Standard. Пользователи данного руководства должны быть знакомы с деталями FHIR-спецификации и обработки ресурсов. Это руководство не предназначено для освещения этой темы.
@@ -34,7 +34,7 @@
          <!-- EH not needed
             section 1.2.1  RELEVANT LABORATORY IMPLEMENTATION GUIDES
             section  1.2.2  REQUISITE KNOWLEDGE  -->
-         <a id="conventions"></a>
+         <a name="conventions"></a>
          <h2>Условные обозначения<!-- Conventions --></h2>
          <p>
 		 Это руководство придерживается следующих конвенций:
@@ -85,9 +85,9 @@
          <!--  EH not needed : <h3>1.3.2 MESSAGE ELEMENT ATTRIBUTES </h3>-->
          <!--  EH not needed : 1.3.3  KEYWORDS -->
          <!--  EH not needed : 1.3.4  USAGE CONFORMANCE TESTING RECOMMENDATIONS  -->
-         <a id="keytechdecisions"></a>
+         <a name="keytechdecisions"></a>
          <h2>Ключевые технические решения<!-- Key Technical Decisions --></h2>
-         <a id="profile"></a>
+         <a name="profile"></a>
          <h3>Архитектура профилей и компонентов<!-- Profile And Component Architecture --> </h3>
          <!-- also in uslaborder.html-->
          <p>
@@ -124,7 +124,7 @@
             The GU/NG profile definition discusses use of OIDs for identifiers' assigning authority only. Other
             identifiers could use OIDs as well for the assigning authority. Note that OIDs are not intended to be used
             to identify a coding system as referenced in CWE-03/CWE-06 and further enumerated in . -->
-         <a id="vocabstandards"></a>
+         <a name="vocabstandards"></a>
          <h3>Использование стандартных глоссариев<!-- Use Of Vocabulary Standards --></h3>
          <p>
 		 Данное руководство призывает к использованию определенных стандартных глоссариев для обмена лабораторной информацией, таких как LOINC и SNOMED. Стандартные глоссарии, в частности кодированные лабораторные тесты и их результаты, обеспечивают автоматическую поддержку принятия решений в здравоохранении пациентов, а также в надзоре за здравоохранением населения. Ресурсы Value Set предоставлены в рамках этой реализации.
@@ -133,7 +133,7 @@
             enable automated decision support for patient healthcare, as well as for public health surveillance of
             populations. Value Sets resource are provided as part of this implementation. -->
          </p>
-         <a id="snapshot"></a>
+         <a name="snapshot"></a>
          <h3>Режим снимка состояния (Snapshot)<!-- Snapshot Mode  --></h3>
          FHIR функционирует только при использовании режима снимка состояния - обновления передаются отправкой полной копии экземпляра, заполненного новыми данными. Если необходима коррекция и/или обновление статуса ресурса Observation, DiagnosticReport со всеми ссылками на все ресурсы Observation, даже если он был уже ранее отправлен, должен быть отправлен повторно с коррекцией и/или обновлением статуса и/или текущих значений. Например, когда заказывается клинический анализ крови с ручным подсчётом форменных элементов (Complete Blood Count with manual differential), анализ крови будет выполнен, а затем некоторое время спустя будет выполнен и опубликован ручной подсчёт форменных элементов. Когда анализ крови опубликован, DiagnosticReport будет ссылаться только на ресурсы Observation, как на окончательные результаты. Когда ручной подсчёт форменных элементов будет завершен, DiagnosticReport будет ссылаться на все предыдущие ресурсы Observation, а также на новые ресурсы Observation - в данном случае на анализ крови и дифференциальные результаты.		 
 		 <!-- FHIR only functions using snapshot mode - updates are communicated by sending a complete copy of the instance with the new data filled in.  If a correction and/or status update to Obsveration Resource is necessary, the DiagnosticReport with all references to all Obsveration Resource, even if previously
@@ -150,7 +150,7 @@
          <!--EH not needed
             1.5  Referenced Profiles - Antecedents
             -->
-         <a id="implementationscope"></a>
+         <a name="implementationscope"></a>
          <h3>Область действия реализации<!-- Scope Of Implementation --></h3>
          <!--EH not needed: The base standard indicates that receiving applications "…shall process (save/print/archive/etc.)…". For
             order-specific segments, e.g., ORC, OBR, SPM, this typically means saving that data. For other
@@ -161,7 +161,7 @@
 		 Из-за большого разнообразия систем-получателей и их потребностей данное руководство специально не указывает для каждого поля, сохранять его или нет. Это остается на усмотрение каждой отдельной системы в зависимости от ее области действия и назначения.
 		 <!-- Due to receiving system variations and need, this guide does not specifically indicate for each field whether to store it or not. This is left to the individual system's scope and purpose. -->
          </p>
-         <a id="usecase"></a>
+         <a name="usecase"></a>
          <h2>Сценарий использования - Амбулаторная помощь<!-- Use Case - Ambulatory Care Setting --></h2>
          <p>
 		 Этот вариант использования был разработан совместными усилиями HHS/ONC стандартов и инициативой фреймворка лабораторных заказов, Фондом здравоохранения Калифорния и рабочей группой HL7 Orders and Observations.
@@ -169,12 +169,12 @@
             Interoperability Framework Laboratory Results Initiative, the California Health Care Foundation, and the
             HL7 Orders and Observations Work Group. -->
          </p>
-         <a id="scope"></a>
+         <a name="scope"></a>
          <h3>Область действия<!-- Scope --> </h3>
          <p>
 		 Область действия - отправка лабораторных результатов из лаборатории провайдеру амбулаторной помощи.
 		 <!-- The scope is the sending of lab results from a laboratory to an ambulatory provider.  --></p>
-         <a id="inscope"></a>
+         <a name="inscope"></a>
          <h4>В области действия<!-- In Scope --></h4>
          <ul>
             <li>
@@ -206,7 +206,7 @@
 			Получение лабораторных результатов лицом, не являющимся непосредственным заказчиком.
 			<!-- Receiving of laboratory results as a non-order placer.  --></li>
          </ul>
-         <a id="outscope"></a>
+         <a name="outscope"></a>
          <h4>Вне области действия<!-- Out of Scope --></h4>
          <ul>
             <li>
@@ -226,7 +226,7 @@
                <li>Results not transmitted using a standardized structured format.</li>
                -->
          </ul>
-         <a id="actors"></a>
+         <a name="actors"></a>
          <h2>Действующие субъекты<!-- Actors --></h2>
          <p>
 		 Есть два действующих субъекта, имеющие обязанности, связанные с профилями соответствия, определенными в данном документе:
@@ -244,13 +244,13 @@
                to "RESTful FHIR" and FHIR profiles defined in this guide. This actor is implied within FHIR. ( i.e. not explicitly referenced in the DiagnosticReport Resource Instance or the linked resources). -->
             </li>
          </ul>
-         <a id="usecasesandcontext"></a>
+         <a name="usecasesandcontext"></a>
          <h2>Заказы для амбулаторного сценария использования и контекстные диаграммы<!-- Orders for Ambulatory Care Use Case and Context Diagrams  --></h2>
          <p><b>Figure 2-1. Use Case Diagram</b></p>
          <img alt="Figure 2-1. Use Case Diagram" src="uslaborder-usecasediagram"/>
          <p><b>Figure 2-2. Context Diagram</b></p>
          <img alt="Figure 2-2. Context Diagram" src="uslaborder-contextdiagram"/>
-         <a id="userstory"></a>
+         <a name="userstory"></a>
          <h3>Пользовательская история<!-- User Story --></h3>
          <p>
 		 Провайдер (заказчик) может ввести лабораторный заказ в амбулаторную систему ЭМК. Генерируется лабораторная заявка (бумажная или электронная) и передается в лабораторию. Информация в лабораторной заявке вводится вручную или фиксируется в электронном виде в ЛИС. После того, как образец(-цы) для анализа был взят и, если необходимо, выслан или доставлен в лабораторию, лаборатория обрабатывает этот образец(-цы). Если образец подходит для проведения исследования, лаборатория выполнит исследование. До момента успешного завершения исследования может потребоваться дополнительная коммуникация для индикации отмены, неспособности выполнить исследование и связанных с этим причин; например когда образец либо не подходит для выполнения заказанного теста, либо является неудовлетворительным в другом отношении, об отклонении образца будет передано с помощью профиля USLabOrder.
@@ -274,7 +274,7 @@
             The EHR-S incorporates the results into the patient's electronic record. The provider logs into his/her
             EHR-S and views the laboratory results in order to inform patient care decisions. -->
          </p>
-         <a id="assumptions"></a>
+         <a name="assumptions"></a>
          <h4>Допущения, сделанные в сценарии использования<!-- Use Case Assumptions --></h4>
          <ul>
             <li>Провайдеры безопасным способом получают доступ к клинической информации через EHR-систему.<!-- Providers securely access clinical information through an EHR-S. --></li>
@@ -325,7 +325,7 @@
 			Лаборатории отвечают критериям аккредитации в соответствии с требованиями юрисдикции или критериями ведомств.
 			<!-- Laboratories meet accreditation criteria according to jurisdiction requirements or agency criteria.  --></li>
          </ul>
-         <a id="preconditions"></a>
+         <a name="preconditions"></a>
          <h4>Предусловия<!-- Pre-Conditions --></h4>
          <ul>
             <li>
@@ -385,7 +385,7 @@
 			Лабораторный результат проверен и готов к выпуску в свет.
 			<!-- The laboratory result is verified and ready for release.  --></li>
          </ul>
-         <a id="postconditions"></a>
+         <a name="postconditions"></a>
          <h4>Постусловия<!-- Post-Conditions --></h4>
          <ul>
             <li>
@@ -409,7 +409,7 @@
          <img alt="Electronic Ordering Of New Or Scheduled
             Laboratory Test(S) " src="todo"/>
          <!--EH:  need to rework for REST  acknowledgment codes -->
-         <a id="errorhandling"></a>
+         <a name="errorhandling"></a>
          <h2>Обработка ошибок<!-- Error Handling --></h2>
           <p>
 		  Обратитесь к спецификации FHIR за <a href="http.html#httpstatuscodes">REST статус-кодами</a> и использованием ресурса <a href="operationoutcome.html">OperationOutcome</a>, если потребуется дополнительная информация о транзакционных ошибках. Примечание для голосования: спецификация обработки ошибок в настоящее время не в полной мере определена для этой реализации.
@@ -419,7 +419,7 @@
          <!--- EH  Not needed: 4  DATA TYPES  ( covered in spec and defined extensions-->
          <!--  EH  Not needed: 5  MESSAGES-->
          <!--EH not needed  7 LABORATORY RESULT MESSAGE DEVELOPMENT-->
-         <a id="codesystems"></a>
+         <a name="codesystems"></a>
          <h2>Кодовые системы и наборы значений<!-- Code Systems And Value Sets --></h2>
          <p>
 		 Для успешной реализации обмена сообщениями требуется, чтобы передаваемые сообщения (экземпляры сообщений) содержали в кодированных полях допустимые значения. Для дальнейшего обсуждения <a href="terminologies.html">использования кодов в FHIR</a> обратитесь к спецификации FHIR.		 
@@ -481,9 +481,9 @@
          </p>
          <!-- EH  8   ADDITIONAL IMPLEMENTATION GUIDANCE - REFLEX AND CULTURE/SUSCEPTIBILITY TESTING -->
          <!-- EH  9.   ADDITIONAL IMPLEMENTATION GUIDANCE - OTHER -->
-         <a id="addlguidance"></a>
+         <a name="addlguidance"></a>
          <h2>Дополнительные указания по реализации<!-- Additional Implementation Guidance --> </h2>
-         <a id="reflex"></a>
+         <a name="reflex"></a>
          <h3>Подтверждающее и рефлексное тестирование (включая тестирование на чувствительность микроорганизмов)
 		 <!-- Confirmatory and Reflex Testing ( Including Culture/Susceptibility Testing) --></h3>
          <p><b>Определение:<!-- Definition:  --></b>  
@@ -510,7 +510,7 @@
                CMS auditing purposes. -->
                </li>
                <li>
-               <a id="reflexprocess"></a>
+               <a name="reflexprocess"></a>
                <b>Процесс ЛИС:<!--  LIS Process:  --></b>
 			   ЛИС передает отчет по рефлексному тестированию в одном из следующих видов:
 			   <!-- The LIS shall report the reflexed test as one of the following: -->
@@ -527,11 +527,9 @@
                </ol>
                </li>
          </ul>
-         <p>
-		 Здесь приведен пример сценария <a href="todo">Culture and Susceptibility</a>, в котором результатом анализа мочи на культивацию было выявление патогенов E.coli, x и y, и было выполнено тестирование на чувствительность к антибиотикам для всех трех патогенов. todo..
-		 <!-- An <a href="todo">Culture and Susceptibility example</a> example is provided here for the scenario in which a urine cultire results in the identification of the pathogens:  E.coli, x and y and a susceptibilty is performed on all three pathogens.  todo.. -->
+         <p>An <!--a href="todo">Culture and Susceptibility example</a--> Здесь приведен пример сценария, в котором результатом анализа мочи на культивацию было выявление патогенов E.coli, x и y, и было выполнено тестирование на чувствительность к антибиотикам для всех трех патогенов. todo..
          </p>
-            <a id="addon"></a>
+            <a name="addon"></a>
          <h3>Дополнительное тестирование<!-- Add-On Testing --></h3>
          <p><b>Определение:<!-- Definition:  --></b> 
 		 Дополнительное лабораторное тестирование заказывается уполномоченным провайдером (в соответствии с CLIA и государственным законом) над существующим образцом для анализа после того, как первоначальный заказ на исследование был отправлен в лабораторию. Решение о запросе на проведение дополнительного исследования принимается провайдером индивидуально и на основе любого числа факторов, не ограниченных результатом теста.
@@ -560,7 +558,7 @@
 			<!-- The LIS shall report the reflexed test as described <a href="#reflexprocess">above</a>: -->
             </li>
          </ul>
-         <a id="clia"></a>
+         <a name="clia"></a>
          <h3>Соображения по резолюции к улучшению клинической лаборатории<!-- Clinical Laboratory Improvement Amendments Considerations  --></h3>
          <p>
 		 В США клинико-лабораторные исследования образцов для анализа, взятых у людей, регулируются резолюцией к улучшению клинической лаборатории (Clinical Laboratory Improvements Amendments (CLIA)) 1988 года. Несколько разделов постановлений, реализующих CLIA, влияют на то, как электронные лабораторные данные форматируются для США, и они описаны в данном разделе. Затронутые области включают обязательные требования к заказу тестов. <a href="http://wwwn.cdc.gov/clia/regs/toc.aspx">CLIA Regulation Specifics</a>.
@@ -692,7 +690,7 @@
                </td>
             </tr>
          </table>
-         <a id="clsi-definitions"></a>
+         <a name="clsi-definitions"></a>
          <h3>CLSI-определения - количественные, полуколичественные, качественные результаты<!-- CLSI Definitions - Quantitative, Semi-quantitative, Qualitative Results  --></h3>
          <p>
 		 Следующие <a href="http://www.clsi.org/Content/NavigationMenu/Resources/HarmonizedTerminologyDatabase/Harmonized_Terminolo.htm">определения</a> были получены с веб-сайта CLSI:
@@ -760,7 +758,7 @@
                </ul>
             </li>
          </ul>
-         <a id="glossary"></a>
+         <a name="glossary"></a>
          <h3>Глоссарий<!-- Glossary --></h3>
          <ul>
             <li><b>Analyte (Вещество, определяемое при анализе):  </b>Компонент, представляемый в названии измеряемой величины. Это наиболее гранулированный уровень, на котором выполняются измерения, он всегда представляется с помощью отдельной группы сегментов Observation.<!-- Component represented in the name of a measurable quantity. It is the most granular level at which

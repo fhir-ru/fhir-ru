@@ -7,7 +7,7 @@
    <body>
       [%file newnavbar%]
       <div class="col-9">
-         <a id="USLabOrder"> </a>
+         <a name="USLabOrder"> </a>
         <p>Опубликовано рабочей группой HL7 Orders and Observations<!-- Published by:  HL7 Orders and Observations Workgroup --></p>
 		<p>Автор/главный редактор:  Eric M Haas, Health eData Inc.<!-- Primary Author/Editor:  Eric M Haas, Health eData Inc. --></p>
          <h2>Реализация US Laboratory Order<!-- US Laboratory Order Implementation --></h2>
@@ -109,9 +109,9 @@
 		 <!-- <b>Profiles</b> -The current focus of implementing <i>USLabOrder</i> is using a FHIR <a href="bundle.html">Bundle Resource</a> <!-- create profiles for bundles too --> <!-- to exchange a <a href="diagnosticorder.html">DiagnosticOrder Profile</a> and the Resource Profiles it references.  This FHIR bundle completely defines the laboratory order.  The Resource Profiles that may be used in the bundle are outlined below: (This list is not meant to be exhaustive as additional resources may also to be used) --></p>
          <ul>
           <li>
-		  <a id="doprofiles"></a>
+		  <a name="doprofiles"></a>
             <a href="do-uslab.html">US Lab DiagnosticOrder</a> ограничивает и расширяет ресурс <a href="diagnosticorder.html">DiagnosticOrder</a>, который используется для определения лабораторного заказа. Этот ресурс ссылается на следующие профили:
-            <!-- <a id="doprofiles"></a>
+            <!-- <a name="doprofiles"></a>
             <a href="do-uslab.html">US Lab DiagnosticOrder</a> constrains and extends <a href="diagnosticorder.html">DiagnosticOrder</a> which is used to define the laboratory order.   This Resources references the following profiles: -->
           <ul>
 			<li>
@@ -133,8 +133,8 @@
 			</ul>		
 </li>
 			<li>
-			<a href="obs-uslab.html">USLabObsCode | USLabObsQuantity | USLabObsOther | USLabObsRatio</a> ограничивают и расширяют ресурс <a href="observation.html">Observation</a>, который используется для поддержки различных типов результатов для записи вспомогательной информации или других клинически релевантных наблюдений, например предыдущих лабораторных результатов и вопросов, задаваемых при заказе (ask at order questions (AOE)). Эти ресурсы ссылаются на следующий профиль:
-			<!-- <a href="obs-uslab.html">USLabObsCode | USLabObsQuantity | USLabObsOther | USLabObsRatio</a> constrains and extends <a href="observation.html">Observation</a> which are used to support the various result types for record supporting information or other clinically relevant observations such as previous lab results and ask at order questions (AOE).  These Resources reference the following profile: -->
+			<a href="obs-uslab.html">USLabObsCode | USLabObsQuantity | USLabObsOther | USLabObsRatio | USLabObsPanel</a> ограничивают и расширяют ресурс <a href="observation.html">Observation</a>, который используется для поддержки различных типов результатов для записи вспомогательной информации или других клинически релевантных наблюдений, например предыдущих лабораторных результатов и вопросов, задаваемых при заказе (ask at order questions (AOE)). Эти ресурсы ссылаются на следующий профиль:
+			<!-- <a href="obs-uslab.html">USLabObsCode | USLabObsQuantity | USLabObsOther | USLabObsRatio | USLabObsPanel</a> constrains and extends <a href="observation.html">Observation</a> which are used to support the various result types for record supporting information or other clinically relevant observations such as previous lab results and ask at order questions (AOE).  These Resources reference the following profile: -->
 			<ul>
 					<li>
 					<a href="org-uslab.html">USLabPerformingLab</a> ограничивает и расширяет ресурс <a href="organization.html">Organization</a>, который используется для задания организации, которая несет ответственность за это наблюдение.
@@ -169,7 +169,7 @@
          <ul>
 
              <li>
-			  <b>Operations</b> - <a href="#todo">некоторая USLabOrder операция</a> - Вопрос для голосования: есть ли какие-то операции, которые должен рассмотреть <i>USLabOrder</i>?
+			  <b>Operations</b> - Вопрос для голосования: есть ли какие-то операции, которые должен рассмотреть <i>USLabOrder</i>?
            <!--  <b>Operations</b> -<a href="#todo">Some USLabOrder Operation</a> - Question for balloters are there any operations that <i>USLabOrder</i> should consider? -->
            </li>
            <li>
@@ -191,7 +191,7 @@
                
             </li>
                         <li>
-						 <b>Mappings</b> - <a href="conceptmap-loi-uslaborder.html">LOI to USLabOrder Concept Codes Cross-mapping</a> - это перевод кодов концептов для LOI в <i>USLabOrder</i> - Примечание для голосования:  это заглушка для будущей работы.
+						 <b>Mappings</b> - это перевод кодов концептов для LOI в <i>USLabOrder</i> - Примечание для голосования:  это заглушка для будущей работы.
               <!--  <b>Mappings</b> - <a href="conceptmap-loi-uslaborder.html">LOI to USLabOrder Concept Codes Cross-mapping</a> are translation of  the concept codes for LOI to <i>USLabOrder</i> - Note to balloters this is a stub entry for future work. -->
                </li>
             

@@ -19,7 +19,7 @@
  
   <tr>
     <td width="200"><a href="fhir-all-xsd.zip">Схемы (Schema)</a></td>
-    <td> Все схемы, собранные в zip-архиве (дополнительные схемы (support schemas), схемы ресурсов, схемы модулей, 
+    <td> Все схемы, собранные в zip-архиве (вспомогательные схемы, схемы ресурсов, схемы модулей, 
     комбинированные схемы и схематроны (schematron))
     <!-- All schemas as a .zip (includes support schemas, resource schemas, modular &amp; combined schemas, 
     and Schematrons) --> </td>
@@ -27,20 +27,20 @@
 
   <tr>
     <td><a href="validator.zip">Validator Pack</a></td>
-    <td>Валидатор FHIR (java jar) и все необходимое для его работы (включая нужную версию Saxon). Либо вы можете скачать только <a href="validation.zip">validation pack</a> (либо <a href="validation-min.zip">его минимальную форму</a>) 
+    <td>Валидатор FHIR (java jar) и все необходимое для его работы (включая нужную версию Saxon). Либо вы можете скачать только <a href="validation.zip">validation pack</a> (либо <a href="validation-min.zip">его мини-версию</a>) 
     <!-- The FHIR validator (java jar), along with everything it needs to operate (including the correct version of Saxon). Or you can download just the <a href="validation.zip">validation pack</a> (or the <a href="validation-min.zip">minimal form</a>) --></td>
   </tr>
 
   <tr>
-    <td><a href="translations.xml">Файл перевода (Translation File)</a></td>
-    <td>Перевод наиболее часто используемых имен и сообщений FHIR на различные языки
+    <td><a href="translations.xml">Файл локализации (Translation File)</a></td>
+    <td>Перевод наиболее часто используемых названий и сообщений FHIR на различные языки
     <!-- Translations of common FHIR names and messages into multiple languages --> 
-    (В <a href="http://wiki.hl7.org/index.php?title=FHIR_Implementation_Page">wiki-разделе</a> Вы можете найти
-    информацию, как можно сделать личный вклад в перевод имен и сообщений FHIR<!-- for instructions on how to add to this) --></td>
+    (В <a href="http://wiki.hl7.org/index.php?title=FHIR_Implementation_Page">wiki-разделе</a> можно найти
+    информацию о том, как поучаствовать в локализации FHIR<!-- for instructions on how to add to this) --></td>
   </tr>
 
   <tr>
-    <td><a href="fhir-v<%version%>.epub">Спецификация FHIR в книжном формате (FHIR Book)</a></td>
+    <td><a href="fhir-v<%version%>.epub">Спецификация FHIR для электронных кних (FHIR Book)</a></td>
     <td>Спецификация FHIR в формате электронной книги (epub). Программы для чтения epub:
     <!-- The FHIR Specification as an e-book for convenient reading. Help for handling epub: -->
     <a href="http://pcsupport.about.com/od/fileextensions/f/epubfile.htm">PC</a>, 
@@ -51,33 +51,29 @@
   </tr>
 
   <tr>
-    <td><a href="fhir-spec.zip">Спецификация FHIR (FHIR Specification)</a></td>
+    <td><a href="fhir-spec.zip">Спецификация FHIR</a></td>
     <td>Полная спецификация FHIR для размещения на вашем локальном сервере (исключен раздел "Загрузки")
     <!-- The whole specification so that you can host your own local copy (does not include the downloads) --></td>
   </tr>
 
   <tr>
-    <td><a href="profiles-resources.xml">Профили комбинированных ресурсов (Combined Resource Profiles)</a><a name="profiles"> </a></td>
-    <td>Единый агрегатор ресурсов (feed), содержащий описания всех ресурсов <!-- with all resource definitions -->. 
-    Данные профили могут быть полезны, если Вы только начинаете создавать собственные профили ресурсов или при составлении
-    Заявления о соответствии (Conformance Statement) <!-- The resource profiles may be useful as a starting point for 
-    authoring profiles on the resources or for defining conformance statements --> </td>
+    <td><a href="profiles-resources.xml">Комбинированные профили ресурсов</a><a name="profiles"> </a></td>
+    <td>Файл с определениями всех ресурсов. Профили ресурсов могут быть полезны в качестве отправной точки при создании профилей для ресурсов или составлении заявлений о соответствии</td>
   </tr>
 
   <tr>
-    <td><a href="all-valuesets.zip">Все подмножетсва значений (All valuesets)</a></td>
-    <td>Все подмножества значений, определенные как часть стандарта FHIR 
-    <!-- All the valuesets defined as part of FHIR --></td>
+    <td><a href="all-valuesets.zip">Все наборы значений</a></td>
+    <td>Все внутренние наборы значений, входящие в спецификацию FHIR</td>
   </tr>
 
   <tr>
-    <td><a href="examples.zip">Примеры ресурсов в формате XML (XML Examples)</a></td>
-    <td>Примеры всех ресурсов в XML-представлении (zip-архив) <!-- All resource examples as a zip file in XML format--></td>
+    <td><a href="examples.zip">Примеры ресурсов в формате XML</a></td>
+    <td>Примеры всех ресурсов в XML-представлении (zip-архив)</td>
   </tr>
 
   <tr>
-    <td><a href="examples-json.zip">Примеры ресурсов в формате JSON (JSON Examples)</a></td>
-    <td>Примеры всех ресурсов в JSON-представлении (zip-архив) <!--All resource examples as a zip file in JSON format--></td>
+    <td><a href="examples-json.zip">Примеры ресурсов в формате JSON</a></td>
+    <td>Примеры всех ресурсов в JSON-представлении (zip-архив)</td>
   </tr>
 
   <tr>
@@ -86,22 +82,20 @@
   </tr>
 
   <tr>
-    <td><a href="icon-pack.zip">Пиктограммы FHIR (Icon Pack)</a></td>
-    <td>Пиктограмма FHIR в различных разрешениях. В любых программных реализациях стандарта FHIR от организаций-участниц конференций по 
-    интеграции (Connectahon) разрешается использовать пиктограммы FHIR. Однако, данная политика будет пересмотрена в будущем. 
+    <td><a href="icon-pack.zip">Иконки FHIR</a></td>
+    <td>Иконка FHIR в различных разрешениях. Пиктограммы FHIR разрешается использовать в любых программных реализациях стандарта FHIR от организаций-участниц конференций по интеграции (Connectahon). Однако данная политика может быть пересмотрена в будущем. 
     <!-- The FHIR Icon at various resolutions. Any FHIR Implementation created by an organization that has attended a 
     connectathon is allowed to use the FHIR icon in association with the application 
     (this policy will be reviewed in the future). --></td>
   </tr>
 
   <tr>
-    <td colspan="2"><a name="refimpl"> </a><b>Эталонные реализации (Reference Implementations)</b><br/> 
-    В помощь разработчикам были созданы эталонные реализации стандарта. "Эталонные" FHIR-серверы могут использоваться
-    в практических клиничсеких целях, однако, организация HL7 и разработчики реализаций снимают с себя всю ответственность
-    за возможные последствия. Эти реализации предоставляются по стандартной, одобренной OSI лицензии (пункт 3 BSD).
+    <td colspan="2"><a name="refimpl"> </a><b>Эталонные реализации</b><br/> 
+    В помощь разработчикам были созданы эталонные реализации стандарта. "Эталонные" FHIR-серверы могут использоваться на практике в клинических целях, однако организация HL7 и разработчики реализаций снимают с себя всю ответственность за возможные последствия. Эти реализации предоставляются по стандартной, одобренной OSI лицензии (пункт 3 BSD).
 <br/> 
 <br/> 
-<span style="color: Maroon">Note that these reference implementations are provided to assist to 
+<span style="color: Maroon">Обратите внимание, что эти эталонные реализации представлены для помощи в реализации спецификации и поддерживаются командой проекта FHIR, но не являются частью спецификации,  реализациям не требуется соответствовать им, и они не подлежат официальному продвижению стандартов.
+Note that these reference implementations are provided to assist to 
 implementers to adopt the specification, and are maintained by the FHIR project team, but are not 
 part of the specification, and implementations are not required to conform to these, nor are they 
 subject to the formal standards process.</span>
@@ -113,20 +107,26 @@ subject to the formal standards process.</span>
   <%impllist%>
   
 </table>
+<p>
+Другие эталонные (базовые) реализации, не распространяемые вместе со спецификацией:
+Other reference implementations not distributed with the specification:
+</p>
+<ul>
+ <li><a href="https://github.com/smart-on-fhir/Swift-FHIR">Swift-FHIR</a> - reference implementation for <a href="https://developer.apple.com/swift/">Swift</a></li>
+ <li><a href="http://jamesagnew.github.io/hapi-fhir/">HAPI-FHIR</a> - reference implementation for <a href="https://www.oracle.com/java/index.html">Java</a></li>
+</ul>
 <hr/>
 <p>
-Заметьте: эталонные реализации обычно имеют ограниченные возможности использования кодирования для представления содержимого 
-ресурсов в нативной форме, а также ограниченные возможности парсинга и сериализации XML / JSON. Некоторые реализации 
-поддерживают построение и использование ресурсов с помощью их определений (resource definition), а также имеют встроенного
-клиента, который соответствует принципам REST (conforms to the RESTful API).
+Следует отметить, что эталонные реализации обычно ограничиваются визуальным представлением содержимого ресурсов в нативной форме, и их парсингом и сериализацией в XML и JSON. Некоторые из этих реализаций 
+поддерживают построение с помощью  определений ресурсов. В некоторые реализации входит клиентское приложение, которое поддерживает RESTful API.
 </p>
 <p>
-Полноценные открытые реализации FHIR, некоторые из которых основаны на этелонной, перечислены в
+Полноценные открытые реализации FHIR, некоторые из которых используют эти базовые реализации, перечислены в
 <a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">wiki-разделе сайта HL7</a>.
 </p>
 <p>
-Для обеспечения соответствия не обязательно пользоваться данными конкретными реализациями. Разрешается применять
-любой подход, включая генерацию кода из схем.
+Для обеспечения соответствия не обязательно пользоваться этими конкретными реализациями. Разрешается применять
+любые подходы, включая генерацию кода из схем.
 </p>
 
 </div>

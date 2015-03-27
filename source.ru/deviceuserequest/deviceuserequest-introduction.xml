@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
     <p>
@@ -11,18 +11,12 @@
     <p>
         This resource describes the request for the use of a device by a patient. The device may be any 
         pertinent device specified in the Device resource. Examples of devices that may be requested 
-        include wheelchair, hearing aids, or an insulin pump. The request will lead to the dispensing 
+        include wheelchair, hearing aids, or an insulin pump. The request may lead to the dispensing 
         of the device to the patient or for use by the patient.
     </p>
     <p>
-        This resource describes the request for the use of a device by a patient. The device may be any 
-        pertinent device specified in the Device resource. Examples of devices that may be requested 
-        include wheelchair, hearing aids, or an insulin pump. The request will lead to the dispensing of 
-        the device to the patient or for use by the patient.
-    </p>
-    <p>
-        The device use request may represent an order or a prescription that entered by a practitioner in a CPOE 
-        system or a proposal made by a clinical decision support system (CDSS) based 
+        The device use request may represent an order or a prescription entered by a practitioner in a CPOE 
+        system or a proposal made by a clinical decision support (CDS) system based 
         on a patient's clinical record and context of care.
     </p>
 </p>
@@ -31,7 +25,8 @@
 <div>
 <h2>Boundaries and Relationships</h2>
 <p>
-Certain devices must be implanted via a surgical or other procedure . The data about the implantation of explantation is represented in the Procedure or ProcedureRequest resource, as appropriate.
+Certain devices must be implanted via a surgical or other procedure. The data about the implantation or explantation is represented in the Procedure or 
+ProcedureRequest resource, as appropriate.
 
 Some devices create observations. These observations are recorded as resources of type DeviceObservationReport.
 </p>

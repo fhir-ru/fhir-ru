@@ -1,73 +1,84 @@
-<!-- FHIR Heirarchy -->
+<!-- FHIR Hierarchy -->
 <!--
 
 todo: compartments
+signatures.html
+
 -->
 <fhir>
   <page title="Главная" note="(map + search) - focus on useful links" filename="index.html">
     <page title="Документация" filename="documentation.html">
+
       <page title="Содержание" filename="toc.html"/>
       <page title="Лицензирование и условия использования" filename="license.html"/>
       <page title="Наше сообщество и благодарности" filename="credits.html"/>
-      <page title="Хронология FHIR" filename="timelines.html"/>
+
       <page title="Журнал версий" filename="history.html"/>
       <page title="Нерешенные вопросы" filename="todo.html"/>
       <page title="Краткий обзор" filename="summary.html"/>
-      <page title="Обзор стандарта и план развития" filename="overview.html">
+      <page title="Введение" filename="overview.html">
         <page title="Введение для разработчика" filename="overview-dev.html"/>
-      </page>
-      <page title="Сравнение с другими стандартами" filename="comparison.html">
-        <page title="Обмен сообщениями v2" filename="comparison-v2.html"/>
-        <page title="Обмен сообщениями v3 " filename="comparison-v3.html"/>
-				<page title="CDA" filename="comparison-cda.html"/>
-        <page title="Другие стандарты" filename="comparison-other.html"/>
 			</page>
-      <page title="Предстоящие задачи" filename="change.html"/>
-      <page title="Соответствие ФМ ЭПМЗ и FHIR" filename="ehr-fm.html"/>
-      <page title="Определения" filename="resource-definitions.html">
-  			<page type="resource" resource="Resource"/>
-  			<page type="resource" resource="DomainResource"/>
+	<page title="Хронология FHIR" filename="timelines.html"/>	        
+			<page title="Межверсионная совместимость" filename="compatibility.html"/>
+
+			<page type="resource" resource="Resource">
+  			<page title="Definitions" filename="resource-definitions.html"/>
+			</page>
+			<page title="Conformance" filename="conformance-rules.html"/>
+			<page title="References" filename="references.html">
+				<page title="Definitions" filename="references-definitions.html"/>
+			</page>
+			<page title="Compartment Based Access" filename="extras.html">
+				<page title="Patient Compartment" filename="compartment-patient.html"/>
+				<page title="Encounter Compartment" filename="compartment-encounter.html"/>
+				<page title="RelatedPerson Compartment" filename="compartment-relatedPerson.html"/>
+				<page title="Practitioner Compartment" filename="compartment-practitioner.html"/>
+				<page title="Device Compartment" filename="compartment-device.html"/>
+			</page>
+			<page title="Narrative" filename="narrative.html">
+				<page title="Narrative Example" filename="narrative-example.html"/>
+				<page title="Definitions" filename="narrative-definitions.html"/>
+			</page>
+			<page title="Extensibility" filename="extensibility.html">
+				<page title="Defining Extensions" filename="defining-extensions.html"/>
+				<page title="Examples" filename="extensibility-examples.html"/>
+				<page title="Detailed Description" filename="extensibility-definitions.html"/>
+				<page title="Registry" filename="extensibility-registry.html"/>
       </page>
-        <page title="Определение элемента" filename="elementdefinition.html">
-          <page title="Примеры определений элементов" filename="elementdefinition-examples.html"/>
-        <page title="Element Definition Detailed Descriptions" filename="elementdefinition-definitions.html"/>
-        <page title="Element Definition Mappings" filename="elementdefinition-mappings.html"/>
-      </page>
-        <page title="Правила обеспечения соответствия" filename="conformance-rules.html"/>
-        <page title="Теги, комплекты ресурсов, логические модули" filename="extras.html">
-          <page title="Примеры" filename="extras-examples.html"/>
-          <page title="Определения" filename="extras-definitions.html"/>
-          <page title="Логический модуль Patient" filename="compartment-patient.html"/>
-        </page>
-        <page title="Ссылки (References)" filename="references.html">
-          <page title="Определения" filename="references-definitions.html"/>
-        </page>
-        <page title="Описательная часть (Narrative)" filename="narrative.html">
-          <page title="Пример описательной части" filename="narrative-example.html"/>
-          <page title="Определения" filename="narrative-definitions.html"/>
-      </page>
-        <page title="Форматы" filename="formats.html">
+			<page title="Formats" filename="formats.html">
         <page title="XML" filename="xml.html"/>
         <page title="JSON" filename="json.html"/>
       </page>
-        <page title="Расширяемость" filename="extensibility.html">
-          <page title="Примеры" filename="extensibility-examples.html"/>
-          <page title="Определения" filename="extensibility-definitions.html"/>
-        </page>
-      <page title="Типы данных" filename="datatypes.html">
-        <page title="Примеры" filename="datatypes-examples.html"/>
-        <page title="Формализованные определения" filename="datatypes-definitions.html"/>
-        <page title="Мэппинги (Mappings)" filename="datatypes-mappings.html"/>
+			<page title="Data Types" filename="datatypes.html">
+				<page title="Examples" filename="datatypes-examples.html"/>
+				<page title="Detailed Descriptions" filename="datatypes-definitions.html"/>
+				<page title="Mappings" filename="datatypes-mappings.html"/>
 			</page>
+			<page type="resource" resource="DomainResource"/>
+			<page title="Element Definition" filename="element.html">
+				<page title="Element Detailed Descriptions" filename="element-definitions.html"/>
+			</page>
+			<page title="BackboneElement" filename="backboneelement.html">
+				<page title="BackboneElement Detailed Descriptions" filename="backboneelement-definitions.html"/>
+			</page>
+			<page title="ElementDefinition" filename="elementdefinition.html">
+				<page title="ElementDefinition Examples" filename="elementdefinition-examples.html"/>
+				<page title="ElementDefinition Detailed Descriptions" filename="elementdefinition-definitions.html"/>
+				<page title="ElementDefinition Mappings" filename="elementdefinition-mappings.html"/>
+			</page>
+
       <page title="Использование кодовых значений" filename="terminologies.html">
         <page title="Перечень кодовых систем" filename="terminologies-systems.html">
 					<page title="SNOMED CT" filename="snomedct.html"/>
 					<page title="RxNorm" filename="rxnorm.html"/>
 					<page title="LOINC" filename="loinc.html"/>
+					<page title="UCUM" filename="ucum.html"/>
 					<page title="NCI Metothesuaras" filename="ncimeta.html"/>
 					<page title="NDFRT" filename="ndfrt.html"/>
 					<page title="UNII" filename="unii.html"/>
 					<page title="CVX" filename="cvx.html"/>
+					<page title="CPT" filename="cpt.html"/>
 				</page>
 				<page title="Value Sets" filename="terminologies-valuesets.html">
 					<pages type="valueset" filename="template-valueset.html"/>
@@ -82,8 +93,21 @@ todo: compartments
         <page title="Концептуальные карты" filename="terminologies-conceptmaps.html"/>
 				<page title="Service" filename="terminology-service.html"/>
 			</page>
+      
+			<page title="Comparison" filename="comparison.html">
+				<page title="v2 Messaging" filename="comparison-v2.html"/>
+				<page title="v3 Messaging" filename="comparison-v3.html"/>
+				<page title="CDA" filename="comparison-cda.html"/>
+				<page title="Other Specifications" filename="comparison-other.html"/>
+			</page>
+			<page title="Coming Challenges" filename="change.html"/>
+			<page title="How FHIR fits into an EHR" filename="ehr-fm.html"/>
+			<page title="Status Code Map" filename="sc.html"/>
+			<page title="W5 Map" filename="w5.html"/>
+      
       <page title="Голосование" filename="ballot-intro.html"/>
 		</page>
+    
     <page title="Реализация" filename="implementation.html">
 			<page title="RESTful API" filename="http.html">
         <page title="Поиск" filename="search.html"/>
@@ -92,26 +116,28 @@ todo: compartments
       <page title="Операции" filename="operations.html">
         <page title="Пример" filename="op-example-request.html"/>
 			</page>
+			<page title="Documents" filename="documents.html">
+        <page title="CDA on FHIR" filename="cda-intro.html"/>
+      </page>
       <page title="Обмен сообщениями" filename="messaging.html"/>
-      <page title="Документы" filename="documents.html"/>
-      <page title="Загрузки" filename="downloads.html"/>
-      <page title="Использование ресурсов" filename="use.html"/>
-      <page title="Поддержка реализации" filename="support.html"/>
-			<page title="Managing Resource Identity" filename="managing.html"/>
 			<page title="Services / SOA" filename="services.html"/>
+
+			<page title="Downloads" filename="downloads.html"/>
+			<page title="Managing Resource Identity" filename="managing.html"/>
       <page title="Шаблоны взаимодействия" filename="pushpull.html"/>
-      <page title="Профилирование FHIR" filename="profiling.html">
-        <page title="Примеры" filename="profiling-examples.html"/>
-        <page title="Перечень профилей" filename="profilelist.html"/>
-        <page title="Распространенные случаи использования" filename="usecases.html"/>
+      <page title="Managing Updates" filename="updates.html"/>
+			<page title="Support" filename="support.html"/>
+			<page title="Integrated Examples" filename="integrated-examples.html"/>
+			<page title="Security" filename="security.html">
+				<page title="Security Labels" filename="security-labels.html"/>
 			</page>
-      <page title="Безопасность" filename="security.html">
-        <page title="Метки уровня безопасности" filename="security-labels.html"/>
+
+			<page title="Profiling FHIR" filename="profiling.html">
+				<page title="Examples" filename="profiling-examples.html"/>
+				<page title="Common Usages" filename="usecases.html"/>
 			</page>
-      <page title="Комплексные примеры" filename="integrated-examples.html"/>
       <page title="Руководства по реализации" filename="iglist.html">
 				<page title="Argonaut Project" filename="argonauts.html"/>
-
         <page title="Фреймворк доступа к данным (DAF)" filename="daf.html">
           <page title="Введение в DAF" filename="daf-intro.html"/>
           <page title="Безопасность в DAF" filename="daf-security.html"/>
@@ -119,23 +145,28 @@ todo: compartments
 					<page title="DAF Outstanding Issues" filename="daf-outstandingissues.html"/>
 				</page>
 				<page title="EHRS Functional model - Record Lifecycle Events" filename="ehrs-rle.html"/>
+				<page title="Quality Improvement Core (QICore)" filename="qicore.html"/>
         <page title="Сбор структурированных данных (SDC)" filename="sdc.html">
           <page title="Введение в SDC" filename="sdc-intro.html"/>
           <page title="Безопасность в SDC" filename="sdc-security.html"/>
 				</page>
 				<page title="Structured Data Capture - Data Element Exchange" filename="sdc-de.html"/>
+				<page title="US Laboratory Implementation Guides (USLab)" filename="uslab.html">
 				<page title="US Laboratory Order Implementation" filename="uslaborder.html">
 					<page title="USLabOrder Documentation" filename="uslaborder-guide.html"/>
 				</page>
-                 <page title="US Laboratory Result Implementation" filename="uslabresult.html">
-					<page title="USLabResult Documentation" filename="uslabresult-guide.html"/>
+					<page title="USLabResult" filename="uslabreport.html">
+						<page title="Documentation" filename="uslabresult-guide.html"/>
 				</page>
-                <page title="US Laboratory Report to Public Health Implementation" filename="uslabphresult.html">
-					<page title="USLabPHResult Documentation" filename="uslabphresult-guide.html"/>
+					<page title="USLabPHReport" filename="uslabphreport.html">
+						<page title="Documentation" filename="uslabphresult-guide.html"/>
 				</page>
 			</page>
 		</page>
-    <page title="Ресурсы" filename="resourcelist.html"/>
+		  <page title="Profile List" filename="profilelist.html"/>
+			<page title="Using Resources" filename="use.html"/>
+		</page>
+		<page title="Resources" filename="resourcelist.html"/>
 		<!--    Every Resource below has structure:
       resource
       definitions
@@ -151,7 +182,7 @@ todo: compartments
 			<page type="resource" resource="CarePlan"/>
 			<page type="resource" resource="CarePlan2"/>
 			<page type="resource" resource="Goal"/>
-			<page type="resource" resource="ClinicalAssessment"/>
+			<page type="resource" resource="ClinicalImpression"/>
 			<page type="resource" resource="ReferralRequest"/>
 			<page type="resource" resource="Procedure"/>
 			<page type="resource" resource="ProcedureRequest"/>
@@ -185,6 +216,8 @@ todo: compartments
 			<page type="resource" resource="Organization"/>
 			<page type="resource" resource="HealthcareService"/>
 			<page type="resource" resource="Contract"/>
+			<page type="resource" resource="ProcessRequest"/>
+			<page type="resource" resource="ProcessResponse"/>
 			<page type="resource" resource="Device"/>
 			<page type="resource" resource="DeviceComponent"/>
 			<page type="resource" resource="DeviceMetric"/>
@@ -236,6 +269,7 @@ todo: compartments
 			<page type="resource" resource="ConceptMap"/>
 		</page>
     <page title="Финансовые" filename="financial.html">
+			<page type="resource" resource="Claim"/>
 			<page type="resource" resource="ClaimResponse"/>
 			<page type="resource" resource="Coverage"/>
 			<page type="resource" resource="EligibilityRequest"/>
@@ -243,19 +277,14 @@ todo: compartments
 			<page type="resource" resource="ExplanationOfBenefit"/>
 			<page type="resource" resource="EnrollmentRequest"/>
 			<page type="resource" resource="EnrollmentResponse"/>
-			<page type="resource" resource="InstitutionalClaim"/>
-			<page type="resource" resource="OralHealthClaim"/>
+<!--			<page type="resource" resource="InstitutionalClaim"/>
+			<page type="resource" resource="OralHealthClaim"/> -->
 			<page type="resource" resource="PaymentNotice"/>
 			<page type="resource" resource="PaymentReconciliation"/>
-			<page type="resource" resource="PendedRequest"/>
-			<page type="resource" resource="PharmacyClaim"/>
-			<page type="resource" resource="ProfessionalClaim"/>
-			<page type="resource" resource="Readjudicate"/>
-			<page type="resource" resource="Reversal"/>
-			<page type="resource" resource="StatusRequest"/>
-			<page type="resource" resource="StatusResponse"/>
+<!--			<page type="resource" resource="PharmacyClaim"/>
+			<page type="resource" resource="ProfessionalClaim"/> -->
 			<page type="resource" resource="SupportingDocumentation"/>
-			<page type="resource" resource="VisionClaim"/>
+<!--			<page type="resource" resource="VisionClaim"/> -->
 		</page>
 	</page>
 </fhir>

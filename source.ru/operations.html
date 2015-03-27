@@ -26,11 +26,8 @@
  <li>Операции подлежат тем же мерам безопасности, что и RESTful API</li>
  <li>URI точек взаимодействия операций основываются на существующей схеме адресов RESTful API</li>
  <li>Операции могут воспользоваться существующим репозиторием ресурсов в своих определениях</li>
+ <li>Operations are performed against a specific resource, a resource type, or the whole system</li>
 </ul>
-
-<p>
-Примечание: определение этих сервисов не исключает использование других видов сервисов, которые не зависят от и/или не интегрированы с RESTful API.
-</p>
 
 <a name="defined"> </a>
 <h3>Операции, определенные FHIR</h3>
@@ -39,7 +36,22 @@
 </p>
 <%operationslist%>
 <p>
+Notes:
+</p>
+<ul>
+ <li>The special operations on the <code>meta</code> element also operate on previous version (/_history/) - they are the only ones</li>
+</ul>
+
+<a name="extensibility"> </a>
+<h3>Implementations Defined Operations</h3>
+<p>
 Реализации имеют возможность определять свои собственные операции в дополнение к тем, что описаны здесь. Конфликты имен между операциями, определенными различными реализаторами, можно разрешать с помощью <a href="conformance.html">заявлений о соответствии</a>.
+</p>
+<p>
+In addition, the definition of these operations  or additional run time operations does not 
+prevent the use of other kinds of operations that are not dependent on and/or not integrated 
+with the RESTful API, as long as their addressing scheme does not clash with the scheme 
+defined herein.
 </p>
 
 <a name="defining"> </a>
@@ -120,7 +132,7 @@ in regard to <a href="http.html#mime-type">content types</a>. -->
 </p>
 <p>
 Если у операции нет параметров с комплексными типами (включая ресурсы), и эта операция является идемпотентной (см. <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">определение термина "идемпотентный" (idempotent) в спецификации HTTP</a>), операцию можно вызывать выполнением операции HTTP GET, где все параметры добавляются к URL-адресу в его поисковую часть (например после "?"). Серверы ДОЛЖНЫ поддерживать этот метод вызова.
-<!-- If there are no parameters with complex types (including resourcse) to the operation, and the operation 
+<!-- If there are no parameters with complex types (including resources) to the operation, and the operation 
 is idempotent (see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP specification 
 definition of idempotent</a>), the operation may be invoked by performing an HTTP GET operation where 
 all the parameters are appended to the URL in the search portion of the URL (e.g. after the "?").

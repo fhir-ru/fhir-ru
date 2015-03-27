@@ -33,7 +33,7 @@ HL7 hosts one for public registration of FHIR profiles at (yet to be done). -->
  <li>Профили используются экземплярами <a href="conformance.html">Conformance</a> для определения способа использования ресурсов<!-- 
 Profiles are used by <a href="conformance.html">Conformance</a> instances for specifying how resources are used --></li>
  <li>Профили используют наборы значений <a href="valueset.html">Value Sets</a> для определения содержимого кодированных элементов<!-- Profiles use <a href="valueset.html">Value Sets</a> to specify the content of coded elements --></li>
- <li>Профили могут использовать определения расширений <a href="extensiondefinition.html">Extension Definitions</a>, когда указывают способ использования ресурса<!-- Profiles can use <a href="extensiondefinition.html">Extension Definitions</a> when specifying how a resource is used --></li>
+ <li>Профили могут использовать определения расширений <a href="structuredefinition.html">Extension Definitions</a>, когда указывают способ использования ресурса<!-- Profiles can use <a href="extensiondefinition.html">Extension Definitions</a> when specifying how a resource is used --></li>
 </ul>
 
 </div> 

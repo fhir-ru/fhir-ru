@@ -8,6 +8,9 @@
 <li>
 Поскольку Bundle сам по себе является <a href="resource.html">ресурсом</a>, он имеет те же общие метаданные, что и все ресурсы, включая декларирование профилей, теги и метки уровня безопасности
 <!-- Since a Bundle is itself a <a href="resource.html">Resource</a> it has the same common metadata as all resources, including profile assertions, tags, and security labels --></li>
+<li>Both bundle.link and Bundle.entry.link are defined to support providing additional context when bundles are used (e.g. <a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a>). 
+  Bundle.entry.link corresponds to links found in the HTTP header if the resource in the entry was <a href="http.html#read">read</a> directly.
+  This specification defines some specific uses of Bundle.link for <a href="search.html#conformance">searching</a> and <a href="http.html#paging">paging</a>, but no specific uses for Bundle.entry.link, and no defined function in a transaction. Meaning is implementation specific</li>
 </ul>
 
 <a name="using"> </a>
@@ -42,7 +45,7 @@ Each entry element SHALL contain a resource. See <a href="messaging.html">Messag
 for further information.
 </p>
 
-<p><a href="query-example-request.html">Example</a></p>
+<p><!--<a href="query-example-request.html">Example</a>-->Example: todo</p>
 
 <a name="searchset"> </a>
 <h4>Search Results</h4>
@@ -82,7 +85,7 @@ See <a href="http.html#history">History</a> for further information.
 In addition, <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> may be 
 used to return the total number of resources that are included in the update history, 
 and that may be returned by following the "next" <a href="bundle-definitions.html#Bundle.link">link</a>.
-</p>
+</p>4
 
 <p>Example to do</p>
 
@@ -133,9 +136,9 @@ Each entry element SHALL contain a resource.
 
 <p>
 У ресурса Bundle есть элемент 'base', который используется для разрешения относительных ссылок, присутствующих в связке ресурсов.
-В случае, когда связка включает ресурсы с разными 'base'-элементами, каждая запись может также декларировать соответствующий base, если он отличается от общего 'base'-элемента. Элемент 'base' всегда ДОЛЖЕН быть указан либо в самом ресурсе Bundle, либо для каждой записи.
+В случае, когда связка включает ресурсы с разными 'base'-элементами, каждая запись может также декларировать применимый к ней base, если он отличается от общего 'base'-элемента. Элемент 'base' всегда ДОЛЖЕН быть указан либо в самом ресурсе Bundle, либо для каждой записи.
 <!-- Bundle has a 'base' element, which is used to resolve relative references present in the bundled resources. 
-In the case that the bundle includes resources with different bases, each entry can also assert it's 
+In the case that the bundle includes resources with different bases, each entry can also assert its 
 applicable base if this is different to the overall base. A base SHOULD always be specified, either
 in the bundle itself, or on each entry. -->
 </p>

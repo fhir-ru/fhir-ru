@@ -22,9 +22,9 @@ Audit Event resources are often (though not exclusively) created by the applicat
 <div>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-Многие FHIR-ресурсы содержат элементы с информацией о происхождении ресурса, которые пересекаются с функциональностью ресурса Provenance. Этим свойствам в других ресурсах всегда следует отдавать предпочтение при использовании, а ресурс Provenance следует использовать тогда, когда требуется указать дополнительную информацию, хоть и может возникнуть дублирование.
+Многие другие FHIR-ресурсы содержат элементы с информацией о происхождении ресурса, которые пересекаются с функциональностью ресурса Provenance. Этим свойствам в других ресурсах всегда следует отдавать предпочтение при использовании, а ресурс Provenance следует использовать тогда, когда требуется указать дополнительную информацию, хоть и может возникнуть дублирование.
 <!-- Many other FHIR resources contain some elements that represent information
-about how the resource was obtained, and therefore thay overlap with the 
+about how the resource was obtained, and therefore they overlap with the 
 functionality of the Provenance resource. These properties in other resources
 should always be used in preference to the provenance resource, and the 
 provenance resource should be used where additional information is required,
@@ -36,10 +36,16 @@ though overlap can occur.  -->
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Ресурс Provenance основывается на <a href="http://www.w3.org/TR/2013/NOTE-prov-overview-20130430/">W3C-спецификации Provenance</a>, с которой у него есть мэппинги. Ресурс Provenance адаптирован, чтобы лучше соответствовать сценариям использования в FHIR для описания происхождения. 
+In terms of <a htef="http://www.w3.org/TR/prov-dm/">W3C Provenance</a> the FHIR <a href="provenance.html">Provenance resources</a> covers "Generation" of "Entity" with 
+respect to FHIR defined Resources for creation or updating; 
+where as <a href="auditevent.html">Audit Event</a> covers "Usage" of "Entity" and all other "Activity" as defined in W3C Provenance.
+</p>
+<p>
 W3C-спецификация Provenance определяет следующую функциональную модель:
 
 <!-- The provenance resource is based on the <a href="http://www.w3.org/TR/2013/NOTE-prov-overview-20130430/">W3C Provenance specification</a>, 
-and mappings are provided. The Provenance resource is tailored to fit the FHIR use-cases for provenance more directly. 
+and mappings are provided. The Provenance resource is tailored to fit the FHIR use-cases for provenance more directly. --> 
+<!-- 
 The W3C Provenance Specification has the following fundamental model: -->
 </p>
 <p>

@@ -3,8 +3,8 @@
 <div>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-Этот ресурс включает информацию о людях и животных, участвующих в широком диапазоне деятельности, связанной со здоровьем, в том числе:
-<!-- This Resource covers data about persons and animals involved in a wide range of health-related activities, including: -->
+Этот ресурс включает информацию о пациентах и животных, участвующих в широком диапазоне деятельности, связанной со здоровьем, в том числе:
+<!-- This Resource covers data about patients and animals involved in a wide range of health-related activities, including: -->
 </p>
 <ul>
 <li>Лечебные мероприятия<!-- Curative activities --></li>
@@ -16,10 +16,10 @@
 <li>Отслеживание данных по личному здоровью и физическим упражнениям<!-- Tracking of personal health and exercise data --></li>
 </ul>
 <p>
-Данные в этом ресурсе отвечают на вопрос "кто" касательно пациента: его атрибуты нацелены на демографическую информацию, необходимую для поддержки административных, финансовых и логистических процедур. Запись Patient, как правило, создается и поддерживается каждой организацией, предоставляющей услуги пациенту. Поэтому информация о человеке или животном, обслуживаемом в нескольких разных организациях, может быть представлена несколькими ресурсами Patient.
+Данные в этом ресурсе отвечают на вопрос "кто" касательно пациента: его атрибуты нацелены на демографическую информацию, необходимую для поддержки административных, финансовых и логистических процедур. Запись Patient, как правило, создается и поддерживается каждой организацией, предоставляющей услуги пациенту. Поэтому информация о пациенте или животном, обслуживаемом в нескольких разных организациях, может быть представлена несколькими ресурсами Patient.
 <!-- The data in the Resource covers the "who" information about the patient: its attributes are focused on the demographic
 information necessary to support the administrative, financial and logistic procedures. A Patient record is generally 
-created and maintained by each organization providing care for a patient. A person or animal receiving care at multiple
+created and maintained by each organization providing care for a patient. A patient or animal receiving care at multiple
 organizations may therefore have its information present in multiple Patient Resources. -->
 </p>
 </div>

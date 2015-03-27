@@ -36,29 +36,41 @@ flags were used to implement version tracking history within the resource. -->
 <h2>Narrative Content</h2>
 
 <p>
-Описательная часть ресурса List должна содержать сводку ключевых свойств пунктов в списке  наряду с человекочитаемой сводкой их флагов (если они есть).
+Описательная часть ресурса List должна содержать сводку элементов item в списке, их ключевую информацию наряду с человекочитаемой сводкой их флагов (если они есть). Описательная часть может генерироваться из содержимого data и/или описательных частей ресурсов, входящих в список, либо это может быть описательная часть, написанная человеком, которая частично или полностью соответствует структурированным данным в связанных ресурсах, либо описательная часть, написанная человеком, может быть единственным содержимым, если в списке нет записей (что приравнивается к документу с единственным разделом - описательной частью).
 <!-- The narrative portion of the List resource should contain a summary 
-of key properties of the items in the list, along with a human-readable 
-summary of their flags (if present). -->
+of the items in the list, their key information, along with a human-readable 
+summary of their flags (if present). The narrative may be generated
+from the data content and/or narrative of the resources referred to in
+the list, or it may be a narrative written by a human which is partially or
+completely matched by structured data in the linked resources, or human
+written narrative may be the only content if the list has no entries
+(which would equate to a narrative only section in a document). -->
 </p>
 <p>
-Рекомендуемый подход - HTML-таблица, хотя это и не обязательно. Каждый List.item должен появиться в описательной части ресурса. Т. е. не обязательно извлекать пункты списка, чтобы получить человекочитаемое отображение его содержимого. Кроме того, описательная часть не должна предполагать, что список содержит пункты, для которых нет соответствующего элемента List.item. Если в списке если флаги, представление на экране должно использовать понятные визуальные подсказки (границы, линии, маркеры списков и т. п.), чтобы гарантировать, что читатели не запутаются, какие флаги к каким пунктам относятся, на маленьких экранах (например для предотвращения переносов, разносящих флаги и пункты по разным местам экрана).
+Рекомендуемый подход - HTML-таблица, хотя это и не обязательно. 
+Каждый List.item должен появиться в описательной части ресурса. Т. е. НЕ ДОЛЖНО требоваться извлечь items списка, чтобы получить человекочитаемое отображение его содержимого. Кроме того, если List.text.status = "generated", тогда описательная часть не должна предполагать, что список содержит items, для которых нет соответствующих элементов List.item.
+Если в списке если флаги, представление на экране должно использовать понятные визуальные подсказки (границы, линии, маркеры списков и т. п.), чтобы гарантировать, что читатели не запутаются, какие флаги к каким пунктам относятся, на маленьких экранах (например для предотвращения переносов, разносящих флаги и пункты по разным местам экрана).
 <!-- An HTML table is the recommended approach, though this is not required.
 Each List.item should appear in the narrative for the resource.  I.e. It 
-should not be necessary to retrieve the list items in order to have a 
-human-readable rendering of the content. In addiiton, the narrative 
-should not suggest the list contains items for which there are no 
-corresponding List.item elements. If the list has flags, the representation 
-should make clear use of visual hints (borders, lines, bullet marks, etc.) 
-to ensure that human readers do not get confused about which flags belong 
-with which item on space-poor displays (e.g. to prevent wrapping from 
-separating the flags from the items). -->
+SHALL not be necessary to retrieve the list items in order to have a 
+human-readable rendering of the content. In addition, if the List.text.status is 
+"generated", then the narrative should not suggest the list 
+contains items for which there are no corresponding List.item elements. 
+If the list has flags, the representation should make clear use of visual 
+hints (borders, lines, bullet marks, etc.) to ensure that human readers 
+do not get confused about which flags belong with which item on space-poor 
+displays (e.g. to prevent wrapping from separating the flags from the items). -->
 </p>
 
 <p>
-Это означает, что содержание описательной части списка будет ограничено версией вложенных ресурсов на момент последнего обновления списка. А может быть даже и раньше, если описательная часть не была обновлена и не отражает последние версии всех ресурсов, на которые есть ссылки, при каждом их обновлении. Лучшим способом будет для действующих 'working' списков обновлять описательную часть, чтобы она отражала самое свежее содержимое всех перечисленных элементов, каждый раз, когда список пересматривается. Следовательно, на списки нельзя полагаться как на представление ссылочного содержимого в реальном времени. Есть несколько возможных подходов к решению этой проблемы:
-<!-- This means that the narrative content of the list will be limited to the
-version of the contained resources at the time the list was last updated. It may be
+Note that when a List resource is used in a <a href="documents.html">Document</a>,
+the narrative of the list is part of the attested content of the document.
+</p>
+
+<p>
+В динамической среде содержание описательной части списка будет ограничено версией связанных ресурсов на момент последнего обновления списка. А может быть даже и раньше, если описательная часть не была обновлена и не отражает последние версии всех ресурсов, на которые есть ссылки, при каждом их обновлении. Лучшим способом будет для действующих 'working' списков обновлять описательную часть, чтобы она отражала самое свежее содержимое всех перечисленных элементов, каждый раз, когда список пересматривается. Следовательно, на списки нельзя полагаться как на представление ссылочного содержимого в реальном времени. Есть несколько возможных подходов к решению этой проблемы:
+<!-- In a dynamic environment, the narrative content of the list will be limited to the
+version of the linked resources at the time the list was last updated. It may be
 even earlier if the narrative isn't updated to reflect the most recent version
 of all referenced resources at each update.  Best practice for 'working' lists is to update 
 the narrative to reflect the most recent content of all list elements each time the list

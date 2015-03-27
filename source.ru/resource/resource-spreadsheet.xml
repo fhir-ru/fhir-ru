@@ -24,7 +24,7 @@
   <WindowWidth>9870</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>4</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -971,9 +971,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Базовый ресурс<!-- Base Resource --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Base Resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Базовый ресурс для всего<!-- Base Resource for everything --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Base Resource for everything</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1003,12 +1003,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Логический идентификатор этого артефакта<!-- Logical id of this artefact --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Logical id of this artefact</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Логический идентификатор ресурса, который используется в URL-адресе ресурса. Однажды присвоенное, это значение никогда больше не меняется<!-- The logical id of the resource, as used in the url for the resoure. Once assigned, this value never changes --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The logical id of the resource, as used in the url for the resoure. Once assigned, this value never changes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурс не имеет идентификатора только в тот момент, когда он отправляется на сервер с помощью операции создания. У комплетов всегда имеется идентификатор, хотя обычно это сгенерированный UUID<!-- The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1035,9 +1035,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Метаданные ресурса<!-- Metadata about the resource --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Metadata about the resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Метаданные ресурса. Это такая информация, которая поддерживается инфраструктурой. Изменения этой информации не всегда можно ассоциировать с версионными изменениями ресурса<!-- The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1068,12 +1068,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Свод правил, в соответствии с которыми создавалось это содержимое<!-- A set of rules under which this content was created --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A set of rules under which this content was created</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на свод правил, которым следовали при создании этого ресурса и которые необходимо понимать при обработке этого содержимого.<!-- A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Установка такого свода правил ограничивает понимание содержимого до лимитированного количества торговых партнеров. Это, по сути, ограничивает полезность данных в долгосрочном плане. Тем не менее, существующая экосистема здравоохранения сильно раздроблена и пока что не готова определять, собирать и обмениваться данными в полностью вычислительном контексте. Реализаторам и/или авторам спецификации следует избегать использования этого элемента, насколько это возможно<!-- Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1101,13 +1101,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Язык содержимого ресурса<!-- Language of the resource content --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Language of the resource content</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Основной язык, на котором написан ресурс<!-- The base language in which the resource is written --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The base language in which the resource is written</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык указывается для поддержки предварительной обработки текстов и доступности для понимания (например при преобразовании текста в речь используется языковой тег). HTML-тег language в описательной части применяется к этой описательной части. Языковой тег ресурса может использоваться для указания языков других представлений, генерируемых из данных ресурса&#10;&#10;Не все содержание ресурса должно быть на указанном основном языке. Resource.language нельзя автоматически принимать за язык описательной части. Если язык указан, его также следует указать в элементе div в HTML (информацию о связи между xml:lang и HTML-атрибутом lang см. в правилах HTML5)<!-- 
-Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource&#10;&#10;Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource&#10;&#10;Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3356,7 +3355,6 @@ Language is provided to support indexing and accessibility (typically, services 
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -4184,7 +4182,7 @@ Language is provided to support indexing and accessibility (typically, services 
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">_profile</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Resource.meta.profile</Data></Cell>
     <Cell ss:StyleID="s118"/>
@@ -4385,14 +4383,14 @@ Language is provided to support indexing and accessibility (typically, services 
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C2:R30C2</Range>
+   <Range>R2C2:R5C2,R7C2:R30C2</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;number,date,string,token,reference,composite,quantity&quot;</Value>
@@ -4421,7 +4419,7 @@ Language is provided to support indexing and accessibility (typically, services 
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C3:R30C3</Range>
+   <Range>R2C3:R30C3,R6C2</Range>
    <Condition>
     <Value1>AND(RC1&lt;&gt;&quot;reference&quot;,RC&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
@@ -4461,7 +4459,7 @@ Language is provided to support indexing and accessibility (typically, services 
    <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Operations!R1C1:R2C9"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="49" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="47" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s111" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s111" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s111" ss:AutoFitWidth="0" ss:Width="124.5"/>
@@ -4518,13 +4516,11 @@ Language is provided to support indexing and accessibility (typically, services 
     <Cell ss:StyleID="s114"><Data ss:Type="String">operation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">Валидация ресурса<!-- Validate a resource --></Data><NamedCell
+    <Cell ss:StyleID="s114"><Data ss:Type="String">Validate a resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">Операция валидации проверяет, допустимо ли вложенное содержимое либо в общем, либо как создание, обновление или удаление существующего ресурса.&#10;&#10;Действие сервера зависит от параметра mode:&#10;&#10;* [отсутствует]: Сервер проверяет содержимое ресурса на соответствие некоторой схеме, ограничивающим условиям и другим общим номенклатурным правилам&#10;* create: Сервер проверяет содержимое, затем проверяет, что это содержимое допустимо для создания (например, что содержимое не нарушает никакие ограничения уникальности)&#10;* update: Сервер проверяет содержимое, затем проверяет, что оно допустимо в качестве обновления заявленного конкретного ресурса (например, что оно не модифицирует неизменяемые поля, которые сервер не позволяет менять, а также проверка версионной целостности при необходимости)&#10;* delete: Сервер игнорирует содержимое и проверяет, что удаление названного ресурса разрешено (например проверка соблюдения правил ссылочной целостности)&#10;&#10;Режимы "update" и "delete" могут использоваться, только когда операция вызывается на уровне ресурса. &#10;&#10;Ответом такой операции будет OperationOutcome&#10;&#10;&#10;<!-- 
-The validate interaction checks whether the attached content would be acceptable either generally, or as a create, or an update or delete to an existing resource.&#10;&#10;The action the server takes depends on the mode parameter:&#10;&#10;* [missing]: The server checks the content of the resource against any schema, constraint rules, and other general terminology rules&#10;* create: The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not validate any uniqueness constraints)&#10;* update: The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate)&#10;* delete: The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules)&#10;&#10;Modes update and delete can only be used when the operation is invoked at the resource level. &#10;&#10;The return from this operation is an OperationOutcome&#10;&#10;&#10; --></Data><NamedCell
+    <Cell ss:StyleID="s128"><Data ss:Type="String">The validate interaction checks whether the attached content would be acceptable either generally, or as a create, or an update or delete to an existing resource.&#10;&#10;The action the server takes depends on the mode parameter:&#10;&#10;* [missing]: The server checks the content of the resource against any schema, constraint rules, and other general terminology rules&#10;* create: The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not validate any uniqueness constraints)&#10;* update: The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate)&#10;* delete: The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules)&#10;&#10;Modes update and delete can only be used when the operation is invoked at the resource level. &#10;&#10;The return from this operation is an OperationOutcome&#10;&#10;&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">Эту операцию можно использовать во время проектирования и разработки приложения для его валидации. Также она может использоваться и во время выполнения. Одним из возможных способов использования может быть такой, когда клиент запрашивает сервер, допустимо ли предлагаемое обновление, которое пользователь редактирует в диалоговом окне, и сервер показывает пользователю актуальную ошибку. Эта операция может использоваться как часть облегченного двухфазного протокола исполнения, при этом отсутствует ожидание того, что сервер будет хранить содержимое ресурса после совершения этой операции, или что сервер будет гарантировать успешное выполнение фактического создания, обновления или удаления после завершения операции валидации.<!-- 
-This operation may be used during design and development to validate application design. It can also be used at run-time. One possible use might be that a client asks the server whether a proposed update is valid as the user is editing a dialog, and displays an updated error to the user. The operation can be used as part of a light-weight two phase commit protocol but there is no expectation that the server will hold the content of the resource after this operation is used, or that the server guarantees to succesfully perform an actual create, update or delete after the validation operation completes. --></Data><NamedCell
+    <Cell ss:StyleID="s129"><Data ss:Type="String">This operation may be used during design and development to validate application design. It can also be used at run-time. One possible use might be that a client asks the server whether a proposed update is valid as the user is editing a dialog, and displays an updated error to the user. The operation can be used as part of a light-weight two phase commit protocol but there is no expectation that the server will hold the content of the resource after this operation is used, or that the server guarantees to succesfully perform an actual create, update or delete after the validation operation completes.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4535,7 +4531,7 @@ This operation may be used during design and development to validate application
     <Cell ss:StyleID="s117"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">The resource to validate</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Должно присутствовать, если только не задан режим удаления &quot;delete&quot;<!-- Must be present unles the mode is &quot;delete&quot; --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Must be present unles the mode is &quot;delete&quot;</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4546,7 +4542,7 @@ This operation may be used during design and development to validate application
     <Cell ss:StyleID="s117"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">What kind of validation to perform</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Значением по умолчанию является 'no action' (например общая валидация)<!-- Default is 'no action; (e.g. general validation) --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Default is 'no action; (e.g. general validation)</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -4557,7 +4553,7 @@ This operation may be used during design and development to validate application
     <Cell ss:StyleID="s117"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Literal or logical uri of a profile</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Если обозначено, то ресурс валидируется на соответствие этому указанному профилю. Если профиль обозначен, а сервер не может провести валидацию на соответствие этому обозначенному профилю, он ДОЛЖЕН вернуть ошибку<!-- If this is nominated, then the resource is validated against this specific profile. If a profile is nominated, and the server cannot validate agsinst the nominated profile, it SHALL return an error --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">If this is nominated, then the resource is validated against this specific profile. If a profile is nominated, and the server cannot validate agsinst the nominated profile, it SHALL return an error</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
@@ -4568,7 +4564,7 @@ This operation may be used during design and development to validate application
     <Cell ss:StyleID="s117"><Data ss:Type="String">OperationOutcome</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">The outcome of the validation operation</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Если в ответе операции не перечислены никакие ошибки, и режим был указан, тогда это указывает на то, что операция будет успешной (за исключением вопросов транзакционной целостности, см. ниже)<!-- If the operation outcome does not list any errors, and a mode was specified, then this is an indication that the operation would be expected to succeed (excepting for transactional integrity issues, see below) --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">If the operation outcome does not list any errors, and a mode was specified, then this is an indication that the operation would be expected to succeed (excepting for transactional integrity issues, see below)</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120.75">
@@ -4594,40 +4590,29 @@ This operation may be used during design and development to validate application
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s116"><Data ss:Type="String">meta-change</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">meta-add</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Instance</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">operation</Data></Cell>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Add or delete profiles, tags, and security labels for a resource</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">This operation takes a meta, and either adds or deletes the profiles, tags, and security labels found in it to or from the nominated resource. &#10;&#10;This operation can also be used on historical entries</Data></Cell>
-    <Cell ss:StyleID="s132"><Data ss:Type="String">This operation is special in that executing this operation does not cause a new version of the resource to be created. The meta is updated directly. This is because the content in meta does not affect the meaning of the resource, and the security labels (in particular) are used to apply access rules to existing resources</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Add profiles, tags, and security labels to a resource</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">This operation takes a meta, and either adds the profiles, tags, and security labels found in it to the nominated resource. &#10;&#10;This operation can also be used on historical entries - to update them without creating a different historical version</Data></Cell>
+    <Cell ss:StyleID="s132"><Data ss:Type="String">This operation is special in that executing this operation does not cause a new version of the resource to be created. The meta is updated directly. This is because the content in meta does not affect the meaning of the resource, and the security labels (in particular) are used to apply access rules to existing versions of resources</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="97.5">
-    <Cell ss:StyleID="s116"><Data ss:Type="String">meta-change.meta</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">meta-add.meta</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">in</Data></Cell>
     <Cell ss:StyleID="s130"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s130"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Meta</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Profiles, tags, and security labels to add</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Profiles, tags, and security labels to add to or delete from the existing resource. Note that profiles, tags, and security labels are sets, and duplicates are not created. E.g. Profiles are unique by URL, and tags and security labels are unique by system+code</Data></Cell>
-    <Cell ss:StyleID="s132"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="97.5">
-    <Cell ss:StyleID="s116"><Data ss:Type="String">meta-change.mode</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">in</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="Number">0</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Whether to add or delete (default = add)</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Whether to add or delete. The default action is add the labels</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Profiles, tags, and security labels to add to the existing resource. Note that profiles, tags, and security labels are sets, and duplicates are not created.&#10;&#10;The identity of a tag or security label is the system+code. When matching existing tags during adding, version and display are ignored. For profiles matching is based on the full URL</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s116"><Data ss:Type="String">meta-change.return</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">meta-add.return</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">out</Data></Cell>
     <Cell ss:StyleID="s130"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s130"><Data ss:Type="Number">1</Data></Cell>
@@ -4638,47 +4623,36 @@ This operation may be used during design and development to validate application
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s116"/>
-    <Cell ss:StyleID="s117"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">meta-delete</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Instance</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">operation</Data></Cell>
     <Cell ss:StyleID="s117"/>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Delete profiles, tags, and security labels for a resource</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">This operation takes a meta, and either deletes the profiles, tags, and security labels found in it from the nominated resource. &#10;&#10;This operation can also be used on historical entries</Data></Cell>
+    <Cell ss:StyleID="s132"><Data ss:Type="String">This operation is special in that executing this operation does not cause a new version of the resource to be created. The meta is updated directly. This is because the content in meta does not affect the meaning of the resource, and the security labels (in particular) are used to apply access rules to existing versions of resources</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="97.5">
+    <Cell ss:StyleID="s116"><Data ss:Type="String">meta-delete.meta</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">in</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Meta</Data></Cell>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"/>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Profiles, tags, and security labels to delete</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Profiles, tags, and security labels to add delete from the existing resource. It is not an error if these tags, profiles, and labels do not exist.&#10;&#10;The identity of a tag or security label is the system+code. When matching existing tags during deletion, version and display are ignored. For profiles matching is based on the full URL</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">meta-delete.return</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">out</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Meta</Data></Cell>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s130"/>
-    <Cell ss:StyleID="s130"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"/>
-    <Cell ss:StyleID="s132"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s116"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s130"/>
-    <Cell ss:StyleID="s130"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"/>
-    <Cell ss:StyleID="s132"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s116"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s130"/>
-    <Cell ss:StyleID="s130"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s131"/>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Resulting meta for the resource</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Resulting meta for the resource</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5042,10 +5016,11 @@ This operation may be used during design and development to validate application
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>7</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -5058,32 +5033,33 @@ This operation may be used during design and development to validate application
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>12</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C3:R48C3</Range>
+   <Range>R2C3:R46C3</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;0,1,[n]&quot;</Value>
    <ErrorHide/>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C4:R48C4</Range>
+   <Range>R2C4:R46C4</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;1,[n],*&quot;</Value>
    <ErrorHide/>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C5:R48C5</Range>
+   <Range>R2C5:R46C5</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;query,operation,SomeResource,Reference(SomeResource),boolean,string,token,code,id,oid,uuid,number,integer,decimal,date,dateTime,time,instant,base64Binary,CodeableConcept,Coding,Identifier,Period,Timing,Range,Quantity,Duration,Money,ContactPoint,etc.&quot;</Value>
@@ -5092,49 +5068,49 @@ This operation may be used during design and development to validate application
   <AutoFilter x:Range="R1C1:R2C9" xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R48C9</Range>
+   <Range>R2C1:R46C9</Range>
    <Condition>
     <Value1>AND(RC1=&quot;&quot;,RC&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R14C1:R48C1,R2C1:R11C1</Range>
+   <Range>R15C1:R46C1,R2C1:R11C1</Range>
    <Condition>
     <Value1>AND(R[-1]C=&quot;&quot;,RC&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C8:R48C8,R2C5:R48C5,R2C2:R48C2</Range>
+   <Range>R2C8:R46C8,R2C5:R46C5,R2C2:R46C2</Range>
    <Condition>
     <Value1>AND(RC1&lt;&gt;&quot;&quot;,RC=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C2:R48C2</Range>
+   <Range>R2C2:R46C2</Range>
    <Condition>
     <Value1>AND(RC1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,RC1))),RC&lt;&gt;&quot;IN&quot;, RC&lt;&gt;&quot;OUT&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C3:R48C3</Range>
+   <Range>R2C3:R46C3</Range>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,ISERR(VALUE(RC)))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C3:R48C4</Range>
+   <Range>R2C3:R46C4</Range>
    <Condition>
     <Value1>AND(RC1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,RC1))&lt;&gt;(RC=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C4:R48C4</Range>
+   <Range>R2C4:R46C4</Range>
    <Condition>
     <Value1>AND(RC3&lt;&gt;&quot;&quot;,RC&lt;&gt;&quot;&quot;,RC&lt;&gt;&quot;*&quot;,RC&lt;RC3)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
@@ -5145,43 +5121,43 @@ This operation may be used during design and development to validate application
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C5:R48C5</Range>
+   <Range>R2C5:R46C5</Range>
    <Condition>
     <Value1>AND(RC1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,RC1))),RC2&lt;&gt;&quot;QUERY&quot;, RC2&lt;&gt;&quot;OPERATION&quot;)</Value1>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C6:R48C6</Range>
+   <Range>R2C6:R46C6</Range>
    <Condition>
     <Value1>AND(RC1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,RC1)),(RC&lt;&gt;&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C9:R48C9</Range>
+   <Range>R2C9:R46C9</Range>
    <Condition>
     <Value1>AND(RC1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,RC1))),RC&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R48C9</Range>
+   <Range>R2C1:R46C9</Range>
    <Condition>
     <Value1>LEFT(RC1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R13C1</Range>
+   <Range>R12C1:R13C1</Range>
    <Condition>
-    <Value1>AND(#REF!=&quot;&quot;,RC&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[-1]C=&quot;&quot;,RC&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R12C1</Range>
+   <Range>R14C1</Range>
    <Condition>
-    <Value1>AND(R[-2]C=&quot;&quot;,RC&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[-1]C=&quot;&quot;,RC&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -5518,9 +5494,9 @@ This operation may be used during design and development to validate application
    </Condition>
   </ConditionalFormatting>
  </Worksheet>
- <Worksheet ss:Name="Packages">
+ <Worksheet ss:Name="Profiles">
   <Names>
-   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Packages!R1C1:R2C4"/>
+   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Profiles!R1C1:R2C4"/>
   </Names>
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="41" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s111" ss:DefaultRowHeight="15">

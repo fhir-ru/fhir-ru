@@ -109,11 +109,10 @@ Here's a patient example that conforms to this profile: -->
 <h3>Diagnostic Report и Observation</h3>
 <p>
 В этом примере профиль для диагностического отчета говорит, что он должен иметь 4 исследования, каждое с различным LOINC-кодом (например классический набор лабораторных тестов).
-В этом случае (взятом из <a href="diagnosticreport-profile-lipids.html">Example 
-Lipid Profile</a>) структура, применяемая к DiagnosticReport, сообщит, что имеются 4 среза на DiagnosticReport.result, каждый соответствует отдельной структуре, которые содержатся в том же профиле. Каждая из этих структур будет ограничивать LOINC-код в исследовании.
+В этом случае (взятом из <a href="15046b9c-2da0-4b80-82ef-c6af6fcfd2bf.html">Exampe Lipid Profile</a>) структура, применяемая к DiagnosticReport, сообщит, что имеются 4 среза на DiagnosticReport.result, каждый соответствует отдельной структуре, которые содержатся в том же профиле. Каждая из этих структур будет ограничивать LOINC-код в исследовании.
 <!-- In this example, a profile on an diagnostic report says that it must have 
 4 observations, each with a different LOINC code (e.g. a classic lab panel).
-In this case (taken from the <a href="diagnosticreport-profile-lipids.html">Example 
+In this case (taken from the <a href="15046b9c-2da0-4b80-82ef-c6af6fcfd2bf.html">Example 
 Lipid Profile</a>), the structure that applies to DiagnosticReport will say that 
 there is 4 slices on DiagnosticReport.result, each conforming to a different structure, 
 which are also contained in the same profile. Each of those structures will constrain 
@@ -283,7 +282,6 @@ the LOINC code in the observation.  -->
              a value set --&gt;
          &lt;binding&gt;  
           &lt;name value=&quot;LDL Cholesterol codes&quot;/&gt;
-          &lt;isExtensible value=&quot;false&quot;/&gt;   &lt;!-- must be false if this is a discriminator --&gt;
           &lt;conformance value=&quot;required&quot;/&gt; &lt;!-- must be required if this is a discriminator --&gt;
           &lt;!-- snip the actual value set reference, but it refers to a value 
                set with two LOINC codes, one for each kind of LDL, which in 

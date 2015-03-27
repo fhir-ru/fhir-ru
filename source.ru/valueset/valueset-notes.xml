@@ -40,15 +40,16 @@ is made up of codes from other code systems, see "compose" below.  -->
 <h3>Контроль версий кодовых систем<!-- Versioning Code Systems --></h3>
 <p>
 Большинство кодовых систем развиваются со временем вследствие исправлений, уточнений и изменений в подходе, лежащих в основе знаний или реальном мире.
-Если эти изменения ведут к существенному изменению смысла существующих кодов, тогда интерпретация кодовой системы становится зависимой от ее версии. Это значительно усложняет реализацию, основанную на такой кодовой системе, до того момента, когда надежность уже не может быть обеспечена, поэтому этого СЛЕДУЕТ избегать, насколько это возможно. Более предпочтительно назначать новый идентификатор кодовой системе, когда какие-то концепты в ней получают существенное изменение в смысле (например немецкая кодовая система классификации диагнозов ICD10GM2009 имеет другое значение элемента <i>system</i> по сравнению с ICD10GM2008), однако и это тоже может оказать значительное влияние на реализацию, поэтому часто непрактично - к примеру,  <a href="http://loinc.org">LOINC</a> переопределяла значение своих кодов в прошлом, однако по-прежнему имеет единственный идентификатор.
+Если эти изменения ведут к существенному изменению смысла существующих кодов, тогда интерпретация кодовой системы становится зависимой от ее версии. Это значительно усложняет реализацию, основанную на такой кодовой системе, до того момента, когда надежность уже не может быть обеспечена, поэтому этого СЛЕДУЕТ избегать, насколько это возможно. Более предпочтительно назначать новый идентификатор кодовой системе, когда какие-то концепты в ней получают существенное изменение в смысле (например немецкая кодовая система классификации диагнозов ICD10GM2009 имеет другое значение элемента <i>system</i> по сравнению с ICD10GM2008), однако и это тоже может оказать значительное влияние на реализацию, поэтому часто непрактично - к примеру, у <a href="snomedct.html">SNOMED CT</a> сложный фреймворк выпуска версий, который может привести к различиям в значениях концептов, а у LOINC только один идентификатор.
 <!-- Most code systems evolve over time, due to corrections, clarifications, and changes to approach or underlying knowledge or reality.
 If these changes lead to the meanings of existing codes changing significantly, then the interpretation of the code system becomes
 version dependent. This significantly complicates implementation based on the code system, to the point where it is not clear that
 safety can be assured, so SHOULD be avoided whenever possible. It is preferable to assign a new identifier to a code system 
 when any concepts in it have a significant change in meaning (for example, the German diagnostic classification code system 
 ICD10GM2009 has a different <i>system</i> to ICD10GM2008), but this also can have substantial impact on implementation, so 
-is often not practical - for instance, <a href="http://loinc.org">LOINC</a> has re-defined the meaning of codes in the past,
-but there is only one identifier for LOINC.  -->
+is often not practical - for instance, <a href="snomedct.html">SNOMED CT</a> has a complex version release framework, which
+may lead to variations in meaning of concepts, but there is only one identifier for LOINC. 
+ -->
 </p>
 <p>
 По этой причине кодовая система МОЖЕТ указать идентификатор версии в <i>ValueSet.define.version</i>. Конкретный идентификатор версии СЛЕДУЕТ указывать всякий раз, когда имеются потенциально существенные изменения смысла, распространяющиеся на несколько релизов кодовой системы.
@@ -191,12 +192,13 @@ is guidance for helping human user navigate the choice of codes that
 may or may not relate to the logical definitions of the codes or concepts. -->
 </p>
 <p>
-В общем, при расширении набора значений следует придерживаться следующего алгоритма:
-<!-- In general, the following process should be followed when 
-expanding a value set: -->
+При получении запроса на разворачивание (например на операцию <a href="valueset-operations.html#expand">$expand</a>) необходимо придерживаться следующей процедуры: 
+<!-- When a request for an expansion is received (e.g. for the <a href="valueset-operations.html#expand">$expand</a> operation,
+the following process should be followed: -->
 </p>
 <ul>
- <li>для каждого <i>compose.import</i> найти набор значений, на который он ссылается, расширить его и добавить его в итоговый набор<!-- for each <i>compose.import</i>, find the referenced value set, expand that, and add it to the result set --></li>
+ <li>Если у набора значений уже есть детализация (например сохраненная развертка), просто взять существующую развертку как есть. Если нет, тогда:<!-- If the value set already has an expansion (e.g. a stored expansion), simply take the existing expansion as it is. If not, then: --></li>
+ <li>для каждого <i>compose.import</i> найти по ValueSet.url набор значений, на который он ссылается, развернуть его (например с помощью операции <a href="valueset-operations.html#expand">$expand</a>: GET [base]/ValueSet/$expand$identifier=[compose.import]) и добавить его в итоговый набор. Это означает, что раскрытие импортов - процесс рекурсивный <!-- for each <i>compose.import</i>, find the referenced value set by ValueSet.url, expand that (e.g. using the <a href="valueset-operations.html#expand">$expand</a> operation: GET [base]/ValueSet/$expand$identifier=[compose.import]), and add it to the result set. This means that expansion across imports is a recursive process --></li>
  <li>для каждого <i>compose.include</i> установить корректную версию кодовой системы, затем:<!-- for each <i>compose.include</i>, identify the correct version of the code system, and then: -->
   <ul>
    <li>если в ней нет кодов или фильтров, добавьте каждый код из кодовой системы в итоговый набор<!-- if there is no codes or filters, add every code in the code system to the result set --></li>
@@ -222,6 +224,60 @@ for a human to use the list. These entries have no system or code, and must be m
 value set define and compose offer no support for defining these, but this does not exclude servers from using
 extensions or other knowledge to introduce such groups as an implementation feature. --> 
 </p>
+<p>
+Whether to store expanded value sets, or simply to store their definitions, and expand on the fly is 
+a matter for system deployment. Any system that stores an expansion must be concerned with how to determine
+whether it is current, which requires deep knowledge of how the expansion was created. A system with a 
+dedicated terminology server that returns expansions on demand avoids this problem, but leaves open
+the question of how to audit the specific expansion that was used for a particular case. One solution
+to this is to use a dedicated terminology server, and have the clients ask for expansions on demand
+based on the value set definitions, and for the server to store (and reuse as appropriate) the 
+returned expansion (ValueSet.expansion.identifier).
+</p>
 
+<h3>Code systems with detailed metadata</h3>
+<p>
+Sometimes code systems may be used to represent more complex information than just 
+code, display name and code system.  For example a code system of drug information, 
+of observation types, of locations, and other similar registry-type information.  
+In FHIR, these are handled by splitting the concept into two distinct parts - the 
+<b>ValueSet</b> resource is used to manage the codes, display names and relationships.  
+A separate "detail" resource (e.g. <a href="medication.html">Medication</a> for 
+drugs, <a href="dataelement.html">DataElement</a> for observation types, 
+<a href="location.html">Location</a> for location, etc.) is used to convey detailed 
+information (dose form &amp; strength, allowed data type or permitted values, address &amp;
+hours of operation, etc.)  One "detail" resource instance is created for each code.
+</p>
+<p>
+This division accomplishes several things:
+</p>
+<ul>
+<li>It allows generic systems that support terminology management to perform standard 
+terminology operations on code systems dealing with complex structures - code lookup, 
+validation, subsumption testing, mapping and translation.</li>
+<li>It allows information to be exchanged about individual medications, data elements 
+and locations.  Codes can't be retrieved individually in FHIR - it is necessary to 
+retrieve the entire resource.  By packaging the detailed information in separate 
+resources, independent retrieval and update is possible.</li>
+<li>It supports use-cases for sharing medication, location, observation type and 
+similar information in circumstances where the code may be unknown, unavailable or 
+occasionally non-existent (e.g. custom compounds, non-registered locations).  Having 
+a distinct resource supports these capabilties which would not be possible using 
+<b>ValueSet</b>.</li>
+</ul>
+<p>
+Note that this division in FHIR does not imply that a similar division is required in 
+the internal representation used by systems exposing a FHIR interface.  Similarly, some 
+systems may choose to only expose or maintain one aspect of such information types (i.e. 
+only the discrete resource instances or only the value set.)
+</p>
+<p>
+The linkage between the "detail" resource and the <b>ValueSet</b> is accomplished via the 
+<code>code</code> element (or equivalent) on the detail resource.  As well, the "name" or 
+"title" on the detail resource generally corresponds with the display name on the matching 
+code.  Most detail resources will also have an "identifier" element.  This <i>can</i> be
+set to the same value and namespace as the code, but if the only identifier a resource has
+is its defining code, it may be better to omit the identifier entirely.
+</p>
 
 </div>

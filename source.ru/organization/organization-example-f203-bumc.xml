@@ -48,6 +48,6 @@
          <end value="2013-11-07"/>
       </period>
    </accreditation>-->
-   <active value="true"/>
    <!--The BMC is in active use-->
+   <active value="true"/>
 </Organization>
