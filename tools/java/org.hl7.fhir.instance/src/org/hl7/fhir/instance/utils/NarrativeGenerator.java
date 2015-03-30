@@ -1478,7 +1478,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
   private void generateCopyright(XhtmlNode x, ValueSet vs) {
     XhtmlNode p = x.addTag("p");
-    p.addTag("b").addText("Copyright Statement:");
+    p.addTag("b").addText("Предупреждение об авторском праве:");
     smartAddText(p, " " + vs.getCopyright());
   }
 
@@ -1486,16 +1486,16 @@ public class NarrativeGenerator implements INarrativeGenerator {
   private XhtmlNode addTableHeaderRowStandard(XhtmlNode t, boolean hasHeirarchy, boolean hasDisplay, boolean definitions, boolean comments, boolean deprecated) {
     XhtmlNode tr = t.addTag("tr");
     if (hasHeirarchy) 
-      tr.addTag("td").addTag("b").addText("Lvl");
-    tr.addTag("td").addTag("b").addText("Code");
+      tr.addTag("td").addTag("b").addText("Уровень");
+    tr.addTag("td").addTag("b").addText("Код");
     if (hasDisplay) 
-      tr.addTag("td").addTag("b").addText("Display");
+      tr.addTag("td").addTag("b").addText("Отображение");
     if (definitions) 
-      tr.addTag("td").addTag("b").addText("Definition");
+      tr.addTag("td").addTag("b").addText("Определение");
     if (deprecated) 
-      tr.addTag("td").addTag("b").addText("Deprecated");
+      tr.addTag("td").addTag("b").addText("Устарел");
     if (comments) 
-      tr.addTag("td").addTag("b").addText("Comments");
+      tr.addTag("td").addTag("b").addText("Комментарии");
     return tr;
   }
 
@@ -1656,24 +1656,24 @@ public class NarrativeGenerator implements INarrativeGenerator {
       if (vs.hasCopyrightElement())
         generateCopyright(x, vs);
       p = x.addTag("p");
-      p.addText("This value set includes codes defined in other code systems, using the following rules:");
+      p.addText("Этот набор значений включает в себя коды, определённые в другой кодовой системе, по следующим правилам:");
     } else {
       XhtmlNode p = x.addTag("p");
-      p.addText("In addition, this value set includes codes defined in other code systems, using the following rules:");
+      p.addText("Кроме того, этот набор значений включает в себя коды, определённые в другой кодовой системе, по следующим правилам:");
 
     }
     XhtmlNode ul = x.addTag("ul");
     XhtmlNode li;
     for (UriType imp : vs.getCompose().getImport()) {
       li = ul.addTag("li");
-      li.addText("Import all the codes that are part of ");
+      li.addText("Импортировать все коды, которые входят в ");
       AddVsRef(imp.getValue(), li);
     }
     for (ConceptSetComponent inc : vs.getCompose().getInclude()) {
-      hasExtensions = genInclude(ul, inc, "Include") || hasExtensions;      
+      hasExtensions = genInclude(ul, inc, "Включить") || hasExtensions;      
     }
     for (ConceptSetComponent exc : vs.getCompose().getExclude()) {
-      hasExtensions = genInclude(ul, exc, "Exclude") || hasExtensions;      
+      hasExtensions = genInclude(ul, exc, "Исключить") || hasExtensions;      
     }
     return hasExtensions;
   }
@@ -1704,11 +1704,11 @@ public class NarrativeGenerator implements INarrativeGenerator {
     ValueSet e = context.getCodeSystems().get(inc.getSystem());
     
     if (inc.getConcept().size() == 0 && inc.getFilter().size() == 0) { 
-      li.addText(type+" all codes defined in ");
+      li.addText(type+" все коды, определенные в ");
       addCsRef(inc, li, e);
     } else { 
       if (inc.getConcept().size() > 0) {
-        li.addText(type+" these codes as defined in ");
+        li.addText(type+" эти коды, как определено в ");
         addCsRef(inc, li, e);
       
         XhtmlNode t = li.addTag("table");
