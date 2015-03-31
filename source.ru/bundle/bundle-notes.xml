@@ -19,120 +19,134 @@ Bundle.entry.link соответствует ссылкам, находящим�
 
 <a name="using"> </a>
 
-<h3>Using Bundles</h3>
+<h3>Применение бандлов<!-- Using Bundles --></h3>
 
 <p>
-The content and rules for using a Bundle depend on the <a href="bundle-definitions.html#Bundle.type">type</a> of the bundle. 
+Содержимое и правила применения ресурса Bundle зависят от <a href="bundle-definitions.html#Bundle.type">типа</a> бандла. Обратите внимание, что все типы бандлов используют Bundle.base и Bundle.entry.base для разрешения ссылок, как описано ниже.
+<!-- The content and rules for using a Bundle depend on the <a href="bundle-definitions.html#Bundle.type">type</a> of the bundle. 
 Note that all bundle types use Bundle.base and Bundle.entry.base for 
-identity resolution as described below.
+identity resolution as described below. -->
 </p>
 
 <a name="document"> </a>
-<h4>Document</h4>
+<h4>Тип Document<!-- Document --></h4>
 
 <p>
-A document bundle (type = "document") consists of a series of 
+Бандл-документ (type = "document") состоит из серии записей (entries), первой из которых будет <a href="composition.html">Composition</a>. Каждый элемент entry ДОЛЖЕН содержать ресурс. Дополнительную информацию см.  в <a href="documents.html">Documents</a>.
+<!-- A document bundle (type = "document") consists of a series of 
 entries, the first of which is a <a href="composition.html">Composition</a>. 
 Each entry element SHALL contain a resource. See <a href="documents.html">Documents</a>
-for further information.
+for further information. -->
 </p>
 
-<p><a href="document-example-dischargesummary.html">Example</a></p>
+<p><a href="document-example-dischargesummary.html">Пример</a></p>
 
 <a name="message"> </a>
-<h4>Message</h4>
+<h4>Тип Message<!-- Message --></h4>
 
 <p>
-A message bundle (type = "message") consists of a series of 
+Бандл-сообщение (type = "message") состоит из серии записей, первой из которых идет <a href="messageheader.html">MessageHeader</a>. Каждый элемент entry ДОЛЖЕН содержать ресурс. Дополнительную информацию см.  в <a href="messaging.html">Messaging</a>.
+<!-- A message bundle (type = "message") consists of a series of 
 entries, the first of which is a <a href="messageheader.html">MessageHeader</a>. 
 Each entry element SHALL contain a resource. See <a href="messaging.html">Messaging</a>
-for further information.
+for further information. -->
 </p>
 
 <p><!--<a href="query-example-request.html">Example</a>-->Example: todo</p>
 
 <a name="searchset"> </a>
-<h4>Search Results</h4>
+<h4>Результаты поиска (тип searchset)<!-- Search Results --></h4>
 
 <p>
-A set of search results (type = "searchset") consists of a series of 
+Набор результатов поиска (type = "searchset") состоит из серии из 0 или больше записей. Каждый элемент entry ДОЛЖЕН содержать ресурс. Дополнительную информацию см.  в <a href="http.html#search">Search</a>.
+<!-- A set of search results (type = "searchset") consists of a series of 
 0 or more entries. Each entry element SHALL contain a resource. See <a href="http.html#search">Search</a>
-for further information.
+for further information. -->
 </p>
 <p>
-In addition, <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> may be 
+Дополнительно можно использовать <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> для возвращения общего количества ресурсов, которые соответствуют критериям поиска, просмотр которых возможен с помощью перехода по <a href="bundle-definitions.html#Bundle.link">ссылке</a> "next".
+<!-- In addition, <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> may be 
 used to return the total number of resources that match the search, and that may be 
-returned by following the "next" <a href="bundle-definitions.html#Bundle.link">link</a>.
+returned by following the "next" <a href="bundle-definitions.html#Bundle.link">link</a>. -->
 </p>
 <p>
-For each entry, a search set can also contain two specific pieces of search related
-information:
+В каждом элементе entry в бандле типа searchset могут содержаться две особые порции данных, связанных с поиском:
+<!-- For each entry, a search set can also contain two specific pieces of search related
+information: -->
 </p>
 <ul>
- <li><a href="bundle-definitions.html#Bundle.entry.search.mode">search.mode</a>: An indication of whether the resource is in the search set because it matched the search criteria, or whether it is included because another resource refers to it (e.g. by the <a href="search.html#include">_include</a> parameter)</li>
- <li><a href="bundle-definitions.html#Bundle.entry.search.score">search.score</a>: The server's search ranking score for the entry. Servers are not required to return a ranking score, but if they do, 1 is most relevant, and 0 is least relevant. Note: often, search results are sorted by score, but the client may specify a different sort order (see <a href="search.html#score">Search Relevance</a></li>
+ <li><a href="bundle-definitions.html#Bundle.entry.search.mode">search.mode</a>: указание причины включения ресурса в результирующее множество: соответствует критериям поиска или включен, потому что другой ресурс ссылается на него (например с помощью параметра <a href="search.html#include">_include</a>)
+ <!-- <a href="bundle-definitions.html#Bundle.entry.search.mode">search.mode</a>: An indication of whether the resource is in the search set because it matched the search criteria, or whether it is included because another resource refers to it (e.g. by the <a href="search.html#include">_include</a> parameter) --></li>
+ <li><a href="bundle-definitions.html#Bundle.entry.search.score">search.score</a>: рейтинговая оценка поиска от сервера для этой записи. Серверам не обязательно возвращать рейтинговую оценку, но если они делают это, то 1 означает наиболее релевантную информацию, а 0 - наименее. Примечание: часто результаты поиска сортируются по рейтингу, однако клиент может указать другой порядок сортировки (см. <a href="search.html#score">Search Relevance</a>)
+ <!-- <a href="bundle-definitions.html#Bundle.entry.search.score">search.score</a>: The server's search ranking score for the entry. Servers are not required to return a ranking score, but if they do, 1 is most relevant, and 0 is least relevant. Note: often, search results are sorted by score, but the client may specify a different sort order (see <a href="search.html#score">Search Relevance</a> --></li>
 </ul>
 
-<p><a href="bundle-example.html">Example</a></p>
+<p><a href="bundle-example.html">Пример</a></p>
 
 <a name="history"> </a>
-<h4>History</h4>
+<h4>Тип History<!-- History --></h4>
 
 <p>
-An update history (type = "history") consists of a series of 
+История обновления (type = "history") состоит из серии из 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать элемент transaction, описывающий изменение, которое было сделано, и, если метод POST или PUT, ресурс, который представляет состояние ресурса по завершении операции. Дополнительную информацию см. в <a href="http.html#history">History</a>.
+<!-- An update history (type = "history") consists of a series of 
 0 or more entries. Each entry element SHALL contain a transaction element that describes the change
 that was made, and, if the method is a POST or PUT, a resource that represents the state of the 
 resource at the conclusion of the operation. 
-See <a href="http.html#history">History</a> for further information.
+See <a href="http.html#history">History</a> for further information. -->
 </p>
 <p>
-In addition, <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> may be 
+Дополнительно можно использовать <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> для возвращения общего количества ресурсов, которые были включены в историю обновления, и которые можно просмотреть, следуя по <a href="bundle-definitions.html#Bundle.link">ссылке</a> "next".
+<!-- In addition, <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> may be 
 used to return the total number of resources that are included in the update history, 
-and that may be returned by following the "next" <a href="bundle-definitions.html#Bundle.link">link</a>.
-</p>4
+and that may be returned by following the "next" <a href="bundle-definitions.html#Bundle.link">link</a>. -->
+</p>
 
 <p>Example to do</p>
 
 <a name="transaction"> </a>
-<h4>Transaction</h4>
+<h4>Тип Transaction<!-- Transaction --></h4>
 
 <p>
-A transaction (type = "transaction") consists of a series of 0 or more entries. Each entry element 
+Транзакция (type = "transaction") состоит из серии из 0 или более записей. Каждый элемент entry МОЖЕТ содержать элемент transaction, а также МОЖЕТ содержать элемент resource. Дополнительную информацию можно посмотреть в <a href="http.html#transaction">Transactions</a>. Каждая запись (entry) в транзакции содержит детали HTTP-операции, сообщающие системе, обрабатывающей эту транзакцию, что делать с этой записью. Если в записи указан метод 'PUT' или 'POST', тогда entry ДОЛЖНА содержать ресурс, который будет телом HTTP-операции.
+<!-- A transaction (type = "transaction") consists of a series of 0 or more entries. Each entry element 
 MAY contain a transaction element, and MAY contain either a resource element. 
 See <a href="http.html#transaction">Transactions</a> for further information.
 Each entry in a transaction has the details of an HTTP operation that informs the system 
 processing the transaction what to do with the entry. If the entry method is a 'PUT' or 
-'POST', then the entry SHALL contain a resource that becomes the body of the HTTP operation. 
+'POST', then the entry SHALL contain a resource that becomes the body of the HTTP operation.  -->
 </p>
 <p>
-If there is no <code>transaction</code> element, then there SHALL be a resource and the server must 
-infer whether this is a create or an update from from the resource identity supplied.
+Если в записи элемент <code>transaction</code> отсутствует, тогда она ДОЛЖНА содержать ресурс, а сервер должен сам сделать вывод, создание ли это или обновление, в зависимости от переданного идентификатора ресурса.
+<!-- If there is no <code>transaction</code> element, then there SHALL be a resource and the server must 
+infer whether this is a create or an update from from the resource identity supplied. -->
 </p>
 
-<p><a href="bundle-transaction.html">Example</a></p>
+<p><a href="bundle-transaction.html">Пример</a></p>
 
 <a name="transaction-response"> </a>
-<h4>Transaction Response</h4>
+<h4>Тип Transaction Response<!-- Transaction Response --></h4>
 
 <p>
-A transaction response (type = "transaction-response") consists of a series of 
+Ответ транзакции (type = "transaction-response") состоит из серии из 0 или более записей, по 1 записи на каждую запись в транзакции, к которой относится этот ответ. Каждый элемент entry ДОЛЖЕН содержать элемент <code>transactionResponse</code> с результатом выполнения HTTP-операции, выполненной сервером для этой записи.
+<!-- A transaction response (type = "transaction-response") consists of a series of 
 0 or more entries, 1 for each entry in the transaction it is in response to. 
 Each entry element SHALL contain a <code>transactionResponse</code> element which indicates 
-the outcome of the HTTP operation that the server performed for the entry. 
+the outcome of the HTTP operation that the server performed for the entry. --> 
 </p>
 
-<p><a href="bundle-response.html">Example</a></p>
+<p><a href="bundle-response.html">Пример</a></p>
 
 <a name="collection"> </a>
-<h4>Collection</h4>
+<h4>Тип Collection<!-- Collection --></h4>
 
 <p>
-A collection (type = "collection") consists of a series of 
+Коллекция (type = "collection") состоит из серии из 0 или более записей. С этим типом бандла не связано никакого определенного использования относительно FHIR-спецификации. Каждый элемент entry ДОЛЖЕН содержать ресурс.
+<!-- A collection (type = "collection") consists of a series of 
 0 or more entries. No particular use with respect to the FHIR specification is associated with this bundle.
-Each entry element SHALL contain a resource.
+Each entry element SHALL contain a resource. -->
 </p>
 
-<p><a href="diagnosticreport-examples.html">Example</a></p>
+<p><a href="diagnosticreport-examples.html">Пример</a></p>
 
 
 <a name="resolving"> </a>
