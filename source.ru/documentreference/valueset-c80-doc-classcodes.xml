@@ -29,12 +29,10 @@
    <concept>
     <code value="11369-6"/>
     <display value="History of Immunization"/>
-	<display:ru value="История иммунизаций"/>
    </concept>
    <concept>
     <code value="11485-0"/>
     <display value="Anesthesia records"/>
-	<display:ru value="Анестезиологическая карта"/>
    </concept>
    <concept>
     <code value="11486-8"/>
