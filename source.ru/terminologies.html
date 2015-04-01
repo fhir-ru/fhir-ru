@@ -284,21 +284,25 @@ will work together to choose actual working value sets.
 <!-- To be conformant, instances of this element SHALL include a code from the specified value set. --></i>.
 </p>
 <p>
-В стандарте это, как правило, используется для элементов, где значение должно строго контролироваться, чтобы все могли интерпретировать его с уверенностью. Обычно такой тип используется для элементов с типом <a href="datatypes.html#code">code</a>:
+В стандарте она, как правило, используется для элементов, где значение должно строго контролироваться, чтобы все могли интерпретировать его с уверенностью. Обычно такой тип используется для элементов с типом <a href="datatypes.html#code">code</a>:
 <!-- In the standard, this is generally used for elements where the value needs to be strictly controlled so that everyone 
 can interpret it with confidence. Generally, this is used for elements with type <a href="datatypes.html#code">code</a>:  -->
 </p>
 <ul>
- <li>the element is bound to a value set that contains a list of distinct codes with a specified system (and version, where required)</li>
- <li>the element is bound to some external standard that defines the set of valid codes that can be used (typical examples of references are <a href="http://www.rfc-editor.org/bcp/bcp13.txt">Mime Types</a>,
-<a href="http://tools.ietf.org/html/bcp47">Language Codes</a>, <a href="http://unitsofmeasure.org">UCUM</a>, etc.)</li>
+ <li>элемент связан с набором значений, который содержит список различных кодов из заданной системы (и версии, где это необходимо)
+ <!-- the element is bound to a value set that contains a list of distinct codes with a specified system (and version, where required) --></li>
+ <li>элемент связан с каким-то внешним стандартом, который определяет набор допустимых кодов, которые могут быть использованы (типичные примеры ссылок: <a href="http://www.rfc-editor.org/bcp/bcp13.txt">Mime Types</a>,
+<a href="http://tools.ietf.org/html/bcp47">Language Codes</a>, <a href="http://unitsofmeasure.org">UCUM</a>)
+ <!-- the element is bound to some external standard that defines the set of valid codes that can be used (typical examples of references are <a href="http://www.rfc-editor.org/bcp/bcp13.txt">Mime Types</a>,
+<a href="http://tools.ietf.org/html/bcp47">Language Codes</a>, <a href="http://unitsofmeasure.org">UCUM</a>, etc.) --></li>
 </ul> 
 <p>
-The other place where this is used is when <a href="profiling.html">profiling resources</a>, and there is agreement within a particular context of use
+Другое место, где это используется, это при <a href="profiling.html">профилировании ресурсов</a>, и когда есть соглашение для конкретного контекста использования, что конкретный набор кодов являются единственными, которые могут быть использованы. В этих случаях тип данных  должен содержать одно из значений из набора значений. Если тип данных <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, то одно из значений <i>coding</i> должно быть из указанного набора значений. Также может быть предоставлен <i>Text</i>, что всегда рекомендуется, но не является приемлемой заменой необходимого кода.
+<!-- The other place where this is used is when <a href="profiling.html">profiling resources</a>, and there is agreement within a particular context of use
 that a particular set of codes are the only ones that can be used. In these cases, the data type SHALL contain one of the 
 values in the value set. If the data type is <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, then one of 
 the <i>coding</i> valuws SHALL be from the specified value set. <i>Text</i> can be provided as well, and is always 
-recommended, but is not an acceptible substitute for the required code.
+recommended, but is not an acceptible substitute for the required code. -->
 </p>
 <p>
 Обратите внимание на дополнительные правила относительно обязательных привязок при использовании с типом данных <a href="datatypes.html#code">code</a>:
