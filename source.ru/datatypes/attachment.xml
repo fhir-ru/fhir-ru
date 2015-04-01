@@ -1045,7 +1045,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Human language of the content (BCP-47)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Естественный язык содержимого (BCP-47)<!-- Human language of the content (BCP-47) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">The human language of the content. The value can be any valid value according to BCP 47</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1112,7 +1112,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Uri where the data can be found</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Uri, по которому находятся данные<!-- Uri where the data can be found --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">An alternative location where the data can be accessed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

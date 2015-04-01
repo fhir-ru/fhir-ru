@@ -978,13 +978,14 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String"> Detailed information about conditions, problems or diagnoses</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Подробная информация о состояниях, проблемах или диагнозах<!-- Detailed information about conditions, problems or diagnoses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a Diagnosis during an Encounter; populating a problem List or a Summary Statement, such as a Discharge Summary</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Используйте для записи подробной информации о состояниях, проблемах или диагнозах, установленных клиницистом. Есть множество применений, включая: запись диагноза во время Encounter; заполнение списка проблем или сводного отчета, например выписного эпикриза<!-- Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a Diagnosis during an Encounter; populating a problem List or a Summary Statement, such as a Discharge Summary --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">* Age is questionable, you might well need a range of Age or even (in practice)&#10;&#10;a text like &quot;in their teens&quot;. =&gt; new ballot comment.&#10;&#10;* Todo: discuss the applicability of assessing stages&#10;&#10;* Change the description: it is circular</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">* Указание возраста сомнительно, вам может понадобиться диапазон возрастов или даже (на практике)&#10;&#10;текст наподобие &quot;в подростковом возрасте&quot;. =&gt; комментарий нового голосования.&#10;&#10;* Todo: обсудить применимость оценки стадий&#10;&#10;* Изменить описание: оно циклично<!-- 
+* Age is questionable, you might well need a range of Age or even (in practice)&#10;&#10;a text like &quot;in their teens&quot;. =&gt; new ballot comment.&#10;&#10;* Todo: discuss the applicability of assessing stages&#10;&#10;* Change the description: it is circular --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Observation[classCode=OBS, moodCode=EVN, code=ASSERTION, value&lt;Diagnosis]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1015,11 +1016,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">External Ids for this condition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешние идентификаторы для этого состояния<!-- External Ids for this condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This records identifiers associated with this condition that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сюда записываются идентификаторы, ассоциированные с этим состоянием и установленные в бизнес-процессе и/или используемые для ссылки на него, когда прямая URL-ссылка на сам ресурс не подходит (например в CDA-документах или в письменной/печатной документации)<!-- This records identifiers associated with this condition that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to allow connection to a wider workflow</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность связи с более широким рабочим процессом<!-- Need to allow connection to a wider workflow --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1050,9 +1051,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who has the condition?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Чье это состояние?<!-- Who has the condition? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the patient who the condition record is associated with</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает пациента, с которым связана эта запись состояния<!-- Indicates the patient who the condition record is associated with --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1086,9 +1087,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter when condition first asserted</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter, когда было впервые установлено состояние<!-- Encounter when condition first asserted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Encounter during which the condition was first asserted</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Encounter, во время которого состояние было впервые установлено<!-- Encounter during which the condition was first asserted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1121,9 +1122,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Person who asserts this condition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человек, который установил это состояние<!-- Person who asserts this condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Person who takes responsibility for asserting the existence of the condition as part of the electronic record</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, который берет на себя ответственность заявлять о наличии этого состояния в рамках электронной записи<!-- Person who takes responsibility for asserting the existence of the condition as part of the electronic record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1156,9 +1157,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When first detected/suspected/entered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда впервые было обнаружено/введено/начало подозреваться<!-- When first detected/suspected/entered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Estimated or actual date the condition/problem/diagnosis was first detected/suspected</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Расчетная или фактическая дата первого обнаружения/подозрения данного состояния/проблемы/диагноза<!-- Estimated or actual date the condition/problem/diagnosis was first detected/suspected --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1192,9 +1193,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identification of the condition, problem or diagnosis</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификация состояния, проблемы или диагноза<!-- Identification of the condition, problem or diagnosis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identification of the condition, problem or diagnosis. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификация состояния, проблемы или диагноза.<!-- Identification of the condition, problem or diagnosis.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1228,12 +1229,15 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">E.g. complaint | symptom | finding | diagnosis</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Например жалоба | симптом | данные исследования | диагноз<!-- 
+E.g. complaint | symptom | finding | diagnosis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A category assigned to the condition. E.g. complaint | symptom | finding | diagnosis</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Категория, присвоенная этому состоянию. Например жалоба | симптом | данные исследования | диагноз<!-- 
+A category assigned to the condition. E.g. complaint | symptom | finding | diagnosis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Эта классификация часто очень зависит от контекста и может оказаться слабо дифференцированной или не слишком полезной в других контекстах<!-- 
+The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
@@ -1303,12 +1307,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Degree of confidence</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Степень уверенности<!-- Degree of confidence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The degree of confidence that this condition is correct</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Степень уверенности, что это состояние верно<!-- The degree of confidence that this condition is correct --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May be a percentage</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может быть в процентах<!-- May be a percentage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.uncertaintyCode</Data><NamedCell
@@ -1340,12 +1344,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Subjective severity of condition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Субъективная оценка тяжести состояния<!-- Subjective severity of condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A subjective assessment of the severity of the condition as evaluated by the clinician.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Субъективная оценка тяжести состояния, оцененная клиницистом.<!-- A subjective assessment of the severity of the condition as evaluated by the clinician. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"> Coding of the severity with a terminology is preferred, where possible</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодирование оценки тяжести с помощью справочника будет предпочтительным, где это возможно<!-- Coding of the severity with a terminology is preferred, where possible --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Can be pre/post-coordinated into value.  Or&#10;./inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;severity&quot;].value</Data><NamedCell
@@ -1376,12 +1380,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Estimated or actual date,  date-time, or age</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Предполагаемая или фактическая дата, дата/время или возраст<!-- Estimated or actual date,  date-time, or age --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Estimated or actual date or date-time  the condition began, in the opinion of the clinician</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Предполагаемая или фактическая дата или дата/время начала состояния по мнению клинициста<!-- Estimated or actual date or date-time  the condition began, in the opinion of the clinician --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Age is generally used when the patient reports an age at which the Condition began to occur</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Возраст, как правило, используют, когда пациент сообщает возраст, в котором стало проявляться состояние<!-- Age is generally used when the patient reports an age at which the Condition began to occur --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.effectiveTime.low&#10;or&#10;.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;age at onset&quot;].value</Data><NamedCell
@@ -1413,12 +1417,14 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If/when in resolution/remission</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если/когда произошло разрешение/ремиссия<!-- If/when in resolution/remission --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date or estimated date that the condition resolved or went into remission. This is called &quot;abatement&quot; because of the many overloaded connotations associated with &quot;remission&quot; or &quot;resolution&quot; - Conditions are never really resolved, but they can abate.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата или предполагаемая дата разрешения состояния или перехода в ремиссию. Это названо &quot;abatement&quot; (уменьшение боли или выраженности симптома, ослабление боли или выраженности симптома, смягчение боли или выраженности симптома) из-за перегруженности терминов &quot;remission&quot; или &quot;resolution&quot; - состояния никогда по-настоящему не проходят, но могут быть улучшения.<!-- 
+The date or estimated date that the condition resolved or went into remission. This is called &quot;abatement&quot; because of the many overloaded connotations associated with &quot;remission&quot; or &quot;resolution&quot; - Conditions are never really resolved, but they can abate. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.&#10;&#10;If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Между resolution и remission нет явного различия, поскольку во многих случаях это различие маловразумительно. Возраст используется, как правило, когда пациент сообщает возраст, когда произошло улучшение состояния.&#10;&#10;Если элемент abatement отсутствует, то не известно, было ли разрешено состояние или перешло в ремиссию; приложения и пользователи, как правило, должны предполагать, что состояние все еще в силе<!-- 
+There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.&#10;&#10;If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.effectiveTime.high&#10;or&#10;.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;age at remission&quot;].value&#10;or&#10;.inboundRelationship[typeCode=SUBJ]source[classCode=CONC, moodCode=EVN].status=completed</Data><NamedCell
@@ -1446,9 +1452,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Stage/grade, usually assessed formally</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Стадия/степень, как правило, оценивается формально<!-- Stage/grade, usually assessed formally --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Clinical stage or grade of a condition. May include formal severity assessments</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Клиническая стадия или степень состояния. Может включать формальные оценки тяжести<!-- 
+Clinical stage or grade of a condition. May include formal severity assessments --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1481,9 +1488,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Simple summary (disease specific)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Простое заключение (для конкретных болезней)<!-- Simple summary (disease specific) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A simple summary of the stage such as &quot;Stage 3&quot;. The determination of the stage is disease-specific</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Простое заключение о стадии, например &quot;Stage 3&quot;. Установление стадии зависит от болезни<!-- 
+A simple summary of the stage such as &quot;Stage 3&quot;. The determination of the stage is disease-specific --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1515,13 +1523,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Formal record of assessment</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Официальная запись оценки<!-- Formal record of assessment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference to a formal record of the evidence on which the staging assessment is based</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на официальную запись основания, на котором основывается оценка стадии<!-- Reference to a formal record of the evidence on which the staging assessment is based --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">When an assessment resource / framework is developed, this will be changed from Any to something narrower</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Когда будет разработан ресурс/фреймворк для оценки, значение Any будет заменено на что-то более конкретное<!-- When an assessment resource / framework is developed, this will be changed from Any to something narrower --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.self</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1548,12 +1556,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Supporting evidence</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подтверждающие данные<!-- Supporting evidence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подтверждающие данные / проявления (болезни), на основании которых подозревается или подтверждается данное состояние<!-- Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Основания могут быть простым перечислением кодированных симптомов/проявлений или ссылками на наблюдения или официальные оценки, или и на то, и другое одновременно<!-- The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship[typeCode=SPRT].target[classCode=OBS, moodCode=EVN]</Data><NamedCell
@@ -1584,9 +1592,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Manifestation/symptom</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Проявление/симптом<!-- Manifestation/symptom --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A manifestation or symptom that led to the recording of this condition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Проявление или симптом, который привел к записи об этом состоянии<!-- A manifestation or symptom that led to the recording of this condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1618,9 +1626,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Supporting information found elsewhere</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вспомогательная информация из других источников<!-- Supporting information found elsewhere --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Links to other relevant information, including pathology reports</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылки на другую существенную информацию, в том числе патологические отчеты<!-- Links to other relevant information, including pathology reports --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1650,12 +1658,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Anatomical location, if relevant</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Анатомическое местоположение, если уместно<!-- Anatomical location, if relevant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The anatomical location where this condition manifests itself</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Анатомическое местоположение, в котором данное состояние проявляет себя<!-- The anatomical location where this condition manifests itself --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May be a summary code, or a reference to a very precise definition of the location, or both</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может быть кратким кодом или ссылкой на очень точное определение места, или и тем, и другим<!-- May be a summary code, or a reference to a very precise definition of the location, or both --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.targetBodySiteCode</Data><NamedCell
@@ -1686,12 +1694,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Location - may include laterality</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Местоположение - может включать латерализацию (указание стороны)<!-- Location - may include laterality --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code that identifies the structural location</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код структурного положения<!-- Code that identifies the structural location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May include laterality</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может включать латерализацию (указание стороны)<!-- May include laterality --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.self</Data><NamedCell
@@ -1722,9 +1730,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Precise location details</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание точного местоположения<!-- Precise location details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Detailed anatomical location information</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подробная информация об анатомическом местоположении<!-- Detailed anatomical location information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1754,12 +1762,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Causes for this Condition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Причины этого состояния<!-- Causes for this Condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Further conditions, problems, diagnoses, procedures or events or the substance that caused/triggered this Condition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содействующие (способствующие) состояния, проблемы, диагнозы, процедуры или события или вещество, которые стали причиной/вызвали это состояние<!-- Further conditions, problems, diagnoses, procedures or events or the substance that caused/triggered this Condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Although a condition may be caused by a substance, this is not intended to be used to record allergies/adverse reactions to substances</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Несмотря на то, что состояние может быть вызвано веществом, оно не предназначено для записи аллергических/нежелательных побочных реакций на вещества<!-- Although a condition may be caused by a substance, this is not intended to be used to record allergies/adverse reactions to substances --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.typeCode</Data><NamedCell
@@ -1792,9 +1800,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Relationship target by means of a predefined code</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Цель взаимосвязи с помощью предопределенного кода<!-- Relationship target by means of a predefined code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code that identifies the target of this relationship. The code takes the place of a detailed instance target</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, идентифицирующий цель этой взаимосвязи. Код заменяет подробный целевой экземпляр<!-- Code that identifies the target of this relationship. The code takes the place of a detailed instance target --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1827,9 +1835,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Relationship target resource</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс цели взаимосвязи<!-- Relationship target resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Target of the relationship </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Цель взаимосвязи<!-- Target of the relationship --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1860,9 +1868,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Precedent for this Condition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Прецедент этого состояния<!-- Precedent for this Condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Further conditions, problems, diagnoses, procedures or events or the substance that preceded this Condition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содействующие (способствующие) состояния, проблемы, диагнозы, процедуры или события или вещество, которые предшествовали этому состоянию<!-- Further conditions, problems, diagnoses, procedures or events or the substance that preceded this Condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1897,9 +1905,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Relationship target by means of a predefined code</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Цель взаимосвязи с помощью предопределенного кода<!-- Relationship target by means of a predefined code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code that identifies the target of this relationship. The code takes the place of a detailed instance target</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, идентифицирующий цель этой взаимосвязи. Код заменяет подробный целевой экземпляр<!-- Code that identifies the target of this relationship. The code takes the place of a detailed instance target --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1932,9 +1940,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Relationship target resource</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Целевой ресурс взаимосвязи<!-- Relationship target resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Target of the relationship </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Цель взаимосвязи<!-- Target of the relationship --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1966,9 +1974,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional information about the Condition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация о состоянии<!-- Additional information about the Condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация о состоянии. Это общая запись текстовых заметок/комментариев к описанию состояния, его диагноз и прогноз<!-- Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>

@@ -4465,7 +4465,7 @@ An event can further specialize the act inherent in the type, such as &#10;where
     <Cell ss:StyleID="s87"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">relatesto &amp; relation</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Combination of relation and relatesTo</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Комбинация из relation и relatesTo<!-- Combination of relation and relatesTo --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">description</Data></Cell>

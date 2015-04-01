@@ -382,7 +382,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ConformanceResourceStatus</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">The lifecycle status of a Value Set or Concept Map</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Статус жизненного цикла Value Set или Concept Map<!-- The lifecycle status of a Value Set or Concept Map --></Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s76"/>
     <Cell ss:Index="6" ss:StyleID="s76"><Data ss:Type="String">#conformance-resource-status</Data></Cell>

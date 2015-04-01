@@ -1078,9 +1078,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Structural Definition</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Структурное определение<!-- Structural Definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions, and constraints on resources and data types</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Определение FHIR-структуры. Данный ресурс используется для описания основных ресурсов, типов данных, определенных в FHIR, а также для описания расширений и ограничений на ресурсы и типы данных<!-- A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions, and constraints on resources and data types --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1114,11 +1114,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Literal URL used to reference this StructureDefinition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Буквальный URL, используемый для ссылки на этот профиль<!-- Literal URL used to reference this profile --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An absolute URL at which this StructureDefinition is (or will be) published, and which is used to reference this StructureDefinition in extension urls and tag values in operational FHIR systems</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Абсолютный URL, по которому этот StructureDefinition доступен (или будет опубликован), и который используется для ссылки на этот StructureDefinition в URL- и тег-значениях расширений в рабочих FHIR-системах<!-- An absolute URL at which this StructureDefinition is (or will be) published, and which is used to reference this StructureDefinition in extension urls and tag values in operational FHIR systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">So you can say, in a StructureDefinition, what the full extensions URLs should be. This is required to allow hosting StructureDefinitions on multiple different servers, and to allow for the editorial process</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Таким образом вы можете указать в StructureDefinition, какими должны быть полные URL-адреса расширений. Это требуется для размещения StructureDefinition на нескольких различных серверах и поддержки редакционного процесса<!-- So you can say, in a StructureDefinition, what the full extensions URLs should be. This is required to allow hosting StructureDefinitions on multiple different servers, and to allow for the editorial process --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1150,9 +1150,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Other identifiers for the StructureDefinition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Другие идентификаторы этого StructureDefinition <!-- Other identifiers for the StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Formal identifier that is used to identify this StructureDefinition when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Формальный идентификатор, который используется для идентификации этого StructureDefinition, когда он представлен в других форматах, или на него ссылаются в спецификации, модели, проекте или примере (должен быть глобально уникальным OID, UUID или URI), (если нет возможности использовать literal URI) <!-- Formal identifier that is used to identify this StructureDefinition when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">N/A</Data><NamedCell
@@ -1186,11 +1186,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Logical id for this version of the StructureDefinition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Логический идентификатор этой версии StructureDefinition <!-- Logical id for this version of the StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The identifier that is used to identify this version of the StructureDefinition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the StructureDefinition author manually</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, используемый для указания на эту версию StructureDefinition, когда на неё ссылаются в спецификации, модели, проекте или примере. Это произвольное значение, управляемое автором StructureDefinition вручную<!-- The identifier that is used to identify this version of the StructureDefinition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the StructureDefinition author manually --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">There may be multiple resource versions of the StructureDefinition that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может иметься несколько версий ресурсов этого StructureDefinition, имеющих одинаковый идентификатор. Идентификатор версии ресурса будет меняться по техническим причинам, тогда как заявленный номер версии должен быть под контролем автора<!-- There may be multiple resource versions of the StructureDefinition that have this same identifier. The resource version id will change for technical reasons, whereas the stated version number needs to be under the author's control --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">N/A</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1222,12 +1222,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Informal name for this StructureDefinition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Неформальное название этого StructureDefinition <!-- Informal name for this StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A free text natural language name identifying the StructureDefinition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольное текстовое название на естественном языке, идентифицирующее StructureDefinition <!-- A free text natural language name identifying the StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Not expected to be globally unique</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не требует глобальной уникальности<!-- Not expected to be globally unique --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1258,11 +1258,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Content intends to support these contexts</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Содержимое предназначено для поддержки следующих видов контекста<!-- Content intends to support these contexts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of structure definitions.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержимое разрабатывалось с фокусом на и поддержкой перечисленных видов контекста. Эти термины могут использоваться для содействия индексации и поиску структурных определений. <!-- The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of structure definitions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Assist in searching for appropriate content</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Содействует поиску подходящего контента<!-- Assist in searching for appropriate content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1295,12 +1295,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Use this name when displaying the value</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Используйте это название при отображении значения<!-- Use this name when displaying the value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Defined so that applications can use this name when displaying the value of the extension to the user </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определено для того, чтобы приложения могли использовать это название при отображения значения расширения пользователю<!-- Defined so that applications can use this name when displaying the value of the extension to the user  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Applications don't have to use this name, but can always fall back to it. In the absence of a value for this element, use the name</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Приложения не обязаны использовать это название, но всегда могут прибегнуть к нему. В случае отсутствия значения этого элемента используйте name<!-- Applications don't have to use this name, but can always fall back to it. In the absence of a value for this element, use the name --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1330,13 +1330,14 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of the publisher (Organization or individual)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя издателя (организации или частного лица)<!-- Name of the publisher (Organization or individual) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of the individual or organization that published the structure definition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя физического лица или организации, которая опубликовала данное структурное определение<!-- The name of the individual or organization that published the structure definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Helps establish the &quot;authority/credibility&quot; of the structure definition.  May also allow for contact</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает установить &quot;авторитет/надежность&quot; structure definition. Может также требоваться для контакта <!-- 
+Helps establish the &quot;authority/credibility&quot; of the structure definition.  May also allow for contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно организация, но может быть и частное лица. Этот элемент НЕОБХОДИМО заполнять, если только эта информация не вытекает из контекста.<!-- Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1365,12 +1366,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact details of the publisher</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактные данные издателя <!-- Contact details of the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contacts to assist a user in finding and communicating with the publisher</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные данные для помощи пользователю найти и вступить в контакт с издателем <!-- Contacts to assist a user in finding and communicating with the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May be a web site, an email address, a telephone number (tel:), etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может быть веб-сайтом, адресом электронной почты, телефонным номером (tel:) и т. п.<!-- May be a web site, an email address, a telephone number (tel:), etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1399,12 +1400,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of a individual to contact</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя контактного лица для связи<!-- Name of a individual to contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of an individual to contact regarding the structure definition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя контактного лица для связи насчет этого структурного определения<!-- The name of an individual to contact regarding the structure definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If there is no named individual, the telecom is for the organization as a whole</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если нет отдельного лица, то указываются контактные данные организации в целом<!-- If there is no named individual, the telecom is for the organization as a whole --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1433,9 +1434,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact details for individual or publisher</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация физического лица или издателя<!-- Contact details for individual or publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact details for individual (if a name was provided) or the publisher</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация физического лица (если было указано имя) или издателя<!-- Contact details for individual (if a name was provided) or the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1466,12 +1467,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Natural language description of the StructureDefinition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание StructureDefinition на естественном языке <!-- Natural language description of the StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A free text natural language description of the StructureDefinition and its use</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольное текстовое описание  StructureDefinition и его использования, на естественном языке <!-- A free text natural language description of the StructureDefinition and its use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This field can be used for things such as why the StructureDefinition was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the StructureDefinition as conveyed in StructureDefinition.text. This item SHOULD be populated unless the information is available from context.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это поле можно использовать для таких вещей, как почему этот StructureDefinition был создан, комментарии о неправильном использовании, инструкции для клинического применения и интерпретации, ссылки на литературу, примеры из печатных изданий и др. Это *не* та информация, которая передается в StructureDefinition.text. Этот элемент НЕОБХОДИМО заполнять, если только эта информация не доступна из контекста. 
+<!-- This field can be used for things such as why the StructureDefinition was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the StructureDefinition as conveyed in StructureDefinition.text. This item SHOULD be populated unless the information is available from context. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1500,12 +1502,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Scope and Usage this structure definition is for</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Область применения и использование этого структурного определения<!-- Scope and Usage this structure definition is for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Explains why this structure definition is needed and why it's been constrained as it has</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Объясняет, зачем необходимо это структурное определение и почему оно было ограничено таким образом<!-- Explains why this structure definition is needed and why it's been constrained as it has --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This element does not describe the usage of the structure definition (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В этом элементе не описывается применение структурного определения (это делается в комментариях), а отслеживается, *почему* этот элемент необходим или почему введены именно такие ограничения. Может использоваться для ссылки на исходные материалы или спецификации, которые повлияли на структуру этого элемента данных<!-- This element does not describe the usage of the structure definition (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1536,9 +1538,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Use and/or Publishing restrictions </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ограничения по использованию и/или публикации<!-- Use and/or Publishing restrictions --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A copyright statement relating to the structure definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Предупреждение об авторском праве на структурное определение. Предупреждения об авторских правах, как правило, являются правовыми ограничениями на использование и публикацию информации об ограничениях и мэппинге<!-- A copyright statement relating to the structure definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1571,11 +1573,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Assist with indexing and finding</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Содействует индексации и поиску <!-- Assist with indexing and finding --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A set of terms from external terminologies that may be used to assist with indexing and searching of templates.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Набор терминов из внешних справочников, который может оказывать помощь при индексации и поиске шаблонов.<!-- A set of terms from external terminologies that may be used to assist with indexing and searching of templates. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Assist in searching for appropriate StructureDefinitions</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает при поиске подходящих профилей<!-- Assist in searching for appropriate profiles --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1611,9 +1613,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">draft | active | retired</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the StructureDefinition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус StructureDefinition <!-- The status of the StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows filtering of StructureDefinitions that are appropriate for use vs. not</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию StructureDefinitions от неподходящих <!-- Allows filtering of StructureDefinitions that are appropriate for use vs. not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1645,11 +1647,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If for testing purposes, not real usage</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если для тестирования, а не реального применения<!-- If for testing purposes, not real usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This StructureDefinition was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Этот StructureDefinition был создан для тестирования (или обучения/оценки/маркетинга), и не предназначен для реального применения <!-- This StructureDefinition was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows filtering of StructureDefinitions that are appropriate for use vs. not</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию StructureDefinitions от неподходящих <!-- Allows filtering of StructureDefinitions that are appropriate for use vs. not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1681,9 +1683,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Date for this version of the StructureDefinition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата этой версии StructureDefinition <!-- Date for this version of the StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date that this version of the StructureDefinition was published</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата публикации этой версии StructureDefinition <!-- The date that this version of the StructureDefinition was published --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1714,12 +1716,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">FHIR Version this StructureDefinition targets</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Версия FHIR, которой соответствует этот StructureDefinition <!-- FHIR Version this StructureDefinition targets --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is $version$ for this version</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Версия спецификации FHIR, на которой основан этот StructureDefinition - это формальная версия спецификации без номера ревизии, например [publication].[major].[minor], это $version$ для этой версии <!-- The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is $version$ for this version --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A StructureDefinition does not need to specify the target it applies to,as StructureDefinitions will often be valid across multiple versions of FHIR. FHIR tooling can determine whether a StructureDefinition is consistent with a particular StructureDefinition if desired</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Нет необходимости указывать для StructureDefinition применяемую версию, так как StructureDefinition часто сохраняют силу на протяжении многих версий FHIR. При желании, инструментарий FHIR может определить, соответствует ли StructureDefinition конкретной версии <!-- A StructureDefinition does not need to specify the target it applies to,as StructureDefinitions will often be valid across multiple versions of FHIR. FHIR tooling can determine whether a StructureDefinition is consistent with a particular StructureDefinition if desired --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1746,9 +1748,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">External specification that the content is mapped to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешняя спецификация, с которой сопоставляется это содержимое<!-- External specification that the content is mapped to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An external specification that the content is mapped to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешняя спецификация, с которой сопоставляется это содержимое<!-- An external specification that the content is mapped to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1779,12 +1781,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Internal id when this mapping is used</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внутренний идентификатор, когда этот мэппинг используется<!-- Internal id when this mapping is used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An Internal id that is used to identify this mapping set when specific mappings are made</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внутренний идентификатор, который используется для идентификации этого набора мэппингов, когда делаются конкретные мэппинги <!-- An Internal id that is used to identify this mapping set when specific mappings are made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The specification is described once, with general comments, and then specific mappings are made that reference this declaration</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Спецификация объявляется один раз, с общими комментариями, и затем делаются конкретные мэппинги, которые ссылаются на эту декларацию<!-- The specification is described once, with general comments, and then specific mappings are made that reference this declaration --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1813,12 +1815,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifies what this mapping refers to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентифицирует, на что ссылается этот мэппинг<!-- Identifies what this mapping refers to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An absolute URI that identifies the specification that this mapping is expressed to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Абсолютный URI, идентифицирующий спецификацию, в которой выражен этот мэппинг <!-- An absolute URI that identifies the specification that this mapping is expressed to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A formal identity for the specification being mapped to helps with identifying maps consistently</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Формальный идентификатор этой спецификации, на которую делается мэппинг, помогающий единообразно  идентифицировать карты соответствия<!-- A formal identity for the specification being mapped to helps with identifying maps consistently --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1847,9 +1849,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Names what this mapping refers to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имена, на которые ссылается этот мэппинг<!-- Names what this mapping refers to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A name for the specification that is being mapped to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя спецификации, на которую делается мэппинг<!-- A name for the specification that is being mapped to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1879,9 +1881,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Versions, Issues, Scope limitations etc</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Версии, проблемы, ограничения области применения и др<!-- Versions, Issues, Scope limitations etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Комментарии к этому мэппингу, включая версионные примечания, вопросы, ограничения области применения и другие важные примечания к использованию<!-- Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1915,7 +1917,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">type | resource | constraint | extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Defines the type of structure that this definition is describing</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Задает тип структуры, которую описывает данное определение<!-- Defines the type of structure that this definition is describing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1946,12 +1948,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether the structure is abstract</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Является ли структура абстрактной<!-- Whether the structure is abstract --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether structure this definition describes is abstract or not  - that is, whether an actual exchanged item can ever be of this type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Является ли описываемая структура абстрактной или нет - то есть может ли фактический обмениваемый элемент вообще быть этого типа <!-- Whether structure this definition describes is abstract or not  - that is, whether an actual exchanged item can ever be of this type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Abstract Resources cannot be instantiated - a concrete sub-type must be used. Abstract datatypes and extensions cannot be used in an instance. Flagging a constraint structure as abstract conveys design intent but makes no difference to how the structure definition is handled. Note that inline declared elements that are given the type &quot;Element&quot; in the profile, but have children described, are anonymous concrete types that specialise Element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Абстрактные типы не могут использоваться в экземплярах - необходимо использовать конкретный подтип. Абстрактные типы данных и расширения нельзя использовать в экземплярах. Помечая структуру типа constraint как абстрактную, вы передаете замысел проектирования, однако это не дает информации о том, как обрабатывать это структурное определение. Обратите вниание, что объявленные инлайн элементы, которым назначен тип &quot;Element&quot; в профиле, но имеют описанных потомков, являются анонимными конкретными типами, специализирующими Element <!-- Abstract Resources cannot be instantiated - a concrete sub-type must be used. Abstract datatypes and extensions cannot be used in an instance. Flagging a constraint structure as abstract conveys design intent but makes no difference to how the structure definition is handled. Note that inline declared elements that are given the type &quot;Element&quot; in the profile, but have children described, are anonymous concrete types that specialise Element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1984,7 +1986,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">resource | datatype | mapping | extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If this is an extension, Identifies the context within FHIR resources where the extension can be used</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если это расширение, определяет контекст в пределах FHIR-ресурсов, в которых может использоваться это расширение <!-- If this is an extension, Identifies the context within FHIR resources where the extension can be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2016,12 +2018,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where the extension can be used in instances</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где это расширение может применяться в экземплярах<!--  Where the extension can be used in instances --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the types of resource or data type elements to which the extension can be applied</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет типы элементов ресурса или типа данных, к которым может применяться это расширение<!-- Identifies the types of resource or data type elements to which the extension can be applied --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not. Note that a context of &quot;string&quot; doesn't mean that the extension can be used with one of the string patterns such as &quot;id&quot; etc</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если контекстом выступает элемент, имеющий несколько типов на выбор, тогда используйте value[x], если расширение подходит для всех перечисленных типов, либо перечислите явно названия элементов, если нет. Обратите внимание, что контекст &quot;string&quot; не означает, что расширение может использоваться только с одним из строковых шаблонов. таких как &quot;id&quot; и т. п. <!-- If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not. Note that a context of &quot;string&quot; doesn't mean that the extension can be used with one of the string patterns such as &quot;id&quot; etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2051,12 +2053,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Structure that this set of constraints applies to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Структура, к которой применяется этот набор ограничений<!-- Structure that this set of constraints applies to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An absolute URI that is the base structure from which this set of constraints is derived </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Абсолютный URI базовой структуры, на которой строится данный набор ограничений <!-- An absolute URI that is the base structure from which this set of constraints is derived  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If differential constraints are specified in this structure, they are applied to the base in a &quot;differential&quot; fashion. If there is no base, then the differential constraints cannot be provided (snapshot only). Differential structures are useful for the editing perspective, and snapshot structures are suitable for operational use. The FHIR Project provides a number of tools/services to populate snaphots from differential constraints</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если в структуре указываются дифференциальные ограничения, они применяются к базе &quot;дифференциальным&quot; образом. Если нет базы, тогда невозможно задавать дифференциальные ограничения (только снапшоты). Дифференциальные структуры полезны в перспективе редактирования, а структуры-снапшоты подходят для эксплуатации. Проект FHIR предоставляет ряд инструментов/сервисов для восстановления снапшотов из дифференциальных ограничений<!-- If differential constraints are specified in this structure, they are applied to the base in a &quot;differential&quot; fashion. If there is no base, then the differential constraints cannot be provided (snapshot only). Differential structures are useful for the editing perspective, and snapshot structures are suitable for operational use. The FHIR Project provides a number of tools/services to populate snaphots from differential constraints --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2084,9 +2086,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Snapshot view of the structure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Структура в виде снапшота<!-- Snapshot view of the structure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A snapshot view is expressed in a stand alone form that can be used and interpreted without considering the base StructureDefinition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Структура в виде снапшота выражается в автономной форме, которая может использоваться и интерпретироваться без учета базового StructureDefinition <!-- A snapshot view is expressed in a stand alone form that can be used and interpreted without considering the base StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2118,9 +2120,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Definition of elements in the resource (if no StructureDefinition)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элементов в ресурсе (если нет StructureDefinition) <!-- Definition of elements in the resource (if no StructureDefinition) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Captures constraints on each element within the resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Собирает ограничения со всех элементов ресурса<!-- Captures constraints on each element within the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2152,9 +2154,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Differential view of the structure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дифференциальный вид структуры<!-- Differential view of the structure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дифференциальный вид выражается относительно базового StructureDefinition - это объявление различий, которые он применяет <!-- A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2184,9 +2186,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Definition of elements in the resource (if no StructureDefinition)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элементов в ресурсе (если нет StructureDefinition) <!-- Definition of elements in the resource (if no StructureDefinition) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Captures constraints on each element within the resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Собирает ограничения со всех элементов ресурса <!-- Captures constraints on each element within the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2217,9 +2219,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional Search params defined by this StructureDefinition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные параметры поиска, определенные этим StructureDefinition <!-- Additional Search params defined by this StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional search parameters defined for this structure that implementations can support and/or make use of</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительные параметры поиска, определенные для этой структуры, которые могут поддерживать и/или использовать реализаторы<!-- Additional search parameters defined for this structure that implementations can support and/or make use of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2251,11 +2253,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of search parameter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя параметра поиска<!-- Name of search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of the standard or custom search parameter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя стандартного или пользовательского параметра<!-- The name of the standard or custom search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Parameter names cannot overlap with standard parameter names, and standard parameters cannot be redefined</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Имена параметров не могут пересекаться с именами стандартных параметров, стандартные параметры не могут быть переопределены<!-- Parameter names cannot overlap with standard parameter names, and standard parameters cannot be redefined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2287,7 +2289,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">number | date | string | token | reference | composite | quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of value a search parameter refers to, and how the content is interpreted</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип значения, к которому относится параметр поиска, и как это содержимое интерпретируется<!-- The type of value a search parameter refers to, and how the content is interpreted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2317,9 +2319,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contents and meaning of search parameter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Содержимое и значение параметра поиска<!-- Contents and meaning of search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A specification for search parameters. For standard parameters, provides additional information on how the parameter is used in this solution.  For custom parameters, provides a description of what the parameter does</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Спецификация для параметров поиска. Для стандартных параметров предоставляет дополнительную информацию о том, как параметр используется в этом решении. Для пользовательских параметров предоставляет описание того, что этот параметр делает<!-- A specification for search parameters. For standard parameters, provides additional information on how the parameter is used in this solution.  For custom parameters, provides a description of what the parameter does --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2349,11 +2351,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath that extracts the parameter set</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath для извлечения этого набора параметров<!-- XPath that extracts the parameter set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An XPath expression that returns a set of elements for the search parameter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">XPath-выражение, возвращающее набор элементов для этого параметра поиска<!-- An XPath expression that returns a set of elements for the search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Note that the elements are sometimes complex elements where logic is required to determine quite how to handle them. E.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Обратите внимание, что эти элементы иногда являются комплексными, и для определения способа их обработки треубется логика. Например CodeableConcepts могут содержать текст и/или множество кодингов, где сами кодинги содержат код и систему<!-- Note that the elements are sometimes complex elements where logic is required to determine quite how to handle them. E.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2383,9 +2385,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Types of resource (if a resource reference)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Типы ресурсов (для ссылки на ресурс)<!-- Types of resource (if a resource reference) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Types of resource (if a resource is referenced)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Типы ресурсов (если это ссылка на ресурс)<!-- Types of resource (if a resource is referenced) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4554,7 +4556,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">StructureDefinition.snapshot</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Element paths must be unique - or not (LM)</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Пути элементов должны быть уникальными - либо нет (LM)<!-- Element paths must be unique - or not (LM) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(f:element) &gt;= count(distinct-values(f:element/f:path/@value))</Data><NamedCell
@@ -4566,7 +4568,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition.mapping</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Must have at a name or a uri (or both)</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Должен иметь name или uri (или оба) <!-- Must have at a name or a uri (or both) --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">exists(f:uri) or exists(f:name)</Data></Cell>
    </Row>
@@ -4576,7 +4578,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition.snapshot</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If a structure is a snapshot, then each element definition must have a formal definition, and cardinalities</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если структура является снапшотом, определение каждого элемента должно содержать формальное определение и кардинальное множество<!-- If a structure is a snapshot, then each element definition must have a formal definition, and cardinalities --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s110"><Data ss:Type="String">exists(f:base) or (count(f:element) = count(f:element[exists(f:definition) and exists(f:min) and exists(f:max)]))</Data></Cell>
    </Row>
@@ -4586,7 +4588,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A structure must have a base unless it’s type is 'abstract'</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Структура обязательно должна иметь базовую структуру, иначе ее тип будет 'abstract'<!-- A structure must have a base unless it’s type is 'abstract' --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">(f:type/@value = 'abstract') or f:base</Data></Cell>
    </Row>
@@ -4596,7 +4598,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If the type is 'extension' then the structure must have context information</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если тип 'extension', значит структура должна иметь информацию о контексте<!-- If the type is 'extension' then the structure must have context information --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">not(f:type/@value = 'extension') or (f:context and f:contextType)</Data></Cell>
    </Row>
@@ -4606,7 +4608,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A structure must have either a differential, or a snapshot (or both)</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Структура должна иметь либо дифференциал, либо снапшот (либо оба)<!-- A structure must have either a differential, or a snapshot (or both) --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">f:snapshot or f:differential</Data></Cell>
    </Row>
@@ -4616,7 +4618,8 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If the type is Resource or Type, the url has to start with &quot;http://hl7.org/fhir/StructureDefinition/&quot; and the tail must match the name</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если типом является Resource или Type, url должен начинаться с &quot;http://hl7.org/fhir/StructureDefinition/&quot; и заканчиваться именем<!-- 
+If the type is Resource or Type, the url has to start with &quot;http://hl7.org/fhir/StructureDefinition/&quot; and the tail must match the name --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">not(f:type/@value=('Resource', 'Type')) or f:url/@value=concat('http://hl7.org/fhir/StructureDefinition/', f:name/@value)</Data></Cell>
    </Row>
@@ -4626,7 +4629,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">In any snapshot or differential, all the elements except the first have to have a path that starts with the path of the first + &quot;.&quot;</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">В любом снапшоте или дифференциале все элементы за исключением первого имеют путь, начинающийся с пути первого элемента + &quot;.&quot;<!-- In any snapshot or differential, all the elements except the first have to have a path that starts with the path of the first + &quot;.&quot; --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s109"><Data ss:Type="String">string-join(for $elementName in f:*[self::f:snapshot or self::f:differential]/f:element[position()&gt;1]/f:path/@value return if (starts-with($elementName, concat($elementName/ancestor::f:element/parent::f:*/f:element[1]/f:path/@value, '.'))) then '' else $elementName,'')=''</Data></Cell>
    </Row>
@@ -5124,63 +5127,63 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">StructureDefinition.identifier</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The identifier of the profile</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Идентификатор профиля <!-- The identifier of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.version</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The version identifier of the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String"> Идентификатор версии профиля <!-- The version identifier of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">name</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.name</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Name of the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Имя профиля <!-- Name of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">publisher</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.publisher</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Name of the publisher of the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Имя издателя профиля <!-- Name of the publisher of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.description</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search in the description of the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по описанию профиля <!-- Text search in the description of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The current status of the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текущий статус профиля <!-- The current status of the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.date</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The profile publication date</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Дата публикации профиля <!-- The profile publication date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.code</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A code for the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Код профиля <!-- A code for the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">valueset</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.snapshot.element.binding.valueSet[x]</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A vocabulary binding reference</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Ссылка на привязку к словарю <!-- A vocabulary binding reference --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
@@ -5194,7 +5197,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">StructureDefinition.snapshot.element.path | StructureDefinition.differential.element.path </Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A path that is constrained in the profile</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Путь, который ограничивается в профиле<!-- A path that is constrained in the profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">context</Data></Cell>
@@ -5564,11 +5567,13 @@
     <Cell ss:StyleID="s120"><Data ss:Type="String">operation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s120"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Build Questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Создать вопросник (Questionnaire) <!-- Build Questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Generates a [[[Questionnaire]]] instance  based on a specified [[[StructureDefinition]]], creating questions for each core element or extension element found in the StructureDefinition.  &#10;&#10;If the operation is not called at the instance level, one of the *identifier*, *profile* or *url* 'in' parameters must be provided.  (If called at the instance level, these parameters will be ignored.  If more than one is specified, servers may raise an error or may resolve with the parameter of their choice.)&#10;&#10;The response will contain a [[[Questionnaire]]] instance based on the specified [[[StructureDefinition]]] and/or an [[[OperationOutcome]]] resource with errors or warnings.&#10;&#10;Nested groups are used to handle complex structures and data types.  If the 'supportedOnly' parameter is set to true, only those elements marked as &quot;must support&quot; will be included.&#10;&#10;This operation is intended to enable auto-generation of simple interfaces for arbitrary profiles.  The 'questionnaire' approach to data entry has limitations that will make it less optimal than custom-defined interfaces.  However, this function may be useful for simple applications or for systems that wish to support &quot;non-core&quot; resources with minimal development effort.</Data><NamedCell
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Генерирует экземпляр вопросника [[[Questionnaire]]] на основе указанного профиля [[[StructureDefinition]]], создавая вопросы для каждого основного элемента или элемента расширения, найденные в StructureDefinition.  &#10;&#10;Если эта операция вызывается не на уровне экземпляра, необходимо указать один из входных ('in') параметров *identifier*, *profile* или *url*. (Если вызывается на уровне экземпляра, эти параметры будут игнорироваться. Если указано более одного, серверы могут вызвать ошибку или выполнить с параметром на свой выбор.)&#10;&#10;Ответ будет содержать экземпляр вопросника [[[Questionnaire]]] на основе указанного профиля [[[StructureDefinition]]] и/или ресурс [[[OperationOutcome]]] с ошибками и предупреждениями.&#10;&#10;Вложенные группы используются для обработки сложных структур и типов данных. Если параметр 'supportedOnly' установлен в значение true, будут включены только элементы, помеченные как &quot;must support&quot;.&#10;&#10;Эта операция предназначена дать возможность автогенерации простых интерфейсов для произвольных профилей. Этот подход с вопросниками 'questionnaire' к вводу данных имеет ограничения, которые сделают его менее оптимальным, чем пользовательские интерфейсы. Однако эта функция может быть полезна для простых приложений или для систем, которые хотят поддержать &quot;non-core&quot; ресурсы с минимальными усилиями разработчиков.<!-- 
+Generates a [[[Questionnaire]]] instance  based on a specified [[[StructureDefinition]]], creating questions for each core element or extension element found in the StructureDefinition.  &#10;&#10;If the operation is not called at the instance level, one of the *identifier*, *profile* or *url* 'in' parameters must be provided.  (If called at the instance level, these parameters will be ignored.  If more than one is specified, servers may raise an error or may resolve with the parameter of their choice.)&#10;&#10;The response will contain a [[[Questionnaire]]] instance based on the specified [[[StructureDefinition]]] and/or an [[[OperationOutcome]]] resource with errors or warnings.&#10;&#10;Nested groups are used to handle complex structures and data types.  If the 'supportedOnly' parameter is set to true, only those elements marked as &quot;must support&quot; will be included.&#10;&#10;This operation is intended to enable auto-generation of simple interfaces for arbitrary profiles.  The 'questionnaire' approach to data entry has limitations that will make it less optimal than custom-defined interfaces.  However, this function may be useful for simple applications or for systems that wish to support &quot;non-core&quot; resources with minimal development effort. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s132"><Data ss:Type="String">**Open Issue**: Ideally, extensions should be populated in the generated [[[Questionnaire]]] that will support taking [[[QuestionnaireAnswers]]] resources generated from the Questionnaire and turning them back into the appropriate resources.</Data><NamedCell
+    <Cell ss:StyleID="s129"><Data ss:Type="String">**Открытый вопрос**: В идеале, расширения должны заполняться в сгенерированном вопроснике [[[Questionnaire]]], который будет поддерживать принятие ресурсов [[[QuestionnaireAnswers]]], сгенерированных из этого вопросника и возвращать их обратно в соответствующие ресурсы.<!-- 
+**Open Issue**: Ideally, extensions should be populated in the generated [[[Questionnaire]]] that will support taking [[[QuestionnaireAnswers]]] resources generated from the Questionnaire and turning them back into the appropriate resources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -5579,7 +5584,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">A logical profile identifier (i.e. 'StructureDefinition.identifier''). The server must know the profile or be able to retrieve it from other known repositories.</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Логический идентификатор профиля (т. е. 'StructureDefinition.identifier'). Сервер должен знать этот профиль или иметь возможность извлекать его из других известных репозиториев.<!-- A logical profile identifier (i.e. 'StructureDefinition.identifier''). The server must know the profile or be able to retrieve it from other known repositories. --></Data></Cell>
     <Cell ss:StyleID="s135"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -5590,7 +5595,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">The [[[StructureDefinition]]] is provided directly as part of the request. Servers may choose not to accept profiles in this fashion</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">[[[StructureDefinition]]] указывается непосредственно в рамках запроса. Серверы могут выбрать не принимать профили, переданные таким образом<!-- The [[[StructureDefinition]]] is provided directly as part of the request. Servers may choose not to accept profiles in this fashion --></Data></Cell>
     <Cell ss:StyleID="s135"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -5601,7 +5606,8 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">The profile's official url (i.e. 'StructureDefinition.url'). The server must know the profile or be able to retrieve it from other known repositories.</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Официальный url профиля (т. е. 'StructureDefinition.url'). Сервер должен знать этот профиль или иметь возможность извлекать его из других известных репозиториев.<!-- 
+The profile's official url (i.e. 'StructureDefinition.url'). The server must know the profile or be able to retrieve it from other known repositories. --></Data></Cell>
     <Cell ss:StyleID="s135"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -5612,7 +5618,8 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">If true, the questionnaire will only include those elements marked as &quot;mustSupport='true'&quot; in the StructureDefinition.</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Если имеет значение true, вопросник будет включать только элементы, отмеченные в StructureDefinition как &quot;mustSupport='true'&quot;.<!-- 
+If true, the questionnaire will only include those elements marked as &quot;mustSupport='true'&quot; in the StructureDefinition. --></Data></Cell>
     <Cell ss:StyleID="s135"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -5623,7 +5630,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">Questionnaire</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">The questionnaire form generated based on the StructureDefinition.</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Форма вопросника, сгенерированная на основе этого StructureDefinition.<!-- The questionnaire form generated based on the StructureDefinition. --></Data></Cell>
     <Cell ss:StyleID="s135"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -7470,7 +7477,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">StructureDefinitionType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Defines the type of structure that a definition is describing</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Задает тип структуры, которую описывает определение<!-- Defines the type of structure that a definition is describing --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#structure-definition-type</Data></Cell>
@@ -7485,7 +7492,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">ExtensionContext</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">How an extension context is interpreted</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Как интерпретируется контекст расширения<!-- How an extension context is interpreted --></Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">#extension-context</Data></Cell>
