@@ -48,20 +48,23 @@
 </table>
 
 <p>
-Note:  <i>System</i> values are always case sensitive. Different code systems make their own
+Примечание: значения для <i>System</i> всегда чувствительны к регистру. Различные кодовые системы вводят свои правила касательно того, чувствительны ли к регистру коды, которые они определяют, или нет. Обратите внимание, что все коды, определяемые самим FHIR, чувствительны к регистру и ДОЛЖНЫ использоваться в том виде, в котором приводятся в спецификации (как правило, но не всегда, в нижнем регистре).
+<!-- Note:  <i>System</i> values are always case sensitive. Different code systems make their own
 rules as to whether the codes they define are case sensitive or not. Note that all the
 codes defined by FHIR itself are case sensitive and SHALL be used in the provided case
-(usually, but not always, lowercase).
+(usually, but not always, lowercase). -->
 </p>
 
 <a name="strings"> </a>
-<h3>Binding String Values</h3>
+<h3>Привязки для строковых значений<!-- Binding String Values --></h3>
 <p>
-In a few special cases, humans customarily use codes directly for elements that have type "string". A typical case is codes for states,
+В некоторых особых случаях люди обычно используют коды непосредственно для элементов, имеющих тип "string". Типичным примером являются коды штатов,
+и есть несколько мест, где URI должен браться из набора контролируемых значений. Элемент типа <a href="datatypes.html#string">string</a> или <a href="datatypes.html#uri">uri</a> также может быть привязан к набору значений. Когда строка или URI привязаны к набору значений, свойство value ДОЛЖНО содержать  код, предусмотренный в наборе значений, а значения свойств "system" и "display" игнорируются.
+<!-- In a few special cases, humans customarily use codes directly for elements that have type "string". A typical case is codes for states,
 adnd there are several places where a URIs must come from a set of controlled values. 
 An element of type <a href="datatypes.html#string">string</a> or <a href="datatypes.html#uri">uri</a> can also be bound to a value set. 
 When a string or uri is bound to a value set, the value property SHALL contain the code specified by the value set, and the system 
-and display values are ignored. 
+and display values are ignored.  -->
 </p>
 
 <h2>Контроль за использованием кодированных значений</h2>
@@ -86,50 +89,58 @@ LOINC code betrays its origin.
 В FHIR кодированные пары (Code Pairs) всегда представляются в виде пары "code" и "system", за исключением простого <a href="datatypes.html#code">типа данных "code"</a>, в котором пространство имён (например элемент/свойство system) фиксировано в схеме и не представляется явно.
 </p>
 <p>
-This means that in FHIR, the URL in a system element is always a reference to a code system, not to a value set.
+Это означает, что в FHIR URL в элементе "system" всегда является ссылкой на кодовую систему, а не на набор значений.
+<!-- This means that in FHIR, the URL in a system element is always a reference to a code system, not to a value set. -->
 </p>
 <p>
-When an element is bound to a value set, the binding has these properties:
+Когда у элемента есть привязка к набору значений, у элемента "binding" могут быть следующие свойства: 
+<!-- When an element is bound to a value set, the binding has these properties: -->
 </p>
 <table class="grid">
- <tr><td>Name</td><td>A descriptive name used when presenting information about the binding</td></tr>
- <tr><td>Strength</td><td>How the binding should be understood - see below</td></tr>
- <tr><td>Reference</td><td>A URL that defines the value set. Usually, this is a direct reference to a <a href="valueset.html">ValueSet</a> resource, but can be a more indirect reference, where the value set is inferred</td></tr>
- <tr><td>Description</td><td>A text description of the use of the codes. If there is no reference, this must be populated. When there is a reference, this can be used to make additional notes about the use and implementation of the value set</td></tr>
+ <tr><td>Name</td><td>Описательное имя, используемое при показе информации о привязке<!-- A descriptive name used when presenting information about the binding --></td></tr>
+ <tr><td>Strength</td><td>Как следует понимать эту привязку - см. ниже<!-- How the binding should be understood - see below --></td></tr>
+ <tr><td>Reference</td><td>URL набора значений. Как правило, это прямая ссылка на ресурс <a href="valueset.html">ValueSet</a>, но может быть и непрямой ссылкой, подразумевающей набор значений<!-- A URL that defines the value set. Usually, this is a direct reference to a <a href="valueset.html">ValueSet</a> resource, but can be a more indirect reference, where the value set is inferred --></td></tr>
+ <tr><td>Description</td><td>Текстовое описание использования кодов. Если элемент "reference" не заполнен, элемент "description" должен быть заполнен обязательно. Если элемент "reference" заполнен, то в "description" можно поместить дополнительные заметки по использованию и реализации набора значений<!-- A text description of the use of the codes. If there is no reference, this must be populated. When there is a reference, this can be used to make additional notes about the use and implementation of the value set --></td></tr>
 </table>
 <p>
-In the FHIR declarative datatypes, a binding is always represented using an <a href="elementdefinition-definitions.html#ElementDefinition.binding">ElementDefinition,binding</a>.
+В декларативных типах данных FHIR привязка всегда оформляется с помощью <a href="elementdefinition-definitions.html#ElementDefinition.binding">ElementDefinition.binding</a>.
+<!-- In the FHIR declarative datatypes, a binding is always represented using an 
+<a href="elementdefinition-definitions.html#ElementDefinition.binding">ElementDefinition,binding</a>. -->
 </p>
 
 <a name="references"> </a>
 
 <h3>Value Set References</h3>
 <p>
-There are a number of places in the specification where value sets are referenced in order to bind a coded value to a value set:
+В спецификации есть много мест, где используются ссылки на наборы значений для привязки кодированного значения к набору значений (value set):
+<!-- There are a number of places in the specification where value sets are referenced in order to bind a coded value to a value set: -->
 </p>
 <table class="grid">
- <tr><td><a href="elementdefinition.html">ElementDefinition</a>.binding.valueSet[x]</td><td>Used to bind a defined element to a value set</td></tr>
- <tr><td><a href="conceptmap.html">ConceptMap</a>.source[x] and .target[x]</td><td>used to indicate the scope of the mapping in the Concept Map - from one value set to another</td></tr>
- <tr><td><a href="questionnaire.html">Questionnaire</a>.group.question.options</td><td>Indicates that answers to a set of questions come from a value set</td></tr>
- <tr><td><a href="valueset.html">ValueSet</a>.compose.import</td><td>The content of a value set includes the content in the imported value set too</td></tr>
- <tr><td><a href="extension-valueset-reference.html">ValueSet Reference Extension</a></td><td>Indicates that a particular coded value was chosen from the specified value set</td></tr>
+ <tr><td><a href="elementdefinition.html">ElementDefinition</a>.binding.valueSet[x]</td><td>Используется для привязки заданного элемента к набору значений<!-- Used to bind a defined element to a value set --></td></tr>
+ <tr><td><a href="conceptmap.html">ConceptMap</a>.source[x] and .target[x]</td><td>используется для указания области действия мэппинга в Concept Map - из одного набора значений в другой<!-- used to indicate the scope of the mapping in the Concept Map - from one value set to another --></td></tr>
+ <tr><td><a href="questionnaire.html">Questionnaire</a>.group.question.options</td><td>Обозначает, что ответы на ряд вопросов нужно брать из набора значений<!-- Indicates that answers to a set of questions come from a value set --></td></tr>
+ <tr><td><a href="valueset.html">ValueSet</a>.compose.import</td><td>Содержимое набора значений также включает в себя содержимое импортированного набора значений<!-- The content of a value set includes the content in the imported value set too --></td></tr>
+ <tr><td><a href="extension-valueset-reference.html">ValueSet Reference Extension</a></td><td>Обозначает, что конкретное кодированное значение было выбрано из указанного набора значений<!-- Indicates that a particular coded value was chosen from the specified value set --></td></tr>
 </table>
 <p>
-There are two types of value set references in this list, direct and logical. 
+В этом списке используются два типа ссылок на наборы значений, прямые и логические.
+<!-- There are two types of value set references in this list, direct and logical.  -->
 </p>
 
 <a name="direct"> </a>
-<h4>Direct Value Set references</h4>
+<h4>Прямые ссылки на наборы значений<!-- Direct Value Set references --></h4>
 <p>
-A direct value set reference has the type <a href="references.html#Reference">Reference</a>, 
+Прямая ссылка на набор значений имеет тип <a href="references.html#Reference">Reference</a> и ссылается непосредственно на ValueSet на основе URL, как правило, на терминологический сервер с <a href="http.html">FHIR RESTful API</a>. При обращении к набору значений по такому типу ссылки, система должна получить доступ непосредственно к URL (после конвертации относительной ссылки в абсолютную ссылку в соответствии с локальным контекстом). Если этот процесс не удается, система не в состоянии разрешить ссылку на набор значений и должна соответствующим образом обработать ошибку.
+<!-- A direct value set reference has the type <a href="references.html#Reference">Reference</a>, 
 and refers directly to a ValueSet based on a URL, usually to a terminology server running
 a <a href="http.html">FHIR RESTful API</a>. When accessing a value set based on this kind of reference, a system should
 access the URL directly (after converting a relative reference to an absolute reference
 according to the local context). If this process fails, the system is unable to resolve
-the value set and must handle the error appropriately. 
+the value set and must handle the error appropriately.  -->
 </p>
 <p>
-Example:
+Пример:
+<!-- Example: -->
 </p>
 <pre>
 GET fhir/Questionnaire/234
@@ -267,13 +278,15 @@ will work together to choose actual working value sets.
 <a name="required"> </a>
 <a name="simple"> </a>
 <a name="code"> </a>
-<h3>Required</h3>
+<h3>Тип Required (обязательная привязка)<!-- Required --></h3>
 <p>
-<i>To be conformant, instances of this element SHALL include a code from the specified value set.</i>.
+<i>Чтобы считаться совместимыми, экземпляры этого элемента ДОЛЖНЫ включать код из указанного набора значений.
+<!-- To be conformant, instances of this element SHALL include a code from the specified value set. --></i>.
 </p>
 <p>
-In the standard, this is generally used for elements where the value needs to be strictly controlled so that everyone 
-can interpret it with confidence. Generally, this is used for elements with type <a href="datatypes.html#code">code</a>: 
+В стандарте это, как правило, используется для элементов, где значение должно строго контролироваться, чтобы все могли интерпретировать его с уверенностью. Обычно такой тип используется для элементов с типом <a href="datatypes.html#code">code</a>:
+<!-- In the standard, this is generally used for elements where the value needs to be strictly controlled so that everyone 
+can interpret it with confidence. Generally, this is used for elements with type <a href="datatypes.html#code">code</a>:  -->
 </p>
 <ul>
  <li>the element is bound to a value set that contains a list of distinct codes with a specified system (and version, where required)</li>
@@ -288,8 +301,8 @@ the <i>coding</i> valuws SHALL be from the specified value set. <i>Text</i> can 
 recommended, but is not an acceptible substitute for the required code.
 </p>
 <p>
-Обратите внимание на дополнительные правила относительно этих кодов:
-Note the following additional rules about required bindings when used with the <a href="datatypes.html#code">code</a> data type:
+Обратите внимание на дополнительные правила относительно обязательных привязок при использовании с типом данных <a href="datatypes.html#code">code</a>:
+<!-- Note the following additional rules about required bindings when used with the <a href="datatypes.html#code">code</a> data type: -->
 </p>
 <ul>
  <li>Там, где набор значений определен стандартом FHIR, список допустимых кодов будет зафиксирован  в XML-схеме
@@ -300,90 +313,109 @@ Note the following additional rules about required bindings when used with the <
 </li>
 </ul>
 <p>
-When an element is bound to a required value set, <a href="profiling.html">derived profiles</a> 
-may state rules on which codes can be used, but cannot define new or additional codes for these elements.
+Когда элемент привязан к обязательному набору значений, <a href="profiling.html">производные профили</a> могут устанавливать правила использования этих кодов, но не могут определять новые или дополнительные коды для этих элементов.
+<!-- When an element is bound to a required value set, <a href="profiling.html">derived profiles</a> 
+may state rules on which codes can be used, but cannot define new or additional codes for these elements. -->
 </p>
 
 <a name="extensible"> </a>
-<h3>Extensible</h3>
+<h3>Тип Extensible (расширяемая привязка)<!-- Extensible --></h3>
 <p>
-<i>To be conformant, instances of this element SHALL include a code from the specified value set if any of the codes within the value set 
+<i>Чтобы считаться совместимыми, экземпляры этого элемента ДОЛЖНЫ включать код из указанного набора значений, если хоть один из кодов в наборе значений подходит к передаваемому концепту. Если набор значений не покрывает этот концепт (с точки зрения человека), вместо него можно использовать альтернативный system.code.
+<!-- To be conformant, instances of this element SHALL include a code from the specified value set if any of the codes within the value set 
 can apply to the concept being communicated.  If the valueset does not cover the concept (based on human review), an alternate 
-system.code may be used instead.</i>
+system.code may be used instead. --></i>
 </p>
 <p>
-If the data type is <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, then one of the <i>coding</i> values SHALL
-be from the specified value set if a code applies, but if no suitable code can be found, text may provided in its place.
+Если тип данных <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, тогда одно из значений <i>coding</i> ДОЛЖНО быть из указанного набора значений, если код подходит, но если подходящий код отсутствует, вместо него можно указать текст.
+<!-- If the data type is <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, then one of the <i>coding</i> values SHALL
+be from the specified value set if a code applies, but if no suitable code can be found, text may provided in its place. -->
 </p>
 <p>
-Extensible bindings are used when there is consensus at the specification or profiling level about the coded values
+Расширяемые привязки используются, когда имеется соглашение на уровне спецификации или профилировании о кодированных значениях, которые следует использовать, но невозможно создать ограниченный список кодов, который покроет все возможные случаи использования, в том числе те, что ещё возникают.
+<!-- Extensible bindings are used when there is consensus at the specification or profiling level about the coded values
 that should be used, but it is impossible to create a bounded list of codes that a known to cover all 
-use cases, including one that are yet to arise.  
+use cases, including one that are yet to arise.   -->
 </p>
 <p>
-When an element is bound to an extensible value set, <a href="profiling.html">derived profiles</a> 
+Когда элемент привязан к расширяемому набору значений, <a href="profiling.html">производные профили</a> могут устанавливать правила использования этих кодов, но не могут определять новые или дополнительные коды для этих элементов, если только в базовом наборе значений не отсутствуют коды с подходящим значением.
+<!-- When an element is bound to an extensible value set, <a href="profiling.html">derived profiles</a> 
 may state rules on which codes can be used, but cannot define new or additional codes for these elements
-unless no codes with appropriate meanings are found in the base value set.
+unless no codes with appropriate meanings are found in the base value set. -->
 </p>
 
 <a name="preferred"> </a>
-<h3>Preferred</h3>
+<h3>Привязки типа Preferred (предпочтительная привязка)<!-- Preferred --></h3>
 <p>
-<i>Instances are encouraged to draw from the specified codes for interoperability purposes but 
-are not required to do so to be considered conformant.</i>
+<i>Поощряется брать значения из указанных кодов в целях совместимости, но это не обязательное требование совместимости.<!-- Instances are encouraged to draw from the specified codes for interoperability purposes but 
+are not required to do so to be considered conformant. --></i>
 </p>
 <p>
-If the data type is <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, then one of the <i>coding</i> values SHOULD
-be from the specified value set, but another code and/or text can be used in its place.
+Если тип данных <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, тогда одно из значений <i>coding</i> ДОЛЖНО быть из указанного набора значений, однако другой код и/или текст также может быть использован взамен.
+<!-- If the data type is <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, then one of the <i>coding</i> values SHOULD
+be from the specified value set, but another code and/or text can be used in its place. -->
 </p>
 <p>
-Preferred bindings are used when there is consensus at the specification level about the coded values
+Предпочтительные привязки используются, когда есть консенсус на уровне спецификации о кодированных значениях, которые лучше использовать, но есть осознание того, что в некоторых контекстах реализации рекомендуемые коды не могут быть использованы по различным причинам. Приложения должны рассматривать вопрос о применении предпочтительного набора значений везде, где это возможно, так как эти предпочтительные наборы значений  скорее всего послужат целям совместимости в будущем.
+<!-- Preferred bindings are used when there is consensus at the specification level about the coded values
 that are the best to be used, but there is recognition that some implementation contexts are unable
 to use the recommended codes for a variety of reasons. Applications should consider adopting the 
 preferred value set where ever possible, as these preferred value sets are the most likely to 
-server interoperability purposes in the future. 
+server interoperability purposes in the future.  -->
 </p>
 <p>
-When an element is bound to a preferred value set, <a href="profiling.html">derived profiles</a> 
-may bind the element to any value set they choose.
+Когда элемент привязан к предпочтительному набору значений, <a href="profiling.html">производные профили</a> могут привязывать этот элемент к любому набору значений на свой выбор.
+<!-- When an element is bound to a preferred value set, <a href="profiling.html">derived profiles</a> 
+may bind the element to any value set they choose. -->
 </p>
 
 <a name="example"> </a>
-<h4>Example Bindings</h4>
+<h4>Привязки-примеры<!-- Example Bindings --></h4>
 <p>
-<i>Instances are not expected or even encouraged to draw from the specified value set.  The value set merely 
-provides examples of the types of concepts intended to be included.</i>
+<i>От экземпляров не ожидается и даже не поощряется брать значения из указанного набора значений. Такой набор значений приводится всего лишь в качестве примера типов концептов, которые могут в него входить.<!-- Instances are not expected or even encouraged to draw from the specified value set.  The value set merely 
+provides examples of the types of concepts intended to be included. --></i>
 </p>
 <p>
-Example bindings are used when an element has a very broad meaning (such as <a href="list.html">List</a>.code),
-or there is no consensus over the correct codes to be used. For these bindings:
+
+Примерные привязки используются, когда у элемента слишком широкое значение (например <a href="list.html">List</a>.code), или нет соглашения о том, какие коды правильно использовать. Для таких привязок:
+<!-- Example bindings are used when an element has a very broad meaning (such as <a href="list.html">List</a>.code),
+or there is no consensus over the correct codes to be used. For these bindings: -->
 </p>
 <ul>
+ <li><b>Coding</b>: значения <i>система</i>/<i>код</i> МОГУТ быть кодами из набора значений. </li>
+ <li><b>CodeableConcept</b>: один из <i>кодируемых</i> элементов  МОЖЕТ содержать <i>систему</i>/<i>код</i>из набора значений. </li>
+</ul>
+<!-- <ul>
  <li><b>Coding</b>: the <i>system</i>/<i>code</i> values MAY be one of the codes in the value set. </li>
  <li><b>CodeableConcept</b>: one of the <i>coding</i> elements MAY  contain a <i>system</i>/<i>code</i> that is in the value set. </li>
-</ul>
+</ul> -->
 <p>
-Some other coded value MAY be used, or (for a CodeableConcept), a text alternative MAY be provided.
+Некоторое другое кодированное значение МОЖЕТ быть использовано или (для CodeableConcept) МОЖЕТ быть предусмотрен альтернативный текст.
+Наборы значений-примеры представлены для того, чтобы помочь разработчикам понять правильное использование элемента. Наборы значений на основе таких кодовых систем как SNOMED CT, которые имеют строгие условия лицензионного соглашения, будут приводиться в базовой спецификации FHIR только в привязках-примерах, хотя руководства по реализации для конкретной юрисдикции могут применять наборы значений, требующие лицензий.
+<!-- Some other coded value MAY be used, or (for a CodeableConcept), a text alternative MAY be provided.
 Example value sets are provided to assist implementers to understand the correct use of an element.
 Value sets based on code systems such as SNOMED CT that have restrictive license terms will only be 
 used as example bindings in the base FHIR specification, though implementation guides for particular
-jurisdictions may adopt value sets that require licenses.
+jurisdictions may adopt value sets that require licenses. -->
 </p>
 <p>
-When an element is bound to an example value set, <a href="profiling.html">derived profiles</a> 
-may bind the element to any value set they choose.
+Когда элемент привязан к набору значений-примеру, <a href="profiling.html">производные профили</a> могут привязывать этот элемент к любому набору значений на свой выбор.
+<!-- When an element is bound to an example value set, <a href="profiling.html">derived profiles</a> 
+may bind the element to any value set they choose. -->
 </p>
 
 
-<h2>Other notes</h2>
+<h2>Другие примечания<!-- Other notes --></h2>
 
 <ul>
- <li>Subsequent versions of FHIR may replace example value sets with preferred bindings if enough consensus emerges in the space</li>
- <li>Bindings to value sets provided as part of the specification are always specific
+ <li>Последующие версии FHIR могут заменять наборы значений-примеры на предпочтительные привязки при достижении единодушного мнения
+ <!-- Subsequent versions of FHIR may replace example value sets with preferred bindings if enough consensus emerges in the space --></li>
+ <li>Привязки, приведенные в спецификации, всегда относятся к тому набору значений, который опубликован в той же версии спецификации. Набор значений может быть ограничен списком перечисленных кодов, или может включать коды по их свойствам вместе с не зависящей от версии ссылкой на их кодовую систему, в этом случае список допустимых концептов может измениться со временем.
+ <!-- Bindings to value sets provided as part of the specification are always specific
 to the version of the value set published with the specification. The value set
 may be sealed by defining a simple list of enumerated codes, or it may include
 codes by their properties, along with a non-version specific reference to an
-underlying code system, in which case the list of valid concepts may change over time.
+underlying code system, in which case the list of valid concepts may change over time. -->
 </li>
 </ul>
 
