@@ -2650,7 +2650,7 @@ REST allows a degree of variability in the implementation of RESTful solutions t
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">number | date | string | token | reference | composite | quantity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">number | date | string | token | reference | composite | quantity | uri</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Тип значения, на которое ссылается параметр поиска, и как интерпретировать его содержимое<!-- The type of value a search parameter refers to, and how the content is interpreted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
