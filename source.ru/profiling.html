@@ -80,22 +80,25 @@ following the basic concepts for extension that are described in <a href="extens
 For implementer convenience, the specification itself publishes its base definitions using these same resources. -->
 </p>
 
-<h3>Two uses of Profiles</h3>
+<h3>Два применения профилей<!-- Two uses of Profiles --></h3>
 <p>
-The <a href="conformance.html">Conformance</a> resource describes two different uses for profiles on resources:
+Ресурс <a href="conformance.html">Conformance</a> описывает два различных способа применения профилей ресурсов: профили ресурсов (Resource Profiles) и системные профили (System Profiles). Профили ресурсов задаются с помощью элемента <i>Conformance.rest.resource.profile</i>, а системные профили задаются с помощью элемента <i>Conformance.profile</i>.
+<!-- The <a href="conformance.html">Conformance</a> resource describes two different uses for profiles on resources:
 Resource Profiles and System Profiles. Resource Profiles are specified using <i>Conformance.rest.resource.profile</i> element 
-and System Profiles are specified using <i>Conformance.profile</i> element. 
+and System Profiles are specified using <i>Conformance.profile</i> element.  -->
 </p>
-<h4>Resource Profiles</h4>
+<h4>Профили ресурсов<!-- Resource Profiles --></h4>
 <p>
-These profiles describe the general features that are supported by the system for each kind of 
+Такие профили описывают общие свойства, поддерживаемые системой для каждого вида ресурса. Как правило, это супермножество всех возможных сценариев использования, реализованных системой. Это взгляд на функциональность системы с уровня ресурсов.
+<!-- These profiles describe the general features that are supported by the system for each kind of 
 resource. Typically, this is the superset of all the different use-cases implemented by the system. 
-This is a resource-level perspective of the system functionality. 
+This is a resource-level perspective of the system functionality.  -->
 </p>
-<h4>System Profiles</h4>
+<h4>Системные профили<!-- System Profiles --></h4>
 <p>
-These profiles describe the information handled/produced by the system on a per use case basis.
-Some examples of the uses for system profiles:
+Такие профили описывают информацию, обрабатываемую/создаваемую системой на посценарной основе. Вот некоторые примеры применения системных профилей:
+<!-- These profiles describe the information handled/produced by the system on a per use case basis.
+Some examples of the uses for system profiles: -->
 </p>
 <ul>
  <li>A Laboratory service producing a set of different reports - general chemistry, blood count, etc. Typical labs would support several hundred different reports</li>
@@ -103,9 +106,10 @@ Some examples of the uses for system profiles:
  <li>A medications formulary that handles several different levels of sophistication in its medication representations</li>
 </ul> 
 <p>
-Typically, these profiles are a series of variations on the same set of resources - different use cases leading to handling 
+Как правило, эти профили являются рядом вариаций одного набора ресурсов - различные варианты использования, приводящие к обработке ресурсов, представляющей их по-разному. Все эти сценарии использования, приведенные выше, относятся к системе, производящей и публикующей данные, однако та же самая концепция применяется и к системам, которые являются потребителями данных. Например:
+<!-- Typically, these profiles are a series of variations on the same set of resources - different use cases leading to handling 
 the resources that represent them differently. These use-cases described above all pertain to system that produce and publish
-data, but the same concept applies to systems that consume data. For instance:
+data, but the same concept applies to systems that consume data. For instance: -->
 </p>
 <ul>
  <li>An expert service that provides analysis on several different sets of data conforming to a particular pattern - tests x,y and z with particular codes and units</li>

@@ -232,12 +232,11 @@ decision support implementation in the FHIR specification. Generally, the patter
   query pattern --></li>
   <li>Запрос должен содержать параметр, которые позволит установить запрашиваемое решение
   <!--The request has a _query parameter that identifies the decision that is being requested--></li>
-  <li>В запросе необходимо указывать значения параметров. Значениями параметров могут быть данные, описывающие
-  принимаемое решение, или ссылки на конкретные ресурсы, содержащие запрос. 
-  !!! The request also has a set of parameter values. These parameter values may be the data that describes the decision
+  <li>В запросе необходимо указывать значения параметров. Значениями параметров могут быть данные, описывающие принимаемое решение, или ссылки на конкретные ресурсы, содержащие запрос. Вообще, чем сложнее запрос на решение, тем больше вероятность, что ресурс полностью подойдет, в частности это дает уже готовый способ записи и управления самими запросами.
+<!-- The request also has a set of parameter values. These parameter values may be the data that describes the decision
   being made or they may be references to specific resources that contain the request. In general, 
   the more complex the decision request is, the more likely it is that a full resource is appropriate, particularly 
-  since this provides a ready made way to record and manage the requests themselves. !!!</li>
+  since this provides a ready made way to record and manage the requests themselves. --></li>
   <li>В некоторых шаблонах отправки запросов, (query interaction patterns) ресурсы, идентифицируемые значением параметров,
   могут отправляться вместе с запросом (can be bundled up with the request). В других шаблонах взаимодействий, 
   запрос снабжается только ссылками на ресурсы.

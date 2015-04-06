@@ -163,8 +163,8 @@ signatures.html
 				</page>
 			</page>
 		</page>
-		  <page title="Profile List" filename="profilelist.html"/>
-			<page title="Using Resources" filename="use.html"/>
+		  <page title="Перечень профилей" filename="profilelist.html"/>
+			<page title="Применение ресурсов" filename="use.html"/>
 		</page>
 		<page title="Ресурсы" filename="resourcelist.html"/>
 		<!--    Every Resource below has structure:
