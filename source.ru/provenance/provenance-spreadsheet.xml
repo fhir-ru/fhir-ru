@@ -966,12 +966,12 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Who, What, When for a set of resources</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Кто, что, когда для набора ресурсов<!-- Who, What, When for a set of resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g., Document Completion - has the artifact been legally authenticated), all of which may impact Security, Privacy, and Trust policies.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Происхождение ресурса - это запись, описывающая сущности и процессы, вовлеченные в создание и доставку или иное воздействие на ресурс. Происхождение обеспечивает необходимую основу для оценки подлинности, возможности доверия и  воспроизводимости. Утверждения о происхождении имеют форму контекстуальных метаданных и сами могут стать важными записями со своим собственным происхождением. Заявление о происхождении показывает  клиническую значимость с точки зрения уверенности в подлинности, надежности, достоверности, целостности и стадии жизненного цикла (например, Document Completion - имеет артефакт юридической проверки подлинности), каждое из которых может повлиять на политики безопасности, конфиденциальности и доверия. <!-- Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g., Document Completion - has the artifact been legally authenticated), all of which may impact Security, Privacy, and Trust policies. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Some parties may be duplicated between the target resource and its provenance.  For instance, the prescriber is usually (but not always) the author of the prescription resource. This resource is defined with close consideration for W3C Provenance</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Некоторые части могут дублироваться у целевого ресурса и его provenance-ресурса. К примеру, выписывающий рецепт обычно (но не всегда) является автором ресурса prescription. Этот ресурс был определен после тщательного изучения W3C-спецификации Provenance<!-- Some parties may be duplicated between the target resource and its provenance.  For instance, the prescriber is usually (but not always) the author of the prescription resource. This resource is defined with close consideration for W3C Provenance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">ControlAct[isNormalAct() and subsumes(CACT, classCode) and moodCode=EVN]</Data><NamedCell
@@ -1003,12 +1003,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Target Reference(s) (usually version specific)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Целевые ссылки (обычно на конкретные версии)<!-- Target Reference(s) (usually version specific) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылки, которые были сгенерированы или обновлены активностью, описанной в данном ресурсе. Происхождение может указывать на больше чем одну цель, если несколько ресурсов были созданы/обновлены в рамках одной активности<!-- The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Target references are usually version specific, but may not be, if a version has not been assigned or if the provenance information is part of the set of resources being maintained (i.e. a document). When using the RESTful API, the identity of the resource may not be known (especially not the version specific one); the client may either submit the resource first, and then the provenance, or it may submit both using a single transaction. See the notes on transaction for further discussion</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Целевые ссылки обычно на конкретные версии, но могут и не быть, если версия не была присвоена или если информация о происхождении является частью набора ресурсов, проходящих обслуживание (а именно документ). При использовании RESTful API идентификатор ресурса может быть не известен (особенно на конкретную версию); клиент может либо отправить первым сам ресурс, а затем соответствующий provenance, либо он может отправить сразу оба в одной транзакции. См. примечания к транзакциям для дальнейшего обсуждения<!-- 
+Target references are usually version specific, but may not be, if a version has not been assigned or if the provenance information is part of the set of resources being maintained (i.e. a document). When using the RESTful API, the identity of the resource may not be known (especially not the version specific one); the client may either submit the resource first, and then the provenance, or it may submit both using a single transaction. See the notes on transaction for further discussion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./outboundRelationship[isNormalActRelationship() and typeCode=SUBJ]/target&#13;&#13;OR&#13;&#13;./participation[isNormalParticipation() and typeCode=SBJ]/role&#13;&#13;OR&#13;&#13;./participation[isNormalParticipation() and typeCode=SBJ]/role[isNormalRole()]/player</Data><NamedCell
@@ -1040,12 +1041,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the activity occurred</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда произошла активность<!-- When the activity occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The period during which the activity occurred</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, в течение которого произошла активность<!-- The period during which the activity occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The period can be a little arbitrary; where possible, the time should correspond to human assessment of the activity time</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период может быть несколько произвольным; где возможно, время должно соответствовать человеческой оценке времени активности<!-- The period can be a little arbitrary; where possible, the time should correspond to human assessment of the activity time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./effectiveTime[type=IVL_TS]</Data><NamedCell
@@ -1077,12 +1078,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the activity was recorded / updated</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда активность была записана/обнволена<!-- When the activity was recorded / updated --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The instant of time at which the activity was recorded</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Момент времени, в который активность была записана<!-- The instant of time at which the activity was recorded --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This can be a little different from the time stamp on the resource if there is a delay between recording the event and updating the provenance and target resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это может немного отличаться от штампа времени у ресурса, если есть задержка между записыванием события и обновлением provenance и целевого ресурса<!-- This can be a little different from the time stamp on the resource if there is a delay between recording the event and updating the provenance and target resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">unique(./participation[isNormalParticipation() and typeCode=AUT]/time[type=TS])</Data><NamedCell
@@ -1113,9 +1114,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason the activity is occurring</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Причина активности<!-- Reason the activity is occurring --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The reason that the activity was taking place</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Причина, по которой имела место активность<!-- The reason that the activity was taking place --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1149,9 +1150,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where the activity occurred, if relevant</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где произошла активность, если это уместно<!-- Where the activity occurred, if relevant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Where the activity occurred, if relevant</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Где произошла активность, если это уместно<!-- Where the activity occurred, if relevant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1184,9 +1185,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Policy or plan the activity was defined by</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Политика или план, по которому произошла активность<!-- Policy or plan the activity was defined by --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Политика или план, по которому произошла активность. Как правило, отдельная активность может иметь несколько применимых документов политики, такие как согласие пациента, гарант финансирования и т. п.<!-- Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String"> For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element.</Data><NamedCell
@@ -1218,12 +1219,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Agents involved in creating resource</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человек, организация, записи и проч., участвующие в создании ресурса<!-- Person, organization, records, etc. involved in creating resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Агент играет определенную роль в активности, таким образом агенту может быть присвоена некоторая степень ответственности за идущую активность. Агент может быть человеком, организацией, программным обеспечением или другими сущностями, которым может быть приписана ответственность<!-- An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">С активностью могут быть ассоциированы (т. е. нести какую-то ответственность за активность) несколько агентов и наоборот <!-- Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./participation[isNormalParticipation()]&#13;&#13;OR&#13;&#13;./outboundRelationship[isNormalActRelationship() and typeCode='DRIV']</Data><NamedCell
@@ -1259,7 +1260,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Agents Role</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The function of the agent with respect to the activity.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Функция агента по отношения к этой активности <!-- The function of the agent with respect to the activity. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">e.g. author | performer | enterer | attester: +</Data><NamedCell
@@ -1297,9 +1298,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Agent Type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of participation of the agent</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the type is &quot;Resource&quot; then the resource itself was the participant. If the type is a type of resource, then the entity identified by the resource is the participant</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип участия агента <!-- The type of participation of the agent --></Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>    
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если выбран тип &quot;Resource&quot;, значит сам ресурс был участником. Если типом указан тип ресурса, значит участником была сущность, определяемая этим ресурсом<!-- If the type is &quot;Resource&quot; then the resource itself was the participant. If the type is a type of resource, then the entity identified by the resource is the participant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">e.g.  Person | Application | Patient | Device +</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1334,9 +1335,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identity of agent</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор агента <!-- Identity of agent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identity of participant as a Resource or uri</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указание участника в виде ресурса или URI <!-- Identity of participant as a Resource or uri --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1368,9 +1369,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Human description of participant</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человекочитаемое описание участника<!-- Human description of participant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Human-readable description of the participant</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое описание участника<!-- Human-readable description of the participant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1402,9 +1403,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">An entity used in this activity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сущность, использованная в этой активности<!-- An entity used in this activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An entity used in this activity</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сущность, использованная в этой активности<!-- An entity used in this activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1441,7 +1442,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">derivation | revision | quotation | source</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">How the entity was used during the activity</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Каким образом сущность использовалась во время активности<!-- How the entity was used during the activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="18" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1475,11 +1476,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Entity Type</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип сущности <!-- Entity Type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of the entity. If the entity is a resource, then this is a resource type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип сущности. Если сущностью является ресурс, тогда это тип ресурса<!-- The type of the entity. If the entity is a resource, then this is a resource type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the type is &quot;resource&quot; then the resource itself was the participant. If the type is a type of resource, then the entity identified by the resource is the participant</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если выбран тип &quot;Resource&quot;, значит сам ресурс был участником. Если типом указан тип ресурса, значит участником была сущность, определяемая этим ресурсом<!-- If the type is &quot;resource&quot; then the resource itself was the participant. If the type is a type of resource, then the entity identified by the resource is the participant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="18" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./target</Data><NamedCell
@@ -1511,12 +1512,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identity of entity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор  сущности <!-- Identity of entity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identity of the  Entity used. May be a logical or physical uri and maybe absolute or relative</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификация используемой сущности. Может быть логическим или физическим uri, абсолютным или относительным<!-- Identity of the  Entity used. May be a logical or physical uri and maybe absolute or relative --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">identity may be a reference to a resource or to something else, depending on the type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор может быть ссылкой на ресурс или что-то другое, в зависимости от типа<!-- identity may be a reference to a resource or to something else, depending on the type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./text/reference</Data><NamedCell
@@ -1547,9 +1548,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Human description of entity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человекочитаемое описание участника<!-- Human description of participant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Human-readable description of the entity</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое описание сущности<!-- Human-readable description of the entity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1582,9 +1583,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Entity is attributed to this agent</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сущность приписывается этому агенту<!-- Entity is attributed to this agent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сущность приписывается агенту для выражения ответственности агента за эту сущность, возможно наряду с другими агентами. Это описание можно понимать как краткую запись того, что агент несет ответственность за активность, которая генерирует эту сущность<!-- The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>

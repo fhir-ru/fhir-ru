@@ -7127,6 +7127,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s138"><Data ss:Type="String">ok</Data></Cell>
@@ -7149,6 +7150,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">ограничено</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"><Data ss:Type="String">refused</Data></Cell>
@@ -7160,6 +7162,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">отказано</Data></Cell>
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">error</Data></Cell>
@@ -7171,6 +7174,7 @@
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
+    <Cell><Data ss:Type="String">ошибка</Data></Cell>
    </Row>
    <Row>
     <Cell ss:StyleID="s140"/>

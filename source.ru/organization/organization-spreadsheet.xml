@@ -984,9 +984,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A grouping of people or organizations with a common purpose</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Объединение в группу людей или организаций с общей целью<!-- A grouping of people or organizations with a common purpose --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Формально или неформально признанное объединение в группу людей или организаций, сформированное с целью выполнения некоторой формы коллективного действия. Включает в себя компании, учреждения, корпорации, отделы, сообщества, группы медицинской практики и т. д<!-- A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1022,11 +1022,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifies this organization  across multiple systems</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентифицирует эту организацию в различных системах<!-- Identifies this organization  across multiple systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier for the organization that is used to identify the organization across multiple disparate systems</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор организации, используемый для идентификации организации в различных несходных системах<!-- Identifier for the organization that is used to identify the organization across multiple disparate systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Организации известны под множеством идентификаторов. Некоторые учреждения поддерживают несколько, а большинство собирают идентификаторы для обмена с другими организациями относительно данной.<!-- Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1060,11 +1060,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name used for the organization</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя организации<!-- Name used for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A name associated with the organization</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя, ассоциируемое с организацией<!-- A name associated with the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to use the name as the label of the organization. </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо использовать имя в качестве обозначения организации.<!-- Need to use the name as the label of the organization. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1077,7 +1077,8 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">If you need multiple names to cater for acronyms and &quot;trading under&quot; names, use an extension &quot;alias&quot; instead</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Если вам требуется несколько имен для расшифровки аббревиатур и имен торговых марок &quot;trading under&quot;, используйте вместо этого расширение &quot;alias&quot; <!-- 
+If you need multiple names to cater for acronyms and &quot;trading under&quot; names, use an extension &quot;alias&quot; instead --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="210">
@@ -1100,13 +1101,14 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Kind of organization</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид организации<!-- Kind of organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The kind of organization that this is</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вид, что это за организация<!-- The kind of organization that this is --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to track the kind of organization that this is - different organization types have different uses</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность отслеживать виды организации, которые есть - организации различного типа по-разному применяются <!-- 
+Need to be able to track the kind of organization that this is - different organization types have different uses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организации могут быть корпорациями, отделениями в больнице, участками, клиническими командами, государственными ведомствами и т. д. Обратите внимание, что код, как правило, это классификатор типа организации; во многих приложениях коды используются для идентификации определенной организации (скажем, отделения в больнице) в отличие от другого такого же типа - это идентификаторы, а не коды<!-- Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
@@ -1138,13 +1140,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A contact detail for the organization</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация организации<!-- A contact detail for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A contact detail for the organization</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация организации<!-- A contact detail for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Human contact for the organization</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Контакт человека для организации<!-- Human contact for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The use code home is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код использования home не должен применяться. Обратите внимание, что данная контактная информация - это не контактная информация людей, которые работают на или представляют организацию, это официальные контактные данные самой организации<!-- The use code home is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.telecom</Data><NamedCell
@@ -1176,13 +1178,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">An address for the organization</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Адрес организации<!-- An address for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An address for the organization</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Адрес организации<!-- An address for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">May need to keep track of the organization's addresses for contacting, billing or reporting requirements</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может потребоваться для отслеживания адресов организации в целях контакта, выставления счетов или подготовки отчетов<!-- May need to keep track of the organization's addresses for contacting, billing or reporting requirements --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Organization may have multiple addresses with different uses or applicable periods. The use code home is not to be used</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация может иметь несколько адресов для различного использования или с разными периодами применения. Код использования home не применяется<!-- Organization may have multiple addresses with different uses or applicable periods. The use code home is not to be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.address</Data><NamedCell
@@ -1212,11 +1214,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Formal certifications that convey authority</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Официальные сертификаты, которые передают полномочия<!-- Formal certifications that convey authority --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The qualifications/certifications an organization has, including format educational achievements, accreditations and current certifications. All these qualifications may be used to determine what roles the organization may play in a healthcare environment</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Квалификация/аттестация, которую имеет организация, включая формат образовательных достижений, аккредитации и действующие сертификаты. Все эти данные по квалификации могут использоваться для определения, какие роли организация может играть в среде здравоохранения<!-- The qualifications/certifications an organization has, including format educational achievements, accreditations and current certifications. All these qualifications may be used to determine what roles the organization may play in a healthcare environment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">For many organizations in healthcare, it is necessary to track the qualifications an organization has</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для многих организаций в области здравоохранения необходимо отслеживать квалификацию, которую имеет организация<!-- For many organizations in healthcare, it is necessary to track the qualifications an organization has --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">1) Not sure if qualified &amp; accredited are the same.  2) Could potentially propose a new classCode. We wonder if Accreditation is in the 80%. Accreditation is not part of the current PA domain, it was in Personnel Management but this has been retracted. The PM version also had many more attributes, so is this Accreditation good enough? We (current participants) do not use it. We decide to keep it, to see what happens in ballot </Data><NamedCell
@@ -1250,11 +1252,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifier for the accreditation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор аккредитации<!-- Identifier for the accreditation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The identifier of the accreditation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор аккредитации<!-- The identifier of the accreditation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows a link back to a accreditation registry, if one exists</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дает возможность указать обратную ссылку на реестр аккредитации, если таковая существует<!-- Allows a link back to a accreditation registry, if one exists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1285,11 +1287,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What kind of accreditation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Что это за аккредитация<!-- What kind of accreditation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of the accreditation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип аккредитации<!-- The type of the accreditation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">commonly used to determine the roles an organization may perform</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">обычно используется для определения, какие роли может выполнять организация<!-- commonly used to determine the roles an organization may perform --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1319,11 +1321,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who conferred accreditation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кем присвоена аккредитация<!-- Who conferred accreditation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The organization that conferred/confers the accreditation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, которая присвоила/предоставляет аккредитацию <!-- The organization that conferred/confers the accreditation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">May determine the significance of the qualification, and allows a link back to a qualification registry, if one exists</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Можно определять значимость квалификации и указывать обратную ссылку на квалификационный реестр, если она есть<!-- May determine the significance of the qualification, and allows a link back to a qualification registry, if one exists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Lloyd(?): Do we need jurisdiction as well?  (The jurisdiction is often more relevant than the accrediting org.)  EK: Isn't a jurisdiction an organization?</Data><NamedCell
@@ -1389,11 +1391,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The organization of which this organization forms a part</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, частью которой является данная организация<!-- The organization of which this organization forms a part --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The organization of which this organization forms a part</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, частью которой является данная организация<!-- The organization of which this organization forms a part --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to track the hierarchy of organizations within an organization</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность отслеживать иерархию организаций внутри организации<!-- Need to be able to track the hierarchy of organizations within an organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1424,10 +1426,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact for the organization for a certain purpose</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контакт для организации для определенной цели<!-- Contact for the organization for a certain purpose --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to keep track of assigned contact points within bigger organization</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо для отслеживания назначенных контактов в большой организации<!-- Need to keep track of assigned contact points within bigger organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1459,11 +1461,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of contact</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип контакта<!-- The type of contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates a purpose for which the contact can be reached</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает цель, с которой можно обращаться к этому контакту<!-- Indicates a purpose for which the contact can be reached --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to distinguish between multiple contact persons.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо для различения нескольких контактных лиц.<!-- Need to distinguish between multiple contact persons. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1493,11 +1495,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A name associated with the contact</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя контактного лица<!-- A name associated with the contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A name associated with the contact</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя контактного лица<!-- A name associated with the contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to track the person by name. </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность отслеживать имя человека.<!-- Need to be able to track the person by name. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1528,11 +1530,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact details (telephone, email, etc)  for a contact</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация (телефон, электронная почта и т. п.) для связи<!-- Contact details (telephone, email, etc)  for a contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A contact detail (e.g. a telephone number or an email address) by which the party may be contacted. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация (телефонный номер или адрес электронной почты), по которой с лицом можно связаться<!-- A contact detail (e.g. a telephone number or an email address) by which the party may be contacted. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">People have (primary) ways to contact them in some way such as phone, email.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">У людей есть (в основном) способы связи с ними некоторым образом, например по телефону, электронной почте.<!-- People have (primary) ways to contact them in some way such as phone, email. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1563,11 +1565,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Visiting or postal addresses for the contact</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Почтовый адрес или адрес для посещений для контакта<!-- Visiting or postal addresses for the contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Visiting or postal addresses for the contact</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Почтовый адрес или адрес для посещений для контакта<!-- Visiting or postal addresses for the contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">May need to keep track of a contact party's address for contacting, billing or reporting requirements</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может потребоваться отслеживать адрес контактного лица для связи, выставления счетов или подготовки отчетов<!-- May need to keep track of a contact party's address for contacting, billing or reporting requirements --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1601,9 +1603,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">male | female | other | unknown</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Административный пол - пол, который, как считается, имеет человек в целях управления и ведения учета записей.<!-- Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Needed to address the person correctly</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо для корректного обращения к человеку<!-- Needed to address the person correctly --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1635,9 +1637,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Location(s) the organization uses to provide services</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Местоположение(-я), которое организация использует для оказания услуг<!-- Location(s) the organization uses to provide services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Location(s) the organization uses to provide services</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Местоположение(-я), которое организация использует для оказания услуг<!-- Location(s) the organization uses to provide services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1673,13 +1675,13 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether the organization's record is still in active use</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Находится ли запись организации в активном использовании<!-- Whether the organization's record is still in active use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether the organization's record is still in active use</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Находится ли запись организации в активном использовании<!-- Whether the organization's record is still in active use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need a flag to indicate a record is no longer to be used and should generally be hidden for the user in the UI.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужен флаг для указания, что запись больше не должна использоваться и должна быть вообще спрятана для пользователя в интерфейсе.<!-- Need a flag to indicate a record is no longer to be used and should generally be hidden for the user in the UI. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Default is true.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение по умолчанию true.<!-- Default is true. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.status</Data><NamedCell
@@ -3985,7 +3987,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Organization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">The organization SHALL at least have a name or an id, and possibly more than one</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Организация ДОЛЖНА иметь по крайней мере название (элемент name) или идентификатор (элемент identifier), и, возможно, больше чем один<!-- The organization SHALL at least have a name or an id, and possibly more than one --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">count(f:identifier | f:name) &gt; 0</Data><NamedCell
@@ -3997,7 +3999,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">NoHomeUseAddress</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Organization.address</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">An address of an organization can never be of use 'home'</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">У элемента address организации никогда не используется тип применения 'home'<!-- An address of an organization can never be of use 'home' --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(f:use[@value='home']) = 0</Data></Cell>
    </Row>
@@ -4007,7 +4009,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">NoHomeUseTelecom</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Organization.telecom</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The telecom of an organization can never be of use 'home'</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">У элемента telecom организации никогда не используется тип применения 'home'<!-- The telecom of an organization can never be of use 'home' --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(f:use[@value='home']) = 0</Data></Cell>
    </Row>
@@ -4546,28 +4548,28 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Organization.name</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">A portion of the organization's name</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Название организации или его часть<!-- A portion of the organization's name --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">phonetic</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A portion of the organization's name using some kind of phonetic matching algorithm</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть названия организации с использованием некоторого алгоритма фонетического соответствия<!-- A portion of the organization's name using some kind of phonetic matching algorithm --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Organization.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A code for the type of organization</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Код типа организации<!-- A code for the type of organization --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Organization.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Any identifier for the organization (not the accreditation issuer's identifier)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Любой идентификатор этой организации (но не идентификатор эмитента (издателя) аккредитации)<!-- Any identifier for the organization (not the accreditation issuer's identifier) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!accreditation</Data></Cell>
@@ -4581,14 +4583,14 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Organization.partOf</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Search all organizations that are part of the given organization</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Поиск по всем организациям, входящим в состав данной организации<!-- Search all organizations that are part of the given organization --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">active</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Organization.active</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Whether the organization's record is active</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Активна ли эта запись об организации<!-- Whether the organization's record is active --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">address</Data></Cell>
@@ -6782,7 +6784,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">OrganizationType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Used to categorize the organization</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Используется для классификации организаций<!-- Used to categorize the organization --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-organization-type</Data></Cell>
@@ -6812,7 +6814,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ContactPartyType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The purpose for which you would contact a contact party</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Цель, с которой вы будете связываться с контактным лицом<!-- The purpose for which you would contact a contact party --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-contactentity-type</Data></Cell>
