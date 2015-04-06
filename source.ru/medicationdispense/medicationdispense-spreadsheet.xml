@@ -1453,7 +1453,7 @@ Indicates the type of dispensing event that is performed. Examples include: Tria
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- Who collected the medication --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто забрал лекарственное средство<!-- Who collected the medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, который забрал лекарственное средство. Как правило, это пациент или тот, кто за ним ухаживает, но существуют случаи, когда это может быть и специалист по медицинскому обеспечению <!-- Identifies the person who picked up the medication.  This will usually be a patient or their carer, but some cases exist where it can be a healthcare professional --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
