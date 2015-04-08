@@ -234,13 +234,18 @@ In JSON, whitespace in string values is always significant. Primitive types othe
 </table>
  
 <p>
-Some additional notes about the <i>id</i> datatype:
+Некоторые дополнительные замечания по типу данных <i>id</i>:
+<!-- Some additional notes about the <i>id</i> datatype: -->
 </p>
 <ul>
- <li>Ids are case sensitive. UUIDs SHALL be sent using lowercase letters</li>
- <li>The ID type includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232.</li>
- <li>In a typical FHIR URL, like http://example.com/fhir/Patient/<span style="color: navy">1234</span>, the last part "1234" (highlighted in navy) is the part that is an id datatype</li>
- <li>A full UUID is a uri, not an <i>id</i>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b), which SHALL be in lowercase</li>
+ <li>Идентификаторы чувствительны к регистру. UUID-ы ДОЛЖНЫ передаваться с использованием строчных букв
+ <!-- Ids are case sensitive. UUIDs SHALL be sent using lowercase letters --></li>
+ <li>Тип ID включает в себя идентификаторы в соответствии с <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, но также включает и другие форматы идентификаторов, но не чувствителен к регистру, как ISO 18232.
+ <!-- The ID type includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232. --></li>
+ <li>В типичном FHIR URL, наподобие http://example.com/fhir/Patient/<span style="color: navy">1234</span>, последняя часть "1234" (выделена цветом) имеет тип данных ID
+ <!-- In a typical FHIR URL, like http://example.com/fhir/Patient/<span style="color: navy">1234</span>, the last part "1234" (highlighted in navy) is the part that is an id datatype --></li>
+ <li>Полный UUID - это URI, а не <i>id</i>. UUID-ы в URI также ДОЛЖНЫ быть представлены в нижнем регистре (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b)
+ <!-- A full UUID is a uri, not an <i>id</i>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b), which SHALL be in lowercase --></li>
 </ul>
 <!-- 
 boolean: [%dtusage boolean%]
