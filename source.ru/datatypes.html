@@ -26,16 +26,16 @@
 <a href="datatypes-mappings.html">Мэппинги</a>.
 </p>
 
-<p><b>Table of Contents</b></p>
+<p><b>Содержание документа</b></p>
 <table class="grid">
  <tr>
-  <td><b>Primitive Types</b><br/>[%diagram datatypes/allprimitivetypes.diagram%]</td>
-  <td><b>Complex Types</b><br/>[%diagram datatypes/alltypes.diagram%]</td>
+  <td><b>Примитивные типы</b><br/>[%diagram datatypes/allprimitivetypes.diagram%]</td>
+  <td><b>Комплексные типы</b><br/>[%diagram datatypes/alltypes.diagram%]</td>
  </tr>
 </table>
 
 <p>
-White = abstract type. Light blue - types. Light Pink - Profile on Type.
+Белый = абстрактный тип. Голубой - типы. Розовый - профиль для типа.
 Типы данных также доступны в виде <a href="fhir-base.xsd">W3C Schema</a>.
 </p>
 
@@ -361,7 +361,7 @@ Coding - это представление определенного конце
 </p>
 <ul>
  <li>Национальные выпуски SNOMED CT (согласованность определений различается в разных странах, и некоторые страны могут принимать свои собственные правила на этот счет)</li>
- <li>Various versions of ICD (note: the major releases are labelled as different code systems altogether, but there is veration within versions)</li>
+ <li>Различные версии ICD (примечание: основные релизы помечены как совершенно разные кодовые системы, но есть различия в версиях) <!-- Various versions of ICD (note: the major releases are labelled as different code systems altogether, but there is veration within versions) --></li>
 </ul>
 <p>
 В общем случае любая классификация (например кодовая система), которая включает концепты с относительными определениями, например "not otherwise coded", потребует указания версии. См. <a href="valueset.html#versioning">обсуждение версий кодовых систем в ресурсе Value Set</a> для дальнейшего обсуждения версионирования.
@@ -693,10 +693,11 @@ HumanName (Имя человека)
 </p>
 [%dt HumanName%]
 <p>
-This table summarises where common parts of a person's name are found. 
+В таблице ниже сведены места, где встречаются общие части имени человека.
+<!-- This table summarises where common parts of a person's name are found.  -->
 </p>
 <table class="lines">
- <tr><td><b>Name</b></td><td><b>Example</b></td><td><b>Destination / Comments</b></td></tr>
+ <tr><td><b>Имя</b></td><td><b>Пример</b></td><td><b>Куда записывается / Комментарии</b></td></tr>
  <tr><td>Surname</td><td>Smith</td><td>Family Name</td></tr>
  <tr><td>First name</td><td>John</td><td>Given Name</td></tr>
  <tr><td>Title</td><td>Mr</td><td>Prefix</td></tr>
@@ -709,38 +710,42 @@ This table summarises where common parts of a person's name are found.
  <tr><td>Honorifics</td><td>Senior</td><td>Suffix</td></tr>
 </table>
 <p>
-For further information, including all <a href="http://www.w3.org/International/questions/qa-personal-names">W3C International Examples</a>, 
-consult the <a href="datatypes-examples.html#HumanName">examples</a>.
+Для получения дополнительной информации, в том числе все <a href="http://www.w3.org/International/questions/qa-personal-names">W3C Международные примеры</a>, обратитесь к <a href="datatypes-examples.html#HumanName">примерам</a>.
+<!-- For further information, including all <a href="http://www.w3.org/International/questions/qa-personal-names">W3C International Examples</a>, 
+consult the <a href="datatypes-examples.html#HumanName">examples</a>. -->
 </p>
-<p> 
-The multiple give and family name parts combine to form a single name. Multiple given and family names are for
+<p>
+Многочисленные части имен и фамилий объединяются в единое имя. Несколько имен и фамилий используются, когда имя человека состоит из нескольких имен (относительно распространено в разных культурах) и несколько фамилий (менее распространено).
+Если у человека есть альтернативные имена, которые могут быть использованы взаимозаменяемо, то это будут разные экземпляры <i>HumanName</i>.
+<!-- The multiple give and family name parts combine to form a single name. Multiple given and family names are for
 when a person's name has multiple given names (relatively common across cultures) and multiple surnames (less common).
 Where a person has alternate names that may be used in place of each other, these are different
-instances of <i>HumanName</i>.
+instances of <i>HumanName</i>. -->
 </p>
 <p>
-Элемент <i>text</i> содержит полное имя в том виде, как оно должно показываться. Текст может быть задан как в дополнение к частям имени, так и вместо них.
-The <i>text</i> element specifies the entire name as it should be represented. This
+Элемент <i>text</i> содержит полное имя в том виде, в котором оно должно показываться. Он может быть задан как в дополнение к частям имени, так и вместо них, и может быть составлен из этих частей, хотя правильный порядок сборки зависит от культуры: порядок частей в пределах типа составляющей имени "given" имеет значение и ДОЛЖЕН соблюдаться. Надлежащий порядок от фамилией и "given" именами зависит от культуры и контекста использования.
+<!-- The <i>text</i> element specifies the entire name as it should be represented. This
 may be provided instead of or as well as specific parts, and can be built from the parts, though
-the correct order of assembly is culture dependent: the order of the  parts within a given part type has 
-significance and SHALL be observed. The appropriate order between 
-family name and given names depends on culture and context of use.
+the correct order of assembly is culture dependent: the order of the  parts within a given part type has significance and SHALL be observed. The appropriate order between 
+family name and given names depends on culture and context of use. -->
 </p>
 <p>
-Части имени НЕ ДОЛЖНЫ содержать пробельные символы. Для фамилий (family name) имена через дефис, например "Smith-Jones", считаются единым именем, однако имена с пробелами, например "Smith Jones" необходимо разбивать на несколько частей. Вместо имени (given name) можно использовать инициалы, если другой информации не было записано.
-The parts of a name SHOULD NOT contain whitespace. For family name, hyphenated  names such as "Smith-Jones" are a 
+Части имени НЕ ДОЛЖНЫ содержать пробельные символы. Для "family name" значения через дефис, например "Smith-Jones", считаются единым именем, однако имена с пробелами, например "Smith Jones", разбиваются на несколько частей. Для "given names" вместо полного имени можно использовать инициалы, если другой информации не было записано.
+Системы, функционирующие одновременно для разных культур должны, как правило,  полагаться на текстовую форму для представления, и использовать составные части для функциональности индекса/поиска. По этим причинам приложения ДОЛЖНЫ заполнять
+элемент "text" для устойчивости в будущем.
+<!-- The parts of a name SHOULD NOT contain whitespace. For family name, hyphenated  names such as "Smith-Jones" are a 
 single name, but names with spaces such as "Smith Jones" are broken into multiple parts.
 For given names, initials may be used in place of the full name if that is all that is recorded.
 Systems that operate across cultures should generally rely on the text form for presentation, and 
 use the parts for index/search functionality. For this reasons, applications SHOULD populate the 
-text element for future robustness.
+text element for future robustness. -->
 </p>
 <p>
-Приложения, обновляющие имя, ДОЛЖНЫ убедиться, что либо текст соответствует частям имени, либо из них присутствует только что-то одно. Системы, не поддерживающие столько частей имени, сколько предусмотрено, могут пожелать соединить некоторые части, разделяя их пробелами.
-Applications updating a name SHALL ensure either that the text and the parts 
+Приложения, обновляющие имя, ДОЛЖНЫ убедиться, что либо текст соответствует частям имени, либо из них присутствует только что-то одно. Системы, не поддерживающие столько составляющих частей имени, сколько приходит в экземпляре, могут по желанию соединить некоторые части, разделяя их пробелами.
+<!-- Applications updating a name SHALL ensure either that the text and the parts 
 are in agreement, or that only one of the two is present. Systems that do not 
 support as many name parts as are provided in an instance may wish to append 
-some of the parts together using spaces
+some of the parts together using spaces -->
 </p>
 <p>
 HumanName используется в следующих местах: [%dtusage HumanName%]
@@ -789,7 +794,7 @@ ContactPoint
 См. также <a href="datatypes-examples.html#ContactPoint">Примеры</a>, <a href="datatypes-definitions.html#ContactPoint">Подробное описание</a> и <a href="datatypes-mappings.html#ContactPoint">Мэппинги</a>.
 </p>
 <p>
-Details for all kinds of technology-mediated contact points for a person or organization, including telephone, email, etc.
+<!-- Details for all kinds of technology-mediated contact points for a person or organization, including telephone, email, etc. -->
 Контактные данные человека или организации любого вида технологий опосредованной коммуникации, включая телефон, электронную почту и др.
 </p>
 [%dt ContactPoint%]
@@ -816,26 +821,30 @@ Timing
 См. также <a href="datatypes-examples.html#Timing">Примеры</a>, <a href="datatypes-definitions.html#Timing">Подробное описание</a> и <a href="datatypes-mappings.html#Timing">Мэппинги</a>.
 </p>
 <p>
-Определяет событие, которое может произойти несколько раз. Расписания используются для записи не уже произошедших событий, а для ожидаемых или тех событий, на которые есть запрос. Расписание может представлять собой либо список событий - периодов, в которые событие наступает, либо отдельное событие с критерием его повторения, либо только критерий повторения без самого события.
-Specifies an event that may occur multiple times. Timing schedules are not used for recording when things did happen, but when they are expected or requested to occur.
+Определяет событие, которое может произойти несколько раз. Расписания используются для записи не уже произошедших событий, а для ожидаемых или тех событий, на которые есть запрос. 
+Расписание может представлять собой либо список событий, либо критериев того, когда событие наступает. Также они оба могут быть указаны. Когда указываются и событие, и спецификация его повторения, список событий следует понимать как интерпретацию информации в структуре "repeat".
+<!-- Specifies an event that may occur multiple times. Timing schedules are not used for recording when things did happen, but when they are expected or requested to occur.
 A Timing schedule can be either a list of events, or criteria for when the event happens. In addition, both can be proposed. When both event and a repeating specification 
-are provided, the list of events should be understood as an interpretation of the information in the repeat structure
+are provided, the list of events should be understood as an interpretation of the information in the repeat structure -->
 </p>
 <p>
-Many systems avoid the complexity of the Timing structure by using a text field for these things (e.g. "Dosage Text"). 
+Многие системы избегают сложности структуры Timing с помощью текстового поля для него (например "текст дозировки").
+Такие системы не используют тип данных Timing. Другие системы используют набор «общих» кодов - включая, но, как правило, не ограничиваясь широко понимаемыми сокращениями, такими как "BID". В timing используется полностью структурированное представление значения кодов для наиболее широкого взаимодействия.
+<!-- Many systems avoid the complexity of the Timing structure by using a text field for these things (e.g. "Dosage Text"). 
 Those systems do not use the Timing data type. Other systems use a set of 'common' codes - including, but usually
 not limited to, widely understood acronyms such as "BID". The timing data uses a fully structured representation 
-of the meaning of the codes for most general interoperability. 
+of the meaning of the codes for most general interoperability.  -->
 </p>
 [%dt Timing%]
 <p>
-Если события указаны, то по крайней мере <i>event.start</i> ДОЛЖНО быть задано для каждого события. Если <i>event.end</i> не задано, предполагается, что событие длится ограниченное, но не известное время, насколько это оправданно с медицинской точки зрения.
-If the timing schedule has repeating criteria, the repeat can occur a given number of times per 
+Если график времени содержит критерии повтора, он может произойти заданное число раз в течение указанной продолжительности или относительно какого-то реального события. Если условие окончания не указано, график закончится по каким-то критериям, выраженным где-то ещё.
+<!-- If the timing schedule has repeating criteria, the repeat can occur a given number of times per 
 the specified duration or in relation to some real world event. If no end condition is specified, 
-the schedule will terminate on some criteria that are expressed elsewhere. 
+the schedule will terminate on some criteria that are expressed elsewhere.  -->
 </p>
 <p>
-This table summarises some common uses of the Timing Data Type criteria.
+В данной таблице представлены некоторые общие способы применения критериев типа данных Timing.
+<!-- This table summarises some common uses of the Timing Data Type criteria. -->
 </p>
 <table class="grid">
  <tr><td><b>text</b></td><td><b>duration+units</b></td><td><b>frequency</b></td><td><b>frequencyMax</b></td><td><b>period+units</b></td><td><b>periodMax</b></td><td><b>when</b></td></tr>
@@ -857,12 +866,12 @@ This table summarises some common uses of the Timing Data Type criteria.
 <p>
 Если в расписании имеется критерий повторения, событие может повториться заданное количество раз за указанный период либо относительно некоторого события реального мира.
 Если событие повторяющееся, время до окончания расписания может быть задано, либо количеством повторений count, либо датой/временем окончания расписания end. Если условие окончания не задано, расписание Schedule завершится по некоторому критерию, представленному где-то в другом месте.
-Timing is used in the following places: [%dtusage Timing%]
+Timing используется в следующих местах: [%dtusage Timing%]
 </p>
 
 
 <div class="use">
-<p><b>Constraints</b></p>
+<p><b>Ограничения</b></p>
 [%dt.constraints Timing%]
 
 </div>
@@ -873,42 +882,56 @@ Timing is used in the following places: [%dtusage Timing%]
 Signature
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes-examples.html#Signature">Examples</a>, <a href="datatypes-definitions.html#Signature">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Signature">Mappings</a>.
+См. также <a href="datatypes-examples.html#Signature">Примеры</a>, <a href="datatypes-definitions.html#Signature">Подробное описание</a> и <a href="datatypes-mappings.html#Signature">Мэппинги</a>.
 </p>
 <p>
-A Signature holds a Digital Signature and supporting context in a FHIR accessible form. The non-repudiation proof is provided through the XML-Signature blob. 
+Signature содержит электронную цифровую подпись и вспомогательный контекст в доступной FHIR форме. Доказательство невозможности отказа от авторства указывается через XML-Signature BLOB (прим. пер. - binary large object; большой двоичный объект, "блоб").
+<!-- A Signature holds a Digital Signature and supporting context in a FHIR accessible form. The non-repudiation proof is provided through the XML-Signature blob.  -->
 </p>
 [%dt Signature%]
 <p>
-The Signature.blob is base64 encoded XML-Signature. The XML-Signature is a <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature. Where the content that is signed is separate from the signature itself. 
+Signature.blob - это XML-Signature в кодировке base64. XML-Signature - это <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature, где подписанное содержимое отделено от самой подписи.
+<!-- The Signature.blob is base64 encoded XML-Signature. The XML-Signature is a <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature. Where the content that is signed is separate from the signature itself.  -->
 </p>
 <p>
-The Signature should conform to XAdES-X-L for support of Long Term signatures. The XAdES-X-L specification adds the timestamp of the signing, inclusion of the signing certificate, and statement of revocation. 
+Signature должна соответствовать XAdES-X-L для поддержки подписей в долгосрочной перспективе. Спецификация XAdES-X-L добавляет штамп времени подписания, включение сертификата подписи и заявление об аннулировании.
+<!-- The Signature should conform to XAdES-X-L for support of Long Term signatures. The XAdES-X-L specification adds the timestamp of the signing, inclusion of the signing certificate, and statement of revocation.  -->
 </p>
 <p>
-Where the signed content is a FHIR Resource(s), the signature is accross the the XML form of the resource(s).
+Там, где подписанным содержимым является FHIR-ресурс(-ы), подпись ставится на XML-форму ресурса(-ов).
+<!-- Where the signed content is a FHIR Resource(s), the signature is across the the XML form of the resource(s). -->
 </p>
 <p>
-The content should be canonicalized using the "Canonical XML 1.1. with Comments".
+Содержимое должно быть представлено в канонизированной форме с помощью "Canonical XML 1.1. with Comments".
+<!-- The content should be canonicalized using the "Canonical XML 1.1. with Comments". -->
 </p>
 <p>
-The Signature should use the hashing algorithm sha256. The XML-Signature indicates the algorithm used. Other hashing algoirthms should be expected to have been used, signature validation policy would determine acceptability.
+Подпись должна использовать алгоритм хэширования SHA256. XML-подпись показывает используемый алгоритм. Если предполагается использование других алгоритмов хэширования, приемлемость будет определяться политикой валидации подписи.
+<!-- The Signature should use the hashing algorithm sha256. The XML-Signature indicates the algorithm used. Other hashing algoirthms should be expected to have been used, signature validation policy would determine acceptability. -->
 </p>
 <p>
-The Signature Shall include a “CommitmentTypeIndication” element for the Purpose(s) of Signature. The Purpose can be the action being attested to, or the role associated with the signature. The value shall come from ASTM E1762-95(2013). 
-The Signature.type shall contain the same values as committmentTypeIndication.
+Подпись должна включать в себя элемент "“CommitmentTypeIndication"для указания назначения (назначений) подписи. Назначение может быть заверяемым действием, или ролью, связанной с цифровой подписью. Значение нужно брать из ASTM E1762-95(2013). 
+Signature.type содержит те же значения, что и committmentTypeIndication.
+<!-- The Signature Shall include a “CommitmentTypeIndication” element for the Purpose(s) of Signature. The Purpose can be the action being attested to, or the role associated with the signature. The value shall come from ASTM E1762-95(2013). 
+The Signature.type shall contain the same values as committmentTypeIndication. -->
 </p>
 <p>
-There are three levels of signature verification: 
+Есть три уровня проверки подписи:
+<!-- There are three levels of signature verification:  -->
 <ol>
-   <li>	verifying that the Digital Signature block itself has integrity through verifying the signature across the XML-Signature, </li>
-   <li> confirming that the signer was authentic, not revoked, and appropriate to the signature purpose, </li>
-   <li> confirming that the signed content of interest are unmodified using the hash algorithm.</li>
+   <li>проверка того, что сам блок Digital Signature имеет целостность, верификацией подписи через XML-подпись,
+   <!-- verifying that the Digital Signature block itself has integrity through verifying the signature across the XML-Signature,  --></li>
+   <li>подтверждение, что подписавшая сторона подлинна, не была отозвана, и соответствует назначению подписи,
+   <!-- confirming that the signer was authentic, not revoked, and appropriate to the signature purpose,  --></li>
+   <li>подтверждение, что интересуемое подписанное содержимое не изменялось, с помощью алгоритма хеширования.
+   <!-- confirming that the signed content of interest are unmodified using the hash algorithm. --></li>
 </ol>
 </p>
 <p>
-Deviations from these guidelines would need to be expressed in site policy, and would be enumerated in the XML-Signature block. 
-For example some environments may choose a different XAdES profile, hashing algorithm, policy identifier, or signature purpose vocabulary. 
+Отклонения от этих принципов должны быть выражены в политике сайта, и будет перечислены в блоке XML-Signature.
+Например, некоторые среды могут выбрать другой профиль XAdES, алгоритм хэширования, идентификатор политики или справочник назначений подписи.
+<!-- Deviations from these guidelines would need to be expressed in site policy, and would be enumerated in the XML-Signature block. 
+For example some environments may choose a different XAdES profile, hashing algorithm, policy identifier, or signature purpose vocabulary.  -->
 </p>
 <div class="use">
 <p><b>Ограничения</b></p>
