@@ -156,29 +156,32 @@ GET fhir/Questionnaire/234
 &lt;/Questionnaire&gt;
 </pre>
 <p>
-This specifies that the values for a particular questionnaire come from the 
+Здесь указывается, что значения для конкретного вопросника идут из набора значений с идентификатором 234234 в той же FHIR-точке взаимодействия. Для разрешения этой ссылки система выполнит GET fhir/ValueSet/234234
+<!-- This specifies that the values for a particular questionnaire come from the 
 ValueSet with id 234234 on the same FHIR end-point. To resolve this, the
-system would GET fhir/ValueSet/234234
+system would GET fhir/ValueSet/234234 -->
 </p>
 <p>
-Typically, a direct reference like this is good for in-process references, in closed
+Обычно прямые ссылки как эта подходят для внутрипроцессных ссылок, в закрытых или тщательно контролируемых экосистемах. В более общем контексте эти ссылки склонны к ломкости с течением времени, так как веб-URL - включая RESTful API URLS - лекго переназначаются. По этой причине системам поощряется использовать логические ссылки на наборы значений.
+<!-- Typically, a direct reference like this is good for in-process references, in closed
 or carefully managed eco-systems. In a more general context, these references tend 
 to be fragile over time because web URLs - including RESTful API URLS - are easily
-reassigned. For this reason, systems are encouraged to use logical value set references. 
+reassigned. For this reason, systems are encouraged to use logical value set references.  -->
 </p>
 
 <a name="logical"> </a>
-<h4>Logical Value Set references</h4>
+<h4>Логические ссылки на наборы значений<!-- Logical Value Set references --></h4>
 <p>
-A logical value set reference has the type <a href="datatypes.html#uri">uri</a>, 
+Логическая ссылка на набор значений имеет тип <a href="datatypes.html#uri">uri</a>, где указывается абсолютный URI, который соответствует тому, что указывается в ValueSet.url. URL набора значений может быть - и предпочтительно, чтобы был - веб-адресом, который на самом деле разрешается прямо в фиксированный веб-адрес, который служит в качестве официального источника для этого набора значений. Кроме того, система может запросить терминологический сервер(-ы) разрешить набор значений по этому URL в качестве его идентификатора.
+<!-- A logical value set reference has the type <a href="datatypes.html#uri">uri</a>, 
 where an absolute URI is provided that matches the one in ValueSet.url. The 
 value set URL can - and is preferred to be - a web address that actually resolves
 directly to a fixed web address that serves as the authoritative source for that
 value set. Alternatively, the system can query its terminology server(s) to
-resolve a value set with that URL as its identity.
+resolve a value set with that URL as its identity. -->
 </p>
 <p>
-Example:
+Пример:
 </p>
 <pre>
 &lt;StructureDefinition&gt;
@@ -195,84 +198,98 @@ Example:
 &lt;/StructureDefinition&gt;
 </pre>
 <p>
-This specifies that the element is bound to the value set with a Value.url of
+Здесь указывается, что элемент привязан к набору значений с Value.url = <a href="http://hl7.org/fhir/vs/clinical-findings">http://hl7.org/fhir/vs/clinical-findings</a>. Один из способов получить доступ к этому набору значений - это попытаться выполнить запрос GET http://hl7.org/fhir/vs/clinical-findings, который работает, для этого набора значений - http://hl7.org/fhir/vs/clinical-findings вернет официальный набора значений для этого URL.
+<!-- This specifies that the element is bound to the value set with a Value.url of
 <a href="http://hl7.org/fhir/vs/clinical-findings">http://hl7.org/fhir/vs/clinical-findings</a>. One way to accees this value set is 
 to try GET http://hl7.org/fhir/vs/clinical-findings - which works, for this value set - http://hl7.org/fhir/vs/clinical-findings 
-returns the authoritative value set for this URL. 
+returns the authoritative value set for this URL.  -->
 </p>
-<p>
-Alternatively, the value set could be resolved using a local terminology server.
+<p>Кроме того, набор значений может быть разрешен с помощью локального терминологического сервера.
+Если это работающий <a href="terminology-service.html">Терминологический сервер FHIR</a>,
+то это будет работать следующим образом:
+<!-- Alternatively, the value set could be resolved using a local terminology server.
 If that's running a <a href="terminology-service.html">FHIR Terminology Server</a>,
-then this would work like this:
+then this would work like this: -->
 </p>
 <pre>
 GET fhir/ValueSet?url=http://hl7.org/fhir/vs/clinical-findings
 </pre>
 <p>
-if the terminology server knows the value set, then it will return the value set.
+Если терминологическому серверу известен указанный набор значений, то он вернет этот набор значений.
+Если URL не разрешается в официальный набор значений, и терминологическому серверу(-ам) не известен этот набор значений, система не в состоянии разрешить такой набор значений и должна обработать ошибку соответствующим образом.
+<!-- if the terminology server knows the value set, then it will return the value set.
 If the URL doesn't resolve to an authoritative value set, and the terminology
 server(s) don't know the value set, the system is unable to resolve
-the value set and must handle the error appropriately. 
+the value set and must handle the error appropriately.  -->
 </p>
 <p>
-The value set URL is allowed to be a URI such as a UUID (e.g. urn:uuid:c0e0d027-1250-4278-8f44-33a49dc67916).
+В качестве URL набора значений допускается использовать URI, к примеру, UUID (например urn:uuid:c0e0d027-1250-4278-8f44-33a49dc67916).
+К таким наборам значений нельзя получить прямой доступ, они должны приходить из терминологического сервера. Обратите внимание, что данная спецификация определяет много наборов значений, имеющих неразрешаемый логический URL (примеры из <a href="snomedct.html#implicit">SNOMED CT</a>, <a href="rxnorm.html#implicit">RxNorm</a>, <a href="loinc.html#implicit">LOINC</a>).
+<!-- The value set URL is allowed to be a URI such as a UUID (e.g. urn:uuid:c0e0d027-1250-4278-8f44-33a49dc67916).
 These value sets can never be accessed directly, and must come from a terminology server. Note
 that this specification defines many value sets that have a logical URL that is not resolvable
-(examples for <a href="snomedct.html#implicit">SNOMED CT</a>, <a href="rxnorm.html#implicit">RxNorm</a>, <a href="loinc.html#implicit">LOINC</a>)
+(examples for <a href="snomedct.html#implicit">SNOMED CT</a>, <a href="rxnorm.html#implicit">RxNorm</a>, <a href="loinc.html#implicit">LOINC</a>) -->
 </p>
 <p>
-Using a logical reference which is a direct reference to the authoritative value set 
+Использование логической ссылки, являющейся прямой ссылкой на официальный набор значений - это простейший и наиболее надежный подход. Однако он требует подходящих настроек хостинга и не всегда может быть гарантирован, поэтому он не является обязательным.
+<!-- Using a logical reference which is a direct reference to the authoritative value set 
 is the easiest and most reliable approach. However this requires suitable hosting 
-arrangements, and cannot always be guaranteed, so it is not required.
+arrangements, and cannot always be guaranteed, so it is not required. -->
 </p>
-<p><b>Version specific Logical References</b></p>
+<p><b>Версионные логические ссылки<!-- Version specific Logical References --></b></p>
 <p>
-A value set has a two part identifier: a url, and a version. Some value sets only 
+Идентификатор набора значений содержит две части: URL-адрес и версию. Некоторые наборы значений всегда имеют только одну "версию"; правка содержимого такого набора значений приведет к присвоению нового URL. Другие, однако, поддерживают один и тот же URL, но меняют версию. Терминологический сервер может иметь несколько наборов значений для одного ValueSet.url с различными версиями.
+<!-- A value set has a two part identifier: a url, and a version. Some value sets only 
 ever have a single 'version'; a revision of the value set contents will cause 
 a new url to be assigned. Others, however, maintain the same URL, and change
 the version. A terminology server may have multiple value sets for the same 
-ValueSet.url with different versions. 
+ValueSet.url with different versions.  -->
 </p>
 <p>
-To be precise about which version of a value set is being referred to in 
-a value set reference, append the the version to the logical url like this:
+Для уточнения, на какую версию набора значений идет ссылка, добавьте версию к логическому URL следующим образом:
+<!-- To be precise about which version of a value set is being referred to in 
+a value set reference, append the the version to the logical url like this: -->
 </p>
 <pre>
 &lt;valueSetUri value=&quot;http://hl7.org/fhir/vs/clinical-findings?version=0.8&quot;/&gt;
 </pre>
 <p>
-This is a version specific reference to a value set. Searching
-for this on a terminology server would look like this:
+Это ссылка на конкретную версию набора значений. Поиск такого набора значений на терминологическом сервере будет выглядеть следующим образом:
+<!-- This is a version specific reference to a value set. Searching
+for this on a terminology server would look like this: -->
 </p>
 <pre>
 GET fhir/ValueSet?url=http://hl7.org/fhir/vs/clinical-findings&amp;version=0.8
 </pre>
 <p>
-Note that if a value set reference does not have a version, and the server finds multiple
+Заметим, что если ссылка на набор значений не имеет версии, и сервер находит несколько версий для набора значений, система, использующая этот набор значений, должна выбрать последнюю версию этого набора значений и использовать его.
+<!-- Note that if a value set reference does not have a version, and the server finds multiple
 versions for the value set, the system using the value set should pick the latest version
-of the value set and use that.
+of the value set and use that. -->
 </p>
 
 <a name="strength"> </a>
 
-<h2>Binding Strengths</h2>
+<h2>Степень привязки<!-- Binding Strengths --></h2>
 <p>
-Almost all of the elements that have a coded data type are bound to a value set. The bindings
+Практически все элементы, которые имеют кодированный тип данных, привязываются к набору значений. Эти привязки различаются по степени гибкости: насколько жестко необходимо следовать набору значений:
+<!-- Almost all of the elements that have a coded data type are bound to a value set. The bindings
 are associated with various degrees of flexibility as to how closely the value set should be 
-followed:
+followed: -->
 </p>
 <table class="grid">
- <tr><td>required</td><td>To be conformant, instances of this element SHALL include a code from the specified value set</td></tr>
- <tr><td>extensible</td><td>To be conformant, instances of this element must include a code from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the valueset does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead.</td></tr>
- <tr><td>preferred</td><td>Instances are encouraged, to draw from the specified codes for interoperability purposes but are not required to do so to be considered conformant</td></tr>
- <tr><td>example</td><td>Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included</td></tr>
+ <tr><td>required</td><td>Для совместимости экземпляры этого элемента ДОЛЖНЫ включать код из заданного набора значений<!-- To be conformant, instances of this element SHALL include a code from the specified value set --></td></tr>
+ <tr><td>extensible</td><td>Для совместимости экземпляры этого элемента должны включать код из указанного набора значений, если есть подходящий код в этом наборе значений для передаваемого концепта. Если набор значений не содержит подходящего для этого концепта кода (с точки зрения человека), то вместо него могут быть включены альтернативные кодинги (или типы данных, позволяющие ввод текста).<!-- To be conformant, instances of this element must include a code from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the valueset does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead. --></td></tr>
+ <tr><td>preferred</td><td>Поощряется в экземплярах использовать указанные коды в целях совместимости, но не обязательно делать это, чтобы они считались совместимыми<!-- Instances are encouraged, to draw from the specified codes for interoperability purposes but are not required to do so to be considered conformant --></td></tr>
+ <tr><td>example</td><td>Не ожидается и даже не поощряется в экземплярах использовать указанный набор значений. Такой набор значений просто показывает примеры типов концептов, предназначенных для использования <!-- Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included --></td></tr>
 </table>
 <p>
-Irrespective of the binding strength, when a <a href="structuredefinition.html">StructureDefinition</a> is used 
+Независимо от степени привязки, когда для описания локального применения используется <a href="structuredefinition.html">StructureDefinition</a>, он может привязать элемент к другому набору значений, чтобы более точно указать, какие именно кодированные значения могут быть использованы для этих элементов, и/или повысить силу привязки. Для этого существуют различные правила в зависимости от степени привязки, как описано ниже. Вообще ожидается, что юрисдикции, проекты и поставщики будут работать вместе, чтобы выбрать актуальные рабочие наборы значений.
+<!-- Irrespective of the binding strength, when a <a href="structuredefinition.html">StructureDefinition</a> is used 
 to describe local usage, it can bind the element to a different value set in order to be much more precise about
 exactly which coded values can be used for these elements, and/or increase the strength of the binding. There are different rules for this, depending on the 
 binding strength, as discussed below.  Generally it is expected that jurisdictions, projects and vendors
-will work together to choose actual working value sets. 
+will work together to choose actual working value sets.  -->
 </p>
 
 <a name="required"> </a>

@@ -2,7 +2,7 @@
 
 
       
-[%settitle Implementation Details%]
+[%settitle Детали реализации%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -40,7 +40,7 @@
   </tr>
 
   <tr>
-    <td><a href="fhir-v<%version%>.epub">Спецификация FHIR для электронных кних (FHIR Book)</a></td>
+    <td><a href="fhir-v<%version%>.epub">Спецификация FHIR для электронных книг (FHIR Book)</a></td>
     <td>Спецификация FHIR в формате электронной книги (epub). Программы для чтения epub:
     <!-- The FHIR Specification as an e-book for convenient reading. Help for handling epub: -->
     <a href="http://pcsupport.about.com/od/fileextensions/f/epubfile.htm">PC</a>, 
@@ -94,11 +94,11 @@
     В помощь разработчикам были созданы эталонные реализации стандарта. "Эталонные" FHIR-серверы могут использоваться на практике в клинических целях, однако организация HL7 и разработчики реализаций снимают с себя всю ответственность за возможные последствия. Эти реализации предоставляются по стандартной, одобренной OSI лицензии (пункт 3 BSD).
 <br/> 
 <br/> 
-<span style="color: Maroon">Обратите внимание, что эти эталонные реализации представлены для помощи в реализации спецификации и поддерживаются командой проекта FHIR, но не являются частью спецификации,  реализациям не требуется соответствовать им, и они не подлежат официальному продвижению стандартов.
-Note that these reference implementations are provided to assist to 
+<span style="color: Maroon">Обратите внимание, что эталонные реализации представлены для помощи в реализации спецификации и поддерживаются командой проекта FHIR, но не являются частью спецификации, реализациям не требуется соответствовать им, и они не подлежат официальному продвижению стандартов.
+<!-- Note that these reference implementations are provided to assist to 
 implementers to adopt the specification, and are maintained by the FHIR project team, but are not 
 part of the specification, and implementations are not required to conform to these, nor are they 
-subject to the formal standards process.</span>
+subject to the formal standards process. --></span>
 <br/> 
 <br/>     
     </td>
@@ -108,25 +108,23 @@ subject to the formal standards process.</span>
   
 </table>
 <p>
-Другие эталонные (базовые) реализации, не распространяемые вместе со спецификацией:
-Other reference implementations not distributed with the specification:
+Другие эталонные реализации, не распространяемые вместе со спецификацией:
+<!-- Other reference implementations not distributed with the specification: -->
 </p>
 <ul>
- <li><a href="https://github.com/smart-on-fhir/Swift-FHIR">Swift-FHIR</a> - reference implementation for <a href="https://developer.apple.com/swift/">Swift</a></li>
- <li><a href="http://jamesagnew.github.io/hapi-fhir/">HAPI-FHIR</a> - reference implementation for <a href="https://www.oracle.com/java/index.html">Java</a></li>
+ <li><a href="https://github.com/smart-on-fhir/Swift-FHIR">Swift-FHIR</a> - эталонная реализация для <a href="https://developer.apple.com/swift/">Swift</a></li>
+ <li><a href="http://jamesagnew.github.io/hapi-fhir/">HAPI-FHIR</a> - эталонная реализация для <a href="https://www.oracle.com/java/index.html">Java</a></li>
 </ul>
 <hr/>
 <p>
-Следует отметить, что эталонные реализации обычно ограничиваются визуальным представлением содержимого ресурсов в нативной форме, и их парсингом и сериализацией в XML и JSON. Некоторые из этих реализаций 
-поддерживают построение с помощью  определений ресурсов. В некоторые реализации входит клиентское приложение, которое поддерживает RESTful API.
+Следует отметить, что эталонные реализации обычно ограничиваются визуальным представлением содержимого ресурсов в нативной форме, и их парсингом и сериализацией в XML и JSON. Некоторые из этих реализаций поддерживают построение с помощью  определений ресурсов. В некоторые реализации входит клиентское приложение, которое поддерживает RESTful API.
 </p>
 <p>
 Полноценные открытые реализации FHIR, некоторые из которых используют эти базовые реализации, перечислены в
 <a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">wiki-разделе сайта HL7</a>.
 </p>
 <p>
-Для обеспечения соответствия не обязательно пользоваться этими конкретными реализациями. Разрешается применять
-любые подходы, включая генерацию кода из схем.
+Для обеспечения соответствия не обязательно пользоваться этими конкретными реализациями. Разрешается применять любые подходы, включая генерацию кода из схем.
 </p>
 
 </div>
