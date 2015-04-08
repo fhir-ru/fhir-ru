@@ -76,8 +76,9 @@ API состоит из набора операций (взаимодейств�
  <li>Содержимое внутри фигурных скобок {} является необязательным</li>
 </ul>
 <p>
-Implementations constructing URLs using these patterns SHOULD conform to <a href="https://tools.ietf.org/html/rfc3986#appendix-A">RFC 3986 Section 6 Appendix A</a>
-which requires percent-encoding for a number of characters that occasionally appear in the URLs (mainly in search parameters).
+Реализации, строящие URL-адреса по этим паттернам, ДОЛЖНЫ соответствовать <a href="https://tools.ietf.org/html/rfc3986#appendix-A">RFC 3986 Section 6 Appendix A</a>, который требует процентной кодировки для символов, которые иногда появляются в URL-адресах (преимущественно в параметрах поиска).
+<!-- Implementations constructing URLs using these patterns SHOULD conform to <a href="https://tools.ietf.org/html/rfc3986#appendix-A">RFC 3986 Section 6 Appendix A</a>
+which requires percent-encoding for a number of characters that occasionally appear in the URLs (mainly in search parameters). -->
 </p>
 <a name="root"> </a>
 <a name="general"> </a>
@@ -116,8 +117,9 @@ https://server/path/Patient
   <tr><td><a href="resource.html#metadata">Version Id (.meta.versionId)</a></td><td>Version Id представлен в заголовке <code>ETag</code>. Его СЛЕДУЕТ также возвращать в виде абсолютного канонического URL в заголовке запроса "Content-Location" (см. <a href="#vread">vread</a> ниже)</td></tr>
   <tr><td>Дата последней модификации (.meta.lastUpdated)</td><td>HTTP  заголовок - "Last-Modified"</td></tr>
 </table>
-<p>Note that the Version Id is considered a "weak" ETag and <code>ETag</code> headers
-	should be prefixed with "W/" and enclosed in quotes, for example:</p>
+<p>Обратите внимание, что Version Id считается «слабым» ETag-ом и <code>ETag</code> -заголовки должны быть с префиксом "W/" и заключены в кавычки, например:
+<!-- Note that the Version Id is considered a "weak" ETag and <code>ETag</code> headers
+	should be prefixed with "W/" and enclosed in quotes, for example: --></p>
 <pre>
 ETag: W/"3141"
 </pre>
@@ -126,10 +128,11 @@ ETag: W/"3141"
 Использование HTTPS является необязательным, но для передачи любых реальных медицинских данных ДОЛЖЕН быть использован SSL и, при необходимости, другие дополнительные предосторожности. См. <a href="security.html#http">Безопасность HTTP </a> для более детальной информации.
 </p>
 <p>
-The choice of whether to return 403 or 404 depends upon the specific situation and specific 
+Выбор, что возвращать - 403 или 404 - зависит от конкретной ситуации и локальной политики, норм и законов. Решение, какую ошибку использовать, будет включать в себя рассмотрение вопроса, считается ли обнаружение наличия соответствующих записей приемлемым раскрытием PI или запрещенным разглашением PI.
+<!-- The choice of whether to return 403 or 404 depends upon the specific situation and specific 
 local policies, regulations, and laws. The decision of which error to use will include consideration 
 of whether disclosure of the existence of relevant records is considered an acceptable 
-disclosure of PI or  a prohibited disclosure of PI.
+disclosure of PI or  a prohibited disclosure of PI. -->
 </p>
 <p>
 Примечание: для поддержки браузерных клиентских приложений сервер ДОЛЖЕН реализовывать <a href="http://enable-cors.org/">Кросс-доменный доступ к ресурсам</a>.  
@@ -405,7 +408,8 @@ returning HTTP status codes accordingly (usually a 422).
 <!-- Note: Servers MAY choose to preserve XML comments, instructions, and formatting or JSON whitespace when accepting updates, but are not required to do so. The impact of this on digital signatures may need to be considered. -->
 </p>
 <p>
-For additional information on how systems may behave when processing updates, refer to the <a href="updates.html">Create and Update Behavior</a> page.
+Для получения дополнительной информации о том, как системы могут вести себя при обработке обновления, обратитесь к странице <a href="updates.html">Механизм создания и обновления</a> .
+<!-- For additional information on how systems may behave when processing updates, refer to the <a href="updates.html">Create and Update Behavior</a> page. -->
 </p>
 
 <a name="versionaware"> </a>
@@ -572,9 +576,10 @@ from doing so (see <a href="resource.html#meta">metadata description</a>  for fu
   -->
 </p>
 <p>
-A server SHOULD accept the resource as submitted when it accepts the create, and return the same
+Сервер ДОЛЖЕН принимать ресурс в том виде, в котором он был отправлен, когда он разрешает операцию create, и возвращать то же самое содержимое, когда впоследствии он будет показан операцией чтения. Однако некоторые системы могут быть не в состоянии делать это; см. примечание к <a href="#transactional-integrity">транзакционной целостности</a> для обсуждения.
+<!-- A server SHOULD accept the resource as submitted when it accepts the create, and return the same
 content when it is subsequently read. However some systems may not be able to do this; see
-the note on <a href="#transactional-integrity">transactional integrity</a> for discussion.
+the note on <a href="#transactional-integrity">transactional integrity</a> for discussion. -->
 </p>
 <p>
 Сервер возвращает HTTP статус-код 201 Created и ДОЛЖЕН также вернуть заголовок <code>Location</code>, содержащий новые <a href="resources.html#metadata">Logical Id</a> и <a href="resources.html#metadata">Version Id</a> созданной версии ресурса:
@@ -675,7 +680,8 @@ creating duplicate resources for the same record. For example, a client posting 
   GET [base]/[type]{?[parameters]{&amp;_format=[mime-type]}}
 </pre>
 <p>
-This searches all resources of a particular type using the criteria represented in the parameters. 
+Это поиск всех ресурсов определенного типа с использованием критериев, представленных в параметрах.
+<!-- This searches all resources of a particular type using the criteria represented in the parameters.  -->
 </p>
 <p>
 Из-за способа, которым некоторые пользовательские агенты и прокси обрабатывают запросы <code>GET</code> и <code>POST</code>, в дополнение к методу поиска на основе GET-запроса серверы, которые поддерживают <i>search</i>, ДОЛЖНЫ также поддерживать поиск на основе <code>POST</code>-запроса:
@@ -710,31 +716,36 @@ mode</a> of <code>include</code>. -->
 </p>
 <h4>Variant Searches</h4>
 <p>
-To search a <a href="extras.html#compartments">compartment</a>, either all possible resources, or for a particular resource type, respectively:
+Для поиска <a href="extras.html#compartments">логического модуля (compartment)</a> либо всех возможных ресурсов, либо только определенного типа, соответственно:
+<!-- To search a <a href="extras.html#compartments">compartment</a>, either all possible resources, or for a particular resource type, respectively: -->
 </p>
 <pre>
   GET [base]/[Compartment]/[id]/{*?[parameters]{&amp;_format=[mime-type]}}
   GET [base]/[Compartment]/[id]/[type]{?[parameters]{&amp;_format=[mime-type]}}
 </pre>
 <p>
-For example, to retrieve all the observation resources for a particular LOINC code associated with a particular encounter:
+Например, чтобы получить все ресурсы observation для конкретного LOINC-кода, связанного с конкретным encounter:
+<!-- For example, to retrieve all the observation resources for a particular LOINC code associated with a particular encounter: -->
 </p>
 <pre>
   GET [base]/Encounter/23423445/Observation?code=2951-2  {&amp;_format=[mime-type]}
 </pre>
 <p>
-Note that there are a specific operations defined to support fetching <a href="patient-operations.html#everything">an entire patient record</a>
-or <a href="encounter-operations.html#everything">all record for an encounter</a>.
+Обратите внимание, что есть еще специфические операции, предусмотренные для поддержки выборки  <a href="patient-operations.html#everything">полной записи пациента</a> или <a href="encounter-operations.html#everything">всех записей для encounter</a>.
+<!-- Note that there are a specific operations defined to support fetching <a href="patient-operations.html#everything">an entire patient record</a>
+or <a href="encounter-operations.html#everything">all record for an encounter</a>. -->
 </p>
 <p>
-Finally, it's possible to search all resources at once:
+В заключение, можно искать все ресурсы сразу:
+<!-- Finally, it's possible to search all resources at once: -->
 </p>
 <pre>
   GET [base]?[parameters]{&amp;_format=[mime-type]}
 </pre>
 <p>
-When searching all resources at once, only the parameters defined for all resources 
-can be used.
+При поиске сразу всех ресурсов можно использовать только общие для всех ресурсов параметры.
+<!-- When searching all resources at once, only the parameters defined for all resources 
+can be used. -->
 </p>
 
 
@@ -1251,12 +1262,12 @@ In this regard, FHIR functions as a Record Format Profile as described in that s
 </ul>
 
 <a name="summary"> </a>
-<h3>Сводка<!-- Summary --></h3>
+<h3>Сводная таблица<!-- Summary --></h3>
 <p>
 Таблицы ниже представляют собой сводку всех описанных здесь взаимодействий.
 <!-- These tables present a summary of the interactions described here. -->
-
-Note that <i>all</i> requests may include an optional <code>Accept</code> header to indicate the format used for the response (this is even true for <code>DELETE</code> since an OperationOutcome may be returned).
+Обратите внимание, что <i>все</i>  запросы могут включать необязательный <code>Accept</code>-заголовок для указания формата, используемого для ответа (это справедливо даже в отношении <code>DELETE</code>, так как может быть возвращен OperationOutcome).
+<!-- Note that <i>all</i> requests may include an optional <code>Accept</code> header to indicate the format used for the response (this is even true for <code>DELETE</code> since an OperationOutcome may be returned). -->
 </p>
 
 <table class="grid">
