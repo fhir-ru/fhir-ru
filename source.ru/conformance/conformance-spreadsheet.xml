@@ -12718,7 +12718,7 @@ The set of events per messaging endpoint must be unique by the combination of co
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s151"/>
     <Cell ss:StyleID="s151"><Data ss:Type="String">Date/DateTime</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">Search parameter is on a date/time. The date format is the standard XML format, though other formats may be supported</Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">Параметр поиска по дате/времени. Формат даты - стандартный XML-формат, хотя могут поддерживаться и другие форматы<!-- Search parameter is on a date/time. The date format is the standard XML format, though other formats may be supported --></Data></Cell>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s142"/>
@@ -12729,7 +12729,7 @@ The set of events per messaging endpoint must be unique by the combination of co
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s151"/>
     <Cell ss:StyleID="s151"><Data ss:Type="String">String</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">Search parameter is a simple string, like a name part. Search is case-insensitive and accent-insensitive. May match just the start of a string. String parameters may contain spaces</Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">Параметр поиска - простая строка, например часть имени. Поиск не чувствителен к регистру и диакритическим знакам. Может совпадать только с началом строки. Строковые параметры могут содержать пробелы<!-- Search parameter is a simple string, like a name part. Search is case-insensitive and accent-insensitive. May match just the start of a string. String parameters may contain spaces --></Data></Cell>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s142"/>
@@ -12740,7 +12740,7 @@ The set of events per messaging endpoint must be unique by the combination of co
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s151"/>
     <Cell ss:StyleID="s151"><Data ss:Type="String">Token</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">Search parameter on a coded element or identifier. May be used to search through the text, displayname, code and code/codesystem (for codes) and label, system and key (for identifier). Its value is either a string or a pair of namespace and value, separated by a &quot;|&quot;, depending on the modifier used</Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">Параметр поиска по кодированному элементу или идентификатору. Может использоваться для поиска по тексту, названию для отображения, коду, паре код/кодовая система (для кодов), метке, системе и ключу (для идентификаторов). Его значением будет либо строка, либо пара пространство_имен и значение, разделенная вертикальной чертой &quot;|&quot;, в зависимости от применяемого модификатора<!-- Search parameter on a coded element or identifier. May be used to search through the text, displayname, code and code/codesystem (for codes) and label, system and key (for identifier). Its value is either a string or a pair of namespace and value, separated by a &quot;|&quot;, depending on the modifier used --></Data></Cell>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s142"><Data ss:Type="String"> </Data></Cell>
@@ -12751,7 +12751,7 @@ The set of events per messaging endpoint must be unique by the combination of co
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s151"/>
     <Cell ss:StyleID="s151"><Data ss:Type="String">Reference</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">A reference to another resource</Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">Ссылка на другой ресурс<!-- A reference to another resource --></Data></Cell>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s142"/>
@@ -12762,7 +12762,7 @@ The set of events per messaging endpoint must be unique by the combination of co
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s151"/>
     <Cell ss:StyleID="s151"><Data ss:Type="String">Composite</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">A composite search parameter that combines a search on two values together</Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">Составной параметр поиска, который сочетает в себе поиск сразу по двум значениям<!-- A composite search parameter that combines a search on two values together --></Data></Cell>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s142"/>
@@ -12773,7 +12773,7 @@ The set of events per messaging endpoint must be unique by the combination of co
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s151"/>
     <Cell ss:StyleID="s151"><Data ss:Type="String">Quantity</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">A search parameter that searches on a quantity</Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">Параметр поиска по величине<!-- A search parameter that searches on a quantity --></Data></Cell>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s142"/>
@@ -12784,7 +12784,7 @@ The set of events per messaging endpoint must be unique by the combination of co
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s151"/>
     <Cell ss:StyleID="s151"><Data ss:Type="String">URI</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">A search parameter that searches on a URI (RFC 3986)</Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">Параметр поиска по URI (RFC 3986)<!-- A search parameter that searches on a URI (RFC 3986) --></Data></Cell>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s142"/>
