@@ -12707,7 +12707,7 @@ The set of events per messaging endpoint must be unique by the combination of co
     <Cell ss:StyleID="s115"/>
     <Cell ss:StyleID="s150"/>
     <Cell ss:StyleID="s150"><Data ss:Type="String">Number</Data></Cell>
-    <Cell ss:StyleID="s150"><Data ss:Type="String">Search parameter SHALL be a number (a whole number, or a decimal)</Data></Cell>
+    <Cell ss:StyleID="s150"><Data ss:Type="String">Параметр поиска ДОЛЖЕН быть числом (целым числом либо десятичным)<!-- Search parameter SHALL be a number (a whole number, or a decimal) --></Data></Cell>
     <Cell ss:StyleID="s128"/>
     <Cell ss:StyleID="s128"/>
     <Cell ss:StyleID="s140"/>

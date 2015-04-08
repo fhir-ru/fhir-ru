@@ -18,10 +18,10 @@
 Один из основополагающих аспектов в работе FHIR - это механизм поиска набора ресурсов. Операции поиска ищут в существующем наборе ресурсов в соответствии с критериями поиска, переданными в качестве параметров механизму поиска. На этой странице задокументирована система поиска FHIR от простых примеров до самых сложных случаев. Реализациям требуется внедрить только ту степень сложности, которая им необходима.
 </p>
 
-<h3>Summary Table</h3>
+<h3>Сводная таблица</h3>
 
 <table class="grid">
-<tr><td><b>Search Parameter Types</b></td><td><b>Parameters for all resources</b></td><td><b>Search result parameters</b></td></tr>
+<tr><td><b>Типы параметров поиска</b></td><td><b>Параметры для всех ресурсов</b></td><td><b>Параметры результатов поиска</b></td></tr>
 <tr>
 <td>
 <%codetoc SearchParamType%>
@@ -48,7 +48,7 @@
 </tr>
 </table>
 
-<h3>Introduction</h3>
+<h3>Введение</h3>
 <p>
 В простейшем случае поиск выполняется операцией GET в RESTful-системе:
 </p>
@@ -75,8 +75,7 @@
 <a name="all"> </a>
 <h4>Параметры для всех ресурсов</h4>
 <p>
-Эти параметры <a href="resource.html#search">описаны здесь</a> и применяются ко всем ресурсам: [%allparams%]. In addition, the search 
-parameter <a href="#text">_text</a> and <a href="#filter">_filter</a>, (documented below) also applies to all resources (as do the search result parameters). 
+Эти параметры <a href="resource.html#search">описаны здесь</a> и применяются ко всем ресурсам: [%allparams%]. Кроме того, параметры поиска  <a href="#text">_text</a> и <a href="#filter">_filter</a>, (задокументированы ниже) также применяются ко всем ресурсом (как и параметры результатов поиска). 
 </p>
 <a name="id"> </a>
 <p>
@@ -183,7 +182,7 @@ parameter <a href="#text">_text</a> and <a href="#filter">_filter</a>, (document
  <li>Для лексемы (token): ":text" (совпадение совершает частичные поиски по части text в CodeableConcept или 
 части display в Coding), вместо поиска по умолчанию, который использует коды. Other define modifiers are ":in", ":below", ":above", ":in" and ":not-in" which are described below</li>
  <li>Для ссылки: ":[type]", где [type] - это имя типа ресурса.</li>
- <li>For uri: ":below", ":above" indicate that instead of an exact match, either the search term left matches the value, or vice-versa</li>
+ <li>Для uri: ":below", ":above" означают, что вместо точного совпадения либо search term left соответствует значению, либо наоборот</li>
 </ul>
 
 <a name="number" />
@@ -232,7 +231,7 @@ value in a URL). Примеры:
  <li>Поиски по параметру даты всегда находят совпадения на основе поведения интервалов, как изложено ниже:
    <ul>
      <li>Для [parameter]=[date] требование состоит в том, что интервал поиска полностью содержит время цели, т. е.  [parameter]=2013-01-14 включает в себя 2013-01-14T00:00 (что очевидно) и также 2013-01-14T10:00, однако не 2013-01-15T00:00</li>
-     <li>For [parameter]=!=[date], the requirement is that the search interval does not fully contain the time of the target. i.e. [parameter]=!=2013-01-14 includes 2013-01-15T00:00 but not 2013-01-14T00:00 or 2013-01-14T10:00</li>
+     <li>Для [parameter]=!=[date], требование состоит в том, что интервал поиска не содержит целевое время полностью, т. е. [parameter]=!=2013-01-14 включает в себя 2013-01-15T00:00, но не 2013-01-14T00:00 или 2013-01-14T10:00</li>
 
 
 	 <li>Для "[parameter]=&lt;[date]" требование состоит в том, что интервал времени до [date] пересекается (т. е. накладывается) с интервалом времени в соответствующем элементе ресурса. Например время ресурса 2013-01-14 включается в набор значений, которые идут ранее 2013-01-14T10:00, потому что он включает часть 14-Jan 2013 до 10am</li>
@@ -283,20 +282,24 @@ value in a URL). Примеры:
 <a name="uri" />
 <h4>uri</h4>
 <p>
-The uri parameter refers to an element which is URI (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>).
+Параметр URI относится к элементу, который является URI (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>). Совпадения являются точными (например чувствительность к регистру, диакритическим знакам, экранированию), и весь URI целиком должен совпадать. Могут быть использованы модификаторы :above или :below для указания левостороннего совпадения. Например:
+<!-- The uri parameter refers to an element which is URI (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>).
 Matches are precise (e.g. case, accent, and escape) sensitive, and the entire URI must match. 
 The modifier :above or :below can be used to indicate
-that the match is based on left. For example:
+that the match is based on left. For example: -->
 </p>
 <pre>
  GET [base]/ValueSet?url=http://acme.org/fhir/ValueSet/123
  GET [base]/ValueSet?url:below=http://acme.org/fhir/
 </pre>
 <p>
-The first is a request to find any value set with the exact url "http://acme.org/fhir/ValueSet/123". 
+Первый запрос для поиска любого набора значений с точным URL "http://acme.org/fhir/ValueSet/123". 
+Второй поиск вернет любые наборы значений, у которых URL начинается с "http://acme.org/fhir/".
+Обратное утверждение - поиск любого набора значений, кроме данного конкретного URL - может быть полезным для поиска name systems, но это, как правило, менее полезно, чем поиск с параметром :below.
+<!-- The first is a request to find any value set with the exact url "http://acme.org/fhir/ValueSet/123". 
 The second search will return any value sets that have a URL that starts with "http://acme.org/fhir/".
 The converse - the search for any value set above a given specific URL - may be useful for searching
-name systems, but it is generally less useful than the :below search. 
+name systems, but it is generally less useful than the :below search.  -->
 </p>
 
 <a name="token" />
