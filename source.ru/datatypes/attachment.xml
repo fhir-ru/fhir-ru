@@ -1010,7 +1010,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">MIME-тип содержимого с кодировкой и проч.<!-- Mime type of the content, with charset etc. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">MIME-тип содержимого с кодировкой и проч<!-- Mime type of the content, with charset etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет тип данных во вложении и позволяет выбрать метод интерпретации или отображения данных. Включает в себя параметры типа MIME, такие как кодировка, там, где это необходимо<!-- Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
