@@ -3723,7 +3723,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">If a code for the units is present, the system SHALL also be present</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Если указан код единицы измерений, ТРЕБУЕТСЯ также указать и систему<!-- If a code for the units is present, the system SHALL also be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">code.oclIsDefined implies system.oclIsDefined</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

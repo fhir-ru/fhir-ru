@@ -962,13 +962,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Concept - reference to a terminology or just  text</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Концепт - ссылка на справочник или просто текст<!-- Concept - reference to a terminology or just  text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Концепт, который может быть определен с помощью формальной ссылки на справочник или онтологию, либо может быть предоставлен в виде текста<!-- A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Это общая закономерность в здравоохранении - понятие, которое может быть определено одним или несколькими кодами из формальных определений, включая LOINC и SNOMED CT, и/или определено путем предоставления текста, который передает человеческое понимание этого понятия<!-- This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Не всякое использование справочников соответствует этой общей схеме. В некоторых случаях модели не должны использовать CodeableConcept, а использовать непосредственно Кодинг и приводить свою собственную структуру для управления текстом, кодингами, переводами и отношениями между элементами, а также пред- и посткоординации<!-- Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">CD</Data><NamedCell
@@ -3694,7 +3694,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Only one coding in a set can be chosen directly by the user</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Только один кодинг из набора может быть выбран непосредственно пользователем<!-- Only one coding in a set can be chosen directly by the user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">codings.collect(primary = true)-&gt;size() &lt;= 1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

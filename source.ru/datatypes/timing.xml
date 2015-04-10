@@ -971,13 +971,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A timing schedule that specifies an event that may occur multiple times</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Расписание для события, которое может наступить несколько раз<!-- A timing schedule that specifies an event that may occur multiple times --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Specifies an event that may occur multiple times. Timing schedules are used to record when things are expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Определяет событие, которое может произойти несколько раз. Расписания используются для записи времени ожидаемого или запрошенного события. Наиболее распространенным будет использование расписаний в инструкции по дозировке для лекарств. Они также используются при планировании медицинского ухода различного вида<!-- Specifies an event that may occur multiple times. Timing schedules are used to record when things are expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to able to track proposed timing schedules. There are several different ways to do this: one or more specified times, a simple rules like three times a day, or  before/after meals</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Нужно иметь возможность отслеживать предложенные календарные графики. Есть несколько различных способов сделать это: указать один или несколько моментов времени, простые правила наподобие "три раза в день" или "до/после еды"<!-- Need to able to track proposed timing schedules. There are several different ways to do this: one or more specified times, a simple rules like three times a day, or  before/after meals --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A timing schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria or just repeating criteria with no actual event.  When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Расписание может быть либо списком событий - интервалы, в которые происходит событие, или одно событие с критериями повтора, или просто критерии повтора без самого события. Когда указывается и событие, и спецификация его повтора, перечень событий следует понимать как интерпретацию информации из структуры repeat<!-- A timing schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria or just repeating criteria with no actual event.  When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">QSET&lt;TS&gt; (GTS)</Data><NamedCell
@@ -1005,11 +1005,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the event occurs</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда происходит событие<!-- When the event occurs --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies specific times when the event occurs</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет конкретное время, когда происходит событие<!-- Identifies specific times when the event occurs --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">In an MAR, for instance, you need to take a general specification, and turn it into a precise specification</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">В MAR, например, вы должны принять общее описание и превратить его в точную спецификацию <!-- In an MAR, for instance, you need to take a general specification, and turn it into a precise specification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1036,11 +1036,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the event is to occur</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда именно произойдет событие<!-- When the event is to occur --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A set of rules that describe when the event should occur</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Набор правил, которые описывают, когда должно произойти событие<!-- A set of rules that describe when the event should occur --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Many timing schedules are determined by regular repetitions</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Многие расписания задаются регулярными повторами<!-- Many timing schedules are determined by regular repetitions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1069,9 +1069,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Start and/or end limits</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Начальный и/или конечный пределы<!-- Start and/or end limits --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Outer bounds for start and/or end limits of the timing schedule</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешние границы начала и/или окончания расписания<!-- Outer bounds for start and/or end limits of the timing schedule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1100,13 +1100,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Number of times to repeat</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество повторов<!-- Number of times to repeat --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A total count of the desired number of repetitions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общее число требуемого количества повторений<!-- A total count of the desired number of repetitions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Repetitions may be limited by end time or total occurrences</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Повторы могут быть ограничены конечным временем или общим количеством событий<!-- Repetitions may be limited by end time or total occurrences --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If you have both bounds and count, then this should be understand as within the bounds period, until count times happens</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если у вас есть обе границы и количество, то это следует понимать как период в пределах этих границ, пока событие не произойдет заданное число раз<!-- If you have both bounds and count, then this should be understand as within the bounds period, until count times happens --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">PIVL.count</Data><NamedCell
@@ -1134,13 +1134,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How long when it happens</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сколько оно будет длиться<!-- How long when it happens --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">How long this thing happens for when it happens</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сколько это событие будет длиться, когда оно наступит<!-- How long this thing happens for when it happens --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Some activities are not instantaneous and need to be maintained for a period of time</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Некоторые виды деятельности происходят не мгновенно и должны поддерживаться в течение периода времени<!-- Some activities are not instantaneous and need to be maintained for a period of time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For some events the duration is part of the definition of the event (e.g. IV infusions). For others, it's part of the timing specification (e.g. exercise)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для некоторых событий продолжительность является частью определения события (например внутривенные вливания). Для других это часть спецификации расписания (например упражнение)<!-- For some events the duration is part of the definition of the event (e.g. IV infusions). For others, it's part of the timing specification (e.g. exercise) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">PIVL.phase / EIVL.offset</Data><NamedCell

@@ -3740,7 +3740,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Coding</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">If a valueSet is provided, a system URI Is required</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Если указан valueSet, то также необходимо указать и URI системы<!-- If a valueSet is provided, a system URI Is required --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not (exists(f:valueSet) and exists(f:code)) or exists(f:system)</Data><NamedCell
