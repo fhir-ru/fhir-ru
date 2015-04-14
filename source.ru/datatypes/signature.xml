@@ -693,7 +693,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">В здравоохранении есть ряд мест, где содержимое должно быть подписано<!-- There are a number of places where content must be signed in healthcare --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">The elements of the Signature Resource are for ease of access of these elements. The non-repudiation proof comes from the XML-Signature  validation, which includes validation of the referenced objects (e.g., Resources) (a.k.a., Content) in the XML-Signature Detached form.</Data><NamedCell
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Элементы ресурса Signature предназначены для облегчения доступа к этим элементам. Невозможность отказа от авторства подтверждается валидацией XML-подписи, которая включает в себя проверку упоминаемых объектов (например ресурсов) (ака содержимое) в Detached форме XML-подписи.<!-- The elements of the Signature Resource are for ease of access of these elements. The non-repudiation proof comes from the XML-Signature  validation, which includes validation of the referenced objects (e.g., Resources) (a.k.a., Content) in the XML-Signature Detached form. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s75"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s76"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -725,7 +725,7 @@
     <Cell ss:StyleID="s82"><Data ss:Type="String">Указание причины, по которой данное лицо подписало этот документ. Это может быть явно включено в качестве части информации о подписи и может быть использовано при определении ответственности за различные действия в отношении документа.<!-- An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Examples include attesting to: authorship, correct transcription, and witness of specific event. Also known as a “Commitment Type Indication”</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Примеры включают в себя заверение: авторства, правильной транскрипции и свидетеля конкретного события. Также известен как "индикация типа обязательства"<!-- Examples include attesting to: authorship, correct transcription, and witness of specific event. Also known as a “Commitment Type Indication” --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -756,7 +756,7 @@
     <Cell ss:StyleID="s82"><Data ss:Type="String">Дата подписания цифровой подписью.<!-- When the digital signature was signed.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">This should agree with the information in the signature</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Должно соответствовать информации в подписи<!-- This should agree with the information in the signature --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -787,7 +787,7 @@
     <Cell ss:StyleID="s82"><Data ss:Type="String">Ссылка на пригодное для приложения описание человека, который подписал сертификат (например цифровая подпись использовала их закрытый ключ)<!-- A reference to an application-usable description of the person that signed the certificate (e.g. the signature used their private key) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">This should agree with the information in the signature</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Должно соответствовать информации в подписи<!-- This should agree with the information in the signature --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
