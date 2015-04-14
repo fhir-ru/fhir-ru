@@ -687,11 +687,11 @@
     <Cell ss:StyleID="s73"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">An XML digital Signature</Data><NamedCell
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Электронная цифровая подпись в формате XML<!-- An XML digital Signature --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">An XML digital signature along with supporting context</Data><NamedCell
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Электронная цифровая подпись в формате XML вместе со вспомогательным контекстом<!-- An XML digital signature along with supporting context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">There are a number of places where content must be signed in healthcare</Data><NamedCell
+    <Cell ss:StyleID="s75"><Data ss:Type="String">В здравоохранении есть ряд мест, где содержимое должно быть подписано<!-- There are a number of places where content must be signed in healthcare --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">The elements of the Signature Resource are for ease of access of these elements. The non-repudiation proof comes from the XML-Signature  validation, which includes validation of the referenced objects (e.g., Resources) (a.k.a., Content) in the XML-Signature Detached form.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -720,9 +720,9 @@
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Indication of the reason the entity signed the object(s)</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Указание причины подписания объекта(-ов) сущностью<!-- Indication of the reason the entity signed the object(s) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document. </Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Указание причины, по которой данное лицо подписало этот документ. Это может быть явно включено в качестве части информации о подписи и может быть использовано при определении ответственности за различные действия в отношении документа.<!-- An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Examples include attesting to: authorship, correct transcription, and witness of specific event. Also known as a “Commitment Type Indication”</Data><NamedCell
@@ -751,9 +751,9 @@
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">When the signature was created</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Когда подпись была создана<!-- When the signature was created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">When the digital signature was signed. </Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Дата подписания цифровой подписью.<!-- When the digital signature was signed.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">This should agree with the information in the signature</Data><NamedCell
@@ -782,9 +782,9 @@
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Who signed the signature</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Кто выполнил подписание<!-- Who signed the signature --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">A reference to an application-usable description of the person that signed the certificate (e.g. the signature used their private key)</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Ссылка на пригодное для приложения описание человека, который подписал сертификат (например цифровая подпись использовала их закрытый ключ)<!-- A reference to an application-usable description of the person that signed the certificate (e.g. the signature used their private key) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">This should agree with the information in the signature</Data><NamedCell
@@ -813,12 +813,12 @@
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">The actual XML Dig-Sig</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Сама электронно-цифровая подпись в виде XML<!-- The actual XML Dig-Sig --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">The base64 encoding of the XML-Signature </Data><NamedCell
+    <Cell><Data ss:Type="String">XML-подпись в кодировке base64<!-- The base64 encoding of the XML-Signature  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Where the signed content is a FHIR Resource(s), the signature is of the XML form of the Resource(s) using  XML-Signature (XMLDIG) &quot;Detached Signature&quot; form.</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Если подписываемым содержимым является FHIR-ресурс(-ы), подписывается XML-форма ресурса(-ов) с помощью XML-подписи (XMLDIG) формы &quot;Detached Signature&quot;. <!-- Where the signed content is a FHIR Resource(s), the signature is of the XML form of the Resource(s) using  XML-Signature (XMLDIG) &quot;Detached Signature&quot; form. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
