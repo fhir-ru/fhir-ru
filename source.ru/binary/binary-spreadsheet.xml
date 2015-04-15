@@ -977,13 +977,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Pure binary content defined by sime other format than FHIR</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Чисто двоичное содержимое, определенное в некотром другом, отличном от FHIR формате <!-- Pure binary content defined by sime other format than FHIR --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A binary resource can contain any content, whether text, image, pdf, zip archive, etc</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Двоичный ресурс может содержать любую информацию, будь то текст, изображение, PDF, ZIP-архив и т. д.<!-- A binary resource can contain any content, whether text, image, pdf, zip archive, etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">There are situations where it is useful or required to handle pure binary content using the same framework as other resources</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Бывают ситуации, когда полезно или необходимо обращаться с чистым бинарным содержимым, используя для этого ту же среду, что и для других ресурсов<!-- There are situations where it is useful or required to handle pure binary content using the same framework as other resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Typically, Binary resources are used for handling content such as:&#10;&#10;* CDA Documents (i.e. with XDS)&#10;* PDF Documents&#10;* Images (the Media resource is preferred for handling images, but not possible when the content is already binary - e.g. XDS)</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Как правило, ресурсы Binary используются для обработки такого контента, как:&#10;&#10;* CDA Документы (т. е. с XDS)&#10;* Документы в формате PDF&#10;* Изображения (ресурс Media является предпочтительным для обработки изображений, но не доступен, когда содержимое уже в двоичном виде - например XDS)<!-- Typically, Binary resources are used for handling content such as:&#10;&#10;* CDA Documents (i.e. with XDS)&#10;* PDF Documents&#10;* Images (the Media resource is preferred for handling images, but not possible when the content is already binary - e.g. XDS) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">N/A</Data><NamedCell
@@ -1012,9 +1012,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MimeType of the binary content</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">MIME-тип двоичного содержимого<!-- MimeType of the binary content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">MimeType of the binary content represented as a standard MimeType (BCP 13)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">MIME-тип двоичного содержимого, представленного в виде стандартного MIME-типа (BCP 13)<!-- MimeType of the binary content represented as a standard MimeType (BCP 13) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1043,12 +1043,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The actual content</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Непосредственно само содержимое<!-- The actual content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual content, base64 encoded</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Непосредственно само содержимое в кодировке base64<!-- The actual content, base64 encoded --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the content type is itself base64 encoding, then this will be base64 encoded twice - what is created by un-base64ing the content must be the specified content type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если типом контента является сама кодировка base64, то он будет дважды в формате base64 - то, что создается base64-декодировкой содержимого, должно быть указанного контент-типа<!-- If the content type is itself base64 encoding, then this will be base64 encoded twice - what is created by un-base64ing the content must be the specified content type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
