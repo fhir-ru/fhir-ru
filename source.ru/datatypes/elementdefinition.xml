@@ -978,9 +978,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Definition of an elements in a resource or extension</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Определение элементов в ресурсе или расширения<!-- Definition of an elements in a resource or extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Captures constraints on each element within the resource, profile, or extension</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Охватывает ограничения по каждому элементу в ресурсе, профиле или расширении<!-- Captures constraints on each element within the resource, profile, or extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1016,9 +1016,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The path of the element (see the Detailed Descriptions)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Путь к элементу (см. подробное описание)<!-- The path of the element (see the Detailed Descriptions) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The path identifies the element and is expressed as a &quot;.&quot;-separated list of ancestor elements, beginning with the name of the resource or extension</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Путь идентифицирует элемент и записывается в дот нотации (разделенный точками &quot;.&quot; список элементов-предков, начиная с имени ресурса или расширения)<!-- The path identifies the element and is expressed as a &quot;.&quot;-separated list of ancestor elements, beginning with the name of the resource or extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1052,12 +1052,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How this element is represented in instances</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Как этот элемент представлен в экземплярах<!-- How this element is represented in instances --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes that define how this element is represented in instances, when the deviation varies from the normal case</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды, которые определяют, как этот элемент представлен в экземплярах при отклонении от обычного случая<!-- Codes that define how this element is represented in instances, when the deviation varies from the normal case --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This is rarely used except for special cases where the representation deviates from the normal, which is done only very reluctantly, and can only be done in the base standard (and profiles must reproduce what the base standard does)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Редко используется за исключением особых случаев, когда представление отклоняется от нормального, что делается только очень неохотно, и может быть сделано только в базовом стандарте (и профили должны воспроизводить то, что указано в базовом стандарте)<!-- This is rarely used except for special cases where the representation deviates from the normal, which is done only very reluctantly, and can only be done in the base standard (and profiles must reproduce what the base standard does) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">N/A</Data><NamedCell
@@ -1088,9 +1088,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name for this particular element definition (reference target)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя для этого конкретного определения элемента (цель ссылки)<!-- Name for this particular element definition (reference target) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя этого определения элемента (чтобы обращаться к нему из других определений элементов с помощью элемента ElementDefinition.nameReference). Это уникальное имя, ссылающееся на некоторый набор ограничений, применяемых к данному элементу. Одним из применений этого элемента является предоставление имени для различных срезов одного и того же элемента<!-- The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Allows referencing a defined element.  May also be used for code generation purposes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1125,9 +1125,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name for element to display with or prompt for element</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя элемента для отображения или подсказки<!-- Name for element to display with or prompt for element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текст, отображаемый рядом с элементом, показывающий его значение или используемый для подсказки на этом элементе на экране пользователя или на форме.<!-- The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Question and label serve similar purposes in they both can be used to prompt for capturing a data element.  Whether the question form or label form should be used will depend on the type of instrument being used to capture the information.</Data><NamedCell
@@ -1161,9 +1161,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Defining code</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определяющий код<!-- Defining code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that provides the meaning for the element according to a particular terminology.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, который передает значение элемента в соответствии с конкретной терминологией.<!-- A code that provides the meaning for the element according to a particular terminology. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Links the meaning of an element to an external terminology </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1199,9 +1199,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">This element is sliced - slices follow</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">На этом элементе выполнен слайсинг - срезы следуют далее<!-- This element is sliced - slices follow --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates that the element is sliced into a set of alternative definitions (there are multiple definitions on a single element in the base resource). The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, что элемент разрезается на несколько альтернативных определений (имеется несколько определений на одном элементе в базовом ресурсе). Набор срезов - это любые элементы, которые идут после этого, в последовательности элементов, которые имеют один и тот же путь, пока не встретится более короткий путь (более короткий путь завершает набор)<!-- Indicates that the element is sliced into a set of alternative definitions (there are multiple definitions on a single element in the base resource). The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1235,9 +1235,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Element values that used to distinguish the slices</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Значения элемента, которые используются для различения срезов<!-- Element values that used to distinguish the slices --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет, какие элементы-потомки используются для различения срезов при обработке экземпляра. Если предоставляется один или несколько дискриминаторов, значение элементов-потомков в данных экземпляра ДОЛЖНО полностью определять, какому срезу соответствует элемент в ресурсе, на основе допустимых значений для этих элементов в каждом из срезов<!-- Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">If there is no discriminator, the content is hard to process, so this should be avoided</Data><NamedCell
@@ -1272,9 +1272,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Text description of how slicing works (or not)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Текстовое описание того, как работает слайсинг (или нет)<!-- Text description of how slicing works (or not) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое текстовое описание того, как работает слайсинг. Если дискриминатора нет, то оно должно присутствовать для обеспечения любой возможной информации о том, как дифференцировать срезы<!-- A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">If it's really not possible to differentiate them, the design should be re-evaluated to make te content usable</Data><NamedCell
@@ -1308,9 +1308,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If elements must be in same order as slices</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если элементы должны идти в том же порядке, что и срезы<!-- If elements must be in same order as slices --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the matching elements have to occur in the same order as defined in the profile</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если совпадающие элементы должны идти в том же порядке, который определен в профиле<!-- If the matching elements have to occur in the same order as defined in the profile --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Order should only be required when it is a pressing concern for presentation. Profile authors should consider making the order a feature of the rules about the narrative, not the rules about the data - requiring ordered data makes the profile much less re-usable</Data><NamedCell
@@ -1347,7 +1347,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">closed | open | openAtEnd</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Разрешены ли дополнительные срезы или нет. Когда срезы упорядочены, авторы профилей могут также сказать, что дополнительные срезы разрешены только в конце<!-- Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Allowing additional elements makes for a much for flexible template - it's open for use in wider contexts, but also means that the content of the resource is not closed, and applications have to decide how to handle content not described by the profile</Data><NamedCell
@@ -1381,9 +1381,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Concise definition for xml presentation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Краткое определение для XML представления<!-- Concise definition for xml presentation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Краткое определение, которое показывается в сгенерированном XML-формате, который суммирует профили (используется по всей спецификации)<!-- A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">May change the term to provide language more appropriate to the context of the profile or to reflect slicing</Data><NamedCell
@@ -1418,9 +1418,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Full formal definition as narrative text</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Полное формальное определение в виде описательного текста<!-- Full formal definition as narrative text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обеспечивает полное объяснение смысла элемента данных для прочтения человеком. В случае элементов, полученных из существующих элементов (например ограничения), определение ДОЛЖНО быть согласовано с базовым определением, но передавать смысл элемента в конкретном контексте использования ресурса<!-- Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">To allow a user to state the usage of an element in a particular context</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1457,9 +1457,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Comments about the use of this element</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Комментарии об использовании этого элемента<!-- Comments about the use of this element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Comments about the use of the element, including notes about how to use the data properly, exceptions to proper use, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Комментарии об использовании этого элемента, в том числе заметки о том, как использовать данные надлежащим образом, исключения из надлежащего использования и т. д.<!-- Comments about the use of the element, including notes about how to use the data properly, exceptions to proper use, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">If it is possible to capture usage rules using invariants, that mechanism should be used in preference to this element</Data><NamedCell
@@ -1495,9 +1495,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Why is this needed?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для чего это нужно?<!-- Why is this needed? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Explains why this element is needed and why it's been constrained as it has</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Объясняет, почему этот элемент необходим и почему у него такие ограничения<!-- Explains why this element is needed and why it's been constrained as it has --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">This element does not describe the usage of the element (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element</Data><NamedCell
@@ -1533,9 +1533,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Other names</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Другие названия<!-- Other names --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies additional names by which this element might also be known</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет дополнительные названия, под которыми этот элемент может также быть известен<!-- Identifies additional names by which this element might also be known --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Allows for better easier recognition of the element by multiple communities, including international communities</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1572,9 +1572,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Minimum Cardinality</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Минимальная кардинальность<!-- Minimum Cardinality --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The minimum number of times this element SHALL appear in the instance</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Минимальное количество раз, которое этот элемент должен появиться в экземпляре<!-- The minimum number of times this element SHALL appear in the instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1608,9 +1608,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Maximum Cardinality (a number or *)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Максимальная кардинальность (число или *)<!-- Maximum Cardinality (a number or *) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The maximum number of times this element is permitted to appear in the instance</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Максимальное количество раз, которое этот элемент может присутствовать в экземпляре<!-- The maximum number of times this element is permitted to appear in the instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1644,9 +1644,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Data type and Profile for this element</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип данных и профиль для этого элемента<!-- Data type and Profile for this element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The data type or resource that the value of this element is permitted to be</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип данных или ресурса, которым может быть значение этого элемента<!-- The data type or resource that the value of this element is permitted to be --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The Type of the element can be left blank, in which case the type is inherited from the resource. The type can only be listed in this field if it is an allowed option in the base resource</Data><NamedCell
@@ -1685,9 +1685,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of Data type or Resource</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя типа данных или ресурса<!-- Name of Data type or Resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Name of Data type or Resource that is a(or the) type used for this element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя типа данных или ресурса, который используется для этого элемента<!-- Name of Data type or Resource that is a(or the) type used for this element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">If the element is a reference to another resource, this element contains &quot;Reference&quot;, and the profile element refers to the profile of the allowed target of the resource, which may be a reference to the general definition of a resource (e.g. http://hl7.org/fhir/StructureDefinition/Patient). There would be one pair of type/code for each allowed target resource type</Data><NamedCell
