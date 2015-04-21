@@ -4,12 +4,11 @@
 Примечания
 </h2>
 <ul>
-<li>Вопросники могут создаваться клиницистами, самим пациентом или родственниками пациента (или даже владельцем в случае с животными). Клиницисты могут создавать вопросники, где ответы предоставляются другими лицами от имени пациента. Кроме того, информация, собранная для пациента, может быть о его родственниках (например в семейном анамнезе). Таким образом, Questionnaire делает различие между автором,
-предметом/субъектом и источником информации.
+<li>QuestionnaireAnswers могут создаваться клиницистами, самим пациентом или родственниками пациента (или даже владельцем в случае с животными). Клиницисты могут создавать QuestionnaireAnswers, где ответы предоставляются другими лицами от имени пациента. Кроме того, информация, собранная для пациента, может быть о его родственниках (например в семейном анамнезе). Таким образом, QuestionnaireAnswers делает различие между автором, предметом/субъектом и источником информации.
 <!-- Questionnaires can be authored by clinicians, the patient his/herself or a patient's relatives (or even owner in the case of animals). Clinicians
 may author questionnaires, where the answers are provided by others on behalf of the patient his/herself. Additionally, information gathered for the purpose of a patient may be about the patient's relatives (e.g. in family anamnesis). Therefore, Questionnaire makes a distinction between the author,
 the subject and the source of information. --></li>
-<li>QuestionnaireAnswers может быть автономным или указывать на форму, которая определяет вопросы в <a href="questionnaire.html">Questionnaire</a>. В этом втором случае связь между вопросами и группами в двух ресурсах устанавливается с помощью элемента <code>linkId</code>.
+<li>QuestionnaireAnswers может быть автономным или указывать на форму, которая определяет вопросы <a href="questionnaire.html">Questionnaire</a>. В этом втором случае связь между вопросами и группами в двух ресурсах устанавливается с помощью элемента <code>linkId</code>.
 <!-- A QuestionnaireAnswers may be stand-alone or may point to the form that defines the questions in <a href="questionnaire.html">Questionnaire</a>.  In
 this second case, the linkage between the questions and groups in the two resources is established using the <code>linkId</code> element. --></li>
 <li>Из-за отсутствия явной поддержки вопросников в HL7v3, HL7 CDA документы часто использовали именованные разделы с Observations для моделирования Questionnaires. Сейчас вместо них в таких сценариях следует использовать ресурс QuestionnaireAnswers.
@@ -32,7 +31,7 @@ encounter gives context to the answers and can be used to relate information in 
 </h2>
 <p>
 QuestionnaireAnswers могут иметь ответы со значениями типа Attachment (вложение). Эти вложения, как правило, выбираются пользователем, отвечающим на вопросник, и этот выбор может быть сделан в неконтролируемой среде. Системы должны гарантировать, что вложение имеет нужный тип, и принимать меры предосторожности, прежде чем
-рендерить или выполнять какой-либо вложенный контент.
+отрендерить или выполнять какой-либо вложенный контент.
 <!-- QuestionnaireAnswers can have answers with values of type Attachment.  These attachments will typically be selected by the user answering the questionnaire and
 this selection may be done in an uncontrolled environment.  Systems should ensure that the attachment is of the desired type and take precautions before
 rendering or executing any attached content. -->
