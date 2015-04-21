@@ -1128,11 +1128,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тема вопросов<!-- The subject of the questions --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">О ком/чём эти вопросы<!-- The subject of the questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тема ответов вопросника. Это может быть пациент, организация, практикующий специалист, устройство и т. д. Это кто-то или что-то, к кому/чему относятся ответы, но не обязательно источник информации<!-- The subject of the questionnaire answers.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">О ком/чём этот QuestionnaireAnswers. Это может быть пациент, организация, практикующий специалист, устройство и т. д. Это кто-то или что-то, к кому/чему относятся ответы, но не обязательно источник информации<!-- The subject of the questionnaire answers.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать контекст вопросов<!-- Must know the subject context --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать контекст предмета вопросов<!-- Must know the subject context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4066,7 +4066,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">QuestionnaireAnswers.group</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Groups may either contain questions or groups but not both</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Группы могут содержать либо вопросы, либо группы, но не и то, и другое<!-- Groups may either contain questions or groups but not both --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:group) and exists(f:question))</Data><NamedCell
@@ -4623,49 +4623,49 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">QuestionnaireAnswers.status</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The status of the questionnaire answers</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Статус QuestionnaireAnswers<!-- The status of the questionnaire answers --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">authored</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireAnswers.authored</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">When the questionnaire was authored</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Когда был создан вопросник<!-- When the questionnaire was authored --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireAnswers.subject</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The subject of the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">О ком/чём этот вопросник<!-- The subject of the questionnaire --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">author</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireAnswers.author</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The author of the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Автор вопросника<!-- The author of the questionnaire --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">questionnaire</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireAnswers.questionnaire</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The questionnaire the answers are provided for</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Вопросник, к которому относятся предоставленные ответы<!-- The questionnaire the answers are provided for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireAnswers.encounter</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Encounter during which questionnaire was authored</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Encounter, во время которого был создан этот вопросник<!-- Encounter during which questionnaire was authored --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireAnswers.subject</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The patient that is the subject of the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Пациент, являющийся предметом этого вопросника<!-- The patient that is the subject of the questionnaire --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">source</Data></Cell>
@@ -6888,7 +6888,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">QuestionnaireAnswersStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Lifecycle status of the questionnaire answers</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус жизненного цикла QuestionnaireAnswers<!-- Lifecycle status of the questionnaire answers --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#questionnaire-answers-status</Data></Cell>
