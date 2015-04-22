@@ -981,9 +981,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Структурированный набор вопросов и ответы на них<!-- A structured set of questions and their answers --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Структурированный набор вопросов и ответов на них<!-- A structured set of questions and their answers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Структурированный набор вопросов и ответы на них. Вопросы упорядочены и сгруппированы в когерентных подмножества, соответствующие структуре группировки лежащих в основе вопросов<!-- A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Структурированный набор вопросов и ответов на них. Вопросы упорядочены и сгруппированы в когерентные подмножества, соответствующие структуре группировки лежащих в основе вопросов<!-- A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Для поддержки структурированной, иерархической регистрации данных, собранных с помощью электронных форм и других вопросников.<!-- To support structured, hierarchical registration of data gathered using digital forms and other questionnaires. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1055,7 +1055,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Форма, на которую отвечают<!-- Form being answered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает ресурс Questionnaire, который определяет форму, для которой предоставляются ответы<!-- Indicates the Questionnaire resource that defines the form for which answers are being provided --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает ресурс Questionnaire, определяющий форму, в которой предоставляются ответы<!-- Indicates the Questionnaire resource that defines the form for which answers are being provided --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо позволить редактирование вопросника таким образом, чтобы при этом обеспечивалось соблюдение ограничений исходной формы.<!-- Needed to allow editing of the questionnaire in a manner that enforces the constraints of the original form. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1093,7 +1093,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">in-progress | completed | amended</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус жизненного цикла ответов на вопросник в целом.<!-- The lifecycle status of the questionnaire answers as a whole. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общий статус жизненного цикла ответов на вопросник.<!-- The lifecycle status of the questionnaire answers as a whole. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Информация по вопросникам будет, возможно, собираться в течение нескольких сеансов и изменяться после того, как будет считаться завершенной. Анкеты просто с вопросами могут служить шаблонами форм, с соответствующими статусами публикации<!-- The information on questionnaires  may possibly be gathered during multiple sessions and altered after considered being finished. Questionnaires with just questions may serve as template forms, with the applicable publication statuses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

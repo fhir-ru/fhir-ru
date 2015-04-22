@@ -6647,7 +6647,7 @@ Identifies the patient, practitioner, device or any other resource that is the &
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">BasicResourceType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Codes for identifying types of resources not yet defined by FHIR</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Коды для идентификации типов ресурсов, которые еще не определены в FHIR<!-- Codes for identifying types of resources not yet defined by FHIR --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-basic-resource-type</Data></Cell>
