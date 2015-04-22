@@ -983,7 +983,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Структурированный набор вопросов и ответов на них<!-- A structured set of questions and their answers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Структурированный набор вопросов и ответов на них. Вопросы упорядочены и сгруппированы в когерентные подмножества, соответствующие структуре группировки лежащих в основе вопросов<!-- A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Структурированный набор вопросов и ответов на них. Вопросы упорядочены и сгруппированы в последовательные подмножества, соответствующие структуре группировки лежащих в основе вопросов<!-- A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Для поддержки структурированной, иерархической регистрации данных, собранных с помощью электронных форм и других вопросников.<!-- To support structured, hierarchical registration of data gathered using digital forms and other questionnaires. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

@@ -981,11 +981,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A structured set of questions</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Структурированный набор вопросов<!-- A structured set of questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A structured set of questions intended to guide the collection of answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Структурированный набор вопросов, предназначенный для руководства сбором ответов. Вопросы упорядочены и сгруппированы в последовательные подмножества, соответствующие структуре группировки основных вопросов<!-- A structured set of questions intended to guide the collection of answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">To support structured, hierarchical registration of data gathered using digital forms and other questionnaires.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Для поддержки структурированной, иерархической регистрации данных, собранных с помощью электронных форм и других вопросников.<!-- To support structured, hierarchical registration of data gathered using digital forms and other questionnaires. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1017,11 +1017,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">External Ids for this questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешние идентификаторы для этого вопросника<!-- External Ids for this questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This records identifiers associated with this question set that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сюда записываются идентификаторы, связанные с этим набором вопросов, которые определены бизнес-процессами и/или используются для ссылки на него, когда прямая URL-ссылка на сам ресурс не подходит (например в CDA-документах или в письменной/печатной документации)<!-- This records identifiers associated with this question set that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to allow connection to a wider workflow</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность связи с более широким рабочим процессом<!-- Need to allow connection to a wider workflow --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1055,11 +1055,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Logical id for this version of Questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Логический ID для этой версии вопросника<!-- Logical id for this version of Questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Номер версии, присвоенный издателем по деловым соображениям. Может оставаться неизменным при обновлении ресурса<!-- The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">In some cases, separate resource instances might be created for each version (if an older version can be maintained once a new version exists)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">В некоторых случаях отдельные экземпляры ресурсов могут создаваться для каждой версии (если старая версия может поддерживаться при существовании новой версии)<!-- In some cases, separate resource instances might be created for each version (if an older version can be maintained once a new version exists) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1095,7 +1095,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">draft | published | retired</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The lifecycle status of the questionnaire as a whole.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общий статус жизненного цикла вопросника.<!-- The lifecycle status of the questionnaire as a whole. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1129,9 +1129,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Date this version was authored</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата создания этой версии<!-- Date this version was authored --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date that this questionnaire was last changed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата последнего изменения этого вопросника<!-- The date that this questionnaire was last changed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1164,11 +1164,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Organization/individual who designed the questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация/физическое лицо, которое разработало вопросник<!-- Organization/individual who designed the questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Organization or person responsible for developing and maintaining the questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация или лицо, ответственное за разработку и поддержание вопросника<!-- Organization or person responsible for developing and maintaining the questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Conveys responsibility for the questions and their organization and also helps evaluate the questionnaire's &quot;authority&quot;</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Выражает ответственность за вопросы и их организацию, а также помогает оценить &quot;полномочие&quot; вопросника<!-- Conveys responsibility for the questions and their organization and also helps evaluate the questionnaire's &quot;authority&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1199,9 +1199,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact information of the publisher</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация издателя<!-- Contact information of the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contact details to assist a user in finding and communicating with the publisher</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация для помощи пользователю в поиске и общении с издателем<!-- Contact details to assist a user in finding and communicating with the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1233,9 +1233,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Grouped questions</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сгруппированные вопросы<!-- Grouped questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A collection of related questions (or further groupings of questions)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Совокупность смежных вопросов (или дальнейшее разбиение вопросов на подгруппы)<!-- A collection of related questions (or further groupings of questions) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to logically group answers to grouped questions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
