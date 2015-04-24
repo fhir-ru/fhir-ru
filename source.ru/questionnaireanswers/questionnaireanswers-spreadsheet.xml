@@ -1316,7 +1316,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Группа вопросов к, возможно, аналогично сгруппированному набору вопросов в QuestionnaireAnswers<!-- A group of questions to a possibly similarly grouped set of questions in the questionnaire answers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность логически группировать ответы на сгруппированных вопросы<!-- Need to be able to logically group answers to grouped questions --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность логически группировать ответы на сгруппированные вопросы<!-- Need to be able to logically group answers to grouped questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Сам Questionnaire содержит одну &quot;корневую&quot; группу с фактическим содержимым Questionnaire<!-- The Questionnaire itself has one &quot;root&quot; group with the actual contents of the Questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
