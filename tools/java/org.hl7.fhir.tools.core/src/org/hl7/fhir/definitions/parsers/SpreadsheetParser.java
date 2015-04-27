@@ -45,8 +45,7 @@ import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
 import org.hl7.fhir.definitions.generators.specification.XPathQueryGenerator;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
-import org.hl7.fhir.definitions.model.Profile;
-import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
+import org.hl7.fhir.definitions.model.ConstraintStructure;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -60,7 +59,8 @@ import org.hl7.fhir.definitions.model.MappingSpace;
 import org.hl7.fhir.definitions.model.Operation;
 import org.hl7.fhir.definitions.model.OperationParameter;
 import org.hl7.fhir.definitions.model.OperationTuplePart;
-import org.hl7.fhir.definitions.model.ConstraintStructure;
+import org.hl7.fhir.definitions.model.Profile;
+import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
@@ -78,19 +78,21 @@ import org.hl7.fhir.instance.model.DateType;
 import org.hl7.fhir.instance.model.DecimalType;
 import org.hl7.fhir.instance.model.ElementDefinition.BindingStrength;
 import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
-import org.hl7.fhir.instance.model.SearchParameter;
-import org.hl7.fhir.instance.model.SearchParameter.SearchParamType;
-import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.model.StructureDefinition.ExtensionContext;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.IdType;
 import org.hl7.fhir.instance.model.InstantType;
 import org.hl7.fhir.instance.model.IntegerType;
 import org.hl7.fhir.instance.model.OidType;
+import org.hl7.fhir.instance.model.PositiveIntType;
+import org.hl7.fhir.instance.model.SearchParameter;
+import org.hl7.fhir.instance.model.SearchParameter.SearchParamType;
 import org.hl7.fhir.instance.model.StringType;
+import org.hl7.fhir.instance.model.StructureDefinition;
+import org.hl7.fhir.instance.model.StructureDefinition.ExtensionContext;
 import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionType;
 import org.hl7.fhir.instance.model.TimeType;
 import org.hl7.fhir.instance.model.Type;
+import org.hl7.fhir.instance.model.UnsignedIntType;
 import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.UuidType;
 import org.hl7.fhir.instance.model.ValueSet;
@@ -448,7 +450,7 @@ public class SpreadsheetParser {
             throw new Exception("Unknown source type: "+type+" at "+getLocation(row));
           String example = checkFile(sheet, row, "Example", true, null); // todo-profile
           if (example != null)
-            pack.getExamples().add(new Example(example, Utilities.fileTitle(example), "General Example for "+pack.getSource(), new File(example), ExampleType.XmlFile, false, isAbstract));
+            pack.getExamples().add(new Example(example, Utilities.fileTitle(example), "General Example for "+pack.getSource(), new File(example), true, ExampleType.XmlFile, isAbstract));
           defn.getConformancePackages().add(pack);
         }
       }
@@ -487,6 +489,8 @@ public class SpreadsheetParser {
 			  inv.setEnglish(sheet.getColumn(row, "English"));
 			  inv.setXpath(sheet.getColumn(row, "XPath"));
 			  inv.setSeverity(sheet.getColumn(row, "Severity"));
+        inv.setTurtle(sheet.getColumn(row, "RDF"));
+
 			  if (!Utilities.noString(sheet.getColumn(row,  "Schematron")))
 			    log.log("Value found for schematron "+getLocation(row), LogMessageType.Hint);  
 			  inv.setOcl(sheet.getColumn(row, "OCL"));
@@ -734,7 +738,7 @@ public class SpreadsheetParser {
 		  String bindingName = sheet.getColumn(row, "Binding Name"); 
 		  
 		  // Ignore bindings whose name start with "!"
-		  if (bindingName.startsWith("!")) continue;
+		  if (Utilities.noString(bindingName) || bindingName.startsWith("!")) continue;
 	      
 			BindingSpecification cd = new BindingSpecification(usageContext);
 
@@ -1036,15 +1040,18 @@ public class SpreadsheetParser {
 					if (desc == null || desc.equals(""))
 						throw new Exception("Example " + name + " has no description parsing " + this.name);
 					String filename = sheet.getColumn(row, "Filename");
+					if (filename.startsWith(defn.getName().toLowerCase()+"-examples.")) 
+					  throw new Exception("Cannot name an example file "+filename);
 					File file = new CSFile(folder + filename);
 					String type = sheet.getColumn(row, "Type");
 					if (!file.exists() && !("tool".equals(type) || isSpecialType(type)))
 						throw new Exception("Example " + name + " file '" + file.getAbsolutePath() + "' not found parsing " + this.name);
-					String pn = sheet.getColumn(row, "StructureDefinition"); //todo-profile: rename this
+					String pn = sheet.getColumn(row, "Profile"); 
 					if (Utilities.noString(pn)) {
 					  defn.getExamples().add(new Example(name, id, desc, file, 
+					      parseBoolean(sheet.getColumn(row, "Registered"), row, true), 
 					      parseExampleType(type, row),
-					      parseBoolean(sheet.getColumn(row, "In Book"), row, false), isAbstract));
+					      isAbstract));
 					} else {
 					  Profile ap = null;
 					  for (Profile r : defn.getConformancePackages()) {
@@ -1053,18 +1060,18 @@ public class SpreadsheetParser {
 					  }
 					  if (ap == null)
 					    throw new Exception("Example " + name + " profile '" + pn + "' not found parsing " + this.name);
-					  ap.getExamples().add(new Example(filename, id, desc, file, parseExampleType(type, row), parseBoolean(sheet.getColumn(row, "In Book"), row, false), isAbstract));
+					  ap.getExamples().add(new Example(filename, id, desc, file, parseBoolean(sheet.getColumn(row, "Registered"), row, true), parseExampleType(type, row), isAbstract));
 					}
 				}
 			}
 		}
-		if (defn.getExamples().size() == 0 && !isAbstract) {
+		if (defn.getExamples().size() == 0) {
 			File file = new CSFile(folder + title + "-example.xml");
-			if (!file.exists())
-				throw new Exception("Example (file '" + file.getAbsolutePath()
-						+ "') not found parsing " + this.name);
-			defn.getExamples().add(
-					new Example("General", "example", "Example of " + title, file, ExampleType.XmlFile, true, isAbstract));
+			if (!file.exists() && !isAbstract)
+				throw new Exception("Example (file '" + file.getAbsolutePath() + "') not found parsing " + this.name);
+			if (file.exists())
+			  defn.getExamples().add(
+			      new Example("General", "example", "Example of " + title, file, true, ExampleType.XmlFile, isAbstract));
 		}		
 	}
 
@@ -1320,6 +1327,10 @@ public class SpreadsheetParser {
         return new BooleanType(Boolean.valueOf(source)); 
       if (type.equals("integer"))
         return new IntegerType(Integer.valueOf(source)); 
+      if (type.equals("unsignedInt"))
+        return new UnsignedIntType(Integer.valueOf(source)); 
+      if (type.equals("positiveInt"))
+        return new PositiveIntType(Integer.valueOf(source)); 
       if (type.equals("decimal"))
         return new DecimalType(new BigDecimal(source)); 
       if (type.equals("base64Binary"))
@@ -1420,7 +1431,7 @@ public class SpreadsheetParser {
    
     row++;
     if (!ex.getUrl().startsWith("http://hl7.org/fhir/StructureDefinition/"))
-      System.out.println("extension "+ex.getUrl());
+      throw new Exception("extension "+ex.getUrl()+" is not valid in the publication tooling");
     
     while (row < sheet.getRows().size() && sheet.getColumn(row, "Code").startsWith(name+".")) {
       String n = sheet.getColumn(row, "Code");

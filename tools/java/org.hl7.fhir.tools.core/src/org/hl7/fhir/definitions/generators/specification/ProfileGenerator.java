@@ -39,14 +39,14 @@ import java.util.Set;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
-import org.hl7.fhir.definitions.model.Profile;
+import org.hl7.fhir.definitions.model.ConstraintStructure;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ImplementationGuide;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.PrimitiveType;
-import org.hl7.fhir.definitions.model.ConstraintStructure;
+import org.hl7.fhir.definitions.model.Profile;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
@@ -69,9 +69,9 @@ import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
-import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.SearchParameter;
 import org.hl7.fhir.instance.model.SearchParameter.SearchParameterContactComponent;
+import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionContactComponent;
 import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionDifferentialComponent;
 import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionMappingComponent;
@@ -308,7 +308,7 @@ public class ProfileGenerator {
     p.getDifferential().getElement().get(0).getType().clear();
     p.getDifferential().getElement().get(0).addType().setCode("Element");
     p.getSnapshot().getElement().get(0).getType().clear();
-    p.getSnapshot().getElement().get(0).addType().setCode(t.getName());
+    p.getSnapshot().getElement().get(0).addType().setCode("Element");
 
     XhtmlNode div = new XhtmlNode(NodeType.Element, "div");
     div.addText("to do");
@@ -438,7 +438,7 @@ public class ProfileGenerator {
       p.getDifferential().getElement().get(0).getType().clear();
       p.getDifferential().getElement().get(0).addType().setCode(r.getRoot().typeCode());
       p.getSnapshot().getElement().get(0).getType().clear();
-      p.getSnapshot().getElement().get(0).addType().setCode(r.getRoot().getName());
+      p.getSnapshot().getElement().get(0).addType().setCode(r.getRoot().typeCode());
     }
     XhtmlNode div = new XhtmlNode(NodeType.Element, "div");
     div.addText("to do");
@@ -537,7 +537,9 @@ public class ProfileGenerator {
     reset();
 
     p.getDifferential().getElement().get(0).getType().clear();
-    p.getDifferential().getElement().get(0).addType().setCode(p.getSnapshot().getElement().get(0).getType().get(0).getCode());
+    p.getDifferential().getElement().get(0).addType().setCode(p.getSnapshot().getElement().get(0).getPath());
+    p.getSnapshot().getElement().get(0).getType().clear();
+    p.getSnapshot().getElement().get(0).addType().setCode(p.getSnapshot().getElement().get(0).getPath());
 
     XhtmlNode div = new XhtmlNode(NodeType.Element, "div");
     div.addText("to do");
@@ -1064,7 +1066,10 @@ public class ProfileGenerator {
         for (String tp : t.getParams()) {
           ElementDefinition.TypeRefComponent type = new ElementDefinition.TypeRefComponent();
           type.setCode(t.getName());
-          type.setProfile("http://hl7.org/fhir/StructureDefinition/"+(tp.equals("Any") ? "Resource" : tp));
+          if (t.hasProfile())
+            type.setProfile(t.getProfile()); // this should only happen if t.getParams().size() == 1
+          else
+            type.setProfile("http://hl7.org/fhir/StructureDefinition/"+(tp.equals("Any") ? "Resource" : tp));
           dst.getType().add(type);
         }
       } else {

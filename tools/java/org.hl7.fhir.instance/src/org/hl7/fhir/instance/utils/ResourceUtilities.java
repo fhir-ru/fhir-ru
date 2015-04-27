@@ -7,23 +7,19 @@ import org.hl7.fhir.instance.model.Base;
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.instance.model.Bundle.BundleLinkComponent;
+import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.ContactPoint;
 import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
-import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.DataElement;
 import org.hl7.fhir.instance.model.DataElement.DataElementContactComponent;
-import org.hl7.fhir.instance.model.DomainResource;
-import org.hl7.fhir.instance.model.Element;
 import org.hl7.fhir.instance.model.ElementDefinition;
 import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionBindingComponent;
 import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.instance.model.Extension;
 import org.hl7.fhir.instance.model.Meta;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.instance.model.OperationOutcome.OperationOutcomeIssueComponent;
-import org.hl7.fhir.instance.model.PrimitiveType;
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ResourceType;
@@ -141,8 +137,12 @@ public class ResourceUtilities {
 
       b.append("<td>"+v+"</td>");
     }
-    if (profileLink)
-      b.append("<td><a href=\""+linkBase+"-"+de.getId()+".html\">Profile</a>, <a href=\"http://www.opencem.org/#/20140917/Intermountain/"+de.getId()+"\">CEM</a></td>");
+    if (profileLink) {
+      b.append("<td><a href=\""+linkBase+"-"+de.getId()+".html\">Profile</a>, <a href=\"http://www.opencem.org/#/20140917/Intermountain/"+de.getId()+"\">CEM</a>");
+      if (ToolingExtensions.hasExtension(de, ToolingExtensions.EXT_CIMI_REFERENCE)) 
+        b.append(", <a href=\""+ToolingExtensions.readStringExtension(de, ToolingExtensions.EXT_CIMI_REFERENCE)+"\">CIMI</a>");
+      b.append("</td>");
+    }
     b.append("</tr>\r\n");
   }
 
@@ -190,7 +190,7 @@ public class ResourceUtilities {
     b.append("<tr>");
     List<String> results = new ArrayList<String>();
     results.add("DataElement.name");
-    b.append("<td><b></b></td>");
+    b.append("<td width=\"250\"><b>Name</b></td>");
     if (!common.hasStatus()) {
       results.add("DataElement.status");
       b.append("<td><b>Status</b></td>");

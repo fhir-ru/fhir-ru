@@ -2,6 +2,7 @@ package org.hl7.fhir.definitions.parsers;
 import java.io.File;
 
 import org.hl7.fhir.utilities.IniFile;
+import org.hl7.fhir.utilities.Utilities;
 /*
 Copyright (c) 2011+, HL7, Inc
 All rights reserved.
@@ -42,6 +43,8 @@ public class BindingNameRegistry {
   }
 
   public String idForName(String name) {
+    if (Utilities.noString(name))
+      throw new Error("Request for id for null name");
     return idForNameInternal("Binding Names", "Last", name);
   }
 
@@ -52,10 +55,14 @@ public class BindingNameRegistry {
   }
 
   public String idForQName(String q, String name) {
+    if (Utilities.noString(name))
+      throw new Error("Request for id for null name");
     return idForNameInternal(q, q, name);
   }
   
   public String idForNameInternal(String q, String k, String name) {
+    if (Utilities.noString(name))
+      throw new Error("Request for id for null name");
     if (ini.getIntegerProperty(q, name) != null)
       return ini.getIntegerProperty(q, name).toString();
     else if (!forPublication)

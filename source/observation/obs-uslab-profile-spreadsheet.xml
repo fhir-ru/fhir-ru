@@ -10,7 +10,7 @@
   <LastAuthor>Eric Haas</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2015-03-18T20:21:39Z</LastSaved>
-  <Version>12.00</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -18115,7 +18115,7 @@
     <Cell ss:StyleID="s105"/>
     <Cell ss:StyleID="s105"/>
     <Cell ss:StyleID="s106"/>
-    <Cell ss:StyleID="s107"><Data ss:Type="String">!Observation.identifier.label </Data></Cell>
+    <Cell ss:StyleID="s107"><Data ss:Type="String">!Observation.identifier.type </Data></Cell>
     <Cell ss:StyleID="s103"/>
     <Cell ss:StyleID="s103"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -18353,7 +18353,7 @@
     <Cell ss:StyleID="s103"/>
     <Cell ss:StyleID="s103"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Reference(Observation){http://hl7.org/fhir/StructureDefinition/obs-uslab-uslabobscode}|Reference(Observation){http://hl7.org/fhir/StructureDefinition/obs-uslab-slabobsquantity}|Reference(Observation){http://hl7.org/fhir/StructureDefinition/obs-uslab-uslabobsother}|Reference(Observation){http://hl7.org/fhir/StructureDefinition/obs-uslab-uslabobsratio}</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Reference(Observation){http://hl7.org/fhir/StructureDefinition/obs-uslab-uslabobscode}|Reference(Observation){http://hl7.org/fhir/StructureDefinition/obs-uslab-uslabobsquantity}|Reference(Observation){http://hl7.org/fhir/StructureDefinition/obs-uslab-uslabobsother}|Reference(Observation){http://hl7.org/fhir/StructureDefinition/obs-uslab-uslabobsratio}</Data></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s103"/>
     <Cell ss:StyleID="s103"/>
@@ -19762,11 +19762,12 @@
     <VerticalResolution>200</VerticalResolution>
    </Print>
    <Selected/>
+   <TopRowVisible>20</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>16</ActiveCol>
+     <ActiveRow>42</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -28492,7 +28493,7 @@
     <Cell ss:StyleID="s141"/>
     <Cell ss:StyleID="s141"/>
     <Cell ss:StyleID="s141"/>
-    <Cell ss:StyleID="s144"><Data ss:Type="String">http://hl7.org/implement/standards/fhir/v2/0078/index.html</Data></Cell>
+    <Cell ss:StyleID="s144"><Data ss:Type="String">http://hl7.org/fhir/v2/0078/index.html</Data></Cell>
     <Cell ss:StyleID="s141"/>
     <Cell ss:StyleID="s142"/>
    </Row>
@@ -28524,7 +28525,7 @@
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s144"/>
-    <Cell ss:StyleID="s144"><Data ss:Type="String">http://hl7.org/implement/standards/fhir/v2/0490/index.html</Data></Cell>
+    <Cell ss:StyleID="s144"><Data ss:Type="String">http://hl7.org/fhir/v2/0490/index.html</Data></Cell>
     <Cell ss:StyleID="s144"/>
     <Cell ss:StyleID="s145"/>
    </Row>

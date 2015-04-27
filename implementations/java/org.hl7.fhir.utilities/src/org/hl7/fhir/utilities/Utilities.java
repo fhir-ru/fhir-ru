@@ -350,8 +350,12 @@ public class Utilities {
 
 
   public static String appendSlash(String definitions) {
-    return definitions.endsWith(File.separator) ? definitions : definitions+File.separator;
-  }
+	    return definitions.endsWith(File.separator) ? definitions : definitions+File.separator;
+	  }
+
+  public static String appendForwardSlash(String definitions) {
+	    return definitions.endsWith("/") ? definitions : definitions+"/";
+	  }
 
 
   public static String fileTitle(String file) {
@@ -433,6 +437,19 @@ public class Utilities {
         d = !noString(arg);
       else if (!s.toString().endsWith(File.separator))
         s.append(File.separator);
+      s.append(arg);
+    }
+    return s.toString();
+  }
+
+  public static String pathReverse(String... args) {
+    StringBuilder s = new StringBuilder();
+    boolean d = false;
+    for(String arg: args) {
+      if (!d)
+        d = !noString(arg);
+      else if (!s.toString().endsWith("/"))
+        s.append("/");
       s.append(arg);
     }
     return s.toString();
@@ -532,6 +549,8 @@ public class Utilities {
         b.append("\\n");
       else if (c == '"')
         b.append("'");
+      else if (c == '\\')
+        b.append("\\\\");
       else 
         b.append(c);
     }   
@@ -555,9 +574,9 @@ public class Utilities {
 
 
   public static String encodeUri(String v) {
-    return v.replace(" ", "%20");
+    return v.replace(" ", "%20").replace("?", "%3F").replace("=", "%3D");
   }
-
+  
 
 
 	public static String normalize(String s) {
@@ -705,6 +724,15 @@ public class Utilities {
     if( s.length() == 1 ) return s.toLowerCase();
     
     return s.substring(0, 1).toLowerCase() + s.substring(1);
+  }
+
+
+  public static int charCount(String s, char c) {
+	  int res = 0;
+	  for (char ch : s.toCharArray())
+		if (ch == c)
+		  res++;
+	  return res;
   }
 
 

@@ -18,7 +18,7 @@
 <blockquote>
 <p>
 The following rules will apply to resources, profiles and other content within the specification
-once those portions of the specification reach <a href="timeline.html#normative">full normative status</a>.
+once those portions of the specification reach <a href="timelines.html#normative">full normative status</a>.
 These rules ensure that implementations may exercise FHIR interfaces and process the content 
 of FHIR resources safely while exchanging data between applications using different
 versions of FHIR.
@@ -189,7 +189,7 @@ error code.  <!-- TODO: Grahame - should this be more explicit? -->
       <td>
       New operations may be defined but operations may not be removed or renamed.  Existing parameters will not be removed or renamed, nor may their type
       or lower cardinality be changed.  Upper cardinality may be changed from 1 to *.  (Systems should ignore unexpected repetitions.)
-      Additional optional parameters may be introduced.
+      Additional optional parameters may be introduced. E.g. Operation signatures cannot change, instead, additional operation variants will be defined.
       </td>
     </tr>
     <tr>

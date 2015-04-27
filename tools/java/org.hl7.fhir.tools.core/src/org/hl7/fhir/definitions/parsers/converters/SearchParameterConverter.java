@@ -32,6 +32,7 @@ package org.hl7.fhir.definitions.parsers.converters;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
@@ -39,17 +40,17 @@ import org.hl7.fhir.definitions.ecore.fhir.SearchType;
 import org.hl7.fhir.utilities.Utilities;
 
 public class SearchParameterConverter {
-  public static List<SearchParameter> buildSearchParametersFromFhirModel(Collection<org.hl7.fhir.definitions.model.SearchParameterDefn> searchParameters) {
+  public static List<SearchParameter> buildSearchParametersFromFhirModel(org.hl7.fhir.definitions.model.ResourceDefn resource, Collection<org.hl7.fhir.definitions.model.SearchParameterDefn> searchParameters) {
     List<SearchParameter> result = new ArrayList<SearchParameter>();
 
     for (org.hl7.fhir.definitions.model.SearchParameterDefn searchParameter : searchParameters) {
-      result.add(buildSearchParameterFromFhirModel(searchParameter));
+      result.add(buildSearchParameterFromFhirModel(resource, searchParameter));
     }
 
     return result;
   }
 
-  public static SearchParameter buildSearchParameterFromFhirModel(org.hl7.fhir.definitions.model.SearchParameterDefn searchParameter) {
+  public static SearchParameter buildSearchParameterFromFhirModel(org.hl7.fhir.definitions.model.ResourceDefn resource, org.hl7.fhir.definitions.model.SearchParameterDefn searchParameter) {
     SearchParameter result = FhirFactory.eINSTANCE.createSearchParameter();
 
     result.setName(searchParameter.getCode());
@@ -60,6 +61,31 @@ public class SearchParameterConverter {
       result.getComposite().addAll(searchParameter.getComposites());
     else
       result.getPath().addAll(searchParameter.getPaths());
+    
+    // Read in the Resource Targets
+    Set<String> t = searchParameter.getWorkingTargets();
+    if( result.getType() == SearchType.REFERENCE ) {
+      for (String rn : t) {
+        if (!rn.equals("Any")) 
+	        result.getTarget().add(rn);
+      }
+  	  if (result.getTarget().size() == 0){
+    		// Need to grab the types that are included on the actual types from path definition
+    		// And add those types here (as long as it isn't any)
+  	    String ep = searchParameter.getPaths().get(0);
+  	    org.hl7.fhir.definitions.model.ElementDefn el = resource.getRoot().getElementByName(ep);
+  	    if (el != null){
+  	      org.hl7.fhir.definitions.model.TypeRef tr = el.getTypes().get(0);
+  	      if (!tr.isAnyReference() && tr.isResourceReference()){
+  	        tr.getParams();
+  	        for (String rn : tr.getParams()) {
+  	          if (!rn.equals("Any")) 
+  	            result.getTarget().add(rn);
+  	        }
+  	      }
+  	    }
+  	  }
+    }
     
     return result;
   }

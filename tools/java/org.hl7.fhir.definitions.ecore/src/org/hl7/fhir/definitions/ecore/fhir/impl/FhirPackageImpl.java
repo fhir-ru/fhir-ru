@@ -1692,6 +1692,15 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSearchParameter_Target() {
+		return (EAttribute)searchParameterEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EEnum getBindingType() {
 		return bindingTypeEEnum;
@@ -1906,6 +1915,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__TYPE);
 		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__PATH);
 		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__COMPOSITE);
+		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__TARGET);
 
 		typeDefnEClass = createEClass(TYPE_DEFN);
 		createEAttribute(typeDefnEClass, TYPE_DEFN__NAME);
@@ -2031,7 +2041,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "isPolymorph", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "containsResource", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "containsReference", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "isPrimitiveValueElement", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2134,6 +2144,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEAttribute(getSearchParameter_Type(), this.getSearchType(), "type", null, 1, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSearchParameter_Path(), ecorePackage.getEString(), "path", null, 0, -1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSearchParameter_Composite(), ecorePackage.getEString(), "composite", null, 0, -1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSearchParameter_Target(), ecorePackage.getEString(), "target", null, 0, -1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeDefnEClass, TypeDefn.class, "TypeDefn", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypeDefn_Name(), ecorePackage.getEString(), "name", null, 1, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2146,7 +2157,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		addEOperation(typeDefnEClass, ecorePackage.getEBoolean(), "isConstrained", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(typeDefnEClass, ecorePackage.getEBoolean(), "isResource", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(typeDefnEClass, ecorePackage.getEBoolean(), "isReference", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(typeDefnEClass, ecorePackage.getEBoolean(), "isGloballyDefined", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -2214,6 +2225,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		addEEnumLiteral(searchTypeEEnum, SearchType.REFERENCE);
 		addEEnumLiteral(searchTypeEEnum, SearchType.TOKEN);
 		addEEnumLiteral(searchTypeEEnum, SearchType.QUANTITY);
+		addEEnumLiteral(searchTypeEEnum, SearchType.URI);
 
 		initEEnum(bindingExtensibilityEEnum, BindingExtensibility.class, "BindingExtensibility");
 		addEEnumLiteral(bindingExtensibilityEEnum, BindingExtensibility.COMPLETE);

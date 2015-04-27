@@ -36,7 +36,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +43,7 @@ import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.apache.commons.io.IOUtils;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
@@ -57,18 +57,19 @@ import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Compartment;
-import org.hl7.fhir.definitions.model.Profile;
-import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
+import org.hl7.fhir.definitions.model.ConstraintStructure;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
+import org.hl7.fhir.definitions.model.Dictionary;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.ImplementationGuide;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.MappingSpace;
 import org.hl7.fhir.definitions.model.PrimitiveType;
-import org.hl7.fhir.definitions.model.ConstraintStructure;
+import org.hl7.fhir.definitions.model.Profile;
+import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
@@ -86,9 +87,9 @@ import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.instance.model.Bundle.BundleType;
 import org.hl7.fhir.instance.model.Composition;
+import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.StringType;
 import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionType;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.utils.ValueSetUtilities;
@@ -120,22 +121,22 @@ import org.w3c.dom.Element;
  */
 public class SourceParser {
 
-	private Logger logger;
-	private IniFile ini;
-	private Definitions definitions;
-  private String srcDir;
-  private String dstDir;
-	private String sndBoxDir;
-	private String imgDir;
-	private String termDir;
+  private final Logger logger;
+	private final IniFile ini;
+	private final Definitions definitions;
+	private final String srcDir;
+	private final String dstDir;
+	private final String sndBoxDir;
+	private final String imgDir;
+	private final String termDir;
 	public String dtDir;
-	private String rootDir;
-	private BindingNameRegistry registry;
-	private String version;
-	private WorkerContext context; 
-	private Calendar genDate;
-  private Map<String, StructureDefinition> extensionDefinitions = new HashMap<String, StructureDefinition>();
-  private PageProcessor page;
+	private final String rootDir;
+	private final BindingNameRegistry registry;
+	private final String version;
+	private final WorkerContext context;
+	private final Calendar genDate;
+	private final Map<String, StructureDefinition> extensionDefinitions;
+	private final PageProcessor page;
 
 	public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication, String version, WorkerContext context, Calendar genDate, Map<String, StructureDefinition> extensionDefinitions, PageProcessor page) {
 		this.logger = logger;
@@ -303,10 +304,12 @@ public class SourceParser {
 
   private void loadDictionaries() {
     String[] dicts = ini.getPropertyNames("dictionaries");
-    for (String dict : dicts) {
-     String s = ini.getStringProperty("dictionaries", dict);
-     definitions.getDictionaries().put(dict, s);
-    }   
+    if (dicts != null) {
+        for (String dict : dicts) {
+            String[] s = ini.getStringProperty("dictionaries", dict).split("\\:");
+            definitions.getDictionaries().put(dict, new Dictionary(dict, s[1], s[0]));
+        }
+    }
   }
 
 
@@ -320,7 +323,8 @@ public class SourceParser {
       Element ig = XMLUtil.getFirstChild(root);
       while (ig != null) {
         if (ig.getNodeName().equals("ig")) {
-          ImplementationGuide igg = new ImplementationGuide(ig.getAttribute("code"), ig.getAttribute("name"), ig.getAttribute("page"), "1".equals(ig.getAttribute("review")));
+          ImplementationGuide igg = new ImplementationGuide(ig.getAttribute("code"), ig.getAttribute("name"), ig.getAttribute("page"), 
+              "1".equals(ig.getAttribute("review")), !"no".equals(ig.getAttribute("ballot")));
           definitions.getIgs().put(igg.getCode(), igg);
           definitions.getSortedIgs().add(igg);
         }
@@ -343,7 +347,7 @@ public class SourceParser {
     if (new File(Utilities.path(srcDir, "w5.ini")).exists()) {
       IniFile w5 = new IniFile(Utilities.path(srcDir, "w5.ini"));
       for (String n : w5.getPropertyNames("names")) { 
-        definitions.getW5s().put(n, new W5Entry(w5.getStringProperty("names", n), w5.getBooleanProperty("display", n)));
+        definitions.getW5s().put(n, new W5Entry(n, w5.getStringProperty("names", n), w5.getBooleanProperty("display", n)));
       }
     }
   }
@@ -602,7 +606,7 @@ public class SourceParser {
 		for (int row = 0; row < sheet.rows.size(); row++) {
 			processImport(sheet, row);
 		}
-		sheet = xls.getSheets().get("String Patterns");
+		sheet = xls.getSheets().get("Patterns");
 		for (int row = 0; row < sheet.rows.size(); row++) {
 			processStringPattern(sheet, row);
 		}
@@ -683,9 +687,10 @@ public class SourceParser {
 		        inv.setEnglish(sheet.getColumn(i,"Rules"));
 		        inv.setOcl(sheet.getColumn(i, "OCL"));
 		        inv.setXpath(sheet.getColumn(i, "XPath"));
+            inv.setTurtle(sheet.getColumn(i, "RDF"));
 		        ProfiledType pt = new ProfiledType();
 		        pt.setDefinition(sheet.getColumn(i, "Definition"));
-		        pt.setDescription(sheet.getColumn(i, "Rules"));
+            pt.setDescription(sheet.getColumn(i, "Rules"));
 		        pt.setName(n);
 		        pt.setBaseType(p);
 		        pt.setInvariant(inv);
@@ -723,6 +728,8 @@ public class SourceParser {
 		  definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));
 		}
 		root.setStatus(ini.getStringProperty("status", n));
+		if (Utilities.noString(root.getStatus()) && ini.getBooleanProperty("draft-resources", root.getName()))
+		  root.setStatus("draft");
 		return root;
 	}
 

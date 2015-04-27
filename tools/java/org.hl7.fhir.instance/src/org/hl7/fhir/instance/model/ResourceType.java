@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Generated on Wed, Mar 25, 2015 13:49+1100 for FHIR v0.4.0
+// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
 
 public enum ResourceType {
     Condition,
@@ -24,14 +24,14 @@ public enum ResourceType {
     AppointmentResponse,
     MedicationStatement,
     EpisodeOfCare,
-    Questionnaire,
     Composition,
+    Questionnaire,
     OperationOutcome,
     Conformance,
+    FamilyMemberHistory,
     NamingSystem,
     Media,
     Binary,
-    Other,
     HealthcareService,
     VisionPrescription,
     DocumentReference,
@@ -40,8 +40,8 @@ public enum ResourceType {
     Subscription,
     OrderResponse,
     ConceptMap,
-    Practitioner,
     ImagingStudy,
+    Practitioner,
     CarePlan,
     Provenance,
     Device,
@@ -53,6 +53,7 @@ public enum ResourceType {
     DiagnosticReport,
     Medication,
     MessageHeader,
+    SupplyDelivery,
     Schedule,
     DocumentManifest,
     DataElement,
@@ -64,35 +65,33 @@ public enum ResourceType {
     List,
     DeviceUseStatement,
     OperationDefinition,
-    Goal,
     ImagingObjectSelection,
+    Goal,
     SearchParameter,
     NutritionOrder,
     ClaimResponse,
     ReferralRequest,
     ClinicalImpression,
     BodySite,
+    Flag,
     CommunicationRequest,
     Claim,
     RiskAssessment,
-    FamilyHistory,
     EnrollmentRequest,
     Location,
     ExplanationOfBenefit,
     AllergyIntolerance,
     Observation,
     Contract,
-    SupportingDocumentation,
     RelatedPerson,
     Basic,
     ProcessResponse,
     Specimen,
-    Alert,
     AuditEvent,
     EnrollmentResponse,
+    SupplyRequest,
     Patient,
     EligibilityResponse,
-    CarePlan2,
     Person,
     DiagnosticOrder,
     Parameters;
@@ -142,22 +141,22 @@ public enum ResourceType {
       return "medicationstatement";
     case EpisodeOfCare:
       return "episodeofcare";
-    case Questionnaire:
-      return "questionnaire";
     case Composition:
       return "composition";
+    case Questionnaire:
+      return "questionnaire";
     case OperationOutcome:
       return "operationoutcome";
     case Conformance:
       return "conformance";
+    case FamilyMemberHistory:
+      return "familymemberhistory";
     case NamingSystem:
       return "namingsystem";
     case Media:
       return "media";
     case Binary:
       return "binary";
-    case Other:
-      return "other";
     case HealthcareService:
       return "healthcareservice";
     case VisionPrescription:
@@ -174,10 +173,10 @@ public enum ResourceType {
       return "orderresponse";
     case ConceptMap:
       return "conceptmap";
-    case Practitioner:
-      return "practitioner";
     case ImagingStudy:
       return "imagingstudy";
+    case Practitioner:
+      return "practitioner";
     case CarePlan:
       return "careplan";
     case Provenance:
@@ -200,6 +199,8 @@ public enum ResourceType {
       return "medication";
     case MessageHeader:
       return "messageheader";
+    case SupplyDelivery:
+      return "supplydelivery";
     case Schedule:
       return "schedule";
     case DocumentManifest:
@@ -222,10 +223,10 @@ public enum ResourceType {
       return "deviceusestatement";
     case OperationDefinition:
       return "operationdefinition";
-    case Goal:
-      return "goal";
     case ImagingObjectSelection:
       return "imagingobjectselection";
+    case Goal:
+      return "goal";
     case SearchParameter:
       return "searchparameter";
     case NutritionOrder:
@@ -238,14 +239,14 @@ public enum ResourceType {
       return "clinicalimpression";
     case BodySite:
       return "bodysite";
+    case Flag:
+      return "flag";
     case CommunicationRequest:
       return "communicationrequest";
     case Claim:
       return "claim";
     case RiskAssessment:
       return "riskassessment";
-    case FamilyHistory:
-      return "familyhistory";
     case EnrollmentRequest:
       return "enrollmentrequest";
     case Location:
@@ -258,8 +259,6 @@ public enum ResourceType {
       return "observation";
     case Contract:
       return "contract";
-    case SupportingDocumentation:
-      return "supportingdocumentation";
     case RelatedPerson:
       return "relatedperson";
     case Basic:
@@ -268,18 +267,16 @@ public enum ResourceType {
       return "processresponse";
     case Specimen:
       return "specimen";
-    case Alert:
-      return "alert";
     case AuditEvent:
       return "auditevent";
     case EnrollmentResponse:
       return "enrollmentresponse";
+    case SupplyRequest:
+      return "supplyrequest";
     case Patient:
       return "patient";
     case EligibilityResponse:
       return "eligibilityresponse";
-    case CarePlan2:
-      return "careplan2";
     case Person:
       return "person";
     case DiagnosticOrder:

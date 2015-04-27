@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.hl7.fhir.definitions.ecore.fhir.*;
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.BindingExtensibility;
@@ -41,6 +40,7 @@ import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
 import org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode;
 import org.hl7.fhir.definitions.ecore.fhir.SearchType;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
+import org.hl7.fhir.definitions.ecore.fhir.XmlFormatHint;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,7 +57,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 */
 	public static FhirFactory init() {
 		try {
-			FhirFactory theFhirFactory = (FhirFactory)EPackage.Registry.INSTANCE.getEFactory("http://hl7.org/fhir/definitions"); 
+			FhirFactory theFhirFactory = (FhirFactory)EPackage.Registry.INSTANCE.getEFactory(FhirPackage.eNS_URI);
 			if (theFhirFactory != null) {
 				return theFhirFactory;
 			}

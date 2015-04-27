@@ -75,6 +75,7 @@ public class ResourceValidator extends BaseValidator {
 
   private Definitions definitions;
   private final Map<String, Usage> usages = new HashMap<String, Usage>();
+  private final Map<String, Integer> names = new HashMap<String, Integer>();
   private final Map<SearchType, UsageT> usagest = new HashMap<SearchType, UsageT>();
   private Translations translations;
   private final Map<String, ValueSet> codeSystems;
@@ -255,6 +256,9 @@ public class ResourceValidator extends BaseValidator {
 //  	  else
 //  	    typeCounter.put(t.getName(), typeCounter.get(t.getName())+1);
 //	  }
+	  if (!names.containsKey(e.getName()))
+	    names.put(e.getName(), 0);
+    names.put(e.getName(), names.get(e.getName())+1);
 	  
 	  rule(errors, "structure", path, e.unbounded() || e.getMaxCardinality() == 1,	"Max Cardinality must be 1 or unbounded");
 		rule(errors, "structure", path, e.getMinCardinality() == 0 || e.getMinCardinality() == 1, "Min Cardinality must be 0 or 1");
@@ -342,7 +346,7 @@ public class ResourceValidator extends BaseValidator {
             String esd = b.substring(3);
             rule(errors, "structure", path, sd.startsWith(esd) || (sd.endsWith("+") && b.substring(3).startsWith(sd.substring(0, sd.length()-1)) ), "The short description \""+sd+"\" does not match the expected (\""+b.substring(3)+"\")");
 			    } else
-			      rule(errors, "structure", path, cd.getCodes().size() > 20 || cd.getCodes().size() == 1 || !hasGoodCode(cd.getCodes()) || isExemptFromCodeList(path), "The short description of an element with a code list should have the format code | code | etc");
+			      rule(errors, "structure", path, cd.getStrength() != BindingStrength.REQUIRED || cd.getCodes().size() > 20 || cd.getCodes().size() == 1 || !hasGoodCode(cd.getCodes()) || isExemptFromCodeList(path), "The short description of an element with a code list should have the format code | code | etc");
 			  }
 			  boolean isComplex = !e.typeCode().equals("code");
 //      quality scan for heather:			  
@@ -563,6 +567,14 @@ public class ResourceValidator extends BaseValidator {
 //    for (String t : typeCounter.keySet()) {
 //      System.out.println(t+": "+typeCounter.get(t).toString());
 //    }
+    // for tracking individual name usage
+    
+//    int total = 0;
+//    for (String n : names.keySet()) {
+//      System.out.println(n+" = "+names.get(n));
+//      total += names.get(n);
+//    }
+//    System.out.println("total = "+Integer.toString(total));
   }
 
   public List<ValidationMessage> checkBindings(Map<String, BindingSpecification> bindings) {
@@ -570,7 +582,7 @@ public class ResourceValidator extends BaseValidator {
     Set<String> names = new HashSet<String>();
     for (BindingSpecification b : bindings.values()) {
       if (names.contains(b.getName())) 
-        errors.add(new ValidationMessage(source, "structure", "binding "+b.getName(), "Duplicate Binding Name "+b.getName(), IssueSeverity.ERROR));        
+        errors.add(new ValidationMessage(source, "structure", -1, -1, "binding "+b.getName(), "Duplicate Binding Name "+b.getName(), IssueSeverity.ERROR));        
       else
         names.add(b.getName());
     }

@@ -12,16 +12,15 @@ import org.hl7.fhir.instance.model.DateTimeType;
 import org.hl7.fhir.instance.model.DateType;
 import org.hl7.fhir.instance.model.DecimalType;
 import org.hl7.fhir.instance.model.Element;
-import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.ElementDefinition;
 import org.hl7.fhir.instance.model.ElementDefinition.BindingStrength;
 import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionBindingComponent;
 import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.instance.model.Enumeration;
+import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.InstantType;
 import org.hl7.fhir.instance.model.IntegerType;
-import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.Quantity;
 import org.hl7.fhir.instance.model.Questionnaire;
 import org.hl7.fhir.instance.model.Questionnaire.AnswerFormat;
@@ -33,6 +32,7 @@ import org.hl7.fhir.instance.model.QuestionnaireAnswers.QuestionnaireAnswersStat
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.StringType;
+import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.TimeType;
 import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.instance.model.UriType;
@@ -646,7 +646,7 @@ public class QuestionnaireBuilder {
 
   private boolean isPrimitive(TypeRefComponent t) {
     return (t != null) && 
-          (t.getCode().equals("string") || t.getCode().equals("code") || t.getCode().equals("boolean") || t.getCode().equals("integer") || 
+          (t.getCode().equals("string") || t.getCode().equals("code") || t.getCode().equals("boolean") || t.getCode().equals("integer") || t.getCode().equals("unsignedInt") || t.getCode().equals("positiveInt") ||
               t.getCode().equals("decimal") || t.getCode().equals("date") || t.getCode().equals("dateTime") || 
               t.getCode().equals("instant") || t.getCode().equals("time") || t.getCode().equals("Reference"));
   }
@@ -682,7 +682,7 @@ public class QuestionnaireBuilder {
       addContactPointQuestions(group, element, path, answerGroups);
     else if (t.getCode().equals("Identifier"))
       addIdentifierQuestions(group, element, path, answerGroups);
-    else if (t.getCode().equals("integer"))
+    else if (t.getCode().equals("integer") || t.getCode().equals("positiveInt") || t.getCode().equals("unsignedInt") )
       addIntegerQuestions(group, element, path, answerGroups);
     else if (t.getCode().equals("Coding"))
       addCodingQuestions(group, element, path, answerGroups);
@@ -708,7 +708,7 @@ public class QuestionnaireBuilder {
       addSampledDataQuestions(group, element, path, answerGroups);
     else if (t.getCode().equals("Extension"))
       addExtensionQuestions(profile, group, element, path, t.getProfile(), answerGroups);
-    else if (!t.getCode().equals("Narrative") && !t.getCode().equals("Resource") && !t.getCode().equals("ElementDefinition")&& !t.getCode().equals("Meta"))
+    else if (!t.getCode().equals("Narrative") && !t.getCode().equals("Resource") && !t.getCode().equals("ElementDefinition")&& !t.getCode().equals("Meta")&& !t.getCode().equals("Signature"))
       throw new Exception("Unhandled Data Type: "+t.getCode()+" on element "+element.getPath());
   }
 

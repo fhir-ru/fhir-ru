@@ -84,7 +84,7 @@ public class XSDBaseGenerator {
       write("  Generated on " + genDate + " for FHIR v" + version + " \r\n");
       write("-->\r\n");
       write("<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://hl7.org/fhir\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" "
-          + "targetNamespace=\"http://hl7.org/fhir\" elementFormDefault=\"qualified\" version=\""+version+"\">\r\n");
+          + "targetNamespace=\"http://hl7.org/fhir\" elementFormDefault=\"qualified\" version=\"1.0\">\r\n");
     }
     write("  <xs:import namespace=\"http://www.w3.org/XML/1998/namespace\" schemaLocation=\"xml.xsd\"/>\r\n");
     write("  <xs:import namespace=\"http://www.w3.org/1999/xhtml\" schemaLocation=\"fhir-xhtml.xsd\"/>\r\n");
@@ -286,7 +286,9 @@ public class XSDBaseGenerator {
           write("  </xs:simpleType>\r\n");
         } else {
           write("    <xs:restriction base=\""+sp.getSchema()+"\">\r\n");
-          write("      <xs:minLength value=\"1\"/>\r\n");
+          if (!sp.getSchema().contains("Integer")) {
+             write("      <xs:minLength value=\"1\"/>\r\n");
+          }
           write("    </xs:restriction>\r\n");
           write("  </xs:simpleType>\r\n");        
         }

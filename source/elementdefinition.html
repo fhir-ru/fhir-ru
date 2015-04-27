@@ -135,8 +135,6 @@ ElementDefinition is used in the following places: [%dtusage ElementDefinition%]
  try {
    var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
  } catch(exception){ 
-  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
-    alert(exception);
  }
  if (!currentTabIndex)
    currentTabIndex = '0';
@@ -145,11 +143,10 @@ $( '#tabs-ElementDefinition' ).tabs({ active: currentTabIndex, activate: functio
      
      
 function store(currentTab) {
+  document.activeElement.blur();
   try {
     sessionStorage.setItem('fhir-resource-tab-index', currentTab);
   } catch(exception){ 
-  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
-    alert(exception);
   }
   $( '#tabs-ElementDefinition' ).tabs('option', 'active', currentTab);
 }     
