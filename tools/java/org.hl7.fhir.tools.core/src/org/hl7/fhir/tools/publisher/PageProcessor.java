@@ -615,8 +615,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
           src = s1 + Utilities.fileTitle(file) + s3;
 			} else {
           String reference = bs.getReference();
-          if (reference.startsWith("valueset-"))
-            reference = reference.substring(9);
+          /* if (reference.startsWith("valueset-"))
+            reference = reference.substring(9); */
           src = s1 + reference + s3;
 			}
 		  }		  

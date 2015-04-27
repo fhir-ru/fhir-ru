@@ -7625,7 +7625,7 @@ The code identifies the section for an automated processor of the document. This
     <Cell ss:StyleID="s126"/>
     <Cell ss:StyleID="s126"/>
     <Cell ss:StyleID="s138"/>
-    <Cell><Data ss:Type="String">Персональный</Data></Cell>
+    <Cell><Data ss:Type="String">Персональное</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s139"><Data ss:Type="String">professional</Data></Cell>
@@ -7637,7 +7637,7 @@ The code identifies the section for an automated processor of the document. This
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s140"/>
-    <Cell><Data ss:Type="String">Профессиональный</Data></Cell>
+    <Cell><Data ss:Type="String">Профессиональное</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s139"><Data ss:Type="String">legal</Data></Cell>
@@ -7649,7 +7649,7 @@ The code identifies the section for an automated processor of the document. This
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s140"/>
-    <Cell><Data ss:Type="String">Легальный</Data></Cell>
+    <Cell><Data ss:Type="String">Юридическое</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s139"><Data ss:Type="String">official</Data></Cell>
@@ -7661,7 +7661,7 @@ The code identifies the section for an automated processor of the document. This
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s140"/>
-    <Cell><Data ss:Type="String">Официальный</Data></Cell>
+    <Cell><Data ss:Type="String">Официальное</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s139"/>

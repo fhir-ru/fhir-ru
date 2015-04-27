@@ -6954,7 +6954,7 @@ Query Definitions only have one output parameter, named &quot;result&quot;. This
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">OperationParameterType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of a parameter</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип параметра<!-- The type of a parameter --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">operation-definition-parameter-type</Data></Cell>
