@@ -1,63 +1,84 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <h2>
-Notes:
+Примечания:
 </h2>
 <ul>
-<li>Questionnaires may be used to represent predefined forms, named using Questionnaire.name.</li>
-<li>A Questionnaire's contents are placed inside its single nested Group, which may contain Questions or subgroups with Questions.</li>
-<li>Groups and Questions may have linkIds allowing groups and question answers captured in a <a href="questionnaireanswers.html">QuestionnaireAnswers</a>
-to be associated with their corresponding group or question.</li>
-<li>Questionnaire allows for flexible naming and structuring of its contents to reflect the flexible and varying nature of forms and questionnaires. 
+<li>Вопросники можно использовать для представления предопределенных форм, названных с помощью Questionnaire.name.
+<!-- Questionnaires may be used to represent predefined forms, named using Questionnaire.name. --></li>
+<li>Содержимое вопросника размещается внутри его единственной вложенной группы, которая может содержать вопросы или подгруппы с вопросами.
+<!-- A Questionnaire's contents are placed inside its single nested Group, which may contain Questions or subgroups with Questions. --></li>
+<li>Группы и вопросы могут иметь linkIds, позволяющие собирать ответы на группы и вопросы в <a href="questionnaireanswers.html">QuestionnaireAnswers</a>, для связи с соответствующей группой или вопросом.
+<!-- Groups and Questions may have linkIds allowing groups and question answers captured in a <a href="questionnaireanswers.html">QuestionnaireAnswers</a>
+to be associated with their corresponding group or question. --></li>
+<li>Questionnaire позволяет гибкое именование и структуризацию своего содержимого с учетом гибкого и изменяющегося характера форм и вопросников.
+Он не пытается явным образом стандартизировать или рационализировать обмен своим содержимым вне своего контекста использования, хотя участники такого обмена могут еще больше ограничить его структуру и гибкость, используя профили для определения стандартных, многократно используемых форм.
+<!-- Questionnaire allows for flexible naming and structuring of its contents to reflect the flexible and varying nature of forms and questionnaires. 
 It explicitly does not try to standardize or streamline exchange of its contents outside its context of use, although exchanging partners may further
-constrain its structure and flexibility using profiles to define standardized, reusable forms.</li>
-<li>Because of the lack of explicit support for Questionnaires in HL7v3, HL7 CDA Documents frequently used named sections with
-Observations to model Questionnaires. Such use cases should now utilize the Questionnaire Resource instead.</li>
-<li>The order of questions within groups, groups within groups and groups within questions is relevant and must be retained for display and capture.</li>
+constrain its structure and flexibility using profiles to define standardized, reusable forms. --></li>
+<li>Из-за отсутствия явной поддержки вопросников в HL7v3, HL7 CDA документы часто использовали именованные разделы с Observations для моделирования Questionnaires. Сейчас вместо них в таких сценариях следует использовать ресурс Questionnaire.
+<!-- Because of the lack of explicit support for Questionnaires in HL7v3, HL7 CDA Documents frequently used named sections with
+Observations to model Questionnaires. Such use cases should now utilize the Questionnaire Resource instead. --></li>
+<li>Порядок вопросов в группах, групп внутри групп и групп в вопросах является актуальным и должен сохраняться при отображении и вводе.
+<!-- The order of questions within groups, groups within groups and groups within questions is relevant and must be retained for display and capture. --></li>
 </ul>
 
 <a name="qversusr" />
-<h3>Using Questionnaires versus using Resources</h3>
+<h3>Использование вопросников по сравнению с использованием других ресурсов<!-- Using Questionnaires versus using Resources --></h3>
 <p>
-There is considerable overlap between the information covered by <b>Questionnaires</b> and other Resources (especially <a href="familyhistory.html">FamilyHistory</a>,
+Имеется значительное совпадение между информацией, охватываемой <b>Questionnaires</b> и другими ресурсами (особенно <a href="familyhistory.html">FamilyHistory</a>,
+<a href="medicationstatement.html">MedicationStatement</a>, <a href="observation.html">Observation</a>, <a href="procedure.html">Procedure</a> и др.): 
+Гибкой структурой <b>вопросника</b> легко можно злоупотребить для захвата всех данных подряд, даже тех данных, которые должны сохраняться в виде отдельных ресурсов. Выбор между использованием <b>вопросников</b> или отдельных ресурсов может быть продиктован процедурой сбора и записи. Например, если данные собираются с помощью согласованной с врачом (электронной) формы, может быть невозможно или нежелательно извлекать из нее отдельные ресурсы, и получение данных через <b>Questionnaire</b> будет наиболее подходящим.
+<!-- There is considerable overlap between the information covered by <b>Questionnaires</b> and other Resources (especially <a href="familyhistory.html">FamilyHistory</a>,
 <a href="medicationstatement.html">MedicationStatement</a>, <a href="observation.html">Observation</a>, <a href="procedure.html">Procedure</a>, etc.): 
 <b>Questionnaire's</b> flexible structure can easily be misused to capture any data, even data that should be captured as separate Resources. The choice between using <b>Questionnaires</b> or separate 
 Resources may be dictated by the procedure of collection and recording. E.g. if the data is captured as a physician-agreed (electronic) form, it might be impossible or undesirable to 
-distill separate resources from it and capturing the data in a <b>Questionnaire</b> would be most appropriate.
+distill separate resources from it and capturing the data in a <b>Questionnaire</b> would be most appropriate. -->
 </p> 
 
 <p>
-However, data captured only in <b>Questionnaires</b> can be difficult to query after-the-fact. Queries against other Resources will not return data captured only in <b>Questionnaires</b>, 
+Тем не менее данные, полученные с помощью <b>Questionnaires</b>, может быть трудно обрабатывать запросами постфактум. Запросы к другим ресурсам не вернут данные, полученные только с помощью <b>Questionnaires</b>, а запросы непосредственно к <b>Questionnaires</b> могут не найти все необходимые данные в зависимости от того, как вопросы будут формулироваться, кодироваться с течением времени или разными клиницистами.
+Кроме того, совместимость таких <b>Questionnaires</b> ограничена, так как интерпретация их содержимого известна только ограниченному кругу лиц, которые участвовали в их определении: кодирование данных из таких <b>Questionnaires</b> с помощью других, более специфичных ресурсов увеличивает способность и постоянство, с которым эти данные можно будет понимать и обрабатывать запросами.
+<!-- However, data captured only in <b>Questionnaires</b> can be difficult to query after-the-fact. Queries against other Resources will not return data captured only in <b>Questionnaires</b>, 
 and querying against <b>Questionnaires</b> directly may not find all desired data, depending on how the questions may have been phrased or encoded over time or by different clinicians. 
 Moreover, interoperability of such <b>Questionnaires</b> is limited as interpretation of its contents is only known to the circle of parties that were involved in its definition: encoding data from 
-such <b>Questionnaires</b> using other, more specific, Resources increases the ability and consistency with which it can be understood and queried.
+such <b>Questionnaires</b> using other, more specific, Resources increases the ability and consistency with which it can be understood and queried. -->
 </p> 
 
-<h3>Structure of the Questionnaire</h3>
+<h3>Структура вопросника<!-- Structure of the Questionnaire --></h3>
 <p>
-A Questionnaire is built out of three components:</p>
+Вопросник строится из трех компонентов:
+<!-- A Questionnaire is built out of three components: --></p>
 <ul>
-  <li>The main component is Questionnaire, which holds information <em>about</em> the Questionnaire, 
+  <li>Основным компонентом является Questionnaire, который содержит такую информацию <em>о</em> вопроснике, как идентификатор, издатель, дата создания и т. п. Questionnaire содержит одну "корневую" группу Group, которая содержит весь контент вопросника. 
+  Эта "корневая" группа содержит элементы, которые применяются ко всему вопроснику в целом - заголовок <code>title</code> вопросника, <code>concept</code>, который обозначает значение всего вопросника (например код для "family history"), <code>text</code> для отображения в верхней части вопросника и т. п. (В большинстве случаев в корневой группе элемент <code>required</code> будет иметь значение 'true', а <code>repeats</code> будет иметь значение 'false'.) 
+  <!-- The main component is Questionnaire, which holds information <em>about</em> the Questionnaire, 
   like the identifier, publisher, date authored, etc. The Questionnaire contains one "root" Group, which contains all the content of the questionnaire.
   This "root" group contains elements that apply to the entire questionnaire - the <code>title</code> for the questionnaire, the <code>concept</code> that represents the meaning
   of the overall questionnaire (e.g. a code for "family history"), the <code>text</code> to display at the top of the questionnaire, etc.  (In most cases, <code>required</code> 
-  would be 'true' and <code>repeats</code> would be false for the root group</li>
-  <li>This Group can contain <em>either</em> nested Groups (to represent sections and subsections on a questionnaire form) or Questions.
-  This way, any form containing sections or subsections can be represented, down to the actual questions.</li>
-  <li>The Questions themselves may be simple questions with a prompt text and one expected answer, but they may also contain nested groups, 
+  would be 'true' and <code>repeats</code> would be false for the root group --></li>
+  <li>Эта группа может содержать <em>либо</em> вложенные группы (для представления разделов и подразделов на форме вопросника), либо вопросы.
+   Таким образом может быть представлена любая форма, содержащая разделы и подразделы, вплоть до самих вопросов.
+<!-- This Group can contain <em>either</em> nested Groups (to represent sections and subsections on a questionnaire form) or Questions.
+  This way, any form containing sections or subsections can be represented, down to the actual questions. --></li>
+  <li>
+  Сами вопросы могут представлять собой просто текст вопроса и один ожидаемый ответ, а могут содержать вложенные группы, каждая из которых содержит набор вложенных вопросов. Таким образом можно моделировать "панели" вопросов, которые будут значимыми только (и поэтому будут отображаться только) в зависимости от ответов на родительский вопрос. Например вопрос "Получал ли пациент лечение в течение последних шести месяцев?" будет содержать вложенную группу вопросов для получения более подробной информации об этом лечении. См. <a href="questionnaire-example-bluebook.xml.html">примеры</a> из <a href="http://www.health.nsw.gov.au/Kids/Publications/my-personal-health-record.pdf">Australian New South Wales blue book</a> (синяя книга является официальным докладом правительства или реестром статистики - прим. пер.)
+  <!-- The Questions themselves may be simple questions with a prompt text and one expected answer, but they may also contain nested groups, 
 each containing sets of nested questions. This way, one can model "panels" of questions which would only be relevant (and thus would only be displayed)
 depending on the answers of a parent question. E.g. a question "Did the patient receive treatment in the past six months?" would contain a nested
 group of questions asking for further details about the treatment. See an <a href="questionnaire-example-bluebook.xml.html">example</a> from 
-the <a href="http://www.health.nsw.gov.au/Kids/Publications/my-personal-health-record.pdf">Australian New South Wales blue book</a></li>
-<li>Specific controls on dynamic display of groups, questions, etc. based on the answers to other questions is outside the scope of the base resource and
-are expected to be introduced as extensions.</li>
+the <a href="http://www.health.nsw.gov.au/Kids/Publications/my-personal-health-record.pdf">Australian New South Wales blue book</a> --></li>
+<li>Конкретные элементы управления динамического отображения групп, вопросов и т. п. на основе ответов на другие вопросы выходят за рамки базового ресурса и, как ожидается, будут введены в качестве расширений.
+<!-- Specific controls on dynamic display of groups, questions, etc. based on the answers to other questions is outside the scope of the base resource and
+are expected to be introduced as extensions. --></li>
 </ul>
 
-<h3>Question Definitions</h3>
+<h3>Определения вопросов<!-- Question Definitions --></h3>
 <p>
-Questionnaires can be crafted using any questions the author can conceive phrased in whatever manner is appropriate or convenient.  However, standardization of
+Вопросники могут быть разработаны с использованием любых вопросов, которые задумает автор, сформулированные в любой подходящей или удобной форме. Однако стандартизация вопросов и введение ограничений, действующих на прилагаемые ответы, увеличивает возможность сравнения данных, собранных через вопросники. Есть два механизма, определенные в спецификации, для связывания вопроса (или группы) со стандартным определением:
+<!-- Questionnaires can be crafted using any questions the author can conceive phrased in whatever manner is appropriate or convenient.  However, standardization of
 questions and the constraints enforced on the accompanying answers increases the ability to compare data gathered across questionnaires.  There are two
-mechanisms defined in the specification for linking a Question (or Group) to a standardized definition:
+mechanisms defined in the specification for linking a Question (or Group) to a standardized definition: -->
 </p>
 <ul>
   <li>The <code>concept</code> element on both Group and Question allows an individual question, a group of questions or even the questionnaire as a whole to be associated
