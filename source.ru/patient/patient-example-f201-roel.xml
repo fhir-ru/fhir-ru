@@ -5,17 +5,17 @@
     <identifier>
         <!--The identifier for the person as this patient (fictive)-->
         <use value="official"/>
-        <label value="BSN"/>
+        <type><text value="BSN"/></type>
         <system value="urn:oid:2.16.840.1.113883.2.4.6.3"/>
         <value value="123456789"/>
     </identifier>
     <!--Demographics-->
     <identifier>
-        <!--The identifier for this individual-->
-        <use value="official"/>
-        <label value="BSN"/>
+        <type><text value="BSN"/></type>
         <system value="urn:oid:2.16.840.1.113883.2.4.6.3"/>
         <value value="123456789"/>
+        <!--The identifier for this individual-->
+        <use value="official"/>
     </identifier>
     <name>
         <!--The name associated with the individual (fictive)-->
@@ -65,7 +65,7 @@
     <multipleBirthBoolean value="false"/>
     <photo>
         <contentType value="image/jpeg" />
-        <url value="binary/@f006"/>
+        <url value="Binary/f006"/>
     </photo>
     <contact>
         <!--Contact of the patient-->

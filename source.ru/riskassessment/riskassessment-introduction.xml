@@ -11,6 +11,11 @@ This resource captures predicted outcomes for a patient or population on the bas
   <li>List of potential health risks based on a patient's genetic analysis</li>
   <li>A prediction of outbreak infection rates within a geography based on immunization rates</li>
 </ul>
+<p>
+This resource can be used to represent the results of formal scoring/decision support tools that evaluate
+risk.  It can also be used to capture a practitioner's subjective assessment of the patient's risk based
+on existing knowledge and previous experience.
+</p>
 </div>
 
 <div>
@@ -24,7 +29,7 @@ Risk assessments may be based on a variety of factors, including:
 <ul>
 <li>Basic demographic information from the <a href="patient.html">Patient</a> or <a href="group.html">Group</a> resources</li>
 <li>Various <a href="observation.html">Observations</a> including vital signs, lab information, assessments, genetic information, etc.</li>
-<li><a href="familyhistory.html">FamilyHistory</a></li>
+<li><a href="familymemberhistory.html">FamilyMemberHistory</a></li>
 <li>Current, past and proposed therapies <a href="immunization.html">Immunization</a>, <a href="procedure.html">Procedure</a>, <a href="careplan.html">CarePlan</a>, etc.</li>
 </ul>
 <p>

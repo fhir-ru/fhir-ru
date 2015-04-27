@@ -11,10 +11,10 @@
       of the patient regarding a specific condition or problem, even if not currently participating in an encounter.
     </p>
     <p>
-  These resources are typically known in existing systems as:
+      These resources are typically known in existing systems as:
     </p>
-  <ul>
-      <li>EpisodeOfCare: Case, Program, Problem</li>
+    <ul>
+      <li>EpisodeOfCare: Case, Program, Problem, Episode</li>
       <li>Encounter: Visit, Contact</li>
     </ul>
     <p></p>
@@ -24,7 +24,7 @@
       which tracks their responsibility with the Patient.
     </p>
     <p>
-      When an Organization completes their involvement with the patient and transfers care to another Organizaion.
+      When an Organization completes their involvement with the patient and transfers care to another Organization.
       This is often in the form of a referral to another Organization (or Organizations).<br/>
     </p>
     <p>
@@ -41,7 +41,7 @@
       activity directly relating to the patient, while the EpisodeOfCare is the container that can link a series of Encounters
       together for problems/issues.<br/>
 
-  The Example scenarios below give some good examples as to when you might want to be using an EpisodeOfCare.
+      The Example scenarios below give some good examples as to when you might want to be using an EpisodeOfCare.
     </p>
     <p>
       This difference is a similar difference between the EpisodeOfCare and a CarePlan. 
@@ -54,27 +54,27 @@
   <div>
     <h2>Background and Context</h2>
     <p>
-  Systems collect a coherent group of activities (such as encounters) related to a patient's health condition or problem often referred to as a Care Episode.
-  Information about an episode is often shared across systems, and in some cases organizational and disciplinary boundaries.
+      Systems collect a coherent group of activities (such as encounters) related to a patient's health condition or problem often referred to as a Care Episode.
+      Information about an episode is often shared across systems, and in some cases organizational and disciplinary boundaries.
       An Episode Of Care contains details about the purpose of the care and can exist without any activities.<br/>
 
       The minimal information that would be required in an episode of care would be a patient, organization and a reason for the ongoing association.
-  Other reasons for creating an EpisodeOfCare could be for tracking the details required for government reporting or billing.
+      Other reasons for creating an EpisodeOfCare could be for tracking the details required for government reporting or billing.
     </p>
-    <h3>Expected Imlementations</h3>
-  <ul>
-    <li>Chronic Disease Management Systems</li>
+    <h3>Expected Implementations</h3>
+    <ul>
+      <li>Chronic Disease Management Systems</li>
       <li>
         Community Care Systems
-    <ul>
-      <li>Tracking progress of a specific condition</li>
-      <li>Tracking government funding</li>
+        <ul>
+          <li>Tracking progress of a specific condition</li>
+          <li>Tracking government funding</li>
+        </ul>
+      </li>
+      <li>Problem based General Practice systems</li>
+      <li>Disability Support Systems</li>
+      <li>Aged Care Systems (Community and Residential)</li>
     </ul>
-    </li>
-    <li>Problem based General Practice systems</li>
-    <li>Disability Support Systems</li>
-    <li>Aged Care Systems (Community and Residential)</li>
-  </ul>
   </div>
 
 </div>

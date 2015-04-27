@@ -7,20 +7,21 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Eric Haas</LastAuthor>
   <Created>2013-07-04T21:40:46Z</Created>
-  <LastSaved>2015-03-13T10:04:14Z</LastSaved>
-  <Version>15.00</Version>
+  <LastSaved>2015-04-10T01:54:05Z</LastSaved>
+  <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10155</WindowHeight>
-  <WindowWidth>23100</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowHeight>4590</WindowHeight>
+  <WindowWidth>20550</WindowWidth>
+  <WindowTopX>-15</WindowTopX>
+  <WindowTopY>4530</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
+  <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -121,7 +122,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>5</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -131,10 +132,11 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="resources">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="93" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="92" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="156.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="198"/>
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="96"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
@@ -144,15 +146,10 @@
     <Cell><Data ss:Type="String">device</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Alert</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">author</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AllergyIntolerance</Data></Cell>
-    <Cell><Data ss:Type="String">patient</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">recorder</Data></Cell>
+    <Cell><Data ss:Type="String">patient | recorder | reporter</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">reporter</Data></Cell>
+    <Cell><Data ss:Type="String">recorder | reporter</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Appointment</Data></Cell>
@@ -163,20 +160,20 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AppointmentResponse</Data></Cell>
-    <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell><Data ss:Type="String">actor</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">actor</Data></Cell>
-    <Cell><Data ss:Type="String">practitioner</Data></Cell>
+    <Cell><Data ss:Type="String">actor</Data></Cell>
     <Cell><Data ss:Type="String">actor</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AuditEvent</Data></Cell>
-    <Cell><Data ss:Type="String">reference.subject | reference.patient</Data></Cell>
+    <Cell><Data ss:Type="String">patient | participant</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">participant</Data></Cell>
     <Cell><Data ss:Type="String">participant</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Basic</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">patient | author</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">author</Data></Cell>
    </Row>
@@ -185,21 +182,16 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">BodySite</Data></Cell>
+    <Cell><Data ss:Type="String">patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Bundle</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">CarePlan</Data></Cell>
-    <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">patient | participant | performer</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">participant | performer</Data></Cell>
     <Cell><Data ss:Type="String">participant | performer</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">CarePlan2</Data></Cell>
-    <Cell><Data ss:Type="String">patient</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">participant</Data></Cell>
-    <Cell><Data ss:Type="String">participant</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Claim</Data></Cell>
@@ -224,15 +216,15 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">CommunicationRequest</Data></Cell>
-    <Cell><Data ss:Type="String">subject | sender | recipient</Data></Cell>
+    <Cell><Data ss:Type="String">subject | sender | recipient | requester</Data></Cell>
     <Cell><Data ss:Type="String">encounter</Data></Cell>
     <Cell><Data ss:Type="String">sender | recipient | requester</Data></Cell>
     <Cell><Data ss:Type="String">sender | recipient | requester</Data></Cell>
-    <Cell><Data ss:Type="String">sender | recipient | requester</Data></Cell>
+    <Cell><Data ss:Type="String">sender | recipient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Composition</Data></Cell>
-    <Cell><Data ss:Type="String">subject | author</Data></Cell>
+    <Cell><Data ss:Type="String">subject | author | attester</Data></Cell>
     <Cell><Data ss:Type="String">encounter</Data></Cell>
     <Cell><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">subject | author | attester</Data></Cell>
@@ -252,7 +244,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Contract</Data></Cell>
-    <Cell><Data ss:Type="String">subject | signer</Data></Cell>
+    <Cell><Data ss:Type="String">subject | signer | actor</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">actor | signer</Data></Cell>
     <Cell><Data ss:Type="String">actor | signer</Data></Cell>
     <Cell><Data ss:Type="String">actor</Data></Cell>
@@ -271,6 +263,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Device</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">{def}</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DeviceComponent</Data></Cell>
@@ -306,14 +299,14 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DocumentManifest</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">subject | author | recipient</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">subject | author | recipient</Data></Cell>
     <Cell><Data ss:Type="String">subject | author</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DocumentReference</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">subject | author</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">subject | author | authenticator</Data></Cell>
     <Cell><Data ss:Type="String">subject | author</Data></Cell>
@@ -327,8 +320,9 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Encounter</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">participant</Data></Cell>
-    <Cell><Data ss:Type="String">practitioner</Data></Cell>
+    <Cell><Data ss:Type="String">{def}</Data></Cell>
+    <Cell><Data ss:Type="String">participant</Data></Cell>
+    <Cell><Data ss:Type="String">practitioner | participant</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">EnrollmentRequest</Data></Cell>
@@ -340,13 +334,20 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">EpisodeOfCare</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s66"><Data ss:Type="String">care-manager | team-member</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ExplanationOfBenefit</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">FamilyHistory</Data></Cell>
+    <Cell><Data ss:Type="String">FamilyMemberHistory</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Flag</Data></Cell>
+    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">author</Data></Cell>
+    <Cell><Data ss:Type="String">author</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Goal</Data></Cell>
@@ -355,14 +356,15 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Group</Data></Cell>
     <Cell><Data ss:Type="String">member</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">member</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">member</Data></Cell>
+    <Cell><Data ss:Type="String">member</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">HealthcareService</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImagingObjectSelection</Data></Cell>
-    <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell><Data ss:Type="String">patient | author</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">author</Data></Cell>
@@ -382,7 +384,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">List</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">subject | source</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">source</Data></Cell>
     <Cell><Data ss:Type="String">subject | source</Data></Cell>
    </Row>
@@ -438,7 +440,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Observation</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">subject | performer</Data></Cell>
     <Cell><Data ss:Type="String">encounter</Data></Cell>
     <Cell><Data ss:Type="String">performer</Data></Cell>
     <Cell><Data ss:Type="String">performer</Data></Cell>
@@ -454,24 +456,20 @@
     <Cell><Data ss:Type="String">Order</Data></Cell>
     <Cell><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">source | target</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">target</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">OrderResponse</Data></Cell>
-    <Cell><Data ss:Type="String">request.subject</Data></Cell>
+    <Cell><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">who</Data></Cell>
-    <Cell><Data ss:Type="String">request.subject</Data></Cell>
+    <Cell><Data ss:Type="String">who</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Organization</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Other</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Patient</Data></Cell>
-    <Cell><Data ss:Type="String">{def}</Data></Cell>
+    <Cell><Data ss:Type="String">link</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="s66"><Data ss:Type="String">careprovider</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -488,16 +486,20 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Practitioner</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">{def}</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Procedure</Data></Cell>
-    <Cell><Data ss:Type="String">patient</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">performer</Data></Cell>
+    <Cell><Data ss:Type="String">patient | performer</Data></Cell>
+    <Cell><Data ss:Type="String">encounter</Data></Cell>
+    <Cell><Data ss:Type="String">performer</Data></Cell>
+    <Cell><Data ss:Type="String">performer</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ProcedureRequest</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">performer | orderer</Data></Cell>
+    <Cell><Data ss:Type="String">subject | orderer | performer</Data></Cell>
+    <Cell><Data ss:Type="String">encounter</Data></Cell>
+    <Cell><Data ss:Type="String">performer | orderer</Data></Cell>
     <Cell><Data ss:Type="String">performer | orderer</Data></Cell>
     <Cell><Data ss:Type="String">orderer</Data></Cell>
    </Row>
@@ -511,7 +513,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Provenance</Data></Cell>
-    <Cell><Data ss:Type="String">target.subject | target.patient</Data></Cell>
+    <Cell><Data ss:Type="String">target.subject | target.patient | patient</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">party</Data></Cell>
     <Cell><Data ss:Type="String">party</Data></Cell>
     <Cell><Data ss:Type="String">party</Data></Cell>
@@ -521,19 +523,21 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">QuestionnaireAnswers</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">subject | author</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">encounter</Data></Cell>
     <Cell><Data ss:Type="String">author | source</Data></Cell>
     <Cell><Data ss:Type="String">author | source</Data></Cell>
+    <Cell><Data ss:Type="String">author</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ReferralRequest</Data></Cell>
-    <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell><Data ss:Type="String">patient | requester</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">requester | recipient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RelatedPerson</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">{def}</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RiskAssessment</Data></Cell>
@@ -572,10 +576,16 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Supply</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">supplier</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">SupportingDocumentation</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+    <Cell><Data ss:Type="String">SupplyRequest</Data></Cell>
+    <Cell><Data ss:Type="String">patient</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
+    <Cell><Data ss:Type="String">SupplyDelivery</Data></Cell>
+    <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">supplier | receiver</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ValueSet</Data></Cell>
@@ -583,6 +593,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">VisionPrescription</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">prescriber</Data></Cell>
    </Row>
   </Table>
@@ -603,7 +614,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>70</TopRowBottomPane>
+   <TopRowBottomPane>79</TopRowBottomPane>
    <ActivePane>2</ActivePane>
    <Panes>
     <Pane>
@@ -611,7 +622,8 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>94</ActiveRow>
+     <ActiveRow>89</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

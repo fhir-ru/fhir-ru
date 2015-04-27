@@ -15,6 +15,11 @@
 <a name="SOA"> </a>
 <a name="soa"> </a>
 <h2>Using Resources with Services</h2>
+<blockquote>
+<p>
+<a name="dstu">This page</a> and <a href="soa.html">the other FHIR/SOA/Services page</a> will be reconciled and collapsed to a single page during ballot reconciliation.
+</p>
+</blockquote>
 <p>
 Though FHIR Resources are primarily designed with for the <a href="http.html">RESTful HTTP-based implementation</a>,
 
@@ -33,8 +38,11 @@ that this would be done as separate specifications that make use of the underlyi
 in this specification. Services defined like this are able to build on the common underlying platform
 features defined in this specification such as REST or messaging, and add specific interactions where
 appropriate. Alternatively, the service interfaces can build an entirely separate implementation. 
-At this time, FHIR does not define any specific service interfaces as part of the specification, 
-though alignment with service interface definitions provided by the 
+</p>
+<p>
+This specification defines a <a href="terminology-service.html">Terminology Service</a> which is 
+tightly integrated with the RESTful API. Definition of other additional services based on the  
+service interface definitions provided by the 
 <a href="http://hssp.wikispaces.com/">HL7 SOA work group</a> will be considered if 
 there is sufficient interest in this.
 </p>
@@ -62,7 +70,7 @@ and implementation.
 <a name="tech"> </a>
 <h3>Technical Requirements</h3>
 <p>
-A resource consists of an identifier, some metadata, narrrative, and data. 
+A resource consists of an identifier, some metadata, narrative, and data. 
 When the resources are used with a service, the context of use will need to
 describe how the id and meta data are managed.
 </p>

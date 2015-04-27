@@ -122,8 +122,6 @@ try {
   var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
 }
 catch(exception){ 
-  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
-    alert(exception);
 }
 
 if (!currentTabIndex)
@@ -134,12 +132,11 @@ $( '#tabs' ).tabs({
          activate: function( event, ui ) {
              var active = $('.selector').tabs('option', 'active');
              currentTabIndex = ui.newTab.index();
+             document.activeElement.blur();
              try {
                sessionStorage.setItem('fhir-resource-tab-index', currentTabIndex);
              }
              catch(exception){ 
-                if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
-                  alert(exception);
              }
          }
      });

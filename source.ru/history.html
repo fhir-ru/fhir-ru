@@ -35,7 +35,7 @@ notes:
 <p>
 This is the developmental version of FHIR. The only changes tracked here are 
 changes from after the publication of the DSTU. For changes from before this, 
-see the <a href="http://hl7.org/implement/standards/fhir/history.html">DSTU Version History</a>.
+see the <a href="http://hl7.org/fhir/history.html">DSTU #1 Version History</a>.
 Note that a full archive history of everything is available 
 <a href="http://wiki.hl7.org/index.php?title=FHIR">through the HL7 gForge SVN archives</a>.
 </p>
@@ -128,8 +128,7 @@ Additional notes:
  <li>Changes to a formally published specification (except for minor publishing corrections, such as correcting broken links) are only made via announced technical corrections</li>
  <li>The reference implementations have 2 versions - the version of the specification that they implement, and their own version. Consult the reference implementation documentation for policy regarding this version number</li>
  <li>The specification published by the continuous integration service (<a href="http://hl7-fhir.github.io/">http://hl7-fhir.github.io/</a>) build may not conform to this version policy, 
-   but the versions published on the HL7 web site will (Current published specification at <a href="http://hl7.org/implement/standards/FHIR/">http://hl7.org/implement/standards/FHIR/</a>) 
-     and current development version at <a href="http://hl7.org/implement/standards/FHIR-Develop/">http://hl7.org/implement/standards/FHIR-Develop/</a>)</li>
+   but the versions published on the HL7 web site will (see <a href="http://hl7.org/fhir/directory.html">Directory of published versions</a>)</li>
  <li>The first DSTU was published prior to these rules being agreed as v0.80-2286. This has been updated to 0.0.81.2382 as a technical correction to align with this policy on 9-May 2014</li>
 </ul>
 
@@ -159,6 +158,122 @@ template:
 notes: do not list revision in the version 
 --> 
 
+	<tr>
+		<td>0.5.0</td>
+		<td>
+      <p><b>DSTU Ballot, May 2015</b></p>
+      <p>This version had extensive change as a result of the January Draft ballot, ongoing testing, and the open change proposals (over 800 gForge tasks). List here is a summary of the major changes to resource content, but this is only a small amount of the overall changes.</p>
+      <p><b>Enumerations</b></p>
+      <ul>
+        <li>All spaces removed</li>
+        <li>Extensive content changes not noted here</li>
+      </ul>
+      <p><b>New Data Types</b></p>
+      <ul>
+        <li><a href="datatypes.html#unsignedInt">unsignedInt</a></li>
+        <li><a href="datatypes.html#positiveInt">positiveInt</a></li>
+        <li><a href="datatypes.html#Signature">Signature</a></li>
+        <li><a href="resource.html#Meta">Meta</a></li>
+      </ul> 
+      <p><b>Changed Data Types</b></p>
+      <ul>
+        <li><a href="datatypes.html#Coding">Coding</a> - remove valueSet   </li>
+        <li><a href="datatypes.html#Attachment">Attachment</a> - add creation</li>
+        <li><a href="datatypes.html#Identifier">Identifier</a> - replace label with type</li>
+        <li><a href="datatypes.html#Timing">Timing</a> - major rework of content</li>
+        <li><a href="elementdefinition.html">ElementDefinition</a> - add label, code, rename 'formal' to definition, rename synonym to alias, add language to mapping, remove conformance and isExtensible and replace with strength</li>
+      </ul>
+      <p><b>New Resources</b></p>
+      <ul>
+        <li><a href="bodysite.html">BodySite</a></li>
+        <li><a href="claim.html">Claim</a></li>
+        <li><a href="processrequest.html">ProcessRequest</a></li>
+        <li><a href="processresponse.html">ProcessResponse</a></li>
+      </ul>
+      <p><b>Removed Resources</b></p>
+      <ul>
+        <li>CarePlan2 -&gt; collapsed into CarePlan</li>
+        <li>FamilyHistory -&gt; broken up into FamilyMemberHistory</li>
+        <li>InstitutionalClaim, OralHealthClaim, PharmacyClaim, ProfessionalClaim, VisionClaim -&gt; collapsed into Claim</li>
+        <li>Other - use Basic instead</li>
+        <li>PendedRequest,Readjudicate, Reversal, StatusRequest, StatusResponse - use ProcessRequest/Response instead</li>
+        <li>SupportingDocumentation - use DocumentManifest instead</li>
+      </ul>
+  
+      <p><b>Renamed Resources</b></p>
+      <ul>
+        <li>Alert -&gt; Flag: 'alert' made people think it was an action like an alarm</li>
+        <li>SecurityEvent -&gt; AuditEvent: it wasn't just for security purposes</li>
+        <li>ClinicalAssessment -&gt; ClinicalImpression: people got confused with 'assessment' tools like APGAR score</li>
+        <li>Profile -&gt; StructureDefinition: 'Profile' is the process, a package of statements</li>
+      </ul>
+  
+      <p><b>Changes Inside Resources</b></p>
+      <ul>
+        <li><a href="parameters.html">Parameters</a> - allow parameter.part to contain a resource</li>
+        <li><a href="allergyintolerance.html">AllergyIntolerance</a> - rename subject to patient</li>
+        <li><a href="appointment.html">Appointment</a> - remove lastModifiedBy/lastModified, add location</li>
+        <li><a href="appointmentresponse.html">AppointmentResponse</a> - remove lastModifiedBy/lastModified, add rename individual to actor</li>
+        <li><a href="auditevent.html">AuditEvent</a> - add .event.purposeOfEvent, participant.location, .policy, and .purposeOfUse</li>
+        <li><a href="bundle.html">Bundle</a> - major reorganization</li>
+        <li><a href="careplan.html">CarePlan</a> - pull goal out + other reorganization</li>
+        <li><a href="clinicalimpression.html">ClinicalImpression</a> - add status, replace careplan &amp; referral with trigger, rename diagnosis to finding, make plan 0..*, </li>
+        <li><a href="composition.html">Composition</a> - change .section.content to refer to List only, not any </li>
+        <li><a href="conceptmap.html">ConceptMap</a> - change identifier to url, add useContext, change telecom to contact, </li>
+        <li><a href="condition.html">Condition</a> - rename subject to patient, rename status to clinicalStatus, change to bodySite = code or Reference(BodySite), rename .codeableConcept to .code</li>
+        <li><a href="conformance.html">Conformance</a> - change identifier to url, add useContext, change telecom to contact, add requirements and copyright, add support for conditional operations, </li>
+        <li><a href="contract.html">Contract</a> - extensive rewrite</li>
+        <li><a href="coverage.html">Coverage</a> - add bin, subscriberId</li>
+        <li><a href="dataelement.html">DataElement</a> - total rewrite to use ElementDefinition</li>
+        <li><a href="device.html">Device</a> - add status, manufactureDate</li>
+        <li><a href="devicemetric.html">DeviceMetric</a> - rename operationalState to operationalStatus, add measurementMode, rename calibrationInfo to calibration, change color to an enumerations</li>
+        <li><a href="deviceuserequest.html">DeviceUseRequest</a>/<a href="deviceusestatement.html">DeviceUseStatement</a> - change to bodySite = code or Reference(BodySite)</li>
+        <li><a href="diagnosticorder.html">DiagnosticOrder</a> - change to bodySite = code or Reference(BodySite)</li>
+        <li><a href="diagnosticreport.html">DiagnosticReport</a> - add encounter</li>
+        <li><a href="documentmanifest.html">DocumentManifest</a> - add options for how content is referred to </li>
+        <li><a href="documentreference.html">DocumentReference</a> - add format, remove policyManager, make content : Attachment, and remove several related attributes, remove service reference and add context.practiceSetting, sourcePatientInfo, and related</li>
+        <li><a href="encounter.html">Encounter</a> - add incomingReferralRequest, allow reason to repeat, rename diet to dietPreference</li>
+        <li><a href="episodeofcare.html">EpisodeOfCare</a> - rename currentStatus to status, allow referralRequest to repeat, </li>
+        <li><a href="flag.html">Flag</a> - rename subject to patient, change from note to code</li>
+        <li><a href="goal.html">Goal</a> - add targetDate, statusDate, author, priority</li>
+        <li><a href="healthcareservice.html">HealthcareService</a> - extensive rewrite</li>
+        <li><a href="imagingobjectselection.html">ImagingObjectSelection</a> - remove retrieveAETitle, rename retrieveUrl to url, add frames</li>
+        <li><a href="imagingstudy.html">ImagingStudy</a> - add laterality, change url to attachment</li>
+        <li><a href="immunization.html">Immunization</a> - add encounter, rename subject to patient, rename refusedIndicator to wasNotGiven, rename refusalReason to reasonNotGiven</li>
+        <li><a href="immunizationrecommendation.html">ImmunizationRecommendation</a> - rename subject to patient</li>
+        <li><a href="list.html">List</a> - add title, status, change ordered to orderedBy, add note</li>
+        <li><a href="location.html">Location</a> - remove status</li>
+        <li><a href="media.html">Media</a> - remove created (-> Attachment)</li>
+        <li><a href="medication.html">Medication</a> - add batch</li>
+        <li><a href="medicationadministration.html">MedicationAdministration</a> - add reasonGiven, note, text. remove timing &amp; maxDosePerPeriod</li>
+        <li><a href="medicationdispense.html">MedicationDispense</a> - collapse to a single dispense, add daysSupply, note and substitution, change quantity to allow range</li>
+        <li><a href="medicationprescription.html">MedicationPrescription</a> - add note, change quantity to allow range, </li>
+        <li><a href="medicationstatement.html">MedicationStatement</a> - add informationSource, status, dateAsserted, replace whenGiven with effective[x], remove device, add dosage.text</li>
+        <li><a href="namingsystem.html">NamingSystem</a> - add date, publisher, </li>
+        <li><a href="nutritionorder.html">NutritionOrder</a> - extensive rewrite</li>
+        <li><a href="observation.html">Observation</a> - change name to code, allow more types of value[x], change type of dataAbsentReason, change to bodySite = code or Reference(BodySite), allow identifier to repeat, add device, </li>
+        <li><a href="operationdefinition.html">OperationDefinition</a> - change identifier to url, add useContext, change telecom to contact, change name to title, add reuqirements, idempotent, </li>
+        <li><a href="operationoutcome.html">OperationOutcome</a> - change type of .issue.type</li>
+        <li><a href="orderresponse.html">OrderResponse</a> - rename code to orderStatus</li>
+        <li><a href="organization.html">Organization</a> - remove location and contact.gender</li>
+        <li><a href="patient.html">Patient</a> - communication to allow 'preferred'</li>
+        <li><a href="person.html">Person</a> - rename other to target</li>
+        <li><a href="practitioner.html">Practitioner</a> - change type of birthDate, allow multiple roles per practitioner</li>
+        <li><a href="procedure.html">Procedure</a> - add status and category, change to bodySite = code or Reference(BodySite), allow date to be period too, add location, change followUp to code 0..*, add device tracking</li>
+        <li><a href="procedurerequest.html">ProcedureRequest</a> - change to bodySite = code or Reference(BodySite)</li>
+        <li><a href="provenance.html">Provenance</a> - change integritySignature to signature &amp; make it a type, allow reference by Reference as well as URI</li>
+        <li><a href="questionnaire.html">Questionnaire</a> - add telecom</li>
+        <li><a href="schedule.html">Schedule</a> - move lastModified</li>
+        <li><a href="searchparameter.html">SearchParameter</a> - change telecom to contact, add status, experimental, date, </li>
+        <li><a href="slot.html">Slot</a> - move lastModified</li>
+        <li><a href="specimen.html">Specimen</a> - change source to parent, change to bodySite = code or Reference(BodySite)</li>
+        <li><a href="structuredefinition.html">StructureDefinition</a> - complete rewrite</li>
+        <li><a href="subscription.html">Subscription</a> - change type of tag, reanme url to endPoint, </li>
+        <li><a href="supply.html">Supply</a> - change type of whenHandedOver</li>
+        <li><a href="valueset.html">ValueSet</a> - change identifier to url, add useContext, change telecom to contact, replace purpose with useContext, add requirements, rename stableDate to lockedDate, change type of expansion.identifier, add expansion parameters</li>
+      </ul>
+    </td>
+	</tr>
 	<tr>
 		<td>0.4.0</td>
 		<td>
@@ -190,13 +305,16 @@ notes: do not list revision in the version
         <li>Remove DeviceObservationReport and Query</li>
         <li>Collapse AdverseReaction into <a href="allergyintolerance.html">AllergyIntolerance</a></li>
         <li><a href="appointment.html">Appointment</a> changes - individual field renamed to actor, and added mappings to v2 and v3</li>
+        <li><a href="familymemberhistory.html">FamilyMemberHistory</a> combined with <a href="list.html">List</a> replaces FamilyHistory (with corresponding updates to related profiles)</li>
+        <li><a href="flag.html">Flag</a> replaces Alert including improved clarification of how it is used and replacement of "note" with "code"</li>
+        <li><a href="careplan.html">CarePlan</a> significantly refactored including splitting Goal out as a distinct resource, moving elements between activity and detail, introduction of several new elements and supported relationship types</li>
+        <li></li>
 			</ul>
       <p>New Resources:</p>
       <ul>
         <li><a href="appointment.html">Appointment</a></li>
         <li><a href="appointmentresponse.html">AppointmentResponse</a></li>
         <li><a href="basic.html">Basic</a></li>
-        <li><a href="careplan2.html">CarePlan2</a> </li>
         <li><a href="claimresponse.html">ClaimResponse</a></li>
         <li><a href="clinicalimpression.html">ClinicalImpression</a></li>
         <li><a href="communication.html">Communication</a></li>
@@ -219,17 +337,17 @@ notes: do not list revision in the version
         <li><a href="goal.html">Goal</a> </li>
         <li><a href="healthcareservice.html">HealthcareService</a></li>
         <li><a href="imagingobjectselection.html">ImagingObjectSelection</a></li>
-        <li><a href="institutionalclaim.html">InstitutionalClaim</a></li>
+        <li><a href="claim.html">InstitutionalClaim</a></li>
         <li><a href="namingsystem.html">NamingSystem</a></li>
         <li><a href="nutritionorder.html">NutritionOrder</a></li>
         <li><a href="operationdefinition.html">OperationDefinition</a></li>
-        <li><a href="oralhealthclaim.html">OralHealthClaim</a></li>
+        <li><a href="claim.html">OralHealthClaim</a></li>
         <li><a href="paymentnotice.html">PaymentNotice</a></li>
         <li><a href="paymentreconciliation.html">PaymentReconciliation</a></li>
         <li><a href="person.html">Person</a></li>
-        <li><a href="pharmacyclaim.html">PharmacyClaim</a></li>
+        <li><a href="claim.html">PharmacyClaim</a></li>
         <li><a href="procedurerequest.html">ProcedureRequest</a> </li>
-        <li><a href="professionalclaim.html">ProfessionalClaim</a></li>
+        <li><a href="claim.html">ProfessionalClaim</a></li>
         <li><a href="questionnaireanswers.html">QuestionnaireAnswers</a></li>
         <li><a href="referralrequest.html">ReferralRequest</a></li>
         <li><a href="riskassessment.html">RiskAssessment</a></li>
@@ -237,8 +355,8 @@ notes: do not list revision in the version
         <li><a href="schedule.html">Schedule</a></li>
         <li><a href="slot.html">Slot</a></li>
         <li><a href="subscription.html">Subscription</a></li>
-        <li><a href="supportingdocumentation.html">SupportingDocumentation</a></li>
-        <li><a href="visionclaim.html">VisionClaim</a></li>
+        <li>SupportingDocumentation</li>
+        <li><a href="claim.html">VisionClaim</a></li>
         <li><a href="visionprescription.html">VisionPrescription</a></li>
       </ul>
       <p>New Implementation Guides (see <a href="iglist.html">discussion of status</a>)</p>
@@ -250,7 +368,8 @@ notes: do not list revision in the version
         <li><a href="ehrs-rle.html">EHRS Functional model - Record Lifecycle Events</a></li>
 			</ul>
 		</td>
-	</tr> <tr>
+	</tr> 
+  <tr>
    <td>0.3.0</td>
    <td>
      <ul>
@@ -270,7 +389,7 @@ notes: do not list revision in the version
        <li>Add <a href="referralrequest.html">Referral Request</a></li>
        <li>Add supportingInformation to <a href="diagnosticorder.html">DiagnosticOrder</a></li>
        <li>Add fulfills to <a href="encounter.html">Encounter</a></li>
-       <li>Add date and age[x] to <a href="familyhistory.html">FamilyHistory</a></li>
+       <li>Add date and age[x] to <a href="familymemberhistory.html">FamilyHistory</a></li>
        <li>Change cardinality of <a href="location.html">Location</a>.identifier to 0..*</li>
        <li>Change cardinality of <a href="practitioner.html">Practitioner</a>.address to 0..*</li>
        <li>Add <a href="observation.html">Observation</a>.encounter to 0..*</li>
