@@ -21,6 +21,10 @@
                 <language value="nl"/>
                 <value value="gesteriliseerd"/>
             </designation>
+			<designation>
+				<language value="ru"/>
+				<value value="Кастрированное"/>
+            </designation>
         </concept>
         <concept>
             <code value="intact"/>
@@ -29,6 +33,10 @@
             <designation>
                 <language value="nl"/>
                 <value value="intact"/>
+            </designation>
+			<designation>
+				<language value="ru"/>
+				<value value="Некастрированное"/>
             </designation>
         </concept>
     </define>
