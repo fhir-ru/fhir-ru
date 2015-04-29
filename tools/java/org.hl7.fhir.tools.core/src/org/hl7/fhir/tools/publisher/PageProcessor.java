@@ -1066,7 +1066,6 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         b.append(" </tr>\r\n");
       }
     }
-    }
 // todo-profiles - do we want to list these here?    
 //    for (String n : definitions.sortedResourceNames()) {
 //      ResourceDefn r = definitions.getResourceByName(n);
@@ -1807,7 +1806,6 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         }
       }
     }
-  }
   }
 
   private String getBindingTypeDesc(ElementDefinitionBindingComponent binding) {
@@ -2583,7 +2581,6 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         s.append("</tr>\r\n");
       }
     }
-  }
   }
 
 
@@ -4159,7 +4156,6 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         }
       }
     }
-    }
     return s.toString();
   }
 
@@ -5064,7 +5060,6 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         txlist.add(ed.getPath());
         txmap.put(ed.getPath(), ed.getConstraint());
       }
-    }
     }
     if (txlist.isEmpty())
       return "";
