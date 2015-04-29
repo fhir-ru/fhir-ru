@@ -187,51 +187,52 @@ public class NarrativeGenerator implements INarrativeGenerator {
         if (p.hasValues()) {
           ElementDefinition child = getElementDefinition(children, path+"."+p.getName(), p);
           if (child != null) {
-          Map<String, String> displayHints = readDisplayHints(child);
-          if (!exemptFromRendering(child)) {
-            List<ElementDefinition> grandChildren = getChildrenForPath(allElements, path+"."+p.getName());
+            Map<String, String> displayHints = readDisplayHints(child);
+            if (!exemptFromRendering(child)) {
+              List<ElementDefinition> grandChildren = getChildrenForPath(allElements, path+"."+p.getName());
             filterGrandChildren(grandChildren, path+"."+p.getName(), p);
-            if (p.getValues().size() > 0 && child != null) {
-              if (isPrimitive(child)) {
-                XhtmlNode para = x.addTag("p");
-                String name = p.getName();
-                if (name.endsWith("[x]"))
-                  name = name.substring(0, name.length() - 3);
-                if (showCodeDetails || !isDefaultValue(displayHints, p.getValues())) {
-                  para.addTag("b").addText(name);
-                  para.addText(": ");
-                  if (renderAsList(child) && p.getValues().size() > 1) {
-                    XhtmlNode list = x.addTag("ul");
-                    for (Base v : p.getValues()) 
-                      renderLeaf(res, v, child, list.addTag("li"), false, showCodeDetails, displayHints);
-                  } else { 
-                    boolean first = true;
-                    for (Base v : p.getValues()) {
-                      if (first)
-                        first = false;
-                      else
-                        para.addText(", ");
-                      renderLeaf(res, v, child, para, false, showCodeDetails, displayHints);
+              if (p.getValues().size() > 0 && child != null) {
+                if (isPrimitive(child)) {
+                  XhtmlNode para = x.addTag("p");
+                  String name = p.getName();
+                  if (name.endsWith("[x]"))
+                    name = name.substring(0, name.length() - 3);
+                  if (showCodeDetails || !isDefaultValue(displayHints, p.getValues())) {
+                    para.addTag("b").addText(name);
+                    para.addText(": ");
+                    if (renderAsList(child) && p.getValues().size() > 1) {
+                      XhtmlNode list = x.addTag("ul");
+                      for (Base v : p.getValues()) 
+                        renderLeaf(res, v, child, list.addTag("li"), false, showCodeDetails, displayHints);
+                    } else { 
+                      boolean first = true;
+                      for (Base v : p.getValues()) {
+                        if (first)
+                          first = false;
+                        else
+                          para.addText(", ");
+                        renderLeaf(res, v, child, para, false, showCodeDetails, displayHints);
+                      }
                     }
                   }
-                }
-              } else if (canDoTable(path, p, grandChildren)) {
-                x.addTag("h3").addText(Utilities.capitalize(Utilities.camelCase(Utilities.pluralizeMe(p.getName()))));
-                XhtmlNode tbl = x.addTag("table").setAttribute("class", "grid");
-                addColumnHeadings(tbl.addTag("tr"), grandChildren);
-                for (Base v : p.getValues()) {
-                  if (v != null) {
-                    addColumnValues(res, tbl.addTag("tr"), grandChildren, v, showCodeDetails, displayHints);
+                } else if (canDoTable(path, p, grandChildren)) {
+                  x.addTag("h3").addText(Utilities.capitalize(Utilities.camelCase(Utilities.pluralizeMe(p.getName()))));
+                  XhtmlNode tbl = x.addTag("table").setAttribute("class", "grid");
+                  addColumnHeadings(tbl.addTag("tr"), grandChildren);
+                  for (Base v : p.getValues()) {
+                    if (v != null) {
+                      addColumnValues(res, tbl.addTag("tr"), grandChildren, v, showCodeDetails, displayHints);
+                    }
                   }
-                }
-              } else {
-                for (Base v : p.getValues()) {
-                  if (v != null) {
-                    XhtmlNode bq = x.addTag("blockquote");
-                    bq.addTag("p").addTag("b").addText(p.getName());
+                } else {
+                  for (Base v : p.getValues()) {
+                    if (v != null) {
+                      XhtmlNode bq = x.addTag("blockquote");
+                      bq.addTag("p").addTag("b").addText(p.getName());
                       generateByProfile(res, profile, v, allElements, child, grandChildren, bq, path+"."+p.getName(), showCodeDetails);
-                  }
-                } 
+                    }
+                  } 
+                }
               }
             }
           }
@@ -288,6 +289,53 @@ public class NarrativeGenerator implements INarrativeGenerator {
     return results;
   }
   
+  private void filterGrandChildren(List<ElementDefinition> grandChildren,  String string, Property prop) {
+  	List<ElementDefinition> toRemove = new ArrayList<ElementDefinition>();
+  	toRemove.addAll(grandChildren);
+  	for (Base b : prop.getValues()) {
+    	List<ElementDefinition> list = new ArrayList<ElementDefinition>();
+  		for (ElementDefinition ed : toRemove) {
+  			Property p = b.getChildByName(tail(ed.getPath()));
+  			if (p != null && p.hasValues())
+  				list.add(ed);
+  		}
+  		toRemove.removeAll(list);
+  	}
+  	grandChildren.removeAll(toRemove);
+  }
+
+  private List<Property> splitExtensions(StructureDefinition profile, List<Property> children) throws Exception {
+    List<Property> results = new ArrayList<Property>();
+    Map<String, Property> map = new HashMap<String, Property>();
+    for (Property p : children)
+      if (p.getName().equals("extension") || p.getName().equals("modifierExtension")) {
+        // we're going to split these up, and create a property for each url 
+        if (p.hasValues()) {
+          for (Base v : p.getValues()) {
+            Extension ex  = (Extension) v;
+            String url = ex.getUrl();
+            StructureDefinition ed = context.getExtensionStructure(profile, url);
+            if (p.getName().equals("modifierExtension") && ed == null)
+              throw new Exception("Unknown modifier extension "+url);
+            Property pe = map.get(p.getName()+"["+url+"]");
+            if (pe == null) {
+              if (ed == null)
+                pe = new Property(p.getName()+"["+url+"]", p.getTypeCode(), p.getDefinition(), p.getMinCardinality(), p.getMaxCardinality(), ex);
+              else {
+                ElementDefinition def = ed.getSnapshot().getElement().get(0);
+                pe = new Property(p.getName()+"["+url+"]", "Extension", def.getDefinition(), def.getMin(), def.getMax().equals("*") ? Integer.MAX_VALUE : Integer.parseInt(def.getMax()), ex);
+                pe.setStructure(ed);
+              }
+              results.add(pe);
+            } else
+              pe.getValues().add(ex);
+          }
+        }
+      } else
+        results.add(p);
+    return results;
+  }
+
   private boolean isDefaultValue(Map<String, String> displayHints, List<Base> list) {
     if (list.size() != 1)
       return false;
@@ -375,7 +423,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
   private ElementDefinition getElementDefinition(List<ElementDefinition> elements, String path, Property p) {
     for (ElementDefinition element : elements)
       if (element.getPath().equals(path))
-        return element;      
+        return element;     
     if (path.endsWith("\"]") && p.getStructure() != null)
       return p.getStructure().getSnapshot().getElement().get(0);
     return null;
@@ -753,7 +801,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     if (system.startsWith("http://snomed.info"))
       return "SNOMED CT";
     if (system.equals("http://www.nlm.nih.gov/research/umls/rxnorm"))
-      return "RxNorm";     
+      return "RxNorm"; 
     if (system.equals("http://hl7.org/fhir/sid/icd-9"))
       return "ICD-9";
     

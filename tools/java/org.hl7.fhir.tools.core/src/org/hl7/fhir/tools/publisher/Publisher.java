@@ -56,10 +56,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipEntry;
+
 import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.URIResolver;
 import javax.xml.transform.stream.StreamSource;
@@ -85,13 +87,14 @@ import org.hl7.fhir.definitions.generators.specification.ReviewSpreadsheetGenera
 import org.hl7.fhir.definitions.generators.specification.SchematronGenerator;
 import org.hl7.fhir.definitions.generators.specification.SvgGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
+import org.hl7.fhir.definitions.generators.specification.FhirTurtleGenerator;
 import org.hl7.fhir.definitions.generators.specification.XPathQueryGenerator;
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Compartment;
-import org.hl7.fhir.definitions.model.Profile;
+import org.hl7.fhir.definitions.model.ConstraintStructure;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
@@ -103,7 +106,7 @@ import org.hl7.fhir.definitions.model.Operation;
 import org.hl7.fhir.definitions.model.OperationParameter;
 import org.hl7.fhir.definitions.model.OperationTuplePart;
 import org.hl7.fhir.definitions.model.PrimitiveType;
-import org.hl7.fhir.definitions.model.ConstraintStructure;
+import org.hl7.fhir.definitions.model.Profile;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
@@ -137,11 +140,11 @@ import org.hl7.fhir.instance.model.Conformance.SystemInteractionComponent;
 import org.hl7.fhir.instance.model.Conformance.SystemRestfulInteraction;
 import org.hl7.fhir.instance.model.Conformance.TypeRestfulInteraction;
 import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
-import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.instance.model.DataElement;
 import org.hl7.fhir.instance.model.DateTimeType;
 import org.hl7.fhir.instance.model.DomainResource;
 import org.hl7.fhir.instance.model.ElementDefinition;
+import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.InstantType;
 import org.hl7.fhir.instance.model.Meta;
@@ -152,13 +155,14 @@ import org.hl7.fhir.instance.model.OperationDefinition.OperationDefinitionParame
 import org.hl7.fhir.instance.model.OperationDefinition.OperationDefinitionParameterPartComponent;
 import org.hl7.fhir.instance.model.OperationDefinition.OperationKind;
 import org.hl7.fhir.instance.model.OperationDefinition.OperationParameterUse;
+import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.Questionnaire;
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ResourceType;
 import org.hl7.fhir.instance.model.SearchParameter;
+import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionType;
 import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.instance.model.ValueSet;
@@ -181,6 +185,7 @@ import org.hl7.fhir.instance.validation.InstanceValidator;
 import org.hl7.fhir.instance.validation.ProfileValidator;
 import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.instance.validation.ValidationMessage.Source;
+import org.hl7.fhir.rdf.RDFValidator;
 import org.hl7.fhir.tools.implementations.XMLToolsGenerator;
 import org.hl7.fhir.tools.implementations.csharp.CSharpGenerator;
 import org.hl7.fhir.tools.implementations.delphi.DelphiGenerator;
@@ -192,6 +197,7 @@ import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CloseProtectedZipInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.IniFile;
+import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.Logger.LogMessageType;
 import org.hl7.fhir.utilities.SchemaInputSource;
 import org.hl7.fhir.utilities.TextFile;
@@ -222,6 +228,9 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
+import org.xmlpull.v1.builder.XmlUnexpandedEntityReference;
+
+import com.google.gson.JsonObject;
 
 /**
  * This is the entry point for the publication method for FHIR The general order
@@ -323,6 +332,10 @@ public class Publisher implements URIResolver {
   private IniFile cache;
   private WebMaker wm;
   private String svnStated;
+  private String singleResource;
+  private String singlePage;
+
+  private boolean genRDF;
 
   public static void main(String[] args) throws Exception {
     //
@@ -330,10 +343,18 @@ public class Publisher implements URIResolver {
     Publisher pub = new Publisher();
     pub.page = new PageProcessor(PageProcessor.DEV_TS_SERVER); 
     pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
+    if (hasParam(args, "-rdf")) {
+      pub.isGenerate = false;
+      pub.genRDF = true; 
+    }
     pub.noArchive = (args.length > 1 && hasParam(args, "-noarchive"));
     pub.web = (args.length > 1 && hasParam(args, "-web"));
     pub.diffProgram = getNamedParam(args, "-diff");
     pub.noPartialBuild = (args.length > 1 && hasParam(args, "-nopartial"));
+    if (hasParam(args, "-resource"))
+      pub.singleResource = getNamedParam(args, "-resource");
+    if (hasParam(args, "-page"))
+      pub.singlePage = getNamedParam(args, "-page");
     if (hasParam(args, "-name"))
       pub.page.setPublicationType(getNamedParam(args, "-name"));
     if (hasParam(args, "-url"))
@@ -345,8 +366,11 @@ public class Publisher implements URIResolver {
 //    if (hasParam(args, "-langfolder"))
 //      pub.setAlternativeLangFolder(getNamedParam(args, "-langfolder"));
     if (pub.web) {
-      pub.page.setPublicationType("Development Version");
-      pub.page.setPublicationNotice(PageProcessor.PUB_NOTICE);
+      pub.page.setPublicationType(PageProcessor.WEB_PUB_NAME);
+      pub.page.setPublicationNotice(PageProcessor.WEB_PUB_NOTICE);
+    } else {
+      pub.page.setPublicationType(PageProcessor.CI_PUB_NAME);
+      pub.page.setPublicationNotice(PageProcessor.CI_PUB_NOTICE);      
     }
     try {
       String dir = hasParam(args, "-folder") ? getNamedParam(args, "-folder") : System.getProperty("user.dir");
@@ -380,7 +404,6 @@ public class Publisher implements URIResolver {
    * @return the revision number, or "????" if SVN was not available
    */
   private static String checkSubversion(String folder) {
-
     SVNClient svnClient = new SVNClient();
     Status[] status;
     try {
@@ -462,10 +485,20 @@ public class Publisher implements URIResolver {
       buildFlags.put(n.toLowerCase(), b);
       doAny = doAny || b;
     }
+    cache.save();
+    // overriding build
+    
     if (noPartialBuild || !doAny || !(new File(page.getFolders().dstDir + "qa.html").exists()))
       buildFlags.put("all", true); // nothing - build all
-    cache.save();
-
+    if (singlePage != null) {
+      for (String n : buildFlags.keySet())
+        buildFlags.put(n, false);
+      buildFlags.put("page-"+singlePage.toLowerCase(), true);
+    } else if (singleResource != null) {
+      for (String n : buildFlags.keySet())
+        buildFlags.put(n, false);
+      buildFlags.put(singleResource.toLowerCase(), true);
+    } 
     if (!buildFlags.get("all")) {
       page.log("Partial Build (if you want a full build, just run the build again)", LogMessageType.Process);
       CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
@@ -498,6 +531,7 @@ public class Publisher implements URIResolver {
       page.log("Didn't publish FHIR due to errors @ " + Config.DATE_FORMAT().format(Calendar.getInstance().getTime()), LogMessageType.Process);
       throw new Exception("Errors executing build. Details logged.");
     }
+    page.getDefinitions().setPublishAll(!web);
     processProfiles();
     if (page.hasIG()) {
       processIGFiles();
@@ -509,8 +543,6 @@ public class Publisher implements URIResolver {
         Utilities.clearDirectory(page.getFolders().dstDir);
       Utilities.createDirectory(page.getFolders().dstDir + "html");
       Utilities.createDirectory(page.getFolders().dstDir + "examples");
-      Utilities.clearDirectory(page.getFolders().rootDir + "temp" + File.separator + "hl7" + File.separator + "web");
-      Utilities.clearDirectory(page.getFolders().rootDir + "temp" + File.separator + "hl7" + File.separator + "dload");
 
       String eCorePath = page.getFolders().dstDir + "ECoreDefinitions.xml";
       generateECore(prsr.getECoreParseResults(), eCorePath);
@@ -519,7 +551,9 @@ public class Publisher implements URIResolver {
         page.log("Didn't publish FHIR due to errors @ " + Config.DATE_FORMAT().format(Calendar.getInstance().getTime()), LogMessageType.Process);
         throw new Exception("Errors executing build. Details logged.");
       }
-    }
+    } else if (genRDF) 
+      processRDF();
+
     validateXml();
     if (isGenerate && buildFlags.get("all"))
       produceQA();
@@ -782,9 +816,11 @@ public class Publisher implements URIResolver {
     //  create StructureDefinition structures if needed (create differential definitions from spreadsheets)
     if (profile.getResource() == null) {
       StructureDefinition p = new ProfileGenerator(page.getDefinitions(), page.getWorkerContext(), page, page.getGenDate()).generate(ap, profile, profile.getDefn(), profile.getId(), profile.getUsage());
+      p.setUserData("pack", ap);
       profile.setResource(p);
       page.getProfiles().put(p.getUrl(), p);
     } else {
+      profile.getResource().setUserData("pack", ap);
       // special case: if the profile itself doesn't claim a date, it's date is the date of this publication
       if (!profile.getResource().hasDate())
         profile.getResource().setDate(page.getGenDate().getTime());
@@ -1021,7 +1057,7 @@ public class Publisher implements URIResolver {
         ConformanceRestResourceComponent res = new Conformance.ConformanceRestResourceComponent();
         rest.getResource().add(res);
         res.setType(rn);
-        res.setProfile(Factory.makeReference("http://hl7.org/fhir/" + rn));
+        res.setProfile(Factory.makeReference("http://hl7.org/fhir/StructureDefinition/" + rn));
         genConfOp(conf, res, TypeRestfulInteraction.READ);
         genConfOp(conf, res, TypeRestfulInteraction.VREAD);
         genConfOp(conf, res, TypeRestfulInteraction.UPDATE);
@@ -1335,7 +1371,7 @@ public class Publisher implements URIResolver {
           listLinks(e.getXml().getDocumentElement(), refs);
           for (ExampleReference ref : refs) {
             if (!ref.getId().startsWith("cid:") && !ref.getId().startsWith("urn:") && !ref.getId().startsWith("http:") && !resolveLink(ref)) {
-              errors.add(new ValidationMessage(Source.ExampleValidator, "business-rule", ref.getPath(), "Unable to resolve example reference to "
+              errors.add(new ValidationMessage(Source.ExampleValidator, "business-rule", -1, -1, ref.getPath(), "Unable to resolve example reference to "
                   + ref.describe() + " in " + e.getPath() + "\r\n   Possible Ids: " + listTargetIds(ref.getType()), IssueSeverity.ERROR));
             }
           }
@@ -1493,10 +1529,14 @@ public class Publisher implements URIResolver {
   private void produceSpecification(String eCorePath) throws Exception {
     page.setNavigation(new Navigation());
     page.getNavigation().parse(page.getFolders().srcDir + "navigation.xml");
-
+    if (buildFlags.get("all")) {
+      copyStaticContent();
+    }
     XMIResource resource = new XMIResourceImpl();
     resource.load(new CSFileInputStream(eCorePath), null);
     org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefs = (org.hl7.fhir.definitions.ecore.fhir.Definitions) resource.getContents().get(0);
+
+    processRDF();
 
     page.log("Produce Schemas", LogMessageType.Process);
     new SchemaGenerator().generate(page.getDefinitions(), page.getIni(), page.getFolders().tmpResDir, page.getFolders().xsdDir, page.getFolders().dstDir,
@@ -1564,6 +1604,47 @@ public class Publisher implements URIResolver {
     }
   }
 
+  private void processRDF() throws Exception, FileNotFoundException {
+    // first, process the RIM file
+    String rim = TextFile.fileToString(Utilities.path(page.getFolders().srcDir, "v3", "rim.ttl"));
+    ByteArrayOutputStream tmp = new ByteArrayOutputStream();
+    FhirTurtleGenerator ttl = new FhirTurtleGenerator(tmp, page.getDefinitions(), page.getWorkerContext());
+    ttl.executeV3(page.getV3Valuesets());
+    rim = rim + tmp.toString();
+    TextFile.stringToFile(rim, Utilities.path(page.getFolders().dstDir, "rim.ttl"));
+    ttl = new FhirTurtleGenerator(new FileOutputStream(Utilities.path(page.getFolders().dstDir, "fhir.ttl")), page.getDefinitions(), page.getWorkerContext());
+    ttl.executeMain();
+    RDFValidator val = new RDFValidator();
+    val.validate(Utilities.path(page.getFolders().dstDir, "fhir.ttl"));
+    val.validate(Utilities.path(page.getFolders().dstDir, "rim.ttl"));
+    ZipGenerator zip = new ZipGenerator(Utilities.path(page.getFolders().dstDir, "fhir.rdf.zip"));
+    zip.addFileName("fhir.ttl", Utilities.path(page.getFolders().dstDir, "fhir.ttl"), false);
+    zip.addFileName("fhir.rdf.xml", Utilities.path(page.getFolders().dstDir, "fhir.rdf.xml"), false);
+    zip.addFileName("rim.ttl", Utilities.path(page.getFolders().dstDir, "rim.ttl"), false);
+    zip.addFileName("rim.rdf.xml", Utilities.path(page.getFolders().dstDir, "rim.rdf.xml"), false);
+    zip.close();
+    
+    // now that the RDF is generated, run any sparql rules that have been defined
+    Element test = loadDom(new FileInputStream(Utilities.path(page.getFolders().srcDir, "sparql-rules.xml"))).getDocumentElement();
+    test = XMLUtil.getFirstChild(test);
+    while (test != null) {
+      if (test.getNodeName().equals("assertion")) {
+        boolean error = "error".equals(test.getAttribute("level"));
+        boolean rows = "true".equals(test.getAttribute("expectation"));
+        String description = test.getAttribute("description");
+        String sparql = test.getTextContent();
+        String rowSet = val.assertion(sparql);
+        boolean outcome = rows = (rowSet == null);
+        if (!outcome) {
+          System.out.println();
+          validationErrors.add(new ValidationMessage(Source.Publisher, "rdf", -1, -1, "rdf validation rules", description+"\r\n"+rowSet, error ? OperationOutcome.IssueSeverity.ERROR : OperationOutcome.IssueSeverity.WARNING));
+        }
+      }
+      test = XMLUtil.getNextSibling(test);
+    }
+    processValidationOutcomes();
+  }
+
   private void produceArchive() throws Exception {
     String target = page.getFolders().archiveDir + "v" + page.getVersion() + ".zip";
     File tf = new CSFile(target);
@@ -1614,12 +1695,6 @@ public class Publisher implements URIResolver {
   }
 
   private void produceSpec() throws Exception {
-    if (buildFlags.get("all")) {
-
-      copyStaticContent();
-
-    }
-
     loadValueSets2();
 
     for (StructureDefinition ae : page.getWorkerContext().getExtensionDefinitions().values()) 
@@ -1670,7 +1745,7 @@ public class Publisher implements URIResolver {
       }
     }
     for (String n : page.getDefinitions().getDictionaries().keySet()) {
-      if (buildFlags.get("all")) { // || buildFlags.get("dict-" + n.toLowerCase())) {
+      if (buildFlags.get("all") && page.getDefinitions().doPublish(page.getDefinitions().getDictionaries().get(n).getCategory())) { // || buildFlags.get("dict-" + n.toLowerCase())) {
         page.log(" ...dictionary " + n, LogMessageType.Process);
         produceDictionary(n);
       }
@@ -1697,7 +1772,7 @@ public class Publisher implements URIResolver {
       for (String n : page.getDefinitions().getConformancePackages().keySet()) {
         if (!n.startsWith("http://")) {
           page.log(" ...Profile " + n, LogMessageType.Process);
-          produceConformancePackage("", page.getDefinitions().getConformancePackages().get(n));
+          produceConformancePackage("", page.getDefinitions().getConformancePackages().get(n), null);
         }
       }
       if (page.hasIG()) {
@@ -1717,6 +1792,12 @@ public class Publisher implements URIResolver {
 
       produceV2();
       produceV3();
+
+      if (buildFlags.get("all")) {
+        page.getToc().put("1.1", new TocEntry("1.1", "Table Of Contents", "toc.html"));
+        page.log(" ...page toc.html", LogMessageType.Process);
+        producePage("toc.html", null);
+      }
 
       if (processValidationOutcomes() > 0) {
         page.log("Didn't publish FHIR due to errors @ " + Config.DATE_FORMAT().format(Calendar.getInstance().getTime()), LogMessageType.Process);
@@ -1756,7 +1837,8 @@ public class Publisher implements URIResolver {
       for (ResourceDefn rd : page.getDefinitions().getResources().values())
         addSearchParams(searchParamsFeed, rd);
       for (Profile cp : page.getDefinitions().getConformancePackages().values()) {
-        addSearchParams(searchParamsFeed, cp);
+        if (page.getDefinitions().doPublish(cp.getCategory()))
+          addSearchParams(searchParamsFeed, cp);
       }
       new XmlParser().setOutputStyle(OutputStyle.PRETTY).compose(new FileOutputStream(page.getFolders().dstDir + "search-parameters.xml"), searchParamsFeed);
       new JsonParser().setOutputStyle(OutputStyle.PRETTY).compose(new FileOutputStream(page.getFolders().dstDir + "search-parameters.json"), searchParamsFeed);
@@ -1770,7 +1852,8 @@ public class Publisher implements URIResolver {
       for (ResourceDefn rd : page.getDefinitions().getResources().values())
         addOtherProfiles(profileOthersFeed, rd);
       for (Profile cp : page.getDefinitions().getConformancePackages().values()) {
-        addOtherProfiles(profileOthersFeed, cp);
+        if (page.getDefinitions().doPublish(cp.getCategory()))
+          addOtherProfiles(profileOthersFeed, cp);
       }
       new XmlParser().setOutputStyle(OutputStyle.PRETTY).compose(new FileOutputStream(page.getFolders().dstDir + "profiles-others.xml"), profileOthersFeed);
       new JsonParser().setOutputStyle(OutputStyle.PRETTY).compose(new FileOutputStream(page.getFolders().dstDir + "profiles-others.json"), profileOthersFeed);
@@ -1864,7 +1947,7 @@ public class Publisher implements URIResolver {
       page.log("Produce .epub Form", LogMessageType.Process);
       page.getEpub().produce();
       for (String t : page.getQa().getBrokenlinks())
-        validationErrors.add(new ValidationMessage(Source.Publisher, "Structure", "spec", t, IssueSeverity.WARNING));
+        validationErrors.add(new ValidationMessage(Source.Publisher, "Structure", -1, -1, "spec", t, IssueSeverity.WARNING));
         processValidationOutcomes();
     } else
       page.log("Partial Build - terminating now", LogMessageType.Error);
@@ -2000,6 +2083,14 @@ public class Publisher implements URIResolver {
 //    return new ByteArrayInputStream(bo.toByteArray());
   }
 
+  private Document loadDom(InputStream src) throws Exception {
+  DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+  factory.setNamespaceAware(false);
+  DocumentBuilder builder = factory.newDocumentBuilder();
+  Document doc = builder.parse(src);
+  return doc;
+  }
+  
   private void stripElement(Element element, String name) {
     Node child = element.getFirstChild();
     while (child != null) {
@@ -2725,7 +2816,7 @@ public class Publisher implements URIResolver {
   }
 
   private void produceProfiledTypeProfile(ProfiledType pt) throws Exception {
-    String fn = pt.getName() + ".profile.xml";
+    String fn = pt.getName().toLowerCase() + ".profile.xml";
     StructureDefinition rp = pt.getProfile();
 
     new XmlParser().setOutputStyle(OutputStyle.PRETTY).compose(new FileOutputStream(page.getFolders().dstDir + fn), rp);
@@ -2733,13 +2824,13 @@ public class Publisher implements URIResolver {
 
     Utilities.copyFile(new CSFile(page.getFolders().dstDir + fn), new CSFile(Utilities.path(page.getFolders().dstDir, "examples", fn)));
     addToResourceFeed(rp, typeFeed);
-    cloneToXhtml(pt.getName() + ".profile", "StructureDefinition for " + pt.getName(), false, "profile-instance:type:" + pt.getName(), "Type");
-    jsonToXhtml(pt.getName() + ".profile", "StructureDefinition for " + pt.getName(), resource2Json(rp), "profile-instance:type:" + pt.getName(), "Type");
+    cloneToXhtml(pt.getName().toLowerCase() + ".profile", "StructureDefinition for " + pt.getName(), false, "profile-instance:type:" + pt.getName(), "Type");
+    jsonToXhtml(pt.getName().toLowerCase() + ".profile", "StructureDefinition for " + pt.getName(), resource2Json(rp), "profile-instance:type:" + pt.getName(), "Type");
   }
 
   private void producePrimitiveTypeProfile(DefinedCode type) throws Exception {
 
-    String fn = type.getCode() + ".profile.xml";
+    String fn = type.getCode().toLowerCase() + ".profile.xml";
     StructureDefinition rp = type.getProfile();
 
     new XmlParser().setOutputStyle(OutputStyle.PRETTY).compose(new FileOutputStream(page.getFolders().dstDir + fn), rp);
@@ -2749,8 +2840,8 @@ public class Publisher implements URIResolver {
     addToResourceFeed(rp, typeFeed);
     // saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir+ "html"
     // + File.separator + "datatypes.html"));
-    cloneToXhtml(type.getCode() + ".profile", "StructureDefinition for " + type.getCode(), false, "profile-instance:type:" + type.getCode(), "Type");
-    jsonToXhtml(type.getCode() + ".profile", "StructureDefinition for " + type.getCode(), resource2Json(rp), "profile-instance:type:" + type.getCode(), "Type");
+    cloneToXhtml(type.getCode().toLowerCase() + ".profile", "StructureDefinition for " + type.getCode(), false, "profile-instance:type:" + type.getCode(), "Type");
+    jsonToXhtml(type.getCode().toLowerCase() + ".profile", "StructureDefinition for " + type.getCode(), resource2Json(rp), "profile-instance:type:" + type.getCode(), "Type");
   }
 
   private void produceTypeProfile(TypeDefn type) throws Exception {
@@ -2768,7 +2859,7 @@ public class Publisher implements URIResolver {
     //    StructureDefinition rp = pgen.generate(p, "type-" + type.getName() + ".profile", "<div>Type definition for " + type.getName() + " from <a href=\"http://hl7.org/fhir/datatypes.html#" + type.getName()
     //        + "\">FHIR Specification</a></div>");
 
-    String fn = type.getName() + ".profile.xml";
+    String fn = type.getName().toLowerCase() + ".profile.xml";
     StructureDefinition rp = type.getProfile();
 
     new XmlParser().setOutputStyle(OutputStyle.PRETTY).compose(new FileOutputStream(page.getFolders().dstDir + fn), rp);
@@ -2778,8 +2869,10 @@ public class Publisher implements URIResolver {
     addToResourceFeed(rp, typeFeed);
     // saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir+ "html"
     // + File.separator + "datatypes.html"));
-    cloneToXhtml(type.getName() + ".profile", "StructureDefinition for " + type.getName(), false, "profile-instance:type:" + type.getName(), "Type");
-    jsonToXhtml(type.getName() + ".profile", "StructureDefinition for " + type.getName(), resource2Json(rp), "profile-instance:type:" + type.getName(), "Type");
+    cloneToXhtml(type.getName().toLowerCase() + ".profile", "StructureDefinition for " + type.getName(), false, "profile-instance:type:" + type.getName(), "Type");
+    page.getEpub().registerExternal(type.getName() + ".profile.xml.html");
+    jsonToXhtml(type.getName().toLowerCase() + ".profile", "StructureDefinition for " + type.getName(), resource2Json(rp), "profile-instance:type:" + type.getName(), "Type");
+    page.getEpub().registerExternal(type.getName() + ".profile.json.html");
   }
 
   protected XmlPullParser loadXml(InputStream stream) throws Exception {
@@ -2845,7 +2938,7 @@ public class Publisher implements URIResolver {
     if (f.exists())
       f.delete();
     ZipGenerator zip = new ZipGenerator(page.getFolders().tmpResDir + "fhir-spec.zip");
-    zip.addFiles(page.getFolders().dstDir, "site/", null, ".zip");
+    zip.addFolder(page.getFolders().dstDir, "site/", false, ".zip");
     zip.addFolder(Utilities.path(page.getFolders().rootDir, "tools", "html", ""), "site/", true);
     zip.addFileName("index.html", page.getFolders().srcDir + "redirect.html", false);
     zip.close();
@@ -2915,24 +3008,6 @@ public class Publisher implements URIResolver {
     SvgGenerator svg = new SvgGenerator(page);
     svg.generate(resource, page.getFolders().dstDir + n + ".svg");
 
-    for (Profile ap : resource.getConformancePackages())
-      produceConformancePackage(resource.getName(), ap);
-
-    StructureDefinition profile = (StructureDefinition) ResourceUtilities.getById(profileFeed, ResourceType.StructureDefinition, resource.getName());
-    for (Example e : resource.getExamples()) {
-      try {
-        processExample(e, resource.getName(), profile);
-      } catch (Exception ex) {
-        throw new Exception("processing " + e.getFileTitle(), ex);
-        // throw new Exception(ex.getMessage()+" processing "+e.getFileTitle());
-      }
-    }
-    try {
-      processQuestionnaire(resource, profile);
-    } catch (Exception e) {
-      page.log("Questionnaire Generation Failed: "+e.getMessage(), LogMessageType.Error);
-    }
-
     String prefix = page.getBreadCrumbManager().getIndexPrefixForReference(resource.getName());
     SectionTracker st = new SectionTracker(prefix);
     st.start("");
@@ -2944,25 +3019,41 @@ public class Publisher implements URIResolver {
     TextFile.stringToFile(src, page.getFolders().dstDir + n + ".html");
     page.getEpub().registerFile(n + ".html", "Base Page for " + resource.getName(), EPubManager.XHTML_TYPE);
 
+    StructureDefinition profile = (StructureDefinition) ResourceUtilities.getById(profileFeed, ResourceType.StructureDefinition, resource.getName());
     String pages = page.getIni().getStringProperty("resource-pages", n);
     if (!Utilities.noString(pages)) {
       for (String p : pages.split(",")) {
         producePage(p, n);
       }
     }
+//    try {
+//      processQuestionnaire(resource, profile, st);
+//    } catch (Exception e) {
+//      page.log("Questionnaire Generation Failed: "+e.getMessage(), LogMessageType.Error);
+//    }
 
-
-    src = TextFile.fileToString(page.getFolders().srcDir + template+"-definitions.html");
-    TextFile.stringToFile(
-        insertSectionNumbers(page.processResourceIncludes(n, resource, xml, json, tx, dict, src, mappings, mappingsList, "res-Detailed Descriptions", n + "-definitions.html"), st, n
-            + "-definitions.html"), page.getFolders().dstDir + n + "-definitions.html");
-    page.getEpub().registerFile(n + "-definitions.html", "Detailed Descriptions for " + resource.getName(), EPubManager.XHTML_TYPE);
-    if (!isAbstract) {
+    if (!isAbstract || !resource.getExamples().isEmpty()) {
       src = TextFile.fileToString(page.getFolders().srcDir + "template-examples.html");
       TextFile.stringToFile(
           insertSectionNumbers(page.processResourceIncludes(n, resource, xml, json, tx, dict, src, mappings, mappingsList, "res-Examples", n + "-examples.html"), st, n + "-examples.html"),
           page.getFolders().dstDir + n + "-examples.html");
       page.getEpub().registerFile(n + "-examples.html", "Examples for " + resource.getName(), EPubManager.XHTML_TYPE);
+      for (Example e : resource.getExamples()) {
+        try {
+          processExample(e, resource.getName(), profile, null);
+        } catch (Exception ex) {
+          throw new Exception("processing " + e.getFileTitle(), ex);
+          // throw new Exception(ex.getMessage()+" processing "+e.getFileTitle());
+        }
+      }
+    }
+    src = TextFile.fileToString(page.getFolders().srcDir + template+"-definitions.html");
+    TextFile.stringToFile(
+        insertSectionNumbers(page.processResourceIncludes(n, resource, xml, json, tx, dict, src, mappings, mappingsList, "res-Detailed Descriptions", n + "-definitions.html"), st, n
+            + "-definitions.html"), page.getFolders().dstDir + n + "-definitions.html");
+    page.getEpub().registerFile(n + "-definitions.html", "Detailed Descriptions for " + resource.getName(), EPubManager.XHTML_TYPE);
+
+    if (!isAbstract) {
       src = TextFile.fileToString(page.getFolders().srcDir + "template-mappings.html");
       TextFile.stringToFile(
           insertSectionNumbers(page.processResourceIncludes(n, resource, xml, json, tx, dict, src, mappings, mappingsList, "res-Mappings", n + "-mappings.html"), st, n + "-mappings.html"),
@@ -2979,6 +3070,9 @@ public class Publisher implements URIResolver {
           page.getFolders().dstDir + n + "-profiles.html");
       page.getEpub().registerFile(n + "-profiles.html", "Profiles for " + resource.getName(), EPubManager.XHTML_TYPE);
     }
+    for (Profile ap : resource.getConformancePackages())
+      produceConformancePackage(resource.getName(), ap, st);
+
     if (!resource.getOperations().isEmpty()) {
       src = TextFile.fileToString(page.getFolders().srcDir + "template-operations.html");
       TextFile.stringToFile(
@@ -3143,7 +3237,7 @@ public class Publisher implements URIResolver {
     page.getEpub().registerExternal(n + ".xml.html");
   }
 
-  private void processQuestionnaire(ResourceDefn resource, StructureDefinition profile) throws Exception {
+  private void processQuestionnaire(ResourceDefn resource, StructureDefinition profile, SectionTracker st) throws Exception {
     QuestionnaireBuilder qb = new QuestionnaireBuilder(page.getWorkerContext());
     qb.setProfile(profile);
     qb.build();
@@ -3180,6 +3274,7 @@ public class Publisher implements URIResolver {
     // now, generate the form
     html = TextFile.fileToString(page.getFolders().srcDir + "template-questionnaire.html").replace("<%questionnaire%>", loadHtmlForm(tmpTransform.getAbsolutePath()));
     html = page.processPageIncludes(resource.getName().toLowerCase() + ".questionnaire.html", html, "resource-questionnaire:" + resource.getName(), null, null, null, "Questionnaire");
+    html = insertSectionNumbers(html, st, resource.getName().toLowerCase() + ".questionnaire.html");
     TextFile.stringToFile(html, page.getFolders().dstDir + resource.getName().toLowerCase() + ".questionnaire.html");
 
     page.getEpub().registerExternal(resource.getName().toLowerCase() + ".questionnaire.html");
@@ -3195,7 +3290,7 @@ public class Publisher implements URIResolver {
     return form;
   }
 
-  private void processExample(Example e, String resourceName, StructureDefinition profile) throws Exception {
+  private void processExample(Example e, String resourceName, StructureDefinition profile, Profile pack) throws Exception {
     if (e.getType() == ExampleType.Tool)
       return;
 
@@ -3356,13 +3451,11 @@ public class Publisher implements URIResolver {
     xhtml.generate(xdoc, b, n.toUpperCase().substring(0, 1) + n.substring(1), Utilities.noString(e.getId()) ? e.getDescription() : e.getDescription()
         + " (id = \"" + e.getId() + "\")", 0, true, n + ".xml.html");
     html = TextFile.fileToString(page.getFolders().srcDir + "template-example-xml.html").replace("<%example%>", b.toString());
-    html = page.processPageIncludes(n + ".xml.html", html, resourceName == null ? "profile-instance:resource:" + rt : "resource-instance:" + resourceName, null, null, null, "Example");
+    html = page.processPageIncludes(n + ".xml.html", html, resourceName == null ? "profile-instance:resource:" + rt : "resource-instance:" + resourceName, null, profile, null, "Example");
     TextFile.stringToFile(html, page.getFolders().dstDir + n + ".xml.html");
-    if (e.isInBook()) {
-      XhtmlDocument d = new XhtmlParser().parse(new CSFileInputStream(page.getFolders().dstDir + n + ".xml.html"), "html");
-      XhtmlNode pre = d.getElement("html").getElement("body").getElement("div");
-      e.setXhtm(b.toString());
-    }
+    XhtmlDocument d = new XhtmlParser().parse(new CSFileInputStream(page.getFolders().dstDir + n + ".xml.html"), "html");
+    XhtmlNode pre = d.getElement("html").getElement("body").getElement("div");
+    e.setXhtm(b.toString());
     if (!Utilities.noString(e.getId()))
       Utilities.copyFile(new CSFile(page.getFolders().dstDir + n + ".xml"),
           new CSFile(page.getFolders().dstDir + "examples" + File.separator + n + "(" + e.getId() + ").xml"));
@@ -3371,7 +3464,7 @@ public class Publisher implements URIResolver {
 
     // now, we create an html page from the narrative
     html = TextFile.fileToString(page.getFolders().srcDir + "template-example.html").replace("<%example%>", narrative == null ? "" : narrative);
-    html = page.processPageIncludes(n + ".html", html, resourceName == null ? "profile-instance:resource:" + rt : "resource-instance:" + resourceName, null, null, null, "Example");
+    html = page.processPageIncludes(n + ".html", html, resourceName == null ? "profile-instance:resource:" + rt : "resource-instance:" + resourceName, null, profile, null, "Example");
     TextFile.stringToFile(html, page.getFolders().dstDir + n + ".html");
     // head =
     // "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\r\n<head>\r\n <title>"+Utilities.escapeXml(e.getDescription())+"</title>\r\n <link rel=\"Stylesheet\" href=\"fhir.css\" type=\"text/css\" media=\"screen\"/>\r\n"+
@@ -3497,24 +3590,41 @@ public class Publisher implements URIResolver {
     dest.getEntry().add(new BundleEntryComponent().setResource(conf));
   }
 
-  private void produceConformancePackage(String resourceName, Profile pack) throws Exception {
-    // first, we produce each profile
-    for (ConstraintStructure profile : pack.getProfiles())
-      produceProfile(resourceName, pack, profile);
-
-    for (SearchParameter sp : pack.getSearchParameters())
-      producePackSearchParameter(resourceName, pack, sp);
-    
+  private void produceConformancePackage(String resourceName, Profile pack, SectionTracker st) throws Exception {
+     if (web && page.getDefinitions().noPublish(pack.getCategory()))
+      return;
+          
     String intro = pack.getIntroduction() != null ? page.loadXmlNotesFromFile(pack.getIntroduction(), false, null, null, null) : null;
     String notes = pack.getNotes() != null ? page.loadXmlNotesFromFile(pack.getNotes(), false, null, null, null) : null;
 
     String src = TextFile.fileToString(page.getFolders().srcDir + "template-conformance-pack.html");
     src = page.processConformancePackageIncludes(pack, src, intro, notes, resourceName);
+    if (st != null)
+      src = insertSectionNumbers(src, st, pack.getId().toLowerCase() + ".html");
     page.getEpub().registerFile(pack.getId().toLowerCase() + ".html", "Profile " + pack.getId(), EPubManager.XHTML_TYPE);
     TextFile.stringToFile(src, page.getFolders().dstDir + pack.getId() + ".html");
 
+    // now, we produce each profile
+    for (ConstraintStructure profile : pack.getProfiles())
+      produceProfile(resourceName, pack, profile, st);
+
+    for (SearchParameter sp : pack.getSearchParameters())
+      producePackSearchParameter(resourceName, pack, sp, st);
+    
     for (Example ex : pack.getExamples()) {
-      processExample(ex, resourceName, null);
+      StructureDefinition sd  = null;
+      boolean ambiguous = false;
+      for (ConstraintStructure sdt : pack.getProfiles()) {
+        if (sdt.getResource().getSnapshot().getElement().get(0).getPath().equals(resourceName))
+          if (sd == null)
+            sd = sdt.getResource();
+          else
+            ambiguous = true;
+      }
+      if (ambiguous)
+        processExample(ex, resourceName, null, null);
+      else
+        processExample(ex, resourceName, sd, pack);
     }
     // create examples here
 //    if (examples != null) {
@@ -3522,7 +3632,7 @@ public class Publisher implements URIResolver {
 //        processExample(examples.get(en), null, profile.getSource());
   }
 
-  private void producePackSearchParameter(String resourceName, Profile pack, SearchParameter sp) throws Exception {
+  private void producePackSearchParameter(String resourceName, Profile pack, SearchParameter sp, SectionTracker st) throws Exception {
     String title = sp.getId();
     sp.setUserData("pack", pack.getId());
 
@@ -3533,6 +3643,8 @@ public class Publisher implements URIResolver {
 
     String src = TextFile.fileToString(page.getFolders().srcDir + "template-search-parameter.html");
     src = page.processPageIncludes(sp.getId()+".html", src, "search-parameter:"+resourceName+"/"+pack.getId()+"/"+sp.getId(), null, sp, null, "Search Parameter");
+    if (st != null)
+      src = insertSectionNumbers(src, st, title + ".html");
     page.getEpub().registerFile(title + ".html", "SearchParameter " + sp.getName(), EPubManager.XHTML_TYPE);
     TextFile.stringToFile(src, page.getFolders().dstDir + title + ".html");
     cloneToXhtml(title, "Search Parameter "+sp.getName(), false, "searchparam-instance", "Search Parameter");
@@ -3545,7 +3657,7 @@ public class Publisher implements URIResolver {
     page.getEpub().registerExternal(title + ".json.html");
   }
 
-  private void produceProfile(String resourceName, Profile pack, ConstraintStructure profile) throws Exception {
+  private void produceProfile(String resourceName, Profile pack, ConstraintStructure profile, SectionTracker st) throws Exception {
     File tmp = Utilities.createTempFile("tmp", ".tmp");
     String title = profile.getId();
 
@@ -3577,13 +3689,11 @@ public class Publisher implements URIResolver {
 
     String src = TextFile.fileToString(page.getFolders().srcDir + "template-profile.html");
     src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, json, tx, src, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
+    if (st != null)
+      src = insertSectionNumbers(src, st, title + ".html");
     page.getEpub().registerFile(title + ".html", "StructureDefinition " + profile.getResource().getName(), EPubManager.XHTML_TYPE);
     TextFile.stringToFile(src, page.getFolders().dstDir + title + ".html");
-
-    src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-mappings.html");
-    src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, json, tx, src, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
-    page.getEpub().registerFile(title + "-mappings.html", "Мэппинг для StructureDefinition " + profile.getResource().getName(), EPubManager.XHTML_TYPE);
-    TextFile.stringToFile(src, page.getFolders().dstDir + title + "-mappings.html");
+    new ProfileUtilities(page.getWorkerContext()).generateSchematrons(new FileOutputStream(page.getFolders().dstDir + title + ".sch"), profile.getResource());
 
 //    src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-examples.html");
 //    src = page.processProfileIncludes(profile.getId(), pack, profile, xml, tx, src, intro, notes, title + ".html");
@@ -3592,8 +3702,17 @@ public class Publisher implements URIResolver {
 
     src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-definitions.html");
     src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, json, tx, src, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
+    if (st != null)
+      src = insertSectionNumbers(src, st, title + "-definitions.html");
     page.getEpub().registerFile(title + "-definitions.html", "Definitions for StructureDefinition " + profile.getResource().getName(), EPubManager.XHTML_TYPE);
     TextFile.stringToFile(src, page.getFolders().dstDir + title + "-definitions.html");
+
+    src = TextFile.fileToString(page.getFolders().srcDir + "template-profile-mappings.html");
+    src = page.processProfileIncludes(profile.getId(), profile.getId(), pack, profile, xml, json, tx, src, title + ".html", resourceName+"/"+pack.getId()+"/"+profile.getId());
+    if (st != null)
+      src = insertSectionNumbers(src, st, title + "-mappings.html");
+    page.getEpub().registerFile(title + "-mappings.html", "Mappings for StructureDefinition " + profile.getResource().getName(), EPubManager.XHTML_TYPE);
+    TextFile.stringToFile(src, page.getFolders().dstDir + title + "-mappings.html");
 
     new ReviewSpreadsheetGenerator().generate(page.getFolders().dstDir + Utilities.changeFileExt((String) profile.getResource().getUserData("filename"), "-review.xls"), "HL7 FHIR Project", page.getGenDate(), profile.getResource());
 
@@ -3903,7 +4022,15 @@ public class Publisher implements URIResolver {
       span.addText(v);
       XhtmlNode a = span.addTag("a");
       a.setAttribute("name", v);
-      a.addText(" "); // bug in some browsers?
+        a.addText(" "); // bug in some browsers?
+        node.addText(" ");
+        a = node.addTag("a");
+        a.setAttribute("href", link+"#"+v);
+        a.setAttribute("title", "link to here");
+        a.setAttribute("class", "self-link");
+        XhtmlNode img = a.addTag("img");
+        img.attribute("src", "target.png");
+
     }
     if (node.getNodeType() == NodeType.Document
         || (node.getNodeType() == NodeType.Element && !(node.getName().equals("div") && "sidebar".equals(node.getAttribute("class"))))) {
@@ -4064,17 +4191,15 @@ public class Publisher implements URIResolver {
           String n = e.getFileTitle();
           logError(" ...validate " + n, LogMessageType.Process);
           validateXmlFile(schema, n, validator, null);
+          validateJsonFile(schema, n, validator, null);          
         }
         // todo-profile: how this works has to change (to use profile tag)
-//        for (ConformancePackage e : r.getConformancePackages()) {
-//          String n = e.getTitle() + ".profile";
-//          page.log(" ...validate " + n, LogMessageType.Process);
-//          validateXmlFile(schema, n, validator, null);
-//          for (String en : e.getExamples().keySet()) {
-//            page.log(" ...validate " + en, LogMessageType.Process);
-//            validateXmlFile(schema, Utilities.changeFileExt(en, ""), validator, e.getResource()); // validates the example against it's base definitions
-//          }
-//        }
+        for (Profile e : r.getConformancePackages()) {
+          for (Example en : e.getExamples()) {
+            page.log(" ...validate " + en.getFileTitle()+" ("+e.getTitle()+")", LogMessageType.Process);
+            validateXmlFile(schema, Utilities.changeFileExt(en.getFileTitle(), ""), validator, e.getProfiles().get(0).getResource()); // validates the example against it's base definitions
+          }
+        }
       }
     }
 
@@ -4178,14 +4303,64 @@ public class Publisher implements URIResolver {
     Element root = doc.getDocumentElement();
     errorCount = errorCount + err.getErrors().size();
 
-    File tmpTransform = Utilities.createTempFile("tmp", ".xslt");
-    File tmpOutput = Utilities.createTempFile("tmp", ".xml");
     String sch = "fhir-invariants.sch";
 
+    validateBySchematron(n, sch);
+    if (profile != null && new File(Utilities.path(page.getFolders().dstDir, profile.getId()+".sch")).exists()) {
+      validateBySchematron(n, profile.getId()+".sch");
+    }
+    
+    // now, finally, we validate the resource ourselves.
+    // the build tool validation focuses on codes and identifiers
+    List<ValidationMessage> issues = new ArrayList<ValidationMessage>();
+    validator.validate(issues, root);
+    // if (profile != null)
+    // validator.validateInstanceByProfile(issues, root, profile);
+    for (ValidationMessage m : issues) {
+      if (!m.getLevel().equals(IssueSeverity.INFORMATION) && !m.getLevel().equals(IssueSeverity.WARNING))
+        logError("  " + m.summary(), typeforSeverity(m.getLevel()));
+
+      if (m.getLevel() == IssueSeverity.WARNING)
+        warningCount++;
+      else if (m.getLevel() == IssueSeverity.INFORMATION)
+        informationCount++;
+      else
+        errorCount++;
+    }
+  }
+
+  private void validateJsonFile(Schema schema, String n, InstanceValidator validator, StructureDefinition profile) throws Exception {
+    com.google.gson.JsonParser parser = new com.google.gson.JsonParser();
+    JsonObject obj = parser.parse(TextFile.fileToString(Utilities.path(page.getFolders().dstDir, n + ".json"))).getAsJsonObject();
+    
+    // the build tool validation focuses on codes and identifiers
+    List<ValidationMessage> issues = new ArrayList<ValidationMessage>();
+    validator.validate(issues, obj);
+    // if (profile != null)
+    // validator.validateInstanceByProfile(issues, root, profile);
+    for (ValidationMessage m : issues) {
+      if (!m.getLevel().equals(IssueSeverity.INFORMATION) && !m.getLevel().equals(IssueSeverity.WARNING))
+        logError("  " + m.summary(), typeforSeverity(m.getLevel()));
+
+      if (m.getLevel() == IssueSeverity.WARNING)
+        warningCount++;
+      else if (m.getLevel() == IssueSeverity.INFORMATION)
+        informationCount++;
+      else
+        errorCount++;
+    }
+  }
+
+  private void validateBySchematron(String n, String sch) throws IOException, ParserConfigurationException, SAXException, FileNotFoundException {
+    DocumentBuilderFactory factory;
+    DocumentBuilder builder;
+    Document doc;
+    File tmpTransform = Utilities.createTempFile("tmp", ".xslt");
+    File tmpOutput = Utilities.createTempFile("tmp", ".xml");
     try {
-      Utilities.saxonTransform(page.getFolders().rootDir + "tools" + sc + "schematron" + sc, page.getFolders().dstDir + sch, page.getFolders().rootDir
-          + "tools" + sc + "schematron" + sc + "iso_svrl_for_xslt2.xsl", tmpTransform.getAbsolutePath(), null);
-      Utilities.saxonTransform(page.getFolders().rootDir + "tools" + sc + "schematron" + sc, page.getFolders().dstDir + n + ".xml",
+      Utilities.saxonTransform(Utilities.path(page.getFolders().rootDir, "tools", "schematron"), Utilities.path(page.getFolders().dstDir, sch),
+          Utilities.path(page.getFolders().rootDir, "tools", "schematron", "iso_svrl_for_xslt2.xsl"), tmpTransform.getAbsolutePath(), null);
+      Utilities.saxonTransform(Utilities.path(page.getFolders().rootDir, "tools", "schematron"), Utilities.path(page.getFolders().dstDir, n + ".xml"),
           tmpTransform.getAbsolutePath(), tmpOutput.getAbsolutePath(), null);
     } catch (Throwable t) {
       //      throw new Exception("Error validating " + page.getFolders().dstDir + n + ".xml with schematrons", t);
@@ -4203,24 +4378,6 @@ public class Publisher implements URIResolver {
         logError("  @" + e.getAttribute("location") + ": " + e.getTextContent(), LogMessageType.Error);
         errorCount++;
       }
-    }
-
-    // now, finally, we validate the resource ourselves.
-    // the build tool validation focuses on codes and identifiers
-    List<ValidationMessage> issues = new ArrayList<ValidationMessage>();
-    validator.validate(issues, root);
-    // if (profile != null)
-    // validator.validateInstanceByProfile(issues, root, profile);
-    for (ValidationMessage m : issues) {
-      if (!m.getLevel().equals(IssueSeverity.INFORMATION) && !m.getLevel().equals(IssueSeverity.WARNING))
-        logError("  " + m.summary(), typeforSeverity(m.getLevel()));
-
-      if (m.getLevel() == IssueSeverity.WARNING)
-        warningCount++;
-      else if (m.getLevel() == IssueSeverity.INFORMATION)
-        informationCount++;
-      else
-        errorCount++;
     }
   }
 
@@ -4818,7 +4975,9 @@ public class Publisher implements URIResolver {
         cd.getReferredValueSet().setUserData("filename", filename);
         sf = page.processPageIncludes(filename, TextFile.fileToString(page.getFolders().srcDir + "template-vs.html"), "codeSystem", null, cd.getReferredValueSet(), null, "Value Set");
       }
-      sf = addSectionNumbers(filename + ".html", "template-valueset", sf, Utilities.oidTail(cd.getCsOid()));
+      if (cd.getVsOid() == null)
+        throw new Error("no oid for value set "+vs.getName()+" ("+vs.getUrl()+")");
+      sf = addSectionNumbers(filename + ".html", "template-valueset", sf, Utilities.oidTail(cd.getVsOid()));
       TextFile.stringToFile(sf, page.getFolders().dstDir + filename);
       String src = page.processPageIncludesForBook(filename, TextFile.fileToString(page.getFolders().srcDir + "template-tx-book.html"), "codeSystem", null);
       cachePage(filename, src, "Code System " + vs.getName());
