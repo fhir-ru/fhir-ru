@@ -971,13 +971,14 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A timing schedule that specifies an event that may occur multiple times</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Расписание для события, которое может наступить несколько раз<!-- A timing schedule that specifies an event that may occur multiple times --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Specifies an event that may occur multiple times. Timing schedules are used to record when things are expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Определяет событие, которое может произойти несколько раз. Расписания используются для записи времени ожидаемого или запрошенного события. Наиболее распространенным будет использование расписаний в инструкции по дозировке для лекарств. Они также используются при планировании медицинского ухода различного вида<!-- Specifies an event that may occur multiple times. Timing schedules are used to record when things are expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to able to track proposed timing schedules. There are several different ways to do this: one or more specified times, a simple rules like three times a day, or  before/after meals</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Нужно иметь возможность отслеживать предложенные календарные графики. Есть несколько различных способов сделать это: указать один или несколько моментов времени, простые правила наподобие "три раза в день" или "до/после еды"<!-- Need to able to track proposed timing schedules. There are several different ways to do this: one or more specified times, a simple rules like three times a day, or  before/after meals --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A timing schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria or just repeating criteria with no actual event.  When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Расписание может быть либо списком событий - интервалы, в которые происходит событие, или одно событие с критериями повтора, или просто критерии повтора без самого события. Когда указывается и событие, и спецификация его повтора, перечень событий следует понимать как интерпретацию информации из структуры repeat<!-- 
+A timing schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria or just repeating criteria with no actual event.  When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">QSET&lt;TS&gt; (GTS)</Data><NamedCell
@@ -1005,11 +1006,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the event occurs</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда происходит событие<!-- When the event occurs --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies specific times when the event occurs</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет конкретное время, когда происходит событие<!-- Identifies specific times when the event occurs --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">In an MAR, for instance, you need to take a general specification, and turn it into a precise specification</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">В MAR, например, вы должны принять общее описание и превратить его в точную спецификацию <!-- In an MAR, for instance, you need to take a general specification, and turn it into a precise specification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1036,11 +1037,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the event is to occur</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда именно произойдет событие<!-- When the event is to occur --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A set of rules that describe when the event should occur</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Набор правил, которые описывают, когда должно произойти событие<!-- A set of rules that describe when the event should occur --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Many timing schedules are determined by regular repetitions</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Многие расписания задаются регулярными повторами<!-- Many timing schedules are determined by regular repetitions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1069,9 +1070,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Start and/or end limits</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Начальный и/или конечный пределы<!-- Start and/or end limits --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Outer bounds for start and/or end limits of the timing schedule</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешние границы начала и/или окончания расписания<!-- Outer bounds for start and/or end limits of the timing schedule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1100,13 +1101,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Number of times to repeat</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество повторов<!-- Number of times to repeat --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A total count of the desired number of repetitions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общее число требуемого количества повторений<!-- A total count of the desired number of repetitions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Repetitions may be limited by end time or total occurrences</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Повторы могут быть ограничены конечным временем или общим количеством событий<!-- Repetitions may be limited by end time or total occurrences --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If you have both bounds and count, then this should be understand as within the bounds period, until count times happens</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если у вас есть обе границы и количество, то это следует понимать как период в пределах этих границ, пока событие не произойдет заданное число раз<!-- If you have both bounds and count, then this should be understand as within the bounds period, until count times happens --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">PIVL.count</Data><NamedCell
@@ -1134,13 +1135,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How long when it happens</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сколько оно будет длиться<!-- How long when it happens --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">How long this thing happens for when it happens</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сколько это событие будет длиться, когда оно наступит<!-- How long this thing happens for when it happens --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Some activities are not instantaneous and need to be maintained for a period of time</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Некоторые виды деятельности происходят не мгновенно и должны поддерживаться в течение периода времени<!-- Some activities are not instantaneous and need to be maintained for a period of time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For some events the duration is part of the definition of the event (e.g. IV infusions). For others, it's part of the timing specification (e.g. exercise)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для некоторых событий продолжительность является частью определения события (например внутривенные вливания). Для других это часть спецификации расписания (например упражнение)<!-- For some events the duration is part of the definition of the event (e.g. IV infusions). For others, it's part of the timing specification (e.g. exercise) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">PIVL.phase / EIVL.offset</Data><NamedCell
@@ -1169,9 +1170,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">s | min | h | d | wk | mo | a - unit of time (UCUM)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">s | min | h | d | wk | mo | a - единицы времени (UCUM)<!-- s | min | h | d | wk | mo | a - unit of time (UCUM) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The units of time for the duration, in UCUM units</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Единицы времени для продолжительности, в UCUM единицах<!-- The units of time for the duration, in UCUM units --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1202,9 +1203,10 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Event occurs frequency times per duration</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Событие происходит "frequency" раз в течение некоторого периода<!-- Event occurs frequency times per duration --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The number of times to repeat the action within the specified period / period range (i.e. both period and periodMax provided)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество повторений действия в течение указанного периода / промежутка времени (т. е. указаны и period, и periodMax)<!-- 
+The number of times to repeat the action within the specified period / period range (i.e. both period and periodMax provided) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1233,11 +1235,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Event occurs frequency times per duration</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Событие происходит "frequency" раз за период<!-- Event occurs frequency times per duration --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#333399">If present, indicates that the frequency is a range - so repeat between [frequency] and [frequencyMax] times within the period </Font><Font
-       html:Color="#993366">or period range</Font></ss:Data><NamedCell
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#333399">Если присутствует, указывает, что "frequency" (частота) - это диапазон, поэтому повторить количество раз между [frequency] и [frequencyMax] в течение периода<!-- 
+If present, indicates that the frequency is a range - so repeat between [frequency] and [frequencyMax] times within the period --> </Font><Font
+       html:Color="#993366">или диапазона времени<!-- or period range --></Font></ss:Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1267,9 +1270,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Event occurs frequency times per period</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Событие происходит "frequency" раз за период<!-- Event occurs frequency times per period --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the duration of time over which repetitions are to occur.  E.g. to express &quot;3 times per day&quot;, 3 would be the frequency and &quot;1 day&quot; would be the period</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает продолжительность времени, в течение которого должны происходить повторы. Например в выражении &quot;3 times per day&quot;  3 - это частота, а &quot;1 day&quot; будет периодом<!-- 
+Indicates the duration of time over which repetitions are to occur.  E.g. to express &quot;3 times per day&quot;, 3 would be the frequency and &quot;1 day&quot; would be the period --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1298,9 +1302,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Upper limit of period (3-4 hours)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Верхний предел периода (3-4 часа)<!-- Upper limit of period (3-4 hours) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as &quot;do this once every 3-5 days</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если присутствует, указывает, что период является диапазоном от [period] до [periodMax], что позволяет выражать такие понятия, как &quot;do this once every 3-5 days&quot;<!-- 
+If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as &quot;do this once every 3-5 days --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1331,9 +1336,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">s | min | h | d | wk | mo | a - unit of time (UCUM)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">s | min | h | d | wk | mo | a - единица времени (UCUM)<!-- s | min | h | d | wk | mo | a - unit of time (UCUM) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The units of time for the period in UCUM units</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">UCUM-единицы времени для периода<!-- The units of time for the period in UCUM units --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1364,11 +1369,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Regular life events the event is tied to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">События из повседневной жизни, к которым привязано событие<!-- Regular life events the event is tied to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A real world event that the occurrence of the event should be tied to.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Событие реального мира, к которому следует привязать появление данного события<!-- A real world event that the occurrence of the event should be tied to. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Timings are frequently determined by occurrences such as waking, eating and sleep</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Распределение по времени часто определяется такими явлениями, как бодрствование, прием пищи и сон<!-- Timings are frequently determined by occurrences such as waking, eating and sleep --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3978,7 +3983,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">if there's a duration, there needs to be duration units</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">если duration указан, необходимо указать и единицы измерения продолжительности<!-- if there's a duration, there needs to be duration units --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:duration)) or exists(f:durationUnits)</Data><NamedCell
@@ -3990,7 +3995,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Period units</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">if there's a period, there needs to be duration units</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">если period указан, необходимо указать и единицы измерения продолжительности<!-- if there's a period, there needs to be duration units --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:period)) or exists(f:periodUnits)</Data></Cell>
    </Row>
@@ -4000,7 +4005,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">no frequency with when</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Either frequency or when can exist, not both</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Можно указать либо frequency, либо when, но не оба<!-- Either frequency or when can exist, not both --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:frequency)) or not(exists(f:when))</Data></Cell>
    </Row>
@@ -4010,7 +4015,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Duration Positive</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat.duration</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">duration SHALL be a non-negative value</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">duration ДОЛЖЕН иметь неотрицательное значение<!-- duration SHALL be a non-negative value --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">duration &gt;= 0</Data></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String" x:Ticked="1">@value &gt;= 0 or not(@value)</Data></Cell>
    </Row>
@@ -4020,7 +4025,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">period positive</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat.period</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">period SHALL be a non-negative value</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">period ДОЛЖЕН иметь неотрицательное значение<!-- period SHALL be a non-negative value --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String" x:Ticked="1">@value &gt;= 0 or not(@value)</Data></Cell>
    </Row>
@@ -4030,7 +4035,8 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">periodMax needs period</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If there's a periodMax, there must be a period</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если указан periodMax, то должен быть указан и period<!-- 
+If there's a periodMax, there must be a period --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:periodMax)) or exists(period)</Data></Cell>
    </Row>
@@ -4040,7 +4046,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">durationMax needs duration</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If there's a durationMax, there must be a duration</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если указан durationMax, то должен быть указан и duration<!-- If there's a durationMax, there must be a duration --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:durationMax)) or exists(duration)</Data></Cell>
    </Row>
