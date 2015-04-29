@@ -7384,6 +7384,7 @@ Specifies the kind of this set of documents (e.g. Patient Summary, Discharge Sum
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s139"><Data ss:Type="String">current</Data></Cell>
@@ -7395,6 +7396,7 @@ Specifies the kind of this set of documents (e.g. Patient Summary, Discharge Sum
     <Cell ss:StyleID="s128"/>
     <Cell ss:StyleID="s128"/>
     <Cell ss:StyleID="s140"/>
+    <Cell><Data ss:Type="String">Текущая</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s141"><Data ss:Type="String">deprecated</Data></Cell>
@@ -7406,6 +7408,7 @@ Specifies the kind of this set of documents (e.g. Patient Summary, Discharge Sum
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s142"/>
+    <Cell><Data ss:Type="String">Замененная</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s141"><Data ss:Type="String">entered-in-error</Data></Cell>
@@ -7417,6 +7420,7 @@ Specifies the kind of this set of documents (e.g. Patient Summary, Discharge Sum
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s131"/>
     <Cell ss:StyleID="s142"/>
+    <Cell><Data ss:Type="String">Введенная по ошибке</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s141"/>
