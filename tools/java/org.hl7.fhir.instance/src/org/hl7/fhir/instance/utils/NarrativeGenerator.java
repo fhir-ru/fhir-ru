@@ -240,54 +240,6 @@ public class NarrativeGenerator implements INarrativeGenerator {
       }
     }
   }
-  }
-  
-  private void filterGrandChildren(List<ElementDefinition> grandChildren,  String string, Property prop) {
-  	List<ElementDefinition> toRemove = new ArrayList<ElementDefinition>();
-  	toRemove.addAll(grandChildren);
-  	for (Base b : prop.getValues()) {
-    	List<ElementDefinition> list = new ArrayList<ElementDefinition>();
-  		for (ElementDefinition ed : toRemove) {
-  			Property p = b.getChildByName(tail(ed.getPath()));
-  			if (p != null && p.hasValues())
-  				list.add(ed);
-  		}
-  		toRemove.removeAll(list);
-  	}
-  	grandChildren.removeAll(toRemove);
-  }
-
-	private List<Property> splitExtensions(StructureDefinition profile, List<Property> children) throws Exception {
-    List<Property> results = new ArrayList<Property>();
-    Map<String, Property> map = new HashMap<String, Property>();
-    for (Property p : children)
-      if (p.getName().equals("extension") || p.getName().equals("modifierExtension")) {
-        // we're going to split these up, and create a property for each url 
-        if (p.hasValues()) {
-          for (Base v : p.getValues()) {
-            Extension ex  = (Extension) v;
-            String url = ex.getUrl();
-            StructureDefinition ed = context.getExtensionStructure(profile, url);
-            if (p.getName().equals("modifierExtension") && ed == null)
-              throw new Exception("Unknown modifier extension "+url);
-            Property pe = map.get(p.getName()+"["+url+"]");
-            if (pe == null) {
-              if (ed == null)
-                pe = new Property(p.getName()+"["+url+"]", p.getTypeCode(), p.getDefinition(), p.getMinCardinality(), p.getMaxCardinality(), ex);
-              else {
-                ElementDefinition def = ed.getSnapshot().getElement().get(0);
-                pe = new Property(p.getName()+"["+url+"]", "Extension", def.getDefinition(), def.getMin(), def.getMax().equals("*") ? Integer.MAX_VALUE : Integer.parseInt(def.getMax()), ex);
-                pe.setStructure(ed);
-              }
-              results.add(pe);
-            } else
-              pe.getValues().add(ex);
-          }
-        }
-      } else
-        results.add(p);
-    return results;
-  }
   
   private void filterGrandChildren(List<ElementDefinition> grandChildren,  String string, Property prop) {
   	List<ElementDefinition> toRemove = new ArrayList<ElementDefinition>();
