@@ -17,7 +17,7 @@
 <h2>Межверсионная совместимость</h2>
 <blockquote>
 <p>
-Следующие правила будут применяться к ресурсам, профилям и другому содержимому в рамках спецификации, как только соответствующие её разделы получат статус <a href="timeline.html#normative">нормативных</a>.
+Следующие правила будут применяться к ресурсам, профилям и другому содержимому в рамках спецификации, как только соответствующие её разделы получат статус <a href="timelines.html#normative">нормативных</a>.
 Эти правила гарантируют, что реализации могут работать с FHIR-интерфейсами и благополучно обрабатывать содержимое FHIR-ресурсов при обмене данными между приложениями, использующими различные версии FHIR.
 </p>
 <p>
@@ -160,9 +160,10 @@
       <td>Операции</td>    
       <td>
 	  Могут определяться новые операции, но старые не могут быть удалены или переименованы. Существующие параметры не будут удаляться или переименовываться, также не может меняться их тип и минимальное кардинальное число. Максимальное кардинальное число может быть изменено с 1 на *. (Системам следует игнорировать неожиданные повторы.)
+	Могут вводиться дополнительные необязательные параметры. Пример. Сигнатуры операций не могут меняться, вместо этого будут определяться дополнительные варианты операций.
       <!-- New operations may be defined but operations may not be removed or renamed.  Existing parameters will not be removed or renamed, nor may their type
       or lower cardinality be changed.  Upper cardinality may be changed from 1 to *.  (Systems should ignore unexpected repetitions.)
-      Additional optional parameters may be introduced. -->
+      Additional optional parameters may be introduced. E.g. Operation signatures cannot change, instead, additional operation variants will be defined. -->
       </td>
     </tr>
     <tr>

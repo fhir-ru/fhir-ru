@@ -26,10 +26,10 @@ Observations to model Questionnaires. Such use cases should now utilize the Ques
 <a name="qversusr" />
 <h3>Использование вопросников по сравнению с использованием других ресурсов<!-- Using Questionnaires versus using Resources --></h3>
 <p>
-Имеется значительное совпадение между информацией, охватываемой <b>Questionnaires</b> и другими ресурсами (особенно <a href="familyhistory.html">FamilyHistory</a>,
+Имеется значительное совпадение между информацией, охватываемой <b>Questionnaires</b> и другими ресурсами (в частности <a href="familymemberhistory.html">FamilyMemberHistory</a>,
 <a href="medicationstatement.html">MedicationStatement</a>, <a href="observation.html">Observation</a>, <a href="procedure.html">Procedure</a> и др.): 
 Гибкой структурой <b>вопросника</b> легко можно злоупотребить для захвата всех данных подряд, даже тех данных, которые должны сохраняться в виде отдельных ресурсов. Выбор между использованием <b>вопросников</b> или отдельных ресурсов может быть продиктован процедурой сбора и записи. Например, если данные собираются с помощью согласованной с врачом (электронной) формы, может быть невозможно или нежелательно извлекать из нее отдельные ресурсы, и получение данных через <b>Questionnaire</b> будет наиболее подходящим.
-<!-- There is considerable overlap between the information covered by <b>Questionnaires</b> and other Resources (especially <a href="familyhistory.html">FamilyHistory</a>,
+<!-- There is considerable overlap between the information covered by <b>Questionnaires</b> and other Resources (especially <a href="familymemberhistory.html">FamilyMemberHistory</a>,
 <a href="medicationstatement.html">MedicationStatement</a>, <a href="observation.html">Observation</a>, <a href="procedure.html">Procedure</a>, etc.): 
 <b>Questionnaire's</b> flexible structure can easily be misused to capture any data, even data that should be captured as separate Resources. The choice between using <b>Questionnaires</b> or separate 
 Resources may be dictated by the procedure of collection and recording. E.g. if the data is captured as a physician-agreed (electronic) form, it might be impossible or undesirable to 

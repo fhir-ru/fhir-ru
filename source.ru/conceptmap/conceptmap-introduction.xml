@@ -27,10 +27,10 @@ code system, and these value sets can be used for mappings that are valid in all
 </p>
 <p>
 Каждый мэппинг концепта от источника в назначение также включает показатель [<a rel="nofollow" class="external text" 
-href="http://hl7.org/implement/standards/fhir/concept-equivalence.html">эквивалентности</a>], 
+href="concept-equivalence.html">эквивалентности</a>], 
 который указывает, насколько равнозначен мэппинг (или, в некоторых случаях, что допустимые соответствия отсутствуют).
 <!-- Each mapping for a concept from source to destination also includes an [<a rel="nofollow" class="external text" 
-href="http://hl7.org/implement/standards/fhir/concept-equivalence.html">equivalence</a>] property that 
+href="concept-equivalence.html">equivalence</a>] property that 
 specifies how similar the mapping is (or, in some cases, that there is no valid mapping).  -->
 </p>
 </div> 

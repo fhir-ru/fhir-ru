@@ -27,6 +27,10 @@
  the specified focal resource may not be required or may be employed as one of the Operation parameters. -->
  </p>
  
+ <p><b>Примечание:</b> Ресурс SupportingDocumentation устарел и вместо него для обмена вложениями и вспомогательными материалами, PDF, изображениями, рентгеновскими снимками и т. п. теперь следует использовать DocumentManifest. <!-- The SupportingDocumentation resource has been deprecated in favour of DocumentManifest for the excahnge of attachments
+ and supporting materials, PDF, Images, XRays, etc. -->
+ </p>
+ 
 <table class="grid">
  <tr><td><b>Business Activity</b></td><td><b>Request Resource</b></td><td><b>Response Resource</b></td></tr>
  <tr><td>Eligibility Check</td><td>EligibilityRequest</td><td>EligibilityResponse</td></tr>
@@ -34,14 +38,14 @@
  <tr><td>Claim</td><td>Claim (type={discipline}, use=complete)</td><td>ClaimResponse</td></tr>
  <tr><td>Pre-determination</td><td>Claim (type={discipline}, use=exploratory)</td><td>ClaimResponse</td></tr>
  <tr><td>Pre-Authorization</td><td>Claim (type={discipline}, use=proposed)</td><td>ClaimResponse</td></tr>
- <tr><td>Reversal</td><td>ProcessRequest (action=reverse, nullify=false)</td><td>ClaimResponse</td></tr>
- <tr><td>Nullify</td><td>ProcessRequest (action=reverse, nullify=true)</td><td>ClaimResponse</td></tr>
+ <tr><td>Reversal</td><td>ProcessRequest (action=cancel, nullify=false)</td><td>ClaimResponse</td></tr>
+ <tr><td>Nullify</td><td>ProcessRequest (action=cancel, nullify=true)</td><td>ClaimResponse</td></tr>
  <tr><td>Re-adjudication</td><td>Readjudication</td><td>ClaimResponse</td></tr>
  <tr><td>Status Check</td><td>ProcessRequest (action=status)</td><td>ProcessResponse</td></tr>
  <tr><td>Pended Check (Polling)</td><td>ProcessRequest (action=poll)</td><td>{Resource} or ProcessResponse</td></tr>
  <tr><td>Payment Notice</td><td>PaymentNotice</td><td>ProcessResponse</td></tr>
  <tr><td>Payment Reconciliation</td><td>ProcessRequest (action=poll, include=PaymentReconciliation)</td><td>PaymentReconciliation</td></tr>
- <tr><td>Send Attachments</td><td>SupportingDocumentation</td><td>ProcessResponse</td></tr>
+ <tr><td>Send Attachments</td><td>DocumentManifest</td><td>ProcessResponse</td></tr>
  <tr><td>Request an Explanation of Benefits&nbsp;&nbsp;&nbsp;</td><td>ProcessRequest (action=poll, include=ExplanationOfBenefit)</td><td>ExplanationOfBenefit</td></tr>
 </table>
  <p>
@@ -64,7 +68,7 @@
 [%res-item EnrollmentResponse%]
 [%res-item ProcessRequest%]
 [%res-item ProcessResponse%]
-[%res-item SupportingDocumentation%]
+[%res-item DocumentManifest%]
 
 [%res-category Выставление счетов|Claims, обработка и ответы%]
 <tr><td><b>Имя</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>

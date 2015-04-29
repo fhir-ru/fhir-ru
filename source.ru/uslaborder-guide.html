@@ -94,9 +94,8 @@
          <h3>Определения<!-- Definitions --> </h3>
          <ul>
             <li>
-			<b>Измерение (Measurement)</b> - отдельное значение наблюдения или вычисления, записанное с помощью отдельного ресурса Observation. Обратите внимание, что несколько представлений одного и того же измерения могут потребовать использования нескольких сегментов наблюдения, например количественное и качественное утверждения одного измерения.			
-			<!-- <b>Measurement</b> - a single observation value or calculation recorded using a single Observation Resource. Note that multiple representations of the same measurement may require multiple observation
-               segments, e.g., quantitative and qualitative statement of the same measurement. -->
+			<b>Измерение (Measurement)</b> - отдельное значение наблюдения или вычисления, записанное с помощью отдельного ресурса Observation. Обратите внимание, что несколько представлений одного и того же измерения могут потребовать использования нескольких наблюдений, например количественное и качественное утверждения одного измерения.			
+			<!-- <b>Measurement</b> - a single observation value or calculation recorded using a single Observation Resource. Note that multiple representations of the same measurement may require multiple observations, e.g., quantitative and qualitative statement of the same measurement. -->
             </li>
             <li>
 			<b>Orderable Test или Laboratory Order </b> - элемент item ресурса DiagnosticOrder, запрашивающий одно или несколько измерений (Observation Resources). 
@@ -108,11 +107,11 @@
 			<!-- <b>Requisition</b> - One or more Orderable Test(s) transmitted as a new or appended DiagnosticOrder Resource.  --></li>
          </ul>
          <br></br>
-         <p>
+         <!--p>
             <b>Figure 1: todo</b>
-         </p>
-         <img alt="definitions" src="todo"/>
-         <!--EH is figure needed here?-->
+         </p-->
+         <!--<img alt="definitions" src="todo"/>
+         EH is figure needed here?-->
          <a name="scope"></a>
          <h3>Область действия<!-- Scope --> </h3>
          <p>
@@ -184,9 +183,9 @@
          <a name="usecasesandcontext"></a>
          <h2>Заказы для амбулаторного сценария использования и контекстные диаграммы<!-- Orders for Ambulatory Care Use Case and Context Diagrams --> </h2>
          <p><b>Figure 2-1. Use Case Diagram</b></p>
-         <img alt="Figure 2-1. Use Case Diagram" src="uslaborder-usecasediagram"/>
+         <img alt="Figure 2-1. Use Case Diagram" src="uslaborder-contextdiagram.png"/>
          <p><b>Figure 2-2. Context Diagram</b></p>
-         <img alt="Figure 2-2. Context Diagram" src="uslaborder-contextdiagram"/>
+         <img alt="Figure 2-2. Context Diagram" src="uslaborder-contextdiagram.png"/>
          <a name="userstory"></a>
          <h3>Пользовательская история<!-- User Story --></h3>
          <p>
@@ -230,7 +229,7 @@
                clinician end-users, laboratory requisitions, laboratory orders (which include tests and panels),
                and laboratory test results (minimally at the level of individual analytes). -->
             </li>
-            <li> <a href="todo">USLabResult Profile</a> и USLabOrder Profile будут синхронизированы с той целью, что лаборатория, которая получает заказ, соответствующий USLabOrder Profile, должна быть способна ответить сообщением, соответствующим USLabResult Profile.<!-- The  <a href="todo">USLabResult Profile</a>
+            <li> <a href="uslabreport.html">USLabResult Profile</a> и USLabOrder Profile будут синхронизированы с той целью, что лаборатория, которая получает заказ, соответствующий USLabOrder Profile, должна быть способна ответить сообщением, соответствующим USLabResult Profile.<!-- The  <a href="todo">USLabResult Profile</a>
             and the USLabOrder Profile will be
             synchronized with the goal that a laboratory that receives an order conforming to the USLabOrder Profile should
             be capable of responding with a message conforming to the USLabResult Profile. -->

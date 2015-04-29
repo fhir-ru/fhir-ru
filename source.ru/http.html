@@ -106,6 +106,24 @@ https://server/path/Patient
 Обратите внимание, что сервер может использовать пути типа "http://server/...[xx]...", где [xx] - это некоторая переменная часть, идентифицирующая конкретный экземпляр реализации FHIR API. Обычно это идентификатор пациента или пользователя, и его присутствие означает, что вся информация относится к данному пациенту/пользователю либо персонализирована для него.  
 Так, в случае пользователя это означает, что именно ему предоставлен явный доступ к операции. Не обязательно всегда включать идентификатор пациента в URL - реализации могут связывать точку взаимодействия FHIR с конкретным пациентом или провайдером с помощью OAuth. Логическое обоснование можно посмотреть в <a href="extras.html#compartments">Compartments</a>.
 </p>
+<p><b>Identity</b></p>
+<p>
+Systems often need to compare two URLs to determine whether they refer to the same URL or not.
+For the purposes of this specification, the following rules apply:
+</p>
+<ul>
+ <li>The query part of the URL (anything after '?' is ignored</li>
+ <li>The comparison of the document portion of the URL (i.e. not the server/port) is case sensitive</li>
+ <li>http: and https: are exchangeable and refer to the same object</li>
+ <li>If a port is specified, then the ports must be identical or the objects are different (to the prevalence of port mapping and/or interface engines running on different ports). Ports should only be explicit when they have explicit meaning to the server</li>
+</ul>
+<p>
+For example:
+http://myserver,com/patient/1 and https://myserver.com/patient/1 are the same, while http://myserver.com:80/patient/1 is distinct from either of the above.
+</p>
+<p>
+Note: the identity comparison for protocols other than http/https is undefined.
+</p>
 
 <h3>Метаданные ресурсов и версионирование</h3>
 <p>
@@ -1248,9 +1266,9 @@ system troubleshooting. -->
 <h3>OMG hData RESTful Transport</h3>
 
 <p>
-Данная RESTful-спецификация, описываемая здесь, основана на спецификации <a href="http://www.omg.org">OMG Health RESTful</a> (конкретная ссылка будет предоставлена 
-при публикации). В этом отношении FHIR действует как Record Format Profile, как описано в той спецификации. Следует учитывать следующие существенные факторы:
-<!-- This RESTful specification described here is based on the <a href="http://www.omg.org">OMG Health RESTful specification</a> (specific reference to be provided when this is published). 
+Данная RESTful-спецификация, описываемая здесь, основана на спецификации <a href="http://www.omg.org/spec/HData/">OMG Health RESTful specification (HData)</a>. 
+В этом отношении FHIR действует в качестве Record Format Profile, как описано в той спецификации. Следует учитывать следующие существенные факторы:
+<!-- This RESTful specification described here is based on the <a href="http://www.omg.org/spec/HData/">OMG Health RESTful specification (HData)</a>.
 In this regard, FHIR functions as a Record Format Profile as described in that specification. Note the following significant factors to be aware of: -->
 </p>
 <ul>

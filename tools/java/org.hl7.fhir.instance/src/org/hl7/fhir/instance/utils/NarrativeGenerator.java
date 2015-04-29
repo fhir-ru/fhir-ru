@@ -1391,7 +1391,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     }    
     if (langs.size() > 0) {
       Collections.sort(langs);
-      x.addTag("p").addTag("b").addText("Additional Language Displays");
+      x.addTag("p").addTag("b").addText("Отображение на других языках");
       t = x.addTag("table").setAttribute("class", "codes");
       XhtmlNode tr = t.addTag("tr");
       tr.addTag("td").addTag("b").addText("Code");

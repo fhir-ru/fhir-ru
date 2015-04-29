@@ -11,12 +11,15 @@ Examples of condition include problems, diagnoses, concerns, issues. There are m
 <li>the use of such information to populate a problem list of a summary statement such as a discharge summary </li>
 </ul>
 <p>
+
+
 This resource is used to record detailed information about a clinician's assessment and assertion of a particular aspect of a patient's state of health. 
 It is intended for use to record information about a disease/illness identified from application of clinical reasoning over the pathologic and 
 pathophysiologic findings (diagnosis), or identification of health issues/situations that require ongoing monitoring and/or management (health issue/concern), 
 or identification of health issues/situations considered harmful, potentially harmful and required to be investigated and managed (problems).
 </p>
 <p>
+
 The condition resource may also be used to record certain health state of a patient which does not normally present negative outcome (until complications 
 are predicted or detected), e.g. pregnancy. Examples of complications of pregnancy include: hyperemesis gravidarum, preeclampsia, eclampsia, which are 
 captured as problems/diagnoses.

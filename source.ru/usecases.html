@@ -203,11 +203,10 @@ decision support implementation in the FHIR specification. Generally, the patter
  содействия принятию решений <!--There is no particular support required from the FHIR specification, though there will
  be ongoing review of  the contents of the resources to ensure that they support common decision support practices 
  appropriately --></li>
-  <li>FHIR не предусматривает наличие какого-либо ресурса, использующегося для данных целей. Ресурс <a href="alert.html">
-  Alert</a> предназначен для работы с медицинскими записями (clinical notes) и не может использоваться
+  <li>FHIR не предусматривает наличие какого-либо ресурса, использующегося для данных целей. Ресурс <a href="flag.html">Flag</a> предназначен для работы с медицинскими записями (clinical notes) и не может использоваться
   для содействия принятию решений.  В будущем для данных целей будет использоваться ресурс "Alarm" (в настоящий момент 
   в подготовке).
-    <!--There is no suitable resource for this use yet. The <a href="alert.html">Alert</a> resource is intended or 
+    <!--There is no suitable resource for this use yet. The <a href="flag.html">Flag</a> resource is intended or 
   clinical notes about the patient, and is not intended for this use. A resource called "Alarm" is under preparation 
   for this purpose --> </li>
    <li>Запрос поддержки принятия решения понимается как операция <a href="search.html">search</a>, использующей 

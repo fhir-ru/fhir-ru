@@ -1747,7 +1747,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       s.append("    </table>\r\n");
       if (langs.size() > 0) {
         Collections.sort(langs);
-        s.append("<p><b>Additional Language Displays</b></p>\r\n");
+        s.append("<p><b>Отображение на других языках</b></p>\r\n");
         s.append("<table class=\"codes\">\r\n");
         s.append("<tr><td><b>Code</b></td>");
         for (String lang : langs)

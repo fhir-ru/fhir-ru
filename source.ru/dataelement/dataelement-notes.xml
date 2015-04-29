@@ -65,12 +65,9 @@ systems such as SNOMED only allow identifying the question.)It would be possible
 identifier system/namespace as a code system.  Similarly, data elements can be mapped to each other (and to codes) in the same manner as 
 codes can be mapped by making use of the <a href="conceptmap.html">ConceptMap</a> resource. -->
 </p>
-	<p>
-	На практике, как правило, лучше поддерживать отдельную кодовую систему, на коды которой можно ссылаться в элементе <code>code</code> ресурса <b>Data Element</b> вместо того, чтобы обрабатывать сам идентификатор элемента данных как код. Большинство систем, спроектированных для обработки кодовых систем, не смогут обрабатывать дополнительные данные, ассоциированные с элементом данных. Также процессы поддержки и версионирования элементов данных могут не совпадать с этими же процессами для кодов.
-<!-- In practice, it is generally best to maintain a separate code system whose codes can be referenced in the <code>code</code> element
-of a <b>Data Element</b> rather than to treat the data element identifier itself as a code.  Most systems designed to handle code
-systems will not be able to handle the additional data associated with a data element.  As well, the maintenance and versioning process
-for data elements may not align well with the maintenance and versioning processes for codes. -->
+<p>
+Refer to the <a href="valueset.html#detailed-metadata">Code systems with detailed metadata</a> section of <a href="valueset.html">ValueSet</a> resource
+for additional discussion of the relationship between DataElement and code systems.
 </p>
 	<a name="standardization"/>
 	<h3>Стандартизация через административное управление и реестры<!-- Standardization through governance and registries --></h3>
@@ -132,11 +129,6 @@ defining and using the data elements.  A corollary to this is that data elements
 the needs of another group, even if they may be covering the same domain. -->
 </p>
 
-<h3>Уникальность элементов данных<!-- Uniqueness of data elements --></h3>
-<p>
-Clem должен добавить этот раздел
-</p>
-
 <h3>Сопоставимость и преобразования элементов данных<!-- Comparability and conversion of data elements --></h3>
 <p>
 Две порции данных не обязательно должны основываться на одном и том же элементе данных для того, чтобы быть сопоставимыми или агрегируемыми.
@@ -149,6 +141,16 @@ could be lossless or may involve some loss of semantic precision.  For example, 
 can be seamlessly converted to kilograms.  Similarly, coded data captured using one value set can be converted to another
 value set provided mappings are available.  The nature of the mappings would determine whether any loss of semantics
 would occur. -->
+</p>
+
+<h3>Data Element stringency</h3>
+<p>
+The stringency element allows identifying the types of usages for which the data element is appropriate.  Some uses
+(direct comparison of data, auto-population of data, etc.) are inappropriate with loose definitions of elements.  On the
+other hand, overly-restrictive data elements can result in a large number of data elements and limited abilities to
+compare similar but not identical data.  For now, the definition of what level of constraints are appropriate/necesssary
+for a given level of stringency is left to implementers, though future versions this specification may assert at least
+some level of guidance in this area.
 </p>
 
 <h3>Определения<!-- Definitions --></h3>
@@ -182,6 +184,15 @@ definitions include: -->
 
 <h3>Ссылки на элементы данных и из них<!-- References to and from Data Elements --></h3>
 <p>
-
+One of the primary purposes of the DataElement resource is to allow data conveyed in a variety of different forms to be "linked"
+to the data element and identified as being equivalent/comparable/semantically-aligned.  There are a variety of different ways
+this can occur:
 </p>
+<ul>
+<li><code>DataElement.element.code</code> allows a data element to be linked as "semantically equivalent" to the specified code.</li>
+<li><code>DataElement.element.mapping</code> allows a data element to be linked to a particular data structure such as a FHIR resource, a CDA template, an OpenEHR archetype, etc.</li>
+<li>The <a href="questionnaire.html">Questionnaire</a> extension <a href="extension-questionnaire-dereference.html">deReference</a> allows a
+particular question in a questionnaire to be linked to a data element deemed to correspond to that question.  This mechanism supports
+population of questionnaire instances on the basis of known data elements</li>
+</ul>
 </div>

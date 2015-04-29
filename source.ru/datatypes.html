@@ -216,6 +216,8 @@ In JSON, whitespace in string values is always significant. Primitive types othe
 <a name="oid"> </a>
 <a name="uuid"> </a>
 <a name="id"> </a>
+<a name="unsignedInt"> </a>
+<a name="positiveInt"> </a>
 
 <table class="list">
  <tr>
@@ -231,6 +233,9 @@ In JSON, whitespace in string values is always significant. Primitive types othe
  <tr><td>id</td><td>string</td><td>Любая комбинация ASCII-символов верхнего и нижнего регистра ('A'..'Z', 'a'..'z', цифры ('0'..'9'), '-' и '.' с ограничением по длине в 64 символа. (Это может быть целое число, OID без префиксов, UUID или любой другой паттерн идентификаторов, соответствующим этим ограничениям).
  <!-- Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) -->
    <br/>regex: [%id_regex%]</td></tr>
+
+ <tr><td>unsignedInt</td><td>int</td><td>Any non-negative integer (e.g. >= 0)<br/>regex: [0-9]+</td></tr>
+ <tr><td>positiveInt</td><td>int</td><td>Any positive integer (e.g. > 0)<br/>regex: [1-9][0-9]+</td></tr>
 </table>
  
 <p>
@@ -827,18 +832,19 @@ Timing
 </p>
 <p>
 Определяет событие, которое может произойти несколько раз. Расписания используются для записи не уже произошедших событий, а для ожидаемых или тех событий, на которые есть запрос. 
-Расписание может представлять собой либо список событий, либо критериев того, когда событие наступает. Также они оба могут быть указаны. Когда указываются и событие, и спецификация его повторения, список событий следует понимать как интерпретацию информации в структуре "repeat".
+Расписание может представлять собой список событий и/или критерии того, когда событие должно наступить, что может быть выражено в стркутурированной форме и/или в виде кода. 
+Когда указываются и событие, и спецификация его повторения, список событий следует понимать как интерпретацию информации в структуре "repeat".
 <!-- Specifies an event that may occur multiple times. Timing schedules are not used for recording when things did happen, but when they are expected or requested to occur.
-A Timing schedule can be either a list of events, or criteria for when the event happens. In addition, both can be proposed. When both event and a repeating specification 
-are provided, the list of events should be understood as an interpretation of the information in the repeat structure -->
+A Timing schedule can be a list of events and/or criteria for when the event is to happen, which can be expressed in a structured form and/or as a code. 
+When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure. -->
 </p>
 <p>
 Многие системы избегают сложности структуры Timing с помощью текстового поля для него (например "текст дозировки").
-Такие системы не используют тип данных Timing. Другие системы используют набор «общих» кодов - включая, но, как правило, не ограничиваясь широко понимаемыми сокращениями, такими как "BID". В timing используется полностью структурированное представление значения кодов для наиболее широкого взаимодействия.
+Такие системы не используют тип данных Timing. Другие системы используют набор «общих» кодов - включая, но, как правило, не ограничиваясь такими широко распространенными сокращениями, как "BID". НЕОБХОДИМО везде, где возможно, указывать структурированное описание расписания, если только это не BID, TID, QID, AM or PM, которые имеют повсеместное значение.
 <!-- Many systems avoid the complexity of the Timing structure by using a text field for these things (e.g. "Dosage Text"). 
 Those systems do not use the Timing data type. Other systems use a set of 'common' codes - including, but usually
-not limited to, widely understood acronyms such as "BID". The timing data uses a fully structured representation 
-of the meaning of the codes for most general interoperability.  -->
+not limited to, widely understood acronyms such as "BID". A structured timing specification SHOULD be provided whenever 
+possible, unless the code is BID, TID, QID, AM or PM, which have a ubiquitous meaning. -->
 </p>
 [%dt Timing%]
 <p>
@@ -1013,8 +1019,6 @@ Open references are used in the following places: [%dtusage *%]
  try {
    var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
  } catch(exception){ 
-  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
-    alert(exception);
  }
  if (!currentTabIndex)
    currentTabIndex = '0';
@@ -1039,8 +1043,6 @@ function store(currentTab) {
   try {
     sessionStorage.setItem('fhir-resource-tab-index', currentTab);
   } catch(exception){ 
-  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
-    alert(exception);
   }
   $( '#tabs-Attachment' ).tabs('option', 'active', currentTab);
   $( '#tabs-Coding' ).tabs('option', 'active', currentTab);
@@ -1056,6 +1058,7 @@ function store(currentTab) {
   $( '#tabs-ContactPoint' ).tabs('option', 'active', currentTab);
   $( '#tabs-Timing' ).tabs('option', 'active', currentTab);
   $( '#tabs-Signature' ).tabs('option', 'active', currentTab);
+  document.activeElement.blur();
 }     
 </script>
 

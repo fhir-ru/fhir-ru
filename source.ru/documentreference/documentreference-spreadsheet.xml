@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Moehrke, John (GE Healthcare)</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2015-03-18T00:37:16Z</LastSaved>
+  <LastSaved>2015-03-27T01:39:44Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -25,6 +25,7 @@
   <WindowTopX>0</WindowTopX>
   <WindowTopY>240</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
+  <FirstVisibleSheet>1</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -1101,9 +1102,9 @@ Who or what the document is about. The document can be about a person, (patient 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Точный тип документа<!-- Precise type of document  --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип документа<!-- Kind of document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Этот код обозначает точный тип документа с точки зрения пользователя. Рекомендуется использовать набор значений из кодовой системы, обеспечивающей высокий уровень гранулярности, например LOINC. Примеры: Patient Summary, Discharge Summary, Prescription<!-- The type code specifies the precise type of document from the user perspective. It is recommended that the value Set be drawn from a coding scheme providing a fine level of granularity such as LOINC.  (e.g. Patient Summary, Discharge Summary, Prescription, etc.)  --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает конкретный тип документа. Обычно совпадает с целью создания этого документа. Рекомендуется использовать набор значений из кодовой системы, обеспечивающей высокий уровень гранулярности, например LOINC. Примеры: Patient Summary, Discharge Summary, Prescription<!-- Specifies the particular kind of document. This usually equates to the purpose of making the document. It is recommended that the value Set be drawn from a coding scheme providing a fine level of granularity such as LOINC.  (e.g. Patient Summary, Discharge Summary, Prescription, etc.)  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Ключевой элемент метаданных, описывающий документ, используемый при поиске/фильтрации<!-- Key metadata element describing the document, used in searching/filtering. --></Data><NamedCell
@@ -1122,7 +1123,8 @@ Who or what the document is about. The document can be about a person, (patient 
    <Row ss:AutoFitHeight="0" ss:Height="165">
     <Cell ss:StyleID="s86"><Data ss:Type="String">DocumentReference.class</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">kind</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1138,9 +1140,9 @@ Who or what the document is about. The document can be about a person, (patient 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокоуровневая классификация документа<!-- High-level classification of document --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Классификация документа<!-- Categorization of document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код класса описывает высокоуровневую классификацию типов документов (например Report, Summary, Images, Treatment Plan, Patient Preferences, Workflow).<!-- The class code specifying the high-level use classification of the document type (e.g., Report, Summary, Images, Treatment Plan, Patient Preferences, Workflow). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Классификация типа документа. Класс - это абстракция из типа, обозначающего высокоуровневую классификацию документа (например Report, Summary, Images, Treatment Plan, Patient Preferences, Workflow) на макроуровне.<!-- A categorization for the type of document. The class is an abstraction from the type specifying the high-level kind of document  (e.g., Report, Summary, Images, Treatment Plan, Patient Preferences, Workflow) at a macro level. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Помогает людям оценивать, представляет ли документ для них интерес, при просмотре указателя документов <!-- Helps humans to assess whether the document is of interest when viewing an list of documents --></Data><NamedCell
@@ -1167,7 +1169,7 @@ Who or what the document is about. The document can be about a person, (patient 
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">DocumentIHEFormat</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">DocumentFormat</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1176,7 +1178,7 @@ Who or what the document is about. The document can be about a person, (patient 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Правила форматирования и структуры содержимого документа<!-- Format/content rules for the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, определяющий кодировку доумента, структуру и шаблон, которым соответствует документ помимо базового формата, указанного в mimeType<!-- An identifier that identifies the the document encoding, structure and template that the document conforms to beyond the base format indicated in the mimeType --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, определяющий кодировку доумента, структуру и шаблон, которому соответствует документ помимо базового формата, указанного в mimeType<!-- An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Помогает при обработке. Обычно это URN. Для профилей содержимого документов, определенных IHE, это URN, выпущенный IHE.<!-- Helps the processing. Usually is a URN that identifies. For IHE defined Document Content profiles this is a urn issued by IHE. --></Data><NamedCell
@@ -1708,7 +1710,7 @@ Who or what the document is about. The document can be about a person, (patient 
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">400;240</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">400;130</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1910,7 +1912,8 @@ An event can further specialize the act inherent in the type, such as &#10;where
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">400;300</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
@@ -3556,9 +3559,9 @@ An event can further specialize the act inherent in the type, such as &#10;where
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>23</TopRowBottomPane>
+   <TopRowBottomPane>22</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>14</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -3566,6 +3569,7 @@ An event can further specialize the act inherent in the type, such as &#10;where
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
@@ -3573,8 +3577,8 @@ An event can further specialize the act inherent in the type, such as &#10;where
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>30</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>29</ActiveRow>
+     <ActiveCol>21</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -5718,6 +5722,7 @@ An event can further specialize the act inherent in the type, such as &#10;where
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>13</ActiveRow>
      <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
@@ -6702,7 +6707,7 @@ An event can further specialize the act inherent in the type, such as &#10;where
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s93"><Data ss:Type="String">DocumentC80Class</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокоуровневая классификация клинических документов<!-- High-level classification of a clinical document --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокоуровневая классификация клинического документа на макроуровне<!-- High-level kind of a clinical document at a macro level --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell><Data ss:Type="String">Preferred</Data></Cell>
@@ -6798,12 +6803,12 @@ An event can further specialize the act inherent in the type, such as &#10;where
     <Cell ss:StyleID="s118"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s93"><Data ss:Type="String">DocumentIHEFormat</Data></Cell>
+    <Cell ss:StyleID="s93"><Data ss:Type="String">DocumentFormat</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Код формата документа<!-- Document Format Codes --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell><Data ss:Type="String">Preferred</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-ihe-formatcodes</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-formatcodes</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -7165,8 +7170,8 @@ An event can further specialize the act inherent in the type, such as &#10;where
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7352,7 +7357,7 @@ An event can further specialize the act inherent in the type, such as &#10;where
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"/>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">This reference has been superseded by another reference</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">This reference has been superceded by another reference</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">~ActStatus.obsolete</Data></Cell>
     <Cell ss:StyleID="s141"/>
@@ -7902,7 +7907,8 @@ An event can further specialize the act inherent in the type, such as &#10;where
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

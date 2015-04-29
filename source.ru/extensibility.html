@@ -423,8 +423,6 @@ the resource) или в структуру любого другого элем�
  try {
    var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
  } catch(exception){ 
-  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
-    alert(exception);
  }
  if (!currentTabIndex)
    currentTabIndex = '0';
@@ -433,11 +431,10 @@ $( '#tabs-Extension' ).tabs({ active: currentTabIndex, activate: function( event
      
      
 function store(currentTab) {
+  document.activeElement.blur();
   try {
     sessionStorage.setItem('fhir-resource-tab-index', currentTab);
   } catch(exception){ 
-  if (navigator.userAgent.toLowerCase().indexof('msie') == -1)
-    alert(exception);
   }
   $( '#tabs-Extension' ).tabs('option', 'active', currentTab);
 }     
