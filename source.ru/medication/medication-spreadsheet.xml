@@ -1322,9 +1322,9 @@ The actual ingredient - either a substance (simple ingredient) or another medica
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How much ingredient in product</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество ингредиента в продукте<!-- How much ingredient in product --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Specifies how many (or how much) of the items there are in this Medication.  E.g. 250 mg per tablet</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает содержание вещества в единице лекарственного средства. Например 250 мг в 1 таблетке<!-- Specifies how many (or how much) of the items there are in this Medication.  E.g. 250 mg per tablet --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1355,7 +1355,7 @@ The actual ingredient - either a substance (simple ingredient) or another medica
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Information about a group of medication produced or packaged from one production run.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о группе лекарственных средств, изготовленных или упакованных за один производственный период.<!-- Information about a group of medication produced or packaged from one production run. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
