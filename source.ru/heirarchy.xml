@@ -5,7 +5,7 @@ todo: compartments
 signatures.html
 
 -->
-<fhir>
+<fhir> 
   <page title="Главная" note="(map + search) - focus on useful links" filename="index.html">
     <page title="Документация" filename="documentation.html">
 
@@ -170,7 +170,7 @@ signatures.html
 		  <page title="Перечень профилей" filename="profilelist.html"/>
 			<page title="Применение ресурсов" filename="use.html"/>
 		</page>
-		<page title="Ресурсы" filename="resourcelist.html"/>
+		<page title="Ресурсы" filename="resourcelist.html">
   		<page title="Resource Guide" filename="resourceguide.html"/>
     </page>
 		<!--    Every Resource below has structure:
