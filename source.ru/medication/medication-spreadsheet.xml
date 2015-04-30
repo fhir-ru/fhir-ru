@@ -978,9 +978,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Definition of a Medication</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Определение лекарственного средства<!-- Definition of a Medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Primarily used for identification and definition of Medication, but also covers ingredients and packaging</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">В основном используется для идентификации и определения лекарственного средства, но охватывает также описание ингредиентов и упаковок<!-- Primarily used for identification and definition of Medication, but also covers ingredients and packaging --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1012,9 +1012,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Common / Commercial name</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общепринятое/коммерческое название<!-- Common / Commercial name --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The common/commercial name of the medication absent information such as strength, form, etc.  E.g. Acetaminophen, Tylenol 3, etc.  The fully coordinated name is communicated as the display of Medication.code</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общепринятое/коммерческое название лекарственного средства без указания концентрации, формы выпуска и т. п. Например Acetaminophen, Tylenol 3. Полное название передается как значение для отображения Medication.code<!-- 
+The common/commercial name of the medication absent information such as strength, form, etc.  E.g. Acetaminophen, Tylenol 3, etc.  The fully coordinated name is communicated as the display of Medication.code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1048,12 +1049,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes that identify this medication</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, которые идентифицируют это лекарственное средство<!-- Codes that identify this medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code (or set of codes) that identify this medication.   Usage note: This could be a standard drug code such as a drug regulator code, RxNorm code, SNOMED CT code, etc. It could also be a local formulary code, optionally with translations to the standard drug codes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код (или набор кодов), который идентифицирует это лекарственное средство. Примечание к использованию: это может быть стандартный лекарственный код, например нормативный код лекарства, коды RxNorm, SNOMED CT и т. д. Также это может быть местный рецептурный код с необязательным указанием соответствующих стандартных лекарственных кодов <!-- A code (or set of codes) that identify this medication.   Usage note: This could be a standard drug code such as a drug regulator code, RxNorm code, SNOMED CT code, etc. It could also be a local formulary code, optionally with translations to the standard drug codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">When defining a medication, the code is the &quot;identifying&quot; code for the medication. All the codings provided should be at the same level in the hierarchy (generic, formulation, generic strength, etc.). Codes that relate the medication across the hierarchy should be conveyed using the relationships inherent in Medication.package and Medication.product.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">При определении лекарственного средства кодом будет &quot;identifying&quot; код медикамента. Все предоставленные кодинги должны быть одного уровня иерархии (generic - непатентованные лекарственные средства, formulation - технология приготовления лекарственного средства, generic strength и т. д.). Коды, которые затрагивают лекарственные средства разного уровня иерархии, следует передавать с помощью взаимосвязей, указываемых в Medication.package и Medication.product.<!-- 
+When defining a medication, the code is the &quot;identifying&quot; code for the medication. All the codings provided should be at the same level in the hierarchy (generic, formulation, generic strength, etc.). Codes that relate the medication across the hierarchy should be conveyed using the relationships inherent in Medication.package and Medication.product. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
@@ -1084,9 +1086,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">True if a brand</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Истинно, если это торговая марка (бренд)<!-- True if a brand --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Set to true if the item is attributable to a specific manufacturer (even if we don't know who that is) </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Установите в true, если изделие приписывается конкретному производителю (даже если не известно, к какому именно)<!-- Set to true if the item is attributable to a specific manufacturer (even if we don't know who that is)  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1118,9 +1120,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Manufacturer of the item</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Производитель изделия<!-- Manufacturer of the item --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Describes the details of the manufacturer</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сведения о производителе<!-- Describes the details of the manufacturer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1156,7 +1158,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">product | package</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Medications are either a single administrable product or a package that contains one or more products.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Medication может быть либо отдельным администрируемым продуктом, либо упаковкой, содержащей один или несколько продуктов.<!-- Medications are either a single administrable product or a package that contains one or more products. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1185,9 +1187,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Administrable medication details</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Администрируемые детали лекарства<!-- Administrable medication details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Information that only applies to products (not packages)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сведения, относящиеся только к продуктам (но не упаковкам)<!-- Information that only applies to products (not packages) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1221,7 +1223,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">powder | tablets | carton +</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Describes the form of the item.  Powder; tables; carton</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание формы выпуска изделия. Порошок; таблетки; картонная коробка<!-- Describes the form of the item.  Powder; tables; carton --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1251,14 +1253,14 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Active or inactive ingredient</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Активный или неактивный ингредиент<!-- Active or inactive ingredient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies a particular constituent of interest in the product</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует конкретный компонент продукта, представляющий интерес<!-- Identifies a particular constituent of interest in the product --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The ingredients need not be a complete list; usually only active ingredients are listed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не обязательно приводить полный список ингредиентов; как правило, перечисляются только активные ингредиенты<!-- The ingredients need not be a complete list; usually only active ingredients are listed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Should have an indicator distinguishing active &amp; inactive</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужен индикатор для различения активных и неактивных<!-- Should have an indicator distinguishing active &amp; inactive --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.scopesRole[typeCode=INGR]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1286,9 +1288,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The product contained</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Содержащийся продукт<!-- The product contained --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual ingredient - either a substance (simple ingredient) or another medication</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Непосредственно сам ингредиент - либо ресурс Substance (для простого ингредиента), либо другой ресурс Medication<!-- 
+The actual ingredient - either a substance (simple ingredient) or another medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
