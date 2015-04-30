@@ -238,7 +238,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   public final static String DEV_TS_SERVER = "http://local.healthintersections.com.au:980/open";
   
   public final static String WEB_PUB_NAME = "DSTU2 Ballot Source";
-  public final static String CI_PUB_NAME = "Current Build";
+  public final static String CI_PUB_NAME = "Текущая сборка"; //Current Build
   
   public final static String WEB_PUB_NOTICE =
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
@@ -247,7 +247,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   
   public final static String CI_PUB_NOTICE = 
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
-          "This is the Continuous Integration Build of FHIR (will be incorrect/inconsistent at times). See the <a href=\"http://hl7.org/fhir/directory.html\">Directory of published versions</a>\r\n"+
+          "Это непрерывная интеграционная сборка FHIR (будет неправильной/несообразной время от времени). См. <a href=\"http://hl7.org/fhir/directory.html\">указатель опубликованных версий</a>\r\n"+
           "</p>\r\n";
       
 //  private boolean notime;
