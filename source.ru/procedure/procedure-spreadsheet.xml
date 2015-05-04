@@ -986,9 +986,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">An action that was or is currently being performed on a patient</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Действие, проведенное или проводимое в данный момент над пациентом<!-- An action that was or is currently being performed on a patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">An action that is or was performed on a patient. This can be a physical 'thing' like an operation, or less invasive like counseling or hypnotherapy</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Действие, которое проводится или было проведено над пациентом. Это может быть как физическое действие, например операция, так и менее инвазивное вмешательство, например консультация или гипнотерапия<!-- An action that is or was performed on a patient. This can be a physical 'thing' like an operation, or less invasive like counseling or hypnotherapy --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1021,11 +1021,15 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">External Ids for this procedure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешние идентификаторы данной процедуры<!-- External Ids for this procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This records identifiers associated with this procedure that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это идентификаторы записей, ассоциированных с этой процедурой, которые определены в рамках бизнес-процесса и/или используются для ссылки на них, когда не возможно использование прямой URL-ссылки на сам ресурс (например в CDA-документах или в письменной/печатной документации)<!-- 
+	This records identifiers associated with this procedure that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)
+	--></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to allow connection to a wider workflow</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо обеспечить связь с более широким рабочим процессом<!-- 
+	Need to allow connection to a wider workflow
+	 --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1056,9 +1060,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who procedure was performed on</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Над кем выполнялась процедура<!-- Who procedure was performed on --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person on whom the procedure was performed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, над которым выполнялась процедура<!-- The person on whom the procedure was performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1160,9 +1164,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identification of the procedure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение процедуры<!-- Identification of the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The specific procedure that is performed. Use text if the exact nature of the procedure can't be coded</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Конкретная процедура, которая была выполнена. Используйте текст, если точный характер процедуры не может быть закодирован<!-- The specific procedure that is performed. Use text if the exact nature of the procedure can't be coded --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1193,13 +1197,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Precise location details</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание точного местоположения<!-- Precise location details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подробная и структурированная информация об анатомическом расположении. Можно указывать несколько местоположений - например многократная пункционная биопсия раны<!-- Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Is this approach or target site? RIM mapping inconsistent with ProcedureRequest which lists target site. Recommend calling field targetBodySite or targetSite.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это подход или целевое место? RIM-мэппинг не согласуется с ProcedureRequest, который перечисляет целевое место. Рекомендуется назвать поле targetBodySite или targetSite.<!-- Is this approach or target site? RIM mapping inconsistent with ProcedureRequest which lists target site. Recommend calling field targetBodySite or targetSite. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.approachSiteCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1261,12 +1265,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason procedure performed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Основание для выполнения процедуры<!-- Reason procedure performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Основание для выполнения процедуры. Это может быть Condition, кодируемый концепт или просто текстовое описание<!-- 
+The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">e.g. endoscopy for dilatation and biopsy, combination diagnosis and therapuetic</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">например эндоскопия для растяжения и биопсии, сочетание диагноза и лечения<!-- e.g. endoscopy for dilatation and biopsy, combination diagnosis and therapuetic --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.reasonCode</Data><NamedCell
@@ -1295,9 +1300,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The people who performed the procedure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Лица, выполнившие процедуру<!-- The people who performed the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Limited to 'real' people rather than equipment</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание "реальных" людей, а не оборудования<!-- Limited to 'real' people rather than equipment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1330,9 +1335,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The reference to the practitioner</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на специалиста (practitioner)<!-- The reference to the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The practitioner who was involved in the procedure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Специалист (practitioner), который участвовал в процедуре<!-- The practitioner who was involved in the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1364,9 +1369,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The role the person was in</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Роль человека<!-- The role the person was in --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">E.g. surgeon, anaethetist, endoscopist</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Например хирург, анестезиолог, эндоскопист<!-- E.g. surgeon, anaethetist, endoscopist --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1399,9 +1404,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Date/Period the procedure was performed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата/период выполнения процедуры<!-- Date/Period the procedure was performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date(time)/period over which the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (время)/период, в течение которого была выполнена процедура. Разрешается задавать период для поддержки комплексных процедур, выполняемых не в один день, а также для задания продолжительности выполнения процедуры. <!-- The date(time)/period over which the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1434,9 +1439,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The encounter when procedure performed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Соответствующий encounter, когда была выполнена процедура<!-- The encounter when procedure performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The encounter during which the procedure was performed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Encounter, во время которого была выполнена процедура<!-- The encounter during which the procedure was performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1503,9 +1508,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What was result of procedure?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Каким был результат выполнения процедуры?<!-- What was result of procedure? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">What was the outcome of the procedure - did it resolve reasons why the procedure was performed? </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Каким был результат процедуры - решила ли она те вопросы, которые были основанием для ее выполнения?<!-- 
+What was the outcome of the procedure - did it resolve reasons why the procedure was performed? --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1536,9 +1542,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Any report that results from the procedure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Все отчеты по процедуре<!-- Any report that results from the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This could be a histology result. There could potentially be multiple reports - e.g. if this was a procedure that made multiple biopsies</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это может быть гистологический результат. Это может быть несколько отчетов - например если во время процедуры было сделано несколько биопсий<!-- 
+This could be a histology result. There could potentially be multiple reports - e.g. if this was a procedure that made multiple biopsies --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1569,13 +1576,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Complication following the procedure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Осложнение, последовавшее за процедурой<!-- Complication following the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Any complications that occurred during the procedure, or in the immediate post-operative period. These are generally tracked separately from the notes, which typically will describe the procedure itself rather than any 'post procedure' issues</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Любые осложнения, произошедшие во время выполнения процедуры или в последующий послеоперационный период. Как правило, они отслеживаются отдельно от записей, которые обычно описывают саму процедуру, а нее возникшие после неё проблемы <!-- Any complications that occurred during the procedure, or in the immediate post-operative period. These are generally tracked separately from the notes, which typically will describe the procedure itself rather than any 'post procedure' issues --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need harmonization proposal for new ActRelationshipType code</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо предложение по согласованию нового кода ActRelationshipType<!-- Need harmonization proposal for new ActRelationshipType code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Need specialization of OUT for this.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1604,9 +1611,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Instructions for follow up</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Указания по последующему наблюдению<!-- Instructions for follow up --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the procedure required specific follow up - e.g. removal of sutures. The followup may be represented as a simple note, or potentially could be more complex in which case the CarePlan resource can be used</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если процедура требует определенного последующего наблюдения - например удаления швов. Может быть как простым примечанием, так и более сложным, во втором случае можно использовать ресурс CarePlan<!-- 
+If the procedure required specific follow up - e.g. removal of sutures. The followup may be represented as a simple note, or potentially could be more complex in which case the CarePlan resource can be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1636,9 +1644,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A procedure that is related to this one</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Связанная процедура<!-- A procedure that is related to this one --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Procedures may be related to other items such as procedures or medications. For example treating wound dehiscence following a previous procedure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Процедуры могут быть связаны с другими процедурами или медикаментами. Например лечение расхождения краев раны после предыдущей процедуры<!-- Procedures may be related to other items such as procedures or medications. For example treating wound dehiscence following a previous procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1672,7 +1680,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">caused-by | because-of</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The nature of the relationship</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип взаимосвязи<!-- The nature of the relationship --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1704,7 +1712,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The related item - e.g. a procedure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Связанная процедура или назначение<!-- The related item - e.g. a procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1736,9 +1744,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional information about procedure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация о процедуре<!-- Additional information about procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Any other notes about the procedure - e.g. the operative notes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Любые другие заметки о процедуре - например протокол операции<!-- 
+Any other notes about the procedure - e.g. the operative notes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4873,7 +4882,7 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Procedure.type</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Type of procedure</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Тип процедуры<!-- Type of procedure --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">date</Data></Cell>
@@ -4887,7 +4896,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Procedure.patient</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The identity of a patient to list procedures  for</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Пациент, для которого необходимо вывести список процедур<!-- The identity of a patient to list procedures  for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">performer</Data></Cell>
@@ -7214,7 +7223,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ProcedureRelationshipType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The nature of the relationship with this procedure</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип взаимосвязи с данной процедурой<!-- The nature of the relationship with this procedure --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#procedure-relationship-type</Data></Cell>

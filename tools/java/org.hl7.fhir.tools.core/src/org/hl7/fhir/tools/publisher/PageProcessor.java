@@ -247,7 +247,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   
   public final static String CI_PUB_NOTICE = 
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
-          "Это непрерывная интеграционная сборка FHIR (будет неправильной/несообразной время от времени). См. <a href=\"http://hl7.org/fhir/directory.html\">указатель опубликованных версий</a>\r\n"+
+          "Это непрерывная интеграционная сборка FHIR (может быть некорректной время от времени). См. <a href=\"http://hl7.org/fhir/directory.html\">указатель опубликованных версий</a>\r\n"+
           "</p>\r\n";
       
 //  private boolean notime;
