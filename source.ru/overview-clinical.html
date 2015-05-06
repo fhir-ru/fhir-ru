@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-[%settitle FHIR Overview - Clinicians%]
+[%settitle Введение в FHIR для медицинских работников%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -19,65 +19,73 @@ code { counter-increment: listing; }
 <div class="col-9">
 
 
-<h2>FHIR Overview - Clinicians</h2>
+<h2>Введение в FHIR для медицинских работников</h2>
 
-<p>
-FHIR (Fast Health Interoperability Resources) is designed to enable the exchange of healthcare-related information.
+<p>FHIR (Fast Health Interoperability Resources) предназначен для обмена информацией, связанной со здравоохранением. В неё входят клинические данные, а также управление делами здравоохранения, общественное здравоохранение и научные исследования. Стандарт охватывает как человеческую, так и ветеринарную медицину, и предназначен для повсеместного использования в самых разнообразных контекстах: стационар, долгосрочная медицинская помощь, общественный уход, вспомогательная немедицинская помощь и т. д.
+<!-- FHIR (Fast Health Interoperability Resources) is designed to enable the exchange of healthcare-related information.
 This includes clinical data as well as healtchare-related administration, public health and research.  It covers
 both human and veterinary medicine and is intended to be useable world-wide in a wide variety of contexts - in-patient,
-long-term care, community care, allied health, etc.
+long-term care, community care, allied health, etc. -->
 </p>
 
 <p>
-FHIR is a specification targeted to those who write software and architect interoperable solutions.
+FHIR - это спецификация, ориентированная на тех, кто пишет программное обеспечение и разрабатывает способные к взаимодействию решения. Тех, кто на самом деле должен создавать системы, которые будут использовать FHIR. Спецификация FHIR не пытается определить хорошую или лучшую клиническую практику и не предлагает руководство по пользовательским интерфейсам или рабочим процессам. Консультирование в этих областях может быть полезным, но выходит за рамки FHIR.
+<!-- FHIR is a specification targeted to those who write software and architect interoperable solutions.
 That's who must actually create the systems that will use FHIR.  The FHIR specification does not attempt to
 define good or best clinical practice, nor does it provide guidance on user interfaces or workflows.  Guidance
-in these areas may be useful but is outside FHIR's scope.
+in these areas may be useful but is outside FHIR's scope. -->
 </p>
 <p>
-Because of FHIR's implementation focus, many aspects of this specification deal with the technical underpinings of the
+Из-за ориентации FHIR на реализацию многие аспекты этой спецификации имеют дело с техническими основами обмена клинической информацией между электронными системами. Данный раздел содержит введение в то, что предлагает FHIR, и пытается выделить те части спецификации, которые могут вызвать наибольший интерес у сообщества клиницистов, пропуская некоторые технические детали обеспечения взаимодействия. Тем не менее, если технические детали вас не пугают, не стесняйтесь просматривать любые разделы, какие пожелаете.
+<!-- Because of FHIR's implementation focus, many aspects of this specification deal with the technical underpinnings of the
 exchange of clinical information between electronic systems.  This section provides an introduction to 
 what FHIR provides and tries to highlight the portions of the specification
 that are likely to be of most interest to the clinical community and skipping over some of the technical
 drudgery of interoperability.  However, if technical drudgery is your thing, feel free to dig right in
-wherever you wish.
+wherever you wish. -->
 </p>
 
-<h3>Resources</h3>
+<h3>Ресурсы<!-- Resources --></h3>
 <p>
-From a clinical perspective, the important part of the FHIR specification to understand is the resources.
+С клинической точки зрения важной для понимания частью спецификации FHIR являются ресурсы. Думайте о ресурсах как о «формах», отражающих различные виды клинической и административной информации, которую можно ввести и совместно использовать.
+Спецификация FHIR определяет общий "шаблон формы" для каждого типа клинической информации: один для аллергии, один для предписаний, один для направлений и т. д.
+<!-- From a clinical perspective, the important part of the FHIR specification to understand is the resources.
 Think of resources as "forms" reflecting different types of clinical and administrative information that can
 be captured and shared.
 The FHIR specification defines a generic "form template" for each type of clinical information - so one for
-allergies, one for prescriptions, one for referrals, etc.
+allergies, one for prescriptions, one for referrals, etc. -->
 </p>
 <p>
-FHIR data consists of repositories of completed forms - resource instances.  The resource instances will describe patient information
+Данные FHIR состоят из репозиториев заполненных форм - экземпляров ресурса. Экземпляры ресурсов будут описывать информацию о пациенте (демографические данные, состояние здоровья, процедуры и т. д.), а также административную информацию (специалисты, организации, места). Некоторые ресурсы являются компонентами инфраструктуры, используемыми для поддержки технического обмена информацией - описывают то, что системы могут делать, определяют дозволенные наборы кодов и т. д. Репозиториями FHIR могут выступать системы электронных медицинских записей (EHR), аптечные системы, медицинские информационные системы (МИСы) и т. д. Некоторые системы, такие как средства поддержки клинических решений, могут использовать интерфейсы FHIR, даже если они на самом деле не сохраняют никакой информации.
+<!-- FHIR data consists of repositories of completed forms - resource instances.  The resource instances will describe patient information
 (demographics, health conditions, procedures, etc.) as well as administrative information
 (practitioners, organizations, locations).  Some resources are infrastructure components used to 
 support the technical exchange of information - describing what systems can do, defining allowed sets
 of codes, etc.  FHIR repositories might be elecronic health record (EHR) systems, pharmacy systems,
 hospital information systems (HISs), etc.  Some systems, such as clinical decision support engines, may
-expose FHIR interfaces even though they don't actually store any information.
+expose FHIR interfaces even though they don't actually store any information. -->
 </p>
 
 <h3>Building useful Clinical Systems out of Molecules</h3>
 <p>
-Each resource contains a small amount of highly-focused data. A single resource doesn't say much, but a lot of very small resources 
+Каждый ресурс содержит небольшое количество узконаправленных данных. Один ресурс много не скажет, но много очень маленьких ресурсов вместе создают полезную историю болезни. Информационные системы в соответствии с действиями, которые выполняет пользователь (ищет пациентов, делает записи в их истории и т. д.) выполняют операции с соответствующими ресурсами.
+<!-- Each resource contains a small amount of highly-focused data. A single resource doesn't say much, but a lot of very small resources 
 together create a useful clinical record. Information systems map the actions that a user takes (look up patient records, make a
-note in their history, etc) to operations on the relevant resources.
+note in their history, etc) to operations on the relevant resources. -->
 </p>
 <p>
-The resources link to each other, and the links create a network (or web) of information that represent a health record (or at least, 
+Ресурсы ссылаются друг на друга, и эти ссылки создают сеть (или паутину) информации, которая представляет собой медицинскую карту (или, по крайней мере, полезную часть её). Например экземпляр ресурса prescription может ссылаться на специалиста, который выписал рецепт, на пациента, которому предназначается рецепт, и на предписываемое лекарство. Каждый из них хранится в своей папочке в своем шкафу. Однако интерфейс FHIR позволяет всем этим ссылкам разрешаться и собирать соответствующие бумаги, чтобы создать полное представление для конечного пользователя.
+<!-- The resources link to each other, and the links create a network (or web) of information that represent a health record (or at least, 
 a useful part of it).  For example, a prescription resource instance
 might reference the practitioner who created the prescription, the patient the prescription is for and the medication being
 prescribed.  Each of these are maintained in their own folders in their own cabinets.  However, the FHIR interface allows
-all of these links to be resolved and the relevant pieces of paper to be assembled to prevent a complete picture to the end user.
+all of these links to be resolved and the relevant pieces of paper to be assembled to prevent a complete picture to the end user. -->
 </p>
 
-<h3>Extensibility and Profiling</h3>
+<h3>Расширяемость и профилирование<!-- Extensibility and Profiling --></h3>
 <p>
-The forms in FHIR are generic.  They have to be useable in different countries, by different types of clinicians
+Формы в FHIR являются общими. Они должны быть полезны в различных странах, для разных типов врачей в разных контекстах (помощь человеку, ветеринарная помощь, общественное здравоохранение, научные исследования и т. д.). FHIR признает, что единый подход ко всем не применим в области здравоохранения, поэтому предоставляет возможность настраивать формы таким образом, чтобы удовлетворить потребностям различных пространств реализации, добавляя дополнительные "расширения", а также за счет применения ограничений. Например форма "prescription" может иметь элементы расширения, добавленные для поддержки отслеживания ограниченных лекарств, при этом также ограничения коды, которые могут быть использованы для соотнесения видов лекарств с определенным государственным стандартом. Однако формы разработаны таким образом, что эти изменения могут быть сделаны без изменения того, как системы передают формы между собой. Таким образом, любая система может потреблять заполненные формы, даже если к ним добавлены "лишние" элементы - и даже если эти конкретные дополнительные элементы не используются принимающей системой.
+<!-- The forms in FHIR are generic.  They have to be useable in different countries, by different types of clinicians
 in different contexts (human care, veterinary care, public health, research, etc).  FHIR recognizes that
 one size fits all is not appropriate in a healthcare space, so it provides the ability to adjust the
 forms to be able to handle the needs of different implementation spaces - adding additional "extensions"
@@ -86,77 +94,91 @@ added to support tracking of restricted medications while also constraining what
 to communicate types of drugs to a particular national standard.  However, the forms are designed in such
 a way that these changes can be made without changing how systems pass forms around.  Thus any system can
 consume completed forms even if they have "extra" elements added - and even if those particular extra elements
-aren't used by the receiving system.
+aren't used by the receiving system. -->
 </p>
 <p>
-To keep the base forms that everyone uses from being overly complex, FHIR has a rule that, in most cases, a
+Чтобы уберечь базовые формы, которые все используют, от чрезмерной сложности, у FHIR есть правило, что в большинстве случаев ресурс будет включать только элементы данных, если ожидается, что большинство реализаций будут использовать этот конкретный элемент данных. Это не означает, что данные всегда должны существовать. Например большинство систем в мире способны отслеживать "дату смерти" пациента, хотя этот элемент будет пустым во многих историях болезни. С другой стороны, не так много систем отслеживают цвет волос, поэтому цвет волос будет исключен из базовой формы, и те системы, которым он необходим (возможно, в условиях какого-то эзотерического клинического исследования) смогут использовать расширения для его ввода, если потребуется.
+<!-- To keep the base forms that everyone uses from being overly complex, FHIR has a rule that, in most cases, a
 resource will only include data elements if there's an expectation that most implementations will use that particular
 data element.  That doesn't mean the data must always exist.  For example, most systems in the world are capable
 of tracking "deceased date" for patient, even though that element will be blank for many patient records.  On
 the other hand, not so many systems track hair color, so hair color would be omitted from the base form and those
 systems that need it (perhaps in some esoteric clinical research setting?) would be able to use extensions to
-capture it if needed.
+capture it if needed. -->
 </p>
 <p>
-To keep the number of resources reasonable, some of them are fairly broad.  The <a href="observation.html">Observation</a>
+Чтобы поддерживать количество ресурсов в разумных пределах, некоторые из них описаны в довольно общем виде. Ресурс  <a href="observation.html">Observation (Наблюдение)</a> используется для записи основных показателей состояния организма, лабораторных результатов, психологических оценок и ряда других вещей. Чтобы установить правила для более узких областей (например "Что я должен отправить, если я хочу записать кровяное давление?"), FHIR позволяет создавать профили. Предстоит много клинической работы по формированию консенсуса по тому, как различные типы подробной клинической информации необходимо вводить и совместно использовать в конкретных условиях. Инструментарий для поддержки создания профилей непосредственно клиницистами входит в планы FHIR, но все еще находится в очень ранней стадии.
+<!-- To keep the number of resources reasonable, some of them are fairly broad.  The <a href="observation.html">Observation</a>
 resource is used for vital signs, lab results, psychological assessments and a variety of other things.  To set rules
 for more narrow areas (e.g. "What should I send if I want to share a blood pressure?"), FHIR allows the creation of
 profiles.  There will be a great deal of clinical work involved in forming consensus around how different types of
 detailed clinical information should be captured and shared in particular settings.  Tooling to support the creation
-of profiles directly by clinicians is part of the plan for FHIR, but is still in the very early stages.
+of profiles directly by clinicians is part of the plan for FHIR, but is still in the very early stages. -->
 </p>
 
-<h3>Narrative</h3>
+<h3>Описательная часть - нарратив<!-- Narrative --></h3>
 <p>
-FHIR is intended as a system for sharing discrete data between healthcare systems in a manner that supports
+FHIR создавался как система для обмена дискретными данными между системами здравоохранения таким образом, чтобы поддерживать компьютерную совместимость - поддержка принятия решений, вызывающие правила, анализ тенденций и т. д. Но не все системы одинаковые и не все системы распознают все дискретные данные. Кроме того, значительную ценность представляет обмен данными в условиях, когда очень малая часть этих данных вводится дискретным образом. По этой причине ресурсы FHIR поддерживают обмен не только дискретной информацией для вычислений, но и человекочитаемый вид, чтобы люди на каждом конце обмена информацией по здравоохранению все еще могли получить полную картину того, что происходит.
+<!-- FHIR is intended as a system for sharing discrete data between healthcare systems in a manner that supports
 computer interoperability - decision support, rules triggering, trend analysis, etc.  However, not every system is
 the same and not all systems will recognize all discrete data.  As well, there is still considerable value in data exchange
 in circumstances where very little of that data is captured in a discrete manner.  For this reason, FHIR resources
 support sharing not only discrete information for computation but also a human-readable view so that the humans
-on each end of a healthcare information exchange can still get a full picture of what's going on.
+on each end of a healthcare information exchange can still get a full picture of what's going on. -->
 </p>
 <p>
-Narrative is expected to exist for most resource instances, though it can be omitted in a few limited circumstances.
+Предполагается, что описательная часть будет присутствовать в большинстве экземпляров ресурсов, хотя она может быть опущена в некоторых ограниченных обстоятельствах.
+В некоторых случаях описательная часть будет генерироваться из дискретной информации. Например описательная часть ресурса  "patient" может выглядеть следующим образом:
+<!-- Narrative is expected to exist for most resource instances, though it can be omitted in a few limited circumstances.
 In some cases the narrative will be generated from discrete information.  For example the narrative for a patient
-might look like this:
+might look like this: -->
 </p>
 <table>
   <tbody>
     <tr>
       <td>
-<b><u>Peter James Chalmers (OFFICIAL), Jim</u></b><br/>
-<b>identifier</b>: MRN = 12345 (USUAL)<br/>
+<b><u>Питер Джейс Чалмерс (ОФИЦИАЛЬНОЕ), Джим<!-- Peter James Chalmers (OFFICIAL), Jim --></u></b><br/>
+<b>идентификатор</b>: MRN = 12345 (ОБЫЧНЫЙ)<br/>
+<b>контакт</b>: тел: (03) 5555 6473(РАБОЧИЙ)<br/>
+<b>пол</b>: МУЖСКОЙ<br/>
+<b>дата рождения</b>: 25.12.1974<br/>
+<b>умер</b>: нет<br/>
+<b>адрес</b>: 534 Эдгин Санкт-Плезантвилл Вик 3999 (ДОМАШНИЙ)
+<!-- <b>identifier</b>: MRN = 12345 (USUAL)<br/>
 <b>telecom</b>: ph: (03) 5555 6473(WORK)<br/>
 <b>gender</b>: MALE<br/>
 <b>birthDate</b>: Dec 25, 1974<br/>
 <b>deceased</b>: false<br/>
-<b>address</b>: 534 Erewhon St PleasantVille Vic 3999 (HOME)
+<b>address</b>: 534 Erewhon St PleasantVille Vic 3999 (HOME) -->
       </td>
     </tr>
   </tbody>
 </table>
 
 <p>
-In other cases, the narrative might be generated directly by a practitioner.  Examples might include
+В других случаях описательная часть может быть создана непосредственно специалистом. Примеры могут включать в себя направления к врачу, патологические отчеты и т. д. Некоторые части нарратива позже будут представлены в виде дискретных данных.
+<!-- In other cases, the narrative might be generated directly by a practitioner.  Examples might include
 referral letters, pathology reports, etc.  Certain pieces of the narrative would later be exposed as
-discrete data.
+discrete data. -->
 </p>
 
-<h3>Interfaces</h3>
+<h3>Интерфейсы<!-- Interfaces --></h3>
 <p>
-In addition to defining the "forms" for data exchange (resources), FHIR also defines a set of interfaces by 
+В дополнение к определению «форм» для обмена данными (ресурсов), FHIR также определяет набор интерфейсов, с помощью которых системы фактически совместно используют эту информацию. Есть четыре основных механизма - или "парадигмы" - обмена, поддерживаемые FHIR: REST, документы, сообщения и сервисы.
+<!-- In addition to defining the "forms" for data exchange (resources), FHIR also defines a set of interfaces by 
 which systems actually share that information .  There are four primary mechanisms
-or "paradigms" of exchange supported by FHIR: REST, Documents, Messaging and Services.
+or "paradigms" of exchange supported by FHIR: REST, Documents, Messaging and Services. -->
 </p>
 
 <h4>REST</h4>
 <p>
-REST is the simplest exchange mechanism.  Continuing the "form" metaphor, a RESTful server can be thought
+REST - это простейший механизм обмена. Продолжая метафору "формы", RESTful-сервер можно рассматривать как комнату, заполненную шкафами для хранения документов. В комнате есть шкаф для каждого "типа" формы, которую он поддерживает. В шкафу находятся папки, каждая папка имеет уникальный номер и соответствует одной конкретной сущности реального мира - одному пациенту, одному визиту, одному лекарственному средству и т. д. Каждая папка (экземпляр ресурса) содержит несколько листов бумаги, где каждый лист бумаги представляет собой "версию" этой сущности реального мира. Каждый раз, когда кто-то обновляет запись, новый лист бумаги добавляется сверху в папку-регистратор. Чтобы увидеть историю ресурса, вы просто листаете страницы в папке.
+<!-- REST is the simplest exchange mechanism.  Continuing the "form" metaphor, a RESTful server can be thought
 of as a room full of filing cabinets.  Within the room is a cabinet for each "type" of form it supports.  The cabinet contains
 folders where each folder has a unique number and represents one particular real-world thing - one patient, one encounter
 one medication, etc.  Each folder (resource instance) contains multiple pieces of paper, where each piece of paper represents a "version"
 of that real world thing.  Every time someone updates a record, a new piece of paper is added to the top that
-file folder.  To see the history of a resource, you just flip through the pieces of paper in the folder.
+file folder.  To see the history of a resource, you just flip through the pieces of paper in the folder. -->
 </p>
 <p>
 Now picture a clerk at the front door of that room.  You can pass the clerk a requisition to have them do something with
@@ -177,7 +199,7 @@ EHR and other systems may present a more sophisticated interface to their end us
 making the same sort of requisitions to the same file clerk.
 </p>
 
-<h4>Documents</h4>
+<h4>Документы<!-- Documents --></h4>
 <p>
 Documents are a familiar mechanism for sharing information in the healthcare space.  They are useful whenever
 there's a desire to guide how a consumer of information will navigate it and thre's a need to have a "frozen" view
@@ -192,7 +214,7 @@ together.  That stapled collection can then be stored or passed around, conveyin
 once.
 </p>
 
-<h4>Messaging</h4>
+<h4>Обмен сообщениями<!-- Messaging --></h4>
 <p>
 Much healthcare information exchange happens using a messaging paradigm.  In messaging, a collection of information is sent
 from one system to another with an explicit request to "do something".  A message might request that a lab order be
@@ -203,7 +225,7 @@ resources are joined together with a paper-clip.  There's no expectation that th
 data exactly as received.
 </p>
 
-<h4>Services</h4>
+<h4>Сервисы<!-- Services --></h4>
 <p>
 Services can be thought of as a light-weight way of doing messaging.  Rather than a full cover page, a small sticky
 note is attached to the front of a resource.  And sometimes rather than sending a full piece of paper, the relevant
