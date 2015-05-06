@@ -14,44 +14,65 @@
 <div class="col-9">
 
 <h2>FHIR Life Cycle Page</h2>
-<h3>Introduction</h3>
+<h3>Введение<!-- Introduction --></h3>
 
-<p>Many FHIR resources have a status element that represents the lifecycle state of the resource or the clinical process represented by the resource. Work groups can specify status values appropriate to the individual resource. Although consistency between resources is not the primary objective, it is helpful to users and developers to have well-crafted value sets that cover all possible states (since the value sets are typically required and non-extensible).</p>
+<p>
+У многих ресурсов FHIR есть элемент "status", который обозначает состояние жизненного цикла ресурса или клинического процесса, представляемого ресурсом. Рабочие группы могут задавать значения статуса, соответствующие отдельному ресурсу. Хотя согласованность между ресурсами и не является основной целью, пользователям и разработчикам будет полезно иметь хорошо продуманные наборы значений, которые охватывают все возможные состояния (так как наборы значений, как правило, являются обязательными и не расширяются).
+<!-- Many FHIR resources have a status element that represents the lifecycle state of the resource or the clinical process represented by the resource. Work groups can specify status values appropriate to the individual resource. Although consistency between resources is not the primary objective, it is helpful to users and developers to have well-crafted value sets that cover all possible states (since the value sets are typically required and non-extensible). --></p>
 
-<p>To understand existing status elements, and to help create extensions and resources involving resource states, we note that status value sets follow one of the following patterns:</p>
+<p>Чтобы понять существующие элементы "status" и помочь создавать расширения и ресурсы, включающие в себя состояния ресурсов, отметим, что наборы значений для состояния соответствуют одному из следующих шаблонов:
+<!-- To understand existing status elements, and to help create extensions and resources involving resource states, we note that status value sets follow one of the following patterns: --></p>
 <ul>
-	<li>Clinical workflow process pattern</li>
-	<li>Request/Order  pattern</li>
-	<li>Entity status pattern</li>
-	<li>Clinical status pattern</li>
+	<li>Шаблон состояний клинического рабочего процесса<!-- Clinical workflow process pattern --></li>
+	<li>Шаблон состояний запроса/заявки<!-- Request/Order  pattern --></li>
+	<li>Шаблон состояний сущности</li>
+	<li>Шаблон клинических состояний<!-- Clinical status pattern --></li>
 </ul>
 
 <h3>Clinical Workflow Process Pattern</h3>
-<p>Describes the lifecycle states of complex activities common in healthcare. Typically, these states follow a chronological pattern that leads from initiation to the conclusion of the action. A characteristic set of states for the clinical workflow process pattern include:</p>
+<p>Описывает состояния жизненного цикла сложных мероприятий, распространенных в здравоохранении. Как правило, эти состояния следуют хронологическому шаблону, который ведет от начала до завершения действия. Характерный набор состояний для шаблона клинического рабочего процесса включает в себя:
+<!-- Describes the lifecycle states of complex activities common in healthcare. Typically, these states follow a chronological pattern that leads from initiation to the conclusion of the action. A characteristic set of states for the clinical workflow process pattern include: --></p>
 <ul>
-	<li>planned – resources for the activity are being allocated but the activity has not begun</li>
-	<li>cancelled – the planned activity will not take place</li>
-	<li>in-progress – the activity has begun</li>
-	<li>on-hold (suspended) – the activity has been temporarily interrupted</li>
-	<li>stopped (aborted, failed) – the activity has not been completed but no future action is planned</li>
-	<li>completed (finished) – the activity has been completed</li>
+	<li>запланирован - ресурсы для этой деятельности были размещены, но сама деятельность ещё не началась<!-- planned – resources for the activity are being allocated but the activity has not begun --></li>
+	<li>отменен - планируемая деятельность не состоится<!-- cancelled – the planned activity will not take place --></li>
+	<li>действующий - деятельность началась<!-- in-progress – the activity has begun --></li>
+	<li>отложен (приостановлен) - деятельность была временно приостановлена<!-- on-hold (suspended) – the activity has been temporarily interrupted --></li>
+	<li>остановлен (прерван, сбой) - деятельность не была завершена, но на будущее никакое действие не запланировано<!-- stopped (aborted, failed) – the activity has not been completed but no future action is planned --></li>
+	<li>завершен (закончен) - деятельность была завершена<!-- completed (finished) – the activity has been completed --></li>
 </ul>
-<p>Examples of the clinical workflow pattern:</p>
+<p>Примеры шаблона состояний клинического рабочего процесса:<!-- Examples of the clinical workflow pattern: --></p>
 <ul>
-<li>Communication.status: in-progress | completed | suspended | rejected | failed</li>
+<li>Communication.status: действующий | завершен | приостановлен | отклонен | сбой</li>
+<li>Encounter.status:  запланирован | прибыл | действующий | в отпуске | закончен | отменен</li>
+<li>Goal.status: предложен | запланирован | действующий | достигнут | поддерживающий | отменен | принят | отклонен</li>
+<li>MedicationAdministration.status: действующий | отложен | завершен | введен по ошибке | остановлен</li>
+<li>MedicationDispense.status: действующий | отложен | завершен | введен по ошибке | остановлен</li>
+<li>Procedure.status: действующий | прерван | завершен | введен по ошибке</li>
+<!-- <li>Communication.status: in-progress | completed | suspended | rejected | failed</li>
 <li>Encounter.status:  planned | arrived | in-progress | onleave | finished | cancelled</li>
 <li>Goal.status: proposed | planned | in-progress | achieved | sustaining | cancelled | accepted | rejected</li>
 <li>MedicationAdministration.status: in-progress | on-hold | completed | entered-in-error | stopped</li>
 <li>MedicationDispense.status: in-progress | on-hold | completed | entered-in-error | stopped</li>
-<li>Procedure.status: in-progress | aborted | completed | entered-in-error</li>
+<li>Procedure.status: in-progress | aborted | completed | entered-in-error</li> -->
 </ul>
 
-<h3>Request/Order Pattern</h3>
+<h3>Шаблон состояний запроса/заявки<!-- Request/Order Pattern --></h3>
 
-<p>Some resources in FHIR that represent orders or requests. The request lifecycle can be generalized in terms of four stages: creating the request, sending the request, receiving acceptance or refusal of the request, and fulfillment of the request. A characteristic set of states for the clinical workflow process pattern include:</p>
+<p>Некоторые ресурсы в FHIR, которые представляют заказы или запросы. Жизненный цикл запроса можно обобщить на основе четырех этапов: создание запроса, отправка запроса, получение отказа или подтверждения о приеме запроса, и исполнение запроса. Характерный набор состояний для шаблона запроса/заявки включает в себя:
+<!-- Some resources in FHIR that represent orders or requests. The request lifecycle can be generalized in terms of four stages: creating the request, sending the request, receiving acceptance or refusal of the request, and fulfillment of the request. A characteristic set of states for the clinical workflow process pattern include: --></p>
 
 <ul>
-<li>proposed: An actor (e.g. a clinical decision support system) has proposed an action to be requested</li>
+<li>предложен: Исполнитель (например система поддержки клинических решений) предложил действие для запроса</li>
+<li>черновик: Запрос в предварительной форме, до того как он был затребован</li>
+<li>подан запрос: Запрос был сделан</li>
+<li>отклонен: Получатель отклонил запрос</li>
+<li>принят: Получатель принял запрос</li>
+<li>исполняется: Началась работа по выполнению запроса</li>
+<li>отложен (приостановлен): Работа по выполнению запроса была прервана</li>
+<li>остановлен (прерван): Деятельность не была завершена, но на будущее никакое действие не запланировано</li>
+<li>завершен: Работа по запрошенной задаче была завершена, и никаких дальнейших действий не требуется</li>
+<li>отменен: Запрос был снят</li>
+<!-- <li>proposed: An actor (e.g. a clinical decision support system) has proposed an action to be requested</li>
 <li>draft: The request is in preliminary form, prior to being requested</li>
 <li>requested: The request has been been made</li>
 <li>rejected: The request receiver has declined the request</li>
@@ -60,16 +81,22 @@
 <li>on-hold (suspended): Work on the request has been interrupted</li>
 <li>stopped (aborted):  The activity has not been completed but no future action is planned</li>
 <li>completed: Work on the requested task has been completed, and no further action is required</li>
-<li>cancelled: The request has been withdrawn</li>
+<li>cancelled: The request has been withdrawn</li> -->
 </ul>
-<p>Examples of the request/order pattern:</p>
+<p>Примеры шаблона состояний запроса/заявки<!-- Examples of the request/order pattern: --></p>
 <ul>
-<li>CommunicationRequest.status:  proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | failed</li>
+<li>CommunicationRequest.status:  предложен | запланирован | подан запрос | получен | принят | исполняется | завершен | приостановлен | отклонен | сбой</li>
+<li>DeviceUseRequest: предложен | запланирован | подан запрос | получен | принят | исполняется | завершен | приостановлен | отклонен | прерван</li>
+<li>DiagnosticOrder.status: предложен | черновик | запланирован | подан запрос | получен | принят | исполняется | на проверке | завершен | отменен | приостановлен | отклонен | сбой</li>
+<li>MedicationPrescription.status: активный | отложен | завершен | введен по ошибке | остановлен | заменен | черновик</li>
+<li>ProcedureRequest.status: предложен | черновик | подан запрос | получен | принят | исполняется | завершен | приостановлен | отклонен | прерван</li>
+<li>ReferralRequest.status: черновик | отправлен | активный | отменен | отклонен | завершен</li>
+<!-- <li>CommunicationRequest.status:  proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | failed</li>
 <li>DeviceUseRequest: proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | aborted</li>
 <li>DiagnosticOrder.status: proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed</li>
 <li>MedicationPrescription.status: active | on-hold | completed | entered-in-error | stopped | superceded | draft</li>
 <li>ProcedureRequest.status: proposed | draft | requested | received | accepted | in-progress | completed | suspended | rejected | aborted</li>
-<li>ReferralRequest.status: draft | sent | active | cancelled | rejected | completed</li>
+<li>ReferralRequest.status: draft | sent | active | cancelled | rejected | completed</li> -->
 </ul>
 
 <h3>Entity Availability Pattern</h3>
@@ -114,9 +141,11 @@
 <h3>Entered In Error Summary</h3>
 
 <p>
-The entered-in-error state indicates the resource was created accidentally, and should be ignored. This state can apply to resources created by manual entry. It is usually not associated with the Clinical Workflow Process pattern, but can be associated with the Request/Order and the Entity Availability patterns.</p>
+Статус "введен по ошибке" говорит о том, что ресурс был создан случайно, и его следует игнорировать. Этот статус может применяться к ресурсам, созданным путем ручного ввода. Его, как правило, связывают не с шаблоном клинического рабочего процесса, а с шаблонами запроса/заказа и доступности сущности.
+<!-- The entered-in-error state indicates the resource was created accidentally, and should be ignored. This state can apply to resources created by manual entry. It is usually not associated with the Clinical Workflow Process pattern, but can be associated with the Request/Order and the Entity Availability patterns. --></p>
 
-<p>This table summarises what is expected to happen for each resource in the case that the data it contains is subsequently found to be an erroneous entry.
+<p>Эта таблица суммирует, что, как ожидается, произойдет для каждого ресурса в том случае, если впоследствии обнаружится, что он содержит ошибочные данные.
+<!-- This table summarises what is expected to happen for each resource in the case that the data it contains is subsequently found to be an erroneous entry. -->
 </p>
 
 <!-- 
