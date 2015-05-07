@@ -6,7 +6,7 @@ These elements SHALL always appear in this order. These basic elements shared by
 in order to support consistent definitions for schema and UML derived code. 
 -->
       
-[%settitle RDF Representation%]
+[%settitle RDF-представление%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -19,68 +19,86 @@ in order to support consistent definitions for schema and UML derived code.
 <%fmtheader rdf%>
 
 <a name="root"> </a>
-<h2>RDF Representation </h2>
+<h2>RDF-представление ресурсов</h2>
 
 <div style="background-color: #F0B0B0; border:1px solid black; padding: 5px;">
 <p>
-This page and the RDF forms are particularly prone to change. The page is not 
+Эта страница и формы RDF особенно подвержены изменениям. Страница не предлагается на текущее голосование, поэтому самое большее, чем она может быть, это черновой страницей DSTU 2.
+Комментарии к этой странице приветствуются.
+<!-- This page and the RDF forms are particularly prone to change. The page is not 
 part of the current ballot, and so at the most it can be a draft page in DSTU 2.
-Comments on this and the page content are welcome.
+Comments on this and the page content are welcome. -->
 </p>
 </div>
 
 <p>
-FHIR resources can be represented as an <a href="http://www.w3.org/RDF/">RDF graph</a> serialised in one of a number of RDF syntaxes.
+Ресурсы FHIR могут быть представлены в виде <a href="http://www.w3.org/RDF/">RDF-графа</a>, сериализованного в один из нескольких RDF-синтаксисов.
+При представлении в RDF ресурсы описываются как экземпляры классов, которые также определены в RDF и опубликованы в данной спецификации. Эта страница описывает:
+<!-- FHIR resources can be represented as an <a href="http://www.w3.org/RDF/">RDF graph</a> serialised in one of a number of RDF syntaxes.
 When represented in RDF, the resources are described as instances of classes that are also defined in RDF, and published with this 
-specification. This page describes:
+specification. This page describes: -->
 </p>
 <ul>
- <li><a href="#class">RDF description of the FHIR Resource Class definitions</a></li>
+ <li><a href="#class">RDF-описание определений классов FHIR-ресурсов</a></li>
+ <li><a href="#profile">RDF-представление профилей</a></li>
+ <li><a href="#instance">RDF-описание экземпляров FHIR-ресурсов</a></li>
+ <li><a href="#api">Как обмениваться RDF с помощью RESTful API</a></li>
+<!--  <li><a href="#class">RDF description of the FHIR Resource Class definitions</a></li>
  <li><a href="#profile">RDF representation of Profiles</a></li>
  <li><a href="#instance">RDF description of FHIR resource instances</a></li>
- <li><a href="#api">How to exchange RDF using the RESTful API</a></li>
+ <li><a href="#api">How to exchange RDF using the RESTful API</a></li> -->
 </ul>
 <p>
-Note: this page uses turtle for clarify and readability, but there is no requirement or 
+Примечание: на этой странице использует Turtle (англ. Terse RDF Triple Language, Краткий язык RDF троек — формат сериализации для RDF (Модель описания ресурсов) графов) для разъяснений и удобочитаемости, но не требуется и не предполагается, что Turtle должен использоваться в предпочтении к другим синтаксисам. Обратите внимание, что работающие экземпляры на Turtle не будут такими же понятными и разложенными по полочкам.
+<!-- Note: this page uses turtle for clarify and readability, but there is no requirement or 
 expectation that turtle should be used in preference to other syntaxes. Note that production
-turtle instances would not be laid out so clearly either.
+turtle instances would not be laid out so clearly either. -->
 </p>
 
 <p>
-Implementer Note: The FHIR RDF format is defined to assist the process of bridging between operational
+Примечание: в FHIR формат RDF определяется для содействия процессу создания мостика между оперативным обменом данными и формальными системами обработки знаний. В то время как форма RDF предлагает полностью функциональное представление ресурсов FHIR, он имеет очень разные эксплуатационные характеристики по сравнению с <a href="json.html">JSON</a> и <a href="xml.html">XML</a>, и будет внедряться по другим причинам. Системы, ориентированные на оперативный обмен данными, RDF, как правило, использовать не будут.
+<!-- Implementer Note: The FHIR RDF format is defined to assist the process of bridging between operational
 data exchange and formal knowledge processing systems. While the RDF form offers a fully
 functional representation of FHIR resources, it has very different operational characteristics
 from the <a href="json.html">JSON</a> and <a href="xml.html">XML</a>, and would be implemented
 for different reasons. Systems focused on operational exchange of data would not generally
-use RDF.
+use RDF. -->
 </p>
 
 <a name="class"> </a>
-<h3>RDF Representation of FHIR</h3>
+<h3>RDF-представление FHIR<!-- RDF Representation of FHIR --></h3>
 <p>
-The FHIR RDF definitions are defined for the following purposes:
+В FHIR RDF-определения задаются в следующих целях:
+<!-- The FHIR RDF definitions are defined for the following purposes: -->
 </p>
 <ul>
- <li>Providing the class definitions to support RDF based representation of resource instances</li>
+ <li>Обеспечение определений классов для поддержки представления экземпляров ресурса на основе RDF</li>
+ <li>Поддержка основанного на знаниях анализа самой спецификации FHIR</li>
+ <li>Предоставление знания об использовании во время выполнения для преобразования между FHIR и другими моделями содержимого</li>
+ <li>Поддержка обоснования границ информационной/терминологической модели</li>
+<!--  <li>Providing the class definitions to support RDF based representation of resource instances</li>
  <li>Supporting knowledge based analysis of the FHIR specification itself</li>
  <li>Providing knowledge of use at run-time for converting between FHIR and other content models</li>
- <li>Supporting reasoning across the information/terminology model boundary</li>
+ <li>Supporting reasoning across the information/terminology model boundary</li> -->
 </ul>
 <p>
-The RDF definitions are available in <a href="fhir.ttl">turtle</a> and <a href="fhir.rdf.xml">RDF/XML</a>. You can also
-download <a href="fhir.rdf.zip">all the RDF definitions</a>.
+RDF-определения доступны на страницах <a href="fhir.ttl">Turtle</a> и <a href="fhir.rdf.xml">RDF/XML</a>. Вы также можете скачать все определения RDF <a href="fhir.rdf.zip">здесь</a>.
+<!-- The RDF definitions are available in <a href="fhir.ttl">turtle</a> and <a href="fhir.rdf.xml">RDF/XML</a>. You can also
+download <a href="fhir.rdf.zip">all the RDF definitions</a>. -->
 </p>
 <h4>RDF Class Definitions</h4>
 <p>
-The backbone of the RDF definitions are a formal definition of the FHIR resources as RDF classes. 
+В основе RDF-определений лежит формальное определение ресурсов FHIR как RDF-классов. Каждый тип данных, ресурс или элемент внутри ресурса определяется как rdf:Class с набором свойств rdf:Property. Каждое свойство имеет rdfs:range, задающий домен значения для этого свойства. В большинстве случаев такое преобразование базовых определений ресурсов осуществляется прямолинейно.
+<!-- The backbone of the RDF definitions are a formal definition of the FHIR resources as RDF classes. 
 Each data type, resource, or element within a resource is defined as rdf:Class with a series of 
 rdf:Property items. Each property has a rdfs:range the specifies the value domain for the property. 
-In most cases, the conversion from the base resource definitions is straight-forward. 
+In most cases, the conversion from the base resource definitions is straight-forward.  -->
 </p>
 <p>
-Constraints are represented intwo ways - as OWL statements, and as SHACL predicates. Implementers
+Ограничения представлены двумя способами - как OWL-утверждения, и как SHACL-предикаты. Реализаторы, желающие применять ограничения, могут использовать инструменты из любого языка или обработать знания, представленные в этих ограничениях любым другим подходящим способом по своему усмотрению.
+<!-- Constraints are represented in two ways - as OWL statements, and as SHACL predicates. Implementers
 wishing to enforce constraints can use tools from either language, or process the knowledge represented
-in these constraints in any other way they see fit.
+in these constraints in any other way they see fit. -->
 </p>
 <h4>Enumerated Codes</h4>
 <p>
