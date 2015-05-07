@@ -3,7 +3,7 @@
 <div>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p> 
-Composition также является базовой структурой, на которой строятся <a href="documents.html">FHIR Documents</a> - неизменяемые комплекты с заверенной описательной частью. Одна логическая композиция может быть ассоциирована с серией производных документов, каждый из которых является замороженной копией этой композиции.
+Ресурс Composition является базовой структурой, из которой состоят <a href="documents.html">FHIR-документы</a> - неизменяемые связки ресурсов с заверенной описательной частью. Одна логическая композиция может быть ассоциирована с серией производных документов, каждый из которых является замороженной копией этой композиции.
 <!-- A Composition is also the basic structure from which <a href="documents.html">FHIR Documents</a> - 
 immutable bundles with attested narrative - are built. A single logical composition may be 
 associated with a series of derived documents, each of which is a frozen copy of the 
@@ -23,36 +23,43 @@ a single commit. -->
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-Composition is a structure for grouping information for purposes of persistance and attestability.  There
-are several other grouping structures in FHIR with distinct purposes:
+Ресурс Composition - это структура для группирования информации в целях ее хранения и возможности заверения. В FHIR имеются и другие стркутуры для группирования, используемые в различных целях:
+<!-- Composition is a structure for grouping information for purposes of persistance and attestability.  There
+are several other grouping structures in FHIR with distinct purposes: -->
 </p>
 <ul>
 <li>
-The <a href="list.html">List</a> resource - enumerates a flat collection of resources and provides features for managing the collection.  
+Ресурс <a href="list.html">List</a> перечисляет линейную коллекцию ресурсов и предоставляет возможности по управлению этой коллекцией.
+Хотя конкретный экземпляр ресурса List и можно представить в виде "снимка", с точки зрения бизнес-процессов понятие "список" является динамическим: элементы добавляются и удаляются со временем. Ресурс list ссылается на другие ресурсы. Списки могут курироваться и иметь конкретное бизнес-значение.
+<!-- The <a href="list.html">List</a> resource - enumerates a flat collection of resources and provides features for managing the collection.  
 While a particular List instance may represent a "snapshot", from a business process perspective the notion of "List" 
 is dynamic – items are added and removed over time.  The list resource references other resources.  Lists are may be 
-curated and have specific business meaning.
+curated and have specific business meaning. -->
 </li>
 <li>
-The <a href="group.html">Group</a> resource - defines a group of specific people, animals, devices, etc. by enumerating them, 
+Ресурс <a href="group.html">Group</a> задает группу конкретных людей, животных, устройств и т. д., перечисляя их или описывая качества, которые имеют члены группы. Ресурс Group ссылается на другие ресурсы, возможно неявно.
+Группы предназначены для совершения на ними действий или наблюдений как над единым целым. Например проведение группе терапии, расчет риска для группы и т. д. Этот ресурс будет широко использоваться в общественном здравоохранении (например при описании населения, входящего в группу риска), клинических испытаниях (например при определении тестируемого водного объекта) и в аналогичных целях.
+<!-- The <a href="group.html">Group</a> resource - defines a group of specific people, animals, devices, etc. by enumerating them, 
 or by describing qualities that group members have. The group resource refers to other resources, possibly implicitly.  
 Groups are intended to be acted upon or observed as a whole.  E.g. performing therapy on a group, calculating risk for a group, 
 etc.  This resource will commonly be used for public health (e.g. describing an at-risk population), clinical trials (e.g. 
-defining a test subject pool) and similar purposes.
+defining a test subject pool) and similar purposes. -->
 </li>
 <li>
-The <a href="bundle.html">Bundle</a> resource is an infrastructure container for a group of resources.  It does not have narrative 
+Ресурс <a href="bundle.html">Bundle</a> - это инфраструктурный контейнер для группы ресурсов. Он не содержит описательной части и используется для создания коллекций ресурсов для передачи, хранения или обработки (например сообщения, документы, транзакции, ответы на запросы и т. д.). Содержимое бандлов определяется, как правило, алгоритмически в конкретных целях обмена или хранения.
+<!-- The <a href="bundle.html">Bundle</a> resource is an infrastructure container for a group of resources.  It does not have narrative 
 and is used to group collections of resources for transmission, persistence or processing (e.g. messages, documents, transactions, 
-query responses, etc.)  The content of bundles is typically algorithmically determined for a particular exchange or persistence purpose.
+query responses, etc.)  The content of bundles is typically algorithmically determined for a particular exchange or persistence purpose. -->
 </li>
 <li>
-The <a href="composition.html">Composition</a> resource – defines a set of healthcare-related information that is assembled 
+Ресурс <a href="composition.html">Composition</a> определяет набор медицинской информации, собранной в единый логический документ, несущий единый согласованный смысл, устанавливающий свой собственный контекст и имеющий клиническую аттестацию в отношении того, кто составил это утверждение. Ресурс Composition составляет основную структуру FHIR-<a href="documents.html">документа</a>. Полное содержание документа формируется с помощью связки (bundle). Композиции часто ссылаются на ресурсы List в качестве составляющих отдельных разделов.
+<!-- The <a href="composition.html">Composition</a> resource – defines a set of healthcare-related information that is assembled 
 together into a single logical document that provides a single coherent statement of meaning, establishes its own context and 
 that has clinical attestation with regard to who is making the statement. The composition resource provides the basic structure 
 of a FHIR <a href="documents.html">document</a>.  The full content of the document is expressed using a bundle.  Compositions will 
-often reference Lists as the focus of particular sections.
+often reference Lists as the focus of particular sections. -->
 </li>
 </ul>
 
@@ -136,7 +143,7 @@ differences between CDA and the composition resource: -->
    is part of the 'attested content' (see below), and an indivisible part of the document. --></li>
 </ul>
 <p>
-Кроме того, заметьте, что и перечни кодов (code lists) (например <a href="composition-status.html">статус ресурса Composition</a>), и ресурс composition <a href="composition-mappings.html">имеют мэппинги</a> на v3 и/или CDA.
+Кроме того следует отметить, что и перечни кодов (code lists) (например <a href="composition-status.html">статус ресурса Composition</a>), и ресурс composition <a href="composition-mappings.html">имеют мэппинги</a> на v3 и/или CDA.
 <!-- In addition, note that both the code lists (e.g. <a href="composition-status.html">Composition status</a>) and the composition resource are <a href="composition-mappings.html">mapped</a> to v3 and/or CDA. -->
 </p>
 </div>

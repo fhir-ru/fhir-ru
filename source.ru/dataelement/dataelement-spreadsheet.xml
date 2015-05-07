@@ -1183,9 +1183,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Content intends to support these contexts</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Содержимое предназначено поддерживать эти контексты<!-- Content intends to support these contexts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of data element definitions.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержимое было разработано с акцентом и намерением подержать перечисленные контексты. Эти термины можно использовать при индексации и поиске определений элементов данных. <!-- The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of data element definitions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4793,70 +4793,70 @@ Allows determining whether the degree of comparability of data element instances
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">DataElement.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The identifier of the data element</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор элемента данных<!-- The identifier of the data element --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.version</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The version identifier of the data element</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Идентификатор версии элемента данных<!-- The version identifier of the data element --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">name</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.name</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Name of the data element</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Название элемента данных<!-- Name of the data element --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">publisher</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.publisher</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Name of the publisher of the data element</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Имя издателя элемента данных<!-- Name of the publisher of the data element --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s119"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.element.definition</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Text search in the description of the data element.  This corresponds to the definition of the first DataElement.element.</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Поиск по тексту в описании элемента данных. Соответствует определению первого DataElement.element.<!-- Text search in the description of the data element.  This corresponds to the definition of the first DataElement.element. --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.status</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The current status of the data element</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Текущий статус элемента данных<!-- The current status of the data element --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.date</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The data element publication date</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Дата публикации элемента данных<!-- The data element publication date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.element.code</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">A code for the data element (server may choose to do subsumption)</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Код для этого элемента данных (сервер может отнести его к определенной категории)<!-- A code for the data element (server may choose to do subsumption) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s119"><Data ss:Type="String">context</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.useContext</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">A use context assigned to the data element</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Контекст применения, назначенный этому элементу данных<!-- A use context assigned to the data element --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">url</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.url</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The official URL for the data element</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Официальный URL для этого элемента данных<!-- The official URL for the data element --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"/>
@@ -7110,7 +7110,7 @@ Allows determining whether the degree of comparability of data element instances
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">DataElementSpecificity</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the degree of precision of the data element definition</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывает степень точности определения элемента данных<!-- Indicates the degree of precision of the data element definition --></Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">#dataelement-specificity</Data></Cell>
@@ -7125,7 +7125,7 @@ Allows determining whether the degree of comparability of data element instances
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">UseContext</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the countries, regions, disciplines and other aspects of use this artifact is targeted for use within</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает страны, регионы, дисциплины и другие аспекты использования этого артефакта, для которых он предназначен<!-- Indicates the countries, regions, disciplines and other aspects of use this artifact is targeted for use within --></Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="s120"/>
