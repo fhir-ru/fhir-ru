@@ -5,7 +5,7 @@
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 
 <p>
-Одна из распространенных операций, выполняемых над ресурсами, это сборка коллекции ресурсов в одном экземпляре, содержащем контекст. В FHIR это называется "комплектацией (пакетированием - bundling)" ресурсов. Эти связки (bundles) ресурсов полезны по множеству различных причин, в том числе:
+Одна из распространенных операций, выполняемых над ресурсами, это сборка коллекции ресурсов в одном экземпляре, содержащем контекст. В FHIR это называется "комплектацией (пакетированием - bundling)" ресурсов. Такие связки ресурсов полезны по нескольким причинам, в том числе:
 <!-- One common operation performed with resources is to gather a collection of resources into a single instance
 with containing context. In FHIR this is referred to as "bundling" the resources together. These resource bundles are useful for a variety of different reasons, including: -->
 </p>
@@ -37,7 +37,7 @@ Grouping a self-contained set of resources to act as an exchangeable and persist
 <div>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-Есть два способа создать коллекцию ресурсов для передачи и хранения - <a href="references.html#contained">вложенные ресурсы</a> и комплекты (bundles). Между ними имеется важное различие:
+Есть два способа создать коллекцию ресурсов для передачи и хранения: <a href="references.html#contained">вложенные ресурсы</a> и комплекты (bundles). Между ними имеется важное различие:
 <!-- There are two ways to collect resources together for transport and persistance purposes - <a href="references.html#contained">contained resources</a>, and
 bundles. There is an important difference between the two:  -->
 </p>
@@ -46,33 +46,39 @@ bundles. There is an important difference between the two:  -->
  Вложенные ресурсы находятся "внутри" ресурса-контейнера - их можно интерпретировать и/или изменять только в контексте контейнера
  <!-- Contained resources are "in" the container resource - they can only ever be interpreted and/or changed in the context of the container --></li>
  <li>
- Комплект (bundle)  - это коллекция ресурсов, которые имеют независимое существование - источник ресурса может быть определен по базовому (см. ниже) и логическому идентификатору
+ Комплект (bundle) - это коллекция ресурсов, которые имеют независимое существование - источник ресурса может быть определен по базовому (см. ниже) и логическому идентификатору
  <!-- A bundle is a collection of resources that have an independent existence - the source of the resource can be determined by the base (see below) and the logical id --></li>
 </ul>
 
 <p>
-In addition to these two technical mechanism, there are three administrative and infrastructure resources which also support grouping of content:
+В дополнение к этим двум техническим механизмам есть еще три административных и инфраструктурных ресурса, с помощью которых также можно группировать контент:
+<!-- In addition to these two technical mechanism, there are three administrative and infrastructure resources which also support grouping of content: -->
 </p>
 <ul>
 <li>
-The <a href="list.html">List</a> resource - enumerates a flat collection of resources and provides features for managing the collection.  
+Ресурс <a href="list.html">List</a> перечисляет линейную коллекцию ресурсов и предоставляет возможности по управлению этой коллекцией.
+Хотя конкретный экземпляр ресурса List и можно представить в виде "снимка", с точки зрения бизнес-процессов понятие "список" является динамическим: элементы добавляются и удаляются со временем. Ресурс list ссылается на другие ресурсы. Списки могут курироваться и иметь конкретное бизнес-значение.
+<!-- The <a href="list.html">List</a> resource - enumerates a flat collection of resources and provides features for managing the collection.  
 While a particular List instance may represent a "snapshot", from a business process perspective the notion of "List" 
 is dynamic – items are added and removed over time.  The list resource references other resources.  Lists are may be 
-curated and have specific business meaning.
+curated and have specific business meaning. -->
 </li>
 <li>
-The <a href="group.html">Group</a> resource - defines a group of specific people, animals, devices, etc. by enumerating them, 
+Ресурс <a href="group.html">Group</a> задает группу конкретных людей, животных, устройств и т. д., перечисляя их или описывая качества, которые имеют члены группы. Ресурс Group ссылается на другие ресурсы, возможно неявно.
+Группы предназначены для совершения на ними действий или наблюдений как над единым целым. Например проведение группе терапии, расчет риска для группы и т. д. Этот ресурс будет широко использоваться в общественном здравоохранении (например при описании населения, входящего в группу риска), клинических испытаниях (например при определении тестируемого водного объекта) и в аналогичных целях.
+<!-- The <a href="group.html">Group</a> resource - defines a group of specific people, animals, devices, etc. by enumerating them, 
 or by describing qualities that group members have. The group resource refers to other resources, possibly implicitly.  
 Groups are intended to be acted upon or observed as a whole.  E.g. performing therapy on a group, calculating risk for a group, 
 etc.  This resource will commonly be used for public health (e.g. describing an at-risk population), clinical trials (e.g. 
-defining a test subject pool) and similar purposes.
+defining a test subject pool) and similar purposes. -->
 </li>
 <li>
-The <a href="composition.html">Composition</a> resource – defines a set of healthcare-related information that is assembled 
+Ресурс <a href="composition.html">Composition</a> определяет набор медицинской информации, собранной в единый логический документ, несущий единый согласованный смысл, устанавливающий свой собственный контекст и имеющий клиническую аттестацию в отношении того, кто составил это утверждение. Ресурс Composition составляет основную структуру FHIR-<a href="documents.html">документа</a>. Полное содержание документа формируется с помощью связки (bundle). Композиции часто ссылаются на ресурсы List в качестве составляющих отдельных разделов.
+<!-- The <a href="composition.html">Composition</a> resource – defines a set of healthcare-related information that is assembled 
 together into a single logical document that provides a single coherent statement of meaning, establishes its own context and 
 that has clinical attestation with regard to who is making the statement. The composition resource provides the basic structure 
 of a FHIR <a href="documents.html">document</a>.  The full content of the document is expressed using a bundle.  Compositions will 
-often reference Lists as the focus of particular sections.
+often reference Lists as the focus of particular sections. -->
 </li>
 </ul>
 
