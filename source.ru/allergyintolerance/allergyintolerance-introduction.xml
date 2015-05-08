@@ -3,102 +3,130 @@
 <div>
 <h2>Область применения и использование</h2>
 <p>
-A record of a clinical assessment of an Allergy or Intolerance; a propensity, or a potential risk 
+Ресурс используется для записи клинической оценки аллергии или непереносимости; предрасположенности или потенциального для человека риска нежелательной побочной реакции на воздействие определенного вещества или класса веществ.
+<!-- A record of a clinical assessment of an Allergy or Intolerance; a propensity, or a potential risk 
 to an individual, to have an adverse reaction on future exposure to the specified substance, or class 
-of substance. 
+of substance. --> 
 </p>
 <p>
-Where a propensity is identified, to record information or evidence about a reaction event 
+При установлении предрасположенности, для записи информации или свидетельства о случае реакции, которая характеризуется любой вредной или нежелательной физиологической реакцией, присущей конкретному человеку и вызываемой воздействием на человека определенного вещества или класса веществ. 
+<!-- Where a propensity is identified, to record information or evidence about a reaction event 
 that is characterised by any harmful or undesirable, physiological response that is specific 
 to the individual, and triggered by exposure of an individual to the identified substance 
-or class of substance.
+or class of substance. -->
 </p>
 <p>
-Substances include, but are not limited to: a therapeutic substance administered correctly 
+Вещества включают, но не ограничиваются следующими: терапевтические вещества, корректно введенные человеку в подходящей дозировке; пища; материалы, полученные из растений или животных; яд от укусов насекомых.
+<!-- Substances include, but are not limited to: a therapeutic substance administered correctly 
 at an appropriate dosage for the individual; food; material derived from plants or animals; 
-or venom from insect stings.
+or venom from insect stings. -->
 </p>
 
 <p>
-<b>Note for Reviewers</b>
+<b>Примечание для рецензентов<!-- Note for Reviewers --></b>
 </p>
 <p>
-Presently open issues for this resource:
+Открытые на текущий момент вопросы для этого ресурса:
+<!-- Presently open issues for this resource: -->
 </p>
 <ul>
- <li>This resource represents a condition of susceptibility to a substance, with a list of supporting events and/or symptoms,
-   and has no direct relationship to an event reporting framework; this will be re-assessed when Adverse Event reporting resource(s) and/or profiles are added to FHIR (not expected to happen prior to DSTU 2)
+ <li>Этот ресурс показывает состояние восприимчивости к веществу и список подтверждающих его событий и/или симптомов и не имеет прямого отношения к фреймворку оповещения о событиях; он будет подвергнут пересмотру, когда в FHIR будут добавлен(-ы) ресурс(-ы) и/или профили по оповещению о  неблагоприятных событиях (не ожидается, что произойдет до DSTU 2)
+<!-- This resource represents a condition of susceptibility to a substance, with a list of supporting events and/or symptoms,
+   and has no direct relationship to an event reporting framework; this will be re-assessed when Adverse Event reporting resource(s) and/or profiles are added to FHIR (not expected to happen prior to DSTU 2) -->
  </li>
- <li>There is no "didNotOccur" flag on the event. Is this necessary? (not found in any surveyed systems)</li>  
- <li>Other HL7 models and the openEHR archetype have "exposure date" but this is not found in any surveyed systems, so this is left as an extension (more appropriate for adverse event reporting)</li>  
+ <li>У события отсутствует флаг "didNotOccur". Есть ли в нем необходимость? (не найден ни в одной опрошенной системе)
+ <!-- There is no "didNotOccur" flag on the event. Is this necessary? (not found in any surveyed systems) --></li>  
+ <li>В других моделях HL7 и архетипе openEHR имеется "exposure date" (дата воздействия), но она не была найдена ни в каких опрошенных системах, поэтому была оставлена в качестве расширения (больше подходит для оповещений о неблагоприятных событиях)
+ <!-- Other HL7 models and the openEHR archetype have "exposure date" but this is not found in any surveyed systems, so this is left as an extension (more appropriate for adverse event reporting) --></li>  
 </ul>
 
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-This resource is used to provide a single place within the health record to document a range of clinical statements about adverse reactions, including:
+Этот ресурс используется для обеспечения единого места в медицинской карте для документации ряда клинических заявлений о нежелательных побочных реакциях, в том числе:
+<!-- This resource is used to provide a single place within the health record to document a range of clinical statements about adverse reactions, including: -->
 </p>
 <ul>
-<li>record a clinical assessment of the individual's propensity to a potential future reaction upon re-exposure</li>
-<li>record cumulative information about the reaction to each exposure, including 'no reaction' if appropriate</li>
+<li>запись клинической оценки предрасположенности человека к потенциальной реакции при повторном воздействии
+<!-- record a clinical assessment of the individual's propensity to a potential future reaction upon re-exposure --></li>
+<li>запись совокупной информации о реакции на каждое воздействие, в том числе отметки "реакция отсутствует" при необходимости
+<!-- record cumulative information about the reaction to each exposure, including 'no reaction' if appropriate --></li>
 </ul>
 
 <p>
-Use to record information about the positive presence of the risk of an Adverse Reaction:
+Используйте для записи информации о наличии риска неблагоприятной побочной реакции:
+<!-- Use to record information about the positive presence of the risk of an Adverse Reaction: -->
 </p>
 <ul>
-<li>to support direct clinical care of an individual</li>
+<li>для содействия при прямом медицинском уходе за человеком</li>
+<li>в рамках администрирования списка нежелательных побочных реакций или аллергий/непереносимостей</li>
+<li>для поддержки обмена информацией о предрасположенности и событий, связанных с нежелательными побочными реакциями</li>
+<li>для оповещения о нежелательной побочной реакции</li>
+<li>для содействия такой компьютеризированной деятельности на основе знаний, как  поддержка клинических решений и оповещения</li>
+<!-- <li>to support direct clinical care of an individual</li>
 <li>as part of a managed Adverse Reaction or Allergy/Intolerance list</li>
 <li>to support exchange of information about the propensity and events related to Adverse Reactions</li>
 <li>to inform adverse reaction reporting</li>
-<li>to assist computerised knowledge-based activities such as clinical decision support and alerts</li>
+<li>to assist computerised knowledge-based activities such as clinical decision support and alerts</li> -->
 </ul>
 <p>
-Use to record information about Adverse Reactions to a broad range of substances, including: biological 
-&amp; blood products; incipients and excipients in medicinal preparations; metal salts; and organic chemical compounds.  
+Используйте для записи информации о нежелательных побочных реакциях на широкий круг веществ, в том числе: биологические и продукты крови; инсипиенты и наполнители в лекарственных препаратах; соли металлов; органические химические соединения.
+<!-- Use to record information about Adverse Reactions to a broad range of substances, including: biological 
+&amp; blood products; incipients and excipients in medicinal preparations; metal salts; and organic chemical compounds.   -->
 </p>
 <p>
-Adverse reactions may be:
+Нежелательные побочные реакции могут быть:
+<!-- Adverse reactions may be: -->
 </p>
 <ul>
-<li>an immune mediated reaction - Types I-VI (including allergic reactions and hypersensitivities)</li>
-<li>a non-immune mediated reaction - including pseudoallergic reactions, side effects, intolerances, drug 
-  toxicities (eg to Gentamicin), drug-drug interactions, food-drug interactions, and drug-disease interactions</li>
+<li>иммунная реакции - типы I-VI (в том числе аллергические реакции и гиперчувствительность)
+<!-- an immune mediated reaction - Types I-VI (including allergic reactions and hypersensitivities) --></li>
+<li>неиммунная реакция - в том числе псевдоаллергические реакции, побочные эффекты, непереносимости, аллергические лекарственные реакции (например на гентамицин), реакции лекарственного взаимодействия, взаимодействия пищи и лекарств и взаимодействия лекарств и заболеваний
+<!-- a non-immune mediated reaction - including pseudoallergic reactions, side effects, intolerances, drug 
+  toxicities (eg to Gentamicin), drug-drug interactions, food-drug interactions, and drug-disease interactions --></li>
 </ul>
 <p>
-In clinical practice distinguishing between immune-mediated and non-immune mediated reactions is difficult and often 
+В клинической практике иммунные и неиммунные реакции различать трудно и часто не практично. Тип реакции не определяет серьезность или риск причинения вреда пациенту, которые лучше выражаются проявлением в клинической практике.
+<!-- In clinical practice distinguishing between immune-mediated and non-immune mediated reactions is difficult and often 
 not practical. Identification of the type of reaction is not a proxy for seriousness or risk of harm to the patient, 
-which is better expressed by the manifestation in clinical practice.
+which is better expressed by the manifestation in clinical practice. -->
 </p>
 <p>
-The risk of an Adverse Reaction event or manifestation should not be recorded without identifying a proposed causative 
+Риск неблагоприятной побочной реакции или проявления не следует записывать без идентификации предполагаемого причинного вещества или класса веществ. В случае неопределенности какое конкретно вещество стало причиной, эта неопределенность может быть
+записана с помощью элемента данных "Status". Если есть несколько возможных веществ, которые, возможно, вызвали реакцию/проявление, каждое вещество должно быть записано с помощью отдельного экземпляра этого ресурса с элементом "Status" установленным в значение "Unconfirmed" "неподтвержденная", с тем чтобы можно было поддержать проверку неблагоприятной побочной реакции в клинических системах.
+Если позже будет установлено, что это вещество, агент или класс не является причиной данной реакции, то значение элемента "Status" можно изменить на "Refuted" (опровергнуто).
+<!-- The risk of an Adverse Reaction event or manifestation should not be recorded without identifying a proposed causative 
 substance or class of substance. If there is uncertainty that a specific substance is the cause, this uncertainty can be 
 recorded using the 'Status' data element. If there are multiple possible substances that may have caused a reaction/manifestation, 
 each substance should be recorded using a separate instance of this resource with the 
 'Status' set to an initial state of 'Unconfirmed' so that adverse reaction checking can be supported in clinical systems. 
 If a substance, agent or class is later proven not to be the cause for a given reaction then the 'Status' can be modified 
-to 'Refuted'.
+to 'Refuted'. -->
 </p>
 <p>
-This resource has been designed to allow recording of information about a specific substance (amoxicillin, 
+Этот ресурс был разработан для записи информации о конкретном веществе (амоксициллин,
+устрицы или яд жала пчелы) или, альтернативно, о классе вещества (например пенициллины)). Если записывается класс вещества, то идентификация точного вещества может быть записана на основании воздействия.
+<!-- This resource has been designed to allow recording of information about a specific substance (amoxicillin, 
 oysters, or bee sting venom) or, alternatively, a class of substance (eg Penicillins)). If a class of substance is recorded 
-then identification of the exact substance can be recorded on a per exposure basis.
+then identification of the exact substance can be recorded on a per exposure basis. -->
 </p>
 <p>
-The scope of this FHIR resource has deliberately focused on identifying a pragmatic data set that are used in 
+Предметная область этого FHIR-ресурса сознательно направлена на выявление прагматического набор данных, которые используются в большинстве клинических систем или будут пригодны для наиболее распространенных клинических сценариев; при необходимости указания дополнительных деталей <a href="extensibility.html">можно использовать расширения</a>. Примеры клинических ситуаций, когда могут потребоваться расширения, включают в себя: подробная оценка аллерголога/иммунолога, составление отчетов для регулирующих органов или для использования в клинических испытаниях.
+<!-- The scope of this FHIR resource has deliberately focused on identifying a pragmatic data set that are used in 
 most clinical systems or will be suitable for most common clinical scenarios; <a href="extensibility.html">extensions
 can be used</a> to add additional detail if required. Examples of clinical situations where the extension may 
 be required include: a detailed allergist/immunologist assessment, for reporting to regulatory bodies or use 
-in a clinical trial.
+in a clinical trial. -->
 </p>
 <p>
-The act of recording any adverse reaction in a health record involves the clinical assessment that a potential hazard 
+Акт записи любой нежелательной побочной реакции в медицинскую карту включает в себя клиническую оценку того, что потенциальная опасность существует для человека, если он подвергнется воздействию того же самого вещества /агента/класса в будущем - то есть относительное противопоказание - и значение элемента 'Seriousness' (Серьезность) по умолчанию должно быть установлено в "Low" (низкая). Если врач считает, что для человека будет не безопасно  преднамеренно подвергнуться воздействию этого вещества/агента снова, например если за этим последует проявление опасной для жизни анафилаксии, то элемент данных 'Seriousness' следует изменить на  'High' (высокая).
+<!-- The act of recording any adverse reaction in a health record involves the clinical assessment that a potential hazard 
 exists for an individual if they are exposed to the same substance/agent/class in the future – that is, a relative 
 contraindication - and the default 'Seriousness' value should be set to 'Low'. If a clinician considers that it is not 
 safe for the individual to be deliberately re-exposed to the substance/agent again, for example, following a manifestation 
-of a life-threatening anaphylaxis, then the 'Seriousness' data element should be amended to 'High'. 
+of a life-threatening anaphylaxis, then the 'Seriousness' data element should be amended to 'High'.  -->
 </p>
 <p>
 A formal Adverse Event Report to regulatory bodies is a document that will contain a broad range of information in 

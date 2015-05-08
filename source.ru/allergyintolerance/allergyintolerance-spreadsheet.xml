@@ -974,13 +974,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Allergy or Intolerance (generally: Risk Of Adverse reaction to a substance)</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Аллергия или непереносимость (как правило, это риск нежелательной побочной реакции на вещество)<!-- Allergy or Intolerance (generally: Risk Of Adverse reaction to a substance) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Риск вредной или нежелательной физиологической реакции, присущей именному этому человеку и связанной с воздействием некоторого вещества<!-- Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">To record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Для записи клинической оценки предрасположенности или потенциального для человека риска нежелательной побочной реакции на воздействие определенного вещества или класса веществ<!-- To record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Substances include, but are not limited to: a therapeutic substance administered correctly at an appropriate dosage for the individual; food; material derived from plants or animals; or venom from insect stings.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Вещества включают, но не ограничиваются следующими: терапевтические вещества, корректно введенные человеку в подходящей дозировке; пища; материалы, полученные из растений или животных; яд от укусов насекомых.<!-- Substances include, but are not limited to: a therapeutic substance administered correctly at an appropriate dosage for the individual; food; material derived from plants or animals; or venom from insect stings. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
