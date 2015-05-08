@@ -389,7 +389,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s77"><Data ss:Type="String">ConformanceUseContext</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Indicates the countries, regions, disciplines and other aspects of use this artifact is targeted for use within</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Показывает страны, регионы, дисциплины и другие аспекты использования этого артефакта, для которых он предназначен<!-- Indicates the countries, regions, disciplines and other aspects of use this artifact is targeted for use within --></Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s76"/>
     <Cell><Data ss:Type="String">extensible</Data></Cell>
