@@ -106,23 +106,32 @@ https://server/path/Patient
 Обратите внимание, что сервер может использовать пути типа "http://server/...[xx]...", где [xx] - это некоторая переменная часть, идентифицирующая конкретный экземпляр реализации FHIR API. Обычно это идентификатор пациента или пользователя, и его присутствие означает, что вся информация относится к данному пациенту/пользователю либо персонализирована для него.  
 Так, в случае пользователя это означает, что именно ему предоставлен явный доступ к операции. Не обязательно всегда включать идентификатор пациента в URL - реализации могут связывать точку взаимодействия FHIR с конкретным пациентом или провайдером с помощью OAuth. Логическое обоснование можно посмотреть в <a href="extras.html#compartments">Compartments</a>.
 </p>
-<p><b>Identity</b></p>
+<p><b>Сопоставление идентичности<!-- Identity --></b></p>
 <p>
-Systems often need to compare two URLs to determine whether they refer to the same URL or not.
-For the purposes of this specification, the following rules apply:
+Системы часто сталкиваются с задачей сравнения двух URL-адресов для определения того, ведут ли они на один и тот же адрес или нет.
+В рамках данной спецификации применяются следующие правила:
+<!-- Systems often need to compare two URLs to determine whether they refer to the same URL or not.
+For the purposes of this specification, the following rules apply: -->
 </p>
 <ul>
- <li>The query part of the URL (anything after '?' is ignored</li>
+ <li>Часть URL, содержащая запрос (всё, что идёт после '?'), игнорируется</li>
+ <li>Сравнение документной части URL (т. е. не сервер или порт) чувствительно к регистру</li>
+ <li>http: и https: взаимозаменяемы и относятся к одному объекту</li>
+ <li>Если задан порт, то порты должны совпадать, иначе это различные объекты (относится к распространенному мэппингу портов и/или работе запущенных интерфейсов на разных портах). Порты надо указывать явно, только когда они имеют значение для сервера</li>
+<!--  <li>The query part of the URL (anything after '?' is ignored</li>
  <li>The comparison of the document portion of the URL (i.e. not the server/port) is case sensitive</li>
  <li>http: and https: are exchangeable and refer to the same object</li>
- <li>If a port is specified, then the ports must be identical or the objects are different (to the prevalence of port mapping and/or interface engines running on different ports). Ports should only be explicit when they have explicit meaning to the server</li>
+ <li>If a port is specified, then the ports must be identical or the objects are different (to the prevalence of port mapping and/or interface engines running on different ports). Ports should only be explicit when they have explicit meaning to the server</li> -->
 </ul>
 <p>
-For example:
-http://myserver,com/patient/1 and https://myserver.com/patient/1 are the same, while http://myserver.com:80/patient/1 is distinct from either of the above.
+Например:
+http://myserver.com/patient/1 и https://myserver.com/patient/1 являются одинаковыми, а http://myserver.com:80/patient/1 отличается от этих двух адресов.
+<!-- For example:
+http://myserver,com/patient/1 and https://myserver.com/patient/1 are the same, while http://myserver.com:80/patient/1 is distinct from either of the above. -->
 </p>
 <p>
-Note: the identity comparison for protocols other than http/https is undefined.
+Примечание: сопоставление идентичности для протоколов, отличных от HTTP/HTTPS, не определено.
+<!-- Note: the identity comparison for protocols other than http/https is undefined. -->
 </p>
 
 <h3>Метаданные ресурсов и версионирование</h3>
