@@ -106,8 +106,7 @@ If a substance, agent or class is later proven not to be the cause for a given r
 to 'Refuted'. -->
 </p>
 <p>
-Этот ресурс был разработан для записи информации о конкретном веществе (амоксициллин,
-устрицы или яд жала пчелы) или, альтернативно, о классе вещества (например пенициллины)). Если записывается класс вещества, то идентификация точного вещества может быть записана на основании воздействия.
+Этот ресурс был разработан для записи информации о конкретном веществе (амоксициллин, устрицы или яд жала пчелы) или о классе вещества (например пенициллины)). Если записывается только класс вещества, то идентификация точного вещества может быть записана на основании воздействия.
 <!-- This resource has been designed to allow recording of information about a specific substance (amoxicillin, 
 oysters, or bee sting venom) or, alternatively, a class of substance (eg Penicillins)). If a class of substance is recorded 
 then identification of the exact substance can be recorded on a per exposure basis. -->
@@ -129,40 +128,52 @@ safe for the individual to be deliberately re-exposed to the substance/agent aga
 of a life-threatening anaphylaxis, then the 'Seriousness' data element should be amended to 'High'.  -->
 </p>
 <p>
-A formal Adverse Event Report to regulatory bodies is a document that will contain a broad range of information in 
+Официальный отчет о неблагоприятных событиях в регулирующие органы - это документ, который будет содержать широкий диапазон информации в дополнение к конкретным подробностям нежелательной побочной реакции. Такой отчет может частично использовать этот ресурс плюс включать в себя дополнительные данные, требуемые юрисдикцией.
+<!-- A formal Adverse Event Report to regulatory bodies is a document that will contain a broad range of information in 
 addition to the specific details about the adverse reaction. The report could utilise parts of this resource plus 
-include additional data as required per jurisdiction.
+include additional data as required per jurisdiction. -->
 </p>
 <p>
-An Adverse Reaction or Allergy/Intolerance List is a record of all identified propensities for an Adverse Reaction 
+Список нежелательных побочных реакций или аллергий/непереносимостей - это запись всех выявленных предрасположенностей к нежелательной побочной реакции для человека на воздействие вещества или класса веществ, а также обеспечивает потенциальный доступ к подробной информации о каждом случае проявления такой реакции.
+<!-- An Adverse Reaction or Allergy/Intolerance List is a record of all identified propensities for an Adverse Reaction 
 for the individual upon future exposure to the substance or class, plus provides potential access to the evidence 
-provided by details about each reaction event, such as manifestation.
+provided by details about each reaction event, such as manifestation. -->
 </p>
 <p>
-Valuable first-level information that could be presented to the clinician when they need to assess propensity for 
-future reactions are:
+Ценная информация первого уровня значимости, которая может быть представлена врачу при необходимости оценить предрасположенность к реакциям в будущем:
+<!-- Valuable first-level information that could be presented to the clinician when they need to assess propensity for 
+future reactions are: -->
 </p>
 <ul>
-<li>statements about previous clinical manifestations following exposure</li>
+<li>отчеты о имевших ранее место клинических проявлениях, последовавших за воздействием</li>
+<li>источник информации</li>
+<li>показатель 'критичности'</li>
+<!-- <li>statements about previous clinical manifestations following exposure</li>
 <li>source of the information/reporter</li>
-<li>the 'criticality' flag</li>
+<li>the 'criticality' flag</li> -->
 </ul>
 <p>
-Second-level information can be drawn from each exposure event and links to additional detailed information 
-such as history, examination and diagnoses stored elsewhere in the record, if it is available.
+Сведения второго уровня значимости, полученные из каждого случая воздействия, и ссылки на такую дополнительную информацию, как история, осмотр и диагнозы, сохраненную где-то в другом месте медицинской карты, если она доступна.
+<!-- Second-level information can be drawn from each exposure event and links to additional detailed information 
+such as history, examination and diagnoses stored elsewhere in the record, if it is available. -->
 </p>
 
 <p>
 <b>Неправильное использование<!-- Misuse --></b></p>
 <ul>
-<li>Not to be used for recording physiological reactions to physical agents, such as heat, cold, sunlight, 
+<li>Не использовать для записи физиологических реакций на такие физические факторы, как жара, холод, солнечный свет, вибрации, физическая активность, возбудители инфекции или загрязнители пищевых продуктов (присутствие в пище вредных химических веществ и микроорганизмов). В этих случаях используйте ресурс <a href="condition.html">Condition</a></li>
+<li>Не использовать для записи неблагоприятных событий, в том числе сбоев клинического процесса, вмешательств или продуктов. Например: неправильное использование или ошибки/просчеты, допущенные при ошибочном назначении средств или веществ; неправильная дозировка; неправильная маркировка; вред или ущерб, вызванный вмешательством или процедурой; передозировка/отравление и т. д.</li>
+<li>Не следует использовать в качестве системы отчётов о нежелательных явлениях. См. выше информацию о том, как его можно использовать в качестве одного из компонентов системы отчётов о нежелательных явлениях</li>
+<li>Не использовать для записи оповещений</li>
+<li>Не использовать для записи неудавшегося лечения</li>
+<!-- <li>Not to be used for recording physiological reactions to physical agents, such as heat, cold, sunlight, 
   vibration, exercise activity, by infectious agents or food contaminants. Use <a href="condition.html">Condition</a> instead</li>
 <li>Not to be used to record adverse events, including failures of clinical process, interventions or products. For example: 
    abnormal use or mistakes/errors made in maladministration of an agent or substance; incorrect dosage; mislabelling; 
    harm or injury caused by an intervention or procedure; overdose/poisoning etc</li>
 <li>Not to be used as a proxy for an Adverse Event Report. See above for how it may be used as one component of an Adverse Event Report</li>
 <li>Not to be used for recording alerts</li>
-<li>Not to be used for recording failed therapy</li>
+<li>Not to be used for recording failed therapy</li> -->
 </ul>
 </div>
 
