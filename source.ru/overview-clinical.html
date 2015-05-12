@@ -66,7 +66,7 @@ hospital information systems (HISs), etc.  Some systems, such as clinical decisi
 expose FHIR interfaces even though they don't actually store any information. -->
 </p>
 
-<h3> Принцип создания информативной системы передачи данных для медицинских учреждений <!-- Building useful Clinical Systems out of Molecules --></h3>
+<h3>Принцип построения больших медицинских систем из кирпичиков-ресурсов<!-- Building useful Clinical Systems out of Molecules --></h3>
 <p>
 Каждый ресурс содержит небольшое количество узконаправленных данных. Один ресурс много не скажет, но большое количество очень маленьких ресурсов вместе создают информативную историю болезни. Информационные системы в соответствии с действиями, которые выполняет пользователь (ищет пациентов, делает записи в их истории и т. д.) выполняют операции с соответствующими ресурсами.
 <!-- Each resource contains a small amount of highly-focused data. A single resource doesn't say much, but a lot of very small resources 
@@ -217,7 +217,7 @@ of information that can be reliably retrieved even years in the future.  Example
 healthcare include discharge summaries and lab reports. -->
 </p>
 <p>
-В FHIR есть специальный ресурс, который называется <a href="composition.html">Composition (Композиция)</a>, который выступает в качестве "обложки" документа. Он определяет его название, дату создания, соответствующего пациента и оглавление. Документ в FHIR можно рассматривать как набор листов (экземпляров ресурса), сложенных в стопку с титульной страницей наверху и сшитых степлером вместе. Такая сшитая коллекция может храниться или передаваться, передавая весь набор информации целиком за один раз.
+В FHIR есть специальный ресурс, который называется <a href="composition.html">Composition (Композиция)</a>, который выступает в качестве "обложки" документа. Он определяет его название, дату создания, соответствующего пациента и оглавление. Документ в FHIR можно рассматривать как набор листов (экземпляров ресурса), сложенных в стопку с титульной страницей наверху и сшитых степлером вместе. Такая сшитая коллекция может храниться или передаваться, сообщая весь набор информации целиком за один раз.
 <!-- In FHIR, there's a special resource called <a href="composition.html">Composition</a> that acts as the "cover page"
 for a document.  It identifies the title, author date, relevant patient and the table of contents.  A FHIR document
 can be thought of as a set of sheets (resource instances) stacked together with a title page on top that is stapled
@@ -227,7 +227,7 @@ once. -->
 
 <h4>Обмен сообщениями<!-- Messaging --></h4>
 <p>
-Большая часть обмена медицинской информацией происходит с использованием парадигмы обмена сообщениями. В обмене сообщениями набор информации передается от одной системы к другой с явным запросом "что-то сделать". Сообщение может запрашивать выполнение лабораторной заявки или объединение двух записей пациентов или уведомлять систему о том, что пациент был переведен из одной кровати в другую. Обмен сообщениям аналогичен документам в том, что он собирает ресурсы вместе. Однако в этом случае титульным листом является <a href="messageheader.html">MessageHeader</a>, выступающий в качестве распоряжения. И ресурсы соединены друг с другом не степлером, а скрепками для бумаг. Здесь не предполагается, что принимающая система будет хранить данные в точности в том виде, как они были получены.
+Большая часть обмена медицинской информацией происходит с использованием парадигмы сообщений. В обмене сообщениями набор информации передается от одной системы к другой с явным запросом "что-то сделать". Сообщение может запрашивать выполнение лабораторной заявки или объединение двух записей пациентов или уведомлять систему о том, что пациент был переведен из одной кровати в другую. Обмен сообщениям аналогичен документам в том, что он собирает ресурсы вместе. Однако в этом случае титульным листом является <a href="messageheader.html">MessageHeader</a>, выступающий в качестве распоряжения. И ресурсы соединены друг с другом не степлером, а скрепками для бумаг. Здесь не предполагается, что принимающая система будет хранить данные в точности в том виде, как они были получены.
 <!-- Much healthcare information exchange happens using a messaging paradigm.  In messaging, a collection of information is sent
 from one system to another with an explicit request to "do something".  A message might request that a lab order be
 fulfilled or that two patient records be merged or notify a system that a patient has been transferred from one bed to
@@ -239,7 +239,7 @@ data exactly as received. -->
 
 <h4>Сервисы<!-- Services --></h4>
 <p>
-Сервисы можно рассматривать как облегченную версию обмена сообщениями. Вместо полной обложки к ресурсу прикрепляется небольшая записка. А иногда вместо отправки полный кусок бумаги, соответствующие куски вырезать и отправляются как фрагменты. Ответ на реквизиции же бумаги обрезается пучок экземпляров ресурса. Сервисы могут быть использованы для таких вещей, как поддержка принятия решений. Например "Есть проблема с назначения лекарств X для пациента Y?", "Что план рекомендуется уход за пациентом с условиями A, B и C?"
+Сервисы можно рассматривать как облегченную версию обмена сообщениями. Вместо полной обложки к ресурсу прикрепляется небольшая записка. А иногда вместо того, чтобы отправить лист бумаги целиком, вырезаются необходимые куски и отправляются как фрагменты. Подобным образом, ответом на запрос будет  служить сколотая скрепкой пачка экземпляров ресурса. Сервисы часто используют для таких целей, как поддержка принятия решений. Например "Есть ли проблема с назначением лекарств X пациенту Y?", "Какой план ухода рекомендуется для пациента с условиями A, B и C?"
 <!-- Services can be thought of as a light-weight way of doing messaging.  Rather than a full cover page, a small sticky
 note is attached to the front of a resource.  And sometimes rather than sending a full piece of paper, the relevant
 pieces are cut out and sent as fragments.  The response to a requisition is a similarly paper-clipped bundle of resource
@@ -247,9 +247,9 @@ instances.  Services are likely to be used for things like decision support.  E.
 X for patient Y?", "What's the recommended care plan for a patient with conditions A, B and C?" -->
 </p>
 
-<h3>Approaching the specification</h3>
+<h3>Понимание спецификации<!-- Approaching the specification --></h3>
 <p>
-Возможности системы на основе FHIR определяются тем, что могут сказать ресурсы. Тогда с клинической точки зрения историю болезни определяют следующие вещи:
+Возможности системы на основе FHIR определяются тем, какую информацию могут дать ресурсы. Тогда, с клинической точки зрения, историю болезни определяют следующие параметры:
 <!-- A FHIR-based system's capabilities are defined by what the resources can say. From a clinical perspective, then, these things define the clinical record: -->
 </p>
 <ul>
@@ -259,7 +259,7 @@ X for patient Y?", "What's the recommended care plan for a patient with conditio
   <li>как вы можете искать информацию<!-- how you can search for information --></li>
 </ul>
 <p>
-Эту информацию можно найти на страницах описания ресурсов. Ресурсы, которые скорее всего будут представлять интерес, можно найти на страницах  <a href="clinical.html">Clinical (Клинические)</a> и <a href="administration.html">Administrative (Административные)</a>. Инструкции о том, как интерпретировать информацию на страницах ресурсов, можно найти <a href="formats.html">здесь</a>. Представления в виде <i>логической таблицы</i> и <i>UML-диаграммы</i>, вероятно, понять будет проще всего. Кроме того, не забудьте зайти на вкладку с примерами для ознакомления с тем, какого рода информация может быть выражена с помощью ресурса. Посмотреть на то, как элементы используются для передачи реальных данных часто оказывается более полезно, чем просто смотреть на определения. Также зайдите на вкладку профилей, чтобы посмотреть примеры того, как можно ограничить различные ресурсы для использования в определенных контекстах.
+Эту информацию можно найти на страницах с описаниями ресурсов. Ресурсы, которые скорее всего будут представлять интерес, можно найти на страницах  <a href="clinical.html">Clinical (Клинические)</a> и <a href="administration.html">Administrative (Административные)</a>. Инструкции о том, как интерпретировать информацию на страницах ресурсов, можно найти <a href="formats.html">здесь</a>. Скорее всего, их проще  будет понять представленными в виде <i>логической таблицы</i> и <i>UML-диаграммы</i>. Кроме того, не забудьте зайти на вкладку с примерами для ознакомления с тем, какого рода информация может быть выражена с помощью ресурса. Увидеть, как элементы используются для передачи реальных данных часто оказывается более полезно, чем просто смотреть на определения. Также зайдите на вкладку профилей, чтобы увидеть примеры того, как можно ограничить различные ресурсы для использования в определенных контекстах.
 <!-- This information can all be found in the resource definition pages.  The resources most likely to be of interest can be
 found on the <a href="clinical.html">Clinical</a> and <a href="administration.html">Administrative</a> pages.  Instructions
 on how to interpret the information found on the resource pages can be found <a href="formats.html">here</a>.  The
@@ -269,7 +269,7 @@ useful than just looking at definitions.  Also, look at the Profiles tab to see 
 constrained for use in particular contexts. -->
 </p>
 <p>
-Клинический и опыт других доменных областей, а также отзывы всегда приветствуются, поскольку мы продолжаем заниматься уточнением спецификации FHIR. В верхней части страницы каждого ресурса находится ссылка на страницу рабочей группы, ответственной за конкретно этот ресурс. Если у вас есть отзывы по ресурсам, рассмотрите возможность своего участия.
+Опыт использования FHIR в системе здравоохранения и других доменных областях, а также отзывы всегда приветствуются, поскольку мы продолжаем заниматься уточнением спецификации FHIR. В верхней части страницы каждого ресурса находится ссылка на страницу рабочей группы, ответственной за каждый конкретный ресурс. Если у вас есть отзывы по ресурсам, рассмотрите возможность своего участия.
 <!-- Clinician and other domain expertise and feedback is always welcome as we continue refining the FHIR specification.  At the top
 of each resource page is a link to the home page for the work group responsible for that particular resource.  If you have feedback
 on resource design, consider getting involved. -->
