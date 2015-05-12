@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
 The List resource is a flat, possibly ordered, collection of records. List resources are used in many places, 
 including allergies, medications, alerts, family history, medical history, etc. List resources can be used to 
@@ -22,7 +22,7 @@ subset of AllergyIntolerances that are deemed to be "current".
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
 There are five mechanisms in FHIR for communicating collections of resources:
 </p>

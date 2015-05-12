@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
 A flag is typically presented as a label in a prominent location in a patient chart to notify the clinician of potential issues, 
 though it may also appear in other contexts.  E.g. instructions to a radiology technician. The information in the flag will 
@@ -47,7 +47,7 @@ should see particular flags, will vary by interoperability community.
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
 Flags may highlight a highly condensed view of information found in the <a href="allergyintolerance.html">AllergyIntolerance</a>, 
 <a href="condition.html">Condition</a>, <a href="observation.html">Observation</a>, <a href="procedure.html">Procedure</a> and possibly 

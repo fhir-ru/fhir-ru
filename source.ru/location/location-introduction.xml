@@ -2,7 +2,7 @@
 
 	<div>
 		
-	<h2>Scope and Usage</h2>
+	<h2>Область применения и использование</h2>
 <p>
 A Location includes both incidental locations (a place which is used for healthcare without prior designation or authorization) and 
 dedicated, formally appointed locations. Locations may be private, public, mobile or fixed and scale from small 
@@ -27,7 +27,7 @@ freezers to full hospital buildings or parking garages.
   </p>
 </div>
 <div>
-	<h2>Boundaries and Relationships</h2>
+	<h2>Границы и связи</h2>
   <p>
     Locations and Organizations are very closely related resources and can often be mix/matched/confused.<br/>
 		The Location is intended to describe the more physical structures managed/operated by an organization, where the Organization is intended to

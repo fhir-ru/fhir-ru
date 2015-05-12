@@ -11,7 +11,7 @@ services.
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
 This resource overlaps with others such as <a href="device.html">Device</a> and <a href="medication.html">Medication</a>.
 The <b>Supply</b> resource may be used to describe medications and devices when handling them generically (as any other supply).  For

@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
     
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
 This resource is used to share relevant information required to support a referral request or a transfer of care request from one 
 practitioner or organization to another. It is intended for use when a patient is required to be referred to another provider for a 
@@ -27,7 +27,7 @@ an acute care setting to rehabilitation, aged care, or skilled nursing facility.
     
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
 ReferralRequest is closely related to other types of "request" resources, particularly <a href="diagnosticorder.html">DiagnosticOrder</a>
 and <a href="procedurerequest.html">ProcedureRequest</a>.  In fact, for some services, it may be appropriate to use any one of these
@@ -77,7 +77,7 @@ resources may be used to help manage such workflows
 
 <!--
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст</h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>

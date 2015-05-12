@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p> 
 Care Plans are used in many of areas of healthcare with a variety of scopes.
 They can be as simple as a general practitioner keeping track of when their 
@@ -49,7 +49,7 @@ sufficient for common essential use cases.
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
 For simplicity sake, CarePlan allows the in-line definition of activities as part of a plan using 
 the <code>activity.detail</code> element.  However, activities can also be defined using references

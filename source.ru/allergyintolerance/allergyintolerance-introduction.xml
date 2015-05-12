@@ -153,7 +153,7 @@ such as history, examination and diagnoses stored elsewhere in the record, if it
 </p>
 
 <p>
-<b>Misuse</b></p>
+<b>Неправильное использование<!-- Misuse --></b></p>
 <ul>
 <li>Not to be used for recording physiological reactions to physical agents, such as heat, cold, sunlight, 
   vibration, exercise activity, by infectious agents or food contaminants. Use <a href="condition.html">Condition</a> instead</li>
@@ -168,7 +168,7 @@ such as history, examination and diagnoses stored elsewhere in the record, if it
 
 <!-- (optional):
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст</h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>
