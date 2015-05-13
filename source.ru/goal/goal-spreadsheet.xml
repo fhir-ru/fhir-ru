@@ -938,12 +938,12 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the intended objective(s) of patient care</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает поставленные цели ухода за пациентом<!-- Describes the intended objective(s) of patient care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the intended objective(s) of patient care, for example, weight loss, restoring an activity of daily living, etc.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает поставленные цели ухода за пациентами, например потеря веса, восстановление активности в повседневной жизни и т. д.<!-- Describes the intended objective(s) of patient care, for example, weight loss, restoring an activity of daily living, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Целью может быть достижение конкретного изменения или просто поддержание текущего состояния, или даже замедление ухудшение.<!-- Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">.outboundRelationship[typeCode&lt;=OBJ].</Data><NamedCell
