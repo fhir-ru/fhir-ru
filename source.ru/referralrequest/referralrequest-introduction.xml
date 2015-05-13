@@ -3,7 +3,7 @@
 <div>
 <h2>Область применения и использование</h2>
 <p>
-Данный ресурс используется для создания запросов на направление к другим специалистам или передачу пациента на попечение другому специалисту или организации. Предназначен для использования, когда требуется направить пациента к другому провайдеру для консультации/заключения другого врача и/или краткосрочного или долгосрочного ведения по одному или нескольким вопросам или проблемам здоровья.
+Данный ресурс используется для создания запросов на направление к другим специалистам или передачу пациента другому специалисту или организации. Предназначен для использования, когда требуется направить пациента к другому провайдеру для консультации/заключения другого врача и/или краткосрочного или долгосрочного ведения по одному или нескольким вопросам или проблемам здоровья.
 <!-- This resource is used to share relevant information required to support a referral request or a transfer of care request from one 
 practitioner or organization to another. It is intended for use when a patient is required to be referred to another provider for a 
 consultation/second opinion and/or for short term or longer term management of one or more health issues or problems. --> 
@@ -16,8 +16,8 @@ consultation/second opinion and/or for short term or longer term management of o
   <li>Запрос на консультацию у специалиста</li>
   <li>Направление на предоставление общественных услуг</li>
   <li>Направление на предоставление услуг сиделки</li>
-  <li>Запрос на проведение оценки для помещения в доме для престарелых</li>
-  <li>Запрос для фармацевта на обзор лекарственного средства</li>
+  <li>Запрос на проведение оценки для размещения в доме престарелых</li>
+  <li>Запрос на фармацевтический обзор лекарственного средства</li>
   <li>Направление на физиотерапию или трудовую терапию</li>
 <!--   <li>Request for a consult from a specialist</li>
   <li>Referral for support from community services</li>
@@ -38,7 +38,7 @@ an acute care setting to rehabilitation, aged care, or skilled nursing facility.
 <div>
 <h2>Границы и связи</h2>
 <p>
-Ресурс ReferralRequest тесно связан с другими типами ресурсов-запросов, в частности с <a href="diagnosticorder.html">DiagnosticOrder</a> и <a href="procedurerequest.html">ProcedureRequest</a>. В действительности, для некоторых услуг может быть целесообразным использовать любой из этих ресурсов для запроса на выполнение услуги. Какой из них будет использоваться, зависит от контекста и принятой в организации практики. Когда неясно, какой ресурс использовать, могут быть полезны следующие принципы:
+Ресурс ReferralRequest тесно связан с другими типами ресурсов-запросов, в частности с <a href="diagnosticorder.html">DiagnosticOrder</a> и <a href="procedurerequest.html">ProcedureRequest</a>. Фактически, для некоторых услуг может быть целесообразным использовать любой из этих ресурсов для запроса на выполнение услуги. Какой из них будет использоваться, зависит от контекста и принятой в организации практики. Когда неясно, какой ресурс использовать, помогут следующие принципы:
 <!-- ReferralRequest is closely related to other types of "request" resources, particularly <a href="diagnosticorder.html">DiagnosticOrder</a>
 and <a href="procedurerequest.html">ProcedureRequest</a>.  In fact, for some services, it may be appropriate to use any one of these
 resources to request that the service be performed.  Which one is used may be driven by organization practice and by context.  When
@@ -46,7 +46,7 @@ it is unclear which to use, the following principles may be helpful: -->
 </p>
 <ul>
 <li>
-ProcedureRequest или DiagnosticOrder обычно используются, когда запрашивающий врач имеет и желает проявить полномочия (и компетентность) для точного решения, какое именно действие следует выполнить.
+ProcedureRequest или DiagnosticOrder обычно используются, когда запрашивающий врач имеет полномочия (и компетентность) и желает воспользоваться ими, чтобы принять решение о том, какое именно действие следует выполнить.
 <!-- ProcedureRequest or DiagnosticOrder are typically used when the requesting clinician has and wishes to exercise the authority 
 (and expertise) to decide exactly what action will be done. -->
 </li>
@@ -56,21 +56,20 @@ ReferralRequest используется, когда запрашивающий 
 and/or authority to determine the specific action to take. -->
 </li>
 <li>
-Выбор между процедурой и диагностическим обследованием обычно обусловлен тем, насколько инвазивным будет это мероприятие. Многие инвазивные процессы оформляют, как правило, в виде процедур, хотя грань между ними может варьироваться в зависимости от организации.
+Выбор между процедурой и диагностическим обследованием обычно обусловлен тем, насколько инвазивным будет это мероприятие. Многие инвазивные обследования оформляют, как правило, в виде процедур, хотя грань между ними может варьироваться в зависимости от организации.
 <!-- Whether an activity is deemed to be a procedure or only a diagnostic order is typically driven by how invasive the diagnostic process
 is.  More invasive processes are typically represented as procedures, though the dividing line may vary by organization. -->
 </li>
 </ul>
 <p>
-Независимо от приведенных выше инструкций, системы должны быть готовы к некоторой степени перекрытия между этими ресурсами и быть готовы выполнять поиск по нескольким ресурсам в тех случаях, когда не может быть гарантировано это разграничение. Кроме того, в некоторых рабочих процессах может участвовать больше одного типа ресурсов или даже все три. Например после получения ReferralRequest врач может инициировать DiagnosticOrder. Затем служба диагностики может инициировать ProcedureRequest.
+Независимо от приведенных выше инструкций, системы должны быть готовы к частичному пересечению этих ресурсов и быть готовы выполнять поиск по нескольким ресурсам в тех случаях, когда разграничение гарантировать невозможно. Кроме того, в некоторых рабочих процессах может участвовать больше одного типа ресурсов или даже все три. Например после получения ReferralRequest врач может инициировать DiagnosticOrder. Затем служба диагностики может инициировать ProcedureRequest.
 <!-- Irrespective of the guidance above, systems should be prepared for some degree of overlap between these resources and be
 prepared to execute searches against multiple resources in cases where differentiation cannot be guaranteed.  As well, in some workflows
 more than one type of resource or even all three might exist.  E.g. Upon receiving a ReferralRequest a practitioner might initiate a 
 DiagnosticOrder.  The diagnostic service might then initiate a ProcedureRequest. -->
 </p>
 <p>
-Под "направлением" часто подразумевается документ, который содержит большое количество информации о направляемом пациенте. на самом деле Этот ресурс не содержит клиническую подноготную пациента. Вместо этого он содержит ссылки на другие многочисленные ресурсы, в которых задана эта информация. Например на ресурсы Condition, Family History, Allergy/Intolerance, Alerts, Medication, Diagnostic Reports и т. д. В то время как некоторые системы могут положить ReferralRequest и всю эту справочную информацию
-в ресурс <a href="documents.html">Document</a> для доставки получателю. Тем не менее, <a href="http.html">REST</a>, <a href="messaging.html">Messaging</a> и <a href="services.html">Services</a>  также являются подходящими архитектурами для управления направлениями и могут быть более подходящими там, где необходимо эффективное управление рабочим процессом.
+Принято считать, что "направление" - это документ, который содержит большое количество информации о направляемом пациенте. На самом деле, этот ресурс не содержит анамнестических данных пациента. Вместо этого он содержит ссылки на другие многочисленные ресурсы, которые в совокупности дают полную информацию о пациенте. Это такие ресурсы как Condition, Family History, Allergy/Intolerance, Alerts, Medication, Diagnostic Reports и т. д. Важно отметить, что некоторые системы могут поместить ReferralRequest и всю эту справочную информацию в ресурс <a href="documents.html">Document</a> для доставки получателю. Тем не менее, <a href="http.html">REST</a>, <a href="messaging.html">Messaging</a> и <a href="services.html">Services</a>  также являются подходящими архитектурами для управления направлениями и могут пригодится там, где необходимо эффективное управление рабочим процессом.
 <!-- A "referral" is often thought of as a document that contains a great deal of information about the patient being referred.  This
 resource does not actually contain the clinical background information for the patient.  Instead, it supports references to
 the numerous other resources that define this information.  For example, Condition, Family History, Allergy/Intolerance, Alerts, 
@@ -80,7 +79,7 @@ into a <a href="documents.html">Document</a> for delivery to the recipient.  How
 referrals and may be more appropriate where active workflow management is needed. -->
 </p>
 <p>
-Сведения о типе желаемого ухода в рамках направления могут быть переданы с использованием любого из ресурсов-заказов (т. е. содержащих в названии слова "request" или "order") вероятно со статусом "proposed". Ресурс <a href="careplan.html">CarePlan</a> можно использовать для описания более сложных запросов на комбинацию услуг. Более того, CarePlan может ссылаться на ReferralRequest.
+Сведения о типе желаемого ухода в рамках направления могут быть переданы с помощью любого из ресурсов-заказов (т. е. содержащих в названии слова "request" или "order") и, скорее всего, будут иметь статус "proposed". Ресурс <a href="careplan.html">CarePlan</a> можно использовать для описания более сложных запросов на комбинацию услуг. Более того, CarePlan может ссылаться на ReferralRequest.
 <!-- The details of the type of care desired as part of a referral may be conveyed using any of the "request" or "order" resources,
 likely with a status of "proposed".  The <a href="careplan.html">CarePlan</a> resource can be used to describe more sophisticated
 requests for combinations of services.  Likewise, ReferralRequest may be referenced as part of a CarePlan. -->
