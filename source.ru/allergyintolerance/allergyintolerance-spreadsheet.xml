@@ -1293,7 +1293,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">immune | non-immune - <!-- Underlying mechanism (if known) -->Лежащий в основе механизм (если известно)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">immune | non-immune - <!-- Underlying mechanism (if known) -->Лежащий в основе механизм (если известен)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Определение лежащего в основе физиологического механизма реакции<!-- Identification of the underlying physiological mechanism for the Reaction Risk --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

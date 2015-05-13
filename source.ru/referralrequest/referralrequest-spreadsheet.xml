@@ -979,9 +979,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A request for referral or transfer of care</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на обслуживание или передачу на попечение<!-- A request for referral or transfer of care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organisation</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Используется для записи и отправки информации по запросу на обслуживание или передачу пациента на попечение другому провайдеру или организации <!-- Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organisation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
