@@ -1001,9 +1001,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A request for a diet, formula or nutritional supplement</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Заказ на питание, молочную смесь или пищевую добавку<!-- A request for a diet, formula or nutritional supplement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Заказ на поставку питания, кормление смесями (энтеральное) или пероральной пищевой добавки пациенту/резиденту<!-- A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Referenced by an Order Request (workflow)</Data><NamedCell

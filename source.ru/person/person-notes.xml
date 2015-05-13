@@ -1,27 +1,32 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-  <h2>De-normalized Data</h2>
+  <h2>Денормализация данных<!-- De-normalized Data --></h2>
   <p>
-    Most of the properties of the Person resource are replicated within the other resources that they
-    are shared with. This is intentional and highlights that the "disconnectedness" of the resources.
+  Большинство свойств ресурса Person дублируются в других ресурсах, с которыми он эти свойства разделяет. Это сделано умышленно и подчеркивает "несвязанность" ресурсов.
+    <!-- Most of the properties of the Person resource are replicated within the other resources that they
+    are shared with. This is intentional and highlights that the "disconnectedness" of the resources. -->
   </p>
   <p>
-    Not many systems actually implement a shared Person record, and as such the values DO become out of
+  На самом деле, небольшое количество систем используют записи формата Person совместно, что приводит к рассинхронизации данных. Подключение данного ресурса позволяет системам идентифицировать другие экземпляры текущих личных данных конкретного лица через централизованный реестр, который помогает поддерживать все данные в обновленном виде. 
+    <!-- Not many systems actually implement a shared Person record, and as such the values DO become out of
     sync with each other. The inclusion of this resource does permit a capability for systems to identify
     other instances of this actual person's data via a centralized registry that can assist in keeping things
-    up to date.
+    up to date. -->
   </p>
   
   <h2>
-    Person and Linking
+  Ресурс Person и создание ссылок
+    <!-- Person and Linking -->
   </h2>
   <p>
-  The <i>link</i> element is used to relate resources under a common person record. 
-  This element supports two primary scenarios where other resources refer to the same person resource.
+  Элемент <i>link</i> используется для того, чтобы объединять ресурсы под общей записью Person. Данный элемент поддерживает два основных сценария, когда другие ресурсы обращаются к одному ресурсу Person.
+  <!-- The <i>link</i> element is used to relate resources under a common person record. 
+  This element supports two primary scenarios where other resources refer to the same person resource. -->
   </p>
   <p>
-    The <i>link</i> element cannot be used to link to RelatedPerson entries. So we can utilize a Person
-    resource to relate these elements together identifying them as the same individual.
+  Элемент <i>link</i> можно использовать для создания ссылки на записи ресурса RelatedPerson. Таким образом, мы можем использовать ресурс Person, чтобы объединить эти элементы между собой и идентифицировать их все как относящиеся к одному лицу.
+    <!-- The <i>link</i> element cannot be used to link to RelatedPerson entries. So we can utilize a Person
+    resource to relate these elements together identifying them as the same individual. -->
   </p>
 
   <h2>
