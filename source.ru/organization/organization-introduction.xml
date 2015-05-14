@@ -21,15 +21,19 @@ The <a href="group.html">Group</a> resource is used to identify a collection of 
 that are gathered for the purpose of analysis or acting upon, but are not expected to act themselves. -->
 </p>
 	<p>
-		The Organization resource often exists as a hierarchy of organization resources, using the <i>part-of</i> property to provide
-		the association of the child to its parent organization.<br/>
-		This organizational hierachy helps communicate the conceptual structure, where-as the Location resource provides the physical
-		representation of the heirachy.<br/>
-		The linkage between Organization and Location is from each point in the location hierarchy to the appropriate level in the 
-		Organization hierarchy. These links don't all have to be to the top level Organization.<br/>
-		When populating the organization and location hierarchies there is often not a clear distinction between these 2, however
+	Ресурс Organization часто входит в состав иерархии ресурсов Organization, используя свойство <i>part-of</i> для указания связи между родительской и дочерней организациями.
+		<!-- The Organization resource often exists as a hierarchy of organization resources, using the <i>part-of</i> property to provide
+		the association of the child to its parent organization. --><br/>
+		Подобная иерархия организаций способствует передаче концептуальной структуры, тогда как ресурс Location обеспечивает физическое расположение такой иерархии.		
+		<!-- This organizational hierachy helps communicate the conceptual structure, where-as the Location resource provides the physical
+		representation of the heirachy. --><br/>
+		Связь между организацией и местоположением указывается в каждой точке в иерархии местоположений и ведет на соответствующий уровень в иерархии организаций. Не все эти ссылки должны вести на организацию верхнего уровня.
+		<!-- The linkage between Organization and Location is from each point in the location hierarchy to the appropriate level in the 
+		Organization hierarchy. These links don't all have to be to the top level Organization. --><br/>
+		При составлении иерархии организаций и местоположений зачастую между ними нет четкого различия, однако, для помощи в принятии решения, местоположения всегда используются для записи того, где именно происходит оказание услуг, и, следовательно, с которыми связаны случаи обслуживания и наблюдения. Свойство Organization на этих ресурсах может не быть местоположением, где была оказана услуга.
+		<!-- When populating the organization and location hierarchies there is often not a clear distinction between these 2, however
 		to assist in making the decision, Locations are always used for recording where a service occurs, and hence where encounters
-		and observations are associated. The Organization property on these resources may not be the location where the service took place.
+		and observations are associated. The Organization property on these resources may not be the location where the service took place. -->
 	</p>
 </div>
 
