@@ -978,9 +978,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Event record kept for security purposes</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запись о событии, сделанная в целях безопасности<!-- Event record kept for security purposes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Запись о событии, сделанная в целях ведения журнала безопасности. Типовое применение включает в себя обнаружение попыток внедрения и контроль неуместного использования<!-- A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Based on ATNA (RFC 3881)</Data><NamedCell
