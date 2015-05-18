@@ -1005,9 +1005,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Specific and identified anatomical location</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Конкретное и идентифицированное анатомическое расположение<!-- Specific and identified anatomical location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Record details about the anatomical location of a specimen or body part.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Детализирующая запись об анатомическом расположении образца для анализа или части тела. Этот ресурс можно использовать, когда кодированный концепт не обеспечивает необходимого для случая использования уровня детализации.<!-- Record details about the anatomical location of a specimen or body part.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>

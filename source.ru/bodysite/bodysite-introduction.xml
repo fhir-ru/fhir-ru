@@ -4,11 +4,14 @@
 <h2>Область применения и использование</h2>
 <blockquote>
 <p>
-<b><a name="dstu">Note to Balloters</a>:  We are seeking input on whether BodySite should be an independent resource or a datatype to be used when a resource element is an anatomic location (for example Observation.bodySite)</b>
+<b><a name="dstu">Примечание для участвующих в голосовании</a>:  мы ожидаем входные данные о том, следует ли сделать BodySite независимым ресурсом или типом данных, который будет использоваться, когда элемент ресурса описывает анатомическое расположение (например Observation.bodySite)</b>
+<!-- <b><a name="dstu">Note to Balloters</a>:  We are seeking input on whether BodySite should be an independent resource or a datatype to be used when a resource element is an anatomic location (for example Observation.bodySite)</b> -->
 </p>
 </blockquote>
 <p>
- The BodySite resource contains details about the anatomical location of a specimen or body part, including patient information, identifiers, as well as text descriptons and images.  It provides for the addition of modifiers such as laterality and directionality to the anatomic location for those use cases where precoordination of codes is not possible.  The BodySite resource supports recording and tracking of an anatomic location or structure on a patient outside the context of another resource.  For example it can be the target of a <a href="procedure.html">Procedure</a> resource or <a href="observation.html">Observation</a> resource.
+Ресурс BodySite содержит подробные сведения об анатомическом расположении образца для анализа или части тела, включая информацию о пациенте, идентификаторы, а также описания и изображения. Он предусматривает добавление к анатомическому расположению модификаторов, таких как латеральность и направленность для тех случаев, где использование предопределенных кодов не представляется возможным.
+Ресурс BodySite поддерживает запись и отслеживание анатомического расположения или структуры на пациенте вне зависимости от контекста другого ресурса. Например он может быть целью ресурса <a href="procedure.html">Procedure</a> или <a href="observation.html">Observation</a>.
+<!--  The BodySite resource contains details about the anatomical location of a specimen or body part, including patient information, identifiers, as well as text descriptons and images.  It provides for the addition of modifiers such as laterality and directionality to the anatomic location for those use cases where precoordination of codes is not possible.  The BodySite resource supports recording and tracking of an anatomic location or structure on a patient outside the context of another resource.  For example it can be the target of a <a href="procedure.html">Procedure</a> resource or <a href="observation.html">Observation</a> resource. -->
 </p>
 </div>
 
@@ -16,7 +19,8 @@
 <div>
 <h2>Границы и связи</h2>
 <p>
-The BodySite resource is not intended to substitute for precoordination of codes.  If precoordination of codes is  supported by an implementation and a resource element has a choice of codeableConcept or BodySite, the codeableConcept should be used.  This resource is not intended for describing the type of anatomical location but rather a specific body site on a specific patient.
+Ресурс BodySite не предназначен для замены предкоординации кодов. Если предкоординация кодов поддерживается реализацией, и элемент ресурса поддерживает выбор между codeableConcept и BodySite, то следует использовать codeableConcept. Данный ресурс предназначен для описания не типа анатомического расположения, а определенного участка тела конкретного пациента.
+<!-- The BodySite resource is not intended to substitute for precoordination of codes.  If precoordination of codes is  supported by an implementation and a resource element has a choice of codeableConcept or BodySite, the codeableConcept should be used.  This resource is not intended for describing the type of anatomical location but rather a specific body site on a specific patient. -->
 </p>
 </div>
 
