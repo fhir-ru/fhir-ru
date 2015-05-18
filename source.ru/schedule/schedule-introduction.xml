@@ -68,7 +68,7 @@
 	Если у условленной встречи есть 2 участника, определенное медицинское изделие и помещение, тогда может иметься расписание для каждого из этих ресурсов, с которыми придется потребоваться свериться, чтобы гарантировать отсутствие коллизий.
 			<!-- If an appointment has 2 practitioners, a specific medical device and a room then there could be a schedule for
 			each of these resources that may need to be consulted to ensure that no collisions occur. --><br/>
-			Если необходима сверка с расписанием, тогда будет одно создано, охватывающее горизонт планирования для данного времени условленной встречи.
+			Если необходима сверка с расписанием, тогда одно будет создано, охватывающее горизонт планирования для данного времени условленной встречи.
 		<!-- 	If the schedule needed to be consulted, then there would be one created covering the planning horizon for the
 			time of the appointment. -->
   </p>

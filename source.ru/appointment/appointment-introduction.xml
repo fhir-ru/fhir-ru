@@ -69,7 +69,7 @@
 				</p>
 			</li>
 			<li>
-				<b>Replying to the request</b>
+				<b>Ответ на запрос<!-- Replying to the request --></b>
 				<p>
 				Ответ на запрос выполняется просто человеком/системой, обрабатывающими запрос, обновляя по необходимости статусы участников. Если участвует несколько систем, то они создадут ресурсы AppointmentResponse с нужными статусами.
 					<!-- The reply process is simply performed by the person/system handing the requests updating
