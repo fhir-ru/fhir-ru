@@ -1,9 +1,9 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h2>Open Issues</h2>
+<h2>Открытые вопросы<!-- Open Issues --></h2>
 <ul>
-  <li>This resource combines the concepts of "Care Plan" and "Care Team" into a single resource.  Is this appropriate?</li>
-  <li>DSTU: At present, the patient element is optional to allow experimentation with care plan templates, though the resource was not designed for this use. Feedback on this subject is requested during the trial use period.</li>
+  <li>Данный ресурс объединяет концепции "Care Plan" и "Care Team" в один ресурс. Допустим ли такой подход?<!-- This resource combines the concepts of "Care Plan" and "Care Team" into a single resource.  Is this appropriate? --></li>
+  <li>DSTU: В настоящее время элемент "patient" является необязательным, чтобы можно было экспериментировать с шаблонами планов по уходу, несмотря на то, что ресурс создавался не для этого. Во время пробного использования ожидаются отзывы на эту тему.<!-- DSTU: At present, the patient element is optional to allow experimentation with care plan templates, though the resource was not designed for this use. Feedback on this subject is requested during the trial use period. --></li>
 </ul>
 <!-- insert xhtml content here -->
 

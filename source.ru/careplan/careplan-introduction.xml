@@ -3,65 +3,77 @@
 <div>
 <h2>Область применения и использование</h2>
 <p> 
-Care Plans are used in many of areas of healthcare with a variety of scopes.
+Планы медицинского обслуживания применяются во многих областях здравоохранения.
+Они могут быть как очень простыми, например терапевт ведет учет, когда его пациенту необходима следующая иммунизация от столбняка, так и очень детализированными, например план для онкологического больного, охватывающий диету, химиотерапию, облучение, лабораторные анализы и консультирование с подробным распределением сроков, предварительными условиями и целями.
+<!-- Care Plans are used in many of areas of healthcare with a variety of scopes.
 They can be as simple as a general practitioner keeping track of when their 
 patient is next due for a tetanus immunization through to a detailed plan for
 an oncology patient covering diet, chemotherapy, radiation, lab work and
-counseling with detailed timing relationships, pre-conditions and goals.
+counseling with detailed timing relationships, pre-conditions and goals. -->
 </p>
 <p>
-This resource takes an intermediate approach to complexity.  It captures basic details about
+В данном ресурсе применяется посреднический подход к сложности. В нем фиксируются базовые сведения о том, кто участвует и какие действия планируются, не рассматривая дискретные данные о зависимостях и временных отношениях. Это обеспечивается там, где необходимо, с помощью механизма расширений.
+<!-- This resource takes an intermediate approach to complexity.  It captures basic details about
 who is involved and what actions are intended without dealing in discrete data
 about dependencies and timing relationships.  These can be supported where
-necessary using the extension mechanism.
+necessary using the extension mechanism. -->
 </p>
 <p>
-The scope of care plans may vary widely.  Examples include:
+Сфера действия планов по уходу может широко варьироваться. Примеры включают в себя:
+<!-- The scope of care plans may vary widely.  Examples include: -->
 </p>
 <ul>
 <li>
-Multi-disciplinary cross-organizational care plans.  E.g. An oncology plan including the 
-oncologist, home nursing staff, pharmacy and others
+Мультидисциплинарные междуорганизационные планы медицинского ухода. Например онкологический план, включая онколога, персонал сестринского ухода на дому, аптеку и других
+<!-- Multi-disciplinary cross-organizational care plans.  E.g. An oncology plan including the 
+oncologist, home nursing staff, pharmacy and others -->
 </li>
 <li>
-Plans to manage specific disease/condition(s) (e.g. nutritional plan for a patient post bowel 
+Планы для управления определенным заболеванием/состоянием (например диетологический план для пациента после резекции кишечника, неврологический план после травмы головы, пренатальный план, послеродовой план, план психологической помощи при переживании горя и т. п.)
+<!-- Plans to manage specific disease/condition(s) (e.g. nutritional plan for a patient post bowel 
 resection, neurological plan post head injury, pre-natal plan, post-partum plan, grief management 
-plan, etc.)
+plan, etc.) -->
 </li>
 <li>
-Decision support-generated plans following specific practice guidelines (e.g. stroke care plan, 
-diabetes plan, falls prevention, etc.)
+Планы, сгенерированные системами поддержки принятия решений, придерживающиеся определенных практических руководств (например план ухода при инсульте, при диабете, план по предотвращению падений и т. д.)
+<!-- Decision support-generated plans following specific practice guidelines (e.g. stroke care plan, 
+diabetes plan, falls prevention, etc.) -->
 </li>
 <li>
-Definition and management of a care team, including roles associated with a particular condition 
-or set of conditions.
+Определение и управление бригадами медицинской помощи, включая роли, ассоциированные с определенным состоянием или рядом состояний.
+<!-- Definition and management of a care team, including roles associated with a particular condition 
+or set of conditions. -->
 </li>
 <li>
-Self-maintained patient or care-giver authored plans identifying their goals and an integrated
-understanding of actions to be taken
+Самоподдерживающиеся планы, составленные пациентом или лицом, осуществляющим уход, отображающие их цели и общее понимание действий, которые будут предприняты
+<!-- Self-maintained patient or care-giver authored plans identifying their goals and an integrated
+understanding of actions to be taken -->
 </li>
 </ul>
 <p>
-Comments are welcome about the appropriateness of the proposed level of 
+Приветствуются комментарии о целесообразности предложенного уровня гранулярности, не слишком ли много деталей, чем требуется большинству систем, или их недостаточно для большей части сценариев.
+<!-- Comments are welcome about the appropriateness of the proposed level of 
 granularity, whether it's too much detail for what most systems need, or not
-sufficient for common essential use cases.
+sufficient for common essential use cases. -->
 </p>
 </div>
 
 <div>
 <h2>Границы и связи</h2>
 <p>
-For simplicity sake, CarePlan allows the in-line definition of activities as part of a plan using 
+Ради простоты, CarePlan разрешает встроенное определение активностей в рамках плана с помощью элемента <code>activity.detail</code>. Однако активности также можно задавать с помощью ссылок на различные ресурсы-запросы. Эти ссылки могут вести на ресурсы в статусе "planned" или на активный заказ. Запланированные активности могут существовать (например условленные встречи) без необходимости CarePlan вообще. Ресурсы CarePlan используются, когда есть необходимость в групповых активностях, целях и/или участниках вместе для обеспечения некоторой степени контекста.
+<!-- For simplicity sake, CarePlan allows the in-line definition of activities as part of a plan using 
 the <code>activity.detail</code> element.  However, activities can also be defined using references
 to the various "request" resources.  These references could be to resources with a status of
 "planned" or to an active order.  It is possible for planned activities to exist (e.g. appointments)
 without needing a CarePlan at all.  CarePlans are used when there's a need to group activities,
-goals and/or participants together to provide some degree of context.
+goals and/or participants together to provide some degree of context. -->
 </p>
 <p>
-CarePlans can be tied to specific <a href="condition.html">Conditions</a> however they can also be 
+CarePlans могут быть привязаны к определенным <a href="condition.html">Conditions</a>, а могут быть независимыми и фокусироваться на определенном типе ухода (например психологический, диетологический) или уходе, предоставляемом определенным специалистом или группой специалистов.
+<!-- CarePlans can be tied to specific <a href="condition.html">Conditions</a> however they can also be 
 condition-independent and instead focused on a particular type of care (e.g. psychological, nutritional)
-or the care delivered by a particular practitioner or group of practitioners.
+or the care delivered by a particular practitioner or group of practitioners. -->
 </p>
 </div>
 
