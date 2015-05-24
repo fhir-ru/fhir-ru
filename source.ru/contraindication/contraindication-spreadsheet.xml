@@ -976,9 +976,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Clinical issue with action</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Клиническая проблема с действием<!-- Clinical issue with action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient.  E.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает реальную или потенциальную клиническую проблему с или между одним или несколькими активными или предполагаемыми клиническими действиями для пациента. Например взаимодействие лекарственных средств, частота безрезультатного лечения, конфликт между процедурой и состоянием и т. д.<!-- Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient.  E.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>

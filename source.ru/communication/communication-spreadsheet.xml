@@ -973,7 +973,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A record of information transmitted from a sender to a receiver</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запись о передаче информации от отправителя к получателю<!-- A record of information transmitted from a sender to a receiver --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Событие передачи информации. Например оповещение, которое было отправлено ответственному провайдеру, учреждение общественного здравоохранения было уведомлено о подлежащем сообщению состоянии. <!-- An occurrence of information being transmitted. E.g., an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
