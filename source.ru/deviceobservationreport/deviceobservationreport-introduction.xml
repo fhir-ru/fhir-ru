@@ -3,59 +3,76 @@
 <div>
 <h2>Область применения и использование</h2>
 <p>
-This resource carries a set of data from a device that is observing a subject. Most commonly, the subject is a patient,
+Данный ресурс содержит набор данных от устройства, наблюдающего субъект. Чаще всего этим субъектом выступает пациент, а устройством - что-нибудь типа прибора для снятия основных показателей состояния организма или прибора для измерения уровня глюкозы, при этом другие виды субъектом и устройств также допустимы.
+<!-- This resource carries a set of data from a device that is observing a subject. Most commonly, the subject is a patient,
 and the device is something like a vital signs monitor, or a glucose measurement device, but other kinds of subjects
-and devices are expected as well. 
+and devices are expected as well.  -->
 </p>
 <p>
-This resource does not cater for:
+Данный ресурс не служит для:
+<!-- This resource does not cater for: -->
 </p>
 <ul>
- <li>Supporting real-time analytics and in particular, alarms that might be raised as a result of such analysis</li>
- <li>Sending commands to a device</li>
+ <li>поддержки аналитики в режиме реального времени и, в частности, тревожных сигналов, которые могут вызываться в результате такого анализа</li>
+ <li>отправки команд медицинскому изделию</li>
+<!--  <li>Supporting real-time analytics and in particular, alarms that might be raised as a result of such analysis</li>
+ <li>Sending commands to a device</li> -->
 </ul>
 <p>
-This capability is expected to be subject of additional resources that are yet to be developed, and implmenter input on this is welcome.
+ожидается, что эта возможность будет предметом дополнительных ресурсов, которые еще не разработаны, и приветствуются входные данные от реализаторов по этому поводу.
+<!-- This capability is expected to be subject of additional resources that are yet to be developed, and implmenter input on this is welcome. -->
 </p>
 </div>
 
 <div>
 <h2>Границы и связи</h2>
 <p>
-There are 2 device related resources
+Есть 2 ресурса, связанных с медицинскими изделиями
+<!-- There are 2 device related resources -->
 </p>
 <ul>
- <li><a href="device.html">Device</a>  - An administrative resource that tracks individual devices of all kinds and their location. Primarily used for attribution of actions to devices</li>
- <li>DeviceObservationReport (this resource) - A record of a set of observations produced by a device</li>
+ <li><a href="device.html">Device</a>  - административный ресурс, которые отслеживает отдельные изделия всех видов и их расположение. В основном используется для соотнесения действий с изделиями</li>
+ <li>DeviceObservationReport (данный ресурс) - запись о ряде результатов наблюдений, выполненных изделием</li>
+<!--  <li><a href="device.html">Device</a>  - An administrative resource that tracks individual devices of all kinds and their location. Primarily used for attribution of actions to devices</li>
+ <li>DeviceObservationReport (this resource) - A record of a set of observations produced by a device</li> -->
 </ul>
 
 <p>
-Note that this resource is entirely concerned with devices that report data. Interacting with and
+Обратите внимание, что этот ресурс полностью относится к ресурсам, которые сообщают данные. Взаимодействие с и управление такими медицинскими изделиями, как инфузионная помпа не лежит в области действия данного ресурса (пока что не разработано решение для этого).
+Данный ресурс основан на ISO 11073.
+<!-- Note that this resource is entirely concerned with devices that report data. Interacting with and
 controlling devices such as infusion pumps etc. is not in scope for this resource (no solution for this yet). 
-This resource is based on ISO 11073.
+This resource is based on ISO 11073. -->
 </p>
 </div>
 
 <div>
 <h2>Предпосылки и контекст</h2>
-<h3>Structure of a Device Data Resource</h3>
+<h3>Структура ресурса для данных, полученных на устройстве<!-- Structure of a Device Data Resource --></h3>
 
 <p>
-A medical device is conceived of as a measuring device that is capable of reporting 
+Медицинское изделие представляется как измерительный прибор с возможностью сообщения серии групп измерений на регулярной основе. Ресурс возможностей устройства описывает вид данных, которые сообщает медицинское изделие. Основные понятия медицинских изделий приводятся в виде следующей основной структуры:
+<!-- A medical device is conceived of as a measuring device that is capable of reporting 
 a series of groups of measurements on a regular basis. The device capabilities resource 
 describes the kind of data that a medical device reports. Devices are conceptualised 
-using the following main structure:
+using the following main structure: -->
 </p>
 <ol>
- <li><b>Device</b> - The actual device that external systems communicate with. In 11073, this is known as a "Medical Device System" (MDS)</li>
+ <li><b>Device</b> - непосредственно само медицинское изделие, с которым общаются внешние системы. В 11073 они называются "Medical Device System" (MDS)</li>
+ <li><b>Virtual Medical Device</b> - связанная с медициной подсистема медицинского изделия. Виртуальное устройство, которое может быть частью содержащего его устройства или отдельным устройством, которое может с ним взаимодействовать</li>
+ <li><b>Channel</b> - собирает вместе данные физиологических измерений и выводимые данные</li>
+ <li><b>Metrics</b> - порция измеренных или выведенных данных, которые будут сообщаться аппаратом в виде результатов наблюдения</li>
+ <li><b>Facets</b> - дополнительные данные, которые уточняют метрику или способствуют ее оценке, сообщаемые в элементе observation.compartment</li>
+<!--  <li><b>Device</b> - The actual device that external systems communicate with. In 11073, this is known as a "Medical Device System" (MDS)</li>
  <li><b>Virtual Medical Device</b> - A medical-related subsystem of a medical device. The virtual device that may be part of the containing device, or a separate device that may be communicating with it</li>
  <li><b>Channel</b> - Groups together physiological measurement data and derived data</li>
  <li><b>Metrics</b> - A piece of measured or derived data that will be reported by the machine, reported as an observation</li>
- <li><b>Facets</b> - Additional data that qualifies the metric, or contributes to its assessment, reported in observation.compartment</li>
+ <li><b>Facets</b> - Additional data that qualifies the metric, or contributes to its assessment, reported in observation.compartment</li> -->
 </ol>
 
 <p>
-Very simple devices may have only a single virtual device with a single channel and one metric, while complex devices may have multiple items at every level. 
+Очень простые устройства могут иметь только одно виртуальное устройство с одним каналом и одной метрикой, в то время как сложные устройства могут иметь по несколько позиций на каждом уровне.
+<!-- Very simple devices may have only a single virtual device with a single channel and one metric, while complex devices may have multiple items at every level.  -->
 </p>
 </div>
  
