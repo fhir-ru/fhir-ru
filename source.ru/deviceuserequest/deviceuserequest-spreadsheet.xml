@@ -996,9 +996,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A request for a patient to use or be given a medical device</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на применение или выдачу пациенту медицинского изделия<!-- A request for a patient to use or be given a medical device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Представляет собой запрос на применение пациентом медицинского изделия. Медицинским изделием может выступать имплантируемый прибор или внешнее вспомогательное изделие, например ходок. <!-- Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
