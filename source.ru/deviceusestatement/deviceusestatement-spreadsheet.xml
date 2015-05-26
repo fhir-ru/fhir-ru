@@ -990,7 +990,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Запись об устройстве, которым пользовался пациент, появившаяся в результате сообщения пациента или другого клинициста.<!-- A record of a device being used by a patient where the record is the result of a report from the patient or another clinician. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
