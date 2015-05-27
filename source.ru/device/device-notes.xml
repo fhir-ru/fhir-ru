@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
-	<h3>Notes</h3>
-	<h4>Device Types</h4>
+	<h3>Примечания:<!-- Notes --></h3>
+	<h4>Типы медицинских изделий<!-- Device Types --></h4>
 	<p>
 		There are many sources of possible codes for device type. The example suggests to use device codes from RTM. Another source which is appropriate for many devices is the local UDI repository (in the US this is the GUDID database). The full UDI string is placed in the Device.udi element.  Alternatively, many jurisdictions have their own supply chain arrangements which define many useful codes.
 
