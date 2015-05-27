@@ -3,25 +3,32 @@
 <div>
 <h2>Область применения и использование</h2>
 <p>
-The DeviceMetric resource describes mandatory static properties that characterize a direct or derived, quantitative or qualitative biosignal measurement, setting, or calculation produced by a medical device. 
-The DeviceMetric resource can also be used to describe the non-static but highly relevant properties to the metric such as metric status, metric last calibration time and type, measurement mode, color, reference link to the parent DeviceComponent to where it belongs, and any capabilities that the metric offers (for example: setting the metric label).
+Ресурс DeviceMetric описывает обязательные статичные свойства, которые характеризуют прямое или производное, качественное или количественное измерение биосигналов, установку или вычисления, производимые медицинским изделием.
+Ресурс DeviceMetric также может использоваться для описания не статичных, но весьма актуальных свойств метрики, таких как статус метрики, дата последний калибровки метрики и ее тип, режим измерения, цвет, ссылка на родительский DeviceComponent, которому он принадлежит, а также любые возможности, которые предлагает метрика (например установка метки метрики).
+<!-- The DeviceMetric resource describes mandatory static properties that characterize a direct or derived, quantitative or qualitative biosignal measurement, setting, or calculation produced by a medical device. 
+The DeviceMetric resource can also be used to describe the non-static but highly relevant properties to the metric such as metric status, metric last calibration time and type, measurement mode, color, reference link to the parent DeviceComponent to where it belongs, and any capabilities that the metric offers (for example: setting the metric label). -->
 </p>
 <p>
-Note:
+Примечание:
+<!-- Note: -->
 </p>
 <p>
-For the initial scope, this DeviceMetric resource is only applicable to describe a single metric represents in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard.
+В соответствии с первоначальным замыслом, ресурс DeviceMetric применим для описания представления только одной метрики в дереве вложений, которое создается контекстным сканером для любого медицинского изделия, которое реализовано или произведено в соответствии со стандартом ISO/IEEE 11073.
+<!-- For the initial scope, this DeviceMetric resource is only applicable to describe a single metric represents in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard. -->
 </p>
 </div>
 
 <div>
 <h2>Границы и связи</h2>
 <p>
-There are two related resources
+Имеется два связанных ресурса
+<!-- There are two related resources -->
 </p>
 <ul>
- <li><a href="device.html">Device</a>  - The physical device that this DeviceMetric belongs to.</li>
- <li><a href="devicecomponent.html">DeviceComponent</a>  - The DeviceComponent that this DeviceMetric is part of. This can be a DeviceComponent of any kind like a VirtualMedicalDevice, a MedicalDeviceSystem, or a Channel.</li>
+ <li><a href="device.html">Device</a>  - физическое изделие, которому принадлежит данный DeviceMetric.</li>
+ <li><a href="devicecomponent.html">DeviceComponent</a>  - DeviceComponent, частью которого является этот DeviceMetric. Это может быть DeviceComponent любого вида, например VirtualMedicalDevice, MedicalDeviceSystem или Channel.</li>
+<!--  <li><a href="device.html">Device</a>  - The physical device that this DeviceMetric belongs to.</li>
+ <li><a href="devicecomponent.html">DeviceComponent</a>  - The DeviceComponent that this DeviceMetric is part of. This can be a DeviceComponent of any kind like a VirtualMedicalDevice, a MedicalDeviceSystem, or a Channel.</li> -->
 </ul>
 
 </div>

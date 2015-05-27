@@ -5,7 +5,7 @@
 <!-- Notes: -->
 </h2>
 <ul>
- <li>Правильные коды для исходного Device и этого виртуального устройства, канали или метрики будут описаны в профилях для определенных классов устройств. Эти коды, как правило, регистрируются в <a href="http://hit-testing.nist.gov:13110/rtmms/index.htm">RTM Management service</a>, однако это не является обязательным. Для корректного представления этих кодов в типе данных <a href="datatypes.html#Coding">Coding</a> см. раздел <a href="terminologies-systems.html#urn:std:iso:11073:10101">Терминологические системы</a> .
+ <li>Соответствующие коды для исходного Device и этого виртуального устройства, канала или метрики будут описаны в профилях для определенных классов устройств. Эти коды, как правило, регистрируются в <a href="http://hit-testing.nist.gov:13110/rtmms/index.htm">RTM Management service</a>, однако это не является обязательным. Для корректного представления этих кодов в типе данных <a href="datatypes.html#Coding">Coding</a> см. раздел <a href="terminologies-systems.html#urn:std:iso:11073:10101">Терминологические системы</a> .
  <!-- The correct codes for the source Device and the virtual device, channel and metrics will be 
  specified in profiles for specific classes of device. Generally, these codes are registered in 
  the <a href="http://hit-testing.nist.gov:13110/rtmms/index.htm">RTM Management service</a>, but 
