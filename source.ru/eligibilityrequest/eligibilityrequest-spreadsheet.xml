@@ -980,9 +980,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Eligibility request</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос проверки пригодности<!-- Eligibility request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">This resource provides the insurance eligibility details from the insurer regarding a specified coverage and optionally some class of service.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Данный ресурс предоставляет сведения о пригодности страховки от страховой компании относительно указанного страхового покрытия и, необязательно, какого-то класса услуг.<!-- This resource provides the insurance eligibility details from the insurer regarding a specified coverage and optionally some class of service. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
