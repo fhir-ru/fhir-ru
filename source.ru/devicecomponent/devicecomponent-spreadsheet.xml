@@ -978,9 +978,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">An instance of a medical-related component of a medical device</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Экземпляр связанного с медициной компонента медицинского изделия<!-- An instance of a medical-related component of a medical device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the characteristics, operational status and capabilities of a medical-related component of a medical device.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает характеристики, рабочее состояние и возможности связанного с медициной компонента медицинского изделия.<!-- Describes the characteristics, operational status and capabilities of a medical-related component of a medical device. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
