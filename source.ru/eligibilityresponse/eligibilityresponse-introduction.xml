@@ -2,11 +2,12 @@
 
 <div>
 <h2>Область применения и использование</h2>
-<p><b>This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft.</b></p>
+<p><b>Данный ресурс еще не прошел надлежащую проверку рабочей группой FM. В настоящее время его следует считать черновым.<!-- This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft. --></b></p>
 <p>
-The EligibilityResponse resource provides eligibility and plan details from the processing of an 
+Ресурс EligibilityResponse предоставляет сведения о приемлемости и плане после обработки ресурса Eligibility. Он комбинирует ключевую информацию от плательщика, как например действует ли Coverage, и, необязательно, природу сведений о Policy.
+<!-- The EligibilityResponse resource provides eligibility and plan details from the processing of an 
 Eligibility resource. It combines key information from a payor as to whether a Coverage is 
-in-force, and optionally the nature of the Policy details.
+in-force, and optionally the nature of the Policy details. -->
 </p>
 
 <p>
