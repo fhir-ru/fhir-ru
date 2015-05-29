@@ -980,7 +980,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс для денежного перевода<!-- Remittance resource --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Денежный перевод<!-- Remittance resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Данный ресурс обеспечивает: детализацию страхового требования (claim); детализацию судебного решения (adjudication) из обработки Claim; и, факультативно, информацию по остатку на счете, для информирования подписчика (subscriber) о предоставленных льготах/выплатах (benefits). <!-- 
 This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided. --></Data><NamedCell
