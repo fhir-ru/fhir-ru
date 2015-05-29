@@ -2,11 +2,12 @@
 
 <div>
 <h2>Область применения и использование</h2>
-<p><b>This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft.</b></p>
+<p><b>Данный ресурс еще не прошел надлежащую проверку рабочей группой FM. В настоящее время его следует считать черновым.<!-- This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft. --></b></p>
 <p>
-The EnrollmentResponse resource provides enrollment and plan details from the processing of an 
+Ресурс EnrollmentResponse предоставляет сведения о регистрации и плане, полученные в результате обработки ресурса Enrollment. Он комбинирует ключевую информацию от плательщика, как например действует ли Coverage или Policy, и, необязательно, природу сведений о Policy.
+<!-- The EnrollmentResponse resource provides enrollment and plan details from the processing of an 
 Enrollment resource. It combines key information from a payor as to whether a Coverage or Policy is 
-in-force, and optionally the nature of the Policy details.
+in-force, and optionally the nature of the Policy details. -->
 </p>
 
 <p>
