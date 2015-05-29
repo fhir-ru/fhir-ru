@@ -977,9 +977,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Key information to flag to healthcare providers</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ключевая информация для оповещения поставщиков медицинских услуг<!-- Key information to flag to healthcare providers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Prospective warnings of potential issues when providing care to the patient</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Будущие предупреждения о потенциальных проблемах при предоставлении лечения пациенту<!-- Prospective warnings of potential issues when providing care to the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
