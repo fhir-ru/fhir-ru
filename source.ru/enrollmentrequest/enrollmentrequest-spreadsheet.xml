@@ -980,9 +980,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Enrollment request</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на регистрацию<!-- Enrollment request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">This resource provides the insurance Enrollment details to the insurer regarding a specified coverage.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Данный ресурс предоставляет сведения о регистрации страховки страховой компании относительно указанного страхового покрытия.<!-- This resource provides the insurance Enrollment details to the insurer regarding a specified coverage. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
