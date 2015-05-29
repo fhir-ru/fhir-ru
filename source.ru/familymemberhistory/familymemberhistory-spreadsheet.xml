@@ -974,9 +974,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Information about patient's relatives, relevant for patient</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Информация о родственниках пациента, относящаяся к пациенту<!-- Information about patient's relatives, relevant for patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Significant health events and conditions for a person related to the patient relevant in the context of care for the patient</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Значимые события и состояния в здоровье человека, связанного с пациентом, существенные в контексте ухода за пациентом<!-- Significant health events and conditions for a person related to the patient relevant in the context of care for the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
