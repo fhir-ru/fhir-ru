@@ -970,9 +970,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">An association of a Patient with an Organization and  Healthcare Provider(s) for a period of time that the Organization assumes some level of responsibility</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Создание связи между пациентом, организацией и поставщиками медицинских услуг на период времени, в течение которого организация несет некоторый уровень ответственности<!-- An association of a Patient with an Organization and  Healthcare Provider(s) for a period of time that the Organization assumes some level of responsibility --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Связь между пациентом и организацией/поставщиком(-ами) медицинских услуг на период времени, в течение которого могут произойти encounters. Управляющая организация принимает на себя некоторый уровень ответственности перед пациентом в течение этого времени.<!-- An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
