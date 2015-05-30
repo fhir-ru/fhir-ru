@@ -981,9 +981,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Group of multiple entities</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Группа из нескольких сущностей<!-- Group of multiple entities --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized.  I.e. A collection of entities that isn't an Organization</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Представляет собой заданную коллекцию сущностей, которые могут обсуждаться или подвергаться действию коллективно, однако не предполагается, что они будут действовать коллективно и будут признаны официально или юридически. Т. е. коллекция сущностей, которая не является организацией.<!-- Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized.  I.e. A collection of entities that isn't an Organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
