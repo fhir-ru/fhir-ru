@@ -1008,9 +1008,9 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Key Object Selection</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Выборка ключевых объектов<!-- Key Object Selection --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A set of DICOM SOP Instances of a patient, selected for some application purpose, e.g., quality assurance, teaching, conference, consulting, etc.  Objects selected can be from different studies, but must be of the same patient</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ряд экземпляров DICOM SOP пациента, отобранных в какой-то прикладной цели, например для заверения качества, обучения, конференции, консультации и т. п. Отобранные объекты могут быть из разных исследований, но обязательно одного пациента<!-- A set of DICOM SOP Instances of a patient, selected for some application purpose, e.g., quality assurance, teaching, conference, consulting, etc.  Objects selected can be from different studies, but must be of the same patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">A FHIR representation of DICOM Key Object Selection (KOS) SOP Instances enables access to a set of selected DICOM SOP Instances.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
