@@ -11,23 +11,23 @@
 		</p>
 		<p>Распространенные примеры ресурсов HealthcareServices:<!-- Common examples of HealthcareServices resources are: --></p>
 		<ul>
-			<li>Allied Health</li>
-			<li>Clinical Neuropsychologist</li>
-			<li>Podiatry Service</li>
-			<li>Smallville Hospital Emergency Services</li>
-			<li>Respite care provided at a nursing home or hostel</li>
-			<li>24hr crisis telephone counselling service</li>
-			<li>Information, advice and/or referral services; Disability, Telecommunications</li>
-			<li>Rural TeleHealth Services</li>
-			<li>Hospital in the home</li>
-			<li>Yellow Cabs</li>
-			<li>Pharmacy</li>
-			<li>Active Rehab</li>
-			<li>Social Support</li>
-			<li>Drug and/or alcohol counselling</li>
+			<li>Вспомогательное здравоохранение; профессии, смежные с медицинской</li>
+			<li>Клинический нейропсихолог</li>
+			<li>Лечение заболеваний стоп</li>
+			<li>Экстренные службы больницы Smallville</li>
+			<li>Временный уход, предоставляемый в доме престарелых или общежитии</li>
+			<li>Круглосуточная кризисная служба консультаций по телефону</li>
+			<li>Информационные, консультационные и/или справочные службы; Инвалидность, Телекоммуникации</li>
+			<li>Сельские службы телемедицины</li>
+			<li>Больница дома<!-- Hospital in the home --></li>
+			<li>Городское такси</li>
+			<li>Аптека</li>
+			<li>Активная реабилитация</li>
+			<li>Социальная поддержка</li>
+			<li>Консультация на тему наркотиков и/или алкоголя</li>
 			<li>Day Programs, Adult Training &amp; Support Services</li>
-			<li>Consulting psychologists and/or psychology services</li>
-			<li>Group Hydrotherapy</li>
+			<li>Психологи-консультанты и/или психологические службы</li>
+			<li>Групповая гидротерапия</li>
 			<li>Little River Home Maintenance</li>
 			<li>Example mowing services</li>
 <!-- 	<li>Allied Health</li>
@@ -55,19 +55,19 @@
 		</p>
 		<p>Примеры применения ресурсов HealthcareService:<!-- Example uses of HealthcareService resources are: --></p>
 		<ul>
-					<li>National Services Directory - Consumer Focus</li>
-			<li>National Services Directory - Practitioner Referrals Searching</li>
-			<li>Organization's Client Portal - to locate services / book appointments</li>
+					<li>Национальный справочник услуг - ориентация на потребителя</li>
+			<li>Национальный справочник услуг - поиск направлений к специалистам</li>
+			<li>Клиентский портал организации - для поиска услуг / резервирования условленных встреч</li>
 			<li>
-				Address book of services for Referrals<br/>
-				<i>including references to Questionnaires for assessments that are required as part of the referral</i>
+				Адресная книга услуг для направлений<br/>
+				<i>включая ссылки на вопросники для оценки, которые необходимы в рамках направления</i>
 			</li>
 			<li>
-				Health Network internal directory
+				Внутренний каталог сети здравоохранения
 				<i>
-					Used for tracking available services offered internally,
-					and also those offered by business partners.<br/>
-					This information may also include costing information.
+					Используется для отслеживания доступных услуг, предлагаемых внутри,
+а также те, которые предлагаются бизнес-партнерами.<br/>
+					Эта информация может также включать в себя информацию о стоимости.
 				</i>
 			</li>
 <!-- 			<li>National Services Directory - Consumer Focus</li>
