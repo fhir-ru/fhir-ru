@@ -961,9 +961,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Delivery of Supply</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Доставка поставки<!-- Delivery of Supply --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Record of delivery of what is supply</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Запись о доставке поставки<!-- Record of delivery of what is supply --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>

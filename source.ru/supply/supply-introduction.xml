@@ -3,21 +3,24 @@
 <div>
 <h2>Область применения и использование</h2>
 <p>
-The scope of the supply resource is for supplies used in the healthcare process.  This includes supplies specifically
+Сфера действия ресурса supply охватывает поставку расходных материалов, используемых в процессе здравоохранения. Сюда входят расходные материалы, используемые непосредственно при лечении пациентов, а также движение поставок в учреждении (транспортировка набора расходных материалов из управления поставкой материалов в пункт обслуживания (пост медицинской сестры)). Этот ресурс не включает в себя предоставление услуг транспортировки.
+<!-- The scope of the supply resource is for supplies used in the healthcare process.  This includes supplies specifically
 used in the treatment of patients as well as supply movement within an institution (transport a set of supplies from 
 materials management to a service unit (nurse station).  This resource does not include the provisioning of transportation
-services.
+services. -->
 </p>
 </div>
 
 <div>
 <h2>Границы и связи</h2>
 <p>
-This resource overlaps with others such as <a href="device.html">Device</a> and <a href="medication.html">Medication</a>.
+Этот ресурс частично совпадает с другими ресурсами, например <a href="device.html">Device</a> и <a href="medication.html">Medication</a>.
+Ресурс <b>Supply</b> может использоваться для описания лекарственных средств и медицинских изделий, ссылаясь на них в общем (как в любой другой поставке). Например при массовой обработке заказов. Однако когда важно само лекарственное средство, медицинское изделие или другие аспекты этого ресурса (например в <a href="medicationprescription.html">MedicationPrescription</a> или при указании устройства в качестве исполнителя), необходимо использовать предназначенный для этого соответствующий ресурс. 
+<!-- This resource overlaps with others such as <a href="device.html">Device</a> and <a href="medication.html">Medication</a>.
 The <b>Supply</b> resource may be used to describe medications and devices when handling them generically (as any other supply).  For
 example, when processing bulk orders, etc.  However, when the medication, device or other aspects of the resource are important,
 (e.g. in a <a href="medicationprescription.html">MedicationPrescription</a> or when identifying a device as a performer), the
-more detailed resource must be used.
+more detailed resource must be used. -->
 </p>
 </div>
 

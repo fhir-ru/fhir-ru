@@ -971,9 +971,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A supply request</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на поставку<!-- A supply request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A supply - a  request for something</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Поставка - запрос на поставку чего-либо<!-- A supply - a  request for something --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
