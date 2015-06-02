@@ -3,13 +3,15 @@
 <div>
 <h2>Область применения и использование</h2>
 <p>
-The ProcessResponse resource indicates the resource for which the processing status is requested and 
+Ресурс ProcessResponse указывает на ресурс, для которого запросили статус обработки, и предоставляет простое подтверждение приема и статусную информацию об ошибках на уровне приложения. Может также использоваться для передачи дополнительных требований обработки в текстовом виде.
+<!-- The ProcessResponse resource indicates the resource for which the processing status is requested and 
 provides simple acknowledgement and status information of application level errors. It may also be used to 
-convey additional processing requirements in a text form.
+convey additional processing requirements in a text form. -->
 </p>
 <p>
-This is the formal response to a ProcessRequest and may be used as a application level response to PaymentNotice 
-and SupportingDocumentation resources.
+Это официальный ответ на ProcessRequest и может использоваться в качестве ответа на уровне приложения на ресурсы PaymentNotice и SupportingDocumentation.
+<!-- This is the formal response to a ProcessRequest and may be used as a application level response to PaymentNotice 
+and SupportingDocumentation resources. -->
 </p>
 <p>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
