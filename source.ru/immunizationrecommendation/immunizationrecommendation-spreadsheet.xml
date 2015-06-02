@@ -983,9 +983,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Guidance or advice relating to an immunization</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Инструкция или совет касательно иммунизации<!-- Guidance or advice relating to an immunization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A patient's point-of-time immunization status and recommendation with optional supporting justification</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Статус иммунизации пациента в некоторый момента времени, и рекомендации с необязательным вспомогательным обоснованием<!-- A patient's point-of-time immunization status and recommendation with optional supporting justification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>

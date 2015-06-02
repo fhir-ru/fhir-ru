@@ -15,6 +15,7 @@ referenced in other clinical contexts such as <a href="diagnosticreport.html">di
 </p>
 <p>
 Данный  ресурс специально разрабатывался с учетом использования в контексте DICOM.
+Его содержимое основано на определениях эквивалентных DICOM-конструкций, и выведено из уже установленных шаблонов использования в практике реализации DICOM, в том числе XDS-I. Однако для использования этого ресурса нет необходимости в DICOM-инфраструктуре.
 <!-- This resource has been specifically designed with use in DICOM contexts in mind. 
 The content is closely based on the definitions of the equivalent DICOM 
 constructs, and informed by usage patterns already established through DICOM
