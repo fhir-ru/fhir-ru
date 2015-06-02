@@ -997,9 +997,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Process request</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на обработку<!-- Process request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Данный ресурс обеспечивает цель, запрос и ответ, а также сведения о действии, которое должна выполнить эта цель над существующими ресурсами.<!-- This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
