@@ -3,20 +3,23 @@
 <div>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-This resource summarizes a series of images or other instances generated as part of an 
+Данный ресурс обобщает ряд изображений или других экземпляров, созданных в рамках визуализирующего исследования, и предоставляет ссылки, по которым эти изображения доступны через  <a href="http://medical.nema.org/medical/dicom/current/output/pdf/part18.pdf">WADO-RS</a>. 
+<!-- This resource summarizes a series of images or other instances generated as part of an 
 imaging study, and provides references to where the images are available
-using <a href="http://medical.nema.org/medical/dicom/current/output/pdf/part18.pdf">WADO-RS</a>. 
+using <a href="http://medical.nema.org/medical/dicom/current/output/pdf/part18.pdf">WADO-RS</a>.  -->
 
-This resource is used to make information available concerning images etc. that are 
+Этот ресурс используется для предоставления доступа к информации, касающейся изображений и т. п., на которые ссылаются в других клинических контекстах, таких как <a href="diagnosticreport.html">diagnostic reports</a>, <a href="careplan.html">Care Plans</a> и т. д. Также см. описание сценария использования ниже.
+<!-- This resource is used to make information available concerning images etc. that are 
 referenced in other clinical contexts such as <a href="diagnosticreport.html">diagnostic reports</a>, 
-<a href="careplan.html">Care Plans</a>, etc. Also, see the use case description below.
+<a href="careplan.html">Care Plans</a>, etc. Also, see the use case description below. -->
 </p>
 <p>
-This resource has been specifically designed with use in DICOM contexts in mind. 
+Данный  ресурс специально разрабатывался с учетом использования в контексте DICOM.
+<!-- This resource has been specifically designed with use in DICOM contexts in mind. 
 The content is closely based on the definitions of the equivalent DICOM 
 constructs, and informed by usage patterns already established through DICOM
 implementation practices, including XDS-I. It is not, however, necessary to 
-use DICOM infrastructure in order to use this resource.
+use DICOM infrastructure in order to use this resource. -->
 </p>
 </div>
 
