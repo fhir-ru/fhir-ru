@@ -979,9 +979,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Серия изображений, созданных в одом исследовании (одна или несколько серий изображений)<!-- A set of images produced in single study (one or more series of references images) --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Серия изображений, созданных в одном исследовании (одна или несколько серий изображений)<!-- A set of images produced in single study (one or more series of references images) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g., X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Представление содержимого, полученного в визуализирующем исследовании, в формате DICOM. Исследование включает в себя ряд серий, каждая из которых включает в себя набор экземпляров пар Сервис-Объект (SOP-экземпляров - изображений или других данных), приобретенных или произведенных в общем контексте. Последовательность соответствует только одной модальности (например рентген, КТ, МРТ, УЗИ), однако исследование может иметь несколько серий различных модальностей.<!-- Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g., X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
