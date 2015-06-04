@@ -981,9 +981,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A server push subscription criteria</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Критерии подписки на доставку данных сервером (метод push)<!-- A server push subscription criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined &quot;channel&quot; so that another system is able to take an appropriate action</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс subscription (подписка) используется для определения подписки на основе метода push с сервера в другую систему. После регистрации подписки на сервере, сервер проверяет каждый ресурс, который создается или обновляется, и если ресурс соответствует заданным критериям, то он посылает сообщение в определенный &quot;канал&quot;, чтобы другая система могла выполнить надлежащее действие<!-- The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined &quot;channel&quot; so that another system is able to take an appropriate action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>

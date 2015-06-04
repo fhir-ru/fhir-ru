@@ -977,9 +977,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Potential outcomes for a subject with likelihood</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Потенциальный исход для субъекта с указанием вероятности<!-- Potential outcomes for a subject with likelihood --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Оценка возможных результатов для пациента или другого субъекта с указанием вероятности для каждого результата.<!-- An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>

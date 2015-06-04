@@ -3,21 +3,30 @@
 <div>
 <h2>Область применения и использование</h2>
 <p>
-RelatedPersons typically have a personal or non-healthcare-specific professional relationship to the patient. A RelatedPerson 
+RelatedPersons обычно имеют личное или не связанное со здравоохранением профессиональное отношение к пациенту.  Ресурс RelatedPerson используется главным образом для установления авторства информации, поскольку RelatedPersons часто являются источником информации о пациенте. 
+Для хранения контактной информации о близких людях пациента используйте элемент "Contact" ресурса Patient.
+Некоторые люди могут выступать одновременно и как контакт пациента в ресурсе Patient, и как RelatedPerson.
+<!-- RelatedPersons typically have a personal or non-healthcare-specific professional relationship to the patient. A RelatedPerson 
 resource is primarily used for attribution of information, 
 since RelatedPersons are often a source of information about the patient. 
 For keeping information about people for contact purposes for a patient, use a Patient's Contact element. 
-Some individuals may serve as both a Patient's Contact and a Related Person.
+Some individuals may serve as both a Patient's Contact and a Related Person. -->
 </p>
 <p>
-Example RelatedPersons are:
+Примеры RelatedPersons:
+<!-- Example RelatedPersons are: -->
 </p>
 <ul>
-<li>A patient's wife or husband</li>
+<li>Муж или жена пациента</li>
+<li>Родственники или друзья пациента</li>
+<li>Сосед, доставивший пациента в больницу</li>
+<li>Владелец или тренер лошади</li>
+<li>Адвокат или опекун пациента</li>
+<!-- <li>A patient's wife or husband</li>
 <li>A patient's relatives or friends</li>
 <li>A neighbor bringing a patient to the hospital</li>
 <li>The owner or trainer of a horse</li>
-<li>A patient's attorney or guardian</li>
+<li>A patient's attorney or guardian</li> -->
 </ul>
 </div>
 
