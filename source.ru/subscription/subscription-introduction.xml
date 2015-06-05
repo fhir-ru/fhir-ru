@@ -3,57 +3,81 @@
 <div>
 
 <h2>Область применения и использование</h2>
-<p><b>This is a candidate resource not yet formally proposed (or approved)</b></p>
+<p><b>Это ресурс-кандидат, еще официально не предложенный (или не утвержденный)<!-- This is a candidate resource not yet formally proposed (or approved) --></b></p>
 
 <p>
-The subscription resource is used to define a push based subscription 
+Ресурс subscription используется для определения подписки на основе метода push
+с сервера в другую систему. После регистрации подписки на сервере,
+сервер начинает проверять каждый ресурс, который создается или обновляется, и
+если этот ресурс соответствует заданным критериям, он посылает сообщение
+в определенный "канал", чтобы та другая система могла
+предпринять соответствующее действие. Сервер может отправлять
+уведомления без какой-либо информации о совпадении
+ресурса, или включать в него ресурс целиком.
+<!-- The subscription resource is used to define a push based subscription 
 from a server to another system. Once a subscription is registered with the server, 
 the server checks every resource that is created or updated, and 
 if the resource matches the given criteria, it sends a message
 on the defined "channel" so that another system is able 
 to take an appropriate action. The server is able to send 
 notifications without any information about the matching
-resource, or with the entire resource.
+resource, or with the entire resource. -->
 </p>
 <p>
-Several different types of channels are supported:
+Поддерживается несколько различных типов каналов:
+<!-- Several different types of channels are supported: -->
 </p>
 <ul>
- <li><b>rest-hook</b>: A post is made to the URL. If the subscription requests that the whole resource is included, the URL is intepreted as the service base</li>
+ <li><b>rest-hook</b>: Команда post выполняется на определенный URL-адрес. Если в подписке есть требование включать ресурс целиком, то этот URL интерпретируется как базовый адрес сервиса</li>
+ <li><b>websocket</b>: сообщение PING отправляется на указанный URI</li>
+ <li><b>email/sms</b>: уведомление отправляется на указанный адрес электронной почты или SMS-номер</li>
+ <li><b>message</b>: ресурс посылается приложению, определенному в URI как <a href="messaging.html">message</a></li>
+<!--  <li><b>rest-hook</b>: A post is made to the URL. If the subscription requests that the whole resource is included, the URL is intepreted as the service base</li>
  <li><b>websocket</b>: An PING message is sent to the designated URI</li>
  <li><b>email/sms</b>: A notification is send to nominated email address or SMS number</li>
- <li><b>message</b>: The resource is sent to the application identified in the URI as a <a href="messaging.html">message</a></li>
+ <li><b>message</b>: The resource is sent to the application identified in the URI as a <a href="messaging.html">message</a></li> -->
 </ul>
 <p>
-See below for further discussion of the various channels. Note that sending
-the entire resource creates security concerns that must be managed by the server.
+См. ниже продолжение описания различных каналов. Обратите внимание, что отправка
+всего ресурса целиком создает проблемы безопасности, которые должны решаться сервером.
+<!-- See below for further discussion of the various channels. Note that sending
+the entire resource creates security concerns that must be managed by the server. -->
 </p>
 </div>
 
 <div>
 <h2>Границы и связи</h2>
 <p>
-Once a subscription is created, any newly created or updated resources 
+После создания ресурса subscription любые создаваемые или обновляемые ресурсы, 
+которые отвечают критериям в этом ресурсе, вызывают отправку уведомления в указанный канал.
+Критерии указываются в строке <a href="search.html">Search</a>, 
+которая интерпретируется таким же образом, как если бы ее добавить к базовому URL и отправить через REST API. 
+Обратите внимание, что критерии поиска применяются к новому значению ресурса.
+Из этого можно сделать вывод, что уведомление не высылается на удаление ресурса, или когда
+ресурс обновляется таким образом, что он больше не удовлетворяет этим критериям.
+<!-- Once a subscription is created, any newly created or updated resources 
 that meet the criteria in the resource cause a notification to be sent using the 
 provided channel. The criteria is a <a href="search.html">Search</a> string
 that has the same interpretation as if it were appended to the base 
 URL and submitted using the REST API. Note that the search criteria 
 is applied to the new value of the resource. The consequence of this 
 is that there is no notification when a resource is deleted, or when 
-a resource is updated so that it no longer meets the criteria. 
+a resource is updated so that it no longer meets the criteria.  -->
 </p>
 <p>
-As an alternative to subscriptions, the RESTful API describes a 
+В качестве альтернативы ресурсу subscriptions, RESTful API описывает подписку на основе метода опрашивания, использующий <a href="extras.html#bundle">bundles</a> и операцию <a href="http.html#history">history</a>. Этот метод опрашивания позволяет устанавливать намного более тесную взаимосвязь между клиентом и сервером, которая не предполагает упущения обновлений и/или удалений.
+<!-- As an alternative to subscriptions, the RESTful API describes a 
 polling-based subscription method using <a href="extras.html#bundle">bundles</a> 
 and the <a href="http.html#history">history operation</a>. This method 
 of polling allows for a much tighter relationship between the client and 
-the server that doesn't involve missing updates and/or deletes. 
+the server that doesn't involve missing updates and/or deletes.  -->
 </p>
 <p>
-Subscriptions are active resources; a server can only accept a subscription
+Subscriptions - это активные ресурсы; сервер может принять подписку,  только если он будет посылать уведомления в указанный канал для всех ресурсов, полученных впоследствии. Подписка перестает быть активной, как только удаляется с сервера.
+<!-- Subscriptions are active resources; a server can only accept a subscription
 if it will execute the specified channel for any resources subsequently 
 received. The subscription is no longer active once it is deleted from 
-the server.
+the server. -->
 </p>
 
 </div>
