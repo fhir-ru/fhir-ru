@@ -4,21 +4,24 @@
 <h2>Область применения и использование</h2>
 
 <p>
-This resource allows for a material to be represented. The resource can be used to represent either a kind of a 
+Этот ресурс позволяет обозначить материал. Ресурс может быть использован для представления либо некоторого вида вещества - например препарат, обычно используемый для лечения пациентов, или он может быть использован для описания конкретной упаковки известного вещества (например бутылка, банка, пакет).
+<!-- This resource allows for a material to be represented. The resource can be used to represent either a kind of a 
 substance - e.g. a formulation commonly used for treating patients, or it can be used to describe a particular package
-of a known substance (e.g. bottle, jar, packet). 
+of a known substance (e.g. bottle, jar, packet).  -->
 </p>  
 <p>
-The composition of the material can be specified in terms of a mix of other materials, including with precise amounts if required.
+Состав материала может быть указан исходя из сочетания других материалов, в том числе с точным указанием их количества при необходимости.
+<!-- The composition of the material can be specified in terms of a mix of other materials, including with precise amounts if required. -->
 </p>
 </div>
 
 <div> 
 <h2>Границы и связи</h2> 
 <p>
-A medication is a substance that is packaged and used for use as an administered medication. 
+Лекарственное средство представляет собой вещество, которое упаковано и используется для введения лекарства. Ресурс <a href="medication.html">medication</a> использует ресурс substance для указания фактических ингредиентов лекарственного средства.
+<!-- A medication is a substance that is packaged and used for use as an administered medication. 
 The <a href="medication.html">medication resource</a> uses the substance resource to represent 
-the actual ingredients of a medication.
+the actual ingredients of a medication. -->
 </p>
 
 </div> 
