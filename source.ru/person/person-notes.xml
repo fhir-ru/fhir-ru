@@ -33,38 +33,49 @@
   Cross-Domain Patient Directory
   </h2>
   <p>
-    In a data sharing network, finding the location of patient records across different systems is a 
+  В сети обмена данными, поиск расположения записей пациентов различных систем является обязательным требованием для доступа к внешним данным пациента. С помощью элемента <i>link</i> системы связывают ресурсы patient из различных организаций. assuranceLevel, связанный с <i>link</i>, обеспечивает способ для системы уточнить ее уверенность в заданном <i>link</i>.Например взаимосвязь от человека к пациенту с использованием вероятностного алгоритма согласования может быть представлена с помощью элемента <i>link</i> с уровнем уверенности level1, в то время как отношение, установленное с помощью выпущенного правительством удостоверения личности с фотографией может быть создано с уровнем уверенности level3.
+<!--     In a data sharing network, finding the location of patient records across different systems is a 
     necessary pre-requisite for accessing external patient data. Using the <i>link</i> element, systems associate
     patient resources from different organizations. The assuranceLevel associated with the <i>link</i> provides
     a way for a system to qualify its confidence in the asserted <i>link</i>. For example, a relationship from
     the person to a patient using a probabilistic matching algorithm may be represented using a <i>link</i> with
     an assurance level of level1, while a relationship established using a government-issued photo ID may
-    be created with an assurance level of level3.
+    be created with an assurance level of level3. -->
   </p>
   
   <h2>
     Cross-Domain Provider Directory
   </h2>
   <p>
-    Similarly, providers working in multiple healthcare service settings may be linked across different 
+  Аналогично провайдеры, работающие в нескольких условиях обслуживания в области здравоохранения, могут быть связаны между различными      организациями с помощью элемента <i>link</i>. Различные ресурсы practitioner могут быть связаны с использованием общего ресурса person с <i>link</i> для каждого ресурса practitioner, расположенного в другой организации.
+   <!--  Similarly, providers working in multiple healthcare service settings may be linked across different 
     organizations using the <i>link</i> element. The various practitioner resources can be related using a common 
-    person resource with a <i>link</i> for each of the practitioner resources located in other organizations.
+    person resource with a <i>link</i> for each of the practitioner resources located in other organizations. -->
   </p>
 
   <h2>
-    Client Portal
+  Клиентский портал
+    <!-- Client Portal -->
   </h2>
   <p>
-    Client Portals provide consumer access to a window of their data locked up in healthcare systems. 
-    In many cases these sytems are externally integrated and do not have access to the legacy CIS/PAS systems.
+  Клиентские порталы предоставляют доступ потребителей к окну своих данных, хранящихся в системах здравоохранения.
+     Во многих случаях эти системы внешне интегрированы и не имеют доступа к устаревшим системам CIS/PAS.
+    <!-- Client Portals provide consumer access to a window of their data locked up in healthcare systems. 
+    In many cases these sytems are externally integrated and do not have access to the legacy CIS/PAS systems. -->
   </p>
   <p>
-    In contrast to most systems where a user has access to multiple patients depending on their roles and permissions,
+  В отличие от большинства систем, где пользователь имеет доступ к нескольким пациентам в зависимости от своей роли и разрешений,
+    клиентский портал предоставляет потребителю прямой доступ к своим данным (в соответствии с применяемыми разрешениями).
+     Это также может включать в себя не только их данные (через записи Person.link ресурса Patient), но также информацию, которую они
+     ввели или где участвовали (через записи Person.link ресурса RelatedPerson), такие как наблюдения, которые они ввели.
+<!--     In contrast to most systems where a user has access to multiple patients depending on their roles and permissions,
     a client portal provides a consumer with direct access to their data (with permissions applied).
     This can also include not just their data (via the Person.link Patient entries), but also to information that they
     have entered, or were involved with (via the Person.link RelatedPerson entries), such as observations that they 
-    entered.<br/>
-    With appropriate permissions/consent applied, the user could have access to other Patient records linked via 
-    a RelatedPerson.
+    entered. -->
+	<br/>
+	С соответствующего применяемого разрешения/согласия пользователь может получить доступ к другим записям Patient, связанным через RelatedPerson.
+    <!-- With appropriate permissions/consent applied, the user could have access to other Patient records linked via 
+    a RelatedPerson. -->
   </p>
 </div>

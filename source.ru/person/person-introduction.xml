@@ -14,16 +14,19 @@ and multipleBirthInd (SubjectofCare).
 </p>
 -->
 <p>
-  An individual has identity outside of a healthcare setting. The Person resource is used to capture this
-  information and to relate the person as an individual to other resources that do have a health-related context.
+У человека имеется личность вне медицинского контекста. Ресурс Person используется для ввода этой информации и для связи человека как  личности с другими ресурсами, которые действительно имеют контекст, связанный со здравоохранением.
+<!--   An individual has identity outside of a healthcare setting. The Person resource is used to capture this
+  information and to relate the person as an individual to other resources that do have a health-related context. -->
 </p>
   <p>
-    For example, while a patient resource may be created and maintained by each organization providing care for
+  Например в то время как ресурс patient может создаваться и поддерживаться каждой организацией, предоставляющей помощь этому человеку как пациенту, ресурс person предоставляет механизм для связывания ресурсов patient, принадлежащих различным организациям и их уникальными доменами идентичности пациентов.
+   <!--  For example, while a patient resource may be created and maintained by each organization providing care for
     that person as a patient, a person resource provides a mechanism for linking patient resources across 
-    different organizations and their unique patient identity domains.
+    different organizations and their unique patient identity domains. -->
   </p>
   <p>
-    This resource is not referenced by any other resources.
+  На этот ресурс не ссылаются никакие другие ресурсы.
+<!--     This resource is not referenced by any other resources. -->
   </p>
 </div>
 
