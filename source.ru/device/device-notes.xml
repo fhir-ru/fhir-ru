@@ -2,30 +2,46 @@
 	<h3>Примечания:<!-- Notes --></h3>
 	<h4>Типы медицинских изделий<!-- Device Types --></h4>
 	<p>
-		There are many sources of possible codes for device type. The example suggests to use device codes from RTM. Another source which is appropriate for many devices is the local UDI repository (in the US this is the GUDID database). The full UDI string is placed in the Device.udi element.  Alternatively, many jurisdictions have their own supply chain arrangements which define many useful codes.
+	Есть много источников возможных кодов для типа устройства. Пример предлагает использовать коды устройств от RTM. Другой источник, который подходит для большинства устройств - это локальный репозиторий UDI (в США это база данных GUDID). Полная UDI-строка помещается в элемент Device.udi. В качестве альтернативы, во многих юрисдикциях имеются свои собственные договоренности цепи поставок, которые определяют большинство подходящих кодов.
+<!-- 		There are many sources of possible codes for device type. The example suggests to use device codes from RTM. Another source which is appropriate for many devices is the local UDI repository (in the US this is the GUDID database). The full UDI string is placed in the Device.udi element.  Alternatively, many jurisdictions have their own supply chain arrangements which define many useful codes. -->
 
 	</p>
-	<h4>Device Identifiers</h4>
+	<h4>Идентификаторы устройства<!-- Device Identifiers --></h4>
 	<p>
-Nearly all devices are assigned one or more identifiers, which are usually printed or affixed to the device using either barcodes or RFIDs.
+	Почти всем устройствам присваивается один или несколько идентификаторов, которые обычно печатаются или прикрепляются к устройству с помощью либо штрих-кодов, либо RFID.
+Идентификаторы могут быть назначены производителем (часто называются "серийный номер", "регистрационный номер" или "каталожный номер"), различными учреждениями и реестрами. Все эти идентификаторы, назначенные устройству, могут и должны быть записаны в ресурсе device. Всевозможные идентификаторы различаются значениями полей use, label и system.
+<!-- Nearly all devices are assigned one or more identifiers, which are usually printed or affixed to the device using either barcodes or RFIDs.
 The identifiers can come from the manufacturer (often called the "serial number," "reference number," or "catalog number"),  various institution and registries. Any of
 these identifiers assigned to the device can and should be recorded in the device resource. The different identifiers are
-differentiated by their use, label, and system values.
+differentiated by their use, label, and system values. -->
 </p>
 	<p>
-The most important of the identifiers is the
+	Наиболее важным из идентификаторов является < href="http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm">Обязательный уникальный идентификатор устройства Управления по санитарному надзору за качеством пищевых продуктов и медикаментов США</a> (UDI), который FDA требует наносить на этикетку каждого медицинского устройства (кроме некоторых исключений). 
+	UDI имеет 2 составляющие - идентификатор устройства (DI), который назначается на уровне версии/модели устройства, и производственные идентификаторы (PI), которые обеспечивают средства для отслеживания устройства на протяжении его производства, распределения и использования. 
+	UDI-строка может также содержать дополнительные элементы, которые формально не являются частью локально заданных элементов UDI, но тем не менее содержатся в той же строке и имеют локальное значение. 
+	DI-часть UDI может храниться в подведомственном репозитории и использоваться в качестве первичного ключа для получения доступа к другой информации об устройстве. 
+	UDI может однозначно идентифицировать экземпляр устройства (если PI включают в себя серийный номер), или он может просто определять тип устройства. UDI может быть разбит на составные части (DI, PI и другие элементы) с помощью правил грамматического разбора, разработанных каждым агенством выпуска стандартов. 
+	Если устройству присвоен UDI, другие данные, передаваемые в ресурсе (например номер партии, дата истечения срока действия и т. д.) должны быть согласованы с информацией, закодированной в UDI-строке или зарегистрированной в локальном хранилище.
+DI-составляющая UDI отправляется в записи об устройстве в < href="http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/GlobalUDIDatabaseGUDID/ucm20038750.htm">базу данных глобально уникальных идентификаторов устройств</a> (GUDID) и используется в качестве первичного ключа для доступа к другой информации об устройстве.
+<!-- The most important of the identifiers is the
 <a href="http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm">US Realm FDA Mandated Unique Device Identifier </a>(UDI)
-required by the FDA for every medical device to bear on its label (unless excepted). The UDI has 2 components - the device identifier (DI), which is assigned at the version/model level of the device and the production identifier(s)(PI) which provide the means to track a device through its manufacture, distribution and use. The UDI string may also contain additional elements which are not formally part of the local defined UDI elements but which are non-the-less contained within the same string and are of value locally. The DI of the UDI may be stored in a jurisdictional respository and used as the primary key to access other device information. The UDI may identify an instance of a device uniquely (when the PI(s) include a serial number), or it may just identify the type of the device. The UDI can be broken into its constituent parts (DI, PI and other elements) by parsing rules developed by each Issuing Agency standard. Where the device has an assigned UDI, the other details carried in the resource (e.g. lot, expiry date etc) SHALL be consistent with the information encoded in the UDI string or registered in the local repository.
+required by the FDA for every medical device to bear on its label (unless excepted). 
+The UDI has 2 components - the device identifier (DI), which is assigned at the version/model level of the device and the production identifier(s)(PI) which provide the means to track a device through its manufacture, distribution and use. 
+The UDI string may also contain additional elements which are not formally part of the local defined UDI elements but which are non-the-less contained within the same string and are of value locally. 
+The DI of the UDI may be stored in a jurisdictional respository and used as the primary key to access other device information. 
+The UDI may identify an instance of a device uniquely (when the PI(s) include a serial number), or it may just identify the type of the device. The UDI can be broken into its constituent parts (DI, PI and other elements) by parsing rules developed by each Issuing Agency standard. 
+Where the device has an assigned UDI, the other details carried in the resource (e.g. lot, expiry date etc) SHALL be consistent with the information encoded in the UDI string or registered in the local repository.
 In the US, a UDI will be required by the FDA for every medical device to bear on its label (unless excepted). The DI of the UDI is submitted in a device record to the <a href="http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/GlobalUDIDatabaseGUDID/ucm20038750.htm">Global
-Unique Device Identification Database</a> (GUDID) and is used as the primary key to access other device information.
+Unique Device Identification Database</a> (GUDID) and is used as the primary key to access other device information. -->
 
 
 </p>
 	<p>
-Note that a GTIN (sometimes also called an EAN number) is a code developed by GS1 for the kind of device  not an identifier for the device. A GTIN may appear on its own or it may appear in a UDI string as the DI component.
+	Обратите внимание, что GTIN (также иногда называемый EAN-номером) является кодом, разработанным GS1 для типа устройства, а не идентификатор устройства. GTIN может использоваться как сам по себе, так и в UDI-строке в качестве компонента DI.
+<!-- Note that a GTIN (sometimes also called an EAN number) is a code developed by GS1 for the kind of device  not an identifier for the device. A GTIN may appear on its own or it may appear in a UDI string as the DI component. -->
 </p>
 	<div class="example">
-		<p>GTIN example</p>
+		<p>Пример GTIN<!-- GTIN example --></p>
 		<pre>
   &lt;type&gt;
     &lt;coding&gt;
