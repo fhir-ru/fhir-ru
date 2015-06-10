@@ -4631,42 +4631,42 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">AppointmentResponse.appointment</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">The appointment that the response is attached to</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Ресурс appointment, к которому относится этот ответ<!-- The appointment that the response is attached to --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">partstatus</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">AppointmentResponse.participantStatus</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The participants acceptance status for this appointment</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Статус принятие участия в этой условленной встрече<!-- The participants acceptance status for this appointment --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s114"><Data ss:Type="String">actor</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">AppointmentResponse.actor</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">The Person, Location/HealthcareService or Device that this appointment response replies for</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Ресурс Person, Location/HealthcareService или Device, к которому относится этот ответ на запись на прием<!-- The Person, Location/HealthcareService or Device that this appointment response replies for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s114"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">AppointmentResponse.actor</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">This Response is for this Patient</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Данный AppointmentResponse относится к этому ресурсу Patient<!-- This Response is for this Patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s114"><Data ss:Type="String">practitioner</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Practitioner</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">AppointmentResponse.actor</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">This Response is for this Practitioner</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Данный AppointmentResponse относится к этому ресурсу Practitioner<!-- This Response is for this Practitioner --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s114"><Data ss:Type="String">location</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Location</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">AppointmentResponse.actor</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">This Response is for this Location</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Данный AppointmentResponse относится к этому ресурсу Location<!-- This Response is for this Location --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s114"/>
@@ -6882,7 +6882,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ParticipantStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The Participation status of an appointment</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус участия в условленной встрече<!-- The Participation status of an appointment --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#participantstatus</Data></Cell>

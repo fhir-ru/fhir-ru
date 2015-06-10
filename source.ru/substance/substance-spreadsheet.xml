@@ -6868,7 +6868,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SubstanceType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Type of the substance</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип вещества<!-- Type of the substance --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-substance-type</Data></Cell>

@@ -26,7 +26,7 @@
     <h3>Базовый алгоритм создания условленной встречи<!-- The basic workflow to create an appointment --></h3>
 		<ul>
 			<li>
-				<b>Discovery/Addressing</b>
+				<b>Обнаружение/адресация<!-- Discovery/Addressing --></b>
 				<p>
 				Перед тем как создавать Appointment, необходимо определить адрес ресурса, с помощью которого мы хотим запланировать оказание медицинской услуги. Выбор, как правило, основывается на типе услуги здравоохранения и информации о формате, которая указывает, как сделать этот запрос. Обычно это выполняется с помощью ресурса Schedule.
 					<!-- Before an appointment can be made the address of the resource that we want to schedule
@@ -134,7 +134,7 @@
   <div>
     <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 
-    <h3>Appointment Statuses and Encounters</h3>
+    <h3>Статусы записи на прием и Encounters<!-- Appointment Statuses and Encounters --></h3>
     <p>
 	Ресурс Appointment можно считать чисто административным, а ресурс Encounter, как ожидается, будет иметь клинические последствия.
       <!-- Appointments can be considered as Administrative only, and the Encounter is expected to have
@@ -164,7 +164,7 @@ Encounter, как правило, создается с началом оказ�
 	 <!--  The mappings to the iCAL standard has been provided to guide implementation of gateways between
       FHIR servers and iCAL systems. -->
     </p>
-		<h3>Appointment Locations and Participation</h3>
+		<h3>Место проведения условленной встречи и участие в ней<!-- Appointment Locations and Participation --></h3>
 		<p>
 		Местоположение условленной встречи задается указанием в элементе "participant" ссылки на ресурс Locations или HealthcareService.
 			<!-- The Location of the appointment is to be defined by using a participant that references a location

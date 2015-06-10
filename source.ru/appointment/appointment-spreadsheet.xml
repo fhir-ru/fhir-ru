@@ -4763,21 +4763,21 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">Appointment.start</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Appointment date/time.</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Дата/время условленной встречи<!-- Appointment date/time. --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Appointment.status</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The overall status of the appointment</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Общий статус записи на прием<!-- The overall status of the appointment --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">actor</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Appointment.participant.actor</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Any one of the individuals participating in the appointment</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Любое из лиц, участвующих в условленной встрече<!-- Any one of the individuals participating in the appointment --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">!duration</Data></Cell>
@@ -4791,28 +4791,28 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Appointment.participant.status</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The Participation status of the subject, or other participant on the appointment. Can be used to locate participants that have not responded to meeting requests.</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Статус участия субъекта или другого участника условленной встречи. Может использоваться для определения местонахождения участников, которые еще не ответили на запрос о встрече.<!-- The Participation status of the subject, or other participant on the appointment. Can be used to locate participants that have not responded to meeting requests. --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Appointment.participant.actor</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">One of the individuals of the appointment is this patient</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Одним из лиц, участвующих в условленной встрече, является этот пациент<!-- One of the individuals of the appointment is this patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">practitioner</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Practitioner</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Appointment.participant.actor</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">One of the individuals of the appointment is this practitioner</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Одним из лиц, участвующих в условленной встрече, является этот специалист<!-- One of the individuals of the appointment is this practitioner --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">location</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Location</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Appointment.participant.actor</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">This location is listed in the participants of the appointment</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Этот ресурс location перечислен в участниках условленной встречи<!-- This location is listed in the participants of the appointment --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>
@@ -7036,7 +7036,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">AppointmentStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The free/busy status of an appointment</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус "свободный/занятый" записи на прием<!-- The free/busy status of an appointment --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">#appointmentstatus</Data></Cell>
@@ -7051,7 +7051,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s93"><Data ss:Type="String">ParticipationStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The Participation status of an appointment</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус участия в условленной встрече<!-- The Participation status of an appointment --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">#participationstatus</Data></Cell>
@@ -7066,7 +7066,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s93"><Data ss:Type="String">ParticipantRequired</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Is the Participant required to attend the appointment</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Требуется ли от участника присутствовать на встрече<!-- Is the Participant required to attend the appointment --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">#participantrequired</Data></Cell>
@@ -7096,7 +7096,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s93"><Data ss:Type="String">ApptReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The Reason for the appointment to take place</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование проведения этой условленной встречи<!-- The Reason for the appointment to take place --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">http://hl7.org/fhir/vs/encounter-reason</Data></Cell>
