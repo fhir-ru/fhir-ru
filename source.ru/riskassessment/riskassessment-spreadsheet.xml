@@ -1014,9 +1014,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who/what does assessment apply to?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">К кому или чему относится оценка риска?<!-- Who/what does assessment apply to? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The patient or group the risk assessment applies to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурс Patient или Group, к которому относится оценка риска<!-- The patient or group the risk assessment applies to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1051,11 +1051,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When was assessment made?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда была произведена оценка?<!-- When was assessment made? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date (and possibly time) the risk assessment was performed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (и, возможно, время) выполнения оценки<!-- The date (and possibly time) the risk assessment was performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The assessment results lose validity the more time elapses from when they are first made</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Результаты оценки риска теряют силу, чем больше времени проходит с момента, когда она была впервые сделана<!-- The assessment results lose validity the more time elapses from when they are first made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1086,9 +1086,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Condition assessed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Оцениваемое состояние<!-- Condition assessed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For assessments or prognosis specific to a particular condition, indicates the condition being assessed.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Здесь указывается оцениваемое состояние для оценок или прогнозов, специфичных для определенного состояния.<!-- For assessments or prognosis specific to a particular condition, indicates the condition being assessed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1121,9 +1121,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who did assessment?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто сделал оценку риска?<!-- Who did assessment? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The provider or software application that performed the assessment</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Поставщик или программное обеспечение, выполнившее оценку риска<!-- The provider or software application that performed the assessment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1157,9 +1157,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Unique identifier for the assessment</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор этой оценки<!-- Unique identifier for the assessment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Business identifier assigned to the risk assessment</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Бизнес-идентификатор, присвоенный этой оценке риска<!-- Business identifier assigned to the risk assessment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1194,11 +1194,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Evaluation mechanism</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Механизм оценивания<!-- Evaluation mechanism --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The algorithm, processs or mechanism used to evaluate the risk</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Алгоритм, процесс или механизм, используемый для оценки риска<!-- The algorithm, processs or mechanism used to evaluate the risk --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The method can influence the results of the assessment</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Метод может повлиять на результаты оценки<!-- The method can influence the results of the assessment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Is this in the 80%?</Data><NamedCell
@@ -1229,9 +1229,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Information used in assessment</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Информация, используемая в оценке<!-- Information used in assessment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the source data considered as part of the assessment (FamilyHistory, Observations, Procedures, Conditions, etc.)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Здесь указываются исходные данные, рассматриваемые в рамках оценки (ресурсы FamilyHistory, Observations, Procedures, Conditions и др.)<!-- Indicates the source data considered as part of the assessment (FamilyHistory, Observations, Procedures, Conditions, etc.) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1262,12 +1262,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Outcome predicted</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ожидаемый результат<!-- Outcome predicted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Describes the expected outcome for the subject</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает ожидаемый результат для субъекта<!-- Describes the expected outcome for the subject --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Multiple repetitions can be used to identify the same type of outcome in different timeframes as well as different types of outcomes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для обозначения одного и того же типа результата в различные периоды может использоваться несколько повторений, а также различные типы результатов<!-- Multiple repetitions can be used to identify the same type of outcome in different timeframes as well as different types of outcomes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship[typeCode=VALUE].target[classCod=OBS, moodCode=RISK]</Data><NamedCell
@@ -1298,9 +1298,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Possible outcome for the subject</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Возможный результат для субъекта<!-- Possible outcome for the subject --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">One of the potential outcomes for the patient (e.g. remission, death,  a particular condition)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Один из потенциальных результатов для пациента (например ремиссия, смерть, конкретное состояние)<!-- One of the potential outcomes for the patient (e.g. remission, death,  a particular condition) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1333,12 +1333,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Likelihood of specified outcome</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вероятность указанного исхода<!-- Likelihood of specified outcome --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">How likely is the outcome (in the specified timeframe)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Насколько вероятным является результат (в установленный срок)<!-- How likely is the outcome (in the specified timeframe) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If range is used, it represents the lower and upper bounds of certainty.  E.g. 40-60%&#10;&#10;Decimal values are expressed as percentages as well (max = 100)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если используется диапазон, он представляет собой верхнюю и нижнюю границы уверенности. Например 40-60%&#10;&#10;Десятичные значения также выражаются в процентах (макс = 100)<!-- If range is used, it represents the lower and upper bounds of certainty.  E.g. 40-60%&#10;&#10;Decimal values are expressed as percentages as well (max = 100) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;probability&quot;].value</Data><NamedCell
@@ -1368,11 +1368,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Relative likelihood</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Относительная вероятность<!-- Relative likelihood --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the risk for this particular subject (with their specific characteristics) divided by the risk of the population in general.  (Numbers greater than 1 = higher risk than the population, numbers less than 1 = lower risk.)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает риск для конкретного субъекта (с его конкретными характеристиками), поделенный на риск населения в целом. (Значения больше 1 = больший риск, чем население, значения меньше 1 = низкий риск.)<!-- Indicates the risk for this particular subject (with their specific characteristics) divided by the risk of the population in general.  (Numbers greater than 1 = higher risk than the population, numbers less than 1 = lower risk.) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Absolute risk is less meaningful than relative risk</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Абсолютный риск менее значим, чем относительный риск<!-- Absolute risk is less meaningful than relative risk --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Is this in the 80%?</Data><NamedCell
@@ -1403,12 +1403,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Timeframe or age range</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Временной период или возрастной диапазон<!-- Timeframe or age range --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the period of time or age range of the subject to which the specified probability applies</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает период времени или возрастной диапазон субъекта, к которому относится указанная вероятность<!-- Indicates the period of time or age range of the subject to which the specified probability applies --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If not specified, the risk applies &quot;over the subject's lifespan&quot;</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если не указано, риск относится ко всей &quot;продолжительности жизни&quot; субъекта<!-- If not specified, the risk applies &quot;over the subject's lifespan&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.effectiveTime or .inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;age&quot;].value</Data><NamedCell
@@ -1437,9 +1437,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Explanation of prediction</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Объяснение прогноза<!-- Explanation of prediction --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional information explaining the basis for the prediction</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация, поясняющая основание для прогнозирования<!-- Additional information explaining the basis for the prediction --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1471,11 +1471,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How to reduce risk</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Как уменьшить риск<!-- How to reduce risk --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A description of the steps that might be taken to reduce the identified risk(s).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание шагов, которые можно предпринять для снижения выявленного риска.<!-- A description of the steps that might be taken to reduce the identified risk(s). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">One of the main reasons for assessing risks is to identify whether interventional steps are needed to reduce risk</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Одна из главных причин для оценки рисков является определение, нужны ли интервенционные шаги, чтобы уменьшить риск<!-- One of the main reasons for assessing risks is to identify whether interventional steps are needed to reduce risk --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
