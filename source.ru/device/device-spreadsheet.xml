@@ -1178,7 +1178,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">available | not-available | entered-in-error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус доступности устройства<!-- Status of the Device availability. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Состояние готовности устройства<!-- Status of the Device availability. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4505,56 +4505,56 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Device.type</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The type of the device</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Тип устройства<!-- The type of the device --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">manufacturer</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Device.manufacturer</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The manufacturer of the device</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Изготовитель устройства<!-- The manufacturer of the device --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">model</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Device.model</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The model of the device</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Модель устройства<!-- The model of the device --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Device.owner</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The organization responsible for the device</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Организация, ответственная за это устройство<!-- The organization responsible for the device --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Device.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Instance id from manufacturer, owner, and others</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор экземпляра от изготовителя, владельца, или другой<!-- Instance id from manufacturer, owner, and others --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">location</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Device.location</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A location, where the resource is found</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Место, где находится ресурс<!-- A location, where the resource is found --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Device.patient</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Patient information, if the resource is affixed to a person</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Информация о пациенте, если ресурс являются принадлежностью человека<!-- Patient information, if the resource is affixed to a person --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">udi</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Device.udi</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">FDA Mandated Unique Device Identifier</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обязательный уникальный идентификатор устройства FDA<!-- FDA Mandated Unique Device Identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6783,7 +6783,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s145"><Data ss:Type="String">DeviceKind</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Defines the nature of the device and the kind of functionality/services/behavior that may be expected from it</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Описывает характер устройства и тип функциональности/сервисов/поведения, которые от него могут ожидаться<!-- Defines the nature of the device and the kind of functionality/services/behavior that may be expected from it --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">https://rtmms.nist.gov/rtmms/index.htm#!rosetta</Data></Cell>
@@ -6798,7 +6798,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">DeviceStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The availability status of the device</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Состояние готовности устройства<!-- The availability status of the device --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#devicestatus</Data></Cell>
