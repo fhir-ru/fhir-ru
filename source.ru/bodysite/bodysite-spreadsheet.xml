@@ -1040,7 +1040,7 @@
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Человек, которому принадлежит место на теле<!-- The person to which the body site belongs --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человек, для которого указывается место на теле<!-- The person to which the body site belongs --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1070,7 +1070,7 @@
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Идентификатор места на теле<!-- Bodysite identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор для данного экземпляра анатомического расположения<!-- Identifier for this instance of the anatomical location. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор данного экземпляра анатомического расположения<!-- Identifier for this instance of the anatomical location. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1162,7 +1162,7 @@
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Модификация кода расположения<!-- Modification to location code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Модификатор для уточнения анатомического расположения. Сюда входят такие модификаторы, как латеральность, относительное расположение, направленность, число и плоскость.<!-- Modifier to refine the anatomical location.  These include modifiers for laterality, relative location, directionality, number, and plane. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Модификатор для уточнения анатомического расположения. Сюда входят такие модификаторы как латеральность, относительное расположение, направленность, число и плоскость.<!-- Modifier to refine the anatomical location.  These include modifiers for laterality, relative location, directionality, number, and plane. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1418,7 +1418,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">Описание анатомического расположения.<!-- Description of anatomical location. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">This Description  could include any visual markings used to orientate the viewer e.g external reference points, special sutures, ink markings.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Это описание может включать в себя любые визуальные маркировки, используемые, чтобы сориентировать наблюдателя, например внешние ориентиры, специальные швы, чернильные маркировки.<!-- This Description  could include any visual markings used to orientate the viewer e.g external reference points, special sutures, ink markings. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1447,7 +1447,7 @@
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Вложенные изображения<!-- Attached images --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Изображение или изображения, используемые для определения месторасположения.<!-- Image or images used to identify a location. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Изображения, используемые для определения месторасположения.<!-- Image or images used to identify a location. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4459,14 +4459,14 @@
     <Cell ss:StyleID="s86"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s86"/>
     <Cell ss:StyleID="s96"><Data ss:Type="String">BodySite.code</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Named anatomical location </Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Именованное анатомическое расположение<!-- Named anatomical location  --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s86"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">BodySite.patient</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Patient to whom bodysite belongs</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Пациент, для которого указывается место на теле<!-- Patient to whom bodysite belongs --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>
@@ -6728,7 +6728,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s86"><Data ss:Type="String">BodySiteModifier</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Concepts modifying the anatomic location</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Понятия, модифицирующие анатомическое расположение<!-- Concepts modifying the anatomic location --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-bodysite-relative-location</Data></Cell>

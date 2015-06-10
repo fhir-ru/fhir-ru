@@ -218,9 +218,9 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
   private String businessIdWarning(String name) {
     if (name.equals("identifier"))
-      return "This is a business identifer, not a resource identifier (see <a href=\"resource.html#identifiers\">discussion</a>)";
+      return "Это бизнес-идентификатор, а не идентификатор ресурса (см. <a href=\"resource.html#identifiers\">обсуждение</a>)";
     if (name.equals("version"))
-      return "This is a business versionId, not a resource identifier (see <a href=\"resource.html#versions\">discussion</a>)";
+      return "Это бизнес-versionId, а не идентификатор ресурса (см. <a href=\"resource.html#versions\">обсуждение</a>)";
     return null;
   }
 
