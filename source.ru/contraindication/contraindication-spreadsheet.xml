@@ -1221,9 +1221,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who found issue?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто обнаружил проблему?<!-- Who found issue? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the provider or software that identified the </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет поставщика или программное обеспечение, обнаруживших проблему<!-- Identifies the provider or software that identified the  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1256,11 +1256,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Unique id for the contraindication</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор этого противопоказания<!-- Unique id for the contraindication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Business identifier associated with the contraindication record</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Бизнес-идентификатор, ассоциированный с данной записью противопоказания<!-- Business identifier associated with the contraindication record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows linking instances of the same contraindication found on different servers</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет связать между собой экземпляры одного и того же противопоказания, найденные на разных серверах<!-- Allows linking instances of the same contraindication found on different servers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1289,9 +1289,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Authority for issue</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Авторитетный источник, описывающий проблему<!-- Authority for issue --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The literature, knowledge-base or similar reference that describes the propensity for the contraindication identified</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Литература, база знаний или другая подобная ссылка, которая описывает склонность к идентифицированному противопоказанию<!-- The literature, knowledge-base or similar reference that describes the propensity for the contraindication identified --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1321,9 +1321,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Step taken to address</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Шаги для решения проблемы<!-- Step taken to address --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates an action that has been taken or is committed to to reduce or eliminate the likelihood of the risk identified by the contraindicaiton from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает на действие, которое было предпринято или должно уменьшить или устранить вероятность риска, идентифицированного противопоказанием, от проявления. Может также отражать наблюдение известных смягчающих факторов, которые могут снизить/устранить необходимость в каких-либо действиях.<!-- Indicates an action that has been taken or is committed to to reduce or eliminate the likelihood of the risk identified by the contraindicaiton from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1356,12 +1356,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What mitigation?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Какие есть смягчающие факторы?<!-- What mitigation? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Describes the action that was taken or the observation that was made that reduces/eliminates the risk associated with the identified contraindication</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает действие, которые было предпринято, или наблюдение, которое было сделано для уменьшения/устранения риска, ассоциируемого с выявленным противопоказанием<!-- Describes the action that was taken or the observation that was made that reduces/eliminates the risk associated with the identified contraindication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The &quot;text&quot; component can be used for detail or when no appropriate code exists.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Компонент &quot;text&quot; можно использовать для описания подробностей или когда нет подходящего кода.<!-- The &quot;text&quot; component can be used for detail or when no appropriate code exists. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
@@ -1389,12 +1389,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Date committed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата совершения<!-- Date committed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates when the mitigating action was documented</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, когда было задокументировано смягчающее действие<!-- Indicates when the mitigating action was documented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This may not be the same as when the mitigating step was actually taken</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не может совпадать с датой, когда был фактически предпринят смягчающий шаг<!-- This may not be the same as when the mitigating step was actually taken --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.effectiveTime</Data><NamedCell
@@ -1422,9 +1422,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who is committing?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто совершает?<!-- Who is committing? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the practitioner who determined the mitigation and takes responsibility for the mitigation step occurring</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет специалиста, который определил смягчающее действие и взял на себя ответственность за выполнение смягчающего шага<!-- Identifies the practitioner who determined the mitigation and takes responsibility for the mitigation step occurring --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
