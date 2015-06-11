@@ -1048,7 +1048,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Например лекарственное взаимодействие, дубликат средства лечения и т. п.<!-- E.g. Drug-drug, duplicate therapy, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Например лекарственное взаимодействие, дубликат средства лечения и т. п<!-- E.g. Drug-drug, duplicate therapy, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет общий тип выявленной проблемы.<!-- Identifies the general type of issue identified. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
