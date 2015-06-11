@@ -1006,9 +1006,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Unique identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор<!-- Unique identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Identifiers associated with this Communication that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation). </Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Идентификаторы, связанные с этим ресурсом Communication, определенные бизнес-процессами и/или используемые для обращения к нему, когда прямая URL-ссылка на сам ресурс не подходит (например в документах CDA или в письменной/печатной документации).<!-- Identifiers associated with this Communication that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1039,9 +1039,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Message category</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Категория сообщения<!-- Message category --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The type of message conveyed such as alert, notification, reminder, instruction, etc.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Тип передаваемого сообщения, например предупреждение, уведомление, напоминание, инструкция и т. д.<!-- The type of message conveyed such as alert, notification, reminder, instruction, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1072,9 +1072,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Message sender</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Отправитель сообщения<!-- Message sender --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The entity (e.g., person, organization, clinical information system, or device) which was the source of the communication.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Сущность (например человек, организация, клиническая информационная система, или устройство), которая была источником коммуникации.<!-- The entity (e.g., person, organization, clinical information system, or device) which was the source of the communication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1105,9 +1105,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Message recipient</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Получатель сообщения<!-- Message recipient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The entity (e.g., person, organization, clinical information system, or device) which was the target of the communication.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Сущность (например человек, организация, клиническая информационная система, или устройство), которая была целью коммуникации.<!-- The entity (e.g., person, organization, clinical information system, or device) which was the target of the communication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1136,9 +1136,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Message payload</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Полезная нагрузка сообщения<!-- Message payload --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Text, attachment(s), or resource(s) that was communicated to the recipient.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Текст, вложения или ресурсы, которые были сообщены получателю.<!-- Text, attachment(s), or resource(s) that was communicated to the recipient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1168,9 +1168,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Message part content</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Содержательная часть сообщения<!-- Message part content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">An individual message part for multi-part messages.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Отдельная часть сообщения для многосекционных сообщений<!-- An individual message part for multi-part messages. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1200,9 +1200,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Communication medium</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Средство коммуникации<!-- Communication medium --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The communication medium, e.g., email, fax.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Средство коммуникации, например электронная почта, факс.<!-- The communication medium, e.g., email, fax. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1237,7 +1237,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">in-progress | completed | suspended | rejected | failed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The status of the transmission.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Статус передачи.<!-- The status of the transmission. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1268,9 +1268,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter leading to message</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter, который привел к сообщению<!-- Encounter leading to message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The encounter within which the communication was sent.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Encounter, в рамках которого было отправлено сообщение.<!-- The encounter within which the communication was sent. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1301,9 +1301,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When sent</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда было отправлено<!-- When sent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The time when this communication was sent.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Время, когда это сообщение было отправлено.<!-- The time when this communication was sent. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1334,9 +1334,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When received</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда получено<!-- When received --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The time when this communication arrived at the destination.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Время, когда это сообщение прибыло в пункт назначения.<!-- The time when this communication arrived at the destination. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1366,9 +1366,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indication for message</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование для сообщения<!-- Indication for message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The reason or justification for the communication.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Причина или обоснование этой коммуникации.<!-- The reason or justification for the communication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1399,9 +1399,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Focus of message</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">О ком сообщение<!-- Focus of message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The patient who was the focus of this communication.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Пациент, о котором идет речь в этом сообщении<!-- The patient who was the focus of this communication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
