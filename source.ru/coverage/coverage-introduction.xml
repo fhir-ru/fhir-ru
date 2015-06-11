@@ -3,8 +3,9 @@
 <div>
 <h2>Область применения и использование</h2>
 <p>
-The Coverage resource is intended to provide the high level identifiers and potentially descriptors of insurance plans which may used to pay for,
- in part or in whole, the provision of health care products and services.
+Ресурс Coverage предназначен для предоставления идентификаторов высокого уровня и, потенциально, дескрипторов страховых планов, которые могут использоваться для оплаты, частично или целиком, предоставления товаров и услуг здравоохранения. 
+<!-- The Coverage resource is intended to provide the high level identifiers and potentially descriptors of insurance plans which may used to pay for,
+ in part or in whole, the provision of health care products and services. -->
 Todo
 </p>
 </div>
