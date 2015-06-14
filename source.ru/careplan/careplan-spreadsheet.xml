@@ -1002,11 +1002,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">External Ids for this plan</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешние идентификаторы этого плана<!-- External Ids for this plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This records identifiers associated with this care plan that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сюда записываются идентификаторы, ассоциированные с этим планом по уходу, которые были присвоены в результате бизнес-процессов и/или используются для ссылки на него, когда прямая URL-ссылка на сам ресурс не подходит (например в CDA-документах или письменной/печатной документации)<!-- This records identifiers associated with this care plan that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to allow connection to a wider workflow</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность связи с более широкими рабочими процессами<!-- Need to allow connection to a wider workflow --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1035,11 +1035,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who care plan is for</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для кого этот план ухода<!-- Who care plan is for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the patient/subject whose intended care is described by the plan.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет пациента/субъекта, уход за которым описывается в этом плане.<!-- Identifies the patient/subject whose intended care is described by the plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Care plans are associated with the patient the plan is for.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Планы ухода связаны с пациентом, для которого они предназначены.<!-- Care plans are associated with the patient the plan is for. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1073,9 +1073,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">planned | active | completed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает, следуют ли сейчас этому плану или он представляет собой будущие цели, или это просто архивная запись.<!-- Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows clinicians to determine whether the plan is actionable or not</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет клиницистам определить, имеет ли этот план практическое значение или нет<!-- Allows clinicians to determine whether the plan is actionable or not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1105,13 +1105,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time period plan covers</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени, покрытый планом<!-- Time period plan covers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates when the plan did (or is intended to) come into effect and end. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает, когда план вступил или вступает в действие и когда его действие заканчивается<!-- Indicates when the plan did (or is intended to) come into effect and end.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows tracking what plan(s) are in effect at a particular time.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отслеживать, какие планы действуют в данный момент.<!-- Allows tracking what plan(s) are in effect at a particular time. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Any activities scheduled as part of the plan should be constrained to the specified period.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Любые мероприятия, запланированные в рамках этого плана, должны быть ограничены указанным периодом времени.<!-- Any activities scheduled as part of the plan should be constrained to the specified period. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.effectiveTime</Data><NamedCell
@@ -1140,12 +1140,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who is responsible for plan</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто ответственен за план<!-- Who is responsible for plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the individual(s) or ogranization who is responsible for the content of the care plan.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет лицо или организацию, несущих ответственность за содержимое этого плана по уходу<!-- Identifies the individual(s) or ogranization who is responsible for the content of the care plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Collaborative care plans may have multiple authors.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">У совместных планов по уходу может быть несколько авторов.<!-- Collaborative care plans may have multiple authors. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1172,11 +1172,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When last updated</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата последнего обновления<!-- When last updated --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the most recent date on which the plan has been revised.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет последнюю дату пересмотра плана.<!-- Identifies the most recent date on which the plan has been revised. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates how current the plan is.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Обозначает актуальность плана.<!-- Indicates how current the plan is. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1208,15 +1208,15 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of plan</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип плана<!-- Type of plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies what &quot;kind&quot; of plan this is to support differentiation between multiple co-existing plans.  E.g. &quot;Home health&quot;, &quot;psychiatric&quot;, &quot;asthma&quot;, &quot;disease management&quot;, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет тип плана, чтобы можно было различать несколько одновременно действующих планов. Например "На дому", "Психиатрический", "Астма", "Управление течением заболевания" и т. д.<!-- Identifies what &quot;kind&quot; of plan this is to support differentiation between multiple co-existing plans.  E.g. &quot;Home health&quot;, &quot;psychiatric&quot;, &quot;asthma&quot;, &quot;disease management&quot;, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Used for filtering what plan(s) are retrieved and displayed to different types of users</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется для фильтрации, какие планы отображать для различных типов пользователей<!-- Used for filtering what plan(s) are retrieved and displayed to different types of users --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">There may be multiple axis of categorization and one plan may serve multiple purposes.  In some cases, this may be redundant with references to CarePlan.concern.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Одновременно может применяться несколько видов классификации, и один и тот же план может попадать в несколько категорий. В некоторых случаях это может быть излишним со ссылками на CarePlan.concern.<!-- There may be multiple axis of categorization and one plan may serve multiple purposes.  In some cases, this may be redundant with references to CarePlan.concern. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need a value set for this</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Здесь нужен набор значений<!-- Need a value set for this --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1242,11 +1242,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Health issues this plan addresses</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Проблемы здоровья, которые решает этот план<!-- Health issues this plan addresses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет условия/проблемы/обеспокоенность/диагнозы/т. п., ведение которых и/или смягчение осуществляется в рамках этого плана.<!-- Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Links plan to the conditions it manages.  Also scopes plans - multiple plans may exist addressing different concerns.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Связывает план с состояниями, на решение которых он направлен. Также ограничивает область действия планов - одновременно может существовать несколько планов, направленных на решение различных проблем.<!-- Links plan to the conditions it manages.  Also scopes plans - multiple plans may exist addressing different concerns. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1275,13 +1275,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Information considered as part of plan</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Информация, принимаемая во внимание в рамках плана<!-- Information considered as part of plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies portions of the patient's record that specifically influenced the formation of the plan.  These might include co-morbidities, recent procedures, limitations, recent assessments, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет части медицинской карты пациента, которые особенно влияют на разработку плана. Сюда могут входить сопутствующие заболевания, последние процедуры, ограничения, результаты последних осмотров и т. п.<!-- Identifies portions of the patient's record that specifically influenced the formation of the plan.  These might include co-morbidities, recent procedures, limitations, recent assessments, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies barriers and other considerations associated with the care plan.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет помехи и другие соображения, связанные с планом ухода.<!-- Identifies barriers and other considerations associated with the care plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Use &quot;concern&quot; to identify specific conditions addressed by the care plan.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для указания определенных состояний, на решение которых направлен план ухода, используйте &quot;concern&quot;.<!-- Use &quot;concern&quot; to identify specific conditions addressed by the care plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1309,9 +1309,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Who's involved in plan?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Здесь указываются все люди и организации, от которых ожидается участие в оказании ухода, описанного в этом плане.<!-- Identifies all people and organizations who are expected to be involved in the care envisioned by this plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows representation of care teams, helps scope care plan.  In some cases may be a determiner of access permissions.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дает возможность представлять бригады медицинской помощи, помогает ограничить область действия плана ухода. В некоторых случаях может выступать в качестве определителя для разрешения доступа.<!-- Allows representation of care teams, helps scope care plan.  In some cases may be a determiner of access permissions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
