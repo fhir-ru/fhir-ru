@@ -1924,7 +1924,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Сведения о вакцинном протоколе<!-- Details of vaccine protocol< -->/Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сведения о вакцинном протоколе<!-- Details of vaccine protocol --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Содержит описание протокола, в соответствии с которым была введена вакцина<!-- Contains the description about the protocol under which the vaccine was administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
