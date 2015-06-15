@@ -1041,7 +1041,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Человек, которому требуется эта диета, смесь или пищевая добавка&#10;<!-- The person who requires the diet, formula or nutritional supplement&#10; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person (patient) who needs the nutrition order for an oral diet, nutritional supplement and/or enteral or formula feeding.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек (пациент), которому требуется этот заказ на питание для пероральной диеты, пищевой добавки и/или энтерального или кормления смесями.<!-- The person (patient) who needs the nutrition order for an oral diet, nutritional supplement and/or enteral or formula feeding. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1078,7 +1078,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Кто заказал диету, смесь или пищевую добавку<!-- Who ordered the diet, formula or nutritional supplement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The practitioner that holds legal responsibility for ordering the diet, nutritional supplement, or formula feedings.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Специалист, несущий юридическую ответственность за заказ диеты, пищевой добавки или искусственного вскармливания.<!-- The practitioner that holds legal responsibility for ordering the diet, nutritional supplement, or formula feedings. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1113,7 +1113,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификаторы, присвоенные этому заказу<!-- Identifiers assigned to this order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifiers assigned to this order by the order sender or by the order receiver</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификаторы, присвоенные этому заказу отправителем или получателем заказа<!-- Identifiers assigned to this order by the order sender or by the order receiver --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1149,7 +1149,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Случай обслуживания (encounter), связанный с этим заказом питания<!-- The encounter associated with that this nutrition order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An encounter that provides additional information about the healthcare context in which this request is made</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Случай обслуживания, предоставляющий дополнительную информацию о контексте здравоохранения, в котором был сделан этот запрос<!-- An encounter that provides additional information about the healthcare context in which this request is made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1185,7 +1185,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дата и время, когда был сделан запрос на заказ питания<!-- Date and time the nutrition order was requested --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date and time that this nutrition order was requested.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время, когда был сделан запрос на заказ питания.<!-- The date and time that this nutrition order was requested. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1226,7 +1226,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Статус рабочего процесса заказа/запроса на питание.<!-- The workflow status of the nutrition order/request. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Typically the system placing the order sets the status to requested. There after, the order is maintained by the receiver that updates the status as the request is handled.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно система. размещающая заказ, устанавливает статус в "requested". Затем заказ поддерживается получателем, который обновляет статус по мере обработки запроса.<!-- Typically the system placing the order sets the status to requested. There after, the order is maintained by the receiver that updates the status as the request is handled. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">.statusCode&#10;</Data><NamedCell
@@ -1259,10 +1259,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень пищевых и связанных с питанием аллергий и непереносимостей пациента<!-- List of the patient's food and nutrition-related allergies and intolerances --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A link to a record of allergies or Intolerances  which should be included in the nutrition order.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Связь с записями аллергий или непереносимостей, который должен быть включен в заказ на питание.<!-- A link to a record of allergies or Intolerances  which should be included in the nutrition order. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Information on a patient's food allergies and intolerances, inform healthcare personnel about the type of foods that the patient should receive or consume.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о пищевых аллергиях и непереносимостях пациента, чтобы проинформировать медицинский персонал о типе пищевых продуктов, которые пациент должен получать или употреблять.<!-- Information on a patient's food allergies and intolerances, inform healthcare personnel about the type of foods that the patient should receive or consume. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">.outboundRelationship[typeCode=RSON].target[classCode=OBS, moodCode=EVN]</Data><NamedCell
@@ -1295,10 +1295,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Специфичный для заказа модификатор типа пищи, которую следует выдавать<!-- Order-specific modifier about the type of food that should be given --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This modifier is used to convey order-specific modifiers about the type of food that should be given. These can be derived from patient allergies, intolerances, or preferences such as Halal, Vegan or Kosher. This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Этот модификатор используется для передачи специфичных для заказа модификаторов о тип пищевых продуктов, которые нужно выдавать. Это может проистекать из аллергий, непереносимостей или предпочтений пациента, например халяльная, вегетарианская, кошерная. Этот модификатор применяется ко всему заказу на питание включительно для пероральной диеты, пищевых добавок и энтерального искусственного вскармливания. <!-- This modifier is used to convey order-specific modifiers about the type of food that should be given. These can be derived from patient allergies, intolerances, or preferences such as Halal, Vegan or Kosher. This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Information on a patient's food preferences inform healthcare personnel about the food that the patient should receive or consume.</Data><NamedCell
+    <Cell><Data ss:Type="String">Информация о пищевых аллергиях и непереносимостях пациента, чтобы проинформировать медицинский персонал о типе пищевых продуктов, которые пациент должен получать или употреблять.<!-- Information on a patient's food preferences inform healthcare personnel about the food that the patient should receive or consume. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.outboundRelationship [typeCode =COMP], target [classCode=PROC, moodCode=EVN, code=NutritionModificationType]</Data><NamedCell
@@ -1332,10 +1332,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Специфичный для заказа модификатор типа пищи, которую не следует выдавать<!-- Order-specific modifier about the type of food that should not be given --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This modifier is used to convey order-specific modifiers about the type of food that should NOT be given. These can be derived from patient allergies, intolerances, or preferences such as No Red Meat, No Soy or No Wheat or  Gluten-Free. This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Этот модификатор используется для передачи специфичных для заказа модификаторов к типам пищевых продуктов, которые НЕ СЛЕДУЕТ выдавать. Это может проистекать из аллергий, непереносимостей или предпочтений пациента, например без красного мяса, без пшеницы, без глютена. Этот модификатор применяется ко всему заказу на питание включительно для пероральной диеты, пищевых добавок и энтерального искусственного вскармливания. <!-- This modifier is used to convey order-specific modifiers about the type of food that should NOT be given. These can be derived from patient allergies, intolerances, or preferences such as No Red Meat, No Soy or No Wheat or  Gluten-Free. This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Information on a patient's food allergies and intolerances, and preferences inform healthcare personnel about the type  of foods that the patient should receive or consume.</Data><NamedCell
+    <Cell><Data ss:Type="String">Информация о пищевых аллергиях и непереносимостях пациента, чтобы проинформировать медицинский персонал о типе пищевых продуктов, которые пациент должен получать или употреблять.<!-- Information on a patient's food allergies and intolerances, and preferences inform healthcare personnel about the type  of foods that the patient should receive or consume. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">N/A</Data><NamedCell
