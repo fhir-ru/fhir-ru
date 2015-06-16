@@ -2001,12 +2001,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific instance of object (e.g. versioned)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретный экземпляр объекта (например версионированный)<!-- Specific instance of object (e.g. versioned) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies a specific instance of the participant object. The reference should always be version specific</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует конкретный экземпляр объекта участия. Ссылка всегда должна быть с указанием версии<!-- Identifies a specific instance of the participant object. The reference should always be version specific --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier details depends on object type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Данные идентификатора зависят от типа объекта<!-- Identifier details depends on object type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.id.extension</Data><NamedCell
@@ -2037,9 +2037,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific instance of resource (e.g. versioned)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретный экземпляр ресурса (например версионированный)<!-- Specific instance of resource (e.g. versioned) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies a specific instance of the participant object. The reference should always be version specific</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует конкретный экземпляр объекта участия. Ссылка всегда должна быть с указанием версии<!-- Identifies a specific instance of the participant object. The reference should always be version specific --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2072,9 +2072,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Describes the identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описывает идентификатор<!-- Describes the identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Describes the identifier that is contained in Participant Object ID</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает идентификатор, который содержится в объектном идентификаторе участника<!-- Describes the identifier that is contained in Participant Object ID --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2107,13 +2107,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of object involved</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип объекта-участника<!-- Type of object involved --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of the object that was involved in this audit event. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип объекта, который был вовлечен в это аудируемое событие.<!-- The type of the object that was involved in this audit event.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">To describe the object being acted upon. In addition to queries on the subject of the action in an auditable event, it is also important to be able to query on the object type for the action </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для описания объекта действия. В дополнение к запросам к субъекту действия в аудируемом событии, это также важно иметь возможность запросить тип объекта действия<!-- To describe the object being acted upon. In addition to queries on the subject of the action in an auditable event, it is also important to be able to query on the object type for the action  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This value is distinct from the user's role or any user relationship to the participant object</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">то значение отличается от роли пользователя или любой взаимосвязи между пользователем и объектом участия<!-- This value is distinct from the user's role or any user relationship to the participant object --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">[self::Act].code&#10;or&#10;role.player.code</Data><NamedCell
@@ -2144,13 +2144,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What role the Object played </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Какую роль играет объект<!-- What role the Object played --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code representing the functional application role of Participant Object being audited</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, представляющий собой функциональную роль в приложении аудироуемого объекта участия<!-- Code representing the functional application role of Participant Object being audited --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">For some detailed audit analysis it may be necessary to indicate a more granular type of participant, based on the application role it serves</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для какого-то детального анализа аудита может потребоваться указать более гранулярный тип участия, основанный на роли в приложении, которую он служит<!-- For some detailed audit analysis it may be necessary to indicate a more granular type of participant, based on the application role it serves --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">See RFC 3881 for rules concerning matches between role and type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Правила, касающиеся поиску совпадений между ролью и типом см. в RFC 3881<!-- See RFC 3881 for rules concerning matches between role and type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">role.code&#10;(not sure what this would mean for an Act)</Data><NamedCell
@@ -2181,13 +2181,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Life-cycle stage for the object</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Стадия жизненного цикла для этого объекта<!-- Life-cycle stage for the object --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier for the data life-cycle stage for the participant object</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор стадии жизненного цикла для этого объекта участия<!-- Identifier for the data life-cycle stage for the participant object --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Institutional policies for privacy and security may optionally fall under different accountability rules based on data life cycle. This provides a differentiating value for those cases</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Политика конфиденциальности и безопасности учреждения может необязательно подпадать под различные правила ответственности на основе жизненного цикла данных. Это обеспечивает дифференцирующее значение для таких случаев<!-- Institutional policies for privacy and security may optionally fall under different accountability rules based on data life cycle. This provides a differentiating value for those cases --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This can be used to provide an audit trail for data, over time, as it passes through the system</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может использоваться для обеспечения аудита данных по прошествии времени прохождения через систему<!-- This can be used to provide an audit trail for data, over time, as it passes through the system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">target of ObservationEvent[code=&quot;lifecycle&quot;].value</Data><NamedCell
@@ -2218,13 +2218,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Policy-defined sensitivity for the object</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определяемый политикой уровень конфиденциальности объекта<!-- Policy-defined sensitivity for the object --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status or similar topics</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает определяемый политикой уровень конфиденциальности объектного идентификатора участника, например VIP-статус, ВИЧ-статус, статус психического здоровья или другие аналогичные статусы<!-- Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status or similar topics --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This field identifies a specific instance of an object, such as a patient, to detect/track privacy and security issues</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это поле определяет конкретный экземпляр объекта, такой как пациент, для обнаружения/отслеживания вопросов конфиденциальности и безопасности<!-- This field identifies a specific instance of an object, such as a patient, to detect/track privacy and security issues --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Values from ATNA are institution- and implementation-defined text strings (in sensitivity.text). HL7 defines confidentiality codes for records, documents etc. that can also be used here</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Значения из ATNA являются задаваемыми учреждениями и реализациями текстовыми строками (в поле sensitivity.text). HL7 определяет коды конфиденциальности для медкарт, документов и т. п., которые также можно использовать здесь <!-- Values from ATNA are institution- and implementation-defined text strings (in sensitivity.text). HL7 defines confidentiality codes for records, documents etc. that can also be used here --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.confidentialityCode</Data><NamedCell
@@ -2255,12 +2255,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Instance-specific descriptor for Object</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Специфичный для экземпляра дескриптор объекта<!-- Instance-specific descriptor for Object --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An instance-specific descriptor of the Participant Object ID audited, such as a person's name</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Специфичный для экземпляра дескриптор аудироуемого идентификатора объекта участника, например имя человека<!-- An instance-specific descriptor of the Participant Object ID audited, such as a person's name --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This field may be used in a query/report to identify audit events for a specific person, e.g., where multiple synonymous Participant Object IDs (patient number, medical record number, encounter number, etc.) have been used</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это поле можно использовать в запросе/отчете для идентификации аудируемых событий для конкретного человека, например когда используется несколько синонимичных идентификаторов объекта участника (номер пациента, номер медкарты, номер случая обслуживания и т. п.)<!-- This field may be used in a query/report to identify audit events for a specific person, e.g., where multiple synonymous Participant Object IDs (patient number, medical record number, encounter number, etc.) have been used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.title</Data><NamedCell
@@ -2325,11 +2325,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Actual query for object</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сам запрос для объекта<!-- Actual query for object --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual query for a query-type participant object</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сам запрос для объекта участия типа query<!-- The actual query for a query-type participant object --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">For query events it may be necessary to capture the actual query input to the query process in order to identify the specific event. Because of differences among query implementations and data encoding for them, this is a base 64 encoded data blob. It may be subsequently decoded or interpreted by downstream audit analysis processing</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для событий типа query может возникнуть необходимость зафиксировать сам входной запрос для обработки запроса, чтобы идентифицировать определенное событие. Из-за различий между реализациями и кодированием данных для них, используется "блоб" в кодировке base64. Он может быть впоследствии декодирован или интерпретирован в процессе обработки нисходящего анализа аудита<!-- For query events it may be necessary to capture the actual query input to the query process in order to identify the specific event. Because of differences among query implementations and data encoding for them, this is a base 64 encoded data blob. It may be subsequently decoded or interpreted by downstream audit analysis processing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2359,7 +2359,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional Information about the Object</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация об объекте<!-- Additional Information about the Object --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2393,7 +2393,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of the property</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Название свойства<!-- Name of the property --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2426,7 +2426,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Property value</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение свойства<!-- Property value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
