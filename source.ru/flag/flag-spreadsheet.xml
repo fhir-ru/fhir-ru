@@ -1011,9 +1011,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Business identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Бизнес-идентификатор<!-- Business identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier assigned to the flag for external use (outside the FHIR environment)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, присвоенный флагу для внешнего использования (вне среды FHIR)<!-- Identifier assigned to the flag for external use (outside the FHIR environment) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1045,9 +1045,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Clinical, administrative, etc.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Клинический, административный и т. п<!-- Clinical, administrative, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Allows an flag to be divided into different categories like clinical, administrative etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Позволяет относить флаги к различным категориям, например клинические, административные и т. п.<!-- Allows an flag to be divided into different categories like clinical, administrative etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1083,7 +1083,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">active | inactive | entered-in-error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Supports basic workflow</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Поддерживает базовый рабочий процесс<!-- Supports basic workflow --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1115,9 +1115,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time period when flag is active</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени, когда флаг активен<!-- Time period when flag is active --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The period of time from the activation of the flag to inactivation of the flag. If the flag is active, the end of the period should be unspecified.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени с момента активации флага до его инактивации. Если флаг активен, не следует указывать конец периода.<!-- The period of time from the activation of the flag to inactivation of the flag. If the flag is active, the end of the period should be unspecified. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1148,9 +1148,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who is flag about?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">К чему относится флаг?<!-- Who is flag about? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The patient record this flag is associated with</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Запись пациента, к которой относится этот флаг<!-- The patient record this flag is associated with --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1182,9 +1182,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Flag creator</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Создатель флага<!-- Flag creator --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person or device that created the flag</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек или устройство, создавшее флаг<!-- The person or device that created the flag --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1216,9 +1216,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Partially deaf, Requires easy open caps, No permanent address, etc.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Частично глухой; необходимо использовать легко открывающиеся крышки; нет постоянного адреса и т. п<!-- Partially deaf, Requires easy open caps, No permanent address, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The coded value or textual component of the flag to display to the user</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированное значение или текстовый компонент флага для отображения пользователю<!-- The coded value or textual component of the flag to display to the user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
