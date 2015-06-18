@@ -1634,7 +1634,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебная категория, такая как соплатеж, имеющий право, льгота и т. п.<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебная категория, такая как соплатеж, имеющий право, льгота и т. п<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, обозначающий: соплатеж, подлежащий вычету, имеющий право, льгота, налог и т. п.<!-- Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1852,7 +1852,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебная категория, такая как соплатеж, имеющий право, льгота и т. п.<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебная категория, такая как соплатеж, имеющий право, льгота и т. п<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, обозначающий: соплатеж, подлежащий вычету, имеющий право, льгота, налог и т. п.<!-- Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2070,7 +2070,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебная категория, такая как соплатеж, имеющий право, льгота и т. п.<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебная категория, такая как соплатеж, имеющий право, льгота и т. п<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, обозначающий: соплатеж, подлежащий вычету, имеющий право, льгота, налог и т. п.<!-- Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2381,7 +2381,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебная категория, такая как соплатеж, имеющий право, льгота и т. п.<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебная категория, такая как соплатеж, имеющий право, льгота и т. п<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, обозначающий: соплатеж, подлежащий вычету, имеющий право, льгота, налог и т. п.<!-- Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2602,7 +2602,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебная категория, такая как соплатеж, имеющий право, льгота и т. п.<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебная категория, такая как соплатеж, имеющий право, льгота и т. п<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, обозначающий: соплатеж, подлежащий вычету, имеющий право, льгота, налог и т. п.<!-- Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
