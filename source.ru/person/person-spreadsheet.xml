@@ -1017,11 +1017,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A Human identifier for this person</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Понятный человеку идентификатор данного субъекта<!-- A Human identifier for this person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier for a person within a particular scope.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор человека в конкретной области.<!-- Identifier for a person within a particular scope. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the person. Examples are national person identifier and local identifier</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">У людей обычно несколько идентификаторов. некоторые учреждения поддерживают несколько, а большинство собирает идентификаторы для обмена с другими организациями данными, касающимися этого человека. Примерами будут национальный идентификатор личности и локальный идентификатор<!-- People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the person. Examples are national person identifier and local identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1051,13 +1051,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A name associated with the person</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- A name associated with the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A name associated with the person</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- A name associated with the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to track the person by multiple names. Examples are your official name and a partner name.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность отслеживать человека по нескольким именам. Примерами являются ваше официальное имя и имя партнера.<!-- Need to be able to track the person by multiple names. Examples are your official name and a partner name. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Person may have multiple names with different uses or applicable periods.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">У человека может быть несколько имен с различным типом использования или периодом применения.<!-- Person may have multiple names with different uses or applicable periods. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./name</Data><NamedCell
@@ -1086,13 +1086,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A contact detail for the person</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактные данные человека<!-- A contact detail for the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A contact detail for the person, e.g. a telephone number or an email address.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные данные человека, например телефонный номер или адрес электронной почты.<!-- A contact detail for the person, e.g. a telephone number or an email address. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">People have (primary) ways to contact them in some way such as phone, email.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">У людей есть (основные) способы связаться с ними некоторым образом, например по телефону, электронной почте.<!-- People have (primary) ways to contact them in some way such as phone, email. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Person may have multiple ways to be contacted with different uses or applicable periods. &#13;May need to have options for contacting the person urgently, and also to help with identification</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">У человека может быть несколько способов связи с ним с различными видами использования или периодами применения. &#13;Могут потребоваться варианты для срочного контакта с человеком, а также чтобы помочь с идентификацией<!-- Person may have multiple ways to be contacted with different uses or applicable periods. &#13;May need to have options for contacting the person urgently, and also to help with identification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./telecom</Data><NamedCell
@@ -1124,11 +1124,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">male | female | other | unknown</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Administrative Gender</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Административный пол<!-- Administrative Gender --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Needed for identification of the person, in combination with (at least) name and birth date. Gender of person drives many clinical processes.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо для идентификации человека в комбинации с (по крайней мере) именем и датой рождения. Пол человека влияет на многие клинические процессы.<!-- Needed for identification of the person, in combination with (at least) name and birth date. Gender of person drives many clinical processes. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пол может не совпадать с биологическим полом, определенным генетикой, или с индивидуальной предпочитаемой идентификацией. Обратите внимание, что и для людей, и особенно для животных имеются другие правомерные возможности, кроме М и Ж, хотя подавляющее большинство систем и контекстов поддерживают только М и Ж<!-- The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender</Data><NamedCell
@@ -1157,13 +1157,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The birth date for the person</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата рождения человека<!-- The birth date for the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The birth date for the person.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата рождения этого человека.<!-- The birth date for the person. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Age of person drives many clinical processes. Next to the common use case of capturing someone birth date, also in some common cases time is registered.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Возраст человека влияет на многие клинические процессы. Кроме общего случая ввода чьей-то даты рождения, в некоторых случаях регистрируется также и время.<!-- Age of person drives many clinical processes. Next to the common use case of capturing someone birth date, also in some common cases time is registered. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">At least an estimated year should be provided as a guess if the real dob is unknown</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Необходимо указать хотя бы предположительный год рождения, если точная дата рождения не известна<!-- At least an estimated year should be provided as a guess if the real dob is unknown --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./birthTime</Data><NamedCell
@@ -1192,12 +1192,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates if the Person is deceased or not</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, умер ли этот человек или нет<!-- Indicates if the Person is deceased or not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates if the Person is deceased or not</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает, умер ли этот человек или нет<!-- Indicates if the Person is deceased or not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If there's no value in the instance it means there is no statement on whether or not the person deceased. Most systems will interpret the absence of a value as a sign of the person being alive.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если значение не указано, это означает, что нет никакого утверждения о том, умер этот человек или нет. Большинство систем будет интерпретировать отсутствие значения как признак того, что человек все еще жив.<!-- If there's no value in the instance it means there is no statement on whether or not the person deceased. Most systems will interpret the absence of a value as a sign of the person being alive. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./deceasedInd</Data><NamedCell
@@ -1225,13 +1225,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">One or more addresses for the person</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Один или несколько адресов человека<!-- One or more addresses for the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">One or more addresses for the person</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Один или несколько адресов этого человека<!-- One or more addresses for the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">May need to keep track of persons addresses for contacting, billing or reporting requirements and also to help with identification</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может потребоваться отслеживать адреса человека в целях контакта, выставления счетов или сообщения требований, а также для помощи в идентификации<!-- May need to keep track of persons addresses for contacting, billing or reporting requirements and also to help with identification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Person may have multiple addresses with different uses or applicable periods</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">У человека может быть несколько адресов с различным типом использования или периодом применения<!-- Person may have multiple addresses with different uses or applicable periods --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./addr</Data><NamedCell
@@ -1258,9 +1258,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Image of the Person</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Изображение человека<!-- Image of the Person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An image that can be displayed as a thumbnail of the person to enhance the identification of the individual</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Изображение, которое можно отображать в качестве миниатюрного изображения человека для помощи в его идентификации<!-- An image that can be displayed as a thumbnail of the person to enhance the identification of the individual --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1288,13 +1288,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The person's  proficiency level of a language</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уровень знания языка этого человека<!-- The person's  proficiency level of a language --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A language spoken by the person, with proficiency</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык, на котором говорит этот человек, с указанием уровня владения<!-- A language spoken by the person, with proficiency --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency is an important things to keep track of both for patient and other persons of interest</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если пациент не говорит на местном языке, могут потребоваться переводчики, поэтому знание, какими языками владеет и на каком уровне, важно отслеживать как для пациента, так и других лиц, представляющих интерес<!-- If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency is an important things to keep track of both for patient and other persons of interest --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If no language is specified, this *implies* that the default local language is spoken.&#13;If you need to convey proficiency for multiple modes than you need multiple Person.language associations.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если язык не указан, *подразумевается*, что человек говорит на местном по умолчанию языке.&#13;Если вам нужно передать уровень владения для нескольких форм, тогда вам потребуется несколько элементов Person.language.<!-- If no language is specified, this *implies* that the default local language is spoken.&#13;If you need to convey proficiency for multiple modes than you need multiple Person.language associations. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.LanguageCommunication</Data><NamedCell
@@ -1360,13 +1360,13 @@ The structure aa-BB with this exact casing is one the most widely used notations
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Language method of expression</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Форма выражения на языке<!-- Language method of expression --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A value representing the person's method of expression of this language. Examples: expressed spoken, expressed written, expressed signed, received spoken, received written, received signed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение, представляющее способ человека выражаться на данном языке. Примеры: выражено устно, письменно, знаками, получено устно, письменно, знаками<!-- A value representing the person's method of expression of this language. Examples: expressed spoken, expressed written, expressed signed, received spoken, received written, received signed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A Person that can write English fairly well, but is not capable to understand</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Человек, который может писать по-английски достаточно хорошо, но не в состоянии понять<!-- A Person that can write English fairly well, but is not capable to understand --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">It's expected that modeCode and proficiencyLevelCode work in conjunction. It makes less sense to convey modeCode unless you want to distinctly denote someone proficiency for a particular mode. It's however perfectly acceptable to have a proficiencyLevelCode without a modeCode</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ожидается, что modeCode и proficiencyLevelCode будут работать совместно. Это дает меньше смысла при передаче modeCode, если только вы не хотите отчетливо обозначить чей-то уровень владения для определенной формы выражения. Однако вполне приемлемо указывать proficiencyLevelCode без modeCode<!-- It's expected that modeCode and proficiencyLevelCode work in conjunction. It makes less sense to convey modeCode unless you want to distinctly denote someone proficiency for a particular mode. It's however perfectly acceptable to have a proficiencyLevelCode without a modeCode --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./modeCode</Data><NamedCell
@@ -1394,12 +1394,12 @@ The structure aa-BB with this exact casing is one the most widely used notations
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Proficiency level of the language</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уровень владения языком<!-- Proficiency level of the language --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that describes how well the language is spoken</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, описывающий, насколько хорошо человек говорит на этом языке<!-- A code that describes how well the language is spoken --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">See comments for Person.language.modeCode</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">См. комментарии к Person.language.modeCode<!-- See comments for Person.language.modeCode --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./proficiencyLanguageCode</Data><NamedCell
@@ -1426,11 +1426,11 @@ The structure aa-BB with this exact casing is one the most widely used notations
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Language preference indicator</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показатель предпочтения языка<!-- Language preference indicator --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates whether or not the Person prefers this language (over other languages he masters up a certain level)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает, является ли этот язык предпочтительным для человека (относительно других языков, которыми он владеет на некотором уровне)<!-- Indicates whether or not the Person prefers this language (over other languages he masters up a certain level) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">People that master multiple languages up to certain level may prefer one or more, i.e. feel more confident in communicating in a particular language making other languages sort of a fallback method</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Люди, владеющие несколькими языками на некотором уровне, могут предпочитать один или несколько, а именно чувствуют себя более уверенно при общении на конкретном языке, а остальные языки указывают в качестве запасного метода<!-- People that master multiple languages up to certain level may prefer one or more, i.e. feel more confident in communicating in a particular language making other languages sort of a fallback method --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1459,11 +1459,11 @@ The structure aa-BB with this exact casing is one the most widely used notations
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The Organization that is the custodian of the person record</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая является хранителем записи о человеке<!-- The Organization that is the custodian of the person record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The Organization that is the custodian of the person record</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая является хранителем записи о человеке<!-- The Organization that is the custodian of the person record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know who recognizes this person record, manages and updates it</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать, кто признает эту запись о человеке, управляет и обновляет ее<!-- Need to know who recognizes this person record, manages and updates it --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1493,11 +1493,11 @@ The structure aa-BB with this exact casing is one the most widely used notations
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">This person's record is in active use</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Запись об этом человеке находится в активном использовании<!-- This person's record is in active use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether this person's record is in active use</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Находится ли запись об этом человеке в активном использовании<!-- Whether this person's record is in active use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to mark a person record as not to be used because it was created in error</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность пометить запись человека как не предназначенную для использования, поскольку она была создана по ошибке<!-- Need to be able to mark a person record as not to be used because it was created in error --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1551,7 +1551,7 @@ The structure aa-BB with this exact casing is one the most widely used notations
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The resource to which this actual person is associated</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс, с которым ассоциируется данный человек<!-- The resource to which this actual person is associated --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1582,7 +1582,7 @@ The structure aa-BB with this exact casing is one the most widely used notations
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">level1 | level2 | level3 | level4</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Level of assurance that this link is actually associated with the target resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уровень уверенности, что эта ссылка на самом деле ассоциирована с целевым ресурсом<!-- Level of assurance that this link is actually associated with the target resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
