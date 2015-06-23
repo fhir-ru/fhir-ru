@@ -1446,7 +1446,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">Другой ресурс Location, физической частью которого является данный Location<!-- Another Location which this Location is physically part of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Знание, в состав какого места входит данное, важно для определения местоположения, отображения и идентификации<!-- For purposes of location, display and identification, knowing which locations are located within other locations is important --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Знание, в состав какого места входит данный Location, важно для определения местоположения, отображения и идентификации<!-- For purposes of location, display and identification, knowing which locations are located within other locations is important --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4364,56 +4364,56 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Location.name</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A (portion of the) name of the location</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Название или часть названия этого места<!-- A (portion of the) name of the location --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Location.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A code for the type of location</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Код типа местоположения<!-- A code for the type of location --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">address</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Location.address</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A (part of the) address of the location</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Адрес или часть адреса этого места<!-- A (part of the) address of the location --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Location.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Searches for locations with a specific kind of status</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Поиск по местоположениям с указанным видом статуса<!-- Searches for locations with a specific kind of status --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">partof</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Location.partOf</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The location of which this location is a part</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Местоположение, в состав которого входит данное местоположение<!-- The location of which this location is a part --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s116"><Data ss:Type="String">near</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The coordinates expressed as [lat],[long] (using the WGS84 datum, see notes) to find locations near to (servers may search using a square rather than a circle for efficiency)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Координаты, выраженные как [широта], [долгота] (в системе координат WGS84, см. примечания) для поиска ближайших местоположений (серверы могут искать с помощью квадрата, а не круга для эффективности)<!-- The coordinates expressed as [lat],[long] (using the WGS84 datum, see notes) to find locations near to (servers may search using a square rather than a circle for efficiency) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">near-distance</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A distance quantity to limit the near search to locations within a specific distance</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Дистанция для ограничения поиска ближайших местоположений в пределах указанного расстояния<!-- A distance quantity to limit the near search to locations within a specific distance --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Location.managingOrganization</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Searches for locations that are managed by the provided organization</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Поиск местоположений, контролируемых указанной организацией<!-- Searches for locations that are managed by the provided organization --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6566,7 +6566,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">PhysicalType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Physical form of the location</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Физическая форма местоположения<!-- Physical form of the location --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-location-physical-type</Data></Cell>
@@ -6581,7 +6581,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s146"><Data ss:Type="String">LocationType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the type of function performed at the location</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обозначает тип функции, выполняемой в этом месте<!-- Indicates the type of function performed at the location --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">http://hl7.org/fhir/v3/vs/ServiceDeliveryLocationRoleType</Data></Cell>
@@ -6596,7 +6596,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">LocationMode</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates whether a resource instance represents a specific location or a class of locations</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, представляет ли экземпляр ресурса определенное место или класс местоположений<!-- Indicates whether a resource instance represents a specific location or a class of locations --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#location-mode</Data></Cell>
@@ -6611,7 +6611,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">LocationStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates whether the location is still in use</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, находится ли все еще это место в использовании<!-- Indicates whether the location is still in use --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#location-status</Data></Cell>

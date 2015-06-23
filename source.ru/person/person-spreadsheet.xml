@@ -4313,84 +4313,84 @@ The structure aa-BB with this exact casing is one the most widely used notations
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s115"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">Person.identifier</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">A person Identifier</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Идентификатор человека<!-- A person Identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">name</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.name</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A portion of name in any name part</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Часть имени в любой части имени<!-- A portion of name in any name part --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">phonetic</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A portion of name using some kind of phonetic matching algorithm</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Часть имени, созданная с помощью какого-либо алгоритма фонетического сопоставления<!-- A portion of name using some kind of phonetic matching algorithm --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">telecom</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.telecom</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The value in any kind of contact</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Значение контакта любого вида<!-- The value in any kind of contact --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.address</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">An address in any kind of address/part</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Адрес в любом виде/составе<!-- An address in any kind of address/part --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">gender</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.gender</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The gender of the person</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Пол человека<!-- The gender of the person --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">birthdate</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.birthDate</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The person's date of birth</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Дата рождения человека<!-- The person's date of birth --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.managingOrganization</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The organization at which this person record is being managed</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Организация, в которой хранится запись об этом человеке<!-- The organization at which this person record is being managed --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">link</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.link.target</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Any link has this Patient, Person, RelatedPerson or Practitioner reference</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Любой link, содержащий ссылку на этого Patient, Person, RelatedPerson или Practitioner<!-- Any link has this Patient, Person, RelatedPerson or Practitioner reference --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.link.target</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The Person links to this Patient</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Связь с пациентом<!-- The Person links to this Patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">practitioner</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.link.target</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The Person links to this Practitioner</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Связь со специалистом<!-- The Person links to this Practitioner --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">relatedperson</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">RelatedPerson</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.link.target</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The Person links to this RelatedPerson</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Связь с родственником<!-- The Person links to this RelatedPerson --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -6519,7 +6519,7 @@ The structure aa-BB with this exact casing is one the most widely used notations
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s146"><Data ss:Type="String">IdentityAssuranceLevel</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The level of confidence that this link represents the same actual person, based on NIST Authentication Levels</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уровень уверенности, что эта ссылка ведет на того же самого реального человека, в зависимости от уровня NIST аутентификации<!-- The level of confidence that this link represents the same actual person, based on NIST Authentication Levels --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#identity-assuranceLevel</Data></Cell>

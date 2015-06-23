@@ -4807,13 +4807,13 @@
     <Cell ss:StyleID="s113"><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s86"><Data ss:Type="String">ProcedureRequest.subject</Data></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">Search by subject</Data></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">Поиск по субъекту<!-- Search by subject --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s115"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s86"><Data ss:Type="String">ProcedureRequest.subject</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Search by subject - a patient</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Поиск по субъекту-пациенту<!-- Search by subject - a patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">orderer</Data></Cell>
@@ -7141,7 +7141,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">ProcedureRequestStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of the request</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус запроса<!-- The status of the request --></Data></Cell>
     <Cell ss:StyleID="s126"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s126"/>
     <Cell ss:StyleID="s126"><Data ss:Type="String">#procedure-request-status</Data></Cell>
@@ -7156,7 +7156,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ProcedureRequestPriority</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The priority of the request</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Приоритет запроса<!-- The priority of the request --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#procedure-request-priority</Data></Cell>
