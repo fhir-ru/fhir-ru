@@ -4602,28 +4602,28 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">Slot.type</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">The type of appointments that can be booked into the slot</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Тип условленных встреч, которые можно зарезервировать в этом слоте<!-- The type of appointments that can be booked into the slot --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">schedule</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Slot.schedule</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The Schedule Resource that we are seeking a slot within</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Ресурс Schedule, в котором мы ищем слот<!-- The Schedule Resource that we are seeking a slot within --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">start</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Slot.start</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Appointment date/time.</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Дата/время условленной встречи.<!-- Appointment date/time. --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">fbtype</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Slot.freeBusyType</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The free/busy status of the appointment</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Статус записи на прием (свободный/занятый)<!-- The free/busy status of the appointment --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>

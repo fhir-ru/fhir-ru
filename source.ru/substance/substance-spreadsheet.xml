@@ -4608,7 +4608,7 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Substance.type</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The type of the substance</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Тип вещества<!-- The type of the substance --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>

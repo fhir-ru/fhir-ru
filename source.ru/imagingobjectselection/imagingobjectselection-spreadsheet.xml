@@ -1522,13 +1522,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Retrieve location uid</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">UID места извлечения<!-- Retrieve location uid --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">The unique identifier of the system (which exposes and manages the retrieve AE Title) where the series can be retrieved.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Уникальный идентификатор системы (которая предоставляет и управляет получением AE-названия), по которому может быть извлечена серия.<!-- The unique identifier of the system (which exposes and manages the retrieve AE Title) where the series can be retrieved. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Retrieve Location UID identifies the system which provides the retrieve service.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">UID места извлечения определяет систему, которая предоставляет сервис извлечения.<!-- Retrieve Location UID identifies the system which provides the retrieve service. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Series level locator information is optional.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Информация о локаторе на уровне серии является необязательной.<!-- Series level locator information is optional. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1556,13 +1556,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">Retrieve URL</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">URL извлечения<!-- Retrieve URL --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">WADO-RS URL to retrieve the series Note that this URL retrieves all SOP instances of the series not only those in the selection.</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">WADO-RS URL для извлечения серии. Обратите внимание, что по этому URL извлекаются все SOP-экземпляры серии, а не только те, что в выборке.<!-- WADO-RS URL to retrieve the series Note that this URL retrieves all SOP instances of the series not only those in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">WADO-RS URL enables retrieval of the entire series using DICOM WADO-RS API.</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">WADO-RS URL дает возможность извлекать всю серию целиком с помощью DICOM WADO-RS API.<!-- WADO-RS URL enables retrieval of the entire series using DICOM WADO-RS API. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">Series level locator information is optional. If provided, this is the URL to retrieve the entire series with WADO-RS interaction, though only a subset of these are selected in the selection.</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">Информация о локаторе на уровне серии является необязательной. Если указана, то это будет URL для извлечения всей серии целиком через взаимодействие с WADO-RS, хотя в выборке используется только ее подмножество.<!-- Series level locator information is optional. If provided, this is the URL to retrieve the entire series with WADO-RS interaction, though only a subset of these are selected in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1590,13 +1590,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">The selected instance</Data><NamedCell
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Отобранный экземпляр<!-- The selected instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">Identity and locating information of the selected DICOM SOP instances</Data><NamedCell
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Информация об идентификации и местоположении отобранных DICOM SOP-экземпляров<!-- Identity and locating information of the selected DICOM SOP instances --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. This is the instance level identity of the instance in the selection.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">DICOM SOP-экземпляры идентифицируются с помощью UID иерархии "исследование - серия - экземпляр". Здесь это идентификация экземпляра из выборки на уровне экземпляра.<!-- DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. This is the instance level identity of the instance in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">SOP Instance component identify the instance selected in the selection, along with the study and series identities to form the DICOM identity hierachy.</Data><NamedCell
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Компонент SOP-экземпляра идентифицирующий экземпляр, выбранный в выборке, наряду с идентификаторами исследования и серии образует иерархию идентификаторов DICOM.<!-- SOP Instance component identify the instance selected in the selection, along with the study and series identities to form the DICOM identity hierachy. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1624,13 +1624,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">SOP class uid of instance</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">UID класса SOP-экземпляра<!-- SOP class uid of instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">SOP class uid of the selected instance</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">UID класса отобранного SOP-экземпляра<!-- SOP class uid of the selected instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">DICOM SOP instance can be an imaging or other data object. The SOP class uid provide the accurate information about what type the instance is.</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">DICOM SOP-экземпляр может быть визуализацией или другим объектом данных. UID класса SOP-экземпляра предоставляет точную информацию о том, какого типа этот экземпляр.<!-- DICOM SOP instance can be an imaging or other data object. The SOP class uid provide the accurate information about what type the instance is. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">SOP class uid provides the type of the selected instances, e.g., CT image, Gray scale softcopy presentation state, ECG waveform, etc.</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">UID класса SOP-экземпляра указывает тип отобранных экземпляров, например КТ-изображение, состояние электронной презентации по серой шкале, волна кардиограммы и т. п.<!-- SOP class uid provides the type of the selected instances, e.g., CT image, Gray scale softcopy presentation state, ECG waveform, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1659,13 +1659,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">Uid of the selected instance</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">UID отобранного экземпляра<!-- Uid of the selected instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">SOP Instance uid of the selected instance</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">UID отобранного SOP-экземпляра<!-- SOP Instance uid of the selected instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">SOP instance uid is required to fully identify the DICOM SOP instance in the selection.</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">UID SOP-экземпляра необходим для полной идентификации DICOM SOP-экземпляра в выборке.<!-- SOP instance uid is required to fully identify the DICOM SOP instance in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">SOP instance uid identifies the instance</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">UID SOP-экземпляра идентифицирует экземпляр<!-- SOP instance uid identifies the instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1694,13 +1694,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">AE Title where may be retrieved</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">AE-название, где может быть получен<!-- AE Title where may be retrieved --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">The DICOM Application Entity Title where the DICOM SOP instance can be retrieved.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Название сущности приложения DICOM, где может быть получен DICOM SOP-экземпляр.<!-- The DICOM Application Entity Title where the DICOM SOP instance can be retrieved. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Application Entity Title enables retrieval of the SOP instance using DICOM upper layer protocol.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Название сущности приложения позволяет извлекать SOP-экземпляр с помощью протокола верхнего уровня DICOM.<!-- Application Entity Title enables retrieval of the SOP instance using DICOM upper layer protocol. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">Instance level locator information is required. </Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">Информация о локаторе на уровне экземпляра является обязательной.<!-- Instance level locator information is required.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1728,11 +1728,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Retrieve location uid</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">UID места извлечения<!-- Retrieve location uid --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">The unique identifier of the system (which exposes and manages the retrieve AE Title) where the DICOM SOP instance can be retrieved.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Уникальный идентификатор системы (которая предоставляет и управляет получением AE-названия), по которому может быть извлечен DICOM SOP-экземпляр.<!-- The unique identifier of the system (which exposes and manages the retrieve AE Title) where the DICOM SOP instance can be retrieved. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Retrieve Location UID identifies the system which provides the retrieve service.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">UID места извлечения определяет систему, которая предоставляет сервис извлечения.<!-- Retrieve Location UID identifies the system which provides the retrieve service. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4655,42 +4655,42 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s82"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ImagingObjectSelection.uid</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">UID of key DICOM object selection</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">UID выборки ключевых DICOM-объектов<!-- UID of key DICOM object selection --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">title</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ImagingObjectSelection.title</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Title of key DICOM object selection</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Название выборки ключевых DICOM-объектов<!-- Title of key DICOM object selection --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">author</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ImagingObjectSelection.author</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Author of key DICOM object selection</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Автор-составитель выборки ключевых DICOM-объектов<!-- Author of key DICOM object selection --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">authoring-time</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ImagingObjectSelection.authoringTime</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Time of key DICOM object selection authoring</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Время составления выборки ключевых DICOM-объектов<!-- Time of key DICOM object selection authoring --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ImagingObjectSelection.patient</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Subject of key DICOM object selection</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Тема выборки ключевых DICOM-объектов<!-- Subject of key DICOM object selection --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">selected-study</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ImagingObjectSelection.study.uid</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Study selected in key DICOM object selection</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Выбранное исследование в выборке ключевых DICOM-объектов<!-- Study selected in key DICOM object selection --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s126"/>
@@ -6907,7 +6907,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">KOStitle</Data></Cell>
-    <Cell><Data ss:Type="String">The document title code of key object selection</Data></Cell>
+    <Cell><Data ss:Type="String">Код названия документа выборки ключевых объектов<!-- The document title code of key object selection --></Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">#kos-title</Data></Cell>

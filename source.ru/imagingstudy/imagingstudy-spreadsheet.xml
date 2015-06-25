@@ -5062,42 +5062,42 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">ImagingStudy.patient</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Who the study is about</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Кто был субъектом исследования<!-- Who the study is about --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">started</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ImagingStudy.started</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">When the study was started</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Время начала исследования<!-- When the study was started --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">accession</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ImagingStudy.accession</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The accession id for the image</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор доступа к изображению<!-- The accession id for the image --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">study</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ImagingStudy.uid</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The study id for the image</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор исследования изображения<!-- The study id for the image --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">series</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ImagingStudy.series.uid</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The series id for the image</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор серии изображения<!-- The series id for the image --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">modality</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ImagingStudy.series.modality</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The modality of the image</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Модальность изображения<!-- The modality of the image --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">bodysite</Data></Cell>
@@ -5125,7 +5125,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ImagingStudy.order</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The order for the image</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Порядок изображения<!-- The order for the image --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -7507,7 +7507,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell ss:StyleID="s145"><Data ss:Type="String">Modality</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Type of data in the instance</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип данных в экземпляре<!-- Type of data in the instance --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#modality</Data></Cell>
@@ -7522,7 +7522,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell ss:StyleID="s146"><Data ss:Type="String">InstanceAvailability</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Availability of the resource</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Доступность ресурса<!-- Availability of the resource --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#instance-availability</Data></Cell>
@@ -7537,7 +7537,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ImagingModality</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of acquired image data in the instance</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип данных полученного изображения в экземпляре<!-- Type of acquired image data in the instance --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#imaging-modality</Data></Cell>

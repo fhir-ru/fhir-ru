@@ -4587,21 +4587,21 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Schedule.actor</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The individual(HealthcareService, Practitioner, Location, ...) to find a Schedule for</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Ресурс (HealthcareService, Practitioner, Location, ...), для которого необходимо найти расписание<!-- The individual(HealthcareService, Practitioner, Location, ...) to find a Schedule for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Schedule.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The type of appointments that can be booked into associated slot(s)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Тип условленных встреч, которые можно зарезервировать в связанных слотах<!-- The type of appointments that can be booked into associated slot(s) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Schedule.planningHorizon</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Search for Schedule resources that have a period that contains this date specified</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Поиск ресурсов Schedule, период которых содержит указанную дату<!-- Search for Schedule resources that have a period that contains this date specified --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
