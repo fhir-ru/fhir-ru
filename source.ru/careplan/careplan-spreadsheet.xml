@@ -4659,7 +4659,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">CarePlan.activity.detail.scheduled[x]</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Specified date occurs within period specified by CarePlan.activity.timingSchedule</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Обозначенная дата входит в период, указанный в CarePlan.activity.timingSchedule<!-- Specified date occurs within period specified by CarePlan.activity.timingSchedule --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">activityreference</Data></Cell>
@@ -4673,7 +4673,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">CarePlan.activity.detail.performer</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Matches if the practitioner is listed as a performer in any of the &quot;simple&quot; activities.  (For performers of the detailed activities, chain through the activitydetail search parameter.)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Соответствует, если специалист перечислен как исполнитель в любой из простых активностей. (Для исполнителей детализированных активностей создается цепочка с помощью параметра поиска activitydetail.)<!-- Matches if the practitioner is listed as a performer in any of the &quot;simple&quot; activities.  (For performers of the detailed activities, chain through the activitydetail search parameter.) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">goal</Data></Cell>
@@ -6909,7 +6909,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s145"><Data ss:Type="String">CarePlanStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Обозначает, следуют ли сейчас этому плану или он представляет собой будущие цели, или это просто архивная запись.<!-- Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record. --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#care-plan-status</Data></Cell>
@@ -6924,7 +6924,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanParticipantRole</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates specific responsibility of an individual within the care plan.  E.g. &quot;Primary physician&quot;, &quot;Team coordinator&quot;, &quot;Caregiver&quot;, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обозначает определенную ответственность лица в рамках плана ухода. Например &quot;Primary physician&quot;, &quot;Team coordinator&quot;, &quot;Caregiver&quot; и т. д.<!-- Indicates specific responsibility of an individual within the care plan.  E.g. &quot;Primary physician&quot;, &quot;Team coordinator&quot;, &quot;Caregiver&quot;, etc. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -6954,7 +6954,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanActivityCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">High-level categorization of the type of activity in a care plan.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокоуровневая классификация типа активности в плане по уходу.<!-- High-level categorization of the type of activity in a care plan. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#care-plan-activity-category</Data></Cell>
@@ -6969,7 +6969,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanActivityType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed description of the type of activity.  E.g. What lab test, what procedure, what kind of encounter.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробное описание типа деятельности. Например какой именно лабораторный тест, какая процедура, какой вид случая обслуживания.<!-- Detailed description of the type of activity.  E.g. What lab test, what procedure, what kind of encounter. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -6984,7 +6984,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanActivityStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates where the activity is at in its overall life cycle</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает стадию активности в ее общем жизненном цикле<!-- Indicates where the activity is at in its overall life cycle --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#care-plan-activity-status</Data></Cell>
@@ -6999,7 +6999,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanActivityStatusReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Describes why the current activity has the status it does.  E.g. &quot;Recovering from injury&quot; as a reason for non-started or on-hold, &quot;Patient does not enjoy activity&quot; as a reason for cancelling a planned activity</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описывает, почему текущая деятельность имеет такой статус. Например &quot;Восстановление после травмы&quot; в качестве причины, почему не началась или отложена, &quot;Пациенту не нравится эта активность&quot; в качестве причины отмены запланированной деятельности<!-- Describes why the current activity has the status it does.  E.g. &quot;Recovering from injury&quot; as a reason for non-started or on-hold, &quot;Patient does not enjoy activity&quot; as a reason for cancelling a planned activity --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -7014,7 +7014,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifies what &quot;kind&quot; of plan this is to support differentiation between multiple co-existing plans.  E.g. &quot;Home health&quot;, &quot;psychiatric&quot;, &quot;asthma&quot;, &quot;disease management&quot;, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определяет тип плана, чтобы можно было различать несколько одновременно действующих планов. Например "Домашний уход", "Психиатрический", "Астма", "Управление течением заболевания" и т. д.<!-- Identifies what &quot;kind&quot; of plan this is to support differentiation between multiple co-existing plans.  E.g. &quot;Home health&quot;, &quot;psychiatric&quot;, &quot;asthma&quot;, &quot;disease management&quot;, etc. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -7029,7 +7029,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanActivityReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifies why a care plan activity is needed.  Can include any health condition codes as well as such concepts as &quot;general wellness&quot;, prohylaxis, surgical preparation, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определяет, почему необходимо это мероприятие плана лечения . Может включать в себя любые коды состояния здоровья, а также такие понятия, как &quot;общий оздоровительный&quot;, профилактика, хирургическая подготовка и т. д.<!-- Identifies why a care plan activity is needed.  Can include any health condition codes as well as such concepts as &quot;general wellness&quot;, prohylaxis, surgical preparation, etc. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
