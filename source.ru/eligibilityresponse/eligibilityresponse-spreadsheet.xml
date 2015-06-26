@@ -4398,7 +4398,7 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">EligibilityResponse.identifier</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The business identifier of the Explanation of Benefit</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Бизнес-идентификатор Explanation of Benefit<!-- The business identifier of the Explanation of Benefit --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!request</Data></Cell>

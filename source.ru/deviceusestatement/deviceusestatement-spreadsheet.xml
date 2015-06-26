@@ -4595,20 +4595,20 @@
     <Cell ss:StyleID="s113"><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s114"><Data ss:Type="String">DeviceUseStatement.subject</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Search by subject</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Поиск по субъекту<!-- Search by subject --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s114"><Data ss:Type="String">DeviceUseStatement.subject</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Search by subject - a patient</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Поиск по субъекту - пациент<!-- Search by subject - a patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">device</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">DeviceUseStatement.device</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Search by device</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Поиск по устройству<!-- Search by device --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>

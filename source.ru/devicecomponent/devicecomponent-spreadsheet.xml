@@ -4407,21 +4407,21 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">DeviceComponent.parent</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The parent DeviceComponent resource</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Родительский ресурс DeviceComponent<!-- The parent DeviceComponent resource --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">DeviceComponent.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The device component type</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Тип компонента устройства<!-- The device component type --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">source</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">DeviceComponent.source</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The device source</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Источник устройства<!-- The device source --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6665,7 +6665,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">ComponentType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Describes the type of the component</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Описывает тип компонента<!-- Describes the type of the component --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s154" ss:HRef="https://rtmms.nist.gov/rtmms/index.htm#!hrosetta"><Data
@@ -6681,7 +6681,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">Measmnt-Principle</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Different measurement principle supported by the device</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Различные принципы измерения, поддерживаеыме устройством<!-- Different measurement principle supported by the device --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#measurement-principle</Data></Cell>

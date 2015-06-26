@@ -754,32 +754,32 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">parent</Data></Cell>
-    <Cell><Data ss:Type="String">The parent DeviceMetric resource</Data></Cell>
+    <Cell><Data ss:Type="String">Родительский ресурс DeviceMetric<!-- The parent DeviceMetric resource --></Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">DeviceMetric.parent</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">type</Data></Cell>
-    <Cell><Data ss:Type="String">The component type</Data></Cell>
+    <Cell><Data ss:Type="String">Тип компонента<!-- The component type --></Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">DeviceMetric.type</Data></Cell>
     <Cell ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">source</Data></Cell>
-    <Cell><Data ss:Type="String">The device resource</Data></Cell>
+    <Cell><Data ss:Type="String">Ресурс device<!-- The device resource --></Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">DeviceMetric.source</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">category</Data></Cell>
-    <Cell><Data ss:Type="String">The category of the metric</Data></Cell>
+    <Cell><Data ss:Type="String">Категория метрики<!-- The category of the metric --></Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
     <Cell><Data ss:Type="String">DeviceMetric.category</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">identifier</Data></Cell>
-    <Cell><Data ss:Type="String">The identifier of the metric</Data></Cell>
+    <Cell><Data ss:Type="String">Идентификатор метрики<!-- The identifier of the metric --></Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
     <Cell><Data ss:Type="String">DeviceMetric.identifier</Data></Cell>
    </Row>
@@ -1031,7 +1031,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MetricType</Data></Cell>
-    <Cell><Data ss:Type="String">Describes the metric type</Data></Cell>
+    <Cell><Data ss:Type="String">Описывает тип метрики<!-- Describes the metric type --></Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s62" ss:HRef="https://rtmms.nist.gov/rtmms/index.htm#!hrosetta"><Data
       ss:Type="String">https://rtmms.nist.gov/rtmms/index.htm#!hrosetta</Data></Cell>
@@ -1039,7 +1039,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MetricUnit</Data></Cell>
-    <Cell><Data ss:Type="String">Describes the unit of the metric</Data></Cell>
+    <Cell><Data ss:Type="String">Описывает единицы метрики<!-- Describes the unit of the metric --></Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s62" ss:HRef="https://rtmms.nist.gov/rtmms/index.htm#!units"><Data
       ss:Type="String">https://rtmms.nist.gov/rtmms/index.htm#!units</Data></Cell>
@@ -1047,31 +1047,31 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">DeviceMetricOperationalStatus</Data></Cell>
-    <Cell><Data ss:Type="String">Describes the operational status of the DeviceMetric</Data></Cell>
+    <Cell><Data ss:Type="String">Описывает состояние эксплуатационной готовности DeviceMetric<!-- Describes the operational status of the DeviceMetric --></Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">#metric-operational-status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DeviceMetricCategory</Data></Cell>
-    <Cell><Data ss:Type="String">Describes the category of the metric</Data></Cell>
+    <Cell><Data ss:Type="String">Описывает категорию метрики<!-- Describes the category of the metric --></Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">#metric-category</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DeviceMetricCalibrationType</Data></Cell>
-    <Cell><Data ss:Type="String">Describes the type of a metric calibration</Data></Cell>
+    <Cell><Data ss:Type="String">Описывает тип калибровки метрики<!-- Describes the type of a metric calibration --></Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">#metric-calibration-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">DeviceMetricCalibrationState</Data></Cell>
-    <Cell><Data ss:Type="String">Describes the state of a metric calibration</Data></Cell>
+    <Cell><Data ss:Type="String">Описывает состояние калибровки метрики<!-- Describes the state of a metric calibration --></Data></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">#metric-calibration-state</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DeviceMetricColor</Data></Cell>
-    <Cell><Data ss:Type="String">Describes the typical color of representation</Data></Cell>
+    <Cell><Data ss:Type="String">Описывает типичный цвет представления<!-- Describes the typical color of representation --></Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">#metric-color</Data></Cell>
    </Row>

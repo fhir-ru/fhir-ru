@@ -4404,7 +4404,7 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">EnrollmentRequest.identifier</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The business identifier of the Enrollment</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Бизнес-идентификатор этого Enrollment<!-- The business identifier of the Enrollment --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!organization</Data></Cell>
@@ -4418,7 +4418,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">EnrollmentRequest.subject</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The party to be enrolled</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Сторона, которая должна быть зачислена<!-- The party to be enrolled --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>

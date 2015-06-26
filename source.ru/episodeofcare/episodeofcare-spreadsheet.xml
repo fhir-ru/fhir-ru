@@ -4468,21 +4468,21 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">EpisodeOfCare.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The current status of the Episode of Care as provided (does not check the status history collection)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текущее состояние эпизода оказания медицинской помощи, как представлено (не проверяет коллекцию истории статусов)<!-- The current status of the Episode of Care as provided (does not check the status history collection) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Organization</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">EpisodeOfCare.managingOrganization</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The organization that has assumed the specific responsibilities of this EpisodeOfCare</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая принимает на себя определенную ответственность этого EpisodeOfCare<!-- The organization that has assumed the specific responsibilities of this EpisodeOfCare --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">EpisodeOfCare.period</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The provided date search value falls within the episode of care's period</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Указанная значение поиска даты попадает в период, соответствующий данному эпизоду лечения<!-- The provided date search value falls within the episode of care's period --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
@@ -4503,7 +4503,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">ReferralRequest</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">EpisodeOfCare.referralRequest</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Incoming Referral Request</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Входящий запрос на направление<!-- Incoming Referral Request --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">care-manager</Data></Cell>
@@ -4517,7 +4517,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">EpisodeOfCare.careTeam.member</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A Practitioner or Organization allocated to the care team for this EpisodeOfCare</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Специалист или организация, назначенная в команду медицинской помощи для этого EpisodeOfCare<!-- A Practitioner or Organization allocated to the care team for this EpisodeOfCare --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6762,7 +6762,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">EpisodeOfCareStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of the encounter</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус случая обслуживания<!-- The status of the encounter --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#episode-of-care-status</Data></Cell>

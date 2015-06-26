@@ -3990,7 +3990,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Group</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Can only have members if group is &quot;actual&quot;</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Может содержать членов, только если группа является актуальной<!-- Can only have members if group is &quot;actual&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">f:actual/@value='true' or not(exists(f:member))</Data><NamedCell
@@ -4002,7 +4002,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Group member type agreement</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Group.member</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Member resource types SHALL agree with group type</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Типы членов ресурса ДОЛЖНЫ совпадать с типом группы<!-- Member resource types SHALL agree with group type --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">lower-case(f:type/@value)=parent::f:Group/f:type/@value or (f:type/@value='Patient' and parent::f:Group/f:type/@value=('animal','person'))</Data></Cell>
    </Row>
@@ -4012,7 +4012,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">No more members than quantity</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Group</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Can't have more members associated with the group than the value specified for &quot;quantity&quot;</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Не может иметь больше членов группы, чем указано в &quot;quantity&quot;<!-- Can't have more members associated with the group than the value specified for &quot;quantity&quot; --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(f:quantity) or not(f:member) or not(f:quantity&gt;count(f:member))</Data></Cell>
    </Row>
@@ -4549,14 +4549,14 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Group.type</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The type of resources the group contains</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Тип ресурсов, которые содержит группа<!-- The type of resources the group contains --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Group.code</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The kind of resources contained</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Вид вложенных ресурсов<!-- The kind of resources contained --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">actual</Data></Cell>
@@ -4605,7 +4605,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">characteristic &amp; value</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A composite of both characteristic and value</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Комбинация характеристики и ее значения<!-- A composite of both characteristic and value --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6801,7 +6801,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">GroupKind</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Kind of particular resource.  E.g. cow, syringe, lake, etc.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Вид определенного ресурса. Например корова, шприц, озеро и т. п.<!-- Kind of particular resource.  E.g. cow, syringe, lake, etc. --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"/>
@@ -6816,7 +6816,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">GroupCharacteristicKind</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">List of characteristics used to describe group members.  E.g. gender, age, owner, location, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Список характеристик, используемых для описания членов группы. Например пол, возраст, владелец, местоположение и т. д.<!-- List of characteristics used to describe group members.  E.g. gender, age, owner, location, etc. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -6831,7 +6831,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">GroupCharacteristicValue</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Value of descriptive member characteristic.  E.g. red, male, pneumonia, caucasian, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение описательной характеристики членов группы. Например красный, мужской, пневмония, кавказский и т. п.<!-- Value of descriptive member characteristic.  E.g. red, male, pneumonia, caucasian, etc. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -6846,7 +6846,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">GroupType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Types of resources that are part of group</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Типы ресурсов, которые входят в группу<!-- Types of resources that are part of group --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#group-type</Data></Cell>

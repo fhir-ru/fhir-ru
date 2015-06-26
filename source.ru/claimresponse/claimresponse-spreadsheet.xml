@@ -7378,7 +7378,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">RemittanceOutcome</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The outcome of the processing.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Результаты обработки.<!-- The outcome of the processing. --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s115"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">#RS-link</Data></Cell>
