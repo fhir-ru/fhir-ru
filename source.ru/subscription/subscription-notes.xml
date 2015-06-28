@@ -1,9 +1,9 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 
-<h2>Safety and Security</h2>
-<p>
-Executing each of the channels documented below involves the server
+<h2>Надежность и безопасность<!-- Safety and Security --></h2>
+<p>Исполнение каждого из каналов, задокументированных ниже, включает сервер, отправляющий коммуникацию, которая обнаружит информацию о взаимосвязи клиента и сервера, и, если весь ресурс целиком отправлен, административную или клиническую информацию, которая может быть в достаточной степени конфиденциальной и/или защищенной законом. Серверы отвечают за обеспечение применения надлежащих мер безопасности для каждого канала. Ресурс subscription не решает эти проблемы напрямую - предполагается, что они регулируются другой конфигурацией. К примеру, сервер может поддерживать белый список допустимых серверов для методов rest-create/rest-update.
+<!-- Executing each of the channels documented below involves the server
 sending a communication that will reveal information about the 
 client and server relatinoship, and, if the entire resource is 
 sent, administrative or clinical information that may be quite 
@@ -12,30 +12,35 @@ for ensuring appropriate security is employed for each channel.
 The subscription resource does not address these concerns 
 directly - it is assumed that these are administered by other 
 configuration. For instance, a server might maintain a whitelist 
-of acceptable servers for the rest-create/rest-update methods.
+of acceptable servers for the rest-create/rest-update methods. -->
 </p>
 <p>
-Emails should generally be secured using some technique such as 
-<a href="http://directproject.org/">Direct</a>.
+Электронные письма должны, как правило, быть защищены такими методами, как <a href="http://directproject.org/">Direct</a>.
+<!-- Emails should generally be secured using some technique such as 
+<a href="http://directproject.org/">Direct</a>. -->
 </p>
 
-<h2>Managing Subscriptions and Errors</h2>
+<h2>Управление подписками и ошибки<!-- Managing Subscriptions and Errors --></h2>
 <p>
-A subscription is defined by creating the subscription on the server.
+Подписка задается созданием ресурса subscription на сервере.
+Когда подписка создается клиентом, ее статус устанавливается в значение "requested". После отправления подписки командой POST клиент разбирает заголовок Location и сохраняет логический идентификатор нового ресурса Subscription для использования в последующих операциях.
+<!-- A subscription is defined by creating the subscription on the server.
 When the subscription is created by the client, it sets the status
 to "requested". After POSTing the subscription, the client parses 
 the Location header and saves the new Subscription's logical id for 
-use in subsequent operations.
+use in subsequent operations. -->
 </p>
 <p>
-The criteria is subject to the same limitations as the client that
+Критерии подлежат тем же ограничениям, что и клиент, создавший их, например доступ к модулям пациента и т. п. Обратите внимание, что подписка остается активной после того, как истекает токен доступа клиента.
+<!-- The criteria is subject to the same limitations as the client that
 created it, such as access to patient compartments etc. Note that the
-subscription remains active after the client access tokens expire.
+subscription remains active after the client access tokens expire. -->
 </p>
 <p>
-Once the server has activated the subscription, it sets the status
+После того как сервер активировал подписку, он устанавливает ее статус в значение "active" (примечание: сервер может сделать это при приеме ресурса, если хочет).
+<!-- Once the server has activated the subscription, it sets the status
 to "active" (note: the server can do this as it accepts the resource
-if it wants). 
+if it wants).  -->
 </p>
 <p>
 An appropriately authorized client can use search and/or history operations
