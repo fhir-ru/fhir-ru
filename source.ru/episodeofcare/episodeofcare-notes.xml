@@ -6,24 +6,33 @@
 		<h2>Status Management</h2>
 		<h3>History and Period</h3>
 		<p>
-			When an Organization assumes responsibility for a patient, then the EpisodeOfCare is created and a start date
-			entered to show when it has begun.<br/>
-			As the Organizations responsibility changes, as does the status of the EpisodeOfCare.<br/>
-			This is described via an example below for an example intake workflow.
+		Когда организация принимает на себя ответственность за пациента, то создается EpisodeOfCare и вводится дата начала, чтобы показать, когда он начался.
+			<!-- When an Organization assumes responsibility for a patient, then the EpisodeOfCare is created and a start date
+			entered to show when it has begun. --><br/>
+			При изменении ответственности организации меняется и статус EpisodeOfCare.
+			<!-- As the Organizations responsibility changes, as does the status of the EpisodeOfCare. --><br/>
+			Эти изменения описаны с помощью пример ниже для иллюстрации рабочего процесса приема.
+			<!-- This is described via an example below for an example intake workflow. -->
 		</p>
 		<p></p>
 		<h3>Leave Handling</h3>
 		<p>
-			With long term care there is often a concept of the provision of care being suspended for various reasons.
+		При оказании долгосрочной помощи часто используется концепция приостановки предоставления помощи по различным причинам. У многих систем имеются исчерпывающие решения по Leave Management/Tracking, которые учитывают сложность этой области, однако данный ресурс EpisodeOfCare НЕ ПРЕДНАЗНАЧЕН для обеспечения этого уровня отслеживания.
+			<!-- With long term care there is often a concept of the provision of care being suspended for various reasons.
 			Many systems have extensive Leave Management/Tracking solutions which consider the complexities of this space,
-			however this EpisodeOfCare resource is NOT intended to provide this level of tracking.<br/>
-		  Extension(s) may be used on the status/status history to track the onhold reason which can facilitite the processing.
+			however this EpisodeOfCare resource is NOT intended to provide this level of tracking. --><br/>
+			Для отслеживания причин приостановки могут использоваться расширения для статусов/истории статусов, что может упростить обработку.
+		  <!-- Extension(s) may be used on the status/status history to track the onhold reason which can facilitite the processing. -->
 		</p>
-		<p>A more complete Leave Management solution may have to deal with:</p>
+		<p>Более полное решение по Leave Management может иметь дело с:
+		<!-- A more complete Leave Management solution may have to deal with: --></p>
 		<ul>
-			<li>Leave Types</li>
+		<li>Leave Types</li>
 			<li>Leave Entitlements</li>
 			<li>Billing/Funding implications while on different types of leave</li>
+			<!-- <li>Leave Types</li>
+			<li>Leave Entitlements</li>
+			<li>Billing/Funding implications while on different types of leave</li> -->
 		</ul>
 
 		<p></p>
