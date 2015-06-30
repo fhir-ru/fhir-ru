@@ -4258,28 +4258,28 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">ProcessRequest.identifier</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">The business identifier of the ProcessRequest</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Бизнес-идентификатор этого ProcessRequest<!-- The business identifier of the ProcessRequest --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">ProcessRequest.organization</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The organization who generated this request</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Организация, которая создала этот запрос<!-- The organization who generated this request --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">provider</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">ProcessRequest.provider</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The provider who renerated this request</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Поставщик, который создал этот запрос<!-- The provider who renerated this request --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">action</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">ProcessRequest.action</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The action requested by this resource</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Действие, требуемое этим ресурсом<!-- The action requested by this resource --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>
@@ -7244,7 +7244,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s152"><Data ss:Type="String">ActionList</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">List of allowable action which this resource can request</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Перечень допустимых действий, которые может запросить этот ресурс<!-- List of allowable action which this resource can request --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">#actionlist</Data></Cell>

@@ -1219,7 +1219,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Requester of referral / transfer of care</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Отправитель запроса на направление/передачу ответственности за оказание ухода<!-- Requester of referral / transfer of care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The healthcare provider or provider organization who/which initaited the referral/transfer of care request. Can also be  Patient (a self referral)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4471,42 +4471,42 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">ReferralRequest.status</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The status of the referral</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Статус направления<!-- The status of the referral --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ReferralRequest.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The type of the referral</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Тип направления<!-- The type of the referral --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">specialty</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ReferralRequest.specialty</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The specialty that the referral is for</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Специальность, указанная в направлении<!-- The specialty that the referral is for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">priority</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ReferralRequest.priority</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The priority assigned to the referral</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Приоритет, присвоенный этому направлению<!-- The priority assigned to the referral --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">recipient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ReferralRequest.recipient</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The person that the referral was sent to</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Человек, которому было отправлено это направление<!-- The person that the referral was sent to --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ReferralRequest.patient</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Who the referral is about</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">О ком идет речь в направлении (пациент)<!-- Who the referral is about --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">requester</Data></Cell>
@@ -6755,7 +6755,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">ReferralStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of the referral</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус направления<!-- The status of the referral --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#referralstatus</Data></Cell>

@@ -4429,35 +4429,35 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">ProcessResponse.identifier</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The business identifier of the Explanation of Benefit</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Бизнес-идентификатор этого Explanation of Benefit<!-- The business identifier of the Explanation of Benefit --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">request</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ProcessResponse.request</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The reference to the claim</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Ссылка на иск<!-- The reference to the claim --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ProcessResponse.organization</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The organization who generated this resource</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Организация, которая создала этот ресурс<!-- The organization who generated this resource --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">requestprovider</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ProcessResponse.requestProvider</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The Provider who is responsible the request transaction</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Поставщик, который несет ответственность за транзакцию запроса<!-- The Provider who is responsible the request transaction --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">requestorganization</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ProcessResponse.requestOrganization</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The Organization who is responsible the request transaction</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Организация, несущая ответственность за транзакцию запроса<!-- The Organization who is responsible the request transaction --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6732,7 +6732,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ProcessingOutcome</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Local status of outcome codes</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Локальный статус кодов результата<!-- Local status of outcome codes --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-process-outcome</Data></Cell>
