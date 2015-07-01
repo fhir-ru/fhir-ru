@@ -1071,7 +1071,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто санкционировал этот продукт для коррекции зрения<!-- Who authorizes the Vision product --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто выписал рецепт на этот продукт для коррекции зрения<!-- Who authorizes the Vision product --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Специалист по медицинскому обеспечению, ответственный за написание предписания<!-- The healthcare professional responsible for authorizing the prescription --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3941,28 +3941,28 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">VisionPrescription.dateWritten</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Return prescriptions written on this date</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Возвращает рецепты, выписанные в указанную дату<!-- Return prescriptions written on this date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">VisionPrescription.encounter</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Return prescriptions with this encounter identity</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Возвращает рецепты для указанного идентификатора случая обслуживания<!-- Return prescriptions with this encounter identity --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">VisionPrescription.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Return prescriptions with this external identity</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Возвращает рецепты для указанного внешнего идентификатора<!-- Return prescriptions with this external identity --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">VisionPrescription.patient</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The identity of a patient to list dispenses  for</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Человек, для которого перечисляются выдачи (по рецепту)<!-- The identity of a patient to list dispenses  for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">prescriber</Data></Cell>
@@ -6146,7 +6146,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s145"><Data ss:Type="String">VisionProduct</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept describing the Vision products.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, описывающий продукт коррекции зрения.<!-- A coded concept describing the Vision products. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-vision-product</Data></Cell>
@@ -6161,7 +6161,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">VisionEyes</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept listing the eye codes.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, используемый для указания глаза.<!-- A coded concept listing the eye codes. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String" x:Ticked="1">#eye-codes</Data></Cell>
@@ -6176,7 +6176,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">VisionBase</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept listing the base codes.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, используемый для указания положения.<!-- A coded concept listing the base codes. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String" x:Ticked="1">#base-codes</Data></Cell>

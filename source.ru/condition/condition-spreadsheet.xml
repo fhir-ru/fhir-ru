@@ -7457,7 +7457,7 @@ A simple summary of the stage such as &quot;Stage 3&quot;. The determination of 
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">ConditionKind</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Identification of the Condition or diagnosis. </Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Определение условия или диагноза.<!-- Identification of the Condition or diagnosis.  --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-condition-code</Data></Cell>
