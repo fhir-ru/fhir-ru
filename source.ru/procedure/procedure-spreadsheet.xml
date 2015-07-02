@@ -1098,7 +1098,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">in-progress | aborted | completed | entered-in-error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code specifying the state of the procedure record. Generally this will be in-progress or completed state.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код состояния записи о процедуре. Как правило, это будет состояние in-progress или completed.<!-- A code specifying the state of the procedure record. Generally this will be in-progress or completed state. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1474,7 +1474,7 @@ The reason why the procedure was performed. This may be due to a Condition, may 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where the procedure happened</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где проводилась процедура<!-- Where the procedure happened --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The location where the procedure actually happened.  e.g. a newborn at home, a tracheostomy at a restaurant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1812,7 +1812,7 @@ Any other notes about the procedure - e.g. the operative notes --></Data><NamedC
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Kind of change to device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The kind of change that happened to the device during the procedure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип изменения, которое произошло с устройством во время процедуры<!-- The kind of change that happened to the device during the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7268,7 +7268,7 @@ Any other notes about the procedure - e.g. the operative notes --></Data><NamedC
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">ProcedureType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A code for a type of procedure </Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код типа процедуры<!-- A code for a type of procedure  --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-procedure-type</Data></Cell>
@@ -7283,7 +7283,7 @@ Any other notes about the procedure - e.g. the operative notes --></Data><NamedC
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">ProcedureOutcome</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The outcome of a procedure - whether it resolveed the reasons why the procedure was performed</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Исход проведения процедуры - помогла ли она для разрешения причин, по которым проводилась процедура<!-- The outcome of a procedure - whether it resolveed the reasons why the procedure was performed --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-procedure-outcome</Data></Cell>
@@ -7298,7 +7298,7 @@ Any other notes about the procedure - e.g. the operative notes --></Data><NamedC
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">ProcedureFollowUp</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific follow up required for a procedure e.g. removal of sutures</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретное последующее наблюдение , требуемое после процедуры, например снятие швов<!-- Specific follow up required for a procedure e.g. removal of sutures --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-procedure-followup</Data></Cell>
@@ -7313,7 +7313,7 @@ Any other notes about the procedure - e.g. the operative notes --></Data><NamedC
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ProcedureCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A code that classifies a procedure for searching, sorting and display purposes</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код классификации процедуры в целях поиска, сортировки и отображения<!-- A code that classifies a procedure for searching, sorting and display purposes --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-procedure-category</Data></Cell>

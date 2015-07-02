@@ -4065,7 +4065,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">CarePlan.activity.detail</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">DailyDose can only be specified if activity category is drug or food</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">DailyDose можно указывать, только если категория активности имеет значение drug или food<!-- DailyDose can only be specified if activity category is drug or food --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">(f:category/@value=('drug','diet')) = exists(f:dailyAmount)</Data><NamedCell
@@ -4077,7 +4077,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">quantity for supply</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">CarePlan.activity.detail</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Quantity can only be specified if activity category is supply</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Quantity можно указывать, только если категория активности имеет значение supply<!-- Quantity can only be specified if activity category is supply --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">(f:category/@value=('supply')) = exists(f:quantity)</Data></Cell>
    </Row>
@@ -4087,7 +4087,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">details by reference, or simple details</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">CarePlan.activity.detail</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Only provide a detail reference, or a simple detail summary</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Указывайте только ссылку на подробные сведения либо просто кратко изложите эту информацию<!-- Only provide a detail reference, or a simple detail summary --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:detail)) or not(exists(f:simple))</Data></Cell>
    </Row>

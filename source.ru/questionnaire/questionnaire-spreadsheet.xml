@@ -4128,7 +4128,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Questionnaire.group</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Groups may either contain questions or groups but not both</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Группы могут содержать либо вопросы, либо другие группы, но не и то, и другое<!-- Groups may either contain questions or groups but not both --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:group) and exists(f:question))</Data><NamedCell
@@ -4140,7 +4140,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">UniqueLinkIds</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Questionnaire</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The link ids for groups and questions must be unique within the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентификаторы ссылок групп и вопросов должны быть уникальными в пределах вопросника<!-- The link ids for groups and questions must be unique within the questionnaire --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(descendant::f:linkId/@value)=count(distinct-values(descendant::f:linkId/@value))</Data></Cell>
    </Row>
@@ -4686,49 +4686,49 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Questionnaire.status</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The status of the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Статус вопросника<!-- The status of the questionnaire --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Questionnaire.date</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">When the questionnaire was last changed</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Дата последнего изменения вопросника<!-- When the questionnaire was last changed --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">publisher</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Questionnaire.publisher</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The author of the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Составитель вопросника<!-- The author of the questionnaire --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Questionnaire.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">An identifier for the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор вопросника<!-- An identifier for the questionnaire --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Questionnaire.version</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The business version of the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Бизнес-версия вопросника<!-- The business version of the questionnaire --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Questionnaire.group.concept</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A code that corresponds to the questionnaire or one of its groups</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Код, который соответствует вопроснику или одной из его групп<!-- A code that corresponds to the questionnaire or one of its groups --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">title</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">All or part of the name of the questionnaire (title for the root group of the questionnaire)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть или полное название вопросника (заголовок корневой группы вопросника)<!-- All or part of the name of the questionnaire (title for the root group of the questionnaire) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6960,7 +6960,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">QuestionnaireGroupConcept</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Codes for questionnaires and groupings of questionnaire questions</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Коды для вопросников и групп вопросов в вопросниках<!-- Codes for questionnaires and groupings of questionnaire questions --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Unbound</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="s114"/>
@@ -7005,7 +7005,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">AnswerFormat</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The expected format of an answer</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Формат ожидаемого ответа<!-- The expected format of an answer --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#answer-format</Data></Cell>

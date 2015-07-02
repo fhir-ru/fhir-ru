@@ -134,10 +134,11 @@ Where the names are the same (ignoring case), the "answer" must use the specifie
   </tbody>
 </table>
 
-<h3>Extensions for Additional capabilities</h3>
+<h3>Расширения для предоставления дополнительных возможностей<!-- Extensions for Additional capabilities --></h3>
 <p>
-The core elements defined in the questionnaire resource are sufficient for simple questionnaires.  For more sophisticated capabilities, a number of "common" extensions
+Основных элементов, определенных для ресурса questionnaire, достаточно для создания простых вопросников. Для более сложных вопросников создано несколько общих расширений в профилях <a href="questionnaire-extensions.html">Questionnaire Core extensions</a> и <a href="element-extensions.html">Element extensions</a>. Например строгий контроль допустимого количества условий, условное отображение содержимого вопросов и т. д.
+<!-- The core elements defined in the questionnaire resource are sufficient for simple questionnaires.  For more sophisticated capabilities, a number of "common" extensions
 are defined in the <a href="questionnaire-extensions.html">Questionnaire Core extensions</a> and the <a href="element-extensions.html">Element extensions</a> profiles.  
-For example, strict control over allowed number of conditions, conditional display of questionnaire content, etc.
+For example, strict control over allowed number of conditions, conditional display of questionnaire content, etc. -->
 </p>
 </div>
