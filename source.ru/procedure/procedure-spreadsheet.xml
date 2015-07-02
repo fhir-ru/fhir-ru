@@ -1129,9 +1129,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Classification of the procedure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Классификация процедуры<!-- Classification of the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that classifies the procedure for searching, sorting and display purposes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код классификации процедуры в целях поиска, сортировки и отображения<!-- A code that classifies the procedure for searching, sorting and display purposes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1476,10 +1476,10 @@ The reason why the procedure was performed. This may be due to a Condition, may 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Где проводилась процедура<!-- Where the procedure happened --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The location where the procedure actually happened.  e.g. a newborn at home, a tracheostomy at a restaurant</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Место, где была проведена процедура. Например роды приняты на дому, трахеостомия в ресторане<!-- The location where the procedure actually happened.  e.g. a newborn at home, a tracheostomy at a restaurant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"> Ties a procedure to where the records are kept</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Привязывает процедуру к месту хранения записей<!-- Ties a procedure to where the records are kept --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1777,9 +1777,9 @@ Any other notes about the procedure - e.g. the operative notes --></Data><NamedC
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Device changed in procedure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Изделие, измененное во время процедуры<!-- Device changed in procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A device change during the procedure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Изделие, измененное во время проведения процедуры<!-- A device change during the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1810,9 +1810,9 @@ Any other notes about the procedure - e.g. the operative notes --></Data><NamedC
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Kind of change to device</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид изменения изделия<!-- Kind of change to device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип изменения, которое произошло с устройством во время процедуры<!-- The kind of change that happened to the device during the procedure --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип изменения, которое произошло с изделием во время процедуры<!-- The kind of change that happened to the device during the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1841,9 +1841,9 @@ Any other notes about the procedure - e.g. the operative notes --></Data><NamedC
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Device that was changed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Изделие, которое было изменено<!-- Device that was changed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The device that was manipulated (changed) during the procedure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Изделие, которое отрегулировали (изменили) во время процедуры <!-- The device that was manipulated (changed) during the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1872,13 +1872,13 @@ Any other notes about the procedure - e.g. the operative notes --></Data><NamedC
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Items used during procedure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Изделия, использованные во время процедуры<!-- Items used during procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies medications, devices and other substance used as part of the procedure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указание лекарственных средств, медицинских изделий или других веществ, использованных в рамках процедуры<!-- Identifies medications, devices and other substance used as part of the procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Used for tracking contamination, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется для отслеживания заражений и т. п.<!-- Used for tracking contamination, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For devices actually implanted or removed, use Procedure.device</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для имплантированных или извлеченных изделий используйте Procedure.device<!-- For devices actually implanted or removed, use Procedure.device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7253,7 +7253,7 @@ Any other notes about the procedure - e.g. the operative notes --></Data><NamedC
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ProcedureStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A code specifying the state of the procedure record</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код, обозначающий состояние записи процедуры<!-- A code specifying the state of the procedure record --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#procedure-status</Data></Cell>

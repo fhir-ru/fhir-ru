@@ -81,39 +81,46 @@ questions and the constraints enforced on the accompanying answers increases the
 mechanisms defined in the specification for linking a Question (or Group) to a standardized definition: -->
 </p>
 <ul>
-  <li>The <code>concept</code> element on both Group and Question allows an individual question, a group of questions or even the questionnaire as a whole to be associated
+  <li>Элемент <code>concept</code> как в Group, так и в Question позволяет связывать отдельный вопрос, группу вопросов или даже целый вопросник с заранее определенным справочником вопросов и групп вопросов, таким как LOINC.</li>
+  <li>Расширение <a href="questionnaire-extensions.html#deReference">deReference</a> позволяет связывать вопрос или группу с ресурсом <a href="dataelement.html">DataElement</a> (DE), который формально задает этот элемент данных.</li>
+<!--   <li>The <code>concept</code> element on both Group and Question allows an individual question, a group of questions or even the questionnaire as a whole to be associated
   with a pre-defined terminology of questions and question groups such as LOINC</li>
   <li>The <a href="questionnaire-extensions.html#deReference">deReference</a> extension allows a question or group to be associated with the
-  <a href="dataelement.html">DataElement</a> (DE) resource that formally defines the data element.</li>
+  <a href="dataelement.html">DataElement</a> (DE) resource that formally defines the data element.</li> -->
 </ul>
 <p>
-Linking to formal definitions of a question allows data captured by distinct questionnaires to be compared.  If systems have the necessary mappings to the
+Привязка к официальным определениям вопроса позволяет сравнивать данные, введенные в различные вопросники. Если у систем есть необходимые мэппинги на официальные определения, такие связи с официальными определениями также могут использоваться для автоматического предзаполнения или извлечения данных из соответствующего ресурса <a href="questionnaireanswers.html">QuestionnaireAnswers</a>.
+<!-- Linking to formal definitions of a question allows data captured by distinct questionnaires to be compared.  If systems have the necessary mappings to the
 formal definition, linkages to formal definitions may also be used to automatically pre-populate or extract data from a corresponding 
-<a href="questionnaireanswers.html">QuestionnaireAnswers</a> resource.
+<a href="questionnaireanswers.html">QuestionnaireAnswers</a> resource. -->
 </p>
 <p>
-NOTE: Even if standard question definitions are referenced using <code>concept</code> or the <code>deReference</code> extension, information such as the question text,
+ПРИМЕЧАНИЕ: даже если дается ссылка на стандартные определения вопросов с помощью расширения <code>concept</code> или <code>deReference</code>, такую информацию, как текст вопроса, тип данных и набор значений все равно СЛЕДУЕТ объявлять для вопроса. Системы, выполняющие обработку вопросника, могут не иметь доступа или поддержки возможности поиска определений вопросов во внешних источниках. Если информация не содержится внутри вопросника, другие системы могут быть не в состоянии отобразить или использовать такой вопросник.
+<!-- NOTE: Even if standard question definitions are referenced using <code>concept</code> or the <code>deReference</code> extension, information such as the question text,
 data type and value set SHOULD still be declared for the question.  Systems processing the questionnaire may not have access to or support the ability to look
 up the question definitions from external sources.  If the information is not included in-line within the questionnaire, other systems may not be able to to render
-or use the Questionnaire.
+or use the Questionnaire. -->
 </p>
 <p>
-If an external reference (<code>concept</code> or <code>deReference</code> extension) is included along with question information such as question text, data type or
+Если внешняя ссылка (<code>concept</code> или <code>deReference</code> расширение) включена наряду с информацией о вопросе, такой как текст вопроса, тип данных или набор значений, ожидается, что содержимое вопроса и определение, на которое дается ссылка, будут согласованы между собой. Однако FHIR не диктует требований к степени согласованности. Например должен ли текст вопроса точно совпадать? Обоснованно ли ограничивать набор допустимых значений возможных ответов на вопрос? Эти правила будет необходимо устанавливать непосредственно в среде реализации.
+<!-- If an external reference (<code>concept</code> or <code>deReference</code> extension) is included along with question information such as question text, data type or
 value set, it is expected that the content for the question and the referenced definition would be in alignment.  However, FHIR does not dictate what degree of
 alignment is required.  E.g. Does the question text need to match exactly?  Is it legitimate for a question to constrain the allowed value set of possible answers?
-These rules will need to be established within implementation environments.
+These rules will need to be established within implementation environments. -->
 </p>
 
-<h3>Question types</h3>
+<h3>Типы вопросов<!-- Question types --></h3>
 <p>
-The codes for the data type for each question is slightly different than the data types allowed in the <a href="questionnaireanswers.html">QuestionnaireAnswers</a> resource.
-Where the names are the same (ignoring case), the "answer" must use the specified type.  Where the names are different, the mappings are as follows:
+Коды типов данных для каждого вопроса немного отличаются от типов данных, доступных для ресурса <a href="questionnaireanswers.html">QuestionnaireAnswers</a>.
+Там, где имена совпадают (игнорируя регистр), "ответ" должен быть указанного типа. Там, где имена отличаются, используется следующая таблица соответствий:
+<!-- The codes for the data type for each question is slightly different than the data types allowed in the <a href="questionnaireanswers.html">QuestionnaireAnswers</a> resource.
+Where the names are the same (ignoring case), the "answer" must use the specified type.  Where the names are different, the mappings are as follows: -->
 </p>
 <table>
   <tbody>
     <tr>
-      <th>Questionnaire AnswerFormat code</th>
-      <th>QuestionnaireAnswers data type</th>
+      <th>Код формата ответа вопросника<!-- Questionnaire AnswerFormat code --></th>
+      <th>Тип данных ресурса QuestionnaireAnswers<!-- QuestionnaireAnswers data type --></th>
     </tr>
     <tr>
       <td>text</td>
