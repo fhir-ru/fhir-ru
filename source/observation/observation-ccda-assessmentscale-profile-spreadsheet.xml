@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -960,7 +960,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">author.name</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">HL7 International - Orders and Observations WG</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Health Level Seven International (Structured Documents - CCDA on FHIR)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">author.reference</Data></Cell>
@@ -1357,7 +1357,7 @@
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s105"><Data ss:Type="String">Observation.appliesDateTime</Data><NamedCell
+    <Cell ss:StyleID="s105"><Data ss:Type="String">Observation.effectiveDateTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">1..1</Data><NamedCell
@@ -1653,7 +1653,7 @@
     <Cell ss:StyleID="s109"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s109"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s109"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s110"><Data ss:Type="String">11/6/2014 EH:  this maps to FHIR better as 1..* obs. With 1..1 value instead of 1..1 obs with 1..* values.  Or map to LIST resoure which could point to 1..* Obs. -discuss</Data><NamedCell
+    <Cell ss:StyleID="s110"><Data ss:Type="String">11/6/2014 EH:  this maps to FHIR better as 1..* obs. With 1..1 value instead of 1..1 obs with 1..* values.  Or map to LIST resource which could point to 1..* Obs. -discuss</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4173,7 +4173,7 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s102"><Data ss:Type="String">11/6/2014 EH:  this maps to FHIR better as 1..* obs. With 1..1 value instead of 1..1 obs with 1..* values.  Or map to LIST resoure which could point to 1..* Obs. -discuss same note in CCDA AssessmentScaleObservation</Data><NamedCell
+    <Cell ss:StyleID="s102"><Data ss:Type="String">11/6/2014 EH:  this maps to FHIR better as 1..* obs. With 1..1 value instead of 1..1 obs with 1..* values.  Or map to LIST resource which could point to 1..* Obs. -discuss same note in CCDA AssessmentScaleObservation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
@@ -14269,7 +14269,7 @@
     <Cell ss:StyleID="s84"><Data ss:Type="String">8.  SHALL contain exactly one [1..1] effectiveTime (CONF:14445). </Data></Cell>
     <Cell ss:StyleID="s84"/>
     <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Observation.appliesDateTime</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Observation.effectiveDateTime</Data></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s84"/>
     <Cell ss:StyleID="s84"/>
@@ -15131,7 +15131,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Observation.applies[x]</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Observation.effective[x]</Data></Cell>
     <Cell ss:StyleID="s84"/>
     <Cell ss:StyleID="s85"/>
     <Cell ss:StyleID="s84"/>

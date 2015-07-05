@@ -29,16 +29,17 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
  */
@@ -51,19 +52,19 @@ public class AuditEvent extends DomainResource {
          */
         C, 
         /**
-         * Display or print data, such as a Doctor Census.
+         * Display or print data, such as a Doctor Census
          */
         R, 
         /**
-         * Update data, such as Revise Patient Information.
+         * Update data, such as Revise Patient Information
          */
         U, 
         /**
-         * Delete items, such as a doctor master file record.
+         * Delete items, such as a doctor master file record
          */
         D, 
         /**
-         * Perform a system or application function such as log-on, program execution or use of an object's method, or perform a query/search operation.
+         * Perform a system or application function such as log-on, program execution or use of an object's method, or perform a query/search operation
          */
         E, 
         /**
@@ -97,21 +98,21 @@ public class AuditEvent extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case C: return "";
-            case R: return "";
-            case U: return "";
-            case D: return "";
-            case E: return "";
+            case C: return "http://hl7.org/fhir/audit-event-action";
+            case R: return "http://hl7.org/fhir/audit-event-action";
+            case U: return "http://hl7.org/fhir/audit-event-action";
+            case D: return "http://hl7.org/fhir/audit-event-action";
+            case E: return "http://hl7.org/fhir/audit-event-action";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
             case C: return "Create a new database object, such as Placing an Order.";
-            case R: return "Display or print data, such as a Doctor Census.";
-            case U: return "Update data, such as Revise Patient Information.";
-            case D: return "Delete items, such as a doctor master file record.";
-            case E: return "Perform a system or application function such as log-on, program execution or use of an object's method, or perform a query/search operation.";
+            case R: return "Display or print data, such as a Doctor Census";
+            case U: return "Update data, such as Revise Patient Information";
+            case D: return "Delete items, such as a doctor master file record";
+            case E: return "Perform a system or application function such as log-on, program execution or use of an object's method, or perform a query/search operation";
             default: return "?";
           }
         }
@@ -161,19 +162,19 @@ public class AuditEvent extends DomainResource {
 
     public enum AuditEventOutcome {
         /**
-         * The operation completed successfully (whether with warnings or not).
+         * The operation completed successfully (whether with warnings or not)
          */
         _0, 
         /**
-         * The action was not successful due to some kind of catered for error (often equivalent to an HTTP 400 response).
+         * The action was not successful due to some kind of catered for error (often equivalent to an HTTP 400 response)
          */
         _4, 
         /**
-         * The action was not successful due to some kind of unexpected error (often equivalent to an HTTP 500 response).
+         * The action was not successful due to some kind of unexpected error (often equivalent to an HTTP 500 response)
          */
         _8, 
         /**
-         * An error of such magnitude occurred that the system is not longer available for use (i.e. the system died).
+         * An error of such magnitude occurred that the system is not longer available for use (i.e. the system died)
          */
         _12, 
         /**
@@ -204,19 +205,19 @@ public class AuditEvent extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case _0: return "";
-            case _4: return "";
-            case _8: return "";
-            case _12: return "";
+            case _0: return "http://hl7.org/fhir/audit-event-outcome";
+            case _4: return "http://hl7.org/fhir/audit-event-outcome";
+            case _8: return "http://hl7.org/fhir/audit-event-outcome";
+            case _12: return "http://hl7.org/fhir/audit-event-outcome";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case _0: return "The operation completed successfully (whether with warnings or not).";
-            case _4: return "The action was not successful due to some kind of catered for error (often equivalent to an HTTP 400 response).";
-            case _8: return "The action was not successful due to some kind of unexpected error (often equivalent to an HTTP 500 response).";
-            case _12: return "An error of such magnitude occurred that the system is not longer available for use (i.e. the system died).";
+            case _0: return "The operation completed successfully (whether with warnings or not)";
+            case _4: return "The action was not successful due to some kind of catered for error (often equivalent to an HTTP 400 response)";
+            case _8: return "The action was not successful due to some kind of unexpected error (often equivalent to an HTTP 500 response)";
+            case _12: return "An error of such magnitude occurred that the system is not longer available for use (i.e. the system died)";
             default: return "?";
           }
         }
@@ -259,32 +260,32 @@ public class AuditEvent extends DomainResource {
       }
     }
 
-    public enum NetworkType {
+    public enum AuditEventParticipantNetworkType {
         /**
-         * Machine Name, including DNS name.
+         * Machine Name, including DNS name
          */
         _1, 
         /**
-         * IP Address.
+         * IP Address
          */
         _2, 
         /**
-         * Telephone Number.
+         * Telephone Number
          */
         _3, 
         /**
-         * Email address.
+         * Email address
          */
         _4, 
         /**
-         * URI (User directory, HTTP-PUT, ftp, etc.).
+         * URI (User directory, HTTP-PUT, ftp, etc.)
          */
         _5, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static NetworkType fromCode(String codeString) throws Exception {
+        public static AuditEventParticipantNetworkType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("1".equals(codeString))
@@ -297,7 +298,7 @@ public class AuditEvent extends DomainResource {
           return _4;
         if ("5".equals(codeString))
           return _5;
-        throw new Exception("Unknown NetworkType code '"+codeString+"'");
+        throw new Exception("Unknown AuditEventParticipantNetworkType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -311,90 +312,90 @@ public class AuditEvent extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case _1: return "";
-            case _2: return "";
-            case _3: return "";
-            case _4: return "";
-            case _5: return "";
+            case _1: return "http://hl7.org/fhir/network-type";
+            case _2: return "http://hl7.org/fhir/network-type";
+            case _3: return "http://hl7.org/fhir/network-type";
+            case _4: return "http://hl7.org/fhir/network-type";
+            case _5: return "http://hl7.org/fhir/network-type";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case _1: return "Machine Name, including DNS name.";
-            case _2: return "IP Address.";
-            case _3: return "Telephone Number.";
-            case _4: return "Email address.";
-            case _5: return "URI (User directory, HTTP-PUT, ftp, etc.).";
+            case _1: return "Machine Name, including DNS name";
+            case _2: return "IP Address";
+            case _3: return "Telephone Number";
+            case _4: return "Email address";
+            case _5: return "URI (User directory, HTTP-PUT, ftp, etc.)";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case _1: return " ";
-            case _2: return " ";
-            case _3: return " ";
-            case _4: return " ";
-            case _5: return " ";
+            case _1: return "Machine Name";
+            case _2: return "IP Address";
+            case _3: return "Telephone Number";
+            case _4: return "Email address";
+            case _5: return "URI";
             default: return "?";
           }
         }
     }
 
-  public static class NetworkTypeEnumFactory implements EnumFactory<NetworkType> {
-    public NetworkType fromCode(String codeString) throws IllegalArgumentException {
+  public static class AuditEventParticipantNetworkTypeEnumFactory implements EnumFactory<AuditEventParticipantNetworkType> {
+    public AuditEventParticipantNetworkType fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("1".equals(codeString))
-          return NetworkType._1;
+          return AuditEventParticipantNetworkType._1;
         if ("2".equals(codeString))
-          return NetworkType._2;
+          return AuditEventParticipantNetworkType._2;
         if ("3".equals(codeString))
-          return NetworkType._3;
+          return AuditEventParticipantNetworkType._3;
         if ("4".equals(codeString))
-          return NetworkType._4;
+          return AuditEventParticipantNetworkType._4;
         if ("5".equals(codeString))
-          return NetworkType._5;
-        throw new IllegalArgumentException("Unknown NetworkType code '"+codeString+"'");
+          return AuditEventParticipantNetworkType._5;
+        throw new IllegalArgumentException("Unknown AuditEventParticipantNetworkType code '"+codeString+"'");
         }
-    public String toCode(NetworkType code) {
-      if (code == NetworkType._1)
+    public String toCode(AuditEventParticipantNetworkType code) {
+      if (code == AuditEventParticipantNetworkType._1)
         return "1";
-      if (code == NetworkType._2)
+      if (code == AuditEventParticipantNetworkType._2)
         return "2";
-      if (code == NetworkType._3)
+      if (code == AuditEventParticipantNetworkType._3)
         return "3";
-      if (code == NetworkType._4)
+      if (code == AuditEventParticipantNetworkType._4)
         return "4";
-      if (code == NetworkType._5)
+      if (code == AuditEventParticipantNetworkType._5)
         return "5";
       return "?";
       }
     }
 
-    public enum ObjectType {
+    public enum AuditEventObjectType {
         /**
-         * Person.
+         * Person
          */
         _1, 
         /**
-         * System Object.
+         * System Object
          */
         _2, 
         /**
-         * Organization.
+         * Organization
          */
         _3, 
         /**
-         * Other.
+         * Other
          */
         _4, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static ObjectType fromCode(String codeString) throws Exception {
+        public static AuditEventObjectType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("1".equals(codeString))
@@ -405,7 +406,7 @@ public class AuditEvent extends DomainResource {
           return _3;
         if ("4".equals(codeString))
           return _4;
-        throw new Exception("Unknown ObjectType code '"+codeString+"'");
+        throw new Exception("Unknown AuditEventObjectType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -418,64 +419,64 @@ public class AuditEvent extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case _1: return "";
-            case _2: return "";
-            case _3: return "";
-            case _4: return "";
+            case _1: return "http://hl7.org/fhir/object-type";
+            case _2: return "http://hl7.org/fhir/object-type";
+            case _3: return "http://hl7.org/fhir/object-type";
+            case _4: return "http://hl7.org/fhir/object-type";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case _1: return "Person.";
-            case _2: return "System Object.";
-            case _3: return "Organization.";
-            case _4: return "Other.";
+            case _1: return "Person";
+            case _2: return "System Object";
+            case _3: return "Organization";
+            case _4: return "Other";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case _1: return " ";
-            case _2: return " ";
-            case _3: return " ";
-            case _4: return " ";
+            case _1: return "Person";
+            case _2: return "System Object";
+            case _3: return "Organization";
+            case _4: return "Other";
             default: return "?";
           }
         }
     }
 
-  public static class ObjectTypeEnumFactory implements EnumFactory<ObjectType> {
-    public ObjectType fromCode(String codeString) throws IllegalArgumentException {
+  public static class AuditEventObjectTypeEnumFactory implements EnumFactory<AuditEventObjectType> {
+    public AuditEventObjectType fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("1".equals(codeString))
-          return ObjectType._1;
+          return AuditEventObjectType._1;
         if ("2".equals(codeString))
-          return ObjectType._2;
+          return AuditEventObjectType._2;
         if ("3".equals(codeString))
-          return ObjectType._3;
+          return AuditEventObjectType._3;
         if ("4".equals(codeString))
-          return ObjectType._4;
-        throw new IllegalArgumentException("Unknown ObjectType code '"+codeString+"'");
+          return AuditEventObjectType._4;
+        throw new IllegalArgumentException("Unknown AuditEventObjectType code '"+codeString+"'");
         }
-    public String toCode(ObjectType code) {
-      if (code == ObjectType._1)
+    public String toCode(AuditEventObjectType code) {
+      if (code == AuditEventObjectType._1)
         return "1";
-      if (code == ObjectType._2)
+      if (code == AuditEventObjectType._2)
         return "2";
-      if (code == ObjectType._3)
+      if (code == AuditEventObjectType._3)
         return "3";
-      if (code == ObjectType._4)
+      if (code == AuditEventObjectType._4)
         return "4";
       return "?";
       }
     }
 
-    public enum ObjectRole {
+    public enum AuditEventObjectRole {
         /**
-         * This object is the patient that is the subject of care related to this event.  It is identifiable by patient ID or equivalent.  The patient may be either human or animal.
+         * This object is the patient that is the subject of care related to this event.  It is identifiable by patient ID or equivalent.  The patient may be either human or animal
          */
         _1, 
         /**
@@ -495,11 +496,11 @@ public class AuditEvent extends DomainResource {
          */
         _5, 
         /**
-         * A human participant not otherwise identified by some other category.
+         * A human participant not otherwise identified by some other category
          */
         _6, 
         /**
-         * (deprecated).
+         * (deprecated)
          */
         _7, 
         /**
@@ -559,7 +560,7 @@ public class AuditEvent extends DomainResource {
          */
         _21, 
         /**
-         * (Deprecated).
+         * (Deprecated)
          */
         _22, 
         /**
@@ -574,7 +575,7 @@ public class AuditEvent extends DomainResource {
          * added to help the parsers
          */
         NULL;
-        public static ObjectRole fromCode(String codeString) throws Exception {
+        public static AuditEventObjectRole fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("1".equals(codeString))
@@ -625,7 +626,7 @@ public class AuditEvent extends DomainResource {
           return _23;
         if ("24".equals(codeString))
           return _24;
-        throw new Exception("Unknown ObjectRole code '"+codeString+"'");
+        throw new Exception("Unknown AuditEventObjectRole code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -658,42 +659,42 @@ public class AuditEvent extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case _1: return "";
-            case _2: return "";
-            case _3: return "";
-            case _4: return "";
-            case _5: return "";
-            case _6: return "";
-            case _7: return "";
-            case _8: return "";
-            case _9: return "";
-            case _10: return "";
-            case _11: return "";
-            case _12: return "";
-            case _13: return "";
-            case _14: return "";
-            case _15: return "";
-            case _16: return "";
-            case _17: return "";
-            case _18: return "";
-            case _19: return "";
-            case _20: return "";
-            case _21: return "";
-            case _22: return "";
-            case _23: return "";
-            case _24: return "";
+            case _1: return "http://hl7.org/fhir/object-role";
+            case _2: return "http://hl7.org/fhir/object-role";
+            case _3: return "http://hl7.org/fhir/object-role";
+            case _4: return "http://hl7.org/fhir/object-role";
+            case _5: return "http://hl7.org/fhir/object-role";
+            case _6: return "http://hl7.org/fhir/object-role";
+            case _7: return "http://hl7.org/fhir/object-role";
+            case _8: return "http://hl7.org/fhir/object-role";
+            case _9: return "http://hl7.org/fhir/object-role";
+            case _10: return "http://hl7.org/fhir/object-role";
+            case _11: return "http://hl7.org/fhir/object-role";
+            case _12: return "http://hl7.org/fhir/object-role";
+            case _13: return "http://hl7.org/fhir/object-role";
+            case _14: return "http://hl7.org/fhir/object-role";
+            case _15: return "http://hl7.org/fhir/object-role";
+            case _16: return "http://hl7.org/fhir/object-role";
+            case _17: return "http://hl7.org/fhir/object-role";
+            case _18: return "http://hl7.org/fhir/object-role";
+            case _19: return "http://hl7.org/fhir/object-role";
+            case _20: return "http://hl7.org/fhir/object-role";
+            case _21: return "http://hl7.org/fhir/object-role";
+            case _22: return "http://hl7.org/fhir/object-role";
+            case _23: return "http://hl7.org/fhir/object-role";
+            case _24: return "http://hl7.org/fhir/object-role";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case _1: return "This object is the patient that is the subject of care related to this event.  It is identifiable by patient ID or equivalent.  The patient may be either human or animal.";
+            case _1: return "This object is the patient that is the subject of care related to this event.  It is identifiable by patient ID or equivalent.  The patient may be either human or animal";
             case _2: return "This is a location identified as related to the event.  This is usually the location where the event took place.  Note that for shipping, the usual events are arrival at a location or departure from a location.";
             case _3: return "This object is any kind of persistent document created as a result of the event.  This could be a paper report, film, electronic report, DICOM Study, etc.  Issues related to medical records life cycle management are conveyed elsewhere.";
             case _4: return "A logical object related to a health record event.  This is any healthcare  specific resource (object) not restricted to FHIR defined Resources.";
             case _5: return "This is any configurable file used to control creation of documents.  Examples include the objects maintained by the HL7 Master File transactions, Value Sets, etc.";
-            case _6: return "A human participant not otherwise identified by some other category.";
-            case _7: return "(deprecated).";
+            case _6: return "A human participant not otherwise identified by some other category";
+            case _7: return "(deprecated)";
             case _8: return "Typically a licensed person who is providing or performing care related to the event, generally a physician.   The key distinction between doctor and practitioner is with regards to their role, not the licensing.  The doctor is the human who actually performed the work.  The practitioner is the human or organization that is responsible for the work.";
             case _9: return "A person or system that is being notified as part of the event.  This is relevant in situations where automated systems provide notifications to other parties when an event took place.";
             case _10: return "Insurance company, or any other organization who accepts responsibility for paying for the healthcare event.";
@@ -708,7 +709,7 @@ public class AuditEvent extends DomainResource {
             case _19: return "An organization or person that is the recipient of services.  This could be an organization that is buying services for a patient, or a person that is buying services for an animal.";
             case _20: return "An order, task, work item, procedure step, or other description of work to be performed.  E.g., a particular instance of an MPPS.";
             case _21: return "A list of jobs or a system that provides lists of jobs.  E.g., an MWL SCP.";
-            case _22: return "(Deprecated).";
+            case _22: return "(Deprecated)";
             case _23: return "An object that specifies or controls the routing or delivery of items.  For example, a distribution list is the routing criteria for mail.  The items delivered may be documents, jobs, or other objects.";
             case _24: return "The contents of a query.  This is used to capture the contents of any kind of query.  For security surveillance purposes knowing the queries being made is very important.";
             default: return "?";
@@ -745,180 +746,180 @@ public class AuditEvent extends DomainResource {
         }
     }
 
-  public static class ObjectRoleEnumFactory implements EnumFactory<ObjectRole> {
-    public ObjectRole fromCode(String codeString) throws IllegalArgumentException {
+  public static class AuditEventObjectRoleEnumFactory implements EnumFactory<AuditEventObjectRole> {
+    public AuditEventObjectRole fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("1".equals(codeString))
-          return ObjectRole._1;
+          return AuditEventObjectRole._1;
         if ("2".equals(codeString))
-          return ObjectRole._2;
+          return AuditEventObjectRole._2;
         if ("3".equals(codeString))
-          return ObjectRole._3;
+          return AuditEventObjectRole._3;
         if ("4".equals(codeString))
-          return ObjectRole._4;
+          return AuditEventObjectRole._4;
         if ("5".equals(codeString))
-          return ObjectRole._5;
+          return AuditEventObjectRole._5;
         if ("6".equals(codeString))
-          return ObjectRole._6;
+          return AuditEventObjectRole._6;
         if ("7".equals(codeString))
-          return ObjectRole._7;
+          return AuditEventObjectRole._7;
         if ("8".equals(codeString))
-          return ObjectRole._8;
+          return AuditEventObjectRole._8;
         if ("9".equals(codeString))
-          return ObjectRole._9;
+          return AuditEventObjectRole._9;
         if ("10".equals(codeString))
-          return ObjectRole._10;
+          return AuditEventObjectRole._10;
         if ("11".equals(codeString))
-          return ObjectRole._11;
+          return AuditEventObjectRole._11;
         if ("12".equals(codeString))
-          return ObjectRole._12;
+          return AuditEventObjectRole._12;
         if ("13".equals(codeString))
-          return ObjectRole._13;
+          return AuditEventObjectRole._13;
         if ("14".equals(codeString))
-          return ObjectRole._14;
+          return AuditEventObjectRole._14;
         if ("15".equals(codeString))
-          return ObjectRole._15;
+          return AuditEventObjectRole._15;
         if ("16".equals(codeString))
-          return ObjectRole._16;
+          return AuditEventObjectRole._16;
         if ("17".equals(codeString))
-          return ObjectRole._17;
+          return AuditEventObjectRole._17;
         if ("18".equals(codeString))
-          return ObjectRole._18;
+          return AuditEventObjectRole._18;
         if ("19".equals(codeString))
-          return ObjectRole._19;
+          return AuditEventObjectRole._19;
         if ("20".equals(codeString))
-          return ObjectRole._20;
+          return AuditEventObjectRole._20;
         if ("21".equals(codeString))
-          return ObjectRole._21;
+          return AuditEventObjectRole._21;
         if ("22".equals(codeString))
-          return ObjectRole._22;
+          return AuditEventObjectRole._22;
         if ("23".equals(codeString))
-          return ObjectRole._23;
+          return AuditEventObjectRole._23;
         if ("24".equals(codeString))
-          return ObjectRole._24;
-        throw new IllegalArgumentException("Unknown ObjectRole code '"+codeString+"'");
+          return AuditEventObjectRole._24;
+        throw new IllegalArgumentException("Unknown AuditEventObjectRole code '"+codeString+"'");
         }
-    public String toCode(ObjectRole code) {
-      if (code == ObjectRole._1)
+    public String toCode(AuditEventObjectRole code) {
+      if (code == AuditEventObjectRole._1)
         return "1";
-      if (code == ObjectRole._2)
+      if (code == AuditEventObjectRole._2)
         return "2";
-      if (code == ObjectRole._3)
+      if (code == AuditEventObjectRole._3)
         return "3";
-      if (code == ObjectRole._4)
+      if (code == AuditEventObjectRole._4)
         return "4";
-      if (code == ObjectRole._5)
+      if (code == AuditEventObjectRole._5)
         return "5";
-      if (code == ObjectRole._6)
+      if (code == AuditEventObjectRole._6)
         return "6";
-      if (code == ObjectRole._7)
+      if (code == AuditEventObjectRole._7)
         return "7";
-      if (code == ObjectRole._8)
+      if (code == AuditEventObjectRole._8)
         return "8";
-      if (code == ObjectRole._9)
+      if (code == AuditEventObjectRole._9)
         return "9";
-      if (code == ObjectRole._10)
+      if (code == AuditEventObjectRole._10)
         return "10";
-      if (code == ObjectRole._11)
+      if (code == AuditEventObjectRole._11)
         return "11";
-      if (code == ObjectRole._12)
+      if (code == AuditEventObjectRole._12)
         return "12";
-      if (code == ObjectRole._13)
+      if (code == AuditEventObjectRole._13)
         return "13";
-      if (code == ObjectRole._14)
+      if (code == AuditEventObjectRole._14)
         return "14";
-      if (code == ObjectRole._15)
+      if (code == AuditEventObjectRole._15)
         return "15";
-      if (code == ObjectRole._16)
+      if (code == AuditEventObjectRole._16)
         return "16";
-      if (code == ObjectRole._17)
+      if (code == AuditEventObjectRole._17)
         return "17";
-      if (code == ObjectRole._18)
+      if (code == AuditEventObjectRole._18)
         return "18";
-      if (code == ObjectRole._19)
+      if (code == AuditEventObjectRole._19)
         return "19";
-      if (code == ObjectRole._20)
+      if (code == AuditEventObjectRole._20)
         return "20";
-      if (code == ObjectRole._21)
+      if (code == AuditEventObjectRole._21)
         return "21";
-      if (code == ObjectRole._22)
+      if (code == AuditEventObjectRole._22)
         return "22";
-      if (code == ObjectRole._23)
+      if (code == AuditEventObjectRole._23)
         return "23";
-      if (code == ObjectRole._24)
+      if (code == AuditEventObjectRole._24)
         return "24";
       return "?";
       }
     }
 
-    public enum ObjectLifecycle {
+    public enum AuditEventObjectLifecycle {
         /**
-         * Origination / Creation.
+         * Origination / Creation
          */
         _1, 
         /**
-         * Import / Copy from original.
+         * Import / Copy from original
          */
         _2, 
         /**
-         * Amendment.
+         * Amendment
          */
         _3, 
         /**
-         * Verification.
+         * Verification
          */
         _4, 
         /**
-         * Translation.
+         * Translation
          */
         _5, 
         /**
-         * Access / Use.
+         * Access / Use
          */
         _6, 
         /**
-         * De-identification.
+         * De-identification
          */
         _7, 
         /**
-         * Aggregation, summarization, derivation.
+         * Aggregation, summarization, derivation
          */
         _8, 
         /**
-         * Report.
+         * Report
          */
         _9, 
         /**
-         * Export / Copy to target.
+         * Export / Copy to target
          */
         _10, 
         /**
-         * Disclosure.
+         * Disclosure
          */
         _11, 
         /**
-         * Receipt of disclosure.
+         * Receipt of disclosure
          */
         _12, 
         /**
-         * Archiving.
+         * Archiving
          */
         _13, 
         /**
-         * Logical deletion.
+         * Logical deletion
          */
         _14, 
         /**
-         * Permanent erasure / Physical destruction.
+         * Permanent erasure / Physical destruction
          */
         _15, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static ObjectLifecycle fromCode(String codeString) throws Exception {
+        public static AuditEventObjectLifecycle fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("1".equals(codeString))
@@ -951,7 +952,7 @@ public class AuditEvent extends DomainResource {
           return _14;
         if ("15".equals(codeString))
           return _15;
-        throw new Exception("Unknown ObjectLifecycle code '"+codeString+"'");
+        throw new Exception("Unknown AuditEventObjectLifecycle code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -975,195 +976,201 @@ public class AuditEvent extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case _1: return "";
-            case _2: return "";
-            case _3: return "";
-            case _4: return "";
-            case _5: return "";
-            case _6: return "";
-            case _7: return "";
-            case _8: return "";
-            case _9: return "";
-            case _10: return "";
-            case _11: return "";
-            case _12: return "";
-            case _13: return "";
-            case _14: return "";
-            case _15: return "";
+            case _1: return "http://hl7.org/fhir/object-lifecycle";
+            case _2: return "http://hl7.org/fhir/object-lifecycle";
+            case _3: return "http://hl7.org/fhir/object-lifecycle";
+            case _4: return "http://hl7.org/fhir/object-lifecycle";
+            case _5: return "http://hl7.org/fhir/object-lifecycle";
+            case _6: return "http://hl7.org/fhir/object-lifecycle";
+            case _7: return "http://hl7.org/fhir/object-lifecycle";
+            case _8: return "http://hl7.org/fhir/object-lifecycle";
+            case _9: return "http://hl7.org/fhir/object-lifecycle";
+            case _10: return "http://hl7.org/fhir/object-lifecycle";
+            case _11: return "http://hl7.org/fhir/object-lifecycle";
+            case _12: return "http://hl7.org/fhir/object-lifecycle";
+            case _13: return "http://hl7.org/fhir/object-lifecycle";
+            case _14: return "http://hl7.org/fhir/object-lifecycle";
+            case _15: return "http://hl7.org/fhir/object-lifecycle";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case _1: return "Origination / Creation.";
-            case _2: return "Import / Copy from original.";
-            case _3: return "Amendment.";
-            case _4: return "Verification.";
-            case _5: return "Translation.";
-            case _6: return "Access / Use.";
-            case _7: return "De-identification.";
-            case _8: return "Aggregation, summarization, derivation.";
-            case _9: return "Report.";
-            case _10: return "Export / Copy to target.";
-            case _11: return "Disclosure.";
-            case _12: return "Receipt of disclosure.";
-            case _13: return "Archiving.";
-            case _14: return "Logical deletion.";
-            case _15: return "Permanent erasure / Physical destruction.";
+            case _1: return "Origination / Creation";
+            case _2: return "Import / Copy from original";
+            case _3: return "Amendment";
+            case _4: return "Verification";
+            case _5: return "Translation";
+            case _6: return "Access / Use";
+            case _7: return "De-identification";
+            case _8: return "Aggregation, summarization, derivation";
+            case _9: return "Report";
+            case _10: return "Export / Copy to target";
+            case _11: return "Disclosure";
+            case _12: return "Receipt of disclosure";
+            case _13: return "Archiving";
+            case _14: return "Logical deletion";
+            case _15: return "Permanent erasure / Physical destruction";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case _1: return " ";
-            case _2: return " ";
-            case _3: return " ";
-            case _4: return " ";
-            case _5: return " ";
-            case _6: return " ";
-            case _7: return " ";
-            case _8: return " ";
-            case _9: return " ";
-            case _10: return "  ";
-            case _11: return "  ";
-            case _12: return "  ";
-            case _13: return "  ";
-            case _14: return "  ";
-            case _15: return "  ";
+            case _1: return "Origination / Creation";
+            case _2: return "Import / Copy from original";
+            case _3: return "Amendment";
+            case _4: return "Verification";
+            case _5: return "Translation";
+            case _6: return "Access / Use";
+            case _7: return "De-identification";
+            case _8: return "Aggregation, summarization, derivation";
+            case _9: return "Report";
+            case _10: return "Export / Copy to target";
+            case _11: return "Disclosure";
+            case _12: return "Receipt of disclosure";
+            case _13: return "Archiving";
+            case _14: return "Logical deletion";
+            case _15: return "Permanent erasure / Physical destruction";
             default: return "?";
           }
         }
     }
 
-  public static class ObjectLifecycleEnumFactory implements EnumFactory<ObjectLifecycle> {
-    public ObjectLifecycle fromCode(String codeString) throws IllegalArgumentException {
+  public static class AuditEventObjectLifecycleEnumFactory implements EnumFactory<AuditEventObjectLifecycle> {
+    public AuditEventObjectLifecycle fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("1".equals(codeString))
-          return ObjectLifecycle._1;
+          return AuditEventObjectLifecycle._1;
         if ("2".equals(codeString))
-          return ObjectLifecycle._2;
+          return AuditEventObjectLifecycle._2;
         if ("3".equals(codeString))
-          return ObjectLifecycle._3;
+          return AuditEventObjectLifecycle._3;
         if ("4".equals(codeString))
-          return ObjectLifecycle._4;
+          return AuditEventObjectLifecycle._4;
         if ("5".equals(codeString))
-          return ObjectLifecycle._5;
+          return AuditEventObjectLifecycle._5;
         if ("6".equals(codeString))
-          return ObjectLifecycle._6;
+          return AuditEventObjectLifecycle._6;
         if ("7".equals(codeString))
-          return ObjectLifecycle._7;
+          return AuditEventObjectLifecycle._7;
         if ("8".equals(codeString))
-          return ObjectLifecycle._8;
+          return AuditEventObjectLifecycle._8;
         if ("9".equals(codeString))
-          return ObjectLifecycle._9;
+          return AuditEventObjectLifecycle._9;
         if ("10".equals(codeString))
-          return ObjectLifecycle._10;
+          return AuditEventObjectLifecycle._10;
         if ("11".equals(codeString))
-          return ObjectLifecycle._11;
+          return AuditEventObjectLifecycle._11;
         if ("12".equals(codeString))
-          return ObjectLifecycle._12;
+          return AuditEventObjectLifecycle._12;
         if ("13".equals(codeString))
-          return ObjectLifecycle._13;
+          return AuditEventObjectLifecycle._13;
         if ("14".equals(codeString))
-          return ObjectLifecycle._14;
+          return AuditEventObjectLifecycle._14;
         if ("15".equals(codeString))
-          return ObjectLifecycle._15;
-        throw new IllegalArgumentException("Unknown ObjectLifecycle code '"+codeString+"'");
+          return AuditEventObjectLifecycle._15;
+        throw new IllegalArgumentException("Unknown AuditEventObjectLifecycle code '"+codeString+"'");
         }
-    public String toCode(ObjectLifecycle code) {
-      if (code == ObjectLifecycle._1)
+    public String toCode(AuditEventObjectLifecycle code) {
+      if (code == AuditEventObjectLifecycle._1)
         return "1";
-      if (code == ObjectLifecycle._2)
+      if (code == AuditEventObjectLifecycle._2)
         return "2";
-      if (code == ObjectLifecycle._3)
+      if (code == AuditEventObjectLifecycle._3)
         return "3";
-      if (code == ObjectLifecycle._4)
+      if (code == AuditEventObjectLifecycle._4)
         return "4";
-      if (code == ObjectLifecycle._5)
+      if (code == AuditEventObjectLifecycle._5)
         return "5";
-      if (code == ObjectLifecycle._6)
+      if (code == AuditEventObjectLifecycle._6)
         return "6";
-      if (code == ObjectLifecycle._7)
+      if (code == AuditEventObjectLifecycle._7)
         return "7";
-      if (code == ObjectLifecycle._8)
+      if (code == AuditEventObjectLifecycle._8)
         return "8";
-      if (code == ObjectLifecycle._9)
+      if (code == AuditEventObjectLifecycle._9)
         return "9";
-      if (code == ObjectLifecycle._10)
+      if (code == AuditEventObjectLifecycle._10)
         return "10";
-      if (code == ObjectLifecycle._11)
+      if (code == AuditEventObjectLifecycle._11)
         return "11";
-      if (code == ObjectLifecycle._12)
+      if (code == AuditEventObjectLifecycle._12)
         return "12";
-      if (code == ObjectLifecycle._13)
+      if (code == AuditEventObjectLifecycle._13)
         return "13";
-      if (code == ObjectLifecycle._14)
+      if (code == AuditEventObjectLifecycle._14)
         return "14";
-      if (code == ObjectLifecycle._15)
+      if (code == AuditEventObjectLifecycle._15)
         return "15";
       return "?";
       }
     }
 
     @Block()
-    public static class AuditEventEventComponent extends BackboneElement {
+    public static class AuditEventEventComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Identifier for a family of the event.
          */
-        @Child(name ="type", type={CodeableConcept.class}, order=1, min=1, max=1)
+        @Child(name = "type", type = {CodeableConcept.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Type/identifier of event", formalDefinition="Identifier for a family of the event." )
         protected CodeableConcept type;
 
         /**
          * Identifier for the category of event.
          */
-        @Child(name ="subtype", type={CodeableConcept.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "subtype", type = {CodeableConcept.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="More specific type/id for the event", formalDefinition="Identifier for the category of event." )
         protected List<CodeableConcept> subtype;
 
         /**
          * Indicator for type of action performed during the event that generated the audit.
          */
-        @Child(name ="action", type={CodeType.class}, order=3, min=0, max=1)
+        @Child(name = "action", type = {CodeType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Type of action performed during the event", formalDefinition="Indicator for type of action performed during the event that generated the audit." )
         protected Enumeration<AuditEventAction> action;
 
         /**
          * The time when the event occurred on the source.
          */
-        @Child(name ="dateTime", type={InstantType.class}, order=4, min=1, max=1)
+        @Child(name = "dateTime", type = {InstantType.class}, order=4, min=1, max=1)
         @Description(shortDefinition="Time when the event occurred on source", formalDefinition="The time when the event occurred on the source." )
         protected InstantType dateTime;
 
         /**
          * Indicates whether the event succeeded or failed.
          */
-        @Child(name ="outcome", type={CodeType.class}, order=5, min=0, max=1)
+        @Child(name = "outcome", type = {CodeType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="Whether the event succeeded or failed", formalDefinition="Indicates whether the event succeeded or failed." )
         protected Enumeration<AuditEventOutcome> outcome;
 
         /**
          * A free text description of the outcome of the event.
          */
-        @Child(name ="outcomeDesc", type={StringType.class}, order=6, min=0, max=1)
+        @Child(name = "outcomeDesc", type = {StringType.class}, order=6, min=0, max=1)
         @Description(shortDefinition="Description of the event outcome", formalDefinition="A free text description of the outcome of the event." )
         protected StringType outcomeDesc;
 
         /**
          * The purposeOfUse (reason) that was used during the event being recorded.
          */
-        @Child(name ="purposeOfEvent", type={Coding.class}, order=7, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "purposeOfEvent", type = {Coding.class}, order=7, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="The purposeOfUse of the event", formalDefinition="The purposeOfUse (reason) that was used during the event being recorded." )
         protected List<Coding> purposeOfEvent;
 
         private static final long serialVersionUID = 339035171L;
 
+    /*
+     * Constructor
+     */
       public AuditEventEventComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public AuditEventEventComponent(CodeableConcept type, InstantType dateTime) {
         super();
         this.type = type;
@@ -1531,18 +1538,18 @@ public class AuditEvent extends DomainResource {
   }
 
     @Block()
-    public static class AuditEventParticipantComponent extends BackboneElement {
+    public static class AuditEventParticipantComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the role-based access control security system used in the local context.
          */
-        @Child(name ="role", type={CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "role", type = {CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="User roles (e.g. local RBAC codes)", formalDefinition="Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the role-based access control security system used in the local context." )
         protected List<CodeableConcept> role;
 
         /**
          * Direct reference to a resource that identifies the participant.
          */
-        @Child(name ="reference", type={Practitioner.class, Organization.class, Device.class, Patient.class, RelatedPerson.class}, order=2, min=0, max=1)
+        @Child(name = "reference", type = {Practitioner.class, Organization.class, Device.class, Patient.class, RelatedPerson.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Direct reference to resource", formalDefinition="Direct reference to a resource that identifies the participant." )
         protected Reference reference;
 
@@ -1554,35 +1561,35 @@ public class AuditEvent extends DomainResource {
         /**
          * Unique identifier for the user actively participating in the event.
          */
-        @Child(name ="userId", type={StringType.class}, order=3, min=0, max=1)
+        @Child(name = "userId", type = {StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Unique identifier for the user", formalDefinition="Unique identifier for the user actively participating in the event." )
         protected StringType userId;
 
         /**
          * Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.
          */
-        @Child(name ="altId", type={StringType.class}, order=4, min=0, max=1)
+        @Child(name = "altId", type = {StringType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Alternative User id e.g. authentication", formalDefinition="Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available." )
         protected StringType altId;
 
         /**
          * Human-meaningful name for the user.
          */
-        @Child(name ="name", type={StringType.class}, order=5, min=0, max=1)
+        @Child(name = "name", type = {StringType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="Human-meaningful name for the user", formalDefinition="Human-meaningful name for the user." )
         protected StringType name;
 
         /**
          * Indicator that the user is or is not the requestor, or initiator, for the event being audited.
          */
-        @Child(name ="requestor", type={BooleanType.class}, order=6, min=1, max=1)
+        @Child(name = "requestor", type = {BooleanType.class}, order=6, min=1, max=1)
         @Description(shortDefinition="Whether user is initiator", formalDefinition="Indicator that the user is or is not the requestor, or initiator, for the event being audited." )
         protected BooleanType requestor;
 
         /**
          * Where the event occurred.
          */
-        @Child(name ="location", type={Location.class}, order=7, min=0, max=1)
+        @Child(name = "location", type = {Location.class}, order=7, min=0, max=1)
         @Description(shortDefinition="Where", formalDefinition="Where the event occurred." )
         protected Reference location;
 
@@ -1594,37 +1601,43 @@ public class AuditEvent extends DomainResource {
         /**
          * The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.
          */
-        @Child(name ="policy", type={UriType.class}, order=8, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "policy", type = {UriType.class}, order=8, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Policy that authorized event", formalDefinition="The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used." )
         protected List<UriType> policy;
 
         /**
          * Type of media involved. Used when the event is about exporting/importing onto media.
          */
-        @Child(name ="media", type={Coding.class}, order=9, min=0, max=1)
+        @Child(name = "media", type = {Coding.class}, order=9, min=0, max=1)
         @Description(shortDefinition="Type of media", formalDefinition="Type of media involved. Used when the event is about exporting/importing onto media." )
         protected Coding media;
 
         /**
          * Logical network location for application activity, if the activity has a network location.
          */
-        @Child(name ="network", type={}, order=10, min=0, max=1)
+        @Child(name = "network", type = {}, order=10, min=0, max=1)
         @Description(shortDefinition="Logical network location for application activity", formalDefinition="Logical network location for application activity, if the activity has a network location." )
         protected AuditEventParticipantNetworkComponent network;
 
         /**
          * The purposeOfUse (reason) specific to this participant that was used during the event being recorded.
          */
-        @Child(name ="purposeOfUse", type={Coding.class}, order=11, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "purposeOfUse", type = {Coding.class}, order=11, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Participant purposeOfUse", formalDefinition="The purposeOfUse (reason) specific to this participant that was used during the event being recorded." )
         protected List<Coding> purposeOfUse;
 
         private static final long serialVersionUID = -1555724321L;
 
+    /*
+     * Constructor
+     */
       public AuditEventParticipantComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public AuditEventParticipantComponent(BooleanType requestor) {
         super();
         this.requestor = requestor;
@@ -2166,23 +2179,26 @@ public class AuditEvent extends DomainResource {
   }
 
     @Block()
-    public static class AuditEventParticipantNetworkComponent extends BackboneElement {
+    public static class AuditEventParticipantNetworkComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * An identifier for the network access point of the user device for the audit event.
          */
-        @Child(name ="identifier", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name = "identifier", type = {StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Identifier for the network access point of the user device", formalDefinition="An identifier for the network access point of the user device for the audit event." )
         protected StringType identifier;
 
         /**
          * An identifier for the type of network access point that originated the audit event.
          */
-        @Child(name ="type", type={CodeType.class}, order=2, min=0, max=1)
+        @Child(name = "type", type = {CodeType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="The type of network access point", formalDefinition="An identifier for the type of network access point that originated the audit event." )
-        protected Enumeration<NetworkType> type;
+        protected Enumeration<AuditEventParticipantNetworkType> type;
 
-        private static final long serialVersionUID = -1946856025L;
+        private static final long serialVersionUID = 228342005L;
 
+    /*
+     * Constructor
+     */
       public AuditEventParticipantNetworkComponent() {
         super();
       }
@@ -2239,12 +2255,12 @@ public class AuditEvent extends DomainResource {
         /**
          * @return {@link #type} (An identifier for the type of network access point that originated the audit event.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public Enumeration<NetworkType> getTypeElement() { 
+        public Enumeration<AuditEventParticipantNetworkType> getTypeElement() { 
           if (this.type == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AuditEventParticipantNetworkComponent.type");
             else if (Configuration.doAutoCreate())
-              this.type = new Enumeration<NetworkType>(new NetworkTypeEnumFactory()); // bb
+              this.type = new Enumeration<AuditEventParticipantNetworkType>(new AuditEventParticipantNetworkTypeEnumFactory()); // bb
           return this.type;
         }
 
@@ -2259,7 +2275,7 @@ public class AuditEvent extends DomainResource {
         /**
          * @param value {@link #type} (An identifier for the type of network access point that originated the audit event.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public AuditEventParticipantNetworkComponent setTypeElement(Enumeration<NetworkType> value) { 
+        public AuditEventParticipantNetworkComponent setTypeElement(Enumeration<AuditEventParticipantNetworkType> value) { 
           this.type = value;
           return this;
         }
@@ -2267,19 +2283,19 @@ public class AuditEvent extends DomainResource {
         /**
          * @return An identifier for the type of network access point that originated the audit event.
          */
-        public NetworkType getType() { 
+        public AuditEventParticipantNetworkType getType() { 
           return this.type == null ? null : this.type.getValue();
         }
 
         /**
          * @param value An identifier for the type of network access point that originated the audit event.
          */
-        public AuditEventParticipantNetworkComponent setType(NetworkType value) { 
+        public AuditEventParticipantNetworkComponent setType(AuditEventParticipantNetworkType value) { 
           if (value == null)
             this.type = null;
           else {
             if (this.type == null)
-              this.type = new Enumeration<NetworkType>(new NetworkTypeEnumFactory());
+              this.type = new Enumeration<AuditEventParticipantNetworkType>(new AuditEventParticipantNetworkTypeEnumFactory());
             this.type.setValue(value);
           }
           return this;
@@ -2327,34 +2343,40 @@ public class AuditEvent extends DomainResource {
   }
 
     @Block()
-    public static class AuditEventSourceComponent extends BackboneElement {
+    public static class AuditEventSourceComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Logical source location within the healthcare enterprise network.
          */
-        @Child(name ="site", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name = "site", type = {StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Logical source location within the enterprise", formalDefinition="Logical source location within the healthcare enterprise network." )
         protected StringType site;
 
         /**
          * Identifier of the source where the event originated.
          */
-        @Child(name ="identifier", type={StringType.class}, order=2, min=1, max=1)
+        @Child(name = "identifier", type = {StringType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="The id of source where event originated", formalDefinition="Identifier of the source where the event originated." )
         protected StringType identifier;
 
         /**
          * Code specifying the type of source where event originated.
          */
-        @Child(name ="type", type={Coding.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "type", type = {Coding.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="The type of source where event originated", formalDefinition="Code specifying the type of source where event originated." )
         protected List<Coding> type;
 
         private static final long serialVersionUID = -382040480L;
 
+    /*
+     * Constructor
+     */
       public AuditEventSourceComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public AuditEventSourceComponent(StringType identifier) {
         super();
         this.identifier = identifier;
@@ -2543,18 +2565,18 @@ public class AuditEvent extends DomainResource {
   }
 
     @Block()
-    public static class AuditEventObjectComponent extends BackboneElement {
+    public static class AuditEventObjectComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Identifies a specific instance of the participant object. The reference should always be version specific.
          */
-        @Child(name ="identifier", type={Identifier.class}, order=1, min=0, max=1)
+        @Child(name = "identifier", type = {Identifier.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Specific instance of object (e.g. versioned)", formalDefinition="Identifies a specific instance of the participant object. The reference should always be version specific." )
         protected Identifier identifier;
 
         /**
          * Identifies a specific instance of the participant object. The reference should always be version specific.
          */
-        @Child(name ="reference", type={}, order=2, min=0, max=1)
+        @Child(name = "reference", type = {}, order=2, min=0, max=1)
         @Description(shortDefinition="Specific instance of resource (e.g. versioned)", formalDefinition="Identifies a specific instance of the participant object. The reference should always be version specific." )
         protected Reference reference;
 
@@ -2566,61 +2588,64 @@ public class AuditEvent extends DomainResource {
         /**
          * The type of the object that was involved in this audit event.
          */
-        @Child(name ="type", type={CodeType.class}, order=3, min=0, max=1)
+        @Child(name = "type", type = {CodeType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Type of object involved", formalDefinition="The type of the object that was involved in this audit event." )
-        protected Enumeration<ObjectType> type;
+        protected Enumeration<AuditEventObjectType> type;
 
         /**
          * Code representing the functional application role of Participant Object being audited.
          */
-        @Child(name ="role", type={CodeType.class}, order=4, min=0, max=1)
+        @Child(name = "role", type = {CodeType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="What role the Object played", formalDefinition="Code representing the functional application role of Participant Object being audited." )
-        protected Enumeration<ObjectRole> role;
+        protected Enumeration<AuditEventObjectRole> role;
 
         /**
          * Identifier for the data life-cycle stage for the participant object.
          */
-        @Child(name ="lifecycle", type={CodeType.class}, order=5, min=0, max=1)
+        @Child(name = "lifecycle", type = {CodeType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="Life-cycle stage for the object", formalDefinition="Identifier for the data life-cycle stage for the participant object." )
-        protected Enumeration<ObjectLifecycle> lifecycle;
+        protected Enumeration<AuditEventObjectLifecycle> lifecycle;
 
         /**
          * Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status or similar topics.
          */
-        @Child(name ="sensitivity", type={CodeableConcept.class}, order=6, min=0, max=1)
+        @Child(name = "sensitivity", type = {CodeableConcept.class}, order=6, min=0, max=1)
         @Description(shortDefinition="Policy-defined sensitivity for the object", formalDefinition="Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status or similar topics." )
         protected CodeableConcept sensitivity;
 
         /**
          * An instance-specific descriptor of the Participant Object ID audited, such as a person's name.
          */
-        @Child(name ="name", type={StringType.class}, order=7, min=0, max=1)
+        @Child(name = "name", type = {StringType.class}, order=7, min=0, max=1)
         @Description(shortDefinition="Instance-specific descriptor for Object", formalDefinition="An instance-specific descriptor of the Participant Object ID audited, such as a person's name." )
         protected StringType name;
 
         /**
          * Text that describes the object in more detail.
          */
-        @Child(name ="description", type={StringType.class}, order=8, min=0, max=1)
+        @Child(name = "description", type = {StringType.class}, order=8, min=0, max=1)
         @Description(shortDefinition="Descriptive text", formalDefinition="Text that describes the object in more detail." )
         protected StringType description;
 
         /**
          * The actual query for a query-type participant object.
          */
-        @Child(name ="query", type={Base64BinaryType.class}, order=9, min=0, max=1)
+        @Child(name = "query", type = {Base64BinaryType.class}, order=9, min=0, max=1)
         @Description(shortDefinition="Actual query for object", formalDefinition="The actual query for a query-type participant object." )
         protected Base64BinaryType query;
 
         /**
          * Additional Information about the Object.
          */
-        @Child(name ="detail", type={}, order=10, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "detail", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Additional Information about the Object", formalDefinition="Additional Information about the Object." )
         protected List<AuditEventObjectDetailComponent> detail;
 
-        private static final long serialVersionUID = 618775596L;
+        private static final long serialVersionUID = -304484373L;
 
+    /*
+     * Constructor
+     */
       public AuditEventObjectComponent() {
         super();
       }
@@ -2691,12 +2716,12 @@ public class AuditEvent extends DomainResource {
         /**
          * @return {@link #type} (The type of the object that was involved in this audit event.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public Enumeration<ObjectType> getTypeElement() { 
+        public Enumeration<AuditEventObjectType> getTypeElement() { 
           if (this.type == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AuditEventObjectComponent.type");
             else if (Configuration.doAutoCreate())
-              this.type = new Enumeration<ObjectType>(new ObjectTypeEnumFactory()); // bb
+              this.type = new Enumeration<AuditEventObjectType>(new AuditEventObjectTypeEnumFactory()); // bb
           return this.type;
         }
 
@@ -2711,7 +2736,7 @@ public class AuditEvent extends DomainResource {
         /**
          * @param value {@link #type} (The type of the object that was involved in this audit event.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public AuditEventObjectComponent setTypeElement(Enumeration<ObjectType> value) { 
+        public AuditEventObjectComponent setTypeElement(Enumeration<AuditEventObjectType> value) { 
           this.type = value;
           return this;
         }
@@ -2719,19 +2744,19 @@ public class AuditEvent extends DomainResource {
         /**
          * @return The type of the object that was involved in this audit event.
          */
-        public ObjectType getType() { 
+        public AuditEventObjectType getType() { 
           return this.type == null ? null : this.type.getValue();
         }
 
         /**
          * @param value The type of the object that was involved in this audit event.
          */
-        public AuditEventObjectComponent setType(ObjectType value) { 
+        public AuditEventObjectComponent setType(AuditEventObjectType value) { 
           if (value == null)
             this.type = null;
           else {
             if (this.type == null)
-              this.type = new Enumeration<ObjectType>(new ObjectTypeEnumFactory());
+              this.type = new Enumeration<AuditEventObjectType>(new AuditEventObjectTypeEnumFactory());
             this.type.setValue(value);
           }
           return this;
@@ -2740,12 +2765,12 @@ public class AuditEvent extends DomainResource {
         /**
          * @return {@link #role} (Code representing the functional application role of Participant Object being audited.). This is the underlying object with id, value and extensions. The accessor "getRole" gives direct access to the value
          */
-        public Enumeration<ObjectRole> getRoleElement() { 
+        public Enumeration<AuditEventObjectRole> getRoleElement() { 
           if (this.role == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AuditEventObjectComponent.role");
             else if (Configuration.doAutoCreate())
-              this.role = new Enumeration<ObjectRole>(new ObjectRoleEnumFactory()); // bb
+              this.role = new Enumeration<AuditEventObjectRole>(new AuditEventObjectRoleEnumFactory()); // bb
           return this.role;
         }
 
@@ -2760,7 +2785,7 @@ public class AuditEvent extends DomainResource {
         /**
          * @param value {@link #role} (Code representing the functional application role of Participant Object being audited.). This is the underlying object with id, value and extensions. The accessor "getRole" gives direct access to the value
          */
-        public AuditEventObjectComponent setRoleElement(Enumeration<ObjectRole> value) { 
+        public AuditEventObjectComponent setRoleElement(Enumeration<AuditEventObjectRole> value) { 
           this.role = value;
           return this;
         }
@@ -2768,19 +2793,19 @@ public class AuditEvent extends DomainResource {
         /**
          * @return Code representing the functional application role of Participant Object being audited.
          */
-        public ObjectRole getRole() { 
+        public AuditEventObjectRole getRole() { 
           return this.role == null ? null : this.role.getValue();
         }
 
         /**
          * @param value Code representing the functional application role of Participant Object being audited.
          */
-        public AuditEventObjectComponent setRole(ObjectRole value) { 
+        public AuditEventObjectComponent setRole(AuditEventObjectRole value) { 
           if (value == null)
             this.role = null;
           else {
             if (this.role == null)
-              this.role = new Enumeration<ObjectRole>(new ObjectRoleEnumFactory());
+              this.role = new Enumeration<AuditEventObjectRole>(new AuditEventObjectRoleEnumFactory());
             this.role.setValue(value);
           }
           return this;
@@ -2789,12 +2814,12 @@ public class AuditEvent extends DomainResource {
         /**
          * @return {@link #lifecycle} (Identifier for the data life-cycle stage for the participant object.). This is the underlying object with id, value and extensions. The accessor "getLifecycle" gives direct access to the value
          */
-        public Enumeration<ObjectLifecycle> getLifecycleElement() { 
+        public Enumeration<AuditEventObjectLifecycle> getLifecycleElement() { 
           if (this.lifecycle == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create AuditEventObjectComponent.lifecycle");
             else if (Configuration.doAutoCreate())
-              this.lifecycle = new Enumeration<ObjectLifecycle>(new ObjectLifecycleEnumFactory()); // bb
+              this.lifecycle = new Enumeration<AuditEventObjectLifecycle>(new AuditEventObjectLifecycleEnumFactory()); // bb
           return this.lifecycle;
         }
 
@@ -2809,7 +2834,7 @@ public class AuditEvent extends DomainResource {
         /**
          * @param value {@link #lifecycle} (Identifier for the data life-cycle stage for the participant object.). This is the underlying object with id, value and extensions. The accessor "getLifecycle" gives direct access to the value
          */
-        public AuditEventObjectComponent setLifecycleElement(Enumeration<ObjectLifecycle> value) { 
+        public AuditEventObjectComponent setLifecycleElement(Enumeration<AuditEventObjectLifecycle> value) { 
           this.lifecycle = value;
           return this;
         }
@@ -2817,19 +2842,19 @@ public class AuditEvent extends DomainResource {
         /**
          * @return Identifier for the data life-cycle stage for the participant object.
          */
-        public ObjectLifecycle getLifecycle() { 
+        public AuditEventObjectLifecycle getLifecycle() { 
           return this.lifecycle == null ? null : this.lifecycle.getValue();
         }
 
         /**
          * @param value Identifier for the data life-cycle stage for the participant object.
          */
-        public AuditEventObjectComponent setLifecycle(ObjectLifecycle value) { 
+        public AuditEventObjectComponent setLifecycle(AuditEventObjectLifecycle value) { 
           if (value == null)
             this.lifecycle = null;
           else {
             if (this.lifecycle == null)
-              this.lifecycle = new Enumeration<ObjectLifecycle>(new ObjectLifecycleEnumFactory());
+              this.lifecycle = new Enumeration<AuditEventObjectLifecycle>(new AuditEventObjectLifecycleEnumFactory());
             this.lifecycle.setValue(value);
           }
           return this;
@@ -3115,27 +3140,33 @@ public class AuditEvent extends DomainResource {
   }
 
     @Block()
-    public static class AuditEventObjectDetailComponent extends BackboneElement {
+    public static class AuditEventObjectDetailComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Name of the property.
          */
-        @Child(name ="type", type={StringType.class}, order=1, min=1, max=1)
+        @Child(name = "type", type = {StringType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Name of the property", formalDefinition="Name of the property." )
         protected StringType type;
 
         /**
          * Property value.
          */
-        @Child(name ="value", type={Base64BinaryType.class}, order=2, min=1, max=1)
+        @Child(name = "value", type = {Base64BinaryType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="Property value", formalDefinition="Property value." )
         protected Base64BinaryType value;
 
         private static final long serialVersionUID = 11139504L;
 
+    /*
+     * Constructor
+     */
       public AuditEventObjectDetailComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public AuditEventObjectDetailComponent(StringType type, Base64BinaryType value) {
         super();
         this.type = type;
@@ -3276,37 +3307,43 @@ public class AuditEvent extends DomainResource {
     /**
      * Identifies the name, action type, time, and disposition of the audited event.
      */
-    @Child(name ="event", type={}, order=0, min=1, max=1)
+    @Child(name = "event", type = {}, order=0, min=1, max=1)
     @Description(shortDefinition="What was done", formalDefinition="Identifies the name, action type, time, and disposition of the audited event." )
     protected AuditEventEventComponent event;
 
     /**
      * A person, a hardware device or software process.
      */
-    @Child(name ="participant", type={}, order=1, min=1, max=Child.MAX_UNLIMITED)
+    @Child(name = "participant", type = {}, order=1, min=1, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="A person, a hardware device or software process", formalDefinition="A person, a hardware device or software process." )
     protected List<AuditEventParticipantComponent> participant;
 
     /**
      * Application systems and processes.
      */
-    @Child(name ="source", type={}, order=2, min=1, max=1)
+    @Child(name = "source", type = {}, order=2, min=1, max=1)
     @Description(shortDefinition="Application systems and processes", formalDefinition="Application systems and processes." )
     protected AuditEventSourceComponent source;
 
     /**
      * Specific instances of data or objects that have been accessed.
      */
-    @Child(name ="object", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "object", type = {}, order=3, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Specific instances of data or objects that have been accessed", formalDefinition="Specific instances of data or objects that have been accessed." )
     protected List<AuditEventObjectComponent> object;
 
     private static final long serialVersionUID = -1495151000L;
 
+  /*
+   * Constructor
+   */
     public AuditEvent() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public AuditEvent(AuditEventEventComponent event, AuditEventSourceComponent source) {
       super();
       this.event = event;

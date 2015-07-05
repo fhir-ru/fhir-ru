@@ -46,7 +46,7 @@ strategies for managing this issue are welcome.
 <h2>Documents and narrative-only resources</h2>
 <p>
 Documents are constructed of sections, where a key part of each section is the narrative.  The narratives
-are stitched together to form the overall text of the document.  Many documentsections will correspond neatly to
+are stitched together to form the overall text of the document.  Many document sections will correspond neatly to
 resources that are already defined - <a href="list.html">List</a>, <a href="diagnosticreport.html">DiagnosticReport</a>,
 <a href="familymemberhistory.html">FamilyMemberHistory</a>, etc.  However, oddly enough, alignment with FHIR resources isn't
 always top of mind when clinicians and others design documents and some sections won't neatly align with the
@@ -79,7 +79,7 @@ There are several good practices to follow when making use of the Basic resource
   specification can be addressed</li>
   
   <li>If it is necessary to make use of the Basic resource, try to use one of the HL7-defined codes for
-  resource type or submit your requirement for a new type for inclusion in the HL7 vocabulary, as this will
+  resource type or submit your requirement for a new type for inclusion in the HL7 vocabulary (using the <a target="_blank" href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemAdd&amp;tracker_id=677">Propose a change</a> link), as this will
   increase the likelihood of interoperability.  Alternate code systems are conformant, but are less likely to
   be recognized or re-used across the healthcare implementation space.</li>
   

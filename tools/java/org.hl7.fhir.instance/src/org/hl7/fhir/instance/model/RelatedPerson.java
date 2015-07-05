@@ -29,133 +29,35 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
  */
 @ResourceDef(name="RelatedPerson", profile="http://hl7.org/fhir/Profile/RelatedPerson")
 public class RelatedPerson extends DomainResource {
 
-    public enum AdministrativeGender {
-        /**
-         * Male
-         */
-        MALE, 
-        /**
-         * Female
-         */
-        FEMALE, 
-        /**
-         * Other
-         */
-        OTHER, 
-        /**
-         * Unknown
-         */
-        UNKNOWN, 
-        /**
-         * added to help the parsers
-         */
-        NULL;
-        public static AdministrativeGender fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("male".equals(codeString))
-          return MALE;
-        if ("female".equals(codeString))
-          return FEMALE;
-        if ("other".equals(codeString))
-          return OTHER;
-        if ("unknown".equals(codeString))
-          return UNKNOWN;
-        throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case MALE: return "male";
-            case FEMALE: return "female";
-            case OTHER: return "other";
-            case UNKNOWN: return "unknown";
-            default: return "?";
-          }
-        }
-        public String getSystem() {
-          switch (this) {
-            case MALE: return "";
-            case FEMALE: return "";
-            case OTHER: return "";
-            case UNKNOWN: return "";
-            default: return "?";
-          }
-        }
-        public String getDefinition() {
-          switch (this) {
-            case MALE: return "Male";
-            case FEMALE: return "Female";
-            case OTHER: return "Other";
-            case UNKNOWN: return "Unknown";
-            default: return "?";
-          }
-        }
-        public String getDisplay() {
-          switch (this) {
-            case MALE: return "Male";
-            case FEMALE: return "Female";
-            case OTHER: return "Other";
-            case UNKNOWN: return "Unknown";
-            default: return "?";
-          }
-        }
-    }
-
-  public static class AdministrativeGenderEnumFactory implements EnumFactory<AdministrativeGender> {
-    public AdministrativeGender fromCode(String codeString) throws IllegalArgumentException {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("male".equals(codeString))
-          return AdministrativeGender.MALE;
-        if ("female".equals(codeString))
-          return AdministrativeGender.FEMALE;
-        if ("other".equals(codeString))
-          return AdministrativeGender.OTHER;
-        if ("unknown".equals(codeString))
-          return AdministrativeGender.UNKNOWN;
-        throw new IllegalArgumentException("Unknown AdministrativeGender code '"+codeString+"'");
-        }
-    public String toCode(AdministrativeGender code) {
-      if (code == AdministrativeGender.MALE)
-        return "male";
-      if (code == AdministrativeGender.FEMALE)
-        return "female";
-      if (code == AdministrativeGender.OTHER)
-        return "other";
-      if (code == AdministrativeGender.UNKNOWN)
-        return "unknown";
-      return "?";
-      }
-    }
-
     /**
      * Identifier for a person within a particular scope.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="A Human identifier for this person", formalDefinition="Identifier for a person within a particular scope." )
     protected List<Identifier> identifier;
 
     /**
      * The patient this person is related to.
      */
-    @Child(name ="patient", type={Patient.class}, order=1, min=1, max=1)
+    @Child(name = "patient", type = {Patient.class}, order=1, min=1, max=1)
     @Description(shortDefinition="The patient this person is related to", formalDefinition="The patient this person is related to." )
     protected Reference patient;
 
@@ -167,58 +69,64 @@ public class RelatedPerson extends DomainResource {
     /**
      * The nature of the relationship between a patient and the related person.
      */
-    @Child(name ="relationship", type={CodeableConcept.class}, order=2, min=0, max=1)
+    @Child(name = "relationship", type = {CodeableConcept.class}, order=2, min=0, max=1)
     @Description(shortDefinition="The nature of the relationship", formalDefinition="The nature of the relationship between a patient and the related person." )
     protected CodeableConcept relationship;
 
     /**
      * A name associated with the person.
      */
-    @Child(name ="name", type={HumanName.class}, order=3, min=0, max=1)
+    @Child(name = "name", type = {HumanName.class}, order=3, min=0, max=1)
     @Description(shortDefinition="A name associated with the person", formalDefinition="A name associated with the person." )
     protected HumanName name;
 
     /**
      * A contact detail for the person, e.g. a telephone number or an email address.
      */
-    @Child(name ="telecom", type={ContactPoint.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "telecom", type = {ContactPoint.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="A contact detail for the person", formalDefinition="A contact detail for the person, e.g. a telephone number or an email address." )
     protected List<ContactPoint> telecom;
 
     /**
      * Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.
      */
-    @Child(name ="gender", type={CodeType.class}, order=5, min=0, max=1)
+    @Child(name = "gender", type = {CodeType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="male | female | other | unknown", formalDefinition="Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes." )
     protected Enumeration<AdministrativeGender> gender;
 
     /**
      * Address where the related person can be contacted or visited.
      */
-    @Child(name ="address", type={Address.class}, order=6, min=0, max=1)
+    @Child(name = "address", type = {Address.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Address where the related person can be contacted or visited", formalDefinition="Address where the related person can be contacted or visited." )
     protected Address address;
 
     /**
      * Image of the person.
      */
-    @Child(name ="photo", type={Attachment.class}, order=7, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "photo", type = {Attachment.class}, order=7, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Image of the person", formalDefinition="Image of the person." )
     protected List<Attachment> photo;
 
     /**
      * The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.
      */
-    @Child(name ="period", type={Period.class}, order=8, min=0, max=1)
+    @Child(name = "period", type = {Period.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Period of time that this relationship is considered valid", formalDefinition="The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown." )
     protected Period period;
 
     private static final long serialVersionUID = 1871047258L;
 
+  /*
+   * Constructor
+   */
     public RelatedPerson() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public RelatedPerson(Reference patient) {
       super();
       this.patient = patient;
@@ -614,18 +522,28 @@ public class RelatedPerson extends DomainResource {
 
   @SearchParamDefinition(name="patient", path="RelatedPerson.patient", description="The patient this person is related to", type="reference" )
   public static final String SP_PATIENT = "patient";
+  @SearchParamDefinition(name="address-state", path="RelatedPerson.address.state", description="A state specified in an address", type="string" )
+  public static final String SP_ADDRESSSTATE = "address-state";
+  @SearchParamDefinition(name="address-city", path="RelatedPerson.address.city", description="A city specified in an address", type="string" )
+  public static final String SP_ADDRESSCITY = "address-city";
   @SearchParamDefinition(name="phonetic", path="", description="A portion of name using some kind of phonetic matching algorithm", type="string" )
   public static final String SP_PHONETIC = "phonetic";
   @SearchParamDefinition(name="address", path="RelatedPerson.address", description="An address in any kind of address/part", type="string" )
   public static final String SP_ADDRESS = "address";
+  @SearchParamDefinition(name="address-use", path="RelatedPerson.address.use", description="A use code specified in an address", type="token" )
+  public static final String SP_ADDRESSUSE = "address-use";
   @SearchParamDefinition(name="name", path="RelatedPerson.name", description="A portion of name in any name part", type="string" )
   public static final String SP_NAME = "name";
+  @SearchParamDefinition(name="address-country", path="RelatedPerson.address.country", description="A country specified in an address", type="string" )
+  public static final String SP_ADDRESSCOUNTRY = "address-country";
   @SearchParamDefinition(name="telecom", path="RelatedPerson.telecom", description="The value in any kind of contact", type="token" )
   public static final String SP_TELECOM = "telecom";
   @SearchParamDefinition(name="gender", path="RelatedPerson.gender", description="Gender of the person", type="token" )
   public static final String SP_GENDER = "gender";
   @SearchParamDefinition(name="identifier", path="RelatedPerson.identifier", description="A patient Identifier", type="token" )
   public static final String SP_IDENTIFIER = "identifier";
+  @SearchParamDefinition(name="address-postalcode", path="RelatedPerson.address.postalCode", description="A postalCode specified in an address", type="string" )
+  public static final String SP_ADDRESSPOSTALCODE = "address-postalcode";
 
 }
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
@@ -38,39 +38,41 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
 import org.hl7.fhir.instance.model.annotations.DatatypeDef;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * Specifies an event that may occur multiple times. Timing schedules are used to record when things are expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds.
  */
 @DatatypeDef(name="Timing")
-public class Timing extends Type {
+public class Timing extends Type implements ICompositeType {
 
     public enum UnitsOfTime {
         /**
-         * second.
+         * null
          */
         S, 
         /**
-         * minute.
+         * null
          */
         MIN, 
         /**
-         * hour.
+         * null
          */
         H, 
         /**
-         * day.
+         * null
          */
         D, 
         /**
-         * week.
+         * null
          */
         WK, 
         /**
-         * month.
+         * null
          */
         MO, 
         /**
-         * year.
+         * null
          */
         A, 
         /**
@@ -122,25 +124,25 @@ public class Timing extends Type {
         }
         public String getDefinition() {
           switch (this) {
-            case S: return "second.";
-            case MIN: return "minute.";
-            case H: return "hour.";
-            case D: return "day.";
-            case WK: return "week.";
-            case MO: return "month.";
-            case A: return "year.";
+            case S: return "";
+            case MIN: return "";
+            case H: return "";
+            case D: return "";
+            case WK: return "";
+            case MO: return "";
+            case A: return "";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case S: return "S";
-            case MIN: return "Min";
-            case H: return "H";
-            case D: return "D";
-            case WK: return "Wk";
-            case MO: return "Mo";
-            case A: return "A";
+            case S: return "s";
+            case MIN: return "min";
+            case H: return "h";
+            case D: return "d";
+            case WK: return "wk";
+            case MO: return "mo";
+            case A: return "a";
             default: return "?";
           }
         }
@@ -188,59 +190,59 @@ public class Timing extends Type {
 
     public enum EventTiming {
         /**
-         * event occurs [duration] before the hour of sleep (or trying to).
+         * null
          */
         HS, 
         /**
-         * event occurs [duration] after waking.
+         * null
          */
         WAKE, 
         /**
-         * event occurs at a meal (from the Latin cibus).
+         * null
          */
         C, 
         /**
-         * event occurs at breakfast (from the Latin cibus matutinus).
+         * null
          */
         CM, 
         /**
-         * event occurs at lunch (from the Latin cibus diurnus).
+         * null
          */
         CD, 
         /**
-         * event occurs at dinner (from the Latin ante cibus vespertinus).
+         * null
          */
         CV, 
         /**
-         * event occurs [duration] before a meal (from the Latin ante cibus).
+         * null
          */
         AC, 
         /**
-         * event occurs [duration] before breakfast (from the Latin ante cibus matutinus).
+         * null
          */
         ACM, 
         /**
-         * event occurs [duration] before lunch (from the Latin ante cibus diurnus).
+         * null
          */
         ACD, 
         /**
-         * event occurs [duration] before dinner (from the Latin ante cibus vespertinus).
+         * null
          */
         ACV, 
         /**
-         * event occurs [duration] after a meal (from the Latin post cibus).
+         * null
          */
         PC, 
         /**
-         * event occurs [duration] after breakfast (from the Latin post cibus matutinus).
+         * null
          */
         PCM, 
         /**
-         * event occurs [duration] after lunch (from the Latin post cibus diurnus).
+         * null
          */
         PCD, 
         /**
-         * event occurs [duration] after dinner (from the Latin post cibus vespertinus).
+         * null
          */
         PCV, 
         /**
@@ -320,39 +322,39 @@ public class Timing extends Type {
         }
         public String getDefinition() {
           switch (this) {
-            case HS: return "event occurs [duration] before the hour of sleep (or trying to).";
-            case WAKE: return "event occurs [duration] after waking.";
-            case C: return "event occurs at a meal (from the Latin cibus).";
-            case CM: return "event occurs at breakfast (from the Latin cibus matutinus).";
-            case CD: return "event occurs at lunch (from the Latin cibus diurnus).";
-            case CV: return "event occurs at dinner (from the Latin ante cibus vespertinus).";
-            case AC: return "event occurs [duration] before a meal (from the Latin ante cibus).";
-            case ACM: return "event occurs [duration] before breakfast (from the Latin ante cibus matutinus).";
-            case ACD: return "event occurs [duration] before lunch (from the Latin ante cibus diurnus).";
-            case ACV: return "event occurs [duration] before dinner (from the Latin ante cibus vespertinus).";
-            case PC: return "event occurs [duration] after a meal (from the Latin post cibus).";
-            case PCM: return "event occurs [duration] after breakfast (from the Latin post cibus matutinus).";
-            case PCD: return "event occurs [duration] after lunch (from the Latin post cibus diurnus).";
-            case PCV: return "event occurs [duration] after dinner (from the Latin post cibus vespertinus).";
+            case HS: return "";
+            case WAKE: return "";
+            case C: return "";
+            case CM: return "";
+            case CD: return "";
+            case CV: return "";
+            case AC: return "";
+            case ACM: return "";
+            case ACD: return "";
+            case ACV: return "";
+            case PC: return "";
+            case PCM: return "";
+            case PCD: return "";
+            case PCV: return "";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case HS: return "H S";
-            case WAKE: return "W A K E";
+            case HS: return "HS";
+            case WAKE: return "WAKE";
             case C: return "C";
-            case CM: return "C M";
-            case CD: return "C D";
-            case CV: return "C V";
-            case AC: return "A C";
-            case ACM: return "A C M";
-            case ACD: return "A C D";
-            case ACV: return "A C V";
-            case PC: return "P C";
-            case PCM: return "P C M";
-            case PCD: return "P C D";
-            case PCV: return "P C V";
+            case CM: return "CM";
+            case CD: return "CD";
+            case CV: return "CV";
+            case AC: return "AC";
+            case ACM: return "ACM";
+            case ACD: return "ACD";
+            case ACV: return "ACV";
+            case PC: return "PC";
+            case PCM: return "PCM";
+            case PCD: return "PCD";
+            case PCV: return "PCV";
             default: return "?";
           }
         }
@@ -426,93 +428,138 @@ public class Timing extends Type {
       }
     }
 
-    public static class TimingRepeatComponent extends Element {
+    @Block()
+    public static class TimingRepeatComponent extends Element implements IBaseDatatypeElement {
         /**
-         * Outer bounds for start and/or end limits of the timing schedule.
+         * Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.
          */
-        @Child(name ="bounds", type={Period.class}, order=1, min=0, max=1)
-        @Description(shortDefinition="Start and/or end limits", formalDefinition="Outer bounds for start and/or end limits of the timing schedule." )
-        protected Period bounds;
+        @Child(name = "bounds", type = {Duration.class, Range.class, Period.class}, order=1, min=0, max=1)
+        @Description(shortDefinition="Length/Range of lengths, or (Start and/or end) limits", formalDefinition="Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule." )
+        protected Type bounds;
 
         /**
          * A total count of the desired number of repetitions.
          */
-        @Child(name ="count", type={IntegerType.class}, order=2, min=0, max=1)
+        @Child(name = "count", type = {IntegerType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Number of times to repeat", formalDefinition="A total count of the desired number of repetitions." )
         protected IntegerType count;
 
         /**
          * How long this thing happens for when it happens.
          */
-        @Child(name ="duration", type={DecimalType.class}, order=3, min=0, max=1)
+        @Child(name = "duration", type = {DecimalType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="How long when it happens", formalDefinition="How long this thing happens for when it happens." )
         protected DecimalType duration;
 
         /**
+         * The upper limit of how long this thing happens for when it happens.
+         */
+        @Child(name = "durationMax", type = {DecimalType.class}, order=4, min=0, max=1)
+        @Description(shortDefinition="How long when it happens (Max)", formalDefinition="The upper limit of how long this thing happens for when it happens." )
+        protected DecimalType durationMax;
+
+        /**
          * The units of time for the duration, in UCUM units.
          */
-        @Child(name ="durationUnits", type={CodeType.class}, order=4, min=0, max=1)
+        @Child(name = "durationUnits", type = {CodeType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="s | min | h | d | wk | mo | a - unit of time (UCUM)", formalDefinition="The units of time for the duration, in UCUM units." )
         protected Enumeration<UnitsOfTime> durationUnits;
 
         /**
          * The number of times to repeat the action within the specified period / period range (i.e. both period and periodMax provided).
          */
-        @Child(name ="frequency", type={IntegerType.class}, order=5, min=0, max=1)
+        @Child(name = "frequency", type = {IntegerType.class}, order=6, min=0, max=1)
         @Description(shortDefinition="Event occurs frequency times per duration", formalDefinition="The number of times to repeat the action within the specified period / period range (i.e. both period and periodMax provided)." )
         protected IntegerType frequency;
 
         /**
          * If present, indicates that the frequency is a range - so repeat between [frequency] and [frequencyMax] times within the period or period range.
          */
-        @Child(name ="frequencyMax", type={IntegerType.class}, order=6, min=0, max=1)
+        @Child(name = "frequencyMax", type = {IntegerType.class}, order=7, min=0, max=1)
         @Description(shortDefinition="Event occurs frequency times per duration", formalDefinition="If present, indicates that the frequency is a range - so repeat between [frequency] and [frequencyMax] times within the period or period range." )
         protected IntegerType frequencyMax;
 
         /**
          * Indicates the duration of time over which repetitions are to occur.  E.g. to express "3 times per day", 3 would be the frequency and "1 day" would be the period.
          */
-        @Child(name ="period", type={DecimalType.class}, order=7, min=0, max=1)
+        @Child(name = "period", type = {DecimalType.class}, order=8, min=0, max=1)
         @Description(shortDefinition="Event occurs frequency times per period", formalDefinition="Indicates the duration of time over which repetitions are to occur.  E.g. to express '3 times per day', 3 would be the frequency and '1 day' would be the period." )
         protected DecimalType period;
 
         /**
          * If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as "do this once every 3-5 days.
          */
-        @Child(name ="periodMax", type={DecimalType.class}, order=8, min=0, max=1)
+        @Child(name = "periodMax", type = {DecimalType.class}, order=9, min=0, max=1)
         @Description(shortDefinition="Upper limit of period (3-4 hours)", formalDefinition="If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as 'do this once every 3-5 days." )
         protected DecimalType periodMax;
 
         /**
          * The units of time for the period in UCUM units.
          */
-        @Child(name ="periodUnits", type={CodeType.class}, order=9, min=0, max=1)
+        @Child(name = "periodUnits", type = {CodeType.class}, order=10, min=0, max=1)
         @Description(shortDefinition="s | min | h | d | wk | mo | a - unit of time (UCUM)", formalDefinition="The units of time for the period in UCUM units." )
         protected Enumeration<UnitsOfTime> periodUnits;
 
         /**
          * A real world event that the occurrence of the event should be tied to.
          */
-        @Child(name ="when", type={CodeType.class}, order=10, min=0, max=1)
+        @Child(name = "when", type = {CodeType.class}, order=11, min=0, max=1)
         @Description(shortDefinition="Regular life events the event is tied to", formalDefinition="A real world event that the occurrence of the event should be tied to." )
         protected Enumeration<EventTiming> when;
 
-        private static final long serialVersionUID = -960490812L;
+        private static final long serialVersionUID = -585686982L;
 
+    /*
+     * Constructor
+     */
       public TimingRepeatComponent() {
         super();
       }
 
         /**
-         * @return {@link #bounds} (Outer bounds for start and/or end limits of the timing schedule.)
+         * @return {@link #bounds} (Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.)
          */
-        public Period getBounds() { 
-          if (this.bounds == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create TimingRepeatComponent.bounds");
-            else if (Configuration.doAutoCreate())
-              this.bounds = new Period(); // cc
+        public Type getBounds() { 
           return this.bounds;
+        }
+
+        /**
+         * @return {@link #bounds} (Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.)
+         */
+        public Duration getBoundsDuration() throws Exception { 
+          if (!(this.bounds instanceof Duration))
+            throw new Exception("Type mismatch: the type Duration was expected, but "+this.bounds.getClass().getName()+" was encountered");
+          return (Duration) this.bounds;
+        }
+
+        public boolean hasBoundsDuration() throws Exception { 
+          return this.bounds instanceof Duration;
+        }
+
+        /**
+         * @return {@link #bounds} (Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.)
+         */
+        public Range getBoundsRange() throws Exception { 
+          if (!(this.bounds instanceof Range))
+            throw new Exception("Type mismatch: the type Range was expected, but "+this.bounds.getClass().getName()+" was encountered");
+          return (Range) this.bounds;
+        }
+
+        public boolean hasBoundsRange() throws Exception { 
+          return this.bounds instanceof Range;
+        }
+
+        /**
+         * @return {@link #bounds} (Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.)
+         */
+        public Period getBoundsPeriod() throws Exception { 
+          if (!(this.bounds instanceof Period))
+            throw new Exception("Type mismatch: the type Period was expected, but "+this.bounds.getClass().getName()+" was encountered");
+          return (Period) this.bounds;
+        }
+
+        public boolean hasBoundsPeriod() throws Exception { 
+          return this.bounds instanceof Period;
         }
 
         public boolean hasBounds() { 
@@ -520,9 +567,9 @@ public class Timing extends Type {
         }
 
         /**
-         * @param value {@link #bounds} (Outer bounds for start and/or end limits of the timing schedule.)
+         * @param value {@link #bounds} (Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.)
          */
-        public TimingRepeatComponent setBounds(Period value) { 
+        public TimingRepeatComponent setBounds(Type value) { 
           this.bounds = value;
           return this;
         }
@@ -617,6 +664,55 @@ public class Timing extends Type {
             if (this.duration == null)
               this.duration = new DecimalType();
             this.duration.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @return {@link #durationMax} (The upper limit of how long this thing happens for when it happens.). This is the underlying object with id, value and extensions. The accessor "getDurationMax" gives direct access to the value
+         */
+        public DecimalType getDurationMaxElement() { 
+          if (this.durationMax == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create TimingRepeatComponent.durationMax");
+            else if (Configuration.doAutoCreate())
+              this.durationMax = new DecimalType(); // bb
+          return this.durationMax;
+        }
+
+        public boolean hasDurationMaxElement() { 
+          return this.durationMax != null && !this.durationMax.isEmpty();
+        }
+
+        public boolean hasDurationMax() { 
+          return this.durationMax != null && !this.durationMax.isEmpty();
+        }
+
+        /**
+         * @param value {@link #durationMax} (The upper limit of how long this thing happens for when it happens.). This is the underlying object with id, value and extensions. The accessor "getDurationMax" gives direct access to the value
+         */
+        public TimingRepeatComponent setDurationMaxElement(DecimalType value) { 
+          this.durationMax = value;
+          return this;
+        }
+
+        /**
+         * @return The upper limit of how long this thing happens for when it happens.
+         */
+        public BigDecimal getDurationMax() { 
+          return this.durationMax == null ? null : this.durationMax.getValue();
+        }
+
+        /**
+         * @param value The upper limit of how long this thing happens for when it happens.
+         */
+        public TimingRepeatComponent setDurationMax(BigDecimal value) { 
+          if (value == null)
+            this.durationMax = null;
+          else {
+            if (this.durationMax == null)
+              this.durationMax = new DecimalType();
+            this.durationMax.setValue(value);
           }
           return this;
         }
@@ -958,9 +1054,10 @@ public class Timing extends Type {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("bounds", "Period", "Outer bounds for start and/or end limits of the timing schedule.", 0, java.lang.Integer.MAX_VALUE, bounds));
+          childrenList.add(new Property("bounds[x]", "Duration|Range|Period", "Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.", 0, java.lang.Integer.MAX_VALUE, bounds));
           childrenList.add(new Property("count", "integer", "A total count of the desired number of repetitions.", 0, java.lang.Integer.MAX_VALUE, count));
           childrenList.add(new Property("duration", "decimal", "How long this thing happens for when it happens.", 0, java.lang.Integer.MAX_VALUE, duration));
+          childrenList.add(new Property("durationMax", "decimal", "The upper limit of how long this thing happens for when it happens.", 0, java.lang.Integer.MAX_VALUE, durationMax));
           childrenList.add(new Property("durationUnits", "code", "The units of time for the duration, in UCUM units.", 0, java.lang.Integer.MAX_VALUE, durationUnits));
           childrenList.add(new Property("frequency", "integer", "The number of times to repeat the action within the specified period / period range (i.e. both period and periodMax provided).", 0, java.lang.Integer.MAX_VALUE, frequency));
           childrenList.add(new Property("frequencyMax", "integer", "If present, indicates that the frequency is a range - so repeat between [frequency] and [frequencyMax] times within the period or period range.", 0, java.lang.Integer.MAX_VALUE, frequencyMax));
@@ -976,6 +1073,7 @@ public class Timing extends Type {
         dst.bounds = bounds == null ? null : bounds.copy();
         dst.count = count == null ? null : count.copy();
         dst.duration = duration == null ? null : duration.copy();
+        dst.durationMax = durationMax == null ? null : durationMax.copy();
         dst.durationUnits = durationUnits == null ? null : durationUnits.copy();
         dst.frequency = frequency == null ? null : frequency.copy();
         dst.frequencyMax = frequencyMax == null ? null : frequencyMax.copy();
@@ -994,9 +1092,10 @@ public class Timing extends Type {
           return false;
         TimingRepeatComponent o = (TimingRepeatComponent) other;
         return compareDeep(bounds, o.bounds, true) && compareDeep(count, o.count, true) && compareDeep(duration, o.duration, true)
-           && compareDeep(durationUnits, o.durationUnits, true) && compareDeep(frequency, o.frequency, true)
-           && compareDeep(frequencyMax, o.frequencyMax, true) && compareDeep(period, o.period, true) && compareDeep(periodMax, o.periodMax, true)
-           && compareDeep(periodUnits, o.periodUnits, true) && compareDeep(when, o.when, true);
+           && compareDeep(durationMax, o.durationMax, true) && compareDeep(durationUnits, o.durationUnits, true)
+           && compareDeep(frequency, o.frequency, true) && compareDeep(frequencyMax, o.frequencyMax, true)
+           && compareDeep(period, o.period, true) && compareDeep(periodMax, o.periodMax, true) && compareDeep(periodUnits, o.periodUnits, true)
+           && compareDeep(when, o.when, true);
       }
 
       @Override
@@ -1006,17 +1105,18 @@ public class Timing extends Type {
         if (!(other instanceof TimingRepeatComponent))
           return false;
         TimingRepeatComponent o = (TimingRepeatComponent) other;
-        return compareValues(count, o.count, true) && compareValues(duration, o.duration, true) && compareValues(durationUnits, o.durationUnits, true)
-           && compareValues(frequency, o.frequency, true) && compareValues(frequencyMax, o.frequencyMax, true)
-           && compareValues(period, o.period, true) && compareValues(periodMax, o.periodMax, true) && compareValues(periodUnits, o.periodUnits, true)
-           && compareValues(when, o.when, true);
+        return compareValues(count, o.count, true) && compareValues(duration, o.duration, true) && compareValues(durationMax, o.durationMax, true)
+           && compareValues(durationUnits, o.durationUnits, true) && compareValues(frequency, o.frequency, true)
+           && compareValues(frequencyMax, o.frequencyMax, true) && compareValues(period, o.period, true) && compareValues(periodMax, o.periodMax, true)
+           && compareValues(periodUnits, o.periodUnits, true) && compareValues(when, o.when, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && (bounds == null || bounds.isEmpty()) && (count == null || count.isEmpty())
-           && (duration == null || duration.isEmpty()) && (durationUnits == null || durationUnits.isEmpty())
-           && (frequency == null || frequency.isEmpty()) && (frequencyMax == null || frequencyMax.isEmpty())
-           && (period == null || period.isEmpty()) && (periodMax == null || periodMax.isEmpty()) && (periodUnits == null || periodUnits.isEmpty())
+           && (duration == null || duration.isEmpty()) && (durationMax == null || durationMax.isEmpty())
+           && (durationUnits == null || durationUnits.isEmpty()) && (frequency == null || frequency.isEmpty())
+           && (frequencyMax == null || frequencyMax.isEmpty()) && (period == null || period.isEmpty())
+           && (periodMax == null || periodMax.isEmpty()) && (periodUnits == null || periodUnits.isEmpty())
            && (when == null || when.isEmpty());
       }
 
@@ -1025,26 +1125,29 @@ public class Timing extends Type {
     /**
      * Identifies specific times when the event occurs.
      */
-    @Child(name ="event", type={DateTimeType.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "event", type = {DateTimeType.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="When the event occurs", formalDefinition="Identifies specific times when the event occurs." )
     protected List<DateTimeType> event;
 
     /**
      * A set of rules that describe when the event should occur.
      */
-    @Child(name ="repeat", type={}, order=1, min=0, max=1)
+    @Child(name = "repeat", type = {}, order=1, min=0, max=1)
     @Description(shortDefinition="When the event is to occur", formalDefinition="A set of rules that describe when the event should occur." )
     protected TimingRepeatComponent repeat;
 
     /**
      * A code for the timing pattern. Some codes such as BID are uniquitious, but many instutions define their own additional codes.
      */
-    @Child(name ="code", type={CodeableConcept.class}, order=2, min=0, max=1)
+    @Child(name = "code", type = {CodeableConcept.class}, order=2, min=0, max=1)
     @Description(shortDefinition="BID | TID | QID | AM | PM +", formalDefinition="A code for the timing pattern. Some codes such as BID are uniquitious, but many instutions define their own additional codes." )
     protected CodeableConcept code;
 
     private static final long serialVersionUID = 791565112L;
 
+  /*
+   * Constructor
+   */
     public Timing() {
       super();
     }

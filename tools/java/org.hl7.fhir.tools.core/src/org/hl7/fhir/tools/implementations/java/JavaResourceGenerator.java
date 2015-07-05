@@ -84,7 +84,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		return typeNames;
 	}
 
-	public void generate(ElementDefn root, String name, Map<String, BindingSpecification> conceptDomains, JavaGenClass clss, ProfiledType cd, Date genDate, String version, boolean isAbstract, Map<String, SearchParameterDefn> map) throws Exception {
+	public void generate(ElementDefn root, String name, JavaGenClass clss, ProfiledType cd, Date genDate, String version, boolean isAbstract, Map<String, SearchParameterDefn> map) throws Exception {
 		typeNames.clear();
 		typeNameStrings.clear();
 		enums.clear();
@@ -92,6 +92,12 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		enumNames.clear();
 		this.clss = clss;
 
+    boolean isRefType = root.getName().equals("Reference");
+    
+//      ElementDefn elem = root.getElementByName("reference");
+//      elem.getTypes().get(0);
+//    }
+		
 		write("package org.hl7.fhir.instance.model;\r\n");
 		write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
 		write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
@@ -117,47 +123,91 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       if (clss == JavaGenClass.Resource) {
         write("import org.hl7.fhir.instance.model.annotations.ResourceDef;\r\n");
         write("import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;\r\n");
-        write("import org.hl7.fhir.instance.model.annotations.Block;\r\n");
       } 
       write("import org.hl7.fhir.instance.model.annotations.Child;\r\n");
       write("import org.hl7.fhir.instance.model.annotations.Description;\r\n");
     }
-    if (clss != JavaGenClass.Resource) 
+    if (clss != JavaGenClass.Resource) {
       write("import org.hl7.fhir.instance.model.annotations.DatatypeDef;\r\n");
-
+    }
+    write("import org.hl7.fhir.instance.model.annotations.Block;\r\n");
+    write("import org.hl7.fhir.instance.model.api.*;\r\n");
+    
 		jdoc("", root.getDefinition());
 		classname = upFirst(name);
 		if (clss == JavaGenClass.Resource) {
-		  write("@ResourceDef(name=\""+upFirst(name)+"\", profile=\"http://hl7.org/fhir/Profile/"+upFirst(name)+"\")\r\n");
-			write("public "+(isAbstract? "abstract " : "")+"class "+upFirst(name)+" extends "+(Utilities.noString(root.typeCode()) ? "Base" : root.typeCode())+" {\r\n");
+		  
+		  if (!isAbstract) {
+		    write("@ResourceDef(name=\""+upFirst(name).replace("_", "")+"\", profile=\"http://hl7.org/fhir/Profile/"+upFirst(name)+"\")\r\n");
+		  }
+		  
+			String hierarchy;
+      if (Utilities.noString(root.typeCode())) {
+        hierarchy = "BaseResource implements IAnyResource";
+      } else if ("Bundle".equals(upFirst(name))) {
+        hierarchy = root.typeCode() + " implements IBaseBundle";
+      } else if ("Parameters".equals(upFirst(name))) {
+        hierarchy = root.typeCode() + " implements IBaseParameters";
+      } else if ("DomainResource".equals(upFirst(name))) {
+        hierarchy = root.typeCode() + " implements IBaseHasExtensions, IBaseHasModifierExtensions, IDomainResource";        
+      } else if ("Binary".equals(upFirst(name))) {
+        hierarchy = "BaseBinary implements IBaseBinary";        
+      } else {
+        hierarchy = root.typeCode();
+      }
+      write("public "+(isAbstract? "abstract " : "")+"class "+upFirst(name)+" extends "+hierarchy+" ");
     } else if (clss == JavaGenClass.Structure && upFirst(name).equals("Element")) {
-      write("public abstract class "+upFirst(name)+" extends Base {\r\n");
+      write("public abstract class "+upFirst(name)+" extends Base implements IBaseHasExtensions ");
       isAbstract = true;
 		} else if (clss == JavaGenClass.Structure) {
       write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
-      isAbstract = upFirst(name).equals("BackboneElement");
-      write("public "+(isAbstract ? "abstract " : "")+"class "+upFirst(name)+" extends Element {\r\n");
+      boolean isBackboneElement = upFirst(name).equals("BackboneElement");
+      isAbstract = isBackboneElement;
+      String absractKeyword = isAbstract ? "abstract " : "";
+      String hierarchyKeyword;
+      if (name.equals("Extension")) {
+        hierarchyKeyword = "BaseExtension implements IBaseExtension<Extension, Type>, IBaseHasExtensions";
+      } else if (name.equals("Narrative")) {
+        hierarchyKeyword = "BaseNarrative implements INarrative";
+      } else {
+        hierarchyKeyword = "Element";
+      }
+      write("public " + absractKeyword + "class " + upFirst(name) + " extends " + hierarchyKeyword+" ");
+      if (isBackboneElement) {
+        write("implements IBaseBackboneElement ");
+      }
 		} else if (clss == JavaGenClass.BackboneElement) {
       write("@Block()\r\n");
-      write("public class "+upFirst(name)+" extends BackboneElement {\r\n");
+      write("public class "+upFirst(name)+" extends BackboneElement ");
     } else if (clss == JavaGenClass.Constraint) {
       write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
-			write("public class "+upFirst(cd.getName())+" extends "+upFirst(root.getName())+" {\r\n");
+			write("public class "+upFirst(cd.getName())+" extends "+upFirst(root.getName())+" ");
     } else if (root.getName().equals("Quantity")) {
 		  write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
-			write("public class "+upFirst(name)+" extends Type {\r\n");
+			write("public class "+upFirst(name)+" extends Type implements ICompositeType ");
+    } else if (root.getName().equals("Coding")) {
+      write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
+      write("public class "+upFirst(name)+" extends Type implements IBaseCoding, ICompositeType ");
+    } else if (root.getName().equals("Meta")) {
+      write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
+      write("public class "+upFirst(name)+" extends Type implements IBaseMetaType ");
+    } else if (root.getName().equals("Reference")) {
+      write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
+      write("public class "+upFirst(name)+" extends BaseReference implements IBaseReference, ICompositeType ");
 		} else {
       write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
-			write("public class "+upFirst(name)+" extends Type {\r\n");
+			write("public class "+upFirst(name)+" extends Type implements ICompositeType ");
 		}
+		
+		write("{\r\n");
 		write("\r\n");
 
 		if (clss != JavaGenClass.Constraint) {
 			for (ElementDefn e : root.getElements()) {
-  			scanNestedTypes(root, root.getName(), e, conceptDomains);
+  			scanNestedTypes(root, root.getName(), e);
 			}
 			for (ElementDefn e : enums) {
-				generateEnum(e, conceptDomains);
+				generateEnum(e);
 			}
 			for (ElementDefn e : strucs) {
 				generateType(e, clss == JavaGenClass.Resource ? JavaGenClass.BackboneElement : JavaGenClass.Structure);
@@ -180,9 +230,14 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	    if (mandatory.size() > 0)
 	      generateConstructor(upFirst(name), mandatory, "  ");
 
+	    generateTypeSpecificConstructors(isRefType);
+	    
 			for (ElementDefn e : root.getElements()) {
   			generateAccessors(root, e, "    ", upFirst(name));
 			}
+			
+			generateTypeSpecificAccessors(name, clss);
+			
 			generateChildrenRegister(root, "    ", isAbstract);
 		} else
       write("    private static final long serialVersionUID = "+inheritedHash+"L;\r\n\r\n");
@@ -200,6 +255,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		} else if (isAbstract && Utilities.noString(root.typeCode()) && clss != JavaGenClass.Structure) {
 		  write("  public abstract ResourceType getResourceType();\r\n");
 		}
+		
+		
 		if (map != null) {
 		  for (SearchParameterDefn sp : map.values()) {
 		    write("  @SearchParamDefinition(name=\""+sp.getCode()+"\", path=\""+pipeSeparate(sp.getPaths())+"\", description=\""+Utilities.escapeJava(sp.getDescription())+"\", type=\""+sp.getType().toString()+"\" )\r\n");
@@ -211,6 +268,95 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		write("\r\n");
 		flush();
 	}
+
+  private void generateTypeSpecificConstructors(boolean isRefType) throws IOException {
+    //@formatter:off
+    if (isRefType) {
+      write("    /**\r\n" + 
+          "     * Constructor\r\n" + 
+          "     * \r\n" + 
+          "     * @param theReference The given reference string (e.g. \"Patient/123\" or \"http://example.com/Patient/123\")\r\n" + 
+          "     */\r\n" + 
+          "    public Reference(String theReference) {\r\n" + 
+          "      super(theReference);\r\n" + 
+          "    }\r\n" + 
+          "\r\n" + 
+          "    /**\r\n" + 
+          "     * Constructor\r\n" + 
+          "     * \r\n" + 
+          "     * @param theReference The given reference as an IdType (e.g. \"Patient/123\" or \"http://example.com/Patient/123\")\r\n" + 
+          "     */\r\n" + 
+          "    public Reference(IdType theReference) {\r\n" + 
+          "      super(theReference);\r\n" + 
+          "    }\r\n" + 
+          "\r\n" + 
+          "    /**\r\n" + 
+          "     * Constructor\r\n" + 
+          "     * \r\n" + 
+          "     * @param theResource The resource represented by this reference\r\n" + 
+          "     */\r\n" + 
+          "    public Reference(IAnyResource theResource) {\r\n" + 
+          "      super(theResource);\r\n" + 
+          "    }\r\n" + 
+          "\r\n");
+    }
+    //@formatter:on
+  }
+
+  private void generateTypeSpecificAccessors(String name, JavaGenClass clss) throws IOException {
+    if (clss == JavaGenClass.Resource && upFirst(name).equals("Bundle")) {
+      //@formatter:off
+		  write(" /**\r\n" + 
+		      "   * Returns the {@link #getLink() link} which matches a given {@link BundleLinkComponent#getRelation() relation}. \r\n" + 
+		      "   * If no link is found which matches the given relation, returns <code>null</code>. If more than one\r\n" + 
+		      "   * link is found which matches the given relation, returns the first matching BundleLinkComponent.\r\n" + 
+		      "   * \r\n" + 
+		      "   * @param theRelation\r\n" + 
+		      "   *            The relation, such as \"next\", or \"self. See the constants such as {@link IBaseBundle#LINK_SELF} and {@link IBaseBundle#LINK_NEXT}.\r\n" + 
+		      "   * @return Returns a matching BundleLinkComponent, or <code>null</code>\r\n" + 
+		      "   * @see IBaseBundle#LINK_NEXT\r\n" + 
+		      "   * @see IBaseBundle#LINK_PREV\r\n" + 
+		      "   * @see IBaseBundle#LINK_SELF\r\n" + 
+		      "   */\r\n" + 
+		      "  public BundleLinkComponent getLink(String theRelation) {\r\n" + 
+		      "    org.apache.commons.lang3.Validate.notBlank(theRelation, \"theRelation may not be null or empty\");\r\n" + 
+		      "    for (BundleLinkComponent next : getLink()) {\r\n" + 
+		      "      if (theRelation.equals(next.getRelation())) {\r\n" + 
+		      "        return next;\r\n" + 
+		      "      }\r\n" + 
+		      "    }\r\n" + 
+		      "    return null;\r\n" + 
+		      "  }\r\n" + 
+		      "\r\n" + 
+		      "  /**\r\n" + 
+		      "   * Returns the {@link #getLink() link} which matches a given {@link BundleLinkComponent#getRelation() relation}. \r\n" + 
+		      "   * If no link is found which matches the given relation, creates a new BundleLinkComponent with the\r\n" + 
+		      "   * given relation and adds it to this Bundle. If more than one\r\n" + 
+		      "   * link is found which matches the given relation, returns the first matching BundleLinkComponent.\r\n" + 
+		      "   * \r\n" + 
+		      "   * @param theRelation\r\n" + 
+		      "   *            The relation, such as \"next\", or \"self. See the constants such as {@link IBaseBundle#LINK_SELF} and {@link IBaseBundle#LINK_NEXT}.\r\n" + 
+		      "   * @return Returns a matching BundleLinkComponent, or <code>null</code>\r\n" + 
+		      "   * @see IBaseBundle#LINK_NEXT\r\n" + 
+		      "   * @see IBaseBundle#LINK_PREV\r\n" + 
+		      "   * @see IBaseBundle#LINK_SELF\r\n" + 
+		      "   */\r\n" + 
+		      "  public BundleLinkComponent getLinkOrCreate(String theRelation) {\r\n" + 
+		      "    org.apache.commons.lang3.Validate.notBlank(theRelation, \"theRelation may not be null or empty\");\r\n" + 
+		      "    for (BundleLinkComponent next : getLink()) {\r\n" + 
+		      "      if (theRelation.equals(next.getRelation())) {\r\n" + 
+		      "        return next;\r\n" + 
+		      "      }\r\n" + 
+		      "    }\r\n" + 
+		      "    BundleLinkComponent retVal = new BundleLinkComponent();\r\n" + 
+		      "    retVal.setRelation(theRelation);\r\n" + 
+		      "    getLink().add(retVal);\r\n" + 
+		      "    return retVal;\r\n" + 
+		      "  }\r\n" + 
+		      "");
+		  //@formatter:on
+		}
+  }
 
   private String clean(String code) {
     StringBuilder b = new StringBuilder();
@@ -251,6 +397,9 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
   }
 
   private void generateConstructor(String className, List<ElementDefn> params, String indent) throws IOException {
+    write(indent+"/*\r\n");
+    write(indent+" * Constructor\r\n");
+    write(indent+" */\r\n");
     write(indent+"  public "+className+"(");
     boolean first = true;
     for (ElementDefn e : params) {
@@ -302,7 +451,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
   private boolean hasSharedEnums(ElementDefn root) {
     for (ElementDefn e : root.getElements()) {
-      if (isSharedEnum(e.getBindingName()) || hasSharedEnums(e))
+      if ((e.getBinding() != null && e.getBinding().isShared()) || hasSharedEnums(e))
         return true;
     } 
     return false;
@@ -343,18 +492,20 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     return false;
   }
 
-	private void generateEnum(ElementDefn e, Map<String, BindingSpecification> conceptDomains) throws Exception {
+	private void generateEnum(ElementDefn e) throws Exception {
 		String tn = typeNames.get(e);
 		String tns = tn.substring(tn.indexOf("<")+1);
 		tns = tns.substring(0, tns.length()-1);
-		BindingSpecification cd = getConceptDomain(conceptDomains, e.getBindingName());
-		if (isSharedEnum(cd.getName()))
+		BindingSpecification cd = e.getBinding();
+		if (cd.isShared())
 		  return;
-
+		cd.getValueSet().setUserData("java-generated", true);
+		List<DefinedCode> codes = cd.getAllCodes();
+		
 		write("    public enum "+tns+" {\r\n");
-		int l = cd.getCodes().size();
+		int l = codes.size();
 		int i = 0;
-		for (DefinedCode c : cd.getCodes()) {
+		for (DefinedCode c : codes) {
 			i++;
 			String cc = Utilities.camelCase(c.getCode());
       cc = makeConst(cc);
@@ -372,7 +523,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		write("        public static "+tns+" fromCode(String codeString) throws Exception {\r\n");
 		write("            if (codeString == null || \"\".equals(codeString))\r\n");
 		write("                return null;\r\n");
-		for (DefinedCode c : cd.getCodes()) {
+		for (DefinedCode c : codes) {
 			String cc = Utilities.camelCase(c.getCode());
 			cc = makeConst(cc);
 			write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
@@ -383,7 +534,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 		write("        public String toCode() {\r\n");
 		write("          switch (this) {\r\n");
-		for (DefinedCode c : cd.getCodes()) {
+		for (DefinedCode c : codes) {
 			String cc = Utilities.camelCase(c.getCode());
       cc = makeConst(cc);
 			write("            case "+cc+": return \""+c.getCode()+"\";\r\n");
@@ -394,7 +545,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
     write("        public String getSystem() {\r\n");
     write("          switch (this) {\r\n");
-    for (DefinedCode c : cd.getCodes()) {
+    for (DefinedCode c : codes) {
       String cc = Utilities.camelCase(c.getCode());
       cc = makeConst(cc);
       write("            case "+cc+": return \""+c.getSystem()+"\";\r\n");
@@ -405,7 +556,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
     write("        public String getDefinition() {\r\n");
     write("          switch (this) {\r\n");
-    for (DefinedCode c : cd.getCodes()) {
+    for (DefinedCode c : codes) {
       String cc = Utilities.camelCase(c.getCode());
       cc = makeConst(cc);
       write("            case "+cc+": return \""+Utilities.escapeJava(c.getDefinition())+"\";\r\n");
@@ -416,7 +567,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
     write("        public String getDisplay() {\r\n");
     write("          switch (this) {\r\n");
-    for (DefinedCode c : cd.getCodes()) {
+    for (DefinedCode c : codes) {
       String cc = Utilities.camelCase(c.getCode());
       cc = makeConst(cc);
       write("            case "+cc+": return \""+Utilities.escapeJava(Utilities.noString(c.getDisplay()) ? c.getCode() : c.getDisplay())+"\";\r\n");
@@ -435,7 +586,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		write("      if (codeString == null || \"\".equals(codeString))\r\n");
     write("            if (codeString == null || \"\".equals(codeString))\r\n");
     write("                return null;\r\n");
-    for (DefinedCode c : cd.getCodes()) {
+    for (DefinedCode c : codes) {
       String cc = Utilities.camelCase(c.getCode());
       cc = makeConst(cc);
       write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
@@ -444,7 +595,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write("        throw new IllegalArgumentException(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
     write("        }\r\n"); 
     write("    public String toCode("+tns+" code) {\r\n");
-    for (DefinedCode c : cd.getCodes()) {
+    for (DefinedCode c : codes) {
       String cc = Utilities.camelCase(c.getCode());
       cc = makeConst(cc);
       write("      if (code == "+tns+"."+cc+")\r\n        return \""+c.getCode()+"\";\r\n");
@@ -455,44 +606,16 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write("\r\n");
 	}
 
-  private String makeConst(String cc) {
-    if (Utilities.IsInteger(cc))
-      cc = "_"+cc;
-    if (cc.equals("<"))
-    	cc = "less_Than";
-    else if (cc.equals("<="))
-    	cc = "less_Or_Equal";
-    else if (cc.equals(">"))
-    	cc = "greater_Than";
-    else if (cc.equals(">="))
-    	cc = "greater_Or_Equal";
-    else if (cc.equals("="))
-      cc = "equal";
-    else if (allPlusMinus(cc))
-      cc = cc.replace("-", "Minus").replace("+", "Plus");
-    else
-    	cc = cc.replace("-", "").replace("+", "");
-    cc = cc.toUpperCase();
-    if (GeneratorUtils.isJavaReservedWord(cc))
-      cc = cc + "_";
-    return cc;
-  }
-
-	private boolean allPlusMinus(String cc) {
-	  for (char c : cc.toCharArray())
-	    if (!(c == '-' || c == '+'))
-	      return false;
-    return true;
-  }
-
   private void generateType(ElementDefn e, JavaGenClass clss) throws Exception {
 		String tn = typeNames.get(e);
 
 		if (clss == JavaGenClass.BackboneElement) {
       write("    @Block()\r\n");
-	    write("    public static class "+tn+" extends BackboneElement {\r\n");
-		} else
-		  write("    public static class "+tn+" extends Element {\r\n");
+	    write("    public static class "+tn+" extends BackboneElement implements IBaseBackboneElement {\r\n");
+		} else {
+      write("    @Block()\r\n");
+		  write("    public static class "+tn+" extends Element implements IBaseDatatypeElement {\r\n");
+		}
 		allfields = "";
 		int i = 1;
 		for (ElementDefn c : e.getElements()) {
@@ -651,12 +774,12 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write("      }\r\n\r\n");
   }
 
-  private void scanNestedTypes(ElementDefn root, String path, ElementDefn e, Map<String, BindingSpecification> conceptDomains) throws Exception {
+  private void scanNestedTypes(ElementDefn root, String path, ElementDefn e) throws Exception {
 		String tn = null;
 		if (e.typeCode().equals("code") && e.hasBinding()) {
-			BindingSpecification cd = getConceptDomain(conceptDomains, e.getBindingName());
-			if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
-				tn = getCodeListType(cd.getReference().substring(1));
+			BindingSpecification cd = e.getBinding();
+			if (cd != null && cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
+				tn = getCodeListType(cd.getValueSet().getName());
 				if (!enumNames.contains(tn)) {
 					enumNames.add(tn);
 					enums.add(e);
@@ -724,7 +847,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 					typeNames.put(e,  tn);
 					typeNameStrings.add(tn);
 					for (ElementDefn c : e.getElements()) {
-						scanNestedTypes(root, path+getTitle(e.getName()), c, conceptDomains);
+						scanNestedTypes(root, path+getTitle(e.getName()), c);
 					}
 				}
 			}
@@ -767,12 +890,6 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		return b.toString();
 	}
 
-	private BindingSpecification getConceptDomain(Map<String, BindingSpecification> conceptDomains, String conceptDomain) {
-		for (BindingSpecification cd : conceptDomains.values())
-			if (cd.getName().equals(conceptDomain))
-				return cd;
-		return null;
-	}
 
 	private void generateField(ElementDefn root, ElementDefn e, String indent, int order) throws Exception {
 		String tn = typeNames.get(e);
@@ -817,7 +934,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	}
 
   private void writeAttributeAnnotation(String indent, ElementDefn e, int order, String tn) throws Exception {
-    write(indent+"@Child(name =\""+getElementName(e.getName(), true)+"\", type={"+getTypeClassList(e, tn)+
+    write(indent+"@Child(name = \""+getElementName(e.getName(), true)+"\", type = {"+getTypeClassList(e, tn)+
         "}, order="+Integer.toString(order)+", min="+e.getMinCardinality().toString()+", max="+(e.getMaxCardinality() == Integer.MAX_VALUE ?  "Child.MAX_UNLIMITED" : e.getMaxCardinality().toString())+")\r\n");
     write(indent+"@Description(shortDefinition=\""+Utilities.escapeJava(e.getShortDefn())+"\", formalDefinition=\""+Utilities.escapeJava(e.getDefinition())+"\" )\r\n");
   }
@@ -895,6 +1012,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	private void generateAccessors(ElementDefn root, ElementDefn e, String indent, String className) throws Exception {
 		String tn = typeNames.get(e);
 
+		boolean isReferenceRefField = (root.getName().equals("Reference") && e.getName().equals("reference"));
+		
 		if (e.unbounded()) {
 		  jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
 			if (tn == null && e.usesCompositeType()) {
@@ -1009,15 +1128,21 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		} else {
       if (isJavaPrimitive(e)) {
 	      jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+"). This is the underlying object with id, value and extensions. The accessor \"get"+getTitle(getElementName(e.getName(), false))+"\" gives direct access to the value");
-	      write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"Element() { \r\n");
-        write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-        write(indent+"    if (Configuration.errorOnAutoCreate())\r\n");
-        write(indent+"      throw new Error(\"Attempt to auto-create "+className+"."+getElementName(e.getName(), true)+"\");\r\n");
-        write(indent+"    else if (Configuration.doAutoCreate())\r\n");
-        write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+"); // bb\r\n");
-	      write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
-	      write(indent+"}\r\n");
-	      write("\r\n");
+        if (!isReferenceRefField) {
+          /*
+           * Don't generate Reference#getReferenceElement because this method is defined in
+           * BaseReference.java
+           */
+  	      write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"Element() { \r\n");
+          write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+          write(indent+"    if (Configuration.errorOnAutoCreate())\r\n");
+          write(indent+"      throw new Error(\"Attempt to auto-create "+className+"."+getElementName(e.getName(), true)+"\");\r\n");
+          write(indent+"    else if (Configuration.doAutoCreate())\r\n");
+          write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+"); // bb\r\n");
+  	      write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
+  	      write(indent+"}\r\n");
+  	      write("\r\n");
+        }
         write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"Element() { \r\n");
         write(indent+"  return this."+getElementName(e.getName(), true)+" != null && !this."+getElementName(e.getName(), true)+".isEmpty();\r\n");
         write(indent+"}\r\n");
@@ -1085,6 +1210,10 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		        write(indent+"  return ("+ttn+") this."+getElementName(e.getName(), true)+";\r\n");
 		        write(indent+"}\r\n");
 		        write("\r\n");
+            write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+ttn+"() throws Exception { \r\n");
+            write(indent+"  return this."+getElementName(e.getName(), true)+" instanceof "+ttn+";\r\n");
+            write(indent+"}\r\n");
+            write("\r\n");
 			    }
 			  }
         write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"() { \r\n");

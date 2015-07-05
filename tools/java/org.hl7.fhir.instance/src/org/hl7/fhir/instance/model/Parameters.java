@@ -29,58 +29,65 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * This special resource type is used to represent [operation](operations.html] request and response. It has no other use, and there is no RESTful end=point associated with it.
  */
 @ResourceDef(name="Parameters", profile="http://hl7.org/fhir/Profile/Parameters")
-public class Parameters extends Resource {
+public class Parameters extends Resource implements IBaseParameters {
 
     @Block()
-    public static class ParametersParameterComponent extends BackboneElement {
+    public static class ParametersParameterComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The name of the parameter (reference to the operation definition).
          */
-        @Child(name ="name", type={StringType.class}, order=1, min=1, max=1)
+        @Child(name = "name", type = {StringType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Name from the definition", formalDefinition="The name of the parameter (reference to the operation definition)." )
         protected StringType name;
 
         /**
          * If the parameter is a data type.
          */
-        @Child(name ="value", type={}, order=2, min=0, max=1)
+        @Child(name = "value", type = {}, order=2, min=0, max=1)
         @Description(shortDefinition="If parameter is a data type", formalDefinition="If the parameter is a data type." )
         protected org.hl7.fhir.instance.model.Type value;
 
         /**
          * If the parameter is a whole resource.
          */
-        @Child(name ="resource", type={Resource.class}, order=3, min=0, max=1)
+        @Child(name = "resource", type = {Resource.class}, order=3, min=0, max=1)
         @Description(shortDefinition="If parameter is a whole resource", formalDefinition="If the parameter is a whole resource." )
         protected Resource resource;
 
         /**
          * A named part of a parameter. In many implementation context, a set of named parts is known as a "Tuple".
          */
-        @Child(name ="part", type={}, order=4, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "part", type = {ParametersParameterComponent.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Named part of a parameter (e.g. Tuple)", formalDefinition="A named part of a parameter. In many implementation context, a set of named parts is known as a 'Tuple'." )
-        protected List<ParametersParameterPartComponent> part;
+        protected List<ParametersParameterComponent> part;
 
-        private static final long serialVersionUID = 2101270343L;
+        private static final long serialVersionUID = 1129239796L;
 
+    /*
+     * Constructor
+     */
       public ParametersParameterComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public ParametersParameterComponent(StringType name) {
         super();
         this.name = name;
@@ -172,16 +179,16 @@ public class Parameters extends Resource {
         /**
          * @return {@link #part} (A named part of a parameter. In many implementation context, a set of named parts is known as a "Tuple".)
          */
-        public List<ParametersParameterPartComponent> getPart() { 
+        public List<ParametersParameterComponent> getPart() { 
           if (this.part == null)
-            this.part = new ArrayList<ParametersParameterPartComponent>();
+            this.part = new ArrayList<ParametersParameterComponent>();
           return this.part;
         }
 
         public boolean hasPart() { 
           if (this.part == null)
             return false;
-          for (ParametersParameterPartComponent item : this.part)
+          for (ParametersParameterComponent item : this.part)
             if (!item.isEmpty())
               return true;
           return false;
@@ -191,20 +198,20 @@ public class Parameters extends Resource {
          * @return {@link #part} (A named part of a parameter. In many implementation context, a set of named parts is known as a "Tuple".)
          */
     // syntactic sugar
-        public ParametersParameterPartComponent addPart() { //3
-          ParametersParameterPartComponent t = new ParametersParameterPartComponent();
+        public ParametersParameterComponent addPart() { //3
+          ParametersParameterComponent t = new ParametersParameterComponent();
           if (this.part == null)
-            this.part = new ArrayList<ParametersParameterPartComponent>();
+            this.part = new ArrayList<ParametersParameterComponent>();
           this.part.add(t);
           return t;
         }
 
     // syntactic sugar
-        public ParametersParameterComponent addPart(ParametersParameterPartComponent t) { //3
+        public ParametersParameterComponent addPart(ParametersParameterComponent t) { //3
           if (t == null)
             return this;
           if (this.part == null)
-            this.part = new ArrayList<ParametersParameterPartComponent>();
+            this.part = new ArrayList<ParametersParameterComponent>();
           this.part.add(t);
           return this;
         }
@@ -214,7 +221,7 @@ public class Parameters extends Resource {
           childrenList.add(new Property("name", "string", "The name of the parameter (reference to the operation definition).", 0, java.lang.Integer.MAX_VALUE, name));
           childrenList.add(new Property("value[x]", "*", "If the parameter is a data type.", 0, java.lang.Integer.MAX_VALUE, value));
           childrenList.add(new Property("resource", "Resource", "If the parameter is a whole resource.", 0, java.lang.Integer.MAX_VALUE, resource));
-          childrenList.add(new Property("part", "", "A named part of a parameter. In many implementation context, a set of named parts is known as a 'Tuple'.", 0, java.lang.Integer.MAX_VALUE, part));
+          childrenList.add(new Property("part", "@Parameters.parameter", "A named part of a parameter. In many implementation context, a set of named parts is known as a 'Tuple'.", 0, java.lang.Integer.MAX_VALUE, part));
         }
 
       public ParametersParameterComponent copy() {
@@ -224,8 +231,8 @@ public class Parameters extends Resource {
         dst.value = value == null ? null : value.copy();
         dst.resource = resource == null ? null : resource.copy();
         if (part != null) {
-          dst.part = new ArrayList<ParametersParameterPartComponent>();
-          for (ParametersParameterPartComponent i : part)
+          dst.part = new ArrayList<ParametersParameterComponent>();
+          for (ParametersParameterComponent i : part)
             dst.part.add(i.copy());
         };
         return dst;
@@ -259,176 +266,18 @@ public class Parameters extends Resource {
 
   }
 
-    @Block()
-    public static class ParametersParameterPartComponent extends BackboneElement {
-        /**
-         * The name of the parameter (reference to the operation definition).
-         */
-        @Child(name ="name", type={StringType.class}, order=1, min=1, max=1)
-        @Description(shortDefinition="Name from the definition", formalDefinition="The name of the parameter (reference to the operation definition)." )
-        protected StringType name;
-
-        /**
-         * The value of the parameter.
-         */
-        @Child(name ="value", type={}, order=2, min=0, max=1)
-        @Description(shortDefinition="Value of the part", formalDefinition="The value of the parameter." )
-        protected org.hl7.fhir.instance.model.Type value;
-
-        /**
-         * If the parameter is a whole resource.
-         */
-        @Child(name ="resource", type={Resource.class}, order=3, min=0, max=1)
-        @Description(shortDefinition="If part is a whole resource", formalDefinition="If the parameter is a whole resource." )
-        protected Resource resource;
-
-        private static final long serialVersionUID = 1120601371L;
-
-      public ParametersParameterPartComponent() {
-        super();
-      }
-
-      public ParametersParameterPartComponent(StringType name) {
-        super();
-        this.name = name;
-      }
-
-        /**
-         * @return {@link #name} (The name of the parameter (reference to the operation definition).). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
-         */
-        public StringType getNameElement() { 
-          if (this.name == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create ParametersParameterPartComponent.name");
-            else if (Configuration.doAutoCreate())
-              this.name = new StringType(); // bb
-          return this.name;
-        }
-
-        public boolean hasNameElement() { 
-          return this.name != null && !this.name.isEmpty();
-        }
-
-        public boolean hasName() { 
-          return this.name != null && !this.name.isEmpty();
-        }
-
-        /**
-         * @param value {@link #name} (The name of the parameter (reference to the operation definition).). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
-         */
-        public ParametersParameterPartComponent setNameElement(StringType value) { 
-          this.name = value;
-          return this;
-        }
-
-        /**
-         * @return The name of the parameter (reference to the operation definition).
-         */
-        public String getName() { 
-          return this.name == null ? null : this.name.getValue();
-        }
-
-        /**
-         * @param value The name of the parameter (reference to the operation definition).
-         */
-        public ParametersParameterPartComponent setName(String value) { 
-            if (this.name == null)
-              this.name = new StringType();
-            this.name.setValue(value);
-          return this;
-        }
-
-        /**
-         * @return {@link #value} (The value of the parameter.)
-         */
-        public org.hl7.fhir.instance.model.Type getValue() { 
-          return this.value;
-        }
-
-        public boolean hasValue() { 
-          return this.value != null && !this.value.isEmpty();
-        }
-
-        /**
-         * @param value {@link #value} (The value of the parameter.)
-         */
-        public ParametersParameterPartComponent setValue(org.hl7.fhir.instance.model.Type value) { 
-          this.value = value;
-          return this;
-        }
-
-        /**
-         * @return {@link #resource} (If the parameter is a whole resource.)
-         */
-        public Resource getResource() { 
-          return this.resource;
-        }
-
-        public boolean hasResource() { 
-          return this.resource != null && !this.resource.isEmpty();
-        }
-
-        /**
-         * @param value {@link #resource} (If the parameter is a whole resource.)
-         */
-        public ParametersParameterPartComponent setResource(Resource value) { 
-          this.resource = value;
-          return this;
-        }
-
-        protected void listChildren(List<Property> childrenList) {
-          super.listChildren(childrenList);
-          childrenList.add(new Property("name", "string", "The name of the parameter (reference to the operation definition).", 0, java.lang.Integer.MAX_VALUE, name));
-          childrenList.add(new Property("value[x]", "*", "The value of the parameter.", 0, java.lang.Integer.MAX_VALUE, value));
-          childrenList.add(new Property("resource", "Resource", "If the parameter is a whole resource.", 0, java.lang.Integer.MAX_VALUE, resource));
-        }
-
-      public ParametersParameterPartComponent copy() {
-        ParametersParameterPartComponent dst = new ParametersParameterPartComponent();
-        copyValues(dst);
-        dst.name = name == null ? null : name.copy();
-        dst.value = value == null ? null : value.copy();
-        dst.resource = resource == null ? null : resource.copy();
-        return dst;
-      }
-
-      @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
-          return false;
-        if (!(other instanceof ParametersParameterPartComponent))
-          return false;
-        ParametersParameterPartComponent o = (ParametersParameterPartComponent) other;
-        return compareDeep(name, o.name, true) && compareDeep(value, o.value, true) && compareDeep(resource, o.resource, true)
-          ;
-      }
-
-      @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
-          return false;
-        if (!(other instanceof ParametersParameterPartComponent))
-          return false;
-        ParametersParameterPartComponent o = (ParametersParameterPartComponent) other;
-        return compareValues(name, o.name, true);
-      }
-
-      public boolean isEmpty() {
-        return super.isEmpty() && (name == null || name.isEmpty()) && (value == null || value.isEmpty())
-           && (resource == null || resource.isEmpty());
-      }
-
-  }
-
     /**
      * A parameter passed to or received from the operation.
      */
-    @Child(name ="parameter", type={}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "parameter", type = {}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Operation Parameter", formalDefinition="A parameter passed to or received from the operation." )
     protected List<ParametersParameterComponent> parameter;
 
     private static final long serialVersionUID = -1495940293L;
 
+  /*
+   * Constructor
+   */
     public Parameters() {
       super();
     }

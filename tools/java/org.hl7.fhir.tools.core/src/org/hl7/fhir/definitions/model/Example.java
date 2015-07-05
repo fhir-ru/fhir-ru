@@ -45,10 +45,11 @@ public class Example {
   private String description;
   private File path;
   private String xhtm;
-  private String json;
   private ExampleType type;
   private boolean registered;
   private Document xml;
+  private String resourceName;
+  
   
   public enum ExampleType {
 	    XmlFile,
@@ -82,6 +83,7 @@ public class Example {
       try {
         DocumentBuilder builder = factory.newDocumentBuilder();
         xml = builder.parse(new CSFileInputStream(path.getAbsolutePath()));
+        resourceName = xml.getDocumentElement().getNodeName();
       } catch (Exception e) {
         throw new Exception("unable to read "+path.getAbsolutePath()+": "+e.getMessage(), e);
       }
@@ -139,12 +141,6 @@ public class Example {
   public Document getXml() {
     return xml;
   }
-  public String getJson() {
-    return json;
-  }
-  public void setJson(String json) {
-    this.json = json;
-  }
 
   public boolean isRegistered() {
     return registered;
@@ -152,6 +148,14 @@ public class Example {
 
   public void setRegistered(boolean registered) {
     this.registered = registered;
+  }
+
+  public String getResourceName() {
+    return resourceName;
+  }
+
+  public void setResourceName(String resourceName) {
+    this.resourceName = resourceName;
   }
   
   

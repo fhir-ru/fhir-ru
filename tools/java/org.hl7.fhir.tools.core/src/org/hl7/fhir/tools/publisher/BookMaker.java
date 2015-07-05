@@ -37,10 +37,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.hl7.fhir.definitions.model.BindingSpecification;
-import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.utilities.Logger.LogMessageType;
+import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.instance.model.valuesets.IssueType;
+import org.hl7.fhir.instance.validation.ValidationMessage;
+import org.hl7.fhir.instance.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
@@ -52,6 +53,7 @@ public class BookMaker {
 
   private PageProcessor page;
   private String target;
+  private List<ValidationMessage> issues;
   
   private Map<String, XhtmlDocument> pages = new HashMap<String, XhtmlDocument>();
 
@@ -61,9 +63,10 @@ public class BookMaker {
   }
 
   
-  public BookMaker(PageProcessor page) {
+  public BookMaker(PageProcessor page, List<ValidationMessage> issues) {
     super();
     this.page = page;
+    this.issues = issues;
   }
 
   private void produceBookForm() throws FileNotFoundException, Exception {
@@ -138,8 +141,7 @@ public class BookMaker {
 					  }
 				  }
 				  if (!found && !new File(page.getFolders().dstDir+href).exists() && !href.equals("qa.html")) {
-				    page.getQa().brokenlink("broken link in "+name+": <a href=\""+href+"\">"+node.allText()+"</a>");
-					  page.log("broken link in "+name+": <a href=\""+href+"\">"+node.allText()+"</a>", LogMessageType.Warning);
+				    issues.add(new ValidationMessage(Source.Publisher, IssueType.INFORMATIONAL, -1, -1, name, "broken link in "+name+": <a href=\""+href+"\">"+node.allText()+"</a>", IssueSeverity.ERROR));
 				  }
 			  }
 		  }
@@ -253,15 +255,16 @@ public class BookMaker {
           if (n.getLink().equals("[codes]")) {
             lvl.l2--;
             List<String> names = new ArrayList<String>();
-            for (BindingSpecification bs : page.getDefinitions().getBindings().values()) {
-              if (bs.getBinding() == Binding.CodeList) 
-                names.add(bs.getReference());
-            }
-            Collections.sort(names);
-            for (String l : names) { 
-              addPageContent(lvl, divS, l.substring(1), page.getDefinitions().getBindingByReference(l).getName());
-//              links.add(l.substring(1));
-            }
+            throw new Error("fix this");
+//            for (BindingSpecification bs : page.getDefinitions().getBindings().values()) {
+//              if (bs.getBinding() == Binding.CodeList) 
+//                names.add(bs.getReference());
+//            }
+//            Collections.sort(names);
+//            for (String l : names) { 
+//              addPageContent(lvl, divS, l.substring(1), page.getDefinitions().getBindingByReference(l).getName());
+////              links.add(l.substring(1));
+//            }
           }
           else {
             addPageContent(lvl, divS, n.getLink(), n.getName());

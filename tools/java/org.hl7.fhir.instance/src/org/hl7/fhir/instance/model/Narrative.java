@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -38,11 +38,13 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
 import org.hl7.fhir.instance.model.annotations.DatatypeDef;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * A human-readable formatted text, including images.
  */
 @DatatypeDef(name="Narrative")
-public class Narrative extends Element {
+public class Narrative extends BaseNarrative implements INarrative {
 
     public enum NarrativeStatus {
         /**
@@ -50,15 +52,15 @@ public class Narrative extends Element {
          */
         GENERATED, 
         /**
-         * The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions.
+         * The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions
          */
         EXTENSIONS, 
         /**
-         * The contents of the narrative contain additional information not found in the structured data.
+         * The contents of the narrative contain additional information not found in the structured data
          */
         ADDITIONAL, 
         /**
-         * the contents of the narrative are some equivalent of "No human-readable text provided for this resource".
+         * the contents of the narrative are some equivalent of "No human-readable text provided for this resource"
          */
         EMPTY, 
         /**
@@ -89,19 +91,19 @@ public class Narrative extends Element {
         }
         public String getSystem() {
           switch (this) {
-            case GENERATED: return "";
-            case EXTENSIONS: return "";
-            case ADDITIONAL: return "";
-            case EMPTY: return "";
+            case GENERATED: return "http://hl7.org/fhir/narrative-status";
+            case EXTENSIONS: return "http://hl7.org/fhir/narrative-status";
+            case ADDITIONAL: return "http://hl7.org/fhir/narrative-status";
+            case EMPTY: return "http://hl7.org/fhir/narrative-status";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
             case GENERATED: return "The contents of the narrative are entirely generated from the structured data in the resource.";
-            case EXTENSIONS: return "The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions.";
-            case ADDITIONAL: return "The contents of the narrative contain additional information not found in the structured data.";
-            case EMPTY: return "the contents of the narrative are some equivalent of 'No human-readable text provided for this resource'.";
+            case EXTENSIONS: return "The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions";
+            case ADDITIONAL: return "The contents of the narrative contain additional information not found in the structured data";
+            case EMPTY: return "the contents of the narrative are some equivalent of 'No human-readable text provided for this resource'";
             default: return "?";
           }
         }
@@ -147,23 +149,29 @@ public class Narrative extends Element {
     /**
      * The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.
      */
-    @Child(name ="status", type={CodeType.class}, order=0, min=1, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=0, min=1, max=1)
     @Description(shortDefinition="generated | extensions | additional | empty", formalDefinition="The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data." )
     protected Enumeration<NarrativeStatus> status;
 
     /**
      * The actual narrative content, a stripped down version of XHTML.
      */
-    @Child(name ="div", type={}, order=1, min=1, max=1)
+    @Child(name = "div", type = {}, order=1, min=1, max=1)
     @Description(shortDefinition="Limited xhtml content", formalDefinition="The actual narrative content, a stripped down version of XHTML." )
     protected XhtmlNode div;
 
     private static final long serialVersionUID = 1463852859L;
 
+  /*
+   * Constructor
+   */
     public Narrative() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public Narrative(Enumeration<NarrativeStatus> status, XhtmlNode div) {
       super();
       this.status = status;

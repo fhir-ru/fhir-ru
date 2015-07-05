@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
@@ -37,9 +37,10 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).
  */
@@ -48,11 +49,11 @@ public class OperationDefinition extends DomainResource {
 
     public enum OperationKind {
         /**
-         * This operation is invoked as an operation.
+         * This operation is invoked as an operation
          */
         OPERATION, 
         /**
-         * This operation is a named query, invoked using the search mechanism.
+         * This operation is a named query, invoked using the search mechanism
          */
         QUERY, 
         /**
@@ -77,15 +78,15 @@ public class OperationDefinition extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case OPERATION: return "";
-            case QUERY: return "";
+            case OPERATION: return "http://hl7.org/fhir/operation-kind";
+            case QUERY: return "http://hl7.org/fhir/operation-kind";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case OPERATION: return "This operation is invoked as an operation.";
-            case QUERY: return "This operation is a named query, invoked using the search mechanism.";
+            case OPERATION: return "This operation is invoked as an operation";
+            case QUERY: return "This operation is a named query, invoked using the search mechanism";
             default: return "?";
           }
         }
@@ -120,11 +121,11 @@ public class OperationDefinition extends DomainResource {
 
     public enum OperationParameterUse {
         /**
-         * This is an input parameter.
+         * This is an input parameter
          */
         IN, 
         /**
-         * This is an output parameter.
+         * This is an output parameter
          */
         OUT, 
         /**
@@ -149,15 +150,15 @@ public class OperationDefinition extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case IN: return "";
-            case OUT: return "";
+            case IN: return "http://hl7.org/fhir/operation-parameter-use";
+            case OUT: return "http://hl7.org/fhir/operation-parameter-use";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case IN: return "This is an input parameter.";
-            case OUT: return "This is an output parameter.";
+            case IN: return "This is an input parameter";
+            case OUT: return "This is an output parameter";
             default: return "?";
           }
         }
@@ -191,23 +192,26 @@ public class OperationDefinition extends DomainResource {
     }
 
     @Block()
-    public static class OperationDefinitionContactComponent extends BackboneElement {
+    public static class OperationDefinitionContactComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The name of an individual to contact regarding the operation definition.
          */
-        @Child(name ="name", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name = "name", type = {StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Name of a individual to contact", formalDefinition="The name of an individual to contact regarding the operation definition." )
         protected StringType name;
 
         /**
          * Contact details for individual (if a name was provided) or the publisher.
          */
-        @Child(name ="telecom", type={ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "telecom", type = {ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Contact details for individual or publisher", formalDefinition="Contact details for individual (if a name was provided) or the publisher." )
         protected List<ContactPoint> telecom;
 
         private static final long serialVersionUID = -1179697803L;
 
+    /*
+     * Constructor
+     */
       public OperationDefinitionContactComponent() {
         super();
       }
@@ -347,53 +351,53 @@ public class OperationDefinition extends DomainResource {
   }
 
     @Block()
-    public static class OperationDefinitionParameterComponent extends BackboneElement {
+    public static class OperationDefinitionParameterComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The name of used to identify the parameter.
          */
-        @Child(name ="name", type={CodeType.class}, order=1, min=1, max=1)
+        @Child(name = "name", type = {CodeType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Name of the parameter", formalDefinition="The name of used to identify the parameter." )
         protected CodeType name;
 
         /**
          * Whether this is an input or an output parameter.
          */
-        @Child(name ="use", type={CodeType.class}, order=2, min=1, max=1)
+        @Child(name = "use", type = {CodeType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="in | out", formalDefinition="Whether this is an input or an output parameter." )
         protected Enumeration<OperationParameterUse> use;
 
         /**
          * The minimum number of times this parameter SHALL appear in the request or response.
          */
-        @Child(name ="min", type={IntegerType.class}, order=3, min=1, max=1)
+        @Child(name = "min", type = {IntegerType.class}, order=3, min=1, max=1)
         @Description(shortDefinition="Minimum Cardinality", formalDefinition="The minimum number of times this parameter SHALL appear in the request or response." )
         protected IntegerType min;
 
         /**
          * The maximum number of times this element is permitted to appear in the request or response.
          */
-        @Child(name ="max", type={StringType.class}, order=4, min=1, max=1)
+        @Child(name = "max", type = {StringType.class}, order=4, min=1, max=1)
         @Description(shortDefinition="Maximum Cardinality (a number or *)", formalDefinition="The maximum number of times this element is permitted to appear in the request or response." )
         protected StringType max;
 
         /**
          * Describes the meaning or use of this parameter.
          */
-        @Child(name ="documentation", type={StringType.class}, order=5, min=0, max=1)
+        @Child(name = "documentation", type = {StringType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="Description of meaning/use", formalDefinition="Describes the meaning or use of this parameter." )
         protected StringType documentation;
 
         /**
          * The type for this parameter.
          */
-        @Child(name ="type", type={CodeType.class}, order=6, min=0, max=1)
+        @Child(name = "type", type = {CodeType.class}, order=6, min=0, max=1)
         @Description(shortDefinition="What type this parameter hs", formalDefinition="The type for this parameter." )
         protected CodeType type;
 
         /**
          * A profile the specifies the rules that this parameter must conform to.
          */
-        @Child(name ="profile", type={StructureDefinition.class}, order=7, min=0, max=1)
+        @Child(name = "profile", type = {StructureDefinition.class}, order=7, min=0, max=1)
         @Description(shortDefinition="Profile on the type", formalDefinition="A profile the specifies the rules that this parameter must conform to." )
         protected Reference profile;
 
@@ -403,18 +407,31 @@ public class OperationDefinition extends DomainResource {
         protected StructureDefinition profileTarget;
 
         /**
+         * Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).
+         */
+        @Child(name = "binding", type = {}, order=8, min=0, max=1)
+        @Description(shortDefinition="ValueSet details if this is coded", formalDefinition="Binds to a value set if this parameter is coded (code, Coding, CodeableConcept)." )
+        protected OperationDefinitionParameterBindingComponent binding;
+
+        /**
          * The parts of a Tuple Parameter.
          */
-        @Child(name ="part", type={}, order=8, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "part", type = {OperationDefinitionParameterComponent.class}, order=9, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Parts of a Tuple Parameter", formalDefinition="The parts of a Tuple Parameter." )
-        protected List<OperationDefinitionParameterPartComponent> part;
+        protected List<OperationDefinitionParameterComponent> part;
 
-        private static final long serialVersionUID = 633191560L;
+        private static final long serialVersionUID = -1514145741L;
 
+    /*
+     * Constructor
+     */
       public OperationDefinitionParameterComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public OperationDefinitionParameterComponent(CodeType name, Enumeration<OperationParameterUse> use, IntegerType min, StringType max) {
         super();
         this.name = name;
@@ -746,18 +763,42 @@ public class OperationDefinition extends DomainResource {
         }
 
         /**
+         * @return {@link #binding} (Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).)
+         */
+        public OperationDefinitionParameterBindingComponent getBinding() { 
+          if (this.binding == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create OperationDefinitionParameterComponent.binding");
+            else if (Configuration.doAutoCreate())
+              this.binding = new OperationDefinitionParameterBindingComponent(); // cc
+          return this.binding;
+        }
+
+        public boolean hasBinding() { 
+          return this.binding != null && !this.binding.isEmpty();
+        }
+
+        /**
+         * @param value {@link #binding} (Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).)
+         */
+        public OperationDefinitionParameterComponent setBinding(OperationDefinitionParameterBindingComponent value) { 
+          this.binding = value;
+          return this;
+        }
+
+        /**
          * @return {@link #part} (The parts of a Tuple Parameter.)
          */
-        public List<OperationDefinitionParameterPartComponent> getPart() { 
+        public List<OperationDefinitionParameterComponent> getPart() { 
           if (this.part == null)
-            this.part = new ArrayList<OperationDefinitionParameterPartComponent>();
+            this.part = new ArrayList<OperationDefinitionParameterComponent>();
           return this.part;
         }
 
         public boolean hasPart() { 
           if (this.part == null)
             return false;
-          for (OperationDefinitionParameterPartComponent item : this.part)
+          for (OperationDefinitionParameterComponent item : this.part)
             if (!item.isEmpty())
               return true;
           return false;
@@ -767,20 +808,20 @@ public class OperationDefinition extends DomainResource {
          * @return {@link #part} (The parts of a Tuple Parameter.)
          */
     // syntactic sugar
-        public OperationDefinitionParameterPartComponent addPart() { //3
-          OperationDefinitionParameterPartComponent t = new OperationDefinitionParameterPartComponent();
+        public OperationDefinitionParameterComponent addPart() { //3
+          OperationDefinitionParameterComponent t = new OperationDefinitionParameterComponent();
           if (this.part == null)
-            this.part = new ArrayList<OperationDefinitionParameterPartComponent>();
+            this.part = new ArrayList<OperationDefinitionParameterComponent>();
           this.part.add(t);
           return t;
         }
 
     // syntactic sugar
-        public OperationDefinitionParameterComponent addPart(OperationDefinitionParameterPartComponent t) { //3
+        public OperationDefinitionParameterComponent addPart(OperationDefinitionParameterComponent t) { //3
           if (t == null)
             return this;
           if (this.part == null)
-            this.part = new ArrayList<OperationDefinitionParameterPartComponent>();
+            this.part = new ArrayList<OperationDefinitionParameterComponent>();
           this.part.add(t);
           return this;
         }
@@ -794,7 +835,8 @@ public class OperationDefinition extends DomainResource {
           childrenList.add(new Property("documentation", "string", "Describes the meaning or use of this parameter.", 0, java.lang.Integer.MAX_VALUE, documentation));
           childrenList.add(new Property("type", "code", "The type for this parameter.", 0, java.lang.Integer.MAX_VALUE, type));
           childrenList.add(new Property("profile", "Reference(StructureDefinition)", "A profile the specifies the rules that this parameter must conform to.", 0, java.lang.Integer.MAX_VALUE, profile));
-          childrenList.add(new Property("part", "", "The parts of a Tuple Parameter.", 0, java.lang.Integer.MAX_VALUE, part));
+          childrenList.add(new Property("binding", "", "Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).", 0, java.lang.Integer.MAX_VALUE, binding));
+          childrenList.add(new Property("part", "@OperationDefinition.parameter", "The parts of a Tuple Parameter.", 0, java.lang.Integer.MAX_VALUE, part));
         }
 
       public OperationDefinitionParameterComponent copy() {
@@ -807,9 +849,10 @@ public class OperationDefinition extends DomainResource {
         dst.documentation = documentation == null ? null : documentation.copy();
         dst.type = type == null ? null : type.copy();
         dst.profile = profile == null ? null : profile.copy();
+        dst.binding = binding == null ? null : binding.copy();
         if (part != null) {
-          dst.part = new ArrayList<OperationDefinitionParameterPartComponent>();
-          for (OperationDefinitionParameterPartComponent i : part)
+          dst.part = new ArrayList<OperationDefinitionParameterComponent>();
+          for (OperationDefinitionParameterComponent i : part)
             dst.part.add(i.copy());
         };
         return dst;
@@ -824,7 +867,8 @@ public class OperationDefinition extends DomainResource {
         OperationDefinitionParameterComponent o = (OperationDefinitionParameterComponent) other;
         return compareDeep(name, o.name, true) && compareDeep(use, o.use, true) && compareDeep(min, o.min, true)
            && compareDeep(max, o.max, true) && compareDeep(documentation, o.documentation, true) && compareDeep(type, o.type, true)
-           && compareDeep(profile, o.profile, true) && compareDeep(part, o.part, true);
+           && compareDeep(profile, o.profile, true) && compareDeep(binding, o.binding, true) && compareDeep(part, o.part, true)
+          ;
       }
 
       @Override
@@ -842,367 +886,147 @@ public class OperationDefinition extends DomainResource {
       public boolean isEmpty() {
         return super.isEmpty() && (name == null || name.isEmpty()) && (use == null || use.isEmpty())
            && (min == null || min.isEmpty()) && (max == null || max.isEmpty()) && (documentation == null || documentation.isEmpty())
-           && (type == null || type.isEmpty()) && (profile == null || profile.isEmpty()) && (part == null || part.isEmpty())
-          ;
+           && (type == null || type.isEmpty()) && (profile == null || profile.isEmpty()) && (binding == null || binding.isEmpty())
+           && (part == null || part.isEmpty());
       }
 
   }
 
     @Block()
-    public static class OperationDefinitionParameterPartComponent extends BackboneElement {
+    public static class OperationDefinitionParameterBindingComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * The name of used to identify the parameter.
+         * Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
          */
-        @Child(name ="name", type={CodeType.class}, order=1, min=1, max=1)
-        @Description(shortDefinition="Name of the parameter", formalDefinition="The name of used to identify the parameter." )
-        protected CodeType name;
-
-        /**
-         * The minimum number of times this parameter SHALL appear in the request or response.
-         */
-        @Child(name ="min", type={UnsignedIntType.class}, order=2, min=1, max=1)
-        @Description(shortDefinition="Minimum Cardinality", formalDefinition="The minimum number of times this parameter SHALL appear in the request or response." )
-        protected UnsignedIntType min;
+        @Child(name = "strength", type = {CodeType.class}, order=1, min=1, max=1)
+        @Description(shortDefinition="required | extensible | preferred | example", formalDefinition="Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances." )
+        protected Enumeration<BindingStrength> strength;
 
         /**
-         * The maximum number of times this element is permitted to appear in the request or response.
+         * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
          */
-        @Child(name ="max", type={StringType.class}, order=3, min=1, max=1)
-        @Description(shortDefinition="Maximum Cardinality (a number or *)", formalDefinition="The maximum number of times this element is permitted to appear in the request or response." )
-        protected StringType max;
+        @Child(name = "valueSet", type = {UriType.class, ValueSet.class}, order=2, min=1, max=1)
+        @Description(shortDefinition="Source of value set", formalDefinition="Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used." )
+        protected Type valueSet;
 
-        /**
-         * Describes the meaning or use of this parameter.
-         */
-        @Child(name ="documentation", type={StringType.class}, order=4, min=0, max=1)
-        @Description(shortDefinition="Description of meaning/use", formalDefinition="Describes the meaning or use of this parameter." )
-        protected StringType documentation;
+        private static final long serialVersionUID = 857140521L;
 
-        /**
-         * The type for this parameter.
-         */
-        @Child(name ="type", type={CodeType.class}, order=5, min=1, max=1)
-        @Description(shortDefinition="What type this parameter hs", formalDefinition="The type for this parameter." )
-        protected CodeType type;
-
-        /**
-         * A profile the specifies the rules that this parameter must conform to.
-         */
-        @Child(name ="profile", type={StructureDefinition.class}, order=6, min=0, max=1)
-        @Description(shortDefinition="Profile on the type", formalDefinition="A profile the specifies the rules that this parameter must conform to." )
-        protected Reference profile;
-
-        /**
-         * The actual object that is the target of the reference (A profile the specifies the rules that this parameter must conform to.)
-         */
-        protected StructureDefinition profileTarget;
-
-        private static final long serialVersionUID = -856151797L;
-
-      public OperationDefinitionParameterPartComponent() {
+    /*
+     * Constructor
+     */
+      public OperationDefinitionParameterBindingComponent() {
         super();
       }
 
-      public OperationDefinitionParameterPartComponent(CodeType name, UnsignedIntType min, StringType max, CodeType type) {
+    /*
+     * Constructor
+     */
+      public OperationDefinitionParameterBindingComponent(Enumeration<BindingStrength> strength, Type valueSet) {
         super();
-        this.name = name;
-        this.min = min;
-        this.max = max;
-        this.type = type;
+        this.strength = strength;
+        this.valueSet = valueSet;
       }
 
         /**
-         * @return {@link #name} (The name of used to identify the parameter.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
+         * @return {@link #strength} (Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.). This is the underlying object with id, value and extensions. The accessor "getStrength" gives direct access to the value
          */
-        public CodeType getNameElement() { 
-          if (this.name == null)
+        public Enumeration<BindingStrength> getStrengthElement() { 
+          if (this.strength == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create OperationDefinitionParameterPartComponent.name");
+              throw new Error("Attempt to auto-create OperationDefinitionParameterBindingComponent.strength");
             else if (Configuration.doAutoCreate())
-              this.name = new CodeType(); // bb
-          return this.name;
+              this.strength = new Enumeration<BindingStrength>(new BindingStrengthEnumFactory()); // bb
+          return this.strength;
         }
 
-        public boolean hasNameElement() { 
-          return this.name != null && !this.name.isEmpty();
+        public boolean hasStrengthElement() { 
+          return this.strength != null && !this.strength.isEmpty();
         }
 
-        public boolean hasName() { 
-          return this.name != null && !this.name.isEmpty();
+        public boolean hasStrength() { 
+          return this.strength != null && !this.strength.isEmpty();
         }
 
         /**
-         * @param value {@link #name} (The name of used to identify the parameter.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
+         * @param value {@link #strength} (Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.). This is the underlying object with id, value and extensions. The accessor "getStrength" gives direct access to the value
          */
-        public OperationDefinitionParameterPartComponent setNameElement(CodeType value) { 
-          this.name = value;
+        public OperationDefinitionParameterBindingComponent setStrengthElement(Enumeration<BindingStrength> value) { 
+          this.strength = value;
           return this;
         }
 
         /**
-         * @return The name of used to identify the parameter.
+         * @return Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
          */
-        public String getName() { 
-          return this.name == null ? null : this.name.getValue();
+        public BindingStrength getStrength() { 
+          return this.strength == null ? null : this.strength.getValue();
         }
 
         /**
-         * @param value The name of used to identify the parameter.
+         * @param value Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
          */
-        public OperationDefinitionParameterPartComponent setName(String value) { 
-            if (this.name == null)
-              this.name = new CodeType();
-            this.name.setValue(value);
+        public OperationDefinitionParameterBindingComponent setStrength(BindingStrength value) { 
+            if (this.strength == null)
+              this.strength = new Enumeration<BindingStrength>(new BindingStrengthEnumFactory());
+            this.strength.setValue(value);
           return this;
         }
 
         /**
-         * @return {@link #min} (The minimum number of times this parameter SHALL appear in the request or response.). This is the underlying object with id, value and extensions. The accessor "getMin" gives direct access to the value
+         * @return {@link #valueSet} (Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.)
          */
-        public UnsignedIntType getMinElement() { 
-          if (this.min == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create OperationDefinitionParameterPartComponent.min");
-            else if (Configuration.doAutoCreate())
-              this.min = new UnsignedIntType(); // bb
-          return this.min;
-        }
-
-        public boolean hasMinElement() { 
-          return this.min != null && !this.min.isEmpty();
-        }
-
-        public boolean hasMin() { 
-          return this.min != null && !this.min.isEmpty();
+        public Type getValueSet() { 
+          return this.valueSet;
         }
 
         /**
-         * @param value {@link #min} (The minimum number of times this parameter SHALL appear in the request or response.). This is the underlying object with id, value and extensions. The accessor "getMin" gives direct access to the value
+         * @return {@link #valueSet} (Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.)
          */
-        public OperationDefinitionParameterPartComponent setMinElement(UnsignedIntType value) { 
-          this.min = value;
-          return this;
+        public UriType getValueSetUriType() throws Exception { 
+          if (!(this.valueSet instanceof UriType))
+            throw new Exception("Type mismatch: the type UriType was expected, but "+this.valueSet.getClass().getName()+" was encountered");
+          return (UriType) this.valueSet;
+        }
+
+        public boolean hasValueSetUriType() throws Exception { 
+          return this.valueSet instanceof UriType;
         }
 
         /**
-         * @return The minimum number of times this parameter SHALL appear in the request or response.
+         * @return {@link #valueSet} (Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.)
          */
-        public int getMin() { 
-          return this.min == null || this.min.isEmpty() ? 0 : this.min.getValue();
+        public Reference getValueSetReference() throws Exception { 
+          if (!(this.valueSet instanceof Reference))
+            throw new Exception("Type mismatch: the type Reference was expected, but "+this.valueSet.getClass().getName()+" was encountered");
+          return (Reference) this.valueSet;
+        }
+
+        public boolean hasValueSetReference() throws Exception { 
+          return this.valueSet instanceof Reference;
+        }
+
+        public boolean hasValueSet() { 
+          return this.valueSet != null && !this.valueSet.isEmpty();
         }
 
         /**
-         * @param value The minimum number of times this parameter SHALL appear in the request or response.
+         * @param value {@link #valueSet} (Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.)
          */
-        public OperationDefinitionParameterPartComponent setMin(int value) { 
-            if (this.min == null)
-              this.min = new UnsignedIntType();
-            this.min.setValue(value);
-          return this;
-        }
-
-        /**
-         * @return {@link #max} (The maximum number of times this element is permitted to appear in the request or response.). This is the underlying object with id, value and extensions. The accessor "getMax" gives direct access to the value
-         */
-        public StringType getMaxElement() { 
-          if (this.max == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create OperationDefinitionParameterPartComponent.max");
-            else if (Configuration.doAutoCreate())
-              this.max = new StringType(); // bb
-          return this.max;
-        }
-
-        public boolean hasMaxElement() { 
-          return this.max != null && !this.max.isEmpty();
-        }
-
-        public boolean hasMax() { 
-          return this.max != null && !this.max.isEmpty();
-        }
-
-        /**
-         * @param value {@link #max} (The maximum number of times this element is permitted to appear in the request or response.). This is the underlying object with id, value and extensions. The accessor "getMax" gives direct access to the value
-         */
-        public OperationDefinitionParameterPartComponent setMaxElement(StringType value) { 
-          this.max = value;
-          return this;
-        }
-
-        /**
-         * @return The maximum number of times this element is permitted to appear in the request or response.
-         */
-        public String getMax() { 
-          return this.max == null ? null : this.max.getValue();
-        }
-
-        /**
-         * @param value The maximum number of times this element is permitted to appear in the request or response.
-         */
-        public OperationDefinitionParameterPartComponent setMax(String value) { 
-            if (this.max == null)
-              this.max = new StringType();
-            this.max.setValue(value);
-          return this;
-        }
-
-        /**
-         * @return {@link #documentation} (Describes the meaning or use of this parameter.). This is the underlying object with id, value and extensions. The accessor "getDocumentation" gives direct access to the value
-         */
-        public StringType getDocumentationElement() { 
-          if (this.documentation == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create OperationDefinitionParameterPartComponent.documentation");
-            else if (Configuration.doAutoCreate())
-              this.documentation = new StringType(); // bb
-          return this.documentation;
-        }
-
-        public boolean hasDocumentationElement() { 
-          return this.documentation != null && !this.documentation.isEmpty();
-        }
-
-        public boolean hasDocumentation() { 
-          return this.documentation != null && !this.documentation.isEmpty();
-        }
-
-        /**
-         * @param value {@link #documentation} (Describes the meaning or use of this parameter.). This is the underlying object with id, value and extensions. The accessor "getDocumentation" gives direct access to the value
-         */
-        public OperationDefinitionParameterPartComponent setDocumentationElement(StringType value) { 
-          this.documentation = value;
-          return this;
-        }
-
-        /**
-         * @return Describes the meaning or use of this parameter.
-         */
-        public String getDocumentation() { 
-          return this.documentation == null ? null : this.documentation.getValue();
-        }
-
-        /**
-         * @param value Describes the meaning or use of this parameter.
-         */
-        public OperationDefinitionParameterPartComponent setDocumentation(String value) { 
-          if (Utilities.noString(value))
-            this.documentation = null;
-          else {
-            if (this.documentation == null)
-              this.documentation = new StringType();
-            this.documentation.setValue(value);
-          }
-          return this;
-        }
-
-        /**
-         * @return {@link #type} (The type for this parameter.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
-         */
-        public CodeType getTypeElement() { 
-          if (this.type == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create OperationDefinitionParameterPartComponent.type");
-            else if (Configuration.doAutoCreate())
-              this.type = new CodeType(); // bb
-          return this.type;
-        }
-
-        public boolean hasTypeElement() { 
-          return this.type != null && !this.type.isEmpty();
-        }
-
-        public boolean hasType() { 
-          return this.type != null && !this.type.isEmpty();
-        }
-
-        /**
-         * @param value {@link #type} (The type for this parameter.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
-         */
-        public OperationDefinitionParameterPartComponent setTypeElement(CodeType value) { 
-          this.type = value;
-          return this;
-        }
-
-        /**
-         * @return The type for this parameter.
-         */
-        public String getType() { 
-          return this.type == null ? null : this.type.getValue();
-        }
-
-        /**
-         * @param value The type for this parameter.
-         */
-        public OperationDefinitionParameterPartComponent setType(String value) { 
-            if (this.type == null)
-              this.type = new CodeType();
-            this.type.setValue(value);
-          return this;
-        }
-
-        /**
-         * @return {@link #profile} (A profile the specifies the rules that this parameter must conform to.)
-         */
-        public Reference getProfile() { 
-          if (this.profile == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create OperationDefinitionParameterPartComponent.profile");
-            else if (Configuration.doAutoCreate())
-              this.profile = new Reference(); // cc
-          return this.profile;
-        }
-
-        public boolean hasProfile() { 
-          return this.profile != null && !this.profile.isEmpty();
-        }
-
-        /**
-         * @param value {@link #profile} (A profile the specifies the rules that this parameter must conform to.)
-         */
-        public OperationDefinitionParameterPartComponent setProfile(Reference value) { 
-          this.profile = value;
-          return this;
-        }
-
-        /**
-         * @return {@link #profile} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A profile the specifies the rules that this parameter must conform to.)
-         */
-        public StructureDefinition getProfileTarget() { 
-          if (this.profileTarget == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create OperationDefinitionParameterPartComponent.profile");
-            else if (Configuration.doAutoCreate())
-              this.profileTarget = new StructureDefinition(); // aa
-          return this.profileTarget;
-        }
-
-        /**
-         * @param value {@link #profile} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A profile the specifies the rules that this parameter must conform to.)
-         */
-        public OperationDefinitionParameterPartComponent setProfileTarget(StructureDefinition value) { 
-          this.profileTarget = value;
+        public OperationDefinitionParameterBindingComponent setValueSet(Type value) { 
+          this.valueSet = value;
           return this;
         }
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("name", "code", "The name of used to identify the parameter.", 0, java.lang.Integer.MAX_VALUE, name));
-          childrenList.add(new Property("min", "unsignedInt", "The minimum number of times this parameter SHALL appear in the request or response.", 0, java.lang.Integer.MAX_VALUE, min));
-          childrenList.add(new Property("max", "string", "The maximum number of times this element is permitted to appear in the request or response.", 0, java.lang.Integer.MAX_VALUE, max));
-          childrenList.add(new Property("documentation", "string", "Describes the meaning or use of this parameter.", 0, java.lang.Integer.MAX_VALUE, documentation));
-          childrenList.add(new Property("type", "code", "The type for this parameter.", 0, java.lang.Integer.MAX_VALUE, type));
-          childrenList.add(new Property("profile", "Reference(StructureDefinition)", "A profile the specifies the rules that this parameter must conform to.", 0, java.lang.Integer.MAX_VALUE, profile));
+          childrenList.add(new Property("strength", "code", "Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.", 0, java.lang.Integer.MAX_VALUE, strength));
+          childrenList.add(new Property("valueSet[x]", "uri|Reference(ValueSet)", "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.", 0, java.lang.Integer.MAX_VALUE, valueSet));
         }
 
-      public OperationDefinitionParameterPartComponent copy() {
-        OperationDefinitionParameterPartComponent dst = new OperationDefinitionParameterPartComponent();
+      public OperationDefinitionParameterBindingComponent copy() {
+        OperationDefinitionParameterBindingComponent dst = new OperationDefinitionParameterBindingComponent();
         copyValues(dst);
-        dst.name = name == null ? null : name.copy();
-        dst.min = min == null ? null : min.copy();
-        dst.max = max == null ? null : max.copy();
-        dst.documentation = documentation == null ? null : documentation.copy();
-        dst.type = type == null ? null : type.copy();
-        dst.profile = profile == null ? null : profile.copy();
+        dst.strength = strength == null ? null : strength.copy();
+        dst.valueSet = valueSet == null ? null : valueSet.copy();
         return dst;
       }
 
@@ -1210,29 +1034,25 @@ public class OperationDefinition extends DomainResource {
       public boolean equalsDeep(Base other) {
         if (!super.equalsDeep(other))
           return false;
-        if (!(other instanceof OperationDefinitionParameterPartComponent))
+        if (!(other instanceof OperationDefinitionParameterBindingComponent))
           return false;
-        OperationDefinitionParameterPartComponent o = (OperationDefinitionParameterPartComponent) other;
-        return compareDeep(name, o.name, true) && compareDeep(min, o.min, true) && compareDeep(max, o.max, true)
-           && compareDeep(documentation, o.documentation, true) && compareDeep(type, o.type, true) && compareDeep(profile, o.profile, true)
-          ;
+        OperationDefinitionParameterBindingComponent o = (OperationDefinitionParameterBindingComponent) other;
+        return compareDeep(strength, o.strength, true) && compareDeep(valueSet, o.valueSet, true);
       }
 
       @Override
       public boolean equalsShallow(Base other) {
         if (!super.equalsShallow(other))
           return false;
-        if (!(other instanceof OperationDefinitionParameterPartComponent))
+        if (!(other instanceof OperationDefinitionParameterBindingComponent))
           return false;
-        OperationDefinitionParameterPartComponent o = (OperationDefinitionParameterPartComponent) other;
-        return compareValues(name, o.name, true) && compareValues(min, o.min, true) && compareValues(max, o.max, true)
-           && compareValues(documentation, o.documentation, true) && compareValues(type, o.type, true);
+        OperationDefinitionParameterBindingComponent o = (OperationDefinitionParameterBindingComponent) other;
+        return compareValues(strength, o.strength, true);
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (name == null || name.isEmpty()) && (min == null || min.isEmpty())
-           && (max == null || max.isEmpty()) && (documentation == null || documentation.isEmpty()) && (type == null || type.isEmpty())
-           && (profile == null || profile.isEmpty());
+        return super.isEmpty() && (strength == null || strength.isEmpty()) && (valueSet == null || valueSet.isEmpty())
+          ;
       }
 
   }
@@ -1240,105 +1060,105 @@ public class OperationDefinition extends DomainResource {
     /**
      * An absolute url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri).
      */
-    @Child(name ="url", type={UriType.class}, order=0, min=0, max=1)
+    @Child(name = "url", type = {UriType.class}, order=0, min=0, max=1)
     @Description(shortDefinition="Logical url to reference this operation definition", formalDefinition="An absolute url that is used to identify this operation definition when it is referenced in a specification, model, design or an instance (should be globally unique uri)." )
     protected UriType url;
 
     /**
      * The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.
      */
-    @Child(name ="version", type={StringType.class}, order=1, min=0, max=1)
+    @Child(name = "version", type = {StringType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Logical id for this version of the operation definition", formalDefinition="The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp." )
     protected StringType version;
 
     /**
      * A free text natural language name identifying the Profile.
      */
-    @Child(name ="name", type={StringType.class}, order=2, min=1, max=1)
+    @Child(name = "name", type = {StringType.class}, order=2, min=1, max=1)
     @Description(shortDefinition="Informal name for this profile", formalDefinition="A free text natural language name identifying the Profile." )
     protected StringType name;
 
     /**
      * The name of the individual or organization that published the operation definition.
      */
-    @Child(name ="publisher", type={StringType.class}, order=3, min=0, max=1)
+    @Child(name = "publisher", type = {StringType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Name of the publisher (Organization or individual)", formalDefinition="The name of the individual or organization that published the operation definition." )
     protected StringType publisher;
 
     /**
      * Contacts to assist a user in finding and communicating with the publisher.
      */
-    @Child(name ="contact", type={}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "contact", type = {}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Contact details of the publisher", formalDefinition="Contacts to assist a user in finding and communicating with the publisher." )
     protected List<OperationDefinitionContactComponent> contact;
 
     /**
      * A free text natural language description of the profile and its use.
      */
-    @Child(name ="description", type={StringType.class}, order=5, min=0, max=1)
+    @Child(name = "description", type = {StringType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="Natural language description of the operation", formalDefinition="A free text natural language description of the profile and its use." )
     protected StringType description;
 
     /**
      * Explains why this operation definition is needed and why it's been constrained as it has.
      */
-    @Child(name ="requirements", type={StringType.class}, order=6, min=0, max=1)
+    @Child(name = "requirements", type = {StringType.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Why is this needed?", formalDefinition="Explains why this operation definition is needed and why it's been constrained as it has." )
     protected StringType requirements;
 
     /**
      * The status of the profile.
      */
-    @Child(name ="status", type={CodeType.class}, order=7, min=1, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=7, min=1, max=1)
     @Description(shortDefinition="draft | active | retired", formalDefinition="The status of the profile." )
     protected Enumeration<ConformanceResourceStatus> status;
 
     /**
      * This profile was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    @Child(name ="experimental", type={BooleanType.class}, order=8, min=0, max=1)
+    @Child(name = "experimental", type = {BooleanType.class}, order=8, min=0, max=1)
     @Description(shortDefinition="If for testing purposes, not real usage", formalDefinition="This profile was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage." )
     protected BooleanType experimental;
 
     /**
      * The date that this version of the profile was published.
      */
-    @Child(name ="date", type={DateTimeType.class}, order=9, min=0, max=1)
+    @Child(name = "date", type = {DateTimeType.class}, order=9, min=0, max=1)
     @Description(shortDefinition="Date for this version of the operation definition", formalDefinition="The date that this version of the profile was published." )
     protected DateTimeType date;
 
     /**
      * Whether this is operation or named query.
      */
-    @Child(name ="kind", type={CodeType.class}, order=10, min=1, max=1)
+    @Child(name = "kind", type = {CodeType.class}, order=10, min=1, max=1)
     @Description(shortDefinition="operation | query", formalDefinition="Whether this is operation or named query." )
     protected Enumeration<OperationKind> kind;
 
     /**
      * Operations that are idempotent (see [HTTP specification definition of idempotent](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)) may be invoked by performing an HTTP GET operation instead of a POST.
      */
-    @Child(name ="idempotent", type={BooleanType.class}, order=11, min=0, max=1)
+    @Child(name = "idempotent", type = {BooleanType.class}, order=11, min=0, max=1)
     @Description(shortDefinition="Whether operation causes changes to content", formalDefinition="Operations that are idempotent (see [HTTP specification definition of idempotent](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)) may be invoked by performing an HTTP GET operation instead of a POST." )
     protected BooleanType idempotent;
 
     /**
      * The name used to invoke the operation.
      */
-    @Child(name ="code", type={CodeType.class}, order=12, min=1, max=1)
+    @Child(name = "code", type = {CodeType.class}, order=12, min=1, max=1)
     @Description(shortDefinition="Name used to invoke the operation", formalDefinition="The name used to invoke the operation." )
     protected CodeType code;
 
     /**
      * Additional information about how to use this operation or named query.
      */
-    @Child(name ="notes", type={StringType.class}, order=13, min=0, max=1)
+    @Child(name = "notes", type = {StringType.class}, order=13, min=0, max=1)
     @Description(shortDefinition="Additional information about use", formalDefinition="Additional information about how to use this operation or named query." )
     protected StringType notes;
 
     /**
      * Indicates that this operation definition is a constraining profile on the base.
      */
-    @Child(name ="base", type={OperationDefinition.class}, order=14, min=0, max=1)
+    @Child(name = "base", type = {OperationDefinition.class}, order=14, min=0, max=1)
     @Description(shortDefinition="Marks this as a profile of the base", formalDefinition="Indicates that this operation definition is a constraining profile on the base." )
     protected Reference base;
 
@@ -1350,37 +1170,43 @@ public class OperationDefinition extends DomainResource {
     /**
      * Indicates whether this operation or named query can be invoked at the system level (e.g. without needing to choose a resource type for the context).
      */
-    @Child(name ="system", type={BooleanType.class}, order=15, min=1, max=1)
+    @Child(name = "system", type = {BooleanType.class}, order=15, min=1, max=1)
     @Description(shortDefinition="Invoke at the system level?", formalDefinition="Indicates whether this operation or named query can be invoked at the system level (e.g. without needing to choose a resource type for the context)." )
     protected BooleanType system;
 
     /**
      * Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a resource type for the context).
      */
-    @Child(name ="type", type={CodeType.class}, order=16, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "type", type = {CodeType.class}, order=16, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Invoke at resource level for these type", formalDefinition="Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a resource type for the context)." )
     protected List<CodeType> type;
 
     /**
      * Indicates whether this operation can be invoked on a particular instance of one of the given types.
      */
-    @Child(name ="instance", type={BooleanType.class}, order=17, min=1, max=1)
+    @Child(name = "instance", type = {BooleanType.class}, order=17, min=1, max=1)
     @Description(shortDefinition="Invoke on an instance?", formalDefinition="Indicates whether this operation can be invoked on a particular instance of one of the given types." )
     protected BooleanType instance;
 
     /**
      * The parameters for the operation/query.
      */
-    @Child(name ="parameter", type={}, order=18, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "parameter", type = {}, order=18, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Parameters for the operation/query", formalDefinition="The parameters for the operation/query." )
     protected List<OperationDefinitionParameterComponent> parameter;
 
     private static final long serialVersionUID = 1747303098L;
 
+  /*
+   * Constructor
+   */
     public OperationDefinition() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public OperationDefinition(StringType name, Enumeration<ConformanceResourceStatus> status, Enumeration<OperationKind> kind, CodeType code, BooleanType system, BooleanType instance) {
       super();
       this.name = name;

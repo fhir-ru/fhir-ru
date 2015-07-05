@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
@@ -37,9 +37,10 @@ import java.math.*;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * Details and position information for a physical place where services are provided  and resources and participants may be stored, found, contained or accommodated.
  */
@@ -48,11 +49,11 @@ public class Location extends DomainResource {
 
     public enum LocationMode {
         /**
-         * The Location resource represents a specific instance of a Location (e.g. Operating Theatre 1A).
+         * The Location resource represents a specific instance of a Location (e.g. Operating Theatre 1A)
          */
         INSTANCE, 
         /**
-         * The Location represents a class of Locations (e.g. Any Operating Theatre). Although this class of locations could be constrained within a specific boundary (such as organization, or parent location, address etc).
+         * The Location represents a class of Locations (e.g. Any Operating Theatre). Although this class of locations could be constrained within a specific boundary (such as organization, or parent location, address etc)
          */
         KIND, 
         /**
@@ -77,15 +78,15 @@ public class Location extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case INSTANCE: return "";
-            case KIND: return "";
+            case INSTANCE: return "http://hl7.org/fhir/location-mode";
+            case KIND: return "http://hl7.org/fhir/location-mode";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case INSTANCE: return "The Location resource represents a specific instance of a Location (e.g. Operating Theatre 1A).";
-            case KIND: return "The Location represents a class of Locations (e.g. Any Operating Theatre). Although this class of locations could be constrained within a specific boundary (such as organization, or parent location, address etc).";
+            case INSTANCE: return "The Location resource represents a specific instance of a Location (e.g. Operating Theatre 1A)";
+            case KIND: return "The Location represents a class of Locations (e.g. Any Operating Theatre). Although this class of locations could be constrained within a specific boundary (such as organization, or parent location, address etc)";
             default: return "?";
           }
         }
@@ -120,15 +121,15 @@ public class Location extends DomainResource {
 
     public enum LocationStatus {
         /**
-         * The location is operational.
+         * The location is operational
          */
         ACTIVE, 
         /**
-         * The location is temporarily closed.
+         * The location is temporarily closed
          */
         SUSPENDED, 
         /**
-         * The location is no longer used.
+         * The location is no longer used
          */
         INACTIVE, 
         /**
@@ -156,17 +157,17 @@ public class Location extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case ACTIVE: return "";
-            case SUSPENDED: return "";
-            case INACTIVE: return "";
+            case ACTIVE: return "http://hl7.org/fhir/location-status";
+            case SUSPENDED: return "http://hl7.org/fhir/location-status";
+            case INACTIVE: return "http://hl7.org/fhir/location-status";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case ACTIVE: return "The location is operational.";
-            case SUSPENDED: return "The location is temporarily closed.";
-            case INACTIVE: return "The location is no longer used.";
+            case ACTIVE: return "The location is operational";
+            case SUSPENDED: return "The location is temporarily closed";
+            case INACTIVE: return "The location is no longer used";
             default: return "?";
           }
         }
@@ -205,34 +206,40 @@ public class Location extends DomainResource {
     }
 
     @Block()
-    public static class LocationPositionComponent extends BackboneElement {
+    public static class LocationPositionComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML (see notes below).
          */
-        @Child(name ="longitude", type={DecimalType.class}, order=1, min=1, max=1)
+        @Child(name = "longitude", type = {DecimalType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Longitude with WGS84 datum", formalDefinition="Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML (see notes below)." )
         protected DecimalType longitude;
 
         /**
          * Latitude. The value domain and the interpretation are the same as for the text of the latitude element in KML (see notes below).
          */
-        @Child(name ="latitude", type={DecimalType.class}, order=2, min=1, max=1)
+        @Child(name = "latitude", type = {DecimalType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="Latitude with WGS84 datum", formalDefinition="Latitude. The value domain and the interpretation are the same as for the text of the latitude element in KML (see notes below)." )
         protected DecimalType latitude;
 
         /**
          * Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below).
          */
-        @Child(name ="altitude", type={DecimalType.class}, order=3, min=0, max=1)
+        @Child(name = "altitude", type = {DecimalType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Altitude with WGS84 datum", formalDefinition="Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below)." )
         protected DecimalType altitude;
 
         private static final long serialVersionUID = -74276134L;
 
+    /*
+     * Constructor
+     */
       public LocationPositionComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public LocationPositionComponent(DecimalType longitude, DecimalType latitude) {
         super();
         this.longitude = longitude;
@@ -426,70 +433,70 @@ public class Location extends DomainResource {
     /**
      * Unique code or number identifying the location to its users.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Unique code or number identifying the location to its users", formalDefinition="Unique code or number identifying the location to its users." )
     protected List<Identifier> identifier;
 
     /**
      * Name of the location as used by humans. Does not need to be unique.
      */
-    @Child(name ="name", type={StringType.class}, order=1, min=0, max=1)
+    @Child(name = "name", type = {StringType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Name of the location as used by humans", formalDefinition="Name of the location as used by humans. Does not need to be unique." )
     protected StringType name;
 
     /**
      * Description of the Location, which helps in finding or referencing the place.
      */
-    @Child(name ="description", type={StringType.class}, order=2, min=0, max=1)
+    @Child(name = "description", type = {StringType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Description of the Location, which helps in finding or referencing the place", formalDefinition="Description of the Location, which helps in finding or referencing the place." )
     protected StringType description;
 
     /**
      * Indicates whether a resource instance represents a specific location or a class of locations.
      */
-    @Child(name ="mode", type={CodeType.class}, order=3, min=0, max=1)
+    @Child(name = "mode", type = {CodeType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="instance | kind", formalDefinition="Indicates whether a resource instance represents a specific location or a class of locations." )
     protected Enumeration<LocationMode> mode;
 
     /**
      * Indicates the type of function performed at the location.
      */
-    @Child(name ="type", type={CodeableConcept.class}, order=4, min=0, max=1)
+    @Child(name = "type", type = {CodeableConcept.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Indicates the type of function performed at the location", formalDefinition="Indicates the type of function performed at the location." )
     protected CodeableConcept type;
 
     /**
      * The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.
      */
-    @Child(name ="telecom", type={ContactPoint.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "telecom", type = {ContactPoint.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Contact details of the location", formalDefinition="The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites." )
     protected List<ContactPoint> telecom;
 
     /**
      * Physical location.
      */
-    @Child(name ="address", type={Address.class}, order=6, min=0, max=1)
+    @Child(name = "address", type = {Address.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Physical location", formalDefinition="Physical location." )
     protected Address address;
 
     /**
      * Physical form of the location, e.g. building, room, vehicle, road.
      */
-    @Child(name ="physicalType", type={CodeableConcept.class}, order=7, min=0, max=1)
+    @Child(name = "physicalType", type = {CodeableConcept.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Physical form of the location", formalDefinition="Physical form of the location, e.g. building, room, vehicle, road." )
     protected CodeableConcept physicalType;
 
     /**
      * The absolute geographic location of the Location, expressed in with the WGS84 datum (This is the same co-ordinate system used in KML).
      */
-    @Child(name ="position", type={}, order=8, min=0, max=1)
+    @Child(name = "position", type = {}, order=8, min=0, max=1)
     @Description(shortDefinition="The absolute geographic location", formalDefinition="The absolute geographic location of the Location, expressed in with the WGS84 datum (This is the same co-ordinate system used in KML)." )
     protected LocationPositionComponent position;
 
     /**
      * The organization that is responsible for the provisioning and upkeep of the location.
      */
-    @Child(name ="managingOrganization", type={Organization.class}, order=9, min=0, max=1)
+    @Child(name = "managingOrganization", type = {Organization.class}, order=9, min=0, max=1)
     @Description(shortDefinition="The organization that is responsible for the provisioning and upkeep of the location", formalDefinition="The organization that is responsible for the provisioning and upkeep of the location." )
     protected Reference managingOrganization;
 
@@ -501,7 +508,7 @@ public class Location extends DomainResource {
     /**
      * Another Location which this Location is physically part of.
      */
-    @Child(name ="partOf", type={Location.class}, order=10, min=0, max=1)
+    @Child(name = "partOf", type = {Location.class}, order=10, min=0, max=1)
     @Description(shortDefinition="Another Location which this Location is physically part of", formalDefinition="Another Location which this Location is physically part of." )
     protected Reference partOf;
 
@@ -513,12 +520,15 @@ public class Location extends DomainResource {
     /**
      * active | suspended | inactive.
      */
-    @Child(name ="status", type={CodeType.class}, order=11, min=0, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=11, min=0, max=1)
     @Description(shortDefinition="active | suspended | inactive", formalDefinition="active | suspended | inactive." )
     protected Enumeration<LocationStatus> status;
 
     private static final long serialVersionUID = -520735603L;
 
+  /*
+   * Constructor
+   */
     public Location() {
       super();
     }
@@ -1069,6 +1079,10 @@ public class Location extends DomainResource {
 
   @SearchParamDefinition(name="organization", path="Location.managingOrganization", description="Searches for locations that are managed by the provided organization", type="reference" )
   public static final String SP_ORGANIZATION = "organization";
+  @SearchParamDefinition(name="address-state", path="Location.address.state", description="A state specified in an address", type="string" )
+  public static final String SP_ADDRESSSTATE = "address-state";
+  @SearchParamDefinition(name="address-city", path="Location.address.city", description="A city specified in an address", type="string" )
+  public static final String SP_ADDRESSCITY = "address-city";
   @SearchParamDefinition(name="near", path="", description="The coordinates expressed as [lat],[long] (using the WGS84 datum, see notes) to find locations near to (servers may search using a square rather than a circle for efficiency)", type="token" )
   public static final String SP_NEAR = "near";
   @SearchParamDefinition(name="partof", path="Location.partOf", description="The location of which this location is a part", type="reference" )
@@ -1077,14 +1091,20 @@ public class Location extends DomainResource {
   public static final String SP_STATUS = "status";
   @SearchParamDefinition(name="address", path="Location.address", description="A (part of the) address of the location", type="string" )
   public static final String SP_ADDRESS = "address";
+  @SearchParamDefinition(name="address-use", path="Location.address.use", description="A use code specified in an address", type="token" )
+  public static final String SP_ADDRESSUSE = "address-use";
   @SearchParamDefinition(name="name", path="Location.name", description="A (portion of the) name of the location", type="string" )
   public static final String SP_NAME = "name";
+  @SearchParamDefinition(name="address-country", path="Location.address.country", description="A country specified in an address", type="string" )
+  public static final String SP_ADDRESSCOUNTRY = "address-country";
   @SearchParamDefinition(name="near-distance", path="", description="A distance quantity to limit the near search to locations within a specific distance", type="token" )
   public static final String SP_NEARDISTANCE = "near-distance";
   @SearchParamDefinition(name="type", path="Location.type", description="A code for the type of location", type="token" )
   public static final String SP_TYPE = "type";
   @SearchParamDefinition(name="identifier", path="Location.identifier", description="Unique code or number identifying the location to its users", type="token" )
   public static final String SP_IDENTIFIER = "identifier";
+  @SearchParamDefinition(name="address-postalcode", path="Location.address.postalCode", description="A postalCode specified in an address", type="string" )
+  public static final String SP_ADDRESSPOSTALCODE = "address-postalcode";
 
 }
 

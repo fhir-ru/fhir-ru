@@ -29,7 +29,6 @@ package org.hl7.fhir.definitions.generators.specification;
 
  */
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -38,7 +37,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
-import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
@@ -72,6 +70,18 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		this.definitions = page.getDefinitions();
 		this.page = page;
 	}
+
+  protected String getBindingLink(ElementDefn e) throws Exception {
+    BindingSpecification bs = e.getBinding();
+    if (bs == null)
+      return "terminologies.html#unbound";
+    if (bs.getValueSet() != null) 
+      return bs.getValueSet().getUserString("path");
+    else if (!Utilities.noString(bs.getReference()))
+      return bs.getReference();      
+    else 
+      return "terminologies.html#unbound";
+  }
 
 	public void generate(ElementDefn root, boolean isAbstract) throws Exception {
 		write("<pre class=\"spec\">\r\n");
@@ -491,31 +501,33 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				} else {
 				  if (elem.eliminated()) 
 				    write("<span style=\"text-decoration: line-through\">");
-				  BindingSpecification bs = definitions.getBindingByName(elem.getBindingName());
-				  if (bs != null && bs.getBinding() != Binding.Unbound && !Utilities.noString(bs.getReference())) { 
-				    if (bs.getBinding() == Binding.CodeList || bs.getBinding() == Binding.Special)
-				      write("<span style=\"color: navy\"><a href=\""+bs.getReference().substring(1)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");
-				    else if (bs.getReference().startsWith("http://hl7.org/fhir")) {
-				      if (bs.getReference().startsWith("http://hl7.org/fhir/v3/vs/")) {
-				        ValueSet vs = page.getValueSets().get(bs.getReference()); // night be null in a partial build
-	              String pp = (String) vs.getUserData("path");
-				        write("<a href=\""+(vs == null ? "??" : pp.replace(File.separatorChar, '/'))+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
-				      } else if (bs.getReference().startsWith("http://hl7.org/fhir/v2/vs/")) {
-	                ValueSet vs = page.getValueSets().get(bs.getReference());
-	                String pp = (String) vs.getUserData("path");
-	                write("<a href=\""+(vs == null ? "??" : pp.replace(File.separatorChar, '/'))+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn())+ "</a>");
-				      } else if (bs.getReference().startsWith("http://hl7.org/fhir/vs/")) {
-				        BindingSpecification bs1 = page.getDefinitions().getBindingByReference("#"+bs.getReference().substring(23), bs);
-				        if (bs1 != null)
-                  write("<a href=\""+bs.getReference().substring(23)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
-                else
-                  write("<a href=\"valueset-"+bs.getReference().substring(23)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
-				      } else
-				        throw new Exception("Internal reference "+bs.getReference()+" not handled yet");
-				    } else
-				      write("<span style=\"color: navy\"><a href=\""+bs.getReference()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");				  
-				  } else
-					  write("<span style=\"color: navy\">" + docPrefix(width, indent, elem)+Utilities.escapeXml(elem.getShortDefn()) + "</span>");
+	        String ref = getBindingLink(elem);
+          write("<span style=\"color: navy\"><a href=\""+ref+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");
+//				  BindingSpecification bs = elem.getBinding();
+//				  if (bs != null && bs.getBinding() != BindingMethod.Unbound && !Utilities.noString(bs.getReference())) { 
+//				    if (bs.getBinding() == BindingMethod.CodeList || bs.getBinding() == BindingMethod.Special)
+//				      write("<span style=\"color: navy\"><a href=\""+bs.getReference().substring(1)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");
+//				    else if (bs.getReference().startsWith("http://hl7.org/fhir")) {
+//				      if (bs.getReference().startsWith("http://hl7.org/fhir/v3/vs/")) {
+//				        ValueSet vs = page.getValueSets().get(bs.getReference()); // night be null in a partial build
+//	              String pp = (String) vs.getUserData("path");
+//				        write("<a href=\""+(vs == null ? "??" : pp.replace(File.separatorChar, '/'))+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
+//				      } else if (bs.getReference().startsWith("http://hl7.org/fhir/v2/vs/")) {
+//	                ValueSet vs = page.getValueSets().get(bs.getReference());
+//	                String pp = (String) vs.getUserData("path");
+//	                write("<a href=\""+(vs == null ? "??" : pp.replace(File.separatorChar, '/'))+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn())+ "</a>");
+//				      } else if (bs.getReference().startsWith("http://hl7.org/fhir/vs/")) {
+//				        BindingSpecification bs1 = page.getDefinitions().getBindingByURL(bs.getReference());
+//				        if (bs1 != null)
+//                  write("<a href=\""+bs.getReference().substring(23)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
+//                else
+//                  write("<a href=\"valueset-"+bs.getReference().substring(23)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
+//				      } else
+//				        throw new Exception("Internal reference "+bs.getReference()+" not handled yet");
+//				    } else
+//				      write("<span style=\"color: navy\"><a href=\""+bs.getReference()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");				  
+//				  } else
+//					  write("<span style=\"color: navy\">" + docPrefix(width, indent, elem)+Utilities.escapeXml(elem.getShortDefn()) + "</span>");
           if (elem.eliminated()) 
             write("</span>");
 				}
@@ -900,8 +912,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
       w = w + t.getCode().length(); // again, could be wrong if this is an extension, but then it won't wrap
       if (t.getCode().equals("list"))
         write(t.getCode());
-      else if (t.getCode().equals("Extension") && !Utilities.noString(t.getProfile()))
-        write("<a href=\""+t.getProfile()+"\"><span style=\"color: DarkViolet\">@"+t.getProfile().substring(1)+"</span></a>");     
+      else if (t.getCode().equals("Extension") && t.hasProfile())
+        write("<a href=\""+t.getProfile()+"\"><span style=\"color: DarkViolet\">@"+t.getProfile().get(0).getValue().substring(1)+"</span></a>");     
       else
         write("<a href=\"" + (dtRoot + definitions.getSrcFile(t.getCode())
             + ".html#" + t.getCode() + "\">" + t.getCode())

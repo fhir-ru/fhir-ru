@@ -1,7 +1,7 @@
 package org.hl7.fhir.definitions.generators.specification;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
-import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
@@ -91,7 +91,7 @@ public class TableGenerator extends BaseGenerator {
         }
         row.getCells().add(c);
       } else {
-        row.getCells().add(gen.new Cell()); 
+        row.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null));   
         row.setIcon("icon_choice.gif", HeirarchicalTableGenerator.TEXT_ICON_CHOICE);
         row.getCells().add(gen.new Cell(null, null, "", null, null));   
       }
@@ -106,12 +106,13 @@ public class TableGenerator extends BaseGenerator {
       cc.getPieces().add(gen.new Piece(null, e.getTypes().get(0).getProfile(), null));
     }
     
-    if (e.hasBinding() && definitions.getBindingByName(e.getBindingName()) != null && definitions.getBindingByName(e.getBindingName()).getBinding() != Binding.Unbound) {
+    if (e.hasBinding() && e.getBinding() != null && e.getBinding().getBinding() != BindingMethod.Unbound) {
       if (cc.getPieces().size() == 1)
         cc.addPiece(gen.new Piece("br"));
-      cc.getPieces().add(gen.new Piece(getBindingLink(e), e.getBindingName(), definitions.getBindingByName(e.getBindingName()).getDefinition()));
+      cc.getPieces().add(gen.new Piece(getBindingLink(e), e.getBinding().getValueSet() != null ? e.getBinding().getValueSet().getName() : e.getBinding().getName(), 
+            e.getBinding().getDefinition()));
       cc.getPieces().add(gen.new Piece(null, " (", null));
-      BindingSpecification b = definitions.getBindingByName(e.getBindingName());
+      BindingSpecification b = e.getBinding();
       cc.getPieces().add(gen.new Piece("terminologies.html#"+b.getStrength().toCode(), b.getStrength().getDisplay(),  b.getStrength().getDefinition()));
       cc.getPieces().add(gen.new Piece(null, ")", null));
     }
@@ -129,7 +130,7 @@ public class TableGenerator extends BaseGenerator {
         if (t.equals("Reference")) {
           choicerow.getCells().add(gen.new Cell(null, null, e.getName().replace("[x]",  "Reference"), null, null));
           choicerow.getCells().add(gen.new Cell());
-          choicerow.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null));
+          choicerow.getCells().add(gen.new Cell(null, null, "", null, null));
           choicerow.setIcon("icon_reference.png", HeirarchicalTableGenerator.TEXT_ICON_REFERENCE);
           Cell c = gen.new Cell();
           choicerow.getCells().add(c);
@@ -143,13 +144,13 @@ public class TableGenerator extends BaseGenerator {
         } else if (definitions.getPrimitives().containsKey(t)) {
           choicerow.getCells().add(gen.new Cell(null, null, e.getName().replace("[x]",  Utilities.capitalize(t)), definitions.getPrimitives().get(t).getDefinition(), null));
           choicerow.getCells().add(gen.new Cell());
-          choicerow.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null));
+          choicerow.getCells().add(gen.new Cell(null, null, "", null, null));
           choicerow.setIcon("icon_primitive.png", HeirarchicalTableGenerator.TEXT_ICON_PRIMITIVE);
           choicerow.getCells().add(gen.new Cell(null, "datatypes.html#"+t, t, null, null));
         } else {
           choicerow.getCells().add(gen.new Cell(null, null, e.getName().replace("[x]",  Utilities.capitalize(t)), definitions.getTypes().containsKey(t) ? definitions.getTypes().get(t).getDefinition() : null, null));
           choicerow.getCells().add(gen.new Cell());
-          choicerow.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null));
+          choicerow.getCells().add(gen.new Cell(null, null, "", null, null));
           choicerow.setIcon("icon_datatype.gif", HeirarchicalTableGenerator.TEXT_ICON_DATATYPE);
           choicerow.getCells().add(gen.new Cell(null, definitions.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null));
         }

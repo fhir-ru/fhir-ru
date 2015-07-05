@@ -43,6 +43,7 @@ import org.hl7.fhir.instance.model.Extension;
 import org.hl7.fhir.instance.model.ExtensionHelper;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Identifier;
+import org.hl7.fhir.instance.model.IntegerType;
 import org.hl7.fhir.instance.model.PrimitiveType;
 import org.hl7.fhir.instance.model.Questionnaire.GroupComponent;
 import org.hl7.fhir.instance.model.Questionnaire.QuestionComponent;
@@ -74,13 +75,15 @@ public class ToolingExtensions {
   
   public static final String EXT_FLYOVER = "http://hl7.org/fhir/Profile/questionnaire-extensions#flyover";
   private static final String EXT_QTYPE = "http://www.healthintersections.com.au/fhir/Profile/metadata#type";
-  private static final String EXT_EXPANSION_CLOSED = "http://hl7.org/fhir/Profile/questionnaire-extensions#closed";
   private static final String EXT_QREF = "http://www.healthintersections.com.au/fhir/Profile/metadata#reference";
   private static final String EXTENSION_FILTER_ONLY = "http://www.healthintersections.com.au/fhir/Profile/metadata#expandNeedsFilter";
   private static final String EXT_TYPE = "http://www.healthintersections.com.au/fhir/Profile/metadata#type";
   private static final String EXT_REFERENCE = "http://www.healthintersections.com.au/fhir/Profile/metadata#reference";
   private static final String EXT_ALLOWABLE_UNITS = "http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits";
   public static final String EXT_CIMI_REFERENCE = "http://hl7.org/fhir/StructureDefinition/cimi-reference";
+  public static final String EXT_UNCLOSED = "http://hl7.org/fhir/StructureDefinition/valueset-unclosed";
+  public static final String EXT_FMM_LEVEL = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm";
+  public static final String EXT_FMM_LEVEL_NO_WARN = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm-no-warnings";
 
   
   // specific extension helpers
@@ -107,6 +110,14 @@ public class ToolingExtensions {
       else
         dr.getExtension().add(Factory.newExtension(url, new StringType(content), true));   
     }
+  }
+
+  public static void addIntegerExtension(DomainResource dr, String url, int value) throws Exception {
+    Extension ex = getExtension(dr, url);
+    if (ex != null)
+      ex.setValue(new IntegerType(value));
+    else
+      dr.getExtension().add(Factory.newExtension(url, new IntegerType(value), true));   
   }
 
   public static void addComment(Element nc, String comment) throws Exception {
@@ -140,6 +151,8 @@ public class ToolingExtensions {
     Extension ex = ExtensionHelper.getExtension(c, uri);
     if (ex == null)
       return null;
+    if (ex.getValue() instanceof UriType)
+      return ((UriType) ex.getValue()).getValue();
     if (!(ex.getValue() instanceof StringType))
       return null;
     return ((StringType) ex.getValue()).getValue();
@@ -368,6 +381,7 @@ public class ToolingExtensions {
 	  		results.add(ex);
 	  return results;
   }
+
   public static void addDEReference(DataElement de, String value) {
     for (Extension e : de.getExtension()) 
       if (e.getUrl().equals(EXT_CIMI_REFERENCE)) {

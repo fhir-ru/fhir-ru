@@ -17,10 +17,14 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.hl7.fhir.instance.model.ElementDefinition;
 import org.hl7.fhir.instance.model.StructureDefinition;
+import org.hl7.fhir.instance.utils.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.instance.utils.ProfileUtilities.ProfileKnowledgeProvider.BindingResolution;
 
 public class ReviewSpreadsheetGenerator {
-
-  public void generate(String filename, String author, Calendar genDate, StructureDefinition profile) throws Exception {
+  private ProfileKnowledgeProvider pkp;
+  
+  public void generate(String filename, String author, Calendar genDate, StructureDefinition profile, ProfileKnowledgeProvider pkp) throws Exception {
+    this.pkp = pkp;
     HSSFWorkbook workbook = new HSSFWorkbook();
         
     HSSFPalette palette = workbook.getCustomPalette();
@@ -63,7 +67,7 @@ public class ReviewSpreadsheetGenerator {
   private String sanitize(String name) {
     StringBuilder b = new StringBuilder();
     for (char c : name.toCharArray())
-      if (Character.isAlphabetic(c) || Character.isDigit(c))
+      if (Character.isLetter(c) || Character.isDigit(c))
         b.append(c);
       else
         b.append(' ');
@@ -112,7 +116,8 @@ public class ReviewSpreadsheetGenerator {
       } else if (ed.getType().size() == 1) {
         cell = row.createCell(c++);
         cell.setCellStyle(style);
-        cell.setCellValue(ed.getType().get(0).getProfile());
+        if (ed.getType().get(0).hasProfile())
+          cell.setCellValue(ed.getType().get(0).getProfile().get(0).getValue());
         cell = row.createCell(c++);
         cell.setCellStyle(style);
         cell.setCellValue(describeBinding(ed));
@@ -141,7 +146,8 @@ public class ReviewSpreadsheetGenerator {
   private String describeBinding(ElementDefinition def) {
     if (!def.hasBinding())
       return "";
-    return def.getBinding().getName();
+    BindingResolution br = pkp.resolveBinding(def.getBinding());
+    return br.display;
   }
 
   private String describeCardinality(ElementDefinition d) {

@@ -58,6 +58,8 @@ public class ResourceDefn  {
 
   private String name = null;
   private String enteredInErrorStatus;
+  private String fmmLevel;
+  private String fmmLevelNoWarnings;
 
   private List<InheritedMapping> inheritedMappings = new ArrayList<InheritedMapping>();
 
@@ -238,4 +240,29 @@ public class ResourceDefn  {
     }
     return results;
   }
+
+  public String getFmmLevel() {
+    return fmmLevel;
+  }
+
+  public void setFmmLevel(String fmmLevel) {
+    this.fmmLevel = fmmLevel;
+  }
+
+  public String getFmmLevelNoWarnings() {
+    return fmmLevelNoWarnings;
+  }
+
+  public void setFmmLevelNoWarnings(String fmmLevelNoWarnings) {
+    this.fmmLevelNoWarnings = fmmLevelNoWarnings;
+  }
+
+  public Profile getConformancePackage(String id) {
+    for (Profile p : conformancePackages)
+      if (p.getId().equals(id))
+        return p;
+    return null;
+  }
+  
+  
 }

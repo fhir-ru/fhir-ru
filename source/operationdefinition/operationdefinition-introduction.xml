@@ -4,7 +4,7 @@
 <h2>Scope and Usage</h2>
 <p>
 The OperationDefinition resource provides a formal computable definition of an <a href="operations.html">operation</a> or <a href="search.html#advanced">a named query</a>.
-The OperationDefinition serves two principle purposes:
+The OperationDefinition serves two principal purposes:
 </p>
 <ul>
  <li>To allow for automatic determination of system compatibility</li>
@@ -18,7 +18,7 @@ See below for further information about these, and about how Operations and Name
 <div>
 <h2>Boundaries and Relationships</h2>
 <p>
-Operation Definitions are published to define operations that servers can implemnet in a common fashion. 
+Operation Definitions are published to define operations that servers can implement in a common fashion. 
 The FHIR specification itself describes a number (see below), and other organizations, including 
 IHE, national programs, jurisdictions and vendors are able to publish additional operation definitions.
 </p>

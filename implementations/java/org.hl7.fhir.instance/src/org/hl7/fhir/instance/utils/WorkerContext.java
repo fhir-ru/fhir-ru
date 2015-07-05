@@ -3,6 +3,7 @@ package org.hl7.fhir.instance.utils;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,16 +21,17 @@ import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.instance.model.ConceptMap;
 import org.hl7.fhir.instance.model.Conformance;
 import org.hl7.fhir.instance.model.ElementDefinition;
-import org.hl7.fhir.instance.model.Parameters;
-import org.hl7.fhir.instance.model.StructureDefinition;
+import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.instance.model.OperationOutcome;
-import org.hl7.fhir.instance.model.StructureDefinition;
+import org.hl7.fhir.instance.model.Parameters;
 import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionContainsComponent;
+import org.hl7.fhir.instance.terminologies.ITerminologyServices;
+import org.hl7.fhir.instance.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
 import org.hl7.fhir.utilities.CSFileInputStream;
 
 /*
@@ -47,8 +49,12 @@ import org.hl7.fhir.utilities.CSFileInputStream;
   private static final String TEST_PROFILE = "C:\\work\\org.hl7.fhir\\build\\publish\\namespace.profile.xml";
   private static final String PROFILES = "C:\\work\\org.hl7.fhir\\build\\publish\\profiles-resources.xml";
 
+igtodo - things to add: 
+- version
+- list of resource names
+
  */
-public class WorkerContext {
+public class WorkerContext implements NameResolver {
 
 	private ITerminologyServices terminologyServices = new NullTerminologyServices();
   private IFHIRClient client = new NullClient();
@@ -57,6 +63,8 @@ public class WorkerContext {
   private Map<String, ConceptMap> maps = new HashMap<String, ConceptMap>();
   private Map<String, StructureDefinition> profiles = new HashMap<String, StructureDefinition>();
   private Map<String, StructureDefinition> extensionDefinitions = new HashMap<String, StructureDefinition>();
+  private String version;
+  private List<String> resourceNames = new ArrayList<String>();
 
 
   public WorkerContext() {
@@ -119,6 +127,7 @@ public class WorkerContext {
   public WorkerContext clone(IFHIRClient altClient) {
     WorkerContext res = new WorkerContext(terminologyServices, null, codeSystems, valueSets, maps, profiles);
     res.extensionDefinitions.putAll(extensionDefinitions);
+    res.version = version;
     res.client = altClient;
     return res;
   }
@@ -378,6 +387,16 @@ public class WorkerContext {
       throw new Error("call to NullClient");
     }
 
+    @Override
+    public Conformance getConformanceStatementQuick() {
+      throw new Error("call to NullClient");
+    }
+
+    @Override
+    public Conformance getConformanceStatementQuick(boolean useOptionsVerb) {
+      throw new Error("call to NullClient");
+    }
+
   }
 
   public StructureDefinition getExtensionStructure(StructureDefinition context, String url) throws Exception {
@@ -438,10 +457,37 @@ public class WorkerContext {
     }
 
     @Override
-    public ValueSet expandVS(ValueSet vs) {
+    public ValueSetExpansionOutcome expand(ValueSet vs) {
       throw new Error("call to NullTerminologyServices");
     }
 
+  }
+
+  public String getVersion() {
+    return version;
+  }
+
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
+  @Override
+  public boolean isResource(String name) {
+    if (resourceNames.contains(name))
+      return true;
+    StructureDefinition sd = profiles.get("http://hl7.org/fhir/StructureDefinition/"+name);
+    return sd != null && (sd.getBase().endsWith("Resource") || sd.getBase().endsWith("DomainResource"));
+  }
+
+  public List<String> getResourceNames() {
+    return resourceNames;
+  }
+
+  public StructureDefinition getTypeStructure(TypeRefComponent type) {
+    if (type.hasProfile())
+      return profiles.get(type.getProfile());
+    else
+      return profiles.get(type.getCode());
   }
 
 }

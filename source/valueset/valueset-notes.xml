@@ -11,7 +11,7 @@ implementations as they can make use of the innate identifier and versioning mec
 <h2>Value Sets that define codes</h2>
 
 <p>
-Valuesets can define their own codes. A value set that defines codes automatically includes all 
+Value sets can define their own codes. A value set that defines codes automatically includes all 
 the codes it defines, and is useful for simple sets of codes that are highly 
 specific and context-dependent. The value set and the code system are both 
 given URI identifiers by which they may be identified from elsewhere 
@@ -26,7 +26,7 @@ be different.
  <li>If concepts contain other concepts, then the contained concepts are "subsumed" by 
    the containing concept (there is an "is-a" relationship between the codes).</li>
   <li>An abstract concept SHALL have contained concepts</li>
-  <li>The set of codes defined SHALL not contain duplicate codes</li>
+  <li>The set of codes defined SHALL NOT contain duplicate codes</li>
 </ul>
 <p>
 Note: Value sets only define their own codes when they are not defined elsewhere,
@@ -103,7 +103,7 @@ facility is provided to cover the following circumstances:
 <ul>
  <li>The system that defines the code or expression doesn't provide a display for this code (or any codes)</li>
  <li>The system that defines the code or expression defines multiple choices for display</li>
- <li>The system provides a very long display name that is unnecssary or innappropriate in the context of this value set (e.g. a display name of "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" for LOINC code 48991-4, when the value set only includes Glucose mass/vol in serum/plasma codes). As the display names get longer, this becomes more important</li>
+ <li>The system provides a very long display name that is unnecessary or inappropriate in the context of this value set (e.g. a display name of "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" for LOINC code 48991-4, when the value set only includes Glucose mass/vol in serum/plasma codes). As the display names get longer, this becomes more important</li>
 </ul>
 <p>
 Note that care must be taken in order to avoid "changing the meaning" of the concept by
@@ -123,10 +123,18 @@ specified in the value set would go in <a href="datatypes.html#CodeableConcept">
 How filters are used with various code systems:
 </p>
 <ul>
- <li>LOINC: See <a href="loinc.html">Using LOINC with FHIR</a></li>
- <li>SNOMED-CT: See <a href="snomedct.html">Using SNOMED CT with FHIR</a></li>
- <li>RxNorm: See <a href="rxnorm.html">Using RxNorm with FHIR</a></li>
+ <li><a href="loinc.html">Using LOINC with FHIR</a></li>
+ <li><a href="snomedct.html">Using SNOMED CT with FHIR</a></li>
+ <li><a href="rxnorm.html">Using RxNorm with FHIR</a></li>
+ <li><a href="ucum.html">Using UCUM with FHIR</a></li>
+ <li><a href="ncimeta.html">Using NCI Metathesaurus with FHIR</a></li>
+ <li><a href="cpt.html">Using CPT with FHIR</a></li>
+ <li><a href="ndfrt.html">Using NDF-RT with FHIR</a></li>
+ <li><a href="unii.html">Using UNII with FHIR</a></li>
+ <li><a href="ndc.html">Using NDC with FHIR</a></li>
+ <li><a href="cvx.html">Using CVX with FHIR</a></li>
 </ul>
+
 <table class="grid">
  <tr>
    <th>System</th>    
@@ -137,11 +145,6 @@ How filters are used with various code systems:
    <th>Example</th>
  </tr>
  <tr>
-   <td colspan="4"><hr/></td>
- </tr>
- 
- 
- <tr>
    <td>V3 Code systems</td> 
    <td>concept</td>
    <td>is-a</td>       
@@ -149,7 +152,14 @@ How filters are used with various code systems:
    <td>Includes all codes that have a transitive is-a relationship with the concept identified by the value</td> 
    <td><a href="valueset-relatedperson-relationshiptype.html">Relationship Type</a></td>
  </tr>
- 
+ <tr>
+   <td>V2 Tables</td> 
+   <td></td>
+   <td></td>       
+   <td></td>    
+   <td>(no filters defined)</td> 
+   <td></td>
+ </tr>
 </table>
 
 <a name="expansion"> </a>
@@ -158,18 +168,19 @@ How filters are used with various code systems:
 A value set can be "expanded", where the definition of the value set is 
 used to create a simple collection of codes suitable for use for data 
 entry or validation. This is most useful when a value set includes 
-all the children of a code or a set of codes by filter. 
+all the codes in a code system, or a set of codes by filter. 
 </p>
 <p>
 A resource that represents a value set expansion includes the same
 identification details as the definition of the value set, and MAY
 include the definition of the value set (<i>define</i> and <i>compose</i>
 elements). In addition it has a <i>expansion</i> element which contains
-the list of codes that constitute the value set expansion. If the 
-expansion is heirarchical (codes contain other concepts), there 
-is no implication about the logical relationship between them; this 
-is guidance for helping human user navigate the choice of codes that 
-may or may not relate to the logical definitions of the codes or concepts.
+the list of codes that constitute the value set expansion. 
+If the expansion has nested <code>contains</code> elements, there is 
+no implication about the logical relationship between them, and the 
+structure cannot be used for logical inferencing. The structure 
+exists to provide navigational assistance for helping human users to 
+locate codes in the expansion.
 </p>
 <p>
 When a request for an expansion is received (e.g. for the <a href="valueset-operations.html#expand">$expand</a> operation,
@@ -202,21 +213,26 @@ extensions or other knowledge to introduce such groups as an implementation feat
 </p>
 <p>
 Whether to store expanded value sets, or simply to store their definitions, and expand on the fly is 
-a matter for system deployment. Any system that stores an expansion must be concerned with how to determine
-whether it is current, which requires deep knowledge of how the expansion was created. A system with a 
-dedicated terminology server that returns expansions on demand avoids this problem, but leaves open
-the question of how to audit the specific expansion that was used for a particular case. One solution
-to this is to use a dedicated terminology server, and have the clients ask for expansions on demand
-based on the value set definitions, and for the server to store (and reuse as appropriate) the 
-returned expansion (ValueSet.expansion.identifier).
+a matter for system deployment. Some servers, including public value sets servers, only store expansions. 
+However any system that stores an expansion must be concerned with how to determine whether the expansion 
+is still current, and this requires deep knowledge of how the expansion was created. 
+</p>
+<p>
+A system with a dedicated terminology server that returns expansions on demand avoids this problem, but 
+leaves open the question of how to audit the specific expansion that was used for a particular case. 
+One solution to this is to use a dedicated terminology server, and have the clients ask for 
+expansions on demand based on the value set definitions, and for the server to store (and reuse as 
+appropriate) the returned expansion (when it reuses the expansion, ValueSet.expansion.identifier will
+be the same).
 </p>
 
 <a name="detailed-metadata"/>
 <h3>Code systems with detailed metadata</h3>
 <p>
 Sometimes code systems may be used to represent more complex information than just 
-code, display name and code system.  For example a code system of drug information, 
-of observation types, of locations, and other similar registry-type information.  
+code, display name and code system.  For example, a code system of drug information
+which contains information about the content of the medication (e.g. RxNorm), or a set of  
+observation types, that contain methods, units, etc (e.g. LOINC).  
 In FHIR, these are handled by splitting the concept into two distinct parts - the 
 <b>ValueSet</b> resource is used to manage the codes, display names and relationships.  
 A separate "detail" resource (e.g. <a href="medication.html">Medication</a> for 

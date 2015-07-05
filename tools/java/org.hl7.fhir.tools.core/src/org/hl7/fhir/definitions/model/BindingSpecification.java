@@ -29,13 +29,15 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
-import org.hl7.fhir.instance.model.ElementDefinition.BindingStrength;
+import org.hl7.fhir.instance.model.Enumerations.BindingStrength;
 import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
+import org.hl7.fhir.instance.model.ValueSet.ConceptReferenceComponent;
+import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.instance.utils.ToolingExtensions;
 
 /**
  * A concept domain - a use of terminology in FHIR.
@@ -51,7 +53,7 @@ public class BindingSpecification {
   public static final String DEFAULT_OID_CS = "2.16.840.1.113883.4.642.1.";
   public static final String DEFAULT_OID_VS = "2.16.840.1.113883.4.642.2.";
   
-  public enum Binding {
+  public enum BindingMethod {
     Unbound,
     CodeList, 
     ValueSet,
@@ -59,50 +61,58 @@ public class BindingSpecification {
     Special
   }
   
+  // for common bindings - make sure binding doesn't cross code / Coding boundary
   public enum ElementType {
     Unknown,
     Simple,
     Complex
   }
 
-  // properties
+  // use tracking
+  private ElementType elementType = ElementType.Unknown;
   private String usageContext;
-  private String id; // to generate the OID
-  private String name;
-	private String definition;
-	private Binding binding;
-  private String reference;
-  private String description;
+  private List<String> useContexts = new ArrayList<String>(); // slated for removal
+  private BindingMethod binding;
+  private String source; // for useful error messages during build
+  private String v2Map;
+  private String v3Map;
+  private boolean shared;
 
-  // for profiles:
+  // in ElementDefinition.binding 
+  private String name;
+  private BindingStrength strength;
+  private String description;
+  private String reference;
+  private ValueSet valueSet;
   
-  // allow ability to override metadata defaults
+  
+  // to get rid of:
+  private String id; // to generate the OID
+  
+  // to move into valueset 
+	private String definition;
   private String uri; // used as the official value set identifier if provided, else one will be synthesized. For when code list is actually a value set defined elsewhere
   private String webSite;
   private String email;
   private String copyright;
-  private List<DefinedCode> codes = new ArrayList<DefinedCode>();
+//  private List<DefinedCode> codes = new ArrayList<DefinedCode>();
   private String csOid;
   private String vsOid;
-	
-	// these are implied by the use of the binding at the specification level
-  private BindingStrength strength;
-
-  // analysis during run time
-  private ElementType elementType = ElementType.Unknown;
-	private String source; // for useful error messages during build
-	private List<String> useContexts = new ArrayList<String>();
-	private ValueSet referredValueSet;
-  private List<DefinedCode> childCodes;
-
-  private String v2Map;
-  private String v3Map;
+//  private List<DefinedCode> childCodes;
   private ConformanceResourceStatus status;
+  private List<DefinedCode> allCodes;
+  
+
   
   
-  public BindingSpecification(String usageContext) {
+  // analysis during run time
+
+  
+  public BindingSpecification(String usageContext, String name, boolean shared) {
     super();
     this.usageContext = usageContext;
+    this.name = name; 
+    this.shared = shared;
   }
 
   public String getUsageContext() {
@@ -121,9 +131,9 @@ public class BindingSpecification {
     return name;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+//  public void setName(String name) {
+//    this.name = name;
+//  }
 
   public String getDefinition() {
     return definition;
@@ -133,11 +143,11 @@ public class BindingSpecification {
     this.definition = definition;
   }
 
-  public Binding getBinding() {
+  public BindingMethod getBinding() {
     return binding;
   }
 
-  public void setBinding(Binding binding) {
+  public void setBindingMethod(BindingMethod binding) {
     this.binding = binding;
   }
 
@@ -145,8 +155,9 @@ public class BindingSpecification {
     return reference;
   }
 
-  public void setReference(String reference) {
+  public BindingSpecification setReference(String reference) {
     this.reference = reference;
+    return this;
   }
 
   public String getDescription() {
@@ -157,10 +168,10 @@ public class BindingSpecification {
     this.description = description;
   }
 
-  public List<DefinedCode> getCodes() {
-    return codes;
-  }
-	
+//  public List<DefinedCode> getCodes() {
+//    return codes;
+//  }
+//	
 	public boolean hasReference() {
 	  return !(reference == null || reference.equals(""));
 	}
@@ -181,16 +192,13 @@ public class BindingSpecification {
     this.strength = strength;
   }
 
-  public static BindingSpecification getBindingFromList(
-			Map<String, BindingSpecification> conceptDomains,
-			String conceptDomain)
-  {
-	  for (BindingSpecification cd : conceptDomains.values())
-		  if (cd.getName().equals(conceptDomain))
-			  return cd;
-	
-	  return null;
-  }
+//  public static BindingSpecification getBindingFromList(Map<String, BindingSpecification> conceptDomains, String conceptDomain) {
+//	  for (BindingSpecification cd : conceptDomains.values())
+//		  if (cd.name.equals(conceptDomain))
+//			  return cd;
+//	
+//	  return null;
+//  }
 
   public List<String> getUseContexts() {
     return useContexts;
@@ -200,82 +208,73 @@ public class BindingSpecification {
     this.useContexts = useContexts;
   }
 
-  public boolean hasExternalCodes() {
-    boolean external = false;
-    for (DefinedCode c : codes)
-      if (!Utilities.noString(c.getSystem()))
-        external = true;
-    return external;
-  }
-
-  public boolean hasInternalCodes() {
-    boolean internal = false;
-    for (DefinedCode c : codes)
-      if (Utilities.noString(c.getSystem()))
-        internal = true;
-    return internal;
-  }
-
-  
-  public List<String> getVSSources() {
-    List<String> vslist = new ArrayList<String>();
-    boolean internal = false;
-    for (DefinedCode c : codes) {
-      if (Utilities.noString(c.getSystem())) {
-        internal = true;
-      } else {
-        if (!vslist.contains(c.getSystem()))
-          vslist.add(c.getSystem());
-      }
-    }
-    if (internal)
-      vslist.add(0, "");
-    return vslist;
-  }
-
-  public ValueSet getReferredValueSet() {
-    return referredValueSet;
-  }
-
-  public void setReferredValueSet(ValueSet referredValueSet) {
-    this.referredValueSet = referredValueSet;
-    ToolResourceUtilities.updateUsage(referredValueSet, usageContext);
-  }
+//  public boolean hasExternalCodes() {
+//    boolean external = false;
+//    for (DefinedCode c : codes)
+//      if (!Utilities.noString(c.getSystem()))
+//        external = true;
+//    return external;
+//  }
+//
+//  public boolean hasInternalCodes() {
+//    boolean internal = false;
+//    for (DefinedCode c : codes)
+//      if (Utilities.noString(c.getSystem()))
+//        internal = true;
+//    return internal;
+//  }
+//
+//  
+//  public List<String> getVSSources() {
+//    List<String> vslist = new ArrayList<String>();
+//    boolean internal = false;
+//    for (DefinedCode c : codes) {
+//      if (Utilities.noString(c.getSystem())) {
+//        internal = true;
+//      } else {
+//        if (!vslist.contains(c.getSystem()))
+//          vslist.add(c.getSystem());
+//      }
+//    }
+//    if (internal)
+//      vslist.add(0, "");
+//    return vslist;
+//  }
 
   
-  public List<DefinedCode> getChildCodes() throws Exception {
-    if (childCodes == null) {
-      childCodes = new ArrayList<DefinedCode>();
-      for (DefinedCode c : codes) {
-        if (c.hasParent()) { 
-          DefinedCode p = getCode(c.getParent());
-          if (p == null)
-            throw new Exception("unable to find parent Code '"+c.getParent()+"' for code '"+c.getCode()+"'");
-          p.getChildCodes().add(c);
-        } else
-          childCodes.add(c);
-      }
-    }
-    return childCodes;
-  }
-
-  public DefinedCode getCode(String code) {
-    for (DefinedCode c : codes) {
-      if (code.equals(c.getCode()))
-        return c;
-      if (code.equals("#"+c.getId()))
-        return c;
-    }
-    return null;
-  }
-
-  public boolean isHeirachical() {
-    boolean hasParent = false;
-    for (DefinedCode c : getCodes()) {
-      hasParent = hasParent || c.hasParent();
-    }
-    return hasParent;
-  }
+//  public List<DefinedCode> getChildCodes() throws Exception {
+//    if (childCodes == null) {
+//      childCodes = new ArrayList<DefinedCode>();
+//      for (DefinedCode c : codes) {
+//        if (c.hasParent()) { 
+//          DefinedCode p = getCode(c.getParent());
+//          if (p == null)
+//            throw new Exception("unable to find parent Code '"+c.getParent()+"' for code '"+c.getCode()+"'");
+//          p.getChildCodes().add(c);
+//        } else
+//          childCodes.add(c);
+//      }
+//    }
+//    return childCodes;
+//  }
+//
+//  public DefinedCode getCode(String code) {
+//    for (DefinedCode c : codes) {
+//      if (code.equals(c.getCode()))
+//        return c;
+//      if (code.equals("#"+c.getId()))
+//        return c;
+//    }
+//    return null;
+//  }
+//
+//  public boolean isHeirachical() {
+//    boolean hasParent = false;
+//    for (DefinedCode c : getCodes()) {
+//      hasParent = hasParent || c.hasParent();
+//    }
+//    return hasParent;
+//  }
 
   public ElementType getElementType() {
     return elementType;
@@ -356,5 +355,57 @@ public class BindingSpecification {
   public void setStatus(ConformanceResourceStatus status) {
     this.status = status;
   }
+
+  public ValueSet getValueSet() {
+    return valueSet;
+  }
+
+  public void setValueSet(ValueSet valueSet) {
+    this.valueSet = valueSet;
+    ToolResourceUtilities.updateUsage(valueSet, usageContext);
+  }
+
+  public List<DefinedCode> getAllCodes() {
+    if (allCodes == null) {
+      allCodes = new ArrayList<DefinedCode>();
+      if (valueSet != null) {
+        if (valueSet.hasDefine()) 
+          for (ConceptDefinitionComponent c : valueSet.getDefine().getConcept())
+            processCode(c, valueSet.getDefine().getSystem(), null);
+        if (valueSet.hasCompose()) {
+          for (ConceptSetComponent cc : valueSet.getCompose().getInclude())
+            for (ConceptReferenceComponent c : cc.getConcept())
+              processCode(c, cc.getSystem());
+        }
+      }   
+    }
+    return allCodes;
+  }
+
+  private void processCode(ConceptReferenceComponent c, String system) {
+    DefinedCode code = new DefinedCode();
+    code.setCode(c.getCode());
+    code.setDisplay(c.getDisplay());
+    code.setSystem(system);
+    allCodes.add(code);
+  }
+
+  private void processCode(ConceptDefinitionComponent c, String system, String parent) {
+    DefinedCode code = new DefinedCode();
+    code.setCode(c.getCode());
+    code.setDisplay(c.getDisplay());
+    code.setComment(ToolingExtensions.getComment(c));
+    code.setDefinition(c.getDefinition());
+    code.setParent(parent);
+    code.setSystem(system);
+    allCodes.add(code);
+    for (ConceptDefinitionComponent cc : c.getConcept())
+      processCode(cc, system, c.getCode());
+  }
+
+  public boolean isShared() {
+    return shared;
+  }  
+  
   
 }

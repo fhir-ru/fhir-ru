@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
@@ -37,189 +37,37 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * A Search Parameter that defines a named search item that can be used to search/filter on a resource.
  */
 @ResourceDef(name="SearchParameter", profile="http://hl7.org/fhir/Profile/SearchParameter")
 public class SearchParameter extends DomainResource {
 
-    public enum SearchParamType {
-        /**
-         * Search parameter SHALL be a number (a whole number, or a decimal).
-         */
-        NUMBER, 
-        /**
-         * Search parameter is on a date/time. The date format is the standard XML format, though other formats may be supported.
-         */
-        DATE, 
-        /**
-         * Search parameter is a simple string, like a name part. Search is case-insensitive and accent-insensitive. May match just the start of a string. String parameters may contain spaces.
-         */
-        STRING, 
-        /**
-         * Search parameter on a coded element or identifier. May be used to search through the text, displayname, code and code/codesystem (for codes) and label, system and key (for identifier). Its value is either a string or a pair of namespace and value, separated by a "|", depending on the modifier used.
-         */
-        TOKEN, 
-        /**
-         * A reference to another resource.
-         */
-        REFERENCE, 
-        /**
-         * A composite search parameter that combines a search on two values together.
-         */
-        COMPOSITE, 
-        /**
-         * A search parameter that searches on a quantity.
-         */
-        QUANTITY, 
-        /**
-         * A search parameter that searches on a URI (RFC 3986).
-         */
-        URI, 
-        /**
-         * added to help the parsers
-         */
-        NULL;
-        public static SearchParamType fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("number".equals(codeString))
-          return NUMBER;
-        if ("date".equals(codeString))
-          return DATE;
-        if ("string".equals(codeString))
-          return STRING;
-        if ("token".equals(codeString))
-          return TOKEN;
-        if ("reference".equals(codeString))
-          return REFERENCE;
-        if ("composite".equals(codeString))
-          return COMPOSITE;
-        if ("quantity".equals(codeString))
-          return QUANTITY;
-        if ("uri".equals(codeString))
-          return URI;
-        throw new Exception("Unknown SearchParamType code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case NUMBER: return "number";
-            case DATE: return "date";
-            case STRING: return "string";
-            case TOKEN: return "token";
-            case REFERENCE: return "reference";
-            case COMPOSITE: return "composite";
-            case QUANTITY: return "quantity";
-            case URI: return "uri";
-            default: return "?";
-          }
-        }
-        public String getSystem() {
-          switch (this) {
-            case NUMBER: return "";
-            case DATE: return "";
-            case STRING: return "";
-            case TOKEN: return "";
-            case REFERENCE: return "";
-            case COMPOSITE: return "";
-            case QUANTITY: return "";
-            case URI: return "";
-            default: return "?";
-          }
-        }
-        public String getDefinition() {
-          switch (this) {
-            case NUMBER: return "Search parameter SHALL be a number (a whole number, or a decimal).";
-            case DATE: return "Search parameter is on a date/time. The date format is the standard XML format, though other formats may be supported.";
-            case STRING: return "Search parameter is a simple string, like a name part. Search is case-insensitive and accent-insensitive. May match just the start of a string. String parameters may contain spaces.";
-            case TOKEN: return "Search parameter on a coded element or identifier. May be used to search through the text, displayname, code and code/codesystem (for codes) and label, system and key (for identifier). Its value is either a string or a pair of namespace and value, separated by a '|', depending on the modifier used.";
-            case REFERENCE: return "A reference to another resource.";
-            case COMPOSITE: return "A composite search parameter that combines a search on two values together.";
-            case QUANTITY: return "A search parameter that searches on a quantity.";
-            case URI: return "A search parameter that searches on a URI (RFC 3986).";
-            default: return "?";
-          }
-        }
-        public String getDisplay() {
-          switch (this) {
-            case NUMBER: return "Number";
-            case DATE: return "Date/DateTime";
-            case STRING: return "String";
-            case TOKEN: return "Token";
-            case REFERENCE: return "Reference";
-            case COMPOSITE: return "Composite";
-            case QUANTITY: return "Quantity";
-            case URI: return "URI";
-            default: return "?";
-          }
-        }
-    }
-
-  public static class SearchParamTypeEnumFactory implements EnumFactory<SearchParamType> {
-    public SearchParamType fromCode(String codeString) throws IllegalArgumentException {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("number".equals(codeString))
-          return SearchParamType.NUMBER;
-        if ("date".equals(codeString))
-          return SearchParamType.DATE;
-        if ("string".equals(codeString))
-          return SearchParamType.STRING;
-        if ("token".equals(codeString))
-          return SearchParamType.TOKEN;
-        if ("reference".equals(codeString))
-          return SearchParamType.REFERENCE;
-        if ("composite".equals(codeString))
-          return SearchParamType.COMPOSITE;
-        if ("quantity".equals(codeString))
-          return SearchParamType.QUANTITY;
-        if ("uri".equals(codeString))
-          return SearchParamType.URI;
-        throw new IllegalArgumentException("Unknown SearchParamType code '"+codeString+"'");
-        }
-    public String toCode(SearchParamType code) {
-      if (code == SearchParamType.NUMBER)
-        return "number";
-      if (code == SearchParamType.DATE)
-        return "date";
-      if (code == SearchParamType.STRING)
-        return "string";
-      if (code == SearchParamType.TOKEN)
-        return "token";
-      if (code == SearchParamType.REFERENCE)
-        return "reference";
-      if (code == SearchParamType.COMPOSITE)
-        return "composite";
-      if (code == SearchParamType.QUANTITY)
-        return "quantity";
-      if (code == SearchParamType.URI)
-        return "uri";
-      return "?";
-      }
-    }
-
     @Block()
-    public static class SearchParameterContactComponent extends BackboneElement {
+    public static class SearchParameterContactComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The name of an individual to contact regarding the search parameter.
          */
-        @Child(name ="name", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name = "name", type = {StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Name of a individual to contact", formalDefinition="The name of an individual to contact regarding the search parameter." )
         protected StringType name;
 
         /**
          * Contact details for individual (if a name was provided) or the publisher.
          */
-        @Child(name ="telecom", type={ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "telecom", type = {ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Contact details for individual or publisher", formalDefinition="Contact details for individual (if a name was provided) or the publisher." )
         protected List<ContactPoint> telecom;
 
         private static final long serialVersionUID = -1179697803L;
 
+    /*
+     * Constructor
+     */
       public SearchParameterContactComponent() {
         super();
       }
@@ -361,100 +209,106 @@ public class SearchParameter extends DomainResource {
     /**
      * An absolute URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements.
      */
-    @Child(name ="url", type={UriType.class}, order=0, min=1, max=1)
+    @Child(name = "url", type = {UriType.class}, order=0, min=1, max=1)
     @Description(shortDefinition="Literal URL used to reference this search parameter", formalDefinition="An absolute URL at which this search parameter is (or will be) published, and which is used to reference this profile in conformance statements." )
     protected UriType url;
 
     /**
      * The name of the standard or custom search parameter.
      */
-    @Child(name ="name", type={StringType.class}, order=1, min=1, max=1)
+    @Child(name = "name", type = {StringType.class}, order=1, min=1, max=1)
     @Description(shortDefinition="Name of search parameter", formalDefinition="The name of the standard or custom search parameter." )
     protected StringType name;
 
     /**
      * The name of the individual or organization that published the search parameter.
      */
-    @Child(name ="publisher", type={StringType.class}, order=2, min=0, max=1)
+    @Child(name = "publisher", type = {StringType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Name of the publisher (Organization or individual)", formalDefinition="The name of the individual or organization that published the search parameter." )
     protected StringType publisher;
 
     /**
      * Contacts to assist a user in finding and communicating with the publisher.
      */
-    @Child(name ="contact", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "contact", type = {}, order=3, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Contact details of the publisher", formalDefinition="Contacts to assist a user in finding and communicating with the publisher." )
     protected List<SearchParameterContactComponent> contact;
 
     /**
      * The Scope and Usage that this search parameter was created to meet.
      */
-    @Child(name ="requirements", type={StringType.class}, order=4, min=0, max=1)
+    @Child(name = "requirements", type = {StringType.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Why this search parameter is defined", formalDefinition="The Scope and Usage that this search parameter was created to meet." )
     protected StringType requirements;
 
     /**
      * The status of this search parameter definition.
      */
-    @Child(name ="status", type={CodeType.class}, order=5, min=0, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="draft | active | retired", formalDefinition="The status of this search parameter definition." )
     protected Enumeration<ConformanceResourceStatus> status;
 
     /**
      * A flag to indicate that this search parameter definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    @Child(name ="experimental", type={BooleanType.class}, order=6, min=0, max=1)
+    @Child(name = "experimental", type = {BooleanType.class}, order=6, min=0, max=1)
     @Description(shortDefinition="If for testing purposes, not real usage", formalDefinition="A flag to indicate that this search parameter definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage." )
     protected BooleanType experimental;
 
     /**
      * The date  (and optionally time) when the search parameter definition was published.
      */
-    @Child(name ="date", type={DateTimeType.class}, order=7, min=0, max=1)
+    @Child(name = "date", type = {DateTimeType.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Publication Date(/time)", formalDefinition="The date  (and optionally time) when the search parameter definition was published." )
     protected DateTimeType date;
 
     /**
      * The base resource type that this search parameter refers to.
      */
-    @Child(name ="base", type={CodeType.class}, order=8, min=1, max=1)
+    @Child(name = "base", type = {CodeType.class}, order=8, min=1, max=1)
     @Description(shortDefinition="The resource type this search parameter applies to", formalDefinition="The base resource type that this search parameter refers to." )
     protected CodeType base;
 
     /**
      * The type of value a search parameter refers to, and how the content is interpreted.
      */
-    @Child(name ="type", type={CodeType.class}, order=9, min=1, max=1)
+    @Child(name = "type", type = {CodeType.class}, order=9, min=1, max=1)
     @Description(shortDefinition="number | date | string | token | reference | composite | quantity | uri", formalDefinition="The type of value a search parameter refers to, and how the content is interpreted." )
     protected Enumeration<SearchParamType> type;
 
     /**
      * A description of the search parameters and how it used.
      */
-    @Child(name ="description", type={StringType.class}, order=10, min=1, max=1)
+    @Child(name = "description", type = {StringType.class}, order=10, min=1, max=1)
     @Description(shortDefinition="Documentation for  search parameter", formalDefinition="A description of the search parameters and how it used." )
     protected StringType description;
 
     /**
      * An XPath expression that returns a set of elements for the search parameter.
      */
-    @Child(name ="xpath", type={StringType.class}, order=11, min=0, max=1)
+    @Child(name = "xpath", type = {StringType.class}, order=11, min=0, max=1)
     @Description(shortDefinition="XPath that extracts the values", formalDefinition="An XPath expression that returns a set of elements for the search parameter." )
     protected StringType xpath;
 
     /**
      * Types of resource (if a resource is referenced).
      */
-    @Child(name ="target", type={CodeType.class}, order=12, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "target", type = {CodeType.class}, order=12, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Types of resource (if a resource reference)", formalDefinition="Types of resource (if a resource is referenced)." )
     protected List<CodeType> target;
 
     private static final long serialVersionUID = 1984222207L;
 
+  /*
+   * Constructor
+   */
     public SearchParameter() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public SearchParameter(UriType url, StringType name, CodeType base, Enumeration<SearchParamType> type, StringType description) {
       super();
       this.url = url;

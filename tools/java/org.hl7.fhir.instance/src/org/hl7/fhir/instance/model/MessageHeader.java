@@ -29,29 +29,31 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * The header for a message exchange that is either requesting or responding to an action.  The Reference(s) that are the subject of the action as well as other Information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle.
  */
 @ResourceDef(name="MessageHeader", profile="http://hl7.org/fhir/Profile/MessageHeader")
 public class MessageHeader extends DomainResource {
 
-    public enum ResponseCode {
+    public enum ResponseType {
         /**
-         * The message was accepted and processed without error.
+         * The message was accepted and processed without error
          */
         OK, 
         /**
-         * Some internal unexpected error occurred - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required.
+         * Some internal unexpected error occurred - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required
          */
         TRANSIENTERROR, 
         /**
@@ -62,7 +64,7 @@ public class MessageHeader extends DomainResource {
          * added to help the parsers
          */
         NULL;
-        public static ResponseCode fromCode(String codeString) throws Exception {
+        public static ResponseType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("ok".equals(codeString))
@@ -71,7 +73,7 @@ public class MessageHeader extends DomainResource {
           return TRANSIENTERROR;
         if ("fatal-error".equals(codeString))
           return FATALERROR;
-        throw new Exception("Unknown ResponseCode code '"+codeString+"'");
+        throw new Exception("Unknown ResponseType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -83,16 +85,16 @@ public class MessageHeader extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case OK: return "";
-            case TRANSIENTERROR: return "";
-            case FATALERROR: return "";
+            case OK: return "http://hl7.org/fhir/response-code";
+            case TRANSIENTERROR: return "http://hl7.org/fhir/response-code";
+            case FATALERROR: return "http://hl7.org/fhir/response-code";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case OK: return "The message was accepted and processed without error.";
-            case TRANSIENTERROR: return "Some internal unexpected error occurred - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required.";
+            case OK: return "The message was accepted and processed without error";
+            case TRANSIENTERROR: return "Some internal unexpected error occurred - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required";
             case FATALERROR: return "The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative SHALL describe what the issue is.";
             default: return "?";
           }
@@ -107,50 +109,50 @@ public class MessageHeader extends DomainResource {
         }
     }
 
-  public static class ResponseCodeEnumFactory implements EnumFactory<ResponseCode> {
-    public ResponseCode fromCode(String codeString) throws IllegalArgumentException {
+  public static class ResponseTypeEnumFactory implements EnumFactory<ResponseType> {
+    public ResponseType fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("ok".equals(codeString))
-          return ResponseCode.OK;
+          return ResponseType.OK;
         if ("transient-error".equals(codeString))
-          return ResponseCode.TRANSIENTERROR;
+          return ResponseType.TRANSIENTERROR;
         if ("fatal-error".equals(codeString))
-          return ResponseCode.FATALERROR;
-        throw new IllegalArgumentException("Unknown ResponseCode code '"+codeString+"'");
+          return ResponseType.FATALERROR;
+        throw new IllegalArgumentException("Unknown ResponseType code '"+codeString+"'");
         }
-    public String toCode(ResponseCode code) {
-      if (code == ResponseCode.OK)
+    public String toCode(ResponseType code) {
+      if (code == ResponseType.OK)
         return "ok";
-      if (code == ResponseCode.TRANSIENTERROR)
+      if (code == ResponseType.TRANSIENTERROR)
         return "transient-error";
-      if (code == ResponseCode.FATALERROR)
+      if (code == ResponseType.FATALERROR)
         return "fatal-error";
       return "?";
       }
     }
 
     @Block()
-    public static class MessageHeaderResponseComponent extends BackboneElement {
+    public static class MessageHeaderResponseComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The id of the message that this message is a response to.
          */
-        @Child(name ="identifier", type={IdType.class}, order=1, min=1, max=1)
+        @Child(name = "identifier", type = {IdType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Id of original message", formalDefinition="The id of the message that this message is a response to." )
         protected IdType identifier;
 
         /**
          * Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not.
          */
-        @Child(name ="code", type={CodeType.class}, order=2, min=1, max=1)
+        @Child(name = "code", type = {CodeType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="ok | transient-error | fatal-error", formalDefinition="Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not." )
-        protected Enumeration<ResponseCode> code;
+        protected Enumeration<ResponseType> code;
 
         /**
          * Full details of any issues found in the message.
          */
-        @Child(name ="details", type={OperationOutcome.class}, order=3, min=0, max=1)
+        @Child(name = "details", type = {OperationOutcome.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Specific list of hints/warnings/errors", formalDefinition="Full details of any issues found in the message." )
         protected Reference details;
 
@@ -159,13 +161,19 @@ public class MessageHeader extends DomainResource {
          */
         protected OperationOutcome detailsTarget;
 
-        private static final long serialVersionUID = 1419103693L;
+        private static final long serialVersionUID = -1008716838L;
 
+    /*
+     * Constructor
+     */
       public MessageHeaderResponseComponent() {
         super();
       }
 
-      public MessageHeaderResponseComponent(IdType identifier, Enumeration<ResponseCode> code) {
+    /*
+     * Constructor
+     */
+      public MessageHeaderResponseComponent(IdType identifier, Enumeration<ResponseType> code) {
         super();
         this.identifier = identifier;
         this.code = code;
@@ -219,12 +227,12 @@ public class MessageHeader extends DomainResource {
         /**
          * @return {@link #code} (Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public Enumeration<ResponseCode> getCodeElement() { 
+        public Enumeration<ResponseType> getCodeElement() { 
           if (this.code == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create MessageHeaderResponseComponent.code");
             else if (Configuration.doAutoCreate())
-              this.code = new Enumeration<ResponseCode>(new ResponseCodeEnumFactory()); // bb
+              this.code = new Enumeration<ResponseType>(new ResponseTypeEnumFactory()); // bb
           return this.code;
         }
 
@@ -239,7 +247,7 @@ public class MessageHeader extends DomainResource {
         /**
          * @param value {@link #code} (Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not.). This is the underlying object with id, value and extensions. The accessor "getCode" gives direct access to the value
          */
-        public MessageHeaderResponseComponent setCodeElement(Enumeration<ResponseCode> value) { 
+        public MessageHeaderResponseComponent setCodeElement(Enumeration<ResponseType> value) { 
           this.code = value;
           return this;
         }
@@ -247,16 +255,16 @@ public class MessageHeader extends DomainResource {
         /**
          * @return Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not.
          */
-        public ResponseCode getCode() { 
+        public ResponseType getCode() { 
           return this.code == null ? null : this.code.getValue();
         }
 
         /**
          * @param value Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not.
          */
-        public MessageHeaderResponseComponent setCode(ResponseCode value) { 
+        public MessageHeaderResponseComponent setCode(ResponseType value) { 
             if (this.code == null)
-              this.code = new Enumeration<ResponseCode>(new ResponseCodeEnumFactory());
+              this.code = new Enumeration<ResponseType>(new ResponseTypeEnumFactory());
             this.code.setValue(value);
           return this;
         }
@@ -350,48 +358,54 @@ public class MessageHeader extends DomainResource {
   }
 
     @Block()
-    public static class MessageSourceComponent extends BackboneElement {
+    public static class MessageSourceComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Human-readable name for the source system.
          */
-        @Child(name ="name", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name = "name", type = {StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Name of system", formalDefinition="Human-readable name for the source system." )
         protected StringType name;
 
         /**
          * May include configuration or other information useful in debugging.
          */
-        @Child(name ="software", type={StringType.class}, order=2, min=0, max=1)
+        @Child(name = "software", type = {StringType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Name of software running the system", formalDefinition="May include configuration or other information useful in debugging." )
         protected StringType software;
 
         /**
          * Can convey versions of multiple systems in situations where a message passes through multiple hands.
          */
-        @Child(name ="version", type={StringType.class}, order=3, min=0, max=1)
+        @Child(name = "version", type = {StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Version of software running", formalDefinition="Can convey versions of multiple systems in situations where a message passes through multiple hands." )
         protected StringType version;
 
         /**
          * An e-mail, phone, website or other contact point to use to resolve issues with message communications.
          */
-        @Child(name ="contact", type={ContactPoint.class}, order=4, min=0, max=1)
+        @Child(name = "contact", type = {ContactPoint.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Human contact for problems", formalDefinition="An e-mail, phone, website or other contact point to use to resolve issues with message communications." )
         protected ContactPoint contact;
 
         /**
          * Identifies the routing target to send acknowledgements to.
          */
-        @Child(name ="endpoint", type={UriType.class}, order=5, min=1, max=1)
+        @Child(name = "endpoint", type = {UriType.class}, order=5, min=1, max=1)
         @Description(shortDefinition="Actual message source address or id", formalDefinition="Identifies the routing target to send acknowledgements to." )
         protected UriType endpoint;
 
         private static final long serialVersionUID = -115878196L;
 
+    /*
+     * Constructor
+     */
       public MessageSourceComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public MessageSourceComponent(UriType endpoint) {
         super();
         this.endpoint = endpoint;
@@ -664,18 +678,18 @@ public class MessageHeader extends DomainResource {
   }
 
     @Block()
-    public static class MessageDestinationComponent extends BackboneElement {
+    public static class MessageDestinationComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Human-readable name for the target system.
          */
-        @Child(name ="name", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name = "name", type = {StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Name of system", formalDefinition="Human-readable name for the target system." )
         protected StringType name;
 
         /**
          * Identifies the target end system in situations where the initial message transmission is to an intermediary system.
          */
-        @Child(name ="target", type={Device.class}, order=2, min=0, max=1)
+        @Child(name = "target", type = {Device.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Particular delivery destination within the destination", formalDefinition="Identifies the target end system in situations where the initial message transmission is to an intermediary system." )
         protected Reference target;
 
@@ -687,16 +701,22 @@ public class MessageHeader extends DomainResource {
         /**
          * Indicates where the message should be routed to.
          */
-        @Child(name ="endpoint", type={UriType.class}, order=3, min=1, max=1)
+        @Child(name = "endpoint", type = {UriType.class}, order=3, min=1, max=1)
         @Description(shortDefinition="Actual destination address or id", formalDefinition="Indicates where the message should be routed to." )
         protected UriType endpoint;
 
         private static final long serialVersionUID = -2097633309L;
 
+    /*
+     * Constructor
+     */
       public MessageDestinationComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public MessageDestinationComponent(UriType endpoint) {
         super();
         this.endpoint = endpoint;
@@ -887,49 +907,49 @@ public class MessageHeader extends DomainResource {
     /**
      * The identifier of this message.
      */
-    @Child(name ="identifier", type={IdType.class}, order=0, min=1, max=1)
+    @Child(name = "identifier", type = {IdType.class}, order=0, min=1, max=1)
     @Description(shortDefinition="Id of this message", formalDefinition="The identifier of this message." )
     protected IdType identifier;
 
     /**
      * The time that the message was sent.
      */
-    @Child(name ="timestamp", type={InstantType.class}, order=1, min=1, max=1)
+    @Child(name = "timestamp", type = {InstantType.class}, order=1, min=1, max=1)
     @Description(shortDefinition="Time that the message was sent", formalDefinition="The time that the message was sent." )
     protected InstantType timestamp;
 
     /**
-     * Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-type".
+     * Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-events".
      */
-    @Child(name ="event", type={Coding.class}, order=2, min=1, max=1)
-    @Description(shortDefinition="Code for the event this message represents", formalDefinition="Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value 'http://hl7.org/fhir/message-type'." )
+    @Child(name = "event", type = {Coding.class}, order=2, min=1, max=1)
+    @Description(shortDefinition="Code for the event this message represents", formalDefinition="Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value 'http://hl7.org/fhir/message-events'." )
     protected Coding event;
 
     /**
      * Information about the message that this message is a response to.  Only present if this message is a response.
      */
-    @Child(name ="response", type={}, order=3, min=0, max=1)
+    @Child(name = "response", type = {}, order=3, min=0, max=1)
     @Description(shortDefinition="If this is a reply to prior message", formalDefinition="Information about the message that this message is a response to.  Only present if this message is a response." )
     protected MessageHeaderResponseComponent response;
 
     /**
      * The source application from which this message originated.
      */
-    @Child(name ="source", type={}, order=4, min=1, max=1)
+    @Child(name = "source", type = {}, order=4, min=1, max=1)
     @Description(shortDefinition="Message Source Application", formalDefinition="The source application from which this message originated." )
     protected MessageSourceComponent source;
 
     /**
      * The destination application which the message is intended for.
      */
-    @Child(name ="destination", type={}, order=5, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "destination", type = {}, order=5, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Message Destination Application(s)", formalDefinition="The destination application which the message is intended for." )
     protected List<MessageDestinationComponent> destination;
 
     /**
      * The person or device that performed the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions.
      */
-    @Child(name ="enterer", type={Practitioner.class}, order=6, min=0, max=1)
+    @Child(name = "enterer", type = {Practitioner.class}, order=6, min=0, max=1)
     @Description(shortDefinition="The source of the data entry", formalDefinition="The person or device that performed the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions." )
     protected Reference enterer;
 
@@ -941,7 +961,7 @@ public class MessageHeader extends DomainResource {
     /**
      * The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the MessageHeader. Can provide other authors in extensions.
      */
-    @Child(name ="author", type={Practitioner.class}, order=7, min=0, max=1)
+    @Child(name = "author", type = {Practitioner.class}, order=7, min=0, max=1)
     @Description(shortDefinition="The source of the decision", formalDefinition="The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the MessageHeader. Can provide other authors in extensions." )
     protected Reference author;
 
@@ -953,7 +973,7 @@ public class MessageHeader extends DomainResource {
     /**
      * Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient.
      */
-    @Child(name ="receiver", type={Practitioner.class, Organization.class}, order=8, min=0, max=1)
+    @Child(name = "receiver", type = {Practitioner.class, Organization.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Intended 'real-world' recipient for the data", formalDefinition="Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient." )
     protected Reference receiver;
 
@@ -965,7 +985,7 @@ public class MessageHeader extends DomainResource {
     /**
      * The person or organization that accepts overall responsibility for the contents of the message. The implication is that the message event happened under the policies of the responsible party.
      */
-    @Child(name ="responsible", type={Practitioner.class, Organization.class}, order=9, min=0, max=1)
+    @Child(name = "responsible", type = {Practitioner.class, Organization.class}, order=9, min=0, max=1)
     @Description(shortDefinition="Final responsibility for event", formalDefinition="The person or organization that accepts overall responsibility for the contents of the message. The implication is that the message event happened under the policies of the responsible party." )
     protected Reference responsible;
 
@@ -977,14 +997,14 @@ public class MessageHeader extends DomainResource {
     /**
      * Coded indication of the cause for the event - indicates  a reason for the occurance of the event that is a focus of this message.
      */
-    @Child(name ="reason", type={CodeableConcept.class}, order=10, min=0, max=1)
+    @Child(name = "reason", type = {CodeableConcept.class}, order=10, min=0, max=1)
     @Description(shortDefinition="Cause of event", formalDefinition="Coded indication of the cause for the event - indicates  a reason for the occurance of the event that is a focus of this message." )
     protected CodeableConcept reason;
 
     /**
      * The actual data of the message - a reference to the root/focus class of the event.
      */
-    @Child(name ="data", type={}, order=11, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "data", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="The actual content of the message", formalDefinition="The actual data of the message - a reference to the root/focus class of the event." )
     protected List<Reference> data;
     /**
@@ -995,10 +1015,16 @@ public class MessageHeader extends DomainResource {
 
     private static final long serialVersionUID = 1866986127L;
 
+  /*
+   * Constructor
+   */
     public MessageHeader() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public MessageHeader(IdType identifier, InstantType timestamp, Coding event, MessageSourceComponent source) {
       super();
       this.identifier = identifier;
@@ -1098,7 +1124,7 @@ public class MessageHeader extends DomainResource {
     }
 
     /**
-     * @return {@link #event} (Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-type".)
+     * @return {@link #event} (Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-events".)
      */
     public Coding getEvent() { 
       if (this.event == null)
@@ -1114,7 +1140,7 @@ public class MessageHeader extends DomainResource {
     }
 
     /**
-     * @param value {@link #event} (Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-type".)
+     * @param value {@link #event} (Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value "http://hl7.org/fhir/message-events".)
      */
     public MessageHeader setEvent(Coding value) { 
       this.event = value;
@@ -1452,7 +1478,7 @@ public class MessageHeader extends DomainResource {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "id", "The identifier of this message.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("timestamp", "instant", "The time that the message was sent.", 0, java.lang.Integer.MAX_VALUE, timestamp));
-        childrenList.add(new Property("event", "Coding", "Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value 'http://hl7.org/fhir/message-type'.", 0, java.lang.Integer.MAX_VALUE, event));
+        childrenList.add(new Property("event", "Coding", "Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value 'http://hl7.org/fhir/message-events'.", 0, java.lang.Integer.MAX_VALUE, event));
         childrenList.add(new Property("response", "", "Information about the message that this message is a response to.  Only present if this message is a response.", 0, java.lang.Integer.MAX_VALUE, response));
         childrenList.add(new Property("source", "", "The source application from which this message originated.", 0, java.lang.Integer.MAX_VALUE, source));
         childrenList.add(new Property("destination", "", "The destination application which the message is intended for.", 0, java.lang.Integer.MAX_VALUE, destination));
@@ -1534,10 +1560,10 @@ public class MessageHeader extends DomainResource {
 
   @SearchParamDefinition(name="destination-uri", path="MessageHeader.destination.endpoint", description="Actual destination address or id", type="uri" )
   public static final String SP_DESTINATIONURI = "destination-uri";
-  @SearchParamDefinition(name="receiver", path="MessageHeader.receiver", description="Intended 'real-world' recipient for the data", type="reference" )
-  public static final String SP_RECEIVER = "receiver";
   @SearchParamDefinition(name="responsible", path="MessageHeader.responsible", description="Final responsibility for event", type="reference" )
   public static final String SP_RESPONSIBLE = "responsible";
+  @SearchParamDefinition(name="receiver", path="MessageHeader.receiver", description="Intended 'real-world' recipient for the data", type="reference" )
+  public static final String SP_RECEIVER = "receiver";
   @SearchParamDefinition(name="data", path="MessageHeader.data", description="The actual content of the message", type="reference" )
   public static final String SP_DATA = "data";
   @SearchParamDefinition(name="code", path="MessageHeader.response.code", description="ok | transient-error | fatal-error", type="token" )

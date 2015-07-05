@@ -16,6 +16,7 @@
 -->
 
 <%elheader base%>
+
 <h1>Element</h1>
 
 <p>
@@ -28,8 +29,20 @@ or as part of a resource structure, have this base content:
 Content
 </h2>
 
-[%dt Element%]
+[%dt Element 1%]
 
+
+<p>&nbsp;</p>
+
+<p><b>Constraints</b></p>
+
+[%dt.constraints Element%]
+
+<p>
+This constraint exists to reduce syntactical variation in resource contents. 
+If an element has no children, then it is always omitted from the resource, 
+as opposed to optionally present without any content.
+</p>
 
 </div>
 

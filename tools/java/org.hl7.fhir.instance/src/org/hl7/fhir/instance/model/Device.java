@@ -29,40 +29,41 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
- * This resource identifies an instance of a manufactured thing that is used in the provision of healthcare without being substantially changed through that activity. The device may be a machine, an insert, a computer, an application, etc. This includes durable (reusable) medical equipment as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health.
+ * This resource identifies an instance of a manufactured thing that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.  Medical devices includes durable (reusable) medical equipment, implantable devices, as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health.  Non medical devices may includes things such as a machine, a cellphone, a computer, an application, etc.
  */
 @ResourceDef(name="Device", profile="http://hl7.org/fhir/Profile/Device")
 public class Device extends DomainResource {
 
-    public enum Devicestatus {
+    public enum DeviceStatus {
         /**
-         * The Device is available for use.
+         * The Device is available for use
          */
         AVAILABLE, 
         /**
-         * The Device is no longer available for use ( e.g lost, expired, damaged).
+         * The Device is no longer available for use ( e.g lost, expired, damaged)
          */
         NOTAVAILABLE, 
         /**
-         * The Device was entered in error and voided.
+         * The Device was entered in error and voided
          */
         ENTEREDINERROR, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static Devicestatus fromCode(String codeString) throws Exception {
+        public static DeviceStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("available".equals(codeString))
@@ -71,7 +72,7 @@ public class Device extends DomainResource {
           return NOTAVAILABLE;
         if ("entered-in-error".equals(codeString))
           return ENTEREDINERROR;
-        throw new Exception("Unknown Devicestatus code '"+codeString+"'");
+        throw new Exception("Unknown DeviceStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -83,17 +84,17 @@ public class Device extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case AVAILABLE: return "";
-            case NOTAVAILABLE: return "";
-            case ENTEREDINERROR: return "";
+            case AVAILABLE: return "http://hl7.org/fhir/devicestatus";
+            case NOTAVAILABLE: return "http://hl7.org/fhir/devicestatus";
+            case ENTEREDINERROR: return "http://hl7.org/fhir/devicestatus";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case AVAILABLE: return "The Device is available for use.";
-            case NOTAVAILABLE: return "The Device is no longer available for use ( e.g lost, expired, damaged).";
-            case ENTEREDINERROR: return "The Device was entered in error and voided.";
+            case AVAILABLE: return "The Device is available for use";
+            case NOTAVAILABLE: return "The Device is no longer available for use ( e.g lost, expired, damaged)";
+            case ENTEREDINERROR: return "The Device was entered in error and voided";
             default: return "?";
           }
         }
@@ -107,25 +108,25 @@ public class Device extends DomainResource {
         }
     }
 
-  public static class DevicestatusEnumFactory implements EnumFactory<Devicestatus> {
-    public Devicestatus fromCode(String codeString) throws IllegalArgumentException {
+  public static class DeviceStatusEnumFactory implements EnumFactory<DeviceStatus> {
+    public DeviceStatus fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("available".equals(codeString))
-          return Devicestatus.AVAILABLE;
+          return DeviceStatus.AVAILABLE;
         if ("not-available".equals(codeString))
-          return Devicestatus.NOTAVAILABLE;
+          return DeviceStatus.NOTAVAILABLE;
         if ("entered-in-error".equals(codeString))
-          return Devicestatus.ENTEREDINERROR;
-        throw new IllegalArgumentException("Unknown Devicestatus code '"+codeString+"'");
+          return DeviceStatus.ENTEREDINERROR;
+        throw new IllegalArgumentException("Unknown DeviceStatus code '"+codeString+"'");
         }
-    public String toCode(Devicestatus code) {
-      if (code == Devicestatus.AVAILABLE)
+    public String toCode(DeviceStatus code) {
+      if (code == DeviceStatus.AVAILABLE)
         return "available";
-      if (code == Devicestatus.NOTAVAILABLE)
+      if (code == DeviceStatus.NOTAVAILABLE)
         return "not-available";
-      if (code == Devicestatus.ENTEREDINERROR)
+      if (code == DeviceStatus.ENTEREDINERROR)
         return "entered-in-error";
       return "?";
       }
@@ -134,77 +135,84 @@ public class Device extends DomainResource {
     /**
      * Unique instance identifiers assigned to a device by organizations like manufacturers or owners .   If the identifier identifies the type of device, Device.type should be used.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Instance id from manufacturer, owner, and others", formalDefinition="Unique instance identifiers assigned to a device by organizations like manufacturers or owners .   If the identifier identifies the type of device, Device.type should be used." )
     protected List<Identifier> identifier;
 
     /**
      * Code or identifier to identify a kind of device.
      */
-    @Child(name ="type", type={CodeableConcept.class}, order=1, min=1, max=1)
+    @Child(name = "type", type = {CodeableConcept.class}, order=1, min=1, max=1)
     @Description(shortDefinition="What kind of device this is", formalDefinition="Code or identifier to identify a kind of device." )
     protected CodeableConcept type;
 
     /**
+     * Descriptive information, usage information or implantation information that is not captured in an existing element.
+     */
+    @Child(name = "note", type = {Annotation.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+    @Description(shortDefinition="Device notes and comments", formalDefinition="Descriptive information, usage information or implantation information that is not captured in an existing element." )
+    protected List<Annotation> note;
+
+    /**
      * Status of the Device availability.
      */
-    @Child(name ="status", type={CodeType.class}, order=2, min=0, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="available | not-available | entered-in-error", formalDefinition="Status of the Device availability." )
-    protected Enumeration<Devicestatus> status;
+    protected Enumeration<DeviceStatus> status;
 
     /**
      * A name of the manufacturer.
      */
-    @Child(name ="manufacturer", type={StringType.class}, order=3, min=0, max=1)
+    @Child(name = "manufacturer", type = {StringType.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Name of device manufacturer", formalDefinition="A name of the manufacturer." )
     protected StringType manufacturer;
 
     /**
      * The "model" - an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type.
      */
-    @Child(name ="model", type={StringType.class}, order=4, min=0, max=1)
+    @Child(name = "model", type = {StringType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="Model id assigned by the manufacturer", formalDefinition="The 'model' - an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type." )
     protected StringType model;
 
     /**
      * The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware.
      */
-    @Child(name ="version", type={StringType.class}, order=5, min=0, max=1)
+    @Child(name = "version", type = {StringType.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Version number (i.e. software)", formalDefinition="The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware." )
     protected StringType version;
 
     /**
      * The Date and time when the device was manufactured.
      */
-    @Child(name ="manufactureDate", type={DateTimeType.class}, order=6, min=0, max=1)
+    @Child(name = "manufactureDate", type = {DateTimeType.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Manufacture date", formalDefinition="The Date and time when the device was manufactured." )
     protected DateTimeType manufactureDate;
 
     /**
      * The date and time beyond which this device is no longer valid or should not be used (if applicable).
      */
-    @Child(name ="expiry", type={DateTimeType.class}, order=7, min=0, max=1)
+    @Child(name = "expiry", type = {DateTimeType.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Date and time of expiry of this device (if applicable)", formalDefinition="The date and time beyond which this device is no longer valid or should not be used (if applicable)." )
     protected DateTimeType expiry;
 
     /**
      * United States Food and Drug Administration mandated Unique Device Identifier (UDI). Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm.
      */
-    @Child(name ="udi", type={StringType.class}, order=8, min=0, max=1)
+    @Child(name = "udi", type = {StringType.class}, order=9, min=0, max=1)
     @Description(shortDefinition="FDA Mandated Unique Device Identifier", formalDefinition="United States Food and Drug Administration mandated Unique Device Identifier (UDI). Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm." )
     protected StringType udi;
 
     /**
      * Lot number assigned by the manufacturer.
      */
-    @Child(name ="lotNumber", type={StringType.class}, order=9, min=0, max=1)
+    @Child(name = "lotNumber", type = {StringType.class}, order=10, min=0, max=1)
     @Description(shortDefinition="Lot number of manufacture", formalDefinition="Lot number assigned by the manufacturer." )
     protected StringType lotNumber;
 
     /**
      * An organization that is responsible for the provision and ongoing maintenance of the device.
      */
-    @Child(name ="owner", type={Organization.class}, order=10, min=0, max=1)
+    @Child(name = "owner", type = {Organization.class}, order=11, min=0, max=1)
     @Description(shortDefinition="Organization responsible for device", formalDefinition="An organization that is responsible for the provision and ongoing maintenance of the device." )
     protected Reference owner;
 
@@ -216,7 +224,7 @@ public class Device extends DomainResource {
     /**
      * The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. "in/with the patient"), or a coded location.
      */
-    @Child(name ="location", type={Location.class}, order=11, min=0, max=1)
+    @Child(name = "location", type = {Location.class}, order=12, min=0, max=1)
     @Description(shortDefinition="Where the resource is found", formalDefinition="The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. 'in/with the patient'), or a coded location." )
     protected Reference location;
 
@@ -228,7 +236,7 @@ public class Device extends DomainResource {
     /**
      * Patient information, if the resource is affixed to a person.
      */
-    @Child(name ="patient", type={Patient.class}, order=12, min=0, max=1)
+    @Child(name = "patient", type = {Patient.class}, order=13, min=0, max=1)
     @Description(shortDefinition="If the resource is affixed to a person", formalDefinition="Patient information, if the resource is affixed to a person." )
     protected Reference patient;
 
@@ -240,23 +248,29 @@ public class Device extends DomainResource {
     /**
      * Contact details for an organization or a particular human that is responsible for the device.
      */
-    @Child(name ="contact", type={ContactPoint.class}, order=13, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "contact", type = {ContactPoint.class}, order=14, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Details for human/organization for support", formalDefinition="Contact details for an organization or a particular human that is responsible for the device." )
     protected List<ContactPoint> contact;
 
     /**
      * A network address on which the device may be contacted directly.
      */
-    @Child(name ="url", type={UriType.class}, order=14, min=0, max=1)
+    @Child(name = "url", type = {UriType.class}, order=15, min=0, max=1)
     @Description(shortDefinition="Network address to contact device", formalDefinition="A network address on which the device may be contacted directly." )
     protected UriType url;
 
-    private static final long serialVersionUID = -699591241L;
+    private static final long serialVersionUID = 366690094L;
 
+  /*
+   * Constructor
+   */
     public Device() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public Device(CodeableConcept type) {
       super();
       this.type = type;
@@ -327,14 +341,54 @@ public class Device extends DomainResource {
     }
 
     /**
+     * @return {@link #note} (Descriptive information, usage information or implantation information that is not captured in an existing element.)
+     */
+    public List<Annotation> getNote() { 
+      if (this.note == null)
+        this.note = new ArrayList<Annotation>();
+      return this.note;
+    }
+
+    public boolean hasNote() { 
+      if (this.note == null)
+        return false;
+      for (Annotation item : this.note)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    /**
+     * @return {@link #note} (Descriptive information, usage information or implantation information that is not captured in an existing element.)
+     */
+    // syntactic sugar
+    public Annotation addNote() { //3
+      Annotation t = new Annotation();
+      if (this.note == null)
+        this.note = new ArrayList<Annotation>();
+      this.note.add(t);
+      return t;
+    }
+
+    // syntactic sugar
+    public Device addNote(Annotation t) { //3
+      if (t == null)
+        return this;
+      if (this.note == null)
+        this.note = new ArrayList<Annotation>();
+      this.note.add(t);
+      return this;
+    }
+
+    /**
      * @return {@link #status} (Status of the Device availability.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<Devicestatus> getStatusElement() { 
+    public Enumeration<DeviceStatus> getStatusElement() { 
       if (this.status == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Device.status");
         else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<Devicestatus>(new DevicestatusEnumFactory()); // bb
+          this.status = new Enumeration<DeviceStatus>(new DeviceStatusEnumFactory()); // bb
       return this.status;
     }
 
@@ -349,7 +403,7 @@ public class Device extends DomainResource {
     /**
      * @param value {@link #status} (Status of the Device availability.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Device setStatusElement(Enumeration<Devicestatus> value) { 
+    public Device setStatusElement(Enumeration<DeviceStatus> value) { 
       this.status = value;
       return this;
     }
@@ -357,19 +411,19 @@ public class Device extends DomainResource {
     /**
      * @return Status of the Device availability.
      */
-    public Devicestatus getStatus() { 
+    public DeviceStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value Status of the Device availability.
      */
-    public Device setStatus(Devicestatus value) { 
+    public Device setStatus(DeviceStatus value) { 
       if (value == null)
         this.status = null;
       else {
         if (this.status == null)
-          this.status = new Enumeration<Devicestatus>(new DevicestatusEnumFactory());
+          this.status = new Enumeration<DeviceStatus>(new DeviceStatusEnumFactory());
         this.status.setValue(value);
       }
       return this;
@@ -943,6 +997,7 @@ public class Device extends DomainResource {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "Unique instance identifiers assigned to a device by organizations like manufacturers or owners .   If the identifier identifies the type of device, Device.type should be used.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("type", "CodeableConcept", "Code or identifier to identify a kind of device.", 0, java.lang.Integer.MAX_VALUE, type));
+        childrenList.add(new Property("note", "Annotation", "Descriptive information, usage information or implantation information that is not captured in an existing element.", 0, java.lang.Integer.MAX_VALUE, note));
         childrenList.add(new Property("status", "code", "Status of the Device availability.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("manufacturer", "string", "A name of the manufacturer.", 0, java.lang.Integer.MAX_VALUE, manufacturer));
         childrenList.add(new Property("model", "string", "The 'model' - an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type.", 0, java.lang.Integer.MAX_VALUE, model));
@@ -967,6 +1022,11 @@ public class Device extends DomainResource {
             dst.identifier.add(i.copy());
         };
         dst.type = type == null ? null : type.copy();
+        if (note != null) {
+          dst.note = new ArrayList<Annotation>();
+          for (Annotation i : note)
+            dst.note.add(i.copy());
+        };
         dst.status = status == null ? null : status.copy();
         dst.manufacturer = manufacturer == null ? null : manufacturer.copy();
         dst.model = model == null ? null : model.copy();
@@ -998,12 +1058,12 @@ public class Device extends DomainResource {
         if (!(other instanceof Device))
           return false;
         Device o = (Device) other;
-        return compareDeep(identifier, o.identifier, true) && compareDeep(type, o.type, true) && compareDeep(status, o.status, true)
-           && compareDeep(manufacturer, o.manufacturer, true) && compareDeep(model, o.model, true) && compareDeep(version, o.version, true)
-           && compareDeep(manufactureDate, o.manufactureDate, true) && compareDeep(expiry, o.expiry, true)
-           && compareDeep(udi, o.udi, true) && compareDeep(lotNumber, o.lotNumber, true) && compareDeep(owner, o.owner, true)
-           && compareDeep(location, o.location, true) && compareDeep(patient, o.patient, true) && compareDeep(contact, o.contact, true)
-           && compareDeep(url, o.url, true);
+        return compareDeep(identifier, o.identifier, true) && compareDeep(type, o.type, true) && compareDeep(note, o.note, true)
+           && compareDeep(status, o.status, true) && compareDeep(manufacturer, o.manufacturer, true) && compareDeep(model, o.model, true)
+           && compareDeep(version, o.version, true) && compareDeep(manufactureDate, o.manufactureDate, true)
+           && compareDeep(expiry, o.expiry, true) && compareDeep(udi, o.udi, true) && compareDeep(lotNumber, o.lotNumber, true)
+           && compareDeep(owner, o.owner, true) && compareDeep(location, o.location, true) && compareDeep(patient, o.patient, true)
+           && compareDeep(contact, o.contact, true) && compareDeep(url, o.url, true);
       }
 
       @Override
@@ -1021,7 +1081,7 @@ public class Device extends DomainResource {
 
       public boolean isEmpty() {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (type == null || type.isEmpty())
-           && (status == null || status.isEmpty()) && (manufacturer == null || manufacturer.isEmpty())
+           && (note == null || note.isEmpty()) && (status == null || status.isEmpty()) && (manufacturer == null || manufacturer.isEmpty())
            && (model == null || model.isEmpty()) && (version == null || version.isEmpty()) && (manufactureDate == null || manufactureDate.isEmpty())
            && (expiry == null || expiry.isEmpty()) && (udi == null || udi.isEmpty()) && (lotNumber == null || lotNumber.isEmpty())
            && (owner == null || owner.isEmpty()) && (location == null || location.isEmpty()) && (patient == null || patient.isEmpty())

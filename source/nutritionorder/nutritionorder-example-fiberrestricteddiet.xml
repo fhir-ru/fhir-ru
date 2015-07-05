@@ -105,16 +105,16 @@ edited by Eric Haas Health eData Inc
 			<text value="Low fat diet"/>
 		</type>
 		<!-- EH example of three times a day starting on 2/10  -->
-		<scheduled>
+		<schedule>
 			<repeat>
-        <bounds>
+        <boundsPeriod>
           <start value="2015-02-10"/>
-        </bounds>
+        </boundsPeriod>
 				<frequency value="3"/>
 				<period value="1"/>
 				<periodUnits value="d"/>
 			</repeat>
-		</scheduled>
+		</schedule>
 		<nutrient>
 			<!-- list nutrients and amounts here -->
 			<modifier>

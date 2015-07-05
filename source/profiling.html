@@ -38,9 +38,44 @@ contexts of use. Typically, these adaptations specify:
 Note that because of the nature of the healthcare eco-system, there may be multiple
 overlapping sets of adaptations - by healthcare domain, by country, by institution, and/or by vendor/implementation.
 </p>
+<a name="glossary"> </a>
+<h3>Glossary</h3>
 <p>
-Typically, adaptations (either actual implementations or specifications - often called "Implementation Guides")
-both restrict and extend APIs, resources and terminologies. FHIR provides a set of resources that
+FHIR defines a cascade of artifacts for this purpose:
+</p>
+<table class="grid">
+ <tr>
+  <td><b>Artifact</b></td>
+  <td><b>Description</b></td>
+  <td><b><a href="daf.html">DAF</a> example</b></td>
+ </tr>
+ <tr>
+  <td>Implementation Guide</td>
+  <td>A coherent and bounded set of adaptations that are published as a single unit. Validation occurs within the contextz of the Implementation Guide</td>
+  <td><a href="daf.html">DAF IG</a></td>
+ </tr>
+ <tr>
+  <td>Package</td>
+  <td>A group of related adaptations that are published as a group within an Implementation Guide</td>
+  <td><a href="daf-medicationusage.html">DAF Medication Usage</a></td>
+ </tr>
+ <tr>
+  <td>Conformance Item</td>
+  <td>A single resource in a package that makes rules about how an implementation works. These are described below</td>
+  <td><a href="medicationprescription-daf.html">DAF Prescription</a></td>
+ </tr>
+</table>
+<p>
+The term "profile" is general one that is used about either a "package" or an "item". 
+"Profiling" is a general term that describes the process of creating an implementation guide,
+or any of the resources found in one. 
+</p>
+
+<a name="conf-res"> </a>
+<h3>Conformance Resources</h3>
+
+<p>
+Typically, Implementation Guides both restrict and extend APIs, resources and terminologies. FHIR provides a set of resources that
 can be used to represent and share the decisions that have been made, and allows implementers to build useful services from them. These
 resources are known as the conformance resources. These conformance resources allow implementers to:
 </p>
@@ -66,22 +101,23 @@ following the basic concepts for extension that are described in <a href="extens
 For implementer convenience, the specification itself publishes its base definitions using these same resources.
 </p>
 
+<a name="profile-uses"> </a>
 <h3>Two uses of Profiles</h3>
 <p>
 The <a href="conformance.html">Conformance</a> resource describes two different uses for profiles on resources:
 Resource Profiles and System Profiles. Resource Profiles are specified using <i>Conformance.rest.resource.profile</i> element 
 and System Profiles are specified using <i>Conformance.profile</i> element. 
 </p>
-<h4>Resource Profiles</h4>
+<h4>Conformance.rest.resource.profile</h4>
 <p>
 These profiles describe the general features that are supported by the system for each kind of 
 resource. Typically, this is the superset of all the different use-cases implemented by the system. 
 This is a resource-level perspective of the system functionality. 
 </p>
-<h4>System Profiles</h4>
+<h4>Conformance.profile</h4>
 <p>
 These profiles describe the information handled/produced by the system on a per use case basis.
-Some examples of the uses for system profiles:
+Some examples of the uses for these kind of profiles:
 </p>
 <ul>
  <li>A Laboratory service producing a set of different reports - general chemistry, blood count, etc. Typical labs would support several hundred different reports</li>
@@ -116,11 +152,11 @@ One possible option is for the expert system to receive every single
 report coming from the lab system, check whether it conforms to the 
 profile or not, and then decide whether to process it. Checking whether
 a resource conforms to a particular profile or not is a straight 
-forward operation (on option is to use the <a href="downloads.html">provided tools for this</a>),
+forward operation (one option is to use the <a href="downloads.html">provided tools for this</a>),
 but this is very inefficient way - the expert system has to receive 
 and process 100 times many resources as it uses. To help a consumer 
-find the correct set of reports for a use-case, the producer of the 
-resources also SHALL:
+find the correct set of reports for a use-case, a producer of  
+resources also SHALL, for any profile declared in Conformance.profile:
 </p>
 <ol>
  <li><a href="resource.html#meta">Mark resources</a> with profile assertions documenting the profile(s) they conform to (this enables indexing by the profile)</li>
@@ -134,8 +170,8 @@ to conform to the declared profiles SHOULD be published in this form.
 <a name="dstu"> </a>
 <blockquote>
 <p>
-DSTU note: there are many uninvestigated issues associated with system profiles. 
-HL7 is actively seeking feedback from users who experiment with system profiles, and users
+DSTU note: there are many uninvestigated issues associated with this use of profiles. 
+HL7 is actively seeking feedback from users who experiment in this area, and users
 should be prepared for changes to features and obligations in this area in the future.
 </p>
 </blockquote>
@@ -224,15 +260,19 @@ is published. The following kinds of statements can be made about how an element
  <li>Restricting the types for an element that allows multiple types</li>
  <li>Requiring a typed element or the target of a resource reference to conform to another structure profile (declared in the same profile, or elsewhere)</li>
  <li>Specifying a binding to a different terminology value set (see below)</li>
- <li>Providing alternative definitions and examples for the elements defined in a Resource to explain how they are used in the context of the Profile</li>
+ <li>Providing alternative definitions, comments/usage notes and examples for the elements defined in a Resource to explain how they are used in the context of the Profile</li>
  <li>Providing more specific or additional mappings (e.g. to v2 or v3) for the resource when used in a particular context</li>
  <li>Declaring that one or more elements in the structure must be 'supported' (see below)</li>
 </ul>
 <p>
-All of these changed definitions SHALL be restrictions that are consistent with the
+Any changed definitions SHALL be restrictions that are consistent with the
 rules defined in the base resource in the FHIR Specification. Note that some of 
 these restrictions can be enforced by tooling (and are by the FHIR tooling), but 
 others (e.g. alignment of changes to descriptive text) cannot be automatically enforced.
+</p>
+<p>
+Note that structure definitions cannot 'remove' mappings and constraints that are defined in the base structure, 
+but for purposes of clarity, they can refrain from repeating them.
 </p>
 <p>
 A structure definition contains a linear list of element declarations. The inherent
@@ -289,7 +329,8 @@ impossible if the base structure is not available), a StructureDefinition
 can also carry a "snapshot" - a fully calculated form of the
 structure that is not dependent on any other structure. The FHIR
 project provides tools for the common platforms that can populate
-a snapshot from a differential.
+a snapshot from a differential (note that this tool generates complete 
+verbose snapshots; it does not support suppressing mappings or constraints).
 </p>
 <p>
 StructureDefinitions can contain both a differential and a snapshot view.
@@ -363,7 +404,7 @@ This element is called the “discriminator”.
 <p>
 In the general case, systems processing resources using a structure definition
 that slices a list can determine which slice an item in
-the list by checking whether its content meets the rules specified
+the list is to by checking whether its content meets the rules specified
 for the slice.
 </p>
 <p>
@@ -378,7 +419,7 @@ are used to tell the slices apart.
 When a discriminator is provided, the composite of the values of 
 the elements nominated in the discriminator is unique and distinct
 for each possible slice and applications can easily determine
-which slice an item in a list corresponds to. The intention is that 
+which slice an item in a list is. The intention is that 
 this can be done in generated code.
 </p>
 <p>
@@ -509,7 +550,7 @@ definition of the set of possible codes and controls how tightly the set of the 
 <p>
 The set of possible codes is either a formal reference to a <a href="valueset.html">ValueSet</a> 
 resource, which may be version specific, or a general reference to some web content that defines a set of 
-codes. The second is most appropriate where set of values is defined by 
+codes. The second is most appropriate where a set of values is defined by 
 some external standard (such as mime types). Alternatively, where the binding
 is incomplete (e.g. under development) just a text description of the 
 possible codes can be provided. 
@@ -522,19 +563,22 @@ set of codes. See <a href="terminologies.html#strength">Binding Strength</a>.
 <a name="tx"> </a>
 <h3>Mixing Custom and Standard Terminologies</h3>
 <p>
-<a href="valueset.html">Value Set</a> resources can be used to define local codes (Example) and 
-to mix a combination of local codes and standard codes (examples: LOINC, SNOMED), or just
+<a href="valueset.html">Value Set</a> resources can be used to define local codes (<a href="valueset-example-inline.html">Example</a>) and 
+to mix a combination of local codes and standard codes (e.g. LOINC, SNOMED), or just
 to choose a particular set of standard codes (examples: LOINC, SNOMED, RxNorm). 
 Profiles can bind to these value sets instead of the ones defined in the base
 specification, following these rules:
 </p>
 <table class="grid">
- <tr> <td><b>Binding Type in base specification</b></td> <td><b>Matching Profile Properties</b></td> <td><b>Customization Rules in Profiles</b></td> </tr>
-
- <tr> <td>Complete</td> <td>conformance = required, extensible = false</td> <td>The value set can only contain codes contained in the value set specified by the FHIR specification</td> </tr>
- <tr> <td>Incomplete</td> <td>conformance = preferred and extensible = true</td> <td>The value set can contain codes not found in the base value set. These additional codes SHOULD not have the same meaning as existing codes in the base value set</td> </tr>
- <tr> <td>Example</td> <td>conformance = example</td> <td>The value set can contain whatever is appropriate for local use</td> </tr> 
+ <tr> <td><b><a href="terminologies.html#binding">Binding Strength</a> in base specification</b></td> <td><b>Customization Rules in Profiles</b></td> </tr>
+ <tr> <td>required</td> <td>The value set can only contain codes contained in the value set specified by the FHIR specification</td> </tr>
+ <tr> <td>extensible</td>  <td>The value set can contain codes not found in the base value set. These additional codes SHOULD NOT have the same meaning as existing codes in the base value set</td> </tr>
+ <tr> <td>preferred</td>  <td>The value set can contain whatever is appropriate for local use</td> </tr> 
+ <tr> <td>example</td>  <td>The value set can contain whatever is appropriate for local use</td> </tr> 
 </table> 
+<p>
+Note that local codes are not as interoperable as standard published code systems (e.g. LOINC, SNOMED C, so it is preferable to use standard code systems.
+</p>
 
 <a name="mustSupport"> </a>
 <h3>Must Support</h3>

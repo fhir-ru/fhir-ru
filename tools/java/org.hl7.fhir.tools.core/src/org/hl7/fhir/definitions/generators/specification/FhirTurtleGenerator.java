@@ -1,25 +1,19 @@
 package org.hl7.fhir.definitions.generators.specification;
 
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
-import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -33,13 +27,17 @@ import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.DecimalType;
 import org.hl7.fhir.instance.model.ElementDefinition;
+import org.hl7.fhir.instance.model.Enumerations.BindingStrength;
 import org.hl7.fhir.instance.model.IntegerType;
+import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.model.ElementDefinition.BindingStrength;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineComponent;
+import org.hl7.fhir.instance.model.valuesets.IssueType;
 import org.hl7.fhir.instance.utils.WorkerContext;
+import org.hl7.fhir.instance.validation.ValidationMessage;
+import org.hl7.fhir.instance.validation.ValidationMessage.Source;
 import org.hl7.fhir.rdf.TurtleGenerator;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -76,11 +74,13 @@ public class FhirTurtleGenerator extends TurtleGenerator {
   private Deque<AnonTypeInfo> anonTypes = new ArrayDeque<AnonTypeInfo>();
   private Map<String, ValueSet> valuesets = new HashMap<String, ValueSet>();
   private Subject nilInstance;
+  private List<ValidationMessage> issues;
 
-  public FhirTurtleGenerator(OutputStream destination, Definitions definitions, WorkerContext context) {
+  public FhirTurtleGenerator(OutputStream destination, Definitions definitions, WorkerContext context, List<ValidationMessage> issues) {
     super(destination);
     this.definitions = definitions;
     this.context = context;
+    this.issues = issues;
   }
   
   /**
@@ -394,7 +394,7 @@ public class FhirTurtleGenerator extends TurtleGenerator {
     section.label("fhir:"+t.getName(), t.getShortDefn());
     section.comment("fhir:"+t.getName(), t.getDefinition());
     if (t.getName().equals("Reference")) 
-      section.triple("fhir:"+t.getName(), "a", "fhir:Resource", "This is so that a reference can be replaced by a direct reference to it's target");
+      section.triple("fhir:"+t.getName(), "a", "fhir:Resource"); // This is so that a reference can be replaced by a direct reference to it's target
     nilInstance.predicate("a", "fhir:"+t.getName());
     processMappings(section, "fhir:"+t.getName(), t);
     for (ElementDefn e : t.getElements()) {
@@ -486,16 +486,16 @@ public class FhirTurtleGenerator extends TurtleGenerator {
       section.triple("fhir:"+tn+"."+en, "rdfs:range", "fhir:"+r.getDeclaredTypeName());        
     } else {
       if (e.hasBinding()) {
-        BindingSpecification bs = definitions.getBindingByName(e.getBindingName());
-        if (bs.getReferredValueSet() != null) {
-          String bn = getPNameForUri(bs.getReferredValueSet().getUrl());
-          if (bs.getStrength() == BindingStrength.REQUIRED && bs.getBinding() == Binding.CodeList && tr.getName().equals("code") && bs.getReferredValueSet().hasDefine())
-            section.triple("fhir:"+tn+"."+en, "rdfs:range", getPNameForUri(bs.getReferredValueSet().getDefine().getSystem()));
+        BindingSpecification bs = e.getBinding();
+        if (bs.getValueSet() != null) {
+          String bn = getPNameForUri(bs.getValueSet().getUrl());
+          if (bs.getStrength() == BindingStrength.REQUIRED && bs.getBinding() == BindingMethod.CodeList && tr.getName().equals("code") && bs.getValueSet().hasDefine())
+            section.triple("fhir:"+tn+"."+en, "rdfs:range", getPNameForUri(bs.getValueSet().getDefine().getSystem()));
           else
             section.triple("fhir:"+tn+"."+en, "rdfs:range", processType(tr.getName()));
           section.triple("fhir:"+tn+"."+en, "fhir:binding", bn);
           if (!bn.startsWith("vs:")) // a v3 valueset
-          valuesets.put(bn, bs.getReferredValueSet());
+          valuesets.put(bn, bs.getValueSet());
         } else if (!Utilities.noString(bs.getReference())) {
           section.triple("fhir:"+tn+"."+en, "rdfs:range", processType(tr.getName()));
           section.triple("fhir:"+tn+"."+en, "fhir:binding", "<"+bs.getReference()+">");
@@ -550,6 +550,8 @@ public class FhirTurtleGenerator extends TurtleGenerator {
     else
       section.triple("fhir:"+t.getName(), "rdfs:subClassOf", processType(t.typeCode()));
     section.comment("fhir:"+t.getName(), rd.getDefinition());
+    if (!Utilities.noString(t.getW5()))
+      section.triple("fhir:"+t.getName(), "fhir:w5", complex().predicate("a", "fhir:w5\\#"+t.getW5()));
     processMappings(section, "fhir:"+rd.getName(), rd.getRoot());
     for (ElementDefn e : t.getElements()) {
       if (e.getName().endsWith("[x]")) {
@@ -801,11 +803,11 @@ public class FhirTurtleGenerator extends TurtleGenerator {
   protected void chckSubjects() {
     for (String s : sorted(predicateSet)) {
       if (s.startsWith("fhir:") && !subjectSet.contains(s))
-        System.out.println("Undefined predicate "+s);
+        issues.add(new ValidationMessage(Source.Ontology, IssueType.INVALID, -1, -1, "turtle", "Undefined predicate "+s, IssueSeverity.WARNING));
     }
     for (String s : sorted(objectSet)) {
       if (s.startsWith("fhir:") && !subjectSet.contains(s))
-        System.out.println("Undefined object "+s);
+        issues.add(new ValidationMessage(Source.Ontology, IssueType.INVALID, -1, -1, "turtle", "Undefined object "+s, IssueSeverity.WARNING));
     }
   }
 

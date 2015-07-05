@@ -18,8 +18,8 @@
 <p><b>Table of Contents</b></p>
 <table class="grid">
  <tr>
-  <td><b>Primitive Types</b><br/>[%diagram datatypes/allprimitivetypes.diagram%]</td>
-  <td><b>Complex Types</b><br/>[%diagram datatypes/alltypes.diagram%]</td>
+  <td><b>Primitive Types</b><br/>[%diagram datatypes/allprimitivetypes.diagram 1%]</td>
+  <td><b>Complex Types</b><br/>[%diagram datatypes/alltypes.diagram 2%]</td>
  </tr>
 </table>
 
@@ -51,8 +51,8 @@
 	<p>A high-precision decimal value:</p><pre class="xml" fragment="decimal">&lt;pi value="3.14159265358979323846264338327950288419716939937510" /&gt;</pre>
 	<p>A stream of bytes, base64 encoded:</p><pre class="xml" fragment="base64Binary">&lt;data value="/9j/4...KAP//Z" /&gt; &lt;!-- covers many lines --&gt;</pre>
 	<p>A unicode string:</p><pre class="xml" fragment="string">&lt;caption value="Noodles are called ?? in Chinese" /&gt;</pre>
-	<p>A uri that points to a website:</p><pre class="xml" fragment="uri">&lt;reference value="http://hl7.org/fhir" /&gt;</pre>
-	<p>A uri that is a urn:</p><pre class="xml" fragment="uri">&lt;id value="urn:isbn:0451450523" /&gt;</pre>
+	<p>A URI that points to a website:</p><pre class="xml" fragment="uri">&lt;reference value="http://hl7.org/fhir" /&gt;</pre>
+	<p>A URI that is a urn:</p><pre class="xml" fragment="uri">&lt;id value="urn:isbn:0451450523" /&gt;</pre>
 	<p>A date of birth:</p><pre class="xml" fragment="date">&lt;date value="1951-06-04" /&gt;</pre>
 	<p>An approximate date of birth:</p><pre class="xml" fragment="date">&lt;date value="1951-06" /&gt;</pre>
 	<p>The instant a document was created, including time zone:</p><pre class="xml" fragment="instant">&lt;instant value="2013-06-08T10:57:34+01:00" /&gt;</pre>
@@ -64,8 +64,8 @@
 <h3>String Patterns</h3>
 
 <div class="example">
-	<p>A uri that is the root oid of HL7:</p><pre class="xml" fragment="oid">&lt;root value="urn:oid:2.16.840.1.113883" /&gt;</pre>
-	<p>A uri that is a uuid:</p><pre class="xml" fragment="uuid">&lt;id value="urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11" /&gt;</pre>
+	<p>A URI that is the root oid of HL7:</p><pre class="xml" fragment="oid">&lt;root value="urn:oid:2.16.840.1.113883" /&gt;</pre>
+	<p>A URI that is a uuid:</p><pre class="xml" fragment="uuid">&lt;id value="urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11" /&gt;</pre>
 	<p>A code:</p><pre class="xml" fragment="code">&lt;code value="acq4+acq5" /&gt;</pre>
 	<p>A code with single internal space:</p><pre class="xml" fragment="code">&lt;code value="Question 4b" /&gt;</pre>
 	<p>A numeric id:</p><pre class="xml" fragment="code">&lt;id value="314" /&gt;</pre>
@@ -252,7 +252,7 @@ See also <a href="datatypes.html#CodeableConcept">Base Definition</a>, <a href="
       &lt;system value="http://snomed.info/sct" /&gt;
       &lt;code value="25064002" /&gt;
       &lt;display value="Headache" /&gt;
-      &lt;primary value="true" /&gt;
+      &lt;userSelected value="true" /&gt;
     &lt;/coding&gt;
     &lt;text value="general headache" /&gt;
   &lt;/concept&gt;
@@ -388,7 +388,7 @@ See also <a href="datatypes.html#Quantity">Base Definition</a>, <a href="datatyp
   &lt;cost&gt;
     &lt;value value="25.45" /&gt;
     &lt;units value="US$" /&gt;
-    &lt;system value="urn:std:iso:4217" /&gt;
+    &lt;system value="urn:iso:std:iso:4217" /&gt;
     &lt;code value="USD" /&gt;
   &lt;/cost&gt;
 </pre>
@@ -447,7 +447,7 @@ Money:Quantity):</p>
      &lt;value value="103.50" /&gt;
      &lt;units value="US$" /&gt;
      &lt;code value="USD" /&gt;
-     &lt;system value="urn:std:iso:4217" /&gt;
+     &lt;system value="urn:iso:std:iso:4217" /&gt;
    &lt;/numerator&gt;
    &lt;denominator&gt;
      &lt;value value="1" /&gt;
@@ -1188,10 +1188,10 @@ See also <a href="datatypes.html#Timing">Base Definition</a>, <a href="datatypes
 <pre class="xml" fragment="Timing">
   &lt;schedule&gt;
     &lt;repeat&gt;
-      &lt;bounds&gt;
+      &lt;boundsPeriod&gt;
         &lt;start value="2011-12-23" /&gt;
         &lt;end value="2012-01-02" /&gt;
-      &lt;/bounds&gt;
+      &lt;/boundsPeriod&gt;
       &lt;when value="ACM" /&gt;
       &lt;period value="30" /&gt;
       &lt;periodUnits value="min" /&gt;
@@ -1204,7 +1204,7 @@ Note that the end date is inclusive like the end date of a Period.
 </div>
 
 <a name="Signature"></a>
-<a name="timing"></a>
+<a name="signature"></a>
 <h3>
 Signature
 </h3>
@@ -1223,6 +1223,25 @@ See also <a href="datatypes.html#Signature">Base Definition</a>, <a href="dataty
 
 </div>
 
+<a name="Annotation"></a>
+<a name="annotation"></a>
+<h3>
+Annotation
+</h3>
+<p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
+See also <a href="datatypes.html#Annotation">Base Definition</a>, <a href="datatypes-definitions.html#Annotation">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Annotation">Mappings</a>.
+</p>
+
+<div class="example">
+<p><b>Example</b></p>
+<p>todo</p>
+<pre class="xml" fragment="Annotation">
+  &lt;Annotation&gt;
+    &lt;!-- todo --&gt;
+  &lt;/Annotation&gt;
+</pre>
+
+</div>
 
 </div>
 

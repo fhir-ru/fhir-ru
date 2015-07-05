@@ -39,8 +39,12 @@ their own distributions formats .
  <li>Value sets are used in <a href="structuredefinition.html">StructureDefinitions</a>, and <a href="questionnaire.html">Questionnaires</a> to specify the allowable contents for coded elements</li>
  <li>In addition, a specific <a href="datatypes.html#Coding">Coding</a> can reference the value set it was picked from</li>
  <li><a href="conceptmap.html">Concept Maps</a> describe mappings between value sets</li>
- <li>The ValueSet resource design is based on the functionality described in the <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a> specification. Value set
-resources can be converted to CTS2 value set and code system resources</li>
+ <li>The ValueSet resource design is based on the functionality described in the <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a> specification, along 
+ with metadata in the HL7 Value Set Definition specification. Value set resources can be converted to CTS2 
+ value set and code system resources</li>
+ <li>The value set resource is aligned with the <a href="http://wiki.hl7.org/index.php?title=Value_Set_Definition_Standard_Project">Value Set Definition</a> (VSD) project. 
+ Not all the elements defined by the VSD are part of the base resource - some are defined as part of the <a href="valueset-extensions.html">ValueSet Extensions</a>.
+ In the ValueSet resource, the <code>lockedDate</code>, <code>compose</code> and <code>define</code> elements make up the VSD Content Logical definition</li>
 </ul>
 </div>
 
@@ -80,7 +84,19 @@ references to value sets can either be logical or literal URL.
 
 </blockquote>
 
-
+<h3>ValueSet Identification</h3>
+<p>
+A value set has 3 identifiers:
+</p>
+<ul>
+ <li>ValueSet.id: the local identifier on the system that holds it - this changes as it moves from server to server (this, the the server address prepended, is called the 'literal identity' of the resource)</li>
+ <li>ValueSet.url: the master identifier that never changes for this value set - the same in every copy (this is called the 'logical identity' of the resource)</li>
+ <li>ValueSet.identifier: A system/value pair that is used to identify the value set in other contexts (such as an OID in an HL7 V3 specification)</li>
+</ul>
+<p>
+For further information, see <a href="resource.html#id">Resource Identity</a>.
+</p>
 </div>
+
 </div>
 

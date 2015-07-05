@@ -77,7 +77,11 @@ The composition resource is the foundation of the clinical document. It:
 </ul>
 <p>
 Any resource referenced directly in the Composition SHALL be included in the bundle when the document
-is assembled. Other resources that these referenced resources refer to may also be included in the
+is assembled. Specifically, this means the following resource references:
+</p>
+<%res-ref-list Composition%>
+<p>
+Other resources that these referenced resources refer to may also be included in the
 bundle if the document construction system chooses to so do. Including these additional resources will
 make the document bigger, but will save applications from needing to retrieve the linked resources
 if they need them while processing the document. Thus, whether these linked resources should be included or
@@ -138,7 +142,7 @@ collated narrative portions of the following resources in order:
 </ol>
 <p>
 The presentation of the document is called the 'attested content' of the document. Additional
-resources can be included in the bundle (e.g. the resources that the Lists for the section.content
+resources can be included in the bundle (e.g. resources referenced from the List that represent the section.content
 SHOULD be in the bundle, and other additional resources they reference can be included), but these are not 
 attested content. Specifically, the Composition.attester attests to the presented form of the document.
 </p>
@@ -170,7 +174,7 @@ apply to the collated narrative. This is done by asserting stylesheet links on t
 &lt;/Bundle&gt;
 </pre>
 <p>
-The uri can be an absolute reference to a CSS stylesheet or
+The <code>url</code> can be an absolute reference to a CSS stylesheet or
 a relative reference to a Binary resource that carries a
 CSS stylesheet. Stylesheet references can only refer to
 a CSS stylesheet - other forms of stylesheet are not acceptable.
@@ -211,7 +215,7 @@ purpose. Document profiles may make rules about:
 Applications should consider publishing <a href="conformance.html">conformance
 statements</a> that identify particular documents they support. Documents can
 identify a profile that they conform to by placing a profile tag in a <i>feed.category</i>
-element - see <a href="extras.html#profile-tags">Profile Tags</a> for a discussion of the utility
+element - see <a href="resource.html#meta">Profile Tags</a> for a discussion of the utility
 of this.
 </p>
 
@@ -277,7 +281,7 @@ of posting to them:
    composition resources. This can be used while building a document or after breaking a document up into
    its constituent resources or when using compositions separately from documents</td> </tr>
 
- <tr> <td><a href="extras.html#binary">[baseurl]/Binary</a></td> <td>Document Bundle</td> <td>Just store the entire document as
+ <tr> <td><a href="compartments.html#binary">[baseurl]/Binary</a></td> <td>Document Bundle</td> <td>Just store the entire document as
    a sequence of bytes and return exactly that sequence when requested. There is no way to find content in the /Binary end-point,
    so usually this would be associated with a <a href="documentreference.html">Document Reference</a> so that applications
    can find and process the document, though this is not required</td> </tr>
@@ -288,25 +292,13 @@ of posting to them:
    server can reassemble the document (see below), the result cannot be expected to be in the same order, etc.  Thus a document signature will
    very likely be invalid.)</td> </tr>
 
- <tr> <td><a href="messaging.html#mailbox">[baseurl]/$mailbox</a></td> <td>Document Bundle</td> <td>Submit the
- document to the server for processing. The exact processing the server performs is at the discretion of the
- server. It MAY perform one or more of these actions:
-  <ul>
-    <li>Resend the document elsewhere</li>
-    <li>Break it up into individually accessible resources and make them available on a RESTful interface</li>
-    <li>Retain the document in its binary form and make it available on /Binary and perhaps also create a DocumentReference</li>
-  </ul>
-  The server is not obliged to process the document in any particular fashion. The client does not know what action
-  the server will take, only that the server has accepted responsibility for the document.
-  <br/><br/>
-  Implementation Profiles should be careful when making rules about what happens when a document is submitted to the
-  mailbox, as it would be easy to make rules such that a server cannot conform to more than one profile at a time.
-  </td> </tr>
 </table>
 
 <p>
 Note: While these end-points are defined for use with document resources and document bundles,
 it is not necessary to use them. Documents may be transferred between systems using any method desired.
+In addition, servers and/or specifications may define additional <a href="operations.html">operations</a>
+for handling documents beyond the options described above.
 </p>
 
 <h3>Generating a Document</h3>

@@ -103,14 +103,14 @@ public class CSVProcessor {
 
   public void setData(InputStream data) {
     try {
-		this.data = new DataReader(data);
-	} catch (UnsupportedEncodingException e) {
-		// DataReader is fixed to "UTF-8", so this exception cannot really occur
-	}   
+      this.data = new DataReader(data);
+    } catch (UnsupportedEncodingException e) {
+      // DataReader is fixed to "UTF-8", so this exception cannot really occur
+    }   
   }
 
-  public void setOutput(OutputStream out) {
-    this.out = new OutputStreamWriter(out);   
+  public void setOutput(OutputStream out) throws UnsupportedEncodingException {
+    this.out = new OutputStreamWriter(out, "UTF-8");   
   }
 
   public void process() throws Exception {

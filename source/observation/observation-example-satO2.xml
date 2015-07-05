@@ -6,19 +6,6 @@
 <Observation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\observation.xsd">
   <id value="satO2"/>
 
-  <text>
-    <status value="generated"/>
-    <div xmlns="http://www.w3.org/1999/xhtml">Dec 04 2014: Oxygen saturation 95% (normal)</div>
-  </text>
-
-  <!--
-  <extension url="http://hl7.org/fhir/StructureDefinition/relatedDeviceMetric">
-    <valueReference>
-		<reference value="DeviceMetric/example"/>
-	</valueReference>
-  </extension>
-  -->
-
   <code>
     <coding>
       <system value="https://rtmms.nist.gov"/> <!--   mdc   -->
@@ -29,7 +16,7 @@
 
   <valueQuantity>
     <value value="95"/>
-    <units value="percent"/>
+    <units value="%"/>
     <system value="https://rtmms.nist.gov"/>
     <code value="262688"/>
   </valueQuantity>
@@ -42,7 +29,7 @@
     </coding>
   </interpretation>
 
-  <appliesDateTime value="2014-12-05T09:30:10+01:00"/>
+  <effectiveDateTime value="2014-12-05T09:30:10+01:00"/>
 
   <status value="final"/>
 
@@ -58,20 +45,19 @@
   </subject>
 
   <device>
-    <!--reference value="Device/ihe-pcd"/-->
     <reference value="DeviceMetric/example"/>
   </device>
 
   <referenceRange>
     <low>
       <value value="90"/>
-      <units value="percent"/>
+      <units value="%"/>
       <system value="https://rtmms.nist.gov"/>
       <code value="262688"/>
     </low>
     <high>
       <value value="99"/>
-      <units value="percent"/>
+      <units value="%"/>
       <system value="https://rtmms.nist.gov"/>
       <code value="262688"/>
     </high>

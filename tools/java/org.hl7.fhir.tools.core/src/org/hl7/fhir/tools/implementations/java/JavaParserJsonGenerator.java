@@ -50,7 +50,6 @@ import org.hl7.fhir.utilities.Utilities;
 public class JavaParserJsonGenerator extends JavaBaseGenerator {
   public enum JavaGenClass { Structure, Type, Resource, AbstractResource, Constraint, Backbone }
 
-  private Definitions definitions;
   private Map<ElementDefn, String> typeNames = new HashMap<ElementDefn, String>();
   private List<String> typeNameStrings = new ArrayList<String>();
   private List<ElementDefn> enums = new ArrayList<ElementDefn>();
@@ -349,11 +348,11 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
       String prsr = null;
       String aprsr = null;
       String anprsr = null;
-      BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
-      if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
+      BindingSpecification cd = e.getBinding();
+      if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
         String en = typeNames.get(e); // getCodeListType(cd.getBinding());
-        if (isSharedEnum(e.getBindingName()))
-          en = "Enumerations."+e.getBindingName();
+        if (e.getBinding().isShared())
+          en = "Enumerations."+e.getBinding().getValueSet().getName();
 
         prsr = "parseEnumeration(json.get(\""+name+"\").getAsString(), "+en+".NULL, new "+en.substring(0, en.indexOf("."))+"."+en.substring(en.indexOf(".")+1)+"EnumFactory())"; // en+".fromCode(parseString(xpp))";
         aprsr = "parseEnumeration(array.get(i).getAsString(), "+en+".NULL, new "+en.substring(0, en.indexOf("."))+"."+en.substring(en.indexOf(".")+1)+"EnumFactory())"; // en+".fromCode(parseString(xpp))";
@@ -509,14 +508,14 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
   private void scanNestedTypesParser(ElementDefn root, String path, ElementDefn e) throws Exception {
     String tn = null;
     if (e.typeCode().equals("code") && e.hasBinding()) {
-      BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
-      if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
-        tn = getCodeListType(cd.getReference());
+      BindingSpecification cd = e.getBinding();
+      if (cd != null && cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
+        tn = getCodeListType(cd.getValueSet().getName());
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
           enums.add(e);
         }
-        typeNames.put(e,  rootOf(path)+"."+upFirst(tn.substring(1)));
+        typeNames.put(e,  rootOf(path)+"."+upFirst(tn));
       }
     }
     if (tn == null) {
@@ -859,9 +858,9 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
     } else {
       String comp = null;
       String en = null;
-      BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
+      BindingSpecification cd = e.getBinding();
       String tn = typeName(root, e, false);
-      if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
+      if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
         en = typeNames.get(e); // getCodeListType(cd.getBinding());
         comp = null;
       } else {   
@@ -931,24 +930,24 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
         } else {
           write("        openArray(\""+name+"\");\r\n");
           write("        for (Enumeration<"+prepEnumName(en)+"> e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
-          write("          composeEnumerationCore(null, e, new "+context+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory(), true);\r\n");
+          write("          composeEnumerationCore(null, e, new "+context+"."+upFirst(en.substring(en.indexOf(".")+1))+"EnumFactory(), true);\r\n");
           write("        closeArray();\r\n");
           write("        if (anyHasExtras(element.get"+upFirst(getElementName(name, false))+"())) {\r\n");
           write("          openArray(\"_"+name+"\");\r\n");
           write("          for (Enumeration<"+prepEnumName(en)+"> e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
-          write("            composeEnumerationExtras(null, e, new "+context+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory(), true);\r\n");
+          write("            composeEnumerationExtras(null, e, new "+context+"."+upFirst(en.substring(en.indexOf(".")+1))+"EnumFactory(), true);\r\n");
           write("          closeArray();\r\n");
           write("        }\r\n");
         }
         write("      };\r\n");
       } else if (en != null) {
         write("      if (element.has"+upFirst(getElementName(name, false))+"Element()) {\r\n");
-        if (isSharedEnum(e.getBindingName())) {
-          write("        composeEnumerationCore(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new Enumerations."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory(), false);\r\n");
-          write("        composeEnumerationExtras(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new Enumerations."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory(), false);\r\n");
+        if (e.getBinding().isShared()) {
+          write("        composeEnumerationCore(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new Enumerations."+upFirst(en.substring(en.indexOf(".")+1))+"EnumFactory(), false);\r\n");
+          write("        composeEnumerationExtras(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new Enumerations."+upFirst(en.substring(en.indexOf(".")+1))+"EnumFactory(), false);\r\n");
         } else {
-          write("        composeEnumerationCore(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new "+context+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory(), false);\r\n");
-          write("        composeEnumerationExtras(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new "+context+"."+upFirst(en.substring(en.indexOf(".")+2))+"EnumFactory(), false);\r\n");        
+          write("        composeEnumerationCore(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new "+context+"."+upFirst(en.substring(en.indexOf(".")+1))+"EnumFactory(), false);\r\n");
+          write("        composeEnumerationExtras(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new "+context+"."+upFirst(en.substring(en.indexOf(".")+1))+"EnumFactory(), false);\r\n");        
         }
         write("      }\r\n");
         //write("        composeString(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"().toCode());\r\n");        
@@ -981,7 +980,7 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
     if (parts.length == 1)
       return upFirst(parts[0]);
     else
-      return upFirst(parts[0])+'.'+upFirst(parts[1].substring(1));
+      return upFirst(parts[0])+'.'+upFirst(parts[1]);
   }
 
   private String leaf(String tn) {
@@ -1073,9 +1072,9 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
   private void scanNestedTypesComposer(ElementDefn root, String path, ElementDefn e) throws Exception {
     String tn = null;
     if (e.typeCode().equals("code") && e.hasBinding()) {
-      BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
-      if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
-        tn = getCodeListType(cd.getReference());
+      BindingSpecification cd = e.getBinding();
+      if (cd != null && cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
+        tn = getCodeListType(cd.getValueSet().getName());
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
           enums.add(e);

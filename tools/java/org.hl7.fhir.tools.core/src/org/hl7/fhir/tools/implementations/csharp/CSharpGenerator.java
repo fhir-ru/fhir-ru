@@ -29,6 +29,7 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -37,10 +38,12 @@ import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.instance.utils.Version;
+import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.tools.implementations.BaseGenerator;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
 import org.hl7.fhir.tools.publisher.DotNetFramework;
 import org.hl7.fhir.tools.publisher.DotNetFramework.DotNetCompileResult;
+import org.hl7.fhir.tools.publisher.FolderManager;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.Logger;
@@ -197,7 +200,7 @@ public boolean doesCompile() {
   private String ZipFilename;
   
   @Override
-  public boolean compile(String rootDir, List<String> errors, Logger logger) 
+  public boolean compile(String rootDir, List<String> errors, Logger logger, List<ValidationMessage> issues) 
   {  
     String solutionDirectory = Utilities.path(rootDir, "implementations", "csharp");
     String solutionFile = Utilities.path(solutionDirectory, "Hl7.Fhir.sln");
@@ -259,11 +262,16 @@ public boolean doesTest() {
   }
 
   @Override
-public void loadAndSave(String rootDir, String sourceFile, String destFile) {
+public void loadAndSave(FolderManager folders, String sourceFile, String destFile) {
   }
 
   @Override
-public String checkFragments(String rootDir, String fragments) throws Exception {
+public String checkFragments(FolderManager folders, String fragments) throws Exception {
     return "Not supported by C# implementation";
+  }
+
+  @Override
+  public void test(FolderManager folders, Collection<String> names) throws Exception {
+    throw new Error("This should not be called");
   }
 }

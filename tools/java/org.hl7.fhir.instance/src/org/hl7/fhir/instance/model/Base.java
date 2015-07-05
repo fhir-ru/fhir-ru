@@ -6,9 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.instance.model.api.IBase;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
-public abstract class Base implements Serializable {
+public abstract class Base implements Serializable, IBase {
 
   /**
    * User appended data items - allow users to add extra information to the class
@@ -33,6 +34,15 @@ private Map<String, Object> userData;
     userData.put(name, value);
   }
 
+  public void setUserDataINN(String name, Object value) {
+    if (value == null)
+      return;
+    
+    if (userData == null)
+      userData = new HashMap<String, Object>();
+    userData.put(name, value);
+  }
+
   public boolean hasUserData(String name) {
     if (userData == null)
       return false;
@@ -42,6 +52,12 @@ private Map<String, Object> userData;
 
 	public String getUserString(String name) {
     return (String) getUserData(name);
+  }
+
+  public int getUserInt(String name) {
+    if (!hasUserData(name))
+      return 0;
+    return (Integer) getUserData(name);
   }
 
   public boolean hasFormatComment() {

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
@@ -37,42 +37,43 @@ import java.math.*;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * A container for a collection of resources.
  */
 @ResourceDef(name="Bundle", profile="http://hl7.org/fhir/Profile/Bundle")
-public class Bundle extends Resource {
+public class Bundle extends Resource implements IBaseBundle {
 
     public enum BundleType {
         /**
-         * The bundle is a document. The first resource is a Composition.
+         * The bundle is a document. The first resource is a Composition
          */
         DOCUMENT, 
         /**
-         * The bundle is a message. The first resource is a MessageHeader.
+         * The bundle is a message. The first resource is a MessageHeader
          */
         MESSAGE, 
         /**
-         * The bundle is a transaction - intended to be processed by a server as an atomic commit.
+         * The bundle is a transaction - intended to be processed by a server as an atomic commit
          */
         TRANSACTION, 
         /**
-         * The bundle is a transaction response.
+         * The bundle is a transaction response
          */
         TRANSACTIONRESPONSE, 
         /**
-         * The bundle is a list of resources from a _history interaction on a server.
+         * The bundle is a list of resources from a _history interaction on a server
          */
         HISTORY, 
         /**
-         * The bundle is a list of resources returned as a result of a search/query interaction, operation, or message.
+         * The bundle is a list of resources returned as a result of a search/query interaction, operation, or message
          */
         SEARCHSET, 
         /**
-         * The bundle is a set of resources collected into a single document for ease of distribution.
+         * The bundle is a set of resources collected into a single document for ease of distribution
          */
         COLLECTION, 
         /**
@@ -112,25 +113,25 @@ public class Bundle extends Resource {
         }
         public String getSystem() {
           switch (this) {
-            case DOCUMENT: return "";
-            case MESSAGE: return "";
-            case TRANSACTION: return "";
-            case TRANSACTIONRESPONSE: return "";
-            case HISTORY: return "";
-            case SEARCHSET: return "";
-            case COLLECTION: return "";
+            case DOCUMENT: return "http://hl7.org/fhir/bundle-type";
+            case MESSAGE: return "http://hl7.org/fhir/bundle-type";
+            case TRANSACTION: return "http://hl7.org/fhir/bundle-type";
+            case TRANSACTIONRESPONSE: return "http://hl7.org/fhir/bundle-type";
+            case HISTORY: return "http://hl7.org/fhir/bundle-type";
+            case SEARCHSET: return "http://hl7.org/fhir/bundle-type";
+            case COLLECTION: return "http://hl7.org/fhir/bundle-type";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case DOCUMENT: return "The bundle is a document. The first resource is a Composition.";
-            case MESSAGE: return "The bundle is a message. The first resource is a MessageHeader.";
-            case TRANSACTION: return "The bundle is a transaction - intended to be processed by a server as an atomic commit.";
-            case TRANSACTIONRESPONSE: return "The bundle is a transaction response.";
-            case HISTORY: return "The bundle is a list of resources from a _history interaction on a server.";
-            case SEARCHSET: return "The bundle is a list of resources returned as a result of a search/query interaction, operation, or message.";
-            case COLLECTION: return "The bundle is a set of resources collected into a single document for ease of distribution.";
+            case DOCUMENT: return "The bundle is a document. The first resource is a Composition";
+            case MESSAGE: return "The bundle is a message. The first resource is a MessageHeader";
+            case TRANSACTION: return "The bundle is a transaction - intended to be processed by a server as an atomic commit";
+            case TRANSACTIONRESPONSE: return "The bundle is a transaction response";
+            case HISTORY: return "The bundle is a list of resources from a _history interaction on a server";
+            case SEARCHSET: return "The bundle is a list of resources returned as a result of a search/query interaction, operation, or message";
+            case COLLECTION: return "The bundle is a set of resources collected into a single document for ease of distribution";
             default: return "?";
           }
         }
@@ -190,13 +191,17 @@ public class Bundle extends Resource {
 
     public enum SearchEntryMode {
         /**
-         * This resource matched the search specification.
+         * This resource matched the search specification
          */
         MATCH, 
         /**
-         * This resource is returned because it is referred to from another resource in the search set.
+         * This resource is returned because it is referred to from another resource in the search set
          */
         INCLUDE, 
+        /**
+         * An OperationOutcome that provides additional information about the processing of a search
+         */
+        OUTCOME, 
         /**
          * added to help the parsers
          */
@@ -208,26 +213,31 @@ public class Bundle extends Resource {
           return MATCH;
         if ("include".equals(codeString))
           return INCLUDE;
+        if ("outcome".equals(codeString))
+          return OUTCOME;
         throw new Exception("Unknown SearchEntryMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
             case MATCH: return "match";
             case INCLUDE: return "include";
+            case OUTCOME: return "outcome";
             default: return "?";
           }
         }
         public String getSystem() {
           switch (this) {
-            case MATCH: return "";
-            case INCLUDE: return "";
+            case MATCH: return "http://hl7.org/fhir/search-entry-mode";
+            case INCLUDE: return "http://hl7.org/fhir/search-entry-mode";
+            case OUTCOME: return "http://hl7.org/fhir/search-entry-mode";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case MATCH: return "This resource matched the search specification.";
-            case INCLUDE: return "This resource is returned because it is referred to from another resource in the search set.";
+            case MATCH: return "This resource matched the search specification";
+            case INCLUDE: return "This resource is returned because it is referred to from another resource in the search set";
+            case OUTCOME: return "An OperationOutcome that provides additional information about the processing of a search";
             default: return "?";
           }
         }
@@ -235,6 +245,7 @@ public class Bundle extends Resource {
           switch (this) {
             case MATCH: return "match";
             case INCLUDE: return "include";
+            case OUTCOME: return "outcome";
             default: return "?";
           }
         }
@@ -249,6 +260,8 @@ public class Bundle extends Resource {
           return SearchEntryMode.MATCH;
         if ("include".equals(codeString))
           return SearchEntryMode.INCLUDE;
+        if ("outcome".equals(codeString))
+          return SearchEntryMode.OUTCOME;
         throw new IllegalArgumentException("Unknown SearchEntryMode code '"+codeString+"'");
         }
     public String toCode(SearchEntryMode code) {
@@ -256,32 +269,34 @@ public class Bundle extends Resource {
         return "match";
       if (code == SearchEntryMode.INCLUDE)
         return "include";
+      if (code == SearchEntryMode.OUTCOME)
+        return "outcome";
       return "?";
       }
     }
 
-    public enum HttpVerb {
+    public enum HTTPVerb {
         /**
-         * HTTP GET.
+         * HTTP GET
          */
         GET, 
         /**
-         * HTTP POST.
+         * HTTP POST
          */
         POST, 
         /**
-         * HTTP PUT.
+         * HTTP PUT
          */
         PUT, 
         /**
-         * HTTP DELETE.
+         * HTTP DELETE
          */
         DELETE, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static HttpVerb fromCode(String codeString) throws Exception {
+        public static HTTPVerb fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("GET".equals(codeString))
@@ -292,7 +307,7 @@ public class Bundle extends Resource {
           return PUT;
         if ("DELETE".equals(codeString))
           return DELETE;
-        throw new Exception("Unknown HttpVerb code '"+codeString+"'");
+        throw new Exception("Unknown HTTPVerb code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -305,19 +320,19 @@ public class Bundle extends Resource {
         }
         public String getSystem() {
           switch (this) {
-            case GET: return "";
-            case POST: return "";
-            case PUT: return "";
-            case DELETE: return "";
+            case GET: return "http://hl7.org/fhir/http-verb";
+            case POST: return "http://hl7.org/fhir/http-verb";
+            case PUT: return "http://hl7.org/fhir/http-verb";
+            case DELETE: return "http://hl7.org/fhir/http-verb";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case GET: return "HTTP GET.";
-            case POST: return "HTTP POST.";
-            case PUT: return "HTTP PUT.";
-            case DELETE: return "HTTP DELETE.";
+            case GET: return "HTTP GET";
+            case POST: return "HTTP POST";
+            case PUT: return "HTTP PUT";
+            case DELETE: return "HTTP DELETE";
             default: return "?";
           }
         }
@@ -332,56 +347,62 @@ public class Bundle extends Resource {
         }
     }
 
-  public static class HttpVerbEnumFactory implements EnumFactory<HttpVerb> {
-    public HttpVerb fromCode(String codeString) throws IllegalArgumentException {
+  public static class HTTPVerbEnumFactory implements EnumFactory<HTTPVerb> {
+    public HTTPVerb fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("GET".equals(codeString))
-          return HttpVerb.GET;
+          return HTTPVerb.GET;
         if ("POST".equals(codeString))
-          return HttpVerb.POST;
+          return HTTPVerb.POST;
         if ("PUT".equals(codeString))
-          return HttpVerb.PUT;
+          return HTTPVerb.PUT;
         if ("DELETE".equals(codeString))
-          return HttpVerb.DELETE;
-        throw new IllegalArgumentException("Unknown HttpVerb code '"+codeString+"'");
+          return HTTPVerb.DELETE;
+        throw new IllegalArgumentException("Unknown HTTPVerb code '"+codeString+"'");
         }
-    public String toCode(HttpVerb code) {
-      if (code == HttpVerb.GET)
+    public String toCode(HTTPVerb code) {
+      if (code == HTTPVerb.GET)
         return "GET";
-      if (code == HttpVerb.POST)
+      if (code == HTTPVerb.POST)
         return "POST";
-      if (code == HttpVerb.PUT)
+      if (code == HTTPVerb.PUT)
         return "PUT";
-      if (code == HttpVerb.DELETE)
+      if (code == HTTPVerb.DELETE)
         return "DELETE";
       return "?";
       }
     }
 
     @Block()
-    public static class BundleLinkComponent extends BackboneElement {
+    public static class BundleLinkComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * A name which details the functional use for this link - see [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]].
          */
-        @Child(name ="relation", type={StringType.class}, order=1, min=1, max=1)
+        @Child(name = "relation", type = {StringType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="http://www.iana.org/assignments/link-relations/link-relations.xhtml", formalDefinition="A name which details the functional use for this link - see [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]]." )
         protected StringType relation;
 
         /**
          * The reference details for the link.
          */
-        @Child(name ="url", type={UriType.class}, order=2, min=1, max=1)
+        @Child(name = "url", type = {UriType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="Reference details for the link", formalDefinition="The reference details for the link." )
         protected UriType url;
 
         private static final long serialVersionUID = -1010386066L;
 
+    /*
+     * Constructor
+     */
       public BundleLinkComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public BundleLinkComponent(StringType relation, UriType url) {
         super();
         this.relation = relation;
@@ -520,51 +541,54 @@ public class Bundle extends Resource {
   }
 
     @Block()
-    public static class BundleEntryComponent extends BackboneElement {
+    public static class BundleEntryComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The Base URL for the resource, if different to the base URL specified for the bundle as a whole.
          */
-        @Child(name ="base", type={UriType.class}, order=1, min=0, max=1)
+        @Child(name = "base", type = {UriType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Base URL, if different to bundle base", formalDefinition="The Base URL for the resource, if different to the base URL specified for the bundle as a whole." )
         protected UriType base;
 
         /**
          * A series of links that provide context to this entry.
          */
-        @Child(name ="link", type={BundleLinkComponent.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "link", type = {BundleLinkComponent.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Links related to this entry", formalDefinition="A series of links that provide context to this entry." )
         protected List<BundleLinkComponent> link;
 
         /**
          * The Resources for the entry.
          */
-        @Child(name ="resource", type={Resource.class}, order=3, min=0, max=1)
-        @Description(shortDefinition="Resources in this bundle", formalDefinition="The Resources for the entry." )
+        @Child(name = "resource", type = {Resource.class}, order=3, min=0, max=1)
+        @Description(shortDefinition="A resource in the bundle", formalDefinition="The Resources for the entry." )
         protected Resource resource;
 
         /**
          * Information about the search process that lead to the creation of this entry.
          */
-        @Child(name ="search", type={}, order=4, min=0, max=1)
+        @Child(name = "search", type = {}, order=4, min=0, max=1)
         @Description(shortDefinition="Search related information", formalDefinition="Information about the search process that lead to the creation of this entry." )
         protected BundleEntrySearchComponent search;
 
         /**
          * Additional information about how this entry should be processed as part of a transaction.
          */
-        @Child(name ="transaction", type={}, order=5, min=0, max=1)
+        @Child(name = "transaction", type = {}, order=5, min=0, max=1)
         @Description(shortDefinition="Transaction Related Information", formalDefinition="Additional information about how this entry should be processed as part of a transaction." )
         protected BundleEntryTransactionComponent transaction;
 
         /**
          * Additional information about how this entry should be processed as part of a transaction.
          */
-        @Child(name ="transactionResponse", type={}, order=6, min=0, max=1)
+        @Child(name = "transactionResponse", type = {}, order=6, min=0, max=1)
         @Description(shortDefinition="Transaction Related Information", formalDefinition="Additional information about how this entry should be processed as part of a transaction." )
         protected BundleEntryTransactionResponseComponent transactionResponse;
 
         private static final long serialVersionUID = -1846898377L;
 
+    /*
+     * Constructor
+     */
       public BundleEntryComponent() {
         super();
       }
@@ -806,23 +830,26 @@ public class Bundle extends Resource {
   }
 
     @Block()
-    public static class BundleEntrySearchComponent extends BackboneElement {
+    public static class BundleEntrySearchComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Why this entry is in the result set - whether it's included as a match or because of an _include requirement.
          */
-        @Child(name ="mode", type={CodeType.class}, order=1, min=0, max=1)
-        @Description(shortDefinition="match | include - why this is in the result set", formalDefinition="Why this entry is in the result set - whether it's included as a match or because of an _include requirement." )
+        @Child(name = "mode", type = {CodeType.class}, order=1, min=0, max=1)
+        @Description(shortDefinition="match | include | outcome - why this is in the result set", formalDefinition="Why this entry is in the result set - whether it's included as a match or because of an _include requirement." )
         protected Enumeration<SearchEntryMode> mode;
 
         /**
          * When searching, the server's search ranking score for the entry.
          */
-        @Child(name ="score", type={DecimalType.class}, order=2, min=0, max=1)
+        @Child(name = "score", type = {DecimalType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Search ranking (between 0 and 1)", formalDefinition="When searching, the server's search ranking score for the entry." )
         protected DecimalType score;
 
         private static final long serialVersionUID = 837739866L;
 
+    /*
+     * Constructor
+     */
       public BundleEntrySearchComponent() {
         super();
       }
@@ -967,56 +994,62 @@ public class Bundle extends Resource {
   }
 
     @Block()
-    public static class BundleEntryTransactionComponent extends BackboneElement {
+    public static class BundleEntryTransactionComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The HTTP verb for this entry in either a update history, or a transaction/ transaction response.
          */
-        @Child(name ="method", type={CodeType.class}, order=1, min=1, max=1)
+        @Child(name = "method", type = {CodeType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="GET | POST | PUT | DELETE", formalDefinition="The HTTP verb for this entry in either a update history, or a transaction/ transaction response." )
-        protected Enumeration<HttpVerb> method;
+        protected Enumeration<HTTPVerb> method;
 
         /**
-         * A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).
+         * The URL for this transaction, relative to the root.
          */
-        @Child(name ="url", type={UriType.class}, order=2, min=1, max=1)
-        @Description(shortDefinition="The URL for the transaction", formalDefinition="A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation)." )
+        @Child(name = "url", type = {UriType.class}, order=2, min=1, max=1)
+        @Description(shortDefinition="The URL for the transaction", formalDefinition="The URL for this transaction, relative to the root." )
         protected UriType url;
 
         /**
          * If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation.
          */
-        @Child(name ="ifNoneMatch", type={StringType.class}, order=3, min=0, max=1)
+        @Child(name = "ifNoneMatch", type = {StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="For managing cache currency", formalDefinition="If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation." )
         protected StringType ifNoneMatch;
 
         /**
          * Only perform the operation if the Etag value matches. For more information, see the API section "Managing Resource Contention".
          */
-        @Child(name ="ifMatch", type={StringType.class}, order=4, min=0, max=1)
+        @Child(name = "ifMatch", type = {StringType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="For managing update contention", formalDefinition="Only perform the operation if the Etag value matches. For more information, see the API section 'Managing Resource Contention'." )
         protected StringType ifMatch;
 
         /**
          * Only perform the operation if the last updated date matches. For more information, see the API section "Managing Resource Contention".
          */
-        @Child(name ="ifModifiedSince", type={InstantType.class}, order=5, min=0, max=1)
+        @Child(name = "ifModifiedSince", type = {InstantType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="For managing update contention", formalDefinition="Only perform the operation if the last updated date matches. For more information, see the API section 'Managing Resource Contention'." )
         protected InstantType ifModifiedSince;
 
         /**
          * Instruct the server not to perform the create if a specified resource already exists. For further information, see "Conditional Create".
          */
-        @Child(name ="ifNoneExist", type={StringType.class}, order=6, min=0, max=1)
+        @Child(name = "ifNoneExist", type = {StringType.class}, order=6, min=0, max=1)
         @Description(shortDefinition="For conditional creates", formalDefinition="Instruct the server not to perform the create if a specified resource already exists. For further information, see 'Conditional Create'." )
         protected StringType ifNoneExist;
 
-        private static final long serialVersionUID = -769185862L;
+        private static final long serialVersionUID = 1355750298L;
 
+    /*
+     * Constructor
+     */
       public BundleEntryTransactionComponent() {
         super();
       }
 
-      public BundleEntryTransactionComponent(Enumeration<HttpVerb> method, UriType url) {
+    /*
+     * Constructor
+     */
+      public BundleEntryTransactionComponent(Enumeration<HTTPVerb> method, UriType url) {
         super();
         this.method = method;
         this.url = url;
@@ -1025,12 +1058,12 @@ public class Bundle extends Resource {
         /**
          * @return {@link #method} (The HTTP verb for this entry in either a update history, or a transaction/ transaction response.). This is the underlying object with id, value and extensions. The accessor "getMethod" gives direct access to the value
          */
-        public Enumeration<HttpVerb> getMethodElement() { 
+        public Enumeration<HTTPVerb> getMethodElement() { 
           if (this.method == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create BundleEntryTransactionComponent.method");
             else if (Configuration.doAutoCreate())
-              this.method = new Enumeration<HttpVerb>(new HttpVerbEnumFactory()); // bb
+              this.method = new Enumeration<HTTPVerb>(new HTTPVerbEnumFactory()); // bb
           return this.method;
         }
 
@@ -1045,7 +1078,7 @@ public class Bundle extends Resource {
         /**
          * @param value {@link #method} (The HTTP verb for this entry in either a update history, or a transaction/ transaction response.). This is the underlying object with id, value and extensions. The accessor "getMethod" gives direct access to the value
          */
-        public BundleEntryTransactionComponent setMethodElement(Enumeration<HttpVerb> value) { 
+        public BundleEntryTransactionComponent setMethodElement(Enumeration<HTTPVerb> value) { 
           this.method = value;
           return this;
         }
@@ -1053,22 +1086,22 @@ public class Bundle extends Resource {
         /**
          * @return The HTTP verb for this entry in either a update history, or a transaction/ transaction response.
          */
-        public HttpVerb getMethod() { 
+        public HTTPVerb getMethod() { 
           return this.method == null ? null : this.method.getValue();
         }
 
         /**
          * @param value The HTTP verb for this entry in either a update history, or a transaction/ transaction response.
          */
-        public BundleEntryTransactionComponent setMethod(HttpVerb value) { 
+        public BundleEntryTransactionComponent setMethod(HTTPVerb value) { 
             if (this.method == null)
-              this.method = new Enumeration<HttpVerb>(new HttpVerbEnumFactory());
+              this.method = new Enumeration<HTTPVerb>(new HTTPVerbEnumFactory());
             this.method.setValue(value);
           return this;
         }
 
         /**
-         * @return {@link #url} (A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+         * @return {@link #url} (The URL for this transaction, relative to the root.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
          */
         public UriType getUrlElement() { 
           if (this.url == null)
@@ -1088,7 +1121,7 @@ public class Bundle extends Resource {
         }
 
         /**
-         * @param value {@link #url} (A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+         * @param value {@link #url} (The URL for this transaction, relative to the root.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
          */
         public BundleEntryTransactionComponent setUrlElement(UriType value) { 
           this.url = value;
@@ -1096,14 +1129,14 @@ public class Bundle extends Resource {
         }
 
         /**
-         * @return A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).
+         * @return The URL for this transaction, relative to the root.
          */
         public String getUrl() { 
           return this.url == null ? null : this.url.getValue();
         }
 
         /**
-         * @param value A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).
+         * @param value The URL for this transaction, relative to the root.
          */
         public BundleEntryTransactionComponent setUrl(String value) { 
             if (this.url == null)
@@ -1311,7 +1344,7 @@ public class Bundle extends Resource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("method", "code", "The HTTP verb for this entry in either a update history, or a transaction/ transaction response.", 0, java.lang.Integer.MAX_VALUE, method));
-          childrenList.add(new Property("url", "uri", "A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation).", 0, java.lang.Integer.MAX_VALUE, url));
+          childrenList.add(new Property("url", "uri", "The URL for this transaction, relative to the root.", 0, java.lang.Integer.MAX_VALUE, url));
           childrenList.add(new Property("ifNoneMatch", "string", "If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation.", 0, java.lang.Integer.MAX_VALUE, ifNoneMatch));
           childrenList.add(new Property("ifMatch", "string", "Only perform the operation if the Etag value matches. For more information, see the API section 'Managing Resource Contention'.", 0, java.lang.Integer.MAX_VALUE, ifMatch));
           childrenList.add(new Property("ifModifiedSince", "instant", "Only perform the operation if the last updated date matches. For more information, see the API section 'Managing Resource Contention'.", 0, java.lang.Integer.MAX_VALUE, ifModifiedSince));
@@ -1364,41 +1397,47 @@ public class Bundle extends Resource {
   }
 
     @Block()
-    public static class BundleEntryTransactionResponseComponent extends BackboneElement {
+    public static class BundleEntryTransactionResponseComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The status code returned by processing this entry.
          */
-        @Child(name ="status", type={StringType.class}, order=1, min=1, max=1)
+        @Child(name = "status", type = {StringType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Status return code for entry", formalDefinition="The status code returned by processing this entry." )
         protected StringType status;
 
         /**
          * The location header created by processing this operation.
          */
-        @Child(name ="location", type={UriType.class}, order=2, min=0, max=1)
+        @Child(name = "location", type = {UriType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="The location, if the operation returns a location", formalDefinition="The location header created by processing this operation." )
         protected UriType location;
 
         /**
          * The etag for the resource, it the operation for the entry produced a versioned resource.
          */
-        @Child(name ="etag", type={StringType.class}, order=3, min=0, max=1)
+        @Child(name = "etag", type = {StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="The etag for the resource (if relevant)", formalDefinition="The etag for the resource, it the operation for the entry produced a versioned resource." )
         protected StringType etag;
 
         /**
          * The date/time that the resource was modified on the server.
          */
-        @Child(name ="lastModified", type={InstantType.class}, order=4, min=0, max=1)
+        @Child(name = "lastModified", type = {InstantType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Server's date time modified", formalDefinition="The date/time that the resource was modified on the server." )
         protected InstantType lastModified;
 
         private static final long serialVersionUID = -1526413234L;
 
+    /*
+     * Constructor
+     */
       public BundleEntryTransactionResponseComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public BundleEntryTransactionResponseComponent(StringType status) {
         super();
         this.status = status;
@@ -1646,51 +1685,57 @@ public class Bundle extends Resource {
     /**
      * Indicates the purpose of this bundle- how it was intended to be used.
      */
-    @Child(name ="type", type={CodeType.class}, order=0, min=1, max=1)
+    @Child(name = "type", type = {CodeType.class}, order=0, min=1, max=1)
     @Description(shortDefinition="document | message | transaction | transaction-response | history | searchset | collection", formalDefinition="Indicates the purpose of this bundle- how it was intended to be used." )
     protected Enumeration<BundleType> type;
 
     /**
      * The base URL for the service that provided these resources. All relative URLs are relative to this one (equivalent to xml:base).
      */
-    @Child(name ="base", type={UriType.class}, order=1, min=0, max=1)
+    @Child(name = "base", type = {UriType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Stated Base URL", formalDefinition="The base URL for the service that provided these resources. All relative URLs are relative to this one (equivalent to xml:base)." )
     protected UriType base;
 
     /**
      * If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle).
      */
-    @Child(name ="total", type={UnsignedIntType.class}, order=2, min=0, max=1)
+    @Child(name = "total", type = {UnsignedIntType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="If search, the total number of matches", formalDefinition="If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle)." )
     protected UnsignedIntType total;
 
     /**
      * A series of links that provide context to this bundle.
      */
-    @Child(name ="link", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "link", type = {}, order=3, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Links related to this Bundle", formalDefinition="A series of links that provide context to this bundle." )
     protected List<BundleLinkComponent> link;
 
     /**
      * An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only).
      */
-    @Child(name ="entry", type={}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "entry", type = {}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Entry in the bundle - will have a resource, or information", formalDefinition="An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only)." )
     protected List<BundleEntryComponent> entry;
 
     /**
      * XML Digital Signature - base64 encoded.
      */
-    @Child(name ="signature", type={Base64BinaryType.class}, order=5, min=0, max=1)
+    @Child(name = "signature", type = {Base64BinaryType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="XML Digital Signature (base64 encoded)", formalDefinition="XML Digital Signature - base64 encoded." )
     protected Base64BinaryType signature;
 
     private static final long serialVersionUID = -1380125450L;
 
+  /*
+   * Constructor
+   */
     public Bundle() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public Bundle(Enumeration<BundleType> type) {
       super();
       this.type = type;
@@ -1964,6 +2009,53 @@ public class Bundle extends Resource {
       return this;
     }
 
+ /**
+   * Returns the {@link #getLink() link} which matches a given {@link BundleLinkComponent#getRelation() relation}. 
+   * If no link is found which matches the given relation, returns <code>null</code>. If more than one
+   * link is found which matches the given relation, returns the first matching BundleLinkComponent.
+   * 
+   * @param theRelation
+   *            The relation, such as "next", or "self. See the constants such as {@link IBaseBundle#LINK_SELF} and {@link IBaseBundle#LINK_NEXT}.
+   * @return Returns a matching BundleLinkComponent, or <code>null</code>
+   * @see IBaseBundle#LINK_NEXT
+   * @see IBaseBundle#LINK_PREV
+   * @see IBaseBundle#LINK_SELF
+   */
+  public BundleLinkComponent getLink(String theRelation) {
+    org.apache.commons.lang3.Validate.notBlank(theRelation, "theRelation may not be null or empty");
+    for (BundleLinkComponent next : getLink()) {
+      if (theRelation.equals(next.getRelation())) {
+        return next;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns the {@link #getLink() link} which matches a given {@link BundleLinkComponent#getRelation() relation}. 
+   * If no link is found which matches the given relation, creates a new BundleLinkComponent with the
+   * given relation and adds it to this Bundle. If more than one
+   * link is found which matches the given relation, returns the first matching BundleLinkComponent.
+   * 
+   * @param theRelation
+   *            The relation, such as "next", or "self. See the constants such as {@link IBaseBundle#LINK_SELF} and {@link IBaseBundle#LINK_NEXT}.
+   * @return Returns a matching BundleLinkComponent, or <code>null</code>
+   * @see IBaseBundle#LINK_NEXT
+   * @see IBaseBundle#LINK_PREV
+   * @see IBaseBundle#LINK_SELF
+   */
+  public BundleLinkComponent getLinkOrCreate(String theRelation) {
+    org.apache.commons.lang3.Validate.notBlank(theRelation, "theRelation may not be null or empty");
+    for (BundleLinkComponent next : getLink()) {
+      if (theRelation.equals(next.getRelation())) {
+        return next;
+      }
+    }
+    BundleLinkComponent retVal = new BundleLinkComponent();
+    retVal.setRelation(theRelation);
+    getLink().add(retVal);
+    return retVal;
+  }
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("type", "code", "Indicates the purpose of this bundle- how it was intended to be used.", 0, java.lang.Integer.MAX_VALUE, type));

@@ -55,7 +55,7 @@ public class ElementDefn {
 
 	private Map<String, String> mappings = new HashMap<String, String>();
 	// private String id;
-	private String bindingName;
+	private BindingSpecification binding;
 	private String umlDir;
   private boolean umlBreak;
   private int svgLeft;
@@ -88,6 +88,8 @@ public class ElementDefn {
 	private boolean isCoveredByExample; // true if an example has hit this
 	private String displayHint; // hits for generated narrative
 	private String w5;
+	private boolean noBindingAllowed; // note to validator 
+	
 	public ElementDefn() {
 		super();
 	  svgLeft = MAX_NEG;
@@ -108,7 +110,7 @@ public class ElementDefn {
 		mustSupport = pattern.mustSupport;
 
 		
-		bindingName = pattern.bindingName;
+		binding = pattern.binding;
 		name = pattern.name;
 		shortDefn = pattern.shortDefn;
 		definition = pattern.definition;
@@ -252,7 +254,7 @@ public class ElementDefn {
     this.maxLength = maxLength;
   }
 
-  public ElementDefn getElementByName(String name, boolean throughChoice) {
+  public ElementDefn getElementByName(String name, boolean throughChoice, Definitions definitions) {
     String n = name.contains(".") ? name.substring(0, name.indexOf(".")) : name;
     String t = name.contains(".") ? name.substring(name.indexOf(".") + 1) : null;
     if (n.equals(this.name) && t != null)
@@ -260,13 +262,13 @@ public class ElementDefn {
     
     for (int i = elements.size() - 1; i >= 0; i--) {
       ElementDefn e = elements.get(i);
-      if (nameMatches(n, e, throughChoice))
+      if (nameMatches(n, e, throughChoice, definitions))
         return t == null ? e : e.getElementByName(t);
     }
     return null;
   }
 
-  private boolean nameMatches(String n, ElementDefn e, boolean throughChoice) {
+  private boolean nameMatches(String n, ElementDefn e, boolean throughChoice, Definitions definitions) {
     if (e.getName().equals(n))
       return true;
     else if (!throughChoice || !e.getName().endsWith("[x]"))
@@ -276,7 +278,14 @@ public class ElementDefn {
       if (!n.startsWith(b))
         return false;
       String tn = n.substring(b.length());
-      for (TypeRef t : e.getTypes()) 
+      if (e.typeCode().equals("*") && definitions != null) {
+        for (TypeRef t : definitions.getKnownTypes()) {
+          if (!definitions.getInfrastructure().containsKey(t.getName()) && !definitions.getConstraints().containsKey(t.getName())) {
+            if (t.getName().equalsIgnoreCase(tn))
+              return true;
+          }
+        }
+      } else for (TypeRef t : e.getTypes()) 
         if (t.getName().equalsIgnoreCase(tn))
           return true;
       return false;
@@ -293,7 +302,7 @@ public class ElementDefn {
 
 		for (int i = elements.size() - 1; i >= 0; i--) {
 			ElementDefn e = elements.get(i);
-			if (nameMatches(n, e, false))
+			if (nameMatches(n, e, false, null))
 				return t == null ? e : e.getElementByName(t);
 //			if (e.getName().length() > name.length()
 //					&& e.getName().substring(0, name.length())
@@ -314,12 +323,12 @@ public class ElementDefn {
 		return null;
 	}
 
-	public String getBindingName() {
-		return bindingName;
+	public BindingSpecification getBinding() {
+		return binding;
 	}
 
-	public void setBindingName(String conceptDomain) {
-		this.bindingName = conceptDomain;
+	public void setBinding(BindingSpecification binding) {
+		this.binding = binding;
 	}
 
 	// public String getId() {
@@ -378,11 +387,7 @@ public class ElementDefn {
 	}
 
   public boolean hasBinding() {
-    return bindingName != null && !bindingName.equals("") && !bindingName.equals("!");
-  }
-
-  public boolean hasBindingOrOk() {
-    return bindingName != null && !bindingName.equals("");
+    return binding != null;
   }
 
 	// If an element with children explicitly declares a typename
@@ -570,7 +575,7 @@ public class ElementDefn {
 			} else if (definitions.hasType(res.typeCode())) {
 				res = definitions.getElementDefn(res.typeCode());
 			}
-			t = res.getElementByName(en, throughChoice);
+			t = res.getElementByName(en, throughChoice, definitions);
 			if (t == null) {
 				throw new Exception("unable to resolve " + pathname);
 			}
@@ -634,10 +639,6 @@ public class ElementDefn {
 
     public boolean hasComments() {
       return comments != null && !"".equals(comments);
-    }
-
-    public boolean hasBindingName() {
-      return bindingName != null && !"".equals(bindingName);
     }
 
     public boolean hasMapping(String name) {
@@ -841,6 +842,14 @@ public class ElementDefn {
 
   public boolean getMustSupport() {
     return mustSupport == null ? false: mustSupport;
+  }
+
+  public boolean isNoBindingAllowed() {
+    return noBindingAllowed;
+  }
+
+  public void setNoBindingAllowed(boolean noBindingAllowed) {
+    this.noBindingAllowed = noBindingAllowed;
   }	
   
 }

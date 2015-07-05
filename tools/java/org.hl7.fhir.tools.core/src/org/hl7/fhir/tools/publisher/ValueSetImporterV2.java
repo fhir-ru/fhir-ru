@@ -22,8 +22,8 @@ import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineComponent;
+import org.hl7.fhir.instance.terminologies.ValueSetUtilities;
 import org.hl7.fhir.instance.utils.ToolingExtensions;
-import org.hl7.fhir.instance.utils.ValueSetUtilities;
 import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
@@ -306,7 +306,7 @@ public class ValueSetImporterV2 {
     // v2 versioning
     // information
     vs.getText().setDiv(new XhtmlParser().parse("<div>" + s.toString() + "</div>", "div").getElement("div"));
-    new ValueSetValidator(page.getWorkerContext()).validate(errors, "v2 table "+id, vs, false, true);
+    page.getVsValidator().validate(errors, "v2 table "+id, vs, false, true);
     return vs;
   }
 
@@ -394,7 +394,7 @@ public class ValueSetImporterV2 {
     // v2 versioning
     // information
     vs.getText().setDiv(new XhtmlParser().parse("<div>" + s.toString() + "</div>", "div").getElement("div"));
-    new ValueSetValidator(page.getWorkerContext()).validate(errors, "v2 table "+id, vs, false, true);
+    page.getVsValidator().validate(errors, "v2 table "+id, vs, false, true);
     return vs;
   }
 

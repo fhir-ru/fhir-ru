@@ -29,16 +29,17 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * A request for a procedure to be performed. May be a proposal or an order.
  */
@@ -47,43 +48,43 @@ public class ProcedureRequest extends DomainResource {
 
     public enum ProcedureRequestStatus {
         /**
-         * The request has been proposed.
+         * The request has been proposed
          */
         PROPOSED, 
         /**
-         * The request is in preliminary form, prior to being requested.
+         * The request is in preliminary form, prior to being requested
          */
         DRAFT, 
         /**
-         * The request has been placed.
+         * The request has been placed
          */
         REQUESTED, 
         /**
-         * The receiving system has received the request but not yet decided whether it will be performed.
+         * The receiving system has received the request but not yet decided whether it will be performed
          */
         RECEIVED, 
         /**
-         * The receiving system has accepted the request, but work has not yet commenced.
+         * The receiving system has accepted the request, but work has not yet commenced
          */
         ACCEPTED, 
         /**
-         * The work to fulfill the request is happening.
+         * The work to fulfill the request is happening
          */
         INPROGRESS, 
         /**
-         * The work has been complete, the report(s) released, and no further work is planned.
+         * The work has been complete, the report(s) released, and no further work is planned
          */
         COMPLETED, 
         /**
-         * The request has been held by originating system/user request.
+         * The request has been held by originating system/user request
          */
         SUSPENDED, 
         /**
-         * The receiving system has declined to fulfill the request.
+         * The receiving system has declined to fulfill the request
          */
         REJECTED, 
         /**
-         * The request was attempted, but due to some procedural error, it could not be completed.
+         * The request was attempted, but due to some procedural error, it could not be completed
          */
         ABORTED, 
         /**
@@ -132,31 +133,31 @@ public class ProcedureRequest extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case PROPOSED: return "";
-            case DRAFT: return "";
-            case REQUESTED: return "";
-            case RECEIVED: return "";
-            case ACCEPTED: return "";
-            case INPROGRESS: return "";
-            case COMPLETED: return "";
-            case SUSPENDED: return "";
-            case REJECTED: return "";
-            case ABORTED: return "";
+            case PROPOSED: return "http://hl7.org/fhir/procedure-request-status";
+            case DRAFT: return "http://hl7.org/fhir/procedure-request-status";
+            case REQUESTED: return "http://hl7.org/fhir/procedure-request-status";
+            case RECEIVED: return "http://hl7.org/fhir/procedure-request-status";
+            case ACCEPTED: return "http://hl7.org/fhir/procedure-request-status";
+            case INPROGRESS: return "http://hl7.org/fhir/procedure-request-status";
+            case COMPLETED: return "http://hl7.org/fhir/procedure-request-status";
+            case SUSPENDED: return "http://hl7.org/fhir/procedure-request-status";
+            case REJECTED: return "http://hl7.org/fhir/procedure-request-status";
+            case ABORTED: return "http://hl7.org/fhir/procedure-request-status";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case PROPOSED: return "The request has been proposed.";
-            case DRAFT: return "The request is in preliminary form, prior to being requested.";
-            case REQUESTED: return "The request has been placed.";
-            case RECEIVED: return "The receiving system has received the request but not yet decided whether it will be performed.";
-            case ACCEPTED: return "The receiving system has accepted the request, but work has not yet commenced.";
-            case INPROGRESS: return "The work to fulfill the request is happening.";
-            case COMPLETED: return "The work has been complete, the report(s) released, and no further work is planned.";
-            case SUSPENDED: return "The request has been held by originating system/user request.";
-            case REJECTED: return "The receiving system has declined to fulfill the request.";
-            case ABORTED: return "The request was attempted, but due to some procedural error, it could not be completed.";
+            case PROPOSED: return "The request has been proposed";
+            case DRAFT: return "The request is in preliminary form, prior to being requested";
+            case REQUESTED: return "The request has been placed";
+            case RECEIVED: return "The receiving system has received the request but not yet decided whether it will be performed";
+            case ACCEPTED: return "The receiving system has accepted the request, but work has not yet commenced";
+            case INPROGRESS: return "The work to fulfill the request is happening";
+            case COMPLETED: return "The work has been complete, the report(s) released, and no further work is planned";
+            case SUSPENDED: return "The request has been held by originating system/user request";
+            case REJECTED: return "The receiving system has declined to fulfill the request";
+            case ABORTED: return "The request was attempted, but due to some procedural error, it could not be completed";
             default: return "?";
           }
         }
@@ -274,10 +275,10 @@ public class ProcedureRequest extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case ROUTINE: return "";
-            case URGENT: return "";
-            case STAT: return "";
-            case ASAP: return "";
+            case ROUTINE: return "http://hl7.org/fhir/procedure-request-priority";
+            case URGENT: return "http://hl7.org/fhir/procedure-request-priority";
+            case STAT: return "http://hl7.org/fhir/procedure-request-priority";
+            case ASAP: return "http://hl7.org/fhir/procedure-request-priority";
             default: return "?";
           }
         }
@@ -330,20 +331,26 @@ public class ProcedureRequest extends DomainResource {
     }
 
     @Block()
-    public static class ProcedureRequestBodySiteComponent extends BackboneElement {
+    public static class ProcedureRequestBodySiteComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Indicates the site on the subject's body where the procedure should be performed ( i.e. the target sites).
          */
-        @Child(name ="site", type={CodeableConcept.class, BodySite.class}, order=1, min=1, max=1)
+        @Child(name = "site", type = {CodeableConcept.class, BodySite.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Target body site", formalDefinition="Indicates the site on the subject's body where the procedure should be performed ( i.e. the target sites)." )
         protected Type site;
 
         private static final long serialVersionUID = 1429072605L;
 
+    /*
+     * Constructor
+     */
       public ProcedureRequestBodySiteComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public ProcedureRequestBodySiteComponent(Type site) {
         super();
         this.site = site;
@@ -365,6 +372,10 @@ public class ProcedureRequest extends DomainResource {
           return (CodeableConcept) this.site;
         }
 
+        public boolean hasSiteCodeableConcept() throws Exception { 
+          return this.site instanceof CodeableConcept;
+        }
+
         /**
          * @return {@link #site} (Indicates the site on the subject's body where the procedure should be performed ( i.e. the target sites).)
          */
@@ -372,6 +383,10 @@ public class ProcedureRequest extends DomainResource {
           if (!(this.site instanceof Reference))
             throw new Exception("Type mismatch: the type Reference was expected, but "+this.site.getClass().getName()+" was encountered");
           return (Reference) this.site;
+        }
+
+        public boolean hasSiteReference() throws Exception { 
+          return this.site instanceof Reference;
         }
 
         public boolean hasSite() { 
@@ -427,14 +442,14 @@ public class ProcedureRequest extends DomainResource {
     /**
      * Identifiers assigned to this order by the order or by the receiver.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Identifier", formalDefinition="Identifiers assigned to this order by the order or by the receiver." )
     protected List<Identifier> identifier;
 
     /**
      * The patient who will receive the procedure.
      */
-    @Child(name ="subject", type={Patient.class}, order=1, min=1, max=1)
+    @Child(name = "subject", type = {Patient.class}, order=1, min=1, max=1)
     @Description(shortDefinition="Subject", formalDefinition="The patient who will receive the procedure." )
     protected Reference subject;
 
@@ -446,35 +461,35 @@ public class ProcedureRequest extends DomainResource {
     /**
      * The specific procedure that is ordered. Use text if the exact nature of the procedure can't be coded.
      */
-    @Child(name ="type", type={CodeableConcept.class}, order=2, min=1, max=1)
+    @Child(name = "type", type = {CodeableConcept.class}, order=2, min=1, max=1)
     @Description(shortDefinition="Procedure Type", formalDefinition="The specific procedure that is ordered. Use text if the exact nature of the procedure can't be coded." )
     protected CodeableConcept type;
 
     /**
      * Indicates the sites on the subject's body where the procedure should be performed ( i.e. the target sites).
      */
-    @Child(name ="bodySite", type={}, order=3, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "bodySite", type = {}, order=3, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Target body sites", formalDefinition="Indicates the sites on the subject's body where the procedure should be performed ( i.e. the target sites)." )
     protected List<ProcedureRequestBodySiteComponent> bodySite;
 
     /**
      * The reason why the procedure is proposed or ordered. This procedure request may be motivated by a Condition for instance.
      */
-    @Child(name ="indication", type={CodeableConcept.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "indication", type = {CodeableConcept.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Indication", formalDefinition="The reason why the procedure is proposed or ordered. This procedure request may be motivated by a Condition for instance." )
     protected List<CodeableConcept> indication;
 
     /**
      * The timing schedule for the proposed or ordered procedure. The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
      */
-    @Child(name ="timing", type={DateTimeType.class, Period.class, Timing.class}, order=5, min=0, max=1)
+    @Child(name = "timing", type = {DateTimeType.class, Period.class, Timing.class}, order=5, min=0, max=1)
     @Description(shortDefinition="Procedure timing schedule", formalDefinition="The timing schedule for the proposed or ordered procedure. The Schedule data type allows many different expressions, for example. 'Every 8 hours'; 'Three times a day'; '1/2 an hour before breakfast for 10 days from 23-Dec 2011:'; '15 Oct 2013, 17 Oct 2013 and 1 Nov 2013'." )
     protected Type timing;
 
     /**
      * The encounter within which the procedure proposal or request was created.
      */
-    @Child(name ="encounter", type={Encounter.class}, order=6, min=0, max=1)
+    @Child(name = "encounter", type = {Encounter.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Encounter", formalDefinition="The encounter within which the procedure proposal or request was created." )
     protected Reference encounter;
 
@@ -486,7 +501,7 @@ public class ProcedureRequest extends DomainResource {
     /**
      * E.g. surgeon, anaethetist, endoscopist.
      */
-    @Child(name ="performer", type={Practitioner.class, Organization.class, Patient.class, RelatedPerson.class}, order=7, min=0, max=1)
+    @Child(name = "performer", type = {Practitioner.class, Organization.class, Patient.class, RelatedPerson.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Performer", formalDefinition="E.g. surgeon, anaethetist, endoscopist." )
     protected Reference performer;
 
@@ -498,35 +513,35 @@ public class ProcedureRequest extends DomainResource {
     /**
      * The status of the order.
      */
-    @Child(name ="status", type={CodeType.class}, order=8, min=0, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=8, min=0, max=1)
     @Description(shortDefinition="proposed | draft | requested | received | accepted | in-progress | completed | suspended | rejected | aborted", formalDefinition="The status of the order." )
     protected Enumeration<ProcedureRequestStatus> status;
 
     /**
      * Any other notes associated with this proposal or order - e.g., provider instructions.
      */
-    @Child(name ="notes", type={StringType.class}, order=9, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "notes", type = {StringType.class}, order=9, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Notes", formalDefinition="Any other notes associated with this proposal or order - e.g., provider instructions." )
     protected List<StringType> notes;
 
     /**
      * If a CodeableConcept is present, it indicates the pre-condition for performing the procedure.
      */
-    @Child(name ="asNeeded", type={BooleanType.class, CodeableConcept.class}, order=10, min=0, max=1)
+    @Child(name = "asNeeded", type = {BooleanType.class, CodeableConcept.class}, order=10, min=0, max=1)
     @Description(shortDefinition="PRN", formalDefinition="If a CodeableConcept is present, it indicates the pre-condition for performing the procedure." )
     protected Type asNeeded;
 
     /**
      * The time when the request was made.
      */
-    @Child(name ="orderedOn", type={DateTimeType.class}, order=11, min=0, max=1)
+    @Child(name = "orderedOn", type = {DateTimeType.class}, order=11, min=0, max=1)
     @Description(shortDefinition="When Requested", formalDefinition="The time when the request was made." )
     protected DateTimeType orderedOn;
 
     /**
      * The healthcare professional responsible for proposing or ordering the procedure.
      */
-    @Child(name ="orderer", type={Practitioner.class, Patient.class, RelatedPerson.class, Device.class}, order=12, min=0, max=1)
+    @Child(name = "orderer", type = {Practitioner.class, Patient.class, RelatedPerson.class, Device.class}, order=12, min=0, max=1)
     @Description(shortDefinition="Ordering Party", formalDefinition="The healthcare professional responsible for proposing or ordering the procedure." )
     protected Reference orderer;
 
@@ -538,16 +553,22 @@ public class ProcedureRequest extends DomainResource {
     /**
      * The clinical priority associated with this order.
      */
-    @Child(name ="priority", type={CodeType.class}, order=13, min=0, max=1)
+    @Child(name = "priority", type = {CodeType.class}, order=13, min=0, max=1)
     @Description(shortDefinition="routine | urgent | stat | asap", formalDefinition="The clinical priority associated with this order." )
     protected Enumeration<ProcedureRequestPriority> priority;
 
     private static final long serialVersionUID = -1687850759L;
 
+  /*
+   * Constructor
+   */
     public ProcedureRequest() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public ProcedureRequest(Reference subject, CodeableConcept type) {
       super();
       this.subject = subject;
@@ -758,6 +779,10 @@ public class ProcedureRequest extends DomainResource {
       return (DateTimeType) this.timing;
     }
 
+    public boolean hasTimingDateTimeType() throws Exception { 
+      return this.timing instanceof DateTimeType;
+    }
+
     /**
      * @return {@link #timing} (The timing schedule for the proposed or ordered procedure. The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
      */
@@ -767,6 +792,10 @@ public class ProcedureRequest extends DomainResource {
       return (Period) this.timing;
     }
 
+    public boolean hasTimingPeriod() throws Exception { 
+      return this.timing instanceof Period;
+    }
+
     /**
      * @return {@link #timing} (The timing schedule for the proposed or ordered procedure. The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
      */
@@ -774,6 +803,10 @@ public class ProcedureRequest extends DomainResource {
       if (!(this.timing instanceof Timing))
         throw new Exception("Type mismatch: the type Timing was expected, but "+this.timing.getClass().getName()+" was encountered");
       return (Timing) this.timing;
+    }
+
+    public boolean hasTimingTiming() throws Exception { 
+      return this.timing instanceof Timing;
     }
 
     public boolean hasTiming() { 
@@ -990,6 +1023,10 @@ public class ProcedureRequest extends DomainResource {
       return (BooleanType) this.asNeeded;
     }
 
+    public boolean hasAsNeededBooleanType() throws Exception { 
+      return this.asNeeded instanceof BooleanType;
+    }
+
     /**
      * @return {@link #asNeeded} (If a CodeableConcept is present, it indicates the pre-condition for performing the procedure.)
      */
@@ -997,6 +1034,10 @@ public class ProcedureRequest extends DomainResource {
       if (!(this.asNeeded instanceof CodeableConcept))
         throw new Exception("Type mismatch: the type CodeableConcept was expected, but "+this.asNeeded.getClass().getName()+" was encountered");
       return (CodeableConcept) this.asNeeded;
+    }
+
+    public boolean hasAsNeededCodeableConcept() throws Exception { 
+      return this.asNeeded instanceof CodeableConcept;
     }
 
     public boolean hasAsNeeded() { 

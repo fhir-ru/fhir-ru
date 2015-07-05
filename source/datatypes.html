@@ -30,8 +30,8 @@ This page describes the data types. See also the <a href="datatypes-examples.htm
 <p><b>Table of Contents</b></p>
 <table class="grid">
  <tr>
-  <td><b>Primitive Types</b><br/>[%diagram datatypes/allprimitivetypes.diagram%]</td>
-  <td><b>Complex Types</b><br/>[%diagram datatypes/alltypes.diagram%]</td>
+  <td><b>Primitive Types</b><br/>[%diagram datatypes/allprimitivetypes.diagram 1a%]</td>
+  <td><b>Complex Types</b><br/>[%diagram datatypes/alltypes.diagram 2a%]</td>
  </tr>
 </table>
 
@@ -44,7 +44,7 @@ The data types are also available as a <a href="fhir-base.xsd">W3C Schema</a>.
 <h2>Primitive Types</h2>
 
 
-[%diagram datatypes/primitives.diagram%]
+[%diagram datatypes/primitives.diagram 3a%]
 
 <a name="imports"> </a>
 <p>
@@ -69,11 +69,12 @@ all types, they have <a href="extensibility.html">extensions</a>).
    <td>xs:boolean, except that <b>0 and 1 are not valid values</b></td>
    <td>JSON boolean (true or false)</td>
  </tr>
+ <!-- leading 0s -->
  <tr>
    <td>integer<a name="integer"> </a></td>
    <td>A signed 32-bit integer (for larger values, use decimal)</td>
-   <td>xs:int</td>
-   <td>JSON number</td>
+   <td>xs:int, except that <b>leading 0 digits are not allowed</b></td>
+   <td>JSON number (with no decimal point)</td>
  </tr>
  <tr>
    <td>string<a name="string"> </a></td>
@@ -88,8 +89,8 @@ all types, they have <a href="extensibility.html">extensions</a>).
  <tr>
    <td>decimal<a name="decimal"> </a></td>
    <td>Rational numbers that have a decimal representation. See below about the precision of the number</td>
-   <td>xs:decimal, except that <b>decimals may not use exponents</b></td>
-   <td>A JSON number, but without exponents</td>
+   <td>xs:decimal, except that <b>decimals may not use exponents, and leading 0 digits are not allowed</b></td>
+   <td>A JSON number, except that <b>exponents are not allowed</b></td>
  </tr>
  <tr>
    <td>uri<a name="uri"> </a></td>
@@ -236,7 +237,7 @@ Some additional notes about the <i>id</i> datatype:
  <li>Ids are case sensitive. UUIDs SHALL be sent using lowercase letters</li>
  <li>The ID type includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232.</li>
  <li>In a typical FHIR URL, like http://example.com/fhir/Patient/<span style="color: navy">1234</span>, the last part "1234" (highlighted in navy) is the part that is an id datatype</li>
- <li>A full UUID is a uri, not an <i>id</i>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b), which SHALL be in lowercase</li>
+ <li>A full UUID is a <i>uri</i>, not an <i>id</i>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b), which SHALL be in lowercase</li>
 </ul>
 <!-- 
 boolean: [%dtusage boolean%]
@@ -272,9 +273,9 @@ values are.
 
 <p><b>UML Diagrams of the Data types</b></p>
 
-[%diagram datatypes/types.diagram%]
+[%diagram datatypes/types.diagram 4a%]
 
-[%diagram datatypes/types2.diagram%]
+[%diagram datatypes/types2.diagram 5a%]
 
 <a name="Attachment"></a>
 <a name="attachment"></a>
@@ -291,7 +292,7 @@ formats. The most common use of this type is to include images or reports in
 some report format such as PDF. However it can be used for any 
 data that has a mime type. 
 </p>
-[%dt Attachment%]
+[%dt Attachment 1%] 
 <p>
 The <i>contentType</i> element SHALL always be populated. It can include charset information 
 and other mime type extensions as appropriate. If there is no character set in the <i>contentType</i>
@@ -345,7 +346,7 @@ A Coding is a representation of a defined concept using a symbol from a defined 
 - see <a href="terminologies.html">Using Codes in resources</a> for more details.
 </p>
 
-[%dt Coding%]
+[%dt Coding 2%]
 
 <p>
 The meaning of the Coding is defined by the code. The <i>system</i> provides
@@ -355,25 +356,13 @@ value. The Value Set reference provides context information about the selection 
 code. 
 </p>
 <p>
-The <i>system</i> is a URI that references the code system that defines the <i>code</i>. 
-The URI may be: 
+The <code>system</code> is a URI that references the code system that defines the <i>code</i>. 
+Choosing the correct system is important; for more information about the code system 
+URI, read <a href="terminologies.html#system">Managing Terminology System URIs</a>.
+The system URI SHALL NOT contain a reference to a value set (e.g. ValueSet.url). 
+(if the code is taken from a ValueSet with an inline code system, <i>ValueSet.define.system</i>,
+is the correct value for the system uri.
 </p>
-<ul>
- <li>a URI defined in the <a href="terminologies-systems.html">named systems list</a></li>
- <li>an OID (urn:oid:) or a UUID (urn:uuid:). OIDs and UUIDs may be registered in the <a href="http://hl7.org/oid">HL7 OID registry</a></li>
- <li>a URL that references a definition of the system directly, which may be a reference to a code system defined as part of <a href="valueset.html">ValueSet</a> resource (i.e. the value in <i>ValueSet.define.system</i>)</li>
- <li>or any other URI that uniquely identifies the code system definition</li>
-</ul>
-<p>
-The correct value to use in the <i>system</i> for a given code system can be determined by working through the following list, in order:
-</p>
-<ul>
- <li>the <a href="terminologies-systems.html">Named Systems List</a> section</li>
- <li>the <a href="http://www.hl7.org/oid/index.cfm?ref=common">HL7 OID Registry</a></li>
- <li>the documentation associated with the code system</li>
- <li>consulting the owner of the code system</li>
- <li>asking on the HL7 vocabulary mailing list</li>
-</ul>
 <p>
 A code system version may also be supplied. If the meaning of codes within the code system is consistent across releases, this is not required. 
 The version SHOULD be exchanged when this the system does not maintain consistent definitions across versions.
@@ -385,7 +374,7 @@ Note that the following systems SHOULD always have a version specified:
  <li>Various versions of ICD (note: the major releases are labelled as different code systems altogether, but there is veration within versions)</li>
 </ul>
 <p>
-More generally, any classification (e.g.  a code system that incldues concepts with relative definitions such as "not otherwise coded"
+More generally, any classification (e.g.  a code system that includes concepts with relative definitions such as "not otherwise coded"
 will require a version. See the <a href="valueset.html#versioning">discussion of code system versions in the Value Set resource</a> for 
 further discussion on versioning.
 </p>
@@ -422,19 +411,9 @@ If the version information is missing, or the <i>system</i>, <i>version</i> or t
 how they codes are related can only be determined by consulting the definitions of the system(s) and any <a href="conceptmap.html">mappings</a> available.
 </p>
 <p>
-A coding may be marked as a "primary" if a user selected the particular coded value 
-in a user interface (e.g. the user selects an item in a pick-list). A primary
-is the preferred choice for performing translations etc. 
-</p>
-<p>
-A reference to a <a href="valueset.html">value set</a> may be provided to help a user or system processing the code
-to understand the context in which the code arose. In some contexts, the possible
-set of codes from which the code was chosen influences how the code should be 
-interpreted. A value set reference is not an acceptable substitute for a logical
-URI in the system. The system URI SHALL NOT contain a reference to a value set. 
-(If the value set defines its own codes, then the correct value for the 
-system is <i>ValueSet.define.system</i>, and the value set contains a direct reference
-to the value set resource.
+A coding may be marked as a "userSelected" if a user selected the particular coded value 
+in a user interface (e.g. the user selects an item in a pick-list). If a user selected coding exists, 
+it is the preferred choice for performing translations etc. 
 </p>
 
 <!--<h3>Version Management</h3>
@@ -516,7 +495,7 @@ See also <a href="datatypes-examples.html#CodeableConcept">Examples</a>, <a href
 A CodeableConcept represents a value that is usually supplied by providing a reference to one or more terminologies or ontologies, but may also be defined by the 
 provision of text. This is a common pattern in healthcare data.
 </p>
-[%dt CodeableConcept%]
+[%dt CodeableConcept 3%]
 <p>
 Each <i>coding</i> is a representation of the concept as described above. The concept may be coded multiple times in different code systems (or even 
 multiple times in the same code systems, where multiple forms are possible, such as 
@@ -530,8 +509,8 @@ Whether or not <i>coding</i> elements are present, the <i>text</i>
 is the representation of the concept as entered or chosen by the user, and which most closely 
 represents the intended meaning of the user or concept. Very often the <i>text</i> 
 is the same as a <i>display</i> of one of the codings. One of the codings 
-may be flagged as the primary - the code or concept that the user actually selected directly. 
-When none of the <i>coding</i> elements is marked as primary, the text (if present)
+may be flagged as the userSelected - the code or concept that the user actually selected directly. 
+When none of the <i>coding</i> elements is marked as userSelected, the text (if present)
 is the preferred source of meaning. 
 </p>
 
@@ -559,7 +538,7 @@ See also <a href="datatypes-examples.html#Quantity">Examples</a>, <a href="datat
 <p>
 A measured amount (or an amount that can potentially be measured).
 </p>
-[%dt Quantity%]
+[%dt Quantity 4%]
 
 <p>
 The <i>value</i> contains the numerical value of the quantity, including an implicit precision. 
@@ -614,7 +593,7 @@ A set of ordered Quantity values defined by a low and high limit.
 A Range specifies a set of possible values; usually, one value from the range applies (e.g. "give the patient between 2 and 4 tablets").
 Ranges are typically used in instructions.
 </p>
-[%dt Range%]
+[%dt Range 5%]
 <p>
 The <i>units</i> and <i>code</i>/<i>system</i> elements of the <i>low</i> or <i>high</i> elements SHALL match. 
 If the <i>low</i> or <i>high</i> elements are missing, the meaning
@@ -647,7 +626,7 @@ See also <a href="datatypes-examples.html#Ratio">Examples</a>, <a href="datatype
 <p>
 A relationship between two Quantity values expressed as a numerator and a denominator.
 </p>
-[%dt Ratio%]
+[%dt Ratio 6%]
 <p>
 Common factors in the numerator and denominator are not automatically cancelled out. The Ratio 
 data type is used for titers (e.g., "1:128") and other quantities produced by laboratories that 
@@ -691,7 +670,7 @@ of use will specify whether the entire range applies (e.g. "the patient
 was an inpatient of the hospital for this time range") or one value 
 from the period applies (e.g. "give to the patient between 2 and 4 pm on 24-Jun 2013").
 </p>
-[%dt Period%]
+[%dt Period 7%]
 <p>
 If the <i>start</i> element is  missing, the start of the period is not
 known. If the <i>end</i> element is missing, it means that the period is ongoing.
@@ -726,7 +705,7 @@ Data that comes from a series of measurements taken by a device, with upper and 
 A SampledData provides a concise way to handle the data produced by devices that sample a physical particular state at a high frequency. A typical 
 use for this is for the output of an ECG or EKG device.
 </p>
-[%dt SampledData%]
+[%dt SampledData 8%]
 <p>
 The digits are a set of decimal values separated by a single space (Unicode character u20).
 In addition to decimal values, the special values "E" (error), "L" (below detection limit) 
@@ -756,7 +735,7 @@ Identifiers are associated with objects, and may be changed or retired due to hu
 errors. 
 </p>
 
-[%dt Identifier%]
+[%dt Identifier 9%]
 
 <p>
 The <i>system</i> referred to by means of a URI defines how the identifier is defined (i.e. how the value is made unique). 
@@ -765,7 +744,7 @@ or a way of making identifiers unique. The <i>value</i> SHALL be unique within t
 and have a consistent meaning wherever it appears. Both <i>system</i> and <i>value</i> are always case sensitive.
 </p>
 <p>
-FHIR defines <a href="terminologies-systems.html">some useful URIs directly</a>. OIDs (urn:oid:) and UUIDs (urn:uuid:) 
+FHIR defines <a href="identifier-registry.html">some useful URIs directly</a>. OIDs (urn:oid:) and UUIDs (urn:uuid:) 
 may be registered in the <a href="http://hl7.org/oid">HL7 OID registry</a> and should be if the 
 content is shared or exchanged across institutional boundaries. If the identifier itself 
 is naturally globally unique (e.g. an OID, a UUID, or a URI with no trailing local part), 
@@ -805,7 +784,7 @@ some implicit meaning; various cultures associate different importance with the
 name parts and the degree to which systems SHALL care about name parts around the 
 world varies widely.
 </p>
-[%dt HumanName%]
+[%dt HumanName 10%]
 <p>
 This table summarizes where common parts of a person's name are found. 
 </p>
@@ -877,7 +856,7 @@ Postal addresses are often also used to record a location that can be
 visited to find a patient or person.
 </p>
 
-[%dt Address%]
+[%dt Address 11%]
 <p>
 The <i>text</i> element specifies the entire address as it should be represented. This
 may be provided instead of or as well as the specific parts. Applications updating an address
@@ -907,7 +886,7 @@ See also <a href="datatypes-examples.html#ContactPoint">Examples</a>, <a href="d
 <p>
 Details for all kinds of technology-mediated contact points for a person or organization, including telephone, email, etc.
 </p>
-[%dt ContactPoint%]
+[%dt ContactPoint 12%]
 <p>
 If capturing a phone, fax or similar contact point, the value should be a properly formatted telephone number according to 
 <a href="http://www.itu.int/rec/T-REC-E.123-200102-I/e">ITU-T E.123</a>. 
@@ -941,11 +920,15 @@ Those systems do not use the Timing data type. Other systems use a set of 'commo
 not limited to, widely understood acronyms such as "BID". A structured timing specification SHOULD be provided whenever 
 possible, unless the code is BID, TID, QID, AM or PM, which have a ubiquitous meaning. 
 </p>
-[%dt Timing%]
+[%dt Timing 13%]
 <p>
 If the timing schedule has repeating criteria, the repeat can occur a given number of times per 
 the specified duration or in relation to some real world event. If no end condition is specified, 
 the schedule will terminate on some criteria that are expressed elsewhere. 
+</p>
+<p>
+If <code>duration</code> is provided as a <a href="#Range">Range</a>, the units in the Range
+SHALL be a <a href="units-of-time.html">UCUM unit of time</a>.
 </p>
 <p>
 This table summarises some common uses of the Timing Data Type criteria.
@@ -967,16 +950,16 @@ This table summarises some common uses of the Timing Data Type criteria.
  <tr><td>For 10 minutes before meals</td><td>10 min</td><td></td><td></td><td>10 min</td><td></td><td>AC</td></tr>
 </table>
 
-<p>
-Timing is used in the following places: [%dtusage Timing%]
-</p>
-
-
 <div class="use">
 <p><b>Constraints</b></p>
 [%dt.constraints Timing%]
 
 </div>
+<p>
+Timing is used in the following places: [%dtusage Timing%]
+</p>
+
+
 
 <a name="Signature"></a>
 <a name="signature"></a>
@@ -989,7 +972,7 @@ See also <a href="datatypes-examples.html#Signature">Examples</a>, <a href="data
 <p>
 A Signature holds a Digital Signature and supporting context in a FHIR accessible form. The non-repudiation proof is provided through the XML-Signature blob. 
 </p>
-[%dt Signature%]
+[%dt Signature 14%]
 <p>
 The Signature.blob is base64 encoded XML-Signature. The XML-Signature is a <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature. Where the content that is signed is separate from the signature itself. 
 </p>
@@ -1031,6 +1014,38 @@ For example some environments may choose a different XAdES profile, hashing algo
 Signature is used in the following places: [%dtusage Signature%]
 </p>
 
+<a name="Annotation"></a>
+<a name="annotation"></a>
+<h2 style="margin-bottom: 1px">
+Annotation
+</h2>
+<p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
+See also <a href="datatypes-examples.html#Annotation">Examples</a>, <a href="datatypes-definitions.html#Annotation">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Annotation">Mappings</a>.
+</p>
+<p>
+A  text note which also  contains information about who made the statement and when. 
+</p>
+[%dt Annotation 15%]
+<p>
+Systems that do not have structured annotations simply communicate a single annotation with no author or time. 
+</p>
+<p>
+This element may need to be included in narrative because of the potential for modifying information. 
+</p>
+<p>
+Annotations <b>SHOULD NOT</b> be used to communicate "modifying" information that could be computable 
+(this is a SHOULD because enforcing user behavior is nearly impossible).
+</p>
+<!--<div class="use">
+<p><b>Constraints</b></p>
+[%dt.constraints Annotation%]
+
+</div>
+-->
+<p>
+Annotation is used in the following places: [%dtusage Annotation%]
+</p>
+
 <a name="open"> </a>
 <h2>Open Type Element</h2>
 <p>
@@ -1061,6 +1076,7 @@ Some elements do not have a specified type. The type is represented by the wildc
  <li><a href="datatypes.html#ContactPoint">ContactPoint</a></li>
  <li><a href="datatypes.html#Timing">Timing</a></li>
  <li><a href="datatypes.html#Signature">Signature</a></li>
+ <li><a href="datatypes.html#Annotation">Annotation</a></li>
  <li><a href="references.html#Reference">Reference</a> - a reference to another resource</li>
 </ul>
 <p>
@@ -1076,7 +1092,7 @@ Open references are used in the following places: [%dtusage *%]
 <p>
 The following types are defined as part of the data types, but are documented elsewhere in the specification:
 </p>
-[%diagram datatypes/types3.diagram%]
+[%diagram datatypes/types3.diagram 6a%]
 
 <ul>
  <li><b><a href="resource.html#metadata">Resource</a></b> - the conceptual base class for all resources</li>
@@ -1086,7 +1102,7 @@ The following types are defined as part of the data types, but are documented el
 </ul>
 
 </div>
-[%onthispage Primitive Types#primitive|Data Types#Types|Other Types#other%]
+<!--[.%.onthispage Primitive Types#primitive|Data Types#Types|Other Types#other.%.]-->
 
 [%file newfooter%]
 
@@ -1114,6 +1130,7 @@ $( '#tabs-Address' ).tabs({ active: currentTabIndex, activate: function( event, 
 $( '#tabs-ContactPoint' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
 $( '#tabs-Timing' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
 $( '#tabs-Signature' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Annotation' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
      
      
 function store(currentTab) {
@@ -1135,6 +1152,7 @@ function store(currentTab) {
   $( '#tabs-ContactPoint' ).tabs('option', 'active', currentTab);
   $( '#tabs-Timing' ).tabs('option', 'active', currentTab);
   $( '#tabs-Signature' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Annotation' ).tabs('option', 'active', currentTab);
   document.activeElement.blur();
 }     
 </script>

@@ -28,10 +28,13 @@ package org.hl7.fhir.tools.implementations;
  POSSIBILITY OF SUCH DAMAGE.
 
  */
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import org.hl7.fhir.definitions.model.Definitions;
+import org.hl7.fhir.instance.validation.ValidationMessage;
+import org.hl7.fhir.tools.publisher.FolderManager;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -84,7 +87,7 @@ public class XMLToolsGenerator extends BaseGenerator implements PlatformGenerato
   }
 
   @Override
-  public boolean compile(String rootDir, List<String> errors, Logger logger) {
+  public boolean compile(String rootDir, List<String> errors, Logger logger, List<ValidationMessage> issues) {
     return false;
   }
 
@@ -94,17 +97,22 @@ public class XMLToolsGenerator extends BaseGenerator implements PlatformGenerato
   }
 
   @Override
-  public void loadAndSave(String rootDir, String sourceFile, String destFile) throws Exception {
+  public void loadAndSave(FolderManager folders, String sourceFile, String destFile) throws Exception {
   }
 
   @Override
-  public String checkFragments(String rootDir, String fragments) throws Exception {
+  public String checkFragments(FolderManager folders, String fragments) throws Exception {
     throw new UnsupportedOperationException("not supported");   
   }
 
   @Override
   public String getVersion() {
     return "0.01";
+  }
+
+  @Override
+  public void test(FolderManager folders, Collection<String> names) throws Exception {
+    throw new Error("This should not be called");
   }
 
 }

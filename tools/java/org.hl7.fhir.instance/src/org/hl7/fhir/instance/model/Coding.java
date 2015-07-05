@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
@@ -37,49 +37,54 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
 import org.hl7.fhir.instance.model.annotations.DatatypeDef;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * A reference to a code defined by a terminology system.
  */
 @DatatypeDef(name="Coding")
-public class Coding extends Type {
+public class Coding extends Type implements IBaseCoding, ICompositeType {
 
     /**
      * The identification of the code system that defines the meaning of the symbol in the code.
      */
-    @Child(name ="system", type={UriType.class}, order=0, min=0, max=1)
+    @Child(name = "system", type = {UriType.class}, order=0, min=0, max=1)
     @Description(shortDefinition="Identity of the terminology system", formalDefinition="The identification of the code system that defines the meaning of the symbol in the code." )
     protected UriType system;
 
     /**
      * The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.
      */
-    @Child(name ="version", type={StringType.class}, order=1, min=0, max=1)
+    @Child(name = "version", type = {StringType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Version of the system - if relevant", formalDefinition="The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." )
     protected StringType version;
 
     /**
      * A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).
      */
-    @Child(name ="code", type={CodeType.class}, order=2, min=0, max=1)
+    @Child(name = "code", type = {CodeType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Symbol in syntax defined by the system", formalDefinition="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." )
     protected CodeType code;
 
     /**
      * A representation of the meaning of the code in the system, following the rules of the system.
      */
-    @Child(name ="display", type={StringType.class}, order=3, min=0, max=1)
+    @Child(name = "display", type = {StringType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Representation defined by the system", formalDefinition="A representation of the meaning of the code in the system, following the rules of the system." )
     protected StringType display;
 
     /**
-     * Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
+     * Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
      */
-    @Child(name ="primary", type={BooleanType.class}, order=4, min=0, max=1)
-    @Description(shortDefinition="If this code was chosen directly by the user", formalDefinition="Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." )
-    protected BooleanType primary;
+    @Child(name = "userSelected", type = {BooleanType.class}, order=4, min=0, max=1)
+    @Description(shortDefinition="If this coding was chosen directly by the user", formalDefinition="Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." )
+    protected BooleanType userSelected;
 
-    private static final long serialVersionUID = 2019442517L;
+    private static final long serialVersionUID = -1417514061L;
 
+  /*
+   * Constructor
+   */
     public Coding() {
       super();
     }
@@ -281,47 +286,47 @@ public class Coding extends Type {
     }
 
     /**
-     * @return {@link #primary} (Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays).). This is the underlying object with id, value and extensions. The accessor "getPrimary" gives direct access to the value
+     * @return {@link #userSelected} (Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).). This is the underlying object with id, value and extensions. The accessor "getUserSelected" gives direct access to the value
      */
-    public BooleanType getPrimaryElement() { 
-      if (this.primary == null)
+    public BooleanType getUserSelectedElement() { 
+      if (this.userSelected == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Coding.primary");
+          throw new Error("Attempt to auto-create Coding.userSelected");
         else if (Configuration.doAutoCreate())
-          this.primary = new BooleanType(); // bb
-      return this.primary;
+          this.userSelected = new BooleanType(); // bb
+      return this.userSelected;
     }
 
-    public boolean hasPrimaryElement() { 
-      return this.primary != null && !this.primary.isEmpty();
+    public boolean hasUserSelectedElement() { 
+      return this.userSelected != null && !this.userSelected.isEmpty();
     }
 
-    public boolean hasPrimary() { 
-      return this.primary != null && !this.primary.isEmpty();
+    public boolean hasUserSelected() { 
+      return this.userSelected != null && !this.userSelected.isEmpty();
     }
 
     /**
-     * @param value {@link #primary} (Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays).). This is the underlying object with id, value and extensions. The accessor "getPrimary" gives direct access to the value
+     * @param value {@link #userSelected} (Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).). This is the underlying object with id, value and extensions. The accessor "getUserSelected" gives direct access to the value
      */
-    public Coding setPrimaryElement(BooleanType value) { 
-      this.primary = value;
+    public Coding setUserSelectedElement(BooleanType value) { 
+      this.userSelected = value;
       return this;
     }
 
     /**
-     * @return Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
+     * @return Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
      */
-    public boolean getPrimary() { 
-      return this.primary == null || this.primary.isEmpty() ? false : this.primary.getValue();
+    public boolean getUserSelected() { 
+      return this.userSelected == null || this.userSelected.isEmpty() ? false : this.userSelected.getValue();
     }
 
     /**
-     * @param value Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
+     * @param value Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).
      */
-    public Coding setPrimary(boolean value) { 
-        if (this.primary == null)
-          this.primary = new BooleanType();
-        this.primary.setValue(value);
+    public Coding setUserSelected(boolean value) { 
+        if (this.userSelected == null)
+          this.userSelected = new BooleanType();
+        this.userSelected.setValue(value);
       return this;
     }
 
@@ -331,7 +336,7 @@ public class Coding extends Type {
         childrenList.add(new Property("version", "string", "The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.", 0, java.lang.Integer.MAX_VALUE, version));
         childrenList.add(new Property("code", "code", "A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).", 0, java.lang.Integer.MAX_VALUE, code));
         childrenList.add(new Property("display", "string", "A representation of the meaning of the code in the system, following the rules of the system.", 0, java.lang.Integer.MAX_VALUE, display));
-        childrenList.add(new Property("primary", "boolean", "Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays).", 0, java.lang.Integer.MAX_VALUE, primary));
+        childrenList.add(new Property("userSelected", "boolean", "Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).", 0, java.lang.Integer.MAX_VALUE, userSelected));
       }
 
       public Coding copy() {
@@ -341,7 +346,7 @@ public class Coding extends Type {
         dst.version = version == null ? null : version.copy();
         dst.code = code == null ? null : code.copy();
         dst.display = display == null ? null : display.copy();
-        dst.primary = primary == null ? null : primary.copy();
+        dst.userSelected = userSelected == null ? null : userSelected.copy();
         return dst;
       }
 
@@ -357,7 +362,7 @@ public class Coding extends Type {
           return false;
         Coding o = (Coding) other;
         return compareDeep(system, o.system, true) && compareDeep(version, o.version, true) && compareDeep(code, o.code, true)
-           && compareDeep(display, o.display, true) && compareDeep(primary, o.primary, true);
+           && compareDeep(display, o.display, true) && compareDeep(userSelected, o.userSelected, true);
       }
 
       @Override
@@ -368,12 +373,12 @@ public class Coding extends Type {
           return false;
         Coding o = (Coding) other;
         return compareValues(system, o.system, true) && compareValues(version, o.version, true) && compareValues(code, o.code, true)
-           && compareValues(display, o.display, true) && compareValues(primary, o.primary, true);
+           && compareValues(display, o.display, true) && compareValues(userSelected, o.userSelected, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && (system == null || system.isEmpty()) && (version == null || version.isEmpty())
-           && (code == null || code.isEmpty()) && (display == null || display.isEmpty()) && (primary == null || primary.isEmpty())
+           && (code == null || code.isEmpty()) && (display == null || display.isEmpty()) && (userSelected == null || userSelected.isEmpty())
           ;
       }
 

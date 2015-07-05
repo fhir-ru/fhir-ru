@@ -28,17 +28,18 @@ complexity that they require.
 <tr><td><b>Search Parameter Types</b></td><td><b>Parameters for all resources</b></td><td><b>Search result parameters</b></td></tr>
 <tr>
 <td>
-<%codetoc SearchParamType%>
+<%codetoc http://hl7.org/fhir/vs/search-param-type%>
 </td>
 <td>
 <a href="#id">_id</a><br/>
-<a href="#language">_language</a><br/>
 <a href="#lastUpdated">_lastUpdated</a><br/>
+<a href="#tag">_tag</a><br/>
 <a href="#profile">_profile</a><br/>
 <a href="#security">_security</a><br/>
-<a href="#tag">_tag</a><br/>
 <a href="#text">_text</a><br/>
-<a href="#filter">_filter</a><br/>
+<a href="#content">_content</a><br/>
+<a href="#list">_list</a><br/>
+<a href="#query">_query</a><br/>
 </td>
 <td>
 <a href="#sort">_sort</a><br/>
@@ -51,6 +52,9 @@ complexity that they require.
 </td>
 </tr>
 </table>
+<p>
+In addition, there is a special search parameter <a href="#filter">_filter</a> that allows a different method of searching.
+</p>
 
 <h3>Introduction</h3>
 <p>
@@ -63,27 +67,58 @@ in the RESTful framework:
 <p>
 For this RESTful search (see <a href="http.html#search">definition in RESTful API</a>), the parameters are a series
 of name=[value] pairs encoded in the URL or as an
-application/x-www-form-urlencoded submission for a POST.
+application/x-www-form-urlencoded submission for a POST:
+</p>
+<pre>
+ POST  [base]/[type]/_search{?[parameters]{&amp;_format=[mime-type]}}
+</pre>
+<p>
 The server returns the results in the HTTP response as a <a href="bundle.html">bundle</a>
-which includes the resources that are the results of the search. The server can also
-include additional resources in the result set, such as <a href="operationoutcome.html">OperationOutcome</a>
-resources. Clients should ignore resources that don't have the expected type.
-A HTTP status code of 403 signifies that the server refused to perform the search,
-while some other 4xx or 5xx code signifies that some error occurred.
+which includes the resources that are the results of the search. 
 </p>
 <p>
 <a href="http.html#search">Search operations</a> are executed in one of 3 defined contexts that control which set of resources are being searched:
 </p>
 <ul>
  <li>A specified resource type: GET [base]/[ResourceType]?parameter(s)</li>
- <li>A specified <a href="extras.html#compartments">compartment</a>, perhaps with a specified resource type in that compartment: GET [base]/patient/[id]/[ResourceType]?parameter(s)</li>
+ <li>A specified <a href="compartments.html#compartments">compartment</a>, perhaps with a specified resource type in that compartment: GET [base]/Patient/[id]/[ResourceType]?parameter(s)</li>
  <li>All resources: GET [base]/_search?parameter(s) (parameters common to all types only)</li>
 </ul>
 <p>
-Search operations can also be initiated by other more complex and flexible
-methods described below, which change both the way the search is initiated, and
-the results that are returned.
+Search operations can also be implemented in <a href="messaging.html#search">the messaging framework</a>.
 </p>
+
+<a name="errors"> </a>
+<h3>Handling Errors</h3>
+<p>
+If a server is unable to execute a search request, it may return an error. 
+A HTTP status code of 403 signifies that the server refused to perform the search,
+while some other 4xx or 5xx code signifies that some error occurred. When
+the search fails, a server SHOULD return an <a href="operationoutcome.html">OperationOutcome</a>
+detailing the cause of the failure. Note that an empty search result is not a failure.
+</p>
+<p>
+In some cases, some of the parameters may have problems. For instance:
+</p>
+<ul>
+ <li>A parameter may refer to a non-existent resource e.g. GET [base]/Observation?subject=101, where 101 does not exist</li>
+ <li>A parameter may refer to an unknown code e.g. GET [base]/Observation?code=loinc|1234-1, where the LOINC code 1234-1 is not known to the server</li>
+ <li>A parameter may refer to a time that is out of scope e.g. GET [base]/Condition?onset=&lt;1995, where the system only has data going back to 2001</li>
+ <li>A data time parameter may have incorrect format e.g. GET [base]/Condition?onset=23%20May%202009</li>
+</ul>
+<p>
+Where the content of the parameter is syntactically correct, servers SHOULD return an error. 
+However where the issue is a logical condition (e.g. unknown subject or code), the server 
+SHOULD process the search, including processing the parameter - with the effect of returning
+an empty search set, since the parameter cannot be satisfied. 
+</p>
+<p>
+In such cases, the search process MAY include an <a href="operationoutcome.html">OperationOutcome</a>
+in the search set that contains additional hints and warnings about the search process.
+This is included in the search results as an entry with <a href="bundle-definitions.html#Bundle.entry.search.mode">search mode</a> = <a href="search-entry-mode.html">outcome</a>.
+Clients can use this information to improve future searches.
+</p>
+
 <a name="standard"> </a>
 <h3>Standard Parameters</h3>
 
@@ -112,18 +147,6 @@ read operation</a>:
 except that it returns a bundle with the requested resource, rather than the
 resource itself. Additional parameters can be added which may provide
 additional functionality on top of this base read equivalence.
-</p>
-<a name="language"> </a>
-<p>
-The search parameter _language refers to the base language of the resource:
-</p>
-<pre>
- GET [base]/Composition?_language=fr
-</pre>
-<p>
-This search finds any composition with a designated language of French.
-Note that this is the claimed language of the resource, not the actual
-language of the content.
 </p>
 <a name="lastUpdated"> </a>
 <p>
@@ -209,7 +232,7 @@ additional parameters if they wish.
 <p>Each search parameter is defined with a type that defines how the search parameter
 behaves. These are the defined parameter types:
 </p>
-<%linkcodelist SearchParamType%>
+<%linkcodelist http://hl7.org/fhir/vs/search-param-type%>
 <p>
 The search parameters can also have "modifiers" appended to them that control
 their behavior. The kinds of modifiers that can be used depend on the type
@@ -354,7 +377,7 @@ depending on culture and context.
 The uri parameter refers to an element which is URI (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>).
 Matches are precise (e.g. case, accent, and escape) sensitive, and the entire URI must match. 
 The modifier :above or :below can be used to indicate
-that the match is based on left. For example:
+that partial matching is used. For example:
 </p>
 <pre>
  GET [base]/ValueSet?url=http://acme.org/fhir/ValueSet/123
@@ -370,15 +393,9 @@ name systems, but it is generally less useful than the :below search.
 <a name="token" />
 <h4>token</h4>
 <p>
-A token type is a parameter that searches on a code or identifier value
-where the value may have a URI that scopes its meaning (from a <a href="datatypes.html#Coding">Coding</a>,
-a <a href="datatypes.html#CodeableConcept">CodeableConcept</a> or an <a href="datatypes.html#Identifier">Identifier</a> type, and also
-from a <a href="datatypes.html#code">code</a> where the URI is implicit, or for a boolean).
-</p>
-<p>
-If the parameter has no modifier, the search is performed against
-the URI/value from a Coding or an Identifier. The syntax for the
-value is one of the following:
+A token type is a parameter that searches on a pair, a URI and a value. It is used against
+ code or identifier value where the value may 
+have a URI that scopes its meaning. The search is performed against the  pair from a Coding or an Identifier. The syntax for the value is one of the following:
 </p>
 <ul>
  <li><b>[parameter]=[code]</b>: the value of [code] matches a Coding.code or Identifier.value irrespective of the value of the system property</li>
@@ -388,6 +405,66 @@ value is one of the following:
 <p>
 Note that the namespace URI and code both must be <a href="#escaping">escaped</a>. Matches are literal (e.g. not based on subsumption or other code system features), but not case sensitive.
 </p>
+<p>
+Token search parameters are used for the following data types:
+</p>
+<table class="lines">
+ <tr>
+  <td><b>Data Type</b></td>
+  <td><b>URI</b></td>
+  <td><b>Code</b></td>
+  <td><b>Comments</b></td>
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Coding">Coding</a></td>
+  <td>Coding.system</td>
+  <td>Coding.code</td>
+  <td></td>
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td>
+  <td>CodeableConcept.coding.system</td>
+  <td>CodeableConcept.coding.code</td>
+  <td>Matches against any coding in the CodeableConcept</td>
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Identifier">Identifier</a></td>
+  <td>Identifier.system</td>
+  <td>Identifier.value</td>
+  <td></td>
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Identifier">ContactPoint</a></td>
+  <td>ContactPoint.use</td>
+  <td>ContactPoint.value</td>
+  <td>The use is prepended by <a href="contact-point-system.html">http://hl7.org/fhir/contact-point-system</a>/</td>
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#code">code</a></td>
+  <td>(implicit)</td>
+  <td>code</td>
+  <td>the system is defined in the value set (though it's not usually needed)</td>
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#boolean">boolean</a></td>
+  <td>(implicit)</td>
+  <td>boolean</td>
+  <td>The implicit system is <a href="special-values.html">http://hl7.org/fhir/special-values</a></td>
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#string">string</a></td>
+  <td>n/a</td>
+  <td>string</td>
+  <td>Token is sometimes used for string to indicate that exact matching is the correct default search stategy</td>
+ </tr>
+</table>
+<p>
+Note about the use of token search parameters for boolean fields: the boolean values 'true' and 'false' are also represented
+as formal codes in the <a href="special-values.html">Special Values</a> code system, which is useful when boolean values 
+need to be represented in a <a href="datatypes.html#coding">Coding</a> data type. The namespace for these codes is 
+http://hl7.org/fhir/special-values, though there is usually no reason to use this, as a simple true or false is sufficient.
+</p>
+
 <p><b>Modifiers:</b></p>
 <table class="lines">
  <tr> <td><b>Modifier</b></td> <td><b>Use</b></td> </tr>
@@ -415,12 +492,6 @@ Here are some example searches:
  <tr><td><pre> GET [base]/Patient?active=true</pre></td><td>Search for any patients that are active</td></tr>
 </table>
 
-<p>
-Note about the use of token search parameters for boolean fields: the boolean values 'true' and 'false' are also represented
-as formal codes in the <a href="special-values.html">Special Values</a> code system, which is useful when boolean values 
-need to be represented in a <a href="datatypes.html#coding">Coding</a> data type. The namespace for these codes is 
-http://hl7.org/fhir/special-values, though there is usually no reason to use this, as a simple true or false is sufficient.
-</p>
 
 <a name="quantity" />
 <h4>quantity</h4>
@@ -527,19 +598,19 @@ the type explicitly using the syntax in the second example above).
 <h4>Composite Search Parameters</h4>
 <p>
 The result of the search operation is the intersection of the resources that match the criteria specified by each
-individual search parameter. If a parameter repeats, such as /patient?language=FR&amp;language=NL, then
+individual search parameter. If a parameter repeats, such as /Patient?language=FR&amp;language=NL, then
 this matches a patient who speaks both languages. This is known as an AND search parameter, since the
 server is expected to respond only with results which match both values.
 </p>
 <p>
 If, instead, the search is to find patients that speak either
 language, then this is a single parameter with multiple values, separated by a ','.
-For example: "/patient?language=FR,NL". This is known as an OR search parameter,
+For example: "/Patient?language=FR,NL". This is known as an OR search parameter,
 since the server is expected to respond with results which match either value.
 </p>
 <p>
 AND parameters and OR parameters may also be combined, for example:
-"/patient?language=FR,NL&amp;language=EN" would refer to any patient who speaks
+"/Patient?language=FR,NL&amp;language=EN" would refer to any patient who speaks
 English as well as either French or Dutch.
 </p>
 <p>
@@ -584,6 +655,7 @@ and the parameter value "param=xx\\xx" means a literal value of 'xx\xx'.
 
 
 <a name="text"> </a>
+<a name="content"> </a>
 <h4>Text Search Parameters</h4>
 <p>
 There are two special text search parameters, _text and _content, which search
@@ -607,12 +679,48 @@ for related words as well.
 <p><b>DSTU Note</b>: The issues around standardizing text search are not fully resolved.
 During the trial use period for this specification, we recommend that systems use
 the rules specified by <a href="http://docs.oasis-open.org/odata/odata/v4.0/cs01/part1-protocol/odata-v4.0-cs01-part1-protocol.html#_The_$search_System">
-a forth coming release of the OData specification for the $search parameter</a>.
+the OData specification for the $search parameter</a>.
 Typical implementations would use Lucene, an sql-based full text search,
 or some indexing service. Feedback about consistent implementation in this area
 is welcome.
 </p>
 </blockquote>
+
+<a name="list"> </a>
+<h4>Searching by list</h4>
+
+<p>
+The _list parameter allows for the retrieval of resources that are referenced by a <a href="list.html">List</a>
+resource. 
+</p>
+<pre>
+ GET [base]/Patient?_list=42
+</pre>
+<p>
+This returns all patient resources that are referenced from the list found at [base]/List/42) in List.entry.item.
+While it is possible to retrieve the list, and then iterate the entries in the list fetching each
+patient, using a list as a search criteria allows for additional search criteria to be specified. For 
+instance:
+</p>
+<pre>
+ GET [base]/Patient?_list=42&amp;gender=female
+</pre>
+<p>
+which means, welect all the female patients in the list. The server can return the list referred 
+to in the search parameter as an included resource, but is not required to do so. 
+In addition, a system can support searching by lists by their logical function. For example:  
+</p>
+<pre>
+ GET [base]/AllergyIntolerance?patient=42&amp;_list=$current-allergies
+</pre>
+<p>
+This is a request to fetch all the allergies in the patient 42's "Currrent Allergy List".
+The server returns all the relevant AllergyIntolerance resources, and can also choose
+to return the list. For further information, refer to the <a href="lifecycle.html#current">definition of "$current-allergies"</a>,
+and the <a href="list-operations.html#find">List Operation "Find"</a>.
+Note that servers are not required to make these lists available to the clients as list resources,
+but may choose to do so.
+</p>
 
 <a name="filter"> </a>
 <a name="_filter"> </a>
@@ -669,6 +777,9 @@ there can be multiple values for a given search parameter for a single
 resource. In this case, the sort is based on the item in the set of
 multiple parameters that comes earliest in the specified sort order
 when ordering the returned resources. </li>
+  <li>When sorting on string search parameters, sorting SHOULD be performed on a case-insensitive basis. Accents may either be ignored or sorted as per realm convention. Note: 
+   Consistency of sorting across servers isn't as essential as consistency of filtering (even that is variable). The purpose of sorting is to provide data in a "reasonable" order for end users. 
+   "Reasonable" may vary by realm, particularly for accented characters.</li>
 </ul>
 
 <a name="count"> </a>
@@ -692,7 +803,7 @@ or processed by the client.
 <p>
 The parameter _count is defined as a hint to the server
 regarding how many resources should be returned in a
-single page. Servers SHALL not return more resources than
+single page. Servers SHALL NOT return more resources than
 requested (even if they don't support paging) but are
 allowed to return less than the client asked for. The server should repeat 
 the original _count parameter in its returned page links so that 
@@ -912,7 +1023,7 @@ of the client.
 <p>
 If the _include path selects a reference that refers to an entity that is not a Resource
 (e.g. an image attachment), the server may also elect to include this in the returned
-results as a <a href="extras.html#binary">Binary</a> resource. For example, the include
+results as a <a href="compartments.html#binary">Binary</a> resource. For example, the include
 path may point to an attachment which is by reference, like this:
 </p>
 <pre>
@@ -1022,6 +1133,7 @@ to supporting search:
 
 <hr/>
 <a name="advanced"> </a>
+<a name="query"> </a>
 <h3>Advanced Search</h3>
 <p>
 The search framework described above is a useful framework
@@ -1051,16 +1163,6 @@ refuse to process a search request if they do not recognize
 the _query parameter value.
 </p>
 
-<h3>Executing Searches</h3>
-<p>
-In addition to the standard <a href="http.html#search">search</a> operation on a
-RESTful interface (as described above), searches can also be performed using
-the messaging framework.
-</p>
-<p>
-<i>TODO: describe how this is done</i>
-</p>
-
 <a name="currency"> </a>
 <h3>Search Result Currency</h3>
 
@@ -1084,6 +1186,278 @@ resources on the server, with the exception of the creation
 of <a href="auditevent.html">Audit Event</a> resources
 auditing the search itself.
 </p>
+
+<a name="table"> </a>
+<h3>Summary Tables</h3>
+
+<table class="list">
+<tr><td colspan="4">Common Parameters defined for all resources:</td></tr>
+<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>
+<tr><td><a href="#id">_id</a></td><td><a href="#string">string</a></td><td>Resource id (not a full URL)</td><td>Resource.id</td></tr>
+<tr><td><a href="#lastUpdated">_lastUpdated</a></td><td><a href="#date">date</a></td><td>Date last updated. Server has discretion on the boundary precision</td><td>Resource.meta.lastUpdated</td></tr>
+<tr><td><a href="#tag">_tag</a></td><td><a href="#token">token</a></td><td>Search by a resource tag</td><td>Resource.meta.tag</td></tr>
+<tr><td><a href="#profile">_profile</a></td><td><a href="#uri">uri</a></td><td>Search for all resources tagged with a profile</td><td>Resource.meta.profile</td></tr>
+<tr><td><a href="#security">_security</a></td><td><a href="#token">token</a></td><td>Search by a security label</td><td>Resource.meta.security</td></tr>
+<tr><td><a href="#text">_text</a></td><td><a href="#string">string</a></td><td>Text search against the narrative</td><td></td></tr>
+<tr><td><a href="#content">_content</a></td><td><a href="#string">string</a></td><td>Text search against the entire resource</td><td></td></tr>
+<tr><td><a href="#list">_list</a></td><td><a href="#string">string</a></td><td>All resources in nominated list (by id, not a full URL)</td><td></td></tr>
+<tr><td><a href="#query">_query</a></td><td><a href="#string">string</a></td><td>Custom named query</td><td></td></tr>
+<tr><td colspan="4">Search Control Parameters:</td></tr>
+<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Allowable Content</b></td></tr>
+<tr><td><a href="#sort">_sort</a></td><td><a href="#string">string</a></td><td>Order to sort results in (can repeat for inner sort orders)</td><td>The name of a valid search parameter</td></tr>
+<tr><td><a href="#count">_count</a></td><td><a href="#number ">number </a></td><td>Number of results per page</td><td>Whole Number</td></tr>
+<tr><td><a href="#include">_include</a></td><td><a href="#string">string</a></td><td>Other resources to include in the search results that search matches point to</td><td>SourceType:searchParam(:targetType)</td></tr>
+<tr><td><a href="#revinclude">_revinclude</a></td><td><a href="#string">string</a></td><td>Other resources to include in the search results when they refer to search matches</td><td>SourceType:searchParam(:targetType)</td></tr>
+<tr><td><a href="#summary">_summary</a></td><td><a href="#string">string</a></td><td>Just return the summary elements (for resources where this is defined)</td><td>true | false (false is default)</td></tr>
+<tr><td><a href="#contained">_contained</a></td><td><a href="#string">string</a></td><td>Whether to return resources contained in other resources in the search matches</td><td>true | false | both (false is default)</td></tr>
+<tr><td><a href="#containedType">_containedType</a></td><td><a href="#string">string</a></td><td>If returning contained resources, whether to return the contained or container resources</td><td>container | contained</td></tr>
+</table>
+
+<p>
+Cross-map between search parameter types and Data types:
+</p>
+<table class="list">
+ <tr>
+  <td><b>Data Type</b></td>
+  <td><b><a href="#number">number</a></b></td>
+  <td><b><a href="#date">date</a></b></td>
+  <td><b><a href="#string">string</a></b></td>
+  <td><b><a href="#token">token</a></b></td>
+  <td><b><a href="#reference">reference</a></b></td>
+  <td><b><a href="#quantity">quantity</a></b></td>
+  <td><b><a href="#uri">uri</a></b></td>
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#boolean">boolean</a></td>
+  <td><%xcm boolean:number%></td> <!-- number -->
+  <td><%xcm boolean:date%></td> <!-- date -->
+  <td><%xcm boolean:string%></td> <!-- string -->
+  <td><%xcm boolean:token%>. true|false (System = http://hl7.org/fhir/special-values but not usually needed)</td> <!-- token -->
+  <td><%xcm boolean:reference%></td> <!-- reference -->
+  <td><%xcm boolean:quantity%></td> <!-- quantity -->
+  <td><%xcm boolean:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#code">code</a></td>
+  <td><%xcm code:number%></td> <!-- number -->
+  <td><%xcm code:date%></td> <!-- date -->
+  <td><%xcm code:string%></td> <!-- string -->
+  <td><%xcm code:token%>. (System, if desired, is defined in the underlying value set for eeach code)</td> <!-- token -->
+  <td><%xcm code:reference%></td> <!-- reference -->
+  <td><%xcm code:quantity%></td> <!-- quantity -->
+  <td><%xcm code:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#date">date</a></td>
+  <td><%xcm date:number%></td> <!-- number -->
+  <td><%xcm date:date%></td> <!-- date -->
+  <td><%xcm date:string%></td> <!-- string -->
+  <td><%xcm date:token%></td> <!-- token -->
+  <td><%xcm date:reference%></td> <!-- reference -->
+  <td><%xcm date:quantity%></td> <!-- quantity -->
+  <td><%xcm date:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#dateTime">dateTime</a></td>
+  <td><%xcm dateTime:number%></td> <!-- number -->
+  <td><%xcm dateTime:date%></td> <!-- date -->
+  <td><%xcm dateTime:string%></td> <!-- string -->
+  <td><%xcm dateTime:token%></td> <!-- token -->
+  <td><%xcm dateTime:reference%></td> <!-- reference -->
+  <td><%xcm dateTime:quantity%></td> <!-- quantity -->
+  <td><%xcm dateTime:number%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#instant">instant</a></td>
+  <td><%xcm instant:number%></td> <!-- number -->
+  <td><%xcm instant:date%></td> <!-- date -->
+  <td><%xcm instant:string%></td> <!-- string -->
+  <td><%xcm instant:token%></td> <!-- token -->
+  <td><%xcm instant:reference%></td> <!-- reference -->
+  <td><%xcm instant:quantity%></td> <!-- quantity -->
+  <td><%xcm instant:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#integer">integer</a></td>
+  <td><%xcm integer:number%></td> <!-- number -->
+  <td><%xcm integer:date%></td> <!-- date -->
+  <td><%xcm integer:string%></td> <!-- string -->
+  <td><%xcm integer:token%></td> <!-- token -->
+  <td><%xcm integer:reference%></td> <!-- reference -->
+  <td><%xcm integer:quantity%></td> <!-- quantity -->
+  <td><%xcm integer:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#oid">oid</a></td>
+  <td><%xcm oid:number%></td> <!-- number -->
+  <td><%xcm oid:date%></td> <!-- date -->
+  <td><%xcm oid:string%></td> <!-- string -->
+  <td><%xcm oid:token%></td> <!-- token -->
+  <td><%xcm oid:reference%></td> <!-- reference -->
+  <td><%xcm oid:quantity%></td> <!-- quantity -->
+  <td><%xcm oid:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#string">string</a></td>
+  <td><%xcm string:number%></td> <!-- number -->
+  <td><%xcm string:date%></td> <!-- date -->
+  <td><%xcm string:string%></td> <!-- string -->
+  <td><%xcm string:token%></td> <!-- token -->
+  <td><%xcm string:reference%></td> <!-- reference -->
+  <td><%xcm string:quantity%></td> <!-- quantity -->
+  <td><%xcm string:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#uri">uri</a></td>
+  <td><%xcm uri:number%></td> <!-- number -->
+  <td><%xcm uri:date%></td> <!-- date -->
+  <td><%xcm uri:string%> </td> <!-- string -->
+  <td><%xcm uri:token%></td> <!-- token -->
+  <td><%xcm uri:reference%></td> <!-- reference -->
+  <td><%xcm uri:quantity%></td> <!-- quantity -->
+  <td><%xcm uri:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Address">Address</a></td>
+  <td><%xcm Address:number%></td> <!-- number -->
+  <td><%xcm Address:date%></td> <!-- date -->
+  <td><%xcm Address:string%> search on any elements in the address</td> <!-- string -->
+  <td><%xcm Address:token%></td> <!-- token -->
+  <td><%xcm Address:reference%></td> <!-- reference -->
+  <td><%xcm Address:quantity%></td> <!-- quantity -->
+  <td><%xcm Address:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Annotation">Annotation</a></td>
+  <td><%xcm Annotation:number%></td> <!-- number -->
+  <td><%xcm Annotation:date%></td> <!-- date -->
+  <td><%xcm Annotation:string%></td> <!-- string -->
+  <td><%xcm Annotation:token%></td> <!-- token -->
+  <td><%xcm Annotation:reference%></td> <!-- reference -->
+  <td><%xcm Annotation:quantity%></td> <!-- quantity -->
+  <td><%xcm Annotation:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td>
+  <td><%xcm CodeableConcept:number%></td> <!-- number -->
+  <td><%xcm CodeableConcept:date%></td> <!-- date -->
+  <td><%xcm CodeableConcept:string%></td> <!-- string -->
+  <td><%xcm CodeableConcept:token%></td> <!-- token -->
+  <td><%xcm CodeableConcept:reference%></td> <!-- reference -->
+  <td><%xcm CodeableConcept:quantity%></td> <!-- quantity -->
+  <td><%xcm CodeableConcept:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Coding">Coding</a></td>
+  <td><%xcm Coding:number%></td> <!-- number -->
+  <td><%xcm Coding:date%></td> <!-- date -->
+  <td><%xcm Coding:string%></td> <!-- string -->
+  <td><%xcm Coding:token%></td> <!-- token -->
+  <td><%xcm Coding:reference%></td> <!-- reference -->
+  <td><%xcm Coding:quantity%></td> <!-- quantity -->
+  <td><%xcm Coding:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#ContactPoint">ContactPoint</a></td>
+  <td><%xcm ContactPoint:number%></td> <!-- number -->
+  <td><%xcm ContactPoint:date%></td> <!-- date -->
+  <td><%xcm ContactPoint:string%></td> <!-- string -->
+  <td><%xcm ContactPoint:token%></td> <!-- token -->
+  <td><%xcm ContactPoint:reference%></td> <!-- reference -->
+  <td><%xcm ContactPoint:quantity%></td> <!-- quantity -->
+  <td><%xcm ContactPoint:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Duration">Duration</a></td>
+  <td><%xcm Duration:number%></td> <!-- number -->
+  <td><%xcm Duration:date%></td> <!-- date -->
+  <td><%xcm Duration:string%></td> <!-- string -->
+  <td><%xcm Duration:token%></td> <!-- token -->
+  <td><%xcm Duration:reference%></td> <!-- reference -->
+  <td><%xcm Duration:quantity%></td> <!-- quantity -->
+  <td><%xcm Duration:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#HumanName">HumanName</a></td>
+  <td><%xcm HumanName:number%></td> <!-- number -->
+  <td><%xcm HumanName:date%></td> <!-- date -->
+  <td><%xcm HumanName:string%> Search on any element in the name</td> <!-- string -->
+  <td><%xcm HumanName:token%></td> <!-- token -->
+  <td><%xcm HumanName:reference%></td> <!-- reference -->
+  <td><%xcm HumanName:quantity%></td> <!-- quantity -->
+  <td><%xcm HumanName:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Identifier">Identifier</a></td>
+  <td><%xcm Identifier:number%></td> <!-- number -->
+  <td><%xcm Identifier:date%></td> <!-- date -->
+  <td><%xcm Identifier:string%></td> <!-- string -->
+  <td><%xcm Identifier:token%></td> <!-- token -->
+  <td><%xcm Identifier:reference%></td> <!-- reference -->
+  <td><%xcm Identifier:quantity%></td> <!-- quantity -->
+  <td><%xcm Identifier:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Period">Period</a></td>
+  <td><%xcm Period:number%></td> <!-- number -->
+  <td><%xcm Period:date%></td> <!-- date -->
+  <td><%xcm Period:string%></td> <!-- string -->
+  <td><%xcm Period:token%></td> <!-- token -->
+  <td><%xcm Period:reference%></td> <!-- reference -->
+  <td><%xcm Period:quantity%></td> <!-- quantity -->
+  <td><%xcm Period:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Quantity">Quantity</a></td>
+  <td><%xcm Quantity:number%></td> <!-- number -->
+  <td><%xcm Quantity:date%></td> <!-- date -->
+  <td><%xcm Quantity:string%></td> <!-- string -->
+  <td><%xcm Quantity:token%></td> <!-- token -->
+  <td><%xcm Quantity:reference%></td> <!-- reference -->
+  <td><%xcm Quantity:quantity%></td> <!-- quantity -->
+  <td><%xcm Quantity:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Range">Range</a></td>
+  <td><%xcm Range:number%></td> <!-- number -->
+  <td><%xcm Range:date%></td> <!-- date -->
+  <td><%xcm Range:string%></td> <!-- string -->
+  <td><%xcm Range:token%></td> <!-- token -->
+  <td><%xcm Range:reference%></td> <!-- reference -->
+  <td><%xcm Range:quantity%></td> <!-- quantity -->
+  <td><%xcm Range:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Reference">Reference</a></td>
+  <td><%xcm Reference:number%></td> <!-- number -->
+  <td><%xcm Reference:date%></td> <!-- date -->
+  <td><%xcm Reference:string%></td> <!-- string -->
+  <td><%xcm Reference:token%></td> <!-- token -->
+  <td><%xcm Reference:reference%></td> <!-- reference -->
+  <td><%xcm Reference:quantity%></td> <!-- quantity -->
+  <td><%xcm Reference:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#SampledData">SampledData</a></td>
+  <td><%xcm SampledData:number%></td> <!-- number -->
+  <td><%xcm SampledData:date%></td> <!-- date -->
+  <td><%xcm SampledData:string%></td> <!-- string -->
+  <td><%xcm SampledData:token%></td> <!-- token -->
+  <td><%xcm SampledData:reference%></td> <!-- reference -->
+  <td><%xcm SampledData:quantity%></td> <!-- quantity -->
+  <td><%xcm SampledData:uri%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#Timing">Timing</a></td>
+  <td><%xcm Timing:number%></td> <!-- number -->
+  <td><%xcm Timing:date%></td> <!-- date -->
+  <td><%xcm Timing:string%></td> <!-- string -->
+  <td><%xcm Timing:token%></td> <!-- token -->
+  <td><%xcm Timing:reference%></td> <!-- reference -->
+  <td><%xcm Timing:quantity%></td> <!-- quantity -->
+  <td><%xcm Timing:uri%></td> <!-- uri -->
+ </tr>
+</table>
 
 </div>
 

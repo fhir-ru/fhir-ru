@@ -23,16 +23,16 @@ import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Condition;
-import org.hl7.fhir.instance.model.Condition.ConditionStatus;
+import org.hl7.fhir.instance.model.Condition.ConditionClinicalStatus;
 import org.hl7.fhir.instance.model.Conformance;
 import org.hl7.fhir.instance.model.DateType;
+import org.hl7.fhir.instance.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.HumanName;
 import org.hl7.fhir.instance.model.Observation;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.OperationOutcome.OperationOutcomeIssueComponent;
 import org.hl7.fhir.instance.model.Patient;
-import org.hl7.fhir.instance.model.Patient.AdministrativeGender;
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
 import org.junit.After;
@@ -364,7 +364,7 @@ public class FHIRSimpleClientTest {
 			patientReference.setReference(getEntryPath(createdPatientEntry));
 			Observation obs = new Observation();
 			obs.setSubject(patientReference);
-			obs.setApplies(Factory.newDateTime("2013-01-10"));
+			obs.setEffective(Factory.newDateTime("2013-01-10"));
 			OperationOutcome createdObservationEntry = testClient.create(Observation.class, obs);
 			obs.setId(getEntryPath(createdObservationEntry));
 			Bundle batchFeed = new Bundle();
@@ -646,7 +646,7 @@ public class FHIRSimpleClientTest {
 			patientReference.setReference("patient/@"+getEntryId(patientEntry));
 			condition.setPatient(patientReference);
 			condition.setCode(conditionCode);
-			condition.setClinicalStatus(ConditionStatus.CONFIRMED);
+			condition.setClinicalStatus(ConditionClinicalStatus.CONFIRMED);
 		} catch (Exception e) {
 			fail();
 		}

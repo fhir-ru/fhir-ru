@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -959,7 +959,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">author.name</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">HL7 International - Orders and Observations WG</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Health Level Seven International (Structured Documents - CCDA on FHIR)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">author.reference</Data></Cell>
@@ -11254,7 +11254,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell ss:StyleID="s84"><Data ss:Type="String">8.  SHALL contain at least one [1..*] participant (CONF:14227). &#10;a.  Such participants MAY contain zero or one [0..1] time (CONF:14830). &#10;i.  The time, if present, SHALL contain exactly one [1..1] low &#10;(CONF:14831). </Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Observation.applies[x]</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Observation.effective[x]</Data></Cell>
     <Cell ss:StyleID="s84"/>
     <Cell ss:StyleID="s85"/>
     <Cell ss:StyleID="s84"/>

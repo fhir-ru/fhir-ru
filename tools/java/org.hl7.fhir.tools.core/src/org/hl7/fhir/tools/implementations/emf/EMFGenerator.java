@@ -1,4 +1,5 @@
 package org.hl7.fhir.tools.implementations.emf;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,9 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.instance.utils.Version;
+import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.tools.implementations.emf.EMFStructureGenerator.OOGenClass;
+import org.hl7.fhir.tools.publisher.FolderManager;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.TextFile;
@@ -45,32 +48,32 @@ public class EMFGenerator extends EMFBase implements PlatformGenerator {
     for (String n : definitions.getInfrastructure().keySet()) {
       ElementDefn root = definitions.getInfrastructure().get(n); 
       EMFStructureGenerator jgen = new EMFStructureGenerator(w, definitions);
-      jgen.generate(root, root.getName(), definitions.getBindings(), OOGenClass.Structure, null);
+      jgen.generate(root, root.getName(), OOGenClass.Structure, null);
     }
     
     for (String n : definitions.getTypes().keySet()) {
       ElementDefn root = definitions.getTypes().get(n); 
       EMFStructureGenerator jgen = new EMFStructureGenerator(w, definitions);
-      jgen.generate(root, root.getName(), definitions.getBindings(), OOGenClass.Type, null);
+      jgen.generate(root, root.getName(), OOGenClass.Type, null);
     }
     
     for (ProfiledType cd : definitions.getConstraints().values()) {
       ElementDefn root = definitions.getTypes().get(cd.getBaseType()); 
       EMFStructureGenerator jgen = new EMFStructureGenerator(w, definitions);
-      jgen.generate(root, cd.getName(), definitions.getBindings(), OOGenClass.Constraint, cd);
+      jgen.generate(root, cd.getName(), OOGenClass.Constraint, cd);
     }
     
     for (String n : definitions.getStructures().keySet()) {
       ElementDefn root = definitions.getStructures().get(n); 
       EMFStructureGenerator jgen = new EMFStructureGenerator(w, definitions);
-      jgen.generate(root, root.getName(), definitions.getBindings(), OOGenClass.Type, null);
+      jgen.generate(root, root.getName(), OOGenClass.Type, null);
     }
     
     
     for (String n : definitions.sortedResourceNames()) {
       ResourceDefn root = definitions.getResourceByName(n); 
       EMFStructureGenerator jrg = new EMFStructureGenerator(w, definitions);
-      jrg.generate(root.getRoot(), root.getName(), definitions.getBindings(), OOGenClass.Resource, null);
+      jrg.generate(root.getRoot(), root.getName(), OOGenClass.Resource, null);
     }
     w.write("}");
     w.close();
@@ -100,7 +103,7 @@ public class EMFGenerator extends EMFBase implements PlatformGenerator {
 
    
   @Override
-  public boolean compile(String rootDir, List<String> errors, Logger logger) throws Exception {
+  public boolean compile(String rootDir, List<String> errors, Logger logger, List<ValidationMessage> issues) throws Exception {
     throw new UnsupportedOperationException("not implemented in EMF Generator");  
   }
 
@@ -112,7 +115,7 @@ public class EMFGenerator extends EMFBase implements PlatformGenerator {
   }
 
   @Override
-  public void loadAndSave(String rootDir, String sourceFile, String destFile) throws Exception {
+  public void loadAndSave(FolderManager folders, String sourceFile, String destFile) throws Exception {
     throw new UnsupportedOperationException("not implemented in EMF Generator");  
   }
 
@@ -121,7 +124,7 @@ public class EMFGenerator extends EMFBase implements PlatformGenerator {
   }
 
   @Override
-  public String checkFragments(String rootDir, String fragments) throws Exception {
+  public String checkFragments(FolderManager folders, String fragments) throws Exception {
     throw new UnsupportedOperationException("not implemented in EMF Generator");  
   }
 
@@ -154,6 +157,11 @@ public class EMFGenerator extends EMFBase implements PlatformGenerator {
   @Override
   public void verify(String filename) throws Exception {
     throw new Exception("this should not be called");
+  }
+
+  @Override
+  public void test(FolderManager folders, Collection<String> names) throws Exception {
+    throw new Error("This should not be called");
   }
 
 }

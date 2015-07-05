@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<NutritionOrder xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file://ERICHPLAPTOP/Users/HL7/FHIR/20141020Build/schema/nutritionorder.xsd">
+<NutritionOrder xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file://ERICHPLAPTOP/Users/FHIRBuild/schema/nutritionorder.xsd">
 	<id value="diabeticsupplement"/>
 	<!-- id = diabeticsupplement  file name = nutritionorder-example-diabeticsupplement.xml Name= Diabetic Supplement  Description = Nutrition Order Diabetic Supplement Canonical Example
 edited by Eric Haas Health eData Inc
@@ -79,17 +79,24 @@ edited by Eric Haas Health eData Inc
 			<text value="Adult diabetic formula"/>
 		</type>
 		<productName value="Glucerna"/>
-		<!-- EH 02/11/2015 - no way to say at 3 and HS using the timing datatype -->
-		<scheduled>
+		<!--EH:Glucerna Shake at 3pm and HS-->
+		<schedule>
 			<repeat>
-        <bounds>
-          <start value="2015-02-10"/>
-        </bounds>
-				<when value="HS"/>
-				<period value="1"/>
+				<boundsPeriod>
+					<start value="2015-02-10T15:00:00Z"/>
+				</boundsPeriod>
+				<frequency value="1"/>
+				<period value="24"/>
 				<periodUnits value="h"/>
 			</repeat>
-		</scheduled>
+		</schedule>
+		<schedule>
+			<repeat>
+				<duration value="1"/>
+				<durationUnits value="h"/>
+				<when value="HS"/>
+			</repeat>
+		</schedule>
 		<quantity>
 			<value value="1"/>
 			<units value="8 oz bottle"/>

@@ -64,6 +64,18 @@ tr {
 	vertical-align: top;
 	text-align: left;
 }
+table.cols {
+	width: 100%;
+}
+
+table.cols td {
+  border: 1px grey solid;
+	border-spacing: 0;
+	padding: 5px;
+	border-collapse: collapse;
+	background-color: #ffffe6;
+}
+
 table.list td {
         border-top: 1px silver solid;
 	border-spacing: 0;
@@ -298,8 +310,22 @@ pre.xml              {
 	width: 650px;
 }
 
+a.xmltag   {
+  color: Navy;
+}
+a.xmltag :visited  {
+  color: Navy;
+}
+
+a.xmltag :hover  {
+  color: Blue;
+}
+
 span.xmltag   {
   color: Navy;
+}
+span.xmltagred  {
+  color: Maroon;
 }
 
 span.xmlcomment  {
@@ -563,7 +589,10 @@ img.heirarchy {
   counter-reset: listing 
 }
 
-code { counter-increment: listing; }
+
+code { 
+  counter-increment: listing; 
+}
 
 .linecounter  i:before { 
   content: counter(listing) ". "; color: black; 

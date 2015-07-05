@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
@@ -37,22 +37,23 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * The formal description of a single piece of information that can be gathered and reported.
  */
 @ResourceDef(name="DataElement", profile="http://hl7.org/fhir/Profile/DataElement")
 public class DataElement extends DomainResource {
 
-    public enum DataelementSpecificity {
+    public enum DataElementSpecificity {
         /**
          * The data element is sufficiently well-constrained that multiple pieces of data captured according to the constraints of the data element will be comparable (though in some cases, a degree of automated conversion/normalization may be required).
          */
         COMPARABLE, 
         /**
-         * The data element is fully specified down to a single value set, single unit of measure, single data type, etc.  Multiple pieces of data associated with this data element are fully compareable.
+         * The data element is fully specified down to a single value set, single unit of measure, single data type, etc.  Multiple pieces of data associated with this data element are fully compareable
          */
         FULLYSPECIFIED, 
         /**
@@ -60,11 +61,11 @@ public class DataElement extends DomainResource {
          */
         EQUIVALENT, 
         /**
-         * The data element allows multiple units of measure that are convertable between each other (e.g. Inches and centimeters) and/or allows data to be captured in multiple value sets for which a known mapping exists allowing conversion of meaning.
+         * The data element allows multiple units of measure that are convertable between each other (e.g. Inches and centimeters) and/or allows data to be captured in multiple value sets for which a known mapping exists allowing conversion of meaning
          */
         CONVERTABLE, 
         /**
-         * A convertable data element where unit conversions are different only by a power of 10.  E.g. g, mg, kg.
+         * A convertable data element where unit conversions are different only by a power of 10.  E.g. g, mg, kg
          */
         SCALEABLE, 
         /**
@@ -75,7 +76,7 @@ public class DataElement extends DomainResource {
          * added to help the parsers
          */
         NULL;
-        public static DataelementSpecificity fromCode(String codeString) throws Exception {
+        public static DataElementSpecificity fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("comparable".equals(codeString))
@@ -90,7 +91,7 @@ public class DataElement extends DomainResource {
           return SCALEABLE;
         if ("flexible".equals(codeString))
           return FLEXIBLE;
-        throw new Exception("Unknown DataelementSpecificity code '"+codeString+"'");
+        throw new Exception("Unknown DataElementSpecificity code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -105,22 +106,22 @@ public class DataElement extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case COMPARABLE: return "";
-            case FULLYSPECIFIED: return "";
-            case EQUIVALENT: return "";
-            case CONVERTABLE: return "";
-            case SCALEABLE: return "";
-            case FLEXIBLE: return "";
+            case COMPARABLE: return "http://hl7.org/fhir/dataelement-specificity";
+            case FULLYSPECIFIED: return "http://hl7.org/fhir/dataelement-specificity";
+            case EQUIVALENT: return "http://hl7.org/fhir/dataelement-specificity";
+            case CONVERTABLE: return "http://hl7.org/fhir/dataelement-specificity";
+            case SCALEABLE: return "http://hl7.org/fhir/dataelement-specificity";
+            case FLEXIBLE: return "http://hl7.org/fhir/dataelement-specificity";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
             case COMPARABLE: return "The data element is sufficiently well-constrained that multiple pieces of data captured according to the constraints of the data element will be comparable (though in some cases, a degree of automated conversion/normalization may be required).";
-            case FULLYSPECIFIED: return "The data element is fully specified down to a single value set, single unit of measure, single data type, etc.  Multiple pieces of data associated with this data element are fully compareable.";
+            case FULLYSPECIFIED: return "The data element is fully specified down to a single value set, single unit of measure, single data type, etc.  Multiple pieces of data associated with this data element are fully compareable";
             case EQUIVALENT: return "The data element allows multiple units of measure having equivalent meaning.  E.g. 'cc' (cubic centimeter) and 'mL'.";
-            case CONVERTABLE: return "The data element allows multiple units of measure that are convertable between each other (e.g. Inches and centimeters) and/or allows data to be captured in multiple value sets for which a known mapping exists allowing conversion of meaning.";
-            case SCALEABLE: return "A convertable data element where unit conversions are different only by a power of 10.  E.g. g, mg, kg.";
+            case CONVERTABLE: return "The data element allows multiple units of measure that are convertable between each other (e.g. Inches and centimeters) and/or allows data to be captured in multiple value sets for which a known mapping exists allowing conversion of meaning";
+            case SCALEABLE: return "A convertable data element where unit conversions are different only by a power of 10.  E.g. g, mg, kg";
             case FLEXIBLE: return "The data element is unconstrained in units, choice of data types and/or choice of vocabulary such that automated comparison of data captured using the data element is not possible.";
             default: return "?";
           }
@@ -138,60 +139,63 @@ public class DataElement extends DomainResource {
         }
     }
 
-  public static class DataelementSpecificityEnumFactory implements EnumFactory<DataelementSpecificity> {
-    public DataelementSpecificity fromCode(String codeString) throws IllegalArgumentException {
+  public static class DataElementSpecificityEnumFactory implements EnumFactory<DataElementSpecificity> {
+    public DataElementSpecificity fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("comparable".equals(codeString))
-          return DataelementSpecificity.COMPARABLE;
+          return DataElementSpecificity.COMPARABLE;
         if ("fully-specified".equals(codeString))
-          return DataelementSpecificity.FULLYSPECIFIED;
+          return DataElementSpecificity.FULLYSPECIFIED;
         if ("equivalent".equals(codeString))
-          return DataelementSpecificity.EQUIVALENT;
+          return DataElementSpecificity.EQUIVALENT;
         if ("convertable".equals(codeString))
-          return DataelementSpecificity.CONVERTABLE;
+          return DataElementSpecificity.CONVERTABLE;
         if ("scaleable".equals(codeString))
-          return DataelementSpecificity.SCALEABLE;
+          return DataElementSpecificity.SCALEABLE;
         if ("flexible".equals(codeString))
-          return DataelementSpecificity.FLEXIBLE;
-        throw new IllegalArgumentException("Unknown DataelementSpecificity code '"+codeString+"'");
+          return DataElementSpecificity.FLEXIBLE;
+        throw new IllegalArgumentException("Unknown DataElementSpecificity code '"+codeString+"'");
         }
-    public String toCode(DataelementSpecificity code) {
-      if (code == DataelementSpecificity.COMPARABLE)
+    public String toCode(DataElementSpecificity code) {
+      if (code == DataElementSpecificity.COMPARABLE)
         return "comparable";
-      if (code == DataelementSpecificity.FULLYSPECIFIED)
+      if (code == DataElementSpecificity.FULLYSPECIFIED)
         return "fully-specified";
-      if (code == DataelementSpecificity.EQUIVALENT)
+      if (code == DataElementSpecificity.EQUIVALENT)
         return "equivalent";
-      if (code == DataelementSpecificity.CONVERTABLE)
+      if (code == DataElementSpecificity.CONVERTABLE)
         return "convertable";
-      if (code == DataelementSpecificity.SCALEABLE)
+      if (code == DataElementSpecificity.SCALEABLE)
         return "scaleable";
-      if (code == DataelementSpecificity.FLEXIBLE)
+      if (code == DataElementSpecificity.FLEXIBLE)
         return "flexible";
       return "?";
       }
     }
 
     @Block()
-    public static class DataElementContactComponent extends BackboneElement {
+    public static class DataElementContactComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The name of an individual to contact regarding the data element.
          */
-        @Child(name ="name", type={StringType.class}, order=1, min=0, max=1)
+        @Child(name = "name", type = {StringType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Name of a individual to contact", formalDefinition="The name of an individual to contact regarding the data element." )
         protected StringType name;
 
         /**
          * Contact details for individual (if a name was provided) or the publisher.
          */
-        @Child(name ="telecom", type={ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "telecom", type = {ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Contact details for individual or publisher", formalDefinition="Contact details for individual (if a name was provided) or the publisher." )
         protected List<ContactPoint> telecom;
 
         private static final long serialVersionUID = -1179697803L;
 
+    /*
+     * Constructor
+     */
       public DataElementContactComponent() {
         super();
       }
@@ -331,41 +335,47 @@ public class DataElement extends DomainResource {
   }
 
     @Block()
-    public static class DataElementMappingComponent extends BackboneElement {
+    public static class DataElementMappingComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * An Internal id that is used to identify this mapping set when specific mappings are made on a per-element basis.
          */
-        @Child(name ="identity", type={IdType.class}, order=1, min=1, max=1)
+        @Child(name = "identity", type = {IdType.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Internal id when this mapping is used", formalDefinition="An Internal id that is used to identify this mapping set when specific mappings are made on a per-element basis." )
         protected IdType identity;
 
         /**
          * An absolute URI that identifies the specification that this mapping is expressed to.
          */
-        @Child(name ="uri", type={UriType.class}, order=2, min=0, max=1)
+        @Child(name = "uri", type = {UriType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Identifies what this mapping refers to", formalDefinition="An absolute URI that identifies the specification that this mapping is expressed to." )
         protected UriType uri;
 
         /**
          * A name for the specification that is being mapped to.
          */
-        @Child(name ="name", type={StringType.class}, order=3, min=0, max=1)
+        @Child(name = "name", type = {StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Names what this mapping refers to", formalDefinition="A name for the specification that is being mapped to." )
         protected StringType name;
 
         /**
          * Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage.
          */
-        @Child(name ="comments", type={StringType.class}, order=4, min=0, max=1)
+        @Child(name = "comments", type = {StringType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Versions, Issues, Scope limitations etc", formalDefinition="Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage." )
         protected StringType comments;
 
         private static final long serialVersionUID = 299630820L;
 
+    /*
+     * Constructor
+     */
       public DataElementMappingComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public DataElementMappingComponent(IdType identity) {
         super();
         this.identity = identity;
@@ -611,116 +621,122 @@ public class DataElement extends DomainResource {
   }
 
     /**
-     * An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and an be urn:uuid: or urn:oid:).
+     * An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and can be urn:uuid: or urn:oid:).
      */
-    @Child(name ="url", type={UriType.class}, order=0, min=0, max=1)
-    @Description(shortDefinition="Globally unique logical id for data element", formalDefinition="An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and an be urn:uuid: or urn:oid:)." )
+    @Child(name = "url", type = {UriType.class}, order=0, min=0, max=1)
+    @Description(shortDefinition="Globally unique logical id for data element", formalDefinition="An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and can be urn:uuid: or urn:oid:)." )
     protected UriType url;
 
     /**
      * Formal identifier that is used to identify this data element when it is represented in other formats, or referenced in a specification, model, design or an instance.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=1, min=0, max=1)
+    @Child(name = "identifier", type = {Identifier.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Logical id to reference this data element", formalDefinition="Formal identifier that is used to identify this data element when it is represented in other formats, or referenced in a specification, model, design or an instance." )
     protected Identifier identifier;
 
     /**
      * The identifier that is used to identify this version of the data element when it is referenced in a StructureDefinition, Questionnaire or instance. This is an arbitrary value managed by the definition author manually.
      */
-    @Child(name ="version", type={StringType.class}, order=2, min=0, max=1)
+    @Child(name = "version", type = {StringType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Logical id for this version of the data element", formalDefinition="The identifier that is used to identify this version of the data element when it is referenced in a StructureDefinition, Questionnaire or instance. This is an arbitrary value managed by the definition author manually." )
     protected StringType version;
 
     /**
      * The term used by humans to refer to the data element.  Should ideally be unique within the context in which the data element is expected to be used.
      */
-    @Child(name ="name", type={StringType.class}, order=3, min=0, max=1)
+    @Child(name = "name", type = {StringType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Descriptive label for this element definition", formalDefinition="The term used by humans to refer to the data element.  Should ideally be unique within the context in which the data element is expected to be used." )
     protected StringType name;
 
     /**
      * The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of data element definitions.
      */
-    @Child(name ="useContext", type={CodeableConcept.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "useContext", type = {CodeableConcept.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Content intends to support these contexts", formalDefinition="The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of data element definitions." )
     protected List<CodeableConcept> useContext;
 
     /**
      * A flag to indicate that this search data elemnt definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    @Child(name ="experimental", type={BooleanType.class}, order=5, min=0, max=1)
+    @Child(name = "experimental", type = {BooleanType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="If for testing purposes, not real usage", formalDefinition="A flag to indicate that this search data elemnt definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage." )
     protected BooleanType experimental;
 
     /**
      * The status of the data element.
      */
-    @Child(name ="status", type={CodeType.class}, order=6, min=1, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=6, min=1, max=1)
     @Description(shortDefinition="draft | active | retired", formalDefinition="The status of the data element." )
     protected Enumeration<ConformanceResourceStatus> status;
 
     /**
      * The date that the status for this business version of the data element became effective.  (I.e. Date the draft was created, date element became active or date element became retired).
      */
-    @Child(name ="date", type={DateTimeType.class}, order=7, min=0, max=1)
+    @Child(name = "date", type = {DateTimeType.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Date for this version of the data element", formalDefinition="The date that the status for this business version of the data element became effective.  (I.e. Date the draft was created, date element became active or date element became retired)." )
     protected DateTimeType date;
 
     /**
      * A copyright statement relating to the definition of the data element. Copyright statements are generally legal restrictions on the use and publishing of the details of the definition of the data element.
      */
-    @Child(name ="copyright", type={StringType.class}, order=8, min=0, max=1)
+    @Child(name = "copyright", type = {StringType.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Use and/or Publishing restrictions", formalDefinition="A copyright statement relating to the definition of the data element. Copyright statements are generally legal restrictions on the use and publishing of the details of the definition of the data element." )
     protected StringType copyright;
 
     /**
      * The name of the individual or organization that published the data element.
      */
-    @Child(name ="publisher", type={StringType.class}, order=9, min=0, max=1)
+    @Child(name = "publisher", type = {StringType.class}, order=9, min=0, max=1)
     @Description(shortDefinition="Name of the publisher (Organization or individual)", formalDefinition="The name of the individual or organization that published the data element." )
     protected StringType publisher;
 
     /**
      * Contacts to assist a user in finding and communicating with the publisher.
      */
-    @Child(name ="contact", type={}, order=10, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "contact", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Contact details of the publisher", formalDefinition="Contacts to assist a user in finding and communicating with the publisher." )
     protected List<DataElementContactComponent> contact;
 
     /**
      * Identifies how precise the data element is in its definition.
      */
-    @Child(name ="specificity", type={CodeType.class}, order=11, min=0, max=1)
+    @Child(name = "specificity", type = {CodeType.class}, order=11, min=0, max=1)
     @Description(shortDefinition="comparable | fully-specified | equivalent | convertable | scaleable | flexible", formalDefinition="Identifies how precise the data element is in its definition." )
-    protected Enumeration<DataelementSpecificity> specificity;
+    protected Enumeration<DataElementSpecificity> specificity;
 
     /**
      * Identifies a specification (other than a terminology) that the elements that make up the DataElement hav some correspondance with.
      */
-    @Child(name ="mapping", type={}, order=12, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "mapping", type = {}, order=12, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="External specification mapped to", formalDefinition="Identifies a specification (other than a terminology) that the elements that make up the DataElement hav some correspondance with." )
     protected List<DataElementMappingComponent> mapping;
 
     /**
      * Defines the structure, type, allowed values and other constraining characteristics of the data element.
      */
-    @Child(name ="element", type={ElementDefinition.class}, order=13, min=1, max=Child.MAX_UNLIMITED)
+    @Child(name = "element", type = {ElementDefinition.class}, order=13, min=1, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Definition of element", formalDefinition="Defines the structure, type, allowed values and other constraining characteristics of the data element." )
     protected List<ElementDefinition> element;
 
-    private static final long serialVersionUID = -1444116299L;
+    private static final long serialVersionUID = 576052437L;
 
+  /*
+   * Constructor
+   */
     public DataElement() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public DataElement(Enumeration<ConformanceResourceStatus> status) {
       super();
       this.status = status;
     }
 
     /**
-     * @return {@link #url} (An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and an be urn:uuid: or urn:oid:).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @return {@link #url} (An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and can be urn:uuid: or urn:oid:).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
     public UriType getUrlElement() { 
       if (this.url == null)
@@ -740,7 +756,7 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @param value {@link #url} (An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and an be urn:uuid: or urn:oid:).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @param value {@link #url} (An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and can be urn:uuid: or urn:oid:).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
     public DataElement setUrlElement(UriType value) { 
       this.url = value;
@@ -748,14 +764,14 @@ public class DataElement extends DomainResource {
     }
 
     /**
-     * @return An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and an be urn:uuid: or urn:oid:).
+     * @return An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and can be urn:uuid: or urn:oid:).
      */
     public String getUrl() { 
       return this.url == null ? null : this.url.getValue();
     }
 
     /**
-     * @param value An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and an be urn:uuid: or urn:oid:).
+     * @param value An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and can be urn:uuid: or urn:oid:).
      */
     public DataElement setUrl(String value) { 
       if (Utilities.noString(value))
@@ -1210,12 +1226,12 @@ public class DataElement extends DomainResource {
     /**
      * @return {@link #specificity} (Identifies how precise the data element is in its definition.). This is the underlying object with id, value and extensions. The accessor "getSpecificity" gives direct access to the value
      */
-    public Enumeration<DataelementSpecificity> getSpecificityElement() { 
+    public Enumeration<DataElementSpecificity> getSpecificityElement() { 
       if (this.specificity == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DataElement.specificity");
         else if (Configuration.doAutoCreate())
-          this.specificity = new Enumeration<DataelementSpecificity>(new DataelementSpecificityEnumFactory()); // bb
+          this.specificity = new Enumeration<DataElementSpecificity>(new DataElementSpecificityEnumFactory()); // bb
       return this.specificity;
     }
 
@@ -1230,7 +1246,7 @@ public class DataElement extends DomainResource {
     /**
      * @param value {@link #specificity} (Identifies how precise the data element is in its definition.). This is the underlying object with id, value and extensions. The accessor "getSpecificity" gives direct access to the value
      */
-    public DataElement setSpecificityElement(Enumeration<DataelementSpecificity> value) { 
+    public DataElement setSpecificityElement(Enumeration<DataElementSpecificity> value) { 
       this.specificity = value;
       return this;
     }
@@ -1238,19 +1254,19 @@ public class DataElement extends DomainResource {
     /**
      * @return Identifies how precise the data element is in its definition.
      */
-    public DataelementSpecificity getSpecificity() { 
+    public DataElementSpecificity getSpecificity() { 
       return this.specificity == null ? null : this.specificity.getValue();
     }
 
     /**
      * @param value Identifies how precise the data element is in its definition.
      */
-    public DataElement setSpecificity(DataelementSpecificity value) { 
+    public DataElement setSpecificity(DataElementSpecificity value) { 
       if (value == null)
         this.specificity = null;
       else {
         if (this.specificity == null)
-          this.specificity = new Enumeration<DataelementSpecificity>(new DataelementSpecificityEnumFactory());
+          this.specificity = new Enumeration<DataElementSpecificity>(new DataElementSpecificityEnumFactory());
         this.specificity.setValue(value);
       }
       return this;
@@ -1338,7 +1354,7 @@ public class DataElement extends DomainResource {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("url", "uri", "An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and an be urn:uuid: or urn:oid:).", 0, java.lang.Integer.MAX_VALUE, url));
+        childrenList.add(new Property("url", "uri", "An absolute uri that is used to identify this element when it is referenced in a specification, model, design or an instance (should be globally unique URI, and can be urn:uuid: or urn:oid:).", 0, java.lang.Integer.MAX_VALUE, url));
         childrenList.add(new Property("identifier", "Identifier", "Formal identifier that is used to identify this data element when it is represented in other formats, or referenced in a specification, model, design or an instance.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("version", "string", "The identifier that is used to identify this version of the data element when it is referenced in a StructureDefinition, Questionnaire or instance. This is an arbitrary value managed by the definition author manually.", 0, java.lang.Integer.MAX_VALUE, version));
         childrenList.add(new Property("name", "string", "The term used by humans to refer to the data element.  Should ideally be unique within the context in which the data element is expected to be used.", 0, java.lang.Integer.MAX_VALUE, name));

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
@@ -37,11 +37,13 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
 import org.hl7.fhir.instance.model.annotations.DatatypeDef;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * Details for All kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
  */
 @DatatypeDef(name="ContactPoint")
-public class ContactPoint extends Type {
+public class ContactPoint extends Type implements ICompositeType {
 
     public enum ContactPointSystem {
         /**
@@ -53,11 +55,11 @@ public class ContactPoint extends Type {
          */
         FAX, 
         /**
-         * The value is an email address.
+         * The value is an email address
          */
         EMAIL, 
         /**
-         * The value is a url. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses.
+         * The value is a url. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses
          */
         URL, 
         /**
@@ -88,10 +90,10 @@ public class ContactPoint extends Type {
         }
         public String getSystem() {
           switch (this) {
-            case PHONE: return "";
-            case FAX: return "";
-            case EMAIL: return "";
-            case URL: return "";
+            case PHONE: return "http://hl7.org/fhir/contact-point-system";
+            case FAX: return "http://hl7.org/fhir/contact-point-system";
+            case EMAIL: return "http://hl7.org/fhir/contact-point-system";
+            case URL: return "http://hl7.org/fhir/contact-point-system";
             default: return "?";
           }
         }
@@ -99,8 +101,8 @@ public class ContactPoint extends Type {
           switch (this) {
             case PHONE: return "The value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.";
             case FAX: return "The value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.";
-            case EMAIL: return "The value is an email address.";
-            case URL: return "The value is a url. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses.";
+            case EMAIL: return "The value is an email address";
+            case URL: return "The value is a url. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses";
             default: return "?";
           }
         }
@@ -157,11 +159,11 @@ public class ContactPoint extends Type {
          */
         TEMP, 
         /**
-         * This contact point is no longer in use (or was never correct, but retained for records).
+         * This contact point is no longer in use (or was never correct, but retained for records)
          */
         OLD, 
         /**
-         * A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business.
+         * A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business
          */
         MOBILE, 
         /**
@@ -195,11 +197,11 @@ public class ContactPoint extends Type {
         }
         public String getSystem() {
           switch (this) {
-            case HOME: return "";
-            case WORK: return "";
-            case TEMP: return "";
-            case OLD: return "";
-            case MOBILE: return "";
+            case HOME: return "http://hl7.org/fhir/contact-point-use";
+            case WORK: return "http://hl7.org/fhir/contact-point-use";
+            case TEMP: return "http://hl7.org/fhir/contact-point-use";
+            case OLD: return "http://hl7.org/fhir/contact-point-use";
+            case MOBILE: return "http://hl7.org/fhir/contact-point-use";
             default: return "?";
           }
         }
@@ -208,8 +210,8 @@ public class ContactPoint extends Type {
             case HOME: return "A communication contact point at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available.";
             case WORK: return "An office contact point. First choice for business related contacts during business hours.";
             case TEMP: return "A temporary contact point. The period can provide more detailed information.";
-            case OLD: return "This contact point is no longer in use (or was never correct, but retained for records).";
-            case MOBILE: return "A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business.";
+            case OLD: return "This contact point is no longer in use (or was never correct, but retained for records)";
+            case MOBILE: return "A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business";
             default: return "?";
           }
         }
@@ -260,33 +262,36 @@ public class ContactPoint extends Type {
     /**
      * Telecommunications form for contact point - what communications system is required to make use of the contact.
      */
-    @Child(name ="system", type={CodeType.class}, order=0, min=0, max=1)
+    @Child(name = "system", type = {CodeType.class}, order=0, min=0, max=1)
     @Description(shortDefinition="phone | fax | email | url", formalDefinition="Telecommunications form for contact point - what communications system is required to make use of the contact." )
     protected Enumeration<ContactPointSystem> system;
 
     /**
      * The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).
      */
-    @Child(name ="value", type={StringType.class}, order=1, min=0, max=1)
+    @Child(name = "value", type = {StringType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="The actual contact point details", formalDefinition="The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address)." )
     protected StringType value;
 
     /**
      * Identifies the purpose for the contact point.
      */
-    @Child(name ="use", type={CodeType.class}, order=2, min=0, max=1)
+    @Child(name = "use", type = {CodeType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="home | work | temp | old | mobile - purpose of this contact point", formalDefinition="Identifies the purpose for the contact point." )
     protected Enumeration<ContactPointUse> use;
 
     /**
      * Time period when the contact point was/is in use.
      */
-    @Child(name ="period", type={Period.class}, order=3, min=0, max=1)
+    @Child(name = "period", type = {Period.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Time period when the contact point was/is in use", formalDefinition="Time period when the contact point was/is in use." )
     protected Period period;
 
     private static final long serialVersionUID = 1972725348L;
 
+  /*
+   * Constructor
+   */
     public ContactPoint() {
       super();
     }

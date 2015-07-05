@@ -29,121 +29,23 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * Demographics and other administrative information about an individual or animal receiving care or other health-related services.
  */
 @ResourceDef(name="Patient", profile="http://hl7.org/fhir/Profile/Patient")
 public class Patient extends DomainResource {
-
-    public enum AdministrativeGender {
-        /**
-         * Male
-         */
-        MALE, 
-        /**
-         * Female
-         */
-        FEMALE, 
-        /**
-         * Other
-         */
-        OTHER, 
-        /**
-         * Unknown
-         */
-        UNKNOWN, 
-        /**
-         * added to help the parsers
-         */
-        NULL;
-        public static AdministrativeGender fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("male".equals(codeString))
-          return MALE;
-        if ("female".equals(codeString))
-          return FEMALE;
-        if ("other".equals(codeString))
-          return OTHER;
-        if ("unknown".equals(codeString))
-          return UNKNOWN;
-        throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case MALE: return "male";
-            case FEMALE: return "female";
-            case OTHER: return "other";
-            case UNKNOWN: return "unknown";
-            default: return "?";
-          }
-        }
-        public String getSystem() {
-          switch (this) {
-            case MALE: return "";
-            case FEMALE: return "";
-            case OTHER: return "";
-            case UNKNOWN: return "";
-            default: return "?";
-          }
-        }
-        public String getDefinition() {
-          switch (this) {
-            case MALE: return "Male";
-            case FEMALE: return "Female";
-            case OTHER: return "Other";
-            case UNKNOWN: return "Unknown";
-            default: return "?";
-          }
-        }
-        public String getDisplay() {
-          switch (this) {
-            case MALE: return "Male";
-            case FEMALE: return "Female";
-            case OTHER: return "Other";
-            case UNKNOWN: return "Unknown";
-            default: return "?";
-          }
-        }
-    }
-
-  public static class AdministrativeGenderEnumFactory implements EnumFactory<AdministrativeGender> {
-    public AdministrativeGender fromCode(String codeString) throws IllegalArgumentException {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("male".equals(codeString))
-          return AdministrativeGender.MALE;
-        if ("female".equals(codeString))
-          return AdministrativeGender.FEMALE;
-        if ("other".equals(codeString))
-          return AdministrativeGender.OTHER;
-        if ("unknown".equals(codeString))
-          return AdministrativeGender.UNKNOWN;
-        throw new IllegalArgumentException("Unknown AdministrativeGender code '"+codeString+"'");
-        }
-    public String toCode(AdministrativeGender code) {
-      if (code == AdministrativeGender.MALE)
-        return "male";
-      if (code == AdministrativeGender.FEMALE)
-        return "female";
-      if (code == AdministrativeGender.OTHER)
-        return "other";
-      if (code == AdministrativeGender.UNKNOWN)
-        return "unknown";
-      return "?";
-      }
-    }
 
     public enum LinkType {
         /**
@@ -151,7 +53,7 @@ public class Patient extends DomainResource {
          */
         REPLACE, 
         /**
-         * The patient resource containing this link is in use and valid but not considered the main source of information about a patient. The link points forward to another patient resource that should be consulted to retrieve additional patient information.
+         * The patient resource containing this link is in use and valid but not considered the main source of information about a patient. The link points forward to another patient resource that should be consulted to retrieve additional patient information
          */
         REFER, 
         /**
@@ -183,16 +85,16 @@ public class Patient extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case REPLACE: return "";
-            case REFER: return "";
-            case SEEALSO: return "";
+            case REPLACE: return "http://hl7.org/fhir/link-type";
+            case REFER: return "http://hl7.org/fhir/link-type";
+            case SEEALSO: return "http://hl7.org/fhir/link-type";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
             case REPLACE: return "The patient resource containing this link must no longer be used. The link points forward to another patient resource that must be used in lieu of the patient resource that contains the link.";
-            case REFER: return "The patient resource containing this link is in use and valid but not considered the main source of information about a patient. The link points forward to another patient resource that should be consulted to retrieve additional patient information.";
+            case REFER: return "The patient resource containing this link is in use and valid but not considered the main source of information about a patient. The link points forward to another patient resource that should be consulted to retrieve additional patient information";
             case SEEALSO: return "The patient resource containing this link is in use and valid, but points to another patient resource that is known to contain data about the same person. Data in this resource might overlap or contradict information found in the other patient resource. This link does not indicate any relative importance of the resources concerned, and both should be regarded as equally valid.";
             default: return "?";
           }
@@ -232,46 +134,46 @@ public class Patient extends DomainResource {
     }
 
     @Block()
-    public static class ContactComponent extends BackboneElement {
+    public static class ContactComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The nature of the relationship between the patient and the contact person.
          */
-        @Child(name ="relationship", type={CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "relationship", type = {CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="The kind of relationship", formalDefinition="The nature of the relationship between the patient and the contact person." )
         protected List<CodeableConcept> relationship;
 
         /**
          * A name associated with the contact person.
          */
-        @Child(name ="name", type={HumanName.class}, order=2, min=0, max=1)
+        @Child(name = "name", type = {HumanName.class}, order=2, min=0, max=1)
         @Description(shortDefinition="A name associated with the contact person", formalDefinition="A name associated with the contact person." )
         protected HumanName name;
 
         /**
          * A contact detail for the person, e.g. a telephone number or an email address.
          */
-        @Child(name ="telecom", type={ContactPoint.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "telecom", type = {ContactPoint.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="A contact detail for the person", formalDefinition="A contact detail for the person, e.g. a telephone number or an email address." )
         protected List<ContactPoint> telecom;
 
         /**
          * Address for the contact person.
          */
-        @Child(name ="address", type={Address.class}, order=4, min=0, max=1)
+        @Child(name = "address", type = {Address.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Address for the contact person", formalDefinition="Address for the contact person." )
         protected Address address;
 
         /**
          * Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.
          */
-        @Child(name ="gender", type={CodeType.class}, order=5, min=0, max=1)
+        @Child(name = "gender", type = {CodeType.class}, order=5, min=0, max=1)
         @Description(shortDefinition="male | female | other | unknown", formalDefinition="Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes." )
         protected Enumeration<AdministrativeGender> gender;
 
         /**
          * Organization on behalf of which the contact is acting or for which the contact is working.
          */
-        @Child(name ="organization", type={Organization.class}, order=6, min=0, max=1)
+        @Child(name = "organization", type = {Organization.class}, order=6, min=0, max=1)
         @Description(shortDefinition="Organization that is associated with the contact", formalDefinition="Organization on behalf of which the contact is acting or for which the contact is working." )
         protected Reference organization;
 
@@ -283,12 +185,15 @@ public class Patient extends DomainResource {
         /**
          * The period during which this contact person or organization is valid to be contacted relating to this patient.
          */
-        @Child(name ="period", type={Period.class}, order=7, min=0, max=1)
+        @Child(name = "period", type = {Period.class}, order=7, min=0, max=1)
         @Description(shortDefinition="The period during which this contact person or organization is valid to be contacted relating to this patient", formalDefinition="The period during which this contact person or organization is valid to be contacted relating to this patient." )
         protected Period period;
 
         private static final long serialVersionUID = 364269017L;
 
+    /*
+     * Constructor
+     */
       public ContactComponent() {
         super();
       }
@@ -602,34 +507,40 @@ public class Patient extends DomainResource {
   }
 
     @Block()
-    public static class AnimalComponent extends BackboneElement {
+    public static class AnimalComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Identifies the high level taxonomic categorization of the kind of animal.
          */
-        @Child(name ="species", type={CodeableConcept.class}, order=1, min=1, max=1)
+        @Child(name = "species", type = {CodeableConcept.class}, order=1, min=1, max=1)
         @Description(shortDefinition="E.g. Dog, Cow", formalDefinition="Identifies the high level taxonomic categorization of the kind of animal." )
         protected CodeableConcept species;
 
         /**
          * Identifies the detailed categorization of the kind of animal.
          */
-        @Child(name ="breed", type={CodeableConcept.class}, order=2, min=0, max=1)
+        @Child(name = "breed", type = {CodeableConcept.class}, order=2, min=0, max=1)
         @Description(shortDefinition="E.g. Poodle, Angus", formalDefinition="Identifies the detailed categorization of the kind of animal." )
         protected CodeableConcept breed;
 
         /**
          * Indicates the current state of the animal's reproductive organs.
          */
-        @Child(name ="genderStatus", type={CodeableConcept.class}, order=3, min=0, max=1)
+        @Child(name = "genderStatus", type = {CodeableConcept.class}, order=3, min=0, max=1)
         @Description(shortDefinition="E.g. Neutered, Intact", formalDefinition="Indicates the current state of the animal's reproductive organs." )
         protected CodeableConcept genderStatus;
 
         private static final long serialVersionUID = -549738382L;
 
+    /*
+     * Constructor
+     */
       public AnimalComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public AnimalComponent(CodeableConcept species) {
         super();
         this.species = species;
@@ -752,27 +663,33 @@ public class Patient extends DomainResource {
   }
 
     @Block()
-    public static class PatientCommunicationComponent extends BackboneElement {
+    public static class PatientCommunicationComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case. E.g. "en" for English, or "en-US" for American English versus "en-EN" for England English.
          */
-        @Child(name ="language", type={CodeableConcept.class}, order=1, min=1, max=1)
+        @Child(name = "language", type = {CodeableConcept.class}, order=1, min=1, max=1)
         @Description(shortDefinition="The language which can be used to communicate with the patient about his or her health", formalDefinition="The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case. E.g. 'en' for English, or 'en-US' for American English versus 'en-EN' for England English." )
         protected CodeableConcept language;
 
         /**
          * Indicates whether or not the Patient prefers this language (over other languages he masters up a certain level).
          */
-        @Child(name ="preferred", type={BooleanType.class}, order=2, min=0, max=1)
+        @Child(name = "preferred", type = {BooleanType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Language preference indicator", formalDefinition="Indicates whether or not the Patient prefers this language (over other languages he masters up a certain level)." )
         protected BooleanType preferred;
 
         private static final long serialVersionUID = 633792918L;
 
+    /*
+     * Constructor
+     */
       public PatientCommunicationComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public PatientCommunicationComponent(CodeableConcept language) {
         super();
         this.language = language;
@@ -889,11 +806,11 @@ public class Patient extends DomainResource {
   }
 
     @Block()
-    public static class PatientLinkComponent extends BackboneElement {
+    public static class PatientLinkComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The other patient resource that the link refers to.
          */
-        @Child(name ="other", type={Patient.class}, order=1, min=1, max=1)
+        @Child(name = "other", type = {Patient.class}, order=1, min=1, max=1)
         @Description(shortDefinition="The other patient resource that the link refers to", formalDefinition="The other patient resource that the link refers to." )
         protected Reference other;
 
@@ -905,16 +822,22 @@ public class Patient extends DomainResource {
         /**
          * The type of link between this patient resource and another patient resource.
          */
-        @Child(name ="type", type={CodeType.class}, order=2, min=1, max=1)
+        @Child(name = "type", type = {CodeType.class}, order=2, min=1, max=1)
         @Description(shortDefinition="replace | refer | seealso - type of link", formalDefinition="The type of link between this patient resource and another patient resource." )
         protected Enumeration<LinkType> type;
 
         private static final long serialVersionUID = -1942104050L;
 
+    /*
+     * Constructor
+     */
       public PatientLinkComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public PatientLinkComponent(Reference other, Enumeration<LinkType> type) {
         super();
         this.other = other;
@@ -1054,98 +977,98 @@ public class Patient extends DomainResource {
     /**
      * An identifier for this patient.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="An identifier for this patient", formalDefinition="An identifier for this patient." )
     protected List<Identifier> identifier;
 
     /**
      * A name associated with the individual.
      */
-    @Child(name ="name", type={HumanName.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "name", type = {HumanName.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="A name associated with the patient", formalDefinition="A name associated with the individual." )
     protected List<HumanName> name;
 
     /**
      * A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.
      */
-    @Child(name ="telecom", type={ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "telecom", type = {ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="A contact detail for the individual", formalDefinition="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." )
     protected List<ContactPoint> telecom;
 
     /**
      * Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.
      */
-    @Child(name ="gender", type={CodeType.class}, order=3, min=0, max=1)
+    @Child(name = "gender", type = {CodeType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="male | female | other | unknown", formalDefinition="Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes." )
     protected Enumeration<AdministrativeGender> gender;
 
     /**
      * The date of birth for the individual.
      */
-    @Child(name ="birthDate", type={DateType.class}, order=4, min=0, max=1)
+    @Child(name = "birthDate", type = {DateType.class}, order=4, min=0, max=1)
     @Description(shortDefinition="The date of birth for the individual", formalDefinition="The date of birth for the individual." )
     protected DateType birthDate;
 
     /**
      * Indicates if the individual is deceased or not.
      */
-    @Child(name ="deceased", type={BooleanType.class, DateTimeType.class}, order=5, min=0, max=1)
+    @Child(name = "deceased", type = {BooleanType.class, DateTimeType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="Indicates if the individual is deceased or not", formalDefinition="Indicates if the individual is deceased or not." )
     protected Type deceased;
 
     /**
      * Addresses for the individual.
      */
-    @Child(name ="address", type={Address.class}, order=6, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "address", type = {Address.class}, order=6, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Addresses for the individual", formalDefinition="Addresses for the individual." )
     protected List<Address> address;
 
     /**
      * This field contains a patient's most recent marital (civil) status.
      */
-    @Child(name ="maritalStatus", type={CodeableConcept.class}, order=7, min=0, max=1)
+    @Child(name = "maritalStatus", type = {CodeableConcept.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Marital (civil) status of a patient", formalDefinition="This field contains a patient's most recent marital (civil) status." )
     protected CodeableConcept maritalStatus;
 
     /**
      * Indicates whether the patient is part of a multiple or indicates the actual birth order.
      */
-    @Child(name ="multipleBirth", type={BooleanType.class, IntegerType.class}, order=8, min=0, max=1)
+    @Child(name = "multipleBirth", type = {BooleanType.class, IntegerType.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Whether patient is part of a multiple birth", formalDefinition="Indicates whether the patient is part of a multiple or indicates the actual birth order." )
     protected Type multipleBirth;
 
     /**
      * Image of the patient.
      */
-    @Child(name ="photo", type={Attachment.class}, order=9, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "photo", type = {Attachment.class}, order=9, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Image of the patient", formalDefinition="Image of the patient." )
     protected List<Attachment> photo;
 
     /**
      * A contact party (e.g. guardian, partner, friend) for the patient.
      */
-    @Child(name ="contact", type={}, order=10, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "contact", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="A contact party (e.g. guardian, partner, friend) for the patient", formalDefinition="A contact party (e.g. guardian, partner, friend) for the patient." )
     protected List<ContactComponent> contact;
 
     /**
      * This element has a value if the patient is an animal.
      */
-    @Child(name ="animal", type={}, order=11, min=0, max=1)
+    @Child(name = "animal", type = {}, order=11, min=0, max=1)
     @Description(shortDefinition="If this patient is an animal (non-human)", formalDefinition="This element has a value if the patient is an animal." )
     protected AnimalComponent animal;
 
     /**
      * Languages which may be used to communicate with the patient about his or her health.
      */
-    @Child(name ="communication", type={}, order=12, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "communication", type = {}, order=12, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="A list of Languages which may be used to communicate with the patient about his or her health", formalDefinition="Languages which may be used to communicate with the patient about his or her health." )
     protected List<PatientCommunicationComponent> communication;
 
     /**
      * Patient's nominated care provider.
      */
-    @Child(name ="careProvider", type={Organization.class, Practitioner.class}, order=13, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "careProvider", type = {Organization.class, Practitioner.class}, order=13, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Patient's nominated care provider", formalDefinition="Patient's nominated care provider." )
     protected List<Reference> careProvider;
     /**
@@ -1157,7 +1080,7 @@ public class Patient extends DomainResource {
     /**
      * Organization that is the custodian of the patient record.
      */
-    @Child(name ="managingOrganization", type={Organization.class}, order=14, min=0, max=1)
+    @Child(name = "managingOrganization", type = {Organization.class}, order=14, min=0, max=1)
     @Description(shortDefinition="Organization that is the custodian of the patient record", formalDefinition="Organization that is the custodian of the patient record." )
     protected Reference managingOrganization;
 
@@ -1169,19 +1092,22 @@ public class Patient extends DomainResource {
     /**
      * Link to another patient resource that concerns the same actual patient.
      */
-    @Child(name ="link", type={}, order=15, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "link", type = {}, order=15, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Link to another patient resource that concerns the same actual person", formalDefinition="Link to another patient resource that concerns the same actual patient." )
     protected List<PatientLinkComponent> link;
 
     /**
      * Whether this patient record is in active use.
      */
-    @Child(name ="active", type={BooleanType.class}, order=16, min=0, max=1)
+    @Child(name = "active", type = {BooleanType.class}, order=16, min=0, max=1)
     @Description(shortDefinition="Whether this patient's record is in active use", formalDefinition="Whether this patient record is in active use." )
     protected BooleanType active;
 
     private static final long serialVersionUID = 2057666410L;
 
+  /*
+   * Constructor
+   */
     public Patient() {
       super();
     }
@@ -1420,6 +1346,10 @@ public class Patient extends DomainResource {
       return (BooleanType) this.deceased;
     }
 
+    public boolean hasDeceasedBooleanType() throws Exception { 
+      return this.deceased instanceof BooleanType;
+    }
+
     /**
      * @return {@link #deceased} (Indicates if the individual is deceased or not.)
      */
@@ -1427,6 +1357,10 @@ public class Patient extends DomainResource {
       if (!(this.deceased instanceof DateTimeType))
         throw new Exception("Type mismatch: the type DateTimeType was expected, but "+this.deceased.getClass().getName()+" was encountered");
       return (DateTimeType) this.deceased;
+    }
+
+    public boolean hasDeceasedDateTimeType() throws Exception { 
+      return this.deceased instanceof DateTimeType;
     }
 
     public boolean hasDeceased() { 
@@ -1521,6 +1455,10 @@ public class Patient extends DomainResource {
       return (BooleanType) this.multipleBirth;
     }
 
+    public boolean hasMultipleBirthBooleanType() throws Exception { 
+      return this.multipleBirth instanceof BooleanType;
+    }
+
     /**
      * @return {@link #multipleBirth} (Indicates whether the patient is part of a multiple or indicates the actual birth order.)
      */
@@ -1528,6 +1466,10 @@ public class Patient extends DomainResource {
       if (!(this.multipleBirth instanceof IntegerType))
         throw new Exception("Type mismatch: the type IntegerType was expected, but "+this.multipleBirth.getClass().getName()+" was encountered");
       return (IntegerType) this.multipleBirth;
+    }
+
+    public boolean hasMultipleBirthIntegerType() throws Exception { 
+      return this.multipleBirth instanceof IntegerType;
     }
 
     public boolean hasMultipleBirth() { 
@@ -1996,36 +1938,46 @@ public class Patient extends DomainResource {
   public static final String SP_PHONETIC = "phonetic";
   @SearchParamDefinition(name="link", path="Patient.link.other", description="All patients linked to the given patient", type="reference" )
   public static final String SP_LINK = "link";
+  @SearchParamDefinition(name="address-country", path="Patient.address.country", description="A country specified in an address", type="string" )
+  public static final String SP_ADDRESSCOUNTRY = "address-country";
   @SearchParamDefinition(name="animal-species", path="Patient.animal.species", description="The species for animal patients", type="token" )
   public static final String SP_ANIMALSPECIES = "animal-species";
   @SearchParamDefinition(name="deathdate", path="Patient.deceased[x]", description="The date of death has been provided and satisfies this search value", type="date" )
   public static final String SP_DEATHDATE = "deathdate";
   @SearchParamDefinition(name="organization", path="Patient.managingOrganization", description="The organization at which this person is a patient", type="reference" )
   public static final String SP_ORGANIZATION = "organization";
-  @SearchParamDefinition(name="given", path="Patient.name.given", description="A portion of the given name of the patient", type="string" )
-  public static final String SP_GIVEN = "given";
+  @SearchParamDefinition(name="address-city", path="Patient.address.city", description="A city specified in an address", type="string" )
+  public static final String SP_ADDRESSCITY = "address-city";
+  @SearchParamDefinition(name="address-state", path="Patient.address.state", description="A state specified in an address", type="string" )
+  public static final String SP_ADDRESSSTATE = "address-state";
   @SearchParamDefinition(name="careprovider", path="Patient.careProvider", description="Patient's nominated care provider, could be a care manager, not the organization that manages the record", type="reference" )
   public static final String SP_CAREPROVIDER = "careprovider";
+  @SearchParamDefinition(name="given", path="Patient.name.given", description="A portion of the given name of the patient", type="string" )
+  public static final String SP_GIVEN = "given";
   @SearchParamDefinition(name="address", path="Patient.address", description="An address in any kind of address/part of the patient", type="string" )
   public static final String SP_ADDRESS = "address";
   @SearchParamDefinition(name="family", path="Patient.name.family", description="A portion of the family name of the patient", type="string" )
   public static final String SP_FAMILY = "family";
+  @SearchParamDefinition(name="address-use", path="Patient.address.use", description="A use code specified in an address", type="token" )
+  public static final String SP_ADDRESSUSE = "address-use";
   @SearchParamDefinition(name="name", path="Patient.name", description="A portion of either family or given name of the patient", type="string" )
   public static final String SP_NAME = "name";
-  @SearchParamDefinition(name="telecom", path="Patient.telecom", description="The value in any kind of telecom details of the patient", type="token" )
-  public static final String SP_TELECOM = "telecom";
   @SearchParamDefinition(name="birthdate", path="Patient.birthDate", description="The patient's date of birth", type="date" )
   public static final String SP_BIRTHDATE = "birthdate";
-  @SearchParamDefinition(name="gender", path="Patient.gender", description="Gender of the patient", type="token" )
-  public static final String SP_GENDER = "gender";
+  @SearchParamDefinition(name="telecom", path="Patient.telecom", description="The value in any kind of telecom details of the patient", type="token" )
+  public static final String SP_TELECOM = "telecom";
   @SearchParamDefinition(name="active", path="Patient.active", description="Whether the patient record is active", type="token" )
   public static final String SP_ACTIVE = "active";
+  @SearchParamDefinition(name="gender", path="Patient.gender", description="Gender of the patient", type="token" )
+  public static final String SP_GENDER = "gender";
   @SearchParamDefinition(name="deceased", path="Patient.deceased[x]", description="This patient has been marked as deceased, or as a death date entered", type="token" )
   public static final String SP_DECEASED = "deceased";
   @SearchParamDefinition(name="language", path="Patient.communication.language", description="Language code (irrespective of use value)", type="token" )
   public static final String SP_LANGUAGE = "language";
   @SearchParamDefinition(name="identifier", path="Patient.identifier", description="A patient identifier", type="token" )
   public static final String SP_IDENTIFIER = "identifier";
+  @SearchParamDefinition(name="address-postalcode", path="Patient.address.postalCode", description="A postalCode specified in an address", type="string" )
+  public static final String SP_ADDRESSPOSTALCODE = "address-postalcode";
 
 }
 

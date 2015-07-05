@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
@@ -38,27 +38,29 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
 import org.hl7.fhir.instance.model.annotations.DatatypeDef;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.
  */
 @DatatypeDef(name="Quantity")
-public class Quantity extends Type {
+public class Quantity extends Type implements ICompositeType {
 
     public enum QuantityComparator {
         /**
-         * The actual value is less than the given value.
+         * The actual value is less than the given value
          */
         LESS_THAN, 
         /**
-         * The actual value is less than or equal to the given value.
+         * The actual value is less than or equal to the given value
          */
         LESS_OR_EQUAL, 
         /**
-         * The actual value is greater than or equal to the given value.
+         * The actual value is greater than or equal to the given value
          */
         GREATER_OR_EQUAL, 
         /**
-         * The actual value is greater than the given value.
+         * The actual value is greater than the given value
          */
         GREATER_THAN, 
         /**
@@ -89,28 +91,28 @@ public class Quantity extends Type {
         }
         public String getSystem() {
           switch (this) {
-            case LESS_THAN: return "";
-            case LESS_OR_EQUAL: return "";
-            case GREATER_OR_EQUAL: return "";
-            case GREATER_THAN: return "";
+            case LESS_THAN: return "http://hl7.org/fhir/quantity-comparator";
+            case LESS_OR_EQUAL: return "http://hl7.org/fhir/quantity-comparator";
+            case GREATER_OR_EQUAL: return "http://hl7.org/fhir/quantity-comparator";
+            case GREATER_THAN: return "http://hl7.org/fhir/quantity-comparator";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case LESS_THAN: return "The actual value is less than the given value.";
-            case LESS_OR_EQUAL: return "The actual value is less than or equal to the given value.";
-            case GREATER_OR_EQUAL: return "The actual value is greater than or equal to the given value.";
-            case GREATER_THAN: return "The actual value is greater than the given value.";
+            case LESS_THAN: return "The actual value is less than the given value";
+            case LESS_OR_EQUAL: return "The actual value is less than or equal to the given value";
+            case GREATER_OR_EQUAL: return "The actual value is greater than or equal to the given value";
+            case GREATER_THAN: return "The actual value is greater than the given value";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case LESS_THAN: return " ";
-            case LESS_OR_EQUAL: return "  ";
-            case GREATER_OR_EQUAL: return "  ";
-            case GREATER_THAN: return " ";
+            case LESS_THAN: return "Less than";
+            case LESS_OR_EQUAL: return "Less or Equal to";
+            case GREATER_OR_EQUAL: return "Greater or Equal to";
+            case GREATER_THAN: return "Greater than";
             default: return "?";
           }
         }
@@ -147,40 +149,43 @@ public class Quantity extends Type {
     /**
      * The value of the measured amount. The value includes an implicit precision in the presentation of the value.
      */
-    @Child(name ="value", type={DecimalType.class}, order=0, min=0, max=1)
+    @Child(name = "value", type = {DecimalType.class}, order=0, min=0, max=1)
     @Description(shortDefinition="Numerical value (with implicit precision)", formalDefinition="The value of the measured amount. The value includes an implicit precision in the presentation of the value." )
     protected DecimalType value;
 
     /**
      * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is "<" , then the real value is < stated value.
      */
-    @Child(name ="comparator", type={CodeType.class}, order=1, min=0, max=1)
+    @Child(name = "comparator", type = {CodeType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="< | <= | >= | > - how to understand the value", formalDefinition="How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is '<' , then the real value is < stated value." )
     protected Enumeration<QuantityComparator> comparator;
 
     /**
      * A human-readable form of the units.
      */
-    @Child(name ="units", type={StringType.class}, order=2, min=0, max=1)
+    @Child(name = "units", type = {StringType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Unit representation", formalDefinition="A human-readable form of the units." )
     protected StringType units;
 
     /**
      * The identification of the system that provides the coded form of the unit.
      */
-    @Child(name ="system", type={UriType.class}, order=3, min=0, max=1)
+    @Child(name = "system", type = {UriType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="System that defines coded unit form", formalDefinition="The identification of the system that provides the coded form of the unit." )
     protected UriType system;
 
     /**
      * A computer processable form of the units in some unit representation system.
      */
-    @Child(name ="code", type={CodeType.class}, order=4, min=0, max=1)
+    @Child(name = "code", type = {CodeType.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Coded form of the unit", formalDefinition="A computer processable form of the units in some unit representation system." )
     protected CodeType code;
 
     private static final long serialVersionUID = -483422721L;
 
+  /*
+   * Constructor
+   */
     public Quantity() {
       super();
     }

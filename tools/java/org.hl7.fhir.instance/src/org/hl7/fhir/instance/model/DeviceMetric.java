@@ -29,40 +29,41 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * Describes a measurement, calculation or setting capability of a medical device.
  */
 @ResourceDef(name="DeviceMetric", profile="http://hl7.org/fhir/Profile/DeviceMetric")
 public class DeviceMetric extends DomainResource {
 
-    public enum MetricOperationalStatus {
+    public enum DeviceMetricOperationalStatus {
         /**
-         * The DeviceMetric is operating and will generate DeviceObservations.
+         * The DeviceMetric is operating and will generate DeviceObservations
          */
         ON, 
         /**
-         * The DeviceMetric is not operating.
+         * The DeviceMetric is not operating
          */
         OFF, 
         /**
-         * The DeviceMetric is operating, but will not generate any DeviceObservations.
+         * The DeviceMetric is operating, but will not generate any DeviceObservations
          */
         STANDBY, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static MetricOperationalStatus fromCode(String codeString) throws Exception {
+        public static DeviceMetricOperationalStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("on".equals(codeString))
@@ -71,7 +72,7 @@ public class DeviceMetric extends DomainResource {
           return OFF;
         if ("standby".equals(codeString))
           return STANDBY;
-        throw new Exception("Unknown MetricOperationalStatus code '"+codeString+"'");
+        throw new Exception("Unknown DeviceMetricOperationalStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -83,17 +84,17 @@ public class DeviceMetric extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case ON: return "";
-            case OFF: return "";
-            case STANDBY: return "";
+            case ON: return "http://hl7.org/fhir/metric-operational-status";
+            case OFF: return "http://hl7.org/fhir/metric-operational-status";
+            case STANDBY: return "http://hl7.org/fhir/metric-operational-status";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case ON: return "The DeviceMetric is operating and will generate DeviceObservations.";
-            case OFF: return "The DeviceMetric is not operating.";
-            case STANDBY: return "The DeviceMetric is operating, but will not generate any DeviceObservations.";
+            case ON: return "The DeviceMetric is operating and will generate DeviceObservations";
+            case OFF: return "The DeviceMetric is not operating";
+            case STANDBY: return "The DeviceMetric is operating, but will not generate any DeviceObservations";
             default: return "?";
           }
         }
@@ -107,68 +108,68 @@ public class DeviceMetric extends DomainResource {
         }
     }
 
-  public static class MetricOperationalStatusEnumFactory implements EnumFactory<MetricOperationalStatus> {
-    public MetricOperationalStatus fromCode(String codeString) throws IllegalArgumentException {
+  public static class DeviceMetricOperationalStatusEnumFactory implements EnumFactory<DeviceMetricOperationalStatus> {
+    public DeviceMetricOperationalStatus fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("on".equals(codeString))
-          return MetricOperationalStatus.ON;
+          return DeviceMetricOperationalStatus.ON;
         if ("off".equals(codeString))
-          return MetricOperationalStatus.OFF;
+          return DeviceMetricOperationalStatus.OFF;
         if ("standby".equals(codeString))
-          return MetricOperationalStatus.STANDBY;
-        throw new IllegalArgumentException("Unknown MetricOperationalStatus code '"+codeString+"'");
+          return DeviceMetricOperationalStatus.STANDBY;
+        throw new IllegalArgumentException("Unknown DeviceMetricOperationalStatus code '"+codeString+"'");
         }
-    public String toCode(MetricOperationalStatus code) {
-      if (code == MetricOperationalStatus.ON)
+    public String toCode(DeviceMetricOperationalStatus code) {
+      if (code == DeviceMetricOperationalStatus.ON)
         return "on";
-      if (code == MetricOperationalStatus.OFF)
+      if (code == DeviceMetricOperationalStatus.OFF)
         return "off";
-      if (code == MetricOperationalStatus.STANDBY)
+      if (code == DeviceMetricOperationalStatus.STANDBY)
         return "standby";
       return "?";
       }
     }
 
-    public enum MetricColor {
+    public enum DeviceMetricColor {
         /**
-         * Color for representation - black.
+         * Color for representation - black
          */
         BLACK, 
         /**
-         * Color for representation - red.
+         * Color for representation - red
          */
         RED, 
         /**
-         * Color for representation - green.
+         * Color for representation - green
          */
         GREEN, 
         /**
-         * Color for representation - yellow.
+         * Color for representation - yellow
          */
         YELLOW, 
         /**
-         * Color for representation - blue.
+         * Color for representation - blue
          */
         BLUE, 
         /**
-         * Color for representation - magenta.
+         * Color for representation - magenta
          */
         MAGENTA, 
         /**
-         * Color for representation - cyan.
+         * Color for representation - cyan
          */
         CYAN, 
         /**
-         * Color for representation - white.
+         * Color for representation - white
          */
         WHITE, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static MetricColor fromCode(String codeString) throws Exception {
+        public static DeviceMetricColor fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("black".equals(codeString))
@@ -187,7 +188,7 @@ public class DeviceMetric extends DomainResource {
           return CYAN;
         if ("white".equals(codeString))
           return WHITE;
-        throw new Exception("Unknown MetricColor code '"+codeString+"'");
+        throw new Exception("Unknown DeviceMetricColor code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -204,27 +205,27 @@ public class DeviceMetric extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case BLACK: return "";
-            case RED: return "";
-            case GREEN: return "";
-            case YELLOW: return "";
-            case BLUE: return "";
-            case MAGENTA: return "";
-            case CYAN: return "";
-            case WHITE: return "";
+            case BLACK: return "http://hl7.org/fhir/metric-color";
+            case RED: return "http://hl7.org/fhir/metric-color";
+            case GREEN: return "http://hl7.org/fhir/metric-color";
+            case YELLOW: return "http://hl7.org/fhir/metric-color";
+            case BLUE: return "http://hl7.org/fhir/metric-color";
+            case MAGENTA: return "http://hl7.org/fhir/metric-color";
+            case CYAN: return "http://hl7.org/fhir/metric-color";
+            case WHITE: return "http://hl7.org/fhir/metric-color";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case BLACK: return "Color for representation - black.";
-            case RED: return "Color for representation - red.";
-            case GREEN: return "Color for representation - green.";
-            case YELLOW: return "Color for representation - yellow.";
-            case BLUE: return "Color for representation - blue.";
-            case MAGENTA: return "Color for representation - magenta.";
-            case CYAN: return "Color for representation - cyan.";
-            case WHITE: return "Color for representation - white.";
+            case BLACK: return "Color for representation - black";
+            case RED: return "Color for representation - red";
+            case GREEN: return "Color for representation - green";
+            case YELLOW: return "Color for representation - yellow";
+            case BLUE: return "Color for representation - blue";
+            case MAGENTA: return "Color for representation - magenta";
+            case CYAN: return "Color for representation - cyan";
+            case WHITE: return "Color for representation - white";
             default: return "?";
           }
         }
@@ -243,51 +244,51 @@ public class DeviceMetric extends DomainResource {
         }
     }
 
-  public static class MetricColorEnumFactory implements EnumFactory<MetricColor> {
-    public MetricColor fromCode(String codeString) throws IllegalArgumentException {
+  public static class DeviceMetricColorEnumFactory implements EnumFactory<DeviceMetricColor> {
+    public DeviceMetricColor fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("black".equals(codeString))
-          return MetricColor.BLACK;
+          return DeviceMetricColor.BLACK;
         if ("red".equals(codeString))
-          return MetricColor.RED;
+          return DeviceMetricColor.RED;
         if ("green".equals(codeString))
-          return MetricColor.GREEN;
+          return DeviceMetricColor.GREEN;
         if ("yellow".equals(codeString))
-          return MetricColor.YELLOW;
+          return DeviceMetricColor.YELLOW;
         if ("blue".equals(codeString))
-          return MetricColor.BLUE;
+          return DeviceMetricColor.BLUE;
         if ("magenta".equals(codeString))
-          return MetricColor.MAGENTA;
+          return DeviceMetricColor.MAGENTA;
         if ("cyan".equals(codeString))
-          return MetricColor.CYAN;
+          return DeviceMetricColor.CYAN;
         if ("white".equals(codeString))
-          return MetricColor.WHITE;
-        throw new IllegalArgumentException("Unknown MetricColor code '"+codeString+"'");
+          return DeviceMetricColor.WHITE;
+        throw new IllegalArgumentException("Unknown DeviceMetricColor code '"+codeString+"'");
         }
-    public String toCode(MetricColor code) {
-      if (code == MetricColor.BLACK)
+    public String toCode(DeviceMetricColor code) {
+      if (code == DeviceMetricColor.BLACK)
         return "black";
-      if (code == MetricColor.RED)
+      if (code == DeviceMetricColor.RED)
         return "red";
-      if (code == MetricColor.GREEN)
+      if (code == DeviceMetricColor.GREEN)
         return "green";
-      if (code == MetricColor.YELLOW)
+      if (code == DeviceMetricColor.YELLOW)
         return "yellow";
-      if (code == MetricColor.BLUE)
+      if (code == DeviceMetricColor.BLUE)
         return "blue";
-      if (code == MetricColor.MAGENTA)
+      if (code == DeviceMetricColor.MAGENTA)
         return "magenta";
-      if (code == MetricColor.CYAN)
+      if (code == DeviceMetricColor.CYAN)
         return "cyan";
-      if (code == MetricColor.WHITE)
+      if (code == DeviceMetricColor.WHITE)
         return "white";
       return "?";
       }
     }
 
-    public enum MetricCategory {
+    public enum DeviceMetricCategory {
         /**
          * DeviceObservations generated for this DeviceMetric are measured.
          */
@@ -308,7 +309,7 @@ public class DeviceMetric extends DomainResource {
          * added to help the parsers
          */
         NULL;
-        public static MetricCategory fromCode(String codeString) throws Exception {
+        public static DeviceMetricCategory fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("measurement".equals(codeString))
@@ -319,7 +320,7 @@ public class DeviceMetric extends DomainResource {
           return CALCULATION;
         if ("unspecified".equals(codeString))
           return UNSPECIFIED;
-        throw new Exception("Unknown MetricCategory code '"+codeString+"'");
+        throw new Exception("Unknown DeviceMetricCategory code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -332,10 +333,10 @@ public class DeviceMetric extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case MEASUREMENT: return "";
-            case SETTING: return "";
-            case CALCULATION: return "";
-            case UNSPECIFIED: return "";
+            case MEASUREMENT: return "http://hl7.org/fhir/metric-category";
+            case SETTING: return "http://hl7.org/fhir/metric-category";
+            case CALCULATION: return "http://hl7.org/fhir/metric-category";
+            case UNSPECIFIED: return "http://hl7.org/fhir/metric-category";
             default: return "?";
           }
         }
@@ -359,56 +360,56 @@ public class DeviceMetric extends DomainResource {
         }
     }
 
-  public static class MetricCategoryEnumFactory implements EnumFactory<MetricCategory> {
-    public MetricCategory fromCode(String codeString) throws IllegalArgumentException {
+  public static class DeviceMetricCategoryEnumFactory implements EnumFactory<DeviceMetricCategory> {
+    public DeviceMetricCategory fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("measurement".equals(codeString))
-          return MetricCategory.MEASUREMENT;
+          return DeviceMetricCategory.MEASUREMENT;
         if ("setting".equals(codeString))
-          return MetricCategory.SETTING;
+          return DeviceMetricCategory.SETTING;
         if ("calculation".equals(codeString))
-          return MetricCategory.CALCULATION;
+          return DeviceMetricCategory.CALCULATION;
         if ("unspecified".equals(codeString))
-          return MetricCategory.UNSPECIFIED;
-        throw new IllegalArgumentException("Unknown MetricCategory code '"+codeString+"'");
+          return DeviceMetricCategory.UNSPECIFIED;
+        throw new IllegalArgumentException("Unknown DeviceMetricCategory code '"+codeString+"'");
         }
-    public String toCode(MetricCategory code) {
-      if (code == MetricCategory.MEASUREMENT)
+    public String toCode(DeviceMetricCategory code) {
+      if (code == DeviceMetricCategory.MEASUREMENT)
         return "measurement";
-      if (code == MetricCategory.SETTING)
+      if (code == DeviceMetricCategory.SETTING)
         return "setting";
-      if (code == MetricCategory.CALCULATION)
+      if (code == DeviceMetricCategory.CALCULATION)
         return "calculation";
-      if (code == MetricCategory.UNSPECIFIED)
+      if (code == DeviceMetricCategory.UNSPECIFIED)
         return "unspecified";
       return "?";
       }
     }
 
-    public enum MetricCalibrationType {
+    public enum DeviceMetricCalibrationType {
         /**
-         * TODO.
+         * TODO
          */
         UNSPECIFIED, 
         /**
-         * TODO.
+         * TODO
          */
         OFFSET, 
         /**
-         * TODO.
+         * TODO
          */
         GAIN, 
         /**
-         * TODO.
+         * TODO
          */
         TWOPOINT, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static MetricCalibrationType fromCode(String codeString) throws Exception {
+        public static DeviceMetricCalibrationType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("unspecified".equals(codeString))
@@ -419,7 +420,7 @@ public class DeviceMetric extends DomainResource {
           return GAIN;
         if ("two-point".equals(codeString))
           return TWOPOINT;
-        throw new Exception("Unknown MetricCalibrationType code '"+codeString+"'");
+        throw new Exception("Unknown DeviceMetricCalibrationType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -432,19 +433,19 @@ public class DeviceMetric extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case UNSPECIFIED: return "";
-            case OFFSET: return "";
-            case GAIN: return "";
-            case TWOPOINT: return "";
+            case UNSPECIFIED: return "http://hl7.org/fhir/metric-calibration-type";
+            case OFFSET: return "http://hl7.org/fhir/metric-calibration-type";
+            case GAIN: return "http://hl7.org/fhir/metric-calibration-type";
+            case TWOPOINT: return "http://hl7.org/fhir/metric-calibration-type";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case UNSPECIFIED: return "TODO.";
-            case OFFSET: return "TODO.";
-            case GAIN: return "TODO.";
-            case TWOPOINT: return "TODO.";
+            case UNSPECIFIED: return "TODO";
+            case OFFSET: return "TODO";
+            case GAIN: return "TODO";
+            case TWOPOINT: return "TODO";
             default: return "?";
           }
         }
@@ -459,35 +460,35 @@ public class DeviceMetric extends DomainResource {
         }
     }
 
-  public static class MetricCalibrationTypeEnumFactory implements EnumFactory<MetricCalibrationType> {
-    public MetricCalibrationType fromCode(String codeString) throws IllegalArgumentException {
+  public static class DeviceMetricCalibrationTypeEnumFactory implements EnumFactory<DeviceMetricCalibrationType> {
+    public DeviceMetricCalibrationType fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("unspecified".equals(codeString))
-          return MetricCalibrationType.UNSPECIFIED;
+          return DeviceMetricCalibrationType.UNSPECIFIED;
         if ("offset".equals(codeString))
-          return MetricCalibrationType.OFFSET;
+          return DeviceMetricCalibrationType.OFFSET;
         if ("gain".equals(codeString))
-          return MetricCalibrationType.GAIN;
+          return DeviceMetricCalibrationType.GAIN;
         if ("two-point".equals(codeString))
-          return MetricCalibrationType.TWOPOINT;
-        throw new IllegalArgumentException("Unknown MetricCalibrationType code '"+codeString+"'");
+          return DeviceMetricCalibrationType.TWOPOINT;
+        throw new IllegalArgumentException("Unknown DeviceMetricCalibrationType code '"+codeString+"'");
         }
-    public String toCode(MetricCalibrationType code) {
-      if (code == MetricCalibrationType.UNSPECIFIED)
+    public String toCode(DeviceMetricCalibrationType code) {
+      if (code == DeviceMetricCalibrationType.UNSPECIFIED)
         return "unspecified";
-      if (code == MetricCalibrationType.OFFSET)
+      if (code == DeviceMetricCalibrationType.OFFSET)
         return "offset";
-      if (code == MetricCalibrationType.GAIN)
+      if (code == DeviceMetricCalibrationType.GAIN)
         return "gain";
-      if (code == MetricCalibrationType.TWOPOINT)
+      if (code == DeviceMetricCalibrationType.TWOPOINT)
         return "two-point";
       return "?";
       }
     }
 
-    public enum MetricCalibrationState {
+    public enum DeviceMetricCalibrationState {
         /**
          * The metric has not been calibrated.
          */
@@ -508,7 +509,7 @@ public class DeviceMetric extends DomainResource {
          * added to help the parsers
          */
         NULL;
-        public static MetricCalibrationState fromCode(String codeString) throws Exception {
+        public static DeviceMetricCalibrationState fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("not-calibrated".equals(codeString))
@@ -519,7 +520,7 @@ public class DeviceMetric extends DomainResource {
           return CALIBRATED;
         if ("unspecified".equals(codeString))
           return UNSPECIFIED;
-        throw new Exception("Unknown MetricCalibrationState code '"+codeString+"'");
+        throw new Exception("Unknown DeviceMetricCalibrationState code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -532,10 +533,10 @@ public class DeviceMetric extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case NOTCALIBRATED: return "";
-            case CALIBRATIONREQUIRED: return "";
-            case CALIBRATED: return "";
-            case UNSPECIFIED: return "";
+            case NOTCALIBRATED: return "http://hl7.org/fhir/metric-calibration-state";
+            case CALIBRATIONREQUIRED: return "http://hl7.org/fhir/metric-calibration-state";
+            case CALIBRATED: return "http://hl7.org/fhir/metric-calibration-state";
+            case UNSPECIFIED: return "http://hl7.org/fhir/metric-calibration-state";
             default: return "?";
           }
         }
@@ -559,59 +560,62 @@ public class DeviceMetric extends DomainResource {
         }
     }
 
-  public static class MetricCalibrationStateEnumFactory implements EnumFactory<MetricCalibrationState> {
-    public MetricCalibrationState fromCode(String codeString) throws IllegalArgumentException {
+  public static class DeviceMetricCalibrationStateEnumFactory implements EnumFactory<DeviceMetricCalibrationState> {
+    public DeviceMetricCalibrationState fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("not-calibrated".equals(codeString))
-          return MetricCalibrationState.NOTCALIBRATED;
+          return DeviceMetricCalibrationState.NOTCALIBRATED;
         if ("calibration-required".equals(codeString))
-          return MetricCalibrationState.CALIBRATIONREQUIRED;
+          return DeviceMetricCalibrationState.CALIBRATIONREQUIRED;
         if ("calibrated".equals(codeString))
-          return MetricCalibrationState.CALIBRATED;
+          return DeviceMetricCalibrationState.CALIBRATED;
         if ("unspecified".equals(codeString))
-          return MetricCalibrationState.UNSPECIFIED;
-        throw new IllegalArgumentException("Unknown MetricCalibrationState code '"+codeString+"'");
+          return DeviceMetricCalibrationState.UNSPECIFIED;
+        throw new IllegalArgumentException("Unknown DeviceMetricCalibrationState code '"+codeString+"'");
         }
-    public String toCode(MetricCalibrationState code) {
-      if (code == MetricCalibrationState.NOTCALIBRATED)
+    public String toCode(DeviceMetricCalibrationState code) {
+      if (code == DeviceMetricCalibrationState.NOTCALIBRATED)
         return "not-calibrated";
-      if (code == MetricCalibrationState.CALIBRATIONREQUIRED)
+      if (code == DeviceMetricCalibrationState.CALIBRATIONREQUIRED)
         return "calibration-required";
-      if (code == MetricCalibrationState.CALIBRATED)
+      if (code == DeviceMetricCalibrationState.CALIBRATED)
         return "calibrated";
-      if (code == MetricCalibrationState.UNSPECIFIED)
+      if (code == DeviceMetricCalibrationState.UNSPECIFIED)
         return "unspecified";
       return "?";
       }
     }
 
     @Block()
-    public static class DeviceMetricCalibrationComponent extends BackboneElement {
+    public static class DeviceMetricCalibrationComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Describes the type of the calibration method.
          */
-        @Child(name ="type", type={CodeType.class}, order=1, min=0, max=1)
+        @Child(name = "type", type = {CodeType.class}, order=1, min=0, max=1)
         @Description(shortDefinition="unspecified | offset | gain | two-point", formalDefinition="Describes the type of the calibration method." )
-        protected Enumeration<MetricCalibrationType> type;
+        protected Enumeration<DeviceMetricCalibrationType> type;
 
         /**
          * Describes the state of the calibration.
          */
-        @Child(name ="state", type={CodeType.class}, order=2, min=0, max=1)
+        @Child(name = "state", type = {CodeType.class}, order=2, min=0, max=1)
         @Description(shortDefinition="not-calibrated | calibration-required | calibrated | unspecified", formalDefinition="Describes the state of the calibration." )
-        protected Enumeration<MetricCalibrationState> state;
+        protected Enumeration<DeviceMetricCalibrationState> state;
 
         /**
          * Describes the time last calibration has been performed.
          */
-        @Child(name ="time", type={InstantType.class}, order=3, min=0, max=1)
+        @Child(name = "time", type = {InstantType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="Describes the time last calibration has been performed", formalDefinition="Describes the time last calibration has been performed." )
         protected InstantType time;
 
-        private static final long serialVersionUID = 407720126L;
+        private static final long serialVersionUID = 1163986578L;
 
+    /*
+     * Constructor
+     */
       public DeviceMetricCalibrationComponent() {
         super();
       }
@@ -619,12 +623,12 @@ public class DeviceMetric extends DomainResource {
         /**
          * @return {@link #type} (Describes the type of the calibration method.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public Enumeration<MetricCalibrationType> getTypeElement() { 
+        public Enumeration<DeviceMetricCalibrationType> getTypeElement() { 
           if (this.type == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DeviceMetricCalibrationComponent.type");
             else if (Configuration.doAutoCreate())
-              this.type = new Enumeration<MetricCalibrationType>(new MetricCalibrationTypeEnumFactory()); // bb
+              this.type = new Enumeration<DeviceMetricCalibrationType>(new DeviceMetricCalibrationTypeEnumFactory()); // bb
           return this.type;
         }
 
@@ -639,7 +643,7 @@ public class DeviceMetric extends DomainResource {
         /**
          * @param value {@link #type} (Describes the type of the calibration method.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
-        public DeviceMetricCalibrationComponent setTypeElement(Enumeration<MetricCalibrationType> value) { 
+        public DeviceMetricCalibrationComponent setTypeElement(Enumeration<DeviceMetricCalibrationType> value) { 
           this.type = value;
           return this;
         }
@@ -647,19 +651,19 @@ public class DeviceMetric extends DomainResource {
         /**
          * @return Describes the type of the calibration method.
          */
-        public MetricCalibrationType getType() { 
+        public DeviceMetricCalibrationType getType() { 
           return this.type == null ? null : this.type.getValue();
         }
 
         /**
          * @param value Describes the type of the calibration method.
          */
-        public DeviceMetricCalibrationComponent setType(MetricCalibrationType value) { 
+        public DeviceMetricCalibrationComponent setType(DeviceMetricCalibrationType value) { 
           if (value == null)
             this.type = null;
           else {
             if (this.type == null)
-              this.type = new Enumeration<MetricCalibrationType>(new MetricCalibrationTypeEnumFactory());
+              this.type = new Enumeration<DeviceMetricCalibrationType>(new DeviceMetricCalibrationTypeEnumFactory());
             this.type.setValue(value);
           }
           return this;
@@ -668,12 +672,12 @@ public class DeviceMetric extends DomainResource {
         /**
          * @return {@link #state} (Describes the state of the calibration.). This is the underlying object with id, value and extensions. The accessor "getState" gives direct access to the value
          */
-        public Enumeration<MetricCalibrationState> getStateElement() { 
+        public Enumeration<DeviceMetricCalibrationState> getStateElement() { 
           if (this.state == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create DeviceMetricCalibrationComponent.state");
             else if (Configuration.doAutoCreate())
-              this.state = new Enumeration<MetricCalibrationState>(new MetricCalibrationStateEnumFactory()); // bb
+              this.state = new Enumeration<DeviceMetricCalibrationState>(new DeviceMetricCalibrationStateEnumFactory()); // bb
           return this.state;
         }
 
@@ -688,7 +692,7 @@ public class DeviceMetric extends DomainResource {
         /**
          * @param value {@link #state} (Describes the state of the calibration.). This is the underlying object with id, value and extensions. The accessor "getState" gives direct access to the value
          */
-        public DeviceMetricCalibrationComponent setStateElement(Enumeration<MetricCalibrationState> value) { 
+        public DeviceMetricCalibrationComponent setStateElement(Enumeration<DeviceMetricCalibrationState> value) { 
           this.state = value;
           return this;
         }
@@ -696,19 +700,19 @@ public class DeviceMetric extends DomainResource {
         /**
          * @return Describes the state of the calibration.
          */
-        public MetricCalibrationState getState() { 
+        public DeviceMetricCalibrationState getState() { 
           return this.state == null ? null : this.state.getValue();
         }
 
         /**
          * @param value Describes the state of the calibration.
          */
-        public DeviceMetricCalibrationComponent setState(MetricCalibrationState value) { 
+        public DeviceMetricCalibrationComponent setState(DeviceMetricCalibrationState value) { 
           if (value == null)
             this.state = null;
           else {
             if (this.state == null)
-              this.state = new Enumeration<MetricCalibrationState>(new MetricCalibrationStateEnumFactory());
+              this.state = new Enumeration<DeviceMetricCalibrationState>(new DeviceMetricCalibrationStateEnumFactory());
             this.state.setValue(value);
           }
           return this;
@@ -811,7 +815,7 @@ public class DeviceMetric extends DomainResource {
     /**
      * Describes the type of the metric. For example: Heart Rate, PEEP Setting, etc.
      */
-    @Child(name ="type", type={CodeableConcept.class}, order=0, min=1, max=1)
+    @Child(name = "type", type = {CodeableConcept.class}, order=0, min=1, max=1)
     @Description(shortDefinition="Type of metric", formalDefinition="Describes the type of the metric. For example: Heart Rate, PEEP Setting, etc." )
     protected CodeableConcept type;
 
@@ -819,21 +823,21 @@ public class DeviceMetric extends DomainResource {
      * Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID. 
 It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=1, min=1, max=1)
+    @Child(name = "identifier", type = {Identifier.class}, order=1, min=1, max=1)
     @Description(shortDefinition="Unique identifier of this DeviceMetric", formalDefinition="Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID. \nIt should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device." )
     protected Identifier identifier;
 
     /**
      * Describes the unit that an observed value determined for this metric will have. For example: Percent, Seconds, etc.
      */
-    @Child(name ="unit", type={CodeableConcept.class}, order=2, min=0, max=1)
+    @Child(name = "unit", type = {CodeableConcept.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Unit of metric", formalDefinition="Describes the unit that an observed value determined for this metric will have. For example: Percent, Seconds, etc." )
     protected CodeableConcept unit;
 
     /**
      * Describes the link to the  Device that this DeviceMetric belongs to and that contains administrative device information such as manufacture, serial number, etc.
      */
-    @Child(name ="source", type={Device.class}, order=3, min=0, max=1)
+    @Child(name = "source", type = {Device.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Describes the link to the source Device", formalDefinition="Describes the link to the  Device that this DeviceMetric belongs to and that contains administrative device information such as manufacture, serial number, etc." )
     protected Reference source;
 
@@ -846,7 +850,7 @@ It should be noted that in order to make the identifier unique, the system eleme
      * Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.
 An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.
      */
-    @Child(name ="parent", type={DeviceComponent.class}, order=4, min=0, max=1)
+    @Child(name = "parent", type = {DeviceComponent.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Describes the link to the parent DeviceComponent", formalDefinition="Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.\nAn example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location." )
     protected Reference parent;
 
@@ -859,47 +863,53 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     /**
      * Indicates current operational state of the device. For example: On, Off, Standby, etc.
      */
-    @Child(name ="operationalStatus", type={CodeType.class}, order=5, min=0, max=1)
+    @Child(name = "operationalStatus", type = {CodeType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="on | off | standby", formalDefinition="Indicates current operational state of the device. For example: On, Off, Standby, etc." )
-    protected Enumeration<MetricOperationalStatus> operationalStatus;
+    protected Enumeration<DeviceMetricOperationalStatus> operationalStatus;
 
     /**
-     * Describes the typical color of the representation of observations that have been generated for this DeviceMetric.
+     * Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta.
      */
-    @Child(name ="color", type={CodeType.class}, order=6, min=0, max=1)
-    @Description(shortDefinition="black | red | green | yellow | blue | magenta | cyan | white", formalDefinition="Describes the typical color of the representation of observations that have been generated for this DeviceMetric." )
-    protected Enumeration<MetricColor> color;
+    @Child(name = "color", type = {CodeType.class}, order=6, min=0, max=1)
+    @Description(shortDefinition="black | red | green | yellow | blue | magenta | cyan | white", formalDefinition="Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta." )
+    protected Enumeration<DeviceMetricColor> color;
 
     /**
      * Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.
      */
-    @Child(name ="category", type={CodeType.class}, order=7, min=1, max=1)
+    @Child(name = "category", type = {CodeType.class}, order=7, min=1, max=1)
     @Description(shortDefinition="measurement | setting | calculation | unspecified", formalDefinition="Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation." )
-    protected Enumeration<MetricCategory> category;
+    protected Enumeration<DeviceMetricCategory> category;
 
     /**
-     * Describes the measurement repetition time. This is not
-necessarily the same as the update
-period.
+     * Describes the measurement repetition time. This is not necessarily the same as the update period.
+The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.
+The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.
      */
-    @Child(name ="measurementPeriod", type={Timing.class}, order=8, min=0, max=1)
-    @Description(shortDefinition="Describes the measurement repetition time", formalDefinition="Describes the measurement repetition time. This is not\nnecessarily the same as the update\nperiod." )
+    @Child(name = "measurementPeriod", type = {Timing.class}, order=8, min=0, max=1)
+    @Description(shortDefinition="Describes the measurement repetition time", formalDefinition="Describes the measurement repetition time. This is not necessarily the same as the update period.\nThe measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.\nThe update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured." )
     protected Timing measurementPeriod;
 
     /**
      * Describes the calibrations that have been performed or that are required to be performed.
      */
-    @Child(name ="calibration", type={}, order=9, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "calibration", type = {}, order=9, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Describes the calibrations that have been performed or that are required to be performed", formalDefinition="Describes the calibrations that have been performed or that are required to be performed." )
     protected List<DeviceMetricCalibrationComponent> calibration;
 
-    private static final long serialVersionUID = -480554704L;
+    private static final long serialVersionUID = 1786401018L;
 
+  /*
+   * Constructor
+   */
     public DeviceMetric() {
       super();
     }
 
-    public DeviceMetric(CodeableConcept type, Identifier identifier, Enumeration<MetricCategory> category) {
+  /*
+   * Constructor
+   */
+    public DeviceMetric(CodeableConcept type, Identifier identifier, Enumeration<DeviceMetricCategory> category) {
       super();
       this.type = type;
       this.identifier = identifier;
@@ -1075,12 +1085,12 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     /**
      * @return {@link #operationalStatus} (Indicates current operational state of the device. For example: On, Off, Standby, etc.). This is the underlying object with id, value and extensions. The accessor "getOperationalStatus" gives direct access to the value
      */
-    public Enumeration<MetricOperationalStatus> getOperationalStatusElement() { 
+    public Enumeration<DeviceMetricOperationalStatus> getOperationalStatusElement() { 
       if (this.operationalStatus == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DeviceMetric.operationalStatus");
         else if (Configuration.doAutoCreate())
-          this.operationalStatus = new Enumeration<MetricOperationalStatus>(new MetricOperationalStatusEnumFactory()); // bb
+          this.operationalStatus = new Enumeration<DeviceMetricOperationalStatus>(new DeviceMetricOperationalStatusEnumFactory()); // bb
       return this.operationalStatus;
     }
 
@@ -1095,7 +1105,7 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     /**
      * @param value {@link #operationalStatus} (Indicates current operational state of the device. For example: On, Off, Standby, etc.). This is the underlying object with id, value and extensions. The accessor "getOperationalStatus" gives direct access to the value
      */
-    public DeviceMetric setOperationalStatusElement(Enumeration<MetricOperationalStatus> value) { 
+    public DeviceMetric setOperationalStatusElement(Enumeration<DeviceMetricOperationalStatus> value) { 
       this.operationalStatus = value;
       return this;
     }
@@ -1103,33 +1113,33 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     /**
      * @return Indicates current operational state of the device. For example: On, Off, Standby, etc.
      */
-    public MetricOperationalStatus getOperationalStatus() { 
+    public DeviceMetricOperationalStatus getOperationalStatus() { 
       return this.operationalStatus == null ? null : this.operationalStatus.getValue();
     }
 
     /**
      * @param value Indicates current operational state of the device. For example: On, Off, Standby, etc.
      */
-    public DeviceMetric setOperationalStatus(MetricOperationalStatus value) { 
+    public DeviceMetric setOperationalStatus(DeviceMetricOperationalStatus value) { 
       if (value == null)
         this.operationalStatus = null;
       else {
         if (this.operationalStatus == null)
-          this.operationalStatus = new Enumeration<MetricOperationalStatus>(new MetricOperationalStatusEnumFactory());
+          this.operationalStatus = new Enumeration<DeviceMetricOperationalStatus>(new DeviceMetricOperationalStatusEnumFactory());
         this.operationalStatus.setValue(value);
       }
       return this;
     }
 
     /**
-     * @return {@link #color} (Describes the typical color of the representation of observations that have been generated for this DeviceMetric.). This is the underlying object with id, value and extensions. The accessor "getColor" gives direct access to the value
+     * @return {@link #color} (Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta.). This is the underlying object with id, value and extensions. The accessor "getColor" gives direct access to the value
      */
-    public Enumeration<MetricColor> getColorElement() { 
+    public Enumeration<DeviceMetricColor> getColorElement() { 
       if (this.color == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DeviceMetric.color");
         else if (Configuration.doAutoCreate())
-          this.color = new Enumeration<MetricColor>(new MetricColorEnumFactory()); // bb
+          this.color = new Enumeration<DeviceMetricColor>(new DeviceMetricColorEnumFactory()); // bb
       return this.color;
     }
 
@@ -1142,29 +1152,29 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     }
 
     /**
-     * @param value {@link #color} (Describes the typical color of the representation of observations that have been generated for this DeviceMetric.). This is the underlying object with id, value and extensions. The accessor "getColor" gives direct access to the value
+     * @param value {@link #color} (Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta.). This is the underlying object with id, value and extensions. The accessor "getColor" gives direct access to the value
      */
-    public DeviceMetric setColorElement(Enumeration<MetricColor> value) { 
+    public DeviceMetric setColorElement(Enumeration<DeviceMetricColor> value) { 
       this.color = value;
       return this;
     }
 
     /**
-     * @return Describes the typical color of the representation of observations that have been generated for this DeviceMetric.
+     * @return Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta.
      */
-    public MetricColor getColor() { 
+    public DeviceMetricColor getColor() { 
       return this.color == null ? null : this.color.getValue();
     }
 
     /**
-     * @param value Describes the typical color of the representation of observations that have been generated for this DeviceMetric.
+     * @param value Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta.
      */
-    public DeviceMetric setColor(MetricColor value) { 
+    public DeviceMetric setColor(DeviceMetricColor value) { 
       if (value == null)
         this.color = null;
       else {
         if (this.color == null)
-          this.color = new Enumeration<MetricColor>(new MetricColorEnumFactory());
+          this.color = new Enumeration<DeviceMetricColor>(new DeviceMetricColorEnumFactory());
         this.color.setValue(value);
       }
       return this;
@@ -1173,12 +1183,12 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     /**
      * @return {@link #category} (Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.). This is the underlying object with id, value and extensions. The accessor "getCategory" gives direct access to the value
      */
-    public Enumeration<MetricCategory> getCategoryElement() { 
+    public Enumeration<DeviceMetricCategory> getCategoryElement() { 
       if (this.category == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DeviceMetric.category");
         else if (Configuration.doAutoCreate())
-          this.category = new Enumeration<MetricCategory>(new MetricCategoryEnumFactory()); // bb
+          this.category = new Enumeration<DeviceMetricCategory>(new DeviceMetricCategoryEnumFactory()); // bb
       return this.category;
     }
 
@@ -1193,7 +1203,7 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     /**
      * @param value {@link #category} (Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.). This is the underlying object with id, value and extensions. The accessor "getCategory" gives direct access to the value
      */
-    public DeviceMetric setCategoryElement(Enumeration<MetricCategory> value) { 
+    public DeviceMetric setCategoryElement(Enumeration<DeviceMetricCategory> value) { 
       this.category = value;
       return this;
     }
@@ -1201,24 +1211,24 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     /**
      * @return Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.
      */
-    public MetricCategory getCategory() { 
+    public DeviceMetricCategory getCategory() { 
       return this.category == null ? null : this.category.getValue();
     }
 
     /**
      * @param value Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.
      */
-    public DeviceMetric setCategory(MetricCategory value) { 
+    public DeviceMetric setCategory(DeviceMetricCategory value) { 
         if (this.category == null)
-          this.category = new Enumeration<MetricCategory>(new MetricCategoryEnumFactory());
+          this.category = new Enumeration<DeviceMetricCategory>(new DeviceMetricCategoryEnumFactory());
         this.category.setValue(value);
       return this;
     }
 
     /**
-     * @return {@link #measurementPeriod} (Describes the measurement repetition time. This is not
-necessarily the same as the update
-period.)
+     * @return {@link #measurementPeriod} (Describes the measurement repetition time. This is not necessarily the same as the update period.
+The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.
+The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.)
      */
     public Timing getMeasurementPeriod() { 
       if (this.measurementPeriod == null)
@@ -1234,9 +1244,9 @@ period.)
     }
 
     /**
-     * @param value {@link #measurementPeriod} (Describes the measurement repetition time. This is not
-necessarily the same as the update
-period.)
+     * @param value {@link #measurementPeriod} (Describes the measurement repetition time. This is not necessarily the same as the update period.
+The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.
+The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.)
      */
     public DeviceMetric setMeasurementPeriod(Timing value) { 
       this.measurementPeriod = value;
@@ -1291,9 +1301,9 @@ period.)
         childrenList.add(new Property("source", "Reference(Device)", "Describes the link to the  Device that this DeviceMetric belongs to and that contains administrative device information such as manufacture, serial number, etc.", 0, java.lang.Integer.MAX_VALUE, source));
         childrenList.add(new Property("parent", "Reference(DeviceComponent)", "Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.\nAn example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.", 0, java.lang.Integer.MAX_VALUE, parent));
         childrenList.add(new Property("operationalStatus", "code", "Indicates current operational state of the device. For example: On, Off, Standby, etc.", 0, java.lang.Integer.MAX_VALUE, operationalStatus));
-        childrenList.add(new Property("color", "code", "Describes the typical color of the representation of observations that have been generated for this DeviceMetric.", 0, java.lang.Integer.MAX_VALUE, color));
+        childrenList.add(new Property("color", "code", "Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta.", 0, java.lang.Integer.MAX_VALUE, color));
         childrenList.add(new Property("category", "code", "Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.", 0, java.lang.Integer.MAX_VALUE, category));
-        childrenList.add(new Property("measurementPeriod", "Timing", "Describes the measurement repetition time. This is not\nnecessarily the same as the update\nperiod.", 0, java.lang.Integer.MAX_VALUE, measurementPeriod));
+        childrenList.add(new Property("measurementPeriod", "Timing", "Describes the measurement repetition time. This is not necessarily the same as the update period.\nThe measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.\nThe update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.", 0, java.lang.Integer.MAX_VALUE, measurementPeriod));
         childrenList.add(new Property("calibration", "", "Describes the calibrations that have been performed or that are required to be performed.", 0, java.lang.Integer.MAX_VALUE, calibration));
       }
 

@@ -37,7 +37,7 @@
     </xslt>
   </target>
 
-  <property name="ivy.install.version" value="2.0.0-beta1" />
+  <property name="ivy.install.version" value="2.4.0" />
   <property name="ivy.jar.dir" value="${basedir}/ivy" />
   <property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar" />
 
@@ -63,7 +63,7 @@
     description="--> resolve dependencies, compile and run the project">
     <mkdir dir="${imports.location}"/>
     <ivy:resolve transitive="false" file="ivy.xml"/>
-    <ivy:retrieve sync="true" pattern="${imports.location}/[artifact]-[revision].[ext]"/>
+    <ivy:retrieve type="jar,bundle" sync="true" pattern="${imports.location}/[artifact]-[revision].[ext]"/>
   </target>
 
   <target name="clean-ivy" description="--> clean the ivy installation">

@@ -27,10 +27,12 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import org.hl7.fhir.definitions.model.Definitions;
+import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.utilities.Logger;
 
 public interface PlatformGenerator {
@@ -111,7 +113,7 @@ public interface PlatformGenerator {
    * @return true if the compile succeeded
    * @throws Exception 
    */
-  public boolean compile(String rootDir, List<String> errors, Logger logger) throws Exception;
+  public boolean compile(String rootDir, List<String> errors, Logger logger, List<ValidationMessage> issues) throws Exception;
   
   /**
    * 
@@ -128,7 +130,17 @@ public interface PlatformGenerator {
    * @param destFile
    * @throws Exception 
    */
-  public void loadAndSave(String rootDir, String sourceFile, String destFile) throws Exception;
+  public void loadAndSave(FolderManager folders, String sourceFile, String destFile) throws Exception;
+  
+  /**
+   * Load a set of source Files to the object model, then save them to [tmp]\*.xx.xml
+   * where xx is getName()
+   * 
+   * Both dest and source should be XML. The build tool will check if the 
+   * canonical XML of the source and dest are the same. If so, it passes
+   * 
+   */
+  public void test(FolderManager folders, Collection<String> names) throws Exception;
   
   /**
    * Used during the build to check the syntactical validity of fragments. We use the 
@@ -136,7 +148,7 @@ public interface PlatformGenerator {
    * incomplete, and we mainly want to know whether they include things that are not known
    *  
    */
-  public String checkFragments(String rootDir, String fragmentsXml) throws Exception;
+  public String checkFragments(FolderManager folders, String fragmentsXml) throws Exception;
 
   /**
    * Whether to list this in the downloads page

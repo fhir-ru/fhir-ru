@@ -28,6 +28,7 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 package org.hl7.fhir.utilities.xml;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -51,12 +52,20 @@ public class XmlGenerator {
 		xml.start();
 		xml.setDefaultNamespace(defaultNamespace);
 
-		xml.open(defaultNamespace, elementName);
+		xml.enter(defaultNamespace, elementName);
 		processContents(element);
-		xml.close();
+		xml.exit();
+		xml.end();
 		xml.flush();
+		stream.close();
 	}
 	
+  public String generate(Element element) throws Exception {
+    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+    generate(element, stream);
+    return new String(stream.toByteArray());
+  } 
+  
 	public void generate(Element element, File file) throws Exception {
 		OutputStream stream = new FileOutputStream(file);
 		generate(element, stream);
@@ -67,7 +76,7 @@ public class XmlGenerator {
 		xml.start();
 		xml.setDefaultNamespace(element.getNamespaceURI());
 		processElement(element);
-		xml.flush();
+		xml.end();
 	}
 	
 	private void processContents(Element element) throws Exception {
@@ -96,15 +105,15 @@ public class XmlGenerator {
 	}
 
 	private void processElement(Element element) throws Exception {
-		if (!element.getNamespaceURI().equals(xml.getDefaultNamespace()))
+		if (!xml.getDefaultNamespace().equals(element.getNamespaceURI()))
 			xml.setDefaultNamespace(element.getNamespaceURI());
 
 		processAttributes(element);
-		xml.open(element.getNamespaceURI(), element.getLocalName());
+		xml.enter(element.getNamespaceURI(), element.getLocalName());
 	
 		processContents(element);
 		
-		xml.close();
+		xml.exit();
 	}
 
 	private void processText(Node node) throws Exception {
@@ -122,6 +131,8 @@ public class XmlGenerator {
 //        xml.attribute("xmlns", attr.getNodeValue());
 //			else
      			xml.attribute(attr.getLocalName(), attr.getNodeValue());
+			else if (attr.getNodeName() != null && !"xmlns".equals(attr.getNodeName()))
+        xml.attribute(attr.getNodeName(), attr.getNodeValue());
 		}
 		
 	}

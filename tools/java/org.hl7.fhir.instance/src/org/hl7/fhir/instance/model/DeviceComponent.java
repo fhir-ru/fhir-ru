@@ -29,72 +29,73 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * Describes the characteristics, operational status and capabilities of a medical-related component of a medical device.
  */
 @ResourceDef(name="DeviceComponent", profile="http://hl7.org/fhir/Profile/DeviceComponent")
 public class DeviceComponent extends DomainResource {
 
-    public enum MeasurementPrinciple {
+    public enum MeasmntPrinciple {
         /**
-         * Measurement principle isn't in the list.
+         * Measurement principle isn't in the list
          */
         OTHER, 
         /**
-         * Measurement is done using chemical.
+         * Measurement is done using chemical
          */
         CHEMICAL, 
         /**
-         * Measurement is done using electrical.
+         * Measurement is done using electrical
          */
         ELECTRICAL, 
         /**
-         * Measurement is done using impedance.
+         * Measurement is done using impedance
          */
         IMPEDANCE, 
         /**
-         * Measurement is done using nuclear.
+         * Measurement is done using nuclear
          */
         NUCLEAR, 
         /**
-         * Measurement is done using optical.
+         * Measurement is done using optical
          */
         OPTICAL, 
         /**
-         * Measurement is done using thermal.
+         * Measurement is done using thermal
          */
         THERMAL, 
         /**
-         * Measurement is done using biological.
+         * Measurement is done using biological
          */
         BIOLOGICAL, 
         /**
-         * Measurement is done using mechanical.
+         * Measurement is done using mechanical
          */
         MECHANICAL, 
         /**
-         * Measurement is done using acoustical.
+         * Measurement is done using acoustical
          */
         ACOUSTICAL, 
         /**
-         * Measurement is done using manual.
+         * Measurement is done using manual
          */
         MANUAL, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static MeasurementPrinciple fromCode(String codeString) throws Exception {
+        public static MeasmntPrinciple fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("other".equals(codeString))
@@ -119,7 +120,7 @@ public class DeviceComponent extends DomainResource {
           return ACOUSTICAL;
         if ("manual".equals(codeString))
           return MANUAL;
-        throw new Exception("Unknown MeasurementPrinciple code '"+codeString+"'");
+        throw new Exception("Unknown MeasmntPrinciple code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -139,33 +140,33 @@ public class DeviceComponent extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case OTHER: return "";
-            case CHEMICAL: return "";
-            case ELECTRICAL: return "";
-            case IMPEDANCE: return "";
-            case NUCLEAR: return "";
-            case OPTICAL: return "";
-            case THERMAL: return "";
-            case BIOLOGICAL: return "";
-            case MECHANICAL: return "";
-            case ACOUSTICAL: return "";
-            case MANUAL: return "";
+            case OTHER: return "http://hl7.org/fhir/measurement-principle";
+            case CHEMICAL: return "http://hl7.org/fhir/measurement-principle";
+            case ELECTRICAL: return "http://hl7.org/fhir/measurement-principle";
+            case IMPEDANCE: return "http://hl7.org/fhir/measurement-principle";
+            case NUCLEAR: return "http://hl7.org/fhir/measurement-principle";
+            case OPTICAL: return "http://hl7.org/fhir/measurement-principle";
+            case THERMAL: return "http://hl7.org/fhir/measurement-principle";
+            case BIOLOGICAL: return "http://hl7.org/fhir/measurement-principle";
+            case MECHANICAL: return "http://hl7.org/fhir/measurement-principle";
+            case ACOUSTICAL: return "http://hl7.org/fhir/measurement-principle";
+            case MANUAL: return "http://hl7.org/fhir/measurement-principle";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case OTHER: return "Measurement principle isn't in the list.";
-            case CHEMICAL: return "Measurement is done using chemical.";
-            case ELECTRICAL: return "Measurement is done using electrical.";
-            case IMPEDANCE: return "Measurement is done using impedance.";
-            case NUCLEAR: return "Measurement is done using nuclear.";
-            case OPTICAL: return "Measurement is done using optical.";
-            case THERMAL: return "Measurement is done using thermal.";
-            case BIOLOGICAL: return "Measurement is done using biological.";
-            case MECHANICAL: return "Measurement is done using mechanical.";
-            case ACOUSTICAL: return "Measurement is done using acoustical.";
-            case MANUAL: return "Measurement is done using manual.";
+            case OTHER: return "Measurement principle isn't in the list";
+            case CHEMICAL: return "Measurement is done using chemical";
+            case ELECTRICAL: return "Measurement is done using electrical";
+            case IMPEDANCE: return "Measurement is done using impedance";
+            case NUCLEAR: return "Measurement is done using nuclear";
+            case OPTICAL: return "Measurement is done using optical";
+            case THERMAL: return "Measurement is done using thermal";
+            case BIOLOGICAL: return "Measurement is done using biological";
+            case MECHANICAL: return "Measurement is done using mechanical";
+            case ACOUSTICAL: return "Measurement is done using acoustical";
+            case MANUAL: return "Measurement is done using manual";
             default: return "?";
           }
         }
@@ -187,87 +188,90 @@ public class DeviceComponent extends DomainResource {
         }
     }
 
-  public static class MeasurementPrincipleEnumFactory implements EnumFactory<MeasurementPrinciple> {
-    public MeasurementPrinciple fromCode(String codeString) throws IllegalArgumentException {
+  public static class MeasmntPrincipleEnumFactory implements EnumFactory<MeasmntPrinciple> {
+    public MeasmntPrinciple fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("other".equals(codeString))
-          return MeasurementPrinciple.OTHER;
+          return MeasmntPrinciple.OTHER;
         if ("chemical".equals(codeString))
-          return MeasurementPrinciple.CHEMICAL;
+          return MeasmntPrinciple.CHEMICAL;
         if ("electrical".equals(codeString))
-          return MeasurementPrinciple.ELECTRICAL;
+          return MeasmntPrinciple.ELECTRICAL;
         if ("impedance".equals(codeString))
-          return MeasurementPrinciple.IMPEDANCE;
+          return MeasmntPrinciple.IMPEDANCE;
         if ("nuclear".equals(codeString))
-          return MeasurementPrinciple.NUCLEAR;
+          return MeasmntPrinciple.NUCLEAR;
         if ("optical".equals(codeString))
-          return MeasurementPrinciple.OPTICAL;
+          return MeasmntPrinciple.OPTICAL;
         if ("thermal".equals(codeString))
-          return MeasurementPrinciple.THERMAL;
+          return MeasmntPrinciple.THERMAL;
         if ("biological".equals(codeString))
-          return MeasurementPrinciple.BIOLOGICAL;
+          return MeasmntPrinciple.BIOLOGICAL;
         if ("mechanical".equals(codeString))
-          return MeasurementPrinciple.MECHANICAL;
+          return MeasmntPrinciple.MECHANICAL;
         if ("acoustical".equals(codeString))
-          return MeasurementPrinciple.ACOUSTICAL;
+          return MeasmntPrinciple.ACOUSTICAL;
         if ("manual".equals(codeString))
-          return MeasurementPrinciple.MANUAL;
-        throw new IllegalArgumentException("Unknown MeasurementPrinciple code '"+codeString+"'");
+          return MeasmntPrinciple.MANUAL;
+        throw new IllegalArgumentException("Unknown MeasmntPrinciple code '"+codeString+"'");
         }
-    public String toCode(MeasurementPrinciple code) {
-      if (code == MeasurementPrinciple.OTHER)
+    public String toCode(MeasmntPrinciple code) {
+      if (code == MeasmntPrinciple.OTHER)
         return "other";
-      if (code == MeasurementPrinciple.CHEMICAL)
+      if (code == MeasmntPrinciple.CHEMICAL)
         return "chemical";
-      if (code == MeasurementPrinciple.ELECTRICAL)
+      if (code == MeasmntPrinciple.ELECTRICAL)
         return "electrical";
-      if (code == MeasurementPrinciple.IMPEDANCE)
+      if (code == MeasmntPrinciple.IMPEDANCE)
         return "impedance";
-      if (code == MeasurementPrinciple.NUCLEAR)
+      if (code == MeasmntPrinciple.NUCLEAR)
         return "nuclear";
-      if (code == MeasurementPrinciple.OPTICAL)
+      if (code == MeasmntPrinciple.OPTICAL)
         return "optical";
-      if (code == MeasurementPrinciple.THERMAL)
+      if (code == MeasmntPrinciple.THERMAL)
         return "thermal";
-      if (code == MeasurementPrinciple.BIOLOGICAL)
+      if (code == MeasmntPrinciple.BIOLOGICAL)
         return "biological";
-      if (code == MeasurementPrinciple.MECHANICAL)
+      if (code == MeasmntPrinciple.MECHANICAL)
         return "mechanical";
-      if (code == MeasurementPrinciple.ACOUSTICAL)
+      if (code == MeasmntPrinciple.ACOUSTICAL)
         return "acoustical";
-      if (code == MeasurementPrinciple.MANUAL)
+      if (code == MeasmntPrinciple.MANUAL)
         return "manual";
       return "?";
       }
     }
 
     @Block()
-    public static class DeviceComponentProductionSpecificationComponent extends BackboneElement {
+    public static class DeviceComponentProductionSpecificationComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Describes the specification type, such as, serial number, part number, hardware revision, software revision, etc.
          */
-        @Child(name ="specType", type={CodeableConcept.class}, order=1, min=0, max=1)
+        @Child(name = "specType", type = {CodeableConcept.class}, order=1, min=0, max=1)
         @Description(shortDefinition="Specification type", formalDefinition="Describes the specification type, such as, serial number, part number, hardware revision, software revision, etc." )
         protected CodeableConcept specType;
 
         /**
          * Describes the internal component unique identification. This is a provision for manufacture specific standard components using a private OID. 11073-10101 has a partition for private OID semantic that the manufacture can make use of.
          */
-        @Child(name ="componentId", type={Identifier.class}, order=2, min=0, max=1)
+        @Child(name = "componentId", type = {Identifier.class}, order=2, min=0, max=1)
         @Description(shortDefinition="Internal component unique identification", formalDefinition="Describes the internal component unique identification. This is a provision for manufacture specific standard components using a private OID. 11073-10101 has a partition for private OID semantic that the manufacture can make use of." )
         protected Identifier componentId;
 
         /**
          * Describes the printable string defining the component.
          */
-        @Child(name ="productionSpec", type={StringType.class}, order=3, min=0, max=1)
+        @Child(name = "productionSpec", type = {StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="A printable string defining the component", formalDefinition="Describes the printable string defining the component." )
         protected StringType productionSpec;
 
         private static final long serialVersionUID = -1476597516L;
 
+    /*
+     * Constructor
+     */
       public DeviceComponentProductionSpecificationComponent() {
         super();
       }
@@ -416,28 +420,28 @@ public class DeviceComponent extends DomainResource {
     /**
      * Describes the specific component type as defined in the object-oriented or metric nomenclature partition.
      */
-    @Child(name ="type", type={CodeableConcept.class}, order=0, min=1, max=1)
+    @Child(name = "type", type = {CodeableConcept.class}, order=0, min=1, max=1)
     @Description(shortDefinition="What kind of component it is", formalDefinition="Describes the specific component type as defined in the object-oriented or metric nomenclature partition." )
     protected CodeableConcept type;
 
     /**
      * Describes the local assigned unique identification by the software. For example: handle ID.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=1, min=1, max=1)
+    @Child(name = "identifier", type = {Identifier.class}, order=1, min=1, max=1)
     @Description(shortDefinition="Instance id assigned by the software stack", formalDefinition="Describes the local assigned unique identification by the software. For example: handle ID." )
     protected Identifier identifier;
 
     /**
      * Describes the timestamp for the most recent system change which includes device configuration or setting change.
      */
-    @Child(name ="lastSystemChange", type={InstantType.class}, order=2, min=1, max=1)
+    @Child(name = "lastSystemChange", type = {InstantType.class}, order=2, min=1, max=1)
     @Description(shortDefinition="Recent system change timestamp", formalDefinition="Describes the timestamp for the most recent system change which includes device configuration or setting change." )
     protected InstantType lastSystemChange;
 
     /**
      * Describes the link to the source Device that contains administrative device information such as manufacture, serial number, etc.
      */
-    @Child(name ="source", type={Device.class}, order=3, min=0, max=1)
+    @Child(name = "source", type = {Device.class}, order=3, min=0, max=1)
     @Description(shortDefinition="A source device of this component", formalDefinition="Describes the link to the source Device that contains administrative device information such as manufacture, serial number, etc." )
     protected Reference source;
 
@@ -449,7 +453,7 @@ public class DeviceComponent extends DomainResource {
     /**
      * Describes the link to the parent resource. For example: Channel is linked to its VMD parent.
      */
-    @Child(name ="parent", type={DeviceComponent.class}, order=4, min=0, max=1)
+    @Child(name = "parent", type = {DeviceComponent.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Parent resource link", formalDefinition="Describes the link to the parent resource. For example: Channel is linked to its VMD parent." )
     protected Reference parent;
 
@@ -461,44 +465,50 @@ public class DeviceComponent extends DomainResource {
     /**
      * Indicates current operational status of the device. For example: On, Off, Standby, etc.
      */
-    @Child(name ="operationalStatus", type={CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "operationalStatus", type = {CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Component operational status", formalDefinition="Indicates current operational status of the device. For example: On, Off, Standby, etc." )
     protected List<CodeableConcept> operationalStatus;
 
     /**
      * Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular.
      */
-    @Child(name ="parameterGroup", type={CodeableConcept.class}, order=6, min=0, max=1)
+    @Child(name = "parameterGroup", type = {CodeableConcept.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Current supported parameter group", formalDefinition="Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular." )
     protected CodeableConcept parameterGroup;
 
     /**
      * Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc.
      */
-    @Child(name ="measurementPrinciple", type={CodeType.class}, order=7, min=0, max=1)
+    @Child(name = "measurementPrinciple", type = {CodeType.class}, order=7, min=0, max=1)
     @Description(shortDefinition="other | chemical | electrical | impedance | nuclear | optical | thermal | biological | mechanical | acoustical | manual+", formalDefinition="Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc." )
-    protected Enumeration<MeasurementPrinciple> measurementPrinciple;
+    protected Enumeration<MeasmntPrinciple> measurementPrinciple;
 
     /**
      * Describes the production specification such as component revision, serial number, etc.
      */
-    @Child(name ="productionSpecification", type={}, order=8, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "productionSpecification", type = {}, order=8, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Production specification of the component", formalDefinition="Describes the production specification such as component revision, serial number, etc." )
     protected List<DeviceComponentProductionSpecificationComponent> productionSpecification;
 
     /**
      * Describes the language code for the human-readable text string produced by the device. This language code will follow the IETF language tag. Example: en-US.
      */
-    @Child(name ="languageCode", type={CodeableConcept.class}, order=9, min=0, max=1)
+    @Child(name = "languageCode", type = {CodeableConcept.class}, order=9, min=0, max=1)
     @Description(shortDefinition="Language code for the human-readable text strings produced by the device", formalDefinition="Describes the language code for the human-readable text string produced by the device. This language code will follow the IETF language tag. Example: en-US." )
     protected CodeableConcept languageCode;
 
-    private static final long serialVersionUID = 1179239259L;
+    private static final long serialVersionUID = -1742890034L;
 
+  /*
+   * Constructor
+   */
     public DeviceComponent() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public DeviceComponent(CodeableConcept type, Identifier identifier, InstantType lastSystemChange) {
       super();
       this.type = type;
@@ -754,12 +764,12 @@ public class DeviceComponent extends DomainResource {
     /**
      * @return {@link #measurementPrinciple} (Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc.). This is the underlying object with id, value and extensions. The accessor "getMeasurementPrinciple" gives direct access to the value
      */
-    public Enumeration<MeasurementPrinciple> getMeasurementPrincipleElement() { 
+    public Enumeration<MeasmntPrinciple> getMeasurementPrincipleElement() { 
       if (this.measurementPrinciple == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create DeviceComponent.measurementPrinciple");
         else if (Configuration.doAutoCreate())
-          this.measurementPrinciple = new Enumeration<MeasurementPrinciple>(new MeasurementPrincipleEnumFactory()); // bb
+          this.measurementPrinciple = new Enumeration<MeasmntPrinciple>(new MeasmntPrincipleEnumFactory()); // bb
       return this.measurementPrinciple;
     }
 
@@ -774,7 +784,7 @@ public class DeviceComponent extends DomainResource {
     /**
      * @param value {@link #measurementPrinciple} (Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc.). This is the underlying object with id, value and extensions. The accessor "getMeasurementPrinciple" gives direct access to the value
      */
-    public DeviceComponent setMeasurementPrincipleElement(Enumeration<MeasurementPrinciple> value) { 
+    public DeviceComponent setMeasurementPrincipleElement(Enumeration<MeasmntPrinciple> value) { 
       this.measurementPrinciple = value;
       return this;
     }
@@ -782,19 +792,19 @@ public class DeviceComponent extends DomainResource {
     /**
      * @return Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc.
      */
-    public MeasurementPrinciple getMeasurementPrinciple() { 
+    public MeasmntPrinciple getMeasurementPrinciple() { 
       return this.measurementPrinciple == null ? null : this.measurementPrinciple.getValue();
     }
 
     /**
      * @param value Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc.
      */
-    public DeviceComponent setMeasurementPrinciple(MeasurementPrinciple value) { 
+    public DeviceComponent setMeasurementPrinciple(MeasmntPrinciple value) { 
       if (value == null)
         this.measurementPrinciple = null;
       else {
         if (this.measurementPrinciple == null)
-          this.measurementPrinciple = new Enumeration<MeasurementPrinciple>(new MeasurementPrincipleEnumFactory());
+          this.measurementPrinciple = new Enumeration<MeasmntPrinciple>(new MeasmntPrincipleEnumFactory());
         this.measurementPrinciple.setValue(value);
       }
       return this;

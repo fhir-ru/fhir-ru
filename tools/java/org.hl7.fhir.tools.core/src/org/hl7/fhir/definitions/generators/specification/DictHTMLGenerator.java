@@ -81,13 +81,13 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	  for (ElementDefinition ec : profile.getSnapshot().getElement()) {
 	    if (isProfiledExtension(ec)) {
 	      String name = profile.getId()+"."+ makePathLink(ec);
-        StructureDefinition extDefn = page.getWorkerContext().getExtensionStructure(null, ec.getType().get(0).getProfile());
+        StructureDefinition extDefn = page.getWorkerContext().getExtensionStructure(null, ec.getType().get(0).getProfile().get(0).getValue());
 	      if (extDefn == null) {
-	        String title = ec.getPath() + " ("+(ec.getType().get(0).getProfile().startsWith("#") ? profile.getUrl() : "")+ec.getType().get(0).getProfile()+")";
+	        String title = ec.getPath() + " ("+(ec.getType().get(0).getProfile().get(0).getValue().startsWith("#") ? profile.getUrl() : "")+ec.getType().get(0).getProfile()+")";
 	        write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a><b>"+title+"</b></td></tr>\r\n");
 	        generateElementInner(profile,  ec, 1, null);
 	      } else {
-	        String title = ec.getPath() + " (<a href=\""+(extDefn.hasUserData("filename") ? extDefn.getUserData("filename") : "extension-"+extDefn.getId().toLowerCase())+".html\">"+(ec.getType().get(0).getProfile().startsWith("#") ? profile.getUrl() : "")+ec.getType().get(0).getProfile()+"</a>)";
+	        String title = ec.getPath() + " (<a href=\""+(extDefn.hasUserData("filename") ? extDefn.getUserData("filename") : "extension-"+extDefn.getId().toLowerCase())+".html\">"+(ec.getType().get(0).getProfile().get(0).getValue().startsWith("#") ? profile.getUrl() : "")+ec.getType().get(0).getProfile()+"</a>)";
 	        write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a><b>"+title+"</b></td></tr>\r\n");
 	        ElementDefinition valueDefn = getExtensionValueDefinition(extDefn);
 	        generateElementInner(extDefn, extDefn.getSnapshot().getElement().get(0), valueDefn == null ? 2 : 3, valueDefn);
@@ -123,9 +123,9 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     for (ElementDefinition ec : ed.getSnapshot().getElement()) {
       if (isProfiledExtension(ec)) {
         String name = makePathLink(ec);
-        String title = ec.getPath() + " ("+(ec.getType().get(0).getProfile().startsWith("#") ? ed.getUrl() : "")+ec.getType().get(0).getProfile()+")";
+        String title = ec.getPath() + " ("+(ec.getType().get(0).getProfile().get(0).getValue().startsWith("#") ? ed.getUrl() : "")+ec.getType().get(0).getProfile()+")";
         write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a><b>"+title+"</b></td></tr>\r\n");
-        StructureDefinition extDefn = page.getWorkerContext().getExtensionStructure(null, ec.getType().get(0).getProfile());
+        StructureDefinition extDefn = page.getWorkerContext().getExtensionStructure(null, ec.getType().get(0).getProfile().get(0).getValue());
         if (extDefn == null)
           generateElementInner(ed, ec, 1, null);
         else { 
@@ -183,7 +183,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
 
   private void generateElementInner(StructureDefinition profile, ElementDefinition d, int mode, ElementDefinition value) throws Exception {
-    tableRowNE("Определение", null, page.processMarkdown(d.getDefinition()));
+    tableRowNE("Определение", null, page.processMarkdown(profile.getName(), d.getDefinition()));
     tableRowNE("Примечание", null, businessIdWarning(tail(d.getPath())));
     tableRow("Контроль", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
     tableRowNE("Привязка", "terminologies.html", describeBinding(d));
@@ -193,9 +193,9 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
       tableRowNE("Тип", "datatypes.html", describeTypes(d.getType()) + processSecondary(mode, value));
     tableRow("Модификатор?", "conformance-rules.html#ismodifier", displayBoolean(d.getIsModifier()));
     tableRow("Должен поддерживаться", "conformance-rules.html#mustSupport", displayBoolean(d.getMustSupport()));
-    tableRowNE("Требования",  null, page.processMarkdown(d.getRequirements()));
+    tableRowNE("Требования",  null, page.processMarkdown(profile.getName(), d.getRequirements()));
     tableRowHint("Альтернативные имена", "Другие известные имена этого ресурса/элемента", null, describeAliases(d.getAlias()));
-    tableRowNE("Комментарии",  null, page.processMarkdown(d.getComments()));
+    tableRowNE("Комментарии",  null, page.processMarkdown(profile.getName(), d.getComments()));
     tableRow("Макс. длина", null, !d.hasMaxLengthElement() ? null : Integer.toString(d.getMaxLength()));
     tableRowNE("Значение по умолчанию", null, encodeValue(d.getDefaultValue()));
     tableRowNE("Значение, если отсутствует", null, d.getMeaningWhenMissing());
@@ -388,7 +388,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   public void generate(ElementDefn root) throws Exception
 	{
 		write("<table class=\"dict\">\r\n");
-		writeEntry(root.getName(), "1..1", "", "", root);
+		writeEntry(root.getName(), "1..1", "", null, root);
 		for (ElementDefn e : root.getElements()) {
 		   generateElement(root.getName(), e);
 		}
@@ -399,18 +399,18 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	}
 
 	private void generateElement(String name, ElementDefn e) throws Exception {
-		writeEntry(name+"."+e.getName(), e.describeCardinality(), describeType(e), e.getBindingName(), e);
+		writeEntry(name+"."+e.getName(), e.describeCardinality(), describeType(e), e.getBinding(), e);
 		for (ElementDefn c : e.getElements())	{
 		   generateElement(name+"."+e.getName(), c);
 		}
 	}
 
-	private void writeEntry(String path, String cardinality, String type, String conceptDomain, ElementDefn e) throws Exception {
+	private void writeEntry(String path, String cardinality, String type, BindingSpecification bs, ElementDefn e) throws Exception {
 		write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+path.replace("[", "_").replace("]", "_")+"\"> </a><b>"+path+"</b></td></tr>\r\n");
-		tableRowNE("Определение", null, page.processMarkdown(e.getDefinition()));
-		tableRowNE("Примечание", null, businessIdWarning(e.getName()));
-		tableRow("Кард. число", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
-		tableRowNE("Привязка", "terminologies.html", describeBinding(e));
+		tableRowNE("Определение", null, page.processMarkdown(path, e.getDefinition()));
+    tableRowNE("Примечание", null, businessIdWarning(e.getName()));
+		tableRow("Кард. множество", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
+		tableRowNE("Привязка", "terminologies.html", describeBinding(path, e));
 		if (!Utilities.noString(type) && type.startsWith("@"))
 		  tableRowNE("Тип", null, "<a href=\"#"+type.substring(1)+"\">См. "+type.substring(1)+"</a>");
 		else
@@ -419,11 +419,11 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     tableRowNE("Default Value", null, encodeValue(e.getDefaultValue()));
     tableRowNE("Meaning if Missing", null, e.getMeaningWhenMissing());
 
-		tableRowNE("Требования", null, page.processMarkdown(e.getRequirements()));
-		tableRowHint("Альтернативные имена", "Другие имена, под которыми известен ресурс/элемент", null, toSeperatedString(e.getAliases()));
+		tableRowNE("Требования", null, page.processMarkdown(path, e.getRequirements()));
+		tableRowHint("Альтернативные имена", "Другие имена, под которыми может быть известен ресурс/элемент", null, toSeperatedString(e.getAliases()));
     if (e.hasSummaryItem())
       tableRow("Суммарный", "search.html#summary", Boolean.toString(e.isSummaryItem()));
-    tableRowNE("Комментарии", null, page.processMarkdown(e.getComments()));
+    tableRowNE("Комментарии", null, page.processMarkdown(path, e.getComments()));
     tableRowNE("Инварианты", null, invariants(e.getInvariants(), e.getStatedInvariants()));
     tableRow("LOINC-код", null, e.getMapping(Definitions.LOINC_MAPPING));
     tableRow("SNOMED-CT-код", null, e.getMapping(Definitions.SNOMED_MAPPING));
@@ -450,14 +450,20 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     return b.toString();
   }
 
-  private String describeBinding(ElementDefn e) throws Exception {
+  private String describeBinding(String path, ElementDefn e) throws Exception {
 
 	  if (!e.hasBinding())
 	    return null;
 	  
 	  StringBuilder b = new StringBuilder();
-	  BindingSpecification cd =  definitions.getBindingByName(e.getBindingName());
-    b.append(cd.getName()+": ");
+	  BindingSpecification cd =  e.getBinding();
+	  if (cd.getValueSet() != null)
+      b.append(cd.getValueSet().getName()+": ");
+	  else if (!Utilities.noString(cd.getReference()))
+      b.append("<a href=\""+cd.getReference()+"\">"+e.getBinding().getName()+"</a>: ");
+	  else
+      b.append("<a href=\"terminologies.html#unbound\">"+e.getBinding().getName()+"</a>: ");
+	    
     b.append(TerminologyNotesGenerator.describeBinding(cd, page));
 //    if (cd.getBinding() == Binding.Unbound)
 //      b.append(" (Not Bound to any codes)");

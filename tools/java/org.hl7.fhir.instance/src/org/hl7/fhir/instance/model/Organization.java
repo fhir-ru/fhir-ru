@@ -29,16 +29,17 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc.
  */
@@ -46,37 +47,40 @@ import org.hl7.fhir.instance.model.annotations.Description;
 public class Organization extends DomainResource {
 
     @Block()
-    public static class OrganizationContactComponent extends BackboneElement {
+    public static class OrganizationContactComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * Indicates a purpose for which the contact can be reached.
          */
-        @Child(name ="purpose", type={CodeableConcept.class}, order=1, min=0, max=1)
+        @Child(name = "purpose", type = {CodeableConcept.class}, order=1, min=0, max=1)
         @Description(shortDefinition="The type of contact", formalDefinition="Indicates a purpose for which the contact can be reached." )
         protected CodeableConcept purpose;
 
         /**
          * A name associated with the contact.
          */
-        @Child(name ="name", type={HumanName.class}, order=2, min=0, max=1)
+        @Child(name = "name", type = {HumanName.class}, order=2, min=0, max=1)
         @Description(shortDefinition="A name associated with the contact", formalDefinition="A name associated with the contact." )
         protected HumanName name;
 
         /**
          * A contact detail (e.g. a telephone number or an email address) by which the party may be contacted.
          */
-        @Child(name ="telecom", type={ContactPoint.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "telecom", type = {ContactPoint.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
         @Description(shortDefinition="Contact details (telephone, email, etc)  for a contact", formalDefinition="A contact detail (e.g. a telephone number or an email address) by which the party may be contacted." )
         protected List<ContactPoint> telecom;
 
         /**
          * Visiting or postal addresses for the contact.
          */
-        @Child(name ="address", type={Address.class}, order=4, min=0, max=1)
+        @Child(name = "address", type = {Address.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Visiting or postal addresses for the contact", formalDefinition="Visiting or postal addresses for the contact." )
         protected Address address;
 
         private static final long serialVersionUID = 1831121305L;
 
+    /*
+     * Constructor
+     */
       public OrganizationContactComponent() {
         super();
       }
@@ -246,42 +250,42 @@ public class Organization extends DomainResource {
     /**
      * Identifier for the organization that is used to identify the organization across multiple disparate systems.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Identifies this organization  across multiple systems", formalDefinition="Identifier for the organization that is used to identify the organization across multiple disparate systems." )
     protected List<Identifier> identifier;
 
     /**
      * A name associated with the organization.
      */
-    @Child(name ="name", type={StringType.class}, order=1, min=0, max=1)
+    @Child(name = "name", type = {StringType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="Name used for the organization", formalDefinition="A name associated with the organization." )
     protected StringType name;
 
     /**
      * The kind of organization that this is.
      */
-    @Child(name ="type", type={CodeableConcept.class}, order=2, min=0, max=1)
+    @Child(name = "type", type = {CodeableConcept.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Kind of organization", formalDefinition="The kind of organization that this is." )
     protected CodeableConcept type;
 
     /**
      * A contact detail for the organization.
      */
-    @Child(name ="telecom", type={ContactPoint.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "telecom", type = {ContactPoint.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="A contact detail for the organization", formalDefinition="A contact detail for the organization." )
     protected List<ContactPoint> telecom;
 
     /**
      * An address for the organization.
      */
-    @Child(name ="address", type={Address.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "address", type = {Address.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="An address for the organization", formalDefinition="An address for the organization." )
     protected List<Address> address;
 
     /**
      * The organization of which this organization forms a part.
      */
-    @Child(name ="partOf", type={Organization.class}, order=5, min=0, max=1)
+    @Child(name = "partOf", type = {Organization.class}, order=5, min=0, max=1)
     @Description(shortDefinition="The organization of which this organization forms a part", formalDefinition="The organization of which this organization forms a part." )
     protected Reference partOf;
 
@@ -293,19 +297,22 @@ public class Organization extends DomainResource {
     /**
      * Contact for the organization for a certain purpose.
      */
-    @Child(name ="contact", type={}, order=6, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "contact", type = {}, order=6, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Contact for the organization for a certain purpose", formalDefinition="Contact for the organization for a certain purpose." )
     protected List<OrganizationContactComponent> contact;
 
     /**
      * Whether the organization's record is still in active use.
      */
-    @Child(name ="active", type={BooleanType.class}, order=7, min=0, max=1)
+    @Child(name = "active", type = {BooleanType.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Whether the organization's record is still in active use", formalDefinition="Whether the organization's record is still in active use." )
     protected BooleanType active;
 
     private static final long serialVersionUID = 1766834739L;
 
+  /*
+   * Constructor
+   */
     public Organization() {
       super();
     }
@@ -712,20 +719,30 @@ public class Organization extends DomainResource {
     return ResourceType.Organization;
    }
 
+  @SearchParamDefinition(name="address-state", path="Organization.address.state", description="A state specified in an address", type="string" )
+  public static final String SP_ADDRESSSTATE = "address-state";
+  @SearchParamDefinition(name="address-city", path="Organization.address.city", description="A city specified in an address", type="string" )
+  public static final String SP_ADDRESSCITY = "address-city";
   @SearchParamDefinition(name="phonetic", path="", description="A portion of the organization's name using some kind of phonetic matching algorithm", type="string" )
   public static final String SP_PHONETIC = "phonetic";
   @SearchParamDefinition(name="partof", path="Organization.partOf", description="Search all organizations that are part of the given organization", type="reference" )
   public static final String SP_PARTOF = "partof";
   @SearchParamDefinition(name="address", path="Organization.address", description="A (part of the) address of the Organization", type="string" )
   public static final String SP_ADDRESS = "address";
+  @SearchParamDefinition(name="address-use", path="Organization.address.use", description="A use code specified in an address", type="token" )
+  public static final String SP_ADDRESSUSE = "address-use";
   @SearchParamDefinition(name="name", path="Organization.name", description="A portion of the organization's name", type="string" )
   public static final String SP_NAME = "name";
+  @SearchParamDefinition(name="address-country", path="Organization.address.country", description="A country specified in an address", type="string" )
+  public static final String SP_ADDRESSCOUNTRY = "address-country";
   @SearchParamDefinition(name="active", path="Organization.active", description="Whether the organization's record is active", type="token" )
   public static final String SP_ACTIVE = "active";
   @SearchParamDefinition(name="type", path="Organization.type", description="A code for the type of organization", type="token" )
   public static final String SP_TYPE = "type";
   @SearchParamDefinition(name="identifier", path="Organization.identifier", description="Any identifier for the organization (not the accreditation issuer's identifier)", type="token" )
   public static final String SP_IDENTIFIER = "identifier";
+  @SearchParamDefinition(name="address-postalcode", path="Organization.address.postalCode", description="A postalCode specified in an address", type="string" )
+  public static final String SP_ADDRESSPOSTALCODE = "address-postalcode";
 
 }
 

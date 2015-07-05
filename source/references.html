@@ -50,7 +50,7 @@ resource as its cause, there is no automatic rule or implication that the proced
 has the same patient for its subject. Instead, the subject of the procedure must be established
 directly in the procedure itself. Another way to state this is that the context of the subject
 is not "inherited", nor does it "conduct" along the relationship to procedure.
-The only exception to this in the case of contained resources (see below). Note that in
+The only exception to this is the case of contained resources (see below). Note that in
 practice, the relationships do need to describe a logical and coherent record, and in the
 case of the Condition and Procedure described here, they would usually be required to have
 the same patient for their subjects.
@@ -62,7 +62,7 @@ The <i>reference</i> is the key element - resources are identified and addressed
 The actual reference looks like this:
 </p>
 
-[%dt Reference%]
+[%dt Reference 1%]
 
 <p>&nbsp;</p>
 
@@ -71,7 +71,7 @@ The actual reference looks like this:
  <li>The <i>reference</i> element contains a url that is either
    <ul>
      <li>an absolute URL</li>
-     <li>a relative URL, which is relative to the <a href="http.html#root">Service Base URL</a>, or, in a bundle, <a href="#atom-refs">the bundle context</a></li>
+     <li>a relative URL, which is relative to the <a href="http.html#root">Service Base URL</a>, or, in a bundle, <a href="#bundle-refs">the bundle context</a></li>
      <li>an internal fragment reference (see "Contained Resources" below)</li>
    </ul>
  </li>
@@ -235,7 +235,7 @@ However FHIR provides no mechanism for defining or constraining any conduction o
 from a containing resource into any contained resource - not even by declaring the use of a particular profile.
 Best practice is to explicitly include all known properties on contained resources, even if redundant with 
 properties on the containing resource.  E.g. If the containing resource and contained resource both have a 
-"subject" element, both elements should be present, even if they reference the same resouce.  Applications that 
+"subject" element, both elements should be present, even if they reference the same resource.  Applications that 
 choose to omit redundant elements on contained resources should not expect other applications to infer 
 (or correctly infer) the intended meaning in this case.  Applications cannot safely presume that omitted 
 elements in contained resources can safely be inferred to be the same as the containing resource.  
@@ -268,22 +268,26 @@ entry.id matches the reference URL exactly:
 <pre class="xml">
   .. bundle ..
   &lt;>base value="http://acme.com/fhir"/&gt;
-  &lt;item>
-    &lt;Organization xmlns="http://hl7.org/fhir">
-       &lt;id value="23"/&gt;
-       &lt;!-- Content for the resource --&gt;
-    &lt;/Organization>
-  &lt;item>
+  &lt;entry>
+    &lt;resource>
+      &lt;Organization xmlns="http://hl7.org/fhir">
+         &lt;id value="23"/&gt;
+         &lt;!-- Content for the resource --&gt;
+      &lt;/Organization>
+    &lt;/resource>
+  &lt;entry>
 
-  &lt;item>
-    &lt;Organization xmlns="http://hl7.org/fhir">
-      &lt;id value="ex"/&gt;
-      &lt;meta&gt;
-        &lt;versionId value="2"/&gt;
-      &lt;/meta&gt;
-      &lt;!-- Content for the resource --&gt;
-    &lt;/Organization>
-  &lt;item>
+  &lt;entry>
+    &lt;resource>
+      &lt;Organization xmlns="http://hl7.org/fhir">
+        &lt;id value="ex"/&gt;
+        &lt;meta&gt;
+          &lt;versionId value="2"/&gt;
+        &lt;/meta&gt;
+        &lt;!-- Content for the resource --&gt;
+      &lt;/Organization>
+    &lt;/resource>
+  &lt;entry>
     ... bundle ...
 </pre>
 </div>

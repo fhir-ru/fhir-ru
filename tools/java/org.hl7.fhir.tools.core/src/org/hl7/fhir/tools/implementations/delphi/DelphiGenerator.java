@@ -33,6 +33,7 @@ import java.io.FileOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -53,10 +54,12 @@ import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.tools.implementations.BaseGenerator;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
 import org.hl7.fhir.tools.publisher.FolderManager;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
+import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Logger.LogMessageType;
@@ -435,9 +438,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     StringBuilder setprops = new StringBuilder();
     impl.append("{ "+tn+" }\r\n\r\n");
 
-
+    boolean noSummaries = hasAnySummary(root);
+    
     for (ElementDefn e : root.getElements()) {
-      generateField(e, defPriv1, defPriv2, defPub, impl, create, destroy, assign, getkids, getkidsvars, getprops, getpropsvars, setprops, tn, "", category, true, tn.equals("TFhirExtension"));
+      generateField(e, defPriv1, defPriv2, defPub, impl, create, destroy, assign, getkids, getkidsvars, getprops, getpropsvars, setprops, tn, "", category, noSummaries, tn.equals("TFhirExtension"));
     }
 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
@@ -538,6 +542,15 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     getCode(category).classFwds.add("  "+tn+" = class;\r\n");
     generateParser(tn, category, !superClass.equals("TFHIRObject"), root.typeCode());
     defineList(tn, tn+"List", null, category, false);
+  }
+
+  private boolean hasAnySummary(ElementDefn elem) {
+    if (elem.isSummary())
+      return true;
+    for (ElementDefn child : elem.getElements())
+      if (hasAnySummary(child))
+        return true;
+    return false;
   }
 
   private void genTypeAbstract(ElementDefn root, String tn, String superClass, ClassCategory category) throws Exception {
@@ -976,8 +989,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
   private void generateEnum(ElementDefn e) throws Exception {
     String tn = typeNames.get(e);
-    BindingSpecification cd = getConceptDomain(e.getBindingName());
-    enumSizes.put(tn, cd.getCodes().size());
+    BindingSpecification cd = e.getBinding();
+    enumSizes.put(tn, cd.getAllCodes().size());
 
 
     String prefix = tn.substring(5);
@@ -992,11 +1005,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       con.append("  CODES_"+tn+" : Array["+tn+"] of String = (");
       constants.add(tn);
 
-      int l = cd.getCodes().size();
+      int l = cd.getAllCodes().size();
       int i = 0;
       def.append("    "+prefix+"Null,  {@enum.value "+prefix+"Null Value is missing from Instance }\r\n");
       con.append("'', ");
-      for (DefinedCode c : cd.getCodes()) {
+      for (DefinedCode c : cd.getAllCodes()) {
         i++;
         String cc = c.getCode();
         if (cc.equals("-"))
@@ -1291,23 +1304,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
             "end;\r\n\r\n"
         );
 
-    if (tn.substring(5).equals("Extension")) {
-      prsrdefJ.append("    procedure Parse"+tn.substring(5)+"(jsn : TJsonObject; ctxt : "+listForm("TFHIRObject")+"); overload; {b.}\r\n");
-      prsrImpl.append("procedure TFHIRJsonParser.Parse"+tn.substring(5)+"(jsn : TJsonObject; ctxt : "+listForm("TFHIRObject")+");\r\n");
-      prsrImpl.append("var\r\n");
-      prsrImpl.append("  ex : "+tn+";\r\n");
-      prsrImpl.append("begin\r\n");
-      prsrImpl.append("  ex := Parse"+tn.substring(5)+"(jsn);\r\n");
-      prsrImpl.append("  ex.url := ctxt.tags['url']; {2}\r\n");
-      prsrImpl.append("  ctxt.add(ex);\r\n");
-      prsrImpl.append("end;\r\n\r\n");
-    } else {
-      prsrdefJ.append("    procedure Parse"+tn.substring(5)+"(jsn : TJsonObject; ctxt : "+listForm("TFHIRObject")+"); overload; {b.}\r\n");
-      prsrImpl.append("procedure TFHIRJsonParser.Parse"+tn.substring(5)+"(jsn : TJsonObject; ctxt : "+listForm("TFHIRObject")+");\r\n");
-      prsrImpl.append("begin\r\n");
-      prsrImpl.append("  ctxt.add(Parse"+tn.substring(5)+"(jsn)); {2}\r\n");
-      prsrImpl.append("end;\r\n\r\n");
-    }
+    prsrdefJ.append("    procedure Parse"+tn.substring(5)+"(jsn : TJsonObject; ctxt : "+listForm("TFHIRObject")+"); overload; {b.}\r\n");
+    prsrImpl.append("procedure TFHIRJsonParser.Parse"+tn.substring(5)+"(jsn : TJsonObject; ctxt : "+listForm("TFHIRObject")+");\r\n");
+    prsrImpl.append("begin\r\n");
+    prsrImpl.append("  ctxt.add(Parse"+tn.substring(5)+"(jsn)); {2}\r\n");
+    prsrImpl.append("end;\r\n\r\n");
 
     s = workingParserJ.toString();
     prsrImpl.append(
@@ -1378,8 +1379,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     
     String tn = null;
     if (e.typeCode().equals("code") && e.hasBinding()) {
-      BindingSpecification cd = getConceptDomain(e.getBindingName());
-      if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
+      BindingSpecification cd = e.getBinding();
+      if (cd != null && cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
         tn = "TFhir"+enumName(getTitle(getCodeList(cd.getReference()).substring(1)));
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
@@ -1446,14 +1447,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     return b.toString();
   }
 
-  private BindingSpecification getConceptDomain(String conceptDomain) {
-    for (BindingSpecification cd : definitions.getBindings().values())
-      if (cd.getName().equals(conceptDomain))
-        return cd;
-    return null;
-  }
-
   private void generateField(ElementDefn e, StringBuilder defPriv1, StringBuilder defPriv2, StringBuilder defPub, StringBuilder impl, StringBuilder create, StringBuilder destroy, StringBuilder assign, StringBuilder getkids, StringBuilder getkidsvars, StringBuilder getprops, StringBuilder getpropsvars, StringBuilder setprops, String cn, String pt, ClassCategory category, boolean noSummaries, boolean isExtension) throws Exception {
+    
     String tn;
     if (e.getTypes().size() > 0 && e.getTypes().get(0).isUnboundGenericParam())
       tn = pt;
@@ -3150,6 +3145,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
 
   private String makeDocoSafe(String string) {
+    if (string == null)
+      return "";
     string = Utilities.normaliseEolns(string);
     while (string.contains("]{") && string.contains("}") && string.indexOf("]{") < string.indexOf("}")) {
       string = string.substring(0, string.indexOf("]{")+1)+string.substring(string.indexOf("}")+1);
@@ -3174,7 +3171,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     prsrCode.uses.add("FHIRTypes");
     prsrCode.uses.add("MsXmlParser");
     prsrCode.uses.add("XmlBuilder");
-    prsrCode.uses.add("JSON");
+    prsrCode.uses.add("AdvJSON");
     prsrCode.uses.add("AdvStringMatches");
     prsrCode.comments.add("FHIR v"+version+" generated "+Config.DATE_FORMAT().format(genDate));
 
@@ -3331,7 +3328,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   }
 
   @Override
-  public boolean compile(String rootDir, List<String> errors, Logger logger) throws Exception {
+  public boolean compile(String rootDir, List<String> errors, Logger logger, List<ValidationMessage> issues) throws Exception {
     dcc = System.getenv("ProgramFiles(X86)")+"\\Embarcadero\\RAD Studio\\12.0\\bin\\dcc64.exe";
     exe = rootDir+"implementations\\pascal\\fhirtest.exe";
     logger.log("Compiling Pascal implementation using "+dcc, LogMessageType.Process);
@@ -3367,12 +3364,12 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   }
 
   @Override
-  public void loadAndSave(String rootDir, String sourceFile, String destFile) throws Exception {
+  public void loadAndSave(FolderManager folders, String sourceFile, String destFile) throws Exception {
 
     if (exe == null)
-      exe = Utilities.path(Utilities.getDirectoryForFile(Utilities.getDirectoryForFile(rootDir)), "implementations", "pascal", "fhirtest.exe");
+      exe = Utilities.path(Utilities.getDirectoryForFile(Utilities.getDirectoryForFile(folders.rootDir)), "implementations", "pascal", "fhirtest.exe");
     if (!(new File(exe).exists()))
-      throw new Exception("Delphi tool helper executeable not found "+exe);
+      throw new Exception("Delphi tool helper executable not found "+exe);
     List<String> command = new ArrayList<String>();
     command.add(exe);
     command.add(sourceFile);
@@ -3388,11 +3385,47 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       throw new Exception(TextFile.fileToString(destFile+".err"));
     if (!(new File(destFile).exists()))
       throw new Exception("Neither output nor error file created");
-
   }
 
   @Override
-  public String checkFragments(String rootDir, String fragments) throws Exception {
+  public void test(FolderManager folders, Collection<String> names) throws Exception {
+    if (exe == null)
+      exe = Utilities.path(Utilities.getDirectoryForFile(Utilities.getDirectoryForFile(folders.rootDir)), "implementations", "pascal", "fhirtest.exe");
+    if (!(new File(exe).exists()))
+      throw new Exception("Delphi tool helper executable not found "+exe);
+
+    StringBuilder b = new StringBuilder();
+    b.append(folders.dstDir);
+    b.append("\r\n");
+    b.append(folders.tmpDir);
+    b.append("\r\n");
+    for (String n : names) {
+      b.append(n);
+      b.append("\r\n");
+    }
+    String ctrl = folders.tmpDir+"ctrl-pascal.ini";
+    TextFile.stringToFileNoPrefix(b.toString(), ctrl);
+    String err = folders.tmpDir+"ctrl-pascal.out";
+    File file = new CSFile(err);
+    if (file.exists())
+      file.delete();
+    List<String> command = new ArrayList<String>();
+    command.add(exe);
+    command.add("-tests");
+    command.add(ctrl);
+    command.add(err);
+
+    ProcessBuilder builder = new ProcessBuilder(command);
+    builder.directory(new File(Utilities.getDirectoryForFile(exe)));
+    final Process process = builder.start();
+    process.waitFor();
+    String result = TextFile.fileToString(err);
+    if (!"ok".equals(result))
+      throw new Exception(result);
+  }
+
+  @Override
+  public String checkFragments(FolderManager folders, String fragments) throws Exception {
     return "Not supported by pascal implementation";
   }
 

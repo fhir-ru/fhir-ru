@@ -29,158 +29,66 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * Significant health events and conditions for a person related to the patient relevant in the context of care for the patient.
  */
 @ResourceDef(name="FamilyMemberHistory", profile="http://hl7.org/fhir/Profile/FamilyMemberHistory")
 public class FamilyMemberHistory extends DomainResource {
 
-    public enum AdministrativeGender {
-        /**
-         * Male
-         */
-        MALE, 
-        /**
-         * Female
-         */
-        FEMALE, 
-        /**
-         * Other
-         */
-        OTHER, 
-        /**
-         * Unknown
-         */
-        UNKNOWN, 
-        /**
-         * added to help the parsers
-         */
-        NULL;
-        public static AdministrativeGender fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("male".equals(codeString))
-          return MALE;
-        if ("female".equals(codeString))
-          return FEMALE;
-        if ("other".equals(codeString))
-          return OTHER;
-        if ("unknown".equals(codeString))
-          return UNKNOWN;
-        throw new Exception("Unknown AdministrativeGender code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case MALE: return "male";
-            case FEMALE: return "female";
-            case OTHER: return "other";
-            case UNKNOWN: return "unknown";
-            default: return "?";
-          }
-        }
-        public String getSystem() {
-          switch (this) {
-            case MALE: return "";
-            case FEMALE: return "";
-            case OTHER: return "";
-            case UNKNOWN: return "";
-            default: return "?";
-          }
-        }
-        public String getDefinition() {
-          switch (this) {
-            case MALE: return "Male";
-            case FEMALE: return "Female";
-            case OTHER: return "Other";
-            case UNKNOWN: return "Unknown";
-            default: return "?";
-          }
-        }
-        public String getDisplay() {
-          switch (this) {
-            case MALE: return "Male";
-            case FEMALE: return "Female";
-            case OTHER: return "Other";
-            case UNKNOWN: return "Unknown";
-            default: return "?";
-          }
-        }
-    }
-
-  public static class AdministrativeGenderEnumFactory implements EnumFactory<AdministrativeGender> {
-    public AdministrativeGender fromCode(String codeString) throws IllegalArgumentException {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("male".equals(codeString))
-          return AdministrativeGender.MALE;
-        if ("female".equals(codeString))
-          return AdministrativeGender.FEMALE;
-        if ("other".equals(codeString))
-          return AdministrativeGender.OTHER;
-        if ("unknown".equals(codeString))
-          return AdministrativeGender.UNKNOWN;
-        throw new IllegalArgumentException("Unknown AdministrativeGender code '"+codeString+"'");
-        }
-    public String toCode(AdministrativeGender code) {
-      if (code == AdministrativeGender.MALE)
-        return "male";
-      if (code == AdministrativeGender.FEMALE)
-        return "female";
-      if (code == AdministrativeGender.OTHER)
-        return "other";
-      if (code == AdministrativeGender.UNKNOWN)
-        return "unknown";
-      return "?";
-      }
-    }
-
     @Block()
-    public static class FamilyMemberHistoryConditionComponent extends BackboneElement {
+    public static class FamilyMemberHistoryConditionComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system.
          */
-        @Child(name ="type", type={CodeableConcept.class}, order=1, min=1, max=1)
+        @Child(name = "type", type = {CodeableConcept.class}, order=1, min=1, max=1)
         @Description(shortDefinition="Condition suffered by relation", formalDefinition="The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system." )
         protected CodeableConcept type;
 
         /**
          * Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation.
          */
-        @Child(name ="outcome", type={CodeableConcept.class}, order=2, min=0, max=1)
+        @Child(name = "outcome", type = {CodeableConcept.class}, order=2, min=0, max=1)
         @Description(shortDefinition="deceased | permanent disability | etc.", formalDefinition="Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation." )
         protected CodeableConcept outcome;
 
         /**
          * Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.
          */
-        @Child(name ="onset", type={Age.class, Range.class, StringType.class}, order=3, min=0, max=1)
+        @Child(name = "onset", type = {Age.class, Range.class, StringType.class}, order=3, min=0, max=1)
         @Description(shortDefinition="When condition first manifested", formalDefinition="Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence." )
         protected Type onset;
 
         /**
          * An area where general notes can be placed about this specific condition.
          */
-        @Child(name ="note", type={StringType.class}, order=4, min=0, max=1)
+        @Child(name = "note", type = {StringType.class}, order=4, min=0, max=1)
         @Description(shortDefinition="Extra information about condition", formalDefinition="An area where general notes can be placed about this specific condition." )
         protected StringType note;
 
         private static final long serialVersionUID = -1664709272L;
 
+    /*
+     * Constructor
+     */
       public FamilyMemberHistoryConditionComponent() {
         super();
       }
 
+    /*
+     * Constructor
+     */
       public FamilyMemberHistoryConditionComponent(CodeableConcept type) {
         super();
         this.type = type;
@@ -250,6 +158,10 @@ public class FamilyMemberHistory extends DomainResource {
           return (Age) this.onset;
         }
 
+        public boolean hasOnsetAge() throws Exception { 
+          return this.onset instanceof Age;
+        }
+
         /**
          * @return {@link #onset} (Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.)
          */
@@ -259,6 +171,10 @@ public class FamilyMemberHistory extends DomainResource {
           return (Range) this.onset;
         }
 
+        public boolean hasOnsetRange() throws Exception { 
+          return this.onset instanceof Range;
+        }
+
         /**
          * @return {@link #onset} (Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.)
          */
@@ -266,6 +182,10 @@ public class FamilyMemberHistory extends DomainResource {
           if (!(this.onset instanceof StringType))
             throw new Exception("Type mismatch: the type StringType was expected, but "+this.onset.getClass().getName()+" was encountered");
           return (StringType) this.onset;
+        }
+
+        public boolean hasOnsetStringType() throws Exception { 
+          return this.onset instanceof StringType;
         }
 
         public boolean hasOnset() { 
@@ -378,14 +298,14 @@ public class FamilyMemberHistory extends DomainResource {
     /**
      * This records identifiers associated with this family member history record that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
      */
-    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="External Id(s) for this record", formalDefinition="This records identifiers associated with this family member history record that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)." )
     protected List<Identifier> identifier;
 
     /**
      * The person who this history concerns.
      */
-    @Child(name ="patient", type={Patient.class}, order=1, min=1, max=1)
+    @Child(name = "patient", type = {Patient.class}, order=1, min=1, max=1)
     @Description(shortDefinition="Patient history is about", formalDefinition="The person who this history concerns." )
     protected Reference patient;
 
@@ -397,72 +317,78 @@ public class FamilyMemberHistory extends DomainResource {
     /**
      * The date (and possibly time) when the family member history was taken.
      */
-    @Child(name ="date", type={DateTimeType.class}, order=2, min=0, max=1)
+    @Child(name = "date", type = {DateTimeType.class}, order=2, min=0, max=1)
     @Description(shortDefinition="When history was captured/updated", formalDefinition="The date (and possibly time) when the family member history was taken." )
     protected DateTimeType date;
 
     /**
      * This will either be a name or a description.  E.g. "Aunt Susan", "my cousin with the red hair".
      */
-    @Child(name ="name", type={StringType.class}, order=3, min=0, max=1)
+    @Child(name = "name", type = {StringType.class}, order=3, min=0, max=1)
     @Description(shortDefinition="The family member described", formalDefinition="This will either be a name or a description.  E.g. 'Aunt Susan', 'my cousin with the red hair'." )
     protected StringType name;
 
     /**
      * The type of relationship this person has to the patient (father, mother, brother etc.).
      */
-    @Child(name ="relationship", type={CodeableConcept.class}, order=4, min=1, max=1)
+    @Child(name = "relationship", type = {CodeableConcept.class}, order=4, min=1, max=1)
     @Description(shortDefinition="Relationship to the subject", formalDefinition="The type of relationship this person has to the patient (father, mother, brother etc.)." )
     protected CodeableConcept relationship;
 
     /**
      * Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes.
      */
-    @Child(name ="gender", type={CodeType.class}, order=5, min=0, max=1)
+    @Child(name = "gender", type = {CodeType.class}, order=5, min=0, max=1)
     @Description(shortDefinition="male | female | other | unknown", formalDefinition="Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes." )
     protected Enumeration<AdministrativeGender> gender;
 
     /**
      * The actual or approximate date of birth of the relative.
      */
-    @Child(name ="born", type={Period.class, DateType.class, StringType.class}, order=6, min=0, max=1)
+    @Child(name = "born", type = {Period.class, DateType.class, StringType.class}, order=6, min=0, max=1)
     @Description(shortDefinition="(approximate) date of birth", formalDefinition="The actual or approximate date of birth of the relative." )
     protected Type born;
 
     /**
      * The actual or approximate age of the relative at the time the family member history is recorded.
      */
-    @Child(name ="age", type={Age.class, Range.class, StringType.class}, order=7, min=0, max=1)
+    @Child(name = "age", type = {Age.class, Range.class, StringType.class}, order=7, min=0, max=1)
     @Description(shortDefinition="(approximate) age", formalDefinition="The actual or approximate age of the relative at the time the family member history is recorded." )
     protected Type age;
 
     /**
      * The actual or approximate age of the relative at the time the family member history is recorded.
      */
-    @Child(name ="deceased", type={BooleanType.class, Age.class, Range.class, DateType.class, StringType.class}, order=8, min=0, max=1)
+    @Child(name = "deceased", type = {BooleanType.class, Age.class, Range.class, DateType.class, StringType.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Dead? How old/when?", formalDefinition="The actual or approximate age of the relative at the time the family member history is recorded." )
     protected Type deceased;
 
     /**
      * This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.
      */
-    @Child(name ="note", type={StringType.class}, order=9, min=0, max=1)
+    @Child(name = "note", type = {StringType.class}, order=9, min=0, max=1)
     @Description(shortDefinition="General note about related person", formalDefinition="This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible." )
     protected StringType note;
 
     /**
      * The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.
      */
-    @Child(name ="condition", type={}, order=10, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "condition", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Condition that the related person had", formalDefinition="The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition." )
     protected List<FamilyMemberHistoryConditionComponent> condition;
 
     private static final long serialVersionUID = 1785160836L;
 
+  /*
+   * Constructor
+   */
     public FamilyMemberHistory() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public FamilyMemberHistory(Reference patient, CodeableConcept relationship) {
       super();
       this.patient = patient;
@@ -740,6 +666,10 @@ public class FamilyMemberHistory extends DomainResource {
       return (Period) this.born;
     }
 
+    public boolean hasBornPeriod() throws Exception { 
+      return this.born instanceof Period;
+    }
+
     /**
      * @return {@link #born} (The actual or approximate date of birth of the relative.)
      */
@@ -749,6 +679,10 @@ public class FamilyMemberHistory extends DomainResource {
       return (DateType) this.born;
     }
 
+    public boolean hasBornDateType() throws Exception { 
+      return this.born instanceof DateType;
+    }
+
     /**
      * @return {@link #born} (The actual or approximate date of birth of the relative.)
      */
@@ -756,6 +690,10 @@ public class FamilyMemberHistory extends DomainResource {
       if (!(this.born instanceof StringType))
         throw new Exception("Type mismatch: the type StringType was expected, but "+this.born.getClass().getName()+" was encountered");
       return (StringType) this.born;
+    }
+
+    public boolean hasBornStringType() throws Exception { 
+      return this.born instanceof StringType;
     }
 
     public boolean hasBorn() { 
@@ -786,6 +724,10 @@ public class FamilyMemberHistory extends DomainResource {
       return (Age) this.age;
     }
 
+    public boolean hasAgeAge() throws Exception { 
+      return this.age instanceof Age;
+    }
+
     /**
      * @return {@link #age} (The actual or approximate age of the relative at the time the family member history is recorded.)
      */
@@ -795,6 +737,10 @@ public class FamilyMemberHistory extends DomainResource {
       return (Range) this.age;
     }
 
+    public boolean hasAgeRange() throws Exception { 
+      return this.age instanceof Range;
+    }
+
     /**
      * @return {@link #age} (The actual or approximate age of the relative at the time the family member history is recorded.)
      */
@@ -802,6 +748,10 @@ public class FamilyMemberHistory extends DomainResource {
       if (!(this.age instanceof StringType))
         throw new Exception("Type mismatch: the type StringType was expected, but "+this.age.getClass().getName()+" was encountered");
       return (StringType) this.age;
+    }
+
+    public boolean hasAgeStringType() throws Exception { 
+      return this.age instanceof StringType;
     }
 
     public boolean hasAge() { 
@@ -832,6 +782,10 @@ public class FamilyMemberHistory extends DomainResource {
       return (BooleanType) this.deceased;
     }
 
+    public boolean hasDeceasedBooleanType() throws Exception { 
+      return this.deceased instanceof BooleanType;
+    }
+
     /**
      * @return {@link #deceased} (The actual or approximate age of the relative at the time the family member history is recorded.)
      */
@@ -839,6 +793,10 @@ public class FamilyMemberHistory extends DomainResource {
       if (!(this.deceased instanceof Age))
         throw new Exception("Type mismatch: the type Age was expected, but "+this.deceased.getClass().getName()+" was encountered");
       return (Age) this.deceased;
+    }
+
+    public boolean hasDeceasedAge() throws Exception { 
+      return this.deceased instanceof Age;
     }
 
     /**
@@ -850,6 +808,10 @@ public class FamilyMemberHistory extends DomainResource {
       return (Range) this.deceased;
     }
 
+    public boolean hasDeceasedRange() throws Exception { 
+      return this.deceased instanceof Range;
+    }
+
     /**
      * @return {@link #deceased} (The actual or approximate age of the relative at the time the family member history is recorded.)
      */
@@ -859,6 +821,10 @@ public class FamilyMemberHistory extends DomainResource {
       return (DateType) this.deceased;
     }
 
+    public boolean hasDeceasedDateType() throws Exception { 
+      return this.deceased instanceof DateType;
+    }
+
     /**
      * @return {@link #deceased} (The actual or approximate age of the relative at the time the family member history is recorded.)
      */
@@ -866,6 +832,10 @@ public class FamilyMemberHistory extends DomainResource {
       if (!(this.deceased instanceof StringType))
         throw new Exception("Type mismatch: the type StringType was expected, but "+this.deceased.getClass().getName()+" was encountered");
       return (StringType) this.deceased;
+    }
+
+    public boolean hasDeceasedStringType() throws Exception { 
+      return this.deceased instanceof StringType;
     }
 
     public boolean hasDeceased() { 

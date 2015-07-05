@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Eric Haas</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2015-03-23T04:27:24Z</LastSaved>
+  <LastSaved>2015-05-29T04:42:23Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,8 +20,6 @@
   <WindowWidth>18735</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>7</ActiveSheet>
-  <FirstVisibleSheet>1</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -803,7 +801,7 @@
   <NamedRange ss:Name="Invariantids" ss:RefersTo="=Invariants!R2C1:R50C1"/>
  </Names>
  <Worksheet ss:Name="Instructions">
-  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="411"/>
    <Row ss:AutoFitHeight="0">
@@ -816,6 +814,10 @@
     <Cell ss:StyleID="s67" ss:HRef="http://wiki.hl7.org/?title=FHIR_Spreadsheet_Authoring"><Data
       ss:Type="String">http://wiki.hl7.org?title=FHIR_Spreadsheet_Authoring</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">fmm</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -824,10 +826,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1010,7 +1014,7 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="24">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">DiagnosticReport.name</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">DiagnosticReport.code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">1..1</Data><NamedCell
@@ -1021,7 +1025,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Y</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">DiagnosticReportNames</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">DiagnosticReportCodes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">what</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1046,7 +1050,8 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s92"><Data ss:Type="String">#5961</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="24">
     <Cell ss:StyleID="s86"><Data ss:Type="String">DiagnosticReport.status</Data><NamedCell
@@ -1100,7 +1105,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">1..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">dateTime</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">instant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">y</Data><NamedCell
@@ -1112,9 +1117,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Date this version was released</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">DateTime this version was released</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date and/or time that this version of the report was released from the source diagnostic service</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The date and time that this version of the report was released from the source diagnostic service</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Clinicians need to be able to check the date that the report was released</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1132,7 +1137,8 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s92"><Data ss:Type="String">#7500</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="24">
     <Cell ss:StyleID="s86"><Data ss:Type="String">DiagnosticReport.subject</Data><NamedCell
@@ -1374,7 +1380,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="24">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">DiagnosticReport.diagnostic[x]</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">DiagnosticReport.effective[x]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Observation time, Effective Time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1393,9 +1399,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Physiologically Relevant time/time-period for report</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Clinically Relevant time/time-period for report</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The time or time-period the observed values are related to. This is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know where in the patient history to file/present this report</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1546,7 +1552,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Nested Report Group</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A subgroup in a report group. Subgroups can be grouped in arbitrary ways. The group.name defines the purpose and interpretation of the grouping</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A subgroup in a report group. Subgroups can be grouped in arbitrary ways. The group.code defines the purpose and interpretation of the grouping</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Nested report groups beyond the first level are not used often, but arise in structured pathology reports, and where there are more than one sensitivity assessment per discovered organism</Data><NamedCell
@@ -1607,7 +1613,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..*</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reference(ImagingStudy)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Reference(ImagingStudy|ImagingObjectSelection)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1622,7 +1628,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">ImagingStudy and image are somewhat overlapping - typically, an image in the image list will also be found in the imaging study resource. However the imaging study and image lists cater to different types of displays for different types of purposes. Neither, either, or both may be provided.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">dImagingStudy and ImageObjectStudy and the image element are somewhat overlapping - typically, the list of image references in the image element will also be found in one of the imaging study resources. However each caters to different types of displays for different types of purposes. Neither, either, or both may be provided.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">outboundRelationship[typeCode=COMP].target[classsCode=DGIMG, moodCode=EVN]</Data><NamedCell
@@ -1634,7 +1640,8 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s92"><Data ss:Type="Number">6246</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="24">
     <Cell ss:StyleID="s86"><Data ss:Type="String">DiagnosticReport.image</Data><NamedCell
@@ -4032,9 +4039,9 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>7</TopRowBottomPane>
+   <TopRowBottomPane>16</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>9</LeftColumnRightPane>
+   <LeftColumnRightPane>2</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -4050,8 +4057,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>17</ActiveRow>
-     <ActiveCol>17</ActiveCol>
+     <ActiveRow>23</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -4872,7 +4879,7 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">DiagnosticReport.diagnostic[x]</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">DiagnosticReport.effective[x]</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">The clinically relevant time of the report</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4883,11 +4890,11 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">The specimen details</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell ss:StyleID="s117"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">DiagnosticReport.name</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The name of the report (e.g. the code for the report as a whole, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">DiagnosticReport.code</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">The code for the report as a whole, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">result</Data></Cell>
@@ -5063,7 +5070,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>15</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -6204,7 +6211,7 @@
   <Names>
    <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Profiles!R1C1:R2C4"/>
   </Names>
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="40" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="37" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s112" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s112" ss:AutoFitWidth="0" ss:Width="231.75"/>
@@ -6240,33 +6247,12 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">core</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell ss:StyleID="s117"><Data ss:Type="String">US Laboratory Diagnostic Report Profile</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">dr-uslab-profile.xml</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">dr-uslab-profile-spreadsheet.xml</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">spreadsheet</Data></Cell>
-    <Cell><Data ss:Type="String">uslab</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s117"><Data ss:Type="String">DAF Diagnostic Report Profile</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">diagnosticreport-daf-profile.xml</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">diagnosticreport-daf-profile-spreadsheet.xml</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">spreadsheet</Data></Cell>
-    <Cell><Data ss:Type="String">daf</Data></Cell>
-   </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">diagnosticreport-extensions</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">diagnosticreport-extensions.xml</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">diagnosticreport-extensions-spreadsheet.xml</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">spreadsheet</Data></Cell>
     <Cell><Data ss:Type="String">core</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s117"><Data ss:Type="String">diagnosticreport-qicore</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">diagnosticreport-qicore.xml</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">diagnosticreport-qicore-profile-spreadsheet.xml</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">spreadsheet</Data></Cell>
-    <Cell><Data ss:Type="String">cqf</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -6494,7 +6480,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>21</ActiveRow>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -6502,7 +6488,7 @@
    <x:PageLayoutZoom>150</x:PageLayoutZoom>
   </WorksheetOptions>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C4:R39C4</Range>
+   <Range>R2C4:R36C4</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;spreadsheet,profile&quot;</Value>
@@ -6510,38 +6496,31 @@
   <AutoFilter x:Range="R1C1:R2C4" xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R6C1:R39C4</Range>
+   <Range>R6C1:R36C4</Range>
    <Condition>
     <Value1>AND(R[-2]C1=&quot;&quot;,R[-2]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R7C1:R39C1</Range>
+   <Range>R7C1:R36C1</Range>
    <Condition>
     <Value1>AND(R[-2]C&lt;&gt;&quot;&quot;,R[-3]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R6C2:R39C2,R6C4:R39C4</Range>
+   <Range>R6C2:R36C2,R6C4:R36C4</Range>
    <Condition>
     <Value1>AND(R[-2]C1&lt;&gt;&quot;&quot;,R[-2]C[16382]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R6C1:R39C4</Range>
+   <Range>R6C1:R36C4</Range>
    <Condition>
     <Value1>LEFT(R[-2]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R3C4</Range>
-   <Condition>
-    <Value1>AND(R[1048573]C1=&quot;&quot;,R[1048573]C&lt;&gt;&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
@@ -6552,23 +6531,51 @@
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R5C1:R5C4</Range>
+   <Range>R3C1:R3C4</Range>
    <Condition>
     <Value1>AND(#REF!=&quot;&quot;,#REF!&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R3C1</Range>
+   <Range>R3C1</Range>
    <Condition>
-    <Value1>AND(R[1048573]C&lt;&gt;&quot;&quot;,R[1048572]C=&quot;&quot;)</Value1>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R4C1</Range>
+   <Range>R4C2,R4C4</Range>
    <Condition>
-    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,R[-2]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,R[-1]C[16382]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R3C2,R3C4</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R4C1:R4C4</Range>
+   <Condition>
+    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R3C1:R3C4</Range>
+   <Condition>
+    <Value1>LEFT(#REF!,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R5C1:R5C4</Range>
+   <Condition>
+    <Value1>AND(#REF!=&quot;&quot;,#REF!&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -6587,38 +6594,10 @@
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C2:R3C2,R2C4:R3C4</Range>
-   <Condition>
-    <Value1>AND(R[1048573]C1&lt;&gt;&quot;&quot;,R[1048573]C[16382]=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R4C2,R4C4</Range>
-   <Condition>
-    <Value1>AND(R[-1]C1&lt;&gt;&quot;&quot;,R[-1]C[16382]=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R5C2,R5C4</Range>
    <Condition>
     <Value1>AND(#REF!&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R3C4</Range>
-   <Condition>
-    <Value1>LEFT(R[1048573]C1,1)=&quot;!&quot;</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R4C1:R4C4</Range>
-   <Condition>
-    <Value1>LEFT(R[-1]C1,1)=&quot;!&quot;</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
@@ -6628,13 +6607,48 @@
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R2C4</Range>
+   <Condition>
+    <Value1>AND(R[1048570]C1=&quot;&quot;,R[1048570]C&lt;&gt;&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1</Range>
+   <Condition>
+    <Value1>AND(R[1048570]C&lt;&gt;&quot;&quot;,R[1048569]C=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C2,R2C4</Range>
+   <Condition>
+    <Value1>AND(R[1048570]C1&lt;&gt;&quot;&quot;,R[1048570]C[16382]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R2C4</Range>
+   <Condition>
+    <Value1>LEFT(R[1048570]C1,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R4C1</Range>
+   <Condition>
+    <Value1>AND(R[-1]C&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
  </Worksheet>
  <Worksheet ss:Name="Examples">
   <Names>
    <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Examples!R1C1:R2C7"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="41" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="39" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s137" ss:DefaultColumnWidth="260.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s137" ss:Width="89.25"/>
@@ -6758,24 +6772,6 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">diagnosticreport-example-lipids.xml</Data></Cell>
     <Cell ss:StyleID="s131"><Data ss:Type="String">Example Lipid Profile</Data></Cell>
     <Cell ss:StyleID="s142"><Data ss:Type="String">n</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s141"><Data ss:Type="String">USLab DiagnosticReport Example1 </Data></Cell>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">USLabReport DiagnosticReport Profile Canonical Example: Childhood Blood Lead Report</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">uslab-example1</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">dr-uslab-example1.xml</Data></Cell>
-    <Cell ss:StyleID="s131"/>
-    <Cell ss:StyleID="s142"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s141"><Data ss:Type="String">QICore DiagnosticReport</Data></Cell>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Example of QICore DiagnosticReport</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">qicore</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">diagnosticreport-qicore-example.xml</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">diagnosticreport-qicore</Data></Cell>
-    <Cell ss:StyleID="s142"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s141"/>
@@ -7038,7 +7034,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -7058,8 +7053,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7067,62 +7062,169 @@
    <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C7:R40C7</Range>
-   <Type>List</Type>
-   <CellRangeList/>
-   <Value>&quot;Y&quot;</Value>
-  </DataValidation>
-  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C2:R40C2</Range>
-   <Type>List</Type>
-   <CellRangeList/>
-   <Value>&quot;xml,csv,tool&quot;</Value>
-  </DataValidation>
-  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C6:R11C6,R13C6:R40C6</Range>
+   <Range>R11C6:R38C6,R2C6:R10C6</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;Profiles!A2:A40&quot;</Value>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R12C6</Range>
+   <Range>R2C7:R38C7</Range>
    <Type>List</Type>
-   <Value>Profiles!R2C1:R19C1</Value>
+   <CellRangeList/>
+   <Value>&quot;Y&quot;</Value>
+  </DataValidation>
+  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C2:R38C2</Range>
+   <Type>List</Type>
+   <CellRangeList/>
+   <Value>&quot;xml,csv,tool&quot;</Value>
   </DataValidation>
   <AutoFilter x:Range="R1C1:R2C7" xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R40C7</Range>
+   <Range>R13C1:R38C7</Range>
    <Condition>
-    <Value1>AND(R[1048574]C1=&quot;&quot;,R[1048574]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[-2]C1=&quot;&quot;,R[-2]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R40C1</Range>
+   <Range>R14C1:R38C1</Range>
    <Condition>
-    <Value1>AND(R[1048574]C&lt;&gt;&quot;&quot;,R[1048573]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[-2]C&lt;&gt;&quot;&quot;,R[-3]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C3:R40C3,R2C5:R40C5</Range>
+   <Range>R13C3:R38C3,R13C5:R38C5</Range>
    <Condition>
-    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,R[1048574]C[16380]=&quot;&quot;)</Value1>
+    <Value1>AND(R[-2]C1&lt;&gt;&quot;&quot;,R[-2]C[16380]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R40C7</Range>
+   <Range>R13C1:R38C7</Range>
    <Condition>
-    <Value1>LEFT(R[1048574]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[-2]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C4:R40C4</Range>
+   <Range>R13C4:R38C4</Range>
    <Condition>
-    <Value1>AND(R[1048574]C1&lt;&gt;&quot;&quot;,OR(R[1048574]C2=&quot;&quot;,R[1048574]C2=&quot;xml&quot;),R[1048574]C[16378]=&quot;&quot;)</Value1>
+    <Value1>AND(R[-2]C1&lt;&gt;&quot;&quot;,OR(R[-2]C2=&quot;&quot;,R[-2]C2=&quot;xml&quot;),R[-2]C[16378]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R10C7</Range>
+   <Condition>
+    <Value1>AND(R[1048573]C1=&quot;&quot;,R[1048573]C&lt;&gt;&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R10C1</Range>
+   <Condition>
+    <Value1>AND(R[1048573]C&lt;&gt;&quot;&quot;,R[1048572]C=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R10C7</Range>
+   <Condition>
+    <Value1>LEFT(R[1048573]C1,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C1:R11C7</Range>
+   <Condition>
+    <Value1>AND(#REF!=&quot;&quot;,#REF!&lt;&gt;&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R12C1:R12C7</Range>
+   <Condition>
+    <Value1>AND(#REF!=&quot;&quot;,#REF!&lt;&gt;&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C1</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,R[-1]C=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R13C1</Range>
+   <Condition>
+    <Value1>AND(R[-2]C&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R12C1</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C3:R10C3,R2C5:R10C5</Range>
+   <Condition>
+    <Value1>AND(R[1048573]C1&lt;&gt;&quot;&quot;,R[1048573]C[16380]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C3,R11C5</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R12C3,R12C5</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C1:R11C7</Range>
+   <Condition>
+    <Value1>LEFT(#REF!,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R12C1:R12C7</Range>
+   <Condition>
+    <Value1>LEFT(#REF!,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C4:R10C4</Range>
+   <Condition>
+    <Value1>AND(R[1048573]C1&lt;&gt;&quot;&quot;,OR(R[1048573]C2=&quot;&quot;,R[1048573]C2=&quot;xml&quot;),R[1048573]C[16378]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C4</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,OR(#REF!=&quot;&quot;,#REF!=&quot;xml&quot;),#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R12C4</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,OR(#REF!=&quot;&quot;,#REF!=&quot;xml&quot;),#REF!=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -7160,7 +7262,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">How is the set of codes defined?</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Example</Data><Comment
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Conformance</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Y = example, blank = incomplete.  Only relevant if binding is &quot;value set&quot;</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -7205,7 +7307,7 @@
     <Cell ss:StyleID="s146"><Data ss:Type="String">AdjunctDiagnosis</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Diagnoses codes provided as adjuncts to the report</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">valueset-clinical-findings</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">SNOMED CT Clinical Findings</Data></Cell>
     <Cell ss:StyleID="s115"/>
@@ -7217,11 +7319,11 @@
     <Cell ss:StyleID="s116"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s147"><Data ss:Type="String">DiagnosticReportNames</Data></Cell>
+    <Cell ss:StyleID="s147"><Data ss:Type="String">DiagnosticReportCodes</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Codes that describe Diagnostic Reports</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-report-names</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-report-codes</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">LOINC Codes for Diagnostic Reports</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -7235,7 +7337,7 @@
     <Cell ss:StyleID="s147"><Data ss:Type="String">DiagnosticServiceSection</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for diagnostic service sections</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-diagnostic-service-sections</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">HL7 v2 table 0074</Data></Cell>
     <Cell ss:StyleID="s118"/>
@@ -7250,8 +7352,8 @@
     <Cell ss:StyleID="s147"><Data ss:Type="String">BodySite</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Codes describing anatomical locations. May include laterality</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-body-site</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">http://hl7.org/fhir/vs/body-site</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">SNOMED CT Body site concepts</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -7265,7 +7367,7 @@
     <Cell ss:StyleID="s147"><Data ss:Type="String">DiagnosticReportStatus</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">The status of the diagnostic report as a whole</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s118"/>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#diagnostic-report-status</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -7669,6 +7771,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7682,7 +7786,7 @@
    <Value>&quot;code list,value set,reference,special,unbound&quot;</Value>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C4:R30C4</Range>
+   <Range>R7C4:R30C4</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;Y&quot;</Value>
@@ -7726,7 +7830,7 @@
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C7:R30C10</Range>
+   <Range>R2C7:R30C10,R2C4:R6C4</Range>
    <Condition>
     <Value1>AND(R[1048574]C[16372]&lt;&gt;&quot;&quot;,R[1048574]C3&lt;&gt;&quot;code list&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>

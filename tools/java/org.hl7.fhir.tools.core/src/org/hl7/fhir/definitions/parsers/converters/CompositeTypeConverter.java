@@ -72,7 +72,7 @@ public class CompositeTypeConverter {
 			catch (Exception e) 
 			{
 				throw new Exception(e.getMessage() + " on resource "
-						+ resource.getName());
+						+ resource.getName(), e);
 			}
 		}
 
@@ -307,13 +307,13 @@ public class CompositeTypeConverter {
 					TypeRefConverter.buildTypeRefsFromFhirTypeName(element
 							.getDeclaredTypeName()));
 
-		if (element.getBindingName() != null
-				&& !element.getBindingName().equals("")
-				&& !element.getBindingName().equals("*unbound*")) {
+		if (element.getBinding() != null
+				&& !element.getBinding().getName().equals("")
+				&& !element.getBinding().getName().equals("*unbound*")) {
 			if (result.getType().size() >= 1) {
 				for (TypeRef tr : result.getType()) {
 					if (tr.isBindable())
-						tr.setBindingRef(element.getBindingName());
+						tr.setBindingRef(element.getBinding().getName());
 				}
 			}
 			// else
@@ -350,7 +350,7 @@ public class CompositeTypeConverter {
 		// In the old model, Id was actually a short identifying name
 		// and Name contained a short description.
 		result.setName(invariant.getId());
-		result.setDescription(Utilities.cleanupTextString(invariant.getName()));
+		result.setDescription(Utilities.cleanupTextString(invariant.getRequirements()));
 		result.setHuman(Utilities.cleanupTextString(invariant.getEnglish()));
 		result.setOcl(Utilities.cleanupTextString(invariant.getOcl()));
 		result.setXpath(Utilities.cleanupTextString(invariant.getXpath()));

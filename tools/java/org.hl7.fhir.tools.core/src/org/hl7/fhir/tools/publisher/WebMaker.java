@@ -38,12 +38,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import org.hl7.fhir.definitions.Config;
-import org.hl7.fhir.definitions.model.BindingSpecification;
-import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.definitions.model.Operation;
-import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.TextFile;
@@ -141,7 +136,8 @@ public class WebMaker {
     folderList.add("assets");
     folderList.add("vs");
     folderList.add("cs");
-    for (String n : definitions.getBindings().keySet()) {
+    throw new Error("Fix this");
+/*    for (String n : definitions.getBindings().keySet()) {
       BindingSpecification bs = definitions.getBindings().get(n);
       if ((bs.getBinding() == Binding.CodeList && bs.hasInternalCodes()) || (bs.getBinding() == Binding.Special)) {
         String ref = bs.getReference().startsWith("#") ? bs.getReference().substring(1) : bs.getReference();
@@ -200,6 +196,7 @@ public class WebMaker {
     zipd = new ZipGenerator(fd2.getAbsolutePath());
     zipd.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload2"+File.separator, "", null, null);
     zipd.close();    
+    */
   }
 
   private void buildRedirect(String n, String d, String dn) throws Exception {

@@ -29,16 +29,17 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.
  */
@@ -47,43 +48,43 @@ public class DeviceUseRequest extends DomainResource {
 
     public enum DeviceUseRequestStatus {
         /**
-         * The request has been proposed.
+         * The request has been proposed
          */
         PROPOSED, 
         /**
-         * The request has been planned.
+         * The request has been planned
          */
         PLANNED, 
         /**
-         * The request has been placed.
+         * The request has been placed
          */
         REQUESTED, 
         /**
-         * The receiving system has received the request but not yet decided whether it will be performed.
+         * The receiving system has received the request but not yet decided whether it will be performed
          */
         RECEIVED, 
         /**
-         * The receiving system has accepted the request but work has not yet commenced.
+         * The receiving system has accepted the request but work has not yet commenced
          */
         ACCEPTED, 
         /**
-         * The work to fulfill the order is happening.
+         * The work to fulfill the order is happening
          */
         INPROGRESS, 
         /**
-         * The work has been complete, the report(s) released, and no further work is planned.
+         * The work has been complete, the report(s) released, and no further work is planned
          */
         COMPLETED, 
         /**
-         * The request has been held by originating system/user request.
+         * The request has been held by originating system/user request
          */
         SUSPENDED, 
         /**
-         * The receiving system has declined to fulfill the request.
+         * The receiving system has declined to fulfill the request
          */
         REJECTED, 
         /**
-         * The request was attempted, but due to some procedural error, it could not be completed.
+         * The request was attempted, but due to some procedural error, it could not be completed
          */
         ABORTED, 
         /**
@@ -132,31 +133,31 @@ public class DeviceUseRequest extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case PROPOSED: return "";
-            case PLANNED: return "";
-            case REQUESTED: return "";
-            case RECEIVED: return "";
-            case ACCEPTED: return "";
-            case INPROGRESS: return "";
-            case COMPLETED: return "";
-            case SUSPENDED: return "";
-            case REJECTED: return "";
-            case ABORTED: return "";
+            case PROPOSED: return "http://hl7.org/fhir/device-use-request-status";
+            case PLANNED: return "http://hl7.org/fhir/device-use-request-status";
+            case REQUESTED: return "http://hl7.org/fhir/device-use-request-status";
+            case RECEIVED: return "http://hl7.org/fhir/device-use-request-status";
+            case ACCEPTED: return "http://hl7.org/fhir/device-use-request-status";
+            case INPROGRESS: return "http://hl7.org/fhir/device-use-request-status";
+            case COMPLETED: return "http://hl7.org/fhir/device-use-request-status";
+            case SUSPENDED: return "http://hl7.org/fhir/device-use-request-status";
+            case REJECTED: return "http://hl7.org/fhir/device-use-request-status";
+            case ABORTED: return "http://hl7.org/fhir/device-use-request-status";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case PROPOSED: return "The request has been proposed.";
-            case PLANNED: return "The request has been planned.";
-            case REQUESTED: return "The request has been placed.";
-            case RECEIVED: return "The receiving system has received the request but not yet decided whether it will be performed.";
-            case ACCEPTED: return "The receiving system has accepted the request but work has not yet commenced.";
-            case INPROGRESS: return "The work to fulfill the order is happening.";
-            case COMPLETED: return "The work has been complete, the report(s) released, and no further work is planned.";
-            case SUSPENDED: return "The request has been held by originating system/user request.";
-            case REJECTED: return "The receiving system has declined to fulfill the request.";
-            case ABORTED: return "The request was attempted, but due to some procedural error, it could not be completed.";
+            case PROPOSED: return "The request has been proposed";
+            case PLANNED: return "The request has been planned";
+            case REQUESTED: return "The request has been placed";
+            case RECEIVED: return "The receiving system has received the request but not yet decided whether it will be performed";
+            case ACCEPTED: return "The receiving system has accepted the request but work has not yet commenced";
+            case INPROGRESS: return "The work to fulfill the order is happening";
+            case COMPLETED: return "The work has been complete, the report(s) released, and no further work is planned";
+            case SUSPENDED: return "The request has been held by originating system/user request";
+            case REJECTED: return "The receiving system has declined to fulfill the request";
+            case ABORTED: return "The request was attempted, but due to some procedural error, it could not be completed";
             default: return "?";
           }
         }
@@ -274,10 +275,10 @@ public class DeviceUseRequest extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case ROUTINE: return "";
-            case URGENT: return "";
-            case STAT: return "";
-            case ASAP: return "";
+            case ROUTINE: return "http://hl7.org/fhir/device-use-request-priority";
+            case URGENT: return "http://hl7.org/fhir/device-use-request-priority";
+            case STAT: return "http://hl7.org/fhir/device-use-request-priority";
+            case ASAP: return "http://hl7.org/fhir/device-use-request-priority";
             default: return "?";
           }
         }
@@ -332,21 +333,21 @@ public class DeviceUseRequest extends DomainResource {
     /**
      * Indicates the site on the subject's body where the device should be used ( i.e. the target site).
      */
-    @Child(name ="bodySite", type={CodeableConcept.class, BodySite.class}, order=0, min=0, max=1)
+    @Child(name = "bodySite", type = {CodeableConcept.class, BodySite.class}, order=0, min=0, max=1)
     @Description(shortDefinition="Target body site", formalDefinition="Indicates the site on the subject's body where the device should be used ( i.e. the target site)." )
     protected Type bodySite;
 
     /**
      * The status of the request.
      */
-    @Child(name ="status", type={CodeType.class}, order=1, min=0, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | aborted", formalDefinition="The status of the request." )
     protected Enumeration<DeviceUseRequestStatus> status;
 
     /**
      * The details of the device  to be used.
      */
-    @Child(name ="device", type={Device.class}, order=2, min=1, max=1)
+    @Child(name = "device", type = {Device.class}, order=2, min=1, max=1)
     @Description(shortDefinition="Device requested", formalDefinition="The details of the device  to be used." )
     protected Reference device;
 
@@ -358,7 +359,7 @@ public class DeviceUseRequest extends DomainResource {
     /**
      * An encounter that provides additional context in which this request is made.
      */
-    @Child(name ="encounter", type={Encounter.class}, order=3, min=0, max=1)
+    @Child(name = "encounter", type = {Encounter.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Encounter motivating request", formalDefinition="An encounter that provides additional context in which this request is made." )
     protected Reference encounter;
 
@@ -370,49 +371,49 @@ public class DeviceUseRequest extends DomainResource {
     /**
      * Identifiers assigned to this order by the orderer or by the receiver.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Request identifier", formalDefinition="Identifiers assigned to this order by the orderer or by the receiver." )
     protected List<Identifier> identifier;
 
     /**
      * Reason or justification for the use of this device.
      */
-    @Child(name ="indication", type={CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "indication", type = {CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Reason for request", formalDefinition="Reason or justification for the use of this device." )
     protected List<CodeableConcept> indication;
 
     /**
      * Details about this request that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement.
      */
-    @Child(name ="notes", type={StringType.class}, order=6, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "notes", type = {StringType.class}, order=6, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Notes or comments", formalDefinition="Details about this request that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement." )
     protected List<StringType> notes;
 
     /**
      * The proposed act must be performed if the indicated conditions occur, e.g.., shortness of breath, SpO2 less than x%.
      */
-    @Child(name ="prnReason", type={CodeableConcept.class}, order=7, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "prnReason", type = {CodeableConcept.class}, order=7, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="PRN", formalDefinition="The proposed act must be performed if the indicated conditions occur, e.g.., shortness of breath, SpO2 less than x%." )
     protected List<CodeableConcept> prnReason;
 
     /**
      * The time when the request was made.
      */
-    @Child(name ="orderedOn", type={DateTimeType.class}, order=8, min=0, max=1)
+    @Child(name = "orderedOn", type = {DateTimeType.class}, order=8, min=0, max=1)
     @Description(shortDefinition="When ordered", formalDefinition="The time when the request was made." )
     protected DateTimeType orderedOn;
 
     /**
      * The time at which the request was made/recorded.
      */
-    @Child(name ="recordedOn", type={DateTimeType.class}, order=9, min=0, max=1)
+    @Child(name = "recordedOn", type = {DateTimeType.class}, order=9, min=0, max=1)
     @Description(shortDefinition="When recorded", formalDefinition="The time at which the request was made/recorded." )
     protected DateTimeType recordedOn;
 
     /**
      * The patient who will use the device.
      */
-    @Child(name ="subject", type={Patient.class}, order=10, min=1, max=1)
+    @Child(name = "subject", type = {Patient.class}, order=10, min=1, max=1)
     @Description(shortDefinition="Focus of request", formalDefinition="The patient who will use the device." )
     protected Reference subject;
 
@@ -424,23 +425,29 @@ public class DeviceUseRequest extends DomainResource {
     /**
      * The timing schedule for the use of the device The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
      */
-    @Child(name ="timing", type={Timing.class, Period.class, DateTimeType.class}, order=11, min=0, max=1)
+    @Child(name = "timing", type = {Timing.class, Period.class, DateTimeType.class}, order=11, min=0, max=1)
     @Description(shortDefinition="Schedule for use", formalDefinition="The timing schedule for the use of the device The Schedule data type allows many different expressions, for example. 'Every 8 hours'; 'Three times a day'; '1/2 an hour before breakfast for 10 days from 23-Dec 2011:'; '15 Oct 2013, 17 Oct 2013 and 1 Nov 2013'." )
     protected Type timing;
 
     /**
      * Characterizes how quickly the  use of device must be initiated. Includes concepts such as stat, urgent, routine.
      */
-    @Child(name ="priority", type={CodeType.class}, order=12, min=0, max=1)
+    @Child(name = "priority", type = {CodeType.class}, order=12, min=0, max=1)
     @Description(shortDefinition="routine | urgent | stat | asap", formalDefinition="Characterizes how quickly the  use of device must be initiated. Includes concepts such as stat, urgent, routine." )
     protected Enumeration<DeviceUseRequestPriority> priority;
 
     private static final long serialVersionUID = 1208477058L;
 
+  /*
+   * Constructor
+   */
     public DeviceUseRequest() {
       super();
     }
 
+  /*
+   * Constructor
+   */
     public DeviceUseRequest(Reference device, Reference subject) {
       super();
       this.device = device;
@@ -463,6 +470,10 @@ public class DeviceUseRequest extends DomainResource {
       return (CodeableConcept) this.bodySite;
     }
 
+    public boolean hasBodySiteCodeableConcept() throws Exception { 
+      return this.bodySite instanceof CodeableConcept;
+    }
+
     /**
      * @return {@link #bodySite} (Indicates the site on the subject's body where the device should be used ( i.e. the target site).)
      */
@@ -470,6 +481,10 @@ public class DeviceUseRequest extends DomainResource {
       if (!(this.bodySite instanceof Reference))
         throw new Exception("Type mismatch: the type Reference was expected, but "+this.bodySite.getClass().getName()+" was encountered");
       return (Reference) this.bodySite;
+    }
+
+    public boolean hasBodySiteReference() throws Exception { 
+      return this.bodySite instanceof Reference;
     }
 
     public boolean hasBodySite() { 
@@ -953,6 +968,10 @@ public class DeviceUseRequest extends DomainResource {
       return (Timing) this.timing;
     }
 
+    public boolean hasTimingTiming() throws Exception { 
+      return this.timing instanceof Timing;
+    }
+
     /**
      * @return {@link #timing} (The timing schedule for the use of the device The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
      */
@@ -962,6 +981,10 @@ public class DeviceUseRequest extends DomainResource {
       return (Period) this.timing;
     }
 
+    public boolean hasTimingPeriod() throws Exception { 
+      return this.timing instanceof Period;
+    }
+
     /**
      * @return {@link #timing} (The timing schedule for the use of the device The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".)
      */
@@ -969,6 +992,10 @@ public class DeviceUseRequest extends DomainResource {
       if (!(this.timing instanceof DateTimeType))
         throw new Exception("Type mismatch: the type DateTimeType was expected, but "+this.timing.getClass().getName()+" was encountered");
       return (DateTimeType) this.timing;
+    }
+
+    public boolean hasTimingDateTimeType() throws Exception { 
+      return this.timing instanceof DateTimeType;
     }
 
     public boolean hasTiming() { 

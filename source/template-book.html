@@ -8,8 +8,13 @@
 </head>
 <body>
 
-<h1>Resource Definition: <%title%></h1>
-<!-- <p class="status">Status: <%status%></p> -->
+<h1>Resource <%title%> - Content</h1>
+<%draft-note%>
+
+<table class="cols">
+ <tr><td><%wg%></td><td><%fmm%></td><td><%complinks%></td></tr>
+</table>
+
 <p>
 <%definition%>.
 </p>
@@ -20,7 +25,7 @@
 
 <h2>Resource Content</h2>
 <a name="uml"> </a>
-<%svg%>
+<%svg C%>
 
 <p>See also the <a href="<%name%>Ex.html">Examples</a> and the <a href="<%name%>Defn.html">Definitions</a>.</p>
 

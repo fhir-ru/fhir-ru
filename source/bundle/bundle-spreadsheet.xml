@@ -10,14 +10,14 @@
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2015-03-16T21:30:52Z</LastSaved>
-  <Version>14.00</Version>
+  <Version>15.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11520</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
+  <WindowHeight>16875</WindowHeight>
+  <WindowWidth>-27136</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
@@ -819,7 +819,7 @@
   <NamedRange ss:Name="Invariantids" ss:RefersTo="=Invariants!R2C1:R48C1"/>
  </Names>
  <Worksheet ss:Name="Instructions">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="411"/>
    <Row ss:AutoFitHeight="0">
@@ -836,6 +836,10 @@
     <Cell><Data ss:Type="String">entered-in-error-status</Data></Cell>
     <Cell><Data ss:Type="String">Depends on the type: document - see for Composition; message - see for MessageHeader; transaction / transaction-response / history / searchset - not expected to be stored; collection: just delete it if it's stored, and in error</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">fmm</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -847,7 +851,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -1306,7 +1310,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Resources in this bundle</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A resource in the bundle</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The Resources for the entry</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1369,7 +1373,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">match | include - why this is in the result set</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">match | include | outcome - why this is in the result set</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Why this entry is in the result set - whether it's included as a match or because of an _include requirement</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1492,12 +1496,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The URL for the transaction</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">URL for HTTP equivalent of this entry</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A search URL for this resource that specifies how the resource is matched to an existing resource when processing a transaction (see transaction documentation)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The URL for this entry, relative to the root</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">E.g. for a Patient Create, the method would be &quot;POST&quot; and the url would be /Patient. For a Patient Update, the method would be PUT, and the url would be /Patient/[id]</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3830,7 +3835,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>10</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>14</LeftColumnRightPane>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -3838,7 +3843,6 @@
     </Pane>
     <Pane>
      <Number>1</Number>
-     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
@@ -3847,7 +3851,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>18</ActiveRow>
-     <ActiveCol>20</ActiveCol>
+     <ActiveCol>12</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -9608,10 +9612,10 @@
     <Cell ss:StyleID="s145"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s144"/>
-    <Cell ss:StyleID="s133"/>
-    <Cell ss:StyleID="s154"/>
-    <Cell ss:StyleID="s154"/>
+    <Cell ss:StyleID="s144"><Data ss:Type="String">outcome</Data></Cell>
+    <Cell ss:StyleID="s133"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">outcome</Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">An OperationOutcome that provides additional information about the processing of a search</Data></Cell>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s145"/>
@@ -10031,8 +10035,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -55,14 +55,14 @@ that must be met as part of their use and definition.
 Every element in a resource or data type includes an optional "extension" child element that may 
 be present any number of times. This is the content model of the extension as it appears in each resource:
 </p>
-<%dt Extension%>
+<%dt Extension 1%>
 <p>
 Notes:
 </p>
 <ul>
  <li>The <i>url</i> is a mandatory attribute / property and identifies a retrievable <a href="structuredefinition.html">extension definition</a> that defines the content and meaning of the extension.</li>
  <li>An extension SHALL have either a value (i.e. a value[x] element) or sub-extensions, but not both. If present, the value[x] element SHALL have content (value attribute or other elements)</li>
- <li>If it is not safe for an application processing the content of the resource to ignore the extension it must be represented diffferent (see <a href="#modifier">below</a>)</li>
+ <li>If it is not safe for an application processing the content of the resource to ignore the extension it must be represented diffferently, using <a href="#isModifier">a Modifier Extension</a></li>
  <li>The <i>value[x]</i> element has an actual name of "value" and then the TitleCased name of one of these defined types, and its contents are those as defined for that type:
   <ul class="dense">
    <li><a href="datatypes.html#integer">Integer</a></li>
@@ -286,7 +286,7 @@ where this happens, as they are an important part of the workflow.  Hence, appli
     &lt;valueBoolean value="true"/&gt;
   &lt;/modifierExtension&gt;
   &lt;!-- ... other content ... --&gt;
-&lt;/Procedure&gt;
+&lt;/MedicationPescription&gt;
 </pre>
 <p>
 Or in JSON:
@@ -332,7 +332,7 @@ in it because of the existence of the modifier extension.
 This means that implementations are not inherently required to "support" 
 a modifier extension in any meaningful way - they may achieve this 
 understanding by rejecting instances that contain this extension.
-Applications may also be able to ignore a modifier extension if that 
+Applications may also be able to ignore a modifier extension if they 
 can know that this is safe to do in its own context, though this would not usually be the case.
 </p>
 <p> 
@@ -373,7 +373,7 @@ Here is the prescription example from above with narrative:
   &lt;/text&gt;
   &lt;!-- ...data... --&gt;
   &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/anti-prescription&quot;&gt;
-    &lt;boolean value="true"/&gt;
+    &lt;valueBoolean value="true"/&gt;
   &lt;/modifierExtension&gt;
   &lt;!-- ...data... --&gt;
 &lt;/MedicationPescription&gt;
@@ -408,7 +408,7 @@ primitive value is not present:
 <pre class="xml">
 &lt;uri&gt;
   &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/data-absent-reason&quot;&gt;
-    &lt;code=&quot;unknown&quot;/&gt;
+    &lt;valueCode=&quot;unknown&quot;/&gt;
   &lt;/extension&gt;
 &lt;/uri&gt;
 </pre>
@@ -462,7 +462,7 @@ of these situations easier, but they cannot resolve them.
 modified element and its descendants, because it cannot know whether the modifications it has made 
 might invalidate the value of the unknown extension</li>
  <li>Systems that drop existing elements are considered to be "processing the resource"</li>
- <li>A system SHALL not modify a resource or element that contains "modifier" extensions it doesn't understand</li>
+ <li>A system SHALL NOT modify a resource or element that contains "modifier" extensions it doesn't understand</li>
  <li>Applications SHOULD ignore extensions that they do not recognize if they are not "modifier" extensions</li>
  <li>Systems that do not accept unknown extensions SHALL declare so in their Conformance resource instances</li>
 </ul>

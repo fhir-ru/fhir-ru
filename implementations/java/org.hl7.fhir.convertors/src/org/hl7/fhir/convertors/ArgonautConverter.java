@@ -3,8 +3,6 @@ package org.hl7.fhir.convertors;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,41 +23,40 @@ import org.hl7.fhir.instance.model.BooleanType;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Condition;
+import org.hl7.fhir.instance.model.Condition.ConditionClinicalStatus;
 import org.hl7.fhir.instance.model.ContactPoint;
 import org.hl7.fhir.instance.model.DateTimeType;
 import org.hl7.fhir.instance.model.DocumentReference;
-import org.hl7.fhir.instance.model.HumanName;
-import org.hl7.fhir.instance.model.InstantType;
-import org.hl7.fhir.instance.model.Organization;
 import org.hl7.fhir.instance.model.DocumentReference.DocumentReferenceContextComponent;
-import org.hl7.fhir.instance.model.DocumentReference.DocumentReferenceStatus;
-import org.hl7.fhir.instance.model.Extension;
-import org.hl7.fhir.instance.model.Immunization;
-import org.hl7.fhir.instance.model.Immunization.ImmunizationExplanationComponent;
-import org.hl7.fhir.instance.model.Location;
-import org.hl7.fhir.instance.model.Medication;
-import org.hl7.fhir.instance.model.Condition.ConditionStatus;
 import org.hl7.fhir.instance.model.DomainResource;
 import org.hl7.fhir.instance.model.Encounter;
 import org.hl7.fhir.instance.model.Encounter.EncounterClass;
 import org.hl7.fhir.instance.model.Encounter.EncounterHospitalizationComponent;
-import org.hl7.fhir.instance.model.Encounter.EncounterParticipantComponent;
 import org.hl7.fhir.instance.model.Encounter.EncounterState;
+import org.hl7.fhir.instance.model.Enumerations.DocumentReferenceStatus;
+import org.hl7.fhir.instance.model.Extension;
 import org.hl7.fhir.instance.model.Factory;
+import org.hl7.fhir.instance.model.HumanName;
 import org.hl7.fhir.instance.model.Identifier;
+import org.hl7.fhir.instance.model.Immunization;
+import org.hl7.fhir.instance.model.Immunization.ImmunizationExplanationComponent;
+import org.hl7.fhir.instance.model.InstantType;
 import org.hl7.fhir.instance.model.List_;
 import org.hl7.fhir.instance.model.List_.ListMode;
 import org.hl7.fhir.instance.model.List_.ListStatus;
+import org.hl7.fhir.instance.model.Location;
+import org.hl7.fhir.instance.model.Medication;
 import org.hl7.fhir.instance.model.MedicationStatement;
 import org.hl7.fhir.instance.model.MedicationStatement.MedicationStatementDosageComponent;
 import org.hl7.fhir.instance.model.MedicationStatement.MedicationStatementStatus;
+import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Observation;
-import org.hl7.fhir.instance.model.Observation.ObservationRelationshiptypes;
+import org.hl7.fhir.instance.model.Observation.ObservationRelationshipType;
 import org.hl7.fhir.instance.model.Observation.ObservationReliability;
 import org.hl7.fhir.instance.model.Observation.ObservationStatus;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.instance.model.Narrative;
+import org.hl7.fhir.instance.model.Organization;
 import org.hl7.fhir.instance.model.Patient;
 import org.hl7.fhir.instance.model.Period;
 import org.hl7.fhir.instance.model.Practitioner;
@@ -68,13 +65,12 @@ import org.hl7.fhir.instance.model.Procedure.ProcedurePerformerComponent;
 import org.hl7.fhir.instance.model.Procedure.ProcedureStatus;
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.ResourceType;
 import org.hl7.fhir.instance.model.StringType;
 import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.Timing;
 import org.hl7.fhir.instance.model.Type;
-import org.hl7.fhir.instance.utils.FHIRTerminologyServices;
-import org.hl7.fhir.instance.utils.ITerminologyServices;
+import org.hl7.fhir.instance.terminologies.FHIRTerminologyServices;
+import org.hl7.fhir.instance.terminologies.ITerminologyServices;
 import org.hl7.fhir.instance.utils.NarrativeGenerator;
 import org.hl7.fhir.instance.utils.ResourceUtilities;
 import org.hl7.fhir.instance.validation.ValidationEngine;
@@ -353,7 +349,7 @@ public class ArgonautConverter extends ConverterBase {
 			stats.put(rn, new Stats());
 		}
 		
-		zips.get(rn).addBytes(resource.getId()+"xml", src, false);
+		zips.get(rn).addBytes(resource.getId()+".xml", src, false);
 		Stats ss = stats.get(rn);
 		ss.instances++;
 
@@ -671,7 +667,7 @@ public class ArgonautConverter extends ConverterBase {
 		list.setId(context.baseId+"-list-procedures");
 		// list.setUserData("profile", "") none?
 		list.setSubject(context.subjectRef);
-    list.setCode(convert.makeCodeableConceptFromCD(cda.getChild(sect, "code")));
+    list.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(sect, "code")), null));
     list.setTitle(cda.getChild(sect, "title").getTextContent());
     list.setStatus(ListStatus.CURRENT); 
     list.setMode(ListMode.SNAPSHOT);
@@ -689,7 +685,7 @@ public class ArgonautConverter extends ConverterBase {
 			proc.setPatient(context.subjectRef);
 			proc.setEncounter(new Reference().setReference("Encounter/"+context.encounter.getId()));
 			list.addEntry().setItem(new Reference().setReference("Procedure/"+proc.getId()));
-			proc.setType(convert.makeCodeableConceptFromCD(cda.getChild(p, "code")));
+			proc.setType(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(p, "code")), null));
 			for (Element e : cda.getChildren(p, "id"))
 				proc.getIdentifier().add(convert.makeIdentifierFromII(e));
 			
@@ -707,6 +703,26 @@ public class ArgonautConverter extends ConverterBase {
 		}
 		saveResource(list);
 	}	
+
+	private CodeableConcept inspectCode(CodeableConcept cc, Coding def) {
+		if (cc != null) {
+			for (Coding c : cc.getCoding()) {
+				if ("http://snomed.info/sct".equals(c.getSystem())) {
+					if ("ASSERTION".equals(c.getCode()))
+						c.setSystem("http://hl7.org/fhir/v3/ActCode");
+				}
+				if ("http://hl7.org/fhir/v3/ActCode".equals(c.getSystem()) && "ASSERTION".equals(c.getCode())) {
+					if (def == null) 
+						throw new Error("need a default code");
+					c.setSystem(def.getSystem());
+					c.setVersion(def.getVersion());
+					c.setCode(def.getCode());
+					c.setDisplay(def.getDisplay());
+				}
+			}
+		}
+	  return cc;
+  }
 
 	private ProcedureStatus determineProcedureStatus(Element child) {
 		if ("completed".equals(child.getAttribute("code")))
@@ -726,7 +742,7 @@ public class ArgonautConverter extends ConverterBase {
 		list.setId(context.baseId+"-list-problems");
 		list.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/list-daf-dafproblemlist");
 		list.setSubject(context.subjectRef);
-    list.setCode(convert.makeCodeableConceptFromCD(cda.getChild(sect, "code")));
+    list.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(sect, "code")), null));
     list.setTitle(cda.getChild(sect, "title").getTextContent());
     list.setStatus(ListStatus.CURRENT); 
     list.setMode(ListMode.SNAPSHOT);
@@ -761,8 +777,8 @@ public class ArgonautConverter extends ConverterBase {
 					cond.setAsserter(ref);
 				}
 				Element po = cda.getChild(cda.getChild(pca, "entryRelationship"), "observation"); // problem observation
-				cond.setClinicalStatus(ConditionStatus.UNKNOWN);
-				cond.setCode(convert.makeCodeableConceptFromCD(cda.getChild(po, "value")));
+				cond.setClinicalStatus(ConditionClinicalStatus.UNKNOWN);
+				cond.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(po, "value")), null));
 				cond.setOnset(convert.makeDateTimeFromTS(cda.getChild(cda.getChild(po, "effectiveTime"), "low")));
 				Element pso = cda.getChild(cda.getChild(po, "entryRelationship"), "observation"); // problem status observation
 				String status = cda.getChild(pso, "value").getAttribute("code");
@@ -782,7 +798,7 @@ public class ArgonautConverter extends ConverterBase {
 		list.setId(context.baseId+"-list-allergies");
 		list.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/list-daf-dafallergylist");
 		list.setSubject(context.subjectRef);
-    list.setCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")));
+    list.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")), null));
     list.setTitle(cda.getChild(section, "title").getTextContent());
     list.setStatus(ListStatus.CURRENT); 
     list.setDateElement(context.now);
@@ -824,12 +840,12 @@ public class ArgonautConverter extends ConverterBase {
 					//				else
 					ai.setSubstance(new CodeableConcept().setText(n));
 				} else
-					ai.setSubstance(convert.makeCodeableConceptFromCD(pec));
+					ai.setSubstance(inspectCode(convert.makeCodeableConceptFromCD(pec), null));
 				if (!reactions.isEmpty()) {
 					AllergyIntoleranceEventComponent aie = ai.addEvent();
 					for (Element er : reactions) {
 						Element ro = cda.getChild(er, "observation");
-						aie.addManifestation(convert.makeCodeableConceptFromCD(cda.getChild(ro, "value")));
+						aie.addManifestation(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(ro, "value")), null));
 					}
 				}
 
@@ -845,7 +861,7 @@ public class ArgonautConverter extends ConverterBase {
 		list.setId(context.baseId+"-list-vitalsigns");
 		//. list.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/list-daf-dafproblemlist"); no list 
 		list.setSubject(context.subjectRef);
-    list.setCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")));
+    list.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")), null));
     list.setTitle(cda.getChild(section, "title").getTextContent());
     list.setStatus(ListStatus.CURRENT); 
     list.setMode(ListMode.SNAPSHOT);
@@ -864,7 +880,7 @@ public class ArgonautConverter extends ConverterBase {
 				i++;
 				obs.setSubject(context.subjectRef);
 				obs.setEncounter(new Reference().setReference("Encounter/"+context.encounter.getId()));
-				obs.setCode(convert.makeCodeableConceptFromCD(cda.getChild(o, "code")));
+				obs.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(o, "code")), null));
 				
 				boolean found = false;
 				for (Element e : cda.getChildren(o, "id")) {
@@ -876,10 +892,10 @@ public class ArgonautConverter extends ConverterBase {
 					list.addEntry().setItem(new Reference().setReference("Observation/"+obs.getId()));
 					obs.setStatus(ObservationStatus.FINAL);
 					obs.setReliability(ObservationReliability.OK);
-					obs.setApplies(convert.makeDateTimeFromTS(cda.getChild(o, "effectiveTime")));
+					obs.setEffective(convert.makeDateTimeFromTS(cda.getChild(o, "effectiveTime")));
 					String v = cda.getChild(o, "value").getAttribute("value");
-					if (!Utilities.IsDecimal(v)) {
-						obs.setDataAbsentReason(new CodeableConcept().setText(v));
+					if (!Utilities.isDecimal(v)) {
+						obs.setDataAbsentReason(inspectCode(new CodeableConcept().setText(v), null));
 					} else
 						obs.setValue(convert.makeQuantityFromPQ(cda.getChild(o, "value")));
 					saveResource(obs);
@@ -896,7 +912,7 @@ public class ArgonautConverter extends ConverterBase {
 		list.setId(context.baseId+"-list-results");
     list.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/list-daf-dafresultlist"); 
 		list.setSubject(context.subjectRef);
-    list.setCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")));
+    list.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")), null));
     list.setTitle(cda.getChild(section, "title").getTextContent());
     list.setStatus(ListStatus.CURRENT); 
     list.setMode(ListMode.SNAPSHOT);
@@ -924,20 +940,20 @@ public class ArgonautConverter extends ConverterBase {
 				if (!found) {
 					list.addEntry().setItem(new Reference().setReference("Observation/"+panel.getId()));
 
-					panel.setCode(convert.makeCodeableConceptFromCD(cda.getChild(org, "code")));
+					panel.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(org, "code")), null));
 					for (Element comp : cda.getChildren(org, "component")) {
 						Observation obs = processObservation(cda, convert, context, cda.getChild(comp, "observation"));
-						panel.addRelated().setType(ObservationRelationshiptypes.HASCOMPONENT).setTarget(new Reference().setReference("Observation/"+obs.getId()));
-						if (!panel.hasApplies())
-							panel.setApplies(obs.getApplies());
+						panel.addRelated().setType(ObservationRelationshipType.HASMEMBER).setTarget(new Reference().setReference("Observation/"+obs.getId()));
+						if (!panel.hasEffective())
+							panel.setEffective(obs.getEffective());
 						else {
-							if (!Base.compareDeep(panel.getApplies(), obs.getApplies(), false)) {
-								Period p = panel.getApplies() instanceof Period ? panel.getAppliesPeriod() : new Period().setStartElement(panel.getAppliesDateTimeType()).setEndElement(panel.getAppliesDateTimeType());
-								if (p.getStartElement().after(obs.getAppliesDateTimeType()))
-									p.setStartElement(obs.getAppliesDateTimeType());
-								if (p.getEndElement().before(obs.getAppliesDateTimeType()))
-									p.setEndElement(obs.getAppliesDateTimeType());
-								panel.setApplies(p);
+							if (!Base.compareDeep(panel.getEffective(), obs.getEffective(), false)) {
+								Period p = panel.getEffective() instanceof Period ? panel.getEffectivePeriod() : new Period().setStartElement(panel.getEffectiveDateTimeType()).setEndElement(panel.getEffectiveDateTimeType());
+								if (p.getStartElement().after(obs.getEffectiveDateTimeType()))
+									p.setStartElement(obs.getEffectiveDateTimeType());
+								if (p.getEndElement().before(obs.getEffectiveDateTimeType()))
+									p.setEndElement(obs.getEffectiveDateTimeType());
+								panel.setEffective(p);
 							}
 						}
 
@@ -962,9 +978,9 @@ public class ArgonautConverter extends ConverterBase {
 		obs.setEncounter(new Reference().setReference("Encounter/"+context.encounter.getId()));
 		obs.setStatus(ObservationStatus.FINAL);
 		obs.setReliability(ObservationReliability.OK);
-		obs.setApplies(convert.makeDateTimeFromTS(cda.getChild(o, "effectiveTime")));
-		obs.setCode(convert.makeCodeableConceptFromCD(cda.getChild(o, "code")));
-		obs.setInterpretation(convert.makeCodeableConceptFromCD(cda.getChild(o, "interpretationCode")));
+		obs.setEffective(convert.makeDateTimeFromTS(cda.getChild(o, "effectiveTime")));
+		obs.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(o, "code")), null));
+		obs.setInterpretation(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(o, "interpretationCode")), null));
 		Element rr = cda.getChild(o, "referenceRange");
 		if (rr != null)  
 			obs.addReferenceRange().setText(cda.getChild(cda.getChild(rr, "observationRange"), "text").getTextContent());
@@ -976,14 +992,14 @@ public class ArgonautConverter extends ConverterBase {
 			obs.setValue(new StringType(v.getTextContent()));
 		} else if ("CD".equals(type)) {
 			obs.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/observation-daf-results-dafresultobscode");
-			obs.setValue(convert.makeCodeableConceptFromCD(v));
+			obs.setValue(inspectCode(convert.makeCodeableConceptFromCD(v), null));
 		} else if ("PQ".equals(type)) {
 			obs.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/observation-daf-results-dafresultobsquantity");
 			String va = cda.getChild(o, "value").getAttribute("value");
-			if (!Utilities.IsDecimal(va)) {
-				obs.setDataAbsentReason(new CodeableConcept().setText(va));
+			if (!Utilities.isDecimal(va)) {
+				obs.setDataAbsentReason(inspectCode(new CodeableConcept().setText(va), null));
 			} else
-			  obs.setValue(convert.makeQuantityFromPQ(cda.getChild(o, "value")));
+			  obs.setValue(convert.makeQuantityFromPQ(cda.getChild(o, "value"), null));
 		} else
 			throw new Exception("Unknown type '"+type+"'");
 		
@@ -1006,7 +1022,7 @@ public class ArgonautConverter extends ConverterBase {
 			i++;
 			obs.setSubject(context.subjectRef);
 			obs.setEncounter(new Reference().setReference("Encounter/"+context.encounter.getId()));
-			obs.setCode(convert.makeCodeableConceptFromCD(cda.getChild(o, "code")));
+			obs.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(o, "code")), new Coding().setSystem("http://loinc.org").setCode("72166-2")));
 			
 			boolean found = false;
 			for (Element e : cda.getChildren(o, "id")) {
@@ -1016,8 +1032,8 @@ public class ArgonautConverter extends ConverterBase {
 			if (!found) {
 				obs.setStatus(ObservationStatus.FINAL);
 				obs.setReliability(ObservationReliability.OK);
-				obs.setApplies(convert.makeDateTimeFromTS(cda.getChild(o, "effectiveTime")));
-				obs.setValue(convert.makeCodeableConceptFromCD(cda.getChild(o, "value")));
+				obs.setEffective(convert.makeDateTimeFromTS(cda.getChild(o, "effectiveTime")));
+				obs.setValue(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(o, "value")), null));
 				saveResource(obs);
 			}
 		}
@@ -1029,7 +1045,7 @@ public class ArgonautConverter extends ConverterBase {
 		list.setId(context.baseId+"-list-medications");
 		list.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/list-daf-dafmedicationlist");
 		list.setSubject(context.subjectRef);
-    list.setCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")));
+    list.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")), null));
     list.setTitle(cda.getChild(section, "title").getTextContent());
     list.setStatus(ListStatus.CURRENT); 
     list.setMode(ListMode.SNAPSHOT);
@@ -1059,7 +1075,7 @@ public class ArgonautConverter extends ConverterBase {
 				ms.setMedication(new Reference().setReference("#med"));
 				Medication med = new Medication();
 				med.setId("med");
-				med.setCode(convert.makeCodeableConceptFromCD(cda.getChild(mm, "code")));
+				med.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(mm, "code")), null));
 				ms.getContained().add(med);
 				MedicationStatementDosageComponent dosage = ms.addDosage();
 				Element qty = cda.getChild(sa, "doseQuantity"); // allergy observation
@@ -1073,7 +1089,7 @@ public class ArgonautConverter extends ConverterBase {
 				} catch (Exception e) {
 					System.out.println("  invalid dose quantity '"+qty.getAttribute("value")+" "+qty.getAttribute("unit")+"' ("+e.getClass().getName()+") in "+context.baseId);
 				}
-				dosage.setRoute(convert.makeCodeableConceptFromCD(cda.getChild(sa, "routeCode")));
+				dosage.setRoute(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(sa, "routeCode")), null));
 				Type t = convert.makeSomethingFromGTS(cda.getChildren(sa, "effectiveTime"));
 				if (t instanceof Timing) {
 					dosage.setSchedule((Timing) t);
@@ -1104,7 +1120,7 @@ public class ArgonautConverter extends ConverterBase {
 		list.setId(context.baseId+"-list-encounters");
 		list.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/list-daf-dafencounterlist");
 		list.setSubject(context.subjectRef);
-    list.setCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")));
+    list.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")), null));
     list.setTitle(cda.getChild(section, "title").getTextContent());
     list.setStatus(ListStatus.CURRENT); 
     list.setMode(ListMode.SNAPSHOT);
@@ -1138,7 +1154,7 @@ public class ArgonautConverter extends ConverterBase {
 			else
 				enc.setClass_(EncounterClass.OTHER); // todo: fix this
 			
-			CodeableConcept type = convert.makeCodeableConceptFromCD(cda.getChild(ee, "code"));
+			CodeableConcept type = inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(ee, "code")), null);
 			enc.addType(type);
 			
 			for (Element e : cda.getChildren(ee, "performer")) {
@@ -1151,7 +1167,7 @@ public class ArgonautConverter extends ConverterBase {
 			loc.setId("loc");
 			Element pr = cda.getChild(cda.getChild(ee, "participant"), "participantRole");
 			loc.setName(cda.getChild(cda.getChild(pr, "playingEntity"), "name").getTextContent());
-			loc.setType(convert.makeCodeableConceptFromCD(cda.getChild(pr, "code")));
+			loc.setType(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(pr, "code")), null));
 			enc.getContained().add(loc);
 			saveResource(enc);
 		}
@@ -1178,7 +1194,7 @@ public class ArgonautConverter extends ConverterBase {
 		list.setId(context.baseId+"-list-immunizations");
 		list.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/list-daf-dafimmunizationlist");
 		list.setSubject(context.subjectRef);
-    list.setCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")));
+    list.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(section, "code")), null));
     list.setTitle(cda.getChild(section, "title").getTextContent());
     list.setStatus(ListStatus.CURRENT); 
     list.setMode(ListMode.SNAPSHOT);
@@ -1209,11 +1225,11 @@ public class ArgonautConverter extends ConverterBase {
 				if (imm.getWasNotGiven()) {
 					Element reason = cda.getChild(cda.getChildByAttribute(sa, "entryRelationship", "typeCode", "RSON"), "observation");
 					imm.setExplanation( new ImmunizationExplanationComponent());
-					imm.getExplanation().addReasonNotGiven(convert.makeCodeableConceptFromCD(cda.getChild(reason, "code")));
+					imm.getExplanation().addReasonNotGiven(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(reason, "code")), null));
 				}
 				Element mm = cda.getChild(cda.getChild(cda.getChild(sa, "consumable"), "manufacturedProduct"), "manufacturedMaterial");
-				imm.setVaccineType(convert.makeCodeableConceptFromCD(cda.getChild(mm, "code")));
-				imm.setRoute(convert.makeCodeableConceptFromCD(cda.getChild(sa, "routeCode")));
+				imm.setVaccineType(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(mm, "code")), null));
+				imm.setRoute(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(sa, "routeCode")), null));
 				if (cda.getChild(mm, "lotNumberText") != null)
 					imm.setLotNumber(cda.getChild(mm, "lotNumberText").getTextContent());
 				Element mr = cda.getChild(cda.getChild(cda.getChild(sa, "consumable"), "manufacturedProduct"), "manufacturerOrganization");
@@ -1264,21 +1280,21 @@ public class ArgonautConverter extends ConverterBase {
 		ref.setId(context.baseId+"-document");
 		ref.setMasterIdentifier(convert.makeIdentifierFromII(cda.getChild(doc, "id")));
 		ref.setSubject(context.subjectRef);
-		ref.setType(convert.makeCodeableConceptFromCD(cda.getChild(doc, "code")));
+		ref.setType(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(doc, "code")), null));
 		for (Element ti : cda.getChildren(doc, "templateId"))
 			ref.addFormat("urn:oid:"+ti.getAttribute("root"));
 		ref.addAuthor(context.authorRef);
 		ref.setCreatedElement(convert.makeDateTimeFromTS(cda.getChild(doc, "effectiveTime")));
 		ref.setIndexedElement(InstantType.now());
 		ref.setStatus(DocumentReferenceStatus.CURRENT);
-		ref.addConfidentiality(convert.makeCodeableConceptFromCD(cda.getChild(doc, "confidentialityCode")));
+		ref.addConfidentiality(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(doc, "confidentialityCode")), null));
 		ref.addContent().setContentType("application/hl7-v3+xml").setUrl("Binary/"+context.baseId).setLanguage(convertLanguage(cda.getChild(doc, "language")));
 		ref.setContext(new DocumentReferenceContextComponent());
 		ref.getContext().setPeriod(convert.makePeriodFromIVL(cda.getChild(cda.getChild(doc, "serviceEvent"), "effectiveTime")));
 		for (CodeableConcept cc : context.encounter.getType())
 			ref.getContext().addEvent(cc);
 		ref.setDescription(cda.getChild(doc, "title").getTextContent());
-		ref.setCustodian(new Reference().setReference("Organization/"+processOrganization(cda.getDescendent(doc, "custodian/assignedCustodian/representedCustodianOrganization"), cda, convert, context)));
+		ref.setCustodian(new Reference().setReference("Organization/"+processOrganization(cda.getDescendent(doc, "custodian/assignedCustodian/representedCustodianOrganization"), cda, convert, context).getId()));
 		Practitioner p = processPerformer(cda, convert, context, cda.getChild(doc, "legalAuthenticator"), "assignedEntity", "assignedPerson");
 		ref.setAuthenticator(new Reference().setReference("Practitioner/"+p.getId()).setDisplay(p.getUserString("display")));
 	  saveResource(ref);

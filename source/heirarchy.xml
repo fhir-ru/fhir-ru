@@ -31,7 +31,7 @@ signatures.html
 			<page title="References" filename="references.html">
 				<page title="Definitions" filename="references-definitions.html"/>
 			</page>
-			<page title="Compartment Based Access" filename="extras.html">
+			<page title="Compartment Based Access" filename="compartments.html">
 				<page title="Patient Compartment" filename="compartment-patient.html"/>
 				<page title="Encounter Compartment" filename="compartment-encounter.html"/>
 				<page title="RelatedPerson Compartment" filename="compartment-relatedPerson.html"/>
@@ -57,6 +57,7 @@ signatures.html
 				<page title="Examples" filename="datatypes-examples.html"/>
 				<page title="Detailed Descriptions" filename="datatypes-definitions.html"/>
 				<page title="Mappings" filename="datatypes-mappings.html"/>
+				<page title="identifier Registry" filename="identifier-registry.html"/>
 			</page>
 			<page type="resource" resource="DomainResource"/>
 			<page title="Element Definition" filename="element.html">
@@ -70,6 +71,7 @@ signatures.html
 				<page title="ElementDefinition Detailed Descriptions" filename="elementdefinition-definitions.html"/>
 				<page title="ElementDefinition Mappings" filename="elementdefinition-mappings.html"/>
 			</page>
+			<page title="Ontology" filename="ontology.html"/>
 
 			<page title="Using Codes" filename="terminologies.html">
 				<page title="Systems" filename="terminologies-systems.html">
@@ -266,6 +268,7 @@ signatures.html
 			<!--    <page type="resource" resource="SecurityPrincipal"/>
     <page type="resource" resource="SecurityGroup"/>
     <page type="resource" resource="SecurityClaim"/>-->
+			<page type="resource" resource="ImplementationGuide"/>
 			<page type="resource" resource="Conformance"/>
 			<page type="resource" resource="StructureDefinition"/>
 			<page type="resource" resource="OperationDefinition"/>
@@ -274,6 +277,7 @@ signatures.html
 			<page type="resource" resource="ValueSet"/>
 			<page type="resource" resource="NamingSystem"/>
 			<page type="resource" resource="ConceptMap"/>
+			<page type="resource" resource="TestScript" />
 		</page>
 		<page title="Financial" filename="financial.html">
 			<page type="resource" resource="Claim"/>

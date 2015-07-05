@@ -29,40 +29,41 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Apr 24, 2015 15:59+1000 for FHIR v0.5.0
+// Generated on Fri, Jul 3, 2015 12:36+1000 for FHIR v0.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
-import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
+import org.hl7.fhir.instance.model.annotations.Block;
+import org.hl7.fhir.instance.model.api.*;
 /**
  * Record of delivery of what is supply.
  */
 @ResourceDef(name="SupplyDelivery", profile="http://hl7.org/fhir/Profile/SupplyDelivery")
 public class SupplyDelivery extends DomainResource {
 
-    public enum ValuesetSupplydeliveryStatus {
+    public enum SupplyDeliveryStatus {
         /**
-         * Supply has been requested, but not delivered.
+         * Supply has been requested, but not delivered
          */
         INPROGRESS, 
         /**
-         * Supply has been delivered. ( "completed").
+         * Supply has been delivered. ( "completed")
          */
         COMPLETED, 
         /**
-         * Dispensing was not completed.
+         * Dispensing was not completed
          */
         ABANDONED, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static ValuesetSupplydeliveryStatus fromCode(String codeString) throws Exception {
+        public static SupplyDeliveryStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("in-progress".equals(codeString))
@@ -71,7 +72,7 @@ public class SupplyDelivery extends DomainResource {
           return COMPLETED;
         if ("abandoned".equals(codeString))
           return ABANDONED;
-        throw new Exception("Unknown ValuesetSupplydeliveryStatus code '"+codeString+"'");
+        throw new Exception("Unknown SupplyDeliveryStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -83,17 +84,17 @@ public class SupplyDelivery extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case INPROGRESS: return "";
-            case COMPLETED: return "";
-            case ABANDONED: return "";
+            case INPROGRESS: return "http://hl7.org/fhir/valueset-supplydelivery-status";
+            case COMPLETED: return "http://hl7.org/fhir/valueset-supplydelivery-status";
+            case ABANDONED: return "http://hl7.org/fhir/valueset-supplydelivery-status";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case INPROGRESS: return "Supply has been requested, but not delivered.";
-            case COMPLETED: return "Supply has been delivered. ( 'completed').";
-            case ABANDONED: return "Dispensing was not completed.";
+            case INPROGRESS: return "Supply has been requested, but not delivered";
+            case COMPLETED: return "Supply has been delivered. ( 'completed')";
+            case ABANDONED: return "Dispensing was not completed";
             default: return "?";
           }
         }
@@ -107,25 +108,25 @@ public class SupplyDelivery extends DomainResource {
         }
     }
 
-  public static class ValuesetSupplydeliveryStatusEnumFactory implements EnumFactory<ValuesetSupplydeliveryStatus> {
-    public ValuesetSupplydeliveryStatus fromCode(String codeString) throws IllegalArgumentException {
+  public static class SupplyDeliveryStatusEnumFactory implements EnumFactory<SupplyDeliveryStatus> {
+    public SupplyDeliveryStatus fromCode(String codeString) throws IllegalArgumentException {
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("in-progress".equals(codeString))
-          return ValuesetSupplydeliveryStatus.INPROGRESS;
+          return SupplyDeliveryStatus.INPROGRESS;
         if ("completed".equals(codeString))
-          return ValuesetSupplydeliveryStatus.COMPLETED;
+          return SupplyDeliveryStatus.COMPLETED;
         if ("abandoned".equals(codeString))
-          return ValuesetSupplydeliveryStatus.ABANDONED;
-        throw new IllegalArgumentException("Unknown ValuesetSupplydeliveryStatus code '"+codeString+"'");
+          return SupplyDeliveryStatus.ABANDONED;
+        throw new IllegalArgumentException("Unknown SupplyDeliveryStatus code '"+codeString+"'");
         }
-    public String toCode(ValuesetSupplydeliveryStatus code) {
-      if (code == ValuesetSupplydeliveryStatus.INPROGRESS)
+    public String toCode(SupplyDeliveryStatus code) {
+      if (code == SupplyDeliveryStatus.INPROGRESS)
         return "in-progress";
-      if (code == ValuesetSupplydeliveryStatus.COMPLETED)
+      if (code == SupplyDeliveryStatus.COMPLETED)
         return "completed";
-      if (code == ValuesetSupplydeliveryStatus.ABANDONED)
+      if (code == SupplyDeliveryStatus.ABANDONED)
         return "abandoned";
       return "?";
       }
@@ -134,21 +135,21 @@ public class SupplyDelivery extends DomainResource {
     /**
      * Identifier assigned by the dispensing facility when the item(s) is dispensed.
      */
-    @Child(name ="identifier", type={Identifier.class}, order=0, min=0, max=1)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=1)
     @Description(shortDefinition="External identifier", formalDefinition="Identifier assigned by the dispensing facility when the item(s) is dispensed." )
     protected Identifier identifier;
 
     /**
      * A code specifying the state of the dispense event.
      */
-    @Child(name ="status", type={CodeType.class}, order=1, min=0, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=1, min=0, max=1)
     @Description(shortDefinition="in-progress | completed | abandoned", formalDefinition="A code specifying the state of the dispense event." )
-    protected Enumeration<ValuesetSupplydeliveryStatus> status;
+    protected Enumeration<SupplyDeliveryStatus> status;
 
     /**
      * A link to a resource representing the person whom the delivered item is for.
      */
-    @Child(name ="patient", type={Patient.class}, order=2, min=0, max=1)
+    @Child(name = "patient", type = {Patient.class}, order=2, min=0, max=1)
     @Description(shortDefinition="Patient for whom the item is supplied", formalDefinition="A link to a resource representing the person whom the delivered item is for." )
     protected Reference patient;
 
@@ -160,21 +161,21 @@ public class SupplyDelivery extends DomainResource {
     /**
      * Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.
      */
-    @Child(name ="type", type={CodeableConcept.class}, order=3, min=0, max=1)
+    @Child(name = "type", type = {CodeableConcept.class}, order=3, min=0, max=1)
     @Description(shortDefinition="Category of dispense event", formalDefinition="Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc." )
     protected CodeableConcept type;
 
     /**
      * The amount of supply that has been dispensed. Includes unit of measure.
      */
-    @Child(name ="quantity", type={Quantity.class}, order=4, min=0, max=1)
+    @Child(name = "quantity", type = {Quantity.class}, order=4, min=0, max=1)
     @Description(shortDefinition="Amount dispensed", formalDefinition="The amount of supply that has been dispensed. Includes unit of measure." )
     protected Quantity quantity;
 
     /**
      * Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.
      */
-    @Child(name ="suppliedItem", type={Medication.class, Substance.class, Device.class}, order=5, min=0, max=1)
+    @Child(name = "suppliedItem", type = {Medication.class, Substance.class, Device.class}, order=5, min=0, max=1)
     @Description(shortDefinition="Medication, Substance, or Device supplied", formalDefinition="Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list." )
     protected Reference suppliedItem;
 
@@ -186,7 +187,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * The individual responsible for dispensing the medication, supplier or device.
      */
-    @Child(name ="supplier", type={Practitioner.class}, order=6, min=0, max=1)
+    @Child(name = "supplier", type = {Practitioner.class}, order=6, min=0, max=1)
     @Description(shortDefinition="Dispenser", formalDefinition="The individual responsible for dispensing the medication, supplier or device." )
     protected Reference supplier;
 
@@ -198,21 +199,21 @@ public class SupplyDelivery extends DomainResource {
     /**
      * The time the dispense event occurred.
      */
-    @Child(name ="whenPrepared", type={Period.class}, order=7, min=0, max=1)
+    @Child(name = "whenPrepared", type = {Period.class}, order=7, min=0, max=1)
     @Description(shortDefinition="Dispensing time", formalDefinition="The time the dispense event occurred." )
     protected Period whenPrepared;
 
     /**
      * The time the dispensed item was sent or handed to the patient (or agent).
      */
-    @Child(name ="time", type={DateTimeType.class}, order=8, min=0, max=1)
+    @Child(name = "time", type = {DateTimeType.class}, order=8, min=0, max=1)
     @Description(shortDefinition="Handover time", formalDefinition="The time the dispensed item was sent or handed to the patient (or agent)." )
     protected DateTimeType time;
 
     /**
      * Identification of the facility/location where the Supply was shipped to, as part of the dispense event.
      */
-    @Child(name ="destination", type={Location.class}, order=9, min=0, max=1)
+    @Child(name = "destination", type = {Location.class}, order=9, min=0, max=1)
     @Description(shortDefinition="Where the Supply was sent", formalDefinition="Identification of the facility/location where the Supply was shipped to, as part of the dispense event." )
     protected Reference destination;
 
@@ -224,7 +225,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * Identifies the person who picked up the Supply.
      */
-    @Child(name ="receiver", type={Practitioner.class}, order=10, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "receiver", type = {Practitioner.class}, order=10, min=0, max=Child.MAX_UNLIMITED)
     @Description(shortDefinition="Who collected the Supply", formalDefinition="Identifies the person who picked up the Supply." )
     protected List<Reference> receiver;
     /**
@@ -233,8 +234,11 @@ public class SupplyDelivery extends DomainResource {
     protected List<Practitioner> receiverTarget;
 
 
-    private static final long serialVersionUID = 1949206420L;
+    private static final long serialVersionUID = 1938067331L;
 
+  /*
+   * Constructor
+   */
     public SupplyDelivery() {
       super();
     }
@@ -266,12 +270,12 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @return {@link #status} (A code specifying the state of the dispense event.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public Enumeration<ValuesetSupplydeliveryStatus> getStatusElement() { 
+    public Enumeration<SupplyDeliveryStatus> getStatusElement() { 
       if (this.status == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupplyDelivery.status");
         else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<ValuesetSupplydeliveryStatus>(new ValuesetSupplydeliveryStatusEnumFactory()); // bb
+          this.status = new Enumeration<SupplyDeliveryStatus>(new SupplyDeliveryStatusEnumFactory()); // bb
       return this.status;
     }
 
@@ -286,7 +290,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @param value {@link #status} (A code specifying the state of the dispense event.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
-    public SupplyDelivery setStatusElement(Enumeration<ValuesetSupplydeliveryStatus> value) { 
+    public SupplyDelivery setStatusElement(Enumeration<SupplyDeliveryStatus> value) { 
       this.status = value;
       return this;
     }
@@ -294,19 +298,19 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @return A code specifying the state of the dispense event.
      */
-    public ValuesetSupplydeliveryStatus getStatus() { 
+    public SupplyDeliveryStatus getStatus() { 
       return this.status == null ? null : this.status.getValue();
     }
 
     /**
      * @param value A code specifying the state of the dispense event.
      */
-    public SupplyDelivery setStatus(ValuesetSupplydeliveryStatus value) { 
+    public SupplyDelivery setStatus(SupplyDeliveryStatus value) { 
       if (value == null)
         this.status = null;
       else {
         if (this.status == null)
-          this.status = new Enumeration<ValuesetSupplydeliveryStatus>(new ValuesetSupplydeliveryStatusEnumFactory());
+          this.status = new Enumeration<SupplyDeliveryStatus>(new SupplyDeliveryStatusEnumFactory());
         this.status.setValue(value);
       }
       return this;

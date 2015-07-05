@@ -1039,13 +1039,13 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <coding>
             <system value="http://acme.com/labs/reports"/>
             <code value="25T"/>
             <display value="E/LFT (MASTER)"/>
           </coding>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-01-27T06:40:01Z"/>
         <subject>
@@ -1059,7 +1059,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2005-01-27T06:40:17Z"/>
+        <effectiveDateTime value="2005-01-27T06:40:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -1996,9 +1996,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -2012,7 +2012,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-08T07:45:17Z"/>
+        <effectiveDateTime value="2004-12-08T07:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -2934,9 +2934,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -2950,7 +2950,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-15T07:20:17Z"/>
+        <effectiveDateTime value="2004-12-15T07:20:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -3867,9 +3867,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2004-12-21T00:00:01Z"/>
         <subject>
@@ -3883,7 +3883,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-22T07:45:17Z"/>
+        <effectiveDateTime value="2004-12-22T07:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -4786,9 +4786,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2004-12-03T00:00:01Z"/>
         <subject>
@@ -4802,7 +4802,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-03T09:45:17Z"/>
+        <effectiveDateTime value="2004-12-03T09:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -5707,9 +5707,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -5723,7 +5723,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-03T20:30:17Z"/>
+        <effectiveDateTime value="2004-12-03T20:30:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -6628,9 +6628,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -6644,7 +6644,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-05T07:15:17Z"/>
+        <effectiveDateTime value="2004-12-05T07:15:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -7550,9 +7550,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -7566,7 +7566,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2005-01-27T06:40:17Z"/>
+        <effectiveDateTime value="2005-01-27T06:40:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -8500,9 +8500,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -8516,7 +8516,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-08T07:45:17Z"/>
+        <effectiveDateTime value="2004-12-08T07:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -9438,9 +9438,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -9454,7 +9454,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-15T07:20:17Z"/>
+        <effectiveDateTime value="2004-12-15T07:20:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -10371,9 +10371,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -10387,7 +10387,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-22T07:45:17Z"/>
+        <effectiveDateTime value="2004-12-22T07:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -11290,9 +11290,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -11306,7 +11306,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-03T09:45:17Z"/>
+        <effectiveDateTime value="2004-12-03T09:45:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -12211,9 +12211,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -12227,7 +12227,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-03T20:30:17Z"/>
+        <effectiveDateTime value="2004-12-03T20:30:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -13132,9 +13132,9 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <text value="SERUM CHEMISTRY"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-02-23T10:04:01Z"/>
         <subject>
@@ -13148,7 +13148,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2004-12-05T07:15:17Z"/>
+        <effectiveDateTime value="2004-12-05T07:15:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -13669,13 +13669,13 @@
             <reliability value="ok"/>
           </Observation>
         </contained>
-        <name>
+        <code>
           <coding>
             <system value="http://loinc.org"/>
             <code value="18769-0"/>
             <display value="Microbial susceptibility tests Set"/>
           </coding>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-11-07T23:38:01Z"/>
         <subject>
@@ -13689,7 +13689,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2005-11-07T21:44:17Z"/>
+        <effectiveDateTime value="2005-11-07T21:44:17Z"/>
         <specimen>
           <display value="URINE, CLEAN CATCH/MIDSTREAM"/>
         </specimen>
@@ -13778,14 +13778,14 @@
             <reliability value="ok"/>
           </Observation>
         </contained>
-        <name>
+        <code>
           <coding>
             <system value="http://acme.com/labs/reports"/>
             <code value="142080"/>
             <display value="Rapid Plasma Reagin"/>
           </coding>
           <text value="RPR"/>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2005-03-07T14:02:01Z"/>
         <subject>
@@ -13799,7 +13799,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="5234342"/>
         </identifier>
-        <diagnosticDateTime value="2005-03-07T14:02:17Z"/>
+        <effectiveDateTime value="2005-03-07T14:02:17Z"/>
         <result>
           <reference value="#o1"/>
         </result>
@@ -13860,13 +13860,13 @@
             </referenceRange>
           </Observation>
         </contained>
-        <name>
+        <code>
           <coding>
             <system value="http://acme.com/labs/reports"/>
             <code value="bchem2"/>
             <display value="Specialist Biochemistry"/>
           </coding>
-        </name>
+        </code>
         <status value="final"/>
         <issued value="2012-05-23T14:27:01Z"/>
         <subject>
@@ -13880,7 +13880,7 @@
           <system value="http://acme.com/lab/reports"/>
           <value value="23412355"/>
         </identifier>
-        <diagnosticDateTime value="2012-05-21T10:45:00Z"/>
+        <effectiveDateTime value="2012-05-21T10:45:00Z"/>
         <result>
           <reference value="#o1"/>
         </result>

@@ -47,16 +47,6 @@ const
   MAX_DATE = DATETIME_MAX;
   ANY_CODE_VS = 'http://www.healthintersections.com.au/fhir/ValueSet/anything';
 
-type
-  TFhirConceptMapConceptList = TFhirConceptMapElementList;
-  TFhirConceptMapConceptMapList = TFhirConceptMapElementMapList;
-  TFhirConceptMapConcept = TFhirConceptMapElement;
-  TFhirConceptMapConceptMap = TFhirConceptMapElementMap;
-
-const
-  ValueSetStatusActive = ConformanceResourceStatusActive;
-  ConformanceStatementStatusActive = ConformanceResourceStatusActive;
-
 function HumanNameAsText(name : TFhirHumanName):String;
 function GetEmailAddress(contacts : TFhirContactPointList):String;
 function ResourceTypeByName(name : String) : TFhirResourceType;
@@ -72,6 +62,7 @@ function ParseXhtml(lang : String; content : String; policy : TFHIRXhtmlParserPo
 function geTFhirResourceNarrativeAsText(resource : TFhirDomainResource) : String;
 function IsId(s : String) : boolean;
 function fullResourceUri(base: String; aType : TFhirResourceType; id : String) : String; overload;
+function fullResourceUri(base: String; url : String) : String; overload;
 function fullResourceUri(base: String; ref : TFhirReference) : String; overload;
 function isHistoryURL(url : String) : boolean;
 procedure splitHistoryUrl(var url : String; var history : String);
@@ -130,7 +121,9 @@ type
     procedure addExtension(url : String; v : String); overload;
     function hasExtension(url : String) : boolean;
     function getExtension(url : String) : Integer;
-    function getExtensionString(url : String) : String;
+    function getExtensionCount(url : String) : Integer;
+    function getExtensionString(url : String) : String; overload;
+    function getExtensionString(url : String; index : integer) : String; overload;
     procedure removeExtension(url : String);
     procedure setExtensionString(url, value : String);
   end;
@@ -149,11 +142,13 @@ type
   public
     property Contained[id : String] : TFhirResource read GetContained; default;
     procedure collapseAllContained;
-    procedure addExtension(url : String; t : TFhirType); overload;
-    procedure addExtension(url : String; v : String); overload;
+    function addExtension(url : String; t : TFhirType) : TFhirExtension; overload;
+    function addExtension(url : String; v : String) : TFhirExtension; overload;
     function hasExtension(url : String) : boolean;
     function getExtension(url : String) : Integer;
-    function getExtensionString(url : String) : String;
+    function getExtensionCount(url : String) : Integer;
+    function getExtensionString(url : String) : String; overload;
+    function getExtensionString(url : String; index : integer) : String; overload;
     procedure removeExtension(url : String);
     procedure setExtensionString(url, value : String);
   end;
@@ -184,6 +179,12 @@ type
     procedure setSystem(type_ : TFhirContactPointSystem; value : String);
   end;
 
+  TFhirValueSetContactListHelper = class helper for TFhirValueSetContactList
+  public
+    function system(type_ : TFhirContactPointSystem) : String;
+    procedure setSystem(type_ : TFhirContactPointSystem; value : String);
+  end;
+
   TFHIROperationOutcomeHelper = class helper (TFHIRDomainResourceHelper) for TFhirOperationOutcome
   public
     function rule(level : TFhirIssueSeverity; source, typeCode, path : string; test : boolean; msg : string) : boolean;
@@ -192,29 +193,6 @@ type
     function hint(source, typeCode, path : string; test : boolean; msg : string) : boolean;
 
     function hasErrors : boolean;
-  end;
-
-  TFhirConceptMapElementHelper = class helper (TFhirElementHelper) for TFhirConceptMapElement
-  public
-    function systemObject : TFhirUri;
-    function system : String;
-  end;
-
-  TFhirConceptMapElementDependsOnHelper = class helper (TFhirElementHelper) for TFhirConceptMapElementDependsOn
-  public
-    function conceptObject : TFhirUri;
-    function concept : String;
-  end;
-
-  TFhirConceptMapHelper = class helper (TFhirResourceHelper) for TFhirConceptMap
-  public
-    function conceptList : TFhirConceptMapElementList;
-  end;
-
-  TFhirConceptMapElementMapHelper = class helper (TFhirElementHelper) for TFhirConceptMapElementMap
-  public
-    function systemObject : TFhirUri;
-    function system : String;
   end;
 
   TFHIRBundleHelper = class helper (TFhirResourceHelper) for TFHIRBundle
@@ -247,9 +225,11 @@ type
   TFhirParametersHelper = class helper for TFhirParameters
   private
     function GetNamedParameter(name: String): TFhirBase;
+    function GetStringParameter(name: String): String;
   public
     function hasParameter(name : String):Boolean;
     Property NamedParameter[name : String] : TFhirBase read GetNamedParameter; default;
+    Property str[name : String] : String read GetStringParameter;
     procedure AddParameter(name: String; value: TFhirType); overload;
     procedure AddParameter(name: String; value: TFhirResource); overload;
     procedure AddParameter(name: String; value: boolean); overload;
@@ -261,6 +241,7 @@ type
     function HasTag(system, code : String)  : boolean;
   end;
 
+function Path(const parts : array of String) : String;
 
 
 function ZCompressBytes(const s: TBytes): TBytes;
@@ -1356,20 +1337,28 @@ begin
   ext.value := TFhirString.Create(value);
 end;
 
-{ TFHIRDomainResourceHelper }
-
-procedure TFHIRDomainResourceHelper.addExtension(url: String; t: TFhirType);
+function TFHIRElementHelper.getExtensionCount(url: String): Integer;
 var
-  ex : TFhirExtension;
+  i : integer;
 begin
-  ex := self.ExtensionList.Append;
-  ex.url := url;
-  ex.value := t; // nolink here (done outside)
+  result := 0;
+  for i := 0 to self.ExtensionList.Count - 1 do
+    if self.ExtensionList[i].url = url then
+      inc(result);
 end;
 
-procedure TFHIRDomainResourceHelper.addExtension(url, v: String);
+{ TFHIRDomainResourceHelper }
+
+function TFHIRDomainResourceHelper.addExtension(url: String; t: TFhirType) : TFhirExtension;
 begin
-  addExtension(url, TFhirString.Create(v));
+  result := self.ExtensionList.Append;
+  result.url := url;
+  result.value := t; // nolink here (done outside)
+end;
+
+function TFHIRDomainResourceHelper.addExtension(url, v: String) : TFhirExtension;
+begin
+  result := addExtension(url, TFhirString.Create(v));
 end;
 
 function TFHIRDomainResourceHelper.getExtension(url: String): Integer;
@@ -1380,6 +1369,42 @@ begin
   for i := 0 to self.ExtensionList.Count -1 do
     if self.ExtensionList[i].url = url then
       result := i;
+end;
+
+function TFHIRDomainResourceHelper.getExtensionCount(url: String): Integer;
+var
+  i : integer;
+begin
+  result := 0;
+  for i := 0 to self.ExtensionList.Count - 1 do
+    if self.ExtensionList[i].url = url then
+      inc(result);
+end;
+
+function TFHIRDomainResourceHelper.getExtensionString(url: String; index: integer): String;
+var
+  ndx : Integer;
+begin
+  result := '';
+  for ndx := 0 to self.ExtensionList.Count - 1 do
+  begin
+    if self.ExtensionList[ndx].url = url then
+    begin
+      if index > 0 then
+        dec(index)
+      else
+      begin
+        if (self.ExtensionList.Item(ndx).value is TFhirString) then
+          result := TFhirString(self.ExtensionList.Item(ndx).value).value
+        else if (self.ExtensionList.Item(ndx).value is TFhirCode) then
+          result := TFhirCode(self.ExtensionList.Item(ndx).value).value
+        else if (self.ExtensionList.Item(ndx).value is TFhirUri) then
+          result := TFhirUri(self.ExtensionList.Item(ndx).value).value
+        else
+          result := '';
+      end;
+    end;
+  end;
 end;
 
 function TFHIRDomainResourceHelper.getExtensionString(url: String): String;
@@ -1524,51 +1549,6 @@ begin
   FreeMem(buffer);
   {$ENDIF}
 end;
-
-{$IFNDEF FHIR-DSTU}
-{ TFhirConceptMapElementHelper }
-
-function TFhirConceptMapElementHelper.systemObject: TFhirUri;
-begin
-  result := codeSystemElement;
-end;
-
-function TFhirConceptMapElementHelper.system: String;
-begin
-  result := codeSystem;
-end;
-
-{ TFhirConceptMapElementMapHelper }
-
-function TFhirConceptMapElementMapHelper.systemObject: TFhirUri;
-begin
-  result := codeSystemElement;
-end;
-
-function TFhirConceptMapElementMapHelper.system: String;
-begin
-  result := codeSystem;
-end;
-
-{ TFhirConceptMapHelper }
-
-function TFhirConceptMapHelper.conceptList: TFhirConceptMapElementList;
-begin
-  result := elementList;
-end;
-
-{ TFhirConceptMapElementDependsOnHelper }
-
-function TFhirConceptMapElementDependsOnHelper.conceptObject: TFhirUri;
-begin
-  result := elementElement;
-end;
-
-function TFhirConceptMapElementDependsOnHelper.concept: String;
-begin
-  result := element;
-end;
-{$ENDIF}
 
 
 { TFHIRDomainResourceHelper }
@@ -1774,6 +1754,18 @@ begin
     result := AppendForwardSlash(base)+url;
 end;
 
+function fullResourceUri(base: String; url : String) : String; overload;
+begin
+  if url = '' then
+    result := ''
+  else if url.StartsWith('urn:oid:') or url.StartsWith('urn:uuid:') or url.StartsWith('http://') or url.StartsWith('https://') then
+    result := url
+  else if not base.StartsWith('http://') and not base.StartsWith('https://')  then
+    raise Exception.Create('The resource base of "'+base+'" is not understood')
+  else
+    result := AppendForwardSlash(base)+url;
+end;
+
 function isHistoryURL(url : String) : boolean;
 begin
   result := url.Contains('/_history/') and IsId(url.Substring(url.IndexOf('/_history/')+10));
@@ -1838,6 +1830,11 @@ begin
   result := nil;
 end;
 
+function TFhirParametersHelper.GetStringParameter(name: String): String;
+begin
+  result := (NamedParameter[name] as TFhirPrimitiveType).StringValue;
+end;
+
 function TFhirParametersHelper.hasParameter(name: String): Boolean;
 var
   i: Integer;
@@ -1883,6 +1880,76 @@ begin
   result := false;
   for i := 0 to taglist.Count - 1 do
     result := result or (taglist[i].system = system) and (taglist[i].code = code);
+end;
+
+function Path(const parts : array of String) : String;
+var
+  i : integer;
+begin
+  if length(parts) = 0 then
+    result := ''
+  else
+    result := parts[0];
+  for i := 1 to high(parts) do
+    result := IncludeTrailingPathDelimiter(result) + parts[i];
+end;
+
+
+function TFHIRElementHelper.getExtensionString(url: String; index: integer): String;
+var
+  ndx : Integer;
+begin
+  result := '';
+  for ndx := 0 to self.ExtensionList.Count - 1 do
+  begin
+    if self.ExtensionList[ndx].url = url then
+    begin
+      if index > 0 then
+        dec(index)
+      else
+      begin
+        if (self.ExtensionList.Item(ndx).value is TFhirString) then
+          result := TFhirString(self.ExtensionList.Item(ndx).value).value
+        else if (self.ExtensionList.Item(ndx).value is TFhirCode) then
+          result := TFhirCode(self.ExtensionList.Item(ndx).value).value
+        else if (self.ExtensionList.Item(ndx).value is TFhirUri) then
+          result := TFhirUri(self.ExtensionList.Item(ndx).value).value
+        else
+          result := '';
+      end;
+    end;
+  end;
+end;
+
+{ TFhirValueSetContactListHelper }
+
+procedure TFhirValueSetContactListHelper.setSystem(type_: TFhirContactPointSystem; value: String);
+var
+  i : integer;
+  c : TFhirContactPoint;
+begin
+  if Count = 0 then
+    Append;
+  for i := 0 to Item(0).telecomList.Count - 1 do
+    if Item(0).telecomList[i].system = type_ then
+    begin
+      Item(0).telecomList[i].value := value;
+      exit;
+    end;
+  c := Item(0).telecomList.Append;
+  c.system := type_;
+  c.value := value;
+end;
+
+function TFhirValueSetContactListHelper.system(type_: TFhirContactPointSystem): String;
+var
+  i, j : integer;
+begin
+  result := '';
+  for j := 0 to Count - 1 do
+    for i := 0 to Item(j).telecomList.Count - 1 do
+     if Item(j).telecomList[i].system = type_ then
+       result := Item(j).telecomList[i].value;
 end;
 
 end.
