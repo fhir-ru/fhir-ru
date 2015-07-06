@@ -254,7 +254,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   public final static String DEV_TS_SERVER = "http://local.healthintersections.com.au:980/open";
   
   public final static String WEB_PUB_NAME = "DSTU2 Ballot Source";
-  public final static String CI_PUB_NAME = "Текущая сборка"; //Current Build
+  public final static String CI_PUB_NAME = "Текущая сборка";
   
   public final static String WEB_PUB_NOTICE =
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
@@ -684,21 +684,6 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         }
       } else if (com[0].equals("toc"))
         src = s1 + generateToc() + s3;
-	  else if (com[0].equals("vsnameonly")) {
-        if (resource != null)
-          src = s1 + ((ValueSet) resource).getUrl() + s3;
-        else {
-        BindingSpecification bs = definitions.getBindingByName(Utilities.fileTitle(file));
-        if (bs == null) {
-          src = s1 + Utilities.fileTitle(file) + s3;
-			} else {
-          String reference = bs.getReference();
-          /* if (reference.startsWith("valueset-"))
-            reference = reference.substring(9); */
-          src = s1 + reference + s3;
-			}
-		  }		  
-       }
       else if (com[0].equals("txdef"))
         src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("vsdef"))
@@ -4064,7 +4049,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append("<tr><td>");
     b.append("<b>Имя</b>");
     b.append("</td><td>");
-    b.append("<b>Кардинальное число</b>");
+    b.append("<b>Кардинальное множество</b>");
+    b.append("</td><td>");
+    b.append("<b>Тип</b>");
     b.append("</td><td>");
     b.append("<b>Привязка</b>");
     b.append("</td><td>");
@@ -4457,7 +4444,6 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         constraints.put(p.getId(), p);
     for (String rn : definitions.sortedResourceNames()) 
       for (Profile ap: definitions.getResourceByName(rn).getConformancePackages())
-
         for (ConstraintStructure p : ap.getProfiles()) 
           constraints.put(p.getId(), p);
     names.clear();
