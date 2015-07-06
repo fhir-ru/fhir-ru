@@ -27,16 +27,16 @@
             <display value="High density lipoprotein cholesterol level"/>
         </coding>
     </reasonCodeableConcept>
-    <medication> <!-- Linked to a RESOURCE Medication -->
+    <medicationReference> <!-- Linked to a RESOURCE Medication -->
         <reference value="Medication/f002"/>
         <display value="prescribed medication"/>
-    </medication> 
+    </medicationReference> 
     <dosageInstruction>
         <scheduledTiming>
             <repeat>
-                <bounds>
+                <boundsPeriod>
                     <start value="2013-08-04"/>
-                </bounds>
+                </boundsPeriod>
                 <frequency value="1"/>
                 <period value="1"/>
                 <periodUnits value="d"/>

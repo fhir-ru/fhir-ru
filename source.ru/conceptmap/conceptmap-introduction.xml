@@ -4,35 +4,42 @@
 <h2>Область применения и использование<!-- Scope and Usage --></h2> 
 <p>
 Карта соответствия концептов определяет отображение концепта, определенного в <a href="terminologies.html">одной системе</a>, на один или несколько концептов, определенных в других системах.
-Мэппинги всегда ограничены понятием <a href="valueset.html">набор значений</a> - они специфичны для контекста использования. 
+Мэппинги являются односторонними - от источника в назначение. В большинстве случаев обратный мэппинг будет верным, однако это не следует принимать за правило.  
 <!-- A concept map defines a mapping from a concept defined in <a href="terminologies.html">one system</a> to one or more concepts defined in other systems. 
-Mappings are always framed within the concept of <a href="valueset.html">value sets</a> - they are specific to a context of use.  -->
+Mappings are one way - from the source to the destination. In many cases, the reverse mappings are valid, but this cannot be assumed to be the case.  -->
 </p> 
-
 <p>
-Обратите внимание, что мэппинги односторонние - от источника в назначение. В большинстве случаев обратные мэппинги 
-допустимы, но не могут быть приняты за правило.
-<!-- Note that the mappings are one way - from the source to the destination. In many cases, the reverse mappings 
-are valid, but this cannot be assumed to be the case.  -->
-</p>
-<p>
-Мэппинги между кодовыми системами определяются только в контексте указанных наборов значений источника и назначения.
-Мэппинги могут применяться в других контекстах, но это должно определяться на основе контекста использования и 
-значения; это не может считаться само собой разумеющимся автоматически. Все кодовые системы имеют наборы значений, которые 
-включают кодовую систему целиком, и эти наборы значений можно использовать для мэппингов, которые будут валидными во всех контекстах.
-<!-- Mappings between code systems are only defined in the context of the specified source and destination valuesets. 
+Мэппинги между кодовыми системами определены только в контексте указанных <a href="valueset.html">наборов значений</a> источника и назначения - они различаются в зависимости от конкретного контекста использования.
+Мэппинги могут подходить для применения в других контекстах, но это необходимо определять на основе контекста использования и смысла; такая возможность не может считаться сама собой разумеющейся автоматически. Обратите внимание, что все кодовые системы имеют наборы значений, которые включают всю кодовую систему целиком, и такие наборы значений можно использовать для мэппингов, которые будут валидными во всех контекстах.
+<!-- Mappings between code systems are only defined in the context of the specified source and destination <a href="valueset.html">value sets</a> - they are specific to a particular context of use. 
 The mappings may be useful in other contexts, but this must be determined based on the context of use and 
-meaning; it cannot be taken for granted automatically. All code systems have value sets that include the entire
-code system, and these value sets can be used for mappings that are valid in all contexts. -->
+meaning; it cannot be taken for granted automatically. Note that all code systems have value sets that include the entire
+code system, and these value sets can be used for mappings that are valid in all contexts.  -->
 </p>
 <p>
-Каждый мэппинг концепта от источника в назначение также включает показатель [<a rel="nofollow" class="external text" 
-href="concept-equivalence.html">эквивалентности</a>], 
-который указывает, насколько равнозначен мэппинг (или, в некоторых случаях, что допустимые соответствия отсутствуют).
-<!-- Each mapping for a concept from source to destination also includes an [<a rel="nofollow" class="external text" 
-href="concept-equivalence.html">equivalence</a>] property that 
-specifies how similar the mapping is (or, in some cases, that there is no valid mapping).  -->
+Каждый мэппинг концепта от источника в назначение содержит показатель [<a rel="nofollow" class="external text" 
+href="concept-map-equivalence.html">эквивалентности</a>], который указывает, насколько равнозначен мэппинг (или, в некоторых случаях, что допустимые соответствия отсутствуют).
+В источнике содержится по одному <code>элементу</code> для каждого концепта или поля, которому необходим мэппинг. У каждого концепта источника может быть несколько адресатов: 
+<!-- Each mapping for a concept from source to target includes an [<a rel="nofollow" class="external text" 
+href="concept-map-equivalence.html">equivalence</a>] property that 
+specifies how similar the mapping is (or, in some cases, that there is no valid mapping). 
+There is one <code>element</code> for each concept or field in the source that needs to be mapped.
+Each source concept may have multiple targets:  -->
 </p>
+<ul>
+ <li>поскольку имеется несколько возможных мэппингов (например неоднозначных) 
+because there are multiple possible mappings (e.g. ambiguous)</li>
+ <li>чтобы указать корректный мэппинг, а остальные пометить как недопустимые 
+to specify a correct map, and specify other mappings as invalid</li>
+ <li>когда имеется несколько мэппингов, зависящих от значений других элементов (dependsOn) 
+when there are multiple mappings depending on the values of other elements (dependsOn)</li>
+</ul>
+<p>
+У каждого элемента должен быть указан хотя бы один адресат, однако некоторые неполные карты соответствия концептов могут не иметь адресата для каждого концепта.
+There SHOULD be at least one target for each element, but some incomplete concept maps 
+may not have a target for each concept. 
+</p>
+
 </div> 
 
 <div>

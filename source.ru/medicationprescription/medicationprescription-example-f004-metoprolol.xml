@@ -27,16 +27,16 @@
             <display value="High blood pressure"/>
         </coding>
     </reasonCodeableConcept>
-    <medication> <!-- Linked to a RESOURCE Medication -->
+    <medicationReference> <!-- Linked to a RESOURCE Medication -->
         <reference value="Medication/f004"/>
         <display value="prescribed medication"/>
-    </medication> 
+    </medicationReference> 
     <dosageInstruction>
         <scheduledTiming>
             <repeat>
-                <bounds>
+                <boundsPeriod>
                     <start value="2011-05-01"/>
-                </bounds>
+                </boundsPeriod>
                 <frequency value="1"/>
                 <period value="1"/>
                 <periodUnits value="d"/>

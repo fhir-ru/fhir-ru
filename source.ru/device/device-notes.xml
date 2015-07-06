@@ -1,24 +1,13 @@
-<html>
-  <head>
-    <meta name="generator"
-    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
-    <title></title>
-  </head>
-  <body>
-    <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemalocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
       <h3>Примечания:
       <!-- Notes --></h3>
       <h4>Типы медицинских изделий
       <!-- Device Types --></h4>
-      <p>Есть много источников возможных кодов для типа устройства. Пример
-      предлагает использовать коды устройств от RTM. Другой источник,
-      который подходит для большинства устройств - это локальный
-      репозиторий UDI (в США это база данных GUDID). Полная UDI-строка помещается
-      в элемент Device.udi. В качестве альтернативы, во многих юрисдикциях
+      <p>Есть много источников возможных кодов для типа устройства. В примере используются коды изделий от Global Medical Device Nomenclature (GMDN&reg;). Другой источник, который может оказаться подходящим, это RTM (Rosetta Terminology Mapping). Локальный
+      репозиторий UDI (в США это база данных GUDID) - это еще один источник, однако полная строка UDI помещается в элемент Device.udi. В качестве альтернативы, во многих юрисдикциях
       имеются свои собственные договоренности цепи поставок, которые
       определяют большинство подходящих кодов. 
-      <!--            There are many sources of possible codes for device type. The example suggests to use device codes from RTM. Another source which is appropriate for many devices is the local UDI repository (in the US this is the GUDID database). The full UDI string is placed in the Device.udi element.  Alternatively, many jurisdictions have their own supply chain arrangements which define many useful codes. --></p>
+      <!-- There are many sources of possible codes for device type. The example uses device codes from Global Medical Device Nomenclature (GMDN&reg;).  Another source which may be appropriate is RTM (Rosetta Terminology Mapping). The local UDI repository (in the US this is the GUDID database) is another source as well, however, the full UDI string is placed in the Device.udi element.  Alternatively, many jurisdictions have their own supply chain arrangements which define many useful codes. --></p>
       <h4>Идентификаторы устройства
       <!-- Device Identifiers --></h4>
       <p>Почти всем устройствам присваивается один или несколько

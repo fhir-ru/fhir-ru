@@ -123,6 +123,11 @@
     <display value="Free-standing ambulatory surgery facility"/>
     <display value="Free-standing ambulatory surgery facility (environment)"/>
   </concept>
+  <concept id="106292003" display="Professional nurse (occupation)">
+    <display value="Nurse"/>
+    <display value="Professional nurse"/>
+    <display value="Professional nurse (occupation)"/>
+  </concept>
   <concept id="108241001" display="Dialysis procedure (procedure)">
     <display value="Dialysis procedure"/>
     <display value="Dialysis procedure (procedure)"/>
@@ -647,6 +652,12 @@
     <display value="Pleuropericardial chest pain"/>
     <display value="Pleuropericardial chest pain (finding)"/>
   </concept>
+  <concept id="13383001" display="Structure of apex of heart (body structure)">
+    <display value="Apex of heart"/>
+    <display value="Structure of apex of heart"/>
+    <display value="Cardiac apex"/>
+    <display value="Structure of apex of heart (body structure)"/>
+  </concept>
   <concept id="134623009" display="Capecitabine 150mg tablet (product)">
     <display value="Capecitabine 150mg tablet (product)"/>
     <display value="Capecitabine 150mg tablet"/>
@@ -811,6 +822,11 @@
     <display value="Revised diagnosis (contextual qualifier)"/>
     <display value="Revised diagnosis (contextual qualifier) (qualifier value)"/>
   </concept>
+  <concept id="158965000" display="Medical practitioner (occupation)">
+    <display value="Medical practitioner"/>
+    <display value="Doctor"/>
+    <display value="Medical practitioner (occupation)"/>
+  </concept>
   <concept id="159285000" display="Medical laboratory technician">
     <display value="Medical laboratory technician"/>
     <display value="Medical laboratory technician (occupation)"/>
@@ -867,6 +883,24 @@
     <display value="BMI 30+ - obesity"/>
     <display value="Body mass index 30+ - obesity"/>
     <display value="Body mass index 30+ - obesity (finding)"/>
+  </concept>
+  <concept id="16310003" display="Diagnostic ultrasonography (procedure)">
+    <display value="Ultrasonography"/>
+    <display value="Ultrasonography, NOS"/>
+    <display value="Diagnostic ultrasonography, NOS"/>
+    <display value="Echography, NOS"/>
+    <display value="Ultrasound scan, NOS"/>
+    <display value="Ultrasound procedure, NOS"/>
+    <display value="Diagnostic ultrasonography"/>
+    <display value="Echography"/>
+    <display value="Ultrasound scan"/>
+    <display value="USS - Ultrasound scan"/>
+    <display value="Ultrasound"/>
+    <display value="Ultrasonogram"/>
+    <display value="US - Ultrasound"/>
+    <display value="Diagnostic sonar"/>
+    <display value="Ultrasound procedure"/>
+    <display value="Diagnostic ultrasonography (procedure)"/>
   </concept>
   <concept id="16313001" display="Tea (substance)">
     <display value="Tea"/>
@@ -940,6 +974,12 @@
     <display value="CT of chest"/>
     <display value="CT of thorax"/>
     <display value="CT of chest (procedure)"/>
+  </concept>
+  <concept id="17120007" display="Biofeedback, strain gage">
+    <display value="Biofeedback, strain gage (regime/therapy)"/>
+    <display value="Biofeedback, strain gage"/>
+    <display value="Biofeedback, strain gauge"/>
+    <display value="Biofeedback, strain gage (procedure)"/>
   </concept>
   <concept id="17162000" display="Certain">
     <display value="Certain"/>
@@ -1017,6 +1057,11 @@
   <concept id="18131002" display="Acute fulminating (qualifier value)">
     <display value="Acute fulminating"/>
     <display value="Acute fulminating (qualifier value)"/>
+  </concept>
+  <concept id="181332001" display="Entire radial artery (body structure)">
+    <display value="Radial artery"/>
+    <display value="Entire radial artery"/>
+    <display value="Entire radial artery (body structure)"/>
   </concept>
   <concept id="1814000" display="Hospital-based outpatient geriatric clinic (environment)">
     <display value="Hospital-based outpatient geriatric clinic"/>
@@ -1195,6 +1240,12 @@
     <display value="Accidents caused by electric current"/>
     <display value="Accidents caused by electric current (finding)"/>
   </concept>
+  <concept id="21840007" display="Date of last menstrual period (observable entity)">
+    <display value="LMP - Last menstrual period"/>
+    <display value="Last menstrual period"/>
+    <display value="Date of last menstrual period"/>
+    <display value="Date of last menstrual period (observable entity)"/>
+  </concept>
   <concept id="21864008" display="Seasonal course (qualifier value)">
     <display value="Seasonal course (qualifier value)"/>
     <display value="Seasonal course"/>
@@ -1243,6 +1294,10 @@
   <concept id="225109005" display="Collection of nephrostomy urine specimen (procedure)">
     <display value="Collection of nephrostomy urine specimen"/>
     <display value="Collection of nephrostomy urine specimen (procedure)"/>
+  </concept>
+  <concept id="22515006" display="Medical assistant (occupation)">
+    <display value="Medical assistant"/>
+    <display value="Medical assistant (occupation)"/>
   </concept>
   <concept id="225164002" display="Removal of ligature">
     <display value="Removal of ligature"/>
@@ -1976,6 +2031,11 @@
     <display value="Postprandial"/>
     <display value="Postprandial (qualifier value)"/>
   </concept>
+  <concept id="248986005" display="Estimated date of conception (observable entity)">
+    <display value="EDC - Estimated date of conception"/>
+    <display value="Estimated date of conception"/>
+    <display value="Estimated date of conception (observable entity)"/>
+  </concept>
   <concept id="249943000:363698007=72098002,260868000=6934004" display="Weakness of distal arms and legs (finding) where Finding site (attribute) = Entire left upper arm (body structure), and Permanence (attribute) = Permanent (qualifier value)"/>
   <concept id="25062003" display="Feeding tube">
     <display value="Feeding tube, device"/>
@@ -1986,6 +2046,17 @@
     <display value="Temperature: ambient"/>
     <display value="Ambient temperature"/>
     <display value="Ambient temperature (observable entity)"/>
+  </concept>
+  <concept id="250863006" display="Capnograph waveform (observable entity)">
+    <display value="Capnograph waveform"/>
+    <display value="Capnograph waveform (observable entity)"/>
+  </concept>
+  <concept id="250865004" display="Electrocardiogram waveform (observable entity)">
+    <display value="Observation of ECG waveform"/>
+    <display value="Electrocardiogram waveform (observable entity)"/>
+    <display value="Electrocardiogram waveform"/>
+    <display value="ECG waveform"/>
+    <display value="ECG waveform (observable entity)"/>
   </concept>
   <concept id="25163005" display="X-ray diagnosis (contextual qualifier) (qualifier value)">
     <display value="X-ray diagnosis (contextual qualifier)"/>
@@ -2834,6 +2905,10 @@
     <display value="Via umbilical vein"/>
     <display value="Via umbilical vein (qualifier value)"/>
   </concept>
+  <concept id="260933004" display="Pressure waveform (attribute)">
+    <display value="Pressure waveform"/>
+    <display value="Pressure waveform (attribute)"/>
+  </concept>
   <concept id="261089000" display="Inferior (qualifier value)">
     <display value="Inferior"/>
     <display value="Inferior (qualifier value)"/>
@@ -2858,6 +2933,12 @@
   <concept id="261665006" display="Unknown (qualifier value)">
     <display value="Unknown"/>
     <display value="Unknown (qualifier value)"/>
+  </concept>
+  <concept id="262061000" display="Postoperative period (qualifier value)">
+    <display value="Postoperative period"/>
+    <display value="PO - Postoperative"/>
+    <display value="Postoperative"/>
+    <display value="Postoperative period (qualifier value)"/>
   </concept>
   <concept id="262068006" display="Preoperative (qualifier value)">
     <display value="Preoperative"/>
@@ -2884,6 +2965,10 @@
     <display value="Antenatal"/>
     <display value="AN - Antenatal"/>
     <display value="Antenatal (qualifier value)"/>
+  </concept>
+  <concept id="263678003" display="At rest (qualifier value)">
+    <display value="At rest"/>
+    <display value="At rest (qualifier value)"/>
   </concept>
   <concept id="263703002" display="Changed status (qualifier value)">
     <display value="State changes"/>
@@ -2976,6 +3061,16 @@
   <concept id="267065001" display="Urine appearance (observable entity)">
     <display value="Urine appearance"/>
     <display value="Urine appearance (observable entity)"/>
+  </concept>
+  <concept id="268445003" display="Ultrasound scan - obstetric (procedure)">
+    <display value="Ultrasound scan - obstetric"/>
+    <display value="Obstetric US scan"/>
+    <display value="Ultrasound scan - obstetric (procedure)"/>
+  </concept>
+  <concept id="268447006" display="Doppler studies (procedure)">
+    <display value="Doppler"/>
+    <display value="Doppler studies"/>
+    <display value="Doppler studies (procedure)"/>
   </concept>
   <concept id="26895000" display="Laboratory test order cancelation (procedure)">
     <display value="Laboratory test order cancelation (procedure)"/>
@@ -3105,6 +3200,10 @@
   <concept id="277671009" display="Intraoperative (qualifier value)">
     <display value="Intraoperative"/>
     <display value="Intraoperative (qualifier value)"/>
+  </concept>
+  <concept id="277917001" display="Thoracic impedance cardiography (procedure)">
+    <display value="Thoracic impedance cardiography"/>
+    <display value="Thoracic impedance cardiography (procedure)"/>
   </concept>
   <concept id="278020009" display="Spot urine sample (specimen)">
     <display value="Spot urine sample"/>
@@ -3801,6 +3900,13 @@
     <display value="Jaguar gum"/>
     <display value="Guar gum (substance)"/>
   </concept>
+  <concept id="32750006" display="Inspection (procedure)">
+    <display value="Visual observation"/>
+    <display value="Visual examination"/>
+    <display value="Inspection"/>
+    <display value="Inspection, NOS"/>
+    <display value="Inspection (procedure)"/>
+  </concept>
   <concept id="32849002" display="Esophageal structure (body structure)">
     <display value="Oesophageal structure"/>
     <display value="Esophageal structure"/>
@@ -3848,6 +3954,13 @@
     <display value="Renal disease diet, NOS"/>
     <display value="Renal disease diet (finding)"/>
   </concept>
+  <concept id="334990001" display="Peak flow meter (physical object)">
+    <display value="Peak flow metre"/>
+    <display value="PFM - Peak flow metre"/>
+    <display value="Peak flow meter"/>
+    <display value="PFM - Peak flow meter"/>
+    <display value="Peak flow meter (physical object)"/>
+  </concept>
   <concept id="33526004" display="Laboratory reporting, computer">
     <display value="Laboratory reporting, electronic"/>
     <display value="Laboratory reporting, computer"/>
@@ -3882,6 +3995,20 @@
     <display value="Rectum"/>
     <display value="Rectum, NOS"/>
     <display value="Rectum structure (body structure)"/>
+  </concept>
+  <concept id="34536000" display="Amniocentesis">
+    <display value="AC - Amniocentesis"/>
+    <display value="Amniocentesis"/>
+    <display value="Amniocentesis, NOS"/>
+    <display value="Incision and drainage of amnion"/>
+    <display value="Amniocentesis (procedure)"/>
+  </concept>
+  <concept id="3457005" display="Patient referral (procedure)">
+    <display value="Referral procedure"/>
+    <display value="Referral"/>
+    <display value="Patient referral"/>
+    <display value="Patient referral, NOS"/>
+    <display value="Patient referral (procedure)"/>
   </concept>
   <concept id="34608000" display="ALT measurement">
     <display value="Alanine aminotransferase measurement"/>
@@ -4207,6 +4334,13 @@
     <display value="Blood group antigen Js^b^"/>
     <display value="Blood group antigen K7"/>
     <display value="Blood group antigen Js^b^ (substance)"/>
+  </concept>
+  <concept id="37931006" display="Auscultation (procedure)">
+    <display value="Auscultation - examination"/>
+    <display value="Listening"/>
+    <display value="Auscultation"/>
+    <display value="Auscultation, NOS"/>
+    <display value="Auscultation (procedure)"/>
   </concept>
   <concept id="38048003" display="Uncle">
     <display value="Uncle"/>
@@ -5625,6 +5759,10 @@
     <display value="Do not stop taking this medicine except on your doctor&#39;s advice (qualifier value)"/>
     <display value="Do not stop taking this medicine except on your doctor&#39;s advice"/>
   </concept>
+  <concept id="419465000" display="Unilateral right (qualifier value)">
+    <display value="Unilateral right (qualifier value)"/>
+    <display value="Unilateral right"/>
+  </concept>
   <concept id="419472004" display="Pediatric rheumatology (qualifier value)">
     <display value="Paediatric rheumatology (qualifier value)"/>
     <display value="Pediatric rheumatology"/>
@@ -5819,6 +5957,14 @@
     <display value="Bos bison"/>
     <display value="Buffalo"/>
     <display value="American bison"/>
+  </concept>
+  <concept id="424927000" display="Body weight with shoes (observable entity)">
+    <display value="Body weight with shoes (observable entity)"/>
+    <display value="Body weight with shoes"/>
+  </concept>
+  <concept id="425024002" display="Body weight without shoes (observable entity)">
+    <display value="Body weight without shoes (observable entity)"/>
+    <display value="Body weight without shoes"/>
   </concept>
   <concept id="425268008" display="Review of care plan">
     <display value="Review of care plan (procedure)"/>
@@ -6135,6 +6281,10 @@
     <display value="Adult formula (product)"/>
     <display value="Adult formula"/>
   </concept>
+  <concept id="442867008" display="Respiratory therapist (occupation)">
+    <display value="Respiratory therapist (occupation)"/>
+    <display value="Respiratory therapist"/>
+  </concept>
   <concept id="442901000124106" display="Adult clear liquid supplement (product)">
     <display value="Adult clear liquid supplement (product)"/>
     <display value="Adult clear liquid supplement"/>
@@ -6195,6 +6345,11 @@
     <display value="Adult hepatic specialty formula (product)"/>
     <display value="Adult hepatic specialty formula"/>
     <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adults with hepatic disease and reduce metabolic end products."/>
+  </concept>
+  <concept id="443031000124106" display="Adult critical care formula (product)">
+    <display value="Adult critical care formula (product)"/>
+    <display value="Adult critical care formula"/>
+    <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to meet the nutritional needs of adult critical care patients."/>
   </concept>
   <concept id="443051000124104" display="Adult diabetic specialty formula (product)">
     <display value="Adult diabetic specialty formula (product)"/>
@@ -6334,6 +6489,11 @@
     <display value="Age at onset of clinical finding (observable entity)"/>
     <display value="Age at onset of clinical finding"/>
   </concept>
+  <concept id="445541000" display="Dry body weight (observable entity)">
+    <display value="Dry body weight (observable entity)"/>
+    <display value="Dry body weight"/>
+    <display value="Dry weight"/>
+  </concept>
   <concept id="44567001" display="Tracheal structure (body structure)">
     <display value="Tracheal structure"/>
     <display value="Trachea"/>
@@ -6401,6 +6561,11 @@
   <concept id="447488002" display="Suprapubic urine specimen (specimen)">
     <display value="Suprapubic urine specimen (specimen)"/>
     <display value="Suprapubic urine specimen"/>
+  </concept>
+  <concept id="449161006" display="Physician assistant (occupation)">
+    <display value="Physician assistant (occupation)"/>
+    <display value="PA - physician assistant"/>
+    <display value="Physician assistant"/>
   </concept>
   <concept id="449859004" display="Nontunneled central venous catheter (physical object)">
     <display value="Nontunneled central venous catheter (physical object)"/>
@@ -6489,10 +6654,30 @@
     <display value="Vaccination clinic"/>
     <display value="Vaccination clinic (environment)"/>
   </concept>
+  <concept id="46255001" display="Pharmacist (occupation)">
+    <display value="Pharmacist"/>
+    <display value="Pharmacist (occupation)"/>
+  </concept>
+  <concept id="463698006" display="Pneumograph (physical object)">
+    <display value="Pneumograph (physical object)"/>
+    <display value="Pneumograph"/>
+  </concept>
   <concept id="46511006" display="Chloride measurement">
     <display value="Chloride measurement"/>
     <display value="Chloride measurement, NOS"/>
     <display value="Chloride measurement (procedure)"/>
+  </concept>
+  <concept id="46825001" display="Electrocardiographic monitoring (procedure)">
+    <display value="Electrocardiographic monitoring (regime/therapy)"/>
+    <display value="ECG"/>
+    <display value="EKG"/>
+    <display value="ECG monitoring"/>
+    <display value="Electrocardiography"/>
+    <display value="Electrocardiographic monitoring"/>
+    <display value="Electrocardiographic monitoring, NOS"/>
+    <display value="Cardiovascular monitoring by ECG, NOS"/>
+    <display value="Cardiovascular monitoring by ECG"/>
+    <display value="Electrocardiographic monitoring (procedure)"/>
   </concept>
   <concept id="46947000" display="Chiropractic manipulation (procedure)">
     <display value="Chiropractic manipulation"/>
@@ -6901,6 +7086,12 @@
   <concept id="59139008" display="Crushing chest pain (finding)">
     <display value="Crushing chest pain (finding)"/>
     <display value="Crushing chest pain"/>
+  </concept>
+  <concept id="59181002" display="Oxygen analyzer, device (physical object)">
+    <display value="Oxygen analyzer, device"/>
+    <display value="Oxygen analyzer, device (physical object)"/>
+    <display value="Oxygen analyzer"/>
+    <display value="Oximeter"/>
   </concept>
   <concept id="59374000" display="Traveler&#39;s aid clinic (environment)">
     <display value="Traveler&#39;s aid clinic (environment)"/>
@@ -7609,6 +7800,11 @@
     <display value="Adequate"/>
     <display value="Adequate (qualifier value)"/>
   </concept>
+  <concept id="884001" display="Initial (qualifier value)">
+    <display value="Initial"/>
+    <display value="Initially"/>
+    <display value="Initial (qualifier value)"/>
+  </concept>
   <concept id="88480006" display="Potassium">
     <display value="K - Potassium"/>
     <display value="Potassium"/>
@@ -7663,6 +7859,10 @@
   <concept id="89972002" display="Hospital-based outpatient oncology clinic (environment)">
     <display value="Hospital-based outpatient oncology clinic"/>
     <display value="Hospital-based outpatient oncology clinic (environment)"/>
+  </concept>
+  <concept id="900000000000003001" display="Fully specified name (core metadata concept)">
+    <display value="Fully specified name"/>
+    <display value="Fully specified name (core metadata concept)"/>
   </concept>
   <concept id="901005" display="Helicopter-based care (environment)">
     <display value="Helicopter-based care"/>

@@ -11,11 +11,11 @@
     </identifier>
     <!--Demographics-->
     <identifier>
+        <!--The identifier for this individual-->
+        <use value="official"/>
         <type><text value="BSN"/></type>
         <system value="urn:oid:2.16.840.1.113883.2.4.6.3"/>
         <value value="123456789"/>
-        <!--The identifier for this individual-->
-        <use value="official"/>
     </identifier>
     <name>
         <!--The name associated with the individual (fictive)-->
@@ -96,7 +96,7 @@
     <communication>
       <language>
             <coding>
-                <system value="urn:std:iso:639-1"/>
+                <system value="urn:iso:std:iso:639:-1"/>
                 <code value="nl-NL"/>
                 <display value="Dutch"/>
             </coding>

@@ -2,7 +2,6 @@
 <!--
  This is an example of a Glasgow Coma Score using the .related to bundle the  measurements  will use contained elements for this example only but coudl just as easily use external or bundled elements..  source http://www.choa.org/~/media/CHOA/Documents/Services/Concussion/Concussion-glasgow-coma-scale.pdf
 -->
-
 <Observation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\observation.xsd">
 	<id value="glasgow"/>
 	<!-- FHIR build is generating the narratives
@@ -28,8 +27,8 @@
 		 </div>
 	</text>
 -->
-<!-- Note: will use contained elements for this example but could just as easily use external or bundled elements..-->
-<!-- First contained element = Motor component. -->
+	<!-- Note: will use contained elements for this example but could just as easily use external or bundled elements..-->
+	<!-- First contained element = Motor component. -->
 	<contained>
 		<Observation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\observation.xsd">
 			<id value="motor"/>
@@ -46,7 +45,7 @@
 				<system value="http://unitsofmeasure.org"/>
 				<code value="{score}"/>
 			</valueQuantity>
-			<appliesDateTime value="2014-12-11T04:44:16Z"/>
+			<effectiveDateTime value="2014-12-11T04:44:16Z"/>
 			<status value="final"/>
 			<reliability value="ok"/>
 			<subject>
@@ -71,7 +70,7 @@
 				<system value="http://unitsofmeasure.org"/>
 				<code value="{score}"/>
 			</valueQuantity>
-			<appliesDateTime value="2014-12-11T04:44:16Z"/>
+			<effectiveDateTime value="2014-12-11T04:44:16Z"/>
 			<status value="final"/>
 			<reliability value="ok"/>
 			<subject>
@@ -96,7 +95,7 @@
 				<system value="http://unitsofmeasure.org"/>
 				<code value="{score}"/>
 			</valueQuantity>
-			<appliesDateTime value="2014-12-11T04:44:16Z"/>
+			<effectiveDateTime value="2014-12-11T04:44:16Z"/>
 			<status value="final"/>
 			<reliability value="ok"/>
 			<subject>
@@ -129,21 +128,20 @@
 		<system value="http://unitsofmeasure.org"/>
 		<code value="{score}"/>
 	</valueQuantity>
-	<appliesDateTime value="2014-12-11T04:44:16Z"/>
+	<effectiveDateTime value="2014-12-11T04:44:16Z"/>
 	<!-- the mandatory quality flags: -->
 	<status value="final"/>
 	<reliability value="ok"/>
 	<subject>
 		<reference value="Patient/example"/>
-		<display value="Peter James Chalmers"></display>
+		<display value="Peter James Chalmers"/>
 	</subject>
 	<referenceRange>
-	<high>
+		<high>
 			<value value="8"/>
-
 			<system value="http://unitsofmeasure.org"/>
 			<code value="{score}"/>
-	</high>
+		</high>
 		<!-- meaning as text -->
 		<meaning>
 			<text value="Severe TBI"/>
@@ -168,7 +166,6 @@
 	<referenceRange>
 		<low>
 			<value value="13"/>
-
 			<system value="http://unitsofmeasure.org"/>
 			<code value="{score}"/>
 		</low>
@@ -177,26 +174,26 @@
 			<text value="Mild TBI"/>
 		</meaning>
 	</referenceRange>
-	<!-- put the references to the contained components here  -->
-	<related>
-		<type value="derived-from"/>
-		<target>
-			<reference value="#motor"/>
-			<display value="Motor score"/>
-		</target>
-	</related>
-	<related>
-		<type value="derived-from"/>
-		<target>
-			<reference value="#verbal"/>
-			<display value="Verbal score"/>
-		</target>
-	</related>
-	<related>
-		<type value="derived-from"/>
-		<target>
-			<reference value="#eyes"/>
-			<display value="Eyes score"/>
-		</target>
-	</related>
+	<!-- put the references to the contained components here using the derived-From type  -->
+	  <related>
+	    <type value="derived-from"/>
+	    <target>
+	      <reference value="#motor"/>
+	      <display value="Motor score"/>
+	    </target>
+	  </related>
+	  <related>
+	    <type value="derived-from"/>
+	    <target>
+	      <reference value="#verbal"/>
+	      <display value="Verbal score"/>
+	    </target>
+	  </related>
+	  <related>
+	    <type value="derived-from"/>
+	    <target>
+	      <reference value="#eyes"/>
+	      <display value="Eyes score"/>
+	    </target>
+  </related>
 </Observation>

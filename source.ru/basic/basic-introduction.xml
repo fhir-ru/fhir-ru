@@ -39,9 +39,9 @@ queried and analyzed by other conformant systems. -->
 <div>
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
-Ресурс Basic определяет только минимальный набор элементов данных - те, что необходимы для идентификации того, какой вид ресурса он представляет, и те, которые необходимы для поддержки<a href="extras.html#compartments">отнесения ресурсов к логическим модулям</a>. Все остальные элементы данных задаются с помощью <a href="extensibility.html">механизма расширений</a>. Вполне возможно создать экземпляр ресурса Basic с одной только описательной частью и элементами "subject" и "code". И, на практике, это всё, что поймёт большинство систем.
+Ресурс Basic определяет только минимальный набор элементов данных - те, что необходимы для идентификации того, какой вид ресурса он представляет, и те, которые необходимы для поддержки <a href="compartments.html#compartments">отнесения ресурсов к логическим модулям</a>. Все остальные элементы данных задаются с помощью <a href="extensibility.html">механизма расширений</a>. Вполне возможно создать экземпляр ресурса Basic с одной только описательной частью и элементами "subject" и "code". И, на практике, это всё, что поймёт большинство систем.
 <!-- Basic defines only a minimal set of data elements - those necessary to identify what kind of resource it
-represents and those necessary to support resource <a href="extras.html#compartments">compartmenting</a>.  All other data elements
+represents and those necessary to support resource <a href="compartments.html#compartments">compartmenting</a>.  All other data elements
 are represented using the <a href="extensibility.html">extension</a> mechanism.  It's entirely possible to have a
 Basic resource instance with nothing other than narrative, a subject and code.  And, in practice, that's all many systems will understand. -->
 </p>

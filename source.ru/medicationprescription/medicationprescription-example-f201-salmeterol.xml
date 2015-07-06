@@ -16,19 +16,19 @@
     <reference value="Condition/f201"/>
     <display value="fever"/>
   </reasonReference>
-  <medication>
+  <medicationReference>
     <reference value="Medication/f201"/>
     <display value="25ug Salmeterol + 250ug Fluticasone"/>
-  </medication>
+  </medicationReference>
   <dosageInstruction>
     <text value="aerosol 25/250ug/do 120do 2x - 1 dose - daily"/>
     <scheduledTiming>
       <!--2 months-->
       <repeat>
-        <bounds>
+        <boundsPeriod>
           <start value="2013-03-11"/>
           <end value="2013-05-11"/>
-        </bounds>
+        </boundsPeriod>
         <!-- twice per day -->
         <frequency value="2"/>
         <period value="1"/>

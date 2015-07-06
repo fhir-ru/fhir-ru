@@ -980,7 +980,8 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Запись о событии, сделанная в целях безопасности<!-- Event record kept for security purposes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Запись о событии, сделанная в целях ведения журнала безопасности. Типовое применение включает в себя обнаружение попыток внедрения и контроль неуместного использования<!-- A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Запись о событии, сделанная в целях ведения журнала безопасности. Типовое применение включает в себя обнаружение попыток внедрения и контроль неуместного использования
+<!-- A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Based on ATNA (RFC 3881)</Data><NamedCell
@@ -1055,9 +1056,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор семейства этого события<!-- Identifier for a family of the event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет выполненную функцию. Для &quot;Execute&quot; Event Action Code отчетов определяет совершенную функцию приложения.<!-- This identifies the performed function. For &quot;Execute&quot; Event Action Code audit records, this identifies the application function performed. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет выполненную функцию. Для &quot;Execute&quot; Event Action Code отчетов определяет совершенную функцию приложения.
+<!-- This identifies the performed function. For &quot;Execute&quot; Event Action Code audit records, this identifies the application function performed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Например пункт меню, программа, правило, политика, код функции, название приложения или URL. Определяет выполненную функцию.<!-- e.g., a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Например пункт меню, программа, правило, политика, код функции, название приложения или URL. Определяет выполненную функцию.
+<!-- e.g., a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code (type, subtype and action are pre-coordinated or sent as translations)</Data><NamedCell
@@ -1201,7 +1204,8 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает, было ли событие успешным или произошел сбой<!-- Indicates whether the event succeeded or failed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">В некоторых случаях "успех" может быть частичным, к примеру, неполная или прерванная передача радиологического исследования. В целях установления подотчетности эти различия не играют роли<!-- In some cases a &quot;success&quot; may be partial, for example, an incomplete or interrupted transfer of a radiological study. For the purpose of establishing accountability, these distinctions are not relevant --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В некоторых случаях "успех" может быть частичным, к примеру, неполная или прерванная передача радиологического исследования. В целях установления подотчетности эти различия не играют роли
+<!-- In some cases a &quot;success&quot; may be partial, for example, an incomplete or interrupted transfer of a radiological study. For the purpose of establishing accountability, these distinctions are not relevant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.actionNegationInd</Data><NamedCell
@@ -1265,12 +1269,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Цель использования события<!-- The purposeOfUse of the event --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Назначение события<!-- The purposeOfUse of the event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Цель использования (обоснование), которая была использована во время записи события.<!-- The purposeOfUse (reason) that was used during the event being recorded.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Используйте элемент participant.purposeOfUse, когда вы знаете, что это специфично для участника, иначе используйте event.purposeOfEvent. Например во время передачи от машины к машине может быть не очевидно для системы аудита, кем было вызвано событие, но известно зачем.<!-- Use participant.purposeOfUse when you know that is specific to the participant, otherwise use event.purposeOfEvent. (e.g. during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Используйте элемент participant.purposeOfUse, когда вы знаете, что это специфично для участника, иначе используйте event.purposeOfEvent. Например во время передачи от машины к машине может быть не очевидно для системы аудита, кем было вызвано событие, но известно зачем.
+<!-- Use participant.purposeOfUse when you know that is specific to the participant, otherwise use event.purposeOfEvent. (e.g. during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1687,7 +1692,8 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор точки доступа к сети устройства пользователя для события аудита<!-- An identifier for the network access point of the user device for the audit event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Эта информация определяет точку доступа к сети пользователя, которая может отличаться от сервера, на котором выполняется действие. Это необязательное значение, которое может быть использовано для групповых мероприятий, записанных на отдельных серверах для анализа доступа к данным в конкретной точке сетевого доступа по всем серверам<!-- This datum identifies the user's network access point, which may be distinct from the server that performed the action. It is an optional value that may be used to group events recorded on separate servers for analysis of a specific network access point's data access across all servers  --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Эта информация определяет точку доступа к сети пользователя, которая может отличаться от сервера, на котором выполняется действие. Это необязательное значение, которое может быть использовано для групповых мероприятий, записанных на отдельных серверах для анализа доступа к данным в конкретной точке сетевого доступа по всем серверам
+<!-- This datum identifies the user's network access point, which may be distinct from the server that performed the action. It is an optional value that may be used to group events recorded on separate servers for analysis of a specific network access point's data access across all servers  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Это может быть идентификатор устройства, IP-адрес или другой идентификатор, ассоциированный с устройством<!-- This could be a device id, IP address or some other identifier associated with a device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1932,7 +1938,8 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, указывающий тип источника, где возникло событие<!-- Code specifying the type of source where event originated --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это поле указывает, какой тип источника определяется по Audit Source ID. Это необязательное значение, которое может использоваться для группировки событий для анализа в соответствии с типом источника, где произошло событие<!-- This field indicates which type of source is identified by the Audit Source ID. It is an optional value that may be used to group events for analysis according to the type of source where the event occurred --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это поле указывает, какой тип источника определяется по Audit Source ID. Это необязательное значение, которое может использоваться для группировки событий для анализа в соответствии с типом источника, где произошло событие
+<!-- This field indicates which type of source is identified by the Audit Source ID. It is an optional value that may be used to group events for analysis according to the type of source where the event occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2113,7 +2120,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Для описания объекта действия. В дополнение к запросам к субъекту действия в аудируемом событии, это также важно иметь возможность запросить тип объекта действия<!-- To describe the object being acted upon. In addition to queries on the subject of the action in an auditable event, it is also important to be able to query on the object type for the action  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">то значение отличается от роли пользователя или любой взаимосвязи между пользователем и объектом участия<!-- This value is distinct from the user's role or any user relationship to the participant object --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это значение отличается от роли пользователя или любой взаимосвязи между пользователем и объектом участия<!-- This value is distinct from the user's role or any user relationship to the participant object --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">[self::Act].code&#10;or&#10;role.player.code</Data><NamedCell
@@ -2144,13 +2151,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Какую роль играет объект<!-- What role the Object played --> </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Какую роль выполняет объект<!-- What role the Object played --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, представляющий собой функциональную роль в приложении аудироуемого объекта участия<!-- Code representing the functional application role of Participant Object being audited --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Для какого-то детального анализа аудита может потребоваться указать более гранулярный тип участия, основанный на роли в приложении, которую он служит<!-- For some detailed audit analysis it may be necessary to indicate a more granular type of participant, based on the application role it serves --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Правила, касающиеся поиску совпадений между ролью и типом см. в RFC 3881<!-- See RFC 3881 for rules concerning matches between role and type --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Правила, касающиеся поиска совпадений между ролью и типом, см. в RFC 3881<!-- See RFC 3881 for rules concerning matches between role and type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">role.code&#10;(not sure what this would mean for an Act)</Data><NamedCell

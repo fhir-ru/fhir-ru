@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -966,7 +966,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">author.name</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">HL7 International - Orders and Observations WG</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Health Level Seven International (Structured Documents - CCDA on FHIR)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">author.reference</Data></Cell>
@@ -1432,7 +1432,7 @@
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s105"><Data ss:Type="String">Observation.appliesDateTime</Data><NamedCell
+    <Cell ss:StyleID="s105"><Data ss:Type="String">Observation.effectiveDateTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">1..1</Data><NamedCell
@@ -11856,8 +11856,8 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">9.  SHALL contain exactly one [1..1] effectiveTime (CONF:14261).&#10;</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Observation.appliesDateTime</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Observation.appliesDateTime</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Observation.effectiveDateTime</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Observation.effectiveDateTime</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:Index="17"><Data ss:Type="String">The onset date SHALL be recorded in the low element of the &#10;effectiveTime element when known.&#10;The resolution date SHALL be recorded in the high element of the &#10;effectiveTime element when known. &#10;</Data></Cell>

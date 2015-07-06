@@ -29,8 +29,8 @@
 <p><b>Содержание документа</b></p>
 <table class="grid">
  <tr>
-  <td><b>Примитивные типы</b><br/>[%diagram datatypes/allprimitivetypes.diagram%]</td>
-  <td><b>Комплексные типы</b><br/>[%diagram datatypes/alltypes.diagram%]</td>
+  <td><b>Примитивные типы</b><br/>[%diagram datatypes/allprimitivetypes.diagram 1a%]</td>
+  <td><b>Комплексные типы</b><br/>[%diagram datatypes/alltypes.diagram 2a%]</td>
  </tr>
 </table>
 
@@ -43,7 +43,7 @@
 <h2>Примитивные типы</h2>
 
 
-[%diagram datatypes/primitives.diagram%]
+[%diagram datatypes/primitives.diagram 3a%]
 
 <a name="imports"> </a>
 <p>
@@ -67,11 +67,12 @@
    <td>xs:boolean, за исключением того, что <b>0 и 1 не являются допустимыми значениями</b></td>
    <td>JSON boolean (true or false)</td>
  </tr>
+ <!-- leading 0s -->
  <tr>
    <td>integer<a name="integer"> </a></td>
    <td>32-битное целое число со знаком (для больших значений используйте тип decimal)<!-- A signed 32-bit integer (for larger values, use decimal) --></td>
-   <td>xs:int</td>
-   <td>JSON number</td>
+   <td>xs:int, except that <b>leading 0 digits are not allowed</b></td>
+   <td>JSON number (with no decimal point)</td>
  </tr>
  <tr>
    <td>string<a name="string"> </a></td>
@@ -86,7 +87,10 @@
  <tr>
    <td>decimal<a name="decimal"> </a></td>
    <td>Рациональные числа, имеющие десятичное представление. См. ниже о точности таких чисел<!-- Rational numbers that have a decimal representation. See below about the precision of the number --></td>
-   <td>xs:decimal, исключая <b>decimals, которые не используют экспоненту</b><!-- xs:decimal, except that <b>decimals may not use exponents</b> --></td>
+   <td>xs:decimal, за исключением того, что <b>decimals могут не использовать экспоненту, а 0 в начальной позиции не разрешены</b></td>
+   <td>JSON number, за исключением того, что <b>использование экспоненты не разрешено</b></td>
+
+<td>xs:decimal, исключая <b>decimals, которые не используют экспоненту</b><!-- xs:decimal, except that <b>decimals may not use exponents</b> --></td>
    <td>JSON-число (number), но без экспоненты<!-- A JSON number, but without exponents --></td>
  </tr>
  <tr>
@@ -249,8 +253,8 @@ In JSON, whitespace in string values is always significant. Primitive types othe
  <!-- The ID type includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232. --></li>
  <li>В типичном FHIR URL, наподобие http://example.com/fhir/Patient/<span style="color: navy">1234</span>, последняя часть "1234" (выделена цветом) имеет тип данных ID
  <!-- In a typical FHIR URL, like http://example.com/fhir/Patient/<span style="color: navy">1234</span>, the last part "1234" (highlighted in navy) is the part that is an id datatype --></li>
- <li>Полный UUID - это URI, а не <i>id</i>. UUID-ы в URI также ДОЛЖНЫ быть представлены в нижнем регистре (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b)
- <!-- A full UUID is a uri, not an <i>id</i>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b), which SHALL be in lowercase --></li>
+ <li>Полный UUID - это <i>URI</i>, а не <i>id</i>. UUID-ы в URI также ДОЛЖНЫ быть представлены в нижнем регистре (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b)
+ <!-- A full UUID is a <i>uri</i>, not an <i>id</i>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b), which SHALL be in lowercase --></li>
 </ul>
 <!-- 
 boolean: [%dtusage boolean%]
@@ -283,9 +287,9 @@ id: [%dtusage id%]
 
 <p><b>UML-диаграмма типов данных</b></p>
 
-[%diagram datatypes/types.diagram%]
+[%diagram datatypes/types.diagram 4a%]
 
-[%diagram datatypes/types2.diagram%]
+[%diagram datatypes/types2.diagram 5a%]
 
 <a name="Attachment"></a>
 <a name="attachment"></a>
@@ -299,7 +303,7 @@ id: [%dtusage id%]
 <p>
 Тип данных, содержащий вложение или ссылку на вложение - дополнительные данные в другом формате. Наиболее частое использование этого типа - включение изображений или отчетов в некотором формате документов, например PDF. Однако он может использоваться для любых данных MIME-типа.
 </p>
-[%dt Attachment%]
+[%dt Attachment 1%] 
 <p>
 Элемент <i>contentType</i> всегда ДОЛЖЕН иметь значение. Он может содержать информацию о кодировке (charset) и MIME-расширении по мере необходимости. Если в элементе <i>contentType</i> не указана кодировка, тогда правильный курс действий не определен, хотя некоторые медиа-типы могут указывать кодировку по умолчанию и/или правильная кодировка может определяться проверкой содержимого. 
 </p>
@@ -338,31 +342,17 @@ Coding - это представление определенного конце
 <a href="terminologies.html">Использование кодов в ресурсах</a> для получения более подробной информации.
 </p>
 
-[%dt Coding%]
+[%dt Coding 2%]
 
 <p>
 Значение Coding определяется кодом. <i>Система (system)</i> указывает на источник определения кода наряду с необязательной ссылкой на версию. Элемент display содержит человекочитаемый  текст, определенный системой - он не добавляет другого значения. Ссылка на Value Set дает информацию о контексте выбора этого кода.
 </p>
 <p>
-Система <i>system</i> - это URI, ссылающийся на кодовую систему, определяющую этот код <i>code</i>. 
-Значением URI может быть: 
+Система <code>system</code> - это URI, ссылающийся на кодовую систему, определяющую этот код <i>code</i>. 
+Выбор правильной системы важен; для получения более подробной информации по URI кодовой системы см. раздел <a href="terminologies.html#system">Managing Terminology System URIs</a>.
+URI системы НЕ ДОЛЖЕН содержать ссылку на набор значений (например ValueSet.url).
+Если код взят из набора значений с инлайновой (встроенной) кодовой системой, <i>ValueSet.define.system</i> является корректным значением для URI системы.
 </p>
-<ul>
- <li>URI из <a href="terminologies-systems.html">перечня названий систем</a></li>
- <li>OID (urn:oid:) либо UUID (urn:uuid:). OIDs и UUIDs могут быть взяты в <a href="http://hl7.org/oid">реестре HL7 OID</a></li>
- <li>URL, ссылающийся прямо на определение системы, который может быть ссылкой на кодовую систему, определенную как часть ресурса <a href="valueset.html">ValueSet</a> (например значение в <i>ValueSet.define.system</i>)</li>
- <li>или любой другой URI, уникально идентифицирующий определение кодовой системы</li>
-</ul>
-<p>
-Правильное значение для использования в <i>system</i> для данной кодовой системы может быть определено путем проработки списка ниже в следующем порядке:
-</p>
-<ul>
- <li>раздел <a href="terminologies-systems.html">Перечень названий систем</a></li>
- <li><a href="http://www.hl7.org/oid/index.cfm?ref=common">Реестр HL7 OID</a></li>
- <li>документация, относящаяся к кодовой системе</li>
- <li>консультирование с владельцем кодовой системы</li>
- <li>задать вопрос в списке рассылки справочника HL7</li>
-</ul>
 <p>
 Также может быть указана версия кодовой системы. Если значение кодов в кодовой системе остается постоянным в разных версиях, то это не обязательно. 
 Версию НЕОБХОДИМО менять, когда система больше не поддерживает непротиворечивые определения в разных версиях.
@@ -397,10 +387,7 @@ Coding - это представление определенного конце
 Если два codings имеют одинаковые систему <i>system</i>, версию  <i>version</i> и код <i>code</i>, значит они имеют одинаковое значение. Если информация о версии отсутствует, или элементы система <i>system</i>, версия  <i>version</i>  или код <i>code</i> различаются, тогда как их коды связаны, может быть определено обращением к определениям этих систем(ы), и любые <a href="conceptmap.html">мэппинги</a> доступны. 
 </p>
 <p>
-Элемент coding может быть помечен как "первичный" ("primary"), если пользователь выбрал определенное кодовое значение в интерфейсе пользователя (например пользователь выбирает пункт в списке). Первичное значение является предпочтительным выбором для выполнения переводом, например.
-</p>
-<p>
-Ссылка на <a href="valueset.html">value set</a> может приводиться в помощь пользователю или системе, обрабатывающей код, понять контекст, в котором этот код возник. В некоторых обстоятельствах возможных набор кодов, из которого этот код был выбран, влияет на то, каким образом этот код надо интерпретировать. Ссылка на набор значений не является допустимым замещением для логического URI в системе. Системный URI НЕ ДОЛЖЕН содержать ссылку на набор значений. (Если этот набор значений определяется свои собственные коды, тогда корректное значения для системы будет <i>ValueSet.define.system</i>, и набор значений содержит прямую ссылку на ресурс value set.
+Элемент coding может быть помечен как "выбранный пользователем" ("userSelected"), если пользователь выбрал определенное кодовое значение в интерфейсе пользователя (например пользователь выбирает пункт в списке). Если выбранный пользователем кодинг существует, то он является предпочтительным выбором при выполнении переводов и т. п.
 </p>
 
 <!--<h3>Version Management</h3>
@@ -472,12 +459,12 @@ CodeableConcept
 <p>
 CodeableConcept представляет собой значение, которое обычно сопровождается ссылкой на один или несколько справочников или онтологий, но может также определяться предоставлением текста. Это распространенный шаблон представления медицинских данных.
 </p>
-[%dt CodeableConcept%]
+[%dt CodeableConcept 3%]
 <p>
 Каждый <i>coding</i> является представлением концепта как описано выше. Концепт может быть закодирован несколько раз в различных кодовых системах (или даже несколько раз в одной и той же кодовой системе, где допустимо несколько форм, например SNOMED CT). Различные кодинги могут иметь слегка различающуюся степень разбиения (структурирования, детализации) из-за различий в определениях лежащих в основе кодов. Порядок кодингов внутри <i>CodeableConcept</i> не имеет значения. Типичное использование <i>CodeableConcept</i> - отправка локального кода, которым был закодирован концепт, и также один или несколько переводов в публично определенные кодовые системы, например LOINC or SNOMED CT. Отправка локальных кодов - полезное и важное в целях отладки и ведения контроля за целостностью.
 </p>
 <p>
-Независимо от того, какие элементы <i>coding</i> присутствуют, текст <i>text</i> - это представление концепта, как введено или выбрано пользователем, и который наиболее точно передает заложенное значение пользователя или концепта. Очень часто текст <i>text</i> совпадает со значением <i>display</i> одного из кодингов. Один из кодингов может быть помечен как первичный - это код или концепт, который пользователь в действительности непосредственно выбрал. Когда ни один из элементов <i>coding</i> не отмечен как первичный, тогда текст (если присутствует) является предпочтительным источником значения.
+Независимо от того, какие элементы <i>coding</i> присутствуют, текст <i>text</i> - это представление концепта, как введено или выбрано пользователем, и который наиболее точно передает заложенное значение пользователя или концепта. Очень часто текст <i>text</i> совпадает со значением <i>display</i> одного из кодингов. Один из кодингов может быть помечен как userSelected - это код или концепт, который пользователь в действительности непосредственно выбрал. Когда ни один из элементов <i>coding</i> не отмечен как userSelected, тогда текст (если присутствует) является предпочтительным источником значения.
 </p>
 
 <div class="use">
@@ -503,7 +490,7 @@ Quantity (Количество)
 <p>
 Измеренная величина (или величина, которая потенциально может быть измерена).
 </p>
-[%dt Quantity%]
+[%dt Quantity 4%]
 
 <p>
 Элемент <i>value</i> содержит числовое значение величины, включая подразумеваемую точность (implicit precision).  
@@ -551,7 +538,7 @@ Range (Диапазон)
 <p>
 Range обозначает множество возможных значений; обычно применяется одно значение из диапазона  (например, "выдать пациенту от 2 до 4 таблеток"). Диапазоны обычно используются в указаниях (instructions).
 </p>
-[%dt Range%]
+[%dt Range 5%]
 <p>
 Элементы <i>units</i> и <i>code</i>/<i>system</i> в элементах <i>low</i> и <i>high</i> ДОЛЖНЫ совпадать. Если элемент  <i>low</i> или <i>high</i> отсутствует, это означает, что нижняя или верхняя граница не известна и, следовательно, ни тот, ни другой не является полным диапазоном (neither is the complete range).
 </p>
@@ -580,7 +567,7 @@ Ratio (Соотношение)
 <p>
 Отношение между двумя значениями количества, выраженное в виде числителя и знаменателя.
 </p>
-[%dt Ratio%]
+[%dt Ratio 6%]
 <p>
 Общие делители в числителе и знаменателе не сокращаются автоматически. Тип данных Ratio используется для титров (например "1:128") и других величин, полученных лабораториями, которые действительно представляют собой соотношения. Ratio - это не просто "структурированные числа" - измерения артериального давления (к примеру, "120/60") не являются соотношениями. Также соотношения используются, когда не следует сокращать числитель и знаменатель. Наиболее распространенным примером этого является соотношение, которое представляет собой стоимость единицы, а числителем является валюта (например 50$/10). 
 </p>
@@ -615,7 +602,7 @@ Period (Период)
 <p>
 Период устанавливает диапазон времени. В контексте использования будет указываться, применять ли полный диапазон (например "пациент находился в стационаре больницы данный диапазон времени") или одно значение из указанного периода (например "выдать пациенту между 14 и 16 часами 24-Jun 2013").
 </p>
-[%dt Period%]
+[%dt Period 7%]
 <p>
 Если элемент <i>start</i> отсутствует, значит начало периода не известно. Если элемент <i>end</i> отсутствует, значит период продолжается.
 </p>
@@ -646,7 +633,7 @@ SampledData (Дискретные данные)
 <p>
 SampledData представляет собой удобный способ управления данными, полученными на изделиях, которые измеряют определенное физическое состояние с высокой частотой. Типичное использование - вывод данных с электрокардиографа.
 </p>
-[%dt SampledData%]
+[%dt SampledData 8%]
 <p>
 Данные представляют собой множество десятичных значений, разделенных одиночным пробелом (символ Юникода u20). В дополнение к десятичным значениям используются значения "E" (ошибка), "L" (ниже предела обнаружения) и "U" (выше предела обнаружения). Если имеется более одного измерения, различные измерения чередуются - все точки данных для конкретного времени представлены вместе. Значением коэффициента <i>factor</i> по умолчанию является 1.
 </p>
@@ -668,13 +655,13 @@ Identifier (Идентификатор)
 Числовая или буквенно-числовая строка, ассоциированная с отдельным объектом или сущностью внутри данной системы. Обычно идентификаторы используются, чтобы связать содержимое ресурсов и внешнее содержимое, доступное в других фреймворках или протоколах. Идентификаторы ассоциируются с объектами и могут быть изменены или изъяты из обращения вследствие развития систем, из-за ошибок или с течением времени.
 </p>
 
-[%dt Identifier%]
+[%dt Identifier 9%]
 
 <p>
 Система <i>system</i>, на которую ссылается URI, устанавливает, каким образом определяется идентификатор (т.е. каким образом обеспечивается уникальность значения). Это может быть некоторое приложение или признанный стандарт/спецификация, определяющие доступное множество идентификаторов или способ обеспечения их уникальности. Значение  <i>value</i> ДОЛЖНО быть уникальным в пределах указанной системы и иметь соответствующее значение, где бы оно ни появлялось. И  <i>system</i>, и <i>value</i> всегда чувствительны к регистру.
 </p>
 <p>
-FHIR сразу задает <a href="terminologies-systems.html">несколько полезных URIs</a>. OIDs (urn:oid:) и UUIDs (urn:uuid:) могут быть зарегистрированы в <a href="http://hl7.org/oid">Реестре HL7 OID</a> и должны быть, если их содержимое совместно используется или передается между общественными организациями. Если идентификатор сам по себе является глобально уникальным (например OID, UUID или URI без локального окончания), тогда значением системы <i>system</i> SHALL be "urn:ietf:rfc:3986", ДОЛЖНО быть "urn:ietf:rfc:3986", а в  <i>value</i> должен быть указан сам URI.
+FHIR сразу задает <a href="identifier-registry.html">несколько полезных URIs</a>. OIDs (urn:oid:) и UUIDs (urn:uuid:) могут быть зарегистрированы в <a href="http://hl7.org/oid">Реестре HL7 OID</a> и должны быть, если их содержимое совместно используется или передается между общественными организациями. Если идентификатор сам по себе является глобально уникальным (например OID, UUID или URI без локального окончания), тогда значением системы <i>system</i> SHALL be "urn:ietf:rfc:3986", ДОЛЖНО быть "urn:ietf:rfc:3986", а в  <i>value</i> должен быть указан сам URI.
 </p>
 <p>
 В некоторых случаях система может быть не известна - известно только значение (например простое устройство, сканирующее штрих-коды), или система понимается неявно (простой обмен в ограниченном контексте, зачастую обусловленный считывателями штрих-кодов). В этом случае невозможно выполнить полезное сопоставление значения, если только система не может быть с уверенностью выведена из контекста.
@@ -701,7 +688,7 @@ HumanName (Имя человека)
 <p>
 Имя можно изменить или отречься от него. У людей могут быть различные имена в разных обстоятельствах. Имена могут быть разбиты на части разного типа, имеющие переменное значение в зависимости от контекста, хотя деление на части не всегда существенно. В личных именах различные части могут быть пронизаны некоторым неявным смыслом; различные культуры придают различную важность частями имени, и степень, с которой система ДОЛЖНА заботиться о частях имени, по всему миру широко варьируется.
 </p>
-[%dt HumanName%]
+[%dt HumanName 10%]
 <p>
 В таблице ниже сведены места, где встречаются общие части имени человека.
 <!-- This table summarises where common parts of a person's name are found.  -->
@@ -779,7 +766,7 @@ Address (Адрес)
 Почтовый адрес. В мире существует большое многообразие форматов почтовых адресов. Почтовые адреса часто используются для записи местоположения, которое можно посетить, чтобы найти пациента или человека.
 </p>
 
-[%dt Address%]
+[%dt Address 11%]
 <p>
 Элемент <i>text</i> содержит полный адрес в том виде, в котором он должен отображаться. Его можно задать вместо либо в дополнение к отдельным частям. Приложения, обновляющие адрес, ДОЛЖНЫ убедиться, что либо текст соответствует частям адреса, либо из них присутствует только что-то одно.
 </p>
@@ -807,7 +794,7 @@ ContactPoint
 <!-- Details for all kinds of technology-mediated contact points for a person or organization, including telephone, email, etc. -->
 Контактные данные человека или организации любого вида технологий опосредованной коммуникации, включая телефон, электронную почту и др.
 </p>
-[%dt ContactPoint%]
+[%dt ContactPoint 12%]
 <p>
 При записи телефона, факса или подобного типа связи (contact point), значение должно быть должным образом отформатировано в соответствии с
 <a href="http://www.itu.int/rec/T-REC-E.123-200102-I/e">ITU-T E.123</a>. 
@@ -846,12 +833,16 @@ Those systems do not use the Timing data type. Other systems use a set of 'commo
 not limited to, widely understood acronyms such as "BID". A structured timing specification SHOULD be provided whenever 
 possible, unless the code is BID, TID, QID, AM or PM, which have a ubiquitous meaning. -->
 </p>
-[%dt Timing%]
+[%dt Timing 13%]
 <p>
 Если график времени содержит критерии повтора, он может произойти заданное число раз в течение указанной продолжительности или относительно какого-то реального события. Если условие окончания не указано, график закончится по каким-то критериям, выраженным где-то ещё.
 <!-- If the timing schedule has repeating criteria, the repeat can occur a given number of times per 
 the specified duration or in relation to some real world event. If no end condition is specified, 
 the schedule will terminate on some criteria that are expressed elsewhere.  -->
+</p>
+<p>
+Если в <code>duration</code> указан <a href="#Range">Range</a>, единицы измерения Range
+ДОЛЖНЫ БЫТЬ <a href="units-of-time.html">единицами измерения времени UCUM</a>.
 </p>
 <p>
 В данной таблице представлены некоторые общие способы применения критериев типа данных Timing.
@@ -874,18 +865,16 @@ the schedule will terminate on some criteria that are expressed elsewhere.  -->
  <tr><td>For 10 minutes before meals</td><td>10 min</td><td></td><td></td><td>10 min</td><td></td><td>AC</td></tr>
 </table>
 
+<div class="use">
+<p><b>Constraints</b></p>
+[%dt.constraints Timing%]
+
+</div>
 <p>
-Если в расписании имеется критерий повторения, событие может повториться заданное количество раз за указанный период либо относительно некоторого события реального мира.
-Если событие повторяющееся, время до окончания расписания может быть задано, либо количеством повторений count, либо датой/временем окончания расписания end. Если условие окончания не задано, расписание Schedule завершится по некоторому критерию, представленному где-то в другом месте.
 Timing используется в следующих местах: [%dtusage Timing%]
 </p>
 
 
-<div class="use">
-<p><b>Ограничения</b></p>
-[%dt.constraints Timing%]
-
-</div>
 
 <a name="Signature"></a>
 <a name="signature"></a>
@@ -899,7 +888,7 @@ Signature
 Signature содержит электронную цифровую подпись и вспомогательный контекст в доступной FHIR форме. Доказательство невозможности отказа от авторства указывается через XML-Signature BLOB (прим. пер. - binary large object; большой двоичный объект, "блоб").
 <!-- A Signature holds a Digital Signature and supporting context in a FHIR accessible form. The non-repudiation proof is provided through the XML-Signature blob.  -->
 </p>
-[%dt Signature%]
+[%dt Signature 14%]
 <p>
 Signature.blob - это XML-Signature в кодировке base64. XML-Signature - это <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature, где подписанное содержимое отделено от самой подписи.
 <!-- The Signature.blob is base64 encoded XML-Signature. The XML-Signature is a <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature. Where the content that is signed is separate from the signature itself.  -->
@@ -954,6 +943,38 @@ For example some environments may choose a different XAdES profile, hashing algo
 Signature используется в следующих местах: [%dtusage Signature%]
 </p>
 
+<a name="Annotation"></a>
+<a name="annotation"></a>
+<h2 style="margin-bottom: 1px">
+Annotation
+</h2>
+<p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
+See also <a href="datatypes-examples.html#Annotation">Examples</a>, <a href="datatypes-definitions.html#Annotation">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Annotation">Mappings</a>.
+</p>
+<p>
+A  text note which also  contains information about who made the statement and when. 
+</p>
+[%dt Annotation 15%]
+<p>
+Systems that do not have structured annotations simply communicate a single annotation with no author or time. 
+</p>
+<p>
+This element may need to be included in narrative because of the potential for modifying information. 
+</p>
+<p>
+Annotations <b>SHOULD NOT</b> be used to communicate "modifying" information that could be computable 
+(this is a SHOULD because enforcing user behavior is nearly impossible).
+</p>
+<!--<div class="use">
+<p><b>Constraints</b></p>
+[%dt.constraints Annotation%]
+
+</div>
+-->
+<p>
+Annotation is used in the following places: [%dtusage Annotation%]
+</p>
+
 <a name="open"> </a>
 <h2>Элементы открытого типа</h2>
 <p>
@@ -984,6 +1005,7 @@ Signature используется в следующих местах: [%dtusage
  <li><a href="datatypes.html#ContactPoint">ContactPoint</a></li>
  <li><a href="datatypes.html#Timing">Timing</a></li>
  <li><a href="datatypes.html#Signature">Signature</a></li>
+ <li><a href="datatypes.html#Annotation">Annotation</a></li>
  <li><a href="references.html#Reference">Reference</a> - - ссылка на другой ресурс</li>
 </ul>
 <p>
@@ -1000,7 +1022,7 @@ Signature используется в следующих местах: [%dtusage
 <p>
 Следующие типы входят в состав типов данных, но задокументированы в других местах спецификации:
 </p>
-[%diagram datatypes/types3.diagram%]
+[%diagram datatypes/types3.diagram 6a%]
 
 <ul>
  <li><b><a href="resource.html#metadata">Resource</a></b> - концептуальный базовый класс для всех ресурсов</li>
@@ -1010,7 +1032,7 @@ Signature используется в следующих местах: [%dtusage
 </ul>
 
 </div>
-[%onthispage Primitive Types#primitive|Data Types#Types|Other Types#other%]
+<!--[.%.onthispage Primitive Types#primitive|Data Types#Types|Other Types#other.%.]-->
 
 [%file newfooter%]
 
@@ -1038,6 +1060,7 @@ $( '#tabs-Address' ).tabs({ active: currentTabIndex, activate: function( event, 
 $( '#tabs-ContactPoint' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
 $( '#tabs-Timing' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
 $( '#tabs-Signature' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Annotation' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
      
      
 function store(currentTab) {
@@ -1059,6 +1082,7 @@ function store(currentTab) {
   $( '#tabs-ContactPoint' ).tabs('option', 'active', currentTab);
   $( '#tabs-Timing' ).tabs('option', 'active', currentTab);
   $( '#tabs-Signature' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Annotation' ).tabs('option', 'active', currentTab);
   document.activeElement.blur();
 }     
 </script>

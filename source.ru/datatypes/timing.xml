@@ -7,10 +7,10 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Grahame Grieve</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2015-03-20T02:00:20Z</LastSaved>
-  <Version>14.00</Version>
+  <LastSaved>2015-06-28T14:13:30Z</LastSaved>
+  <Version>15.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -20,11 +20,11 @@
    <Path>Invariants</Path>
    <SheetName>Invariants</SheetName>
   </SupBook>
-  <WindowHeight>2580</WindowHeight>
-  <WindowWidth>9870</WindowWidth>
-  <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>11</ActiveSheet>
+  <WindowHeight>13275</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -837,9 +837,9 @@
  <Worksheet ss:Name="Data Elements">
   <Names>
    <NamedRange ss:Name="_FilterDatabase"
-    ss:RefersTo="='Data Elements'!R1C1:R104C23" ss:Hidden="1"/>
+    ss:RefersTo="='Data Elements'!R1C1:R105C23" ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="23" ss:ExpandedRowCount="104" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="23" ss:ExpandedRowCount="105" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s69" ss:Width="227.25"/>
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="77.25"/>
@@ -971,14 +971,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Расписание для события, которое может наступить несколько раз<!-- A timing schedule that specifies an event that may occur multiple times --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">A timing schedule that specifies an event that may occur multiple times</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Определяет событие, которое может произойти несколько раз. Расписания используются для записи времени ожидаемого или запрошенного события. Наиболее распространенным будет использование расписаний в инструкции по дозировке для лекарств. Они также используются при планировании медицинского ухода различного вида<!-- Specifies an event that may occur multiple times. Timing schedules are used to record when things are expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Specifies an event that may occur multiple times. Timing schedules are used to record when things are expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Нужно иметь возможность отслеживать предложенные календарные графики. Есть несколько различных способов сделать это: указать один или несколько моментов времени, простые правила наподобие "три раза в день" или "до/после еды"<!-- Need to able to track proposed timing schedules. There are several different ways to do this: one or more specified times, a simple rules like three times a day, or  before/after meals --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to able to track proposed timing schedules. There are several different ways to do this: one or more specified times, a simple rules like three times a day, or  before/after meals</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Расписание может быть либо списком событий - интервалы, в которые происходит событие, или одно событие с критериями повтора, или просто критерии повтора без самого события. Когда указывается и событие, и спецификация его повтора, перечень событий следует понимать как интерпретацию информации из структуры repeat<!-- 
-A timing schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria or just repeating criteria with no actual event.  When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A timing schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria or just repeating criteria with no actual event.  When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">QSET&lt;TS&gt; (GTS)</Data><NamedCell
@@ -1006,11 +1005,11 @@ A timing schedule can be either a list of events - intervals on which the event 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда происходит событие<!-- When the event occurs --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When the event occurs</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет конкретное время, когда происходит событие<!-- Identifies specific times when the event occurs --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies specific times when the event occurs</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">В MAR, например, вы должны принять общее описание и превратить его в точную спецификацию <!-- In an MAR, for instance, you need to take a general specification, and turn it into a precise specification --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">In an MAR, for instance, you need to take a general specification, and turn it into a precise specification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1037,11 +1036,11 @@ A timing schedule can be either a list of events - intervals on which the event 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда именно произойдет событие<!-- When the event is to occur --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When the event is to occur</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Набор правил, которые описывают, когда должно произойти событие<!-- A set of rules that describe when the event should occur --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A set of rules that describe when the event should occur</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Многие расписания задаются регулярными повторами<!-- Many timing schedules are determined by regular repetitions --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Many timing schedules are determined by regular repetitions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1049,19 +1048,19 @@ A timing schedule can be either a list of events - intervals on which the event 
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">right</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">120;200</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Timing.repeat.bounds</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Timing.repeat.bounds[x]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Period</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Duration | Range | Period</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1070,9 +1069,9 @@ A timing schedule can be either a list of events - intervals on which the event 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Начальный и/или конечный пределы<!-- Start and/or end limits --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Length/Range of lengths, or (Start and/or end) limits</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешние границы начала и/или окончания расписания<!-- Outer bounds for start and/or end limits of the timing schedule --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1101,13 +1100,13 @@ A timing schedule can be either a list of events - intervals on which the event 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество повторов<!-- Number of times to repeat --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Number of times to repeat</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Общее число требуемого количества повторений<!-- A total count of the desired number of repetitions --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A total count of the desired number of repetitions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Повторы могут быть ограничены конечным временем или общим количеством событий<!-- Repetitions may be limited by end time or total occurrences --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Repetitions may be limited by end time or total occurrences</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если у вас есть обе границы и количество, то это следует понимать как период в пределах этих границ, пока событие не произойдет заданное число раз<!-- If you have both bounds and count, then this should be understand as within the bounds period, until count times happens --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If you have both bounds and count, then this should be understand as within the bounds period, until count times happens</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">PIVL.count</Data><NamedCell
@@ -1135,13 +1134,47 @@ A timing schedule can be either a list of events - intervals on which the event 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Сколько оно будет длиться<!-- How long when it happens --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">How long when it happens</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Сколько это событие будет длиться, когда оно наступит<!-- How long this thing happens for when it happens --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">How long this thing happens for when it happens</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Некоторые виды деятельности происходят не мгновенно и должны поддерживаться в течение периода времени<!-- Some activities are not instantaneous and need to be maintained for a period of time --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Some activities are not instantaneous and need to be maintained for a period of time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Для некоторых событий продолжительность является частью определения события (например внутривенные вливания). Для других это часть спецификации расписания (например упражнение)<!-- For some events the duration is part of the definition of the event (e.g. IV infusions). For others, it's part of the timing specification (e.g. exercise) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">For some events the duration is part of the definition of the event (e.g. IV infusions). For others, it's part of the timing specification (e.g. exercise)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">PIVL.phase / EIVL.offset</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="60">
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Timing.repeat.durationMax</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">0..1</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="Number">7</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">decimal</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">How long when it happens (Max)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The upper limit of how long this thing happens for when it happens</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Some activities are not instantaneous and need to be maintained for a period of time</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">For some events the duration is part of the definition of the event (e.g. IV infusions). For others, it's part of the timing specification (e.g. exercise)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">PIVL.phase / EIVL.offset</Data><NamedCell
@@ -1170,9 +1203,9 @@ A timing schedule can be either a list of events - intervals on which the event 
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">s | min | h | d | wk | mo | a - единицы времени (UCUM)<!-- s | min | h | d | wk | mo | a - unit of time (UCUM) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">s | min | h | d | wk | mo | a - unit of time (UCUM)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Единицы времени для продолжительности, в UCUM единицах<!-- The units of time for the duration, in UCUM units --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The units of time for the duration, in UCUM units</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1203,10 +1236,9 @@ A timing schedule can be either a list of events - intervals on which the event 
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Событие происходит "frequency" раз в течение некоторого периода<!-- Event occurs frequency times per duration --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Event occurs frequency times per duration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество повторений действия в течение указанного периода / промежутка времени (т. е. указаны и period, и periodMax)<!-- 
-The number of times to repeat the action within the specified period / period range (i.e. both period and periodMax provided) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The number of times to repeat the action within the specified period / period range (i.e. both period and periodMax provided)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1235,12 +1267,11 @@ The number of times to repeat the action within the specified period / period ra
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Событие происходит "frequency" раз за период<!-- Event occurs frequency times per duration --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Event occurs frequency times per duration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#333399">Если присутствует, указывает, что "frequency" (частота) - это диапазон, поэтому повторить количество раз между [frequency] и [frequencyMax] в течение периода<!-- 
-If present, indicates that the frequency is a range - so repeat between [frequency] and [frequencyMax] times within the period --> </Font><Font
-       html:Color="#993366">или диапазона времени<!-- or period range --></Font></ss:Data><NamedCell
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#333399">If present, indicates that the frequency is a range - so repeat between [frequency] and [frequencyMax] times within the period </Font><Font
+       html:Color="#993366">or period range</Font></ss:Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1270,10 +1301,9 @@ If present, indicates that the frequency is a range - so repeat between [frequen
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Событие происходит "frequency" раз за период<!-- Event occurs frequency times per period --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Event occurs frequency times per period</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает продолжительность времени, в течение которого должны происходить повторы. Например в выражении &quot;3 times per day&quot;  3 - это частота, а &quot;1 day&quot; будет периодом<!-- 
-Indicates the duration of time over which repetitions are to occur.  E.g. to express &quot;3 times per day&quot;, 3 would be the frequency and &quot;1 day&quot; would be the period --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the duration of time over which repetitions are to occur.  E.g. to express &quot;3 times per day&quot;, 3 would be the frequency and &quot;1 day&quot; would be the period</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1302,10 +1332,9 @@ Indicates the duration of time over which repetitions are to occur.  E.g. to exp
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Верхний предел периода (3-4 часа)<!-- Upper limit of period (3-4 hours) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Upper limit of period (3-4 hours)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если присутствует, указывает, что период является диапазоном от [period] до [periodMax], что позволяет выражать такие понятия, как &quot;do this once every 3-5 days&quot;<!-- 
-If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as &quot;do this once every 3-5 days --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as &quot;do this once every 3-5 days</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1336,9 +1365,9 @@ If present, indicates that the period is a range from [period] to [periodMax], a
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">s | min | h | d | wk | mo | a - единица времени (UCUM)<!-- s | min | h | d | wk | mo | a - unit of time (UCUM) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">s | min | h | d | wk | mo | a - unit of time (UCUM)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">UCUM-единицы времени для периода<!-- The units of time for the period in UCUM units --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The units of time for the period in UCUM units</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1369,11 +1398,11 @@ If present, indicates that the period is a range from [period] to [periodMax], a
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">События из повседневной жизни, к которым привязано событие<!-- Regular life events the event is tied to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Regular life events the event is tied to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Событие реального мира, к которому следует привязать появление данного события<!-- A real world event that the occurrence of the event should be tied to. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A real world event that the occurrence of the event should be tied to.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Распределение по времени часто определяется такими явлениями, как бодрствование, прием пищи и сон<!-- Timings are frequently determined by occurrences such as waking, eating and sleep --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Timings are frequently determined by occurrences such as waking, eating and sleep</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3656,12 +3685,13 @@ If present, indicates that the period is a range from [period] to [periodMax], a
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>4</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>3</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -3669,15 +3699,14 @@ If present, indicates that the period is a range from [period] to [periodMax], a
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>14</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>4</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -3690,7 +3719,7 @@ If present, indicates that the period is a range from [period] to [periodMax], a
    <Value>&quot;DomainResource,Type,Resource,Structure&quot;</Value>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C4,R4C4:R104C4</Range>
+   <Range>R2C4,R4C4:R105C4</Range>
    <Type>List</Type>
    <Value>Invariants!#REF!</Value>
    <ErrorHide/>
@@ -3702,7 +3731,7 @@ If present, indicates that the period is a range from [period] to [periodMax], a
    <ErrorHide/>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C21:R104C21</Range>
+   <Range>R2C21:R105C21</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;left,right,up,down,[xpixels];[ypixels]&quot;</Value>
@@ -3710,50 +3739,50 @@ If present, indicates that the period is a range from [period] to [periodMax], a
    <ErrorStyle>Info</ErrorStyle>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C18:R104C20</Range>
+   <Range>R2C18:R105C20</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;N/A&quot;</Value>
    <ErrorHide/>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C8:R104C8</Range>
+   <Range>R2C8:R105C8</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;Bindings!A2..A30&quot;</Value>
    <ErrorHide/>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R3C6:R104C7</Range>
+   <Range>R3C6:R105C7</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;Y,N&quot;</Value>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R3C5:R104C5</Range>
+   <Range>R3C5:R105C5</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;*,Reference(A|B),boolean,string,code,id,oid,uuid,integer,decimal,date,dateTime,time,instant,uri,base64Binary,CodeableConcept,Coding,Identifier,Period,Timing,Range,Quantity,Age,Distance,Duration,Count,Money,Ratio,HumanName,Address,ContactPoint,SampledData&quot;</Value>
    <ErrorHide/>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C3:R104C3</Range>
+   <Range>R2C3:R105C3</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;0..1,1..1,0..*,1..*&quot;</Value>
   </DataValidation>
-  <AutoFilter x:Range="R1C1:R104C23"
+  <AutoFilter x:Range="R1C1:R105C23"
    xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C13:R104C13</Range>
+   <Range>R2C13:R105C13</Range>
    <Condition>
     <Value1>(RC1=&quot;&quot;)&lt;&gt;(RC=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R104C23</Range>
+   <Range>R2C1:R105C23</Range>
    <Condition>
     <Value1>RC3=&quot;0..0&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
@@ -3764,7 +3793,7 @@ If present, indicates that the period is a range from [period] to [periodMax], a
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R5C1,R16C1:R104C1</Range>
+   <Range>R2C1:R5C1,R17C1:R105C1</Range>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,R[-1]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
@@ -3778,35 +3807,35 @@ If present, indicates that the period is a range from [period] to [periodMax], a
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R5C13,R2C14:R104C14,R3C3:R104C3</Range>
+   <Range>R5C13,R2C14:R105C14,R3C3:R105C3</Range>
    <Condition>
     <Value1>(RC1=&quot;&quot;)&lt;&gt;(RC=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C12:R104C12,R2C9:R104C9</Range>
+   <Range>R2C12:R105C12,R2C9:R105C9</Range>
    <Condition>
     <Value1>AND(SEARCH(&quot;|&quot;,RC5)&lt;&gt;0,RC&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C12:R104C12,R2C10:R104C10</Range>
+   <Range>R2C12:R105C12,R2C10:R105C10</Range>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(RC5,1),LOWER(LEFT(RC5,1)))))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C10:R104C11</Range>
+   <Range>R2C10:R105C11</Range>
    <Condition>
     <Value1>AND(RC10&lt;&gt;&quot;&quot;,RC11&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C13:R104C14</Range>
+   <Range>R2C13:R105C14</Range>
    <Condition>
     <Value1>AND(RC13&lt;&gt;&quot;&quot;,RC13=RC14)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
@@ -3820,91 +3849,77 @@ If present, indicates that the period is a range from [period] to [periodMax], a
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R3C18:R104C19</Range>
+   <Range>R3C18:R105C19</Range>
    <Condition>
     <Value1>AND(RC1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C)),RC=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C21:R3C21,R15C21:R104C21</Range>
+   <Range>R2C21:R3C21,R16C21:R105C21</Range>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1]C1,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(R[1]C1,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R104C23</Range>
+   <Range>R2C1:R105C23</Range>
    <Condition>
     <Value1>LEFT(RC1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R9C1:R12C1</Range>
+   <Range>R10C1:R13C1</Range>
    <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,R[-6]C=&quot;&quot;)</Value1>
+    <Value1>AND(RC&lt;&gt;&quot;&quot;,R[-7]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R6C1:R7C1</Range>
+   <Range>R6C1:R8C1</Range>
    <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,R[7]C=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R13C1</Range>
-   <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R4C21,R7C21</Range>
-   <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(R[6]C1,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(R[6]C1,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C1</Range>
-   <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R8C21</Range>
-   <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(R[-6]C1,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(R[-6]C1,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R15C1</Range>
-   <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Value1>AND(RC&lt;&gt;&quot;&quot;,R[8]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R14C1</Range>
    <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,R[-4]C=&quot;&quot;)</Value1>
+    <Value1>AND(RC&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R13C21:R14C21</Range>
+   <Range>R4C21,R7C21:R8C21</Range>
+   <Condition>
+    <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(R[7]C1,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(R[7]C1,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R9C1,R16C1</Range>
+   <Condition>
+    <Value1>AND(RC&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R9C21</Range>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(R[-7]C1,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(R[-7]C1,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R10C21:R12C21</Range>
+   <Range>R15C1</Range>
+   <Condition>
+    <Value1>AND(RC&lt;&gt;&quot;&quot;,R[-4]C=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C21:R13C21</Range>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(R[4]C1,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(R[4]C1,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
@@ -3913,12 +3928,12 @@ If present, indicates that the period is a range from [period] to [periodMax], a
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R5C21</Range>
    <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(R[9]C1,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(R[9]C1,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
+    <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(R[10]C1,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(R[10]C1,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R9C21</Range>
+   <Range>R10C21</Range>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(#REF!,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(#REF!,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
@@ -3928,6 +3943,13 @@ If present, indicates that the period is a range from [period] to [periodMax], a
    <Range>R6C21</Range>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(#REF!,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(#REF!,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R14C21:R15C21</Range>
+   <Condition>
+    <Value1>AND(RC&lt;&gt;&quot;&quot;,LEFT(RC5,1)&lt;&gt;&quot;@&quot;,LEFT(R[-8]C1,LEN(RC1)+1)&lt;&gt;(RC1&amp;&quot;.&quot;),LEFT(R[-8]C1,LEN(RC1)+2)&lt;&gt;(&quot;!&quot;&amp;RC1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -3983,7 +4005,7 @@ If present, indicates that the period is a range from [period] to [periodMax], a
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">если duration указан, необходимо указать и единицы измерения продолжительности<!-- if there's a duration, there needs to be duration units --></Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">if there's a duration, there needs to be duration units</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:duration)) or exists(f:durationUnits)</Data><NamedCell
@@ -3995,7 +4017,7 @@ If present, indicates that the period is a range from [period] to [periodMax], a
     <Cell ss:StyleID="s90"><Data ss:Type="String">Period units</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">если period указан, необходимо указать и единицы измерения продолжительности<!-- if there's a period, there needs to be duration units --></Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">if there's a period, there needs to be duration units</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:period)) or exists(f:periodUnits)</Data></Cell>
    </Row>
@@ -4005,7 +4027,7 @@ If present, indicates that the period is a range from [period] to [periodMax], a
     <Cell ss:StyleID="s90"><Data ss:Type="String">no frequency with when</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Можно указать либо frequency, либо when, но не оба<!-- Either frequency or when can exist, not both --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Either frequency or when can exist, not both</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:frequency)) or not(exists(f:when))</Data></Cell>
    </Row>
@@ -4015,7 +4037,7 @@ If present, indicates that the period is a range from [period] to [periodMax], a
     <Cell ss:StyleID="s90"><Data ss:Type="String">Duration Positive</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat.duration</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">duration ДОЛЖЕН иметь неотрицательное значение<!-- duration SHALL be a non-negative value --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">duration SHALL be a non-negative value</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">duration &gt;= 0</Data></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String" x:Ticked="1">@value &gt;= 0 or not(@value)</Data></Cell>
    </Row>
@@ -4025,7 +4047,7 @@ If present, indicates that the period is a range from [period] to [periodMax], a
     <Cell ss:StyleID="s90"><Data ss:Type="String">period positive</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat.period</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">period ДОЛЖЕН иметь неотрицательное значение<!-- period SHALL be a non-negative value --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">period SHALL be a non-negative value</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String" x:Ticked="1">@value &gt;= 0 or not(@value)</Data></Cell>
    </Row>
@@ -4035,8 +4057,7 @@ If present, indicates that the period is a range from [period] to [periodMax], a
     <Cell ss:StyleID="s90"><Data ss:Type="String">periodMax needs period</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Если указан periodMax, то должен быть указан и period<!-- 
-If there's a periodMax, there must be a period --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">If there's a periodMax, there must be a period</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:periodMax)) or exists(period)</Data></Cell>
    </Row>
@@ -4046,7 +4067,7 @@ If there's a periodMax, there must be a period --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">durationMax needs duration</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Если указан durationMax, то должен быть указан и duration<!-- If there's a durationMax, there must be a duration --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">If there's a durationMax, there must be a duration</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:durationMax)) or exists(duration)</Data></Cell>
    </Row>
@@ -4477,7 +4498,7 @@ If there's a periodMax, there must be a period --></Data></Cell>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R50C4</Range>
    <Type>List</Type>
-   <Value>'Data Elements'!R2C1:R104C1</Value>
+   <Value>'Data Elements'!R2C1:R105C1</Value>
   </DataValidation>
   <AutoFilter x:Range="R1C1:R2C7" xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
@@ -7337,7 +7358,7 @@ If there's a periodMax, there must be a period --></Data></Cell>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R3C13,R5C1:R30C13,R4C2:R4C13</Range>
+   <Range>R2C1:R30C13</Range>
    <Condition>
     <Value1>LEFT(RC1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
@@ -7352,13 +7373,6 @@ If there's a periodMax, there must be a period --></Data></Cell>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,RC1=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R4C1</Range>
-   <Condition>
-    <Value1>LEFT(RC1,1)=&quot;!&quot;</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
  </Worksheet>
@@ -9374,7 +9388,6 @@ If there's a periodMax, there must be a period --></Data></Cell>
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
