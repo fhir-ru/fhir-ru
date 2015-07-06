@@ -10,23 +10,21 @@
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2015-04-12T14:22:05Z</LastSaved>
-  <Version>15.00</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <SupBook>
-   <Path>\work\org.hl7.fhir\build\source\provenance\Macintosh HD:Users:cnanjo:repository:fhir:trunk:build:source:provenance:Invariants</Path>
+   <Path>Invariants</Path>
    <SheetName>Invariants</SheetName>
   </SupBook>
-  <WindowHeight>13275</WindowHeight>
-  <WindowWidth>24000</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
-  <ActiveSheet>10</ActiveSheet>
-  <FirstVisibleSheet>2</FirstVisibleSheet>
-  <RefModeR1C1/>
+  <WindowHeight>2580</WindowHeight>
+  <WindowWidth>9870</WindowWidth>
+  <WindowTopX>5520</WindowTopX>
+  <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -3574,7 +3572,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4,R4C4:R100C4</Range>
    <Type>List</Type>
-   <Value>'\work\org.hl7.fhir\build\source\provenance\Macintosh HD:Users:cnanjo:repository:fhir:trunk:build:source:provenance:[Invariants]Invariants'!#REF!</Value>
+   <Value>Invariants!#REF!</Value>
    <ErrorHide/>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
@@ -4294,8 +4292,8 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Money</Data></Cell>
     <Cell><Data ss:Type="String">Денежная сумма. Что касается точности, см. [[X]]<!-- An amount of money. With regard to precision, see [[X]] --></Data></Cell>
-    <Cell><Data ss:Type="String">There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = &quot;urn:iso:std:iso:4217&quot; - currency).</Data></Cell>
-    <Cell><Data ss:Type="String">(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='urn:iso:std:iso:4217')</Data></Cell>
+    <Cell><Data ss:Type="String">There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = &quot;urn:std:iso:4217&quot; - currency).</Data></Cell>
+    <Cell><Data ss:Type="String">(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='urn:std:iso:4217')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">CodedQuantity</Data></Cell>
@@ -4318,6 +4316,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
    </PageSetup>
    <Unsynced/>
    <TabColorIndex>9</TabColorIndex>
+   <Selected/>
    <LeftColumnVisible>3</LeftColumnVisible>
    <Panes>
     <Pane>
@@ -7213,7 +7212,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     <Cell ss:StyleID="s127"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s149"/>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">Less than</Data></Cell>
+    <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">The actual value is less than the given value</Data></Cell>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
@@ -7224,7 +7223,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     <Cell ss:StyleID="s130"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s150"/>
-    <Cell ss:StyleID="s150"><Data ss:Type="String">Less or Equal to</Data></Cell>
+    <Cell ss:StyleID="s150"/>
     <Cell ss:StyleID="s150"><Data ss:Type="String">The actual value is less than or equal to the given value</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
@@ -7235,7 +7234,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     <Cell ss:StyleID="s130"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s150"/>
-    <Cell ss:StyleID="s150"><Data ss:Type="String">Greater or Equal to</Data></Cell>
+    <Cell ss:StyleID="s150"/>
     <Cell ss:StyleID="s150"><Data ss:Type="String">The actual value is greater than or equal to the given value</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
@@ -7246,7 +7245,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     <Cell ss:StyleID="s130"><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s150"/>
-    <Cell ss:StyleID="s150"><Data ss:Type="String">Greater than</Data></Cell>
+    <Cell ss:StyleID="s150"/>
     <Cell ss:StyleID="s150"><Data ss:Type="String">The actual value is greater than the given value</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
@@ -7756,7 +7755,6 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -7776,8 +7774,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
