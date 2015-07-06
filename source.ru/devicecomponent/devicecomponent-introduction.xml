@@ -11,8 +11,8 @@
 <!-- Note: -->
 </p>
 <p>
-В соответствии с первоначальным замыслом, ресурс DeviceComponent применим для описания представления только одного узла (например MDS, VMD или Channel) в дереве вложений, которое создается контекстным сканером для любого медицинского изделия, которое реализовано или произведено в соответствии со стандартом ISO/IEEE 11073.
-<!-- For the initial scope, this DeviceComponent resource is only applicable to describe a single node (such as MDS, VMD, or Channel) represents in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard. --></p>
+В соответствии с первоначальным замыслом, ресурс DeviceComponent подходит для описания представления только одного узла в дереве вложений, которое создается контекстным сканером для любого медицинского изделия, которое реализовано или произведено в соответствии со стандартом ISO/IEEE 11073 и которое не представляет собой метрику. Примерами таких узлов будут MDS, VMD и Channel.
+<!-- For the initial scope, this DeviceComponent resource is only applicable to describe a single node in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard and that does not represent a metric. Examples for such a node are MDS, VMD, or Channel. --></p>
 </div>
 
 <div>

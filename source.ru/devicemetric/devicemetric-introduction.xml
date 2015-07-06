@@ -13,8 +13,8 @@ The DeviceMetric resource can also be used to describe the non-static but highly
 <!-- Note: -->
 </p>
 <p>
-В соответствии с первоначальным замыслом, ресурс DeviceMetric применим для описания представления только одной метрики в дереве вложений, которое создается контекстным сканером для любого медицинского изделия, которое реализовано или произведено в соответствии со стандартом ISO/IEEE 11073.
-<!-- For the initial scope, this DeviceMetric resource is only applicable to describe a single metric represents in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard. -->
+В соответствии с первоначальным замыслом, ресурс DeviceMetric подходит для описания представления только одного узла метрики в дереве вложений, которое создается контекстным сканером для любого медицинского изделия, которое реализовано или произведено в соответствии со стандартом ISO/IEEE 11073.
+<!-- For the initial scope, this DeviceMetric resource is only applicable to describe a single metric node in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard. -->
 </p>
 </div>
 
