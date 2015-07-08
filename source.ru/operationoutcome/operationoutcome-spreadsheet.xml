@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Lloyd</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2014-11-17T05:30:16Z</LastSaved>
+  <LastSaved>2015-06-11T11:37:26Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -24,7 +24,6 @@
   <WindowWidth>9870</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>10</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -808,7 +807,7 @@
   <NamedRange ss:Name="Invariantids" ss:RefersTo="=Invariants!R2C1:R50C1"/>
  </Names>
  <Worksheet ss:Name="Instructions">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="411"/>
    <Row ss:AutoFitHeight="0">
@@ -825,6 +824,10 @@
     <Cell><Data ss:Type="String">entered-in-error-status</Data></Cell>
     <Cell><Data ss:Type="String">n/a - this resource is not expected to be stored</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">fmm</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -833,10 +836,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -985,12 +989,12 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Информация об успешности/сбое действия<!-- Information about the success/failure of an action --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Information about the success/failure of an action</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Коллекция ошибок, предупреждений или информационных сообщений, являющихся результатом действия системы <!-- A collection of error, warning or information messages that result from a system action --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A collection of error, warning or information messages that result from a system action</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Может быть результатом сбоя REST-вызова или частью ответного сообщения, возвращенного на сообщение-запрос. Если отправляется с расширениями, перекрывающими определенные вопросы/проблемы, может даже появиться в рамках сообщения-запроса<!-- Can result from the failure of a REST call or be part of the response message returned from a request message.  If sent with extensions overriding particular issues, might even appear as part of a request message. --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Can result from the failure of a REST call or be part of the response message returned from a request message.  If sent with extensions overriding particular issues, might even appear as part of a request message.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Grouping is handled through multiple repetitions from whatever context references the outcomes (no specific grouper required)</Data><NamedCell
@@ -1017,9 +1021,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Одна проблема, связанная с этим действием<!-- A single issue associated with the action --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A single issue associated with the action</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ошибка, предупреждение или информационное сообщение, являющиеся результатом действия системы<!-- An error, warning or information message that results from a system action --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An error, warning or information message that results from a system action</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1055,11 +1059,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">fatal | error | warning | information&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, означает ли эта проблема  вариант успешной обработки<!-- Indicates whether the issue indicates a variation from successful processing  --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates whether the issue indicates a variation from successful processing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает, насколько значима эта проблема для общей успешности действия.<!-- Indicates how relevant the issue is to the overall success of the action. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates how relevant the issue is to the overall success of the action.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Имеет отметку &quot;Is Modifier&quot;, потому что приложениям не следует путать подсказки и предупреждения с ошибками<!-- This is labeled as &quot;Is Modifier&quot; because applications should not confuse hints and warnings with errors --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This is labeled as &quot;Is Modifier&quot; because applications should not confuse hints and warnings with errors</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./typeCode[parent::AcknowledgmentDetail] or unique(./inboundRelationship[parent::Observation and typeCode='SUBJ' and isNormalActRelationship()]/source[classCode=&quot;OBS&quot; and moodCode=&quot;EVN&quot; and implies(code, ActCode#SEV and isNormalAct())/value[xsi:type=&quot;CD&quot;]</Data><NamedCell
@@ -1089,11 +1093,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Код ошибки или предупреждения<!-- Error or warning code --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Error or warning code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает тип проблемы <!-- Describes the type of the issue --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Describes the type of the issue</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Выражает проблему понятным человеку и компьютеру образом, позволяя запрашивающей системе вести себя по-разному в зависимости от типа проблемы. Система, которая создает OperationOutcome, ДОЛЖНА выбрать наиболее подходящий код из набора значений IssueType и может дополнительно предоставить свои собственные коды в других элементах coding в type. В code.text ДОЛЖНО быть помещено человекочитаемое описание типа проблемы<!-- Expresses the issue in a human and computer-friendly way, allowing the requesting system to behave differently based on the type of issue. The system that creates an OperationOutcome SHALL choose the most applicable code from the IssueType value set, and may additional provide it's own codes in other coding elements in the type. A human readable description of the type of the issue SHOULD be placed in code.text --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Expresses the issue in a human and computer-friendly way, allowing the requesting system to behave differently based on the type of issue. The system that creates an OperationOutcome SHALL choose the most applicable code from the IssueType value set, and may additional provide it's own codes in other coding elements in the type. A human readable description of the type of the issue SHOULD be placed in code.text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1123,12 +1127,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная диагностическая информация о проблеме <!-- Additional diagnostic information about the issue --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional diagnostic information about the issue</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная диагностическая информация о проблеме. Обычно это описание того, в каком значении ошибка, либо стек ошибки для трассировки проблемы. <!-- Additional diagnostic information about the issue.  Typically, this may be a description of how a value is erroneous, or a stck dump to help trace the issue. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional diagnostic information about the issue.  Typically, this may be a description of how a value is erroneous, or a stck dump to help trace the issue.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">обычно это поле используется для предоставления диагностической информации об ошибке<!-- typically this field is used to provide troubleshooting information about the error --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">typically this field is used to provide troubleshooting information about the error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./text[parent::AcknowledgmentDetail]</Data><NamedCell
@@ -1157,14 +1161,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath элемента(-ов), связанных с проблемой<!-- XPath of element(s) related to issue --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath of element(s) related to issue</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Простой XPath, ограниченный именами элементов, индикаторами повтора и доступом к потомкам по умолчанию, идентифицирующий один из элементов в ресурсе, который вызвал появление этой проблемы.<!-- A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет системам выделять подсветкой или другим образом направлять пользователей к элементам, связанным с проблемой, для упрощения их починки.<!-- Allows systems to highlight or otherwise guide users to elements implicated in issues to allow them to be fixed more easily. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows systems to highlight or otherwise guide users to elements implicated in issues to allow them to be fixed more easily.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Корневой элемент XPath - это ресурс или комплект, который сгенерировал OperationOutcome. Каждый XPath ДОЛЖЕН разрешаться в одну ноду. Синтаксис XPath используется в любом случае, выражена ли ссылка на экземпляр в XML или JSON.<!-- 
-The root of the XPath is the resource or bundle that generated OperationOutcome.  Each XPath SHALL resolve to a single node.  The XPath syntax is used whether the referenced instance is expressed in XML or JSON. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The root of the XPath is the resource or bundle that generated OperationOutcome.  Each XPath SHALL resolve to a single node.  The XPath syntax is used whether the referenced instance is expressed in XML or JSON.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./location[parent::AcknowledgmentDetail]</Data><NamedCell
@@ -6658,7 +6661,7 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">IssueSeverity</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Как эта проблема влияет на действие<!-- How the issue affects the success of the action --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">How the issue affects the success of the action</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s146"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#issue-severity</Data></Cell>
@@ -6673,7 +6676,7 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">IssueType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированное выражение типа этой проблемы<!-- A coded expression of the type of issue --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded expression of the type of issue</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s146"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#issue-type</Data></Cell>
@@ -7246,7 +7249,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s138"><Data ss:Type="String">fatal</Data></Cell>
@@ -7258,7 +7260,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
-    <Cell><Data ss:Type="String">фатальный сбой</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">error</Data></Cell>
@@ -7270,7 +7271,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">ошибка</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">warning</Data></Cell>
@@ -7282,7 +7282,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">предупреждение</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s140"><Data ss:Type="String">information</Data></Cell>
@@ -7294,7 +7293,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">информация</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"/>
@@ -7921,7 +7919,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional notes about the code.  Not published</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Display:ru</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s138"><Data ss:Type="String">invalid</Data></Cell>
@@ -7933,7 +7930,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
-    <Cell><Data ss:Type="String">недопустимый</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">structure</Data></Cell>
@@ -7945,7 +7941,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">структура</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">required</Data></Cell>
@@ -7957,7 +7952,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">отсутствует обязательный элемент</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">value</Data></Cell>
@@ -7969,7 +7963,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">недопустимое значение элемента</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">invariant</Data></Cell>
@@ -7981,7 +7974,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">инвариант</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">security</Data></Cell>
@@ -7993,7 +7985,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">безопасность</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s140"><Data ss:Type="String">login</Data></Cell>
@@ -8005,7 +7996,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"><Data ss:Type="String">Sometimes associated with HTTP 3xx response codes, but not if the client gets to choose which authentication process to initiate</Data></Cell>
-    <Cell><Data ss:Type="String">имя пользователя</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">unknown</Data></Cell>
@@ -8017,7 +8007,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">неизвестный пользователь</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">expired</Data></Cell>
@@ -8029,7 +8018,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">время сессии истекло</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">forbidden</Data></Cell>
@@ -8052,7 +8040,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">нет прав доступа</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">processing</Data></Cell>
@@ -8064,7 +8051,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">обработка</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">not-supported</Data></Cell>
@@ -8076,7 +8062,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
-    <Cell><Data ss:Type="String">не поддерживается</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s140"><Data ss:Type="String">duplicate</Data></Cell>
@@ -8511,7 +8496,6 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -8548,7 +8532,7 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R12C1,R14C1:R23C1,R25C1:R52C1,R14C5:R23C5,R25C5:R29C5</Range>
+   <Range>R2C1:R12C1,R14C1:R23C1,R25C1:R52C1,R14C5:R23C5,R25C5:R29C5,R2C5:R12C5</Range>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,R[-1]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
@@ -8569,7 +8553,7 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C6:R52C6</Range>
+   <Range>R2C6:R52C6,R4C5:R7C5</Range>
    <Condition>
     <Value1>AND(RC1&lt;&gt;&quot;&quot;,,RC3=&quot;&quot;,RC5=&quot;&quot;,RC=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
@@ -8583,58 +8567,9 @@ The root of the XPath is the resource or bundle that generated OperationOutcome.
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R13C1,R24C1,R24C5</Range>
+   <Range>R13C1,R24C1,R24C5,R13C5</Range>
    <Condition>
     <Value1>AND(RC&lt;&gt;&quot;&quot;,R[-2]C=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C5:R12C5</Range>
-   <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,R[-1]C=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R13C5</Range>
-   <Condition>
-    <Value1>AND(RC&lt;&gt;&quot;&quot;,R[-2]C=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R4C5</Range>
-   <Condition>
-    <Value1>AND(RC1&lt;&gt;&quot;&quot;,,RC3=&quot;&quot;,RC5=&quot;&quot;,RC=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R4C5</Range>
-   <Condition>
-    <Value1>AND(RC1&lt;&gt;&quot;&quot;,,RC3=&quot;&quot;,RC5=&quot;&quot;,RC=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R5C5</Range>
-   <Condition>
-    <Value1>AND(RC1&lt;&gt;&quot;&quot;,,RC3=&quot;&quot;,RC5=&quot;&quot;,RC=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R6C5</Range>
-   <Condition>
-    <Value1>AND(RC1&lt;&gt;&quot;&quot;,,RC3=&quot;&quot;,RC5=&quot;&quot;,RC=&quot;&quot;)</Value1>
-    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
-   </Condition>
-  </ConditionalFormatting>
-  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R7C5</Range>
-   <Condition>
-    <Value1>AND(RC1&lt;&gt;&quot;&quot;,,RC3=&quot;&quot;,RC5=&quot;&quot;,RC=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>

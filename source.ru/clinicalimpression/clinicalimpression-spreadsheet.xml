@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2014-12-05T02:47:57Z</LastSaved>
+  <LastSaved>2015-06-11T11:28:41Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -24,7 +24,6 @@
   <WindowWidth>9870</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6135</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -850,7 +849,7 @@
   <NamedRange ss:Name="Invariantids" ss:RefersTo="=Invariants!R2C1:R50C1"/>
  </Names>
  <Worksheet ss:Name="Instructions">
-  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="411"/>
    <Row ss:AutoFitHeight="0">
@@ -863,6 +862,10 @@
     <Cell ss:StyleID="s67" ss:HRef="http://wiki.hl7.org/?title=FHIR_Spreadsheet_Authoring"><Data
       ss:Type="String">http://wiki.hl7.org?title=FHIR_Spreadsheet_Authoring</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">fmm</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -871,10 +874,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1018,9 +1023,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Клиническая оценка, выполняемая для планирования, проведения и оценки терапевтических вмешательств и прогнозирования последующего поведения пациента<!-- A clinical assessment performed when planning treatments and management strategies for a patient --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A clinical assessment performed when planning treatments and management strategies for a patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Запись клинической оценки, выполняемой для прогнозирования влияния проблем на пациента и перед планированием, проведением и оценкой терапевтических вмешательств, наиболее подходящих для состояния пациента. Клиническая оценка часто один в один совпадает с клинической консультацией/случаем обслуживания (encounter), но сильно варьируется в зависимости от клинического рабочего процесса. Этот ресурс назван &quot;ClinicalImpression&quot;, а не &quot;ClinicalAssessment&quot;, дабы избежать путаницы с инструментами оценки, например шкала Апгар<!-- A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called &quot;ClinicalImpression&quot; rather than &quot;ClinicalAssessment&quot; to avoid confusion with the recording of assessment tools such as Apgar score --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called &quot;ClinicalImpression&quot; rather than &quot;ClinicalAssessment&quot; to avoid confusion with the recording of assessment tools such as Apgar score</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1049,9 +1054,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Пациент, для которого выполняется оценка<!-- The patient being asssesed --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The patient being assessed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Пациент, для которого выполняется оценка<!-- The patient being asssesed --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The patient being assessed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1080,9 +1085,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Клиницист, выполняющий оценку<!-- The clinician performing the assessment --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The clinician performing the assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Клиницист, выполняющий оценку<!-- The clinician performing the assessment --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The clinician performing the assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1115,7 +1120,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">in-progress | completed | entered-in-error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет статус рабочего процесса проведения оценки<!-- Identifies the workflow status of the assessment --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies the workflow status of the assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1144,12 +1149,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Когда была выполнена оценка<!-- When the assessment occurred --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">When the assessment occurred</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Момент времени, когда была заключена оценка (а не тогда, когда она была записана)<!-- The point in time at which the assessment was concluded (not when it was recorded) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The point in time at which the assessment was concluded (not when it was recorded)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это время СЛЕДУЕТ указывать с точностью до минуты, хотя для некоторых оценок может быть известна только дата<!-- This SHOULD be accurate to at least the minute, though some assessments only have a known date --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String"> This SHOULD be accurate to at least the minute, though some assessments only have a known date</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1176,9 +1181,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Почему/как проводилась оценка<!-- Why/how the assessment was performed --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Why/how the assessment was performed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Краткое изложение контекста и/или причин проведения оценки - почему/где она выполнялась, и какие события/статусы пациента вызвали ее<!-- A summary of the context and/or cause of the assessment - why / where was it peformed, and what patient events/sstatus prompted it --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A summary of the context and/or cause of the assessment - why / where was it peformed, and what patient events/sstatus prompted it</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1206,12 +1211,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на последнюю оценку<!-- Reference to last assessment --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Reference to last assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Ссылка на последнюю оценку, проведенную для этого пациента. Проведение оценок по своей природе часто/обычно не прекращается; поставщик медицинских услуг (врач или команда) проводит новые оценки на постоянной основе, как только появляются новые данные или меняется состояние пациента<!-- A reference to the last assesment that was conducted bon this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions changes --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A reference to the last assesment that was conducted bon this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions changes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Всегда есть вероятность, что существует несколько предыдущих оценок для пациента. Вопрос цитирования предыдущей оценки в том, что данная оценка связана с ним (см. resolved)<!-- It is always likely that multiple previous assessments exist for a patient. The point of quoting a previous assessment is that this assessment is relative to it (see resolved) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">It is always likely that multiple previous assessments exist for a patient. The point of quoting a previous assessment is that this assessment is relative to it (see resolved)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1238,12 +1243,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Общая оценка состояния пациента<!-- General assessment of patient state --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">General assessment of patient state</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это список общих проблем/состояний пациента<!-- This a list of the general problems/conditions for a patient --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">This a list of the general problems/conditions for a patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">например пациентка беременна, у нее застойная сердечная недостаточность, аденокарцинома и аллергия на пенициллин<!-- e.g. The patient is a pregnant, and cardiac congestive failure, ‎Adenocarcinoma, and is allergic to penicillin --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">e.g. The patient is a pregnant, and cardiac congestive failure, ‎Adenocarcinoma, and is allergic to penicillin</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1270,9 +1275,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Запрос или событие, которое сделало необходимым эту оценку<!-- Request or event that necessitated this assessment --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Request or event that necessitated this assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Запрос или событие, которое сделало необходимым эту оценку. Это может быть диагноз, план ухода, запрос на направление или какой-то другой ресурс<!-- The request or event that necessitated this assessment. This may be a diagnosis, a Care Plan, a Request Referral, or some other resource --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The request or event that necessitated this assessment. This may be a diagnosis, a Care Plan, a Request Referral, or some other resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1299,9 +1304,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Одно или несколько исследований (признаки, симптомы и т. д.)<!-- One or more sets of investigations (signs, symptions, etc) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">One or more sets of investigations (signs, symptions, etc)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Одно или несколько исследований (признаки, симптомы и т. д.). Фактическая группировка исследований сильно различается в зависимости от типа и контекста оценки. Эти исследования могут включать в себя данные, полученные в процессе оценки, или ранее созданные и записанные данные, которые имеют отношение к результатам<!-- One or more sets of investigations (signs, symptions, etc). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">One or more sets of investigations (signs, symptions, etc). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1324,15 +1329,15 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">investigationGroupType</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">InvestigationGroupType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Название/код для этой группы<!-- A name/code for the set --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A name/code for the set</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Название/код для этой группы (&quot;set&quot;) исследований. Как правило, это будет что-то вроде "признаки", "симптомы", "клинический", "диагностика", однако список этим не ограничивается и могут использовать другие группы, например карта облучений, семейный анамнез, история путешествий, диетологический анамнез<!-- A name/code for the group (&quot;set&quot;) of investigations. Typically, this will be something like &quot;signs&quot;, &quot;symptoms&quot;, &quot;clinical&quot;, &quot;diagnostic&quot;, but the list is not constrained, and others such groups such as (exposure|family|travel|nutritional) history may be used --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A name/code for the group (&quot;set&quot;) of investigations. Typically, this will be something like &quot;signs&quot;, &quot;symptoms&quot;, &quot;clinical&quot;, &quot;diagnostic&quot;, but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1360,12 +1365,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Запись отдельного исследования<!-- Record of a specific investigation --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Record of a specific investigation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Запись о конкретном исследовании, которое было проведено<!-- A record of a specific investigation that was undertaken --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A record of a specific investigation that was undertaken</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Большинство исследований являются наблюдениями одного или другого вида, но для сбора данных также могут быть использованы и некоторые другие специфичные виды ресурсов<!-- Most investigations are observations of one kind of or another but some other specific types of data collection resources can also be used --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Most investigations are observations of one kind of or another but some other specific types of data collection resources can also be used</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1391,9 +1396,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Клинический протокол, которому следовали<!-- Clinical Protocol followed --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Clinical Protocol followed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на конкретный опубликованный клинический протокол, которому следовали при проведении этой оценки, и/или который предоставляет доказательство в поддержку диагноза<!-- Reference to a specific published clinical protocol that was followed during this assessment, and/or that provides evidence in support of the diagnosis --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Reference to a specific published clinical protocol that was followed during this assessment, and/or that provides evidence in support of the diagnosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1421,9 +1426,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Краткое содержание оценки<!-- Summary of the assessment --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Summary of the assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Краткое текстовое изложение исследований и диагностики<!-- A text summary of the investigations and the diagnosis --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A text summary of the investigations and the diagnosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1450,9 +1455,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Возможные или вероятные выводы и диагнозы<!-- Possible or likely findings and diagnoses --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Possible or likely findings and diagnoses</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретные выводы или диагнозы, которые считаются вероятными или имеющими отношение к текущей схеме лечения<!-- Specific findings or diagnoses that was considered likely or relevant to ongoing treatment --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific findings or diagnoses that was considered likely or relevant to ongoing treatment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1481,9 +1486,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретный текст или код для поиска<!-- Specific text or code for finding --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific text or code for finding</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретный текст кода для поиска или диагностики<!-- Specific text of code for finding or diagnosis --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific text of code for finding or diagnosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1511,9 +1516,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Какие исследования подтверждают выводы<!-- Which investigations support finding --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Which investigations support finding</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Какие исследования подтверждают выводы или диагноз<!-- Which investigations support finding or diagnosis --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Which investigations support finding or diagnosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1542,9 +1547,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Диагнозы/состояния, решенные с момента предыдущей оценки<!-- Diagnosies/conditions resolved since previous assessment --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Diagnosies/conditions resolved since previous assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Диагнозы/состояния, решенные с момента предыдущей оценки<!-- Diagnoses/conditions resolved since the last assessment --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Diagnoses/conditions resolved since the last assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1570,9 +1575,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Диагнозы, считающиеся невозможными<!-- Diagnosis considered not possible --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Diagnosis considered not possible</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Диагнозы, считающиеся невозможными<!-- Diagnosis considered not possible --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Diagnosis considered not possible</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1602,9 +1607,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретный текст кода диагноза<!-- Specific text of code for diagnosis --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific text of code for diagnosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретный текст кода диагноза<!-- Specific text of code for diagnosis --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific text of code for diagnosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1632,9 +1637,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Основания для ликвидации<!-- Grounds for elimination --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Grounds for elimination</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Основания для ликвидации<!-- Grounds for elimination --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Grounds for elimination</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1662,9 +1667,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Оценка вероятного исхода<!-- Estimate of likely outcome --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Estimate of likely outcome</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Оценка вероятного исхода<!-- Estimate of likely outcome --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Estimate of likely outcome</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1692,9 +1697,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">План действий после оценки<!-- Plan of action after assessment --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Plan of action after assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">План действий после оценки<!-- Plan of action after assessment --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Plan of action after assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1722,9 +1727,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Действия, предпринятые во время оценки<!-- Actions taken during assessment --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Actions taken during assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Действия, предпринятые во время оценки<!-- Actions taken during assessment --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Actions taken during assessment</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3939,13 +3944,12 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>9</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>14</LeftColumnRightPane>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -3953,7 +3957,6 @@
     </Pane>
     <Pane>
      <Number>1</Number>
-     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
@@ -3961,8 +3964,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>20</ActiveRow>
-     <ActiveCol>20</ActiveCol>
+     <ActiveRow>12</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7884,8 +7887,8 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">investigationGroupType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Название/код для набора исследований<!-- A name/code for a set of investigations --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">InvestigationGroupType</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A name/code for a set of investigations</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">valueset-investigation-sets</Data></Cell>
@@ -7900,7 +7903,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s96"><Data ss:Type="String">ClinicalFindings</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Результаты клинических исследований, которые могли привести к клинической оценке<!-- Clinical Findings that may cause an clinical evaluation --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Clinical Findings that may cause an clinical evaluation</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s152" ss:HRef="http://hl7.org/fhir/vs/clinical-findings"><Data
@@ -7916,7 +7919,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s153"><Data ss:Type="String">ClinicalImpressionStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Состояние рабочего процесса клинической оценки<!-- The workflow state of a clinical impression --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The workflow state of a clinical impression</Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"><Data ss:Type="String">#clinical-impression-status</Data></Cell>
@@ -7930,19 +7933,19 @@
     <Cell ss:StyleID="s120"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s153"/>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s120"/>
+    <Cell ss:StyleID="s96"><Data ss:Type="String">ConditionKind</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Identification of the Condition or diagnosis. </Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">value set</Data></Cell>
+    <Cell><Data ss:Type="String">example</Data></Cell>
+    <Cell ss:StyleID="s132"><Data ss:Type="String">http://hl7.org/fhir/vs/condition-code</Data></Cell>
+    <Cell ss:StyleID="s132"/>
+    <Cell ss:StyleID="s132"/>
+    <Cell ss:StyleID="s132"/>
+    <Cell ss:StyleID="s132"/>
+    <Cell ss:StyleID="s132"/>
+    <Cell ss:StyleID="s132"/>
+    <Cell ss:StyleID="s132"/>
+    <Cell ss:StyleID="s142"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s153"/>
@@ -8352,7 +8355,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
@@ -8366,7 +8369,7 @@
    <Value>&quot;code list,value set,reference,special,unbound&quot;</Value>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R4C4:R30C4</Range>
+   <Range>R4C4,R6C4:R30C4</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;Y&quot;</Value>
@@ -8382,7 +8385,7 @@
    xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R4C1:R30C13,R2C3,R3C1:R3C3,R2C5:R3C13</Range>
+   <Range>R4C1:R4C13,R2C3,R3C1:R3C3,R2C5:R3C13,R6C1:R30C13,R5C1:R5C3,R5C5:R5C13</Range>
    <Condition>
     <Value1>AND(RC1=&quot;&quot;,RC&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
@@ -8424,7 +8427,7 @@
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R4C1:R30C13,R2C3,R3C1:R3C3,R2C5:R3C13</Range>
+   <Range>R4C1:R4C13,R2C3,R3C1:R3C3,R2C5:R3C13,R6C1:R30C13,R5C1:R5C3,R5C5:R5C13</Range>
    <Condition>
     <Value1>LEFT(RC1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>

@@ -7,10 +7,10 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Eric Haas</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2015-03-22T22:14:02Z</LastSaved>
-  <Version>12.00</Version>
+  <LastSaved>2015-06-11T11:42:07Z</LastSaved>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -21,7 +21,7 @@
   <WindowTopX>-15</WindowTopX>
   <WindowTopY>-15</WindowTopY>
   <TabRatio>864</TabRatio>
-  <ActiveSheet>7</ActiveSheet>
+  <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -812,7 +812,7 @@
   <NamedRange ss:Name="Invariantids" ss:RefersTo="=Invariants!R2C1:R50C1"/>
  </Names>
  <Worksheet ss:Name="Instructions">
-  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="411"/>
    <Row ss:AutoFitHeight="0">
@@ -825,6 +825,10 @@
     <Cell ss:StyleID="s67" ss:HRef="http://wiki.hl7.org/?title=FHIR_Spreadsheet_Authoring"><Data
       ss:Type="String">http://wiki.hl7.org?title=FHIR_Spreadsheet_Authoring</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">fmm</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -833,10 +837,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>16</ActiveRow>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -986,9 +992,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Образец для анализа<!-- Sample for analysis --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Sample for analysis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Образец для анализа<!-- Sample for analysis --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Sample for analysis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1020,9 +1026,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешний идентификатор<!-- External Identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">External Identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор образца<!-- Id for specimen --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Id for specimen</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1056,12 +1062,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид материала, из которого взят образец<!-- Kind of material that forms the specimen --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Kind of material that forms the specimen</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Вид материала, из которого взят образец<!-- Kind of material that forms the specimen --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The kind of material that forms the specimen</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип влияет на способ обработки образца и на то, какой вид анализов может быть выполнен надлежащим образом над образцом. Часто используется в диагностическом рабочем процессе систем принятия решений.<!-- The type can change the way that a specimen is handled, and drives what kind of analyses can properly be performed on the specimen. It is frequently used in diagnostic work flow decision making systems. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The type can change the way that a specimen is handled, and drives what kind of analyses can properly be performed on the specimen. It is frequently used in diagnostic work flow decision making systems.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
@@ -1127,7 +1133,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">parent | child</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Эта взаимосвязь родительская или дочерняя<!-- Whether this relationship is to a parent or to a child --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether this relationship is to a parent or to a child</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1158,9 +1164,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Предмет данной взаимосвязи<!-- The subject of the relationship --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The subject of the relationship</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурс specimen, являющийся целью этой взаимосвязи<!-- The specimen resource that is the target of this relationship --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The specimen resource that is the target of this relationship</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1192,10 +1198,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Откуда пришел образец. Он может быть от пациента(-ов), из окружающей среды или устройства<!-- Where the specimen came from. This may be from the patient(s) or from the environment or a device --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Where the specimen came from. This may be from the patient(s) or from the environment or a device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать контекст предмета<!-- Must know the subject context --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Must know the subject context</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1226,9 +1232,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор, назначенный лабораторией<!-- Identifier assigned by the lab --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifier assigned by the lab</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, назначенный лабораторией при поступлении образца(-ов). Не обязательно совпадает с идентификатором образца, это зависит от местного порядка осуществления лабораторных действий.<!-- The identifier assigned by the lab when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures. --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The identifier assigned by the lab when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1261,9 +1267,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Время, когда образец был получен для обработки<!-- The time when specimen was received for processing --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The time when specimen was received for processing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда образец был получен для обработки или исследования<!-- Time when specimen was received for processing or testing --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Time when specimen was received for processing or testing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1293,9 +1299,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробности сбора<!-- Collection details --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Collection details</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Подробности, касающиеся сбора образца<!-- Details concerning the specimen collection --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Details concerning the specimen collection</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1328,9 +1334,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто осуществил сбор образца<!-- Who collected the specimen --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who collected the specimen</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, который осуществил сбор образца <!-- Person who collected the specimen --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Person who collected the specimen</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1361,9 +1367,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Комментарии сборщика<!-- Collector comments --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Collector comments</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Для сообщения каких-либо подробностей или проблем, возникших в ходе процедуры взятия образца.<!-- To communicate any details or issues encountered during the specimen collection procedure. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">To communicate any details or issues encountered during the specimen collection procedure.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1396,10 +1402,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Время сбора<!-- Collection time --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Collection time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда образец был взят у субъекта - физиологически значимое время<!-- 
-Time when specimen was collected from subject - the physiologically relevant time --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Time when specimen was collected from subject - the physiologically relevant time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1430,9 +1435,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество собранного образца<!-- The quantity of specimen collected --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The quantity of specimen collected</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество собранного образца; например объем пробы крови или физическое измерение образца анатомической патологии.<!-- The quantity of specimen collected; for instance the volume of a blood sample, or the physical measurement of an anatomic pathology sample. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The quantity of specimen collected; for instance the volume of a blood sample, or the physical measurement of an anatomic pathology sample.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1464,9 +1469,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Метод взятия образца<!-- Technique used to perform collection --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Technique used to perform collection</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированное значение метода, использованного для выполнения данной процедуры<!-- A coded value specifying the technique that is used to perform the procedure --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded value specifying the technique that is used to perform the procedure</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1498,9 +1503,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Анатомическое место взятия пробы<!-- Anatomical collection site --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Anatomical collection site</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Анатомическое место, из которого была взята проба (если субъектом является пациент). Это целевое место. Этот элемент не используется для образцов окружающей среды.<!-- Anatomical location from which the specimen was collected (if subject is a patient). This is the target site.  This element is not used for environmental specimens. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Anatomical location from which the specimen was collected (if subject is a patient). This is the target site.  This element is not used for environmental specimens.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1530,9 +1535,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробности лечения и этапов обработки<!-- Treatment and processing step details --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Treatment and processing step details</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Подробности, касающиеся лечения и этапов обработки образца<!-- Details concerning treatment and processing steps for the specimen --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Details concerning treatment and processing steps for the specimen</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1563,7 +1568,7 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Текстовое описание процедуры<!-- Textual description of procedure --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Textual description of procedure</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1595,9 +1600,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Обозначает этап лечения или обработки, примененный к образцу<!-- Indicates the treatment or processing step  applied to the specimen --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the treatment or processing step  applied to the specimen</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированное значение, обозначающее процедуру, использованную для обработки образца<!-- A coded value specifying the procedure used to process the specimen --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded value specifying the procedure used to process the specimen</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1627,7 +1632,7 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Материал, использованный на этом этапе обработки<!-- Material used in the processing step --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Material used in the processing step</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1658,9 +1663,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Непосредственный контейнер образца (пробирка/слайд и т. п.)<!-- Direct container of specimen (tube/slide, etc) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Direct container of specimen (tube/slide, etc)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контейнер, содержащий образец. Рекурсивный характер контейнеров, т. е. кровь в пробирке в лотке в стеллаже, здесь не рассматривается.<!-- The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here. --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1692,9 +1697,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор контейнера<!-- Id for the container --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Id for the container</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор контейнера. Их может быть несколько: штрих-код производителя, идентификатор, назначенный лабораторией и т. д. В некоторых случаях идентификатор контейнера может отличаться от идентификатора образца.<!-- Id for container. There may be multiple; a manufacturer's bar code, lab assigned identifier, etc. The container ID may differ from the specimen id in some circumstances. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Id for container. There may be multiple; a manufacturer's bar code, lab assigned identifier, etc. The container ID may differ from the specimen id in some circumstances.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1725,7 +1730,7 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Текстовое описание контейнера<!-- Textual description of the container --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Textual description of the container</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1757,9 +1762,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид контейнера, напрямую связанного с образцом<!-- Kind of container directly associated with specimen --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Kind of container directly associated with specimen</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип контейнера, связанный с образцом (например стекло, аликвотная проба, и т. д.)<!-- The type of container associated with the specimen (e.g. slide, aliquot, etc) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of container associated with the specimen (e.g. slide, aliquot, etc)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1790,9 +1795,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Объем или размер контейнера<!-- Container volume or size --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Container volume or size</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Емкость (объем или другая мера) контейнера<!-- The capacity (volume or other measure) the container may contain. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The capacity (volume or other measure) the container may contain.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1823,9 +1828,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество образца внутри контейнера<!-- Quantity of specimen within container --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Quantity of specimen within container</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество образца в контейнере; может быть объемом, размерами или другими соответствующими измерениями в зависимости от типа образца.<!-- The quantity of specimen in the container; may be volume, dimensions, or other appropriate measurements, depending on the specimen type. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The quantity of specimen in the container; may be volume, dimensions, or other appropriate measurements, depending on the specimen type.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1857,9 +1862,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Добавка, связанная с контейнером<!-- Additive associated with container --> </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Additive associated with container </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Введенное вещество для сохранения, поддержания или улучшения образца, примеры: формалин, цитрат, ЭДТК<!-- Introduced substance to preserve, maintain or enhance the specimen. examples: Formalin, Citrate, EDTA --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Introduced substance to preserve, maintain or enhance the specimen. examples: Formalin, Citrate, EDTA </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3846,95 +3851,95 @@ Time when specimen was collected from subject - the physiologically relevant tim
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C14:R100C14</Range>
    <Condition>
-    <Value1>('Data Elements'!R[1048567]C1=&quot;&quot;)&lt;&gt;('Data Elements'!R[1048567]C[16267]=&quot;&quot;)</Value1>
+    <Value1>(R[1048567]C1=&quot;&quot;)&lt;&gt;(R[1048567]C[16267]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R6C17:R100C17,R5C1:R100C16,R2C1:R4C17,R2C18:R100C24</Range>
    <Condition>
-    <Value1>'Data Elements'!R[1048567]C3=&quot;0..0&quot;</Value1>
+    <Value1>R[1048567]C3=&quot;0..0&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#F2F2F2'/>
    </Condition>
    <Condition>
-    <Value1>AND('Data Elements'!R[1048567]C&lt;&gt;&quot;&quot;,'Data Elements'!R[1048567]C1=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048567]C1=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R100C1</Range>
    <Condition>
-    <Value1>AND('Data Elements'!R[1048567]C&lt;&gt;&quot;&quot;,'Data Elements'!R[1048566]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C23,R2C3:R2C4,R2C6:R2C13</Range>
    <Condition>
-    <Value1>'Data Elements'!R[1048567]C[16366]&lt;&gt;&quot;&quot;</Value1>
+    <Value1>R[1048567]C[16366]&lt;&gt;&quot;&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R3C3:R100C3,R2C15:R100C15</Range>
    <Condition>
-    <Value1>('Data Elements'!R[1048567]C1=&quot;&quot;)&lt;&gt;('Data Elements'!R[1048567]C[16366]=&quot;&quot;)</Value1>
+    <Value1>(R[1048567]C1=&quot;&quot;)&lt;&gt;(R[1048567]C[16366]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C10:R100C10,R2C13:R100C13</Range>
    <Condition>
-    <Value1>AND(SEARCH(&quot;|&quot;,'Data Elements'!R[1048567]C5)&lt;&gt;0,'Data Elements'!R[1048567]C[16303]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(SEARCH(&quot;|&quot;,R[1048567]C5)&lt;&gt;0,R[1048567]C[16303]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C11:R100C11,R2C13:R100C13</Range>
    <Condition>
-    <Value1>AND('Data Elements'!R[1048567]C[16294]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT('Data Elements'!R[1048567]C5,1),LOWER(LEFT('Data Elements'!R[1048567]C5,1)))))</Value1>
+    <Value1>AND(R[1048567]C[16294]&lt;&gt;&quot;&quot;,NOT(EXACT(LEFT(R[1048567]C5,1),LOWER(LEFT(R[1048567]C5,1)))))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C11:R100C12</Range>
    <Condition>
-    <Value1>AND('Data Elements'!R[1048567]C11&lt;&gt;&quot;&quot;,'Data Elements'!R[1048567]C12&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C11&lt;&gt;&quot;&quot;,R[1048567]C12&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C14:R100C15</Range>
    <Condition>
-    <Value1>AND('Data Elements'!R[1048567]C14&lt;&gt;&quot;&quot;,'Data Elements'!R[1048567]C14='Data Elements'!R[1048567]C15)</Value1>
+    <Value1>AND(R[1048567]C14&lt;&gt;&quot;&quot;,R[1048567]C14=R[1048567]C15)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C19:R2C20</Range>
    <Condition>
-    <Value1>'Data Elements'!R[1048567]C[16222]=&quot;&quot;</Value1>
+    <Value1>R[1048567]C[16222]=&quot;&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R3C19:R100C20</Range>
    <Condition>
-    <Value1>AND('Data Elements'!R[1048558]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,'Data Elements'!R2C[16222])),'Data Elements'!R[1048558]C[16222]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048558]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;N/A&quot;,R2C[16222])),R[1048558]C[16222]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:orange'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C22:R100C22</Range>
    <Condition>
-    <Value1>AND('Data Elements'!R[1048567]C[16195]&lt;&gt;&quot;&quot;,LEFT('Data Elements'!R[1048567]C5,1)&lt;&gt;&quot;@&quot;,LEFT('Data Elements'!R[1048568]C1,LEN('Data Elements'!R[1048567]C1)+1)&lt;&gt;('Data Elements'!R[1048567]C1&amp;&quot;.&quot;),LEFT('Data Elements'!R[1048568]C1,LEN('Data Elements'!R[1048567]C1)+2)&lt;&gt;(&quot;!&quot;&amp;'Data Elements'!R[1048567]C1&amp;&quot;.&quot;))</Value1>
+    <Value1>AND(R[1048567]C[16195]&lt;&gt;&quot;&quot;,LEFT(R[1048567]C5,1)&lt;&gt;&quot;@&quot;,LEFT(R[1048568]C1,LEN(R[1048567]C1)+1)&lt;&gt;(R[1048567]C1&amp;&quot;.&quot;),LEFT(R[1048568]C1,LEN(R[1048567]C1)+2)&lt;&gt;(&quot;!&quot;&amp;R[1048567]C1&amp;&quot;.&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R6C17:R100C17,R5C1:R100C16,R2C1:R4C17,R2C18:R100C24</Range>
    <Condition>
-    <Value1>LEFT('Data Elements'!R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -4481,28 +4486,28 @@ Time when specimen was collected from subject - the physiologically relevant tim
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C7</Range>
    <Condition>
-    <Value1>AND(Invariants!R[1048567]C1=&quot;&quot;,Invariants!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND(Invariants!R[1048567]C&lt;&gt;&quot;&quot;,Invariants!R[1048566]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C2,R2C4:R50C5,R2C7:R50C7</Range>
    <Condition>
-    <Value1>(Invariants!R[1048567]C1&lt;&gt;&quot;&quot;)&lt;&gt;(Invariants!R[1048567]C[16375]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>(R[1048567]C1&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048567]C[16375]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C7</Range>
    <Condition>
-    <Value1>LEFT(Invariants!R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -4553,50 +4558,50 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.subject</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Пациент, у которого был взят образец<!-- The patient the specimen comes from --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The patient the specimen comes from</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.identifier</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Уникальный идентификатор, ассоциированный с образцом<!-- The unique identifier associated with the specimen --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The unique identifier associated with the specimen</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.type</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Тип образца для анализа<!-- The specimen type --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The specimen type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">parent</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Specimen.parent</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Родительский источник образца<!-- The parent of the specimen --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.parent</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The parent of the specimen</Data></Cell>
     <Cell><Data ss:Type="String">#3862</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">accession</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Specimen.accessionIdentifier</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Инвентарный номер, ассоциируемый с образцом<!-- The accession number associated with the specimen --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.accessionIdentifier</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The accession number associated with the specimen</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">collected</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Specimen.collection.collected[x]</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Дата сбора образца для анализа<!-- The date the specimen was collected --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.collection.collected[x]</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The date the specimen was collected</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">collector</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Specimen.collection.collector</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Кто взял пробу для анализа<!-- Who collected the specimen --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.collection.collector</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Who collected the specimen</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">site-code</Data></Cell>
@@ -4618,15 +4623,15 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s118"><Data ss:Type="String">containerid</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Specimen.container.identifier</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Уникальный идентификатор, ассоциированный с контейнером образца<!-- The unique identifier associated with the specimen container --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.container.identifier</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The unique identifier associated with the specimen container</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">container</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Specimen.container.type</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Вид контейнера с образцом<!-- The kind of specimen container --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.container.type</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The kind of specimen container</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>
@@ -4806,56 +4811,56 @@ Time when specimen was collected from subject - the physiologically relevant tim
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R31C5</Range>
    <Condition>
-    <Value1>AND(Search!R[1048567]C1=&quot;&quot;,Search!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R31C1</Range>
    <Condition>
-    <Value1>AND(Search!R[1048566]C=&quot;&quot;,Search!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048566]C=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R31C2</Range>
    <Condition>
-    <Value1>AND(Search!R[1048567]C1&lt;&gt;&quot;&quot;,Search!R[1048567]C[16375]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16375]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R31C3</Range>
    <Condition>
-    <Value1>AND(Search!R[1048567]C1&lt;&gt;&quot;reference&quot;,Search!R[1048567]C[16366]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;reference&quot;,R[1048567]C[16366]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R31C4</Range>
    <Condition>
-    <Value1>AND(Search!R[1048567]C2=&quot;reference&quot;,Search!R[1048567]C3=&quot;&quot;,Search!R[1048567]C[16357]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C2=&quot;reference&quot;,R[1048567]C3=&quot;&quot;,R[1048567]C[16357]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R31C4</Range>
    <Condition>
-    <Value1>AND(Search!R[1048567]C2=&quot;reference&quot;,Search!R[1048567]C3&lt;&gt;&quot;&quot;,Search!R[1048567]C[16357]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C2=&quot;reference&quot;,R[1048567]C3&lt;&gt;&quot;&quot;,R[1048567]C[16357]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R31C5</Range>
    <Condition>
-    <Value1>AND(Search!R[1048567]C1&lt;&gt;&quot;&quot;,Search!R[1048567]C[16348]=&quot;&quot;,Search!R[1048567]C4=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16348]=&quot;&quot;,R[1048567]C4=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R31C5</Range>
    <Condition>
-    <Value1>LEFT(Search!R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -5513,80 +5518,80 @@ Time when specimen was collected from subject - the physiologically relevant tim
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>AND(Operations!R[1048567]C1=&quot;&quot;,Operations!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND(Operations!R[1048566]C=&quot;&quot;,Operations!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048566]C=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C2,R2C5:R50C5,R2C8:R50C8</Range>
    <Condition>
-    <Value1>AND(Operations!R[1048567]C1&lt;&gt;&quot;&quot;,Operations!R[1048567]C[16375]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16375]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C2</Range>
    <Condition>
-    <Value1>AND(Operations!R[1048567]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,Operations!R[1048567]C1))),Operations!R[1048567]C[16375]&lt;&gt;&quot;IN&quot;, Operations!R[1048567]C[16375]&lt;&gt;&quot;OUT&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048567]C1))),R[1048567]C[16375]&lt;&gt;&quot;IN&quot;, R[1048567]C[16375]&lt;&gt;&quot;OUT&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R50C3</Range>
    <Condition>
-    <Value1>AND(Operations!R[1048567]C[16366]&lt;&gt;&quot;&quot;,ISERR(VALUE(Operations!R[1048567]C[16366])))</Value1>
+    <Value1>AND(R[1048567]C[16366]&lt;&gt;&quot;&quot;,ISERR(VALUE(R[1048567]C[16366])))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C3:R50C4</Range>
    <Condition>
-    <Value1>AND(Operations!R[1048567]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,Operations!R[1048567]C1))&lt;&gt;(Operations!R[1048567]C[16366]=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,R[1048567]C1))&lt;&gt;(R[1048567]C[16366]=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4:R50C4</Range>
    <Condition>
-    <Value1>AND(Operations!R[1048567]C3&lt;&gt;&quot;&quot;,Operations!R[1048567]C[16357]&lt;&gt;&quot;&quot;,Operations!R[1048567]C[16357]&lt;&gt;&quot;*&quot;,Operations!R[1048567]C[16357]&lt;Operations!R[1048567]C3)</Value1>
+    <Value1>AND(R[1048567]C3&lt;&gt;&quot;&quot;,R[1048567]C[16357]&lt;&gt;&quot;&quot;,R[1048567]C[16357]&lt;&gt;&quot;*&quot;,R[1048567]C[16357]&lt;R[1048567]C3)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
    <Condition>
-    <Value1>AND(Operations!R[1048567]C[16357]&lt;&gt;&quot;&quot;,Operations!R[1048567]C[16357]&lt;&gt;&quot;*&quot;,ISERR(VALUE(Operations!R[1048567]C[16357])))</Value1>
+    <Value1>AND(R[1048567]C[16357]&lt;&gt;&quot;&quot;,R[1048567]C[16357]&lt;&gt;&quot;*&quot;,ISERR(VALUE(R[1048567]C[16357])))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R50C5</Range>
    <Condition>
-    <Value1>AND(Operations!R[1048567]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,Operations!R[1048567]C1))),Operations!R[1048567]C2&lt;&gt;&quot;QUERY&quot;, Operations!R[1048567]C2&lt;&gt;&quot;OPERATION&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048567]C1))),R[1048567]C2&lt;&gt;&quot;QUERY&quot;, R[1048567]C2&lt;&gt;&quot;OPERATION&quot;)</Value1>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R50C6</Range>
    <Condition>
-    <Value1>AND(Operations!R[1048567]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,Operations!R[1048567]C1)),(Operations!R[1048567]C[16339]&lt;&gt;&quot;&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,ISERR(SEARCH(&quot;.&quot;,R[1048567]C1)),(R[1048567]C[16339]&lt;&gt;&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C9:R50C9</Range>
    <Condition>
-    <Value1>AND(Operations!R[1048567]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,Operations!R[1048567]C1))),Operations!R[1048567]C[16312]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,NOT(ISERR(SEARCH(&quot;.&quot;,R[1048567]C1))),R[1048567]C[16312]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>LEFT(Operations!R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -5899,37 +5904,37 @@ Time when specimen was collected from subject - the physiologically relevant tim
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R20C9</Range>
    <Condition>
-    <Value1>AND(Events!R[1048567]C1=&quot;&quot;,Events!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R20C1</Range>
    <Condition>
-    <Value1>AND(Events!R[1048567]C&lt;&gt;&quot;&quot;,Events!R[1048566]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R20C3</Range>
    <Condition>
-    <Value1>(Events!R[1048567]C1&lt;&gt;&quot;&quot;)&lt;&gt;(Events!R[1048567]C[16375]&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>(R[1048567]C1&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048567]C[16375]&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R20C9</Range>
    <Condition>
-    <Value1>LEFT(Events!R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
  </Worksheet>
  <Worksheet ss:Name="Profiles">
   <Names>
-   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Profiles!R1C1:R2C4"/>
+   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Profiles!R1C1:R1C4"/>
   </Names>
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="41" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="39" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s113" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s113" ss:AutoFitWidth="0" ss:Width="114"/>
@@ -5955,30 +5960,12 @@ Time when specimen was collected from subject - the physiologically relevant tim
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">IG Name</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s115"><Data ss:Type="String">US Laboratory Specimen Profile</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">spec-uslab-profile.xml</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">spec-uslab-profile-spreadsheet.xml</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">spreadsheet</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">uslab</Data></Cell>
-   </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">specimen-extensions</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">specimen-extensions.xml</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">specimen-extensions-spreadsheet.xml</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">spreadsheet</Data></Cell>
     <Cell><Data ss:Type="String">core</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s118"><Data ss:Type="String">specimen-qicore</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">specimen-qicore.xml</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">specimen-qicore-profile-spreadsheet.xml</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">spreadsheet</Data></Cell>
-    <Cell><Data ss:Type="String">cqf</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>
@@ -6224,7 +6211,8 @@ Time when specimen was collected from subject - the physiologically relevant tim
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveCol>0</ActiveCol>
+     <RangeSelection>R2</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -6232,38 +6220,101 @@ Time when specimen was collected from subject - the physiologically relevant tim
    <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C4:R40C4</Range>
+   <Range>R2C4:R38C4</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;spreadsheet,profile&quot;</Value>
   </DataValidation>
-  <AutoFilter x:Range="R1C1:R2C4" xmlns="urn:schemas-microsoft-com:office:excel">
+  <AutoFilter x:Range="R1C1:R1C4" xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R40C4</Range>
+   <Range>R3C1:R10C4,R12C1:R38C4</Range>
    <Condition>
-    <Value1>AND(Profiles!R[1048567]C1=&quot;&quot;,Profiles!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R40C1</Range>
+   <Range>R3C1:R10C1,R13C1:R38C1</Range>
    <Condition>
-    <Value1>AND(Profiles!R[1048567]C&lt;&gt;&quot;&quot;,Profiles!R[1048566]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C2:R40C2,R2C4:R40C4</Range>
+   <Range>R3C2:R10C2,R12C2:R38C2,R3C4:R10C4,R12C4:R38C4</Range>
    <Condition>
-    <Value1>AND(Profiles!R[1048567]C1&lt;&gt;&quot;&quot;,Profiles!R[1048567]C[16375]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16375]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R40C4</Range>
+   <Range>R3C1:R10C4,R12C1:R38C4</Range>
    <Condition>
-    <Value1>LEFT(Profiles!R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R2C4</Range>
+   <Condition>
+    <Value1>AND(R[1048566]C1=&quot;&quot;,R[1048566]C&lt;&gt;&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C1:R11C4</Range>
+   <Condition>
+    <Value1>AND(#REF!=&quot;&quot;,#REF!&lt;&gt;&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1</Range>
+   <Condition>
+    <Value1>AND(R[1048566]C&lt;&gt;&quot;&quot;,R[1048565]C=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R12C1</Range>
+   <Condition>
+    <Value1>AND(R[-9]C&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C1</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,R[-9]C=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C2,R2C4</Range>
+   <Condition>
+    <Value1>AND(R[1048566]C1&lt;&gt;&quot;&quot;,R[1048566]C[16375]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C2,R11C4</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R2C4</Range>
+   <Condition>
+    <Value1>LEFT(R[1048566]C1,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C1:R11C4</Range>
+   <Condition>
+    <Value1>LEFT(#REF!,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -6273,7 +6324,7 @@ Time when specimen was collected from subject - the physiologically relevant tim
    <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Examples!R1C1:R2C7"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="42" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="39" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s138" ss:DefaultColumnWidth="260.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s138" ss:Width="89.25"/>
@@ -6324,33 +6375,6 @@ Time when specimen was collected from subject - the physiologically relevant tim
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s129"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s141"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s142"><Data ss:Type="String">USLab Specimen Example1</Data></Cell>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">USLab Specimen Profile Canonical Example: Blood</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">uslab-example1</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">spec-uslab-example1.xml</Data></Cell>
-    <Cell ss:StyleID="s132"><Data ss:Type="String">US Laboratory Specimen Profile</Data></Cell>
-    <Cell ss:StyleID="s143"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s142"><Data ss:Type="String">USLab Specimen Example2</Data></Cell>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">USLab Specimen Profile  Example: Urine- first catch</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">uslab-example2</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">spec-uslab-example2.xml</Data></Cell>
-    <Cell ss:StyleID="s132"><Data ss:Type="String">US Laboratory Specimen Profile</Data></Cell>
-    <Cell ss:StyleID="s143"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s142"><Data ss:Type="String">QICore Specimen</Data></Cell>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Example of QICore Specimen</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">qicore</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">specimen-qicore-example.xml</Data></Cell>
-    <Cell ss:StyleID="s132"><Data ss:Type="String">specimen-qicore</Data></Cell>
-    <Cell ss:StyleID="s143"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s142"/>
@@ -6685,7 +6709,6 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -6705,8 +6728,8 @@ Time when specimen was collected from subject - the physiologically relevant tim
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -6714,62 +6737,134 @@ Time when specimen was collected from subject - the physiologically relevant tim
    <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C7:R41C7</Range>
-   <Type>List</Type>
-   <CellRangeList/>
-   <Value>&quot;Y&quot;</Value>
-  </DataValidation>
-  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C2:R41C2</Range>
-   <Type>List</Type>
-   <CellRangeList/>
-   <Value>&quot;xml,csv,tool&quot;</Value>
-  </DataValidation>
-  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R6C6:R41C6,R2C6</Range>
+   <Range>R3C6:R38C6,R2C6</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;Profiles!A2:A40&quot;</Value>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R3C6:R5C6</Range>
+   <Range>R2C7:R38C7</Range>
    <Type>List</Type>
-   <Value>Profiles!R2C1:R20C1</Value>
+   <CellRangeList/>
+   <Value>&quot;Y&quot;</Value>
+  </DataValidation>
+  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C2:R38C2</Range>
+   <Type>List</Type>
+   <CellRangeList/>
+   <Value>&quot;xml,csv,tool&quot;</Value>
   </DataValidation>
   <AutoFilter x:Range="R1C1:R2C7" xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R41C7</Range>
+   <Range>R3C1:R10C7,R12C1:R38C7</Range>
    <Condition>
-    <Value1>AND(Examples!R[1048567]C1=&quot;&quot;,Examples!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R41C1</Range>
+   <Range>R3C1:R10C1,R13C1:R38C1</Range>
    <Condition>
-    <Value1>AND(Examples!R[1048567]C&lt;&gt;&quot;&quot;,Examples!R[1048566]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C3:R41C3,R2C5:R41C5</Range>
+   <Range>R3C3:R10C3,R12C3:R38C3,R3C5:R10C5,R12C5:R38C5</Range>
    <Condition>
-    <Value1>AND(Examples!R[1048567]C1&lt;&gt;&quot;&quot;,Examples!R[1048567]C[16366]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16366]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C1:R41C7</Range>
+   <Range>R3C1:R10C7,R12C1:R38C7</Range>
    <Condition>
-    <Value1>LEFT(Examples!R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C4:R41C4</Range>
+   <Range>R3C4:R10C4,R12C4:R38C4</Range>
    <Condition>
-    <Value1>AND(Examples!R[1048567]C1&lt;&gt;&quot;&quot;,OR(Examples!R[1048567]C2=&quot;&quot;,Examples!R[1048567]C2=&quot;xml&quot;),Examples!R[1048567]C[16357]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,OR(R[1048567]C2=&quot;&quot;,R[1048567]C2=&quot;xml&quot;),R[1048567]C[16357]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R2C7</Range>
+   <Condition>
+    <Value1>AND(R[1048564]C1=&quot;&quot;,R[1048564]C&lt;&gt;&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C1:R11C7</Range>
+   <Condition>
+    <Value1>AND(#REF!=&quot;&quot;,#REF!&lt;&gt;&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1</Range>
+   <Condition>
+    <Value1>AND(R[1048564]C&lt;&gt;&quot;&quot;,R[1048563]C=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R12C1</Range>
+   <Condition>
+    <Value1>AND(R[-9]C&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C1</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C3,R2C5</Range>
+   <Condition>
+    <Value1>AND(R[1048564]C1&lt;&gt;&quot;&quot;,R[1048564]C[16366]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C3,R11C5</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,#REF!=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C1:R2C7</Range>
+   <Condition>
+    <Value1>LEFT(R[1048564]C1,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C1:R11C7</Range>
+   <Condition>
+    <Value1>LEFT(#REF!,1)=&quot;!&quot;</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C4</Range>
+   <Condition>
+    <Value1>AND(R[1048564]C1&lt;&gt;&quot;&quot;,OR(R[1048564]C2=&quot;&quot;,R[1048564]C2=&quot;xml&quot;),R[1048564]C[16357]=&quot;&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R11C4</Range>
+   <Condition>
+    <Value1>AND(#REF!&lt;&gt;&quot;&quot;,OR(#REF!=&quot;&quot;,#REF!=&quot;xml&quot;),#REF!=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
@@ -6784,9 +6879,8 @@ Time when specimen was collected from subject - the physiologically relevant tim
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s113" ss:AutoFitWidth="0" ss:Width="174"/>
    <Column ss:StyleID="s113" ss:AutoFitWidth="0" ss:Width="275.25"/>
-   <Column ss:StyleID="s113" ss:Width="51"/>
-   <Column ss:StyleID="s113" ss:Width="45"/>
-   <Column ss:StyleID="s113" ss:Width="146.25"/>
+   <Column ss:StyleID="s113" ss:Width="51" ss:Span="1"/>
+   <Column ss:Index="5" ss:StyleID="s113" ss:Width="146.25"/>
    <Column ss:StyleID="s113" ss:Width="173.25"/>
    <Column ss:StyleID="s113" ss:AutoFitWidth="0" ss:Width="98.25"/>
    <Column ss:StyleID="s113" ss:AutoFitWidth="0" ss:Width="89.25"/>
@@ -6807,9 +6901,7 @@ Time when specimen was collected from subject - the physiologically relevant tim
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">How is the set of codes defined?</Font> </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s104"><Data ss:Type="String">Example</Data><Comment
-      ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
-        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Y = example, blank = incomplete.  Only relevant if binding is &quot;value set&quot;</Font> </ss:Data></Comment><NamedCell
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Conformance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">Reference</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40"> <Font
@@ -6850,9 +6942,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">!HierarchicalRelationshipType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Вид взаимосвязи - родительский или дочерний<!-- Type indicating if this is a parent or child relationship --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Type indicating if this is a parent or child relationship</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">#hierarchical-relationship-type</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"/>
@@ -6865,9 +6957,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">SpecimenType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип образца для анализа.<!-- The type of the specimen. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of the specimen. </Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">http://hl7.org/fhir/v2/vs/0487</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
@@ -6882,7 +6974,7 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s148"><Data ss:Type="String">SpecimenCollectionMethod</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">The  technique that is used to perform the procedure</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-specimen-collection-method</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
@@ -6895,9 +6987,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">SpecimenTreatmentProcedure</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип метода, используемого для обработки образца для анализа<!-- Type indicating the technique used to process the specimen --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Type indicating the technique used to process the specimen</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-specimen-treatment-procedure</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
@@ -6910,9 +7002,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">SpecimenContainerType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип контейнера с образцом<!-- Type of specimen container --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of specimen container</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-specimen-container-type</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
@@ -6925,9 +7017,9 @@ Time when specimen was collected from subject - the physiologically relevant tim
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s148"><Data ss:Type="String">SpecimenContainerAdditive</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Вещество, добавленное в контейнер с образцом<!-- Substance added to specimen container --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Substance added to specimen container</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">http://hl7.org/fhir/v2/vs/0371</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
@@ -6939,12 +7031,12 @@ Time when specimen was collected from subject - the physiologically relevant tim
     <Cell ss:StyleID="s120"><Data ss:Type="String">#3634  link is broken  should this be ref or vs and should display in build.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s148"/>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s148"><Data ss:Type="String">BodySite</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes describing anatomical locations. May include laterality</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">http://hl7.org/fhir/vs/body-site</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">SNOMED CT Body site concepts</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
@@ -7316,7 +7408,8 @@ Time when specimen was collected from subject - the physiologically relevant tim
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7324,16 +7417,10 @@ Time when specimen was collected from subject - the physiologically relevant tim
    <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C3:R30C3</Range>
+   <Range>R2C3:R30C3,R9C4:R30C4</Range>
    <Type>List</Type>
    <CellRangeList/>
    <Value>&quot;code list,value set,reference,special,unbound&quot;</Value>
-  </DataValidation>
-  <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C4:R30C4</Range>
-   <Type>List</Type>
-   <CellRangeList/>
-   <Value>&quot;Y&quot;</Value>
   </DataValidation>
   <AutoFilter x:Range="R1C1:R1C13"
    xmlns="urn:schemas-microsoft-com:office:excel">
@@ -7341,50 +7428,57 @@ Time when specimen was collected from subject - the physiologically relevant tim
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C13</Range>
    <Condition>
-    <Value1>AND(Bindings!R[1048567]C1=&quot;&quot;,Bindings!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C1</Range>
    <Condition>
-    <Value1>AND(Bindings!R[1048567]C&lt;&gt;&quot;&quot;,Bindings!R[1048566]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
-   <Range>R2C2:R30C3</Range>
+   <Range>R2C2:R30C4</Range>
    <Condition>
-    <Value1>AND(Bindings!R[1048567]C1&lt;&gt;&quot;&quot;,Bindings!R[1048567]C[16375]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C[16375]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R30C5</Range>
    <Condition>
-    <Value1>AND(Bindings!R[1048567]C1&lt;&gt;&quot;&quot;,(Bindings!R[1048567]C3=&quot;unbound&quot;)&lt;&gt;(Bindings!R[1048567]C[16348]=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,(R[1048567]C3=&quot;unbound&quot;)&lt;&gt;(R[1048567]C[16348]=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R30C6</Range>
    <Condition>
-    <Value1>AND(Bindings!R[1048567]C1&lt;&gt;&quot;&quot;,(Bindings!R[1048567]C[16339]&lt;&gt;&quot;&quot;)&lt;&gt;(Bindings!R[1048567]C3=&quot;reference&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,(R[1048567]C[16339]&lt;&gt;&quot;&quot;)&lt;&gt;(R[1048567]C3=&quot;reference&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C7:R30C10</Range>
    <Condition>
-    <Value1>AND(Bindings!R[1048567]C[16330]&lt;&gt;&quot;&quot;,Bindings!R[1048567]C3&lt;&gt;&quot;code list&quot;)</Value1>
+    <Value1>AND(R[1048567]C[16330]&lt;&gt;&quot;&quot;,R[1048567]C3&lt;&gt;&quot;code list&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R30C13</Range>
    <Condition>
-    <Value1>LEFT(Bindings!R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
+   </Condition>
+  </ConditionalFormatting>
+  <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
+   <Range>R2C4:R8C4</Range>
+   <Condition>
+    <Value1>AND(R[1048567]C[16329]&lt;&gt;&quot;&quot;,R[1048567]C3&lt;&gt;&quot;code list&quot;)</Value1>
+    <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
  </Worksheet>
@@ -8025,42 +8119,42 @@ Time when specimen was collected from subject - the physiologically relevant tim
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>AND('hierarchical-relationship-type'!R[1048567]C1=&quot;&quot;,'hierarchical-relationship-type'!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND('hierarchical-relationship-type'!R[1048567]C&lt;&gt;&quot;&quot;,'hierarchical-relationship-type'!R[1048566]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C3</Range>
    <Condition>
-    <Value1>AND('hierarchical-relationship-type'!R[1048567]C1&lt;&gt;&quot;&quot;,('hierarchical-relationship-type'!R[1048567]C2=&quot;&quot;)=('hierarchical-relationship-type'!R[1048567]C3=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,(R[1048567]C2=&quot;&quot;)=(R[1048567]C3=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R50C6</Range>
    <Condition>
-    <Value1>AND('hierarchical-relationship-type'!R[1048567]C1&lt;&gt;&quot;&quot;,'hierarchical-relationship-type'!R[1048567]C3=&quot;&quot;,'hierarchical-relationship-type'!R[1048567]C[16348]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C3=&quot;&quot;,R[1048567]C[16348]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R50C6</Range>
    <Condition>
-    <Value1>AND('hierarchical-relationship-type'!R[1048567]C1&lt;&gt;&quot;&quot;,,'hierarchical-relationship-type'!R[1048567]C3=&quot;&quot;,'hierarchical-relationship-type'!R[1048567]C5=&quot;&quot;,'hierarchical-relationship-type'!R[1048567]C[16339]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,,R[1048567]C3=&quot;&quot;,R[1048567]C5=&quot;&quot;,R[1048567]C[16339]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>LEFT('hierarchical-relationship-type'!R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
@@ -8697,42 +8791,42 @@ Time when specimen was collected from subject - the physiologically relevant tim
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>AND('some-code-list'!R[1048567]C1=&quot;&quot;,'some-code-list'!R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1=&quot;&quot;,R[1048567]C&lt;&gt;&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C1</Range>
    <Condition>
-    <Value1>AND('some-code-list'!R[1048567]C&lt;&gt;&quot;&quot;,'some-code-list'!R[1048566]C=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C&lt;&gt;&quot;&quot;,R[1048566]C=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C2:R50C3</Range>
    <Condition>
-    <Value1>AND('some-code-list'!R[1048567]C1&lt;&gt;&quot;&quot;,('some-code-list'!R[1048567]C2=&quot;&quot;)=('some-code-list'!R[1048567]C3=&quot;&quot;))</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,(R[1048567]C2=&quot;&quot;)=(R[1048567]C3=&quot;&quot;))</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C5:R50C6</Range>
    <Condition>
-    <Value1>AND('some-code-list'!R[1048567]C1&lt;&gt;&quot;&quot;,'some-code-list'!R[1048567]C3=&quot;&quot;,'some-code-list'!R[1048567]C[16348]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,R[1048567]C3=&quot;&quot;,R[1048567]C[16348]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:yellow'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C6:R50C6</Range>
    <Condition>
-    <Value1>AND('some-code-list'!R[1048567]C1&lt;&gt;&quot;&quot;,,'some-code-list'!R[1048567]C3=&quot;&quot;,'some-code-list'!R[1048567]C5=&quot;&quot;,'some-code-list'!R[1048567]C[16339]=&quot;&quot;)</Value1>
+    <Value1>AND(R[1048567]C1&lt;&gt;&quot;&quot;,,R[1048567]C3=&quot;&quot;,R[1048567]C5=&quot;&quot;,R[1048567]C[16339]=&quot;&quot;)</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:red'/>
    </Condition>
   </ConditionalFormatting>
   <ConditionalFormatting xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C1:R50C9</Range>
    <Condition>
-    <Value1>LEFT('some-code-list'!R[1048567]C1,1)=&quot;!&quot;</Value1>
+    <Value1>LEFT(R[1048567]C1,1)=&quot;!&quot;</Value1>
     <Format Style='border:.5pt solid #D8D8D8;background:#A5A5A5'/>
    </Condition>
   </ConditionalFormatting>
