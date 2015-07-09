@@ -1,74 +1,90 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p> 
-A patient encounter is further characterized by the setting in which it takes place. Amongst them are ambulatory,
+Encounter (визит) пациента дополнительно характеризуется условиями, в которых он проходит. Среди Encounter имеются амбулаторный, неотложный, на дому, стационарный и виртуальный визиты. Encounter охватывает жизненный цикл от предварительного приема, непосредственно самого визита (для амбулаторных), до приема, пребывания и выписки (для стационарных). В течение encounter пациент может перемещаться между разными practitioner и из одного места в другое место.
+<!-- A patient encounter is further characterized by the setting in which it takes place. Amongst them are ambulatory,
  emergency, home health, inpatient and virtual encounters. An Encounter encompasses the lifecycle from pre-admission, 
  the actual encounter (for ambulatory encounters), and admission, stay and discharge (for inpatient encounters). 
-During the encounter the patient may move from practitioner to practitioner and location to location.
+During the encounter the patient may move from practitioner to practitioner and location to location. -->
 </p>
 <p>
-Because of the broad scope of Encounter, not all elements will be relevant in all settings. For this reason, 
+Из-за широкой сферы применения Encounter не все элементы будут актуальны в любых условиях. По этой причине информация, связанная с приемом/выпиской, хранится в отдельном компоненте Hospitalization внутри Encounter.
+Элемент <i>class</i> используется для различения этих параметров, которые будут определять направление дальнейшей проверки и применение бизнес-правил.
+<!-- Because of the broad scope of Encounter, not all elements will be relevant in all settings. For this reason, 
 admission/discharge related information is kept in a separate Hospitalization component within Encounter. 
 The <i>class</i> element is used to distinguish between these settings, which will guide further validation and
-application of business rules.
+application of business rules. -->
 </p>
 <p>
-There is also substantial variance from organization to organization (and between jurisdictions and countries) 
+Существует также значительный разброс от организации к организации (и между юрисдикциями и странами) о том, какие бизнес-события считать началом нового Encounter, или о том, какой уровень агрегации использовать для Encounter. Например, каждый отдельный визит врача во время госпитализации может привести к созданию нового экземпляра Encounter, но в зависимости от местной практики и вовлеченных систем, вполне может быть, что они будут объединены в один экземпляр для всей госпитализации. Еще большая агрегация может произойти там, где юрисдикции вводят группы Encounter по финансовым или другим причинам. Encounter могут агрегироваться или группироваться под другими Encounter с помощью элемента <i>partOf</i>. См. примеры <a href="#examples">ниже</a>.
+<!-- There is also substantial variance from organization to organization (and between jurisdictions and countries) 
 on which business events translate to the start of a new Encounter, or what level of aggregation is used for Encounter. For example, each
 single visit of a practitioner during a hospitalization may lead to a new instance of Encounter, but depending on
 local practice and the systems involved, it may well be that this is aggregated to a single instance for a whole hospitalization.
 Even more aggregation may occur where jurisdictions introduce groups of Encounters for financial or other reasons.
 Encounters can be aggregated or grouped under other Encounters using the <i>partOf</i> element. 
-See <a href="#examples">below</a> for examples.
+See <a href="#examples">below</a> for examples. -->
 </p>
 
 <p>
-Encounter instances may exist before the actual encounter takes place to convey pre-admission information, including
+Экземпляры Encounter могут существовать еще до того, как произойдет непосредственно сам визит, для передачи предварительной догоспитальной информации, в том числе с использованием элементов Encounter для отражения запланированной даты начала или планируемых мест встреч. В этом  случае элемент  <i>status</i> устанавливается в 'planned'.
+<!-- Encounter instances may exist before the actual encounter takes place to convey pre-admission information, including
 using Encounters elements to reflect the planned start date or planned encounter locations. In 
-this case the <i>status</i> element is set to 'planned'.
+this case the <i>status</i> element is set to 'planned'. -->
 </p>
 
 <p>
-The Hospitalization component is intended to store the extended information relating to a hospitalization event.
-This is always expected to be the same period as the encounter itself, where this is different then another
-encounter is entered which captures this information which is a partOf this encounter instance.
+Компонент Hospitalization предназначен для хранения расширенной информации, относящейся к событию госпитализации. Предполагается, что он будет совпадать с периодом самого encounter, однако он будет различаться, если вводится другой encounter, который собирает эту информацию, которая становится частью (partOf) данного экземпляра encounter.
+<!-- The Hospitalization component is intended to store the extended information relating to a hospitalization event.
+This is always expected to be the same period as the encounter itself, where this is different then another encounter is entered which captures this information which is a partOf this encounter instance. -->
 </p>
 
 <h3>Status Management</h3>
 <p>
-During the life-cycle of an encounter it will pass through many statuses. Typically these are in order or the
-organizations workflow: planned, in-progress, finished/cancelled.<br/>
-This status information is often used for other things, and often an analysis of the status history is required.
-This could be done by scanning through all the versions of the encounter and then checking the period of each,
+Во время жизненного цикла encounter получает разные статусы. Как правило, они назначаются в порядке или процессе организации: запланирован, в процессе, закончен/отменен (planned, in-progress, finished/cancelled).
+<!-- During the life-cycle of an encounter it will pass through many statuses. Typically these are in order or the organizations workflow: planned, in-progress, finished/cancelled. -->
+<br/>
+Информация о статусе часто используется для других вещей, и часто необходим анализ истории изменения статуса. Он может выполняться сканированием всех версий encounter и, затем, проверкой периода каждого и выполнения некоторой формы постобработки. Для облегчения этой работы (или если система не поддерживает истории ресурсов) включается компонент status history.
+<!-- This status information is often used for other things, and often an analysis of the status history is required.
+This could be done my scanning throuh all the versions of the encounter and then checking the period of each,
 and doing some form of post processing. To ease the burden of this (or where a system doesn't support resource
-histories) a status history component is included.
+histories) a status history component is included. -->
 </p>
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p> 
-The Encounter resource is not to be used to store appointment information, the Appointment resource is intended to be used for that.
+Ресурс Encounter не предназначен для хранения информации о встрече (appointment), для этого есть ресурс Appointment. 
+Обратите внимание, что в большинстве систем амбулаторные визиты (находящиеся в области действия Encounter) и Appointment используются параллельно. В FHIR ресурс Appointment используется, чтобы установить дату визита, в то время как Encounter подходит для информации о непосредственно самом Encounter, т. е. появлении пациента.
+<!-- The Encounter resource is not to be used to store appointment information, the Appointment resource is intended to be used for that.
 Note that in many systems outpatient encounters (which are in scope for Encounter) and Appointment are used 
 concurrently. In FHIR, Appointment is used for establishing a date for the encounter, while Encounter is 
-applicable to information about the actual Encounter, i.e. the patient showing up.<br/>
-As such an encounter in the "planned" status is not identical to the appointment that scheduled it,
+applicable to information about the actual Encounter, i.e. the patient showing up. -->
+<br/>
+По существу, encounter в статусе "planned" - не то же самое, что appointment, который запланировал его, это encounter до своего фактического начала, с ожиданием того, что этот encounter будет обновляться по мере продвижения к завершению. Прибытие пациента на место не обязательно означает начало encounter (например пациент пришел на час раньше того времени, когда он был непосредственно принят специалистом).
+<!-- As such an encounter in the "planned" status is not identical to the appointment that scheduled it,
 but it is the encounter prior to its actual occurrence, with the expectation that encounter will be
 updated as it progresses to completion. Patient arrival at a location does not necessarily mean the
-start of the encounter (e.g., a patient arrives an hour earlier than he is actually seen by a practitioner).
+start of the encounter (e.g., a patient arrives an hour earlier than he is actually seen by a practitioner). -->
 </p>
 <p>
-An appointment is normally used for the planning stage of an appointment, searching, locating an available time, then
+Appointment обычно используется на стадии планирования встречи, поиска, нахождения доступного времени, затем записи на прием. Как только этот процесс завершен и встреча начинается, тогда appointment помечается как выполненный и привязывается к новому созданному encounter.
+<!-- An appointment is normally used for the planning stage of an appointment, searching, locating an available time, then
 making the appointment. Once this process is completed and the appointment is about to start, then the appointment
-will be marked as fulfilled, and linked to the newly created encounter.<br/>
-This new encounter may start in an "arrived" status when they are admitted with a location of the facility, and then will
-move to the ward where another part-of encounter may begin.
+will be marked as fulfilled, and linked to the newly created encounter. -->
+<br/>
+Этот новый encounter может начаться в статусе "прибыл" ("arrived"), когда вводятся с указанием помещения в здании, и затем переходят к статусу "в палате", где может начаться другая часть (part-of) encounter.
+<!-- This new encounter may start in an "arrived" status when they are admitted with a location of the facility, and then will
+move to the ward where another part-of encounter may begin. -->
 </p>
 <p>
-Standard Extension: <b>Associated Encounter</b><br/>
-This extension should be used to reference an encounter where there is no property that already defines this association on the resource.
+Стандартное расширение: <b>Associated Encounter</b><br/>
+Это расширение следует использовать для ссылки на encounter, в котором еще нет свойства, которое определяет данную ассоциацию с ресурсом.
+<!-- Standard Extension: <b>Associated Encounter</b><br/>
+This extension should be used to reference an encounter where there is no property that already defines this association on the resource. -->
 </p>
 </div>
 
