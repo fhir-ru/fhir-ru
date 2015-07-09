@@ -1,41 +1,50 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
-The DeviceComponent resource is used to describe the characteristics, operational status and capabilities of a medical-related component of a medical device. It can be a physical component that is integrated inside the device, a removable physical component, or a non-physical component that allows physiological measurement data and its derived data to be grouped in a hierarchical information organization. 
+Ресурс DeviceComponent применяется для описания характеристик, рабочего состояния и возможностей связанного с медициной компонента медицинского изделия. Это может быть физический компонент, встроенный в устройство, съемный физический компонент или не физический компонент, позволяющий группировать данные физиологического измерения и производные данные в иерархическую организацию информации.
+<!-- The DeviceComponent resource is used to describe the characteristics, operational status and capabilities of a medical-related component of a medical device. It can be a physical component that is integrated inside the device, a removable physical component, or a non-physical component that allows physiological measurement data and its derived data to be grouped in a hierarchical information organization.  -->
 </p>
 <p>
-Note:
+Примечание:
+<!-- Note: -->
 </p>
 <p>
-For the initial scope, this DeviceComponent resource is only applicable to describe a single node in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard and that does not represent a metric. Examples for such a node are MDS, VMD, or Channel.
-</p>
+В соответствии с первоначальным замыслом, ресурс DeviceComponent подходит для описания представления только одного узла в дереве вложений, которое создается контекстным сканером для любого медицинского изделия, которое реализовано или произведено в соответствии со стандартом ISO/IEEE 11073 и которое не представляет собой метрику. Примерами таких узлов будут MDS, VMD и Channel.
+<!-- For the initial scope, this DeviceComponent resource is only applicable to describe a single node in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard and that does not represent a metric. Examples for such a node are MDS, VMD, or Channel. --></p>
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
-The DeviceComponent allows us to change the configuration of the device without having to change the device resource instance. The life-cycle of the configuration may be completely different than the one of the device itself.
+DeviceComponent позволяет нам менять конфигурацию изделия без необходимости менять экземпляр ресурса Device. Жизненный цикл конфигурации может полностью отличаться от жизненного цикла самого изделия.
+<!-- The DeviceComponent allows us to change the configuration of the device without having to change the device resource instance. The life-cycle of the configuration may be completely different than the one of the device itself. -->
 </p>
 <p>
-There are several related resources
+Имеется несколько связанных ресурсов
+<!-- There are several related resources -->
 </p>
 <ul>
- <li><a href="device.html">Device</a>  - Used by the MedicalDeviceSystem profile</li>
+ <li><a href="device.html">Device</a>  - используется в профиле MedicalDeviceSystem</li>
+ <li><a href="patient.html">Patient</a>  - используется в профиле MedicalDeviceSystem</li>
+ <li><a href="location.html">Location</a>  - используется в профиле MedicalDeviceSystem</li>
+ <li><a href="devicecomponent.html">DeviceComponent</a></li>
+<!--  <li><a href="device.html">Device</a>  - Used by the MedicalDeviceSystem profile</li>
  <li><a href="patient.html">Patient</a>  - Used by the MedicalDeviceSystem profile</li>
  <li><a href="location.html">Location</a>  - Used by the MedicalDeviceSystem profile</li>
- <li><a href="devicecomponent.html">DeviceComponent</a></li>
+ <li><a href="devicecomponent.html">DeviceComponent</a></li> -->
 </ul>
 
 </div>
 
 <div>
-<h2>Background and Context</h2>
-<h3>Structure of a DeviceComponent Resource</h3>
+<h2>Предпосылки и контекст</h2>
+<h3>Структура ресурса DeviceComponent<!-- Structure of a DeviceComponent Resource --></h3>
 
 <p>
-A Context Scanner object of a medical device that implements or derives from ISO/IEEE 11073
+Объект Context Scanner медицинского изделия, который реализует или производится в соответствии со стандартом  ISO/IEEE 11073, отвечает за изменения конфигурации устройства наблюдения. После создания экземпляра объект Context Scanner отвечает за объявление экземпляров объекта в MDIB устройства, иерархия включения (MDS->VMD->Channel->Metric). Ресурс DeviceComponent может использоваться для описания характеристик, рабочего состояния и возможностей связанного с медициной компонента медицинского изделия. Это может быть физический компонент, интегрированный в изделие, съемный физический компонент или нефизический компонент, позволяющий группировать данные физиологических измерений и производные данные в иерархическую организацию информации. Изделия описываются с помощью понятий, образующий следующую основную структуру:
+<!-- A Context Scanner object of a medical device that implements or derives from ISO/IEEE 11073
 standard is responsible for observing device configuration changes. After instantiation, the
 Context Scanner object is responsible for announcing the object instances in the device's MDIB, 
 a hierarchical containment (MDS->VMD->Channel->Metric). The DeviceComponent resource can be used  
@@ -43,16 +52,20 @@ to describe  the characteristics, operational status and capabilities of a medic
 component of a medical device. It can be a physical component that is integrated inside 
 the device, a removable physical component, or a non-physical component that allows 
 physiological measurement data and its derived data to be grouped in a hierarchical 
-information organization. Devices are conceptualised using the following main structure:
+information organization. Devices are conceptualised using the following main structure: -->
 </p>
 <ol>
- <li><b>MedicalDeviceSystem</b> - An actual device that external systems communicate with. In 11073, this is known as a MDS.</li>
+<li><b>MedicalDeviceSystem</b> - Фактическое устройство, с которым общаются внешние системы. В 11073 это называется MDS.</li>
+ <li><b>VirtualMedicalDevice</b> - Относящаяся к медицине подсистема медицинского изделия. Это может быть либо часть физического оборудования, или чисто программный компонент медицинского изделия. В 11073 это называется VMD.</li>
+ <li><b>Channel</b> - Нефизических компонент, который позволяет группировать данные физиологических измерений и производные данные в иерархическую организацию информации.</li> 
+ <!-- <li><b>MedicalDeviceSystem</b> - An actual device that external systems communicate with. In 11073, this is known as a MDS.</li>
  <li><b>VirtualMedicalDevice</b> - A medical-related subsystem of a medical device. It can either be a physical hardware piece or a pure software plugin component of a medical device. In 11073, this is known as a VMD.</li>
- <li><b>Channel</b> - A non-physical component that allows physiological measurement data and its derived data to be grouped in a hierarchical information organization.</li> 
+ <li><b>Channel</b> - A non-physical component that allows physiological measurement data and its derived data to be grouped in a hierarchical information organization.</li>  -->
 </ol>
 
 <p>
-Very simple devices may have only a single virtual device with a single channel and one metric, while complex devices may have multiple items at every level. 
+Очень простые устройства могут иметь всего один виртуальный прибор с одним каналом и одной метрикой, в то время как сложные устройства могут иметь по несколько элементов на каждом уровне.
+<!-- Very simple devices may have only a single virtual device with a single channel and one metric, while complex devices may have multiple items at every level.  -->
 </p>
 </div>
  

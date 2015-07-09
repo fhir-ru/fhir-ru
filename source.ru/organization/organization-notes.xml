@@ -6,9 +6,11 @@
 	</h2>
 	<ul>
 		<li>
-			There are two places for contact information: one on Organization itself and zero or more using the ContactEntity construct.
-			The first one is to be used for the generic, public organization point of contact. The ContactEntity is to be used for
-			reaching a person or party that has been designated by the organization to be contacted for a specific purpose or goal.
+			Контактная информация встречается в двух местах: в самом ресурсе Organization и ноль или больше использований конструкции ContactEntity. 
+Первое должно использоваться для общей, публичной точки организации контакта. ContactEntity должно использоваться для доступа к человеку или стороне, которые были обозначены этой организацией в качестве контактного лица для конкретных целей или задач. 
+<!-- There are two places for contact information: one on Organization itself and zero or more using the ContactEntity construct.
+The first one is to be used for the generic, public organization point of contact. The ContactEntity is to be used for 
+reaching a person or party that has been designated by the organization to be contacted for a specific purpose or goal. -->
 		</li>
 	</ul>
 </div>

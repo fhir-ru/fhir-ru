@@ -989,9 +989,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Фотографии, видео и аудиозаписи, полученные или используемые в здравоохранении. Фактическое содержимое может быть либо встроенным, либо предоставляться по прямой ссылке<!-- A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Фотографии, видео и аудиозаписи, полученные или используемые в здравоохранении. Фактическое содержимое может быть либо встроенным, либо предоставляться по прямой ссылке<!-- A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1027,7 +1027,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">photo | video | audio</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether the media is a photo (still image), an audio recording, or a video recording</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это фотография (статическое изображение), аудиозапись или видеозапись<!-- Whether the media is a photo (still image), an audio recording, or a video recording --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1061,9 +1061,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of acquisition equipment/process</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип оборудования/процесса получения<!-- The type of acquisition equipment/process --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Details of the type of the media - usually, how it was acquired (what type of device). If images sourced from a DICOM system, are wrapped in a Media resource, then this is the modality</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подробное описание этого типа медиа - обычно каким образом оно было получено (на устройстве какого типа). Если изображения из DICOM-системы обернуты в ресурс Media, тогда это и будет способом<!-- Details of the type of the media - usually, how it was acquired (what type of device). If images sourced from a DICOM system, are wrapped in a Media resource, then this is the modality --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1097,12 +1097,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifier(s) for the image</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор(-ы) для изображения<!-- Identifier(s) for the image --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifiers associated with the image - these may include identifiers for the image itself, identifiers for the context of its collection (e.g. series ids) and context ids such as accession numbers or other workflow identifiers</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификаторы, ассоциированные с изображением - это могут быть идентификаторы самого изображения, идентификаторы для контекста его коллекции (например серии идентификаторов) и идентификаторы контекста, например инвентарные номера или другие идентификаторы рабочего процесса<!-- Identifiers associated with the image - these may include identifiers for the image itself, identifiers for the context of its collection (e.g. series ids) and context ids such as accession numbers or other workflow identifiers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The identifier label and use can be used to determine what kind of identifier it is</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначение и применение идентификатора могут использоваться для определения, что это за вид идентификатора<!-- The identifier label and use can be used to determine what kind of identifier it is --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.id</Data><NamedCell
@@ -1134,9 +1134,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who/What this Media is a record of</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">О ком/чем эта запись<!-- Who/What this Media is a record of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who/What this Media is a record of</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">О ком/чем этот ресурс Media содержит запись <!-- Who/What this Media is a record of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1170,12 +1170,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who asked that this image be collected</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто попросил получить это изображение<!-- Who asked that this image be collected --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who requested that this image be collected</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кто сделал запрос на получение этого изображения<!-- Who requested that this image be collected --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Helps connect to workflow etc</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Способствует связи с рабочим процессом и т. п<!-- Helps connect to workflow etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=&quot;REFB&quot;]???</Data><NamedCell
@@ -1207,9 +1207,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The person who generated the image</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Лицо, которое произвело это изображение<!-- The person who generated the image --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person who administered the collection of the image</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Лицо, исполнившее получение изображения<!-- The person who administered the collection of the image --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1244,9 +1244,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Imaging view e.g Lateral or Antero-posterior</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Проекция изображения, например боковая или переднезадняя<!-- Imaging view e.g Lateral or Antero-posterior --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of the imaging view e.g Lateral or Antero-posterior (AP).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название проекции изображения, например боковая или переднезадняя <!-- The name of the imaging view e.g Lateral or Antero-posterior (AP). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1278,9 +1278,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of the device/manufacturer</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя устройства/производителя<!-- Name of the device/manufacturer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of the device / manufacturer of the device  that was used to make the recording</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя устройства/производителя устройства, которое использовалось для выполнения записи<!-- The name of the device / manufacturer of the device  that was used to make the recording --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1314,9 +1314,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Height of the image in pixels(photo/video)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Высота изображения в пикселях (фото/видео)<!-- Height of the image in pixels(photo/video) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Height of the image in pixels(photo/video)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Высота изображения в пикселях (фото/видео)<!-- Height of the image in pixels(photo/video) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1350,9 +1350,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Width of the image in pixels (photo/video)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ширина изображения в пикселях (фото/видео)<!-- Width of the image in pixels (photo/video) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Width of the image in pixels (photo/video)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ширина изображения в пикселях (фото/видео)<!-- Width of the image in pixels (photo/video) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1386,7 +1386,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Number of frames if &gt; 1 (photo)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество кадров, если больше 1 (фото)<!-- Number of frames if &gt; 1 (photo) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1421,9 +1421,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Length in seconds (audio / video)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Длина в секундах (аудио/видео)<!-- Length in seconds (audio / video) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The duration of the recording in seconds - for audio and video</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Продолжительность записи в секундах - для аудио и видео<!-- The duration of the recording in seconds - for audio and video --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1455,12 +1455,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Actual Media - reference or data</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Непосредственно сами медиаданные - ссылка или данные<!-- Actual Media - reference or data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual content of the media - inline or by direct reference to the media source file</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Фактическое содержимое медиаданных - встроенное или по прямой ссылке на файл-источник медиаданных<!-- The actual content of the media - inline or by direct reference to the media source file --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Recommended content types: image/jpeg, image/png, image/tiff, video/mpeg, audio/mp4, application/dicom. Application/dicom can contain the transfer syntax as a parameter.&#10;&#10;For an media that covers a period of time (video/sound), the content.creationTime is the end time. Creation time is used for tracking, organizing versions and searching</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендуемые типы контента: image/jpeg, image/png, image/tiff, video/mpeg, audio/mp4, application/dicom. Application/dicom может содержать синтаксис передаваемых данных в качестве параметра&#10;&#10;Для медиаданных, имеющих продолжительность (видео/звукозапись), content.creationTime  - это время окончания. Время создания используется для отслеживания, упорядочивания версий и поиска<!-- Recommended content types: image/jpeg, image/png, image/tiff, video/mpeg, audio/mp4, application/dicom. Application/dicom can contain the transfer syntax as a parameter.&#10;&#10;For an media that covers a period of time (video/sound), the content.creationTime is the end time. Creation time is used for tracking, organizing versions and searching --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.text</Data><NamedCell
@@ -4003,7 +4003,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Media</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Height can only be used for a photo or video</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Высота используется только для фото или видео<!-- Height can only be used for a photo or video --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(f:type/@value='audio') or not(f:height)</Data><NamedCell
@@ -4015,7 +4015,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Width rule</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Media</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Width can only be used for a photo or video</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Ширина используется только для фото или видео<!-- Width can only be used for a photo or video --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(f:type/@value='audio') or not(f:width)</Data></Cell>
    </Row>
@@ -4025,7 +4025,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Frames rule</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Media</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Frames can only be used for a photo</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Кадры используются только для фото<!-- Frames can only be used for a photo --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">(f:type/@value='photo') or not(f:frames)</Data></Cell>
    </Row>
@@ -4035,7 +4035,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Length rule</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Media</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Length can only be used for an audio or a video</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Длина используется только для аудио или видео<!-- Length can only be used for an audio or a video --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(f:type/@value='photo') or not(f:length)</Data></Cell>
    </Row>
@@ -6820,7 +6820,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">DigitalMediaType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Whether the Media is a photo, video, or audio</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Что представляют собой медиаданные: фото, видео или аудио<!-- Whether the Media is a photo, video, or audio --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Code List</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#digital-media-type</Data></Cell>
@@ -6865,7 +6865,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">MediaView</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Imaging view (projection) used when collecting an image</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Точка обзора (проекция), используемая при сборе изображения<!-- Imaging view (projection) used when collecting an image --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Value Set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-media-view</Data></Cell>

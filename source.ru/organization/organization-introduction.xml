@@ -1,32 +1,39 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-This resource may be used in a shared registry of contact and other information for various organizations or it can be used merely as a support
+Данный ресурс может использоваться в совместном реестре контактной и другой информации для различных организаций или использоваться просто как поддержка для других ресурсов, которым требуется ссылаться на организации, возможно в качестве <a href="documents.html">document</a>, <a href="messaging.html">message</a> или как <a href="references.html#contained">вложенный</a> ресурс. При использовании подхода с реестром вполне возможно существование нескольких реестров, каждый из которых имеет дело с различными типами или уровнями организации.
+<!-- This resource may be used in a shared registry of contact and other information for various organizations or it can be used merely as a support
 for other resources that need to reference organizations, perhaps as a <a href="documents.html">document</a>, <a href="messaging.html">message</a> or 
 as a <a href="references.html#contained">contained</a> resource.  If using a registry approach, it's entirely possible for multiple registries to exist, each dealing
-with different types or levels of organization.
+with different types or levels of organization. -->
 </p>
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-The Organization resourse is used for collections of people that have come together to achieve an objective.  
+Ресурс Organization используется для описания совокупности людей, которые собрались вместе, чтобы достичь некоторой цели. 
+Ресурс  <a href="group.html">Group</a> используется для идентификации совокупности людей (или животных, устройств и т. п.), которые были собраны вместе в целях анализа или действия над ними, но не предполагается, что они будут действовать сами.
+<!-- The Organization resourse is used for collections of people that have come together to achieve an objective.  
 The <a href="group.html">Group</a> resource is used to identify a collection of people (or animals, devices, etc.) 
-that are gathered for the purpose of analysis or acting upon, but are not expected to act themselves.
+that are gathered for the purpose of analysis or acting upon, but are not expected to act themselves. -->
 </p>
 	<p>
-		The Organization resource often exists as a hierarchy of organization resources, using the <i>part-of</i> property to provide
-		the association of the child to its parent organization.<br/>
-		This organizational hierachy helps communicate the conceptual structure, where-as the Location resource provides the physical
-		representation of the heirachy.<br/>
-		The linkage between Organization and Location is from each point in the location hierarchy to the appropriate level in the 
-		Organization hierarchy. These links don't all have to be to the top level Organization.<br/>
-		When populating the organization and location hierarchies there is often not a clear distinction between these 2, however
+	Ресурс Organization часто входит в состав иерархии ресурсов Organization, используя свойство <i>part-of</i> для указания связи между родительской и дочерней организациями.
+		<!-- The Organization resource often exists as a hierarchy of organization resources, using the <i>part-of</i> property to provide
+		the association of the child to its parent organization. --><br/>
+		Подобная иерархия организаций способствует передаче концептуальной структуры, тогда как ресурс Location обеспечивает физическое расположение такой иерархии.		
+		<!-- This organizational hierachy helps communicate the conceptual structure, where-as the Location resource provides the physical
+		representation of the heirachy. --><br/>
+		Связь между организацией и местоположением указывается в каждой точке в иерархии местоположений и ведет на соответствующий уровень в иерархии организаций. Не все эти ссылки должны вести на организацию верхнего уровня.
+		<!-- The linkage between Organization and Location is from each point in the location hierarchy to the appropriate level in the 
+		Organization hierarchy. These links don't all have to be to the top level Organization. --><br/>
+		При составлении иерархии организаций и местоположений зачастую между ними нет четкого различия, однако, для помощи в принятии решения, местоположения всегда используются для записи того, где именно происходит оказание услуг, и, следовательно, с которыми связаны случаи обслуживания и наблюдения. Свойство Organization на этих ресурсах может не быть местоположением, где была оказана услуга.
+		<!-- When populating the organization and location hierarchies there is often not a clear distinction between these 2, however
 		to assist in making the decision, Locations are always used for recording where a service occurs, and hence where encounters
-		and observations are associated. The Organization property on these resources may not be the location where the service took place.
+		and observations are associated. The Organization property on these resources may not be the location where the service took place. -->
 	</p>
 </div>
 

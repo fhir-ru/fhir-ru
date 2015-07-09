@@ -1,49 +1,50 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-	<h2>Typical Status Transition Examples:</h2>
+	<h2>Примеры типичных переходов статусов<!-- Typical Status Transition Examples -->:</h2>
 
-	<h3>Typical Flow of statuses for an appointment:</h3>
+	<h3>Типичная смена статусов для Appointment<!-- Typical Flow of statuses for an appointment -->:</h3>
 			<p>
 				Slot.freeBusyType = FREE
 			</p>
 			<p>
-				<i>(An appointment request is created)</i><br/>
+				<i>Создан запрос на условленную встречу<!-- (An appointment request is created) --></i><br/>
 				Appointment.status = pending<br/>
 				Appointment.participant.status = needs-action<br/>
 				Slot.freeBusyType = BUSY-TENTATIVE<br/>
 			</p>
 			<p>
-				<i>(The appointment is accepted as described – by all participants)</i><br/>
+				<i>Appointment принят в исходном виде всеми участниками<!-- (The appointment is accepted as described – by all participants) --></i><br/>
 				AppointmentResponse.participantStatus = accepted<br/>
 			</p>
 			<p>
-				<i>(The appointment is confirmed as accepted by all participants)</i><br/>
+				<i>Appointment подтвержден как принятый всеми участниками<!-- (The appointment is confirmed as accepted by all participants) --></i><br/>
 				Appointment.participant.status = accepted<br/>
 				Appointment.status = booked<br/>
 				Slot.freeBusyType = BUSY<br/>
 			</p>
 			<p>
-				(Optional: Preparation for the appointment begins – could be preparing a room for the appointment etc.)<br/>
+			(Необязательно: подготовка к условленной встрече началась - это может быть  подготовка помещения для проведения встречи и т. п.)
+				<!-- (Optional: Preparation for the appointment begins – could be preparing a room for the appointment etc.) --><br/>
 				Encounter.status = planned (optional)<br/>
 				Encounter.location.status = planned
 			</p>
 			<p>
-				<i>(The patient arrives for the appointment, often sitting in a waiting room)</i><br/>
+				<i>(Пациент прибыл на условленную встречу, часто при этом находится в комнате ожидания)<!-- (The patient arrives for the appointment, often sitting in a waiting room) --></i><br/>
 				Appointment.status = arrived<br/>
 				Encounter.status = arrived<br/>
 				Encounter.location.status = present
 			</p>
 			<p>
-				<i>(The practitioner and the patient meet and the provision of the service begins, appointment is finished with now)</i><br/>
+				<i>(Специалист и пациент встречаются, и начинается предоставление услуги, Appointment при этом считается завершенным)<!-- (The practitioner and the patient meet and the provision of the service begins, appointment is finished with now) --></i><br/>
 				Encounter.status = in-progress<br/>
 				Appointment.status = fulfilled
 			</p>
 			<p>
-				<i>(The encounter concludes)</i><br/>
+				<i>Encounter завершается<!-- (The encounter concludes) --></i><br/>
 				Encounter.status = finished
 			</p>
 
-	<h3>Flow for the rejection/cancellation of an appointment</h3>
+	<h3>Смена статусов при отклонении/отмене условленной встречи<!-- Flow for the rejection/cancellation of an appointment --></h3>
 			<p>
 				Slot.freeBusyType = FREE
 			</p>
@@ -61,7 +62,7 @@
 				Slot.freeBusyType = FREE
 			</p>
 
-	<h3>Flow for re-negotiation:</h3>
+	<h3>Схема для повторного согласования<!-- Flow for re-negotiation -->:</h3>
 			<p>
 				Slot.freeBusyType = FREE
 			</p>
@@ -78,10 +79,10 @@
 				Appointment.participant(Brian).status = accepted
 			</p>
 			<p>
-				AppointmentResponse(Peter).participantStatus = tentative (with new time)
+				AppointmentResponse(Peter).participantStatus = tentative <!-- (with new time) -->(с другим временем)
 			</p>
 			<p>
-				Appointment (new time details updated)<br/>
+				Appointment <!-- (new time details updated) -->(информация о времени обновлена)<br/>
 				Appointment.participant(Brian).status = needs-action<br/>
 				Appointment.participant(Peter).status = needs-action
 			</p>
@@ -101,37 +102,41 @@
 				Slot.freeBusyType = BUSY
 			</p>
 
-	<h3>Flow for a patient no-show:</h3>
+	<h3>Смена статусов, если пациент не появился на условленной встрече<!-- Flow for a patient no-show -->:</h3>
 			<p>
-				<i>… (from typical status flow)</i><br/>
+				<i>… <!-- (from typical status flow) -->(продолжение обычной смены статусов)</i><br/>
 				Appointent.participant.status = accepted<br/>
 				Appointment.status = booked<br/>
 				Slot.freeBusyType = BUSY
 			</p>
 			<p>
 				Appointment.status = noshow<br/>
-				(Note that no encounter is created)
+				<!-- (Note that no encounter is created) -->(Обратите внимание, что Encounter не создается)
 			</p>
 	
 	
-	<h2>Notes:</h2>
+	<h2>Примечания<!-- Notes: --></h2>
 	<ul>
 		<li>Placer/Filler (HL7 v2)</li>
 		<p>
-			The appointment information is effectively the same between the filler and placer, and given the nature of the
+		Информация об условленной встрече для заполняющего и размещающего, фактически, одна и та же, и учитывая характер данного FHIR-ресурса, для обеих целей имеется всего один ресурс. Placer - это действующее лицо, которое выполняет операцию PUT или POST над ресурсом, а Filler - это действующее лицо, которое получает эти сообщения-ресурсы и обрабатывает информацию и принимает решение о том, может ли быть использован этот Appointment
+			<!-- The appointment information is effectively the same between the filler and placer, and given the nature of the
 			fhir resource, there is only a single resource for both purposes. The Placer is the actor that performs the
 			PUT or POST operation on the resource, and the filler is the actor that receives these resource messages and
-			processes the information and makes a decision if the appointment can be used.
+			processes the information and makes a decision if the appointment can be used. -->
 		</p>
-		<li>Interaction with other Standards</li>
+		<li>Взаимодействие с другими стандартами<!-- Interaction with other Standards --></li>
 		<p>
-			The strong desire is that implementers of this resource should consider providing this resource
+		Настойчиво рекомендуется, чтобы реализаторы этого ресурса рассмотрели возможность использования его в формате iCalendar в качестве альтернативного представления. Многие сторонние приложения и провайдеры компонентов имеют парсеры и элементы управления пользовательским интерфейсом для отображения такой информации.
+		Это может понизить точку входа для интеграции за пределами специфичных для здравоохранения приложений, и войти в пространство потребителя. Это позволило бы более простое создание мобильного приложения для создания условленных встреч во встроенных календарях мобильных устройств.
+			<!-- The strong desire is that implementers of this resource should consider providing this resource
 			in the iCalendar format as an alternative representation. Many 3rd party applications and component providers
 			have parsers and user interface controls to display this information.
 			This may lower the entry point to integrate outside the health-care specific applications, and into the
 			consumer space. This would permit the easier creation of a mobile application that creates appointments
-			in the devices native calendar.<br/>
-			The iCalendar specification can be found at <a href="http://www.ietf.org/rfc/rfc2445.txt">http://www.ietf.org/rfc/rfc2445.txt</a>.
+			in the devices native calendar. --><br/>
+			<!-- The iCalendar specification can be found at <a href="http://www.ietf.org/rfc/rfc2445.txt">http://www.ietf.org/rfc/rfc2445.txt</a>. -->
+			Спецификация iCalendar расположена по адресу <a href="http://www.ietf.org/rfc/rfc2445.txt">http://www.ietf.org/rfc/rfc2445.txt</a>.
 		</p>
 	</ul>
 </div>

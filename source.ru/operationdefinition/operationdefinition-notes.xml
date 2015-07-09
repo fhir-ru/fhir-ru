@@ -1,38 +1,44 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h3>Operations defined as part of this Specification</h3>
+<h3>Операции, определенные в рамках этой спецификации<!-- Operations defined as part of this Specification --></h3>
 
 <%operationslist%>
 
-<h3>Executing Operations and Named Queries</h3>
+<h3>Выполнение операций и именованных запросов<!-- Executing Operations and Named Queries --></h3>
 
 <p>
-Operations are executed by POSTing to a URL that is <a href="operations.html">defined by the operation definition</a>.
+Операции выполняются отправкой POST-запрос на URL, который <a href="operations.html">указан в определении этой операции</a>. 
+Именованные запросы выполняются совершением <a href="search.html">поиска</a> с параметром поиска "_query", значение которого соответствует имени запроса из его определения.
+<!-- Operations are executed by POSTing to a URL that is <a href="operations.html">defined by the operation definition</a>.
 Named Queries are executed by performing a <a href="search.html">search</a> with the value of the search parameter
-"_query" set to the name provided in the definition. 
+"_query" set to the name provided in the definition.  -->
 </p>
 <p>
-If the named query is to be performed over the RESTful API, all the parameters must be simple search parameters,
+Если именованный запрос необходимо выполнить в RESTful API, все параметры должны быть простыми параметрами поиска, чтобы их можно было представить непосредственно в URL без сложных вопросов кодирования. Именованные запросы также ограничены единственным выходным параметром "result" (хотя он может повторяться).
+<!-- If the named query is to be performed over the RESTful API, all the parameters must be simple search parameters,
 so that they can be represented directly in the URL without tricky encoding issues. Named queries are also
-limited to a single return parameter "result" (though this may repeat).
+limited to a single return parameter "result" (though this may repeat). -->
 </p>
  
-<h3>Renaming OperationDefinition.name</h3>
+<h3>Переименовывание OperationDefinition.name<!-- Renaming OperationDefinition.name --></h3>
 
 <p>
-It's possible for two different organisations to create different operation definitions that 
+Вполне возможна ситуация, когда две разных организации создают разные определения операций с одинаковым именем (или, возможно более вероятно, определяют эквивалентные операции, имеющие одинаковое имя, но несовместимые списки параметров).
+<!-- It's possible for two different organisations to create different operation definitions that 
 have the same name (or, perhaps more likely, to define equivalent operations that have the 
-same name but incompatible approaches in their parameter lists). 
+same name but incompatible approaches in their parameter lists).  -->
 </p>
 <p>
-It's also possible (though a little unlikely) that a server will be required to support both of 
+Возможно также (хотя и маловероятно), что от сервера потребуется поддержать обе эти операции. Если это произойдет, сервер может сделать это, дав одной из них новое имя, а затем ссылаться на нее с помощью определения в заявлении о соответствии. Для иллюстрации этого примера давайте предположим, что две разных организации (orgA и orgB) определяют операцию с именем "dothis", и их определения несовместимы.  OrgA публикует свое определение операции в http://orga.com/fhir/dothis.xml, а OrgB публикует свою операцию в 
+http://fhir.orgb.com/meta/OperationDefinition/dothis. Сервер может осуществить обе. В его заявлении о соответствии будет указано:
+<!-- It's also possible (though a little unlikely) that a server will be required to support both of 
 these operations. Should this be the case, the server is able to do this by giving on of them
 a new name, and then referring to it by definition in the conformance statement. To illustrate
 this, let's assume that two different organisations (orgA and orgB) both define an operation 
 called "dothis", and the definitions are incompatible. OrgA publishes its operation
 definition at http://orga.com/fhir/dothis.xml, and OrgB publishes its operation at 
 http://fhir.orgb.com/meta/OperationDefinition/dothis. The server is able to implement
-both. Its conformance statement will say:
+both. Its conformance statement will say: -->
 </p>
 <pre class="xml">
 &lt;Conformance xmlns=&quot;http://hl7.org/fhir&quot;&gt;
@@ -57,46 +63,52 @@ both. Its conformance statement will say:
 &lt;/Conformance&gt;
 </pre>
 <p>
-If a general purpose cross server client is looking for the implementation of the 
+Если клиент кросс-сервера общего назначения ищет реализацию операции http://fhir.orgb.com/meta/OperationDefinition/dothis и хочет устойчивости к ошибкам конфликта имен, вместо простого выполнения операции $dothis, он может посмотреть в заявлении о соответствии сервера требуемый URI определения и затем выполнить операцию с именем, указанным в заявлении о соответствии.
+<!-- If a general purpose cross server client is looking for the implementation of the 
 http://fhir.orgb.com/meta/OperationDefinition/dothis operation, and wants to be
 robust against this name clash problem, instead of simply executing the $dothis
 operation, it can look at the server's conformance statement for the underlying
-definition URI, and then execute the name given in the conformance statement.
+definition URI, and then execute the name given in the conformance statement. -->
 </p>
 
-<h3>Determining System Compatibility</h3>
+<h3>Определение совместимости систем<!-- Determining System Compatibility --></h3>
 
 <p>
-A client can determine the compatiblity of the server by iterating its conformance
+Клиент может определить совместимость сервера, рассматривая его заявление о соответствии на предмет того, что какие-то из операций, поддержку которых он объявляет, и необходимых клиенту, имеют одинаковые определения, и поддерживаются ли сервером параметры, которые он использует. Клиент, выполняющий это, может выдать пользователю сообщение об ошибке, что будет полезней, чем допускать вводящие в заблуждение эксплуатационные ошибки.
+<!-- A client can determine the compatiblity of the server by iterating its conformance
 statement and seeing whether any of the operations it declares to support source
 from the same definitions as those the client depends on, and whether the paramters
 it uses are supported by the server. A client that does this can report a useful 
-error to the user rather than allowing mystifying operational errors to occur.
+error to the user rather than allowing mystifying operational errors to occur. -->
 </p>
 <p>
-Note, however, that there are fundamental limitations to this approach because 
+Обратите, однако, внимание, что имеются принципиальные ограничения к этому подходу, так как имеется много аспектов этих операций, которые не (и не могут быть) определены формальным образом. (например ограничения смежности (co-occurrence constraints) среди параметров.)
+<!-- Note, however, that there are fundamental limitations to this approach because 
 there are many aspects of these operations that aren't (and can't be) defined 
-in a formal fashion.  (For example, co-occurrence constraints amongst parameters.)
+in a formal fashion.  (For example, co-occurrence constraints amongst parameters.) -->
 </p>
 <p>
-In the same sense, a 3rd party tool can examine the conformance statements from 
+Заявление о соответствии от сервера и определение клиентом приемлемого сервера также можно проверять инструментами третьей стороны и подтверждать, смогут ли эти две системы взаимодействовать.
+<!-- In the same sense, a 3rd party tool can examine the conformance statements from 
 a server and a client definition of an acceptable server and confirm whether
-those two system are would be unable to interoperate.
+those two system are would be unable to interoperate. -->
 </p>
 
-<h3>Dynamically Generating Forms</h3>
+<h3>Динамическая генерация форм<!-- Dynamically Generating Forms --></h3>
 
 <p>
-Finally, it is possible to generate user interface forms automatically from 
+Наконец, можно генерировать формы пользовательского интерфейса из определений операций. Документация по определении формы и документация параметров должны быть достаточно удобными, чтобы позволить умеренно техническим пользователям предположить корректное содержимое формы. По этой причине высоко техническая документация должна идти в OperationDefinition.notes.
+<!-- Finally, it is possible to generate user interface forms automatically from 
 the operation definitions. The documentation in the form definition 
 and the parameter documentation should be sufficiently useful to allow
 moderately technical users to guess at the correct content of the form.
-For this reason, highly technical documentation should go in OperationDefinition.notes.
+For this reason, highly technical documentation should go in OperationDefinition.notes. -->
 </p>
 <p>
-Note also this is not expected to a be a tool of use to typical healthcare
+Отметим также, что это средство не ожидается быть полезным для типичного медицинского конечного пользователя; такие пользователи, как правило, нуждаются в большей поддержке, чем та, что может быть предложена в сгенерированной форме.
+<!-- Note also this is not expected to a be a tool of use to typical healthcare
 end-users; such users will usually need more support than can be offered
-in a generated form. 
+in a generated form.  -->
 </p>
 
 </div>

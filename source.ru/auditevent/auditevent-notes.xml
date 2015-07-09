@@ -1,21 +1,25 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h3>Using Coded Values</h3>
+<h3>Использование кодированных значений<!-- Using Coded Values --></h3>
 <p>
-The audit event resource and the ATNA Audit record are used in many contexts through healthcare. 
+Ресурс audit event и ATNA Audit record используются во многих контекстах в здравоохранении. 
+Кодированные значения, задаваемые в "расширяемых" привязках, широко используются и/или определяются DICOM, IHE или ISO, которые задают эти коды для удовлетворения очень специфичных сценариев использования. Эти коды следует применять везде, где возможно, либо могут быть определены другие коды.
+<!-- The audit event resource and the ATNA Audit record are used in many contexts through healthcare. 
 The coded values defined in the "extensible" bindings above are those widely used and/or defined by
 DICOM, IHE or ISO, who all defined these codes to meet very specific use cases. These codes should be 
-used when the are suitable, or other codes can be defined. 
+used when the are suitable, or other codes can be defined.  -->
 </p>
 <p>
-The set of codes defined for this resource are expected to grow over time, and 
-additional codes may be proposed / requested using the community input link above.
+Ожидается, что набор кодов, определенных для этого ресурса, будет расти со временем, и с помощью ссылки на сообщество, приведенной выше, могут быть предложены/затребованы дополнительные коды.
+<!-- The set of codes defined for this resource are expected to grow over time, and 
+additional codes may be proposed / requested using the community input link above. -->
 </p>
 
-<h3>Event codes for Common Scenarios</h3>
+<h3>Коды событий для общих сценариев<!-- Event codes for Common Scenarios --></h3>
 
 <p>
-This table summarizes common event scenarios, and the codes that should be used for each case.
+В таблице ниже приведены события общих сценариев и коды, которые следует использовать в этих случаях.
+<!-- This table summarizes common event scenarios, and the codes that should be used for each case. -->
 </p>
 <table class="grid">
   <tr><td><b>Scenario</b></td><td><b>type</b></td><td><b>subtype</b></td><td><b>action</b></td><td><b></b>Other</td></tr>
@@ -30,7 +34,8 @@ This table summarizes common event scenarios, and the codes that should be used 
 </table>
 
 <p>
-Audit Event Actions for RESTful operations:
+Действия аудита событий для RESTful операций:
+<!-- Audit Event Actions for RESTful operations: -->
 </p>
 <table class="grid">
  <tr><td><b>Operation</b></td><td><b>Action</b></td></tr>

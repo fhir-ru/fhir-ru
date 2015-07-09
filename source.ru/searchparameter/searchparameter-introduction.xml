@@ -1,28 +1,29 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 todo
 </p>
 </div> 
 
 <div> 
-<h2>Boundaries and Relationships</h2> 
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2> 
 <ul>
- <li>Profiles are used by <a href="conformance.html">Conformance</a> instances for specifying how resources are used</li>
- <li>Profiles use <a href="valueset.html">Value Sets</a> to specify the content of coded elements</li>
- <li>Profiles can use <a href="structuredefinition.html">Extension Definitions</a> when specifying how a resource is used</li>
+ <li>Профили, используемые экземплярами <a href="conformance.html">Conformance</a> чтобы указывать, какие ресурсы применяются<!-- Profiles are used by <a href="conformance.html">Conformance</a> instances for specifying how resources are used --></li>
+ <li>Профили используют <a href="valueset.html">Value Sets</a> для указания содержимого кодированных элементов<!-- Profiles use <a href="valueset.html">Value Sets</a> to specify the content of coded elements --></li>
+ <li>Профили могут использовать <a href="structuredefinition.html">Extension Definitions</a> при указании, каким образом ресурс применяется<!-- Profiles can use <a href="structuredefinition.html">Extension Definitions</a> when specifying how a resource is used --></li>
 </ul>
 
 </div> 
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
-Implementers should be familiar with with the 
+Реализаторам следует ознакомиться со статьей <a href="profiling.html">Profiling FHIR</a> перед началом работы с этим ресурсом.
+<!-- Implementers should be familiar with with the 
 background and concepts described in <a href="profiling.html">Profiling FHIR</a> 
-before working with this resource.
+before working with this resource. -->
 </p>
 
 </div>

@@ -1,22 +1,24 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p> 
-Appointment resources are used to provide information about 
+Ресурсы Appointment используются для указания информации о запланированной встрече, которая может быть в будущем или прошлом. Они могут создаваться для отдельной встречи или для ряда повторяющихся визитов. Примеры включают в себя запланированную операцию, последующее наблюдение после клинического визита, запланированное селекторное совещание между клиницистами для обсуждения пациента, резервирование диагностического оборудования для конкретного использования и т. п. Визит, запланированный с помощью условленной встречи, может быть очным или удаленным (по телефону, видеоконференция и т. п.). Имеет значение только то, что время и участие одного или нескольких людей, местоположений и/или использование предметов оборудования частично или полностью резервируются на обозначенный период времени.
+<!-- Appointment resources are used to provide information about 
 a planned meeting that may be in the future or past.  They may be for a single meeting or
 for a series of repeating visits.  Examples include a scheduled surgery, a follow-up for a
 clinical visit, a scheduled conference call between clinicians to discuss a case, the reservation
 of a piece of diagnostic equipment for a particular use, etc.  The visit scheduled by an appointment
 may be in person or remote (by phone, video conference, etc.)  All that matters is that the time and
 usage of one or more individuals, locations and/or pieces of equipment is being fully or partially
-reserved for a designated period of time.
+reserved for a designated period of time. -->
 </p>
 	<p>
-		This definition takes the concepts of appointments in a clinical setting and also extends
+	В этом определении используется и расширяется понятие условленной встречи в клинических условиях, чтобы оно было актуальным в пространстве сообщества здравоохранения и коррелировало с другими стандартами использования условленных встреч/календарей, широко используемыми вне области здравоохранения.
+		<!-- This definition takes the concepts of appointments in a clinical setting and also extends
 		them to be relevant in the community healthcare space, and also ease exposure to other
-		appointment / calendar standards widely used outside of Healthcare.
+		appointment / calendar standards widely used outside of Healthcare. -->
 	</p>
-
+	
 </div>
 </div>

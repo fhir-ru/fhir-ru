@@ -1,33 +1,38 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-The OperationDefinition resource provides a formal computable definition of an <a href="operations.html">operation</a> or <a href="search.html#advanced">a named query</a>.
-The OperationDefinition serves two principal purposes:
+Ресурс OperationDefinition предоставляет формальное исчисляемое определение  <a href="operations.html">операции</a> или <a href="search.html#advanced">именованного запроса</a>. OperationDefinition выполняет две принципиальные задачи:
+<!-- The OperationDefinition resource provides a formal computable definition of an <a href="operations.html">operation</a> or <a href="search.html#advanced">a named query</a>.
+The OperationDefinition serves two principle purposes: -->
 </p>
 <ul>
- <li>To allow for automatic determination of system compatibility</li>
- <li>To allow for dynamic generation of forms to drive the operations</li>
+ <li>Позволяет проводить автоматическое определение совместимости системы<!-- To allow for automatic determination of system compatibility --></li>
+ <li>Позволяет выполнять динамическую генерацию форм для управления операциями<!-- To allow for dynamic generation of forms to drive the operations --></li>
 </ul>
 <p>
-See below for further information about these, and about how Operations and Named Queries are executed.
+См. ниже дополнительную информацию об этом и о том, как выполняются операции и именованные запросы.
+<!-- See below for further information about these, and about how Operations and Named Queries are executed. -->
 </p>
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-Operation Definitions are published to define operations that servers can implement in a common fashion. 
+Operation Definitions публикуются для определения операций, которые может осуществлять сервер обычным образом. 
+Спецификация FHIR описывает некоторое количество (см. ниже) и другие организации, включая IHE, государственные программы, юрисдикции и поставщиков, которые могут публиковать дополнительные определения операций.
+<!-- Operation Definitions are published to define operations that servers can implemnet in a common fashion. 
 The FHIR specification itself describes a number (see below), and other organizations, including 
-IHE, national programs, jurisdictions and vendors are able to publish additional operation definitions.
+IHE, national programs, jurisdictions and vendors are able to publish additional operation definitions. -->
 </p>
 <p>
-OperationDefinition resources are referred to from two different places:
+На ресурсы OperationDefinition ссылаются из двух различных мест:
+<!-- OperationDefinition resources are referred to from two different places: -->
 </p>
 <ul>
- <li>From a <a href="conformance.html">Conformance Statement</a>, to declare what operations a system does or should implement</li>
- <li>From another OperationDefinition resource. This allows for a server to describe a limited implementation of a standard operation, or to allow traceability if the server has to rename the operation due to a name clash</li>
+ <li>Из <a href="conformance.html">Conformance Statement</a> для объявления, какие операции система осуществляет или должна осуществлять<!-- From a <a href="conformance.html">Conformance Statement</a>, to declare what operations a system does or should implement --></li>
+ <li>Из другого ресурса OperationDefinition. Это позволяет серверу описывать ограничения реализации стандартной операции, либо отслеживать, нужно ли серверу переименовать операцию из-за конфликта имен <!-- From another OperationDefinition resource. This allows for a server to describe a limited implementation of a standard operation, or to allow traceability if the server has to rename the operation due to a name clash --></li>
 </ul>
 </div>
 
