@@ -989,9 +989,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Информация о родственниках пациента, относящаяся к пациенту<!-- Information about patient's relatives, relevant for patient --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Information about patient's relatives, relevant for patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Значимые события и состояния в здоровье человека, связанного с пациентом, существенные в контексте ухода за пациентом<!-- Significant health events and conditions for a person related to the patient relevant in the context of care for the patient --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Significant health events and conditions for a person related to the patient relevant in the context of care for the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1023,11 +1023,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешние идентификаторы этой записи<!-- External Id(s) for this record --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">External Id(s) for this record</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Сюда записываются идентификаторы, ассоциированные с этим семейным анамнезом, которые были присвоены в результате бизнес-процессов и/или используются для ссылки на него, когда прямая URL-ссылка на сам ресурс не подходит (например в CDA-документах или письменной/печатной документации)<!-- This records identifiers associated with this family member history record that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This records identifiers associated with this family member history record that are defined by business processes and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность связи с более широкими рабочими процессами<!-- Need to allow connection to a wider workflow --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to allow connection to a wider workflow</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1059,9 +1059,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Пациент, для которого собирается этот анамнез<!-- Patient history is about --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Patient history is about</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, для которого собирается этот анамнез<!-- The person who this history concerns --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The person who this history concerns</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1094,13 +1094,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда был введен/обновлен анамнез<!-- When history was captured/updated --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When history was captured/updated</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (и, возможно, время), когда был собран семейный анамнез<!-- The date (and possibly time) when the family member history was taken --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The date (and possibly time) when the family member history was taken</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет определить, насколько актуален анамнез<!-- Allows determination of how current the summary is --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows determination of how current the summary is</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Эту дату необходимо вводить, даже если она совпадает с датой в ресурсе List, агрегирующем весь семейный анамнез<!-- This should be captured even if the same as the date on the List aggregating the full family history --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This should be captured even if the same as the date on the List aggregating the full family history</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">participation[typeCode=AUT].time</Data><NamedCell
@@ -1129,11 +1129,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Описываемый член семьи<!-- The family member described --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The family member described</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Это будет либо имя, либо описание. Например "Тетя Сьюзан", "моя кузина с рыжими волосами"<!-- This will either be a name or a description.  E.g. &quot;Aunt Susan&quot;, &quot;my cousin with the red hair&quot; --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This will either be a name or a description.  E.g. &quot;Aunt Susan&quot;, &quot;my cousin with the red hair&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет с большой лёгкостью гарантировать, что речь идет именно об этом человеке<!-- Allows greater ease in ensuring the same person is being talked about --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows greater ease in ensuring the same person is being talked about</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1164,9 +1164,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Родственная связь с субъектом<!-- Relationship to the subject --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Relationship to the subject</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип родственной связи между этим человеком и пациентом (отец, мать, брат и т. п.)<!-- The type of relationship this person has to the patient (father, mother, brother etc.) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of relationship this person has to the patient (father, mother, brother etc.)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1202,7 +1202,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Не всякий тип родственной связи подразумевает пол, в то же время пол родственника может иметь значение при выполнении оценки риска<!-- Not all relationship codes imply gender and the relative's gender can be relevant for risk assessments --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Not all relationship codes imply gender and the relative's gender can be relevant for risk assessments</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1233,9 +1233,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">(approximate) date of birth</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Фактическая или приблизительная дата рождения родственника<!-- The actual or approximate date of birth of the relative --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual or approximate date of birth of the relative</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет подсчитать возраст родственника<!-- Allows calculation of the relative's age --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows calculation of the relative's age</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1267,9 +1267,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">(approximate) age</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Фактический или приблизительный возраст родственника на момент записи семейного анамнеза<!-- The actual or approximate age of the relative at the time the family member history is recorded --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual or approximate age of the relative at the time the family member history is recorded</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Хотя возраст и можно подсчитать через дату рождения, иногда запись непосредственно возраста больше подходит клиницистам.<!-- While age can be calculated from date of birth, sometimes recording age directly is more natureal for clinicians. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">While age can be calculated from date of birth, sometimes recording age directly is more natureal for clinicians.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1298,9 +1298,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Умер? В каком возрасте/когда?<!-- Dead? How old/when? --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Dead? How old/when?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Фактический или приблизительный возраст родственника на момент записи семейного анамнеза<!-- The actual or approximate age of the relative at the time the family member history is recorded --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual or approximate age of the relative at the time the family member history is recorded</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1332,7 +1332,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">General note about related person </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Это свойство позволяет делать не относящиеся к состоянию заметки о родственнике. В идеале такие примечания должны быть в свойстве condition, но это не всегда возможно.<!-- This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1361,12 +1361,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Состояние, которое имел родственник<!-- Condition that the related person had --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Condition that the related person had</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Существенные состояния (или состояние), которые были у члена семьи. Это повторяющаяся секция, чтобы система могла показать больше одного состояния в ресурсе, хотя ничто не мешает создаь несколько ресурсов - по одному на каждое состояние.<!-- The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если ни в одном из перечисленных состояний не указан исход "смерть", это означает, что ни одно из этих состояний не было главной причиной смерти<!-- If none of the conditions listed have an outcome of &quot;death&quot; specified, that indicates that none of the specified conditions are known to have been the primary cause of death --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If none of the conditions listed have an outcome of &quot;death&quot; specified, that indicates that none of the specified conditions are known to have been the primary cause of death</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=ActCode#ASSERTION, value&lt;Diagnosis]</Data><NamedCell
@@ -1395,9 +1395,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Заболевание, которым страдал родственник<!-- Condition suffered by relation --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Condition suffered by relation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указанное фактическое состояние. Может быть кодированным состоянием (например MI или Diabetes) или менее конкретным описанием, как "рак", в зависимости от того, насколько много известно об этом состоянии, и возможностей записывающей системы<!-- The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1430,7 +1430,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">deceased | permanent disability | etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает, что случилось в результате этого состояния. Если исходом состояния была смерть, записывается дата смерти.<!-- Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1460,14 +1460,14 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда это состояние впервые проявилось<!-- When condition first manifested --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When condition first manifested</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Здесь можно записать либо возраст, когда началось, приблизительный диапазон возрастов или описание. Для состояний, которые могут наступать несколько раз, здесь описывается известный момент первого проявления.<!-- Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Зная возраст, в котором проявилось состояние у родственников, можно прогнозировать риск для пациента<!-- Age of onset of a condition in relatives is predictive of risk for the patient --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Age of onset of a condition in relatives is predictive of risk for the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Определить/найти подходящий код наблюдения<!-- Define/find appropriate observation code --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Define/find appropriate observation code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;Subject Age at measurement&quot;, value&lt;Diagnosis].value[@xsi:typeCode='TS' or 'IVL_TS']&#10;&#10;Use originalText for string&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1494,9 +1494,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация о состоянии<!-- Extra information about condition --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Extra information about condition</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Область, куда можно поместить общие записи об этом конкретном состоянии.<!-- An area where general notes can be placed about this specific condition. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An area where general notes can be placed about this specific condition.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4165,7 +4165,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">FamilyMemberHistory</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Можно указать либо age[x], либо birth[x], но не оба элемента одновременно<!-- Can have age[x] or birth[x], but not both --></Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Can have age[x] or birth[x], but not both</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not (*[starts-with(local-name(.), 'age')] and *[starts-with(local-name(.), 'birth')])</Data><NamedCell
@@ -4731,7 +4731,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">FamilyMemberHistory.patient</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Личность субъекта, для которого перечисляются пункты семейного анамнеза<!-- The identity of a subject to list family member history items for --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">The identity of a subject to list family member history items for</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -7138,7 +7138,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s145"><Data ss:Type="String">FamilialRelationship</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Характер родственных отношений между пациентом и родственником, описываемым в семейном анамнезе<!-- The nature of the relationship between the patient and the related person being described in the family member history --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">The nature of the relationship between the patient and the related person being described in the family member history</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">http://hl7.org/fhir/v3/vs/FamilyMember</Data></Cell>
@@ -7153,7 +7153,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ConditionOutcome</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Исход состояния для пациента. Например смерть, постоянная нетрудоспособность, временная нетрудоспособность и т. п.<!-- The result of the condition for the patient.  E.g. death, permanent disability, temporary disability, etc. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The result of the condition for the patient.  E.g. death, permanent disability, temporary disability, etc.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>

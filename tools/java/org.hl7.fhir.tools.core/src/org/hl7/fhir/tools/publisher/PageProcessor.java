@@ -4598,7 +4598,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
             return;
           } else {
             String s = x.getFirstElement().allText();
-            if (! ((s.equals("Scope and Usage")) || (s.equals("Boundaries and Relationships")) || (s.equals("Background and Context")) ) ) {
+            if (! ((s.equals("Scope and Usage")) || (s.equals("Boundaries and Relationships")) || (s.equals("Background and Context")) || (s.equals("Область применения и использование")) || (s.equals("Предпосылки и контекст")) || (s.equals("Границы и связи")) ) ) {
               log("file \""+filename+"\": div/div["+Integer.toString(doc.getChildNodes().indexOf(x))+"]/h2 must be either 'Scope and Usage', 'Boundaries and Relationships', or 'Background and Context'", LogMessageType.Error);
               return;
             } else { 

@@ -1,36 +1,15 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 	<div>
-		<h2>Область применения и использование</h2>
-	<p>
-	Ресурс HealthcareService используется для описания отдельной услуги здравоохранения, которая предоставляется организацией в некотором местоположении.
-		<!-- The HealthcareService resource is used to describe a single healthcare service that is
-			being provided by an organization at a location. --><br/>
-			Местоположение услуг может быть виртуальным, например услуги телемедицины.
-			<!-- The location of the services could be virtual, as with TeleMedicine Services. --><br/>
+		<h2>Scope and Usage</h2>
+		<p>
+			The HealthcareService resource is used to describe a single healthcare service that is
+			being provided by an organization at a location.<br/>
+			The location of the services could be virtual, as with TeleMedicine Services.<br/>
 		</p>
-		<p>Распространенные примеры ресурсов HealthcareServices:<!-- Common examples of HealthcareServices resources are: --></p>
+		<p>Common examples of HealthcareServices resources are:</p>
 		<ul>
-			<li>Вспомогательное здравоохранение; профессии, смежные с медицинской</li>
-			<li>Клинический нейропсихолог</li>
-			<li>Лечение заболеваний стоп</li>
-			<li>Экстренные службы больницы Smallville</li>
-			<li>Временный уход, предоставляемый в доме престарелых или общежитии</li>
-			<li>Круглосуточная кризисная служба консультаций по телефону</li>
-			<li>Информационные, консультационные и/или справочные службы; Инвалидность, Телекоммуникации</li>
-			<li>Сельские службы телемедицины</li>
-			<li>Больница дома<!-- Hospital in the home --></li>
-			<li>Городское такси</li>
-			<li>Аптека</li>
-			<li>Активная реабилитация</li>
-			<li>Социальная поддержка</li>
-			<li>Консультация на тему наркотиков и/или алкоголя</li>
-			<li>Day Programs, Adult Training &amp; Support Services</li>
-			<li>Психологи-консультанты и/или психологические службы</li>
-			<li>Групповая гидротерапия</li>
-			<li>Little River Home Maintenance</li>
-			<li>Example mowing services</li>
-<!-- 	<li>Allied Health</li>
+			<li>Allied Health</li>
 			<li>Clinical Neuropsychologist</li>
 			<li>Podiatry Service</li>
 			<li>Smallville Hospital Emergency Services</li>
@@ -48,29 +27,14 @@
 			<li>Consulting psychologists and/or psychology services</li>
 			<li>Group Hydrotherapy</li>
 			<li>Little River Home Maintenance</li>
-			<li>Example mowing services</li> -->
+			<li>Example mowing services</li>
 		</ul>
 		<p>
-			<i>Ресурсы HealthcareService не имеют отношения к компьютерным сервисам (это не SOA)<!-- HealthcareService resources do not represent Computer related Services (not SOA) --></i>
+			<i>HealthcareService resources do not represent Computer related Services (not SOA)</i>
 		</p>
-		<p>Примеры применения ресурсов HealthcareService:<!-- Example uses of HealthcareService resources are: --></p>
+		<p>Example uses of HealthcareService resources are:</p>
 		<ul>
-					<li>Национальный справочник услуг - ориентация на потребителя</li>
-			<li>Национальный справочник услуг - поиск направлений к специалистам</li>
-			<li>Клиентский портал организации - для поиска услуг / резервирования условленных встреч</li>
-			<li>
-				Адресная книга услуг для направлений<br/>
-				<i>включая ссылки на вопросники для оценки, которые необходимы в рамках направления</i>
-			</li>
-			<li>
-				Внутренний каталог сети здравоохранения
-				<i>
-					Используется для отслеживания доступных услуг, предлагаемых внутри,
-а также те, которые предлагаются бизнес-партнерами.<br/>
-					Эта информация может также включать в себя информацию о стоимости.
-				</i>
-			</li>
-<!-- 			<li>National Services Directory - Consumer Focus</li>
+			<li>National Services Directory - Consumer Focus</li>
 			<li>National Services Directory - Practitioner Referrals Searching</li>
 			<li>Organization's Client Portal - to locate services / book appointments</li>
 			<li>
@@ -84,22 +48,19 @@
 					and also those offered by business partners.<br/>
 					This information may also include costing information.
 				</i>
-			</li> -->
+			</li>
 		</ul>
 	</div>
 
 	<div>
-		<h2>Границы и связи</h2>
+		<h2>Boundaries and Relationships</h2>
 		<p>
-		Ресурс HealthcareService может использоваться в ресурсе Schedule для задания фактической доступности услуги. Это делается с помощью свойства Actor ресурса Schedule.
-			<!-- The HealthcareService resource can be used with the Schedule resource to define actual availability
-			of the service. This would be done by using the Schedule's Actor property. -->
+			The HealthcareService resource can be used with the Schedule resource to define actual availability
+			of the service. This would be done by using the Schedule's Actor property.
 		</p>
 		<p>
-		При создании ресурса Appointment, HealthcareService должен быть назначен одному из участников.
-			<!-- When creating an Appointment, the HealthcareService is to be assigned to one of the participants. --><br/>
-			Определение того, доступна ли услуга и может ли она быть принята, остается на усмотрение системы календарного планирования.
-			<!-- It is up to the scheduling system to determine if the service is available, and can be accepted. -->
-	</p>
+			When creating an Appointment, the HealthcareService is to be assigned to one of the participants.<br/>
+			It is up to the scheduling system to determine if the service is available, and can be accepted.
+		</p>
 	</div>
 </div>

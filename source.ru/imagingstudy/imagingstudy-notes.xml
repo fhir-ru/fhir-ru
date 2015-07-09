@@ -3,27 +3,22 @@
 <!-- insert xhtml content here -->
 <h3>Implementation Notes</h3>
 <ul>
- <li>Экземпляры могут быть изображениями, однако они также могут быть структурированными dicom-документами или другими dicom-классами</li>
- <li>Каждый экземпляр может иметь url-адрес и вложение. В этих двух элементах указывается одна и та же информация, но с помощью различных подходов. URL - это ссылка на сервис WADO-RS, который делает доступным экземпляр, в то время как вложение - это ссылка на FHIR-ресурс (<a href="media.html">Media</a>, <a href="composition.html">Composition</a> и др.).</li>
- <li>Данный ресурс придерживается практики DICOM в использовании OID вместо кодов в таких элементах, как тип экземпляра.</li>  
-<!--  <li>Instances can be images, but they can also be dicom structured documents or other dicom classes</li>
+ <li>Instances can be images, but they can also be dicom structured documents or other dicom classes</li>
  <li>Each instance may have a url and an attachment. Both represent the same information, but using different 
    approaches. The URL is a reference to a WADO-RS service that makes the instance available, while the attachment 
    is a reference to a FHIR resource (<a href="media.html">Media</a>, <a href="composition.html">Composition</a>, etc).</li>
- <li>This resource follows DICOM practice in using OIDs for elements such as instance type rather than codes.</li>   -->
+ <li>This resource follows DICOM practice in using OIDs for elements such as instance type rather than codes.</li>  
 </ul>
 
-<h3>Сценарий использования<!-- Use Case --></h3>
+<h3>Use Case</h3>
 
 <p>
-Следующая раскадровка иллюстрирует основной сценарий использования для этого ресурса:
-<!-- The following storyboard illustrates the primary use case for 
-this resource: -->
+The following storyboard illustrates the primary use case for 
+this resource:
 </p>
 <blockquote>
 <p>
-Онколог Карен принимает пациентов в своей клинике, и хотела бы подготовиться к пациентам, которых она будет принимать сегодня. Ее первый сегодняшний пациент, Алекс, уже прибыл. Она запускает свою систему электронных медицинских записей и ищет Алекса, делая запрос по пациентам и используя его фамилию. СЭМЗ делает FHIR-запрос к ресурсу Patient, чтобы предоставить основную демографическую информацию для отрисовки титульной страницы. СЭМЗ делает последующий FHIR-запрос к ресурсу Condition и сообщает, что у Алекса подозревается рак простаты. Получив эту информацию, Карен решает проверить два следующих теста - результаты лабораторного теста Prostate-Specific Antigen (PSA) и КТ, выполненного с местном диагностическом центре. Первое, FHIR-запрос делается к ресурсу Observation для запроса последнего значения PSA (СЭМЗ также запрашивает предыдущие значения PSA для проверки тенденции). Для КТ-осмотра СЭМЗ запрашивает ресурс ImagingStudy, чтобы получить список доступных изображений с другими существенными ограничениями (такими как модальность, участок тела и т. п.). Этот запрос возвращает доступные исследования, а также значимые метаданные о каждом исследовании, его серию и изображения. Эта информация поможет Карен выбрать, какое исследование она захочет посмотреть. Используя предоставленные WADO-RS-ссылки, артефакты. которые захочет посмотреть Карен, можно загружить и просмотреть с помощью программного обеспечения, поддерживающего просмотр DICOM.
-<!-- An oncologist, Karen, is seeing patients in her clinic, and would like
+An oncologist, Karen, is seeing patients in her clinic, and would like
 background on the patients she is seeing today. Her first patient of the
 day, Alex. has arrived. She launches her Electronic Medical Record (EMR)
 software, and makes a Patient query on Alex using his last name. The EMR
@@ -42,7 +37,7 @@ back the studies available, with relevant meta-data about each study,
 its series and images. This information will help Karen to select which 
 study would like to review. Using the WADO-RS references provided, the 
 artifacts Karen would like to review can be downloaded and viewed using 
-capable DICOM viewing software. -->
+capable DICOM viewing software.
 </p>
 </blockquote>
 

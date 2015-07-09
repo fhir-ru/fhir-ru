@@ -953,13 +953,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Ссылка на код, определенный терминологической системой<!-- A reference to a code defined by a terminology system  --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">A reference to a code defined by a terminology system </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Ссылка на код, определенный терминологической системой<!-- A reference to a code defined by a terminology system  --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A reference to a code defined by a terminology system </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Ссылки на коды очень распространены в моделях здравоохранения<!-- References to codes are very common in healthcare models --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">References to codes are very common in healthcare models</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Коды могут быть определены в случайном порядке в перечислениях и списках кодов, вплоть до очень формальных определений, таких как SNOMED CT - см V3 Основные принципы для получения дополнительной информации<!-- Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the V3 Core Principles for more information --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the V3 Core Principles for more information</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">CV</Data><NamedCell
@@ -989,14 +989,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор терминологической системы<!-- Identity of the terminology system --> </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Identity of the terminology system </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификация кодовой системы, которая определяет смысл обозначения в коде.<!-- The identification of the code system that defines the meaning of the symbol in the code.  --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The identification of the code system that defines the meaning of the symbol in the code. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна однозначная информация об источнике определения обозначения<!-- Need to be unambiguous about the source of the definition of the symbol --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be unambiguous about the source of the definition of the symbol</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">URI может быть идентификатором объекта OID (urn:oid:...) или UUID (urn:uuid:...). OID и UUID ДОЛЖНЫ быть ссылками на реестр HL7 OID. В противном случае URI должен прийти из HL7-списка определенных FHIR особых URI, или он должен разыменовывать ссылку на какое-то определение, что позволит установить систему четко и недвусмысленно<!-- 
-The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./codeSystem</Data><NamedCell
@@ -1026,12 +1025,12 @@ The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SH
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Версия системы - при необходимости<!-- Version of the system - if relevant --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Version of the system - if relevant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Версия кодовой системы, которая была использована при выборе этого кода. Обратите внимание, что поддерживаемая в хорошем состоянии кодовая система не нуждается в указании версии из-за непротиворечивости смысла кодов в разных версиях. Однако в этом нельзя быть постоянно уверенным, и когда непротиворечивость значений не гарантируется, НЕОБХОДИМО указывать версию<!-- The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Где справочник не четко определяет, какую строку следует использовать для идентификации версий кодовой системы, рекомендуется использовать дату (выраженную в FHIR-формате даты) официальной публикации этой версии в качестве даты версии<!-- Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./codeSystemVersion</Data><NamedCell
@@ -1061,11 +1060,11 @@ The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SH
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Обозначение в синтаксисе, определенном системой<!-- Symbol in syntax defined by the system --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Symbol in syntax defined by the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначение в синтаксисе, определенном системой. Обозначение может быть стандартным кодом или выражением в синтаксисе, определенном кодовой системой (например посткоординация)<!-- A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо ссылаться на конкретный код в системе<!-- Need to refer to a particular code in the system --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to refer to a particular code in the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1096,11 +1095,11 @@ The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SH
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Представление, определенное системой<!-- Representation defined by the system --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Representation defined by the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Представление значения кода в системе в соответствии с правилами системы<!-- A representation of the meaning of the code in the system, following the rules of the system  --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A representation of the meaning of the code in the system, following the rules of the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность передавать человекочитаемое значение кода для читателей, которые не знакомы с системой<!-- Need to be able to carry a human-readable meaning of the code for readers that do not know  the system --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to carry a human-readable meaning of the code for readers that do not know  the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1131,15 +1130,13 @@ The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SH
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Если этот кодинг был выбран непосредственно пользователем<!-- If this coding was chosen directly by the user --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">If this coding was chosen directly by the user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, что этот кодинг был выбран непосредственно пользователем - то есть из списка выбора доступных элементов (кодов или значений для отображения)<!-- 
-Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Определено в качестве критерия клинической безопасности - что именно эта пара system/code была выбрана явным образом, а не подразумевается системой на основе каких-то правил или языковой обработки<!-- 
-This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Среди множества альтернатив, непосредственно выбранный код - это наиболее подходящая отправная точка для новых переводов. Есть некоторая неоднозначность насчет того, что понимать 'непосредственно выбранным', и могут потребоваться дополнительные соглашения торговых партнеров для более полного прояснения использования этого элемента и его значений<!-- Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and it's consequences more completely --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and it's consequences more completely</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">CD.codingRationale</Data><NamedCell
@@ -1169,11 +1166,11 @@ This has been identified as a clinical safety criterium - that this exact system
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Набор, из которого был выбран этот кодинг<!-- Set this coding was chosen from --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Set this coding was chosen from</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Набор возможных кодированных значений, из которого этот кодинг был выбран, или которым он ограничен<!-- The set of possible coded values this coding was chosen from or constrained by --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The set of possible coded values this coding was chosen from or constrained by</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Набор значений может влиять на коды, которые пользователь может выбрать. Кроме того, ссылаясь на набор значений непосредственно, легче совместно применять узкоспециализированные кодовые системы, использующиеся в здравоохранении<!-- The value set may influence the codes that the user can select. Also, referencing the value set directly makes it easier to share ad-hoc code systems used across healthcare --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The value set may influence the codes that the user can select. Also, referencing the value set directly makes it easier to share ad-hoc code systems used across healthcare</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>

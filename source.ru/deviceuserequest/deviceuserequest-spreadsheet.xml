@@ -1001,9 +1001,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на применение или выдачу пациенту медицинского изделия<!-- A request for a patient to use or be given a medical device --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">A request for a patient to use or be given a medical device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Представляет собой запрос на применение пациентом медицинского изделия. Медицинским изделием может выступать имплантируемый прибор или внешнее вспомогательное изделие, например ходок. <!-- Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker. --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Represents a request for a patient to employ a medical device. The device may be an implantable device, or an external assistive device, such as a walker.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1034,11 +1034,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Целевое место на теле<!-- Target body site --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Target body site</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает место на теле субъекта, где следует использовать устройство (т. е. целевое место).<!-- Indicates the site on the subject's body where the device should be used ( i.e. the target site). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the site on the subject's body where the device should be used ( i.e. the target site).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Знание о том, где следует использовать устройство, важно для отслеживания, когда возможно несколько мест.<!-- Knowing where the device is targeted is important for tracking if multiple sites are possible. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Knowing where the device is targeted is important for tracking if multiple sites are possible.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1074,7 +1074,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | aborted</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус запроса.<!-- The status of the request. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the request.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1105,9 +1105,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Запрошенное устройство<!-- Device requested --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Device requested</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация об устройстве для использования<!-- The details of the device  to be used. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The details of the device  to be used.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1139,9 +1139,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Случай обслуживания, в рамках которого возник запрос<!-- Encounter motivating request --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter motivating request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Случай обслуживания, предоставляющий дополнительный контекст, в котором был сделан этот запрос.<!-- An encounter that provides additional context in which this request is made. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An encounter that provides additional context in which this request is made.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1173,9 +1173,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор запроса<!-- Request identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Request identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификаторы, присвоенные этому заказу заказчиком или получателем.<!-- Identifiers assigned to this order by the orderer or by the receiver. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifiers assigned to this order by the orderer or by the receiver.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1207,9 +1207,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование запроса<!-- Reason for request --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason for request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Причина или обоснование для использования этого устройства.<!-- Reason or justification for the use of this device.  --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Reason or justification for the use of this device. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1240,9 +1240,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Примечания или комментарии<!-- Notes or comments --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Notes or comments</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Сведения об этом запросе, которые не были представлены вообще или в достаточной мере в одном из атрибутов, указанных в классе. Может включать в себя, к примеру, комментарий, указание или заметку, связанную с мотивировкой решения.<!-- Details about this request that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Details about this request that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1273,9 +1273,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">При необходимости<!-- PRN --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">PRN</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Предложенное действие необходимо выполнять только в случае выполнения указанных условий, например при одышке, SpO2 меньше x%. <!-- The proposed act must be performed if the indicated conditions occur, e.g.., shortness of breath, SpO2 less than x%. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The proposed act must be performed if the indicated conditions occur, e.g.., shortness of breath, SpO2 less than x%.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1307,9 +1307,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда заказан<!-- When ordered --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When ordered</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда был сделан заказ.<!-- The time when the request was made. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The time when the request was made.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1341,9 +1341,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда записан<!-- When recorded --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When recorded</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда запрос был сделан/записан.<!-- The time at which the request was made/recorded. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The time at which the request was made/recorded.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1375,9 +1375,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Для кого запрос<!-- Focus of request --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Focus of request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Пациент, который будет использовать это изделие.<!-- The patient who will use the device. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The patient who will use the device.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1409,9 +1409,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">График применения<!-- Schedule for use --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Schedule for use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">График времени использования этого изделия. Тип данных Schedule позволяет задавать различные выражения, например &quot;каждые 8 часов&quot;; &quot;три раза в день&quot;; &quot;за полчаса до завтрака в течение 10 дней с 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 и 1 Nov 2013&quot;<!-- The timing schedule for the use of the device The Schedule data type allows many different expressions, for example. &quot;Every 8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;; &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot;. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The timing schedule for the use of the device The Schedule data type allows many different expressions, for example. &quot;Every 8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;; &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot;.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1446,7 +1446,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">routine | urgent | stat | asap</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Характеризует, насколько быстро следует начать применение этого изделия. Используются такие понятия, как немедленно, срочно, обычная срочность.<!-- Characterizes how quickly the  use of device must be initiated. Includes concepts such as stat, urgent, routine. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Characterizes how quickly the  use of device must be initiated. Includes concepts such as stat, urgent, routine.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4640,13 +4640,13 @@
     <Cell ss:StyleID="s113"><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s78"><Data ss:Type="String">DeviceUseRequest.subject</Data></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">Поиск по субъекту<!-- Search by subject --></Data></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">Search by subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s115"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s87"><Data ss:Type="String">DeviceUseRequest.subject</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Поиск по субъекту - пациент<!-- Search by subject - a patient --></Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Search by subject - a patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">device</Data></Cell>
@@ -7097,7 +7097,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">DeviceUseRequestStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Коды статуса запроса<!-- Codes representing the status of the request --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Codes representing the status of the request</Data></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"><Data ss:Type="String">#device-use-request-status</Data></Cell>
@@ -7112,7 +7112,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">DeviceUseRequestPriority</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды приоритета запроса<!-- Codes representing the priority of the request --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes representing the priority of the request</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#device-use-request-priority</Data></Cell>

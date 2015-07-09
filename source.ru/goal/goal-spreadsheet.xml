@@ -957,12 +957,12 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Описывает поставленные цели ухода за пациентом<!-- Describes the intended objective(s) of patient care --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Describes the intended objective(s) of patient care</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Описывает поставленные цели ухода за пациентами, например потеря веса, восстановление активности в повседневной жизни и т. д.<!-- Describes the intended objective(s) of patient care, for example, weight loss, restoring an activity of daily living, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Describes the intended objective(s) of patient care, for example, weight loss, restoring an activity of daily living, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Целью может быть достижение конкретного изменения или просто поддержание текущего состояния, или даже замедление ухудшение.<!-- Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline. --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">.outboundRelationship[typeCode&lt;=OBJ].</Data><NamedCell
@@ -992,11 +992,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Внешние идентификаторы для этой цели<!-- External Ids for this goal --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">External Ids for this goal</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Сюда записываются идентификаторы, ассоциированные с этим планом по уходу, которые были присвоены в результате бизнес-процессов и/или используются для ссылки на него, когда прямая URL-ссылка на сам ресурс не подходит (например в CDA-документах или письменной/печатной документации)<!-- This records identifiers associated with this care plan that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation) --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">This records identifiers associated with this care plan that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Нужна возможность связи с более широкими рабочими процессами<!-- Need to allow connection to a wider workflow --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Need to allow connection to a wider workflow</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1027,11 +1027,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Пациент, для которого предназначена эта цель<!-- The patient for whom this goal is intended for --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The patient for whom this goal is intended for</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Определяет пациента/субъекта, уход за которым описывается в этом плане.<!-- Identifies the patient/subject whose intended care is described by the plan. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies the patient/subject whose intended care is described by the plan.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Цели связаны с пациентом.<!-- Goals are associated with a patient. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Goals are associated with a patient.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1063,11 +1063,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Достигнуть цели в или ранее<!-- Reach goal on or before --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Reach goal on or before</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Указывает, когда планируется достигнуть этой цели.<!-- Indicates when the goal is intended to be reached. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Indicates when the goal is intended to be reached.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Определяет, когда следует оценивать цель.<!-- Identifies when the goal should be evaluated. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Identifies when the goal should be evaluated.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1096,11 +1096,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Какой желаемый результат?<!-- What's the desired outcome? --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">What's the desired outcome?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Человекочитаемое описание определенной желаемой цели ухода.<!-- Human-readable description of a specific desired objective of care. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Human-readable description of a specific desired objective of care.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Без описания, что пытаются достичь, элемент не имеет смысла<!-- Without a description of what's trying to be achieved, element has no purpose --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Without a description of what's trying to be achieved, element has no purpose</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1136,9 +1136,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">proposed | planned | in-progress | achieved | sustaining | cancelled | accepted | rejected</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Обозначает, достигнута ли уже цель или она все еще актуальна<!-- Indicates whether the goal has been reached and is still considered relevant --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Indicates whether the goal has been reached and is still considered relevant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Позволяет оценить результаты и необходимость дальнейшего отслеживания цели<!-- Allows measuring outcome and whether goal needs to be further tracked. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Allows measuring outcome and whether goal needs to be further tracked.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1170,12 +1170,12 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата изменения статуса цели<!-- When goal status took effect --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">When goal status took effect</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Определяет, когда был выставлен текущий статус. Т. е. когда цель была изначально создана, когда достигнута, когда отменена и т. п.<!-- Identifies when the current status.  I.e. When initially created, when achieved, when cancelled, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies when the current status.  I.e. When initially created, when achieved, when cancelled, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Чтобы увидеть даты предыдущих статусов, необходимо запросить историю<!-- To see the date for past statuses, query history --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">To see the date for past statuses, query history</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1204,9 +1204,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Кто ответственен за создание цели?<!-- Who's responsible for creating Goal? --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Who's responsible for creating Goal?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Обозначает, для кого предназначена эта цель - для пациента, для специалиста и т. д.<!-- Indicates whose goal this is - patient goal, practitioner goal, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Indicates whose goal this is - patient goal, practitioner goal, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1239,7 +1239,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">high | medium |low</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Определяет уровень важности, ассоциированный с достижением/поддержанием цели<!-- Identifies the level of importance associated with reaching/sustaining the goal --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies the level of importance associated with reaching/sustaining the goal</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1269,11 +1269,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Проблемы со здоровьем, которые решает эта цель<!-- Health issues this goal addresses --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Health issues this goal addresses</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Выявленные состояния и другие элементы медицинской карты, которые планируется решить в рамках этой цели <!-- The identified conditions and other health record elements that are intended to be addressed by the goal --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">The identified conditions and other health record elements that are intended to be addressed by the goal</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Позволяет явным образом привязать определенные цели к проблемам, которые решаются в ее рамках, что делает цель более понятной<!-- Allows specific goals to explicitly linked to the concerns they're dealing with - makes the goal more understandable --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Allows specific goals to explicitly linked to the concerns they're dealing with - makes the goal more understandable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1302,13 +1302,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Примечания к этой цели<!-- Comments about the goal --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Comments about the goal</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Любые комментарии, связанные с этой целью<!-- Any comments related to the goal --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Any comments related to the goal</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Нужна возможность вводить информацию о цели, которая по факту не является ее описанием. <!-- There's a need to capture information about the goal that doesn't actually describe the goal. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">There's a need to capture information about the goal that doesn't actually describe the goal.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Может использоваться для текущих заметок, опасений или другой связанной информации, которая по факту саму цель не описывает.<!-- May be used for progress notes, concerns or other related information that doesn't actually describe the goal itself. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">May be used for progress notes, concerns or other related information that doesn't actually describe the goal itself.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;annotation&quot;].value</Data><NamedCell
@@ -1336,15 +1336,15 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Каким был конечный результат цели?<!-- What was end result of goal? --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">What was end result of goal?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Определяет изменение (или отсутствие изменения) в момент, когда цель считается достигнутой или отмененной.<!-- Identifies the change (or lack of change) at the point where the goal was deepmed to be cancelled or achieved. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies the change (or lack of change) at the point where the goal was deepmed to be cancelled or achieved.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Отслеживание результатов является ключевым аспектом в планировании ухода<!-- Outcome tracking is a key aspect of care planning --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Outcome tracking is a key aspect of care planning</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Обратите внимание, что здесь не нужно дублировать статус цели.<!-- Note that this should not duplicate the goal status. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Note that this should not duplicate the goal status.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Определить подходящий набор значений для этого<!-- Define a proper value set for this --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Define a proper value set for this</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1371,9 +1371,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код или ресурс Observation, вытекающий из этой цели<!-- Code or observation that resulted from gual --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Code or observation that resulted from gual</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Сведения о том, что поменялось (или не поменялось)<!-- Details of what's changed (or not changed) --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Details of what's changed (or not changed)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6564,7 +6564,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s144"><Data ss:Type="String">GoalStatus</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Обозначает, достигнута ли уже цель или она все еще актуальна<!-- Indicates whether the goal has been met and is still being targeted --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates whether the goal has been met and is still being targeted</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">#goal-status</Data></Cell>
@@ -6579,7 +6579,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s144"><Data ss:Type="String">GoalPriority</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет уровень важности, ассоциированный с целью<!-- The level of importance associated with a goal --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The level of importance associated with a goal</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">valueset-goal-priority</Data></Cell>
@@ -6594,7 +6594,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s144"><Data ss:Type="String">GoalOutcome</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Результат цели. Например "увеличение подвижности плеча на 25%", "Уровень беспокойства снижен до среднего", "сброс веса на 15 кг и поддержание этого состояния более 6 месяцев"<!-- The result of the goal.  E.g. &quot;25% increase in shoulder mobility&quot;, &quot;Anxiety reduced to moderate levels&quot;.  &quot;15 kg weight loss sustained over 6 months&quot; --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The result of the goal.  E.g. &quot;25% increase in shoulder mobility&quot;, &quot;Anxiety reduced to moderate levels&quot;.  &quot;15 kg weight loss sustained over 6 months&quot;</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"/>

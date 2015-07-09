@@ -983,13 +983,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Почтовый адрес<!-- A postal address --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">A postal address</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">В мире существует большое многообразие форматов почтовых адресов. Данный формат определяет расширенный набор, который является основой всех адресов в мире <!-- There is a variety of postal address formats defined around the world. This format defines a superset that is the basis for all addresses around the world  --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">There is a variety of postal address formats defined around the world. This format defines a superset that is the basis for all addresses around the world </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Нужна возможность записывать почтовые адреса наряду с примечаниями об их применении<!-- Need to be able to record postal addresses, along with notes about their use --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to be able to record postal addresses, along with notes about their use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Примечание: имеются в виду почтовые адреса, а не физическое местоположение<!-- Note: address is for postal addresses, not physical locations --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Note: address is for postal addresses, not physical locations</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">AD</Data><NamedCell
@@ -1023,13 +1023,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">home | work | temp | old - назначение этого адреса<!-- home | work | temp | old - purpose of this address --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">home | work | temp | old - purpose of this address</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Назначение этого адреса<!-- The purpose of this address --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The purpose of this address</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет выбрать подходящий из списка адресов<!-- Allows an appropriate address to be chosen from a list of many --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows an appropriate address to be chosen from a list of many</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Является модификатором, потому что приложения не должны ошибочно принимать временный или старый адрес за действующий/постоянный. Приложения могут считать адрес действующим, если только в нем не указано явно, что он временный или старый<!-- This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old address etc for a current/permanent one. Applications can assume that an address is current unless it explicitly says that it is temporary or old --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old address etc for a current/permanent one. Applications can assume that an address is current unless it explicitly says that it is temporary or old</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">unique(./use)</Data><NamedCell
@@ -1098,13 +1098,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Текстовое представление адреса<!-- Text representation of the address --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Text representation of the address</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Полное текстовое представление адреса<!-- A full text representation of the address --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A full text representation of the address</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Визуализируемая, не закодированная форма<!-- A renderable, unencoded form --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A renderable, unencoded form</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Может содержать и текстовое представление, и структурированные части<!-- Can provide both a text representation and parts --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Can provide both a text representation and parts</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./formatted</Data><NamedCell
@@ -1135,17 +1135,17 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Название улицы, номер, направление, номер почтового ящика и т.п<!-- Street name, number, direction &amp; P.O. Box etc  --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Street name, number, direction &amp; P.O. Box etc </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Этот компонент содержит номер дома, номер квартиры, название улицы, направление улицы, &#10;номер почтового ящика, подсказки для доставки и другую подобную информацию об адресе<!-- This component contains the house number, apartment number, street name, street direction, &#10;P.O. Box number, delivery hints, and similar address information --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This component contains the house number, apartment number, street name, street direction, &#10;P.O. Box number, delivery hints, and similar address information</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">home | work | temp | old - назначение этого адреса<!-- home | work | temp | old - purpose of this address --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">home | work | temp | old - purpose of this address</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">AD.part[parttype = AL]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">XAD.1 + XAD.2 (обратите внимание: XAD.1 и XAD.2 имеют различное значение для юридического (company address) и физического адреса (person address))&#10;<!-- XAD.1 + XAD.2 (note: XAD.1 and XAD.2 have different meanings for a company address than for a person address)&#10; --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">XAD.1 + XAD.2 (note: XAD.1 and XAD.2 have different meanings for a company address than for a person address)&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">street address</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1159,7 +1159,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s86"><Data ss:Type="String">Address.city</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Город или любой населенный пункт, имеющий муниципалитет<!-- Muncipality --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Muncipality</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1174,9 +1174,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Название города, поселка и т. п<!-- Name of city, town etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of city, town etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Название города, поселка, села или другого населенного пункта<!-- The name of the city, town, village or other community or delivery center. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of the city, town, village or other community or delivery center.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1197,7 +1197,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell ss:StyleID="s86"><Data ss:Type="String">Address.state</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Провинция; административная территория<!-- Province, Territory --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Province, Territory</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1211,9 +1211,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Подразделение государства (допускаются аббревиатуры)<!-- Sub-unit of country (abreviations ok) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Sub-unit of country (abreviations ok)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Часть страны с ограниченным суверенитетом в федеративном государстве. Можно использовать коды, если они общеупотребительные (например 2-буквенные коды штатов Америки)<!-- Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1249,9 +1249,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Почтовый индекс области<!-- Postal code for area --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Postal code for area</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Почтовый индекс, обозначающий область, определенную почтовой службой<!-- A postal code designating a region defined by the postal service. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A postal code designating a region defined by the postal service.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1285,12 +1285,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Страна (может быть 3-буквенным кодом из ISO 3166)<!-- Country (can be ISO 3166 3 letter code) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Country (can be ISO 3166 3 letter code)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Страна - нация в общепринятом смысле<!-- Country - a nation as commonly understood or generally accepted --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Country - a nation as commonly understood or generally accepted</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">3-буквенные коды из ISO 3166 могут использоваться вместо полного названия страны<!-- ISO 3166 3 letter codes can be used in place of a full country name. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">ISO 3166 3 letter codes can be used in place of a full country name.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">AD.part[parttype = CNT]</Data><NamedCell
@@ -1323,11 +1323,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени, в течение которого адрес был/находится в использовании<!-- Time period when address was/is in use --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Time period when address was/is in use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени, в течение которого адрес был/находится в использовании<!-- Time period when address was/is in use --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Time period when address was/is in use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет размещать адреса в историческом контексте<!-- Allows addresses to be placed in historical context --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows addresses to be placed in historical context</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
