@@ -971,11 +971,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Отношение двух значений величины - числитель и знаменатель<!-- A ratio of two Quantity values - a numerator and a denominator --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">A ratio of two Quantity values - a numerator and a denominator</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Взаимосвязь двух значений величины, выраженная в виде числителя и знаменателя.<!-- A relationship of two Quantity values - expressed as a numerator and a denominator. --> </Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A relationship of two Quantity values - expressed as a numerator and a denominator. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Нужна возможность записывать пропорции для некоторых измерений (титры) и некоторых показателей (стоимость)<!-- Need to able to capture ratios for some measurements (titers) and some rates (costs) --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to able to capture ratios for some measurements (titers) and some rates (costs)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1004,9 +1004,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение числителя<!-- Numerator value --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Numerator value</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение числителя<!-- The value of the numerator --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The value of the numerator</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1035,9 +1035,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение знаменателя<!-- Denominator value --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Denominator value</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение знаменателя<!-- The value of the denominator --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The value of the denominator</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3697,7 +3697,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Ratio</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Числитель и знаменатель ДОЛЖНЫ быть либо оба присутствовать, либо оба отсутствовать. Если они оба отсутствуют, значит элемент Ratio ДОЛЖЕН содержать расширение<!-- numerator and denominator SHALL both be present, or both be absent. If both are absent, there SHALL be some extension present --></Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">numerator and denominator SHALL both be present, or both be absent. If both are absent, there SHALL be some extension present</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">(count(f:numerator) = count(f:denominator)) and ((count(f:numerator) &gt; 0) or (count(f:extension) &gt; 0))</Data><NamedCell
