@@ -6,7 +6,7 @@ These elements SHALL always appear in this order. These basic elements shared by
 in order to support consistent definitions for schema and UML derived code. 
 -->
       
-[%settitle XML Format%]
+[%settitle Формат XML%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -19,10 +19,10 @@ in order to support consistent definitions for schema and UML derived code.
 <%fmtheader xml%>
 
 <a name="root"> </a>
-<h2>XML Representation of Resources</h2>
+<h2>XML-представление ресурсов</h2>
 
 <p>
-The XML representation for a resource is described using this format: 
+XML-представление для ресурса описано с помощью следующего формата: 
 </p>
 <pre class="spec">
  &lt;<b>name</b> xmlns="http://hl7.org/fhir" (attrA="value")&gt;   <span style="float: right"><a title="Documentation for this format" href="xml.html"><img src="help.png" alt="doco"/></a></span>
@@ -34,67 +34,51 @@ The XML representation for a resource is described using this format:
  &lt;name&gt;
 </pre>
 <p>
-Using this format:
+Этот формат используется для:
 </p>
 <ul>
- <li>To build a valid XML instance of a resource, simply replace the contents of the elements and attributes with valid content 
-   as described by the cardinality, type rules and content description found in the comment in each element</li>
- <li>Resource and Element names are case-sensitive (though duplicates that differ only in case are never defined)</li>
- <li>Elements must always appear in the order documented</li>
- <li>When an element is allowed to repeat, the elements are ordered, and implementations must preserve order (note: the meaning of the order may not be known)</li>
- <li>A few properties are represented as attributes: primitive values in the "value" attribute, extension URLs in the "url" attribute on an extension, and the "id" property</li>
- <li>Any of the XML elements may have an id attribute to serve as <a href="references.html#id">the target of an internal reference</a>. The id attribute is not shown in this format</li>
- <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  This is usually specified as the default namespace on the root element. 
-   The only other namespace that occurs in FHIR resources is the XHTML namespace (<a href="narrative.html">XHTML is found in most resources)</a></li>
- <li>Infrastructural elements that are common to all resources are not shown in the xml representation. These must appear prior to any other defined child elements in the following order:
+ <li>Для создания допустимого XML-экземпляра ресурса просто замените содержимое элементов и атрибутов допустимыми значениями в соответствии с кардинальным множеством, типовыми правилами и комментариями к каждому элементу</li>
+ <li>Имена ресурсов и элементов являются регистрозависимыми (тем не менее дубликаты, различающиеся только регистром, никогда не вводились)</li>
+ <li>Элементы должны всегда появляться в том порядке, в котором они описаны</li>
+ <li>Некоторые свойства представлены в виде атрибутов: примитивные значения в атрибуте "value", URL-адреса расширений в атрибуте "url" в расширениях, и свойство "id"</li>
+ <li>Любой из XML-элементов может иметь атрибут "id", служащий в качестве <a href="references.html#id">цели внутренней ссылки</a>. Атрибут "id" не показывается в этом формате</li>
+ <li>FHIR-элементы всегда принадлежат пространству имен <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>. Обычно оно указывается в корневом элементе в качестве пространства имен по умолчанию.
+В FHIR-ресурсах может встретиться ещё только одно пространство имен - XHTML (<a href="narrative.html">XHTML встречается в большинстве ресурсов)</a></li>
+ <li>Инфраструктурные элементы, являющиеся общими для всех ресурсов, не приводятся в этом xml-представлении. Они должны появляться до любых других заданных элементов-потомков в следующем порядке:
 	<ul>
-		<li>First, the elements from the <a href="resource.html">base resource</a>, in order</li>
-		<li>Second, the elements from the <a href="domainresource.html">domain resource</a>, in order</li>
+		<li>Сначала элементы из <a href="resource.html">базового ресурса (base)</a> в заданном порядке</li>
+		<li>Потом элементы из <a href="domainresource.html">ресурса domain </a> в заданном порядке</li>
 	</ul>
  </li>
- <li>FHIR elements are never empty. If an element is present in the resource, it SHALL have either a value attribute, child elements as defined for its type, or 1 or more <a href="extensibility.html">extensions</a></li>
- <li>Attributes can never be empty. Either they are absent, or they are present with at least one character of non-whitespace content</li>
- <li>The lock icon (<img alt="??" src="lock.png"/>) denotes that an element defines or is affected by <a href="conformance-rules.html#invariants">additional rules</a> that control its presence and/or content</li>
- <li>XML comments, processing instructions and formatting are not part of the contents of a resource</li>
- <li>XML resources SHALL be exchanged using UTF-8 encoding. Specifying the character encoding using a &lt;?xml encoding="UTF-8" ?&gt; processing instruction is optional but recommended</li>
- <li>Other processing instructions SHOULD not be included, and SHALL NOT be required in order to properly understand and/or present the data or narrative of the resource. 
-  Applications MAY preserve processing instructions when handling resources, but are not required to do so</li>
- <li>The MIME-type for this format is application/xml+fhir.</li>
+ <li>FHIR-элементы не бывают пустыми. Если элемент присутствует в ресурсе, он ОБЯЗАН иметь либо атрибут value, либо элементы-потомки, определенные для его типа, либо 1 или больше <a href="extensibility.html">расширений</a></li>
+ <li>Атрибуты не могут быть пустыми. Либо они отсутствуют, либо присутствуют с по крайней мере одним символом не пробельного содержимого</li>
+ <li>Иконка замочка (<img alt="??" src="lock.png"/>) означает, что элемент вводит или зависит от  <a href="conformance-rules.html#invariants">дополнительных правил</a>, которые регулируют его пристутсвие и/или содержимое</li>
+ <li>XML-комментарии, команды обработки и форматирования не являются частью содержимого ресурса</li>
+ <li>XML-ресурсы должны обмениваться в кодировке UTF-8. Указание схемы кодирования символов с помощью команды обработки &lt;?xml encoding="UTF-8" ?&gt; не обязательно, но рекомендуется</li>
+ <li>Другие команды обработки НЕ ДОЛЖНЫ быть включены и НЕ ДОЛЖНЫ требоваться в целях правильного понимания и/или представления данных ресурса или его описательной части. Приложения МОГУТ сохранять их во время оперирования ресурсами, но это не является обязательным</li>
+ <li>MIME-тип для этого формата - application/xml+fhir</li>
 </ul>
 
 <a name="schema"> </a>
-<h3>XML Schema and Schematron</h3>
+<h3>XML Schema и Schematron</h3>
 <p>
-This specification provides schema definitions for all of the content models it describes. 
+Спецификация предоставляет XML-схемы для всех моделей содержимого, которые она описывает.
 </p>
 <p>
-The base schema is called "<a href="fhir-base.xsd">fhir-base.xsd</a>" and defines all of the 
-datatypes and base infrastructure types. In addition, there 
-is a schema for each resource and a common schema <a href="fhir-all.xsd">fhir-all.xsd</a> 
-that includes all the resource schemas. For schema processors that do not like circular
-includes, there is <a href="fhir-single.xsd">a single schema</a> that contains everything.
+Базовая XML-схема называется "<a href="fhir-base.xsd">fhir-base.xsd</a>" и определеяет все типы данных и базовые инфраструктурные типы. Кроме того, имеется схема для каждого ресурса и общая схема <a href="fhir-all.xsd">fhir-all.xsd</a>, которая включает в себя схемы всех ресурсов. Для процессоров схемы, которые не поддерживают циклические включения, имеется <a href="fhir-single.xsd">единая схема</a>, которая содержит всё.
 </p>
 <p>
-In addition to the w3c schema files, this specification also provides Schematron files that
-enforce the various constraints defined for the datatypes and resources.  These are packaged
-as files for each resource.
+В дополнение к файлам w3c-схемы, данная спецификация также приводит Schematron-файлы, которые вводят в действие различные ограничения, определенные для типов данных и ресурсов. Они укомплектованы в файлы для каждого ресурса.
 </p>
 <p>
-XML that is exchanged SHALL be valid against the w3c schema and Schematron, though being 
-valid against the schema and Schematron is not sufficient to be a conformant instance: 
-this specification makes several rules that cannot be checked by either mechanism. 
-Operational systems may choose to use schema tools to check validation, but are not 
-required to do so. Exchanged content SHALL NOT specify the schema or even contain the schema 
-instance namespace in the resource itself. 
+Обмениваемый XML ДОЛЖЕН быть проверен на соответствие w3c-схеме и Schematron, хотя соответствие схеме и Schematron не является достаточным условием, чтобы являться совместимым экземпляром: данная спецификация вводит несколько правил, которые не могут быть проверены никакими механизмами.
+Операционные системы могут использовать инструменты схемы для проверки валидации, но не обязаны это делать.
+Обмениваемое содержимое не должно задавать схему или даже просто содержать пространство имен экземпляра схемы в самом ресурсе. 
 </p>
 
-<h3>Digital Signatures</h3>
+<h3>Цифровые подписи</h3>
 <a name="digsig"> </a>
-<p>Resources and/or Bundles may be digitally signed (ref to be provided). One consequence of 
-signing the document is that URLs, identifiers and internal references are frozen and cannot be changed.
-This might be a desired feature, but it may also cripple interoperability between closed ecosystems where
-<a href="managing.html">re-identification</a> frequently occurs. For this reason, it is recommended 
-that only Document Bundles are signed and then only when all the related resources are found in the bundle.</p>
+<p>Ресурсы и/или комплекты (Bundles) могут быть подписаны цифровой подписью (ссылка будет предоставлена). Одним из последствий подписания документа является то, что URL-адреса, идентификаторы и внутренние ссылки замораживаются и не могут быть изменены. Это может быть желаемым свойством, но может также лишить способности к взаимодействию закрытые экосистемы, где часто происходит <a href="use.html#identity">повторное определение (re-identification)</a>. По этой причине рекомендуется подписывать только Комплекты документов (Document Bundles) и только после того, как все связанные ресурсы находятся в комплекте.</p>
 
 <p>
 todo: canonical XML

@@ -12,14 +12,11 @@
 <div class="col-9">
 
 <%resheader%>
-<h1>Resource <%title%> - Content</h1>
+<h1>Ресурс <%title%> - Назначение</h1>
 <%draft-note%>
 
-<table class="cols">
- <tr><td><%wg%></td><td><%fmm%></td><td><%complinks%></td></tr>
-</table>
 
-
+<%wg%>
 
 <p> 
 <%definition%> 
@@ -31,7 +28,7 @@
 
 <a name="resource"></a>
 <h2>
-Resource Content
+Содержимое ресурса
 </h2>
 <a name="def"> </a>
 <a name="<%name%>"> </a>
@@ -39,16 +36,16 @@ Resource Content
 
 <div id="tabs">
   <ul>
-    <li><a href="#tabs-struc">Structure</a></li>
+    <li><a href="#tabs-struc">Структура</a></li>
     <li><a href="#tabs-uml">UML</a></li>
     <li><a href="#tabs-xml">XML</a></li>
     <li><a href="#tabs-json">JSON</a></li>
-    <li><a href="#tabs-all">All</a></li>
+    <li><a href="#tabs-all">Все</a></li>
   </ul>
   <div id="tabs-struc">
 
 <div id="tbl">
-<p><b>Structure</b></p>
+<p><b>Структура</b></p>
  <div id="tbl-inner">
   <%resource-table%>
  </div>
@@ -58,9 +55,9 @@ Resource Content
   <div id="tabs-uml">
   
 <div id="uml">
-<p><b>UML Diagram</b></p>
+<p><b>UML-диаграмма</b></p>
  <div id="uml-inner">
- <%svg A%>
+ <%svg%>
  </div>
 </div>
 
@@ -68,7 +65,7 @@ Resource Content
   <div id="tabs-xml">
 
 <div id="xml">
-<p><b>XML Template</b></p>
+<p><b>XML-шаблон</b></p>
  <div id="xml-inner">
   <%xml%>
  </div>
@@ -78,7 +75,7 @@ Resource Content
   <div id="tabs-json">
 
 <div id="json">
-<p><b>JSON Template</b></p>
+<p><b>JSON-шаблон</b></p>
  <div id="json-inner">
   <%json%>
  </div>
@@ -89,7 +86,7 @@ Resource Content
 
 <div id="tbl">
 <a name="tbl"> </a>
-<p><b>Structure</b></p>
+<p><b>Структура</b></p>
  <div id="tbl-inner">
   <%resource-table%>
  </div>
@@ -98,15 +95,15 @@ Resource Content
  
 <div id="uml">
 <a name="uml"> </a>
-<p><b>UML Diagram</b></p>
+<p><b>UML-диаграмма</b></p>
  <div id="uml-inner">
- <%svg B%>
+ <%svg%>
  </div>
 </div>
 
 <div id="xml">
 <a name="xml"> </a>
-<p><b>XML Template</b></p>
+<p><b>XML-шаблон</b></p>
  <div id="xml-inner">
   <%xml%>
  </div>
@@ -114,7 +111,7 @@ Resource Content
 
 <div id="json">
 <a name="json"> </a>
-<p><b>JSON Template</b></p>
+<p><b>JSON-шаблон</b></p>
  <div id="json-inner">
   <%json%>
  </div>
@@ -124,8 +121,8 @@ Resource Content
 </div>
   
 <p>&nbsp;</p>  
-<p>Alternate definitions: <a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a>, 
-Resource Profile (<a href="<%name%>.profile.xml.html">XML</a>, <a href="<%name%>.profile.json.html">JSON</a>)<!--, 
+<p>Альтернативные определения: <a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a>, 
+Профиль ресурса (<a href="<%name%>.profile.xml.html">XML</a>, <a href="<%name%>.profile.json.html">JSON</a>)<!--, 
 <a href="<%name%>.questionnaire.html">Questionnaire</a>--></p>
 
 

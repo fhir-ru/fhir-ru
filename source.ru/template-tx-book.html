@@ -2,7 +2,7 @@
 
 
       
-[%settitle Codes defined in {txurl}%]
+[%settitle Коды, определенные в {txurl}%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,7 +13,7 @@
 <div class="col-9">
 
 <%pageheader%>
-<h1>Codes defined in <%txurl%></h1>
+<h1>Коды, определенные в <%txurl%></h1>
 
 <p>
 <%txdef%>
@@ -21,7 +21,7 @@
 
 
 <p>
-Formal value Set definition (identifier <b><%vstxurl%></b>):  <a href="<%txname%>.xml.html">XML</a> or <a href="<%txname%>.json.html">JSON</a>. 
+Формализованное определение набора значений (идентификатор <b><%vstxurl%></b>):  <a href="<%txname%>.xml.html">XML</a> или <a href="<%txname%>.json.html">JSON</a>. 
 </p>
 
 <p>
@@ -33,27 +33,26 @@ Formal value Set definition (identifier <b><%vstxurl%></b>):  <a href="<%txname%
 <%txusage%>
 
 <p>
-See <a href="terminologies-codes.html">the full registry of codes</a> defined as part of FHIR.
+См. <a href="terminologies-codes.html">полный перечень наборов значений</a>, определенных в рамках FHIR.
 </p>
 
 <p>
-The OID for the value set is <%vsoid%> <%txoid%> (OIDs are not used in FHIR, but may be used in v3, or OID based terminology systems).<br/>
+OID этого набора значений – <%vsoid%> <%txoid%> (OID не используются в FHIR, но могут использоваться в v3 или в терминологических системах на основе OID).<br/>
 </p>
 
 <hr/>
 
 <p>
-Explanation of the columns that may appear on this page:
+Пояснение к столбцам, которые могут появиться на этой странице:
 </p>
 <table class="grid">
- <tr><td>Id</td><td>The internal identifier for the concept (when the value set defines its own codes)</td></tr>
- <tr><td>Level</td><td>A few code lists that FHIR defines are hierarchical - each code is assigned a level. 
- In this scheme, some codes are under other codes, and imply that the code they are under also applies</td></tr> 
- <tr><td>Source</td><td>The source of the definition of the code (when the value set draws in codes defined elsewhere)</td></tr>
- <tr><td>Code</td><td>The code (used as the code in the resource instance)</td></tr>
- <tr><td>Display</td><td>The display (used in the <i>display</i> element of a <a href="datatypes.html#Coding">Coding</a>). If there is no display, implementers should not simply display the code, but map the concept into their application</td></tr>
- <tr><td>Definition</td><td>An explanation of the meaning of the concept</td></tr>
- <tr><td>Comments</td><td>Additional notes about how to use the code</td></tr>
+ <tr><td>Id</td><td>Внутренний идентификатор концепта (когда набор значений определяет свои собственные коды).</td></tr>
+ <tr><td>Level</td><td>Некоторые перечни кодов, определенные FHIR, являются иерархическими: каждому коду назначен уровень. По этой схеме некоторые коды находятся под другими кодами и подразумевается, что код, под которым они лежат, также применим.</td></tr> 
+ <tr><td>Source</td><td>Источник определения кода (когда набор значений состоит из кодов, определенных где-то в другом месте).</td></tr>
+ <tr><td>Code</td><td>Код (используемый в качестве кода в экземпляре ресурса).</td></tr>
+ <tr><td>Display</td><td>Значение для вывода на экран (используемое в элементе <i>display</i> в <a href="datatypes.html#Coding">Coding</a>). Если значение для вывода на экран не указано, реализаторам следует показывать на экране не только код, а отобразить соответствующий концепт в свое приложение.</td></tr>
+ <tr><td>Definition</td><td>Объяснение смыслового значения концепта.</td></tr>
+ <tr><td>Comments</td><td>Дополнительные указания к использованию кода.</td></tr>
 </table>
 
 </div>
