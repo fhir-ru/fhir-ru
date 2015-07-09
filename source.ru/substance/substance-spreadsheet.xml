@@ -1068,12 +1068,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Что это за вид вещества<!-- What kind of substance this is --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">What kind of substance this is</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код (или набор кодов), определяющий это вещество<!-- A code (or set of codes) that identify this substance --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A code (or set of codes) that identify this substance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это может быть ссылка на внешне определенный код (например формуляр), с необязательным указанием перевода на стандартные лекарственные коды<!-- This could be a reference to an externally defined code.  It could also be a locally assigned code (e.g. a formulary),  optionally with translations to the standard drug codes --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">This could be a reference to an externally defined code.  It could also be a locally assigned code (e.g. a formulary),  optionally with translations to the standard drug codes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.code</Data><NamedCell
@@ -1105,9 +1105,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Текстовое описание вещества, комментарии<!-- Textual description of the substance, comments --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Textual description of the substance, comments</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Описание вещества - внешний вид, требования по обращению с ним и другие полезные примечания к использованию<!-- A description of the substance - its appearance, handling requirements, and other usage notes --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A description of the substance - its appearance, handling requirements, and other usage notes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1138,12 +1138,12 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если этот элемент не указан, значит ресурс Substance описывает вид вещества<!-- If this element is not present, then the substance resource describes a kind of substance --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If this element is not present, then the substance resource describes a kind of substance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если это описание определенной упаковки/контейнера вещества<!-- If this describes a specific package/container of the substance --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If this describes a specific package/container of the substance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Ресурс Substance можно использовать для описания вида вещества или конкретной упаковки/контейнера вещества: экземпляр<!-- Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1178,9 +1178,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор упаковки/контейнера<!-- Identifier of the package/container --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier of the package/container</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор, ассоциированный с этой упаковкой/контейнером (обычно метка, добавленная непосредственно на него)<!-- Identifier associated with the package/container (usually a label affixed directly) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifier associated with the package/container (usually a label affixed directly)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1213,9 +1213,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда больше не предназначен для использования<!-- When no longer valid to use --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">When no longer valid to use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата истечения срока годности вещества. Для указания срока годности некоторых веществ используется одна произвольная дата.<!-- When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1248,9 +1248,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество вещества в упаковке<!-- Amount of substance in the package --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Amount of substance in the package</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Количество вещества<!-- The amount of the substance --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The amount of the substance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1282,9 +1282,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о составе вещества<!-- Composition information about the substance --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Composition information about the substance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Вещество может состоять из других веществ<!-- A substance can be composed of other substances --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A substance can be composed of other substances</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1318,9 +1318,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Необязательное указание количества (концентрации)<!-- Optional amount (concentration) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Optional amount (concentration)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Количество ингредиента в веществе - коэффициент концентрации<!-- The amount of the ingredient in the substance - a concentration ratio --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The amount of the ingredient in the substance - a concentration ratio</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1353,9 +1353,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Компонент вещества<!-- A component of the substance --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A component of the substance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Другое вещество, являющееся компонентом данного вещества<!-- Another substance that is a component of this substance --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Another substance that is a component of this substance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1390,7 +1390,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Absolute | Relative</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает, являются ли значения количества вещества (используемые для ингредиентов) абсолютными или указаны относительно друг друга (проценты)<!-- Indicates whether the substance quantity (used for ingredients) are absolute values or values relative to each other (percentages) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates whether the substance quantity (used for ingredients) are absolute values or values relative to each other (percentages)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4638,7 +4638,7 @@
     <Cell ss:StyleID="s79"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">Substance.type</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Тип вещества<!-- The type of the substance --></Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">The type of the substance</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">container-identifier</Data></Cell>
@@ -6908,7 +6908,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SubstanceType</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Тип вещества<!-- Type of the substance --></Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Type of the substance</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">valueset-substance-type</Data></Cell>
