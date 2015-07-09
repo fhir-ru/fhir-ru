@@ -952,14 +952,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Концепт - ссылка на справочник или просто текст<!-- Concept - reference to a terminology or just  text --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Concept - reference to a terminology or just  text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Концепт, который может быть определен с помощью формальной ссылки на справочник или онтологию, либо может быть предоставлен в виде текста<!-- A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Это общая закономерность в здравоохранении - понятие, которое может быть определено одним или несколькими кодами из формальных определений, включая LOINC и SNOMED CT, и/или определено путем предоставления текста, который передает человеческое понимание этого понятия<!-- 
-This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Не всякое использование справочников соответствует этой общей схеме. В некоторых случаях модели не должны использовать CodeableConcept, а использовать непосредственно Кодинг и приводить свою собственную структуру для управления текстом, кодингами, переводами и отношениями между элементами, а также пред- и посткоординации<!-- Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">CD</Data><NamedCell
@@ -989,14 +988,13 @@ This is a common pattern in healthcare - a concept that may be defined by one or
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Код, задаваемый терминологической системой<!-- Code defined by a terminology system --> </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Code defined by a terminology system </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на код, определенный терминологической системой<!-- A reference to a code defined by a terminology system  --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to a code defined by a terminology system </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Дает возможность переводов и альтернативных кодировок в рамках кодовой системы. Также поддерживает связь одного экземпляра с системами, требующими различных кодировок.<!-- Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды могут быть определены в случайном порядке в перечислениях и списках кодов, вплоть до очень формальных определений, таких как SNOMED CT - см V3 Основные принципы для получения дополнительной информации. Порядок кодингов не определен и НЕ ДОЛЖЕН влиять на смысл. Как правило только одно из значений кодинга будет помечено как UserSelected = true <!-- 
-Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the V3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labelled as UserSelected = true --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the V3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labelled as UserSelected = true</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">union(., ./translation)</Data><NamedCell
@@ -1026,14 +1024,13 @@ Codes may be defined very casually in enumerations, or code lists, up to very fo
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Текстовое представление концепта<!-- Plain text representation of the concept --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Plain text representation of the concept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Представление концепта на естественном языке, как видится/выбирается/произносится пользователем, который ввел данные, и/или которое представляет собой подразумеваемый пользователем смысл<!-- A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Коды из справочников не всегда несут в себе правильный смысл со всеми нюансами использования человеком, а иногда вообще нет соответствующего кода. В этих случаях используется текст для полной передачи смысла источника<!-- The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Очень часто текст совпадает с displayName одного из кодингов<!-- 
-Very often the text is the same as a displayName of one of the codings --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Very often the text is the same as a displayName of one of the codings</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./originalText[mediaType/code=&quot;text/plain&quot;]/data</Data><NamedCell
