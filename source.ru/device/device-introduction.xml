@@ -1,21 +1,8 @@
-<html>
-  <head>
-    <meta name="generator"
-    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
-    <title></title>
-  </head>
-  <body>
-    <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemalocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
-      <div>
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
         <h2>Область применения и использование</h2>
-        <p>Данный ресурс используется главным образом для записи того,
-        какое устройство выполнило действие, а также может использоваться
-        для отслеживания местоположения устройства. Также используется
-        для предписания и выдачи медицинских изделий в пользование
-        пациенту. Если изделие имплантировано пациенту, тогда будет
-        присутствовать элемент &quot;patient&quot; и не будет указан элемент
-        &quot;location&quot;. 
+        <p>Данный ресурс используется главным образом для записи того, какое устройство выполнило действие, а также может использоваться для отслеживания местоположения устройства. Также используется для предписания и выдачи медицинских изделий в пользование пациенту. Если изделие имплантировано пациенту, тогда будет присутствовать элемент &quot;patient&quot; и не будет указан элемент &quot;location&quot;. 
         <!-- This resource is primarily used for recording which device performed an action and can also be used to track device location. It is also used for prescribing and dispensing devices for patient use. 
 If the device is implanted in a patient, then the patient element will be present, and there would be no location.  --></p>
         <p>Список ресурсов, связанных с ресурсом Device 
@@ -61,5 +48,3 @@ statement to create a device observation, which is suitable for wider use within
 The <a href="medication.html">Medication resource</a> SHOULD not be used to represent implanted devices. --></p>
       </div>
     </div>
-  </body>
-</html>
