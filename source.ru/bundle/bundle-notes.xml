@@ -107,7 +107,7 @@ and that may be returned by following the "next" <a href="bundle-definitions.htm
 <h4>Тип Transaction<!-- Transaction --></h4>
 
 <p>
-Транзакция (type = "transaction") состоит из серии 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать либо элемент transaction, либо элемент resource (либо оба). Дополнительную информацию можно посмотреть в разделе <a href="http.html#transaction">Transactions</a. Каждая запись (entry) в транзакции содержит детали HTTP-операции, сообщающие системе, обрабатывающей эту транзакцию, что делать с этой записью. Если в записи указан метод 'PUT' или 'POST', тогда entry ДОЛЖНА содержать ресурс, который будет телом HTTP-операции.
+Транзакция (type = "transaction") состоит из серии 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать либо элемент transaction, либо элемент resource (либо оба). Дополнительную информацию можно посмотреть в разделе <a href="http.html#transaction">Transactions</a>Каждая запись (entry) в транзакции содержит детали HTTP-операции, сообщающие системе, обрабатывающей эту транзакцию, что делать с этой записью. Если в записи указан метод 'PUT' или 'POST', тогда entry ДОЛЖНА содержать ресурс, который будет телом HTTP-операции.
 <!-- A transaction (type = "transaction") consists of a series of 0 or more entries. Each entry element 
 SHALL contain either a transaction element, or a resource element (or both). See <a href="http.html#transaction">Transactions</a> 
 for further information. Each entry in a transaction has the details of an HTTP operation that informs the system 
