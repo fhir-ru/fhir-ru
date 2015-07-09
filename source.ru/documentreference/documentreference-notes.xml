@@ -23,7 +23,7 @@ document. -->
 </p>
 <ul>
  <li><a href="http://www.astm.org/Standards/E2369.htm">ASTM CCR</a>: urn:astm-org:CCR</li>
- <li>CCDA: urn:hl7-org:sdwg:ccda-level-1:1.1, urn:hl7-org:sdwg:ccda-level-2:1.1 и urn:hl7-org:sdwg:ccda-level-3:1.1</li>
+ <li>CCDA: urn:hl7-org:sdwg:ccda-level-1:1.1, urn:hl7-org:sdwg:ccda-level-2:1.1 and urn:hl7-org:sdwg:ccda-level-3:1.1</li>
  <li>IHE задает URIs <a href="http://wiki.ihe.net/index.php?title=IHE_Format_Codes">здесь</a> и 
    OIDs <a href="http://wiki.ihe.net/index.php?title=PCC_Vocabulary_Registry_and_Data_Dictionary">здесь</a> (используйте приставку к OIDs urn:oid: в ресурсе).</li> 
 <!--  <li><a href="http://www.astm.org/Standards/E2369.htm">ASTM CCR</a>: urn:astm-org:CCR</li>
@@ -49,11 +49,11 @@ return or generate document references for the following types of content: -->
 <table class="grid">
   <tr> <td><b>Тип</b></td> <td><b>Комментарии</b></td> </tr>
   <tr> <td><a href="documents.html">FHIR-документы</a></td> <td>URI ведет на существующий Document</td> </tr>
-  <tr> <td>CDA-документ</td> <td>URI - это ссылка на точку взаимодействия ресурса <a href="extras.html#Binary">Binary</a>, которая возвращает либо CDA-документ, либо какой-то вид  CDA Package, который сервер знает как обрабатывать (например IHE .zip)</td> </tr>
+  <tr> <td>CDA-документ</td> <td>URI - это ссылка на точку взаимодействия ресурса <a href="compartments.html#Binary">Binary</a>, которая возвращает либо CDA-документ, либо какой-то вид  CDA Package, который сервер знает как обрабатывать (например IHE .zip)</td> </tr>
   <tr> <td>Другое</td> <td>Сервер могут запросить сгенерировать DocumentReference для других видов документов. Для некоторых из этих документов (например PDF-документов) сервер может предложить только уже существующий DocumentReference, либо сервер имеет особые сведения об этом документе</td> </tr>
 <!--   <tr> <td><b>Type</b></td> <td><b>Comments</b></td> </tr>
   <tr> <td><a href="documents.html">FHIR Documents</a></td> <td>The uri refers to an existing Document</td> </tr>
-  <tr> <td>CDA Document</td> <td>The uri is a reference to a <a href="extras.html#Binary">Binary</a> end-point that returns either a CDA 
+  <tr> <td>CDA Document</td> <td>The uri is a reference to a <a href="compartments.html#Binary">Binary</a> end-point that returns either a CDA 
     document, or some kind of CDA Package that the server knows how to process (e.g. an IHE .zip) </td> </tr>
   <tr> <td>Other</td> <td>The server can be asked to generate a document reference for other kinds of 
     documents. For some of these documents (e.g. PDF documents) a server could only provide a 
