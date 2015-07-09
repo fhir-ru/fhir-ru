@@ -1,56 +1,37 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-        <h2>Область применения и использование</h2>
-        <p>Данный ресурс используется главным образом для записи того,
-        какое устройство выполнило действие, а также может использоваться
-        для отслеживания местоположения устройства. Также используется
-        для предписания и выдачи медицинских изделий в пользование
-        пациенту. Если изделие имплантировано пациенту, тогда будет
-        присутствовать элемент &quot;patient&quot; и не будет указан элемент
-        &quot;location&quot;. 
-        <!-- This resource is primarily used for recording which device performed an action and can also be used to track device location. It is also used for prescribing and dispensing devices for patient use. 
-If the device is implanted in a patient, then the patient element will be present, and there would be no location.  --></p>
-        <p>Список ресурсов, связанных с ресурсом Device 
-        <!-- These are the device related resources --></p>
-        <ul>
-          <li>Device (данный ресурс) - административный ресурс, которые
-          отслеживает отдельные изделия всех видов и их расположение. В
-          основном используется для соотнесения действий с изделиями</li>
-          <li>
-          <a href="devicemetric.html">DeviceMetric</a> - описывает измерение, вычисление или
-          возможную настройку медицинского изделия</li>
-          <li>
-          <a href="devicecomponent.html">DeviceComponent</a>, частью которого является DeviceMetric. Это
-          может быть DeviceComponent любого вида, например VirtualMedicalDevice, MedicalDeviceSystem
-          или Channel</li>
-          <!--  <li>Device (this resource) - an administrative resource that tracks individual devices and their location. Primarily used for attribution of actions to devices</li>
+<h2>Scope and Usage</h2>
+<p>
+This resource is primarily used for recording which device performed an action and can also be used to track device location. It is also used for prescribing and dispensing devices for patient use. 
+If the device is implanted in a patient, then the patient element will be present, and there would be no location. 
+</p>
+<p>
+These are the device related resources
+</p>
+<ul>
+ <li>Device (this resource) - an administrative resource that tracks individual devices and their location. Primarily used for attribution of actions to devices</li>
  <li><a href="devicemetric.html">DeviceMetric</a> - Describes a measurement, calculation or setting  capability of a medical device.</li>
- <li><a href="devicecomponent.html">DeviceComponent</a> that the DeviceMetric is part of. This can be a DeviceComponent of any kind like a VirtualMedicalDevice, a MedicalDeviceSystem, or a Channel</li> -->
-        </ul>
-        <p>Возможности изделия и ресурсы для протоколирования используются
-        при коммуникации с изделием косвенно или напрямую. Когда канал к
-        изделию или к его прокси открыт, он сначала высылает ресурс Capabilities,
-        а замет ряд ресурсов для протоколирования. В этом случае
-        используется FHIR JSON-формат. 
-        <!-- The device capabilities and log resources are used when communicating with a device, either directly or indirectly. 
+ <li><a href="devicecomponent.html">DeviceComponent</a> that the DeviceMetric is part of. This can be a DeviceComponent of any kind like a VirtualMedicalDevice, a MedicalDeviceSystem, or a Channel</li>
+</ul>
+<p>
+The device capabilities and log resources are used when communicating with a device, either directly or indirectly. 
 When a channel is opened with the device, or its proxy, it first sends the Capabilities resource, and then a 
-series of log resources. The FHIR JSON format is used in this case.  --></p>
-        <p>Приложение, которое получает ресурсы протоколирования, может
-        выбрать слияние логов с сообщением о возможностях для создания
-        observation изделия, которое подходит для более широкого применения в
-        контексте EHR/истории болезни. 
-        <!-- The application that receives the log resources may choose to merge the log with the capabilities 
-statement to create a device observation, which is suitable for wider use within a EHR/Clinical record context. --></p>
-      </div>
-      <div>
-        <h2>Границы и связи</h2>
-        <p>Изделия, которые имплантируются пациенту, отличаются от
-        лекарственных средств, так как они не израсходуются - они остаются
-        действующими в пациенте продолжительное время. Поэтому для
-        имплантированных изделий НЕ СЛЕДУЕТ использовать ресурс 
-        <a href="medication.html">Medication</a>. 
-        <!-- Devices that are implanted in a patient differ from medications because they are not "used up" - they remain active in a patient in an ongoing fashion.
-The <a href="medication.html">Medication resource</a> SHOULD not be used to represent implanted devices. --></p>
-      </div>
-    </div>
+series of log resources. The FHIR JSON format is used in this case. 
+</p>
+<p>
+The application that receives the log resources may choose to merge the log with the capabilities 
+statement to create a device observation, which is suitable for wider use within a EHR/Clinical record context.
+</p>
+</div>
+
+<div>
+<h2>Boundaries and Relationships</h2>
+<p>
+Devices that are implanted in a patient differ from medications because they are not "used up" - they remain active in a patient in an ongoing fashion.
+The <a href="medication.html">Medication resource</a> SHOULD not be used to represent implanted devices.
+</p>
+
+</div>
+
+</div>

@@ -1011,7 +1011,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Экземпляр медицинского изделия, используемого в здравоохранении<!-- An instance of a manufactured thing that is used in the provision of healthcare --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">An instance of a manufactured thing that is used in the provision of healthcare</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">This resource identifies an instance of a manufactured thing that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.  Medical devices includes durable (reusable) medical equipment, implantable devices, as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health.  Non medical devices may includes things such as a machine, a cellphone, a computer, an application, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1046,12 +1046,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор экземпляра от производителя, владельца, или другой<!-- Instance id from manufacturer, owner, and others --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Instance id from manufacturer, owner, and others</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальные идентификаторы экземпляра, присвоенные изделию организацией-производителем или организацией-владельцем. Если идентификатор содержит тип устройства, для него следует использовать поле Device.type.<!-- Unique instance identifiers assigned to a device by organizations like manufacturers or owners .   If the identifier identifies the type of device, Device.type should be used. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Unique instance identifiers assigned to a device by organizations like manufacturers or owners .   If the identifier identifies the type of device, Device.type should be used.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Часто закрепляется за устройством в виде штрих-кода и может включать в себя названия, присвоенные устройству локально по месту использования. Обратите внимание, что некоторые штрих-коды, закрепленные на устройстве, идентифицируют его тип, а не сам экземпляр. Для FDA Mandated Unique Device Identifier (UDI) уникального идентификатора устройства используйте элемент Device.udi.<!-- Often fixed to the device as a barcode and may include names given to the device in local usage.  Note that some of the barcodes affixed to the device identify its type, not its instance.  For the FDA Mandated Unique Device Identifier (UDI) use  the Device.udi element. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Often fixed to the device as a barcode and may include names given to the device in local usage.  Note that some of the barcodes affixed to the device identify its type, not its instance.  For the FDA Mandated Unique Device Identifier (UDI) use  the Device.udi element.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.id</Data><NamedCell
@@ -1081,12 +1081,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип устройства<!-- What kind of device this is --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">What kind of device this is</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код или идентификатор типа устройства<!-- Code or identifier to identify a kind of device. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Code or identifier to identify a kind of device.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Для FDA Mandated Unique Device Identifier (UDI) уникального идентификатора устройства используйте элемент Device.udi.<!-- For the FDA Mandated Unique Device Identifier (UDI) use  the Device.udi element. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">For the FDA Mandated Unique Device Identifier (UDI) use  the Device.udi element.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
@@ -1153,7 +1153,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">available | not-available | entered-in-error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Состояние готовности устройства<!-- Status of the Device availability. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Status of the Device availability.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1183,9 +1183,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Название производителя устройства<!-- Name of device manufacturer --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of device manufacturer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Название производителя<!-- A name of the manufacturer --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A name of the manufacturer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1216,7 +1216,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор модели, присвоенный производителем<!-- Model id assigned by the manufacturer --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Model id assigned by the manufacturer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The &quot;model&quot; - an identifier assigned by the manufacturer to identify the product by its type. This number is shared by the all devices sold as the same type.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1248,9 +1248,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Номер версии (например программного обеспечения)<!-- Version number (i.e. software) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Version number (i.e. software)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Версия устройства, если у устройства было несколько выпусков для одной модели, либо если у этого устройства есть программное обеспечение или имеет прошивку<!-- The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The version of the device, if the device has multiple releases under the same model, or if the device is software or carries firmware.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1280,9 +1280,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата производства<!-- Manufacture date --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Manufacture date</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время, когда было произведено устройство<!-- The Date and time when the device was manufactured. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The Date and time when the device was manufactured.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1311,9 +1311,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата и время истечения срока действия этого устройства (если применимо)<!-- Date and time of expiry of this device (if applicable) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Date and time of expiry of this device (if applicable)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время, после которого это устройство становится не действительным или не должно больше использоваться (если применимо)<!-- The date and time beyond which this device is no longer valid or should not be used (if applicable) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The date and time beyond which this device is no longer valid or should not be used (if applicable)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1344,12 +1344,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Обязательный уникальный идентификатор устройства FDA<!-- FDA Mandated Unique Device Identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">FDA Mandated Unique Device Identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обязательный уникальный идентификатор устройства Управления по санитарному надзору за качеством пищевых продуктов и медикаментов США. Указывайте человекочитаемую информацию (текст, который видит пользователь и который не всегда точно совпадает с синтаксисом, представленным в штрих-коде) - см. http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm<!-- United States Food and Drug Administration mandated Unique Device Identifier (UDI). Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">United States Food and Drug Administration mandated Unique Device Identifier (UDI). Use the human readable information (the content that the user sees, which is sometimes different to the exact syntax represented in the barcode)  - see http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор может однозначно идентифицировать экземпляр устройства, либо он может идентифицировать только тип этого устройства. Часть значения UDI - идентификатор устройства - можно при необходимости извлечь из UDI и использовать для поиска информации об устройстве через GUDID.<!-- The unique identifier may identify an instance of a device uniquely, or it may just identify the type of the device. A portion of the UDI - the DI part - can be extracted from the UDI when required, and used to look up information about the device through the GUDID. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The unique identifier may identify an instance of a device uniquely, or it may just identify the type of the device. A portion of the UDI - the DI part - can be extracted from the UDI when required, and used to look up information about the device through the GUDID.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.id[where root is root for UDI]</Data><NamedCell
@@ -1377,9 +1377,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Номер партии выпуска<!-- Lot number of manufacture --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lot number of manufacture</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Номер партии, присвоенный изготовителем<!-- Lot number assigned by the manufacturer --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Lot number assigned by the manufacturer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Alphanumeric Maximum 20</Data><NamedCell
@@ -1410,9 +1410,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Серийный номер, присвоенный изготовителем<!-- Serial number assigned by the manufacturer --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Serial number assigned by the manufacturer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Серийный номер, присвоенный организацией, когда устройство было изготовлено<!-- The serial number assigned by the organization when the device was manufactured --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The serial number assigned by the organization when the device was manufactured</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Alphanumeric Maximum 20</Data><NamedCell
@@ -1443,9 +1443,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, ответственная за устройство<!-- Organization responsible for device --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Organization responsible for device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, которая несет ответственность за предоставление и текущее обслуживание устройства.<!-- An organization that is responsible for the provision and ongoing maintenance of the device. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An organization that is responsible for the provision and ongoing maintenance of the device.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1476,9 +1476,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Где находится этот ресурс<!-- Where the resource is found --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Where the resource is found</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурс может быть найден по его буквальному местоположению (т. е. по GPS координатам), логическому месту (т. е. в пациенте или у него с собой) или кодированному местоположению.<!-- The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. &quot;in/with the patient&quot;), or a coded location. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The resource may be found in a literal location (i.e. GPS coordinates), a logical place (i.e. &quot;in/with the patient&quot;), or a coded location.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1509,9 +1509,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Если ресурс прикреплен к человеку<!-- If the resource is affixed to a person --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">If the resource is affixed to a person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о пациенте, если ресурс прикреплен к человеку<!-- Patient information, if the resource is affixed to a person --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Patient information, if the resource is affixed to a person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1541,9 +1541,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробная информация о человеке/организации из службы поддержки<!-- Details for human/organization for support --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Details for human/organization for support</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация организации или конкретного человека, который отвечает за это устройство<!-- Contact details for an organization or a particular human that is responsible for the device --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Contact details for an organization or a particular human that is responsible for the device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">used for troubleshooting etc.</Data><NamedCell
@@ -1574,12 +1574,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Сетевой адрес устройства<!-- Network address to contact device --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Network address to contact device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Сетевой адрес, по которому с устройством можно непосредственно связаться<!-- A network address on which the device may be contacted directly --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A network address on which the device may be contacted directly</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если на устройстве запущен FHIR-сервер, сетевой адрес должен быть корневым URL-адресом, по которому можно запросить заявление о соответствии.<!-- If the device is running a FHIR server, the network address should  be the root URL from which a conformance statement may be retrieved. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If the device is running a FHIR server, the network address should  be the root URL from which a conformance statement may be retrieved.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.telecom</Data><NamedCell
@@ -4479,56 +4479,56 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">Device.type</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Тип устройства<!-- The type of the device --></Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">The type of the device</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">manufacturer</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Device.manufacturer</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Изготовитель устройства<!-- The manufacturer of the device --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The manufacturer of the device</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">model</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Device.model</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Модель устройства<!-- The model of the device --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The model of the device</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Device.owner</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Организация, ответственная за это устройство<!-- The organization responsible for the device --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The organization responsible for the device</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Device.identifier</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Идентификатор экземпляра от изготовителя, владельца, или другой<!-- Instance id from manufacturer, owner, and others --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Instance id from manufacturer, owner, and others</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">location</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Device.location</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Место, где находится ресурс<!-- A location, where the resource is found --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">A location, where the resource is found</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Device.patient</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Информация о пациенте, если ресурс являются принадлежностью человека<!-- Patient information, if the resource is affixed to a person --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Patient information, if the resource is affixed to a person</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">udi</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Device.udi</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Обязательный уникальный идентификатор устройства FDA<!-- FDA Mandated Unique Device Identifier --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">FDA Mandated Unique Device Identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>
@@ -6842,7 +6842,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s148"><Data ss:Type="String">DeviceKind</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Описывает характер устройства и тип функциональности/сервисов/поведения, которые от него могут ожидаться<!-- Defines the nature of the device and the kind of functionality/services/behavior that may be expected from it --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Defines the nature of the device and the kind of functionality/services/behavior that may be expected from it</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">https://www.gmdnagency.org/Info.aspx?pageid=1091</Data></Cell>
@@ -6857,7 +6857,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s151"><Data ss:Type="String">DeviceStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Состояние готовности устройства<!-- The availability status of the device --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The availability status of the device</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">#devicestatus</Data></Cell>
