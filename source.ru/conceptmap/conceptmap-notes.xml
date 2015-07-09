@@ -1,11 +1,10 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h2>Примечания<!-- Notes --></h2>
+<h2>Notes</h2>
 <ul>
- <li>Значения элементов <i>system</i> и <i>code</i> те же, что используются в типе данных <a href="datatypes.html#Coding">Coding</a><!-- The value of the <i>system</i> and <i>code</i> element are the same as used by the <a href="datatypes.html#Coding">Coding</a> data type --></li>
- <li>Когда показатель эквивалентности мэппинга характеризуется как "сужение", в комментариях ДОЛЖНО быть предоставлено какое-то объяснение разницы охвата<!-- When a mapping equivalence is characterized as "narrower", some explanation of the scope difference SHALL be provided in the comments --></li>
- <li>Карта соответствия концептов - это заявление о мэппинге в одном направлении. Существование совпадающего мэппинга в обратном направлении не может быть предположено автоматически, а только после проверки человеком
- <!-- The concept map is a statement of mapping in a single direction. The existence of a matching mapping in the reverse direction cannot be assumed to exist automatically, but only through human review --></li>
+ <li>The value of the <i>system</i> and <i>code</i> element are the same as used by the <a href="datatypes.html#Coding">Coding</a> data type</li>
+ <li>When a mapping equivalence is characterized as "narrower", some explanation of the scope difference SHALL be provided in the comments</li>
+ <li>The concept map is a statement of mapping in a single direction. The existence of a matching mapping in the reverse direction cannot be assumed to exist automatically, but only through human review</li>
 </ul>
 
 

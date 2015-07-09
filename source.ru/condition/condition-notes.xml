@@ -1,17 +1,15 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h3>Использование Condition.code<!-- Use of Condition.code --></h3>
+<h3>Use of Condition.code</h3>
 
 <p>
-Большинство кодовых систем, используемых для кодирования состояний, предоставляют коды, которые определяют не только само состояние, но могут также указывать определенную стадию, местоположение или причинную связь в рамках этого кода. В частности это касается SNOMED-CT при использовании его в качестве кода состояния, особенно если разрешены выражения.
-<!-- Many of the code systems used for coding conditions will provide codes that define not only the condition itself, but may 
+Many of the code systems used for coding conditions will provide codes that define not only the condition itself, but may 
 also specify a particular stage, location, or causality as part of the code. This is particularly true if 
-SNOMED-CT is used for the condition, and especially if expressions are allowed.  -->
+SNOMED-CT is used for the condition, and especially if expressions are allowed. 
 </p>
 <p>
-Когда Condition.code включает дополнительные свойства состояния (condition), другим свойствам не задаются значения - вместо этого их значения должны быть понятны из Condition.code.
-<!-- When the Condition.code specifies additional properties of the condition, the other properties are not given 
-a value - instead, the value must be understood from the Condition.code.  -->
+When the Condition.code specifies additional properties of the condition, the other properties are not given 
+a value - instead, the value must be understood from the Condition.code. 
 </p>
 
 </div>
