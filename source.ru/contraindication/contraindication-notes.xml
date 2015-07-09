@@ -1,21 +1,26 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <a name="linking"/>
-<h2>Linking to Contraindications</h2>
+<h2>Связывание с ресурсами Contraindication<!-- Linking to Contraindications --></h2>
 <p>
-Contraindication follows the pattern of linking from the resource created "second".  As Contraindication originates in response to one or more other existing records, it points to those records rather than being pointed to from them.
+Ресурс Contraindication следует шаблону связывания от ресурса, созданного "вторым". Поскольку Contraindication возникает в ответ на одну или несколько других существующих записей, то он указывает на эти записи, а не эти записи указывают на него.
+<!-- Contraindication follows the pattern of linking from the resource created "second".  As Contraindication originates in response to one or more other existing records, it points to those records rather than being pointed to from them. -->
 </p>
 <p>
-In some cases, a contraindication might be associated with a single record.  When this occurs, it may be stored as a contained resource within the implicated resource provided that there is no expected need to search for the contraindication directly.  However, with contraindications that implicate multiple records, containment is more problematic.  In some workflows, a contraindication might be deemed to be "owned" by the record whose creation triggers the contrindication being created - i.e. the "second" or "last" record.  However, where multiple actions are proposed as part of a single submission, there can be no single owner and containment will not be feasible.
+В некоторых случаях Contraindication может быть связано с отдельной записью. Когда это происходит, он может храниться как вложенный ресурс внутри вовлеченного ресурса при условии, что не ожидается необходимость поиска этого Contraindication непосредственно. Однако с Contraindication, которые вовлекают несколько записей, вложение становится проблематичным. В некоторых рабочих процессах Contraindication может считаться "собственностью" записи, создание которой вызвало появление этого Contraindication - т. е. "второй" или "последней" записи. Однако там, где несколько действий предлагаются в рамках одной отправки, может не быть отдельного владельца и вложение будет не выполнимо.
+<!-- In some cases, a contraindication might be associated with a single record.  When this occurs, it may be stored as a contained resource within the implicated resource provided that there is no expected need to search for the contraindication directly.  However, with contraindications that implicate multiple records, containment is more problematic.  In some workflows, a contraindication might be deemed to be "owned" by the record whose creation triggers the contrindication being created - i.e. the "second" or "last" record.  However, where multiple actions are proposed as part of a single submission, there can be no single owner and containment will not be feasible. -->
 </p>
 <p>
-If there is a strong need to point from an implicated resource to Contraindication and containment is not appropriate, an extension can be used.
+При сильной необходимости указать из вовлеченного ресурса на Contraindication, и вложение не подходит, можно использовать расширение.
+<!-- If there is a strong need to point from an implicated resource to Contraindication and containment is not appropriate, an extension can be used. -->
 </p>
 
-<h2>Open Issues</h2>
+<h2>Открытые вопросы<!-- Open Issues --></h2>
 <ul>
-  <li>Would this be better named something like <i>Issue</i> or <i>ClinicalIssue</i> or <i>Precaution</i> or something like that?</li>
-  <li>Are author, reference and/or mitigation (and its various parts) all part of the 80%?</li>
+  <li>Не будет ли лучше назвать это <i>Issue</i> или <i>ClinicalIssue</i>, или <i>Precaution</i>, или как-то наподобие этого?</li>
+  <li>Входят ли автор, ссылка и/или смягчение (и его различные части) в 80%?</li>
+<!--   <li>Would this be better named something like <i>Issue</i> or <i>ClinicalIssue</i> or <i>Precaution</i> or something like that?</li>
+  <li>Are author, reference and/or mitigation (and its various parts) all part of the 80%?</li> -->
 </ul>
 
 </div>
