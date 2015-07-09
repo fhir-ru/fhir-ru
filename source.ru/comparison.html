@@ -16,95 +16,57 @@
 [%cmpheader%]
 
 <a name="root"> </a>
-<h1>Приложение: Связь между FHIR и другими стандартами HL7</h1>
+<h1>Appendix: The Relationship between FHIR and other HL7 Standards</h1>
 
 <p>
-<a href="http://www.hl7.org">HL7 International</a> занимается разработкой стандартов обмена
-медицинской информации с 1987 года. За данный период организация выпустила несколько семейств стандартов, 
-многие из которых используются для автоматизации обмена медицинскими данными и повышения качества  
-медицинской помощи. Стандарт FHIR разработан с тем учетом, чтобы его реализация не требовала опыта
-внедрения других стандартов отрасли. Тем не менее, FHIR вобрал в себя многолетний опыт организации HL7, в нем реализованы
-передовые практики, исключающие ошибки ранних реализаций обмена медицинскими данными.
-<!-- has been developing healthcare 
+<a href="http://www.hl7.org">Health Level Seven (HL7)</a> has been developing healthcare 
 information exchange and related standards since 1987.  In that time, the organization has 
 produced a number of standards families - many  used throughout the world to automate healthcare 
 data sharing and improve patient care.  FHIR has been written to be implementable without 
 any knowledge of these other specifications.  However, FHIR does leverage this prior experience, 
 both in terms of applying best practices learned from experience and attempting to avoid 
-some of the pitfalls of earlier work. -->
+some of the pitfalls of earlier work.
 </p>
 <p>
-В данном приложении описывается связь между FHIR и некоторыми другими семействами стандартов от HL7.
-Информация может представлять интерес для всех, кто уже имел опыт работы со стандартами HL7,
-а также для тех, кто заинтересован в обеспечении интероперабельности между решениями и прктическими 
-реализациями других стандартов HL7.
-<!-- This appendix describes the relationship of FHIR to some of HL7's other standard families. 
+This appendix describes the relationship of FHIR to some of HL7's other standard families. 
 It may be of interest to those coming to FHIR with previous experience with other HL7 
 standards as well as those who may need to support interoperability between FHIR 
-solutions and implementations of other HL7 standards. -->
+solutions and implementations of other HL7 standards.
 </p>
 <p>
-В данном приложении:
+In this appendix:
 </p>
 <ul>
- <li><a href="comparison-v2.html">стандарты второй версии (Version 2.x)</a></li>
- <li><a href="comparison-v3.html">стандарты третьей версии и Эталонная информационная модель (V3 (RIM / messaging)</a></li>
- <li><a href="comparison-cda.html">CDA и Консолидированный CDA (CDA &amp; CCDA)</a></li>
- <li><a href="comparison-other.html">Другие стандарты HL7 (Other HL7 standards)</a></li> 
+ <li><a href="comparison-v2.html">Version 2.x</a></li>
+ <li><a href="comparison-v3.html">V3 (RIM / messaging)</a></li>
+ <li><a href="comparison-cda.html">CDA &amp; CCDA etc</a></li>
+ <li><a href="comparison-other.html">Other HL7 standards</a></li> 
 </ul>
 <p>
-<b>Замечания:</b>
+<b>Notes:</b>
 </p>
 <ul>
-  <li>В дополнение к описываемым ниже основным семействам стандартов, организация HL7 International
-  публикует большое количество руководств по реализации (некоторые из которых стали также известны,
-  как и сами стандарты). Обобщенное руководство (general guidance) для каждого семейства стандартов должно
-  быть основой для всех других руководств по реализации в рамках семейства. Например, руководство по реализации
-  стандарта <a href="comparison-cda.html">CDA</a> будет совместимо с производными - C-CDA (Консолидированный CDA), 
-  CCD (Документ о преемственности медицинской помощи) и другими профилями CDA.
-    <!-- In addition to the major standards families identified below, HL7 produces numerous 
+  <li>In addition to the major standards families identified below, HL7 produces numerous 
     implementation guides, some of which have earned as much prominence as a standard 
     family themselves.  The general guidance given below for each standard family should 
     hold for all implementation guides based on that standard.  For example, the guidance 
     listed for <a href="comparison-cda.html">CDA</a> would apply to Consolidated CDA (CCDA), Continuity 
-    of Care Document (CCD) and other CDA profiles. --></li>
-  <li>Хотя данное приложение в основном описывает взаимосвязи между FHIR и другими стандартами HL7, необходимо
-  знать ио связях с другими стандартами (не HL7). Некоторые ресурсы позволяют прямо реализовать функциональность,
-  заложенную в других стандартах, включая <a href="http://medical.nema.org">DICOM</a> (см. ресурс 
-  <a href="imagingstudy.html">ImagingStudy</a>) и <a href="http://www.ihe.net/">IHE</a> 
-  (например, <a href="securityevent.html">SecurityEvent</a> и ресурс <a href="documentreference.html">DocumentReference</a>  . </li>
-    <!-- While this appendix focuses on the relationship between FHIR and other HL7 standards, 
+    of Care Document (CCD) and other CDA profiles.</li>
+  <li>While this appendix focuses on the relationship between FHIR and other HL7 standards, 
   relationships also exist to non-HL7 standards.  Some resources provide direct implementation 
   of functionality from other standards including <a href="http://medical.nema.org">DICOM</a> 
   (see the <a href="imagingstudy.html">ImagingStudy</a> resource) and <a href="http://www.ihe.net/">IHE</a> 
-  (e.g. the <a href="auditevent.html">AuditEvent</a> and <a href="documentreference.html">DocumentReference</a> resources). </li> -->
-  
-  <li>Многие ресурсы FHIR наследуют требования или обеспечивают "привязки" к другим стандартам. Некоторые ресурсы также
-  снабжаются дополнительным руководствм по использованию сторонних спецификаций (в составе руководства по реализации).
-  Мы тажке создали <a href="http://wiki.hl7.org/index.php?title=FHIR_and_Other_Specifications">wiki-раздел</a> для 
-  фиксирования дополнительной практической информации об использовании FHIR с другими стандартами
-    <!-- Many FHIR resources draw requirements from or provide mappings to other standards. Some resources also 
+  (e.g. the <a href="auditevent.html">AuditEvent</a> and <a href="documentreference.html">DocumentReference</a> resources). </li>
+  <li>Many FHIR resources draw requirements from or provide mappings to other standards. Some resources also 
   provide additional guidance on how to use them with external specifications as part of their implementation notes.  
     As well, a wiki page to capture additional guidance on the use of FHIR with other specifications can be found 
-    <a href="http://wiki.hl7.org/index.php?title=FHIR_and_Other_Specifications">here</a> -->
-     
-     
-     
-     
-    </li>
-  <li>Стандарту FHIR под силу решить все задачи, для решения которых использовались ранние стандарты от HL7 (V2, V3 и 
-  CDA). В большинстве случаев, FHIR также обеспечивает дополнительные преимущетсва, когда речь идет об интероперабельности.
-  Поэтому, существует возможность, что стандарт FHIR постепенно заменить собой некоторые или все стандарты подобного рода.
-  Однако, все еще неясно, насколько быстро произойдет массовый переход к FHIR. Вероятнее всего, что существующие на настоящий момент
-  стандарты будут применяться параллельно друг с другом. Организация HL7 International приняла решение обеспечивать 
-  сопровождение существующих стандартов настолько долго, насколько это потребуется сообществу.
-    <!-- FHIR can satisfy the needs covered by all of the previous primary HL7 interoperability standards (V2, V3 and 
+    <a href="http://wiki.hl7.org/index.php?title=FHIR_and_Other_Specifications">here</a></li>
+  <li>FHIR can satisfy the needs covered by all of the previous primary HL7 interoperability standards (V2, V3 and 
   CDA).  In many cases, it also provides additional benefits in terms of ease of interoperability.  Therefore, the 
-  possibility exists that FHIR could gradually replace some or all of these standards.  
-  However it is unclear how 
+  possibility exists that FHIR could gradually replace some or all of these standards.  However it is unclear how 
   rapidly (or even if) the market will make such a migration.  It is likely that most of these standards will exist 
   in parallel for quite some time.  HL7 has committed to ongoing maintenance of existing standards for as long as 
-  the HL7 membership requires. --></li>
+  the HL7 membership requires.</li>
 </ul>
 
 </div>

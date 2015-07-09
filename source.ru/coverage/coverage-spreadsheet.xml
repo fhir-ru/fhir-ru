@@ -1005,11 +1005,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Страховой полис или план медицинского обслуживания<!-- Insurance or medical plan --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Insurance or medical plan</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Финансовый инструмент, который может быть использован для оплаты или компенсации за продукты и услуги в области здравоохранения.<!-- Financial instrument which may be used to pay for or reimburse for health care products and services. --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Financial instrument which may be used to pay for or reimburse for health care products and services.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Программы медицинского обеспечения и страховые компании являются существенными плательщиками расходов на здравоохранение<!-- Health care programs and insurers are significant payors of health service costs --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Health care programs and insurers are significant payors of health service costs</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1040,11 +1040,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор страховой компании<!-- An identifier for the plan issuer --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">An identifier for the plan issuer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Страховая компания или плательщик по программе или плану.<!-- The program or plan underwriter or payor. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The program or plan underwriter or payor.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо идентифицировать страховую компанию для адресации обработки и для координирования выплат.<!-- Need to identify the issuer to target for processing and for coordination of benefit processing. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to identify the issuer to target for processing and for coordination of benefit processing.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1109,9 +1109,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата начала и окончания действия страхового покрытия<!-- Coverage start and end dates --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Coverage start and end dates</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Период действия страхового покрытия. Отсутствие даты начала означает, что дата начала действия не известна, отсутствие даты окончания значит, что страховое покрытие продолжает оставаться в силе.<!-- Time period during which the coverage is in force. A missing start date indicates the start date isn't known, a missing end date means the coverage is continuing to be in force. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Time period during which the coverage is in force. A missing start date indicates the start date isn't known, a missing end date means the coverage is continuing to be in force.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1144,11 +1144,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип страхового покрытия<!-- Type of coverage --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of coverage</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">От типа страхового покрытия зависит порядок применения страховых покрытий.<!-- The order of application of coverages is dependent on the types of coverage. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The order of application of coverages is dependent on the types of coverage.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1212,11 +1212,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Основной идентификатор страхового покрытия<!-- The primary coverage ID --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The primary coverage ID</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Основной (и, возможно, единственный) идентификатор страхового покрытия - часто упоминается как Member Id, номер абонента (Subscriber Id), номер свидетельства, PIN (персональный идентификационный номер) или Case ID.<!-- The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Subscriber Id, Certificate number or Personal Health Number or Case ID. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Subscriber Id, Certificate number or Personal Health Number or Case ID.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это значение может уникальным образом идентифицировать страховое покрытие, либо оно может использоваться в сочетании с дополнительными идентификаторами ниже.<!-- This value may uniquely identify the coverage or it may be used in conjunction with the additional identifiers below. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">This value may uniquely identify the coverage or it may be used in conjunction with the additional identifiers below.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1249,9 +1249,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор группы<!-- An identifier for the group --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">An identifier for the group</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует направление или коллектив страхового покрытия, предоставляемого страховщиком, например может использоваться для определения категории страхового покрытия или группы работодателя. Может также упоминаться как номер полиса или группы (Policy ID, Group ID).<!-- Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1285,9 +1285,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор плана (медицинского обслуживания)<!-- An identifier for the plan --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">An identifier for the plan</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует направление или коллектив страхового покрытия, предоставляемого страховщиком, например может использоваться для определения категории страхового покрытия или группы работодателя. Может также упоминаться как номер полиса или группы (Policy ID, Group ID).<!-- Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1320,9 +1320,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор подраздела плана  (медицинского обслуживания)<!-- An identifier for the subsection of the plan --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">An identifier for the subsection of the plan</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует подвид или подгруппу страхового покрытия, предоставляемого страховщиком, например может использоваться для определения конкретной группы работодателей в категории работодателей. Может также упоминаться как номер секции или раздела (Section ID, Division ID).<!-- Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example may be used to identify a specific employer group within a class of employers. May be referred to as a Section or Division ID. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example may be used to identify a specific employer group within a class of employers. May be referred to as a Section or Division ID.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1354,11 +1354,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Номер материально зависимого лица<!-- The dependent number --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The dependent number</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор материально зависимого лица страхового покрытия.<!-- A unique identifier for a dependent under the coverage. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A unique identifier for a dependent under the coverage.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Для некоторых страховых покрытий держателю полиса (PolicyHolder) назначается один идентификатор, а для каждого материально зависимого лица выпускается зависимый номер в целях отслеживания и администрирования плана.<!-- For some coverage a single identifier is issued to the PolicyHolder and dependent number issues to each to each of their dependents to track and manage the plan. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">For some coverage a single identifier is issued to the PolicyHolder and dependent number issues to each to each of their dependents to track and manage the plan.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1390,11 +1390,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Счетчик экземпляра плана или последовательности<!-- The plan instance or sequence counter --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The plan instance or sequence counter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительный счетчик для конкретного экземпляра идентифицированного страхового покрытия, который увеличивается при каждом продлении.<!-- An optional counter for a particular instance of the identified coverage which increments upon each renewal. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An optional counter for a particular instance of the identified coverage which increments upon each renewal.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Некоторые страховые покрытия, например социальные планы, могут предлагаться на короткие временные интервалы, например на неделю или месяц единовременно, так что пока остальные детали плана остаются неизменными в течение времени, номер каждого последующего экземпляра увеличивается при продлении и предоставляется страхуемой стороне на ее 'карту'.<!-- Some coverage, for example social plans, may be offered in short time increments, for example for a week or a month at a time, so while the rest of the plan details and identifiers may remain constant over time, the instance is incremented with each renewal and provided to the covered party on their 'card'. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Some coverage, for example social plans, may be offered in short time increments, for example for a week or a month at a time, so while the rest of the plan details and identifiers may remain constant over time, the instance is incremented with each renewal and provided to the covered party on their 'card'.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1426,9 +1426,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Информация о владельце плана<!-- Plan holder information --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Plan holder information</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Сторона, которая 'владеет' договорными отношениями по страхованию или в пользу которой выплачивается страховка<!-- The party who 'owns' the insurance contractual relationship to the policy or to whom the benefit of the policy is due. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The party who 'owns' the insurance contractual relationship to the policy or to whom the benefit of the policy is due.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1464,9 +1464,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Сеть страховых компаний<!-- Insurer network --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Insurer network</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор сообщества поставщиков.<!-- The identifier for a community of providers. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The identifier for a community of providers.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1497,9 +1497,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Детали контракта<!-- Contract details --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract details</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Страховой полис(-ы), который подтверждает это страховое покрытие.<!-- The policy(s) which constitute this insurance coverage. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The policy(s) which constitute this insurance coverage.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1563,7 +1563,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Стороны, покрываемые страховкой<!-- Covered parties --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Covered parties</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Persons for whom this coverage provides health insurance.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4657,56 +4657,56 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Coverage.issuer</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Личность страхователя<!-- The identity of the insurer --></Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">The identity of the insurer</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Основной идентификатор застрахованного<!-- The primary identifier of the insured --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">The primary identifier of the insured</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.type</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Вид страхового покрытия<!-- The kind of coverage --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">The kind of coverage</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">plan</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.plan</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор плана или полиса<!-- A plan or policy identifier --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">A plan or policy identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">subplan</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.subPlan</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор субплана<!-- Sub-plan identifier --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Sub-plan identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">group</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.group</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор группы<!-- Group identifier --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Group identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">dependent</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.dependent</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Номер материально зависимого лица<!-- Dependent number --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Dependent number</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">sequence</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Coverage.sequence</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Порядковый номер<!-- Sequence number --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Sequence number</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!subject</Data></Cell>
@@ -7020,7 +7020,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s147"><Data ss:Type="String">CoverageType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип страховки: здравоохранение, компенсация работника; личное страхование от несчастных случаев, автострахование, частное страхование здоровья и т. п.)<!-- The type of insurance: public health, worker compensation; private accident, auto, private health, etc.) --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">The type of insurance: public health, worker compensation; private accident, auto, private health, etc.)</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">http://hl7.org/fhir/v3/vs/ActCoverageTypeCode</Data></Cell>

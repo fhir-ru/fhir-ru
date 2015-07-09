@@ -1,53 +1,41 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 	<div>
-		<h2>Область применения и использование</h2>
-	<p>
-	Ресурсы Slot используются для записи временных слотов, которые можно забронировать с помощью appointment.
-	Они не предназначены для предоставления информации о доступных условленных встречах, только для указания времени и, необязательно, для чего это время может быть использовано. Фактически, это интервалы свободного/занятого времени.
-		<!-- Slot resources are used to provide time-slots that can be booked using an appointment.
-		They do not provide any information about appointments that are available, just the time,
-			and optionally what the time can be used for. These are effectively spaces of free/busy time. --><br/>
-			Слоты можно помечать как занятые без необходимости назначать им appointments.
-      <!-- Slots can also be marked as busy without having appointments associated. -->
-	</p>
+		<h2>Scope and Usage</h2>
 		<p>
-		На одном слоте может быть размещено больше одного appointment. Система календарного планирования может разрешать множественное размещение до определенного количества мест. Примером такого типа использования может быть использование слота для групповой услуги, в которой на одно время допустимо до 5 участников.
-			<!-- A slot can have more than one appointment allocated to it. A scheduling system may permit
+			Slot resources are used to provide time-slots that can be booked using an appointment.
+			They do not provide any information about appointments that are available, just the time,
+			and optionally what the time can be used for. These are effectively spaces of free/busy time.<br/>
+      Slots can also be marked as busy without having appointments associated.
+    </p>
+		<p>
+			A slot can have more than one appointment allocated to it. A scheduling system may permit
 			multiple allocations up to a specific number of places. An example of this type of usage 
       could be where the slot is being used for a group service that permits 5 participants at 
-      the same time. -->
+      the same time.
 		</p>
 		<p>
-		Слот может быть помечен как превысивший допустимое количество размещенных в нем appointments.
-			<!-- A slot can be marked as over-booked indicating that there are too many appointments allocated
-			to it. -->
+			A slot can be marked as over-booked indicating that there are too many appointments allocated
+			to it.
 		</p>
 		<p>
-		В некоторых случаях у услуги может быть специальный набор слотов, зарезервированных для особых случаев, таких как пришедшие без предварительной договорённости или если у некоторой организации есть постоянная бронь на утро каждого четверга.
-		Это может указываться с помощью поля "type" с установленным и согласованным значением.
-			<!-- In some situations a service may have a specific set of slots reserved for specific uses, such 
+			In some situations a service may have a specific set of slots reserved for specific uses, such 
 			as "walk-ins" or a specific Organisation has a "standing booking" for Thursday mornings.
-			These should be represented using the type field with a specified and agreed value. --><br/>
-			Разрешения безопасности или особые бизнес-правила, используемые в системе, могут обеспечивать соблюдение, чтобы в них размещались только подходящие appointments.
-			<!-- Security Permissions or specific business rules on the system could enforce that only eligible
-			appointments are allocated to them. -->
+			These should be represented using the type field with a specified and agreed value.<br/>
+			Security Permissions or specific business rules on the system could enforce that only eligible
+			appointments are allocated to them.
 		</p>
-	<p>
-	Если для услуги создается недельное расписание, позволяющее размещение 8 почасовых appointments каждый день рабочей недели (с понедельника по пятницу), оно может быть представлено одним ресурсом Schedule с заданными датами начала и окончания недели, и 40 (5х8) ресурсов Slot, ассоциированных с ним.
-      <!-- If a service had a weekly schedule created that permitted eight 1 hour appointments each
+    <p>
+      If a service had a weekly schedule created that permitted eight 1 hour appointments each
       day of a working week (Monday - Friday), this would be constructed by a single Schedule
       resource with the dates for the start and end of the week set, and then 40 (5x8) Slot 
-      resources associated with it. --><br/>
-	  По мере наполнения расписания условленными встречами эти слоты будут по отдельности помечаться как занятые.
-      <!-- As appointments fill up the schedule, these slots would individually be marked as busy
-      as the appointments are filled into the slots. --><br/>
-	  Слоты в расписание не обязательно должны быть одинакового размера, и могут отличаться в разные дни недели.
-      <!-- The slots in a schedule do not need to be the same size, and can be different for different
-      days of the week. --><br/>
-	  Экземпляры Slot не содержат никакой информации о периодичности. Если необходимо указать периодичность, это будет делаться вне этих ресурсов или включаться в них в виде расширений.
-      <!-- Slot instances do not have any recurrance information included. If recurring information is
-      desired, this will be managed outside these resources, or included as extensions. -->
-	</p>
-	</div>
+      resources associated with it.<br/>
+      As appointments fill up the schedule, these slots would individually be marked as busy
+      as the appointments are filled into the slots.<br/>
+      The slots in a schedule do not need to be the same size, and can be different for different
+      days of the week.<br/>
+      Slot instances do not have any recurrance information included. If recurring information is
+      desired, this will be managed outside these resources, or included as extensions.
+    </p>
+  </div>
 </div>

@@ -976,9 +976,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Поставка - запрос и снабжение<!-- A supply -  request and provision --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">A supply -  request and provision</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Поставка - запрос на что-либо, и предоставление того, что было поставлено<!-- A supply - a  request for something, and provision of what is supplied --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A supply - a  request for something, and provision of what is supplied</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1008,9 +1008,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид поставки (центральная, неакционерная и т. д.)<!-- The kind of supply (central, non-stock, etc) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The kind of supply (central, non-stock, etc)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Категория поставки, например центральная, неакционерная и т. п. Используется для поддержания рабочих процессов, связанных с процессом поставки<!-- Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1040,12 +1040,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор<!-- Unique identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Unique identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор данного запроса на поставку<!-- Unique identifier for this supply request --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Unique identifier for this supply request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Присваивается заказчиком и используется для ссылки на этот заказ в других внешних стандартах<!-- This is assigned by the orderer, and used to refer to this order in other external standards --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This is assigned by the orderer, and used to refer to this order in other external standards</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.id</Data><NamedCell
@@ -1076,7 +1076,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">requested | dispensed | received | failed | cancelled</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус запроса на поставку<!-- Status of the supply request --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Status of the supply request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1105,12 +1105,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Медицинское средство, вещество или устройство, поставку которого запросили<!-- Medication, Substance, or Device requested to be supplied --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Medication, Substance, or Device requested to be supplied</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Объект, поставку которого запросили<!-- The item that is requested to be supplied --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The item that is requested to be supplied</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обратите внимание, что есть разница между предписанием - инструкцией принять лекарство и (иногда) неявной поставкой, и явным запросом на поставку, без явно указанных инструкций.<!-- Note that there's a difference between a prescription - an instruction to take a medication, along with a (sometimes) implicit supply, and an explicit request to supply, with no explicit instructions. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Note that there's a difference between a prescription - an instruction to take a medication, along with a (sometimes) implicit supply, and an explicit request to supply, with no explicit instructions.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=PRD].role</Data><NamedCell
@@ -1137,9 +1137,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Пациент, для которого поставляется объект<!-- Patient for whom the item is supplied --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Patient for whom the item is supplied</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс, представляющий человека, для которого предназначен заказанный объект<!-- A link to a resource representing the person whom the ordered item is for --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A link to a resource representing the person whom the ordered item is for</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1167,9 +1167,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Детали поставки<!-- Supply details --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Supply details</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает сведения о событии раздачи, такие как дни поставки и количество выданного.<!-- Indicates the details of the dispense event such as the days supply and quantity of a supply dispensed. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the details of the dispense event such as the days supply and quantity of a supply dispensed.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1199,12 +1199,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешний идентификатор<!-- External identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">External identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, присвоенный выдающим учреждением при распределении этого объекта(-ов).<!-- Identifier assigned by the dispensing facility when the item(s) is dispensed. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier assigned by the dispensing facility when the item(s) is dispensed.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Присваивается раздаточным устройством и используется для ссылки на этот заказ в других внешних стандартах.<!-- This is assigned by the dispenser, and used to refer to this order in other external standards. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This is assigned by the dispenser, and used to refer to this order in other external standards.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.id</Data><NamedCell
@@ -1235,7 +1235,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">in-progress | dispensed | abandoned</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, определяющий состояние события раздачи.<!-- A code specifying the state of the dispense event. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A code specifying the state of the dispense event.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1265,7 +1265,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Категория события раздачи<!-- Category of dispense event --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Category of dispense event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1296,9 +1296,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Выданное количество<!-- Amount dispensed --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Amount dispensed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество поставки, которое было выдано. Включает в себя единицы измерения.<!-- The amount of supply that has been dispensed. Includes unit of measure. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The amount of supply that has been dispensed. Includes unit of measure.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1327,9 +1327,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Поставленное лекарственное средство, вещество или устройство<!-- Medication, Substance, or Device supplied --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Medication, Substance, or Device supplied</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет выдаваемое лекарственное средство, вещество или устройство. Это либо ссылка на ресурс, представляющий собой объект, или простой атрибут, передающий код, который идентифицирует пункт из известного списка.<!-- Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1358,9 +1358,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Выдающий<!-- Dispenser --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Dispenser</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Лицо, ответственное за выдачу лекарственного средства, поставщик или устройство.<!-- The individual responsible for dispensing the medication, supplier or device. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The individual responsible for dispensing the medication, supplier or device.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1389,9 +1389,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Время выдачи<!-- Dispensing time --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Dispensing time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда произошло событие выдачи.<!-- The time the dispense event occurred. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The time the dispense event occurred.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1420,9 +1420,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Время вручения<!-- Handover time --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Handover time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда выданный объект был отправлен или вручен пациенту (или агенту).<!-- The time the dispensed item was sent or handed to the patient (or agent). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The time the dispensed item was sent or handed to the patient (or agent).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1451,9 +1451,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Куда была отправлена поставка<!-- Where the Supply was sent --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Where the Supply was sent</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификация учреждения/местоположения, куда была отправлена поставка в рамках данного события выдачи.<!-- Identification of the facility/location where the Supply was shipped to, as part of the dispense event.  --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identification of the facility/location where the Supply was shipped to, as part of the dispense event. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1483,9 +1483,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто принял поставку<!-- Who collected the Supply --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who collected the Supply</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет человека, который принял поставку.<!-- Identifies the person who picked up the Supply. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the person who picked up the Supply.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6611,7 +6611,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">SupplyKind</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Категория поставки<!-- Category of supply --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Category of supply</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-supply-kind</Data></Cell>
@@ -6626,7 +6626,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SupplyStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус поставки<!-- Status of the supply --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Status of the supply</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#valueset-supply-status</Data></Cell>
@@ -6641,7 +6641,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SupplyDispenseStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус выдачи<!-- Status of the dispense --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Status of the dispense</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#valueset-supply-dispense-status</Data></Cell>
@@ -6656,7 +6656,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SupplyItemType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Объект, который поставляется<!-- The actual item being supplied --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The actual item being supplied</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-supply-item</Data></Cell>

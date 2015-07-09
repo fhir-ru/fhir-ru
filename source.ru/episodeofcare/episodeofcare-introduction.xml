@@ -1,86 +1,69 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
   <div>
-    <h2>Область применения и использование</h2>
+    <h2>Scope and Usage</h2>
     <p>
-	Ресурс EpisodeOfCare содержит информацию о связи между пациентом и поставщиком медицинских услуг на период времени, в течение которого может произойти деятельность, связанная со здравоохранением.
-      <!-- The EpisodeOfCare Resource contains information about an association of a Patient with a Healthcare Provider for a period
-      of time under which related healthcare activities may occur. -->
+      The EpisodeOfCare Resource contains information about an association of a Patient with a Healthcare Provider for a period
+      of time under which related healthcare activities may occur.
     </p>
     <p>
-	В большинстве случаев ресурс указывает период времени, в течение которого поставщик медицинских услуг несет ответственность за уход за пациентом касательно определенного состояния здоровья или проблемы, даже если в настоящее время не участвует в encounter.
-      <!-- In many cases, this represents a period of time where the Healthcare Provider has some level of responsibility for the care
-      of the patient regarding a specific condition or problem, even if not currently participating in an encounter. -->
+      In many cases, this represents a period of time where the Healthcare Provider has some level of responsibility for the care
+      of the patient regarding a specific condition or problem, even if not currently participating in an encounter.
     </p>
     <p>
-	Эти ресурсы в существующих системах, как правило, известны как:
-      <!-- These resources are typically known in existing systems as: -->
+      These resources are typically known in existing systems as:
     </p>
     <ul>
-	      <li>EpisodeOfCare: случай, программа, проблема, эпизод</li>
-      <li>Encounter: визит, контакт</li>
-<!--       <li>EpisodeOfCare: Case, Program, Problem, Episode</li>
-      <li>Encounter: Visit, Contact</li> -->
+      <li>EpisodeOfCare: Case, Program, Problem, Episode</li>
+      <li>Encounter: Visit, Contact</li>
     </ul>
     <p></p>
     <h3>Multiple Organizations and Transfer of Care</h3>
     <p>
-	В EpisodeOfCare может быть вовлечено много организаций, однако каждая организация будет иметь свой собственный EpisodeOfCare, отслеживающий их ответственность перед пациентом.
-      <!-- Many organizations can be involved in an EpisodeOfCare, however each organization will have their own EpisodeOfCare
-      which tracks their responsibility with the Patient. -->
+      Many organizations can be involved in an EpisodeOfCare, however each organization will have their own EpisodeOfCare
+      which tracks their responsibility with the Patient.
     </p>
     <p>
-	Когда организация завершает свое участие в уходе за пациентом и передает заботу о нем другой организации. Часто это оформляется в виде направления в другую организацию (или организации).
-      <!-- When an Organization completes their involvement with the patient and transfers care to another Organization.
-      This is often in the form of a referral to another Organization (or Organizations). --><br/>
+      When an Organization completes their involvement with the patient and transfers care to another Organization.
+      This is often in the form of a referral to another Organization (or Organizations).<br/>
     </p>
     <p>
-	При получению входящего направления может создаваться новый EpisodeOfCare для этой организации. Первоначальные шаги в рабочем процессе при приеме направления часто включают в себя какие-то оценки, уровни пригодности, пропускной способности, ухода, что может занять некоторое время.
-      <!-- When an incoming referral is received a new EpisodeOfCare may be created for this organization.
+      When an incoming referral is received a new EpisodeOfCare may be created for this organization.
       The initial step(s) in the intake workflow for the referral often involve some form of assessment(s),
-      eligibility, capacity, care levels, which could take some time. --><br/>
-	  Как только процесс приема завершается и пациент считается принятым, часто создается CarePlan.
-      <!-- Once the intake process is completed and the patient is accepted, a CarePlan is often created. -->
+      eligibility, capacity, care levels, which could take some time.<br/>
+      Once the intake process is completed and the patient is accepted, a CarePlan is often created.
     </p>
   </div>
   <div>
-    <h2>Границы и связи</h2>
+    <h2>Boundaries and Relationships</h2>
     <p>
-	Основное различие между EpisodeOfCare и Encounter в том, что Encounter содержит сведения об активности, относящейся непосредственно к пациенту, а EpisodeOfCare является контейнером, который объединяет несколько Encounters по проблемам/вопросам.
-      <!-- The primary difference between the EpisodeOfCare and the Encounter is that the Encounter records the details of an
+      The primary difference between the EpisodeOfCare and the Encounter is that the Encounter records the details of an
       activity directly relating to the patient, while the EpisodeOfCare is the container that can link a series of Encounters
-      together for problems/issues. --><br/>
+      together for problems/issues.<br/>
 
-	В сценариях ниже приводятся хорошие примеры случаев, когда вам может потребоваться использовать EpisodeOfCare.
-     <!--  The Example scenarios below give some good examples as to when you might want to be using an EpisodeOfCare. -->
+      The Example scenarios below give some good examples as to when you might want to be using an EpisodeOfCare.
     </p>
     <p>
-	Между EpisodeOfCare и CarePlan такая же разница. EpisodeOfCare - это скорее отслеживающий, чем планирующий ресурс.
-      <!-- This difference is a similar difference between the EpisodeOfCare and a CarePlan. 
-      The EpisodeOfCare is a tracking resource, rather than a planning resource. --><br/>
-	  EpisodeOfCare обычно появляется до CarePlan. Для использования EpisodeOfCare вам не требуется CarePlan.
-      <!-- The EpisodeOfCare usually exists before the CarePlan.
-      You don't need a CarePlan to use an EpisodeOfCare. -->
+      This difference is a similar difference between the EpisodeOfCare and a CarePlan. 
+      The EpisodeOfCare is a tracking resource, rather than a planning resource.<br/>
+      The EpisodeOfCare usually exists before the CarePlan.
+      You don't need a CarePlan to use an EpisodeOfCare.
     </p>
   </div>
 
   <div>
-    <h2>Предпосылки и контекст</h2>
+    <h2>Background and Context</h2>
     <p>
-	Системы собирают когерентную группу активностей (таких как encounters), относящихся к состоянию или проблеме со здоровьем пациента, часто называемую эпизодом лечения.
-	Информация об эпизоде часто используется совместно несколькими системами, а в некоторых случаях пересекает организационные и дисциплинарные границы.
-	EpisodeOfCare содержит сведения о цели медицинского ухода и может существовать без каких-либо активностей.
-      <!-- Systems collect a coherent group of activities (such as encounters) related to a patient's health condition or problem often referred to as a Care Episode.
+      Systems collect a coherent group of activities (such as encounters) related to a patient's health condition or problem often referred to as a Care Episode.
       Information about an episode is often shared across systems, and in some cases organizational and disciplinary boundaries.
-      An Episode Of Care contains details about the purpose of the care and can exist without any activities. --><br/>
-Минимальной информацией, которая потребуется для эпизода медицинского лечения, будет пациент, организация и причина этого объединения.
-Другими причинами создания EpisodeOfCare может быть отслеживание сведений, требуемых для отчетности в государственные органы или выставления счетов.
-      <!-- The minimal information that would be required in an episode of care would be a patient, organization and a reason for the ongoing association.
-      Other reasons for creating an EpisodeOfCare could be for tracking the details required for government reporting or billing. -->
+      An Episode Of Care contains details about the purpose of the care and can exist without any activities.<br/>
+
+      The minimal information that would be required in an episode of care would be a patient, organization and a reason for the ongoing association.
+      Other reasons for creating an EpisodeOfCare could be for tracking the details required for government reporting or billing.
     </p>
     <h3>Expected Implementations</h3>
     <ul>
-	      <li>Chronic Disease Management Systems</li>
+      <li>Chronic Disease Management Systems</li>
       <li>
         Community Care Systems
         <ul>
@@ -91,17 +74,6 @@
       <li>Problem based General Practice systems</li>
       <li>Disability Support Systems</li>
       <li>Aged Care Systems (Community and Residential)</li>
-<!--       <li>Chronic Disease Management Systems</li>
-      <li>
-        Community Care Systems
-        <ul>
-          <li>Tracking progress of a specific condition</li>
-          <li>Tracking government funding</li>
-        </ul>
-      </li>
-      <li>Problem based General Practice systems</li>
-      <li>Disability Support Systems</li>
-      <li>Aged Care Systems (Community and Residential)</li> -->
     </ul>
   </div>
 

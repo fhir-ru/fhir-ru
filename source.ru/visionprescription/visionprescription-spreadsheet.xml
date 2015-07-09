@@ -948,9 +948,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Предписание пациенту продуктов для коррекции зрения<!-- Prescription for Vision correction products for a patient --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Prescription for Vision correction products for a patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Разрешение на поставку очков и/или контактных линз пациенту.<!-- An authorization for the supply of glasses and/or contact lenses to a patient. --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">An authorization for the supply of glasses and/or contact lenses to a patient.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -979,9 +979,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Бизнес-идентификатор<!-- Business identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Business identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Бизнес-идентификатор, который может использоваться другими сторонами для ссылки или идентификации этого предписания.<!-- Business identifier which may be used by other parties to reference or identify the prescription. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Business identifier which may be used by other parties to reference or identify the prescription.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1011,9 +1011,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда было составлено предписание<!-- When prescription was authorized --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When prescription was authorized</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (и, возможно, время), когда было выписано предписание<!-- The date (and perhaps time) when the prescription was written --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The date (and perhaps time) when the prescription was written</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1043,9 +1043,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Для кого это предписание (пациент)<!-- Who prescription is for --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who prescription is for</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс, представляющий человека, для которого будут поставлены продукты для коррекции зрения.<!-- A link to a resource representing the person to whom the Vision products will be supplied. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A link to a resource representing the person to whom the Vision products will be supplied.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1075,9 +1075,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто выписал рецепт на этот продукт для коррекции зрения<!-- Who authorizes the Vision product --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who authorizes the Vision product</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Специалист по медицинскому обеспечению, ответственный за написание предписания<!-- The healthcare professional responsible for authorizing the prescription --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The healthcare professional responsible for authorizing the prescription</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1107,9 +1107,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Создан во время случая обслуживания / госпитализации / нахождения<!-- Created during encounter / admission / stay --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Created during encounter / admission / stay</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс, идентифицирующий конкретный случай контакта между пациентом и поставщиком медицинских услуг.<!-- A link to a resource that identifies the particular occurrence of contact between patient and health care provider. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A link to a resource that identifies the particular occurrence of contact between patient and health care provider.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1139,9 +1139,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Основание или указание для выписки рецепта<!-- Reason or indication for writing the prescription --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason or indication for writing the prescription</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Может быть причиной или показанием для выписки рецепта<!-- Can be the reason or the indication for writing the prescription.    --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Can be the reason or the indication for writing the prescription.   </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1170,9 +1170,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Разрешение на поставку продукта для коррекции зрения<!-- Vision supply authorization --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Vision supply authorization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Сведения о выдаче в спецификации поставки. <!-- Deals with details of the dispense part of the supply specification. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Deals with details of the dispense part of the supply specification.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1203,9 +1203,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Продукт для поставки<!-- Product to be supplied --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Product to be supplied</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет тип продукта для коррекции зрения, который требуется пациенту.<!-- Identifies the type of Vision correction product which is required for the patient. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the type of Vision correction product which is required for the patient.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1238,7 +1238,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">right | left</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Глаз, для которого нужна линза.<!-- The eye for which the lens applies. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The eye for which the lens applies.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1266,9 +1266,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Сфера линзы<!-- Lens sphere --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lens sphere</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Мощность линзы измеряется в диоптриях (0.25 единиц).<!-- Lens power measured in diopters (0.25 units). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Lens power measured in diopters (0.25 units).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1296,9 +1296,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Цилиндр линзы<!-- Lens cylinder --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lens cylinder</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Регулировка мощности для астигматизма измеряется в диоптриях (0.25 единиц).<!-- Power adjustment for astigmatism measured in diopters (0.25 units). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Power adjustment for astigmatism measured in diopters (0.25 units).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1326,9 +1326,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Оптическая ось линзы<!-- Lens axis --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lens axis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Регулировка для астигматизма измеряется в целых значениях градусов.<!-- Adjustment for astigmatism measured in integer degrees. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Adjustment for astigmatism measured in integer degrees.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1356,9 +1356,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Призма линзы<!-- Lens prism --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lens prism</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Размер призмы для компенсации выравнивания зрения глаза, в дробных единицах.<!-- Amount of prism to compensate for eye alignment in fractional units. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Amount of prism to compensate for eye alignment in fractional units.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1389,7 +1389,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">up | down | in | out</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Относительное основание, или опорный край линзы, призмы.<!-- The relative base, or reference lens edge, for the prism. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The relative base, or reference lens edge, for the prism.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1417,9 +1417,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Регулировка мощности линзы<!-- Lens add --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lens add</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Регулировка мощности для мультифокальных линз, измеренная в диоптриях (0.25 единиц).<!-- Power adjustment for multifocal lenses measured in diopters (0.25 units). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Power adjustment for multifocal lenses measured in diopters (0.25 units).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1447,9 +1447,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Мощность контактной линзы<!-- Contact Lens power --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact Lens power</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Мощность контактной линзы, измеренная в диоптриях (0.25 единиц).<!-- Contact lens power measured in diopters (0.25 units). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Contact lens power measured in diopters (0.25 units).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1477,9 +1477,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Обратная кривизна контактной линзы<!-- Contact lens back curvature --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact lens back curvature</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обратная кривизна, измеренная в миллиметрах.<!-- Back Curvature measured in millimeters. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Back Curvature measured in millimeters.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1507,9 +1507,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Диаметр контактной линзы<!-- Contact Lens diameter --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact Lens diameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Диаметр контактной линзы, измеренный в миллиметрах.<!-- Contact lens diameter measured in millimeters. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Contact lens diameter measured in millimeters.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1537,9 +1537,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Продолжительность ношения линз<!-- Lens wear duration --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lens wear duration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендуемый максимальный период ношения линзы.<!-- The recommended maximum wear period for the lens. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The recommended maximum wear period for the lens.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1567,9 +1567,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительно<!-- Lens add --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lens add</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Особый цвет или узор.<!-- Special color or pattern. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Special color or pattern.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1597,9 +1597,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Рекомендации<!-- Lens add --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lens add</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендации по торговой марке или ограничения.<!-- Brand recommendations or restrictions. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Brand recommendations or restrictions.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1628,9 +1628,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Примечания к покрытиям<!-- Notes for coatings --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Notes for coatings</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Примечания к особым требованиям, таким как материалы покрытий и линз.<!-- Notes for special requirements such as coatings and lens materials. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Notes for special requirements such as coatings and lens materials.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3944,28 +3944,28 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">VisionPrescription.dateWritten</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Возвращает рецепты, выписанные в указанную дату<!-- Return prescriptions written on this date --></Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Return prescriptions written on this date</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">VisionPrescription.encounter</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Возвращает рецепты для указанного идентификатора случая обслуживания<!-- Return prescriptions with this encounter identity --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Return prescriptions with this encounter identity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">VisionPrescription.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Возвращает рецепты для указанного внешнего идентификатора<!-- Return prescriptions with this external identity --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Return prescriptions with this external identity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">VisionPrescription.patient</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Человек, для которого перечисляются выдачи (по рецепту)<!-- The identity of a patient to list dispenses  for --></Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">The identity of a patient to list dispenses  for</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">prescriber</Data></Cell>
@@ -6146,7 +6146,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s145"><Data ss:Type="String">VisionProduct</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, описывающий продукт коррекции зрения.<!-- A coded concept describing the Vision products. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept describing the Vision products.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-vision-product</Data></Cell>
@@ -6161,7 +6161,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">VisionEyes</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, используемый для указания глаза.<!-- A coded concept listing the eye codes. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept listing the eye codes.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String" x:Ticked="1">#eye-codes</Data></Cell>
@@ -6176,7 +6176,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">VisionBase</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодированный концепт, используемый для указания положения.<!-- A coded concept listing the base codes. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept listing the base codes.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String" x:Ticked="1">#base-codes</Data></Cell>

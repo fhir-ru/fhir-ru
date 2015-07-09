@@ -1,96 +1,68 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
-Флаг, как правило, представляет собой метку на видном месте в карте пациента, чтобы уведомить врача о возможных проблемах,
-хотя он также может появляться и в других контекстах. Например инструкция для техника отделения радиологии. Информация в флаге будет,
-как правило, получена из записи и, следовательно, для внимательного и тщательного врача будет излишней. Тем не менее, учитывая объем
-информации, часто встречающийся в записях пациентов, и серьезность потенциальных последствий упущения из виду каких-то фактов, эта
-избыточность считается целесообразной. Кроме того, некоторые флаги могут отражать информацию, не фиксируемую ни одним ресурсом в карте.
-(Например "У пациента дома большая собака").
-<!-- A flag is typically presented as a label in a prominent location in a patient chart to notify the clinician of potential issues, 
+A flag is typically presented as a label in a prominent location in a patient chart to notify the clinician of potential issues, 
 though it may also appear in other contexts.  E.g. instructions to a radiology technician. The information in the flag will 
 usually be derived from the record, and therefore, for a thorough and careful clinician, will be redundant.  However, given the volume 
 of information frequently found in patients' records and the potentially serious consequences of losing sight of some facts, this 
 redundancy is deemed appropriate.  As well, some flags may reflect information not captured by any other resource in the record.  
-(E.g. "Patient has large dog at home") -->
+(E.g. "Patient has large dog at home")
 </p>
 <p>
-В соответствии со своим назначением, флаг должен быть кратким, выделяя небольшой набор приоритетных вопросов из гораздо большего набора данных в карте.
-Читателям, которым требуются более подробные сведения, придется обратиться за ними к карте. Следует проявлять осторожность в создании экземпляров Flag.
-Если записи создаются для информации, которая может быть почерпнута достаточно быстро при просмотре записи пациента, список флагов станет непомерным и перестанет служить своему назначению.
-<!-- In line with its purpose, a flag is concise, highlighting a small set of high-priority issues among the much larger set of 
+In line with its purpose, a flag is concise, highlighting a small set of high-priority issues among the much larger set of 
 data in the chart. Readers who want more detail should consult the chart.  Caution should be exercised in creating Flag instances.
 If entries are created for information that could be gleaned in a sufficiently timely fashion by reviewing the patient record, 
-the flag list will itself become overwhelming and will cease to serve its intended purpose. -->
+the flag list will itself become overwhelming and will cease to serve its intended purpose.
 </p>
 <p>
-Предполагается, что флаги будут сохраняться в записи в течение некоторого периода времени и будут, самое большее, адресованы конкретным типам специалистов или специалистам в конкретной системе.
-<!-- Flags are expected to persist in a record for some period of time and are, at most, targeted to particular types of practitioners
-or to practitioners in particular system.   -->
+Flags are expected to persist in a record for some period of time and are, at most, targeted to particular types of practitioners
+or to practitioners in particular system.  
 </p>
-<p>Примеры проблем, которые могут подниматься во флагах:<!-- Examples of issues that might appear in flags: --></p>
+<p>Examples of issues that might appear in flags:</p>
 <ul>
-<li>Риски, связанные с пациентом (действующий риск падений, приказ об ограничении контактов супругов, аллергия на латекс)</li>
-<li>Потребность пациента в дополнительных специальных условиях (проблемы со слухом, необходимость в легко открывающихся колпачках)</li>
-<li>Риски для поставщиков медицинских услуг (собака в доме, пациент может кусаться, предосторожности инфекционного контроля)</li>
-<li>Административные проблемы (неполная информация, требуется предварительная оплата в связи с кредитным риском)</li>
-<!-- <li>Risks to the patient (functional risk of falls, spousal restraining order, latex allergy)</li>
+<li>Risks to the patient (functional risk of falls, spousal restraining order, latex allergy)</li>
 <li>Patient's needs for special accommodations (hard of hearing, need for easy-open caps)</li>
 <li>Risks to providers (dog in house, patient may bite, infection control precautions)</li>
-<li>Administrative concerns (incomplete information, pre-payment required due to credit risk)</li> -->
+<li>Administrative concerns (incomplete information, pre-payment required due to credit risk)</li>
 </ul> 
 <p>
-Примеры проблем, которые не должны появляться во флагах:
-<!-- Examples of issues that should not appear in flags: -->
+Examples of issues that should not appear in flags:
 </p>
 <ul>
-<li>Потенциальная аллергия или лекарственное взаимодействие на запланированное лечение (использовать <a href="contraindication.html">Contraindication</a>)</li>
-<li>Известная нежелательная побочная реакция на вещество (использовать <a href="allergyintolerance.html">AllergyIntolerance</a>)</li>
-<!-- <li>Potential allergy or drug interaction to planned therapy (use <a href="contraindication.html">Contraindication</a>)</li>
-<li>Known adverse reaction to a substance (use <a href="allergyintolerance.html">AllergyIntolerance</a>)</li> -->
+<li>Potential allergy or drug interaction to planned therapy (use <a href="contraindication.html">Contraindication</a>)</li>
+<li>Known adverse reaction to a substance (use <a href="allergyintolerance.html">AllergyIntolerance</a>)</li>
 </ul>    
 <p>
-Обратите внимание, что мы включаем "аллергию на латекс" в область действия ресурса, а "аллергия" туда не входит. Ресурс Flag не
-предназначен для замены нормального процесса проверки заказов, и не следует ожидать увидеть все аллергии в Flags. Однако если предполагается, что какое-то действие
-может произойти до тщательной оценки записи (например надевание латексных перчаток), и это действие представляет риск для пациента, то это как раз тот случай, для поддержки которого и предназначен ресурс Flag.
-<!-- Note that we include "latex allergy" in the "in scope" list, and "allergy" in the "not in scope" list. The Flag resource is not 
+Note that we include "latex allergy" in the "in scope" list, and "allergy" in the "not in scope" list. The Flag resource is not 
 designed to replace the normal order checking process, and one should not expect to see all allergies in Flags. However, if there 
 is an activity that might occur prior to careful evaluation of the record (e.g., donning of latex gloves) and that activity might 
-pose a risk to the patient, that is the sort of eventuality the Flag is intended to support. -->
+pose a risk to the patient, that is the sort of eventuality the Flag is intended to support.
 </p>
 <p>
-Конкретные рекомендации о том, какой тип информации уместно выставлять с помощью флага, а также то, какие именно категории лиц
-должны увидеть конкретные флаги, будут меняться сообществом совместимости.
-<!-- Specific guidelines about what type of information is appropriate to expose using Flag, as well as what categories of individuals 
-should see particular flags, will vary by interoperability community. -->
+Specific guidelines about what type of information is appropriate to expose using Flag, as well as what categories of individuals 
+should see particular flags, will vary by interoperability community.
 </p>
 </div>
 
 <div>
-<h2>Границы и связи</h2>
+<h2>Boundaries and Relationships</h2>
 <p>
-Флаги могут представлять в очень сжатом виде информацию, находящуюся в <a href="allergyintolerance.html">AllergyIntolerance</a>, 
-<a href="condition.html">Condition</a>, <a href="observation.html">Observation</a>, <a href="procedure.html">Procedure</a> и, возможно, других ресурсах. <a href="extension-flag-detail.html">Общее расширение</a> позволяет привязывать Flag к ресурсу, содержащему вспомогательные сведения.
-Назначение остальных ресурсов состоит в предоставлении подробной клинической информации. Целю ресурса Flag является  оповещение специалистов о важной информации, которая должна повлиять на их взаимодействие с пациентом до подробного обзора медкарты.
-<!-- Flags may highlight a highly condensed view of information found in the <a href="allergyintolerance.html">AllergyIntolerance</a>, 
+Flags may highlight a highly condensed view of information found in the <a href="allergyintolerance.html">AllergyIntolerance</a>, 
 <a href="condition.html">Condition</a>, <a href="observation.html">Observation</a>, <a href="procedure.html">Procedure</a> and possibly 
 other resources.  A <a href="extension-flag-detail.html">common extension</a> allows the linkage of a Flag to the supporting detail resource.
 The purpose of these other resources is to provide detailed clinical information.  The purpose of a Flag is to alert practitioners to 
-information that is important to influence their interaction with a Patient prior to detailed review of the record. -->
+information that is important to influence their interaction with a Patient prior to detailed review of the record.
 </p>
 <p>
-Флаги не используются для передачи информации конкретному лицу или организации (например сообщение лабораторных результатов с отклонением от нормы заказавшему их врачу, оповещение распорядительного органа о неблагоприятной побочной реакции). Это обрабатывается с помощью ресурсов <a href="communicationrequest.html">CommunicationRequest</a> и <a href="communication.html">Communication</a>.
-<!-- Flags are not used to convey information to a specific individual or organization (e.g. an abnormal lab result reported to the ordering 
+Flags are not used to convey information to a specific individual or organization (e.g. an abnormal lab result reported to the ordering 
 clinician, reporting of an adverse reaction to a regulatory authority).  These are handled using the 
-<a href="communicationrequest.html">CommunicationRequest</a> and the <a href="communication.html">Communication</a> resources. -->
+<a href="communicationrequest.html">CommunicationRequest</a> and the <a href="communication.html">Communication</a> resources.
 </p>
 <p>
-Флаги не поднимаются в результате сообщенного или предложенного действия (например в результате лекарственных взаимодействий, предупреждения о дублировании лечения).
-Это обрабатывается с помощью ресурса <a href="contraindication.html">Contraindication</a>.
-<!-- Flags are not raised as a result of a reported or proposed action (e.g. drug-drug interactions, duplicate therapy warnings).  
-These would be handled using <a href="contraindication.html">Contraindication</a>. -->
+Flags are not raised as a result of a reported or proposed action (e.g. drug-drug interactions, duplicate therapy warnings).  
+These would be handled using <a href="contraindication.html">Contraindication</a>.
 </p>
 </div>
 
