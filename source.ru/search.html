@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 
+
 [%settitle Search (RESTful API) %]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -11,35 +12,29 @@
 <div class="col-9">
 
 <a name="base"> </a>
-<h2>Search</h2>
+<h2>Поиск</h2>
 
 <p>
-One aspect that is fundamental to the way FHIR works is to search a set of resources.
-Search operations search through an existing set of resources by a set
-of search criteria supplied as parameters to the search. This page documents
-the FHIR search framework, starting with the simple cases, and working through
-to the full complexity. Implementations need only implement the amount of
-complexity that they require.
+Один из основополагающих аспектов в работе FHIR - это механизм поиска набора ресурсов. Операции поиска ищут в существующем наборе ресурсов в соответствии с критериями поиска, переданными в качестве параметров механизму поиска. На этой странице задокументирована система поиска FHIR от простых примеров до самых сложных случаев. Реализациям требуется внедрить только ту степень сложности, которая им необходима.
 </p>
 
-<h3>Summary Table</h3>
+<h3>Сводная таблица</h3>
 
 <table class="grid">
-<tr><td><b>Search Parameter Types</b></td><td><b>Parameters for all resources</b></td><td><b>Search result parameters</b></td></tr>
+<tr><td><b>Типы параметров поиска</b></td><td><b>Параметры для всех ресурсов</b></td><td><b>Параметры результатов поиска</b></td></tr>
 <tr>
 <td>
-<%codetoc http://hl7.org/fhir/vs/search-param-type%>
+<%codetoc SearchParamType%>
 </td>
 <td>
 <a href="#id">_id</a><br/>
+<a href="#language">_language</a><br/>
 <a href="#lastUpdated">_lastUpdated</a><br/>
-<a href="#tag">_tag</a><br/>
 <a href="#profile">_profile</a><br/>
 <a href="#security">_security</a><br/>
+<a href="#tag">_tag</a><br/>
 <a href="#text">_text</a><br/>
-<a href="#content">_content</a><br/>
-<a href="#list">_list</a><br/>
-<a href="#query">_query</a><br/>
+<a href="#filter">_filter</a><br/>
 </td>
 <td>
 <a href="#sort">_sort</a><br/>
@@ -52,287 +47,212 @@ complexity that they require.
 </td>
 </tr>
 </table>
-<p>
-In addition, there is a special search parameter <a href="#filter">_filter</a> that allows a different method of searching.
-</p>
 
-<h3>Introduction</h3>
+<h3>Введение</h3>
 <p>
-In the simplest case, a search is executed by performing a GET operation
-in the RESTful framework:
+В простейшем случае поиск выполняется операцией GET в RESTful-системе:
 </p>
 <pre>
  GET [base]/[resourcetype]?name=value&amp;...
 </pre>
-<p>
-For this RESTful search (see <a href="http.html#search">definition in RESTful API</a>), the parameters are a series
-of name=[value] pairs encoded in the URL or as an
-application/x-www-form-urlencoded submission for a POST:
-</p>
-<pre>
- POST  [base]/[type]/_search{?[parameters]{&amp;_format=[mime-type]}}
-</pre>
-<p>
-The server returns the results in the HTTP response as a <a href="bundle.html">bundle</a>
-which includes the resources that are the results of the search. 
+<p> 
+Для такого RESTful-поиска (см. <a href="http.html#search">определение в RESTful API</a>) параметры представляют собой последовательность пар вида имя=[значение] (name=[value]), кодированных в URL [процентная кодировка] или в формате application/x-www-form-urlencoded для [запроса] POST. Сервер возвращает результаты в HTTP-ответе в виде <a href="bundle.html">bundle</a>, который включает в себя ресурсы, являющиеся результатами этого поиска. Сервер также может включить в набор результатов дополнительные ресурсы, например <a href="operationoutcome.html">OperationOutcome</a>. Клиентам следует игнорировать ресурсы, не соответствующие ожидаемому типу. Код HTTP-статуса 403 означает отказ сервера выполнять поиск, тогда как некоторые другие коды вида 4xx или 5xx сигнализируют о том, что произошла какая-то ошибка. 
 </p>
 <p>
-<a href="http.html#search">Search operations</a> are executed in one of 3 defined contexts that control which set of resources are being searched:
+<a href="http.html#search">Операции поиска</a> исполняются в одном из трех заданных контекстов, определяющих, в каком наборе ресурсов будет осуществляться поиск:
 </p>
 <ul>
- <li>A specified resource type: GET [base]/[ResourceType]?parameter(s)</li>
- <li>A specified <a href="compartments.html#compartments">compartment</a>, perhaps with a specified resource type in that compartment: GET [base]/Patient/[id]/[ResourceType]?parameter(s)</li>
- <li>All resources: GET [base]/_search?parameter(s) (parameters common to all types only)</li>
+ <li>Определенный тип ресурса: GET [base]/[ResourceType]?parameter(s)</li>
+ <li>Определенный <a href="extras.html#compartments">модуль</a>, возможно с указанием типа ресурса в этом модуле: GET [[base]/patient/[id]/[ResourceType]?parameter(s)</li>
+ <li>Все ресурсы: GET [base]/_search?parameter(s) (только параметры, общие для всех типов)</li>
 </ul>
 <p>
-Search operations can also be implemented in <a href="messaging.html#search">the messaging framework</a>.
+Операции поиска также могут инициироваться другими, более сложными и гибкими методами, описанными ниже, которые модифицируют и способ запуска поиска, и возвращаемые результаты. 
 </p>
-
-<a name="errors"> </a>
-<h3>Handling Errors</h3>
-<p>
-If a server is unable to execute a search request, it may return an error. 
-A HTTP status code of 403 signifies that the server refused to perform the search,
-while some other 4xx or 5xx code signifies that some error occurred. When
-the search fails, a server SHOULD return an <a href="operationoutcome.html">OperationOutcome</a>
-detailing the cause of the failure. Note that an empty search result is not a failure.
-</p>
-<p>
-In some cases, some of the parameters may have problems. For instance:
-</p>
-<ul>
- <li>A parameter may refer to a non-existent resource e.g. GET [base]/Observation?subject=101, where 101 does not exist</li>
- <li>A parameter may refer to an unknown code e.g. GET [base]/Observation?code=loinc|1234-1, where the LOINC code 1234-1 is not known to the server</li>
- <li>A parameter may refer to a time that is out of scope e.g. GET [base]/Condition?onset=&lt;1995, where the system only has data going back to 2001</li>
- <li>A data time parameter may have incorrect format e.g. GET [base]/Condition?onset=23%20May%202009</li>
-</ul>
-<p>
-Where the content of the parameter is syntactically correct, servers SHOULD return an error. 
-However where the issue is a logical condition (e.g. unknown subject or code), the server 
-SHOULD process the search, including processing the parameter - with the effect of returning
-an empty search set, since the parameter cannot be satisfied. 
-</p>
-<p>
-In such cases, the search process MAY include an <a href="operationoutcome.html">OperationOutcome</a>
-in the search set that contains additional hints and warnings about the search process.
-This is included in the search results as an entry with <a href="bundle-definitions.html#Bundle.entry.search.mode">search mode</a> = <a href="search-entry-mode.html">outcome</a>.
-Clients can use this information to improve future searches.
-</p>
-
 <a name="standard"> </a>
-<h3>Standard Parameters</h3>
+<h3>Стандартные параметры</h3>
 
 <a name="all"> </a>
-<h4>Parameters for all resources</h4>
+<h4>Параметры для всех ресурсов</h4>
 <p>
-These parameters are <a href="resource.html#search">defined that apply to all resources</a>: [%allparams%]. In addition, the search 
-parameter <a href="#text">_text</a> and <a href="#filter">_filter</a>, (documented below) also applies to all resources (as do the search result parameters). 
+Эти параметры <a href="resource.html#search">описаны здесь</a> и применяются ко всем ресурсам: [%allparams%]. Кроме того, параметры поиска  <a href="#text">_text</a> и <a href="#filter">_filter</a>, (задокументированы ниже) также применяются ко всем ресурсом (как и параметры результатов поиска). 
 </p>
 <a name="id"> </a>
-<p> 
-The search parameter _id refers to the logical id of the resource, and can be used when the search context specifies a resource type:
+<p>
+Параметр поиска _id относится к логическому id ресурса и может быть использован, когда в качестве контекста поиска указан тип ресурса:
 </p>
 <pre>
  GET [base]/Patient?_id=23
 </pre>
 <p>
-This search finds the patient resource with the given id (there can only be one
-resource for a given id). Functionally, this is equivalent to a <a href="http.html#read">simple
-read operation</a>:
+В этом примере поиска ищется ресурс patient с указанным id (может быть только один ресурс с таким id). С функциональной точки зрения это эквивалентно <a href="http.html#read">простой операции чтения</a>:
 </p>
 <pre>
  GET [base]/Patient/23
 </pre>
 <p>
-except that it returns a bundle with the requested resource, rather than the
-resource itself. Additional parameters can be added which may provide
-additional functionality on top of this base read equivalence.
+за исключением того, что он возвращает комплект с требуемым ресурсом, а не сам ресурс. Могут быть добавлены дополнительные параметры, которые  предоставят дополнительную функциональность к этой базовой, эквивалентной чтению.
+</p>
+<a name="language"> </a>
+<p>
+Параметр поиска _language относится к основному языку ресурса:
+</p>
+<pre>
+ GET [base]/Composition?_language=fr
+</pre>
+<p>
+В этом примере поиска ищутся все ресурсы Composition с обозначенным языком French.
+Обратите внимание, что это заявленный язык ресурса, а не фактический язык его содержимого.
 </p>
 <a name="lastUpdated"> </a>
 <p>
-The search parameter _lastUpdated can be used to select resources based
-on the last time they were changed:
+Параметр поиска _lastUpdated может использоваться для выбора ресурсов по дате их последнего изменения:
 </p>
 <pre>
  GET [base]/Observation?_lastUpdated=>2010-10-01
 </pre>
 <p>
-This search finds any observations changed since 1-Oct 2010. When
-this search parameter is used, applications should consider
-synchronization approaches (<a href="http.html#history">RESTful history</a>
-or the <a href="subscription.html">Subscription resource</a>).
+В этом примере поиска ищутся все Observations, измененные после 1-Окт 2010. При использовании этого параметра поиска приложениям следует принимать во внимание подходы к синхронизации (<a href="http.html#history">RESTful история</a>
+или <a href="subscription.html">ресурс Subscription</a>.
 </p>
 <a name="tag"> </a>
 <a name="tags"> </a>
 <a name="profile"> </a>
 
 <p>
-The search parameters _tag, _profile and _security parameters search
-on the equivalent elements in the <a href="resource.html#meta">meta element</a>.
-For example
+Параметры поиска _tag, _profile и _security ищут по соответствующим элементам в <a href="resource.html#meta">элементе meta</a>.
+Например
 </p>
 <pre>
  GET [base]/Condition?_tag=http://acme.org/codes|needs-review
 </pre>
 <p>
-searches for all Condition resources with the tag:
+ищет все ресурсы Condition с тегом:
 </p>
 <pre class="json">
 {
-  "system" : "http://acme.org/codes",
+  "system" : "http://acme.org/codes", 
   "code" : "needs-review"
 }
 </pre>
 <p>
-In the same manner:
+Таким же образом:
 </p>
 <pre>
  GET [base]/DiagnosticReport?_profile=http://hl7.org/fhir/StructureDefinition/lipid
  GET [base]/DiagnosticReport?_profile=Profile/lipid
 </pre>
 <p>
-restricts the search to only DiagnosticReport resources that are tagged that they conform to a particular profile.
-The second reference is relative, and refers a local profile on the same server.
+ограничивает поиск только ресурсами DiagnosticReport с тегом, что они согласуются с определенным профилем. Вторая ссылка относительная и ссылается на локальный профиль на том же сервере.
 </p>
 <p>
-_tag, _profile and _security parameters are all token types (see <a href="#token">below</a>).
+Параметры _tag, _profile и _security имеют тип токен (см. <a href="#token">ниже</a>).
 </p>
 
 
-<h4>Parameters for each resource</h4>
+<h4>Указание параметров для каждого ресурса</h4>
 <p>
-In addition to the _id parameter which exists for all resources, each
-FHIR resource type defines its own set of search parameters with
-their names, types, and meanings. These search parameters are on the
-same page as the resource definitions, and are also published as part
-of the standard conformance statement (<a href="conformance-base.xml.html">XML</a> or <a href="conformance-base.json.html">JSON</a>).
+Кроме параметра _id, который применяется ко всем ресурсам, каждый тип FHIR-ресурса определяет свой собственный набор параметров поиска по именам, типам и значениям. Эти параметры поиска можно найти на той же самой странице, где и определения ресурса, также они опубликованы как часть стандартного заявления о соответствии (<a href="conformance-base.xml.html">XML</a> и <a href="conformance-base.json.html">JSON</a>).
 </p>
 <p>
-Mostly, the defined search parameters correspond to a
-single element in the resource, but this is not required, and some
-search parameters refer to the same type of element in multiple
-places, or refer to derived values.
+Обычно, заданные параметры поиска соответствуют одному элементу в ресурсе, однако это не является обязательным, и некоторые параметры поиска относятся к одному типу элемента в нескольких местах или относятся к их значениям.
 </p>
 <p>
-Some of the search parameters defined by the resources are associated
-with more than one path in the resource. This means that the search
-parameter matches if any of the paths contain matching content, and
-which ever path matches, the whole resource is returned in the
-search results. The client may have to examine the resource to determine
-which path contains the match.
+Некоторые из параметров поиска, заданные ресурсами, ассоциируются с более чем одним путем в ресурсе. Это означает, что этот параметр поиска соответствует, если любой из путей содержит совпадающее содержимое, и который из путей соответствует, ресурс целиком возвращается в результатах поиска. Клиент может потребоваться проверить ресурс, чтобы определить, который из путей содержит совпадение.
 </p>
 <p>
-Servers are not required to implement any of these search parameters
-(except for the _id parameter described above), and may define their own
-additional parameters if they wish.
+Серверам не обязательно реализовывать ни один из этих параметров поиска (за исключением параметра _id, описанного выше), и они могут определять свои собственные дополнительные параметры, если хотят. 
 </p>
 
 <a name="ptypes" />
-<h4>Search Parameter Types</h4>
-<p>Each search parameter is defined with a type that defines how the search parameter
-behaves. These are the defined parameter types:
+<h4>Типы параметров поиска</h4>
+<p>Каждый параметр поиска указывается с типом, которые определяет способ поведения параметра поиска. Далее следуют определения типов параметров:
 </p>
-<%linkcodelist http://hl7.org/fhir/vs/search-param-type%>
+<%linkcodelist SearchParamType%>
 <p>
-The search parameters can also have "modifiers" appended to them that control
-their behavior. The kinds of modifiers that can be used depend on the type
-of parameter.
+Эти параметры поиска также могут иметь "модификаторы", добавленные к ним, которые управляют их поведением. Виды модификаторов, которые могут использоваться, зависят от типа параметра. 
 </p>
 
 <a name="modifiers" />
-<h4>Modifiers</h4>
-<p>Parameters are defined per resource, and their names may additionally specify a modifier as a suffix,
-separated from the parameter name by a colon. Modifiers are:</p>
+<h4>Модификаторы</h4>
+<p>Параметры определены для каждого ресурса, и их имена могут дополнительно указывать модификатор в качестве суффикса, отделенного от имени параметра двоеточием. Модификаторами являются:</p>
 <ul>
- <li>For all parameters (except combination): ":missing". E.g. gender:missing=true (or false).
-  Searching for "gender:missing=true" will return all the resources that don't have any value for the gender parameter (which usually
-  equates to not having the relevant element in the resource). Searching for "gender:missing=false"
-  will return all the resources that have a value for the "gender" parameter. </li>
- <li>For string: ":exact" (the match needs to be exact, no partial matches, case sensitive and accent-sensitive), instead of the default behavior, which is that the search does partial matches. It is at the discretion of the server whether to do a left-partial search</li>
- <li>For token: ":text" (the match does a partial searches on the text portion of a CodeableConcept or the display portion of a Coding), instead of the default search which uses codes. Other define modifiers are ":in", ":below", ":above", ":in" and ":not-in" which are described below</li>
- <li>For reference: ":[type]" where [type] is the name of a type of resource</li>
- <li>For uri: ":below", ":above" indicate that instead of an exact match, either the search term left matches the value, or vice-versa</li>
+ <li>Для всех параметров (кроме комбинации): ":missing". Например gender:missing=true (or false). Поиск по "gender:missing=true" вернет все ресурсы, которые не имеют никакого значения параметра gender (что, как правило, приравнивается к отсутствию соответствующего элемента в ресурсе). Поиск по "gender:missing=false" вернет все ресурсы, имеющие значение параметра "gender".</li>
+ <li>Для строки: ":exact" (совпадение должно быть точным, не частичным совпадением, чувствительным к регистру и диакритическим знакам), вместо поведения по умолчанию, когда допускается частичное совпадение. Решение о том, выполнять ли левый частичный поиск, остается на усмотрение сервера.</li>
+ <li>Для лексемы (token): ":text" (совпадение совершает частичные поиски по части text в CodeableConcept или 
+части display в Coding), вместо поиска по умолчанию, который использует коды. Other define modifiers are ":in", ":below", ":above", ":in" and ":not-in" which are described below</li>
+ <li>Для ссылки: ":[type]", где [type] - это имя типа ресурса.</li>
+ <li>Для uri: ":below", ":above" означают, что вместо точного совпадения либо search term left соответствует значению, либо наоборот</li>
 </ul>
 
 <a name="number" />
 <h4>number</h4>
 <p>
-The prefixes &gt;, &gt;=, &lt;=, and &lt; may be used on the parameter value,
-and have the usual meaning (note that "=" must be <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoded</a> in the
-value in a URL). Examples:
+В значение параметра могут использоваться префиксы &gt;, &gt;=, &lt;= и &lt; в своем обычном значении (note that "=" must be <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoded</a> in the 
+value in a URL). Примеры:
 </p>
 <table class="grid">
- <tr><td>[parameter]=100</td><td>Values that equal 100, to 2 significant figures precision, so range [99.5 ... 100.5)</td></tr>
- <tr><td>[parameter]=100.00</td><td>Values that equal 100, to 4 significant figures precision, so range [99.995 ... 100.005). Whole numbers also equal 100.00, but not 100.01</td></tr>
- <tr><td>[parameter]=&lt;100</td><td>Values that are less than 100</td></tr>
- <tr><td>[parameter]=&lt;=100</td><td>Values that are less or equal to 100</td></tr>
- <tr><td>[parameter]=&gt;100</td><td>Values that are greater than 100</td></tr>
- <tr><td>[parameter]=&gt;=100</td><td>Values that are greater or equal to 100</td></tr>
+ <tr><td>[parameter]=100</td><td>Значения, равные 100 с точностью до 2 значимых знаков, таким образом диапазон [99.5 ... 100.5)</td></tr>
+ <tr><td>[parameter]=100.00</td><td>Значения, равные 100 с точностью до 4 значимых знаков, таким образом диапазон [99.995 ... 100.005). Целые числа также равны 100.00, но не 100.01</td></tr>
+ <tr><td>[parameter]=&lt;100</td><td>Значения, которые меньше 100</td></tr>
+ <tr><td>[parameter]=&lt;=100</td><td>Значения, которые меньше или равны 100</td></tr>
+ <tr><td>[parameter]=&gt;100</td><td>Значения, которые больше 100</td></tr>
+ <tr><td>[parameter]=&gt;=100</td><td>Значения, которые больше или равны 100</td></tr>
  <tr><td>[parameter]=!=100</td><td>Values that are not equal to 100. Precision works as for equals (this operation is the logical converse of equals)</td></tr>
 </table>
 <p>
-For comparisons involving &lt; or &gt;, uncertainty does not factor, and the precision of the numbers is considered arbitrarily high.
-Note that the way these search parameters operate here is not the same as whether two numbers are equal to each other in a mathematical sense.
+Для сравнений, включающих &lt; или &gt;, неточность не играет роли, и точность чисел полагается произвольно высокой. Следует отметить, что то, как эти параметры поиска работают здесь, отличается от того, являются ли два числа равными друг другу в математическом смысле.
 </p>
 
 <a name="date" />
 <h4>date</h4>
 <p>
-A date parameter searches on a date/time or period. The prefixes &gt;, &gt;=, &lt;=, and &lt; may be used on the parameter value,
-and have the usual meaning. However, as is usual for date/time related functionality, while the
-concepts are relatively straight-forward, there are a number of subtleties involved in ensuring consistent behavior.
+Параметр даты ищет по дате/времени или периоду. Префиксы &gt;, &gt;=, &lt;= и &lt; могут использоваться со значением параметра в своем обычном значении. Однако, как это обычно для связанной с датой/временем функциональности, хотя эти понятия и относительно простые, имеется целый ряд тонкостей, связанных с обеспечением согласованного поведения.
 </p>
 <ul>
- <li>The date parameter format is yyyy-mm-ddThh:nn:ss(TZ) (the standard XML format).
+ <li>Формат параметра даты yyyy-mm-ddThh:nn:ss(TZ) (стандартный XML-формат). 
    <ul>
-     <li>Technically, this is any of the <a href="datatypes.html#date">date</a>, <a href="datatypes.html#dateTime">dateTime</a>, and <a href="datatypes.html#instant">instant</a> data types</li>
-     <li>e.g. Any degree of precision can be provided, but it SHALL be populated from the left (e.g. can't specify a month without a year), except that the minutes SHALL be present if an hour is present, and you SHOULD provide a time zone if the time part is present</li>
-     <li>Some user agents may escape the ":" characters in the URL, and servers SHALL handle this correctly</li>
+     <li>Технически это любой из типов данных <a href="datatypes.html#date">date</a>, <a href="datatypes.html#dateTime">dateTime</a> и <a href="datatypes.html#instant">instant</a> data types</li>
+     <li>например любая степень точности может быть приведена, однако это ДОЛЖНО быть заполнено слева (например нельзя указать месяц без года), за исключением того, что минуты ДОЛЖНЫ присутствовать, если указан час, и вы ДОЛЖНЫ указать часовой пояс, если присутствует время</li>
+     <li>Некоторые пользовательские агенты могут экранировать символы ":" в URL, и серверы ДОЛЖНЫ корректно обрабатывать это</li>
    </ul>
  </li>
- <li>[parameter]=[date] searches for resources where the date is within
-   the period implied by the given value in [date]. "[parameter]=&gt;[date]" searches for all resources where the specified date is after [date].
-   "[parameter]=&lt;=[date]" searches for all resources where the specified date is in or before [date], etc. </li>
- <li>The element the search refers to may have a datatype of <a href="datatypes.html#date">date</a>,
- <a href="datatypes.html#dateTime">dateTime</a>, <a href="datatypes.html#instant">instant</a>,
- <a href="datatypes.html#Period">Period</a>, or <a href="datatypes.html#Schedule">Schedule</a>.
- All of these time related types actually specify an interval of time, as does the search parameter itself.
+ <li>[parameter]=[date] ищет ресурсы, где дата соответствует периоду, подразумеваемому данным значением в [date] . "[parameter]=&gt;[date]" [date]" ищет все ресурсы, где указанная дата больше [date]. "[parameter]=&lt;=[date]" =[date]" ищет все ресурсы, где указанная дата равна или меньше [date], и т. д. </li>
+ <li>Элемент, к которому относится поиск, может иметь тип данных <a href="datatypes.html#date">date</a>, 
+ <a href="datatypes.html#dateTime">dateTime</a>, <a href="datatypes.html#instant">instant</a>, 
+ <a href="datatypes.html#Period">Period</a> или <a href="datatypes.html#Schedule">Schedule</a>. 
+ Все эти типы, связанные со временем, в действительности задают интервал времени, как, собственно, и сам параметр поиска.
   <ul>
-    <li>For Period and Schedule, the fact that they refer to an interval of time is explicit (though the upper or lower bound may not actually be specified in resources)</li>
- 	<li>For a date or a dateTime (and the search parameter), the interval is implicit. For example, the date 2013-01-10 specifies all the time from 00:00 on 10-Jan 2013 to immediately before 00:00 on 11-Jan 2013.</li>
-    <li>An instant (which is the same as a fully specified dateTime with milliseconds) is considered a fixed point in time with an interval smaller than the precision of the system, i.e. an interval with an effective width of 0.</li>
+    <li>Для типов Period и Schedule тот факт, что они относятся к интервалу времени, является явным (однако верхняя или нижняя граница может не быть фактически указана в ресурсах)</li>
+ 	<li>Для типов date и dateTime (и параметра поиска) интервал не выражен явно. Например дата 2013-01-10 указывает на все время от 00:00 10-Jan 2013 до, непосредственно, 00:00 on 11-Jan 2013.</li>
+    <li>instant (что то же самое, что и полностью указанная dateTime с миллисекундами) полагается фиксированной точкой во времени с интервалом меньшим, чем точность системы, т. е. интервалом с рабочей шириной 0.</li>
    </ul>
  </li>
- <li>Date parameter searches are always matched based on the behavior of intervals, as follows:
+ <li>Поиски по параметру даты всегда находят совпадения на основе поведения интервалов, как изложено ниже:
    <ul>
-     <li>For [parameter]=[date], the requirement is that the search interval fully contains the time of the target. i.e. [parameter]=2013-01-14 includes 2013-01-14T00:00 (obviously) and also 2013-01-14T10:00 but not 2013-01-15T00:00</li>
-     <li>For [parameter]=!=[date], the requirement is that the search interval does not fully contain the time of the target. i.e. [parameter]=!=2013-01-14 includes 2013-01-15T00:00 but not 2013-01-14T00:00 or 2013-01-14T10:00</li>
-	 <li>For "[parameter]=&lt;[date]", the requirement is that the interval of the time before [date] intersects (i.e. overlaps) with the interval of time in the relevant resource element.
-	    For instance, the resource time 2013-01-14 is included in the set of values that come before 2013-01-14T10:00, because it includes the part of 14-Jan 2013 before 10am </li>
-	 <li>For "[parameter]=&gt;[date]", the requirement is that the interval of the time after [date] intersects (i.e. overlaps) with the interval of time in the relevant resource element.
-	    For instance, the resource time 2013-01-14 is included in the set of values that come after 2013-01-14T10:00, because it includes the part of 14-Jan 2013 after 10am</li>
+     <li>Для [parameter]=[date] требование состоит в том, что интервал поиска полностью содержит время цели, т. е.  [parameter]=2013-01-14 включает в себя 2013-01-14T00:00 (что очевидно) и также 2013-01-14T10:00, однако не 2013-01-15T00:00</li>
+     <li>Для [parameter]=!=[date], требование состоит в том, что интервал поиска не содержит целевое время полностью, т. е. [parameter]=!=2013-01-14 включает в себя 2013-01-15T00:00, но не 2013-01-14T00:00 или 2013-01-14T10:00</li>
+
+
+	 <li>Для "[parameter]=&lt;[date]" требование состоит в том, что интервал времени до [date] пересекается (т. е. накладывается) с интервалом времени в соответствующем элементе ресурса. Например время ресурса 2013-01-14 включается в набор значений, которые идут ранее 2013-01-14T10:00, потому что он включает часть 14-Jan 2013 до 10am</li>
+	 <li>Для "[parameter]=&gt;[date]" требование состоит в том, что интервал времени после [date] пересекается (т. е. накладывается) с интервалом времени в соответствующем элементе ресурса. Например время ресурса 2013-01-14 включено в набор значений, которые идут после 2013-01-14T10:00, потому что он включает часть 14-Jan 2013 после 10am</li>
    </ul>
-   Implicitly, a missing lower boundary is 'less than' any actual date.  A missing upper boundary is 'greater than' any actual date.
-   For instance, the period from 21-Jan 2013 onwards is included in matches for date=&gt;=2013-03-14 because it may include times after 14-Mar 2013.
+   Неявно, опущенная нижняя граница "меньше чем" любая фактическая дата. Опущенная верхняя граница "больше чем" любая фактическая дата. Например, период от 21-Jan 2013 и далее включен в совпадения для date=&gt;=2013-03-14, потому что он может включать время после 14-Mar 2013.
  </li>
- <li>Similarly, when the date parameter is not fully specified, matches against it are based on the behavior of intervals, where:
+ <li>Таким же образом, когда параметр даты указан не полностью, совпадения с ним основываются на свойстве интервалов, где:
 	<ul>
-		<li>Dates with just the year specified are equivalent to an interval that starts at the first instant of January 1st to the last instant of December 31st, e.g. 2000 is equivalent to an interval of [2000-01-01T00:00, 2000-12-31T23:59]</li>
-		<li>Dates with the year and month are equivalent to an interval that starts at the first instant of the first day of the month and ends on the last instant of the last day of the month, e.g. 2000-04 is equivalent to an interval of [2000-04-01T00:00, 2000-04-30T23:59]</li>
+		<li>Даты, где указан только год, эквивалентны интервалу, который начинается в первое мгновение 1го января до последнего мгновения 31го декабря, например 2000 эквивалентно интервалу [2000-01-01T00:00, 2000-12-31T23:59]</li>
+		<li>Даты, где указан год и месяц, эквивалентны интервалу, который начинается в первое мгновение первого дня месяца и заканчивается в последнее мгновение последнего дня месяца, например 2000-04 эквивалентно интервалу [2000-04-01T00:00, 2000-04-30T23:59]</li>
 	</ul>
  </li>
- <li>Where possible, the system should correct for timezones when performing queries. Dates do not have time zones, and time zones
-   should not be considered. Where both search parameters and resource element date times do not have time zones, the servers local
-   time zone should be assumed.
+ <li>Где это возможно, система должна корректировать часовые пояса при совершении запросов. Даты не имеют часовых поясов, и часовые пояса не должны учитываться. Там, где и параметр поиска, и дата время элемента ресурса не имеют часового пояса, им следует присваивать локальный часовой пояс сервера.
  </li>
  <li>
-   Note that for a Schedule data type, the specified scheduling details are ignored and only the outer limits matter. For instance, a schedule that specifies every second day between
-   31-Jan 2013 and 24-Mar 2013 includes 1-Feb 2013, even though that is on an odd day that is not specified by the period. This is
-   to keep the server load processing queries reasonable.
+   Обратите внимание, что для типа данных Schedule указанные подробности расписания игнорируются и только внешние лимиты имеют значение. К примеру расписание, которое определяет каждый второй день между 31-Jan 2013 и 24-Mar 2013, включает в себя 1-Feb 2013, хотя это будет и нечетный день, который не соответствует расписанию. Это делается для того, чтобы сохранить загрузку обрабатывающего запросы сервера разумной.
  </li>
 </ul>
 <p>
-As an example, the following search searches for all the procedures in a patient compartment that occurred over a 2 year period:
+В качестве примера следующий поиск ищет все процедуры в модуле patient, которые произошли за двухлетний период:
 </p>
 <pre>
  GET [base]/Patient/23/Procedure?date=&gt;2010-01-01&amp;date=&lt;2011-12-31
@@ -342,122 +262,90 @@ As an example, the following search searches for all the procedures in a patient
 <a name="string" />
 <h4>string</h4>
 <p>
-The string parameter refers to simple string searches against sequences of characters.
-Matches are case- and accent- insensitive. By default, a match exists if a portion of
-the parameter value contains the specified string. It is at the discretion of the
-server whether to do a left-partial search. The modifier :exact can be used to indicate
-that the match needs to be exact (the whole string, including casing and accents). For example:
+Строковый параметр относится к простому строковому поиску в последовательностях символов. Совпадения являются нечувствительными к регистру и диакритическим знакам. По умолчанию совпадение существует, если часть значения параметра содержит указанную строку. Решение о том, выполнять ли левый частичный поиск, остается на усмотрение сервера. Модификатор :exact можно использовать для указания, что совпадение должно быть точным (целая строка, включая регистр и диакритические знаки). Например:
 </p>
 <pre>
  GET [base]/Patient?name=eve
  GET [base]/Patient?name:exact=Eve
 </pre>
 <p>
-The first is a request to find any patients with "eve" in any part of the name. This would
-include patients with the name "Eve", "Severine", etc. The second search would only return
-patients with the name "Eve".
+ Первое - это запрос на поиск всех пациентов с "eve" в любой части имени. Результат будет включать в себя пациентов с именами "Eve", "Severine" и пр. Второй поиск вернет только пациентов с именем "Eve".
 </p>
 <p>
-An additional modifier :text
-can be used to specify a search with advanced text handling (see <a href="#text">below</a>)
-though only a few servers are expected to offer this facility.
+ Дополнительный модификатор :text можно использовать для указания поиска с продвинутым управлением текста  (см. <a href="#text">ниже</a>), однако такую возможность предлагает небольшое количество серверов.
 </p>
 <p>
-It is at the discretion of the server whether to pre-process names, addresses,
-and contact details to remove separator characters prior to matching in order
-to ensure more consistent behavior. For example, a server might remove all
-spaces and "-" characters from phone numbers. What is most appropriate varies
-depending on culture and context.
+Решение о том, делать ли предварительную обработку имен, адресов и контактной информации для удаления символов-разделителей до нахождения соответствия, чтобы гарантировать непротиворечивое поведение, остается на усмотрение сервера. Например сервер мог бы удалить все пробелы и символы "-" из телефонных номеров. Что лучше всего подходит, варьируется в зависимости от культуры и контекста.
 </p>
 
 
 <a name="uri" />
 <h4>uri</h4>
 <p>
-The uri parameter refers to an element which is URI (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>).
+Параметр URI относится к элементу, который является URI (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>). Совпадения являются точными (например чувствительность к регистру, диакритическим знакам, экранированию), и весь URI целиком должен совпадать. Могут быть использованы модификаторы :above или :below для указания левостороннего совпадения. Например:
+<!-- The uri parameter refers to an element which is URI (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>).
 Matches are precise (e.g. case, accent, and escape) sensitive, and the entire URI must match. 
 The modifier :above or :below can be used to indicate
-that partial matching is used. For example:
+that the match is based on left. For example: -->
 </p>
 <pre>
  GET [base]/ValueSet?url=http://acme.org/fhir/ValueSet/123
  GET [base]/ValueSet?url:below=http://acme.org/fhir/
 </pre>
 <p>
-The first is a request to find any value set with the exact url "http://acme.org/fhir/ValueSet/123". 
+Первый запрос для поиска любого набора значений с точным URL "http://acme.org/fhir/ValueSet/123". 
+Второй поиск вернет любые наборы значений, у которых URL начинается с "http://acme.org/fhir/".
+Обратное утверждение - поиск любого набора значений, кроме данного конкретного URL - может быть полезным для поиска name systems, но это, как правило, менее полезно, чем поиск с параметром :below.
+<!-- The first is a request to find any value set with the exact url "http://acme.org/fhir/ValueSet/123". 
 The second search will return any value sets that have a URL that starts with "http://acme.org/fhir/".
 The converse - the search for any value set above a given specific URL - may be useful for searching
-name systems, but it is generally less useful than the :below search. 
+name systems, but it is generally less useful than the :below search.  -->
 </p>
 
 <a name="token" />
 <h4>token</h4>
 <p>
-A token type is a parameter that searches on a pair, a URI and a value. It is used against
- code or identifier value where the value may 
-have a URI that scopes its meaning. The search is performed against the  pair from a Coding or an Identifier. The syntax for the value is one of the following:
+Тип токен - это параметр, который ищет по значению кода или идентификатора, где это значение может иметь URI, который ограничивает свое значение (типы <a href="datatypes.html#Coding">Coding</a>, 
+<a href="datatypes.html#CodeableConcept">CodeableConcept</a> и <a href="datatypes.html#Identifier">Identifier</a>, а также <a href="datatypes.html#code">code</a>, где URI не выражен явно, или для boolean).
+</p>
+<p>
+Если у параметра нет модификатора, поиск осуществляется по URI/value из Кодинга или Идентификатора. Синтаксис для этого значения один из следующих:
 </p>
 <ul>
- <li><b>[parameter]=[code]</b>: the value of [code] matches a Coding.code or Identifier.value irrespective of the value of the system property</li>
- <li><b>[parameter]=[system]|[code]</b>: the value of [code] matches a Coding.code or Identifier.value, and the value of [system] matches the system property of the Identifier or Coding</li>
- <li><b>[parameter]=|[code]</b>: the value of [code] matches a Coding.code or Identifier.value, and the Coding/Identifier has no system property</li>
+ <li><b>[parameter]=[code]</b>: значение [code] совпадает с Coding.code или Identifier.value не зависимо от значения свойства "system"</li>
+ <li><b>[parameter]=[system]|[code]</b>: значение [code] совпадает с Coding.code или Identifier.value, а значение [system] совпадает со значением свойства "system" в Identifier или Coding</li>
+ <li><b>[parameter]=|[code]</b>: значение [code] совпадает с Coding.code или Identifier.value, а Coding/Identifier не содержит свойства "system" </li>
 </ul>
 <p>
-Note that the namespace URI and code both must be <a href="#escaping">escaped</a>. Matches are literal (e.g. not based on subsumption or other code system features), but not case sensitive.
+Обратите внимание, что URI пространства имен и код необходимо <a href="#escaping">экранировать</a>. Совпадения должны быть буквальными (т.е. не должны основываться на отнесении к какой-либо категории или других характеристиках кодовых систем), но не должны зависеть от регистра.
 </p>
-<p>
-Token search parameters are used for the following data types:
-</p>
+<p><b>Модификаторы:</b></p>
 <table class="lines">
- <tr>
-  <td><b>Data Type</b></td>
-  <td><b>URI</b></td>
-  <td><b>Code</b></td>
-  <td><b>Comments</b></td>
- </tr>
- <tr>
-  <td><a href="datatypes.html#Coding">Coding</a></td>
-  <td>Coding.system</td>
-  <td>Coding.code</td>
-  <td></td>
- </tr>
- <tr>
-  <td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td>
-  <td>CodeableConcept.coding.system</td>
-  <td>CodeableConcept.coding.code</td>
-  <td>Matches against any coding in the CodeableConcept</td>
- </tr>
- <tr>
-  <td><a href="datatypes.html#Identifier">Identifier</a></td>
-  <td>Identifier.system</td>
-  <td>Identifier.value</td>
-  <td></td>
- </tr>
- <tr>
-  <td><a href="datatypes.html#Identifier">ContactPoint</a></td>
-  <td>ContactPoint.use</td>
-  <td>ContactPoint.value</td>
-  <td>The use is prepended by <a href="contact-point-system.html">http://hl7.org/fhir/contact-point-system</a>/</td>
- </tr>
- <tr>
-  <td><a href="datatypes.html#code">code</a></td>
-  <td>(implicit)</td>
-  <td>code</td>
-  <td>the system is defined in the value set (though it's not usually needed)</td>
- </tr>
- <tr>
-  <td><a href="datatypes.html#boolean">boolean</a></td>
-  <td>(implicit)</td>
-  <td>boolean</td>
-  <td>The implicit system is <a href="special-values.html">http://hl7.org/fhir/special-values</a></td>
- </tr>
- <tr>
-  <td><a href="datatypes.html#string">string</a></td>
-  <td>n/a</td>
-  <td>string</td>
-  <td>Token is sometimes used for string to indicate that exact matching is the correct default search stategy</td>
- </tr>
+ <tr> <td><b>Модификатор</b></td> <td><b>Использование</b></td> </tr>
+ <tr> <td>:text</td> <td>этот параметр поиска обрабатывается как строка поиска по тексту, ассоциированному с кодом/значением - либо <i>CodeableConcept.text</i>, <i>Coding.display</i>, либо <i>Identifier.type.text</i></td> </tr>
+ <tr> <td>:not</td> <td>изменяет на противоположное совпадение по коду, описанное в параграфе выше</td> </tr>
+ <tr> <td>:above</td> <td>параметром поиска является концепт с формой [system]|[code], и он проверяет, включает ли кодинг в ресурсе указанный в поиске код (например поисковый концепт имеет связь "is-a" с кодингом в ресурсе, и сюда входит сам кодинг)</td> </tr>
+ <tr> <td>:below</td> <td>параметром поиска является концепт с формой [system]|[code], и он проверяет, относится ли кодинг в ресурсе к указанному в поиске коду (например кодинг в ресурсе имеет связь "is-a" с поисковым концептом, и сюда входит сам кодинг)</td> </tr>
+ <tr> <td>:in</td> <td>параметром поиска является URI (относительный или абсолютный), который идентифицирует набор значений, и поисковый параметр проверяет, входит ли кодинг в указанный  <a href="valueset.html">набор значений</a>. Ссылка может быть буквальной (адрес, где нахоидтся этот набор значений) или логической (ссылка на ValueSet.identifier)</td> </tr>
+ <tr> <td>:not-in</td> <td>параметром поиска является URI (относительный или абсолютный), который идентифицирует набор значений, и поисковый параметр проверяет, что кодинг не входит в указанный набор значений</td> </tr>
 </table>
+<p>
+Большинство серверов будут обрабатывать только уже известные/зарегистрированные/поддерживаемые внутри наборы значений, но могут принимать любые валидные ссылки на наборы значений.
+Серверы могут учитывать таблицы соответствий концептов при проверке связей категоризации (отнесения объекта к определённой категории).
+</p>
+
+<p>
+Вот несколько примеров поиска:
+</p>
+<table>
+ <tr><td width="50%"><b>Поисковый запрос</b></td><td><b>Описание</b></td></tr>
+ <tr><td><pre> GET [base]/Patient?identifier=http://acme.org/patient|2345</pre></td><td>Ищет всех пациентов с идентификатором с ключом = "2345" в системе "http://acme.org/patient"</td></tr>
+ <tr><td><pre> GET [base]/Patient?gender=male</pre></td><td>Ищет всех пациентов с полем gender, имеющим код "male", вне зависимости от системы. Заметим, что это, как правило, не очень полезно - системы обычно определяют символы, где перекрытия являются случайными и не информативными</td></tr>
+ <tr><td><pre> GET [base]/Patient?gender=http://hl7.org/fhir/v2/0001|M</pre></td><td>Ищет всех пациентов с полем gender, которое закодированым значением "M" из таблицы HL7 Administrative Gender</td></tr>
+ <tr><td><pre> GET [base]/Patient?gender:text=male</pre></td><td>Ищет всех пациентов с полем gender, содержащим текст "male", ассоциированный с ним (примечание: результат будет включать и значение "female")</td></tr>
+ <tr><td><pre> GET [base]/Patient?active=true</pre></td><td>Search for any patients that are active</td></tr>
+</table>
+
 <p>
 Note about the use of token search parameters for boolean fields: the boolean values 'true' and 'false' are also represented
 as formal codes in the <a href="special-values.html">Special Values</a> code system, which is useful when boolean values 
@@ -465,58 +353,28 @@ need to be represented in a <a href="datatypes.html#coding">Coding</a> data type
 http://hl7.org/fhir/special-values, though there is usually no reason to use this, as a simple true or false is sufficient.
 </p>
 
-<p><b>Modifiers:</b></p>
-<table class="lines">
- <tr> <td><b>Modifier</b></td> <td><b>Use</b></td> </tr>
- <tr> <td>:text</td> <td>the search parameter is processed as a string that searches text associated with the code/value - either <i>CodeableConcept.text</i>, <i>Coding.display</i>, or <i>Identifier.type.text</i></td> </tr>
- <tr> <td>:not</td> <td>reverse the code matching described in the paragraph above</td> </tr>
- <tr> <td>:above</td> <td>the search parameter is a concept with the form [system]|[code], and the search parameter tests whether the coding in a resource subsumes the specified search code (e.g. the search concept has an is-a relationship with the coding in the resource, and this includes the coding itself)</td> </tr>
- <tr> <td>:below</td> <td>the search parameter is a concept with the form [system]|[code], and the search parameter tests whether the coding in a resource is subsumed by the specified search code (e.g. the coding in the resource has an is-a relationship with the search concept, and this includes the coding itself)</td> </tr>
- <tr> <td>:in</td> <td>the search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is in the specified <a href="valueset.html">value set</a>. The reference may be literal (to an address where the value set can be found) or logical (a reference to ValueSet.identifier)</td> </tr>
- <tr> <td>:not-in</td> <td>the search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is not in the specified value set</td> </tr>
-</table>
-<p>
-Most servers will only process value sets that are already known/registered/supported internally, but servers can elect to accept any valid reference to a value set.
-Servers may elect to consider concept mappings when testing for subsumption relationships.
-</p>
-
-<p>
-Here are some example searches:
-</p>
-<table>
- <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>
- <tr><td><pre> GET [base]/Patient?identifier=http://acme.org/patient|2345</pre></td><td>Search for all the patients with an identifier with key = "2345" in the system "http://acme.org/patient"</td></tr>
- <tr><td><pre> GET [base]/Patient?gender=male</pre></td><td>Search for any patient with a gender that has a code "male", irrespective of the system. Note that this usually isn't very useful - systems generally define symbols where overlap is coincidental and not informative</td></tr>
- <tr><td><pre> GET [base]/Patient?gender=http://hl7.org/fhir/v2/0001|M</pre></td><td>Search for any patient with a gender which is coded as "M" in the HL7 Administrative Gender table</td></tr>
- <tr><td><pre> GET [base]/Patient?gender:text=male</pre></td><td>Search for any patient with a gender that has a text "male" associated with it (note: this will include "female")</td></tr>
- <tr><td><pre> GET [base]/Patient?active=true</pre></td><td>Search for any patients that are active</td></tr>
-</table>
-
-
 <a name="quantity" />
 <h4>quantity</h4>
 <p>
-A quantity parameter searches on the <a href="datatypes.html#Quantity">Quantity</a> data type.
-The syntax for the value follows the form:
+Параметр величины ищет по типу данных <a href="datatypes.html#Quantity">Quantity</a>. Синтаксис для значения соответствует следующей форме:
 </p>
 <ul>
- <li><b>[parameter]=[comparator][number]|[system]|[code]</b> matches a quantity with the given unit</li>
+ <li><b>[parameter]=[comparator][number]|[system]|[code]</b> соответствует количеству с заданными единицами измерения</li>
 </ul>
 <p>
-The comparator is optional; if it is not present, the default comparator is "=". A special value "~" can be used for approximation.  Example searches:
+Компаратор является необязательным; если не указан, по умолчанию компаратором является "=". Специальное значение "~" может использоваться как символ приближения. Примеры поисков:
 </p>
 
 <table>
- <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>
- <tr><td><pre> GET [base]/Observation?value=5.4|http://unitsofmeasure.org|mg</pre></td><td>Search for all the observations with a value of 5.4 mg where mg is understood as a UCUM unit (system/code)</td></tr>
- <tr><td><pre> GET [base]/Observation?value=5.4||mg</pre></td><td>Search for all the observations with a value of 5.4 mg where the units - either the code  or the stated human units (units) are "mg"</td></tr>
- <tr><td><pre> GET [base]/Observation?value=&lt;5.4|http://unitsofmeasure.org|mg</pre></td><td>Search for all the observations where the value of is less than 5.4 mg where mg is understood as a UCUM unit</td></tr>
- <tr><td><pre> GET [base]/Observation?value=~5.4|http://unitsofmeasure.org|mg</pre></td><td>Search for all the observations where the value of is about 5.4 mg where mg is understood as a UCUM unit.
-   The recommended value for the approximation is 10% of the stated value, but systems may choose other values where appropriate</td></tr>
+ <tr><td width="50%"><b>Поисковый запрос</b></td><td><b>Описание</b></td></tr>
+ <tr><td><pre> GET [base]/Observation?value=5.4|http://unitsofmeasure.org|mg</pre></td><td>Находит все результаты обследований со значением 5.4 mg, где mg понимается как UCUM-единица измерения (система/код)</td></tr>
+ <tr><td><pre> GET [base]/Observation?value=5.4||mg</pre></td><td>Находит все результаты обследований со значением 5.4 mg, где единицей измерений - либо код, либо официально утверждённая человеческая единица измерения - является "mg"</td></tr>
+ <tr><td><pre> GET [base]/Observation?value=&lt;5.4|http://unitsofmeasure.org|mg</pre></td><td>Находит все результаты обследований, в которых значение меньше, чем 5.4 mg, где mg понимается как UCUM-единица измерения</td></tr>
+ <tr><td><pre> GET [base]/Observation?value=~5.4|http://unitsofmeasure.org|mg</pre></td><td>Находит все результаты обследований со значением около 5.4 mg, где mg понимается как UCUM-единица измерения. Рекомендованное значение приближения 10% от установленного значения, однако системы могут выбирать другие значения, где это необходимо</td></tr>
 </table>
 
 <p>
-The search processor may choose to perform a search based on <a href="datatypes.html#quantity">canonical units</a> (e.g. any value where the units can be converted to a value in mg in the case above)
+Поисковый процессор может решить выполнить поиск, основанный на <a href="datatypes.html#quantity">канонических единицах измерений</a> (например любое значение, которое может быть преобразовано в значение в миллиграммах, для случая выше)
 </p>
 
 
@@ -524,327 +382,187 @@ The search processor may choose to perform a search based on <a href="datatypes.
 <a name="reference" />
 <h4>reference</h4>
 <p>
-A reference parameter refers to <a href="references.html">references between resources</a>, e.g. find all
-Conditions where the subject reference is a particular patient, where the patient is selected by name or identifier.
-The interpretation of a <i>reference</i> parameter is either:
+Ссылочный параметр относится к <a href="references.html">ссылкам между ресурсами</a>, например найти все Conditions, где объектом ссылки является определенный пациент, где пациент выбирается по имени или идентификатору. Интерпретация параметра <i>ссылка</i> одна из двух: 
 </p>
 <ul>
- <li><b>[parameter]=[id]</b> the logical [id] of a resource using a local reference (i.e. a relative reference)</li>
- <li><b>[parameter]=[url]</b> where the [url] is an absolute URL - a reference to a resource by its absolute location</li>
+ <li><b>[parameter]=[id]</b> логический [id] ресурса, имеющего локальную ссылку (т. е. относительную ссылку) </li>
+ <li><b>[parameter]=[url]</b> где [url] - это абсолютный URL-адрес  - ссылка на ресурс по его абсолютному местоположению</li>
 </ul>
 <p>
-Note that if a relative reference resolves to the same value as a specified absolute URL, or vice versa, this is a match too.
+Обратите внимание, что если относительная ссылка разрешается тем же значением, что и указанный абсолютный URL-адрес, либо наоборот, это также считается совпадением.
 </p>
 <p>
-Some references are allowed to point to more than one type of resource. e.g. subject : Reference(Patient|Group|Device|..).
-In these cases, multiple different resources may have the same logical identifier. In this case, the client can specify
-a type modifier after the name of the parameter to be explicit about the intended type:
+У некоторых ссылок есть возможность указывать на более чем один тип ресурса, например объект : Reference(Patient|Group|Device|..). В таких случаях несколько различных ресурсов могут иметь один и тот же логический идентификатор. В этом случае клиент может указать модификатор типа после имени параметра, чтобы явно задать желаемый тип:
 </p>
 <pre>
  GET [base]/Condition?subject:Patient=23
 </pre>
 <p>
-This searches for any conditions where the subject refers to the patient resource with the
-logical identifier "23". The server SHOULD reject a search where the logical id refers to
-more than one matching resource across different types. Note that the :[type] modifier
-can't be used with a reference to a resource found on another server, since the server
-would not usually know what type that resource has (but since these are absolute
-references, there can be no ambiguity about the type).
+Этот запрос ищет все условия (conditions), в которых объект ссылается на ресурс patient с логическим идентификатором "23". Сервер ДОЛЖЕН отклонить поиск, в котором логический идентификатор ссылается на более чем один совпадающий ресурс среди нескольких типов. Следует отметить, что модификатор :[type]  не может быть использован со ссылкой на ресурс, находящийся на другом сервере, т. к. сервер не будет знать, какой тип имеет этот ресурс (но т. к. это абсолютные ссылки, то двусмысленность относительно типа отсутствует).
 </p>
 
-<h4>Chained parameters</h4>
+<h4>Цепочечные параметры (Chained parameters)</h4>
 <p>
-In order to save a client from doing a series of search operations,
-reference parameters may be "chained" by appending them with
-a period (.) followed by the name of a search parameter defined for the target
-resource. This can be done recursively, following a logical path
-through a graph of related resources, separated by ".".
-For instance, given that
-the resource <a href="diagnosticreport.html">DiagnosticReport</a>
-has a search parameter named <i>subject</i>, which is usually a
-reference to a <a href="patient.html">Patient</a> resource, and
-the Patient resource includes a parameter <i>name</i> which
-searches on patient name, then the search
+Чтобы избавить клиента от необходимости выполнять серию операций поиска, ссылочные параметры могут быть "сцеплены" (объединены в последовательность) добавлением к ним точки (.), за которой следует имя параметра поиска, указанного для целевого ресурса. Это может быть сделано рекурсивно, следуя логическому пути через граф связанных ресурсов, разделенных точкой ".". К примеру дано, что ресурс <a href="diagnosticreport.html">DiagnosticReport</a> 
+имеет параметр поиска с именем <i>subject</i>, который обычно является ссылкой на ресурс <a href="patient.html">Patient</a>, и этот ресурс Patient содержит параметр <i>name</i>, который ищет по имени пациента, тогда поиск вида
 </p>
 <pre>
  GET [base]/DiagnosticReport?subject.name=peter
 </pre>
 <p>
-is a request to return all the lab reports that have a subject whose name includes "peter". Because
-the Diagnostic Report subject can be one of a set of different resources, it's possible to limit
-the search to a particular type:
+- это запрос на возвращение всех лабораторных отчетов, в которых имеется объект, чье имя содержит "peter". Так как  объект Diagnostic Report может быть одним из набора различных ресурсов, имеется возможность ограничить поиск определенным типом:
 </p>
 <pre>
  GET [base]/DiagnosticReport?subject:Patient.name=peter
 </pre>
 <p>
-Which is a request to return all the lab reports that have a subject which is a patient, whose name includes "peter".
+Это запрос на возвращение всех лабораторных отчетов, имеющих в качестве объекта пациента, чье имя содержит "peter".
 </p>
 
 <p>
-Advanced Search Note:
-Where a chained parameter searches a resource reference that may have more than one
-different type of resource as its target, the parameter chain may end up referring
-to search parameters with the same name on more than one kind of resource at once.
-The parameter names defined in FHIR have consistent types wherever they are used.
-Implementers defining their own names need to be sure that they do not create
-unprocessable combinations. Servers SHOULD reject queries chained queries
-that lead to disjoint types along the path (e.g. the client has to specify
-the type explicitly using the syntax in the second example above).
+Примечание к продвинутому поиску: Там, где цепочечный параметр ищет ссылку на ресурс, который может иметь более одного ресурса различного типа в качестве цели, цепочка параметров может заканчиваться ссылкой на параметры поиска с тем же именем на более чем один вид ресурса одновременно. Имена параметров, установленные в FHIR, имеют непротиворечивые типы, где бы они не использовались. Разработчикам, вводящим свои собственные названия, необходимо удостовериться, что они не создают комбинации, которые будет невозможно обработать. Серверам СЛЕДУЕТ отклонять цепочечные запросы, которые ведут к нарушению структуры типов наряду с путем (например клиент должен явно указать тип с помощью синтаксиса во втором примере выше). 
 </p>
 
 <a name="composite" />
 <a name="combining" />
-<h4>Composite Search Parameters</h4>
+<h3>Комбинированные параметры поиска</h3>
 <p>
-The result of the search operation is the intersection of the resources that match the criteria specified by each
-individual search parameter. If a parameter repeats, such as /Patient?language=FR&amp;language=NL, then
-this matches a patient who speaks both languages. This is known as an AND search parameter, since the
-server is expected to respond only with results which match both values.
+Результатом операции поиска является пересечение ресурсов, которые соответствуют критериям, указанным в каждом отдельном параметре поиска. Если параметр повторяется, например /patient?language=FR&amp;language=NL, тогда это соответствует пациенту, который говорит на обоих языках. Это называется параметром поиска И (AND), так как от сервера ожидается ответ с результатами, которые соответствуют обоим значениям.
 </p>
 <p>
-If, instead, the search is to find patients that speak either
-language, then this is a single parameter with multiple values, separated by a ','.
-For example: "/Patient?language=FR,NL". This is known as an OR search parameter,
-since the server is expected to respond with results which match either value.
+Если, наоборот, поиск ищет пациентов, которые говорят на одном из этих языков, тогда это будет один параметр с несколькими значениями, разделенными запятой ','. 
+Например: "/patient?language=FR,NL". Это называется параметром поиска ИЛИ (OR), так как от сервера ожидается ответ с результатами, которые соответствуют одному из значений.
 </p>
 <p>
-AND parameters and OR parameters may also be combined, for example:
-"/Patient?language=FR,NL&amp;language=EN" would refer to any patient who speaks
-English as well as either French or Dutch.
+AND-параметры и OR-параметры можно комбинировать, например: 
+"/patient?language=FR,NL&amp;language=EN" будет относиться к любому пациенту, который говорит на 
+английском, а также французском или голландском языках.
 </p>
 <p>
-This allows for simple combinations of and/or values, but doesn't allow a search based on
-a pair of values, such as all observations with a sodium value >150 mmol/L (particularly
-as the end criteria of a chained search), or searching on Group.characteristic: you need
-find a combination of key/value, not an intersection of separate matches on key and value.
-Another example is spatial coordinates when doing geographical searches.
+Это позволяет использовать простые комбинации and/or значений, однако не позволяет поиски, основанные на паре значений, такие как все обследования со значением натрия >150 mmol/L  (в особенности как конечный критерий цепочечного поиска), или поиск по Group.characteristic: вам необходимо найти комбинацию ключ/значение, а не пересечение отдельных совпадений по ключу и значению. Другой пример - это пространственные координаты в географических поисках.
 </p>
 <p>
-To allow these searches, a resource may also specify <i>composite</i> parameters
-that take sequences of single values that match other defined parameters as an
-argument. The matching parameter of each component in such a sequence
-is documented in the definition of the parameter. These sequences are formed by
-joining the single values with a "$".  Note that this sequence is a single
-value and itself can be composed into a set of values, so that, for example,
-multiple matching state-on-date parameters can be specified as
-state-on-date=new$2013-05-04,active$2013-05-05.
+Для осуществления этих поисков ресурс может также указать <i>комбинированные</i> параметры, которые принимают последовательность отдельных значений, которые соответствуют другим определенным параметрам в качестве аргумента. Совпадающий параметр каждого компонента в такой последовательности задокументирован в определении этого параметра. Эти последовательности формируются присоединением отдельных значений через символ "$". Обратите внимание, что эта последовательность является отдельным значением и сама может входить в состав набора значений для того чтобы, например, несколько совпадающих параметров state-on-date могли быть указаны наподобие state-on-date=new$2013-05-04,active$2013-05-05.
 </p>
 <p>
-Modifiers are not used on composite parameters.
+В комбинированных параметрах модификаторы не используются.
 <!--
-Future note: use \p and \m in search values? if we add a double = to parameter value for text, that would get rid
-of :exact.
-Won't try to get rid of type modifier - that's the real use for modifiers because it has to be in a chaining line.
+Future note: use \p and \m in search values? if we add a double = to parameter value for text, that would get rid 
+of :exact. 
+Won't try to get rid of type modifier - that's the real use for modifiers because it has to be in a chaining line. 
 Other modifier is :text on token - use "~"? or ""?
 -->
 </p>
 
 <a name="escaping" />
-<h4>Escaping Search Parameters</h4>
+<h4>Экранирование параметров поиска</h4>
 <p>
-In the rules above, special rules are defined for the characters "$", ",", and "|".
-As a consequence, if these characters appear in an actual parameter value,
-they must be differentiated from their use as separator characters. When
-any of these characters appear in an actual parameter value, they must be
-prepended by the character "\" (which also must be used to prepend itself).
-So "param=xxx$xxx" means a composite parameter, while "param=xx\$xx" means that
-the parameter has the literal value 'xx$xx'. The parameter value "xx\xx" is illegal,
-and the parameter value "param=xx\\xx" means a literal value of 'xx\xx'.
+В правилах выше особые правила определены для символов "$", ",", и "|". Как следствие, если эти символы встречаются в самом значении параметра, они должны отличаться от их использования в качестве разделительных символов. Когда любой из этих символов входит непосредственно в значение параметра, перед ним необходимо добавлять символ "\" (который также должен быть использован для экранирования самого себя). Таким образом 
+"param=xxx$xxx" означает комбинированный параметр, в то время как "param=xx\$xx" означает, что этот параметр имеет буквальное значение 'xx$xx'. Значение параметра "xx\xx" является недопустимым, а значение параметра "param=xx\\xx" означает буквальное значение 'xx\xx'.
 </p>
 
 
 <a name="text"> </a>
-<a name="content"> </a>
-<h4>Text Search Parameters</h4>
+<h4>Текстовые параметры поиска</h4>
 <p>
-There are two special text search parameters, _text and _content, which search
-on the narrative of the resource, and the entire content of the resource respectively.
-These parameters SHOULD support a sophisticated search functionality of the type
-offered by typical text indexing services is appropriate.
-The value of the parameter is a text based search, which may involve searching
-multiple words with thesaurus and proximity considerations, and logical operations
-such as AND, OR etc. For example:
+Имеется два особых параметра текстового поиска, _text and _content, которые ищут по описательной части ресурса и по всему содержимому ресурса соответственно. Эти параметры ДОЛЖНЫ поддерживать тип функциональности продвинутого поиска, предлагаемый типовыми службами индексирования текста, ??? уместно (подходяще). Значением параметра является текстовый поиск, который может включать поиск нескольких слов  по словарю и соображениям близости, и такие логические операции, как AND, OR и т. п. Например:
 </p>
 <pre>
  GET [base]/Condition?_text=(bone OR liver) and metastases
 </pre>
 <p>
-This searches for all Condition resources with the word "metastases" and either
-"bone" or "liver" in the narrative. The server MAY choose to search
-for related words as well.
+ Запрос ищет все ресурсы Condition со словами "metastases" и либо "bone", либо "liver" в описательной части. Сервер МОЖЕТ также выбрать поиск по связанным словам.
 </p>
 <a name="dstu"> </a>
 <blockquote>
-<p><b>DSTU Note</b>: The issues around standardizing text search are not fully resolved.
-During the trial use period for this specification, we recommend that systems use
-the rules specified by <a href="http://docs.oasis-open.org/odata/odata/v4.0/cs01/part1-protocol/odata-v4.0-cs01-part1-protocol.html#_The_$search_System">
-the OData specification for the $search parameter</a>.
-Typical implementations would use Lucene, an sql-based full text search,
-or some indexing service. Feedback about consistent implementation in this area
-is welcome.
+<p><b>Примечание DSTU</b>: Не все вопросы стандартизации текстового поиска решены. Во время пробного периода использования данной спецификации мы рекомендуем системам использовать правила, описанные в <a href="http://docs.oasis-open.org/odata/odata/v4.0/cs01/part1-protocol/odata-v4.0-cs01-part1-protocol.html#_The_$search_System">
+a forth coming release of the OData specification for the $search parameter</a>.
+Типовые разработки будут использовать Lucene - полнотекстовый поиск на основе sql-запросов, либо некоторую службу индексирования. Обратную связь о непротиворечивости реализации в этой области можно только приветствовать.
 </p>
 </blockquote>
 
-<a name="list"> </a>
-<h4>Searching by list</h4>
-
-<p>
-The _list parameter allows for the retrieval of resources that are referenced by a <a href="list.html">List</a>
-resource. 
-</p>
-<pre>
- GET [base]/Patient?_list=42
-</pre>
-<p>
-This returns all patient resources that are referenced from the list found at [base]/List/42) in List.entry.item.
-While it is possible to retrieve the list, and then iterate the entries in the list fetching each
-patient, using a list as a search criteria allows for additional search criteria to be specified. For 
-instance:
-</p>
-<pre>
- GET [base]/Patient?_list=42&amp;gender=female
-</pre>
-<p>
-which means, welect all the female patients in the list. The server can return the list referred 
-to in the search parameter as an included resource, but is not required to do so. 
-In addition, a system can support searching by lists by their logical function. For example:  
-</p>
-<pre>
- GET [base]/AllergyIntolerance?patient=42&amp;_list=$current-allergies
-</pre>
-<p>
-This is a request to fetch all the allergies in the patient 42's "Currrent Allergy List".
-The server returns all the relevant AllergyIntolerance resources, and can also choose
-to return the list. For further information, refer to the <a href="lifecycle.html#current">definition of "$current-allergies"</a>,
-and the <a href="list-operations.html#find">List Operation "Find"</a>.
-Note that servers are not required to make these lists available to the clients as list resources,
-but may choose to do so.
-</p>
-
 <a name="filter"> </a>
 <a name="_filter"> </a>
-<h4>Advanced filtering</h4>
+<h4>Расширенные возможности фильтрации</h4>
 
 <p>
-The search mechanism described above is flexible, and easy to implement
-for simple cases, but it is limited in its ability to express combination
-queries. To complement this mechanism, a specific search expression
-parameter can also be used, named "_filter".
+Поисковый механизм, описанный выше, гибкий и легко осуществимый для простых случаев, однако он ограничен в своей способности выражать комбинированные запросы. В дополнение к этому механизму может быть использован особый параметр поискового выражения "_filter".
 </p>
 <p>
-For example, this is a moderately simple search: find all the
-observations for patient with a name including "peter" that have a LOINC code 1234-5:
+Например такой умеренно простой поиск: найти все результаты обследований пациента с именем, содержащим "peter", которые имеют LOINC-код 1234-5:
 </p>
 <pre>
 GET [base]/Observation?name=http://loinc.org|1234-5&amp;subject.name=peter
 </pre>
 <p>
-Using the _filter parameter, the search would be expressed like this:
+С использованием параметра _filter поиск будет выражаться следующим образом:
 </p>
 <pre>
 GET [base]/Observation?_filter=name eq http://loinc.org|1234-5 and subject.name co "peter"
 </pre>
 <p>
-The _filter parameter is described in detail on the <a href="search_filter.html">"_Filter Parameter" page</a>.
+Параметр _filter подробно описан на странице <a href="search_filter.html">"Параметр _Filter"</a>.
 </p>
 
 <a name="return"> </a>
-<h3>Managing Returned Resources</h3>
+<h3>Управление возвращаемыми ресурсами</h3>
 
 <a name="sort" />
-<h4>Sorting</h4>
+<h4>Сортировка</h4>
 <p>
-The client can indicate which order to return the results in
-using the parameter "_sort", which can have a value of one of the search parameters.
-The _sort parameter can repeat to indicate sort order, with the repeats indicating
-a lower sort priority sequentially.
+Клиент может указать порядок возвращения результатов с помощью параметра "_sort", который может иметь значением одного из параметров поиска. Параметр _sort может повторяться для указания порядка сортировки с повторением, указывающим более низкий приоритет сортировки последовательно. 
 </p>
 <p>
-The _sort parameter takes one of two qualifiers, ":asc" and ":desc", which specify
-ascending and descending sort order respectively. The default value is ":asc".
+Параметр _sort принимает один из двух спецификаторов, ":asc" and ":desc", который указывает возрастающий или убывающий порядок сортировки, соответственно. Значением по умолчанию является ":asc".
 </p>
 <p>
-Notes:
+Примечания:
 </p>
 <ul>
- <li>When sorting, the actual sort value used is not returned explicitly
-by the server for each resource, just the resource contents</li>
- <li>To sort by relevance, use "_sort:asc=_score"</li>
- <li>The server returns the sort it performs as part of the returned search parameters (see <a href="#conformance">below</a>)</li>
- <li>A search parameter can refer to an element that repeat, and therefore
-there can be multiple values for a given search parameter for a single
-resource. In this case, the sort is based on the item in the set of
-multiple parameters that comes earliest in the specified sort order
-when ordering the returned resources. </li>
-  <li>When sorting on string search parameters, sorting SHOULD be performed on a case-insensitive basis. Accents may either be ignored or sorted as per realm convention. Note: 
-   Consistency of sorting across servers isn't as essential as consistency of filtering (even that is variable). The purpose of sorting is to provide data in a "reasonable" order for end users. 
-   "Reasonable" may vary by realm, particularly for accented characters.</li>
+ <li>При сортировке фактическое значение, используемое для сортировки, не выводится явно сервером для каждого ресурса, только содержимое ресурса</li>
+ <li>Для сортировки по релевантности используйте "_sort:asc=_score"</li>
+ <li>Сервер возвращает сортировку, которую он совершает как часть возвращаемых параметров поиска (см. <a href="#conformance">ниже</a>)</li>
+ <li>Параметр поиска может относиться к элементу, который повторяется, и следовательно могут быть несколько значения для данного параметра поиска для одного ресурса. В таком случае сортировка основывается на элементе в наборе нескольких параметров, которые идут раньше всех в указанном порядке сортировки во время упорядочения возвращаемых ресурсов.</li> 
 </ul>
 
 <a name="count"> </a>
-<h4>Page Count</h4>
+<h4>Количество страниц</h4>
 
 <p>
-In order to keep the load on clients, servers and the network
-minimized, the server may choose to return the results in
-a series of pages. The search result set contains the URLs
-that the client uses to request additional pages from the
-search set. For a simple RESTful search, the page links are
-<a href="http.html#paging">contained in the returned bundle as links</a>.
+С целью поддержания загрузки на клиентах, серверах и сети минимизированной, сервер может решить возвращать результаты в виде серии страниц. Набор результатов поиска содержит URL-адреса, которые клиент использует для запроса дополнительных страниц из поискового набора. Для простого RESTful-поиска ссылки на страницы 
+<a href="http.html#paging">содержатся в возвращаемом комплекте в виде ссылок</a>.
 </p>
 <p>
-Typically a server will provide its own parameters in the links
-that it uses to manage the state of the search as pages are
-retrieved. These parameters do not need to be understood
-or processed by the client.
+Обычно сервер предоставляет свои собственные параметры в ссылках, которые он использует для управления состоянием поиска во время получения страниц. Эти параметры нет необходимости понимать или обрабатывать клиентом.
 </p>
 
 <p>
-The parameter _count is defined as a hint to the server
-regarding how many resources should be returned in a
-single page. Servers SHALL NOT return more resources than
-requested (even if they don't support paging) but are
-allowed to return less than the client asked for. The server should repeat 
-the original _count parameter in its returned page links so that 
-subsequent paging requests honour the original _count.  Note
-that it is at the discretion of the search engine how to
-handle ongoing updates to the resources while the search
-is proceeding.
+Параметр _count определяется как подсказка серверу в отношении как много ресурсов следует возвращать на одной странице. Серверам НЕ СЛЕДУЕТ возвращать больше ресурсов, чем запрошено (даже если они не поддерживаю пагинацию), однако разрешается возвращать меньше, чем запросил клиент. Сервер должен повторять исходный параметр _count в возвращаемых ссылках на страницы, чтобы последующие запросы на пагинацию учитывали этот исходный _count. Обратите внимание, что решение о том, каким образом обрабатывать происходящие в настоящее время обновление ресурсов во время действия поиска, остается на усмотрение поискового механизма.
 </p>
-
 <p>
 Note that the combination of _sort and _count can be used to return
 just the latest resource that meets a particular criteria - set the
 critera, and then sort by date in descending order, with _count=1.
 This way, the last matching resource will be returned.
 </p>
-
 <a name="include"> </a>
 <a name="revinclude"> </a>
-<h4>Including other resources in result (_include and _revinclude)</h4>
+<h4>Включение других ресурсов в результат _include и _revinclude)</h4>
 <p>
-Clients may request that the engine return additional resources related to
-the search results, in order to reduce the overall network delay of repeated 
-retrievals of related resources.
-A typical case where this is useful is where the client is searching on
-some type of clinical resource, but for every such resource returned,
-the client will also need the subject (patient) resource that the
-clinical resource refers to. The client requests that the subject
-resources be included in the results set by providing one or more
-_include parameters. An alternative scenario is where the client 
+Клиенты могут запросить, чтобы система вернула дополнительные ресурсы, относящиеся к результатам поиска, с целью уменьшения общей сетевей задержки при повторных извлечениях связанных ресурсов. Типичный случай, когда это полезно, это когда клиент ищет некоторый тип клинического ресурса, однако для каждого возвращения такого ресурса клиенту также нужен ресурс-объект (пациент), к которому относится клинический ресурс. Клиент запрашивает включение зависимых ресурсов в набор результатов указанием одного или нескольких параметров _include. An alternative scenario is where the client 
 wishes to fetch a particular resource, and any resources that refer
 to it. For example, the client may wish to fetch a MedicationPrescription,
 and any provenance resources that refer to the prescription. This is known
 as a reverse include, and specified by providing a _revinclude parameter.
 </p>
-<p>
+<p>  
 Both _include and _revinclude are based on search parameters, rather 
 than paths in the resource, since joins (e.g. <a href="#chaining">chaining</a>
 are already done by search parameter.
 </p> 
 <p>
 Each _include parameter specifies a search parameter to join on:
+Каждый параметр _include содержит поисковый параметр для присоединения по:
 </p>
 <pre>
  GET [base]/MedicationPrescription?_include=MedicationPrescription:patient&amp;criteria...
@@ -872,8 +590,8 @@ parameters are repeated for each different include criteria.
 For each returned resource, the server identifies the resources that meet
 the criteria expressed in the join, and adds to the results,
 with the <a href="bundle-definitions.html#Bundle.entry.status">entry.status</a>
-set to "include" (in some searches, it is not obvious which resources are
-matches, and which are includes).
+set to "include" (in some searches, it is not obvious which resources are 
+matches, and which are includes). 
 </p>
 <p>
 The inclusion process can be recursive. For example, this example search 
@@ -1013,18 +731,12 @@ and the identity of the containing resource.
 </p>
 
 <a name="external"> </a>
-
-<h4>External References</h4>
+<h4>Внешние ссылки</h4>
 <p>
-If the _include path selects a reference that refers to a resource on another server,
-the server can elect to include that resource in the search results for the convenience
-of the client.
+Если путь _include выбирает ссылку, которая относится к ресурсу на другом сервере, сервер может предпочесть включить этот ресурс в результаты поиска для удобства клиента.
 </p>
 <p>
-If the _include path selects a reference that refers to an entity that is not a Resource
-(e.g. an image attachment), the server may also elect to include this in the returned
-results as a <a href="compartments.html#binary">Binary</a> resource. For example, the include
-path may point to an attachment which is by reference, like this:
+Если путь _include выбирает ссылку, которая относится к сущности, не являющейся Ресурсом (например вложенное изображение), сервер может также решить включить это в возвращаемые результаты в виде <a href="extras.html#binary">Binary</a> ресурса. Например, путь включения может указывать на вложение с помощью ссылки, как здесь:
 </p>
 <pre>
  &lt;content&gt;
@@ -1033,49 +745,35 @@ path may point to an attachment which is by reference, like this:
  &lt;/content&gt;
 </pre>
 <p>
-The server can retrieve the target of this reference, and add this to the
-results for the convenience of the client.
+Сервер может запросить цель этой ссылки и добавить её к результатам для удобства клиента.
 </p>
 
 <a name="dstu-2"> </a>
 <blockquote>
-<p><b>DSTU Note</b>: HL7 is seeking feedback from implementers about whether additional
-rules should be made about how _include works, based on implementation experience.
+<p><b>Примечание DSTU</b>: HL7 ожидает фидбеков от разработчиков о том, следует ли ввести дополнительные правила работы _include, основанных на опыте внедрения.
 </p>
 </blockquote>
 
 
-<h4>Paging</h4>
+<h4>Пагинация (разбиение на страницы)</h4>
 <p>
-When returning paged results for a search with _include resources, all _include resources that are
-related to the primary resources returned for the page SHOULD also be returned as part of that
-same page, even if some of those resource instances have previously been returned on previous
-pages.  This allows both sender and receiver to avoid caching results of other pages.
+При возвращении разбитых на страницы результатов поиска с ресурсами _include, все _include-ресурсы, относящиеся к первичным ресурсам, возвращаемым на странице, ДОЛЖНЫ также быть возвращены в рамках этой же страницы, даже если некоторые их этих экземпляров ресурсов уже были ранее показаны на предыдущих страницах. Это позволит и отправителю, и получателю избежать кеширования результатов на других страницах.
 </p>
 
 <a name="summary"> </a>
-<h4>Summary</h4>
+<h4>Ресурсы с кратким содержанием (Summary)</h4>
 <p>
-The client can request the server to return a summary portion of the resources
-only using the parameter "_summary":
+Клиент может запросить сервер вернуть только суммарные ресурсы с помощью параметра "_summary":
 </p>
 <pre>
    GET [base]/ValueSet?_summary=true
 </pre>
 <p>
-The <i>_summary</i> parameter requests the server to return only the elements marked
-as "summary" in their definition. This is used to reduce the total processing load on
-server, client, and resources between them such as the network. It is most useful for
-resources that can be large, particularly ones that include images or elements that
-may repeat many times.
+Параметр <i>_summary</i> требует от сервера вернуть только те элементы, которые помечены как "summary" в своем определении. Это используется для уменьшения общей загрузки на сервер, на клиента и на ресурсы между ними, например на сеть. Наиболее применимо к ресурсам, которые могут быть большими, особенно те, что включают изображения или элементы, повторяющиеся много раз.
 </p>
 <p>
-Servers are not obliged to return just a summary, and summaries are not defined for
-resources where there is no need for summarization. There is only one summary form
-defined for each resource in order to allow servers to store the summarized form in
-advance.
+Серверы не обязаны возвращать только суммарные ресурсы, а суммарность не определена для ресурсов, где нет необходимости в резюмировании. Имеется только одна краткая форма, определенная для каждого ресурса, чтобы позволить серверам хранить резюмированную форму заранее.
 </p>
-
 <a name="score"> </a>
 <h4>Relevance</h4>
 <p>
@@ -1097,367 +795,70 @@ The score is a decimal number with a value between (and including) 0 and 1, wher
 </p>
 
 <a name="conformance" />
-<h3>Server Conformance</h3>
+<h3>Заключение о соответствии сервера (Server Conformance)</h3>
 <p>
-In order to allow the client to be confident about what search parameters
-were used as a criteria by the server, the server SHALL return the parameters
-that were actually used to process the search. Applications processing search
-results SHALL check these returned values where necessary. For example, if
-the server did not support some of the filters specified in the search, a
-client might manually apply those filters to the retrieved result set,
-display a warning message to the user or take some other action.
+Чтобы позволить клиенту быть уверенным о том, что параметры поиска были использованы сервером в качестве критериев, серверу СЛЕДУЕТ возвращать параметра, которые были фактически использованы при обработке поиска. Приложениям, обрабатывающим результаты поиска, следует проверять эти возвращаемые значения при необходимости. Например, если сервер не поддерживает некоторые фильтры, указанные в поиске, клиент мог бы вручную применить эти фильтры к полученному набору результатов, показать предупреждающее сообщение пользователю или совершить какое-то другое действие.
 </p>
 <p>
-In the case of a RESTful search, these parameters are encoded in the
-self link in the bundle that is returned:
+В случае RESTful-поиска эти параметра закодированы в ссылку с типом отношения self в bundle, который будет возвращен:
 </p>
 <pre class="xml">
   &lt;link&gt;
-    &lt;relation value="self"/&gt;
+    &lt;relation value="self"/&gt; 
     &lt;url value="http://example.org/Patient?name=peter"/&gt;
   &lt;/link&gt;
 </pre>
 <p>
-In other respects, servers have considerable discretion with regards
-to supporting search:
+В остальном серверы имеют значительную свободу действий в отношении поддерживаемого поиска:
 </p>
 <ul>
- <li>Servers can choose which parameters to support (other than _id above)</li>
- <li>Servers can choose when and where to implement parameter chaining, and when and where they support the _include parameter</li>
- <li>Servers are able to declare additional parameters in the profiles referenced from their conformance statements. Servers should define search parameters
-    starting with a "-" character to ensure that the names they choose do not clash with future parameters defined by this specification</li>
- <li>Servers are not required to enforce case sensitivity on parameter names, though the names are case sensitive (and URLs are generally case-sensitive)</li>
- <li>Servers may choose how many results to return, though the client can use _count as above</li>
- <li>Servers can choose how to sort the return results, though they SHOULD honor the _sort parameter</li>
+ <li>Серверы могут выбирать, какие параметры поддерживать (кроме _id выше)</li>
+ <li>Серверы могут выбирать, когда и где применять формирование цепочки параметров, и когда и где они поддерживают параметр _include</li>
+ <li>Серверы могут объявлять дополнительные параметры в профилях, на которые есть ссылки из их заявлений о соответствии. Серверам следует определять параметры поиска, начинающиеся с символа "-", чтобы гарантировать, что имена, они выбрали, не будут конфликтовать с параметрами, определенным в данной спецификации в будущем</li>
+ <li>От серверов не требуется навязывать чувствительность к регистру именам параметров, хотя имена являются чувствительными к регистру (и URL-адреса в основном являются регистрозависимыми)</li>
+ <li>Серверы могут выбирать, сколько результатов возвращать, хотя клиент может использовать _count как описано выше</li>
+ <li> Серверы могут выбирать способ сортировки возвращаемых результатов, хотя они ДОЛЖНЫ принимать на обработку параметр _sort</li>
 </ul>
 
 <hr/>
 <a name="advanced"> </a>
-<a name="query"> </a>
-<h3>Advanced Search</h3>
+<h3>Продвинутый поиск</h3>
 <p>
-The search framework described above is a useful framework
-for providing a simple search based on indexed criteria,
-but more sophisticated query capability is needed to handle precise
-queries, complex decision support based requests, and
-direct queries that have human resolution.
+Система поиска, описанная выше - это пригодная основа для обеспечения простого поиска, основанного на индексированных критериях, однако необходима возможность более сложных запросов для обработки точных запросов, комбинированных  требований для поддержки принятия решений, и прямых запросов, имеющих человеческую интерпретацию.
 </p>
 <p>
-More advanced search operations are specified by the
-_query parameter:
+Более продвинутые операции поиска определяются параметром _query:
 </p>
 <pre>
    GET [base]/Patient?_query=name&amp;parameters...
 </pre>
 <p>
-The _query parameter names a custom search profile that
-describes a specific query operation. The named query
-may define additional named parameters that are used with that
-particular named query. Servers can define their own additional
-named queries to meet their own uses using a <a href="operationdefinition.html">OperationDefinition</a>.
+ Параметр _query присваивает имя пользовательскому профилю поиска, который описывает определенную операцию поиска. Именованный запрос может определять дополнительные именованные параметры, которые используются с этим конкретным именованным запросом. Серверы могут определять свои собственные дополнительные именованные запросы для удовлетворения собственных нужд с помощью <a href="operationdefinition.html">OperationDefinition</a>.
 </p>
 <p>
-There can only ever be one _query parameter in a set of search
-parameters. Servers processing search requests SHALL
-refuse to process a search request if they do not recognize
-the _query parameter value.
+ В наборе параметров поиска может быть всего один параметр _query. Серверы, обрабатывающие запросы поиска, ДОЛЖНЫ отказывать в обработке запроса поиска, если они не могут распознать значение параметра _query.
+</p>
+
+<h3>Выполнение поиска</h3>
+<p>
+В дополнение к стандартной операции <a href="http.html#search">поиска</a> в RESTful-интерфейсе (описанной выше), поиск может быть также выполнен с помощью фреймворка обмена сообщениями.
+</p>
+<p>
+<i>TODO: describe how this is done</i>
 </p>
 
 <a name="currency"> </a>
-<h3>Search Result Currency</h3>
+<h3>Актуальность результатов поиска</h3>
 
 <p>
-The results of a search operation are only guaranteed to be current
-at the moment the operation is executed. After the operation is executed,
-ongoing actions performed on the resources against which the search was
-executed will render the results increasingly stale. The significance
-of this depends on the nature of the search, and the kind of use that
-is being made of the results.
+ Актуальность результатов операции поиска гарантируется только на момент выполнения операции. После того, как операция выполнена, продолжающиеся в настоящее время действия, совершаемые над ресурсами, полученными с помощью выполнения поиска, будут делать результаты всё более и более неактуальными. Значимость этого зависит от типа поиска и вида использования результатов.
 </p>
 <p>
-This is particularly relevant when the server is returning the results
-in a series of pages. It is at the discretion of the search engine
-how to handle ongoing updates to the resources while the search
-is proceeding.
+ В частности, это важно, когда сервер возвращает результаты в виде ряда страниц. Решение о том, каким образом обрабатывать происходящие в настоящее время обновления ресурсов во время действия поиска, остается на усмотрение поискового механизма.
 </p>
 <p>
-Note that performing a search operation does not change the set of
-resources on the server, with the exception of the creation
-of <a href="auditevent.html">Audit Event</a> resources
-auditing the search itself.
+Следует отметить, что выполнение операции поиска не меняет набор ресурсов на сервере, за исключением создания ресурсов <a href="auditevent.html">Audit Event</a>, которые выполняют аудит самого поиска.
 </p>
-
-<a name="table"> </a>
-<h3>Summary Tables</h3>
-
-<table class="list">
-<tr><td colspan="4">Common Parameters defined for all resources:</td></tr>
-<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>
-<tr><td><a href="#id">_id</a></td><td><a href="#string">string</a></td><td>Resource id (not a full URL)</td><td>Resource.id</td></tr>
-<tr><td><a href="#lastUpdated">_lastUpdated</a></td><td><a href="#date">date</a></td><td>Date last updated. Server has discretion on the boundary precision</td><td>Resource.meta.lastUpdated</td></tr>
-<tr><td><a href="#tag">_tag</a></td><td><a href="#token">token</a></td><td>Search by a resource tag</td><td>Resource.meta.tag</td></tr>
-<tr><td><a href="#profile">_profile</a></td><td><a href="#uri">uri</a></td><td>Search for all resources tagged with a profile</td><td>Resource.meta.profile</td></tr>
-<tr><td><a href="#security">_security</a></td><td><a href="#token">token</a></td><td>Search by a security label</td><td>Resource.meta.security</td></tr>
-<tr><td><a href="#text">_text</a></td><td><a href="#string">string</a></td><td>Text search against the narrative</td><td></td></tr>
-<tr><td><a href="#content">_content</a></td><td><a href="#string">string</a></td><td>Text search against the entire resource</td><td></td></tr>
-<tr><td><a href="#list">_list</a></td><td><a href="#string">string</a></td><td>All resources in nominated list (by id, not a full URL)</td><td></td></tr>
-<tr><td><a href="#query">_query</a></td><td><a href="#string">string</a></td><td>Custom named query</td><td></td></tr>
-<tr><td colspan="4">Search Control Parameters:</td></tr>
-<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Allowable Content</b></td></tr>
-<tr><td><a href="#sort">_sort</a></td><td><a href="#string">string</a></td><td>Order to sort results in (can repeat for inner sort orders)</td><td>The name of a valid search parameter</td></tr>
-<tr><td><a href="#count">_count</a></td><td><a href="#number ">number </a></td><td>Number of results per page</td><td>Whole Number</td></tr>
-<tr><td><a href="#include">_include</a></td><td><a href="#string">string</a></td><td>Other resources to include in the search results that search matches point to</td><td>SourceType:searchParam(:targetType)</td></tr>
-<tr><td><a href="#revinclude">_revinclude</a></td><td><a href="#string">string</a></td><td>Other resources to include in the search results when they refer to search matches</td><td>SourceType:searchParam(:targetType)</td></tr>
-<tr><td><a href="#summary">_summary</a></td><td><a href="#string">string</a></td><td>Just return the summary elements (for resources where this is defined)</td><td>true | false (false is default)</td></tr>
-<tr><td><a href="#contained">_contained</a></td><td><a href="#string">string</a></td><td>Whether to return resources contained in other resources in the search matches</td><td>true | false | both (false is default)</td></tr>
-<tr><td><a href="#containedType">_containedType</a></td><td><a href="#string">string</a></td><td>If returning contained resources, whether to return the contained or container resources</td><td>container | contained</td></tr>
-</table>
-
-<p>
-Cross-map between search parameter types and Data types:
-</p>
-<table class="list">
- <tr>
-  <td><b>Data Type</b></td>
-  <td><b><a href="#number">number</a></b></td>
-  <td><b><a href="#date">date</a></b></td>
-  <td><b><a href="#string">string</a></b></td>
-  <td><b><a href="#token">token</a></b></td>
-  <td><b><a href="#reference">reference</a></b></td>
-  <td><b><a href="#quantity">quantity</a></b></td>
-  <td><b><a href="#uri">uri</a></b></td>
- </tr>
- <tr>
-  <td><a href="datatypes.html#boolean">boolean</a></td>
-  <td><%xcm boolean:number%></td> <!-- number -->
-  <td><%xcm boolean:date%></td> <!-- date -->
-  <td><%xcm boolean:string%></td> <!-- string -->
-  <td><%xcm boolean:token%>. true|false (System = http://hl7.org/fhir/special-values but not usually needed)</td> <!-- token -->
-  <td><%xcm boolean:reference%></td> <!-- reference -->
-  <td><%xcm boolean:quantity%></td> <!-- quantity -->
-  <td><%xcm boolean:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#code">code</a></td>
-  <td><%xcm code:number%></td> <!-- number -->
-  <td><%xcm code:date%></td> <!-- date -->
-  <td><%xcm code:string%></td> <!-- string -->
-  <td><%xcm code:token%>. (System, if desired, is defined in the underlying value set for eeach code)</td> <!-- token -->
-  <td><%xcm code:reference%></td> <!-- reference -->
-  <td><%xcm code:quantity%></td> <!-- quantity -->
-  <td><%xcm code:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#date">date</a></td>
-  <td><%xcm date:number%></td> <!-- number -->
-  <td><%xcm date:date%></td> <!-- date -->
-  <td><%xcm date:string%></td> <!-- string -->
-  <td><%xcm date:token%></td> <!-- token -->
-  <td><%xcm date:reference%></td> <!-- reference -->
-  <td><%xcm date:quantity%></td> <!-- quantity -->
-  <td><%xcm date:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#dateTime">dateTime</a></td>
-  <td><%xcm dateTime:number%></td> <!-- number -->
-  <td><%xcm dateTime:date%></td> <!-- date -->
-  <td><%xcm dateTime:string%></td> <!-- string -->
-  <td><%xcm dateTime:token%></td> <!-- token -->
-  <td><%xcm dateTime:reference%></td> <!-- reference -->
-  <td><%xcm dateTime:quantity%></td> <!-- quantity -->
-  <td><%xcm dateTime:number%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#instant">instant</a></td>
-  <td><%xcm instant:number%></td> <!-- number -->
-  <td><%xcm instant:date%></td> <!-- date -->
-  <td><%xcm instant:string%></td> <!-- string -->
-  <td><%xcm instant:token%></td> <!-- token -->
-  <td><%xcm instant:reference%></td> <!-- reference -->
-  <td><%xcm instant:quantity%></td> <!-- quantity -->
-  <td><%xcm instant:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#integer">integer</a></td>
-  <td><%xcm integer:number%></td> <!-- number -->
-  <td><%xcm integer:date%></td> <!-- date -->
-  <td><%xcm integer:string%></td> <!-- string -->
-  <td><%xcm integer:token%></td> <!-- token -->
-  <td><%xcm integer:reference%></td> <!-- reference -->
-  <td><%xcm integer:quantity%></td> <!-- quantity -->
-  <td><%xcm integer:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#oid">oid</a></td>
-  <td><%xcm oid:number%></td> <!-- number -->
-  <td><%xcm oid:date%></td> <!-- date -->
-  <td><%xcm oid:string%></td> <!-- string -->
-  <td><%xcm oid:token%></td> <!-- token -->
-  <td><%xcm oid:reference%></td> <!-- reference -->
-  <td><%xcm oid:quantity%></td> <!-- quantity -->
-  <td><%xcm oid:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#string">string</a></td>
-  <td><%xcm string:number%></td> <!-- number -->
-  <td><%xcm string:date%></td> <!-- date -->
-  <td><%xcm string:string%></td> <!-- string -->
-  <td><%xcm string:token%></td> <!-- token -->
-  <td><%xcm string:reference%></td> <!-- reference -->
-  <td><%xcm string:quantity%></td> <!-- quantity -->
-  <td><%xcm string:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#uri">uri</a></td>
-  <td><%xcm uri:number%></td> <!-- number -->
-  <td><%xcm uri:date%></td> <!-- date -->
-  <td><%xcm uri:string%> </td> <!-- string -->
-  <td><%xcm uri:token%></td> <!-- token -->
-  <td><%xcm uri:reference%></td> <!-- reference -->
-  <td><%xcm uri:quantity%></td> <!-- quantity -->
-  <td><%xcm uri:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#Address">Address</a></td>
-  <td><%xcm Address:number%></td> <!-- number -->
-  <td><%xcm Address:date%></td> <!-- date -->
-  <td><%xcm Address:string%> search on any elements in the address</td> <!-- string -->
-  <td><%xcm Address:token%></td> <!-- token -->
-  <td><%xcm Address:reference%></td> <!-- reference -->
-  <td><%xcm Address:quantity%></td> <!-- quantity -->
-  <td><%xcm Address:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#Annotation">Annotation</a></td>
-  <td><%xcm Annotation:number%></td> <!-- number -->
-  <td><%xcm Annotation:date%></td> <!-- date -->
-  <td><%xcm Annotation:string%></td> <!-- string -->
-  <td><%xcm Annotation:token%></td> <!-- token -->
-  <td><%xcm Annotation:reference%></td> <!-- reference -->
-  <td><%xcm Annotation:quantity%></td> <!-- quantity -->
-  <td><%xcm Annotation:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td>
-  <td><%xcm CodeableConcept:number%></td> <!-- number -->
-  <td><%xcm CodeableConcept:date%></td> <!-- date -->
-  <td><%xcm CodeableConcept:string%></td> <!-- string -->
-  <td><%xcm CodeableConcept:token%></td> <!-- token -->
-  <td><%xcm CodeableConcept:reference%></td> <!-- reference -->
-  <td><%xcm CodeableConcept:quantity%></td> <!-- quantity -->
-  <td><%xcm CodeableConcept:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#Coding">Coding</a></td>
-  <td><%xcm Coding:number%></td> <!-- number -->
-  <td><%xcm Coding:date%></td> <!-- date -->
-  <td><%xcm Coding:string%></td> <!-- string -->
-  <td><%xcm Coding:token%></td> <!-- token -->
-  <td><%xcm Coding:reference%></td> <!-- reference -->
-  <td><%xcm Coding:quantity%></td> <!-- quantity -->
-  <td><%xcm Coding:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#ContactPoint">ContactPoint</a></td>
-  <td><%xcm ContactPoint:number%></td> <!-- number -->
-  <td><%xcm ContactPoint:date%></td> <!-- date -->
-  <td><%xcm ContactPoint:string%></td> <!-- string -->
-  <td><%xcm ContactPoint:token%></td> <!-- token -->
-  <td><%xcm ContactPoint:reference%></td> <!-- reference -->
-  <td><%xcm ContactPoint:quantity%></td> <!-- quantity -->
-  <td><%xcm ContactPoint:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#Duration">Duration</a></td>
-  <td><%xcm Duration:number%></td> <!-- number -->
-  <td><%xcm Duration:date%></td> <!-- date -->
-  <td><%xcm Duration:string%></td> <!-- string -->
-  <td><%xcm Duration:token%></td> <!-- token -->
-  <td><%xcm Duration:reference%></td> <!-- reference -->
-  <td><%xcm Duration:quantity%></td> <!-- quantity -->
-  <td><%xcm Duration:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#HumanName">HumanName</a></td>
-  <td><%xcm HumanName:number%></td> <!-- number -->
-  <td><%xcm HumanName:date%></td> <!-- date -->
-  <td><%xcm HumanName:string%> Search on any element in the name</td> <!-- string -->
-  <td><%xcm HumanName:token%></td> <!-- token -->
-  <td><%xcm HumanName:reference%></td> <!-- reference -->
-  <td><%xcm HumanName:quantity%></td> <!-- quantity -->
-  <td><%xcm HumanName:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#Identifier">Identifier</a></td>
-  <td><%xcm Identifier:number%></td> <!-- number -->
-  <td><%xcm Identifier:date%></td> <!-- date -->
-  <td><%xcm Identifier:string%></td> <!-- string -->
-  <td><%xcm Identifier:token%></td> <!-- token -->
-  <td><%xcm Identifier:reference%></td> <!-- reference -->
-  <td><%xcm Identifier:quantity%></td> <!-- quantity -->
-  <td><%xcm Identifier:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#Period">Period</a></td>
-  <td><%xcm Period:number%></td> <!-- number -->
-  <td><%xcm Period:date%></td> <!-- date -->
-  <td><%xcm Period:string%></td> <!-- string -->
-  <td><%xcm Period:token%></td> <!-- token -->
-  <td><%xcm Period:reference%></td> <!-- reference -->
-  <td><%xcm Period:quantity%></td> <!-- quantity -->
-  <td><%xcm Period:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#Quantity">Quantity</a></td>
-  <td><%xcm Quantity:number%></td> <!-- number -->
-  <td><%xcm Quantity:date%></td> <!-- date -->
-  <td><%xcm Quantity:string%></td> <!-- string -->
-  <td><%xcm Quantity:token%></td> <!-- token -->
-  <td><%xcm Quantity:reference%></td> <!-- reference -->
-  <td><%xcm Quantity:quantity%></td> <!-- quantity -->
-  <td><%xcm Quantity:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#Range">Range</a></td>
-  <td><%xcm Range:number%></td> <!-- number -->
-  <td><%xcm Range:date%></td> <!-- date -->
-  <td><%xcm Range:string%></td> <!-- string -->
-  <td><%xcm Range:token%></td> <!-- token -->
-  <td><%xcm Range:reference%></td> <!-- reference -->
-  <td><%xcm Range:quantity%></td> <!-- quantity -->
-  <td><%xcm Range:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#Reference">Reference</a></td>
-  <td><%xcm Reference:number%></td> <!-- number -->
-  <td><%xcm Reference:date%></td> <!-- date -->
-  <td><%xcm Reference:string%></td> <!-- string -->
-  <td><%xcm Reference:token%></td> <!-- token -->
-  <td><%xcm Reference:reference%></td> <!-- reference -->
-  <td><%xcm Reference:quantity%></td> <!-- quantity -->
-  <td><%xcm Reference:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#SampledData">SampledData</a></td>
-  <td><%xcm SampledData:number%></td> <!-- number -->
-  <td><%xcm SampledData:date%></td> <!-- date -->
-  <td><%xcm SampledData:string%></td> <!-- string -->
-  <td><%xcm SampledData:token%></td> <!-- token -->
-  <td><%xcm SampledData:reference%></td> <!-- reference -->
-  <td><%xcm SampledData:quantity%></td> <!-- quantity -->
-  <td><%xcm SampledData:uri%></td> <!-- uri -->
- </tr>
- <tr>
-  <td><a href="datatypes.html#Timing">Timing</a></td>
-  <td><%xcm Timing:number%></td> <!-- number -->
-  <td><%xcm Timing:date%></td> <!-- date -->
-  <td><%xcm Timing:string%></td> <!-- string -->
-  <td><%xcm Timing:token%></td> <!-- token -->
-  <td><%xcm Timing:reference%></td> <!-- reference -->
-  <td><%xcm Timing:quantity%></td> <!-- quantity -->
-  <td><%xcm Timing:uri%></td> <!-- uri -->
- </tr>
-</table>
 
 </div>
 
