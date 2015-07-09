@@ -995,9 +995,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">An interaction during which services are provided to the patient</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Взаимодействие, во время которого пациенту предоставляются услуги<!-- An interaction during which services are provided to the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Взаимодействие между пациентом и поставщиком(-ами) медицинских услуг в целях предоставления медицинских услуг(-и) или оценки медицинского состояния пациента.<!-- An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1030,7 +1030,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifier(s) by which this encounter is known</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор(-ы), присвоенные данному encounter<!-- Identifier(s) by which this encounter is known --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1099,9 +1099,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">List of Encounter statuses</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень статусов Encounter<!-- List of Encounter statuses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The current status is always found in the current version of the resource. This status history permits the encounter resource to contain the status history without the needing to read through the historical versions of the resource, or even have the server store them.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текущий статус всегда находится в текущей версии ресурса. История статусов позволяет ресурсу Encounter поддерживать историю статусов без необходимости чтения всех исторических версий этого ресурса или даже хранения их сервером.<!-- The current status is always found in the current version of the resource. This status history permits the encounter resource to contain the status history without the needing to read through the historical versions of the resource, or even have the server store them. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1161,7 +1161,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The time that the episode was in the specified status</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время, когда эпизод был в указанном статусе<!-- The time that the episode was in the specified status --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1229,12 +1229,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific type of encounter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретный тип Encounter<!-- Specific type of encounter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Конкретный тип Encounter (например консультация по электронной почте, хирургический дневной стационар, квалифицированный уход, реабилитация)<!-- Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Since there are many ways to further classify encounters, this element is 0..*</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Поскольку существует много способов дальнейшей классификации encounters, кардинальное число этого элемента 0..*<!-- Since there are many ways to further classify encounters, this element is 0..* --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
@@ -1266,11 +1266,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The patient present at the encounter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пациент, присутствующий на встрече (encounter)<!-- The patient present at the encounter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">While the encounter is always about the patient, the patient may not actually be known in all contexts of use</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Хотя encounter и сосредоточен всегда вокруг пациента, он может быть известен не во всех контекстах использования <!-- While the encounter is always about the patient, the patient may not actually be known in all contexts of use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=SBJ]/role[classCode=PAT]</Data><NamedCell
@@ -1301,9 +1301,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">An episode of care that this encounter should be recorded against</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Эпизод оказания медицинской помощи, о котором должен быть зафиксирован данный encounter<!-- An episode of care that this encounter should be recorded against --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Where a specific encounter should be classified as a part of a specific episode of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as govt reporting, or issue tracking.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Данное поле следует использовать там, где особый encounter должен быть классифицирован в рамках определенного эпизода оказания медицинской помощи. Такая ассоциация может способствовать группировке связанных encounters по их назначению, например для составления отчетов для правительства, или отслеживания проблем. <!-- Where a specific encounter should be classified as a part of a specific episode of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as govt reporting, or issue tracking. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1364,9 +1364,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">List of participants involved in the encounter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень участников, вовлеченных в encounter<!-- List of participants involved in the encounter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The main practitioner responsible for providing the service</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Основной practitioner, ответственный за предоставление услуги<!-- The main practitioner responsible for providing the service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1400,11 +1400,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Role of participant in encounter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Роль участника в Encounter<!-- Role of participant in encounter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The Participant Type indicates how an individual parcitipates in an encounter. It includes non practitioner participants, and for practitioners this is to describe the action type in the context of this encounter (e.g. Admitting Dr, Attending Dr, Translator, Consulting Dr). This is different to the Practitioner Roles which are functional roles, derived from terms of employment, education, licensing, etc</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В Participant Type указывается, каким образом человек участвует в encounter. Сюда входят участники, не являющиеся practitioner, а для practitioners здесь описывается тип действия в контексте данного encounter (например врач приемного покоя, лечащий врач, переводчик, врач-консультант). Эта информация отличается от роли участника, где указываются функциональные роли, вытекающие из условий найма, образования лицензирования и т. п.<!-- The Participant Type indicates how an individual parcitipates in an encounter. It includes non practitioner participants, and for practitioners this is to describe the action type in the context of this encounter (e.g. Admitting Dr, Attending Dr, Translator, Consulting Dr). This is different to the Practitioner Roles which are functional roles, derived from terms of employment, education, licensing, etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.functionCode</Data><NamedCell
@@ -1433,7 +1433,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Period of time during the encounter participant was present</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени encounter, в течение которого участник присутствовал<!-- Period of time during the encounter participant was present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The period of time that the specified participant was present during the encounter. These can overlap or be sub-sets of the overall encounters period</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1467,7 +1467,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Persons involved in the encounter other than the patient</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Лица, участвующие в Encounter, кроме пациента<!-- Persons involved in the encounter other than the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1533,12 +1533,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The start and end time of the encounter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время начала и время окончания encounter<!-- The start and end time of the encounter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The start and end time of the encounter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Время начала и время окончания encounter<!-- The start and end time of the encounter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If not (yet) known, the end of the Period may be omitted</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если (пока что) не известно, время окончания может быть опущено<!-- If not (yet) known, the end of the Period may be omitted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.effectiveTime&#10;(low &amp; high)</Data><NamedCell
@@ -1567,12 +1567,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Quantity of time the encounter lasted (less time absent)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество времени, которое длился encounter (без времени отсутствия) <!-- Quantity of time the encounter lasted (less time absent) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Quantity of time the encounter lasted. This excludes the time during leaves of absence.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество времени, которое длился encounter. Сюда не входит время отсутствия.<!-- Quantity of time the encounter lasted. This excludes the time during leaves of absence. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May differ from the time the Encounter.period lasted because of leave of absence.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может отличаться от времени в Encounter.period из-за времени отсутствия.<!-- May differ from the time the Encounter.period lasted because of leave of absence. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.lengthOfStayQuantity</Data><NamedCell
@@ -1604,9 +1604,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason the encounter takes place (code)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Основание проведения encounter (код)<!-- Reason the encounter takes place (code) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Основание проведения encounter, выраженное в виде кода. Для госпитализации может использоваться в качестве кодированного диагноза при поступлении.<!-- Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1639,9 +1639,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason the encounter takes place (resource)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Основание проведения encounter (resource)<!-- Reason the encounter takes place (resource) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis.&#10;The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Основание проведения encounter, как указано с помощью информации из другого ресурса. Для госпитализации это диагноз при поступлении.&#10;Как правило, это будет ресурс Condition (со ссылками на другие ресурсы в поле evidence.detail), или Procedure<!-- Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis.&#10;The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1674,7 +1674,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the urgency of the encounter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывает срочность encounter<!-- Indicates the urgency of the encounter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1705,9 +1705,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Details about an admission to a clinic</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробная информация о приеме в клинику<!-- Details about an admission to a clinic --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Details about an admission to a clinic</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подробная информация о приеме в клинику<!-- Details about an admission to a clinic --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1738,7 +1738,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Pre-admission identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Догоспитальный идентификатор<!-- Pre-admission identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1771,7 +1771,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Tests to be done before admission</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тесты, которые должны быть сделаны до госпитализации<!-- Tests to be done before admission --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1803,7 +1803,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The location from which the patient came before admission</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Место, из которого прибыл пациент перед госпитализацией<!-- The location from which the patient came before admission --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1835,7 +1835,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">From where patient was admitted (physician referral, transfer)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Откуда пациент был принят (направление врача, перевод)<!-- From where patient was admitted (physician referral, transfer) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1867,12 +1867,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Period during which the patient was admitted</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период, в течение которого пациент был госпитализирован<!-- Period during which the patient was admitted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Period during which the patient was admitted</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, в течение которого пациент был госпитализирован<!-- Period during which the patient was admitted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May differ from start + length, since length excludes leaves of absence.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может отличаться от времени начала + время пребывания, так как сюда не входит время отсутствия.<!-- May differ from start + length, since length excludes leaves of absence. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.effectiveTime</Data><NamedCell
@@ -1900,7 +1900,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where the patient stays during this encounter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где пациент находился во время данного encounter<!-- Where the patient stays during this encounter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1964,7 +1964,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Period during which the patient was assigned the bed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период, в течение которого пациенту была назначена кровать<!-- Period during which the patient was assigned the bed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1996,10 +1996,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Diet preferences reported by the patient</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Предпочтения в питании, о которых сообщил пациент <!-- Diet preferences reported by the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Used to track patient's diet restrictions and/or preference. For a complete description of the nutrition needs of a patient during their stay, one should use the nutritionOrder resource which links to Encounter</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется для отслеживания диетических ограничений и/или предпочтений пациента. Для полного описания необходимого питания для пациента на время пребывания необходимо использовать ресурс nutritionOrder, который привязывается к Encounter <!-- Used to track patient's diet restrictions and/or preference. For a complete description of the nutrition needs of a patient during their stay, one should use the nutritionOrder resource which links to Encounter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2030,7 +2030,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Special courtesies (VIP, board member)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Особые знаки внимания (VIP, член совета директоров)<!-- Special courtesies (VIP, board member) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2063,7 +2063,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Wheelchair, translator, stretcher, etc</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Инвалидная коляска, переводчик, носилки и т. п<!-- Wheelchair, translator, stretcher, etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2095,7 +2095,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Location to which the patient is discharged</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Место, в которое пациент выписывается<!-- Location to which the patient is discharged --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2128,7 +2128,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Category or kind of location after discharge</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Категория или вид места размещения после выписки<!-- Category or kind of location after discharge --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2160,7 +2160,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Окончательный диагноз, полученный пациентом перед выпиской из больницы после завершения всех анализов, операций и обследований<!-- The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2191,13 +2191,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Is this hospitalization a readmission?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Эта госпитализация является повторным приемом?<!-- Is this hospitalization a readmission? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether this hospitalization is a readmission</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Является ли данная госпитализация повторным приемом (регоспитализацией)<!-- Whether this hospitalization is a readmission --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need a harmonization proposal for this</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Здесь нужно предложение по гармонизации<!-- Need a harmonization proposal for this --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Propose at harmonization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2224,9 +2224,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">List of locations the patient has been at</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень помещений, в которых находился пациент<!-- List of locations the patient has been at --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">List of locations at which the patient has been</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень помещений, в которых находился пациент<!-- List of locations at which the patient has been --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2258,9 +2258,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Location the encounter takes place</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Место проведения encounter<!-- Location the encounter takes place --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The location where the encounter takes place</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Место проведения encounter<!-- The location where the encounter takes place --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2294,7 +2294,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">planned | present | reserved</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the participants presence at the specified location during the period specified. If the participant is is no longer at the location, then the period will have an end date/time</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус присутствия участника в указанном месте в указанный период времени. Если участник больше не находится в этом месте, тогда период будет иметь дату/время окончания<!-- The status of the participants presence at the specified location during the period specified. If the participant is is no longer at the location, then the period will have an end date/time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2323,7 +2323,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time period during which the patient was present at the location</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени, в течение которого пациент присутствовал в этом месте<!-- Time period during which the patient was present at the location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2354,9 +2354,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The custodian organization of this Encounter record</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация-хранитель этой записи об Encounter <!-- The custodian organization of this Encounter record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An organization that is in charge of maintaining the information of this Encounter (e.g., who maintains the report or the master service catalog item, etc.). This MAY be the same as the organization on the Patient record, however it could be different. This MAY not be not the Service Delivery Location's Organization.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, которая ответственна за поддержание информации об этом Encounter (например кто поддерживает отчет или пункт каталого основной услуги и т. д.). Это МОЖЕТ быть та же организация, что и в истории болезни, однако может быть и другая. Это не может быть организация места оказания услуги.  <!-- An organization that is in charge of maintaining the information of this Encounter (e.g., who maintains the report or the master service catalog item, etc.). This MAY be the same as the organization on the Patient record, however it could be different. This MAY not be not the Service Delivery Location's Organization. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2387,9 +2387,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Another Encounter this encounter is part of</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Другой Encounter, частью которого является данный encounter<!-- Another Encounter this encounter is part of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Another Encounter of which this encounter is a part of (administratively or in time).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Другой Encounter, частью которого является данный encounter (административно или по времени)<!-- Another Encounter of which this encounter is a part of (administratively or in time). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4766,7 +4766,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Encounter.period</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A date within the period the Encounter lasted</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Дата в пределах периода продолжения Encounter<!-- A date within the period the Encounter lasted --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">patient</Data></Cell>
@@ -4787,7 +4787,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">number</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Encounter.length</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Length of encounter in days</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Продолжительность encounter в днях<!-- Length of encounter in days --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">reason</Data></Cell>
@@ -7482,7 +7482,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">EncounterState</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Current state of the encounter</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Текущий статус encounter<!-- Current state of the encounter --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">#encounter-state</Data></Cell>
@@ -7497,7 +7497,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">EncounterType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of encounter</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип encounter<!-- The type of encounter --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-encounter-type</Data></Cell>
@@ -7512,7 +7512,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">EncounterClass</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Classification of the encounter</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Классификация encounter<!-- Classification of the encounter --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#encounter-class</Data></Cell>
@@ -7527,7 +7527,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ParticipantType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Role of participant in encounter</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Роль участника encounter<!-- Role of participant in encounter --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-encounter-participant-type</Data></Cell>
@@ -7542,7 +7542,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">Courtesies</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Special courtesies</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Особые знаки внимания<!-- Special courtesies --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-encounter-special-courtesy</Data></Cell>
@@ -7557,7 +7557,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">Arrangements</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Special arrangements</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Особые договоренности<!-- Special arrangements --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-encounter-special-arrangements</Data></Cell>
@@ -7572,7 +7572,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">PatientDiet</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Medical, cultural or ethical food preferences to help with catering requirements</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Медицинские, культурные или этические предпочтения, связанные с пищей, для выполнения требований питания<!-- Medical, cultural or ethical food preferences to help with catering requirements --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-encounter-diet</Data></Cell>
@@ -7587,7 +7587,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">Priority</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the urgency of the encounter</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывает срочность encounter<!-- Indicates the urgency of the encounter --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-encounter-priority</Data></Cell>
@@ -7602,7 +7602,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">AdmitSource</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">From where the patient was admitted</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Откуда был госпитализирован пациент<!-- From where the patient was admitted --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-encounter-admit-source</Data></Cell>
@@ -7617,7 +7617,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">DischargeDisp</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Discharge Disposition</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Размещение после выписки<!-- Discharge Disposition --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-encounter-discharge-disposition</Data></Cell>
@@ -7632,7 +7632,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">EncounterReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason why the encounter takes place</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Основание проведения encounter<!-- Reason why the encounter takes place --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-encounter-reason</Data></Cell>
@@ -7647,7 +7647,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">EncounterLocationStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The status of the location</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус размещения<!-- The status of the location --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#encounter-location-status</Data></Cell>

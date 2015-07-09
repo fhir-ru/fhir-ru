@@ -983,7 +983,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A request for a diagnostic service</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на диагностическую услугу<!-- A request for a diagnostic service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">A record of a request for a diagnostic investigation service to be performed. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1019,9 +1019,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who and/or what test is about</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">О ком и/или о чем это исследование <!-- Who and/or what test is about --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who or what the investigation is to be performed on. This is usually a human patient, but diagnostic tests can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Над кем или чем должно быть выполнено исследование. Обычно это пациент-человек, однако диагностические исследования могут также выполняться на животных, группах людей или животных, устройствах, таких как диализные аппараты, и даже местностях (как правило для сканирования окружающей среды)<!-- Who or what the investigation is to be performed on. This is usually a human patient, but diagnostic tests can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1054,9 +1054,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who ordered the test</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто заказал исследование<!-- Who ordered the test --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The practitioner that holds legal responsibility for ordering the investigation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Специалист (practitioner), несущий юридическую ответственность за заказ исследования<!-- The practitioner that holds legal responsibility for ordering the investigation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1089,7 +1089,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifiers assigned to this order</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификаторы, присвоенные этому заказу<!-- Identifiers assigned to this order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Identifiers assigned to this order by the orderer and/or  the receiver and/or order fulfiller.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1160,12 +1160,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Explanation/Justification for test</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пояснение/обоснование исследования<!-- Explanation/Justification for test --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An explanation or justification for why this diagnostic investigation is being requested</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пояснение или обоснование запроса на данное диагностическое исследование<!-- An explanation or justification for why this diagnostic investigation is being requested --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This may be used to decide how the diagnostic investigation will be performed, or even if it will be performed at all</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может использоваться для принятия решения, каким образом будет выполняться диагностическое исследование, и даже будет ли оно вообще выполняться<!-- This may be used to decide how the diagnostic investigation will be performed, or even if it will be performed at all --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.reasonCode.originalText</Data><NamedCell
@@ -1194,7 +1194,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional clinical information</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная клиническая информация<!-- Additional clinical information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Additional clinical information about the patient or specimen that may influence test interpretations. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1230,12 +1230,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If the whole order relates to specific specimens</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если весь заказ относится к указанным образцам<!-- If the whole order relates to specific specimens --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">One or more specimens that the diagnostic investigation is about</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Один или несколько образов, над которыми проводится диагностическое исследование<!-- One or more specimens that the diagnostic investigation is about --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Many investigation requests will create a need for specimens, but the request itself is not actually about the specimens. This is provided for when the diagnostic investigation is requested on already existing specimens</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Многие запросы на исследования создают потребность в образцах (specimens), но в этих случаях сам запрос на самом деле не об образцах. Элемент specimen заполняются при запросе на диагностическое исследование уже существующих образцов<!-- Many investigation requests will create a need for specimens, but the request itself is not actually about the specimens. This is provided for when the diagnostic investigation is requested on already existing specimens --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=SPC].role</Data><NamedCell
@@ -1270,13 +1270,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the order</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус заказа<!-- The status of the order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Typically the system placing the order sets the status to requested. Thereafter, the order is maintained by the receiver that updates the status as the request is handled</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">.statusCode&#13;also influenced by whether a ControlAct fulfillment requeste exists, whether a promise exists, status of the review component, whether a fulfilling observation exists, whether a refusal exists</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">На .statusCode&#13; также влияет, имеется ли запрос на заполнение ControlAct, имеется ли promise, статус компонента review, имеется ли полноценное наблюдение, имеется ли отказ (refusal)<!-- .statusCode&#13;also influenced by whether a ControlAct fulfillment requeste exists, whether a promise exists, status of the review component, whether a fulfilling observation exists, whether a refusal exists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1308,10 +1308,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">routine | urgent | stat | asap</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The clinical priority associated with this order</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Клинический приоритет, связанный с этим заказом<!-- The clinical priority associated with this order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The Order resource also has a priority. Generally, these should be the same, but they can be different, for instance in the case where the clinician indicates that the order is urgent, but the subsequent workflow process overrule this priority for some reason. The effective default value is &quot;normal&quot;</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурс Order также имеет приоритет. Как правило, они совпадают, но могут и различаться, к примеру в случае, когда клиницист указывает, что заказ срочный, однако последующий рабочий процесс отменяет этот приоритет по некоторой причине. Действующее значение по умолчанию - &quot;normal&quot;<!-- The Order resource also has a priority. Generally, these should be the same, but they can be different, for instance in the case where the clinician indicates that the order is urgent, but the subsequent workflow process overrule this priority for some reason. The effective default value is &quot;normal&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.priorityCode</Data><NamedCell
@@ -1339,9 +1339,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A list of events of interest in the lifecycle</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень представляющих интерес событий жизненного цикла<!-- A list of events of interest in the lifecycle --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A summary of the events of interest that have occurred as the request is processed. E.g. when the order was made, various processing steps (specimens received), when it was completed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сводка представляющих интерес событий, которые произошли при обработке запроса. Например, когда заказ был сделан, различные шаги обработки (получение образцов), когда он был выполнен<!-- A summary of the events of interest that have occurred as the request is processed. E.g. when the order was made, various processing steps (specimens received), when it was completed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">This is not the same as an audit trail - it is a view of the important things that happened in the past. Typically, there would only be one entry for any given status, and systems may not record all the status events</Data><NamedCell
@@ -1378,12 +1378,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status for the event</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус события<!-- The status for the event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">.statusCode&#13;also influenced by whether a ControlAct fulfillment requeste exists, whether a promise exists, status of the review component, whether a fulfilling observation exists, whether a refusal exists</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">На .statusCode&#13; также влияет, имеется ли запрос на заполнение ControlAct, имеется ли promise, статус компонента review, имеется ли полноценное наблюдение, имеется ли отказ (refusal)<!-- .statusCode&#13;also influenced by whether a ControlAct fulfillment requeste exists, whether a promise exists, status of the review component, whether a fulfilling observation exists, whether a refusal exists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1412,7 +1412,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">More information about the event and its context</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Более подробная информация о событии и его контексте<!-- More information about the event and its context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Additional information about the event that occurred - e.g. if the status remained unchanged</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1446,9 +1446,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The date at which the event happened</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата, когда произошло событие<!-- The date at which the event happened --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date/time at which the event occurred</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата/время, когда произошло событие<!-- The date/time at which the event occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1479,9 +1479,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who recorded or did this</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто записал или сделал это<!-- Who recorded or did this --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person who was responsible for performing or recording the action</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, ответственный за выполнение или запись действия<!-- The person who was responsible for performing or recording the action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1511,9 +1511,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The items the orderer requested</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пункты, которые запросил заказчик<!-- The items the orderer requested --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определенные диагностические исследования, запрошенные в рамках данного запроса. Иногда в запросе может быть только один элемент item, но в большинстве контекстов можно заказывать больше одного исследования<!-- The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">There would always be at least one item in normal usage, but this is optional so that a workflow can quote order details without having to list the items</Data><NamedCell
@@ -1548,9 +1548,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Code to indicate the item (test or panel) being ordered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код для обозначения заказываемого пункта (исследование или лабораторная панель)<!-- Code to indicate the item (test or panel) being ordered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код для идентификации конкретного диагностического исследования или панели исследований, которое было заказано<!-- A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Many laboratory tests and radiology tests embed the specimen/organ system in the test name, for example,  serum or serum/plasma glucose, or a chest xray. The specimen may not be recorded separately from the test code.</Data><NamedCell
@@ -1583,12 +1583,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If this item relates to specific specimens</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если данный элемент относится к определенному образцу<!-- If this item relates to specific specimens --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the item is related to a specific specimen</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если данный элемент относится к определенному образцу<!-- If the item is related to a specific specimen --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A single specimen should not appear in both DiagnosticOrder.specimen and DiagnosticOrder.item.specimen</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Один и тот же образец не должен указываться и в DiagnosticOrder.specimen, и в DiagnosticOrder.item.specimen<!-- A single specimen should not appear in both DiagnosticOrder.specimen and DiagnosticOrder.item.specimen --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=SPC].role</Data><NamedCell
@@ -1619,9 +1619,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Location of requested test (if applicable)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Расположение заказанного исследования (если применимо)<!-- Location of requested test (if applicable) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Anatomical location where the request test should be performed.  This is the target site.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Анатомическое место, где должно  быть выполнено заказанное исследование. Это целевое место.<!-- Anatomical location where the request test should be performed.  This is the target site. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1656,13 +1656,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of this individual item within the order</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус этого отдельного пункта в заказе<!-- The status of this individual item within the order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the request has multiple items that have their own life cycles, then the items will have their own status while the overall diagnostic order is (usually) &quot;in-progress&quot;</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если в заказе имеется несколько пунктов, имеющих свои собственные жизненные циклы, тогда пункты будут иметь свои собственные статусы, в то время как общий diagnostic order будет (как правило) иметь статус &quot;in-progress&quot;<!-- If the request has multiple items that have their own life cycles, then the items will have their own status while the overall diagnostic order is (usually) &quot;in-progress&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">.statusCode&#13;also influenced by whether a ControlAct fulfillment requeste exists, whether a promise exists, status of the review component, whether a fulfilling observation exists, whether a refusal exists</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">На .statusCode&#13; также влияет, имеется ли запрос на заполнение ControlAct, имеется ли promise, статус компонента review, имеется ли полноценное наблюдение, имеется ли отказ (refusal)<!-- .statusCode&#13;also influenced by whether a ControlAct fulfillment requeste exists, whether a promise exists, status of the review component, whether a fulfilling observation exists, whether a refusal exists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1690,9 +1690,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Events specific to this item</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">События, специфичные для этого пункта<!-- Events specific to this item --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A summary of the events of interest that have occurred as this item of the request is processed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сводка представляющих интерес событий, которые произошли при обработке данного пункта заказа<!-- A summary of the events of interest that have occurred as this item of the request is processed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4675,7 +4675,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">item-past-status &amp; item-date</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A combination of item-past-status and item-date</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Комбинация статуса пункта в прошлом и даты пункта<!-- A combination of item-past-status and item-date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">orderer</Data></Cell>
@@ -4710,7 +4710,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">event-status &amp; event-date</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">A combination of past-status and date</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Комбинация статуса в прошлом и даты<!-- A combination of past-status and date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">subject</Data></Cell>
@@ -7048,7 +7048,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">DiagnosticOrderStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of a diagnostic order</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус диагностического заказа<!-- The status of a diagnostic order --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#diagnostic-order-status</Data></Cell>
@@ -7063,7 +7063,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">DiagnosticOrderPriority</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The clinical priority of a diagnostic order</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Клинический приоритет диагностического заказа<!-- The clinical priority of a diagnostic order --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#diagnostic-order-priority</Data></Cell>
@@ -7078,7 +7078,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">DiagnosticRequests</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for tests/services that can be performed by diagnostic services</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды тестов/услуг, которые могут быть выполнены службами диагностики<!-- Codes for tests/services that can be performed by diagnostic services --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-diagnostic-requests</Data></Cell>
@@ -7093,7 +7093,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">DiagnosticOrderEventDescription</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional information about an event that occurred to a diagnostic order - e.g. if the status remained unchanged</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация о событии, которое произошло с диагностическим заказом - например если статус не меняется<!-- Additional information about an event that occurred to a diagnostic order - e.g. if the status remained unchanged --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-diagnostic-order-event</Data></Cell>
