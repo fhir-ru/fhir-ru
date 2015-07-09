@@ -1033,10 +1033,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">document | message | transaction | transaction-response | history | searchset | collection</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the purpose of this bundle- how it was intended to be used</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает назначение этого bundle - как его намереваются использовать<!-- Indicates the purpose of this bundle- how it was intended to be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">It's possible to use a bundle for other purposes (e.g. a document can be accepted as a transaction). This is primarily defined so that there can be specific rules for some of the bundle types</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Возможно использование bundle и в других целях (например документ может быть принят как транзакция). Это прежде всего определяется для того, чтобы были конкретные правила для некоторых типов связок<!-- It's possible to use a bundle for other purposes (e.g. a document can be accepted as a transaction). This is primarily defined so that there can be specific rules for some of the bundle types --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1062,9 +1062,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Stated Base URL</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Установленный базовый URL<!-- Stated Base URL --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The base URL for the service that provided these resources. All relative URLs are relative to this one (equivalent to xml:base)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Базовый URL для сервиса, который предоставил эти ресурсы. Все относительные URL разрешаются относительно этого (эквивалентно xml:base)<!-- The base URL for the service that provided these resources. All relative URLs are relative to this one (equivalent to xml:base) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1094,12 +1094,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If search, the total number of matches</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для поиска общее количество совпадений<!-- If search, the total number of matches --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для набора совпадений при поиске это общее количество найденных совпадений (в противоположность количеству результатов в этом bundle)<!-- If a set of search matches, this is the total number of matches for the search (as opposed to the number of results in this bundle) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Only used if the bundle is a search result set</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Используется только если bundle является набором результатов поиска<!-- Only used if the bundle is a search result set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1125,9 +1125,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Links related to this Bundle</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Связи относительно данного Bundle<!-- Links related to this Bundle --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A series of links that provide context to this bundle </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Серия связей, обеспечивающих контекст для данного bundle<!-- A series of links that provide context to this bundle  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1159,7 +1159,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">http://www.iana.org/assignments/link-relations/link-relations.xhtml</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A name which details the functional use for this link - see [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]]</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название, детализирующее функциональное использование данной связи - см. [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]]<!-- A name which details the functional use for this link - see [[http://www.iana.org/assignments/link-relations/link-relations.xhtml]] --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1188,9 +1188,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reference details for the link</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Данные по ссылке для связи<!-- Reference details for the link --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The reference details for the link</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Данные по ссылке для связи<!-- The reference details for the link --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1218,9 +1218,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Entry in the bundle - will have a resource, or information</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Запись в bundle - будет содержать ресурс или информацию <!-- Entry in the bundle - will have a resource, or information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Запись в bundle - будет содержать либо ресурс, либо информацию о ресурсе (только транзакционные и архивные) <!-- An entry in a bundle resource - will either contain a resource, or information about a resource (transactions and history only) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1249,12 +1249,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Base URL, if different to bundle base</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Базовый URL, если он отличается от базового URL связки (bundle) <!-- Base URL, if different to bundle base --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The Base URL for the resource, if different to the base URL specified for the bundle as a whole</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Базовый URL для ресурса, если он отличается от базового URL, указанного для bundle в целом <!-- The Base URL for the resource, if different to the base URL specified for the bundle as a whole --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This allows bundles to be composed of resources from multiple servers (collated search, documents etc)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это дает возможность составлять связки (bundles) из ресурсов с разных серверов (обобщенный поиск, документы и т. п.) <!-- This allows bundles to be composed of resources from multiple servers (collated search, documents etc) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1280,9 +1280,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Links related to this entry</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылки, связанные с этой записью<!-- Links related to this entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A series of links that provide context to this entry </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ряд ссылок, предоставляющих контекст для данной записи<!-- A series of links that provide context to this entry  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1312,7 +1312,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">A resource in the bundle</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The Resources for the entry</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурсы в записи<!-- The Resources for the entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1341,9 +1341,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Search related information</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Информация, относящаяся к поиску<!-- Search related information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Information about the search process that lead to the creation of this entry</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о процессе поиска, который привел к созданию данной записи<!-- Information about the search process that lead to the creation of this entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1375,7 +1375,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">match | include | outcome - why this is in the result set</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Why this entry is in the result set - whether it's included as a match or because of an _include requirement</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Почему эта запись попала в результирующее множество - она была включена как совпадение или в соответствии с требованием _include<!-- Why this entry is in the result set - whether it's included as a match or because of an _include requirement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1403,12 +1403,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Search ranking (between 0 and 1)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Поисковый рейтинг (от 0 до 1)<!-- Search ranking (between 0 and 1) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">When searching, the server's search ranking score for the entry</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">При поиске оценка поискового рейтинга сервером для записи<!-- When searching, the server's search ranking score for the entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Servers are not required to return a ranking score. 1 is most relevant, and 0 is least relevant. Often, search results are sorted by score, but the client may specify a different sort order</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Серверам не обязательно возвращать поисковый рейтинг. 1 - наиболее релевантный результат, а 0 - наименее. Часто результаты поиска сортируются по рейтингу, однако клиент может указать другой порядок сортировки<!-- Servers are not required to return a ranking score. 1 is most relevant, and 0 is least relevant. Often, search results are sorted by score, but the client may specify a different sort order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1434,9 +1434,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Transaction Related Information</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Информация, относящаяся к транзакции<!-- Transaction Related Information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional information about how this entry should be processed as part of a transaction</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация о том, как следует обрабатывать эту запись в рамках транзакции<!-- Additional information about how this entry should be processed as part of a transaction --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1527,9 +1527,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">For managing cache currency</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для управления актуальностью кэша<!-- For managing cache currency --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если значения ETag совпадают, вернуть статус 304 Not modified. См. документацию по взаимодействию read/vread<!-- If the ETag values match, return a 304 Not modified status. See the read/vread interaction documentation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1557,9 +1557,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">For managing update contention</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для разрешения конфликтов при обновлении<!-- For managing update contention --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Only perform the operation if the Etag value matches. For more information, see the API section &quot;Managing Resource Contention&quot; </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Выполнить операцию только в том случае, если значения Etag совпадают. Более подробную информацию см. в API-разделе &quot;Managing Resource Contention&quot;<!-- Only perform the operation if the Etag value matches. For more information, see the API section &quot;Managing Resource Contention&quot;  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1587,9 +1587,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">For managing update contention</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для разрешения конфликтов при обновлении<!-- For managing update contention --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Only perform the operation if the last updated date matches. For more information, see the API section &quot;Managing Resource Contention&quot; </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Выполнить операцию только в том случае, если даты последнего обновления совпадают. Более подробную информацию см. в API-разделе &quot;Managing Resource Contention&quot;<!-- Only perform the operation if the last updated date matches. For more information, see the API section &quot;Managing Resource Contention&quot;  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1617,9 +1617,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">For conditional creates</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для операций условного создания<!-- For conditional creates --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Instruct the server not to perform the create if a specified resource already exists. For further information, see &quot;Conditional Create&quot;</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указать серверу не выполнять операцию create, если указанный ресурс уже существует. За более подробной информацией обратитесь к статье &quot;Conditional Create&quot;<!-- Instruct the server not to perform the create if a specified resource already exists. For further information, see &quot;Conditional Create&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1647,9 +1647,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Transaction Related Information</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Информация, относящаяся к транзакции<!-- Transaction Related Information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional information about how this entry should be processed as part of a transaction</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация о том, как следует обрабатывать эту запись в рамках транзакции<!-- Additional information about how this entry should be processed as part of a transaction --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1678,9 +1678,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Status return code for entry</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус-код, возвращенный для записи<!-- Status return code for entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status code returned by processing this entry</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус-код, возвращенный после обработки этой записи<!-- The status code returned by processing this entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1710,7 +1710,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">The location, if the operation returns a location</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The location header created by processing this operation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Заголовок location, созданный при выполнении этой операции<!-- The location header created by processing this operation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1743,7 +1743,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">The etag for the resource, it the operation for the entry produced a versioned resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This has to match the version id in the header if a resource is included</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Должен совпадать с version id в заголовке, если ресурс включен<!-- This has to match the version id in the header if a resource is included --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1769,12 +1769,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Server's date time modified</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Серверная дата/время изменения<!-- Server's date time modified --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The date/time that the resource was modified on the server</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата/время изменения ресурса на сервере<!-- The date/time that the resource was modified on the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This has to match the same time in the meta header if a resource is included</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Должна совпадать со временем в заголовке meta, если ресурс включен<!-- This has to match the same time in the meta header if a resource is included --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1805,7 +1805,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">XML Digital Signature - base64 encoded</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This is base 64 encoded to address issues with json/xml</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодируется в base 64 во избежание проблем с json/xml<!-- This is base 64 encoded to address issues with json/xml --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4273,7 +4273,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.resource</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle.entry</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">must be a resource unless there's a transaction or transaction response</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">элемент resource должен быть обязательно, если нет transaction или transactionResponse<!-- must be a resource unless there's a transaction or transaction response --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s108"><Data ss:Type="String">f:resource or f:transaction or f:transactionResponse</Data></Cell>
    </Row>
@@ -4742,7 +4742,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">MessageHeader</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The first resource in the bundle, if the bundle type is &quot;message&quot; - this is a message header, and this parameter provides access to search its contents</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Первый ресурс в бандле, если тип бандла &quot;message&quot; - это message header, и этот параметр обеспечивает доступ к поиску по его содержимому<!-- The first resource in the bundle, if the bundle type is &quot;message&quot; - this is a message header, and this parameter provides access to search its contents --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">composition</Data></Cell>
@@ -4750,7 +4750,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Composition</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The first resource in the bundle, if the bundle type is &quot;document&quot; - this is a composition, and this parameter provides access to searches its contents</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Первый ресурс в бандле, если тип бандла &quot;document&quot; - это composition, и этот параметр обеспечивает доступ к поиску по его содержимому<!-- The first resource in the bundle, if the bundle type is &quot;document&quot; - this is a composition, and this parameter provides access to searches its contents --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>
@@ -7082,7 +7082,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">BundleType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Indicates the purpose of a bundle- how it was intended to be used</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Показывает назначение бандла - как он будет использоваться<!-- Indicates the purpose of a bundle- how it was intended to be used --></Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"><Data ss:Type="String">#bundle-type</Data></Cell>
@@ -7127,7 +7127,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">SearchEntryMode</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Why an entry is in the result set - whether it's included as a match or because of an _include requirement</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Почему запись вошла в результирующее множество - она была включена как совпадение или по требованию _include<!-- Why an entry is in the result set - whether it's included as a match or because of an _include requirement --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">#search-entry-mode</Data></Cell>
@@ -7710,7 +7710,7 @@
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s153"><Data ss:Type="String">Document</Data></Cell>
-    <Cell ss:StyleID="s153"><Data ss:Type="String">The bundle is a document. The first resource is a Composition</Data></Cell>
+    <Cell ss:StyleID="s153"><Data ss:Type="String">Бандл является документом. Первым ресурсом идет Composition<!-- The bundle is a document. The first resource is a Composition --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s143"/>
@@ -7721,7 +7721,7 @@
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"><Data ss:Type="String">Message</Data></Cell>
-    <Cell ss:StyleID="s154"><Data ss:Type="String">The bundle is a message. The first resource is a MessageHeader</Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">Бандл является сообщением. Первым ресурсом идет MessageHeader<!-- The bundle is a message. The first resource is a MessageHeader --></Data></Cell>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s145"/>
@@ -7732,7 +7732,7 @@
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"><Data ss:Type="String">Transaction</Data></Cell>
-    <Cell ss:StyleID="s154"><Data ss:Type="String">The bundle is a transaction - intended to be processed by a server as an atomic commit</Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">Бандл является транзакцией - предназначен для обработки сервером одним атомарным коммитом<!-- The bundle is a transaction - intended to be processed by a server as an atomic commit --></Data></Cell>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s145"/>
@@ -7743,7 +7743,7 @@
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"><Data ss:Type="String">Transaction Response</Data></Cell>
-    <Cell ss:StyleID="s154"><Data ss:Type="String">The bundle is a transaction response</Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">Бандл является ответом транзакции<!-- The bundle is a transaction response --></Data></Cell>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s145"/>
@@ -7754,7 +7754,7 @@
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"><Data ss:Type="String">History List</Data></Cell>
-    <Cell ss:StyleID="s154"><Data ss:Type="String">The bundle is a list of resources from a _history interaction on a server</Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">Бандл представляет собой список ресурсов, полученных в результате выполнения операции _history на сервере<!-- The bundle is a list of resources from a _history interaction on a server --></Data></Cell>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s145"/>
@@ -7765,7 +7765,7 @@
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"><Data ss:Type="String">Search Results</Data></Cell>
-    <Cell ss:StyleID="s154"><Data ss:Type="String">The bundle is a list of resources returned as a result of a search/query interaction, operation, or message</Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">Бандл представляет собой список ресурсов, возвращенных в результате выполнения операции поиска/запроса, другой операции или сообщения<!-- The bundle is a list of resources returned as a result of a search/query interaction, operation, or message --></Data></Cell>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s145"/>
@@ -7776,7 +7776,7 @@
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"><Data ss:Type="String">Collection</Data></Cell>
-    <Cell ss:StyleID="s154"><Data ss:Type="String">The bundle is a set of resources collected into a single document for ease of distribution</Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">Бандл является набором ресурсов, собранных в единый документ для упрощения рассылки<!-- The bundle is a set of resources collected into a single document for ease of distribution --></Data></Cell>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s133"/>
     <Cell ss:StyleID="s145"/>
