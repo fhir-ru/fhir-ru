@@ -1,17 +1,24 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p> 
-This resource records significant health events and conditions for a particular individual related to the subject. This information can be known to
+Этот ресурс записывает важные для здоровья события и состояния конкретного индивида, относящиеся к субъекту. Эта информация может быть известна с
+различными уровнями точности. Иногда известно точное состояние («астма»), иногда неточное («какой-то вид рака»).
+Также иногда человек может быть идентифицирован ("моя тетя Агата"), а иногда известно только, что это был дядя.
+<!-- This resource records significant health events and conditions for a particular individual related to the subject. This information can be known to
 different levels of accuracy. Sometimes the exact condition ('asthma') is known, and sometimes it is less precise ('some sort of cancer').
-Equally, sometimes the person can be identified ('my aunt Agatha') and sometimes all that is known is that the person was an uncle.
+Equally, sometimes the person can be identified ('my aunt Agatha') and sometimes all that is known is that the person was an uncle. -->
 </p>
-<p>This resource represents a simple structure used to capture an 'elementary' family history for a particular family member.  However, it can also be the basis for
-capturing a more rigorous history useful for genetic and other analysis - refer to the <a href="list-example-familyhistory-genetics-profile.html">Genetic Pedigree</a> profile
-for an example.</p>
 <p>
-The entire family history for an individual can be represented by combining references to <b>FamilyMemberHistory</b> instances into a <a href="list.html">List</a> resource instance.
+Этот ресурс представляет собой простую структуру, используемую для фиксирования "элементарного" семейного анамнеза для конкретного члена семьи. Тем не менее, он также может быть основой для
+ввода более строгого анамнеза, полезного для генетического и другого анализа - в качестве примера см. профиль <a href="list-example-familyhistory-genetics-profile.html">Генетическая родословная</a>.
+<!-- This resource represents a simple structure used to capture an 'elementary' family history for a particular family member.  However, it can also be the basis for
+capturing a more rigorous history useful for genetic and other analysis - refer to the <a href="list-example-familyhistory-genetics-profile.html">Genetic Pedigree</a> profile
+for an example. --></p>
+<p>
+Полный семейный анамнез человека может быть представлен объединением ссылок на экземпляры <b>FamilyMemberHistory</b> в экземпляре ресурса <a href="list.html">List</a>.
+<!-- The entire family history for an individual can be represented by combining references to <b>FamilyMemberHistory</b> instances into a <a href="list.html">List</a> resource instance. -->
 </p>
 </div>
 

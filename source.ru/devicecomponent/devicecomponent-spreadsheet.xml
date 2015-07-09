@@ -987,9 +987,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">An instance of a medical-related component of a medical device</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Экземпляр связанного с медициной компонента медицинского изделия<!-- An instance of a medical-related component of a medical device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the characteristics, operational status and capabilities of a medical-related component of a medical device.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает характеристики, рабочее состояние и возможности связанного с медициной компонента медицинского изделия.<!-- Describes the characteristics, operational status and capabilities of a medical-related component of a medical device. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">For the initial scope, this DeviceComponent resource is only applicable to describe a single node in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard and that does not represent a metric. Examples for such a node are MDS, VMD, or Channel.</Data><NamedCell
@@ -1021,9 +1021,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">What kind of component it is</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Что это за вид компонента<!-- What kind of component it is --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the specific component type as defined in the object-oriented or metric nomenclature partition.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает конкретный тип компонента, который определен в объектно-ориентированном или метрическом номенклатурном делении.<!-- Describes the specific component type as defined in the object-oriented or metric nomenclature partition. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">DeviceComponent.type can be referred to either GDMN (nomenclature system supported by FDA Global UDI Database) or preferable RTMMS coding system.</Data><NamedCell
@@ -1054,9 +1054,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Instance id assigned by the software stack</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор экземпляра, присвоенный программным стеком<!-- Instance id assigned by the software stack --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the local assigned unique identification by the software. For example: handle ID.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает локально присвоенную уникальную идентификацию программным обеспечением. Например: идентификатор обработки.<!-- Describes the local assigned unique identification by the software. For example: handle ID. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1086,9 +1086,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Recent system change timestamp</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Штамп времени последнего изменения системы<!-- Recent system change timestamp --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the timestamp for the most recent system change which includes device configuration or setting change.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает штамп времени последнего изменения системы, включающего изменение настройки или конфигурации устройства.<!-- Describes the timestamp for the most recent system change which includes device configuration or setting change. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1117,9 +1117,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A source device of this component</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Исходное устройство для этого компонента<!-- A source device of this component --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the link to the source Device that contains administrative device information such as manufacture, serial number, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает связь с исходным ресурсом Device, который содержит административную информацию об устройстве, такую как изготовитель, серийный номер и т. п. <!-- Describes the link to the source Device that contains administrative device information such as manufacture, serial number, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1148,9 +1148,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Parent resource link</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Связь с родительским ресурсом<!-- Parent resource link --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the link to the parent resource. For example: Channel is linked to its VMD parent.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает связь с родительским ресурсом. Например: канал привязан к его родительскому VMD.<!-- Describes the link to the parent resource. For example: Channel is linked to its VMD parent. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1179,9 +1179,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Component operational status</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Состояние эксплуатационной готовности компонента<!-- Component operational status --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates current operational status of the device. For example: On, Off, Standby, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает текущее состояние эксплуатационной готовности устройства. Например: включено, выключено, в режиме ожидания.<!-- Indicates current operational status of the device. For example: On, Off, Standby, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">OperationalStatus for the MDS, VMD, or Channel will be bound to a specific ValueSet that is defined in its profile.</Data><NamedCell
@@ -1211,9 +1211,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Current supported parameter group</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Группа поддерживаемых в настоящее время параметров<!-- Current supported parameter group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает группу параметров, поддерживаемых текущим компонентом устройства, которая основывается на некоторой номенклатуре, например сердечно-сосудистая.<!-- Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1245,7 +1245,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">other | chemical | electrical | impedance | nuclear | optical | thermal | biological | mechanical | acoustical | manual+</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает физический принцип измерения. Например: термальный, химический, акустический и т. д.<!-- Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1273,9 +1273,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Production specification of the component</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Промышленная спецификация компонента<!-- Production specification of the component --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the production specification such as component revision, serial number, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает промышленную спецификацию, например инспекция компонента, серийный номер и т. д.<!-- Describes the production specification such as component revision, serial number, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1305,9 +1305,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Specification type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип спецификации<!-- Specification type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the specification type, such as, serial number, part number, hardware revision, software revision, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает тип спецификации, например серийный номер, номер партии, инспекция аппаратного обеспечения, контроль программного обеспечения и т. п.<!-- Describes the specification type, such as, serial number, part number, hardware revision, software revision, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1336,9 +1336,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Internal component unique identification</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор внутреннего компонента<!-- Internal component unique identification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the internal component unique identification. This is a provision for manufacture specific standard components using a private OID. 11073-10101 has a partition for private OID semantic that the manufacture can make use of.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает уникальную идентификацию внутреннего компонента. Это положение для имеющих особенность при производстве стандартных компонентов. использующих частный OID. 11073-10101 содержит разбиение на частную семантику OID, которую можно использовать при производстве.<!-- Describes the internal component unique identification. This is a provision for manufacture specific standard components using a private OID. 11073-10101 has a partition for private OID semantic that the manufacture can make use of. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1367,9 +1367,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A printable string defining the component</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пригодная для печати строка, определяющая компонент<!-- A printable string defining the component --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the printable string defining the component.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает пригодную для печати строку, определяющую компонент.<!-- Describes the printable string defining the component. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1398,9 +1398,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Language code for the human-readable text strings produced by the device</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код языка для человекочитаемого текста, производимого устройством<!-- Language code for the human-readable text strings produced by the device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the language code for the human-readable text string produced by the device. This language code will follow the IETF language tag. Example: en-US.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает код языка для человекочитаемого текста, производимого устройством. Этот код языка может представлять собой языковой тег IETF. Например: en-US.<!-- Describes the language code for the human-readable text string produced by the device. This language code will follow the IETF language tag. Example: en-US. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4419,21 +4419,21 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">DeviceComponent.parent</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">The parent DeviceComponent resource</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Родительский ресурс DeviceComponent<!-- The parent DeviceComponent resource --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">DeviceComponent.type</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The device component type</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Тип компонента устройства<!-- The device component type --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">source</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">DeviceComponent.source</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The device source</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Источник устройства<!-- The device source --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -6677,7 +6677,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ComponentType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Describes the type of the component</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Описывает тип компонента<!-- Describes the type of the component --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s147" ss:HRef="https://rtmms.nist.gov/rtmms/index.htm#!hrosetta"><Data
@@ -6693,7 +6693,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">Measmnt-Principle</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Different measurement principle supported by the device</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Различные принципы измерения, поддерживаеыме устройством<!-- Different measurement principle supported by the device --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#measurement-principle</Data></Cell>
