@@ -1,22 +1,25 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
-The ClaimResponse resource provides application level error or application level adjudication results
+Ресурс ClaimResponse содержит либо ошибку прикладного уровня, либо результаты судебного решения, которые являются результатом обработки предъявленного disciplineClaim, которое является функциональным следствием иска, предварительного определения или предварительного санкционирования.
+<!-- The ClaimResponse resource provides application level error or application level adjudication results
  which are the result of processing a submitted disciplineClaim which is the functional corollary of 
- a Claim, Pre-Determination or a Pre-Authorization.
+ a Claim, Pre-Determination or a Pre-Authorization. -->
  </p>
  <p>
- This is the adjudicated response to a Claim, Pre-determination or Pre-Authorization. The strength 
+ Это признанный судебными органами ответ на иск, предварительное определение или предварительное санкционирование. Сила платежного аспекта ответа соответствует силе первоначального запроса. Для иска (Claim) вынесение решения означает платеж, который предназначен быть совершенным, для предварительного санкционирования и предварительного определения никакой платеж на самом деле не будет сделан, однако могут быть зарезервированы денежные средства для урегулирования иска, выставленного  впоследствии. Только фактические иски влекут за собой фактическую оплату.
+<!--  This is the adjudicated response to a Claim, Pre-determination or Pre-Authorization. The strength 
  of the payment aspect of the response is matching to the strength of the original request. For a 
  Claim the adjudication indicates payment which is intended to be made, for Pre-Authorization and 
  Pre-Determination no payment will actually be made however funds may be reserved to settle a claim 
- submitted later. Only an actual claim may be expected to result in actual payment.
+ submitted later. Only an actual claim may be expected to result in actual payment. -->
  </p>
 <p>
-The ClaimResponse resource is the response for the submission of: OralHealthClaim, VisionClaim etc. 
-and Reversals.
+Ресурс ClaimResponse является ответом на предъявление: OralHealthClaim, VisionClaim и т. п., и Reversals.
+<!-- The ClaimResponse resource is the response for the submission of: OralHealthClaim, VisionClaim etc. 
+and Reversals. -->
 </p>
 <p>
 Todo
@@ -26,7 +29,7 @@ Todo
 
 <!-- (recommended): 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
 Explains how this resource relates to others. Particularly important is to differentiate between appropriate usages for related resources when an implementer might be confused about what to reference when.
 </p>
@@ -35,7 +38,7 @@ Explains how this resource relates to others. Particularly important is to diffe
 
 <!-- (optional):
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст</h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>
