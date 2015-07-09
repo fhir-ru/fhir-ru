@@ -1,30 +1,41 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div> 
-<h2>Scope and Usage</h2> 
+<h2>Область применения и использование<!-- Scope and Usage --></h2> 
 <p>
-A concept map defines a mapping from a concept defined in <a href="terminologies.html">one system</a> to one or more concepts defined in other systems. 
-Mappings are one way - from the source to the destination. In many cases, the reverse mappings are valid, but this cannot be assumed to be the case. 
-</p>
+Карта соответствия концептов определяет отображение концепта, определенного в <a href="terminologies.html">одной системе</a>, на один или несколько концептов, определенных в других системах.
+Мэппинги являются односторонними - от источника в назначение. В большинстве случаев обратный мэппинг будет верным, однако это не следует принимать за правило.  
+<!-- A concept map defines a mapping from a concept defined in <a href="terminologies.html">one system</a> to one or more concepts defined in other systems. 
+Mappings are one way - from the source to the destination. In many cases, the reverse mappings are valid, but this cannot be assumed to be the case.  -->
+</p> 
 <p>
-Mappings between code systems are only defined in the context of the specified source and destination <a href="valueset.html">value sets</a> - they are specific to a particular context of use. 
+Мэппинги между кодовыми системами определены только в контексте указанных <a href="valueset.html">наборов значений</a> источника и назначения - они различаются в зависимости от конкретного контекста использования.
+Мэппинги могут подходить для применения в других контекстах, но это необходимо определять на основе контекста использования и смысла; такая возможность не может считаться сама собой разумеющейся автоматически. Обратите внимание, что все кодовые системы имеют наборы значений, которые включают всю кодовую систему целиком, и такие наборы значений можно использовать для мэппингов, которые будут валидными во всех контекстах.
+<!-- Mappings between code systems are only defined in the context of the specified source and destination <a href="valueset.html">value sets</a> - they are specific to a particular context of use. 
 The mappings may be useful in other contexts, but this must be determined based on the context of use and 
 meaning; it cannot be taken for granted automatically. Note that all code systems have value sets that include the entire
-code system, and these value sets can be used for mappings that are valid in all contexts.
+code system, and these value sets can be used for mappings that are valid in all contexts.  -->
 </p>
 <p>
-Each mapping for a concept from source to target includes an [<a rel="nofollow" class="external text" 
+Каждый мэппинг концепта от источника в назначение содержит показатель [<a rel="nofollow" class="external text" 
+href="concept-map-equivalence.html">эквивалентности</a>], который указывает, насколько равнозначен мэппинг (или, в некоторых случаях, что допустимые соответствия отсутствуют).
+В источнике содержится по одному <code>элементу</code> для каждого концепта или поля, которому необходим мэппинг. У каждого концепта источника может быть несколько адресатов: 
+<!-- Each mapping for a concept from source to target includes an [<a rel="nofollow" class="external text" 
 href="concept-map-equivalence.html">equivalence</a>] property that 
 specifies how similar the mapping is (or, in some cases, that there is no valid mapping). 
 There is one <code>element</code> for each concept or field in the source that needs to be mapped.
-Each source concept may have multiple targets:
+Each source concept may have multiple targets:  -->
 </p>
 <ul>
- <li>because there are multiple possible mappings (e.g. ambiguous)</li>
- <li>to specify a correct map, and specify other mappings as invalid</li>
- <li>when there are multiple mappings depending on the values of other elements (dependsOn)</li>
+ <li>поскольку имеется несколько возможных мэппингов (например неоднозначных) 
+because there are multiple possible mappings (e.g. ambiguous)</li>
+ <li>чтобы указать корректный мэппинг, а остальные пометить как недопустимые 
+to specify a correct map, and specify other mappings as invalid</li>
+ <li>когда имеется несколько мэппингов, зависящих от значений других элементов (dependsOn) 
+when there are multiple mappings depending on the values of other elements (dependsOn)</li>
 </ul>
 <p>
+У каждого элемента должен быть указан хотя бы один адресат, однако некоторые неполные карты соответствия концептов могут не иметь адресата для каждого концепта.
 There SHOULD be at least one target for each element, but some incomplete concept maps 
 may not have a target for each concept. 
 </p>
@@ -32,11 +43,14 @@ may not have a target for each concept.
 </div> 
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
-Further discussion of the issues involved in mapping between concept definition systems can be found in the  
+Более подробную информацию по вопросам мэппинга между системами определений концептов можно 
+найти в документе <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a>  
+и функциональности, описанной в спецификации <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a>.
+<!-- Further discussion of the issues involved in mapping between concept definition systems can be found in the  
 <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a> document 
-and the functionality described in the <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a> specification. 
+and the functionality described in the <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a> specification.  -->
 </p>
 
 </div>
