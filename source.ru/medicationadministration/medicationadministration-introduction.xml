@@ -1,45 +1,42 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
-Данный ресурс охватывает введение всех лекарственных средств за исключением вакцин. Используется главным образом при стационарном лечение для учета применения лекарственных средств, включая самостоятельное введение оральных лекарственных препаратов, инъекций, внутривенных вливаний и т. д. Может также использоваться при амбулаторном лечении для учета уколов от аллергии и другого введения лекарственных средств, не связанных с иммунизацией. В некоторых случаях может использоваться для учета медицинской помощи на дому, например запись инсулина, введенного самостоятельно или с помощью устройства.
-<!-- This resource covers the administration of all medications with the exception of vaccines.
+This resource covers the administration of all medications with the exception of vaccines.
 It will principally be used within inpatient settings to record the capture of medication administrations including self-administrations of oral medications,
 injections, intra-venous adjustments, etc.  It can also be used in out-patient settings to record allergy shots and other non-immunization administrations.  In some
-cases it might be used for home-health reporting, such as recording self-administered or even device-administered insulin. -->
+cases it might be used for home-health reporting, such as recording self-administered or even device-administered insulin.
 </p>
 </div>
 
 <div>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<h2>Boundaries and Relationships</h2>
 <p>
-<b>Домен Medication охватывает несколько связанных ресурсов:<!-- The Medication domain includes a number of related resources --></b>
+<b>The Medication domain includes a number of related resources</b>
 </p>
 <table border="1" cellpadding="1" cellspacing="2" frame="box">
     <tr>
         <td><a href="medicationprescription.html">MedicationPrescription</a></td>
-        <td>Заказ на поставку медикамента, а также на введение медикамента пациенту.<!-- An order for both supply of the medication and the instructions for administration of the medicine to a patient. --></td>
+        <td>An order for both supply of the medication and the instructions for administration of the medicine to a patient.</td>
     </tr>
     <tr>
         <td><a href="medicationdispense.html">MedicationDispense</a></td>
-        <td>Обеспечение поставки медикамента с целью последующего употребления пациентом (обычно в ответ на предписание).<!-- Provision of a supply of a medication with the intention that it is subsequently consumed by a patient (usually in response to a prescription).   --></td>
+        <td>Provision of a supply of a medication with the intention that it is subsequently consumed by a patient (usually in response to a prescription).  </td>
     </tr>
     <tr>
         <td>MedicationAdministration</td>
-        <td>Когда пациент фактически употребляет лекарственное средство, или оно другим образом вводится ему<!-- When a patient actually consumes a medicine, or it is otherwise administered to them --></td>
+        <td>When a patient actually consumes a medicine, or it is otherwise administered to them</td>
     </tr>
     <tr>
         <td><a href="medicationstatement.html">MedicationStatement</a></td>
-        <td>Это запись о принятии пациентом медикамента, или о том, что медикамент был выдан пациенту, которая является результатом сообщения от пациента или другого клинициста. Medication statement не является частью последовательности выписать->отпустить препарат по рецепту->ввести (в организм) (prescribe->dispense->administer), это протокол о том, что такая последовательность (или, по крайней мере, её часть) действительно имела место и привела к убеждению о том, что пациент получил конкретный медикамент.
-		<!-- This is a record of medication being taken by a patient, or that the medication has been given to a patient where the record is the result of a report from the patient, or another clinician. 
-          A medication statement is not a part of the prescribe->dispense->administer sequence but is a report that such a sequence (or at least a part of it) did take place resulting in a belief that the patient has received a particular medication. -->
+        <td>This is a record of medication being taken by a patient, or that the medication has been given to a patient where the record is the result of a report from the patient, or another clinician. 
+          A medication statement is not a part of the prescribe->dispense->administer sequence but is a report that such a sequence (or at least a part of it) did take place resulting in a belief that the patient has received a particular medication.
         </td>
     </tr>
 </table>
 <p>
-<b>MedicationAdministration</b> предназначен для учета введения лекарственных средств кроме вакцин. Для работы с введением вакцин выделен отдельный ресурс <a href="immunization.html">Immunization</a>. Некоторые системы обрабатывают иммунизации таким же образом, как и введение других лекарственных средств. Такие системы ДОЛЖНЫ использовать ресурс immunization для их представления. Если системы используют ресурс <b>MedicationAdministration</b> для ввода вакцинации в соответствии с их рабочим процессом или по каким-либо другим причинам, они ДОЛЖНЫ также создавать эквивалентный экземпляр ресурса <a href="immunization.html">Immunization</a>.
-<!-- <b>MedicationAdministration</b> is intended for tracking the administration of non-vaccine medications.  Administration of vaccines is intended to be handled using the <a href="immunization.html">Immunization</a> resource.    Some systems treat immunizations in the same way as any other medication administration.  Such systems SHOULD use an immunization resource to represent these.  If systems need to use a <b>MedicationAdministration</b> resource to capture vaccinations for workflow or other reasons, they SHOULD also expose an equivalent <a href="immunization.html">Immunization</a> instance. -->
+<b>MedicationAdministration</b> is intended for tracking the administration of non-vaccine medications.  Administration of vaccines is intended to be handled using the <a href="immunization.html">Immunization</a> resource.    Some systems treat immunizations in the same way as any other medication administration.  Such systems SHOULD use an immunization resource to represent these.  If systems need to use a <b>MedicationAdministration</b> resource to capture vaccinations for workflow or other reasons, they SHOULD also expose an equivalent <a href="immunization.html">Immunization</a> instance.
 </p>
 </div>
 

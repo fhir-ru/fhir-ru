@@ -1,53 +1,50 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
-Стандартное использование включает в себя:
-<!-- Common usage includes: -->
+Common usage includes:
 </p>
 <ul>
- <li>запись лекарственных средств, продающихся без рецепта, и/или рекреационных (развлекательных) наркотиков<!-- the recording of non-prescription and/or recreational drugs --></li>
- <li>запись списка принимаемых медикаментов при госпитализации<!-- the recording of an intake medication list upon admission to hospital --></li>
- <li>резюмирование активных медикаментов пациента в профиле пациента<!-- the summarization of a patient's "active medications" in a patient profile --></li>
+ <li>the recording of non-prescription and/or recreational drugs</li>
+ <li>the recording of an intake medication list upon admission to hospital</li>
+ <li>the summarization of a patient's "active medications" in a patient profile</li>
 </ul>
 </div>
 
 <div>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<h2>Boundaries and Relationships</h2>
 <p>
-<b>Домен Medication включает в себя ряд взаимосвязанных ресурсов:<!-- The Medication domain includes a number of related resources --></b>
+<b>The Medication domain includes a number of related resources</b>
 </p>
 <table border="1" cellpadding="1" cellspacing="2" frame="box">
     <tr>
         <td><a href="medicationprescription.html">MedicationPrescription</a></td>
-        <td>Заказ как на поставку лекарственного средства, так и распоряжения по вводу лекарственного средства пациенту.<!-- An order for both supply of the medication and the instructions for administration of the medicine to a patient. --></td>
+        <td>An order for both supply of the medication and the instructions for administration of the medicine to a patient.</td>
     </tr>
     <tr>
         <td><a href="medicationdispense.html">MedicationDispense</a></td>
-        <td>Обеспечение поставки лекарственного средства с тем, чтобы впоследствии его выдали пациенту (как правило, в ответ на предписание (prescription))<!-- Provision of a supply of a medication with the intention that it is subsequently consumed by a patient (usually in response to a prescription).   --></td>
+        <td>Provision of a supply of a medication with the intention that it is subsequently consumed by a patient (usually in response to a prescription).  </td>
     </tr>
     <tr>
         <td><a href="medicationadministration.html">MedicationAdministration</a></td>
-        <td>Когда пациент непосредственно употребляет лекарственное средство, или оно вводится пациенту иным способом<!-- When a patient actually consumes a medicine, or it is otherwise administered to them --></td>
+        <td>When a patient actually consumes a medicine, or it is otherwise administered to them</td>
     </tr>
     <tr>
         <td>MedicationStatement</td>
-        <td>Запись о том, что лекарственное средство было принято пациентом, или что лекарственное средство было выдано пациенту, где данная запись является результатом сообщения от пациента или другого клинициста. Medication statement не является частью последовательности выписать->отпустить препарат по рецепту->ввести (в организм) (prescribe->dispense->administer), это протокол о том, что такая последовательность (или, по крайней мере, её часть) действительно имела место и привела к убеждению о том, что пациент получил конкретный медикамент. <!-- This is a record of medication being taken by a patient, or that the medication has been given to a patient where the record is the result of a report from the patient, or another clinician. 
-          A medication statement is not a part of the prescribe->dispense->administer sequence but is a report that such a sequence (or at least a part of it) did take place resulting in a belief that the patient has received a particular medication. -->
+        <td>This is a record of medication being taken by a patient, or that the medication has been given to a patient where the record is the result of a report from the patient, or another clinician. 
+          A medication statement is not a part of the prescribe->dispense->administer sequence but is a report that such a sequence (or at least a part of it) did take place resulting in a belief that the patient has received a particular medication.
         </td>
     </tr>
 </table>
 
 <p>
-Данный ресурс отличается от <a href="medicationprescription.html">MedicationPrescription</a>, <a href="medicationdispense.html">MedicationDispense</a> 
-и <a href="medicationadministration.html">MedicationAdministration</a>. Каждый из этих трех ресурсов относится к конкретным событиям - отдельный заказ, предоставление отдельного медикамента, отдельная доза. MedicationStatement - это более широкое утверждение, охватывающее больший промежуток времени и не зависящее от конкретных событий. Наличие экземпляров ресурсов любого из предыдущих трех типов может использоваться, чтобы заключить Medication statement. Однако Medication statement может также записываться на основе другой информации, включая утверждение пациентом или лицом, осуществляющим уход, результатов лабораторных тестов и т. п.
-<!-- This resource is distinct from <a href="medicationprescription.html">MedicationPrescription</a>, <a href="medicationdispense.html">MedicationDispense</a> 
+This resource is distinct from <a href="medicationprescription.html">MedicationPrescription</a>, <a href="medicationdispense.html">MedicationDispense</a> 
 and <a href="medicationadministration.html">MedicationAdministration</a>.  Each of those resources refer to specific events - an individual 
 order, an individual provisioning of medication or an individual dosing.  MedicationStatement is a broader assertion covering a wider 
 timespan and independent of specific events.  The existence of resource instances of any of the preceding three types may be used to infer 
 a Medication statement.  However, medication statements can also be captured on the basis of other information including an assertion by the 
-patient or a care-giver, the results of a lab test, etc. -->
+patient or a care-giver, the results of a lab test, etc.
 </p>
 </div>
 

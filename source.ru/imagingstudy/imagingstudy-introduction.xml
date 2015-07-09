@@ -1,27 +1,23 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
-Данный ресурс обобщает ряд изображений или других экземпляров, созданных в рамках визуализирующего исследования, и предоставляет ссылки, по которым эти изображения доступны через  <a href="http://medical.nema.org/medical/dicom/current/output/pdf/part18.pdf">WADO-RS</a>. 
-<!-- This resource summarizes a series of images or other instances generated as part of an 
+This resource summarizes a series of images or other instances generated as part of an 
 imaging study, and provides references to where the images are available
-using <a href="http://medical.nema.org/medical/dicom/current/output/pdf/part18.pdf">WADO-RS</a>.  -->
+using <a href="http://medical.nema.org/medical/dicom/current/output/pdf/part18.pdf">WADO-RS</a>. 
 
-Этот ресурс используется для предоставления доступа к информации, касающейся изображений и т. п., на которые ссылаются в других клинических контекстах, таких как <a href="diagnosticreport.html">diagnostic reports</a>, <a href="careplan.html">Care Plans</a> и т. д. Также см. описание сценария использования ниже.
-<!-- This resource is used to make information available concerning images etc. that are 
+This resource is used to make information available concerning images etc. that are 
 referenced in other clinical contexts such as <a href="diagnosticreport.html">diagnostic reports</a>, 
-<a href="careplan.html">Care Plans</a>, etc. Also, see the use case description below. -->
+<a href="careplan.html">Care Plans</a>, etc. Also, see the use case description below.
 </p>
 <p>
-Данный  ресурс специально разрабатывался с учетом использования в контексте DICOM.
-Его содержимое основано на определениях эквивалентных DICOM-конструкций, и выведено из уже установленных шаблонов использования в практике реализации DICOM, в том числе XDS-I. Однако для использования этого ресурса нет необходимости в DICOM-инфраструктуре.
-<!-- This resource has been specifically designed with use in DICOM contexts in mind. 
-The content is closely based on the definitions of the equivalent DICOM 
-constructs, and informed by usage patterns already established through DICOM
-implementation practices, including XDS-I. It is not, however, necessary to 
-use DICOM infrastructure in order to use this resource. -->
+The elements in this resource mirror DICOM attributes which are listed in the description.  
+Although it is not necessary to use DICOM infrastructure to use this resource, it may be 
+informative to search in <a href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/PS3.3.html">DICOM PS3.3</a> for the referenced tags to better understand their 
+proper contents and usage.
 </p>
+
 </div>
 
 

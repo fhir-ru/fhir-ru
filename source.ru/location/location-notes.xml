@@ -1,40 +1,28 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- insert xhtml content here -->
-<h2>Примечания<!-- Notes --></h2>
+<h2>Notes</h2>
 <ul>
-<li>В некотором местоположении оказывать услуги могут несколько организаций или специалистов. Такие ссылки не хранятся в ресурсе Location, вместо этого их можно найти в моделях для <a href="organization.html">Organization</a> и <a href="practitioner.html">Practitioner</a>.</li>
-<li>Местоположения могут варьироваться от целых зданий до шкафов; можно соотносить меньшие местоположения с содержащими их более крупными местоположениями с помощью элемента Location.partOf element.</li>
-<li>Для выражения Location.position используется такой же синтаксис, показатели и система ссылок, что и в Google Earth KML-файлах,
-см. <a href="http://www.opengeospatial.org/standards/kml">Google/OGS's KML</a>.</li>
-<!-- <li>Multiple Organizations or Practitioners may provide services at a Location. These references are not kept in Location, but can be found
+<li>Multiple Organizations or Practitioners may provide services at a Location. These references are not kept in Location, but can be found
 in the models for <a href="organization.html">Organization</a> and <a href="practitioner.html">Practitioner</a> instead.</li>
 <li>Locations may range from whole buildings to cabinets; it is possible to relate smaller Locations to their containing bigger Location 
 using the Location.partOf element.</li>
 <li>Location.position is expressed using the same syntax, datum and reference system as used in Google Earth's KML files,
-see <a href="http://www.opengeospatial.org/standards/kml">Google/OGS's KML</a>.</li> -->
+see <a href="http://www.opengeospatial.org/standards/kml">Google/OGS's KML</a>.</li>
 </ul>
 
 <h3>Location Mode</h3>
-<p>Элемент Location.mode можно использовать для указания, представляет ли ресурс Location определенное (потенциально идентифицируемое) местоположение ('экземпляр')
-или класс местоположения ('вид'). Особенно ресурсы для ввода заказов, для планирования ресурсов, планы и определения могут использовать ресурс Location в режиме 'kind'.
-В этих областях применения часто нет необходимости ссылаться на конкретное место, а можно указывать только класс местоположения. Пример такой ссылки можно найти в планировании,
-где нам необходимо выделить "изолированную комнату" для пациента, или необходимо отправить "скорую" в определенное время. В этих случаях не имеет значения,
-какая именно изолированная комната или скорая помощь имеется в виду, и достаточно просто указать "вид" местоположения.
-<!-- The Location.mode element can be used to indicate whether a Location resource represents a specific (potentially identifiable) Location ('instance'), 
+<p>The Location.mode element can be used to indicate whether a Location resource represents a specific (potentially identifiable) Location ('instance'), 
 or a class of Locations ('kind'). Especially Resources capturing orders, resource scheduling, plans and definitions may refer to Locations in 'kind' mode. 
 For these domains, it is often not necessary to refer to a specific Location, but rather to a class of Locations. An example of this is found in planning, 
 where we need to allocate an "isolation room" for a patient, or need to dispatch "an ambulance" at a certain time. In these cases it is not important 
-exactly which isolation room or ambulance is allocated, and it is sufficient to just indicate a 'kind' of Location. --></p>
-<p>Обратите внимание, что режим "вид" не следует использовать для представления местоположения, если при этом имеется в виду экземпляр местоположения, но отсутствует идентификационная информация. Например когда пациент прибыл "на скорой", но не известно на какой машине скорой помощи, это должно быть представлено с помощью ресурса Location в режиме "instance" без указания идентификатора, а не Location 'вида' скорая помощь.
-<!-- Note that 'kind' should not be used to represent Locations where an actual instance of a Location was involved, but identifying information is missing.
+exactly which isolation room or ambulance is allocated, and it is sufficient to just indicate a 'kind' of Location.</p>
+<p>Note that 'kind' should not be used to represent Locations where an actual instance of a Location was involved, but identifying information is missing.
 E.g. when a patient arrived 'by ambulance', but it is not known by which ambulance, this should be represented using a Location in 'instance' mode with a
-missing identifier, not a Location of 'kind' ambulance. --></p>
+missing identifier, not a Location of 'kind' ambulance.</p>
 <p>
-Некоторые из элементов данных ресурса Location имеют значение только в режиме "instance" и не должны быть использованы в режиме "kind":
-<!-- Some of Location's data elements are only relevant when mode is 'instance' and should not be used when mode is 'kind': --><br/>
-	<i>(однако эта информация все еще может быть включена, если она необходима, например когда это общий элемент, но не глобально общий, например машина скорой помощи Burgers MU)
-	<!-- (however this information could still be included if was relevant, such as when it is a generic item, but not globally generic, eg a Burgers MU ambulance) --></i>
+Some of Location's data elements are only relevant when mode is 'instance' and should not be used when mode is 'kind':<br/>
+	<i>(however this information could still be included if was relevant, such as when it is a generic item, but not globally generic, eg a Burgers MU ambulance)</i>
 </p>
 <ul>
 <li>Location.identifier</li>
@@ -45,43 +33,13 @@ missing identifier, not a Location of 'kind' ambulance. --></p>
 <li>Location.managingOrganization</li>
 </ul>
 
-	<h2>Пример иерархии ресурсов Location<!-- Example Location Heirachy --></h2>
+	<h2>Example Location Heirachy</h2>
 	<p>
-	Пример иерархии местоположений призван помочь дать некоторые рекомендации в качестве примера, как может выглядеть иерархия местоположений в фиктивной больнице.
-		<!-- An example location heirachy should help give some guidance as to one example
-		of how a location heirachy could look within a fictitious Hospital. --><br/>
-		<i>(Вложенность здесь будет передаваться с помощью структуры "part-of")<!-- (The nesting here would be the "part-of" structure of the location) --></i>
+		An example location heirachy should help give some guidance as to one example
+		of how a location heirachy could look within a fictitious Hospital.<br/>
+		<i>(The nesting here would be the "part-of" structure of the location)</i>
 	</p>
-		<pre>
-Больница A Строение C (instance)
-    Восточное крыло (instance)
-        Уровень 1 (instance)
-            Приемная (instance)
-            Пост медицинской сестры EM-ns1 (instance)
-                Медицинский шкаф A (instance)
-            Комната 1 (instance)
-                Комната 1a (instance) - пространство в комнате может разделяться с помощью занавески
-                    Кровать 1a (instance) - всегда в этой комнате
-                Комната 1b (instance)
-                    Каталка 43 (instance) - перемещается
-                Комната 1d (instance)
-                    Каталка 19 (instance) - перемещается
-                Комната 2 (instance)
-                    ...
-            Демонстрационный зал EM-TA (instance)
-            Коридор (generic)
-        Уровень 2 (instance)
-            Приемная (instance)
-                ...
-            Пост медицинской сестры EM-ns1 (instance)
-                Медицинский шкаф A (instance)
-            Коридор (generic)
-Мобильные службы (kind)
-    Машина скорой помощи (kind)
-        Машина скорой помощи AMB1 (instance)
-        Машина скорой помощи AMB2 (instance)
-	</pre>
-<!-- 	<pre>
+	<pre>
 Hospital A Building C (instance)
     East Wing (instance)
         Level 1 (instance)
@@ -109,9 +67,8 @@ Mobile Services (kind)
     Ambulance (kind)
         Ambulance AMB1 (instance)
         Ambulance AMB2 (instance)
-	</pre> -->
+	</pre>
 	<p>
-		<i>Обратите внимание, что палаты/отделения не являются частью этой структуры, они входят в иерархию организационной структуры.
-		<!-- Note that Wards/Departments are not part of this structure, these would form part of the Organizational Hierarchy. --></i>
+		<i>Note that Wards/Departments are not part of this structure, these would form part of the Organizational Hierarchy.</i>
 	</p>
 </div>

@@ -15,22 +15,20 @@ Grahame's OAuth extensions:
 </extension>
 -->
 
-<h2>Применение ресурсов Operation Outcome<!-- Using Operation Outcome Resources --></h2>
+<h2>Using Operation Outcome Resources</h2>
 <p>
-В RESTful-интерфейсе ресурсы operation outcome имеют значение, только когда уровень вычислимой детализации требуется выше, чем предоставляемый HTTP-кодами ответов. Такая детализация может включать:
-<!-- On the RESTful interface, operation outcome resources are only relevant when a level of computable detail is required that is more granular than that provided by the HTTP response codes.
-This granularity could include: -->
+On the RESTful interface, operation outcome resources are only relevant when a level of computable detail is required that is more granular than that provided by the HTTP response codes.
+This granularity could include:
 </p>
 <ul>
-<li>больше информации о местоположении проблемы<!-- more detail about the location of an issue --></li>
-<li>возможность идентифицировать несколько различных проблем<!-- the ability to identify multiple distinct issues --></li>
-<li>предоставление более тонких кодов ошибок, связанных с известными бизнес-состояниями сбоев <!-- provision of finer error codes that connect to known business failure states --></li>
+<li>more detail about the location of an issue</li>
+<li>the ability to identify multiple distinct issues</li>
+<li>provision of finer error codes that connect to known business failure states</li>
 </ul>
 
 <p>
-Возвращаемые ресурсы Operation outcomes ДОЛЖНЫ быть . с HTTP-кодами ответов. Например, если HTTP-код указывает на сбой (300+), по меньшей мере одна из проблем должна иметь степень тяжести "ошибка (error)" с указанием причины этого сбоя.
-<!-- Operation outcomes returned SHOULD be in alignment with the HTTP response code.  For example, if the HTTP code indicates a failure (300+), at least
-one of the issues should have a severity of "error", indicating the reason for the failure. -->
+Operation outcomes returned SHOULD be in alignment with the HTTP response code.  For example, if the HTTP code indicates a failure (300+), at least
+one of the issues should have a severity of "error", indicating the reason for the failure.
 </p>
 
 </div>
