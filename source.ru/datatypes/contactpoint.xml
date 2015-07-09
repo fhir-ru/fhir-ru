@@ -977,11 +977,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Details of a Technology mediated contact point (phone, fax, email, etc)</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Подробная информация о точке контакта для коммуникации посредством цифровых технологий (телефон, факс, электронная почта и т. д.)<!-- Details of a Technology mediated contact point (phone, fax, email, etc) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Details for All kinds of technology mediated contact points for a person or organization, including telephone, email, etc.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Подробная информация о точках контакта  для всех видов технологий опосредованной коммуникации с человеком или организацией, в том числе по телефону, электронной почте и т. д.<!-- Details for All kinds of technology mediated contact points for a person or organization, including telephone, email, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Need to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Необходимо отслеживать телефон, факс, мобильный, SMS-номера, адреса электронной почты, теги Twitter-а и т. д.<!-- Need to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1016,7 +1016,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">phone | fax | email | url</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Telecommunications form for contact point - what communications system is required to make use of the contact</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вид телекоммуникации для этой точки контакта - какая система связи требуется для использования этого контакта<!-- Telecommunications form for contact point - what communications system is required to make use of the contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1048,13 +1048,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The actual contact point details</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Детали самой точки контакта<!-- The actual contact point details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Фактические детали точки контакта в той форме, которая имеет смысл для указанной системы связи (т. е. номер телефона или адрес электронной почты).<!-- The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to support legacy numbers that are not in a tightly controlled format </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо поддержать устаревшие номера, которые хранятся не в жестко контролируемой формате<!-- Need to support legacy numbers that are not in a tightly controlled format --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional out of band data such as extensions, or notes about use of the contact are sometimes included in the value</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сюда иногда включаются дополнительные данные, такие как расширения или заметки об использовании контакта <!-- Additional out of band data such as extensions, or notes about use of the contact are sometimes included in the value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./url</Data><NamedCell
@@ -1086,13 +1086,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">home | work | temp | old | mobile - purpose of this contact point</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">home | work | temp | old | mobile - назначение этой точки контакта<!-- home | work | temp | old | mobile - purpose of this contact point --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the purpose for the contact point</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет назначение точки контакта<!-- Identifies the purpose for the contact point --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо отслеживать то, как человек использует этот контакт, чтобы пользователь мог выбрать тот, который подходит для его целей<!-- Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Помечено как модификатор, потому что приложения не должны путать временные или старые контакты с текущим/постоянным. Приложения могут считать контакт текущим, если в нем явно не говорится, что он временный или старый<!-- This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">unique(./use)</Data><NamedCell
@@ -1122,9 +1122,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time period when the contact point was/is in use</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени, когда контактная точка была/используется<!-- Time period when the contact point was/is in use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Time period when the contact point was/is in use</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени, когда контактная точка была/находится в употреблении<!-- Time period when the contact point was/is in use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3831,7 +3831,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">ContactPoint</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">A system is required if a value is provided.</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Если значение указано, система является обязательной.<!-- A system is required if a value is provided. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">value.oclIsDefined implies system.oclIsDefined</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
