@@ -1,14 +1,10 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
-  <h2>Нерешенные вопросы<!-- Open Issues --></h2>
+  <h2>Open Issues</h2>
   <a name="dstu"> </a>
   <ul>
-      <li>Есть ли существующая кодовая система, которую мы могли бы использовать как рекомендуемый набор значений для значений вероятности риска?</li>
-    <li>Должны ли risk assessments применяться к устройствам, местоположению и любым другим ресурсам (в рамках 80%)?</li>
-    <li>Входит ли определение метода оценки риска в 80%?</li>
-    <li>Входят ли относительные риски в эти 80%?</li>
-<!--     <li>Is there an existing code system we can use as a recommended value set for risk probabilties?</li>
+    <li>Is there an existing code system we can use as a recommended value set for risk probabilties?</li>
     <li>Should risk assessments apply to devices, locations or any other resources (as part of the 80%)?</li>
     <li>Is identification of risk assessment method part of the 80%?</li>
-    <li>Is relative risk in the 80%?</li> -->
+    <li>Is relative risk in the 80%?</li>
   </ul>
 </div>

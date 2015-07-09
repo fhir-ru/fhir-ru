@@ -987,9 +987,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Инструкция или совет касательно иммунизации<!-- Guidance or advice relating to an immunization --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Guidance or advice relating to an immunization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Статус иммунизации пациента в некоторый момента времени, и рекомендации с необязательным вспомогательным обоснованием<!-- A patient's point-of-time immunization status and recommendation with optional supporting justification --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A patient's point-of-time immunization status and recommendation with optional supporting justification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1023,9 +1023,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Бизнес-идентификатор<!-- Business identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Business identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор, присвоенный конкретно этой записи о рекомендации.<!-- A unique identifier assigned to this particular recommendation record. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A unique identifier assigned to this particular recommendation record.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1058,9 +1058,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Для кого этот профиль<!-- Who this profile is for --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who this profile is for</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Пациент, для которого даются эти рекомендации.<!-- The patient for whom the recommendations are for. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The patient for whom the recommendations are for.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1093,9 +1093,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Рекомендации по введению вакцин<!-- Vaccine administration recommendations --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Vaccine administration recommendations</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендации по введению вакцин<!-- Vaccine administration recommendations --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Vaccine administration recommendations</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1128,9 +1128,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата создания рекомендации<!-- Date recommendation created --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Date recommendation created</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата создания рекомендации по иммунизации.<!-- The date the immunization recommendation was created. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The date the immunization recommendation was created.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1164,9 +1164,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Вакцина, которая рекомендуется<!-- Vaccine recommendation applies to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Vaccine recommendation applies to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Вакцина, о которой говорится в рекомендации <!-- Vaccine that pertains to the recommendation --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Vaccine that pertains to the recommendation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1199,12 +1199,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Рекомендуемая числовая доза<!-- Recommended dose number --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Recommended dose number</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Здесь указывается следующая рекомендуемая числовая доза (например доза 2 - это следующая рекомендуемая доза).<!-- This indicates the next recommended dose number (e.g. dose 2 is the next recommended dose). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This indicates the next recommended dose number (e.g. dose 2 is the next recommended dose).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Могут потребоваться другие концепты дозы, например введена в отличие от допустима<!-- May need other dose concepts such as administered vs. valid --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">May need other dose concepts such as administered vs. valid</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.inboundRelationship[typeCode=COMP, .source[classCode=SBADM, moodCode=INT]].sequenceNumber</Data><NamedCell
@@ -1236,9 +1236,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус введения вакцины<!-- Vaccine administration status --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Vaccine administration status</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус введения вакцины<!-- Vaccine administration status --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Vaccine administration status</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1272,7 +1272,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Dates governing proposed immunization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендации по срокам введения вакцины - например самая ранняя дата введения, самая поздняя дата введения и т. п.<!-- Vaccine date recommendations - e.g. earliest date to administer, latest date to administer, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Vaccine date recommendations - e.g. earliest date to administer, latest date to administer, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1307,9 +1307,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип даты<!-- Type of date --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of date</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Классификация сроков в рекомендации - например самая ранняя дата для выдачи, самая поздняя дата для выдачи и т. п.<!-- Date classification of recommendation - e.g. earliest date to give, latest date to give, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Date classification of recommendation - e.g. earliest date to give, latest date to give, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1342,9 +1342,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Рекомендованная дата<!-- Recommended date --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Recommended date</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендованная дата<!-- Date recommendation --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Date recommendation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1376,9 +1376,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Протокол, используемый для рекомендации<!-- Protocol used by recommendation --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Protocol used by recommendation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержит информацию о протоколе, в соответствии с которым была введена вакцина<!-- Contains information about the protocol under which the vaccine was administered --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Contains information about the protocol under which the vaccine was administered</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1411,9 +1411,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Числовое указание дозы в последовательности<!-- Number of dose within sequence --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Number of dose within sequence</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает номинальную позицию в серии следующей дозы. Это рекомендованное число дозы в соответствии с указанным протоколом.<!-- Indicates the nominal position in a series of the next dose.  This is the recommended dose number as per a specified protocol. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the nominal position in a series of the next dose.  This is the recommended dose number as per a specified protocol.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1446,9 +1446,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Информация о протоколе<!-- Protocol details --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Protocol details</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержит описание протокола, в соответствии с которым была введена вакцина<!-- Contains the description about the protocol under which the vaccine was administered --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Contains the description about the protocol under which the vaccine was administered</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1481,9 +1481,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто отвечает за протокол<!-- Who is responsible for protocol --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who is responsible for protocol</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает орган власти, опубликовавший протокол? Например ACIP<!-- Indicates the authority who published the protocol?  E.g. ACIP --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the authority who published the protocol?  E.g. ACIP</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1516,9 +1516,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Название серии вакцинаций<!-- Name of vaccination series --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of vaccination series</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Один из возможных путей достижения предполагаемого иммунитета к заболеванию - с контексте органа власти<!-- One possible path to achieve presumed immunity against a disease - within the context of an authority --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">One possible path to achieve presumed immunity against a disease - within the context of an authority</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1551,9 +1551,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Предыдущие иммунизации, поддерживающие рекомендацию<!-- Past immunizations supporting recommendation --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Past immunizations supporting recommendation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">История событий иммунизации, которая поддерживает статус и рекомендацию<!-- Immunization event history that supports the status and recommendation --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Immunization event history that supports the status and recommendation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1586,9 +1586,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Наблюдения пациента, поддерживающие рекомендацию<!-- Patient observations supporting recommendation --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Patient observations supporting recommendation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о пациенте, которая поддерживает статус и рекомендацию. Сюда входят наблюдения пациента, нежелательные побочные реакции и информация об аллергии/непереносимости.<!-- Patient Information that supports the status and recommendation.  This includes patient observations, adverse reactions and allergy/intolerance information. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Patient Information that supports the status and recommendation.  This includes patient observations, adverse reactions and allergy/intolerance information.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>

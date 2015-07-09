@@ -1,19 +1,16 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-    <h2>Примечания:<!-- Notes -->:</h2>
+    <h2>Notes:</h2>
     <ul>
-			<li>Взаимодействие с другими стандартами<!-- Interaction with other Standards --></li>
+			<li>Interaction with other Standards</li>
 			<p>
-			Настойчиво рекомендуется, чтобы реализаторы этого ресурса рассмотрели возможность использования его в формате iCalendar в качестве альтернативного представления. Многие сторонние приложения и провайдеры компонентов имеют парсеры и элементы управления пользовательским интерфейсом для отображения такой информации.
-		Это может понизить точку входа для интеграции за пределами специфичных для здравоохранения приложений, и войти в пространство потребителя. Это позволило бы более простое создание мобильного приложения для создания условленных встреч во встроенных календарях мобильных устройств.
-				<!-- The strong desire is that implementers of this resource should consider providing this resource
+				The strong desire is that implementers of this resource should consider providing this resource
 				in the iCalendar format as an alternative representation. Many 3rd party applications and component providers 
 				have parsers and user interface controls to display this information.
 				This may lower the entry point to integrate outside the health-care specific applications, and into the 
 				consumer space. This would permit the easier creation of a mobile application that creates appointments
-				in the devices native calendar. --><br/>
-				Спецификация iCalendar расположена по адресу <a href="http://www.ietf.org/rfc/rfc2445.txt">http://www.ietf.org/rfc/rfc2445.txt</a>.
-				<!-- The iCalendar specification can be found at <a href="http://www.ietf.org/rfc/rfc2445.txt">http://www.ietf.org/rfc/rfc2445.txt</a>. -->
+				in the devices native calendar.<br/>
+				The iCalendar specification can be found at <a href="http://www.ietf.org/rfc/rfc2445.txt">http://www.ietf.org/rfc/rfc2445.txt</a>.
 			</p>
     </ul>
 </div>

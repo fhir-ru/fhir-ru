@@ -1,90 +1,71 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h2>Примечание для реализации<!-- Implementation Notes --></h2>
+<h2>Implementation Notes</h2>
 <ul>
- <li>Использование кодов .docStatus рассматривается в статье <a href="composition.html#status">Описание ресурса Composition</a><!-- The use of the .docStatus codes is discussed in the <a href="composition.html#status">Composition description</a> --></li>
- <li>Ресурсы поддерживают односторонние взаимосвязи, которые ведут в обратном направлении - например документ, который замещает другой документ, указывает на документ, который он замещает. Обратные взаимосвязи можно отслеживать с помощью индексов, построенных из ресурсов. Как правило, это выполняется с помощью параметров поиска, описанных ниже. При условии, что документы могут иметь другие документы, которые их замещают или прилагаются к ним, клиенты должны всегда проверять эти взаимосвязи при обращении к документам <!-- The resources maintain one way relationships that point backwards - e.g. the document that replaces one document points towards the document that it replaced. The reverse relationships can be followed by using 
-  indexes built from the resources. Typically, this is done using the search parameters described below. Given that documents may have other documents that replace or append them, clients should always check these relationships when accessing documents --></li>
+ <li>The use of the .docStatus codes is discussed in the <a href="composition.html#status">Composition description</a></li>
+ <li>The resources maintain one way relationships that point backwards - e.g. the document that replaces one document points towards the document that it replaced. The reverse relationships can be followed by using 
+  indexes built from the resources. Typically, this is done using the search parameters described below. Given that documents may have other documents that replace or append them, clients should always check these relationships when accessing documents</li>
   
 </ul>
 
-<h3>Форматы документов<!-- Document Formats --></h3>
+<h3>Document Formats</h3>
 <p>
-Кроме mime-типа (который является обязательным), имеется также элемент <i>format</i>, который передает URI. Этот элемент имеет один или несколько идентификаторов, которые указывают, что формат и/или содержимое документа соответствуют дополнительным правилам, лежащим за пределами базового формата, указанного в mimeType. Чаще всего это используется с mime-типом text/xml для предоставления дополнительной информации для нахождения корректного документа.
-<!-- In addition to a mime type (which is mandatory), there is also a <i>format</i> element which carries
+In addition to a mime type (which is mandatory), there is also a <i>format</i> element which carries
 a URI. This element has one or more identifiers that indicate that the format and/or content of the 
 document conforms to additional rules beyond the base format indicated in the mimeType. This is most 
 often used when the mime-type is text/xml, to provide additional information for finding the correct
-document. -->
+document.
 </p>
 <p>
-Заданные URIs:
-<!-- Defined URIs: -->
+Defined URIs:
 </p>
 <ul>
  <li><a href="http://www.astm.org/Standards/E2369.htm">ASTM CCR</a>: urn:astm-org:CCR</li>
- <li>CCDA: urn:hl7-org:sdwg:ccda-level-1:1.1, urn:hl7-org:sdwg:ccda-level-2:1.1 и urn:hl7-org:sdwg:ccda-level-3:1.1</li>
- <li>IHE задает URIs <a href="http://wiki.ihe.net/index.php?title=IHE_Format_Codes">здесь</a> и 
-   OIDs <a href="http://wiki.ihe.net/index.php?title=PCC_Vocabulary_Registry_and_Data_Dictionary">здесь</a> (используйте приставку к OIDs urn:oid: в ресурсе).</li> 
-<!--  <li><a href="http://www.astm.org/Standards/E2369.htm">ASTM CCR</a>: urn:astm-org:CCR</li>
  <li>CCDA: urn:hl7-org:sdwg:ccda-level-1:1.1, urn:hl7-org:sdwg:ccda-level-2:1.1 and urn:hl7-org:sdwg:ccda-level-3:1.1</li>
  <li>IHE defines URIs <a href="http://wiki.ihe.net/index.php?title=IHE_Format_Codes">here</a> and 
-   OIDs <a href="http://wiki.ihe.net/index.php?title=PCC_Vocabulary_Registry_and_Data_Dictionary">here</a> (prefix OIDs with urn:oid: in the resource).</li>  -->
+   OIDs <a href="http://wiki.ihe.net/index.php?title=PCC_Vocabulary_Registry_and_Data_Dictionary">here</a> (prefix OIDs with urn:oid: in the resource).</li> 
 </ul>
 <p>
-Другие URIs могут использоваться для пунктов не из этого списка.
-<!-- Other URIs can be used for items not on this list. -->
+Other URIs can be used for items not on this list.
 </p>
 
 
-<h3>Генерация Document Reference<!-- Generating a Document Reference --></h3>
+<h3>Generating a Document Reference</h3>
 <p>
-Клиент может запросить сервер сгенерировать Document Reference из документа. 
-Сервер читает существующий документ и генерирует соответствующий ресурс DocumentReference, либо возвращает сгенерированный ранее. Серверы могут возвращать или генерировать DocumentReference для следующих типов контента:
-<!-- A client can ask a server to generate a document reference from a document.
+A client can ask a server to generate a document reference from a document.
 The server reads the existing document and generates a matching DocumentReference
 resource, or returns one it has previously generated. Servers may be able to 
-return or generate document references for the following types of content: -->
+return or generate document references for the following types of content:
 </p>
 <table class="grid">
-  <tr> <td><b>Тип</b></td> <td><b>Комментарии</b></td> </tr>
-  <tr> <td><a href="documents.html">FHIR-документы</a></td> <td>URI ведет на существующий Document</td> </tr>
-  <tr> <td>CDA-документ</td> <td>URI - это ссылка на точку взаимодействия ресурса <a href="extras.html#Binary">Binary</a>, которая возвращает либо CDA-документ, либо какой-то вид  CDA Package, который сервер знает как обрабатывать (например IHE .zip)</td> </tr>
-  <tr> <td>Другое</td> <td>Сервер могут запросить сгенерировать DocumentReference для других видов документов. Для некоторых из этих документов (например PDF-документов) сервер может предложить только уже существующий DocumentReference, либо сервер имеет особые сведения об этом документе</td> </tr>
-<!--   <tr> <td><b>Type</b></td> <td><b>Comments</b></td> </tr>
+  <tr> <td><b>Type</b></td> <td><b>Comments</b></td> </tr>
   <tr> <td><a href="documents.html">FHIR Documents</a></td> <td>The uri refers to an existing Document</td> </tr>
-  <tr> <td>CDA Document</td> <td>The uri is a reference to a <a href="extras.html#Binary">Binary</a> end-point that returns either a CDA 
+  <tr> <td>CDA Document</td> <td>The uri is a reference to a <a href="compartments.html#Binary">Binary</a> end-point that returns either a CDA 
     document, or some kind of CDA Package that the server knows how to process (e.g. an IHE .zip) </td> </tr>
   <tr> <td>Other</td> <td>The server can be asked to generate a document reference for other kinds of 
     documents. For some of these documents (e.g. PDF documents) a server could only provide a 
-    DocumentReference it is already existed, or the server had special knowledge of the document</td> </tr> -->
+    DocumentReference it is already existed, or the server had special knowledge of the document</td> </tr>
 </table>
 <p>
-Сервер либо возвращает результаты поиска, содержащие отдельный DocumentReference, либо он возвращает ошибку. 
-Если некоторый URI ссылается на другой сервер, то решение о том, извлекать его или вернуть ошибку, остается на усмотрение сервера,.
-<!-- The server either returns a search result containing a single DocumentReference, 
+The server either returns a search result containing a single DocumentReference, 
 or it returns an error. 
 If some the URI refers to another server, it is at the discretion of the 
-server whether to retrieve it or return an error.  -->
+server whether to retrieve it or return an error. 
 </p>
 <p>
-Операция инициируется именованным запросом с помощью выполнения _query=generate в точке взаимодействия /DocumentReference:
-<!-- The operation is initiated by a named query, using _query=generate on the /DocumentReference
-end point: -->
+The operation is initiated by a named query, using _query=generate on the /DocumentReference
+end point:
 </p>
 <pre>
   GET [service-url]/DocumentReference/?_query=generate&amp;uri=:url&amp;...
 </pre>
 <p>
-Параметр "uri" - это относительная или абсолютная ссылка на один из типов документов, описанных выше. Могут использоваться и другие параметры:
-<!-- The "uri" parameter is a relative or absolute reference to one of the 
-document types described above. Other parameters may be supplied: -->
+The "uri" parameter is a relative or absolute reference to one of the 
+document types described above. Other parameters may be supplied:
 </p>
 <table class="grid">
-  <tr> <td><b>Имя</b></td> <td><b>Значение</b></td> </tr>
-  <tr> <td>persist</td> <td>Хранить ли документ в точке взаимодействия документа (/Document) или нет, после того как он сгенерирован. Value = true или false (значение по умолчанию - на усмотрение сервера)</td> </tr>
-<!--   <tr> <td><b>Name</b></td> <td><b>Meaning</b></td> </tr>
-  <tr> <td>persist</td> <td>Whether to store the document at the document end-point (/Document) or not once it is generated. Value = true or false (default is for the server to decide)</td> </tr> -->
+  <tr> <td><b>Name</b></td> <td><b>Meaning</b></td> </tr>
+  <tr> <td>persist</td> <td>Whether to store the document at the document end-point (/Document) or not once it is generated. Value = true or false (default is for the server to decide)</td> </tr>
 </table>
 
 </div>

@@ -1,53 +1,44 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
     
 <p>
-Данный ресурс представляет собой запись о коммуникации. Коммуникация - это передача информации от одной сущности, отправителя, к другой сущности, получателю.
-Отправителем и получателями могут быть пациенты, специалисты, имеющие отношение люди, организации и устройства. Сценарии использования коммуникации включают в себя:
-<!-- This resource is a record of a communication. A communication is a conveyance of information from one entity, a sender, to another entity, a receiver. 
-The sender and receivers may be patients, practitioners, related persons, organizations, or devices. Communication use cases include: -->
+This resource is a record of a communication. A communication is a conveyance of information from one entity, a sender, to another entity, a receiver. 
+The sender and receivers may be patients, practitioners, related persons, organizations, or devices. Communication use cases include:
 </p>
 <ul>
-<li>Напоминание или оповещение, доставленное ответственному поставщику</li>
-<li>Зафиксированное уведомление от медсестры о том, что температура пациента превышает некоторое значение</li>
-<li>Сообщение в орган общественного здравоохранения о пациенте с инфекционным заболеванием, подлежащим регистрации в учреждении общественного здравоохранения</li>
-<li>Обучающие материалы для пациента, высланные ему поставщиком</li>
-<!-- <li>A reminder or alert delivered to a responsible provider</li>
+<li>A reminder or alert delivered to a responsible provider</li>
 <li>A recorded notification from the nurse that a patient's temperature exceeds a value</li>
 <li>A notification to a public health agency of a patient presenting with a communicable disease reportable to the public health agency</li>
-<li>Patient educational material sent by a provider to a patient</li> -->
+<li>Patient educational material sent by a provider to a patient</li>
 </ul>
 </div>
 
 <!-- (recommended): -->
 <div>
-<h2>Границы и связи</h2>
+<h2>Boundaries and Relationships</h2>
 <p>
-Данный ресурс является записью о коммуникации, которая уже произошла. Он не показывает фактическое течение коммуникации.
-В то время как ресурс <a href="auditevent.html">AuditEvent</a> может отслеживать электронное разглашение информации, он не может отслеживать разговоры, телефонные звонки, письма и другие взаимодействия, которые происходят не между системами. И даже для коммуникаций между системами конкретные конечные получатели могут быть не известны. Также <a href="auditevent.html">AuditEvents</a> не считаются частью истории болезни пациента, а экземпляры <b>Communication</b> считаются. Ресурс <b>Communication</b> не используется в качестве общего механизма аудита для отслеживания каждого разглашения каждой записи. Скорее, он используется когда клиницист или другой пользователь хочет гарантировать, что запись о конкретной коммуникации сама по себе поддерживается как часть медицинской карты, которую можно просмотреть.
-<!-- This resource is a record of a communication that has occurred. It does not represent the actual flow of communication.
+This resource is a record of a communication that has occurred. It does not represent the actual flow of communication.
 While <a href="auditevent.html">AuditEvent</a> can track electronic disclosures of information, it cannot track conversations,
 phone calls, letters and other interactions that are not system-to-system.  And even for system-to-system communications, the
 specific end recipients may not be known.  As well, <a href="auditevent.html">AuditEvents</a> are not considered to be "part"
 of the patient record, while <b>Communication</b> instances are.  The <b>Communication</b> resource is not used as a general
 audit mechanism to track every disclosure of every record.  Rather, it is used when a clinician or other user wants to ensure
-a record of a particular communication is itself maintaned as part of the reviewable health record. -->
+a record of a particular communication is itself maintaned as part of the reviewable health record.
 </p>
 <p>
-Ресурсы <a href="flag.html">Flag</a> представляют непрерывную продолжающуюся "коммуникацию", оповещающую всех, кто имеет дело с этим пациентом, об определенных мерах предосторожности, которые должны быть предприняты, или проблемах, которые необходимо иметь в виду. Флаги присутствуют в качестве постоянного напоминания. В этом заключается их отличие от <b>Communication</b>, где есть конкретный намеченный отправитель и получатель, и информация доставляется только один раз.
-<!-- <a href="flag.html">Flag</a> resources represent a continuous ongoing "communication" alerting anyone dealing with the patient
+<a href="flag.html">Flag</a> resources represent a continuous ongoing "communication" alerting anyone dealing with the patient
 of certain precautions to take or issues to be aware of.  The flags are continuously present as an ongoing reminder.  This is 
 distinct from <b>Communication</b> where there is a specific intended sender and receiver and the information is delivered only
-once. -->
+once.
 </p>
 </div>
 
 <!-- (optional):
 <div>
-<h2>Предпосылки и контекст</h2>
+<h2>Background and Context</h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>

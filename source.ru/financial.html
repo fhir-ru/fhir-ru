@@ -2,7 +2,7 @@
 
 
       
-[%settitle Финансовые ресурсы%]
+[%settitle Financial Resources%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -11,24 +11,22 @@
 [%file newnavbar%]
 
 <div class="col-9">
-<h2>Финансовые ресурсы</h2>
+<h2>Financial Resources</h2>
  
  <p>
- В таблице ниже описаны распространенные деловые операции, относящиеся к сфере финансов, узкоспециализированные ресурсы, которыми можно обмениваться, и вспомогательные ресурсы для совершения деловых операций. Решение о том, действительно ли требуются указанные ресурсы, принимается с учетом  особенностей ведения коммерческой деятельности и используемых методик обмена и передачи данных.
-<!--  The table below details various common business activities which occur in the financial realm, and the focal resources 
+ The table below details various common business activities which occur in the financial realm, and the focal resources 
  which may be exchanged, along with supporting resources, to accomplish the business activities. Whether or not the 
  resources specified are actually needed requires consideration of the business itself and the exchange methodology 
- and transport being used.  -->
+ and transport being used. 
  </p>
  <p>
- К примеру, если точный 'Request' не требует документации, и обменивающиеся данными стороны используют REST, тогда можно использовать GET вместо CREATE ресурса-запроса. В качестве альтернативы, если используются операции FHIR, тогда указанный узкоспециализированный ресурс может не требоваться либо может быть использован в качестве одного из параметров операции. 
-<!--  For example, if a definitive 'Request' does not need to be documented and communicating parties are using REST 
+ For example, if a definitive 'Request' does not need to be documented and communicating parties are using REST 
  then a GET may be used in place of a CREATE of the request resource. Alternately, if FHIR Operations are being used then
- the specified focal resource may not be required or may be employed as one of the Operation parameters. -->
+ the specified focal resource may not be required or may be employed as one of the Operation parameters.
  </p>
  
- <p><b>Примечание:</b> Ресурс SupportingDocumentation устарел и вместо него для обмена вложениями и вспомогательными материалами, PDF, изображениями, рентгеновскими снимками и т. п. теперь следует использовать DocumentManifest. <!-- The SupportingDocumentation resource has been deprecated in favour of DocumentManifest for the excahnge of attachments
- and supporting materials, PDF, Images, XRays, etc. -->
+ <p><b>Note:</b> The SupportingDocumentation resource has been deprecated in favour of DocumentManifest for the excahnge of attachments
+ and supporting materials, PDF, Images, XRays, etc.
  </p>
  
 <table class="grid">
@@ -40,7 +38,7 @@
  <tr><td>Pre-Authorization</td><td>Claim (type={discipline}, use=proposed)</td><td>ClaimResponse</td></tr>
  <tr><td>Reversal</td><td>ProcessRequest (action=cancel, nullify=false)</td><td>ClaimResponse</td></tr>
  <tr><td>Nullify</td><td>ProcessRequest (action=cancel, nullify=true)</td><td>ClaimResponse</td></tr>
- <tr><td>Re-adjudication</td><td>Readjudication</td><td>ClaimResponse</td></tr>
+ <tr><td>Re-adjudication</td><td>ProcessRequest (action=reprocess)</td><td>ClaimResponse</td></tr>
  <tr><td>Status Check</td><td>ProcessRequest (action=status)</td><td>ProcessResponse</td></tr>
  <tr><td>Pended Check (Polling)</td><td>ProcessRequest (action=poll)</td><td>{Resource} or ProcessResponse</td></tr>
  <tr><td>Payment Notice</td><td>PaymentNotice</td><td>ProcessResponse</td></tr>
@@ -49,17 +47,15 @@
  <tr><td>Request an Explanation of Benefits&nbsp;&nbsp;&nbsp;</td><td>ProcessRequest (action=poll, include=ExplanationOfBenefit)</td><td>ExplanationOfBenefit</td></tr>
 </table>
  <p>
- <b>{disipline}</b> - означает тип требования выплаты страхового возмещения: OralHealth, Vision, Pharmacy, Professional или Institutional.
- <!-- <b>{disipline}</b> means the type of claim: OralHealth, Vision, Pharmacy, Professional or Institutional. -->
+ <b>{disipline}</b> means the type of claim: OralHealth, Vision, Pharmacy, Professional or Institutional.
  </p>
   <p>
-  <b>{Resource}</b> - означает любой ожидаемый или не доставленный ресурс, отвечающий параметрам выборки, указанным в запросе. 
- <!-- <b>{Resource}</b> means any pended or undelivered resource subject to the selection details specified in the request. -->
+ <b>{Resource}</b> means any pended or undelivered resource subject to the selection details specified in the request.
  </p>
 <table class="bare">
 
-[%res-category Вспомогательные|Административные%]
-<tr><td><b>Имя</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
+[%res-category Support|Administrative%]
+<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
 [%res-item Contract%]
 [%res-item Coverage%]
 [%res-item EligibilityRequest%]
@@ -70,25 +66,27 @@
 [%res-item ProcessResponse%]
 [%res-item DocumentManifest%]
 
-[%res-category Выставление счетов|Claims, обработка и ответы%]
-<tr><td><b>Имя</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
+[%res-category Billing|Claims, processing and responses %]
+<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
 <!-- [%res-item ClaimResponse%] -->
 [%res-item Claim%]
 [%res-item ClaimResponse%]
 
-[%res-category Оплата|Используются для оповещения и обработки данных по оплате услуг%]
-<tr><td><b>Имя</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
+[%res-category Payment|Used to support service payment processing and reporting%]
+<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
 [%res-item PaymentNotice%]
 [%res-item PaymentReconciliation%]
 
-[%res-category Другое|Для оповещения пациента и других целей%]
-<tr><td><b>Имя</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
+[%res-category Other|Patient reporting and other purposes%]
+<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
 [%res-item ExplanationOfBenefit%]
 </table>
 
 <p>
-В дальнейшем перечень ресурсов будет расширен. С ресурсами, которые, вероятно, будут добавлены в перечень базовых, можно ознакомиться в <a href="http://wiki.hl7.org/index.php?title=FHIR_Resource_Types">wiki-разделе сайта HL7</a>. Вы можете предложить собственный ресурс или связаться с одной из <a href="http://www.hl7.org/Special/committees/index.cfm">Рабочих групп HL7</a>  для подачи 
-<a href="http://wiki.hl7.org/index.php?title=Category:FHIR_Resource_Proposal">заявки</a> на создание ресурса конкретного назначения. 
+Additional Resources will be added in the future. A list of hypothesized resources can be found on the 
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Resource_Types">HL7 wiki</a>.  Feel free to add any you think are missing or engage with one 
+of the <a href="http://www.hl7.org/Special/committees/index.cfm">HL7 Work Groups</a> to submit a 
+<a href="http://wiki.hl7.org/index.php?title=Category:FHIR_Resource_Proposal">proposal</a> to define a resource of particular interest.
 </p>
 
 </div>

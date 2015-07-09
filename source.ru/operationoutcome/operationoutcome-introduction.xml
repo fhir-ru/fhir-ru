@@ -1,22 +1,19 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
-Ресурсы OperationOutcome - это наборы ошибок, предупреждений или информационных сообщений, передающих подробное описание результата некоторого предпринятого системой действия. 
-Они предлагаются в виде прямого ответа системы или его компонента, где они предоставляют информацию о результате операции.
-<!-- Operation Outcomes are sets of error, warning and information messages that provide detailed information about the outcome of some attempted system operation.  
-They are provided as a direct system response, or component of one, where they provide information about the outcome of the operation. -->
+Operation Outcomes are sets of error, warning and information messages that provide detailed information about the outcome of some attempted system operation.  
+They are provided as a direct system response, or component of one, where they provide information about the outcome of the operation.
 </p>
 
 <p>
-В частности, ресурсы OperationOutcome используются в следующих случаях:
-<!-- Specifically, OperationOutcomes are used in the following circumstances: -->
+Specifically, OperationOutcomes are used in the following circumstances:
 </p>
 <ul>
- <li>В случае неудачи <a href="http.html#operations">RESTful-операции</a><!-- When an <a href="http.html#operations">RESTful operation</a> fails --></li>
- <li>Как ответ на <a href="http.html#validate">операцию валидации (validation)</a> для предоставления информации о её результатах<!-- As the response on a <a href="http.html#validate">validation operation</a>, to provide information about the outcomes --></li>
- <li>В рамках ответа на сообщение, обычно когда это сообщение не было обработано корректно<!-- As part of a message response, usually when the message has not been processed correctly --></li>
+ <li>When an <a href="http.html#operations">RESTful operation</a> fails</li>
+ <li>As the response on a <a href="http.html#validate">validation operation</a>, to provide information about the outcomes</li>
+ <li>As part of a message response, usually when the message has not been processed correctly</li>
 </ul>
 </div>
 

@@ -1,39 +1,30 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
-OralHealthClaim - один из набора аналогичных ресурсов (OralHealthClaim, VisionClaim, PharmacyClaim, ProfessionalClaim, InstitutionalClaim), которые используются поставщиками для обмена финансовой информацией, а также для поддержки клинической информации в отношении предоставления услуг здравоохранения. Основными видами использования этого ресурса является поддержка eClaims, обмен данными о текущих или предлагаемых услугах c плательщиками пособий (benefit payors), страховщиками и национальными программами здравоохранения для планирования оплаты лечения и компенсации.
-<!-- The OralHealthClaim  is one of a suite of similar resources (VisionClaim, PharmacyClaim, ProfessionalClaim, InstitutionalClaim) which are used by providers to 
+The OralHealthClaim  is one of a suite of similar resources (VisionClaim, PharmacyClaim, ProfessionalClaim, InstitutionalClaim) which are used by providers to 
 exchange the financial information, and supporting clinical information, regarding the provision of healthcare services. The primary uses of this resource is to support eClaims, 
-the exchange of proposed or actual services to benefit payors, insurers and national health programs, for treatment payment planning and reimbursement. -->
+the exchange of proposed or actual services to benefit payors, insurers and national health programs, for treatment payment planning and reimbursement.
 </p>
 <p>
-Ресурс вида Claim предназначен для поддержки:
-<!-- The Claim is intended to support: -->
+The Claim is intended to support:
 <ul>
-<li>страховых требований (Claims) - для случаев, где предоставление товаров и услуг <b>завершено</b> и требуется компенсация.</li>
-<li>Предварительное санкционирование - для случаев, где предоставление товаров и услуг <b>предложено</b> и требуется санкционирование (authorization) и/или резервирование средств. </li>
-<li>Предварительное определение - для случаев, где предоставление товаров и услуг <b>исследуется</b> для определения того, какие услуги покрываются и какой суммой. По сути это страховое требование "что будет, если".</li>
-<!-- <li>Claims - where the provision of goods and services is <b>complete</b> and reimbursement is sought.</li>
+<li>Claims - where the provision of goods and services is <b>complete</b> and reimbursement is sought.</li>
 <li>Pre-Authorization - where the provision of goods and services is <b>proposed</b> and either authorization and/or the reservation of funds is desired.</li>
-<li>Pre-Determination - where the provision of goods and services is <b>explored</b> to determine what services may be covered and to what amount. Essentially a 'what if' claim.</li> -->
+<li>Pre-Determination - where the provision of goods and services is <b>explored</b> to determine what services may be covered and to what amount. Essentially a 'what if' claim.</li>
 </ul>
 </p>
 
 <p>
-Ресурсы вида Claim также поддерживают:
-<!-- The Claim also supports: -->
+The Claim also supports:
 <ul>
-<li>До 3 уровней иерархии товаров, продуктов и услуг для поддержки выставления от простых до сложных счетов.</li>
-<li>Несколько страховых программ, расположенных в последовательности согласования выгоды (Coordination of Benefit), чтобы позволить работу с первичными, вторичными, третичными и т. д. страховыми покрытиями.</li>
-<li>Назначение пособия - пособие по запросу может быть направлено абоненту-подписчику (subscriber), поставщику или другой стороне.</li>
-<!-- <li>Up to a 3 tier hierarchy of Goods, products, and Services, to support simple to complex billing.</li>
+<li>Up to a 3 tier hierarchy of Goods, products, and Services, to support simple to complex billing.</li>
 <li>Multiple insurance programs arranged in a Coordination of Benefit sequence to enable exchange with primary, secondary, tertiary etc. insurance coverages.</li>
-<li>Assignment of benefit - the benefit may be requested to be directed to the subscriber, the provider or another party.</li> -->
+<li>Assignment of benefit - the benefit may be requested to be directed to the subscriber, the provider or another party.</li>
 </ul>
 </p>
-<p> 
+<p>
 Todo
 </p>
 </div>

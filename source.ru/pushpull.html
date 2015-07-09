@@ -18,7 +18,7 @@ or consumer.
  
 -->
       
-[%settitle Управление доставкой информации по технологиям Push и Pull%]
+[%settitle Managing Push and Pull%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -28,40 +28,49 @@ or consumer.
 
 <div class="col-9">
 
-<h2>Управление доставкой информации по технологиям Push и Pull</h2>
+<h2>Managing Push and Pull</h2>
 <p>
-Основное внимание FHIR направлено на обмен медицинскими данными между системами. Всякий раз, когда у одной системы имеется информация, которая требуется или необходима другой, один вопрос, который автоматически возникает, это система-источник доставит данные без запроса (технология push) или система назначения извлечет эти данные по запросу (технология pull).
+The primary focus of FHIR is exchanging healthcare data between systems. Whenever one system has information that 
+another needs or wants, one question that automatically arises is whether the source system will push the data, or 
+whether the destination system will pull the data.
 </p>
 <table class="grid">
-  <tr> <td>Технология Push</td> <td>
-  Как только новая информация становится доступной, система-источник посылает эту информацию получателю. Она ожидает, что система-получатель будет поддерживать и индексировать эту информацию по получении. Система-источник должна доверить системе-получателю управление надлежащим образом доступом/безопасностью.
-  </td> </tr>
-  <tr> <td>Технология Pull</td> <td>
-  Система-источник поддерживает и индексирует данные. Когда системе-получателю требуется или необходима эта информация, она должна извлечь ее из системы-источника. Либо источник, либо получатель (либо оба) управляет доступом/безопасностью.
-</td> </tr>
+  <tr> <td>Push</td> <td>As new information becomes available, the source system sends the information to the 
+    destination. It expects the destination system to maintain and index the information on receipt. 
+    The source system must trust the destination system to manage access/security appropriately</td> </tr>
+  <tr> <td>Pull</td> <td>The source system maintains and indexes data. When the destination system
+    wants or needs the information, it must retrieve it form the source system. Either the 
+    source or the destination (or both) manages access/security</td> </tr>
 </table>
 <p>
-Обратите внимание, что имеется возможность объединять эти режимы добавлением репозитория интерфейсов (interface repository) в этот смешанный состав. Например, чтобы связать источник, работающий по технологии push с получателем, работающим по технологии pull, просто настройте источник доставлять информацию в репозиторий без запроса (push), и получатель сможет извлекать данные из него по необходимости (pull). Если источник работает по технологии pull, репозиторий интерфейсов может регулярно посылать запрос на новые данные и, обнаружив их, доставлять (push) получателю.
+Note that it is possible to mix these modes by adding an interface repository into the mix. 
+For example, to connect a push-based source with a pull-based destination, simply have the 
+source push information at the repository, and the destination can pull data from it as 
+required. If the source is pull based, the interface repository can query it for new data 
+on a regular basis, and when it finds any, it can push it at the destination.
 </p>
 <p>
-Какая комбинация технологий push, pull и репозиториев интерфейсов является подходящей для данной ситуации, зависит от массы факторов: архитектуры развертывания, топологии сети и бизнес-конфигурации, политики безопасности и проч. Однако она часто ограничивается возможностями различных систем и стандартов, используемых при обмене.
+Which combination of push, pull and interface repositories is appropriate for any given 
+context depends on a host of factors around deployment architecture, network and business 
+topology, security policies, etc. However, it is often constrained by the capabilities of 
+the various systems and the standards used in the exchange.
 </p>
 <p>
-FHIR-спецификация поддерживает и разрешает использование обеих технологий push и pull:
+The FHIR specification supports and enables both push and pull:
 </p>
 <ul>
- <li><b>REST</b>: REST API может использоваться в обоих способах действия - это обсуждается более подробно ниже.</li>
- <li><b>Messages</b>: FHIR устанавливает события обмена сообщениями для push и pull.</li>
- <li><b>Services</b>: Сервисы могут устанавливаться для поддержки любой из моделей.</li>
- <li><b>Documents</b>: Этот вопрос не применим, т. к. документы являются комплектами, которыми обмениваются одним из способов: либо REST, либо сообщениями, либо сервисами.</li>
+ <li><b>REST</b>: The REST API can be used in either fashion - this is discussed in more depth below</li>
+ <li><b>Messages</b>: FHIR defines message events for both push and pull</li>
+ <li><b>Services</b>: Services may be defined to support either model</li>
+ <li><b>Documents</b>: This question doesn't apply, because documents are bundles that are exchanged using either REST, messages, or services</li>
 </ul>
 
-<h3>Технологии Push и Pull в RESTful-интерфейсе</h3>
+<h3>Push and Pull on a RESTful interface</h3>
 
 <ul>
- <li>Push: Источником является клиент, и когда доступны новые данные, он использует <a href="http.html#create">create</a>, <a href="http.html#update">update</a> и <a href="http.html#transaction">transaction</a> для доставки данных получателю (push), которым является сервер.</li>
- <li>Pull: Источником является сервер, а получателем - клиент. Когда клиенту необходимо использоваться данные, он использует комбинацию <a href="http.html#search">search</a> и <a href="http.html#read">read</a> таким образом, чтобы пользователи могли искать данные, которые им нужны.</li>
- <li>Push/Pull: Источником является сервер, а получателем - клиент. Получатель регулярно запрашивает у сервера его <a href="http.html#history">историю изменений</a> и копирует изменения в свою собственную копию базы данных.</li>
+ <li>Push: The source is a client, and when new data is available, it uses <a href="http.html#create">create</a>, <a href="http.html#update">update</a>, and <a href="http.html#transaction">transaction</a> to push data to the destination, which is a server</li>
+ <li>Pull: The source is a server, and the destination is a client. When the client wants to use the data, it uses a combination of <a href="http.html#search">search</a> and <a href="http.html#read">read</a> so the users can find the data they need</li>
+ <li>Push/Pull: The source is a server, and the destination is a client. On a regular basis, the destination queries the server for its <a href="http.html#history">history</a>, and replicates the changes in its own copy of the database</li>
 </ul>
 
 

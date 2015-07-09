@@ -16,21 +16,33 @@
 -->
 
 <%elheader base%>
-<h1>Элемент<!-- Element --></h1>
+
+<h1>Element</h1>
 
 <p>
-Базовое определение для всех элементов, содержащихся в ресурсе. Все элементы вне зависимости от того, определены они как <a href="datatypes.html">типы данных</a> или в рамках структуры ресурса, имеют следующее базовое содержимое:
-<!-- The base definition for all elements contained inside a resource. All elements, whether defined as a <a href="datatypes.html">Data Type</a>
-or as part of a resource structure, have this base content: -->
+The base definition for all elements contained inside a resource. All elements, whether defined as a <a href="datatypes.html">Data Type</a>
+or as part of a resource structure, have this base content:
 </p>
 
 <a name="definition"></a>
 <h2 style="margin-bottom: 1px">
-<!-- Content -->Содержимое
+Content
 </h2>
 
-[%dt Element%]
+[%dt Element 1%]
 
+
+<p>&nbsp;</p>
+
+<p><b>Constraints</b></p>
+
+[%dt.constraints Element%]
+
+<p>
+This constraint exists to reduce syntactical variation in resource contents. 
+If an element has no children, then it is always omitted from the resource, 
+as opposed to optionally present without any content.
+</p>
 
 </div>
 

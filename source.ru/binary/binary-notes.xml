@@ -1,35 +1,31 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <a name="rest"> </a>
-<h3>Обслуживание ресурсов Binary с помощью RESTful API<!-- Serving Binary Resources using the RESTful API --></h3>
+<h3>Serving Binary Resources using the RESTful API</h3>
 
 <p>
-Ресурсы Binary ведут себя несколько иначе, чем всех остальные ресурсы в RESTful API. Особенно при получении запроса на чтение двоичного ресурса, в котором явно не указан FHIR-тип контента "application/xml+fhir" или "application/json+fhir", тогда содержимое следует вернуть, используя тип контента, указанный в ресурсе. Например если тип контента в ресурсе "application/pdf", то содержимое следует вернуть непосредственно в формате PDF.
-<!-- The Binary resources behaves slightly differently to all other resources on the RESTful API.
+The Binary resources behaves slightly differently to all other resources on the RESTful API.
 specifically, when a read request is made for the binary resource that doesn't explicitly
 specify the FHIR content types "application/xml+fhir" or "application/json+fhir", then 
 the content should be returned using the content type stated in the resource. 
 e.g. if the content type in the resource is "application/pdf", then the content should
-be returned as a PDF directly.  -->
+be returned as a PDF directly. 
 </p>
 <p>
-Обратите внимание, что из-за способа работы веб-инфраструктуры не возможно ввести оющие правила об отношениях между полем "Accept" в запросе HTTP, и типом возвращаемого значения, вот почему по этому поводу нет никаких жестких правил. Однако замысел состоит в том, что если только на это нет специального запроса, то FHIR XML/JSON представление не возвращается.
-<!-- Note that due to the way the web infrastructure works, it is not possible to make blanket
+Note that due to the way the web infrastructure works, it is not possible to make blanket
 rules about the relationship between the "Accept" field in the http request, and the 
 return type, which is why there is no hard rule about this. However the intent is that
-unless specifically requested, the FHIR XML/JSON representation is not returned.  -->
+unless specifically requested, the FHIR XML/JSON representation is not returned. 
 </p>
 <p>
-Следует отметить, что в нативном двоичном представлении метаданные не доступны непосредственно, хотя некоторые из них дублируются в заголовках HTTP ответа.
-<!-- Note that in the native binary representation, the metadata is not available directly,
-though some of it is replicated in the HTTP response headers. -->
+Note that in the native binary representation, the metadata is not available directly,
+though some of it is replicated in the HTTP response headers.
 </p>
-<h3>Вопросы безопасности<!-- Security Considerations --></h3>
+<h3>Security Considerations</h3>
 <p>
-Двоичные ресурсы не ограничиваются условиями, и, следовательно, могут иметь любой тип содержимого и кодировку. Поэтому требуются дополнительные действия для проверки, что ресурс Binary не содержит вредоносного контента или имеет неправильный формат. Для получения дополнительной информации см. <a href="security.html#narrative">Безопасность нарративов</a>.
-<!-- Binary resources are not constrained, and therefore can be of any content type and encoding. 
+Binary resources are not constrained, and therefore can be of any content type and encoding. 
 Therefore extra care needs to be taken to validate the content of the Binary resource against 
-malicious or malformed content. For more details see <a href="security.html#narrative">Security of Narrative</a>. -->
+malicious or malformed content. For more details see <a href="security.html#narrative">Security of Narrative</a>.
 </p>
 <!--
 <a name="binary"> </a>

@@ -1,87 +1,70 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
-Ресурс ProcessRequest позволяет описать действие для выполнения над существующим ресурсом или ресурсами, и предоставляет дополнительную вспомогательную информацию для поддержки этого действия. На данный момент определены следующие действия: отменить, опросить, повторно обработать, получить статус (cancel, poll, 
-reprocess, status.).
-<!-- The ProcessRequest resource allows for the specification of an action to be performed on an existing resporce or resources and the 
+The ProcessRequest resource allows for the specification of an action to be performed on an existing resporce or resources and the 
 provides the additional supporting information to support that action. The actions currently defined are: cancel, poll, 
-reprocess, and status.  -->
+reprocess, and status. 
 </p>
 <p>
 
 </p>
 <p>
-<b>Cancel</b> указывает на ресурс, который необходимо отменить, и предоставляет как вспомогательную информацию для отмены, так и разрешено ли принимающей системе сохранить копию отмененного ресурса.
-<!-- <b>Cancel</b> indicates the resource which is to be reversed and provides both supporting 
+<b>Cancel</b> indicates the resource which is to be reversed and provides both supporting 
 information for the reversal and whether the receiving system is permitted to retain a copy of the 
-reversed resource. -->
+reversed resource.
 </p>
 <p>
-Отмена - это официальный запрос на прекращение обработки незавершенного предыдущего запроса или на отмену и/или аннулирование завершенного предыдущего запроса или отправки информации. Когда nullify=true, все копии исходной отправки должны быть очищены, хотя при этом могут сохраниться записи в аудите. Когда Nullify=false, копия исходного запроса может быть сохранена. ProcessResponse может быть создан или возвращен для указания, было ли запрашиваемое действие принято и успешно выполнено.
-<!-- The Cancel is the formal request to cease processing an incomplete prior request or to reverse 
+The Cancel is the formal request to cease processing an incomplete prior request or to reverse 
 and/or nullify a complete prior request or information submission. When nullify=true then all copies 
 of the original submission are to be purged, although audit logs may be retained. When Nullify=false 
 a copy of the original request may be retained. A ProcessResponse may be craeted or returned to indicate 
-whether the requestion action was accepted and scucessful. -->
+whether the requestion action was accepted and scucessful.
 </p>
 
 <p>
-<b>Poll</b> предоставляет вспомогательную информацию о запросе на опрос. Ответом на него будет ранее не доставленный ответ или StatusResponse (или другой ресурс типа подтверждения приема, который может содержать ошибки).
-<!-- <b>Poll</b> provides supporting information for the poll request. The response to 
+<b>Poll</b> provides supporting information for the poll request. The response to 
 this is a previously undelivered response or a StatusResponse (or other acknowledgement stype resource which may 
-contain errors).  -->
+contain errors). 
 </p>
 <p>
-Это официальный запрос для плательщиков, или систем, которым такое требуется, и/или способов передаче данных, которые не поддерживают операцию Get, для извлечения приостановленных, зависших ресурсов.
-<!-- This is a formal request for Payors or systems which require such and/or transports which don't 
-support a 'Get Operation', for the retrieval of pended, held, resources. -->
+This is a formal request for Payors or systems which require such and/or transports which don't 
+support a 'Get Operation', for the retrieval of pended, held, resources.
 </p>
 <p>
-Простое опрашивание, которое не конкретизирует: запрос, включение, исключение или период; и возвращает любой ожидающий обработки ресурс. Определенные типы бизнес-поведения могут поддерживаться предоставлением значений для фильтрующих элементов, например:
-<!-- A simple Poll request, one which doesn't specify: request, include, exclude or period; would return
+A simple Poll request, one which doesn't specify: request, include, exclude or period; would return
 any pended resource. Specific types of business behaviors may be supported by providing values for the
-filtering elements, for example: -->
+filtering elements, for example:
 <ul>
-<li>Получить любой ожидающий обработки ресурс - фильтры не указаны</li>
+<li>Get any pended resource - no filters specified</li>
 <li>Get deferred response to a Claim - specify the Claim in the 'request'</li>
 <li>Get all Supporting Documentation - specify 'SupportingDocumentation' as an 'include'</li>
 <li>Get an Explanation of Benefit - specify 'ExplanationOfBenefit' as an 'include'</li>
 <li>Get a payment reconciliation - specify a 'period' which contains the expected reconciliation 
 creation date, and specify 'PaymentReconciliation' as an 'include'</li> 
-<!-- <li>Get any pended resource - no filters specified</li>
-<li>Get deferred response to a Claim - specify the Claim in the 'request'</li>
-<li>Get all Supporting Documentation - specify 'SupportingDocumentation' as an 'include'</li>
-<li>Get an Explanation of Benefit - specify 'ExplanationOfBenefit' as an 'include'</li>
-<li>Get a payment reconciliation - specify a 'period' which contains the expected reconciliation 
-creation date, and specify 'PaymentReconciliation' as an 'include'</li>  -->
 </ul> 
 </p>
 
 <p>
 
 <p>
-<b>Reprocess</b> указывает на ресурс, который должен быть повторно обработан, например на повторное вынесение решения по иску, или  повторная проверка образца для анализа или диагностического изображения, и предоставляет как вспомогательную информацию для повторной обработки, так и очередь объектов для повторной обработки.
-<!-- <b>Reprocess</b> indicates the resource which is to be reprocessed, for example a claim to be readjudicated or a specemin or diagnostic image to be re-examined, 
-and provides both supporting information for the reprocessing and the line items which are to be reprocessed. -->
+<b>Reprocess</b> indicates the resource which is to be reprocessed, for example a claim to be readjudicated or a specemin or diagnostic image to be re-examined, 
+and provides both supporting information for the reprocessing and the line items which are to be reprocessed.
 </p>
 <p>
-Это необходимо для ограниченных сторонников, которым требуются возможность формально запросить повторную обработку определенных подкаталогов услуг из уже обработанного ресурса, например ранее признанного судом иска.
-<!-- This is necessary for the limited supporters who require the ability to formally request the 
-reprocessing of specified service sub-trees from an already processed resource such as a previously adjudicated Claim. -->
+This is necessary for the limited supporters who require the ability to formally request the 
+reprocessing of specified service sub-trees from an already processed resource such as a previously adjudicated Claim.
 </p>
 
 <p>
-<b>Status</b> указывает ресурс, для которого запрашивается статус обработки, и предоставляет вспомогательную информацию для запроса статуса.
-<!-- <b>Status</b> indicates the resource for which the processing status is requested and 
-provides supporting information for the status request. -->
+<b>Status</b> indicates the resource for which the processing status is requested and 
+provides supporting information for the status request.
 
 </p>
 <p>
-Это официальный запрос для плательщиков, которым требуется такой, и/или способов передачи данных, которые не поддерживают операцию Get, для получения статуса обработки ранее отправленного запроса на обработку.
-<!-- This is a formal request for Payors which require such and/or transports which don't support a
-'Get Operation', for the processing status of a previously submitted processing request. -->
+This is a formal request for Payors which require such and/or transports which don't support a
+'Get Operation', for the processing status of a previously submitted processing request.
 </p>
 
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
@@ -90,7 +73,7 @@ provides supporting information for the status request. -->
 
 <!-- (recommended): 
 <div>
-<h2>Границы и связи</h2>
+<h2>Boundaries and Relationships</h2>
 <p>
 Explains how this resource relates to others. Particularly important is to differentiate between appropriate usages for related resources when an implementer might be confused about what to reference when.
 </p>
@@ -99,7 +82,7 @@ Explains how this resource relates to others. Particularly important is to diffe
 
 <!-- (optional):
 <div>
-<h2>Предпосылки и контекст</h2>
+<h2>Background and Context</h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>

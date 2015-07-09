@@ -1,30 +1,27 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
-Ответ на заказ содержит результат обработки самого заказа - был ли он принят или отклонен, или все еще в процессе обработки. Ресурс order response сам не передает или представляет информацию, которая появляется в результате выполнения непосредственно самого заказа, однако может иметь ссылки на другие ресурсы, которые содержат эту информацию, для связи между первоначальным заказом и его результатом.
-<!-- The response to an order indicates the outcome of processing the order itself - whether it 
+The response to an order indicates the outcome of processing the order itself - whether it 
 was accepted or rejected, or is still in process. The order response resource does not itself convey 
 or represent information that arises as a result of performing the actual order, but it may have 
 references to other resources that do have this information, in order to link between the original
-order and its outcome. -->
+order and its outcome.
 </p>
 </div>
 
 <div>
-<h2>Предпосылки и контекст</h2>
+<h2>Background and Context</h2>
 <p>
-Может быть несколько ответов на сделанный заказ. Для некоторых запросов отвечающая система может выпустить последовательность ответов, где каждый ответ разменяет предыдущие ответы, в то время как первоначальный заказ обрабатывается/выполняется. В таких случаях каждый ответ должен иметь тот же самый логический идентификатор, а множественные ответы являются различными версиями одного общего ответа.
-<!-- There may be multiple responses for a given order. For some requests, a responding system
+There may be multiple responses for a given order. For some requests, a responding system
 may issue a sequence of responses, where each response replaces previous responses as the original
 order is processed/performed. In these cases, each response should have the same logical identity, and 
-the multiple responses are different versions of the same overall response.  -->
+the multiple responses are different versions of the same overall response. 
 </p>
 <p>
-Если на запрос отвечает несколько систем, или если запрос может иметь несколько различных ответов, тогда различные логические ответы должны иметь различные логические идентификаторы.
-<!-- If there are multiple systems responding to the request, or if there request may have multiple
-different responses, then the different logical responses should have different logical ids. -->
+If there are multiple systems responding to the request, or if there request may have multiple
+different responses, then the different logical responses should have different logical ids.
 </p>
 </div>
 
