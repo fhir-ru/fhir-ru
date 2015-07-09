@@ -1,19 +1,22 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
-The immunization resource is intended to cover the administration of vaccines to patients across all healthcare disciplines in all care settings and all regions. This includes immunization of both humans and animals but does not include the administration of non-vaccine agents, even those that may have or claim immunological effects.  
+Ресурс immunization предназначен для покрытия введения вакцин пациентам для всех дисциплин здравоохранения, всех условий лечения и всех регионов. Сюда входит иммунизация как людей, так и животных, но не входит введение не-вакцинных агентов, даже тех, что могут иметь или имеют заявленный иммунологический эффект.
+<!-- The immunization resource is intended to cover the administration of vaccines to patients across all healthcare disciplines in all care settings and all regions. This includes immunization of both humans and animals but does not include the administration of non-vaccine agents, even those that may have or claim immunological effects.  --> 
 </p>
 <p>
-Additionally, the immunization resource is expected to cover key concepts related to the creation, revision and querying of a patient's immunization history. This resource - through consultation with the PHER work group - is believed to meet key use cases and information requirements as defined in the existing HL7 v2.x immunization implementation guide, HL7 v3 POIZ domain and Immunization Domain Analysis Model.
+Кроме того предполагается, что ресурс immunization покрое ключевые понятия, относящиеся к созданию, проверке и выдаче запросов к истории иммунизации пациента. Данный ресурс - после консультации с рабочей группой PHER - полагается, удовлетворит ключевые сценарии использования и информационные требования, как определено в существующем руководстве по реализации иммунизации HL7 v2.x, домене HL7 v3 POIZ и Модели анализа домена иммунизации.
+<!-- Additionally, the immunization resource is expected to cover key concepts related to the creation, revision and querying of a patient's immunization history. This resource - through consultation with the PHER work group - is believed to meet key use cases and information requirements as defined in the existing HL7 v2.x immunization implementation guide, HL7 v3 POIZ domain and Immunization Domain Analysis Model. -->
 </p>
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
-This resource references the following resources:
+Данный ресурс ссылается на следующие ресурсы:
+<!-- This resource references the following resources: -->
 </p>
 <ul>
     <li>Patient</li>
@@ -24,7 +27,8 @@ This resource references the following resources:
     <li>Encounter</li>
 </ul>
 <p>
-Administration of vaccines is intended to be handled using the <b>Immunization</b> resource.  <a href="medicationadministration.html">MedicationAdministration</a> is intended for tracking the administration of non-vaccine medications.  Some systems treat immunizations in the same way as any other medication administration.  Such systems SHOULD use an immunization resource to represent these.  If systems need to use a <a href="medicationadministration.html">MedicationAdministration</a> resource to capture vaccinations for workflow or other reasons, they SHOULD also expose an equivalent <b>Immunization</b> instance.
+Для обработки введения вакцин предназначен ресурс <b>Immunization</b>. Ресурс <a href="medicationadministration.html">MedicationAdministration</a> предназначен для отслеживания введения не-вакцинных медикаментов. Некоторые системы обрабатывают иммунизации таким же способом, как и введение любых других медикаментов. Таким системам СЛЕДУЕТ использовать для этого ресурс immunization. Если системам необходимо использовать ресурс <a href="medicationadministration.html">MedicationAdministration</a> для записи о вакцинации в соответствии с их рабочим процессом или по другим причинам, им СЛЕДУЕТ также создавать эквивалентный экземпляр ресурса <b>Immunization</b>.
+<!-- Administration of vaccines is intended to be handled using the <b>Immunization</b> resource.  <a href="medicationadministration.html">MedicationAdministration</a> is intended for tracking the administration of non-vaccine medications.  Some systems treat immunizations in the same way as any other medication administration.  Such systems SHOULD use an immunization resource to represent these.  If systems need to use a <a href="medicationadministration.html">MedicationAdministration</a> resource to capture vaccinations for workflow or other reasons, they SHOULD also expose an equivalent <b>Immunization</b> instance. -->
 </p>
 </div>
 

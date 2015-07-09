@@ -1,38 +1,47 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p> 
-A document reference resource is used to describe a document that is made available to a healthcare system. 
+Ресурс document reference используется для описания документа, который сделан доступным для медицинской системы. 
+Документ - это некоторая последовательность байтов, которые можно идентифицировать, устанавливает свой собственный контекст (например какой субъект, автор и т. п.), может быть отображен пользователю и имеет определенное управление обновлениями. Ресурс DocumentReference может использоваться с любыми форматами документов, имеющими распознаваемый MIME-тип, и которые соответствуют этому определению.
+<!-- A document reference resource is used to describe a document that is made available to a healthcare system. 
 A document is some sequence of bytes that is identifiable, establishes its own context (e.g. what subject, 
 author etc), can be displayed to the user, and has defined update management. The DocumentReference resource can be 
-used with any document format that has a recognized mime type, and that conforms to this definition.
+used with any document format that has a recognized mime type, and that conforms to this definition. -->
 </p>
 <p>
-Typically, Document Reference Resources are used in document indexing systems, such as IHE XDS (see the <a href="xds.html">XDS specific profile</a>),
-and are used to refer to:
+Как правило, ресурсы Document Reference используются в системах индексирования документов, таких как IHE XDS (см. <a href="xds.html">XDS specific profile</a>), а также для ссылки на:
+<!-- Typically, Document Reference Resources are used in document indexing systems, such as IHE XDS (see the <a href="xds.html">XDS specific profile</a>),
+and are used to refer to: -->
 </p>
 <ul>
- <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA documents</a> in FHIR systems</li>
+ <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA-документы</a> в системах FHIR</li>
+ <li><a href="documents.html">FHIR-документы</a>, хранящиеся в другом месте (т. е. реестре/репозитории, придерживающемся модели  XDS)</li>
+ <li><a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF-документы</a> и даже цифровые записи факсов, где достаточно информации доступно</li>
+ <li>Другие виды документов, например записи о предписании лекарств.</li> 
+<!--  <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA documents</a> in FHIR systems</li>
  <li><a href="documents.html">FHIR documents</a> stored elsewhere (i.e. registry/repository following the XDS model)</li>
  <li><a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF documents</a>, and even digital records of faxes where sufficient information is available</li>
- <li>Other kinds of documents, such as records of prescriptions.</li> 
+ <li>Other kinds of documents, such as records of prescriptions.</li>  -->
 </ul>
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-FHIR defines both a <a href="documents.html">document format</a> and this document reference. FHIR documents are for documents 
-that are authored and assembled in FHIR. This resource is mainly intended for general references to other documents. 
+FHIR определяет и <a href="documents.html">формат документа</a>, и этот ресурс document reference. FHIR-документы предназначены для документов, которые созданы и собраны в FHIR. Этот ресурс предназначен в основном для общих ссылок на другие документы.
+<!-- FHIR defines both a <a href="documents.html">document format</a> and this document reference. FHIR documents are for documents 
+that are authored and assembled in FHIR. This resource is mainly intended for general references to other documents.  -->
 </p>
 <p/>
 <p>
-The document that is a target of the reference can be a reference to a FHIR document served by another server, or 
+Документ, который является целью ссылки, может быть ссылкой на FHIR-документ, обслуживаемый другим сервером, либо цель может храниться в специальном FHIR-ресурсе <a href="http.html#binary">Binary</a>, либо цель может храниться в какой-то другой серверной системе. Document Reference также может адресовать документы, которые извлекаются с помощью вызова сервиса, такие как XDS.b RetrieveDocumentSet, или DICOM-обмен, или запрос v2-сообщения, однако способ работы каждого их этих вызовов сервисов должен быть описан в каком-то внешнем стандарте или другой документации.
+<!-- The document that is a target of the reference can be a reference to a FHIR document served by another server, or 
 the target can be stored in the special <a href="http.html#binary">FHIR Binary Resource</a>, or the target can be 
 stored on some other server system. The document reference is also able to address documents that are retrieved 
 by a service call such as an XDS.b RetrieveDocumentSet, or a DICOM exchange, or a v2 message query, though 
-the way each of these service calls works must be specified in some external standard or other documentation.
+the way each of these service calls works must be specified in some external standard or other documentation. -->
 </p>
 </div>
 

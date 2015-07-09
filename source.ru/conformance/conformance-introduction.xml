@@ -1,71 +1,80 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-Conformance statements are used in one of three ways:
+Conformance statements используются тремя способами:<!-- Conformance statements are used in one of three ways: -->
 </p>
-<h3>Describe an actual implementation</h3>
+<h3>Опишите фактическую реализацию<!-- Describe an actual implementation --></h3>
 <p>
-In this scenario, the conformance statement describes the capabilities of a deployed 
+В этом сценарии conformance statement описывает возможности развернутого и настроенного решения, находящегося в конкретной точке доступа или серии точек доступа. Conformance statement в точности описывает, как взаимодействовать с этим развернутым решением и таким образом обеспечивает некоторую степень самоконфигурации программных решений.
+<!-- In this scenario, the conformance statement describes the capabilities of a deployed 
 and configured solution available at a particular access point or set of access points.  
 The statement describes exactly how to interface with that deployed solution and thus 
-provides for a degree of self-configuration of software solutions.
+provides for a degree of self-configuration of software solutions. -->
 </p>
 <p>
-This is the type of 
+Это тип профиля, который ожидают FHIR restful-решения при вызове операции <i>conformance</i>. Также это тип conformance statement, являющийся основой для тестирования, сертификации или ввода в действие конкретных инсталляций программного обеспечения.
+<!-- This is the type of 
 profile that FHIR restful solutions are expected to make available on invocation of the 
 <i>conformance</i> operation.  It is also the type of statement that forms a basis for
-the testing, certification or commissioning of specific software installations.
+the testing, certification or commissioning of specific software installations. -->
 </p>
 <p>
-A conformance statement is identified as being an implementation statement through the 
-presence of the <i>implementation</i> element.
+Conformance statements такого типа называются "заявление о реализации" (implementation statement) и определяются наличием элемента <i>implementation</i>.
+<!-- A conformance statement is identified as being an implementation statement through the 
+presence of the <i>implementation</i> element. -->
 </p>
 
-<h3>Describe software solution capabilities</h3>
+<h3>Опишите возможности программного решения <!-- Describe software solution capabilities --></h3>
 <p>
-In this scenario, the conformance statement describes generic capabilities of a 
+В этом сценарии conformance statement описывает общие возможности приложения или компонентного решения. Это решение может быть доступно для покупки или другого приобретения и может быть развернут и настроен на любом количестве независимых сайтов. Поскольку это не зависит от какой-либо конкретной реализации, профиль не может предоставить конкретную информацию, такую как адреса точек взаимодействия. Ему также может потребоваться документировать различные конфигурации, в которых приложение может быть настроено или описывать степень кастомизации, связанной с этим решением.
+<!-- In this scenario, the conformance statement describes generic capabilities of a 
 software application or component solution.  The solution might be available for
 purchase or other acquisition and might be deployed and configured at any number of
 independent sites.  Because it is not dependent on any particular implementation, the
 profile cannot provide specific details such as endpoint addresses.  It may also need
 to document various configurations in which the application can be set up or describe
-the degree of customizability associated with the solution.
+the degree of customizability associated with the solution. -->
 </p>
-<p>This type of statement may be used as a marketing tool by software and system
+<p>Этот тип conformance statement может использоваться как маркетинговое средство ПО и системными разработчиками для формального описания их возможностей. Также может использоваться в качестве основы для тестирования соответствия программных решений независимо от конкретной инсталляции.
+<!-- This type of statement may be used as a marketing tool by software and system
 developers to formally describe their capabilities.  It can also be used as the basis
-for conformance testing of software solutions independent of a particular installation.
+for conformance testing of software solutions independent of a particular installation. -->
 </p>
 <p>
-A conformance statement is identified as being a software solution statement through the 
-presence of the <i>software</i> element.
+Conformance statements такого типа называются "заявление о программном решении" (software solution statement) и определяются наличием элемента <i>software</i>.
+<!-- A conformance statement is identified as being a software solution statement through the 
+presence of the <i>software</i> element. -->
 </p>
 
-<h3>Describe a desired solution</h3>
+<h3>Опишите желаемое решение<!-- Describe a desired solution --></h3>
 <p>
-In this scenario, the conformance statement describes the capabilities of a desired
+В этом сценарии conformance statement описывает желаемые возможности системы. Может использоваться в рамках процесса архитектурного проектирования для документации требуемых системе возможностей, или в рамках RFP-процесса для формальной документации требований запрашиваемого решения и документации критериев, по которым по которым предложения будут оцениваться.
+<!-- In this scenario, the conformance statement describes the capabilities of a desired
 system.  It might be used as part of an architectural design process to document
 needed system capabilities, or might be used as part of an RFP process to formally
 document the requirements of a requested solution and to document the criteria by
-which proposals will be evaluated.
+which proposals will be evaluated. -->
 </p>
 <p>
-A conformance statement is identified as being a requirements statement through the 
-presence of the <i>proposal</i> element.
+Conformance statements такого типа называются "заявление о требованиях" (requirements statement) и определяются наличием элемента  <i>proposal</i>.
+<!-- A conformance statement is identified as being a requirements statement through the 
+presence of the <i>proposal</i> element. -->
 </p>
 <p/>
 
 <p>
-These three types of profiles can be used together.  A requirements statement can 
+Эти 3 типа профилей могут использоваться вместе. Заявление о требованиях можно сравнивать с заявлениями о программных решениях, предлагаемых опрашиваемыми RFP. Заявление о программном решении для пакета ПО образует начальную точку для заявления о реализации, связанного с конкретной инсталляцией этого пакета ПО.
+<!-- These three types of profiles can be used together.  A requirements statement can 
 be compared against the solution statements proffered by respondents to an RFP.  A 
 solution statement for a software package forms the starting point for the implementation 
-statement associated with a particular installation of that software package.
+statement associated with a particular installation of that software package. -->
 </p>
 </div> 
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <!-- 
 todo
 * add flag for accept unknown content
@@ -73,13 +82,14 @@ todo
 * Need to avoid imposing requirement to keep version history while still supporting versioning as much as possible
  -->
 <p>
-Conformance Statements provide for a degree of automatic configuration and adaptation.
+Conformance Statements обеспечивают степень автоматической конфигурации и адаптации. Однако . абсолютно каждого варианта, который может влиять на возможность взаимодействия двух систем, не говоря уже о сохранении этой подробной информации актуальной, в то время как системы развиваются через поддержку и апгрейды, редко бывает практичным. Вследствие этого conformance statements следует рассматривать как промежуточный шаг. Они обеспечивают некоторый уровень автоматизации. Однако они также предоставляют много человекочитаемого содержимого, которое может минимизировать необходимость непосредственной коммуникации между операторами систем, сконфигурированных для взаимодействия.
+<!-- Conformance Statements provide for a degree of automatic configuration and adaptation.
 However, capturing absolutely every variation that could impact the interoperability of
 two systems, let alone keeping that detailed information up-to-date as systems evolve 
 through maintenance and upgrades is rarely practical. Therefore, conformance statements 
 should be seen as an interim step.  They provide a degree of automation.  However, they 
 also provide a great deal of human-readable content that can minimize the need for direct 
-communication between the operators of the systems being configured to interoperate.
+communication between the operators of the systems being configured to interoperate. -->
 </p>
 
 </div>

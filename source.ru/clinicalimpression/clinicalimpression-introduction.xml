@@ -1,56 +1,71 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
-Performing a clinical assessment is a fundamental part of a clinician's workflow, performed repeatedly throughout the day. 
+Выполнение клинической оценки является фундаментальной частью рабочего процесса клинициста, выполняемой многократно в течение дня.
+Несмотря на это - или, возможно, как раз поэтому - имеется широкий разброс в том, как записываются эти клинические оценки.
+Некоторые клинические оценки заключаются просто в добавлении наблюдения в виде отдельного текстового комментария к документам пациента (например "Прогресс удовлетворительный,
+продолжить лечение"), в то время как другие связаны с тщательным, детальным ведением учета собираемых показателей, рассуждений, ведущих к дифференциальной диагностике, и действий, предпринятых во время или запланированных в результате клинической оценки, и существует весь спектр вариаций между ними. Данный ресурс предназначен для покрытия всех вариантов использования.
+<!-- Performing a clinical assessment is a fundamental part of a clinician's workflow, performed repeatedly throughout the day. 
 In spite of this - or perhaps, because of it - there is wide variance in how clinical impressions are recorded. 
 Some clinical assessments simply result in an impression recorded as a single text note in the patient 'record' (e.g. "Progress satisfactory, 
 continue with treatment"), while others are associated with careful, detailed record keeping of the 
 evidence gathered, the reasoning leading to a differential diagnosis, and the actions taken during or planned
 as a result of the clinical assessment, and there is a continuum between these. This resource is intended to be 
-used to cover all these use cases.
+used to cover all these use cases. -->
 </p>
 <p>
-The assessment is intimately linked to the process of care. It may occur in the context of a care plan,
+Оценивание тесно связано с процессом лечения. Оно может иметь место в контексте плана мероприятий по уходу и часто заключается в новом (или пересмотренном) плане ухода. Обычно клиническая оценка выполняется в рамках продолжающегося процесса ухода, и состояние пациента оценивается повторно неоднократно. Поэтому ресурс ClinicalImpression может ссылаться как на планы по уходу (предшествующие и последующие), так и на предыдущую клиническую оценку, из которой следует данная. 
+<!-- The assessment is intimately linked to the process of care. It may occur in the context of a care plan,
 and it very often results in a new (or revised) care plan. Normally. clinical assessments are part of an 
 ongoing process of care, and the patient will be re-assessed repeatedly. For this reason, the clinical
 impression can explicit reference both care plans (preceeding and resulting) and reference a previous
-impression that this impression follows on from.
+impression that this impression follows on from. -->
 </p>
 <p>
-Unlike many other resources, there is little prior art with regard to exchanging records of 
+В отличие от многих других ресурсов у обмена записями клинических оценок имеется небольшой прототип. По этой причине данный ресурс должен рассматриваться как особо склонный к постоянным правкам. Рабочая группа Patient Care хотела бы обратить особое внимание рецензентов и исполнителей на следующие вопросы с точки зрения масштаба и использования:
+<!-- Unlike many other resources, there is little prior art with regard to exchanging records of 
 clinical assessments. For this reason, this resource should be regarded as particularly 
 prone to ongoing revision. In terms of scope and usage, the Patient Care workgroup wishes to
-draw the attention of reviewers and implementers to the following issues: 
+draw the attention of reviewers and implementers to the following issues:  -->
 <a name="dstu"> </a>
 </p>
 <ul>
- <li>When is an existing clinical impression revised, rather than a new one created (that references the existing one)? How does that affect the status? what's the interplay between the status of the diagnosis and the status of the impression? (e.g. for a 'provisional' impression, which bit is provisional?)</li>
+ <li>В каких случаях ClinicalImpression корректируется, а не создается новый (который ссылается на существующий)? Как это влияет на его статус? Какая имеется взаимосвязь между статусом диагноза и статусом ClinicalImpression? (например для "предварительной" клинической оценки, какую часть считать предварительной?)</li>
+ <li>Эта структура не предполагает различать рабочий и окончательный диагнозы. Учитывая ответ на предыдущий вопрос, должна ли?</li>
+ <li>Требуется дополнительное разъяснение взаимосвязи между планом по уходу и клинической оценкой. Ответы на два предыдущих вопроса и продолжающаяся дискуссия по вопросам пересмотра плана по уходу повлияют на дизайн ресурса ClinicalImpression</li>
+ <li>Следует ли добавить прогноз, и если да, то насколько он должен быть структурированным?</li>
+ <li>Должен ли ресурс ClinicalImpression ссылаться на другие, связанные с ним ресурсы ClinicalImpression? (и насколько связанные?)</li>
+ <li>Исследования - спецификации нужен подходящий набор значений кодов этой группы, и "investigations" будет рассматриваться далее в качестве варианта названия</li>
+<!--  <li>When is an existing clinical impression revised, rather than a new one created (that references the existing one)? How does that affect the status? what's the interplay between the status of the diagnosis and the status of the impression? (e.g. for a 'provisional' impression, which bit is provisional?)</li>
  <li>This structure doesn't differentiate between a working and a final diagnosis. Given an answer to the previous question, should it?</li>
  <li>Further clarify around the relationship between care plan and impression is needed. Both answers to the previous questions and ongoing discussions around revisions to the care plan will influence the design of clinical impression</li>
  <li>Should prognosis be represented, and if so, how much structure should it have?</li>
  <li>Should an impression reference other impressions that are related? (how related?)</li>
- <li>Investigations - the specification needs a good value set for the code for the group, and will be considering the name "investigations" further</li>
+ <li>Investigations - the specification needs a good value set for the code for the group, and will be considering the name "investigations" further</li> -->
 </ul> 
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
-There is another related clinical concept often called an "assessment": assessment Tools such as Apgar (also known as "Assessment Scales").
+Есть другое связанное клиническое понятие, которое часто называют "оценкой" - инструменты оценки, например шкала Апгар (также известные как шкалы оценки).
+Это совсем не то, что следует записывать в ресурс ClinicalImpression; инструменты оценки, такие как шкала Апгар, описывают с помощью ресурса <a href="observation.html">Observations</a>, а ресурс <a href="questionnaire.html">Questionnaires</a> можно при этом использовать как вспомогательное средство для этого. Ресурсы ClinicalImpression могут ссылаться на инструменты оценивания в качестве одного из исследований, которые были выполнены в процессе оценивания.
+<!-- There is another related clinical concept often called an "assessment": assessment Tools such as Apgar (also known as "Assessment Scales").
 This is not what the ClinicalImpression resource is about; assessment tools such as Apgar are represented as 
 <a href="observation.html">Observations</a>, and <a href="questionnaire.html">Questionnaires</a> may be used to help 
 generate these. Clinical Impressions may refer to these assessment tools as one of the investigations that was performed
-during the assessment process.
+during the assessment process. -->
 </p>
 </div>
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст</h2>
 <p>
-An important background to understanding this resource is <a href="http://wiki.hl7.org/index.php?title=Clinical_Assessment">the FHIR wiki page for clinical assessment</a>. In particular,
-the storyboards there drove the design of the resource, and will be the basis for all examples created.
+Важные исходные данные для понимания этого ресурса можно найти на <a href="http://wiki.hl7.org/index.php?title=Clinical_Assessment">страницах wiki-раздела FHIR</a>. В частности, раскадровка планирования дизайна ресурса, а также основа, используемая для всех создаваемых примеров.
+<!-- An important background to understanding this resource is <a href="http://wiki.hl7.org/index.php?title=Clinical_Assessment">the FHIR wiki page for clinical assessment</a>. In particular,
+the storyboards there drove the design of the resource, and will be the basis for all examples created. -->
 </p>
 </div>
 

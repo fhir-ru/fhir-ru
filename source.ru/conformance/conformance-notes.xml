@@ -2,47 +2,49 @@
 
 <a name="notes"> </a>
 <h2>
-Notes:
+Примечания:
+<!-- Notes: -->
 </h2>
 <ul>
- <li>The Conformance resource provides for an application to describe its use of the RESTful
+ <li>Ресурс Conformance предоставляет приложению описывать его использование событий обмена сообщениями парадигмы RESTful, либо FHIR-документов. Как правило, приложение описывает что-то одно, однако может описывать и больше<!-- The Conformance resource provides for an application to describe its use of the RESTful
   paradigm messaging events, or FHIR documents. Usually, an application would only describe one, 
-  but more than one may be described</li>
- <li>RESTful conformance rules:
+  but more than one may be described --></li>
+ <li>Правила соответствия для RESTful<!-- RESTful conformance rules: -->
   <ul class="dense">
-   <li>RESTful servers are required to provide <a href="http.html#conformance">this resource on demand</a>. 
+   <li>От RESTful-серверов обязаны предоставлять <a href="http.html#conformance">этот ресурс по требованию</a>. Серверы ДОЛЖНЫ указывать, какие типы ресурсов и операций они поддерживают, и им СЛЕДУЕТ также указывать профили для каждого типа ресурса.<!-- RESTful servers are required to provide <a href="http.html#conformance">this resource on demand</a>. 
    Servers SHALL specify what resource types and operations are supported, and SHOULD also 
-   specify profiles for each resource type.</li>
-   <li>RESTful clients SHOULD publish a conformance statement</li>
-   <li>The search parameters that a server supports (or a client makes use of) are specified in the resource profile that the conformance statement references</li>
-   <li>Resource Types or operations that are not listed are not supported</li>
+   specify profiles for each resource type. --></li>
+   <li>RESTful-клиентам СЛЕДУЕТ публиковать заявление о соответствии<!-- RESTful clients SHOULD publish a conformance statement --></li>
+   <li>Параметры поиска, которые сервер поддерживает (или использует клиент) обозначены в профиле ресурса, на который ссылается заявление о соответствии<!-- The search parameters that a server supports (or a client makes use of) are specified in the resource profile that the conformance statement references --></li>
+   <li>Типы ресурсов или операции, которые не перечислены, не поддерживаются<!-- Resource Types or operations that are not listed are not supported --></li>
   </ul>  
  </li>
- <li>Messaging conformance rules:
+ <li>Правила соответствия для обмена сообщениями<!-- Messaging conformance rules: -->
   <ul class="dense">
-   <li>The interpretation of request and response depends on the mode. If the mode is sender, 
+   <li>Интерпретация запроса и ответа зависит от режима. Если это режим отправитель "sender", тогда запрос указывает, что отправило приложение, а ответ - что оно принимает. Если это режим получателя "receiver", тогда наоборот <!-- The interpretation of request and response depends on the mode. If the mode is sender, 
    then request specifies what the application sends, and response specifies what it accepts. 
-   If the mode is "receiver", then this is reversed</li>
-   <li>If a request or response is not specified for an event, then no rules are made for it</li>
-   <li>Events that are not listed are not supported</li>
+   If the mode is "receiver", then this is reversed --></li>
+   <li>Если для события не указан запрос или ответ, значит к ним нет правил<!-- If a request or response is not specified for an event, then no rules are made for it --></li>
+   <li>События, которые не перечислены, не поддерживаются<!-- Events that are not listed are not supported --></li>
   </ul>  
  </li>
- <li>Document conformance rules:
+ <li>Правила соответствия для документов<!-- Document conformance rules: -->
   <ul class="dense">
-   <li>Document Profiles should directly constrain the Document.information.class &amp; type elements so  
-    so that there is no ambiguity concerning which profile any given document conforms to</li>
+   <li>Document Profiles должны непосредственно ограничивать элементы Document.information.class &amp; type таким образом, чтобы не было многозначности относительно того, какому профилю соответствует любой из данных документов<!-- Document Profiles should directly constrain the Document.information.class &amp; type elements so  
+    so that there is no ambiguity concerning which profile any given document conforms to --></li>
   </ul>  
  </li>
- <li>Other service based use of resources: Due to the variability of these services, the <i>Conformance</i> resource 
-   does not attempt to describe service based use of resources. The various service specifications will need to describe this usage in their own way</li>
+ <li>Другое применение ресурсов на основе сервисов: из-за многообразия этих сервисов ресурс <i>Conformance</i> не пытается описать сервисное применение ресурсов. Различным спецификациям сервисов потребуется описывать свое применение своим способом <!-- Other service based use of resources: Due to the variability of these services, the <i>Conformance</i> resource 
+   does not attempt to describe service based use of resources. The various service specifications will need to describe this usage in their own way --></li>
 </ul>  
 
 <a name="profiles"> </a>
 <h3>Supporting Profiles</h3>
 <a name="tags"> </a>
 <p>
-A conformance profile declares two different kinds of profiles for the functionality it describes. 
-For a discussion of the use of these two types of resources, see <a href="profiling.html">two uses for profiles</a>.
+Conformance profile задает два различных вида профилей для той функциональности, которую он описывает. Более подробную информацию о применении этих ресурсов см. в статье <a href="profiling.html">Два способа использования профилей</a>.
+<!-- A conformance profile declares two different kinds of profiles for the functionality it describes. 
+For a discussion of the use of these two types of resources, see <a href="profiling.html">two uses for profiles</a>. --> 
 </p>
 
 </div>

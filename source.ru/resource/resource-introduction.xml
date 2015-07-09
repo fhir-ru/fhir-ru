@@ -2,23 +2,25 @@
 
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-This specification defines a series of different types of resource that can be used to exchange and/or store data 
+Данная спецификация определяет ряд различных типов ресурсов, которые могут быть использованы для обмена и/или хранения данных с целью решения широкого диапазона задач, связанных со здравоохранением, как медицинских, так и административных. Кроме того спецификация описывает несколько различных способов обмена ресурсами.
+<!-- This specification defines a series of different types of resource that can be used to exchange and/or store data 
 in order to solve a wide range of healthcare related problems, both clinical and administrative. In addition,
-this specification defines several different ways of exchanging the resources.
+this specification defines several different ways of exchanging the resources. -->
 </p>
 <p>
-A resource is an entity that:
+Ресурс - это сущность, которая:
+<!-- A resource is an entity that: -->
 </p>
 <ul>
- <li>has a known identity (a url) by which it can be addressed</li>
- <li>identifies itself as one of the types of resource defined in this specification</li>
- <li>contains a set of structured data items as described by the definition of the resource type</li>
- <li>has an identified version that changes if the contents of the resource change</li>
+ <li>имеет известное обозначение (url), по которому к ней можно обращаться<!-- has a known identity (a url) by which it can be addressed --></li>
+ <li>отождествляет себя с одним из типов ресурса, определенных в этой спецификации<!-- identifies itself as one of the types of resource defined in this specification --></li>
+ <li>содержит набор элементов структурированных данных, которые описаны в определении типа ресурса<!-- contains a set of structured data items as described by the definition of the resource type --></li>
+ <li>имеет установленную версию, которая меняется, если содержимое ресурса изменилось<!-- has an identified version that changes if the contents of the resource change --></li>
 </ul>
 <p>
-Resources have <a href="formats.html">multiple representations</a>. 
+Ресурсы имеют <a href="formats.html">разные форматы представления</a>. 
 </p>
 <!--
 <p>
@@ -34,23 +36,26 @@ Basic definitions:
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 
 <p>
-All resources have the following optional or mandatory elements and properties:
+Все ресурсы имеют следующие необязательные или обязательные элементы и свойства:
+<!-- All resources have the following optional or mandatory elements and properties: -->
 </p>
 <ul>
- <li>An identity</li>
- <li>Meta data</li>
- <li>A base language</li>
- <li>A reference to "Implicit Rules"</li>
+ <li>Идентификатор<!-- An identity --></li>
+ <li>Метаданные<!-- Meta data --></li>
+ <li>Базовый язык<!-- A base language --></li>
+ <li>Ссылка на "Implicit Rules"<!-- A reference to "Implicit Rules" --></li>
 </ul>
 <p>
-Most resources are derived from <a href="domainresource.html">Domain Resources</a> - so they also contain text, contained resources, extensions,
-and data elements specific to the particular domain of the resource. There is a special type of resource called <a href="bundle.html">Bundle</a> for collections of resources. 
+Большинство ресурсов являются производными от <a href="domainresource.html">Domain Resources</a> - поэтому они также содержат текст, вложенные ресурсы, расширения и элементы данных, характерные для конкретного домена ресурса. Для коллекций ресурсов имеется специальный тип ресурса <a href="bundle.html">Bundle</a>.
+<!-- Most resources are derived from <a href="domainresource.html">Domain Resources</a> - so they also contain text, contained resources, extensions,
+and data elements specific to the particular domain of the resource. There is a special type of resource called <a href="bundle.html">Bundle</a> for collections of resources.  -->
 </p>
 <p>
-Note: there is documentation for the <a href="formats.html">Structure</a>, <a href="formats.html#uml">UML</a>, <a href="xml.html">XML</a>, and <a href="json.html">JSON</a> representations of the resource structure. 
+Примечание: имеется документация по <a href="formats.html">Structure</a>, <a href="formats.html#uml">UML</a>, <a href="xml.html">XML</a> и <a href="json.html">JSON</a> представлениям структуры ресурсов. 
+<!-- Note: there is documentation for the <a href="formats.html">Structure</a>, <a href="formats.html#uml">UML</a>, <a href="xml.html">XML</a>, and <a href="json.html">JSON</a> representations of the resource structure.  -->
 </p>
 
 </div>

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
       
-[%settitle Определение Элемента%]
+[%settitle Element Definition%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -16,37 +16,33 @@
 -->
 
 <%edheader base%>
-<h1>Определение Элемента<!-- Element Definition --></h1>
+<h1>Element Definition</h1>
 
 <p>
-Введение
-<!-- Introduction -->
+Introduction
 </p>
 
 <a name="definition"></a>
 <h2 style="margin-bottom: 1px">
-<!-- Content -->Содержимое
+Content
 </h2>
 
-[%dt ElementDefinition%]
+[%dt ElementDefinition 1%]
 
 <p>
-Комментарий
-<!-- Commentary -->
+Commentary
 </p>
 
 <div class="use">
-<p><b>Ограничения (Constraints)</b></p>
+<p><b>Constraints</b></p>
 [%dt.constraints ElementDefinition%]
 <p>
-Дополнительные примечания
-<!-- Further Commentary -->
+Further Commentary
 </p>
 </div>
 
-<h2>Интерпретация ElementDefinition в различных контекстах<!-- Interpretation of ElementDefinition in different contexts --></h2>
-<p>Псевдо-тип данных <code>ElementDefinition</code> используется как в <a href="structuredefinition.html">StructureDefinition</a>, так и в <a href="dataelement.html">DataElement</a>, и даже внутри этих ресурсов способ использования и интерпретации элементов зависит от контекста, в котором используется <code>ElementDefinition</code>.
-<!-- The pseudo-data type <code>ElementDefinition</code> is used both in <a href="structuredefinition.html">StructureDefinition</a> and <a href="dataelement.html">DataElement</a>, and even within  those resources, the way its elements are to be used and interpreted depend on the context where <code>ElementDefinition</code> used. --></p>
+<h2>Interpretation of ElementDefinition in different contexts</h2>
+<p>The pseudo-data type <code>ElementDefinition</code> is used both in <a href="structuredefinition.html">StructureDefinition</a> and <a href="dataelement.html">DataElement</a>, and even within  those resources, the way its elements are to be used and interpreted depend on the context where <code>ElementDefinition</code> used.</p>
 <!-- ### Visual
 <table>
 	<tr><th>Element</th><th>Root element<br/>of a structure</th><th>Nested element<br/>in structure
@@ -55,14 +51,14 @@
 	<tr><td>path</td><td align="center"><img src="ok.png"><a href="#note1">1</a></td></tr>
 </table>  -->
 
-<h3>Первый (корневой) элемент в Структуре<!-- First (root) element in a Structure --></h3>
+<h3>First (root) element in a Structure</h3>
 <ul>
-<li>Должен быть "комплексным" элементом (см. ниже)<!-- Must be a "complex" element (see below) --></li>
-<li><code>path</code> совпадает с именем типа, указанным в Structure.type<!-- is equal to the name of the type indicated in Structure.type --></li>
+<li>Must be a "complex" element (see below)</li>
+<li><code>path</code> is equal to the name of the type indicated in Structure.type</li>
 
-<li><code>name</code> дает имя элементу<!-- associates a name --> <!-- What does this mean? --></li>
+<li><code>name</code> associates a name <!-- What does this mean? --></li>
 <li><!-- LM: Do this as an invariant -->Prohibited: <code>slicing</code>, <code>nameReference</code>, <code>fixed</code>, <code>mustSupport</code>, <code>isSummary</code></li>
-<li><code>type</code> устанавливается в &quot;DomainResource&quot; или (реже) &quot;Resource&quot; для ограничений над Resources, &quot;Element&quot; для ограничений над типами данных<!-- is set to &quot;DomainResource&quot; or (rarely) &quot;Resource&quot; for constraints on Resources, &quot;Element&quot; for constraints on data types --></li>
+<li><code>type</code> is set to &quot;DomainResource&quot; or (rarely) &quot;Resource&quot; for constraints on Resources, &quot;Element&quot; for constraints on data types</li>
 <li><!-- LM: How is this different for root? --><code>pattern</code> indicates a value that an instance of a while complex type constrained by this structure must match. May be used instead of applying constraints to the nested elements of the data type.</li>
 <li><!-- LM: How is this different for root? --><code>example</code> example value for a complex type in an instance that complies to the structure</li>
 <li><!-- LM: Do this as an invariant? --><code>min</code> and <code>max</code> are prohibited unless defining an extension, in which case they set outer bounds on how the element can appear when referenced in a profile</li>

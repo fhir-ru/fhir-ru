@@ -1,8 +1,11 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 	<div>
-		<h2>Scope and Usage</h2>
+		<h2>Область применения и использование<!-- Scope and Usage --></h2>
 		<p>
-			Appointment resources are used to provide information about
+		Ресурсы Appointment используются для предоставления информации о планируемом или состоявшемся приёме. Ресурс описывает только одну встречу; серия повторяющихся визитов к специалисту требует создания нескольких ресурсов Appointment для каждой встречи.
+Примерами служат запланированная операция; повторный приём специалиста; запланированное селекторное совещание для обсуждения клинического случая; резервирование диагностического оборудования для конкретного пациента и т. д.
+Визит, запланированный с помощью Appointment, может быть очным или удаленным (по телефону, видео-конференция и т. д.). Важно лишь то, чтобы на указанное время было зарезервировано (полностью или частично) присутствие одного или нескольких лиц, место проведения встречи и/или требуемые предметы оборудования.
+			<!-- Appointment resources are used to provide information about
 			a planned meeting that may be in the future or past.  The resource only describes a single meeting,
 			a series of repeating visits would require multiple appointment resources be created for each instance.
 			Examples include a scheduled surgery, a follow-up for a
@@ -11,137 +14,164 @@
 			The visit scheduled by an appointment
 			may be in person or remote (by phone, video conference, etc.)  All that matters is that the time and
 			usage of one or more individuals, locations and/or pieces of equipment is being fully or partially
-			reserved for a designated period of time.
+			reserved for a designated period of time. -->
 		</p>
 		<p>
-			This definition takes the concepts of appointments in a clinical setting and also extends
+		В этом определении используется и расширяется понятие записи на приём к специалисту в клинических условиях, чтобы оно было актуальным в пространстве сообщества здравоохранения и коррелировало с другими стандартами использования условленных встреч/календарей, широко используемыми вне области здравоохранения.
+			<!-- This definition takes the concepts of appointments in a clinical setting and also extends
 			them to be relevant in the community healthcare space, and also ease exposure to other
-			appointment / calendar standards widely used outside of healthcare.
+			appointment / calendar standards widely used outside of healthcare. -->
 		</p>
 
-    <h3>The basic workflow to create an appointment</h3>
+    <h3>Базовый алгоритм создания условленной встречи<!-- The basic workflow to create an appointment --></h3>
 		<ul>
 			<li>
-				<b>Discovery/Addressing</b>
+				<b>Обнаружение/адресация<!-- Discovery/Addressing --></b>
 				<p>
-					Before an appointment can be made the address of the resource that we want to schedule
+				Перед тем как создавать Appointment, необходимо определить адрес ресурса, с помощью которого мы хотим запланировать оказание медицинской услуги. Выбор, как правило, основывается на типе услуги здравоохранения и информации о формате, которая указывает, как сделать этот запрос. Обычно это выполняется с помощью ресурса Schedule.
+					<!-- Before an appointment can be made the address of the resource that we want to schedule
 					an appointment with must be determined. This is often based on the healthcare Service Type,
 					any formatting information which indicates how to make the request.
-					This is typically handled via the Schedule resource.
+					This is typically handled via the Schedule resource. -->
 				</p>
 			</li>
 			<li>
-				<b>Checking Availability on the Schedule(optional)</b>
+				<b>Проверка доступности в расписании (необязательно)<!-- Checking Availability on the Schedule(optional) --></b>
 				<p>
-					This optional step permits the checking of any existing available times 
+				Этот необязательных шаг позволяет проверить все доступные существующие слоты времени (ресурсы <a href="slot.html">slot</a>, ассоциированные с выбранным расписанием <a href="schedule.html">schedule</a>), которые могут быть забронированы.
+				Если слот времени обозначен как доступный, это еще не гарантирует, что запись на приём может быть осуществлена.
+				Система бронирования, которая будет обрабатывать запрос, может принять другие квалифицированные решения для определения того, может ли быть запланирован приём, такие как разрешения, экспертные оценки, доступность других ресурсов и т. п.
+					<!-- This optional step permits the checking of any existing available times 
 					(<a href="slot.html">slot</a> resources associated with a selected <a href="schedule.html">schedule</a>) that can be booked against.
 					Just because a time is indicated it is available doesn't guarantee that an appointment can be made.
 					The booking system that is going to process the request may make other qualifying decisions to
 					determine if the appointment can be made, such as permissions, assessments, availability of other
-					resources etc.
+					resources etc. -->
 				</p>
 				<p>
-					This step is optional as the creation of the appointment is never a guaranteed action.
+				Этот шаг является необязательным, так как создание условленной встречи никогда не гарантирует самого действия. Однако выполняя проверку доступности, вы можете повысить шансы успешного бронирования.
+					<!-- This step is optional as the creation of the appointment is never a guaranteed action.
 					But by performing this availability check, you can increase the chances of making a successful
-					booking.
+					booking. -->
 				</p>
 			</li>
 			<li>
-				<b>Making the Appointment Request</b>
+				<b>Создание запроса на запись к специалисту <!-- Making the Appointment Request --></b>
 				<p>
-					The request is performed by posting an Appointment to the address found during discovery.
+					Создание запроса выполняется размещением ресурса Appointment по адресу, определенному на шаге discovery.
+					Он будет содержать статус требуемых действий для каждого участника.
+					(Система, которая получит запрос, может поменять статус любого размещенного Appointment на основе внутренних бизнес-правил, например что у определенных пользователей нет прав на создание каких-то записей на приём).
+					<!-- The request is performed by posting an Appointment to the address found during discovery.
 					This will have a needs-action status for each of the participants.
 					(The system that receives the request may modify the status of any posted appointment based
 					on internal business rules, such as certain users do not have permission to request certain
-					appointments)
+					appointments) -->
 				</p>
 			</li>
 			<li>
-				<b>Replying to the request</b>
+				<b>Ответ на запрос<!-- Replying to the request --></b>
 				<p>
-					The reply process is simply performed by the person/system handing the requests updating
+				Ответ на запрос выполняется человеком/системой, обрабатывающими запрос, при необходимости статусы участников обновляются. Если участвует несколько систем, то они создадут ресурсы AppointmentResponse с нужными статусами.
+					<!-- The reply process is simply performed by the person/system handing the requests updating
 					the Participant Statuses as needed. If there are multiple systems involved, then these
-					will create AppointmentResponse entries with the desired statuses.
+					will create AppointmentResponse entries with the desired statuses. -->
 				</p>
 				<p>
-					Once all participants have their participation status created/updated
+				Как только все участники создадут/обновят свои статусы участия (и главная система отметит статусы AppointmentResponse в записях участников условленной встречи), общий статус Appointment будет обновлен.
+					<!-- Once all participants have their participation status created/updated
 					(and the main system marking the appointment participant records with the AppointmentResponse
-					statuses) then the overall status of the appointment is updated.
+					statuses) then the overall status of the appointment is updated. -->
 				</p>
 			</li>
 			<li>
-				<b>Checking the overall status (Requester)</b>
+				<b>Проверка общего статуса (запрашивающим)<!-- Checking the overall status (Requester) --></b>
 				<p>
-					The Requester (organizer) of the appointment checks for the overall status of the appointment
-					(and appointmentresponses where applicable) using fhir pub-sub techniques.
+				Запрашивающий запись на приём (организатор) проверяет общий статус планируемого приёма (и ресурсов AppointmentResponse, по возможности) с помощью FHIR-модели "издатель-подписчик".
+					<!-- The Requester (organizer) of the appointment checks for the overall status of the appointment
+					(and appointmentresponses where applicable) using fhir pub-sub techniques. -->
 				</p>
 				<p>
-					Where the participant statuses indicate that a re-scheduling is required, then the process may
-					start again, with other systems replying to a new set of times.
+				Если статусы участников показывают, что необходимо изменить время и/или дату встречи, то процесс может начаться заново, с другими системами, отвечающими на новый набор слотов времени.
+					<!-- Where the participant statuses indicate that a re-scheduling is required, then the process may
+					start again, with other systems replying to a new set of times. -->
 				</p>
 			</li>
 		</ul>
 
-		<h3>There are 2 typical workflows that occur with appointments</h3>
+		<h3>Есть два типичных сценария при оформлении записи на приём <!-- There are 2 typical workflows that occur with appointments --></h3>
 		<ul>
 			<li>
-				<b>Outlook Style - Community</b>
+				<b>В стиле программы Outlook - общественный<!-- Outlook Style - Community --></b>
 				<p>
-					These types of requests are typically handled by selecting a specific time from a list of available slots.
-					Then making the request for that timeslot.
+				Такие типы запросов обычно обрабатываются выбором определенного времени из списка доступных слотов. Затем создается запрос на выбранный временной интервал.
+					<!-- These types of requests are typically handled by selecting a specific time from a list of available slots.
+					Then making the request for that timeslot. -->
 				</p>
 			</li>
 			<li>
-				<b>Hospital Scheduling - Clinical</b>
+				<b>Планирование в больнице - клинический тип запроса <!-- Hospital Scheduling - Clinical --></b>
 				<p>
-					Clinical scheduling is often far more complex in its requirements and processing.
+				Составление расписаний больничных мероприятий зачастую намного сложнее по своим требованиям и обработке. Оно часто включает в себя множественную проверку доступности в нескольких системах и синхронизацию с другими внутренними системами, а не только указанными в ресурсах Slot.
+					<!-- Clinical scheduling is often far more complex in its requirements and processing.
 					Often this involves checking multiple availabilities across multiple systems and
-					timing with other internal systems, not just those exposed by the Slot resources.
+					timing with other internal systems, not just those exposed by the Slot resources. -->
 				</p>
 				<p>
-					Consideration should be given to situations where scheduling needs to be handled
-					in more of a queue-like process.
+				Отдельно следует рассмотреть ситуации, где планирование расписания требует обработки как очередеподобного процесса.
+					<!-- Consideration should be given to situations where scheduling needs to be handled
+					in more of a queue-like process. -->
 				</p>
 				<p>
-					Note: This type of clinical appointment scheduling has not been specifically covered
+				Примечание: конкретно этот тип клинического планирования записей на приём не был включён в определение записи на приём (и связанных ресурсов), однако, если вы хотели бы внести вклад в модификацию этого ресурса для покрытия таких сценариев, пожалуйста, свяжитесь с рабочей группой HL7 Patient Administration.
+					<!-- Note: This type of clinical appointment scheduling has not been specifically covered
 					with this definition of the appointment (and the related resources), however if you
 					would like to contribute to the modification of this resource to cover these use cases,
-					please contact the HL7 Patient Administration work-group.
+					please contact the HL7 Patient Administration work-group. -->
 				</p>
 			</li>
 		</ul>
 	</div>
   <div>
-    <h2>Boundaries and Relationships</h2>
+    <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 
-    <h3>Appointment Statuses and Encounters</h3>
+    <h3>Статусы записи на прием и Encounters<!-- Appointment Statuses and Encounters --></h3>
     <p>
-      Appointments can be considered as Administrative only, and the Encounter is expected to have
-      Clinical implications.
+	Ресурс Appointment можно считать чисто административным, а ресурс Encounter будет применяться непосредственно в нуждах клиники.
+      <!-- Appointments can be considered as Administrative only, and the Encounter is expected to have
+      Clinical implications. -->
     </p>
     <p>
-      In general it is expected that appointments will result in the creation of an Encounter.
+	Вообще ожидается, что запись на приём приведет к созданию Encounter.
+Encounter, как правило, создается с началом оказания услуги, а не по прибытии пациента.
+       Когда пациент прибывает, статус ресурса Appointment может быть изменен на "Arrived".
+     <!--  In general it is expected that appointments will result in the creation of an Encounter.
       The encounter is typically created when the service starts, not when the patient arrives.
-      When the patient arrives, an appointment can be marked with a status of Arrived.
+      When the patient arrives, an appointment can be marked with a status of Arrived. -->
     </p>
     <p>
-      In an Emergency Room context, this appointment resource is probably not appropriate to be used.
-      In these cases an encounter should be created.
+	В контексте отделения неотложной помощи ресурс Appointment, по всей видимости, не может быть применен. В таких случаях следует создавать Encounter.
+      <!-- In an Emergency Room context, this appointment resource is probably not appropriate to be used.
+      In these cases an encounter should be created. -->
     </p>
     <p>
-      The Appointment request pattern used is different to the order-response pattern used elsewhere in FHIR.<br/>
-      This is due to the close relationship to the iCAL standard. Many non-clinical systems use generic
+	Используемый паттерн запроса Appointment отличается от паттерна "заказ-ответ", повсеместно используемого в FHIR.
+      <!-- The Appointment request pattern used is different to the order-response pattern used elsewhere in FHIR. --><br/>
+	  Это обусловлено тесной взаимосвязью со стандартом iCAL. Многие не-клинические системы используют общие, не связанные со здравоохранением системы записи на приём, которые реализуют этот стандарт, и поэтому интеграция с потребителем, который не имеет доступа к программному обеспечению, связанному со здравоохранением, является весьма желательной.
+      <!-- This is due to the close relationship to the iCAL standard. Many non-clinical systems use generic
       non health appointment systems which implement this standard, and the desire to integrate
-      with the consumer who has no access to health based software is highly desirable.<br/>
-      The mappings to the iCAL standard has been provided to guide implementation of gateways between
-      FHIR servers and iCAL systems.
+      with the consumer who has no access to health based software is highly desirable. --><br/>
+     Для ведения разработки шлюзов между FHIR-серверами и iCAL-системами предоставлен мэппинг на стандарт iCAL.
+	 <!--  The mappings to the iCAL standard has been provided to guide implementation of gateways between
+      FHIR servers and iCAL systems. -->
     </p>
-		<h3>Appointment Locations and Participation</h3>
+		<h3>Место проведения условленной встречи и участие в ней<!-- Appointment Locations and Participation --></h3>
 		<p>
-			The Location of the appointment is to be defined by using a participant that references a location
-			or HealthcareService.<br/>
-			This permits the location to also have its availability checked via a schedule and any
-			conflicts more easily managed.
+		Место приёма задается указанием в элементе "participant" ссылки на ресурс Locations или HealthcareService.
+			<!-- The Location of the appointment is to be defined by using a participant that references a location
+			or HealthcareService. --><br/>
+			Это дает возможность проверять доступность местоположения с помощью расписания и упрощает разрешение конфликтов.
+			<!-- This permits the location to also have its availability checked via a schedule and any
+			conflicts more easily managed. -->
 		</p>
   </div>
 </div>

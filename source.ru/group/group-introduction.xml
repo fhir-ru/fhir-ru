@@ -1,50 +1,58 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <a name="use"> </a>
-<h3>Use Cases</h3>
-<p>The group resource is used in one of two ways:</p>
+<h3>Сценарии использования<!-- Use Cases --></h3>
+<p>Ресурс Group используется в двух случаях:<!-- The group resource is used in one of two ways: --></p>
 <ol>
-  <li>To define a group of specific people, animals, devices, etc. that is being tracked, examined or otherwise referenced as part of healthcare-related activities</li>
-  <li>To define a set of *possible* people, animals, devices, etc. that are of interest for some intended future healthcare-related activities</li>
+  <li>Для объединения в группу определенных людей, животных, устройств и т. п., которая отслеживается, проверяется или другим способом упоминается в рамках деятельности, связанной со здравоохранением</li>
+  <li>Чтобы задать набор "возможных" людей, животных, устройств и т. п., которые представляют интерес для каких-то будущих, связанных со здравоохранением активностей</li>
+<!--   <li>To define a group of specific people, animals, devices, etc. that is being tracked, examined or otherwise referenced as part of healthcare-related activities</li>
+  <li>To define a set of *possible* people, animals, devices, etc. that are of interest for some intended future healthcare-related activities</li> -->
 </ol>
 
-<p>Examples of the former could include group therapy or treatment sessions, exposed entities tracked as part of public health, etc.  The latter might be used to define expected subjects for a clinical study.</p>
+<p>Примеры для первого случая включают в себя групповую терапию или сеансы лечения, exposed entities, отслеживаемые в рамках общественного здравоохранения и т. п. Второй может использоваться для определения ожидаемых субъектов для клинического исследования. <!-- Examples of the former could include group therapy or treatment sessions, exposed entities tracked as part of public health, etc.  The latter might be used to define expected subjects for a clinical study. --></p>
 
-<p>Both use cases are handled by a single resource because the data elements captured tend to be similar.</p>
+<p>Оба случая использования обрабатываются одним ресурсом, поскольку вводимые элементы данных будут одинаковыми.<!-- Both use cases are handled by a single resource because the data elements captured tend to be similar. --></p>
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
-There are five mechanisms in FHIR for communicating collections of resources:
+В FHIR имеется 5 механизмов взаимодействия с коллекцией ресурсов:
+<!-- There are five mechanisms in FHIR for communicating collections of resources: -->
 </p>
 <ul>
 <li>
-The <a href="list.html">List</a> resource - enumerates a flat collection of resources and provides features for managing the collection.  
+Ресурс <a href="list.html">List</a> - перечисляет линейную коллекцию ресурсов и предлагает свойства для управления этой коллекцией.
+Хотя конкретный экземпляр ресурса List может представлять собой "снимок", с точки зрения бизнес-процесса обозначение "List" является динамическим - пункты добавляются и удаляются с течением времени. Ресурс List ссылается на другие ресурсы. Ресурсы List могут курироваться и иметь определенное бизнес-значение.
+<!-- The <a href="list.html">List</a> resource - enumerates a flat collection of resources and provides features for managing the collection.  
 While a particular List instance may represent a "snapshot", from a business process perspective the notion of "List" 
-is dynamic – items are added and removed over time.  The list resource references other resources.  Lists may be 
-curated and have specific business meaning.
+is dynamic – items are added and removed over time.  The list resource references other resources.  Lists are may be 
+curated and have specific business meaning. -->
 </li>
 <li>
-This Group resource - defines a group of specific people, animals, devices, etc. by enumerating them, 
+Данный ресурс Group - задает группу определенных людей, животных, устройств и т. д. их перечислением или описанием качеств, которыми обладают члены этой группы. Ресурс Group ссылается на другие ресурсы, возможно неявно. Ресурсы Group предназначены для работы с ними или наблюдения как целого. Например выполнение терапии над группой, вычисление риска для группы и т. д. Данный ресурс будет, как правило, использоваться для общественного здравоохранения (например описание населения с повышенным риском), клинических испытаний (например определение совокупности субъектов тестирования) и других подобных целей.
+<!-- This Group resource - defines a group of specific people, animals, devices, etc. by enumerating them, 
 or by describing qualities that group members have. The group resource refers to other resources, possibly implicitly.  
 Groups are intended to be acted upon or observed as a whole.  E.g. performing therapy on a group, calculating risk for a group, 
 etc.  This resource will commonly be used for public health (e.g. describing an at-risk population), clinical trials (e.g. 
-defining a test subject pool) and similar purposes.
+defining a test subject pool) and similar purposes. -->
 </li>
 <li>
-The <a href="bundle.html">Bundle</a> resource is an infrastructure container for a group of resources.  It does not have narrative 
+Ресурс  <a href="bundle.html">Bundle</a>  - это инфраструктурный контейнер для группы ресурсов. У него нет описательной части, и он используется для группировки коллекции ресурсов для передачи, хранения или обработки (например сообщения, документы, транзакции, ответы на запросы и т. п.). Содержимое бандлов, как правило, определяется алгоритмически в конкретных целях обмена или хранения.
+<!-- The <a href="bundle.html">Bundle</a> resource is an infrastructure container for a group of resources.  It does not have narrative 
 and is used to group collections of resources for transmission, persistence or processing (e.g. messages, documents, transactions, 
-query responses, etc.)  The content of bundles is typically algorithmically determined for a particular exchange or persistence purpose.
+query responses, etc.)  The content of bundles is typically algorithmically determined for a particular exchange or persistence purpose. -->
 </li>
 <li>
-The <a href="composition.html">Composition</a> resource – defines a set of healthcare-related information that is assembled 
+Ресурс <a href="composition.html">Composition</a> - задает набор данных, связанных со здравоохранением, который собирается вместе в отдельный логический документ, который предоставляет единое согласованное заявление о некотором смысле, устанавливает свой собственный контекст и который имеет клиническое заверение по отношению к тому, кто делает это заявление. Ресурс Composition обеспечивает базовую структуру FHIR-<a href="documents.html">документа</a>. Полное содержимое документа выражается с помощью ресурса bundle. Ресурсы Composition часто ссылаются на ресурсы List в качестве целей определенных разделов.
+<!-- The <a href="composition.html">Composition</a> resource – defines a set of healthcare-related information that is assembled 
 together into a single logical document that provides a single coherent statement of meaning, establishes its own context and 
 that has clinical attestation with regard to who is making the statement. The composition resource provides the basic structure 
 of a FHIR <a href="documents.html">document</a>.  The full content of the document is expressed using a bundle.  Compositions will 
-often reference Lists as the focus of particular sections.
+often reference Lists as the focus of particular sections. -->
 </li>
 </ul>
 

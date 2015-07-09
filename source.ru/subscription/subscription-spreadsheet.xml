@@ -986,9 +986,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A server push subscription criteria</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Критерии подписки на доставку данных сервером (методом push)<!-- A server push subscription criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined &quot;channel&quot; so that another system is able to take an appropriate action</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс subscription (подписка) используется для определения подписки на основе метода push с сервера в другую систему. После регистрации подписки на сервере, сервер проверяет каждый ресурс, который создается или обновляется, и если ресурс соответствует заданным критериям, то он посылает сообщение в определенный &quot;канал&quot;, чтобы другая система могла выполнить надлежащее действие<!-- The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined &quot;channel&quot; so that another system is able to take an appropriate action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1018,12 +1018,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Rule for server push criteria</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Правило критерия выполнения команды push сервера<!-- Rule for server push criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The rules that the server should use to determine when to generate notifications for this subscription</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Правила, которые использует сервер для определения, когда ему следует создавать оповещения для данной подписки<!-- The rules that the server should use to determine when to generate notifications for this subscription --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The rules are a search criteria (without the [base] part</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Правила представляют собой критерии поиска без части [base]<!-- The rules are a search criteria (without the [base] part --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1051,9 +1051,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact details for source (e.g. troubleshooting)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактные данные источника (например для устранения неполадок)<!-- Contact details for source (e.g. troubleshooting) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные данные человека, с которым можно контактировать по поводу подписки. В основном применяется для устранения неполадок системным администратором<!-- Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1083,9 +1083,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Description of why this subscription was created</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание, для чего была создана данная подписка<!-- Description of why this subscription was created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A description of why this subscription is defined</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание, для чего задана эта подписка<!-- A description of why this subscription is defined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1119,10 +1119,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">requested | active | error | off</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the subscription, which marks the server state for managing the subscription</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус подписки, который помечает состояние сервера для управления подпиской<!-- The status of the subscription, which marks the server state for managing the subscription --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A client can only submit subscription resources in the requested or off state. Only the server can  move a subscription from requested to active, and then to error. Either the server or the client can turn a subscription off</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Клиент может отправлять ресурсы subscription только при статусе requested или off. Только сервер может изменить статус подписки с  requested на active, а затем на error. Как сервер, так и клиент могут отключить подписку<!-- A client can only submit subscription resources in the requested or off state. Only the server can  move a subscription from requested to active, and then to error. Either the server or the client can turn a subscription off --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1149,9 +1149,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Latest error note</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Последнее сообщение об ошибке<!-- Latest error note --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A record of the last error that occurred when the server processed a notification</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Запись о самой последней ошибке, которая произошла, когда сервер обрабатывал оповещение<!-- A record of the last error that occurred when the server processed a notification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="18" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1178,9 +1178,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The channel on which to report matches to the criteria</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Канал, по которому сообщается о соответствии критериям<!-- The channel on which to report matches to the criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Details where to send notifications when resources are received that meet the criteria</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сведения о том, куда отправлять оповещения при получении ресурсов, соответствующих заданным критериям<!-- Details where to send notifications when resources are received that meet the criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1213,7 +1213,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">rest-hook | websocket | email | sms | message</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of channel to send notififcations on</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип канала для отправки оповещений<!-- The type of channel to send notififcations on --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1242,7 +1242,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where the channel points to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Куда указывает этот канал<!-- Where the channel points to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The uri that describes tha actual end point to send messages to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1279,7 +1279,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Sending the payload has obvious security consequences. The server is responsible for ensuring that the content is appropriately secured</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Отправка полезных данных имеет очевидные последствия для безопасности. Сервер отвечает за обеспечение того, что содержимое будет соответствующим образом защищено<!-- Sending the payload has obvious security consequences. The server is responsible for ensuring that the content is appropriately secured --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1306,12 +1306,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Usage depends on the channel type</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Применение зависит от типа канала<!-- Usage depends on the channel type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional headers / information to send as part of the notification</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительные заголовки / информация для отправки в рамках оповещения<!-- Additional headers / information to send as part of the notification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Exactly what these mean depend on the channel type. The can convey additional information to the recipient and/or meet security requirements</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Точное значение этого элемента зависит от типа канала. Может передавать дополнительную информацию получателю и/или отвечать требованиям безопасности<!-- Exactly what these mean depend on the channel type. The can convey additional information to the recipient and/or meet security requirements --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1339,12 +1339,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When to automatically delete the subscription</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда следует автоматически удалить подписку<!-- When to automatically delete the subscription --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The time for the server to turn the subscription off</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда сервер должен отключить подписку<!-- The time for the server to turn the subscription off --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The server is permitted to deviate from this time, but should observe it</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Серверу разрешается отклоняться от этого времени, однако он должен соблюдать его<!-- The server is permitted to deviate from this time, but should observe it --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1372,12 +1372,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A tag to add to matching resources</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тег для добавления к соответствующим ресурсам<!-- A tag to add to matching resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A tag to add to any resource that matches the criteria, after the subscription is processed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тег для добавления к любому ресурсу, который соответствует критериям, после обработки подписки<!-- A tag to add to any resource that matches the criteria, after the subscription is processed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">So that other systems can tell which resources have been the subject of a notification</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Чтобы другие системы могли сказать, какие ресурсы выступали объектом оповещения<!-- So that other systems can tell which resources have been the subject of a notification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6632,7 +6632,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">SubscriptionChannelType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The type of method used to execute a subscription</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип метода, используемого для осуществления подписки<!-- The type of method used to execute a subscription --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#subscription-channel-type</Data></Cell>
@@ -6647,7 +6647,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SubscriptionStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The status of a subscription</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус подписки<!-- The status of a subscription --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#subscription-status</Data></Cell>
