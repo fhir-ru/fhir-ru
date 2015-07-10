@@ -10,21 +10,23 @@
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2015-04-12T14:22:05Z</LastSaved>
-  <Version>14.00</Version>
+  <Version>15.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <SupBook>
-   <Path>Invariants</Path>
+   <Path>\work\org.hl7.fhir\build\source\provenance\Macintosh HD:Users:cnanjo:repository:fhir:trunk:build:source:provenance:Invariants</Path>
    <SheetName>Invariants</SheetName>
   </SupBook>
-  <WindowHeight>2580</WindowHeight>
-  <WindowWidth>9870</WindowWidth>
-  <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
+  <WindowHeight>13275</WindowHeight>
+  <WindowWidth>24000</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ActiveSheet>10</ActiveSheet>
+  <FirstVisibleSheet>2</FirstVisibleSheet>
+  <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -1038,19 +1040,16 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Если нет компаратора, то нет никакого видоизменения значения <!-- If there is no comparator, then there is no modification of the value --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String"> If there is no comparator, then there is no modification of the value</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">&lt; | &lt;= | &gt;= | &gt; - как понимать значение<!-- &lt; | &lt;= | &gt;= | &gt; - how to understand the value --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">&lt; | &lt;= | &gt;= | &gt; - how to understand the value</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Как следует понимать и показывать значение - будь фактическое значение больше или меньше указанного значения из-за проблем измерения. Например если компаратор &quot;&lt;&quot;, тогда реальное значение &lt;указанного значения<!-- 
-How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Как следует понимать и показывать значение - будь фактическое значение больше или меньше указанного значения из-за проблем измерения. Например если компаратор &quot;&lt;&quot;, тогда реальное значение &lt;указанного значения<!-- How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна система обработки измерений, где значением будет &lt;5ug/L или &gt;400mg/L из-за ограничений методологии измерения.<!-- 
-Need a framework for handling measures where the value is &lt;5ug/L or &gt;400mg/L due to the limitations of measuring methodology.   --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна система обработки измерений, где значением будет &lt;5ug/L или &gt;400mg/L из-за ограничений методологии измерения.<!-- Need a framework for handling measures where the value is &lt;5ug/L or &gt;400mg/L due to the limitations of measuring methodology.   --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Помечено как &quot;Is Modifier&quot;, поскольку компаратор существенно модифицирует интерпретацию значения. Если компаратор не указан, значит модификации значения нет<!-- 
-This is labeled as &quot;Is Modifier&quot; because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Помечено как &quot;Is Modifier&quot;, поскольку компаратор существенно модифицирует интерпретацию значения. Если компаратор не указан, значит модификации значения нет<!-- This is labeled as &quot;Is Modifier&quot; because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">IVL properties</Data><NamedCell
@@ -1149,11 +1148,9 @@ This is labeled as &quot;Is Modifier&quot; because the comparator modifies the i
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Единицы измерений в форме для компьютерной обработки в некоторой системе представления единиц измерений<!-- A computer processable form of the units in some unit representation system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна вычислимая форма единиц измерений, зафиксированная для всех форм. UCUM обеспечивает это для количественных единиц, также SNOMED CT содержит много единиц измерений, представляющих интерес<!-- 
-Need a computable form of the units that is fixed across all forms. UCUM provides this for quantities, but SNOMED CT provides many units of interest --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна вычислимая форма единиц измерений, зафиксированная для всех форм. UCUM обеспечивает это для количественных единиц, также SNOMED CT содержит много единиц измерений, представляющих интерес<!-- Need a computable form of the units that is fixed across all forms. UCUM provides this for quantities, but SNOMED CT provides many units of interest --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Предпочтительной системой является UCUM, но SNOMED CT также может быть использован (для привычных единиц измерений) или ISO 4217 для валюты.&#10;&#10;Контекст использования может дополнительно требовать код из конкретной системы<!-- 
-The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.&#10;&#10;The context of use may additionally require a code from a particular system --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Предпочтительной системой является UCUM, но SNOMED CT также может быть использован (для привычных единиц измерений) или ISO 4217 для валюты.&#10;&#10;Контекст использования может дополнительно требовать код из конкретной системы<!-- The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.&#10;&#10;The context of use may additionally require a code from a particular system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">PQ.code, MO.currency, PQ.translation.code</Data><NamedCell
@@ -3572,7 +3569,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
    <Range>R2C4,R4C4:R100C4</Range>
    <Type>List</Type>
-   <Value>Invariants!#REF!</Value>
+   <Value>'\work\org.hl7.fhir\build\source\provenance\Macintosh HD:Users:cnanjo:repository:fhir:trunk:build:source:provenance:[Invariants]Invariants'!#REF!</Value>
    <ErrorHide/>
   </DataValidation>
   <DataValidation xmlns="urn:schemas-microsoft-com:office:excel">
@@ -4273,27 +4270,27 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Duration</Data></Cell>
-    <Cell><Data ss:Type="String">Продолжительность времени<!-- A length of time --></Data></Cell>
+    <Cell><Data ss:Type="String">A length of time</Data></Cell>
     <Cell><Data ss:Type="String">There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.</Data></Cell>
     <Cell><Data ss:Type="String">(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='http://unitsofmeasure.org')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Distance</Data></Cell>
-    <Cell><Data ss:Type="String">Мера расстояния<!-- A measure of distance --></Data></Cell>
+    <Cell><Data ss:Type="String">A measure of distance</Data></Cell>
     <Cell><Data ss:Type="String">There SHALL be a code if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.</Data></Cell>
     <Cell><Data ss:Type="String">(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='http://unitsofmeasure.org')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Count</Data></Cell>
-    <Cell><Data ss:Type="String">Число дискретных элементов (без единицы измерения)<!-- A count of a discrete element (no unit) --></Data></Cell>
+    <Cell><Data ss:Type="String">A count of a discrete element (no unit)</Data></Cell>
     <Cell><Data ss:Type="String">There SHALL be a code with a value of &quot;1&quot; if there is a value and it SHALL be an expression of length.  If system is present, it SHALL be UCUM.  If present, the value SHALL a whole number.</Data></Cell>
     <Cell><Data ss:Type="String">(f:code or not(f:value)) and (not(exists(f:system)) or (f:system/@value='http://unitsofmeasure.org' and f:code/@value='1' )) and not(contains(f:value/@value, '.')) </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Money</Data></Cell>
-    <Cell><Data ss:Type="String">Денежная сумма. Что касается точности, см. [[X]]<!-- An amount of money. With regard to precision, see [[X]] --></Data></Cell>
-    <Cell><Data ss:Type="String">There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = &quot;urn:std:iso:4217&quot; - currency).</Data></Cell>
-    <Cell><Data ss:Type="String">(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='urn:std:iso:4217')</Data></Cell>
+    <Cell><Data ss:Type="String">An amount of money. With regard to precision, see [[X]]</Data></Cell>
+    <Cell><Data ss:Type="String">There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = &quot;urn:iso:std:iso:4217&quot; - currency).</Data></Cell>
+    <Cell><Data ss:Type="String">(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='urn:iso:std:iso:4217')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">CodedQuantity</Data></Cell>
@@ -4303,7 +4300,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Age</Data></Cell>
-    <Cell><Data ss:Type="String">Продолжительность (период времени) с кодом UCUM<!-- A duration (length of time) with a UCUM code --></Data></Cell>
+    <Cell><Data ss:Type="String">A duration (length of time) with a UCUM code</Data></Cell>
     <Cell><Data ss:Type="String">There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.  If value is present, it SHALL be positive.</Data></Cell>
     <Cell><Data ss:Type="String">(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='http://unitsofmeasure.org') and not(contains(f:value/@value, '-'))</Data></Cell>
    </Row>
@@ -4316,7 +4313,6 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
    </PageSetup>
    <Unsynced/>
    <TabColorIndex>9</TabColorIndex>
-   <Selected/>
    <LeftColumnVisible>3</LeftColumnVisible>
    <Panes>
     <Pane>
@@ -7212,7 +7208,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     <Cell ss:StyleID="s127"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s149"/>
-    <Cell ss:StyleID="s149"/>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Less than</Data></Cell>
     <Cell ss:StyleID="s149"><Data ss:Type="String">The actual value is less than the given value</Data></Cell>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
@@ -7223,7 +7219,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     <Cell ss:StyleID="s130"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s150"/>
-    <Cell ss:StyleID="s150"/>
+    <Cell ss:StyleID="s150"><Data ss:Type="String">Less or Equal to</Data></Cell>
     <Cell ss:StyleID="s150"><Data ss:Type="String">The actual value is less than or equal to the given value</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
@@ -7234,7 +7230,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     <Cell ss:StyleID="s130"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s150"/>
-    <Cell ss:StyleID="s150"/>
+    <Cell ss:StyleID="s150"><Data ss:Type="String">Greater or Equal to</Data></Cell>
     <Cell ss:StyleID="s150"><Data ss:Type="String">The actual value is greater than or equal to the given value</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
@@ -7245,7 +7241,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     <Cell ss:StyleID="s130"><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s150"/>
-    <Cell ss:StyleID="s150"/>
+    <Cell ss:StyleID="s150"><Data ss:Type="String">Greater than</Data></Cell>
     <Cell ss:StyleID="s150"><Data ss:Type="String">The actual value is greater than the given value</Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
@@ -7755,6 +7751,7 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -7774,7 +7771,8 @@ The preferred system is UCUM, but SNOMED CT can also be used (for customary unit
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
