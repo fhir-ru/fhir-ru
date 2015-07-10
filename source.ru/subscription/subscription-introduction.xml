@@ -65,7 +65,7 @@ is that there is no notification when a resource is deleted, or when
 a resource is updated so that it no longer meets the criteria.  -->
 </p>
 <p>
-В качестве альтернативы ресурсу subscriptions, RESTful API описывает подписку на основе метода опрашивания, использующий <a href="extras.html#bundle">bundles</a> и операцию <a href="http.html#history">history</a>. Этот метод опрашивания позволяет устанавливать намного более тесную взаимосвязь между клиентом и сервером, которая не предполагает упущения обновлений и/или удалений.
+В качестве альтернативы ресурсу subscriptions, RESTful API описывает подписку на основе метода опрашивания, использующий <a href="compartments.html#bundle">bundles</a> и операцию <a href="http.html#history">history</a>. Этот метод опрашивания позволяет устанавливать намного более тесную взаимосвязь между клиентом и сервером, которая не предполагает упущения обновлений и/или удалений.
 <!-- As an alternative to subscriptions, the RESTful API describes a 
 polling-based subscription method using <a href="compartments.html#bundle">bundles</a> 
 and the <a href="http.html#history">history operation</a>. This method 
