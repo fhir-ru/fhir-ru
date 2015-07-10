@@ -50,7 +50,7 @@ from server to server, the resource identity will change as the servers
 assign identities to the resource.
 </p>
 <p>
-However all copies of the reosurce refer to the same underlying concept,
+However all copies of the resource refer to the same underlying concept,
 and this concept may also be represented in other formats (variously, v2,
 CDA, XDS, and many more). Each representation carries the same identifier
 that identifies it consistently across all contexts of use. This is known
@@ -117,7 +117,7 @@ in particular implementations or contexts of use. -->
   <tr>
    <td>profile (0..*)</td>
    <td><a href="datatypes.html#uri">uri</a></td>
-   <td>An assertion that the content conforms to a resource profile (a <a href="structuredefinition.html">StructureDefinition</a>. See <a href="profiling.html#resources">Extending and Restricting Resources</a> for further discussion. 
+   <td>An assertion that the content conforms to a resource profile (a <a href="structuredefinition.html">StructureDefinition</a>). See <a href="profiling.html#resources">Extending and Restricting Resources</a> for further discussion.  
     Can be changed as profiles and value sets change or the system rechecks conformance</td>
   </tr>
 	
@@ -131,17 +131,14 @@ in particular implementations or contexts of use. -->
   <tr>
    <td>tag (0..*)</td>
    <td><a href="datatypes.html#Coding">Coding</a></td>
-   <td><a href="extras.html">Tags</a> applied to this resource. Tags are used to relate resources to process and workflow. Applications are not required to consider 
+   <td><a href="compartments.html">Tags</a> applied to this resource. Tags are used to relate resources to process and workflow. Applications are not required to consider 
     the tags when interpreting the meaning of a resource.</td>
   </tr>
 		
 </table>
   
-[%edt Meta resource.html%]
+[%edt Meta resource.html 1%]
 
-<p>
-Meta is used in the following places: [%dtusage Meta%]
-</p>
 <p>
 Note that the RESTful API defines some <a href="operations.html">Operations</a> that provide
 <a href="resource-operations.html#meta">direct read and write access</a> to the <i>meta</i> element.   
@@ -151,14 +148,14 @@ Note that the RESTful API defines some <a href="operations.html">Operations</a> 
 <h4>Technical vs Business Versions</h4>
 <p>
 All resources are conceptually versioned, and each resource sits at the head of a linear list of past versions. 
-The past versions are superceded by the current version, and only available for audit/integrity purposes. 
+The past versions are superseded by the current version, and only available for audit/integrity purposes. 
 The current version is e.g. http://acme.org/fhir/ResourceType/id123, and a past version would be 
 http://acme.org/fhir/ResourceType/id123/_history/v2.
 </p>
 <p>
 Note that there's no requirement for servers to keep a history. The 
 <a href="http.html#history">history interaction</a> is provided for 
-where this is an appropriate service to provide. However, Whether a server keeps them 
+where this is an appropriate service to provide. However, whether a server keeps them 
 or not, past versions are dead and gone. 
 The current version of the resource is in the <i>Resource.meta.versionId</i>. For a value set this would be:
 </p>
@@ -252,7 +249,7 @@ Not all of the content of the resource has to be in the specified language.
 <p>
 If a language is specified, it should also be specified on the <a href="narrative.html#Narrative">Narrative Text</a>. 
 The html language tag in the narrative is used when processing the narrative. The language tag on the resource is provided 
-for use to specify the language of alternate presentations generated from the data in the resource
+so that applications processing the data in the resource can specify the language of any alternate presentations generated from the data.
 </p>
 
 <a name="tags"> </a>
@@ -276,6 +273,10 @@ In a general tag, the <a href="datatypes.html#coding">concept</a> may be a refer
 healthcare vocabulary, including ones defined in this specification, or vocabularies such 
 as those defined by HL7 for other purposes (e.g. v2 and v3/CDA), LOINC, or SNOMED CT. 
 Alternatively, the concept may be one defined by the implementation in the local context. 
+</p>
+<p>
+The list of tags on a resource is a set, where each tag is unique based on the 
+<code>system</code>+<code>code</code> combination.
 </p>
 
 <a name="profile-tags"> </a>
@@ -318,6 +319,9 @@ a particular <a href="structuredefinition.html">StructureDefinition</a>, not sta
 Many trading partner agreements will make rules about what claims can be made 
 and when they must be tested, which will make the profile assertion more reliable. 
 </p>
+<p>
+The list of profiles on a resource is a set, where each profile is unique based the <code>value</code> of the URI.
+</p>
 
 <h4>Security Labels</h4>
 <p>
@@ -325,6 +329,45 @@ A security label is attached to a resource to provide specific security metadata
 about the information in the resource. For further information, see 
 <a href="security-labels.html">Security Labels</a>.
 </p>
+<p>
+The list of security on a resource is a set, where each tag is unique based on the 
+<code>system</code>+<code>code</code> combination.
+</p>
+
+<h3>Updates to Tags, Profiles, and Security Labels</h3>
+<p>
+When a resource is updated (e.g. on the RESTful interface), servers generally follow this
+pattern:
+</p>
+<ul>
+ <li>Merge existing and new tags</li>
+ <li>Replace existing profile tags with new profile tags</li>
+ <li>Merge existing and new security labels</li>
+</ul>
+<p>
+However, in some cases, an update may invalidate existing tags.  Servers may update 
+or remove previously existing recognized tags if this is known to be appropriate.
+</p>
+
+<a name="maturity"> </a>
+<h3>Maturity Levels</h3>
+<p>
+All resources in this specification are assigned a "Maturity Level", known as FMM (after the well known <a href="http://en.wikipedia.org/wiki/Capability_Maturity_Model">CMM</a> gradings).
+The FMM level can be used by implementers to judge how advanced - and therefore stable - a resource is. The following FMM levels are defined:
+</p>
+<ol start="0">
+ <li>the resource or profile (artifact) has been published on the current build</li>
+ <li>FMM0 + the artifact produces no warnings during the build process and the responsible WG has indicated that they consider the artifact substantially complete and ready for implementation</li>
+ <li>FMM1 + the artifact has been tested at an HL7 International connectathon</li>
+ <li>FMM2 + the artifact has been subject to a round of formal balloting with at least 10 implementer comments drawn from at least 3 organizations resulting in at least one substantive change</li>
+ <li>FMM3 + the artifact has been tested across its scope, published in a formal publication (e.g. DSTU), and implemented in multiple prototype projects</li>
+ <li>FMM4 + the artifact has been published in two formal publication release cycles and has been implemented in at least 5 independent production systems in more than one country</li>
+</ol>
+<p>
+The Maturity level is strongly related to stability; the higher the stability level, the more controls are enforced to restrict breaking changes to the resource.
+For further information, and discussion, see the <a href="http://wiki.hl7.org/index.php?title=FHIR_Maturity_Model">FHIR Wiki</a>.
+</p>
+ 
 
 <h3>Further Information</h3>
 <ul>
