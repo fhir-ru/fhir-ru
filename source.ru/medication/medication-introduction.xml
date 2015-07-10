@@ -1,8 +1,12 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
+В большинстве случаев представление лекарственного средства является не более чем определением элемента из списка и затем передачей ссылки на выбранный элемент либо в ресурс, связанный с пациентом, либо в другие приложения. Дополнительные сведения о медикаменте часто предоставляются для верификации человеком, однако полная подробная информация о составе и силе лекарственного средства передается с помощью кодов из справочников лекарственных препаратов. В некоторых случаях необходимо идентифицировать немного больше деталей, например при раздаче упаковки, содержащей определенное лекарственное средство, требуется идентификация как препарата, так и самой упаковки одновременно. 
+Также имеются и другие случаи (например частные рецептуры), где необходимо предоставлять состав лекарственного средства.
+В таких случаях ингредиенты лекарственного средства должны указываться вместе с содержащимся количеством, однако ресурс Medication не дает всех деталей.
+<!-- 
 Representing Medication in the majority of healthcare settings is a matter of identifying an item from a list and then conveying a reference 
 for the item selected either into a patient related resource or to other applications.  Additional information about the medication is frequently 
 provided for human verification but a full representation of the details of composition and efficacy of the medicine is conveyed by referring
@@ -11,18 +15,25 @@ as when dispensing a package containing a particular medicine requires identific
 There are also some occasions (e.g. custom formulations) where the composition of a medicine must be represented.  
 In these cases the ingredients of the medicine have to be specified together with the amount contained, though the medication resource 
 does not provide full details.
+ -->
 </p>
 <p>
+Ресурс Medication позволяет классифицировать лекарственное средство либо как продукт, либо упаковку; такая классификация важна, так как она влияет на интерпретацию предписанного количества. Например, выписано ли лекарство в количестве 20 таблеток или 20 упаковок по 50 таблеток каждая? Однако элемент <i>kind</i> не является обязательным, поскольку не всякий контекст использования включает в себя предписание лекарства (например medication statements). Однако профили, описывающие использование ресурса Medication в случае предписания лекарства, как правило, делают элемент <i>kind</i> обязательным.
+<!-- 
 The medication resource allows for medications to be characterised as either a product or a package; this classification is important 
 because it affects the interpretation of a prescribed amount. For instance, is the prescribed amount 20 tablets, or 20 packages of
 50 tablets each? However the <i>kind</i> element is not required because not all contexts of use are involved with prescription (medication
 statements, for instance). Typically, however, profiles describing the use of the medication resource in a prescribing environment 
 will make the <i>kind</i> element required. 
+ -->
 </p>
 <p>
+В зависимости от того, является ли лекарственное средство продуктом или упаковкой, могут быть предоставлены дополнительные сведения о его составе. Для продукта приводится форма (таблетка, суспензия и т. д.) и список ингредиентов с указанием их количества. Ингредиенты могут быть другими лекарственными средствами либо веществами. У упаковки есть контейнер (вакуумная коробка, банка и т. д.) и список продуктов или других упаковок, которые находятся в этой упаковке.
+<!-- 
 Depending on whether the medication is a product or a package, further details about the composition can be provided. A product
 has a form (tablet, suspension, etc.) and a list of ingredients with quantities. The ingredients may be other medications or 
 substances. A package has a container (vacuum packed box, jar, etc.) and a list of the products or other packages that are in the package.
+ -->
 </p>
 </div>    
     

@@ -980,12 +980,12 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A response to an order</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ответ на заказ<!-- A response to an order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A response to an order</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ответ на заказ<!-- A response to an order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">There might be more than one response to an order</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">На заказ может быть больше одного ответа<!-- There might be more than one response to an order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">ControlAct[classCode=ACTN, moodCode=EVN]</Data><NamedCell
@@ -1014,9 +1014,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifiers assigned to this order by the orderer or by the receiver</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификаторы, присвоенные этому заказу заказывающим или получателем<!-- Identifiers assigned to this order by the orderer or by the receiver --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifiers assigned to this order. The identifiers are usually assigned by the system responding to the order, but they may be provided or added to by other systems</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификаторы, присвоенные этому заказу. Идентификаторы, как правило, назначаются системой, отвечающей на заказ, однако они могут быть предоставлены или добавлены другими системами<!-- Identifiers assigned to this order. The identifiers are usually assigned by the system responding to the order, but they may be provided or added to by other systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1046,9 +1046,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The order that this is a response to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Заказ, которому соответствует данный ответ<!-- The order that this is a response to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to the order that this is in response to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на заказ, которому соответствует данный ответ<!-- A reference to the order that this is in response to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1080,9 +1080,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the response was made</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда был сделан ответ<!-- When the response was made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date and time at which this order response was made (created/posted)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время, когда данный ответ на заказ был сделан (создан/отправлен)<!-- The date and time at which this order response was made (created/posted) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1114,9 +1114,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who made the response</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто сделал ответ<!-- Who made the response --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person, organization, or device credited with making the response</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, организация или устройство, которому присваивается создание ответа<!-- The person, organization, or device credited with making the response --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1147,12 +1147,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If required by policy</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если требуется политикой<!-- If required by policy --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to an authority policy that is the reason for the response. Usually this is used when the order is rejected, to provide a reason for rejection</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на правовую политику, служащую основанием данного ответа. Как правило, используется, когда заказ отклоняется, для предоставления причины отклонения<!-- A reference to an authority policy that is the reason for the response. Usually this is used when the order is rejected, to provide a reason for rejection --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference will be constrained when suitable targets exist</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка будет ограничена, когда появятся подходящие цели<!-- Reference will be constrained when suitable targets exist --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationships[typeCode=COVBY].target[classCode=POLICY, moodCode=EVN].code&#10;&#10;or&#10;&#10;.outboundRelationships[typeCode=COVBY].target[classCode=POLICY, moodCode=EVN]</Data><NamedCell
@@ -1217,9 +1217,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional description of the response</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительное описание ответа<!-- Additional description of the response --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional description about the response - e.g. a text description provided by a human user when making decisions about the order</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительное описание ответа - например текстовое описание, предоставленное пользователем-человеком при принятии решений по поводу заказа<!-- Additional description about the response - e.g. a text description provided by a human user when making decisions about the order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1250,9 +1250,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Details of the outcome of performing the order</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробное описание результата выполнения заказа<!-- Details of the outcome of performing the order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылки на ресурсы, содержащие подробное описание результата выполнения заказа. Например Diagnostic Reports в ответе на заказ diagnostic order <!-- Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4443,7 +4443,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The patient the reuqest order is related to</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Пациент, с которым связан заказ заявки<!-- The patient the reuqest order is related to --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6660,7 +6660,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">OrderStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of the response to an order</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус ответа на заказ<!-- The status of the response to an order --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#order-status</Data></Cell>
