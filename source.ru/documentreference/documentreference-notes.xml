@@ -49,7 +49,7 @@ return or generate document references for the following types of content: -->
 <table class="grid">
   <tr> <td><b>Тип</b></td> <td><b>Комментарии</b></td> </tr>
   <tr> <td><a href="documents.html">FHIR-документы</a></td> <td>URI ведет на существующий Document</td> </tr>
-  <tr> <td>CDA-документ</td> <td>URI - это ссылка на точку взаимодействия ресурса <a href="extras.html#Binary">Binary</a>, которая возвращает либо CDA-документ, либо какой-то вид  CDA Package, который сервер знает как обрабатывать (например IHE .zip)</td> </tr>
+  <tr> <td>CDA-документ</td> <td>URI - это ссылка на точку взаимодействия ресурса <a href="compartments.html#Binary">Binary</a>, которая возвращает либо CDA-документ, либо какой-то вид  CDA Package, который сервер знает как обрабатывать (например IHE .zip)</td> </tr>
   <tr> <td>Другое</td> <td>Сервер могут запросить сгенерировать DocumentReference для других видов документов. Для некоторых из этих документов (например PDF-документов) сервер может предложить только уже существующий DocumentReference, либо сервер имеет особые сведения об этом документе</td> </tr>
 <!--   <tr> <td><b>Type</b></td> <td><b>Comments</b></td> </tr>
   <tr> <td><a href="documents.html">FHIR Documents</a></td> <td>The uri refers to an existing Document</td> </tr>
