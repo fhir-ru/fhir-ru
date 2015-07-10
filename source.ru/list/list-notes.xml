@@ -1,6 +1,31 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<!-- insert xhtml content here -->
+<a name="order"> </a>
+<h2>List Order</h2>
+<p>
+All lists are considered ordered - the order in which items literally 
+appear in the list may be an important part of the meaning of the list. 
+Reordering the items in a list may change the meaning of the list. 
+</p>
+<p>
+While a list always contains an ordered set of items, the signficance
+of the order may be unknown, or it may be insigificant. As an 
+example, consider a list of patients for a practitioner to visit.
+The list may be in order, where the patients are to be visited in
+the stated order, or just an unsorted list of patients to be visited
+in any order.
+</p>
+<p>
+The list resource has a property <code>orderedBy</code> that, if
+present, specifies the meaning of the item order. Note, though,
+that the meaning of the order may be known implicitly rather 
+than specified in the <code>orderedBy</code> element.
+</p>
+<p>
+Applications SHOULD NOT reorder the elements in a list unless they
+understand the impact of this on the meaning of the list.
+</p>
+
 <a name="status"> </a>
 <h2>List Mode &amp; Item Deleted</h2>
 
@@ -8,14 +33,15 @@
 Имеется несколько различных видов использования ресурса List:
 <!-- There are several different kinds of uses for a List resource: -->
 </p>
-<%codelist ListMode%>
+<%codelist http://hl7.org/fhir/vs/list-mode%>
 
 <p>
-Режим final - список изменений, может включать удаленные пункты. Типичный пример - список медикаментов в discharge summary, где список включает как добавленные, так и удаленные пункты. Для того, чтобы гарантировать безопасность обработки списка, любой пункт с флагом, подразумевающим, что этот пункт был фактически удален, ДОЛЖЕН иметь элемент deleted в значении true.
-<!-- The final mode - a changes list, may include deleted items. A typical case is a medication
-list in a discharge summary, where the list includes items that have been both added and deleted.
-In order to ensure that the list is safe to process, any item where the flag implies that the 
-item has actually been deleted SHALL have the deleted element set to true.  -->
+A changes list may include deleted items. Some examples of change lists are 
+a reconciled list of allergies and a discharge medication list - a list 
+with new, updated and deleted items in it, though these may not be lists that 
+include changes (this is an implementation decision). In order to ensure that 
+the list is safe to process, any item where the flag implies that the 
+item has actually been deleted SHALL have the deleted element set to true. 
 </p>
 <p>
 Обратите внимание, что нет никакого вывода о статусе ресурса, который был удален. Единственное утверждение, которое делается - что этот ресурс был убран из списка. Однако приложениям следует гарантировать, что добавление или удаление пунктов в списке по смыслу не противоречит логическому статусу соответствующего ресурса и его содержимого.
@@ -52,7 +78,7 @@ written narrative may be the only content if the list has no entries
 Если в списке если флаги, представление на экране должно использовать понятные визуальные подсказки (границы, линии, маркеры списков и т. п.), чтобы гарантировать, что читатели не запутаются, какие флаги к каким пунктам относятся, на маленьких экранах (например для предотвращения переносов, разносящих флаги и пункты по разным местам экрана).
 <!-- An HTML table is the recommended approach, though this is not required.
 Each List.item should appear in the narrative for the resource.  I.e. It 
-SHALL not be necessary to retrieve the list items in order to have a 
+SHALL NOT be necessary to retrieve the list items in order to have a 
 human-readable rendering of the content. In addition, if the List.text.status is 
 "generated", then the narrative should not suggest the list 
 contains items for which there are no corresponding List.item elements. 
@@ -79,13 +105,16 @@ relied on as a real-time view of the referenced content.  There are a few
 possible approaches to work around this issue: -->
 </p>
 <ul>
- <li>Предоставлять минимум информации о перечисленных ресурсах, возможно ограничиваясь только ссылкой. (Не рекомендуется, так как это существенно ограничивает полезность описательной части и, в частности, проблематично для таких вещей, как документы, где, возможно, единственным заверенным содержимым будет только описательная часть ресурса List)<!-- Provide minimal information about the listed resources, possibly limited to only a link.  
+ <li>Предоставлять минимум информации о перечисленных ресурсах, возможно ограничиваясь только ссылкой. (Не рекомендуется, так как это существенно ограничивает полезность описательной части и, в частности, проблематично для таких вещей, как документы, где, возможно, единственным заверенным содержимым будет только описательная часть ресурса List)
+<!-- Provide minimal information about the listed resources, possibly limited to only a link.  
  (Not recommended as this severely limits the usefulness of the narrative and is particularly
  problematic for things like documents where the only attested content might be the List
  narrative) --></li>
- <li>Включать только "генерируемое" описание, чтобы устройство поиска могло просто сгенерировать собственный "текущий" список, запрашивая ресурсы по ссылками и игнорируя фиксированное описание. <!-- Include only "generated" narrative, so the retriever can easily generate their own "current"
+ <li>Включать только "генерируемое" описание, чтобы устройство поиска могло просто сгенерировать собственный "текущий" список, запрашивая ресурсы по ссылками и игнорируя фиксированное описание.
+<!-- Include only "generated" narrative, so the retriever can easily generate their own "current"
  view of the list by retrieving the referenced resources, ignoring the fixed narrative. --></li>
- <li>Сервер, на котором размещается список, может подписаться на все упоминаемые ресурсы и автоматически обновлять описательную часть при каждом изменении ресурсов, на которые даются ссылки (или, по крайне мере, делать это на полурегулярной основе)<!-- The server hosting the list can subscribe to all referenced resources and auto-update the
+ <li>Сервер, на котором размещается список, может подписаться на все упоминаемые ресурсы и автоматически обновлять описательную часть при каждом изменении ресурсов, на которые даются ссылки (или, по крайне мере, делать это на полурегулярной основе)
+<!-- The server hosting the list can subscribe to all referenced resources and auto-update the
  narrative each time one of the referenced resources changes (or at least on a semi-frequent basis) --></li>
 </ul>
 
@@ -97,10 +126,14 @@ possible approaches to work around this issue: -->
 <!-- If the list is empty, there could be several different reasons why this is so. For example: -->
 </p>
 <ul>
- <li>Нет соответствующих записей для этого списка (т. е. у пациента нет известных медикаментов/аллергий/истории)<!-- There are no appropriate entries for the list (i.e. the patient has no known medications/allergies/history) --></li>
- <li>Отправитель (человек или система) считал, что они не были связаны с этим контекстом медицинской помощи пациенту (как правило по причинам, связанным с неприкосновенностью частной жизни)<!-- The sender (human or system) deemed that these were not related to this context of patient care (usually for privacy related reasons) --></li>
- <li>Исходная система не поддерживает этот тип записей<!-- The source system doesn't support these type of entries --></li>
- <li>Информация для заполнения списка не была собрано - т. е. не опросили ("Not asked")<!-- The information to populate the list wasn't gathered - i.e. "Not asked" --></li>
+ <li>Нет соответствующих записей для этого списка (т. е. у пациента нет известных медикаментов/аллергий/истории)
+<!-- There are no appropriate entries for the list (i.e. the patient has no known medications/allergies/history) --></li>
+ <li>Отправитель (человек или система) считал, что они не были связаны с этим контекстом медицинской помощи пациенту (как правило по причинам, связанным с неприкосновенностью частной жизни)
+<!-- The sender (human or system) deemed that these were not related to this context of patient care (usually for privacy related reasons) --></li>
+ <li>Исходная система не поддерживает этот тип записей
+<!-- The source system doesn't support these type of entries --></li>
+ <li>Информация для заполнения списка не была собрано - т. е. не опросили ("Not asked")
+<!-- The information to populate the list wasn't gathered - i.e. "Not asked" --></li>
 </ul>
 <p>
 Учитывая эти возможности и общий и важный первый случай, исходные системы ДОЛЖНЫ предоставлять причину в случае пустого списка. Из-за важности этого случая необходимо использовать особое значение <a href="special-values.html">"nil-known"</a>, когда нет (существенных) записей в этом контексте медицинской помощи. Обратите внимание, что это понятие иногда описывается по-разному, например "пациент отрицает прием медикаментов" или "пациент не был в состоянии указать какую-либо значимую историю болезни".
