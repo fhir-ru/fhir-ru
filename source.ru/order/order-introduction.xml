@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 <div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Область применения и использование</h2>
 <p>
 Ресурс order описывает запрос на выполнение действия. Ожидается, что заказ приведет к одному или нескольким <a href="orderresponse.html">responses</a>, которые описывают результат обработки заказа. Ресурс order сосредоточен непосредственно на процессе запроса на действие для выполнения; само действие для выполнения описывается в отдельном ресурсе, который содержит данные по нему. Обратите внимание, что заказы часто называют "запросами", но здесь это название не используется, так как слово "запрос" (request) применяется в данной спецификации для другого.
 <!-- An order resource describes a request that an action be performed. An order is 
@@ -24,7 +24,7 @@ implicit in the order details.
 </p>
 </div>
 <div>
-<h2>Предпосылки и контекст<!-- Background and Context --></h2>
+<h2>Предпосылки и контекст</h2>
 <h3>Разделение заказа и деталей заказа<!-- Separation of Order and Order details --></h3>
 <p>
 В сфере здравоохранения информация о том, что некоторое действие было затребовано, часто рассеяно по всему контексту здравоохранения пациента. Например медицинская запись пациента будет часто включать список предписаний, которые были сделаны пациенту. При этом наличия самой записи о предписании не достаточно, чтобы создать обязательство по его выдаче. Большинство других вещей, которые могут быть заказаны, следуют этой же схеме.
@@ -50,31 +50,26 @@ of what is actually ordered are delegated to other resources.
 <h3>Использование ресурсов Order в RESTful-контексте <!-- Using Orders in a RESTful context --></h3>
 <p>
 В RESTful-контексте сервер функционирует как репозиторий запросов. Когда сервер принимает заказ, он его только сохраняет; нет прямого ответа на заказ. Какой-то другой процесс обнаруживает существование заказа, обрабатывает его и создает один или несколько ответов, когда заказ обработан. Как правило, эти ответы становятся доступными на том же сервере, что и заказ, чтобы клиент мог следить за результатом выполняющегося заказа. 
-<!-- 
-In a RESTful context, a server functions as a repository of requests. When the 
+<!-- In a RESTful context, a server functions as a repository of requests. When the 
 server accepts the order, it has only stored the order; there is no direct 
 response to the order. Some other process detects the existence of the order, 
 processes it, and creates one or more responses as the order is processed. 
 Usually, these responses are made available on the same server as the order, so that
-the client can monitor the result of the original order.
- --></p>
-<p>
-Клиент может определить, что заказ еще не был выполнен, выполнив поиск по ресурсам order и не найдя соответствующих ответов (см. ниже)
-<!-- 
-A client can determine that an order has not been performed by searching for order resources
+the client can monitor the result of the original order. --></p>
+<p>Клиент может определить, что заказ еще не был выполнен, выполнив поиск по ресурсам order и не найдя соответствующих ответов (см. ниже)
+<!-- A client can determine that an order has not been performed by searching for order resources
 with no matching responses (see below)
  --></p>
 <h3>Использование ресурсов Orders при обмене сообщениями<!-- Using Orders with messaging --></h3>
-<p>
-Для отправки заказов определены два кода сообщений о событии: синхронное и асинхронное.
+<p>Для отправки заказов определены два кода сообщений о событии: синхронное и асинхронное.
 <!-- 
 Two message event codes are defined for sending orders: synchronous and asynchronous.
  --></p>
 <p>
-В <a href="messaging.html#synchronous">синхронном сообщении</a> сообщение заказа (а именно <a href="extras.html#bundle">комплект (bundle)</a> с ресурсом <a href="messageheader.html">Message Header</a>, ресурсом order и ресурсом <i>detail</i> с деталями заказа - см. ниже) отправляется в систему, и она отвечает сообщением, которое включает <a href="orderresponse.html">ответ</a> 
+В <a href="messaging.html#synchronous">синхронном сообщении</a> сообщение заказа (а именно <a href="compartments.html#bundle">bundle</a> с ресурсом <a href="messageheader.html">Message Header</a>, ресурсом order и ресурсом <i>detail</i> с деталями заказа - см. ниже) отправляется в систему, и она отвечает сообщением, которое включает <a href="orderresponse.html">ответ</a> 
 (ресурс Message Header и ресурс Order Response наряду с дополнительной информацией в случае необходимости). Такой синхронный обмен сообщениями является простым, но подходит, если нужен только один ответ, и где этот ответ может быть создан в кратчайшие сроки.
 <!-- 
-In a  <a href="messaging.html#synchronous">synchronous message</a>, an order message (i.e. a <a href="extras.html#bundle">bundle</a> with a
+In a  <a href="messaging.html#synchronous">synchronous message</a>, an order message (i.e. a <a href="compartments.html#bundle">bundle</a> with a
 <a href="messageheader.html">Message Header</a> resource, an order resource and a <i>detail</i> resource for the order - see below) 
 is sent to a system, and it responds with a message that includes the <a href="orderresponse.html">response</a> 
 (a Message Header resource, and Order Response resource, along with additional details as appropriate). This 
@@ -106,10 +101,11 @@ in these contexts.
 </p>
 	</div>
 	<div>
-		<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+		<h2>Границы и связи</h2>
 		<p>
 		Как описано выше, разница между ресурсом Order и ресурсами домена order в том, что Order - это административный ресурс <b>рабочего процесса</b>, а не клинический ресурс. Он используется для управления запросами на выполнение и другими переходными состояниями "реальных" клинических заказов - <a href="deviceuserequest.html">DeviceUseRequest</a>, <a href="diagnosticorder.html">DiagnosticOrder</a>,  <a href="medicationprescription.html">MedicationPrescription</a>, <a href="nutritionorder.html">NutritionOrder</a> и <a href="procedurerequest.html">ProcedureRequest</a>. 
-<!--  As described above, the split between the Order resource and the domain order resources is that  Order is a <b>workflow</b> resource, not a clinical resource. It is used to manage fulfillment requests and other state transitions for the 'real' clinical orders - <a href="deviceuserequest.html">DeviceUseRequest</a>, <a href="diagnosticorder.html">DiagnosticOrder</a>,  <a href="medicationprescription.html">MedicationPrescription</a>, <a href="nutritionorder.html">NutritionOrder</a> and <a href="procedurerequest.html">ProcedureRequest</a>. -->
+<!--  
+As described above, the split between the Order resource and the domain order resources is that  Order is a <b>workflow</b> resource, not a clinical resource. It is used to manage fulfillment requests and other state transitions for the 'real' clinical orders - <a href="deviceuserequest.html">DeviceUseRequest</a>, <a href="diagnosticorder.html">DiagnosticOrder</a>,  <a href="medicationprescription.html">MedicationPrescription</a>, <a href="nutritionorder.html">NutritionOrder</a> and <a href="procedurerequest.html">ProcedureRequest</a>. -->
 </p>
 	</div>
 </div>
