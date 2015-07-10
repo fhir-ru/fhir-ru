@@ -29,8 +29,8 @@ specimen from which the result comes. -->
 <!-- There is rarely a need for more than two levels of nesting in the Observation tree. One known use is for organism sensitivities - see <a href="diagnosticreport-micro1.html">this example</a>. -->
 </li>
 <li>
-Приложения, работающие с полученными диагностическими отчетами, должны внимательно следить за обновлением отчетов и обеспечивать надлежащую обработку отмененных отчетов. 
-<!-- Applications consuming diagnostic reports must take careful note of updated reports, and ensure that retracted reports are appropriately handled. -->
+Приложения, работающие с полученными диагностическими отчетами, должны внимательно следить за обновлением (ревизией) отчетов и обеспечивать надлежащую обработку отмененных отчетов. 
+<!-- Applications consuming diagnostic reports must take careful note of updated (revised) reports, and ensure that retracted reports are appropriately handled. -->
 </li>
 <li>
 Для приложений, создающих диагностические отчеты, отчет не должен быть окончательным (иметь статус final), пока все отдельные элементы данных в нем не будут окончательными (final) или с внесенными поправками (amended). Если отчет отменен (retracted), все результаты должны быть отменены заменой каждого значения результата концептом "withdrawn" из внутреннего справочника <a href="special-values.html">"Special values"</a>

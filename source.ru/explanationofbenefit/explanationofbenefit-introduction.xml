@@ -1,18 +1,20 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Scope and Usage</h2>
-<p><b>This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft.</b></p>
+<h2>Область применения и использование</h2>
+<p><b>Данный ресурс еще не прошел надлежащую проверку рабочей группой FM. В настоящее время его следует считать черновым.<!-- This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft. --></b></p>
 <p>
-The ExplanationOfBenefit resource combines key information from a Claim, a ClaimResponse and optional Account information to inform 
-a patient of the goods and services rendered by a provider and the settlement made under the patients coverage in respect of that Claim.
+Ресурс ExplanationOfBenefit сочетает в себе ключевую информацию из Claim, ClaimResponse и, необязательно, Account для информирования пациента о товарах и услугах, оказанных поставщиком, и погашении, выполненном в соответствии со страховым покрытием пациента относительного этого Claim.
+<!-- The ExplanationOfBenefit resource combines key information from a Claim, a ClaimResponse and optional Account information to inform 
+a patient of the goods and services rendered by a provider and the settlement made under the patients coverage in respect of that Claim. -->
 </p>
 <p>
-This is the logical combination of the Claim, Claim Response and some Coverage accounting information
+Это логическая комбинация Claim, ClaimResponse и некоторой бухгалтерской информации о Coverage относительно отдельного плательщика, подготовленная для использования подписчиком и/или пациентом. Это не просто серия указателей на упомянутые модели содержимого, это физическое подмножество, ограниченное вынесенным судебным решением по отдельному плательщику, в котором подробно описаны оказанные услуги, суммы для выплаты и кому они предназначены, и, возможно, использованное и/или действующее страховое покрытие.
+<!-- This is the logical combination of the Claim, Claim Response and some Coverage accounting information
  in respect of a single payor prepared for consumption by the subscriber and/or patient. It is not 
  simply a series of pointers to referred-to content models, is a physical subset scoped to the 
  adjudication by a single payor which details the services rendered, the amounts to be settled and 
- to whom, and optionally the coverage used and/or remaining.
+ to whom, and optionally the coverage used and/or remaining. -->
 </p>
 <p>
 Todo
@@ -22,7 +24,7 @@ Todo
 
 <!-- (recommended): 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
 Explains how this resource relates to others. Particularly important is to differentiate between appropriate usages for related resources when an implementer might be confused about what to reference when.
 </p>
@@ -31,7 +33,7 @@ Explains how this resource relates to others. Particularly important is to diffe
 
 <!-- (optional):
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст</h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>
