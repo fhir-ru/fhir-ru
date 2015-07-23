@@ -22,43 +22,24 @@ Outstanding issues:
 
 <p>
 FHIR-ресурсы могут быть использованы для построения документов, которые представляют композицию: набор согласованной информации, которая является утверждением информации о здравоохранении, в частности включая клинические обследования и службы. 
-Документ - это иммутабельный набор ресурсов с фиксированным представлением, который создан и/или заверен людьми, организациями и устройствами.
-<!-- FHIR resources can be used to build documents that represent a composition:
-a set of coherent information that is a statement of healthcare information,
-particularly including clinical observations and services.
-A document is an immutable set of resources with a fixed presentation
-that is authored and/or attested by humans, organizations and devices. -->
+Документ - это иммутабельный набор ресурсов с фиксированным представлением, который создан и/или заверен людьми, организациями и устройствами. 
 </p>
 <p>
-Документами, построенными таким способом, можно обмениваться между системами и также сохранять в хранилище документов и системах управления, включая такие системы, как IHE XDS.
-<!-- Documents built in this fashion may be exchanged between systems and also
-persisted in document storage and management systems, including systems such as IHE
-XDS.  -->
+Документами, построенными таким способом, можно обмениваться между системами и также сохранять в хранилище документов и системах управления, включая такие системы, как IHE XDS. 
 </p>
 <p>
 Приложения, заявляющие о соответствии этому фреймворку, заявляют о соответствии "FHIR-документам".
-<!-- Applications claiming conformance to this framework claim to be conformant to
-"FHIR documents". -->
 </p>
 <p>
 FHIR-документы могут быть 'клиническими' (направленными на медицинскую информацию о пациенте), а также могут служить не клиническим целям (например FHIR Implementation guides, практические руководства, наглядные материалы для пациентов и т. п.). HL7 будет разрабатывать профили в будущем, давая дополнительное руководство по подходящему представлению клинических документов как в общем, так и в частных случаях клинических документов (например Consolidated CDA).
-<!-- FHIR documents may be 'clinical' (focused on patient healthcare information) but
-may also serve non-clinical purposes (e.g. FHIR Implementation guides, practice
-guidelines, patient handouts, etc.)
-HL7 will develop profiles in the future giving additional guidance on appropriate
-representation of clinical documents in general as well as specific types of clinical
-documents (e.g. Consolidated CDA). -->
 </p>
 
 <p>
 Обратите внимание, что FHIR устанавливает и формат этого документа, и <a href="documentreference.html">ресурс ссылки на документы (document reference resource)</a>. 
 FHIR-документы - для документов, которые созданы и собраны в FHIR, а ресурс ссылки на документы - для общих ссылок на pre-existing документы. 
-<!-- Note that FHIR defines both this document format and also a <a href="documentreference.html">document reference resource</a>.
-FHIR documents are for documents that are authored and assembled in FHIR, while the document reference resource is for
-general references to pre-existing documents. -->
 </p>
 <ul>
- <li><a href="document-example-dischargesummary.html">Пример discharge summary</a>: <a href="document-example-dischargesummary.xml.html">XML</a> или <a href="document-example-dischargesummary.json.html">JSON</a></li>
+ <li><a href="document-example-dischargesummary.html">Example discharge summary</a>: <a href="document-example-dischargesummary.xml.html">XML</a> or <a href="document-example-dischargesummary.json.html">JSON</a></li>
 </ul>
 
 <h2>Содержимое документа</h2>
@@ -68,105 +49,55 @@ general references to pre-existing documents. -->
  <a href="bundle-definitions.html#Bundle.type">типа</a> "document"
 с ресурсом <a href="composition.html">Composition</a> в качестве первого ресурса в комплекте, за которым следует серия других ресурсов, на которые имеются ссылки из ресурса <i>Composition</i>, который содержит правила, по которым они согласовываются между собой. Комплект собирает всё содержимое документа в единый XML или JSON-документ, который может быть подписан и администрирован по мере надобности. Ресурсы включают в себя и человекочитаемые, и обрабатываемые компьютером блоки. Кроме того, комплект может включать в себя <a href="http://www.w3.org/Style/CSS/Overview.en.html">каскадные таблицы стилей</a>, заявления о 
 <a href="provenance.html">происхождении (provenance statements)</a> и цифровую подпись.
-<!-- All documents have the same structure: a <a href="bundle.html">Bundle</a>
-of resources of <a href="bundle-definitions.html#Bundle.type">type</a> "document"
-that has a <a href="composition.html">Composition</a> resource as the first resource
-in the bundle, followed by a series of other resources referenced from the <i>Composition</i>
-resource that provides guidance on how they fit together. The bundle gathers all the content
-of the document into a single XML or JSON document which may be signed and managed as required.
-The resources include both human readable and computer processable portions. In addition, the bundle
-may include <a href="http://www.w3.org/Style/CSS/Overview.en.html">CSS stylesheets</a>,
-<a href="provenance.html">provenance</a> statements and a signature. -->
 </p>
 <p>
 Ресурс Composition является основой клинического документа. Он:
-<!-- The composition resource is the foundation of the clinical document. It: -->
 </p>
 <ul>
  <li>содержит именование и назначение, устанавливает контекст документа;</li>
  <li>несет ключевую информацию, такую как объект и автор, и кто утвердил документ;</li>
  <li>делит документ на серию разделов, которые содержат другие ресурсы, обозначенные в этой спецификации, которые несут содержимое.</li>
-<!--  <li>provides identity and its purpose, sets the context of the document</li>
- <li>carries key information such as the subject and author, and who attests to the document</li>
- <li>divides the document up into a series of sections that contain other resources identified in this specification that carry the content</li> -->
 </ul> 
 <p>
-Любой ресурс, на который есть прямая ссылка из Composition, ДОЛЖЕН быть включен в комплект во время сборки документа. Specifically, this means the following resource references:
-<!-- Any resource referenced directly in the Composition SHALL be included in the bundle when the document
-is assembled. Specifically, this means the following resource references: -->
-</p>
-<%res-ref-list Composition%>
-<p>
-Другие ресурсы, на которые ссылаются эти ресурсы, могут также быть включены в комплект, если такое решение примет система построения документа. Включение этих дополнительных ресурсов сделает документ больше, однако убережет приложения от необходимости получения связанных ресурсов, если они понадобятся им во время обработки документа. Таким образом решение о том, должны связанные ресурсы быть включены или нет, зависит от среды реализации. 
-<!-- Other resources that these referenced resources refer to may also be included in the
-bundle if the document construction system chooses to so do. Including these additional resources will
-make the document bigger, but will save applications from needing to retrieve the linked resources
-if they need them while processing the document. Thus, whether these linked resources should be included or
-not depends on the implementation environment. -->
+Любой ресурс, на который есть прямая ссылка из Composition, ДОЛЖЕН быть включен в комплект во время сборки документа. Другие ресурсы, на которые ссылаются эти ресурсы, могут также быть включены в комплект, если такое решение примет система построения документа. Включение этих дополнительных ресурсов сделает документ больше, однако убережет приложения от необходимости получения связанных ресурсов, если они понадобятся им во время обработки документа. Таким образом решение о том, должны связанные ресурсы быть включены или нет, зависит от среды реализации. 
 </p>
 <p>
 Комплект документов ДОЛЖЕН включать ресурсы только из этого списка:
-<!-- The document bundle SHALL only include resources on this list: -->
 </p>
 <ol>
  <li>Ресурс Composition и любые ресурсы, на которые есть прямая или косвенная (например рекурсивная) ссылка из него.</li>
  <li>Ресурс Binary, содержащий таблицу стилей (как описано выше).</li>
  <li>Provenance-ресурсы, у которых есть цель, которая является ресурсом, включенным в пункт №1.</li>
-<!--  <li>The Composition resource, and any resources directly or indirectly (e.g. recursively) referenced from it</li>
- <li>A Binary resource containing a stylesheet (as described below)</li>
- <li>Provenance Resources that have a target which is a resource included in item #1</li> -->
 </ol>
 <p>
 У документа имеется два ключевых идентификатора:
-<!-- There are two key identifiers on the document: -->
 </p>
 <ul>
  <li>Идентификатор документа (обязательный). Он находится в <i>Bundle.id</i> и является уникальным для этого экземпляра документа и никогда не используется повторно. </li>
  <li>Структурный идентификатор (необязательный). Он находится в <i>Composition.identifier</i>и является одинаковым для всех документов, содержащихся в композиции. </li> 
-<!--  <li>The document identifier (mandatory). This is found in <i>Bundle.id</i> and is unique for this instance of the document, and is never re-used</li>
- <li>The Composition identifier (optional). This is found in <i>Composition.identifier</i>, and is the same for all documents that are derived from this composition</li> -->
 </ul>
 
 <p>
 В документе указывается несколько дат:
-<!-- The document has several dates in it: -->
 </p>
 <ul>
  <li>Дата документа (обязательно). Она находится в <i>Bundle.meta.lastUpdated</i> и указывает, когда комплект документа был собран из лежащих в его основе ресурсов.</li>
  <li>Дата композиции (обязательно). Находится в <i>Composition.date</i>, это дата, когда автор написал документ логически.</li> 
  <li>Даты утверждения (необязательно). Находится в <i>Composition.attester.time</i> , это дата, когда документ был засвидетельствован очевидцами. Обычно это будет то же самое время, что и дата композиции, либо позднее.</li> 
  <li>Дата последнего изменения композиции (необязательно). Находится в <i>Composition.meta.lastUpdated</i> для композиции, и является датой последнего изменения композиции. Она должна быть &gt;= дате композиции.</li> 
-<!--  <li>The document date (mandatory). This is found in <i>Bundle.meta.lastUpdated</i> and identifies when the document bundle was assembled from the underlying resources</li>
- <li>The Composition date (mandatory). This is found in <i>Composition.date</i>, which is when the author wrote the document logically</li>
- <li>The Attestation dates (optional). This is found in <i>Composition.attester.time</i> and is when the document was witnessed by the attesters. This would usually be at the same time as the composition date or afterwards</li>
- <li>The Composition last modified time (optional). This is found in <i>Composition.meta.lastUpdated</i> for the composition, and is the last date of change of the composition. This must be &gt;= the composition date</li> -->
 </ul>
 <p>
 Комплекты документов могут быть подписаны электронными цифровыми подписями в соответствии с правилами, выложенными на странице <a href="signatures.html">цифровые подписи</a>. 
 Подпись ДОЛЖНА быть поставлена очевидцем из списка в документе и подпись ДОЛЖНА содержать элемент <a href="http://www.w3.org/TR/xmldsig-core/#sec-KeyInfo" target="_blank">KeyInfo</a>, содержащий элемент KeyName, значением которого является URI, совпадающий с bundle-элементом <i>base</i> + значение элемента <i>resource.id</i> для соответствующего attester-ресурса.
-<!-- Document Bundles may be signed using digital signatures following the rules laid out in
-the <a href="signatures.html">digital signatures</a> page.
-The signature SHOULD be provided by a listed attester of the document and the signature
-SHOULD contain a <a href="http://www.w3.org/TR/xmldsig-core/#sec-KeyInfo" target="_blank">KeyInfo
-element</a> that contains a KeyName element whose value is a URI that matches the bundle <i>base</i> + <i>resource.id</i>
-element value for the matching attester resource. -->
 </p>
 <p>
 Однажды собранный в комплект, документ становится иммутабельным - его содержимое больше не может быть изменено, а id документа не может быть повторно использован. Обратите внимание, что документ может быть представлен в XML либо JSON-формате, конвертироваться между ними или менять кодировку символов, и при этом оставаться тем же самым документом. Однако содержимое (набор утвержденных ресурсов и их порядок) и представление документа не могут быть изменены. Все дополнительные документы, вытекающие из одной композиции, ДОЛЖНЫ иметь различные идентификаторы документа. 
-<!-- Once assembled into a bundle, the document is immutable - its content can never be changed,
-and the document id can never be reused. Note that the document may be represented in either
-XML or JSON, and interconverted between these or have its character encoding changed, all
-the while remaining the same document. However the content (the set of attested resources,
-and their order) and the presentation of the document cannot change. Any additional
-documents derived from the same composition SHALL have a different document id. -->
 </p>
 
 <a name="presentation"> </a> 
 <h3>Представление документа</h3>
 <p>
 Когда документ представляют человеку, приложения должны показать объединенные описательные части следующих ресурсов в таком порядке:
-<!-- When the document is presented for human consumption, applications must present the
-collated narrative portions of the following resources in order: -->
 </p>
 <ol>
  <li>Ресурс Composition </li>
@@ -174,32 +105,22 @@ collated narrative portions of the following resources in order: -->
  <li>Ресурсы <a href="list.html">List</a>, на которые ссылаются непосредственно в <i>section.content</i></li>
 </ol>
 <p>
-Представлением документа называется "заверенное содержание" документа. В бандл могут быть включены дополнительные ресурсы (например те ресурсы, на которые идут ссылки из ресурса List, которые представляют собой section.content, ДОЛЖНЫ быть в бандле, также могут быть включены и другие дополнительные ресурсы, на которые они ссылаются), однако они не будут являться заверенным содержимым. Конкретно Composition.attester заверяет представленную форму документа.
-<!-- The presentation of the document is called the 'attested content' of the document. Additional
-resources can be included in the bundle (e.g. resources referenced from the List that represent the section.content
+The presentation of the document is called the 'attested content' of the document. Additional
+resources can be included in the bundle (e.g. the resources that the Lists for the section.content
 SHOULD be in the bundle, and other additional resources they reference can be included), but these are not 
-attested content. Specifically, the Composition.attester attests to the presented form of the document. -->
+attested content. Specifically, the Composition.attester attests to the presented form of the document.
 </p>
 <p>
 Описательная часть ресурса Composition должна суммировать важные части заголовка документа, которые требуются для установления клинического контекста документа (отличного от субъекта, который отображается сам по себе (in its own right). Фактически чтобы построить скомбинированную описательную часть, просто склейте все описательные &lt;div&gt;-фрагменты вместе. <!-- todo: title -->
-<!-- The Composition resource narrative should summarize the important parts of the document header that are required
-to establish clinical context for the document (other than the subject, which is displayed in its own
-right). To actually build the combined narrative, simply append all the narrative &lt;div&gt; fragments
-together. --> <!-- todo: title -->
 </p>
 <p>
 <a href="downloads.html#refimpl">XML Tools reference implementation</a> включает в себя XSLT-преобразование, конвертирующее документ в XHTML, готовый для показа в браузере.
-<!-- The <a href="downloads.html#refimpl">XML Tools reference implementation</a> includes a
-XSLT transform that converts a document into browser-ready XHTML. -->
 </p>
 
 
 <a name="css"></a>
 <p>
 В дополнение к <a href="narrative.html#css">базовым правилам оформления описательной части</a>, которые должны соблюдаться, документ может ссылаться или содержать один или больше таблиц стилей, включающих дополнительные стили, применяемые к объединенным описательным частям. Это достигается объявлением ссылок на таблицы стилей в фиде:
-<!-- In addition to the <a href="narrative.html#css">basic style rules about Narratives</a>, which
-must be followed, a document can reference or contain one or more stylesheets that contains additional styles that
-apply to the collated narrative. This is done by asserting stylesheet links on the feed: -->
 </p>
 <pre class="xml">
 &lt;Bundle xmlns=&quot;http://hl7.org/fhir&quot;&gt;  
@@ -211,33 +132,17 @@ apply to the collated narrative. This is done by asserting stylesheet links on t
 &lt;/Bundle&gt;  
 </pre>
 <p>
-Этот <code>URI</code> может быть абсолютной ссылкой на каскадную таблицу стилей или относительной ссылкой на бинарный ресурс, содержащий CSS-таблицу. Ссылки на таблицы стилей могут ссылаться только на CSS - другие формы таблиц стилей не допустимы.
-<!-- The <code>url</code> can be an absolute reference to a CSS stylesheet or
-a relative reference to a Binary resource that carries a
-CSS stylesheet. Stylesheet references can only refer to
-a CSS stylesheet - other forms of stylesheet are not acceptable. -->
+Этот URI может быть абсолютной ссылкой на каскадную таблицу стилей или относительной ссылкой на бинарный ресурс, содержащий CSS-таблицу. Ссылки на таблицы стилей могут ссылаться только на CSS - другие формы таблиц стилей не допустимы.
 </p>
 <p>
 Относительные (внутренние) ссылки ДОЛЖНЫ использоваться, если документ не безопасно просматривать без применения указанной таблицы стилей, т. к. другой адрес может быть не доступен просмотрщику из-за технических проблем или решений политики безопасности [policy decisions].
-<!-- Relative (internal) references SHOULD be used if the document is not
-safe to view without applying the specified stylesheet, as another location
-might not be available to the viewer due to technical problems or policy decisions. -->
 </p>
 <p>
-Никакие таблицы стилей, которые используются или на них дается ссылка, НЕ ДОЛЖНЫ менять представление таким образом, чтобы исказить клинический смысл содержимого.
-<!-- Any stylesheet referenced or used SHALL NOT alter the presentation in such a way 
-that it changes the clinical meaning of the content.  -->
+Any stylesheet referenced or used SHALL NOT alter the presentation in such a way 
+that it changes the clinical meaning of the content. 
 </p>
 <p>
 Если другое не указано в локальных торговых партнерских соглашениях, приложения, отображающие объединенную описательную часть, ДОЛЖНЫ использовать таблицы стилей, указанные в документе. Сторонам, входящие в торговое соглашение, поступающим иначе, следует очень тщательно рассмотреть последствия, которые  это действие будет иметь на их долгосрочную область действия обмена документом. Если стороны согласны использовать таблицы стилей, не содержащиеся в документе, тогда, возможно, они никогда не смогут совместно использовать свои документы безопасно в более широком контексте, таком как региональные или национальные EHR или глобальные персональные медицинские документы. 
-<!-- Unless otherwise agreed in local trading partner agreements, applications
-displaying the collated narrative SHOULD use the stylesheets specified by the
-document. Parties entering into a trading agreement to do otherwise should
-consider the implications this action will have on their long term scope for document
-exchange very carefully. If the parties agree to use stylesheets that are
-not contained in the document, then it may be that they will never be able
-to share their documents safely in a more general context, such as a regional
-or national EHR or a global personal health record. -->
 </p>
 
 
@@ -245,80 +150,45 @@ or national EHR or a global personal health record. -->
 
 <p>
 <a href="profiling.html">Профили документов</a> используются для описания документов конкретного назначения. Профили документов могут вводить правила о:
-<!-- <a href="profiling.html">Document profiles</a> are used to describe documents for a particular
-purpose. Document profiles may make rules about: -->
 </p>
 <ul>
  <li>Содержимом ресурса Composition, в том числе</li>
  <li>Структуре разделов в композиции</li>
  <li>Какие ресурсы должны быть включены в комплект наряду с ресурсами, на которые есть прямые ссылки в ресурсе Document</li>
-<!--  <li>The content of the Composition resource, including</li>
- <li>The structure of the sections in the composition</li>
- <li>Which resources are to be included in the bundle along with the resources that are directly referenced in the Document resource</li> -->
 </ul> 
 <p>
-Приложениям следует рассмотреть публикацию <a href="conformance.html">заявлений о соответствии</a>, в которых указываются конкретные документы, которые они поддерживают. Документы могут указывать профиль, которому они соответствуют, с помощью размещения тега профиля в элементе <i>feed.category</i> - см. <a href="resource.html#meta">Теги профилей [Profile Tags]</a> для обсуждения их использования.
-<!-- Applications should consider publishing <a href="conformance.html">conformance
-statements</a> that identify particular documents they support. Documents can
-identify a profile that they conform to by placing a profile tag in a <i>feed.category</i>
-element - see <a href="resource.html#meta">Profile Tags</a> for a discussion of the utility
-of this. -->
+Приложениям следует рассмотреть публикацию <a href="conformance.html">заявлений о соответствии</a>, в которых указываются конкретные документы, которые они поддерживают. Документы могут указывать профиль, которому они соответствуют, с помощью размещения тега профиля в элементе <i>feed.category</i> - см. <a href="extras.html#profile-tags">Теги профилей [Profile Tags]</a> для обсуждения их использования.
 </p>
 
 
 <h2>Обязательства при обработке документов</h2>
 <p>
 Авторы/конструкторы и обработчики Клинических документов - люди или программное обеспечение - имеют обязательства, которым они должны соответствовать.
-<!-- The authors/constructors and processors of Clinical Documents, whether human or software, have
-obligations that they must satisfy. -->
 </p>
 
 <h3>Обязательства автора/конструктора</h3>
 <p>
 Конструктор документа - это приложение, которое создает документ. Автор - это человек, организация или устройство, использующее конструктор для создания документа. Между собой, конструктор и автор могут создавать новые контент-ресурсы и/или делать сборки из уже существующих контент-ресурсов при выполнении своих задач. Также у них есть следующие обязанности:
-<!-- A document constructor is an application that creates a document. An author
-is a human, organization or device that uses the constructor to create a
-document. Between them, the constructor and the author may create new
-content resources and/or assemble already existing content resources while performing their tasks.
-They also have the following responsibilities: -->
 </p>
 <ul>
  <li>Гарантировать, что документ ДОЛЖЕН содержать допустимую композицию, которая соответствует правилам, описанным здесь, и ссылается только на другие допустимые ресурсы.</li>
  <li>Гарантировать, что содержимое документа ДОЛЖНО соответствовать всем объявленным <a href="profiling.html">Профилям</a> (см. ниже).</li>
  <li>Ручаться, что свидетели должным образом ознакомлены с представлением документа, который они заверяют.</li>
-<!--  <li>To assure that the document SHALL contain valid composition that conforms to the rules described here and that only links to other valid resources</li>
- <li>To assure that the content of document SHALL conform to any declared <a href="profiling.html">Profiles</a> (see below).</li>
- <li>Ensure that the attesters are properly aware of the presentation of the document to which they are attesting</li> -->
 </ul>
 
 <h3>Обязательства обработчика</h3>
 <p>
 Обработчик документа - это приложение и/или человек-пользователь, который получает документы и извлекает данных из них или принимает решения на их основе. Эти документы могут быть получены прямо из конструктора документов, доступного через систему управления документами или переадресованного третьей стороной. Обработчик документов обеспечивает гарантию того, что полученные документы обработаны и/или отображены в соответствии с данной спецификацией. Обработчик документов обязан гарантировать соблюдение следующих правил:
-<!-- A document processor is an application and/or human user that receives documents, and extracts data from them,
-or makes decisions because of them. The documents may be received directly from a document constructor, accessed
-via a document management system or forwarded by a third party. The document processor is responsible for
-ensuring that received documents are processed and/or rendered in accordance to this specification. A
-document processor has the obligation to assure that the following rules are followed: -->
 </p>
 <ul>
  <li>При сохранении/передаче документа любой метод может быть использован, пока документ комплекта может быть (пере)собран с достаточной целостностью для подтверждения достоверности цифровой подписи. </li>
  <li>При представлении описательной части документа ДОЛЖНЫ быть соблюдены правила, описанные выше.</li>
  <li>Ресурсы или данные из документа могут быть извлечены в дополнительных целях, однако такие данных больше не рассматриваются как заверенные автором документа.</li>
  <li>Показываются ли данные из документа пользователю, ДОЛЖЕН всегда быть способ для пользователей получить доступ к представлению оригинального документа.</li>
-<!--  <li>When storing/transmitting a document, any method may be used as long as the bundled document can be
-   (re-)assembled with sufficient integrity to validate a digital signature</li>
- <li>When presenting the narrative of the document, the rules described above SHALL be followed</li>
- <li>Resources or data from the document may be extracted for additional uses, but such data is no longer considered to be attested by the document author</li>
- <li>Wherever the data from the document is displayed to a user, there SHOULD always be a way for the user to access a presentation of the original document</li> -->
 
 </ul>
 <p>
 В дополнение к этим обязательствам, получатели документа СЛЕДУЕТ тщательно отслеживать источник документов за новыми документами, которые могут заменять существующие документы, в частности когда документы представляют композиции, которые были сокращены. Когда документы заменяются, они ДОЛЖНЫ либо отозвать данные, извлеченные из замененных документов, либо предупреждать пользователей при просмотре документа или данных, взятых из него.
-<!-- In addition to these obligations, document receivers SHOULD carefully track the source of
-documents for new documents that supersede existing documents, particularly when the documents
-represent compositions that have been retracted. When documents have been replaced,
-they SHOULD either withdraw data extracted from superseded documents or warn users when
-they view the document or data taken from it. -->
 </p>
 
 <a name="bundle"> </a>
@@ -326,9 +196,6 @@ they view the document or data taken from it. -->
 
 <p>
 Имеется несколько разных RESTful конечных точек, используемых при работе с документами. Использование различных конечных точек лучше всего описать, рассматривая последствия отправки сообщений на них:
-<!-- There are several different RESTful end-points used when working with documents.
-The use of the various end-points can be best be described by considering the consequences
-of posting to them: -->
 </p>
 <table class="grid">
  <tr> <td><b>End-Point</b></td> <td><b>Тип содержимого</b></td> <td><b>Описание</b></td> </tr>
@@ -336,45 +203,29 @@ of posting to them: -->
    
  <tr> <td>[baseurl]/Composition</td> <td>Composition Resource</td> <td>Обычная точка взаимодействия для управления ресурсами композиции. Она может использоваться во время комплектации документа, после разбиения документа на составные ресурсы или во время использования композиций отдельно от документов.</td> </tr>
    
- <tr> <td><a href="compartments.html#binary">[baseurl]/Binary</a></td> <td>Document Bundle</td> <td>Просто сохраняет весь документ в виде последовательности байтов и по запросу возвращает точно эту самую последовательность. Нет способа обнаружить содержимое в конечной точке /Binary, поэтому обычно это ассоциируется с <a href="documentreference.html">Document Reference</a>, чтобы приложения могли найти и обработать документ, хотя это и не обязательно.</td> </tr>
+ <tr> <td><a href="extras.html#binary">[baseurl]/Binary</a></td> <td>Document Bundle</td> <td>Просто сохраняет весь документ в виде последовательности байтов и по запросу возвращает точно эту самую последовательность. Нет способа обнаружить содержимое в конечной точке /Binary, поэтому обычно это ассоциируется с <a href="documentreference.html">Document Reference</a>, чтобы приложения могли найти и обработать документ, хотя это и не обязательно.</td> </tr>
    
  <tr> <td><a href="http.html#transaction">[baseurl]</a> (e.g. a transaction)</td> <td>Document Bundle</td> <td>Игнорирует факт, что комплект - это документ, и обрабатывает все ресурсы, которые он содержит как самостоятельные ресурсы. Клиентам НЕ СЛЕДУЕТ ожидать, что сервер, который получает документ, отправленный с помощью этого метода, будет в состоянии пересобрать документ точно. (Даже если сервер может пересобрать документ (см. ниже), нельзя ожидать, что результат будет в том же порядке и т. п. Соответственно, подпись документа, весьма вероятно, станет недействительной.</td> </tr>
-
-<!--  <tr> <td><b>End-Point</b></td> <td><b>Type of Content</b></td> <td><b>Description</b></td> </tr>
- <tr> <td>[baseurl]/Bundle</td> <td>Document Bundle</td> <td>This works like a normal end point
-   for managing a type of resource, but it works with whole document bundles - i.e. a read operation returns a bundle, an update gets a bundle and a search returns a bundle of bundles</td> </tr>
-
- <tr> <td>[baseurl]/Composition</td> <td>Composition Resource</td> <td>The normal end point for managing
-   composition resources. This can be used while building a document or after breaking a document up into
-   its constituent resources or when using compositions separately from documents</td> </tr>
-
- <tr> <td><a href="compartments.html#binary">[baseurl]/Binary</a></td> <td>Document Bundle</td> <td>Just store the entire document as
-   a sequence of bytes and return exactly that sequence when requested. There is no way to find content in the /Binary end-point,
-   so usually this would be associated with a <a href="documentreference.html">Document Reference</a> so that applications
-   can find and process the document, though this is not required</td> </tr>
-
- <tr> <td><a href="http.html#transaction">[baseurl]</a> (e.g. a transaction)</td> <td>Document Bundle</td> <td>Ignore the
-   fact that the bundle is a document and process all of the resources that it contains as individual resources. Clients SHOULD
-   not expect that a server that receives a document submitted using this method will be able to reassemble the document exactly. (Even if the
-   server can reassemble the document (see below), the result cannot be expected to be in the same order, etc.  Thus a document signature will
-   very likely be invalid.)</td> </tr> -->
    
+ <tr> <td><a href="messaging.html#mailbox">[baseurl]/$mailbox</a></td> <td>Document Bundle</td> <td>Отправляет документ на сервер для обработки. Конкретный метод обработки, который совершает сервер, является свободным выбором сервера. Он МОЖЕТ совершить одно или более из этих действий:
+  <ul>
+    <li>Переслать документ еще куда-то.</li>
+    <li>Разбить его на самостоятельно доступные ресурсы и сделать их доступными через RESTful-интерфейс.</li>
+    <li>Сохранить документ в его бинарной форме и сделать его доступным по /Binary и, возможно, также создать DocumentReference.</li>
+  </ul>
+  Сервер не обязан обрабатывать документ каким-то определенным образом. Клиент не знает, какой действие предпримет сервер, только что сервер принял ответственность за документ.
+  <br/><br/>
+  Профили реализации должны быть внимательны при определении правил о том, что случается, когда документ отправляется в почтовый ящик (mailbox), так как легко принять такие правила, что сервер не сможет соответствовать более чем одному профилю одновременно.
+  </td> </tr>
 </table>
 
 <p>
 Примечание: Несмотря на то, что эти конечные точки определены для использования с ресурсами документа и комплектами документов, их использование не обязательно. Документы можно передавать между системами с помощью любого желаемого способа.
-Кроме того, серверы и/или спецификации могут определять дополнительные <a href="operations.html">операции</a> для работы с документами помимо описанных выше возможностей.
-<!-- Note: While these end-points are defined for use with document resources and document bundles,
-it is not necessary to use them. Documents may be transferred between systems using any method desired.
-In addition, servers and/or specifications may define additional <a href="operations.html">operations</a>
-for handling documents beyond the options described above. -->
 </p>
 
 <h3>Генерация документа</h3>
 <p>
 Клиент может попросить сервер сгенерировать полностью скомплектованный документ из ресурса composition. Более подробную информацию см. на странице <a href="composition-operations.html">Generate Document Operation</a>.
-<!-- A client can ask a server to generate a fully bundled document from a composition resource.
-For details, see <a href="composition-operations.html">Generate Document Operation</a>. -->
 </p>
 
 

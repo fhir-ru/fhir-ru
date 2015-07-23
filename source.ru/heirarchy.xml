@@ -5,33 +5,33 @@ todo: compartments
 signatures.html
 
 -->
-<fhir>
-	<page title="Home" note="(map + search) - focus on useful links" filename="index.html">
-		<page title="Documentation" filename="documentation.html">
+<fhir> 
+  <page title="Главная" note="(map + search) - focus on useful links" filename="index.html">
+    <page title="Документация" filename="documentation.html">
 
-    <page title="Table of Contents" filename="toc.html"/>
-			<page title="License and Legal Terms" filename="license.html"/>
-			<page title="Community and Credits" filename="credits.html"/>
-			<page title="Version History" filename="history.html"/>
-			<page title="Outstanding Issues" filename="todo.html"/>
+      <page title="Содержание" filename="toc.html"/>
+      <page title="Лицензирование и условия использования" filename="license.html"/>
+      <page title="Наше сообщество и благодарности" filename="credits.html"/>
 
-			<page title="Summary" filename="summary.html"/>
-			<page title="Introduction" filename="overview.html">
-				<page title="Developer Introduction" filename="overview-dev.html"/>
+      <page title="Журнал версий" filename="history.html"/>
+      <page title="Нерешенные вопросы" filename="todo.html"/>
+      <page title="Краткий обзор" filename="summary.html"/>
+      <page title="Введение" filename="overview.html">
+        <page title="Введение для разработчика" filename="overview-dev.html"/>
 				<page title="Clinical Introduction" filename="overview-clinical.html"/>
 			</page>
-			<page title="FHIR Timelines" filename="timelines.html"/>
-			<page title="Inter-version Compatibility" filename="compatibility.html"/>
+	<page title="Хронология FHIR" filename="timelines.html"/>	        
+			<page title="Межверсионная совместимость" filename="compatibility.html"/>
 
 			<page type="resource" resource="Resource">
   			<page title="Definitions" filename="resource-definitions.html"/>
-      </page>
+			</page>
 			<page title="Conformance" filename="conformance-rules.html"/>
 			<page title="Life Cycle" filename="lifecycle.html"/>
 			<page title="References" filename="references.html">
 				<page title="Definitions" filename="references-definitions.html"/>
 			</page>
-			<page title="Compartment Based Access" filename="compartments.html">
+			<page title="Compartment Based Access" filename="extras.html">
 				<page title="Patient Compartment" filename="compartment-patient.html"/>
 				<page title="Encounter Compartment" filename="compartment-encounter.html"/>
 				<page title="RelatedPerson Compartment" filename="compartment-relatedPerson.html"/>
@@ -47,17 +47,16 @@ signatures.html
 				<page title="Examples" filename="extensibility-examples.html"/>
 				<page title="Detailed Description" filename="extensibility-definitions.html"/>
 				<page title="Registry" filename="extensibility-registry.html"/>
-			</page>
+      </page>
 			<page title="Formats" filename="formats.html">
-				<page title="XML" filename="xml.html"/>
-				<page title="JSON" filename="json.html"/>
+        <page title="XML" filename="xml.html"/>
+        <page title="JSON" filename="json.html"/>
 				<page title="RDF" filename="rdf.html"/>
-			</page>
+      </page>
 			<page title="Data Types" filename="datatypes.html">
 				<page title="Examples" filename="datatypes-examples.html"/>
 				<page title="Detailed Descriptions" filename="datatypes-definitions.html"/>
 				<page title="Mappings" filename="datatypes-mappings.html"/>
-				<page title="identifier Registry" filename="identifier-registry.html"/>
 			</page>
 			<page type="resource" resource="DomainResource"/>
 			<page title="Element Definition" filename="element.html">
@@ -71,10 +70,9 @@ signatures.html
 				<page title="ElementDefinition Detailed Descriptions" filename="elementdefinition-definitions.html"/>
 				<page title="ElementDefinition Mappings" filename="elementdefinition-mappings.html"/>
 			</page>
-			<page title="Ontology" filename="ontology.html"/>
 
-			<page title="Using Codes" filename="terminologies.html">
-				<page title="Systems" filename="terminologies-systems.html">
+      <page title="Использование кодовых значений" filename="terminologies.html">
+        <page title="Перечень кодовых систем" filename="terminologies-systems.html">
 					<page title="SNOMED CT" filename="snomedct.html"/>
 					<page title="RxNorm" filename="rxnorm.html"/>
 					<page title="LOINC" filename="loinc.html"/>
@@ -89,13 +87,13 @@ signatures.html
 					<pages type="valueset" filename="template-valueset.html"/>
 					<pages type="codesystem" filename="template-codesystem.html"/>
 				</page>
-				<page title="V2 Tables" filename="terminologies-v2.html" source="v2/template.html">
+        <page title="Таблицы V2" filename="terminologies-v2.html" source="v2/template.html">
 					<pages type="v2-table" filename="template-v2.html"/>
 				</page>
-				<page title="V3 Namespaces" filename="terminologies-v3.html" source="v3/template.html">
+        <page title="Пространства имен V3" filename="terminologies-v3.html" source="v3/template.html">
 					<pages type="v3-vocab" filename="template-v3.html"/>
 				</page>
-				<page title="Concept Maps" filename="terminologies-conceptmaps.html"/>
+        <page title="Концептуальные карты" filename="terminologies-conceptmaps.html"/>
 				<page title="Service" filename="terminology-service.html"/>
 			</page>
       
@@ -110,27 +108,27 @@ signatures.html
 			<page title="Status Code Map" filename="sc.html"/>
 			<page title="W5 Map" filename="w5.html"/>
       
-			<page title="Ballot Intro" filename="ballot-intro.html"/>
+      <page title="Голосование" filename="ballot-intro.html"/>
 		</page>
     
-		<page title="Implementation" filename="implementation.html">
+    <page title="Реализация" filename="implementation.html">
 			<page title="RESTful API" filename="http.html">
-				<page title="Search" filename="search.html"/>
-				<page title="_filter Parameter" filename="search_filter.html"/>
+        <page title="Поиск" filename="search.html"/>
+        <page title="Параметр _filter" filename="search_filter.html"/>
 			</page>
-			<page title="Operations" filename="operations.html">
-				<page title="Example" filename="op-example-request.html"/>
+      <page title="Операции" filename="operations.html">
+        <page title="Пример" filename="op-example-request.html"/>
 			</page>
 			<page title="Documents" filename="documents.html">
         <page title="CDA on FHIR" filename="cda-intro.html"/>
       </page>
-			<page title="Messaging" filename="messaging.html"/>
+      <page title="Обмен сообщениями" filename="messaging.html"/>
 			<page title="Services / SOA #1" filename="services.html"/>
 			<page title="Services / SOA #2" filename="soa.html"/>
 
 			<page title="Downloads" filename="downloads.html"/>
 			<page title="Managing Resource Identity" filename="managing.html"/>
-			<page title="Interaction Patterns" filename="pushpull.html"/>
+      <page title="Шаблоны взаимодействия" filename="pushpull.html"/>
       <page title="Managing Updates" filename="updates.html"/>
 			<page title="Support" filename="support.html"/>
 			<page title="Integrated Examples" filename="integrated-examples.html"/>
@@ -142,37 +140,37 @@ signatures.html
 				<page title="Examples" filename="profiling-examples.html"/>
 				<page title="Common Usages" filename="usecases.html"/>
 			</page>
-			<page title="Implementation Guides" filename="iglist.html">
+      <page title="Руководства по реализации" filename="iglist.html">
 				<page title="Argonaut Project" filename="argonauts.html"/>
-				<page title="Data Access Framework (DAF)" filename="daf.html">
-					<page title="DAF Introduction" filename="daf-intro.html"/>
-					<page title="DAF Security" filename="daf-security.html"/>
+        <page title="Фреймворк доступа к данным (DAF)" filename="daf.html">
+          <page title="Введение в DAF" filename="daf-intro.html"/>
+          <page title="Безопасность в DAF" filename="daf-security.html"/>
 					<page title="DAF Medication Profiles Usage" filename="daf-medicationusage.html"/>
 					<page title="DAF Outstanding Issues" filename="daf-outstandingissues.html"/>
 				</page>
 				<page title="EHRS Functional model - Record Lifecycle Events" filename="ehrs-rle.html"/>
 				<page title="Quality Improvement Core (QICore)" filename="qicore.html"/>
-				<page title="Structured Data Capture" filename="sdc.html">
-					<page title="SDC Introduction" filename="sdc-intro.html"/>
-					<page title="SDC Security" filename="sdc-security.html"/>
+        <page title="Сбор структурированных данных (SDC)" filename="sdc.html">
+          <page title="Введение в SDC" filename="sdc-intro.html"/>
+          <page title="Безопасность в SDC" filename="sdc-security.html"/>
 				</page>
 				<page title="Structured Data Capture - Data Element Exchange" filename="sdc-de.html"/>
 				<page title="US Laboratory Implementation Guides (USLab)" filename="uslab.html">
-					<page title="USLabOrder" filename="uslaborder.html">
-						<page title="Documentation" filename="uslaborder-guide.html"/>
-					</page>
+				<page title="US Laboratory Order Implementation" filename="uslaborder.html">
+					<page title="USLabOrder Documentation" filename="uslaborder-guide.html"/>
+				</page>
 					<page title="USLabResult" filename="uslabreport.html">
 						<page title="Documentation" filename="uslabresult-guide.html"/>
-					</page>
+				</page>
 					<page title="USLabPHReport" filename="uslabphreport.html">
 						<page title="Documentation" filename="uslabphresult-guide.html"/>
-					</page>
 				</page>
 			</page>
-		  <page title="Profile List" filename="profilelist.html"/>
-			<page title="Using Resources" filename="use.html"/>
 		</page>
-		<page title="Resources" filename="resourcelist.html">
+		  <page title="Перечень профилей" filename="profilelist.html"/>
+			<page title="Применение ресурсов" filename="use.html"/>
+		</page>
+		<page title="Ресурсы" filename="resourcelist.html">
   		<page title="Resource Guide" filename="resourceguide.html"/>
     </page>
 		<!--    Every Resource below has structure:
@@ -183,7 +181,7 @@ signatures.html
        [- example]
       mappings
       -->
-		<page title="Clinical" filename="clinical.html">
+    <page title="Клинические" filename="clinical.html">
 			<page type="resource" resource="AllergyIntolerance"/>
 			<page type="resource" resource="BodySite"/>
 			<page type="resource" resource="Condition"/>
@@ -215,7 +213,7 @@ signatures.html
 			<page type="resource" resource="FamilyMemberHistory"/>
 			<page type="resource" resource="VisionPrescription"/>
 		</page>
-		<page title="Administrative" filename="administration.html">
+    <page title="Административные" filename="administration.html">
 			<page type="resource" resource="Patient"/>
 			<page type="resource" resource="RelatedPerson"/>
 			<page type="resource" resource="Person"/>
@@ -248,13 +246,13 @@ signatures.html
 			<page type="resource" resource="Schedule"/>
 			<page type="resource" resource="Slot"/>
 		</page>
-		<page title="Infrastructure" filename="infrastructure.html">
+    <page title="Инфраструктурные" filename="infrastructure.html">
 			<page type="resource" resource="List"/>
 			<page type="resource" resource="Media"/>
 			<page type="resource" resource="Basic"/>
 			<page type="resource" resource="Other"/>
 			<page type="resource" resource="Provenance"/>
-			<page type="resource" resource="AuditEvent"/>
+      <page type="resource" resource="AuditEvent"/>
 			<page type="resource" resource="Binary"/>
 			<page type="resource" resource="Bundle"/>
 			<page type="resource" resource="Composition"/>
@@ -268,7 +266,6 @@ signatures.html
 			<!--    <page type="resource" resource="SecurityPrincipal"/>
     <page type="resource" resource="SecurityGroup"/>
     <page type="resource" resource="SecurityClaim"/>-->
-			<page type="resource" resource="ImplementationGuide"/>
 			<page type="resource" resource="Conformance"/>
 			<page type="resource" resource="StructureDefinition"/>
 			<page type="resource" resource="OperationDefinition"/>
@@ -277,9 +274,8 @@ signatures.html
 			<page type="resource" resource="ValueSet"/>
 			<page type="resource" resource="NamingSystem"/>
 			<page type="resource" resource="ConceptMap"/>
-			<page type="resource" resource="TestScript" />
 		</page>
-		<page title="Financial" filename="financial.html">
+    <page title="Финансовые" filename="financial.html">
 			<page type="resource" resource="Claim"/>
 			<page type="resource" resource="ClaimResponse"/>
 			<page type="resource" resource="Coverage"/>

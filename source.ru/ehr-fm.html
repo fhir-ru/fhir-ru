@@ -54,11 +54,11 @@ section</a> for a discussion of binding between FHIR and SAML --></td></tr>
 <tr><td>IN.2.1</td><td>Сохранение, обеспечение доступа и удаления данных (Data Retention, Availability and Destruction)</td>
 <td> RESTful-интерфейс FHIR предоставляет возможности точного управления сохранением, обеспечения доступа и удаления ресурсов. Возможности описаны в заявлении о соответствии (conformance statement)
 <!-- A FHIR RESTful server gives precise and fine-grained control of retention, availability and destruction of resources, all clearly described by the conformance statement --> </td></tr>
-<tr><td>IN.2.2</td><td>Контролируемые записи (Auditable Records)</td><td>FHIR предоставляет ресурс <a href="auditevent.html">AuditEvent</a> для отслеживания записей.<!-- FHIR provides the <a href="auditevent.html">AuditEvent</a> resource for auditable records. --></td></tr>
+<tr><td>IN.2.2</td><td>Контролируемые записи (Auditable Records)</td><td>FHIR предоставляет ресурс <a href="securityevent.html">SecurityEvent (Событие безопасности)</a> для отслеживания записей.<!-- FHIR provides the <a href="auditevent.html">AuditEvent</a> resource for auditable records. --></td></tr>
 <tr><td>IN.2.3</td><td>Синхронизация (Synchronization)</td><td>FHIR поддерживает синхронизацию с использованием стандартных методов web-публикации / подписки (web publication / 
-subscription methods) посредством <a href="compartments.html#bundle">Bundles</a>. Bundle-based pub/sub may be push or pull based, and can include all resources of a particular type, 
+subscription methods) посредством <a href="extras.html#bundle">Bundles</a>. Bundle-based pub/sub may be push or pull based, and can include all resources of a particular type, 
 or selected subsets of the resources. Кроме того, можно обмениваться группами ресурсов в bundles, поддерживая синхронизацию набора связанных ресурсов <!-- 
-FHIR supports synchronization using standard web publication/subscription methods via <a href="compartments.html#bundle">Bundles</a>. Bundle-based pub/sub may be push or pull based, and can include all resources of a particular type, or selected subsets of the resources. In addition, groups of resources can be exchanged in bundles, keeping a set of related resources in synchronization --></td></tr>
+FHIR supports synchronization using standard web publication/subscription methods via <a href="extras.html#bundle">Bundles</a>. Bundle-based pub/sub may be push or pull based, and can include all resources of a particular type, or selected subsets of the resources. In addition, groups of resources can be exchanged in bundles, keeping a set of related resources in synchronization --></td></tr>
 <tr><td>IN.2.4</td><td>Извлечение информации из электронных мед.записей (Extraction of Health Record Information)</td>
 <td> FHIR не предоставляет форматы отчетов (report formats), но обеспечивает полноценную реализацию функции поиска 
 (search) и получения / извлечения (retrieval) для построения таких отчетов <!-- FHIR does not provide report formats, but does provide extensive search and retrieval functions to assist with building such reports --></td></tr>
@@ -107,7 +107,7 @@ Each of these can be implemented in several different ways using FHIR -->
 <a href="auditevent.html">AuditEvent</a> и <a href="provenance.html">Provenance</a> гарантирует 
 выполнение основных функций управления записями определенными в функциональной модели ЭМК-систем:
 <!-- The combination of a properly secured and managed FHIR server, along with enforced use of the 
-<a href="auditevent.html">AuditEvent</a> and <a href="provenance.html">Provenance</a> resources
+<a href="securityevent.html">SecurityEvent</a> and <a href="provenance.html">Provenance</a> resources
 ensures that the core record management functions defined in the EHR-FM are met: -->
 </p>
 <ul>
