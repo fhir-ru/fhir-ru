@@ -16,6 +16,7 @@
 -->
 
 <%elheader base%>
+
 <h1>Элемент<!-- Element --></h1>
 
 <p>
@@ -39,9 +40,11 @@ or as part of a resource structure, have this base content: -->
 [%dt.constraints Element%]
 
 <p>
-This constraint exists to reduce syntactical variation in resource contents. 
+Данное ограничение добавлено для уменьшения синтаксического разброса в содержимом ресурсов. 
+Если элемент не содержит потомков, то он не включается в ресурс в противоположность необязательному присутствию без наличия какого-либо содержимого.
+<!-- This constraint exists to reduce syntactical variation in resource contents. 
 If an element has no children, then it is always omitted from the resource, 
-as opposed to optionally present without any content.
+as opposed to optionally present without any content. -->
 </p>
 
 </div>
