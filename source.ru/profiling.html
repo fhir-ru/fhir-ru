@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Profiling FHIR%]
+[%settitle Профилирование FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,180 +13,170 @@
 
 [%profilesheader base%]
 
-<h2>Profiling FHIR</h2>
+<h2>Профилирование FHIR</h2>
 
 <p>
-The base FHIR specification (this specification) describes a set of base resources, frameworks
-and APIs that are used in many different contexts in healthcare. However there is wide variability
-between jurisdictions and across the healthcare eco-system around
-practices, requirements, regulations, education and what actions are feasible
-and/or beneficial.
+Основная спецификация FHIR (данная спецификация) описывает набор базовых ресурсов, механизмов и интерфейсов, которые используются в различных контекстах в сфере здравоохранения. Однако имеются разногласия между юрисдикциями и экосистемой здравоохранения насчет методов, требований, норм, образования и того, какие действия являются выполнимыми и/или выгодными.
+<!-- The base FHIR specification (this specification) describes a set of base resources, frameworks
+and APIs that are used in many different contexts in healthcare. However there is wide variability 
+between jurisdictions and across the healthcare eco-system around 
+practices, requirements, regulations, education and what actions are feasible 
+and/or beneficial. -->
 </p>
 <p>
-For this reason, the FHIR specification is a "platform specification" - it creates
-a common platform or foundation on which a variety of different solutions are implemented.
+По этой причине спецификация FHIR является "платформенной спецификацией" - она создает общую платформу или фундамент, на котором реализуется множество различных решений.
+Вследствие этого, данной спецификации, как правило, требуется дальнейшая адаптация к конкретному контексту использования. Обычно такие адаптации означают:
+<!-- For this reason, the FHIR specification is a "platform specification" - it creates
+a common platform or foundation on which a variety of different solutions are implemented. 
 As a consequence, this specification usually requires further adaptation to particular
-contexts of use. Typically, these adaptations specify:
+contexts of use. Typically, these adaptations specify: -->
 </p>
 <ul>
- <li>Rules about which resource elements are or are not used, and what additional elements are added that are not part of the base specification</li>
- <li>Rules about which API features are used, and how</li>
- <li>Rules about which terminologies and used in particular elements</li>
- <li>Descriptions of how the Resource elements and API features map to local requirements and/or implementations</li>
+ <li>Правила о том, какие элементы ресурса использовать, какие не использовать, а также какие дополнительные элементы, которые не вошли в основную спецификацию,  добавлять<!-- Rules about which resource elements are or are not used, and what additional elements are added that are not part of the base specification --></li>
+ <li>Правила о том, какие свойства интерфейса использовать и каким образом<!-- Rules about which API features are used, and how --></li>
+ <li>Правила о том, какие справочники использовать в конкретных элементах<!-- Rules about which terminologies and used in particular elements --></li>
+ <li>Описание, каким образом элементы ресурса и свойства интерфейса сопоставляются с локальными требованиями и/или реализациями<!-- Descriptions of how the Resource elements and API features map to local requirements and/or implementations --></li>
 </ul>
 <p>
-Note that because of the nature of the healthcare eco-system, there may be multiple
-overlapping sets of adaptations - by healthcare domain, by country, by institution, and/or by vendor/implementation.
+Обратите внимание, что из-за особенности медицинской экосистемы может появиться множество перекрывающих друг друга адаптаций - по домену здравоохранения, по стране, по учреждению и/или по поставщику/реализации.
+<!-- Note that because of the nature of the healthcare eco-system, there may be multiple 
+overlapping sets of adaptations - by healthcare domain, by country, by institution, and/or by vendor/implementation.  -->
 </p>
-<a name="glossary"> </a>
-<h3>Glossary</h3>
 <p>
-FHIR defines a cascade of artifacts for this purpose:
-</p>
-<table class="grid">
- <tr>
-  <td><b>Artifact</b></td>
-  <td><b>Description</b></td>
-  <td><b><a href="daf.html">DAF</a> example</b></td>
- </tr>
- <tr>
-  <td>Implementation Guide</td>
-  <td>A coherent and bounded set of adaptations that are published as a single unit. Validation occurs within the contextz of the Implementation Guide</td>
-  <td><a href="daf.html">DAF IG</a></td>
- </tr>
- <tr>
-  <td>Package</td>
-  <td>A group of related adaptations that are published as a group within an Implementation Guide</td>
-  <td><a href="daf-medicationusage.html">DAF Medication Usage</a></td>
- </tr>
- <tr>
-  <td>Conformance Item</td>
-  <td>A single resource in a package that makes rules about how an implementation works. These are described below</td>
-  <td><a href="medicationprescription-daf.html">DAF Prescription</a></td>
- </tr>
-</table>
-<p>
-The term "profile" is general one that is used about either a "package" or an "item". 
-"Profiling" is a general term that describes the process of creating an implementation guide,
-or any of the resources found in one. 
-</p>
-
-<a name="conf-res"> </a>
-<h3>Conformance Resources</h3>
-
-<p>
-Typically, Implementation Guides both restrict and extend APIs, resources and terminologies. FHIR provides a set of resources that
+Обычно адаптации (либо сами реализации, либо спецификации - часто называемые "Руководствами по реализации")
+ограничивают и расширяют интерфейсы, ресурсы и справочники. FHIR предоставляет набор ресурсов, которые могут использоваться для отображения и совместного использования решений, которые были созданы, и позволяет реализаторам на их базе создавать полезные сервисы. Эти
+ресурсы известны как ресурсы соответствия. Эти ресурсы соответствия позволяют реализаторам:
+<!-- Typically, adaptations (either actual implementations or specifications - often called "Implementation Guides")
+both restrict and extend APIs, resources and terminologies. FHIR provides a set of resources that 
 can be used to represent and share the decisions that have been made, and allows implementers to build useful services from them. These
-resources are known as the conformance resources. These conformance resources allow implementers to:
+resources are known as the conformance resources. These conformance resources allow implementers to: -->
 </p>
 <ul>
- <li>Indicate that <a href="http.html">some API calls</a> are not used for a particular use , and provide additional details about how the API calls are used (<a href="conformance.html">Conformance</a> Resource)</li>
- <li>Add additional <a href="operations.html">operations</a> or <a href="search.html">search parameters</a> not in the base specification
-   (using the <a href="operationdefinition.html">OperationDefinition</a> resource or the <a href="searchparameter.html">SearchParameter</a> Resource</li>
- <li>Define how a particular structure (Resource, Extension or Data Type) is used (<a href="structuredefinition.html">StructureDefinition</a> Resource):
+ <li>Указывать, что <a href="http.html">некоторые вызовы интерфейса</a> не используются в определенных случаях, и предоставлять дополнительное описание по использованию интерфейса (ресурс <a href="conformance.html">Conformance</a>) <!-- Indicate that <a href="http.html">some API calls</a> are not used for a particular use , and provide additional details about how the API calls are used (<a href="conformance.html">Conformance</a> Resource) --></li>
+ <li>Вводить дополнительные <a href="operations.html">операции</a> и <a href="search.html">параметры поиска</a>, отсутствующие в базовой спецификации (с помощью ресурсов <a href="operationdefinition.html">OperationDefinition</a> и <a href="searchparameter.html">SearchParameter</a>)<!-- Add additional <a href="operations.html">operations</a> or <a href="search.html">search parameters</a> not in the base specification 
+   (using the <a href="operationdefinition.html">OperationDefinition</a> resource or the <a href="searchparameter.html">SearchParameter</a> Resource --></li>
+ <li>Задавать способ использования конкретной структуры (ресурса, расширения или типа данных) (ресурс <a href="structuredefinition.html">StructureDefinition</a>):<!-- 
+Define how a particular structure (Resource, Extension or Data Type) is used (<a href="structuredefinition.html">StructureDefinition</a> Resource):
+ --> 
     <ul>
-      <li>Describe how existing elements in resources are used</li>
-      <li>Identify existing elements that are not used</li>
-      <li>Define extensions that can be used in resources or data types</li>
+      <li>Описывать, каким образом используются существующие элементы ресурсов <!-- Describe how existing elements in resources are used --> </li>
+      <li>Указывать, какие именно элементы в ресурсах не используются <!-- Identify existing elements that are not used --> </li>
+      <li>Определять расширения для использования в ресурсах или типах данных <!-- Define extensions that can be used in resources or data types --> </li>
     </ul>
  </li>
- <li>Mix custom and standard terminologies and choose which codes from these to use for a particular use (<a href="valueset.html">Value Set</a> and StructureDefinition Resources)</li>
- <li>Map between local and standard terminologies or content models (<a href="conceptmap.html">Concept Map</a> Resource)</li>
- <li>Register system namespaces for identifiers and terminologies (<a href="namingsystem.html">NamingSystem</a> Resource)</li>
- <li>Describe and register specific Data Elements that are used across systems in a Data Dictionary (<a href="dataelement.html">DataElement</a> Resource)</li>
+ <li>Смешивать пользовательские и стандартные справочники и выбирать, какие коды из них использовать в конкретных случаях (ресурсы <a href="valueset.html">Value Set</a> и StructureDefinition)
+<!-- Mix custom and standard terminologies and choose which codes from these to use for a particular use (<a href="valueset.html">Value Set</a> and StructureDefinition Resources) --> </li>
+ <li>Устанавливать соответствие между локальными и стандартными справочниками или моделями содержания (ресурс <a href="conceptmap.html">Concept Map</a>)<!-- Map between local and standard terminologies or content models (<a href="conceptmap.html">Concept Map</a> Resource) --></li>
+ <li>Регистрировать пространства имен систем для идентификаторов и справочников (ресурс <a href="namingsystem.html">NamingSystem</a>)<!-- Register system namespaces for identifiers and terminologies (<a href="namingsystem.html">NamingSystem</a> Resource) --></li>
+ <li>Регистрировать и описывать особые элементы данных, которые используются в Словаре данных различных систем (ресурс <a href="dataelement.html">DataElement</a> )<!-- Describe and register specific Data Elements that are used across systems in a Data Dictionary (<a href="dataelement.html">DataElement</a> Resource) --></li>
 </ul>
 <p>
+Эти ресурсы необходимо использовать, придерживаясь правил, рассмотренных ниже, а также 
+следуя основным концепциям расширения, которые описаны в разделе <a href="extensibility.html">"Расширяемость"</a>.
+Для удобства реализаторов основные определения самой спецификации публикуются с помощью этих же самых ресурсов.
+<!-- 
 These resources need to be used as discussed below, and also
-following the basic concepts for extension that are described in <a href="extensibility.html">"Extensibility"</a>.
-For implementer convenience, the specification itself publishes its base definitions using these same resources.
+following the basic concepts for extension that are described in <a href="extensibility.html">"Extensibility"</a>. 
+For implementer convenience, the specification itself publishes its base definitions using these same resources. -->
 </p>
 
-<a name="profile-uses"> </a>
-<h3>Two uses of Profiles</h3>
+<h3>Два применения профилей<!-- Two uses of Profiles --></h3>
 <p>
-The <a href="conformance.html">Conformance</a> resource describes two different uses for profiles on resources:
+Ресурс <a href="conformance.html">Conformance</a> описывает два различных способа применения профилей ресурсов: профили ресурсов (Resource Profiles) и системные профили (System Profiles). Профили ресурсов задаются с помощью элемента <i>Conformance.rest.resource.profile</i>, а системные профили задаются с помощью элемента <i>Conformance.profile</i>.
+<!-- The <a href="conformance.html">Conformance</a> resource describes two different uses for profiles on resources:
 Resource Profiles and System Profiles. Resource Profiles are specified using <i>Conformance.rest.resource.profile</i> element 
-and System Profiles are specified using <i>Conformance.profile</i> element. 
+and System Profiles are specified using <i>Conformance.profile</i> element.  -->
 </p>
-<h4>Conformance.rest.resource.profile</h4>
+<h4>Профили ресурсов<!-- Resource Profiles --></h4>
 <p>
-These profiles describe the general features that are supported by the system for each kind of 
+Такие профили описывают общие свойства, поддерживаемые системой для каждого вида ресурса. Как правило, это супермножество всех возможных сценариев использования, реализованных системой. Это взгляд на функциональность системы с уровня ресурсов.
+<!-- These profiles describe the general features that are supported by the system for each kind of 
 resource. Typically, this is the superset of all the different use-cases implemented by the system. 
-This is a resource-level perspective of the system functionality. 
+This is a resource-level perspective of the system functionality.  -->
 </p>
-<h4>Conformance.profile</h4>
+<h4>Системные профили<!-- System Profiles --></h4>
 <p>
-These profiles describe the information handled/produced by the system on a per use case basis.
-Some examples of the uses for these kind of profiles:
+Такие профили описывают информацию, обрабатываемую/создаваемую системой на посценарной основе. Вот некоторые примеры применения системных профилей:
+<!-- These profiles describe the information handled/produced by the system on a per use case basis.
+Some examples of the uses for system profiles: -->
 </p>
 <ul>
- <li>A Laboratory service producing a set of different reports - general chemistry, blood count, etc. Typical labs would support several hundred different reports</li>
- <li>A care manager which handles a set of different types of care plans and associated clinical resources</li>
- <li>A medications formulary that handles several different levels of sophistication in its medication representations</li>
+ <li>Лабораторный сервис, создающий ряд различных отчетов - общая химия, анализ крови и т. п. Типичные лаборатории будут поддерживать несколько сотен различных отчетов<!-- A Laboratory service producing a set of different reports - general chemistry, blood count, etc. Typical labs would support several hundred different reports --></li>
+ <li>Управляющий медицинским обслуживанием (care manager), оперирующий множеством планов медицинского обслуживания (care plans) различного типа и связанных клинических ресурсов<!-- A care manager which handles a set of different types of care plans and associated clinical resources --></li>
+ <li>Формуляр медикаментов, оперирующий несколькими различными уровнями сложности представления медикаментов<!-- A medications formulary that handles several different levels of sophistication in its medication representations --></li>
 </ul> 
 <p>
-Typically, these profiles are a series of variations on the same set of resources - different use cases leading to handling 
+Как правило, эти профили являются рядом вариаций одного набора ресурсов - различные варианты использования, приводящие к обработке ресурсов, представляющей их по-разному. Все эти сценарии использования, приведенные выше, относятся к системе, производящей и публикующей данные, однако та же самая концепция применяется и к системам, которые являются потребителями данных. Например:
+<!-- Typically, these profiles are a series of variations on the same set of resources - different use cases leading to handling 
 the resources that represent them differently. These use-cases described above all pertain to system that produce and publish
-data, but the same concept applies to systems that consume data. For instance:
+data, but the same concept applies to systems that consume data. For instance: -->
 </p>
 <ul>
- <li>An expert service that provides analysis on several different sets of data conforming to a particular pattern - tests x,y and z with particular codes and units</li>
+ <li>Экспертная система, проводящая анализ нескольких различных множеств данных, соответствующих определенному паттерну - проверяет x,y и z с конкретными кодами и единицами<!-- An expert service that provides analysis on several different sets of data conforming to a particular pattern - tests x,y and z with particular codes and units --></li>
 </ul>
 <p>
-For producer and a consumer systems to exchange data successfully based on 
+Системам-производителям и системам-потребителям для успешного обмена данными на основе одного из таких поддерживаемых системой профилей не достаточно знать, что системам случается иметь системные профили, которые частично совпадают с интересующим сценарием использования; потребитель должен иметь возможность фильтровать общий набор ресурсов, доступных в системе-производителе, и иметь дело только с теми, которые относятся к данному сценарию использования.
+<!-- For producer and a consumer systems to exchange data successfully based on 
 one of these system supported profiles, it's not enough to know that the
 systems happen to have system profiles that overlap for the use case 
 of interest; the consumer must be able to filter the total set of resources
 made available by the producer system and deal only with the ones relevant
-to the use case. 
+to the use case.  -->
 </p>
 <p>
-As an example consider a laboratory system generating 1000s of reports 
+В качестве примера рассмотрим лабораторную систему, производящую тысячи отчетов в день. 1% этих отчетов будет некоторый эндокринный отчет, который система поддержки принятия решений знает как обрабатывать. Обе системы декларируют, что они поддерживают определенный эндокринный профиль, однако как экспертная система на деле находит те эндокринные отчеты, которые она умеет обрабатывать?
+<!-- As an example consider a laboratory system generating 1000s of reports 
 a day. 1% of those reports are a particular endocrine report that a 
 decision support system knows how to process. Both systems declare that 
 they support the particular endocrine profile, but how does the expert
-system actually find the endocrine reports that it knows how to process? 
+system actually find the endocrine reports that it knows how to process?  -->
 </p>
 <p>
-One possible option is for the expert system to receive every single 
+Одним из возможных решений для экспертной системы будет получать каждый отчет, приходящий из лабораторной системы, проверять его на соответствие профилю и затем принимать решение, обрабатывать ли его. Проверка, соответствует ли ресурс определенному профилю - это прямая операция (как вариант можно использовать <a href="downloads.html">предложенные для этого инструменты</a>), однако это очень неэффективный способ - экспертной системе придется получить и обработать в 100 раз больше ресурсов, чем нужно. Чтобы помочь потребителю находить подходящий набор отчетов для конкретного варианта использования, производитель ресурсов ДОЛЖЕН:
+<!-- One possible option is for the expert system to receive every single 
 report coming from the lab system, check whether it conforms to the 
 profile or not, and then decide whether to process it. Checking whether
 a resource conforms to a particular profile or not is a straight 
-forward operation (one option is to use the <a href="downloads.html">provided tools for this</a>),
+forward operation (on option is to use the <a href="downloads.html">provided tools for this</a>),
 but this is very inefficient way - the expert system has to receive 
 and process 100 times many resources as it uses. To help a consumer 
-find the correct set of reports for a use-case, a producer of  
-resources also SHALL, for any profile declared in Conformance.profile:
+find the correct set of reports for a use-case, the producer of the 
+resources also SHALL: -->
 </p>
 <ol>
- <li><a href="resource.html#meta">Mark resources</a> with profile assertions documenting the profile(s) they conform to (this enables indexing by the profile)</li>
- <li>(if a server) support searching by the <a href="search.html#profile">_profile parameter</a> for the declared profiles</li>
+ <li><a href="resource.html#meta">Помечать ресурсы</a> утверждениями о профилях, которым они соответствуют (что позволит делать индексирование по профилям)
+ <!-- <a href="resource.html#meta">Mark resources</a> with profile assertions documenting the profile(s) they conform to (this enables indexing by the profile) --></li>
+ <li>(для сервера) поддерживать поиск по <a href="search.html#profile">параметру _profile</a> для заявленных профилей<!-- (if a server) support searching by the <a href="search.html#profile">_profile parameter</a> for the declared profiles --></li>
 </ol>
 <p>
-Beyond these requirements, a producer of resources SHOULD ensure that any data that would reasonably be expected
-to conform to the declared profiles SHOULD be published in this form. 
+Помимо этих требований, производитель ресурсов ДОЛЖЕН гарантировать, что любые данные, от которых резонно будет ожидаться соответствие заявленным профилям, ДОЛЖНЫ быть опубликованы в этой форме.
+<!-- Beyond these requirements, a producer of resources SHOULD ensure that any data that would reasonably be expected
+to conform to the declared profiles SHOULD be published in this form.  -->
 </p>
 
 <a name="dstu"> </a>
 <blockquote>
 <p>
-DSTU note: there are many uninvestigated issues associated with this use of profiles. 
-HL7 is actively seeking feedback from users who experiment in this area, and users
-should be prepared for changes to features and obligations in this area in the future.
+Примечание к DSTU: имеется много неисследованных вопросов, связанных с системными профилями. HL7 ведет активный поиск обратной связи от пользователей, которые экспериментируют с системными профилями, и пользователи должны быть готовы к изменениям свойств и обязательств в этой области в будущем.
+<!-- DSTU note: there are many uninvestigated issues associated with system profiles. 
+HL7 is actively seeking feedback from users who experiment with system profiles, and users
+should be prepared for changes to features and obligations in this area in the future. -->
 </p>
 </blockquote>
 
 <a name="api"> </a>
-<h3>Extending and Restricting the API</h3>
+<h3>Сужение и расширение интерфейса<!-- Extending and Restricting the API --></h3>
 <p>
-A conformance resource lists the REST interactions (read, update, search, etc) that a server provides or that a client uses, along with 
+Ресурс Conformance перечисляет REST-взаимодействия  (read, update, search и т.п.), которые предлагает сервер или которые использует клиент, наряду с некоторой вспомогательной информацией для каждого. Может также использоваться для задания набора желаемого поведения (например в рамках спецификации или Request for Proposal). Единственное взаимодействие, которые серверы обязаны поддерживать, это само взаимодействие <a href="http.html#conformance">Conformance</a> - для получения заявления о соответствии сервера. Помимо этого, серверы и клиенты поддерживают и используют те API-вызовы, которые подходят в их случае.
+<!-- A conformance resource lists the REST interactions (read, update, search, etc) that a server provides or that a client uses, along with 
 some supporting information for each. It can also be used to define a set of desired behavior (e.g. as part of a specification or
 a Request for Proposal).  The only interaction that servers are required to support is the <a href="http.html#conformance">Conformance</a>
 interaction itself - to retrieve the server's conformance statement. Beyond that, servers and clients support and use whichever
-API calls are relevant to their use case.
+API calls are relevant to their use case. -->
 </p>
 <p>
-In addition to the operations that FHIR provides, servers may provide additional 
+В дополнение к операциям, которые предлагает FHIR, серверы могут предоставлять дополнительные операции, которые не входят в FHIR-спецификацию. Реализаторы могут безопасно делать это добавлением имени пользовательской операции с префиксом '$' к существующему URL-адресу FHIR, как это делает  <a href="operations.html">Operations framework</a>. Ресурс Conformance поддерживает определение того, что OperationDefinitions использует конкретные имена в точке взаимодействия. Если определены сервисы, которые не объявлены с помощью OperationDefinition, может быть допустимо использовать более длинные имена, сокращая шанс коллизии (и путаницы) с сервисами, объявленными в других интерфейсах. Базовая спецификация никогда не будет давать операциям имена, содержащие "." , поэтому реализаторам рекомендуется использовать некоторый подходящий префикс в их именах (например "ihe.someService") для уменьшения вероятности конфликта имен.
+<!-- In addition to the operations that FHIR provides, servers may provide additional 
 operations that are not part of the FHIR specification. Implementers can safely do this 
 by appending a custom operation name prefixed with '$' to an existing FHIR URL, as the <a href="operations.html">Operations
 framework</a> does. The Conformance resource supports defining what OperationDefinitions make use of particular
@@ -194,90 +184,101 @@ names on an end point.  If services are defined that are not declared using Oper
 appropriate to use longer names, reducing the chance of collision (and confusion) with services declared by
 other interfaces.  The base specification will never define operation names with a "." in them, so 
 implementers are recommended to use some appropriate prefix for their names (such as "ihe.someService")
-to reduce the likelihood of name conflicts. 
+to reduce the likelihood of name conflicts.  -->
 </p>
 <p>
-Implementations are encouraged, but not required, to define operations using the standard
+В реализациях поощряется, но не требуется определять операции с помощью стандартного фреймворка операций FHIR - то есть объявлять операции, используя ресурс OperationDefinition, однако некоторые операции могут включать форматы, которые не могут быть описаны этим способом.
+<!-- Implementations are encouraged, but not required, to define operations using the standard
 FHIR operations framework - that is, to declare the operations using the OperationDefinition
-resource, but some operations may involve formats that can't be described that way. 
+resource, but some operations may involve formats that can't be described that way.  -->
 </p>
 <p>
-Implementations are also able to extend the FHIR API using additional content types. 
+В реализациях также можно расширять FHIR API, используя дополнительные типы содержимого. К примеру, может быть полезно <a href="http.html#read">read</a> или <a href="http.html#update">update</a> ресурсы appointment с помощью формата на основе vCard. vCard определяет собственный MIME-тип, и эти дополнительные MIME-типы можно безопасно использовать в дополнение к тем, что определены в данной спецификации.
+<!-- Implementations are also able to extend the FHIR API using additional content types. 
 For instance, it might be useful to <a href="http.html#read">read</a> or <a href="http.html#update">update</a> 
 the appointment resources using a vCard based format. vCard defines its own mime type, and these additional mime types can 
-safely be used in addition to those defined in this specification.
+safely be used in addition to those defined in this specification. -->
 </p>
 
 <a name="resources"> </a>
-<h3>Extending and Restricting Resources</h3>
+<h3>Расширение и ограничение ресурсов<!-- Extending and Restricting Resources --></h3>
 
 <p>
+Расширение и ограничение ресурсов (соответствующее общему понятию "ограничение ресурса"; 'constraining a resource') выполняется с помощью ресурса "StructureDefinition", который представляет собой правила о том, каким образом используются элементы в ресурсе и где в ресурсе используются расширения.
+<!-- 
 Extending and restricting resources (collectively known as 'constraining a resource') is done with a 
-"StructureDefinition" resource, which is a statement of rules about
+"StructureDefinition" resource, which is a statement of rules about 
 how the elements in a resource are used, and where extensions are used in a resource.
+ --> 
 </p>
 
-<h3>Limitations of Use</h3>
+<h3>Границы применения<!-- Limitations of Use --></h3>
 <p>
+Возможности Structure Definitions по ограничению существующих ресурсов и типов данных несколько ограничены:
+<!-- 
 What Structure Definitions can do when they are constraining existing resources and datatypes is limited in some respects:
+ -->
 </p>
 <ul>
- <li>Profiles cannot break the rules established in the base specification (e.g. if the element cardinality is 1..1 in the base specification, a profile cannot say it is 0..1, or 1..*)</li>
- <li>Profiles cannot specify default values or meanings for elements</li>
- <li>Profiles cannot give more specific names to elements</li>
- <li>It must be safe to process a resource without knowing the profile</li>
+ <li>Профили не могут нарушать правила, установленные в базовой спецификации (например если кардинальное число элемента в базовой спецификации 1..1, профиль не может объявить его 0..1 или 1..*)<!-- Profiles cannot break the rules established in the base specification (e.g. if the element cardinality is 1..1 in the base specification, a profile cannot say it is 0..1, or 1..*) --></li>
+ <li>Профили не могут задавать элементам значения или смысл по умолчанию<!-- Profiles cannot specify default values or meanings for elements --></li>
+ <li>Профили не могут давать элементам более конкретные имена<!-- Profiles cannot give more specific names to elements --></li>
+ <li>Обрабатывать ресурс без знания его профиля должно быть безопасно<!-- It must be safe to process a resource without knowing the profile --></li>
 </ul>
 <p>
-The consequence of this is that if a profile mandates extended behavior that cannot
+Следствием этого является то, что если профиль разрешает расширенное поведение, которое нельзя игнорировать, он должен также разрешать использование <a href="extensibility.html#modifiers">расширения-модификатора</a>.
+Другими словами, это знание должно быть явным в экзепляре, а не подразумеваться в профиле.
+<!-- The consequence of this is that if a profile mandates extended behavior that cannot 
 be ignored, it must also mandate the use of a <a href="extensibility.html#modifiers">modifier extension</a>. 
 Another way of saying this is that knowledge must be explicit in
-the instance, not implicit in the profile. 
+the instance, not implicit in the profile.  -->
 </p>
 <p>
-As an example, if a profile wished to describe that a <a href="procedure.html">Procedure</a>
+В качестве примера, если профиль желает описать, что ресурс <a href="procedure.html">Procedure</a> отрицается (например утверждение, что это никогда не случалось), он не может просто сказать в самом профиле, что это то, что значеит ресурс; вместо этого профиль должен сказать, что этот ресурс должен иметь расширение, которое представляет это знание.
+<!-- As an example, if a profile wished to describe that a <a href="procedure.html">Procedure</a>
 resource was being negated (e.g. asserting that it never happened), it could not simply say 
 in the profile itself that this is what the resource means; instead, the profile must 
-say that the resource must have an extension that represents this knowledge. 
+say that the resource must have an extension that represents this knowledge.  -->
 </p>
 <p>
-There is the facility to mark resources that they can only be safely understood by 
+Существует средство для обозначения ресурсов, что они могут быть безопасно поняты только при таком способе обработки, когда известен и понятен набор опубликованных правил. Для получения дополнительной информации см. <a href="resource.html#ruleset">Restricted Understanding of Resources</a>.
+<!-- There is the facility to mark resources that they can only be safely understood by 
 a process that is aware of and understands a set of published rules. For more information,
-see <a href="resource.html#ruleset">Restricted Understanding of Resources</a>.
+see <a href="resource.html#ruleset">Restricted Understanding of Resources</a>. -->
 </p>
+ 
 
-
-<h3>Using Structure Definitions</h3>
+<h3>Применение Structure Definitions<!-- Using Structure Definitions --></h3>
 <p>
-A "constraint" Structure Definition specifies a set of restrictions on the content of a FHIR resource or data type.
+Ограничивающее Structure Definition устанавливает ряд ограничений для содержимого FHIR-ресурса или типа данных. Заданное structure definition идентифицируются по своему каноническому URL-адресу, который ДОЛЖЕН быть тем URL, по которому он был опубликован. О том, каким образом используется элемент, можно делать следующие утверждения:
+<!-- A "constraint" Structure Definition specifies a set of restrictions on the content of a FHIR resource or data type.
 A given structure definition is identified by its canonical URL, which SHOULD be the URL at which it
-is published. The following kinds of statements can be made about how an element is used:
+is published. The following kinds of statements can be made about how an element is used: -->
 </p>
 <ul>
- <li>Restricting the cardinality of the element. e.g. the base might allow 0..*, and a particular application might support 1..2</li>
- <li>Ruling out use of an element by setting its maximum cardinality to 0</li>
- <li>Restricting the contents of an element to a single fixed value</li>
- <li>Making additional invariants on the content of nested elements within the resource (expressed as XPath statements)</li>
- <li>Restricting the types for an element that allows multiple types</li>
- <li>Requiring a typed element or the target of a resource reference to conform to another structure profile (declared in the same profile, or elsewhere)</li>
- <li>Specifying a binding to a different terminology value set (see below)</li>
- <li>Providing alternative definitions, comments/usage notes and examples for the elements defined in a Resource to explain how they are used in the context of the Profile</li>
- <li>Providing more specific or additional mappings (e.g. to v2 or v3) for the resource when used in a particular context</li>
- <li>Declaring that one or more elements in the structure must be 'supported' (see below)</li>
+ <li>Уменьшение кардинального числа элемента, например базовая спецификация может разрешать 0..*, а конкретное приложение может поддерживать 1..2<!-- Restricting the cardinality of the element. e.g. the base might allow 0..*, and a particular application might support 1..2 --></li>
+ <li>Исключение элемента из использования  установкой его максимального значения кардинального числа в 0<!-- Ruling out use of an element by setting its maximum cardinality to 0 --></li>
+ <li>Ограничение содержимого элемента одним фиксированным значением<!-- Restricting the contents of an element to a single fixed value --></li>
+ <li>Создание дополнительных инвариантов для содержимого вложенных элементов внутри ресурса (выраженных в виде XPath-утверждений)<!-- Making additional invariants on the content of nested elements within the resource (expressed as XPath statements) --></li>
+ <li>Ограничение доступных типов данных для элемента, в котором допустимы несколько типов<!-- Restricting the types for an element that allows multiple types --></li>
+ <li>Требование к типизированному элементу или целевому объекту ссылки ресурса соответствовать другому структурному профилю (объявленному в этом же профиле либо в другом месте)<!-- Requiring a typed element or the target of a resource reference to conform to another structure profile (declared in the same profile, or elsewhere) --></li>
+ <li>Указание привязки к другому терминологическому набору значений (см. ниже)<!-- Specifying a binding to a different terminology value set (see below) --></li>
+ <li>Предоставление альтернативных определений и примеров для элементов, заданных в ресурсе, для объяснения, каким образом они используются в контексте этого профиля<!-- Providing alternative definitions and examples for the elements defined in a Resource to explain how they are used in the context of the Profile --></li>
+ <li>Предоставление более конкретных или дополнительных таблиц соответствия (например с v2 или v3) для ресурса при использовании в определенном контексте<!-- Providing more specific or additional mappings (e.g. to v2 or v3) for the resource when used in a particular context --></li>
+ <li>Объявление, что один или несколько элементов в структуре должны быть 'поддержаны' (см. ниже)<!-- Declaring that one or more elements in the structure must be 'supported' (see below) --></li>
 </ul>
 <p>
-Any changed definitions SHALL be restrictions that are consistent with the
+Все эти измененные определения ДОЛЖНЫ быть ограничениями, которые не противоречат правилам, установленным в базовом ресурсе в спецификации FHIR. Обратите внимание, что некоторые из этих ограничений могут быть обеспечены принудительно с помощью инструментов (и обеспечиваются средствами FHIR), однако другие (например регулирование изменений описательного текста) не могут быть автоматически применены.
+<!-- All of these changed definitions SHALL be restrictions that are consistent with the 
 rules defined in the base resource in the FHIR Specification. Note that some of 
 these restrictions can be enforced by tooling (and are by the FHIR tooling), but 
-others (e.g. alignment of changes to descriptive text) cannot be automatically enforced.
+others (e.g. alignment of changes to descriptive text) cannot be automatically enforced. -->
 </p>
 <p>
-Note that structure definitions cannot 'remove' mappings and constraints that are defined in the base structure, 
-but for purposes of clarity, they can refrain from repeating them.
-</p>
-<p>
-A structure definition contains a linear list of element declarations. The inherent
-nested structure of the elements is derived from the <i>path</i> value of each element.
-For instance, a sequence of the element paths like this:
+Structure definition содержит линейный список объявлений элементов. Присущая вложенная структура элементов происходит из значения <i>path</i> каждого элемента. К примеру, такая последовательность путей элементов
+<!-- A structure definition contains a linear list of element declarations. The inherent 
+nested structure of the elements is derived from the <i>path</i> value of each element. 
+For instance, a sequence of the element paths like this: -->
 </p>
 <ul>
  <li>Root</li>
@@ -286,7 +287,8 @@ For instance, a sequence of the element paths like this:
  <li>Root.childB</li>
 </ul>
 <p>
-defines the following structure:
+определяет следующую структуру:
+<!-- defines the following structure: -->
 </p>
 <pre class="xml">
  &lt;Root&gt;
@@ -297,86 +299,102 @@ defines the following structure:
  &lt;/Root&gt;
 </pre>
 <p>
-or its JSON equivalent. The structure is coherent - children are never
-implied, and the path statements are always in order. The element list is
+или ее JSON-эквивалент. Структура является логически последовательной - потомки никогда не подразумеваются, а пути всегда идут по порядку. Перечень элементов - это линейный список, а не явно вложенные элементы, так как определения элементов часто используются повторно в нескольких местах внутри одного definition, и это повторное использование проще осуществлять с плоской структурой.
+<!-- or its JSON equivalent. The structure is coherent - children are never 
+implied, and the path statements are always in order. The element list is 
 a linear list rather than being explicitly nested because element definitions
 are frequently re-used in multiple places within a single definition, and this re-use
-is easier with a flat structure.
+is easier with a flat structure. -->
 </p>
 
 <a name="snapshot"> </a>
 <h3>Differential vs Snapshot</h3>
-
+ 
 <p>
-Structure Definitions may contain either a differential statement, a snapshot
-statement or both.
+Structure Definitions могут содержать либо differential statement, либо snapshot statement, либо оба.
+<!-- Structure Definitions may contain either a differential statement, a snapshot
+statement or both. -->
 </p>
-<p>Differential statements describe only the differences that they make
-relative to another structure definition (which is most often the base FHIR resource or data type).
+<p>
+Differential statements описывают только те изменения, которые они задают по отношению к другому structure definition (которым чаще всего является базовый FHIR-ресурс или тип данных). Например профиль может делать один из элементов обязательным (кардинальное число 1..1). В этом случае дифференциальная структура будет содержать один элемент и его путь, сделанный обязательным, и кардинальное число.
+Больше ничего не заявляется - вся остальная структура подразумевается (примечание: это означает, что дифференциальный профиль может быть разреженным и указывать только те элементы, которые были изменены, без необходимости перечисления всей структуры).
+<!-- 
+Differential statements describe only the differences that they make
+relative to another structure definition (which is most often the base FHIR resource or data type). 
 For example, a profile may make a single element mandatory (cardinality 1..1).
-In the case of a differential structure, it will contain a single element
+In the case of a differential structure, it will contain a single element 
 with the path of the element being made mandatory, and a cardinality statement.
 Nothing else is stated - all the rest of the structural information is implied (note:
-this implies that a differential profile can be sparse, and only
+this implies that a differential profile can be sparse, and only 
 mention the elements that are changed, without having to list the
 full structure).
+ -->
 </p>
 <p>
-In order to properly understand a differential structure, it must be
+Чтобы правильно понять дифференциальную структуру, ее необходимо применить к structure definition, на котором она основывается. Чтобы предотвратить инструменты от необходимости поддерживать эту операцию (которая требует большого объема вычислений - и не возможна, если базовая структура недоступна), StructureDefinition может также хранить "снимок" - полностью вычисляемая форма структура, которая не зависит ни от какой другой структуры. Проект FHIR предлагает инструменты для распространенных платформ, которые могут восстановить снимок из дифференциала. 
+<!-- In order to properly understand a differential structure, it must be 
 applied to the structure definition on which it is based. In order to save
-tools from needing to support this operation (which is computationally intensive - and
-impossible if the base structure is not available), a StructureDefinition
+tools from needing to support this operation (which is computationally intensive - and 
+impossible if the base structure is not available), a StructureDefinition 
 can also carry a "snapshot" - a fully calculated form of the
 structure that is not dependent on any other structure. The FHIR
 project provides tools for the common platforms that can populate
-a snapshot from a differential (note that this tool generates complete 
-verbose snapshots; it does not support suppressing mappings or constraints).
+a snapshot from a differential. -->
 </p>
 <p>
-StructureDefinitions can contain both a differential and a snapshot view.
-In fact, this is the most useful form - the differential
+StructureDefinitions, содержащие и дифференциальный вид, и снимок.
+По сути, это самая распространенная форма - дифференциальная 
+форма используется в процессе авторской разработки (authoring process), в то время как снимок используется в инструментах реализации. Ресурсам StructureDefinition, применяемым в операционных системах, следует всегда иметь восстановленный снимок.
+<!-- StructureDefinitions can contain both a differential and a snapshot view. 
+In fact, this is the most useful form - the differential 
 form serves the authoring process, while the snapshot serves
 the implementation tooling. StructureDefinition resources used in operational
-systems should always have the snapshot view populated.
+systems should always have the snapshot view populated. -->
 </p>
 
 <a name="slicing"> </a>
-<h3>Slicing</h3>
+<h3>Нарезка (Slicing)</h3>
 <p>
-One common feature of constraining Structure Definitions is to take an element that may occur more than once (e.g. in a list), <!-- What about slicing type choices? -->
-and split the list into a series of sublists, each with different restrictions on the elements in the sublist with associated
-additional meaning. In FHIR, this operation is known as "Slicing" a list. It is common to
-“slice” a list into sub-lists containing just one element, effectively putting constraints on each element in the list.
+Одна из распространенных функций constraining Structure Definitions - это взять элемент, который может появиться больше одного раза (например список) и разбить этот список на последовательность подсписков, каждый со своими ограничениями на элементы в подсписке с ассоциированным дополнительным значением. В FHIR эта операция называется "нарезка" ("Slicing") списка. Общепринято "нарезать" список на подсписки, содержащие по одному элементу, эффективно накладывая ограничения на каждый элемент в списке.
+<!-- One common feature of constraining Structure Definitions is to take an element that may occur more than once (e.g. in a list), --> <!-- What about slicing type choices? -->
+<!-- and split the list into a series of sublists, each with different restrictions on the elements in the sublist with associated 
+additional meaning. In FHIR, this operation is known as "Slicing" a list. It is common to 
+“slice” a list into sub-lists containing just one element, effectively putting constraints on each element in the list. -->
 </p>
 <p>
-Here is an example to illustrate the process:
+Вот пример для иллюстрации этого процесса:
+<!-- Here is an example to illustrate the process: -->
 </p>
 <img alt="Slicing diagram" src="slicing.png" width="461" height="353"/>
 <p>
-In this example, the base structure definition for the resource defines 
-the "related" element which refers to
+В этом примере базовое structure definition для ресурса определяет элемент "related", который относится к другому Observation, который связан с основным Observation и который может появляться многократно. Каждый "related" элемент имеет элемент "type", обозначающий природу этого взаимоотношения (компонент, замещение, производное и т.п.), и элемент "target", указывающий непосредственно на observation. На этой диаграмме для удобства содержимое элемента "target" показано во внутреннем прямоугольнике, вместо того чтобы показать целевую ссылку явно. Также, чтобы избежать лишнего загромождения в этом упрощенном примере, атрибут "name" в Observation показан просто как код, а не полный CodeableConcept.
+<!-- 
+In this example, the base structure definition for the resource defines the "related" element which refers to 
 another Observation which is related to the main Observation and which may occur
-multiple times. Each "related" element has a "type" element specifying the nature
+multiple times. Each "related" element has a "type" element specifying the nature 
 of the relationship (component, replacement, derivation etc.), and a "target" element
-which identifies the actual observation. In this diagram, for convenience, the contents
-of the target element are shown in the inner box instead of the showing the target
-reference explicitly. Also, to avoid adding clutter in this simplified example,
+which identifies the actual observation. In this diagram, for convenience, the contents 
+of the target element are shown in the inner box instead of the showing the target 
+reference explicitly. Also, to avoid adding clutter in this simplified example, 
 the "name" attribute of Observation is shown as just a code not a full CodeableConcept.
+ -->
 </p>
 <p>
-The structure definition for Blood Pressure splits the related element list into
+Structure definition для Blood Pressure разбивает связанный список элементов на 2 подсписка из одного элемента каждый: элемент systolic и элемент diastolic. Каждый из этих элементов имеет фиксированное значение для типа элемента, и structure definition также закрепляет содержимое целевого observation, указывая постоянный LOINC-код для элемента name и устанавливая для обоих значение типа Quantity. Это процесс также называется "нарезка" (slicing), а элементы Systolic и Diastolic - "срезы" (slices).
+<!-- The structure definition for Blood Pressure splits the related element list into 
 2 sublists of one element each: a systolic element, and a diastolic element. Each of these
-elements has a fixed value for the type element, and the structure definition also fixes the
+elements has a fixed value for the type element, and the structure definition also fixes the 
 contents of the target observation as well, specifying a fixed LOINC code for
 the name and specifying that both have a value of type Quantity. This process
-is known as "slicing" and the Systolic and Diastolic elements are called "slices".
+is known as "slicing" and the Systolic and Diastolic elements are called "slices". -->
 </p>
 
 <p>
-Note that when the resource is exchanged, the wire format that is exchanged is not
-altered by the constraining definition. This means that the item profile names defined in the
-structure definition ("systolic", etc. in this example) are never exchanged. A resource
-instance looks like this:
+Обратите внимание, что при обмене ресурсом, проводной формат обмена не изменяется constraining definition. Это означает, что имена элементов, определенные в structure definition (в этом примере "systolic")  никогда не меняются. Экземпляр ресурса выглядит следующим образом:
+<!-- Note that when the resource is exchanged, the wire format that is exchanged is not 
+altered by the constraining definition. This means that the item profile names defined in the 
+structure definition ("systolic", etc. in this example) are never exchanged. A resource 
+instance looks like this: -->
 </p>
 <pre>
  &lt;Observation&gt;
@@ -392,72 +410,91 @@ instance looks like this:
  &lt;/Observation&gt;
 </pre>
 <p>
-In order to determine that the first related item corresponds to "Systolic" in
-the structure definition, so that it can determine which additional constraints for a sub-list the item conforms,
+Для того чтобы определить, что первый связанный элемент соответствует "Systolic" в structure definition, так чтобы он мог установить, каким дополнительным ограничениям для подсписка этот элемент соответствует, система проверяет значения этих элементов. В этом случае можно использовать элемент "name" в целевом ресурсе, к которому относится эта ссылка, для определения, какому срезу (slice) он относится. Этот элемент называется "дискриминатор" (классифицирующая функция, “discriminator”).
+<!-- In order to determine that the first related item corresponds to "Systolic" in
+the structure definition, so that it can determine which additional constraints for a sub-list the item conforms, 
 the system checks the values of the elements. In this case, the "name" element
 in the target resource can be used to determine which slice that target refers to. 
 This element is called the “discriminator”.
+ -->
 </p>
 
 <a name="discriminator"> </a>
-<h3>Discriminator</h3>
+<h3>Дискриминатор (Discriminator)</h3>
 <p>
-In the general case, systems processing resources using a structure definition
-that slices a list can determine which slice an item in
-the list is to by checking whether its content meets the rules specified
-for the slice.
+В общем случае системы обработки ресурсов, использующих structure definition, который разбивает список, могут установить, какому срезу соответствует элемент в списке проверкой, соответствует ли его содержимое правилам, указанным для этого среза. 
+<!-- In the general case, systems processing resources using a structure definition
+that slices a list can determine which slice an item in 
+the list by checking whether its content meets the rules specified
+for the slice.  -->
 </p>
 <p>
-This requires for a processor to be able to check all the rules
+Это требует от обработчика возможности проверить все правила, применимые к этому срезу и сделать это умозрительно depth-first способом. Ничто из этого не подходит для операционной системы, в частности для генерируемого кода. По этой причине срез может nominate набор полей, которые ведут себя как "дискриминатор" - они используются для разделения срезов друг от друга.
+<!-- This requires for a processor to be able to check all the rules
 applied in the slice and to do so speculatively in a depth-first
 fashion. Neither of these is appropriate for an operational system,
 and particularly not for generated code. For this reason, a slice 
 can nominate a set of fields that act as a "discriminator" - they
-are used to tell the slices apart. 
+are used to tell the slices apart.  -->
 </p>
 <p>
-When a discriminator is provided, the composite of the values of 
+Когда есть дискриминатор, композиция значений элементов, обозначенных в этом дискриминаторе, является уникальной и различается для каждого возможного среза, и приложения могут легко определить, какому разрезу соответствует пункт в списке. Предполагается, что это можно будет делать в генерируемом коде.
+<!-- When a discriminator is provided, the composite of the values of 
 the elements nominated in the discriminator is unique and distinct
 for each possible slice and applications can easily determine
-which slice an item in a list is. The intention is that 
-this can be done in generated code.
+which slice an item in a list corresponds to. The intention is that 
+this can be done in generated code. -->
 </p>
 <p>
-When a constraining structure nominates one or more discriminators, it SHALL
-fix the value of the element for each discriminator for each
-slice, or if the element has a terminology binding, it SHALL be
-associated with a complete binding with a closed <a href="valueset.html#closed">Value Set</a>
+Когда constraining structure назначает одного или нескольких дискриминаторов, он ДОЛЖЕН зафиксировать значение элемента для каждого дискриминатора для каждого среза либо, если элемент имеет терминологическую привязку, он ДОЛЖЕН быть связан полной привязкой с закрытым <a href="valueset.html">Value Set</a>, который перечисляет возможные коды в наборе значений.
+Structure definition ДОЛЖЕН гарантировать, что не будет частичного совпадения между наборо значений и/или кодов в наборе значений между срезами.
+<!-- When a constraining structure nominates one or more discriminators, it SHALL 
+fix the value of the element for each discriminator for each 
+slice, or if the element has a terminology binding, it SHALL be 
+associated with a complete binding with a closed <a href="valueset.html#closed">Value Set</a> 
 reference that enumerates the possible codes in the value set.
-The structure definition SHALL ensure that there is no overlap between the
-set of values and/or codes in the value sets between slices.
+The structure definition SHALL ensure that there is no overlap between the 
+set of values and/or codes in the value sets between slices. -->
 </p>
 <p>
-It is the composite (combined) values of the discriminators 
+Именно композитные (комбинированные) значения дискриминаторов являются уникальными, а не каждый дискриминатор по отдельности. Например срез списка элементов, которые являются ссылками на другие ресурсы, может назначать поля из различных ресурсов, где каждый ресурс имеет только один из предложенных элементов до тех пор, пока они различаются между срезами.
+<!-- It is the composite (combined) values of the discriminators 
 that are unique, not each discriminator alone. For example,
 a slice on a list of items that are references to other 
 resources could nominate fields from different resources, 
 where each resource only has one of the nominated elements,
-as long as they are distinct across slices.
+as long as they are distinct across slices.  -->
 </p>
 <p>
-A structure definition is not required to nominate any discriminator at all
-for a slice, but those that don't identify discriminators are describing
-content that is very difficult to process, and so this is
-discouraged.
+Ыtructure definition не требуется предлагать дискриминатор вообще для среза, однако те, которые не указывают дискриминаторы, описывают содержимое, которое очень трудно обрабатывать, поэтому это не поощряется.
+<!-- A structure definition is not required to nominate any discriminator at all
+for a slice, but those that don't identify discriminators are describing 
+content that is very difficult to process, and so this is 
+discouraged. -->
 </p>
-<p>
-Within a structure definition, a slice is defined using multiple <i>element</i>
-entries that share a <i>path</i> but have distinct <i>name</i>s.
-These entries together form a "slice group" that is:
+<p> 
+Внутри structure definition срез определяется с помощью нескольких записей <i>element</i>, которые имеют общий <i>path</i>, но различные <i>name</i>.
+Эти записи вместе формируют "группу срезов", которая:
+<!-- Within a structure definition, a slice is defined using multiple <i>element</i>
+entries that share a <i>path</i> but have distinct <i>name</i>s. 
+These entries together form a "slice group" that is: -->
 </p>
 <ol>
        
-	<li><b>Initiated by a "slicing entry"</b> That is, the first
+	<li><b>Инициируется с помощью "slicing entry"</b> То есть первый 
+		<i>element</i> в группе срезов обязан содержать свойство
+		<i>slicing</i>, которое устанавливает
+		<i>discriminator</i> для всех членов этой группы.  Также он содержит естественное определение элемента, который был разбит<!-- <b>Initiated by a "slicing entry"</b> That is, the first
 		<i>element</i> in a slice group must contain a
 		<i>slicing</i> property that defines the
-		<i>discriminator</i> for all members of the group.  It also contains the unconstrained definition of the element that is sliced</li>
+		<i>discriminator</i> for all members of the group.  It also contains the unconstrained definition of the element that is sliced --></li>
 
-	<li><b>Mutually exclusive</b>. This means that each
+	<li><b>Взаимно исключающий</b>. Это значит, что каждый 
+		<i>element</i> в группе срезов ДОЛЖЕН описывать 
+		различный набор значений для 
+		<i>discriminators</i> группы. Из-за этого условия элемент в экземпляре ресурса <b>instance</b> никогда не будет соответствовать более чем одному
+		<i>element</i> в данной группе срезов. Если дискриминаторы не названы, 
+    СЛЕДУЕТ оставить возможность дифференцировать эти срезы по их свойствам, хотя может это и существенно сложнее будет сделать<!-- <b>Mutually exclusive</b>. This means that each
 		<i>element</i> in a slice group SHALL describe a
 		distinct set of  values for the group's
 		<i>discriminators</i>.  Because of this constraint, an 
@@ -465,9 +502,14 @@ These entries together form a "slice group" that is:
 		than one <i>element</i> in a given slice group. If no discriminators are named, 
     it SHOULD still be possible to differentiate the slices based 
     on their properties, though it may be substantially harder to 
-    do so</li>
+    do so --></li>
 
-	<li><b>Serialized as a group</b>. The entries in a slice
+	<li><b>Сериализованный как группа</b>. Записи в группе срезов должны быть <b>adjacent</b> в сериализованном structure definition,
+		<b>либо</b>, если есть какие-либо промежуточные элементы, эти элементы должны быть "совместимы с" этой группой. Конкретно это означает, что любые промежуточные элементы должны иметь
+		<i>path</i>, который начинается с 
+		<i>path</i> группы срезов. Например <i>element</i> с
+		<i>path</i> <i>Observation.name.extension</i>
+		будет совместим с (и, таким образом, не будет "break up") группой срезов, чей путь был <i>Observation.name</i> <!-- <b>Serialized as a group</b>. The entries in a slice
 		group must be <b>adjacent</b> in a serialized structure definition,
 		<b>or</b>, if there are any intervening elements, those
 		elements must be "compatible with" the group. Concretely, this
@@ -476,150 +518,170 @@ These entries together form a "slice group" that is:
 		<i>path</i>.  For example, an <i>element</i> with a
 		<i>path</i> of <i>Observation.name.extension</i>
 		would be compatible with (and thus, would not "break up") a
-		slice group whose path was <i>Observation.name</i> </li>
+		slice group whose path was <i>Observation.name</i>  --></li>
 </ol>
 <p>
-The value of the discriminator element is a path name that identifies
+Значение элемента дискриминатор - это название пути, которое идентифицирует потомок элемента с помощью точечной нотации. Для ссылок этот путь плавно перемещается через ссылку и в потомков корневого элемента/объекта ресурса. Для расширений, расширение может уточняться URL-адресом расширений, на которые идет ссылка.
+Есть два специальных имени: @type и @profile. Вот несколько примеров дискриминаторов:
+<!-- The value of the discriminator element is a path name that identifies
 the descendant element using a dotted notation. For references, the path
 transitions smoothly across the reference and into the children of the 
 root element/object of the resource. For extensions, an extension can be
 qualified with the URL of the extensions being referred to.
-There are two special names: @type, and @profile. Here are some example discriminators:
+There are two special names: @type, and @profile. Here are some example discriminators: -->
 </p>
 <table class="grid">
- <tr>  <td><b>Context</b></td> <td><b>Discriminator</b></td> <td><b>Interpretation</b></td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.name</td> <td>Entries are differentiated by the name element on the target resource - probably an observation, which could be determined by other information in the profile</td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.@type</td> <td>Entries are differentiated by the type of the target element that the reference points to</td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.@profile</td> <td>Entries are differentiated by a profile tag on the target of the reference, as specified by a structure definition (todo: how to do that?)</td> </tr>
- <tr>  <td>List.entry</td> <td>item.extension["http://acme.org/extensions/test"].code</td> <td>Entries are differentiated by the value of the code element in the extension with the nominated URL</td> </tr>
- <tr>  <td>List.entry.extension</td> <td>url</td> <td>Extensions are differentiated by the value of their url property (usually how extensions are sliced)</td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.@type, item.reference.name</td> <td>Extensions are differentiated by the combination of item.reference.name, and, if it has one, the name element. This would be
-   appropriate for where a List might be composed of a Condition, and set of observations, each differentiated by its name - the condition has no name, so that is evaluated as a null in the discriminator set</td> </tr>
+ <tr>  <td><b>Контекст</b></td> <td><b>Дискриминатор</b></td> <td><b>Интерпретация</b></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.reference.name</td> <td>Записи различаются элементами name в целевом ресурсе - возможно observation, которое может быть определено по другой информации в профиле<!-- Entries are differentiated by the name element on the target resource - probably an observation, which could be determined by other information in the profile --></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.reference.@type</td> <td>Записи различаются по типу целевого элемента, на который указывает ссылка<!-- Entries are differentiated by the type of the target element that the reference points to --></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.reference.@profile</td> <td>Записи различаются по профильному тегу целевого объекта ссылки, как указано в structure definition (TODO: как это сделать?)<!-- Entries are differentiated by a profile tag on the target of the reference, as specified by a structure definition (todo: how to do that?) --></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.extension["http://acme.org/extensions/test"].code</td> <td>Записи различаются по значению элемента code в расширении с обозначенным URL<!-- Entries are differentiated by the value of the code element in the extension with the nominated URL --></td> </tr>
+ <tr>  <td>List.entry.extension</td> <td>url</td> <td>Расширения различаются по значению их свойства url (обычно как разбиваются расширения)<!-- Extensions are differentiated by the value of their url property (usually how extensions are sliced) --></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.reference.@type, item.reference.name</td> <td>Расширения различаются сочетанием item.reference.name и, если есть, элементом name. Это подойдет тогда, когда List может состоять из Condition, а набор observations, каждое различается по своему имени - condition не имеет имени, так что считается null в этом наборе дискриминаторов<!-- Extensions are differentiated by the combination of item.reference.name, and, if it has one, the name element. This would be
+   appropriate for where a List might be composed of a Condition, and set of observations, each differentiated by its name - the condition has no name, so that is evaluated as a null in the discriminator set --></td> </tr>
 </table>
 
 <p>
-See also <a href="profiling-examples.html">examples of slicing and discriminators</a>.
+См. также <a href="profiling-examples.html">примеры срезов и дискриминаторов</a>.
 </p>
 
 <a name="extensions"> </a>
-<h3>Extension Definitions</h3>
+<h3>Определение расширений<!-- Extension Definitions --></h3>
 <p>
-An extension definition defines the url that identifies the extension
+Определение расширения указывает url, который идентифицирует это расширение и который используется для ссылки на определение этого расширения, когда оно используется в ресурсе.
+<!-- An extension definition defines the url that identifies the extension
 and which is used to refers to the extension definition when it is used 
-in a resource.
+in a resource. -->
 </p>
 <p>
-The extension definition also defines the context where the extension can be used (usually
+Определение расширения также устанавливает контекст, в котором это расширение может использоваться (обычно конкретный путь или тип данных) и затем определяет элемент extension с помощью те же данные, используемые для профилирования структурных элементов, входящих в ресурс. Это означает, что одно расширение может быть определено только один раз и использоваться в различных ресурсах и/или типах данных, например потребуется определить расширение для "цвет волос" один раз и потом указать, что его можно использовать и в Patient, и в Practitioner.
+<!-- The extension definition also defines the context where the extension can be used (usually
 a particular path or a data type) and then defines the extension element using the same details used to 
 profile the structural elements that are part of resources. This means that a single extension 
 can be defined once and used on different Resource and/or datatypes, e.g. one would only have to 
-define an extension for “hair color” once, and then specify it can be used on both Patient and Practitioner.
+define an extension for “hair color” once, and then specify it can be used on both Patient and Practitioner. -->
 </p>
 <p>
-For further discussion of defining and using extensions, along with some examples, 
-see <a href="extensibility.html">Extensibility</a>. 
+Для дальнейшего обсуждения определения и использования расширений наряду с некоторыми примерами, см. <a href="extensibility.html">Extensibility</a>. 
+<!-- For further discussion of defining and using extensions, along with some examples, 
+see <a href="extensibility.html">Extensibility</a>.  -->
 </p>
 
-<h4>Using Extensions in Profiles</h4>
+<h4>Использование расширений в профилях<!-- Using Extensions in Profiles --></h4>
 <p>
-Once defined, an extension can be used in an instance of a resource 
+Однажды определенное, расширение может использоваться в экземпляре ресурса без того, чтобы какой-то профиль объявлял, что это возможно, следует или должно быть, однако профили могут использоваться для описания, каким образом используется расширение.
+<!-- Once defined, an extension can be used in an instance of a resource 
 without any Profile declaring that it can, should or must be, but 
-Profiles can be used to describe how an extension is used.
+Profiles can be used to describe how an extension is used. -->
 </p>
 <p>
-To actually prescribe the use of an extension in an instance, the extension list 
+Чтобы на самом деле предписать использование расширения в частном случае, список расширений ресурса необходимо нарезать. Это показывается в <a href="extensibility-examples.html#sliceextensions">примерах расширяемости</a>
+<!-- To actually prescribe the use of an extension in an instance, the extension list 
 on the resource needs to be sliced. This is shown in <a href="extensibility-examples.html#sliceextensions">the extensibility 
-examples</a></p>
+examples</a> --></p>
 <p>
-Note that the minimum cardinality of an extension SHALL be a valid restriction
+Обратите внимание, что минимальное кардинальное число расширения ДОЛЖНО быть допустимым ограничением на минимальное кардинальное число в определении этого расширения. Если минимальное кардинальное число расширения 1, когда оно было определено, оно может быть обязательным только если добавлено в профиль. Это  не рекомендуется - минимальное кардинальное число, как правило, должно быть 0.
+<!-- Note that the minimum cardinality of an extension SHALL be a valid restriction
 on the minimum cardinality in the definition of the extension. if the minimum
 cardinality of the extension is 1 when it is defined, it can only be mandatory
 when it is added to a profile. This is not recommended - the minimum cardinality
-of an extension should usually be 0. 
+of an extension should usually be 0.  -->
 </p>
 
 
 <a name="binding"> </a>
-<h3>Binding Definitions</h3>
+<h3>Определение привязок<!-- Binding Definitions --></h3>
 
 <p>
-Coded elements have bindings that link from the element to a definition of the 
+Кодированные элементы имеют привязки, которые связывают элемент с   определением набора возможных кодов, которые может содержать элемент. Привязка идентифицирует определение набора возможных кодов и контролирует, как жестко набор возможных кодов интерпретируется.
+<!-- Coded elements have bindings that link from the element to a definition of the 
 set of possible codes the element may contain. The binding identifies the 
-definition of the set of possible codes and controls how tightly the set of the possible codes is interpreted.
+definition of the set of possible codes and controls how tightly the set of the possible codes is interpreted. -->
 </p>
 <p>
-The set of possible codes is either a formal reference to a <a href="valueset.html">ValueSet</a> 
+Набор возможных кодов - это либо формальная ссылка на ресурс <a href="valueset.html">ValueSet</a> , которая может быть версионной, либо ссылка общего вида на какое-то веб-содержимое, которое определяет набор кодов. Второе более уместно, когда набор значений определяется некоторым внешним стандартом (например MIME-типы). В качестве альтернативы, если привязка неполная (например находится в разработке), можно предоставить просто текстовое описание возможных кодов.
+<!-- The set of possible codes is either a formal reference to a <a href="valueset.html">ValueSet</a> 
 resource, which may be version specific, or a general reference to some web content that defines a set of 
-codes. The second is most appropriate where a set of values is defined by 
+codes. The second is most appropriate where set of values is defined by 
 some external standard (such as mime types). Alternatively, where the binding
 is incomplete (e.g. under development) just a text description of the 
-possible codes can be provided. 
+possible codes can be provided.  -->
 </p>
 <p> 
-Bindings have a property that define how the strongly implementations are required to use the 
-set of codes. See <a href="terminologies.html#strength">Binding Strength</a>.
+У привязок имееется свойство, которое определяет, насколько строго от реализаций требуется использование набора кодов. См. <a href="terminologies.html#strength">Binding Strength</a>.
+<!-- Bindings have two properties that define how the set of codes is used: <i>isExtensible</i> and <i>conformance</i>. -->
 </p>
 
 <a name="tx"> </a>
-<h3>Mixing Custom and Standard Terminologies</h3>
+<h3>Смешение пользовательских и стандартных терминологий<!-- Mixing Custom and Standard Terminologies --></h3>
 <p>
-<a href="valueset.html">Value Set</a> resources can be used to define local codes (<a href="valueset-example-inline.html">Example</a>) and 
-to mix a combination of local codes and standard codes (e.g. LOINC, SNOMED), or just
+<a href="valueset.html">Value Set</a> ресурсы могут быть использованы для определения локальных кодов (Example) и
+смешивать сочетание локальных кодов и стандартных кодов (примеры: LOINC, SNOMED), или просто
+выбирать определенный набор стандартных кодов (например: LOINC, SNOMED, RxNorm).
+Профили могут привязываться к этим наборам значений вместо тех, которые определены в базовой спецификации, следуя этим правилам:<!-- resources can be used to define local codes (Example) and 
+to mix a combination of local codes and standard codes (examples: LOINC, SNOMED), or just
 to choose a particular set of standard codes (examples: LOINC, SNOMED, RxNorm). 
 Profiles can bind to these value sets instead of the ones defined in the base
-specification, following these rules:
+specification, following these rules: -->
 </p>
 <table class="grid">
- <tr> <td><b><a href="terminologies.html#binding">Binding Strength</a> in base specification</b></td> <td><b>Customization Rules in Profiles</b></td> </tr>
- <tr> <td>required</td> <td>The value set can only contain codes contained in the value set specified by the FHIR specification</td> </tr>
- <tr> <td>extensible</td>  <td>The value set can contain codes not found in the base value set. These additional codes SHOULD NOT have the same meaning as existing codes in the base value set</td> </tr>
- <tr> <td>preferred</td>  <td>The value set can contain whatever is appropriate for local use</td> </tr> 
- <tr> <td>example</td>  <td>The value set can contain whatever is appropriate for local use</td> </tr> 
+ <tr> <td><b>Тип привязки в базовой спецификации<!-- Binding Type in base specification --></b></td> <td><b>Соответствующие свойства профиля<!-- Matching Profile Properties --></b></td> <td><b>Правила кастомизации в профилях<!-- Customization Rules in Profiles --></b></td> </tr>
+
+ <tr> <td>Complete</td> <td>conformance = required, extensible = false</td> <td>Этот набор значений может содержать только коды, содержащиеся в наборе значений, определенном спецификацией FHIR<!-- The value set can only contain codes contained in the value set specified by the FHIR specification --></td> </tr>
+ <tr> <td>Incomplete</td> <td>conformance = preferred and extensible = true</td> <td>Этот набор значений может содержать коды, не найденные в базовом наборе значений. Этим дополнительным кодам НЕ СЛЕДУЕТ иметь такой же смысл, как у существующих кодов в базовом наборе значений<!-- The value set can contain codes not found in the base value set. These additional codes SHOULD not have the same meaning as existing codes in the base value set --></td> </tr>
+ <tr> <td>Example</td> <td>conformance = example</td> <td>Этот набор значений может содержать все, что допустимо для локального использования<!-- The value set can contain whatever is appropriate for local use --></td> </tr> 
 </table> 
-<p>
-Note that local codes are not as interoperable as standard published code systems (e.g. LOINC, SNOMED C, so it is preferable to use standard code systems.
-</p>
 
 <a name="mustSupport"> </a>
 <h3>Must Support</h3>
 <p>
-One property that can be declared on profiles that is not declared on the resource or data type definitions is "Must Support".
+Одно свойство, которое может быть объявлено в профилях, которое не объявляется в определениях ресурса или типа данных, это"Must Support" (должен быть поддержан) .
+Это логическое свойство. Если истинно, значит системы, заявляющие о соответствии данному профилю, должны "поддерживать" этот элемент.
+Это отличается от кардинального числа. Возможно иметь элемент с минимальным кардинальным числом "0" и при этом ожидать от систем поддержки этого элемента.
+<!-- One property that can be declared on profiles that is not declared on the resource or data type definitions is "Must Support".
 This is a boolean property.  If true, it means that systems claiming to conform to a given profile must "support" the element.
 This is distinct from cardinality.  It is possible to have an element with a minimum cardinality of "0", but still expect systems
-to support the element.
+to support the element. -->
 </p>
 <p>
-The meaning of "support" is left deliberately ambiguous.  Examples might include:
+Смысл слова ("поддержан") "support" намеренно оставлен неоднозначным. Примеры могут включать:
+<!-- The meaning of "support" is left deliberately ambiguous.  Examples might include: -->
 </p>
 <ul>
-  <li>The system must be able to store and retrieve the element</li>
-  <li>The system must display the element to the user and/or allow the user to capture the element via the UI</li>
-  <li>The element must appear in an output report</li>
-  <li>The element must be taken into account when performing decision support, calculations or other processing</li>
-  <li>etc.</li>
+  <li>Система должна быть способна хранить и извлекать элемент<!-- The system must be able to store and retrieve the element --></li>
+  <li>Система должна показывать элемент пользователю и/или позволять пользователю вводить элемент с помощью пользовательского интерфейса<!-- The system must display the element to the user and/or allow the user to capture the element via the UI --></li>
+  <li>Элемент должен появиться в выходном отчете<!-- The element must appear in an output report --></li>
+  <li>Элемент должен быть принят во внимание при совершении поддержки принятия решений, вычислений или другой обработки<!-- The element must be taken into account when performing decision support, calculations or other processing --></li>
+  <li>другое<!-- etc. --></li>
 </ul>
 <p>
-The specific meaning of "Must Support" for the purposes of a particular profile SHALL be described in the Profile.description or in other documentation for the
-implementation guide the profile is part of.
+Конкретный смысл "Must Support" для целей конкретного профиля ДОЛЖЕН быть описан в Profile.description или в другой документации для
+инструкции по реализации, частью которой является профиль.
+<!-- The specific meaning of "Must Support" for the purposes of a particular profile SHALL be described in the Profile.description or in other documentation for the
+implementation guide the profile is part of. -->
 </p>
 <p>
-If creating a profile based on another profile, Must Support can be changed from false to true, but cannot be changed from true to false.
+При создании профиля, основанного на другом профиле, значение Must Support может быть изменено с ложного на истинное, но не может быть изменено с истинного на ложное.
+<!-- If creating a profile based on another profile, Must Support can be changed from false to true, but cannot be changed from true to false. -->
 </p>
 
 <a name="search"> </a>
-<h3>Search Criteria</h3>
+<h3>Критерии поиска<!-- Search Criteria --></h3>
 <p>
-The final thing implementations can do is to define search criteria in addition to those defined in the specification itself.  
-Search criteria fall into one of four categories:
+Последнее, что реализации могут сделать, это определить критерии поиска в дополнение к тем, что определены в самой спецификации.
+Критерии поиска попадают в одну из четырех категорий:
+<!-- The final thing implementations can do is to define search criteria in addition to those defined in the specification itself.  
+Search criteria fall into one of four categories: -->
 </p>
 <ol>
-  <li>Enabling search on core elements that don't have standard search criteria defined (e.g. searching Observation by normal range)</li>
-  <li>Enabling search on elements that already have a standard search criteria defined, but with custom matching rules.  E.g. a sounds-like search on Practitioner name</li>
-  <li>Enabling search on a particular extension</li>
-  <li>Enabling search that doesn't correspond to a single element but rather a combination of elements or computation on an element.  E.g. searching for patients by age</li>
+  <li>Включение поиска по основным элементам, у которых не определены стандартные критерии поиска (например, поиск Observation по диапазону нормальных значений)<!-- Enabling search on core elements that don't have standard search criteria defined (e.g. searching Observation by normal range) --></li>
+  <li>Включение поиска по элементам, у которых уже определены стандартные критерии поиска, но с пользовательскими правилами соответствия. Например sounds-like поиск по имени Practitioner<!-- Enabling search on elements that already have a standard search criteria defined, but with custom matching rules.  E.g. a sounds-like search on Practitioner name --></li>
+  <li>Включение поиска по определенному расширению<!-- Enabling search on a particular extension --></li>
+  <li>Включение поиска, который соответствует не одному элементу, а, скорее, сочетанию элементов или вычислению на элементе. Например поиск пациентов по возрасту<!-- Enabling search that doesn't correspond to a single element but rather a combination of elements or computation on an element.  E.g. searching for patients by age --></li>
 </ol>
 <p>
-Additional Search Parameters can be defined using the <a href="searchparameter.html">SearchParameter</a> resource.
+Дополнительные параметры поиска могут быть определены с помощью ресурса <a href="searchparameter.html">SearchParameter</a>.
+<!-- Additional Search Parameters can be defined using the <a href="searchparameter.html">SearchParameter</a> resource. -->
 </p>
 
 </div>

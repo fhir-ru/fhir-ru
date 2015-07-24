@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-
-[%settitle Resource References%]
+      
+[%settitle Ссылки в ресурсах%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -18,95 +18,77 @@
 <a name="Resource"> </a>
 <a name="references"> </a>
 <a name="Identification"> </a>
-<h2>Resource References</h2>
+<h2>Ссылки между ресурсами</h2>
 
 <p>
-Many of the defined elements in a resource are references to other resources. Using these
-references, the resources combine to build a web of information about healthcare.
+Большинство определенных в ресурсе элементов являются ссылками на другие ресурсы. С помощью этих ссылок ресурсы комбинируются для построения сети информации о здравоохранении. 
 </p>
 <p>
-Resources contain two types of references:
+Ресурсы содержат два типа ссылок:
 </p>
 <ul>
  <li><b>Internal "contained" references</b> - references to other resources packaged inside the source resource</li>
  <li><b>External references</b> - references from resources found elsewhere</li>
 </ul>
 <p>
-References are always defined and represented in one particular direction - from one resource (source) to another (target).
-References are provided as a URL, which may either be absolute or relative. Resolving the references is discussed below.
+Ссылки всегда определяются и представляются в одном конкретном направлении - от одного ресурса (источника) к другому (цели). Ссылки указываются в виде URL-адресов, которые могут быть абсолютными или относительными. Алгоритм разрешения ссылок обсуждается ниже.
 </p>
 <p>
-The corresponding reverse relationship from the target to the source exists in a logical sense, but is
-not represented explicitly in the resource. For external references, navigating these reverse relationships requires some
-external infrastructure to track the relationship between resources (the <a href="http.html">REST API</a> provides one such
-infrastructure by providing the ability to <a href="http.html#search">search</a> the reverse relationship by naming
-search parameters for the references).
+Соответствующая обратная связь от цели к источнику существует в логическом смысле, но не представлена в ресурсе явно. Для внешних ссылок перемещение по таким обратным связям требует от некоторой внешней инфраструктуры отслеживания связей между ресурсами (<a href="http.html">REST API</a> предоставляет такую инфраструктуру, обеспечивая возможность <a href="http.html#search">поиска</a> обратной связи с помощью именования параметров поиска для ссылок).
 </p>
 <p>
-Because resources are processed independently, relationships are not considered to be transitive.
-For example, if a <a href="condition.html">Condition</a> resource references a particular
-<a href="patient.html">Patient</a> as its subject, and references a <a href="procedure.html">Procedure</a>
-resource as its cause, there is no automatic rule or implication that the procedure
-has the same patient for its subject. Instead, the subject of the procedure must be established
-directly in the procedure itself. Another way to state this is that the context of the subject
-is not "inherited", nor does it "conduct" along the relationship to procedure.
-The only exception to this is the case of contained resources (see below). Note that in
-practice, the relationships do need to describe a logical and coherent record, and in the
-case of the Condition and Procedure described here, they would usually be required to have
-the same patient for their subjects.
+Т. к. ресурсы обрабатываются независимо, взаимосвязи не считаются переходными. Например, если ресурс <a href="condition.html">Condition</a> ссылается на конкретного 
+<a href="patient.html">Patient</a> в качестве своего объекта и ссылается на ресурс <a href="procedure.html">Procedure</a>
+в качестве его основания, то нет автоматического правила или вывода, что эта процедура в качестве своего объекта ссылается на того же самого пациента. Напротив, объект процедуры должен устанавливаться непосредственно в самой процедуре. 
+Другими словами, контекст объекта не "наследуется" и не "вытекает" из связи с процедурой. Единственное исключение этому - в случае вложенных ресурсов (см. ниже). Обратите внимание, что на практике эти взаимосвязи действительно должны описывать логическую и не противоречивую запись, и в описанном здесь примере с Condition и Procedure они, как правило, должны будут  иметь одного пациента в качестве объекта.
 </p>
 
 <p>
-In a resource, references are represented with a reference and a text description.
-The <i>reference</i> is the key element - resources are identified and addressed by their URL.
-The actual reference looks like this:
+В ресурсе ссылки обозначаются ссылкой и текстовым описанием. Ключевым элементом является <i>reference</i>: ресурсы идентифицируются и адресуются с помощью URL-ссылок. Реальная ссылка выглядит так:
 </p>
 
-[%dt Reference 1%]
+[%dt Reference%]
 
 <p>&nbsp;</p>
 
-<p>Notes:</p>
+<p>Примечания:</p>
 <ul>
- <li>The <i>reference</i> element contains a url that is either
+ <li>Элемент <i>reference</i> содержит URL, являющийся либо:
    <ul>
-     <li>an absolute URL</li>
-     <li>a relative URL, which is relative to the <a href="http.html#root">Service Base URL</a>, or, in a bundle, <a href="#bundle-refs">the bundle context</a></li>
-     <li>an internal fragment reference (see "Contained Resources" below)</li>
+     <li>абсолютным URL</li>
+     <li>относительным URL по отношению к <a href="http.html#root">служебному базовому URL</a> или, в комплекте, <a href="#atom-refs">контекстом комплекта</a></li>
+     <li>внутренней ссылкой на фрагмент (см. "Вложенные ресурсы" ниже)</li>
    </ul>
  </li>
- <li>Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a
-   flexible approach suitable for use when trading across closed ecosystem boundaries. (see <a href="implementation.html#identity">implementation issues for further discussion</a>)</li>
- <li>Absolute URLs do not need to point to a <a href="http.html">FHIR RESTful server</a>, though this is the preferred approach.
-   Whether or not the reference is to a FHIR RESTful server, the reference SHALL point to a Resource as defined by this specification. 
-   <br/>Note: This regex is true if the reference to a resource is consistent with a FHIR API:
+ <li>Использование абсолютных URL адресов обеспечивает стабильный масштабируемый подход, подходящий для облачного/веб окружения, в то время как использование относительных/логических ссылок обеспечивает гибкий подход, подходящий для использования при торговле через границы закрытых экосистем (см. <a href="implementation.html#identity">проблемы реализации</a> для дальнейшего обсуждения)</li>
+ <li>Абсолютные URL-адреса не обязательно должны указывать на  <a href="http.html">FHIR RESTful сервер</a>, хотя это и предпочтительный подход. Ведет ли ссылка на FHIR RESTful сервер или нет, она ДОЛЖНА указывать на Ресурс как определено в данной спецификации.
+	<br/>Note: This regex is true if the reference to a resource is consistent with a FHIR API:
    <pre>
    ((http|https)://([A-Za-z0-9\\\/\.\:\%\$])*)?([%piperesources%])\/[%id_regex%](\/_history\/[%id_regex%])?
    </pre>
    <br/>
    However conformance with this regex is no guarantee that the end point is a FHIR server
-   </li>
- <li>URLs are always considered to be case-sensitive</li>
- <li>The <i>display</i>, if populated, does generally not have identical content to the Resource.text of the referenced resource.  The purpose is to
-   identify what's being referenced, not to more fully describe it</li>
+	</li>
+ <li>URL-адреса всегда считаются чувствительными к регистру.</li>
+ <li>Элемент <i>display</i>, если заполнен, в основном не имеет идентичного содержимого в Resource.text ссылаемого ресурса. Его цель  - обозначить, на что идет ссылка, а не более полно описать это.</li>
 </ul>
 
 <div class="example">
-<p>A relative reference to the <a href="patient.html">patient</a> "034AB16" in an element named "context" on a FHIR RESTful server:</p>
+<p>Относительная ссылка на <a href="patient.html">пациента</a> "034AB16"  в элементе "context" на FHIR RESTful сервере:</p>
 <pre class="xml" fragment="Reference">
   &lt;context&gt;
     &lt;reference value="Patient/034AB16" /&gt;
   &lt;/context&gt;
 </pre>
-<p>An absolute reference to a <a href="structuredefinition.html">Structure Definition</a> in an element named "profile":</p>
+<p>Абсолютная ссылка на <a href="structuredefinition.html">Structure Definition</a> в элементе "profile":</p>
 <pre class="xml" fragment="Reference">
   &lt;profile&gt;
     &lt;reference value="http://fhir.hl7.org/svc/StructureDefinition/c8973a22-2b5b-4e76-9c66-00639c99e61b" /&gt;
   &lt;/profile&gt;
 </pre>
-<p><i>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it</i>.</p>
+<p><i>Обратите внимание, что в действительности HL7 пока что не создал ни реестр профилей, ни URL-адрес для него</i>.</p>
 <p>
-A short display text that provides a human-readable identification of the resource may be provided:
+В элементе display можно задать короткий текст с человекочитаемым описанием ресурса:
 </p>
 <pre class="xml" fragment="Reference">
   &lt;custodian&gt;
@@ -115,37 +97,25 @@ A short display text that provides a human-readable identification of the resour
   &lt;/custodian&gt;
 </pre>
 <p>
-This text can be used by a system that is unable to resolve the reference to an actual resource.
+Этот текст может использоваться системой, которая не в состоянии разрешить ссылку непосредственно на сам ресурс.
 </p>
 </div>
 
 <a name="contained"> </a>
-<h3>Contained Resources</h3>
+<h3>Вложенные ресурсы</h3>
 <p>
-In some circumstances, the content referred to in the resource reference does not have an independent
-existence apart from the resource that contains it - it cannot be identified independently, and nor
-can it have its own independent transaction scope. Typically, such circumstances arise where the resource
-is being assembled by a secondary user of the source data, such as a middleware engine. If the data available
-when the resource is constructed does not include record keys or absolute identification information, then
-a properly identified resource cannot be assembled, and even if an arbitrary identification was associated
-with it, the resource could never be the subject of a transaction outside the context of the resource that
-refers to it.
+В некоторых обстоятельствах содержимое, на которое ссылаются в ссылке на ресурс, не существует отдельно от ресурса, в который оно вложено: оно не может быть идентифицировано независимо и не может иметь своей собственной независимой области транзакций. Обычно такие ситуации случаются, когда ресурс собирается вторичным пользователем источника данных, таким как межплатформенный механизм (middleware engine). Если данные, доступные во время построения ресурса, не содержат ключей записи или информации об абсолютной идентификации, тогда не возможно собрать правильно идентифицированный ресурс, и даже если с ним была ассоциирована свободная идентификация, ресурс никогда не сможет быть объектом транзакции вне контекста ресурса, который на него ссылается.
 </p>
 <p>
-For example, consider a situation where an interface engine is creating a <a href="condition.html">Condition</a>
-record on a patient from an HL7 v2 message, and the only information about the primary surgeon is her
-first name and lastname (REL-7.2 &amp; RES-7.3). In the absence of a controlled practitioner directory,
-this is not enough information to create an identified <a href="practitioner.html">Practitioner</a>
-resource - more than one practitioner might have the same name.
+Например рассмотрим ситуацию, когда механизм интерфейса создает запись <a href="condition.html">Condition</a>
+для пациента из сообщения HL7 v2, и единственная информация о главном хирурге (primary surgeon) - это ее имя и фамилия (REL-7.2 и RES-7.3). В отсутствие контролируемого каталога врачей этой информации не достаточно для создания идентифицированного ресурса <a href="practitioner.html">Practitioner</a>: несколько врачей могут иметь одинаковые имена. 
 </p>
 <p>
-In these circumstances, the resource is placed directly in line in the resource. <b>This SHOULD NOT be
-done when the content can be identified properly, as once the identification is lost, it is extremely difficult
-(and context dependent) to restore it again.</b>
+В таком случае ресурс помещается прямо внутрь другого ресурса. <b>Этого не следует делать, когда содержимое может быть должным образом идентифицировано, поскольку однажды потеряв возможность его идентифицировать, будет чрезвычайно сложно (и контекстно-зависимо) снова восстановить ее.</b>
 </p>
 <div class="example">
 <p>
-An example of a contained resource:
+Пример вложенного ресурса:
 </p>
 <pre class="xml"> <!-- Can't fragment test this - too incomplete -->
  &lt;Composition xmlns="http://hl7.org/fhir"&gt;
@@ -167,9 +137,9 @@ An example of a contained resource:
  &lt;/Composition&gt;
 </pre>
 <p>
-The same example in JSON:
+Этот же пример в JSON-формате:
 </p>
-<pre class="json">
+<pre class="json"> 
 { "resourceType" : "Composition",
   "extension" : { ... },
   "text" : { .. },
@@ -192,13 +162,7 @@ The same example in JSON:
 <blockquote>
 <div class="design-note">
 <p>
-Design Note: Contained resources are still a reference rather than being inlined directly
-into the element that is the reference (e.g. "custodian" above) to ensure that a
-single approach to resolving resource references can be used. Though direct containment
-would seem simpler, it would still be necessary to support internal references where the
-same contained resource is referenced more than once. In the end, all that it would achieve
-is creating additional options in the syntax. For users using XPath to process the resource,
-the following XPath fragment resolves the internal reference:
+Примечание разработчика: Вложенные ресурсы по-прежнему остаются ссылками, вместо того чтобы встраиваться непосредственно в элемент-ссылку (например "custodian" выше), чтобы гарантировать возможность использования единого подхода к разрешению ссылок на ресурсы. Хотя прямое включение и кажется проще, было бы все еще необходимо поддерживать внутренние ссылки, где на один и тот же содержащийся внутри ресурс могут ссылаются более одного раза. В конечном счете всё, чего бы мы достигли этим, это создание дополнительных опций синтаксиса. Для пользователей, применяющих XPath для обработки ресурса, следующий фрагмент XPath разрешается во внутреннюю ссылку:
 </p>
 <pre>
 ancestor::f:*[not(parent::f:*)]/f:contained/*[@id=substring-after(<b>current()</b>/f:reference/@value, '#')]
@@ -206,18 +170,22 @@ ancestor::f:*[not(parent::f:*)]/f:contained/*[@id=substring-after(<b>current()</
 </div>
 </blockquote>
 <p>
-Some notes about use and interpretation of contained resources:
+Некоторые примечания к использованию и интерпретации вложенных ресурсов:
 </p>
 
 <ul>
   <li>The "contained" element SHALL NOT have extensions on it (though contained resources can still contain extensions)</li>
-  <li>Contained resources share the same internal id resolution space as the parent resource (for id attributes, see below)</li>
-  <li>Contained resources SHALL NOT contain additional contained resources</li>
-  <li>Contained resources SHALL NOT contain any narrative</li>
-  <li>A contained resource can only be included in another resource if something in the resource actually refers to it:</li>
+  <li>Вложенные ресурсы разделяют одно пространство разрешения внутренних id, что и родительский ресурс (for id attributes, see below)</li>
+  <li>Вложенные ресурсы НЕ ДОЛЖНЫ содержать других вложенных ресурсов</li>
+  <li>Вложенные ресурсы НЕ ДОЛЖНЫ содержать описательную часть (narrative)</li>
+  <li>Вложенный ресурс может быть включен в другой ресурс, только если в этом ресурсе есть непосредственная отсылка к нему:
+<!--
+A contained resource can only be included in another resource if something in the resource actually refers to it:
+-->
+</li>
 </ul>
 <div class="use">
-<p><b>Constraints</b></p>
+<p><b>Ограничения (Constraints)</b></p>
 <p>
 [%dt.constraints Reference%]
 </p>
@@ -235,7 +203,7 @@ However FHIR provides no mechanism for defining or constraining any conduction o
 from a containing resource into any contained resource - not even by declaring the use of a particular profile.
 Best practice is to explicitly include all known properties on contained resources, even if redundant with 
 properties on the containing resource.  E.g. If the containing resource and contained resource both have a 
-"subject" element, both elements should be present, even if they reference the same resource.  Applications that 
+"subject" element, both elements should be present, even if they reference the same resouce.  Applications that 
 choose to omit redundant elements on contained resources should not expect other applications to infer 
 (or correctly infer) the intended meaning in this case.  Applications cannot safely presume that omitted 
 elements in contained resources can safely be inferred to be the same as the containing resource.  
@@ -245,10 +213,9 @@ to that agreement may not make correct (or any) inferences.
 </p>
     
 <a name="bundle-refs"> </a>
-<h3>Resolving references to Resources in Bundles</h3>
+<h3>Разрешение ссылок на ресурсы в комплектах (Bundles)</h3>
 <p>
-When processing bundles, applications should always search the resources in the
-bundle first when a <a href="#Resource">resource reference</a> is encountered.
+При обработке комплектов приложениям при обнаружении <a href="#Resource">ссылки на ресурс</a> всегда следует искать ресурсы сначала в этом комплекте.
 </p>
 <div class="example">
 <pre class="xml" fragment="Reference">
@@ -261,82 +228,69 @@ bundle first when a <a href="#Resource">resource reference</a> is encountered.
 </pre>
 </div>
 <p>
-then the application should look for any entry in the bundle where either the
-entry.id matches the reference URL exactly:
+тогда приложению следует искать любую запись в комплекте, где entry.id точно совпадает с URL-ссылкой:
 </p>
 <div class="example">
 <pre class="xml">
-  .. bundle ..
+   .. bundle ..
   &lt;>base value="http://acme.com/fhir"/&gt;
-  &lt;entry>
-    &lt;resource>
-      &lt;Organization xmlns="http://hl7.org/fhir">
-         &lt;id value="23"/&gt;
-         &lt;!-- Content for the resource --&gt;
-      &lt;/Organization>
-    &lt;/resource>
-  &lt;entry>
+  &lt;item>
+    &lt;Organization xmlns="http://hl7.org/fhir">
+       &lt;id value="23"/&gt;
+       &lt;!-- Content for the resource --&gt;
+    &lt;/Organization>
+  &lt;item>
 
-  &lt;entry>
-    &lt;resource>
-      &lt;Organization xmlns="http://hl7.org/fhir">
-        &lt;id value="ex"/&gt;
-        &lt;meta&gt;
-          &lt;versionId value="2"/&gt;
-        &lt;/meta&gt;
-        &lt;!-- Content for the resource --&gt;
-      &lt;/Organization>
-    &lt;/resource>
-  &lt;entry>
+  &lt;item>
+    &lt;Organization xmlns="http://hl7.org/fhir">
+      &lt;id value="ex"/&gt;
+      &lt;meta&gt;
+        &lt;versionId value="2"/&gt;
+      &lt;/meta&gt;
+      &lt;!-- Content for the resource --&gt;
+    &lt;/Organization>
+  &lt;item>
     ... bundle ...
 </pre>
 </div>
 <p>
-In the second case, the match is based on a specific version of the
-resource. Note that the matching is based on full URLs by prepending
+Во втором случае совпадение основано на конкретной версии ресурса. Note that the matching is based on full URLs by prepending
 the base for the entry (see <a href="bundle.html#resolving">"Bundles" for further information</a>).
-If the resource reference cannot be resolved
-in the bundle, the application SHOULD be able to retrieve the resource by
-following the provided URL directly. If it can't, it will have to use some
-other implementation-specific method for resolving how to find the resource.
+Если ссылка на ресурс не может быть разрешена внутри комплекта, приложение ДОЛЖНО иметь возможность получить ресурс, следуя прямо по приведенной URL-ссылке. Если это невозможно, ему придется использовать некоторый другой, специфичный для реализации, метод поиска ресурса.
 </p>
 <p>
-If the resource reference is a absolute URL, the same basic principle
-applies: attempt to resolve the reference in the bundle first, and then
-look outside. However, before this can be done, the absolute URL must
+Если ссылка на ресурс является абсолютным URL, применяется тот же базовый принцип: сначала попытка разрешить ссылку в комплекте, затем поиск вне его. Однако перед тем, как это можно будет сделать, абсолютный URL must 
 be compared to the stated based URL, in <a href="bundle-definitions.html#Bundle.base">Bundle.base</a>;
 if these do not match, the resource is not in the bundle. <i>todo-bundle: how to mix content?</i>
 </p>
 <!--
 <p>
 Note that the application SHOULD not assume that the base
-service root is actually resolvable. In some circumstances, it will.
-If the bundle has just been received from a server as a result of
+service root is actually resolvable. In some circumstances, it will. 
+If the bundle has just been received from a server as a result of 
 a search or a history operation, the service root URL SHOULD match
-the URL that the client used (it is allowed not to in order to
-cater for proxies of various kinds). However in other
+the URL that the client used (it is allowed not to in order to 
+cater for proxies of various kinds). However in other 
 circumstances, where the bundle itself has been exchanged onwards
-from the point of origin, and/or stored as an entity in its own
-right (e.g. a <a href="documents.html">clinical document</a>) the
-service root URL is merely a logical construct that holds within the
-bundle when resolving resources, and will have no meaning outside
-the bundle.
+from the point of origin, and/or stored as an entity in its own 
+right (e.g. a <a href="documents.html">clinical document</a>) the 
+service root URL is merely a logical construct that holds within the 
+bundle when resolving resources, and will have no meaning outside 
+the bundle. 
 </p>
 -->
 
 <p>
-Note that some elements have the type "<a href="datatypes.html#uri">uri</a>" instead of "Reference".
-URIs may point to either resources, elements inside a resource by their "id" property, or (most often)
-some other content that is not a resource. The Reference type is only used to refer to resources
-directly, by their logical id.
+Обратите внимание, что некоторые элементы имеют тип "<a href="datatypes.html#uri">uri</a>", а не "Reference". 
+URIs могут вести либо на ресурсы, элементы внутри ресурса по их свойству "id", либо (наиболее часто) некоторое другое содержимое, не являющееся ресурсом. Тип Reference используется только чтобы ссылаться непосредственно на ресурсы по их логическому id.
 </p>
 
 
 <!--
 <li>
 <a name="Ids"> </a>
-FHIR resources make use of id attributes as targets for <a href="references.html#id">internal references with resources</a>.
-These id attributes are unique and resolved within the context of a single resource. When resources are
+FHIR resources make use of id attributes as targets for <a href="references.html#id">internal references with resources</a>. 
+These id attributes are unique and resolved within the context of a single resource. When resources are 
 combined into a bundle, different resources may contain duplicate id attributes. Thus it is important to limit
 the scope of resolution of an id attribute to the resource in which the <i>id</i> attribute is declared.
 </li>
@@ -351,22 +305,22 @@ the scope of resolution of an id attribute to the resource in which the <i>id</i
 <script>
  try {
    var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
- } catch(exception){
+ } catch(exception){ 
  }
  if (!currentTabIndex)
    currentTabIndex = '0';
 
 $( '#tabs-Reference' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
-
-
+     
+     
 function store(currentTab) {
   document.activeElement.blur();
   try {
     sessionStorage.setItem('fhir-resource-tab-index', currentTab);
-  } catch(exception){
+  } catch(exception){ 
   }
   $( '#tabs-Reference' ).tabs('option', 'active', currentTab);
-}
+}     
 </script>
 
 

@@ -2,7 +2,7 @@
 
 
       
-[%settitle Value Set {vsurl}%]
+[%settitle Набор значений {vsurl}%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -15,55 +15,38 @@
 <%txheader vs%>
 
 <a name="vs"> </a>
-<h1>Value Set <%vsurl%></h1>
+<h1>Набор значений <%vsurl%></h1>
 <p>
-This is a value set defined <%vssource%><%vsxref%>
+Это набор значений, определенный <%vssource%><%vsxref%>
 </p>
 
-<p><b>Summary</b></p>
-<table class="grid">
- <tr><td>Defining URL:</td><td><%vsurl%></td></tr>
- <tr><td>Name:</td><td><%vsname%></td></tr>
- <tr><td>Definition:</td><td><%vsdef%></td></tr>
- <tr><td>OID:</td><td><%vsoid%> (for OID based terminology systems)</td></tr>
-<%txsummary%>
- <tr><td>Source Resource</td><td><a href="<%vsref%>.xml.html">XML</a> / <a href="<%vsref%>.json.html">JSON</a></td></tr>
-</table>
+<p>
+<%vsdef%>
+</p>
 
+<p>
+Формализованное определение: <a href="<%vsref%>.xml.html">XML</a> или <a href="<%vsref%>.json.html">JSON</a>. 
+</p>
+<p>
+Ссылка на этот набор значений в терминологическом сервисе от Health Samurai Team (в виде raw JSON на странице): <a href="http://fhirterm.coreos.health-samurai.io:10001/ValueSet/<%vsnameonly%>/$expand?filter=a" target="_blank"><%vsnameonly%></a>.
+</p>
 <%conceptmaplistvs l0%>
-
-<p>&nbsp;</p>
-
-<a name="definition"> </a>
-<h2>Content Logical Definition</h2>
-
-<%vscld%>
+<p>
+<%vsdesc%>
+</p>
 
 <%vsexpansion%>
 
-<p>&nbsp;</p>
 
 <%vsusage%>
 
-
 <p>
-See <a href="terminologies-valuesets.html">the full registry of value sets</a> defined as part of FHIR.
+OID этого набора значений - <%vsoid%> (OID не используются в FHIR, но могут использоваться в v3 или в терминологических системах на основе OID).<br/>
 </p>
 
-<hr/>
-
 <p>
-Explanation of the columns that may appear on this page:
+См. <a href="terminologies-valuesets.html">полный перечень наборов значений</a>, определенных в рамках FHIR.
 </p>
-<table class="grid">
- <tr><td>Level</td><td>A few code lists that FHIR defines are hierarchical - each code is assigned a level. 
- In this scheme, some codes are under other codes, and imply that the code they are under also applies</td></tr> 
- <tr><td>Source</td><td>The source of the definition of the code (when the value set draws in codes defined elsewhere)</td></tr>
- <tr><td>Code</td><td>The code (used as the code in the resource instance)</td></tr>
- <tr><td>Display</td><td>The display (used in the <i>display</i> element of a <a href="datatypes.html#Coding">Coding</a>). If there is no display, implementers should not simply display the code, but map the concept into their application</td></tr>
- <tr><td>Definition</td><td>An explanation of the meaning of the concept</td></tr>
- <tr><td>Comments</td><td>Additional notes about how to use the code</td></tr>
-</table>
 
 </div>
 
