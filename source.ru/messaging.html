@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Messaging using FHIR Resources%]
+[%settitle Обмен сообщениями с помощью FHIR-ресурсов%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -11,255 +11,146 @@
 
 <div class="col-9">
 
-<h1>Messaging using FHIR Resources</h1>
+<h1>Обмен сообщениями с помощью FHIR-ресурсов</h1>
 
 <p>
-FHIR Resources can be used in a traditional messaging context, much like HL7 v2.
-Applications asserting conformance to this framework claim to be conformant to "FHIR messaging".
+FHIR-ресурсы могут использоваться в контексте традиционного обмена сообщениями подобно HL7 v2. Приложения, декларирующие соответствие этому фреймворку, заявляют о совместимости с "обменом сообщениями в FHIR".
 </p>
 
 <p>
-In FHIR messaging, a "request message" is sent from a source application to a destination
-application when an event happens. Events mostly correspond to things that happen in the
-real world. The request message consists of a <a href="bundle.html">Bundle</a> identified
-by the <a href="bundle-definitions.html#Bundle.type">type</a> "message",
-with the first resource in the bundle being a <a href="messageheader.html">MessageHeader</a>
-resource. The MessageHeader resource has a code - the message event - that identifies the
-nature of the request message, and it also carries additional request metadata.
-The other resources in the bundle depend on the type of the request.
+В FHIR-обмене сообщениями "сообщение-запрос (request message)" отправляется из приложения-источника в приложение-получатель, когда происходит некоторое событие. События в основном соответствуют явлениям реального мира. Сообщение-запрос состоит из <a href="bundle.html">Bundle</a> с указанным <a href="bundle-definitions.html#Bundle.type">типом</a> "message", первым в комплекте идет ресурс <a href="messageheader.html">MessageHeader</a>. Ресурс MessageHeader содержит код - событие сообщения - который определяет природу происхождения сообщения-запроса, а также несет в себе дополнительные метаданные запроса. Остальные ресурсы в комплекте зависят от типа этого запроса.
 </p>
 <p>
-The events supported in FHIR, along with the resources that are included in them, are defined below.
+События, поддержанные спецификацией FHIR наряду с ресурсами, которые в них входят, описаны ниже.
 </p>
 <p>
-The destination application processes the request and returns one or more response messages
-which are also a <a href="bundle.html">bundle</a> of resources identified
-by the <a href="bundle-definitions.html#Bundle.type">type</a> "message", with the first
-resource in each bundle being a <a href="messageheader.html">MessageHeader</a> resource with a response
-section that reports the outcome of processing the message and any additional response
-resources required.
+Приложение-получатель обрабатывает запрос и возвращает один или несколько ответных сообщений, также являющихся <a href="bundle.html">комплектом</a> ресурсов с указанным <a href="bundle-definitions.html#Bundle.type">типом</a> "message", первым в комплекте идет ресурс <a href="messageheader.html">MessageHeader</a> с разделом для ответа, в котором передаются результаты обработки сообщения и все требуемые дополнительные ответные ресурсы.
 </p>
 <ul>
  <li>Example Request Message: TODO <!-- <a href="query-example-request.xml.html">XML</a> or <a href="query-example-request.json.html">JSON</a> --></li>
  <li>Example Response Message: TODO <!-- <a href="query-example-response.xml.html">XML</a> or <a href="query-example-response.json.html">JSON</a> --></li>
 </ul>
 
-<h2>Basic Messaging Assumptions</h2>
+<h2>Основные допущения при передаче сообщений (Basic Messaging Assumptions)</h2>
 
 <p>
-This specification assumes that content will be delivered from one application to
-another by some delivery mechanism, and then one or more responses will be returned
-to the source application. The exact mechanism of transfer is irrelevant to
-this specification, but may include file transfer, http based transfer, MLLP
-(HL7 minimal lower layer protocol), MQ series messaging or anything else.
-The only requirement for the transfer layer is that requests are sent to
-a known location and responses are returned to the source of the request.
-This specification considers the source and destination applications as logical
-entities, and the mapping from logical source and destination to implementation
-specific addresses is outside the scope of this specification, though this
-specification does provide a direct delivery mechanism below.
+Данная спецификация предполагает, что содержимое будет доставлено из одного приложения в другое некоторым механизмом доставки, а затем один или несколько ответов будут возвращены приложению-источнику. Описание самого механизма передачи неуместно в данной спецификации, но может включать передачу файлов, передачу на основе HTTP, MLLP (HL7-протокол минимального нижнего уровня), серию сообщений MQ или любые другие. Единственное требование к уровню передачи состоит в том, чтобы запросы отправлялись в указанное место, а ответы возвращались к источнику запроса. Данная спецификация рассматривает приложение-источник и приложение-приемник в качестве логических сущностей, а нахождение соответствия между логическими источником и приемником и специфичными для реализаций адресами лежит вне этой спецификации, хотя спецификация и предоставляет прямой механизм доставки ниже.
 </p>
 <p>
-The agreements around the content of the messages and the behavior of the two
-applications form the "contract" that describes the exchange. The contract
-will add regional and local agreements to the rules defined in this specification.
+Соглашения о содержимом сообщений и поведении двух приложений образуют "контракт", который описывает этот обмен. Такой контракт будет добавлять региональные и локальные соглашения к правилам, установленным в этой спецификации.
 </p>
 <p>
-This specification ignores the existence of interface engines and message
-transfer agents that exist between the <i>source</i> and <i>destination</i>.
-Either they are transparent to the message/transaction content and irrelevant
-to this specification, or they are actively involved in manipulating the message
-content (in particular, the source and destination headers are often changed).
-If these middleware agents are modifying the message content, then they become
-responsible for honoring the contract that applies (including applicable profiles)
-in both directions.
+Данная спецификация игнорирует существование интерфейсных механизмов и агентов передачи сообщений, которые существуют между <i>источником</i> и <i>назначением</i>. 
+Либо они прозрачны для содержимого сообщения/транзакции и независимы от данной спецификации, либо они активно вовлечены в оперирование содержимым сообщений (в частности, заголовки источника и назначения часто меняются). Если эти промежуточные агенты модифицируют содержимое сообщения, тогда они становятся ответственными за исполнение контракта, который применяется (включая подходящие профили) в обоих направлениях.
 </p>
 <p>
-A key aspect of a message is the impact of its content:
+Ключевой аспект сообщения составляет влияние его содержания:
 </p>
 [%codelist http://hl7.org/fhir/vs/message-significance-category%]
 <p>
-Some Events defined by FHIR are assigned to one of these categories,
-but others are not able to be categorized in advance, and the category
-must be determined by the content, or the context.
+Некоторые события, определенные FHIR, отнесены к одной из описанных категорий, но остальные не возможно категоризировать заранее, поэтому категория должна определяться содержимым или контекстом.
 </p>
 
 <a name="synchronous"> </a>
 <a name="patterns"> </a>
-<h3>Message Exchange Patterns</h3>
+<h3>Схемы обмена сообщениями</h3>
 <p>
-Each FHIR request message has one or more response messages. There must be at least
-one response message so that the sender can know that the message was properly
-received. Multiple response messages SHALL NOT be returned for messages of consequence,
-and SHOULD not be returned for notifications.
+Каждое сообщение с FHIR-запросом имеет одно или несколько ответных сообщений. Должно быть по крайней мере одно ответное сообщение, чтобы отправитель мог узнать, что сообщение было должным образом получено. Сообщения с несколькими ответами НЕ ДОЛЖНЫ возвращаться для сообщений типа consequence, а также его НЕ СЛЕДУЕТ возвращать для уведомлений.
 </p>
 <p>
-In principle, source applications are not required to wait for a response to
-a transaction before issuing a new transaction. However in many cases, the
-messages in a given stream are dependent on each other, and must be sent and
-processed in order. In addition, some transfer methods may require sequential
-delivery of messages.
+В принципе, приложениям-источникам не требуется дожидаться ответа на транзакцию для запуска новой транзакции. Однако во многих случаях сообщения в данном потоке зависят друг от друга и должны отправляться и обрабатываться по порядку.  К тому же некоторые методы передачи могут требовать последовательной доставки сообщений.
 </p>
 <p>
-For this reason, a synchronous exchange pattern - where the sender sends a
-message, and waits on the same channel for a single response, and then
-sends the next message - is the easiest to understand and manage. The
-<a href="#process">$process-message</a> <a href="operations.html">operation</a>
-described below works in this fashion.
+По этой причине схема синхронного обмена - где отправитель отсылает сообщение и ждет на этом же канале одиночного ответа, а затем высылает новое сообщение - самая простая для понимания и управления. Таким образом работает <a href="#process">$process-message</a> <a href="operations.html">операция</a>, описанная ниже.
 </p>
 <p>
-However synchronous message exchange does not cater for multiple response
-messages, which may arise when processing queries, and also imposes
-through-put limitations which may become relevant at high volumes.
-Additionally, it may not be practical or appropriate to wait for
-response messages. In these cases, the asynchronous message pattern
-<a href="#async">described below</a> should be used.
+Однако синхронный обмен сообщениями не обслуживает множественные ответные сообщения, которые может возникнуть при обработке запросов, а также налагает ограничения пропускной способности, которые при высоких объемах могут стать значительными. К тому же ожидание ответных сообщений может быть непрактично или неуместно. В таких случаях следует использовать асинхронную схему обмена сообщениями, <a href="#async">описанную ниже</a>.
 </p>
 
 
 <h3>MessageHeader.identifiers</h3>
 <p>
-An incoming message contains two identifiers: the Bundle.id and
-the <a href="messageheader.html">MessageHeader</a>.identifier.
-Each time a new message is created, it SHALL be assigned an identifier
-(MessageHeader.identifier) that is unique within that message stream.
-Note that since message streams are often merged with other streams,
-it is recommended that the identifier should be globally unique.
-This can be achieved by using a UUID or an OID. Each time a message is sent,
-the Bundle.id should be changed to a new value.
+Входящее сообщение имеет два идентификатора: Bundle.id и <a href="messageheader.html">MessageHeader</a>.identifier. 
+Каждый раз при создании нового сообщения ему ДОЛЖЕН быть присвоен идентификатор (MessageHeader.identifier), являющийся уникальным в потоке этого сообщения. Обратите внимание, что так как потоки сообщений часто объединяются с другими потоками, рекомендуется, чтобы этот идентификатор был глобально уникальным. Этого можно достигнуть использованием  UUID или OID. Каждый раз, как сообщение отправляется, значение Bundle.id следует менять на новое.
 </p>
 <p>
-When a receiver receives and processes the message, it responds with a
-new message with a new identifier, wrapped in a bundle which also has a new id.
-The response message also quotes the request MessageHeader.identifier so that
-the source system can relate the response to its request.
+ Когда получатель получает и обрабатывает сообщение, он отвечает новым сообщением с новым идентификатором, обернутым в комплект, который также имеет новый идентификатор. Ответное сообщение также цитирует MessageHeader.identifier запроса, для того чтобы система-источник могла установить связь между ответом и его запросом.
 </p>
 
 <a name="reliable"> </a>
-<h3>Absence of Reliable Messaging</h3>
+<h3>Отсутствие безотказного обмена сообщениями</h3>
 <p>
-Some of the message delivery mechanisms mentioned above are reliable delivery
-systems - the message is always delivered, or an appropriate error is returned
-to the source. However most implementations use methods which do not provide
-reliable messaging, and either the request or the response can get lost in transit.
-FHIR messaging describes a simple approach that receivers SHOULD conform to in
-order to handle the absence of reliable messaging that maintains predictable
-functionality.
+Некоторые из упомянутых выше механизмов доставки сообщений являются безотказными системами доставки - сообщение всегда доставляется, либо источнику возвращается соответствующая ошибка. Однако большинство реализаций используют методы, которые не обеспечивают безотказного обмена сообщениями, и либо запрос, либо ответ могут потеряться при передаче. Обмен сообщениями в FHIR описывает простой подход,  которому СЛЕДУЕТ соответствовать получателям, чтобы справляться с отсутствием безотказного обмена сообщениями, поддерживающего предсказуемую функциональность.
 </p>
 <p>
-If the sender of the message implements reliable messaging, it SHALL do
-the following when it receives no response to a message within a
-configured timeout period:
+Если отправитель сообщения применяет безотказный обмен сообщениями, он ДОЛЖЕН сделать следующее, если не получил ответа на сообщение в течение заданного времени ожидания:
 </p>
 <table class="grid">
- <tr><td>Consequence</td><td>Resend the same message (with the same identifier) with the same Bundle.id</td></tr>
- <tr><td>Currency</td><td>Resend the same message (with the same identifier) with a different Bundle.id</td></tr>
- <tr><td>Notification</td><td>Resend the same message (with the same identifier) with a different Bundle.id</td></tr>
+ <tr><td>Consequence</td><td>Отправить это же сообщение повторно (с тем же идентификатором) с тем же Bundle.id</td></tr>
+ <tr><td>Currency</td><td>Отправить это же сообщение повторно (с тем же идентификатором) с другим Bundle.id</td></tr>
+ <tr><td>Notification</td><td>Отправить это же сообщение повторно (с тем же идентификатором) с другим Bundle.id</td></tr>
 </table>
 <p>
-When a receiver implements reliable messaging, it SHALL check the incoming Bundle.id
-and MessageHeader.identifier against a cache of previously received messages. The
-correct action to take depends on what is received:
+Когда получатель использует безотказный обмен сообщениями, он ДОЛЖЕН проверять входящие Bundle.id и MessageHeader.identifier на наличие среди кешированных предыдущих полученных сообщений. Корректное действие, которое ему следует предпринять, зависит от результатов этой проверки:
 </p>
 <table class="grid">
- <tr><td>Both the Bundle.id and MessageHeader.identifier have not been received</td><td>This is the normal case, and the message should be processed</td></tr>
- <tr><td>Both envelope and message already received</td><td>The original response has been lost (failed to return to the request issuer), and the original response SHALL be resent</td></tr>
- <tr><td>The MessageHeader.identifier has already been received, but the Bundle.id is new</td><td>A previously seen message has been resubmitted for processing again. The server may either reprocess the message, or reject the message</td></tr>
- <tr><td>The Bundle.id has already been received, but the MessageHeader.identifier is new</td><td>This is an error - Bundle.id values should never be reused</td></tr>
+ <tr><td>Такие Bundle.id и MessageHeader.identifier ещё не были получены</td><td>Это нормальный случай, и сообщение следует обработать</td></tr>
+ <tr><td>Такие обертка (envelope) и сообщение уже были получены</td><td>Первоначальный ответ был потерян (не удалось вернуть отправителю запроса), и первоначальный ответ ДОЛЖЕН быть выслан повторно</td></tr>
+ <tr><td>Такой MessageHeader.identifier уже был получен, а Bundle.id новый</td><td>Предыдущее полученное сообщение было отправлено на обработку еще раз. Сервер может либо повторно обработать, либо отклонить это сообщение</td></tr>
+ <tr><td>Такой Bundle.id уже был получен, а MessageHeader.identifier новый</td><td>Это ошибка - значения Bundle.id никогда не должны использоваться повторно</td></tr>
 </table>
 <p>
-The duration period for caching does generally not need to be very long. At a minimum, it
-could be 1 minute longer than the timeout of the sending system, though it may need to
-be longer depending on the re-sending policies of the sending system.
+Очень длинная продолжительность периода кеширования обычно не требуется. он может быть как минимум на 1 минуту больше тайм-аута системы отправки, хотя, возможно, потребуется его увеличить в зависимости от политики повторной отправки системы-отправителя.
 </p>
 <p>
-Applications that implement reliable messaging declare their reliable cache
-period in their <a href="conformance.html">conformance statement</a>.
+Приложения, реализующие безотказный обмен сообщениями, объявляют свой достоверный период кеширования в своих <a href="conformance.html">заявлениях о соответствии</a>.
 </p>
 
-<h4>Example: Consequence</h4>
+<h4>Пример: Consequence</h4>
 <p>
-In the first example, a Clinical EHR issues an order for a particular imaging examination
-to be performed on a patient. This is considered to be a message of <b>Consequence</b>: multiple
-orders should not be created (in practice there are usually human review processes that
-catch multiple orders, but repeat orders create entropy in the system that is harmful).
-The EHR sends a message where the Bundle.id is UUID 1 (72edc4e0-6708-42ab-9734-f56721882c10),
-with a MessageHeader.identifier of UUID 2 (dad53a57-dcb4-4f18-b066-7239eb4b5229).
+В этом первом примере Clinical EHR выпускает ордер на совершение пациенту определенного томографического обследования. Полагается, что это будет сообщение типа Следствие (Consequence): не следует создавать многочисленные ордера (на практике имеются обычно процессы обзора человеком, которые охватывают несколько ордеров, но повторяющиеся ордера создают энтропию в системе, что является опасным). EHR отправляет сообщение, где Bundle.id - это UUID 1 (72edc4e0-6708-42ab-9734-f56721882c10) и
+MessageHeader.identifier - это UUID 2 (dad53a57-dcb4-4f18-b066-7239eb4b5229).
 </p>
 <p>
-The EHR system never receives a response to the message; it does not know whether the request
-message got lost, or the imaging management systems was unable to process the request, or whether
-it successfully processed the message and the response was lost. In this case, the EHR system
-resends the message with same two identifiers.
+EHR-система так и не получает ответа на это сообщение; она не знает, либо запрос потерялся, либо система управления изображениями не смогла обработать запрос, либо она успешно обработала сообщение, а ответ потерялся. В этом случает EHR-система отправляет сообщение повторно с этими же двумя идентификаторами.
 </p>
 <p>
-In this case, the imaging system successfully received the message, and processed it. Because
-it receives the resent order after 1 minute (which is within its 15 minute cache time),
-and the two UUIDs 1 and 2 match a message it has already processed, it knows that it already
-processed the order, and simply returns the previous response. In the case of additional resent
-queries, the application keeps sending the original response, though it may also alert system
-administrators that the same original message keeps being resent, since lost messages should be
-a rare occurrence.
+В этом случае система управления изображениями успешно получает сообщение и обрабатывает его. Так как она получает повторный ордер через 1 минуту (что в пределах её 15-минутного времени кеширования), и оба UUID 1 и 2 совпадают с сообщением, которое она уже обработала, она знает, что уже обработала этот ордер и просто возвращает предыдущий ответ. В случае дополнительно высланных повторных запросов приложение продолжает отправлять первоначальный ответ, хотя может также сообщить системным администраторам о том, что одно и тоже первоначальное сообщение продолжает пересылаться, так как потерянные сообщения должны быть редким явлением.
 </p>
 <p>
-When the EHR system finally receives the message, it knows how the imaging management system
-responded; it can be sure because the message id from the original request is echoed in the
-response portion of the returned message.
+Когда EHR-система наконец получает сообщение, она понимает, как ответила система управления изображениями; она может быть уверена в этом, потому что идентификатор сообщения из первоначального запроса отражается в ответной части возвращенного сообщения.
 </p>
 
 
-<h4>Example: Currency</h4>
+<h4>Пример: Currency</h4>
 <p>
-In this second example, a Clinical EHR needs to know what appointment slots are available
-for a particular imaging procedure. This is a message of <b>Currency</b>: available slots are
-ever disappearing, and ordering a slot that has become unavailable is a waste of time for
-the humans and systems involved. The EHR sends a message where the Bundle.id is
-UUID 3 (4c7f5cb2-5964-4d42-b719-e0227461818c), with a MessageHeader.identifier is
-UUID 4 (63ed7d68-b2cc-421d-ba1c-a6c7785581f2).
+В этом втором примере Clinical EHR необходимо узнать, какие интервалы приема доступны для определенной процедуры исследования. Это сообщение типа <b>Currency</b>: доступные слоты в любой момент могут исчезнуть, и заказ слота, который только что стал недоступным, является пустой тратой времени для вовлеченных людей и систем. EHR высылает сообщение с Bundle.id - UUID 3 (4c7f5cb2-5964-4d42-b719-e0227461818c), с MessageHeader.identifier - UUID 4 (63ed7d68-b2cc-421d-ba1c-a6c7785581f2).
 </p>
 <p>
-The EHR system never receives a response to the message; it does not know whether the request
-message got lost, or the imaging management systems was unable to process the request, or whether
-it successfully processed the message and the response was lost. In this case, the EHR system
-resends the message with same MessageHeader.identifier (UUID 4), but creates a new Bundle.id (c7c17fe4-9560-49c7-b2ae-42636476fb86).
+EHR-система так и не получает ответа на это сообщение; она не знает, либо запрос потерялся, либо система управления изображениями не смогла обработать запрос, либо она успешно обработала сообщение, а ответ потерялся. В этом случает EHR-система отправляет повторно сообщение с тем же MessageHeader.identifier (UUID 4), но создает новый Bundle.id: (c7c17fe4-9560-49c7-b2ae-42636476fb86).
 </p>
 <p>
-In this case, the imaging system successfully received the message, and processed it. When
-it receives the resent order after 1 minute (which is within its 15 minute cache time), it
-sees that although the message id is the same, the Bundle.id has changed, and it reprocesses
-the message again, and sends a new response.
+В этом случае система управления изображениями (imaging system) успешно получает сообщение и обрабатывает его. Когда она получает повторный ордер через 1 минуту (что  в пределах её 15-минутного времени кеширования), она видит, что, хотя идентификатор сообщения тот же самый, Bundle.id изменился, обрабатывает сообщение снова и отправляет новый ответ.
 </p>
 <p>
-When the EHR system finally receives the message, it knows the current slot availability
-on the imaging management system responded.
+Когда EHR-система наконец получает сообщение, она узнает о текущей доступности слотов в ответившей системе управления изображениями ( imaging management system).
 </p>
 <p>
-Note that the existence of active intermediaries (or "middleware") creates the need
-for this protocol - the original sender matches the response to the request based on the
-MessageHeader.identifier, and so an active intermediary that choose the re-initiate a query that
-it previously relayed cannot change the MessageHeader.identifier. This protocol avoids the need for
-the MessageHeader.identifier to change, and only requires change to the Bundle.id which is never
-the basis for context linking outside the immediate message exchange protocol described
-here.
+Обратите внимание, что существование активных посредников (или промежуточного программного обеспечения) создает необходимость в таком протоколе - исходный отправитель подбирает ответ на запрос на основе MessageHeader.identifier, поэтому активный посредник, который решит повторно инициировать запрос, который он ранее ретранслировал, не может менять MessageHeader.identifier. В этом протоколе избегается необходимость изменения MessageHeader.identifier, и требуется менять только Bundle.id, что никогда не является основой для контекстного связывания вне непосредственного протокола обмена сообщениями, описанного здесь.
 </p>
 
 
-<h2>Conformance Statement</h2>
+<h2>Заявление о соответствии</h2>
 <p>
-Applications may only assert conformance to "FHIR messaging" if they
-publish a conformance statement so the claim may be verified. A
-conformance statement lists all the message events supported (either
-as sender or receiver) and for each event, a
-profile that states which resources are bundled (sender), or
-are required to be bundled (receiver), and any rules about the
-information content of the individual resources. The conformance
-statement is a <a href="conformance.html">resource with the name
-"Conformance"</a>.
+Приложения могут утверждать о соответствии "FHIR-обмену сообщениями", только если они публикуют заявление о соответствии, чтобы это утверждение можно было подтвердить. Заявление о соответствии перечисляет все поддерживаемые события обмена сообщениями (либо как отправитель, либо получатель) и для каждого события профиль, который указывает, какие ресурсы будут собраны в комплект (отправитель), либо должны войти в комплект (получатель), и все правила об информационном содержимом каждого ресурса. Заявление о соответствии представляет собой <a href="conformance.html">ресурс с именем "Conformance"</a>. 
 </p>
 
 <a name="process"></a>
 <h2>$process-message</h2>
 <p>
+Простейшим способом обработки сообщений там, где есть <a href="http.html">RESTful-взаимодействия</a>, будет использование <a href="messageheader-operations.html">$process-message</a>. 
+Эта операция, которая принимает сообщения, обрабатывает их в соответствии с определением события в заголовке сообщения и возвращает один или несколько ответных сообщений.
+Например в дополнение к обработке события сообщения сервер может сохранить все или некоторые из ресурсов и сделать их доступными через RESTful интерфейс, однако это не является обязательным.
 The simplest way to handle messages where there are also <a href="http.html">RESTful interactions</a>
 occurring is to use the <a href="messageheader-operations.html">$process-message</a>. 
 This operation that accept a messages, processes it according to the definition of the event in the message header, and returns a one or more response messages. 
@@ -268,6 +159,10 @@ may choose to retain all or some the resources and make them available on a REST
 is not required to do so.
 </p>
 <p>
+При обработке сообщений сервер может возвращать статус-код 200 OK, либо код обработки/ошибки (300+). 
+Если сервер возвращает 200 OK, он ДОЛЖЕН вернуть комплект, который является ответом на сообщение.
+Все остальные коды ответа указывают на то, что сообщение не было успешно обработано. Сервер МОЖЕТ вернуть <a href="operationoutcome.html">OperationOutcome</a>, содержащий дополнительную информацию, и ДОЛЖЕН сделать это, если код ответа 400 или больше.
+Клиент ДОЛЖЕН интерпретировать ответ вида 4xx как указание, что нет смысла повторно отправлять то же самое сообщение без изменений, а ответ вида 5xx - как неожиданную ошибку, возникшую на стороне сервера, с подтекстом, что может быть уместным отправить первоначальное сообщение повторно. Выполнение этого действия НЕ ДОЛЖНО вызвать ошибку дублирования сообщения. Повторяющиеся неудачи указывают либо на фатальную проблему с отправкой, либо на проблему с приложением-получателем.
 When processing messages, a server may return a status code of 200 OK, or an process/error code (300+).
 If the server returns 200 OK, it SHALL return a bundle that is the message response.
 For any other response code, the message has not been succesfully processed. The server MAY return an
@@ -283,18 +178,17 @@ or a problem with the receiving application.
 The following rules apply when using $process-message:
 </p>
 <ul>
- <li>The operation only accepts POST transactions - any other HTTP method will result in an HTTP error</li>
- <li>The request content type submitted is always <a href="bundle.html">a Bundle</a> with type "message" containing a <a href="messageheader.html">Message Header</a> resource as the first resource</li>
- <li>The response content type returned is always <a href="bundle.html">a Bundle</a> with type "message" containing a <a href="messageheader.html">Message Header</a> resource as the first resource, or an HTTP error</li>
- <li>If the response is an error, the body SHOULD be an <a href="operationoutcome.html">Errors &amp; Warning</a> resource with full details</li>
- <li>The mailbox may be authenticated using standard HTTP authentication methods, including OAuth</li>
+ <li>Операция принимает только POST-транзакции - любой другой HTTP-метод приведет к HTTP-ошибке</li>
+ <li>Тип содержимого переданного запроса - это всегда <a href="bundle.html">комплект</a> с типом "message" , содержащий первым ресурсом <a href="messageheader.html">MessageHeader</a></li>
+ <li>Тип содержимого возвращаемого ответа - это всегда <a href="bundle.html">Bundle</a> с типом "message", содержащий первым ресурсом <a href="messageheader.html">Message Header</a>, либо HTTP-ошибка</li>
+ <li>Если ответом является ошибка, телом ДОЛЖЕН быть ресурс <a href="operationoutcome.html">Errors &amp; Warning</a> со всеми подробностями</li>
+ <li>Почтовый ящик может быть аутентифицирован с помощью стандартных HTTP-методов аутентификации, включая OAuth</li>
 </ul>
 <p>
-The $process-message operation can be used by any HTTP end point that accepts FHIR messages, not just FHIR RESTful servers.
+Операция $process-message может использоваться любой HTTP-точкой взаимодействия, которая принимает FHIR-сообщения, а не только FHIR RESTful-серверами.
 </p>
 <p>
-In order to ensure consistency of processing, the <a href="#reliable">logical rules regarding processing of Bundle.id and
-message id described above</a> SHALL be followed when messages are processed using this operation. 
+Когда сообщения обрабатываются с помощью данной операции, для гарантии непротиворечивости обработки необходимо следовать <a href="#reliable">логическим правилам касательно обработки Bundle.id и идентификатора сообщения, описанным выше</a>.
 </p>
 
 <p>
@@ -342,77 +236,55 @@ This specification does not dictate any particular error handling protocols or r
 </p>
 
 <a name="endpoints"></a>
-<h2>Relationship between Messaging and REST</h2>
+<h2>Связь между системой обмена сообщениями и REST</h2>
 
 <p>
-As well as this messaging framework documented here, FHIR also defines a
-<a href="http.html">RESTful API</a>. The messaging and RESTful frameworks
-are related in that both share the same set of resources on which they operate.
-In fact, the basic <a href="messageheader.html">MessageHeader</a> resource
-that the messaging framework is implemented is itself a resource that can treated in a RESTful approach.
+Помимо системы обмена сообщениями, описанной здесь, FHIR также определяет <a href="http.html">RESTful API</a>. Система обмена сообщениями и RESTful-система связаны тем, что оба разделяют один и тот же набор ресурсов, которым они оперируют.
+По сути, базовый ресурс <a href="messageheader.html">MessageHeader</a>, на котором построена система обмена сообщениями, сам по себе является ресурсом, который может обрабатываться в RESTful-подходе.
+
 </p>
 <p>
-The kinds of functionality that the RESTful API and the messaging framework
-offer are very similar; their primary difference is architectural in nature.
+Функциональные возможности, которые предлагают RESTful API и система обмена сообщениями, очень похожи; их основное различие носит архитектурный характер.
 </p>
 <p>
-For instance, the messaging framework defines an event for notifying that
-a administration resource has been created or updated, as does the REST API.
-On the other hand, there are differences in the capabilities offered - while
-a patient merge can be implemented as a series of RESTful operations performed
-by the client that update all resources linked to the patient, when a message
-command to merge patient records is processed, the server will do all
-the work, and is also able to merge in areas not exposed on the RESTful API.
-The REST API, however, provides a set of basic operations on all resources
-that would need special definitions in the messaging framework - definitions that
-are not provided.
+К примеру, система обмена сообщениями определяет событие по оповещению о том, что ресурс administration был создан или обновлен, так же как и REST API.
+С другой стороны, имеются и различия в предлагаемых возможностях: в то время как слияние записей пациента может быть реализовано в виде серии RESTful-операций, совершаемых клиентом, который обновляет все ресурсы, связанные с этим пациентом, а при обработке сообщения-команды на слияние записей пациента всю работу выполнит сервер, притом он сможет выполнить слияние в таких областях, которые не доступны RESTful API.
+Однако REST API предоставляет набор базовых операций для всех ресурсов, которые не предоставлены в системе обмена сообщениями и потребовали бы особых определений.
 </p>
 <p>
-There is no expectation that RESTful systems will need to offer messaging
-support, or vice versa, though systems may find it useful to support both
-sets of functionality in order to satisfy a wider range of implementers.
+Не ожидается, что RESTful-системам потребуется поддерживать систему обмена сообщениями или наоборот, хотя системам может оказаться полезным поддерживать оба набора функциональностей, чтобы удовлетворять более широкому спектру реализаторов.
 </p>
 <p>
-As a resource that can be used with the RESTful framework, the MessageHeader
-resource has the normal resource end-point (/MessageHeader), which is
-used to manage a set of static message resources. This could be used to
-make an archive of past messages available. <b>Creating or updating MessageHeader resources
-in this fashion does not represent the actual occurrence of any event, nor can it trigger
-any logic associated with the actual event.</b> It is just for managing a set of message header resources.
+Как ресурс, который может использоваться в RESTful-системе, MessageHeader имеет обычную точку взаимодействия (/MessageHeader), которая используется для управления набором статических ресурсов сообщений. Её можно использовать для создания архива доступных прошлых сообщений. <b>Создание или обновление таким образом ресурсов MessageHeader не отражает фактического наступления никакого события и не может привести в действие никакую логику, связанную с реальным событием.</b> Это только для управления набором ресурсов заголовков сообщений.
 </p>
 <p>
-In, addition, as described above, this specification defines the /Mailbox end-point
-so that RESTful servers can offer both messaging and RESTful services at once.
-Alternatively, messages can be transported between systems using any other method by which
-a stream of bytes (the message bundle) can be moved from one place to
-another. There is no requirement to use HTTP.
+Кроме того, что описано выше, данная спецификация определяет точку взаимодействия /Mailbox, для того чтобы RESTful-серверы могли предлагать как обмен сообщениями, так и RESTful-сервисы одновременно.
+В качестве альтернативы, сообщения можно передавать между системами с помощью любого другого метода, по которому поток байтов (комплект сообщения) может быть перемещен из одного места в другое.
+Требование использовать HTTP отсутствует.
 </p>
 
 
 
 <a name="Events"></a>
 <a name="events"></a>
-<h2>Event List</h2>
+<h2>Перечень событий</h2>
 
 <p>
-The <i>message.code</i> element carries a <a href="datatypes.html#Coding">Coding</a> that identifies the event that the message conveys.
-This table lists the message event codes defined in this specification (the system value for these is "<a href="message-events.html">http://hl7.org/fhir/message-events</a>"):
+Элемент <i>message.code</i> передает <a href="datatypes.html#Coding">Coding</a>, который идентифицирует событие, которое передает сообщение.
+В данной таблице перечислены коды событий сообщений, определенные в этой спецификации (значением системы для них является "<a href="message-events.html">http://hl7.org/fhir/message-events</a>"):
 </p>
 
 [%events%]
 
 <p>
-The request and response details: The column values are either a resource
-that is included as part of the response, or an element that refers to
-another resource, which means that the target of these references SHALL
-also be in the message.
-In this table, the request and response columns list the focus resource for the event, along with other resources that should also be carried in the message directly (if they exist).
+Описание колонок "запрос" и "ответ": значением этих колонок является либо ресурс, который входит в состав ответа, либо элемент, который ссылается на другой ресурс, что означает, что цель таких ссылок ДОЛЖНА также присутствовать в этом сообщении. 
+В этой таблице колонки "запрос" и "ответ" перечисляют центровой ресурс для события наряду с другими ресурсами, которые также должны передаваться в сообщении непосредственно (если они существуют).
 </p>
 
 <a name="dstu"> </a>
 <blockquote>
 <p>
-Additional events may be defined elsewhere, though this specification does not yet define how. DSTU: Input on this is sought during the trial use period.
+Дополнительные события могут быть определены где угодно, хотя данная спецификация еще не определила, каким образом. DSTU: За время пробного использования ожидается сбор информации на эту тему.
 </p>
 </blockquote>
 
@@ -593,8 +465,8 @@ Here's an example:
 </div>
 
 [%file newfooter%]
-
-
+    
+    
 </body>
 </html>
 
