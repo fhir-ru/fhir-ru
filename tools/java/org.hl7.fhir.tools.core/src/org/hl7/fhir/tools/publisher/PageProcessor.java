@@ -1905,7 +1905,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     Set<String> pages = new HashSet<String>();
     HeirarchicalTableGenerator gen = new HeirarchicalTableGenerator(folders.dstDir, false);
     TableModel model = gen.new TableModel();
-    model.getTitles().add(gen.new Title(null, model.getDocoRef(), "Table of Contents", "Specification Map", null, 0));
+    model.getTitles().add(gen.new Title(null, model.getDocoRef(), "Содержание", "Specification Map", null, 0));
     Deque<TocItem> stack = new ArrayDeque<TocItem>();
     
     for (String s : entries) {

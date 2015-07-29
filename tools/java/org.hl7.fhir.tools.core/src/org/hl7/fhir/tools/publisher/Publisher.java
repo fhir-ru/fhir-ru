@@ -1735,7 +1735,7 @@ public class Publisher implements URIResolver {
       page.getVsValidator().checkDuplicates(page.getValidationErrors());
 
       if (buildFlags.get("all")) {
-        page.getToc().put("1.1", new TocEntry("1.1", "Table Of Contents", "toc.html"));
+        page.getToc().put("1.1", new TocEntry("1.1", "Содержание", "toc.html"));
         page.log(" ...page toc.html", LogMessageType.Process);
         producePage("toc.html", null);
       }
