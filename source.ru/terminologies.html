@@ -243,7 +243,8 @@ resolve a value set with that URL as its identity. -->
 to try GET http://hl7.org/fhir/vs/clinical-findings - which works, for this value set - http://hl7.org/fhir/vs/clinical-findings 
 returns the authoritative value set for this URL.  -->
 </p>
-<p>Кроме того, набор значений может быть разрешен с помощью локального терминологического сервера.
+<p>
+Кроме того, набор значений может быть разрешен с помощью локального терминологического сервера.
 Если это работающий <a href="terminology-service.html">Терминологический сервер FHIR</a>,
 то это будет работать следующим образом:
 <!-- Alternatively, the value set could be resolved using a local terminology server.
@@ -373,12 +374,9 @@ recommended, but is not an acceptible substitute for the required code. -->
 <!-- Note the following additional rules about required bindings when used with the <a href="datatypes.html#code">code</a> data type: -->
 </p>
 <ul>
- <li>Там, где набор значений определен стандартом FHIR, список допустимых кодов будет зафиксирован  в XML-схеме
- </li>
- <li>Сравнение между кодами всегда чувствительно к регистру, если только эти коды не берутся из другой спецификации, где явно указано иное
- </li>
- <li>Список разрешенных кодов может быть расширен только в последующих версиях спецификации FHIR
-</li>
+ <li>Там, где набор значений определен стандартом FHIR, список допустимых кодов будет зафиксирован  в XML-схеме</li>
+ <li>Сравнение между кодами всегда чувствительно к регистру, если только эти коды не берутся из другой спецификации, где явно указано иное </li>
+ <li>Список разрешенных кодов может быть расширен только в последующих версиях спецификации FHIR</li>
 </ul>
 <p>
 Когда элемент привязан к обязательному набору значений, <a href="profiling.html">производные профили</a> могут устанавливать правила использования этих кодов, но не могут определять новые или дополнительные коды для этих элементов.
@@ -407,6 +405,7 @@ if a code applies, but if no suitable code exists in the value set, an alternate
 Identified gaps in value sets should be submitted to the organization administering the value 
 set in order to improve interoperability in the future.
 </p>
+<p>
 Расширяемые привязки используются, когда имеется соглашение на уровне спецификации или профилировании о кодированных значениях, которые следует использовать, но невозможно создать ограниченный список кодов, который покроет все возможные случаи использования, в том числе те, что ещё возникают.
 <!-- Extensible bindings are used when there is consensus at the specification or profiling level about the coded values
 that should be used, but it is impossible to create a bounded list of codes that a known to cover all 
